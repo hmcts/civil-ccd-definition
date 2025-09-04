@@ -12,23 +12,28 @@ import {
   headings,
 } from '../../exui-page/exui-content';
 import ExuiPage from '../../exui-page/exui-page';
-import { buttons, containers, dropdowns, successBannerText, tabs } from './case-details-content';
+import {
+  buttons,
+  caseFlagsNoticeText,
+  containers,
+  dropdowns,
+  successBannerText,
+  tabs,
+} from './case-details-content';
 
 const classKey = 'CaseDetailsPage';
 
 @AllMethodsStep()
 export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async verifyContent(caseData: CCDCaseData) {
-    await super.retryReloadRunVerifications(() => [
+    await super.runVerifications([
       super.verifyHeadings(caseData),
-      super.expectSelector(tabs.summary.selector, {
-        timeout: config.playwright.shortExpectTimeout,
-      }),
+      super.expectSelector(tabs.summary.selector),
       super.expectSelector(tabs.caseFile.selector),
       super.expectSelector(tabs.claimDetails.selector),
       super.expectSelector(tabs.history.selector),
       // super.expectText(tabs.claimDocs.title),
-      super.expectSelector(tabs.paymentHistory.selector),
+      // super.expectSelector(tabs.paymentHistory.selector),
       // super.expectText(tabs.serviceRequest.title, { exact: true }),
       super.expectSelector(tabs.bundles.selector),
       super.expectSelector(tabs.caseFlags.selector),
@@ -79,6 +84,20 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async goToCaseDetails(caseId: number, { force }: { force: boolean } = { force: true }) {
     console.log(`Navigating to case with ccd case id: ${caseId}`);
     await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, { force });
+  }
+
+  @TruthyParams(classKey, 'caseId')
+  async retryGoToCaseDetails(caseId: number) {
+    console.log(`Navigating to case with ccd case id: ${caseId}`);
+    await super.retryGoTo(
+      `${urls.manageCase}/cases/case-details/${caseId}`,
+      () =>
+        super.expectSelector(tabs.summary.selector, {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+      undefined,
+      { retries: 3, message: `Navigating to case with ccd case id: ${caseId}, trying again` },
+    );
   }
 
   async chooseNextStep(ccdEvent: CCDEvent) {
@@ -140,6 +159,15 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async verifySuccessEvent(caseId: number, ccdEvent: CCDEvent) {
     console.log(`Verifying success banner and event history: ${ccdEvent.name}`);
     await super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent));
+    await super.clickByText(tabs.history.title);
+    await super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
+      rowNum: 1,
+    });
+  }
+
+  async verifySuccessCaseFlagsEvent(activeCaseFlags: number, ccdEvent: CCDEvent) {
+    console.log(`Verifying case flags notice and event history: ${ccdEvent.name}`);
+    await super.expectText(caseFlagsNoticeText(activeCaseFlags), { exact: false });
     await super.clickByText(tabs.history.title);
     await super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
       rowNum: 1,

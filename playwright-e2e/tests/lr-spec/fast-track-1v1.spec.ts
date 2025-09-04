@@ -6,6 +6,7 @@ test.describe('Specified Fast track 1v1', async () => {
     DefendantSolicitor1SpecSteps,
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
+    HearingCenterAdminSpecSteps,
   }) => {
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.CreateClaimFastTrack1v1();
@@ -15,5 +16,9 @@ test.describe('Specified Fast track 1v1', async () => {
     await DefendantSolicitor1SpecSteps.RespondFastTrackFullDefence1v1();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondFastTrackIntentToProceed1v1();
+    await HearingCenterAdminSpecSteps.LoginRegion1();
+    await HearingCenterAdminSpecSteps.CreateCaseLevelCaseFlag();
+    await HearingCenterAdminSpecSteps.CreateClaimant1CaseFlag();
+    await HearingCenterAdminSpecSteps.ManageCaseFlags();
   });
 });

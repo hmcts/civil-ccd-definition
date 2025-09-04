@@ -16,14 +16,14 @@ export default class DefaultJudgmentActions extends BaseTestData {
   async defendantDetails() {
     const { defendantDetailsPage } = this.defaultJudgmentFactory;
     await defendantDetailsPage.verifyContent(this.ccdCaseData);
-    await defendantDetailsPage.selectDefendant(claimantDefendantPartyTypes.INDIVIDUAL);
+    await defendantDetailsPage.selectDefendant(super.defendant1PartyType);
     await defendantDetailsPage.submit();
   }
 
   async defendantDetails1v2() {
     const { defendantDetails1v2Page } = this.defaultJudgmentFactory;
     await defendantDetails1v2Page.verifyContent(this.ccdCaseData);
-    await defendantDetails1v2Page.selectDefendant1(claimantDefendantPartyTypes.INDIVIDUAL);
+    await defendantDetails1v2Page.selectDefendant1(super.defendant1PartyType);
     await defendantDetails1v2Page.submit();
   }
 
@@ -45,9 +45,7 @@ export default class DefaultJudgmentActions extends BaseTestData {
     const { hearingSupportRequirementsFieldDJPage } = this.defaultJudgmentFactory;
     await hearingSupportRequirementsFieldDJPage.verifyContent(this.ccdCaseData);
     await hearingSupportRequirementsFieldDJPage.selectInPerson();
-    await hearingSupportRequirementsFieldDJPage.enterDetails(
-      claimantDefendantPartyTypes.INDIVIDUAL,
-    );
+    await hearingSupportRequirementsFieldDJPage.enterDetails(super.claimant1PartyType);
     await hearingSupportRequirementsFieldDJPage.selectNoUnavailableDates();
     await hearingSupportRequirementsFieldDJPage.selectRequireNoSupport();
     await hearingSupportRequirementsFieldDJPage.submit();

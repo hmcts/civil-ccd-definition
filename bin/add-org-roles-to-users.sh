@@ -59,3 +59,9 @@ echo "Setting up Users with role assignments..."
 
 ./bin/utils/organisational-role-assignment.sh "nbc_admin_region2@justice.gov.uk" "${DEFAULT_PASSWORD}" "PUBLIC" "hmcts-admin" '{"jurisdiction":"CIVIL","primaryLocation":"424213","region":"2"}' "ADMIN"
 ./bin/utils/organisational-role-assignment.sh "nbc_admin_region2@justice.gov.uk" "${DEFAULT_PASSWORD}" "PUBLIC" "national-business-centre" '{"jurisdiction":"CIVIL","primaryLocation":"424213","region":"2","workTypes":"routine_work,query_work"}' "ADMIN"
+
+./bin/utils/organisational-role-assignment.sh "casewrokerWLU@justice.gov.uk" "Password123" "PUBLIC" "wlu-admin" '{"jurisdiction":"CIVIL","primaryLocation":"20262","workTypes":"welsh_translation_work"}' "ADMIN"
+
+./bin/utils/organisational-role-assignment.sh "caseworkerwlutl@justice.gov.uk" "Password123" "PUBLIC" "wlu-team-leader" '{"jurisdiction":"CIVIL","primaryLocation":"420219","workTypes":"welsh_translation_work"}' "ADMIN"
+./bin/utils/organisational-role-assignment.sh "caseworkerwlutl@justice.gov.uk" "Password123" "PUBLIC" "wlu-admin" '{"jurisdiction":"CIVIL","primaryLocation":"420219","workTypes":"welsh_translation_work"}' "ADMIN"
+./bin/utils/organisational-role-assignment.sh "caseworkerwlutl@justice.gov.uk" "Password123" "PUBLIC" "task-supervisor" '{"jurisdiction":"CIVIL","primaryLocation":"420219","workTypes":"welsh_translation_work"}' "ADMIN"

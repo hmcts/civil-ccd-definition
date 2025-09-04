@@ -1722,8 +1722,8 @@ module.exports = {
 
     await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL(addApplicant2));
 
-    await assertSubmittedEvent('CLOSED', {
-      header: '### The claim has been marked as paid in full',
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '### This claim has been marked as settled',
       body: ''
     }, true);
 
@@ -1932,6 +1932,7 @@ module.exports = {
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
+    delete caseData['showConditionFlags'];
     await assertSubmittedEvent('CASE_STAYED', {
       header: '# Reply sent',
       body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
@@ -2089,7 +2090,6 @@ function update(currentObject, modifications) {
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
-
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);

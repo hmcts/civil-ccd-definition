@@ -61,6 +61,23 @@ export default abstract class BasePage {
     await locator.click({ timeout: options.timeout });
   }
 
+  @BoxedDetailedStep(classKey, 'subStrings')
+  protected async clickByLabelWithSubStrings(
+    subStrings: string[],
+    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {
+      exact: true,
+    },
+  ) {
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    let locator = this.page.getByLabel(new RegExp(subStrings.join('.*'), 'i'), {
+      exact: options.exact ?? true,
+    });
+    locator = this.getNewLocator(locator, undefined, options.index, options.first);
+    await locator.click({ timeout: options.timeout });
+  }
+
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickButtonByName(
@@ -219,9 +236,14 @@ export default abstract class BasePage {
         .selectOption(option, { timeout: options.timeout });
   }
 
+  //This method is hidden from reports (no '@BoxedDetailedStep') but used in multiple places in this file.
+  private async _getCookies(): Promise<Cookie[]> {
+    return await this.page.context().cookies();
+  }
+
   @BoxedDetailedStep(classKey)
   protected async getCookies(): Promise<Cookie[]> {
-    return await this.page.context().cookies();
+    return await this._getCookies();
   }
 
   @BoxedDetailedStep(classKey)
@@ -231,12 +253,21 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey)
   protected async clearCookies() {
-    await this.page.context().clearCookies();
+    let retries = 2;
+    while ((await this._getCookies()).length > 0 && retries >= 0) {
+      await this.page.context().clearCookies();
+      retries--;
+    }
   }
 
   @BoxedDetailedStep(classKey)
   protected async addCookies(cookies: Cookie[]) {
-    await this.page.context().addCookies(cookies);
+    let retries = 2;
+    const currentCookiesAmount = (await this._getCookies()).length;
+    while ((await this._getCookies()).length <= currentCookiesAmount && retries >= 0) {
+      await this.page.context().addCookies(cookies);
+      retries--;
+    }
   }
 
   @BoxedDetailedStep(classKey, 'filePath', 'selector')
@@ -264,7 +295,7 @@ export default abstract class BasePage {
   protected async waitForSelectorToDetach(selector: string, options: { timeout?: number } = {}) {
     const locator = this.page.locator(selector);
     try {
-      await locator.waitFor({ state: 'attached', timeout: 20 });
+      await locator.waitFor({ state: 'attached', timeout: 75 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
@@ -274,7 +305,7 @@ export default abstract class BasePage {
   protected async waitForSelectorToBeHidden(selector: string, options: { timeout?: number } = {}) {
     const locator = this.page.locator(selector);
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 75 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'hidden', ...options });
@@ -295,7 +326,7 @@ export default abstract class BasePage {
   protected async waitForTextToDetach(text: string, options: { timeout?: number } = {}) {
     const locator = this.page.getByText(text);
     try {
-      await locator.waitFor({ state: 'attached', timeout: 20 });
+      await locator.waitFor({ state: 'attached', timeout: 75 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
@@ -441,17 +472,60 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'text')
   protected async expectHeading(
     text: string | number,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
   ) {
-    await pageExpect(
-      this.page.getByRole('heading', {
-        name: text.toString(),
-        level: 1,
-        exact: options.exact ?? true,
-      }),
-    ).toBeVisible({
-      timeout: options.timeout,
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    if (options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.getByRole('heading', {
+      name: text.toString(),
+      level: 1,
+      exact: options.exact ?? true,
     });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({ timeout: options.timeout });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -471,7 +545,7 @@ export default abstract class BasePage {
     });
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 75 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await pageExpect(locator, { message: options.message }).toBeHidden({
@@ -567,7 +641,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 75 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -658,7 +732,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 75 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -753,7 +827,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 75 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -824,6 +898,53 @@ export default abstract class BasePage {
     }
   }
 
+  @BoxedDetailedStep(classKey, 'subStrings')
+  protected async expectLabelWithSubstrings(
+    subStrings: string[],
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      exact?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
+      throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
+    }
+    let locator = this.page
+      .locator('label')
+      .getByText(new RegExp(subStrings.join('.*'), 'i'), { exact: options.exact ?? true });
+
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
+  }
+
   @BoxedDetailedStep(classKey, 'label')
   @TruthyParams(classKey, 'label')
   protected async expectNoLabel(
@@ -849,7 +970,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 75 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -1459,7 +1580,7 @@ export default abstract class BasePage {
       actionAfterFirstAttempt,
       {
         retries,
-        message: message ?? 'Navigation Failed, trying again',
+        message: message ?? 'Navigation failed, trying again',
       },
     );
   }

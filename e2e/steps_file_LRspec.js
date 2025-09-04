@@ -633,9 +633,6 @@ module.exports = function () {
         () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
         ]),
         () => responseTypeSpecPage.selectResponseType(twoDefendants, defendant1Response),
-        ...conditionalSteps(config.runningEnv === 'aat', [
-          () => this.clickContinue()
-        ]),
         () => admitPartPaymentRoutePage.selectPaymentRoute(defenceType),
         ... conditionalSteps(defenceType == 'payByInstallments', [
         () => this.clickContinue(),
@@ -712,6 +709,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.CASE_PROCEEDS_IN_CASEMAN, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
+        () => this.waitForSelector(SUMMARY_TAB, 30),
       ]);
       await this.takeScreenshot();
     },

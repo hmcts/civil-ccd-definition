@@ -1,12 +1,13 @@
 
 
 const config = require('../../../config.js');
-const {APPLICANT_SOLICITOR_QUERY, RESPONDENT_SOLICITOR_QUERY} = require('../../../fixtures/queryTypes');
+const {APPLICANT_SOLICITOR_QUERY, RESPONDENT_SOLICITOR_QUERY, PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
 const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'TWO_V_ONE';
 let isQueryManagementEnabled = false;
+const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
-Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-prod @api-nightly-prod @api-unspec-full-defence @QM');
+Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-nightly-prod @api-unspec-full-defence @QM');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
@@ -61,17 +62,31 @@ Scenario('Claimant response', async ({I, api}) => {
 });
 
 Scenario('Claimant queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
-    APPLICANT_SOLICITOR_QUERY, true
-  );
+  if (isTestEnv) {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+      PUBLIC_QUERY, true
+    );
+  } else {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+      APPLICANT_SOLICITOR_QUERY, true
+    );
+  }
 });
 
 Scenario('Defendant queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
-    RESPONDENT_SOLICITOR_QUERY, true
-  );
+  if (isTestEnv) {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+      PUBLIC_QUERY, true
+    );
+  } else {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+      RESPONDENT_SOLICITOR_QUERY, true
+    );
+  }
 });
 
 Scenario('Add case flags', async ({api}) => {

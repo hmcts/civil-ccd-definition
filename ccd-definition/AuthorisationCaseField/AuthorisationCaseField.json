@@ -1446,8 +1446,7 @@
       {
         "UserRoles": [
           "caseworker-civil-staff",
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -6792,6 +6791,23 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "isMintiLipCase",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

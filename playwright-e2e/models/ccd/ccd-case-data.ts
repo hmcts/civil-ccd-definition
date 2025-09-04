@@ -11,22 +11,29 @@ export default interface CCDCaseData {
   applicantSolicitor1UserDetails?: ApplicantSolicitor1UserDetails;
   applicantSolicitor1PbaAccounts?: ApplicantSolicitor1PbaAccounts;
   detailsOfClaim?: string;
+  caseFlags?: CaseFlags;
   claimFee?: ClaimFee;
-  respondent1Experts?: Expert[];
+  respondent1Experts?: ExpertAndWitness[];
+  respondent1Witnesses?: ExpertAndWitness[];
+  respondent2Experts?: ExpertAndWitness[];
+  respondent2Witnesses?: ExpertAndWitness[];
   respondent1DQVulnerabilityQuestions?: DQVulnerabilityQuestions;
   respondent1DQHearingSupport?: DQHearingSupport;
   respondent1DQHearing?: DQHearing;
   respondent1DQFixedRecoverableCosts?: DQFixedRecoverableCosts;
   respondent1DQLanguage?: DQLanguage;
   respondent1DQRemoteHearing?: DQRemoteHearing;
-  applicantWitnesses?: Witnesses[];
+  applicantWitnesses?: ExpertAndWitness[];
   caseManagementLocation?: CaseManagementLocation;
   caseManagementCategory?: CaseManagementCategory;
   respondent1ResponseDate?: string;
   applicantSolicitor1PbaAccountsIsEmpty?: string;
   CaseAccessCategory?: string;
   multiPartyResponseTypeFlags?: string;
-  applicant1?: Party;
+  applicant1?: ClaimantDefendant;
+  applicant1LitigationFriend?: LitigationFriend;
+  applicant2?: ClaimantDefendant;
+  applicant2LitigationFriend?: LitigationFriend;
   issueDate?: string;
   duplicateSystemGeneratedCaseDocs?: SystemGeneratedCaseDocument[];
   respondent2OrganisationPolicy?: OrganisationPolicy;
@@ -36,7 +43,10 @@ export default interface CCDCaseData {
   legacyCaseReference?: string;
   respondent1Represented?: string;
   applicant1OrganisationPolicy?: OrganisationPolicy;
-  respondent1?: Party;
+  respondent1?: ClaimantDefendant;
+  respondent1LitigationFriend?: LitigationFriend;
+  respondent2?: ClaimantDefendant;
+  respondent2LitigationFriend?: LitigationFriend;
   respondent1DQExperts?: DQExperts;
   specAoSRespondentCorrespondenceAddressRequired?: string;
   applicantDefenceResponseDocumentAndDQFlag?: string;
@@ -73,6 +83,7 @@ export default interface CCDCaseData {
   specFullAdmissionOrPartAdmission?: string;
   applicant1DQWitnessesSmallClaim?: DQWitnesses;
   applicant1DQExperts?: DQExperts;
+  applicantExperts?: ExpertAndWitness[];
   respondent1DQWitnessesSmallClaim?: DQWitness;
   urgentFlag?: string;
   responseClaimMediationSpecRequired?: string;
@@ -105,7 +116,7 @@ export default interface CCDCaseData {
 }
 
 export interface ServedDocumentFiles {
-  particularsOfClaimDocument?: ParticularsOfClaimDocument[];
+  particularsOfClaimDocument?: Document[];
 }
 
 export interface SolicitorReferences {
@@ -113,7 +124,7 @@ export interface SolicitorReferences {
   respondentSolicitor1Reference?: string;
 }
 
-export interface ParticularsOfClaimDocument {
+export interface Document {
   id?: string;
   value?: UploadDocumentValue;
 }
@@ -161,12 +172,12 @@ export interface NotifyClaimDetailsOptionsValue {
   label?: string;
 }
 
-export interface Expert {
+export interface ExpertAndWitness {
   id?: string;
-  value?: ExpertValue;
+  value?: ExpertAndWitnessValue;
 }
 
-export interface ExpertValue {
+export interface ExpertAndWitnessValue {
   email?: string;
   flags?: CaseFlags;
   phone?: string;
@@ -175,21 +186,18 @@ export interface ExpertValue {
   firstName?: string;
 }
 
-export interface Witnesses {
-  id?: string;
-  value?: Witness;
-}
-
-export interface Witness {
-  email?: string;
+export interface LitigationFriend {
   flags?: CaseFlags;
-  phone?: string;
   partyID?: string;
   lastName?: string;
   firstName?: string;
+  phoneNumber?: string;
+  emailAddress?: string;
+  primaryAddress?: Address;
+  certificateOfSuitability?: Document[];
+  hasSameAddressAsLitigant?: string;
 }
-
-export interface Party {
+export interface ClaimantDefendant {
   type?: string;
   flags?: CaseFlags;
   partyID?: string;
@@ -293,12 +301,12 @@ export interface HearingAttendeeValue {
 }
 
 export interface CaseFlags {
-  details?: CaseFlagsDetails[];
+  details?: CCDCaseFlagsDetails[];
   partyName?: string;
   roleOnCase?: string;
 }
 
-export interface CaseFlagsDetails {
+export interface CCDCaseFlagsDetails {
   id?: string;
   value?: CaseFlagsDetailsValue;
 }
@@ -311,6 +319,7 @@ export interface CaseFlagsDetailsValue {
   flagComment?: string;
   dateTimeCreated?: string;
   hearingRelevant?: string;
+  otherDescription?: string;
 }
 
 export interface CaseFlagsDetailsValuePath {

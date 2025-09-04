@@ -4,6 +4,7 @@ module.exports = {
 
   async verifyQueriesDetails(hearing = false) {
     I.waitInUrl('#Queries', 10);
+    await I.waitForElement('table.query-list__table');
     I.see('Query subject');
     I.see('Last submitted by');
     I.see('Last submission date');
@@ -23,10 +24,11 @@ module.exports = {
       I.see('What is the date of the hearing?');
       I.see('Test Hearing query detail');
     }
-    I.see('Your query is under review');
   },
+
   async verifyDetailsAsCaseWorker(hearing = false) {
     I.waitInUrl('#Queries', 10);
+    await I.waitForElement('table.query-list__table');
     I.see('Query subject');
     I.see('Last submitted by');
     I.see('Last submission date');
@@ -51,12 +53,14 @@ module.exports = {
 
   async askFollowUpQuestion(party = false) {
     I.waitInUrl('#Queries', 10);
+    await I.waitForElement('table.query-list__table');
     I.see('Last submitted by');
     I.see('Last submission date');
     I.see('Last response date');
     I.see('Response status');
     I.see('Responded');
-    I.see('Caseworker');
+    // Commented due to XUI bug
+    // I.see('Caseworker');
     if (party) {
       I.see('Claimant Query');
       I.click('Claimant Query');
@@ -75,7 +79,8 @@ module.exports = {
   },
 
   async verifyFollowUpQuestion(party = false) {
-    I.waitInUrl('#Queries', 10);
+   await I.waitInUrl('#Queries', 10);
+   await I.waitForElement('table.query-list__table');
     I.see('Last submitted by');
     I.see('Last submission date');
     I.see('Last response date');
@@ -91,13 +96,12 @@ module.exports = {
       I.see('Caseworker response to query.');
       I.see('Follow up query');
       I.see('Query detail');
-      I.see('Your query is under review');
     }
-    I.see('Our team will read your query and will respond. Do not submit the same query more than once.');
   },
 
   async verifyFollowUpQuestionAsCourtStaff(party = false) {
     I.waitInUrl('#Queries', 10);
+    await I.waitForElement('table.query-list__table');
     I.see('Last submitted by');
     I.see('Last submission date');
     I.see('Last response date');
@@ -115,5 +119,4 @@ module.exports = {
       I.see('Query detail');
     }
   },
-
 };

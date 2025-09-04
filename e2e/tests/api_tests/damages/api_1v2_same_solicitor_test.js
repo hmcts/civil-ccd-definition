@@ -1,10 +1,11 @@
 
 
 const config = require('../../../config.js');
-const {APPLICANT_SOLICITOR_QUERY, RESPONDENT_SOLICITOR_1_AND_2_QUERY} = require('../../../fixtures/queryTypes');
+const {APPLICANT_SOLICITOR_QUERY, RESPONDENT_SOLICITOR_1_AND_2_QUERY, PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
 const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 let isQueryManagementEnabled = false;
+const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
 Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS @api-nightly-prod @api-unspec-full-defence @QM');
 
@@ -61,17 +62,31 @@ Scenario('Claimant response', async ({I, api}) => {
 });
 
 Scenario('Claimant queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.applicantSolicitorUser, config.ctscAdminUser,
-    APPLICANT_SOLICITOR_QUERY, false
-  );
+  if (isTestEnv) {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.applicantSolicitorUser, config.ctscAdminUser,
+      PUBLIC_QUERY, false
+    );
+  } else {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.applicantSolicitorUser, config.ctscAdminUser,
+      APPLICANT_SOLICITOR_QUERY, false
+    );
+  }
 });
 
 Scenario('Defendant queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
-    RESPONDENT_SOLICITOR_1_AND_2_QUERY, true
-  );
+  if (isTestEnv) {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+      PUBLIC_QUERY, true
+    );
+  } else {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+      RESPONDENT_SOLICITOR_1_AND_2_QUERY, true
+    );
+  }
 });
 
 

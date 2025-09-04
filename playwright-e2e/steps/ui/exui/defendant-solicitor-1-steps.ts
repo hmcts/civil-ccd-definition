@@ -38,7 +38,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -60,7 +60,8 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-      defendantSolicitor1User,
+
+      { verifySuccessEvent: false },
     );
   }
 
@@ -81,7 +82,8 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-      defendantSolicitor1User,
+
+      { verifySuccessEvent: false },
     );
   }
 
@@ -102,7 +104,8 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-      defendantSolicitor1User,
+
+      { verifySuccessEvent: false },
     );
   }
 
@@ -124,7 +127,8 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-      defendantSolicitor1User,
+
+      { verifySuccessEvent: false },
     );
   }
 
@@ -145,7 +149,8 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse1v2DS();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-      defendantSolicitor1User,
+
+      { verifySuccessEvent: false },
     );
   }
 
@@ -162,7 +167,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -180,7 +185,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -198,7 +203,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }

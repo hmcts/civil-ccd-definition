@@ -5,6 +5,13 @@ import { Party } from '../models/partys';
 import partys from '../constants/partys';
 import { ClaimantDefendantPartyType } from '../models/claimant-defendant-party-types';
 import claimantDefendantPartyTypes from '../constants/claimant-defendant-party-types';
+import CCDCaseData, {
+  ExpertAndWitness,
+  ClaimantDefendant,
+  LitigationFriend,
+} from '../models/ccd/ccd-case-data';
+import CaseFlags, { CaseFlagDetails } from '../models/case-flag';
+import caseFlagLocations from '../constants/case-flags/case-flag-locations';
 
 export default class CaseDataHelper {
   static getNextClaimNumber() {
@@ -227,6 +234,7 @@ export default class CaseDataHelper {
       phoneNumber: this.getPartyPhoneNumber(litigationFriendParty),
       hasSameAddressAsLitigant: 'No',
       primaryAddress: this.buildAddressData(litigationFriendParty),
+      partyName: `${StringHelper.capitalise(litigationFriendParty.key)} Litigation`,
     };
   }
 

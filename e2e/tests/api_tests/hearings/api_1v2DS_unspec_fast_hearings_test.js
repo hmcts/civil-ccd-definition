@@ -5,7 +5,7 @@ const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 const {
   APPLICANT_SOLICITOR_QUERY,
   RESPONDENT_SOLICITOR_1_QUERY,
-  RESPONDENT_SOLICITOR_2_QUERY
+  RESPONDENT_SOLICITOR_2_QUERY, PUBLIC_QUERY
 } = require('../../../fixtures/queryTypes');
 const {respondToQueryCTSCTask} = require('../../../fixtures/wa/respondToQueryTasks');
 
@@ -15,8 +15,9 @@ const serviceId = 'AAA7';
 const hmcTest = true;
 let caseId;
 let isQueryManagementEnabled = false;
+const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
-Feature('CCD 1v2 Unspec fast hearings API test @api-hearings-unspec @api-hearings @api-nonprod @wa-task @QM');
+Feature('CCD 1v2 Unspec fast hearings API test @api-hearings-unspec @api-hearings @api-nonprod @api-prod @wa-task @QM');
 
 Before(async () => {
   isQueryManagementEnabled = await checkLRQueryManagementEnabled();
@@ -50,21 +51,39 @@ Scenario('Listing officer adds case flags', async ({hearings}) => {
 });
 
 Scenario('Claimant queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.applicantSolicitorUser, config.ctscAdminUser,
-    APPLICANT_SOLICITOR_QUERY);
+  if (isTestEnv) {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.applicantSolicitorUser, config.ctscAdminUser,
+      PUBLIC_QUERY);
+  } else {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.applicantSolicitorUser, config.ctscAdminUser,
+      APPLICANT_SOLICITOR_QUERY);
+  }
 });
 
 Scenario('Defendant 1 solicitor queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.defendantSolicitorUser, config.ctscAdminUser,
-    RESPONDENT_SOLICITOR_1_QUERY);
+  if (isTestEnv) {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.defendantSolicitorUser, config.ctscAdminUser,
+      PUBLIC_QUERY);
+  } else {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.defendantSolicitorUser, config.ctscAdminUser,
+      RESPONDENT_SOLICITOR_1_QUERY);
+  }
 });
 
 Scenario('Defendant 2 solicitor queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.secondDefendantSolicitorUser, config.ctscAdminUser,
-    RESPONDENT_SOLICITOR_2_QUERY);
+  if (isTestEnv) {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.secondDefendantSolicitorUser, config.ctscAdminUser,
+      PUBLIC_QUERY);
+  } else {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+      config.secondDefendantSolicitorUser, config.ctscAdminUser,
+      RESPONDENT_SOLICITOR_2_QUERY);
+  }
 });
 
 Scenario('Judge choose hearing in person', async ({api}) => {

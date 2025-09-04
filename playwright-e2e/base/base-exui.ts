@@ -1,3 +1,4 @@
+import { claimantSolicitorUser } from '../config/users/exui-users';
 import ExuiDashboardActions from '../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../actions/ui/idam/idam-actions';
 import config from '../config/config';
@@ -6,7 +7,6 @@ import { Step } from '../decorators/test-steps';
 import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
 import { CCDEvent } from '../models/ccd/ccd-events';
 import TestData from '../models/test-data';
-import User from '../models/user';
 import RequestsFactory from '../requests/requests-factory';
 import BaseApi from './base-api';
 
@@ -39,10 +39,10 @@ export default abstract class BaseExui extends BaseApi {
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
-    user: User,
     { retries = config.exui.eventRetries, verifySuccessEvent = true, camundaProcess = true } = {},
   ) {
     await super.setupBankHolidays();
+    await super.setDebugTestData();
     while (retries >= 0) {
       try {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
@@ -63,11 +63,11 @@ export default abstract class BaseExui extends BaseApi {
     if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
       const caseId = await this.exuiDashboardActions.grabCaseNumber();
       super.setCCDCaseData = { id: caseId };
-      UserAssignedCasesHelper.addAssignedCaseToUser(user, this.ccdCaseData.id);
+      UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
     }
     if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
     await this.exuiDashboardActions.clearCCDEvent();
-    if (camundaProcess) await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData.id);
     await this.fetchAndSetCCDCaseData(this.ccdCaseData.id);
   }
 }
