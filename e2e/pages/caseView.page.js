@@ -50,20 +50,20 @@ module.exports = {
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/tasks`);
-      await I.waitForSelector("//exui-case-task[.//strong[normalize-space(.)='Set Aside - Take Case Offline']]",
+      await I.waitForSelector('//exui-case-task[.//strong[normalize-space(.)=\'Set Aside - Take Case Offline\']]',
       );
       await I.click(
-        "//exui-case-task[.//strong[normalize-space(.)='Set Aside - Take Case Offline']]//dt[normalize-space(.)='Manage']/following-sibling::dd//a[@id='action_claim' or normalize-space(.)='Assign to me']"
+        '//exui-case-task[.//strong[normalize-space(.)=\'Set Aside - Take Case Offline\']]//dt[normalize-space(.)=\'Manage\']/following-sibling::dd//a[@id=\'action_claim\' or normalize-space(.)=\'Assign to me\']'
       );
       // Wait for the "Validate Discontinuance" link inside that specific task panel
       await I.waitForSelector(
-        "//exui-case-task[.//strong[normalize-space(.)='Set Aside - Take Case Offline']]",
+        '//exui-case-task[.//strong[normalize-space(.)=\'Set Aside - Take Case Offline\']]',
       );
       await I.click(
-        "//exui-case-task[.//strong[normalize-space(.)='Set Aside - Take Case Offline']]//dt[normalize-space(.)='Next steps']/following-sibling::dd//a[" +
-        "contains(@href, '/trigger/CASE_PROCEEDS_IN_CASEMAN2') or " +
-        "normalize-space(.)='SetAside - Take Case Offline'" +
-        "]"
+        '//exui-case-task[.//strong[normalize-space(.)=\'Set Aside - Take Case Offline\']]//dt[normalize-space(.)=\'Next steps\']/following-sibling::dd//a[' +
+        'contains(@href, \'/trigger/CASE_PROCEEDS_IN_CASEMAN2\') or ' +
+        'normalize-space(.)=\'SetAside - Take Case Offline\'' +
+        ']'
       );
 
     }, EVENT_TRIGGER_LOCATOR, 3, 45);
@@ -74,16 +74,16 @@ module.exports = {
       await I.navigateToCaseDetails(caseId);
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/tasks`);
       await I.waitForSelector(
-        "//exui-case-task[.//strong[normalize-space(.)='Defence received in time - order that judgment is set aside']]",
+        '//exui-case-task[.//strong[normalize-space(.)=\'Defence received in time - order that judgment is set aside\']]',
       );
       await I.click(
-        "//exui-case-task[.//strong[normalize-space(.)='Defence received in time - order that judgment is set aside']]//dt[normalize-space(.)='Manage']/following-sibling::dd//a[@id='action_claim' or normalize-space(.)='Assign to me']"
+        '//exui-case-task[.//strong[normalize-space(.)=\'Defence received in time - order that judgment is set aside\']]//dt[normalize-space(.)=\'Manage\']/following-sibling::dd//a[@id=\'action_claim\' or normalize-space(.)=\'Assign to me\']'
       );
       await I.waitForSelector(
-        "//exui-case-task[.//strong[normalize-space(.)='Defence received in time - order that judgment is set aside']]",
+        '//exui-case-task[.//strong[normalize-space(.)=\'Defence received in time - order that judgment is set aside\']]',
       );
       await I.click(
-        "//exui-case-task[.//strong[normalize-space(.)='Defence received in time - order that judgment is set aside']]//dt[normalize-space(.)='Next steps']/following-sibling::dd//a[normalize-space(.)='Make Order']"
+        '//exui-case-task[.//strong[normalize-space(.)=\'Defence received in time - order that judgment is set aside\']]//dt[normalize-space(.)=\'Next steps\']/following-sibling::dd//a[normalize-space(.)=\'Make Order\']'
       );
 
     }, EVENT_TRIGGER_LOCATOR, 3, 45);
