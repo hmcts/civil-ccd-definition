@@ -17,7 +17,7 @@ let caseId, eventName;
 
 const data = {
   CREATE_BULK_CLAIM: (mpScenario, interest, customerId, amount, postcodeValidation) => bulkClaimData.bulkCreateClaimDto(mpScenario, interest, customerId, amount, postcodeValidation),
-  CREATE_BULK_CLAIM_VIA_CIVILSERVICE: (scenario, pbaV3, withInterest) => claimDataBulk.createClaimBulk(scenario, pbaV3, withInterest),
+  CREATE_BULK_CLAIM_VIA_CIVILSERVICE: (scenario, withInterest) => claimDataBulk.createClaimBulk(scenario, withInterest),
 
 };
 
