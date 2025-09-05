@@ -1310,14 +1310,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "applicant1ResponseDate",
-    "Label": "Date applicant 1 responded to defence",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "takenOfflineDate",
     "Label": "Date claim moved offline",
     "FieldType": "DateTime",
