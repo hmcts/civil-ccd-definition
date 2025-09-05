@@ -9,7 +9,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo');
+Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nightly-prod');
 
 async function prepareClaimSpecRecordJudgment(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');

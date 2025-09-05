@@ -10,7 +10,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 //To reduce time of API test, temporarly stop running these tests. These test will modified to run in nightly build
-Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo  @api-nonprod-test');
+Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo  @api-nonprod-test @api-nightly-prod');
 
 async function prepareClaimSpecFinalOrderJO(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
