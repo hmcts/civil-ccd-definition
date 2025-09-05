@@ -46,7 +46,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
 });
 
-Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
     console.log('--createClaimWithRepresentedRespondent--');
     await prepareClaimSpecFinalOrderJO(api_spec);
     console.log('--recordJudgment--');
