@@ -5,10 +5,10 @@ properties([
   parameters([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'], 
       description: 'Should force pipeline to go green by not running any functional tests'),
-    choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'], 
-      description: 'Environment to test'),
     choice(name: 'RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES', choices: ['false', 'true'], 
       description: 'Runs the failed test files and not executed test files from the first previous pipeline run that contains the following files \'failedTestFiles.json\' and \'notExecutedTestFiles.json\''),
+    choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'], 
+      description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8', 
       description: 'Number of workers for playwright'),
     string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', 
