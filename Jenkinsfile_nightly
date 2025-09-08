@@ -23,12 +23,12 @@ properties([
       description: 'Runs setup projects before functional test suite'),
     choice(name: 'FRONTEND_URL', 
       choices: [
-                'https://manage-case.aat.platform.hmcts.net', 
-                'https://manage-case.demo.platform.hmcts.net', 
-                'https://manage-case-int1.demo.platform.hmcts.net', 
-                'https://manage-case-int2.demo.platform.hmcts.net',
-                'https://manage-case-wa-int.demo.platform.hmcts.net',
-                'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net'
+                  'https://manage-case.aat.platform.hmcts.net', 
+                  'https://manage-case.demo.platform.hmcts.net', 
+                  'https://manage-case-int1.demo.platform.hmcts.net', 
+                  'https://manage-case-int2.demo.platform.hmcts.net',
+                  'https://manage-case-wa-int.demo.platform.hmcts.net',
+                  'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net'
                 ],
       description: 'The URL you want to run the full functional tests against'),
     choice(name: 'IDAM_WEB_URL', choices: ['https://idam-web.aat.platform.hmcts.net', 'https://idam-web.demo.platform.hmcts.net'], 
