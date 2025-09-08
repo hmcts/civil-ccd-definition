@@ -21,7 +21,15 @@ properties([
       description: 'Runs accessibility tests for playwright during test execution'),
     choice(name: 'PLAYWRIGHT_RUN_SETUP', choices: ['true', 'false'], 
       description: 'Runs setup projects before functional test suite'),
-    string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case.aat.platform.hmcts.net',
+    choice(name: 'FRONTEND_URL', 
+      choices: [
+                'https://manage-case.aat.platform.hmcts.net', 
+                'https://manage-case.demo.platform.hmcts.net', 
+                'https://manage-case-int1.demo.platform.hmcts.net', 
+                'https://manage-case-int2.demo.platform.hmcts.net',
+                'https://manage-case-wa-int.demo.platform.hmcts.net',
+                'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net'
+                ],
       description: 'The URL you want to run the full functional tests against'),
     choice(name: 'IDAM_WEB_URL', choices: ['https://idam-web.aat.platform.hmcts.net', 'https://idam-web.demo.platform.hmcts.net'], 
       description: 'The URL of idam web'),
