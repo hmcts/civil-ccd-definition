@@ -9,7 +9,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo');
+Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nightly-prod');
 
 async function prepareClaimSpecRecordJudgment(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
@@ -41,20 +41,20 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
 });
 
-Scenario('Record Judgment Spec claim 1v1 with mark paid in full @api-nightly-prod', async ({I, api_spec}) => {
+Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
     await prepareClaimSpecRecordJudgment(api_spec);
     await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
     console.log('--markJudgmentPaid--');
     await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
 });
 
-Scenario('Refer To Judge Spec claim 1v1 Defence Received In Time  @api-nightly-prod', async ({I, api_spec}) => {
+Scenario('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
     await prepareClaimSpecRecordJudgment(api_spec);
     console.log('--referToJudgeDefenceReceived--');
     await api_spec.referToJudgeDefenceReceived(caseWorkerUserReg1);
 });
 
-Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after hearing  @api-nightly-prod', async ({I, api_spec}) => {
+Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after hearing', async ({I, api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
