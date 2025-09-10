@@ -10,7 +10,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 //To reduce time of API test, temporarly stop running these tests. These test will modified to run in nightly build
-Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo  @api-nonprod-test @api-nightly-prod');
+Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo');
 
 async function prepareClaimSpecFinalOrderJO(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
@@ -28,7 +28,7 @@ async function prepareClaimSpecFinalOrderJO(api_spec){
   await api_spec.confirmOrderReview(caseWorkerUserReg1);
 
 }
-Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {
+Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment @api-nightly-prod', async ({I, api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', false );
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
@@ -36,7 +36,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new 
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','All_FINAL_ORDERS_ISSUED');
 });
 
-Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline', async ({I, api_spec}) => {
+Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline @api-nightly-prod', async ({I, api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false );
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
@@ -46,7 +46,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
 });
 
-Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+Scenario('Record Judgment with mark judgment paid Spec claim 1v2 @api-nonprod-test @api-prod', async ({I, api_spec}) => {
     console.log('--createClaimWithRepresentedRespondent--');
     await prepareClaimSpecFinalOrderJO(api_spec);
     console.log('--recordJudgment--');
