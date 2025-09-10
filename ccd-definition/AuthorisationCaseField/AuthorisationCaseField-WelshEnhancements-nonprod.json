@@ -304,7 +304,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "writtenRepConcurrentDocument",
+    "CaseFieldID": "writtenRepConDocStaff",
     "AccessControl": [
       {
         "UserRoles": [
