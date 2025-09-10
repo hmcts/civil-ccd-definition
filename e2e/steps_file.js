@@ -179,7 +179,7 @@ const CONFIRMATION_MESSAGE = {
   offline: 'Your claim has been received and will progress offline',
 };
 
-let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
+let caseId = '1757346700999352', screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
 const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
@@ -878,11 +878,6 @@ module.exports = function () {
       eventName = events.CREATE_SDO.name;
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
       await this.waitForText('Summary');
-      if (['demo'].includes(config.runningEnv)) {
-        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
-        await this.wait(20); // I've not been able to find a way to wait for the spinner to disappear - tried multiple things ie detach from DOM , wait for element to be clickable
-        await this.click('#action_claim');
-      }
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
       await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([
