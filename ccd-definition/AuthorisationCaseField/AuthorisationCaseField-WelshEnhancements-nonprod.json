@@ -301,7 +301,7 @@
         "CRUD": "R"
       }
     ]
-  }
+  },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "writtenRepConcurrentDocument",
@@ -313,5 +313,5 @@
         "CRUD": "CRU"
       }
     ]
-  },
+  }
 ]
