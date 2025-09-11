@@ -196,10 +196,10 @@ module.exports = {
             claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             defendantSingleResponseToBothClaimants: 'Yes',
-            respondent1DQStatementOfTruth: {
-              name: 'Test',
-              role: 'Worker'
-            },
+            // respondent1DQStatementOfTruth: {
+            //   name: 'Test',
+            //   role: 'Worker'
+            // },
             businessProcess: {
               status: 'FINISHED',
               camundaEvent: 'DEFENDANT_RESPONSE_SPEC'

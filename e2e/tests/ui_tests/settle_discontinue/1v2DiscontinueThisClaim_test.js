@@ -38,20 +38,22 @@ Scenario('Discontinue This Claim', async ({LRspec}) => {
   await LRspec.requestForDiscontinueThisClaimForUI1v2();
 }).retry(2);
 
-//Skipped until DTSCCI-2718 is fixed
-Scenario.skip('Validate Discontinuance', async ({LRspec, api, WA}) => {
-  await LRspec.login(config.ctscAdminUser);
-  let taskId;
-  if (config.runWAApiTest) {
-    const validateDiscontinue = await api.retrieveTaskDetails(config.ctscAdminUser, caseNumber, config.waTaskIds.validateDiscontinueTask);
-    console.log('validateDiscontinue...' , validateDiscontinue);
-    WA.validateTaskInfo(validateDiscontinue, validValidateDiscontinueTask);
-    taskId = validateDiscontinue['id'];
-    api.assignTaskToUser(config.ctscAdminUser, taskId);
-  }
-  await LRspec.requestForValidateDiscontinuanceForUI();
-  if (config.runWAApiTest) {
-    api.completeTaskByUser(config.ctscAdminUser, taskId);
+//Skipped in AAT and Demo until DTSCCI-2718 is fixed
+Scenario('Validate Discontinuance', async ({LRspec, api, WA}) => {
+  if(['preview'].includes(config.runningEnv)) {
+    await LRspec.login(config.ctscAdminUser);
+    let taskId;
+    if (config.runWAApiTest) {
+      const validateDiscontinue = await api.retrieveTaskDetails(config.ctscAdminUser, caseNumber, config.waTaskIds.validateDiscontinueTask);
+      console.log('validateDiscontinue...' , validateDiscontinue);
+      WA.validateTaskInfo(validateDiscontinue, validValidateDiscontinueTask);
+      taskId = validateDiscontinue['id'];
+      api.assignTaskToUser(config.ctscAdminUser, taskId);
+    }
+    await LRspec.requestForValidateDiscontinuanceForUI();
+    if (config.runWAApiTest) {
+      api.completeTaskByUser(config.ctscAdminUser, taskId);
+    }
   }
 }).retry(2);
 
@@ -76,27 +78,31 @@ Scenario('Discontinue This Claim', async ({LRspec}) => {
   await LRspec.requestForDiscontinueThisClaimForUI1v2();
 }).retry(2);
 
-//Skipped until DTSCCI-2718 and DTSCCI-2719 are fixed
-Scenario.skip('Validate Discontinuance', async ({LRspec, api, WA}) => {
-  await LRspec.login(config.ctscAdminUser);
-  let taskId;
-  if (config.runWAApiTest) {
-    const validateDiscontinue = await api.retrieveTaskDetails(config.ctscAdminUser, caseNumber, config.waTaskIds.validateDiscontinueTask);
-    console.log('validateDiscontinue...' , validateDiscontinue);
-    WA.validateTaskInfo(validateDiscontinue, validValidateDiscontinueTask);
-    taskId = validateDiscontinue['id'];
-    api.assignTaskToUser(config.ctscAdminUser, taskId);
-  }
-  await LRspec.requestForValidateDiscontinuanceForUI();
-  if (config.runWAApiTest) {
-    api.completeTaskByUser(config.ctscAdminUser, taskId);
+//Skipped in AAT and Demo until DTSCCI-2718 and DTSCCI-2719 are fixed
+Scenario('Validate Discontinuance', async ({LRspec, api, WA}) => {
+  if(['preview'].includes(config.runningEnv)) {
+    await LRspec.login(config.ctscAdminUser);
+    let taskId;
+    if (config.runWAApiTest) {
+      const validateDiscontinue = await api.retrieveTaskDetails(config.ctscAdminUser, caseNumber, config.waTaskIds.validateDiscontinueTask);
+      console.log('validateDiscontinue...' , validateDiscontinue);
+      WA.validateTaskInfo(validateDiscontinue, validValidateDiscontinueTask);
+      taskId = validateDiscontinue['id'];
+      api.assignTaskToUser(config.ctscAdminUser, taskId);
+    }
+    await LRspec.requestForValidateDiscontinuanceForUI();
+    if (config.runWAApiTest) {
+      api.completeTaskByUser(config.ctscAdminUser, taskId);
+    }
   }
 }).retry(2);
 
 //Skipped until DTSCCI-2718 and DTSCCI-2719 are fixed
-Scenario.skip('Claim Discontinued - Remove Hearing', async ({LRspec}) => {
-  await LRspec.login(config.hearingCenterAdminWithRegionId1);
-  await LRspec.addCaseNote();
+Scenario('Claim Discontinued - Remove Hearing', async ({LRspec}) => {
+  if(['preview'].includes(config.runningEnv)) {
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
+    await LRspec.addCaseNote();
+  }
 }).retry(2);
 
 AfterSuite(async ({api_spec_small}) => {
