@@ -38,7 +38,7 @@ module.exports = {
     await I.waitForElement('#pbaAccount');
     await I.click({css: 'input#pbaAccount'});
     await I.waitForElement(this.fields.pbaNumber.id);
-    await I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options['activeAccount1']);
+    await I.selectOption(this.fields.pbaNumber.id, this.fields.pbaNumber.options['activeAccount2']);
     await I.fillField('#pbaAccountRef', 'Test Test');
     await I.click({css: 'div.govuk-form-group span'});
     await I.click('Confirm payment');
