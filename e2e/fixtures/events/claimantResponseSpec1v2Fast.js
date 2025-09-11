@@ -141,10 +141,10 @@ module.exports = {
             respondent1DQHearing: {
               hearingLength: 'ONE_DAY'
             },
-            respondent1DQStatementOfTruth: {
-              name: 'Test',
-              role: 'Worker'
-            },
+            // respondent1DQStatementOfTruth: {
+            //   name: 'Test',
+            //   role: 'Worker'
+            // },
             respondent1DQFileDirectionsQuestionnaire: {
               explainedToClient: ['CONFIRM'],
               oneMonthStayRequested: 'No',
