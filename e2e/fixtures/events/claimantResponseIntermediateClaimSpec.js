@@ -137,10 +137,10 @@ module.exports = {
           ...responseData.midEventData,
           ...(!lipDefendant) ? {
             Hearing: {
-              // respondent1DQStatementOfTruth: {
-              //   name: 'Test',
-              //   role: 'Worker'
-              // }
+              respondent1DQStatementOfTruth: {
+                name: 'Test',
+                role: 'Worker'
+              }
             }}: {}
         };
         break;
