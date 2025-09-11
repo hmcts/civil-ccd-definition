@@ -6,7 +6,7 @@ properties([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'], 
       description: 'Should force pipeline to go green by not running any functional tests'),
     choice(name: 'RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES', choices: ['false', 'true'], 
-      description: 'Runs the failed test files and not executed test files from the first previous pipeline run that contains the following files \'failedTestFiles.json\' and \'notExecutedTestFiles.json\''),
+      description: 'Runs the failed test files and test files that were not executed, contained within the \'testFilesReport.json\', from the latest previous pipeline run'),
     choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'], 
       description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8', 
