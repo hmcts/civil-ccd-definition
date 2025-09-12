@@ -60,7 +60,7 @@ Scenario('1v1 spec Reason for settlement - Consent order', async ({api_spec_smal
 }).retry(2);
 
 Scenario('Reason for settlement - Consent order', async ({LRspec}) => {
-  await LRspec.login(config.hearingCenterAdminWithRegionId2);
+  await LRspec.login(config.hearingCenterAdminWithRegionId1);
   await LRspec.requestSettleThisClaimConsentOrderForUI();
 }).retry(2);
 

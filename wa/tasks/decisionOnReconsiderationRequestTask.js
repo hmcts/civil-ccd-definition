@@ -1,18 +1,18 @@
 module.exports = {
-  name: "Claim Discontinued - Validate discontinuance",
-  type: "ValidateDiscontinuanceCTSC",
+  name: "Decision on Reconsideration Request",
+  type: "JudgeDecideOnReconsiderRequest",
   task_state: "unassigned",
   task_system: "SELF",
   security_classification: "PUBLIC",
-  task_title: "Claim Discontinued - Validate discontinuance",
+  task_title: "Decision on Reconsideration Request",
   location_name: "Civil National Business Centre",
-  location: "420219",
+  location: "20262",
   execution_type: "Case Management Task",
   jurisdiction: "CIVIL",
-  region: "2",
+  region: "1",
   case_type_id: "CIVIL",
   case_category: "Civil",
-  case_name: "Test Inc & Claim 2",
+  case_name: "Test Inc",
   auto_assigned: false,
   warnings: false,
   warning_list: {
@@ -33,8 +33,8 @@ module.exports = {
     ]
   },
   description:
-    "[Validate Discontinuance](/cases/case-details/${[CASE_REFERENCE]}/trigger/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT)",
-  role_category: "CTSC",
+    "[Decision on Reconsideration Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUEST)",
+  role_category: "JUDICIAL",
   minor_priority: 500,
-  major_priority: 3000
-};
+  major_priority: 5000
+}
