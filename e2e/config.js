@@ -342,7 +342,8 @@ module.exports = {
     multiTrackDirections: 'allocateMultiTrack',
     multiTrackOrderMadeReview: 'reviewOrder',
     transferCaseOffline: 'Transfer Case Offline',
-    validateDiscontinueTask: 'ValidateDiscontinuanceCTSC'
+    validateDiscontinueTask: 'ValidateDiscontinuanceCTSC',
+    decisionOnReconsiderationRequestTask: 'JudgeDecideOnReconsiderRequest',
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
