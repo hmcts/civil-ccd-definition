@@ -6,6 +6,14 @@ set -eu
 environment=${1:-prod}
 activateShutter=${2:-false}
 
+if [ ${environment} == prod ]; then
+  echo "Running build for ${environment}"
+  activateShutter=true;
+else
+  echo "Running build for ${environment}"
+  activateShutter=false;
+fi
+
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
    excludedFilenamePatterns="-e *-prod.json"
@@ -48,6 +56,7 @@ build_dir=${root_dir}/build/ccd-release-config
 github_dir=${root_dir}/build/github-release
 release_definition_output_file=${build_dir}/civil-ccd-${environment}.xlsx
 github_file=${github_dir}/civil-ccd-${environment}.xlsx
+
 
 mkdir -p ${build_dir}
 mkdir -p ${github_dir}
