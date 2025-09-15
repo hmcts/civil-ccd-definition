@@ -52,11 +52,8 @@ The below labels are options to get the different services running on the PR
 
 ```
 Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
-Please delete the same after use by running:
-```shell
-curl -v -k -X DELETE \
-  'http://ccd-definition-store-api-aat.service.core-compute-aat.internal/api/testing-support/cleanup-case-type/{PR_NUMBER}/?caseTypeIds=CIVIL'
-```
+Please delete the same after using the script on the HMC section down below:
+
 
 Running Crossbrowser tests:
 
@@ -202,12 +199,22 @@ For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some m
       --name hmc-servicebus-aat-subscription-rule-civil --subscription DCD-CNP-DEV\
       --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
 ```
-(Remember to delete this once finished with the PR using "az servicebus topic subscription delete")
-
 2 - Add the label pr-values:enableHmc on your GitHub PR
 
 3 - When in XUI/CUI the case type will have an extension to your PR number added to it.
 
+Remember to delete the topic once finished with the PR using:
+```shell
+  az servicebus topic subscription delete --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \
+    --topic-name hmc-to-cft-aat --subscription DCD-CNP-DEV --name hmc-to-civil-subscription-pr-${PR_NUMBER} \
+    --subscription DCD-CNP-DEV
+```
+
+Also remember to delete the temporary case type using:
+```shell
+curl -v -k -X DELETE \
+  'http://ccd-definition-store-api-aat.service.core-compute-aat.internal/api/testing-support/cleanup-case-type/{PR_NUMBER}/?caseTypeIds=CIVIL'
+```
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
