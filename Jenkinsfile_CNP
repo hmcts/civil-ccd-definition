@@ -10,7 +10,7 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
-def camundaBranch = "DTSCCI-2535"
+def camundaBranch = "DTSCCI-2535_RemoveGAEnabledFlag"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
