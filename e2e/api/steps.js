@@ -1574,7 +1574,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
   }
-  else if(eventName === 'DEFENDANT_RESPONSE') {
+  else if(eventName === 'DEFENDANT_RESPONSE' || eventName === 'ACKNOWLEDGE_CLAIM') {
     delete responseBody.data['systemGeneratedCaseDocuments'];
     delete responseBody.data['solicitorReferences'];
   }
