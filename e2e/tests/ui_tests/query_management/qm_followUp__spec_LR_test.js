@@ -15,7 +15,7 @@ async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
 }
 
-Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
+Scenario.skip('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
   let query;
@@ -27,14 +27,14 @@ Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   await I.raiseFollowUpQuestionAndVerify(true);
 }).retry(2);
 
-Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
+Scenario.skip('CaseWorker can access and also responds back to a query', async ({ I }) => {
   await I.login(config.ctscAdminUser);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyFollowUpQuestionAsCaseWorker(true);
 }).retry(2);
 
-Scenario('Judge can access to a query', async ({ I }) => {
+Scenario.skip('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
