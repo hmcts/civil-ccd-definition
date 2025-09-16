@@ -49,6 +49,7 @@ github_dir=${root_dir}/build/github-release
 release_definition_output_file=${build_dir}/civil-ccd-${environment}.xlsx
 github_file=${github_dir}/civil-ccd-${environment}.xlsx
 
+
 mkdir -p ${build_dir}
 mkdir -p ${github_dir}
 
