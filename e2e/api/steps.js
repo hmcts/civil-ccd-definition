@@ -1578,6 +1578,9 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete responseBody.data['systemGeneratedCaseDocuments'];
     delete responseBody.data['solicitorReferences'];
   }
+  if(eventName === 'ACKNOWLEDGE_CLAIM') {
+    delete responseBody.data['systemGeneratedCaseDocuments'];
+  }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
     delete caseData['businessProcess'];
