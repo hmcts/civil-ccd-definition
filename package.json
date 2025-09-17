@@ -105,7 +105,6 @@
     "test:playwright-functional:open-report": "allure open playwright-allure-functional-report",
     "test:playwright-bootstrap:generate-report": "allure generate playwright-allure-bootstrap-results --clean -o playwright-allure-bootstrap-report",
     "test:playwright-bootstrap:open-report": "allure open playwright-allure-bootstrap-report",
-    "test:mike": "MOCHAWESOME_REPORTFILENAME=api-nightly-prod npx codeceptjs run-workers --suites 8 --grep '@mike' --reporter mocha-multi --verbose",
     "prepare": "husky"
   },
   "license": "MIT",
