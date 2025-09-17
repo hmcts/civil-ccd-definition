@@ -10,7 +10,9 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -21,7 +23,8 @@
           "judge-profile",
           "GS_profile",
           "ctsc",
-          "national-business-centre"
+          "national-business-centre",
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
@@ -35,7 +38,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "ctsc"
+          "ctsc",
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       },
@@ -47,6 +51,8 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "judge-profile",
           "GS_profile",
           "national-business-centre"
@@ -72,5 +78,19 @@
     "CaseEventID": "CREATE_MESSAGES_TASK_CATEGORIES",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "SEND_AND_REPLY",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "wlu-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
