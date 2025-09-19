@@ -241,14 +241,10 @@ module.exports = function (){
     else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     else if(scenario === 'ONE_V_TWO_DIF_SOL') {
-      if(response === 'FULL_DEFENCE1' || response === 'FULL_DEFENCE1_PBAv3') {
-        deleteCaseFields('respondent2');
+      if(response === 'FULL_DEFENCE1' || response === 'FULL_DEFENCE1_PBAv3')
         await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-      }
-      else if(response === 'FULL_DEFENCE2' || response === 'FULL_DEFENCE2_PBAv3') {
-        deleteCaseFields('respondent2');
+      else if(response === 'FULL_DEFENCE2' || response === 'FULL_DEFENCE2_PBAv3')
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-      }
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -272,7 +268,6 @@ module.exports = function (){
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    deleteCaseFields('respondent2');
 
     caseData = await addFlagsToFixture(caseData);
 
@@ -359,7 +354,7 @@ module.exports = function (){
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
-
+    
     delete caseData['showConditionFlags'];
 
     if (response === 'UNSUITABLE_FOR_SDO') {
