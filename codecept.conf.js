@@ -19,7 +19,7 @@ const ccdPipelineTests = [
       './e2e/tests/ui_tests/query_management/*_test.js',
       './e2e/tests/api_tests/lrspec_cui/*_test.js',
     ];
-    
+
 const civilServiceAndCamundaTests = [
   './e2e/tests/api_tests/*.js',
   './e2e/tests/api_tests/judgmentOnline/*_test.js',
@@ -51,10 +51,7 @@ const getTests = () => {
   }
   if(process.env.WA_TESTS === 'true')
     return [...ccdPipelineTests, ...civilServiceAndCamundaTests]
-  if(process.env.CCD_UI_TESTS === 'true')
     return ccdPipelineTests;
-  else
-    return civilServiceAndCamundaTests;
 };
 
 exports.config = {
@@ -75,6 +72,7 @@ exports.config = {
   },
   tests: getTests(),
   output: process.env.REPORT_DIR || 'test-results/functional',
+
   helpers: {
     Playwright: {
       url: process.env.URL || 'http://localhost:3333',
