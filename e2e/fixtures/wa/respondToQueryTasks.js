@@ -25,7 +25,7 @@ module.exports = {
         type: 'respondToQueryCTSC',
         task_title: 'Respond to a query',
         location_name: specTask ? 'CTSC Stoke' : 'CTSC Salford',
-        location: specTask ? '20262' : '366774',
+        location: specTask ? '283922' : '366774',
         execution_type: 'Case Management Task',
         jurisdiction: 'CIVIL',
         region: specTask ? '2' : '4',

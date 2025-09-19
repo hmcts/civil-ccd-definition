@@ -76,6 +76,7 @@ module.exports = {
       I.fillField('textarea[id="body"]', 'Claimant follow up');
     }
     I.click('Continue');
+    I.waitForText('Review query details');
   },
 
   async verifyFollowUpQuestion(party = false) {
