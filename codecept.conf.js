@@ -51,7 +51,10 @@ const getTests = () => {
   }
   if(process.env.WA_TESTS === 'true')
     return [...ccdPipelineTests, ...civilServiceAndCamundaTests]
+  if(process.env.CCD_UI_TESTS === 'true')
     return ccdPipelineTests;
+  else
+    return civilServiceAndCamundaTests;
 };
 
 exports.config = {
