@@ -34,7 +34,7 @@ Scenario('1v1 spec request for reconsideration for create general order', async 
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_GENERAL_ORDER');
 });
 
-Scenario.skip('1v2 spec request for reconsideration by defendant2 for create general order', async ({api_spec_small}) => {
+Scenario('1v2 spec request for reconsideration by defendant2 for create general order', async ({api_spec_small}) => {
     await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
     await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_TWO_DIF_SOL',true);
     await api_spec_small.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_TWO_DIF_SOL',true);
