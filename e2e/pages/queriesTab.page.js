@@ -75,7 +75,7 @@ module.exports = {
     if (party) {
       I.fillField('textarea[id="body"]', 'Claimant follow up');
     }
-    I.click('Continue');
+    I.retryUntilExists(() => I.click('Continue'), '//h1[contains(text(), \'Review query details\')]');
   },
 
   async verifyFollowUpQuestion(party = false) {
