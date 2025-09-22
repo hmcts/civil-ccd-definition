@@ -11,7 +11,7 @@ async function prepareSpecClaim(api_spec, mpScenario) {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
 }
 
-Scenario.skip('Spec Claim - Int track - 1v2 diff solicitor - Upload bundle', async ({ api_spec, I }) => {
+Scenario('Spec Claim - Int track - 1v2 diff solicitor - Upload bundle', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_TWO';
   await prepareSpecClaim(api_spec, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', false, true, claimAmountIntermediate);
