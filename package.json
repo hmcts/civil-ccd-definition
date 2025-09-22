@@ -51,7 +51,6 @@
     "test:api-spec-full-admit": "MOCHAWESOME_REPORTFILENAME=api-spec-full-admit npx codeceptjs run --grep @api-spec-full-admit --reporter mocha-multi --verbose",
     "test:api-spec-counterclaim": "MOCHAWESOME_REPORTFILENAME=api-spec-counterclaim npx codeceptjs run --grep @api-spec-counterclaim --reporter mocha-multi --verbose",
     "test:api-QM": "MOCHAWESOME_REPORTFILENAME=api-tests npx codeceptjs run-workers --suites 4 --grep @QM --reporter mocha-multi --verbose",
-    "test:GL": "MOCHAWESOME_REPORTFILENAME=api-tests npx codeceptjs run-workers --suites 4 --grep @testGL --reporter mocha-multi --verbose",
     "test:e2e-spec": "MOCHAWESOME_REPORTFILENAME=e2e-spec npx codeceptjs run-workers --suites 2 --grep @e2e-spec-1v2DS --reporter mocha-multi --verbose",
     "test:e2e-spec-1v2DS": "MOCHAWESOME_REPORTFILENAME=e2e-spec npx codeceptjs run --grep @e2e-spec-1v2DS --reporter mocha-multi --verbose",
     "test:functional-unspec": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run --grep '@e2e-unspec-1v2DS' --reporter mocha-multi --verbose",
