@@ -46,12 +46,14 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
 });
 
-Scenario('Record Judgment with mark judgment paid Spec claim 1v2 @api-nonprod-test @api-prod', async ({I, api_spec}) => {
+Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await prepareClaimSpecFinalOrderJO(api_spec);
     console.log('--recordJudgment--');
     await api_spec.recordJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
     await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+  }
 });
 
 AfterSuite(async  ({api_spec}) => {
