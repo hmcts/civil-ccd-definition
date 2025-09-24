@@ -4675,6 +4675,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "cvpLinkSchedulerProcessed",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2CourtOrderPaymentLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
