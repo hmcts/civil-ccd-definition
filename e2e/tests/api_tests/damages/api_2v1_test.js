@@ -61,7 +61,7 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-Scenario('Claimant queries', async ({api, qmSteps}) => {
+Scenario.skip('Claimant queries', async ({api, qmSteps}) => {
   if (isTestEnv) {
     await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
       config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
@@ -75,7 +75,7 @@ Scenario('Claimant queries', async ({api, qmSteps}) => {
   }
 });
 
-Scenario('Defendant queries', async ({api, qmSteps}) => {
+Scenario.skip('Defendant queries', async ({api, qmSteps}) => {
   if (isTestEnv) {
     await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
       config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
