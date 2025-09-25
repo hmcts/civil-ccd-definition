@@ -11,6 +11,16 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "queries",
+    "FieldType": "CaseQueriesCollection",
+    "Label": "Queries",
+    "CRUD": "CRUD",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "qmApplicantSolicitorQueries",
     "FieldType": "CaseQueriesCollection",
     "Label": "Queries",

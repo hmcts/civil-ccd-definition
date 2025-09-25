@@ -9,7 +9,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo');
+Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nightly-prod');
 
 async function prepareClaimSpecRecordJudgment(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
@@ -31,8 +31,7 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   await api_spec.recordJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
 }
 
-Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
+Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline @api-prod', async ({I, api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
@@ -40,7 +39,6 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
     await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
     console.log('--setAsideJudgment--');
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
-  }
 });
 
 Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
@@ -61,12 +59,10 @@ Scenario.skip('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({
 });
 
 Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after hearing', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'All_FINAL_ORDERS_ISSUED');
-  }
 });
 
 AfterSuite(async  ({api_spec}) => {

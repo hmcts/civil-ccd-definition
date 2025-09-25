@@ -10,7 +10,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 //To reduce time of API test, temporarly stop running these tests. These test will modified to run in nightly build
-Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo  @api-nonprod-test');
+Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-nightly-prod');
 
 async function prepareClaimSpecFinalOrderJO(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
@@ -29,17 +29,14 @@ async function prepareClaimSpecFinalOrderJO(api_spec){
 
 }
 Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', false );
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','All_FINAL_ORDERS_ISSUED');
-  }
 });
 
 Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false );
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
@@ -47,7 +44,6 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
     await api_spec.markJudgmentPaid(caseWorkerUserReg2);
     console.log('--setAsideJudgment--');
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
-  }
 });
 
 Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
