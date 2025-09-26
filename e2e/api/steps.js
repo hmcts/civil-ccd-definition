@@ -34,7 +34,6 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {updateApplicant, updateLROrganisation} = require('./manageContactInformationHelper');
 const {fetchCaseDetails} = require('./apiRequest');
-const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
 const stayCase = require('../fixtures/events/stayCase');
@@ -435,13 +434,6 @@ module.exports = {
   },
 
   amendClaimDocuments: async (user) => {
-    // Temporary work around from CMC-1497 - statement of truth field is removed due to callback code in service repo.
-    // Currently the mid event sets uiStatementOfTruth to null. When EXUI is involved this has the appearance of
-    // resetting the field in the UI, most likely due to some caching mechanism, but the data is still available for the
-    // about to submit. As these tests talk directly to the data store API the field is actually removed in the about
-    // to submit callback. This gives the situation where uiStatementOfTruth is a defined field but with internal fields
-    // set to null. In the about to submit callback this overwrites applicantSolicitor1ClaimStatementOfTruth with null
-    // fields. When data is fetched here, the field does not exist.
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
     await apiRequest.setupTokens(user);
@@ -450,8 +442,6 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
-
-    caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(data[eventName]);
 
@@ -480,8 +470,6 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
-
-    caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(data[eventName]);
 
@@ -536,8 +524,6 @@ module.exports = {
     caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
         value: listElement('Both')
       }};
-
-    caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(data[eventName]);
 
@@ -600,8 +586,6 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
 
-    await addFlagsToFixture(returnedCaseData);
-
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -627,8 +611,6 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
-    caseData = await addFlagsToFixture(caseData);
-
     deleteCaseFields('systemGeneratedCaseDocuments');
     deleteCaseFields('solicitorReferences');
     deleteCaseFields('solicitorReferencesCopy');
@@ -637,14 +619,10 @@ module.exports = {
     // solicitor 2 should not be able to see respondent 1 details
     if (solicitor === 'solicitorTwo') {
       deleteCaseFields('respondent1ClaimResponseIntentionType');
-      deleteCaseFields('respondent1ResponseDeadline');
     }
 
     const fixture = mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP' ?
       eventData['acknowledgeClaims'][mpScenario] : eventData['acknowledgeClaims'][mpScenario][solicitor];
-
-    //Todo: Remove after caseflags release
-    await removeFlagsFieldsFromFixture(fixture);
 
     await validateEventPages(fixture);
 
@@ -689,8 +667,6 @@ module.exports = {
       informAgreedExtensionData = eventData['informAgreedExtensionDates'][mpScenario][solicitor];
     }
 
-    caseData = await addFlagsToFixture(caseData);
-
     await validateEventPages(informAgreedExtensionData, solicitor);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -734,12 +710,8 @@ module.exports = {
       removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData(defendantResponseData);
     }
 
-    //Todo: Remove after caseflags release
-    await removeFlagsFieldsFromFixture(defendantResponseData);
-
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
-    caseData = await addFlagsToFixture(caseData);
 
     deleteCaseFields('isRespondent1');
     deleteCaseFields('respondent1', 'solicitorReferences');
@@ -834,8 +806,6 @@ module.exports = {
 
     let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack);
 
-    caseData = await addFlagsToFixture(caseData);
-
     await validateEventPages(claimantResponseData);
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
@@ -888,8 +858,6 @@ module.exports = {
     solicitorSetup(solicitor);
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
-
-    caseData = await addFlagsToFixture(caseData);
 
     let fixture = data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario];
 
@@ -1571,15 +1539,15 @@ const assertValidData = async (data, pageId, solicitor) => {
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
-  } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+  } 
+  if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
-  }
-  else if(eventName === 'DEFENDANT_RESPONSE') {
+  }  
+  if(eventName === 'DEFENDANT_RESPONSE' || eventName === 'ACKNOWLEDGE_CLAIM') {
     delete responseBody.data['systemGeneratedCaseDocuments'];
-    delete responseBody.data['solicitorReferences'];
   }
-  if(eventName === 'ACKNOWLEDGE_CLAIM') {
-    delete responseBody.data['systemGeneratedCaseDocuments'];
+  if(eventName === 'ACKNOWLEDGE_CLAIM' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+    delete responseBody.data['respondentSolicitor2Reference'];
   }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
