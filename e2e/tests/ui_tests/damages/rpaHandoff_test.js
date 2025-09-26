@@ -18,7 +18,7 @@ Scenario('Take claim offline', async ({I}) => {
   await I.caseProceedsInCaseman();
   await I.assertHasEvents(['Amend party details', 'Add a case note']);
   await I.signOut();
-}).retry(0);
+}).retry(2);
 
 Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);

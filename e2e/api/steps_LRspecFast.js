@@ -20,8 +20,6 @@ const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateA
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
-const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
-const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 
 
@@ -237,8 +235,6 @@ module.exports = {
 
     caseData = returnedCaseData;
 
-    caseData = await addFlagsToFixture(caseData);
-
     console.log(`${response} ${scenario}`);
 
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
@@ -277,7 +273,6 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = await addFlagsToFixture(caseData);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
     if (!fastTrackUpliftsEnabled) {
@@ -356,6 +351,7 @@ const assertValidData = async (data, pageId) => {
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
 
   assert.equal(response.status, 200);
+
 
   if (data.midEventData && data.midEventData[pageId]) {
     checkExpected(responseBody.data, data.midEventData[pageId]);

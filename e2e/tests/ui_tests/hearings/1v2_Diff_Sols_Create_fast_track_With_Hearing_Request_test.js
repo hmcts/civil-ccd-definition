@@ -20,23 +20,19 @@ async function prepareClaim(api, claimAmount) {
 }
 
 Scenario('Claimant solicitor raises a claim against 2 defendants', async ( {api}) => {
-  if (['demo', 'aat'].includes(config.runningEnv)) {
-    await prepareClaim(api, claimAmountJudge);
-    await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
-    caseNumber = await api.getCaseId();
-  }
+  await prepareClaim(api, claimAmountJudge);
+  await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
+  caseNumber = await api.getCaseId();
 }).retry(2);
 
 Scenario('Request, Edit and Cancel a Hearing', async ({I}) => {
-  if (['demo', 'aat'].includes(config.runningEnv)) {
-    const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-    await I.login(hearingUser);
-    console.log(`Navigating to case: ${normalizedCaseId}`);
-    await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-    await I.requestNewHearing();
-    await I.updateHearing();
-    await I.cancelHearing();
-  }
+  const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+  await I.login(hearingUser);
+  console.log(`Navigating to case: ${normalizedCaseId}`);
+  await I.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+  await I.requestNewHearing();
+  await I.updateHearing();
+  await I.cancelHearing();
 }).retry(2);
 
 AfterSuite(async  () => {
