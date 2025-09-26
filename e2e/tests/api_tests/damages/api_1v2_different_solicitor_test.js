@@ -35,10 +35,9 @@ Scenario('Acknowledge claim Solicitor 1', async ({I, api}) => {
   await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
-/* Skipping this test as it is failing with partyIDs at the moment
 Scenario('Acknowledge claim Solicitor 2', async ({I, api}) => {
   await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-}); */
+});
 
 //TODO - Skipping this test as requirement for the Pipeline to be Green and Another Defect should fix the existing Issue
 Scenario.skip('Inform agreed extension date Solicitor 1', async ({I, api}) => {
@@ -62,13 +61,13 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-//Scenario('Add case flags', async ({api}) => {
-//  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
-//});
+Scenario('Add case flags', async ({api}) => {
+ await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
 
-//Scenario('Manage case flags', async ({api}) => {
-//  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
-//});
+Scenario('Manage case flags', async ({api}) => {
+ await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
