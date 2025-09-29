@@ -313,7 +313,6 @@ module.exports = {
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
     let manageContactInformationData = data.MANAGE_DEFENDANT1_INFORMATION(caseData);
-    await expectedWarnings('Defendant1Party', manageContactInformationData, 'Check the litigation friend\'s details');
     await updateApplicant(caseId, manageContactInformationData);
   },
 
@@ -1717,7 +1716,7 @@ const validateErrorOrWarning = async (pageId, eventData) => {
     eventName,
     pageId,
     {...caseData, ...eventData},
-    addCaseId(pageId) ? caseId : null,
+    caseId,
     422
   );
   return response;
@@ -1730,16 +1729,6 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
   assert.equal(responseBody.message, responseBodyMessage);
   if (responseBody.callbackErrors != null) {
     assert.equal(responseBody.callbackErrors[0], expectedErrorMessage);
-  }
-};
-
-const expectedWarnings = async (pageId, eventData, expectedWarningMessages, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
-  const response = await validateErrorOrWarning(pageId, eventData);
-  const responseBody = await response.json();
-  assert.equal(response.status, 422);
-  assert.equal(responseBody.message, responseBodyMessage);
-  if(responseBody.callbackWarnings != null ) {
-    assert.equal(responseBody.callbackWarnings[0], expectedWarningMessages);
   }
 };
 
