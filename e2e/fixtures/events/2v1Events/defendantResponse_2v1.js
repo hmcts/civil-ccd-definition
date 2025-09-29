@@ -106,7 +106,11 @@ module.exports = {
                 estimatedCost: '10000'
               })
             ]
-          }
+          },
+          solicitorReferences: {
+            applicantSolicitor1Reference: 'Applicant reference',
+            respondentSolicitor1Reference: 'Respondent reference',
+          },
         },
         Witnesses: {
           respondent1DQWitnesses: {

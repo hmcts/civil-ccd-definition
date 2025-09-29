@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 echo "Running Functional tests on ${ENVIRONMENT} env"
 

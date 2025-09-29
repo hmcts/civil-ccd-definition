@@ -133,25 +133,9 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           Experts: {
-            respondent1DQDisclosureReport:{
-              draftOrderNumber: '123',
-              disclosureFormFiledAndServed: 'Yes',
-              disclosureProposalAgreed: 'Yes',
-            },
-            claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
-            claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             defendantSingleResponseToBothClaimants: 'Yes',
             respondent1DQHearing: {
               hearingLength: 'ONE_DAY'
-            },
-            respondent1DQFileDirectionsQuestionnaire: {
-              explainedToClient: ['CONFIRM'],
-              oneMonthStayRequested: 'No',
-              reactionProtocolCompliedWith: 'No',
-              reactionProtocolNotCompliedWithReason: 'reason'
-            },
-            respondent1DQExperts: {
-              expertRequired: 'Yes'
             },
             businessProcess: {
               status: 'FINISHED',
