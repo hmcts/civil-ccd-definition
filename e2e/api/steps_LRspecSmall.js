@@ -20,7 +20,6 @@ const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateA
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
-const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 const testingSupport = require('./testingSupport');
 const lodash = require('lodash');
@@ -230,8 +229,6 @@ module.exports = function (){
 
     caseData = returnedCaseData;
 
-    caseData = await addFlagsToFixture(caseData);
-
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
       await assertValidData(defendantResponseData, pageId);
     }
@@ -268,8 +265,6 @@ module.exports = function (){
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-
-    caseData = await addFlagsToFixture(caseData);
 
     let claimantResponseData = data.CLAIMANT_RESPONSE(hasAgreedFreeMediation, carmEnabled);
     if (carmEnabled) {
@@ -354,7 +349,7 @@ module.exports = function (){
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
-    
+
     delete caseData['showConditionFlags'];
 
     if (response === 'UNSUITABLE_FOR_SDO') {
