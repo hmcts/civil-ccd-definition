@@ -46,6 +46,7 @@ module.exports = {
     },
     paymentSetDate: {
     },
+    defaultJudgementOverallTotal: 1702,
     repaymentInformation: {
       repaymentDue: '1702.00',
       repaymentSuggestion: '3',
