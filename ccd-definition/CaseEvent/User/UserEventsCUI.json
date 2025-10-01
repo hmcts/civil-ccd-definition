@@ -5,7 +5,7 @@
     "Name": "Respond to claim",
     "Description": "Defendant response to Specified claim from Citizen",
     "DisplayOrder": 6,
-    "PreConditionState(s)": "*",
+    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "PostConditionState": "*",
     "EventEnablingCondition": "specRespondent1Represented = \"No\"",
     "SecurityClassification": "Public",

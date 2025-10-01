@@ -1,13 +1,12 @@
 const config = require('../../../config.js');
-const { APPLICANT_SOLICITOR_QUERY, PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
+const { PUBLIC_QUERY } = require('../../../fixtures/queryTypes');
 
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
-const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
-Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec');
+Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec @non-prod-e2e-ft @e2e-nightly-prod');
 
 async function prepareClaim(api_spec, mpScenario) {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
@@ -20,13 +19,8 @@ Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
   let query;
-  if (isTestEnv) {
-    query = await qmSteps.raiseLRQuery(caseId, config.applicantSolicitorUser, PUBLIC_QUERY, false);
-    await qmSteps.respondToQuery(caseId, config.ctscAdminUser, query, PUBLIC_QUERY);
-  } else {
-    query = await qmSteps.raiseLRQuery(caseId, config.applicantSolicitorUser, APPLICANT_SOLICITOR_QUERY, false);
-    await qmSteps.respondToQuery(caseId, config.ctscAdminUser, query, APPLICANT_SOLICITOR_QUERY);
-  }
+  query = await qmSteps.raiseLRQuery(caseId, config.applicantSolicitorUser, PUBLIC_QUERY, false);
+  await qmSteps.respondToQuery(caseId, config.ctscAdminUser, query, PUBLIC_QUERY);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
@@ -50,3 +44,4 @@ Scenario('Judge can access to a query', async ({ I }) => {
 AfterSuite(async ({ api_spec }) => {
   await api_spec.cleanUp();
 });
+

@@ -5,7 +5,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Non Hearing E2E journey @qm-spec');
+Feature('Query Management - Non Hearing E2E journey @qm-spec @non-prod-e2e-ft');
 
 async function prepareClaim(api_spec, mpScenario) {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
@@ -56,7 +56,7 @@ Scenario('Offline case - Claimant cant raise a query', async ({ I }) => {
   await I.raiseNewQueryInOfflineState(caseId);
   await I.waitForText('Enter query details');
   await I.waitForText('Errors');
-  await I.see('If your case is offline, you cannot raise a query.');
+  await I.waitForText('If your case is offline, you cannot raise a query.');
 }).retry(2);
 
 AfterSuite(async ({ api_spec }) => {

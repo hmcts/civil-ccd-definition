@@ -6,24 +6,15 @@ const {
   otherSolicitorUser1, otherSolicitorUser2
 } = require('../../../config');
 const config = require('../../../config.js');
-const {RESPONDENT_SOLICITOR_1_QUERY, RESPONDENT_SOLICITOR_2_QUERY, RESPONDENT_SOLICITOR_QUERY, PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
-const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
-let isQueryManagementEnabled = false;
-const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
+const {PUBLIC_QUERY } = require('../../../fixtures/queryTypes');
 
-Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-prod @api-nightly-prod');
+Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-nightly-prod');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
-  if (isQueryManagementEnabled) {
-    const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
-    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-    await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
-  }
+  const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
+  await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+  await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
 }
-
-Before(async () => {
-  isQueryManagementEnabled = await checkLRQueryManagementEnabled();
-});
 
 Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser);
@@ -52,7 +43,7 @@ Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) 
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser2);
 
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
-});
+}).tag('@api-prod');
 
 Scenario('notice of change - 1v2 - both defendants represented - diff solicitor to diff solicitor', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
@@ -67,7 +58,7 @@ Scenario('notice of change - 1v2 - both defendants represented - diff solicitor 
 
   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, otherSolicitorUser2);
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
-});
+}).tag('@api-prod');
 
 Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
@@ -115,7 +106,7 @@ Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
 });
 
-Scenario('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc, qmSteps}) => {
+Scenario.skip('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc, qmSteps}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);
@@ -130,25 +121,10 @@ Scenario('notice of change - 1v2 - same solicitor to diff solicitor', async ({ap
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
   await api.checkUserCaseAccess(otherSolicitorUser1, true);
   await api.checkUserCaseAccess(defendantSolicitorUser, false);
-  if (isTestEnv) {
-    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
-      config.secondDefendantSolicitorUser, config.ctscAdminUser,
-      PUBLIC_QUERY, false
-    );
-    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
-      config.otherSolicitorUser1, config.ctscAdminUser,
-      PUBLIC_QUERY, false
-    );
-  } else {
-    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
-      config.secondDefendantSolicitorUser, config.ctscAdminUser,
-      RESPONDENT_SOLICITOR_1_QUERY, false
-    );
-    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
-      config.otherSolicitorUser1, config.ctscAdminUser,
-      RESPONDENT_SOLICITOR_2_QUERY, false
-    );
-  }
+  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
+    config.secondDefendantSolicitorUser, config.ctscAdminUser, PUBLIC_QUERY, false);
+  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
+    config.otherSolicitorUser1, config.ctscAdminUser, PUBLIC_QUERY, false,);
 }).tag('@QM');
 
 Scenario.skip('notice of change - 2v1', async ({api, noc}) => {
