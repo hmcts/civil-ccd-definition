@@ -6812,7 +6812,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "defaultJudgementOverallTotal",
     "AccessControl": [
       {
