@@ -3445,7 +3445,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defaultJudgementOverallTotal",
     "Label": "Default Judgement Overall Amount",
     "FieldType": "Number",

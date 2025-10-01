@@ -289,7 +289,7 @@
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "defaultJudgementOverallTotal",
     "PageDisplayOrder":5,
