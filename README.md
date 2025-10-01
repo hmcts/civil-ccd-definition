@@ -1,6 +1,6 @@
 # civil-ccd-definition
 
-Civil CCD Definition and E2E tests 
+Civil CCD Definition and E2E tests
 
 ### Contents:
 
@@ -18,6 +18,16 @@ The project is dependent on other Civil repositories:
 - [civil-camunda-bpmn-definition](https://github.com/hmcts/civil-camunda-bpmn-definition)
 
 To set up complete local environment for Civil check [civil-sdk](https://github.com/hmcts/civil-sdk)
+
+## Demo definitions
+
+To generate definitions for the Demo environment run the below from the project root folder
+
+```shell
+./bin/build-definitions-demo.sh
+```
+
+
 
 ### Preview environment
 
