@@ -111,6 +111,9 @@ module.exports = {
             respondent1DQHearingSupport: {
               supportRequirements: 'Yes',
               supportRequirementsAdditional: 'Additional support reasons'
+            },
+            respondent1DQHearing: {
+              unavailableDatesRequired: 'No'
             }
           },
           VulnerabilityQuestions: {
@@ -123,9 +126,6 @@ module.exports = {
             uiStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
-            },
-            respondent1DQHearing: {
-              unavailableDatesRequired: 'No'
             }
           }
         };
