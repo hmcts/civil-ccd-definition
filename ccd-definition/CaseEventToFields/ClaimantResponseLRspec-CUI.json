@@ -994,6 +994,7 @@
     "DisplayContext": "READONLY",
     "PageID": "StatementOfTruth",
     "PageLabel": "",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\""
   }
 ]

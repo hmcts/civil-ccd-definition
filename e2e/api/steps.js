@@ -210,7 +210,7 @@ const midEventFieldForPage = {
     id: 'applicantSolicitor1ClaimStatementOfTruth',
     dynamicList: false,
     uiField: {
-      remove: false,
+      remove: true,
       field: 'uiStatementOfTruth'
     },
   }
@@ -1807,7 +1807,7 @@ const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
   const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
     // this property won't be here until civil service is merged
-    if (populatedCaseField !== 'uiStatementOfTruth') {
+    if (populatedCaseField !== 'applicant1DQRemoteHearing') {
       assert.property(returnedCaseData, populatedCaseField);
     }
   }
@@ -2029,7 +2029,6 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1Experts'];
     delete responseBody.data['respondent1Witnesses'];
     delete responseBody.data['respondent1DetailsForClaimDetailsTab'];
-    delete responseBody.data['respondent1DQStatementOfTruth'];
   } else {
     delete responseBody.data['respondent2'];
   }
