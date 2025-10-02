@@ -67,9 +67,6 @@ module.exports = {
             respondent1DQRemoteHearingLRspec: {
               remoteHearingRequested: 'Yes',
               reasonForRemoteHearing: 'Some reason'
-            },
-            respondent1DQHearing: {
-              unavailableDatesRequired: 'No'
             }
           },
           HearingSupport: {
@@ -90,6 +87,9 @@ module.exports = {
             uiStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
+            },
+            respondent1DQHearing: {
+              unavailableDatesRequired: 'No'
             }
           }
         };
