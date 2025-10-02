@@ -8,6 +8,7 @@ em-stitching:
 civil-general-applications:
   enabled: false
 civil-service:
+  imagePullPolicy: Always
   java:
     ingressHost: ${SERVICE_NAME}.aat.platform.hmcts.net
     environment:
