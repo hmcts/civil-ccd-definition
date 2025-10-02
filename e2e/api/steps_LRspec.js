@@ -510,7 +510,7 @@ const midEventFieldForPage = {
     id: 'applicantSolicitor1ClaimStatementOfTruth',
     dynamicList: false,
     uiField: {
-      remove: false,
+      remove: true,
       field: 'uiStatementOfTruth'
     },
   }
@@ -2240,9 +2240,7 @@ const deleteCaseFields = (...caseFields) => {
 
 const assertContainsPopulatedFields = returnedCaseData => {
   for (let populatedCaseField of Object.keys(caseData)) {
-    if (populatedCaseField !== 'uiStatementOfTruth') {
-      assert.property(returnedCaseData,  populatedCaseField);
-    }
+    assert.property(returnedCaseData,  populatedCaseField);
   }
 };
 
