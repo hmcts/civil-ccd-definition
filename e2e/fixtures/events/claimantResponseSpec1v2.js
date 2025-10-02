@@ -196,6 +196,10 @@ module.exports = {
             sameSolicitorSameResponse: 'Yes',
             respondent2SameLegalRepresentative: 'Yes',
             respondentResponseIsSame: 'Yes',
+            respondent1DQStatementOfTruth: {
+              name: 'Test',
+              role: 'Worker'
+            },
             businessProcess: {
               status: 'FINISHED',
               camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
