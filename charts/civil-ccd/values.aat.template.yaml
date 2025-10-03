@@ -9,6 +9,7 @@ civil-general-applications:
   enabled: false
 civil-service:
   java:
+    imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.aat.platform.hmcts.net
     environment:
       LAUNCH_DARKLY_ENV: ccd-staging
