@@ -1416,7 +1416,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "fullAdmitNoPaymentProcessed",
+    "ID": "fullAdmitNoPaymentSchedulerProcessed",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",

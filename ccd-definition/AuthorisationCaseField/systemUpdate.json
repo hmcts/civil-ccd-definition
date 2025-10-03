@@ -715,7 +715,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "fullAdmitNoPaymentProcessed",
+    "CaseFieldID": "fullAdmitNoPaymentSchedulerProcessed",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

@@ -10891,7 +10891,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "fullAdmitNoPaymentProcessed",
+    "CaseFieldID": "fullAdmitNoPaymentSchedulerProcessed",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   }
