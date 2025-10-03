@@ -9,6 +9,7 @@ civil-general-applications:
   enabled: false
 civil-service:
   java:
+    imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.aat.platform.hmcts.net
     environment:
       LAUNCH_DARKLY_ENV: ccd-staging
@@ -34,6 +35,7 @@ ccd:
       ingressHost: civil-ccd-gateway-staging-aat.aat.platform.hmcts.net
   ccd-data-store-api:
     java:
+      image: hmctspublic.azurecr.io/ccd/data-store-api:prod-8d7d4a8-20250918185030
       ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
       environment:
         DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
