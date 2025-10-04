@@ -36,6 +36,7 @@ module.exports = {
       repaymentDue: '1702.00',
       paymentTypeSelection : 'IMMEDIATELY'
     },
+    defaultJudgementOverallTotal: 1702,
     paymentSetDate: {
     },
     repaymentInformation: {

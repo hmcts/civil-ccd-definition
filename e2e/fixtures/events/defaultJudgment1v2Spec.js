@@ -39,6 +39,7 @@ module.exports = {
     paymentConfirmationSpec: {
       repaymentSummaryObject: 'The judgment will order the defendants to pay £1702.00, including the claim fee and interest, if applicable, as shown:\n### Claim amount \n £1500.00\n ### Fixed cost amount \n£122.00\n### Claim fee amount \n £80.00\n ## Subtotal \n £1702.00\n\n ## Total still owed \n £1702.00'
     },
+    defaultJudgementOverallTotal: 1702,
     paymentType: {
       currentDatebox: '25 August 2022',
       repaymentDue: '1702.00',
