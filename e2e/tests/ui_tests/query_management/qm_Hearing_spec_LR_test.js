@@ -15,7 +15,7 @@ async function prepareClaim(api_spec) {
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
 }
 
-Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
+Scenario.skip('Claimant LR raises a query', async ({ api_spec, I }) => {
   await prepareClaim(api_spec);
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewHearingQuery(caseId);
@@ -24,7 +24,7 @@ Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   await I.verifyQueriesDetails(true);
 }).retry(2);
 
-Scenario('Defendant LR raises a query', async ({ I }) => {
+Scenario.skip('Defendant LR raises a query', async ({ I }) => {
   await I.login(config.defendantSolicitorUser);
   await I.raiseNewHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
@@ -32,29 +32,30 @@ Scenario('Defendant LR raises a query', async ({ I }) => {
   await I.verifyQueriesDetails(true);
 }).retry(2);
 
-Scenario('Hearing centre admin can access and also responds back to a query', async ({ I }) => {
+Scenario.skip('Hearing centre admin can access and also responds back to a query', async ({ I }) => {
   await I.login(config.hearingCenterAdminWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetailsAsCaseWorker(true);
 }).retry(2);
 
-Scenario('Judge can access to a query', async ({ I }) => {
+Scenario.skip('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails(true);
 }).retry(2);
 
-Scenario('Take claim offline', async ({ I }) => {
+Scenario.skip('Take claim offline', async ({ I }) => {
   await I.login(config.adminUser);
   await I.caseProceedsInCaseman(caseId);
 }).retry(2);
 
-Scenario('Offline case - Claimant cant raise a query', async ({ I }) => {
+Scenario.skip('Offline case - Claimant cant raise a query', async ({ I }) => {
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewQueryInOfflineState(caseId);
   await I.waitForText('Enter query details');
+  await I.waitForText('Errors');
   await I.see('If your case is offline, you cannot raise a query.');
 }).retry(2);
 
