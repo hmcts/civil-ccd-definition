@@ -6,7 +6,7 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
-const {waitForFinishedBusinessProcess, checkFastTrackUpliftsEnabled} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
@@ -174,11 +174,6 @@ module.exports = {
 
     let sdoData = eventData['sdoTracks'][response];
 
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    if (!fastTrackUpliftsEnabled) {
-      removeFastTrackAllocationFromSdoData(sdoData);
-    }
-
     for (let pageId of Object.keys(sdoData.valid)) {
       await assertValidData(sdoData, pageId);
     }
@@ -223,11 +218,6 @@ module.exports = {
 
     let defendantResponseData = eventData['defendantResponses'][scenario][response];
 
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    if (!fastTrackUpliftsEnabled) {
-      removeFixedRecoveryCostFieldsFromSpecClaimantResponseData(defendantResponseData);
-    }
-
     caseData = returnedCaseData;
 
     caseData = await addFlagsToFixture(caseData);
@@ -266,16 +256,10 @@ module.exports = {
 
     await apiRequest.setupTokens(user);
 
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     caseData = await addFlagsToFixture(caseData);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
-
-    if (!fastTrackUpliftsEnabled) {
-      removeFixedRecoveryCostFieldsFromSpecClaimantResponseData(claimantResponseData);
-    }
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);

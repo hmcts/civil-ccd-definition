@@ -44,10 +44,6 @@ const checkManageContactInformationEnabled = async () => {
   return checkFlagEnabled('update-contact-details');
 };
 
-const checkFastTrackUpliftsEnabled = async () => {
-  return checkFlagEnabled('fast-track-uplifts');
-};
-
 const checkMintiToggleEnabled = async () => {
   return checkFlagEnabled('minti');
 };
@@ -269,7 +265,6 @@ module.exports =  {
   },
   checkHmcEnabled,
   checkCaseFlagsEnabled,
-  checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
   checkMintiToggleEnabled
 };
