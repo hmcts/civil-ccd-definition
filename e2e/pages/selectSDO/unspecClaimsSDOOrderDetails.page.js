@@ -1,5 +1,4 @@
 const {I} = inject();
-const {checkFastTrackUpliftsEnabled} = require('./../../api/testingSupport');
 
 const date = require('../../fragments/date');
 
@@ -88,17 +87,14 @@ module.exports = {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingBundleTypeDocs);
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
-      let fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-      if (fastTrackUpliftsEnabled) {
-        await within(this.fields.fastTrackAllocation.assignComplexityBand.id, () => {
-          I.click(this.fields.fastTrackAllocation.assignComplexityBand.options.yes);
-        });
-        await within(this.fields.fastTrackAllocation.band.id, () => {
-          I.click(`${this.fields.fastTrackAllocation.band.id}-${this.fields.fastTrackAllocation.band.options.band1}`);
-        });
+      await within(this.fields.fastTrackAllocation.assignComplexityBand.id, () => {
+        I.click(this.fields.fastTrackAllocation.assignComplexityBand.options.yes);
+      });
+      await within(this.fields.fastTrackAllocation.band.id, () => {
+        I.click(`${this.fields.fastTrackAllocation.band.id}-${this.fields.fastTrackAllocation.band.options.band1}`);
+      });
 
-        I.fillField(this.fields.fastTrackAllocation.reasons, 'A very good reason');
-      }
+      I.fillField(this.fields.fastTrackAllocation.reasons, 'A very good reason');
       // CIV-13068 temporarily disabling check (need to add new fields)
       // await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
       // await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
