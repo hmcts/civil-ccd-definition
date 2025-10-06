@@ -26,7 +26,7 @@ const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled,
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled,
   checkMintiToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -729,11 +729,6 @@ module.exports = {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor](allocatedTrack);
     }
 
-    //Todo: Remove after fast track uplifts release
-    if(!await checkFastTrackUpliftsEnabled()) {
-      removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData(defendantResponseData);
-    }
-
     //Todo: Remove after caseflags release
     await removeFlagsFieldsFromFixture(defendantResponseData);
 
@@ -1081,11 +1076,6 @@ module.exports = {
       disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
       delete disposalData.calculated.FastTrack.fastTrackCreditHire;
       disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
-    }
-
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    if (!fastTrackUpliftsEnabled) {
-      removeFastTrackAllocationFromSdoData(disposalData);
     }
 
     for (let pageId of Object.keys(disposalData.valid)) {
