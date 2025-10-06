@@ -209,7 +209,7 @@ const midEventFieldForPage = {
     id: 'applicantSolicitor1ClaimStatementOfTruth',
     dynamicList: false,
     uiField: {
-      remove: true,
+      remove: false,
       field: 'uiStatementOfTruth'
     },
   }
@@ -1029,7 +1029,7 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     // will be assigned on about to submit, based on judges decision
-    // delete caseData['allocatedTrack'];
+    delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
     delete caseData['smallClaimsFlightDelay'];
     delete caseData['smallClaimsFlightDelayToggle'];
@@ -1528,7 +1528,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     eventName,
     pageId,
     caseData,
-    caseId,
+    addCaseId(pageId) ? caseId : null
   );
   if(pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims') {
     delete caseData.isSdoR2NewScreen;
@@ -1541,12 +1541,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   } 
   if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
-  }  
-  if(eventName === 'DEFENDANT_RESPONSE' || eventName === 'ACKNOWLEDGE_CLAIM') {
-    delete responseBody.data['systemGeneratedCaseDocuments'];
-  }
-  if(eventName === 'ACKNOWLEDGE_CLAIM' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
-    delete responseBody.data['respondentSolicitor2Reference'];
   }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
@@ -1771,7 +1765,7 @@ const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
   const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
     // this property won't be here until civil service is merged
-    if (populatedCaseField !== 'applicant1DQRemoteHearing') {
+    if (populatedCaseField !== 'uiStatementOfTruth') {
       assert.property(returnedCaseData, populatedCaseField);
     }
   }
@@ -1993,6 +1987,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1Experts'];
     delete responseBody.data['respondent1Witnesses'];
     delete responseBody.data['respondent1DetailsForClaimDetailsTab'];
+    delete responseBody.data['respondent1DQStatementOfTruth'];
   } else {
     delete responseBody.data['respondent2'];
   }
@@ -2149,7 +2144,7 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 };
 
 const adjustDataForSolicitor = (user, data) => {
-  let fixtureClone = cloneDeep(data);
+   let fixtureClone = cloneDeep(data);
   if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
     delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
   }

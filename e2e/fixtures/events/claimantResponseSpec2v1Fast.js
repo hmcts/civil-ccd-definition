@@ -137,6 +137,19 @@ module.exports = {
             respondent1DQHearing: {
               hearingLength: 'ONE_DAY'
             },
+            respondent1DQStatementOfTruth: {
+              name: 'Test',
+              role: 'Worker'
+            },
+            respondent1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'No',
+              reactionProtocolCompliedWith: 'No',
+              reactionProtocolNotCompliedWithReason: 'reason'
+            },
+            respondent1DQExperts: {
+              expertRequired: 'Yes'
+            },
             businessProcess: {
               status: 'FINISHED',
               camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
