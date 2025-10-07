@@ -47,6 +47,7 @@ AfterSuite(async ({api_spec_small}) => {
 Feature('Settle this Claim - Reason for settlement - Consent order - 2v1 - spec @e2e-nightly-prod');
 
 Scenario('2v1 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
+  await prepareClaimSpec2v1(api_spec_small);
   caseNumber = await api_spec_small.getCaseId();
   await LRspec.setCaseId(caseNumber);
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
