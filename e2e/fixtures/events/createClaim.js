@@ -443,16 +443,16 @@ module.exports = {
   },
 
   createClaimLitigantInPerson: {
-    valid: createClaimData(false,'No', true, 'ONE_V_ONE')
+    valid: createClaimData('No', true, 'ONE_V_ONE')
   },
   createClaimLRLIP: {
-    valid: createClaimData(false,'Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
+    valid: createClaimData('Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
   },
   createClaimLIPLIP: {
-    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS', '11000')
+    valid: createClaimData('No', true, 'ONE_V_TWO_LIPS', '11000')
   },
   createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData(true,'Yes', false)
+    valid: createClaimData('Yes', false)
   },
   createClaimRespondentSolFirmNotInMyHmcts: {
     valid: {
