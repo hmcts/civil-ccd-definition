@@ -58,7 +58,8 @@ Scenario('Judge perform direction order @wa-task', async ({I, api, WA}) => {
 }).retry(2);
 
 Scenario('Hearing schedule @wa-task', async ({I, api, WA}) => {
-  if (config.runWAApiTest) {
+  //Permission fields in task details are different in AAT and Demo.
+  if (config.runWAApiTest && ['aat'].includes(config.runningEnv)) {
     const scheduleAHearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
     console.log('Schedule a hearing task...' , scheduleAHearingTask);
     WA.validateTaskInfo(scheduleAHearingTask, validScheduleAHearingTask);
