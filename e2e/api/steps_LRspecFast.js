@@ -13,7 +13,6 @@ const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
-const {PBAv3} = require('../fixtures/featureKeys');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
@@ -30,7 +29,7 @@ let caseId, eventName;
 let caseData = {};
 
 const data = {
-  CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
+  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent, true),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Fast.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2_HMC: (response, camundaEvent, hmcTest) => require('../fixtures/events/defendantResponseSpec1v2Fast.js').respondToClaim(response, camundaEvent, hmcTest),
@@ -125,8 +124,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+    createClaimData = data.CREATE_CLAIM(scenario);
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -139,13 +137,11 @@ module.exports = {
 
 
     await waitForFinishedBusinessProcess(caseId);
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+    claimData.serviceUpdateDto(caseId, 'paid'));
+    console.log('Service request update sent to callback URL');
+    
 
     await waitForFinishedBusinessProcess(caseId);
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
@@ -190,9 +186,8 @@ module.exports = {
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
 
-    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE(pbaV3 ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT':'CREATE_CLAIM_SPEC');
+    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE('CREATE_CLAIM_SPEC_AFTER_PAYMENT');
     informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
@@ -212,11 +207,9 @@ module.exports = {
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', hmctest = false) => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
-
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    if(pbaV3){
-      response = response+'_PBAv3';
-    }
+    
+    response = response+'_PBAv3';
+    
     if (hmctest) {
       response = response + '_HMC_TEST';
     }
