@@ -20,7 +20,7 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
   });
 
-  test('Default Judgment', async ({
+  test('Default Judgment @debug', async ({
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
