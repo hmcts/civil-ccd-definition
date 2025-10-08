@@ -35,7 +35,7 @@ Scenario('2v1 spec Reason for settlement - judges order', async ({api_spec_small
 }).retry(2);
 
 Scenario('Reason for settlement - judges order', async ({LRspec}) => {
-  await LRspec.login(config.hearingCenterAdminWithRegionId1);
+  await LRspec.login(config.hearingCenterAdminWithRegionId2);
   await LRspec.requestSettleThisClaimJudgesOrderForUI();
 }).retry(2);
 
