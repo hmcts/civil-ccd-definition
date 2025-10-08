@@ -44,7 +44,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Settle this Claim - Reason for settlement - Consent order - 2v1 - spec @e2e-nightly-prod');
+Feature('Settle this Claim - Reason for settlement - Consent order - 2v1 - spec @e2e-nightly-prod @debug');
 
 Scenario('2v1 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
   await prepareClaimSpec2v1(api_spec_small);
@@ -54,11 +54,11 @@ Scenario('2v1 spec Reason for settlement - Consent order', async ({api_spec_smal
 }).retry(2);
 
 Scenario('Reason for settlement - Consent order', async ({LRspec}) => {
-  await LRspec.login(config.hearingCenterAdminWithRegionId1);
+  await LRspec.login(config.hearingCenterAdminWithRegionId2);
   await LRspec.requestSettleThisClaimConsentOrderForUI();
 }).retry(2);
 
-AfterSuite(async ({api_spec_small}) => {
-  await api_spec_small.cleanUp();
-  await unAssignAllUsers();
-});
+// AfterSuite(async ({api_spec_small}) => {
+//   await api_spec_small.cleanUp();
+//   await unAssignAllUsers();
+// });

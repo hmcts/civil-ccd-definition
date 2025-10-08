@@ -4,7 +4,6 @@ const config = require('../../../config.js');
 let caseId, taskId, hearingDateIsLessThan3Weeks, validSummaryJudgmentDirectionsTask, validScheduleAHearingTask;
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const { checkToggleEnabled } = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
 const judgeUserToBeUsed = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
@@ -101,12 +100,9 @@ async function performConfirmTrialReadiness(I, user = config.applicantSolicitorU
 
 async function payHearingFee(I, user = config.applicantSolicitorUser) {
   await I.login(user);
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  if (pbaV3) {
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId, true);
-  }
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await serviceRequest.openServiceRequestTab();
+  await serviceRequest.payFee(caseId, true);
 }
 
 //DTSCCI-358
