@@ -162,6 +162,9 @@ withNightlyPipeline(type, product, component) {
   env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
   env.CCD_UI_TESTS = true
   env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
+  overrideVaultEnvironments([
+    'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
+  ])
   loadVaultSecrets(secrets)
 
   boolean playwrightSetupPassed = true
