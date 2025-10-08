@@ -75,7 +75,7 @@ let claimantCourt = config.claimantSelectedCourt;
 const useHmcEaCourt = config.claimantSelectedCourtHmc;
 const useClaimantSelectedCourt = config.claimantSelectedCourt;
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', hmcTest) => {
+const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', hmcTest) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   claimantCourt = hmcTest ? useHmcEaCourt : useClaimantSelectedCourt;
 
@@ -210,9 +210,7 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
       },
       claimFee: getClaimFee(claimAmount),
-      ...isPBAv3(pbaV3) ? {
-        paymentTypePBA: 'PBAv3'
-      } : {},
+      paymentTypePBA: 'PBAv3',
     },
     PbaNumber: {
       applicantSolicitor1PbaAccounts: {
@@ -375,13 +373,8 @@ const hasRespondent2 = (mpScenario) => {
     || mpScenario ===  'ONE_V_TWO_LIPS';
 };
 
-const isPBAv3 = (pbaV3) => {
-  console.log( 'Pba value in create claim' + pbaV3);
-  return pbaV3;
-};
-
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, isMintiEnabled) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, isMintiEnabled) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -400,9 +393,7 @@ module.exports = {
           ...hasRespondent2(mpScenario) ? {
             respondent2: respondent2WithPartyName
           } : {},
-          ...isPBAv3(pbaV3) ? {
-            paymentTypePBA: 'PBAv3'
-          } : {},
+          paymentTypePBA: 'PBAv3',
         },
         ClaimantLitigationFriend: {
           applicant1: applicant1WithPartyName,
@@ -417,7 +408,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, isMintiEnabled),
+        ...createClaimData('Yes', true, mpScenario, claimAmount, isMintiEnabled),
       },
       invalid: {
         Upload: {
@@ -452,16 +443,16 @@ module.exports = {
   },
 
   createClaimLitigantInPerson: {
-    valid: createClaimData(false,'No', true, 'ONE_V_ONE')
+    valid: createClaimData('No', true, 'ONE_V_ONE')
   },
   createClaimLRLIP: {
-    valid: createClaimData(false,'Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
+    valid: createClaimData('Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
   },
   createClaimLIPLIP: {
-    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS', '11000')
+    valid: createClaimData('No', true, 'ONE_V_TWO_LIPS', '11000')
   },
   createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData(true,'Yes', false)
+    valid: createClaimData('Yes', false)
   },
   createClaimRespondentSolFirmNotInMyHmcts: {
     valid: {
