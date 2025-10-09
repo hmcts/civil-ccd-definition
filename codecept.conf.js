@@ -76,6 +76,7 @@ exports.config = {
   },
   tests: getTests(),
   output: process.env.REPORT_DIR || 'test-results/functional',
+
   helpers: {
     Playwright: {
       url: process.env.URL || 'http://localhost:3333',

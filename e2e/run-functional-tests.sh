@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 export CCD_UI_TESTS=true
 

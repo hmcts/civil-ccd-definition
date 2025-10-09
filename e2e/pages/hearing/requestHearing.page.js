@@ -53,7 +53,6 @@ module.exports = {
   async selectParticipantAttendance() {
     await I.waitForText('Participant attendance');
     await I.waitForElement(this.fields.selectAttendanceType);
-    await I.click(this.fields.selectAttendanceType);
     let noOfIndividuals = await I.grabNumberOfVisibleElements('.party-row');
 
     for (let i=0; i<noOfIndividuals; i++) {

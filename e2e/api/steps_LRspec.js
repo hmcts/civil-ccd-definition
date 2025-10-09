@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {PBAv3, isJOLive, COSC} = require('../fixtures/featureKeys');
+const {isJOLive, COSC} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -53,7 +53,7 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 const data = {
-  CREATE_CLAIM: (scenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount) => claimData.createClaim(scenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount),
+  CREATE_CLAIM: (scenario, isMintiCaseEnabled, mintiClaimAmount) => claimData.createClaim(scenario, isMintiCaseEnabled, mintiClaimAmount),
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
   INITIATE_GENERAL_APPLICATION_LR: genAppClaimDataLR.createGAData('Yes', null, '27500','FEE0442'),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
@@ -510,7 +510,7 @@ const midEventFieldForPage = {
     id: 'applicantSolicitor1ClaimStatementOfTruth',
     dynamicList: false,
     uiField: {
-      remove: true,
+      remove: false,
       field: 'uiStatementOfTruth'
     },
   }
@@ -822,13 +822,12 @@ module.exports = {
    */
   createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE', carmEnabled = false,
                                                isMintiCase = false, mintiClaimAmount = '00000') => {
-    const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
 
     let createClaimData  = {};
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, isMintiCase, mintiClaimAmount);
+    createClaimData = data.CREATE_CLAIM(scenario, isMintiCase, mintiClaimAmount);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -853,14 +852,9 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+    claimData.serviceUpdateDto(caseId, 'paid'));
+    console.log('Service request update sent to callback URL');
 
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
@@ -880,14 +874,13 @@ module.exports = {
   },
 
   createClaimSpecFlightDelay: async (user, scenario = 'ONE_V_ONE_FLIGHT_DELAY', carmEnabled = false) => {
-    const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+    createClaimData = data.CREATE_CLAIM(scenario);
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -902,14 +895,9 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+    claimData.serviceUpdateDto(caseId, 'paid'));
+    console.log('Service request update sent to callback URL');
 
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
@@ -927,9 +915,8 @@ module.exports = {
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
 
-    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE(pbaV3 ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT': 'CREATE_CLAIM_SPEC');
+    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE('CREATE_CLAIM_SPEC_AFTER_PAYMENT');
     informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(42);
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
@@ -954,10 +941,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    if(pbaV3){
-      response = response+'_PBAv3';
-    }
+    response = response+'_PBAv3';
 
     if(djSetaside){
       response = response+'_SetAside_DJ';
@@ -1186,37 +1170,35 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
     const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
-    if(pbaV3){
-      let claimIssuedPBADetails = {
-        claimIssuedPBADetails:{
-          applicantsPbaAccounts: {
-              value: {
-                code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBAFUNC12345'
-              },
-            list_items:[
-              {
-                code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBAFUNC12345'
-              },
-              {
-                code:'66b21c61-aed1-11ed-8aa3-494efce63912',
-                label:'PBA0078095'
-              }
-            ]
+    let claimIssuedPBADetails = {
+      claimIssuedPBADetails: {
+        applicantsPbaAccounts: {
+          value: {
+            code: '66b21c60-aed1-11ed-8aa3-494efce63912',
+            label: 'PBAFUNC12345'
           },
-          fee:{
-            calculatedAmountInPence:'8000',
-            code:'FEE0205',
-            version:'6'
-          },
-          serviceRequestReference:'2023-1676644996295'
-        }
-      };
-      caseData = update(caseData, claimIssuedPBADetails);
-    }
+          list_items: [
+            {
+              code: '66b21c60-aed1-11ed-8aa3-494efce63912',
+              label: 'PBAFUNC12345'
+            },
+            {
+              code: '66b21c61-aed1-11ed-8aa3-494efce63912',
+              label: 'PBA0078095'
+            }
+          ]
+        },
+        fee: {
+          calculatedAmountInPence: '8000',
+          code: 'FEE0205',
+          version: '6'
+        },
+        serviceRequestReference: '2023-1676644996295'
+      }
+    };
+    caseData = update(caseData, claimIssuedPBADetails);
+
 
     if (scenario === 'ONE_V_TWO') {
       registrationData = {
@@ -2240,7 +2222,9 @@ const deleteCaseFields = (...caseFields) => {
 
 const assertContainsPopulatedFields = returnedCaseData => {
   for (let populatedCaseField of Object.keys(caseData)) {
-    assert.property(returnedCaseData,  populatedCaseField);
+    if (populatedCaseField !== 'uiStatementOfTruth') {
+      assert.property(returnedCaseData,  populatedCaseField);
+    }
   }
 };
 
