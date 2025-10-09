@@ -69,7 +69,7 @@ const triggerCaseworkerEvent = async (caseId, event, queryPayloadCallback) => {
 };
 
 const triggerCitizenEvent = async (caseId, event, queryPayloadCallback) => {
-    const caseData = (await apiRequest.fetchCaseDetailsAsSystemUser(caseId)).case_data;
+    const caseData = (await apiRequest.fetchCaseDetails(config.ctscAdminUser, caseId)).case_data;
     const payload = queryPayloadCallback(caseData);
     return apiRequest.startEventForCitizen(event, caseId, {event, caseDataUpdate: payload});
 };
