@@ -10,6 +10,6 @@ export default class SubmitDefaultJudgmentPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() => super.expectNoText('Check your answers', { timeout: 3000 }));
   }
 }
