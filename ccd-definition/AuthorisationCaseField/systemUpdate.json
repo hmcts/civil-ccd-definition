@@ -717,6 +717,6 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "cvpLinkSchedulerProcessed",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   }
 ]
