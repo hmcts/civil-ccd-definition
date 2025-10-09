@@ -1416,6 +1416,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fullAdmitNoPaymentSchedulerProcessed",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Is ${respondent1.partyName} in employment?</h2>",
     "FieldType": "Label",
