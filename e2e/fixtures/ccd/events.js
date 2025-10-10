@@ -65,6 +65,18 @@ module.exports = {
     description: 'Discontinue a claim',
     order: 11
   },
+  SET_ASIDE_JUDGMENT: {
+    id: 'SET_ASIDE_JUDGMENT',
+    name: 'Set aside judgment',
+    description: 'Set aside judgment',
+    order: 1
+  },
+  REFER_JUDGE_DEFENCE_RECEIVED: {
+    id: 'REFER_JUDGE_DEFENCE_RECEIVED',
+    name: 'Refer to judge-defended claim',
+    description: 'Refer to judge-defended claim',
+    order: 1
+  },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',

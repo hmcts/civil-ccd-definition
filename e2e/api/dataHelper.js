@@ -80,6 +80,19 @@ module.exports = {
     }
     return newDate;
   },
+  decrementDate: (date = new Date(), dayDecrement, monthDecrement, yearDecrement) => {
+    const newDate = new Date(date);
+    if(dayDecrement) {
+      newDate.setDate(newDate.getDate() - dayDecrement);
+    }
+    if(monthDecrement) {
+      newDate.setMonth(newDate.getMonth() - monthDecrement);
+    }
+    if(yearDecrement) {
+      newDate.setYear(newDate.getFullYear() - yearDecrement);
+    }
+    return newDate;
+  },
   appendTime: (date = new Date(), hours, minutes) => {
     const newDate = new Date(date);
     newDate.setHours(hours ? hours : date.getHours());

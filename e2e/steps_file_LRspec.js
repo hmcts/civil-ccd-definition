@@ -110,8 +110,13 @@ const requestForDecision = require('./pages/decisionOnReconsideration/decisionOn
 const mediationContactInformationPage = require('./pages/respondToClaimLRspec/mediationContactInformation.page.js');
 const mediationAvailabilityPage = require('./pages/respondToClaimLRspec/mediationAvailability.page.js');
 const determinationWithoutHearingPage = require('./pages/respondToClaimLRspec/determinationWithoutHearing.page.js');
-const events = require('./fixtures/ccd/events.js');
+const referJudgeDefenceReceivedPage = require('./pages/referJudgeDefenceReceived/referJudgeDefenceReceived.page.js');
+const finalOrderSelectPage = require('./pages/generateDirectionsOrder/finalOrderSelect.page.js');
+const freeFormOrderPage = require('./pages/generateDirectionsOrder/freeFormOrder.page.js');
+const setAsideJudgmentPage = require('./pages/setAsideJudgment/setAsideJudgment.page.js');
+const setAsideOrderTypePage = require('./pages/setAsideJudgment/setAsideOrderType.page.js');
 
+const events = require('./fixtures/ccd/events.js');
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
@@ -559,7 +564,7 @@ module.exports = function () {
     },
 
     async respondToClaimPartAdmit({twoDefendants = false, defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan', twoClaimants = false}) {
-      eventName = events.DEFENDANT_RESPONSE_SPEC.name;      
+      eventName = events.DEFENDANT_RESPONSE_SPEC.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.DEFENDANT_RESPONSE_SPEC, caseId),
         () => respondentCheckListPage.claimTimelineTemplate(),
@@ -767,7 +772,7 @@ module.exports = function () {
     },
 
     async createCaseFlags(caseFlags) {
-      eventName = events.CREATE_CASE_FLAGS.name; 
+      eventName = events.CREATE_CASE_FLAGS.name;
       for (const {partyName, roleOnCase, details} of caseFlags) {
         for (const {name, flagComment} of details) {
           await this.triggerStepsWithScreenshot([
@@ -929,6 +934,64 @@ module.exports = function () {
         () => this.click('Close and Return to case details'),
         () => this.waitForText('Sign out'),
         () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestSetAsideJudgmentFollowingApplication() {
+      eventName = events.SET_ASIDE_JUDGMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.SET_ASIDE_JUDGMENT, caseId),
+        () => setAsideJudgmentPage.selectJudgeOrder(),
+        () => setAsideOrderTypePage.orderAfterApplication(),
+        () => event.submit('Submit', 'Judgment set aside'),
+        () => event.returnToCaseDetails(),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestSetAsideJudgmentFollowingDefenceReceived() {
+      eventName = events.SET_ASIDE_JUDGMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.SET_ASIDE_JUDGMENT, caseId),
+        () => setAsideJudgmentPage.selectJudgeOrder(),
+        () => setAsideOrderTypePage.orderAfterDefence(),
+        () => event.submit('Submit', 'Judgment set aside'),
+        () => event.returnToCaseDetails(),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestSetAsideJudgmentMadeInError() {
+      eventName = events.SET_ASIDE_JUDGMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.SET_ASIDE_JUDGMENT, caseId),
+        () => setAsideJudgmentPage.selectJudgmentError(),
+        () => event.submit('Submit', 'Judgment set aside'),
+        () => event.returnToCaseDetails(),
+      ]);
+      await this.takeScreenshot();
+    },
+    async requestReferToJudgeDefendedClaim() {
+      eventName = events.REFER_JUDGE_DEFENCE_RECEIVED.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.REFER_JUDGE_DEFENCE_RECEIVED, caseId),
+        () => referJudgeDefenceReceivedPage.selectConfirm(),
+        () => event.submit('Submit', 'The case has been referred to a judge for a decision'),
+        () => event.returnToCaseDetails()
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async generateDirectionsOrder() {
+      eventName = events.GENERATE_DIRECTIONS_ORDER.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.GENERATE_DIRECTIONS_ORDER, caseId),
+        () => finalOrderSelectPage.selectFreeFormOrder(),
+        () => freeFormOrderPage.enterOrderDetails(),
+        () => this.clickContinue(),
+        () => event.submit('Submit', 'Your order has been issued'),
+        () => event.returnToCaseDetails()
       ]);
       await this.takeScreenshot();
     },

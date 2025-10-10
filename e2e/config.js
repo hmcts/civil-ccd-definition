@@ -344,6 +344,8 @@ module.exports = {
     transferCaseOffline: 'Transfer Case Offline',
     validateDiscontinueTask: 'ValidateDiscontinuanceCTSC',
     decisionOnReconsiderationRequestTask: 'JudgeDecideOnReconsiderRequest',
+    orderToSetAsideDefendedClaim: 'OrderToSetAsideDefendedClaim',
+    judgmentOnlineSetAsideTakeCaseOffline: 'JudgmentOnlineSetAsideTakeCaseOffline',
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
