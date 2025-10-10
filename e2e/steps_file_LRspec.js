@@ -972,7 +972,7 @@ module.exports = function () {
       ]);
       await this.takeScreenshot();
     },
-    async requestReferToJudgeDefendedClaimUI() {
+    async requestReferToJudgeDefendedClaim() {
       eventName = events.REFER_JUDGE_DEFENCE_RECEIVED.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.REFER_JUDGE_DEFENCE_RECEIVED, caseId),

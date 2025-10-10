@@ -25,7 +25,7 @@ Scenario('DefaultJudgement', async ({I, api_spec, LRspec}) => {
 
 Scenario('Refer to judge (defence received in time)', async ({LRspec}) => {
   await LRspec.login(config.hearingCenterAdminWithRegionId2);
-  await LRspec.requestReferToJudgeDefendedClaimUI();
+  await LRspec.requestReferToJudgeDefendedClaim();
 }).retry(2);
 
  Scenario('Defence received in time - order that judgment is set aside', async ({LRspec, api, WA}) => {

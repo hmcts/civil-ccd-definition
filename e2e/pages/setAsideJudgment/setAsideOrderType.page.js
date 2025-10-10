@@ -39,10 +39,10 @@ module.exports = {
     await I.click(this.fields.joSetAsideOrderType.options.orderAfterApp);
 
     const applicationAsideDate = dataHelper.decrementDate(new Date(), 0, 1, 0);
-    I.waitForText('Enter the date of the application to set aside');
-    I.fillField(this.fields.joSetAsideApplicationDate.day, String(applicationAsideDate.getDate()).padStart(2,'0'));
-    I.fillField(this.fields.joSetAsideApplicationDate.month, String(applicationAsideDate.getMonth()).padStart(2,'0'));
-    I.fillField(this.fields.joSetAsideApplicationDate.year, String(applicationAsideDate.getFullYear()));
+    await I.waitForText('Enter the date of the application to set aside');
+    await I.fillField(this.fields.joSetAsideApplicationDate.day, String(applicationAsideDate.getDate()).padStart(2,'0'));
+    await I.fillField(this.fields.joSetAsideApplicationDate.month, String(applicationAsideDate.getMonth()).padStart(2,'0'));
+    await I.fillField(this.fields.joSetAsideApplicationDate.year, String(applicationAsideDate.getFullYear()));
 
     await I.clickContinue();
   },
@@ -56,10 +56,10 @@ module.exports = {
     await I.click(this.fields.joSetAsideOrderType.options.orderAfterDef);
 
     const defenceReceivedAsideDate = dataHelper.decrementDate(new Date(), 0, 1, 0);
-    I.waitForText('Enter the date of the defence was received');
-    I.fillField(this.fields.joSetAsideDefenceReceivedDate.day, String(defenceReceivedAsideDate.getDate()).padStart(2,'0'));
-    I.fillField(this.fields.joSetAsideDefenceReceivedDate.month, String(defenceReceivedAsideDate.getMonth()).padStart(2,'0'));
-    I.fillField(this.fields.joSetAsideDefenceReceivedDate.year, String(defenceReceivedAsideDate.getFullYear()));
+    await I.waitForText('Enter the date of the defence was received');
+    await I.fillField(this.fields.joSetAsideDefenceReceivedDate.day, String(defenceReceivedAsideDate.getDate()).padStart(2,'0'));
+    await I.fillField(this.fields.joSetAsideDefenceReceivedDate.month, String(defenceReceivedAsideDate.getMonth()).padStart(2,'0'));
+    await I.fillField(this.fields.joSetAsideDefenceReceivedDate.year, String(defenceReceivedAsideDate.getFullYear()));
 
     await I.clickContinue();
   },

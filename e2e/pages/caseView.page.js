@@ -23,7 +23,6 @@ module.exports = {
     judgeName: '#permissionGrantedComplex_permissionGrantedJudge',
     caseNote: '#caseNote',
     judgeOrder: '#settleReason-JUDGE_ORDER',
-    claimProceedsInCasemanLRReasonJUDGEMENTREQUEST:'#claimProceedsInCasemanLR_reason-JUDGEMENT_REQUEST',
   },
   goButton: '.button[type="submit"]',
 
@@ -41,27 +40,7 @@ module.exports = {
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
     }, EVENT_TRIGGER_LOCATOR, 3, 45);
   },
-
-  async startDefenceRreceivedInTimeOrderThatJudgmentIsSetAsideTasks(caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/tasks`);
-      await I.waitForSelector(
-        '//exui-case-task[.//strong[normalize-space(.)=\'Defence received in time - order that judgment is set aside\']]',
-      );
-      await I.click(
-        '//exui-case-task[.//strong[normalize-space(.)=\'Defence received in time - order that judgment is set aside\']]//dt[normalize-space(.)=\'Manage\']/following-sibling::dd//a[@id=\'action_claim\' or normalize-space(.)=\'Assign to me\']'
-      );
-      await I.waitForSelector(
-        '//exui-case-task[.//strong[normalize-space(.)=\'Defence received in time - order that judgment is set aside\']]',
-      );
-      await I.click(
-        '//exui-case-task[.//strong[normalize-space(.)=\'Defence received in time - order that judgment is set aside\']]//dt[normalize-space(.)=\'Next steps\']/following-sibling::dd//a[normalize-space(.)=\'Make Order\']'
-      );
-
-    }, EVENT_TRIGGER_LOCATOR, 3, 45);
-  },
+  
   async raiseNewQuery(caseId) {
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
@@ -81,11 +60,6 @@ module.exports = {
     await I.runAccessibilityTest();
     I.click(this.fields.judgeOrder);
     await I.clickContinue();
-  },
-  
-  async selectReasonForProceedingOnPaper() {
-    await I.runAccessibilityTest();
-    I.click(this.fields.claimProceedsInCasemanLRReasonJUDGEMENTREQUEST);
   },
 
   async caseNoteForClaimDiscontinuedRemoveHearing() {
