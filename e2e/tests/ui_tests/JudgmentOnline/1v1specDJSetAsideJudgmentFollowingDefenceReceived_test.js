@@ -21,9 +21,9 @@ Scenario('DefaultJudgement', async ({I, api_spec, LRspec}) => {
   await I.initiateDJSpec(caseNumber, 'ONE_V_ONE', 'SPEC');
 }).retry(2);
 
-Scenario('Set A side Judgment - A judgment has been made in error', async ({LRspec}) => {
+Scenario('Set A side Judgment - Order following defence received', async ({LRspec}) => {
   await LRspec.login(config.hearingCenterAdminWithRegionId2);
-  await LRspec.requestSetAsideJudgmentMadeInError();
+  await LRspec.requestSetAsideJudgmentFollowingDefenceReceived();
 }).retry(2);
 
 Scenario('Set Aside - Take Case Offline', async ({LRspec, api, WA}) => {

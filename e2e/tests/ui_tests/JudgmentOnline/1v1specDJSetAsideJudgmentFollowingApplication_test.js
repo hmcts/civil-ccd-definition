@@ -17,13 +17,15 @@ Scenario('DefaultJudgement', async ({I, api_spec, LRspec}) => {
   caseNumber = await api_spec.getCaseId();
   await LRspec.setCaseId(caseNumber);
   await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
+
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJSpec(caseNumber, 'ONE_V_ONE', 'SPEC');
+
 }).retry(2);
 
-Scenario('Set A side Judgment - A judgment has been made in error', async ({LRspec}) => {
+Scenario('Set A side Judgment - Order following an application to set aside', async ({LRspec}) => {
   await LRspec.login(config.hearingCenterAdminWithRegionId2);
-  await LRspec.requestSetAsideJudgmentMadeInError();
+  await LRspec.requestSetAsideJudgmentFollowingApplication();
 }).retry(2);
 
 Scenario('Set Aside - Take Case Offline', async ({LRspec, api, WA}) => {

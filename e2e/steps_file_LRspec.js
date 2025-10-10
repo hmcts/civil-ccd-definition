@@ -110,8 +110,13 @@ const requestForDecision = require('./pages/decisionOnReconsideration/decisionOn
 const mediationContactInformationPage = require('./pages/respondToClaimLRspec/mediationContactInformation.page.js');
 const mediationAvailabilityPage = require('./pages/respondToClaimLRspec/mediationAvailability.page.js');
 const determinationWithoutHearingPage = require('./pages/respondToClaimLRspec/determinationWithoutHearing.page.js');
+const referJudgeDefenceReceivedPage = require('./pages/referJudgeDefenceReceived/referJudgeDefenceReceived.page.js');
+const finalOrderSelectPage = require('./pages/generateDirectionsOrder/finalOrderSelect.page.js');
+const freeFormOrderPage = require('./pages/generateDirectionsOrder/freeFormOrder.page.js');
+const setAsideJudgmentPage = require('./pages/setAsideJudgment/setAsideJudgment.page.js');
+const setAsideOrderTypePage = require('./pages/setAsideJudgment/setAsideOrderType.page.js');
+
 const events = require('./fixtures/ccd/events.js');
-const d = new Date();
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
@@ -933,71 +938,37 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
-    async requestSetAsideJudgmentForUI() {
+    async requestSetAsideJudgmentFollowingApplication() {
       eventName = events.SET_ASIDE_JUDGMENT.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.SET_ASIDE_JUDGMENT, caseId),
-        () => this.waitForText('Set aside judgment'),
-        () => caseViewPage.selectjoSetAsideReasonJudgeOrder(),
-        () => this.fillField('#joSetAsideOrderDate-day',   String(d.getDate()).padStart(2,'0')),
-        () => this.fillField('#joSetAsideOrderDate-month', String(d.getMonth()+1).padStart(2,'0')),
-        () => this.fillField('#joSetAsideOrderDate-year',  String(d.getFullYear())),
-        () => caseViewPage.selectjoSetAsideOrderTypeOrderAfterApplication(),
-        () => this.waitForText('Enter the date of the application to set aside'),
-        () => this.fillField('#joSetAsideApplicationDate-day',   String(d.getDate()).padStart(2,'0')),
-        () => this.fillField('#joSetAsideApplicationDate-month', String(d.getMonth()+1).padStart(2,'0')),
-        () => this.fillField('#joSetAsideApplicationDate-year',  String(d.getFullYear())),
-        () => this.click('Continue'),
-        () => this.waitForText('Set aside judgment'),
-        () => this.click('Submit'),
-        () => this.waitForText('Judgment set aside'),
-        () => this.click('Close and Return to case details'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
-      ]);
-      await this.takeScreenshot();
-    },
-    async requestSetAsideJudgmentForOrderFollowingDefenceReceivedUI() {
-      eventName = events.SET_ASIDE_JUDGMENT.name;
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(events.SET_ASIDE_JUDGMENT, caseId),
-        () => this.waitForText('Set aside judgment'),
-        () => caseViewPage.selectjoSetAsideReasonJudgeOrder(),
-        () => this.fillField('#joSetAsideOrderDate-day',   String(d.getDate()).padStart(2,'0')),
-        () => this.fillField('#joSetAsideOrderDate-month', String(d.getMonth()+1).padStart(2,'0')),
-        () => this.fillField('#joSetAsideOrderDate-year',  String(d.getFullYear())),
-        () => caseViewPage.selectjoSetAsideORDER_AFTER_APPLICATION(),
-        () => this.waitForText('Enter the date of the defence was received'),
-        () => this.fillField('#joSetAsideDefenceReceivedDate-day',   String(d.getDate()).padStart(2,'0')),
-        () => this.fillField('#joSetAsideDefenceReceivedDate-month', String(d.getMonth()+1).padStart(2,'0')),
-        () => this.fillField('#joSetAsideDefenceReceivedDate-year',  String(d.getFullYear())),
-        () => this.click('Continue'),
-        () => this.waitForText('Set aside judgment'),
-        () => this.click('Submit'),
-        () => this.waitForText('Judgment set aside'),
-        () => this.click('Close and Return to case details'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
+        () => setAsideJudgmentPage.selectJudgeOrder(),
+        () => setAsideOrderTypePage.orderAfterApplication(),
+        () => event.submit('Submit', 'Judgment set aside'),
+        () => event.returnToCaseDetails(),
       ]);
       await this.takeScreenshot();
     },
 
-    async requestSetAsideJudgmentAJudgmentHasBeenMadeInErrorUI() {
+    async requestSetAsideJudgmentFollowingDefenceReceived() {
       eventName = events.SET_ASIDE_JUDGMENT.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.SET_ASIDE_JUDGMENT, caseId),
-        () => this.waitForText('Set aside judgment'),
-        () => caseViewPage.selectjoSetAsideReasonMadeInError(),
-        () => this.waitForElement('#joSetAsideJudgmentErrorText', 10),
-        () => this.fillField('#joSetAsideJudgmentErrorText',
-        'Set aside requested as the judgment was made in error. Details ...'),
-        () => this.click('Continue'),
-        () => this.waitForText('Set aside judgment'),
-        () => this.click('Submit'),
-        () => this.waitForText('Judgment set aside'),
-        () => this.click('Close and Return to case details'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
+        () => setAsideJudgmentPage.selectJudgeOrder(),
+        () => setAsideOrderTypePage.orderAfterDefence(),
+        () => event.submit('Submit', 'Judgment set aside'),
+        () => event.returnToCaseDetails(),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestSetAsideJudgmentMadeInError() {
+      eventName = events.SET_ASIDE_JUDGMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.SET_ASIDE_JUDGMENT, caseId),
+        () => setAsideJudgmentPage.selectJudgmentError(),
+        () => event.submit('Submit', 'Judgment set aside'),
+        () => event.returnToCaseDetails(),
       ]);
       await this.takeScreenshot();
     },
@@ -1005,46 +976,26 @@ module.exports = function () {
       eventName = events.REFER_JUDGE_DEFENCE_RECEIVED.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.REFER_JUDGE_DEFENCE_RECEIVED, caseId),
-        () => this.waitForText('Refer to judge-defended claim'),
-        () => this.waitForElement('label[for="confirmReferToJudgeDefenceReceived-CONFIRM"]', 10),
-        () => this.click('label[for="confirmReferToJudgeDefenceReceived-CONFIRM"]'),
-       /** () => this.waitForElement('#joSetAsideJudgmentErrorText', 10),
-        () => this.fillField('#joSetAsideJudgmentErrorText',
-          'Set aside requested as the judgment was made in error. Details ...'),
-        () => this.click('Continue'),
-        () => this.waitForText('Set aside judgment'),*/
-        () => this.click('Submit'),
-        () => this.waitForText('The case has been referred to a judge for a decision'),
-        () => this.click('Close and Return to case details'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
+        () => referJudgeDefenceReceivedPage.selectConfirm(),
+        () => event.submit('Submit', 'The case has been referred to a judge for a decision'),
+        () => event.returnToCaseDetails()
       ]);
       await this.takeScreenshot();
     },
-    async requestSetAsideTakeCaseOffline() {
+
+    async generateDirectionsOrder() {
+      eventName = events.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startSetAsideJudgmentTakeCaseOfflineTasks(caseId),
-        () => this.waitForText('Case proceeds in Caseman'),
-        () => this.fillField('#date-day',   String(d.getDate()).padStart(2,'0')),
-        () => this.fillField('#date-month', String(d.getMonth()+1).padStart(2,'0')),
-        () => this.fillField('#date-year',  String(d.getFullYear())),
-        () => caseViewPage.selectReasonForProceedingOnPaper(),
-        () => this.wait(2),
-        () => this.click('Submit'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
+        () => caseViewPage.startEvent(events.GENERATE_DIRECTIONS_ORDER, caseId),
+        () => finalOrderSelectPage.selectFreeFormOrder(),
+        () => freeFormOrderPage.enterOrderDetails(),
+        () => this.clickContinue(),
+        () => event.submit('Submit', 'Your order has been issued'),
+        () => event.returnToCaseDetails()
       ]);
       await this.takeScreenshot();
     },
-    async requestDefenceReceivedInTimeOrderThatJudgmentIsSetAside() {
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startDefenceRreceivedInTimeOrderThatJudgmentIsSetAsideTasks(caseId),
-        () => this.waitForText('What type of order do you wish to make?'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
-      ]);
-      await this.takeScreenshot();
-    },
+
     async requestSettleThisClaimConsentOrderForUI() {
       eventName = events.SETTLE_CLAIM.name;
       await this.triggerStepsWithScreenshot([
