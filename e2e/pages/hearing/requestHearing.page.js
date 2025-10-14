@@ -5,7 +5,7 @@ module.exports = {
   fields: {
     selectFacilities: '//input[@value="Laptop"]',
     selectHearingStage: '#AAA7-DIS',
-    selectAttendanceType: '//input[@value="In Person"]',
+    selectAttendanceType: '//input[@value="Telephone"]',
     partyChannel: '#partyChannel',
     noOfAttendees: '#attendance-number',
     hearingLocationEle: '//li[contains(@class, "location-selection")]',
@@ -53,6 +53,7 @@ module.exports = {
   async selectParticipantAttendance() {
     await I.waitForText('Participant attendance');
     await I.waitForElement(this.fields.selectAttendanceType);
+    await I.click(this.fields.selectAttendanceType);
     let noOfIndividuals = await I.grabNumberOfVisibleElements('.party-row');
 
     for (let i=0; i<noOfIndividuals; i++) {
