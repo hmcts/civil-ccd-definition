@@ -15,6 +15,7 @@ const ccdPipelineTests = [
       './e2e/tests/ui_tests/minti/*_test.js',
       './e2e/tests/ui_tests/refunds/*_test.js',
       './e2e/tests/ui_tests/default_judgement/*_test.js',
+      './e2e/tests/ui_tests/JudgmentOnline/*_test.js',
       './e2e/tests/ui_tests/hearings/*_test.js',
       './e2e/tests/ui_tests/query_management/*_test.js',
       './e2e/tests/api_tests/lrspec_cui/*_test.js',
