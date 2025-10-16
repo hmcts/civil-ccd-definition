@@ -159,16 +159,6 @@ Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
     await I.evidenceUpload(caseNumber, true);
 }).retry(2);
 
-if(['aat', 'demo'].includes(config.runningEnv)) {
-  Scenario('Create a Hearing Request', async ({I}) => {
-    await I.login(config.hearingCenterAdminWithRegionId1);
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-    await I.requestNewHearing();
-    await I.updateHearing();
-    await I.cancelHearing();
-  }).retry(2);   
-}
-
 Scenario('Transfer online case', async ({I}) => {
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.transferOnlineCase();
