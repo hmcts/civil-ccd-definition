@@ -44,10 +44,6 @@ const checkManageContactInformationEnabled = async () => {
   return checkFlagEnabled('update-contact-details');
 };
 
-const checkFastTrackUpliftsEnabled = async () => {
-  return checkFlagEnabled('fast-track-uplifts');
-};
-
 const checkMintiToggleEnabled = async () => {
   return checkFlagEnabled('minti');
 };
@@ -211,28 +207,6 @@ module.exports =  {
         );
   },
 
-  checkPBAv3IsEnabled: async () => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-    const s2sAuth = await serviceAuthHelper.civilServiceAuth();
-
-    return await restHelper.request(
-      `${config.url.civilService}/testing-support/feature-toggle/pba-version-3-ways-to-pay`,
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
-        'ServiceAuthorization': s2sAuth
-      }, null, 'GET')
-      .then(async response =>  {
-          if (response.status === 200) {
-            const json = await response.json();
-            return json.toggleEnabled;
-          } else {
-            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
-          }
-        }
-      );
-  },
-
   updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
@@ -291,7 +265,6 @@ module.exports =  {
   },
   checkHmcEnabled,
   checkCaseFlagsEnabled,
-  checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
   checkMintiToggleEnabled
 };

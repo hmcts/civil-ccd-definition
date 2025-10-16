@@ -16,7 +16,6 @@ const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrde
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {PBAv3, COSC} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
@@ -26,7 +25,7 @@ const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled,
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled,
   checkMintiToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -44,7 +43,7 @@ const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
 
 
 const data = {
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, hmcTest) => claimData.createClaim(mpScenario, claimAmount, pbaV3, hmcTest),
+  CREATE_CLAIM: (mpScenario, claimAmount, hmcTest) => claimData.createClaim(mpScenario, claimAmount, hmcTest),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -246,9 +245,8 @@ module.exports = {
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
-    const pbaV3 = await checkToggleEnabled(PBAv3);
 
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, hmcTest);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, hmcTest);
 
     // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
     const isMintiEnabled = await checkMintiToggleEnabled() && isMintiCaseEnabled;
@@ -272,8 +270,6 @@ module.exports = {
         null, 'Case data validation failed');
     }
 
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
     let bodyText = 'Your claim will not be issued until payment is confirmed.';
     let headerText = '# Please now pay your claim fee\n# using the link below';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
@@ -283,11 +279,9 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+    console.log('Service request update sent to callback URL');
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
@@ -336,7 +330,6 @@ module.exports = {
     mpScenario = multipartyScenario;
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData;
     switch (mpScenario){
       case 'ONE_V_ONE':
@@ -351,9 +344,7 @@ module.exports = {
     }
 
     //==============================================================
-    if (pbaV3) {
-      createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
-    }
+    createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
 
     createClaimData.valid.ClaimTypeUnSpec = {
       claimTypeUnSpec: 'CONSUMER_CREDIT'
@@ -369,13 +360,9 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+    console.log('Service request update sent to callback URL');
 
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
@@ -511,11 +498,11 @@ module.exports = {
     returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
 
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true)};
+      returnedCaseData = { ...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true) };
     } else if (mpScenario === 'ONE_V_TWO_LIPS') {
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true), ...data.COS_NOTIFY_CLAIM(true, false)};
+      returnedCaseData = { ...returnedCaseData, ...data.COS_NOTIFY_CLAIM(false, true), ...data.COS_NOTIFY_CLAIM(true, false) };
     } else {
-      returnedCaseData = {...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false)};
+      returnedCaseData = { ...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false) };
     }
     await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION', {
       header: 'Certificate of Service',
@@ -727,11 +714,6 @@ module.exports = {
       defendantResponseData = eventData['defendantResponses'][mpScenario](allocatedTrack);
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor](allocatedTrack);
-    }
-
-    //Todo: Remove after fast track uplifts release
-    if(!await checkFastTrackUpliftsEnabled()) {
-      removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData(defendantResponseData);
     }
 
     //Todo: Remove after caseflags release
@@ -1081,11 +1063,6 @@ module.exports = {
       disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
       delete disposalData.calculated.FastTrack.fastTrackCreditHire;
       disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
-    }
-
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    if (!fastTrackUpliftsEnabled) {
-      removeFastTrackAllocationFromSdoData(disposalData);
     }
 
     for (let pageId of Object.keys(disposalData.valid)) {

@@ -5,7 +5,7 @@ module.exports = {
   fields: {
     selectFacilities: '//input[@value="Laptop"]',
     selectHearingStage: '#AAA7-DIS',
-    selectAttendanceType: '//input[@value="In Person"]',
+    selectAttendanceType: '//input[@value="Telephone"]',
     partyChannel: '#partyChannel',
     noOfAttendees: '#attendance-number',
     hearingLocationEle: '//li[contains(@class, "location-selection")]',
