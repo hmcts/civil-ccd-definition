@@ -2,7 +2,7 @@
   {
     "ID": "CorrectEmail",
     "ListElementCode": "email",
-    "FieldType": "Text",
+    "FieldType": "Email",
     "ElementLabel": "Your current logged in email is",
     "SecurityClassification": "Public",
     "Searchable": "N"

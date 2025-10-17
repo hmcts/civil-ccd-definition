@@ -34,7 +34,7 @@
   {
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "formerRepresentationEmailAddress",
-    "FieldType": "Text",
+    "FieldType": "Email",
     "ElementLabel": "formerRepresentationEmailAddress",
     "SecurityClassification": "Public",
     "Searchable": "N"
