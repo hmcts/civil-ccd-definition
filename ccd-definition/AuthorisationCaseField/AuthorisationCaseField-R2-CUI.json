@@ -1108,7 +1108,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
