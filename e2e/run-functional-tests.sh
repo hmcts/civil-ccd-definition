@@ -89,7 +89,7 @@ if [ "$RUN_ALL_FUNCTIONAL_TESTS" = "true" ]; then
   run_functional_tests
 
 #Check if testFilesReport.json exists and is non-empty
-if [ ! -f "$TEST_FILES_REPORT" ] || [ ! -s "$TEST_FILES_REPORT" ]; then
+elif [ ! -f "$TEST_FILES_REPORT" ] || [ ! -s "$TEST_FILES_REPORT" ]; then
   echo "testFilesReport.json not found or is empty."
   run_functional_tests
 
