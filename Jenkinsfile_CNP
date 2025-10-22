@@ -92,7 +92,7 @@ def checkForEnableEmailNotifications(branch_name) {
 }
 
 def checkForRunAllFunctionalTests(branch_name) {
-  return checkForPrValuesLabel(branch_name, "runAllFunctionalTests")
+  return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
 }
 
 def isHmcEnabled(branch_name) {
