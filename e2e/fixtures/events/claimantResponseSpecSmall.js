@@ -200,10 +200,6 @@ module.exports = {
       },
       midEventData: {
         Hearing: {
-          respondent1DQStatementOfTruth: {
-            name: 'name',
-            role: 'role'
-          },
           businessProcess: {
             status: 'FINISHED',
             camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
