@@ -47,11 +47,16 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil",
           "caseworker-civil-staff",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil"
+        ],
+        "CRUD": "R"
       }
     ]
   },
