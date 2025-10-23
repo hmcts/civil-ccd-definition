@@ -25,7 +25,7 @@ properties([
     choice(name: 'FRONTEND_URL', 
       choices: [
                   'https://manage-case.aat.platform.hmcts.net', 
-                  'https://manage-case.demo.platform.hmcts.net', 
+                  'https://manage-case.demo.platform.hmcts.net',
                   'https://manage-case-int.demo.platform.hmcts.net',
                   'https://manage-case-int1.demo.platform.hmcts.net',
                   'https://manage-case-int2.demo.platform.hmcts.net',
