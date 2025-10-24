@@ -124,14 +124,6 @@ module.exports = {
         };
         responseData.midEventData = {
           ...responseData.midEventData,
-          ...(!lipDefendant) ? {
-            Hearing: {
-              respondent1DQStatementOfTruth: {
-                name: 'Test',
-                role: 'Worker'
-              }
-            }
-          } : {}
         };
         break;
       case 'PART_ADMISSION':
