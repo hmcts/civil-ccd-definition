@@ -23,7 +23,7 @@ module.exports = {
   },
 
   async verifyCOSSupportingEvidence() {
-    I.seeNumberOfVisibleElements('.check-your-answers ccd-read-document-field a', 2);
+    I.seeNumberOfVisibleElements('.check-your-answers ccd-read-document-field button', 2);
     I.see('Supporting evidence');
   },
 };
