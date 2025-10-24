@@ -1,15 +1,15 @@
 module.exports = {
-  name: "Decision on Reconsideration Request",
-  type: "JudgeDecideOnReconsiderRequest",
+  name: "Set Aside - Take Case Offline",
+  type: "JudgmentOnlineSetAsideTakeCaseOffline",
   task_state: "unassigned",
   task_system: "SELF",
   security_classification: "PUBLIC",
-  task_title: "Decision on Reconsideration Request",
-  location_name: "Central London County Court",
-  location: "20262",
+  task_title: "Set Aside - Take Case Offline",
+  location_name: "Civil National Business Centre",
+  location: "420219",
   execution_type: "Case Management Task",
   jurisdiction: "CIVIL",
-  region: "1",
+  region: "2",
   case_type_id: "CIVIL",
   case_category: "Civil",
   case_name: "Test Inc",
@@ -25,16 +25,19 @@ module.exports = {
     values: [
       "Read",
       "Own",
+      "Manage",
+      "Cancel",
       "CompleteOwn",
       "CancelOwn",
       "Claim",
       "Unclaim",
+      "Assign",
+      "Unassign",
       "UnclaimAssign"
     ]
   },
-  description:
-    "[Decision on Reconsideration Request](/cases/case-details/${[CASE_REFERENCE]}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUEST)",
-  role_category: "JUDICIAL",
+  description: "[SetAside - Take Case Offline](/cases/case-details/${[CASE_REFERENCE]}/trigger/CASE_PROCEEDS_IN_CASEMAN/CASE_PROCEEDS_IN_CASEMAN)",
+  role_category: "ADMIN",
   minor_priority: 500,
-  major_priority: 5000
-}
+  major_priority: 3000,
+};
