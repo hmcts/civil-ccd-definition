@@ -1,0 +1,24 @@
+➤ YN0001: RequestError: Timeout awaiting 'socket' for 60000ms
+    at ClientRequest.<anonymous> (/Users/matt.goodwin/Documents/Code/HMCTS/civil-ccd-definition/.yarn/releases/yarn-3.8.5.cjs:195:14312)
+    at Object.onceWrapper (node:events:622:26)
+    at ClientRequest.emit (node:events:519:35)
+    at o.emit (/Users/matt.goodwin/Documents/Code/HMCTS/civil-ccd-definition/.yarn/releases/yarn-3.8.5.cjs:190:90286)
+    at emitErrorEvent (node:_http_client:104:11)
+    at TLSSocket.socketErrorListener (node:_http_client:518:5)
+    at TLSSocket.emit (node:events:507:28)
+    at emitErrorNT (node:internal/streams/destroy:170:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at c (/Users/matt.goodwin/Documents/Code/HMCTS/civil-ccd-definition/.yarn/releases/yarn-3.8.5.cjs:191:15039)
+    at ClientRequest.g (/Users/matt.goodwin/Documents/Code/HMCTS/civil-ccd-definition/.yarn/releases/yarn-3.8.5.cjs:191:15283)
+    at Object.onceWrapper (node:events:621:28)
+    at ClientRequest.emit (node:events:519:35)
+    at o.emit (/Users/matt.goodwin/Documents/Code/HMCTS/civil-ccd-definition/.yarn/releases/yarn-3.8.5.cjs:190:90286)
+    at TLSSocket.emitRequestTimeout (node:_http_client:863:9)
+    at Object.onceWrapper (node:events:621:28)
+    at TLSSocket.emit (node:events:519:35)
+    at Socket._onTimeout (node:net:609:8)
+    at listOnTimeout (node:internal/timers:608:17)
+
+➤ Errors happened when preparing the environment required to run this command.
+➤ This might be caused by packages being missing from the lockfile, in which case running "yarn install" might help.
