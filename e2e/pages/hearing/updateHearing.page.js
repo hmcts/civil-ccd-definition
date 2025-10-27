@@ -3,7 +3,7 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    viewEle: 'a[id^="link-view-details"]',
+    viewEle: 'button[id^="link-view-details"]',
     deputyDistrictJudgeTypeEle: '//input[@value="24"]',
     amendReason: '#partyreq',
     editHearingButton: '//*[@id="edit-hearing"]/button',

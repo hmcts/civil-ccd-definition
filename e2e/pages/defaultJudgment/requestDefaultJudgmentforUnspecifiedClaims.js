@@ -179,7 +179,7 @@ module.exports = {
 
   async verifyOrderPreview() {
     await I.waitForText('View directions order', 60);
-    const linkXPath = '//a[contains(text(), \'.pdf\')]';
+    const linkXPath = '//button[contains(text(), \'.pdf\')]';
     await I.waitForElement(linkXPath, 60);
     await I.clickContinue();
   },
