@@ -3,8 +3,8 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    viewDetails: 'a[id^="link-view-details"]',
-    cancelEle: 'a[id^="link-cancel"]',
+    viewDetails: 'button[id^="link-view-details"]',
+    cancelEle: 'button[id^="link-cancel"]',
     cancelOption: '#listerr',
     cancellationRequestedText: 'Cancellation requested',
   },
