@@ -10,7 +10,6 @@
     "lint:fix": "eslint . --fix",
     "prettier:fix": "prettier -w 'playwright-e2e/**/*.ts'",
     "setup": "echo yarn:setup",
-    "yarn-update": "yarn set version 3.x",
     "install-dependencies": "/usr/bin/yarn install --immutable --silent",
     "test": "NODE_PATH=. mocha e2e/tests/unit/definitions/**/*.js",
     "test:a11y": "echo test:a11y",
