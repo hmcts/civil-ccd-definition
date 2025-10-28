@@ -361,8 +361,7 @@ module.exports = function () {
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
-        () => config.runningEnv !== 'aat' ? uploadParticularsOfClaim.upload(TEST_FILE_PATH)
-          : uploadParticularsOfClaim.enterParticularsOfClaim(), //Uploading files to aat is causing loading on page to timeout.
+        () => uploadParticularsOfClaim.enterParticularsOfClaim(),
         () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.clickContinue(),
         () => statementOfTruth.enterNameAndRole('claim'),
@@ -879,11 +878,6 @@ module.exports = function () {
       eventName = events.CREATE_SDO.name;
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
       await this.waitForText('Summary');
-      if (['demo'].includes(config.runningEnv)) {
-        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
-        await this.wait(20); // I've not been able to find a way to wait for the spinner to disappear - tried multiple things ie detach from DOM , wait for element to be clickable
-        await this.click('#action_claim');
-      }
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
       await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([

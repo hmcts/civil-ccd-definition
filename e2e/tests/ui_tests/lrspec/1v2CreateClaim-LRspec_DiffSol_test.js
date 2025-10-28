@@ -90,36 +90,18 @@ Scenario('Pay hearing fee', async ({LRspec}) => {
 }).retry(2);
 
 Scenario('Stay the case', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.stayCase();
-    await waitForFinishedBusinessProcess(caseNumber);
-  }
+  await LRspec.stayCase();
+  await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
 Scenario('Request update on the stay case - Manage stay', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.manageStay('REQ_UPDATE');
-    await waitForFinishedBusinessProcess(caseNumber);
-  }
+  await LRspec.manageStay('REQ_UPDATE');
+  await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
 Scenario('Lift the stay case - Manage stay', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.manageStay('LIFT_STAY', 'HEARING_READINESS');
-    await waitForFinishedBusinessProcess(caseNumber);
-  }
-}).retry(2);
-
-
-// ToDo: Refactor to trigger create case flags event
-Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
-  await LRspec.login(config.adminUser);
-  await LRspec.createCaseFlags();
-  await LRspec.validateCaseFlags([
-    { partyName: 'Example applicant1 company', details: [] },
-    { partyName: 'Example respondent1 company', details: [] },
-    { partyName: 'Example respondent2 company', details: [] }
-  ]);
+  await LRspec.manageStay('LIFT_STAY', 'HEARING_READINESS');
+  await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
 AfterSuite(async  () => {

@@ -5,7 +5,7 @@ module.exports = {
   fields: {
     selectFacilities: '//input[@value="Laptop"]',
     selectHearingStage: '#AAA7-DIS',
-    selectAttendanceType: '//input[@value="In Person"]',
+    selectAttendanceType: '//input[@value="Telephone"]',
     partyChannel: '#partyChannel',
     noOfAttendees: '#attendance-number',
     hearingLocationEle: '//li[contains(@class, "location-selection")]',
@@ -15,8 +15,8 @@ module.exports = {
     hearingDuration: '#durationhours',
     noSpecificDate: '#noSpecificDate',
     additionalInstructions: '#additionalInstructionsTextarea',
-    viewEle: 'a[id^="link-view-details"]',
-    cancelEle: 'a[id^="link-cancel"]',
+    viewEle: 'button[id^="link-view-details"]',
+    cancelEle: 'button[id^="link-cancel"]',
     waitingToBeListedText: 'WAITING TO BE LISTED',
   },
 

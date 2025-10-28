@@ -5,7 +5,7 @@ module.exports = {
     label1: '[id="downloadTemplateLabel1"] h2',
     label2: '[id="downloadTemplateLabel1"] p',
     label3: '[id="downloadTemplateLabel2"] p',
-    downloadLink: '//a[contains(text(), ".docx")]',
+    downloadLink: '//button[contains(text(), ".docx")]',
   },
 
   async verifyLabelsAndDownload() {

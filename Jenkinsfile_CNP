@@ -91,6 +91,10 @@ def checkForEnableEmailNotifications(branch_name) {
   return checkForPrValuesLabel(branch_name, "enableNotifyEmails")
 }
 
+def checkForRunAllFunctionalTests(branch_name) {
+  return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
+}
+
 def isHmcEnabled(branch_name) {
   return checkForPrValuesLabel(branch_name, "enableHmc")
 }
@@ -282,7 +286,11 @@ withPipeline(type, product, component) {
 
   before('functionalTest:preview') {
     env.IDAM_STUB_ENABLED = 'false'
-    copyPrevFailedAndNotExecutedTestFilesJson();
+    if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
+      env.RUN_ALL_FUNCTIONAL_TESTS = true
+    } else {
+      copyPrevFailedAndNotExecutedTestFilesJson();
+    }
   }
 
   afterAlways('functionalTest:preview') {

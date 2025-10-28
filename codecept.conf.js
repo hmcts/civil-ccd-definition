@@ -15,11 +15,12 @@ const ccdPipelineTests = [
       './e2e/tests/ui_tests/minti/*_test.js',
       './e2e/tests/ui_tests/refunds/*_test.js',
       './e2e/tests/ui_tests/default_judgement/*_test.js',
+      './e2e/tests/ui_tests/JudgmentOnline/*_test.js',
       './e2e/tests/ui_tests/hearings/*_test.js',
       './e2e/tests/ui_tests/query_management/*_test.js',
       './e2e/tests/api_tests/lrspec_cui/*_test.js',
     ];
-    
+
 const civilServiceAndCamundaTests = [
   './e2e/tests/api_tests/*.js',
   './e2e/tests/api_tests/judgmentOnline/*_test.js',
@@ -75,6 +76,7 @@ exports.config = {
   },
   tests: getTests(),
   output: process.env.REPORT_DIR || 'test-results/functional',
+
   helpers: {
     Playwright: {
       url: process.env.URL || 'http://localhost:3333',
