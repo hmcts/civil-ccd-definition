@@ -118,7 +118,7 @@
     "allure-playwright": "2.4.0",
     "chai": "^4.3.4",
     "codeceptjs": "^3.5.11",
-    "custom-eslint-plugin": "file:plugins/custom-eslint-plugins",
+    "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
     "deep-equal-in-any-order": "^1.0.28",
     "dotenv": "^16.4.5",
     "eslint": "^9.11.0",

@@ -2686,7 +2686,7 @@ __metadata:
     allure-playwright: "npm:2.4.0"
     chai: "npm:^4.3.4"
     codeceptjs: "npm:^3.5.11"
-    custom-eslint-plugin: "file:plugins/custom-eslint-plugins"
+    custom-eslint-plugin: "portal:./plugins/custom-eslint-plugins"
     deep-equal-in-any-order: "npm:^1.0.28"
     dotenv: "npm:^16.4.5"
     eslint: "npm:^9.11.0"
@@ -3163,12 +3163,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"custom-eslint-plugin@file:plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A.":
-  version: 1.0.0
-  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=d7cb34&locator=civil-ccd-definition%40workspace%3A."
-  checksum: 10/91e5205b8b5c7f4a43ee997270f735d40b5833ae370c0a21a1e21ad9d1d928a59cdefa37f2018c6ed8701ca9d6114f319566d748fc9ba902b415ddc3d289ca35
+"custom-eslint-plugin@portal:./plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "custom-eslint-plugin@portal:./plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A."
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "dateformat@npm:^4.5.1":
   version: 4.6.3
