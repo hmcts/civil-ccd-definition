@@ -1239,13 +1239,58 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectButton(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
   ) {
-    await pageExpect(this.page.getByRole('button', { name, exact: options.exact ?? true }), {
-      message: options.message,
-    }).toBeVisible({
-      timeout: options.timeout,
-    });
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    if (options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.getByRole('button', { name, exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'name')
