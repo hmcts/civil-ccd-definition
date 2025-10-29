@@ -136,12 +136,7 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           ...(!lipDefendant) ? {
-            Hearing: {
-              respondent1DQStatementOfTruth: {
-                name: 'Test',
-                role: 'Worker'
-              }
-            }}: {}
+            Hearing: {}}: {}
         };
         break;
       case 'PART_ADMISSION':

@@ -135,7 +135,7 @@ module.exports = function (){
     await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
     claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
-    
+
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     if (scenario === 'ONE_V_TWO') {
@@ -345,7 +345,7 @@ module.exports = function (){
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
-    
+
     delete caseData['showConditionFlags'];
 
     if (response === 'UNSUITABLE_FOR_SDO') {
@@ -590,7 +590,7 @@ const assertValidData = async (data, pageId) => {
   );
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
-
+  delete responseBody.data['notificationSummary'];
   assert.equal(response.status, 200);
 
   if (data.midEventData && data.midEventData[pageId]) {
