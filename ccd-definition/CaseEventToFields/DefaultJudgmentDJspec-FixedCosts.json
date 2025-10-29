@@ -291,6 +291,20 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "defaultJudgementOverallTotal",
+    "PageDisplayOrder":5,
+    "PageFieldDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "PageLabel": "",
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "N",
+    "PageID": "paymentBreakdown",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "currentDefendantName",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
