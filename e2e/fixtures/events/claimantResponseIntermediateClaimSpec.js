@@ -2,8 +2,7 @@ const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
   claimantResponse: (response = 'FULL_DEFENCE', lipDefendant = false) => {
-    const responseData = {
-    };
+    const responseData = {};
     switch (response) {
       case 'FULL_DEFENCE':
         responseData.userInput = {

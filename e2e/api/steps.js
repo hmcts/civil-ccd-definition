@@ -1044,7 +1044,7 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     // will be assigned on about to submit, based on judges decision
-    delete caseData['allocatedTrack'];
+    // delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
     delete caseData['smallClaimsFlightDelay'];
     delete caseData['smallClaimsFlightDelayToggle'];
@@ -1538,7 +1538,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     eventName,
     pageId,
     caseData,
-    addCaseId(pageId) ? caseId : null
+    caseId,
   );
   if(pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims') {
     delete caseData.isSdoR2NewScreen;
@@ -1551,6 +1551,13 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  }
+  else if(eventName === 'DEFENDANT_RESPONSE') {
+    delete responseBody.data['systemGeneratedCaseDocuments'];
+    delete responseBody.data['solicitorReferences'];
+  }
+  if(eventName === 'ACKNOWLEDGE_CLAIM') {
+    delete responseBody.data['systemGeneratedCaseDocuments'];
   }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
@@ -2164,7 +2171,7 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 };
 
 const adjustDataForSolicitor = (user, data) => {
-   let fixtureClone = cloneDeep(data);
+  let fixtureClone = cloneDeep(data);
   if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
     delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
   }

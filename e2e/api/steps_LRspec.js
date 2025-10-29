@@ -22,7 +22,6 @@ const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../he
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
-const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const lodash = require('lodash');
 const createFinalOrderSpec = require('../fixtures/events/finalOrderSpec');
 const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
@@ -963,8 +962,6 @@ module.exports = {
 
     caseData = returnedCaseData;
 
-    caseData = await addFlagsToFixture(caseData);
-
     console.log(`${response} ${scenario}`);
 
     await validateEventPages(defendantResponseData);
@@ -1018,7 +1015,6 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = await addFlagsToFixture(caseData);
 
     if (carmEnabled) {
       response = response+'_MEDIATION';
@@ -1117,7 +1113,6 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = await addFlagsToFixture(caseData);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
