@@ -2382,8 +2382,8 @@ __metadata:
 
 "custom-eslint-plugin@file:plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A.":
   version: 1.0.0
-  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=d7cb34&locator=civil-ccd-definition%40workspace%3A."
-  checksum: 91e5205b8b5c7f4a43ee997270f735d40b5833ae370c0a21a1e21ad9d1d928a59cdefa37f2018c6ed8701ca9d6114f319566d748fc9ba902b415ddc3d289ca35
+  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=4ee97c&locator=civil-ccd-definition%40workspace%3A."
+  checksum: 5c1d115131a4780689435add226a1b63286624b387a8abd52028974e84186f9114c12818c5397bdf7c99a1a1c9e296387185e7761a1fa2037d679460ec91a0fe
   languageName: node
   linkType: hard
 
