@@ -124,6 +124,9 @@ module.exports = {
         };
         responseData.midEventData = {
           ...responseData.midEventData,
+          ...(!lipDefendant) ? {
+            Hearing: {}
+          } : {}
         };
         break;
       case 'PART_ADMISSION':

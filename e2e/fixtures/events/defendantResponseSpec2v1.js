@@ -20,11 +20,7 @@ module.exports = {
           SingleResponse2v1: {
             defendantSingleResponseToBothClaimants: 'Yes'
           },
-          RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
-            claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
-            claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE'
-          },
+          RespondentResponseTypeSpec: {},
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM'
           },
