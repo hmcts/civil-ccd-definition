@@ -1026,7 +1026,7 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     // will be assigned on about to submit, based on judges decision
-    delete caseData['allocatedTrack'];
+    // delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
     delete caseData['smallClaimsFlightDelay'];
     delete caseData['smallClaimsFlightDelayToggle'];
@@ -1520,7 +1520,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     eventName,
     pageId,
     caseData,
-    addCaseId(pageId) ? caseId : null
+    caseId,
   );
   if(pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims') {
     delete caseData.isSdoR2NewScreen;
@@ -2153,7 +2153,7 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 };
 
 const adjustDataForSolicitor = (user, data) => {
-   let fixtureClone = cloneDeep(data);
+  let fixtureClone = cloneDeep(data);
   if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
     delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
   }
