@@ -1636,12 +1636,6 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
