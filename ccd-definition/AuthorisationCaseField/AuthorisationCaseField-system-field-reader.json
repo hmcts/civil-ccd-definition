@@ -10891,6 +10891,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "defaultJudgementOverallTotal",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+    {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "fullAdmitNoPaymentSchedulerProcessed",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
