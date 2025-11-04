@@ -24,7 +24,6 @@ module.exports = {
       bothDefendantsSpec: 'One',
       currentDefendant: 'Has Sir John Doe paid some of the amount owed?',
       currentDefendantName: 'Sir John Doe',
-      defaultJudgementOverallTotal: 1702,
       businessProcess: {
         camundaEvent: 'CREATE_CLAIM_SPEC_AFTER_PAYMENT',
         status: 'FINISHED'
