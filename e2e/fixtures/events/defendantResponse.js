@@ -23,7 +23,10 @@ module.exports = {
           }
         },
         SingleResponse: {},
-        RespondentResponseType: {},
+        RespondentResponseType: {
+          respondent1ClaimResponseType: 'FULL_DEFENCE',
+          multiPartyResponseTypeFlags: 'FULL_DEFENCE'
+        },
         Upload: {
           respondent1ClaimResponseDocument: {
             file: {
