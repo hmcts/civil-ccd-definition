@@ -1,4 +1,25 @@
 module.exports = {
+    respondToQueryHearingTask: (queryId) => ({
+        name: 'Respond to a hearing related query',
+        type: 'respondToQueryCTSC',
+        task_title: 'Respond to a hearing related query',
+        location_name: 'CTSC Stoke',
+        location: '283922',
+        execution_type: 'Case Management Task',
+        jurisdiction: 'CIVIL',
+        region: '2',
+        case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
+        case_category: 'Civil',
+        auto_assigned: false,
+        case_management_category: 'Civil',
+        work_type_id: 'query_work',
+        work_type_label: 'Query work',
+        permissions: {values: ['Read', 'Own', 'CompleteOwn', 'CancelOwn', 'Claim', 'Unclaim', 'UnclaimAssign']},
+        description: `[Respond to a query](/query-management/query/\${[CASE_REFERENCE]}/3/${queryId})`,
+        role_category: 'CTSC',
+        minor_priority: 500,
+        major_priority: 5000
+    }),
     respondToQueryCTSCTask: (queryId, specTask=false) => ({
         name: 'Respond to a query',
         type: 'respondToQueryCTSC',
