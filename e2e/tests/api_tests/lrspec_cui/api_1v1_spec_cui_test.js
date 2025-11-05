@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 const { PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
-const {respondToQueryCTSCTask } = require('../../../fixtures/wa/respondToQueryTasks');
+const {respondToQueryCTSCTask} = require('../../../fixtures/wa/respondToQueryTasks');
 const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQueriesHelper');
 
 const claimType = 'SmallClaims';
