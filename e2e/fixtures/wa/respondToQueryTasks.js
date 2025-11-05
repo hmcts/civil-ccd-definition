@@ -1,7 +1,7 @@
 module.exports = {
     respondToQueryAdminTask: (queryId) => ({
         name: 'Respond to a hearing related query',
-        type: 'respondToQueryAdmin',
+        type: 'respondToQueryCTSC',
         task_title: 'Respond to a hearing related query',
         location_name: 'Central London County Court',
         location: '20262',
