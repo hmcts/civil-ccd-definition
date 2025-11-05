@@ -7,7 +7,7 @@ module.exports = {
         location: '283922',
         execution_type: 'Case Management Task',
         jurisdiction: 'CIVIL',
-        region: '1',
+        region: '2',
         case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
         case_category: 'Civil',
         auto_assigned: false,
@@ -16,7 +16,7 @@ module.exports = {
         work_type_label: 'Query work',
         permissions: {values: ['Read', 'Own', 'Manage', 'Cancel', 'CompleteOwn', 'CancelOwn', 'Claim', 'Unclaim', 'Assign', 'Unassign', 'UnclaimAssign']},
         description: `[Respond to a query](/query-management/query/\${[CASE_REFERENCE]}/3/${queryId})`,
-        role_category: 'ADMIN',
+        role_category: 'CTSC',
         minor_priority: 500,
         major_priority: 2000
     }),
