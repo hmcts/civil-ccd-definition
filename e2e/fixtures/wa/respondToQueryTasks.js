@@ -3,7 +3,7 @@ module.exports = {
         name: 'Respond to a hearing related query',
         type: 'respondToQueryCTSC',
         task_title: 'Respond to a hearing related query',
-        location_name: 'Central London County Court',
+        location_name: 'CTSC Stoke',
         location: '20262',
         execution_type: 'Case Management Task',
         jurisdiction: 'CIVIL',
