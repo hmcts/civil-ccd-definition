@@ -4,7 +4,7 @@ module.exports = {
         type: 'respondToQueryCTSC',
         task_title: 'Respond to a hearing related query',
         location_name: 'CTSC Stoke',
-        location: '20262',
+        location: '283922',
         execution_type: 'Case Management Task',
         jurisdiction: 'CIVIL',
         region: '1',
