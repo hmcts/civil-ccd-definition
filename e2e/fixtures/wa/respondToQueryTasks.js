@@ -14,7 +14,7 @@ module.exports = {
         case_management_category: 'Civil',
         work_type_id: 'query_work',
         work_type_label: 'Query work',
-        permissions: {values: ['Read', 'Own', 'CompleteOwn', 'CancelOwn', 'Claim', 'Unclaim', 'UnclaimAssign']},
+        permissions: {values: ['Read', 'Manage', 'Cancel', 'Assign', 'Unassign']},
         description: `[Respond to a query](/query-management/query/\${[CASE_REFERENCE]}/3/${queryId})`,
         role_category: 'CTSC',
         minor_priority: 500,
