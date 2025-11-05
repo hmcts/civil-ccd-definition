@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 const { PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
-const {respondToQueryAdminTask, respondToQueryCTSCTask } = require('../../../fixtures/wa/respondToQueryTasks');
+const {respondToQueryCTSCTask } = require('../../../fixtures/wa/respondToQueryTasks');
 const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQueriesHelper');
 
 const claimType = 'SmallClaims';
@@ -19,7 +19,7 @@ async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId
 
 async function raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId, citizenUser, caseworkerUser, queryType, isHearingRelated) {
   const query = await qmSteps.raiseLipQuery(caseId, citizenUser, queryType, isHearingRelated);
-  await qmSteps.validateQmResponseTask(caseId, caseworkerUser, isHearingRelated ? respondToQueryAdminTask(query.id) : respondToQueryCTSCTask(query.id, true), query.id);
+  await qmSteps.validateQmResponseTask(caseId, caseworkerUser, isHearingRelated ? respondToQueryCTSCTask(query.id, true) : respondToQueryCTSCTask(query.id, true), query.id);
   await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
   await qmSteps.followUpOnLipQuery(caseId, citizenUser, query, queryType);
 }
