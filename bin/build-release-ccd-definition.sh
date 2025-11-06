@@ -6,14 +6,6 @@ set -eu
 environment=${1:-prod}
 activateShutter=${2:-false}
 
-if [ ${environment} == prod ]; then
-   echo "Running build for ${environment}"
-  activateShutter=true;
-else
-  echo "Running build for ${environment}"
-  activateShutter=false;
-fi
-
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
    excludedFilenamePatterns="-e *-prod.json"
