@@ -22,7 +22,6 @@ const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../he
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
-const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const lodash = require('lodash');
 const createFinalOrderSpec = require('../fixtures/events/finalOrderSpec');
 const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
@@ -962,8 +961,6 @@ module.exports = {
 
     caseData = returnedCaseData;
 
-    caseData = await addFlagsToFixture(caseData);
-
     console.log(`${response} ${scenario}`);
 
     await validateEventPages(defendantResponseData);
@@ -1017,7 +1014,6 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = await addFlagsToFixture(caseData);
 
     if (carmEnabled) {
       response = response+'_MEDIATION';
@@ -1116,7 +1112,6 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = await addFlagsToFixture(caseData);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
@@ -2143,6 +2138,19 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
   if (pageId === 'defendantDetailsSpec') {
     delete responseBody.data['registrationTypeRespondentOne'];
     delete responseBody.data['registrationTypeRespondentTwo'];
+  }
+  const defaultJudgementTotal = responseBody.data.defaultJudgementOverallTotal;
+  if (defaultJudgementTotal !== undefined) {
+    caseData.defaultJudgementOverallTotal = defaultJudgementTotal;
+  } else if (caseData.defaultJudgementOverallTotal !== undefined) {
+    delete caseData.defaultJudgementOverallTotal;
+  }
+
+  if (responseBody.data.repaymentDue !== undefined) {
+    const repaymentAsNumber = Number(responseBody.data.repaymentDue);
+    if (!Number.isNaN(repaymentAsNumber)) {
+      responseBody.data.repaymentDue = repaymentAsNumber.toFixed(2);
+    }
   }
   if (pageId === 'paymentConfirmationSpec') {
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {

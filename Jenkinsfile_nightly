@@ -1,7 +1,7 @@
 #!groovy
 
 properties([
-  pipelineTriggers([cron('H 07 * * 1-5')]),
+  pipelineTriggers([cron('H 08 * * 1-5')]),
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'], 
@@ -25,8 +25,9 @@ properties([
     choice(name: 'FRONTEND_URL', 
       choices: [
                   'https://manage-case.aat.platform.hmcts.net', 
-                  'https://manage-case.demo.platform.hmcts.net', 
-                  'https://manage-case-int1.demo.platform.hmcts.net', 
+                  'https://manage-case.demo.platform.hmcts.net',
+                  'https://manage-case-int.demo.platform.hmcts.net',
+                  'https://manage-case-int1.demo.platform.hmcts.net',
                   'https://manage-case-int2.demo.platform.hmcts.net',
                   'https://manage-case-wa-int.demo.platform.hmcts.net',
                   'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net'
