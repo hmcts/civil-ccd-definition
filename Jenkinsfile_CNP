@@ -11,8 +11,8 @@ def type = "nodejs"
 def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
-def dmnBranch = "master"
-def waStandaloneBranch = "DTSCCI-3055-amend-query-mgmt-config-post-sdo"
+def dmnBranch = "DTSCCI-3055-amend-query-mgmt-config-post-sdo"
+def waStandaloneBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
