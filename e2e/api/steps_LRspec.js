@@ -2140,6 +2140,19 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
     delete responseBody.data['registrationTypeRespondentOne'];
     delete responseBody.data['registrationTypeRespondentTwo'];
   }
+  const defaultJudgementTotal = responseBody.data.defaultJudgementOverallTotal;
+  if (defaultJudgementTotal !== undefined) {
+    caseData.defaultJudgementOverallTotal = defaultJudgementTotal;
+  } else if (caseData.defaultJudgementOverallTotal !== undefined) {
+    delete caseData.defaultJudgementOverallTotal;
+  }
+
+  if (responseBody.data.repaymentDue !== undefined) {
+    const repaymentAsNumber = Number(responseBody.data.repaymentDue);
+    if (!Number.isNaN(repaymentAsNumber)) {
+      responseBody.data.repaymentDue = repaymentAsNumber.toFixed(2);
+    }
+  }
   if (pageId === 'paymentConfirmationSpec') {
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
       responseBody.data.currentDefendantName = 'Sir John Doe';
