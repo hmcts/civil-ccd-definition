@@ -22,6 +22,8 @@ properties([
       description: 'Runs accessibility tests for playwright during test execution'),
     choice(name: 'PLAYWRIGHT_RUN_SETUP', choices: ['true', 'false'], 
       description: 'Runs setup projects before functional test suite'),
+    string(name: 'PR_NUMBER',
+      defaultValue: '', description: 'PR Number of deployed environment to be used to run tests against'),
     choice(name: 'FRONTEND_URL', 
       choices: [
                   'https://manage-case.aat.platform.hmcts.net', 
@@ -31,6 +33,11 @@ properties([
                   'https://manage-case-int2.demo.platform.hmcts.net',
                   'https://manage-case-wa-int.demo.platform.hmcts.net',
                   'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net'
+                  'https://xui-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://xui-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://xui-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://xui-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://xui-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                 ],
       description: 'The URL you want to run the full functional tests against'),
     choice(name: 'IDAM_WEB_URL', choices: ['https://idam-web.aat.platform.hmcts.net', 'https://idam-web.demo.platform.hmcts.net'], 
@@ -41,9 +48,27 @@ properties([
       description: 'The URL of dm store'),
     choice(name: 'SERVICE_AUTH_PROVIDER_API_BASE_URL', choices: ['http://rpe-service-auth-provider-aat.service.core-compute-aat.internal', 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal'], 
       description: 'The URL of service auth provider'),
-    choice(name: 'CCD_DATA_STORE_URL', choices: ['http://ccd-data-store-api-aat.service.core-compute-aat.internal', 'http://ccd-data-store-api-demo.service.core-compute-demo.internal'], 
+    choice(name: 'CCD_DATA_STORE_URL', 
+      choices: [
+                  'http://ccd-data-store-api-aat.service.core-compute-aat.internal', 
+                  'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+                  'https://ccd-data-store-api-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://ccd-data-store-api-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://ccd-data-store-api-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://ccd-data-store-api-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net'
+                  'https://ccd-data-store-api-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net'
+                ], 
       description: 'The URL of ccd data store'),
-    choice(name: 'CIVIL_SERVICE_URL', choices: ['http://civil-service-aat.service.core-compute-aat.internal', 'http://civil-service-demo.service.core-compute-demo.internal'],
+    choice(name: 'CIVIL_SERVICE_URL', 
+      choices: [
+                  'http://civil-service-aat.service.core-compute-aat.internal', 
+                  'http://civil-service-demo.service.core-compute-demo.internal',
+                  'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-citizen-ui-pr-{PR_NUMBER}-civil-service.preview.platform.hmcts.net',
+                  'https://civil-service-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                  'https://civil-service-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net'
+                ],
       description: 'The URL of civil service'),
     choice(name: 'WA_TASK_MGMT_URL', choices: ['http://wa-task-management-api-aat.service.core-compute-aat.internal', 'http://wa-task-management-api-demo.service.core-compute-demo.internal'],
        description: 'The URL of wa task management'),
@@ -151,17 +176,33 @@ withNightlyPipeline(type, product, component) {
   env.PLAYWRIGHT_RUN_SETUP=params.PLAYWRIGHT_RUN_SETUP
   env.PLAYWRIGHT_UNASSIGN_CASES = true
   env.PLAYWRIGHT_TEST_SPEED=params.PLAYWRIGHT_TEST_SPEED
-  env.URL=params.FRONTEND_URL
+
+  def prNumber = params.PR_NUMBER?.trim()
+  def resolvePreviewUrl = { String value, String paramName ->
+    if (value?.contains('{PR_NUMBER}')) {
+      if (!prNumber) {
+        error "Parameter ${paramName} contains '{PR_NUMBER}' but PR_NUMBER was not provided."
+      }
+      return value.replace('{PR_NUMBER}', prNumber)
+    }
+    return value
+  }
+
+  def frontendUrl = resolvePreviewUrl(params.FRONTEND_URL, 'FRONTEND_URL')
+  def ccdDataStoreUrl = resolvePreviewUrl(params.CCD_DATA_STORE_URL, 'CCD_DATA_STORE_URL')
+  def civilServiceUrl = resolvePreviewUrl(params.CIVIL_SERVICE_URL, 'CIVIL_SERVICE_URL')
+
+  env.URL=frontendUrl
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_WEB_URL=params.IDAM_WEB_URL
   env.IDAM_API_URL=params.IDAM_API_URL
   env.SERVICE_AUTH_PROVIDER_API_BASE_URL = params.SERVICE_AUTH_PROVIDER_API_BASE_URL
-  env.CCD_DATA_STORE_URL = params.CCD_DATA_STORE_URL
-  env.CIVIL_SERVICE_URL = params.CIVIL_SERVICE_URL
+  env.CCD_DATA_STORE_URL = ccdDataStoreUrl
+  env.CIVIL_SERVICE_URL = civilServiceUrl
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
   env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
   env.PAYMENT_API_URL = params.PAYMENT_API_URL
-  env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
+  env.URL_FOR_SECURITY_SCAN = civilServiceUrl
   env.CCD_UI_TESTS = true
   env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   overrideVaultEnvironments([
@@ -256,4 +297,3 @@ withNightlyPipeline(type, product, component) {
   }
   
 }
-
