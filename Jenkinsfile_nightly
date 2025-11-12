@@ -20,7 +20,7 @@ properties([
                   'https://manage-case-int1.demo.platform.hmcts.net',
                   'https://manage-case-int2.demo.platform.hmcts.net',
                   'https://manage-case-wa-int.demo.platform.hmcts.net',
-                  'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net'
+                  'https://manage-case-caa-assigned-case-view.demo.platform.hmcts.net',
                   'https://xui-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://xui-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://xui-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
