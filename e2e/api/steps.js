@@ -429,6 +429,7 @@ module.exports = {
     // set to null. In the about to submit callback this overwrites applicantSolicitor1ClaimStatementOfTruth with null
     // fields. When data is fetched here, the field does not exist.
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('notificationSummary');
 
     await apiRequest.setupTokens(user);
 
