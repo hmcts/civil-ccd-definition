@@ -537,7 +537,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseNamePublic",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
