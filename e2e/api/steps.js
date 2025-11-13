@@ -429,6 +429,7 @@ module.exports = {
     // set to null. In the about to submit callback this overwrites applicantSolicitor1ClaimStatementOfTruth with null
     // fields. When data is fetched here, the field does not exist.
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('notificationSummary');
 
     await apiRequest.setupTokens(user);
 
@@ -1166,6 +1167,7 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     delete caseData['SearchCriteria'];
+    delete caseData['notificationSummary'];
 
     let scheduleData = data.HEARING_SCHEDULED(allocatedTrack, isMinti);
 
@@ -1528,6 +1530,7 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  delete responseBody.data['notificationSummary'];
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -1646,6 +1649,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (responseBody.data.requestForReconsiderationDeadline) {
     caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
   }
+
+  delete caseData['notificationSummary'];
 
   try {
      assert.deepEqual(responseBody.data, caseData);
