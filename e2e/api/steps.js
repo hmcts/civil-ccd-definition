@@ -1167,6 +1167,7 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     delete caseData['SearchCriteria'];
+    delete caseData['notificationSummary'];
 
     let scheduleData = data.HEARING_SCHEDULED(allocatedTrack, isMinti);
 
@@ -1648,6 +1649,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (responseBody.data.requestForReconsiderationDeadline) {
     caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
   }
+
+  delete caseData['notificationSummary'];
 
   try {
      assert.deepEqual(responseBody.data, caseData);
