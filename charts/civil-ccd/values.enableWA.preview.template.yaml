@@ -9,7 +9,7 @@ civil-wa:
 
 wa:
   global:
-    postgresUsername: hmcts
+    postgresUsername: ${POSTGRES_USER}
     postgresSecret: postgres
     postgresHost: ${SERVICE_NAME}-postgresql
 #    postgresHost: civil-preview.postgres.database.azure.com
@@ -57,12 +57,12 @@ wa:
         POSTGRES_REPLICA_PORT: 5432
         POSTGRES_NAME: "cft_task_db"
         POSTGRES_REPLICA_NAME: "cft_task_db_replica"
-        POSTGRES_USERNAME: postgres
+        POSTGRES_USERNAME: ${POSTGRES_USER}
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-        REPLICATION_USERNAME: postgres
+        REPLICATION_USERNAME: ${POSTGRES_USER}
         REPLICATION_PASSWORD: ${POSTGRES_PASSWORD}
         SPRING_PROFILES_ACTIVE: "preview"
-        DB_READER_USERNAME: postgres
+        DB_READER_USERNAME: ${POSTGRES_USER}
       secrets:
         POSTGRES_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
@@ -71,7 +71,7 @@ wa:
   wa-workflow-api:
     java:
       environment:
-        DB_READER_USERNAME: "hmcts"
+        DB_READER_USERNAME: ${POSTGRES_USER}
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
         CAMUNDA_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
@@ -83,7 +83,7 @@ wa:
   camunda-bpm:
     java:
       environment:
-        CAMUNDA_DB_USER_NAME: "hmcts"
+        CAMUNDA_DB_USER_NAME: ${POSTGRES_USER}
         CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
         CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified"
         CAMUNDA_DB_NAME: 'camunda'
@@ -146,7 +146,7 @@ am-org-role-mapping-service:
       AMQP_JRD_SHARED_ACCESS_KEY_VALUE: "$(SB_ACCESS_KEY)"
       ORG_ROLE_MAPPING_DB_HOST: "{{ .Release.Name }}-postgresql"
       ORG_ROLE_MAPPING_DB_NAME: "org_role_mapping"
-      ORG_ROLE_MAPPING_DB_USERNAME: hmcts
+      ORG_ROLE_MAPPING_DB_USERNAME: ${POSTGRES_USER}
       ORG_ROLE_MAPPING_DB_PASSWORD: ${POSTGRES_PASSWORD}
       ORG_ROLE_MAPPING_DB_PORT: 5432
       ORG_ROLE_MAPPING_DB_OPTIONS: "?stringtype=unspecified"
