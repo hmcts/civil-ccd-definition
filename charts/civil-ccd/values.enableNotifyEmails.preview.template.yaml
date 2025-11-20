@@ -83,7 +83,7 @@ civil-service:
           requests:
             cpu: 25m
         initdb:
-          user: postgres
+          user: ${POSTGRES_USER}
           password: ${POSTGRES_PASSWORD}
           scripts:
             00_grant_superuser_role.sql: |

@@ -156,7 +156,7 @@ ccd:
       enabled: true
   global:
     ccdStitchUrl: http://${SERVICE_NAME}-emstitch
-    postgresUsername: hmcts
+    postgresUsername: ${POSTGRES_USER}
     postgresPassword: ${POSTGRES_PASSWORD}
     postgresSecret: postgres
 #    postgresHostname: civil-preview.postgres.database.azure.com
@@ -331,7 +331,7 @@ ccd-message-publisher:
 #      DATA_STORE_DB_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
       DATA_STORE_DB_NAME: "data-store"
-      DATA_STORE_DB_USERNAME: hmcts
+      DATA_STORE_DB_USERNAME: ${POSTGRES_USER}
       DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
       DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
       CCD_CASE_EVENTS_DESTINATION: ${SERVICE_NAME}-asb-ccd-case-events
