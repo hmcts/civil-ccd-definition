@@ -301,7 +301,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DASHBOARD_NOTIFICATION_EVENT",
-    "Name": "Dashboard notifications for relevant parties",
+    "Name": "Dashboard notifications",
     "Description": "Dashboard notification event",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
