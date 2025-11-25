@@ -1,6 +1,6 @@
 # civil-ccd-definition
 
-Civil CCD Definition and E2E tests 
+Civil CCD Definition and E2E tests
 
 ### Contents:
 
@@ -209,5 +209,6 @@ For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some m
 3 - When in XUI/CUI the case type will have an extension to your PR number added to it.
 
 ## License
+
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
