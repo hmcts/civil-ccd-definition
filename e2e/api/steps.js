@@ -25,7 +25,7 @@ const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled,
+const {checkCaseFlagsEnabled, checkManageContactInformationEnabled,
   checkMintiToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -33,8 +33,7 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {updateApplicant, updateLROrganisation} = require('./manageContactInformationHelper');
 const {fetchCaseDetails} = require('./apiRequest');
-const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
-const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
+const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
@@ -438,8 +437,6 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    caseData = await addFlagsToFixture(caseData);
-
     await validateEventPages(data[eventName]);
 
     const document = await testingSupport.uploadDocument();
@@ -467,8 +464,6 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
-
-    caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(data[eventName]);
 
@@ -523,8 +518,6 @@ module.exports = {
     caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
         value: listElement('Both')
       }};
-
-    caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(data[eventName]);
 
@@ -587,8 +580,6 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
 
-    await addFlagsToFixture(returnedCaseData);
-
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -613,8 +604,6 @@ module.exports = {
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
-
-    caseData = await addFlagsToFixture(caseData);
 
     deleteCaseFields('systemGeneratedCaseDocuments');
     deleteCaseFields('solicitorReferences');
@@ -676,8 +665,6 @@ module.exports = {
       informAgreedExtensionData = eventData['informAgreedExtensionDates'][mpScenario][solicitor];
     }
 
-    caseData = await addFlagsToFixture(caseData);
-
     await validateEventPages(informAgreedExtensionData, solicitor);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -721,7 +708,6 @@ module.exports = {
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
-    caseData = await addFlagsToFixture(caseData);
 
     deleteCaseFields('isRespondent1');
     deleteCaseFields('respondent1', 'solicitorReferences');
@@ -816,8 +802,6 @@ module.exports = {
 
     let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack);
 
-    caseData = await addFlagsToFixture(caseData);
-
     await validateEventPages(claimantResponseData);
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
@@ -870,8 +854,6 @@ module.exports = {
     solicitorSetup(solicitor);
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
-
-    caseData = await addFlagsToFixture(caseData);
 
     let fixture = data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario];
 
@@ -1044,7 +1026,7 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     // will be assigned on about to submit, based on judges decision
-    delete caseData['allocatedTrack'];
+    // delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
     delete caseData['smallClaimsFlightDelay'];
     delete caseData['smallClaimsFlightDelayToggle'];
@@ -1538,7 +1520,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     eventName,
     pageId,
     caseData,
-    addCaseId(pageId) ? caseId : null
+    caseId,
   );
   if(pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims') {
     delete caseData.isSdoR2NewScreen;
@@ -1550,6 +1532,14 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  }
+  else if(eventName === 'DEFENDANT_RESPONSE') {
+    delete responseBody.data['systemGeneratedCaseDocuments'];
+    delete responseBody.data['solicitorReferences'];
+  }
+  if(eventName === 'ACKNOWLEDGE_CLAIM') {
+    delete responseBody.data['systemGeneratedCaseDocuments'];
+    delete responseBody.data['respondentSolicitor2Reference'];
   }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
@@ -2163,7 +2153,7 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 };
 
 const adjustDataForSolicitor = (user, data) => {
-   let fixtureClone = cloneDeep(data);
+  let fixtureClone = cloneDeep(data);
   if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
     delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
   }

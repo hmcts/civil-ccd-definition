@@ -129,7 +129,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "systemGeneratedCaseDocuments",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -537,7 +537,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseNamePublic",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -722,6 +722,12 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "fullAdmitNoPaymentSchedulerProcessed",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "fastTrackMethodInPerson",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

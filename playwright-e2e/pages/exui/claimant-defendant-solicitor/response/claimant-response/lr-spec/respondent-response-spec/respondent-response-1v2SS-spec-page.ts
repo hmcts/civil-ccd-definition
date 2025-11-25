@@ -12,7 +12,7 @@ export default class RespondentResponse1v2SSSpecPage extends ExuiPage(BasePage) 
       super.verifyHeadings(ccdCaseData),
       super.expectText(paragraphs.responseForm, { count: 1 }),
       super.expectText(radioButtons.proceedWithClaim.label),
-      super.expectLink(getDQDocName(ccdCaseData)),
+      super.expectButton(getDQDocName(ccdCaseData)),
     ]);
   }
 

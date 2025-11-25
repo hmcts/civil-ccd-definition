@@ -15,8 +15,8 @@ module.exports = {
     hearingDuration: '#durationhours',
     noSpecificDate: '#noSpecificDate',
     additionalInstructions: '#additionalInstructionsTextarea',
-    viewEle: 'a[id^="link-view-details"]',
-    cancelEle: 'a[id^="link-cancel"]',
+    viewEle: 'button[id^="link-view-details"]',
+    cancelEle: 'button[id^="link-cancel"]',
     waitingToBeListedText: 'WAITING TO BE LISTED',
   },
 

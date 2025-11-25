@@ -1142,13 +1142,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
@@ -4769,14 +4769,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate",
           "GS_profile",
           "judge-profile",
           "CITIZEN-DEFENDANT-PROFILE",
@@ -6808,6 +6808,26 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "defaultJudgementOverallTotal",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
       }
     ]
   }

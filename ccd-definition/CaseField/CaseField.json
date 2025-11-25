@@ -3443,5 +3443,13 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defaultJudgementOverallTotal",
+    "Label": "Default Judgement Overall Amount",
+    "FieldType": "Number",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

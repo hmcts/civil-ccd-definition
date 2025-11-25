@@ -23,6 +23,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   @Step(classKey)
   async respondentResponse1v2SSSpec() {
     const { respondentResponse1v2SSSpecPage } = this.claimantResponsePageFactory;
+    await respondentResponse1v2SSSpecPage.verifyContent(this.ccdCaseData);
     await respondentResponse1v2SSSpecPage.selectYes();
     await respondentResponse1v2SSSpecPage.submit();
   }

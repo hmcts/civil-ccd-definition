@@ -114,7 +114,7 @@ module.exports = {
 
   async verifyOrderPreview() {
     let linkXPath;
-    linkXPath = '//a[contains(text(), \'.pdf\')]';
+    linkXPath = '//button[contains(text(), \'.pdf\')]';
     await I.waitForElement(linkXPath, 60);
     await I.clickContinue();
   }

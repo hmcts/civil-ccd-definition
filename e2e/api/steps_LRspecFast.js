@@ -12,15 +12,12 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkCaseFlagsEnabled} = require('./testingSupport');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
-const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
-const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
-const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 
 
@@ -220,8 +217,6 @@ module.exports = {
 
     caseData = returnedCaseData;
 
-    caseData = await addFlagsToFixture(caseData);
-
     console.log(`${response} ${scenario}`);
 
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
@@ -258,7 +253,7 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = await addFlagsToFixture(caseData);
+
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {

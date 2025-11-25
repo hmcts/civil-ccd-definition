@@ -14,7 +14,7 @@ export default class RespondentResponseSpecPage extends ExuiPage(BasePage) {
       super.expectLegend(radioButtons.proceedWithClaim.label),
       super.expectRadioYesLabel(radioButtons.proceedWithClaim.yes.selector),
       super.expectRadioNoLabel(radioButtons.proceedWithClaim.no.selector),
-      super.expectLink(getResponseSealedFormDocName(ccdCaseData)),
+      super.expectButton(getResponseSealedFormDocName(ccdCaseData)),
     ]);
   }
 

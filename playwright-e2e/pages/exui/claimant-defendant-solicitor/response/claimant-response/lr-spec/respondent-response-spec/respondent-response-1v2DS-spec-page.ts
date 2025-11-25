@@ -16,7 +16,7 @@ export default class RespondentResponse1v2DSSpecPage extends ExuiPage(BasePage) 
       super.expectText(paragraphs.responseForm, { count: 1 }),
       super.expectText(paragraphs.responseForm2, { count: 1 }),
       super.expectText(radioButtons.proceedWithClaim.label),
-      super.expectLink(getDQDocName(ccdCaseData), { count: 2 }),
+      super.expectButton(getDQDocName(ccdCaseData), { count: 2 }),
     ]);
   }
 

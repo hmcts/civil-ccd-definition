@@ -5,7 +5,7 @@ module.exports = {
   task_system: "SELF",
   security_classification: "PUBLIC",
   task_title: "Decision on Reconsideration Request",
-  location_name: "Civil National Business Centre",
+  location_name: "Central London County Court",
   location: "20262",
   execution_type: "Case Management Task",
   jurisdiction: "CIVIL",

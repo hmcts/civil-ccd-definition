@@ -156,7 +156,7 @@ ccd:
       enabled: true
   global:
     ccdStitchUrl: http://${SERVICE_NAME}-emstitch
-    postgresUsername: hmcts
+    postgresUsername: ${POSTGRES_USER}
     postgresPassword: ${POSTGRES_PASSWORD}
     postgresSecret: postgres
 #    postgresHostname: civil-preview.postgres.database.azure.com
@@ -166,7 +166,6 @@ ccd:
       ingressHost: gateway-${SERVICE_FQDN}
   ccd-data-store-api:
     java:
-      image: hmctspublic.azurecr.io/ccd/data-store-api:prod-8d7d4a8-20250918185030
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: true
         CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
@@ -175,8 +174,9 @@ ccd:
         DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment,wa_task_management_api,wa_task_monitor,wa_case_event_handler,wa_workflow_api,civil_general_applications
         DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
         DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
-        DATA_STORE_DEFAULT_LOG_LEVEL: WARN
-        CASE_DATA_ISSUE_LOG_LEVEL: WARN
+        DATA_STORE_DEFAULT_LOG_LEVEL: INFO
+        CCD_MULTIPARTY_LOG_LEVEL: INFO
+        CASE_DATA_ISSUE_LOG_LEVEL: INFO
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
         CCD_MULTIPARTY_CASE_TYPES: CIVIL
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE,queryManagementRaiseQuery,queryManagementRespondQuery
@@ -331,7 +331,7 @@ ccd-message-publisher:
 #      DATA_STORE_DB_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
       DATA_STORE_DB_NAME: "data-store"
-      DATA_STORE_DB_USERNAME: hmcts
+      DATA_STORE_DB_USERNAME: ${POSTGRES_USER}
       DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
       DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
       CCD_CASE_EVENTS_DESTINATION: ${SERVICE_NAME}-asb-ccd-case-events

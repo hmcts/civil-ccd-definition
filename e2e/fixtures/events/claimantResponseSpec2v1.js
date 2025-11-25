@@ -193,13 +193,7 @@ module.exports = {
         responseData.midEventData = {
           ...responseData.midEventData,
           Hearing: {
-            claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
-            claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             defendantSingleResponseToBothClaimants: 'Yes',
-            respondent1DQStatementOfTruth: {
-              name: 'Test',
-              role: 'Worker'
-            },
             businessProcess: {
               status: 'FINISHED',
               camundaEvent: 'DEFENDANT_RESPONSE_SPEC'

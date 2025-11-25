@@ -2,13 +2,13 @@
 
 const config = require('../../../config.js');
 
-Feature('1v2 Unspec defaultJudgement @e2e-dj-unspec');
-
 let validSummaryJudgmentDirectionsTask;
 
 if (config.runWAApiTest) {
   validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
 }
+
+Feature('1v2 Unspec defaultJudgement @e2e-dj-unspec');
 
 Scenario('DefaultJudgement @create-claim @e2e-nightly-prod', async ({I, api, WA}) => {
 
