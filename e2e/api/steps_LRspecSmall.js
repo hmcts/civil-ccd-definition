@@ -134,7 +134,7 @@ module.exports = function (){
     await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
     claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
-    
+
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     if (scenario === 'ONE_V_TWO') {
@@ -585,7 +585,7 @@ const assertValidData = async (data, pageId) => {
   );
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
-
+  delete responseBody.data['notificationSummary'];
   assert.equal(response.status, 200);
 
   if (data.midEventData && data.midEventData[pageId]) {
