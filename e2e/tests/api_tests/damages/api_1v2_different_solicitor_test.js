@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 // add @api-tests to run
 
-Feature('CCD 1v2 Different Solicitor API test @api-unspec @api-multiparty @api-tests-1v2DS @api-nightly-prod @api-unspec-full-defence');
+Feature('Unspec 1v2DS api journey').tag('@api-nightly-prod @api-unspec-full-defence');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -35,10 +35,10 @@ Scenario('Acknowledge claim Solicitor 1', async ({I, api}) => {
   await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
-/* Skipping this test as it is failing with partyIDs at the moment
-Scenario('Acknowledge claim Solicitor 2', async ({I, api}) => {
+//Skipping this test as it is failing with partyIDs at the moment
+Scenario.skip('Acknowledge claim Solicitor 2', async ({I, api}) => {
   await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-}); */
+});
 
 Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
   await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
@@ -60,13 +60,13 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-//Scenario('Add case flags', async ({api}) => {
-//  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
-//});
+Scenario.skip('Add case flags', async ({api}) => {
+ await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
 
-//Scenario('Manage case flags', async ({api}) => {
-//  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
-//});
+Scenario.skip('Manage case flags', async ({api}) => {
+ await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+});
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();

@@ -9,30 +9,25 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 //const judgeUser = config.judgeUserWithRegionId1Local;
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 
+Feature('Noise Induced Hearing Loss API test - fast claim - unspec').tag('@api-prod @api-sdo');
 
-Feature('Noise Induced Hearing Loss API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod @api-r2-sdo');
-
-async function prepareClaim(api) {
+Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1Nihl, claimAmount);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario1v1, null, 'FAST_CLAIM_NIHL');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v1, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
-}
-
-Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
-    await prepareClaim(api);
-    await api.createSDO(judgeUser, 'CREATE_FAST_NIHL');
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1);
-    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
-    await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeePaid(hearingCenterAdminToBeUsed);
-    if (['demo'].includes(config.runningEnv)) {
-        await api.triggerBundle(config.systemupdate);
-      }
-      await api.createFinalOrder(judgeUser, 'ASSISTED_ORDER');
+  await api.createSDO(judgeUser, 'CREATE_FAST_NIHL');
+  await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+  await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1);
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+  await api.amendHearingDueDate(config.systemupdate);
+  await api.hearingFeePaid(hearingCenterAdminToBeUsed);
+  if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
+  await api.createFinalOrder(judgeUser, 'ASSISTED_ORDER');
 });
 
 AfterSuite(async ({api}) => {

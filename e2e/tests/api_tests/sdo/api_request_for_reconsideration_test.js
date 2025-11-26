@@ -3,23 +3,21 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
 const judgeUser = config.judgeUserWithRegionId1;
 
-async function prepareClaimSpec(api_spec_small) {
-await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
-await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
-await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
-}
-
-Feature('Request for reconsideration - 1v1 - spec @api-specified @api-nightly-prod @api-r2-sdo'); // reinstate @api-nightly-prod tag when issue described on CIV-14871 is resolved
+Feature('Request for reconsideration - 1v1 - spec').tag('@api-nightly-prod @api-sdo'); // reinstate @api-nightly-prod tag when issue described on CIV-14871 is resolved
 
 Scenario('1v1 spec request for reconsideration for uphold previous order', async ({api_spec_small}) => {
-    await prepareClaimSpec(api_spec_small);
+    await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
+    await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
+    await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.applicantSolicitorUser, 'Applicant');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'YES');
 }).tag('@api-nonprod');
 
 Scenario('1v1 spec request for reconsideration for create new SDO', async ({api_spec_small}) => {
-    await prepareClaimSpec(api_spec_small);
+    await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
+    await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
+    await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser, 'Respondent1');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_SDO');
@@ -28,7 +26,9 @@ Scenario('1v1 spec request for reconsideration for create new SDO', async ({api_
 });
 
 Scenario('1v1 spec request for reconsideration for create general order', async ({api_spec_small}) => {
-    await prepareClaimSpec(api_spec_small);
+    await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
+    await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
+    await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser,'Respondent1');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_GENERAL_ORDER');
@@ -55,7 +55,9 @@ Scenario.skip('1v1 spec request for reconsideration when claim amount is greater
 });
 
 Scenario('1v1 spec request for reconsideration for create a new SDO', async ({api_spec_small}) => {
-    await prepareClaimSpec(api_spec_small);
+    await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
+    await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
+    await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser,'Respondent1');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_SDO');
