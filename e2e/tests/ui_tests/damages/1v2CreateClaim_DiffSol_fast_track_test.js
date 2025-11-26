@@ -20,7 +20,7 @@ if (config.runWAApiTest) {
   validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
 }
 
-Feature('1v2 Different Solicitors fast track - Claim Journey @e2e-unspec-fast @e2e-nightly-prod @e2e-unspec-1v2DS');
+Feature('1v2 Different Solicitors fast track - Claim Journey @e2e-unspec-fast @e2e-nightly-prod @e2e-unspec-1v2DS @master-e2e-ft');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

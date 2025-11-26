@@ -5,7 +5,7 @@ const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec-fast @e2e-spec-1v2DS');
+Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec-fast @e2e-spec-1v2DS @master-e2e-ft');
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec_fast, LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
