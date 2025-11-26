@@ -10,9 +10,9 @@ if (config.runWAApiTest) {
 
 let caseNumber;
 
-Feature('1v1 Spec Set Aside Judgment Following Receiving Defence @e2e-jo');
+Feature('1v1 Spec Set Aside Judgment Following Receiving Defence').tag('@e2e-jo');
 
-Scenario('Default Judgement', async ({I, api_spec, LRspec}) => {
+Scenario('Create 1v1 spec claim, request default judgment', async ({I, api_spec, LRspec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   caseNumber = await api_spec.getCaseId();
   await LRspec.setCaseId(caseNumber);
