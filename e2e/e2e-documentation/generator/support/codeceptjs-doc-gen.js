@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const repoRoot = path.resolve(__dirname, '..', '..');
+const repoRoot = path.resolve(__dirname, '..', '..', '..', '..');
 const codeceptConfig = require(path.join(repoRoot, 'e2e/config.js'));
 const dependentApiList = require('./dependent-api-features');
 const dependentUiList = require('./dependent-ui-features');
@@ -399,7 +399,9 @@ function generateDocs({ suiteType, targetDir, outputFile }) {
     return a.testName.localeCompare(b.testName);
   });
 
-  fs.writeFileSync(path.join(repoRoot, outputFile), JSON.stringify(results, null, 2));
+  const outputPath = path.join(repoRoot, outputFile);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
   return results.length;
 }
 
