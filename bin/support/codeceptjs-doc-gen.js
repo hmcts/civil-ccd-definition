@@ -52,8 +52,19 @@ const ignoredStepMethods = new Set([
   'amOnPage',
   'waitForText',
   'wait',
-  'navigateToCaseDetails'
+  'navigateToCaseDetails',
+  'see',
+  'grabCaseNumber',
+  'navigateToTab',
+  'assertHasEvents',
+  'retrieveTaskDetails',
+  'validateTaskInfo',
+  'completeTaskByUser'
 ]);
+
+function boolToYesNo(value) {
+  return value ? 'yes' : 'no';
+}
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -68,6 +79,10 @@ function walk(dir) {
 
 function toPosix(relativePath) {
   return relativePath.split(path.sep).join('/');
+}
+
+function formatDisplayPath(posixPath) {
+  return posixPath.split('/').join(' -> ');
 }
 
 function fileIsDependent(filePath, suiteType) {
@@ -293,14 +308,12 @@ function isFunctionalTag(tag) {
 }
 
 function deriveTagMetadata(tags) {
-  const pipelineTags = [];
   const pipelines = new Set();
   const functionalTags = [];
   const functionalGroups = [];
 
   tags.forEach(tag => {
     if (pipelineTagMap[tag]) {
-      pipelineTags.push(tag);
       pipelineTagMap[tag].forEach(p => pipelines.add(p));
     } else if (isFunctionalTag(tag)) {
       functionalTags.push(tag);
@@ -313,7 +326,6 @@ function deriveTagMetadata(tags) {
 
   return {
     tags,
-    pipelineTags,
     pipelines: Array.from(pipelines),
     functionalTestGroupTags: functionalTags,
     functionalTestGroups: functionalGroups
@@ -328,6 +340,7 @@ function formatDependentFeature(scenarios) {
   const tagMeta = deriveTagMetadata(tags);
   const featureName = scenarios[0].featureName;
   const filePath = scenarios[0].filePath;
+  const displayPath = formatDisplayPath(filePath);
   const flattenedSteps = [];
   scenarios.forEach(scenario => {
     const steps = scenario.collectedSteps || [];
@@ -337,11 +350,11 @@ function formatDependentFeature(scenarios) {
   return {
     testName: featureName || path.basename(filePath),
     featureName,
-    filePath,
-    independentScenario: false,
+    filePath: displayPath,
+    independentScenario: boolToYesNo(false),
     ...tagMeta,
     steps: flattenedSteps,
-    skipped: scenarios.every(s => s.skipped)
+    skipped: boolToYesNo(scenarios.every(s => s.skipped))
   };
 }
 
@@ -351,11 +364,11 @@ function formatIndependentScenario(scenario) {
   return {
     testName: scenario.testName,
     featureName: scenario.featureName,
-    filePath: scenario.filePath,
-    independentScenario: true,
+    filePath: formatDisplayPath(scenario.filePath),
+    independentScenario: boolToYesNo(true),
     ...tagMeta,
     steps: scenario.collectedSteps,
-    skipped: scenario.skipped || false
+    skipped: boolToYesNo(Boolean(scenario.skipped))
   };
 }
 
