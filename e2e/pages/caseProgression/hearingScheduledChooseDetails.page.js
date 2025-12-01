@@ -34,7 +34,7 @@ module.exports = {
       I.selectOption(this.fields.hearingDuration, '30 minutes');
       I.fillField(this.fields.dayOfHearing, 1);
       I.fillField(this.fields.monthOfHearing, 12);
-      I.fillField(this.fields.yearOfHearing, 2025);
+      I.fillField(this.fields.yearOfHearing, 2026);
       await I.clickContinue();
   }
 
