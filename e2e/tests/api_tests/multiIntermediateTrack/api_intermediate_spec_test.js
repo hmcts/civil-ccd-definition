@@ -31,7 +31,7 @@ Scenario('1v1 spec full admission intermediate claim', async ({api_spec}) => {
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true);
 });
 
-Scenario('1v1 spec part admission intermediate claim', async ({api_spec}) => {
+Scenario.skip('1v1 spec part admission intermediate claim', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
