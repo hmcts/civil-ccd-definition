@@ -113,6 +113,9 @@ set CCD_UI_TESTS=false
 4. (Optional) Both upload scripts accept a JSON path argument if you need to point at a custom file: `yarn upload:ui-docs ../path/to/ui.json`.
 
 ### UI Test Documentation
+<details>
+<summary>Show UI Tests</summary>
+
 <!-- UI_TESTS_TABLE_START -->
 
 | Test Name | Steps | Tags | Pipelines | Functional Test Groups | Feature Name | File Path | Skipped | Independent Scenario |
@@ -180,7 +183,12 @@ set CCD_UI_TESTS=false
 
 <!-- UI_TESTS_TABLE_END -->
 
+</details>
+
 ### API Test Documentation
+<details>
+<summary>Show API Tests</summary>
+
 <!-- API_TESTS_TABLE_START -->
 
 | Test Name | Steps | Tags | Pipelines | Functional Test Groups | Feature Name | File Path | Skipped | Independent Scenario |
@@ -383,6 +391,8 @@ set CCD_UI_TESTS=false
 | Validate discontinue claim claimant 1v2 scenario | 1. api_spec.createClaimWithRepresentedRespondent<br/>2. api_spec.discontinueClaim<br/>3. api_spec.validateDiscontinueClaimClaimant | @api-nightly-prod | civil-service: nightly |  | CCD Settle and discontinue claim 2v1 API test | e2e -> tests -> api_tests -> settle-discontinue -> api_settle_discontinue_claim_2v1_spec_test.js | no | yes |
 
 <!-- API_TESTS_TABLE_END -->
+
+</details>
 
 ### Testing in IntelliJ (Ultimate Edition)
 1) Running a test_name.js
