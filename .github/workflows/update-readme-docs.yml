@@ -22,11 +22,14 @@ jobs:
 
       - name: Regenerate documentation JSON
         run: |
-          yarn doc:ui
-          yarn doc:api
+          yarn test:generate:ui-docs
+          yarn test:generate:api-docs
 
-      - name: Update README tables
-        run: yarn doc:readme
+      - name: Update README UI table
+        run: yarn test:readme:ui-docs
+
+      - name: Update README API table
+        run: yarn test:readme:api-docs
 
       - name: Commit and push README updates
         uses: stefanzweifel/git-auto-commit-action@v5

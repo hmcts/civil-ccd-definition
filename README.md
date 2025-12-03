@@ -100,17 +100,21 @@ set CCD_UI_TESTS=false
 
 ## Generating CodeceptJS E2E Test Documentation
 
-1. Generate the latest JSON catalogues:
-   - `yarn doc:ui` writes `e2e/e2e-documentation/results/codeceptjs-ui-tests.json`.
-   - `yarn doc:api` writes `e2e/e2e-documentation/results/codeceptjs-api-tests.json`.
-2. Ensure Confluence credentials exist in the environment:
-   - `CONFLUENCE_PERSONAL_ACCESS_TOKEN`
-   - `CONFLUENCE_BASE_URL`
-   - `CONFLUENCE_PAGE_ID`
-3. Upload the tables:
-   - `yarn upload:ui-docs` updates the “UI Tests” heading using the generated UI JSON.
-   - `yarn upload:api-docs` updates the “API Tests” heading using the generated API JSON.
-4. (Optional) Both upload scripts accept a JSON path argument if you need to point at a custom file: `yarn upload:ui-docs ../path/to/ui.json`.
+Generating test documentation JSON:
+1. `yarn test:generate:ui-docs` writes e2e/e2e-documentation/results/codeceptjs-ui-tests.json.
+2. `yarn test:generate:api-docs` writes e2e/e2e-documentation/results/codeceptjs-api-tests.json.
+
+Uploading to Confluence:
+1. Export `CONFLUENCE_PERSONAL_ACCESS_TOKEN`, `CONFLUENCE_BASE_URL`, and `CONFLUENCE_PAGE_ID`.
+2. `yarn test:confluence:ui-docs` updates the "UI Tests" table on the Confluence page.
+3. `yarn test:confluence:api-docs` updates the "API Tests" table.
+4. Optional: pass a custom JSON path as the first argument to either script.
+
+Updating README tables:
+1. `yarn test:readme:ui-docs` refreshes the UI section and `yarn test:readme:api-docs` refreshes the API section (run both commands to update the entire table set).
+2. Optional: pass a custom JSON path as the first argument to either script (e.g. `yarn test:readme:ui-docs ../path/to/ui.json`).
+3. Commit README changes if required.
+4. The workflow in .github/workflows/update-readme-docs.yml runs these scripts automatically on master.
 
 ### UI Test Documentation
 <details>

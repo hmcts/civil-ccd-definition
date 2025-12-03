@@ -27,7 +27,7 @@ function safeValue(value, key) {
   }
 
   if (Array.isArray(value)) {
-    if (value.length === 0) {
+    if (!value.length) {
       return '';
     }
     const separator = DOUBLE_BREAK_FIELDS.has(key) ? '<br/><br/>' : '<br/>';
@@ -44,15 +44,12 @@ function safeValue(value, key) {
 function generateMarkdownTable(jsonPath) {
   const items = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
   let markdown = '';
-
   markdown += `| ${COLUMN_ORDER.map(col => col.label).join(' | ')} |\n`;
   markdown += `| ${COLUMN_ORDER.map(() => '---').join(' | ')} |\n`;
-
   items.forEach(item => {
     const row = COLUMN_ORDER.map(({ key }) => safeValue(item[key], key));
     markdown += `| ${row.join(' | ')} |\n`;
   });
-
   return markdown.trim();
 }
 
