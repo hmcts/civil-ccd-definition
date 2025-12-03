@@ -7,6 +7,8 @@ Civil CCD Definition and E2E tests
 - [Building and deploying application](#building-and-deploying-the-application)
 - [Testing](#testing)
 - [Adding Git Conventions](#adding-git-conventions)
+- [UI Test Documentation](#ui-test-documentation)
+- [API Test Documentation](#api-test-documentation)
 
 ## Building and deploying the application
 
@@ -110,7 +112,7 @@ set CCD_UI_TESTS=false
    - `yarn upload:api-docs` updates the “API Tests” heading using the generated API JSON.
 4. (Optional) Both upload scripts accept a JSON path argument if you need to point at a custom file: `yarn upload:ui-docs ../path/to/ui.json`.
 
-### UI Test Catalogue
+### UI Test Documentation
 <!-- UI_TESTS_TABLE_START -->
 
 | Test Name | Steps | Tags | Pipelines | Functional Test Groups | Feature Name | File Path | Skipped | Independent Scenario |
@@ -178,7 +180,7 @@ set CCD_UI_TESTS=false
 
 <!-- UI_TESTS_TABLE_END -->
 
-### API Test Catalogue
+### API Test Documentation
 <!-- API_TESTS_TABLE_START -->
 
 | Test Name | Steps | Tags | Pipelines | Functional Test Groups | Feature Name | File Path | Skipped | Independent Scenario |
