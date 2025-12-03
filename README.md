@@ -96,6 +96,20 @@ Before running API tests, you will need the `SENDGRID_API_KEY` environment varia
 To run API tests enter `yarn test:api`.
 set CCD_UI_TESTS=false
 
+## Generating CodeceptJS E2E Test Documentation
+
+1. Generate the latest JSON catalogues:
+   - `yarn doc:ui` writes `e2e/e2e-documentation/results/codeceptjs-ui-tests.json`.
+   - `yarn doc:api` writes `e2e/e2e-documentation/results/codeceptjs-api-tests.json`.
+2. Ensure Confluence credentials exist in the environment:
+   - `CONFLUENCE_PERSONAL_ACCESS_TOKEN`
+   - `CONFLUENCE_BASE_URL`
+   - `CONFLUENCE_PAGE_ID`
+3. Upload the tables:
+   - `yarn upload:ui-docs` updates the “UI Tests” heading using the generated UI JSON.
+   - `yarn upload:api-docs` updates the “API Tests” heading using the generated API JSON.
+4. (Optional) Both upload scripts accept a JSON path argument if you need to point at a custom file: `yarn upload:ui-docs ../path/to/ui.json`.
+
 ### Testing in IntelliJ (Ultimate Edition)
 1) Running a test_name.js
 - Select the .js file containing the tests you want to run and modify its run configuration.
@@ -211,4 +225,3 @@ For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some m
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
