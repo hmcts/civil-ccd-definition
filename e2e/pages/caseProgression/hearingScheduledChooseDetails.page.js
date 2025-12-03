@@ -1,5 +1,6 @@
 const {I} = inject();
 const config = require('./../../config');
+const {dateNoWeekendsBankHolidayNextDay} = require('../../api/dataHelper');
 
 module.exports = {
   fields: {
@@ -32,9 +33,13 @@ module.exports = {
       I.click(this.fields.selectChannel.options.person);
       I.selectOption(this.fields.hearingTimeHourMinute, '08:00');
       I.selectOption(this.fields.hearingDuration, '30 minutes');
-      I.fillField(this.fields.dayOfHearing, 1);
-      I.fillField(this.fields.monthOfHearing, 12);
-      I.fillField(this.fields.yearOfHearing, 2025);
+
+      const dateString = await dateNoWeekendsBankHolidayNextDay(2);
+      const [year, month, day] = dateString.split('-');
+
+      I.fillField(this.fields.dayOfHearing, day);
+      I.fillField(this.fields.monthOfHearing, month);
+      I.fillField(this.fields.yearOfHearing, year);
       await I.clickContinue();
   }
 
