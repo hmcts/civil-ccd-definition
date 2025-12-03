@@ -1,0 +1,35 @@
+name: Update README Test Documentation Tables
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  generate-readme-tables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Regenerate documentation JSON
+        run: |
+          yarn doc:ui
+          yarn doc:api
+
+      - name: Update README tables
+        run: yarn doc:readme
+
+      - name: Commit and push README updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh README test documentation tables"
+          branch: master
