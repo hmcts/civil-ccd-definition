@@ -3,12 +3,13 @@ const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFiles
 const functional = process.env.FUNCTIONAL;
 
 const ccdPipelineTests = [
-      './e2e/tests/ui_tests/**/*_test.js',
+      './e2e/tests/ui_tests/{*,**/*}_test.js',
       './e2e/tests/api_tests/lrspec_cui/*_test.js',
     ];
 
 const civilServiceAndCamundaTests = [
-  './e2e/tests/api_tests/**/*_test.js',
+  './e2e/tests/api_tests/{*,**/*}_test.js',
+  './e2e/tests/api_tests/*_test.js',
 ];
 
 const getTests = () => {
