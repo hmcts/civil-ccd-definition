@@ -18,7 +18,7 @@ module.exports = {
         description: `[Respond to a query](/query-management/query/\${[CASE_REFERENCE]}/3/${queryId})`,
         role_category: 'CTSC',
         minor_priority: 500,
-        major_priority: 5000
+        major_priority: 2000
     }),
     respondToQueryCTSCTask: (queryId, specTask=false) => ({
         name: 'Respond to a query',
