@@ -22,7 +22,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('1v2 Same Solicitor Claim Journey @e2e-unspec-fast @e2e-multiparty @e2e-1v2SS @e2e-nightly-prod');
+Feature('1v2 Same Solicitor Claim Journey').tag('@e2e-unspec-fast @e2e-nightly-prod');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have the same solicitor', async ({I}) => {
   await I.login(config.applicantSolicitorUser);

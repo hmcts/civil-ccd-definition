@@ -4,13 +4,7 @@ const config = require('../../../config.js');
 const {PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 
-Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS @api-nightly-prod @api-unspec-full-defence @QM');
-
-async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
-  const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
-  await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-  await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
-}
+Feature('Unspec 1v2SS api journey').tag('@api-nightly-prod @api-unspec-full-defence');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -53,17 +47,17 @@ Scenario('Claimant response', async ({I, api}) => {
 });
 
 Scenario('Claimant queries', async ({ api, qmSteps }) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.applicantSolicitorUser, config.ctscAdminUser,
-    PUBLIC_QUERY, false,
-  );
+  const caseId = await api.getCaseId();
+  const query = await qmSteps.raiseLRQuery(caseId, config.applicantSolicitorUser, PUBLIC_QUERY, false);
+  await qmSteps.respondToQuery(caseId, config.ctscAdminUser, query, PUBLIC_QUERY);
+  await qmSteps.followUpOnLRQuery(caseId, config.applicantSolicitorUser, query, PUBLIC_QUERY);
 });
 
 Scenario('Defendant queries', async ({ api, qmSteps }) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
-    PUBLIC_QUERY, true,
-  );
+  const caseId = await api.getCaseId();
+  const query = await qmSteps.raiseLRQuery(caseId, config.defendantSolicitorUser, PUBLIC_QUERY, true);
+  await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, query, PUBLIC_QUERY);
+  await qmSteps.followUpOnLRQuery(caseId, config.defendantSolicitorUser, query, PUBLIC_QUERY);
 });
 
 

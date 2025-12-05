@@ -21,9 +21,9 @@ const respondent1 = {
 
 let caseNumber; 
 
-Feature('1v1 - Claim Journey @e2e-unspec-fast @e2e-1v1 @e2e-nightly-prod');
+Feature('1v1 - Claim Journey').tag('@e2e-unspec-fast @e2e-nightly-prod');
 
-Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
+Scenario('Applicant solicitor creates claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();

@@ -4,7 +4,7 @@ const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let caseNumber;
 
-Feature('1v2 Different Solicitors General application creation @api-unspec @api-nightly-prod');
+Feature('1v2DS general application creation').tag('@api-nightly-prod');
 
 Scenario('Make a general application', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

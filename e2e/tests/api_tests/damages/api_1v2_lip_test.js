@@ -1,7 +1,8 @@
  
 
 const config = require('../../../config.js');
-Feature('CCD 1v2 2 Lips API test @api-unspec @api-multiparty @api-tests-1v2 @api-cos @api-nightly-prod');
+
+Feature('Unspec 1v2lips api journey').tag('@api-cos @api-nightly-prod');
 
 Scenario('Create claim where one respondent is LIP one is LR and notify/notify details', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,

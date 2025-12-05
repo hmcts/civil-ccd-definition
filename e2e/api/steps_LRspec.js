@@ -1942,6 +1942,7 @@ const assertValidData = async (data, pageId) => {
   } else {
     userData = data.userInput[pageId];
   }
+
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
     eventName,
@@ -2265,7 +2266,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.userInput)) {
-    if (pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
+    if (pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts' || pageId === 'FixedRecoverableCostsIntermediate') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }

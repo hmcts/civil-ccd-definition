@@ -3,42 +3,13 @@ const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFiles
 const functional = process.env.FUNCTIONAL;
 
 const ccdPipelineTests = [
-      './e2e/tests/ui_tests/*.js',
-      './e2e/tests/ui_tests/damages/*_test.js',
-      './e2e/tests/ui_tests/lrspec/*_test.js',
-      './e2e/tests/ui_tests/damages/nightly/*_test.js',
-      './e2e/tests/ui_tests/noticeofchange/*_test.js',
-      './e2e/tests/ui_tests/manageContactInformation/*_test.js',
-      './e2e/tests/ui_tests/settle_discontinue/*_test.js',
-      './e2e/tests/ui_tests/sdo/*_test.js',
-      './e2e/tests/ui_tests/carm/*_test.js',
-      './e2e/tests/ui_tests/minti/*_test.js',
-      './e2e/tests/ui_tests/refunds/*_test.js',
-      './e2e/tests/ui_tests/default_judgement/*_test.js',
-      './e2e/tests/ui_tests/JudgmentOnline/*_test.js',
-      './e2e/tests/ui_tests/hearings/*_test.js',
-      './e2e/tests/ui_tests/query_management/*_test.js',
+      './e2e/tests/ui_tests/{*,**/*}_test.js',
       './e2e/tests/api_tests/lrspec_cui/*_test.js',
     ];
 
 const civilServiceAndCamundaTests = [
-  './e2e/tests/api_tests/*.js',
-  './e2e/tests/api_tests/judgmentOnline/*_test.js',
-  './e2e/tests/api_tests/mediation/*_test.js',
-  './e2e/tests/api_tests/sdo_R2/*_test.js',
-  './e2e/tests/api_tests/generalapplication/*_test.js',
-  './e2e/tests/api_tests/defaultJudgments/*_test.js',
-  './e2e/tests/api_tests/damages/*_test.js',
-  './e2e/tests/api_tests/sdo/*_test.js',
-  './e2e/tests/api_tests/hearings/*_test.js',
-  './e2e/tests/api_tests/bulkclaim/*_test.js',
-  './e2e/tests/api_tests/lrspec/*_test.js',
-  './e2e/tests/api_tests/lrspec_cui/*_test.js',
-  './e2e/tests/api_tests/settle-discontinue/*_test.js',
-  './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
-  './e2e/tests/api_tests/settle-discontinue/*_test.js',
-  './e2e/tests/api_tests/automated_hearing_notice/*_test.js',
-  './e2e/tests/api_tests/caseworkerEvents/*_test.js',
+  './e2e/tests/api_tests/{*,**/*}_test.js',
+  './e2e/tests/api_tests/*_test.js',
 ];
 
 const getTests = () => {

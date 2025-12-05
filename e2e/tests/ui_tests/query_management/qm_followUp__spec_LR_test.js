@@ -6,18 +6,14 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec @non-prod-e2e-ft @e2e-nightly-prod');
+Feature('Query Management - Raise, Respond and Follow up Queries').tag('@non-prod-e2e-ft @e2e-nightly-prod');
 
-async function prepareClaim(api_spec, mpScenario) {
+Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
+  const mpScenario = 'ONE_V_ONE';
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'JUDICIAL_REFERRAL', false, true);
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
-}
-
-Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
-  const mpScenario = 'ONE_V_ONE';
-  await prepareClaim(api_spec, mpScenario);
   let query;
   query = await qmSteps.raiseLRQuery(caseId, config.applicantSolicitorUser, PUBLIC_QUERY, false);
   await qmSteps.respondToQuery(caseId, config.ctscAdminUser, query, PUBLIC_QUERY);
@@ -44,4 +40,3 @@ Scenario('Judge can access to a query', async ({ I }) => {
 AfterSuite(async ({ api_spec }) => {
   await api_spec.cleanUp();
 });
-

@@ -12,9 +12,9 @@ if (config.runWAApiTest) {
   validScheduleAHearingTask = require('../../../../wa/tasks/scheduleADisposalHearing.js');
 }
 
-Feature('1v1 Unspec defaultJudgement @e2e-nightly-prod @e2e-dj-unspec');
+Feature('1v1 unspec default judgment').tag('@e2e-nightly-prod @e2e-dj-unspec');
 
-Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-task', async ({I, api}) => {
+Scenario('Create 1v1 unspec claim, notify claim, notify claim details, request default judgement', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
   caseId = await api.getCaseId();
 
@@ -26,19 +26,19 @@ Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJUnspec(caseId, 'ONE_V_ONE');
-}).retry(2);
+}).retry(2).tag('@master-e2e-ft @wa-task');
 
 //DTSCCI-358
-Scenario.skip('Judge add case notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Judge add case notes', async ({I, api}) => {
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGE');
   await I.waitForText('How do you want to add a case note?');
   await I.judgeAddsCaseNotes();
-}).retry(2);
+}).retry(2).tag('@master-e2e-ft');
 
-Scenario('Judge perform direction order @wa-task', async ({I, api, WA}) => {
+Scenario('Judge perform direction order', async ({I, api, WA}) => {
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
@@ -54,9 +54,9 @@ Scenario('Judge perform direction order @wa-task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(judgeUserToBeUsed, taskId);
   }
-}).retry(2);
+}).retry(2).tag('@wa-task');
 
-Scenario('Hearing schedule @wa-task', async ({I, api, WA}) => {
+Scenario('Hearing schedule', async ({I, api, WA}) => {
   //Permission fields in task details are different in AAT and Demo.
   if (config.runWAApiTest && ['aat'].includes(config.runningEnv)) {
     const scheduleAHearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
@@ -65,22 +65,22 @@ Scenario('Hearing schedule @wa-task', async ({I, api, WA}) => {
     taskId = scheduleAHearingTask['id'];
   }
   await createHearingScheduled(I);
-}).retry(2);
+}).retry(2).tag('@wa-task');
 
-Scenario.skip  ('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Verify error on trial readiness', async ({I, api}) => {
   await api.amendHearingDate(config.systemupdate, '2022-01-10');
   hearingDateIsLessThan3Weeks = true;
   await performConfirmTrialReadiness(I, config.defendantSolicitorUser, 'yes');
 }).retry(2);
 
-Scenario.skip('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Confirm trial readiness', async ({I, api}) => {
   await api.amendHearingDate(config.systemupdate, '2025-01-10');
   hearingDateIsLessThan3Weeks = false;
   await performConfirmTrialReadiness(I, config.applicantSolicitorUser, hearingDateIsLessThan3Weeks, 'no');
   await performConfirmTrialReadiness(I, config.defendantSolicitorUser, hearingDateIsLessThan3Weeks, 'yes');
 }).retry(2);
 
-Scenario.skip('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
+Scenario.skip('Pay hearing fee', async ({I}) => {
   await payHearingFee(I);
 }).retry(2);
 
@@ -106,28 +106,28 @@ async function payHearingFee(I, user = config.applicantSolicitorUser) {
 }
 
 //DTSCCI-358
-Scenario.skip('Verify Challenged access check for judge @e2e-wa @wa-r4', async ({I, WA}) => {
+Scenario.skip('Verify Challenged access check for judge', async ({I, WA}) => {
   if (config.runWAApiTest) {
     await I.login(config.judgeUser2WithRegionId4);
     await WA.runChallengedAccessSteps(caseId);
   }
 }).retry(2);
 
-Scenario.skip('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, WA}) => {
+Scenario.skip('Verify Challenged access check for admin', async ({I, WA}) => {
   if (config.runWAApiTest) {
     await I.login(config.hearingCenterAdminWithRegionId4);
     await WA.runChallengedAccessSteps(caseId);
   }
 }).retry(2);
 
-Scenario.skip('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
+Scenario.skip('Verify Challenged access check for legalops', async ({I, WA}) => {
   if (config.runWAApiTest) {
     await I.login(config.tribunalCaseworkerWithRegionId4);
     await WA.runChallengedAccessSteps(caseId);
   }
 }).retry(2);
 
-Scenario.skip('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for judge', async ({I, WA, api}) => {
   await I.login(config.iacLeadershipJudge);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
@@ -142,13 +142,13 @@ Scenario.skip('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I
   await WA.verifyApprovedSpecificAccess(caseId);
 }).retry(2);
 
-Scenario.skip('Request Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
+Scenario.skip('Request Specific access check for admin', async ({I, WA, api}) => {
    let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
    await I.login(userToBeLoggedIn);
    await WA.runSpecificAccessRequestSteps(caseId);
  }).retry(2);
 
- Scenario.skip('Approve Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
+ Scenario.skip('Approve Specific access check for admin', async ({I, WA, api}) => {
   if (config.runWAApiTest) {
     const sarTask = await api.retrieveTaskDetails(config.nbcTeamLeaderWithRegionId1, caseId, config.waTaskIds.reviewSpecificAccessRequestAdmin);
   } else {
@@ -159,13 +159,13 @@ Scenario.skip('Request Specific access check for admin @e2e-wa  @wa-r4', async (
   await WA.runSpecificAccessApprovalSteps(caseId);
 }).retry(2);
 
-Scenario.skip('Verify approved Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
+Scenario.skip('Verify approved Specific access check for admin', async ({I, WA, api}) => {
   let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
   await I.login(userToBeLoggedIn);
   await WA.verifyApprovedSpecificAccess(caseId);
 }).retry(2);
 
-Scenario.skip('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for legalops', async ({I, WA, api}) => {
   await I.login(config.iacLegalOpsUser);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
@@ -181,7 +181,7 @@ Scenario.skip('Verify Specific access check for legalops @e2e-wa', async ({I, WA
 }).retry(2);
 
 
-Scenario.skip('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for CTSC', async ({I, WA, api}) => {
   await I.login(config.iacCtscTeamLeaderUser);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
@@ -196,12 +196,12 @@ Scenario.skip('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, ap
   await WA.verifyApprovedSpecificAccess(caseId);
 }).retry(2);
 
-Scenario.skip('Verify Staff UI @e2e-wa @wa-r4', async ({I, WA, api}) => {
+Scenario.skip('Verify Staff UI', async ({I, WA, api}) => {
   await I.login(config.staffUIAdmin);
   await WA.verifyStaffLink();
 }).retry(2);
 
-Scenario.skip('Verify Judicial booking UI  @e2e-wa @wa-r4', async ({I, WA, api}) => {
+Scenario.skip('Verify Judicial booking UI', async ({I, WA, api}) => {
   await I.login(config.feePaidJudge);
   await WA.createBooking('Central London County Court');
   await WA.createBooking('Liverpool Civil and Family Court');

@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 
-Feature('RPA handoff points tests @rpa-handoff-tests-spec');
+Feature('RPA handoff points api tests');
 
 Scenario('Defendant response  and claimant intention - Full defence', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');

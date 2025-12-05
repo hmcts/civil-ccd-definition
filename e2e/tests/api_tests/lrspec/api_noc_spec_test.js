@@ -7,7 +7,7 @@ const {
 } = require('../../../config');
 const config = require('../../../config.js');
 
-Feature('Notice of Change on Specified Claim API test @api-noc @api-noc-spec @api-nightly-prod');
+Feature('Notice of Change on Specified Claim API test').tag('@api-noc @api-nightly-prod');
 
 
 Scenario('notice of change - 1v1 - represented defendant', async ({api_spec, noc}) => {
