@@ -18,6 +18,8 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
+        env:
+          YARN_ENABLE_SCRIPTS: "false"
         run: yarn install --frozen-lockfile
 
       - name: Regenerate documentation JSON
