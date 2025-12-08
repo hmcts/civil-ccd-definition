@@ -419,8 +419,7 @@ module.exports = function () {
           () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
         ]),
         ...secondDefendantSteps(respondent2, respondent1.represented),
-        ...conditionalSteps( [
-          () => addClaimForAFlightDelay.enteredFlightDelayClaimYes()]),
+        () => addClaimForAFlightDelay.enteredFlightDelayClaimYes(),
         () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
         () => specTimelinePage.addManually(),
         () => specAddTimelinePage.addTimeline(),
@@ -431,13 +430,12 @@ module.exports = function () {
         () => specInterestValuePage.selectInterest(),
         () => specInterestRatePage.selectInterestRate(),
         () => specInterestDateStartPage.selectInterestDateStart(),
-        () => specInterestDateEndPage.selectInterestDateEnd(),
+        // () => specInterestDateEndPage.selectInterestDateEnd(),
         () => this.clickContinue(),
         () => pbaNumberPage.clickContinue(),
         () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
-        ...conditionalSteps( [
-          () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
+        () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation(),
         () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
         () => event.returnToCaseDetails(),
       ];

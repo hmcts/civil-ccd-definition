@@ -6,7 +6,8 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
 // To use on local because the idam images are different:
 // const caseWorkerUser = config.hearingCenterAdminLocal;
 
-Feature('CCD Settle and discontinue claim 2v1 API test @api-spec @api-settle-discont @api-nightly-prod');
+Feature('CCD Settle and discontinue claim 2v1 API test').tag('@api-nightly-prod');
+
 Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, 'TWO_V_ONE');
     await api_spec.createCaseFlags(caseWorkerUser);
