@@ -295,6 +295,13 @@ withPipeline(type, product, component) {
 
   afterAlways('functionalTest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+    allure([
+      includeProperties: false,
+      jdk: '',
+      properties: [],
+      reportBuildPolicy: 'ALWAYS',
+      results: [[path: 'test-results/functional/allure-results']]
+    ])
   }
 
   before('smoketest:aat') {
