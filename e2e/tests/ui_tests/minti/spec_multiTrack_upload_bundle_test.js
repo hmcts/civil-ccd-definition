@@ -5,15 +5,11 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
-Feature('Multi track - Upload documents - Bundle @e2e-nightly-prod @e2e-minti');
-
-async function prepareSpecClaim(api_spec, mpScenario) {
-  civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);
-}
+Feature('Multi track - Upload documents - Bundle').tag('@e2e-nightly-prod @e2e-minti');
 
 Scenario('Spec Claim - Multi track - 1v2 same solicitor - Upload bundle', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';
-  await prepareSpecClaim(api_spec, mpScenario);
+  civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountMulti);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL', false, true);
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
