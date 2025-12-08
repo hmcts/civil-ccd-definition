@@ -106,7 +106,7 @@ exports.config = {
     allure: {
       enabled: true,
       require: "allure-codeceptjs",
-      resultsDir: "allure-results",
+      resultsDir: "test-results/functional/allure-results",
     },
   },
   mocha: {
