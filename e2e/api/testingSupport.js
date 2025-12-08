@@ -7,8 +7,10 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 30;
-const RETRY_TIMEOUT_MS = 5000;
+// Optimized retry configuration for Camunda business process waits
+const MAX_RETRIES = 20; // Reduced from 30 (most processes complete much faster)
+const INITIAL_RETRY_TIMEOUT_MS = 2000; // Reduced from 5000 (check more frequently initially)
+const MAX_RETRY_TIMEOUT_MS = 10000; // Cap exponential backoff at 10 seconds
 
 const checkFlagEnabled = async (flag) => {
   const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -53,26 +55,60 @@ module.exports =  {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
 
-    await retry(() => {
-      return restHelper.request(
-        `${config.url.civilService}/testing-support/case/${caseId}/business-process`,
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`,
-          'ServiceAuthorization': s2sAuth
-        }, null, 'GET')
-        .then(async response => await response.json()).then(response => {
-          let businessProcess = response.businessProcess;
-          if (response.incidentMessage) {
-            incidentMessage = response.incidentMessage;
-          } else if (businessProcess && businessProcess.status !== 'FINISHED') {
-            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
-              + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
+    let retryTimeout = INITIAL_RETRY_TIMEOUT_MS;
+    let attempts = 0;
+    let currentIncidentMessage = null;
+
+    while (attempts < MAX_RETRIES) {
+      try {
+        const response = await restHelper.request(
+          `${config.url.civilService}/testing-support/case/${caseId}/business-process`,
+          {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`,
+            'ServiceAuthorization': s2sAuth
+          }, null, 'GET');
+
+        const responseData = await response.json();
+        const businessProcess = responseData.businessProcess;
+
+        if (responseData.incidentMessage) {
+          currentIncidentMessage = responseData.incidentMessage;
+          break; // Exit loop if incident detected
+        } else if (businessProcess && businessProcess.status === 'FINISHED') {
+          // Success - process finished
+          if (currentIncidentMessage) {
+            throw new Error(`Business process failed for case: ${caseId}, incident message: ${currentIncidentMessage}`);
           }
-      });
-    }, MAX_RETRIES, RETRY_TIMEOUT_MS);
-    if (incidentMessage)
-      throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
+          return; // Success
+        } else if (businessProcess) {
+          // Process not finished yet, will retry
+          throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
+            + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
+        } else {
+          throw new Error(`Invalid response: businessProcess not found for case: ${caseId}`);
+        }
+      } catch (error) {
+        attempts++;
+        if (attempts >= MAX_RETRIES) {
+          // Final attempt failed
+          if (currentIncidentMessage) {
+            throw new Error(`Business process failed for case: ${caseId}, incident message: ${currentIncidentMessage}`);
+          }
+          throw error;
+        }
+        // Exponential backoff: increase timeout, but cap at MAX_RETRY_TIMEOUT_MS
+        console.log(`Business process not finished for case ${caseId}, retrying in ${retryTimeout / 1000} seconds (Attempt ${attempts}/${MAX_RETRIES})`);
+        await new Promise(resolve => setTimeout(resolve, retryTimeout));
+        retryTimeout = Math.min(retryTimeout * 1.5, MAX_RETRY_TIMEOUT_MS);
+      }
+    }
+
+    // If we exit the loop without returning, something went wrong
+    if (currentIncidentMessage) {
+      throw new Error(`Business process failed for case: ${caseId}, incident message: ${currentIncidentMessage}`);
+    }
+    throw new Error(`Business process did not finish for case: ${caseId} within ${MAX_RETRIES} attempts`);
   },
   waitForCompletedCamundaProcess: async (definitionKey, processInstanceId, variables) => {
     const authToken = await idamHelper.accessToken(config.systemUpdate2);
@@ -101,7 +137,7 @@ module.exports =  {
             throw new Error('Waiting for camunda process to complete');
           }
         });
-    }, 10, RETRY_TIMEOUT_MS);
+    }, 10, INITIAL_RETRY_TIMEOUT_MS);
   },
 
   assignCaseToDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {
