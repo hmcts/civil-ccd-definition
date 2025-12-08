@@ -9,7 +9,7 @@ if (config.runWAApiTest) {
   caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
 }
 
-Feature('CCD 2v1 API test @api-dj-2v1, @api-dj @dmn-task-dj @api-nightly-prod');
+Feature('Unspec 2v1 api default judgment journey').tag('@api-dj @api-nightly-prod');
 
 let caseId;
 
@@ -41,18 +41,16 @@ Scenario('Default Judgment claim SDO', async ({I, api}) => {
 });
 
 Scenario('Case progression tests (Upload evidence, schedule a hearing, amend hearing date, pay fee, confirm trial readiness)', async ({I, api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'NOTE_ONLY', 'CASE_PROGRESSION');
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_ONLY', 'CASE_PROGRESSION');
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_AND_NOTE', 'CASE_PROGRESSION');
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
-    await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
-  }
+  await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'NOTE_ONLY', 'CASE_PROGRESSION');
+  await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_ONLY', 'CASE_PROGRESSION');
+  await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_AND_NOTE', 'CASE_PROGRESSION');
+  await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
+  await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+  await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+  await api.amendHearingDueDate(config.systemupdate);
+  await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+  await api.trialReadiness(config.applicantSolicitorUser);
+  await api.trialReadiness(config.defendantSolicitorUser);
 });
 
 Scenario('Verify Case progression trial bundle', async ({I, api, WA}) => {

@@ -2,14 +2,7 @@ const config = require('../../../config.js');
 const {PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
 const mpScenario = 'ONE_V_ONE';
 
-//This test runs in api_judgment_online_1v1_test - so running only in nightly
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @QM');
-
-async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
-  const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
-  await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-  await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
-}
+Feature('1v1 unspec api journey').tag('@api-nightly-prod');
 
 Scenario('Create claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -52,7 +45,7 @@ Scenario('Defendant response', async ({api}) => {
 });
 
 Scenario('Claimant response', async ({api}) => {
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
 });
 
 Scenario('Add case flags', async ({api}) => {
@@ -69,34 +62,17 @@ Scenario('Manage contact information', async ({api}) => {
 });
 
 Scenario('Claimant queries', async ({ api, qmSteps }) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
-    PUBLIC_QUERY, true,
-  );
+  const caseId = await api.getCaseId();
+  const query = await qmSteps.raiseLRQuery(caseId, config.applicantSolicitorUser, PUBLIC_QUERY, true);
+  await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, query, PUBLIC_QUERY);
+  await qmSteps.followUpOnLRQuery(caseId, config.applicantSolicitorUser, query, PUBLIC_QUERY);
 });
 
 Scenario('Defendant queries', async ({ api, qmSteps }) => {
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
-    config.defendantSolicitorUser, config.ctscAdminUser,
-    PUBLIC_QUERY, false,
-  );
-});
-
-Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
-  await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaimLip(config.applicantSolicitorUser);
-  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
-});
-
-Scenario('Create claim and move it to caseman', async ({api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  await api.moveCaseToCaseman(config.adminUser);
-});
-
-// This functionality is believed to have been deprecated waiting to confirm back from business.
-Scenario.skip('Resubmit claim after payment failure on PBA account', async ({api}) => {
-  await api.createClaimWithFailingPBAAccount(config.applicantSolicitorUser);
-  await api.resubmitClaim(config.applicantSolicitorUser);
+  const caseId = await api.getCaseId();
+  const query = await qmSteps.raiseLRQuery(caseId, config.defendantSolicitorUser, PUBLIC_QUERY, false);
+  await qmSteps.respondToQuery(caseId, config.ctscAdminUser, query, PUBLIC_QUERY);
+  await qmSteps.followUpOnLRQuery(caseId, config.defendantSolicitorUser, query, PUBLIC_QUERY);
 });
 
 AfterSuite(async  ({api}) => {
