@@ -18,22 +18,17 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with flight delay @e2e-spec-fast @e2e-spec-1v2DS').tag('@e2e-nightly-prod');
+Feature('Claim creation 1v2 Diff Solicitor with flight delay').tag('@e2e-nightly-prod @e2e-spec-fast');
 
-Scenario.skip('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for flight delay @create-claim-spec', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for flight delay @create-claim-spec');
+Scenario('Applicant solicitor creates 1v2DS specified claim defendant Different LRs for flight delay', async ({LRspec}) => {
+  await LRspec.login(config.applicantSolicitorUser);
+  await LRspec.createCaseSpecifiedForFlightDelay('1v2 Different LRs fast claim','Organisation', null, respondent1, respondent2, 15450);
+  caseNumber = await LRspec.grabCaseNumber();
+  await serviceRequest.openServiceRequestTab();
+  await serviceRequest.payFee(caseNumber);
 
-    await LRspec.login(config.applicantSolicitorUser);
-    //await LRspec.createCaseSpecified('1v2 Different LRs fast claim','Individual', null, respondent1, respondent2, 15450);
-    await LRspec.createCaseSpecifiedForFlightDelay('1v2 Different LRs fast claim','Organisation', null, respondent1, respondent2, 15450);
-    caseNumber = await LRspec.grabCaseNumber();
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-
-    addUserCaseMapping(caseId(), config.applicantSolicitorUser);
-  }
-}).retry(2);
+  addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
+}).retry(0);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
