@@ -19,9 +19,9 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Same Solicitor with Fast track claims @e2e-spec-fast @e2e-nightly-prod');
+Feature('Claim creation 1v2 Same Solicitor with Fast track claims').tag('@e2e-spec-fast @e2e-nightly-prod');
 
-Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims @create-claim-spec', async ({LRspec}) => {
+Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims-spec', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v2 specified claim both defendants same', 'Organisation', null, respondent1, respondent2, 19000);
   caseNumber = await LRspec.grabCaseNumber();
