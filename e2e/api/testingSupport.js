@@ -8,7 +8,7 @@ const {retry} = require('./retryHelper');
 let incidentMessage;
 
 // Optimized retry configuration for Camunda business process waits
-const MAX_RETRIES = 20; // Reduced from 30 (most processes complete much faster)
+const MAX_RETRIES = 40;
 const INITIAL_RETRY_TIMEOUT_MS = 2000; // Reduced from 5000 (check more frequently initially)
 const MAX_RETRY_TIMEOUT_MS = 10000; // Cap exponential backoff at 10 seconds
 
