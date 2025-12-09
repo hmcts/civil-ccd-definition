@@ -1,21 +1,16 @@
 const config = require('../../../config.js');
 const {createAccount} = require('../../../api/idamHelper');
 
-Feature('CCD API test @api-caseworker @api-nightly-prod');
+Feature('CCD API test').tag('@api-nightly-prod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled, claimType = 'SmallClaims') {
-  let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
-  let caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, carmEnabled);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
-  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
-}
-
 Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_spec_cui}) => {
-  await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
+  let caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'FastTrack', false);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'FastTrack', false);
+  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'JUDICIAL_REFERRAL', false);
   await api_spec_cui.stayCase(config.hearingCenterAdminWithRegionId1);
   await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, true);
   await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, false);
@@ -23,7 +18,7 @@ Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_s
   await api_spec_cui.dismissCase(config.hearingCenterAdminWithRegionId1);
 }).retry(1);
 
-Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case @api-nonprod', async ({api_spec}) => {
+Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser);
@@ -39,7 +34,7 @@ Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case @api-nonprod',
   await api_spec.manageStay(config.hearingCenterAdminWithRegionId1, false);
   await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
   await api_spec.dismissCase(config.hearingCenterAdminWithRegionId1);
-}).retry(1);
+}).retry(1).tag('@api-nonprod');
 
 let caseId;
 

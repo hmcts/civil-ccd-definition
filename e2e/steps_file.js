@@ -34,6 +34,7 @@ const uploadParticularsOfClaim = require('./pages/createClaim/uploadParticularsO
 const claimValuePage = require('./pages/createClaim/claimValue.page');
 const pbaNumberPage = require('./pages/createClaim/pbaNumber.page');
 const paymentReferencePage = require('./pages/createClaim/paymentReference.page');
+const determinationWithoutHearingPage = require('./pages/respondToClaimLRspec/determinationWithoutHearing.page.js');
 
 const selectDefendantSolicitorToNotifyPage = require('./pages/notifyClaim/selectDefendantSolicitorToNotify.page');
 const cosNotifyClaimPage = require('./pages/notifyClaim/certificateOfServiceNotifyClaim.page');
@@ -551,6 +552,9 @@ module.exports = function () {
             () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
             ]
           ),
+          ...conditionalSteps(claimValue < 10000, [
+            () => determinationWithoutHearingPage.selectNo(party === parties.RESPONDENT_SOLICITOR_1 ? 'Respondent1' : 'Respondent2'),
+          ]),
           () => expertsPage.enterExpertInformation(party),
           () => witnessPage.enterWitnessInformation(party),
           () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(party),
@@ -584,6 +588,9 @@ module.exports = function () {
         ),
         ...conditionalSteps(claimValue >= 10000, [
           () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
+        ]),
+        ...conditionalSteps(claimValue < 10000, [
+          () => determinationWithoutHearingPage.selectNo(''),
         ]),
         () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
         () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),

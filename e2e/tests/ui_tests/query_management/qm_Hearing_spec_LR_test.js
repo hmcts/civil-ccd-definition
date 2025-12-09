@@ -5,18 +5,14 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Hearing E2E journey @non-prod-e2e-ft @qm-spec');
+Feature('Query Management - Hearing E2E journey').tag('@non-prod-e2e-ft @e2e-nightly-prod');
 
-async function prepareClaim(api_spec) {
+Scenario.skip('Claimant LR raises a query', async ({ api_spec, I }) => {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO', false, true, claimAmountPenniesIntermediate);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', false, true, claimAmountIntermediate);
   await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL', 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL', false, true);
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
-}
-
-Scenario.skip('Claimant LR raises a query', async ({ api_spec, I }) => {
-  await prepareClaim(api_spec);
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
