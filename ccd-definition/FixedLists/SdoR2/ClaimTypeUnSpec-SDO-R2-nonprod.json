@@ -37,8 +37,26 @@
   },
   {
     "ID": "ClaimTypeUnSpec",
+    "ListElementCode": "HOUSING_DISREPAIR",
+    "ListElement": "Housing disrepair",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "ClaimTypeUnSpec",
+    "ListElementCode": "PPI",
+    "ListElement": "PPI",
+    "DisplayOrder": 8
+  },
+  {
+    "ID": "ClaimTypeUnSpec",
+    "ListElementCode": "MOTOR_FINANCE",
+    "ListElement": "Motor Finance",
+    "DisplayOrder": 9
+  },
+  {
+    "ID": "ClaimTypeUnSpec",
     "ListElementCode": "OTHER",
     "ListElement": "Other",
-    "DisplayOrder": 7
+    "DisplayOrder": 10
   }
 ]
