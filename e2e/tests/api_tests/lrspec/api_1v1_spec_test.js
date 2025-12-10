@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD 1v1 API test @api-spec @api-spec-1v1 @api-specified @api-nightly-prod');
+Feature('1v1 spec api journeys').tag('@api-nightly-prod');
 
 Scenario('Create claim spec 1v1', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
@@ -49,14 +49,12 @@ Scenario('1v1 part admit defence claimant and defendant response @api-spec-part-
 });
 
 Scenario('1v1 Settle claim - full defence claimant and defendant response', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-    await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
-    await api_spec.defendantResponse(config.defendantSolicitorUser);
-    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
-      'All_FINAL_ORDERS_ISSUED');
-    await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
-  }
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
+  await api_spec.defendantResponse(config.defendantSolicitorUser);
+  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+    'All_FINAL_ORDERS_ISSUED');
+  await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
 });
 
 AfterSuite(async  ({api_spec}) => {
