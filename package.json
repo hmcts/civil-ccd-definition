@@ -106,7 +106,7 @@
     "codeceptjs": "3.5.11",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
     "deep-equal-in-any-order": "^1.0.28",
-    "dotenv": "^16.4.5",
+    "dotenv": "^17.0.0",
     "eslint": "^9.11.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-codeceptjs": "^1.3.0",
