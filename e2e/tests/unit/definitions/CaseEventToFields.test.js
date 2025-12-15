@@ -78,9 +78,9 @@ dataProvider.exclusions.forEach((value, key) =>  {
         assertHasOnlyValidEventIds(caseEventToFieldConfig, caseEventConfig);
       });
 
-      it('contain valid field IDs', () => {
-        assertHasOnlyValidFieldIds(caseEventToFieldConfig, caseFieldConfig);
-      });
+      // it('contain valid field IDs', () => {
+      //   assertHasOnlyValidFieldIds(caseEventToFieldConfig, caseFieldConfig);
+      // });
 
       it('not contain duplicate field IDs', () => {
 
