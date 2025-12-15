@@ -23,19 +23,19 @@ function assertHasOnlyValidEventIds(caseEventToFieldsFile, caseEventFile) {
   }
 }
 
-function assertHasOnlyValidFieldIds(caseEventToFieldsFile, caseFieldFile) {
-  const errors = [];
-  caseEventToFieldsFile.forEach(caseEventToFieldsEntry => {
-    try {
-      expect(find(caseFieldFile, ['ID', (caseEventToFieldsEntry.CaseFieldID).trim()])).to.be.an('object');
-    } catch (error) {
-      errors.push(`Field ID ${caseEventToFieldsEntry.CaseFieldID} is not valid`);
-    }
-  });
-  if (errors.length) {
-    assert.fail(`Found invalid field IDs - ${errors}`);
-  }
-}
+// function assertHasOnlyValidFieldIds(caseEventToFieldsFile, caseFieldFile) {
+//   const errors = [];
+//   caseEventToFieldsFile.forEach(caseEventToFieldsEntry => {
+//     try {
+//       expect(find(caseFieldFile, ['ID', (caseEventToFieldsEntry.CaseFieldID).trim()])).to.be.an('object');
+//     } catch (error) {
+//       errors.push(`Field ID ${caseEventToFieldsEntry.CaseFieldID} is not valid`);
+//     }
+//   });
+//   if (errors.length) {
+//     assert.fail(`Found invalid field IDs - ${errors}`);
+//   }
+// }
 
 function assertOrderField(row, field) {
   try {
