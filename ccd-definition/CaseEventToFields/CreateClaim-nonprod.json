@@ -553,8 +553,7 @@
     "PageID": "ClaimDeclaration",
     "PageDisplayOrder": 26,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"PPI\" OR claimTypeUnSpec = \"MOTOR_FINANCE\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -566,8 +565,7 @@
     "PageDisplayOrder": 26,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\"",
-    "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"PPI\" OR claimTypeUnSpec = \"MOTOR_FINANCE\""
+    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -590,8 +588,7 @@
     "PageID": "HumanRightsAct",
     "PageDisplayOrder": 27,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"PPI\" OR claimTypeUnSpec = \"MOTOR_FINANCE\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
