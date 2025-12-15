@@ -547,7 +547,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "claimDeclarationAdded",
+    "CaseFieldID": "isClaimDeclarationAdded",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "ClaimDeclaration",
@@ -559,14 +559,14 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "claimDeclarationText",
+    "CaseFieldID": "claimDeclarationDescription",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "ClaimDeclaration",
     "PageDisplayOrder": 26,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimDeclarationAdded = \"Yes\"",
+    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\"",
     "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"PPI\" OR claimTypeUnSpec = \"MOTOR_FINANCE\""
   },
   {
@@ -584,7 +584,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "humanRightsActIssues",
+    "CaseFieldID": "isHumanRightsActIssues",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "HumanRightsAct",

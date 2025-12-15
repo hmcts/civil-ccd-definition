@@ -1009,6 +1009,13 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "humanRightsActGuidance",
+    "Label": "Human Rights Act 1998",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "isHumanRightsActIssues",
     "Label": "Does your claim include any issues under the Human Rights Act 1998?",
     "FieldType": "YesOrNo",
