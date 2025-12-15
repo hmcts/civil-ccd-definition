@@ -995,21 +995,21 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "claimDeclarationAdded",
+    "ID": "isClaimDeclarationAdded",
     "Label": "Do you want to add a declaration?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "claimDeclarationText",
+    "ID": "claimDeclarationDescription",
     "Label": "Declaration narrative",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "humanRightsActIssues",
+    "ID": "isHumanRightsActIssues",
     "Label": "Does your claim include any issues under the Human Rights Act 1998?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
