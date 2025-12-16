@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v1 spec default judgment').tag('@master-e2e-ft @e2e-dj-spec');
+Feature('1v1 spec default judgment').tag('@ui-prod @ui-dj-spec');
 
 Scenario('1v1 create spec claim request default judgment', async ({I, api_spec}) => {
 

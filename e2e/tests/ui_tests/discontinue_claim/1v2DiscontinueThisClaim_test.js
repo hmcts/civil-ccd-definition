@@ -9,7 +9,7 @@ if (config.runWAApiTest) {
   validValidateDiscontinueTask = require('../../../../wa/tasks/validateDiscontinueTask.js');
 }
 
-Feature('Discontinue This Claim - Full discontinuance  - 1v2 - spec').tag('@master-e2e-ft @e2e-settle-discontinue');
+Feature('Discontinue This Claim - Full discontinuance  - 1v2 - spec').tag('@ui-prod @ui-settle-discontinue');
 
 Scenario('1v2 spec Discontinue This Claim - Full discontinuance', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');

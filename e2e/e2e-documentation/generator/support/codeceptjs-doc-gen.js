@@ -16,9 +16,9 @@ const dependentUiFiles = new Set(
 );
 
 const pipelineTagMap = {
-  '@master-e2e-ft': ['civil-ccd-definition: master'],
-  '@non-prod-e2e-ft': ['civil-ccd-definition: PR'],
-  '@e2e-nightly-prod': ['civil-ccd-definition: nightly'],
+  '@ui-prod': ['civil-ccd-definition: master'],
+  '@ui-nonprod': ['civil-ccd-definition: PR'],
+  '@ui-nightly-prod': ['civil-ccd-definition: nightly'],
   '@api-prod': ['civil-service: master', 'civil-camunda-bpmn-definition: master'],
   '@api-nonprod': ['civil-service: PR', 'civil-camunda-bpmn-definition: PR'],
   '@api-nightly-prod': ['civil-service: nightly'],
@@ -85,6 +85,11 @@ function formatDisplayPath(posixPath) {
   return posixPath.split('/').join(' -> ');
 }
 
+function isSmokeFile(filePath) {
+  const base = path.basename(filePath).toLowerCase();
+  return base.startsWith('smoke');
+}
+
 function fileIsDependent(filePath, suiteType) {
   const relative = toPosix(path.relative(repoRoot, filePath));
   if (suiteType === 'api') {
@@ -140,23 +145,32 @@ function extractHelperSteps(fn) {
     return [];
   }
   const source = fn.toString();
-  const matches = new Set();
+  const matches = [];
   const stepsRegex = /(\w+Steps)\.([A-Za-z0-9_]+)\s*\(/g;
   let match;
   while ((match = stepsRegex.exec(source))) {
     if (!ignoredStepMethods.has(match[2])) {
-      matches.add(`${match[1]}.${match[2]}`);
+      matches.push({ name: `${match[1]}.${match[2]}`, index: match.index });
     }
   }
 
   const actorRegex = new RegExp(`\\b(${actorStepObjects.join('|')})\\.([A-Za-z0-9_]+)\\s*\\(`, 'g');
   while ((match = actorRegex.exec(source))) {
     if (!ignoredStepMethods.has(match[2])) {
-      matches.add(`${match[1]}.${match[2]}`);
+      matches.push({ name: `${match[1]}.${match[2]}`, index: match.index });
     }
   }
 
-  return Array.from(matches);
+  matches.sort((a, b) => a.index - b.index);
+  const ordered = [];
+  const seen = new Set();
+  matches.forEach(({ name }) => {
+    if (!seen.has(name)) {
+      seen.add(name);
+      ordered.push(name);
+    }
+  });
+  return ordered;
 }
 
 function createChain(target) {
@@ -306,7 +320,7 @@ function isFunctionalTag(tag) {
   if (pipelineTagSet.has(tag)) {
     return false;
   }
-  return tag.startsWith('@e2e-') || tag.startsWith('@api-');
+  return tag.startsWith('@ui-') || tag.startsWith('@api-');
 }
 
 function deriveTagMetadata(tags) {
@@ -319,7 +333,7 @@ function deriveTagMetadata(tags) {
       pipelineTagMap[tag].forEach(p => pipelines.add(p));
     } else if (isFunctionalTag(tag)) {
       functionalTags.push(tag);
-      const rawGroup = tag.replace(/^@(e2e|api)-/, '');
+      const rawGroup = tag.replace(/^@(ui|api)-/, '');
       if (rawGroup) {
         functionalGroups.push(`pr_ft_${rawGroup}`);
       }
@@ -380,7 +394,9 @@ function formatIndependentScenario(scenario) {
 
 function generateDocs({ suiteType, targetDir, outputFile }) {
   const absoluteDir = path.join(repoRoot, targetDir);
-  const files = walk(absoluteDir).filter(file => file.endsWith('_test.js'));
+  const files = walk(absoluteDir).filter(
+    file => file.endsWith('_test.js') && !isSmokeFile(file)
+  );
   const results = [];
 
   files.forEach(file => {
