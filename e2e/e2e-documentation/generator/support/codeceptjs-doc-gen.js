@@ -18,7 +18,7 @@ const dependentUiFiles = new Set(
 const pipelineTagMap = {
   '@master-e2e-ft': ['civil-ccd-definition: master'],
   '@non-prod-e2e-ft': ['civil-ccd-definition: PR'],
-  '@e2e-nightly-prod': ['civil-ccd-definition: nightly'],
+  '@ui-nightly-prod': ['civil-ccd-definition: nightly'],
   '@api-prod': ['civil-service: master', 'civil-camunda-bpmn-definition: master'],
   '@api-nonprod': ['civil-service: PR', 'civil-camunda-bpmn-definition: PR'],
   '@api-nightly-prod': ['civil-service: nightly'],
