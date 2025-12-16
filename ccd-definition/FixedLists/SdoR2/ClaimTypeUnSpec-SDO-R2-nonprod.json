@@ -43,20 +43,14 @@
   },
   {
     "ID": "ClaimTypeUnSpec",
-    "ListElementCode": "PPI",
-    "ListElement": "PPI",
+    "ListElementCode": "DAMAGES_AND_OTHER_REMEDY",
+    "ListElement": "Damages and an ‘other’ remedy e.g. injunction, declaration",
     "DisplayOrder": 8
-  },
-  {
-    "ID": "ClaimTypeUnSpec",
-    "ListElementCode": "MOTOR_FINANCE",
-    "ListElement": "Motor Finance",
-    "DisplayOrder": 9
   },
   {
     "ID": "ClaimTypeUnSpec",
     "ListElementCode": "OTHER",
     "ListElement": "Other",
-    "DisplayOrder": 10
+    "DisplayOrder": 9
   }
 ]
