@@ -25,7 +25,7 @@
     "test:ui-nonprod": "MOCHAWESOME_REPORTFILENAME=ui-nonprod FUNCTIONAL=true npx codeceptjs run-workers --suites 12 --grep '@ui-prod|@ui-nonprod' --reporter mocha-multi --verbose",
     "test:ui-prod": "MOCHAWESOME_REPORTFILENAME=ui-prod FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep @ui-prod --reporter mocha-multi --verbose",
     "test:wa-task": "MOCHAWESOME_REPORTFILENAME=wa-task WA_TESTS=true FUNCTIONAL=true npx codeceptjs run-workers --suites 4 --grep @wa-task --reporter mocha-multi --verbose",
-    "test:functional": "./ui/run-functional-tests.sh",
+    "test:functional": "./e2e/run-functional-tests.sh",
     "test:ui-carm": "MOCHAWESOME_REPORTFILENAME=ui-carm FUNCTIONAL=true npx codeceptjs run-workers --suites 2 --grep @ui-carm --reporter mocha-multi --verbose",
     "test:ui-cos": "MOCHAWESOME_REPORTFILENAME=ui-cos FUNCTIONAL=true npx codeceptjs run-workers --suites 2 --grep @ui-cos --reporter mocha-multi --verbose",
     "test:ui-dj-spec": "MOCHAWESOME_REPORTFILENAME=ui-dj-spec FUNCTIONAL=true npx codeceptjs run-workers --suites 2 --grep @ui-dj-spec --reporter mocha-multi --verbose",
