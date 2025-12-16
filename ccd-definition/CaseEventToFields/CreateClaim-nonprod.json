@@ -558,8 +558,19 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "claimDeclarationDescription",
+    "CaseFieldID": "claimDeclarationFeeGuidance",
     "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "ClaimDeclaration",
+    "PageDisplayOrder": 26,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "claimDeclarationDescription",
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "ClaimDeclaration",
     "PageDisplayOrder": 26,
