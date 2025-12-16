@@ -265,31 +265,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "claimDeclarationFeeGuidance",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "caseworker-caa"
-        ],
-        "CRUD": "R"
-      },
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "humanRightsActGuidance",
     "AccessControl": [
       {
