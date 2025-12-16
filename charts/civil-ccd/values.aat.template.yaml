@@ -110,8 +110,8 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
-    devcpuRequests: 500m
-    devmemoryRequests: 512Mi
+    devcpuRequests: 1000m
+    devmemoryRequests: 1024Mi
     devcpuLimits: 1
     devmemoryLimits: 1Gi
     environment:
