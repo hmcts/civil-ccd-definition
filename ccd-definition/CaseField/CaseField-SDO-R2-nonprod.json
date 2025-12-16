@@ -997,7 +997,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "isClaimDeclarationAdded",
     "Label": "Do you want to add a declaration?",
-    "HintText": "If you file an application for a non-money claim (other than a claim for possession of land or recovery of goods) and a claim for damages, both court fees must be paid.<br><br>*For example, county court fee (fee 1.5) plus relevant money claim fee (the court issued claim fee 1.1).*",
+    "HintText": "If you file an application for a non-money claim (other than a claim for possession of land or recovery of goods) and a claim for damages, both court fees must be paid.\n\n<i>For example, county court fee (fee 1.5) plus relevant money claim fee (the court issued claim fee 1.1).</i>",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
