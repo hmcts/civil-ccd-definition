@@ -547,9 +547,9 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "isClaimDeclarationAdded",
+    "CaseFieldID": "claimDeclaration",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "ClaimDeclaration",
     "PageDisplayOrder": 26,
     "PageColumnNumber": 1,
@@ -565,7 +565,7 @@
     "PageDisplayOrder": 26,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\""
+    "FieldShowCondition": "claimDeclaration.isClaimDeclarationAdded = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
