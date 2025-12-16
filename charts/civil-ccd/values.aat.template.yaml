@@ -12,6 +12,14 @@ idam-pr:
 xui-webapp:
   nodejs:
     ingressHost: civil-ccd-xui-staging.aat.platform.hmcts.net
+    memoryRequests: 2Gi
+    cpuRequests: 2000m
+    memoryLimits: 4Gi
+    cpuLimits: 3500m
+    devmemoryRequests: 6Gi
+    devcpuRequests: 2000m
+    devmemoryLimits: 8Gi
+    devcpuLimits: 4500m
 ccd:
   ccd-api-gateway-web:
     nodejs:
@@ -19,6 +27,9 @@ ccd:
   ccd-data-store-api:
     java:
       ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
+      devcpuRequests: 500m
+      devmemoryRequests: 2048Mi
+      devmemoryLimits: 8Gi
       environment:
         DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
         DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
@@ -39,6 +50,9 @@ ccd:
   ccd-definition-store-api:
     java:
       ingressHost: civil-ccd-definition-store-staging-aat.aat.platform.hmcts.net
+      devcpuRequests: 500m
+      devmemoryRequests: 4096Mi
+      devmemoryLimits: 8192Mi
       environment:
         DEFINITION_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
@@ -71,6 +85,10 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
+    devcpuRequests: 500m
+    devmemoryRequests: 512Mi
+    devcpuLimits: 1
+    devmemoryLimits: 1Gi
     environment:
       CAMUNDA_DB_USER_NAME: ${POSTGRES_USER}
       CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
