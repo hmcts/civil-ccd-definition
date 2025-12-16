@@ -52,7 +52,7 @@ ccd:
   ccd-data-store-api:
     java:
       ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
-      devcpuRequests: 500m
+      devcpuRequests: 1000m
       devmemoryRequests: 2048Mi
       devmemoryLimits: 8Gi
       environment:
@@ -75,7 +75,7 @@ ccd:
   ccd-definition-store-api:
     java:
       ingressHost: civil-ccd-definition-store-staging-aat.aat.platform.hmcts.net
-      devcpuRequests: 500m
+      devcpuRequests: 1000m
       devmemoryRequests: 4096Mi
       devmemoryLimits: 8192Mi
       environment:
