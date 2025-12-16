@@ -177,7 +177,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "claimDeclaration",
+    "CaseFieldID": "isClaimDeclarationAdded",
     "AccessControl": [
       {
         "UserRoles": [

@@ -1537,13 +1537,5 @@
     "ListElementCode": "certificateOfSuitability.document",
     "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "ClaimDeclaration",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "claimDeclaration",
-    "ListElementCode": "isClaimDeclarationAdded",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
   }
 ]
