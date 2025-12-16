@@ -140,23 +140,32 @@ function extractHelperSteps(fn) {
     return [];
   }
   const source = fn.toString();
-  const matches = new Set();
+  const matches = [];
   const stepsRegex = /(\w+Steps)\.([A-Za-z0-9_]+)\s*\(/g;
   let match;
   while ((match = stepsRegex.exec(source))) {
     if (!ignoredStepMethods.has(match[2])) {
-      matches.add(`${match[1]}.${match[2]}`);
+      matches.push({ name: `${match[1]}.${match[2]}`, index: match.index });
     }
   }
 
   const actorRegex = new RegExp(`\\b(${actorStepObjects.join('|')})\\.([A-Za-z0-9_]+)\\s*\\(`, 'g');
   while ((match = actorRegex.exec(source))) {
     if (!ignoredStepMethods.has(match[2])) {
-      matches.add(`${match[1]}.${match[2]}`);
+      matches.push({ name: `${match[1]}.${match[2]}`, index: match.index });
     }
   }
 
-  return Array.from(matches);
+  matches.sort((a, b) => a.index - b.index);
+  const ordered = [];
+  const seen = new Set();
+  matches.forEach(({ name }) => {
+    if (!seen.has(name)) {
+      seen.add(name);
+      ordered.push(name);
+    }
+  });
+  return ordered;
 }
 
 function createChain(target) {
