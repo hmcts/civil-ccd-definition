@@ -11,7 +11,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
-Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle').tag('@e2e-nightly-prod @e2e-minti');
+Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle').tag('@ui-nightly-prod @ui-minti');
 
 Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';

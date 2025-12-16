@@ -40,7 +40,7 @@ run_functional_test_groups() {
       if [ -n "$regex_pattern" ]; then
           regex_pattern+="|"
       fi
-      regex_pattern+="@e2e-$ft_group"
+      regex_pattern+="@ui-$ft_group"
   done
 
   command+="'$regex_pattern'"

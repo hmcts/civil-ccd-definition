@@ -10,7 +10,7 @@ if (config.runWAApiTest) {
 
 let caseId;
 
-Feature('1v2 unspec default judgement').tag('@e2e-nightly-prod @e2e-dj-unspec');
+Feature('1v2 unspec default judgement').tag('@ui-nightly-prod @ui-dj-unspec');
 
 Scenario('1v2 create 1v2DS unspec claim, notify claim, notity claim details, request default judgment', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');

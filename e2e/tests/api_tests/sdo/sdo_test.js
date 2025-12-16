@@ -17,7 +17,7 @@ if (config.runWAApiTest) {
   scheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
 }
 
-Feature('1v1 sdo api journeys').tag('@e2e-nightly-prod');
+Feature('1v1 sdo api journeys').tag('@ui-nightly-prod');
 
 Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountAdvisor);

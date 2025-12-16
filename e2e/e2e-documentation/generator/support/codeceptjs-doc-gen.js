@@ -16,8 +16,8 @@ const dependentUiFiles = new Set(
 );
 
 const pipelineTagMap = {
-  '@master-e2e-ft': ['civil-ccd-definition: master'],
-  '@non-prod-e2e-ft': ['civil-ccd-definition: PR'],
+  '@ui-prod': ['civil-ccd-definition: master'],
+  '@ui-nonprod': ['civil-ccd-definition: PR'],
   '@ui-nightly-prod': ['civil-ccd-definition: nightly'],
   '@api-prod': ['civil-service: master', 'civil-camunda-bpmn-definition: master'],
   '@api-nonprod': ['civil-service: PR', 'civil-camunda-bpmn-definition: PR'],
@@ -83,6 +83,11 @@ function toPosix(relativePath) {
 
 function formatDisplayPath(posixPath) {
   return posixPath.split('/').join(' -> ');
+}
+
+function isSmokeFile(filePath) {
+  const base = path.basename(filePath).toLowerCase();
+  return base.startsWith('smoke');
 }
 
 function fileIsDependent(filePath, suiteType) {
@@ -315,7 +320,7 @@ function isFunctionalTag(tag) {
   if (pipelineTagSet.has(tag)) {
     return false;
   }
-  return tag.startsWith('@e2e-') || tag.startsWith('@api-');
+  return tag.startsWith('@ui-') || tag.startsWith('@api-');
 }
 
 function deriveTagMetadata(tags) {
@@ -328,7 +333,7 @@ function deriveTagMetadata(tags) {
       pipelineTagMap[tag].forEach(p => pipelines.add(p));
     } else if (isFunctionalTag(tag)) {
       functionalTags.push(tag);
-      const rawGroup = tag.replace(/^@(e2e|api)-/, '');
+      const rawGroup = tag.replace(/^@(ui|api)-/, '');
       if (rawGroup) {
         functionalGroups.push(`pr_ft_${rawGroup}`);
       }
@@ -389,7 +394,9 @@ function formatIndependentScenario(scenario) {
 
 function generateDocs({ suiteType, targetDir, outputFile }) {
   const absoluteDir = path.join(repoRoot, targetDir);
-  const files = walk(absoluteDir).filter(file => file.endsWith('_test.js'));
+  const files = walk(absoluteDir).filter(
+    file => file.endsWith('_test.js') && !isSmokeFile(file)
+  );
   const results = [];
 
   files.forEach(file => {
