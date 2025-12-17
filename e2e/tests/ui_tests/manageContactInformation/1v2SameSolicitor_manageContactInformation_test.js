@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 let caseId;
 
-Feature('1v2 Same Solicitor - Manage Contact Information').tag('@ui-mci @non-prod-e2e-ft @ui-nightly-prod');
+Feature('1v2 Same Solicitor - Manage Contact Information').tag('@ui-mci @ui-nightly-prod');
 
 Scenario('Create claim to claimant response', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

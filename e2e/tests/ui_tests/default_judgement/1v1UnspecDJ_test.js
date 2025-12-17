@@ -36,7 +36,7 @@ Scenario.skip('Judge add case notes', async ({I, api}) => {
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGE');
   await I.waitForText('How do you want to add a case note?');
   await I.judgeAddsCaseNotes();
-}).retry(2).tag('@ui-prod');
+}).retry(2);
 
 Scenario('Judge perform direction order', async ({I, api, WA}) => {
   await I.login(judgeUserToBeUsed);

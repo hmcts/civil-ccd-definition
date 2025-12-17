@@ -5,7 +5,7 @@ let civilCaseReference;
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 
-Feature('Intermediate track - Upload documents - Bundle').tag('@ui-prod @ui-minti');
+Feature('Intermediate track - Upload documents - Bundle').tag('@ui-minti');
 
 Scenario('Spec Claim - Int track - 1v2 diff solicitor - Upload bundle', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_TWO';

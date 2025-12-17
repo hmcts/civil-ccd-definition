@@ -34,7 +34,7 @@ Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_
   await api_spec.manageStay(config.hearingCenterAdminWithRegionId1, false);
   await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
   await api_spec.dismissCase(config.hearingCenterAdminWithRegionId1);
-}).retry(1).tag('@api-nonprod');
+}).retry(1);
 
 let caseId;
 

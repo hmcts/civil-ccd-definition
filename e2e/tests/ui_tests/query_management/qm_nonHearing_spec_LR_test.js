@@ -5,7 +5,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Non Hearing E2E journey').tag('@non-prod-e2e-ft');
+Feature('Query Management - Non Hearing E2E journey').tag('@ui-nightyly-prod');
 
 Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_ONE';

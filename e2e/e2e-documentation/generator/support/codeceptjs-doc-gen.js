@@ -16,10 +16,15 @@ const dependentUiFiles = new Set(
 );
 
 const pipelineTagMap = {
-  '@ui-prod': ['civil-ccd-definition: master'],
+  '@ui-prod': ['civil-ccd-definition: master', 'civil-ccd-definition: PR'],
   '@ui-nonprod': ['civil-ccd-definition: PR'],
   '@ui-nightly-prod': ['civil-ccd-definition: nightly'],
-  '@api-prod': ['civil-service: master', 'civil-camunda-bpmn-definition: master'],
+  '@api-prod': [
+    'civil-service: master',
+    'civil-service: PR',
+    'civil-camunda-bpmn-definition: master',
+    'civil-camunda-bpmn-definition: PR'
+  ],
   '@api-nonprod': ['civil-service: PR', 'civil-camunda-bpmn-definition: PR'],
   '@api-nightly-prod': ['civil-service: nightly'],
   '@wa-task': [
