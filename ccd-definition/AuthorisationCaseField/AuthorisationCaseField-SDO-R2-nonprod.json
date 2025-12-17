@@ -252,32 +252,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "claimDeclarationFeeNote",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "humanRightsActGuidance",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "decisionOnRequestReconsiderationOptions",
     "AccessControl": [
       {
