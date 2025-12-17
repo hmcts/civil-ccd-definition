@@ -1,6 +1,6 @@
 const config = require('../../../config');
 
-Feature('Unspec automated hearing notice schedulers');
+Feature('Unspec automated hearing notice schedulers').tag('@api-nonprod');
 
 const judgeUser = config.judgeUserWithRegionId1;
 

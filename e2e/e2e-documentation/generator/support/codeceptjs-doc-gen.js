@@ -240,6 +240,7 @@ function collectScenarios(filePath, suiteType) {
       if (typeof maybeOpts === 'function') {
         fn = maybeOpts;
       }
+      const featureSkipped = Boolean(currentFeature && currentFeature.skip);
       const scenario = {
         suiteType,
         filePath: relative,
@@ -249,7 +250,8 @@ function collectScenarios(filePath, suiteType) {
         tags: [],
         tagsSet: new Set(currentFeature ? currentFeature.tags : []),
         collectedSteps: extractHelperSteps(fn),
-        skipped: skip || Boolean(currentFeature && currentFeature.skip)
+        skipped: skip || featureSkipped,
+        featureSkipped
       };
       splitTags(tags.join(' ')).forEach(tag => scenario.tagsSet.add(tag));
       scenario.tags = Array.from(scenario.tagsSet);
@@ -342,10 +344,14 @@ function formatDependentFeature(scenarios) {
   const filePath = scenarios[0].filePath;
   const displayPath = formatDisplayPath(filePath);
   const flattenedSteps = [];
+  const featureSkipped = scenarios.some(s => s.featureSkipped);
   scenarios.forEach(scenario => {
     const steps = scenario.collectedSteps || [];
-    steps.forEach(step => flattenedSteps.push(step));
+    steps.forEach(step => {
+      flattenedSteps.push(scenario.skipped ? `${step} (skipped)` : step);
+    });
   });
+  const dependentSkipped = featureSkipped || scenarios.every(s => s.skipped);
 
   return {
     testName: featureName || path.basename(filePath),
@@ -354,7 +360,7 @@ function formatDependentFeature(scenarios) {
     independentScenario: boolToYesNo(false),
     ...tagMeta,
     steps: flattenedSteps,
-    skipped: boolToYesNo(scenarios.every(s => s.skipped))
+    skipped: boolToYesNo(dependentSkipped)
   };
 }
 
