@@ -37,8 +37,20 @@
   },
   {
     "ID": "ClaimType",
+    "ListElementCode": "HOUSING_DISREPAIR",
+    "ListElement": "Housing disrepair",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "ClaimType",
+    "ListElementCode": "DAMAGES_AND_OTHER_REMEDY",
+    "ListElement": "Damages and an ‘other’ remedy e.g. injunction, declaration",
+    "DisplayOrder": 8
+  },
+  {
+    "ID": "ClaimType",
     "ListElementCode": "OTHER",
     "ListElement": "Other",
-    "DisplayOrder": 7
+    "DisplayOrder": 9
   }
 ]
