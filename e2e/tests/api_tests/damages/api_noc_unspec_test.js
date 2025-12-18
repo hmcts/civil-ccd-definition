@@ -52,7 +52,7 @@ Scenario('notice of change - 1v2 - both defendants represented - diff solicitor 
 
   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, otherSolicitorUser2);
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
-}).tag('@api-prod');
+});
 
 Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
