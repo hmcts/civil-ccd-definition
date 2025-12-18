@@ -101,7 +101,7 @@
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "allure-commandline": "^2.29.0",
-    "allure-playwright": "2.4.0",
+    "allure-playwright": "3.4.3",
     "chai": "^4.3.4",
     "codeceptjs": "3.5.11",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
