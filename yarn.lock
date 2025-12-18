@@ -1880,7 +1880,7 @@ __metadata:
     chai: "npm:^4.3.4"
     codeceptjs: "npm:3.5.11"
     custom-eslint-plugin: "portal:./plugins/custom-eslint-plugins"
-    deep-equal-in-any-order: "npm:^1.0.28"
+    deep-equal-in-any-order: "npm:^2.0.0"
     dotenv: "npm:^16.4.5"
     eslint: "npm:^9.11.0"
     eslint-config-prettier: "npm:^9.1.0"
@@ -2417,13 +2417,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deep-equal-in-any-order@npm:^1.0.28":
-  version: 1.1.20
-  resolution: "deep-equal-in-any-order@npm:1.1.20"
+"deep-equal-in-any-order@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "deep-equal-in-any-order@npm:2.1.0"
   dependencies:
     lodash.mapvalues: "npm:^4.6.0"
     sort-any: "npm:^2.0.0"
-  checksum: 10/3fd4a571269e86f8958e797e4994df9f8aaa7c8cc438204a15b9c170e55b53f4b674e4609d8eaccb0b444a55c1932fd74026ef072f4a5412fd879599000e499f
+  checksum: 10/aa48cfd68f2498e17ac876e4cbbd83d3d9378f7eb44490ab49772dfa69e9c64c759bed6f4903045c2a72ae70c435a1eb90a20d5fb8616e918475572407ccd68f
   languageName: node
   linkType: hard
 
