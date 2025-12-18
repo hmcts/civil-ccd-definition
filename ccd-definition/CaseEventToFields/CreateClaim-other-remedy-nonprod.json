@@ -541,7 +541,8 @@
     "PageID": "ClaimDeclaration",
     "PageDisplayOrder": 26,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -564,7 +565,8 @@
     "PageID": "HumanRightsAct",
     "PageDisplayOrder": 27,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
