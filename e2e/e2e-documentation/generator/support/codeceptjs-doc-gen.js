@@ -207,6 +207,8 @@ function collectScenarios(filePath, suiteType) {
 
   const scenarios = [];
   let currentFeature = null;
+  let beforeHookSteps = [];
+  let beforeSuiteSteps = [];
 
   const previousGlobals = {
     Feature: global.Feature,
@@ -269,6 +271,8 @@ function collectScenarios(filePath, suiteType) {
         tags: [],
         tagsSet: new Set(currentFeature ? currentFeature.tags : []),
         collectedSteps: extractHelperSteps(fn),
+        beforeSteps: beforeHookSteps.flat(),
+        beforeSuiteSteps: beforeSuiteSteps.flat(),
         skipped: skip || featureSkipped,
         featureSkipped
       };
@@ -287,6 +291,20 @@ function collectScenarios(filePath, suiteType) {
   Scenario.only = scenarioFactory();
   Scenario.skip = scenarioFactory({ skip: true });
 
+  function registerBeforeHook(arg1, arg2) {
+    const fn = typeof arg1 === 'function' ? arg1 : arg2;
+    if (typeof fn === 'function') {
+      beforeHookSteps.push(extractHelperSteps(fn));
+    }
+  }
+
+  function registerBeforeSuiteHook(arg1, arg2) {
+    const fn = typeof arg1 === 'function' ? arg1 : arg2;
+    if (typeof fn === 'function') {
+      beforeSuiteSteps.push(extractHelperSteps(fn));
+    }
+  }
+
   function noop() {}
   const Data = () => ({
     Scenario,
@@ -296,9 +314,9 @@ function collectScenarios(filePath, suiteType) {
   global.Feature = Feature;
   global.Scenario = Scenario;
   global.xScenario = Scenario;
-  global.Before = noop;
+  global.Before = (arg1, arg2) => registerBeforeHook(arg1, arg2);
   global.After = noop;
-  global.BeforeSuite = noop;
+  global.BeforeSuite = (arg1, arg2) => registerBeforeSuiteHook(arg1, arg2);
   global.AfterSuite = noop;
   global.Data = Data;
   global.DataTable = () => ({ Scenario });
@@ -362,10 +380,14 @@ function formatDependentFeature(scenarios) {
   const featureName = scenarios[0].featureName;
   const filePath = scenarios[0].filePath;
   const displayPath = formatDisplayPath(filePath);
-  const flattenedSteps = [];
+  const beforeSuite = scenarios.find(s => (s.beforeSuiteSteps || []).length)?.beforeSuiteSteps || [];
+  const flattenedSteps = [...beforeSuite];
   const featureSkipped = scenarios.some(s => s.featureSkipped);
   scenarios.forEach(scenario => {
-    const steps = scenario.collectedSteps || [];
+    const steps = [
+      ...(scenario.beforeSteps || []),
+      ...(scenario.collectedSteps || [])
+    ];
     steps.forEach(step => {
       flattenedSteps.push(scenario.skipped ? `${step} (skipped)` : step);
     });
@@ -386,13 +408,17 @@ function formatDependentFeature(scenarios) {
 function formatIndependentScenario(scenario) {
   const tags = Array.from(scenario.tagsSet || []);
   const tagMeta = deriveTagMetadata(tags);
+  const steps = [
+    ...(scenario.beforeSteps || []),
+    ...(scenario.collectedSteps || [])
+  ];
   return {
     testName: scenario.testName,
     featureName: scenario.featureName,
     filePath: formatDisplayPath(scenario.filePath),
     independentScenario: boolToYesNo(true),
     ...tagMeta,
-    steps: scenario.collectedSteps,
+    steps,
     skipped: boolToYesNo(Boolean(scenario.skipped))
   };
 }
