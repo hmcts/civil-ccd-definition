@@ -82,7 +82,7 @@ Scenario.skip('1v2SS spec full defence intermediate claim', async ({api_spec, WA
     api_spec.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
   }
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@wa-task @api-nonprod');
+}).tag('@wa-task');
 
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();

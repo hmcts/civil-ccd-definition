@@ -58,9 +58,12 @@ ccd:
     persistence:
       enabled: false
     ingress:
-      enabled: false
+      enabled: true
       className: traefik
-
+      hosts:
+        - host: es-${SERVICE_FQDN}
+          paths:
+            - path: /
   logstash:
     image: hmctspublic.azurecr.io/ccd/logstash
     imageTag: "latest"

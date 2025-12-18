@@ -12,7 +12,7 @@ if (config.runWAApiTest) {
   validScheduleAHearingTask = require('../../../../wa/tasks/scheduleADisposalHearing.js');
 }
 
-Feature('1v1 unspec default judgment').tag('@e2e-nightly-prod @e2e-dj-unspec');
+Feature('1v1 unspec default judgment').tag('@ui-nightly-prod @ui-dj-unspec');
 
 Scenario('Create 1v1 unspec claim, notify claim, notify claim details, request default judgement', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
@@ -26,7 +26,7 @@ Scenario('Create 1v1 unspec claim, notify claim, notify claim details, request d
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJUnspec(caseId, 'ONE_V_ONE');
-}).retry(2).tag('@master-e2e-ft @wa-task');
+}).retry(2).tag('@ui-prod @wa-task');
 
 //DTSCCI-358
 Scenario.skip('Judge add case notes', async ({I, api}) => {
