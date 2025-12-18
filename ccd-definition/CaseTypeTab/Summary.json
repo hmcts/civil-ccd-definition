@@ -87,7 +87,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "responseClaimTrack",
-    "TabFieldDisplayOrder": 10
+    "TabFieldDisplayOrder": 11
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -95,7 +95,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondent1ResponseDeadline",
-    "TabFieldDisplayOrder": 11
+    "TabFieldDisplayOrder": 12
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -104,14 +104,6 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondent2ResponseDeadline",
     "FieldShowCondition": "respondent2Represented = \"Yes\"",
-    "TabFieldDisplayOrder": 12
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "claimNotificationDate",
     "TabFieldDisplayOrder": 13
   },
   {
@@ -119,7 +111,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "claimIssuedPaymentDetails",
+    "CaseFieldID": "claimNotificationDate",
     "TabFieldDisplayOrder": 14
   },
   {
@@ -127,7 +119,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "otherDetails",
+    "CaseFieldID": "claimIssuedPaymentDetails",
     "TabFieldDisplayOrder": 15
   },
   {
@@ -135,7 +127,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "transferCaseDetails",
+    "CaseFieldID": "otherDetails",
     "TabFieldDisplayOrder": 16
   },
   {
@@ -143,7 +135,15 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "reasonForTransfer",
+    "CaseFieldID": "transferCaseDetails",
     "TabFieldDisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "reasonForTransfer",
+    "TabFieldDisplayOrder": 18
   }
 ]
