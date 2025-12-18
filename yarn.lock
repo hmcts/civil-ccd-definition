@@ -1885,7 +1885,7 @@ __metadata:
     eslint: "npm:^9.11.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-codeceptjs: "npm:^1.3.0"
-    faker: "npm:^5.5.3"
+    faker: "npm:^6.0.0"
     globals: "npm:^15.9.0"
     html_codesniffer: "npm:^2.5.1"
     husky: "npm:^9.1.6"
@@ -3064,10 +3064,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"faker@npm:^5.5.3":
-  version: 5.5.3
-  resolution: "faker@npm:5.5.3"
-  checksum: 10/fc46449712aa0971a106dc84ae988bd3f08ba0f0862ed107cd2e5dc2df39424efb0687634f5a6c2d8d24a9b59a5474b5b003b9bc142ecebcea2d42af116b3966
+"faker@npm:^6.0.0":
+  version: 6.6.6
+  resolution: "faker@npm:6.6.6"
+  checksum: 10/bfb0d581ab4d76095f2c6bff213fe1735ce077f0f8df849c144ad26035e105bce1b7a704cc030366338c52e25b636ac097a712426a78c9b8804af78f6f2bffe7
   languageName: node
   linkType: hard
 
