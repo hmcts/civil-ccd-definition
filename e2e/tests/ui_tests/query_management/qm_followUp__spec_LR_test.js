@@ -6,7 +6,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Raise, Respond and Follow up Queries').tag('@non-prod-e2e-ft @e2e-nightly-prod');
+Feature('Query Management - Raise, Respond and Follow up Queries').tag('@ui-nightly-prod');
 
 Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   const mpScenario = 'ONE_V_ONE';
