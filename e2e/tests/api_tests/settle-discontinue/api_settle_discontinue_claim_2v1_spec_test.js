@@ -13,7 +13,7 @@ Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
     await api_spec.createCaseFlags(caseWorkerUser);
     await api_spec.manageCaseFlags(caseWorkerUser);
     await api_spec.settleClaimSelectClaimant(solicitorUser, 'YES');
-}).tag('@api-prod');
+});
 
 Scenario('Discontinue claim 1v2 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_TWO';

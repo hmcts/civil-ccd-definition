@@ -18,7 +18,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with flight delay').tag('@e2e-nightly-prod @e2e-spec-fast');
+Feature('Claim creation 1v2 Diff Solicitor with flight delay').tag('@ui-nightly-prod @ui-spec-fast');
 
 Scenario('Applicant solicitor creates 1v2DS specified claim defendant Different LRs for flight delay', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
