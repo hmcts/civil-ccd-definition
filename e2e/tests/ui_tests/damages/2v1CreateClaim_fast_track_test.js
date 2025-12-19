@@ -20,7 +20,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('2v1 Claim Journey Fast track').tag('@e2e-unspec-fast @e2e-nightly-prod');
+Feature('2v1 Claim Journey Fast track').tag('@ui-unspec-fast @ui-nightly-prod');
 
 Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant', async ({I}) => {
   await I.login(config.applicantSolicitorUser);

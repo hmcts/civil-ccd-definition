@@ -21,7 +21,7 @@ const respondent1 = {
 
 let caseNumber; 
 
-Feature('1v1 - Claim Journey').tag('@e2e-unspec-fast @e2e-nightly-prod');
+Feature('1v1 - Claim Journey').tag('@ui-unspec-fast @ui-nightly-prod');
 
 Scenario('Applicant solicitor creates claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);

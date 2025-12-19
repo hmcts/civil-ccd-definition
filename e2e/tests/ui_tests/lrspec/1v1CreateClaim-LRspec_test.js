@@ -8,7 +8,7 @@ const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 let caseNumber;
 
-Feature('1v1 spec claim journey').tag('@e2e-spec-fast @e2e-nightly-prod');
+Feature('1v1 spec claim journey').tag('@ui-spec-fast @ui-nightly-prod');
 
 Scenario('1v1 Applicant solicitor creates specified claim for fast track-spec', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);

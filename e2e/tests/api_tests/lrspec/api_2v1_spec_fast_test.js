@@ -33,12 +33,12 @@ xScenario('2v1 fast claim part admission', async ({I, api_spec_fast}) => {
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION', 'TWO_V_ONE');
 });
 
-Scenario.skip('2v1 fast claim full defence and claimant response  @api-prod @api-spec-full-defence', async ({I, api_spec_fast}) => {
+Scenario.skip('2v1 fast claim full defence and claimant response', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec_fast.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
-});
+}).tag('@api-spec-full-defence');
 
 Scenario('2v1 fast claim full defence and not proceed', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');

@@ -12,7 +12,7 @@ if (config.runWAApiTest) {
   validValidateDiscontinueTask = require('../../../../wa/tasks/validateDiscontinueTask.js');
 }
 
-Feature('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 2v1 - spec').tag('@e2e-nightly-prod');
+Feature('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 2v1 - spec').tag('@ui-nightly-prod');
 
 Scenario('2v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

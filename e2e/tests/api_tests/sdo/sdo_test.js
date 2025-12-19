@@ -17,7 +17,7 @@ if (config.runWAApiTest) {
   scheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
 }
 
-Feature('1v1 sdo api journeys').tag('@e2e-nightly-prod');
+Feature('1v1 sdo api journeys').tag('@api-nightly-prod');
 
 Scenario('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountAdvisor);
@@ -182,7 +182,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
   await api.createFinalOrder(judgeUser, 'FREE_FORM_ORDER');
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -199,7 +199,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
     await api.triggerBundle(config.systemupdate);
   }
   await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
-});
+}).tag('@api-sdo @api-prod');
 
 Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({ api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
