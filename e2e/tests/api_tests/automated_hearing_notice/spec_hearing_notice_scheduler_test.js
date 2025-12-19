@@ -1,6 +1,6 @@
 const config = require('../../../config');
 
-Feature('Spec automated hearing notice schedulers').tag('@api-nightly-prod');
+Feature('Spec automated hearing notice schedulers').tag('@api-nonprod');
 
 let caseId;
 
