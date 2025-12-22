@@ -119,7 +119,7 @@ Scenario('2v1 unspec multi track claim', async ({ api, WA }) => {
     api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
   }
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@api-nonprod');
+}).tag('@api-prod');
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
