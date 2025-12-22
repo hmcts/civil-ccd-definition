@@ -161,6 +161,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "otherRemedyFee",
+    "Label": "Other Remedy fee",
+    "FieldType": "Fee",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1PbaAccounts",
     "Label": "PBA Number",
     "FieldType": "DynamicList",
