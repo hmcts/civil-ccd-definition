@@ -1,0 +1,24 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isClaimDeclarationAdded",
+    "Label": "Do you want to add a declaration or an injunction?",
+    "HintText": "If you file an application for a non-money claim (other than a claim for possession of land or recovery of goods) and a claim for damages, both court fees must be paid. \n\nFor example, county court fee (fee 1.5) plus relevant money claim fee (the court issued claim fee 1.1).",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "claimDeclarationDescription",
+    "Label": "Declaration narrative",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isHumanRightsActIssues",
+    "Label": "Does your claim include any issues under the Human Rights Act 1998?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  }
+]
