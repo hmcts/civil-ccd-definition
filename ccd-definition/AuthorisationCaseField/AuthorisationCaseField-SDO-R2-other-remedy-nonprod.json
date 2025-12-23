@@ -6,7 +6,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-caa"
         ],
@@ -18,7 +17,8 @@
           "legal-adviser",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -31,7 +31,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-caa"
         ],
@@ -43,7 +42,8 @@
           "legal-adviser",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -56,7 +56,6 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-caa"
         ],
@@ -68,7 +67,8 @@
           "legal-adviser",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
