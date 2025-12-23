@@ -18,7 +18,8 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff",
           "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "R"
       }
@@ -43,7 +44,8 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff",
           "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "R"
       }
@@ -68,7 +70,8 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff",
           "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "R"
       }
