@@ -4,7 +4,7 @@ civil-wa:
 civil-service:
   java:
     imagePullPolicy: Always
-    image: hmctspublic.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
+    image: hmctspublic.azurecr.io/civil/service:pr-7261
     keyVaults:
       civil:
         resourceGroup: civil
