@@ -607,7 +607,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "otherRemedyFee",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "PbaNumber",
     "PageDisplayOrder": 32,
