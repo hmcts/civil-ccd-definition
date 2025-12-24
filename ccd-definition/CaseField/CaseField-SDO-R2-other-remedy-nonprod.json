@@ -20,5 +20,13 @@
     "Label": "Does your claim include any issues under the Human Rights Act 1998?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "otherRemedyFee",
+    "Label": "Other Remedy fee",
+    "FieldType": "Fee",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
