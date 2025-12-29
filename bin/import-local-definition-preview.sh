@@ -11,5 +11,8 @@ chmod +x ./bin/utils/idam-lease-service-token.sh
 # Load environment variables for the preview environment
 source ./bin/variables/load-dev-user-preview-environment-variables.sh
 
+# Generate local CCD definition
+source ./bin/build-release-ccd-definition.sh local
+
 # Import the local CCD definition
 ./bin/utils/ccd-import-definition.sh build/ccd-release-config/civil-ccd-local.xlsx
