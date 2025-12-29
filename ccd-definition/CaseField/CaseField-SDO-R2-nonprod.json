@@ -25,7 +25,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "otherRemedyFee",
     "Label": "Other Remedy fee",
-    "FieldType": "Fee",
+    "FieldType": "OtherRemedyFee",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

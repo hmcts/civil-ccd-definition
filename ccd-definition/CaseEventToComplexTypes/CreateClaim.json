@@ -534,6 +534,15 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "OtherRemedyFee",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "otherRemedyFee",
+    "ListElementCode": "calculatedAmountInPence",
+    "EventElementLabel": "Amount to pay",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "StatementOfTruth",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "uiStatementOfTruth",
