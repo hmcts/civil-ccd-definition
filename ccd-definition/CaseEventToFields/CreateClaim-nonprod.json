@@ -613,7 +613,7 @@
     "PageDisplayOrder": 32,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\""
+    "FieldShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
