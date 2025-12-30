@@ -17,7 +17,7 @@ if [[ "${repoType}" == 'ccd' ]]; then
 fi
 
 if [[ "${repoType}" == 'cui' ]]; then
-  echo "Loading environment variables (${repoType})";
+  echo "Loading environment variables repoType : (${repoType}) prNumber: ${prNumber}";
   source .env.cui.local "${prNumber}"
 fi
 
