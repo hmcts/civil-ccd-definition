@@ -1,0 +1,29 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "isClaimDeclarationAdded",
+    "TabFieldDisplayOrder": 19,
+    "FieldShowCondition": "claimType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "claimDeclarationDescription",
+    "TabFieldDisplayOrder": 3,
+    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\" AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "isHumanRightsActIssues",
+    "TabFieldDisplayOrder": 4,
+    "FieldShowCondition": "claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\""
+  }
+]
