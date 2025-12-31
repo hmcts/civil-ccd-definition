@@ -720,6 +720,53 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsOrderAndHearingDetails",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "setSmallClaimsFlag=\"Yes\" AND isSdoR2NewScreen!=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/generate-sdo-order"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPenalNoticeTitle",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPenalNoticeToggle",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPenalNotice",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaimsPenalNoticeToggle=\"SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsJudgesRecital",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
@@ -1777,19 +1824,6 @@
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsOrderAndHearingDetails",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "SmallClaims",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "setSmallClaimsFlag=\"Yes\" AND isSdoR2NewScreen!=\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/generate-sdo-order"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
