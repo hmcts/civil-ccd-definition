@@ -606,6 +606,18 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "otherRemedyFee",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "PbaNumber",
+    "PageDisplayOrder": 32,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimStatementOfTruthLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
