@@ -24,7 +24,7 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) =>
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser1);
   await api.checkUserCaseAccess(defendantSolicitorUser, false);
   await api.checkUserCaseAccess(otherSolicitorUser1, true);
-}).tag('@api-nonprod');
+});
 
 Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');
@@ -37,7 +37,7 @@ Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) 
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser2);
 
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
-}).tag('@api-prod');
+});
 
 Scenario('notice of change - 1v2 - both defendants represented - diff solicitor to diff solicitor', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
@@ -52,7 +52,7 @@ Scenario('notice of change - 1v2 - both defendants represented - diff solicitor 
 
   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, otherSolicitorUser2);
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
-}).tag('@api-prod');
+});
 
 Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');

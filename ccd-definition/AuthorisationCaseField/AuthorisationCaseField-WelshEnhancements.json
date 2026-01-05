@@ -292,8 +292,12 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-staff",
           "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
