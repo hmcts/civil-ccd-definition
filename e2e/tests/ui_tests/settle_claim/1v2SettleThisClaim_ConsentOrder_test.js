@@ -3,7 +3,7 @@ const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 let caseNumber;
 
-Feature('Settle this Claim - Reason for settlement - Consent order - 1v2 - spec').tag('@master-e2e-ft @e2e-settle-discontinue');
+Feature('Settle this Claim - Reason for settlement - Consent order - 1v2 - spec').tag('@ui-nightly-prod @ui-settle-discontinue');
 
 Scenario('Prepare 1v2 spec small track claim up to claim issue', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');

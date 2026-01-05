@@ -6,7 +6,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 let civilCaseReference;
 
-Feature('1v2SS SDO Carm - Upload mediation documents').tag('@e2e-nightly-prod @e2e-carm');
+Feature('1v2SS SDO Carm - Upload mediation documents').tag('@ui-nightly-prod @ui-carm');
 
 Scenario('1v2SS prepare claim up to SDO', async ({api_spec, LRspec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');

@@ -4,7 +4,7 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 let caseNumber;
 
-Feature('Settle this Claim - Confirm marking as paid in full - 1v1 - spec').tag('@e2e-nightly-prod');
+Feature('Settle this Claim - Confirm marking as paid in full - 1v1 - spec').tag('@ui-nightly-prod');
 
 Scenario('Prepare 1v1 spec small track claim up to case progression', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
