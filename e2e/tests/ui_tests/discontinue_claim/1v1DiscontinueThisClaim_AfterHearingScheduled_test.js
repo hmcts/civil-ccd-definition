@@ -14,7 +14,7 @@ if (config.runWAApiTest) {
 }
 
 
-Feature('Discontinue This Claim After Hearing Schedule - Full discontinuance  - 1v1 - spec').tag('@e2e-nightly-prod');
+Feature('Discontinue This Claim After Hearing Schedule - Full discontinuance  - 1v1 - spec').tag('@ui-nightly-prod');
 
 Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);

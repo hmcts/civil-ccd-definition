@@ -8,7 +8,7 @@ const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 let caseNumber;
 
-Feature('Claim creation 1v1 small claims').tag('@e2e-spec-fast @e2e-nightly-prod');
+Feature('Claim creation 1v1 small claims').tag('@ui-spec-fast @ui-nightly-prod');
 
 Scenario('1v1 Applicant solicitor creates specified claim for fast track-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track-spec');

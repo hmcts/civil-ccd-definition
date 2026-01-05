@@ -5,7 +5,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
-Feature('Multi track - Upload documents - Bundle').tag('@e2e-nightly-prod @e2e-minti');
+Feature('Multi track - Upload documents - Bundle').tag('@ui-nightly-prod @ui-minti');
 
 Scenario('Spec Claim - Multi track - 1v2 same solicitor - Upload bundle', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';
