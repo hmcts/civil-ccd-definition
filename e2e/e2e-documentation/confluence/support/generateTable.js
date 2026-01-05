@@ -1,5 +1,14 @@
 const fs = require('fs');
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // Column ordering AND human-friendly labels
 const COLUMN_ORDER = [
   { key: 'testName', label: 'Test Name' },
@@ -45,10 +54,10 @@ function safeValue(value, key) {
 
   // Objects → pretty JSON with breaks
   if (typeof value === 'object') {
-    return JSON.stringify(value, null, 2).replace(/\n/g, '<br/>');
+    return escapeHtml(JSON.stringify(value, null, 2)).replace(/\n/g, '<br/>');
   }
 
-  return String(value);
+  return escapeHtml(value);
 }
 
 function wrapInExpand(html) {

@@ -1518,6 +1518,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   caseData = {...caseData, ...validDataForPage};
 
   caseData = adjustDataForSolicitor(solicitor, caseData);
+
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
@@ -1547,6 +1548,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
     delete caseData['businessProcess'];
+    delete responseBody.data['caseTypeFlag'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {

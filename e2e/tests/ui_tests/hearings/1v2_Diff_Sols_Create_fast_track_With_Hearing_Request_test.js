@@ -7,7 +7,7 @@ const claimAmountJudge = '11000';
 let caseNumber;
 
 
-Feature('1v2 Diff Sols Hearing Request Journey').tag('@e2e-hearing-request @e2e-nightly-prod');
+Feature('1v2 Diff Sols Hearing Request Journey').tag('@ui-hearing-request @ui-nightly-prod');
 
 Scenario('Prepare claim up to SDO', async ( {api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);

@@ -11,7 +11,7 @@ const hmcTest = true;
 let caseId;
 let isQueryManagementEnabled = false;
 
-Feature('CCD 1v2 Unspec fast hearings API test').tag('@api-hearings @api-nonprod @api-prod @wa-task');
+Feature('CCD 1v2 Unspec fast hearings API test').tag('@api-hearings @wa-task @api-nightly-prod');
 
 Scenario('1v2DS full defence defendant and claimant response', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, fastClaimAmount, false, hmcTest);
