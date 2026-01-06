@@ -188,26 +188,10 @@ withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
 
-  onPR {
-    env.ENVIRONMENT = "preview"
-    env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-    env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
-    env.PR_FT_GROUPS = getFunctionalTestsGroups()
-    if (isHmcEnabled(env.BRANCH_NAME)) {
-      env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
-      env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
-      env.CCD_DEF_VERSION = "-${CHANGE_ID}"
-    } else {
-      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-      env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    }
-  }
-
   // onPR {
-  //   env.ENVIRONMENT = "aat"
+  //   env.ENVIRONMENT = "preview"
   //   env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-  //   env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.aat.platform.hmcts.net"
+  //   env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
   //   env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
   //   env.PR_FT_GROUPS = getFunctionalTestsGroups()
   //   if (isHmcEnabled(env.BRANCH_NAME)) {
@@ -215,13 +199,17 @@ withPipeline(type, product, component) {
   //     env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
   //     env.CCD_DEF_VERSION = "-${CHANGE_ID}"
   //   } else {
-  //     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.aat.platform.hmcts.net"
-  //     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.aat.platform.hmcts.net"
+  //     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+  //     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
   //   }
   // }
-  onMaster {
+
+  onPR {
     env.ENVIRONMENT = "aat"
   }
+  // onMaster {
+  //   env.ENVIRONMENT = "aat"
+  // }
   onDemo {
     env.ENVIRONMENT = "demo"
   }
