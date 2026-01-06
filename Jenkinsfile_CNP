@@ -189,7 +189,8 @@ withPipeline(type, product, component) {
   loadVaultSecrets(secrets)
 
   onPR {
-    env.ENVIRONMENT = "preview"
+    env.ENVIRONMENT = "aat"
+    //  "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
