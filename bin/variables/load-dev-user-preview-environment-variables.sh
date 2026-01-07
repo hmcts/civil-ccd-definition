@@ -6,7 +6,8 @@ echo "User directory: /Users/$user"
 
 source .env.local
 
-export ENVIRONMENT=preview
+export ENVIRONMENT=aat
+#preview
 # urls
 export URL=$XUI_WEBAPP_URL
 export CIVIL_SERVICE_URL=$JAVA_URL
