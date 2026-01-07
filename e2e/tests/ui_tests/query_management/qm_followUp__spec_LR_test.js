@@ -20,21 +20,21 @@ Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.raiseFollowUpQuestionAndVerify(true);
+  await I.raiseFollowUpQuestionAndVerify(caseId, true);
 }).retry(2);
 
 Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
   await I.login(config.ctscAdminUser);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyFollowUpQuestionAsCaseWorker(true);
+  await I.verifyFollowUpQuestionAsCaseWorker(caseId, true);
 }).retry(2);
 
 Scenario('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyFollowUpQuestionAsJudge(true);
+  await I.verifyFollowUpQuestionAsJudge(caseId, true);
 }).retry(2);
 
 AfterSuite(async ({ api_spec }) => {

@@ -22,7 +22,7 @@ Scenario('1v1 spec full defence intermediate claim', async ({api_spec}) => {
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
   await api_spec.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@api-prod');
+});
 
 Scenario('1v1 spec full admission intermediate claim', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';

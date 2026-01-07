@@ -17,7 +17,7 @@ Scenario('1v1 spec full defence multi claim', async ({api_spec}) => {
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api_spec.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@api-prod');
+});
 
 Scenario('1v1 spec full admission multi claim', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
@@ -50,7 +50,7 @@ Scenario('1v2DS spec full defence multi claim', async ({api_spec}) => {
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
-Scenario('1v2SS spec full defence multi claim @debug', async ({I, api_spec}) => {
+Scenario('1v2SS spec full defence multi claim', async ({I, api_spec}) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO','AWAITING_APPLICANT_INTENTION', false, true, claimAmountMulti);

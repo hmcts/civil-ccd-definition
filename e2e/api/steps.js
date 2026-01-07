@@ -1053,7 +1053,7 @@ module.exports = {
     }
 
     if (response === 'UNSUITABLE_FOR_SDO') {
-      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', null, false);
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
@@ -1518,6 +1518,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   caseData = {...caseData, ...validDataForPage};
 
   caseData = adjustDataForSolicitor(solicitor, caseData);
+
   const response = await apiRequest.validatePage(
     eventName,
     pageId,

@@ -6,7 +6,6 @@ let caseId;
 let carmEnabled = false;
 
 Feature('1v1 LIP v LIP spec api part admit journey').tag('@api-spec-cui @ui-prod');
-
 Before(async () => {
     await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
   });

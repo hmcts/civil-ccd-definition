@@ -17,7 +17,7 @@ Scenario.skip('Claimant LR raises a query', async ({ api_spec, I }) => {
   await I.raiseNewHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyQueriesDetails(true);
+  await I.verifyQueriesDetails(caseId, true);
 }).retry(2);
 
 Scenario.skip('Defendant LR raises a query', async ({ I }) => {
@@ -25,21 +25,21 @@ Scenario.skip('Defendant LR raises a query', async ({ I }) => {
   await I.raiseNewHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyQueriesDetails(true);
+  await I.verifyQueriesDetails(caseId, true);
 }).retry(2);
 
 Scenario.skip('Hearing centre admin can access and also responds back to a query', async ({ I }) => {
   await I.login(config.hearingCenterAdminWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyQueriesDetailsAsCaseWorker(true);
+  await I.verifyQueriesDetailsAsCaseWorker(caseId, true);
 }).retry(2);
 
 Scenario.skip('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyQueriesDetails(true);
+  await I.verifyQueriesDetails(caseId, true);
 }).retry(2);
 
 Scenario.skip('Take claim offline', async ({ I }) => {
