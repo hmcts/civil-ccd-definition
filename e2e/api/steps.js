@@ -1518,6 +1518,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   caseData = {...caseData, ...validDataForPage};
 
   caseData = adjustDataForSolicitor(solicitor, caseData);
+
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
