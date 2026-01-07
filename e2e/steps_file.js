@@ -795,6 +795,12 @@ module.exports = function () {
       ]);
     },
 
+    async navigateToTab(caseId, tabName) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab(caseId, tabName),
+      ]);
+    },
+    
     async verifyCOSTabNotifyClaimDetails(caseNumber) {
       await this.triggerStepsWithScreenshot([
         () =>caseViewPage.navigateToTab(caseNumber, 'Certificate of Service'),
