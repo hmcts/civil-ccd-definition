@@ -7,6 +7,7 @@ import ObjectHelper from '../helpers/object-helper';
 import TestData from '../models/test-data';
 import { civilSystemUpdate } from '../config/users/exui-users';
 import config from '../config/config';
+import DateHelper from '../helpers/date-helper';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -22,7 +23,6 @@ export default abstract class BaseApi extends BaseTestData {
 
   protected async setupBankHolidays() {
     if (!bankHolidays.length) {
-      const today = new Date();
       const { govUKRequests } = this.requestsFactory;
       const bankHolidaysJson = await govUKRequests.fetchBankHolidays();
 
@@ -30,7 +30,7 @@ export default abstract class BaseApi extends BaseTestData {
 
       for (const event of events) {
         const eventDate = new Date(event.date);
-        if (eventDate > today) {
+        if (eventDate > DateHelper.subtractFromToday({years: 2})) {
           bankHolidays.push(event.date);
         }
       }
