@@ -1,5 +1,6 @@
 const {I} = inject();
 const config = require('../../config.js');
+const {incrementDate, decrementDate} = require('../../api/dataHelper.js');
 
 module.exports = {
 
@@ -168,6 +169,8 @@ module.exports = {
   },
 
   async uploadYourDocument(file, defendant, isBundle = false, mpScenario = false) {
+    const futureDate = incrementDate(new Date(), 0, 1, 0);
+    const pastDate = decrementDate(new Date(), 0, 0, 1);
     await I.waitForText('Upload Your Documents');
     if (defendant) {
       if (isBundle) {
@@ -176,15 +179,15 @@ module.exports = {
           I.click(this.fields.bundleForm.addNewButton);
           if (mpScenario) {
             I.fillField(this.fields.bundleForm2.name, 'Test bundle name 1');
-            I.fillField(this.fields.bundleForm2.day, '10');
-            I.fillField(this.fields.bundleForm2.month, '10');
-            I.fillField(this.fields.bundleForm2.year, '2027');
+            I.fillField(this.fields.bundleForm2.day, futureDate.getDate());
+            I.fillField(this.fields.bundleForm2.month, futureDate.getMonth() + 1);
+            I.fillField(this.fields.bundleForm2.year, futureDate.getFullYear());
             I.attachFile(this.fields.bundleForm2.document, file);
           } else {
             I.fillField(this.fields.bundleForm.name, 'Test bundle name');
-            I.fillField(this.fields.bundleForm.day, '1');
-            I.fillField(this.fields.bundleForm.month, '1');
-            I.fillField(this.fields.bundleForm.year, '2026');
+            I.fillField(this.fields.bundleForm.day, futureDate.getDate());
+            I.fillField(this.fields.bundleForm.month, futureDate.getMonth() + 1);
+            I.fillField(this.fields.bundleForm.year, futureDate.getFullYear());
             I.attachFile(this.fields.bundleForm.document, file);
           }
         });
@@ -194,9 +197,9 @@ module.exports = {
         await within(this.fields.documentWitnessStatementRes.id, () => {
           I.click(this.fields.documentWitnessStatementRes.button);
           I.fillField(this.fields.documentWitnessStatementRes.name, 'test name');
-          I.fillField(this.fields.documentWitnessStatementRes.day, '1');
-          I.fillField(this.fields.documentWitnessStatementRes.month, '1');
-          I.fillField(this.fields.documentWitnessStatementRes.year, '2022');
+          I.fillField(this.fields.documentWitnessStatementRes.day, pastDate.getDate());
+          I.fillField(this.fields.documentWitnessStatementRes.month, pastDate.getMonth() + 1);
+          I.fillField(this.fields.documentWitnessStatementRes.year, pastDate.getFullYear());
           I.attachFile(this.fields.documentWitnessStatementRes.document, file);
         });
         await within(this.fields.documentExpertReportRes.id, () => {
@@ -204,9 +207,9 @@ module.exports = {
           I.click(this.fields.documentExpertReportRes.button);
           I.fillField(this.fields.documentExpertReportRes.name, 'test name');
           I.fillField(this.fields.documentExpertReportRes.expertise, 'test expertise');
-          I.fillField(this.fields.documentExpertReportRes.day, '1');
-          I.fillField(this.fields.documentExpertReportRes.month, '1');
-          I.fillField(this.fields.documentExpertReportRes.year, '2022');
+          I.fillField(this.fields.documentExpertReportRes.day, pastDate.getDate());
+          I.fillField(this.fields.documentExpertReportRes.month, pastDate.getMonth() + 1);
+          I.fillField(this.fields.documentExpertReportRes.year, pastDate.getFullYear());
           I.attachFile(this.fields.documentExpertReportRes.document, file);
         });
         await within(this.fields.documentAuthoritiesRes.id, () => {
@@ -221,9 +224,9 @@ module.exports = {
         await within(this.fields.bundleForm.id, () => {
           I.click(this.fields.bundleForm.addNewButton);
           I.fillField(this.fields.bundleForm.name, 'Test bundle name');
-          I.fillField(this.fields.bundleForm.day, '1');
-          I.fillField(this.fields.bundleForm.month, '1');
-          I.fillField(this.fields.bundleForm.year, '2026');
+          I.fillField(this.fields.bundleForm.day, futureDate.getDate());
+          I.fillField(this.fields.bundleForm.month, futureDate.getMonth() + 1);
+          I.fillField(this.fields.bundleForm.year, futureDate.getFullYear());
           I.attachFile(this.fields.bundleForm.document, file);
         });
         // Add any additional bundle-specific actions here
@@ -232,9 +235,9 @@ module.exports = {
         await within(this.fields.documentWitnessStatement.id, () => {
           I.click(this.fields.documentWitnessStatement.button);
           I.fillField(this.fields.documentWitnessStatement.name, 'test name');
-          I.fillField(this.fields.documentWitnessStatement.day, '1');
-          I.fillField(this.fields.documentWitnessStatement.month, '1');
-          I.fillField(this.fields.documentWitnessStatement.year, '2022');
+          I.fillField(this.fields.documentWitnessStatement.day, pastDate.getDate());
+          I.fillField(this.fields.documentWitnessStatement.month, pastDate.getMonth() + 1);
+          I.fillField(this.fields.documentWitnessStatement.year, pastDate.getFullYear());
           I.attachFile(this.fields.documentWitnessStatement.document, file);
         });
         await within(this.fields.documentExpertReport.id, () => {
@@ -242,9 +245,9 @@ module.exports = {
           I.click(this.fields.documentExpertReport.button);
           I.fillField(this.fields.documentExpertReport.name, 'test name');
           I.fillField(this.fields.documentExpertReport.expertise, 'test expertise');
-          I.fillField(this.fields.documentExpertReport.day, '1');
-          I.fillField(this.fields.documentExpertReport.month, '1');
-          I.fillField(this.fields.documentExpertReport.year, '2022');
+          I.fillField(this.fields.documentExpertReport.day, pastDate.getDate());
+          I.fillField(this.fields.documentExpertReport.month, pastDate.getMonth() + 1);
+          I.fillField(this.fields.documentExpertReport.year, pastDate.getFullYear());
           I.attachFile(this.fields.documentExpertReport.document, file);
         });
         await within(this.fields.documentAuthorities.id, () => {
