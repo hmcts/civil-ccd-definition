@@ -151,18 +151,6 @@ Scenario('1v1 full defence unspecified - judge declares SDO unsuitable - hearing
   }
 });
 
-// skip while ccd-data-store says legalAdvUser has no permission to run this event
-Scenario('1v1 full defence unspecified - legal advisor declares SDO unsuitable - hearing scheduled', async ({api}) => {
-  // sdo requires judicial_referral, which is not past preview
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountAdvisor);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser);
-  await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
-  await api.createSDO(legalAdvUser, 'UNSUITABLE_FOR_SDO');
-});
-
 Scenario.skip('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
