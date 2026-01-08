@@ -23,6 +23,7 @@ module.exports = {
     judgeName: '#permissionGrantedComplex_permissionGrantedJudge',
     caseNote: '#caseNote',
     judgeOrder: '#settleReason-JUDGE_ORDER',
+    signOutLink: 'ul[class*="navigation-list"] a',
   },
   goButton: '.button[type="submit"]',
 
@@ -80,11 +81,10 @@ module.exports = {
   }, locate('#errors'));
 },
 
-  async navigateToTab(tabName) {
-    let urlBefore = await I.grabCurrentUrl();
-    await I.retryUntilUrlChanges(async () => {
-      await I.forceClick(locate(this.fields.tabButton).withText(tabName));
-    }, urlBefore);
+  async navigateToTab(caseNumber, tabName) {
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+    await I.waitForSelector(this.fields.signOutLink, 30);
+    await I.retryUntilExists(() => I.clickTab(tabName), `//div[@aria-selected="true" and contains(., "${tabName}")]`);
   },
 
   async assertNoEventsAvailable() {
