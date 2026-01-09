@@ -1,6 +1,7 @@
 export const heading = 'Order details';
 
 export const subheadings = {
+  penalNotice: 'Penal notice (optional)',
   judgesRecital: "Judge's recital",
   allocation: 'Allocation',
   flightDelay: 'Flight Delay',
@@ -20,6 +21,9 @@ export const subheadings = {
 };
 
 export const inputs = {
+  penalNotice: {
+    selector: '#smallClaimsPenalNotice',
+  },
   judgesRecital: {
     selector: '#smallClaimsJudgesRecital_input',
   },
@@ -149,6 +153,10 @@ export const inputs = {
 };
 
 export const checkboxes = {
+  penalNotice: {
+    label: 'Show/Remove',
+    selector: 'label[for="smallClaimsPenalNoticeToggle-SHOW"]',
+  },
   flightDelay: {
     label: 'Show/Remove',
     selector: 'label[for="smallClaimsFlightDelayToggle-SHOW"]',
