@@ -15,7 +15,7 @@ const respondent1 = {
   representativeOrgNumber: 2
 };
 
-Feature('RPA handoff points tests').tag('@e2e-rpa-handoff-tests');
+Feature('RPA handoff points tests').tag('@ui-rpa-handoff-tests');
 
 Scenario('Prepare case up to inform agreed extension date, then take claim offline', async ({I}) => {
   await I.login(config.applicantSolicitorUser);

@@ -60,6 +60,7 @@ module.exports =  {
     let currentIncidentMessage = null;
 
     while (attempts < MAX_RETRIES) {
+      let businessProcess;
       try {
         const response = await restHelper.request(
           `${config.url.civilService}/testing-support/case/${caseId}/business-process`,
@@ -70,7 +71,7 @@ module.exports =  {
           }, null, 'GET');
 
         const responseData = await response.json();
-        const businessProcess = responseData.businessProcess;
+        businessProcess = responseData.businessProcess;
 
         if (responseData.incidentMessage) {
           currentIncidentMessage = responseData.incidentMessage;
@@ -98,7 +99,7 @@ module.exports =  {
           throw error;
         }
         // Exponential backoff: increase timeout, but cap at MAX_RETRY_TIMEOUT_MS
-        console.log(`Business process not finished for case ${caseId}, retrying in ${retryTimeout / 1000} seconds (Attempt ${attempts}/${MAX_RETRIES})`);
+        console.log(`Business process: ${businessProcess.camundaEvent}, not finished for case ${caseId}, retrying in ${retryTimeout / 1000} seconds (Attempt ${attempts}/${MAX_RETRIES})`);
         await new Promise(resolve => setTimeout(resolve, retryTimeout));
         retryTimeout = Math.min(retryTimeout * 1.5, MAX_RETRY_TIMEOUT_MS);
       }

@@ -743,67 +743,67 @@ module.exports = function () {
       ]);
     },
 
-    async verifyCOSTabDetails() {
+    async verifyCOSTabDetails(caseNumber) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab('Certificate of Service'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Certificate of Service'),
         () => cosTab.verifyCOSDetails(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME)
       ]);
     },
 
     async verifyBundleDetails(caseNumber) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab('Bundles'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Bundles'),
         () => bundlesTab.verifyBundleDetails()
       ]);
     },
 
-    async verifyQueriesDetails(hearing = false) {
+    async verifyQueriesDetails(caseNumber, hearing = false) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab('Queries'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Queries'),
         () => queriesTab.verifyQueriesDetails(hearing)
       ]);
     },
 
-    async raiseFollowUpQuestionAndVerify(party = false) {
+    async raiseFollowUpQuestionAndVerify(caseNumber, party = false) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab('Queries'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Queries'),
         () => queriesTab.askFollowUpQuestion(party),
         () => event.submitAndGoBackToCase('Submit', 'Query submitted'),
-        () =>caseViewPage.navigateToTab('Queries'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Queries'),
         () => queriesTab.verifyFollowUpQuestion(party)
       ]);
     },
 
-    async verifyFollowUpQuestionAsCaseWorker(hearing = false) {
+    async verifyFollowUpQuestionAsCaseWorker(caseNumber, hearing = false) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab('Queries'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Queries'),
         () => queriesTab.verifyFollowUpQuestionAsCourtStaff(hearing)
       ]);
     },
 
-    async verifyFollowUpQuestionAsJudge(hearing = false) {
+    async verifyFollowUpQuestionAsJudge(caseNumber, hearing = false) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab('Queries'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Queries'),
         () => queriesTab.verifyFollowUpQuestion(hearing)
       ]);
     },
 
-    async verifyQueriesDetailsAsCaseWorker(hearing = false) {
+    async verifyQueriesDetailsAsCaseWorker(caseNumber, hearing = false) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab('Queries'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Queries'),
         () => queriesTab.verifyDetailsAsCaseWorker(hearing)
       ]);
     },
 
-    async navigateToTab(tabName) {
+    async navigateToTab(caseId, tabName) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab(tabName),
+        () =>caseViewPage.navigateToTab(caseId, tabName),
       ]);
     },
-
-    async verifyCOSTabNotifyClaimDetails() {
+    
+    async verifyCOSTabNotifyClaimDetails(caseNumber) {
       await this.triggerStepsWithScreenshot([
-        () =>caseViewPage.navigateToTab('Certificate of Service'),
+        () =>caseViewPage.navigateToTab(caseNumber, 'Certificate of Service'),
         () => cosTab.verifyCOSNCDetails(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME)
       ]);
     },

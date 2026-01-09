@@ -14,6 +14,39 @@ const getDate = days => {
   return date;
 };
 
+const shortMonths = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+const getTwoDigitDay = date => {
+  const day = date.getDate();
+  return day < 10 ? `0${day}` : `${day}`;
+};
+
+const getTwoDigitMonth = date => {
+  const month = date.getMonth() + 1;
+  return month < 10 ? `0${month}` : `${month}`;
+};
+
+const formatDateToString = (date, outputFormat) => {
+  if (outputFormat === 'DD Mon YYYY') {
+    return `${date.getDate()} ${shortMonths[date.getMonth()]} ${date.getFullYear()}`;
+  } else if (outputFormat === 'DD-MM-YYYY') {
+    return `${getTwoDigitDay(date)}-${getTwoDigitMonth(date)}-${date.getFullYear()}`;
+  }
+};
+
 
 module.exports = {
   date: (days = 0) => {
@@ -93,6 +126,11 @@ module.exports = {
     }
     return newDate;
   },
+
+  getTwoDigitDay: getTwoDigitDay,
+  getTwoDigitMonth: getTwoDigitMonth,
+  formatDateToString: formatDateToString,
+
   appendTime: (date = new Date(), hours, minutes) => {
     const newDate = new Date(date);
     newDate.setHours(hours ? hours : date.getHours());

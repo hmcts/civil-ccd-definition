@@ -22,7 +22,7 @@ Scenario('1v1 spec full defence intermediate claim', async ({api_spec}) => {
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
   await api_spec.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@api-prod');
+});
 
 Scenario('1v1 spec full admission intermediate claim', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
@@ -82,7 +82,7 @@ Scenario.skip('1v2SS spec full defence intermediate claim', async ({api_spec, WA
     api_spec.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
   }
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@wa-task @api-nonprod');
+}).tag('@wa-task');
 
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();

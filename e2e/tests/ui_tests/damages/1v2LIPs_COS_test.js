@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 let civilCaseReference;
 
-Feature('CCD 1v2 2 LIPs COS UI test').tag('@e2e-nightly-prod @e2e-cos');
+Feature('CCD 1v2 2 LIPs COS UI test').tag('@ui-nightly-prod @ui-cos');
 
 Scenario('1v2 two respondents are LIP - notify/notify claim details journey', async ({I, api}) => {
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
@@ -9,11 +9,11 @@ Scenario('1v2 two respondents are LIP - notify/notify claim details journey', as
   console.log('Case created for COS: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.fillNotifyClaimCOSForm(civilCaseReference, 'ONE_V_TWO_LIPS');
-  await I.verifyCOSTabDetails();
-  await I.navigateToTab('History');
+  await I.verifyCOSTabDetails(civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'History');
   await I.see('Awaiting Claim Details Notification');
   await I.fillNotifyClaimDetailsCOSForm(civilCaseReference);
-  await I.verifyCOSTabNotifyClaimDetails();
-  await I.navigateToTab('History');
+  await I.verifyCOSTabNotifyClaimDetails(civilCaseReference);
+  await I.navigateToTab(civilCaseReference, 'History');
     await I.see('Awaiting Defendant Response');
 }).retry(1);

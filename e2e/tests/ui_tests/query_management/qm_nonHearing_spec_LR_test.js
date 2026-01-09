@@ -5,7 +5,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Non Hearing E2E journey').tag('@non-prod-e2e-ft');
+Feature('Query Management - Non Hearing E2E journey').tag('@ui-nightyly-prod');
 
 Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_ONE';
@@ -17,7 +17,7 @@ Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   await I.raiseNewNonHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyQueriesDetails();
+  await I.verifyQueriesDetails(caseId);
 }).retry(2);
 
 Scenario('Defendant LR raises a query', async ({ I }) => {
@@ -25,21 +25,21 @@ Scenario('Defendant LR raises a query', async ({ I }) => {
   await I.raiseNewNonHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyQueriesDetails();
+  await I.verifyQueriesDetails(caseId);
 }).retry(2);
 
 Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
   await I.login(config.ctscAdminUser);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyQueriesDetailsAsCaseWorker();
+  await I.verifyQueriesDetailsAsCaseWorker(caseId);
 }).retry(2);
 
 Scenario('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
-  await I.verifyQueriesDetails();
+  await I.verifyQueriesDetails(caseId);
 }).retry(2);
 
 Scenario('Take claim offline', async ({ I }) => {
