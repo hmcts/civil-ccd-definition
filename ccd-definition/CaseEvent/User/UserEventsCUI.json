@@ -82,7 +82,7 @@
     "ID": "ASSIGN_LIP_DEFENDANT",
     "Name": "Assign claim to Lip Defendant",
     "Description": "Assign claim to Lip Defendant",
-    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT;All_FINAL_ORDERS_ISSUED",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "N",

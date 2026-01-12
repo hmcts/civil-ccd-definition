@@ -16,10 +16,15 @@ const dependentUiFiles = new Set(
 );
 
 const pipelineTagMap = {
-  '@master-e2e-ft': ['civil-ccd-definition: master'],
-  '@non-prod-e2e-ft': ['civil-ccd-definition: PR'],
-  '@e2e-nightly-prod': ['civil-ccd-definition: nightly'],
-  '@api-prod': ['civil-service: master', 'civil-camunda-bpmn-definition: master'],
+  '@ui-prod': ['civil-ccd-definition: master', 'civil-ccd-definition: PR'],
+  '@ui-nonprod': ['civil-ccd-definition: PR'],
+  '@ui-nightly-prod': ['civil-ccd-definition: nightly'],
+  '@api-prod': [
+    'civil-service: master',
+    'civil-service: PR',
+    'civil-camunda-bpmn-definition: master',
+    'civil-camunda-bpmn-definition: PR'
+  ],
   '@api-nonprod': ['civil-service: PR', 'civil-camunda-bpmn-definition: PR'],
   '@api-nightly-prod': ['civil-service: nightly'],
   '@wa-task': [
@@ -85,6 +90,11 @@ function formatDisplayPath(posixPath) {
   return posixPath.split('/').join(' -> ');
 }
 
+function isSmokeFile(filePath) {
+  const base = path.basename(filePath).toLowerCase();
+  return base.startsWith('smoke');
+}
+
 function fileIsDependent(filePath, suiteType) {
   const relative = toPosix(path.relative(repoRoot, filePath));
   if (suiteType === 'api') {
@@ -140,23 +150,32 @@ function extractHelperSteps(fn) {
     return [];
   }
   const source = fn.toString();
-  const matches = new Set();
+  const matches = [];
   const stepsRegex = /(\w+Steps)\.([A-Za-z0-9_]+)\s*\(/g;
   let match;
   while ((match = stepsRegex.exec(source))) {
     if (!ignoredStepMethods.has(match[2])) {
-      matches.add(`${match[1]}.${match[2]}`);
+      matches.push({ name: `${match[1]}.${match[2]}`, index: match.index });
     }
   }
 
   const actorRegex = new RegExp(`\\b(${actorStepObjects.join('|')})\\.([A-Za-z0-9_]+)\\s*\\(`, 'g');
   while ((match = actorRegex.exec(source))) {
     if (!ignoredStepMethods.has(match[2])) {
-      matches.add(`${match[1]}.${match[2]}`);
+      matches.push({ name: `${match[1]}.${match[2]}`, index: match.index });
     }
   }
 
-  return Array.from(matches);
+  matches.sort((a, b) => a.index - b.index);
+  const ordered = [];
+  const seen = new Set();
+  matches.forEach(({ name }) => {
+    if (!seen.has(name)) {
+      seen.add(name);
+      ordered.push(name);
+    }
+  });
+  return ordered;
 }
 
 function createChain(target) {
@@ -188,6 +207,8 @@ function collectScenarios(filePath, suiteType) {
 
   const scenarios = [];
   let currentFeature = null;
+  let beforeHookSteps = [];
+  let beforeSuiteSteps = [];
 
   const previousGlobals = {
     Feature: global.Feature,
@@ -250,6 +271,8 @@ function collectScenarios(filePath, suiteType) {
         tags: [],
         tagsSet: new Set(currentFeature ? currentFeature.tags : []),
         collectedSteps: extractHelperSteps(fn),
+        beforeSteps: beforeHookSteps.flat(),
+        beforeSuiteSteps: beforeSuiteSteps.flat(),
         skipped: skip || featureSkipped,
         featureSkipped
       };
@@ -268,6 +291,20 @@ function collectScenarios(filePath, suiteType) {
   Scenario.only = scenarioFactory();
   Scenario.skip = scenarioFactory({ skip: true });
 
+  function registerBeforeHook(arg1, arg2) {
+    const fn = typeof arg1 === 'function' ? arg1 : arg2;
+    if (typeof fn === 'function') {
+      beforeHookSteps.push(extractHelperSteps(fn));
+    }
+  }
+
+  function registerBeforeSuiteHook(arg1, arg2) {
+    const fn = typeof arg1 === 'function' ? arg1 : arg2;
+    if (typeof fn === 'function') {
+      beforeSuiteSteps.push(extractHelperSteps(fn));
+    }
+  }
+
   function noop() {}
   const Data = () => ({
     Scenario,
@@ -277,9 +314,9 @@ function collectScenarios(filePath, suiteType) {
   global.Feature = Feature;
   global.Scenario = Scenario;
   global.xScenario = Scenario;
-  global.Before = noop;
+  global.Before = (arg1, arg2) => registerBeforeHook(arg1, arg2);
   global.After = noop;
-  global.BeforeSuite = noop;
+  global.BeforeSuite = (arg1, arg2) => registerBeforeSuiteHook(arg1, arg2);
   global.AfterSuite = noop;
   global.Data = Data;
   global.DataTable = () => ({ Scenario });
@@ -306,7 +343,7 @@ function isFunctionalTag(tag) {
   if (pipelineTagSet.has(tag)) {
     return false;
   }
-  return tag.startsWith('@e2e-') || tag.startsWith('@api-');
+  return tag.startsWith('@ui-') || tag.startsWith('@api-');
 }
 
 function deriveTagMetadata(tags) {
@@ -319,7 +356,7 @@ function deriveTagMetadata(tags) {
       pipelineTagMap[tag].forEach(p => pipelines.add(p));
     } else if (isFunctionalTag(tag)) {
       functionalTags.push(tag);
-      const rawGroup = tag.replace(/^@(e2e|api)-/, '');
+      const rawGroup = tag.replace(/^@(ui|api)-/, '');
       if (rawGroup) {
         functionalGroups.push(`pr_ft_${rawGroup}`);
       }
@@ -343,10 +380,14 @@ function formatDependentFeature(scenarios) {
   const featureName = scenarios[0].featureName;
   const filePath = scenarios[0].filePath;
   const displayPath = formatDisplayPath(filePath);
-  const flattenedSteps = [];
+  const beforeSuite = scenarios.find(s => (s.beforeSuiteSteps || []).length)?.beforeSuiteSteps || [];
+  const flattenedSteps = [...beforeSuite];
   const featureSkipped = scenarios.some(s => s.featureSkipped);
   scenarios.forEach(scenario => {
-    const steps = scenario.collectedSteps || [];
+    const steps = [
+      ...(scenario.beforeSteps || []),
+      ...(scenario.collectedSteps || [])
+    ];
     steps.forEach(step => {
       flattenedSteps.push(scenario.skipped ? `${step} (skipped)` : step);
     });
@@ -367,20 +408,29 @@ function formatDependentFeature(scenarios) {
 function formatIndependentScenario(scenario) {
   const tags = Array.from(scenario.tagsSet || []);
   const tagMeta = deriveTagMetadata(tags);
+  const steps = [
+    ...(scenario.beforeSteps || []),
+    ...(scenario.collectedSteps || [])
+  ];
+  const decoratedSteps = steps.map(step =>
+    scenario.skipped ? `${step} (skipped)` : step
+  );
   return {
     testName: scenario.testName,
     featureName: scenario.featureName,
     filePath: formatDisplayPath(scenario.filePath),
     independentScenario: boolToYesNo(true),
     ...tagMeta,
-    steps: scenario.collectedSteps,
+    steps: decoratedSteps,
     skipped: boolToYesNo(Boolean(scenario.skipped))
   };
 }
 
 function generateDocs({ suiteType, targetDir, outputFile }) {
   const absoluteDir = path.join(repoRoot, targetDir);
-  const files = walk(absoluteDir).filter(file => file.endsWith('_test.js'));
+  const files = walk(absoluteDir).filter(
+    file => file.endsWith('_test.js') && !isSmokeFile(file)
+  );
   const results = [];
 
   files.forEach(file => {
