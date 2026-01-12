@@ -26,7 +26,7 @@ Scenario('Create 1v1 unspec claim, notify claim, notify claim details, request d
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJUnspec(caseId, 'ONE_V_ONE');
-}).retry(2).tag('@ui-prod @wa-task');
+}).retry(2).tag('@ui-nonprod @wa-task');
 
 //DTSCCI-358
 Scenario.skip('Judge add case notes', async ({I, api}) => {
