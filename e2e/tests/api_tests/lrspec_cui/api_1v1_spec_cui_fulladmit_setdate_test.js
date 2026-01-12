@@ -5,7 +5,7 @@ const claimType = 'SmallClaims';
 let carmEnabled = false;
 let caseId;
 
-Feature('1v1 LIP v LIP spec api full admit journey').tag('@api-spec-cui @ui-prod');
+Feature('1v1 LIP v LIP spec api full admit journey').tag('@api-spec-cui @ui-nonprod @ui-nightly-prod');
 
 Before(async () => {
     await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
