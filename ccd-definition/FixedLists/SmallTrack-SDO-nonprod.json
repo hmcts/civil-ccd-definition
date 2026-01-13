@@ -3,12 +3,12 @@
     "ID": "SmallTrack",
     "ListElementCode": "smallClaimHousingDisrepair",
     "ListElement": "Housing Disrepair",
-    "DisplayOrder": 5
+    "DisplayOrder": 4
   },
   {
     "ID": "SmallTrack",
     "ListElementCode": "smallClaimPPI",
     "ListElement": "PPI",
-    "DisplayOrder": 6
+    "DisplayOrder": 5
   }
 ]
