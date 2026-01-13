@@ -16,6 +16,7 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "type = \"PAY_BY_DATE\""
+    "FieldShowCondition": "type = \"PAY_BY_DATE\"",
+    "RetainHiddenValue": "Y"
   }
 ]

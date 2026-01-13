@@ -15,7 +15,8 @@
     "ElementLabel": "Have you already sent expert reports or similar to other parties?",
     "FieldShowCondition": "expertRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Experts",
@@ -24,7 +25,8 @@
     "ElementLabel": "Do you think the case is suitable for a joint expert?",
     "FieldShowCondition": "expertRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Experts",
@@ -35,6 +37,7 @@
     "ElementLabel": "Expert details",
     "FieldShowCondition": "expertRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

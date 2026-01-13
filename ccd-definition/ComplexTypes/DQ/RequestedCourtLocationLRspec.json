@@ -6,7 +6,8 @@
     "ElementLabel": " ",
     "FieldShowCondition": "responseCourtLocations = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "RequestedCourtLocationLRspec",
@@ -24,7 +25,8 @@
     "FieldShowCondition": "responseCourtLocations = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "RegularExpression": "[0-9]{3}",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "RequestedCourtLocationLRspec",

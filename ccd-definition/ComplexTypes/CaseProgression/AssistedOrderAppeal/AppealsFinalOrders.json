@@ -26,7 +26,8 @@
     "FieldType": "Text",
     "FieldShowCondition": "list = \"OTHER\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -55,9 +56,9 @@
     "FieldType": "AppealChoiceFirstDropdownGrant",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "applicationList = \"GRANTED\""
+    "FieldShowCondition": "applicationList = \"GRANTED\"",
+    "RetainHiddenValue": "Y"
   },
-
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "appealRefusedDropdown",
@@ -66,6 +67,7 @@
     "FieldType": "AppealChoiceFirstDropdownRefuse",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "applicationList = \"REFUSED\""
+    "FieldShowCondition": "applicationList = \"REFUSED\"",
+    "RetainHiddenValue": "Y"
   }
 ]

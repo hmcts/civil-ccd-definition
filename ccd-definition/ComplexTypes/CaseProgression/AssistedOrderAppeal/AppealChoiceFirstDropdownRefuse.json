@@ -26,9 +26,9 @@
     "FieldType": "AppealChoiceSecondDropdownARefuse",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "circuitOrHighCourtListRefuse = \"CIRCUIT_COURT\""
+    "FieldShowCondition": "circuitOrHighCourtListRefuse = \"CIRCUIT_COURT\"",
+    "RetainHiddenValue": "Y"
   },
-
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "appealChoiceSecondDropdownB",
@@ -37,6 +37,7 @@
     "FieldType": "AppealChoiceSecondDropdownBRefuse",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "circuitOrHighCourtListRefuse = \"HIGH_COURT\""
+    "FieldShowCondition": "circuitOrHighCourtListRefuse = \"HIGH_COURT\"",
+    "RetainHiddenValue": "Y"
   }
 ]

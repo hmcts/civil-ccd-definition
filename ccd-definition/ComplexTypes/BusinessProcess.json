@@ -39,6 +39,7 @@
     "ElementLabel": "Date Business process Ready",
     "SecurityClassification": "Public",
     "Searchable": "Y",
-    "FieldShowCondition": "camundaEvent = \"DO_NOT_SHOW\""
+    "FieldShowCondition": "camundaEvent = \"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
   }
 ]

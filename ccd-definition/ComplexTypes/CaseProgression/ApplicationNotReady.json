@@ -22,6 +22,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "applicationNotReadyLine=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "applicationNotReadyLine=\"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   }
 ]

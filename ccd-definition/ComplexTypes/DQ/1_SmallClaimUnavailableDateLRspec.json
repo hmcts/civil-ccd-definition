@@ -15,7 +15,8 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\"",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SmallClaimUnavailableDate",
@@ -24,7 +25,8 @@
     "ElementLabel": "Date from",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SmallClaimUnavailableDate",
@@ -33,7 +35,8 @@
     "ElementLabel": "Date to",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SmallClaimUnavailableDate",

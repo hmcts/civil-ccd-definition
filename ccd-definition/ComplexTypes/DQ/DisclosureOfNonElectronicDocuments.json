@@ -14,7 +14,8 @@
     "ElementLabel": "Do you want standard disclosure?",
     "FieldShowCondition": "directionsForDisclosureProposed = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "DisclosureOfNonElectronicDocuments",
@@ -23,6 +24,7 @@
     "ElementLabel": "What directions are proposed for disclosure?",
     "FieldShowCondition": "directionsForDisclosureProposed = \"Yes\" AND standardDirectionsRequired = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

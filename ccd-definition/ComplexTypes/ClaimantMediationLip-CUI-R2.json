@@ -6,7 +6,8 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "ClaimantMediationLip",
@@ -15,7 +16,8 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "ClaimantMediationLip",
@@ -24,7 +26,8 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "ClaimantMediationLip",
@@ -33,7 +36,8 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "ClaimantMediationLip",
@@ -42,7 +46,8 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "ClaimantMediationLip",
@@ -51,7 +56,8 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "ClaimantMediationLip",
@@ -60,7 +66,8 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "ClaimantMediationLip",
@@ -69,7 +76,8 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "ClaimantMediationLip",
@@ -78,6 +86,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   }
 ]

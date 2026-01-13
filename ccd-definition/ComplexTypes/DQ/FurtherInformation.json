@@ -14,7 +14,8 @@
     "ElementLabel": "What for?",
     "FieldShowCondition": "futureApplications = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "FurtherInformation",

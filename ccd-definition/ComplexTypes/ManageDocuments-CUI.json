@@ -32,7 +32,8 @@
     "ElementLabel": "What type of document is it?",
     "FieldShowCondition": "documentType=\"OTHER\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "StaffDocument",

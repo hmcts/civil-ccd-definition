@@ -32,6 +32,7 @@
     "ElementLabel": "Other reason",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "reason = \"OTHER\""
+    "FieldShowCondition": "reason = \"OTHER\"",
+    "RetainHiddenValue": "Y"
   }
 ]

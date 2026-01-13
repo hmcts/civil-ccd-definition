@@ -48,7 +48,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"COSTS\" AND  makeAnOrderForCostsList = \"CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -57,7 +58,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\" AND makeAnOrderForCostsList = \"CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -66,7 +68,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"COSTS\" AND  makeAnOrderForCostsList = \"DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -75,7 +78,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\" AND makeAnOrderForCostsList = \"DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -85,16 +89,18 @@
     "FieldTypeParameter": "FinalOrderMakeAnOrderTopList",
     "FieldShowCondition": "makeAnOrderForCostsList = \"CLAIMANT\" OR makeAnOrderForCostsList = \"DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "assistedOrderCostsFirstDropdownAmountLabel",
-    "ElementLabel": "### in the sum of £",
+    "ElementLabel": "### in the sum of \u00a3",
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"COSTS\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -104,7 +110,8 @@
     "HintText": "For example, 145.00",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"COSTS\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -113,7 +120,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"COSTS\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -123,7 +131,8 @@
     "HintText": "For example, 16 4 2021",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"COSTS\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -133,7 +142,8 @@
     "FieldTypeParameter": "FinalOrderMakeAnOrderClaimantSecondList",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -142,7 +152,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -152,25 +163,28 @@
     "FieldTypeParameter": "FinalOrderMakeAnOrderClaimantThirdList",
     "FieldShowCondition": "assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "assistedOrderClaimantThirdDropdownLabel",
-    "ElementLabel": "### The claimant shall pay £",
+    "ElementLabel": "### The claimant shall pay \u00a3",
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderAssessmentSecondDropdownList2 = \"YES\" AND assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\" AND makeAnOrderForCostsList = \"CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
     "ListElementCode": "assistedOrderDefendantThirdDropdownLabel",
-    "ElementLabel": "### The defendant shall pay £",
+    "ElementLabel": "### The defendant shall pay \u00a3",
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderAssessmentSecondDropdownList2 = \"YES\" AND assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\" AND makeAnOrderForCostsList = \"DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -180,7 +194,8 @@
     "FieldType": "MoneyGBP",
     "FieldShowCondition": "assistedOrderAssessmentSecondDropdownList2 = \"YES\" AND assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -189,7 +204,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "assistedOrderAssessmentSecondDropdownList2 = \"YES\" AND assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -199,7 +215,8 @@
     "FieldType": "Date",
     "FieldShowCondition": "assistedOrderAssessmentSecondDropdownList2 = \"YES\" AND assistedOrderClaimantDefendantFirstDropdown = \"SUBJECT_DETAILED_ASSESSMENT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
@@ -224,7 +241,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "makeAnOrderForCostsQOCSYesOrNo = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "AssistedOrderCostDetails",
