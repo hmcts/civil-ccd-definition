@@ -352,7 +352,7 @@ withPipeline(type, product, component) {
       keepAll: true,
       reportDir: 'test-results/functional/allure-report',
       reportFiles: 'index.html',
-      reportName: 'Master E2E Allure Report'
+      reportName: 'Prod E2E Allure Report'
     ])
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
