@@ -62,7 +62,7 @@
     "PageID": "manageStayJudicialReferralInMediation",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "preStayState = \"JUDICIAL_REFERRAL\" OR preStayState != \"IN_MEDIATION\" AND manageStayOption = \"LIFT_STAY\""
+    "PageShowCondition": "preStayState = \"JUDICIAL_REFERRAL\" OR preStayState = \"IN_MEDIATION\" AND manageStayOption = \"LIFT_STAY\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
