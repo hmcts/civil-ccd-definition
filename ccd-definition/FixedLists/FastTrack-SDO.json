@@ -34,12 +34,12 @@
     "ID": "FastTrack",
     "ListElementCode": "fastClaimPersonalInjury",
     "ListElement": "Personal Injury",
-    "DisplayOrder": 6
+    "DisplayOrder": 7
   },
   {
     "ID": "FastTrack",
     "ListElementCode": "fastClaimRoadTrafficAccident",
     "ListElement": "Road Traffic Accident",
-    "DisplayOrder": 7
+    "DisplayOrder": 9
   }
 ]
