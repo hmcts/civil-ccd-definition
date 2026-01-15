@@ -106,6 +106,11 @@ exports.config = {
       enabled: functional,
       require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin',
     },
+    allure: {
+      enabled: true,
+      require: "allure-codeceptjs",
+      resultsDir: "test-results/functional/allure-results",
+    },
   },
   mocha: {
     bail: true,
