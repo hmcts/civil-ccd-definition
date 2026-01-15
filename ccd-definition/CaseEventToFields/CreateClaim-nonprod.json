@@ -610,10 +610,10 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "PbaNumber",
-    "PageDisplayOrder": 32,
+    "PageDisplayOrder": 31,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\""
+    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\" AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
