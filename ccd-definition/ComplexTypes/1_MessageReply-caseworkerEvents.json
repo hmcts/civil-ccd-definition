@@ -6,7 +6,8 @@
     "ElementLabel": " ",
     "FieldShowCondition": "isUrgent=\"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "MessageReply",
@@ -15,7 +16,8 @@
     "ElementLabel": "From",
     "FieldShowCondition": "isUrgent=\"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "MessageReply",

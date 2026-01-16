@@ -22,6 +22,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "isRestrictWitness = \"Yes\""
+    "FieldShowCondition": "isRestrictWitness = \"Yes\"",
+    "RetainHiddenValue": "Y"
   }
 ]

@@ -31,7 +31,8 @@
     "FieldType": "Date",
     "FieldShowCondition": "dateToToggle=\"SHOW\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "FastTrackHearingTime",

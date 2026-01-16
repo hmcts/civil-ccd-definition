@@ -22,7 +22,8 @@
     "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Defendant",
@@ -267,7 +268,8 @@
     "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",

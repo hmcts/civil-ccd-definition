@@ -6,7 +6,8 @@
     "ElementLabel": "Document Name",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleDocument",
@@ -15,7 +16,8 @@
     "ElementLabel": "Short Description",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleDocument",
@@ -24,7 +26,8 @@
     "ElementLabel": "Sort Index",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleDocument",
@@ -33,7 +36,8 @@
     "ElementLabel": "Source Document",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleSubfolder",
@@ -42,7 +46,8 @@
     "ElementLabel": "Subfolder Name",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleSubfolder",
@@ -52,7 +57,8 @@
     "ElementLabel": "Folder Documents",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleFolder",
@@ -61,7 +67,8 @@
     "ElementLabel": "Folder Name",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleFolder",
@@ -71,7 +78,8 @@
     "ElementLabel": "Folder Documents",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleFolder",
@@ -81,7 +89,8 @@
     "ElementLabel": "Subfolders",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "BundleFolder",
@@ -90,7 +99,8 @@
     "ElementLabel": "Sort Index",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "name=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -99,7 +109,8 @@
     "ElementLabel": "Stitch status",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -117,7 +128,8 @@
     "ElementLabel": "Bundle document",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -127,7 +139,8 @@
     "ElementLabel": "Bundle folder",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -152,7 +165,8 @@
     "ElementLabel": "Bundle ID",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -161,7 +175,8 @@
     "ElementLabel": "Description",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -170,7 +185,8 @@
     "ElementLabel": "Is this the bundle you want to amend?",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -179,7 +195,8 @@
     "ElementLabel": "Is this the bundle you want to clone?",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -188,7 +205,8 @@
     "ElementLabel": "Should this bundle have coversheets separating each document?",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -197,16 +215,18 @@
     "ElementLabel": "Should this bundle have a title page with a table of contents?",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
     "ListElementCode": "hasFolderCoversheets",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Should this bundle’s folders have a coversheet?",
+    "ElementLabel": "Should this bundle\u2019s folders have a coversheet?",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -224,7 +244,8 @@
     "ElementLabel": "Pagination Style",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -233,7 +254,8 @@
     "ElementLabel": "Cover page template",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -243,7 +265,8 @@
     "ElementLabel": "Page Number Format",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -252,7 +275,8 @@
     "ElementLabel": "File Name Identifier",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",
@@ -261,7 +285,8 @@
     "ElementLabel": "Enable Email notification?",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "stitchStatus=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Bundle",

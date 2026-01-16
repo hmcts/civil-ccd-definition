@@ -56,6 +56,7 @@
     "ElementLabel": "Owned by",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "createdDatetime = \"DO_NOT_SHOW\""
+    "FieldShowCondition": "createdDatetime = \"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
   }
 ]

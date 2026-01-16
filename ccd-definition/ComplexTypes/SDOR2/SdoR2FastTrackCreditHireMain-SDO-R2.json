@@ -39,7 +39,8 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "detailsShowToggle = \"ADD\""
+    "FieldShowCondition": "detailsShowToggle = \"ADD\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SdoR2FastTrackCreditHire",

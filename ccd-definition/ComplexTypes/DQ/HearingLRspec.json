@@ -18,7 +18,8 @@
     "SecurityClassification": "Public",
     "Min": 1,
     "Max": 6,
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingLRspec",
@@ -30,7 +31,8 @@
     "SecurityClassification": "Public",
     "Min": 1,
     "Max": 28,
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingLRspec",
@@ -48,6 +50,7 @@
     "ElementLabel": "Unavailable date",
     "FieldShowCondition": "unavailableDatesRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

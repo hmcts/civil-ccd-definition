@@ -22,6 +22,7 @@
     "ElementLabel": "Please ensure this is contained within the proposed directions attached and specify the draft order number",
     "FieldShowCondition": "disclosureProposalAgreed = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

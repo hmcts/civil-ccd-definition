@@ -14,7 +14,8 @@
     "FieldType": "Label",
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "FixedRecoverableCosts",
@@ -24,7 +25,8 @@
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
     "FieldTypeParameter": "ComplexityBand",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "FixedRecoverableCosts",
@@ -33,7 +35,8 @@
     "FieldType": "YesOrNo",
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "FixedRecoverableCosts",
@@ -43,7 +46,8 @@
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\" OR isSubjectToFixedRecoverableCostRegime = \"No\"",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "_comment": "It would not show when isSubjectToFixedRecoverableCostRegime is not selected"
+    "_comment": "It would not show when isSubjectToFixedRecoverableCostRegime is not selected",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "FixedRecoverableCosts",
@@ -53,6 +57,7 @@
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"DONOTSHOW\"",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

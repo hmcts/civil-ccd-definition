@@ -15,7 +15,8 @@
     "ElementLabel": "Type of income",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "type = \"OTHER\""
+    "FieldShowCondition": "type = \"OTHER\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "RecurringIncome",

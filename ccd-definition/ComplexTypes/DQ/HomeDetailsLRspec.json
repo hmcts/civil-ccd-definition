@@ -15,6 +15,7 @@
     "ElementLabel": "What type of housing",
     "FieldShowCondition": "type = \"OTHER\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

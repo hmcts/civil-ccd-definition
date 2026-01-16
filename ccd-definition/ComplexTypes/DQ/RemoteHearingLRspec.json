@@ -15,6 +15,7 @@
     "ElementLabel": "Briefly explain your reasons",
     "FieldShowCondition": "remoteHearingRequested = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

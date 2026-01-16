@@ -1,5 +1,4 @@
 [
-
   {
     "ID": "HearingSupportRequirementsListDJ",
     "CaseEventID": "DEFAULT_JUDGEMENT",
@@ -21,7 +20,8 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hearingType = \"TELEPHONE_HEARING\""
+    "FieldShowCondition": "hearingType = \"TELEPHONE_HEARING\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingSupportRequirementsListDJ",
@@ -81,7 +81,8 @@
     "FieldType": "Number",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hearingLengthEstimate = \"OTHER\""
+    "FieldShowCondition": "hearingLengthEstimate = \"OTHER\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingSupportRequirementsListDJ",
@@ -103,7 +104,8 @@
     "FieldTypeParameter": "hearingDatesParam",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hearingUnavailableDates = \"Yes\""
+    "FieldShowCondition": "hearingUnavailableDates = \"Yes\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingSupportRequirementsListDJ",
@@ -121,6 +123,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hearingSupportQuestion=\"Yes\""
+    "FieldShowCondition": "hearingSupportQuestion=\"Yes\"",
+    "RetainHiddenValue": "Y"
   }
 ]

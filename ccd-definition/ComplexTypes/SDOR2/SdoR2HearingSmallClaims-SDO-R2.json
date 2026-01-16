@@ -23,7 +23,8 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "trialOnOptions = \"OPEN_DATE\""
+    "FieldShowCondition": "trialOnOptions = \"OPEN_DATE\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
@@ -32,7 +33,8 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "trialOnOptions = \"HEARING_WINDOW\""
+    "FieldShowCondition": "trialOnOptions = \"HEARING_WINDOW\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
@@ -58,7 +60,8 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "lengthList = \"OTHER\""
+    "FieldShowCondition": "lengthList = \"OTHER\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
@@ -91,7 +94,8 @@
     "ElementLabel": "Alternative hearing location",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hearingCourtLocationList=\"OTHER_LOCATION\""
+    "FieldShowCondition": "hearingCourtLocationList=\"OTHER_LOCATION\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
@@ -134,7 +138,8 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "ElementLabel": " ",
-    "FieldShowCondition": "physicalBundleOptions = \"PARTY\""
+    "FieldShowCondition": "physicalBundleOptions = \"PARTY\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SdoR2SmallClaimsHearing",

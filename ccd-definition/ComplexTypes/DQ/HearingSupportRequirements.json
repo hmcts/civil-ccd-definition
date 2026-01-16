@@ -8,7 +8,8 @@
     "FieldShowCondition": "requirements CONTAINS \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingSupportRequirements",
@@ -18,7 +19,8 @@
     "FieldShowCondition": "requirements CONTAINS \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingSupportRequirements",
@@ -29,7 +31,8 @@
     "FieldShowCondition": "requirements CONTAINS \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingSupportRequirements",
@@ -39,7 +42,8 @@
     "FieldShowCondition": "requirements CONTAINS \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "HearingSupportRequirements",
@@ -57,6 +61,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "FieldShowCondition": "supportRequirements=\"Yes\"",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

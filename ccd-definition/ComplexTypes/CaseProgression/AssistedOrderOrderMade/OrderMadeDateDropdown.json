@@ -26,7 +26,8 @@
     "FieldType": "SingleDateHeardFinalOrders",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "finalOrderMadeRadioList=\"SINGLE_DATE\""
+    "FieldShowCondition": "finalOrderMadeRadioList=\"SINGLE_DATE\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -36,9 +37,9 @@
     "FieldType": "DateRangeHeardFinalOrders",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "finalOrderMadeRadioList=\"DATE_RANGE\""
+    "FieldShowCondition": "finalOrderMadeRadioList=\"DATE_RANGE\"",
+    "RetainHiddenValue": "Y"
   },
-
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "bespokeRangeSelection",
@@ -47,7 +48,7 @@
     "FieldType": "BespokeDateHeardFinalOrders",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "finalOrderMadeRadioList=\"BESPOKE_RANGE\""
+    "FieldShowCondition": "finalOrderMadeRadioList=\"BESPOKE_RANGE\"",
+    "RetainHiddenValue": "Y"
   }
 ]
-

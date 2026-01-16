@@ -26,7 +26,8 @@
     "FieldType": "AppealChoiceSecondDropdownA",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "circuitOrHighCourtList = \"CIRCUIT_COURT\""
+    "FieldShowCondition": "circuitOrHighCourtList = \"CIRCUIT_COURT\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -36,6 +37,7 @@
     "FieldType": "AppealChoiceSecondDropdownB",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "circuitOrHighCourtList = \"HIGH_COURT\""
+    "FieldShowCondition": "circuitOrHighCourtList = \"HIGH_COURT\"",
+    "RetainHiddenValue": "Y"
   }
 ]
