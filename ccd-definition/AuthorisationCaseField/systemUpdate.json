@@ -735,6 +735,6 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseNotes",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   }
 ]
