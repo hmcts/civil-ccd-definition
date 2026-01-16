@@ -5,7 +5,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "isClaimDeclarationAdded",
-    "TabFieldDisplayOrder": 19,
+    "TabFieldDisplayOrder": 20,
     "FieldShowCondition": "claimType = \"DO_NOT_SHOW_IN_UI\""
   },
   {
@@ -25,5 +25,14 @@
     "CaseFieldID": "isHumanRightsActIssues",
     "TabFieldDisplayOrder": 4,
     "FieldShowCondition": "claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "otherRemedyFee",
+    "TabFieldDisplayOrder": 7,
+    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\" AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
   }
 ]
