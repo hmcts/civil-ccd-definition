@@ -14,8 +14,7 @@
     "ElementLabel": "Is the partner aged 18 or over?",
     "FieldShowCondition": "liveWithPartnerRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "PartnerAndDependentsLRspec",
@@ -32,8 +31,7 @@
     "ElementLabel": " ",
     "FieldShowCondition": "haveAnyChildrenRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "PartnerAndDependentsLRspec",
@@ -42,8 +40,7 @@
     "ElementLabel": "Do any of the children that live your client receive severe disability premium payments",
     "FieldShowCondition": "haveAnyChildrenRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "PartnerAndDependentsLRspec",
@@ -62,8 +59,7 @@
     "FieldShowCondition": "supportedAnyoneFinancialRequired = \"Yes\"",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "RegularExpression": "\\d+",
-    "RetainHiddenValue": "Y"
+    "RegularExpression": "\\d+"
   },
   {
     "ID": "PartnerAndDependentsLRspec",
@@ -72,7 +68,6 @@
     "ElementLabel": "Provide details",
     "FieldShowCondition": "supportedAnyoneFinancialRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

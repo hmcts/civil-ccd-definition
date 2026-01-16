@@ -15,7 +15,6 @@
     "ElementLabel": " ",
     "FieldShowCondition": "payingDetailsRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

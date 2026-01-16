@@ -7,8 +7,8 @@
     "SecurityClassification": "Public",
     "Searchable": "Y",
     "_Max": "24",
-    "_Definition": "The reference value understood by the first applicant solicitor firm for the [claim / applicant]",
-    "_Category": "COMMON"
+    "_Definition":  "The reference value understood by the first applicant solicitor firm for the [claim / applicant]",
+    "_Category":  "COMMON"
   },
   {
     "ID": "SolicitorReferences",
@@ -18,8 +18,8 @@
     "SecurityClassification": "Public",
     "Searchable": "Y",
     "_Max": "24",
-    "_Definition": "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
-    "_Category": "COMMON"
+    "_Definition":  "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
+    "_Category":  "COMMON"
   },
   {
     "ID": "SolicitorReferences",
@@ -29,9 +29,8 @@
     "SecurityClassification": "Public",
     "Searchable": "Y",
     "_Max": "24",
-    "_Definition": "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
+    "_Definition":  "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
     "FieldShowCondition": "respondentSolicitor1Reference=\"DO_NOT_SHOW_IN_UI\"",
-    "_Category": "COMMON",
-    "RetainHiddenValue": "Y"
+    "_Category":  "COMMON"
   }
 ]

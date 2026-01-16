@@ -31,8 +31,7 @@
     "FieldType": "Number",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "time = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "time = \"OTHER\""
   },
   {
     "ID": "SmallClaimsHearing",
@@ -42,8 +41,7 @@
     "Max": 59,
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "time = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "time = \"OTHER\""
   },
   {
     "ID": "SmallClaimsHearing",

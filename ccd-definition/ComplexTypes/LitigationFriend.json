@@ -22,8 +22,7 @@
     "FieldShowCondition": "hasSameAddressAsLitigant = \"No\"",
     "ElementLabel": "Litigation friend's address",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "LitigationFriend",
@@ -33,8 +32,7 @@
     "ElementLabel": "Upload the certificate of suitability",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Min": 1,
-    "RetainHiddenValue": "Y"
+    "Min": 1
   },
   {
     "ID": "LitigationFriend",

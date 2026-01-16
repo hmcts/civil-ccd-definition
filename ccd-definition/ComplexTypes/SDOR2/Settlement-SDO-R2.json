@@ -15,7 +15,6 @@
     "ElementLabel": "Each party must inform the Court immediately if the case is settled whether or not it is then possible to upload to the Digital Portal a draft consent order to give effect to their agreement.",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "includeInOrderToggle = \"INCLUDE\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "includeInOrderToggle = \"INCLUDE\""
   }
 ]

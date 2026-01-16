@@ -25,8 +25,7 @@
     "FieldShowCondition": "hearingScheduledPreferenceYesNo = \"Yes\"",
     "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Please provide the hearing dates.</p>",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDateGAspec",
@@ -36,7 +35,6 @@
     "ElementLabel": " ",
     "HintText": "If there is more than one hearing, please provide the date of the earliest hearing",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

@@ -16,8 +16,7 @@
     "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\"",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "UnavailableDate",
@@ -27,8 +26,7 @@
     "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "UnavailableDate",
@@ -38,8 +36,7 @@
     "HintText": "This date cannot be in the past and must not be more than one year in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "UnavailableDate",
@@ -50,8 +47,7 @@
     "FieldShowCondition": "unavailableDateType = \"DO NOT SHOW IN UI\"",
     "DisplayContext": "OPTIONAL",
     "Comment": "FIELDS REQUIRED FOR PRODUCTION - PART OF LEGAL REP UPLIFTS - QUERY PROD BEFORE DELETING",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "UnavailableDate",

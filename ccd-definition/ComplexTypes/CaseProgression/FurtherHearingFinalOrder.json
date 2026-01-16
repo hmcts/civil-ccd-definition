@@ -73,8 +73,7 @@
     "FieldType": "CaseHearingLengthElement",
     "FieldShowCondition": "lengthList=\"OTHER\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -102,8 +101,7 @@
     "FieldType": "FinalOrderFurtherHearingDatesAvoid",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "datesToAvoidYesNo=\"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "datesToAvoidYesNo=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -131,8 +129,7 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hearingLocationList=\"OTHER_LOCATION\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "hearingLocationList=\"OTHER_LOCATION\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -142,8 +139,7 @@
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hearingLocationList=\"OTHER_LOCATION\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "hearingLocationList=\"OTHER_LOCATION\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

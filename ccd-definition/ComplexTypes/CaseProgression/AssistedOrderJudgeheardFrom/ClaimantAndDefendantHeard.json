@@ -17,8 +17,7 @@
     "FieldType": "Text",
     "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -28,8 +27,7 @@
     "FieldType": "Text",
     "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -39,8 +37,7 @@
     "FieldType": "Text",
     "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -50,8 +47,7 @@
     "FieldType": "Text",
     "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -70,8 +66,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COUNSEL_FOR_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -81,8 +76,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"SOLICITOR_FOR_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -92,8 +86,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"COST_DRAFTSMAN_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -103,8 +96,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"THE_CLAIMANT_IN_PERSON\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -114,8 +106,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"LAY_REPRESENTATIVE_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -125,8 +116,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"LEGAL_EXECUTIVE_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -136,8 +126,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantList=\"SOLICITORS_AGENT_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -147,8 +136,7 @@
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationClaimantList=\"CLAIMANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -158,8 +146,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantTwoDynamic=\"*\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -170,8 +157,7 @@
     "FieldTypeParameter": "FinalOrdersClaimantRepresentationList",
     "FieldShowCondition": "typeRepresentationClaimantTwoDynamic=\"*\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -181,8 +167,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"COUNSEL_FOR_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -192,8 +177,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"SOLICITOR_FOR_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -203,8 +187,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"COST_DRAFTSMAN_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -214,8 +197,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"THE_CLAIMANT_IN_PERSON\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -225,8 +207,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"LAY_REPRESENTATIVE_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -236,8 +217,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"LEGAL_EXECUTIVE_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -247,8 +227,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"SOLICITORS_AGENT_FOR_THE_CLAIMANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -258,8 +237,7 @@
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationClaimantListTwo=\"CLAIMANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -288,8 +266,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"COUNSEL_FOR_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -299,8 +276,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"SOLICITOR_FOR_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -310,8 +286,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"COST_DRAFTSMAN_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -321,8 +296,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"THE_DEFENDANT_IN_PERSON\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -332,8 +306,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"LAY_REPRESENTATIVE_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -343,8 +316,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"LEGAL_EXECUTIVE_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -354,8 +326,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantList=\"SOLICITORS_AGENT_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -365,8 +336,7 @@
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationDefendantList=\"DEFENDANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -376,8 +346,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantTwoDynamic=\"*\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -388,8 +357,7 @@
     "FieldTypeParameter": "FinalOrdersDefendantRepresentationList",
     "FieldShowCondition": "typeRepresentationDefendantTwoDynamic=\"*\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -399,8 +367,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"COUNSEL_FOR_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -410,8 +377,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"SOLICITOR_FOR_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -421,8 +387,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"COST_DRAFTSMAN_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -432,8 +397,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"THE_DEFENDANT_IN_PERSON\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -443,8 +407,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"LAY_REPRESENTATIVE_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -454,8 +417,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"LEGAL_EXECUTIVE_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -465,8 +427,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"SOLICITORS_AGENT_FOR_THE_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -476,8 +437,7 @@
     "FieldType": "TrialNoticeProcedure",
     "FieldShowCondition": "typeRepresentationDefendantTwoList=\"DEFENDANT_NOT_ATTENDING\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

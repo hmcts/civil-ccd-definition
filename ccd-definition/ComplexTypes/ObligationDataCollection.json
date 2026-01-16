@@ -23,8 +23,7 @@
     "ElementLabel": "Info for other",
     "SecurityClassification": "Public",
     "FieldShowCondition": "obligationReason = \"OTHER\"",
-    "Searchable": "Y",
-    "RetainHiddenValue": "Y"
+    "Searchable": "Y"
   },
   {
     "ID": "ObligationDataCollection",
@@ -41,7 +40,6 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "Y",
-    "FieldShowCondition": "obligationWATaskRaised = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "obligationWATaskRaised = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

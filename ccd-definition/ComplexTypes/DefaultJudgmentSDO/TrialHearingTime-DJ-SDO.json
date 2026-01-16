@@ -31,8 +31,7 @@
     "ElementLabel": "Date to",
     "FieldShowCondition": "dateToToggle=\"SHOW\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingTimeDJ",

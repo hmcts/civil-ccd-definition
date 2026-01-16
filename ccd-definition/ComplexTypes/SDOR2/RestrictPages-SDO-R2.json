@@ -22,7 +22,6 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "isRestrictPages = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "isRestrictPages = \"Yes\""
   }
 ]

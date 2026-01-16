@@ -24,8 +24,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "revisedHearingRequirements = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "revisedHearingRequirements = \"Yes\""
   },
   {
     "ID": "RevisedHearingRequirements",
@@ -34,8 +33,7 @@
     "ElementLabel": "You are reminded that this information will be shared with all other parties.",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "revisedHearingRequirements = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "revisedHearingRequirements = \"Yes\""
   },
   {
     "ID": "RevisedHearingRequirements",

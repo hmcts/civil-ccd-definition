@@ -16,8 +16,7 @@
     "HintText": "This date cannot be in the past and must not be more than three months in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\"",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "MediationUnavailableDate",
@@ -27,8 +26,7 @@
     "HintText": "This date cannot be in the past and must not be more than three months in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "MediationUnavailableDate",
@@ -38,7 +36,6 @@
     "HintText": "This date cannot be in the past and must not be more than three months in the future",
     "SecurityClassification": "Public",
     "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

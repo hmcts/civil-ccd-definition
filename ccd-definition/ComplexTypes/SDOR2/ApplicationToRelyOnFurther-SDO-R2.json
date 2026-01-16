@@ -22,7 +22,6 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "doRequireApplicationToRely = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "doRequireApplicationToRely = \"Yes\""
   }
 ]

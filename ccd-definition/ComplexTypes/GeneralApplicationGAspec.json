@@ -323,8 +323,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "applicationTakenOfflineDate = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "applicationTakenOfflineDate = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "GeneralApplicationGAspec",

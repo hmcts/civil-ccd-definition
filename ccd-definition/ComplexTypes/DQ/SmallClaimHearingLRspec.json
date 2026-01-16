@@ -16,7 +16,6 @@
     "ElementLabel": "Unavailable date",
     "FieldShowCondition": "unavailableDatesRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

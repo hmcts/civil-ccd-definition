@@ -62,7 +62,6 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "isClaimForPecuniaryLoss = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "isClaimForPecuniaryLoss = \"Yes\""
   }
 ]

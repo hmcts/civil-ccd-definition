@@ -31,8 +31,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -41,8 +40,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
   {
     "ID": "SmallClaimsWitnessStatement",
@@ -51,8 +49,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
   {
     "ID": "SmallClaimsWitnessStatement",

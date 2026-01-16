@@ -15,8 +15,7 @@
     "ElementLabel": "Type of expense",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "type = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "type = \"OTHER\""
   },
   {
     "ID": "RecurringExpense",

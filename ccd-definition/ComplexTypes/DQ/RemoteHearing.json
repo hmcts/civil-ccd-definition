@@ -15,7 +15,6 @@
     "FieldShowCondition": "remoteHearingRequested = \"Yes\"",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

@@ -31,8 +31,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "detailsShowToggle = \"ADD\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "detailsShowToggle = \"ADD\""
   },
   {
     "ID": "SdoDJR2TrialCreditHire",

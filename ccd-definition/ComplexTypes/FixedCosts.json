@@ -14,7 +14,6 @@
     "ElementLabel": "Amount",
     "FieldShowCondition": "claimFixedCosts = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

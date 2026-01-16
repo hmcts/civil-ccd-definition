@@ -14,8 +14,7 @@
     "ElementLabel": "Is such an agreement likely?",
     "FieldShowCondition": "reachedAgreement = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "DisclosureOfElectronicDocumentsLRspec",
@@ -24,7 +23,6 @@
     "ElementLabel": "What are the issues?",
     "FieldShowCondition": "agreementLikely = \"No\" AND reachedAgreement = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

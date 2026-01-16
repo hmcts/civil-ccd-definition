@@ -15,8 +15,7 @@
     "ElementLabel": "Rate you're claiming\n",
     "FieldShowCondition": "sameRateInterestType = \"SAME_RATE_INTEREST_DIFFERENT_RATE\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "SameRateInterestOptions",
@@ -25,7 +24,6 @@
     "ElementLabel": "Why are you entitled to this rate?\n",
     "FieldShowCondition": "sameRateInterestType = \"SAME_RATE_INTEREST_DIFFERENT_RATE\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

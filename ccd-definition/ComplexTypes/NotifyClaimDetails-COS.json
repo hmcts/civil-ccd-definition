@@ -6,8 +6,7 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "cosDateOfServiceForDefendant = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "cosDateOfServiceForDefendant = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -15,7 +14,7 @@
     "ElementLabel": "On what day did you serve?",
     "FieldType": "Date",
     "SecurityClassification": "Public",
-    "Definition": "Enter the date you served the documents"
+    "Definition":  "Enter the date you served the documents"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -24,7 +23,7 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter the date you served the documents"
+    "Definition":  "Enter the date you served the documents"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -33,7 +32,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter details of the documents you served"
+    "Definition":  "Enter details of the documents you served"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -45,8 +44,7 @@
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "cosDocSaved = \"\" OR cosDocSaved = \"No\" ",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "cosDocSaved = \"\" OR cosDocSaved = \"No\" "
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -56,7 +54,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter the name of the person you served the documents to"
+    "Definition":  "Enter the name of the person you served the documents to"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -66,7 +64,7 @@
     "FieldTypeParameter": "ServeTypeCoS",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Select an option for how you served the documents"
+    "Definition":  "Select an option for how you served the documents"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -75,7 +73,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter the details of where you served the documents",
+    "Definition":  "Enter the details of where you served the documents",
     "HintText": "Enter the postal address, email address, fax or DX number"
   },
   {
@@ -86,7 +84,7 @@
     "FieldTypeParameter": "ServeLocationOwnerTypeCoS",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Select the person at whose location you served the documents"
+    "Definition":  "Select the person at whose location you served the documents"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -96,7 +94,7 @@
     "FieldTypeParameter": "ServeLocationTypeCoS",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Select the type of location where you served the documents"
+    "Definition":  "Select the type of location where you served the documents"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -105,10 +103,9 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Other",
+    "Definition":  "Other",
     "HintText": "Tell us the other type of location where you served the documents",
-    "FieldShowCondition": "cosRecipientServeLocationType = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "cosRecipientServeLocationType = \"OTHER\""
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -117,7 +114,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter your name"
+    "Definition":  "Enter your name"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -126,7 +123,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter the name of your firm"
+    "Definition":  "Enter the name of your firm"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -136,7 +133,7 @@
     "FieldTypeParameter": "NotifyClaimStatement",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Confirm that you believe that the facts stated in the application are true"
+    "Definition":  "Confirm that you believe that the facts stated in the application are true"
   },
   {
     "ID": "NotifyClaimDetailsCoS",
@@ -146,7 +143,7 @@
     "FieldTypeParameter": "NotifyClaimStatement",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Confirm that you believe that the facts stated in the certificate are true"
+    "Definition":  "Confirm that you believe that the facts stated in the certificate are true"
   },
   {
     "ID": "NotifyClaimDetailsCoS",

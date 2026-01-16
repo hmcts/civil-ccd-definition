@@ -33,7 +33,6 @@
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "documentUpload = \"DUMMY_VALUE_TO_HIDE_FIELD\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "documentUpload = \"DUMMY_VALUE_TO_HIDE_FIELD\""
   }
 ]

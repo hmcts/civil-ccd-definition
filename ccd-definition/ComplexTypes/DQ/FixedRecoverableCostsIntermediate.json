@@ -14,8 +14,7 @@
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
     "ElementLabel": "Has the complexity been agreed with the other party?",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
@@ -25,8 +24,7 @@
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
     "FieldTypeParameter": "ComplexityBandIntermediate",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
@@ -35,8 +33,7 @@
     "FieldType": "TextArea",
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\" OR isSubjectToFixedRecoverableCostRegime = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",

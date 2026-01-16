@@ -38,8 +38,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "isRestrictWitness = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "isRestrictWitness = \"Yes\""
   },
   {
     "ID": "SdoR2SmallClaimsWitnessStatements",
@@ -64,8 +63,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "isRestrictPages = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "isRestrictPages = \"Yes\""
   },
   {
     "ID": "SdoR2SmallClaimsWitnessStatements",

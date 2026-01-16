@@ -31,7 +31,6 @@
     "ElementLabel": "Explain why not",
     "FieldShowCondition": "reactionProtocolCompliedWith = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

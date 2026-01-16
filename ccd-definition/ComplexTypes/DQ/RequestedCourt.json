@@ -23,8 +23,7 @@
     "ElementLabel": "Briefly explain your reasons",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
@@ -41,8 +40,7 @@
     "ElementLabel": " ",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
@@ -51,8 +49,7 @@
     "ElementLabel": "Preferred court hearing centre",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "RequestedCourt",
@@ -62,7 +59,6 @@
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "RegularExpression": "[0-9]{3}",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

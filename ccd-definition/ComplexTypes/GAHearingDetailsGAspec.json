@@ -14,8 +14,7 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "hearingYesorNo = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "hearingYesorNo = \"Yes\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -24,8 +23,7 @@
     "ElementLabel": "Is your case reserved to a judge?",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "judgeRequiredYesOrNo = \"DEPRECATED_DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "judgeRequiredYesOrNo = \"DEPRECATED_DO_NOT_SHOW\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -35,9 +33,9 @@
     "Max": 40,
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "judgeRequiredYesOrNo = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "judgeRequiredYesOrNo = \"Yes\""
   },
+
   {
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "trialRequiredYesOrNo",
@@ -53,8 +51,7 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -63,8 +60,7 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -73,8 +69,7 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -94,8 +89,7 @@
     "Max": 40,
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "HearingPreferencesPreferredType = \"TELEPHONE\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "HearingPreferencesPreferredType = \"TELEPHONE\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -150,8 +144,7 @@
     "Max": 9,
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "HearingDuration = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "HearingDuration = \"OTHER\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -161,8 +154,7 @@
     "Max": 99,
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "HearingDuration = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "HearingDuration = \"OTHER\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -172,8 +164,7 @@
     "Max": 99,
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "HearingDuration = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "HearingDuration = \"OTHER\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -191,8 +182,7 @@
     "ElementLabel": "  ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "unavailableTrialRequiredYesOrNo = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "unavailableTrialRequiredYesOrNo = \"Yes\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -218,8 +208,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "vulnerabilityQuestionsYesOrNo = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "vulnerabilityQuestionsYesOrNo = \"Yes\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -245,8 +234,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "SupportRequirementCONTAINS\"SIGN_INTERPRETER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "SupportRequirementCONTAINS\"SIGN_INTERPRETER\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -255,8 +243,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "SupportRequirementCONTAINS\"LANGUAGE_INTERPRETER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "SupportRequirementCONTAINS\"LANGUAGE_INTERPRETER\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -265,7 +252,6 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "SupportRequirementCONTAINS\"OTHER_SUPPORT\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "SupportRequirementCONTAINS\"OTHER_SUPPORT\""
   }
 ]

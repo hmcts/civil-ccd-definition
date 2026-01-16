@@ -14,8 +14,7 @@
     "ElementLabel": "Enter the date by which this application must be considered by a judge\n",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "generalAppUrgency = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "generalAppUrgency = \"Yes\""
   },
   {
     "ID": "GAUrgencyRecordGAspec",
@@ -25,8 +24,7 @@
     "Max": "400",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "generalAppUrgency = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "generalAppUrgency = \"Yes\""
   },
   {
     "ID": "GAUrgencyRecordGAspec",
@@ -36,7 +34,6 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "generalAppUrgency = \"Yes\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "generalAppUrgency = \"Yes\""
   }
 ]

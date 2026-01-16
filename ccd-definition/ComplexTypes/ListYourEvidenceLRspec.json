@@ -15,18 +15,16 @@
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a signed contract.",
     "FieldShowCondition": "evidenceType = \"CONTRACTS_AND_AGREEMENTS\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "EvidenceList",
     "ListElementCode": "expertWitnessEvidence",
     "FieldType": "TextArea",
-    "ElementLabel": "Describe this evidence in more detail (optional). For example, a surveyor\u2019s report.",
+    "ElementLabel": "Describe this evidence in more detail (optional). For example, a surveyor’s report.",
     "FieldShowCondition": "evidenceType = \"EXPERT_WITNESS\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "EvidenceList",
@@ -35,8 +33,7 @@
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a letter from the other party.",
     "FieldShowCondition": "evidenceType = \"LETTERS_EMAILS_AND_OTHER_CORRESPONDENCE\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "EvidenceList",
@@ -45,28 +42,25 @@
     "ElementLabel": "Describe this evidence in more detail (optional). For example, a photo of the work you carried out.",
     "FieldShowCondition": "evidenceType = \"PHOTO_EVIDENCE\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "EvidenceList",
     "ListElementCode": "receiptsEvidence",
     "FieldType": "TextArea",
-    "ElementLabel": "Describe this evidence in more detail (optional). For example, a receipt showing the amount you\u2019ve paid.",
+    "ElementLabel": "Describe this evidence in more detail (optional). For example, a receipt showing the amount you’ve paid.",
     "FieldShowCondition": "evidenceType = \"RECEIPTS\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "EvidenceList",
     "ListElementCode": "statementOfTruthEvidence",
     "FieldType": "TextArea",
-    "ElementLabel": "Describe this evidence in more detail (optional). For example, a bank statement showing the amount you\u2019ve paid.",
+    "ElementLabel": "Describe this evidence in more detail (optional). For example, a bank statement showing the amount you’ve paid.",
     "FieldShowCondition": "evidenceType = \"STATEMENT_OF_ACCOUNT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "EvidenceList",
@@ -75,7 +69,6 @@
     "ElementLabel": "Describe this evidence in more detail (optional).",
     "FieldShowCondition": "evidenceType = \"OTHER\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

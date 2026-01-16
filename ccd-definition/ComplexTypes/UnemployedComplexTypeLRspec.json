@@ -19,8 +19,7 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Label": " ",
-    "FieldShowCondition": "unemployedComplexTypeRequired = \"UNEMPLOYED\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "unemployedComplexTypeRequired = \"UNEMPLOYED\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -31,7 +30,6 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Label": " ",
-    "FieldShowCondition": "unemployedComplexTypeRequired = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "unemployedComplexTypeRequired = \"OTHER\""
   }
 ]

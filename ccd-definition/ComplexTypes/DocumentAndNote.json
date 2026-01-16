@@ -39,8 +39,7 @@
     "ElementLabel": "Date added",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "label = \"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "label = \"DO_NOT_SHOW\""
   },
   {
     "ID": "DocumentAndNote",
@@ -49,8 +48,7 @@
     "ElementLabel": "Created by",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "label = \"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "label = \"DO_NOT_SHOW\""
   },
   {
     "ID": "DocumentAndNote",
@@ -60,7 +58,6 @@
     "ElementLabel": "Note",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "label = \"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "label = \"DO_NOT_SHOW\""
   }
 ]

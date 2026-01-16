@@ -14,8 +14,7 @@
     "ElementLabel": "Is such agreement likely?",
     "FieldShowCondition": "reachedAgreement = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "DisclosureOfElectronicDocuments",
@@ -24,7 +23,6 @@
     "ElementLabel": "What are the issues about disclosure of electronic documents which the court needs to address, and should they be dealt with at the CMC or at a separate hearing?",
     "FieldShowCondition": "agreementLikely = \"No\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

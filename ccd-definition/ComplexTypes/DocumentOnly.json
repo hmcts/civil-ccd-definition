@@ -23,8 +23,7 @@
     "ElementLabel": "Date added",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "document = \"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "document = \"DO_NOT_SHOW\""
   },
   {
     "ID": "DocumentAndName",
@@ -33,7 +32,6 @@
     "ElementLabel": "Created by",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "createdDateTime = \"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "createdDateTime = \"DO_NOT_SHOW\""
   }
 ]

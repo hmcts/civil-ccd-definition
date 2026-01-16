@@ -16,7 +16,6 @@
     "ElementLabel": "Witness details",
     "FieldShowCondition": "witnessesToAppear = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

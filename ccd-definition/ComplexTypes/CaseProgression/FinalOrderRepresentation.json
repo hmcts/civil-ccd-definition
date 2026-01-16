@@ -17,8 +17,7 @@
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "typeRepresentationList=\"CLAIMANT_AND_DEFENDANT\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -28,7 +27,6 @@
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "typeRepresentationList=\"OTHER_REPRESENTATION\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

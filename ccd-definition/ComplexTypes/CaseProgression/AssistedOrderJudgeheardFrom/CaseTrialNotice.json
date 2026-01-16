@@ -1,12 +1,12 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ListElementCode": "list",
-    "ID": "TrialNoticeProcedure",
-    "ElementLabel": " ",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "FinalOrdersClaimantDefendantNotAttending",
-    "SecurityClassification": "Public",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "ListElementCode": "list",
+  "ID": "TrialNoticeProcedure",
+  "ElementLabel": " ",
+  "FieldType": "FixedList",
+  "FieldTypeParameter": "FinalOrdersClaimantDefendantNotAttending",
+  "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
@@ -17,8 +17,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "list=\"SATISFIED_REASONABLE_TO_PROCEED\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -28,8 +27,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "list=\"SATISFIED_NOTICE_OF_TRIAL\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -39,8 +37,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "list=\"NOT_SATISFIED_NOTICE_OF_TRIAL\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -60,8 +57,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "listClaimTwo=\"SATISFIED_REASONABLE_TO_PROCEED\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -71,8 +67,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "listClaimTwo=\"SATISFIED_NOTICE_OF_TRIAL\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -82,8 +77,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "listClaimTwo=\"NOT_SATISFIED_NOTICE_OF_TRIAL\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -103,19 +97,16 @@
     "FieldType": "Label",
     "FieldShowCondition": "listDef=\"SATISFIED_REASONABLE_TO_PROCEED\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label2Def",
     "ID": "TrialNoticeProcedure",
-    "ElementLabel": "${typeRepresentationDefendantOneDynamic}, the defendant, did not attend the hearing and, whilst the Judge was satisfied that they had received notice of the trial, the Judge was not satisfied that it was reasonable to proceed in their absence.",
-    "FieldType": "Label",
+    "ElementLabel": "${typeRepresentationDefendantOneDynamic}, the defendant, did not attend the hearing and, whilst the Judge was satisfied that they had received notice of the trial, the Judge was not satisfied that it was reasonable to proceed in their absence.",    "FieldType": "Label",
     "FieldShowCondition": "listDef=\"SATISFIED_NOTICE_OF_TRIAL\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -125,8 +116,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "listDef=\"NOT_SATISFIED_NOTICE_OF_TRIAL\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -146,8 +136,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "listDefTwo=\"SATISFIED_REASONABLE_TO_PROCEED\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -157,8 +146,7 @@
     "FieldType": "Label",
     "FieldShowCondition": "listDefTwo=\"SATISFIED_NOTICE_OF_TRIAL\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -168,7 +156,6 @@
     "FieldType": "Label",
     "FieldShowCondition": "listDefTwo=\"NOT_SATISFIED_NOTICE_OF_TRIAL\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

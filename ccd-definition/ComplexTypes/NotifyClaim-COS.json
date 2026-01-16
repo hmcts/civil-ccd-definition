@@ -6,7 +6,7 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter the date you served the documents"
+    "Definition":  "Enter the date you served the documents"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -14,7 +14,7 @@
     "ElementLabel": "The date of service is",
     "FieldType": "Date",
     "SecurityClassification": "Public",
-    "Definition": "Enter the date of service"
+    "Definition":  "Enter the date of service"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -23,7 +23,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter details of the documents you served"
+    "Definition":  "Enter details of the documents you served"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -33,7 +33,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter the name of the person you served the documents to"
+    "Definition":  "Enter the name of the person you served the documents to"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -43,7 +43,7 @@
     "FieldTypeParameter": "ServeTypeCoS",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Select an option for how you served the documents"
+    "Definition":  "Select an option for how you served the documents"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -52,7 +52,7 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter the details of where you served the documents",
+    "Definition":  "Enter the details of where you served the documents",
     "HintText": "Enter the postal address, email address, fax or DX number"
   },
   {
@@ -63,7 +63,7 @@
     "FieldTypeParameter": "ServeLocationOwnerTypeCoS",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Select the person at whose location you served the documents"
+    "Definition":  "Select the person at whose location you served the documents"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -73,7 +73,7 @@
     "FieldTypeParameter": "ServeLocationTypeCoS",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Select the type of location where you served the documents"
+    "Definition":  "Select the type of location where you served the documents"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -82,10 +82,9 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Other",
+    "Definition":  "Other",
     "HintText": "Tell us the other type of location where you served the documents",
-    "FieldShowCondition": "cosRecipientServeLocationType = \"OTHER\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "cosRecipientServeLocationType = \"OTHER\""
   },
   {
     "ID": "NotifyClaimCoS",
@@ -94,7 +93,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter your name"
+    "Definition":  "Enter your name"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -103,7 +102,7 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Enter the name of your firm"
+    "Definition":  "Enter the name of your firm"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -113,7 +112,7 @@
     "FieldTypeParameter": "NotifyClaimStatement",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Confirm that you believe that the facts stated in the certificate are true"
+    "Definition":  "Confirm that you believe that the facts stated in the certificate are true"
   },
   {
     "ID": "NotifyClaimCoS",
@@ -123,7 +122,7 @@
     "FieldTypeParameter": "NotifyClaimStatement",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Definition": "Confirm that you believe that the facts stated in the certificate are true"
+    "Definition":  "Confirm that you believe that the facts stated in the certificate are true"
   },
   {
     "ID": "NotifyClaimCoS",

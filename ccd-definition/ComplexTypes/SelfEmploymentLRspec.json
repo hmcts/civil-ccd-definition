@@ -38,8 +38,7 @@
     "ElementLabel": "Amount owed",
     "FieldShowCondition": "isBehindOnTaxPayment = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "SelfEmployment",
@@ -48,7 +47,6 @@
     "ElementLabel": "Reason",
     "FieldShowCondition": "isBehindOnTaxPayment = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   }
 ]

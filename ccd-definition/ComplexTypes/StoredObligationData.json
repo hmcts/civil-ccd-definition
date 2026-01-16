@@ -31,8 +31,7 @@
     "FieldTypeParameter": "ObligationReason",
     "FieldShowCondition": "reasonText = \" \"",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "StoredObligationData",
@@ -41,8 +40,7 @@
     "ElementLabel": "Info for other",
     "SecurityClassification": "Public",
     "FieldShowCondition": "reasonText = \" \"",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "StoredObligationData",
@@ -67,7 +65,6 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "Y",
-    "FieldShowCondition": "obligationWATaskRaised = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "obligationWATaskRaised = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
