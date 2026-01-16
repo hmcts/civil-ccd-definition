@@ -35,6 +35,7 @@
     "ElementLabel": "Expert details",
     "FieldShowCondition": "expertRequired = \"Yes\"",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

@@ -51,6 +51,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "phone = \"DO NOT SHOW\""
+    "FieldShowCondition": "phone = \"DO NOT SHOW\"",
+    "RetainHiddenValue": "Y"
   }
 ]
