@@ -61,6 +61,7 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
       super.expectLabel(inputs.hearingNotes.label),
       super.expectText(subheadings.welshLanguage),
       super.expectSubheading(subheadings.importantNotes),
+      super.expectSubheading(subheadings.penalNotice),
     ]);
   }
 
@@ -332,6 +333,12 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
 
   async addImportantNotes() {
     await super.inputText('important notes', inputs.importantNotes.selector);
+  }
+
+  async addPenalNotice() {
+    await super.clickBySelector(checkboxes.penalNotice.selector);
+    await super.expectSubheading(subheadings.penalNotice);
+    await super.inputText('Test penal notice text for fast track', inputs.penalNotice.selector);
   }
 
   async submit() {
