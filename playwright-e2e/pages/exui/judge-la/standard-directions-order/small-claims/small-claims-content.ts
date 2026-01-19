@@ -1,7 +1,6 @@
 export const heading = 'Order details';
 
 export const subheadings = {
-  penalNotice: 'Penal notice (optional)',
   judgesRecital: "Judge's recital",
   allocation: 'Allocation',
   flightDelay: 'Flight Delay',
@@ -18,12 +17,10 @@ export const subheadings = {
   addNewDirection: 'Add a new direction (Optional)',
   welshLanguage: 'Use of the Welsh Language',
   judgementClaimSum: 'Judgment for the claimant for an sum to be decided by the court',
+  penalNotice: 'Penal notice (optional)',
 };
 
 export const inputs = {
-  penalNotice: {
-    selector: '#smallClaimsPenalNotice',
-  },
   judgesRecital: {
     selector: '#smallClaimsJudgesRecital_input',
   },
@@ -150,13 +147,12 @@ export const inputs = {
     label: 'Enter the direction (Optional)',
     selector: '#smallClaimsAddNewDirections_0_directionComment',
   },
+  penalNotice: {
+    selector: '#smallClaimsPenalNotice',
+  },
 };
 
 export const checkboxes = {
-  penalNotice: {
-    label: 'Show/Remove',
-    selector: 'label[for="smallClaimsPenalNoticeToggle-SHOW"]',
-  },
   flightDelay: {
     label: 'Show/Remove',
     selector: 'label[for="smallClaimsFlightDelayToggle-SHOW"]',
@@ -176,6 +172,10 @@ export const checkboxes = {
   welshLanguage: {
     label: 'Show/Remove',
     selector: 'label[for="sdoR2SmallClaimsUseOfWelshToggle-SHOW"]',
+  },
+  penalNotice: {
+    label: 'Show/Remove',
+    selector: 'label[for="smallClaimsPenalNoticeToggle-SHOW"]',
   },
 };
 

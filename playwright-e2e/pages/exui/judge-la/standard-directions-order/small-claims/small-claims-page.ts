@@ -28,7 +28,6 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
-      super.expectSubheading(subheadings.penalNotice),
       super.expectSubheading(subheadings.judgesRecital),
       super.expectSubheading(subheadings.allocation),
       super.expectSubheading(subheadings.hearingTime),
@@ -45,6 +44,7 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.documents),
       super.expectSubheading(subheadings.witnessStatement),
       super.expectSubheading(subheadings.addNewDirection),
+      super.expectSubheading(subheadings.penalNotice),
     ]);
   }
 
@@ -127,6 +127,12 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     await super.inputText('new direction', inputs.newDirection.selector);
   }
 
+  async addPenalNotice() {
+    await super.clickBySelector(checkboxes.penalNotice.selector);
+    await super.expectSubheading(subheadings.penalNotice);
+    await super.inputText('Test penal notice text for small claims', inputs.penalNotice.selector);
+  }
+
   async addFlightDelay() {
     await super.expectSubheading(subheadings.flightDelay);
     await super.expectSubheading(subheadings.relatedClaims);
@@ -163,20 +169,6 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
   async addRoadTrafficAccident() {
     await super.expectSubheading(subheadings.roadTrafficAccident);
     await super.inputText('Road Traffic accident', inputs.roadTrafficAccident.selector);
-  }
-
-  async addPenalNotice() {
-    await super.expectSubheading(subheadings.penalNotice);
-    await super.clickBySelector(checkboxes.penalNotice.selector);
-    await super.expectElementVisible(inputs.penalNotice.selector);
-  }
-
-  async addPenalNoticeContent(content: string) {
-    await super.inputText(content, inputs.penalNotice.selector);
-  }
-
-  async removePenalNotice() {
-    await super.clickBySelector(checkboxes.penalNotice.selector);
   }
 
   async submit() {

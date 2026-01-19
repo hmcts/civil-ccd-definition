@@ -976,45 +976,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "smallClaimsPenalNoticeTitle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "smallClaimsPenalNoticeToggle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "smallClaimsPenalNotice",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "smallClaimsHearingToggle",
     "AccessControl": [
       {
