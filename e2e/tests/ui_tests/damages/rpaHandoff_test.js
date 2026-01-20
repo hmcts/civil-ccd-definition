@@ -17,7 +17,7 @@ const respondent1 = {
 
 Feature('RPA handoff points tests').tag('@ui-rpa-handoff-tests');
 
-Scenario('Prepare case up to inform agreed extension date, then take claim offline', async ({I}) => {
+Scenario('01 Prepare case up to inform agreed extension date, then take claim offline', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null , respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();
@@ -39,7 +39,7 @@ Scenario('Prepare case up to inform agreed extension date, then take claim offli
   await I.signOut();
 }).retry(2);
 
-Scenario('Defendant - Defend part of Claim', async ({I}) => {
+Scenario('02 Defendant - Defend part of Claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null , respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();
@@ -63,7 +63,7 @@ Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await I.signOut();
 }).retry(2);
 
-Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => {
+Scenario('03 Defendant - Defends, Claimant decides not to proceed', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null , respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();
@@ -87,7 +87,7 @@ Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => 
   await I.signOut();
 }).retry(2);
 
-Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
+Scenario('04 Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null , respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();

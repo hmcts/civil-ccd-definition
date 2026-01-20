@@ -10,7 +10,7 @@ let caseNumber;
 
 Feature('2v1 Multi Party full admit Claim Creation 2v1').tag('@ui-spec-full-admit @ui-nightly-prod');
 
-Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({LRspec}) => {
+Scenario('01 Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({LRspec}) => {
   console.log('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims');
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('2v1 specified claim - fast track', 'organisation', 'organisation', 'company', null, 18000);
@@ -23,7 +23,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay immediately', async ({LRspec}) => {
+Scenario('02 2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay immediately', async ({LRspec}) => {
   await assignCaseToLRSpecDefendant(caseNumber);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullAdmit({
