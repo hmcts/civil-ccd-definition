@@ -1122,6 +1122,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"allure-codeceptjs@npm:^3.4.2":
+  version: 3.4.2
+  resolution: "allure-codeceptjs@npm:3.4.2"
+  dependencies:
+    allure-js-commons: "npm:3.4.2"
+    allure-mocha: "npm:3.4.2"
+  peerDependencies:
+    codeceptjs: ">=2.3.6"
+  checksum: 10/a6c26ad183fa7d9c740c0c6a5b19fd77296f92ae5f880635db7d4eacc6a65c4f1bac74b6320873d7c52090583667689f235e7b521ba619673f31971bcdfa0e98
+  languageName: node
+  linkType: hard
+
 "allure-commandline@npm:^2.29.0":
   version: 2.34.1
   resolution: "allure-commandline@npm:2.34.1"
@@ -1138,6 +1150,31 @@ __metadata:
     properties: "npm:^1.2.1"
     uuid: "npm:^8.3.0"
   checksum: 10/818d414c08a88e30f5e603005243dff3dc4445012da6924b21293c914b18f33f596bc7686321257870b5695e7d41f54c5dfbda96434d0c1c485d34e7a0b8562d
+  languageName: node
+  linkType: hard
+
+"allure-js-commons@npm:3.4.2, allure-js-commons@npm:^3.4.2":
+  version: 3.4.2
+  resolution: "allure-js-commons@npm:3.4.2"
+  dependencies:
+    md5: "npm:^2.3.0"
+  peerDependencies:
+    allure-playwright: 3.4.2
+  peerDependenciesMeta:
+    allure-playwright:
+      optional: true
+  checksum: 10/ad0310f549ac63d83e6ca4ee769ba33e9daa57048d6890dfce5ffc9edfeb5ede1c036da6562cc9322bc29d4a853e0e5c06cd24fa050be0d03cbe8a6a84539683
+  languageName: node
+  linkType: hard
+
+"allure-mocha@npm:3.4.2":
+  version: 3.4.2
+  resolution: "allure-mocha@npm:3.4.2"
+  dependencies:
+    allure-js-commons: "npm:3.4.2"
+  peerDependencies:
+    mocha: ">=6.2.0"
+  checksum: 10/649e0736e7dd3e0529124dce2e77e8ef11125a2a67c9b3dbd8dbdf996a7fffcab3de135aec6588fd79487e28893f7902e9bdde72bd5f5c1e57b66c5ee45776d0
   languageName: node
   linkType: hard
 
@@ -1875,7 +1912,9 @@ __metadata:
     "@types/node": "npm:^22.5.5"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
+    allure-codeceptjs: "npm:^3.4.2"
     allure-commandline: "npm:^2.29.0"
+    allure-js-commons: "npm:^3.4.2"
     allure-playwright: "npm:2.4.0"
     chai: "npm:^4.3.4"
     codeceptjs: "npm:3.5.11"
@@ -3268,15 +3307,15 @@ __metadata:
   linkType: hard
 
 "form-data@npm:^4.0.0":
-  version: 4.0.4
-  resolution: "form-data@npm:4.0.4"
+  version: 4.0.5
+  resolution: "form-data@npm:4.0.5"
   dependencies:
     asynckit: "npm:^0.4.0"
     combined-stream: "npm:^1.0.8"
     es-set-tostringtag: "npm:^2.1.0"
     hasown: "npm:^2.0.2"
     mime-types: "npm:^2.1.12"
-  checksum: 10/a4b62e21932f48702bc468cc26fb276d186e6b07b557e3dd7cc455872bdbb82db7db066844a64ad3cf40eaf3a753c830538183570462d3649fdfd705601cbcfb
+  checksum: 10/52ecd6e927c8c4e215e68a7ad5e0f7c1031397439672fd9741654b4a94722c4182e74cc815b225dcb5be3f4180f36428f67c6dd39eaa98af0dcfdd26c00c19cd
   languageName: node
   linkType: hard
 
@@ -3550,7 +3589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.2.2, glob@npm:^10.3.3":
+"glob@npm:^10.2.2":
   version: 10.4.5
   resolution: "glob@npm:10.4.5"
   dependencies:
@@ -3563,6 +3602,22 @@ __metadata:
   bin:
     glob: dist/esm/bin.mjs
   checksum: 10/698dfe11828b7efd0514cd11e573eaed26b2dff611f0400907281ce3eab0c1e56143ef9b35adc7c77ecc71fba74717b510c7c223d34ca8a98ec81777b293d4ac
+  languageName: node
+  linkType: hard
+
+"glob@npm:^10.3.3":
+  version: 10.5.0
+  resolution: "glob@npm:10.5.0"
+  dependencies:
+    foreground-child: "npm:^3.1.0"
+    jackspeak: "npm:^3.1.2"
+    minimatch: "npm:^9.0.4"
+    minipass: "npm:^7.1.2"
+    package-json-from-dist: "npm:^1.0.0"
+    path-scurry: "npm:^1.11.1"
+  bin:
+    glob: dist/esm/bin.mjs
+  checksum: 10/ab3bccfefcc0afaedbd1f480cd0c4a2c0e322eb3f0aa7ceaa31b3f00b825069f17cf0f1fc8b6f256795074b903f37c0ade37ddda6a176aa57f1c2bbfe7240653
   languageName: node
   linkType: hard
 
