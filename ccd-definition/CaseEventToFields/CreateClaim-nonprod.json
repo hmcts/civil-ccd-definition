@@ -327,8 +327,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": "Enter expected claim value",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/fee",
-    "PageShowCondition": "claimStarted=\"Yes\""
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/fee"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
