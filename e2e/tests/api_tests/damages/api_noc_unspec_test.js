@@ -10,7 +10,7 @@ const {PUBLIC_QUERY } = require('../../../fixtures/queryTypes');
 
 Feature('Unspecified Notice of Change on Unpecified Claim API test').tag('@api-noc @api-nightly-prod');
 
-Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) => {
+Scenario('01 notice of change - 1v1 - represented defendant', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser);
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);
@@ -26,7 +26,7 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) =>
   await api.checkUserCaseAccess(otherSolicitorUser1, true);
 });
 
-Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
+Scenario('02 notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');
 
   let caseId = await api.getCaseId();
@@ -39,7 +39,7 @@ Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) 
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
 });
 
-Scenario('notice of change - 1v2 - both defendants represented - diff solicitor to diff solicitor', async ({api, noc}) => {
+Scenario('03 notice of change - 1v2 - both defendants represented - diff solicitor to diff solicitor', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);
@@ -54,7 +54,7 @@ Scenario('notice of change - 1v2 - both defendants represented - diff solicitor 
   await api.checkUserCaseAccess(otherSolicitorUser2, true);
 });
 
-Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({api, noc}) => {
+Scenario('04 notice of change - 1v2 - both respondents LiPs to same solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
   await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
@@ -70,7 +70,7 @@ Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', asy
   await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 });
 
-Scenario('notice of change - 1v2 - both respondents LiPs to diff solicitor', async ({api, noc}) => {
+Scenario('05 notice of change - 1v2 - both respondents LiPs to diff solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
   await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
@@ -88,7 +88,7 @@ Scenario('notice of change - 1v2 - both respondents LiPs to diff solicitor', asy
   await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 });
 
-Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc}) => {
+Scenario('06 notice of change - 1v2 - unrepresented respondent 2', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
   await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
@@ -100,7 +100,7 @@ Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
 });
 
-Scenario.skip('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc, qmSteps}) => {
+Scenario.skip('07 notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc, qmSteps}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);
@@ -123,7 +123,7 @@ Scenario.skip('notice of change - 1v2 - same solicitor to diff solicitor', async
   await qmSteps.followUpOnLRQuery(caseId, config.otherSolicitorUser1, query, PUBLIC_QUERY);
 }).tag('@QM');
 
-Scenario.skip('notice of change - 2v1', async ({api, noc}) => {
+Scenario.skip('08 notice of change - 2v1', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'TWO_V_ONE');
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);

@@ -10,7 +10,7 @@ let mediationAdminRegion2 = config.localMediationTests ? config.nbcUserLocal : c
 //BUG - CIV-15903
 Feature('Spec small claims mediation api journey').tag('api-nightly-prod');
 
-Scenario.skip('1v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec_small}) => {
+Scenario.skip('01 1v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', false, false);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', false);
@@ -19,7 +19,7 @@ Scenario.skip('1v1 claimant and defendant upload mediation documents - CARM not 
   await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', false);
 }).tag('@api-prod');
 
-Scenario.skip('1v1 claimant and defendant part admit states paid- claimant not received payment - upload mediation documents - CARM enabled', async ({api_spec_small}) => {
+Scenario.skip('02 1v1 claimant and defendant part admit states paid- claimant not received payment - upload mediation documents - CARM enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, true);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION_STATES_PAID', 'ONE_V_ONE', false, true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', true, 'PART_ADMIT_STATES_PAID_NOT_RECEIVED');
@@ -28,7 +28,7 @@ Scenario.skip('1v1 claimant and defendant part admit states paid- claimant not r
   await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
 });
 
-Scenario.skip('1v1 claimant and defendant part admit states paid- claimant received payment rejects PA - upload mediation documents - CARM enabled', async ({api_spec_small}) => {
+Scenario.skip('03 1v1 claimant and defendant part admit states paid- claimant received payment rejects PA - upload mediation documents - CARM enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, true);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION_STATES_PAID', 'ONE_V_ONE', false, true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', true, 'PART_ADMIT_STATES_PAID_CLAIMANT_RECEIVED_REJECTSPA');
@@ -37,7 +37,7 @@ Scenario.skip('1v1 claimant and defendant part admit states paid- claimant recei
   await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
 });
 
-Scenario.skip('1v1 claimant and defendant part admit reject upload mediation documents - CARM enabled', async ({api_spec_small}) => {
+Scenario.skip('04 1v1 claimant and defendant part admit reject upload mediation documents - CARM enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, true);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION_NOT_PAID', 'ONE_V_ONE', false, true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', true, 'PART_ADMIT_REJECT');
@@ -47,7 +47,7 @@ Scenario.skip('1v1 claimant and defendant part admit reject upload mediation doc
   await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', false);
 });
 
-Scenario.skip('1v2 same solicitor claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
+Scenario.skip('05 1v2 same solicitor claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', false);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL', false);
@@ -55,7 +55,7 @@ Scenario.skip('1v2 same solicitor claimant and defendant upload mediation docume
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
 });
 
-Scenario.skip('1v1 claimant and defendant upload mediation documents - CARM enabled', async ({api_spec_small}) => {
+Scenario.skip('06 1v1 claimant and defendant upload mediation documents - CARM enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, true);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', false, true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', true);
@@ -65,7 +65,7 @@ Scenario.skip('1v1 claimant and defendant upload mediation documents - CARM enab
   await api_spec_small.createSDO(config.judgeUser2WithRegionId2, 'CREATE_SMALL', true);
 });
 
-Scenario.skip('1v2 same solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
+Scenario.skip('07 1v2 same solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', true);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL', true);
@@ -74,7 +74,7 @@ Scenario.skip('1v2 same solicitor claimant and defendant upload mediation docume
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
 });
 
-Scenario.skip('1v2 different solicitor claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
+Scenario.skip('08 1v2 different solicitor claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO', false);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', false);
@@ -86,7 +86,7 @@ Scenario.skip('1v2 different solicitor claimant and defendant upload mediation d
   await api_spec.uploadMediationDocuments(config.secondDefendantSolicitorUser);
 });
 
-Scenario.skip('1v2 different solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
+Scenario.skip('09 1v2 different solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO', true);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', true);
@@ -99,7 +99,7 @@ Scenario.skip('1v2 different solicitor claimant and defendant upload mediation d
   await api_spec.uploadMediationDocuments(config.secondDefendantSolicitorUser);
 });
 
-Scenario.skip('2v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
+Scenario.skip('10 2v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE', false);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE', 'JUDICIAL_REFERRAL', false);
@@ -107,7 +107,7 @@ Scenario.skip('2v1 claimant and defendant upload mediation documents - CARM not 
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
 });
 
-Scenario.skip('2v1 claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
+Scenario.skip('11 2v1 claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE', true);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE', 'JUDICIAL_REFERRAL', true);

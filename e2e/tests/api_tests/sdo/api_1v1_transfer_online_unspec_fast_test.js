@@ -7,7 +7,7 @@ const fastClaimAmount = '11000';
 
 Feature('Transfer Online Case 1v1 API test - fast claim - unspec').tag('@api-nightly-prod @api-toc');
 
-Scenario('1v1 unspec full defence - not suitable SDO - Transfer Case', async ({api}) => {
+Scenario('01 1v1 unspec full defence - not suitable SDO - Transfer Case', async ({api}) => {
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, fastClaimAmount);
     await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser);
@@ -18,7 +18,7 @@ Scenario('1v1 unspec full defence - not suitable SDO - Transfer Case', async ({a
     await api.transferCase(caseWorkerUser);
 });
 
-Scenario('1v1 unspec full defence - not suitable SDO - Other Reasons', async ({api}) => {
+Scenario('02 1v1 unspec full defence - not suitable SDO - Other Reasons', async ({api}) => {
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, fastClaimAmount);
     await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser);

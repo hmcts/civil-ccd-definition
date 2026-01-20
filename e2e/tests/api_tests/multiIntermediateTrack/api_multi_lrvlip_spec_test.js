@@ -13,7 +13,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('1v1 LR v LiP multi track', async ({ api_spec_cui, WA}) => {
+Scenario('01 1v1 LR v LiP multi track', async ({ api_spec_cui, WA}) => {
   const mpScenario = 'ONE_V_ONE';
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimType);

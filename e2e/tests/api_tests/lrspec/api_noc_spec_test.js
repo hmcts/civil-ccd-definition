@@ -10,7 +10,7 @@ const config = require('../../../config.js');
 Feature('Notice of Change on Specified Claim API test').tag('@api-noc @api-nightly-prod');
 
 
-Scenario('notice of change - 1v1 - represented defendant', async ({api_spec, noc}) => {
+Scenario('01 notice of change - 1v1 - represented defendant', async ({api_spec, noc}) => {
   await api_spec.createClaimWithRepresentedRespondent(applicantSolicitorUser);
 
   let caseId = await api_spec.getCaseId();
@@ -24,7 +24,7 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api_spec, noc
   await api_spec.checkUserCaseAccess(otherSolicitorUser1, true);
 });
 
-Scenario('notice of change - 1v2 - both defendants represented - same to different solicitor', async ({api_spec, noc}) => {
+Scenario('02 notice of change - 1v2 - both defendants represented - same to different solicitor', async ({api_spec, noc}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
 
   let caseId = await api_spec.getCaseId();
@@ -38,7 +38,7 @@ Scenario('notice of change - 1v2 - both defendants represented - same to differe
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('notice of change - 2v1', async ({api_spec, noc}) => {
+Scenario('03 notice of change - 2v1', async ({api_spec, noc}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
 
   let caseId = await api_spec.getCaseId();

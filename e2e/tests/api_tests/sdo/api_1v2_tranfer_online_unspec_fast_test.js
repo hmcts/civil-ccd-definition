@@ -7,7 +7,7 @@ const fastClaimAmount = '11000';
 
 Feature('Transfer Online Case 1v2 API test - fast claim - unspec').tag('@api-nightly-prod @api-toc');
 
-Scenario('1v2 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
+Scenario('01 1v2 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v2, fastClaimAmount);
     await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario1v2);

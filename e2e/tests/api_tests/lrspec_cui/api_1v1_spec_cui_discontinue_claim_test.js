@@ -12,7 +12,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('Discontinue claim 1v1 LR v LiP defendant and claimant response - claim created from exui - CARM not enabled', async ({api_spec_cui}) => {
+Scenario('01 Discontinue claim 1v1 LR v LiP defendant and claimant response - claim created from exui - CARM not enabled', async ({api_spec_cui}) => {
     let mpScenario = 'ONE_V_ONE_NO_P_NEEDED';
     caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType, false);
     await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, false);

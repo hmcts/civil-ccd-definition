@@ -12,7 +12,7 @@ if (config.runWAApiTest) {
 }
 Feature('Unspec multi track journey').tag('@api-multi-intermediate-unspec @api-nightly-prod');
 
-Scenario('1v1 unspec multi track claim', async ({api, WA}) => {
+Scenario('01 1v1 unspec multi track claim', async ({api, WA}) => {
   const mpScenario = 'ONE_V_ONE';
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, multiTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -39,7 +39,7 @@ Scenario('1v1 unspec multi track claim', async ({api, WA}) => {
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 }).tag('@api-prod');
 
-Scenario('1v2DS unspec multi track claim', async ({ api, WA }) => {
+Scenario('02 1v2DS unspec multi track claim', async ({ api, WA }) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, multiTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -67,7 +67,7 @@ Scenario('1v2DS unspec multi track claim', async ({ api, WA }) => {
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
-Scenario('1v2SS unspec multi track claim', async ({ api, WA }) => {
+Scenario('03 1v2SS unspec multi track claim', async ({ api, WA }) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, multiTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -94,7 +94,7 @@ Scenario('1v2SS unspec multi track claim', async ({ api, WA }) => {
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
-Scenario('2v1 unspec multi track claim', async ({ api, WA }) => {
+Scenario('04 2v1 unspec multi track claim', async ({ api, WA }) => {
   const mpScenario = 'TWO_V_ONE';
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, multiTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);

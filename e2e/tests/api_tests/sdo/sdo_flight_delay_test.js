@@ -8,14 +8,14 @@ const claimAmountSmallTrack = '1500';
 
 Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec').tag('@api-nightly-prod');
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay', async ({api_spec}) => {
+Scenario('01 1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay', async ({api_spec}) => {
   await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponseForFlightDelay(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION');
   await api_spec.createSDO(judgeUser, 'CREATE_SMALL');
 });
 
-Scenario('1v1 specified - flight delay other option Small-claim @api-spec-full-defence', async ({api_spec}) => {
+Scenario('02 1v1 specified - flight delay other option Small-claim @api-spec-full-defence', async ({api_spec}) => {
     await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, 'ONE_V_ONE_FLIGHT_DELAY_OTHER');
     await api_spec.defendantResponse(config.defendantSolicitorUser);
     await api_spec.claimantResponseForFlightDelay(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION');

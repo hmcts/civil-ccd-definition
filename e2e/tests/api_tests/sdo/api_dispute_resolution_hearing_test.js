@@ -12,7 +12,7 @@ let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : c
 
 Feature('Dispute resolution hearing API test - fast claim - unspec').tag('@api-nightly-prod @api-sdo');
 
-Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
+Scenario('01 1v1 unspec create SDO for DRH', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, claimAmount);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -31,7 +31,7 @@ Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
   await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
 });
 
-Scenario('1v1 spec small create SDO for DRH - CARM enabled', async ({api_spec_small}) => {
+Scenario('02 1v1 spec small create SDO for DRH - CARM enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, true);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', false, true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', true);
@@ -41,7 +41,7 @@ Scenario('1v1 spec small create SDO for DRH - CARM enabled', async ({api_spec_sm
   await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL_DRH_CARM', true);
 });
 
-Scenario('1v1 spec small create SDO for DRH - CARM disabled', async ({api_spec_small}) => {
+Scenario('03 1v1 spec small create SDO for DRH - CARM disabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', false, false);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', false);

@@ -8,32 +8,32 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
 
 Feature('CCD Settle and discontinue claim 2v1 API test').tag('@api-nightly-prod');
 
-Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
+Scenario('01 Settle claim 2v1 scenario', async ({I, api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, 'TWO_V_ONE');
     await api_spec.createCaseFlags(caseWorkerUser);
     await api_spec.manageCaseFlags(caseWorkerUser);
     await api_spec.settleClaimSelectClaimant(solicitorUser, 'YES');
 });
 
-Scenario('Discontinue claim 1v2 scenario', async ({I, api_spec}) => {
+Scenario('02 Discontinue claim 1v2 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_TWO';
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
     await api_spec.discontinueClaim(solicitorUser, mpScenario);
 });
 
-Scenario('Discontinue claim 2v1 scenario', async ({I, api_spec}) => {
+Scenario('03 Discontinue claim 2v1 scenario', async ({I, api_spec}) => {
     let mpScenario = 'TWO_V_ONE';
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
     await api_spec.discontinueClaim(solicitorUser, mpScenario);
 });
 
-Scenario('Discontinue claim 1v1 scenario', async ({I, api_spec}) => {
+Scenario('04 Discontinue claim 1v1 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_ONE';
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
     await api_spec.discontinueClaim(solicitorUser, mpScenario);
 });
 
-Scenario('Validate discontinue claim claimant 1v1 scenario', async ({I, api_spec}) => {
+Scenario('05 Validate discontinue claim claimant 1v1 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_ONE';
     let permission = 'YES';
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
@@ -41,7 +41,7 @@ Scenario('Validate discontinue claim claimant 1v1 scenario', async ({I, api_spec
     await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
 }).tag('@api-prod');
 
-Scenario('Validate discontinue claim claimant 1v2 scenario', async ({I, api_spec}) => {
+Scenario('06 Validate discontinue claim claimant 1v2 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_TWO';
     let permission = 'YES';
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
@@ -49,7 +49,7 @@ Scenario('Validate discontinue claim claimant 1v2 scenario', async ({I, api_spec
     await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
 });
 
-Scenario('Validate discontinue claim claimant 1v2 negative scenario', async ({I, api_spec}) => {
+Scenario('07 Validate discontinue claim claimant 1v2 negative scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_TWO';
     let permission = 'NO';
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
