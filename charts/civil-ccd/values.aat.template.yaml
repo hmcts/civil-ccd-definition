@@ -27,8 +27,9 @@ ccd:
   ccd-data-store-api:
     java:
       ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
-      devcpuRequests: 1000m
-      devmemoryRequests: 2048Mi
+      devcpuLimits: 4500m
+      devcpuRequests: 2000m
+      devmemoryRequests: 4048Mi
       devmemoryLimits: 8Gi
       environment:
         DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}

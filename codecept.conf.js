@@ -69,6 +69,9 @@ exports.config = {
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
     },
+    PlaywrightHelper: {
+      require: "./e2e/helpers/PlaywrightHelper.js",
+    },
     GenerateReportHelper: {
       require: './e2e/helpers/generate_report_helper.js',
     },
@@ -102,6 +105,11 @@ exports.config = {
     failedAndNotExecutedTestFilesPlugin: {
       enabled: functional,
       require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin',
+    },
+    allure: {
+      enabled: true,
+      require: "allure-codeceptjs",
+      resultsDir: "test-results/functional/allure-results",
     },
   },
   mocha: {

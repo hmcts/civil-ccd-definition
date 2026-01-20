@@ -1053,7 +1053,7 @@ module.exports = {
     }
 
     if (response === 'UNSUITABLE_FOR_SDO') {
-      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', null, false);
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
@@ -1548,7 +1548,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
     delete caseData['businessProcess'];
-    delete responseBody.data['caseTypeFlag'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
