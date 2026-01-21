@@ -3,7 +3,7 @@ let civilCaseReference;
 
 Feature('CCD 1v2LIPLR COS UI test').tag('@ui-nightly-prod @ui-cos');
 
-Scenario('01 1v2 - one LIP and one LR - notify/notify claim details journey', async ({I, api}) => {
+Scenario('1v2 - one LIP and one LR - notify/notify claim details journey', async ({I, api}) => {
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
     'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
   console.log('Case created for COS: ' + civilCaseReference);

@@ -5,7 +5,7 @@ const apiRequest = require('../../../api/apiRequest');
 
 Feature('Request and Processing of refunds').tag('@ui-refunds @ui-nightly-prod');
 
-Scenario('01 Request and Approval of a Refund after a return to Requestor by the Approval Caseworker',
+Scenario('Request and Approval of a Refund after a return to Requestor by the Approval Caseworker',
   async ({I, api}) => {
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
     let caseId = await api.getCaseId();
@@ -24,7 +24,7 @@ Scenario('01 Request and Approval of a Refund after a return to Requestor by the
     RequestRefundSteps.approveRefund(caseId);
 }).retry(2);
 
-Scenario('02 Request and Rejection of a Refund after a return to Requestor by the Approval Caseworker',
+Scenario('Request and Rejection of a Refund after a return to Requestor by the Approval Caseworker',
   async ({I, api}) => {
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
     let caseId = await api.getCaseId();

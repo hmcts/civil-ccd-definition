@@ -20,7 +20,7 @@ let caseNumber;
 
 Feature('Claim creation 1v2 Diff Solicitor with flight delay').tag('@ui-nightly-prod @ui-spec-fast');
 
-Scenario('01 Applicant solicitor creates 1v2DS specified claim defendant Different LRs for flight delay', async ({LRspec}) => {
+Scenario('Applicant solicitor creates 1v2DS specified claim defendant Different LRs for flight delay', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecifiedForFlightDelay('1v2 Different LRs fast claim','Organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();

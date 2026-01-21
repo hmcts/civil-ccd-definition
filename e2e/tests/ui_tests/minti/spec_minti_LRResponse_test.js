@@ -5,7 +5,7 @@ const claimAmountMulti = '200001';
 
 Feature('Minti tracks - LR responses @ui-minti').tag('@ui-nightly-prod');
 
-Scenario('01 LR vs LIP Multi track - LR response', async ({api_spec_cui, I}) => {
+Scenario('LR vs LIP Multi track - LR response', async ({api_spec_cui, I}) => {
   const mpScenario = 'ONE_V_ONE';
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
   let caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario, 'MULTI');
@@ -14,7 +14,7 @@ Scenario('01 LR vs LIP Multi track - LR response', async ({api_spec_cui, I}) => 
   await I.respondToDefenceMinti(caseId, mpScenario, claimAmountMulti);
 }).retry(1);
 
-Scenario('02 LR vs LIP Int track - LR response', async ({api_spec_cui, I}) => {
+Scenario('LR vs LIP Int track - LR response', async ({api_spec_cui, I}) => {
   const mpScenario = 'ONE_V_ONE';
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
   let caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', 'INTERMEDIATE');

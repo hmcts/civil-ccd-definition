@@ -7,7 +7,7 @@ let civilCaseReference;
 
 Feature('Multi track - Upload documents - Bundle').tag('@ui-nightly-prod @ui-minti');
 
-Scenario('01 Spec Claim - Multi track - 1v2 same solicitor - Upload bundle', async ({ api_spec, I }) => {
+Scenario('Spec Claim - Multi track - 1v2 same solicitor - Upload bundle', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountMulti);
