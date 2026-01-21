@@ -6,7 +6,7 @@ let caseNumber;
 
 Feature('1v2DS general application creation').tag('@api-nightly-prod');
 
-Scenario('01 Make a general application', async ({api_spec}) => {
+Scenario('Make a general application', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);

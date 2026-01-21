@@ -19,7 +19,7 @@ if (config.runWAApiTest) {
 
 Feature('1v1 sdo api journeys').tag('@api-nightly-prod');
 
-Scenario.skip('01 1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages - hearing scheduled', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountAdvisor);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -37,7 +37,7 @@ Scenario.skip('01 1v1 full defence unspecified - legal advisor draws small claim
   }
 });
 
-Scenario.skip('02 1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - legal advisor draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountAdvisor);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -55,7 +55,7 @@ Scenario.skip('02 1v1 full defence unspecified - legal advisor draws small claim
   }
 });
 
-Scenario.skip('03 1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages - hearing scheduled', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - legal advisor draws fast track WITH sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountAdvisor);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -70,7 +70,7 @@ Scenario.skip('03 1v1 full defence unspecified - legal advisor draws fast track 
   await api.hearingFeePaid(hearingCenterAdminToBeUsed);
 });
 
-Scenario.skip('04 1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - legal advisor draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountAdvisor);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -88,7 +88,7 @@ Scenario.skip('04 1v1 full defence unspecified - legal advisor draws fast track 
   }
 });
 
-Scenario('05 1v1 full defence unspecified - judge draws small claims DRH - hearing scheduled', async ({ api, WA}) => {
+Scenario('1v1 full defence unspecified - judge draws small claims DRH - hearing scheduled', async ({ api, WA}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -120,7 +120,7 @@ Scenario('05 1v1 full defence unspecified - judge draws small claims DRH - heari
   await api.hearingFeePaidDRH(hearingCenterAdminToBeUsed);
 }).tag('@wa-task');
 
-Scenario('06 1v1 full defence specified - legal advisor draws disposal order - hearing scheduled', async ({api_spec_small, WA}) => {
+Scenario('1v1 full defence specified - legal advisor draws disposal order - hearing scheduled', async ({api_spec_small, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
@@ -136,7 +136,7 @@ Scenario('06 1v1 full defence specified - legal advisor draws disposal order - h
   }
 });
 
-Scenario('07 1v1 full defence unspecified - judge declares SDO unsuitable - hearing scheduled', async ({api, WA}) => {
+Scenario('1v1 full defence unspecified - judge declares SDO unsuitable - hearing scheduled', async ({api, WA}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -151,7 +151,7 @@ Scenario('07 1v1 full defence unspecified - judge declares SDO unsuitable - hear
   }
 });
 
-Scenario.skip('08 1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -170,7 +170,7 @@ Scenario.skip('08 1v1 full defence unspecified - judge draws small claims WITH s
   await api.createFinalOrder(judgeUser, 'FREE_FORM_ORDER');
 });
 
-Scenario.skip('09 1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -189,7 +189,7 @@ Scenario.skip('09 1v1 full defence unspecified - judge draws fast track WITH sum
   await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
 }).tag('@api-sdo @api-prod');
 
-Scenario.skip('10 1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({ api}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({ api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -207,7 +207,7 @@ Scenario.skip('10 1v1 full defence unspecified - judge draws small claims WITHOU
   }
 });
 
-Scenario.skip('11 1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);

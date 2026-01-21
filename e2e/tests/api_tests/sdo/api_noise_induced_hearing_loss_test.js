@@ -11,7 +11,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 Feature('Noise Induced Hearing Loss API test - fast claim - unspec').tag('@api-nightly-prod @api-sdo');
 
-Scenario('01 1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
+Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1Nihl, claimAmount);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);

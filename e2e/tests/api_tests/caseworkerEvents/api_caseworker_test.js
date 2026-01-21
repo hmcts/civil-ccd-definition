@@ -7,7 +7,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('01 1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_spec_cui}) => {
+Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_spec_cui}) => {
   let caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'FastTrack', false);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'FastTrack', false);
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'JUDICIAL_REFERRAL', false);
@@ -18,7 +18,7 @@ Scenario('01 1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({ap
   await api_spec_cui.dismissCase(config.hearingCenterAdminWithRegionId1);
 }).retry(1);
 
-Scenario('02 1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
+Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser);
@@ -38,7 +38,7 @@ Scenario('02 1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({a
 
 let caseId;
 
-Scenario('03 1v2 LR UNSPEC claim hearing readiness', async ({api}) => {
+Scenario('1v2 LR UNSPEC claim hearing readiness', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
   await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
   await api.notifyClaimDetails(config.applicantSolicitorUser);
@@ -63,7 +63,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('04 1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
+Scenario('1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, claimRef, claimType, carmEnabled);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'Yes', 'IN_MEDIATION', carmEnabled);
@@ -80,7 +80,7 @@ Scenario('04 1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
 const mintiEnabled = true;
 const claimAmountMulti = '200001';
 
-Scenario('05 1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
+Scenario('1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
   const judgeUser = config.judgeUserWithRegionId1;
   const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;

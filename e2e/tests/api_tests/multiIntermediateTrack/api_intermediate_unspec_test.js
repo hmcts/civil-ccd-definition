@@ -9,7 +9,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 Feature('1v1 unspec intermediate track api journey').tag('@api-multi-intermediate-unspec @api-nightly-prod');
 
-Scenario('01 1v1 Create Unspecified Intermediate Track claim', async ({api}) => {
+Scenario('1v1 Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, intermediateTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -21,7 +21,7 @@ Scenario('01 1v1 Create Unspecified Intermediate Track claim', async ({api}) => 
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 }).tag('@api-prod');
 
-Scenario('02 1v2 Same Solicitor Create Unspecified Intermediate Track claim', async ({api}) => {
+Scenario('1v2 Same Solicitor Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, intermediateTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -33,7 +33,7 @@ Scenario('02 1v2 Same Solicitor Create Unspecified Intermediate Track claim', as
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
-Scenario('03 2v1 Create Unspecified Intermediate Track claim', async ({api}) => {
+Scenario('2v1 Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'TWO_V_ONE';
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, intermediateTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);

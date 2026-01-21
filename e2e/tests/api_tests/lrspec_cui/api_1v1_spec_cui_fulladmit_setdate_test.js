@@ -11,7 +11,7 @@ Before(async () => {
     await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('01 1v1 LiP v LiP defendant response with full admit pay by set date', async ({ api_spec_cui }) => {
+Scenario('1v1 LiP v LiP defendant response with full admit pay by set date', async ({ api_spec_cui }) => {
     caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser,'SmallClaims',false,'INDIVIDUAL');
     await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled, 'FA_SETDATE_INDIVIDUAL');
     await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'PROCEEDS_IN_HERITAGE_SYSTEM', carmEnabled,'FA_ACCEPT_CCJ');

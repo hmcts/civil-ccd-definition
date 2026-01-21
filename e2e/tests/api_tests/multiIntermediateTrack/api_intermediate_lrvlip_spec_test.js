@@ -13,7 +13,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('01 1v1 LR v LiP intermediate track', async ({ api_spec_cui, WA }) => {
+Scenario('1v1 LR v LiP intermediate track', async ({ api_spec_cui, WA }) => {
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', 'AWAITING_APPLICANT_INTENTION', false, claimType);

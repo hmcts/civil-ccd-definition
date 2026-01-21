@@ -14,7 +14,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('01 CARM enabled', async ({api_spec_cui}) => {
+Scenario('CARM enabled', async ({api_spec_cui}) => {
   carmEnabled = true;
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, claimRef, claimType, carmEnabled);
@@ -22,7 +22,7 @@ Scenario('01 CARM enabled', async ({api_spec_cui}) => {
   await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
 }).tag('@api-prod');
 
-Scenario('02 CARM not enabled', async ({api_spec_cui}) => {
+Scenario('CARM not enabled', async ({api_spec_cui}) => {
   carmEnabled = false;
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, claimRef, claimType, carmEnabled);

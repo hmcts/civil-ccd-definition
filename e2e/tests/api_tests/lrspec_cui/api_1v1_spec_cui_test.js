@@ -15,19 +15,19 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario('01 1v1 LiP v LiP Part admit defendant and claimant response - claimant rejects installment plan - CARM enabled', async ({api_spec_cui}) => {
+Scenario('1v1 LiP v LiP Part admit defendant and claimant response - claimant rejects installment plan - CARM enabled', async ({api_spec_cui}) => {
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, true);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'SmallClaimPartAdmit', true);
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'IN_MEDIATION', true, 'partadmit');
 });
 
-Scenario('02 1v1 LiP v LiP defendant and claimant response - CARM enabled - Minti Enabled', async ({api_spec_cui}) => {
+Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled - Minti Enabled', async ({api_spec_cui}) => {
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'INTERMEDIATE', true, '', true);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'INTERMEDIATE', true);
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'AWAITING_APPLICANT_INTENTION', true);
 });
 
-Scenario('03 1v1 LiP v LiP Case Progression Journey', async ({ api_spec_cui, qmSteps }) => {
+Scenario('1v1 LiP v LiP Case Progression Journey', async ({ api_spec_cui, qmSteps }) => {
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'FastTrack', false);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'FastTrack', false);
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'JUDICIAL_REFERRAL', false);
@@ -49,7 +49,7 @@ Scenario('03 1v1 LiP v LiP Case Progression Journey', async ({ api_spec_cui, qmS
   await api_spec_cui.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
 });
 
-Scenario('04 1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) => {
+Scenario('1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) => {
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'Request for reconsideration track', false);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'Request for reconsideration track', false, 'FULL_DEFENCE');
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'JUDICIAL_REFERRAL', false);
@@ -58,7 +58,7 @@ Scenario('04 1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) 
   await api_spec_cui.judgeDecisionOnReconsiderationRequest(config.judgeUserWithRegionId1, 'CREATE_SDO');
 });
 
-Scenario('05 1v1 LiP v LR defendant and claimant response- CARM enabled', async ({noc, api_spec_cui, qmSteps}) => {
+Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled', async ({noc, api_spec_cui, qmSteps}) => {
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, true);
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, config.defendantSolicitorUser);
   await api_spec_cui.checkUserCaseAccess(config.defendantCitizenUser2, false);
@@ -74,7 +74,7 @@ Scenario('05 1v1 LiP v LR defendant and claimant response- CARM enabled', async 
   await qmSteps.followUpOnLRQuery(caseId, config.defendantSolicitorUser, query, PUBLIC_QUERY);
 });
 
-Scenario('06 1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM enabled', async ({noc, api_spec_cui}) => {
+Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM enabled', async ({noc, api_spec_cui}) => {
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, true);
   await noc.requestNoticeOfChangeForApplicant1Solicitor(caseId, config.applicantSolicitorUser);
   await api_spec_cui.checkUserCaseAccess(config.applicantCitizenUser, false);
@@ -83,13 +83,13 @@ Scenario('06 1v1 LR v LiP defendant and claimant response - claimant does NoC - 
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', 'IN_MEDIATION', true);
 });
 
-Scenario('07 1v1 LR v LiP defendant and claimant response - claim created from exui - CARM enabled @api-nightly-prod', async ({api_spec_cui}) => {
+Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM enabled @api-nightly-prod', async ({api_spec_cui}) => {
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', 'SmallClaims', true);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'SmallClaims', true);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', 'IN_MEDIATION', true);
 });
 
-Scenario('08 1v1 LR v LiP case progression', async ({ api_spec_cui, qmSteps }) => {
+Scenario('1v1 LR v LiP case progression', async ({ api_spec_cui, qmSteps }) => {
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', 'FastTrack', false);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'FastTrack', false);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', 'JUDICIAL_REFERRAL', false);
@@ -110,7 +110,7 @@ Scenario('08 1v1 LR v LiP case progression', async ({ api_spec_cui, qmSteps }) =
   await api_spec_cui.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
 });
 
-Scenario('09 1v1 LR v LiP Request for reconsideration', async ({ api_spec_cui }) => {
+Scenario('1v1 LR v LiP Request for reconsideration', async ({ api_spec_cui }) => {
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', 'Request for reconsideration track', false);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'Request for reconsideration track', false);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', 'JUDICIAL_REFERRAL', false);

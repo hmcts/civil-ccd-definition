@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 
 Feature('1v2 spec api journeys').tag('@api-nightly-prod');
 
-Scenario('01 Create claim spec 1v2', async ({I, api_spec}) => {
+Scenario('Create claim spec 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -12,7 +12,7 @@ Scenario('01 Create claim spec 1v2', async ({I, api_spec}) => {
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('02 1v2 small claim full defence, defendant response', async ({I, api_spec}) => {
+Scenario('1v2 small claim full defence, defendant response', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.createCaseFlags(config.hearingCenterAdminWithRegionId2);
@@ -20,34 +20,34 @@ Scenario('02 1v2 small claim full defence, defendant response', async ({I, api_s
 });
 
 //Covered this scenario at line 65
-xScenario('03 1v2 small claim full admit', async ({I, api_spec}) => {
+xScenario('1v2 small claim full admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_TWO');
 });
 
 //Covered this scenario at line 72
-xScenario('04 1v2 small claim part admit', async ({I, api_spec}) => {
+xScenario('1v2 small claim part admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO');
 });
 
-Scenario('05 1v2 small claim counter claim', async ({I, api_spec}) => {
+Scenario('1v2 small claim counter claim', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');
 });
 
-Scenario('06 1v2 small claim different response full defence', async ({I, api_spec}) => {
+Scenario('1v2 small claim different response full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_FULL_DEFENCE', 'ONE_V_TWO');
 });
 
 // skipping until DTSCCI-329 is resolved
-Scenario.skip('07 1v2 small claim different response no full defence', async ({I, api_spec}) => {
+Scenario.skip('1v2 small claim different response no full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_NOT_FULL_DEFENCE', 'ONE_V_TWO');
 });
 
-Scenario('08 1v2 small claim full defence, claimant response @api-prod', async ({I, api_spec}) => {
+Scenario('1v2 small claim full defence, claimant response @api-prod', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
@@ -56,28 +56,28 @@ Scenario('08 1v2 small claim full defence, claimant response @api-prod', async (
   await api_spec.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
-Scenario('09 1v2 small claim full defence, claimant response not proceed', async ({I, api_spec}) => {
+Scenario('1v2 small claim full defence, claimant response not proceed', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'NOT_PROCEED', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('10 1v2 small claim full admit, claimant response', async ({I, api_spec}) => {
+Scenario('1v2 small claim full admit, claimant response', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('11 1v2 small claim part admit, claimant response', async ({I, api_spec}) => {
+Scenario('1v2 small claim part admit, claimant response', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('12 Settle claim spec 1v2', async ({I, api_spec}) => {
+Scenario('Settle claim spec 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
