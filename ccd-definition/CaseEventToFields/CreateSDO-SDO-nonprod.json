@@ -66,5 +66,29 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "fastTrackPenalNoticeToggle=\"SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "PageFieldDisplayOrder": 38,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimPPI\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimPPI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "PageFieldDisplayOrder": 56,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimPPI\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimPPI\""
   }
 ]

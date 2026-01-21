@@ -48,5 +48,21 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsPPI",
+    "Label": "Payment Protection Insurance (PPI)",
+    "FieldType": "PPI",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fastTrackPPI",
+    "Label": "Payment Protection Insurance (PPI)",
+    "FieldType": "PPI",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

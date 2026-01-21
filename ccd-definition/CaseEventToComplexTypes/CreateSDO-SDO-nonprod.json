@@ -1,0 +1,84 @@
+[
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "ListElementCode": "label",
+    "EventElementLabel": "### Payment Protection Insurance (PPI)",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "ListElementCode": "subheading",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "ListElementCode": "introText",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "ListElementCode": "ppiDate",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "ListElementCode": "clauses",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "ListElementCode": "label",
+    "EventElementLabel": "### Payment Protection Insurance (PPI)",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "ListElementCode": "subheading",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "ListElementCode": "introText",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "ListElementCode": "ppiDate",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "ListElementCode": "clauses",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  }
+]
