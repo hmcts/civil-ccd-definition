@@ -62,7 +62,7 @@ Scenario('06 Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
-Scenario('07Judge triggers SDO', async ({I}) => {
+Scenario('07 Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
    await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(2);
