@@ -1,15 +1,7 @@
 [
   {
     "ID": "PPI",
-    "ListElementCode": "label",
-    "FieldType": "Label",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "PPI",
-    "ListElementCode": "subheading",
+    "ListElementCode": "title",
     "FieldType": "Label",
     "ElementLabel": "#### Defendant(s) shall send to the claimant(s)",
     "SecurityClassification": "Public",
@@ -17,25 +9,17 @@
   },
   {
     "ID": "PPI",
-    "ListElementCode": "introText",
-    "FieldType": "Label",
+    "ListElementCode": "ppiDate",
+    "FieldType": "Date",
     "ElementLabel": "The Defendant(s) shall by",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "PPI",
-    "ListElementCode": "ppiDate",
-    "FieldType": "Date",
+    "ListElementCode": "text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "PPI",
-    "ListElementCode": "clauses",
-    "FieldType": "Label",
-    "ElementLabel": "send to the Claimant(s):\n a) A schedule of the following amounts itemised by date;\n     i) PPI premium charged,\n     ii) Commission receivable by the Defendant(s),\n     iii) Rate of commission as a percentage of the premium charged,\n     iv) Totals and average commission rates, in respect of the whole period to which the claim relates,\n     v) Contractual interest associated with each such premium charged.\n b) A copy of the credit agreement;\n c) A copy of the PPI policy application and agreement;\n d) Any cancellation notices;\n e) Any correspondence in connection with a complaint by the Claimant(s);\n f) A copy of any correspondence as to redress if not included in (e);\n g) The amount, if any, of redress (under the FCA scheme or otherwise) and the date it was paid.\n\nThe parties shall endeavour to agree a calculation of the sums in issue and upload to the Digital Portal the agreed calculation. In default of agreement each party shall upload to the Digital Portal its own calculation not later than 7 days before any hearing. The calculation must show the amount which is intended to remove any unfairness from the relationship, broken down into:\n a) The principal sum claimed;\n b) The amount of contractual interest already paid on that sum;\n c) The amount of discretionary interest sought under to Section 69 County Courts Act 1984, if claimed, at rates of 1%, 2%, 4% and 8% per annum.",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
