@@ -5,8 +5,6 @@ em-ccdorc:
 em-stitching:
   enabled: false
 
-civil-general-applications:
-  enabled: false
 civil-service:
   java:
     imagePullPolicy: Always
