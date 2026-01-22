@@ -44,7 +44,7 @@
   {
     "ID": "ClaimTypeUnSpec",
     "ListElementCode": "DAMAGES_AND_OTHER_REMEDY",
-    "ListElement": "Damages and an ‘other’ remedy e.g. injunction, declaration",
+    "ListElement": "Damages and an ‘other’ remedy e.g. Payment Protection Insurance (PPI), Motor finance",
     "DisplayOrder": 8
   },
   {

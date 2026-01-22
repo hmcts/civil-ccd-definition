@@ -10,7 +10,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimDeclarationDescription",
-    "Label": "Declaration narrative",
+    "Label": "Declaration or injunction narrative",
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   },
