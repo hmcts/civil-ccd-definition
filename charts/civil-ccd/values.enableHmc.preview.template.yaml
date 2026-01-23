@@ -13,11 +13,6 @@ civil-service:
       HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: "hmc-to-civil-subscription-pr-${CHANGE_ID}"
       HMC_HEARINGS_TOPIC_THREAD_COUNT: 4
 
-civil-general-applications:
-  java:
-    environment:
-      CORE_CASE_DATA_API_URL: http://ccd-data-store-api-aat.service.core-compute-aat.internal
-
 xui-webapp:
   enabled: true
   nodejs:
