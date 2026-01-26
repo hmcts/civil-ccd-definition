@@ -7,7 +7,7 @@ let caseId;
 
 Feature('Query Management - Non Hearing E2E journey').tag('@ui-nightyly-prod');
 
-Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
+Scenario('01 Claimant LR raises a query', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_ONE';
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
@@ -20,7 +20,7 @@ Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   await I.verifyQueriesDetails(caseId);
 }).retry(2);
 
-Scenario('Defendant LR raises a query', async ({ I }) => {
+Scenario('02 Defendant LR raises a query', async ({ I }) => {
   await I.login(config.defendantSolicitorUser);
   await I.raiseNewNonHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
@@ -28,26 +28,26 @@ Scenario('Defendant LR raises a query', async ({ I }) => {
   await I.verifyQueriesDetails(caseId);
 }).retry(2);
 
-Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
+Scenario('03 CaseWorker can access and also responds back to a query', async ({ I }) => {
   await I.login(config.ctscAdminUser);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetailsAsCaseWorker(caseId);
 }).retry(2);
 
-Scenario('Judge can access to a query', async ({ I }) => {
+Scenario('04 Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails(caseId);
 }).retry(2);
 
-Scenario('Take claim offline', async ({ I }) => {
+Scenario('05 Take claim offline', async ({ I }) => {
   await I.login(config.adminUser);
   await I.caseProceedsInCaseman(caseId);
 }).retry(2);
 
-Scenario('Offline case - Claimant cant raise a query', async ({ I }) => {
+Scenario('06 Offline case - Claimant cant raise a query', async ({ I }) => {
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewQueryInOfflineState(caseId);
   await I.waitForText('Enter query details');

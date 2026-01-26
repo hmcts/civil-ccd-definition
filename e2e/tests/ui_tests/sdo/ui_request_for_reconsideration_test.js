@@ -11,7 +11,7 @@ if (config.runWAApiTest) {
 
 Feature('Request for reconsideration - 1v1 - spec').tag('@ui-nightly-prod @ui-rfr');
 
-Scenario('1v1 spec request for reconsideration for Create a new SDO', async ({api_spec_small, LRspec}) => {
+Scenario('01 1v1 spec request for reconsideration for Create a new SDO', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
@@ -21,12 +21,12 @@ Scenario('1v1 spec request for reconsideration for Create a new SDO', async ({ap
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('Request for Reconsideration by claimant', async ({LRspec}) => {
+Scenario('02 Request for Reconsideration by claimant', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.requestForReconsiderationForUI();
 }).retry(2);
 
-Scenario('Decision on Reconsideration Request with option No -- Generate a new SDO event', async ({LRspec, api, WA}) => {
+Scenario('03 Decision on Reconsideration Request with option No -- Generate a new SDO event', async ({LRspec, api, WA}) => {
   await LRspec.login(config.judgeUserWithRegionId1);
   let taskId;
   if (config.runWAApiTest) {
@@ -41,7 +41,7 @@ Scenario('Decision on Reconsideration Request with option No -- Generate a new S
   }
 }).retry(2);
 
-Scenario('Create SDO journey - after Request for Reconsideration', async ({api_spec_small}) => {
+Scenario('04 Create SDO journey - after Request for Reconsideration', async ({api_spec_small}) => {
   await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
 }).retry(2);
 
