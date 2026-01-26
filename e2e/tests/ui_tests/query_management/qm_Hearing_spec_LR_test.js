@@ -7,7 +7,7 @@ let caseId;
 
 Feature('Query Management - Hearing E2E journey').tag('@ui-nightly-prod');
 
-Scenario.skip('Claimant LR raises a query', async ({ api_spec, I }) => {
+Scenario.skip('01 Claimant LR raises a query', async ({ api_spec, I }) => {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO', false, true, claimAmountPenniesIntermediate);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', false, true, claimAmountIntermediate);
   await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL', 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
@@ -20,7 +20,7 @@ Scenario.skip('Claimant LR raises a query', async ({ api_spec, I }) => {
   await I.verifyQueriesDetails(caseId, true);
 }).retry(2);
 
-Scenario.skip('Defendant LR raises a query', async ({ I }) => {
+Scenario.skip('02 Defendant LR raises a query', async ({ I }) => {
   await I.login(config.defendantSolicitorUser);
   await I.raiseNewHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
@@ -28,26 +28,26 @@ Scenario.skip('Defendant LR raises a query', async ({ I }) => {
   await I.verifyQueriesDetails(caseId, true);
 }).retry(2);
 
-Scenario.skip('Hearing centre admin can access and also responds back to a query', async ({ I }) => {
+Scenario.skip('03 Hearing centre admin can access and also responds back to a query', async ({ I }) => {
   await I.login(config.hearingCenterAdminWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetailsAsCaseWorker(caseId, true);
 }).retry(2);
 
-Scenario.skip('Judge can access to a query', async ({ I }) => {
+Scenario.skip('04 Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails(caseId, true);
 }).retry(2);
 
-Scenario.skip('Take claim offline', async ({ I }) => {
+Scenario.skip('05 Take claim offline', async ({ I }) => {
   await I.login(config.adminUser);
   await I.caseProceedsInCaseman(caseId);
 }).retry(2);
 
-Scenario.skip('Offline case - Claimant cant raise a query', async ({ I }) => {
+Scenario.skip('06 Offline case - Claimant cant raise a query', async ({ I }) => {
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewQueryInOfflineState(caseId);
   await I.waitForText('Enter query details');
