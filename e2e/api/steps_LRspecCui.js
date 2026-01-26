@@ -193,7 +193,7 @@ module.exports = {
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     if (isMintiCase) {
-      await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
+      await adjustCaseSubmittedDateForMinti(caseId, (isMintiCase), carmEnabled);
     }
     return caseId;
   },
@@ -248,7 +248,7 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && (claimType === 'INTERMEDIATE' || claimType === 'MULTI')), carmEnabled);
+    await adjustCaseSubmittedDateForMinti(caseId, (claimType === 'INTERMEDIATE' || claimType === 'MULTI'), carmEnabled);
 
     return caseId;
   },

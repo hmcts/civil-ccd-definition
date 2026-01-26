@@ -862,7 +862,7 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiCase), carmEnabled);
 
     return caseId;
   },
@@ -986,7 +986,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
     let claimAmount = caseData.totalClaimAmount;
     if (!response.includes('COUNTER_CLAIM')) {
-      await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiCase && isMintiToggleEnabled), true);
+      await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiCase), true);
     }
   },
 
