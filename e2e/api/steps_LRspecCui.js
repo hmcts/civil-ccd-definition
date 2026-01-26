@@ -21,7 +21,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
-const {checkToggleEnabled, checkMintiToggleEnabled, uploadDocument} = require('./testingSupport');
+const {uploadDocument} = require('./testingSupport');
 const {isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
@@ -193,7 +193,6 @@ module.exports = {
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     if (isMintiCase) {
-      const isMintiToggleEnabled = await checkMintiToggleEnabled();
       await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
     }
     return caseId;
@@ -249,7 +248,6 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    const isMintiToggleEnabled = await checkMintiToggleEnabled();
     await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && (claimType === 'INTERMEDIATE' || claimType === 'MULTI')), carmEnabled);
 
     return caseId;
@@ -299,9 +297,8 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
-    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
 
-    if (isJudgmentOnlineLive && (typeOfData === 'FA_ACCEPT_CCJ' || typeOfData === 'PA_ACCEPT_CCJ')) {
+    if (typeOfData === 'FA_ACCEPT_CCJ' || typeOfData === 'PA_ACCEPT_CCJ') {
       expectedEndState = 'All_FINAL_ORDERS_ISSUED';
     }
     if (expectedEndState) {

@@ -1,4 +1,4 @@
-const {checkCaseFlagsEnabled, checkCaseFlagsAndHmcEnabled, triggerCamundaProcess, waitForCompletedCamundaProcess} = require('./testingSupport');
+const {triggerCamundaProcess, waitForCompletedCamundaProcess} = require('./testingSupport');
 const apiRequest = require('./apiRequest.js');
 const {addAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {getHearingsPayload} = require('./apiRequest');
@@ -877,9 +877,6 @@ const triggerHearingNoticeScheduler = async (expectedHearingId, definitionKey) =
 
 module.exports = {
   createCaseFlags: async (user, caseId, flagLocation, flag) => {
-    if (!(await checkCaseFlagsEnabled())) {
-      return;
-    }
 
     await apiRequest.setupTokens(user);
 
@@ -887,9 +884,6 @@ module.exports = {
   },
 
   generateHearingsPayload: async (user, caseId, serviceId = 'AAA7') => {
-    if (!(await checkCaseFlagsAndHmcEnabled())) {
-      return;
-    }
 
     await apiRequest.setupTokens(user);
 
