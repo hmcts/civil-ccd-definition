@@ -46,7 +46,6 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "firstName = \"DO_NOT_SHOW_ON_UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "firstName = \"DO_NOT_SHOW_ON_UI\""
   }
 ]

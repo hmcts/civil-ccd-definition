@@ -22,8 +22,7 @@
     "FieldShowCondition": "hasSameAddressAsLitigant = \"No\"",
     "ElementLabel": "Litigation friend's address",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RetainHiddenValue": "Y"
+    "Searchable": "N"
   },
   {
     "ID": "LitigationFriend",
