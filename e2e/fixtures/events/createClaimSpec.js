@@ -29,7 +29,6 @@ const applicant1WithPartyName = {
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '150000';
-//above modify
 
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
