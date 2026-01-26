@@ -13,7 +13,7 @@ let caseNumber;
 
 Feature('1v2 Different Solicitors small claims - Claim Journey').tag('@ui-unspec-small @ui-nightly-prod');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors ', async ({I, api}) => {
+Scenario('01 Claimant solicitor raises a claim against 2 defendants who have different solicitors ', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, '3000');
   caseNumber = await api.getCaseId();
   await I.setCaseId(caseNumber);
@@ -22,20 +22,20 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   await api.notifyClaimDetails(config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('1v2 Diff   - Assign roles to defendants', async () => {
+Scenario('02 1v2 Diff   - Assign roles to defendants', async () => {
   await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(2);
 
 
-Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
+Scenario('03 Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.addDefendantLitigationFriend();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Add litigation friend'));
 }).retry(2);
 
-Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
+Scenario('04 Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
     defendant1Response: 'fullDefence',
@@ -44,7 +44,7 @@ Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   //await I.see(caseEventMessage('Respond to claim'));
 }).retry(2);
 
-Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
+Scenario('05 Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.login(config.secondDefendantSolicitorUser);
   await I.respondToClaim({
     party: parties.RESPONDENT_SOLICITOR_2,
@@ -54,7 +54,7 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   //await I.see(caseEventMessage('Respond to claim'));
 }).retry(2);
 
-Scenario('Claimant solicitor responds to defence', async ({I}) => {
+Scenario('06 Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 3000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
@@ -62,7 +62,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
-Scenario('Judge triggers SDO', async ({I}) => {
+Scenario('07 Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
    await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(2);

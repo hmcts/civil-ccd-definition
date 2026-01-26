@@ -4,7 +4,7 @@ let caseId;
 
 Feature('1v2 Same Solicitor - Manage Contact Information').tag('@ui-mci @ui-nightly-prod');
 
-Scenario('Create claim to claimant response', async ({api}) => {
+Scenario('01 Create claim to claimant response', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
@@ -14,17 +14,17 @@ Scenario('Create claim to claimant response', async ({api}) => {
   caseId = await api.getCaseId();
 }).retry(1);
 
-Scenario('Manage Contact Information For Admin', async ({I}) => {
+Scenario('02 Manage Contact Information For Admin', async ({I}) => {
   await I.login(config.adminUser);
   await I.manageWitnessesForDefendant(caseId);
 }).retry(1);
 
-Scenario('Manage Contact Information For Claimant Solicitor', async ({I}) => {
+Scenario('03 Manage Contact Information For Claimant Solicitor', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.manageOrganisationIndividualsForClaimant(caseId);
 }).retry(1);
 
-Scenario('Manage Contact Information For Defendant parties', async ({I}) => {
+Scenario('04 Manage Contact Information For Defendant parties', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.manageLitigationFriendForDefendant(caseId);
   await I.manageDefendant(caseId);

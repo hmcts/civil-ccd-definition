@@ -8,7 +8,7 @@ let civilCaseReference;
 
 Feature('1v2SS SDO Carm - Upload mediation documents').tag('@ui-nightly-prod @ui-carm');
 
-Scenario('1v2SS prepare claim up to SDO', async ({api_spec, LRspec}) => {
+Scenario('01 1v2SS prepare claim up to SDO', async ({api_spec, LRspec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL');
@@ -19,28 +19,28 @@ Scenario('1v2SS prepare claim up to SDO', async ({api_spec, LRspec}) => {
   await api_spec.createSDO(legalAdvisorUser, 'CREATE_SMALL');
 }).retry(2);
 
-Scenario('Claimant upload mediation document', async ({LRspec}) => {
+Scenario('02 Claimant upload mediation document', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Claimant 1', 'Both docs');
 }).retry(2);
 
-Scenario('Schedule a hearing', async ({api_spec}) => {
+Scenario('03 Schedule a hearing', async ({api_spec}) => {
   console.log('Schedule Hearing');
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'SMALL_CLAIMS');
 });
 
-Scenario('Defendant 1 uploads mediation doc', async ({LRspec}) => {
+Scenario('04 Defendant 1 uploads mediation doc', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
 }).retry(2);
 
-Scenario('Prepare for hearing conduct', async ({api_spec}) => {
+Scenario('05 Prepare for hearing conduct', async ({api_spec}) => {
   console.log('Prepare for Hearing Conduct Hearing');
   await api_spec.amendHearingDueDate(config.systemupdate);
   await api_spec.hearingFeePaid(hearingCenterAdminToBeUsed);
 });
 
-Scenario('Defendant 2 uploads mediation doc', async ({LRspec}) => {
+Scenario('06 Defendant 2 uploads mediation doc', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 2', 'Both docs');
 }).retry(2);
