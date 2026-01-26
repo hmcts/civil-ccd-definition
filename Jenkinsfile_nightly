@@ -130,36 +130,18 @@ def copyPreviousHistory(historyDir, resultsDir) {
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "**/${historyDir}/**", target: "${resultsDir}"
-      sh "mv ${resultsDir}/${historyDir} ${resultsDir}/history"
-      buildFound = true
-    } catch (Exception error) {
-      echo "artifact not found: " + error.toString()
-      buildNumber--
-    }
-  }
-}
-
-def copyPreviousAllureHistory() {
-  def buildFound = false
-  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
-  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
-  def targetDir = "test-results/functional/allure-results/history"
-
-  while (!buildFound && buildNumber > minBuildNumber) {
-    try {
       copyArtifacts(
         projectName: env.JOB_NAME,
         selector: specific("${buildNumber}"),
-        filter: "test-results/functional/allure-report/history/*",
-        target: targetDir,
+        filter: "**/${historyDir}/**",
+        target: "${resultsDir}",
         flatten: true
       )
 
       buildFound = true
       echo "Successfully imported Allure history from build ${buildNumber}"
     } catch (Exception error) {
-      echo "Allure history artifact not found in build ${buildNumber}. Trying previous..."
+      echo "artifact not found: " + error.toString()
       buildNumber--
     }
   }
@@ -310,7 +292,7 @@ withNightlyPipeline(type, product, component) {
       if(runPrevFailedAndNotExecutedTestFiles) {
         copyPrevFailedAndNotExecutedTestFilesJson()
       }
-      copyPreviousAllureHistory()
+      copyPreviousHistory("test-results/functional/allure-report/history", "test-results/functional/allure-results/history")
     }
   }
 
