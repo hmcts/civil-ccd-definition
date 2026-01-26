@@ -6,7 +6,7 @@ let civilCaseReference;
 
 Feature('2v1 SDO Carm - Upload mediation documents').tag('@ui-nightly-prod @ui-carm');
 
-Scenario('2v1 prepare claim up to claimant response', async ({api_spec}) => {
+Scenario('01 2v1 prepare claim up to claimant response', async ({api_spec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE',
@@ -14,12 +14,12 @@ Scenario('2v1 prepare claim up to claimant response', async ({api_spec}) => {
   console.log('2v1 Spec small claims created : ' + civilCaseReference);
 }).retry(2);
 
-Scenario('2v1 claimant upload mediation docs', async ({LRspec}) => {
+Scenario('02 2v1 claimant upload mediation docs', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Both Claimants', 'Both docs');
 }).retry(2);
 
-Scenario('2v1 defendant upload mediation docs', async ({LRspec}) => {
+Scenario('03 2v1 defendant upload mediation docs', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
 }).retry(2);

@@ -10,7 +10,7 @@ let caseNumber;
 
 Feature('Claim creation 1v1 small claims').tag('@ui-spec-fast @ui-nightly-prod');
 
-Scenario('1v1 Applicant solicitor creates specified claim for fast track-spec', async ({LRspec}) => {
+Scenario('01 1v1 Applicant solicitor creates specified claim for fast track-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track-spec');
   await LRspec.login(config.applicantSolicitorUser);
   //Individual, Organisation, Company, Sole trader
@@ -25,7 +25,7 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track-spec', 
 }).retry(2);
 
 
-Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario('02 1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await assignCaseToLRSpecDefendant(caseNumber);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
@@ -38,17 +38,17 @@ Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendan
   //await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
-Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
+Scenario('03 1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'small'});
 }).retry(2);
 
-Scenario('1v1 Mediation unsuccessful', async ({LRspec}) => {
+Scenario('04 1v1 Mediation unsuccessful', async ({LRspec}) => {
   await LRspec.login(config.ctscAdminUser);
   await LRspec.mediationUnsuccessful();
 }).retry(2);
 
-Scenario.skip('Add case flags', async ({LRspec}) => {
+Scenario.skip('05 Add case flags', async ({LRspec}) => {
   const caseFlags = [{
     partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
     details: [PARTY_FLAGS.vulnerableUser.value]
