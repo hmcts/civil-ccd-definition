@@ -14,7 +14,6 @@ const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHea
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
@@ -142,9 +141,7 @@ module.exports = function (){
     }
 
     await waitForFinishedBusinessProcess(caseId);
-    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
-    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -237,10 +234,7 @@ module.exports = function (){
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
-    }
 
     deleteCaseFields('respondent1Copy');
   },
@@ -282,10 +276,7 @@ module.exports = function (){
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
-    }
   },
 
   mediationUnsuccessful: async (user, carmEnabled = false) => {
@@ -450,9 +441,6 @@ module.exports = function (){
   },
 
   createCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
 
     eventName = 'CREATE_CASE_FLAGS';
 
@@ -469,9 +457,6 @@ module.exports = function (){
   },
 
   manageContactInformation : async (user) => {
-    if(!(await checkManageContactInformationEnabled())) {
-      return;
-    }
     eventName = 'MANAGE_CONTACT_INFORMATION';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -480,9 +465,6 @@ module.exports = function (){
   },
 
   manageCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
 
     eventName = 'MANAGE_CASE_FLAGS';
 

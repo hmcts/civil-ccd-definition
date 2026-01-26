@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkCaseFlagsEnabled, waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 let caseNumber;
@@ -47,7 +47,6 @@ Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async
 
 // Skip case flags scenario as it's covered in the unspec e2e
 Scenario.skip('Add case flags', async ({LRspec}) => {
-  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
@@ -60,7 +59,6 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.createCaseFlags(caseFlags);
     // await LRspec.validateCaseFlags(caseFlags);
-  }
 }).retry(2);
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
