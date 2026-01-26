@@ -1,7 +1,7 @@
 #!groovy
 
 properties([
-  // pipelineTriggers([cron('H 07 * * 1-5')]),
+  pipelineTriggers([cron('H 08 * * 1-5')]),
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'], 
@@ -217,68 +217,68 @@ withNightlyPipeline(type, product, component) {
   boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
 
-  // if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
-  //   afterAlways('DependencyCheckNightly') {
-  //     stage('Playwright test setup') {
-  //       try {
-  //         yarnBuilder.yarn('test:playwright-setup:install')
-  //         if(playwrightRunSetup) {
-  //           yarnBuilder.yarn('test:playwright-e2e-setup:ci')
-  //         }
-  //       } catch (Exception error) {
-  //         if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-  //           flowInterrupted = true
-  //         }
-  //         if(playwrightRunSetup) {
-  //           playwrightSetupPassed=false
-  //         }
-  //         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-  //       } finally {
-  //         if(playwrightRunSetup) {
-  //           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
-  //         }
-  //       }
-  //     }
+  if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
+    afterAlways('DependencyCheckNightly') {
+      stage('Playwright test setup') {
+        try {
+          yarnBuilder.yarn('test:playwright-setup:install')
+          if(playwrightRunSetup) {
+            yarnBuilder.yarn('test:playwright-e2e-setup:ci')
+          }
+        } catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+          if(playwrightRunSetup) {
+            playwrightSetupPassed=false
+          }
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(playwrightRunSetup) {
+            yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
+          }
+        }
+      }
 
-  //     stage('Playwright full functional test') {
-  //       try {
-  //         if(flowInterrupted) {
-  //           throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
-  //         }
-  //         if(playwrightSetupPassed) {
-  //           yarnBuilder.yarn('test:playwright-e2e-nightly:ci')
-  //         }
-  //       } catch (Exception error) {
-  //         if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-  //           flowInterrupted = true
-  //         }
-  //         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-  //       } finally {
-  //         if(playwrightSetupPassed) {
-  //           copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
-  //           sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
-  //           yarnBuilder.yarn('test:playwright-functional:generate-report')
-  //           publishFunctionalReport()
-  //         }
-  //       }
-  //     }
+      stage('Playwright full functional test') {
+        try {
+          if(flowInterrupted) {
+            throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
+          }
+          if(playwrightSetupPassed) {
+            yarnBuilder.yarn('test:playwright-e2e-nightly:ci')
+          }
+        } catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(playwrightSetupPassed) {
+            copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
+            sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+            yarnBuilder.yarn('test:playwright-functional:generate-report')
+            publishFunctionalReport()
+          }
+        }
+      }
 
-  //     if(playwrightRunSetup) {
-  //       stage('Playwright test teardown') {
-  //         try {
-  //           yarnBuilder.yarn('test:playwright-e2e-teardown:ci')
-  //         } catch (Exception error) {
-  //           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-  //         } finally {
-  //           copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
-  //           sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
-  //           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
-  //           publishBootstrapReport()
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+      if(playwrightRunSetup) {
+        stage('Playwright test teardown') {
+          try {
+            yarnBuilder.yarn('test:playwright-e2e-teardown:ci')
+          } catch (Exception error) {
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+          } finally {
+            copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+            sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
+            yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
+            publishBootstrapReport()
+          }
+        }
+      }
+    }
+  }
   
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {

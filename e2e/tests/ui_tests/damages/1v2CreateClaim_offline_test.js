@@ -20,7 +20,7 @@ const respondent2 = {
 
 Feature('1v2 Create claim, then automatically goes offline').tag('@ui-unspec @ui-nightly-prod');
 
-Scenario.skip('Claimant solicitor raise a claim against 2 defendants, one of who is without a solicitor (LiP) should progress case offline', async ({I}) => {
+Scenario.skip('01 Claimant solicitor raise a claim against 2 defendants, one of who is without a solicitor (LiP) should progress case offline', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(
     claimant1,

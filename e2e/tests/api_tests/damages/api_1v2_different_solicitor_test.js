@@ -7,64 +7,64 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 Feature('Unspec 1v2DS api journey').tag('@api-nightly-prod @api-unspec-full-defence');
 
-Scenario('Create claim', async ({I, api}) => {
+Scenario('01 Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
 });
 
-Scenario('HMCTS admin adds a case note to case', async ({I, api}) => {
+Scenario('02 HMCTS admin adds a case note to case', async ({I, api}) => {
   await api.addCaseNote(config.adminUser);
 });
 
-Scenario('Amend claim documents', async ({I, api}) => {
+Scenario('03 Amend claim documents', async ({I, api}) => {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
 });
 
-Scenario('Notify claim', async ({I, api}) => {
+Scenario('04 Notify claim', async ({I, api}) => {
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
 });
 
-Scenario('Notify claim details', async ({I, api}) => {
+Scenario('05 Notify claim details', async ({I, api}) => {
   await api.notifyClaimDetails(config.applicantSolicitorUser);
 });
 
-Scenario('Amend party details', async ({I, api}) => {
+Scenario('06 Amend party details', async ({I, api}) => {
   await api.amendPartyDetails(config.adminUser);
 });
 
-Scenario('Acknowledge claim Solicitor 1', async ({I, api}) => {
+Scenario('07 Acknowledge claim Solicitor 1', async ({I, api}) => {
   await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
 //Skipping this test as it is failing with partyIDs at the moment
-Scenario.skip('Acknowledge claim Solicitor 2', async ({I, api}) => {
+Scenario.skip('08 Acknowledge claim Solicitor 2', async ({I, api}) => {
   await api.acknowledgeClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
-Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
+Scenario('09 Inform agreed extension date Solicitor 1', async ({I, api}) => {
   await api.informAgreedExtension(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
-Scenario('Inform agreed extension date Solicitor 2', async ({I, api}) => {
+Scenario('10 Inform agreed extension date Solicitor 2', async ({I, api}) => {
   await api.informAgreedExtension(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
-Scenario('Defendant response Solicitor 1', async ({I, api}) => {
+Scenario('11 Defendant response Solicitor 1', async ({I, api}) => {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 });
 
-Scenario('Defendant response Solicitor 2', async ({I, api}) => {
+Scenario('12 Defendant response Solicitor 2', async ({I, api}) => {
   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
 
-Scenario('Claimant response', async ({I, api}) => {
+Scenario('13 Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-Scenario.skip('Add case flags', async ({api}) => {
+Scenario.skip('14 Add case flags', async ({api}) => {
  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
-Scenario.skip('Manage case flags', async ({api}) => {
+Scenario.skip('15 Manage case flags', async ({api}) => {
  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 

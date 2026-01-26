@@ -203,6 +203,11 @@ withPipeline(type, product, component) {
       env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     }
   }
+
+
+  // onPR {
+  //   env.ENVIRONMENT = "aat"
+  // }
   onMaster {
     env.ENVIRONMENT = "aat"
   }
@@ -237,6 +242,7 @@ withPipeline(type, product, component) {
 //      }
 //    }
 //  }
+
 
 //  before('helmUninstall') {
 //    onPR {
@@ -292,6 +298,7 @@ withPipeline(type, product, component) {
       copyPrevFailedAndNotExecutedTestFilesJson();
     }
   }
+
 
   afterAlways('functionalTest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
