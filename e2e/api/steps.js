@@ -287,8 +287,8 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
-    await adjustCaseSubmittedDateForMinti(caseId, isMintiEnabled);
-    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, isMintiEnabled);
+    await adjustCaseSubmittedDateForMinti(caseId);
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount);
     return caseId;
   },
 
