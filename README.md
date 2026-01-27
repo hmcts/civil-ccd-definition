@@ -98,6 +98,7 @@ Before running API tests, you will need the `SENDGRID_API_KEY` environment varia
 To run API tests enter `yarn test:api`.
 set CCD_UI_TESTS=false
 
+
 ## Generating CodeceptJS E2E Test Documentation
 
 Generating test documentation JSON:
