@@ -246,10 +246,7 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, hmcTest);
 
     // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-    const isMintiEnabled = isMintiCaseEnabled;
-    if (isMintiEnabled) {
       addSubmittedDateInCaseData(createClaimData);
-    }
 
     //==============================================================
 

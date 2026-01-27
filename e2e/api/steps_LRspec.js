@@ -1031,7 +1031,7 @@ module.exports = {
     }
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
+    await assertCaseFlags(caseId, user, response);
     await waitForFinishedBusinessProcess(caseId);
 
   },
