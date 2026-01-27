@@ -22,6 +22,7 @@
     "FieldTypeParameter": "Document",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]
