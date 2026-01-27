@@ -3,7 +3,7 @@ const config = require('../../../config.js');
 const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
@@ -89,7 +89,6 @@ Scenario('09 Claimant solicitor responds to defence', async ({I}) => {
 }).retry(2);
 
 Scenario.skip('10 Add case flags', async ({I}) => {
-  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
@@ -98,20 +97,16 @@ Scenario.skip('10 Add case flags', async ({I}) => {
       details: [PARTY_FLAGS.unacceptableBehaviour.value]
     }
     ];
-
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.createCaseFlags(caseFlags);
     // await I.validateCaseFlags(caseFlags);
-  }
 }).retry(2);
 
 Scenario.skip('11 Defendant 2 solicitor adds unavailable dates', async ({I}) => {
-  if (await checkToggleEnabled('update-contact-details')) {
     await I.login(config.secondDefendantSolicitorUser);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await I.waitForText('Summary');
     await I.addUnavailableDates(caseNumber);
-  }
 }).retry(2);
 
 Scenario('12 Stay the case', async ({I}) => {

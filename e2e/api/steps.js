@@ -25,8 +25,6 @@ const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const {checkCaseFlagsEnabled, checkManageContactInformationEnabled,
-  checkMintiToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -248,7 +246,7 @@ module.exports = {
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, hmcTest);
 
     // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-    const isMintiEnabled = await checkMintiToggleEnabled() && isMintiCaseEnabled;
+    const isMintiEnabled = isMintiCaseEnabled;
     if (isMintiEnabled) {
       addSubmittedDateInCaseData(createClaimData);
     }
@@ -284,9 +282,7 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
-    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
-    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -300,9 +296,6 @@ module.exports = {
   },
 
   manageDefendant1Details: async (user) => {
-    if(!(await checkManageContactInformationEnabled())) {
-      return;
-    }
     eventName = 'MANAGE_CONTACT_INFORMATION';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -312,9 +305,6 @@ module.exports = {
   },
 
   manageDefendant1LROrgDetails: async (user) => {
-    if(!(await checkManageContactInformationEnabled())) {
-      return;
-    }
     eventName = 'MANAGE_CONTACT_INFORMATION';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -781,11 +771,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
     deleteCaseFields('respondent2Copy');
 
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-
-    if (caseFlagsEnabled) {
-      await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
-    }
+      await assertCaseFlags(caseId, user, 'FULL_DEFENCE'); 
   },
 
   claimantResponse: async (user, multipartyScenario, expectedCcdState, targetFlag, allocatedTrack) => {
@@ -835,11 +821,7 @@ module.exports = {
       await assertCorrectEventsAreAvailableToUser(config.adminUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
 
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-
-    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
-    }
   },
 
   checkUserCaseAccess: async (user, shouldHaveAccess) => {
@@ -865,9 +847,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterAddLitigationFriend(config.hearingCenterAdminWithRegionId1, caseId);
-    }
   },
 
   moveCaseToCaseman: async (user) => {
@@ -1122,9 +1102,6 @@ module.exports = {
   },
 
   createCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
 
     eventName = 'CREATE_CASE_FLAGS';
 
@@ -1141,9 +1118,6 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
 
     eventName = 'MANAGE_CASE_FLAGS';
 
