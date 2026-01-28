@@ -3,13 +3,14 @@ const { uniqWith } = require('lodash');
 const {
   MEDIUM_STRING,
   isNotLongerThan,
-  noDuplicateFoundEvent
+  noDuplicateFoundEvent,
+  isValidCaseTypeId
 } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+    return isValidCaseTypeId()(v);
   });
   expect(row.CaseEventID).to.be.a('string').and.satisfy(isNotLongerThan(MEDIUM_STRING));
   expect(row.AccessControl).to.not.be.null;
@@ -48,5 +49,4 @@ dataProvider.exclusions.forEach((value, key) =>  {
     });
   });
 });
-
 

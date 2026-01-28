@@ -285,6 +285,11 @@ withNightlyPipeline(type, product, component) {
       if(runPrevFailedAndNotExecutedTestFiles) {
         copyPrevFailedAndNotExecutedTestFilesJson()
       }
+      sh """
+        set -e
+        rm -f ga-fullfunctional.exit
+        (GA_TEST_RESULTS_DIR=test-results/functional-ga REPORT_DIR=test-results/functional-ga yarn ga:test:fullfunctional; echo \$? > ga-fullfunctional.exit) &
+      """
     }
   }
 
@@ -302,6 +307,18 @@ withNightlyPipeline(type, product, component) {
         reportName: 'Nightly E2E Allure Report'
       ])
       archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+      archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional-ga/**/*'
+      steps.sh """
+        set -e
+        if [ -f ga-fullfunctional.exit ]; then
+          while [ ! -s ga-fullfunctional.exit ]; do sleep 5; done
+          ga_status=\$(cat ga-fullfunctional.exit)
+          if [ \"\$ga_status\" != \"0\" ]; then
+            echo \"GA full functional tests failed with exit code \$ga_status\"
+            exit \$ga_status
+          fi
+        fi
+      """
     }
   }
   

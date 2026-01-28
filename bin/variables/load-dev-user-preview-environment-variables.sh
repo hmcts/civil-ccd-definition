@@ -26,6 +26,5 @@ export S2S_SECRET=$(az keyvault secret show --vault-name civil-aat --name micros
 export HEALTH_WORK_ALLOCATION_TASK_API=TBD
 # definition placeholders
 export CCD_DEF_CASE_SERVICE_BASE_URL=$JAVA_URL
-export CCD_DEF_GEN_APP_SERVICE_BASE_URL=$GA_URL
 export CCD_DEF_VERSION="-${user}-1"
 export ROLE_ASSIGNMENT_URL=$AM_ROLE_ASSIGNMENT_SERVICE_URL
