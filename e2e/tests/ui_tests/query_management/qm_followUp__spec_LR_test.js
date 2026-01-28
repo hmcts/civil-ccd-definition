@@ -8,7 +8,7 @@ let caseId;
 
 Feature('Query Management - Raise, Respond and Follow up Queries').tag('@ui-nightly-prod');
 
-Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
+Scenario('01 Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   const mpScenario = 'ONE_V_ONE';
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
@@ -23,14 +23,14 @@ Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   await I.raiseFollowUpQuestionAndVerify(caseId, true);
 }).retry(2);
 
-Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
+Scenario('02 CaseWorker can access and also responds back to a query', async ({ I }) => {
   await I.login(config.ctscAdminUser);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyFollowUpQuestionAsCaseWorker(caseId, true);
 }).retry(2);
 
-Scenario('Judge can access to a query', async ({ I }) => {
+Scenario('03 Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');

@@ -10,7 +10,7 @@ BeforeSuite(async ({hearings}) => {
   await hearings.setupStaticMocks();
 });
 
-Scenario('Prepare unspec claim up to sdo', async ({api}) => {
+Scenario('01 Prepare unspec claim up to sdo', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
   caseId = await api.getCaseId();
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -21,17 +21,17 @@ Scenario('Prepare unspec claim up to sdo', async ({api}) => {
   await api.createSDO(judgeUser, 'CREATE_FAST');
 }).retry(3);
 
-Scenario('Generate Unspec Disposal hearing notice', async ({hearings}) => {
+Scenario('02 Generate Unspec Disposal hearing notice', async ({hearings}) => {
   const hearingId = await hearings.createUnspecDisposalHearing(caseId);
   await hearings.triggerUnspecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 
-Scenario('Generate Unspec Trial hearing notice', async ({hearings}) => {
+Scenario('03 Generate Unspec Trial hearing notice', async ({hearings}) => {
     const hearingId = await hearings.createUnspecTrialHearing(caseId);
     await hearings.triggerUnspecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 
-Scenario('Generate Unspec Dispute Resolution hearing notice', async ({hearings}) => {
+Scenario('04 Generate Unspec Dispute Resolution hearing notice', async ({hearings}) => {
   const hearingId = await hearings.createUnspecDisputeResolutionHearing(caseId);
   await hearings.triggerUnspecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);

@@ -21,7 +21,7 @@ let caseNumber;
 
 Feature('Claim creation 1v2 Same Solicitor with Small claims').tag('@ui-spec-small @ui-nightly-prod');
 
-Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims-spec', async ({LRspec}) => {
+Scenario('01 Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims-spec', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v2 specified claim both defendants same', 'organisation', null, respondent1, respondent2, 1000);
   caseNumber = await LRspec.grabCaseNumber();
@@ -32,7 +32,7 @@ Scenario('Applicant solicitor creates 1v2 specified claim both defendants same L
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario('02 1v2 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await assignCaseToLRSpecDefendant(caseNumber);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
@@ -45,7 +45,7 @@ Scenario('1v2 Respond To Claim - Defendants solicitor rejects claim for defendan
   //await LRspec.see(caseEventMessage('Respond to claim'));
 }).retry(2);
 
-Scenario('1v2 same solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
+Scenario('03 1v2 same solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'small'});
 }).retry(2);
