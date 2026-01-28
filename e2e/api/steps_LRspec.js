@@ -1031,9 +1031,8 @@ module.exports = {
     }
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    await assertCaseFlags(caseId, user, response);
     await waitForFinishedBusinessProcess(caseId);
-
+    await assertCaseFlags(caseId, user, response);
   },
 
   initiateGeneralApplication: async (caseNumber, user, expectedState) => {
@@ -1105,11 +1104,9 @@ module.exports = {
       validState = 'JUDICIAL_REFERRAL';
     }
 
-
     await assertSubmittedEventFlightDelay(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
     await waitForFinishedBusinessProcess(caseId);
-
+    await assertCaseFlags(caseId, user, response);
   },
 
   amendClaimMovedToMediationDate: async (user, date) => {

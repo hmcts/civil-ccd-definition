@@ -31,7 +31,6 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {updateApplicant, updateLROrganisation} = require('./manageContactInformationHelper');
 const {fetchCaseDetails} = require('./apiRequest');
-const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
@@ -279,7 +278,7 @@ module.exports = {
 
     await assignCase();
     await waitForFinishedBusinessProcess(caseId);
-      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -607,9 +606,6 @@ module.exports = {
     const fixture = mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP' ?
       eventData['acknowledgeClaims'][mpScenario] : eventData['acknowledgeClaims'][mpScenario][solicitor];
 
-    //Todo: Remove after caseflags release
-    await removeFlagsFieldsFromFixture(fixture);
-
     await validateEventPages(fixture);
 
     await assertError('ConfirmNameAddress', data[eventName].invalid.ConfirmDetails.futureDateOfBirth,
@@ -690,9 +686,6 @@ module.exports = {
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor](allocatedTrack);
     }
-
-    //Todo: Remove after caseflags release
-    await removeFlagsFieldsFromFixture(defendantResponseData);
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
