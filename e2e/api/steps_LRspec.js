@@ -9,14 +9,11 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {isJOLive, COSC} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {checkCaseFlagsEnabled, checkMintiToggleEnabled} = require('./testingSupport');
-const {checkToggleEnabled} = require('./testingSupport');
 const {fetchCaseDetails} = require('./apiRequest');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
@@ -857,9 +854,7 @@ module.exports = {
     console.log('Service request update sent to callback URL');
 
     await waitForFinishedBusinessProcess(caseId);
-    if(await checkCaseFlagsEnabled()) {
-      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
-    }
+    await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -867,8 +862,7 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiCase), carmEnabled);
 
     return caseId;
   },
@@ -900,9 +894,7 @@ module.exports = {
     console.log('Service request update sent to callback URL');
 
     await waitForFinishedBusinessProcess(caseId);
-    if(await checkCaseFlagsEnabled()) {
-      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
-    }
+    await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -991,15 +983,10 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
-      await assertCaseFlags(caseId, user, response);
-    }
     deleteCaseFields('respondent1Copy');
-    const isMintiToggleEnabled = await checkMintiToggleEnabled();
     let claimAmount = caseData.totalClaimAmount;
     if (!response.includes('COUNTER_CLAIM')) {
-      await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiCase && isMintiToggleEnabled), true);
+      await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiCase), true);
     }
   },
 
@@ -1025,8 +1012,7 @@ module.exports = {
     }
     let claimantResponseData;
 
-    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
-    if (isJudgmentOnlineLive && response === 'FA_ACCEPT_CCJ') {
+    if (response === 'FA_ACCEPT_CCJ') {
       claimantResponseData = data.CLAIMANT_RESPONSE_JBA(response);
     } else {
       claimantResponseData = eventData['claimantResponses'][scenario][response];
@@ -1040,18 +1026,13 @@ module.exports = {
 
     carmEnabled ? validState = 'IN_MEDIATION' : validState;
 
-    if (isJudgmentOnlineLive && response === 'FA_ACCEPT_CCJ') {
+    if (response === 'FA_ACCEPT_CCJ') {
       validState = 'All_FINAL_ORDERS_ISSUED';
     }
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
     await waitForFinishedBusinessProcess(caseId);
-
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
-      await assertCaseFlags(caseId, user, response);
-    }
+    await assertCaseFlags(caseId, user, response);
   },
 
   initiateGeneralApplication: async (caseNumber, user, expectedState) => {
@@ -1062,8 +1043,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, caseId);
 
-    var isCOSCEnabled = await checkToggleEnabled(COSC);
-    var gaData = isCOSCEnabled ? data.INITIATE_GENERAL_APPLICATION_LR : data.INITIATE_GENERAL_APPLICATION;
+    var gaData = data.INITIATE_GENERAL_APPLICATION_LR;
     const response = await apiRequest.submitEvent(eventName, gaData, caseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
@@ -1124,15 +1104,9 @@ module.exports = {
       validState = 'JUDICIAL_REFERRAL';
     }
 
-
     await assertSubmittedEventFlightDelay(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
     await waitForFinishedBusinessProcess(caseId);
-
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
-      await assertCaseFlags(caseId, user, response);
-    }
+    await assertCaseFlags(caseId, user, response);
   },
 
   amendClaimMovedToMediationDate: async (user, date) => {
@@ -1166,7 +1140,6 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
     let claimIssuedPBADetails = {
       claimIssuedPBADetails: {
         applicantsPbaAccounts: {
@@ -1213,12 +1186,13 @@ module.exports = {
             },
             id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
       };
-      let DJSpec = isDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT : data.DEFAULT_JUDGEMENT_SPEC_1V2;
-      if (isJudgmentOnlineLive) {
-        state = isDivergent ? 'PROCEEDS_IN_HERITAGE_SYSTEM' : 'All_FINAL_ORDERS_ISSUED';
-      } else {
-        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      }
+      let DJSpec = isDivergent
+        ? data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT
+        : data.DEFAULT_JUDGEMENT_SPEC_1V2;
+
+      state = isDivergent
+        ? 'PROCEEDS_IN_HERITAGE_SYSTEM'
+        : 'All_FINAL_ORDERS_ISSUED';
       await validateEventPagesDefaultJudgments(DJSpec, scenario,isDivergent);
     } else if (scenario === 'TWO_V_ONE') {
       registrationData = {
@@ -1231,11 +1205,8 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-      if (isJudgmentOnlineLive) {
         state = 'All_FINAL_ORDERS_ISSUED';
-      } else {
-        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      }
+
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario,isDivergent);
     } else {
       registrationData = {
@@ -1248,11 +1219,7 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-      if (isJudgmentOnlineLive) {
-        state = 'All_FINAL_ORDERS_ISSUED';
-      } else {
-        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      }
+      state = 'All_FINAL_ORDERS_ISSUED';
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario,isDivergent);
     }
 
@@ -1429,9 +1396,6 @@ module.exports = {
   },
 
   createCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
 
     eventName = 'CREATE_CASE_FLAGS';
 
@@ -1448,9 +1412,6 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
 
     eventName = 'MANAGE_CASE_FLAGS';
 
