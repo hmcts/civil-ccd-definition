@@ -3,7 +3,18 @@ const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
 const totpGenerator = require('totp-generator');
-const totp = typeof totpGenerator === 'function' ? totpGenerator : totpGenerator.default;
+const getOtp = (secret) => {
+  if (typeof totpGenerator === 'function') {
+    return totpGenerator(secret);
+  }
+  if (totpGenerator && typeof totpGenerator.default === 'function') {
+    return totpGenerator.default(secret);
+  }
+  if (totpGenerator && totpGenerator.TOTP && typeof totpGenerator.TOTP.generate === 'function') {
+    return totpGenerator.TOTP.generate(secret).otp;
+  }
+  throw new TypeError('totp-generator export not supported');
+};
 
 let incidentMessage;
 
@@ -18,7 +29,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: getOtp(config.s2s.secret)
       })
       .then(response => response.text());
 
@@ -58,7 +69,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: getOtp(config.s2s.secret)
       })
       .then(response => response.text());
     console.log('** Start waitForGAFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
@@ -101,7 +112,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: getOtp(config.s2s.secret)
       }).then(response => response.text());
     console.log('** Start waitForGACamundaEventsFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
 

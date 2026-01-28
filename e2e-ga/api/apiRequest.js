@@ -4,7 +4,18 @@ const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
 const totpGenerator = require('totp-generator');
-const totp = typeof totpGenerator === 'function' ? totpGenerator : totpGenerator.default;
+const getOtp = (secret) => {
+  if (typeof totpGenerator === 'function') {
+    return totpGenerator(secret);
+  }
+  if (totpGenerator && typeof totpGenerator.default === 'function') {
+    return totpGenerator.default(secret);
+  }
+  if (totpGenerator && totpGenerator.TOTP && typeof totpGenerator.TOTP.generate === 'function') {
+    return totpGenerator.TOTP.generate(secret).otp;
+  }
+  throw new TypeError('totp-generator export not supported');
+};
 
 const TASK_MAX_RETRIES = 40;
 const TASK_RETRY_TIMEOUT_MS = 10000;
@@ -49,7 +60,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: getOtp(config.s2s.secret)
       })
       .then(response => response.text());
   },
@@ -280,7 +291,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
-        oneTimePassword: totp(config.s2sForXUI.secret)
+        oneTimePassword: getOtp(config.s2sForXUI.secret)
       })
       .then(response => response.text());
 
@@ -365,4 +376,3 @@ module.exports = {
     return response;
   }
 };
-
