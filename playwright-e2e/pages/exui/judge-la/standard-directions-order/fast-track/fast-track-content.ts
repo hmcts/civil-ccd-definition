@@ -22,6 +22,7 @@ export const subheadings = {
   hearingNotes: 'Hearing notes',
   welshLanguage: 'Use of the Welsh Language',
   importantNotes: 'Important notes',
+  penalNotice: 'Penal notice (optional)',
   judgementClaimSum:
     'There is a judgment for the claimant for an amount to be decided by the court',
 };
@@ -298,6 +299,9 @@ export const inputs = {
     label: 'Enter the direction (Optional',
     selector: '#fastTrackAddNewDirections_0_directionComment',
   },
+  penalNotice: {
+    selector: '#fastTrackPenalNotice',
+  },
 };
 
 export const radioButtons = {
@@ -441,6 +445,10 @@ export const checkboxes = {
   includeWelshLanguage: {
     label: 'Add/Remove',
     selector: '#sdoR2FastTrackUseOfWelshToggle-SHOW',
+  },
+  penalNotice: {
+    label: 'Show/Remove',
+    selector: 'label[for="fastTrackPenalNoticeToggle-SHOW"]',
   },
 };
 
