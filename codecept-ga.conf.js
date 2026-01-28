@@ -90,6 +90,11 @@ exports.config = {
       enabled: functional,
       require: "./e2e-ga/plugins/failedAndNotExecutedTestFilesPlugin",
     },
+    allure: {
+      enabled: true,
+      require: "allure-codeceptjs",
+      resultsDir: `${process.env.REPORT_DIR || 'test-results/functional-ga'}/allure-results`,
+    },
   },
   mocha: {
     bail: process.env.PROCEED_ON_FAILURE !== "true",
