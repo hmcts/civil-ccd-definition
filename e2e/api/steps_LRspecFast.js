@@ -12,7 +12,6 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
-const {checkCaseFlagsEnabled} = require('./testingSupport');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
@@ -142,9 +141,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
-    }
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
@@ -235,10 +232,7 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
-    }
 
     deleteCaseFields('respondent1Copy');
   },
@@ -268,15 +262,9 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
-    }
   },
   createCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
 
     eventName = 'CREATE_CASE_FLAGS';
 
@@ -293,9 +281,6 @@ module.exports = {
   },
 
   manageCaseFlags: async (user) => {
-    if(!(await(checkCaseFlagsEnabled()))) {
-      return;
-    }
 
     eventName = 'MANAGE_CASE_FLAGS';
 

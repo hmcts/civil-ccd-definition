@@ -1,7 +1,6 @@
 
 const config = require('../../../config.js');
 const {getLanguageInterpreterFlag, getRAWheelchairFlag} = require('../../../api/caseFlagsHelper');
-const {checkCaseFlagsAndHmcEnabled} = require('../../../api/testingSupport');
 
 const serviceId = 'AAA6';
 const hmcTest = true;
@@ -14,9 +13,6 @@ let continueWithScenario = () => {
 
 Feature('CCD 1v2 Spec fast hearings API test').tag('@api-hearings @api-nightly-prod');
 
-BeforeSuite(async () => {
-  caseFlagsAndHmcEnabled = await checkCaseFlagsAndHmcEnabled();
-});
 
 Scenario('01 1v2 fast claim full defence', async ({api_spec_fast}) => {
   if(!continueWithScenario()) return;

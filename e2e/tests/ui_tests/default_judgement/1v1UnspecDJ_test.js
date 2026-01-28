@@ -3,7 +3,6 @@
 const config = require('../../../config.js');
 let caseId, taskId, hearingDateIsLessThan3Weeks, validSummaryJudgmentDirectionsTask, validScheduleAHearingTask;
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
-const { checkToggleEnabled } = require('../../../api/testingSupport');
 const judgeUserToBeUsed = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
