@@ -160,6 +160,7 @@ def archiveCoreCaseDataDefinitions() {
 
       dir("${WORKSPACE}/build") {
         steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${PROD_ENV}.xlsx"
+        steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-${PROD_ENV}.xlsx"
       }
     }
 
@@ -174,6 +175,7 @@ def archiveCoreCaseDataDefinitions() {
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-${env.ENVIRONMENT}.xlsx"
     }
   } else {
     dir("${WORKSPACE}/bin") {
@@ -186,17 +188,24 @@ def archiveCoreCaseDataDefinitions() {
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-${env.ENVIRONMENT}.xlsx"
     }
   }
 }
 
 def uploadCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin") {
-    ccdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
+    civilCcdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
     sh """
       set -e
       eval \$(./variables/load-${env}-environment-variables.sh)
-      ./utils/ccd-import-definition.sh ${ccdDefinitionFilePath}
+      ./utils/ccd-import-definition.sh ${civilCcdDefinitionFilePath}
+    """
+    civilGaCcdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ga-ccd-${env}.xlsx"
+    sh """
+      set -e
+      eval \$(./variables/load-${env}-environment-variables.sh)
+      ./utils/ccd-import-definition.sh ${civilGaCcdDefinitionFilePath}
     """
   }
 }
@@ -252,35 +261,6 @@ withPipeline(type, product, component) {
     archiveCoreCaseDataDefinitions()
   }
 
-//  before('akschartsinstall'){
-//    onPR{
-//      if (isHmcEnabled(env.BRANCH_NAME)) {
-//        sh """
-//          az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \\
-//            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
-//          az servicebus topic subscription rule create --resource-group hmc-shared-aat \\
-//            --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \\
-//            --subscription-name hmc-to-civil-subscription-pr-${CHANGE_ID} \\
-//            --name hmc-servicebus-aat-subscription-rule-civil \\
-//            --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
-//        """
-//      }
-//    }
-//  }
-
-
-//  before('helmUninstall') {
-//    onPR {
-//      if (isHmcEnabled(env.BRANCH_NAME)) {
-//      sh """
-//          az servicebus topic subscription delete --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \\
-//            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
-//          curl -v -k -X DELETE \\
-//            'http://ccd-definition-store-api-aat.service.core-compute-aat.internal/api/testing-support/cleanup-case-type/${CHANGE_ID}/?caseTypeIds=CIVIL'
-//        """
-//    }
-//  }
-
   afterSuccess('akschartsinstall') {
     onPR {
       env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
@@ -315,6 +295,13 @@ withPipeline(type, product, component) {
     }
   }
 
+  before('smoketest:preview') {
+    sh """
+      set -e
+      yarn ga:test:smoke
+    """
+  }
+
   before('functionalTest:preview') {
     env.IDAM_STUB_ENABLED = 'false'
     copyPreviousAllureHistory();
@@ -323,11 +310,18 @@ withPipeline(type, product, component) {
     } else {
       copyPrevFailedAndNotExecutedTestFilesJson();
     }
+    sh """
+      set -e
+      rm -f ga-functional.exit
+      (GA_TEST_RESULTS_DIR=test-results/functional-ga REPORT_DIR=test-results/functional-ga yarn ga:test:functional; echo \$? > ga-functional.exit) &
+    """
   }
 
 
   afterAlways('functionalTest:preview') {
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional-ga/**/*'
     steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
+    steps.sh 'npx allure generate test-results/functional-ga/allure-results --clean -o test-results/functional-ga/allure-report || true'
     publishHTML([
       allowMissing: false,
       alwaysLinkToLastBuild: true,
@@ -335,6 +329,14 @@ withPipeline(type, product, component) {
       reportDir: 'test-results/functional/allure-report',
       reportFiles: 'index.html',
       reportName: 'Non-Prod E2E Allure Report'
+    ])
+    publishHTML([
+      allowMissing: true,
+      alwaysLinkToLastBuild: true,
+      keepAll: true,
+      reportDir: 'test-results/functional-ga/allure-report',
+      reportFiles: 'index.html',
+      reportName: 'Non-Prod GA E2E Allure Report'
     ])
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
@@ -363,14 +365,24 @@ withPipeline(type, product, component) {
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-staging.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-staging.xlsx"
     }
     uploadCoreCaseDataDefinitions('staging')
+    sh """
+      set -e
+      yarn ga:test:smoke
+    """
   }
 
   before('functionalTest:aat') {
     env.IDAM_STUB_ENABLED = 'false'
     copyPreviousAllureHistory();
     copyPrevFailedAndNotExecutedTestFilesJson();
+    sh """
+      set -e
+      rm -f ga-functional.exit
+      (GA_TEST_RESULTS_DIR=test-results/functional-ga REPORT_DIR=test-results/functional-ga yarn ga:test:functional; echo \$? > ga-functional.exit) &
+    """
   }
 
   afterAlways('smoketest:aat') {
@@ -379,7 +391,20 @@ withPipeline(type, product, component) {
 
   afterAlways('functionalTest:aat') {
     createGithubRelease()
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional-ga/**/*'
+    steps.sh """
+      set -e
+      if [ -f ga-functional.exit ]; then
+        while [ ! -s ga-functional.exit ]; do sleep 5; done
+        ga_status=\$(cat ga-functional.exit)
+        if [ \"\$ga_status\" != \"0\" ]; then
+          echo \"GA functional tests failed with exit code \$ga_status\"
+          exit \$ga_status
+        fi
+      fi
+    """
     steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
+    steps.sh 'npx allure generate test-results/functional-ga/allure-results --clean -o test-results/functional-ga/allure-report || true'
     publishHTML([
       allowMissing: false,
       alwaysLinkToLastBuild: true,
@@ -387,6 +412,14 @@ withPipeline(type, product, component) {
       reportDir: 'test-results/functional/allure-report',
       reportFiles: 'index.html',
       reportName: 'Prod E2E Allure Report'
+    ])
+    publishHTML([
+      allowMissing: true,
+      alwaysLinkToLastBuild: true,
+      keepAll: true,
+      reportDir: 'test-results/functional-ga/allure-report',
+      reportFiles: 'index.html',
+      reportName: 'Prod GA E2E Allure Report'
     ])
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
