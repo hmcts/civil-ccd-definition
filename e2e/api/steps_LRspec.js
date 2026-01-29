@@ -35,7 +35,7 @@ const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
 const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
-const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
+const {getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
@@ -862,7 +862,6 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiCase), carmEnabled);
 
     return caseId;
   },
