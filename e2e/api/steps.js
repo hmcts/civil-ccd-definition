@@ -244,6 +244,13 @@ module.exports = {
 
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, hmcTest);
 
+    // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
+    const isMintiEnabled = isMintiCaseEnabled;
+    if (isMintiEnabled) {
+      addSubmittedDateInCaseData(createClaimData);
+    }
+    //==============================================================
+
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(createClaimData);
@@ -281,7 +288,8 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
-    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount);
+    await adjustCaseSubmittedDateForMinti(caseId, isMintiEnabled);
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, isMintiEnabled);
     return caseId;
   },
 
