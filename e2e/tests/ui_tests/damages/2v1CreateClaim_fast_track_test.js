@@ -22,7 +22,7 @@ let caseNumber;
 
 Feature('2v1 Claim Journey Fast track').tag('@ui-unspec-fast @ui-nightly-prod');
 
-Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant', async ({I}) => {
+Scenario('01 Claimant solicitor raises a claim for 2 claimants against 1 defendant', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, claimant2, respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();
@@ -33,21 +33,21 @@ Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant'
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('Claimant solicitor notifies defendant of claim', async ({I}) => {
+Scenario('02 Claimant solicitor notifies defendant of claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaim();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
 }).retry(2);
 
-Scenario('Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
+Scenario('03 Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaimDetails();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
 }).retry(2);
 
-Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
+Scenario('04 Defendant solicitor acknowledges claim', async ({I}) => {
   await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence', null, 'fullDefence');
@@ -55,7 +55,7 @@ Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
   //await I.see(caseEventMessage('Acknowledge claim'));
 }).retry(2);
 
-Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
+Scenario('05 Defendant solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.informAgreedExtensionDate();
@@ -63,14 +63,14 @@ Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
   //await I.see(caseEventMessage('Inform agreed extension date'));
 }).retry(2);
 
-Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => {
+Scenario('06 Defendant solicitor adds defendant litigation friend', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.addDefendantLitigationFriend();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Add litigation friend'));
 }).retry(2);
 
-Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
+Scenario('07 Defendants solicitor reject claim of both claimants', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseNumber);
   await I.respondToClaim({
@@ -83,7 +83,7 @@ Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
   //await I.see(caseEventMessage('Respond to claim'));
 }).retry(2);
 
-Scenario('Claimant solicitor responds to defence', async ({I}) => {
+Scenario('08 Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefence('TWO_V_ONE', 25000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed

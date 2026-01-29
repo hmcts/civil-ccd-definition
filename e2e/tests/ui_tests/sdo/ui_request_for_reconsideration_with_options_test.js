@@ -10,7 +10,7 @@ if (config.runWAApiTest) {
 
 Feature('Request for reconsideration - 1v1 - spec').tag('@ui-nightly-prod @ui-rfr');
 
-Scenario('1v1 spec request for reconsideration for other options', async ({api_spec_small, LRspec}) => {
+Scenario('01 1v1 spec request for reconsideration for other options', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
@@ -20,12 +20,12 @@ Scenario('1v1 spec request for reconsideration for other options', async ({api_s
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('Request for Reconsideration', async ({LRspec}) => {
+Scenario('02 Request for Reconsideration', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.requestForReconsiderationForUI();
 }).retry(2);
 
-Scenario('Decision on Reconsideration Request', async ({LRspec, api, WA}) => {
+Scenario('03 Decision on Reconsideration Request', async ({LRspec, api, WA}) => {
   await LRspec.login(config.judgeUserWithRegionId1);
   let taskId;
   if (config.runWAApiTest) {
@@ -41,7 +41,7 @@ Scenario('Decision on Reconsideration Request', async ({LRspec, api, WA}) => {
 }).retry(2);
 
 
-Scenario('1v1 spec request for reconsideration to uphold the previous order made', async ({api_spec_small, LRspec}) => {
+Scenario('04 1v1 spec request for reconsideration to uphold the previous order made', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
@@ -51,12 +51,12 @@ Scenario('1v1 spec request for reconsideration to uphold the previous order made
   await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
 }).retry(2);
 
-Scenario('Request for Reconsideration to uphold the previous order made', async ({LRspec}) => {
+Scenario('05 Request for Reconsideration to uphold the previous order made', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.requestForReconsiderationForUI();
 }).retry(2);
 
-Scenario('Decision on Reconsideration Request to uphold the previous order made', async ({LRspec, api, WA}) => {
+Scenario('06 Decision on Reconsideration Request to uphold the previous order made', async ({LRspec, api, WA}) => {
   await LRspec.login(config.judgeUserWithRegionId1);
   let taskId;
   if (config.runWAApiTest) {
@@ -72,7 +72,7 @@ Scenario('Decision on Reconsideration Request to uphold the previous order made'
 }).retry(2);
 
 
-Scenario('1v1 spec request for reconsideration to previous order needs amending', async ({api_spec_small, LRspec}) => {
+Scenario('07 1v1 spec request for reconsideration to previous order needs amending', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
@@ -81,12 +81,12 @@ Scenario('1v1 spec request for reconsideration to previous order needs amending'
   await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
 }).retry(2);
 
-Scenario('Request for Reconsideration to previous order needs amending', async ({LRspec}) => {
+Scenario('08 Request for Reconsideration to previous order needs amending', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.requestForReconsiderationForUI();
 }).retry(2);
 
-Scenario('Decision on Reconsideration Request to previous order needs amending', async ({LRspec, api, WA}) => {
+Scenario('09 Decision on Reconsideration Request to previous order needs amending', async ({LRspec, api, WA}) => {
   await LRspec.login(config.judgeUserWithRegionId1);
   let taskId;
   if (config.runWAApiTest) {
