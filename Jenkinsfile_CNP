@@ -4,7 +4,7 @@ properties([
 ]);
 
 
-@Library("Infrastructure@feature/DTSPO-29327")
+@Library("Infrastructure")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
@@ -34,6 +34,31 @@ def copyPrevFailedAndNotExecutedTestFilesJson() {
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
+      buildNumber--
+    }
+  }
+}
+
+def copyPreviousAllureHistory() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  def targetDir = "test-results/functional/allure-results/history"
+
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts(
+        projectName: env.JOB_NAME,
+        selector: specific("${buildNumber}"),
+        filter: "test-results/functional/allure-report/history/*",
+        target: targetDir,
+        flatten: true
+      )
+
+      buildFound = true
+      echo "Successfully imported Allure history from build ${buildNumber}"
+    } catch (Exception error) {
+      echo "Allure history artifact not found in build ${buildNumber}. Trying previous..."
       buildNumber--
     }
   }
@@ -292,6 +317,7 @@ withPipeline(type, product, component) {
 
   before('functionalTest:preview') {
     env.IDAM_STUB_ENABLED = 'false'
+    copyPreviousAllureHistory();
     if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
       env.RUN_ALL_FUNCTIONAL_TESTS = true
     } else {
@@ -301,7 +327,6 @@ withPipeline(type, product, component) {
 
 
   afterAlways('functionalTest:preview') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
     publishHTML([
       allowMissing: false,
@@ -311,6 +336,7 @@ withPipeline(type, product, component) {
       reportFiles: 'index.html',
       reportName: 'Non-Prod E2E Allure Report'
     ])
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
   before('smoketest:aat') {
@@ -343,6 +369,7 @@ withPipeline(type, product, component) {
 
   before('functionalTest:aat') {
     env.IDAM_STUB_ENABLED = 'false'
+    copyPreviousAllureHistory();
     copyPrevFailedAndNotExecutedTestFilesJson();
   }
 

@@ -14,7 +14,7 @@ if (config.runWAApiTest) {
 
 Feature('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 1v2 - spec').tag('@u-nightly-prod @ui-settle-discontinue');
 
-Scenario('1v2 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
+Scenario('01 1v2 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
@@ -28,13 +28,13 @@ Scenario('1v2 full defence unspecified - judge draws fast track WITHOUT sum of d
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 });
 
-Scenario('Discontinue This Claim', async ({LRspec}) => {
+Scenario('02 Discontinue This Claim', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.requestForDiscontinueThisClaimForUI1v2();
 }).retry(2);
 
 //Skipped in AAT and Demo until DTSCCI-2718 and DTSCCI-2719 are fixed
-Scenario('Validate Discontinuance', async ({LRspec, api, WA}) => {
+Scenario('03 Validate Discontinuance', async ({LRspec, api, WA}) => {
   if(['preview'].includes(config.runningEnv)) {
     await LRspec.login(config.ctscAdminUser);
     let taskId;
@@ -53,7 +53,7 @@ Scenario('Validate Discontinuance', async ({LRspec, api, WA}) => {
 }).retry(2);
 
 //Skipped until DTSCCI-2718 and DTSCCI-2719 are fixed
-Scenario('Claim Discontinued - Remove Hearing', async ({LRspec}) => {
+Scenario('04 Claim Discontinued - Remove Hearing', async ({LRspec}) => {
    if(['preview'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.addCaseNote();

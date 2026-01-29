@@ -9,7 +9,7 @@ let caseNumber;
 
 Feature('1v2 Diff Sols Hearing Request Journey').tag('@ui-hearing-request @ui-nightly-prod');
 
-Scenario('Prepare claim up to SDO', async ( {api}) => {
+Scenario('01 Prepare claim up to SDO', async ( {api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -21,7 +21,7 @@ Scenario('Prepare claim up to SDO', async ( {api}) => {
   caseNumber = await api.getCaseId();
 }).retry(2);
 
-Scenario('Request, Edit and Cancel a Hearing', async ({I}) => {
+Scenario('02 Request, Edit and Cancel a Hearing', async ({I}) => {
   if (['demo', 'aat'].includes(config.runningEnv)) {
     const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
     await I.login(hearingUser);

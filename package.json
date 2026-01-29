@@ -20,7 +20,7 @@
     "test:api-prod": "MOCHAWESOME_REPORTFILENAME=api-prod FUNCTIONAL=true npx codeceptjs  run-workers --suites 8 --grep @api-prod --reporter mocha-multi --verbose",
     "test:api-nonprod": "MOCHAWESOME_REPORTFILENAME=api-nonprod FUNCTIONAL=true npx codeceptjs  run-workers --suites 8 --grep '@api-prod|@api-nonprod' --reporter mocha-multi --verbose",
     "test:fullfunctional": "./e2e/run-full-functional-tests.sh",
-    "test:ui-nightly-prod": "MOCHAWESOME_REPORTFILENAME=ui-nightly-prod FUNCTIONAL=true npx codeceptjs run-workers --suites 15 --grep '@ui-prod' --reporter mocha-multi --plugins allure --verbose",
+    "test:ui-nightly-prod": "MOCHAWESOME_REPORTFILENAME=ui-nightly-prod FUNCTIONAL=true npx codeceptjs run-workers --suites 15 --grep '@ui-nightly-prod|@ui-prod' --reporter mocha-multi --plugins allure --verbose",
     "test:api-nightly-prod": "MOCHAWESOME_REPORTFILENAME=api-nightly-prod FUNCTIONAL=true npx codeceptjs run-workers --suites 8 --grep '@api-nightly-prod|@api-prod' --reporter mocha-multi --verbose",
     "test:ui-nonprod": "MOCHAWESOME_REPORTFILENAME=ui-nonprod FUNCTIONAL=true npx codeceptjs run-workers --suites 12 --grep '@ui-prod|@ui-nonprod' --reporter mocha-multi --plugins allure --verbose",
     "test:ui-prod": "MOCHAWESOME_REPORTFILENAME=ui-prod FUNCTIONAL=true npx codeceptjs run-workers --suites 10 --grep @ui-prod --reporter mocha-multi --plugins allure --verbose",
