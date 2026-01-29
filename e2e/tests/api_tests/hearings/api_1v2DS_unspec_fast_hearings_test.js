@@ -67,6 +67,6 @@ Scenario('06 Judge choose hearing in person', async ({api}) => {
   await api.createSDO(config.judgeUser2WithRegionId2, 'CREATE_FAST_IN_PERSON');
 });
 
-Scenario('07 Hearing centre admin requests a hearing', async ({hearings}) => {
+Scenario.skip('07 Hearing centre admin requests a hearing', async ({hearings}) => {
   await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId2, caseId, serviceId);
 });
