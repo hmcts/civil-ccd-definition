@@ -31,7 +31,7 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {updateApplicant, updateLROrganisation} = require('./manageContactInformationHelper');
 const {fetchCaseDetails} = require('./apiRequest');
-const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
+const {assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
@@ -244,11 +244,6 @@ module.exports = {
 
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, hmcTest);
 
-    // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-      addSubmittedDateInCaseData(createClaimData);
-
-    //==============================================================
-
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     await validateEventPages(createClaimData);
@@ -286,7 +281,6 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
-    await adjustCaseSubmittedDateForMinti(caseId);
     await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount);
     return caseId;
   },

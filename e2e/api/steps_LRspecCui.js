@@ -36,7 +36,6 @@ const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
-const {adjustCaseSubmittedDateForMinti} = require('../helpers/mintiHelper');
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
@@ -192,9 +191,6 @@ module.exports = {
     console.log('Claim issued');
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    if (isMintiCase) {
-      await adjustCaseSubmittedDateForMinti(caseId, (isMintiCase), carmEnabled);
-    }
     return caseId;
   },
 
@@ -248,7 +244,6 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    await adjustCaseSubmittedDateForMinti(caseId, (claimType === 'INTERMEDIATE' || claimType === 'MULTI'), carmEnabled);
 
     return caseId;
   },
