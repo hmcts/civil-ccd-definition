@@ -190,7 +190,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     console.log('Claim issued');
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, (claimType === 'INTERMEDIATE' || claimType === 'MULTI'));
     return caseId;
   },
 
@@ -243,7 +243,7 @@ module.exports = {
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, (claimType === 'INTERMEDIATE' || claimType === 'MULTI'));
 
     return caseId;
   },
