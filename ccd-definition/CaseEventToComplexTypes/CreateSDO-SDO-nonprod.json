@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "ListElementCode": "title",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "ListElementCode": "ppiDate",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "ListElementCode": "title",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "ListElementCode": "ppiDate",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "PPI",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  }
+]
