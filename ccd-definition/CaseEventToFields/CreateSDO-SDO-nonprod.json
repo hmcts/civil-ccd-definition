@@ -82,6 +82,18 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHousingDisrepair",
+    "PageFieldDisplayOrder": 39,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimHousingDisrepair\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimHousingDisrepair\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackPPI",
     "PageFieldDisplayOrder": 56,
     "DisplayContext": "COMPLEX",
