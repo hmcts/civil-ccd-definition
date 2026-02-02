@@ -11,20 +11,20 @@ if (config.runWAApiTest) {
 
 Feature('Discontinue This Claim - Full discontinuance  - 1v2 - spec').tag('@ui-nightly-prod @ui-settle-discontinue');
 
-Scenario('1v2 spec Discontinue This Claim - Full discontinuance', async ({api_spec_small, LRspec}) => {
+Scenario('01 1v2 spec Discontinue This Claim - Full discontinuance', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
   caseNumber = await api_spec_small.getCaseId();
   await LRspec.setCaseId(caseNumber);
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('Discontinue This Claim', async ({LRspec}) => {
+Scenario('02 Discontinue This Claim', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.requestForDiscontinueThisClaimForUI1v2();
 }).retry(2);
 
 //Skipped in AAT and Demo until DTSCCI-2718 is fixed
-Scenario('Validate Discontinuance', async ({LRspec, api, WA}) => {
+Scenario('03 Validate Discontinuance', async ({LRspec, api, WA}) => {
   if(['preview'].includes(config.runningEnv)) {
     await LRspec.login(config.ctscAdminUser);
     let taskId;

@@ -12,7 +12,7 @@ let caseId;
 
 Feature('1v2 unspec default judgement').tag('@ui-nightly-prod @ui-dj-unspec');
 
-Scenario('1v2 create 1v2DS unspec claim, notify claim, notity claim details, request default judgment', async ({I, api}) => {
+Scenario('01 1v2 create 1v2DS unspec claim, notify claim, notity claim details, request default judgment', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
   caseId = await api.getCaseId();
 
@@ -26,7 +26,7 @@ Scenario('1v2 create 1v2DS unspec claim, notify claim, notity claim details, req
   await I.initiateDJUnspec(caseId, 'ONE_V_TWO');
 }).retry(2);
 
-Scenario('Judge uploads evidence (add case note)', async ({I}) => {
+Scenario('02 Judge uploads evidence (add case note)', async ({I}) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
@@ -37,7 +37,7 @@ Scenario('Judge uploads evidence (add case note)', async ({I}) => {
   await I.waitForText('Summary');
 });
 
-Scenario('Judge performs directions order', async ({I, api, WA}) => {
+Scenario('03 Judge performs directions order', async ({I, api, WA}) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   let taskId;
@@ -57,7 +57,7 @@ Scenario('Judge performs directions order', async ({I, api, WA}) => {
   }
 });
 
-Scenario('Hearing admin takes case offline', async ({I}) => {
+Scenario('04 Hearing admin takes case offline', async ({I}) => {
   await I.login(config.hearingCenterAdminWithRegionId1);
   await I.staffPerformDJCaseTransferCaseOffline(caseId);
 });
