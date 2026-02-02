@@ -6,7 +6,7 @@ let caseNumber;
 
 Feature('Settle this Claim - Confirm marking as paid in full - 1v1 - spec').tag('@ui-nightly-prod');
 
-Scenario('Prepare 1v1 spec small track claim up to case progression', async ({api_spec_small, LRspec}) => {
+Scenario('01 Prepare 1v1 spec small track claim up to case progression', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
@@ -16,7 +16,7 @@ Scenario('Prepare 1v1 spec small track claim up to case progression', async ({ap
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('Confirm marking as paid in full', async ({LRspec}) => {
+Scenario('02 Confirm marking as paid in full', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.requestForSettleThisClaimForUI();
 }).retry(2);

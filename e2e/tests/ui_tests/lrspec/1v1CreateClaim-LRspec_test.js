@@ -10,7 +10,7 @@ let caseNumber;
 
 Feature('1v1 spec claim journey').tag('@ui-spec-fast @ui-nightly-prod');
 
-Scenario('1v1 Applicant solicitor creates specified claim for fast track-spec', async ({LRspec}) => {
+Scenario('01 1v1 Applicant solicitor creates specified claim for fast track-spec', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v1 fast claim', 'organisation', null, 'company', null, 19000);
   caseNumber = await LRspec.grabCaseNumber();
@@ -23,17 +23,17 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track-spec', 
 }).retry(2);
 
 //As part of CIV-13925 this functionality is hidden
-Scenario.skip('1v1 Claimant solicitor Enter Breathing Space', async ({LRspec}) => {
+Scenario.skip('02 1v1 Claimant solicitor Enter Breathing Space', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.enterBreathingSpace();
 }).retry(2);
 
-Scenario.skip('1v1 Claimant solicitor Lift Breathing Space', async ({LRspec}) => {
+Scenario.skip('03 1v1 Claimant solicitor Lift Breathing Space', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.liftBreathingSpace();
 }).retry(2);
 
-Scenario('1v1 Defendant solicitor perform Inform Agreed Extension', async ({LRspec}) => {
+Scenario('04 1v1 Defendant solicitor perform Inform Agreed Extension', async ({LRspec}) => {
   console.log('1v1 Defendant solicitor Inform Agreed Extension claim-spec: ' + caseNumber);
   await assignCaseToLRSpecDefendant(caseNumber);
   await LRspec.login(config.defendantSolicitorUser);
@@ -42,7 +42,7 @@ Scenario('1v1 Defendant solicitor perform Inform Agreed Extension', async ({LRsp
   //await LRspec.see(caseEventMessage('Inform agreed extension date'));
 }).retry(2);
 
-Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario('05 1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
     defendant1Response: 'fullDefence',
@@ -54,12 +54,12 @@ Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendan
   //await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
-Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
+Scenario('06 1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
 }).retry(2);
 
-Scenario('Add case flags', async ({LRspec}) => {
+Scenario('07 Add case flags', async ({LRspec}) => {
   const caseFlags = [{
     partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
     details: [PARTY_FLAGS.vulnerableUser.value]

@@ -12,7 +12,7 @@ let caseNumber;
 
 Feature('1v1 Spec Set Aside Judgment Following Application').tag('@ui-jo @ui-nightly-prod');
 
-Scenario('Create 1v1 spec claim, request default judgment', async ({I, api_spec, LRspec}) => {
+Scenario('01 Create 1v1 spec claim, request default judgment', async ({I, api_spec, LRspec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   caseNumber = await api_spec.getCaseId();
   await LRspec.setCaseId(caseNumber);
@@ -23,12 +23,12 @@ Scenario('Create 1v1 spec claim, request default judgment', async ({I, api_spec,
 
 }).retry(2);
 
-Scenario('Set A side Judgment - Order following an application to set aside', async ({LRspec}) => {
+Scenario('02 Set A side Judgment - Order following an application to set aside', async ({LRspec}) => {
   await LRspec.login(config.hearingCenterAdminWithRegionId2);
   await LRspec.requestSetAsideJudgmentFollowingApplication();
 }).retry(2);
 
-Scenario('Set Aside - Take Case Offline', async ({LRspec, api, WA}) => {
+Scenario('03 Set Aside - Take Case Offline', async ({LRspec, api, WA}) => {
   await LRspec.login(config.hearingCenterAdminWithRegionId2);
   let taskId;
   if (config.runWAApiTest) {

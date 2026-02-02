@@ -12,7 +12,7 @@ Feature('Unspec 1v1 api default judgment journey').tag('@api-dj @api-nightly-pro
 
 let caseId;
 
-Scenario('Default Judgment claim', async ({I, api}) => {
+Scenario('01 Default Judgment claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
@@ -22,7 +22,7 @@ Scenario('Default Judgment claim', async ({I, api}) => {
   await api.defaultJudgment(config.applicantSolicitorUser);
 });
 
-Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
+Scenario('02 Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
@@ -32,14 +32,14 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
   }
 });
 
-Scenario('Default Judgment claim SDO', async ({I, api}) => {
+Scenario('03 Default Judgment claim SDO', async ({I, api}) => {
   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
 });
 
-Scenario('Case progression tests (Upload evidence, schedule a hearing, amend hearing date, pay fee, confirm trial readiness)', async ({I, api}) => {
+Scenario('04 Case progression tests (Upload evidence, schedule a hearing, amend hearing date, pay fee, confirm trial readiness)', async ({I, api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'NOTE_ONLY', 'CASE_PROGRESSION');
     await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_ONLY', 'CASE_PROGRESSION');
@@ -54,13 +54,13 @@ Scenario('Case progression tests (Upload evidence, schedule a hearing, amend hea
   }
 });
 
-Scenario('Verify Case progression trial bundle', async ({I, api, WA}) => {
+Scenario('05 Verify Case progression trial bundle', async ({I, api, WA}) => {
   if (['demo'].includes(config.runningEnv)) {
     await api.triggerBundle(config.systemupdate);
   }
 });
 
-Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
+Scenario.skip('06 Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);

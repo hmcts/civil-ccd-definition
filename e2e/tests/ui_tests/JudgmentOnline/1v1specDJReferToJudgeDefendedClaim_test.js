@@ -12,7 +12,7 @@ let caseNumber;
 
 Feature('1v1 Spec Defence Received in Time Judgment Set Aside').tag('@ui-jo @ui-nightly-prod');
 
-Scenario('Create 1v1 spec claim, request default judgment', async ({I, api_spec, LRspec}) => {
+Scenario('01 Create 1v1 spec claim, request default judgment', async ({I, api_spec, LRspec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   caseNumber = await api_spec.getCaseId();
   await LRspec.setCaseId(caseNumber);
@@ -23,12 +23,12 @@ Scenario('Create 1v1 spec claim, request default judgment', async ({I, api_spec,
 
 }).retry(2);
 
-Scenario('Refer to judge (defence received in time)', async ({LRspec}) => {
+Scenario('02 Refer to judge (defence received in time)', async ({LRspec}) => {
   await LRspec.login(config.hearingCenterAdminWithRegionId2);
   await LRspec.requestReferToJudgeDefendedClaim();
 }).retry(2);
 
- Scenario('Defence received in time - order that judgment is set aside', async ({LRspec, api, WA}) => {
+ Scenario('03 Defence received in time - order that judgment is set aside', async ({LRspec, api, WA}) => {
   await LRspec.login(config.judgeUser2WithRegionId2);
   let taskId;
   if (config.runWAApiTest) {
