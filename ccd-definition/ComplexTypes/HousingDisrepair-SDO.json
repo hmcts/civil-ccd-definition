@@ -19,7 +19,7 @@
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseA",
     "FieldType": "Text",
-    "ElementLabel": "",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -27,7 +27,7 @@
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseB",
     "FieldType": "Text",
-    "ElementLabel": "",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -35,7 +35,7 @@
     "ID": "HousingDisrepair",
     "ListElementCode": "firstReportDateBy",
     "FieldType": "Date",
-    "ElementLabel": "",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -43,7 +43,7 @@
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseCBeforeDate",
     "FieldType": "Text",
-    "ElementLabel": "",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -51,7 +51,7 @@
     "ID": "HousingDisrepair",
     "ListElementCode": "jointStatementDateBy",
     "FieldType": "Date",
-    "ElementLabel": "",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -59,7 +59,7 @@
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseCAfterDate",
     "FieldType": "Text",
-    "ElementLabel": "",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -67,7 +67,7 @@
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseD",
     "FieldType": "Text",
-    "ElementLabel": "",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -75,7 +75,7 @@
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseE",
     "FieldType": "Text",
-    "ElementLabel": "",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
