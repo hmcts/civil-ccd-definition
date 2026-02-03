@@ -1,9 +1,10 @@
 const config = require('../../../config.js');
-const {createAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 
 Feature('CCD API test').tag('@api-nightly-prod');
 
 Before(async () => {
+  await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -59,11 +60,8 @@ Scenario('1v2 LR UNSPEC claim hearing readiness', async ({api}) => {
 let claimRef;
 const claimType = 'SmallClaims';
 let carmEnabled = false;
-Before(async () => {
-  await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
-});
 
-Scenario('1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
+Scenario('1v1 LR v Lip In mediation', async ({api_spec_cui}) => {
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, claimRef, claimType, carmEnabled);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'Yes', 'IN_MEDIATION', carmEnabled);
@@ -101,3 +99,9 @@ Scenario('1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
   await api.dismissCase(config.hearingCenterAdminWithRegionId1);
 }).retry(1);
+
+AfterSuite(async  ({api_spec_cui}) => {
+  await api_spec_cui.cleanUp();
+  await deleteAccount(config.applicantCitizenUser.email);
+  await deleteAccount(config.defendantCitizenUser2.email);
+});
