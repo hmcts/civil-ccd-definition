@@ -67,7 +67,6 @@ module.exports = {
       console.log('submitted date update to before multi Intermediate track live date');
     }
   },
-
   getMintiTrackByClaimAmount(claimAmount) {
     if (claimAmount <= MintiMaxTrackAmounts.SMALL_CLAIM) {
       return 'SMALL_CLAIM';
@@ -83,12 +82,7 @@ module.exports = {
   assertTrackAfterClaimCreation: async (user, caseId, claimAmount, isMintiEnabled, isSpecCase = false) => {
     const {case_data} = await apiRequest.fetchCaseDetails(user, caseId);
     let caseAllocatedTrack = getCaseAllocatedTrack(case_data, isSpecCase);
-
-    if(isMintiEnabled){
-      assert.equal(caseAllocatedTrack, getMintiTrackByClaimAmount(claimAmount));
-    } else {
-      assert.equal(caseAllocatedTrack, getTrackByClaimAmount(claimAmount));
-    }
+    assert.equal(caseAllocatedTrack, getMintiTrackByClaimAmount(claimAmount));
     console.log('Allocated track is ' + caseAllocatedTrack);
   }
 };
