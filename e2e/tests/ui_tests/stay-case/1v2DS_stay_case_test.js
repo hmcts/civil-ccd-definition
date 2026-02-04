@@ -14,7 +14,7 @@ if (config.runWAApiTest) {
   validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
 }
 
-Feature('1v2 Different Solicitors fast track - Claim Journey').tag('@ui-nightly-prod @ui-prod @ui-stay-case');
+Feature('1v2 Different Solicitors fast track - Claim Journey').tag('@ui-nightly-prod @ui-stay-case');
 
 Scenario('01 1v2DS Prepare claim up to case progression', async ({I, api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

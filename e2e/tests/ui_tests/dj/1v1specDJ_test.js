@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v1 spec default judgment').tag('@ui-nonprod @ui-nightly-prod @ui-dj');
+Feature('1v1 spec default judgment').tag('@ui-prod @ui-nightly-prod @ui-dj');
 
 Scenario('1v1 create spec claim request default judgment', async ({I, api_spec}) => {
 

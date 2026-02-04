@@ -17,7 +17,7 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
-}).tag('@api-prod @api-jo');
+}).tag('@api-jo');
 
 Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

@@ -8,7 +8,7 @@ if (config.runWAApiTest) {
   validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
 }
 
-Feature('1v2DS spec stay case journey').tag('@ui-prod @ui-stay-case');
+Feature('1v2DS spec stay case journey').tag('@ui-stay-case');
 
 Scenario('01 Prepare case to awaiting applicant intention', async ({api_spec, LRspec}) => {
   caseNumber = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO', true);
