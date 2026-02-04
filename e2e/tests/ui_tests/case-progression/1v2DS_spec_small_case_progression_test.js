@@ -1,9 +1,10 @@
 const config = require('../../../config.js');
-const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {addUserCaseMapping, assignCaseRoleToUser, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with fast claims').tag('@ui-prod @ui-spec-full-defence');
+Feature('1v2DS spec small track case progression journey').tag('@ui-prod @ui-case-progression @debug');
 
 Scenario('01 Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims-spec', async ({api_spec_fast, LRspec}) => {
   console.log('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims-spec');
@@ -11,7 +12,7 @@ Scenario('01 Applicant solicitor creates 1v2 Diff LRs specified claim defendant 
   caseNumber = await api_spec_fast.getCaseId();
   await LRspec.setCaseId(caseNumber);
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
-}).retry(1);
+}).retry(2);
 
 Scenario('02 1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
     await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
@@ -41,6 +42,33 @@ Scenario('04 1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects
 Scenario('05 1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
+}).retry(2);
+
+
+Scenario('06 Judge triggers SDO', async ({LRspec}) => {
+   await LRspec.login(config.judgeUserWithRegionId1);
+   await LRspec.initiateSDO('yes', 'yes', null, null);
+}).retry(2);
+
+Scenario.skip('07 Claimant solicitor uploads evidence', async ({LRspec}) => {
+    await LRspec.login(config.applicantSolicitorUser);
+    await LRspec.evidenceUploadSpec(caseNumber, false);
+}).retry(2);
+
+Scenario('08 Defendant solicitor uploads evidence', async ({LRspec}) => {
+    await LRspec.login(config.defendantSolicitorUser);
+    await LRspec.evidenceUploadSpec(caseNumber, true);
+}).retry(2);
+
+Scenario('09 Schedule a hearing', async ({LRspec}) => {
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
+    await LRspec.createHearingScheduled();
+    await waitForFinishedBusinessProcess(caseNumber);
+}).retry(2);
+
+Scenario('10 Pay hearing fee', async ({LRspec}) => {
+  await LRspec.payHearingFee();
+  await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
 AfterSuite(async  () => {

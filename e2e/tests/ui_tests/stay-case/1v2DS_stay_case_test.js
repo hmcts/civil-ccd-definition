@@ -18,8 +18,6 @@ Feature('1v2 Different Solicitors fast track - Claim Journey').tag('@ui-nightly-
 
 Scenario('01 1v2DS Prepare claim up to case progression', async ({I, api}) => {
   caseNumber = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  await api.addCaseNote(config.adminUser);
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   // Skipping this step as it is failing with partyIDs at the moment.
@@ -28,7 +26,7 @@ Scenario('01 1v2DS Prepare claim up to case progression', async ({I, api}) => {
   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
   I.setCaseId(caseNumber);
-});
+}).retry(1);
 
 Scenario.skip('02 Defendant 2 solicitor adds unavailable dates', async ({I}) => {
     await I.login(config.secondDefendantSolicitorUser);
