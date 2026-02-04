@@ -1,7 +1,6 @@
 #!groovy
 
 properties([
-  pipelineTriggers([cron('H 08 * * 1-5')]),
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'], 
