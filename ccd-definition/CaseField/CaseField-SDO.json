@@ -815,14 +815,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "smallClaimsHousingDisrepair",
-    "Label": "Housing Disrepair",
-    "FieldType": "HousingDisrepair",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsAddNewDirections",
     "Label": "Add a new direction",
     "FieldType": "Collection",
@@ -1320,7 +1312,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackHousingDisrepair",
     "Label": "Housing Disrepair",
-    "FieldType": "HousingDisrepair",
+    "FieldType": "FastTrackHousingDisrepair",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
