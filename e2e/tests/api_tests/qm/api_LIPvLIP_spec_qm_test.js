@@ -9,6 +9,7 @@ let caseId;
 Feature('LR v LIP query management spec api journey').tag('@api-nightly-prod @api-qm');
 
 Before(async () => {
+  await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -30,5 +31,6 @@ Scenario('LR v LIP query management spec', async ({ api_spec_cui, qmSteps }) => 
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
+  await deleteAccount(config.applicantCitizenUser.email);
   await deleteAccount(config.defendantCitizenUser2.email);
 });

@@ -7,6 +7,7 @@ let caseId;
 Feature('LR v LiP notice of change spec api journey').tag('@api-nightly-prod @api-noc');
 
 Before(async () => {
+  await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -21,5 +22,6 @@ Scenario('LR v LiP notice of change', async ({noc, api_spec_cui}) => {
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
+  await deleteAccount(config.applicantCitizenUser.email);
   await deleteAccount(config.defendantCitizenUser2.email);
 });

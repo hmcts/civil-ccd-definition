@@ -10,6 +10,7 @@ let caseId;
 Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@api-nightly-prod');
 
 Before(async () => {
+  await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -31,5 +32,6 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled', async ({n
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
+  await deleteAccount(config.applicantCitizenUser.email);
   await deleteAccount(config.defendantCitizenUser2.email);
 });

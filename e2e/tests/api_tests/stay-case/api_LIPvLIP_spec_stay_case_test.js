@@ -4,6 +4,7 @@ const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 Feature('LIP v LIP spec stay case api journey').tag('@api-nightly-prod @api-stay-case');
 
 Before(async () => {
+  await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -20,5 +21,6 @@ Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_s
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
+  await deleteAccount(config.applicantCitizenUser.email);
   await deleteAccount(config.defendantCitizenUser2.email);
 });

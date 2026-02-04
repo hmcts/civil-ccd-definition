@@ -6,6 +6,7 @@ let caseId;
 Feature('LIPvLIP spec request for reconsideration api journeys').tag('@api-nightly-prod');
 
 Before(async () => {
+  await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -20,5 +21,6 @@ Scenario('1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) => 
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
+  await deleteAccount(config.applicantCitizenUser.email);
   await deleteAccount(config.defendantCitizenUser2.email);
 });
