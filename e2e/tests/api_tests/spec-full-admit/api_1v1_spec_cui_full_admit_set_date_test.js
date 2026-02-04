@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const { createAccount, deleteAccount } = require('../../../api/idamHelper');
+const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 
 const claimType = 'SmallClaims';
 let carmEnabled = false;
@@ -8,6 +8,7 @@ let caseId;
 Feature('1v1 LIP v LIP spec api full admit journey').tag('@ui-nonprod @ui-nightly-prod @api-spec-full-admit');
 
 Before(async () => {
+    await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
     await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -19,5 +20,6 @@ Scenario('1v1 LiP v LiP defendant response with full admit pay by set date', asy
 
 AfterSuite(async ({ api_spec_cui }) => {
     await api_spec_cui.cleanUp();
+    await deleteAccount(config.applicantCitizenUser.email);
     await deleteAccount(config.defendantCitizenUser2.email);
 });
