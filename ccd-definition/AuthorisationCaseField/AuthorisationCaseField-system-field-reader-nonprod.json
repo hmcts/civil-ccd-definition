@@ -1,10 +1,28 @@
 [
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "smallClaimsPenalNoticeTitle",
+    "CaseFieldID": "isClaimDeclarationAdded",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "claimDeclarationDescription",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "isHumanRightsActIssues",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseFieldID": "smallClaimsPenalNoticeTitle",
+  "UserRole": "caseworker-civil-system-field-reader",
+  "CRUD": "R"
+},
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "smallClaimsPenalNoticeToggle",
