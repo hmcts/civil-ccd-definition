@@ -313,12 +313,14 @@ module.exports = {
   },
   applicantCitizenUser: {
     password: defaultPassword,
-    email: 'civilmoneyclaimsdemo@gmail.com',
+    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    // email: 'civilmoneyclaimsdemo@gmail.com', uncomment for local testing if required
     type: 'claimant',
   },
   defendantCitizenUser2: {
     password: defaultPassword,
     email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    // email: 'civiluatdefendant@gmail.com', uncomment for local testing if required
     type: 'defendant',
   },
   defendantLRCitizenUser:{
