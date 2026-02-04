@@ -64,6 +64,36 @@ export const containers = {
   errors: {
     selector: '#errors',
   },
+  verifyDetails: {
+    claimant1: {
+      selector: '#case-viewer-field-read--applicant1'},
+    claimant1Experts: {
+      selector: '#case-viewer-field-read--applicant1DQExperts'},
+    claimant1Witnesses: {
+      selector: '#case-viewer-field-read--applicant1DQWitnesses'},
+    claimant2: {
+      selector: '#case-viewer-field-read--applicant2'},
+    claimant2Experts: {
+      selector: '#case-viewer-field-read--applicant2DQExperts'},
+    claimant2Witnesses: {
+      selector: '#case-viewer-field-read--applicant2DQWitnesses'},
+    defendant1: {
+      selector: '#case-viewer-field-read--respondent1DetailsForClaimDetailsTab'},
+    defendant1Experts: {
+      selector: '#case-viewer-field-read--respondent1DQExperts'},
+    defendant1Witnesses: {
+      selector: '#case-viewer-field-read--respondent1DQWitnesses'},
+    respondent1LitigationFriend: {
+      selector: '#case-viewer-field-read--respondent1LitigationFriend'},
+    defendant2: {
+      selector: '#case-viewer-field-read--respondent2DetailsForClaimDetailsTab'},
+    defendant2Experts: {
+      selector: '#case-viewer-field-read--respondent2DQExperts'},
+    defendant2Witnesses: {
+      selector: '#case-viewer-field-read--respondent2DQWitnesses'},
+    defendant2LitigationFriend: {
+      selector: '#case-viewer-field-read--respondent2LitigationFriend'},
+  }
 };
 
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
@@ -71,3 +101,19 @@ export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =
 
 export const caseFlagsNoticeText = (activeCaseFlags: number) =>
   `There ${activeCaseFlags === 1 ? 'is' : 'are'} ${activeCaseFlags} active flag${activeCaseFlags === 1 ? '' : 's'} on this case.`;
+
+export const labels = {
+  firstName: 'First name',
+  lastName: 'Last name',
+  dateOfBirth: 'Date of birth',
+  email: 'Email',
+  companyName: 'Name',
+  building: 'Building and Street',
+  addressLine2: 'Address Line 2',
+  addressLine3: 'Address Line 3',
+  postTown: 'Town or City',
+  county: 'County',
+  postCode: 'Postcode/Zipcode',
+  country: 'Country',
+};
+

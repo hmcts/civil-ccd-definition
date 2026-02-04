@@ -8,6 +8,7 @@ test.describe('Unspecified Small track 1v2DS', async () => {
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
     HearingCenterAdminSteps,
+    CaseworkerSteps
   }) => {
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.CreateClaimSmallTrack1v2DS();
@@ -19,6 +20,7 @@ test.describe('Unspecified Small track 1v2DS', async () => {
     await DefendantSolicitor1Steps.Login();
     await DefendantSolicitor1Steps.AcknowledgeClaimFullDefence();
     await DefendantSolicitor1Steps.AddLitigationFriend();
+
     await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v2DS();
     await DefendantSolicitor2Steps.Login();
     await DefendantSolicitor2Steps.AcknowledgeClaimFullDefence();
@@ -26,9 +28,15 @@ test.describe('Unspecified Small track 1v2DS', async () => {
     await DefendantSolicitor2Steps.RespondSmallTrackFullDefence1v2DS();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v2DS();
+
     await HearingCenterAdminSteps.LoginRegion1();
     await HearingCenterAdminSteps.CreateCaseLevelCaseFlag1v2DS();
     await HearingCenterAdminSteps.CreateClaimant1CaseFlag1v2DS();
+
+    // await CaseworkerSteps.Login();
+    // await CaseworkerSteps.ManageContactInformation1v2DSDefendant1LitigationFriend();
+    // await CaseworkerSteps.ManageContactInformation1v2DSDefendant1Expert();
+    // await CaseworkerSteps.ManageContactInformation1v2DSDefendant2Witness();
   });
 
   test('Default Judgment', async ({
