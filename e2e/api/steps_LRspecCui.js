@@ -438,7 +438,7 @@ module.exports = {
 
   },
 
-  scheduleHearing: async (user, allocatedTrack = 'OTHER', claimType) => {
+  scheduleHearing: async (user, allocatedTrack = 'OTHER', claimType, expectedState = 'HEARING_READINESS') => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -456,7 +456,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await assertSubmittedEvent(expectedState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 
