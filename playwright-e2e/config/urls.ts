@@ -5,6 +5,7 @@ const urls = {
   dmStore: process.env.DM_STORE_URL,
   idamWeb: process.env.IDAM_WEB_URL,
   idamApi: process.env.IDAM_API_URL,
+  idamTestSupportApi: process.env.IDAM_TEST_URL,
   civilService: process.env.CIVIL_SERVICE_URL,
   waTaskMgmtApi: process.env.WA_TASK_MGMT_URL,
   caseAssignmentService: process.env.AAC_API_URL,
