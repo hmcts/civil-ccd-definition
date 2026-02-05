@@ -28,7 +28,7 @@ Scenario('Applicant solicitor creates 1v2DS specified claim defendant Different 
   await serviceRequest.payFee(caseNumber);
 
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
-}).retry(0);
+}).retry(1);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();

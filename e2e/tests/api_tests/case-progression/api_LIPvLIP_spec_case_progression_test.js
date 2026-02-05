@@ -3,7 +3,7 @@ const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 
 let caseId;
 
-Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@api-nightly-prod. @api-case-progression');
+Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@api-nightly-prod @api-case-progression');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
@@ -17,7 +17,7 @@ Scenario('1v1 LiP v LiP Case Progression Journey', async ({ api_spec_cui }) => {
   await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
   await api_spec_cui.evidenceUploadApplicant(config.applicantCitizenUser);
   await api_spec_cui.evidenceUploadDefendant(config.defendantCitizenUser2);
-  await api_spec_cui.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL', 'CUI');
+  await api_spec_cui.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL', 'CUI', 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
   await api_spec_cui.trialReadinessCitizen(config.applicantCitizenUser);
   await api_spec_cui.trialReadinessCitizen(config.defendantCitizenUser2);
   await api_spec_cui.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');

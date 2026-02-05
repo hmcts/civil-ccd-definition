@@ -28,10 +28,8 @@ Scenario('01 2v1 full defence unspecified - judge draws fast track WITHOUT sum o
 });
 
 Scenario('02 Discontinue This Claim', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.applicantSolicitorUser);
-    await LRspec.requestForDiscontinueThisClaimForUI2v1();
-  }
+  await LRspec.login(config.applicantSolicitorUser);
+  await LRspec.requestForDiscontinueThisClaimForUI2v1();
 }).retry(2);
 
 //Skipped until DTSCCI-2718 and DTSCCI-2719 are fixed

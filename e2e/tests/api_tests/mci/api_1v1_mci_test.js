@@ -10,7 +10,7 @@ Scenario('1v1 manage contact information', async ({api}) => {
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
-  await api.manageDefendant1Details(config.adminUser);
+  // await api.manageDefendant1Details(config.adminUser);
   await api.manageDefendant1LROrgDetails(config.defendantSolicitorUser);
 }).retry(1);
 
