@@ -19,7 +19,11 @@ import {
   dropdowns,
   successBannerText,
   tabs,
+  labels
 } from './case-details-content';
+import CaseDataHelper from '../../../../helpers/case-data-helper';
+import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
+import partys from '../../../../constants/partys';
 
 const classKey = 'CaseDetailsPage';
 
@@ -53,7 +57,9 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async verifyClaimDetailsContent(caseData: CCDCaseData) {
     await super.clickByText(tabs.claimDetails.title);
-    await super.runVerifications([], { useAxeCache: false });
+    await super.runVerifications([
+      super.verifyHeadings(caseData),
+    ], { useAxeCache: false });
   }
 
   async verifyClaimDocumentsContent(caseData: CCDCaseData) {
@@ -172,6 +178,69 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     await super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
       rowNum: 1,
     });
+  }
+
+  async verifyClaimDetailsContentManageContactInformationClaimant1Individual() {
+    const expectedUser = CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, claimantDefendantPartyTypes.INDIVIDUAL, { updated: true });
+    const expectedAddress = CaseDataHelper.buildAddressData(partys.CLAIMANT_1, { updated: true });
+    await super.clickByText(tabs.claimDetails.title);
+    await this.expectTableValueByRowName(labels.firstName, expectedUser.individualFirstName, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.lastName, expectedUser.individualLastName, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.email, expectedUser.partyEmail, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.building, expectedAddress.AddressLine1, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.addressLine2, expectedAddress.AddressLine2, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.addressLine3, expectedAddress.AddressLine3, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.postTown, expectedAddress.PostTown, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.county, expectedAddress.County, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.country, expectedAddress.Country, { containerSelector: containers.verifyDetails.claimant1.selector });
+    await this.expectTableValueByRowName(labels.postCode, expectedAddress.PostCode, { containerSelector: containers.verifyDetails.claimant1.selector });
+  }
+
+  async verifyClaimDetailsContentManageContactInformationDefendant1Company() {
+    const expectedUser = CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, claimantDefendantPartyTypes.COMPANY, { updated: true });
+    const expectedAddress = CaseDataHelper.buildAddressData(partys.DEFENDANT_1, { updated: true });
+    await super.clickByText(tabs.claimDetails.title);
+    await this.expectTableValueByRowName(labels.companyName, expectedUser.companyName, { containerSelector: containers.verifyDetails.defendant1.selector, first: true });
+    await this.expectTableValueByRowName(labels.email, expectedUser.partyEmail, { containerSelector: containers.verifyDetails.defendant1.selector });
+    await this.expectTableValueByRowName(labels.building, expectedAddress.AddressLine1, { containerSelector: containers.verifyDetails.defendant1.selector });
+    await this.expectTableValueByRowName(labels.addressLine2, expectedAddress.AddressLine2, { containerSelector: containers.verifyDetails.defendant1.selector });
+    await this.expectTableValueByRowName(labels.addressLine3, expectedAddress.AddressLine3, { containerSelector: containers.verifyDetails.defendant1.selector });
+    await this.expectTableValueByRowName(labels.postTown, expectedAddress.PostTown, { containerSelector: containers.verifyDetails.defendant1.selector });
+    await this.expectTableValueByRowName(labels.county, expectedAddress.County, { containerSelector: containers.verifyDetails.defendant1.selector });
+    await this.expectTableValueByRowName(labels.country, expectedAddress.Country, { containerSelector: containers.verifyDetails.defendant1.selector });
+    await this.expectTableValueByRowName(labels.postCode, expectedAddress.PostCode, { containerSelector: containers.verifyDetails.defendant1.selector });
+  }
+
+  async verifyManageContactInformationUpdateDefendant1LitigationFriend() {
+    const expectedUser = CaseDataHelper.buildLitigationFriendData(partys.DEFENDANT_1_LITIGATION_FRIEND, { updated: true });
+    const expectedAddress = CaseDataHelper.buildAddressData(partys.DEFENDANT_1_LITIGATION_FRIEND, { updated: true });
+    await super.clickByText(tabs.claimDetails.title);
+    await this.expectTableValueByRowName(labels.firstName, expectedUser.firstName, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.lastName, expectedUser.lastName, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.email, expectedUser.emailAddress, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.building, expectedAddress.AddressLine1, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.addressLine2, expectedAddress.AddressLine2, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.addressLine3, expectedAddress.AddressLine3, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.postTown, expectedAddress.PostTown, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.county, expectedAddress.County, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.country, expectedAddress.Country, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+    await this.expectTableValueByRowName(labels.postCode, expectedAddress.PostCode, { containerSelector: containers.verifyDetails.respondent1LitigationFriend.selector });
+  }
+
+  async verifyManageContactInformationUpdateDefendant1Expert() {
+    const expectedUser = CaseDataHelper.buildExpertData(partys.DEFENDANT_1_EXPERT_1, { updated: true });
+    await super.clickByText(tabs.claimDetails.title);
+    await this.expectText(expectedUser.firstName, { containerSelector: containers.verifyDetails.defendant1Experts.selector, exact: false });
+    await this.expectText(expectedUser.lastName, { containerSelector: containers.verifyDetails.defendant1Experts.selector, exact: false });
+    await this.expectText(expectedUser.emailAddress, { containerSelector: containers.verifyDetails.defendant1Experts.selector, exact: false });
+  }
+
+  async verifyManageContactInformationUpdateDefendant2Witness() {
+    const expectedUser = CaseDataHelper.buildWitnessData(partys.DEFENDANT_2_WITNESS_1, { updated: true });
+    await super.clickByText(tabs.claimDetails.title);
+    await this.expectText(expectedUser.firstName, { containerSelector: containers.verifyDetails.defendant2Witnesses.selector, exact: false });
+    await this.expectText(expectedUser.lastName, { containerSelector: containers.verifyDetails.defendant2Witnesses.selector, exact: false });
+    await this.expectText(expectedUser.emailAddress, { containerSelector: containers.verifyDetails.defendant2Witnesses.selector, exact: false });
   }
 
   async submit() {

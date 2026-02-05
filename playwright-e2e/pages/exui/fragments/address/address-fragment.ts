@@ -5,6 +5,7 @@ import ExuiPage from '../../exui-page/exui-page';
 import { buttons, inputs, dropdowns, links } from './address-content';
 import { Party } from '../../../../models/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
+import ccdEvents from '../../../../constants/ccd-events';
 
 @AllMethodsStep()
 export default class AddressFragment extends ExuiPage(BasePage) {
@@ -19,9 +20,14 @@ export default class AddressFragment extends ExuiPage(BasePage) {
     await super.runVerifications([super.expectLabel(inputs.postCodeInput.label)]);
   }
 
-  async enterAddressManual() {
-    const addressData = CaseDataHelper.buildAddressData(this.party);
+  async enterAddressManual(options: { ccdEventState?: { id: string } } = {}) {
+
+    const updated = options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
+    const addressData = CaseDataHelper.buildAddressData(this.party, updated ? { updated: true } : undefined );
+
+    if (!updated) {
     await super.clickLink(links.cannotFindAddress.title);
+    }
     await super.inputText(addressData.AddressLine1, inputs.addressLine1.selector(this.party));
     await super.inputText(addressData.AddressLine2, inputs.addressLine2.selector(this.party));
     await super.inputText(addressData.AddressLine3, inputs.addressLine3.selector(this.party));

@@ -7,6 +7,7 @@ import { radioButtons, buttons, inputs, subheadings, links } from './litigation-
 import filePaths from '../../../../config/file-paths';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import partys from '../../../../constants/partys';
+import ccdEvents from '../../../../constants/ccd-events';
 
 @AllMethodsStep()
 export default class LitigationFriendFragment extends ExuiPage(BasePage) {
@@ -17,25 +18,36 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
     this.litigationFriendParty = litigationFriendParty;
   }
 
-  async verifyContent() {
-    await super.runVerifications(
-      [
-        super.expectLabel(inputs.litigationFriendDetails.firstName.label),
-        super.expectLabel(inputs.litigationFriendDetails.lastName.label),
-        super.expectLabel(inputs.litigationFriendDetails.email.label),
-        super.expectLabel(inputs.litigationFriendDetails.phoneNumber.label),
-        super.expectSubheading(subheadings.uploadcertificate),
-      ],
-      {
-        runAxe: false,
-      },
+  async verifyContent(
+    options: { ccdEventState?: { id: string } } = {}
+  ) {
+    const isManageContactInformation = options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
+
+    const verifications = [
+    super.expectLabel(inputs.litigationFriendDetails.firstName.label),
+    super.expectLabel(inputs.litigationFriendDetails.lastName.label),
+    super.expectLabel(inputs.litigationFriendDetails.email.label, { count: 1 }),
+    super.expectLabel(inputs.litigationFriendDetails.phoneNumber.label, { count: 1 }),
+  ];
+    if (!isManageContactInformation) {
+    verifications.push(
+      super.expectSubheading(subheadings.uploadcertificate),
     );
   }
 
-  async enterLitigationFriendDetails() {
-    const claimantLitigationFriendData = CaseDataHelper.buildLitigationFriendData(
-      this.litigationFriendParty,
-    );
+  await super.runVerifications(verifications, { runAxe: false });
+}
+
+  async enterLitigationFriendDetails( options: { ccdEventState?: { id: string } } = {}
+  ) {
+
+    const isManageContactInformation =
+      options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
+
+    const claimantLitigationFriendData = isManageContactInformation
+      ? CaseDataHelper.buildLitigationFriendData(this.litigationFriendParty, { updated: true })
+      : CaseDataHelper.buildLitigationFriendData(this.litigationFriendParty);
+
     await super.inputText(
       claimantLitigationFriendData.firstName,
       inputs.litigationFriendDetails.firstName.selector(this.litigationFriendParty),
@@ -63,6 +75,46 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.address.no.selector(this.litigationFriendParty));
     if (this.litigationFriendParty !== partys.CLAIMANT_2_LITIGATION_FRIEND)
       await super.clickLink(links.cannotFindAddress.title);
+    await super.inputText(
+      addressData.AddressLine1,
+      inputs.address.addressLine1.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.AddressLine2,
+      inputs.address.addressLine2.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.AddressLine3,
+      inputs.address.addressLine3.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.PostTown,
+      inputs.address.postTown.selector(this.litigationFriendParty),
+    );
+    if (this.litigationFriendParty !== partys.CLAIMANT_2_LITIGATION_FRIEND)
+      await super.inputText(
+        addressData.County,
+        inputs.address.county.selector(this.litigationFriendParty),
+      );
+    await super.inputText(
+      addressData.Country,
+      inputs.address.country.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.PostCode,
+      inputs.address.postCode.selector(this.litigationFriendParty),
+    );
+  }
+
+  async updateAddress( options: { ccdEventState?: { id: string } } = {}) {
+
+      const isManageContactInformation =
+      options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
+
+      const addressData = isManageContactInformation
+      ? CaseDataHelper.buildAddressData(this.litigationFriendParty, { updated: true })
+      : CaseDataHelper.buildAddressData(this.litigationFriendParty);
+
     await super.inputText(
       addressData.AddressLine1,
       inputs.address.addressLine1.selector(this.litigationFriendParty),

@@ -6,6 +6,7 @@ test.describe('Specified Small Track 1v1', async () => {
     DefendantSolicitor1SpecSteps,
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
+    CaseworkerSteps
   }) => {
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.CreateClaimSmallTrack1v1();
@@ -15,6 +16,11 @@ test.describe('Specified Small Track 1v1', async () => {
     await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence1v1();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondSmallClaimIntentToProceed1v1();
+
+    // await CaseworkerSteps.Login();
+    // await CaseworkerSteps.ManageContactInformation1v1SpecClaimant1Individual();
+    // await CaseworkerSteps.ManageContactInformation1v1SpecDefendant1Company();
+
   });
 
   test('Default Judgment', async ({

@@ -8,6 +8,7 @@ import claimantDefendantPartyTypes from '../../../../constants/claimant-defendan
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import PartyType from '../../../../enums/party-types';
 import DateOfBirthFragment from '../date/date-of-birth-fragment';
+import ccdEvents from '../../../../constants/ccd-events';
 
 @AllMethodsStep()
 export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
@@ -40,38 +41,44 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterIndividualDetails() {
-    const individualData = CaseDataHelper.buildClaimantAndDefendantData(
-      this.claimantDefendantParty,
-      this.claimantDefendantPartyType,
-    );
-    await super.inputText(
-      individualData.individualTitle,
-      inputs.title.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
-    );
-    await super.inputText(
-      individualData.individualFirstName,
-      inputs.firstName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
-    );
-    await super.inputText(
-      individualData.individualLastName,
-      inputs.lastName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
-    );
-    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
-      await this.dateOfBirthFragment.enterDate(
-        this.claimantDefendantParty,
-        this.claimantDefendantPartyType,
+  async enterIndividualDetails(options: { ccdEventState?: { id: string } } = {}) {
+
+    const updated = options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
+    const individualData = CaseDataHelper.buildClaimantAndDefendantData(this.claimantDefendantParty, this.claimantDefendantPartyType, updated ? { updated: true } : undefined );
+
+      await super.inputText(
+        individualData.individualTitle,
+        inputs.title.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
       );
-    }
+
+      await super.inputText(
+        individualData.individualFirstName,
+        inputs.firstName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
+      );
+
+      await super.inputText(
+        individualData.individualLastName,
+        inputs.lastName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
+      );
+
+      if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
+        await this.dateOfBirthFragment.enterDate(
+          this.claimantDefendantParty,
+          this.claimantDefendantPartyType,
+          updated ? { updated: true } : undefined
+        )
+      }
+
     await super.inputText(
       individualData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),
     );
+
     await super.inputText(
       individualData.partyPhone,
       inputs.phone.selector(this.claimantDefendantParty),
     );
-  }
+}
 
   async submit() {
     throw new Error('Method not implemented.');
