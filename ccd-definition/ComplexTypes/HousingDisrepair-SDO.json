@@ -1,0 +1,82 @@
+[
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "sectionTitle",
+    "FieldType": "Label",
+    "ElementLabel": "#### Housing Disrepair",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "introLine",
+    "FieldType": "Label",
+    "ElementLabel": "Expert evidence is directed as follows:",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "clauseA",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "clauseB",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "firstReportDateBy",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "clauseCBeforeDate",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "jointStatementDateBy",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "clauseCAfterDate",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "clauseD",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HousingDisrepair",
+    "ListElementCode": "clauseE",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

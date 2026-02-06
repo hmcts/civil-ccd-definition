@@ -97,6 +97,7 @@ const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingSch
 const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
+const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const {waitForFinishedBusinessProcess} = require('./api/testingSupport');
 const specifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocumentSpec');
 const mediationDocumentsExplanation = require('./pages/mediationDocumentsUpload/mediationDocumentsExplanation');
@@ -781,6 +782,19 @@ module.exports = function () {
             () => event.submitWithoutHeader('Submit'),
           ]);
         }
+      }
+    },
+
+    async manageCaseFlags(caseFlags) {
+      eventName = 'Manage case flags';
+
+      for (const {partyName, roleOnCase, flagType, flagComment} of caseFlags) {
+        await this.triggerStepsWithScreenshot([
+          () => caseViewPage.startEvent(events.MANAGE_CASE_FLAGS, caseId),
+          () => manageCaseFlagsPage.selectFlagLocation(partyName, `${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
+          () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated - ${partyName}`),
+          () => event.submitWithoutHeader('Submit')
+        ]);
       }
     },
 

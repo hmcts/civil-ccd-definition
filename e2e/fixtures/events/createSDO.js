@@ -144,10 +144,12 @@ const calculatedClaimsTrackWOSum = {
       return typeof data.input === 'string';
     },
     fastTrackHousingDisrepair: (data) => {
-      return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string'
-        && typeof data.input3 === 'string'
-        && typeof data.input4 === 'string';
+      return typeof data.clauseA === 'string'
+        && typeof data.clauseB === 'string'
+        && typeof data.clauseCBeforeDate === 'string'
+        && typeof data.clauseCAfterDate === 'string'
+        && typeof data.clauseD === 'string'
+        && typeof data.clauseE === 'string';
     },
     disposalHearingDisclosureOfDocuments: (data) => {
       return typeof data.input1 === 'string'
@@ -155,6 +157,14 @@ const calculatedClaimsTrackWOSum = {
     },
     smallClaimsRoadTrafficAccident:(data) => {
       return typeof data.input === 'string';
+    },
+    smallClaimsHousingDisrepair: (data) => {
+      return typeof data.clauseA === 'string'
+        && typeof data.clauseB === 'string'
+        && typeof data.clauseCBeforeDate === 'string'
+        && typeof data.clauseCAfterDate === 'string'
+        && typeof data.clauseD === 'string'
+        && typeof data.clauseE === 'string';
     },
     fastTrackCostsToggle: (data) => Array.isArray(data),
     smallClaimsDocumentsToggle: (data) => Array.isArray(data),
@@ -684,12 +694,14 @@ module.exports = {
             input8: 'string'
           },
           fastTrackHousingDisrepair: {
-            input1: 'string',
-            input2: 'string',
-            input3: 'string',
-            date1: date(1),
-            input4: 'string',
-            date2: date(1)
+            clauseA: 'string',
+            clauseB: 'string',
+            firstReportDateBy: date(1),
+            clauseCBeforeDate: 'string',
+            jointStatementDateBy: date(1),
+            clauseCAfterDate: 'string',
+            clauseD: 'string',
+            clauseE: 'string'
           },
           fastTrackPersonalInjury: {
             input1: 'string',
@@ -849,12 +861,14 @@ module.exports = {
             input8: 'string'
           },
           fastTrackHousingDisrepair: {
-            input1: 'string',
-            input2: 'string',
-            input3: 'string',
-            date1: date(1),
-            input4: 'string',
-            date2: date(1)
+            clauseA: 'string',
+            clauseB: 'string',
+            firstReportDateBy: date(1),
+            clauseCBeforeDate: 'string',
+            jointStatementDateBy: date(1),
+            clauseCAfterDate: 'string',
+            clauseD: 'string',
+            clauseE: 'string'
           },
           fastTrackPersonalInjury: {
             input1: 'string',
@@ -967,6 +981,16 @@ module.exports = {
           },
           smallClaimsRoadTrafficAccident: {
             input: 'string'
+          },
+          smallClaimsHousingDisrepair: {
+            clauseA: 'string',
+            clauseB: 'string',
+            firstReportDateBy: date(1),
+            clauseCBeforeDate: 'string',
+            jointStatementDateBy: date(1),
+            clauseCAfterDate: 'string',
+            clauseD: 'string',
+            clauseE: 'string'
           },
           smallClaimsAddNewDirections: [
             element({
@@ -1150,6 +1174,16 @@ module.exports = {
           smallClaimsRoadTrafficAccident: {
             input: 'string'
           },
+          smallClaimsHousingDisrepair: {
+            clauseA: 'string',
+            clauseB: 'string',
+            firstReportDateBy: date(1),
+            clauseCBeforeDate: 'string',
+            jointStatementDateBy: date(1),
+            clauseCAfterDate: 'string',
+            clauseD: 'string',
+            clauseE: 'string'
+          },
           smallClaimsAddNewDirections: [
             element({
               directionComment: 'string'
@@ -1302,12 +1336,14 @@ module.exports = {
             input8: 'string'
           },
           fastTrackHousingDisrepair: {
-            input1: 'string',
-            input2: 'string',
-            input3: 'string',
-            date1: date(1),
-            input4: 'string',
-            date2: date(1)
+            clauseA: 'string',
+            clauseB: 'string',
+            firstReportDateBy: date(1),
+            clauseCBeforeDate: 'string',
+            jointStatementDateBy: date(1),
+            clauseCAfterDate: 'string',
+            clauseD: 'string',
+            clauseE: 'string'
           },
           fastTrackPersonalInjury: {
             input1: 'string',
@@ -1468,12 +1504,14 @@ module.exports = {
             input8: 'string'
           },
           fastTrackHousingDisrepair: {
-            input1: 'string',
-            input2: 'string',
-            input3: 'string',
-            date1: date(1),
-            input4: 'string',
-            date2: date(1)
+            clauseA: 'string',
+            clauseB: 'string',
+            firstReportDateBy: date(1),
+            clauseCBeforeDate: 'string',
+            jointStatementDateBy: date(1),
+            clauseCAfterDate: 'string',
+            clauseD: 'string',
+            clauseE: 'string'
           },
           fastTrackPersonalInjury: {
             input1: 'string',

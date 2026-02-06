@@ -150,21 +150,59 @@ function extractHelperSteps(fn) {
     return [];
   }
   const source = fn.toString();
+  const commentRanges = [];
+  const commentRegex = /\/\/.*|\/\*[\s\S]*?\*\//g;
+  let commentMatch;
+  while ((commentMatch = commentRegex.exec(source))) {
+    commentRanges.push({
+      start: commentMatch.index,
+      end: commentMatch.index + commentMatch[0].length,
+      text: commentMatch[0]
+    });
+  }
+
+  const isInComment = index =>
+    commentRanges.some(range => index >= range.start && index < range.end);
+
   const matches = [];
   const stepsRegex = /(\w+Steps)\.([A-Za-z0-9_]+)\s*\(/g;
   let match;
   while ((match = stepsRegex.exec(source))) {
-    if (!ignoredStepMethods.has(match[2])) {
+    if (!ignoredStepMethods.has(match[2]) && !isInComment(match.index)) {
       matches.push({ name: `${match[1]}.${match[2]}`, index: match.index });
     }
   }
 
   const actorRegex = new RegExp(`\\b(${actorStepObjects.join('|')})\\.([A-Za-z0-9_]+)\\s*\\(`, 'g');
   while ((match = actorRegex.exec(source))) {
-    if (!ignoredStepMethods.has(match[2])) {
+    if (!ignoredStepMethods.has(match[2]) && !isInComment(match.index)) {
       matches.push({ name: `${match[1]}.${match[2]}`, index: match.index });
     }
   }
+
+  commentRanges.forEach(range => {
+    const actorTarget = actorStepObjects.join('|');
+    const commentActorRegex = new RegExp(
+      `^\\s*(?:\\/\\/\\s*|\\/\\*\\s*|\\*\\s*)?(?:await\\s+)?(${actorTarget})\\.([A-Za-z0-9_]+)\\s*\\(`
+    );
+    const commentStepsRegex = /^\s*(?:\/\/\s*|\/\*\s*|\*\s*)?(?:await\s+)?(\w+Steps)\.([A-Za-z0-9_]+)\s*\(/;
+    const lines = range.text.split('\n');
+    let offset = 0;
+
+    lines.forEach(line => {
+      let commentStep = commentActorRegex.exec(line);
+      if (!commentStep) {
+        commentStep = commentStepsRegex.exec(line);
+      }
+      if (commentStep && !ignoredStepMethods.has(commentStep[2])) {
+        matches.push({
+          name: `${commentStep[1]}.${commentStep[2]} (skipped)`,
+          index: range.start + offset + (commentStep.index || 0)
+        });
+      }
+      offset += line.length + 1;
+    });
+  });
 
   matches.sort((a, b) => a.index - b.index);
   const ordered = [];
@@ -383,13 +421,20 @@ function formatDependentFeature(scenarios) {
   const beforeSuite = scenarios.find(s => (s.beforeSuiteSteps || []).length)?.beforeSuiteSteps || [];
   const flattenedSteps = [...beforeSuite];
   const featureSkipped = scenarios.some(s => s.featureSkipped);
+  const decorateStep = (step, scenarioSkipped) => {
+    if (!scenarioSkipped) {
+      return step;
+    }
+    return step.endsWith(' (skipped)') ? step : `${step} (skipped)`;
+  };
+
   scenarios.forEach(scenario => {
     const steps = [
       ...(scenario.beforeSteps || []),
       ...(scenario.collectedSteps || [])
     ];
     steps.forEach(step => {
-      flattenedSteps.push(scenario.skipped ? `${step} (skipped)` : step);
+      flattenedSteps.push(decorateStep(step, scenario.skipped));
     });
   });
   const dependentSkipped = featureSkipped || scenarios.every(s => s.skipped);
@@ -412,9 +457,12 @@ function formatIndependentScenario(scenario) {
     ...(scenario.beforeSteps || []),
     ...(scenario.collectedSteps || [])
   ];
-  const decoratedSteps = steps.map(step =>
-    scenario.skipped ? `${step} (skipped)` : step
-  );
+  const decoratedSteps = steps.map(step => {
+    if (!scenario.skipped) {
+      return step;
+    }
+    return step.endsWith(' (skipped)') ? step : `${step} (skipped)`;
+  });
   return {
     testName: scenario.testName,
     featureName: scenario.featureName,

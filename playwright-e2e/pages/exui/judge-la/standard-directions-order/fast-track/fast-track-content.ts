@@ -237,24 +237,29 @@ export const inputs = {
     },
   },
   housingDisrepair: {
-    input1: {
-      hintText: 'Scott schedule',
-      selector: '#fastTrackHousingDisrepair_input1',
+    clauseA: {
+      selector: '#fastTrackHousingDisrepair_clauseA',
     },
-    input2: {
-      selector: '#fastTrackHousingDisrepair_input2',
+    clauseB: {
+      selector: '#fastTrackHousingDisrepair_clauseB',
     },
-    input3: {
-      selector: '#fastTrackHousingDisrepair_input3',
+    firstReportDateBy: {
+      selectorKey: 'firstReportDateBy',
     },
-    input4: {
-      selector: '#fastTrackHousingDisrepair_input4',
+    clauseCBeforeDate: {
+      selector: '#fastTrackHousingDisrepair_clauseCBeforeDate',
     },
-    date1: {
-      selectorKey: 'date1',
+    jointStatementDateBy: {
+      selectorKey: 'jointStatementDateBy',
     },
-    date2: {
-      selectorKey: 'date2',
+    clauseCAfterDate: {
+      selector: '#fastTrackHousingDisrepair_clauseCAfterDate',
+    },
+    clauseD: {
+      selector: '#fastTrackHousingDisrepair_clauseD',
+    },
+    clauseE: {
+      selector: '#fastTrackHousingDisrepair_clauseE',
     },
   },
   expertEvidence: {
