@@ -13,7 +13,6 @@ declare global {
       IDAM_WEB_URL: string;
       IDAM_API_URL: string;
       CIVIL_SERVICE_URL: string;
-      CIVIL_GENERAL_APPLICATIONS_URL: string;
       WA_TASK_MGMT_URL: string;
       AAC_API_URL: string;
       CIVIL_ORCHESTRATOR_SERVICE_URL: string;
