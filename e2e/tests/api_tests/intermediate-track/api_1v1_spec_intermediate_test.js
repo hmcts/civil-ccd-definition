@@ -5,12 +5,6 @@ const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
-let intermediateTrackDirectionsExpectedTask, multiTrackOrderMadeReviewCaseExpectedTask;
-if (config.runWAApiTest) {
-  intermediateTrackDirectionsExpectedTask = require('../../../../wa/tasks/itermediateTrackDirectionsTask.js');
-  multiTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/multiTrackOrderMadeReviewCaseTask.js');
-
-}
 
 Feature('1v1 spec intermediate track api journey').tag('@api-nightly-prod');
 

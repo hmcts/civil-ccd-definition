@@ -5,15 +5,6 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 const claimAmountJudge = '11000';
-let fastTrackDirectionsTask;
-let legalAdvisorSmallClaimsTrackDirectionsTask, scheduleAHearingTask;
-let transferOfflineSdoTask;
-if (config.runWAApiTest) {
-  fastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
-  legalAdvisorSmallClaimsTrackDirectionsTask = require('../../../../wa/tasks/legalAdvisorSmallClaimsTrackDirectionsTask.js');
-  transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
-  scheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
-}
 
 Feature('1v1 small track case progression api journeys').tag('@api-nightly-prod @api-case-progression');
 
