@@ -15,7 +15,7 @@ if (config.runWAApiTest) {
   scheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
 }
 
-Feature('1v1 sdo api journeys').tag('@api-nightly-prod @api-drh');
+Feature('1v1 sdo api journeys').tag('@api-nightly-prod @api-drh @wa-task');
 
 Scenario('1v1 full defence unspecified - judge draws small claims DRH - hearing scheduled', async ({ api, WA}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
@@ -47,7 +47,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims DRH - hearing 
   }
   await api.amendHearingDueDate(config.systemupdate);
   await api.hearingFeePaidDRH(hearingCenterAdminToBeUsed);
-}).tag('@wa-task');
+});
 
 
 AfterSuite(async ({api}) => {
