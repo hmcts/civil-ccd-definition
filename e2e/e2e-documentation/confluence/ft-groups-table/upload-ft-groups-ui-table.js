@@ -2,7 +2,7 @@
 
 const path = require('path');
 const { updateConfluencePage } = require('../support/update-page');
-const { generateConfluenceTable } = require('./ft-group-table-gen');
+const { generateConfluenceTable } = require('./ft-groups-table-gen');
 
 const jsonPathArg = process.argv[2];
 const defaultPath = path.join(__dirname, '..', '..', 'results', 'ft-groups-data', 'ft-groups-ui-data.json');

@@ -383,18 +383,18 @@ Updating README tables:
 ## Generating CodeceptJS Functional Test Group Documentation
 
 Generating functional test group documentation JSON:
-1. `yarn test:generate:ftGroups-ui-data` writes `e2e/e2e-documentation/results/ft-groups-data/ft-groups-ui-data.json`.
-2. `yarn test:generate:ftGroups-api-data` writes `e2e/e2e-documentation/results/ft-groups-data/ft-groups-api-data.json`.
+1. `yarn test:generate:ft-groups-ui-data` writes `e2e/e2e-documentation/results/ft-groups-data/ft-groups-ui-data.json`.
+2. `yarn test:generate:ft-groups-api-data` writes `e2e/e2e-documentation/results/ft-groups-data/ft-groups-api-data.json`.
 
 Uploading to Confluence:
 1. Export `CONFLUENCE_PERSONAL_ACCESS_TOKEN`, `CONFLUENCE_BASE_URL`, and `CONFLUENCE_PAGE_ID`.
-2. `yarn test:confluence:ftGroups-ui-table` updates the "Functional Test Groups" table on the Confluence page for UI groups.
-3. `yarn test:confluence:ftGroups-api-table` updates the "Functional Test Groups" table for API groups.
+2. `yarn test:confluence:ft-groups-ui-table` updates the "Functional Test Groups" table on the Confluence page for UI groups.
+3. `yarn test:confluence:ft-groups-api-table` updates the "Functional Test Groups" table for API groups.
 4. Optional: pass a custom JSON path as the first argument to either script.
 
 Updating README tables:
-1. `yarn test:readme:ftGroups-ui-table` refreshes the functional test groups UI section and `yarn test:readme:ftGroups-api-table` refreshes the functional test groups API section (run both commands to update the entire table set).
-2. Optional: pass a custom JSON path as the first argument to either script (e.g. `yarn test:readme:ftGroups-ui-table ../path/to/ft-groups-ui.json`).
+1. `yarn test:readme:ft-groups-ui-table` refreshes the functional test groups UI section and `yarn test:readme:ft-groups-api-table` refreshes the functional test groups API section (run both commands to update the entire table set).
+2. Optional: pass a custom JSON path as the first argument to either script (e.g. `yarn test:readme:ft-groups-ui-table ../path/to/ft-groups-ui.json`).
 3. Commit README changes if required.
 
 ### UI Functional Test Group Documentation

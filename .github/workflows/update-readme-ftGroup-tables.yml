@@ -24,14 +24,14 @@ jobs:
 
       - name: Regenerate functional test group JSON
         run: |
-          yarn test:generate:ftGroups-api-data
-          yarn test:generate:ftGroups-ui-data
+          yarn test:generate:ft-groups-api-data
+          yarn test:generate:ft-groups-ui-data
 
       - name: Update README functional test group UI table
-        run: yarn test:readme:ftGroups-ui-table
+        run: yarn test:readme:ft-groups-ui-table
 
       - name: Update README functional test group API table
-        run: yarn test:readme:ftGroups-api-table
+        run: yarn test:readme:ft-groups-api-table
 
       - name: Commit and push README updates
         uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5

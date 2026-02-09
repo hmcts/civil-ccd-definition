@@ -2,7 +2,7 @@
 
 const path = require('path');
 const { updateReadmeSection } = require('../support/update-readme');
-const { generateMarkdownTable } = require('./ft-group-table-gen');
+const { generateMarkdownTable } = require('./ft-groups-table-gen');
 
 const repoRoot = path.resolve(__dirname, '..', '..', '..');
 const defaultJsonPath = path.join(repoRoot, 'e2e-documentation/results/ft-groups-data/ft-groups-ui-data.json');
