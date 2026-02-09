@@ -34,6 +34,10 @@ function safeValue(value, key) {
     return parts.map(v => `<p>${v}</p>`).join('');
   }
 
+  if (key === 'pipeline' && Array.isArray(value)) {
+    return value.map(v => safeValue(v)).join('<br/><br/>');
+  }
+
   if (Array.isArray(value)) {
     return value.map(v => safeValue(v)).join('<br/>');
   }
