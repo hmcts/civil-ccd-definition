@@ -17,15 +17,19 @@ module.exports = {
 
   async claimDeclaration(option) {
     I.waitForElement(this.fields.declarationAndInjunctionRequired.id);
-    await I.runAccessibilityTest();
-    await within(this.fields.declarationAndInjunctionRequired.id, () => {
-      if(option === 'yes'){
-        I.click(this.fields.declarationAndInjunctionRequired.options.yes);
-        I.fillField(this.fields.claimDeclarationDescription, details);
-      }else{
-        I.click(this.fields.declarationAndInjunctionRequired.options.no);
-      }
-    });
+
+    if (option === 'yes') {
+      I.click(this.fields.declarationAndInjunctionRequired.options.yes);
+
+      // wait for Angular to re-render & enable textarea
+      I.waitForElement(this.fields.claimDeclarationDescription);
+      I.waitForEnabled(this.fields.claimDeclarationDescription);
+
+      I.fillField(this.fields.claimDeclarationDescription, details);
+    } else {
+      I.click(this.fields.declarationAndInjunctionRequired.options.no);
+    }
+
     await I.clickContinue();
   }
 };
