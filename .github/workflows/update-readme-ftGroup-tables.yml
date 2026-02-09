@@ -1,4 +1,4 @@
-name: Update README Test Documentation Tables
+name: Update README Functional Test Group Tables
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  generate-readme-tables:
+  generate-readme-ft-group-tables:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,19 +22,19 @@ jobs:
           YARN_ENABLE_SCRIPTS: "false"
         run: yarn install --frozen-lockfile
 
-      - name: Regenerate documentation JSON
+      - name: Regenerate functional test group JSON
         run: |
-          yarn test:generate:ui-docs
-          yarn test:generate:api-docs
+          yarn test:generate:ft-groups-api-data
+          yarn test:generate:ft-groups-ui-data
 
-      - name: Update README UI table
-        run: yarn test:readme:ui-docs
+      - name: Update README functional test group UI table
+        run: yarn test:readme:ft-groups-ui-table
 
-      - name: Update README API table
-        run: yarn test:readme:api-docs
+      - name: Update README functional test group API table
+        run: yarn test:readme:ft-groups-api-table
 
       - name: Commit and push README updates
         uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
         with:
-          commit_message: "chore: refresh README test documentation tables"
+          commit_message: "chore: refresh README functional test group tables"
           branch: master

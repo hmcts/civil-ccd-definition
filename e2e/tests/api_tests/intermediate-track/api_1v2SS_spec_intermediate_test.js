@@ -12,7 +12,7 @@ if (config.runWAApiTest) {
 
 }
 
-Feature('1v2SS spec intermediate track api journey').tag('@api-nightly-prod');
+Feature('1v2SS spec intermediate track api journey').tag('@api-nightly-prod @wa-task');
 
 Scenario.skip('1v2SS spec full defence intermediate claim', async ({api_spec, WA}) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';
@@ -40,7 +40,7 @@ Scenario.skip('1v2SS spec full defence intermediate claim', async ({api_spec, WA
     api_spec.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
   }
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@wa-task');
+});
 
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
