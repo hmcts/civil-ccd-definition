@@ -18,7 +18,7 @@
   {
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseA",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -26,7 +26,7 @@
   {
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseB",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -42,7 +42,7 @@
   {
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseCBeforeDate",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -58,7 +58,7 @@
   {
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseCAfterDate",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -66,7 +66,7 @@
   {
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseD",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -74,7 +74,7 @@
   {
     "ID": "HousingDisrepair",
     "ListElementCode": "clauseE",
-    "FieldType": "Text",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
