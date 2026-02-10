@@ -30,7 +30,6 @@ module.exports = {
 //    idamApi: 'https://idam-api.aat.platform.hmcts.net',
 //    civilService: 'https://civil-ccd-pr-5627.preview.platform.hmcts.net',
 //    caseAssignmentService: 'http://manage-case-assignment-civil-ccd-pr-5627.preview.platform.hmcts.net',
-//    generalApplication: 'https://ga-civil-ccd-pr-5627.preview.platform.hmcts.net',
 //    orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
 
 //    for AAT
@@ -42,7 +41,6 @@ module.exports = {
 //    civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
 //    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
 //    caseAssignmentService: 'http://aac-manage-case-assignment-aat.service.core-compute-aat.internal',
-//    generalApplication: 'http://civil-general-applications-aat.service.core-compute-aat.internal',
 //    orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
 
 //    Default - leave below uncommented when merging
@@ -53,7 +51,6 @@ module.exports = {
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
-    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
@@ -313,12 +310,14 @@ module.exports = {
   },
   applicantCitizenUser: {
     password: defaultPassword,
-    email: 'civilmoneyclaimsdemo@gmail.com',
+    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    // email: 'civilmoneyclaimsdemo@gmail.com', uncomment for local testing if required
     type: 'claimant',
   },
   defendantCitizenUser2: {
     password: defaultPassword,
     email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    // email: 'civiluatdefendant@gmail.com', uncomment for local testing if required
     type: 'defendant',
   },
   defendantLRCitizenUser:{
