@@ -51,7 +51,7 @@
     "ID": "HousingDisrepair",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
-    "ListElementCode": "sectionTitle",
+    "ListElementCode": "introLine",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -59,16 +59,8 @@
     "ID": "HousingDisrepair",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
-    "ListElementCode": "introLine",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "HousingDisrepair",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsHousingDisrepair",
     "ListElementCode": "clauseA",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -76,7 +68,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "ListElementCode": "clauseB",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -84,7 +76,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "ListElementCode": "firstReportDateBy",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -92,7 +84,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "ListElementCode": "clauseCBeforeDate",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -100,7 +92,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "ListElementCode": "jointStatementDateBy",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -108,7 +100,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "ListElementCode": "clauseCAfterDate",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -116,7 +108,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "ListElementCode": "clauseD",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -124,14 +116,14 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "ListElementCode": "clauseE",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "HousingDisrepair",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
-    "ListElementCode": "sectionTitle",
+    "ListElementCode": "introLine",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -139,16 +131,8 @@
     "ID": "HousingDisrepair",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
-    "ListElementCode": "introLine",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "HousingDisrepair",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "clauseA",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -156,7 +140,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "clauseB",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -164,7 +148,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "firstReportDateBy",
-    "FieldDisplayOrder": 5,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -172,7 +156,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "clauseCBeforeDate",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -180,7 +164,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "jointStatementDateBy",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -188,7 +172,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "clauseCAfterDate",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -196,7 +180,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "clauseD",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -204,7 +188,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackHousingDisrepair",
     "ListElementCode": "clauseE",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   }
 ]

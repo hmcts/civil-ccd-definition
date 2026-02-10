@@ -1,14 +1,6 @@
 [
   {
     "ID": "HousingDisrepair",
-    "ListElementCode": "sectionTitle",
-    "FieldType": "Label",
-    "ElementLabel": "#### Housing Disrepair",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "HousingDisrepair",
     "ListElementCode": "introLine",
     "FieldType": "Label",
     "ElementLabel": "Expert evidence is directed as follows:",
