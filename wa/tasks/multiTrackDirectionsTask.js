@@ -21,11 +21,14 @@ module.exports = {
   work_type_label: 'Multi track decision making work',
   permissions: {
     values: [
-      'read', 'own',
-      'completeown', 'cancelown',
-      'claim', 'unclaim',
-      'unclaimassign'
-    ]
+      "Read",
+      "Own",
+      "CompleteOwn",
+      "CancelOwn",
+      "Claim",
+      "Unclaim",
+      "UnclaimAssign",
+    ],
   },
   description: '[Make an order [Intermediate Track or Multi Track]](/cases/case-details/${[CASE_REFERENCE]}/trigger/GENERATE_DIRECTIONS_ORDER)<br /><br />[Standard Directions Order [Small Claims or Fast Track]](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NotSuitable_SDO)',
   role_category: 'JUDICIAL',
