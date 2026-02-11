@@ -12,16 +12,16 @@ const additionalInfoStatus = states.AWAITING_ADDITIONAL_INFORMATION.name;
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA 1v1 Judge Make Decision Additional Information tests').tag('@ui-ga-nightly-prod @ui-ga-add-info');
+Feature('GA 1v1 Judge Make Decision Additional Information tests').tag('@ui-nightly-prod @ui-ga-add-info');
 
-Scenario('GA for 1v1- respond to application - Request more information', async ({ I, api }) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+Scenario('GA for 1v1- respond to application - Request more information', async ({ I, api_ga }) => {
+  civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
+  await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
+  await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api_ga.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api_ga.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api_ga.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
@@ -37,7 +37,7 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
     'signLanguageInterpreter'
   );
   console.log('General Application created: ' + civilCaseReference);
-  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api_ga.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(
     gaCaseReference,
     states.AWAITING_APPLICATION_PAYMENT.id,
@@ -101,6 +101,6 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
 }).retry(1);
 
-AfterSuite(async ({ api }) => {
-  await api.cleanUp();
+AfterSuite(async ({ api_ga }) => {
+  await api_ga.cleanUp();
 });

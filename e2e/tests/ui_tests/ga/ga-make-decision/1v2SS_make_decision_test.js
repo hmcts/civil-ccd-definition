@@ -13,20 +13,20 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey').tag('@ui-ga-make-decision');
 
-BeforeSuite(async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+BeforeSuite(async ({api_ga}) => {
+  civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, true);
+  await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
+  await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api_ga.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, true);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+  await api_ga.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api_ga.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
 });
 
 Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential written representations journey',
-  async ({I, api}) => {
+  async ({ I, api_ga }) => {
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.createGeneralApplication(
@@ -35,7 +35,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
     'no', 'no', 'yes', 'no', 'no', 'no',
     'disabledAccess');
   console.log('General Application created: ' + civilCaseReference);
-  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api_ga.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
   await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 1), 1);
   await I.see(awaitingPaymentStatus);
@@ -75,6 +75,6 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Sequential order document');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
+AfterSuite(async ({api_ga}) => {
+  await api_ga.cleanUp();
 });

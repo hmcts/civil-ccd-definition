@@ -13,20 +13,20 @@ let civilCaseReference, gaCaseReference, user;
 
 Feature('GA CCD 1v2 Same Solicitor - General Application Journey').tag('@ui-ga-add-info');
 
-BeforeSuite(async ({api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+BeforeSuite(async ({api_ga}) => {
+  civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, true);
+  await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
+  await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api_ga.acknowledgeClaim(config.defendantSolicitorUser, mpScenario, true);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+  await api_ga.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api_ga.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
 });
 
 Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
-  async ({I, api}) => {
+  async ({ I, api_ga }) => {
     await I.login(config.applicantSolicitorUser);
     await I.navigateToCaseDetails(civilCaseReference);
     await I.createGeneralApplication(
@@ -35,7 +35,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
       'no', 'no', 'no', 'yes', 'yes', 'no',
       'signLanguageInterpreter');
     console.log('General Application created: ' + civilCaseReference);
-    gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
+    gaCaseReference = await api_ga.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_APPLICATION_PAYMENT.id, config.applicantSolicitorUser);
     await I.clickAndVerifyTab(civilCaseReference, 'Applications', getAppTypes().slice(0, 5), 2);
     await I.see(awaitingPaymentStatus);
@@ -55,7 +55,7 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
     await I.login(config.applicantSolicitorUser);
     await I.navigateToTab(civilCaseReference, 'Applications');
     await I.see(additionalPaymentStatus);
-    await api.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
+    await api_ga.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, states.AWAITING_RESPONDENT_RESPONSE.id);
     await I.navigateToTab(civilCaseReference, 'Applications');
     await I.see(respondentStatus);
 
@@ -73,12 +73,12 @@ Scenario('GA for 1v2 Same Solicitor - Send application to other party journey',
   await I.judgeRequestMoreInfo('requestMoreInfo', 'requestMoreInformation', gaCaseReference, 'yes', 'Request_for_information');
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id, config.applicantSolicitorUser);
     console.log('Judges requested more information on case: ' + gaCaseReference);
-    await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
-    await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
+    await api_ga.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
+    await api_ga.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.AWAITING_ADDITIONAL_INFORMATION.id);
 
     await I.verifyCaseFileAppDocument(civilCaseReference, 'Request more info order');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
+AfterSuite(async ({api_ga}) => {
+  await api_ga.cleanUp();
 });

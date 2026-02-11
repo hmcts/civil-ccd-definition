@@ -8,30 +8,30 @@ const claimAmountJudge = '11000';
 
 Feature('Before SDO 1v2 - GA - Consent Orders').tag('@ui-ga-consent-order');
 
-Scenario('NBC admin Approve Consent Order', async ({I, api}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+Scenario('NBC admin Approve Consent Order', async ({ I, api_ga }) => {
+  civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
+  await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api_ga.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+  await api_ga.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api_ga.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api_ga.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateConsentGeneralApplication(config.secondDefendantSolicitorUser,
+  gaCaseReference = await api_ga.initiateConsentGeneralApplication(config.secondDefendantSolicitorUser,
     civilCaseReference, ['STAY_THE_CLAIM'],false, false);
 
   console.log('*** Start response to GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.respondentConsentResponse1v2(config.applicantSolicitorUser,
+  await api_ga.respondentConsentResponse1v2(config.applicantSolicitorUser,
     config.defendantSolicitorUser, gaCaseReference, true);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
   if (config.runWAApiTest || ['demo'].includes(config.runningEnv)) {
-    await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId2, gaCaseReference, config.waTaskIds.nbcUserReviewGA);
+    await api_ga.retrieveTaskDetails(config.hearingCenterAdminWithRegionId2, gaCaseReference, config.waTaskIds.nbcUserReviewGA);
   } else {
     console.log('WA flag is not enabled');
     return;
@@ -52,8 +52,8 @@ Scenario('NBC admin Approve Consent Order', async ({I, api}) => {
 
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'Consent Order');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Consent Order');
-}).retry(1).tag('@ui-ga-prod');
+}).retry(1).tag('@ui-prod');
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
+AfterSuite(async ({api_ga}) => {
+  await api_ga.cleanUp();
 });

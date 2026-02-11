@@ -11,16 +11,16 @@ const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('1v1 Judge makes a decision').tag('@ui-ga-prod @ui-ga-make-decision');
+Feature('1v1 Judge makes a decision').tag('@ui-prod @ui-ga-make-decision');
 
-Scenario('GA for 1v1 - Makes a decision', async ({ I, api }) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+Scenario('GA for 1v1 - Makes a decision', async ({ I, api_ga }) => {
+  civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
+  await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
+  await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api_ga.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api_ga.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api_ga.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Case created for general application: ' + civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.createGeneralApplication(
@@ -35,7 +35,7 @@ Scenario('GA for 1v1 - Makes a decision', async ({ I, api }) => {
     'disabledAccess'
   );
   console.log('1v1 General Application created: ' + civilCaseReference);
-  gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api_ga.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
   await waitForGACamundaEventsFinishedBusinessProcess(
     gaCaseReference,
     states.AWAITING_APPLICATION_PAYMENT.id,
@@ -59,7 +59,7 @@ Scenario('GA for 1v1 - Makes a decision', async ({ I, api }) => {
     respondentStatus
   );
 
-  await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+  await api_ga.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
 
   await I.login(user);
   await I.judgeMakeDecision(
@@ -83,7 +83,7 @@ Scenario('GA for 1v1 - Makes a decision', async ({ I, api }) => {
   await I.navigateToTab(civilCaseReference, 'Applications');
   await I.see(judgeApproveOrderStatus);
   await I.verifyUploadedClaimDocument(civilCaseReference, 'General order document');
-  await api.assertGaAppCollectionVisiblityToUser(
+  await api_ga.assertGaAppCollectionVisiblityToUser(
     config.defendantSolicitorUser,
     civilCaseReference,
     gaCaseReference,
@@ -94,6 +94,6 @@ Scenario('GA for 1v1 - Makes a decision', async ({ I, api }) => {
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Applicant Evidence');
 }).retry(1);
 
-AfterSuite(async ({ api }) => {
-  await api.cleanUp();
+AfterSuite(async ({ api_ga }) => {
+  await api_ga.cleanUp();
 });

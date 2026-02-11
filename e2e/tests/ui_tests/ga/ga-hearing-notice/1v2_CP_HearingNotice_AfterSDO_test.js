@@ -6,29 +6,29 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/te
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
-Feature('After SDO 1v2 - GA CP - Hearing Notice document').tag('@ui-ga-prod @ui-ga-hearing-notice');
+Feature('After SDO 1v2 - GA CP - Hearing Notice document').tag('@ui-prod @ui-ga-hearing-notice');
 
-Scenario('Claimant Hearing notice - Without notice journey', async ({api, I}) => {
-  civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser,
+Scenario('Claimant Hearing notice - Without notice journey', async ({ api_ga, I }) => {
+  civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');
-  await api.amendClaimDocuments(config.applicantSolicitorUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-  await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
+  await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
+  await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  await api_ga.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   console.log('Civil Case created for general application: ' + civilCaseReference);
-  await api.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  await api.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-  await api.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
+  await api_ga.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api_ga.defendantResponseClaim(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api_ga.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   await I.wait(10);
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
   console.log('Make a General Application');
-  gaCaseReference = await api.initiateGeneralApplicationWithOutNotice(config.secondDefendantSolicitorUser, civilCaseReference);
+  gaCaseReference = await api_ga.initiateGeneralApplicationWithOutNotice(config.secondDefendantSolicitorUser, civilCaseReference);
 
   console.log('*** Start Judge List the application for hearing on GA Case Reference: ' + gaCaseReference + ' ***');
-  await api.judgeListApplicationForHearingInPerson(config.judgeUser2WithRegionId2, gaCaseReference);
-  await api.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.LISTING_FOR_A_HEARING.id);
-  await api.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.LISTING_FOR_A_HEARING.id);
+  await api_ga.judgeListApplicationForHearingInPerson(config.judgeUser2WithRegionId2, gaCaseReference);
+  await api_ga.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, states.LISTING_FOR_A_HEARING.id);
+  await api_ga.verifyGAState(config.defendantSolicitorUser, civilCaseReference, gaCaseReference, states.LISTING_FOR_A_HEARING.id);
 
   console.log('Hearing Notice creation');
   await I.login(config.hearingCenterAdminWithRegionId2);
@@ -59,6 +59,6 @@ Scenario('Claimant Hearing notice - Without notice journey', async ({api, I}) =>
   await I.dontSee('Applications', 'div.mat-tab-label-content');
 }).retry(1);
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
+AfterSuite(async ({api_ga}) => {
+  await api_ga.cleanUp();
 });

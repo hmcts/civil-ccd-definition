@@ -11,15 +11,15 @@ const claimantType = 'Company';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 2v1 - General Application Journey').tag('@ui-ga-nightly-prod @ui-ga-make-decision');
+Feature('GA CCD 2v1 - General Application Journey').tag('@ui-nightly-prod @ui-ga-make-decision');
 
 Scenario(
   'GA for 2v1 - Concurrent written representations - without notice to with notice journey',
-  async ({ I, api }) => {
-    civilCaseReference = await api.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
-    await api.amendClaimDocuments(config.applicantSolicitorUser);
-    await api.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
-    await api.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
+  async ({ I, api_ga }) => {
+    civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
+    await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
+    await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+    await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
     console.log('Case created for general application: ' + civilCaseReference);
     await I.login(config.applicantSolicitorUser);
     await I.createGeneralApplication(
@@ -34,7 +34,7 @@ Scenario(
       'signLanguageInterpreter'
     );
     console.log('General Application created: ' + civilCaseReference);
-    gaCaseReference = await api.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
+    gaCaseReference = await api_ga.getGACaseReference(config.applicantSolicitorUser, civilCaseReference);
     await waitForGACamundaEventsFinishedBusinessProcess(
       gaCaseReference,
       states.AWAITING_APPLICATION_PAYMENT.id,
@@ -62,10 +62,10 @@ Scenario(
       'courtOwnInitiativeOrder'
     );
 
-    await api.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
+    await api_ga.judgeRequestMoreInformationUncloak(config.judgeUser2WithRegionId2, gaCaseReference, true, true);
 
     console.log('*** Start Callback for Additional Payment: ' + gaCaseReference + ' ***');
-    await api.additionalPaymentSuccess(
+    await api_ga.additionalPaymentSuccess(
       config.applicantSolicitorUser,
       gaCaseReference,
       states.AWAITING_RESPONDENT_RESPONSE.id
@@ -75,7 +75,7 @@ Scenario(
     console.log(
       '*** Start Respondent respond to Judge Additional information on GA Case Reference: ' + gaCaseReference + ' ***'
     );
-    await api.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
+    await api_ga.respondentResponse(config.defendantSolicitorUser, gaCaseReference);
     console.log(
       '*** End Respondent respond to Judge Additional information on GA Case Reference: ' + gaCaseReference + ' ***'
     );
@@ -106,7 +106,7 @@ Scenario(
     await I.see(writtenRepStatus);
     await I.respondToJudgesWrittenRep(gaCaseReference, 'Written representation concurrent document');
     console.log('Responded to Judges written representations on case: ' + gaCaseReference);
-    await api.verifyGAState(
+    await api_ga.verifyGAState(
       config.defendantSolicitorUser,
       civilCaseReference,
       gaCaseReference,
@@ -116,6 +116,6 @@ Scenario(
     await I.verifyCaseFileAppDocument(civilCaseReference, 'Concurrent order document');
 }).retry(1);
 
-AfterSuite(async ({ api }) => {
-  await api.cleanUp();
+AfterSuite(async ({ api_ga }) => {
+  await api_ga.cleanUp();
 });

@@ -11,6 +11,7 @@ let incidentMessage;
 const MAX_RETRIES = 40;
 const INITIAL_RETRY_TIMEOUT_MS = 2000; // Reduced from 5000 (check more frequently initially)
 const MAX_RETRY_TIMEOUT_MS = 10000; // Cap exponential backoff at 10 seconds
+const RETRY_TIMEOUT_MS = 5000;
 
 const checkFlagEnabled = async (flag) => {
   const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -255,4 +256,87 @@ module.exports =  {
 
     return await response.json();
   },
+
+  /**
+   * This request call is the extract the GA from Civil Service and
+   * waits for General Application Camunda tasks to finish
+   *
+   * @param caseId - Civil Case Reference
+   * @param user
+   */
+  waitForGAFinishedBusinessProcess: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await serviceAuthHelper.civilServiceAuth();
+    incidentMessage = null;
+    console.log('** Start waitForGAFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
+
+    await retry(() => {
+      return restHelper.request(
+        `${config.url.generalApplication}/testing-support/case/${caseId}/business-process/ga`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
+        }, null, 'GET')
+        .then(async response => await response.json()).then(response => {
+          let businessProcess = response.businessProcess;
+          if (response.incidentMessage) {
+            incidentMessage = response.incidentMessage;
+          } else if (businessProcess && businessProcess.status !== 'FINISHED') {
+            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
+              + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
+          }
+        });
+    }, MAX_RETRIES, RETRY_TIMEOUT_MS);
+    console.log('** End of waitForGAFinishedBusinessProcess **');
+
+    if (incidentMessage)
+      throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
+  },
+
+  /**
+   * Waits for General Application Camunda tasks to finish
+   *
+   * @param caseId - GA Case Reference
+   * @param ccdState
+   * @param user
+   */
+  waitForGACamundaEventsFinishedBusinessProcess: async (caseId, ccdState, user) => {
+    const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await serviceAuthHelper.civilServiceAuth();
+    incidentMessage = null;
+    console.log('** Start waitForGACamundaEventsFinishedBusinessProcess to wait for GA Camunda Tasks to Start and Finish **');
+
+    await retry(() => {
+      return restHelper.request(
+        `${config.url.generalApplication}/testing-support/case/${caseId}/business-process`,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`,
+          'ServiceAuthorization': s2sAuth
+        }, null, 'GET')
+        .then(async response => await response.json()).then(response => {
+          let businessProcess = response.businessProcess;
+          if (response.incidentMessage) {
+            incidentMessage = response.incidentMessage;
+          } else if (businessProcess && businessProcess.status !== 'FINISHED' && response.ccdState !== ccdState) {
+            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
+              + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
+          } else if (businessProcess && businessProcess.status !== 'FINISHED') {
+            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
+                            + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
+          } else if (businessProcess && businessProcess.status === 'FINISHED' && response.ccdState !== ccdState) {
+            throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
+              + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId},`
+              + ` Present Case state: ${response.ccdState}, Expected State: ${ccdState}`);
+          }
+        });
+    }, MAX_RETRIES, RETRY_TIMEOUT_MS);
+    console.log('** End of waitForGACamundaEventsFinishedBusinessProcess **');
+
+    if (incidentMessage)
+      throw new Error(`Business process failed for case: ${caseId}, incident message: ${incidentMessage}`);
+  },
+
+  checkToggleEnabled: async (toggle) => checkFlagEnabled(toggle),
 };

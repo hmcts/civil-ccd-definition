@@ -11,13 +11,13 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let gaCaseReference, civilCaseReference, user;
 
-Feature('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey').tag('@ui-ga-nightly-prod @ui-ga-hearing-notice');
+Feature('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey').tag('@ui-nightly-prod @ui-ga-hearing-notice');
 // This test should be enabled after early adopters goes live for all regions
 
 Scenario.skip(
   'GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey',
-  async ({ api, I }) => {
-    civilCaseReference = await api.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  async ({ api_ga, I }) => {
+    civilCaseReference = await api_ga.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
     console.log('Case created for general application: ' + civilCaseReference);
     await I.login(config.defendantSolicitorUser);
     await I.navigateToCaseDetails(civilCaseReference);
@@ -33,7 +33,7 @@ Scenario.skip(
       'signLanguageInterpreter'
     );
     console.log('General Application created: ' + civilCaseReference);
-    gaCaseReference = await api.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);
+    gaCaseReference = await api_ga.getGACaseReference(config.defendantSolicitorUser, civilCaseReference);
     await waitForGACamundaEventsFinishedBusinessProcess(
       gaCaseReference,
       states.AWAITING_APPLICATION_PAYMENT.id,
@@ -125,6 +125,6 @@ Scenario.skip(
     await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing order');
 }).retry(1);
 
-AfterSuite(async ({ api }) => {
-  await api.cleanUp();
+AfterSuite(async ({ api_ga }) => {
+  await api_ga.cleanUp();
 });
