@@ -2,7 +2,7 @@
 const config = require('../../../config.js');
 const { waitForGACamundaEventsFinishedBusinessProcess } = require('./../../../api/testingSupport');
 const { getAppTypes } = require('./../../../pages/generalApplication/generalApplicationTypes');
-const states = require('./../../../fixtures/ga-ccd/state.js');
+const states = require('./../../../../fixtures/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;

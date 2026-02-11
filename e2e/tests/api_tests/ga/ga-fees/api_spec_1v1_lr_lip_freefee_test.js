@@ -2,7 +2,7 @@
 const config = require('../../../../config.js');
 let civilCaseReference, gaCaseReference;
 const mpScenario = 'ONE_V_ONE';
-const {createAccount, deleteAccount} = require('../../../api/idamHelper.js');
+const {createAccount, deleteAccount} = require('../../../../api/idamHelper.js');
 
 // this test is skipped until its fixed but comment changes as spec claim ga works now in non prod env
 Feature('General Application LR vs LIP 1V1 Application').tag('@api-prod @ui-prod @ga-fees');

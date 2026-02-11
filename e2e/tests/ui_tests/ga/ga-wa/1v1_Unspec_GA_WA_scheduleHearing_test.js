@@ -2,7 +2,7 @@
 const config = require('../../../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_ONE';
-const states = require('../../../fixtures/ga-ccd/state.js');
+const states = require('../../../../fixtures/ga-ccd/state.js');
 
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.id;
 
@@ -12,9 +12,9 @@ let civilCaseReference, gaCaseReference, expectedJudgeDecideOnApplicationBeforeS
   expectedJudgeDecideOnApplicationAfterSDOTask, expectedScheduleAppHearingAfterSDOTask,
   judgeUser;
 if (config.runWAApiTest) {
-  expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
+  expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
   expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
-  expectedLADecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
+  expectedLADecideOnApplicationBeforeSDOTask = require('../../../../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
   expectedScheduleAppHearingBeforeSDOTask = require('../../../../wa/tasks/scheduleAppHearingBeforeSDOTask.js');
   expectedScheduleAppHearingAfterSDOTask = require('../../../../wa/tasks/scheduleAppHearingAfterSDOTask.js');
 }

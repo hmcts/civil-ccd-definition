@@ -6,12 +6,12 @@ let civilCaseReference, gaCaseReference, expectedJudgeDecideOnApplicationBeforeS
   expectedLADecideOnApplicationBeforeSDOTask,
   expectedJudgeDecideOnApplicationAfterSDOTask, expectedJudgeRevisitApplicationBeforeSDOTask, expectedLARevisitApplicationBeforeSDOTask, expectedJudgeRevisitApplicationAfterSDOTask;
 if (config.runWAApiTest) {
-  expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
-  expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
-  expectedLADecideOnApplicationBeforeSDOTask = require('../../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
-  expectedJudgeRevisitApplicationBeforeSDOTask = require('../../../../wa/tasks/judgeRevisitApplicationBeforeSDO.js');
-  expectedLARevisitApplicationBeforeSDOTask = require('../../../../wa/tasks/legalAdvisorRevisitApplication.js');
-  expectedJudgeRevisitApplicationAfterSDOTask = require('../../../../wa/tasks/judgeRevisitApplicationAfterSDO.js');
+  expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
+  expectedJudgeDecideOnApplicationAfterSDOTask = require('../../../../../wa/tasks/judgeDecideOnApplicationAfterSDOTask.js');
+  expectedLADecideOnApplicationBeforeSDOTask = require('../../../../../wa/tasks/laDecideOnApplicationBeforeSDOTask.js');
+  expectedJudgeRevisitApplicationBeforeSDOTask = require('../../../../../wa/tasks/judgeRevisitApplicationBeforeSDO.js');
+  expectedLARevisitApplicationBeforeSDOTask = require('../../../../../wa/tasks/legalAdvisorRevisitApplication.js');
+  expectedJudgeRevisitApplicationAfterSDOTask = require('../../../../../wa/tasks/judgeRevisitApplicationAfterSDO.js');
 }
 
 Feature(' GA - WA Judge Revisit Applications');

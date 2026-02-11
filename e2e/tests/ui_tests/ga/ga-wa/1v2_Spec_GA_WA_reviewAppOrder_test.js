@@ -4,7 +4,7 @@ const config = require('../../../../config.js');
   waitForGACamundaEventsFinishedBusinessProcess,
   waitForFinishedBusinessProcess
 } = require('../../../api/testingSupport');
-const states = require('../../../fixtures/ga-ccd/state.js');
+const states = require('../../../../fixtures/ga-ccd/state.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
   const listForHearingStatus = states.LISTING_FOR_A_HEARING.id;

@@ -2,7 +2,7 @@
 const config = require('../../../../config.js');
 const { assert } = require('chai');
 let civilCaseReference, gaCaseReference;
-const { createAccount, deleteAccount } = require('../../../api/idamHelper.js');
+const { createAccount, deleteAccount } = require('../../../../api/idamHelper.js');
 
 Feature('Create Lip v Lip claim -  Default Judgment');
 
