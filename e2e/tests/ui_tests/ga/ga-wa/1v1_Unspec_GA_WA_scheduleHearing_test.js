@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const config = require('../../../config.js');
+const config = require('../../../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_ONE';
 const states = require('../../../fixtures/ga-ccd/state.js');

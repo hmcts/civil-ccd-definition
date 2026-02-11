@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const config = require('../../../config.js');
+const config = require('../../../../config.js');
 let civilCaseReference, gaCaseReference;
 const mpScenario = 'ONE_V_ONE';
 const {createAccount, deleteAccount} = require('../../../api/idamHelper.js');

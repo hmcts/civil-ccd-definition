@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const config = require('../../../config.js');
+const config = require('../../../../config.js');
 const { assert } = require('chai');
 let civilCaseReference, gaCaseReference;
 const { createAccount, deleteAccount } = require('../../../api/idamHelper.js');

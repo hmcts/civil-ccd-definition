@@ -1,4 +1,4 @@
-const config = require('../../../config.js');
+const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const genAppType = 'STAY_THE_CLAIM';
 

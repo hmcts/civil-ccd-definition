@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const config = require('../../../config.js');
+const config = require('../../../../config.js');
 const {assignCaseRoleToUser} = require('../../../api/caseRoleAssignmentHelper');
 const mpScenario = 'ONE_V_ONE';
 const errorMsg = 'Application cannot be created until all the required respondent solicitor are assigned to the case.';
