@@ -33,7 +33,7 @@ Scenario.skip('Before SDO GA - Judge Make decision - NBC admin schedule Hearing'
   gaCaseReference = await api_ga.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
 
   if (['preview', 'aat'].includes(config.runningEnv)) {
-    judgeUser = config.judgeUser;
+    judgeUser = config.judgeUser2WithRegionId4;
   } else if (['demo'].includes(config.runningEnv)) {
     judgeUser = config.judgeUserWithRegionId4;
   } else {

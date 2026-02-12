@@ -133,7 +133,7 @@ module.exports = {
   },
 
   gaOrderMadeSchedulerTaskHandler: async (state, genAppType) => {
-    const authToken = await idamHelper.accessToken(config.systemUpdate);
+    const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getJudgeRevisitTaskHandlerUrl(state, genAppType);
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
@@ -145,7 +145,7 @@ module.exports = {
   },
 
   civilCaseDismissalHandler: async() => {
-    const authToken = await idamHelper.accessToken(config.systemUpdate);
+    const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getCaseDismissalTaskHandlerUrl();
     let response_msg =  await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ module.exports = {
   },
 
   fetchGaCaseData: async (caseId) => {
-    const authToken = await idamHelper.accessToken(config.systemUpdate);
+    const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getGaCaseDataUrl(caseId);
     console.log('*** GA Case Reference: '  + caseId + ' ***');
 

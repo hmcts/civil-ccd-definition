@@ -47,7 +47,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({ I, api_
     judgeDecisionStatus
   );
 
-  user = config.judgeUser;
+  user = config.judgeUser2WithRegionId4;
   await I.login(user);
  
   await I.judgeMakeDecision(
@@ -90,8 +90,8 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({ I, api_
     gaCaseReference,
     'Y'
   );
-}).retry(1);
+}).retry(0);
 
-AfterSuite(async ({ api_ga }) => {
-  await api_ga.cleanUp();
-});
+// AfterSuite(async ({ api_ga }) => {
+//   await api_ga.cleanUp();
+// });

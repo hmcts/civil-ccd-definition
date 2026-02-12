@@ -23,7 +23,7 @@ Scenario('Judge makes decision 1V1 - WRITTEN_REPRESENTATIONS- Respondent upload 
 
   console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 
-  await api_ga.judgeMakesDecisionWrittenRep(config.judgeUser, gaCaseReference);
+  await api_ga.judgeMakesDecisionWrittenRep(config.judgeUser2WithRegionId4, gaCaseReference);
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 
   console.log('*** Start Judge Make Decision on GA Case Reference: ' + gaCaseReference + ' ***');
@@ -45,7 +45,7 @@ Scenario('Judge uncloaked the without notice application: Judge revisit makes de
 
   console.log('*** Start Judge Make Order on GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 
-  await api_ga.judgeRevisitMakesDecisionWrittenRepUncloakedAppln(config.judgeUser, gaCaseReference);
+  await api_ga.judgeRevisitMakesDecisionWrittenRepUncloakedAppln(config.judgeUser2WithRegionId4, gaCaseReference);
   console.log('*** End Judge Make Order GA Case Reference - WRITTEN_REPRESENTATIONS: ' + gaCaseReference + ' ***');
 
 });

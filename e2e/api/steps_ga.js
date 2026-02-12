@@ -21,7 +21,7 @@ const {
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/ga-events/events/createClaim.js');
-const claimDataSpec = require('../fixtures/ga-events/events/createClaimSpec.js');
+const claimDataSpec = require('../fixtures/ga-events/events/claim/createClaimSpec.js');
 const claimSpecData = require('../fixtures/ga-events/events/createClaimSpec.js');
 const claimDataSpecSmallLRvLiP = require('../fixtures/ga-events/events/createClaimSpecSmallCui.js');
 const genAppData = require('../fixtures/ga-events/ga-ccd/createGeneralApplication.js');
@@ -1570,7 +1570,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId, user);
 
     console.log('carm not enabled, updating submitted date');
-    await apiRequest.setupTokens(config.systemUpdate);
+    await apiRequest.setupTokens(config.systemupdate);
     const submittedDate = { 'submittedDate': '2024-09-10T15:59:50' };
     await testingSupport.updateCaseData(caseId, submittedDate);
     console.log('submitted date update to before carm date');
@@ -1606,7 +1606,7 @@ module.exports = {
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
     // update submit date
     console.log('carm not enabled, updating submitted date');
-    await apiRequest.setupTokens(config.systemUpdate);
+    await apiRequest.setupTokens(config.systemupdate);
     const submittedDate = { 'submittedDate': '2024-09-10T15:59:50' };
     await testingSupport.updateCaseData(caseId, submittedDate);
     console.log('submitted date update to before carm date');
