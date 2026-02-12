@@ -85,6 +85,7 @@ exports.config = {
     api_spec_fast: './e2e/api/steps_LRspecFast.js',
     api_spec_small: './e2e/api/steps_LRspecSmall.js',
     api_spec_cui: './e2e/api/steps_LRspecCui.js',
+    api_ga: './e2e/api/steps_ga.js',
     noc: './e2e/api/steps_noc.js',
     hearings: './e2e/api/steps_hearings.js',
     bulks: './e2e/api/steps_Bulk.js',

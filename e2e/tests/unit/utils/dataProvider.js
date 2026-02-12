@@ -2,8 +2,23 @@ const load = require;
 const fs = require('fs');
 const path = require('path');
 
-const loadFile = file => {
-  return Object.assign(load(`../../../../ccd-definition/${file}.json`), []);
+const definitionsRoot = path.resolve(__dirname, '../../../../ccd-definition');
+const definitionVariants = ['civil', 'generalapplication'];
+
+const loadFileFromDefinitions = file => {
+  const results = [];
+  definitionVariants.forEach(variant => {
+    const fullPath = path.join(definitionsRoot, variant, `${file}.json`);
+    if (fs.existsSync(fullPath)) {
+      const content = Object.assign(load(fullPath), []);
+      if (Object.prototype.toString.call(content) === '[object Array]') {
+        results.push(...content);
+      } else {
+        results.push(content);
+      }
+    }
+  });
+  return results;
 };
 
 // Please update this map whenever exclusions are updated in build-release-definition.sh
@@ -17,30 +32,50 @@ const exclusions = new Map([
 ]);
 
 const ccdData = {
-    Banner: loadFile('Banner'),
-    CaseRoles: loadFile('CaseRoles'),
-    CaseType: loadFile('CaseType'),
-    Jurisdiction: loadFile('Jurisdiction'),
-    SearchCasesResultFields: loadFile('SearchCasesResultFields'),
-    SearchInputFields: loadFile('SearchInputFields'),
-    SearchResultFields: loadFile('SearchResultFields'),
-    State: loadFile('State'),
-    UserProfile: loadFile('UserProfile'),
-    WorkBasketInputFields: loadFile('WorkBasketInputFields'),
-    WorkBasketResultFields: loadFile('WorkBasketResultFields')
+    Banner: loadFileFromDefinitions('Banner'),
+    CaseRoles: loadFileFromDefinitions('CaseRoles'),
+    CaseType: loadFileFromDefinitions('CaseType'),
+    Jurisdiction: loadFileFromDefinitions('Jurisdiction'),
+    SearchCasesResultFields: loadFileFromDefinitions('SearchCasesResultFields'),
+    SearchInputFields: loadFileFromDefinitions('SearchInputFields'),
+    SearchResultFields: loadFileFromDefinitions('SearchResultFields'),
+    State: loadFileFromDefinitions('State'),
+    UserProfile: loadFileFromDefinitions('UserProfile'),
+    WorkBasketInputFields: loadFileFromDefinitions('WorkBasketInputFields'),
+    WorkBasketResultFields: loadFileFromDefinitions('WorkBasketResultFields')
 };
 
-function getConfig(path, env) {
-  return getFileData(path, env);
+function getConfig(filePath, env) {
+  return getFileData(filePath, env);
 }
 
 let getFileData = [];
 let processDir = [];
 
 let fieldsArray = [];
+function resolveDefinitionDirs(filePath) {
+  const resolved = path.resolve(__dirname, filePath);
+  if (fs.existsSync(resolved)) {
+    return [resolved];
+  }
+  if (resolved.startsWith(`${definitionsRoot}${path.sep}`)) {
+    const subPath = path.relative(definitionsRoot, resolved);
+    return definitionVariants
+      .map(variant => path.join(definitionsRoot, variant, subPath))
+      .filter(candidate => fs.existsSync(candidate));
+  }
+  return [];
+}
+
 getFileData = (filePath, env) => {
   fieldsArray = [];
-  processDir(filePath, env);
+  const definitionDirs = resolveDefinitionDirs(filePath);
+  if (!definitionDirs.length) {
+    return fieldsArray;
+  }
+  definitionDirs.forEach(definitionDir => {
+    processDir(definitionDir, env);
+  });
   return fieldsArray;
 };
 

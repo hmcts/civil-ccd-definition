@@ -1444,6 +1444,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^1.13.2":
+  version: 1.13.3
+  resolution: "axios@npm:1.13.3"
+  dependencies:
+    follow-redirects: "npm:^1.15.6"
+    form-data: "npm:^4.0.4"
+    proxy-from-env: "npm:^1.1.0"
+  checksum: 10/2ceca9215671f9c2bcd5d8a0a1a667e9a35f9f7cfae88f25bba773ed9612de6cac50b2bf8be5e6918cbd2db601b4431ca87a00bffd9682939a8b85da9c89345a
+  languageName: node
+  linkType: hard
+
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -1916,6 +1927,7 @@ __metadata:
     allure-commandline: "npm:^2.29.0"
     allure-js-commons: "npm:^3.4.2"
     allure-playwright: "npm:2.4.0"
+    axios: "npm:^1.13.2"
     chai: "npm:^4.3.4"
     codeceptjs: "npm:3.5.11"
     custom-eslint-plugin: "portal:./plugins/custom-eslint-plugins"
@@ -1936,6 +1948,7 @@ __metadata:
     mochawesome: "npm:^7.0.1"
     node-cache: "npm:^5.1.2"
     node-fetch: "npm:^2.6.9"
+    playwright: "npm:^1.41.1"
     playwright-core: "npm:^1.47.2"
     prettier: "npm:^3.3.3"
     proper-lockfile: "npm:^4.1.2"
@@ -3286,7 +3299,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.8, follow-redirects@npm:^1.15.0":
+"follow-redirects@npm:^1.14.8, follow-redirects@npm:^1.15.0, follow-redirects@npm:^1.15.6":
   version: 1.15.11
   resolution: "follow-redirects@npm:1.15.11"
   peerDependenciesMeta:
@@ -3306,7 +3319,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"form-data@npm:^4.0.0":
+"form-data@npm:^4.0.0, form-data@npm:^4.0.4":
   version: 4.0.5
   resolution: "form-data@npm:4.0.5"
   dependencies:
@@ -5619,6 +5632,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:1.58.0":
+  version: 1.58.0
+  resolution: "playwright-core@npm:1.58.0"
+  bin:
+    playwright-core: cli.js
+  checksum: 10/718549cdcd22e55f42887e7b832276c9a50e112b278d22a2242bb00c401021623fedf9554c7090f132e389b5bbe11a987ce71e3c877e767eed4dd9bfe573019c
+  languageName: node
+  linkType: hard
+
 "playwright@npm:1.56.1":
   version: 1.56.1
   resolution: "playwright@npm:1.56.1"
@@ -5631,6 +5653,21 @@ __metadata:
   bin:
     playwright: cli.js
   checksum: 10/f1743f93b26f1d497257771428d93f3c9ed2d75b00d935f0cd1556ff2dc61d47f2df8b381d752fbd2c47082b685f0ffe4cc4b7ba440d7b4ba3a08572aec58fba
+  languageName: node
+  linkType: hard
+
+"playwright@npm:^1.41.1":
+  version: 1.58.0
+  resolution: "playwright@npm:1.58.0"
+  dependencies:
+    fsevents: "npm:2.3.2"
+    playwright-core: "npm:1.58.0"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 10/5ef5d0977906046400cee9a359f18c87eafb3e3193a33a22351cc84740c0dffb3cff7b9f2320d1e200817dbf24e63b747a0546b6c671a9fd95937e2402682ad9
   languageName: node
   linkType: hard
 

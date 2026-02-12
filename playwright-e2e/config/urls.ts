@@ -6,7 +6,6 @@ const urls = {
   idamWeb: process.env.IDAM_WEB_URL,
   idamApi: process.env.IDAM_API_URL,
   civilService: process.env.CIVIL_SERVICE_URL,
-  generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL,
   waTaskMgmtApi: process.env.WA_TASK_MGMT_URL,
   caseAssignmentService: process.env.AAC_API_URL,
   orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL,
