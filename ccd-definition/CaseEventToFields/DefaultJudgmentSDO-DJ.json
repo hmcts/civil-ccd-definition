@@ -664,9 +664,9 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "sdoR2DisposalHearingWelshLanguageDJ",
+    "CaseFieldID": "sdoR2DisposalHearingUseOfWelshLangToggleDJ",
     "PageFieldDisplayOrder": 35,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "OPTIONAL",
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
@@ -675,14 +675,14 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "sdoR2DisposalHearingUseOfWelshLangToggleDJ",
+    "CaseFieldID": "sdoR2DisposalHearingWelshLanguageDJ",
     "PageFieldDisplayOrder": 36,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "sdoR2DisposalHearingWelshLanguageDJ=\"SHOW\""
+    "FieldShowCondition": "sdoR2DisposalHearingUseOfWelshLangToggleDJ=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -744,9 +744,9 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "sdoR2TrialWelshLanguageDJ",
-    "PageFieldDisplayOrder": 31,
-    "DisplayContext": "COMPLEX",
+    "CaseFieldID": "sdoR2TrialUseOfWelshLangToggleDJ",
+    "PageFieldDisplayOrder": 30,
+    "DisplayContext": "OPTIONAL",
     "PageID": "TrialHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
@@ -755,14 +755,14 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "sdoR2TrialUseOfWelshLangToggleDJ",
-    "PageFieldDisplayOrder": 30,
-    "DisplayContext": "OPTIONAL",
+    "CaseFieldID": "sdoR2TrialWelshLanguageDJ",
+    "PageFieldDisplayOrder": 31,
+    "DisplayContext": "COMPLEX",
     "PageID": "TrialHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "sdoR2TrialWelshLanguageDJ=\"SHOW\""
+    "FieldShowCondition": "sdoR2TrialUseOfWelshLangToggleDJ=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
