@@ -318,7 +318,6 @@ withNightlyPipeline(type, product, component) {
   if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
       steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
-      steps.sh 'npx allure generate test-results/functional-ga/allure-results --clean -o test-results/functional-ga/allure-report || true'
       publishHTML([
         allowMissing: false,
         alwaysLinkToLastBuild: true,
@@ -327,27 +326,7 @@ withNightlyPipeline(type, product, component) {
         reportFiles: 'index.html',
         reportName: 'Nightly E2E Allure Report'
       ])
-      publishHTML([
-        allowMissing: true,
-        alwaysLinkToLastBuild: true,
-        keepAll: true,
-        reportDir: 'test-results/functional-ga/allure-report',
-        reportFiles: 'index.html',
-        reportName: 'Nightly GA E2E Allure Report'
-      ])
       archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
-      archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional-ga/**/*'
-      steps.sh """
-        set -e
-        if [ -f ga-fullfunctional.exit ]; then
-          while [ ! -s ga-fullfunctional.exit ]; do sleep 5; done
-          ga_status=\$(cat ga-fullfunctional.exit)
-          if [ \"\$ga_status\" != \"0\" ]; then
-            echo \"GA full functional tests failed with exit code \$ga_status\"
-            exit \$ga_status
-          fi
-        fi
-      """
     }
   }
 
