@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const { waitForGACamundaEventsFinishedBusinessProcess } = require('./../../../api/testingSupport');
-const { getAppTypes } = require('./../../../pages/generalApplication/generalApplicationTypes');
-const states = require('./../../../../fixtures/ga-ccd/state.js');
+const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../../api/testingSupport');
+const { getAppTypes } = require('../../../../pages/generalApplication/generalApplicationTypes');
+const states = require('../../../../fixtures/ga-events/ga-ccd/state.js');
 
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
@@ -101,6 +101,6 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
 }).retry(1);
 
-AfterSuite(async ({ api_ga }) => {
-  await api_ga.cleanUp();
-});
+// AfterSuite(async ({ api_ga }) => {
+//   await api_ga.cleanUp();
+// });

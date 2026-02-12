@@ -14,18 +14,18 @@ const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/$
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCaseDetailsUrl = (userId, caseId) => `${config.url.ccdDataStore}/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
-const getPaymentCallbackUrl = () => `${config.url.generalApplication}/service-request-update`;
-const getJudgeRevisitTaskHandlerUrl = (state, genAppType) => `${config.url.generalApplication}/testing-support/trigger-judge-revisit-process-event/${state}/${genAppType}`;
+const getPaymentCallbackUrl = () => `${config.url.civilService}/service-request-update`;
+const getJudgeRevisitTaskHandlerUrl = (state, genAppType) => `${config.url.civilService}/testing-support/trigger-judge-revisit-process-event/${state}/${genAppType}`;
 const getCaseDismissalTaskHandlerUrl = () => `${config.url.civilService}/testing-support/trigger-case-dismissal-scheduler`;
-const getGaCaseDataUrl = (caseId) => `${config.url.generalApplication}/testing-support/case/${caseId}`;
+const getGaCaseDataUrl = (caseId) => `${config.url.civilService}/testing-support/case/${caseId}`;
 const getMainCivilServiceCaseDataUrl = () => `${config.url.civilService}/testing-support/case/`;
-const getCivilServiceCaseDataUrl = () => `${config.url.generalApplication}/testing-support/case/`;
+const getCivilServiceCaseDataUrl = () => `${config.url.civilService}/testing-support/case/`;
 const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
 const getHearingFeeUnpaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-unpaid`;
 const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`;
 const getBulkClaimServiceUrl = () => `${config.url.orchestratorService}/createSDTClaim`;
 const getPaymentAPIBaseUrl = () => `${config.url.paymentApi}`;
-const getGeneralApplicationBaseUrl = () => `${config.url.generalApplication}/testing-support/case/`;
+const getGeneralApplicationBaseUrl = () => `${config.url.civilService}/testing-support/case/`;
 
 const getRequestHeaders = (userAuth) => {
   return {

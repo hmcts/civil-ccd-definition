@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const states = require('../../../fixtures/ga-ccd/state');
-const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../api/testingSupport');
+const states = require('../../../../fixtures/ga-events/ga-ccd/state');
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference, user;
-const claimAmountJudge = '11000';
 
 Feature('Before SDO 1v2 - GA - Consent Orders').tag('@ui-ga-consent-order');
 

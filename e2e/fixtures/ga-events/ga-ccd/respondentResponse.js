@@ -1,5 +1,5 @@
 const uuid = require('uuid');
-const {date} = require('../../api/dataHelper');
+const {date} = require('../../../api/dataHelper');
 const docUuid = uuid.v1();
 module.exports = {
   respondConsentGAData: (agree) => {

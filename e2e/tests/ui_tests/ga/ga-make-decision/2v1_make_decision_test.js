@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../api/testingSupport');
-const { getAppTypes } = require('../../../pages/generalApplication/generalApplicationTypes');
-const states = require('../../../../fixtures/ga-ccd/state.js');
+const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../../api/testingSupport');
+const { getAppTypes } = require('../../../../pages/generalApplication/generalApplicationTypes');
+const states = require('../../../../fixtures/ga-events/ga-ccd/state.js');
 
 const mpScenario = 'TWO_V_ONE';
 const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;

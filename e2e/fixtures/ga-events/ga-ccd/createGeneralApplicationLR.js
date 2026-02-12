@@ -1,5 +1,5 @@
-const {date} = require('../../api/dataHelper');
-const config = require('../../config.js');
+const {date} = require('../../../api/dataHelper');
+const config = require('../../../config.js');
 
 module.exports = {
   createGAData: (isWithNotice, reasonWithoutNotice, calculatedAmount, code) => {

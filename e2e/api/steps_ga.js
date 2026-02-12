@@ -1,5 +1,5 @@
 const config = require('../config.js');
-const {PBAv3, COSC, isJOLive} = require('../fixtures/featureKeys');
+const {PBAv3, COSC, isJOLive} = require('../fixtures/ga-events/featureKeys');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
@@ -18,33 +18,32 @@ const {
   waitForGACamundaEventsFinishedBusinessProcess
 } = require('../api/testingSupport');
 
-
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
-const claimData = require('../fixtures/events/createClaim.js');
-const claimDataSpec = require('../fixtures/events/claim/createClaimSpec.js');
-const claimSpecData = require('../fixtures/events/createClaimSpec.js');
-const claimDataSpecSmallLRvLiP = require('../fixtures/events/createClaimSpecSmallCui.js');
-const genAppData = require('../fixtures/ga-ccd/createGeneralApplication.js');
-const genAppDataLR = require('../fixtures/ga-ccd/createGeneralApplicationLR.js');
-const genAppRespondentResponseData = require('../fixtures/ga-ccd/respondentResponse.js');
-const genAppJudgeMakeDecisionData = require('../fixtures/ga-ccd/judgeMakeDecision.js');
-const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-ccd/judgeMakeFinalDecision.js');
-const genAppHearingData = require('../fixtures/ga-ccd/genAppHearing.js');
-const genAppNbcAdminTask = require('../fixtures/ga-ccd/nbcAdminTask.js');
-const createClaimLipClaimant = require('../fixtures/events/cui/createClaimUnrepresentedClaimant.js');
-const events = require('../fixtures/ga-ccd/events.js');
+const claimData = require('../fixtures/ga-events/events/createClaim.js');
+const claimDataSpec = require('../fixtures/ga-events/events/createClaimSpec.js');
+const claimSpecData = require('../fixtures/ga-events/events/createClaimSpec.js');
+const claimDataSpecSmallLRvLiP = require('../fixtures/ga-events/events/createClaimSpecSmallCui.js');
+const genAppData = require('../fixtures/ga-events/ga-ccd/createGeneralApplication.js');
+const genAppDataLR = require('../fixtures/ga-events/ga-ccd/createGeneralApplicationLR.js');
+const genAppRespondentResponseData = require('../fixtures/ga-events/ga-ccd/respondentResponse.js');
+const genAppJudgeMakeDecisionData = require('../fixtures/ga-events/ga-ccd/judgeMakeDecision.js');
+const genAppJudgeMakeFinalOrderData = require('../fixtures/ga-events/ga-ccd/judgeMakeFinalDecision.js');
+const genAppHearingData = require('../fixtures/ga-events/ga-ccd/genAppHearing.js');
+const genAppNbcAdminTask = require('../fixtures/ga-events/ga-ccd/nbcAdminTask.js');
+const createClaimLipClaimant = require('../fixtures/ga-events/events/cui/createClaimUnrepresentedClaimant.js');
+const events = require('../fixtures/ga-events/ga-ccd/events.js');
 const testingSupport = require('./testingSupport');
 const { replaceDQFieldsIfHNLFlagIsDisabled, replaceFieldsIfHNLToggleIsOffForClaimantResponse} = require('../helpers/hnlFeatureHelper');
 const {checkToggleEnabled} = require('./testingSupport');
-const {createGeneralAppN245FormUpload} = require('../fixtures/ga-ccd/createGeneralApplication');
-const sdoTracks = require('../fixtures/events/createSDO.js');
-const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
-const createFinalOrder = require('../fixtures/events/finalOrder.js');
+const {createGeneralAppN245FormUpload} = require('../fixtures/ga-events/ga-ccd/createGeneralApplication');
+const sdoTracks = require('../fixtures/ga-events/events/createSDO.js');
+const hearingScheduled = require('../fixtures/ga-events/events/scheduleHearing.js');
+const createFinalOrder = require('../fixtures/ga-events/events/finalOrder.js');
 const {expect} = require('chai');
 const {cloneDeep} = require('lodash');
-const genLipAppData = require('../fixtures/events/cui/createGAUnrepresented.js');
-const genLipHwf = require('../fixtures/events/cui/hwf.js');
+const genLipAppData = require('../fixtures/ga-events/events/cui/createGAUnrepresented.js');
+const genLipHwf = require('../fixtures/ga-events/events/cui/hwf.js');
 const gaTypesList = {
   'LATypes': ['STAY_THE_CLAIM','EXTEND_TIME', 'AMEND_A_STMT_OF_CASE'],
   'JudgeGaTypes': ['SET_ASIDE_JUDGEMENT']
@@ -130,48 +129,48 @@ const data = {
   CREATE_CLAIM_RESPONDENT_SOLICITOR_FIRM_NOT_IN_MY_HMCTS: claimData.createClaimRespondentSolFirmNotInMyHmcts,
   JUDGE_MAKES_ORDER_UNCLOAK: genAppJudgeMakeDecisionData.judgeMakeOrderUncloakApplication(),
   JUDGE_REQUEST_MORE_INFO_UNCLOAK: (other) => genAppJudgeMakeDecisionData.judgeRequestMoreInfomationUncloakData(other),
-  RESUBMIT_CLAIM: require('../fixtures/events/resubmitClaim.js'),
-  NOTIFY_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
-  PARTIAL_DEFENDANT_OF_CLAIM: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol_partial.js'),
-  NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
-  PARTIAL_NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/events/1v2DifferentSolicitorEvents/notifyClaimDetails_1v2DiffSol_partial.js'),
-  ADD_OR_AMEND_CLAIM_DOCUMENTS: require('../fixtures/events/addOrAmendClaimDocuments.js'),
-  ACKNOWLEDGE_CLAIM: require('../fixtures/events/acknowledgeClaim.js'),
-  ACKNOWLEDGE_CLAIM_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/acknowledgeClaim_sameSolicitor.js'),
-  ACKNOWLEDGE_CLAIM_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor1.js'),
-  ACKNOWLEDGE_CLAIM_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor2.js'),
-  INFORM_AGREED_EXTENSION_DATE: require('../fixtures/events/informAgreeExtensionDate.js'),
-  INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/informAgreeExtensionDate_Solicitor2.js'),
-  DEFENDANT_RESPONSE: require('../fixtures/events/defendantResponse.js'),
-  DEFENDANT_RESPONSE_SAME_SOLICITOR: require('../fixtures/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
-  DEFENDANT_RESPONSE_SOLICITOR_ONE: require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
-  DEFENDANT_RESPONSE_SOLICITOR_TWO: require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
-  DEFENDANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/events/2v1Events/defendantResponse_2v1'),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
-  ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
-  CASE_PROCEEDS_IN_CASEMAN_SPEC: require('../fixtures/events/caseProceedsInCasemanSpec.js'),
-  AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
-  ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
+  RESUBMIT_CLAIM: require('../fixtures/ga-events/events/resubmitClaim.js'),
+  NOTIFY_DEFENDANT_OF_CLAIM: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
+  PARTIAL_DEFENDANT_OF_CLAIM: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol_partial.js'),
+  NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/notifyClaim_1v2DiffSol.js'),
+  PARTIAL_NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/notifyClaimDetails_1v2DiffSol_partial.js'),
+  ADD_OR_AMEND_CLAIM_DOCUMENTS: require('../fixtures/ga-events/events/addOrAmendClaimDocuments.js'),
+  ACKNOWLEDGE_CLAIM: require('../fixtures/ga-events/events/acknowledgeClaim.js'),
+  ACKNOWLEDGE_CLAIM_SAME_SOLICITOR: require('../fixtures/ga-events/events/1v2SameSolicitorEvents/acknowledgeClaim_sameSolicitor.js'),
+  ACKNOWLEDGE_CLAIM_SOLICITOR_ONE: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor1.js'),
+  ACKNOWLEDGE_CLAIM_SOLICITOR_TWO: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/acknowledgeClaim_Solicitor2.js'),
+  INFORM_AGREED_EXTENSION_DATE: require('../fixtures/ga-events/events/informAgreeExtensionDate.js'),
+  INFORM_AGREED_EXTENSION_DATE_SOLICITOR_TWO: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/informAgreeExtensionDate_Solicitor2.js'),
+  DEFENDANT_RESPONSE: require('../fixtures/ga-events/events/defendantResponse.js'),
+  DEFENDANT_RESPONSE_SAME_SOLICITOR: require('../fixtures/ga-events/events/1v2SameSolicitorEvents/defendantResponse_sameSolicitor.js'),
+  DEFENDANT_RESPONSE_SOLICITOR_ONE: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1'),
+  DEFENDANT_RESPONSE_SOLICITOR_TWO: require('../fixtures/ga-events/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2'),
+  DEFENDANT_RESPONSE_TWO_APPLICANTS: require('../fixtures/ga-events/events/2v1Events/defendantResponse_2v1'),
+  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/ga-events/events/claimantResponse.js').claimantResponse(mpScenario),
+  ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/ga-events/events/addDefendantLitigationFriend.js'),
+  CASE_PROCEEDS_IN_CASEMAN_SPEC: require('../fixtures/ga-events/events/caseProceedsInCasemanSpec.js'),
+  AMEND_PARTY_DETAILS: require('../fixtures/ga-events/events/amendPartyDetails.js'),
+  ADD_CASE_NOTE: require('../fixtures/ga-events/events/addCaseNote.js'),
   FINAL_ORDER_FREEFORM: genAppJudgeMakeFinalOrderData.judgeMakesDecisionFreeFormData(),
   FINAL_ORDER_ASSISTED: genAppJudgeMakeFinalOrderData.judgeMakesDecisionAssisted(),
   FINAL_ORDER_ASSISTED_WITH_HEARING: genAppJudgeMakeFinalOrderData.judgeMakesDecisionAssistedWithHearing(),
 
   CLAIM_CREATE_CLAIM_AP_SPEC: (scenario) => claimDataSpec.createClaimForAccessProfiles(scenario),
-  CLAIM_DEFENDANT_RESPONSE_SPEC: (response, camundaEvent) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
-  CLAIM_DEFENDANT_RESPONSE2_SPEC: (response, camundaEvent) => require('../fixtures/events/claim/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
-  CLAIM_DEFENDANT_RESPONSE_1v2_SPEC: (response, camundaEvent) => require('../fixtures/events/claim/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
-  CLAIM_CLAIMANT_RESPONSE_SPEC: (mpScenario) => require('../fixtures/events/claim/claimantResponseSpec.js').claimantResponse(mpScenario),
-  CLAIM_CLAIMANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/events/claim/claimantResponseSpec1v2.js').claimantResponse(response),
-  CLAIM_INFORM_AGREED_EXTENSION_DATE_SPEC: () => require('../fixtures/events/claim/informAgreeExtensionDateSpec.js'),
-  JUDGMENT_PAID_FULL: require('../fixtures/events/cui/judgmentPaidInFullCui'),
-  CLAIM_DEFAULT_JUDGEMENT_SPEC_CUI: require('../fixtures/events/cui/defaultJudgmentCui.js'),
-  CLAIM_DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/claim/defaultJudgmentSpec.js'),
-  CLAIM_DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/claim/defaultJudgment1v2Spec.js'),
-  CLAIM_DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/claim/defaultJudgment2v1Spec.js'),
-  CREATE_CERTIFICATION_OF_SATISFACTION_CANCELLATION: require('../fixtures/ga-ccd/createCoscApplication.js'),
-  JUDGMENT_PAID_IN_FULL: require('../fixtures/events/claim/judgmentPaidInFull'),
-  DEFENDANT_RESPONSE_SPEC_CUI: require('../fixtures/events/cui/defendantResponseCui.js').createDefendantResponse(),
-  REQUEST_JUDGEMENT: (response) => require('../fixtures/events/claim/requestJudgementSpec.js').createRequestJudgment(response),
+  CLAIM_DEFENDANT_RESPONSE_SPEC: (response, camundaEvent) => require('../fixtures/ga-events/events/claim/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
+  CLAIM_DEFENDANT_RESPONSE2_SPEC: (response, camundaEvent) => require('../fixtures/ga-events/events/claim/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
+  CLAIM_DEFENDANT_RESPONSE_1v2_SPEC: (response, camundaEvent) => require('../fixtures/ga-events/events/claim/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
+  CLAIM_CLAIMANT_RESPONSE_SPEC: (mpScenario) => require('../fixtures/ga-events/events/claim/claimantResponseSpec.js').claimantResponse(mpScenario),
+  CLAIM_CLAIMANT_RESPONSE_1v2_SPEC: (response) => require('../fixtures/ga-events/events/claim/claimantResponseSpec1v2.js').claimantResponse(response),
+  CLAIM_INFORM_AGREED_EXTENSION_DATE_SPEC: () => require('../fixtures/ga-events/events/claim/informAgreeExtensionDateSpec.js'),
+  JUDGMENT_PAID_FULL: require('../fixtures/ga-events/events/cui/judgmentPaidInFullCui'),
+  CLAIM_DEFAULT_JUDGEMENT_SPEC_CUI: require('../fixtures/ga-events/events/cui/defaultJudgmentCui.js'),
+  CLAIM_DEFAULT_JUDGEMENT_SPEC: require('../fixtures/ga-events/events/claim/defaultJudgmentSpec.js'),
+  CLAIM_DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/ga-events/events/claim/defaultJudgment1v2Spec.js'),
+  CLAIM_DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/ga-events/events/claim/defaultJudgment2v1Spec.js'),
+  CREATE_CERTIFICATION_OF_SATISFACTION_CANCELLATION: require('../fixtures/ga-events/ga-ccd/createCoscApplication.js'),
+  JUDGMENT_PAID_IN_FULL: require('../fixtures/ga-events/events/claim/judgmentPaidInFull'),
+  DEFENDANT_RESPONSE_SPEC_CUI: require('../fixtures/ga-events/events/cui/defendantResponseCui.js').createDefendantResponse(),
+  REQUEST_JUDGEMENT: (response) => require('../fixtures/ga-events/events/claim/requestJudgementSpec.js').createRequestJudgment(response),
 
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),

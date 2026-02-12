@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const states = require('../../../../fixtures/ga-ccd/state.js');
+const states = require('../../../../fixtures/ga-events/ga-ccd/state.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const hnStateStatus = states.HEARING_SCHEDULED.id;
 

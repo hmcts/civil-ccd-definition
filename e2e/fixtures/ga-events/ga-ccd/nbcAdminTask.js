@@ -1,4 +1,4 @@
-const {date} = require('../../api/dataHelper');
+const {date} = require('../../../api/dataHelper');
 module.exports = {
   nbcAdminReferToJudgeData: () => {
     return {

@@ -1,4 +1,4 @@
-const events = require('../../fixtures/ga-ccd/events');
+const events = require('../../fixtures/ga-events/ga-ccd/events');
 const {I} = inject();
 
 module.exports = {

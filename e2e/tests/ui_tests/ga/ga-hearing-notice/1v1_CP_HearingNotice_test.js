@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const { waitForGACamundaEventsFinishedBusinessProcess } = require('./../../../api/testingSupport');
-const states = require('./../../../fixtures/ga-ccd/state');
+const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../../api/testingSupport');
+const states = require('../../../../fixtures/ga-events/ga-ccd/state');
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const hnStatus = states.HEARING_SCHEDULED.name;
 const mpScenario = 'ONE_V_ONE';

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const states = require('./../../../fixtures/ga-ccd/state');
-const { waitForGACamundaEventsFinishedBusinessProcess } = require('./../../../api/testingSupport');
+const states = require('../../../../fixtures/ga-events/ga-ccd/state');
+const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../../api/testingSupport');
 const mpScenario = 'ONE_V_ONE';
 const doc = 'hearingNotice';
 let civilCaseReference, gaCaseReference, user;

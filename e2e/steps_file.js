@@ -210,10 +210,10 @@ const serviceRequestPage = require('./pages/generalApplication/serviceRequest.pa
 const appDetailsPage = require('./pages/generalApplication/hearingNoticePages/applicationDetails.page');
 const hearingSchedulePage = require('./pages/generalApplication/hearingNoticePages/hearingSchedule.page');
 const hearingNoticeCYAPage = require('./pages/generalApplication/hearingNoticePages/hnCheckYourAnswers.page');
-const gaEvents = require('./fixtures/ga-ccd/events.js');
+const gaEvents = require('./fixtures/ga-events/ga-ccd/events.js');
 const {getAppTypes} = require('./pages/generalApplication/generalApplicationTypes');
 const apiRequest = require('./api/apiRequest');
-const genAppJudgeMakeDecisionData = require('./fixtures/ga-ccd/judgeMakeDecision');
+const genAppJudgeMakeDecisionData = require('./fixtures/ga-events/ga-ccd/judgeMakeDecision');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
@@ -221,7 +221,7 @@ const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*=\'navigation-list\'] a';
-const SUMMARY_TAB = 'div[role=\'tab\'] >> \'Summary\'';
+const CASE_DETAILS_TAB = '.mat-tab-labels';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const TEST_FILE_PATH_DOC = './e2e/fixtures/exampleDOC.docx';
@@ -235,7 +235,7 @@ const CONFIRMATION_MESSAGE = {
   offline: 'Your claim has been received and will progress offline',
 };
 
-let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
+let caseId = '1770889956809489', screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
 const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
@@ -931,7 +931,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.CASE_PROCEEDS_IN_CASEMAN, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
-        () => this.waitForSelector(SUMMARY_TAB, 30),
+        () => this.waitForSelector(CASE_DETAILS_TAB, 30),
       ]);
       await this.takeScreenshot();
     },
@@ -1284,7 +1284,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-      }, SUMMARY_TAB, undefined, 20);
+      }, CASE_DETAILS_TAB, undefined, 20);
     },
 
     async initiateNoticeOfChange(caseId, clientName) {
@@ -1302,7 +1302,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
-      }, SUMMARY_TAB, undefined, 25);
+      }, CASE_DETAILS_TAB, undefined, 25);
     },
 
     async manageWitnessesForDefendant(caseId) {
@@ -1453,7 +1453,7 @@ module.exports = function () {
         await this.wait(3);
       }
 
-      await caseViewPage.startEventWithUrl(gaEvents.APPROVE_CONSENT_ORDER, gaCaseNumber);
+      await caseViewPage.startEvent(gaEvents.APPROVE_CONSENT_ORDER, gaCaseNumber);
       await consentOrderPage.approveConsentOrder();
       await consentOrderReviewPage.reviewOrderDocument();
       await consentOrderCYAPage.verifyConsentOrderCheckAnswerForm(gaCaseNumber, 1);
@@ -1493,7 +1493,7 @@ module.exports = function () {
     async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement) {
       eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
+        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
         ...selectApplicationType(appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
         ...selectConsentCheck(consentCheck),
@@ -1543,7 +1543,7 @@ module.exports = function () {
     async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent) {
       eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
+        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
         ...selectApplicationType(appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),
         () => n245FormPage.uploadN245Form(TEST_FILE_PATH),
@@ -1576,7 +1576,7 @@ module.exports = function () {
     async judgeListForAHearingDecision(decision, caseNumber, notice, documentType) {
       eventName = gaEvents.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.MAKE_DECISION, caseNumber),
+        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => listForHearingPage.selectJudicialHearingPreferences('inPerson'),
         () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
@@ -1611,7 +1611,7 @@ module.exports = function () {
       }
       eventName = gaEvents.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.GENERATE_DIRECTIONS_ORDER, gaCaseNumber),
+        () => caseViewPage.startEvent(gaEvents.GENERATE_DIRECTIONS_ORDER, gaCaseNumber),
         () => judgeOrderPage.verifyErrorMessage(),
         () => judgeOrderPage.selectOrderType(orderType),
         ...conditionalSteps(orderType === 'freeFromOrder', [
@@ -1646,7 +1646,7 @@ module.exports = function () {
     async judgeMakeDecision(decision, order, notice, caseNumber, documentType, orderType) {
       eventName = gaEvents.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.MAKE_DECISION, caseNumber),
+        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => makeAnOrderPage.selectAnOrder(order, notice, orderType),
         () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
@@ -1659,7 +1659,7 @@ module.exports = function () {
     async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice, documentType) {
       eventName = gaEvents.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.MAKE_DECISION, caseNumber),
+        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
         () => judgeDecisionPage.selectJudgeDecision(decision),
         () => requestMoreInfoPage.requestMoreInfoOrder(infoType, withoutNotice),
         () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
@@ -1677,7 +1677,7 @@ module.exports = function () {
     async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber, notice, documentType, orderType) {
       eventName = gaEvents.MAKE_DECISION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.MAKE_DECISION, caseNumber),
+        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
         ...conditionalSteps(notice !== 'withOutNotice', [
           () => judgeDecisionPage.selectJudgeDecision(decision),
           () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
@@ -1740,7 +1740,7 @@ module.exports = function () {
     async respondToApplication(caseId, consentCheck, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement, appTypes) {
       eventName = gaEvents.RESPOND_TO_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_APPLICATION,caseId),
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_APPLICATION,caseId),
         () => respConsentCheckPage.selectConsentCheck(consentCheck),
         () => respHearingDetailsPage.isRespHearingScheduled(hearingScheduled),
         () => respHearingDetailsPage.isRespTrialRequired(trialRequired),
@@ -1759,7 +1759,7 @@ module.exports = function () {
     async respondToJudgeAdditionalInfo(caseNumber) {
       eventName = gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO, caseNumber),
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO, caseNumber),
         () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
@@ -1770,7 +1770,7 @@ module.exports = function () {
     async respondToJudgesDirections(caseNumber) {
       eventName = gaEvents.RESPOND_TO_JUDGE_DIRECTIONS.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_JUDGE_DIRECTIONS, caseNumber),
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_DIRECTIONS, caseNumber),
         () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_DIRECTIONS.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
@@ -1781,7 +1781,7 @@ module.exports = function () {
     async respondToJudgesWrittenRep(caseNumber, documentType) {
       eventName = gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION, caseNumber),
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION, caseNumber),
         () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id, TEST_FILE_PATH),
         ...submitSupportingDocument(eventName),
         () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
@@ -1798,7 +1798,7 @@ module.exports = function () {
     async respondToVaryJudgementApp(caseId, appTypes, type, paymentPlanType) {
       eventName = gaEvents.RESPOND_TO_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.RESPOND_TO_APPLICATION,caseId),
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_APPLICATION,caseId),
         () => respondentDebtorResponsePage.selectDebtorOffer(type, paymentPlanType),
         () => respHearingDetailsPage.isRespHearingScheduled('yes'),
         () => respHearingDetailsPage.isRespTrialRequired('yes'),
@@ -1856,7 +1856,7 @@ module.exports = function () {
     async verifyNoN245Form(caseId, appTypes, hearingScheduled) {
       eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventWithUrl(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
+        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
         () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
         ...selectApplicationType(appTypes),
         () => hearingDatePage.selectHearingScheduled(hearingScheduled),

@@ -1,5 +1,5 @@
-const {date, listElement} = require('../../api/dataHelper');
-const config = require('../../config');
+const {date, listElement} = require('../../../api/dataHelper');
+const config = require('../../../config');
 module.exports = {
     judgeMakesDecisionFreeFormData: () => {
         return {
