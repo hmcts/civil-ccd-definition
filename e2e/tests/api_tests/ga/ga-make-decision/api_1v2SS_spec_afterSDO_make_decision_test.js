@@ -20,7 +20,7 @@ Scenario.skip('Spec Claimant create GA - CASE_PROGRESSION state', async ({ api_g
 
   await I.wait(10);
   await api_ga.scheduleCivilHearing(civilCaseReference, config.hearingCenterAdminWithRegionId2, 'FAST_TRACK_TRIAL');
-  await api_ga.amendHearingDueDate(civilCaseReference, config.systemUpdate);
+  await api_ga.amendHearingDueDate(civilCaseReference, config.systemupdate);
   await api_ga.hearingFeePaid(civilCaseReference, config.hearingCenterAdminWithRegionId2);
   await api_ga.createFinalOrder(civilCaseReference, config.judgeUser2WithRegionId2, 'FREE_FORM_ORDER');
   console.log('Make a General Application');

@@ -19,7 +19,7 @@ Scenario.skip('1v1 Unspec GA-WA Application closed test', async ({api_ga}) => {
   gaCaseReference = await api_ga.initiateGeneralApplicationWithOutNotice(config.applicantSolicitorUser, civilCaseReference);
   console.log('*** General Application case created ***' + gaCaseReference);
   // We need to fix the below steps
-/*  await api_ga.amendclaimDismissedDeadline(config.systemUpdate);
+/*  await api_ga.amendclaimDismissedDeadline(config.systemupdate);
   await api_ga.caseDismisalScheduler(civilCaseReference, gaCaseReference, systemUpdate);*/
 }).retry(0);
 

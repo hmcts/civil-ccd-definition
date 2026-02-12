@@ -56,7 +56,7 @@ Scenario('GA for 1v2 Same Solicitor - respond to application - Sequential writte
 
   console.log('Judge Making decision:' + gaCaseReference);
 
-  user = config.judgeUser;
+  user = config.judgeUser2WithRegionId4;
   await I.login(user);
   await I.judgeWrittenRepresentationsDecision('orderForWrittenRepresentations',
     'sequentialRep', gaCaseReference, 'yes', 'Order_Written_Representation_Sequential', 'noneOrder');
