@@ -711,7 +711,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sdoR2DisposalHearingUseOfWelshLangToggleDJ",
-    "Label": "Use of the Welsh language",
+    "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
     "SecurityClassification": "Public",
@@ -736,7 +736,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sdoR2TrialUseOfWelshLangToggleDJ",
-    "Label": "Use of the Welsh language",
+    "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
     "SecurityClassification": "Public",
