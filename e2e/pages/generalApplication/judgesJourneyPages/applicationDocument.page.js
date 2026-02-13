@@ -30,6 +30,8 @@ module.exports = {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     } else if (documentType === 'Free From Order' || documentType === 'Assisted Order') {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 4);
+    } else if (documentType === 'Consent Order'){
+      await I.seeNumberOfVisibleElements(this.fields.docTitles, 2);
     } else {
       await I.seeNumberOfVisibleElements(this.fields.docTitles, 3);
     }
