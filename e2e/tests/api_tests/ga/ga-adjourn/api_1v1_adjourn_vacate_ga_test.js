@@ -20,7 +20,7 @@ Scenario('AC 4 - 15 Days with consent', async ({api_ga}) => {
   gaCaseReference = await api_ga.initiateAdjournVacateGeneralApplication(
     config.applicantSolicitorUser, civilCaseReference, 'No',
     'Yes', hearingDate, '0', 'FEE0414', '1');
-}).retry(1).tag('@api-prod @ui-prod');
+}).retry(1);
 
 Scenario('AC 3 - 14 Days with consent', async ({api_ga}) => {
   let hearingDate = await api_ga.createDateString(14);
@@ -48,7 +48,7 @@ Scenario('AC 2 - 14 Days without consent, without notice', async ({api_ga}) => {
   gaCaseReference = await api_ga.initiateAdjournVacateGeneralApplication(
     config.applicantSolicitorUser, civilCaseReference, 'No',
     'No', hearingDate, '11900', 'FEE0443', '2');
-}).retry(1).tag('@api-prod @ui-prod');
+}).retry(1);
 
 Scenario('AC 1 - 14 Days without consent, with notice', async ({api_ga}) => {
   let hearingDate = await api_ga.createDateString(14);

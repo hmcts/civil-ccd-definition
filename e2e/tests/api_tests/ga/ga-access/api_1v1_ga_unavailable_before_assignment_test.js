@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_ONE';
 const errorMsg = 'Application cannot be created until all the required respondent solicitor are assigned to the case.';
 let civilCaseReference, gaCaseReference;
 
-Feature('1v1 unspecified assert general application unavailable before respondent assigned').tag('@ui-prod @api-ga-access');
+Feature('1v1 unspecified assert general application unavailable before respondent assigned').tag('@api-ga-access');
 
 Scenario.skip('1v1 unspecified assert general application unavailable before respondent assigned', async ({ I, api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');

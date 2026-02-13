@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Judge Make Order Directions Order API tests').tag('@api-prod @ui-prod @api-ga-directions-order');
+Feature('GA 1v1 Judge Make Order Directions Order API tests').tag('@api-ga-directions-order');
 
 Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT - DIRECTIONS ORDER - Respondent upload Directions Document', async ({api_ga}) => {
 

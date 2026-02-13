@@ -25,7 +25,7 @@ Scenario('Judge makes decision 1V1 Specified case- DIRECTIONS ORDER', async ({ap
   console.log('*** Start Respondent respond to Judge Directions on GA Case Reference: ' + gaCaseReference + ' ***');
   await api_ga.respondentResponseToJudgeDirections(config.applicantSolicitorUser, gaCaseReference);
   console.log('*** End Respondent respond to Judge Directions GA Case Reference: ' + gaCaseReference + ' ***');
-}).retry(1).tag('@api-prod @ui-prod');
+}).retry(1);
 
 
 Scenario('Make an Urgent General Application with Vary payment terms of judgment', async ({api_ga}) => {

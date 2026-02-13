@@ -41,7 +41,7 @@ Scenario('Caseworker makes decision 1V1 - CONSENT ORDER', async ({api_ga}) => {
   console.log('*** Start CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
   await api_ga.nbcAdminApproveConsentOrder(config.hearingCenterAdminWithRegionId2, gaCaseReference);
   console.log('*** End CaseWorker Approve Consent Order on GA Case Reference: ' + gaCaseReference + ' ***');
-}).retry(1).tag('@api-prod @ui-prod @api-ga-consent-order');
+}).retry(1).tag('@api-ga-consent-order');
 
 Scenario('Judge Revisit 1V1 - consentOrder End Date Scheduler', async ({api_ga}) => {
 
@@ -91,9 +91,9 @@ Scenario('Legal Advisor decision 1V1 - CONSENT ORDER - Uncloak Application', asy
   await api_ga.additionalPaymentSuccess(config.applicantSolicitorUser, gaCaseReference, 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
-}).retry(1).tag('@api-prod @ui-prod @api-ga-consent-order');
+}).retry(1).tag('@api-ga-consent-order');
 
-Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application @api-prod @ui-prod', async ({api_ga}) => {
+Scenario('Judge makes decision 1V1 - CONSENT ORDER - URGENT Uncloak Application', async ({api_ga}) => {
 
   console.log('Make a General Application for Consent order');
   gaCaseReference = await api_ga.initiateConsentUrgentGeneralApplication(config.applicantSolicitorUser, civilCaseReferenceAfterSDO, ['STRIKE_OUT']);
@@ -133,7 +133,7 @@ Scenario('After SDO - CONSENT ORDER -  CaseWorker Refer to Judge makes decision 
   await api_ga.additionalPaymentSuccess(config.applicantSolicitorUser,gaCaseReference , 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION');
   console.log('*** End uncloaking consent order: ' + gaCaseReference + ' ***');
 
-}).retry(1).tag('@api-prod @ui-prod @api-ga-consent-order');
+}).retry(1).tag('@api-ga-consent-order');
 
 Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1V1 -- URGENT - Uncloak Application', async ({ api_ga, I }) => {
 
@@ -154,7 +154,7 @@ Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1
   await api_ga.respondentResponseConsentOrderApp(config.defendantSolicitorUser, gaCaseReference);
   console.log('*** End Response to GA Case Reference: ' + gaCaseReference + ' ***');
 
-}).retry(1).tag('@api-prod @ui-prod @api-ga-consent-order');
+}).retry(1).tag('@api-ga-consent-order');
 
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();

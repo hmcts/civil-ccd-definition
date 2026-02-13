@@ -51,7 +51,7 @@ Scenario('NBC admin Approve Consent Order', async ({ I, api_ga }) => {
 
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'Consent Order');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Consent Order');
-}).retry(1).tag('@ui-prod');
+}).retry(1);
 
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();
