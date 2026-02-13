@@ -105,7 +105,7 @@
     "DisplayOrder": 27,
     "PreConditionState(s)": "CASE_PROGRESSION",
     "PostConditionState": "*",
-    "EventEnablingCondition": "((claimsTrack=\"FAST_CLAIM\" AND eaCourtLocation != \"No\" AND isFinalOrder=\"\") OR (claimsTrack=\"SMALL_CLAIM\" AND eaCourtLocation != \"No\" AND isFinalOrder=\"\") OR (claimsTrack=\"FAST_CLAIM\" AND eaCourtLocation != \"No\" AND isFinalOrder=\"No\") OR (claimsTrack=\"SMALL_CLAIM\" AND eaCourtLocation != \"No\" AND isFinalOrder=\"No\") OR (caseProgAllocatedTrack = \"MULTI_CLAIM\" AND eaCourtLocation != \"No\" AND isFinalOrder!=\"\") OR (caseProgAllocatedTrack = \"INTERMEDIATE_CLAIM\" AND eaCourtLocation != \"No\" AND isFinalOrder!=\"\"))",
+    "EventEnablingCondition": "allocatedTrack = \"MULTI_CLAIM\" OR allocatedTrack = \"INTERMEDIATE_CLAIM\" OR responseClaimTrack = \"MULTI_CLAIM\" OR responseClaimTrack = \"INTERMEDIATE_CLAIM\"",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
