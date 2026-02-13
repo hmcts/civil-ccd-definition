@@ -11,7 +11,7 @@ const judgeApproveOrderStatus = states.ORDER_MADE.name;
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('1v1 Judge makes a decision').tag('@ui-prod @ui-ga-make-decision');
+Feature('1v1 Judge makes a decision').tag('@ui-ga-make-decision');
 
 Scenario('GA for 1v1 - Makes a decision', async ({ I, api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');

@@ -51,7 +51,7 @@ Scenario('1v1 - Free form order - With notice journey', async ({ I, api_ga }) =>
   await I.verifyUploadedClaimDocument(civilCaseReference, 'Free From Order');
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
-}).retry(1).tag('@ui-prod');
+}).retry(1);
 
 Scenario('1v1 - Assisted order - Without Further Hearing', async ({ api_ga, I }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');

@@ -38,7 +38,7 @@ Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Deci
 
   console.log('*** End of Validating  GA Case Visibility in all Collections: ' + gaCaseReference + ' ***');
 
-}).retry(1).tag('@api-prod @ui-prod');
+}).retry(1).tag('@api-prod');
 
 Scenario('GA 1v2  - Without Notice Application Collection after Creation of GA Case Test', async ({api_ga}) => {
 

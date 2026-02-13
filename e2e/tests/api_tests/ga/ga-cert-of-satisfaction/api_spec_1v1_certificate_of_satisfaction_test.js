@@ -15,14 +15,14 @@ Scenario('1v1 LR v LIP Spec case marked paid in full', async ({api_ga}) => {
   await api_ga.defaultJudgmentXuiPayImmediately(config.applicantSolicitorUser);
   await api_ga.markJudgmentPaid(config.applicantSolicitorUser);
   await api_ga.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
-}).retry(1).tag('@api-prod @ui-prod');
+}).retry(1);
 
 Scenario('1v1 LIP v LIP Spec Case marked paid in full', async ({api_ga}) => {
   civilCaseReference = await api_ga.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');
   await api_ga.amendRespondent1ResponseDeadline(config.systemupdate);
   await api_ga.defaultJudgmentCui(config.applicantCitizenUser);
   await api_ga.certificateOfSatisfactionCancellationCui(config.defendantCitizenUser2, civilCaseReference);
-}).retry(1).tag('@api-prod @ui-prod');
+}).retry(1);
 
 Scenario('1v1 LIP v LIP Spec Case not marked paid in full', async ({api_ga}) => {
   civilCaseReference = await api_ga.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', 'INDIVIDUAL');

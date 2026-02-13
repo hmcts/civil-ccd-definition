@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 GA Fee API tests').tag('@api-prod @ui-prod @ga-fees');
+Feature('GA 1v1 GA Fee API tests').tag('@ga-fees');
 
 Scenario.skip('MixTypesWithVary - 119 pounds', async ({api_ga}) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');

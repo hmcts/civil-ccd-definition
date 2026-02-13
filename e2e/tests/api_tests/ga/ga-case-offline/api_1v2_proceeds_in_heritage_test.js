@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge accepts strike out application API tests').tag('@api-prod @ui-prod @api-ga-case-offline');
+Feature('GA 1v2 Judge accepts strike out application API tests').tag('@api-nightly-prod @api-ga-case-offline');
 
 Scenario('Judge makes decision 1V2 - Accept Strike out application', async ({api_ga}) => {
 

@@ -27,7 +27,7 @@ Scenario('Judge makes decision 1V1 - Order Made', async ({api_ga}) => {
 
 state = await api_ga.judgeMakesDecisionOrderMadeStayClaimAppln(config.judgeUser2WithRegionId2, gaCaseReference);
 console.log('*** End Judge makes decision order made - GA Case Reference: ' + gaCaseReference + ' ***');
-}).retry(1).tag('@api-prod @ui-prod');
+}).retry(1);
 
 Scenario('Judge Revisit 1V1 unspec - Order Made End Date Scheduler', async ({api_ga}) => {
 
