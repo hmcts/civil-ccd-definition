@@ -53,7 +53,7 @@ exports.config = {
       url: process.env.URL || 'http://localhost:3333',
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 60000), // 60 seconds (reduced from 90 seconds)
-      windowSize: '1280x960',
+      windowSize: '1440x960',
       browser: 'chromium',
       timeout: 20000,
       waitForAction: 500,

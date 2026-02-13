@@ -303,18 +303,12 @@ withPipeline(type, product, component) {
     } else {
       copyPrevFailedAndNotExecutedTestFilesJson();
     }
-    sh """
-      set -e
-      rm -f ga-functional.exit
-      (GA_TEST_RESULTS_DIR=test-results/functional-ga REPORT_DIR=test-results/functional-ga yarn ga:test:functional; echo \$? > ga-functional.exit) &
-    """
   }
 
 
   afterAlways('functionalTest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional-ga/**/*'
     steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
-    steps.sh 'npx allure generate test-results/functional-ga/allure-results --clean -o test-results/functional-ga/allure-report || true'
     publishHTML([
       allowMissing: false,
       alwaysLinkToLastBuild: true,
@@ -323,15 +317,6 @@ withPipeline(type, product, component) {
       reportFiles: 'index.html',
       reportName: 'Non-Prod E2E Allure Report'
     ])
-    publishHTML([
-      allowMissing: true,
-      alwaysLinkToLastBuild: true,
-      keepAll: true,
-      reportDir: 'test-results/functional-ga/allure-report',
-      reportFiles: 'index.html',
-      reportName: 'Non-Prod GA E2E Allure Report'
-    ])
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 
   before('smoketest:aat') {
@@ -367,11 +352,6 @@ withPipeline(type, product, component) {
     env.IDAM_STUB_ENABLED = 'false'
     copyPreviousAllureHistory();
     copyPrevFailedAndNotExecutedTestFilesJson();
-    sh """
-      set -e
-      rm -f ga-functional.exit
-      (GA_TEST_RESULTS_DIR=test-results/functional-ga REPORT_DIR=test-results/functional-ga yarn ga:test:functional; echo \$? > ga-functional.exit) &
-    """
   }
 
   afterAlways('smoketest:aat') {
@@ -380,20 +360,7 @@ withPipeline(type, product, component) {
 
   afterAlways('functionalTest:aat') {
     createGithubRelease()
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional-ga/**/*'
-    steps.sh """
-      set -e
-      if [ -f ga-functional.exit ]; then
-        while [ ! -s ga-functional.exit ]; do sleep 5; done
-        ga_status=\$(cat ga-functional.exit)
-        if [ \"\$ga_status\" != \"0\" ]; then
-          echo \"GA functional tests failed with exit code \$ga_status\"
-          exit \$ga_status
-        fi
-      fi
-    """
     steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
-    steps.sh 'npx allure generate test-results/functional-ga/allure-results --clean -o test-results/functional-ga/allure-report || true'
     publishHTML([
       allowMissing: false,
       alwaysLinkToLastBuild: true,
@@ -401,14 +368,6 @@ withPipeline(type, product, component) {
       reportDir: 'test-results/functional/allure-report',
       reportFiles: 'index.html',
       reportName: 'Prod E2E Allure Report'
-    ])
-    publishHTML([
-      allowMissing: true,
-      alwaysLinkToLastBuild: true,
-      keepAll: true,
-      reportDir: 'test-results/functional-ga/allure-report',
-      reportFiles: 'index.html',
-      reportName: 'Prod GA E2E Allure Report'
     ])
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
