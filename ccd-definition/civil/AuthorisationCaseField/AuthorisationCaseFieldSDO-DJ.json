@@ -1264,7 +1264,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "useOfWelshLanguageDisposal",
     "AccessControl": [
       {
@@ -1276,7 +1276,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "useOfWelshLanguageTrial",
     "AccessControl": [
       {

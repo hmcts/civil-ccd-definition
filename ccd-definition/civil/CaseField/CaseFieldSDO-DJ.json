@@ -775,7 +775,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "useOfWelshLanguageDisposal",
     "Label": "## Use of the Welsh language",
     "FieldType": "Label",
@@ -783,7 +783,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "useOfWelshLanguageTrial",
     "Label": "## Use of the Welsh language",
     "FieldType": "Label",
