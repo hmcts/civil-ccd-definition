@@ -10896,8 +10896,20 @@
     "CRUD": "R"
   },
     {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "fullAdmitNoPaymentSchedulerProcessed",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "useOfWelshLanguageDisposal",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "useOfWelshLanguageTrial",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   }
