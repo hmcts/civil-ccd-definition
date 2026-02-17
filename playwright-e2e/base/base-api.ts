@@ -5,9 +5,10 @@ import { bankHolidays } from '../config/data';
 import { CCDEvent } from '../models/ccd/ccd-events';
 import ObjectHelper from '../helpers/object-helper';
 import TestData from '../models/test-data';
-import { civilSystemUpdate } from '../config/users/exui-users';
+import { civilSystemUpdate, judgeRegion1User } from '../config/users/exui-users';
 import config from '../config/config';
 import DateHelper from '../helpers/date-helper';
+import { validateTaskInfo } from '../helpers/wa-helper.ts';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -30,7 +31,7 @@ export default abstract class BaseApi extends BaseTestData {
 
       for (const event of events) {
         const eventDate = new Date(event.date);
-        if (eventDate > DateHelper.subtractFromToday({years: 2})) {
+        if (eventDate > DateHelper.subtractFromToday({ years: 2 })) {
           bankHolidays.push(event.date);
         }
       }
@@ -98,6 +99,43 @@ export default abstract class BaseApi extends BaseTestData {
       super.setClaimantDefendantPartyTypes();
       super.setCaseFlags();
       super.setIsDebugTestDataSetup();
+    }
+  }
+
+  protected async retrieveWaTask(task: any) {
+    const { waRequests } = this.requestsFactory;
+    const taskType = task.type; //FastTrackDirections
+    const caseId = this.ccdCaseData.id; //1771252266620196
+    const allRetrievedTasks = await waRequests.retrieveWaTasks(judgeRegion1User, caseId, taskType);
+
+    const retrievedTask = allRetrievedTasks.tasks?.find((task: any) => task.type === taskType);
+    if (!retrievedTask?.id) {
+      throw new Error(`WA task not found for caseId ${caseId}, with the type ${taskType}`);
+    }
+    validateTaskInfo(retrievedTask, task);
+    return retrievedTask;
+  }
+
+  protected async assignWaTask(retrievedTask: any) {
+    const { waRequests } = this.requestsFactory;
+    await waRequests.actionTask(judgeRegion1User, retrievedTask.id, 'claim');
+  }
+
+  protected async retryWaApiTask(
+    apiActions: () => Promise<void>,
+    retries = 25,
+    retryTimeInterval = 3000,
+  ) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+      try {
+        await apiActions();
+        console.log(`Success on attempt ${attempt}`);
+        return;
+      } catch (error) {
+        if (attempt === retries) throw error;
+        console.log(`Attempt ${attempt} failed. Retrying in ${retryTimeInterval}ms...`);
+        await new Promise((resolve) => setTimeout(resolve, retryTimeInterval));
+      }
     }
   }
 }

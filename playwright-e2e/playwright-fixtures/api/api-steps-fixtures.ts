@@ -10,6 +10,7 @@ import DefendantSolicitor1ApiSteps from '../../steps/api/exui/defendant-solicito
 import DefendantSolicitor1SpecApiSteps from '../../steps/api/exui/defendant-solicitor-1-spec-api-steps';
 import DefendantSolicitor2SpecApiSteps from '../../steps/api/exui/defendant-solicitor-2-spec-api-steps';
 import DefendantSolicitor2ApiSteps from '../../steps/api/exui/defendant-solicitor-2-api-steps';
+import WaApiSteps from '../../steps/api/wa-api-steps';
 import DataApiSteps from '../../steps/api/data-api-steps';
 
 type ApiActionsFixtures = {
@@ -22,6 +23,7 @@ type ApiActionsFixtures = {
   DefendantSolicitor2SpecApiSteps: DefendantSolicitor2SpecApiSteps;
   DefendantSolicitor2ApiSteps: DefendantSolicitor2ApiSteps;
   CaseRoleAssignmentApiSteps: CaseRoleAssignmentApiSteps;
+  WaApiSteps: WaApiSteps;
 };
 
 export const test = mergeTests(testUtils, requestFactories, dataBuilderFactories).extend<ApiActionsFixtures>({
@@ -51,5 +53,8 @@ export const test = mergeTests(testUtils, requestFactories, dataBuilderFactories
   },
   CaseRoleAssignmentApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new CaseRoleAssignmentApiSteps(_requestsFactory, _testData));
+  },
+  WaApiSteps: async ({ _requestsFactory, _testData }, use) => {
+    await use(new WaApiSteps(_requestsFactory, _testData));
   }
 });
