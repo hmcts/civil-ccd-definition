@@ -31,6 +31,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
+    "Rows": "8",
     "FieldShowCondition": "smallClaimsPenalNoticeToggle=\"SHOW\""
   },
   {
@@ -64,6 +65,7 @@
     "PageID": "FastTrack",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
+    "Rows": "8",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "fastTrackPenalNoticeToggle=\"SHOW\""
   },
