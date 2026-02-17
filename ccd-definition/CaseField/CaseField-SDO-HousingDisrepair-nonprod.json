@@ -21,7 +21,6 @@
     "ID": "smallClaimsPenalNotice",
     "Label": " ",
     "FieldType": "TextArea",
-    "Rows": 6,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -47,7 +46,6 @@
     "ID": "fastTrackPenalNotice",
     "Label": " ",
     "FieldType": "TextArea",
-    "Rows": 6,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
