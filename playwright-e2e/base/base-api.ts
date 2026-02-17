@@ -5,10 +5,10 @@ import { bankHolidays } from '../config/data';
 import { CCDEvent } from '../models/ccd/ccd-events';
 import ObjectHelper from '../helpers/object-helper';
 import TestData from '../models/test-data';
-import { civilSystemUpdate, judgeRegion1User } from '../config/users/exui-users';
+import { civilSystemUpdate } from '../config/users/exui-users';
 import config from '../config/config';
 import DateHelper from '../helpers/date-helper';
-import { validateTaskInfo } from '../helpers/wa-helper.ts';
+import WATask from '../models/wa-task';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -102,40 +102,16 @@ export default abstract class BaseApi extends BaseTestData {
     }
   }
 
-  protected async retrieveWaTask(task: any) {
-    const { waRequests } = this.requestsFactory;
-    const taskType = task.type; //FastTrackDirections
-    const caseId = this.ccdCaseData.id; //1771252266620196
-    const allRetrievedTasks = await waRequests.retrieveWaTasks(judgeRegion1User, caseId, taskType);
-
-    const retrievedTask = allRetrievedTasks.tasks?.find((task: any) => task.type === taskType);
-    if (!retrievedTask?.id) {
-      throw new Error(`WA task not found for caseId ${caseId}, with the type ${taskType}`);
-    }
-    validateTaskInfo(retrievedTask, task);
-    return retrievedTask;
+  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<string> {
+    const { workAllocationsRequests } = this.requestsFactory;
+    const task = await workAllocationsRequests.retrieveTask(user, this.ccdCaseData.id, validTask);
+    await workAllocationsRequests.actionTask(user, task.id, 'claim')
+    return task.id;
   }
 
-  protected async assignWaTask(retrievedTask: any) {
-    const { waRequests } = this.requestsFactory;
-    await waRequests.actionTask(judgeRegion1User, retrievedTask.id, 'claim');
+  protected async completeWATask(user: User, waTaskId: string) {
+    const { workAllocationsRequests } = this.requestsFactory;
+    await workAllocationsRequests.actionTask(user, waTaskId, 'complete');
   }
-
-  protected async retryWaApiTask(
-    apiActions: () => Promise<void>,
-    retries = 25,
-    retryTimeInterval = 3000,
-  ) {
-    for (let attempt = 1; attempt <= retries; attempt++) {
-      try {
-        await apiActions();
-        console.log(`Success on attempt ${attempt}`);
-        return;
-      } catch (error) {
-        if (attempt === retries) throw error;
-        console.log(`Attempt ${attempt} failed. Retrying in ${retryTimeInterval}ms...`);
-        await new Promise((resolve) => setTimeout(resolve, retryTimeInterval));
-      }
-    }
-  }
+  
 }

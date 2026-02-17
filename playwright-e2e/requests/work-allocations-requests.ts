@@ -1,18 +1,16 @@
 import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
-import CaseRole from '../enums/case-role';
 import RequestOptions from '../models/api/request-options';
-import CCDCaseData, { UploadDocumentValue } from '../models/ccd/ccd-case-data';
 import User from '../models/user';
+import WATask from '../models/wa-task';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
 @AllMethodsStep()
-export default class WaRequests extends ServiceAuthProviderRequests(BaseRequest) {
-  private waUrl = `${urls.waTaskMgmtApi}`;
+export default class WorkAllocationsRequests extends ServiceAuthProviderRequests(BaseRequest) {
 
-  async retrieveWaTasks(user: User, caseId: number, taskType: string, expectedStatus = 200) {
-    const url = `${this.waUrl}/task`;
+  async retrieveTask(user: User, caseId: number, validTask: WATask): Promise<WATask> {
+    const url = `${urls.waTaskMgmtApi}/task`;
     const body = {
       search_parameters: [
         { key: 'caseId', operator: 'IN', values: [caseId] },
@@ -27,31 +25,31 @@ export default class WaRequests extends ServiceAuthProviderRequests(BaseRequest)
       method: 'POST',
     };
 
-    const allRetrievedTasks = await super.retryRequestJson(url, requestOptions, {
-      expectedStatus,
-      verifyResponse: async (json) => {
-        const types = (json.tasks ?? []).map((t: any) => t.type);
-        if (!types.includes(taskType)) {
-          throw new Error(`Task ${taskType} not present yet.`);
-        }
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      expectedStatus: 200,
+      retries: 20,
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('tasks', responseJson);
+        const tasks = responseJson.tasks;
+        await super.expectResponseJsonArrayToContain([{ type: validTask.type }], tasks);
       },
     });
-    console.log(`All associated tasks retrieved for caseId ${caseId}`);
-    return allRetrievedTasks;
+    const task = responseJson.tasks.find((task: any) => task.type === validTask.type);
+    await super.expectResponseJsonToContain(validTask, task);
+    return task as WATask;
   }
 
   async actionTask(
     user: User,
-    taskId: string,
+    waTaskId: string,
     action: 'claim' | 'unclaim' | 'assign' | 'unassign ' | 'complete',
-    expectedStatus = 204,
   ) {
-    const url = `${this.waUrl}/task/${taskId}/${action}`;
+    const url = `${urls.waTaskMgmtApi}/task/${waTaskId}/${action}`;
     await super.retryRequest(
       url,
       { headers: await this.getRequestHeaders(user), method: 'POST' },
-      { expectedStatus },
+      { expectedStatus: 204 },
     );
-    console.log(`Task ${taskId} assigned to user ${user.name} with '${action}'`);
+    console.log(`Task ${waTaskId} assigned to user ${user.name}`);
   }
 }
