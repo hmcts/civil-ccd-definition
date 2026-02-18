@@ -720,7 +720,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sdoR2DisposalHearingWelshLanguageDJ",
-    "Label": "Use of the Welsh language",
+    "Label": " ",
     "FieldType": "SdoR2WelshLanguageUsage",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -745,7 +745,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sdoR2TrialWelshLanguageDJ",
-    "Label": "Use of the Welsh language",
+    "Label": " ",
     "FieldType": "SdoR2WelshLanguageUsage",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -771,6 +771,22 @@
     "ID": "trialCreditHire",
     "Label": "Credit hire",
     "FieldType": "TrialCreditHire",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "useOfWelshLanguageDisposal",
+    "Label": "## Use of the Welsh language",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "useOfWelshLanguageTrial",
+    "Label": "## Use of the Welsh language",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
