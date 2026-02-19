@@ -10900,5 +10900,17 @@
     "CaseFieldID": "fullAdmitNoPaymentSchedulerProcessed",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "useOfWelshLanguageDisposal",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "useOfWelshLanguageTrial",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
   }
 ]
