@@ -3,6 +3,7 @@ import CCDRequests from './ccd-requests';
 import CivilServiceRequests from './civil-service-requests';
 import GovUKRequests from './gov-uk-requests';
 import IdamRequests from './idam-requests';
+import WorkAllocationsRequests from './work-allocations-requests';
 
 export default class RequestsFactory extends BaseRequestsFactory {
   get ccdRequests() {
@@ -19,5 +20,9 @@ export default class RequestsFactory extends BaseRequestsFactory {
 
   get civilServiceRequests() {
     return new CivilServiceRequests(this.requestContext);
+  }
+
+  get workAllocationsRequests() {
+    return new WorkAllocationsRequests(this.requestContext);
   }
 }

@@ -5,6 +5,7 @@ import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
+import { judgeRegion1User } from '../../../config/users/exui-users';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -19,5 +20,9 @@ export default class JudgeSteps extends BaseExui {
   ) {
     super(exuiDashboardActions, idamActions, requestsFactory, testData);
     this.judgeActionsFactory = judgeActionsFactory;
+  }
+
+  async Login() {
+    await super.idamActions.exuiLogin(judgeRegion1User);
   }
 }
