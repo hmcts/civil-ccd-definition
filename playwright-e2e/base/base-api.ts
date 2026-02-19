@@ -8,6 +8,7 @@ import TestData from '../models/test-data';
 import { civilSystemUpdate } from '../config/users/exui-users';
 import config from '../config/config';
 import DateHelper from '../helpers/date-helper';
+import WATask from '../models/wa-task';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -30,7 +31,7 @@ export default abstract class BaseApi extends BaseTestData {
 
       for (const event of events) {
         const eventDate = new Date(event.date);
-        if (eventDate > DateHelper.subtractFromToday({years: 2})) {
+        if (eventDate > DateHelper.subtractFromToday({ years: 2 })) {
           bankHolidays.push(event.date);
         }
       }
@@ -100,4 +101,17 @@ export default abstract class BaseApi extends BaseTestData {
       super.setIsDebugTestDataSetup();
     }
   }
+
+  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<string> {
+    const { workAllocationsRequests } = this.requestsFactory;
+    const task = await workAllocationsRequests.retrieveTask(user, this.ccdCaseData.id, validTask);
+    await workAllocationsRequests.actionTask(user, task.id, 'claim')
+    return task.id;
+  }
+
+  protected async completeWATask(user: User, waTaskId: string) {
+    const { workAllocationsRequests } = this.requestsFactory;
+    await workAllocationsRequests.actionTask(user, waTaskId, 'complete');
+  }
+  
 }

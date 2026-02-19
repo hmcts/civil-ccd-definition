@@ -5,6 +5,9 @@
 bin/main/application.yaml
 **/target
 
+### vscode ###
+.vscode
+
 ### STS ###
 .apt_generated
 .classpath
