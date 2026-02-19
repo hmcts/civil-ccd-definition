@@ -51,5 +51,5 @@ export const test = mergeTests(testUtils, requestFactories, dataBuilderFactories
   },
   CaseRoleAssignmentApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new CaseRoleAssignmentApiSteps(_requestsFactory, _testData));
-  }
+  },
 });
