@@ -3,6 +3,7 @@ import StandardDirectionOrderPageFactory from '../../../../pages/exui/judge-la/s
 import StandardDirectionsOrderActions from './standard-directions-order-actions';
 
 export default class JudgeActionsFactory extends BasePageActionsFactory {
+
   get standardDirectionsOrderActions() {
     return new StandardDirectionsOrderActions(
       new StandardDirectionOrderPageFactory(this.page),
