@@ -119,6 +119,7 @@
     "test:playwright-e2e-teardown:ci": "./bin/run-commands-series.sh -c \"yarn test:playwright-teardown:case-role-assignment:ci\" \"yarn test:playwright-teardown:users-auth:ci\" \"yarn ts-node ./playwright-e2e/global/teardown-ci\"",
     "test:playwright-e2e-debug:local": "npx playwright test --project e2e-full-functional --grep @debug",
     "test:playwright-e2e:local": "npx playwright test --project e2e-full-functional",
+    "test:playwright-e2e:local:ui": "npx playwright test --project e2e-full-functional --ui",
     "test:playwright-functional:generate-report": "allure generate playwright-allure-functional-results --clean -o playwright-allure-functional-report",
     "test:playwright-functional:open-report": "allure open playwright-allure-functional-report",
     "test:playwright-bootstrap:generate-report": "allure generate playwright-allure-bootstrap-results --clean -o playwright-allure-bootstrap-report",
@@ -130,14 +131,13 @@
     "@axe-core/playwright": "^4.10.0",
     "@eslint/js": "^9.11.0",
     "@playwright/test": "^1.47.1",
-    "@types/node": "^22.5.5",
+    "@types/node": "^24.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "allure-codeceptjs": "^3.4.2",
     "allure-commandline": "^2.29.0",
     "allure-js-commons": "^3.4.2",
-    "allure-playwright": "2.4.0",
-    "axios": "^1.13.2",
+    "allure-playwright": "2.15.1",
     "chai": "^4.3.4",
     "codeceptjs": "3.5.11",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
@@ -164,10 +164,10 @@
     "proper-lockfile": "^4.1.2",
     "totp-generator": "^1.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "5.1.3",
-    "typescript-eslint": "8.0.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.56.0",
     "uuid": "^11.0.3",
-    "webdriverio": "^6.12.1"
+    "webdriverio": "^9.0.0"
   },
   "lint-staged": {
     "playwright-ui/**/*.{ts,tsx}": "prettier --write",
@@ -176,5 +176,5 @@
   "resolutions": {
     "minimatch": "^3.0.5"
   },
-  "packageManager": "yarn@4.10.3"
+  "packageManager": "yarn@4.12.0"
 }

@@ -2,17 +2,17 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.60
+version: 0.0.61
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
   - name: postgresql
-    version: 1.0.2
+    version: 1.1.0
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: postgresql.enabled
   - name: civil-service
-    version: 0.0.84
+    version: 0.0.95
     repository: 'oci://hmctspublic.azurecr.io/helm'
   - name: ccd
     version: 9.2.2
@@ -23,11 +23,11 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: xui-webapp.enabled
   - name: aac-manage-case-assignment
-    version: 0.2.19
+    version: 0.2.21
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: aac-manage-case-assignment.enabled
   - name: idam-pr
-    version: 2.3.0
+    version: 2.3.1
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: idam-pr.enabled
   - name: camunda-bpm
@@ -35,7 +35,7 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: camunda-bpm.enabled
   - name: servicebus
-    version: 1.1.0
+    version: 1.2.1
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: servicebus.enabled
 # WA
@@ -49,7 +49,7 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-events-topic.enabled
   - name: ts-translation-service
-    version: 0.1.7
+    version: 0.1.10
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-translation.enabled
 
@@ -78,6 +78,6 @@ dependencies:
     condition: em-stitching.enabled
 
   - name: wiremock
-    version: 0.0.5
+    version: 0.0.6
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: wiremock.enabled
