@@ -96,7 +96,13 @@ module.exports =  {
     }
     throw new Error(`Business process did not finish for case: ${caseId} within ${MAX_RETRIES} attempts`);
   },
-  waitForCompletedCamundaProcess: async (definitionKey, processInstanceId, variables) => {
+  waitForCompletedCamundaProcess: async (
+    definitionKey,
+    processInstanceId,
+    variables,
+    retries = 10,
+    retryTimeoutMs = INITIAL_RETRY_TIMEOUT_MS
+  ) => {
     const authToken = await idamHelper.accessToken(config.systemUpdate2);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
 
@@ -120,10 +126,13 @@ module.exports =  {
           if (response && response.length > 0 && response[0].state === 'COMPLETED') {
             console.log(`${response[0].processDefinitionKey} process has completed!!`);
           } else {
+            if (response && response.length > 0) {
+              console.log(`Camunda process state is ${response[0].state} for query ${url.search}`);
+            }
             throw new Error('Waiting for camunda process to complete');
           }
         });
-    }, 10, INITIAL_RETRY_TIMEOUT_MS);
+    }, retries, retryTimeoutMs);
   },
 
   assignCaseToDefendant: async (caseId, caseRole = 'RESPONDENTSOLICITORONE', user = config.defendantSolicitorUser) => {

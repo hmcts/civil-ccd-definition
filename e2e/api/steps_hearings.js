@@ -885,7 +885,13 @@ const triggerHearingNoticeScheduler = async (expectedHearingId, definitionKey) =
   console.log(`Started hearing notice scheduler process: ${getUILink(process)}`);
 
   // Wait for the hearing notice scheduler process
-  await waitForCompletedCamundaProcess(null, process.id, null);
+  await waitForCompletedCamundaProcess(
+    null,
+    process.id,
+    null,
+    runningOnPreview() ? 45 : 10,
+    2000
+  );
 
   // In preview the scheduler uses real HMC integration, so wiremock hearing IDs are not deterministic.
   if (!runningOnPreview()) {
