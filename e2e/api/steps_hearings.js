@@ -21,7 +21,9 @@ const specServiceId = 'AAA6';
 const unspecServiceId = 'AAA7';
 
 const runningOnLocal = () => !['aat', 'demo', 'preview'].includes(config.runningEnv);
-const runningOnPreview = () => config.runningEnv === 'preview';
+const runningOnPreview = () =>
+  config.runningEnv === 'preview'
+  || (config.url?.civilService && config.url.civilService.includes('.preview.platform.hmcts.net'));
 const locationId = () => runningOnLocal() ? '000000' : '424213';
 
 const createHearingId = () => `${Math.floor(1000000000 + Math.random() * 9000000000)}`;
@@ -867,6 +869,11 @@ const createHearing = async (caseId, hearingType, serviceCode) => {
 };
 
 const triggerHearingNoticeScheduler = async (expectedHearingId, definitionKey) => {
+  console.log(
+    `Hearing scheduler mode: env=${config.runningEnv}, civilService=${config.url?.civilService}, `
+    + `previewMode=${runningOnPreview()}`
+  );
+
   //Update unnotified hearings stub
   if (!runningOnPreview()) {
     await createUpdateStub(unnotifiedHearingStubRequestBody([expectedHearingId]));
