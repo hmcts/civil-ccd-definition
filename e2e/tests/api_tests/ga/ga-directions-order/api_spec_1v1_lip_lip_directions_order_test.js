@@ -7,6 +7,7 @@ const { createAccount, deleteAccount } = require('../../../../api/idamHelper.js'
 Feature('Create Lip v Lip claim -  Default Judgment');
 
 Before(async () => {
+  await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -51,5 +52,6 @@ Scenario('Spec Claimant create GA without notice judge make final order', async 
 
 AfterSuite(async ({ api_ga }) => {
   await api_ga.cleanUp();
+  await deleteAccount(config.applicantCitizenUser.email);
   await deleteAccount(config.defendantCitizenUser2.email);
 });
