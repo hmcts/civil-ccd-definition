@@ -158,7 +158,6 @@
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.9",
-    "playwright": "^1.41.1",
     "playwright-core": "^1.47.2",
     "prettier": "^3.3.3",
     "proper-lockfile": "^4.1.2",
