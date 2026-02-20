@@ -21,9 +21,6 @@ const specServiceId = 'AAA6';
 const unspecServiceId = 'AAA7';
 
 const runningOnLocal = () => !['aat', 'demo', 'preview'].includes(config.runningEnv);
-const runningOnPreview = () =>
-  config.runningEnv === 'preview'
-  || (config.url?.civilService && config.url.civilService.includes('.preview.platform.hmcts.net'));
 const locationId = () => runningOnLocal() ? '000000' : '424213';
 
 const createHearingId = () => `${Math.floor(1000000000 + Math.random() * 9000000000)}`;
@@ -859,46 +856,22 @@ const getExpectedPayload = (serviceId) => {
 const createHearing = async (caseId, hearingType, serviceCode) => {
   const hearingId = createHearingId();
   const hearing = listedHearing(caseId, hearingId, hearingType, serviceCode);
-  if (!runningOnPreview()) {
-    await createUpdateStub(hearingStubRequestBody(hearing, hearingId));
-  } else {
-    console.log(`Skipping hearing details wiremock stub in preview for hearing [${hearingId}]`);
-  }
+  await createUpdateStub(hearingStubRequestBody(hearing, hearingId));
   console.log(`Created new hearing mock: [${hearingId} - ${hearingType}]`);
   return hearingId;
 };
 
 const triggerHearingNoticeScheduler = async (expectedHearingId, definitionKey) => {
-  console.log(
-    `Hearing scheduler mode: env=${config.runningEnv}, civilService=${config.url?.civilService}, `
-    + `previewMode=${runningOnPreview()}`
-  );
-
   //Update unnotified hearings stub
-  if (!runningOnPreview()) {
-    await createUpdateStub(unnotifiedHearingStubRequestBody([expectedHearingId]));
-  } else {
-    console.log(`Skipping unnotified hearings wiremock stub in preview for hearing [${expectedHearingId}]`);
-  }
+  await createUpdateStub(unnotifiedHearingStubRequestBody([expectedHearingId]));
 
   const process = await triggerCamundaProcess(definitionKey);
   console.log(`Started hearing notice scheduler process: ${getUILink(process)}`);
 
-  // In preview (real HMC path) this scheduler can remain ACTIVE while waiting on downstream systems.
-  // For functional API tests we only verify that the scheduler process is successfully triggered.
-  if (runningOnPreview()) {
-    return;
-  }
-
   // Wait for the hearing notice scheduler process
-  await waitForCompletedCamundaProcess(
-    null,
-    process.id,
-    null,
-    10,
-    2000
-  );
+  await waitForCompletedCamundaProcess(null, process.id, null);
 
+  // Wait for hearing notice process
   await waitForCompletedCamundaProcess(AUTOMATED_HEARING_NOTICE, null, `hearingId_eq_${expectedHearingId}`);
 };
 
@@ -939,12 +912,8 @@ module.exports = {
     expect(caseDeepLink).deep.contain(`/cases/case-details/${caseId}`);
   },
   setupStaticMocks: async () => {
-    if (!runningOnPreview()) {
-      await createUpdateStub(getpartiesNotifiedStubRequestBody());
-      await createUpdateStub(putPartiesNotifiedStubRequestBody());
-    } else {
-      console.log('Skipping hearing wiremock static mocks in preview');
-    }
+    await createUpdateStub(getpartiesNotifiedStubRequestBody());
+    await createUpdateStub(putPartiesNotifiedStubRequestBody());
   },
   createUnspecTrialHearing: async (caseId) => createHearing(caseId, 'TRI', 'AAA7'),
   createUnspecDisposalHearing: async (caseId) => createHearing(caseId, 'DIS', 'AAA7'),
