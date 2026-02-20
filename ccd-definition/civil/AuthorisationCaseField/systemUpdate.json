@@ -738,7 +738,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimNotificationDate",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"

@@ -1,4 +1,6 @@
-module.exports = {
+import type WATask from '../../models/wa-task';
+
+const task: WATask = {
   name: 'Order Made - Review case - Intermediate track',
   type: 'reviewOrder',
   task_state: 'assigned',
@@ -10,27 +12,18 @@ module.exports = {
   execution_type: 'Case Management Task',
   jurisdiction: 'CIVIL',
   region: '1',
-  case_type_id: 'CIVIL',
+  case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
   case_category: 'Civil',
   case_name: 'Test Inc & Dr Jane Doe',
   auto_assigned: false,
   warnings: false,
-  warning_list: { values: [] },
   case_management_category: 'Civil',
   work_type_id: 'routine_work',
   work_type_label: 'Routine work',
-  permissions: {
-    values: [
-      'Read', 'Own',
-      'Manage', 'Cancel',
-      'CompleteOwn', 'CancelOwn',
-      'Claim', 'Unclaim',
-      'Assign', 'Unassign',
-      'UnclaimAssign'
-    ]
-  },
   description: '[Confirm order review](/cases/case-details/${[CASE_REFERENCE]}/trigger/CONFIRM_ORDER_REVIEW/CONFIRM_ORDER_REVIEW)',
   role_category: 'ADMIN',
   minor_priority: 500,
   major_priority: 5000
 };
+
+export default task;

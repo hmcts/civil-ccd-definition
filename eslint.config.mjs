@@ -53,28 +53,6 @@ export default [
     },
   },
   {
-    files: ['e2e-ga/**/*.{js,jsx}'],
-    languageOptions: {
-      sourceType: 'commonjs',
-      ecmaVersion: 11,
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        ...globals.es2020,
-        ...globals.mocha,
-        ...globals.jest,
-        ...eslintPluginCodecept.environments.codeceptjs.globals,
-      },
-    },
-    rules: {
-      'no-unused-vars': 'off',
-      quotes: ['error', 'single'],
-      semi: ['error', 'always'],
-      'no-constant-binary-expression': 'off',
-      'no-prototype-builtins': 'off',
-    },
-  },
-  {
     files: ['playwright-e2e/**/*.{ts,tsx}'],
     plugins: { customEslintPlugin },
     rules: {

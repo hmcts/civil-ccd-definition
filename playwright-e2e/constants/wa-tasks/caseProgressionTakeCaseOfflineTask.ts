@@ -1,4 +1,6 @@
-module.exports = {
+import type WATask from '../../models/wa-task';
+
+const task: WATask = {
     name: 'Transfer Case Offline',
     type: 'transferCaseOffline',
     task_title: 'Transfer Case Offline',
@@ -7,15 +9,16 @@ module.exports = {
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
     region: '1',
-    case_type_id: 'CIVIL',
+    case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
     case_category: 'Civil',
     auto_assigned: false,
     case_management_category: 'Civil',
     work_type_id: 'hearing_work',
     work_type_label: 'Hearing work',
-    permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel', 'Complete', 'Claim', 'Assign', 'Unassign'  ] },
     description: '[Take case offline](/cases/case-details/${[CASE_REFERENCE]}/trigger/TAKE_CASE_OFFLINE/TAKE_CASE_OFFLINE)',
     role_category: 'ADMIN',
     minor_priority: 500,
     major_priority: 5000
 };
+
+export default task;

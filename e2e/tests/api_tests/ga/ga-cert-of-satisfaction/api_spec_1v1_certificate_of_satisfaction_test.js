@@ -6,6 +6,7 @@ let civilCaseReference;
 Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation').tag('@api-nightly-prod @api-ga-cert-of-satisfaction');
 
 Before(async () => {
+  await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
@@ -45,5 +46,6 @@ Scenario('1v1 LR v LIP Spec case JBA marked paid in full', async ({api_ga}) => {
 
 AfterSuite(async ({ api_ga }) => {
   await api_ga.cleanUp();
+  await deleteAccount(config.applicantCitizenUser.email);
   await deleteAccount(config.defendantCitizenUser2.email);
 });
