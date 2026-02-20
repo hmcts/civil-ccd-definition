@@ -64,5 +64,21 @@
     "FieldType": "PPI",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fastTrackHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "HousingDisrepair",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "HousingDisrepair",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
