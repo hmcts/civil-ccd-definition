@@ -34,21 +34,6 @@ const checkFlagEnabled = async (flag) => {
     );
 };
 
-const checkHmcEnabled = async () => {
-  return checkFlagEnabled('hmc');
-};
-
-const checkCaseFlagsEnabled = async () => {
-  return checkFlagEnabled('case-flags');
-};
-
-const checkManageContactInformationEnabled = async () => {
-  return checkFlagEnabled('update-contact-details');
-};
-
-const checkMintiToggleEnabled = async () => {
-  return checkFlagEnabled('minti');
-};
 
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
@@ -222,28 +207,6 @@ module.exports =  {
     });
   },
 
-  checkToggleEnabled: async (toggle) => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-    const s2sAuth = await serviceAuthHelper.civilServiceAuth();
-
-    return await restHelper.request(
-        `${config.url.civilService}/testing-support/feature-toggle/${toggle}`,
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`,
-          'ServiceAuthorization': s2sAuth
-        }, null, 'GET')
-        .then(async response =>  {
-          if (response.status === 200) {
-            const json = await response.json();
-            return json.toggleEnabled;
-          } else {
-            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
-          }
-          }
-        );
-  },
-
   updateCaseData: async (caseId, caseData, user = config.applicantSolicitorUser) => {
     const authToken = await idamHelper.accessToken(user);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
@@ -292,16 +255,4 @@ module.exports =  {
 
     return await response.json();
   },
-  checkCaseFlagsAndHmcEnabled: async () => {
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    console.log(`caseFlagsEnabled: ${caseFlagsEnabled}`);
-    const hmcEnabled = await checkHmcEnabled();
-    console.log(`hmcEnabled: ${hmcEnabled}`);
-
-    return caseFlagsEnabled && hmcEnabled;
-  },
-  checkHmcEnabled,
-  checkCaseFlagsEnabled,
-  checkManageContactInformationEnabled,
-  checkMintiToggleEnabled
 };

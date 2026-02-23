@@ -21,7 +21,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
-const {checkToggleEnabled, checkMintiToggleEnabled, uploadDocument} = require('./testingSupport');
+const {uploadDocument} = require('./testingSupport');
 const {isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
@@ -36,7 +36,6 @@ const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
-const {adjustCaseSubmittedDateForMinti} = require('../helpers/mintiHelper');
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
@@ -191,11 +190,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     console.log('Claim issued');
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    if (isMintiCase) {
-      const isMintiToggleEnabled = await checkMintiToggleEnabled();
-      await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
-    }
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, (claimType === 'INTERMEDIATE' || claimType === 'MULTI'));
     return caseId;
   },
 
@@ -248,9 +243,7 @@ module.exports = {
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && (claimType === 'INTERMEDIATE' || claimType === 'MULTI')), carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, (claimType === 'INTERMEDIATE' || claimType === 'MULTI'));
 
     return caseId;
   },
@@ -299,9 +292,8 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
-    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
 
-    if (isJudgmentOnlineLive && (typeOfData === 'FA_ACCEPT_CCJ' || typeOfData === 'PA_ACCEPT_CCJ')) {
+    if (typeOfData === 'FA_ACCEPT_CCJ' || typeOfData === 'PA_ACCEPT_CCJ') {
       expectedEndState = 'All_FINAL_ORDERS_ISSUED';
     }
     if (expectedEndState) {
@@ -446,7 +438,7 @@ module.exports = {
 
   },
 
-  scheduleHearing: async (user, allocatedTrack = 'OTHER', claimType) => {
+  scheduleHearing: async (user, allocatedTrack = 'OTHER', claimType, expectedState = 'HEARING_READINESS') => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -464,7 +456,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await assertSubmittedEvent(expectedState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -986,4 +978,3 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };
-
