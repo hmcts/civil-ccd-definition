@@ -6,7 +6,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;
 let gaCaseReference, civilCaseReference;
 
-Feature('1v2 Different Solicitor - General Application Journey').tag('@ui-nightly-prod @ui-ga-directions-order');
+Feature('1v2 Different Solicitor - General Application Journey').tag('@civil-ccd-nightly @ui-ga-directions-order');
 
 BeforeSuite(async ({ api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(

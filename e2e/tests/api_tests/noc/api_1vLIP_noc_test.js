@@ -4,7 +4,7 @@ const {
 } = require('../../../config');
 const config = require('../../../config.js');
 
-Feature('1vLIP unspec notice of change api journey').tag('@api-nightly-prod @api-noc');
+Feature('1vLIP unspec notice of change api journey').tag('@civil-service-nightly @api-noc');
 
 Scenario('1vLIP unspec notice of change', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');

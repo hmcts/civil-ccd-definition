@@ -9,7 +9,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('1v1 spec record judgment api test').tag('@api-nightly-prod');
+Feature('1v1 spec record judgment api test').tag('@civil-service-nightly');
 
 Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

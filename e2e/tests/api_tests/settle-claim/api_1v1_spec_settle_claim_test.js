@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v1 settle claim spec api journey').tag('@api-nightly-prod @api-settle-claim');
+Feature('1v1 settle claim spec api journey').tag('@civil-service-nightly @api-settle-claim');
 
 Scenario('1v1 settle claim spec', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

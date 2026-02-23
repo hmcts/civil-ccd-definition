@@ -19,7 +19,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Same Solicitor with Small claims').tag('@ui-nightly-prod @ui-spec-full-defence');
+Feature('Claim creation 1v2 Same Solicitor with Small claims').tag('@civil-ccd-nightly @ui-spec-full-defence');
 
 Scenario('01 Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims-spec', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);

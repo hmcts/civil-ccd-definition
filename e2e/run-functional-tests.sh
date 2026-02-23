@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-export CCD_UI_TESTS=true
-
 compare_ft_groups() {
   local ft_groups_csv pr_ft_groups_csv
 

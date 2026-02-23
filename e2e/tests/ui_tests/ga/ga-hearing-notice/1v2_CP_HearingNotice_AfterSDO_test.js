@@ -6,7 +6,8 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../../api
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
-Feature('After SDO 1v2 - GA CP - Hearing Notice document').tag('@ui-prod @ui-ga-hearing-notice');
+Feature('After SDO 1v2 - GA CP - Hearing Notice document')
+  .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-ga-hearing-notice');
 
 Scenario('Claimant Hearing notice - Without notice journey', async ({ api_ga, I }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,

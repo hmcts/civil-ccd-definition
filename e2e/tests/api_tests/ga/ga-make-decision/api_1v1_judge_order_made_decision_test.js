@@ -5,7 +5,7 @@ const genAppType = 'STAY_THE_CLAIM';
 
 let civilCaseReference, gaCaseReference, state;
 
-Feature('GA 1v1 Judge make decision order made API tests').tag('@api-nightly-prod @api-ga-make-decision');
+Feature('GA 1v1 Judge make decision order made API tests').tag('@civil-service-nightly @api-ga-make-decision');
 
 Scenario('Judge makes decision 1V1 - Order Made', async ({api_ga}) => {
 

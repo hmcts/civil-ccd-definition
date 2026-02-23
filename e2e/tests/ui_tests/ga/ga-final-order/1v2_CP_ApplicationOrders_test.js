@@ -7,7 +7,8 @@ const doc = 'hearingNotice';
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('Before SDO 1v2 - GA CP - Applications Orders').tag('@ui-nightly-prod @ui-ga-final-order');
+Feature('Before SDO 1v2 - GA CP - Applications Orders')
+  .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-ga-final-order');
 
 Scenario('1v2 - Assisted order - With Further Hearing', async ({ I, api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(
@@ -65,7 +66,7 @@ Scenario('1v2 - Assisted order - With Further Hearing', async ({ I, api_ga }) =>
 
   await I.verifyCaseFileOrderDocument(civilCaseReference, 'General order document');
   await I.verifyCaseFileAppDocument(civilCaseReference, 'Hearing Notice');
-}).retry(1).tag('@ui-prod');
+}).retry(1);
 
 AfterSuite(async ({ api_ga }) => {
   await api_ga.cleanUp();

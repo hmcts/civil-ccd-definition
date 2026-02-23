@@ -9,7 +9,7 @@ const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 const respondentStatus = states.AWAITING_RESPONDENT_RESPONSE.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('1v1 - With Notice - Unless order - Make a decision journey').tag('@ui-nightly-prod @ui-ga-make-decision');
+Feature('1v1 - With Notice - Unless order - Make a decision journey').tag('@civil-ccd-nightly @ui-ga-make-decision');
 
 BeforeSuite(async ({ api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');

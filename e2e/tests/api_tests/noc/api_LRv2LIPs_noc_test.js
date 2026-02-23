@@ -5,7 +5,7 @@ const {
 } = require('../../../config');
 const config = require('../../../config.js');
 
-Feature('Unspecified Notice of Change on Unpecified Claim API test').tag('@api-nightly-prod @api-noc');
+Feature('Unspecified Notice of Change on Unpecified Claim API test').tag('@civil-service-nightly @api-noc');
 
 Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');

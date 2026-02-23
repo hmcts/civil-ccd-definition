@@ -4,7 +4,8 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA SPEC Claim 1v1 Judge Make Decision Additional Information Required API tests').tag('@api-prod @api-nightly-prod @api-ga-add-info');
+Feature('GA SPEC Claim 1v1 Judge Make Decision Additional Information Required API tests')
+  .tag('@civil-service-master @civil-service-pr @civil-service-nightly @api-ga-add-info');
 
 Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({api_ga}) => {
   civilCaseReference = await api_ga.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);

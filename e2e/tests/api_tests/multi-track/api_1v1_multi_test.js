@@ -11,7 +11,8 @@ if (config.runWAApiTest) {
   intermediateTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/intermediateTrackOrderMadeReviewCaseTask.js');
 }
 
-Feature('1v1 unspec multi track journey').tag('@api-prod @api-nightly-prod @api-multi-track');
+Feature('1v1 unspec multi track journey')
+  .tag('@civil-service-master @civil-service-pr @civil-service-nightly @api-multi-track');
 
 Scenario('1v1 unspec multi track', async ({api, WA}) => {
   const mpScenario = 'ONE_V_ONE';

@@ -5,7 +5,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Hearing E2E journey').tag('@ui-nightly-prod @ui-qm');
+Feature('Query Management - Hearing E2E journey').tag('@civil-ccd-nightly @ui-qm');
 
 Scenario.skip('01 Claimant LR raises a query', async ({ api_spec, I }) => {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO', false, true, claimAmountPenniesIntermediate);

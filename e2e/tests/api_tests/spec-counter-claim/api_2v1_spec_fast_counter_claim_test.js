@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('2v1 spec api fast track journeys').tag('@api-nightly-prod @api-spec-counterclaim');
+Feature('2v1 spec api fast track journeys').tag('@civil-service-nightly @api-spec-counterclaim');
 
 Scenario('2v1 fast claim counter claim @api-spec-counterclaim', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');

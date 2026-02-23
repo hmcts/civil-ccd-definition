@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v2DS spec full defence api journeys').tag('@api-nightly-prod @api-spec-full-defence');
+Feature('1v2DS spec full defence api journeys').tag('@civil-service-nightly @api-spec-full-defence');
 
 Scenario('1v2DS spec full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');

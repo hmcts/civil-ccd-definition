@@ -6,7 +6,7 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
 // To use on local because the idam images are different:
 // const caseWorkerUser = config.hearingCenterAdminLocal;
 
-Feature('1v2 discontinue claim spec api journey').tag('@api-nightly-prod @api-discontinue-claim');
+Feature('1v2 discontinue claim spec api journey').tag('@civil-service-nightly @api-discontinue-claim');
 
 Scenario('1v2 discontinue claim spec', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_TWO';

@@ -6,7 +6,7 @@ const {
   otherSolicitorUser1
 } = require('../../../config');
 
-Feature('Unspecified Notice of Change on Unpecified Claim API test').tag('@api-nightly-prod @api-noc');
+Feature('Unspecified Notice of Change on Unpecified Claim API test').tag('@civil-service-nightly @api-noc');
 
 Scenario.skip('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
