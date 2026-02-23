@@ -37,7 +37,7 @@ const checkFlagEnabled = async (flag) => {
 
 module.exports =  {
   waitForFinishedBusinessProcess: async (caseId, user) => {
-    const authToken = await idamHelper.accessToken(user ?? config.applicantCitizenUser);
+    const authToken = await idamHelper.accessToken(user ?? config.applicantSolicitorUser);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
 
     await retry(() => {
