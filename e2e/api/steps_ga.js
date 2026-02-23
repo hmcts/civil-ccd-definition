@@ -1593,8 +1593,7 @@ module.exports = {
       console.log('SmallClaim...');
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId, typeOfData);
     }
-    const caseData = await apiRequest.startCreateCaseForCitizen(payload);
-    caseId = caseData.id;
+    caseId = await apiRequest.startCreateCaseForCitizen(payload);
     await waitForFinishedBusinessProcess(caseId, user);
     console.log('Claim submitted');
 
