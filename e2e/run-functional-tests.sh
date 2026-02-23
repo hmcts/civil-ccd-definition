@@ -27,7 +27,7 @@ compare_ft_groups() {
 }
 
 run_functional_test_groups() {
-  command="yarn test:ui-nonprod --grep "
+  command="yarn test:civil-ccd-pr --grep "
   pr_ft_groups=$(echo "$PR_FT_GROUPS" | awk '{print tolower($0)}')
   
   regex_pattern=""
@@ -49,9 +49,9 @@ run_functional_test_groups() {
 run_functional_tests() {
   echo "Running all functional tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
-    yarn test:ui-prod
+    yarn test:civil-ccd-master
   elif [ -z "$PR_FT_GROUPS" ]; then
-    yarn test:ui-nonprod 
+    yarn test:civil-ccd-pr 
   else
     run_functional_test_groups
   fi
