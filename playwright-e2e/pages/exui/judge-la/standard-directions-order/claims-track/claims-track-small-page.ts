@@ -20,14 +20,38 @@ export default class DrawDirectionsOrderClaimsTrackPage extends ExuiPage(BasePag
     await Promise.all([
       super.expectLegend(checkboxes.smallClaims.label, { count: 1 }),
       super.expectLabel(checkboxes.smallClaims.creditHire.label, { count: 1 }),
-      super.expectLabel(checkboxes.smallClaims.roadTrafficAccident.label, { count: 1 }),
-      super.expectLabel(checkboxes.smallClaims.disputeResolutionHearing.label, { count: 1 }),
+      super.expectLabel(checkboxes.smallClaims.roadTrafficAccident.label, {
+        count: 1,
+      }),
+      super.expectLabel(checkboxes.smallClaims.disputeResolutionHearing.label, {
+        count: 1,
+      }),
       super.expectLabel(checkboxes.smallClaims.flightDelay.label, { count: 1 }),
     ]);
-    await super.clickBySelector(checkboxes.smallClaims.creditHire.selector);
-    await super.clickBySelector(checkboxes.smallClaims.roadTrafficAccident.selector);
-    await super.clickBySelector(checkboxes.smallClaims.disputeResolutionHearing.selector);
-    await super.clickBySelector(checkboxes.smallClaims.flightDelay.selector);
+    await super.clickBySelector(checkboxes.smallClaims.creditHire.selectorDrawDirections);
+    await super.clickBySelector(checkboxes.smallClaims.roadTrafficAccident.selectorDrawDirections);
+    // await super.clickBySelector(
+    //   checkboxes.smallClaims.disputeResolutionHearing.selectorDrawDirections,
+    // );
+    await super.clickBySelector(checkboxes.smallClaims.flightDelay.selectorDrawDirections);
+  }
+
+  async selectYesDisputeResolutionHearing() {
+    await super.clickBySelector(radioButtons.smallTrack.yes.selector);
+    await Promise.all([
+      super.expectLegend(checkboxes.smallClaims.label, { count: 1 }),
+      super.expectLabel(checkboxes.smallClaims.creditHire.label, { count: 1 }),
+      super.expectLabel(checkboxes.smallClaims.roadTrafficAccident.label, {
+        count: 1,
+      }),
+      super.expectLabel(checkboxes.smallClaims.disputeResolutionHearing.label, {
+        count: 1,
+      }),
+      super.expectLabel(checkboxes.smallClaims.flightDelay.label, { count: 1 }),
+    ]);
+    await super.clickBySelector(
+      checkboxes.smallClaims.disputeResolutionHearing.selectorDrawDirections,
+    );
   }
 
   async selectNo() {

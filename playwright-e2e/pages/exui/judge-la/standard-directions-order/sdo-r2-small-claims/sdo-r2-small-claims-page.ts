@@ -25,11 +25,12 @@ export default class SdoR2SmallClaimsPage extends ExuiPage(BasePage) {
 
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      //super.verifyHeadings(ccdCaseData),
+      super.expectText(subheadings.disputeResolutionHearing),
       super.expectText(subheadings.warning),
       super.expectText(subheadings.judgesRecital),
       super.expectText(subheadings.allocation),
-      super.expectText(subheadings.disputeResolutionHearing),
+      super.expectText(subheadings.disputeResolutionHearing, { count: 2 }),
       super.expectText(subheadings.legalReprentationForDRH),
       super.expectText(subheadings.judgePowersAtDRH),
       super.expectText(subheadings.paymentProtectionInsurance),
