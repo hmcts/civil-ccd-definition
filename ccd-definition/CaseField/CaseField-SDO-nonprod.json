@@ -19,7 +19,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsPenalNotice",
-    "Label": " ",
+    "Label": "Note: Paragraph numbers to which the penal notice applies must be entered in the box below.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -44,7 +44,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackPenalNotice",
-    "Label": " ",
+    "Label": "Note: Paragraph numbers to which the penal notice applies must be entered in the box below.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
