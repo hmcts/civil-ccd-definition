@@ -7,7 +7,6 @@ import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import { judgeRegion1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
-import { CCDEvent } from '../../../models/ccd/ccd-events';
 import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
 
 @AllMethodsStep()
