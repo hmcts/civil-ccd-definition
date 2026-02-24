@@ -1,13 +1,16 @@
+/* eslint-disable no-unused-vars */
 const config = require('../../config.js');
-
 const mpScenario = 'ONE_V_ONE';
 
-Feature('Smoke tests @smoke-tests-unspec');
+let civilCaseReference;
 
-Scenario('Create unspec claim to make sure ccd and bpmn are working fine', async ({api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-});
+Feature('Smoke test - create claim and create general application').tag('@smoke-api');
 
-AfterSuite(async  ({api}) => {
-  await api.cleanUp();
+Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({api_ga}) => {
+  civilCaseReference = await api_ga.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  await api_ga.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
+}).retry(1);
+
+AfterSuite(async ({api_ga}) => {
+  await api_ga.cleanUp();
 });
