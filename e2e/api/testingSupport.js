@@ -8,9 +8,9 @@ const {retry} = require('./retryHelper');
 let incidentMessage;
 
 // Optimized retry configuration for Camunda business process waits
-const MAX_RETRIES = 40;
+const MAX_RETRIES = 25;
 const INITIAL_RETRY_TIMEOUT_MS = 2000; // Reduced from 5000 (check more frequently initially
-const RETRY_TIMEOUT_MS = 5000;
+const RETRY_TIMEOUT_MS = 3000;
 
 const checkFlagEnabled = async (flag) => {
   const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
