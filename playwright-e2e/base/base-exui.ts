@@ -9,6 +9,8 @@ import { CCDEvent } from '../models/ccd/ccd-events';
 import TestData from '../models/test-data';
 import RequestsFactory from '../requests/requests-factory';
 import BaseApi from './base-api';
+import User from '../models/user';
+import WATask from '../models/wa-task';
 
 const classKey = 'BaseExui';
 export default abstract class BaseExui extends BaseApi {
@@ -69,5 +71,25 @@ export default abstract class BaseExui extends BaseApi {
     await this.exuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData.id);
     await this.fetchAndSetCCDCaseData(this.ccdCaseData.id);
+  }
+
+  @Step(classKey)
+  async retryWAEvent(
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
+    ccdEvent: CCDEvent,
+    user: User,
+    validTask: WATask,
+    { retries = config.exui.eventRetries, verifySuccessEvent = true, camundaProcess = true } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    const taskId = await super.retrieveAndAssignWATask(user, validTask);
+    await this.retryExuiEvent(eventActions, confirmActions, ccdEvent, {
+      retries,
+      verifySuccessEvent,
+      camundaProcess,
+    });
+    // await super.completeWATask(user, taskId);
   }
 }
