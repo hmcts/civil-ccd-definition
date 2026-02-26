@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "eaCourtLocation",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
