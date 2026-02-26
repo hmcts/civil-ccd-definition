@@ -33,7 +33,7 @@ export default class StandardDirectionsOrderActions extends BaseTestData {
     await claimsTrackSmallPage.submit();
   }
 
-  async selectSmallTrackR2() {
+  async selectSmallTrackDRH() {
     const { claimsTrackSmallPage } = this.standardDirectionsOrder;
     await claimsTrackSmallPage.verifyContent(this.ccdCaseData);
     await claimsTrackSmallPage.selectYesDisputeResolutionHearing();
@@ -54,9 +54,10 @@ export default class StandardDirectionsOrderActions extends BaseTestData {
     await claimsTrackPage.submit();
   }
 
-  async selectFastTrackR2() {
+  async selectFastTrackNIHL() {
     const { claimsTrackPage } = this.standardDirectionsOrder;
     await claimsTrackPage.verifyContent(this.ccdCaseData);
+    await claimsTrackPage.selectFastTrack();
     await claimsTrackPage.selectNoiseInducedHearingLoss();
     await claimsTrackPage.submit();
   }
@@ -68,7 +69,7 @@ export default class StandardDirectionsOrderActions extends BaseTestData {
     await orderTypePage.submit();
   }
 
-  async submitDisposalHearing() {
+  async disposalHearingDetails() {
     const { disposalHearingPage } = this.standardDirectionsOrder;
     await disposalHearingPage.verifyContent(this.ccdCaseData);
     await disposalHearingPage.addHearingTime();
@@ -83,10 +84,10 @@ export default class StandardDirectionsOrderActions extends BaseTestData {
     await smallClaimsPage.submit();
   }
 
-  async smallTrackDetailsR2() {
-    const { smallClaimsDisputeResolutionHearingPage } = this.standardDirectionsOrder;
-    await smallClaimsDisputeResolutionHearingPage.verifyContent(this.ccdCaseData);
-    await smallClaimsDisputeResolutionHearingPage.submit();
+  async sdoDRHDetails() {
+    const { sdoR2SmallClaimsPage } = this.standardDirectionsOrder;
+    await sdoR2SmallClaimsPage.verifyContent(this.ccdCaseData);
+    await sdoR2SmallClaimsPage.submit();
   }
 
   async fastTrackDetails() {
@@ -97,7 +98,7 @@ export default class StandardDirectionsOrderActions extends BaseTestData {
     await fastTrackPage.submit();
   }
 
-  async fastTrackDetailsR2() {
+  async sdoNIHLDetails() {
     const { sdoR2FastTrackPage } = this.standardDirectionsOrder;
     await sdoR2FastTrackPage.verifyContent(this.ccdCaseData);
     await sdoR2FastTrackPage.submit();

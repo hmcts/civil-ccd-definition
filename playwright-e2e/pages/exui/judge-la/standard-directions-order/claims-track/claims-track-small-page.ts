@@ -5,7 +5,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 import { checkboxes, radioButtons } from './claims-track-content';
 
 @AllMethodsStep()
-export default class DrawDirectionsOrderClaimsTrackPage extends ExuiPage(BasePage) {
+export default class ClaimsTrackSmallPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),

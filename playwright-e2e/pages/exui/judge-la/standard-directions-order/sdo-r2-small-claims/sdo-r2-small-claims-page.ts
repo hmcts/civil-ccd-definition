@@ -6,6 +6,7 @@ import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import {
+  heading,
   buttons,
   checkboxes,
   inputs,
@@ -13,6 +14,7 @@ import {
   subheadings,
   containers,
 } from './sdo-r2-small-claims-content';
+import { getFormattedCaseId } from '../../../exui-page/exui-content';
 
 @AllMethodsStep()
 export default class SdoR2SmallClaimsPage extends ExuiPage(BasePage) {
@@ -25,21 +27,22 @@ export default class SdoR2SmallClaimsPage extends ExuiPage(BasePage) {
 
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
-      //super.verifyHeadings(ccdCaseData),
-      super.expectText(subheadings.disputeResolutionHearing),
-      super.expectText(subheadings.warning),
-      super.expectText(subheadings.judgesRecital),
-      super.expectText(subheadings.allocation),
-      super.expectText(subheadings.disputeResolutionHearing, { count: 2 }),
-      super.expectText(subheadings.legalReprentationForDRH),
-      super.expectText(subheadings.judgePowersAtDRH),
-      super.expectText(subheadings.paymentProtectionInsurance),
-      super.expectText(subheadings.witnessStatements),
-      super.expectText(subheadings.uploadOfDocuments),
-      super.expectText(subheadings.addNewDirection),
-      super.expectText(subheadings.hearing),
-      super.expectText(subheadings.welshLanguage),
-      super.expectText(subheadings.importantNotes),
+      super.expectHeading(heading),
+      super.expectHeading(getFormattedCaseId(ccdCaseData.id), {exact: false}),
+      super.expectHeading(ccdCaseData.caseNamePublic, {exact: false}),
+      super.expectSubheading(subheadings.warning, {headingLevel: 3}),
+      super.expectSubheading(subheadings.judgesRecital, {headingLevel: 3}),
+      super.expectSubheading(subheadings.allocation, {headingLevel: 3}),
+      super.expectSubheading(subheadings.disputeResolutionHearing, {headingLevel: 3}),
+      super.expectSubheading(subheadings.legalReprentationForDRH, {headingLevel: 4}),
+      super.expectSubheading(subheadings.judgePowersAtDRH, {headingLevel: 4}),
+      super.expectSubheading(subheadings.paymentProtectionInsurance, {headingLevel: 3}),
+      super.expectSubheading(subheadings.witnessStatements, {headingLevel: 3}),
+      super.expectSubheading(subheadings.uploadOfDocuments, {headingLevel: 3}),
+      super.expectSubheading(subheadings.addNewDirection),
+      super.expectSubheading(subheadings.hearing, {headingLevel: 3}),
+      super.expectSubheading(subheadings.welshLanguage, {headingLevel: 3}),
+      super.expectSubheading(subheadings.importantNotes, {headingLevel: 3}),
     ]);
   }
 

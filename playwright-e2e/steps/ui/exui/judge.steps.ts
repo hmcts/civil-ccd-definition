@@ -1,5 +1,5 @@
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
-import JudgeActionsFactory from '../../../actions/ui/exui/judge/judge-actions-factory';
+import JudgeActionsFactory from '../../../actions/ui/exui/judge-la/judge-la-actions-factory';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
@@ -8,6 +8,7 @@ import RequestsFactory from '../../../requests/requests-factory';
 import { judgeRegion1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
+import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -43,17 +44,17 @@ export default class JudgeSteps extends BaseExui {
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
-      fastTrackDirectionsTask,
+      smallClaimDirectionsTask,
     );
   }
 
-  async SdoSmallTrackR2() {
+  async SdoSmallTrackDRH() {
     const { standardDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderActions.enterJudgementYes();
-        await standardDirectionsOrderActions.selectSmallTrackR2();
-        await standardDirectionsOrderActions.smallTrackDetailsR2();
+        await standardDirectionsOrderActions.selectSmallTrackDRH();
+        await standardDirectionsOrderActions.sdoDRHDetails();
         await standardDirectionsOrderActions.orderPreview();
         await standardDirectionsOrderActions.submitStandardDirectionsOrder();
       },
@@ -62,7 +63,7 @@ export default class JudgeSteps extends BaseExui {
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
-      fastTrackDirectionsTask,
+      smallClaimDirectionsTask,
     );
   }
 
@@ -85,13 +86,13 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoFastTrackR2() {
+  async SdoFastTrackNIHL() {
     const { standardDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderActions.enterJudgementNo();
-        await standardDirectionsOrderActions.selectFastTrackR2();
-        await standardDirectionsOrderActions.fastTrackDetailsR2();
+        await standardDirectionsOrderActions.selectFastTrackNIHL();
+        await standardDirectionsOrderActions.sdoNIHLDetails();
         await standardDirectionsOrderActions.orderPreview();
         await standardDirectionsOrderActions.submitStandardDirectionsOrder();
       },
@@ -111,7 +112,7 @@ export default class JudgeSteps extends BaseExui {
         await standardDirectionsOrderActions.enterJudgementYes();
         await standardDirectionsOrderActions.allocateSmallTrackNo();
         await standardDirectionsOrderActions.selectDisposalHearing();
-        await standardDirectionsOrderActions.submitDisposalHearing();
+        await standardDirectionsOrderActions.disposalHearingDetails();
         await standardDirectionsOrderActions.orderPreview();
         await standardDirectionsOrderActions.submitStandardDirectionsOrder();
       },

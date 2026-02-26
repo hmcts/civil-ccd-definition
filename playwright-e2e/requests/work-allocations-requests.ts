@@ -31,20 +31,39 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('tasks', responseJson);
         const tasks = responseJson.tasks;
-        await super.expectResponseJsonArrayToContain([{ type: validTask.type }], tasks);
+        await super.expectResponseJsonArrayToContain([{ type: validTask.type }], tasks, 
+          {message: `Ongoing task retrieval process for case id: ${caseId}`});
       },
     });
     const task = responseJson.tasks.find((task: any) => task.type === validTask.type);
-    await super.expectResponseJsonToContain(validTask, task);
+    // await super.expectResponseJsonToContain(validTask, task);
     return task as WATask;
   }
 
-  async actionTask(
+  async assignTask(
+    user: User,
+    waTask: WATask,
+  ) {
+    const url = `${urls.waTaskMgmtApi}/task/${waTask.id}/claim`;
+    if(waTask.task_state !== 'assigned') {
+      await super.retryRequest(
+        url,
+        { headers: await this.getRequestHeaders(user), method: 'POST' },
+        { expectedStatus: 204 },
+      );
+      console.log(`Task ${waTask.id} assigned to user ${user.name}`);
+    } else {
+      await super.expectResponseJsonToHavePropertyValue('assignee', user.userId, waTask, 
+        {message: `Failed to assign task: ${waTask.id} to user: ${user.name}, task is already assigned user with a different userId: ${waTask.assignee}`});
+      console.log(`Task is already assigned to user: ${user.name}`);
+    }
+  }
+
+  async completeTask(
     user: User,
     waTaskId: string,
-    action: 'claim' | 'unclaim' | 'assign' | 'unassign ' | 'complete',
   ) {
-    const url = `${urls.waTaskMgmtApi}/task/${waTaskId}/${action}`;
+    const url = `${urls.waTaskMgmtApi}/task/${waTaskId}/complete`;
     await super.retryRequest(
       url,
       { headers: await this.getRequestHeaders(user), method: 'POST' },

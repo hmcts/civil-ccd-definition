@@ -90,6 +90,6 @@ export default abstract class BaseExui extends BaseApi {
       verifySuccessEvent,
       camundaProcess,
     });
-    // await super.completeWATask(user, taskId);
+    await super.completeWATask(user, taskId);
   }
 }
