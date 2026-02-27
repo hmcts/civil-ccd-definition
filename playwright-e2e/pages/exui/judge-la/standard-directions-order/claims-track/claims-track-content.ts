@@ -31,18 +31,26 @@ export const checkboxes = {
     creditHire: {
       label: 'Credit Hire',
       selector: '#smallClaims-smallClaimCreditHire',
+      selectorDrawDirections:
+        '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimCreditHire',
     },
     roadTrafficAccident: {
       label: 'Road Traffic Accident',
       selector: '#smallClaims-smallClaimRoadTrafficAccident',
+      selectorDrawDirections:
+        '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimRoadTrafficAccident',
     },
     disputeResolutionHearing: {
       label: 'Dispute resolution hearing (Do not use with other options)',
       selector: '#smallClaims-smallClaimDisputeResolutionHearing',
+      selectorDrawDirections:
+        '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimDisputeResolutionHearing',
     },
     flightDelay: {
       label: 'Flight Delay',
       selector: '#smallClaims-smallClaimFlightDelay',
+      selectorDrawDirections:
+        '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimFlightDelay',
     },
   },
   fastTrack: {
