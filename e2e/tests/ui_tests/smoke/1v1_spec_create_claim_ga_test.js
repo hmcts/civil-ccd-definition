@@ -4,10 +4,11 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('Smoke test - 1v1 spec create claim and create general application').tag('@civil-ccd-smoke');
+Feature('Smoke test - API 1v1 spec create claim and create general application').tag('@civil-ccd-smoke');
 
 Scenario('1v1 spec create claim and create general application', async ({I, api_ga}) => {
   civilCaseReference = await api_ga.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario);
+  gaCaseReference = await api_ga.initiateGeneralApplication(config.applicantSolicitorUser, civilCaseReference);
   await I.login(config.applicantSolicitorUser);
   await I.navigateToCaseDetails(civilCaseReference);
   await I.navigateToCaseDetails(gaCaseReference);
