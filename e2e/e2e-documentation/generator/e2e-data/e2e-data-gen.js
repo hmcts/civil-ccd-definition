@@ -6,7 +6,6 @@ const {
   repoRoot,
   pipelineTagMap,
   walk,
-  isSmokeFile,
   fileIsDependent,
   collectScenarios,
   isFunctionalTag
@@ -115,7 +114,7 @@ function formatIndependentScenario(scenario) {
 function generateDocs({ suiteType, targetDir, outputFile }) {
   const absoluteDir = path.join(repoRoot, targetDir);
   const files = walk(absoluteDir).filter(
-    file => /_tests?\.js$/i.test(file) && !isSmokeFile(file)
+    file => /_tests?\.js$/i.test(file)
   );
   const results = [];
 

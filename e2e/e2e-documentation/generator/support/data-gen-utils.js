@@ -17,14 +17,18 @@ const pipelineTagMap = {
   '@civil-ccd-master': ['civil-ccd-definition: master'],
   '@civil-ccd-pr': ['civil-ccd-definition: PR'],
   '@civil-ccd-nightly': ['civil-ccd-definition: nightly'],
+  '@civil-ccd-smoke': ['civil-ccd-definition: master (smoke)', 'civil-ccd-definition: PR (smoke)'],
   '@civil-service-master': ['civil-service: master'],
   '@civil-service-pr': ['civil-service: PR'],
   '@civil-service-nightly': ['civil-service: nightly'],
+  '@civil-service-smoke': ['civil-service: master (smoke)', 'civil-service: PR (smoke)'],
   '@civil-camunda-master': ['civil-camunda-bpmn-definition: master'],
   '@civil-camunda-pr': ['civil-camunda-bpmn-definition: PR'],
+  '@civil-camunda-smoke': ['civil-camunda-bpmn-definition: master (smoke)', 'civil-camunda-bpmn-definition: PR (smoke)'],
   '@civil-wa-master': ['civil-wa-task-configuration: master'],
   '@civil-wa-pr': ['civil-wa-task-configuration: PR'],
-  '@civil-wa-nightly': ['civil-wa-task-configuration: nightly']
+  '@civil-wa-nightly': ['civil-wa-task-configuration: nightly'],
+  '@civil-wa-smoke': ['civil-wa-task-configuration: master (smoke)', 'civil-wa-task-configuration: PR (smoke)']
 };
 
 const pipelineTagSet = new Set(Object.keys(pipelineTagMap));

@@ -6,7 +6,6 @@ const {
   repoRoot,
   walk,
   toPosix,
-  isSmokeFile,
   fileIsDependent,
   collectScenarios,
   isFunctionalTag
@@ -89,7 +88,7 @@ function formatIndependentScenario(scenario) {
 function buildTestRecords({ suiteType, targetDir }) {
   const absoluteDir = path.join(repoRoot, targetDir);
   const files = walk(absoluteDir).filter(
-    file => /_tests?\.js$/i.test(file) && !isSmokeFile(file)
+    file => /_tests?\.js$/i.test(file)
   );
   const results = [];
 
