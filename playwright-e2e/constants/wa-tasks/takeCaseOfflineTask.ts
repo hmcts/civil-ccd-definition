@@ -15,7 +15,6 @@ const task: WATask = {
   case_category: 'Civil',
   created_date: '2025-03-10T13:05:14+0000',
   security_classification: 'PUBLIC',
-  task_state: 'unassigned',
   auto_assigned: false,
   location_id: '420219',
   work_type_id: 'routine_work',

@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: 'Intermediate Track Directions',
   type: 'allocateIntermediateTrack',
-  task_state: 'unassigned',
   task_system: 'SELF',
   security_classification: 'PUBLIC',
   task_title: 'Intermediate Track Directions',

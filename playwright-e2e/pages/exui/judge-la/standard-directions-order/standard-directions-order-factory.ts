@@ -54,7 +54,7 @@ export default class StandardDirectionOrderPageFactory extends BasePageFactory {
     return new SmallClaimsPage(this.page, dateFragment);
   }
 
-  get smallClaimsDisputeResolutionHearingPage() {
+  get sdoR2SmallClaimsPage() {
     const dateFragment = new DateFragment(this.page);
     return new SdoR2SmallClaimsPage(this.page, dateFragment);
   }
