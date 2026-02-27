@@ -7,7 +7,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
-Feature('1v2DS unspec intermediate track journey').tag('@ui-nightly-prod @ui-intermediate-track');
+Feature('1v2DS unspec intermediate track journey').tag('@civil-ccd-nightly @ui-intermediate-track');
 
 Scenario('1v2DS unspec intermediate track', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';

@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v2SS spec api fast track journeys').tag('@api-nightly-prod @api-spec-full-defence');
+Feature('1v2SS spec api fast track journeys').tag('@civil-service-nightly @api-spec-full-defence');
 
 Scenario('1v2SS different response no full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');

@@ -228,7 +228,6 @@ withNightlyPipeline(type, product, component) {
   env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
   env.PAYMENT_API_URL = params.PAYMENT_API_URL
   env.URL_FOR_SECURITY_SCAN = civilServiceUrl
-  env.CCD_UI_TESTS = true
   env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   overrideVaultEnvironments([
     'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT

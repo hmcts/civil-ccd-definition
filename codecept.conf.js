@@ -2,16 +2,6 @@ const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFiles
 
 const functional = process.env.FUNCTIONAL;
 
-const ccdPipelineTests = [
-      './e2e/tests/ui_tests/{*,**/*}_test.js',
-      './e2e/tests/api_tests/lrspec_cui/*_test.js',
-    ];
-
-const civilServiceAndCamundaTests = [
-  './e2e/tests/api_tests/{*,**/*}_test.js',
-  './e2e/tests/api_tests/*_test.js',
-];
-
 const getTests = () => {
   let prevFailedTestFiles = process.env.PREV_FAILED_TEST_FILES;
   let prevNotExecutedTestFiles = process.env.PREV_NOT_EXECUTED_TEST_FILES;
@@ -21,12 +11,10 @@ const getTests = () => {
     prevNotExecutedTestFiles = prevNotExecutedTestFiles ? prevNotExecutedTestFiles.split(',') : [];
     return [...prevFailedTestFiles, ...prevNotExecutedTestFiles];
   }
-  if(process.env.WA_TESTS === 'true')
-    return [...ccdPipelineTests, ...civilServiceAndCamundaTests]
-  if(process.env.CCD_UI_TESTS === 'true')
-    return ccdPipelineTests;
-  else
-    return civilServiceAndCamundaTests;
+  return [
+    './e2e/tests/api_tests/{*,**/*}_test.js',
+    './e2e/tests/ui_tests/{*,**/*}_test.js',
+  ];
 };
 
 exports.config = {

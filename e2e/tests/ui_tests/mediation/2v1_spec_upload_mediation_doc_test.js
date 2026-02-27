@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 
 let civilCaseReference;
 
-Feature('2v1 SDO Carm - Upload mediation documents').tag('@ui-nightly-prod @ui-mediation');
+Feature('2v1 SDO Carm - Upload mediation documents').tag('@civil-ccd-nightly @ui-mediation');
 
 Scenario('01 2v1 prepare claim up to claimant response', async ({api_spec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');

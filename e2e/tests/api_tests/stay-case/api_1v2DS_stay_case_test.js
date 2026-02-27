@@ -3,7 +3,7 @@ const config = require('../../../config.js');
 const mintiEnabled = true;
 const claimAmountMulti = '200001';
 
-Feature('1v2DS spec stay case api journey').tag('@api-nightly-prod @api-stay-case');
+Feature('1v2DS spec stay case api journey').tag('@civil-service-nightly @api-stay-case');
 
 Scenario('1v2DS Stay Case Judicial Referral', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';

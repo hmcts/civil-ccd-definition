@@ -9,7 +9,7 @@ const track = 'INTERMEDIATE_CLAIM';
 const judgeUser = config.judgeUserWithRegionId1;
 let civilCaseReference;
 
-Feature('1v2SS unspec intermediate track journey').tag('@ui-nightly-prod @ui-intermediate-track');
+Feature('1v2SS unspec intermediate track journey').tag('@civil-ccd-nightly @ui-intermediate-track');
 
 Scenario('1v2SS unspec intermediate track', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';

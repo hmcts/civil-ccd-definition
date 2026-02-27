@@ -7,7 +7,8 @@ let mediationAdminRegion2 = config.localMediationTests ? config.nbcUserLocal : c
 
 // Fix all these tests and run against preview and aat
 //BUG - CIV-15903
-Feature('1v1 spec small claims mediation api journey').tag('api-nightly-prod');
+Feature('1v1 spec small claims mediation api journey')
+  .tag('@civil-service-nightly');
 
 Scenario.skip('1v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
@@ -16,7 +17,7 @@ Scenario.skip('1v1 claimant and defendant upload mediation documents - CARM not 
   await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
   await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', false);
-}).tag('@api-prod');
+}).tag('@civil-service-master @civil-service-pr');
 
 Scenario.skip('1v1 claimant and defendant part admit states paid- claimant not received payment - upload mediation documents - CARM enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, true);

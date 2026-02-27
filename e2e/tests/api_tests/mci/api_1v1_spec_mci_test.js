@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 
-Feature('1v1 spec api manage contact information journeys').tag('@api-nightly-prod @api-mci');
+Feature('1v1 spec api manage contact information journeys').tag('@civil-service-nightly @api-mci');
 
 Scenario('1v1 spec api manage contact information', async ({I, api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

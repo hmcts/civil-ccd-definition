@@ -6,7 +6,7 @@ const judgeUser = config.judgeUser2WithRegionId4; //small claim specified goes t
 const mpScenario = 'ONE_V_ONE_FLIGHT_DELAY';
 const claimAmountSmallTrack = '1500';
 
-Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec').tag('@api-nightly-prod @api-flight-delay');
+Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec').tag('@civil-service-nightly @api-flight-delay');
 
 Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay', async ({api_spec}) => {
   await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, mpScenario);

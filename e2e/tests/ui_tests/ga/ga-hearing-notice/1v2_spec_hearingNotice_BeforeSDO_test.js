@@ -11,7 +11,7 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let gaCaseReference, civilCaseReference, user;
 
-Feature('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey').tag('@ui-nightly-prod @ui-ga-hearing-notice');
+Feature('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey').tag('@civil-ccd-nightly @ui-ga-hearing-notice');
 // This test should be enabled after early adopters goes live for all regions
 
 Scenario.skip(

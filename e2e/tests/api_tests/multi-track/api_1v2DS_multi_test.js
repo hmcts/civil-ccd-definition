@@ -11,7 +11,7 @@ if (config.runWAApiTest) {
   multiTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/multiTrackOrderMadeReviewCaseTask.js');
 }
 
-Feature('1v2DS unspec multi track journey').tag('@api-nightly-prod @api-multi-track @wa-task');
+Feature('1v2DS unspec multi track journey').tag('@civil-service-nightly @api-multi-track @civil-wa-master @civil-wa-pr @civil-wa-nightly');
 
 Scenario('1v2DS unspec multi track claim', async ({ api, WA }) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';

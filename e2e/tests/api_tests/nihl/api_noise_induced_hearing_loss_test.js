@@ -9,7 +9,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 //const judgeUser = config.judgeUserWithRegionId1Local;
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 
-Feature('Noise Induced Hearing Loss API test - fast claim - unspec').tag('@api-nightly-prod @api-nihl');
+Feature('Noise Induced Hearing Loss API test - fast claim - unspec').tag('@civil-service-nightly @api-nihl');
 
 Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1Nihl, claimAmount);

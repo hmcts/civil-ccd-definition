@@ -5,7 +5,8 @@ const claimType = 'SmallClaims';
 let caseId;
 let carmEnabled = false;
 
-Feature('Spec 1v1 judgment by admission mark paid in full api test').tag('@api-prod');
+Feature('Spec 1v1 judgment by admission mark paid in full api test')
+  .tag('@civil-service-master @civil-service-pr @civil-service-nightly');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);

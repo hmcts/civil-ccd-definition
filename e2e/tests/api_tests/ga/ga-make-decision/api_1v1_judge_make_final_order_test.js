@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests').tag('@api-nightly-prod');
+Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests').tag('@civil-service-nightly');
 
 Scenario('Judge decides Free Form Order', async ({api_ga}) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');

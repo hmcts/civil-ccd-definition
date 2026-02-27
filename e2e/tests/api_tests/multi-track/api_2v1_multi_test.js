@@ -11,7 +11,8 @@ if (config.runWAApiTest) {
   intermediateTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/intermediateTrackOrderMadeReviewCaseTask.js');
 }
 
-Feature('2v1 unspec multi track journey').tag('@api-nightly-prod');
+Feature('2v1 unspec multi track journey')
+  .tag('@civil-service-master @civil-service-pr @civil-service-nightly');
 
 Scenario('2v1 unspec multi track claim', async ({ api, WA }) => {
   const mpScenario = 'TWO_V_ONE';
@@ -38,7 +39,7 @@ Scenario('2v1 unspec multi track claim', async ({ api, WA }) => {
     api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
   }
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@api-prod');
+});
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();

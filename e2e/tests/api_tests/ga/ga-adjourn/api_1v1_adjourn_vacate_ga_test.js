@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Make Adjourn Vacate API tests').tag('@api-nightly-prod @api-ga-adjourn-ga');
+Feature('GA 1v1 Make Adjourn Vacate API tests').tag('@civil-service-nightly @api-ga-adjourn-ga');
 
 Scenario('AC 4 - 15 Days with consent', async ({api_ga}) => {
   let hearingDate = await api_ga.createDateString(15);

@@ -3,7 +3,7 @@ const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge Make Order Directions Order API tests').tag('@api-nightly-prod @api-ga-directions-order');
+Feature('GA 1v2 Judge Make Order Directions Order API tests').tag('@civil-service-nightly @api-ga-directions-order');
 
 Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api_ga}) => {
 

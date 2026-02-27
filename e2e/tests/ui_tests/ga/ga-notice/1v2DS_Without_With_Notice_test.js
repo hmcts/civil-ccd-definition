@@ -9,7 +9,7 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const judgeDirectionsOrderStatus = states.AWAITING_DIRECTIONS_ORDER_DOCS.name;
 let gaCaseReference, civilCaseReference;
 
-Feature('1v2 Different Solicitor - General Application Journey').tag('@ui-nightly-prod @ui-ga-notice');
+Feature('1v2 Different Solicitor - General Application Journey').tag('@civil-ccd-nightly @ui-ga-notice');
 
 BeforeSuite(async ({ api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(

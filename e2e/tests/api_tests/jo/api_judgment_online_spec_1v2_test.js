@@ -10,7 +10,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 //To reduce time of API test, temporarly stop running these tests. These test will modified to run in nightly build
-Feature('1v2 spec record judgment api test').tag('@api-nightly-prod');
+Feature('1v2 spec record judgment api test').tag('@civil-service-nightly');
 
 Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', false );

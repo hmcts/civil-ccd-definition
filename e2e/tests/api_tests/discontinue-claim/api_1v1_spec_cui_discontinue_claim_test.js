@@ -6,7 +6,7 @@ const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 const claimType = 'SmallClaims';
 let caseId;
 
-Feature('1vLIP spec api claim discontinuance journey').tag('@api-nightly-prod @api-discontinue-claim');
+Feature('1vLIP spec api claim discontinuance journey').tag('@civil-service-nightly @api-discontinue-claim');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);

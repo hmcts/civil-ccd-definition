@@ -6,7 +6,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Raise, Respond and Follow up Queries').tag('@ui-nightly-prod @ui-qm');
+Feature('Query Management - Raise, Respond and Follow up Queries').tag('@civil-ccd-nightly @ui-qm');
 
 Scenario('01 Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   const mpScenario = 'ONE_V_ONE';

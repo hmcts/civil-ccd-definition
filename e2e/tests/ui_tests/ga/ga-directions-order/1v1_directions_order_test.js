@@ -11,7 +11,7 @@ const judgeDirectionsOrderStatus = states.AWAITING_DIRECTIONS_ORDER_DOCS.name;
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA 1v1 Judge Make Order Directions Order tests').tag('@ui-nightly-prod @ui-ga-directions-order');
+Feature('GA 1v1 Judge Make Order Directions Order tests').tag('@civil-ccd-nightly @ui-ga-directions-order');
 
 Scenario('GA for 1v1 - Direction order journey', async ({ I, api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
