@@ -1,4 +1,5 @@
 export const subheadings = {
+  noiseInducedHearingLoss: 'Fast track noise induced hearing loss',
   warning: 'Warning',
   judgesRecital: 'Judge’s recital',
   allocation: 'Allocation',

@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: 'Multi Track Directions',
   type: 'allocateMultiTrack',
-  task_state: 'unassigned',
   task_system: 'SELF',
   security_classification: 'PUBLIC',
   task_title: 'Multi Track Directions',

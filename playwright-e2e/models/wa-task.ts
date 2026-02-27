@@ -2,6 +2,7 @@ export type WATask = {
   id?: string;
   name: string;
   type: string;
+  assignee?: string;
   task_title: string;
   task_state?: string;
   task_system?: string;

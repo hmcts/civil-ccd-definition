@@ -30,6 +30,9 @@ export const containers = {
   disclosureDocuments: {
     selector: '#fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments',
   },
+  witnessesOfFact: {
+    selector: '#sdoR2FastTrackWitnessOfFact_sdoR2FastTrackWitnessOfFact',
+  },
   schedulesOfLoss: {
     selector: '#fastTrackSchedulesOfLoss_fastTrackSchedulesOfLoss',
   },
@@ -75,7 +78,7 @@ export const inputs = {
       selectorKey: 'date2',
     },
     date3: {
-      selectorKey: 'date2',
+      selectorKey: 'date3',
     },
   },
   witnessesOfFact: {
