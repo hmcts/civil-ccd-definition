@@ -1,3 +1,5 @@
+export const heading = 'Dispute Resolution Hearing';
+
 export const subheadings = {
   warning: 'Warning',
   judgesRecital: 'Judge’s recital',

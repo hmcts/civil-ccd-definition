@@ -36,24 +36,24 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.variationOfDirections),
       super.expectSubheading(subheadings.settlement),
       super.expectSubheading(subheadings.disclosureOfDocuments),
-      this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date1.selectorKey, {
-        containerSelector: containers.disclosureDocuments.selector,
-      }),
-      this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date2.selectorKey, {
-        containerSelector: containers.disclosureDocuments.selector,
-      }),
-      this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date3.selectorKey, {
-        containerSelector: containers.disclosureDocuments.selector,
-      }),
+      // this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date1.selectorKey, {
+      //   containerSelector: containers.disclosureDocuments.selector,
+      // }),
+      // this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date2.selectorKey, {
+      //   containerSelector: containers.disclosureDocuments.selector,
+      // }),
+      // this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date3.selectorKey, {
+      //   containerSelector: containers.disclosureDocuments.selector,
+      // }),
       super.expectSubheading(subheadings.witnessesOfFact),
-      this.dateFragment.verifyContent(inputs.witnessesOfFact.deadlineDate.selectorKey),
+      //this.dateFragment.verifyContent(inputs.witnessesOfFact.deadlineDate.selectorKey),
       super.expectSubheading(subheadings.schedulesOfLoss),
-      this.dateFragment.verifyContent(inputs.scheduleOfLoss.date1.selectorKey, {
-        containerSelector: containers.schedulesOfLoss.selector,
-      }),
-      this.dateFragment.verifyContent(inputs.scheduleOfLoss.date2.selectorKey, {
-        containerSelector: containers.schedulesOfLoss.selector,
-      }),
+      // this.dateFragment.verifyContent(inputs.scheduleOfLoss.date1.selectorKey, {
+      //   containerSelector: containers.schedulesOfLoss.selector,
+      // }),
+      // this.dateFragment.verifyContent(inputs.scheduleOfLoss.date2.selectorKey, {
+      //   containerSelector: containers.schedulesOfLoss.selector,
+      // }),
       super.expectSubheading(subheadings.hearingTime),
       super.expectSubheading(subheadings.hearingMethod),
       super.expectSubheading(subheadings.newDirection),

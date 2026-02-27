@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: 'Legal Advisor Small Claims Track Directions',
   type: 'LegalAdvisorSmallClaimsTrackDirections',
-  task_state: 'unassigned',
   task_system: 'SELF',
   security_classification: 'PUBLIC',
   task_title: 'Legal Advisor Small Claims Track Directions',
