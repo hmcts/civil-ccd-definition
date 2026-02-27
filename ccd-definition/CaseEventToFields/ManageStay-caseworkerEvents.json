@@ -62,7 +62,7 @@
     "PageID": "manageStayJudicialReferralInMediation",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "preStayState != \"CASE_PROGRESSION\" AND preStayState != \"HEARING_READINESS\" AND preStayState != \"PREPARE_FOR_HEARING_CONDUCT_HEARING\" AND manageStayOption = \"LIFT_STAY\""
+    "PageShowCondition": "preStayState = \"JUDICIAL_REFERRAL\" OR preStayState = \"IN_MEDIATION\" AND manageStayOption = \"LIFT_STAY\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -73,7 +73,7 @@
     "PageID": "manageStayCaseProgressedHearingReadyPrepareForHearing",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "preStayState != \"JUDICIAL_REFERRAL\" AND preStayState != \"IN_MEDIATION\" AND manageStayOption = \"LIFT_STAY\""
+    "PageShowCondition": "preStayState = \"CASE_PROGRESSION\" OR preStayState = \"HEARING_READINESS\" OR preStayState = \"PREPARE_FOR_HEARING_CONDUCT_HEARING\" OR preStayState = \"DECISION_OUTCOME\" OR preStayState = \"All_FINAL_ORDERS_ISSUED\"  AND manageStayOption = \"LIFT_STAY\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
