@@ -1,0 +1,84 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsPenalNoticeTitle",
+    "Label": "## Penal notice (optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsPenalNoticeToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsPenalNotice",
+    "Label": "Note: Paragraph numbers and the defendant's name to which the penal notice applies must be entered in the box below.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fastTrackPenalNoticeTitle",
+    "Label": "## Penal notice (optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fastTrackPenalNoticeToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fastTrackPenalNotice",
+    "Label": "Note: Paragraph numbers and the defendant's name to which the penal notice applies must be entered in the box below.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsPPI",
+    "Label": "Payment Protection Insurance (PPI)",
+    "FieldType": "PPI",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fastTrackPPI",
+    "Label": "Payment Protection Insurance (PPI)",
+    "FieldType": "PPI",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fastTrackHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "HousingDisrepair",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "HousingDisrepair",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
