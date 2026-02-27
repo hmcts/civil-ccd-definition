@@ -31,8 +31,8 @@ tasks.register('highLevelDataSetup', JavaExec) {
 
 
 def versions = [
-  junit              : '5.10.1',
-  junitPlatform      : '1.10.1'
+  junit              : '6.0.3',
+  junitPlatform      : '6.0.3'
 ]
 
 ext.libraries = [
