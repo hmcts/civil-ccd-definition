@@ -7,7 +7,8 @@ if (config.runWAApiTest) {
   takeCaseOfflineTaskeExpectedTask = require('../../../../wa/tasks/takeCaseOfflineTask.js');
 }
 
-Feature('Spec 1v1 LR v LiP api intermediate track journey').tag('@api-prod @api-intermediate-track');
+Feature('Spec 1v1 LR v LiP api intermediate track journey')
+  .tag('@civil-service-master @civil-service-pr @civil-service-nightly @api-intermediate-track');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);

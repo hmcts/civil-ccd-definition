@@ -160,6 +160,13 @@ module.exports = {
     roleCategory: 'JUDICIAL',
     regionId: '2'
   },
+  judgeUserWithRegionId4: {
+    password: judgeDefaultPassword,
+    email: '4925359EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
+  },
   hearingCenterAdminLocal: {
     email: 'hearing-centre-admin-01@example.com',
     password: defaultPassword,
@@ -195,8 +202,22 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '12'
   },
+  tribunalCaseworkerWithRegionId2: {
+    email: 'tribunal_legal_caseworker_reg2@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '2'
+  },
   tribunalCaseworkerWithRegionId4: {
     email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '1'
+  },
+  tribunalCaseworkerWithRegionId: {
+    email: 'tribunal_legal_caseworker_national@justice.gov.uk',
     password: defaultPassword,
     type: 'tribunal-caseworker',
     roleCategory: 'LEGAL_OPERATIONS',
@@ -216,6 +237,12 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '1'
   },
+  ctscAdmin: {
+    password: defaultPassword,
+    email: 'ga_ctsc_team_leader_national@justice.gov.uk',
+    type: 'national-business-centre',
+    roleCategory: 'ADMIN'
+  },
   systemupdate: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',
@@ -228,7 +255,8 @@ module.exports = {
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'CIVIL' + (process.env.CCD_DEF_VERSION || '')
+    caseType: 'CIVIL',
+    caseTypeGA: 'GENERALAPPLICATION'
   },
   iacLeadershipJudge: {
     password: iacDefaultPassword,
@@ -282,6 +310,18 @@ module.exports = {
     roleCategory: 'LEGAL_OPS',
     regionId: '4'
   },
+  srTribunalCaseworker: {
+    password: defaultPassword,
+    email: 'sr_tribunal_caseworker_region4@justice.gov.uk',
+    type: 'LEGAL_OPERATIONS',
+    roleCategory: 'LEGAL_OPERATIONS'
+  },
+  leaderShipJudge: {
+    password: judgeDefaultPassword,
+    email: 'EMP47622@ejudiciary.net',
+    type: 'JUDICIAL',
+    roleCategory: 'JUDICIAL'
+  },
   ctscTeamLeaderUser: {
     email: 'ctsc_team_leader_region4@justice.gov.uk',
     password: defaultPassword,
@@ -329,6 +369,14 @@ module.exports = {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
     scheduleAHearing: 'ScheduleHMCHearing',
+    nbcUserReviewGA: 'ReviewApplication',
+    judgeDecideOnApplication: 'JudgeDecideOnApplication',
+    legalAdvisorDecideOnApplication: 'LegalAdvisorDecideOnApplication',
+    scheduleApplicationHearing: 'ScheduleApplicationHearing',
+    reviewApplicationOrder: 'ReviewApplicationOrder',
+    judgeRevisitApplication: 'JudgeRevisitApplication',
+    reviewRevisitedApplication: 'ReviewRevisitedApplication',
+    legalAdvisorRevisitApplication: 'LegalAdvisorRevisitApplication',
     reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
     reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
     reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
@@ -358,6 +406,8 @@ module.exports = {
   defendantSelectedCourt: courtToBeSelected,
   defendant2SelectedCourt: courtToBeSelected,
   djClaimantSelectedCourt: courtToBeSelected,
+  claimantSelectedCourtBirmingham: 'Birmingham Civil and Family Justice Centre - Priory Courts, 33 Bull Street - B4 6DS',
+  defendantSelectedCourtBirmingham: 'Birmingham Civil and Family Justice Centre - Priory Courts, 33 Bull Street - B4 6DS',
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt: courtToBeSelected,
   localNoCTests: false,

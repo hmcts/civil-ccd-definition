@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 // add @api-tests to run
 
-Feature('1v2 different solicitor unspec full defence api journey').tag('@api-nightly-prod @api-unspec-full-defence');
+Feature('1v2 different solicitor unspec full defence api journey').tag('@civil-service-nightly @api-unspec-full-defence');
 
 Scenario('1v2 different solicitor unspec full defence', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

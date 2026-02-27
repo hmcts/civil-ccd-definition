@@ -13,4 +13,3 @@ echo "export CAMUNDA_BASE_URL=https://civil-ccd-camunda-staging-aat.aat.platform
 
 # definition placeholders
 echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ccd-staging-java"
-echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=http://civil-ccd-staging-java"

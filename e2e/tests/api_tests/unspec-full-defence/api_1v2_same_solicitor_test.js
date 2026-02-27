@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 
-Feature('1v2 same solicitor unspec full defence api journey').tag('@api-nightly-prod @api-unspec-full-defence');
+Feature('1v2 same solicitor unspec full defence api journey').tag('@civil-service-nightly @api-unspec-full-defence');
 
 Scenario('1v2 same solicitor unspec full defence', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

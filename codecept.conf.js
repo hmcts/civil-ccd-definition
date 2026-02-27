@@ -2,16 +2,6 @@ const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFiles
 
 const functional = process.env.FUNCTIONAL;
 
-const ccdPipelineTests = [
-      './e2e/tests/ui_tests/{*,**/*}_test.js',
-      './e2e/tests/api_tests/lrspec_cui/*_test.js',
-    ];
-
-const civilServiceAndCamundaTests = [
-  './e2e/tests/api_tests/{*,**/*}_test.js',
-  './e2e/tests/api_tests/*_test.js',
-];
-
 const getTests = () => {
   let prevFailedTestFiles = process.env.PREV_FAILED_TEST_FILES;
   let prevNotExecutedTestFiles = process.env.PREV_NOT_EXECUTED_TEST_FILES;
@@ -21,12 +11,10 @@ const getTests = () => {
     prevNotExecutedTestFiles = prevNotExecutedTestFiles ? prevNotExecutedTestFiles.split(',') : [];
     return [...prevFailedTestFiles, ...prevNotExecutedTestFiles];
   }
-  if(process.env.WA_TESTS === 'true')
-    return [...ccdPipelineTests, ...civilServiceAndCamundaTests]
-  if(process.env.CCD_UI_TESTS === 'true')
-    return ccdPipelineTests;
-  else
-    return civilServiceAndCamundaTests;
+  return [
+    './e2e/tests/api_tests/{*,**/*}_test.js',
+    './e2e/tests/ui_tests/{*,**/*}_test.js',
+  ];
 };
 
 exports.config = {
@@ -53,7 +41,7 @@ exports.config = {
       url: process.env.URL || 'http://localhost:3333',
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 60000), // 60 seconds (reduced from 90 seconds)
-      windowSize: '1280x960',
+      windowSize: '1440x960',
       browser: 'chromium',
       timeout: 20000,
       waitForAction: 500,
@@ -85,6 +73,7 @@ exports.config = {
     api_spec_fast: './e2e/api/steps_LRspecFast.js',
     api_spec_small: './e2e/api/steps_LRspecSmall.js',
     api_spec_cui: './e2e/api/steps_LRspecCui.js',
+    api_ga: './e2e/api/steps_ga.js',
     noc: './e2e/api/steps_noc.js',
     hearings: './e2e/api/steps_hearings.js',
     bulks: './e2e/api/steps_Bulk.js',

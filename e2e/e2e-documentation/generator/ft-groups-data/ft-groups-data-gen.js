@@ -6,7 +6,6 @@ const {
   repoRoot,
   walk,
   toPosix,
-  isSmokeFile,
   fileIsDependent,
   collectScenarios,
   isFunctionalTag
@@ -89,7 +88,7 @@ function formatIndependentScenario(scenario) {
 function buildTestRecords({ suiteType, targetDir }) {
   const absoluteDir = path.join(repoRoot, targetDir);
   const files = walk(absoluteDir).filter(
-    file => file.endsWith('_test.js') && !isSmokeFile(file)
+    file => /_tests?\.js$/i.test(file)
   );
   const results = [];
 
@@ -151,15 +150,20 @@ function deriveGroupsFromTests(testRecords) {
         return;
       }
       const [, tagType, groupName] = match;
-      const pipeline = tagType === 'ui'
-        ? ['civil-ccd-definition: PR']
-        : ['civil-service: PR', 'civil-camunda-bpmn-definition: PR'];
+      const pipeline = [
+        'civil-ccd-definition: PR',
+        'civil-service: PR',
+        'civil-camunda-bpmn-definition: PR',
+        'civil-wa-task-configuration: PR',
+      ];
       const key = tag;
       if (!groups.has(key)) {
         groups.set(key, {
           functionalTestGroup: functionalGroupDisplayNames[groupName] || groupName,
           tag,
-          githubLabelName: `pr_ft_${groupName}`,
+          githubLabelName: tagType === 'ui'
+            ? `pr_ft_ui-${groupName}`
+            : `pr_ft_api-${groupName}`,
           pipeline,
           folderPaths: new Set(),
           steps: [],

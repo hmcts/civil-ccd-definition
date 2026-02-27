@@ -8,7 +8,7 @@ const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 let caseNumber; 
 const mpScenario = 'ONE_V_ONE';
 
-Feature('1v1 case flags journey').tag('@ui-nightly-prod @ui-case-flags');
+Feature('1v1 case flags journey').tag('@civil-ccd-nightly @ui-case-flags');
 
 Scenario('01 Prepare 1v1 unspec claim up to case progression', async ({api, I}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

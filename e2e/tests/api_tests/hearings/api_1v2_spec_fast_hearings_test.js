@@ -6,7 +6,7 @@ const serviceId = 'AAA6';
 const hmcTest = true;
 let caseId;
 
-Feature('CCD 1v2 Spec fast hearings API test').tag('@api-nightly-prod @api-hearings');
+Feature('CCD 1v2 Spec fast hearings API test').tag('@civil-service-nightly @api-hearings');
 
 
 Scenario.skip('01 1v2 fast claim full defence', async ({api_spec_fast}) => {

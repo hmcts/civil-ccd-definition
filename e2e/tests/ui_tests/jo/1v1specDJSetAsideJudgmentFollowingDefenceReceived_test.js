@@ -10,7 +10,7 @@ if (config.runWAApiTest) {
 
 let caseNumber;
 
-Feature('1v1 Spec Set Aside Judgment Following Receiving Defence').tag('@ui-nightly-prod @ui-jo');
+Feature('1v1 Spec Set Aside Judgment Following Receiving Defence').tag('@civil-ccd-nightly @ui-jo');
 
 Scenario('01 Create 1v1 spec claim, request default judgment', async ({I, api_spec, LRspec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

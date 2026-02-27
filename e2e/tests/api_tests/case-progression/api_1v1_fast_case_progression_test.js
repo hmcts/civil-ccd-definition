@@ -4,7 +4,8 @@ const mpScenario = 'ONE_V_ONE';
 const judgeUser = config.judgeUserWithRegionId1;
 const claimAmountJudge = '11000';
 
-Feature('1v1 fast track case progression api journeys').tag('@api-nightly-prod @api-case-progression');
+Feature('1v1 fast track case progression api journeys')
+  .tag('@civil-service-nightly @api-case-progression');
 
 Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
@@ -23,7 +24,7 @@ Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of
     await api.triggerBundle(config.systemupdate);
   }
   await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
-}).tag('@api-prod');
+}).tag('@civil-service-master @civil-service-pr');
 
 Scenario.skip('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);

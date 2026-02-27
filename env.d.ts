@@ -2,7 +2,6 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       CI: string;
-      CCD_UI_TESTS: string;
       FUNCTIONAL: string;
       PLAYWRIGHT_WORKERS: string;
       ENVIRONMENT: string;

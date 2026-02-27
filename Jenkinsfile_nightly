@@ -4,17 +4,17 @@ properties([
   pipelineTriggers([cron('H 08 * * 1-5')]),
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
-    choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'], 
+    choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'],
       description: 'Should force pipeline to go green by not running any functional tests'),
-    choice(name: 'RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES', choices: ['false', 'true'], 
+    choice(name: 'RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES', choices: ['false', 'true'],
       description: 'Runs the failed test files and test files that were not executed, contained within the \'testFilesReport.json\', from the latest previous pipeline run'),
-    choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'], 
+    choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'],
       description: 'Environment to test'),
     string(name: 'PR_NUMBER',
       defaultValue: '', description: 'PR Number of deployed environment to be used to run tests against'),
-    choice(name: 'FRONTEND_URL', 
+    choice(name: 'FRONTEND_URL',
       choices: [
-                  'https://manage-case.aat.platform.hmcts.net', 
+                  'https://manage-case.aat.platform.hmcts.net',
                   'https://manage-case.demo.platform.hmcts.net',
                   'https://manage-case-int.demo.platform.hmcts.net',
                   'https://manage-case-int1.demo.platform.hmcts.net',
@@ -28,28 +28,28 @@ properties([
                   'https://xui-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                 ],
       description: 'The URL you want to run the full functional tests against'),
-    choice(name: 'IDAM_WEB_URL', choices: ['https://idam-web.aat.platform.hmcts.net', 'https://idam-web.demo.platform.hmcts.net'], 
+    choice(name: 'IDAM_WEB_URL', choices: ['https://idam-web.aat.platform.hmcts.net', 'https://idam-web.demo.platform.hmcts.net'],
       description: 'The URL of idam web'),
-    choice(name: 'IDAM_API_URL', choices: ['https://idam-api.aat.platform.hmcts.net', 'https://idam-api.demo.platform.hmcts.net'], 
+    choice(name: 'IDAM_API_URL', choices: ['https://idam-api.aat.platform.hmcts.net', 'https://idam-api.demo.platform.hmcts.net'],
       description: 'The URL of idam api'),
-    choice(name: 'DM_STORE_URL', choices: ['http://dm-store-aat.service.core-compute-aat.internal', 'http://dm-store-demo.service.core-compute-demo.internal'], 
+    choice(name: 'DM_STORE_URL', choices: ['http://dm-store-aat.service.core-compute-aat.internal', 'http://dm-store-demo.service.core-compute-demo.internal'],
       description: 'The URL of dm store'),
-    choice(name: 'SERVICE_AUTH_PROVIDER_API_BASE_URL', choices: ['http://rpe-service-auth-provider-aat.service.core-compute-aat.internal', 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal'], 
+    choice(name: 'SERVICE_AUTH_PROVIDER_API_BASE_URL', choices: ['http://rpe-service-auth-provider-aat.service.core-compute-aat.internal', 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal'],
       description: 'The URL of service auth provider'),
-    choice(name: 'CCD_DATA_STORE_URL', 
+    choice(name: 'CCD_DATA_STORE_URL',
       choices: [
-                  'http://ccd-data-store-api-aat.service.core-compute-aat.internal', 
+                  'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
                   'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
                   'https://ccd-data-store-api-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://ccd-data-store-api-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://ccd-data-store-api-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://ccd-data-store-api-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://ccd-data-store-api-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net'
-                ], 
+                ],
       description: 'The URL of ccd data store'),
-    choice(name: 'CIVIL_SERVICE_URL', 
+    choice(name: 'CIVIL_SERVICE_URL',
       choices: [
-                  'http://civil-service-aat.service.core-compute-aat.internal', 
+                  'http://civil-service-aat.service.core-compute-aat.internal',
                   'http://civil-service-demo.service.core-compute-demo.internal',
                   'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
@@ -61,18 +61,18 @@ properties([
     choice(name: 'WA_TASK_MGMT_URL', choices: ['http://wa-task-management-api-aat.service.core-compute-aat.internal', 'http://wa-task-management-api-demo.service.core-compute-demo.internal'],
        description: 'The URL of wa task management'),
     choice(name: 'PAYMENT_API_URL', choices: ['http://payment-api-aat.service.core-compute-aat.internal', 'http://payment-api-demo.service.core-compute-demo.internal'],
-       description: 'The URL of wa task management'),  
-    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8', 
+       description: 'The URL of wa task management'),
+    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8',
       description: 'Number of workers for playwright'),
-    string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', 
+    string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1',
       description: 'Number of times playwright will retry tests'),
-    string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1', 
+    string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1',
       description: 'Number of times playwright tests will retry exui events'),
-    choice(name: 'PLAYWRIGHT_TEST_SPEED', choices: ['fast', 'medium', 'slow'], 
+    choice(name: 'PLAYWRIGHT_TEST_SPEED', choices: ['fast', 'medium', 'slow'],
       description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),
-    choice(name: 'PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS', choices: ['false', 'true'], 
+    choice(name: 'PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS', choices: ['false', 'true'],
       description: 'Runs accessibility tests for playwright during test execution'),
-    choice(name: 'PLAYWRIGHT_RUN_SETUP', choices: ['true', 'false'], 
+    choice(name: 'PLAYWRIGHT_RUN_SETUP', choices: ['true', 'false'],
       description: 'Runs setup projects before functional test suite'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
@@ -228,7 +228,6 @@ withNightlyPipeline(type, product, component) {
   env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
   env.PAYMENT_API_URL = params.PAYMENT_API_URL
   env.URL_FOR_SECURITY_SCAN = civilServiceUrl
-  env.CCD_UI_TESTS = true
   env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   overrideVaultEnvironments([
     'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
@@ -304,7 +303,7 @@ withNightlyPipeline(type, product, component) {
       }
     }
   }
-  
+
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
       if(runPrevFailedAndNotExecutedTestFiles) {
@@ -330,5 +329,5 @@ withNightlyPipeline(type, product, component) {
       archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     }
   }
-  
+
 }

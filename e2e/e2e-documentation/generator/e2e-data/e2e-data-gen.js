@@ -6,7 +6,6 @@ const {
   repoRoot,
   pipelineTagMap,
   walk,
-  isSmokeFile,
   fileIsDependent,
   collectScenarios,
   isFunctionalTag
@@ -23,16 +22,18 @@ function formatDisplayPath(posixPath) {
 function deriveTagMetadata(tags) {
   const pipelines = new Set();
   const functionalTags = [];
-  const functionalGroups = [];
+  const functionalGroups = new Set();
 
   tags.forEach(tag => {
     if (pipelineTagMap[tag]) {
       pipelineTagMap[tag].forEach(p => pipelines.add(p));
     } else if (isFunctionalTag(tag)) {
       functionalTags.push(tag);
-      const rawGroup = tag.replace(/^@(ui|api)-/, '');
-      if (rawGroup) {
-        functionalGroups.push(`pr_ft_${rawGroup}`);
+      const match = /^@(ui|api)-(.+)$/.exec(tag);
+      if (match) {
+        const [, tagType, rawGroup] = match;
+        const labelPrefix = tagType === 'ui' ? 'pr_ft_ui-' : 'pr_ft_api-';
+        functionalGroups.add(`${labelPrefix}${rawGroup}`);
       }
     }
   });
@@ -41,7 +42,7 @@ function deriveTagMetadata(tags) {
     tags,
     pipelines: Array.from(pipelines),
     functionalTestGroupTags: functionalTags,
-    functionalTestGroups: functionalGroups
+    functionalTestGroups: Array.from(functionalGroups)
   };
 }
 
@@ -113,7 +114,7 @@ function formatIndependentScenario(scenario) {
 function generateDocs({ suiteType, targetDir, outputFile }) {
   const absoluteDir = path.join(repoRoot, targetDir);
   const files = walk(absoluteDir).filter(
-    file => file.endsWith('_test.js') && !isSmokeFile(file)
+    file => /_tests?\.js$/i.test(file)
   );
   const results = [];
 

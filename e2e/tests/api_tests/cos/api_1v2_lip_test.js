@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('Unspec 1v2lips api journey').tag('@api-nightly-prod @api-cos');
+Feature('Unspec 1v2lips api journey').tag('@civil-service-nightly @api-cos');
 
 Scenario('Create claim where one respondent is LIP one is LR and notify/notify details', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,

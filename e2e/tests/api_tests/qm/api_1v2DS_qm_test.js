@@ -9,7 +9,7 @@ const fastClaimAmount = '11000';
 const hmcTest = true;
 let caseId;
 
-Feature('CCD 1v2 Unspec fast hearings API test').tag('@api-nightly-prod @api-qm @wa-task');
+Feature('CCD 1v2 Unspec fast hearings API test').tag('@civil-service-nightly @api-qm @civil-wa-master @civil-wa-pr @civil-wa-nightly');
 
 Scenario('01 1v2DS full defence defendant and claimant response', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, fastClaimAmount, false, hmcTest);
