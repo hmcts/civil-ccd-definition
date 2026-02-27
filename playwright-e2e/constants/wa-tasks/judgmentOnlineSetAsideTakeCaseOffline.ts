@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: "Set Aside - Take Case Offline",
   type: "JudgmentOnlineSetAsideTakeCaseOffline",
-  task_state: "unassigned",
   task_system: "SELF",
   security_classification: "PUBLIC",
   task_title: "Set Aside - Take Case Offline",

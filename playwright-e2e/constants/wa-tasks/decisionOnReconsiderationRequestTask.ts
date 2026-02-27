@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: "Decision on Reconsideration Request",
   type: "JudgeDecideOnReconsiderRequest",
-  task_state: "unassigned",
   task_system: "SELF",
   security_classification: "PUBLIC",
   task_title: "Decision on Reconsideration Request",
