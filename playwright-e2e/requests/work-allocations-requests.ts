@@ -36,7 +36,7 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
       },
     });
     const task = responseJson.tasks.find((task: any) => task.type === validTask.type);
-    // await super.expectResponseJsonToContain(validTask, task);
+    await super.expectResponseJsonToContain(validTask, task);
     return task as WATask;
   }
 
@@ -54,7 +54,7 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
       console.log(`Task ${waTask.id} assigned to user ${user.name}`);
     } else {
       await super.expectResponseJsonToHavePropertyValue('assignee', user.userId, waTask, 
-        {message: `Failed to assign task: ${waTask.id} to user: ${user.name}, task is already assigned user with a different userId: ${waTask.assignee}`});
+        {message: `Failed to assign task: ${waTask.id} to user: ${user.name}, task is already assigned to a user with a different userId: ${waTask.assignee}`});
       console.log(`Task is already assigned to user: ${user.name}`);
     }
   }

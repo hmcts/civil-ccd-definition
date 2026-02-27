@@ -6,7 +6,6 @@ test.describe('Specified Small Track 1v1', async () => {
     DefendantSolicitor1SpecSteps,
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
-    JudgeSteps
   }) => {
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.CreateClaimSmallTrack1v1();
