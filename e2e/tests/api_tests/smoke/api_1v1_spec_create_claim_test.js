@@ -1,0 +1,13 @@
+/* eslint-disable no-unused-vars */
+const config = require('../../../config.js');
+const mpScenario = 'ONE_V_ONE';
+
+Feature('Smoke test - 1v1 spec create claim and create general application').tag('@civil-camunda-smoke @civil-wa-smoke');
+
+Scenario('1v1 spec create claim and create general application', async ({api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+}).retry(1);
+
+AfterSuite(async ({api_ga}) => {
+  await api_ga.cleanUp();
+});
