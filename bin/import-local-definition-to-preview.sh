@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 set -eu
-repoType=${1:-ccd}
-prNumber=${2:-'6199'}
+repoType=${1:-cui}
+prNumber=${2:-'7233'}
 
 
 # Ensure dependencies have execution permissions
