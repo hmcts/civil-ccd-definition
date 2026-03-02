@@ -557,6 +557,7 @@ export default abstract class BasePage {
   protected async expectSubheading(
     text: string,
     options: {
+      headingLevel?: 2 | 3 | 4 | 5 | 6;
       containerSelector?: string;
       index?: number;
       first?: boolean;
@@ -566,7 +567,7 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       timeout?: number;
-    } = { exact: true },
+    } = { headingLevel: 2, exact: true },
   ) {
     if (
       [
@@ -588,7 +589,7 @@ export default abstract class BasePage {
 
     let locator = this.page.getByRole('heading', {
       name: text.toString(),
-      level: 2,
+      level: options.headingLevel ?? 2,
       exact: options.exact ?? true,
     });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);

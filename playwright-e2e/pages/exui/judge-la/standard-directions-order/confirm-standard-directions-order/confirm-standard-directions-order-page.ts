@@ -14,7 +14,7 @@ export default class ConfirmStandardDirectionsOrderPage extends ExuiPage(BasePag
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
-      super.expectSubheading(subheading),
+      super.expectSubheading(`${subheading} ${ccdCaseData.legacyCaseReference}`),
       super.expectText(paragraphs.paragraph1),
       super.expectText(paragraphs.paragraph2),
       super.expectText(paragraphs.paragraph3),

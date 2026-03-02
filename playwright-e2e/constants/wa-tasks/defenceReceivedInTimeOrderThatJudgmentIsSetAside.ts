@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: "Defence received in time - order that judgment is set aside",
   type: "OrderToSetAsideDefendedClaim",
-  task_state: "assigned",
   task_system: "SELF",
   security_classification: "PUBLIC",
   task_title: "Defence received in time - order that judgment is set aside",

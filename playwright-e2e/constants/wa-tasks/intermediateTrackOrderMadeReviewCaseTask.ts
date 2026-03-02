@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: 'Order Made - Review case - Intermediate track',
   type: 'reviewOrder',
-  task_state: 'assigned',
   task_system: 'SELF',
   security_classification: 'PUBLIC',
   task_title: 'Order Made - Review case - Intermediate track',

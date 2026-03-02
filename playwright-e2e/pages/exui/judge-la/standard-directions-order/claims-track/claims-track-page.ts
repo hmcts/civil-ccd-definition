@@ -43,7 +43,7 @@ export default class ClaimsTrackPage extends ExuiPage(BasePage) {
   async selectFastTrack() {
     await super.clickBySelector(radioButtons.claimsTrack.fast.selector);
     await Promise.all([
-      super.expectLabel(checkboxes.fastTrack.label),
+      super.expectLegend(checkboxes.fastTrack.label),
       super.expectLabel(checkboxes.fastTrack.buildingDispute.label),
       super.expectLabel(checkboxes.fastTrack.clinicialNegligence.label),
       super.expectLabel(checkboxes.fastTrack.creditHire.label, { count: 1 }),
