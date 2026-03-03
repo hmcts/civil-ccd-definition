@@ -122,14 +122,11 @@ export default class DisposalHearingPage extends ExuiPage(BasePage) {
     const dateFrom = DateHelper.getToday();
     const dateTo = DateHelper.addToToday({ days: 1, workingDay: true });
     await super.inputText('hearing time input', inputs.hearingTime.input.selector);
+    await this.dateFragment.enterDate(dateFrom, inputs.hearingTime.dateFrom.selectorKey);
+    await this.dateFragment.enterDate(dateTo, inputs.hearingTime.dateTo.selectorKey);
+    await super.clickBySelector(radioButtons.hearingTime.other.selector);
     await super.inputText('1', inputs.hearingTime.otherHours.selector);
     await super.inputText('30', inputs.hearingTime.otherMinutes.selector);
-    await this.dateFragment.enterDate(dateFrom, inputs.hearingTime.dateFrom.selectorKey, {
-      containerSelector: containers.schedulesOfLoss.selector,
-    });
-    await this.dateFragment.enterDate(dateFrom, inputs.hearingTime.dateTo.selectorKey, {
-      containerSelector: containers.schedulesOfLoss.selector,
-    });
   }
 
   async addHearingMethod() {
