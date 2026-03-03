@@ -8,7 +8,7 @@ if (config.runWAApiTest) {
 }
 
 Feature('Spec 1v1 LR v LiP api intermediate track journey')
-  .tag('@civil-service-master @civil-service-pr @civil-service-nightly @api-intermediate-track');
+  .tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr @civil-service-nightly @api-intermediate-track');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);

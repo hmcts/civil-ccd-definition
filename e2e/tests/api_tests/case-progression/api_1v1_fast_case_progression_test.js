@@ -24,7 +24,7 @@ Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of
     await api.triggerBundle(config.systemupdate);
   }
   await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
-}).tag('@civil-service-master @civil-service-pr');
+}).tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr');
 
 Scenario.skip('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);

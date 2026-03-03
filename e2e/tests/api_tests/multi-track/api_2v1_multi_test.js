@@ -12,7 +12,7 @@ if (config.runWAApiTest) {
 }
 
 Feature('2v1 unspec multi track journey')
-  .tag('@civil-service-master @civil-service-pr @civil-service-nightly');
+  .tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr @civil-service-nightly');
 
 Scenario('2v1 unspec multi track claim', async ({ api, WA }) => {
   const mpScenario = 'TWO_V_ONE';

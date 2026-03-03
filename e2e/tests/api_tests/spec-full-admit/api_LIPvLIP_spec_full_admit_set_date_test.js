@@ -6,7 +6,7 @@ let carmEnabled = false;
 let caseId;
 
 Feature('1v1 LIP v LIP spec api full admit journey')
-    .tag('@civil-service-master @civil-service-pr @civil-service-nightly @api-spec-full-admit');
+    .tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr @civil-service-nightly @api-spec-full-admit');
 
 Before(async () => {
     await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);

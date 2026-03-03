@@ -8,7 +8,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 Feature('1v1 unspec intermediate track api journey')
-  .tag('@civil-service-master @civil-service-pr @civil-service-nightly @api-intermediate-track');
+  .tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr @civil-service-nightly @api-intermediate-track');
 
 Scenario('1v1 Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';

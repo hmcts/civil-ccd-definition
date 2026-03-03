@@ -21,7 +21,7 @@ Scenario('CARM enabled', async ({api_spec_cui}) => {
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, claimRef, claimType, carmEnabled);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'Yes', 'IN_MEDIATION', carmEnabled);
   await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
-}).tag('@civil-service-master @civil-service-pr');
+}).tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr');
 
 Scenario('CARM not enabled', async ({api_spec_cui}) => {
   carmEnabled = false;

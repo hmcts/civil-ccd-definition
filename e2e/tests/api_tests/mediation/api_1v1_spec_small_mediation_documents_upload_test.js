@@ -17,7 +17,7 @@ Scenario.skip('1v1 claimant and defendant upload mediation documents - CARM not 
   await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
   await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', false);
-}).tag('@civil-service-master @civil-service-pr');
+}).tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr');
 
 Scenario.skip('1v1 claimant and defendant part admit states paid- claimant not received payment - upload mediation documents - CARM enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, true);
