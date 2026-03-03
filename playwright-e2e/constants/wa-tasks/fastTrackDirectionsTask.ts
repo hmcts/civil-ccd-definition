@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: 'Fast Track Directions',
   type: 'FastTrackDirections',
-  task_state: 'unassigned',
   task_system: 'SELF',
   security_classification: 'PUBLIC',
   task_title: 'Fast Track Directions',

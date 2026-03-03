@@ -7,6 +7,7 @@ test.describe('Unspecified Fast track 1v1', async () => {
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
     HearingCenterAdminSteps,
+    JudgeSteps
   }) => {
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.CreateClaimFastTrack1v1();
@@ -20,6 +21,8 @@ test.describe('Unspecified Fast track 1v1', async () => {
     await DefendantSolicitor1Steps.RespondFastTrackFullDefence1v1();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondFastTrackIntentToProceed1v1();
+    await JudgeSteps.Login();
+    await JudgeSteps.SdoFastTrackNIHL();
     await HearingCenterAdminSteps.LoginRegion1();
     await HearingCenterAdminSteps.CreateCaseLevelCaseFlag();
     await HearingCenterAdminSteps.CreateClaimant1CaseFlag();

@@ -5,7 +5,7 @@ import CaseworkerActionsFactory from '../../actions/ui/exui/caseworker/caseworke
 import ClaimantSolicitorActionsFactory from '../../actions/ui/exui/claimant-solicitor/claimant-solcitor-actions-factory';
 import ExuiDashboardActions from '../../actions/ui/exui/common/exui-dashboard-actions';
 import DefendantActionsFactory from '../../actions/ui/exui/defendant-solicitor/defendant-actions-factory';
-import JudgeActionsFactory from '../../actions/ui/exui/judge/judge-actions-factory';
+import JudgeLaActionsFactory from '../../actions/ui/exui/judge-la/judge-la-actions-factory';
 import IdamActions from '../../actions/ui/idam/idam-actions';
 import PageUtilsFactory from '../../pages/utils/page-utils-factory';
 import IdamPageFactory from '../../pages/idam/idam-page-factory';
@@ -20,7 +20,7 @@ type UiActionsFixtures = {
   _defendantActionsFactory: DefendantActionsFactory;
   _caseworkerActionsFactory: CaseworkerActionsFactory;
   _hearingCenterAdminActionsFactory: HearingCenterAdminActionsFactory;
-  _judgeActionsFactory: JudgeActionsFactory;
+  _judgeLaActionsFactory: JudgeLaActionsFactory;
 };
 
 export const test = mergeTests(testUtils, requestFactories).extend<UiActionsFixtures>({
@@ -42,7 +42,7 @@ export const test = mergeTests(testUtils, requestFactories).extend<UiActionsFixt
   _hearingCenterAdminActionsFactory: async ({ page, _testData }, use) => {
     await use(new HearingCenterAdminActionsFactory(page, _testData));
   },
-  _judgeActionsFactory: async ({ page, _testData }, use) => {
-    await use(new JudgeActionsFactory(page, _testData));
+  _judgeLaActionsFactory: async ({ page, _testData }, use) => {
+    await use(new JudgeLaActionsFactory(page, _testData));
   }
 });
