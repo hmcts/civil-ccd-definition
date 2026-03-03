@@ -59,6 +59,14 @@
   },
   {
     "ID": "Message",
+    "ListElementCode": "createdByCaseRole",
+    "FieldType": "Text",
+    "ElementLabel": "Creator role",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Message",
     "ListElementCode": "subjectType",
     "ElementLabel": "What is it about",
     "FieldType": "FixedRadioList",
