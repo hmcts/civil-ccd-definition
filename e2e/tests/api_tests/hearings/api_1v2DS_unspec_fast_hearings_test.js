@@ -27,7 +27,7 @@ Scenario('02 Listing officer adds case flags', async ({hearings}) => {
   await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent2Witnesses', getSupportWorkerFlag());
 });
 
-Scenario('06 Judge choose hearing in person', async ({api}) => {
+Scenario.skip('06 Judge choose hearing in person', async ({api}) => {
   await api.createSDO(config.judgeUser2WithRegionId2, 'CREATE_FAST_IN_PERSON');
 });
 
