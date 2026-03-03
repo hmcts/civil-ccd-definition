@@ -244,6 +244,22 @@ export default abstract class BaseRequest {
   }
 
   @BoxedDetailedStep(classKey)
+  protected async expectResponseJsonArrayToContain(
+    partialArray: any[],
+    responseJsonArray: any[],
+    options: { message?: string } = {},
+  ) {
+    const expectedArrayItems = partialArray.map((item) =>
+      item !== null && typeof item === 'object' && !Array.isArray(item)
+        ? expect.objectContaining(item)
+        : item,
+    );
+    expect(responseJsonArray, options.message).toEqual(
+      expect.arrayContaining(expectedArrayItems),
+    );
+  }
+
+  @BoxedDetailedStep(classKey)
   protected async expectResponseJsonToEqual(
     object: any,
     responseJson: any,

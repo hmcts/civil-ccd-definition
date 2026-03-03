@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v2 spec defaultJudgement').tag('@ui-dj-spec @ui-dj');
+Feature('1v2 spec defaultJudgement').tag('@ui-dj');
 
 Scenario('1v2 create spec claim, request default judgment', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');

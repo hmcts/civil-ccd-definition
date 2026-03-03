@@ -15,7 +15,7 @@ jobs:
       - name: Use Node.js 18
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: 18
+          node-version: 24
 
       - name: Install dependencies
         env:
@@ -24,14 +24,14 @@ jobs:
 
       - name: Regenerate documentation JSON
         run: |
-          yarn test:generate:ui-docs
-          yarn test:generate:api-docs
+          yarn test:generate:e2e-api-data
+          yarn test:generate:e2e-ui-data
 
       - name: Update README UI table
-        run: yarn test:readme:ui-docs
+        run: yarn test:readme:e2e-ui-table
 
       - name: Update README API table
-        run: yarn test:readme:api-docs
+        run: yarn test:readme:e2e-api-table
 
       - name: Commit and push README updates
         uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5

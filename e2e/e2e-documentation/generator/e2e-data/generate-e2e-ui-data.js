@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const { generateDocs } = require('./support/codeceptjs-doc-gen');
+const { generateDocs } = require('./e2e-data-gen');
 
-const outputPath = path.join('e2e/e2e-documentation/results', 'codeceptjs-ui-tests.json');
+const outputPath = path.join('e2e/e2e-documentation/results/e2e-data', 'e2e-ui-data.json');
 
 const count = generateDocs({
   suiteType: 'ui',

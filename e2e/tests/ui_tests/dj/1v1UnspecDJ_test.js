@@ -25,7 +25,7 @@ Scenario('01 Create 1v1 unspec claim, notify claim, notify claim details, reques
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJUnspec(caseId, 'ONE_V_ONE');
-}).retry(2).tag('@ui-prod @wa-task');
+}).retry(2).tag('@ui-prod');
 
 //DTSCCI-358
 Scenario.skip('02 Judge add case notes', async ({I, api}) => {
@@ -53,7 +53,7 @@ Scenario('03 Judge perform direction order', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(judgeUserToBeUsed, taskId);
   }
-}).retry(2).tag('@wa-task');
+}).retry(2);
 
 Scenario('04 Hearing schedule', async ({I, api, WA}) => {
   //Permission fields in task details are different in AAT and Demo.
@@ -64,7 +64,7 @@ Scenario('04 Hearing schedule', async ({I, api, WA}) => {
     taskId = scheduleAHearingTask['id'];
   }
   await createHearingScheduled(I);
-}).retry(2).tag('@wa-task');
+}).retry(2);
 
 Scenario.skip('05 Verify error on trial readiness', async ({I, api}) => {
   await api.amendHearingDate(config.systemupdate, '2022-01-10');

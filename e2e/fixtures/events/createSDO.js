@@ -1735,6 +1735,7 @@ module.exports = {
           setFastTrackFlag: 'No'
         },
         SdoR2SmallClaims: {
+          isSdoR2NewScreen: 'Yes'
         }
       },
       calculated: calculatedClaimsTrackDRH

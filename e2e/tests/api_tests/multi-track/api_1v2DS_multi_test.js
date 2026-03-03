@@ -4,14 +4,14 @@ const mintiEnabled = true;
 const track = 'MULTI_CLAIM';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
-let caseId, taskId, intermediateTrackOrderMadeReviewCaseExpectedTask, multiTrackDirectionsExpectedTask;
+let caseId, taskId, multiTrackOrderMadeReviewCaseExpectedTask, multiTrackDirectionsExpectedTask;
 
 if (config.runWAApiTest) {
   multiTrackDirectionsExpectedTask = require('../../../../wa/tasks/multiTrackDirectionsTask.js');
-  intermediateTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/intermediateTrackOrderMadeReviewCaseTask.js');
+  multiTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/multiTrackOrderMadeReviewCaseTask.js');
 }
 
-Feature('1v2DS unspec multi track journey').tag('@api-nightly-prod @api-multi-track');
+Feature('1v2DS unspec multi track journey').tag('@api-nightly-prod @api-multi-track @wa-task');
 
 Scenario('1v2DS unspec multi track claim', async ({ api, WA }) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
@@ -34,7 +34,7 @@ Scenario('1v2DS unspec multi track claim', async ({ api, WA }) => {
   if (config.runWAApiTest && WA) {
     const multiTrackOrderMakeReview = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.multiTrackOrderMadeReview);
     console.log('multiTrackOrderMakeReview...', multiTrackOrderMakeReview);
-    WA.validateTaskInfo(multiTrackOrderMakeReview, intermediateTrackOrderMadeReviewCaseExpectedTask);
+    WA.validateTaskInfo(multiTrackOrderMakeReview, multiTrackOrderMadeReviewCaseExpectedTask);
     taskId = multiTrackOrderMakeReview['id'];
     api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
   }

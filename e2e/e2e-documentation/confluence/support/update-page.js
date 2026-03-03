@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { generateConfluenceTable } = require('./generateTable');
 
 const {
   CONFLUENCE_PERSONAL_ACCESS_TOKEN,
@@ -48,13 +47,16 @@ function findTargetHeadingBlock(html, targetText) {
   return null;
 }
 
-async function updateConfluencePage({ jsonPath, targetHeadingText }) {
+async function updateConfluencePage({ jsonPath, targetHeadingText, generateConfluenceTable }) {
   try {
     if (!jsonPath) {
       throw new Error('jsonPath argument is required');
     }
     if (!targetHeadingText) {
       throw new Error('targetHeadingText argument is required');
+    }
+    if (typeof generateConfluenceTable !== 'function') {
+      throw new Error('generateConfluenceTable function is required');
     }
 
     const tableHtml = generateConfluenceTable(jsonPath);

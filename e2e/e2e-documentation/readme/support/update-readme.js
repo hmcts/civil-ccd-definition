@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { generateMarkdownTable } = require('./generateMarkdownTable');
 
 const repoRoot = path.resolve(__dirname, '..', '..', '..', '..');
 const README_PATH = path.join(repoRoot, 'README.md');
@@ -16,7 +15,10 @@ function replaceSection(content, startMarker, endMarker, replacement) {
   return `${before}\n\n${replacement}\n\n${after}`;
 }
 
-function updateReadmeSection({ jsonPath, defaultJsonPath, startMarker, endMarker }) {
+function updateReadmeSection({ jsonPath, defaultJsonPath, startMarker, endMarker, generateMarkdownTable }) {
+  if (typeof generateMarkdownTable !== 'function') {
+    throw new Error('generateMarkdownTable function is required');
+  }
   const resolvedJsonPath = jsonPath
     ? path.resolve(process.cwd(), jsonPath)
     : defaultJsonPath;
