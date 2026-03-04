@@ -344,7 +344,7 @@ module.exports = function () {
       }
     },
 
-    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000) {
+    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, claimType) {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
@@ -358,13 +358,12 @@ module.exports = function () {
         ...secondClaimantSteps(claimant2),
         ...firstDefendantSteps(respondent1),
         ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
-        () => claimTypePage.selectClaimType(),
-        () => personalInjuryTypePage.selectPersonalInjuryType(),
+        () => claimTypePage.selectClaimType(claimType),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
         () => uploadParticularsOfClaim.enterParticularsOfClaim(),
         () => claimValuePage.enterClaimValue(claimValue),
-        () => pbaNumberPage.clickContinue(),
+        () => pbaNumberPage.clickContinue(claimType),
         () => statementOfTruth.enterNameAndRole('claim'),
         () => event.submit('Submit', CONFIRMATION_MESSAGE.online),
         () => event.returnToCaseDetails(),
@@ -800,7 +799,7 @@ module.exports = function () {
         () =>caseViewPage.navigateToTab(caseId, tabName),
       ]);
     },
-    
+
     async verifyCOSTabNotifyClaimDetails(caseNumber) {
       await this.triggerStepsWithScreenshot([
         () =>caseViewPage.navigateToTab(caseNumber, 'Certificate of Service'),

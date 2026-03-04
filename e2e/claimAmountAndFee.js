@@ -43,5 +43,24 @@ module.exports = {
       default:
         console.log('Please validate the claim amount passed');
     }
+  },
+  getOtherRemedyFee: (amount) => {
+    console.log('claim amount passed...', amount);
+    switch(amount) {
+      case '11000':
+        return {
+          calculatedAmountInPence: '37700',
+          code: 'FEE0450',
+          version: '5'
+        };
+      case '3000':
+        return {
+          calculatedAmountInPence: '37700',
+          code: 'FEE0450',
+          version: '5'
+        };
+      default:
+        console.log('Please validate the claim amount passed');
+    }
   }
 };
