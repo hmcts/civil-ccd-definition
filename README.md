@@ -35,7 +35,7 @@ To access XUI visit url (make sure that it starts with `https`, otherwise IDAM w
 
 To access Camunda visit url (login and password are both `admin`):
 
-- `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
+- `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal` 
 
 
 The below labels are options to get the different services running on the PR
