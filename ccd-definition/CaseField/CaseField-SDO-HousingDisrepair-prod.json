@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "fastTrackHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "FastTrackHousingDisrepair",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
