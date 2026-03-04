@@ -54,7 +54,7 @@ module.exports = {
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
     idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    idamTestSupportApi: process.env.IDAM_TEST_URL || 'http://localhost:6000',
+    idamTestSupportApi: process.env.IDAM_TEST_URL || 'https://idam-testing-support-api.aat.platform.hmcts.net',
     civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
