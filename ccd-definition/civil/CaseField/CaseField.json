@@ -3461,7 +3461,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "enableUploadEvent",
     "Label": " ",
     "FieldType": "YesOrNo",

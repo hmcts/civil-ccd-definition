@@ -744,7 +744,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "enableUploadEvent",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
