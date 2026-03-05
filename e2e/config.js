@@ -18,6 +18,7 @@ module.exports = {
     ccdDataStore: process.env.CCD_DATA_STORE_URL,
     dmStore: process.env.DM_STORE_URL,
     idamApi: process.env.IDAM_API_URL,
+    idamWebApi: process.env.IDAM_WEB_URL,
     idamTestSupportApi: process.env.IDAM_TEST_URL,
     civilService: process.env.CIVIL_SERVICE_URL,
     caseAssignmentService: process.env.AAC_API_URL,
