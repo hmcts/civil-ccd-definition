@@ -15,8 +15,10 @@ declare global {
       CIVIL_SERVICE_URL: string;
       WA_TASK_MGMT_URL: string;
       AAC_API_URL: string;
+      IDAM_TEST_URL: string;
       CIVIL_ORCHESTRATOR_SERVICE_URL: string;
       PAYMENT_API_URL: string;
+      WIREMOCK_URL: string;
       WIRE_MOCK_SERVICE_URL: string;
       DEFAULT_PASSWORD: string;
       JUDGE_DEFAULT_PASSWORD: string;
@@ -34,6 +36,19 @@ declare global {
       PLAYWRIGHT_RETRIES: string;
       PLAYWRIGHT_EXUI_RETRIES: string;
       PLAYWRIGHT_DEBUG_CASE_ID: string;
+      PREV_FAILED_TEST_FILES: string;
+      PREV_NOT_EXECUTED_TEST_FILES: string;
+      WA_TESTS: string;
+      REPORT_DIR: string;
+      SHOW_BROWSER_WINDOW: string;
+      REPORT_FILE: string;
+      MOCHAWESOME_REPORTFILENAME: string;
+      WAIT_FOR_TIMEOUT_MS: string;
+      SMART_WAIT: string;
+      SAUCELABS_BROWSER: string;
+      SAUCE_USERNAME: string;
+      SAUCE_ACCESS_KEY: string;
+      TUNNEL_IDENTIFIER: string;
     }
   }
 }
