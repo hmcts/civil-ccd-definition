@@ -32,6 +32,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
           "cui-admin-profile"
         ],
@@ -39,6 +40,27 @@
       },
       {
         "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "caseStayDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
           "judge-profile"
         ],
         "CRUD": "R"
