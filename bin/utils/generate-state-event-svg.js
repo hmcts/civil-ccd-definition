@@ -75,7 +75,6 @@ function getStateEvents(stateId) {
 }
 
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function trunc(s, max) { return s.length > max ? s.substring(0, max-2) + '..' : s; }
 
 function pillBg(ev) {
   if (ev.sourceType === 'user') return USER_BG;
@@ -232,8 +231,6 @@ function computeDisplayNames(events) {
   return displayNames;
 }
 
-const SEP_H = 14; // separator height between explicit and wildcard groups
-
 function renderColumn(stateId, x, y) {
   const state = model.states.find(s => s.id === stateId);
   const allEvents = getStateEvents(stateId);
@@ -304,7 +301,6 @@ function renderColumn(stateId, x, y) {
     totalBodyH += PILL_GAP;
     wcBoxYOff = totalBodyH;
     totalBodyH += WC_LABEL_H + WC_PAD;
-    const wcStart = totalBodyH;
     layoutEvents(wildcard);
     totalBodyH += WC_PAD;
     wcBoxH = totalBodyH - wcBoxYOff;
@@ -333,7 +329,7 @@ function renderColumn(stateId, x, y) {
   }
 
   // Event pills
-  for (const { ev, info, yOff, extraH } of eventLayout) {
+  for (const { ev, info, yOff } of eventLayout) {
     const py = y + HDR_H + yOff;
     const bg = pillBg(ev);
 
@@ -345,8 +341,6 @@ function renderColumn(stateId, x, y) {
 
     // Notification link icon (envelope)
     if (hasNotifLink) {
-      const envelopeX = pillX + PILL_W - 16;
-      const envelopeY = py + (PILL_H - 12) / 2;
       // Shift left if enabling condition icon is also present
       const hasEC = !!ev.enablingCondition;
       const hasRightTag = info.type === 'stays' || info.type === 'unknown';
@@ -420,7 +414,7 @@ const creationEvents = model.events.filter(e => CASE_CREATION_IDS.has(e.id)).sor
 const ccX = PAD, ccY = PAD + titleH;
 const ccPillX = ccX + (COL_W - PILL_W) / 2;
 let ccBodyH = PILL_GAP;
-for (const ev of creationEvents) {
+for (let i = 0; i < creationEvents.length; i++) {
   ccBodyH += PILL_H + PILL_GAP;
 }
 ccBodyH += PILL_GAP;

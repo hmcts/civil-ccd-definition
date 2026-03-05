@@ -240,7 +240,6 @@ function findTaskFiles(handlerFile, allFiles, serviceRoot) {
   const tasks = new Set();
 
   // Strategy 1: Find sibling task directories matching handler name
-  const dir = path.dirname(handlerFile);
   const baseName = path.basename(handlerFile, '.java').toLowerCase();
   const taskDirPatterns = [
     baseName + 'tasks',
@@ -254,7 +253,6 @@ function findTaskFiles(handlerFile, allFiles, serviceRoot) {
   }
 
   // Strategy 2: Follow imports from the handler package to find task classes
-  const handlerPkg = 'uk.gov.hmcts.reform.civil.handler';
   const importRe = /import\s+(uk\.gov\.hmcts\.reform\.civil\.handler\.[^;]+);/g;
   let m;
   while ((m = importRe.exec(content)) !== null) {
