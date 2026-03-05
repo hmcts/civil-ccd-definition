@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
 
 const functional = process.env.FUNCTIONAL;
