@@ -154,5 +154,11 @@
     "CaseEventID": "TRIGGER_GA_LANGUAGE_UPDATE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "DASHBOARD_NOTIFICATION_EVENT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]

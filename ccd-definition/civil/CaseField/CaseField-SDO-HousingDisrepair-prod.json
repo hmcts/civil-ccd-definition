@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "fastTrackHousingDisrepair",
     "Label": "Housing Disrepair",
     "FieldType": "FastTrackHousingDisrepair",

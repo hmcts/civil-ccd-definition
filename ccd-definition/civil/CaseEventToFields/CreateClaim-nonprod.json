@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimStarted",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "paymentTypePBA",
     "PageFieldDisplayOrder": 2,
@@ -25,7 +25,7 @@
     "FieldShowCondition": "eligibilityQuestions=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "eligibilityQuestions",
     "PageFieldDisplayOrder": 2,
@@ -37,7 +37,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/start-claim"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "solicitorReferences",
     "PageFieldDisplayOrder": 1,
@@ -49,7 +49,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "courtLocation",
     "PageFieldDisplayOrder": 1,
@@ -62,7 +62,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/populateClaimantSolicitor"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1DQRemoteHearing",
     "PageFieldDisplayOrder": 2,
@@ -74,7 +74,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
     "PageFieldDisplayOrder": 1,
@@ -88,7 +88,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriendRequired",
     "PageFieldDisplayOrder": 1,
@@ -101,7 +101,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1LitigationFriend",
     "PageFieldDisplayOrder": 2,
@@ -113,7 +113,7 @@
     "FieldShowCondition": "applicant1LitigationFriendRequired = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1CheckEmail",
     "PageFieldDisplayOrder": 1,
@@ -126,7 +126,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1UserDetails",
     "PageFieldDisplayOrder": 2,
@@ -138,7 +138,7 @@
     "FieldShowCondition": "applicantSolicitor1CheckEmail.correct = \"No\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "PageFieldDisplayOrder": 1,
@@ -152,7 +152,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1ServiceAddressRequired",
     "PageFieldDisplayOrder": 1,
@@ -165,7 +165,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicantSolicitor1ServiceAddress",
     "PageFieldDisplayOrder": 2,
@@ -179,7 +179,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "PageFieldDisplayOrder": 1,
@@ -192,7 +192,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondent1"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1Represented",
     "PageFieldDisplayOrder": 1,
@@ -204,7 +204,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "PageFieldDisplayOrder": 1,
@@ -218,7 +218,7 @@
     "PageShowCondition": "respondent1Represented=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1ServiceAddressRequired",
     "PageFieldDisplayOrder": 1,
@@ -231,7 +231,7 @@
     "PageShowCondition": "respondent1Represented=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1ServiceAddress",
     "PageFieldDisplayOrder": 2,
@@ -245,7 +245,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor1EmailAddress",
     "PageFieldDisplayOrder": 1,
@@ -258,7 +258,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-defendant-legal-rep-email"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "detailsOfClaimLabel",
     "PageFieldDisplayOrder": 1,
@@ -270,7 +270,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "detailsOfClaim",
     "PageFieldDisplayOrder": 2,
@@ -281,7 +281,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "uploadParticularsOfClaim",
     "PageFieldDisplayOrder": 1,
@@ -293,7 +293,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "documentUploadWarning",
     "PageFieldDisplayOrder": 1,
@@ -305,7 +305,7 @@
     "PageShowCondition": "uploadParticularsOfClaim=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "servedDocumentFiles",
     "PageFieldDisplayOrder": 2,
@@ -317,7 +317,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/particulars-of-claim"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimValue",
     "PageFieldDisplayOrder": 1,
@@ -330,7 +330,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/fee"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "addApplicant2Label",
     "PageFieldDisplayOrder": 1,
@@ -341,7 +341,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "addApplicant2",
     "PageFieldDisplayOrder": 2,
@@ -352,7 +352,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant2",
     "PageFieldDisplayOrder": 1,
@@ -366,7 +366,7 @@
     "PageShowCondition": "addApplicant2=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant2LitigationFriendRequired",
     "PageFieldDisplayOrder": 1,
@@ -379,7 +379,7 @@
     "PageShowCondition": "addApplicant2=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant2LitigationFriend",
     "PageFieldDisplayOrder": 2,
@@ -391,7 +391,7 @@
     "FieldShowCondition": "applicant2LitigationFriendRequired = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "addRespondent2",
     "PageFieldDisplayOrder": 1,
@@ -403,7 +403,7 @@
     "PageShowCondition": "addApplicant2=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
     "PageFieldDisplayOrder": 1,
@@ -416,7 +416,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondent2"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2Represented",
     "PageFieldDisplayOrder": 1,
@@ -429,7 +429,7 @@
     "PageShowCondition": "addRespondent2=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2SameLegalRepresentative",
     "PageFieldDisplayOrder": 1,
@@ -441,7 +441,7 @@
     "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent1Represented=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "PageFieldDisplayOrder": 1,
@@ -455,7 +455,7 @@
     "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor2ServiceAddressRequired",
     "PageFieldDisplayOrder": 1,
@@ -468,7 +468,7 @@
     "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor2ServiceAddress",
     "PageFieldDisplayOrder": 2,
@@ -482,7 +482,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor2Reference",
     "PageFieldDisplayOrder": 1,
@@ -494,7 +494,7 @@
     "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondentSolicitor2EmailAddress",
     "PageFieldDisplayOrder": 1,
@@ -507,7 +507,7 @@
     "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimTypeUnSpec",
     "PageFieldDisplayOrder": 1,
@@ -520,7 +520,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimTypeOther",
     "PageFieldDisplayOrder": 2,
@@ -532,7 +532,7 @@
     "FieldShowCondition": "claimTypeUnSpec = \"OTHER\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "isClaimDeclarationAdded",
     "PageFieldDisplayOrder": 1,
@@ -544,7 +544,7 @@
     "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimDeclarationDescription",
     "PageFieldDisplayOrder": 2,
@@ -556,7 +556,7 @@
     "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "isHumanRightsActIssues",
     "PageFieldDisplayOrder": 1,
@@ -568,7 +568,7 @@
     "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "personalInjuryType",
     "PageFieldDisplayOrder": 1,
@@ -580,7 +580,7 @@
     "PageShowCondition": "claimTypeUnSpec = \"PERSONAL_INJURY\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "personalInjuryTypeOther",
     "PageFieldDisplayOrder": 2,
@@ -592,7 +592,7 @@
     "FieldShowCondition": "personalInjuryType = \"PERSONAL_INJURY_OTHER\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimFee",
     "PageFieldDisplayOrder": 2,
@@ -603,7 +603,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "otherRemedyFee",
     "PageFieldDisplayOrder": 3,
@@ -615,7 +615,7 @@
     "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\" AND (claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\")"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimStatementOfTruthLabel",
     "PageFieldDisplayOrder": 1,
@@ -629,7 +629,7 @@
     "PageShowCondition": "claimStarted=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondStatementOfTruthHeaderLabel",
     "PageDisplayOrder": 34,
@@ -641,7 +641,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "uiStatementOfTruth",
     "PageFieldDisplayOrder": 2,
@@ -652,7 +652,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "statementOfTruthSubmitLabel",
     "PageFieldDisplayOrder": 3,
@@ -662,7 +662,7 @@
     "PageColumnNumber": 1
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "allPartyNames",
     "PageFieldDisplayOrder": 4,
@@ -674,7 +674,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
     "PageFieldDisplayOrder": 5,
@@ -686,7 +686,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "caseListDisplayDefendantSolicitorReferences",
     "PageFieldDisplayOrder": 6,

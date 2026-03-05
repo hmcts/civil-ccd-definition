@@ -1,72 +1,72 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isClaimDeclarationAdded",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimDeclarationDescription",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isHumanRightsActIssues",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseTypeID": "CIVIL",
   "CaseFieldID": "smallClaimsPenalNoticeTitle",
   "UserRole": "caseworker-civil-system-field-reader",
   "CRUD": "R"
 },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsPenalNoticeToggle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsPenalNotice",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackPenalNoticeTitle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackPenalNoticeToggle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackPenalNotice",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsPPI",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackPPI",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"

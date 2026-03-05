@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsPenalNoticeTitle",
     "PageFieldDisplayOrder": 2,
@@ -11,7 +11,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsPenalNoticeToggle",
     "PageFieldDisplayOrder": 3,
@@ -22,7 +22,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsPenalNotice",
     "PageFieldDisplayOrder": 4,
@@ -34,7 +34,7 @@
     "FieldShowCondition": "smallClaimsPenalNoticeToggle=\"SHOW\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackPenalNoticeTitle",
     "PageFieldDisplayOrder": 3,
@@ -45,7 +45,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackPenalNoticeToggle",
     "PageFieldDisplayOrder": 4,
@@ -56,7 +56,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackPenalNotice",
     "PageFieldDisplayOrder": 5,
@@ -68,7 +68,7 @@
     "FieldShowCondition": "fastTrackPenalNoticeToggle=\"SHOW\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsPPI",
     "PageFieldDisplayOrder": 38,
@@ -80,7 +80,7 @@
     "FieldShowCondition": "smallClaims CONTAINS \"smallClaimPPI\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimPPI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "PageFieldDisplayOrder": 39,
@@ -92,7 +92,7 @@
     "FieldShowCondition": "smallClaims CONTAINS \"smallClaimHousingDisrepair\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimHousingDisrepair\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackPPI",
     "PageFieldDisplayOrder": 56,
