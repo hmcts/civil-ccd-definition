@@ -1,6 +1,10 @@
 name: Publish State-Event Model to GitHub Pages
 
 on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
       - master
@@ -69,6 +73,7 @@ jobs:
           path: pages
 
   deploy-pages:
+    if: github.event_name != 'pull_request'
     needs: build-state-event-model
     runs-on: ubuntu-latest
     permissions:
