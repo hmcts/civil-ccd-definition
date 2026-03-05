@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
 
 const functional = process.env.FUNCTIONAL;
@@ -140,3 +142,6 @@ exports.config = {
     },
   },
 };
+
+console.log('SHOW BROWSER WINDOW: ' + process.env.SHOW_BROWSER_WINDOW)
+console.log('URL: ' + process.env.URL)
