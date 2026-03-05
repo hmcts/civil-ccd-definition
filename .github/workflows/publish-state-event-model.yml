@@ -5,9 +5,11 @@ on:
   pull_request:
     branches:
       - master
+      - main
   push:
     branches:
       - master
+      - main
   schedule:
     - cron: '0 6 * * 1'  # Every Monday at 6am UTC — catches changes in civil-service / civil-camunda-bpmn-definition
 
