@@ -75,7 +75,6 @@ jobs:
           path: pages
 
   deploy-pages:
-    if: github.event_name != 'pull_request'
     needs: build-state-event-model
     runs-on: ubuntu-latest
     permissions:
