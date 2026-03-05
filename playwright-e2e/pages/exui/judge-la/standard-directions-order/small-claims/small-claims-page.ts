@@ -44,6 +44,7 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.documents),
       super.expectSubheading(subheadings.witnessStatement),
       super.expectSubheading(subheadings.addNewDirection),
+      super.expectSubheading(subheadings.penalNotice),
     ]);
   }
 
@@ -124,6 +125,12 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     await super.clickBySelector(buttons.addNewDirection.selector);
     await super.expectLabel(inputs.newDirection.label);
     await super.inputText('new direction', inputs.newDirection.selector);
+  }
+
+  async addPenalNotice() {
+    await super.clickBySelector(checkboxes.penalNotice.selector);
+    await super.expectSubheading(subheadings.penalNotice);
+    await super.inputText('Test penal notice text for small claims', inputs.penalNotice.selector);
   }
 
   async addFlightDelay() {
