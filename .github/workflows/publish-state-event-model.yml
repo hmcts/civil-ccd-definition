@@ -1,0 +1,86 @@
+name: Publish State-Event Model to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 6 * * 1'  # Every Monday at 6am UTC — catches changes in civil-service / civil-camunda-bpmn-definition
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-state-event-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          path: civil-ccd-definition
+
+      - name: Checkout civil-service
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          repository: hmcts/civil-service
+          path: civil-service
+
+      - name: Checkout civil-camunda-bpmn-definition
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          repository: hmcts/civil-camunda-bpmn-definition
+          path: civil-camunda-bpmn-definition
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        working-directory: civil-ccd-definition
+        env:
+          YARN_ENABLE_SCRIPTS: "false"
+        run: yarn install --frozen-lockfile
+
+      - name: Generate state-event model
+        working-directory: civil-ccd-definition
+        run: yarn generate:state-event-model
+
+      - name: Enrich model with resolved state transitions
+        working-directory: civil-ccd-definition
+        run: >
+          node bin/utils/enrich-state-event-model.js
+          build/state-event-model.json
+          ../civil-service
+          ../civil-camunda-bpmn-definition
+
+      - name: Generate state-event SVG diagram
+        working-directory: civil-ccd-definition
+        run: node bin/utils/generate-state-event-svg.js ../civil-service
+
+      - name: Prepare GitHub Pages
+        run: |
+          mkdir -p pages
+          cp civil-ccd-definition/build/state-event-model.svg pages/state-event-model.svg
+          cp civil-ccd-definition/build/state-event-model.json pages/state-event-model.json
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: pages
+
+  deploy-pages:
+    needs: build-state-event-model
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac2227cb83f # v4
