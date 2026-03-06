@@ -27,7 +27,10 @@ bin/main/application.yaml
 
 # dotenv environment variables file
 .env
-.env.test
+.env.e2e-tests
+.env.cui.local
+.env.ccd.local
+.env.tests.local
 
 # node_modules
 package-lock.json

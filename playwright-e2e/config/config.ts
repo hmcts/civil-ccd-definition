@@ -3,7 +3,7 @@ import Environment from '../enums/environment';
 import testSpeeds from '../constants/test-speeds';
 import { TestSpeed } from '../models/test-speeds';
 
-dotenv.config({path: '.env.e2e-tests.local'})
+dotenv.config({path: '.env.tests.local'})
 
 const config = {
   environment: process.env.ENVIRONMENT as Environment,
