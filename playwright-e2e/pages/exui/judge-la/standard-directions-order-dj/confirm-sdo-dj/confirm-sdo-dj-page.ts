@@ -5,7 +5,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 import { confirmationHeading, paragraphs, subheading } from './confirm-sdo-dj-content';
 
 @AllMethodsStep()
-export default class sdoDJConfirmPage extends ExuiPage(BasePage) {
+export default class confirmSdoDJPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),

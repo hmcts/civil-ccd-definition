@@ -1,22 +1,16 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import DateHelper from '../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import {
-  buttons,
-  checkboxes,
-  dropdowns,
-  inputs,
   radioButtons,
   subheadings,
-  containers,
 } from './trial-hearing-sdo-dj-content';
 
 @AllMethodsStep()
-export default class sdoDJTrialHearingPage extends ExuiPage(BasePage) {
+export default class TrialHearingSdoDJPage extends ExuiPage(BasePage) {
   dateFragment: DateFragment;
 
   constructor(page: Page, dateFragment: DateFragment) {

@@ -23,7 +23,7 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await JudgeSteps.SdoSmallTrack();
   });
 
-  test.only('Default Judgment', async ({
+  test('Default Judgment', async ({
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
@@ -38,7 +38,6 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
     await ClaimantSolicitorSteps.RequestDefaultJudgment();
     await JudgeSteps.Login();
-    await JudgeSteps.SdoDJDisposalHearing();
-    //await JudgeSteps.SdoDJTrialHearing();
+    await JudgeSteps.SdoDJTrialHearing();
   });
 });

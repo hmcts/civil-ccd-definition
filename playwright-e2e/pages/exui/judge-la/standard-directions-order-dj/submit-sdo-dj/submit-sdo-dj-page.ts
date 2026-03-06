@@ -4,7 +4,7 @@ import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 
 @AllMethodsStep()
-export default class sdoDJSubmitPage extends ExuiPage(BasePage) {
+export default class SubmitSdoDJPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }

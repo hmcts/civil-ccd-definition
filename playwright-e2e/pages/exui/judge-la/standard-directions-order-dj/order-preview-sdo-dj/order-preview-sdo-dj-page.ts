@@ -6,7 +6,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 import { paragraph } from './order-preview-sdo-dj-content';
 
 @AllMethodsStep()
-export default class sdoDJOrderPreviewPage extends ExuiPage(BasePage) {
+export default class OrderPreviewSdoDJPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     const date = DateHelper.getToday();
     await super.runVerifications([

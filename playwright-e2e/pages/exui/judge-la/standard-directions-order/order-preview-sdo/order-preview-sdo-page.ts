@@ -3,10 +3,10 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DateHelper from '../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
-import { paragraph, subheading } from './order-preview-content';
+import { paragraph, subheading } from './order-preview-sdo-content';
 
 @AllMethodsStep()
-export default class OrderPreviewPage extends ExuiPage(BasePage) {
+export default class OrderPreviewSdoPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     const date = DateHelper.getToday();
     await super.runVerifications([

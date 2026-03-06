@@ -27,35 +27,35 @@ export default class StandardDirectionsOrderDJActions extends BaseTestData {
   }
 
   async sdoDJDisposalHearingDetails() {
-    const { sdoDJDisposalHearingPage } = this.standardDirectionsOrderDJ;
-    await sdoDJDisposalHearingPage.verifyContent(this.ccdCaseData);
-    await sdoDJDisposalHearingPage.addHearingTimeEstimate();
-    await sdoDJDisposalHearingPage.addDisposalHearingBundle();
-    await sdoDJDisposalHearingPage.submit();
+    const { disposalHearingSdoDJPage } = this.standardDirectionsOrderDJ;
+    await disposalHearingSdoDJPage.verifyContent(this.ccdCaseData);
+    await disposalHearingSdoDJPage.addHearingTimeEstimate();
+    await disposalHearingSdoDJPage.addDisposalHearingBundle();
+    await disposalHearingSdoDJPage.submit();
   }
 
   async sdoDJTrialHearingDetails() {
-    const { sdoDJTrialHearingPage } = this.standardDirectionsOrderDJ;
-    await sdoDJTrialHearingPage.verifyContent(this.ccdCaseData);
-    await sdoDJTrialHearingPage.addHearingTimeEstimate();
-    await sdoDJTrialHearingPage.submit();
+    const { trialHearingSdoDJPage } = this.standardDirectionsOrderDJ;
+    await trialHearingSdoDJPage.verifyContent(this.ccdCaseData);
+    await trialHearingSdoDJPage.addHearingTimeEstimate();
+    await trialHearingSdoDJPage.submit();
   }
 
   async sdoDJOrderPreview() {
-    const { sdoDJOrderPreviewPage } = this.standardDirectionsOrderDJ;
-    await sdoDJOrderPreviewPage.verifyContent(this.ccdCaseData);
-    await sdoDJOrderPreviewPage.submit();
+    const { orderPreviewSdoDJPage } = this.standardDirectionsOrderDJ;
+    await orderPreviewSdoDJPage.verifyContent(this.ccdCaseData);
+    await orderPreviewSdoDJPage.submit();
   }
 
   async sdoDJSubmit() {
-    const { sdoDJSubmitPage } = this.standardDirectionsOrderDJ;
-    await sdoDJSubmitPage.verifyContent(this.ccdCaseData);
-    await sdoDJSubmitPage.submit();
+    const { submitSdoDJPage } = this.standardDirectionsOrderDJ;
+    await submitSdoDJPage.verifyContent(this.ccdCaseData);
+    await submitSdoDJPage.submit();
   }
 
   async sdoDJConfirm() {
-    const { sdoDJConfirmPage } = this.standardDirectionsOrderDJ;
-    await sdoDJConfirmPage.verifyContent(this.ccdCaseData);
-    await sdoDJConfirmPage.submit();
+    const { confirmSdoDJPage } = this.standardDirectionsOrderDJ;
+    await confirmSdoDJPage.verifyContent(this.ccdCaseData);
+    await confirmSdoDJPage.submit();
   }
 }

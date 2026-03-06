@@ -16,7 +16,7 @@ import {
 } from './disposal-hearing-sdo-dj-content';
 
 @AllMethodsStep()
-export default class sdoDJDisposalHearingPage extends ExuiPage(BasePage) {
+export default class DisposalHearingSdoDJPage extends ExuiPage(BasePage) {
   dateFragment: DateFragment;
 
   constructor(page: Page, dateFragment: DateFragment) {
