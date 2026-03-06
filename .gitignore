@@ -69,3 +69,6 @@ playwright-report/
 /playwright-e2e/fixtures/.user-cookies/
 /playwright-e2e/fixtures/.user-assigned-cases/
 /playwright-e2e/fixtures/data/bankHolidays.json
+
+#AI
+AGENTS.md
