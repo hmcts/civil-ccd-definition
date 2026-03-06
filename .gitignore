@@ -27,7 +27,6 @@ bin/main/application.yaml
 
 # dotenv environment variables file
 .env
-.env.e2e-tests
 .env.cui.local
 .env.ccd.local
 .env.tests.local
