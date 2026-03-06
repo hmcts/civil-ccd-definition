@@ -72,7 +72,7 @@ $ yarn test:crossbrowser
 ```
 
 
-## Testing
+## Testing the UI
 
 The repo uses codeceptjs framework for e2e tests.
 
