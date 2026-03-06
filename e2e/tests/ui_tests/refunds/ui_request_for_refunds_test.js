@@ -3,7 +3,7 @@ const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const RequestRefundSteps = require('./steps/requestRefundSteps');
 const apiRequest = require('../../../api/apiRequest');
 
-Feature('Request and Processing of refunds').tag('@ui-nightly-prod @ui-refunds');
+Feature('Request and Processing of refunds').tag('@civil-ccd-nightly @ui-refunds');
 
 Scenario('Request and Approval of a Refund after a return to Requestor by the Approval Caseworker',
   async ({I, api}) => {

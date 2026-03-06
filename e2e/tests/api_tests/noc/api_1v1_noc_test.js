@@ -6,7 +6,7 @@ const {
   otherSolicitorUser1,
 } = require('../../../config');
 
-Feature('1v1 unspec notice of change api journey').tag('@api-nightly-prod @api-noc');
+Feature('1v1 unspec notice of change api journey').tag('@civil-service-nightly @api-noc');
 
 Scenario('1v1 unspec notice of change', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser);
