@@ -105,9 +105,9 @@ export default class StandardDirectionsOrderActions extends BaseTestData {
   }
 
   async orderPreview() {
-    const { orderPreviewPage } = this.standardDirectionsOrder;
-    await orderPreviewPage.verifyContent(this.ccdCaseData);
-    await orderPreviewPage.submit();
+    const { orderPreviewSdoPage } = this.standardDirectionsOrder;
+    await orderPreviewSdoPage.verifyContent(this.ccdCaseData);
+    await orderPreviewSdoPage.submit();
   }
 
   async submitStandardDirectionsOrder() {
