@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({path: '.env.tests.local'});
 
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;

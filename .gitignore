@@ -27,7 +27,7 @@ bin/main/application.yaml
 
 # dotenv environment variables file
 .env
-.env.test
+.env.tests.local
 
 # node_modules
 package-lock.json
@@ -67,4 +67,6 @@ playwright-report/
 /playwright-e2e/fixtures/.user-cookies/
 /playwright-e2e/fixtures/.user-assigned-cases/
 /playwright-e2e/fixtures/data/bankHolidays.json
-/.env.local
+
+#AI
+AGENTS.md

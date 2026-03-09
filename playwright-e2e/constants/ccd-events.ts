@@ -162,6 +162,12 @@ const ccdEvents: CCDEvents = {
     description: 'Standard Direction Order',
     order: 17,
   },
+  STANDARD_DIRECTION_ORDER_DJ: {
+    id: 'STANDARD_DIRECTION_ORDER_DJ',
+    name: 'Directions Order (Judgment)',
+    description: 'Standard Directions Order (Judgment)',
+    order: 18,
+  },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
     id: 'CLAIMANT_RESPONSE_SPEC',
