@@ -131,6 +131,3 @@ exports.config = {
     },
   },
 };
-
-console.log('SHOW BROWSER WINDOW: ' + process.env.SHOW_BROWSER_WINDOW)
-console.log('URL: ' + process.env.URL)

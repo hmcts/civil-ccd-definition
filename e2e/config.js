@@ -18,12 +18,13 @@ module.exports = {
     ccdDataStore: process.env.CCD_DATA_STORE_URL,
     dmStore: process.env.DM_STORE_URL,
     idamApi: process.env.IDAM_API_URL,
-    idamTestSupportApi: process.env.IDAM_TEST_URL,
+    idamWebApi: process.env.IDAM_WEB_URL,
+    idamTestSupportApi: process.env.IDAM_TEST_URL || 'https://idam-testing-support-api.aat.platform.hmcts.net',
     civilService: process.env.CIVIL_SERVICE_URL,
     caseAssignmentService: process.env.AAC_API_URL,
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL,
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL,
-    paymentApi: process.env.PAYMENT_API_URL,
+    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+    paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
     wiremockService: process.env.WIREMOCK_URL
   },
   s2s: {
