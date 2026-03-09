@@ -21,6 +21,21 @@ if (fs.existsSync(notifHtmlPath)) {
   console.warn('email-notifications.html not found, links will be disabled');
 }
 
+// Alias map: user-facing events → notification page event they trigger downstream
+const NOTIF_ALIASES = {
+  'VIEW_AND_RESPOND_TO_DEFENCE': 'claimant_response',
+  'APPLY_NOC_DECISION': 'apply_noc_decision_defendant_lip',
+  'UPLOAD_TRANSLATED_DOCUMENT': 'upload_translated_document_claimant_intention',
+};
+
+function getNotifLink(eventId) {
+  const lower = eventId.toLowerCase();
+  if (notifPageEvents.has(lower)) return lower;
+  const alias = NOTIF_ALIASES[eventId];
+  if (alias && notifPageEvents.has(alias)) return alias;
+  return null;
+}
+
 // Layout constants
 const COL_W = 320, PILL_W = 300, PILL_H = 22, PILL_GAP = 3, PILL_R = 8;
 const DEST_ROW_H = 14; // extra height per destination row
@@ -335,12 +350,12 @@ function renderColumn(stateId, x, y) {
 
     // Pill background + event name (with suffix for duplicates)
     const displayName = displayNames.get(ev.id) || ev.name;
-    const hasNotifLink = notifPageEvents.has(ev.id.toLowerCase());
+    const notifTarget = getNotifLink(ev.id);
     svg += `<rect x="${pillX}" y="${py}" width="${PILL_W}" height="${PILL_H}" rx="${PILL_R}" fill="${bg}" stroke="#bbb" stroke-width="0.5"/>`;
     svg += `<text x="${pillX+8}" y="${py+PILL_H/2+3}" font-size="${FONT}" fill="#333" font-family="Arial">${esc(displayName)}</text>`;
 
     // Notification link icon (envelope)
-    if (hasNotifLink) {
+    if (notifTarget) {
       // Shift left if enabling condition icon is also present
       const hasEC = !!ev.enablingCondition;
       const hasRightTag = info.type === 'stays' || info.type === 'unknown';
@@ -349,7 +364,7 @@ function renderColumn(stateId, x, y) {
       const tagShift = hasRightTag ? tagWidth : 0;
       const envX = pillX + PILL_W - 16 - ecShift - tagShift;
       const envY = py + (PILL_H - 12) / 2;
-      svg += `<a href="${NOTIF_PAGE}#${ev.id.toLowerCase()}" target="_blank">`;
+      svg += `<a href="${NOTIF_PAGE}#${notifTarget}" target="_blank">`;
       svg += `<g cursor="pointer">`;
       svg += `<rect x="${envX}" y="${envY}" width="12" height="12" rx="3" fill="#e8f0fe" stroke="#1a56db" stroke-width="0.5"/>`;
       svg += `<text x="${envX+6}" y="${envY+9}" text-anchor="middle" font-size="8" fill="#1a56db" font-family="Arial">\u2709</text>`;
@@ -463,10 +478,59 @@ for (let i = 0; i < MAIN_FLOW.length - 1; i++) {
   spineSvg += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
 }
 
+// Global Events column (after the main flow)
+// Includes: all global user events + global camunda events that have notification links
+const globalColumnEventsAll = model.events.filter(e =>
+  globalIds.has(e.id) && (e.sourceType === 'user' || getNotifLink(e.id))
+);
+const seenGlobalCol = new Set();
+const globalUserEvents = globalColumnEventsAll.filter(e => {
+  if (seenGlobalCol.has(e.id)) return false;
+  seenGlobalCol.add(e.id);
+  return true;
+}).sort((a, b) => a.name.localeCompare(b.name));
+
+const guX = mainOffset + MAIN_FLOW.length * TOTAL_COL, guY = PAD + titleH;
+const guPillX = guX + (COL_W - PILL_W) / 2;
+let guBodyH = PILL_GAP;
+for (let i = 0; i < globalUserEvents.length; i++) {
+  guBodyH += PILL_H + PILL_GAP;
+}
+guBodyH += PILL_GAP;
+const guColH = HDR_H + guBodyH;
+maxMainH = Math.max(maxMainH, guColH);
+
+let guSvg = '';
+guSvg += `<rect x="${guX}" y="${guY}" width="${COL_W}" height="${guColH}" rx="4" fill="white" stroke="#ccc"/>`;
+guSvg += `<rect x="${guX}" y="${guY}" width="${COL_W}" height="${HDR_H}" rx="4" fill="#5b4a8a"/>`;
+guSvg += `<rect x="${guX}" y="${guY+HDR_H-6}" width="${COL_W}" height="6" fill="#5b4a8a"/>`;
+guSvg += `<text x="${guX+COL_W/2}" y="${guY+17}" text-anchor="middle" font-size="8.5" font-weight="bold" fill="${HEADER_TEXT}" font-family="Arial">GLOBAL EVENTS</text>`;
+guSvg += `<text x="${guX+COL_W/2}" y="${guY+33}" text-anchor="middle" font-size="7.5" fill="white" font-family="Arial">Available in all states (*\u2192*)</text>`;
+const guDisplayNames = computeDisplayNames(globalUserEvents);
+let guPillY = guY + HDR_H + PILL_GAP;
+for (const ev of globalUserEvents) {
+  const bg = pillBg(ev);
+  const guName = guDisplayNames.get(ev.id) || ev.name;
+  guSvg += `<rect x="${guPillX}" y="${guPillY}" width="${PILL_W}" height="${PILL_H}" rx="${PILL_R}" fill="${bg}" stroke="#bbb" stroke-width="0.5"/>`;
+  guSvg += `<text x="${guPillX+8}" y="${guPillY+PILL_H/2+3}" font-size="${FONT}" fill="#333" font-family="Arial">${esc(guName)}</text>`;
+  const guNotifTarget = getNotifLink(ev.id);
+  if (guNotifTarget) {
+    const envX = guPillX + PILL_W - 16;
+    const envY = guPillY + (PILL_H - 12) / 2;
+    guSvg += `<a href="${NOTIF_PAGE}#${guNotifTarget}" target="_blank">`;
+    guSvg += `<g cursor="pointer">`;
+    guSvg += `<rect x="${envX}" y="${envY}" width="12" height="12" rx="3" fill="#e8f0fe" stroke="#1a56db" stroke-width="0.5"/>`;
+    guSvg += `<text x="${envX+6}" y="${envY+9}" text-anchor="middle" font-size="8" fill="#1a56db" font-family="Arial">\u2709</text>`;
+    guSvg += `<title>View notifications for ${esc(ev.id)}</title>`;
+    guSvg += `</g></a>`;
+  }
+  guPillY += PILL_H + PILL_GAP;
+}
+
 // Exception row
 const exY = PAD + titleH + maxMainH + 50;
 let exSvg = '', maxExH = 0;
-const totalCols = MAIN_FLOW.length + 1; // +1 for Case Creation column
+const totalCols = MAIN_FLOW.length + 2; // +1 Case Creation, +1 Global User Events
 const exOffset = mainOffset + Math.floor((MAIN_FLOW.length - EXCEPTION_FLOW.length) / 2) * TOTAL_COL;
 EXCEPTION_FLOW.forEach((sid, i) => {
   const x = exOffset + i * TOTAL_COL, y = exY;
@@ -623,7 +687,7 @@ legSvg += `<text x="${legX+647}" y="${legY+62}" text-anchor="middle" font-size="
 legSvg += `<rect x="${legX+620}" y="${legY+26}" width="55" height="16" rx="4" fill="#e8f0fe" stroke="#1a56db" stroke-width="0.5"/>`;
 legSvg += `<text x="${legX+647}" y="${legY+38}" text-anchor="middle" font-size="5.5" fill="#1a56db" font-family="Arial">\u2709 Triggers Notifs</text>`;
 
-legSvg += `<text x="${legX+10}" y="${legY+94}" font-size="7" font-family="Arial" fill="#888">Generated ${new Date().toISOString().split('T')[0]}  |  ${model.summary.stateCount} states  |  ${model.summary.eventCount} events  |  Global (*\u2192*) events not shown (${globalIds.size})  |  ${model.summary.resolvedDynamicEvents || 0} dynamic transitions resolved from civil-service</text>`;
+legSvg += `<text x="${legX+10}" y="${legY+94}" font-size="7" font-family="Arial" fill="#888">Generated ${new Date().toISOString().split('T')[0]}  |  ${model.summary.stateCount} states  |  ${model.summary.eventCount} events  |  Global (*\u2192*) system events not shown (${globalIds.size - globalUserEvents.length})  |  ${model.summary.resolvedDynamicEvents || 0} dynamic transitions resolved from civil-service</text>`;
 
 const svgW = PAD * 2 + totalCols * TOTAL_COL;
 const svgH = legY + 115;
@@ -638,7 +702,7 @@ const svg = `<?xml version="1.0" encoding="UTF-8"?>
 </defs>
 <rect width="100%" height="100%" fill="white"/>
 <text x="${svgW/2}" y="${PAD+10}" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial" fill="${HEADER_BG}">Civil CCD State &amp; Event Model</text>
-${ccSvg}${spineSvg}${mainSvg}${exSvg}${crossSvg}${legSvg}
+${ccSvg}${spineSvg}${mainSvg}${guSvg}${exSvg}${crossSvg}${legSvg}
 </svg>`;
 
 fs.writeFileSync('build/state-event-model.svg', svg);
