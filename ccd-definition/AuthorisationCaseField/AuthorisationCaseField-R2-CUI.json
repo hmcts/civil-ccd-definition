@@ -1098,7 +1098,7 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       }
     ]
   },
