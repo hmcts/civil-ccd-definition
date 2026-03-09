@@ -325,9 +325,21 @@ function findBpmnForEvent(eventName, bpmnDir) {
  * 3. Extract all caseEvent parameters from the BPMN
  * 4. Look up their PostConditionState in the model
  */
-function resolveViaBpmnChain(handlerFile, taskFiles, model, bpmnDir) {
+/**
+ * Recursively follow BPMN chains to resolve state transitions.
+ * For each BusinessProcess.ready() call:
+ *   1. Find the BPMN process file
+ *   2. Extract caseEvent parameters (downstream CCD events)
+ *   3. If a downstream event has a concrete postState → collect it
+ *   4. If a downstream event has postState=* → find its handler, extract .state() calls,
+ *      and recursively follow its own BPMN chains
+ *
+ * Uses visited sets for cycle detection.
+ */
+function resolveViaBpmnChain(handlerFile, taskFiles, model, bpmnDir, allFiles, serviceRoot, visited) {
   const states = new Set();
   const eventMap = Object.fromEntries(model.events.map(e => [e.id, e]));
+  if (!visited) visited = { bpmnFiles: new Set(), eventIds: new Set() };
 
   // Collect BusinessProcess.ready() calls from handler and its tasks
   const bpEvents = new Set();
@@ -338,14 +350,40 @@ function resolveViaBpmnChain(handlerFile, taskFiles, model, bpmnDir) {
 
   for (const bpEvent of bpEvents) {
     const bpmnFile = findBpmnForEvent(bpEvent, bpmnDir);
-    if (!bpmnFile) continue;
+    if (!bpmnFile || visited.bpmnFiles.has(bpmnFile)) continue;
+    visited.bpmnFiles.add(bpmnFile);
 
     const caseEvents = extractBpmnCaseEvents(bpmnFile);
     for (const ce of caseEvents) {
+      if (visited.eventIds.has(ce)) continue;
+      visited.eventIds.add(ce);
+
       const ev = eventMap[ce];
       if (!ev) continue;
+
+      // If the downstream event has a concrete postState, collect it
       if (ev.postState !== '*' && VALID_STATES.has(ev.postState)) {
         states.add(ev.postState);
+        continue;
+      }
+
+      // If postState is *, find its handler and resolve deeper
+      if (ev.postState === '*') {
+        const downstreamHandlers = findHandlersForEvent(ce, allFiles);
+        for (const dh of downstreamHandlers) {
+          // Extract .state() calls from the downstream handler
+          extractStatesFromStateCalls(dh).forEach(s => states.add(s));
+
+          // Check its task files too
+          const dTasks = findTaskFiles(dh, allFiles, serviceRoot);
+          for (const dt of dTasks) {
+            extractStatesFromStateCalls(dt).forEach(s => states.add(s));
+          }
+
+          // Recursively follow its BPMN chains
+          resolveViaBpmnChain(dh, dTasks, model, bpmnDir, allFiles, serviceRoot, visited)
+            .forEach(s => states.add(s));
+        }
       }
     }
   }
@@ -409,9 +447,9 @@ function main() {
         extractStatesFromStateCalls(tf).forEach(s => allStates.add(s));
       }
 
-      // Follow BusinessProcess.ready() → BPMN → CCD event chain
+      // Follow BusinessProcess.ready() → BPMN → CCD event chain (recursive)
       if (hasBpmn) {
-        resolveViaBpmnChain(handlerFile, tasks, model, bpmnDir)
+        resolveViaBpmnChain(handlerFile, tasks, model, bpmnDir, allFiles, serviceRoot)
           .forEach(s => allStates.add(s));
       }
     }
