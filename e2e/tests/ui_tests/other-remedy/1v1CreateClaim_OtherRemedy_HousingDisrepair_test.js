@@ -18,7 +18,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('1v1 - Claim Journey with OtherRemedy type').tag('@ui-other-remedy @ui-nightly-prod');
+Feature('1v1 - Claim Journey with OtherRemedy type Housing Disrepair').tag('@ui-other-remedy @ui-nightly-prod');
 
 Scenario('01 Applicant solicitor creates claim with claim type as Housing disrepair', async ({I}) => {
   let claimType = 'Housing disrepair';
@@ -99,15 +99,6 @@ Scenario('10 Manage case flags', async ({I}) => {
   // await I.validateUpdatedCaseFlags(caseFlags);
 }).retry(2);
 
-Scenario('11 Applicant solicitor creates claim with type as Damages and other remedy', async ({I}) => {
-  let claimType = 'Damages and other remedy';
-  await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, null, respondent1, null, 25000, claimType);
-  caseNumber = await I.grabCaseNumber();
-  await serviceRequest.openServiceRequestTab();
-  await serviceRequest.payFee(caseNumber);
-  await addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
-}).retry(2);
 
 AfterSuite(async () => {
   await unAssignAllUsers();
