@@ -13,10 +13,10 @@ import {
   radioButtons,
   subheadings,
   containers,
-} from './disposal-hearing-content';
+} from './disposal-hearing-sdo-content';
 
 @AllMethodsStep()
-export default class DisposalHearingPage extends ExuiPage(BasePage) {
+export default class DisposalHearingSdoPage extends ExuiPage(BasePage) {
   dateFragment: DateFragment;
 
   constructor(page: Page, dateFragment: DateFragment) {
