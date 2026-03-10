@@ -673,6 +673,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaimsWitnessStatementToggle'];
   delete responseBody.data['smallClaimsWitnessStatement'];
   delete responseBody.data['smallClaimsRoadTrafficAccident'];
+  delete responseBody.data['smallClaimsPenalNotice'];
+  delete responseBody.data['smallClaimsPenalNoticeToggle'];
   delete responseBody.data['smallClaimsHousingDisrepair'];
   delete responseBody.data['documentAndNoteToAdd'];
   delete responseBody.data['documentAndNameToAdd'];
@@ -1265,6 +1267,9 @@ module.exports = {
     delete caseData['sdoDJR2TrialCreditHire'];
 
     caseData = returnedCaseData;
+    delete caseData['smallClaimsPenalNotice'];
+    delete caseData['smallClaimsPenalNoticeToggle'];
+    delete caseData['smallClaimsHousingDisrepair'];
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
       let disposalData = data.CREATE_SDO();
@@ -1913,6 +1918,9 @@ const assertValidData = async (data, pageId) => {
   );
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  delete responseBody.data['smallClaimsPenalNotice'];
+  delete responseBody.data['smallClaimsPenalNoticeToggle'];
+  delete responseBody.data['smallClaimsHousingDisrepair'];
 
   delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
   delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
