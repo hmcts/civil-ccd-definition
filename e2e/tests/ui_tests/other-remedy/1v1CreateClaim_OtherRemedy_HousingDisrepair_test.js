@@ -18,7 +18,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('1v1 - Claim Journey with OtherRemedy type Housing Disrepair').tag('@ui-other-remedy @ui-nightly-prod');
+Feature('1v1 - Claim Journey with OtherRemedy type Housing Disrepair').tag('@ui-other-remedy');
 
 Scenario('01 Applicant solicitor creates claim with claim type as Housing disrepair', async ({I}) => {
   let claimType = 'Housing disrepair';
