@@ -19,3 +19,15 @@ CODEOWNERS @hmcts/civil-admins
 charts/ @hmcts/civil-admins
 infrastructure/ @hmcts/civil-admins
 
+# Dependency management files managed by Renovate (no code owner review required):
+.nvmrc
+.yarnrc.yml
+.yarn/releases/
+build.gradle
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+gradlew
+gradlew.bat
+package.json
+yarn.lock
+
