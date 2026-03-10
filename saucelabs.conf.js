@@ -1,6 +1,4 @@
- 
-
-require('dotenv').config();
+require('dotenv').config({path: '.env.tests.local'});
 const supportedBrowsers = require('./e2e/crossbrowser/supportedBrowsers.js');
 const testConfig = require('./e2e/config');
 

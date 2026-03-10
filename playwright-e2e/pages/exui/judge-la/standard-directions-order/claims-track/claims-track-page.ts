@@ -48,7 +48,7 @@ export default class ClaimsTrackPage extends ExuiPage(BasePage) {
       super.expectLabel(checkboxes.fastTrack.clinicialNegligence.label),
       super.expectLabel(checkboxes.fastTrack.creditHire.label, { count: 1 }),
       super.expectLabel(checkboxes.fastTrack.employersLiability.label),
-      super.expectLabel(checkboxes.fastTrack.housingDisrepair.label),
+      super.expectLabel(checkboxes.fastTrack.housingDisrepair.label, {count: 1}),
       super.expectLabel(checkboxes.fastTrack.noiseInducedHearingLoss.label),
       super.expectLabel(checkboxes.fastTrack.personalInjury.label),
       super.expectLabel(checkboxes.fastTrack.roadTrafficAccident.label, { count: 1 }),
