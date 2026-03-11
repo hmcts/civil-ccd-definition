@@ -7,8 +7,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -18,8 +17,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -30,7 +28,6 @@
     "DisplayContext": "MANDATORY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "assistedOrderPenalNoticeToggle=\"SHOW\"",
-    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\""
+    "FieldShowCondition": "assistedOrderPenalNoticeToggle=\"SHOW\""
   }
 ]
