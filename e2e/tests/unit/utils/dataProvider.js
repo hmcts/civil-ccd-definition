@@ -10,10 +10,10 @@ const loadFile = file => {
 // without the *
 const exclusions = new Map([
   ['preview', ['-prod.json']],
-  ['demo', ['UserProfile.json', '-prod.json']],
+  ['demo', ['UserProfile.json', '-prod.json', '-testing.json']],
   ['aat', ['UserProfile.json', '-nonprod.json']],
-  ['prod', ['UserProfile.json', '-nonprod.json']],
-  ['staging', ['UserProfile.json', '-nonprod.json']]
+  ['prod', ['UserProfile.json', '-nonprod.json', '-testing.json']],
+  ['staging', ['UserProfile.json', '-nonprod.json', '-testing.json']],
 ]);
 
 const ccdData = {
