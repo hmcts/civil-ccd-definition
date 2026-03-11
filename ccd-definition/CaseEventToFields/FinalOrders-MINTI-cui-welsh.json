@@ -190,7 +190,7 @@
     "CaseFieldID": "caseParticipantsAssistedOrder",
     "PageLabel": "Make an order",
     "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "N",
