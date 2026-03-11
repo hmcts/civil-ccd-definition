@@ -3,7 +3,6 @@ import type WATask from '../../models/wa-task';
 const task: WATask = {
   name: "Claim Discontinued - Validate discontinuance",
   type: "ValidateDiscontinuanceCTSC",
-  task_state: "unassigned",
   task_system: "SELF",
   security_classification: "PUBLIC",
   task_title: "Claim Discontinued - Validate discontinuance",

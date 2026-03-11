@@ -1,9 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>hmcts/.github//renovate/automerge-all", "local>hmcts/.github:renovate-config"],
+  "extends": [
+    "local>hmcts/.github:renovate-config",
+    "local>hmcts/.github//renovate/automerge-all"
+  ],
   "labels": [
     "dependencies"
   ],
+  "automergeSchedule": ["after 8am and before 11am every weekday"],
+  "schedule": ["after 8am and before 11am every weekday"],
+  "rebaseWhen": "conflicted",
+  "prConcurrentLimit": 5,
   "helmv3": {
     "bumpVersion": "patch"
   },
@@ -19,17 +26,20 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": [
-        "*"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch",
-      "automerge": true
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "All non-major updates",
+      "groupSlug": "all-non-major",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 2pm every weekday"]
+    },
+    {
+      "matchManagers": ["helmv3"],
+      "groupName": "Helm chart updates",
+      "groupSlug": "helm-charts",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 2pm every weekday"]
     }
-  ],
-  "prConcurrentLimit": 10
+  ]
 }

@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "eaCourtLocation",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

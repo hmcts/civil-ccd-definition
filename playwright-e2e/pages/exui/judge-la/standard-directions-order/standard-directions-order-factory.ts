@@ -1,16 +1,16 @@
 import BasePageFactory from '../../../../base/base-page-factory';
 import ClaimsTrackPage from './claims-track/claims-track-page';
-import DisposalHearingPage from './disposal-hearing/disposal-hearing-page';
+import DisposalHearingPage from './disposal-hearing-sdo/disposal-hearing-sdo-page';
 import ClaimsTrackSmallPage from './claims-track/claims-track-small-page';
 import SdoPage from './sdo/sdo-page';
 import FastTrackPage from './fast-track/fast-track-page';
-import OrderPreviewPage from './order-preview/order-preview-page';
+import OrderPreviewSdoPage from './order-preview-sdo/order-preview-sdo-page';
 import OrderTypePage from './order-type/order-type-page';
 import SmallClaimsPage from './small-claims/small-claims-page';
 import DateFragment from '../../fragments/date/date-fragment';
 import SdoR2FastTrackPage from './sdo-r2-fast-track/sdo-r2-fast-track-page';
 import SdoR2SmallClaimsPage from './sdo-r2-small-claims/sdo-r2-small-claims-page';
-import SubmitStandardDirectionsOrderPage from './submit-standard-directions-order/submit-standard-directions-order-page';
+import SubmitSdoPage from './submit-sdo/submit-sdo-page';
 import ConfirmStandardDirectionsOrderPage from './confirm-standard-directions-order/confirm-standard-directions-order-page';
 
 export default class StandardDirectionOrderPageFactory extends BasePageFactory {
@@ -45,8 +45,8 @@ export default class StandardDirectionOrderPageFactory extends BasePageFactory {
     return new SdoR2FastTrackPage(this.page, dateFragment);
   }
 
-  get orderPreviewPage() {
-    return new OrderPreviewPage(this.page);
+  get orderPreviewSdoPage() {
+    return new OrderPreviewSdoPage(this.page);
   }
 
   get smallClaimsPage() {
@@ -54,13 +54,13 @@ export default class StandardDirectionOrderPageFactory extends BasePageFactory {
     return new SmallClaimsPage(this.page, dateFragment);
   }
 
-  get smallClaimsDisputeResolutionHearingPage() {
+  get sdoR2SmallClaimsPage() {
     const dateFragment = new DateFragment(this.page);
     return new SdoR2SmallClaimsPage(this.page, dateFragment);
   }
 
   get submitStandardDirectionsOrderPage() {
-    return new SubmitStandardDirectionsOrderPage(this.page);
+    return new SubmitSdoPage(this.page);
   }
 
   get confirmStandardDirectionsOrderPage() {

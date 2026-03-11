@@ -1310,14 +1310,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "fastTrackHousingDisrepair",
-    "Label": "Housing Disrepair",
-    "FieldType": "FastTrackHousingDisrepair",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackPersonalInjury",
     "Label": "Expert Evidence",
     "FieldType": "FastTrackPersonalInjury",

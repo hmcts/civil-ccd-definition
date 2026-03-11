@@ -1,0 +1,106 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPenalNoticeTitle",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPenalNoticeToggle",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPenalNotice",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaimsPenalNoticeToggle=\"SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPenalNoticeTitle",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPenalNoticeToggle",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPenalNotice",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "fastTrackPenalNoticeToggle=\"SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsPPI",
+    "PageFieldDisplayOrder": 38,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimPPI\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimPPI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHousingDisrepair",
+    "PageFieldDisplayOrder": 39,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimHousingDisrepair\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimHousingDisrepair\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPPI",
+    "PageFieldDisplayOrder": 56,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FastTrack",
+    "PageDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "claimsTrack=\"fastTrack\" AND fastClaims CONTAINS \"fastClaimPPI\" OR trialAdditionalDirectionsForFastTrack CONTAINS \"fastClaimPPI\""
+  }
+]

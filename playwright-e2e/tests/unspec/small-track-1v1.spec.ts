@@ -6,6 +6,7 @@ test.describe('Unspecified Small Track 1v1', async () => {
     DefendantSolicitor1Steps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
+    JudgeSteps,
   }) => {
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.CreateClaimSmallTrack1v1();
@@ -18,12 +19,15 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v1();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
+    await JudgeSteps.Login();
+    await JudgeSteps.SdoSmallTrack();
   });
 
   test('Default Judgment', async ({
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
+    JudgeSteps,
   }) => {
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.CreateClaimSmallTrack1v1();
@@ -33,5 +37,7 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await ClaimantSolicitorSteps.NotifyClaimDetails();
     await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
     await ClaimantSolicitorSteps.RequestDefaultJudgment();
+    await JudgeSteps.Login();
+    await JudgeSteps.SdoDJTrialHearing();
   });
 });
