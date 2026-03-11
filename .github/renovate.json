@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>hmcts/.github:renovate-config",
-    "local>hmcts/.github//renovate/automerge-minor"
+    "local>hmcts/.github//renovate/automerge-all"
   ],
   "labels": [
     "dependencies"
@@ -29,13 +29,17 @@
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "All non-major updates",
       "groupSlug": "all-non-major",
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 2pm every weekday"]
     },
     {
       "matchManagers": ["helmv3"],
       "groupName": "Helm chart updates",
       "groupSlug": "helm-charts",
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 2pm every weekday"]
     }
   ]
 }
