@@ -8,7 +8,7 @@
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\" AND (finalOrderTrackToggle= \"SMALL_CLAIM\" OR finalOrderTrackToggle= \"FAST_CLAIM\")"
+    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -19,7 +19,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\" AND (finalOrderTrackToggle= \"SMALL_CLAIM\" OR finalOrderTrackToggle= \"FAST_CLAIM\")"
+    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -31,6 +31,6 @@
     "PageID": "FinalOrderAssistedOrder",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "assistedOrderPenalNoticeToggle=\"SHOW\"",
-    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\" AND (finalOrderTrackToggle= \"SMALL_CLAIM\" OR finalOrderTrackToggle= \"FAST_CLAIM\")"
+    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\""
   }
 ]
