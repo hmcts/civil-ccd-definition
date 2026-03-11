@@ -1,7 +1,7 @@
 const {I} = inject();
-const personalInjuryTypePage = require("./personalInjuryType.page");
-const declarationAndInjunctionPage = require("./declarationAndInjunction.page");
-const humanRightsActPage = require("./humanRightsAct.page");
+const personalInjuryTypePage = require('./personalInjuryType.page');
+const declarationAndInjunctionPage = require('./declarationAndInjunction.page');
+const humanRightsActPage = require('./humanRightsAct.page');
 
 module.exports = {
 
@@ -11,7 +11,7 @@ module.exports = {
       options: {
         personalInjury: 'Personal injury',
         housingDisrepair: 'Housing disrepair',
-        damagesAndOtherRemedy: "Damages and an ‘other’ remedy e.g. Payment Protection Insurance (PPI), Motor finance"
+        damagesAndOtherRemedy: 'Damages and an ‘other’ remedy e.g. Payment Protection Insurance (PPI), Motor finance'
       }
     },
   },

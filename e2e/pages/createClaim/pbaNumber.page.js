@@ -10,14 +10,14 @@ module.exports = {
       }
     },
     claimFeeAmountToPay:
-      "//h2[normalize-space()='Claim fee']" +
-      "/following::dt[normalize-space()='Amount to pay'][1]" +
-      "/following-sibling::dd//span",
+      '//h2[normalize-space()="Claim fee"]' +
+      '/following::dt[normalize-space()="Amount to pay"][1]' +
+      '/following-sibling::dd//span',
 
     otherRemedyAmountToPay:
-      "//h2[normalize-space()='Other Remedy fee']" +
-      "/following::dt[normalize-space()='Amount to pay'][1]" +
-      "/following-sibling::dd//span"
+      '//h2[normalize-space()="Other Remedy fee"]' +
+      '/following::dt[normalize-space()="Amount to pay"][1]' +
+      '/following-sibling::dd//span'
   },
 
   async selectPbaNumber() {
