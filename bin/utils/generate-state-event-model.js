@@ -97,7 +97,7 @@ function parseAuthorisations() {
     let content;
     try {
       content = JSON.parse(fs.readFileSync(path.join(AUTH_DIR, file), 'utf8'));
-    } catch (_) {
+    } catch {
       continue;
     }
     const items = Array.isArray(content) ? content : [content];
