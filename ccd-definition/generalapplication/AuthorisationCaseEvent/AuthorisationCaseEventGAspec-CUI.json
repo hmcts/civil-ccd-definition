@@ -13,78 +13,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_JUDGES_FORM",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DRAFT_DOCUMENT",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "ASSIGN_GA_ROLES",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_JUDGE_BUSINESS_PROCESS_GASPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "NOTIFY_GENERAL_APPLICATION_RESPONDENT",
     "AccessControl": [
       {
@@ -121,55 +49,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "OBTAIN_ADDITIONAL_FEE_VALUE",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "OBTAIN_ADDITIONAL_PAYMENT_REF",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "START_MAKE_ADDITIONAL_PAYMENT_REF",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "VALIDATE_FEE_GASPEC",
     "AccessControl": [
       {
         "UserRoles": [
@@ -240,18 +120,6 @@
           "RESPONDENT-ONE-PROFILE-SPEC"
         ],
         "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
       }
     ]
   },

@@ -1147,7 +1147,8 @@
       {
         "UserRoles": [
           "civil-administrator-standard",
-          "civil-administrator-basic","caseworker-ras-validation",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
           "ga-basic-access"
         ],
         "CRUD": "R"
@@ -1170,7 +1171,8 @@
       {
         "UserRoles": [
           "civil-administrator-standard",
-          "civil-administrator-basic","caseworker-ras-validation",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
           "ga-basic-access"
         ],
         "CRUD": "R"
@@ -1565,21 +1567,21 @@
     "CaseFieldID": "applicantPartyName",
     "AccessControl": [
       {
-      "UserRoles": [
-        "caseworker-civil-systemupdate",
-        "judge-profile",
-        "legal-adviser"
-      ],
-      "CRUD": "CRU"
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
       },
       {
-      "UserRoles": [
-        "civil-administrator-standard",
-        "civil-administrator-basic",
-        "caseworker-ras-validation",
-        "ga-basic-access"
-      ],
-      "CRUD": "R"
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -4058,6 +4060,21 @@
         "UserRoles": [
           "caseworker-civil-staff",
           "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "caseHistory",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-staff",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
