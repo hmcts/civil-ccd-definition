@@ -6,6 +6,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
 const STATE_FILE = path.join(ROOT, 'ccd-definition', 'State.json');
 const CASE_EVENT_DIR = path.join(ROOT, 'ccd-definition', 'CaseEvent');
+const AUTH_DIR = path.join(ROOT, 'ccd-definition', 'AuthorisationCaseEvent');
 
 const SOURCE_DIRS = fs.readdirSync(CASE_EVENT_DIR)
   .filter(d => fs.statSync(path.join(CASE_EVENT_DIR, d)).isDirectory())
@@ -89,6 +90,36 @@ function readEventFiles() {
   return events;
 }
 
+function parseAuthorisations() {
+  const roleMap = {};
+  const files = fs.readdirSync(AUTH_DIR).filter(f => f.endsWith('.json'));
+  for (const file of files) {
+    let content;
+    try {
+      content = JSON.parse(fs.readFileSync(path.join(AUTH_DIR, file), 'utf8'));
+    } catch {
+      continue;
+    }
+    const items = Array.isArray(content) ? content : [content];
+    for (const item of items) {
+      const eventId = item.CaseEventID;
+      if (!eventId) continue;
+      if (!roleMap[eventId]) roleMap[eventId] = new Set();
+
+      if (item.AccessControl) {
+        for (const ac of item.AccessControl) {
+          if (ac.CRUD && ac.CRUD.includes('C')) {
+            for (const role of ac.UserRoles) roleMap[eventId].add(role);
+          }
+        }
+      } else if (item.UserRole && item.CRUD && item.CRUD.includes('C')) {
+        roleMap[eventId].add(item.UserRole);
+      }
+    }
+  }
+  return roleMap;
+}
+
 function computeEdges(events) {
   const edges = [];
 
@@ -134,6 +165,11 @@ function main() {
 
   const states = parseStates();
   const events = readEventFiles();
+  const authMap = parseAuthorisations();
+  for (const ev of events) {
+    const roles = authMap[ev.id];
+    ev.createRoles = roles ? [...roles].sort() : [];
+  }
   const edges = computeEdges(events);
   const summary = computeSummary(states, events, edges);
 
