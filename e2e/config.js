@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({path: '.env.tests.local'});
 
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
@@ -19,12 +19,12 @@ module.exports = {
     dmStore: process.env.DM_STORE_URL,
     idamApi: process.env.IDAM_API_URL,
     idamWebApi: process.env.IDAM_WEB_URL,
-    idamTestSupportApi: process.env.IDAM_TEST_URL || 'https://idam-testing-support-api.aat.platform.hmcts.net',
+    idamTestSupportApi: process.env.IDAM_TEST_SUPPORT_API_URL,
     civilService: process.env.CIVIL_SERVICE_URL,
     caseAssignmentService: process.env.AAC_API_URL,
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL,
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-    paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
+    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL,
+    paymentApi: process.env.PAYMENT_API_URL,
     wiremockService: process.env.WIREMOCK_URL
   },
   s2s: {
