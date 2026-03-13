@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-const config = require('../../../config.js');
-const mpScenario = 'ONE_V_ONE';
-
+const config = require('../config');
 let civilCaseReference, gaCaseReference;
+const mpScenario = 'ONE_V_ONE';
+const claimAmountJudge = '11000';
 
 Feature('Smoke test - API 1v1 spec create claim and create general application').tag('@civil-ccd-smoke');
 
