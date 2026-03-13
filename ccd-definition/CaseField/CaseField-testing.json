@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "defendantEmail",
+    "ID": "defendantEmailAddress",
     "Label": "Enter defendant's email address to be used for linking case",
     "FieldType": "Email",
     "SecurityClassification": "Public",
