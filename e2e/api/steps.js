@@ -2039,6 +2039,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
   delete responseBody.data['orderType'];
   delete responseBody.data['finalOrderTrackToggle'];
+  delete responseBody.data['assistedOrderPenalNoticeContent'];
+  delete responseBody.data['assistedOrderPenalNoticeToggle'];
   delete responseBody.data['respondent1Experts'];
   delete responseBody.data['respondent1Witnesses'];
   delete responseBody.data['setFastTrackFlag'];
@@ -2134,6 +2136,8 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  delete responseBody.data['assistedOrderPenalNoticeContent'];
+  delete responseBody.data['assistedOrderPenalNoticeToggle'];
   if (responseBody.data.finalOrderDownloadTemplateOptions) {
     caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
   }
