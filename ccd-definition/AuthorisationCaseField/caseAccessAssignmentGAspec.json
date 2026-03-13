@@ -37,6 +37,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "UserRole": "caseworker-caa",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "generalAppRespondentAgreement",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

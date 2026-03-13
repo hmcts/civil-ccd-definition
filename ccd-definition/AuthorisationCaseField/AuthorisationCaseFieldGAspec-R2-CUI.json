@@ -77,6 +77,19 @@
       }
     ]
   },
+    {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "generalAppEvidenceDocument",

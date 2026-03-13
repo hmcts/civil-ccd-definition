@@ -37,6 +37,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
