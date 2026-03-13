@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "LINK_DEFENDANT_TO_CLAIM",
-    "CaseFieldID": "defendantEmail",
+    "CaseFieldID": "defendantEmailAddress",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DefendantLink",
