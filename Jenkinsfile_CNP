@@ -120,10 +120,6 @@ def checkForRunAllFunctionalTests(branch_name) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
 }
 
-def isHmcEnabled(branch_name) {
-  return checkForPrValuesLabel(branch_name, "enableHmc")
-}
-
 def checkForPrValuesLabel(branch_name, label) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values:" + label).contains("pr-values:" + label)
 }
@@ -228,15 +224,10 @@ withPipeline(type, product, component) {
     env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
     env.PR_FT_GROUPS = getFunctionalTestsGroups()
-    if (isHmcEnabled(env.BRANCH_NAME)) {
-      env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
-      env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
-    } else {
-      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-      env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    }
-  }
+    env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
 
+  }
 
   // onPR {
   //   env.ENVIRONMENT = "aat"
