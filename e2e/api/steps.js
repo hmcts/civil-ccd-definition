@@ -996,6 +996,9 @@ module.exports = {
     delete caseData['responseClaimTrack'];
     delete caseData['smallClaimsFlightDelay'];
     delete caseData['smallClaimsFlightDelayToggle'];
+    delete caseData['smallClaimsPenalNotice'];
+    delete caseData['smallClaimsPenalNoticeToggle'];
+    delete caseData['smallClaimsHousingDisrepair'];
     //required to fix existing prod api tests for sdo
     clearWelshParaFromCaseData();
     delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
@@ -1490,6 +1493,9 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  delete responseBody.data['smallClaimsPenalNotice'];
+  delete responseBody.data['smallClaimsPenalNoticeToggle'];
+  delete responseBody.data['smallClaimsHousingDisrepair'];
   delete responseBody.data['notificationSummary'];
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
@@ -2057,6 +2063,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaimsWitnessStatementToggle'];
   delete responseBody.data['smallClaimsWitnessStatement'];
   delete responseBody.data['smallClaimsRoadTrafficAccident'];
+  delete responseBody.data['smallClaimsPenalNotice'];
+  delete responseBody.data['smallClaimsPenalNoticeToggle'];
   delete responseBody.data['smallClaimsHousingDisrepair'];
   delete responseBody.data['documentAndNoteToAdd'];
   delete responseBody.data['documentAndNameToAdd'];

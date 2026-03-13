@@ -320,6 +320,9 @@ module.exports = function (){
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['smallClaimsPenalNotice'];
+    delete caseData['smallClaimsPenalNoticeToggle'];
+    delete caseData['smallClaimsHousingDisrepair'];
     let disposalData = data.CREATE_SDO();
 
     if (carmEnabled) {
@@ -588,6 +591,9 @@ const assertValidData = async (data, pageId) => {
 
   delete responseBody.data['smallClaimsFlightDelayToggle'];
   delete responseBody.data['smallClaimsFlightDelay'];
+  delete responseBody.data['smallClaimsPenalNotice'];
+  delete responseBody.data['smallClaimsPenalNoticeToggle'];
+  delete responseBody.data['smallClaimsHousingDisrepair'];
   //required to fix existing prod api tests for sdo
   delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
   delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
