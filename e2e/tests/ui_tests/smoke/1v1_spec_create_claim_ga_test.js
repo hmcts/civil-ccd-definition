@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const config = require('../config');
+const config = require('../../../config.js');
 let civilCaseReference, gaCaseReference;
 const mpScenario = 'ONE_V_ONE';
 const claimAmountJudge = '11000';
