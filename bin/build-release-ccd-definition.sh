@@ -10,20 +10,20 @@ activateShutter=${2:-false}
 if [ ${environment} == preview ]; then
    excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == demo ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-testing.json"
 elif [ ${environment} == perftest ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-testing.json"
 elif [ ${environment} == ithc ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-testing.json"
 elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to CUI files
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == aat ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == prod ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-testing.json"
 elif [ ${environment} == staging ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-testing.json"
 else
   echo "ERROR! You are passing an environment that is not known by the script!"
   echo "       Either add the new environment to the script or specify a supported environment!"
