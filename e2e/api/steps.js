@@ -1507,6 +1507,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
     delete caseData['businessProcess'];
+    delete caseData['assistedOrderPenalNoticeContent'];
+    delete caseData['assistedOrderPenalNoticeToggle'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
@@ -1515,6 +1517,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    delete caseData['assistedOrderPenalNoticeContent'];
+    delete caseData['assistedOrderPenalNoticeToggle'];
     // After second minti release this is not needed. Track fields for GENERATE_DIRECTIONS_ORDER are currently linked
     // to a hidden wa page and do not appear in mid event handlers, which is fine as they are not currently used.
     // After minti release the fields are linked to a page and hidden via field show conditions and get returned correctly.
