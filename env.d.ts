@@ -14,7 +14,7 @@ declare global {
       CIVIL_SERVICE_URL: string;
       WA_TASK_MGMT_URL: string;
       AAC_API_URL: string;
-      IDAM_TEST_URL: string;
+      IDAM_TEST_SUPPORT_API_URL: string;
       CIVIL_ORCHESTRATOR_SERVICE_URL: string;
       PAYMENT_API_URL: string;
       WIREMOCK_URL: string;
