@@ -27,6 +27,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "caseHistory",
+    "Label": " ",
+    "FieldType": "CaseHistoryViewer",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "ID": "respondent2OrganisationPolicy",
     "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
