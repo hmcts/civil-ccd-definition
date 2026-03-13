@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 
 let caseId;
 
-Feature('1v2SS spec stay case api journey').tag('@api-nightly-prod @api-stay-case');
+Feature('1v2SS spec stay case api journey').tag('@civil-service-nightly @api-stay-case');
 
 Scenario('1v2SS LR UNSPEC claim hearing readiness', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');

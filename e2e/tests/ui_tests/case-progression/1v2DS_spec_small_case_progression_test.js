@@ -4,7 +4,8 @@ const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 let caseNumber;
 
-Feature('1v2DS spec small track case progression journey').tag('@ui-prod @ui-case-progression');
+Feature('1v2DS spec small track case progression journey')
+  .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-case-progression');
 
 Scenario('01 Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims-spec', async ({api_spec_fast, LRspec}) => {
   console.log('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims-spec');

@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "TRANSFER_ONLINE_CASE",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  }
-]

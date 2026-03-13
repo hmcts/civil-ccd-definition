@@ -11,7 +11,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let caseNumber;
 
-Feature('1v2 Different Solicitors small claims - Claim Journey').tag('@ui-nightly-prod @ui-unspec-full-defence');
+Feature('1v2 Different Solicitors small claims - Claim Journey').tag('@civil-ccd-nightly @ui-unspec-full-defence');
 
 Scenario('01 Claimant solicitor raises a claim against 2 defendants who have different solicitors ', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, '3000');

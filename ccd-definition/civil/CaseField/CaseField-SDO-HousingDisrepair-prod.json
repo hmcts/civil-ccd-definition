@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fastTrackHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "FastTrackHousingDisrepair",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

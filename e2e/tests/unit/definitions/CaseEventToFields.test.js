@@ -1,11 +1,11 @@
 const { expect, assert } = require('chai');
 const { find, uniqWith } = require('lodash');
-const { isPositiveNumber, whenPopulated, isCaseEventToFieldDuplicated } = require('../utils/utils');
+const { isPositiveNumber, whenPopulated, isCaseEventToFieldDuplicated, isValidCaseTypeId } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+    return isValidCaseTypeId()(v);
   });
 }
 
