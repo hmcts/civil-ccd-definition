@@ -13,7 +13,7 @@ s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}
 #fi
 
 serviceToken=$($(realpath $workspace)/bin/utils/idam-lease-service-token.sh civil_service \
-  $(docker run --rm hmctspublic.azurecr.io/imported/toolbelt/oathtool --totp -b ${s2sSecret}))
+  $(docker run --rm hmctsprod.azurecr.io/imported/toolbelt/oathtool --totp -b ${s2sSecret}))
 
 dmnFilepath="$(realpath $workspace)/resources"
 
