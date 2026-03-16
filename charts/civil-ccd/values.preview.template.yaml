@@ -4,7 +4,7 @@ civil-wa:
 civil-service:
   java:
     imagePullPolicy: Always
-    image: hmctspublic.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
+    image: hmctsprod.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
     keyVaults:
       civil:
         resourceGroup: civil
@@ -192,7 +192,7 @@ ccd:
     java:
       releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
       imagePullPolicy: Always
-      image: hmctspublic.azurecr.io/am/role-assignment-service:latest
+      image: hmctsprod.azurecr.io/am/role-assignment-service:latest
       ingressHost: am-role-assignment-${SERVICE_FQDN}
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
@@ -246,7 +246,7 @@ camunda-bpm:
 em-ccdorc:
   enabled: true
   java:
-    image: hmctspublic.azurecr.io/em/ccdorc:latest
+    image: hmctsprod.azurecr.io/em/ccdorc:latest
     releaseNameOverride: ${SERVICE_NAME}-em-ccdorc
     ingressHost: em-ccdorc-${SERVICE_FQDN}
     environment:
@@ -272,7 +272,7 @@ em-stitching:
   java:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-em-stitching
-    image: hmctspublic.azurecr.io/em/stitching:latest
+    image: hmctsprod.azurecr.io/em/stitching:latest
     ingressHost: em-stitching-${SERVICE_FQDN}
     environment:
       IDAM_API_BASE_URI: https://idam-api.aat.platform.hmcts.net
@@ -304,7 +304,7 @@ ccd-case-document-am-api:
   java:
     releaseNameOverride: ${SERVICE_NAME}-cdam
     imagePullPolicy: Always
-    image: hmctspublic.azurecr.io/ccd/case-document-am-api:latest
+    image: hmctsprod.azurecr.io/ccd/case-document-am-api:latest
     ingressHost: ccd-case-document-am-api-${SERVICE_FQDN}
     environment:
       IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
@@ -381,7 +381,7 @@ servicebus:
 
 wiremock:
   enabled: true
-  image: hmctspublic.azurecr.io/imported/wiremock/wiremock
+  image: hmctsprod.azurecr.io/imported/wiremock/wiremock
   applicationPort: 8080
   imagePullPolicy: Always
   releaseNameOverride : ${SERVICE_NAME}-wiremock
