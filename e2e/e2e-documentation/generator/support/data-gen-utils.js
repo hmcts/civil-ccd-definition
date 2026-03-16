@@ -14,22 +14,21 @@ const dependentUiFiles = new Set(
 );
 
 const pipelineTagMap = {
-  '@ui-prod': ['civil-ccd-definition: master', 'civil-ccd-definition: PR'],
-  '@ui-nonprod': ['civil-ccd-definition: PR'],
-  '@ui-nightly-prod': ['civil-ccd-definition: nightly'],
-  '@api-prod': [
-    'civil-service: master',
-    'civil-service: PR',
-    'civil-camunda-bpmn-definition: master',
-    'civil-camunda-bpmn-definition: PR'
-  ],
-  '@api-nonprod': ['civil-service: PR', 'civil-camunda-bpmn-definition: PR'],
-  '@api-nightly-prod': ['civil-service: nightly'],
-  '@wa-task': [
-    'civil-wa-task-configuration: master',
-    'civil-wa-task-configuration: PR',
-    'civil-wa-task-configuration: nightly'
-  ]
+  '@civil-ccd-master': ['civil-ccd-definition: master'],
+  '@civil-ccd-pr': ['civil-ccd-definition: PR'],
+  '@civil-ccd-nightly': ['civil-ccd-definition: nightly'],
+  '@civil-ccd-smoke': ['civil-ccd-definition: master (smoke)', 'civil-ccd-definition: PR (smoke)'],
+  '@civil-service-master': ['civil-service: master'],
+  '@civil-service-pr': ['civil-service: PR'],
+  '@civil-service-nightly': ['civil-service: nightly'],
+  '@civil-service-smoke': ['civil-service: master (smoke)', 'civil-service: PR (smoke)'],
+  '@civil-camunda-master': ['civil-camunda-bpmn-definition: master'],
+  '@civil-camunda-pr': ['civil-camunda-bpmn-definition: PR'],
+  '@civil-camunda-smoke': ['civil-camunda-bpmn-definition: master (smoke)', 'civil-camunda-bpmn-definition: PR (smoke)'],
+  '@civil-wa-master': ['civil-wa-task-configuration: master'],
+  '@civil-wa-pr': ['civil-wa-task-configuration: PR'],
+  '@civil-wa-nightly': ['civil-wa-task-configuration: nightly'],
+  '@civil-wa-smoke': ['civil-wa-task-configuration: master (smoke)', 'civil-wa-task-configuration: PR (smoke)']
 };
 
 const pipelineTagSet = new Set(Object.keys(pipelineTagMap));
@@ -105,7 +104,7 @@ function normaliseTag(token) {
   }
   trimmed = trimmed.replace(/[;,]+$/, '');
   if (!trimmed.startsWith('@')) {
-    if (trimmed.startsWith('e2e-') || trimmed.startsWith('api-') || pipelineTagSet.has(`@${trimmed}`)) {
+    if (trimmed.startsWith('e2e-') || trimmed.startsWith('api-') || trimmed.startsWith('civil-') || pipelineTagSet.has(`@${trimmed}`)) {
       trimmed = `@${trimmed}`;
     }
   }

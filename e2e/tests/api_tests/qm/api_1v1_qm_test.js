@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const {PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('1v1 query management api journey').tag('@api-nightly-prod');
+Feature('1v1 query management api journey').tag('@civil-service-nightly');
 
 Scenario('01 Prepare claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

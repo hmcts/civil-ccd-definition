@@ -163,10 +163,65 @@ const { waitForFinishedBusinessProcess } = require('./api/testingSupport.js');
 const events = require('./fixtures/ccd/events.js');
 //const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 
+const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
+const {dateNoWeekendsBankHolidayNextDay} = require('./fragments/date');
+const applicationTypePage = require('./pages/generalApplication/applicationType.page');
+const hearingDatePage = require('./pages/generalApplication/hearingDate.page');
+const n245FormPage = require('./pages/generalApplication/n245Form.page');
+const consentCheckPage = require('./pages/generalApplication/consentCheck.page');
+const urgencyCheckPage = require('./pages/generalApplication/urgencyCheck.page');
+const withOutNoticePage = require('./pages/generalApplication/withOutNotice.page');
+const enterApplicationDetailsPage = require('./pages/generalApplication/applicationDetails.page');
+const hearingAndTrialPage = require('./pages/generalApplication/hearingDetails.page');
+const gaPBANumberPage = require('./pages/generalApplication/gaPBANumber.page');
+const answersPage = require('./pages/generalApplication/checkYourAnswers.page');
+const confirmationPage = require('./pages/generalApplication/gaConfirmation.page');
+const applicationTab = require('./pages/generalApplication/applicationTab.page');
+const applicantSummaryPage = require('./pages/generalApplication/applicantSummary.page');
+const respConsentCheckPage = require('./pages/generalApplication/responseJourneyPages/responseConsentCheck.page');
+const respondentDebtorResponsePage = require('./pages/generalApplication/responseJourneyPages/respondentDebtorResponse.page');
+const respHearingDetailsPage = require('./pages/generalApplication/responseJourneyPages/responseHearingDetails.page');
+const responseCheckYourAnswersPage = require('./pages/generalApplication/responseJourneyPages/responseCheckYourAnswers.page');
+const responseConfirmationPage = require('./pages/generalApplication/responseJourneyPages/responseConfirmation.page');
+const responseSummaryPage = require('./pages/generalApplication/responseJourneyPages/responseSummary.page');
+const judgeDecisionPage = require('./pages/generalApplication/judgesJourneyPages/judgeDecision.page');
+const consentOrderPage = require('./pages/generalApplication/consentOrderPages/approveConsentOrder.page');
+const consentOrderReviewPage = require('./pages/generalApplication/consentOrderPages/reviewConsentOrderDocument.page');
+const consentOrderCYAPage = require('./pages/generalApplication/consentOrderPages/consentOrderCheckYourAnswers.page');
+const judgeOrderPage = require('./pages/generalApplication/applicationOrderPages/judgeOrder.page');
+const freeFormOrderPage = require('./pages/generalApplication/applicationOrderPages/freeFormOrder.page');
+const assistedOrderPage = require('./pages/generalApplication/applicationOrderPages/assistedOrder.page');
+const makeAnOrderPage = require('./pages/generalApplication/judgesJourneyPages/makeAnOrder.page');
+const reviewOrderDocumentPage = require('./pages/generalApplication/judgesJourneyPages/reviewOrderDocument.page');
+const reviewAppOrderDocumentPage = require('./pages/generalApplication/applicationOrderPages/reviewAppOrderDocument.page');
+const appOrderCYAPage = require('./pages/generalApplication/applicationOrderPages/appOrderCheckYourAnswers.page');
+const appOrderConfirmationPage = require('./pages/generalApplication/applicationOrderPages/appOrderConfirmation.page');
+const requestMoreInfoPage = require('./pages/generalApplication/judgesJourneyPages/requestMoreInformation.page');
+const judgesCheckYourAnswers = require('./pages/generalApplication/judgesJourneyPages/judgesCheckYourAnswers.page');
+const judgesConfirmationPage = require('./pages/generalApplication/judgesJourneyPages/judgesConfirmation.page');
+const listForHearingPage = require('./pages/generalApplication/judgesJourneyPages/listForHearing.page');
+const drawGeneralOrderPage = require('./pages/generalApplication/judgesJourneyPages/drawGeneralOrder.page');
+const writtenRepresentationsPage = require('./pages/generalApplication/judgesJourneyPages/writtenRepresentations.page');
+const uploadScreenPage = require('./pages/generalApplication/judgesJourneyPages/uploadScreen.page');
+const applicationDocumentPage = require('./pages/generalApplication/judgesJourneyPages/applicationDocument.page');
+const claimDocumentPage = require('./pages/generalApplication/claimDocument.page');
+const caseFileDocPage = require('./pages/generalApplication/caseFile.page');
+const serviceRequestPage = require('./pages/generalApplication/serviceRequest.page');
+const appDetailsPage = require('./pages/generalApplication/hearingNoticePages/applicationDetails.page');
+const hearingSchedulePage = require('./pages/generalApplication/hearingNoticePages/hearingSchedule.page');
+const hearingNoticeCYAPage = require('./pages/generalApplication/hearingNoticePages/hnCheckYourAnswers.page');
+const gaEvents = require('./fixtures/ga-events/ga-ccd/events.js');
+const {getAppTypes} = require('./pages/generalApplication/generalApplicationTypes');
+const apiRequest = require('./api/apiRequest');
+const genAppJudgeMakeDecisionData = require('./fixtures/ga-events/ga-ccd/judgeMakeDecision');
+const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
+
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
-const SUMMARY_TAB = 'div[role=\'tab\'] >> \'Summary\'';
+const GA_CASE_HEADER = '.heading-h2';
+const SIGN_OUT_LINK = 'ul[class*=\'navigation-list\'] a';
+const CASE_DETAILS_TAB = '.mat-tab-labels';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const TEST_FILE_PATH_DOC = './e2e/fixtures/exampleDOC.docx';
@@ -180,13 +235,76 @@ const CONFIRMATION_MESSAGE = {
   offline: 'Your claim has been received and will progress offline',
 };
 
-let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
+let caseId = '1770889956809489', screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
 const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
+
+const selectApplicationType = (applicationType) => [
+  () => applicationTypePage.selectApplicationType(applicationType),
+];
+
+const selectGAAndVerifyErrorMessage = (eventName, errorMessage) => [
+  () => caseViewPage.start(eventName, errorMessage),
+  () => applicationTypePage.verifyErrorMessage(errorMessage),
+];
+
+const selectConsentCheck = (consentCheck) => [
+  () => consentCheckPage.selectConsentCheck(consentCheck)
+];
+
+const isUrgentApplication = (urgent) => [
+  () => urgencyCheckPage.selectUrgencyRequirement(urgent),
+];
+
+const selectNotice = (notice) => [
+  () => withOutNoticePage.selectNotice(notice),
+];
+
+const enterApplicationDetails = () => [
+  () => enterApplicationDetailsPage.enterApplicationDetails(TEST_FILE_PATH),
+];
+
+const fillHearingDetails = (hearingScheduled, trialRequired, unavailableTrailRequired, vulnerabilityQuestions, supportRequirement) => [
+  () => hearingAndTrialPage.isHearingScheduled(hearingScheduled),
+  () => hearingAndTrialPage.isTrialRequired(trialRequired),
+  () => hearingAndTrialPage.selectHearingPreferences('inPerson'),
+  () => hearingAndTrialPage.selectHearingDuration('fortyFiveMin'),
+  () => hearingAndTrialPage.isUnavailableTrailRequired(unavailableTrailRequired),
+  () => hearingAndTrialPage.selectVulnerabilityQuestions(vulnerabilityQuestions),
+  () => hearingAndTrialPage.selectSupportRequirement(supportRequirement),
+];
+
+const updateHearingDetails = () => [
+  () => hearingAndTrialPage.updateHearingDetails(),
+];
+
+const verifyApplicationFee = (consentCheck, notice, appType) => [
+  () => gaPBANumberPage.verifyApplicationFee(consentCheck, notice, appType),
+];
+
+const verifyCheckAnswerForm = (caseId, consentCheck) => [
+  () => answersPage.verifyCheckAnswerForm(caseId, consentCheck),
+];
+
+const clickOnHearingDetailsChangeLink = (consentCheck) => [
+  () => answersPage.clickOnChangeLink(consentCheck),
+];
+
+const submitApplication = (confMessage) => [
+  () => event.submit('Submit', confMessage)
+];
+
+const submitSupportingDocument = (confMessage) => [
+  () => event.submitSupportingDoc('Submit', confMessage)
+];
+
+const verifyGAConfirmationPage = (parentCaseId, consentCheck, notice, appTypes) => [
+  () => confirmationPage.verifyConfirmationPage(parentCaseId, consentCheck, notice, appTypes)
+];
 
 const firstClaimantSteps = () => [
   () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address),
@@ -813,7 +931,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.CASE_PROCEEDS_IN_CASEMAN, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
-        () => this.waitForSelector(SUMMARY_TAB, 30),
+        () => this.waitForSelector(CASE_DETAILS_TAB, 30),
       ]);
       await this.takeScreenshot();
     },
@@ -1166,7 +1284,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-      }, SUMMARY_TAB, undefined, 20);
+      }, CASE_DETAILS_TAB, undefined, 20);
     },
 
     async initiateNoticeOfChange(caseId, clientName) {
@@ -1184,7 +1302,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
-      }, SUMMARY_TAB, undefined, 25);
+      }, CASE_DETAILS_TAB, undefined, 25);
     },
 
     async manageWitnessesForDefendant(caseId) {
@@ -1315,6 +1433,459 @@ module.exports = function () {
         () => cancelHearingPage.clickCancelHearing(),
         () => cancelHearingPage.verifyHearingCancellation()
       ]);
+    },
+
+
+    async acceptCookies() {
+      await this.tryTo(() => this.click('Accept additional cookies', '#cookie-accept-submit'));
+      await this.tryTo(() => this.click('Hide this', '#cookie-accept-all-success-banner-hide'));
+    },
+
+    async approveConsentOrder(gaCaseNumber) {
+      eventName = gaEvents.APPROVE_CONSENT_ORDER.name;
+
+      if (config.runWAApiTest || ['demo'].includes(config.runningEnv)) {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + gaCaseNumber + '/tasks');
+        await this.waitForElement('#event');
+        await this.forceClick('#action_claim');
+        await this.waitForElement('#action_reassign');
+        await this.waitForText('ReviewApplication', 8);
+        await this.wait(3);
+      }
+
+      await caseViewPage.startEvent(gaEvents.APPROVE_CONSENT_ORDER, gaCaseNumber);
+      await consentOrderPage.approveConsentOrder();
+      await consentOrderReviewPage.reviewOrderDocument();
+      await consentOrderCYAPage.verifyConsentOrderCheckAnswerForm(gaCaseNumber, 1);
+      await event.submit('Submit', 'Your order has been made');
+      await judgesConfirmationPage.closeAndReturnToCaseDetails();
+    },
+
+    async clickAndVerifyTab(caseNumber, tabName, appType, appCount) {
+      await this.triggerStepsWithScreenshot([
+        () => confirmationPage.closeAndReturnToCaseDetails(),
+        () => caseViewPage.navigateToTab(caseNumber, tabName),
+        () => applicationTab.verifyApplicationDetails(appType, appCount),
+      ]);
+    },
+
+    async clickOnElement(element) {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.click(element), urlBefore);
+    },
+
+    async clickOnTab(tabName) {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.clickOnTab(tabName),
+      ]);
+    },
+
+    async clickPayFeeLink() {
+      await confirmationPage.clickPayFeeLink();
+    },
+
+    async closeAndReturnToCaseDetails() {
+      await this.triggerStepsWithScreenshot([
+        () => confirmationPage.closeAndReturnToCaseDetails(),
+      ]);
+    },
+
+    async createGeneralApplication(appTypes, caseId, consentCheck, isUrgent, notice, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement) {
+      eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
+        ...selectApplicationType(appTypes),
+        () => hearingDatePage.selectHearingScheduled(hearingScheduled),
+        ...selectConsentCheck(consentCheck),
+        ...isUrgentApplication(isUrgent),
+        ...conditionalSteps(consentCheck === 'no', [
+          ...selectNotice(notice),
+        ]),
+        ...enterApplicationDetails(),
+        ...fillHearingDetails(hearingScheduled, trialRequired, unavailableTrailRequired, 'yes', supportRequirement),
+        ...verifyApplicationFee(consentCheck, notice, appTypes),
+        ...verifyCheckAnswerForm(caseId, consentCheck),
+        ...clickOnHearingDetailsChangeLink(consentCheck),
+        ...updateHearingDetails(),
+        ...submitApplication('You have submitted an application'),
+        ...verifyGAConfirmationPage(caseId, consentCheck, notice, appTypes),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async fillHearingNotice(caseNumber, partyType, location, channel) {
+      await appDetailsPage.verifyErrorMsg();
+      await appDetailsPage.fillApplicationDetails(partyType);
+      await hearingSchedulePage.verifyErrorMsg(location);
+      await hearingSchedulePage.fillHearingDetails(location, channel);
+      await hearingNoticeCYAPage.verifyNoticeCheckAnswerForm(caseNumber);
+      await event.submit('Submit', 'Hearing notice created');
+    },
+
+    async goToGeneralAppScreenAndVerifyAllApps(appTypes, caseNumber) {
+      eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.start(eventName),
+        () => applicationTypePage.verifyAllApplicationTypes(appTypes, caseNumber),
+      ]);
+    },
+
+    async grabChildCaseNumber() {
+      this.waitInUrl('#Applications', 3);
+      return await this.grabTextFrom('.collection-field-table a span');
+    },
+
+    grabGACaseNumber: async function () {
+      this.waitForElement(GA_CASE_HEADER);
+      return await this.grabTextFrom(GA_CASE_HEADER);
+    },
+
+    async initiateVaryJudgementGA(caseId, appTypes, hearingScheduled, consentCheck, isUrgent) {
+      eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
+        ...selectApplicationType(appTypes),
+        () => hearingDatePage.selectHearingScheduled(hearingScheduled),
+        () => n245FormPage.uploadN245Form(TEST_FILE_PATH),
+        ...selectConsentCheck(consentCheck),
+        ...isUrgentApplication(isUrgent),
+        ...enterApplicationDetails(),
+        ...fillHearingDetails(hearingScheduled,  'no', 'no', 'yes', 'disabledAccess'),
+        ...verifyApplicationFee(consentCheck, 'no', appTypes),
+        ...verifyCheckAnswerForm(caseId, consentCheck),
+        ...submitApplication('You have submitted an application'),
+        ...verifyGAConfirmationPage(caseId, consentCheck, 'no', appTypes),
+      ]);
+    },
+
+    async judgeApproveAnOrderWA(decision, order, consentCheck, caseNumber, documentType) {
+      await judgeDecisionPage.selectJudgeDecision(decision);
+      await makeAnOrderPage.selectAnOrder(order, consentCheck, 'noneOrder');
+      await reviewOrderDocumentPage.reviewOrderDocument(documentType);
+      await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
+      await event.submit('Submit', 'Your order has been made');
+      await judgesConfirmationPage.verifyJudgesConfirmationPage();
+    },
+
+    async judgeCloseAndReturnToCaseDetails() {
+      await this.triggerStepsWithScreenshot([
+        () => judgesConfirmationPage.closeAndReturnToCaseDetails(),
+      ]);
+    },
+
+    async judgeListForAHearingDecision(decision, caseNumber, notice, documentType) {
+      eventName = gaEvents.MAKE_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => listForHearingPage.selectJudicialHearingPreferences('inPerson'),
+        () => listForHearingPage.selectJudicialTimeEstimate('fifteenMin'),
+        () => listForHearingPage.verifyVulnerabilityQuestions(),
+        () => listForHearingPage.selectJudicialSupportRequirement('disabledAccess'),
+        () => drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('video', '15 minutes', notice, 'withoutNoticeOrder'),
+        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...submitApplication('Your order has been made'),
+        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+      ]);
+    },
+
+    judgeListForAHearingDecisionWA: async function (decision, caseNumber, notice, documentType) {
+      await judgeDecisionPage.selectJudgeDecision(decision);
+      await listForHearingPage.selectJudicialHearingPreferences('inPerson');
+      await listForHearingPage.selectJudicialTimeEstimate('fifteenMin');
+      await listForHearingPage.verifyVulnerabilityQuestions();
+      await listForHearingPage.selectJudicialSupportRequirement('disabledAccess');
+      await drawGeneralOrderPage.verifyHearingDetailsGeneralOrderScreen('video', '15 minutes', notice, 'noneOrder');
+      await reviewOrderDocumentPage.reviewOrderDocument(documentType);
+      await judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber);
+      await event.submit('Submit', 'Your order has been made');
+      await judgesConfirmationPage.verifyJudgesConfirmationPage();
+    },
+
+    async judgeMakeAppOrder(gaCaseNumber, orderType, formType) {
+      let workingDay = await dateNoWeekendsBankHolidayNextDay(0);
+
+      if (orderType === 'freeFromOrder') {
+        workingDay = await dateNoWeekendsBankHolidayNextDay(7);
+      }
+      eventName = gaEvents.GENERATE_DIRECTIONS_ORDER.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.GENERATE_DIRECTIONS_ORDER, gaCaseNumber),
+        () => judgeOrderPage.verifyErrorMessage(),
+        () => judgeOrderPage.selectOrderType(orderType),
+        ...conditionalSteps(orderType === 'freeFromOrder', [
+          () => freeFormOrderPage.verifyFreeFromErrorMessage(),
+          () => freeFormOrderPage.fillFreeFormOrder(orderType, formType, workingDay),
+        ]),
+        ...conditionalSteps(orderType === 'assistedOrder', [
+          () => assistedOrderPage.verifyAssistedOrderErrorMessage(),
+          () => assistedOrderPage.isOrderMade('yes', orderType),
+          () => assistedOrderPage.fillJudgeHeardForm(),
+          () => assistedOrderPage.fillRecitals(),
+          () => assistedOrderPage.selectCosts(),
+          () => assistedOrderPage.selectFurtherHearing(),
+          () => assistedOrderPage.selectAppeal(),
+          () => assistedOrderPage.selectOrderType(formType),
+          () => assistedOrderPage.selectReasons(),
+        ]),
+        () => reviewAppOrderDocumentPage.reviewOrderDocument(),
+        ...conditionalSteps(orderType === 'freeFromOrder', [
+          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber, 7),
+          ...submitApplication('Your order has been issued'),
+          () => appOrderConfirmationPage.verifyFFConfirmationPage(),
+        ]),
+        ...conditionalSteps(orderType === 'assistedOrder', [
+          () => appOrderCYAPage.verifyAppOrderCheckAnswerForm(gaCaseNumber, 22),
+          ...submitApplication('Your order has been issued'),
+          () => appOrderConfirmationPage.verifyAOConfirmationPage(),
+        ]),
+      ]);
+    },
+
+    async judgeMakeDecision(decision, order, notice, caseNumber, documentType, orderType) {
+      eventName = gaEvents.MAKE_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => makeAnOrderPage.selectAnOrder(order, notice, orderType),
+        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...submitApplication('Your order has been made'),
+        () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+      ]);
+    },
+
+    async judgeRequestMoreInfo(decision, infoType, caseNumber, withoutNotice, documentType) {
+      eventName = gaEvents.MAKE_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
+        () => judgeDecisionPage.selectJudgeDecision(decision),
+        () => requestMoreInfoPage.requestMoreInfoOrder(infoType, withoutNotice),
+        () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
+        () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+        ...conditionalSteps(infoType === 'requestMoreInformation', [
+          ...submitApplication('You have requested more information'),
+        ]),
+        ...conditionalSteps(infoType === 'sendApplicationToOtherParty', [
+          ...submitApplication('You have requested a response'),
+        ]),
+        () => judgesConfirmationPage.verifyReqMoreInfoConfirmationPage(),
+      ]);
+    },
+
+    async judgeWrittenRepresentationsDecision(decision, representationsType, caseNumber, notice, documentType, orderType) {
+      eventName = gaEvents.MAKE_DECISION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.MAKE_DECISION, caseNumber),
+        ...conditionalSteps(notice !== 'withOutNotice', [
+          () => judgeDecisionPage.selectJudgeDecision(decision),
+          () => writtenRepresentationsPage.selectWrittenRepresentations(representationsType),
+          () => drawGeneralOrderPage.verifyWrittenRepresentationsDrawGeneralOrderScreen(representationsType, notice, orderType),
+          () => reviewOrderDocumentPage.reviewOrderDocument(documentType),
+          () => judgesCheckYourAnswers.verifyJudgesCheckAnswerForm(caseNumber),
+          ...submitApplication('Your order has been made'),
+          () => judgesConfirmationPage.verifyJudgesConfirmationPage(),
+        ]),
+        ...conditionalSteps(notice === 'withOutNotice', [
+          () => judgeDecisionPage.judgeMakeDecisionForWithoutNotice(decision),
+          () => judgeDecisionPage.verifyWrittenRepErrorMessage(),
+        ]),
+      ]);
+    },
+
+    async navigateToApplicationsTab(caseNumber) {
+      await caseViewPage.navigateToTab(caseNumber, 'Applications');
+    },
+
+    async navigateToHearingNoticePage(caseId) {
+      console.log(`Navigating to Hearing notice screen: ${caseId}`);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Application');
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/HEARING_SCHEDULED_GA/HEARING_SCHEDULED_GAHearingNoticeGADetail');
+      await this.waitForText('Application details');
+    },
+
+    async navigateToMainCase(civilCaseNumber) {
+      await this.navigateToCaseDetails(civilCaseNumber);
+      await caseViewPage.clickOnTab('Applications');
+      await caseViewPage.navigateToTab(civilCaseNumber, 'Applications');
+    },
+
+    async payAndVerifyGAStatus(civilCaseReference, gaCaseReference, ccdState, user, gaStatus) {
+      console.log(`GA Payment using API: ${gaCaseReference}`);
+      await apiRequest.paymentApiRequestUpdateServiceCallback(
+        genAppJudgeMakeDecisionData.serviceUpdateDtoWithoutNotice(gaCaseReference,'Paid'));
+      console.log(`Waiting for GA payment to complete: ${gaCaseReference}, expected state: ${ccdState}`);
+      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference,
+        ccdState, user);
+      console.log(`GA payment for ID: ${gaCaseReference} done successfully with expected state: ${ccdState}`);
+      await caseViewPage.navigateToTab(civilCaseReference, 'Applications');
+      await this.see(gaStatus);
+      await this.waitForSelector(SIGN_OUT_LINK, 30);
+    },
+
+    async payForGA(gaCaseReference) {
+      await caseViewPage.navigateToTab(gaCaseReference, 'Service Request');
+      await serviceRequestPage.payGAAmount();
+      await serviceRequestPage.verifyPaymentDetails();
+    },
+
+    async respCloseAndReturnToCaseDetails() {
+      await this.triggerStepsWithScreenshot([
+        () => responseConfirmationPage.closeAndReturnToCaseDetails(),
+      ]);
+    },
+
+    async respondToApplication(caseId, consentCheck, hearingScheduled, trialRequired, unavailableTrailRequired, supportRequirement, appTypes) {
+      eventName = gaEvents.RESPOND_TO_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_APPLICATION,caseId),
+        () => respConsentCheckPage.selectConsentCheck(consentCheck),
+        () => respHearingDetailsPage.isRespHearingScheduled(hearingScheduled),
+        () => respHearingDetailsPage.isRespTrialRequired(trialRequired),
+        () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
+        () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
+        () => respHearingDetailsPage.isRespUnavailableTrailRequired(unavailableTrailRequired),
+        () => respHearingDetailsPage.selectRespVulnerabilityQuestions('no'),
+        () => respHearingDetailsPage.selectRespSupportRequirement(supportRequirement),
+        () => responseCheckYourAnswersPage.respVerifyCheckAnswerForm(caseId),
+        ...submitApplication('You have provided the requested info'),
+        () => responseConfirmationPage.verifyRespConfirmationPage(),
+        () => responseConfirmationPage.verifyRespApplicationType(appTypes),
+      ]);
+    },
+
+    async respondToJudgeAdditionalInfo(caseNumber) {
+      eventName = gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO, caseNumber),
+        () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO.id, TEST_FILE_PATH),
+        ...submitSupportingDocument(eventName),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => applicationDocumentPage.verifyUploadedFile('Additional information', 'examplePDF.pdf'),
+      ]);
+    },
+
+    async respondToJudgesDirections(caseNumber) {
+      eventName = gaEvents.RESPOND_TO_JUDGE_DIRECTIONS.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_DIRECTIONS, caseNumber),
+        () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_DIRECTIONS.id, TEST_FILE_PATH),
+        ...submitSupportingDocument(eventName),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => applicationDocumentPage.verifyUploadedFile('Directions order', 'examplePDF.pdf'),
+      ]);
+    },
+
+    async respondToJudgesWrittenRep(caseNumber, documentType) {
+      eventName = gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION, caseNumber),
+        () => uploadScreenPage.uploadSupportingFile(gaEvents.RESPOND_TO_JUDGE_WRITTEN_REPRESENTATION.id, TEST_FILE_PATH),
+        ...submitSupportingDocument(eventName),
+        () => caseViewPage.navigateToTab(caseNumber, 'Application Documents'),
+        () => applicationDocumentPage.verifyUploadedFile(documentType, 'examplePDF.pdf'),
+      ]);
+    },
+
+    async respondToSameApplicationAndVerifyErrorMsg() {
+      await this.triggerStepsWithScreenshot([
+        () => responseConfirmationPage.verifyAlreadyRespondedErrorMessage(),
+      ]);
+    },
+
+    async respondToVaryJudgementApp(caseId, appTypes, type, paymentPlanType) {
+      eventName = gaEvents.RESPOND_TO_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.RESPOND_TO_APPLICATION,caseId),
+        () => respondentDebtorResponsePage.selectDebtorOffer(type, paymentPlanType),
+        () => respHearingDetailsPage.isRespHearingScheduled('yes'),
+        () => respHearingDetailsPage.isRespTrialRequired('yes'),
+        () => respHearingDetailsPage.selectRespHearingPreferences('inPerson'),
+        () => respHearingDetailsPage.selectRespHearingDuration('fortyFiveMin'),
+        () => respHearingDetailsPage.isRespUnavailableTrailRequired('no'),
+        () => respHearingDetailsPage.selectRespVulnerabilityQuestions('no'),
+        () => respHearingDetailsPage.selectRespSupportRequirement('signLanguageInterpreter'),
+        () => responseCheckYourAnswersPage.respVerifyCheckAnswerForm(caseId),
+        ...submitApplication('You have provided the requested info'),
+        () => responseConfirmationPage.verifyRespConfirmationPage(),
+        () => responseConfirmationPage.verifyRespApplicationType(appTypes),
+      ]);
+    },
+
+    async verifyApplicantSummaryPage() {
+      await this.triggerStepsWithScreenshot([
+        () => applicantSummaryPage.verifySummaryPage(),
+      ]);
+    },
+
+    async verifyCaseFileAppDocument(civilCaseReference, documentType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Case File');
+      await this.waitForSelector('.cdk-tree', 30);
+      await caseFileDocPage.verifyCaseFileAppDocument(documentType);
+    },
+
+    async verifyCaseFileOrderDocument(civilCaseReference, documentType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Case File');
+      await this.waitForSelector('.cdk-tree', 30);
+      await caseFileDocPage.verifyCaseFileOrderDocument(documentType);
+    },
+
+    async verifyHearingNoticeDocNotAvailable(civilCaseReference) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Claim documents');
+      await claimDocumentPage.verifyHearingNoticeDocNotAvailable();
+    },
+    async verifyJudgesSummaryPage(decisionType, consentCheck, applicantName) {
+      // await judgesSummary.verifyJudgesSummaryPage(decisionType, consentCheck, applicantName);
+    },
+
+    async verifyN245FormElements() {
+      await this.triggerStepsWithScreenshot([
+        () => applicantSummaryPage.verifyN245FormElements(),
+      ]);
+    },
+
+    async verifyNoAccessToGeneralApplications(errorMsg) {
+      await this.triggerStepsWithScreenshot([
+        ...selectGAAndVerifyErrorMessage('Create GA', errorMsg),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async verifyNoN245Form(caseId, appTypes, hearingScheduled) {
+      eventName = gaEvents.INITIATE_GENERAL_APPLICATION.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(gaEvents.INITIATE_GENERAL_APPLICATION, caseId),
+        () => applicationTypePage.chooseAppType(getAppTypes().slice(6, 11)),
+        ...selectApplicationType(appTypes),
+        () => hearingDatePage.selectHearingScheduled(hearingScheduled),
+        () => consentCheckPage.notInN245FormPage(),
+        () => this.clickOnElement('Cancel'),
+        () => caseViewPage.verifySummaryPage()
+       ]);
+    },
+
+    async verifyNoServiceReqElements() {
+      await this.triggerStepsWithScreenshot([
+        () => applicantSummaryPage.verifyNoServiceReqElements(),
+      ]);
+    },
+
+    async verifyResponseSummaryPage() {
+      await this.triggerStepsWithScreenshot([
+        () => responseSummaryPage.verifySummaryPageAfterResponding(),
+      ]);
+    },
+
+    async verifyUploadedApplicationDocument(gaCaseReference, docType) {
+      await caseViewPage.navigateToTab(gaCaseReference, 'Application Documents');
+      await applicationDocumentPage.verifyUploadedDocumentPDF(docType);
+    },
+
+    async verifyUploadedClaimDocument(civilCaseReference, docType) {
+      await caseViewPage.navigateToTab(civilCaseReference, 'Claim documents');
+      await claimDocumentPage.verifyUploadedDocument(docType);
     },
 
   });

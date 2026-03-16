@@ -5,7 +5,7 @@ const {
 } = require('../../../config');
 const config = require('../../../config.js');
 
-Feature('LR v LR LIP spec notice of change api journey').tag('@api-nightly-prod @api-noc');
+Feature('LR v LR LIP spec notice of change api journey').tag('@civil-service-nightly @api-noc');
 
 Scenario('LR v LR LIP spec notice of change', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
