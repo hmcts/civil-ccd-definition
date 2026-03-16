@@ -98,7 +98,7 @@ wa:
 am-org-role-mapping-service:
   enabled: true
   java:
-    image: 'hmctspublic.azurecr.io/am/org-role-mapping-service:latest'
+    image: 'hmctsprod.azurecr.io/am/org-role-mapping-service:latest'
     ingressHost: am-org-role-mapping-service-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-am-org-role-mapping-service
     devmemoryRequests: 1024Mi
