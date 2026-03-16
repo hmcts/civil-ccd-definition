@@ -9,6 +9,7 @@ import { judgeRegion1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
 import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
+import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -122,6 +123,42 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+    );
+  }
+
+  async SdoDJDisposalHearing() {
+    const { standardDirectionsOrderDJActions } = this.judgeActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await standardDirectionsOrderDJActions.sdoDJSelectDisposalHearing();
+        await standardDirectionsOrderDJActions.sdoDJDisposalHearingDetails();
+        await standardDirectionsOrderDJActions.sdoDJOrderPreview();
+        await standardDirectionsOrderDJActions.sdoDJSubmit();
+      },
+      async () => {
+        await standardDirectionsOrderDJActions.sdoDJConfirm();
+      },
+      ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
+      judgeRegion1User,
+      summaryJudgmentDirections,
+    );
+  }
+
+  async SdoDJTrialHearing() {
+    const { standardDirectionsOrderDJActions } = this.judgeActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await standardDirectionsOrderDJActions.sdoDJSelectTrialHearing();
+        await standardDirectionsOrderDJActions.sdoDJTrialHearingDetails();
+        await standardDirectionsOrderDJActions.sdoDJOrderPreview();
+        await standardDirectionsOrderDJActions.sdoDJSubmit();
+      },
+      async () => {
+        await standardDirectionsOrderDJActions.sdoDJConfirm();
+      },
+      ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
+      judgeRegion1User,
+      summaryJudgmentDirections,
     );
   }
 }

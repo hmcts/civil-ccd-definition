@@ -17,104 +17,14 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_JUDGES_FORM",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "GENERATE_DRAFT_DOCUMENT",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "ASSIGN_GA_ROLES",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "END_JUDGE_BUSINESS_PROCESS_GASPEC",
     "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      },
       {
         "UserRoles": [
           "judge-profile",
           "legal-adviser"
         ],
-        "CRUD": "RU"
+        "CRUD": "U"
       }
     ]
   },
@@ -164,69 +74,11 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID",
+    "CaseEventID": "START_MAKE_ADDITIONAL_PAYMENT_REF",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "OBTAIN_ADDITIONAL_FEE_VALUE",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "OBTAIN_ADDITIONAL_PAYMENT_REF",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-  "CaseTypeID": "GENERALAPPLICATION",
-  "CaseEventID": "START_MAKE_ADDITIONAL_PAYMENT_REF",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "caseworker-civil-solicitor",
-        "caseworker-ras-validation",
-        "ga-basic-access"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "VALIDATE_FEE_GASPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
           "caseworker-ras-validation",
           "ga-basic-access"
         ],
@@ -261,7 +113,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
-	    	"CRUD": "CRU"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
@@ -376,22 +228,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "civil-administrator-standard",
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "REFER_TO_JUDGE",
     "AccessControl": [
       {
@@ -483,27 +319,28 @@
         "CRUD": "R"
       }
     ]
-  },  {
-  "CaseTypeID": "GENERALAPPLICATION",
-  "CaseEventID": "HEARING_SCHEDULED_GA",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "hearing-schedule-access"
-      ],
-      "CRUD": "CRU"
-    },
-    {
-      "UserRoles": [
-        "civil-administrator-basic",
-        "caseworker-ras-validation",
-        "civil-administrator-standard",
-        "ga-basic-access"
-      ],
-      "CRUD": "R"
-    }
-  ]
-},
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "HEARING_SCHEDULED_GA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-basic",
+          "caseworker-ras-validation",
+          "civil-administrator-standard",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "GENERATE_HEARING_NOTICE_DOCUMENT",
@@ -527,16 +364,7 @@
         "UserRoles": [
           "hearing-schedule-access"
         ],
-        "CRUD": "RU"
-      },
-      {
-        "UserRoles": [
-          "civil-administrator-basic",
-          "caseworker-ras-validation",
-          "civil-administrator-standard",
-          "ga-basic-access"
-        ],
-        "CRUD": "R"
+        "CRUD": "U"
       }
     ]
   },
@@ -591,7 +419,7 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "END_DOC_UPLOAD_BUSINESS_PROCESS_GASPEC",
+    "CaseEventID": "DASHBOARD_NOTIFICATION_EVENT",
     "AccessControl": [
       {
         "UserRoles": [

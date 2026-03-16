@@ -120,10 +120,6 @@ def checkForRunAllFunctionalTests(branch_name) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
 }
 
-def isHmcEnabled(branch_name) {
-  return checkForPrValuesLabel(branch_name, "enableHmc")
-}
-
 def checkForPrValuesLabel(branch_name, label) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values:" + label).contains("pr-values:" + label)
 }
@@ -228,15 +224,10 @@ withPipeline(type, product, component) {
     env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
     env.PR_FT_GROUPS = getFunctionalTestsGroups()
-    if (isHmcEnabled(env.BRANCH_NAME)) {
-      env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
-      env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
-    } else {
-      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-      env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    }
-  }
+    env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
 
+  }
 
   // onPR {
   //   env.ENVIRONMENT = "aat"
@@ -263,7 +254,7 @@ withPipeline(type, product, component) {
   afterSuccess('akschartsinstall') {
     onPR {
       env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
-      env.IDAM_TEST_URL = "https://idam-testing-support-api.aat.platform.hmcts.net"
+      env.IDAM_TEST_SUPPORT_API_URL = "https://idam-testing-support-api.aat.platform.hmcts.net"
       env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
       env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
       env.PAYMENT_API_URL = "http://payment-api-aat.service.core-compute-aat.internal"
@@ -322,7 +313,7 @@ withPipeline(type, product, component) {
   before('smoketest:aat') {
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
-    env.IDAM_TEST_URL = "https://idam-testing-support-api.aat.platform.hmcts.net"
+    env.IDAM_TEST_SUPPORT_API_URL = "https://idam-testing-support-api.aat.platform.hmcts.net"
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
