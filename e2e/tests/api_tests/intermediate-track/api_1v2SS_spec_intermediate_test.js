@@ -12,7 +12,7 @@ if (config.runWAApiTest) {
 
 }
 
-Feature('1v2SS spec intermediate track api journey').tag('@api-nightly-prod @wa-task');
+Feature('1v2SS spec intermediate track api journey').tag('@civil-service-nightly @civil-wa-master @civil-wa-pr @civil-wa-nightly');
 
 Scenario.skip('1v2SS spec full defence intermediate claim', async ({api_spec, WA}) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';

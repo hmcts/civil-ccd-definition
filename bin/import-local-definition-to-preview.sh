@@ -24,8 +24,6 @@ fi
 # Load environment variables for the preview environment
 source ./bin/variables/load-dev-user-local-environment-variables.sh
 
-export CCD_DEF_VERSION=""
-
 # Generate local CCD definition
 source ./bin/build-release-ccd-definition.sh local
 

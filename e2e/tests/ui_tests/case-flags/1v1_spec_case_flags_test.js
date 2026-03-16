@@ -6,7 +6,7 @@ const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 let caseNumber;
 
-Feature('1v1 spec case flags journey').tag('@ui-nightly-prod @ui-case-flags');
+Feature('1v1 spec case flags journey').tag('@civil-ccd-nightly @ui-case-flags');
 
 Scenario('01 Prepare 1v1 spec small track claim up to case progression', async ({api_spec, LRspec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
