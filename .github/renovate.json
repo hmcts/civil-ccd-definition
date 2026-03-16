@@ -46,7 +46,7 @@
       "matchPackageNames": ["@playwright/test", "playwright-core", "@axe-core/playwright"],
       "groupName": "Playwright",
       "groupSlug": "playwright",
-      "automerge": true,
+      "automerge": false,
       "automergeType": "pr",
       "automergeSchedule": ["before 2pm every weekday"]
     },
