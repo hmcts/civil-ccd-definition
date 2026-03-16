@@ -4,7 +4,7 @@ const mpScenario1v2Spec = 'ONE_V_TWO';
 const judgeUser = config.judgeUserWithRegionId1;
 const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 
-Feature('Transfer Online Case 1v2 API test - small claim - spec').tag('@api-nightly-prod');
+Feature('Transfer Online Case 1v2 API test - small claim - spec').tag('@civil-service-nightly');
 
 Scenario('Transfer Online Spec claim 1v2 - not suitable SDO - Transfer Case', async ({api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');

@@ -4,9 +4,26 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const STATE_FILE = path.join(ROOT, 'ccd-definition', 'State.json');
-const CASE_EVENT_DIR = path.join(ROOT, 'ccd-definition', 'CaseEvent');
-const AUTH_DIR = path.join(ROOT, 'ccd-definition', 'AuthorisationCaseEvent');
+
+function resolveDefinitionRoot() {
+  const civilRoot = path.join(ROOT, 'ccd-definition', 'civil');
+  const legacyRoot = path.join(ROOT, 'ccd-definition');
+
+  if (fs.existsSync(path.join(civilRoot, 'CaseEvent'))) {
+    return civilRoot;
+  }
+
+  if (fs.existsSync(path.join(legacyRoot, 'CaseEvent'))) {
+    return legacyRoot;
+  }
+
+  throw new Error(`Could not locate CCD definition root under ${ROOT}`);
+}
+
+const DEFINITION_ROOT = resolveDefinitionRoot();
+const STATE_FILE = path.join(DEFINITION_ROOT, 'State.json');
+const CASE_EVENT_DIR = path.join(DEFINITION_ROOT, 'CaseEvent');
+const AUTH_DIR = path.join(DEFINITION_ROOT, 'AuthorisationCaseEvent');
 
 const SOURCE_DIRS = fs.readdirSync(CASE_EVENT_DIR)
   .filter(d => fs.statSync(path.join(CASE_EVENT_DIR, d)).isDirectory())
@@ -176,8 +193,8 @@ function main() {
   const model = {
     generatedAt: new Date().toISOString(),
     source: {
-      stateFile: 'ccd-definition/State.json',
-      caseEventDir: 'ccd-definition/CaseEvent',
+      stateFile: path.relative(ROOT, STATE_FILE),
+      caseEventDir: path.relative(ROOT, CASE_EVENT_DIR),
     },
     summary,
     states,

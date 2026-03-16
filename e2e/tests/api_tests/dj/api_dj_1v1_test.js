@@ -8,7 +8,7 @@ if (config.runWAApiTest) {
   caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
 }
 
-Feature('Unspec 1v1 api default judgment journey').tag('@api-nightly-prod @api-dj');
+Feature('Unspec 1v1 api default judgment journey').tag('@civil-service-nightly @api-dj');
 
 let caseId;
 
