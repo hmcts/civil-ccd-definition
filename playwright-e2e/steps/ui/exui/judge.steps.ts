@@ -161,4 +161,36 @@ export default class JudgeSteps extends BaseExui {
       summaryJudgmentDirections,
     );
   }
+
+  async SdoNotSuitableTransferCase() {
+    const { standardDirectionsOrderNotSuitableActions } = this.judgeActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await standardDirectionsOrderNotSuitableActions.selectTransferCase();
+        await standardDirectionsOrderNotSuitableActions.submitStandardDirectionsNotSuitableOrder();
+      },
+      async () => {
+        await standardDirectionsOrderNotSuitableActions.confirmStandardDirectionsOrder();
+      },
+      ccdEvents.CREATE_SDO,
+      judgeRegion1User,
+      smallClaimDirectionsTask,
+    );
+  }
+
+  async SdoNotSuitableOtherReason() {
+    const { standardDirectionsOrderNotSuitableActions } = this.judgeActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await standardDirectionsOrderNotSuitableActions.selectOtherReason();
+        await standardDirectionsOrderNotSuitableActions.submitStandardDirectionsNotSuitableOrder();
+      },
+      async () => {
+        await standardDirectionsOrderNotSuitableActions.confirmStandardDirectionsOrder();
+      },
+      ccdEvents.CREATE_SDO,
+      judgeRegion1User,
+      fastTrackDirectionsTask,
+    );
+  }
 }

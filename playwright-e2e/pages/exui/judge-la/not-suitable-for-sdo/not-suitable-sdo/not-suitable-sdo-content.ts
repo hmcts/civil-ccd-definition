@@ -1,7 +1,9 @@
+export const heading = 'Not suitable for SDO';
+
 export const radioButtons = {
   reason: {
     label: 'What is the reason for not drawing a Standard Directions Order?',
-    anotherHearingCentre: {
+    transferCase: {
       label: 'The case should be sent to another hearing centre for directions',
       selector: '#notSuitableSdoOptions-CHANGE_LOCATION',
     },
@@ -13,7 +15,7 @@ export const radioButtons = {
 };
 
 export const inputs = {
-  anotherHearingCentre: {
+  transferCase: {
     label: 'The case should be sent to another hearing centre for directions',
     paragraph1: 'Give details',
     paragraph2:
@@ -26,6 +28,6 @@ export const inputs = {
     paragraph2:
       'If you are judge submitting this information, the case will be sent to a listing officer. If a legal advisor has submitted this information, the case will be sent to a judge for review.',
     paragraph3: 'Give reasons',
-    selector: '#tocTransferCaseReason_reasonForCaseTransferJudgeTxt',
+    selector: '#reasonNotSuitableSDO_input',
   },
 };

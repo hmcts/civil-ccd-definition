@@ -2,33 +2,45 @@ import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
-import { inputs, radioButtons } from './not-suitable-sdo-content';
+import { heading, inputs, radioButtons } from './not-suitable-sdo-content';
+import urls from '../../../../../config/urls';
+import { getFormattedCaseId } from '../../../../exui/exui-page/exui-content';
 
 @AllMethodsStep()
 export default class NotSuitableSDOPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectLegend(radioButtons.reason.label),
-      super.expectRadioYesLabel(radioButtons.reason.anotherHearingCentre.selector),
-      super.expectRadioNoLabel(radioButtons.reason.otherReason.selector),
+      super.goTo(
+        `${urls.manageCase}/cases/case-details/CIVIL/CIVIL/${ccdCaseData.id}/trigger/NotSuitable_SDO/NotSuitable_SDONotSuitableSDO`,
+      ),
+      super.expectHeading(heading),
+      super.expectHeading(`${getFormattedCaseId(ccdCaseData.id)} ${ccdCaseData.caseNamePublic}`),
+      super.expectText(radioButtons.reason.label),
+      super.expectRadioLabel(
+        radioButtons.reason.transferCase.label,
+        radioButtons.reason.transferCase.selector,
+      ),
+      super.expectRadioLabel(
+        radioButtons.reason.otherReason.label,
+        radioButtons.reason.otherReason.selector,
+      ),
     ]);
   }
 
-  async selectAnotherHearingCentre() {
-    await super.clickBySelector(radioButtons.reason.anotherHearingCentre.selector);
-    await super.expectLabel(inputs.anotherHearingCentre.label);
-    await super.expectText(inputs.anotherHearingCentre.paragraph1);
-    await super.expectText(inputs.anotherHearingCentre.paragraph2);
-    await super.inputText('Details here', inputs.anotherHearingCentre.selector);
+  async selectTransferCase() {
+    await super.clickBySelector(radioButtons.reason.transferCase.selector);
+    await super.expectLabel(inputs.transferCase.label);
+    await super.expectText(inputs.transferCase.paragraph1, { exact: false });
+    await super.expectText(inputs.transferCase.paragraph2, { exact: false });
+    await super.inputText('Details here', inputs.transferCase.selector);
   }
 
   async selectOtherReason() {
     await super.clickBySelector(radioButtons.reason.otherReason.selector);
     await super.expectLabel(inputs.otherReason.label);
-    await super.expectText(inputs.otherReason.paragraph1);
-    await super.expectText(inputs.otherReason.paragraph2);
-    await super.expectText(inputs.otherReason.paragraph3);
+    await super.expectText(inputs.otherReason.paragraph1, { exact: false });
+    await super.expectText(inputs.otherReason.paragraph2, { exact: false });
+    await super.expectText(inputs.otherReason.paragraph3, { exact: false });
     await super.inputText('Other reason here', inputs.otherReason.selector);
   }
 
