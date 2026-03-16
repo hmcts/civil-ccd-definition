@@ -30,17 +30,16 @@ export default class NotSuitableSDOPage extends ExuiPage(BasePage) {
   async selectTransferCase() {
     await super.clickBySelector(radioButtons.reason.transferCase.selector);
     await super.expectLabel(inputs.transferCase.label);
-    await super.expectText(inputs.transferCase.paragraph1, { exact: false });
-    await super.expectText(inputs.transferCase.paragraph2, { exact: false });
+    await super.expectText(`${inputs.transferCase.paragraph1} ${inputs.transferCase.paragraph2}`);
     await super.inputText('Details here', inputs.transferCase.selector);
   }
 
   async selectOtherReason() {
     await super.clickBySelector(radioButtons.reason.otherReason.selector);
     await super.expectLabel(inputs.otherReason.label);
-    await super.expectText(inputs.otherReason.paragraph1, { exact: false });
-    await super.expectText(inputs.otherReason.paragraph2, { exact: false });
-    await super.expectText(inputs.otherReason.paragraph3, { exact: false });
+    await super.expectText(
+      `${inputs.otherReason.paragraph1} ${inputs.otherReason.paragraph2} ${inputs.otherReason.paragraph3}`,
+    );
     await super.inputText('Other reason here', inputs.otherReason.selector);
   }
 

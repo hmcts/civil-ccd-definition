@@ -190,7 +190,7 @@ export default class JudgeSteps extends BaseExui {
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
-      fastTrackDirectionsTask,
+      smallClaimDirectionsTask,
     );
   }
 }
