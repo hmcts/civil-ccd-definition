@@ -1,5 +1,3 @@
-export const heading = 'Not suitable for SDO';
-
 export const radioButtons = {
   reason: {
     label: 'What is the reason for not drawing a Standard Directions Order?',

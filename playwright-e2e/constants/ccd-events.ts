@@ -222,6 +222,12 @@ const ccdEvents: CCDEvents = {
     description: 'Manage case flags',
     order: 24,
   },
+  SDO_NOT_SUITABLE: {
+    id: 'NotSuitable_SDO',
+    name: 'Not suitable for SDO',
+    description: 'Not suitable for SDO',
+    order: 25,
+  },
 };
 
 export default ccdEvents;

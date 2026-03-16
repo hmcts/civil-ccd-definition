@@ -1,5 +1,3 @@
-export const heading = 'Not suitable for SDO';
-
 export const confirmationHeading = {
   anotherHearingCentre: 'Your request was successful',
   otherReason: 'Your request was accepted',

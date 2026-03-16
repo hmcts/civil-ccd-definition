@@ -172,7 +172,7 @@ export default class JudgeSteps extends BaseExui {
       async () => {
         await standardDirectionsOrderNotSuitableActions.confirmStandardDirectionsOrder();
       },
-      ccdEvents.CREATE_SDO,
+      ccdEvents.SDO_NOT_SUITABLE,
       judgeRegion1User,
       smallClaimDirectionsTask,
     );
@@ -188,7 +188,7 @@ export default class JudgeSteps extends BaseExui {
       async () => {
         await standardDirectionsOrderNotSuitableActions.confirmStandardDirectionsOrder();
       },
-      ccdEvents.CREATE_SDO,
+      ccdEvents.SDO_NOT_SUITABLE,
       judgeRegion1User,
       smallClaimDirectionsTask,
     );

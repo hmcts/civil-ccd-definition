@@ -2,21 +2,12 @@ import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
-import {
-  heading,
-  confirmationHeading,
-  paragraphs,
-  subheading,
-} from './confirm-not-suitable-sdo-content';
-import { getFormattedCaseId } from '../../../../exui/exui-page/exui-content';
+import { confirmationHeading, paragraphs, subheading } from './confirm-not-suitable-sdo-content';
 
 @AllMethodsStep()
 export default class ConfirmSdoNotSuitablePage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
-    await super.runVerifications([
-      super.expectHeading(heading),
-      super.expectHeading(`${getFormattedCaseId(ccdCaseData.id)} ${ccdCaseData.caseNamePublic}`),
-    ]);
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
   async verifyContentAnotherHearingCentre() {

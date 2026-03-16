@@ -20,7 +20,9 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
     await JudgeSteps.Login();
-    await JudgeSteps.SdoSmallTrack();
+    //await JudgeSteps.SdoSmallTrack();
+    //await JudgeSteps.SdoNotSuitableTransferCase();
+    await JudgeSteps.SdoNotSuitableOtherReason();
   });
 
   test('Default Judgment', async ({
