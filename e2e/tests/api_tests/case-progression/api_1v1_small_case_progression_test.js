@@ -6,7 +6,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 const claimAmountJudge = '11000';
 
-Feature('1v1 small track case progression api journeys').tag('@api-nightly-prod @api-case-progression');
+Feature('1v1 small track case progression api journeys').tag('@civil-service-nightly @api-case-progression');
 
 Scenario.skip('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);

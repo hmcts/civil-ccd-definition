@@ -6,7 +6,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
-Feature('1v2DS spec intermediate track api journey').tag('@api-nightly-prod @api-intermediate-track');
+Feature('1v2DS spec intermediate track api journey').tag('@civil-service-nightly @api-intermediate-track');
 
 Scenario('1v2DS spec full defence intermediate claim', async ({api_spec}) => {
   const mpScenario = 'ONE_V_TWO';

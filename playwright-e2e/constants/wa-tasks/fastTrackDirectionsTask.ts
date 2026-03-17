@@ -11,7 +11,7 @@ const task: WATask = {
   execution_type: 'Case Management Task',
   jurisdiction: 'CIVIL',
   region: '1',
-  case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
+  case_type_id: 'CIVIL',
   case_category: 'Civil',
   auto_assigned: false,
   warnings: false,

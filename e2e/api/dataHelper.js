@@ -47,10 +47,18 @@ const formatDateToString = (date, outputFormat) => {
   }
 };
 
+const getNextYear = () => {
+  const currentYear = new Date().getFullYear();
+  return currentYear + 1;
+};
 
 module.exports = {
   date: (days = 0) => {
     return getDateTimeISOString(days).slice(0, 10);
+  },
+
+  nextYear: () => {
+    return getNextYear();
   },
 
   dateNoWeekends: async function dateNoWeekends(days = 0) {

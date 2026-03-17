@@ -8,7 +8,7 @@ if (config.runWAApiTest) {
   validDecisionOnReconsiderationRequestTask = require('../../../../wa/tasks/decisionOnReconsiderationRequestTask.js');
 }
 
-Feature('Request for reconsideration - 1v1 - spec').tag('@ui-nightly-prod @ui-rfr');
+Feature('Request for reconsideration - 1v1 - spec').tag('@civil-ccd-nightly @ui-rfr');
 
 Scenario('01 1v1 spec request for reconsideration for other options', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
