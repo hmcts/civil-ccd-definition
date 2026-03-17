@@ -7,7 +7,7 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
-const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, checkOtherRemedyEnabled} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
@@ -25,6 +25,7 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const sdoTracksOtherRemedy = require('../fixtures/events/createSDOOtherRemedy.js');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 const hearingScheduled = require('../fixtures/events/specScheduleHearing');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
@@ -74,6 +75,8 @@ const data = {
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
+  CREATE_FAST_NO_SUM_SPEC_OTHER_REMEDY: () => sdoTracksOtherRemedy.createSDOFastTrackSpec(),
+  CREATE_SDO_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOSmallWODamageSumInPerson(userInput),
   HEARING_SCHEDULED: (allocatedTrack, isMinti) => hearingScheduled.scheduleHearing(allocatedTrack, isMinti),
   FINAL_ORDERS_SPEC: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
@@ -1268,6 +1271,8 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
       let disposalData = data.CREATE_SDO();
+      if(await checkOtherRemedyEnabled())
+         disposalData = data.CREATE_SDO_OTHER_REMEDY();
       delete disposalData.calculated.ClaimsTrack.smallClaimsWitnessStatement;
       disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsSmallClaims};
       for (let pageId of Object.keys(disposalData.valid)) {
@@ -1275,6 +1280,8 @@ module.exports = {
       }
     } else {
       let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
+      if(await checkOtherRemedyEnabled())
+        disposalData = data.CREATE_FAST_NO_SUM_SPEC_OTHER_REMEDY();
       if (response === 'CREATE_FAST') {
         delete disposalData.calculated.FastTrack.fastTrackCreditHire;
         disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
