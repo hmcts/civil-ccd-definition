@@ -3,7 +3,7 @@
 } = require('../../../config');
 const config = require('../../../config.js');
 
-Feature('1vSS spec notice of change api journey').tag('@api-nightly-prod @api-noc');
+Feature('1vSS spec notice of change api journey').tag('@civil-service-nightly @api-noc');
 
 Scenario('1vSS spec notice of change', async ({api_spec, noc}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');

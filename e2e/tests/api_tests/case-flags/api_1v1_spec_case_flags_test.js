@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v1 spec case flags api journey').tag('@api-nightly-prod @api-case-flags');
+Feature('1v1 spec case flags api journey').tag('@civil-service-nightly @api-case-flags');
 
 Scenario('1v1 spec case flags', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

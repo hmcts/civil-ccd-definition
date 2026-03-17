@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 let civilCaseReference;
 
-Feature('CCD 1v2 2 LIPs COS UI test').tag('@ui-nightly-prod @ui-cos');
+Feature('CCD 1v2 2 LIPs COS UI test').tag('@civil-ccd-nightly @ui-cos');
 
 Scenario('1v2 two respondents are LIP - notify/notify claim details journey', async ({I, api}) => {
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
