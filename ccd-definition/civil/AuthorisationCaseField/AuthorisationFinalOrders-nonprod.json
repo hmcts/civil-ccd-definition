@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderPenalNoticeTitle",
     "UserRoles": [
       "judge-profile"
@@ -8,7 +8,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderPenalNoticeToggle",
     "UserRoles": [
       "judge-profile"
@@ -16,7 +16,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderPenalNoticeContent",
     "UserRoles": [
       "judge-profile"
