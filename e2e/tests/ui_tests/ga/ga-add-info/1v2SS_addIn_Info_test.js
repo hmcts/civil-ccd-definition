@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+ 
 const config = require('../../../../config.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../../api/testingSupport');
 const {getAppTypes} = require('../../../../pages/generalApplication/generalApplicationTypes');

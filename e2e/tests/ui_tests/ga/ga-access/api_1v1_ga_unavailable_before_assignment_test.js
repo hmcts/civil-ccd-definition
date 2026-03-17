@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+ 
 const config = require('../../../../config.js');
 const {assignCaseRoleToUser} = require('../../../../api/caseRoleAssignmentHelper');
 const mpScenario = 'ONE_V_ONE';
