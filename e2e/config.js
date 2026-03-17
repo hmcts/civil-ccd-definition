@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({path: '.env.tests.local'});
 
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
@@ -13,54 +13,19 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-
-//    for Demo
-//    manageCase: process.env.URL || 'https://manage-case-int.demo.platform.hmcts.net',
-//     //manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
-//    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
-//    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
-//    dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
-//    idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
-//    idamTestSupportApi: process.env.IDAM_TEST_URL || 'https://idam-testing-support-api.demo.platform.hmcts.net',
-//    civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
-//    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
-
-//    for Preview
-//    manageCase: 'https://xui-civil-ccd-pr-5627.preview.platform.hmcts.net',
-//    authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-//    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-5627.preview.platform.hmcts.net',
-//    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-//    idamApi: 'https://idam-api.aat.platform.hmcts.net',
-//    idamTestSupportApi: process.env.IDAM_TEST_URL || 'https://idam-testing-support-api.aat.platform.hmcts.net',
-//    civilService: 'https://civil-ccd-pr-5627.preview.platform.hmcts.net',
-//    caseAssignmentService: 'http://manage-case-assignment-civil-ccd-pr-5627.preview.platform.hmcts.net',
-//    orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
-
-//    for AAT
-//    manageCase:  'https://manage-case.aat.platform.hmcts.net/',
-//    authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-//    ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
-//    dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
-//    idamApi:  'https://idam-api.aat.platform.hmcts.net',
-//    idamTestSupportApi: process.env.IDAM_TEST_URL || 'https://idam-testing-support-api.aat.platform.hmcts.net',
-//    civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
-//    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-//    caseAssignmentService: 'http://aac-manage-case-assignment-aat.service.core-compute-aat.internal',
-//    orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
-
-//    Default - leave below uncommented when merging
-    manageCase: process.env.URL || 'http://localhost:3333',
-    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
-    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
-    dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
-    idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    idamTestSupportApi: process.env.IDAM_TEST_URL || 'https://idam-testing-support-api.aat.platform.hmcts.net',
-    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
-    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-    paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
-    wiremockService: process.env.WIREMOCK_URL || 'http://localhost:8765'
+    manageCase: process.env.URL,
+    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL,
+    ccdDataStore: process.env.CCD_DATA_STORE_URL,
+    dmStore: process.env.DM_STORE_URL,
+    idamApi: process.env.IDAM_API_URL,
+    idamWebApi: process.env.IDAM_WEB_URL,
+    idamTestSupportApi: process.env.IDAM_TEST_SUPPORT_API_URL,
+    civilService: process.env.CIVIL_SERVICE_URL,
+    caseAssignmentService: process.env.AAC_API_URL,
+    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL,
+    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL,
+    paymentApi: process.env.PAYMENT_API_URL,
+    wiremockService: process.env.WIREMOCK_URL
   },
   s2s: {
     microservice: 'civil_service',
@@ -166,6 +131,13 @@ module.exports = {
     roleCategory: 'JUDICIAL',
     regionId: '2'
   },
+  judgeUserWithRegionId4: {
+    password: judgeDefaultPassword,
+    email: '4925359EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
+  },
   hearingCenterAdminLocal: {
     email: 'hearing-centre-admin-01@example.com',
     password: defaultPassword,
@@ -201,8 +173,22 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '12'
   },
+  tribunalCaseworkerWithRegionId2: {
+    email: 'tribunal_legal_caseworker_reg2@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '2'
+  },
   tribunalCaseworkerWithRegionId4: {
     email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
+    password: defaultPassword,
+    type: 'tribunal-caseworker',
+    roleCategory: 'LEGAL_OPERATIONS',
+    regionId: '1'
+  },
+  tribunalCaseworkerWithRegionId: {
+    email: 'tribunal_legal_caseworker_national@justice.gov.uk',
     password: defaultPassword,
     type: 'tribunal-caseworker',
     roleCategory: 'LEGAL_OPERATIONS',
@@ -222,6 +208,12 @@ module.exports = {
     roleCategory: 'LEGAL_OPERATIONS',
     regionId: '1'
   },
+  ctscAdmin: {
+    password: defaultPassword,
+    email: 'ga_ctsc_team_leader_national@justice.gov.uk',
+    type: 'national-business-centre',
+    roleCategory: 'ADMIN'
+  },
   systemupdate: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',
@@ -234,7 +226,8 @@ module.exports = {
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'CIVIL' + (process.env.CCD_DEF_VERSION || '')
+    caseType: 'CIVIL',
+    caseTypeGA: 'GENERALAPPLICATION'
   },
   iacLeadershipJudge: {
     password: iacDefaultPassword,
@@ -288,6 +281,18 @@ module.exports = {
     roleCategory: 'LEGAL_OPS',
     regionId: '4'
   },
+  srTribunalCaseworker: {
+    password: defaultPassword,
+    email: 'sr_tribunal_caseworker_region4@justice.gov.uk',
+    type: 'LEGAL_OPERATIONS',
+    roleCategory: 'LEGAL_OPERATIONS'
+  },
+  leaderShipJudge: {
+    password: judgeDefaultPassword,
+    email: 'EMP47622@ejudiciary.net',
+    type: 'JUDICIAL',
+    roleCategory: 'JUDICIAL'
+  },
   ctscTeamLeaderUser: {
     email: 'ctsc_team_leader_region4@justice.gov.uk',
     password: defaultPassword,
@@ -335,6 +340,14 @@ module.exports = {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
     scheduleAHearing: 'ScheduleHMCHearing',
+    nbcUserReviewGA: 'ReviewApplication',
+    judgeDecideOnApplication: 'JudgeDecideOnApplication',
+    legalAdvisorDecideOnApplication: 'LegalAdvisorDecideOnApplication',
+    scheduleApplicationHearing: 'ScheduleApplicationHearing',
+    reviewApplicationOrder: 'ReviewApplicationOrder',
+    judgeRevisitApplication: 'JudgeRevisitApplication',
+    reviewRevisitedApplication: 'ReviewRevisitedApplication',
+    legalAdvisorRevisitApplication: 'LegalAdvisorRevisitApplication',
     reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
     reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
     reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
@@ -364,6 +377,8 @@ module.exports = {
   defendantSelectedCourt: courtToBeSelected,
   defendant2SelectedCourt: courtToBeSelected,
   djClaimantSelectedCourt: courtToBeSelected,
+  claimantSelectedCourtBirmingham: 'Birmingham Civil and Family Justice Centre - Priory Courts, 33 Bull Street - B4 6DS',
+  defendantSelectedCourtBirmingham: 'Birmingham Civil and Family Justice Centre - Priory Courts, 33 Bull Street - B4 6DS',
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt: courtToBeSelected,
   localNoCTests: false,

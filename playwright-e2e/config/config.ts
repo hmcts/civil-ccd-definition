@@ -1,7 +1,9 @@
-import 'dotenv/config';
+import * as dotenv from 'dotenv'
 import Environment from '../enums/environment';
 import testSpeeds from '../constants/test-speeds';
 import { TestSpeed } from '../models/test-speeds';
+
+dotenv.config({path: '.env.tests.local'})
 
 const config = {
   environment: process.env.ENVIRONMENT as Environment,
@@ -20,7 +22,7 @@ const config = {
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
+    caseType: 'CIVIL',
   },
   playwright: {
     softExpect: process.env.PLAYWRIGHT_UI_SOFT_EXPECT === 'true',

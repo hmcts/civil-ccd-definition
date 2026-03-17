@@ -1,10 +1,13 @@
 const load = require;
+const fs = require('fs');
+const path = require('path');
 const { sortBy, uniqBy, map } = require('lodash');
 const { expect } = require('chai');
 
 const SHORT_STRING = 30;
 const MEDIUM_STRING = 70;
 const LONG_STRING = 150;
+const CASE_TYPE_PREFIXES = ['CIVIL', 'GENERALAPPLICATION'];
 
 function isFieldDuplicated(field) {
   return function isDuplicated(field1, field2) {
@@ -111,10 +114,16 @@ function noDuplicateFoundCCT(a, b) {
 function loadAllFiles(location) {
   return function loadFeatureFiles(featureFiles) {
     let definitions = [];
+    const definitionsRoot = path.resolve(__dirname, '../../../../ccd-definition');
+    const definitionVariants = ['civil', 'generalapplication'];
 
     featureFiles.forEach(featureFile => {
-      definitions = definitions
-        .concat(load(`ccd-definition/${location}/${featureFile}.json`));
+      definitionVariants.forEach(variant => {
+        const fullPath = path.join(definitionsRoot, variant, location, `${featureFile}.json`);
+        if (fs.existsSync(fullPath)) {
+          definitions = definitions.concat(load(fullPath));
+        }
+      });
     });
 
     return definitions;
@@ -142,6 +151,12 @@ function byCaseType(caseType) {
 function byStateName(stateEntry) {
   return stateAuth => {
     return stateAuth.CaseStateID === stateEntry.ID;
+  };
+}
+
+function isValidCaseTypeId() {
+  return value => {
+    return CASE_TYPE_PREFIXES.some(prefix => value.startsWith(prefix));
   };
 }
 
@@ -182,5 +197,6 @@ module.exports = {
   byStateName,
   mapErrorArray,
   noDuplicateFoundAccessProfiles,
-  missingAuthorisationsExist
+  missingAuthorisationsExist,
+  isValidCaseTypeId
 };

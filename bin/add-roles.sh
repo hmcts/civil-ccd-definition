@@ -48,6 +48,8 @@ set -eo pipefail
 ./bin/utils/ccd-add-role.sh "caseworker-civil-system-field-reader"
 ./bin/utils/ccd-add-role.sh "caseworker-civil-rparobot"
 ./bin/utils/ccd-add-role.sh "wlu-admin"
+./bin/utils/ccd-add-role.sh "ga-basic-access"
+./bin/utils/ccd-add-role.sh "caseworker-civil-judge"
 
 roles=("solicitor" "systemupdate" "admin" "staff")
 for role in "${roles[@]}"

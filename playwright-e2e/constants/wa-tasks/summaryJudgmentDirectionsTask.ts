@@ -11,18 +11,18 @@ const task: WATask = {
   execution_type: 'Case Management Task',
   jurisdiction: 'CIVIL',
   region: '1',
-  case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
+  case_type_id: 'CIVIL',
   case_category: 'Civil',
-  case_name: 'Test Inc',
   auto_assigned: false,
   warnings: false,
   case_management_category: 'Civil',
   work_type_id: 'decision_making_work',
   work_type_label: 'Decision-making work',
-  description: '[Directions after Judgment (Damages)](/cases/case-details/${[CASE_REFERENCE]}/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NotSuitable_SDO/NotSuitable_SDONotSuitableSDO)',
+  description:
+    '[Directions after Judgment (Damages)](/cases/case-details/${[CASE_REFERENCE]}/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NotSuitable_SDO/NotSuitable_SDONotSuitableSDO)',
   role_category: 'JUDICIAL',
   minor_priority: 500,
-  major_priority: 5000
+  major_priority: 5000,
 };
 
 export default task;
