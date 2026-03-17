@@ -25,13 +25,13 @@ const config = {
     caseType: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
   },
   playwright: {
-    softExpect: process.env.PLAYWRIGHT_UI_SOFT_EXPECT === 'true',
+ //  softExpect: process.env.PLAYWRIGHT_UI_SOFT_EXPECT === 'true',
     toPassTimeout: 25_000,
-    workers: parseInt(process.env.PLAYWRIGHT_WORKERS),
+  //  workers: parseInt(process.env.PLAYWRIGHT_WORKERS),
     actionTimeout: 25_000,
-    showBrowserWindow: process.env.PLAYWRIGHT_SHOW_BROWSER_WINDOW === 'true',
-    retries: parseInt(process.env.PLAYWRIGHT_RETRIES),
-    testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED.toUpperCase() as string] as TestSpeed,
+ //   showBrowserWindow: process.env.PLAYWRIGHT_SHOW_BROWSER_WINDOW === 'true',
+  //  retries: parseInt(process.env.PLAYWRIGHT_RETRIES),
+ //   testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED.toUpperCase() as string] as TestSpeed,
     shortExpectTimeout: 20_000,
   },
   exui: {

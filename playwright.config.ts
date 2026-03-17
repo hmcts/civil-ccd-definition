@@ -1,14 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
 import config from './playwright-e2e/config/config';
+import {envUrl} from './dr-playwright/civilConfig.ts';
 import os from 'node:os';
 
 export default defineConfig({
-  testDir: './playwright-e2e/tests',
-  globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
-  forbidOnly: !!process.env.CI,
-  fullyParallel: true,
-  retries: config.playwright.retries ?? 0,
-  workers: config.playwright.workers,
+  // testDir: './playwright-e2e/tests',
+  // globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
+  // forbidOnly: !!process.env.CI,
+  // fullyParallel: true,
+ // retries: config.playwright.retries ?? 0,
+  //workers: config.playwright.workers,
   reporter: process.env.CI
     ? [
         [
@@ -39,14 +40,36 @@ export default defineConfig({
   outputDir: './playwright-test-results',
   use: {
     actionTimeout: config.playwright.actionTimeout,
-    headless: !config.playwright.showBrowserWindow,
+   // headless: !config.playwright.showBrowserWindow,
     video: { mode: 'retain-on-failure' },
     screenshot: { mode: 'only-on-failure', fullPage: true },
     launchOptions: {
-      slowMo: config.playwright.testSpeed?.slowMo,
+   //   slowMo: config.playwright.testSpeed?.slowMo,
     },
   },
   projects: [
+    {
+      name: "authentication",
+      testDir: "./dr-playwright/setup",
+      use: {
+        baseURL: envUrl,
+        ...devices['Desktop Chrome'],
+      },
+      testMatch: /.*\auth.setup\.ts/,
+    },
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        viewport: { width: 1929, height: 959 },
+        launchOptions: {
+          //slowMo: 1000,
+        },
+      },
+      dependencies: ["authentication"],
+      testDir: './dr-playwright/e2e/journeys'
+    },
     {
       name: 'data-setup',
       testMatch: '**playwright-e2e/tests/bootstrap/data/**.setup.ts',
