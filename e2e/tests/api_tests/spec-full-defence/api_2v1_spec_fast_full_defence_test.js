@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('2v1 spec fast track full defence api journeys').tag('@api-nightly-prod @api-spec-full-defence');
+Feature('2v1 spec fast track full defence api journeys').tag('@civil-service-nightly @api-spec-full-defence');
 
 Scenario('2v1 fast claim different response no full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');

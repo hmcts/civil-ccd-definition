@@ -3,7 +3,7 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
 const judgeUser = config.judgeUserWithRegionId1;
 
-Feature('Request for reconsideration - 1v1 - spec').tag('@api-nightly-prod'); // reinstate @api-nightly-prod tag when issue described on CIV-14871 is resolved
+Feature('Request for reconsideration - 1v1 - spec').tag('@civil-service-nightly'); // reinstate @civil-service-nightly tag when issue described on CIV-14871 is resolved
 
 Scenario('1v1 spec request for reconsideration for uphold previous order', async ({api_spec_small}) => {
     await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);

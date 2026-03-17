@@ -8,7 +8,7 @@ const serviceRequest = require('../../../pages/createClaim/serviceRequest.page')
 
 let caseNumber;
 
-Feature('2v1 Multi Party part admit Claim Creation 2v1').tag('@ui-nightly-prod @ui-spec-part-admit');
+Feature('2v1 Multi Party part admit Claim Creation 2v1').tag('@civil-ccd-nightly @ui-spec-part-admit');
 
 Scenario('01 Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
