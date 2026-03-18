@@ -1,12 +1,10 @@
- 
-const config = require('../../../../config.js');
 const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../../api/testingSupport');
 const states = require('../../../../fixtures/ga-events/ga-ccd/state');
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 const hnStatus = states.HEARING_SCHEDULED.name;
 const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, gaCaseReference;
-
+const config = require('../../../../config.js');
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document').tag('@civil-ccd-nightly @ui-ga-hearing-notice');
 
 BeforeSuite(async ({ api_ga }) => {

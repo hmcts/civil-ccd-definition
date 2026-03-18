@@ -1,7 +1,7 @@
 const config = require('../../../../config.js');
+
 const mpScenario = 'ONE_V_ONE';
 const claimAmountJudge = '11000';
-
 let civilCaseReference, gaCaseReference;
 
 Feature('GA - WA Specific Access');

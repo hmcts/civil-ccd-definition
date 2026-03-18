@@ -1,5 +1,5 @@
-const config = require('../../../../config.js');
 const { createAccount, deleteAccount} = require('../../../../api/idamHelper.js');
+const config = require('../../../../config.js');
 
 let civilCaseReference;
 

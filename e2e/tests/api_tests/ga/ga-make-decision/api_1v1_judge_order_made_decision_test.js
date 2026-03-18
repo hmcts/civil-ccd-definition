@@ -1,8 +1,7 @@
- 
 const config = require('../../../../config.js');
+
 const mpScenario = 'ONE_V_ONE';
 const genAppType = 'STAY_THE_CLAIM';
-
 let civilCaseReference, gaCaseReference, state;
 
 Feature('GA 1v1 Judge make decision order made API tests').tag('@civil-service-nightly @api-ga-make-decision');

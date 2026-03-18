@@ -1,10 +1,8 @@
- 
-const config = require('../../../../config.js');
 const states = require('../../../../fixtures/ga-events/ga-ccd/state');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference, user;
-
+const config = require('../../../../config.js');
 Feature('Before SDO 1v2 - GA - Consent Orders').tag('@ui-ga-consent-order');
 
 Scenario('NBC admin Approve Consent Order', async ({ I, api_ga }) => {
