@@ -1626,6 +1626,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (pageId === 'SdoR2FastTrack') {
     clearWelshParaFromCaseData();
     delete caseData['sdoR2FastTrackCreditHire'];
+    delete caseData['fastTrackHousingDisrepair'];
   }
   if (responseBody.data.requestForReconsiderationDeadline) {
     caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
