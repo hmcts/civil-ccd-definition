@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
 
-let civilCaseReference,
-gaCaseReference;
+let civilCaseReference, gaCaseReference;
 
 Feature('GA SPEC Claim 1v2 Move to Case Man Case Close API tests').tag('@civil-service-nightly @api-ga-case-offline');
 
