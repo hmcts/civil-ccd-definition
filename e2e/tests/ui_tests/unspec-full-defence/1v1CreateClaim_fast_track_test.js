@@ -21,7 +21,7 @@ const respondent1 = {
 let caseNumber;
 let claimType = 'Personal injury';
 
-Feature('1v1 - Claim Journey').tag('@ui-nightly-prod @ui-unspec-full-defence');
+Feature('1v1 - Claim Journey').tag('@civil-ccd-nightly @ui-unspec-full-defence');
 
 Scenario('01 Applicant solicitor creates claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);

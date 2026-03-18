@@ -2,7 +2,6 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       CI: string;
-      CCD_UI_TESTS: string;
       FUNCTIONAL: string;
       PLAYWRIGHT_WORKERS: string;
       ENVIRONMENT: string;
@@ -15,7 +14,7 @@ declare global {
       CIVIL_SERVICE_URL: string;
       WA_TASK_MGMT_URL: string;
       AAC_API_URL: string;
-      IDAM_TEST_URL: string;
+      IDAM_TEST_SUPPORT_API_URL: string;
       CIVIL_ORCHESTRATOR_SERVICE_URL: string;
       PAYMENT_API_URL: string;
       WIREMOCK_URL: string;

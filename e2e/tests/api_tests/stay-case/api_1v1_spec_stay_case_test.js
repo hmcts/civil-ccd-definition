@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 
-Feature('1v1 spec stay case api journey').tag('@api-nightly-prod @api-stay-case');
+Feature('1v1 spec stay case api journey').tag('@civil-service-nightly @api-stay-case');
 
 Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
