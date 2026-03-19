@@ -33,7 +33,7 @@ const {fetchCaseDetails} = require('./apiRequest');
 const hearingScheduled = require('../fixtures/events/scheduleHearing');
 const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 
-let caseId = '1773757207747260', eventName;
+let caseId, eventName;
 let caseData = {};
 
 const data = {
