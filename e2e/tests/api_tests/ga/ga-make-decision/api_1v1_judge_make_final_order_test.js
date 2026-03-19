@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const mpScenario = 'ONE_V_ONE';
 
+const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, gaCaseReference;
 
 Feature('Before SDO 1v1 - GA CP - Hearing Notice document API tests').tag('@civil-service-nightly');
