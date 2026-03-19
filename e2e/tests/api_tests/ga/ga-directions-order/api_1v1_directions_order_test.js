@@ -1,7 +1,6 @@
- 
 const config = require('../../../../config.js');
-const mpScenario = 'ONE_V_ONE';
 
+const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Judge Make Order Directions Order API tests').tag('@api-ga-directions-order');
@@ -54,4 +53,3 @@ Scenario('Judge makes decision 1V1 - VARY-JUDGEMENT  as DEFENDANT - PROCEEDS IN 
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();
 });
-

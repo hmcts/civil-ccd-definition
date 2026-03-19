@@ -1,7 +1,7 @@
 const config = require('../../../../config.js');
+
 const mpScenario = 'ONE_V_ONE';
 const claimAmountJudge = '11000';
-
 let civilCaseReference, gaCaseReference,expectedJudgeDecideOnApplicationBeforeSDOTask,expectedLADecideOnApplicationBeforeSDOTask;
 if (config.runWAApiTest) {
   expectedJudgeDecideOnApplicationBeforeSDOTask = require('../../../../../wa/tasks/judgeDecideOnApplicationBeforeSDOTask.js');
@@ -72,4 +72,3 @@ Scenario('GA - Challenged Access test - LegalAdvisor', async ({ I, api_ga, wa })
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();
 });
-

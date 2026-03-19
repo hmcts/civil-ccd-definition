@@ -1,7 +1,6 @@
- 
 const config = require('../../../../config.js');
-const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
+const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Defendants response consent order API tests').tag('@civil-service-nightly');
@@ -38,4 +37,3 @@ Scenario('Defendants response 1V2', async ({api_ga}) => {
 AfterSuite(async ({api_ga}) => {
     await api_ga.cleanUp();
 });
-

@@ -1,7 +1,6 @@
- 
 const config = require('../../../../config.js');
-const mpScenario = 'ONE_V_TWO_SAME_SOL';
 
+const mpScenario = 'ONE_V_TWO_SAME_SOL';
 let civilCaseReference, gaCaseReference;
 
 Feature('Spec 1v2 - General Application after SDO Journey').tag('@civil-service-nightly @api-ga-final-order');

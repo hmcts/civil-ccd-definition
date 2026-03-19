@@ -1,9 +1,7 @@
- 
 const config = require('../../../../config.js');
-const mpScenario = 'ONE_V_ONE';
 
-let civilCaseReference,
-gaCaseReference;
+const mpScenario = 'ONE_V_ONE';
+let civilCaseReference, gaCaseReference;
 
 Feature('GA Claim 1v1 Claimant Response Case Close API tests').tag('@civil-service-nightly @api-ga-case-offline');
 

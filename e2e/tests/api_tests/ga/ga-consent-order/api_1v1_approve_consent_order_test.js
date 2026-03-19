@@ -1,7 +1,6 @@
- 
 const config = require('../../../../config.js');
-const mpScenario = 'ONE_V_ONE';
 
+const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, civilCaseReferenceAfterSDO, gaCaseReference;
 const genAppType = 'STAY_THE_CLAIM';
 const claimAmountJudge = '11000';
@@ -159,4 +158,3 @@ Scenario('After SDO - CONSENT ORDER - CaseWorker Refer to Judge makes decision 1
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();
 });
-

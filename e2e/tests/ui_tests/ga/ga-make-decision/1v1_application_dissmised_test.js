@@ -1,9 +1,7 @@
- 
-const config = require('../../../../config.js');
 const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../../api/testingSupport');
 const { getAppTypes } = require('../../../../pages/generalApplication/generalApplicationTypes');
 const states = require('../../../../fixtures/ga-events/ga-ccd/state.js');
-
+const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;

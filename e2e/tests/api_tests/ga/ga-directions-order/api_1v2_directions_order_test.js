@@ -1,5 +1,5 @@
- 
 const config = require('../../../../config.js');
+
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
@@ -36,4 +36,3 @@ Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api_ga}) => {
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();
 });
-

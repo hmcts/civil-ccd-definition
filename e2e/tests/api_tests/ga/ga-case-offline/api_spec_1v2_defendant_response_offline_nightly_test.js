@@ -1,8 +1,6 @@
- 
 const config = require('../../../../config.js');
 
-let civilCaseReference,
-gaCaseReference;
+let civilCaseReference, gaCaseReference;
 
 Feature('GA SPEC Claim 1v2 Defendant Response Case Close API tests').tag('@civil-service-nightly @api-ga-case-offline');
 

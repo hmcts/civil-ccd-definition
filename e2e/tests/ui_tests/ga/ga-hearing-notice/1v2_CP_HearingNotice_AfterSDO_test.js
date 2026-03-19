@@ -1,8 +1,6 @@
- 
-const config = require('../../../../config.js');
 const states = require('../../../../fixtures/ga-events/ga-ccd/state.js');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('../../../../api/testingSupport');
-
+const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 

@@ -1,7 +1,5 @@
- 
-const config = require('../../../../config.js');
 const states = require('../../../../fixtures/ga-events/ga-ccd/state.js');
-
+const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const judgeDecisionStatus = states.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION.name;
 let gaCaseReference, civilCaseReference;
