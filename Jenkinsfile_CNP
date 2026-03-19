@@ -226,7 +226,6 @@ withPipeline(type, product, component) {
     env.PR_FT_GROUPS = getFunctionalTestsGroups()
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-
   }
 
   // onPR {
@@ -288,6 +287,7 @@ withPipeline(type, product, component) {
 
   before('functionalTest:preview') {
     env.IDAM_STUB_ENABLED = 'false'
+    env.UNASSIGN_CASES = true
     copyPreviousAllureHistory();
     if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
       env.RUN_ALL_FUNCTIONAL_TESTS = true
@@ -344,6 +344,7 @@ withPipeline(type, product, component) {
     env.IDAM_STUB_ENABLED = 'false'
     copyPreviousAllureHistory();
     copyPrevFailedAndNotExecutedTestFilesJson();
+    env.UNASSIGN_CASES = true
   }
 
   afterAlways('smoketest:aat') {
