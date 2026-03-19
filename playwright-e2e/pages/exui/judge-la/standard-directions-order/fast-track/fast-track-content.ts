@@ -22,7 +22,6 @@ export const subheadings = {
   hearingNotes: 'Hearing notes',
   welshLanguage: 'Use of the Welsh Language',
   importantNotes: 'Important notes',
-  penalNotice: 'Penal notice (optional)',
   judgementClaimSum:
     'There is a judgment for the claimant for an amount to be decided by the court',
 };
@@ -30,9 +29,6 @@ export const subheadings = {
 export const containers = {
   disclosureDocuments: {
     selector: '#fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments',
-  },
-  witnessesOfFact: {
-    selector: '#sdoR2FastTrackWitnessOfFact_sdoR2FastTrackWitnessOfFact',
   },
   schedulesOfLoss: {
     selector: '#fastTrackSchedulesOfLoss_fastTrackSchedulesOfLoss',
@@ -79,7 +75,7 @@ export const inputs = {
       selectorKey: 'date2',
     },
     date3: {
-      selectorKey: 'date3',
+      selectorKey: 'date2',
     },
   },
   witnessesOfFact: {
@@ -240,29 +236,24 @@ export const inputs = {
     },
   },
   housingDisrepair: {
-    clauseA: {
-      selector: '#fastTrackHousingDisrepair_clauseA',
+    input1: {
+      hintText: 'Scott schedule',
+      selector: '#fastTrackHousingDisrepair_input1',
     },
-    clauseB: {
-      selector: '#fastTrackHousingDisrepair_clauseB',
+    input2: {
+      selector: '#fastTrackHousingDisrepair_input2',
     },
-    firstReportDateBy: {
-      selectorKey: 'firstReportDateBy',
+    input3: {
+      selector: '#fastTrackHousingDisrepair_input3',
     },
-    clauseCBeforeDate: {
-      selector: '#fastTrackHousingDisrepair_clauseCBeforeDate',
+    input4: {
+      selector: '#fastTrackHousingDisrepair_input4',
     },
-    jointStatementDateBy: {
-      selectorKey: 'jointStatementDateBy',
+    date1: {
+      selectorKey: 'date1',
     },
-    clauseCAfterDate: {
-      selector: '#fastTrackHousingDisrepair_clauseCAfterDate',
-    },
-    clauseD: {
-      selector: '#fastTrackHousingDisrepair_clauseD',
-    },
-    clauseE: {
-      selector: '#fastTrackHousingDisrepair_clauseE',
+    date2: {
+      selectorKey: 'date2',
     },
   },
   expertEvidence: {
@@ -306,9 +297,6 @@ export const inputs = {
   newDirection: {
     label: 'Enter the direction (Optional',
     selector: '#fastTrackAddNewDirections_0_directionComment',
-  },
-  penalNotice: {
-    selector: '#fastTrackPenalNotice',
   },
 };
 
@@ -453,10 +441,6 @@ export const checkboxes = {
   includeWelshLanguage: {
     label: 'Add/Remove',
     selector: '#sdoR2FastTrackUseOfWelshToggle-SHOW',
-  },
-  penalNotice: {
-    label: 'Show/Remove',
-    selector: 'label[for="fastTrackPenalNoticeToggle-SHOW"]',
   },
 };
 

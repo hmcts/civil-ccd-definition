@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
+const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 application collection for different solicitor API tests')
@@ -146,4 +145,3 @@ Scenario('GA 1v2  - Without Notice Application Collection after Judge Makes Deci
 // AfterSuite(async ({api_ga}) => {
 //   await api_ga.cleanUp();
 // });
-
