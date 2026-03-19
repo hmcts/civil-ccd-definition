@@ -17,7 +17,6 @@ export const subheadings = {
   addNewDirection: 'Add a new direction (Optional)',
   welshLanguage: 'Use of the Welsh Language',
   judgementClaimSum: 'Judgment for the claimant for an sum to be decided by the court',
-  penalNotice: 'Penal notice (optional)',
 };
 
 export const inputs = {
@@ -147,9 +146,6 @@ export const inputs = {
     label: 'Enter the direction (Optional)',
     selector: '#smallClaimsAddNewDirections_0_directionComment',
   },
-  penalNotice: {
-    selector: '#smallClaimsPenalNotice',
-  },
 };
 
 export const checkboxes = {
@@ -172,10 +168,6 @@ export const checkboxes = {
   welshLanguage: {
     label: 'Show/Remove',
     selector: 'label[for="sdoR2SmallClaimsUseOfWelshToggle-SHOW"]',
-  },
-  penalNotice: {
-    label: 'Show/Remove',
-    selector: 'label[for="smallClaimsPenalNoticeToggle-SHOW"]',
   },
 };
 

@@ -1,8 +1,8 @@
-/* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
 const { assert } = require('chai');
-let civilCaseReference, gaCaseReference;
 const { createAccount, deleteAccount } = require('../../../../api/idamHelper.js');
+let civilCaseReference, gaCaseReference;
+
 
 Feature('Create Lip v Lip claim -  Default Judgment');
 

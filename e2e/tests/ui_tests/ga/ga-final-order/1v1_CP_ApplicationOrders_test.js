@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
-const config = require('../../../../config.js');
 const states = require('../../../../fixtures/ga-events/ga-ccd/state');
 const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../../api/testingSupport');
 const mpScenario = 'ONE_V_ONE';
 const doc = 'hearingNotice';
 let civilCaseReference, gaCaseReference, user;
 const judgeApproveOrderStatus = states.ORDER_MADE.name;
-
+const config = require('../../../../config.js');
 Feature('Before SDO 1v1 - GA CP - Applications Orders').tag('@civil-ccd-nightly @ui-ga-final-order');
 
 Scenario('1v1 - Free form order - With notice journey', async ({ I, api_ga }) => {
