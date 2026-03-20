@@ -7,7 +7,7 @@ const claimAmountJudge = '11000';
 let caseNumber;
 
 
-Feature('1v2 Diff Sols Hearing Request Journey').tag('@civil-ccd-nightly @ui-hearings');
+Feature('1v2 Diff Sols Hearing Request Journey').tag('@civil-ccd-nightly @ui-hearings @debug');
 
 Scenario('01 Prepare claim up to SDO', async ( {api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
@@ -31,7 +31,7 @@ Scenario('02 Request, Edit and Cancel a Hearing', async ({I}) => {
     await I.updateHearing();
     await I.cancelHearing();
   }
-}).retry(2);
+}).retry(0);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();

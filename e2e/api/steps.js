@@ -7,7 +7,7 @@ const {listElement, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
-const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, checkOtherRemedyEnabled} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
@@ -17,6 +17,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const sdoTracksOtherRemedy = require('../fixtures/events/createSDOOtherRemedy.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
@@ -79,6 +80,15 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
+  CREATE_DISPOSAL_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDODisposal(userInput),
+  CREATE_FAST_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFast(userInput),
+  CREATE_FAST_NIHL_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFastNIHL(userInput),
+  CREATE_FAST_IN_PERSON_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFastInPerson(userInput),
+  CREATE_SMALL_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOSmall(userInput),
+  CREATE_FAST_NO_SUM_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFastWODamageSum(userInput),
+  CREATE_SMALL_NO_SUM_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOSmallWODamageSum(userInput),
+  UNSUITABLE_FOR_SDO_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createNotSuitableSDO(userInput),
+  CREATE_SMALL_DRH_OTHER_REMEDY: () => sdoTracksOtherRemedy.createSDOSmallDRH(),
   HEARING_SCHEDULED: (allocatedTrack, isMinti) => hearingScheduled.scheduleHearing(allocatedTrack, isMinti),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
@@ -183,6 +193,15 @@ const eventData = {
     UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
     CREATE_FAST_NIHL: data.CREATE_FAST_NIHL(),
     CREATE_SMALL_DRH: data.CREATE_SMALL_DRH(),
+    CREATE_DISPOSAL_OTHER_REMEDY: data.CREATE_DISPOSAL_OTHER_REMEDY(),
+    CREATE_SMALL_OTHER_REMEDY: data.CREATE_SMALL_OTHER_REMEDY(),
+    CREATE_FAST_OTHER_REMEDY: data.CREATE_FAST_OTHER_REMEDY(),
+    CREATE_FAST_IN_PERSON_OTHER_REMEDY: data.CREATE_FAST_IN_PERSON_OTHER_REMEDY(),
+    CREATE_SMALL_NO_SUM_OTHER_REMEDY: data.CREATE_SMALL_NO_SUM_OTHER_REMEDY(),
+    CREATE_FAST_NO_SUM_OTHER_REMEDY: data.CREATE_FAST_NO_SUM_OTHER_REMEDY(),
+    UNSUITABLE_FOR_SDO_OTHER_REMEDY: data.UNSUITABLE_FOR_SDO_OTHER_REMEDY(),
+    CREATE_FAST_NIHL_OTHER_REMEDY: data.CREATE_FAST_NIHL_OTHER_REMEDY(),
+    CREATE_SMALL_DRH_OTHER_REMEDY: data.CREATE_SMALL_DRH_OTHER_REMEDY(),
   }
 };
 
@@ -1003,6 +1022,8 @@ module.exports = {
     delete caseData['sdoR2FastTrackCreditHire'];
     delete caseData['sdoDJR2TrialCreditHire'];
 
+    if(await checkOtherRemedyEnabled())
+      response = response + '_OTHER_REMEDY';
 
     let disposalData = eventData['sdoTracks'][response];
 
@@ -1605,6 +1626,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (pageId === 'SdoR2FastTrack') {
     clearWelshParaFromCaseData();
     delete caseData['sdoR2FastTrackCreditHire'];
+    delete caseData['fastTrackHousingDisrepair'];
   }
   if (responseBody.data.requestForReconsiderationDeadline) {
     caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
