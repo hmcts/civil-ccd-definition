@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const { createAccount, deleteAccount } = require('../../../api/idamHelper');
+const { createAccount, deleteCitizenAccount } = require('../../../api/idamHelper');
 const intermediateTrackClaimAmount = '99000';
 
 Feature('1vLIP spec multi track journey').tag('@civil-ccd-nightly @ui-intermediate-track');
@@ -15,5 +15,5 @@ Scenario('1vLIP spec multi track', async ({api_spec_cui, I}) => {
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });
