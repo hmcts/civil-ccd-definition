@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
-const config = require('../../../../config.js');
   const {
   waitForGACamundaEventsFinishedBusinessProcess,
   waitForFinishedBusinessProcess
 } = require('../../../../api/testingSupport');
 const states = require('../../../../fixtures/ga-events/ga-ccd/state.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-
+const config = require('../../../../config.js');
   const listForHearingStatus = states.LISTING_FOR_A_HEARING.id;
 
   let civilCaseReference, gaCaseReference,
@@ -141,6 +139,3 @@ Scenario.skip('After SDO GA - Change court location  - HC admin review applicati
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();
 });
-
-
-
