@@ -1,4 +1,4 @@
-const {createAccount, deleteAccount} = require('../../../../api/idamHelper.js');
+const {createAccount, deleteCitizenAccount} = require('../../../../api/idamHelper.js');
 const config = require('../../../../config.js');
 
 let civilCaseReference, gaCaseReference;
@@ -34,5 +34,5 @@ Scenario.skip('GA 1v1 Without Notice  - LR initiates GA vs LIP', async ({ api_ga
 
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

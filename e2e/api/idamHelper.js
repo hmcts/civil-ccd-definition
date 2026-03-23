@@ -68,16 +68,18 @@ async function createAccount(email, password) {
   }
 } */
 
-async function deleteAccount(email) {
-  try {
-    const token = await accessToken(adminUser);
-    let method = 'DELETE';
-    await restHelper.request(`${idamTestSupportUrl}/test/idam/users/${email}`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, undefined, method);
+async function deleteCitizenAccount(email) {
+  if(!process.env.CLAIMANT_CITIZEN_EMAIL && !process.env.DEFENDANT_CITIZEN_EMAIL) {
+    try {
+      const token = await accessToken(adminUser);
+      let method = 'DELETE';
+      await restHelper.request(`${idamTestSupportUrl}/test/idam/users/${email}`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, undefined, method);
 
-    console.log('Account deleted: ' + email);
-  } catch (error) {
-    console.error('Error deleting account:', error);
-    throw error;
+      console.log('Account deleted: ' + email);
+    } catch (error) {
+      console.error('Error deleting account:', error);
+      throw error;
+    }
   }
 }
 
@@ -85,5 +87,5 @@ module.exports = {
     accessToken,
     userId,
   createAccount,
-  deleteAccount,
+deleteCitizenAccount,
 };
