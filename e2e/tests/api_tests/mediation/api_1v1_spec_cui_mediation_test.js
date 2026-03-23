@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 
 const claimType = 'SmallClaims';
 let carmEnabled = false;
@@ -33,6 +33,6 @@ Scenario('CARM not enabled', async ({api_spec_cui}) => {
 
 AfterSuite(async ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });
 

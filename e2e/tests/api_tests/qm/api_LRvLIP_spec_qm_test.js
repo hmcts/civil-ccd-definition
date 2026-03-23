@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 const { PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
 const {respondToQueryAdminTask } = require('../../../fixtures/wa/respondToQueryTasks');
 const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQueriesHelper');
@@ -29,5 +29,5 @@ Scenario('LR v LIP query management spec', async ({ api_spec_cui, qmSteps }) => 
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

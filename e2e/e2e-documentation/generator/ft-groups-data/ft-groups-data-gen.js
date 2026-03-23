@@ -150,12 +150,20 @@ function deriveGroupsFromTests(testRecords) {
         return;
       }
       const [, tagType, groupName] = match;
+      const groupPath = buildGroupPath(tagType, record.filePath);
       const pipeline = [
         'civil-ccd-definition: PR',
         'civil-service: PR',
         'civil-camunda-bpmn-definition: PR',
         'civil-wa-task-configuration: PR',
       ];
+      const isGaFolder = groupPath.endsWith('/ga');
+      const filteredPipeline = isGaFolder
+        ? pipeline.filter(p => ![
+          'civil-camunda-bpmn-definition: PR',
+          'civil-wa-task-configuration: PR',
+        ].includes(p))
+        : pipeline;
       const key = tag;
       if (!groups.has(key)) {
         groups.set(key, {
@@ -164,14 +172,14 @@ function deriveGroupsFromTests(testRecords) {
           githubLabelName: tagType === 'ui'
             ? `pr_ft_ui-${groupName}`
             : `pr_ft_api-${groupName}`,
-          pipeline,
+          pipeline: filteredPipeline,
           folderPaths: new Set(),
           steps: [],
           testNames: []
         });
       }
       const entry = groups.get(key);
-      entry.folderPaths.add(buildGroupPath(tagType, record.filePath));
+      entry.folderPaths.add(groupPath);
       addOrderedUnique(entry.steps, record.steps || []);
       addOrderedUnique(entry.testNames, [record.testName]);
     });

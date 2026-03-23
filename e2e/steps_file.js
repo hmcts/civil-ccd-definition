@@ -235,7 +235,7 @@ const CONFIRMATION_MESSAGE = {
   offline: 'Your claim has been received and will progress offline',
 };
 
-let caseId = '1770889956809489', screenshotNumber, eventName, currentEventName, loggedInUser;
+let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
 const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
