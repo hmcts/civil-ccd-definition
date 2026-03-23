@@ -26,6 +26,6 @@ export const inputs = {
     paragraph2:
       'If you are judge submitting this information, the case will be sent to a listing officer. If a legal advisor has submitted this information, the case will be sent to a judge for review.',
     paragraph3: 'Give reasons',
-    selector: '#reasonNotSuitableSDO_input',
+    selector: '#reasonNotSuitableSdo_input',
   },
 };

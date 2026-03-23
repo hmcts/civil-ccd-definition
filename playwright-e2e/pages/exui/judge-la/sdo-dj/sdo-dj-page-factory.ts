@@ -7,7 +7,7 @@ import OrderPreviewSdoDJPage from './order-preview-sdo-dj/order-preview-sdo-dj-p
 import confirmSdoDJPage from './confirm-sdo-dj/confirm-sdo-dj-page';
 import TrialHearingSdoDJPage from './trial-hearing-sdo-dj/trial-hearing-sdo-dj-page';
 
-export default class StandardDirectionOrderDJPageFactory extends BasePageFactory {
+export default class SdoDJPageFactory extends BasePageFactory {
   get caseManagementOrderPage() {
     return new CaseManagementOrderPage(this.page);
   }

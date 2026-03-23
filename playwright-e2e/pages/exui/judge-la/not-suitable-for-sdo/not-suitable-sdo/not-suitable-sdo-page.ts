@@ -5,7 +5,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 import { inputs, radioButtons } from './not-suitable-sdo-content';
 
 @AllMethodsStep()
-export default class NotSuitableSDOPage extends ExuiPage(BasePage) {
+export default class NotSuitableSdoPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),

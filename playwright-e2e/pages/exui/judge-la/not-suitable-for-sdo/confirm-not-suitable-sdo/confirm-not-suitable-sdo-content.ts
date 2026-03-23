@@ -1,15 +1,15 @@
 export const confirmationHeading = {
-  anotherHearingCentre: 'Your request was successful',
+  transferCase: 'Your request was successful',
   otherReason: 'Your request was accepted',
 };
 
 export const subheading = {
-  anotherHearingCentre: 'This claim will be transferred to a different location',
+  transferCase: 'This claim will be transferred to a different location',
   otherReason: 'Case has now moved offline',
 };
 
 export const paragraphs = {
-  anotherHearingCentre: {
+  transferCase: {
     paragraph1:
       'A notification will be sent to the listing officer to look at this case and process the transfer of case.',
     paragraph2: 'Claimant 1',

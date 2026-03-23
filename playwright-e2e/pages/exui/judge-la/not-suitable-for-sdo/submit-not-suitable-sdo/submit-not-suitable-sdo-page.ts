@@ -4,12 +4,12 @@ import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 
 @AllMethodsStep()
-export default class SubmitSdoNotSuitablePage extends ExuiPage(BasePage) {
+export default class SubmitNotSuitableSdoPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
-  async submit(...args: any[]): Promise<void> {
+  async submit() {
     await super.retryClickSubmit();
   }
 }
