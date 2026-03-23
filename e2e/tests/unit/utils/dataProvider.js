@@ -25,8 +25,8 @@ const loadFileFromDefinitions = file => {
 // without the *
 const exclusions = new Map([
   ['preview', ['-prod.json']],
-  ['demo', ['UserProfile.json', '-prod.json', '-testing.json']],
-  ['aat', ['UserProfile.json', '-nonprod.json']],
+  ['demo', ['UserProfile.json', '-prod.json']],
+  ['aat', ['UserProfile.json', '-prod.json']],
   ['prod', ['UserProfile.json', '-nonprod.json', '-testing.json']],
   ['staging', ['UserProfile.json', '-nonprod.json', '-testing.json']],
 ]);
