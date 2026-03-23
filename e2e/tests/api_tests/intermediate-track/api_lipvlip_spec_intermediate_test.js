@@ -1,9 +1,9 @@
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 
 let caseId;
 
-Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@api-nightly-prod @api-intermediate-track');
+Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@civil-service-nightly @api-intermediate-track');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
@@ -18,6 +18,6 @@ Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled - Minti E
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.applicantCitizenUser.email);
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.applicantCitizenUser.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

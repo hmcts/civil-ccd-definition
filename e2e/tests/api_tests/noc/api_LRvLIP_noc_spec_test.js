@@ -1,10 +1,10 @@
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 
 const claimType = 'SmallClaims';
 let caseId;
 
-Feature('LR v LiP notice of change spec api journey').tag('@api-nightly-prod @api-noc');
+Feature('LR v LiP notice of change spec api journey').tag('@civil-service-nightly @api-noc');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
@@ -22,6 +22,6 @@ Scenario('LR v LiP notice of change', async ({noc, api_spec_cui}) => {
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.applicantCitizenUser.email);
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.applicantCitizenUser.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

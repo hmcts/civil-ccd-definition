@@ -36,24 +36,7 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.variationOfDirections),
       super.expectSubheading(subheadings.settlement),
       super.expectSubheading(subheadings.disclosureOfDocuments),
-      // this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date1.selectorKey, {
-      //   containerSelector: containers.disclosureDocuments.selector,
-      // }),
-      // this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date2.selectorKey, {
-      //   containerSelector: containers.disclosureDocuments.selector,
-      // }),
-      // this.dateFragment.verifyContent(inputs.disclosureOfDocuments.date3.selectorKey, {
-      //   containerSelector: containers.disclosureDocuments.selector,
-      // }),
       super.expectSubheading(subheadings.witnessesOfFact),
-      //this.dateFragment.verifyContent(inputs.witnessesOfFact.deadlineDate.selectorKey),
-      super.expectSubheading(subheadings.schedulesOfLoss),
-      // this.dateFragment.verifyContent(inputs.scheduleOfLoss.date1.selectorKey, {
-      //   containerSelector: containers.schedulesOfLoss.selector,
-      // }),
-      // this.dateFragment.verifyContent(inputs.scheduleOfLoss.date2.selectorKey, {
-      //   containerSelector: containers.schedulesOfLoss.selector,
-      // }),
       super.expectSubheading(subheadings.hearingTime),
       super.expectSubheading(subheadings.hearingMethod),
       super.expectSubheading(subheadings.newDirection),
@@ -61,7 +44,6 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
       super.expectLabel(inputs.hearingNotes.label),
       super.expectText(subheadings.welshLanguage),
       super.expectSubheading(subheadings.importantNotes),
-      super.expectSubheading(subheadings.penalNotice),
     ]);
   }
 
@@ -272,24 +254,20 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
   async addHousingDisrepair() {
     await super.expectSubheading(subheadings.housingDisrepair);
 
-    await super.inputText('housing disrepair clause a', inputs.housingDisrepair.clauseA.selector);
-    await super.inputText('housing disrepair clause b', inputs.housingDisrepair.clauseB.selector);
+    await super.inputText('housing disrepair input 1', inputs.housingDisrepair.input1.selector);
+    await super.inputText('housing disrepair input 2', inputs.housingDisrepair.input2.selector);
+    await super.inputText('housing disrepair input 3', inputs.housingDisrepair.input3.selector);
+    await super.inputText('housing disrepair input 4', inputs.housingDisrepair.input4.selector);
 
-    const date4Weeks = DateHelper.addToToday({ days: 24, workingDay: true });
-    await this.dateFragment.enterDate(date4Weeks, inputs.housingDisrepair.firstReportDateBy.selectorKey, {
+    const date1 = DateHelper.getToday();
+    const date2 = DateHelper.addToToday({ days: 1, workingDay: true });
+
+    await this.dateFragment.enterDate(date1, inputs.housingDisrepair.date1.selectorKey, {
       containerSelector: containers.housingDisrepair.selector,
     });
-
-    await super.inputText('housing disrepair clause c part 1', inputs.housingDisrepair.clauseCBeforeDate.selector);
-
-    const date8Weeks = DateHelper.addToToday({ days: 48, workingDay: true });
-    await this.dateFragment.enterDate(date8Weeks, inputs.housingDisrepair.jointStatementDateBy.selectorKey, {
+    await this.dateFragment.enterDate(date2, inputs.housingDisrepair.date2.selectorKey, {
       containerSelector: containers.housingDisrepair.selector,
     });
-
-    await super.inputText('housing disrepair clause c part 2', inputs.housingDisrepair.clauseCAfterDate.selector);
-    await super.inputText('housing disrepair clause d', inputs.housingDisrepair.clauseD.selector);
-    await super.inputText('housing disrepair clause e', inputs.housingDisrepair.clauseE.selector);
   }
 
   async addExpertEvidence() {
@@ -337,12 +315,6 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
 
   async addImportantNotes() {
     await super.inputText('important notes', inputs.importantNotes.selector);
-  }
-
-  async addPenalNotice() {
-    await super.clickBySelector(checkboxes.penalNotice.selector);
-    await super.expectSubheading(subheadings.penalNotice);
-    await super.inputText('Test penal notice text for fast track', inputs.penalNotice.selector);
   }
 
   async submit() {

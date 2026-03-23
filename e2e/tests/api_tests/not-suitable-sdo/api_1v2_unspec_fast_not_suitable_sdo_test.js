@@ -5,7 +5,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 const fastClaimAmount = '11000';
 
-Feature('Transfer Online Case 1v2 API test - fast claim - unspec').tag('@api-not-suitable-sdo @api-nightly-prod');
+Feature('Transfer Online Case 1v2 API test - fast claim - unspec').tag('@api-not-suitable-sdo @civil-service-nightly');
 
 Scenario('1v2 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v2, fastClaimAmount);

@@ -5,7 +5,7 @@ const claimAmountMulti = '200001';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
-Feature('1v1 spec api multi track journeys').tag('@api-nightly-prod');
+Feature('1v1 spec api multi track journeys').tag('@civil-service-nightly');
 
 Scenario('1v1 spec full defence multi claim', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
