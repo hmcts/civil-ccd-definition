@@ -1,6 +1,6 @@
 const config = require('../../../../config.js');
 const { assert } = require('chai');
-const { createAccount, deleteAccount } = require('../../../../api/idamHelper.js');
+const { createAccount, deleteCitizenAccount } = require('../../../../api/idamHelper.js');
 let civilCaseReference, gaCaseReference;
 
 
@@ -52,6 +52,6 @@ Scenario('Spec Claimant create GA without notice judge make final order', async 
 
 AfterSuite(async ({ api_ga }) => {
   await api_ga.cleanUp();
-  await deleteAccount(config.applicantCitizenUser.email);
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.applicantCitizenUser.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });
