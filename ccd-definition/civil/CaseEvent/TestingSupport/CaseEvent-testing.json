@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "LINK_DEFENDANT_TO_CLAIM",
     "Name": "Link defendant to claim",
     "Description": "Links a defendant to a claim by email address",
