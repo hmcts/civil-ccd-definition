@@ -2299,7 +2299,7 @@ const assertValidData = async (data, pageId, solicitor, check) => {
 
   assert.equal(response.status, 200);
 
-  // eslint-disable-next-line no-prototype-builtins
+   
   if (midEventFieldForPage.hasOwnProperty(pageId)) {
     addMidEventFields(pageId, responseBody);
     caseData = removeUiFields(pageId, caseData);
