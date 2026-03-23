@@ -524,7 +524,7 @@ additional information where necessary.
    Still, you shouldn't be doing it so make sure you get in touch with a Technical Lead soon afterwards.
 
 
-## Development / Debugging Environment - Preview with Mirrord
+## Development / Debugging Environment - Preview with Mirrord.
 
 As an alternative for a development environment there is a procedure in place where after running the command
 below the required services for Civil are created in Preview under the developer's name, so these will be exclusively
