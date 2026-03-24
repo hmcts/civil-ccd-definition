@@ -1,5 +1,5 @@
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
-import JudgeActionsFactory from '../../../actions/ui/exui/judge-la/judge-la-actions-factory';
+import JudgeLAActionsFactory from '../../../actions/ui/exui/judge-la/judge-la-actions-factory';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
@@ -13,12 +13,12 @@ import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgme
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
-  private judgeActionsFactory: JudgeActionsFactory;
+  private judgeActionsFactory: JudgeLAActionsFactory;
 
   constructor(
     exuiDashboardActions: ExuiDashboardActions,
     idamActions: IdamActions,
-    judgeActionsFactory: JudgeActionsFactory,
+    judgeActionsFactory: JudgeLAActionsFactory,
     requestsFactory: RequestsFactory,
     testData: TestData,
   ) {
@@ -31,17 +31,17 @@ export default class JudgeSteps extends BaseExui {
   }
 
   async SdoSmallTrack() {
-    const { standardDirectionsOrderActions } = this.judgeActionsFactory;
+    const { sdoActions: standardDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderActions.enterJudgementYes();
         await standardDirectionsOrderActions.selectSmallTrack();
         await standardDirectionsOrderActions.smallTrackDetails();
         await standardDirectionsOrderActions.orderPreview();
-        await standardDirectionsOrderActions.submitStandardDirectionsOrder();
+        await standardDirectionsOrderActions.submitSdo();
       },
       async () => {
-        await standardDirectionsOrderActions.confirmStandardDirectionsOrder();
+        await standardDirectionsOrderActions.confirmSdo();
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
@@ -50,17 +50,17 @@ export default class JudgeSteps extends BaseExui {
   }
 
   async SdoSmallTrackDRH() {
-    const { standardDirectionsOrderActions } = this.judgeActionsFactory;
+    const { sdoActions: standardDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderActions.enterJudgementYes();
         await standardDirectionsOrderActions.selectSmallTrackDRH();
         await standardDirectionsOrderActions.sdoDRHDetails();
         await standardDirectionsOrderActions.orderPreview();
-        await standardDirectionsOrderActions.submitStandardDirectionsOrder();
+        await standardDirectionsOrderActions.submitSdo();
       },
       async () => {
-        await standardDirectionsOrderActions.confirmStandardDirectionsOrder();
+        await standardDirectionsOrderActions.confirmSdo();
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
@@ -69,17 +69,17 @@ export default class JudgeSteps extends BaseExui {
   }
 
   async SdoFastTrack() {
-    const { standardDirectionsOrderActions } = this.judgeActionsFactory;
+    const { sdoActions: standardDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderActions.enterJudgementNo();
         await standardDirectionsOrderActions.selectFastTrack();
         await standardDirectionsOrderActions.fastTrackDetails();
         await standardDirectionsOrderActions.orderPreview();
-        await standardDirectionsOrderActions.submitStandardDirectionsOrder();
+        await standardDirectionsOrderActions.submitSdo();
       },
       async () => {
-        await standardDirectionsOrderActions.confirmStandardDirectionsOrder();
+        await standardDirectionsOrderActions.confirmSdo();
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
@@ -88,17 +88,17 @@ export default class JudgeSteps extends BaseExui {
   }
 
   async SdoFastTrackNIHL() {
-    const { standardDirectionsOrderActions } = this.judgeActionsFactory;
+    const { sdoActions: standardDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderActions.enterJudgementNo();
         await standardDirectionsOrderActions.selectFastTrackNIHL();
         await standardDirectionsOrderActions.sdoNIHLDetails();
         await standardDirectionsOrderActions.orderPreview();
-        await standardDirectionsOrderActions.submitStandardDirectionsOrder();
+        await standardDirectionsOrderActions.submitSdo();
       },
       async () => {
-        await standardDirectionsOrderActions.confirmStandardDirectionsOrder();
+        await standardDirectionsOrderActions.confirmSdo();
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
@@ -107,7 +107,7 @@ export default class JudgeSteps extends BaseExui {
   }
 
   async SdoDisposalHearing() {
-    const { standardDirectionsOrderActions } = this.judgeActionsFactory;
+    const { sdoActions: standardDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderActions.enterJudgementYes();
@@ -115,10 +115,10 @@ export default class JudgeSteps extends BaseExui {
         await standardDirectionsOrderActions.selectDisposalHearing();
         await standardDirectionsOrderActions.disposalHearingDetails();
         await standardDirectionsOrderActions.orderPreview();
-        await standardDirectionsOrderActions.submitStandardDirectionsOrder();
+        await standardDirectionsOrderActions.submitSdo();
       },
       async () => {
-        await standardDirectionsOrderActions.confirmStandardDirectionsOrder();
+        await standardDirectionsOrderActions.confirmSdo();
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
@@ -127,7 +127,7 @@ export default class JudgeSteps extends BaseExui {
   }
 
   async SdoDJDisposalHearing() {
-    const { standardDirectionsOrderDJActions } = this.judgeActionsFactory;
+    const { sdoDJActions: standardDirectionsOrderDJActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderDJActions.sdoDJSelectDisposalHearing();
@@ -145,7 +145,7 @@ export default class JudgeSteps extends BaseExui {
   }
 
   async SdoDJTrialHearing() {
-    const { standardDirectionsOrderDJActions } = this.judgeActionsFactory;
+    const { sdoDJActions: standardDirectionsOrderDJActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
         await standardDirectionsOrderDJActions.sdoDJSelectTrialHearing();
@@ -159,6 +159,38 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       judgeRegion1User,
       summaryJudgmentDirections,
+    );
+  }
+
+  async NotSuitableSdoSmallTrackTransferCase() {
+    const { notSuitableSdoActions } = this.judgeActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await notSuitableSdoActions.selectTransferCase();
+        await notSuitableSdoActions.submitNotSuitableSdo();
+      },
+      async () => {
+        await notSuitableSdoActions.confirmTransferCaseNotSuitableSdo();
+      },
+      ccdEvents.NOT_SUITABLE_SDO,
+      judgeRegion1User,
+      smallClaimDirectionsTask,
+    );
+  }
+
+  async NotSuitableSdoFastTrackOtherReason() {
+    const { notSuitableSdoActions } = this.judgeActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await notSuitableSdoActions.selectOtherReason();
+        await notSuitableSdoActions.submitNotSuitableSdo();
+      },
+      async () => {
+        await notSuitableSdoActions.confirmOtherReasonNotSuitableSdo();
+      },
+      ccdEvents.NOT_SUITABLE_SDO,
+      judgeRegion1User,
+      fastTrackDirectionsTask,
     );
   }
 }

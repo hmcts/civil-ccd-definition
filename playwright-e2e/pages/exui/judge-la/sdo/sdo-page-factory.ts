@@ -11,9 +11,9 @@ import DateFragment from '../../fragments/date/date-fragment';
 import SdoR2FastTrackPage from './sdo-r2-fast-track/sdo-r2-fast-track-page';
 import SdoR2SmallClaimsPage from './sdo-r2-small-claims/sdo-r2-small-claims-page';
 import SubmitSdoPage from './submit-sdo/submit-sdo-page';
-import ConfirmStandardDirectionsOrderPage from './confirm-standard-directions-order/confirm-standard-directions-order-page';
+import ConfirmSdoPage from './confirm-sdo/confirm-sdo-page';
 
-export default class StandardDirectionOrderPageFactory extends BasePageFactory {
+export default class SdoPageFactory extends BasePageFactory {
   get sdoPage() {
     return new SdoPage(this.page);
   }
@@ -59,11 +59,11 @@ export default class StandardDirectionOrderPageFactory extends BasePageFactory {
     return new SdoR2SmallClaimsPage(this.page, dateFragment);
   }
 
-  get submitStandardDirectionsOrderPage() {
+  get submitSdoPage() {
     return new SubmitSdoPage(this.page);
   }
 
-  get confirmStandardDirectionsOrderPage() {
-    return new ConfirmStandardDirectionsOrderPage(this.page);
+  get confirmSdoPage() {
+    return new ConfirmSdoPage(this.page);
   }
 }

@@ -10195,6 +10195,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackTrialTitle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
