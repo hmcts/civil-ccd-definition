@@ -4,7 +4,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('..
 const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP_OTHER_REMEDY';
 
-let caseNumber;
+let caseNumber, validFastTrackDirectionsTask;
 
 if (config.runWAApiTest) {
   validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');

@@ -16,7 +16,7 @@ const respondent1 = {
   representativeOrgNumber: 2
 };
 
-let caseNumber;
+let caseNumber, validFastTrackDirectionsTask;
 
 if (config.runWAApiTest) {
   validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
