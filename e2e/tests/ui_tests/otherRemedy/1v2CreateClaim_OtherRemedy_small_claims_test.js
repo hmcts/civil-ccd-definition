@@ -43,6 +43,22 @@ Scenario('06 Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
+Scenario('07 Judge triggers SDO', async ({I, api, WA}) => {
+  await I.login(config.judgeUserWithRegionId1);
+  let taskId;
+  if (config.runWAApiTest) {
+    const fastTrackDirections = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseNumber, config.waTaskIds.fastTrackDirections);
+    console.log('fastTrackDirections...' , fastTrackDirections);
+    WA.validateTaskInfo(fastTrackDirections, validFastTrackDirectionsTask);
+    taskId = fastTrackDirections['id'];
+    api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
+  }
+  await I.initiateSDOforOtherRemedy(null, null, 'smallClaims', null);
+  if (config.runWAApiTest) {
+    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+  }
+}).retry(2);
+
 AfterSuite(async  () => {
   await unAssignAllUsers();
 });

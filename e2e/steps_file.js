@@ -1022,6 +1022,30 @@ module.exports = function () {
       ]);
     },
 
+    async initiateSDOforOtherRemedy(damages, allocateSmallClaims, trackType, orderType) {
+      eventName = events.CREATE_SDO.name;
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary');
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+      await this.waitForText('Standard Direction Order');
+      await this.triggerStepsWithScreenshot([
+        () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
+
+        ...conditionalSteps(damages, [
+          () => allocateSmallClaimsTrackPage.decideSmallClaimsTrack(allocateSmallClaims),
+          ...conditionalSteps(!allocateSmallClaims,[
+            () => sdoOrderTypePage.decideOrderType(orderType)])
+        ]),
+
+        ...conditionalSteps(trackType, [
+          () => allocateClaimPage.selectTrackTypeForOtherRemedy(trackType)]),
+
+        () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
     async assertNoEventsAvailable() {
       await caseViewPage.assertNoEventsAvailable();
     },
