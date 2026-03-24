@@ -6,11 +6,11 @@ import {
   confirmationHeading,
   paragraphs,
   subheading,
-} from './confirm-standard-directions-order-content';
+} from './confirm-sdo-content';
 
 @AllMethodsStep()
-export default class ConfirmStandardDirectionsOrderPage extends ExuiPage(BasePage) {
-  async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
+export default class ConfirmSdoPage extends ExuiPage(BasePage) {
+  async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
@@ -21,7 +21,7 @@ export default class ConfirmStandardDirectionsOrderPage extends ExuiPage(BasePag
       super.expectText(paragraphs.paragraph4),
     ]);
   }
-  async submit(...args: any[]): Promise<void> {
+  async submit() {
     await super.retryClickSubmit();
   }
 }
