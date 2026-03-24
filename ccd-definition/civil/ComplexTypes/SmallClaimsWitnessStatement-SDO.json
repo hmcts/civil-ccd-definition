@@ -17,6 +17,14 @@
   },
   {
     "ID": "SmallClaimsWitnessStatement",
+    "ListElementCode": "witnessStatementsDate",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
     "ListElementCode": "smallClaimsNumberOfWitnessesToggle",
     "FieldType": "MultiSelectList",
     "ElementLabel": " ",

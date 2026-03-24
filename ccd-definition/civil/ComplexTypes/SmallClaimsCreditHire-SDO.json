@@ -17,8 +17,16 @@
   },
   {
     "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "text",
-    "FieldType": "Label",
+    "ListElementCode": "creditHireEvidenceText",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SmallClaimsCreditHire",
+    "ListElementCode": "creditHireDebarredText",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
