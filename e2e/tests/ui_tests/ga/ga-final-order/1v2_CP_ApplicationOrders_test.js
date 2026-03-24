@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
-const config = require('../../../../config.js');
 const states = require('../../../../fixtures/ga-events/ga-ccd/state');
 const { waitForGACamundaEventsFinishedBusinessProcess } = require('../../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const doc = 'hearingNotice';
 const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 let civilCaseReference, gaCaseReference, user;
-
+const config = require('../../../../config.js');
 Feature('Before SDO 1v2 - GA CP - Applications Orders')
   .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-ga-final-order');
 

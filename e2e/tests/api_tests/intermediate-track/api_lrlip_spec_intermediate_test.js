@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const { createAccount, deleteAccount } = require('../../../api/idamHelper');
+const { createAccount, deleteCitizenAccount } = require('../../../api/idamHelper');
 const claimType = 'INTERMEDIATE';
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
 let caseId, taskId, takeCaseOfflineTaskeExpectedTask;
@@ -29,5 +29,5 @@ Scenario('1v1 LR v LiP intermediate track', async ({ api_spec_cui, WA }) => {
 
 AfterSuite(async ({ api_spec_cui }) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

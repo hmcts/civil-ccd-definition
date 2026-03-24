@@ -1,5 +1,5 @@
+const { createAccount, deleteCitizenAccount} = require('../../../../api/idamHelper.js');
 const config = require('../../../../config.js');
-const { createAccount, deleteAccount} = require('../../../../api/idamHelper.js');
 
 let civilCaseReference;
 
@@ -46,6 +46,6 @@ Scenario('1v1 LR v LIP Spec case JBA marked paid in full', async ({api_ga}) => {
 
 AfterSuite(async ({ api_ga }) => {
   await api_ga.cleanUp();
-  await deleteAccount(config.applicantCitizenUser.email);
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.applicantCitizenUser.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

@@ -265,6 +265,12 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "UPDATE_CASE_DATA",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "WAIT_GA_DRAFT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

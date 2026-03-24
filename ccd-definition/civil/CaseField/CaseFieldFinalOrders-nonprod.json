@@ -1,0 +1,27 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderPenalNoticeTitle",
+    "Label": "## Penal notice (optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderPenalNoticeToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "AssistedOrderPenalNoticeToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "assistedOrderPenalNoticeContent",
+    "Label": "Note: Paragraph numbers and the parties' name to which the penal notice applies must be entered in the box below.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
