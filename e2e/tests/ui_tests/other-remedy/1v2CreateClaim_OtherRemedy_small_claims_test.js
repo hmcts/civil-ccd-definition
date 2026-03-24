@@ -6,6 +6,10 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP_OTHER_REMEDY';
 
 let caseNumber;
 
+if (config.runWAApiTest) {
+  validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
+}
+
 Feature('1v2 Different Solicitors small claims - Claim Journey Other Remedy').tag('@ui-other-remedy');
 
 Scenario('01 Claimant solicitor raises a claim against 2 defendants who have different solicitors ', async ({I, api}) => {
