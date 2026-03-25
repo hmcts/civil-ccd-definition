@@ -304,4 +304,5 @@ module.exports =  {
   },
 
   checkToggleEnabled: async (toggle) => checkFlagEnabled(toggle),
+  checkOtherRemedyEnabled: async () => checkFlagEnabled('other-remedy-enabled')
 };

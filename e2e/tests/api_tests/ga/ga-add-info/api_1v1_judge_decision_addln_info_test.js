@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 const config = require('../../../../config.js');
-const mpScenario = 'ONE_V_ONE';
 
+const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 Judge Make Decision Additional Information Required API tests').tag('@civil-service-nightly @api-ga-add-info');
@@ -36,4 +35,3 @@ Scenario('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({a
 AfterSuite(async ({api_ga}) => {
   await api_ga.cleanUp();
 });
-

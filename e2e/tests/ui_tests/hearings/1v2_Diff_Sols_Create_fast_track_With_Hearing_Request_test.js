@@ -31,7 +31,7 @@ Scenario('02 Request, Edit and Cancel a Hearing', async ({I}) => {
     await I.updateHearing();
     await I.cancelHearing();
   }
-}).retry(2);
+}).retry(0);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
