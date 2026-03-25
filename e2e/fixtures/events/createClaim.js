@@ -1,7 +1,7 @@
 const {listElement, buildAddress, date } = require('../../api/dataHelper');
 const uuid = require('uuid');
 const config = require('../../config.js');
-const { getClaimFee } = require('../../claimAmountAndFee');
+const { getClaimFee, getOtherRemedyFee} = require('../../claimAmountAndFee');
 
 const docUuid = uuid.v1();
 
@@ -359,6 +359,89 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmou
       };
     }
 
+    case 'ONE_V_ONE_OTHER_REMEDY': {
+      delete claimData.ClaimType;
+      return {
+        ...claimData,
+        ClaimTypeUnSpec: {
+          claimTypeUnSpec: 'HOUSING_DISREPAIR'
+        },
+        IsClaimDeclarationAdded: {
+          isClaimDeclarationAdded: 'Yes'
+        },
+        ClaimDeclarationDescription:{
+          claimDeclarationDescription: 'Claim declaration description'
+        },
+        IsHumanRightsActIssues:{
+          isHumanRightsActIssues: 'Yes'
+        },
+        ClaimPbaNumber: {
+          claimFee: getClaimFee(claimAmount),
+          otherRemedyFee: getOtherRemedyFee(claimAmount),
+          paymentTypePBA: 'PBAv3',
+        },
+      };
+    }
+
+    case 'ONE_V_TWO_TWO_LEGAL_REP_OTHER_REMEDY': {
+      delete claimData.ClaimType;
+      return {
+        ...claimData,
+        AddAnotherClaimant: {
+          addApplicant2: 'No'
+        },
+        AddAnotherDefendant: {
+          addRespondent2: 'Yes'
+        },
+        SecondDefendant: {
+          respondent2: respondent2WithPartyName,
+        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'Yes'
+        },
+        SameLegalRepresentative: {
+          respondent2SameLegalRepresentative: 'No'
+        },
+        SecondDefendantSolicitorOrganisation: {
+          respondent2OrgRegistered: 'Yes',
+          respondent2OrganisationPolicy: {
+            OrgPolicyReference: 'Defendant policy reference 2',
+            OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
+            Organisation:
+
+              {OrganisationID: config.secondDefendantSolicitorUser.orgId}
+            ,
+          },
+        },
+        SecondDefendantSolicitorServiceAddress: {
+          respondentSolicitor2ServiceAddress: buildAddress('service')
+        },
+        SecondDefendantSolicitorReference: {
+          respondentSolicitor2Reference: 'sol2reference'
+        },
+        SecondDefendantSolicitorEmail: {
+          respondentSolicitor2EmailAddress: 'civilunspecified@gmail.com'
+        },
+        ClaimTypeUnSpec: {
+          claimTypeUnSpec: 'HOUSING_DISREPAIR'
+        },
+        IsClaimDeclarationAdded: {
+          isClaimDeclarationAdded: 'Yes'
+        },
+        ClaimDeclarationDescription:{
+          claimDeclarationDescription: 'Claim declaration description'
+        },
+        IsHumanRightsActIssues:{
+          isHumanRightsActIssues: 'Yes'
+        },
+        ClaimPbaNumber: {
+          claimFee: getClaimFee(claimAmount),
+          otherRemedyFee: getOtherRemedyFee(claimAmount),
+          paymentTypePBA: 'PBAv3',
+        },
+      };
+    }
+
     case 'ONE_V_ONE':
     default: {
       return claimData;
@@ -370,7 +453,8 @@ const hasRespondent2 = (mpScenario) => {
   return mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP'
     || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP'
     || mpScenario ===  'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP'
-    || mpScenario ===  'ONE_V_TWO_LIPS';
+    || mpScenario ===  'ONE_V_TWO_LIPS'
+    || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP_OTHER_REMEDY';
 };
 
 module.exports = {
