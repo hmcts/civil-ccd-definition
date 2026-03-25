@@ -1,7 +1,7 @@
 module.exports = {
   getClaimFee: (amount) => {
     console.log('claim amount passed...', amount);
-    switch(amount) {
+    switch (amount) {
       case '3000':
         return {
           calculatedAmountInPence: '11500',
@@ -21,11 +21,17 @@ module.exports = {
           version: '3'
         };
       case '30000':
-          return {
-            calculatedAmountInPence: '150000',
-            code: 'FEE0209',
-            version: '3'
-          };
+        return {
+          calculatedAmountInPence: '150000',
+          code: 'FEE0209',
+          version: '3'
+        };
+      case '22000':
+        return {
+          calculatedAmountInPence: '110000',
+          code: 'FEE0209',
+          version: '3'
+        };
       case '200001':
         console.log('Use multi track claim fee');
         return {
@@ -39,6 +45,31 @@ module.exports = {
           calculatedAmountInPence: '495000',
           code: 'FEE0209',
           version: '3'
+        };
+      default:
+        console.log('Please validate the claim amount passed');
+    }
+  },
+  getOtherRemedyFee: (amount) => {
+    console.log('claim amount passed...', amount);
+    switch(amount) {
+      case '11000':
+        return {
+          calculatedAmountInPence: '37700',
+          code: 'FEE0450',
+          version: '5'
+        };
+      case '3000':
+        return {
+          calculatedAmountInPence: '37700',
+          code: 'FEE0450',
+          version: '5'
+        };
+      case '22000':
+        return {
+          calculatedAmountInPence: '37700',
+          code: 'FEE0450',
+          version: '5'
         };
       default:
         console.log('Please validate the claim amount passed');
