@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "isClaimDeclarationAdded",
-    "Label": "Do you want to add an other remedy e.g. declaration, injunction, recission?",
+    "Label": "Do you want to add an other remedy e.g. declaration, injunction, rescission?",
     "HintText": "If you file an application for a non-money claim (other than a claim for possession of land or recovery of goods) and a claim for damages, both court fees must be paid. \n\nFor example, county court fee (fee 1.5) plus relevant money claim fee (the court issued claim fee 1.1).",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
