@@ -17,6 +17,14 @@
   },
   {
     "ID": "SmallClaimsDocuments",
+    "ListElementCode": "documentsDate",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SmallClaimsDocuments",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",

@@ -17,15 +17,7 @@
   },
   {
     "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "text",
-    "FieldType": "Label",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "input2",
+    "ListElementCode": "creditHireEvidenceText",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
@@ -33,23 +25,7 @@
   },
   {
     "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "dateText",
-    "FieldType": "Label",
-    "ElementLabel": "This statement must be uploaded to the Digital Portal by 4pm on",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "date1",
-    "FieldType": "Date",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "SmallClaimsCreditHire",
-    "ListElementCode": "input3",
+    "ListElementCode": "creditHireDebarredText",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
