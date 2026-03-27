@@ -17,9 +17,11 @@ module.exports = {
     if (('no' === consentCheck && 'yes' === notice) && ('Vary payment terms of judgment' !== appType || 'Vary order' !== appType)) {
       I.see('£313.00');
     } else if ('Vary payment terms of judgment' === appType || 'Vary order' === appType) {
-      I.see('£15.00');
-    } else if ('Strike out,Summary judgment,Stay the claim,Extend time' === appType) {
-      I.see('£123.00');
+      console.log('The application type : ' + appType);
+       I.see('£15.00');
+    } else if ('Strike out,Summary judgment,Stay the claim,Extend time' === appType || 'Extend time' === appType){
+      console.log('The application type : ' + appType);
+      I.see('£110.00');
     } else {
       console.log('The application type : ' + appType);
       I.see('£123.00');
