@@ -6866,11 +6866,11 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "linkedDefendantEmail",
+    "CaseFieldID": "linkedDefendantEmail",
     "AccessControl": [
       {
         "UserRoles": ["caseworker-civil-systemupdate", "CITIZEN-DEFENDANT-PROFILE"],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": ["caseworker-civil-admin", "caseworker-civil-staff"],
