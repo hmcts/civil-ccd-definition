@@ -1,0 +1,26 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "assistedOrderPenalNoticeTitle",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "assistedOrderPenalNoticeToggle",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "assistedOrderPenalNoticeContent",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  }
+]

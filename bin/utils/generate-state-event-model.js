@@ -4,8 +4,26 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const STATE_FILE = path.join(ROOT, 'ccd-definition', 'State.json');
-const CASE_EVENT_DIR = path.join(ROOT, 'ccd-definition', 'CaseEvent');
+
+function resolveDefinitionRoot() {
+  const civilRoot = path.join(ROOT, 'ccd-definition', 'civil');
+  const legacyRoot = path.join(ROOT, 'ccd-definition');
+
+  if (fs.existsSync(path.join(civilRoot, 'CaseEvent'))) {
+    return civilRoot;
+  }
+
+  if (fs.existsSync(path.join(legacyRoot, 'CaseEvent'))) {
+    return legacyRoot;
+  }
+
+  throw new Error(`Could not locate CCD definition root under ${ROOT}`);
+}
+
+const DEFINITION_ROOT = resolveDefinitionRoot();
+const STATE_FILE = path.join(DEFINITION_ROOT, 'State.json');
+const CASE_EVENT_DIR = path.join(DEFINITION_ROOT, 'CaseEvent');
+const AUTH_DIR = path.join(DEFINITION_ROOT, 'AuthorisationCaseEvent');
 
 const SOURCE_DIRS = fs.readdirSync(CASE_EVENT_DIR)
   .filter(d => fs.statSync(path.join(CASE_EVENT_DIR, d)).isDirectory())
@@ -89,6 +107,36 @@ function readEventFiles() {
   return events;
 }
 
+function parseAuthorisations() {
+  const roleMap = {};
+  const files = fs.readdirSync(AUTH_DIR).filter(f => f.endsWith('.json'));
+  for (const file of files) {
+    let content;
+    try {
+      content = JSON.parse(fs.readFileSync(path.join(AUTH_DIR, file), 'utf8'));
+    } catch {
+      continue;
+    }
+    const items = Array.isArray(content) ? content : [content];
+    for (const item of items) {
+      const eventId = item.CaseEventID;
+      if (!eventId) continue;
+      if (!roleMap[eventId]) roleMap[eventId] = new Set();
+
+      if (item.AccessControl) {
+        for (const ac of item.AccessControl) {
+          if (ac.CRUD && ac.CRUD.includes('C')) {
+            for (const role of ac.UserRoles) roleMap[eventId].add(role);
+          }
+        }
+      } else if (item.UserRole && item.CRUD && item.CRUD.includes('C')) {
+        roleMap[eventId].add(item.UserRole);
+      }
+    }
+  }
+  return roleMap;
+}
+
 function computeEdges(events) {
   const edges = [];
 
@@ -134,14 +182,19 @@ function main() {
 
   const states = parseStates();
   const events = readEventFiles();
+  const authMap = parseAuthorisations();
+  for (const ev of events) {
+    const roles = authMap[ev.id];
+    ev.createRoles = roles ? [...roles].sort() : [];
+  }
   const edges = computeEdges(events);
   const summary = computeSummary(states, events, edges);
 
   const model = {
     generatedAt: new Date().toISOString(),
     source: {
-      stateFile: 'ccd-definition/State.json',
-      caseEventDir: 'ccd-definition/CaseEvent',
+      stateFile: path.relative(ROOT, STATE_FILE),
+      caseEventDir: path.relative(ROOT, CASE_EVENT_DIR),
     },
     summary,
     states,

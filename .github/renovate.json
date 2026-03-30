@@ -10,6 +10,7 @@
   "automergeSchedule": ["after 8am and before 11am every weekday"],
   "schedule": ["after 8am and before 11am every weekday"],
   "rebaseWhen": "conflicted",
+  "automergeStrategy": "squash",
   "prConcurrentLimit": 5,
   "helmv3": {
     "bumpVersion": "patch"
@@ -39,7 +40,57 @@
       "groupSlug": "helm-charts",
       "automerge": true,
       "automergeType": "pr",
+      "automergeSchedule": ["before 4pm every weekday"]
+    },
+    {
+      "matchPackageNames": ["@playwright/test", "playwright-core", "@axe-core/playwright"],
+      "groupName": "Playwright",
+      "groupSlug": "playwright",
+      "automerge": false,
+      "automergeType": "pr",
       "automergeSchedule": ["before 2pm every weekday"]
+    },
+    {
+      "matchPackagePatterns": ["^allure-"],
+      "groupName": "Allure reporting",
+      "groupSlug": "allure",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 4pm every weekday"]
+    },
+    {
+      "matchPackageNames": ["eslint", "typescript-eslint"],
+      "matchPackagePatterns": ["^@eslint/", "^@typescript-eslint/", "^eslint-"],
+      "groupName": "ESLint",
+      "groupSlug": "eslint",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 2pm every weekday"]
+    },
+    {
+      "matchPackageNames": ["typescript"],
+      "matchPackagePatterns": ["^@types/"],
+      "groupName": "TypeScript",
+      "groupSlug": "typescript",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 4pm every weekday"]
+    },
+    {
+      "matchPackagePatterns": ["^org\\.junit\\.", "^org\\.slf4j:"],
+      "groupName": "Java dependencies",
+      "groupSlug": "java-deps",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 4pm every weekday"]
+    },
+    {
+      "matchPackageNames": ["node", "gradle", "yarn"],
+      "groupName": "Build tools",
+      "groupSlug": "build-tools",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeSchedule": ["before 4pm every weekday"]
     }
   ]
 }

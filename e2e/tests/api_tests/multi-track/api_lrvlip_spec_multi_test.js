@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const { deleteAccount, createAccount } = require('../../../api/idamHelper');
+const { deleteCitizenAccount, createAccount } = require('../../../api/idamHelper');
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
 let caseId, taskId, takeCaseOfflineTaskeExpectedTask;
 if (config.runWAApiTest) {
@@ -7,7 +7,7 @@ if (config.runWAApiTest) {
 }
 const claimType = 'MULTI';
 
-Feature('1v1 LR v LiP spec multi track api journey').tag('@api-nightly-prod @api-multi-track');
+Feature('1v1 LR v LiP spec multi track api journey').tag('@civil-service-nightly @api-multi-track');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -30,5 +30,5 @@ Scenario('1v1 LR v LiP multi track', async ({ api_spec_cui, WA}) => {
 
 AfterSuite(async ({ api_spec_cui }) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

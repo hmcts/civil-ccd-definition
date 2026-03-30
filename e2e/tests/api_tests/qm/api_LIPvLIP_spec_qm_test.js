@@ -1,12 +1,12 @@
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 const { PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
 const {respondToQueryAdminTask } = require('../../../fixtures/wa/respondToQueryTasks');
 const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQueriesHelper');
 
 let caseId;
 
-Feature('LR v LIP query management spec api journey').tag('@api-nightly-prod @api-qm');
+Feature('LR v LIP query management spec api journey').tag('@civil-service-nightly @api-qm');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
@@ -31,6 +31,6 @@ Scenario('LR v LIP query management spec', async ({ api_spec_cui, qmSteps }) => 
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.applicantCitizenUser.email);
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.applicantCitizenUser.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

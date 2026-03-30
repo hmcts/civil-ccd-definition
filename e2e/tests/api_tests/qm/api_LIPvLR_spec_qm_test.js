@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 const { PUBLIC_QUERY} = require('../../../fixtures/queryTypes');
 const {respondToQueryCTSCTask } = require('../../../fixtures/wa/respondToQueryTasks');
 const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQueriesHelper');
@@ -7,7 +7,7 @@ const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQ
 const claimType = 'SmallClaims';
 let caseId;
 
-Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@api-nightly-prod');
+Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@civil-service-nightly');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
@@ -32,6 +32,6 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled', async ({n
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.applicantCitizenUser.email);
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.applicantCitizenUser.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

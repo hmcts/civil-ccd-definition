@@ -1,12 +1,12 @@
 
 
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 
 const claimType = 'SmallClaims';
 let caseId;
 
-Feature('1vLIP spec api claim discontinuance journey').tag('@api-nightly-prod @api-discontinue-claim');
+Feature('1vLIP spec api claim discontinuance journey').tag('@civil-service-nightly @api-discontinue-claim');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -22,5 +22,5 @@ Scenario('Discontinue claim 1v1 LR v LiP defendant and claimant response - claim
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

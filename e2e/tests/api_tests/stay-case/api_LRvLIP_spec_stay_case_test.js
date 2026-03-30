@@ -1,11 +1,11 @@
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 
 let claimRef;
 const claimType = 'SmallClaims';
 let carmEnabled = false;
 
-Feature('LR v LIP spec stay case api journey').tag('@api-nightly-prod @api-stay-case');
+Feature('LR v LIP spec stay case api journey').tag('@civil-service-nightly @api-stay-case');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -28,5 +28,5 @@ Scenario('LR v LIP spec stay case', async ({api_spec_cui}) => {
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

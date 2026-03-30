@@ -2,13 +2,14 @@ const { expect } = require('chai');
 const { uniqWith } = require('lodash');
 const {
   isNotEmpty,
-  noDuplicateFound
+  noDuplicateFound,
+  isValidCaseTypeId
 } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.ID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+    return isValidCaseTypeId()(v);
   });
   expect(row.SecurityClassification).to.eq('Public');
   expect(row.Name).to.be.a('string').and.satisfy(isNotEmpty());

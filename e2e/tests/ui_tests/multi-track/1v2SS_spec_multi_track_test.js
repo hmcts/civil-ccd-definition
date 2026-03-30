@@ -5,7 +5,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
-Feature('1v2SS spec multi track journey').tag('@ui-nightly-prod @ui-multi-track');
+Feature('1v2SS spec multi track journey').tag('@civil-ccd-nightly @ui-multi-track');
 
 Scenario('1v2SS spec multi track', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';
