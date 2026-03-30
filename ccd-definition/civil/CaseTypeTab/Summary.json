@@ -127,13 +127,5 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForTransfer",
     "TabFieldDisplayOrder": 19
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "linkedDefendantEmail",
-    "TabFieldDisplayOrder": 20
   }
 ]

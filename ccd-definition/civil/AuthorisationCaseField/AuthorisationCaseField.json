@@ -6863,19 +6863,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "linkedDefendantEmail",
-    "AccessControl": [
-      {
-        "UserRoles": ["caseworker-civil-systemupdate", "CITIZEN-DEFENDANT-PROFILE"],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": ["caseworker-civil-admin", "caseworker-civil-staff"],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
