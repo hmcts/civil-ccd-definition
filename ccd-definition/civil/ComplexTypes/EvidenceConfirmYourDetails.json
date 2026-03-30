@@ -18,7 +18,7 @@
   {
     "ID": "EvidenceConfirmYourDetails",
     "ListElementCode": "email",
-    "FieldType": "Email",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "ElementLabel": "Email",
     "Searchable": "N"
