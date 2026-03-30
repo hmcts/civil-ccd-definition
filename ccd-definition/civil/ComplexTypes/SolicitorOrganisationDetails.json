@@ -2,12 +2,11 @@
   {
     "ID": "SolicitorOrganisationDetails",
     "ListElementCode": "email",
-    "FieldType": "Text",
+    "FieldType": "Email",
     "ElementLabel": "Email",
     "SecurityClassification": "Public",
     "Searchable": "Y",
-    "Max": 80,
-    "RegularExpression": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$|^$"
+    "Max": 80
   },
   {
     "ID": "SolicitorOrganisationDetails",
