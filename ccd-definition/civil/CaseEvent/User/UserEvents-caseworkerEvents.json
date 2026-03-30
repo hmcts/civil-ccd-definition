@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "STAY_CASE",
     "Name": "Stay case",
     "Description": "Stay the case",
@@ -15,7 +15,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "DISMISS_CASE",
     "Name": "Dismiss case",
     "Description": "Dismiss the case",
@@ -30,7 +30,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "MANAGE_STAY",
     "Name": "Manage stay",
     "Description": "Manage the stay",
@@ -45,7 +45,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "MANAGE_STAY_WA",
     "Name": "Manage stay WA",
     "Description": " ",
@@ -59,7 +59,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CASE_PROCEEDS_IN_CASEMAN",
     "Name": "Case proceeds in Caseman",
     "Description": "Case will proceed offline in Caseman system",
@@ -79,7 +79,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "MANAGE_CONTACT_INFORMATION",
     "Name": "Manage Contact Information",
     "Description": "Updated party contact details",
@@ -98,7 +98,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "AMEND_PARTY_DETAILS",
     "Name": "Amend party details",
     "Description": "Update defendant and claimant solicitor email addresses",
@@ -117,7 +117,7 @@
     "EventEnablingCondition": "anyRepresented != \"No\" AND preStayState != \"IN_MEDIATION\" AND preStayState != \"HEARING_READINESS\" AND preStayState != \"PREPARE_FOR_HEARING_CONDUCT_HEARING\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "COURT_OFFICER_ORDER",
     "Name": "Make a Court officer order",
     "Description": "Make a Court officer order",
@@ -135,7 +135,7 @@
     "EventEnablingCondition": "eaCourtLocation != \"No\" AND preStayState != \"IN_MEDIATION\" AND preStayState != \"JUDICIAL_REFERRAL\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_AND_REPLY",
     "Name": "Send and reply to messages",
     "Description": "Send and reply to messages",
@@ -153,7 +153,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CONFIRM_ORDER_REVIEW",
     "Name": "Confirm order review",
     "Description": "Confirm order review",
@@ -171,7 +171,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "ORDER_REVIEW_OBLIGATION_CHECK",
     "Name": "Order Review Obligation Check",
     "Description": "Order Review Obligation Check",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "stayCaseText",
     "AccessControl": [
       {
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissText",
     "AccessControl": [
       {
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "preStayState",
     "AccessControl": [
       {
@@ -47,7 +47,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseStayDate",
     "AccessControl": [
       {
@@ -68,7 +68,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayOption",
     "AccessControl": [
       {
@@ -88,7 +88,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayUpdateRequestDate",
     "AccessControl": [
       {
@@ -102,7 +102,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayJudicialReferralInMediationText",
     "AccessControl": [
       {
@@ -115,7 +115,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayCaseProgressedHearingReadyPrepareForHearingText",
     "AccessControl": [
       {
@@ -128,7 +128,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayRequestUpdateText",
     "AccessControl": [
       {
@@ -141,7 +141,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayOptionsLabel",
     "AccessControl": [
       {
@@ -154,7 +154,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayRequestUpdateHintText",
     "AccessControl": [
       {
@@ -167,7 +167,7 @@
     ]
   },
   {
-  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseTypeID": "CIVIL",
   "CaseFieldID": "anyRepresented",
   "AccessControl": [
     {
@@ -183,7 +183,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "obligationDatePresent",
     "AccessControl": [
       {
@@ -196,7 +196,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "obligationData",
     "AccessControl": [
       {
@@ -210,7 +210,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "storedObligationData",
     "AccessControl": [
       {
@@ -230,7 +230,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isFinalOrder",
     "AccessControl": [
       {
@@ -249,7 +249,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "courtStaffNextSteps",
     "AccessControl": [
       {
@@ -262,7 +262,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "stillTasksText",
     "AccessControl": [
       {
@@ -275,7 +275,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sendAndReplyOption",
     "AccessControl": [
       {
@@ -290,7 +290,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "messagesToReplyTo",
     "AccessControl": [
       {
@@ -305,7 +305,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sendMessageMetadata",
     "AccessControl": [
       {
@@ -320,7 +320,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sendMessageContent",
     "AccessControl": [
       {
@@ -335,7 +335,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sendMessageContextTitle",
     "AccessControl": [
       {
@@ -350,7 +350,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sendMessageContentTitle",
     "AccessControl": [
       {
@@ -365,7 +365,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "messages",
     "AccessControl": [
       {
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "messageReplyMetadata",
     "AccessControl": [
       {
@@ -395,7 +395,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "messageHistory",
     "AccessControl": [
       {
@@ -410,7 +410,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "replyToMessageTitle",
     "AccessControl": [
       {
@@ -425,7 +425,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "messageHistoryLabel",
     "AccessControl": [
       {
@@ -440,7 +440,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "lastMessage",
     "AccessControl": [
       {
@@ -455,7 +455,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "lastMessageAllocatedTrack",
     "AccessControl": [
       {
@@ -470,7 +470,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "lastMessageJudgeLabel",
     "AccessControl": [
       {
@@ -485,7 +485,7 @@
     ]
   },
     {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseNotes",
     "AccessControl": [
       {
@@ -497,7 +497,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaEaCourtLocation",
     "AccessControl": [
       {
@@ -509,7 +509,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "obligationWAFlag",
     "AccessControl": [
       {
@@ -523,7 +523,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "previewCourtOfficerOrder",
     "AccessControl": [
       {
