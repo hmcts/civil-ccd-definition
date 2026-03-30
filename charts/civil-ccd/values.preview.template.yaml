@@ -67,14 +67,25 @@ civil-service:
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
       CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       COURT_LOCATION_WA_DMN_ENABLED: true
-      ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       CCD_EVENTS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
       CCD_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
       CCD_EVENTS_SERVICE_BUS_CONCURRENT_SESSIONS: 1
       CCD_EVENTS_SUBSCRIPTION_ENABLED: false
       CCD_EVENTS_SUBSCRIPTION_RETRY_DURATION: 60
-      RD_PROFESSIONAL_API_URL: http://${SERVICE_NAME}-wiremock
-      DOCMOSIS_TORNADO_URL: http://${SERVICE_NAME}-wiremock
+      HMC_API_URL: ${PREVIEW_HMC_API_URL}
+      ACA_SERVICE_API_BASEURL: ${PREVIEW_ACA_SERVICE_API_BASEURL}
+      RD_PROFESSIONAL_API_URL: ${PREVIEW_RD_PROFESSIONAL_API_URL}
+      RD_COMMONDATA_API_URL: ${PREVIEW_RD_COMMONDATA_API_URL}
+      DOCMOSIS_TORNADO_URL: ${PREVIEW_DOCMOSIS_TORNADO_URL}
+      SEND_LETTER_URL: ${PREVIEW_SEND_LETTER_URL}
+      FEES_API_URL: ${PREVIEW_FEES_API_URL}
+      CLAIM_STORE_URL: ${PREVIEW_CLAIM_STORE_URL}
+      ROLE_ASSIGNMENT_URL: ${PREVIEW_ROLE_ASSIGNMENT_URL}
+      GENAPP_LRD_URL: ${PREVIEW_GENAPP_LRD_URL}
+      SENDGRID_HOST: ${PREVIEW_SENDGRID_HOST}
+      RTL_API_URL: ${PREVIEW_RTL_API_URL}
+      SENDGRID_TEST: ${PREVIEW_SENDGRID_TEST}
+      MANAGEMENT_HEALTH_FEES_ENABLED: false
       OTHER_REMEDY_ENABLED: true
     #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
@@ -381,17 +392,112 @@ servicebus:
 
 wiremock:
   enabled: true
-  image: hmctsprod.azurecr.io/imported/wiremock/wiremock
+  image: "wiremock/wiremock"
   applicationPort: 8080
   imagePullPolicy: Always
-  releaseNameOverride : ${SERVICE_NAME}-wiremock
-  verbose: true
+  releaseNameOverride: ${SERVICE_NAME}-wiremock
+  verbose: false
   ingressHost: wiremock-${SERVICE_NAME}.preview.platform.hmcts.net
   volumes:
-    - name: wiremock-mocks
+    - name: wiremock-mappings
       configMap:
-        name: ${SERVICE_NAME}-wiremock-wm
+        name: ${SERVICE_NAME}-wiremock-mappings
   volumeMounts:
-    - name: wiremock-mocks
+    - name: wiremock-mappings
       mountPath: /home/wiremock/mappings
-      subPath: mappings
+
+wiremockMappings:
+  health-mock.json: |
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "urlPath": "/health"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/vnd.spring-boot.actuator.v3+json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+          "Expires": "0"
+        },
+        "body": "{\"status\":\"UP\",\"components\":{\"db\":{\"status\":\"UP\",\"details\":{\"database\":\"Wiremock\",\"validationQuery\":\"isValid()\"}},\"diskSpace\":{\"status\":\"UP\",\"details\":{\"total\":0,\"free\":0,\"threshold\":0,\"path\":\"/opt/app/.\",\"exists\":true}},\"livenessState\":{\"status\":\"UP\"},\"ping\":{\"status\":\"UP\"},\"readinessState\":{\"status\":\"UP\"}},\"groups\":[\"liveness\",\"readiness\"]}"
+      }
+    }
+  health-liveness.json: |
+    {
+      "name": "Health Liveness",
+      "request": {
+        "method": "GET",
+        "urlPath": "/health/liveness"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/vnd.spring-boot.actuator.v3+json"
+        },
+        "body": "{\"status\":\"UP\"}"
+      }
+    }
+  health-readiness.json: |
+    {
+      "name": "Health Readiness",
+      "request": {
+        "method": "GET",
+        "urlPath": "/health/readiness"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/vnd.spring-boot.actuator.v3+json"
+        },
+        "body": "{\"status\":\"UP\"}"
+      }
+    }
+  actuator-health.json: |
+    {
+      "name": "Actuator Health",
+      "request": {
+        "method": "GET",
+        "urlPath": "/actuator/health"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/vnd.spring-boot.actuator.v3+json",
+          "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+          "Expires": "0"
+        },
+        "body": "{\"status\":\"UP\",\"components\":{\"db\":{\"status\":\"UP\",\"details\":{\"database\":\"Wiremock\",\"validationQuery\":\"isValid()\"}},\"diskSpace\":{\"status\":\"UP\",\"details\":{\"total\":0,\"free\":0,\"threshold\":0,\"path\":\"/opt/app/.\",\"exists\":true}},\"livenessState\":{\"status\":\"UP\"},\"ping\":{\"status\":\"UP\"},\"readinessState\":{\"status\":\"UP\"}},\"groups\":[\"liveness\",\"readiness\"]}"
+      }
+    }
+  actuator-health-liveness.json: |
+    {
+      "name": "Actuator Health Liveness",
+      "request": {
+        "method": "GET",
+        "urlPath": "/actuator/health/liveness"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/vnd.spring-boot.actuator.v3+json"
+        },
+        "body": "{\"status\":\"UP\"}"
+      }
+    }
+  actuator-health-readiness.json: |
+    {
+      "name": "Actuator Health Readiness",
+      "request": {
+        "method": "GET",
+        "urlPath": "/actuator/health/readiness"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/vnd.spring-boot.actuator.v3+json"
+        },
+        "body": "{\"status\":\"UP\"}"
+      }
+    }

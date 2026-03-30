@@ -125,6 +125,10 @@ def checkForPrValuesLabel(branch_name, label) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values:" + label).contains("pr-values:" + label)
 }
 
+def checkForDisableWiremockLabel(branch_name) {
+  return new GithubAPI(this).getLabelsbyPattern(branch_name, "disableWiremock").contains("disableWiremock")
+}
+
 def createGithubRelease() {
   sh """
     set -e
@@ -227,6 +231,39 @@ withPipeline(type, product, component) {
     env.PR_FT_GROUPS = getFunctionalTestsGroups()
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+
+    def previewServiceName = "${product}-${component}-pr-${CHANGE_ID}"
+    def wiremockUrl = "http://${previewServiceName}-wiremock"
+    def disableWiremock = checkForDisableWiremockLabel(env.BRANCH_NAME)
+
+    env.PREVIEW_ACA_SERVICE_API_BASEURL = wiremockUrl
+    env.PREVIEW_HMC_API_URL = wiremockUrl
+    env.PREVIEW_RD_PROFESSIONAL_API_URL = wiremockUrl
+    env.PREVIEW_RD_COMMONDATA_API_URL = wiremockUrl
+    env.PREVIEW_DOCMOSIS_TORNADO_URL = wiremockUrl
+    env.PREVIEW_SEND_LETTER_URL = wiremockUrl
+    env.PREVIEW_FEES_API_URL = wiremockUrl
+    env.PREVIEW_CLAIM_STORE_URL = wiremockUrl
+    env.PREVIEW_ROLE_ASSIGNMENT_URL = wiremockUrl
+    env.PREVIEW_GENAPP_LRD_URL = wiremockUrl
+    env.PREVIEW_RTL_API_URL = wiremockUrl
+    env.PREVIEW_SENDGRID_HOST = "${previewServiceName}-wiremock"
+    env.PREVIEW_SENDGRID_TEST = "true"
+
+    if (disableWiremock) {
+      echo "disableWiremock label detected - pointing API URLs to AAT instances"
+      env.PREVIEW_ACA_SERVICE_API_BASEURL = "http://${previewServiceName}-aac-manage-case-assignment"
+      env.PREVIEW_RD_COMMONDATA_API_URL = "http://rd-commondata-api-aat.service.core-compute-aat.internal"
+      env.PREVIEW_SEND_LETTER_URL = "http://rpe-send-letter-service-aat.service.core-compute-aat.internal"
+      env.PREVIEW_FEES_API_URL = "http://fees-register-api-aat.service.core-compute-aat.internal"
+      env.PREVIEW_CLAIM_STORE_URL = "http://cmc-claim-store-aat.service.core-compute-aat.internal"
+      env.PREVIEW_ROLE_ASSIGNMENT_URL = "http://am-role-assignment-service-aat.service.core-compute-aat.internal"
+      env.PREVIEW_GENAPP_LRD_URL = "http://rd-location-ref-api-aat.service.core-compute-aat.internal"
+      env.PREVIEW_SENDGRID_HOST = ""
+      env.PREVIEW_SENDGRID_TEST = "false"
+    } else {
+      echo "disableWiremock label not detected - using wiremock URLs for API endpoints"
+    }
   }
 
   // onPR {

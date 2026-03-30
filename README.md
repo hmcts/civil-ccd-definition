@@ -55,6 +55,10 @@ The below labels are options to get the different services running on the PR
   "civilServicePr:????" label to point this deployment to a specific civil-service image,
   replace ???? with the correspondent civil-service PR number, e.g. civilServicePr:6215 .
 
+  "disableWiremock" label to disable WireMock stubs and point API endpoints to real AAT instances.
+  By default, preview environments use WireMock for external services (fees-api, send-letter, 
+  role-assignment, etc.). Add this label when you need to test against live AAT services.
+
 ```
 Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
 Please delete the same after use by running:
