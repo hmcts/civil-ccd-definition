@@ -12,7 +12,7 @@ Civil CCD Definition and E2E tests
 - [API Test Documentation](#api-test-documentation)
 - [UI Functional Test Group Documentation](#ui-test-documentation)
 - [API Functional Test Group Documentation](#api-test-documentation)
-
+ 
 ## Building and deploying the application
 
 ### Dependencies
