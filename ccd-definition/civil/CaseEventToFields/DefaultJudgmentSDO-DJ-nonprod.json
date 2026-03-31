@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialPPI",
+    "PageFieldDisplayOrder": 40,
+    "DisplayContext": "MANDATORY",
+    "PageID": "TrialHearing",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsPPI\""
+  }
+]
