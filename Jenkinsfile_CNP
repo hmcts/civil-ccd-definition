@@ -13,6 +13,7 @@ def component = "ccd"
 def camundaBranch = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
+def wiremockMappingsBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
@@ -267,6 +268,7 @@ withPipeline(type, product, component) {
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
       ./bin/add-org-roles-to-users.sh
+      ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
     """
       //uploadDmnDiagrams('preview',"${CHANGE_ID}")
@@ -325,6 +327,7 @@ withPipeline(type, product, component) {
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
+      ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
       ./bin/build-release-ccd-definition.sh staging
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
