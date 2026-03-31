@@ -35,45 +35,45 @@ Scenario('01 Applicant solicitor creates claim with claim type as Housing disrep
 
 }).retry(2);
 
-Scenario.skip('02 Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
+Scenario('02 Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaim();
   await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 }).retry(2);
 
-Scenario.skip('03 Applicant solicitor notifies defendant solicitor of claim details', async ({I}) => {
+Scenario('03 Applicant solicitor notifies defendant solicitor of claim details', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.notifyClaimDetails();
 }).retry(2);
 
-Scenario.skip('04 Defendant solicitor acknowledges claim', async ({I}) => {
+Scenario('04 Defendant solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');
 }).retry(2);
 
-Scenario.skip('05 Defendant solicitor requests deadline extension', async ({I}) => {
+Scenario('05 Defendant solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.informAgreedExtensionDate();
 }).retry(2);
 
-Scenario.skip('06 Defendant solicitor adds defendant litigation friend', async ({I}) => {
+Scenario('06 Defendant solicitor adds defendant litigation friend', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.addDefendantLitigationFriend();
 }).retry(2);
 
-Scenario.skip('07 Defendant solicitor responds to claim', async ({I}) => {
+Scenario('07 Defendant solicitor responds to claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({defendant1Response: 'fullDefence', claimValue: 25000});
 }).retry(2);
 
 
-Scenario.skip('08 Claimant solicitor responds to defence', async ({I}) => {
+Scenario('08 Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefence('ONE_V_ONE', 25000);
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
-Scenario.skip('09 Add case flags', async ({I}) => {
+Scenario('09 Add case flags', async ({I}) => {
   const caseFlags = [{
     partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
     details: [PARTY_FLAGS.vulnerableUser.value]
@@ -87,7 +87,7 @@ Scenario.skip('09 Add case flags', async ({I}) => {
   // await I.validateCaseFlags(caseFlags);
 }).retry(2);
 
-Scenario.skip('10 Manage case flags', async ({I}) => {
+Scenario('10 Manage case flags', async ({I}) => {
   const caseFlags = [{
     partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
     flagType: 'Vulnerable user',
@@ -103,7 +103,7 @@ Scenario.skip('10 Manage case flags', async ({I}) => {
   // await I.validateUpdatedCaseFlags(caseFlags);
 }).retry(2);
 
-Scenario.skip('11 Judge triggers SDO', async ({I, api, WA}) => {
+Scenario('11 Judge triggers SDO', async ({I, api, WA}) => {
   await I.login(config.judgeUserWithRegionId1);
   let taskId;
   if (config.runWAApiTest) {
