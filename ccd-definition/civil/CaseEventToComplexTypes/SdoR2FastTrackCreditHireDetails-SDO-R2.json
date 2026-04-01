@@ -21,7 +21,8 @@
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "sdoR2FastTrackCreditHireDetails.date1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "SdoR2FastTrackCreditHireDetails",
@@ -29,7 +30,8 @@
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "sdoR2FastTrackCreditHireDetails.input3",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "SdoR2FastTrackCreditHireDetails",
