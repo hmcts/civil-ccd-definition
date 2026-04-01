@@ -25,6 +25,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "caseStayDate",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "manageStayDummyField",
     "Label": " ",
     "FieldType": "Text",
