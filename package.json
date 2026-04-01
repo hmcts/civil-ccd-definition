@@ -118,7 +118,6 @@
     "test:2v1_FAST": "yarn playwright install && CLAIM_TYPE=2v1 CASE_TYPE=UNSPECIFIED CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL TYPE_OF_CLAIM=PERSONAL_INJURY SUB_TYPE=NOISE_INDUCED_HEARING_LOSS npx playwright test --headed --project chromium --grep @unspecified",
     "test:1v2SS_FAST": "yarn playwright install && CLAIM_TYPE=1v2SS CASE_TYPE=UNSPECIFIED CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL TYPE_OF_CLAIM=PERSONAL_INJURY SUB_TYPE=NOISE_INDUCED_HEARING_LOSS npx playwright test --headed --project chromium --grep @unspecified",
     "test:1v2DS_FAST": "yarn playwright install && CLAIM_TYPE=1v2DS CASE_TYPE=UNSPECIFIED CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL TYPE_OF_CLAIM=PERSONAL_INJURY SUB_TYPE=NOISE_INDUCED_HEARING_LOSS npx playwright test --headed --project chromium --grep @unspecified",
-
     "prepare": "husky"
   },
   "license": "MIT",

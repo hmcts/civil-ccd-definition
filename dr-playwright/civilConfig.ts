@@ -9,7 +9,7 @@ const defaultPassword = process.env.DEFAULT_PASSWORD;
 
 environment: process.env.ENVIRONMENT as Environment
 
-export const envUrl: string = process.env.ENVIRONMENT === 'preview' ? 'https://xui-ia-case-api-pr-3056.preview.platform.hmcts.net' : (process.env.ENVIRONMENT === 'demo' ? 'https://manage-case.demo.platform.hmcts.net' : 'https://manage-case.aat.platform.hmcts.net');
+export const envUrl: string = process.env.ENVIRONMENT === 'preview' ? process.env.URL : (process.env.ENVIRONMENT === 'demo' ? 'https://manage-case.demo.platform.hmcts.net' : 'https://manage-case.aat.platform.hmcts.net');
 
 
 export const createCaseUnspecified = {
