@@ -702,6 +702,13 @@
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
       }
     ]
   },
