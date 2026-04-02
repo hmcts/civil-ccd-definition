@@ -4,7 +4,7 @@
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "trialPPI",
     "PageFieldDisplayOrder": 40,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "TrialHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
