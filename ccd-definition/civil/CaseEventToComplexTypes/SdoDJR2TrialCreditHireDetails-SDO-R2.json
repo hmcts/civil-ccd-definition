@@ -13,8 +13,7 @@
     "CaseFieldID": "sdoDJR2TrialCreditHire",
     "ListElementCode": "sdoDJR2TrialCreditHireDetails.input3",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SdoDJR2TrialCreditHireDetails",
