@@ -21,7 +21,8 @@
     "CaseFieldID": "sdoDJR2TrialCreditHire",
     "ListElementCode": "sdoDJR2TrialCreditHireDetails.date1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "SdoDJR2TrialCreditHireDetails",
