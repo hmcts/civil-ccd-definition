@@ -20,8 +20,8 @@ module.exports = {
       fee = '£313.00';
     } else if ('Vary payment terms of judgment' === appType || 'Vary order' === appType) {
       fee = '£15.00';
-    } else if ('Strike out,Summary judgment,Stay the claim,Extend time' === appType){
-      fee = '£123.00';
+    } else if ('Strike out,Summary judgment,Stay the claim,Extend time' === appType || 'Extend time' === appType){
+      fee = '£110.00';
     } else {
       console.log('The application type : ' + appType);
       fee = '£123.00';
