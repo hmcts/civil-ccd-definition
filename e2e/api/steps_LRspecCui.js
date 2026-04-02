@@ -236,7 +236,7 @@ module.exports = {
     await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
     claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
-    
+
     await waitForFinishedBusinessProcess(caseId);
     if (claimType !== 'pinInPost') {
       await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
@@ -338,12 +338,12 @@ module.exports = {
       eventName = 'CREATE_SDO';
       disposalData = data.CREATE_SDO_FAST_TRACK();
       if(await checkOtherRemedyEnabled())
-        disposalData = data.CREATE_SDO_FAST_TRACK_OTHER_REMEDY;
+        disposalData = data.CREATE_SDO_FAST_TRACK_OTHER_REMEDY();
     } else {
       eventName = 'CREATE_SDO';
       disposalData = data.CREATE_SDO();
       if(await checkOtherRemedyEnabled())
-        disposalData = data.CREATE_SDO_OTHER_REMEDY;
+        disposalData = data.CREATE_SDO_OTHER_REMEDY();
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
