@@ -30,7 +30,7 @@
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "sdoR2FastTrackCreditHireDetails.input3",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SdoR2FastTrackCreditHireDetails",
