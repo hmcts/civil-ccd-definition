@@ -7945,12 +7945,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundleToggle",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDebtPageLabel2",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"

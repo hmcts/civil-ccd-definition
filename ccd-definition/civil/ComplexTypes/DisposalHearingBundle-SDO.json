@@ -22,14 +22,5 @@
     "ElementLabel": "#### Select bundle type",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "ID": "DisposalHearingBundle",
-    "ListElementCode": "type",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalHearingBundleType",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]

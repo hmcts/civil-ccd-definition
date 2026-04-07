@@ -100,7 +100,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMedicalEvidenceDJ",
-    "Label": "Medical evidence",
+    "Label": "Expert evidence",
     "FieldType": "DisposalHearingMedicalEvidenceDJ",
     "SecurityClassification": "Public",
     "Searchable": "N"

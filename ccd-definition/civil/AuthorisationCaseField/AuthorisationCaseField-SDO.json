@@ -705,19 +705,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundleToggle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingBundle",
     "AccessControl": [
       {
