@@ -224,12 +224,15 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
     sdoR2SmallClaimsWitnessStatements: (data) => {
       return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
       && typeof data.isRestrictWitness === 'string'
       && typeof data.isRestrictPages === 'string'
         && typeof data.text === 'string';
     },
     sdoR2SmallClaimsUploadDoc: (data) => {
-      return typeof data.sdoUploadOfDocumentsTxt === 'string';
+      return typeof data.sdoUploadOfDocumentsTxt === 'string'
+        && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
+        && typeof data.uploadDocWarning === 'string';
     },
     sdoR2SmallClaimsHearing: (data) => {
       return typeof data.trialOnOptions === 'string'
@@ -1647,7 +1650,9 @@ module.exports = {
             'INCLUDE'
           ],
           sdoR2UploadOfDocuments: {
-            sdoUploadOfDocumentsTxt: 'Each party must upload to the Digital Portal copies of those documents on which they wish to rely at trial 21 days before the hearing.'
+            sdoUploadOfDocumentsTxt: 'Each party must upload to the Digital Portal copies of those documents on which they wish to rely at trial 21 days before the hearing.',
+            deadlineDate: date(+28),
+            uploadDocWarning: 'Evidence will not be permitted at trial from a witness whose statement has not been uploaded in accordance with the Order, except with permission from the Court.'
           },
           sdoR2WitnessesOfFact: {
             sdoR2RestrictWitness: {

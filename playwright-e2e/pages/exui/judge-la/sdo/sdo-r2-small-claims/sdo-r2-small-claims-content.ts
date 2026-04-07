@@ -29,6 +29,9 @@ export const inputs = {
       label: 'Statements of witnesses',
       selector: '#sdoR2SmallClaimsWitnessStatements_sdoStatementOfWitness',
     },
+    deadlineDate: {
+      selectorKey: 'deadlineDate',
+    },
     numClaimantWitnesses: {
       label: 'Limit number of witnesses (claimant)',
       hintText: 'For example,4',
@@ -60,7 +63,15 @@ export const inputs = {
   },
   uploadOfDocuments: {
     label: 'Upload of documents to be relied upon',
-    selector: '#sdoR2SmallClaimsUploadDoc_sdoUploadOfDocumentsTxt',
+    description: {
+      selector: '#sdoR2SmallClaimsUploadDoc_sdoUploadOfDocumentsTxt',
+    },
+    deadlineDate: {
+      selectorKey: 'deadlineDate',
+    },
+    warning: {
+      selector: '#sdoR2SmallClaimsUploadDoc_uploadDocWarning',
+    },
   },
   hearing: {
     listFrom: {
