@@ -61,7 +61,6 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.input3 === 'string'
         && typeof data.input4 === 'string';
     },
-    disposalHearingBundleToggle: (data) => Array.isArray(data),
     smallClaimsCreditHire: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
@@ -75,9 +74,6 @@ const calculatedClaimsTrackWOSum = {
     smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
     smallClaimsHearingToggle: (data) => Array.isArray(data),
     fastTrackMethodToggle: (data) => Array.isArray(data),
-    disposalHearingBundle: (data) => {
-      return typeof data.input === 'string';
-    },
     fastTrackWitnessOfFact: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input4 === 'string'
@@ -93,7 +89,6 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.input4 === 'string';
     },
     fastTrackTrialToggle: (data) => Array.isArray(data),
-    fastTrackTrialBundleToggle: (data) => Array.isArray(data),
     fastTrackNotes: (data) => {
       return typeof data.input === 'string';
     },
@@ -318,13 +313,6 @@ module.exports = {
           },
           disposalHearingMethod: 'disposalHearingMethodTelephoneHearing',
           disposalHearingMethodTelephoneHearing: 'telephoneTheClaimant',
-          disposalHearingBundle: {
-            input: '',
-            type: [
-              'DOCUMENTS',
-              'SUMMARY'
-            ]
-          },
           disposalHearingAddNewDirections: [
             element({
               directionComment: 'string1'

@@ -198,14 +198,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingBundleDJ",
-    "Label": " ",
-    "FieldType": "DisposalHearingBundleDJ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingClaimSettlingDJ",
     "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement.",
     "FieldType": "Label",
@@ -587,15 +579,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingBundleDJToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "DisposalAndTrialHearingDJToggle",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "disposalHearingClaimSettlingDJToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -791,6 +774,5 @@
     "Searchable": "N"
   }
 ]
-
 
 
