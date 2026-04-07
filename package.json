@@ -186,6 +186,8 @@
     "**/*.{ts,tsx,js,mjs,cjs}": "eslint"
   },
   "resolutions": {
+    "axios@npm:^0.26.0": "npm:1.13.6",
+    "axios@npm:1.6.3": "npm:1.13.6",
     "minimatch": "^3.0.5"
   },
   "packageManager": "yarn@4.10.3"
