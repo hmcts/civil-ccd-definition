@@ -62,5 +62,22 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "label2",
+    "FieldType": "Label",
+    "ElementLabel": "#### Select bundle type",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FastTrackTrial",
+    "ListElementCode": "type",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "TrialHearingBundleType",
+    "ElementLabel": "Bundle type",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
