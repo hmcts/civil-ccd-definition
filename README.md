@@ -586,6 +586,20 @@ For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some m
 
 3 - When in XUI/CUI the case type will have an extension to your PR number added to it.
 
+
+## Introduction of *-testing.json file convention for CCD definitions
+
+A new convention for the CCD definitions files has been introduced.
+The new convention is to use the -testing.json suffix for definitions that are not to be used in production but will be used in AAT and Preview environments.
+
+| Pattern | Local | Preview | AAT | Production |
+| --- | --- | --- | --- | --- |
+| Base files | Yes | Yes | Yes | Yes |
+| *-prod.json | No | No | Yes | Yes |
+| *-testing.json | Yes | Yes | Yes | No |
+| *-nonprod.json | Yes | Yes | No | No |
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
