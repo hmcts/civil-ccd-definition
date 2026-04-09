@@ -99,14 +99,6 @@ export default class SdoR2SmallClaimsPage extends ExuiPage(BasePage) {
       'Make sure to upload the files as pdfs',
       inputs.uploadOfDocuments.description.selector,
     );
-    await this.dateFragment.enterDate(
-      DateHelper.addToToday({ days: 28, workingDay: true }),
-      inputs.uploadOfDocuments.deadlineDate.selectorKey,
-    );
-    await super.inputText(
-      'Documents must be uploaded in accordance with the order.',
-      inputs.uploadOfDocuments.warning.selector,
-    );
   }
 
   async addNewDirection() {

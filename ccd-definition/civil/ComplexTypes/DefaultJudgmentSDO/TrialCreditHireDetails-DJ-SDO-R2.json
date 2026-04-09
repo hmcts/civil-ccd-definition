@@ -17,6 +17,14 @@
   },
   {
     "ID": "SdoDJR2TrialCreditHireDetails",
+    "ListElementCode": "date1",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoDJR2TrialCreditHireDetails",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
     "ElementLabel": " ",

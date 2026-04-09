@@ -178,7 +178,8 @@ const calculatedClaimsTrackWOSum = {
     disposalHearingQuestionsToExpertsToggle: (data) => Array.isArray(data),
     smallClaimsDocuments: (data) => {
       return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string';
+        && typeof data.input2 === 'string'
+        && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/);
     },
     smallClaimsMethodToggle: (data) => Array.isArray(data),
     disposalHearingClaimSettlingToggle: (data) => Array.isArray(data)
@@ -240,9 +241,7 @@ const calculatedClaimsTrackDRH = {
         && typeof data.text === 'string';
     },
     sdoR2SmallClaimsUploadDoc: (data) => {
-      return typeof data.sdoUploadOfDocumentsTxt === 'string'
-        && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
-        && typeof data.uploadDocWarning === 'string';
+      return typeof data.sdoUploadOfDocumentsTxt === 'string';
     },
     sdoR2SmallClaimsHearing: (data) => {
       return typeof data.trialOnOptions === 'string'
@@ -410,7 +409,8 @@ module.exports = {
           smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
           smallClaimsDocuments: {
             input1: 'string',
-            input2: 'string'
+            input2: 'string',
+            deadlineDate: date(28)
           },
           smallClaimsWitnessStatement: {
             input1: 'string',
@@ -1722,9 +1722,7 @@ module.exports = {
             'INCLUDE'
           ],
           sdoR2UploadOfDocuments: {
-            sdoUploadOfDocumentsTxt: 'Each party must upload to the Digital Portal copies of those documents on which they wish to rely at trial 21 days before the hearing.',
-            deadlineDate: date(+28),
-            uploadDocWarning: 'Evidence will not be permitted at trial from a witness whose statement has not been uploaded in accordance with the Order, except with permission from the Court.'
+            sdoUploadOfDocumentsTxt: 'Each party must upload to the Digital Portal copies of those documents on which they wish to rely at trial 21 days before the hearing.'
           },
           sdoR2WitnessesOfFact: {
             sdoR2RestrictWitness: {

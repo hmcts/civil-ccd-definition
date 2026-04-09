@@ -808,22 +808,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SdoR2UploadOfDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2UploadOfDocuments",
-    "ListElementCode": "deadlineDate",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SdoR2UploadOfDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2UploadOfDocuments",
-    "ListElementCode": "uploadDocWarning",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "SmallClaimsFlightDelay",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsFlightDelay",

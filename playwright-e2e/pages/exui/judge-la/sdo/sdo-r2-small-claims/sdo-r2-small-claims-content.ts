@@ -66,12 +66,6 @@ export const inputs = {
     description: {
       selector: '#sdoR2SmallClaimsUploadDoc_sdoUploadOfDocumentsTxt',
     },
-    deadlineDate: {
-      selectorKey: 'deadlineDate',
-    },
-    warning: {
-      selector: '#sdoR2SmallClaimsUploadDoc_uploadDocWarning',
-    },
   },
   hearing: {
     listFrom: {
