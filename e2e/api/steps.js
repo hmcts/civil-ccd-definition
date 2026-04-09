@@ -1004,7 +1004,7 @@ module.exports = {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
     if (response === 'UNSUITABLE_FOR_SDO') {
-      eventName = 'NotSuitable_SDO';
+      eventName = 'NOT_SUITABLE_SDO';
     } else {
       eventName = 'CREATE_SDO';
     }
@@ -1297,7 +1297,7 @@ module.exports = {
     console.log(`case in Judicial Referral ${caseId}`);
     await apiRequest.setupTokens(user);
 
-    eventName = 'NotSuitable_SDO';
+    eventName = 'NOT_SUITABLE_SDO';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;

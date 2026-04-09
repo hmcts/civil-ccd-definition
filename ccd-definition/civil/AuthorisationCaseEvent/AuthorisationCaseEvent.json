@@ -1011,7 +1011,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UpdateNextHearingInfo",
+    "CaseEventID": "UPDATE_NEXT_HEARING_INFO",
     "AccessControl": [
       {
         "UserRoles": [

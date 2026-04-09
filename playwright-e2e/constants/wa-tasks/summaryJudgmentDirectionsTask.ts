@@ -19,7 +19,7 @@ const task: WATask = {
   work_type_id: 'decision_making_work',
   work_type_label: 'Decision-making work',
   description:
-    '[Directions after Judgment (Damages)](/cases/case-details/${[CASE_REFERENCE]}/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NotSuitable_SDO/NotSuitable_SDONotSuitableSDO)',
+    '[Directions after Judgment (Damages)](/cases/case-details/${[CASE_REFERENCE]}/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NOT_SUITABLE_SDO/NOT_SUITABLE_SDONotSuitableSDO)',
   role_category: 'JUDICIAL',
   minor_priority: 500,
   major_priority: 5000,

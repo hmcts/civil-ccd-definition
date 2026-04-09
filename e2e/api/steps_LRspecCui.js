@@ -296,7 +296,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     if (typeOfData === 'FA_ACCEPT_CCJ' || typeOfData === 'PA_ACCEPT_CCJ') {
-      expectedEndState = 'All_FINAL_ORDERS_ISSUED';
+      expectedEndState = 'ALL_FINAL_ORDERS_ISSUED';
     }
     if (expectedEndState) {
       const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
@@ -321,7 +321,7 @@ module.exports = {
     for (let pageId of Object.keys(payload.userInput)) {
       await assertValidData(payload, pageId);
     }
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '# Judgment marked as paid in full',
       body: 'The judgment has been marked as paid in full'
     }, true);
@@ -333,7 +333,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     let disposalData;
     if (response === 'UNSUITABLE_FOR_SDO') {
-      eventName = 'NotSuitable_SDO';
+      eventName = 'NOT_SUITABLE_SDO';
     } else if (response === 'CREATE_FAST') {
       eventName = 'CREATE_SDO';
       disposalData = data.CREATE_SDO_FAST_TRACK();
@@ -819,7 +819,7 @@ const assertValidData = async (data, pageId) => {
     data = await updateCaseDataWithPlaceholders(data, document);
   }
   let userData;
-  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' || eventName === 'HEARING_SCHEDULED'
+  if (eventName === 'CREATE_SDO' || eventName === 'NOT_SUITABLE_SDO' || eventName === 'HEARING_SCHEDULED'
   || eventName === 'GENERATE_DIRECTIONS_ORDER') {
     userData = data.valid[pageId];
   } else {

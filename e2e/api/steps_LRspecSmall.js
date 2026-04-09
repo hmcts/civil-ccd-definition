@@ -319,7 +319,7 @@ module.exports = function (){
     await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
-      eventName = 'NotSuitable_SDO';
+      eventName = 'NOT_SUITABLE_SDO';
     } else {
       eventName = 'CREATE_SDO';
     }
@@ -359,7 +359,7 @@ module.exports = function (){
     console.log(`case in CASE PROGRESSION  ${caseId}`);
     await apiRequest.setupTokens(user);
 
-    eventName = 'NotSuitable_SDO';
+    eventName = 'NOT_SUITABLE_SDO';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
@@ -390,7 +390,7 @@ module.exports = function (){
       console.log(`case in CASE PROGRESSION  ${caseId}`);
       await apiRequest.setupTokens(user);
 
-      eventName = 'NotSuitable_SDO';
+      eventName = 'NOT_SUITABLE_SDO';
       let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
       delete returnedCaseData['SearchCriteria'];
       caseData = returnedCaseData;
@@ -407,7 +407,7 @@ module.exports = function (){
       await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
-      eventName = 'NotSuitable_SDO';
+      eventName = 'NOT_SUITABLE_SDO';
     } else {
       eventName = 'CREATE_SDO';
     }
@@ -562,7 +562,7 @@ const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
   let userData;
 
-  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' ) {
+  if (eventName === 'CREATE_SDO' || eventName === 'NOT_SUITABLE_SDO' ) {
     userData = data.valid[pageId];
   } else {
     userData = data.userInput[pageId];
@@ -616,7 +616,7 @@ const assertNotValidData = async (data, pageId) => {
 
   let userData;
 
-  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO') {
+  if (eventName === 'CREATE_SDO' || eventName === 'NOT_SUITABLE_SDO') {
     userData = data.valid[pageId];
   } else {
     userData = data.userInput[pageId];

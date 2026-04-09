@@ -2,7 +2,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "queryManagementRaiseQuery",
+    "ID": "QUERY_MANAGEMENT_RAISE_QUERY",
     "Name": "Raise a new query",
     "Description": "Raise a new query",
     "DisplayOrder": 1,
@@ -20,7 +20,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
-    "ID": "queryManagementRespondQuery",
+    "ID": "QUERY_MANAGEMENT_RESPOND_QUERY",
     "Name": "Respond to a query",
     "Description": "Respond to a query",
     "DisplayOrder": 2,

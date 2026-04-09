@@ -15,7 +15,7 @@ const task: WATask = {
   case_management_category: 'Civil',
   work_type_id: 'decision_making_work',
   work_type_label: 'Decision-making work',
-  description: '[Directions - Small Claims Track](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOSmallClaims)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NotSuitable_SDO/NotSuitable_SDONotSuitableSDO)',
+  description: '[Directions - Small Claims Track](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOSmallClaims)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NOT_SUITABLE_SDO/NOT_SUITABLE_SDONotSuitableSDO)',
   role_category: 'JUDICIAL',
   minor_priority: 500,
   major_priority: 5000

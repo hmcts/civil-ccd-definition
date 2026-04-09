@@ -112,7 +112,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NotSuitable_SDO",
+    "CaseEventID": "NOT_SUITABLE_SDO",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 14,
@@ -182,7 +182,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UpdateNextHearingInfo",
+    "CaseEventID": "UPDATE_NEXT_HEARING_INFO",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,

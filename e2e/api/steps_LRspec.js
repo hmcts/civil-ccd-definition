@@ -1034,7 +1034,7 @@ module.exports = {
     carmEnabled ? validState = 'IN_MEDIATION' : validState;
 
     if (response === 'FA_ACCEPT_CCJ') {
-      validState = 'All_FINAL_ORDERS_ISSUED';
+      validState = 'ALL_FINAL_ORDERS_ISSUED';
     }
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
@@ -1199,7 +1199,7 @@ module.exports = {
 
       state = isDivergent
         ? 'PROCEEDS_IN_HERITAGE_SYSTEM'
-        : 'All_FINAL_ORDERS_ISSUED';
+        : 'ALL_FINAL_ORDERS_ISSUED';
       await validateEventPagesDefaultJudgments(DJSpec, scenario,isDivergent);
     } else if (scenario === 'TWO_V_ONE') {
       registrationData = {
@@ -1212,7 +1212,7 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-        state = 'All_FINAL_ORDERS_ISSUED';
+        state = 'ALL_FINAL_ORDERS_ISSUED';
 
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario,isDivergent);
     } else {
@@ -1226,7 +1226,7 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-      state = 'All_FINAL_ORDERS_ISSUED';
+      state = 'ALL_FINAL_ORDERS_ISSUED';
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario,isDivergent);
     }
 
@@ -1255,7 +1255,7 @@ module.exports = {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
     if (response === 'UNSUITABLE_FOR_SDO') {
-      eventName = 'NotSuitable_SDO';
+      eventName = 'NOT_SUITABLE_SDO';
     } else {
       eventName = 'CREATE_SDO';
     }
@@ -1527,7 +1527,7 @@ module.exports = {
       await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO_SPEC(whyRecorded, paymentPlanSelection));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
@@ -1551,7 +1551,7 @@ module.exports = {
       await validateEventPages(data.EDIT_JUDGMENT_ONE_V_TWO_SPEC(whyRecorded, paymentPlanSelection));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '# Judgment edited',
       body: 'The judgment has been edited'
     }, true);
@@ -1559,7 +1559,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  setAsideJudgment: async (user, setAsideReason, setAsideOrderType,expectedState = 'All_FINAL_ORDERS_ISSUED') => {
+  setAsideJudgment: async (user, setAsideReason, setAsideOrderType,expectedState = 'ALL_FINAL_ORDERS_ISSUED') => {
     console.log(`case in All set aside judgment ${caseId}`);
     console.log(`calling setup token *** setAside case ${caseId}  user : ${user.email}`);
     await apiRequest.setupTokens(user);
@@ -1587,7 +1587,7 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPages(data.REFER_JUDGE_DEFENCE_RECEIVED());
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '# The case has been referred to a judge for a decision',
       body: ''
     }, true);
@@ -1606,7 +1606,7 @@ module.exports = {
 
     await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '# Judgment marked as paid in full',
       body: 'The judgment has been marked as paid in full'
     }, true);
@@ -1617,7 +1617,7 @@ module.exports = {
     console.log(`case in Judicial Referral ${caseId}`);
     await apiRequest.setupTokens(user);
 
-    eventName = 'NotSuitable_SDO';
+    eventName = 'NOT_SUITABLE_SDO';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;

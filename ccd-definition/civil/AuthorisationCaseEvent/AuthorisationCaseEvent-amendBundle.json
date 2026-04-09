@@ -21,7 +21,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "asyncStitchingComplete",
+    "CaseEventID": "ASYNC_STITCHING_COMPLETE",
     "AccessControl": [
       {
         "UserRoles": [
