@@ -97,52 +97,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isOtherRemedyAbandonedLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "caseworker-caa",
-          "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isOtherRemedyAbandoned",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "caseworker-caa"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]

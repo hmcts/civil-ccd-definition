@@ -13,5 +13,13 @@
     "Label": "  ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "otherRemedyAbandonedDate",
+    "Label": "Date Other Remedy abandoned",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
