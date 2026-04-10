@@ -14,6 +14,7 @@ def camundaBranch = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 def wiremockMappingsBranch = "master"
+def civilServiceScriptsBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
@@ -326,8 +327,8 @@ withPipeline(type, product, component) {
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
-      ./bin/pull-latest-civil-shared.sh master
-      . ./bin/shared/idam-get-tokens.sh
+      ./bin/pull-latest-civil-shared.sh civilServiceScriptsBranch
+      ./bin/shared/idam-get-tokens.sh
       ./bin/add-roles.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
