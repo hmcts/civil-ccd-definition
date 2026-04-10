@@ -220,9 +220,6 @@ withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
 
-  // Pull shared scripts from civil-service early - needed by build and import scripts
-  sh "./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}"
-
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -251,6 +248,8 @@ withPipeline(type, product, component) {
   }
 
   before('highleveldatasetup') {
+    // Pull shared scripts from civil-service early - needed by build and import scripts
+    sh "./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}"
     yarnBuilder.yarn('setup')
     archiveCoreCaseDataDefinitions()
   }
