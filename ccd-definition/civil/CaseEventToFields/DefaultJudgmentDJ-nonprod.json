@@ -1,6 +1,16 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimTypeUnSpec",
+    "Label": "Type of claim",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimTypeUnSpec",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "isOtherRemedyAbandonedLabel",
     "PageFieldDisplayOrder": 1,
