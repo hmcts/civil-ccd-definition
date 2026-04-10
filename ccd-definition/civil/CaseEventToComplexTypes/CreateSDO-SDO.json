@@ -775,17 +775,17 @@
     "ID": "SmallClaimsDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsDocuments",
-    "ListElementCode": "input2",
+    "ListElementCode": "deadlineDate",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsDocuments",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsDocuments",
-    "ListElementCode": "deadlineDate",
+    "ListElementCode": "input2",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SmallClaimsWitnessStatement",
