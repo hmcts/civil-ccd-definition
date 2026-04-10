@@ -66,10 +66,6 @@ module.exports = {
         telephone: '#disposalHearingMethodDJ-disposalHearingMethodTelephoneHearing'
       },
       hearingLocation: '#disposalHearingMethodInPersonDJ',
-      hearingBundleId: '#disposalHearingBundleDJ_type',
-      hearingBundleTypeDocs: '#disposalHearingBundleDJ_type-DOCUMENTS',
-      hearingBundleTypeSummary: '#ådisposalHearingBundleDJ_type-SUMMARY',
-      hearingBundleTypeElectronic: '#disposalHearingBundleDJ_type-ELECTRONIC',
       orderWithoutHearing: '#disposalHearingOrderMadeWithoutHearingDJ_input'
     },
 
@@ -166,7 +162,6 @@ module.exports = {
       await date.enterDate(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.hearingTimeDateFrom, 40);
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.hearingTimeEstimate);
       await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.orderWithoutHearing, 'order has been made without hearing');
-      await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingBundleTypeDocs);
     }
     await I.clickContinue();
   },

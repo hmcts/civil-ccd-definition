@@ -467,38 +467,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "DisposalHearingBundle",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingBundle",
-    "ListElementCode": "label1",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "DisposalHearingBundle",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingBundle",
-    "ListElementCode": "input",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingBundle",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingBundle",
-    "ListElementCode": "label2",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "DisposalHearingBundle",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingBundle",
-    "ListElementCode": "type",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "DisposalHearingClaimSettling",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingClaimSettling",
