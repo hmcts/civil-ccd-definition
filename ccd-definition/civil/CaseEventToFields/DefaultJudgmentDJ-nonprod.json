@@ -9,8 +9,7 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "CaseEventFieldLabel": "What type of claim is this?",
-    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\""
+    "CaseEventFieldLabel": "What type of claim is this?"
   },
   {
     "CaseTypeID": "CIVIL",
