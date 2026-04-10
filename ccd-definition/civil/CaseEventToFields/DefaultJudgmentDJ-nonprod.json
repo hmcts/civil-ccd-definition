@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "claimTypeUnSpec",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
