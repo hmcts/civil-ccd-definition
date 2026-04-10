@@ -171,6 +171,8 @@ def archiveCoreCaseDataDefinitions() {
       """
     }
 
+
+
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-${env.ENVIRONMENT}.xlsx"
@@ -267,6 +269,7 @@ withPipeline(type, product, component) {
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
+        ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
@@ -329,6 +332,7 @@ withPipeline(type, product, component) {
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
+      ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
       ./bin/shared/idam-get-tokens.sh
       ./bin/add-roles.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
