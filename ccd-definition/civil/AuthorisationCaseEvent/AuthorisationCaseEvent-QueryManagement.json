@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseEventID": "QUERY_MANAGEMENT_RAISE_QUERY",
     "AccessControl": [
       {
         "UserRoles": [
@@ -32,7 +32,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "queryManagementRespondQuery",
+    "CaseEventID": "QUERY_MANAGEMENT_RESPOND_QUERY",
     "AccessControl": [
       {
         "UserRoles": [

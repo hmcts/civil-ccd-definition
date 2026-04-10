@@ -223,7 +223,7 @@ const ccdEvents: CCDEvents = {
     order: 24,
   },
   NOT_SUITABLE_SDO: {
-    id: 'NotSuitable_SDO',
+    id: 'NOT_SUITABLE_SDO',
     name: 'Not suitable for SDO',
     description: 'Not suitable for SDO',
     order: 25,

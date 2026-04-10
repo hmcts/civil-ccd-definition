@@ -264,7 +264,7 @@ module.exports = {
     order: 24
   },
   QUERY_MANAGEMENT: {
-    id: 'queryManagementRaiseQuery',
+    id: 'QUERY_MANAGEMENT_RAISE_QUERY',
     name: 'Raise a new query',
     description: 'Raise a new query',
     order: 1

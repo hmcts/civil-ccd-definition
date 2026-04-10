@@ -10,8 +10,8 @@ const {
 } = require('../fixtures/queryMessages');
 const chai = require('chai');
 const {expect} = chai;
-const RAISE_QUERY_EVENT = 'queryManagementRaiseQuery';
-const RESPOND_QUERY_EVENT = 'queryManagementRespondQuery';
+const RAISE_QUERY_EVENT = 'QUERY_MANAGEMENT_RAISE_QUERY';
+const RESPOND_QUERY_EVENT = 'QUERY_MANAGEMENT_RESPOND_QUERY';
 
 const removeRoleMetadata = (createdBy = '') => createdBy.split('::')[0];
 

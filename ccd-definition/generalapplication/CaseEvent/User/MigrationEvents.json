@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "ID": "migrateCase",
+    "ID": "MIGRATE_CASE",
     "Name": "Migrate case data",
     "Description": "Triggered by running migration tool - callback modifies the data.",
     "DisplayOrder": 1,

@@ -16,7 +16,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new 
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', false );
   await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
   await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
-  await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','All_FINAL_ORDERS_ISSUED');
+  await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','ALL_FINAL_ORDERS_ISSUED');
 });
 
 Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline', async ({I, api_spec}) => {
@@ -24,7 +24,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
   await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
   await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
   await api_spec.markJudgmentPaid(caseWorkerUserReg2);
-  await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
+  await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'ALL_FINAL_ORDERS_ISSUED');
 });
 
 Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {

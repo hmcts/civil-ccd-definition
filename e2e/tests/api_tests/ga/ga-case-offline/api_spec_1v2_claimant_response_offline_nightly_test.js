@@ -22,7 +22,7 @@ Scenario.skip('Case offline LISTING_FOR_A_HEARING', async ({api_ga}) => {
   console.log('*** Case offline: ' + civilCaseReference + ' ***');
   await api_ga.defendantResponseSpecClaim(config.defendantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO');
   await api_ga.claimantResponseClaimSpec(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_TWO',
-    'All_FINAL_ORDERS_ISSUED');
+    'ALL_FINAL_ORDERS_ISSUED');
   await api_ga.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 }).retry(1);
 

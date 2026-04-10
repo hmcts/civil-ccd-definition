@@ -1813,7 +1813,7 @@ module.exports = {
     await validateEventPagesDefaultJudgments(data.CLAIM_DEFAULT_JUDGEMENT_SPEC);
 
     if (isJOLive) {
-      state = 'All_FINAL_ORDERS_ISSUED';
+      state = 'ALL_FINAL_ORDERS_ISSUED';
     } else {
       state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
     }
@@ -1837,7 +1837,7 @@ module.exports = {
 
     await validateEventPages(data.JUDGMENT_PAID_IN_FULL);
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '# Judgment marked as paid in full',
       body: 'The judgment has been marked as paid in full'
     }, true);
@@ -1875,7 +1875,7 @@ module.exports = {
     for (let pageId of Object.keys(requestJudgementData.userInput)) {
       await assertValidClaimData(requestJudgementData, pageId);
     }
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
@@ -1912,7 +1912,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
-      eventName = 'NotSuitable_SDO';
+      eventName = 'NOT_SUITABLE_SDO';
     } else {
       eventName = 'CREATE_SDO';
     }

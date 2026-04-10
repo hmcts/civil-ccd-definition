@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NotSuitable_SDO",
+    "CaseEventID": "NOT_SUITABLE_SDO",
     "CaseFieldID": "lblTransferCaseDetails",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -12,7 +12,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NotSuitable_SDO",
+    "CaseEventID": "NOT_SUITABLE_SDO",
     "CaseFieldID": "lblReasonNotSuitableSDO",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
@@ -23,7 +23,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NotSuitable_SDO",
+    "CaseEventID": "NOT_SUITABLE_SDO",
     "CaseFieldID": "notSuitableSdoOptions",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
@@ -36,7 +36,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NotSuitable_SDO",
+    "CaseEventID": "NOT_SUITABLE_SDO",
     "CaseFieldID": "tocTransferCaseReason",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
@@ -48,7 +48,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NotSuitable_SDO",
+    "CaseEventID": "NOT_SUITABLE_SDO",
     "CaseFieldID": "reasonNotSuitableSDO",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",

@@ -27,7 +27,7 @@ module.exports = {
       'UnclaimAssign'
     ]
   },
-  description: '[Directions - Fast Track](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOFastTrack)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NotSuitable_SDO/NotSuitable_SDONotSuitableSDO)',
+  description: '[Directions - Fast Track](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOFastTrack)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NOT_SUITABLE_SDO/NOT_SUITABLE_SDONotSuitableSDO)',
   role_category: 'JUDICIAL',
   minor_priority: 500,
   major_priority: 5000
@@ -64,7 +64,7 @@ module.exports = {
       'UnclaimAssign'
     ]
   },
-  description: '[Directions - Fast Track](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOFastTrack)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NotSuitable_SDO/NotSuitable_SDONotSuitableSDO)',
+  description: '[Directions - Fast Track](/cases/case-details/${[CASE_REFERENCE]}/trigger/CREATE_SDO/CREATE_SDOFastTrack)<br /><br />[Not Suitable for SDO](/cases/case-details/${[CASE_REFERENCE]}/trigger/NOT_SUITABLE_SDO/NOT_SUITABLE_SDONotSuitableSDO)',
   role_category: 'JUDICIAL',
   minor_priority: 500,
   major_priority: 5000

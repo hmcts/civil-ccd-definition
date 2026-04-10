@@ -271,7 +271,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "migrateCase",
+    "CaseEventID": "MIGRATE_CASE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

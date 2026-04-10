@@ -1,7 +1,7 @@
 [
   {
   "CaseTypeID": "CIVIL",
-  "ID": "NotSuitable_SDO",
+  "ID": "NOT_SUITABLE_SDO",
   "Name": "Not suitable for SDO",
   "Description": "Not suitable for SDO",
   "DisplayOrder": 20,

@@ -16,7 +16,7 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
-    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
+    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','ALL_FINAL_ORDERS_ISSUED');
 }).tag('@api-jo');
 
 Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
@@ -50,7 +50,7 @@ Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after h
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
   await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
-  await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'All_FINAL_ORDERS_ISSUED');
+  await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'ALL_FINAL_ORDERS_ISSUED');
 });
 
 AfterSuite(async  ({api_spec}) => {

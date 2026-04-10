@@ -16,14 +16,14 @@ Before(async () => {
 Scenario('1v1 LR v LR defendant response with full admit pay by set date judgment by admission mark paid in full', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION_JBA');
-  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FA_ACCEPT_CCJ', 'ONE_V_ONE', 'All_FINAL_ORDERS_ISSUED', false, false);
+  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FA_ACCEPT_CCJ', 'ONE_V_ONE', 'ALL_FINAL_ORDERS_ISSUED', false, false);
   await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
 });
 
 Scenario('1v1 LiP v LiP defendant response with part admit pay by installments judgment by admission mark paid in full', async ({api_spec_cui}) => {
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, false, 'INDIVIDUAL');
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled, 'PA_INSTALLMENTS_INDIVIDUAL');
-  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'All_FINAL_ORDERS_ISSUED', carmEnabled, 'PA_ACCEPT_CCJ');
+  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'ALL_FINAL_ORDERS_ISSUED', carmEnabled, 'PA_ACCEPT_CCJ');
   await api_spec_cui.judgmentPaidInFullCui(config.applicantCitizenUser, caseId, true);
 }).tag('@api-jo');
 
