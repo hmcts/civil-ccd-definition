@@ -1,10 +1,10 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "claimTypeUnSpec",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "READONLY",
     "PageID": "abandonOtherRemedy",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
