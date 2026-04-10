@@ -196,13 +196,13 @@ def uploadCoreCaseDataDefinitions(env) {
     sh """
       set -e
       eval \$(./variables/load-${env}-environment-variables.sh)
-      ./utils/ccd-import-definition.sh ${civilCcdDefinitionFilePath}
+      ./shared/ccd-import-definition.sh ${civilCcdDefinitionFilePath}
     """
     civilGaCcdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ga-ccd-${env}.xlsx"
     sh """
       set -e
       eval \$(./variables/load-${env}-environment-variables.sh)
-      ./utils/ccd-import-definition.sh ${civilGaCcdDefinitionFilePath}
+      ./shared/ccd-import-definition.sh ${civilGaCcdDefinitionFilePath}
     """
   }
 }
@@ -326,7 +326,8 @@ withPipeline(type, product, component) {
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
-      . ./bin/utils/idam-get-tokens.sh
+      ./bin/pull-latest-civil-shared.sh master
+      . ./bin/shared/idam-get-tokens.sh
       ./bin/add-roles.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
