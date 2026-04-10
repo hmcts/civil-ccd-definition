@@ -1,6 +1,16 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimTypeUnSpec",
+    "Label": "Type of claim",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimTypeUnSpec",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "isOtherRemedyAbandonedLabel",
     "Label": "Are you confirming that you are abandoning your request for an other remedy (e.g. injunction, rescission, declaration)?",
     "HintText": "The system only allows default judgment when a claim for other remedy has been abandoned. If you are not abandoning the request for other remedy, you must make an application for judgment.",
