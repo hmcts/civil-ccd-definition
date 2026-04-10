@@ -1,0 +1,25 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isOtherRemedyAbandonedLabel",
+    "Label": "Are you confirming that you are abandoning your request for an other remedy (e.g. injunction, rescission, declaration)?",
+    "HintText": "The system only allows default judgment when a claim for other remedy has been abandoned. If you are not abandoning the request for other remedy, you must make an application for judgment.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isOtherRemedyAbandoned",
+    "Label": "  ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "otherRemedyAbandonedDate",
+    "Label": "Date Other Remedy abandoned",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

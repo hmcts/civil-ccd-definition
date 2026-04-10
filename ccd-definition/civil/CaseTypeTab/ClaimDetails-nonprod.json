@@ -25,5 +25,14 @@
     "CaseFieldID": "isHumanRightsActIssues",
     "TabFieldDisplayOrder": 9,
     "FieldShowCondition": "claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "otherRemedyAbandonedDate",
+    "TabFieldDisplayOrder": 10,
+    "FieldShowCondition": "isOtherRemedyAbandoned = \"Yes\" AND claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\""
   }
 ]
