@@ -14,7 +14,7 @@ def camundaBranch = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 def wiremockMappingsBranch = "master"
-def civilServiceScriptsBranch = "master"
+def civilServiceScriptsBranch = "DTSCCI-5041"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
