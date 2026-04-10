@@ -220,6 +220,9 @@ withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
 
+  // Pull shared scripts from civil-service early - needed by build and import scripts
+  sh "./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}"
+
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -327,7 +330,6 @@ withPipeline(type, product, component) {
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
-      ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
       ./bin/shared/idam-get-tokens.sh
       ./bin/add-roles.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
