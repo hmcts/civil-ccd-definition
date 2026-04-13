@@ -333,7 +333,7 @@ withPipeline(type, product, component) {
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
-      ./bin/shared/idam-get-tokens.sh
+      . ./bin/shared/idam-get-tokens.sh
       ./bin/add-roles.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
