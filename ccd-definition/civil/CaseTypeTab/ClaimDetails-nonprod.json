@@ -13,6 +13,15 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
+    "CaseFieldID": "isOtherRemedyAbandoned",
+    "TabFieldDisplayOrder": 203,
+    "FieldShowCondition": "claimType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
     "CaseFieldID": "claimDeclarationDescription",
     "TabFieldDisplayOrder": 8,
     "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\" AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
