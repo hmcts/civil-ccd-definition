@@ -37,6 +37,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isOtherRemedyAbandonedText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "otherRemedyAbandonedDate",
     "AccessControl": [
       {
