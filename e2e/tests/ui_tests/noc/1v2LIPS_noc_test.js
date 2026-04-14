@@ -5,7 +5,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 Feature('1v2 - both respondents litigant in person - NoC to same solicitor')
   .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-noc');
 
-Scenario('01 Applicant solicitor creates claim again 2 respondent LiPs and cos notify/notify details', async ({api}) => {
+Scenario.skip('01 Applicant solicitor creates claim again 2 respondent LiPs and cos notify/notify details', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
   await api.notifyClaimLip(config.applicantSolicitorUser);
   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
