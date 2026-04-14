@@ -34,30 +34,6 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isOtherRemedyAbandoned",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "wlu-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "otherRemedyAbandonedDate",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "wlu-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
 
