@@ -41,8 +41,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "otherRemedyAbandonedDate",
-    "TabFieldDisplayOrder": 6,
-    "FieldShowCondition": "claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\""
+    "TabFieldDisplayOrder": 6
   },
   {
     "CaseTypeID": "CIVIL",
