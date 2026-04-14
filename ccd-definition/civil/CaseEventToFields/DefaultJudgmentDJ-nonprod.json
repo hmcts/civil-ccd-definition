@@ -29,7 +29,7 @@
     "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "isOtherRemedyAbandoned",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "abandonOtherRemedy",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,

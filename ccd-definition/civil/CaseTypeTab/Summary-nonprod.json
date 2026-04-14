@@ -24,7 +24,7 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "claimDeclarationDescription",
     "TabFieldDisplayOrder": 4,
-    "FieldShowCondition": "claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\""
+    "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\" AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -41,7 +41,8 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "otherRemedyAbandonedDate",
-    "TabFieldDisplayOrder": 6
+    "TabFieldDisplayOrder": 6,
+    "FieldShowCondition": "(isOtherRemedyAbandoned = \"Yes\" OR isOtherRemedyAbandoned = \"No\") AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
   },
   {
     "CaseTypeID": "CIVIL",
