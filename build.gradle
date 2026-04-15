@@ -25,7 +25,7 @@ repositories {
 tasks.register('highLevelDataSetup', JavaExec) {
   mainClass = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
   classpath += sourceSets.main.runtimeClasspath
-  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED', '-Djdk.tls.client.protocols=TLSv1.2']
+  jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
 
 
