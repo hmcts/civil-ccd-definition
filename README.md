@@ -498,7 +498,7 @@ Updating README tables:
 
 ### Include the git conventions.
 * Make sure your git version is at least 2.9 using the `git --version` command
-* Run the following command::
+* Run the following command:
 ```
 git config --local core.hooksPath .git-config/hooks
 ```
