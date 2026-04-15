@@ -8,7 +8,19 @@
     "PageID": "abandonOtherRemedy",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "otherRemedyAbandonedDate",
+    "PageFieldDisplayOrder": 221,
+    "DisplayContext": "READONLY",
+    "PageID": "abandonOtherRemedy",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
     "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\""
   },
   {
