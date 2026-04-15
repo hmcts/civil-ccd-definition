@@ -26,22 +26,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "isOtherRemedyAbandonedLabel",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "abandonOtherRemedy",
-    "PageDisplayOrder": 3,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "claimTypeUnSpec = \"HOUSING_DISREPAIR\" OR claimTypeUnSpec = \"DAMAGES_AND_OTHER_REMEDY\"",
-    "PageLabel": "Make a request for judgment"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "isOtherRemedyAbandoned",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "PageID": "abandonOtherRemedy",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,

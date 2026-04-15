@@ -1,15 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "isOtherRemedyAbandonedLabel",
-    "Label": "Are you confirming that you are abandoning your request for an other remedy (e.g. injunction, rescission, declaration)?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "isOtherRemedyAbandoned",
-    "Label": "  ",
+    "Label": "Are you confirming that you are abandoning your request for an other remedy \n(e.g. injunction, rescission, declaration)?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
   },
