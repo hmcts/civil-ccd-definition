@@ -32,7 +32,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "abandonOtherRemedy",
     "PageDisplayOrder": 3,
-    "PageColumnNumber": 2,
+    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/abandonOtherRemedy"
   },

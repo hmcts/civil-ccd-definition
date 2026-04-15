@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL",
     "TabID": "Summary",
     "TabLabel": "Summary",
-    "TabDisplayOrder": 2,
+    "TabDisplayOrder": 1,
     "CaseFieldID": "isOtherRemedyAbandoned",
     "TabFieldDisplayOrder": 203,
     "FieldShowCondition": "claimType = \"DO_NOT_SHOW_IN_UI\""
