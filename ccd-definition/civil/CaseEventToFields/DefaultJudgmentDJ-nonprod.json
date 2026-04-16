@@ -9,7 +9,8 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\"",
+    "PageLabel": "Make a request for judgment"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,7 +22,8 @@
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\"",
+    "PageLabel": "Make a request for judgment"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -45,7 +47,8 @@
     "PageID": "abandonOtherRemedy",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "PageLabel": "Make a request for judgment"
   }
 ]
 
