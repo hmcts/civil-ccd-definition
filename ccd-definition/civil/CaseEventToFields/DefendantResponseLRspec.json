@@ -1832,7 +1832,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFutureApplicationsLabel",
-    "PageLabel": "",
+    "PageLabel": "### Applications",
     "PageDisplayOrder": 54,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -1844,7 +1844,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFutureApplications",
-    "PageLabel": "",
+    "PageLabel": " ",
     "PageDisplayOrder": 54,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
@@ -1857,7 +1857,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQFutureApplications",
-    "PageLabel": "",
+    "PageLabel": " ",
     "PageDisplayOrder": 54,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
@@ -1876,7 +1876,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "Applications",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1888,7 +1888,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "Applications",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
