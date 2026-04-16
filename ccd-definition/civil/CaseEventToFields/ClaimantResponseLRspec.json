@@ -218,7 +218,7 @@
     "CaseFieldID": "applicant1AdditionalInformationForJudge",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 3,
-    "CaseEventFieldLabel": "Provide any other information the judge may need",
+    "CaseEventFieldLabel": "Provide any other information that the judge may need",
     "DisplayContext": "OPTIONAL",
     "PageID": "Applications",
     "ShowSummaryChangeOption": "Y"
