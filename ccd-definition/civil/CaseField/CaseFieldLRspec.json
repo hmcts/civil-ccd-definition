@@ -2287,6 +2287,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQFutureApplicationsLabel",
+    "Label": "### Applications",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFutureApplications",
     "Label": " ",
     "FieldType": "FutureApplications",
