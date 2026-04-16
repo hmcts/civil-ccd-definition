@@ -221,7 +221,7 @@
     "CaseEventFieldLabel": "Provide any other information the judge may need",
     "DisplayContext": "OPTIONAL",
     "PageID": "Applications",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
