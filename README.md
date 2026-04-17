@@ -24,6 +24,20 @@ The project is dependent on other Civil repositories:
 
 To set up complete local environment for Civil check [civil-sdk](https://github.com/hmcts/civil-sdk)
 
+### Local Setup
+
+Before running CCD definition imports locally, you need to pull the shared scripts from civil-service:
+
+```bash
+./bin/pull-latest-civil-shared.sh
+```
+
+This downloads the shared IDAM/CCD helper scripts to `bin/shared/`. You can optionally specify a branch:
+
+```bash
+./bin/pull-latest-civil-shared.sh feature-branch
+```
+
 ### Preview environment
 
 Preview environment will be created when opening new PR. Camunda BPMN definitions will be pulled from the latest GitHub
