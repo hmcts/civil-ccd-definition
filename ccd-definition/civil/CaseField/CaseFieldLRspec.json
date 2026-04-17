@@ -1285,7 +1285,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFutureApplicationsLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Application</h2>",
+    "Label": "### Applications",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
