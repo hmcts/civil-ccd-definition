@@ -1293,7 +1293,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFutureApplications",
-    "Label": " ",
+    "Label": "Applications",
     "FieldType": "FutureApplications",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1309,7 +1309,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQFutureApplications",
-    "Label": " ",
+    "Label": "Applications",
     "FieldType": "FutureApplications",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2311,7 +2311,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFutureApplications",
-    "Label": " ",
+    "Label": "Applications",
     "FieldType": "FutureApplications",
     "SecurityClassification": "Public",
     "Searchable": "N"
