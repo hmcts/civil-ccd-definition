@@ -191,13 +191,31 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFutureApplications",
-    "PageLabel": "### Applications",
+    "CaseFieldID": "applicant1DQFutureApplicationsLabel",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "Applications",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQFutureApplications",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "Applications",
-    "PageShowCondition": "",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1AdditionalInformationForJudge",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "Applications",
     "ShowSummaryChangeOption": "Y"
   },
   {
