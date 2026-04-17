@@ -206,6 +206,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "Applications",
+    "CaseEventFieldLabel": "Applications",
     "ShowSummaryChangeOption": "Y"
   },
   {
