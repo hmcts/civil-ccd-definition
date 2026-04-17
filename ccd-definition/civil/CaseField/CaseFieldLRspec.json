@@ -1285,7 +1285,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFutureApplicationsLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Application</h2>",
+    "Label": "### Applications",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1293,15 +1293,23 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFutureApplications",
-    "Label": " ",
+    "Label": "Applications",
     "FieldType": "FutureApplications",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQFutureApplicationsLabel",
+    "Label": "### Applications",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2DQFutureApplications",
-    "Label": " ",
+    "Label": "Applications",
     "FieldType": "FutureApplications",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1309,7 +1317,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "additionalInformationForJudge",
-    "Label": " ",
+    "Label": "Provide any other information that the judge may need",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1317,7 +1325,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "additionalInformationForJudge2",
-    "Label": " ",
+    "Label": "Provide any other information that the judge may need",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AdditionalInformationForJudge",
+    "Label": "Provide any other information that the judge may need",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2287,17 +2303,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQFutureApplications",
+    "ID": "applicant1DQFutureApplicationsLabel",
     "Label": " ",
-    "FieldType": "FutureApplications",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1AdditionalInformationForJudge",
-    "Label": " ",
-    "FieldType": "TextArea",
+    "ID": "applicant1DQFutureApplications",
+    "Label": "Applications",
+    "FieldType": "FutureApplications",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

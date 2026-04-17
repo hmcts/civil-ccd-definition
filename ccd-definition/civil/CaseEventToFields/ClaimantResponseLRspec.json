@@ -192,24 +192,11 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQFutureApplications",
-    "PageLabel": "",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "Applications",
-    "PageShowCondition": "",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1AdditionalInformationForJudge",
-    "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 3,
-    "CaseEventFieldLabel": "Provide any other information the judge may need",
-    "DisplayContext": "OPTIONAL",
-    "PageID": "Applications",
-    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
