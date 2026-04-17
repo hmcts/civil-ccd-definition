@@ -1300,6 +1300,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQFutureApplicationsLabel",
+    "Label": "### Applications",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent2DQFutureApplications",
     "Label": "Applications",
     "FieldType": "FutureApplications",
@@ -1317,6 +1325,14 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "additionalInformationForJudge2",
+    "Label": "Provide any other information that the judge may need",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1AdditionalInformationForJudge",
     "Label": "Provide any other information that the judge may need",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
@@ -2297,14 +2313,6 @@
     "ID": "applicant1DQFutureApplications",
     "Label": "Applications",
     "FieldType": "FutureApplications",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1AdditionalInformationForJudge",
-    "Label": "Provide any other information that the judge may need",
-    "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
