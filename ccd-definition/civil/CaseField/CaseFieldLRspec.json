@@ -2304,7 +2304,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFutureApplicationsLabel",
-    "Label": "### Applications",
+    "Label": " ",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
