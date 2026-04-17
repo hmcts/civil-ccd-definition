@@ -19,5 +19,13 @@
     "Label": "Date Other Remedy abandoned",
     "FieldType": "Date",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isOtherRemedyAbandonedBoldLabel",
+    "Label": "## Do you wish to abandon your request for an other remedy?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
