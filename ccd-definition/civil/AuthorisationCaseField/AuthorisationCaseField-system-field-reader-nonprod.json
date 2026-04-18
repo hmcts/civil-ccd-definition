@@ -67,6 +67,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialPPI",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsHousingDisrepair",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"

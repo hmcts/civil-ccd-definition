@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "TrialPPI",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialPPI",
+    "ListElementCode": "title",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TrialPPI",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialPPI",
+    "ListElementCode": "ppiDate",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "TrialPPI",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialPPI",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  }
+]
