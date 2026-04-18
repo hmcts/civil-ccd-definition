@@ -38,7 +38,6 @@ export default class DisposalHearingSdoPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.hearingTime),
       super.expectSubheading(subheadings.hearingTime),
       super.expectSubheading(subheadings.hearingMethod),
-      super.expectSubheading(subheadings.disposalHearingBundle),
       super.expectSubheading(subheadings.claimSettling),
       super.expectSubheading(subheadings.costs),
       super.expectSubheading(subheadings.newDirection),
@@ -139,20 +138,6 @@ export default class DisposalHearingSdoPage extends ExuiPage(BasePage) {
     ]);
 
     await super.clickByText(radioButtons.hearingMethod.telephone.label);
-  }
-
-  async addDisposalHearingBundle() {
-    await Promise.all([
-      super.expectText(checkboxes.disposalHearingBundle.bundleType.label),
-      super.expectLabel(checkboxes.disposalHearingBundle.bundleType.documents.label),
-      super.expectLabel(checkboxes.disposalHearingBundle.bundleType.electronic.label),
-      super.expectLabel(checkboxes.disposalHearingBundle.bundleType.summary.label),
-    ]);
-
-    await super.inputText('disposal hearing bundle input', inputs.disposalHearingBundle.selector);
-    await super.clickBySelector(checkboxes.disposalHearingBundle.bundleType.documents.selector);
-    await super.clickBySelector(checkboxes.disposalHearingBundle.bundleType.electronic.selector);
-    await super.clickBySelector(checkboxes.disposalHearingBundle.bundleType.summary.selector);
   }
 
   async addNewDirection() {

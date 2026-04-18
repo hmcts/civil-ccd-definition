@@ -10,7 +10,6 @@ export const subheadings = {
   scheduleOfLoss: 'Schedules or counter-schedules of loss',
   hearingTime: 'Hearing time',
   hearingMethod: 'Hearing Method',
-  disposalHearingBundle: 'Disposal hearing bundle',
   claimSettling: 'Claim Settling',
   costs: 'Costs',
   newDirection: 'Add a new direction (Optional)',
@@ -123,9 +122,6 @@ export const inputs = {
       selector: '#disposalHearingHearingTime_otherMinutes',
     },
   },
-  disposalHearingBundle: {
-    selector: '#disposalHearingBundle_input',
-  },
   newDirection: {
     label: 'Enter the direction (Optional)',
     selector: '#disposalHearingAddNewDirections_0_directionComment',
@@ -193,27 +189,6 @@ export const checkboxes = {
   hearingTime: {
     label: 'Show/Remove',
     selector: '#disposalHearingFinalDisposalHearingToggle-SHOW',
-  },
-  disposalHearingBundle: {
-    toggle: {
-      label: 'Show/Remove',
-      selector: '#disposalHearingBundleToggle-SHOW',
-    },
-    bundleType: {
-      label: 'Select bundle type',
-      documents: {
-        label: 'an indexed bundle of documents, with each page clearly numbered',
-        selector: '#disposalHearingBundle_type-DOCUMENTS',
-      },
-      electronic: {
-        label: 'an electronic bundle of digital documents',
-        selector: '#disposalHearingBundle_type-ELECTRONIC',
-      },
-      summary: {
-        label: 'a case summary containing no more than 500 words',
-        selector: '#disposalHearingBundle_type-SUMMARY',
-      },
-    },
   },
   claimSettling: {
     label: 'Show/Remove',

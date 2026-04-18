@@ -195,7 +195,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingMedicalEvidenceTitle",
-    "Label": "## Medical evidence",
+    "Label": "## Expert evidence",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -430,47 +430,6 @@
     "ID": "disposalOrderWithoutHearing",
     "Label": " ",
     "FieldType": "DisposalOrderWithoutHearing",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingBundleStartLine",
-    "Label": "****",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingBundleTitle",
-    "Label": "## Disposal hearing bundle",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingBundleToggle",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingBundle",
-    "Label": " ",
-    "FieldType": "DisposalHearingBundle",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "disposalHearingBundleEndLine",
-    "Label": "****",
-    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
