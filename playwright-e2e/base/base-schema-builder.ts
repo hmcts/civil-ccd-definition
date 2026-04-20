@@ -1,3 +1,3 @@
-export default abstract class BaseDataBuilder {
+export default abstract class BaseSchemaBuilder {
   protected abstract buildSchema(...args: any[]): any;
 }
