@@ -10,9 +10,9 @@ echo "Importing Roles to the CCD pod"
 echo "Importing CCD definitions"
 ./bin/build-release-ccd-definition.sh preview
 civilCcdDefinitionFilePath="$(pwd)/build/ccd-release-config/civil-ccd-preview.xlsx"
-./bin/utils/ccd-import-definition.sh ${civilCcdDefinitionFilePath}
+./bin/shared/ccd-import-definition.sh ${civilCcdDefinitionFilePath}
 civilGaCcdDefinitionFilePath="$(pwd)/build/ccd-release-config/civil-ga-ccd-preview.xlsx"
-./bin/utils/ccd-import-definition.sh ${civilGaCcdDefinitionFilePath}
+./bin/shared/ccd-import-definition.sh ${civilGaCcdDefinitionFilePath}
 rm -rf $(pwd)/build/ccd-release-config
 
 echo "Importing Camunda definitions"
