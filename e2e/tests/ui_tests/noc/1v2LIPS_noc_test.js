@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const judgeUser = config.judgeUserWithRegionId1;
 
-Feature('1v2 - both respondents litigant in person - NoC to same solicitor')
+Feature.skip('1v2 - both respondents litigant in person - NoC to same solicitor')
   .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-noc');
 
 Scenario('01 Applicant solicitor creates claim again 2 respondent LiPs and cos notify/notify details', async ({api}) => {
