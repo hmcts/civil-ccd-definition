@@ -32,7 +32,6 @@ Scenario('01 Applicant solicitor creates claim with claim type as Housing disrep
   await serviceRequest.openServiceRequestTab();
   await serviceRequest.payFee(caseNumber);
   await addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
-
 }).retry(2);
 
 Scenario('02 Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {

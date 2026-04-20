@@ -43,9 +43,8 @@ export default class CreateClaimActions extends BaseTestData {
 
     const { claimantLitigationFriendPage } = this.createClaimPageFactory;
     await claimantLitigationFriendPage.verifyContent();
-    await claimantLitigationFriendPage.selectNo();
-    // await claimantLitigationFriendPage.selectYes();
-    // await claimantLitigationFriendPage.enterLitigationFriendDetails();
+    await claimantLitigationFriendPage.selectYes();
+    await claimantLitigationFriendPage.enterLitigationFriendDetails();
     await claimantLitigationFriendPage.submit();
 
     const { notificationsPage } = this.createClaimPageFactory;
