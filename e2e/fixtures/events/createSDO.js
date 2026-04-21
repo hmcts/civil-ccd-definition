@@ -21,8 +21,7 @@ const calculatedClaimsTrackWOSum = {
     fastTrackDisclosureOfDocuments: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
-        && typeof data.input3 === 'string'
-        && typeof data.input4 === 'string';
+        && typeof data.input3 === 'string';
     },
     fastTrackSettlementToggle: (data) => Array.isArray(data),
     disposalHearingWitnessOfFactToggle: (data) => Array.isArray(data),
@@ -613,9 +612,7 @@ module.exports = {
             date1: date(-1),
             input2: 'string',
             date2: date(-1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(-1)
+            input3: 'string'
           },
           fastTrackWitnessOfFact: {
             input1: 'string',
@@ -773,9 +770,7 @@ module.exports = {
             date1: date(-1),
             input2: 'string',
             date2: date(-1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(-1)
+            input3: 'string'
           },
           fastTrackWitnessOfFact: {
             input1: 'string',
@@ -1215,9 +1210,7 @@ module.exports = {
             date1: date(-1),
             input2: 'string',
             date2: date(-1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(-1)
+            input3: 'string'
           },
           fastTrackWitnessOfFact: {
             input1: 'string',
@@ -1375,9 +1368,7 @@ module.exports = {
             date1: date(-1),
             input2: 'string',
             date2: date(-1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(-1)
+            input3: 'string'
           },
           fastTrackWitnessOfFact: {
             input1: 'string',

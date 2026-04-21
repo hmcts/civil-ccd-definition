@@ -72,20 +72,11 @@ export const inputs = {
     input3: {
       selector: '#trialHearingDisclosureOfDocumentsDJ_input3',
     },
-    input4: {
-      selector: '#trialHearingDisclosureOfDocumentsDJ_input4',
-    },
-    input5: {
-      selector: '#trialHearingDisclosureOfDocumentsDJ_input5',
-    },
     date1: {
       selectorKey: 'date1',
     },
     date2: {
       selectorKey: 'date2',
-    },
-    date3: {
-      selectorKey: 'date3',
     },
   },
   witnessOfFact: {
