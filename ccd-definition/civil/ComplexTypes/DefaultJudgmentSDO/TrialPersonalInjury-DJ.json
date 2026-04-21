@@ -21,6 +21,7 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
+    "FieldShowCondition": "input1 = \"DO_NOT_SHOW_IN_UI\"",
     "Searchable": "N"
   },
   {
