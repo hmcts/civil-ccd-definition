@@ -21,9 +21,9 @@ elif [ ${environment} == local ]; then
 elif [ ${environment} == aat ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == prod ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-testing.json"
 elif [ ${environment} == staging ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*-testing.json"
 else
   echo "ERROR! You are passing an environment that is not known by the script!"
   echo "       Either add the new environment to the script or specify a supported environment!"
@@ -56,8 +56,8 @@ mkdir -p ${build_dir}
 mkdir -p ${github_dir}
 
 # build the ccd definition files for civil and generalapplication
-${root_dir}/bin/utils/process-definition.sh ${civil_config_dir} ${civil_release_definition_output_file} "${excludedFilenamePatterns}"
-${root_dir}/bin/utils/process-definition.sh ${civil_ga_config_dir} ${civil_ga_release_definition_output_file} "${excludedFilenamePatterns}"
+${root_dir}/bin/shared/process-definition.sh ${civil_config_dir} ${civil_release_definition_output_file} "${excludedFilenamePatterns}"
+${root_dir}/bin/shared/process-definition.sh ${civil_ga_config_dir} ${civil_ga_release_definition_output_file} "${excludedFilenamePatterns}"
 
 cp ${civil_release_definition_output_file} ${github_file}
 cp ${civil_ga_release_definition_output_file} ${github_file}

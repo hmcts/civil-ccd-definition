@@ -128,14 +128,27 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         int httpStatusCode504 = 504;
         if (e instanceof ImportException) {
             ImportException importException = (ImportException) e;
-            return importException.getHttpStatusCode() == httpStatusCode504;
+            if (importException.getHttpStatusCode() == httpStatusCode504) {
+                logger.warn("\n\nDefinition upload returned HTTP 504 (Gateway Timeout) — definitions NOT imported. "
+                                + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
+                return true;
+            }
         }
         if (e instanceof SSLException) {
+            logger.warn("\n\nSSL error during definition upload — definitions NOT imported. "
+                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
             return true;
         }
         if (e instanceof AEADBadTagException) {
+            logger.warn("\n\nTLS decryption error (AEADBadTagException) during definition upload — definitions NOT imported. "
+                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
             return true;
         }
-        return shouldTolerateDataSetupFailure();
+        boolean tolerate = shouldTolerateDataSetupFailure();
+        if (tolerate) {
+            logger.warn("\n\nDefinition upload failed on preview environment — definitions NOT imported. "
+                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
+        }
+        return tolerate;
     }
 }

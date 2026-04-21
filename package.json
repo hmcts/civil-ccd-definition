@@ -10,6 +10,7 @@
     "lint:fix": "eslint . --fix",
     "prettier:fix": "prettier -w 'playwright-e2e/**/*.ts'",
     "setup": "echo yarn:setup",
+    "postinstall": "./bin/pull-latest-civil-shared.sh || true",
     "install-dependencies": "/usr/bin/yarn install --immutable --silent",
     "test": "NODE_PATH=. mocha e2e/tests/unit/definitions/**/*.js",
     "test:a11y": "echo test:a11y",
@@ -150,7 +151,7 @@
     "allure-codeceptjs": "^3.4.2",
     "allure-commandline": "^2.29.0",
     "allure-js-commons": "^3.4.2",
-    "allure-playwright": "2.15.1",
+    "allure-playwright": "3.7.1",
     "chai": "^4.3.4",
     "codeceptjs": "3.5.11",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
@@ -187,6 +188,8 @@
     "**/*.{ts,tsx,js,mjs,cjs}": "eslint"
   },
   "resolutions": {
+    "axios@npm:^0.26.0": "npm:1.13.6",
+    "axios@npm:1.6.3": "npm:1.13.6",
     "minimatch": "^3.0.5"
   },
   "packageManager": "yarn@4.10.3"
