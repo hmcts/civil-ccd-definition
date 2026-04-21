@@ -120,7 +120,7 @@
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingDetailsEmailID",
     "ElementLabel": "Preferred email",
-    "FieldType": "Email",
+    "FieldType": "Text",
     "RegularExpression": "^([a-zA-Z0-9_\\.%+-]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
     "SecurityClassification": "Public"
   },
