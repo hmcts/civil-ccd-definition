@@ -63,7 +63,6 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
   async addDisclosureOfDocuments() {
     const date1 = DateHelper.getToday();
     const date2 = DateHelper.addToToday({ days: 1, workingDay: true });
-    const date3 = DateHelper.addToToday({ days: 2, workingDay: true });
     await super.inputText(
       'disclosure of documents input 1',
       inputs.disclosureOfDocuments.input1.selector,
@@ -76,17 +75,10 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
       'disclosure of documents input 3',
       inputs.disclosureOfDocuments.input3.selector,
     );
-    await super.inputText(
-      'disclosure of documents input 4',
-      inputs.disclosureOfDocuments.input4.selector,
-    );
     await this.dateFragment.enterDate(date1, inputs.disclosureOfDocuments.date1.selectorKey, {
       containerSelector: containers.disclosureDocuments.selector,
     });
     await this.dateFragment.enterDate(date2, inputs.disclosureOfDocuments.date2.selectorKey, {
-      containerSelector: containers.disclosureDocuments.selector,
-    });
-    await this.dateFragment.enterDate(date3, inputs.disclosureOfDocuments.date3.selectorKey, {
       containerSelector: containers.disclosureDocuments.selector,
     });
   }
