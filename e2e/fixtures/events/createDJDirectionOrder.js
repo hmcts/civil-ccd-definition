@@ -34,12 +34,9 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         trialHearingDisclosureOfDocumentsDJ: {
           date1: date(28),
           date2: date(43),
-          date3: date(28),
           input1: 'string',
           input2: 'string',
-          input3: 'string',
-          input4: 'string',
-          input5: 'string'
+          input3: 'string'
         },
         trialHearingDisclosureOfDocumentsDJToggle: ['SHOW'],
         trialHearingJudgesRecitalDJ: {
