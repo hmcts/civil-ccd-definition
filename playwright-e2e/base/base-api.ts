@@ -9,6 +9,10 @@ import { civilSystemUpdate } from '../config/users/exui-users';
 import config from '../config/config';
 import DateHelper from '../helpers/date-helper';
 import WATask from '../models/wa-task';
+import CaseState from '../enums/case-state';
+import CCDCaseData from '../models/ccd/ccd-case-data';
+import FileSystemHelper from '../helpers/file-system-helper';
+import FileType from '../enums/file-type';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -52,14 +56,14 @@ export default abstract class BaseApi extends BaseTestData {
     }
   }
 
-  protected async validatePages(
+  private async validatePages(
     ccdEvent: CCDEvent,
     pageDataMap: Record<string, any>,
     user: User,
     ccdEventToken: string,
-  ) {
+  ): Promise<CCDCaseData> {
     const { ccdRequests } = this.requestsFactory;
-    let eventData = {};
+    let eventData: CCDCaseData = {};
     for (const pageId of Object.keys(pageDataMap)) {
       eventData = ObjectHelper.deepSpread(eventData, pageDataMap[pageId]);
       const pageData = await ccdRequests.validatePageData(
@@ -73,6 +77,26 @@ export default abstract class BaseApi extends BaseTestData {
       eventData = ObjectHelper.deepSpread(eventData, pageData);
     }
     return eventData;
+  }
+
+  protected async submitCCDEvent(user: User, ccdEvent: CCDEvent, pageDataMap: Record<string, any>, expectedState: CaseState) {
+    const { ccdRequests } = this.requestsFactory;
+    const eventToken = await ccdRequests.startEvent(user, ccdEvent);
+    const eventData = await this.validatePages(
+      ccdEvent,
+      pageDataMap,
+      user,
+      eventToken,
+    );
+    const eventCaseData = await ccdRequests.submitEvent(
+      user,
+      ccdEvent,
+      expectedState,
+      eventData,
+      eventToken,
+    );
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
   }
 
   protected async waitForFinishedBusinessProcess(caseId?: number) {
