@@ -4,9 +4,10 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../enums/claim-track';
 import ClaimType from '../../../../../enums/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
-import createClaimData from './create-claim-data-components';
+import createClaimSpecData from './create-claim-spec-data-components';
+
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
-export default class CreateClaimDataBuilder extends BaseDataBuilder {
+export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
   async buildFastTrack1v1() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
@@ -27,6 +28,22 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
+  async buildSmallTrack1vLIP() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_ONE_LIP });
+  }
+
+  async buildSmallTrack1v2LIPs() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LIPS });
+  }
+
+  async buildSmallTrack1v2LIPLR() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LIP_LR });
+  }
+
+  async buildSmallTrack1v2LRLIP() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
+  }
+
   protected async buildData({
     claimType = ClaimType.ONE_VS_ONE,
     claimTrack = ClaimTrack.SMALL_CLAIM,
@@ -42,20 +59,20 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
   } = {}) {
+
     return {
-      ...createClaimData.references,
-      ...createClaimData.claimantCourt,
-      ...createClaimData.claimant1(claimant1PartyType),
-      ...createClaimData.claimantSolicitor1,
-      ...createClaimData.claimant2(claimType, claimant2PartyType),
-      ...createClaimData.defendant1(defendant1PartyType),
-      ...createClaimData.defendantSolicitor1(claimType),
-      ...createClaimData.defendant2(claimType, defendant2PartyType),
-      ...createClaimData.defendant2Represented(claimType),
-      ...createClaimData.defendant2SameSolicitor(claimType),
-      ...createClaimData.defendantSolicitor2(claimType),
-      ...createClaimData.claimDetails(claimTrack),
-      ...createClaimData.statementOfTruth,
+      ...createClaimSpecData.references,
+      ...createClaimSpecData.claimant1(claimant1PartyType),
+      ...createClaimSpecData.claimantSolicitor1,
+      ...createClaimSpecData.claimant2(claimType, claimant2PartyType),
+      ...createClaimSpecData.defendant1(defendant1PartyType),
+      ...createClaimSpecData.defendantSolicitor1(claimType),
+      ...createClaimSpecData.defendant2(claimType, defendant2PartyType),
+      ...createClaimSpecData.defendant2Represented(claimType),
+      ...createClaimSpecData.defendant2SameSolicitor(claimType),
+      ...createClaimSpecData.defendantSolicitor2(claimType),
+      ...createClaimSpecData.claimDetails(claimTrack),
+      ...createClaimSpecData.statementOfTruth,
     };
   }
 }

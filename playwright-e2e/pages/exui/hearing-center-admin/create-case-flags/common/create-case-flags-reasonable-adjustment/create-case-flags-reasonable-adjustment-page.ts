@@ -3,7 +3,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../../exui-page/exui-page';
 import { heading, inputs } from './create-case-flags-reasonable-adjustment-content';
-import ReasonableAdjustmentFlags from '../../../../../../enums/case-flags/reasonable-adjustment-flags';
+import ReasonableAdjustmentFlags from '../../../../../../enums/ccd-events/case-flags/reasonable-adjustment-flags';
 
 @AllMethodsStep()
 export default class CreateCaseFlagsReasonableAdjustmentPage extends ExuiPage(BasePage) {
