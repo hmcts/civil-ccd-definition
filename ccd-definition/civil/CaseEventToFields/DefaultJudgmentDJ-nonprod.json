@@ -28,6 +28,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "isClaimDeclarationAdded",
+    "PageFieldDisplayOrder": 222,
+    "DisplayContext": "READONLY",
+    "PageID": "abandonOtherRemedyPage",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition":"isOtherRemedyAbandoned = \"DO_NOT_SHOW_IN_UI\"",
+    "PageLabel": "Make a request for judgment"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
     "CaseFieldID": "isOtherRemedyAbandonedBoldLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
