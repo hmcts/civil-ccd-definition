@@ -194,7 +194,7 @@
     "CaseFieldID": "applicant1DQFutureApplications",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "Applications",
     "ShowSummaryChangeOption": "Y"
   },
