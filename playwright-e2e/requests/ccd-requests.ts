@@ -34,7 +34,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     eventData: object,
     ccdEventToken: string,
   ): Promise<CCDCaseData> {
-    console.log(`Asserting page: ${pageId} has valid data...`);
+    console.log(`Validating page: ${pageId}...`);
     const url = `${this.getCCDDataStoreBaseUrl(user)}/validate?pageId=${ccdEvent.id}${pageId}`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
@@ -46,8 +46,19 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       },
       method: 'POST',
     };
-    const responseJson = await super.retryRequestJson(url, requestOptions);
-    console.log(`Page: ${pageId} has valid data`);
+    const responseJson = await super.retryRequestJson(url, requestOptions, 
+      {statusErrorMessage: async (responseJson, {status, expectedStatus}) => {
+        if(status === 422) {
+          return `Expected Status: ${expectedStatus}, actual status: ${status} message: ${responseJson.error}, ` +
+          `field errors: ${responseJson.details.field_errors.map((item: any) => `{id: ${item.id}, message: ${item.message}}`)
+            .join(', ')}`;
+        }
+        if(status === 500) {
+          console.log(responseJson);
+          return `Expected Status: ${expectedStatus}, actual status: ${status} message: ${responseJson.error}`;
+        }
+    }});
+    console.log(`Page: ${pageId} validated successfully`);
     return responseJson.data;
   }
 
@@ -110,4 +121,6 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     console.log(`Event: ${ccdEvent.id} submitted successfully, caseId: ${caseData.id}`);
     return caseData;
   }
+
+  async 
 }
