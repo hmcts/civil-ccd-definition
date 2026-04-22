@@ -283,9 +283,7 @@ module.exports = {
           },
           disposalHearingDisclosureOfDocuments: {
             input1: 'string',
-            date1: date(-1),
-            input2: 'string',
-            date2: date(-1)
+            date1: date(-1)
           },
           disposalHearingWitnessOfFact: {
             input1: 'string',

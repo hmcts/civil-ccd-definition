@@ -199,7 +199,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disposalHearingClaimSettlingDJ",
-    "Label": "## Claim settling \n Each party must inform the court immediately if the case is settled, whether or not it is then possible to file a draft consent order to give effect to their agreement.",
+    "Label": "## Claim settling \n The Claimant must notify the court immediately if the case is settled. Where appropriate the Claimant must use the portal to notify the court of settlement.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

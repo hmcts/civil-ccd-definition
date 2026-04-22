@@ -120,22 +120,6 @@
     "DisplayContext": "OPTIONAL"
   },
   {
-    "ID": "DisposalHearingDisclosureOfDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-    "ListElementCode": "input2",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "DisposalHearingDisclosureOfDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
-    "ListElementCode": "date2",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
     "ID": "DisposalHearingWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingWitnessOfFact",

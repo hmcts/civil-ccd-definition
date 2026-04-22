@@ -38,14 +38,8 @@ export const inputs = {
     input1: {
       selector: '#disposalHearingDisclosureOfDocuments_input1',
     },
-    input2: {
-      selector: '#disposalHearingDisclosureOfDocuments_input2',
-    },
     date1: {
       selectorKey: 'date1',
-    },
-    date2: {
-      selectorKey: 'date2',
     },
   },
   witnessOfFact: {

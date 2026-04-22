@@ -53,19 +53,12 @@ export default class DisposalHearingSdoPage extends ExuiPage(BasePage) {
 
   async addDisclosureOfDocuments() {
     const date1 = DateHelper.getToday();
-    const date2 = DateHelper.addToToday({ days: 1, workingDay: true });
     await super.inputText(
       'disclosure of documents input 1',
       inputs.disclosureOfDocuments.input1.selector,
       { containerSelector: containers.disclosureOfDocuments.selector },
     );
-    await super.inputText(
-      'disclosure of documents input 2',
-      inputs.disclosureOfDocuments.input2.selector,
-      { containerSelector: containers.disclosureOfDocuments.selector },
-    );
     await this.dateFragment.enterDate(date1, inputs.disclosureOfDocuments.date1.selectorKey);
-    await this.dateFragment.enterDate(date2, inputs.disclosureOfDocuments.date2.selectorKey);
   }
 
   async addWitnessesOfFact() {

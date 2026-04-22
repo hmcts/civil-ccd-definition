@@ -144,8 +144,7 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.input4 === 'string';
     },
     disposalHearingDisclosureOfDocuments: (data) => {
-      return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string';
+      return typeof data.input1 === 'string';
     },
     smallClaimsRoadTrafficAccident:(data) => {
       return typeof data.input === 'string';
@@ -273,9 +272,7 @@ module.exports = {
           },
           disposalHearingDisclosureOfDocuments: {
             input1: 'string',
-            date1: date(-1),
-            input2: 'string',
-            date2: date(-1)
+            date1: date(-1)
           },
           disposalHearingWitnessOfFact: {
             input1: 'string',
