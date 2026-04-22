@@ -2,7 +2,7 @@
   {
     "ID": "SolicitorOrganisationDetails",
     "ListElementCode": "email",
-    "FieldType": "Text",
+    "FieldType": "Email",
     "ElementLabel": "Email",
     "SecurityClassification": "Public",
     "Searchable": "Y",
