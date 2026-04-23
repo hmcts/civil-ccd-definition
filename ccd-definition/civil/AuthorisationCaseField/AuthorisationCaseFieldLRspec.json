@@ -3741,18 +3741,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQFutureApplicationsLabel",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1DQFutureApplicationsLabel",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1AdditionalInformationForJudge",
     "AccessControl": [
       {

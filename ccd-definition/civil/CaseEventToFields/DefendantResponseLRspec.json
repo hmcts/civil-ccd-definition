@@ -1831,6 +1831,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQFutureApplicationsLabel",
+    "PageLabel": "",
+    "PageDisplayOrder": 54,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "Applications",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack=\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFutureApplications",
     "PageLabel": "",
     "PageDisplayOrder": 54,
@@ -1853,6 +1865,30 @@
     "PageShowCondition": "",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "additionalInformationForJudge",
+    "PageDisplayOrder": 54,
+    "PageFieldDisplayOrder": 4,
+    "CaseEventFieldLabel": "Provide any other information the judge may need",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "Applications",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "additionalInformationForJudge2",
+    "PageDisplayOrder": 54,
+    "PageFieldDisplayOrder": 5,
+    "CaseEventFieldLabel": "Provide any other information the judge may need",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "Applications",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",

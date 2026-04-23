@@ -982,8 +982,7 @@
     "DisplayContext": "READONLY",
     "PageID": "Applications",
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
-    "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": " "
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
