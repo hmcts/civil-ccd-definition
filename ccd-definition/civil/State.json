@@ -105,18 +105,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "JUDGMENT_REQUESTED",
-    "Name": "Judgment Requested",
-    "Description": "Judgment Requested",
-    "DisplayOrder": 14,
-    "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameHmctsInternal}"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "All_FINAL_ORDERS_ISSUED",
     "Name": "All final orders issued",
     "Description": "All final orders issued",
-    "DisplayOrder": 15,
+    "DisplayOrder": 14,
     "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameHmctsInternal}"
    },
    {
@@ -124,7 +116,7 @@
     "ID": "CASE_SETTLED",
     "Name": "Case Settled",
     "Description": "Case settled",
-    "DisplayOrder": 16,
+    "DisplayOrder": 15,
     "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameHmctsInternal}"
   },
   {
@@ -132,7 +124,7 @@
     "ID": "CASE_STAYED",
     "Name": "Case Stayed",
     "Description": "Case stayed",
-    "DisplayOrder": 17,
+    "DisplayOrder": 16,
     "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameHmctsInternal}"
   },
   {
@@ -140,7 +132,7 @@
     "ID": "CLOSED",
     "Name": "Closed",
     "Description": "Closed",
-    "DisplayOrder": 18,
+    "DisplayOrder": 17,
     "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameHmctsInternal}"
   },
   {
@@ -148,7 +140,7 @@
     "ID": "CASE_DISCONTINUED",
     "Name": "Case Discontinued",
     "Description": "Case Discontinued",
-    "DisplayOrder": 19,
+    "DisplayOrder": 18,
     "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameHmctsInternal}"
   }
 ]
