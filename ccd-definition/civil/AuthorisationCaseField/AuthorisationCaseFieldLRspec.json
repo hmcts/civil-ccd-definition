@@ -3749,7 +3749,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQFutureApplicationsLabel",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
