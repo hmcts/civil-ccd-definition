@@ -616,4 +616,4 @@ The new convention is to use the -testing.json suffix for definitions that are n
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
