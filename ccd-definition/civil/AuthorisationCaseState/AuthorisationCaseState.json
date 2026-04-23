@@ -368,6 +368,27 @@
     ]
   },
   {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDGMENT_REQUESTED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
   "CaseTypeID": "CIVIL",
   "CaseStateID": "CLOSED",
   "AccessControl": [
@@ -409,6 +430,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseStateID": "DECISION_OUTCOME",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDGMENT_REQUESTED",
     "UserRoles": [
       "next-hearing-date-admin"
     ],

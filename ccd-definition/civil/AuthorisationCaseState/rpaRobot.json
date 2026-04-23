@@ -73,6 +73,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDGMENT_REQUESTED",
+    "UserRole": "caseworker-civil-rparobot",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "IN_MEDIATION",
     "UserRole": "caseworker-civil-rparobot",
     "CRUD": "CRUD"
