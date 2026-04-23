@@ -32,6 +32,8 @@ Before running CCD definition imports locally, you need to pull the shared scrip
 ./bin/pull-latest-civil-shared.sh
 ```
 
+
+
 This downloads the shared IDAM/CCD helper scripts to `bin/shared/`. You can optionally specify a branch:
 
 ```bash
