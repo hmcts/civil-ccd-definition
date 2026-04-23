@@ -21,14 +21,6 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "claimValue",
-    "TabFieldDisplayOrder": 5
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "claimFee",
     "TabFieldDisplayOrder": 6
   },
   {
@@ -36,15 +28,15 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "applicantSolicitor1PbaAccounts",
-    "TabFieldDisplayOrder": 8
+    "CaseFieldID": "claimFee",
+    "TabFieldDisplayOrder": 7
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "issueDate",
+    "CaseFieldID": "applicantSolicitor1PbaAccounts",
     "TabFieldDisplayOrder": 9
   },
   {
@@ -52,7 +44,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "submittedDate",
+    "CaseFieldID": "issueDate",
     "TabFieldDisplayOrder": 10
   },
   {
@@ -60,7 +52,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "allocatedTrack",
+    "CaseFieldID": "submittedDate",
     "TabFieldDisplayOrder": 11
   },
   {
@@ -68,7 +60,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "responseClaimTrack",
+    "CaseFieldID": "allocatedTrack",
     "TabFieldDisplayOrder": 12
   },
   {
@@ -76,8 +68,16 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "respondent1ResponseDeadline",
+    "CaseFieldID": "responseClaimTrack",
     "TabFieldDisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "respondent1ResponseDeadline",
+    "TabFieldDisplayOrder": 14
   },
   {
     "CaseTypeID": "CIVIL",
@@ -86,14 +86,6 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "respondent2ResponseDeadline",
     "FieldShowCondition": "respondent2Represented = \"Yes\"",
-    "TabFieldDisplayOrder": 14
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "TabDisplayOrder": 1,
-    "CaseFieldID": "claimNotificationDate",
     "TabFieldDisplayOrder": 15
   },
   {
@@ -101,7 +93,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "claimIssuedPaymentDetails",
+    "CaseFieldID": "claimNotificationDate",
     "TabFieldDisplayOrder": 16
   },
   {
@@ -109,7 +101,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "otherDetails",
+    "CaseFieldID": "claimIssuedPaymentDetails",
     "TabFieldDisplayOrder": 17
   },
   {
@@ -117,7 +109,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "transferCaseDetails",
+    "CaseFieldID": "otherDetails",
     "TabFieldDisplayOrder": 18
   },
   {
@@ -125,7 +117,15 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "reasonForTransfer",
+    "CaseFieldID": "transferCaseDetails",
     "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "reasonForTransfer",
+    "TabFieldDisplayOrder": 20
   }
 ]
