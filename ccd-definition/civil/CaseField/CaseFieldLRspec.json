@@ -2287,15 +2287,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQFutureApplicationsLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">Application</h2>",
-    "FieldType": "Label",
+    "ID": "applicant1DQFutureApplications",
+    "Label": " ",
+    "FieldType": "FutureApplications",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQFutureApplications",
+    "ID": "applicant2DQFutureApplications",
     "Label": " ",
     "FieldType": "FutureApplications",
     "SecurityClassification": "Public",
