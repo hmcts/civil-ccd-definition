@@ -20,7 +20,7 @@
     "ID": "FutureApplications",
     "ListElementCode": "additionalInformationForJudge",
     "FieldType": "TextArea",
-    "ElementLabel": "Provide any other information that the judge may need",
+    "ElementLabel": "Provide any other information that the judge may need (Optional)",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

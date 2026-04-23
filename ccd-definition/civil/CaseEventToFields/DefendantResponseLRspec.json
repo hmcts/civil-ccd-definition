@@ -1869,30 +1869,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "additionalInformationForJudge",
-    "PageDisplayOrder": 54,
-    "PageFieldDisplayOrder": 4,
-    "CaseEventFieldLabel": "Provide any other information the judge may need",
-    "DisplayContext": "OPTIONAL",
-    "PageID": "Applications",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "additionalInformationForJudge2",
-    "PageDisplayOrder": 54,
-    "PageFieldDisplayOrder": 5,
-    "CaseEventFieldLabel": "Provide any other information the judge may need",
-    "DisplayContext": "OPTIONAL",
-    "PageID": "Applications",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondStatementOfTruthHeaderLabel",
     "PageDisplayOrder": 55,
     "PageFieldDisplayOrder": 1,
