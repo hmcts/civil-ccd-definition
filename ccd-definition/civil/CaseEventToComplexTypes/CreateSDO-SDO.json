@@ -1207,22 +1207,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackDisclosureOfDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackDisclosureOfDocuments",
-    "ListElementCode": "input4",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FastTrackDisclosureOfDocuments",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackDisclosureOfDocuments",
-    "ListElementCode": "date3",
-    "FieldDisplayOrder": 8,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",

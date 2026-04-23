@@ -10,6 +10,7 @@
     "lint:fix": "eslint . --fix",
     "prettier:fix": "prettier -w 'playwright-e2e/**/*.ts'",
     "setup": "echo yarn:setup",
+    "postinstall": "./bin/pull-latest-civil-shared.sh || true",
     "install-dependencies": "/usr/bin/yarn install --immutable --silent",
     "test": "NODE_PATH=. mocha e2e/tests/unit/definitions/**/*.js",
     "test:a11y": "echo test:a11y",
@@ -179,7 +180,8 @@
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.1",
     "uuid": "^11.0.3",
-    "webdriverio": "^9.0.0"
+    "webdriverio": "^9.0.0",
+    "zod": "^4.3.6"
   },
   "lint-staged": {
     "playwright-ui/**/*.{ts,tsx}": "prettier --write",
