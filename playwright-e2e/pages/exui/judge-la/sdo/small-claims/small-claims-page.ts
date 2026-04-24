@@ -88,6 +88,10 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
   async addDocuments() {
     await super.inputText('docs input 1', inputs.documents.input1.selector);
     await super.inputText('docs input 2', inputs.documents.input2.selector);
+    await this.dateFragment.enterDate(
+      DateHelper.addToToday({ days: 28, workingDay: true }),
+      inputs.documents.deadlineDate.selectorKey,
+    );
   }
 
   async addWitnessStatement() {
@@ -148,12 +152,10 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     await super.inputText('Credit hire input 7', inputs.creditHire.input7.selector);
     await super.inputText('Credit hire input 8', inputs.creditHire.input8.selector);
 
-    const date1 = DateHelper.getToday();
     const date2 = DateHelper.addToToday({ days: 1, workingDay: true });
     const date3 = DateHelper.addToToday({ days: 2, workingDay: true });
     const date4 = DateHelper.addToToday({ days: 3, workingDay: true });
 
-    await this.dateFragment.enterDate(date1, inputs.creditHire.date1.selectorKey);
     await this.dateFragment.enterDate(date2, inputs.creditHire.date2.selectorKey);
     await this.dateFragment.enterDate(date3, inputs.creditHire.date3.selectorKey);
     await this.dateFragment.enterDate(date4, inputs.creditHire.date4.selectorKey);

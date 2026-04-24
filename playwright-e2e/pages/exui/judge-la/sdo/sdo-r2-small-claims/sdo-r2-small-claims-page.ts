@@ -63,6 +63,10 @@ export default class SdoR2SmallClaimsPage extends ExuiPage(BasePage) {
       'witness statement',
       inputs.witnessStatements.statementOfWtinesses.selector,
     );
+    await this.dateFragment.enterDate(
+      DateHelper.addToToday({ days: 28, workingDay: true }),
+      inputs.witnessStatements.deadlineDate.selectorKey,
+    );
   }
 
   async restrictNumWitnesses() {
@@ -93,7 +97,7 @@ export default class SdoR2SmallClaimsPage extends ExuiPage(BasePage) {
     await super.expectText(inputs.uploadOfDocuments.label);
     await super.inputText(
       'Make sure to upload the files as pdfs',
-      inputs.uploadOfDocuments.selector,
+      inputs.uploadOfDocuments.description.selector,
     );
   }
 
