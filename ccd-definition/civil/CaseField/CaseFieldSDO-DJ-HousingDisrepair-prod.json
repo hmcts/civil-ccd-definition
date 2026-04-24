@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "TrialHousingDisrepairLegacy",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

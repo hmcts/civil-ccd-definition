@@ -67,7 +67,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialPPI",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsHousingDisrepair",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isOtherRemedyAbandoned",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "otherRemedyAbandonedDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   }
