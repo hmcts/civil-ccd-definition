@@ -21,7 +21,7 @@
     "ListElementCode": "additionalInformationForJudge",
     "FieldType": "TextArea",
     "ElementLabel": "Provide any other information that the judge may need",
-    "FieldShowCondition": "intentionToMakeFutureApplications=\"*\"",
+    "FieldShowCondition": "intentionToMakeFutureApplications = \"*\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
