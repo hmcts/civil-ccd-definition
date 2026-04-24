@@ -195,7 +195,7 @@
     "PageLabel": "",
     "PageDisplayOrder": 16,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "Applications",
     "PageShowCondition": "",
     "ShowSummaryChangeOption": "Y"
