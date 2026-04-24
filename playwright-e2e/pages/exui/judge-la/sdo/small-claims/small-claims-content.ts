@@ -66,6 +66,9 @@ export const inputs = {
     input2: {
       selector: '#smallClaimsDocuments_input2',
     },
+    deadlineDate: {
+      selectorKey: 'deadlineDate',
+    },
   },
   witnessStatement: {
     statementOfWitnesses: {
@@ -125,9 +128,6 @@ export const inputs = {
     },
     input8: {
       selector: '#smallClaimsCreditHire_input11',
-    },
-    date1: {
-      selectorKey: 'date1',
     },
     date2: {
       selectorKey: 'date2',
