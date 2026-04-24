@@ -2295,14 +2295,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant2DQFutureApplications",
-    "Label": " ",
-    "FieldType": "FutureApplications",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1AdditionalInformationForJudge",
     "Label": " ",
     "FieldType": "TextArea",
