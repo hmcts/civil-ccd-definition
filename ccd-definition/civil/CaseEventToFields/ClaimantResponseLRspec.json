@@ -197,7 +197,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "applicant1DQFutureApplications=\"\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
