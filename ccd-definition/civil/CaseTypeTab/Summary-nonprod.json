@@ -4,8 +4,17 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
+    "CaseFieldID": "isOtherRemedyAbandoned",
+    "TabFieldDisplayOrder": 203,
+    "FieldShowCondition": "claimType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
     "CaseFieldID": "isClaimDeclarationAdded",
-    "TabFieldDisplayOrder": 20,
+    "TabFieldDisplayOrder": 204,
     "FieldShowCondition": "claimType = \"DO_NOT_SHOW_IN_UI\""
   },
   {
@@ -31,8 +40,17 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
+    "CaseFieldID": "otherRemedyAbandonedDate",
+    "TabFieldDisplayOrder": 5,
+    "FieldShowCondition": "(isOtherRemedyAbandoned = \"Yes\" OR isOtherRemedyAbandoned = \"No\") AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
     "CaseFieldID": "otherRemedyFee",
-    "TabFieldDisplayOrder": 7,
+    "TabFieldDisplayOrder": 8,
     "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\" AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
   }
 ]
