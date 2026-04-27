@@ -283,4 +283,11 @@ export default class CaseDataHelper {
         return 110000;
     }
   }
+
+  static getClaimTrack(claimAmount: number) {
+    if (claimAmount <= 10000) return ClaimTrack.SMALL_CLAIM;
+    if (claimAmount > 10000 && claimAmount <= 25000) return ClaimTrack.FAST_CLAIM;
+    if (claimAmount > 25000 && claimAmount <= 100000) return ClaimTrack.INTERMEDIATE_CLAIM;
+    if (claimAmount > 100000) return ClaimTrack.MULTI_CLAIM;
+  }
 }

@@ -22,6 +22,7 @@ export default class ClaimTypeHelper {
   static isDefendant1Unrepresented(claimType: ClaimType) {
     return (
       claimType === ClaimType.ONE_VS_ONE_LIP ||
+      claimType === ClaimType.ONE_VS_TWO_LIPS ||
       claimType === ClaimType.ONE_VS_TWO_LIP_LR ||
       claimType === ClaimType.TWO_VS_ONE_LIP
     );

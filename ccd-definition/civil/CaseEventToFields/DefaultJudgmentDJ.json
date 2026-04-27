@@ -101,7 +101,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HearingType",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageLabel": "Make a request for judgment"
@@ -113,7 +113,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "HearingType",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/checkPreferredLocations"
@@ -125,7 +125,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "HearingType",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\""
@@ -137,7 +137,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "HearingType",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hearingSelection=\"TRIAL_HEARING\""
@@ -149,7 +149,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "HearingType",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\" OR hearingSelection=\"TRIAL_HEARING\"",
     "ShowSummaryChangeOption": "N"
@@ -161,7 +161,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "HearingType",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hearingSelection=\"DISPOSAL_HEARING\" OR hearingSelection=\"TRIAL_HEARING\"",
@@ -174,7 +174,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "HearingSupportRequirementsFieldDJ",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hearingDirectionsLabel = \"DO_NOT_SHOW_IN_UI\""
@@ -186,7 +186,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "HearingSupportRequirementsFieldDJ",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
@@ -197,7 +197,7 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupportRequirementsFieldDJ",
-    "PageDisplayOrder": 4,
+    "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hearingDirectionsLabel=\"DO NOT SHOW IN UI\"",
