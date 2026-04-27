@@ -169,7 +169,8 @@ const calculatedClaimsTrackWOSum = {
     disposalHearingQuestionsToExpertsToggle: (data) => Array.isArray(data),
     smallClaimsDocuments: (data) => {
       return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string';
+        && typeof data.input2 === 'string'
+        && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/);
     },
     smallClaimsMethodToggle: (data) => Array.isArray(data),
     disposalHearingClaimSettlingToggle: (data) => Array.isArray(data)
@@ -333,7 +334,8 @@ module.exports = {
           smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
           smallClaimsDocuments: {
             input1: 'string',
-            input2: 'string'
+            input2: 'string',
+            deadlineDate: date(28)
           },
           smallClaimsWitnessStatement: {
             input1: 'string',
