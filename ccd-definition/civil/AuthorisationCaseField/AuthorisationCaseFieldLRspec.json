@@ -3729,7 +3729,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       },
       {
         "UserRoles": [
