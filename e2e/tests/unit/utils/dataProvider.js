@@ -23,22 +23,33 @@ const loadFileFromDefinitions = file => {
 
 const loadFilesFromDefinitions = filePrefix => {
   const results = [];
+  const loadedFiles = new Set();
   definitionVariants.forEach(variant => {
-    const definitionDir = path.join(definitionsRoot, variant);
-    if (!fs.existsSync(definitionDir)) {
-      return;
-    }
-    fs.readdirSync(definitionDir)
-      .filter(filename => filename === `${filePrefix}.json` || filename.startsWith(`${filePrefix}-`))
-      .forEach(filename => {
-        const fullPath = path.join(definitionDir, filename);
-        const content = Object.assign(load(fullPath), []);
-        if (Object.prototype.toString.call(content) === '[object Array]') {
-          results.push(...content);
-        } else {
-          results.push(content);
-        }
-      });
+    const candidateDirs = [
+      path.join(definitionsRoot, variant),
+      path.join(definitionsRoot, variant, filePrefix)
+    ];
+
+    candidateDirs.forEach(definitionDir => {
+      if (!fs.existsSync(definitionDir)) {
+        return;
+      }
+      fs.readdirSync(definitionDir)
+        .filter(filename => filename === `${filePrefix}.json` || filename.startsWith(`${filePrefix}-`))
+        .forEach(filename => {
+          const fullPath = path.join(definitionDir, filename);
+          if (loadedFiles.has(fullPath)) {
+            return;
+          }
+          loadedFiles.add(fullPath);
+          const content = Object.assign(load(fullPath), []);
+          if (Object.prototype.toString.call(content) === '[object Array]') {
+            results.push(...content);
+          } else {
+            results.push(content);
+          }
+        });
+    });
   });
   return results;
 };
