@@ -52,6 +52,7 @@ exports.config = {
       contextOptions: {
         recordVideo: {
           dir: 'failed-videos',
+          downloadsPath: 'e2e/tests/ui_tests/unspec-full-defence/downloads',
         },
       },
     },
