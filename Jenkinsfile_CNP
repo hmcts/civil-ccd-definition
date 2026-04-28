@@ -256,6 +256,28 @@ withPipeline(type, product, component) {
     archiveCoreCaseDataDefinitions()
   }
 
+  afterSuccess('highleveldatasetup') {
+    // Re-upload definitions via shell script for ITHC/perftest to handle 504 gateway timeouts.
+    // The shell script polls /api/import-audits to verify the definition was imported
+    // even when the Azure Application Gateway returns 504 before the import completes.
+    onIthc {
+      sh """
+        set -e
+        eval \$(./bin/variables/load-ithc-environment-variables.sh)
+        . ./bin/shared/idam-get-tokens.sh
+      """
+      uploadCoreCaseDataDefinitions('ithc')
+    }
+    onPerftest {
+      sh """
+        set -e
+        eval \$(./bin/variables/load-perftest-environment-variables.sh)
+        . ./bin/shared/idam-get-tokens.sh
+      """
+      uploadCoreCaseDataDefinitions('perftest')
+    }
+  }
+
   afterSuccess('akschartsinstall') {
     onPR {
       env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
