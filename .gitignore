@@ -36,6 +36,10 @@ node_modules/
 # test_output
 test-results/
 e2e/e2e-documentation/results/
+# Generated visual artifacts
+**/actualPngs/
+**/expectedPngs/
+**/diffPngs/
 
 ## Helm
 charts/civil-ccd/charts/**
