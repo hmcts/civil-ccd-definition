@@ -166,14 +166,19 @@ function attachPdfsToAllure(actualFile, expectedFile) {
   }
 }
 
-// ---------- FILE STABILITY ----------
-function waitForFileStable(file) {
-  return new Promise(resolve => {
+function waitForFileStable(file, timeout = 10000) {
+  return new Promise((resolve, reject) => {
     let lastSize = 0;
     let stableCount = 0;
+    const start = Date.now();
 
     const interval = setInterval(() => {
       try {
+        if (Date.now() - start > timeout) {
+          clearInterval(interval);
+          return reject(new Error(`Timeout waiting for file: ${file}`));
+        }
+
         if (!fs.existsSync(file)) return;
 
         const size = fs.statSync(file).size;
@@ -190,7 +195,9 @@ function waitForFileStable(file) {
           clearInterval(interval);
           resolve();
         }
-      } catch {}
+      } catch (e) {
+        console.warn('waitForFileStable error:', e);
+      }
     }, 300);
   });
 }
