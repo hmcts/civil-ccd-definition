@@ -11,9 +11,7 @@
           "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-approver",
           "wlu-admin",
-          "caseworker-civil-solicitor",
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
