@@ -34,12 +34,9 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         trialHearingDisclosureOfDocumentsDJ: {
           date1: date(28),
           date2: date(43),
-          date3: date(28),
           input1: 'string',
           input2: 'string',
           input3: 'string',
-          input4: 'string',
-          input5: 'string'
         },
         trialHearingDisclosureOfDocumentsDJToggle: ['SHOW'],
         trialHearingJudgesRecitalDJ: {
@@ -93,11 +90,6 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
     const disposalHearing = {
       disposalHearing : {
         disposalHearingAddNewDirectionsDJ: [],
-        disposalHearingBundleDJ: {
-          input: 'string',
-          type: ['DOCUMENTS', 'ELECTRONIC', 'SUMMARY']
-        },
-        disposalHearingBundleDJToggle: ['SHOW'],
         disposalHearingClaimSettlingDJToggle: ['SHOW'],
         disposalHearingDisclosureOfDocumentsDJToggle: ['SHOW'],
         disposalHearingCostsDJToggle: ['SHOW'],

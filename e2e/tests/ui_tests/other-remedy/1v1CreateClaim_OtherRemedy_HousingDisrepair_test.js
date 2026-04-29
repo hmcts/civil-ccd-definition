@@ -22,7 +22,7 @@ if (config.runWAApiTest) {
   validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
 }
 
-Feature('1v1 - Claim Journey with OtherRemedy type Housing Disrepair').tag('@ui-other-remedy');
+Feature('1v1 - Claim Journey with OtherRemedy type Housing Disrepair').tag('@civil-ccd-pr @ui-other-remedy');
 
 Scenario('01 Applicant solicitor creates claim with claim type as Housing disrepair', async ({I}) => {
   let claimType = 'Housing disrepair';

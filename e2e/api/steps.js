@@ -943,7 +943,7 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, hearingDate, user);
   },
 
-  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
+  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING', mpScenario) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'DEFAULT_JUDGEMENT';
