@@ -75,7 +75,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       method: 'PUT',
     };
     await super.retryRequest(url, requestOptions);
-    console.log(`Payment for claim issue successfully updated, caseId: ${serviceRequestDTO.id}`);
+    console.log(`Payment for claim issue successfully updated, caseId: ${serviceRequestDTO.ccd_case_number}`);
   }
 
   async assignCaseToDefendant(user: User, caseId: number, caseRole: CaseRole) {
