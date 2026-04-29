@@ -41,7 +41,7 @@ export default abstract class BaseRequest {
       params,
     }: RequestOptions = {},
     responseType = ResponseDataType.NONE,
-    { expectedStatus = 200, verifyResponse }: responseOptions._ResponseOptions = {},
+    { expectedStatus = 200, verifyResponse, statusErrorMessage }: responseOptions._ResponseOptions = {},
   ): Promise<APIResponse | any | string> {
     const response = await this.requestContext.fetch(url, {
       method,
@@ -49,13 +49,18 @@ export default abstract class BaseRequest {
       headers,
       params,
     });
+    const responseData = await this.getResponseData(response, responseType);
     await this.expectStatus(
       expectedStatus,
       response.status(),
       response.url(),
       response.statusText(),
+      {message: statusErrorMessage ? await statusErrorMessage(responseData ?? response, {
+        status: response.status(),
+        headers: response.headers(),
+        expectedStatus
+      }) : undefined}
     );
-    const responseData = await this.getResponseData(response, responseType);
     if (verifyResponse)
       await verifyResponse(responseData ?? response, {
         status: response.status(),
@@ -73,6 +78,7 @@ export default abstract class BaseRequest {
       retries = 2,
       retryTimeInterval = 5000,
       verifyResponse,
+      statusErrorMessage
     }: responseOptions._RetryResponseOptions = {},
   ): Promise<APIResponse | any | string> {
     if (retryTimeInterval > this.MAX_RETRY_TIMEOUT) {
@@ -83,6 +89,7 @@ export default abstract class BaseRequest {
         const response = await this._request(url, requestOptions, responseDataType, {
           expectedStatus,
           verifyResponse,
+          statusErrorMessage
         });
         return response;
       } catch (error: any) {
@@ -186,10 +193,11 @@ export default abstract class BaseRequest {
     actualStatus: number,
     url: string,
     statusText: string,
+    options: { message?: string } = {},
   ) {
     expect(
-      actualStatus,
-      `Expected status: ${expectedStatus}, actual status: ${actualStatus}, ` +
+      actualStatus, 
+      options.message ?? `Expected status: ${expectedStatus}, actual status: ${actualStatus}, ` +
         `message: ${statusText}, url: ${url}`,
     ).toBe(expectedStatus);
   }

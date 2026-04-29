@@ -38,29 +38,5 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "ID": "TrialHearingDisclosureOfDocumentsDJ",
-    "ListElementCode": "input4",
-    "FieldType": "TextArea",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "TrialHearingDisclosureOfDocumentsDJ",
-    "ListElementCode": "input5",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "TrialHearingDisclosureOfDocumentsDJ",
-    "ListElementCode": "date3",
-    "FieldType": "Date",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]

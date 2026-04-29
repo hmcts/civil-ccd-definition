@@ -1,9 +1,9 @@
 import BaseTestData from '../../../../../base/base-test-data';
 import caseFlagLocations from '../../../../../constants/case-flags/case-flag-locations';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CaseLevelFlags from '../../../../../enums/case-flags/case-level-flags';
-import PartyCaseFlags from '../../../../../enums/case-flags/party-case-flags';
-import SpecialMeasureFlags from '../../../../../enums/case-flags/special-measure-flags';
+import CaseLevelFlags from '../../../../../enums/ccd-events/case-flags/case-level-flags';
+import PartyCaseFlags from '../../../../../enums/ccd-events/case-flags/party-case-flags';
+import SpecialMeasureFlags from '../../../../../enums/ccd-events/case-flags/special-measure-flags';
 import TestData from '../../../../../models/test-data';
 import CreateCaseFlagsPageFactory from '../../../../../pages/exui/hearing-center-admin/create-case-flags/create-case-flags-page-factory';
 

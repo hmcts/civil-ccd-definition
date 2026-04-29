@@ -23,6 +23,20 @@ The project is dependent on other Civil repositories:
 
 To set up complete local environment for Civil check [civil-sdk](https://github.com/hmcts/civil-sdk)
 
+### Local Setup
+
+Before running CCD definition imports locally, you need to pull the shared scripts from civil-service:
+
+```bash
+./bin/pull-latest-civil-shared.sh
+```
+
+This downloads the shared IDAM/CCD helper scripts to `bin/shared/`. You can optionally specify a branch:
+
+```bash
+./bin/pull-latest-civil-shared.sh feature-branch
+```
+
 ### Preview environment
 
 Preview environment will be created when opening new PR. Camunda BPMN definitions will be pulled from the latest GitHub
@@ -602,6 +616,20 @@ For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some m
 2 - Add the label pr-values:enableHmc on your GitHub PR
 
 3 - When in XUI/CUI the case type will have an extension to your PR number added to it.
+
+
+## Introduction of *-testing.json file convention for CCD definitions
+
+A new convention for the CCD definitions files has been introduced.
+The new convention is to use the -testing.json suffix for definitions that are not to be used in production but will be used in AAT and Preview environments.
+
+| Pattern | Local | Preview | AAT | Production |
+| --- | --- | --- | --- | --- |
+| Base files | Yes | Yes | Yes | Yes |
+| *-prod.json | No | No | Yes | Yes |
+| *-testing.json | Yes | Yes | Yes | No |
+| *-nonprod.json | Yes | Yes | No | No |
+
 
 ## License
 

@@ -27,7 +27,7 @@
     "ID": "MediationLiPCarm",
     "ListElementCode": "alternativeMediationEmail",
     "ElementLabel": "Alternative mediation email",
-    "FieldType": "Text",
+    "FieldType": "Email",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
