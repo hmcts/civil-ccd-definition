@@ -1,21 +1,20 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' }, 
+test.describe('1v1 spec case flags journey', { tag: '@civil-ccd-nightly' }, 
   async () => {
-    test('1v1 case flags journey', async ({
+    test.only('1v1 spec case flags journey', async ({
       ClaimantSolicitorSpecApiSteps, 
       CaseRoleAssignmentApiSteps,
-      DefendantSolicitor1SpecSteps,
-      HearingCenterAdminSteps,
+      DefendantSolicitor1SpecApiSteps,
       HearingCenterAdminSpecSteps
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence1v1();
+      await DefendantSolicitor1SpecApiSteps.RespondSmallTrackFullDefence1v1();
       await ClaimantSolicitorSpecApiSteps.RespondSmallClaimIntentToProceed1v1();
       await HearingCenterAdminSpecSteps.LoginRegion1();
-      await HearingCenterAdminSteps.CreateCaseLevelCaseFlag();
-      await HearingCenterAdminSteps.CreateClaimant1CaseFlag();
+      await HearingCenterAdminSpecSteps.CreateCaseLevelCaseFlag();
+      await HearingCenterAdminSpecSteps.CreateClaimant1CaseFlag();
     });
 });

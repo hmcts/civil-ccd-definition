@@ -16,7 +16,7 @@ const determinationWithoutHearing = (claimTrack: ClaimTrack) => {
   if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     return {
       deterWithoutHearing: z.looseObject({
-        deterWithoutHearingYesNo: yesNoSchema,
+        // deterWithoutHearingYesNo: yesNoSchema,
       }),
     }; 
   }
@@ -60,19 +60,26 @@ const fastTrackDq = (claimTrack: ClaimTrack) => {
 const experts = (claimTrack: ClaimTrack) => {
   if(claimTrack === ClaimTrack.SMALL_CLAIM)
     return {
-        applicant1DQExperts: z.strictObject({
-          id: nonEmptyString,
+      applicant1DQExperts: z.strictObject({
+        expertRequired: yesNoSchema,
+        details: z.array(
+          z.strictObject({
+            id: nonEmptyString,
             value: z.looseObject({
+              partyID: nonEmptyString,
               firstName: nonEmptyString,
               lastName: nonEmptyString,
-              emailAddress: nonEmptyString,
+              dateAdded: nonEmptyString,
+              eventAdded: nonEmptyString,
               phoneNumber: nonEmptyString,
-              fieldOfExpertise: nonEmptyString,
               whyRequired: nonEmptyString,
+              emailAddress: nonEmptyString,
               estimatedCost: nonEmptyString,
             }),
           }),
-      }
+        ).min(1),
+      }),
+    };
 
   return {
     applicant1DQExperts: z.strictObject({

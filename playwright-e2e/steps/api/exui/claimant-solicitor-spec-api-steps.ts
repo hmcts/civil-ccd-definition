@@ -313,7 +313,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.JUDICIAL_REFERRAL,
+      CaseState.IN_MEDIATION,
     );
 
     const { claimantResponseSpecSchemaBuilder } =
