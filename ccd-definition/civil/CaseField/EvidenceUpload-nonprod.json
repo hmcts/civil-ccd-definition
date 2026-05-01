@@ -1,0 +1,63 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "withoutPrejudiceLabel",
+    "Label": "## Without prejudice",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "withoutPrejudiceToggleText",
+    "Label": "<details><summary><u>Without prejudice</u></summary><div class=\"panel\">\n\n ## Without prejudice \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded \n\n TBC</div></details><br />",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "withoutPrejudiceSelectionEvidence",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadWithoutPrejudice",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentPart36Rejection",
+    "Label": "Part 36 rejection",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentAndDescription",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentPart36RejectionRes",
+    "Label": "Part 36 rejection",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentAndDescription",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentPart36RejectionRes2",
+    "Label": "Part 36 rejection",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentAndDescription",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentPart36RejectionApp2",
+    "Label": "Part 36 rejection",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentAndDescription",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
