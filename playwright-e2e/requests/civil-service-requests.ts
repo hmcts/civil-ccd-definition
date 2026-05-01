@@ -45,20 +45,23 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       retryTimeInterval: 3000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
-        const businessProcess = responseJson.businessProcess;
         await super.expectResponseJsonToHavePropertyValue(
           'businessProcess.status',
           'FINISHED',
           responseJson,
           {
             message:
-              `Ongoing business process: ${businessProcess.camundaEvent}, caseId: ${caseId}, status: ${businessProcess.status},` +
-              ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`,
+              `Ongoing business process: ${responseJson.businessProcess.camundaEvent}, caseId: ${caseId}, status: ${responseJson.businessProcess.status},` +
+              ` process instance: ${responseJson.businessProcess.processInstanceId}, last finished activity: ${responseJson.businessProcess.activityId}`,
           },
         );
-        await super.expectResponseJsonToNotHaveProperty('incidentMessage', responseJson, {
-          message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
-        });
+        await super.expectResponseJsonToNotHaveProperty(
+          'incidentMessage',
+          responseJson,
+          {
+            message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
+          },
+        );
       },
     });
     console.log(`Business process successfully finished, caseId: ${caseId}`);

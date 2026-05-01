@@ -140,11 +140,11 @@ const mediationContactInformation = (claimTrack: ClaimTrack) => {
 };
 
 const mediationAvailability = (claimTrack: ClaimTrack) => {
-  const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {
-    outputFormat: 'YYYY-MM-DD',
-  });
 
-  if(claimTrack === ClaimTrack.SMALL_CLAIM)
+  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+    const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {
+      outputFormat: 'YYYY-MM-DD',
+    });
     return {
       MediationAvailability: {
         resp1MediationAvailability: {
@@ -158,6 +158,7 @@ const mediationAvailability = (claimTrack: ClaimTrack) => {
         },
       },
     };
+  }
 
   return {};
 };

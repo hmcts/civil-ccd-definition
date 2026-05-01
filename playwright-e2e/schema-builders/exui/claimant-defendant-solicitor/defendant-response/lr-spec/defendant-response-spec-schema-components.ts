@@ -211,8 +211,8 @@ const hearing = (claimTrack: ClaimTrack) => {
         unavailableDatesRequired: yesNoSchema,
         smallClaimUnavailableDate: z.array(z.looseObject({})).min(1),
       }),
-      SmallClaimHearingInterpreterRequired: yesNoSchema,
-      SmallClaimHearingInterpreterDescription: nonEmptyString,
+      // SmallClaimHearingInterpreterRequired: yesNoSchema,
+      // SmallClaimHearingInterpreterDescription: nonEmptyString,
     };
   
   return {

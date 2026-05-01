@@ -111,7 +111,12 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       statusErrorMessage: async (responseJson, { url, status, expectedStatus }) =>
         this.getStatusErrorMessage(responseJson, { url, status, expectedStatus }),
       verifyResponse: async (responseJson) => {
-        await super.expectResponseJsonToHavePropertyValue('state', expectedState, responseJson);
+        await super.expectResponseJsonToHavePropertyValue(
+          'state',
+          expectedState,
+          responseJson,
+          { nonRetryable: true },
+        );
       }
     });
     const caseData: CCDCaseData = { id: responseJson.id, ...responseJson.case_data };
@@ -131,9 +136,6 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       expectedStatus: number;
     },
   ) {
-    if(status === 404) {
-      console.log(responseJson);
-    }
     if (status === 422) {
       let message =
         `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
