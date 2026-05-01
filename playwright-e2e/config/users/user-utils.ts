@@ -1,6 +1,6 @@
-import UserKey from '../../enums/user-key';
+import UserKey from '../../constants/users/user-key';
 import UserStateHelper from '../../helpers/users-state-helper';
-import User from '../../models/user';
+import User from '../../models/users/user';
 import filePaths from '../file-paths';
 
 let userKeysBeingUsed = new Set<UserKey>();

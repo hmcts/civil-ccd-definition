@@ -1,5 +1,5 @@
 import filePaths from '../config/file-paths';
-import FileType from '../enums/file-type';
+import FileType from '../constants/test-utils/file-type';
 import FileSystemHelper from './file-system-helper';
 
 export default class BankHolidaysHelper {

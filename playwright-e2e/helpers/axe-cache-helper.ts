@@ -1,6 +1,6 @@
 import filePaths from '../config/file-paths';
-import FileType from '../enums/file-type';
-import { AxeResults, PageResult } from '../models/axe-results';
+import FileType from '../constants/test-utils/file-type';
+import { AxeResults, PageResult } from '../models/test-utils/axe-results';
 import FileSystemHelper from './file-system-helper';
 
 //TODO: Could be a potential concurrency issue when caching page results when multiple workers are running but will fix later.

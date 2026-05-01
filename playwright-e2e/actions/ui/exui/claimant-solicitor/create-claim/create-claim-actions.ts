@@ -1,8 +1,8 @@
-import TestData from '../../../../../models/test-data';
+import TestData from '../../../../../models/test-utils/test-data';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import BaseTestData from '../../../../../base/base-test-data';
 import CreateClaimPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/create-claim/create-claim-page-factory';
-import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 
 @AllMethodsStep()
 export default class CreateClaimActions extends BaseTestData {

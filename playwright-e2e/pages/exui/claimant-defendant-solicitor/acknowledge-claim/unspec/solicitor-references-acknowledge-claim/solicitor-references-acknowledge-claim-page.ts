@@ -4,10 +4,10 @@ import { heading, inputs, subheadings } from './solicitor-references-acknowledge
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import SolicitorReferenceFragment from '../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
 import { Page } from '@playwright/test';
-import { Party } from '../../../../../../models/partys.ts';
+import { Party } from '../../../../../../models/users/partys.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import partys from '../../../../../../constants/partys.ts';
+import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
+import partys from '../../../../../../constants/users/partys';
 import { getFormattedCaseId } from '../../../../exui-page/exui-content.ts';
 
 @AllMethodsStep()
@@ -38,8 +38,8 @@ export default class SolicitorReferencesAcknowledgeClaimPage extends ExuiPage(Ba
       await super.runVerifications(
         [
           super.expectHeading(heading),
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
-          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
+          super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
           super.expectLabel(inputs.fileRefDS2.label),
         ],
         { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },

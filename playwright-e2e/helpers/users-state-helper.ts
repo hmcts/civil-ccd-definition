@@ -1,7 +1,7 @@
-import User from '../models/user';
+import User from '../models/users/user';
 import FileSystemHelper from './file-system-helper';
-import FileType from '../enums/file-type';
-import UserKey from '../enums/user-key';
+import FileType from '../constants/test-utils/file-type';
+import UserKey from '../constants/users/user-key';
 import filePaths from '../config/file-paths';
 
 export default class UserStateHelper {

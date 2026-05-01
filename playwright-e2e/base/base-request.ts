@@ -2,7 +2,7 @@ import { APIRequestContext, APIResponse } from '@playwright/test';
 import RequestOptions from '../models/api/request-options';
 import { expect } from '../playwright-fixtures';
 import { BoxedDetailedStep } from '../decorators/test-steps';
-import ResponseDataType from '../enums/response-data-type';
+import ResponseDataType from '../constants/test-utils/response-data-type';
 import * as responseOptions from '../models/api/response-options';
 
 const classKey = 'BaseRequest';
@@ -56,6 +56,7 @@ export default abstract class BaseRequest {
       response.url(),
       response.statusText(),
       {message: statusErrorMessage ? await statusErrorMessage(responseData ?? response, {
+        url: response.url(),
         status: response.status(),
         headers: response.headers(),
         expectedStatus

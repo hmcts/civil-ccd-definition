@@ -1,10 +1,10 @@
-import claimantDefendantPartyTypes from '../constants/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../constants/users/claimant-defendant-party-types';
 import CaseFlagsHelper from '../helpers/case-flags-helper';
 import DateHelper from '../helpers/date-helper';
-import CaseFlags from '../models/case-flag';
-import CCDCaseData from '../models/ccd/ccd-case-data';
-import { ClaimantDefendantPartyType } from '../models/claimant-defendant-party-types';
-import TestData from '../models/test-data';
+import CaseFlags from '../models/ccd-events/case-flags/case-flag';
+import CCDCaseData from '../models/ccd-case-data';
+import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-party-types';
+import TestData from '../models/test-utils/test-data';
 
 export default abstract class BaseTestData {
   private _testData: TestData;
@@ -161,27 +161,27 @@ export default abstract class BaseTestData {
     );
     CaseFlagsHelper.updateCaseFlagsObject(
       caseFlags,
-      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.applicantExperts),
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData?.applicantExperts),
     );
     CaseFlagsHelper.updateCaseFlagsObject(
       caseFlags,
-      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.applicantWitnesses),
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData?.applicantWitnesses),
     );
     CaseFlagsHelper.updateCaseFlagsObject(
       caseFlags,
-      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent1Experts),
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData?.respondent1Experts),
     );
     CaseFlagsHelper.updateCaseFlagsObject(
       caseFlags,
-      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent1Witnesses),
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData?.respondent1Witnesses),
     );
     CaseFlagsHelper.updateCaseFlagsObject(
       caseFlags,
-      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent2Experts),
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData?.respondent2Experts),
     );
     CaseFlagsHelper.updateCaseFlagsObject(
       caseFlags,
-      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent2Witnesses),
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData?.respondent2Witnesses),
     );
     console.log(`Total Number of Case Flags: ${caseFlags.caseFlagsDetails.length}`);
     console.log(`Total Number of Active Case Flags: ${caseFlags.activeCaseFlags}`);

@@ -1,7 +1,7 @@
-import TestData from '../../../../../models/test-data';
+import TestData from '../../../../../models/test-utils/test-data.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import BaseTestData from '../../../../../base/base-test-data';
-import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types.ts';
+import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import DefaultJudgmentPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/default-judgment/default-judgment-page-factory.ts';
 
 @AllMethodsStep()

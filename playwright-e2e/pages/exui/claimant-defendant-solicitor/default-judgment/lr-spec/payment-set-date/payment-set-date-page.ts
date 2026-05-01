@@ -4,10 +4,10 @@ import DateHelper from '../../../../../../helpers/date-helper.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { inputs, subheadings } from './payment-set-date-content.ts';
 import DateFragment from '../../../../fragments/date/date-fragment';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import partys from '../../../../../../constants/partys.ts';
+import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
+import partys from '../../../../../../constants/users/partys';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
-import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types.ts';
+import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types.ts';
 import { Page } from '@playwright/test';
 
 @AllMethodsStep()

@@ -9,11 +9,11 @@ import {
   inputs,
 } from './hearing-support-requirements-field-dj-content.ts';
 import DateFragment from '../../../../fragments/date/date-fragment';
-import partys from '../../../../../../constants/partys.ts';
+import partys from '../../../../../../constants/users/partys';
 import preferredCourts from '../../../../../../config/preferred-courts.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
-import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types.ts';
-import CCDCaseData from "../../../../../../models/ccd/ccd-case-data.ts";
+import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types.ts';
+import CCDCaseData from "../../../../../../models/ccd-case-data.ts";
 
 @AllMethodsStep()
 export default class HearingSupportRequirementsFieldDJPage extends ExuiPage(BasePage) {
