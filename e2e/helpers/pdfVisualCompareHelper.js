@@ -7,6 +7,7 @@ const codeceptjs = require('codeceptjs');
 
 const PIXELMATCH_THRESHOLD = 0.15;
 const MAX_MISMATCH_PERCENT = 0.01;
+const UPDATE_PDF_BASELINE = process.env.UPDATE_PDF_BASELINE === 'true';
 
 function ensureCleanDir(dir) {
   if (fs.existsSync(dir)) {
@@ -15,18 +16,12 @@ function ensureCleanDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-function renderPdfToPngs(pdfFile, outputDir) {
+function renderPdfPagesToPng(pdfFile, outputDir) {
   ensureCleanDir(outputDir);
 
   const outputPrefix = path.join(outputDir, 'page');
 
-  execFileSync('pdftoppm', [
-    '-png',
-    '-r',
-    '150',
-    pdfFile,
-    outputPrefix
-  ]);
+  execFileSync('pdftoppm', ['-png', '-r', '150', pdfFile, outputPrefix]);
 
   return fs.readdirSync(outputDir)
     .filter(file => file.endsWith('.png'))
@@ -34,18 +29,23 @@ function renderPdfToPngs(pdfFile, outputDir) {
     .map(file => path.join(outputDir, file));
 }
 
-function comparePngs(actualPngs, expectedPngs, diffDir) {
-  fs.mkdirSync(diffDir, { recursive: true });
-
-  if (actualPngs.length !== expectedPngs.length) {
-    throw new Error(
-      `PDF page count mismatch. Actual: ${actualPngs.length}, Expected: ${expectedPngs.length}`
-    );
-  }
+function compareRenderedPdfPages(actualPngs, expectedPngs, diffDir) {
+  ensureCleanDir(diffDir);
 
   const failures = [];
 
-  for (let i = 0; i < actualPngs.length; i++) {
+  if (actualPngs.length !== expectedPngs.length) {
+    failures.push({
+      page: 'all',
+      reason: 'PDF page count mismatch',
+      actualPageCount: actualPngs.length,
+      expectedPageCount: expectedPngs.length
+    });
+  }
+
+  const comparablePages = Math.min(actualPngs.length, expectedPngs.length);
+
+  for (let i = 0; i < comparablePages; i++) {
     const actualImg = PNG.sync.read(fs.readFileSync(actualPngs[i]));
     const expectedImg = PNG.sync.read(fs.readFileSync(expectedPngs[i]));
 
@@ -99,55 +99,51 @@ function comparePngs(actualPngs, expectedPngs, diffDir) {
   return failures;
 }
 
-function copyDiffsToArtifacts(failures) {
+function copyPdfDiffsToFunctionalArtifacts(failures, artifactName) {
   const artifactDir = path.resolve('test-results/functional/pdf-diffs');
   fs.mkdirSync(artifactDir, { recursive: true });
 
   failures.forEach(f => {
-    if (fs.existsSync(f.diffPath)) {
-      const target = path.join(artifactDir, `page-${f.page}-diff.png`);
+    if (f.diffPath && fs.existsSync(f.diffPath)) {
+      const target = path.join(
+        artifactDir,
+        `${artifactName}-page-${f.page}-diff.png`
+      );
+
       fs.copyFileSync(f.diffPath, target);
       console.log('Saved diff to artifact:', target);
     }
   });
 }
 
+function getAllurePlugin() {
+  return codeceptjs.container.plugins('allure');
+}
+
 function attachDiffsToAllure(failures, actualPngs, expectedPngs) {
-  const allure = codeceptjs.container.plugins('allure');
-  if (!allure) return;
+  const allure = getAllurePlugin();
+  if (!allure || typeof allure.addAttachment !== 'function') return;
 
   failures.forEach(f => {
+    if (f.page === 'all') return;
+
     const index = f.page - 1;
 
-    if (fs.existsSync(actualPngs[index])) {
-      allure.addAttachment(
-        `Page ${f.page} - Actual`,
-        fs.readFileSync(actualPngs[index]),
-        'image/png'
-      );
-    }
-
-    if (fs.existsSync(expectedPngs[index])) {
-      allure.addAttachment(
-        `Page ${f.page} - Expected`,
-        fs.readFileSync(expectedPngs[index]),
-        'image/png'
-      );
-    }
-
-    if (fs.existsSync(f.diffPath)) {
-      allure.addAttachment(
-        `Page ${f.page} - Diff`,
-        fs.readFileSync(f.diffPath),
-        'image/png'
-      );
-    }
+    [
+      [`Page ${f.page} - Actual`, actualPngs[index]],
+      [`Page ${f.page} - Expected`, expectedPngs[index]],
+      [`Page ${f.page} - Diff`, f.diffPath]
+    ].forEach(([name, filePath]) => {
+      if (filePath && fs.existsSync(filePath)) {
+        allure.addAttachment(name, fs.readFileSync(filePath), 'image/png');
+      }
+    });
   });
 }
 
 function attachPdfsToAllure(actualFile, expectedFile) {
-  const allure = codeceptjs.container.plugins('allure');
-  if (!allure) return;
+  const allure = getAllurePlugin();
+  if (!allure || typeof allure.addAttachment !== 'function') return;
 
   if (fs.existsSync(actualFile)) {
     allure.addAttachment(
@@ -229,7 +225,7 @@ async function downloadPdf(I, actualFile) {
   await waitForFileStable(actualFile);
 }
 
-async function downloadAndComparePdf({
+async function downloadPdfAndAssertVisualMatch({
   I,
   actualFile,
   expectedFile,
@@ -239,22 +235,28 @@ async function downloadAndComparePdf({
 }) {
   await downloadPdf(I, actualFile);
 
-  await new Promise(r => setTimeout(r, 1000));
-
   if (!fs.existsSync(expectedFile)) {
+    if (!UPDATE_PDF_BASELINE) {
+      throw new Error(
+        `Missing PDF baseline: ${expectedFile}. Run with UPDATE_PDF_BASELINE=true to create it.`
+      );
+    }
+
     fs.mkdirSync(path.dirname(expectedFile), { recursive: true });
     fs.copyFileSync(actualFile, expectedFile);
     console.log('Baseline PDF created');
     return;
   }
 
-  const actualPngs = renderPdfToPngs(actualFile, actualPngDir);
-  const expectedPngs = renderPdfToPngs(expectedFile, expectedPngDir);
+  const actualPngs = renderPdfPagesToPng(actualFile, actualPngDir);
+  const expectedPngs = renderPdfPagesToPng(expectedFile, expectedPngDir);
 
-  const failures = comparePngs(actualPngs, expectedPngs, diffPngDir);
+  const failures = compareRenderedPdfPages(actualPngs, expectedPngs, diffPngDir);
 
   if (failures.length > 0) {
-    copyDiffsToArtifacts(failures);
+    const artifactName = path.basename(expectedFile, path.extname(expectedFile));
+
+    copyPdfDiffsToFunctionalArtifacts(failures, artifactName);
     attachDiffsToAllure(failures, actualPngs, expectedPngs);
     attachPdfsToAllure(actualFile, expectedFile);
 
@@ -275,6 +277,6 @@ function getPdfPaths(baseDir, pdfName) {
 }
 
 module.exports = {
-  downloadAndComparePdf,
+  downloadPdfAndAssertVisualMatch,
   getPdfPaths
 };
