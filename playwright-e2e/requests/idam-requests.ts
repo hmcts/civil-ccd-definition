@@ -2,7 +2,7 @@ import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
 import RequestOptions from '../models/api/request-options';
-import User from '../models/user';
+import User from '../models/users/user';
 
 @AllMethodsStep()
 export default class IdamRequests extends BaseRequest {

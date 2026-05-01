@@ -1,4 +1,4 @@
-import { CCDEvent } from '../../../../models/ccd/ccd-events';
+import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
 
 export const tabs = {
   summary: {

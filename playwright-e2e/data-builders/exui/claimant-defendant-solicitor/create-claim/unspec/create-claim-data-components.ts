@@ -4,16 +4,16 @@ import {
   defendantSolicitor1User,
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
-import partys from '../../../../../constants/partys';
-import ClaimTypeUnspec from '../../../../../enums/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../enums/ccd-events/create-claim/personal-injury-type';
-import ClaimTrack from '../../../../../enums/claim-track';
-import ClaimType from '../../../../../enums/claim-type';
+import partys from '../../../../../constants/users/partys';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTrack from '../../../../../constants/cases/claim-track';
+import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd/ccd-case-data';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
-import ClaimTypeUnspecObjs, { PersonalInjuryClaimTypeUnSpec } from '../../../../../models/unspec/claim-type-unspec-objs';
+import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import PersonalInjuryClaimTypeUnspecObjs, { PersonalInjuryClaimTypeUnSpec } from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
 
 const references = {
   References: {
@@ -231,8 +231,8 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
   return {};
 };
 
-const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | ClaimTypeUnspecObjs) => {
-  const isPersonalInjuryClaimType = typeof claimTypeUnSpec === 'object' && (claimTypeUnSpec as ClaimTypeUnspecObjs).claimTypeUnspec === ClaimTypeUnspec.PERSONAL_INJURY;
+const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimTypeUnspecObjs) => {
+  const isPersonalInjuryClaimType = typeof claimTypeUnSpec === 'object' && (claimTypeUnSpec as PersonalInjuryClaimTypeUnspecObjs).claimTypeUnspec === ClaimTypeUnspec.PERSONAL_INJURY;
 
   if(isPersonalInjuryClaimType) {
     return {

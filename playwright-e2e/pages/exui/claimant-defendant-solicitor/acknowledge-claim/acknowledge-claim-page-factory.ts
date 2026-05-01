@@ -1,5 +1,5 @@
 import BasePageFactory from '../../../../base/base-page-factory';
-import partys from '../../../../constants/partys';
+import partys from '../../../../constants/users/partys';
 import ConfirmAcknowledgeClaimPage from './unspec/confirm-acknowledge-claim/confirm-acknowledge-claim-page';
 import ConfirmNameAndAddressPage from './unspec/confirm-name-and-address/confirm-name-and-address-page';
 import ResponseIntention1v2SSPage from './unspec/response-intention/response-intention-1v2SS-page';

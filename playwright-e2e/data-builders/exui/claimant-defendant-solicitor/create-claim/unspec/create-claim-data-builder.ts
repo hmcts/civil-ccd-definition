@@ -1,15 +1,15 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
-import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTypeUnspec from '../../../../../enums/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../enums/ccd-events/create-claim/personal-injury-type';
-import ClaimTrack from '../../../../../enums/claim-track';
-import ClaimType from '../../../../../enums/claim-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTrack from '../../../../../constants/cases/claim-track';
+import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd/ccd-case-data';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
-import ClaimTypeUnspecObjs from '../../../../../models/unspec/claim-type-unspec-objs';
+import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
 import createClaimData from './create-claim-data-components';
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimDataBuilder extends BaseDataBuilder {
@@ -59,7 +59,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
   }: {
     claimType?: ClaimType;
-    claimTypeUnspec?: ClaimTypeUnspecObjs | ClaimTypeUnspec;
+    claimTypeUnspec?: PersonalInjuryClaimTypeUnspecObjs | ClaimTypeUnspec;
     claimTrack?: ClaimTrack;
     claimant1PartyType?: ClaimantDefendantPartyType;
     claimant2PartyType?: ClaimantDefendantPartyType;
@@ -80,7 +80,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       ...createClaimData.claimantCourt,
       ...createClaimData.claimant1(claimant1PartyType, certificateOfSuitability),
       ...createClaimData.claimantSolicitor1,
-      ...createClaimData.claimant2(claimType, claimant2PartyType, certificateOfSuitability2),
+      ...createClaimData.claimant2(claimType, claimant2PartyType, certificateOfSuitability2!),
       ...createClaimData.defendant1(defendant1PartyType),
       ...createClaimData.defendantSolicitor1(claimType),
       ...createClaimData.defendant2(claimType, defendant2PartyType),

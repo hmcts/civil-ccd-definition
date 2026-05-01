@@ -2,14 +2,14 @@ import { claimantSolicitorUser } from '../config/users/exui-users';
 import ExuiDashboardActions from '../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../actions/ui/idam/idam-actions';
 import config from '../config/config';
-import ccdEvents from '../constants/ccd-events';
+import ccdEvents from '../constants/ccd-events/ccd-events';
 import { Step } from '../decorators/test-steps';
 import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
-import { CCDEvent } from '../models/ccd/ccd-events';
-import TestData from '../models/test-data';
+import { CCDEvent } from '../models/ccd-events/ccd-events';
+import TestData from '../models/test-utils/test-data';
 import RequestsFactory from '../requests/requests-factory';
 import BaseApi from './base-api';
-import User from '../models/user';
+import User from '../models/users/user';
 import WATask from '../models/wa-task';
 
 const classKey = 'BaseExui';
@@ -65,12 +65,12 @@ export default abstract class BaseExui extends BaseApi {
     if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
       const caseId = await this.exuiDashboardActions.grabCaseNumber();
       super.setCCDCaseData = { id: caseId };
-      UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
+      UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
     }
     if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
     await this.exuiDashboardActions.clearCCDEvent();
-    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData.id);
-    await this.fetchAndSetCCDCaseData(this.ccdCaseData.id);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
   }
 
   @Step(classKey)

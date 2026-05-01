@@ -1,15 +1,26 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTrack from '../../../../../enums/claim-track';
-import ClaimType from '../../../../../enums/claim-type';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
+import ClaimTrack from '../../../../../constants/cases/claim-track';
+import ClaimType from '../../../../../constants/cases/claim-type';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecData from './create-claim-spec-data-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
   async buildFastTrack1v1() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
+  async buildFastTrack2v1() {
+    return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.TWO_VS_ONE });
+  }
+
+  async buildFastTrack1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
   }
 
   async buildSmallTrack1v1() {

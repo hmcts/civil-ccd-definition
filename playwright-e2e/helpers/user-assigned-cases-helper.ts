@@ -1,8 +1,8 @@
 import config from '../config/config';
 import filePaths from '../config/file-paths';
-import FileType from '../enums/file-type';
-import UserKey from '../enums/user-key';
-import User from '../models/user';
+import FileType from '../constants/test-utils/file-type';
+import UserKey from '../constants/users/user-key';
+import User from '../models/users/user';
 import FileSystemHelper from './file-system-helper';
 
 //TODO: Could be a potentially concurrency issue when storing assigned caseIds for users when multiple workers are running but will assess and fix later.
@@ -27,8 +27,8 @@ export default class UserAssignedCasesHelper {
     return null;
   }
 
-  static async addAssignedCaseToUser(user: User, caseId: number) {
-    if (config.unassignCases) {
+  static async addAssignedCaseToUser(user: User, caseId?: number) {
+    if (config.unassignCases && caseId) {
       console.log(`Adding caseId: ${caseId} to user assigned cases for user: ${user.name}`);
       const userAssignedCases = (await this.getUserAssignedCases(user)) ?? [];
       userAssignedCases.push(caseId);

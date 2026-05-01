@@ -2,13 +2,13 @@ import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
 import RequestOptions from '../models/api/request-options';
-import User from '../models/user';
+import User from '../models/users/user';
 import WATask from '../models/wa-task';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
 @AllMethodsStep()
 export default class WorkAllocationsRequests extends ServiceAuthProviderRequests(BaseRequest) {
-  async retrieveTask(user: User, caseId: number, validTask: WATask): Promise<WATask> {
+  async retrieveTask(user: User, validTask: WATask, caseId?: number): Promise<WATask> {
     const url = `${urls.waTaskMgmtApi}/task`;
     const body = {
       search_parameters: [
@@ -57,7 +57,7 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
     }
   }
 
-  async completeTask(user: User, waTaskId: string) {
+  async completeTask(user: User, waTaskId?: string) {
     const url = `${urls.waTaskMgmtApi}/task/${waTaskId}/complete`;
     await super.retryRequest(
       url,
