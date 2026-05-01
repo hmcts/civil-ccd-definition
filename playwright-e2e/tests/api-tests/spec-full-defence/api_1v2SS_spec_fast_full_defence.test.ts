@@ -13,7 +13,7 @@ test.describe('1v2SS spec api fast track journeys', { tag: '@civil-service-night
     await ClaimantSolicitorSpecApiSteps.RespondFastTrackIntentToProceed1v2SS();
   });
 
-  test.only('1v2SS fast claim full defence and not proceed', async ({
+  test('1v2SS fast claim full defence and not proceed', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
