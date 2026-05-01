@@ -7,9 +7,9 @@ prNumber=${2:-'7233'}
 
 # Ensure dependencies have execution permissions
 chmod +x ./bin/variables/load-dev-user-preview-environment-variables.sh
-chmod +x ./bin/utils/ccd-import-definition.sh
-chmod +x ./bin/utils/idam-lease-user-token.sh
-chmod +x ./bin/utils/idam-lease-service-token.sh
+chmod +x ./bin/shared/ccd-import-definition.sh
+chmod +x ./bin/shared/idam-lease-user-token.sh
+chmod +x ./bin/shared/idam-lease-service-token.sh
 
 if [[ "${repoType}" == 'ccd' ]]; then
   echo "Loading environment variables repoType : (${repoType}) prNumber: ${prNumber}";
@@ -28,4 +28,4 @@ source ./bin/variables/load-dev-user-local-environment-variables.sh
 source ./bin/build-release-ccd-definition.sh local
 
 # Import the local CCD definition
-./bin/utils/ccd-import-definition.sh build/ccd-release-config/civil-ccd-local.xlsx
+./bin/shared/ccd-import-definition.sh build/ccd-release-config/civil-ccd-local.xlsx

@@ -343,6 +343,7 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
 const newSdoR2FieldsSmallClaims = {
   sdoR2SmallClaimsWitnessStatementOther: (data) => {
     return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
       && typeof data.isRestrictWitness === 'string'
       && typeof data.isRestrictPages === 'string'
       && typeof data.text === 'string';
@@ -658,6 +659,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
   delete responseBody.data['orderType'];
   delete responseBody.data['finalOrderTrackToggle'];
+  delete responseBody.data['assistedOrderPenalNoticeContent'];
+  delete responseBody.data['assistedOrderPenalNoticeToggle'];
   delete responseBody.data['respondent1Experts'];
   delete responseBody.data['respondent1Witnesses'];
   delete responseBody.data['setFastTrackFlag'];
@@ -772,6 +775,8 @@ const clearNIHLDataFromResponseBody = (responseBody) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  delete responseBody.data['assistedOrderPenalNoticeContent'];
+  delete responseBody.data['assistedOrderPenalNoticeToggle'];
   if (responseBody.data.finalOrderDownloadTemplateOptions) {
     caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
   }

@@ -141,6 +141,41 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "ListElementCode": "id",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "ListElementCode": "email",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "ListElementCode": "forename",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "ListElementCode": "surname",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "ListElementCode": "organisationIdentifier",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppPBADetails",
     "ListElementCode": "generalAppFeeToPayInText",
     "UserRole": "caseworker-civil-solicitor",

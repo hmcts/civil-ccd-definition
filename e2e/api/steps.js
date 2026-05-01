@@ -127,6 +127,7 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
     sdoR2SmallClaimsWitnessStatements: (data) => {
       return typeof data.sdoStatementOfWitness === 'string'
+        && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
         && typeof data.isRestrictWitness === 'string'
         && typeof data.isRestrictPages === 'string'
         && typeof data.text === 'string';
@@ -1528,6 +1529,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
     delete caseData['businessProcess'];
+    delete caseData['assistedOrderPenalNoticeContent'];
+    delete caseData['assistedOrderPenalNoticeToggle'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
@@ -1536,6 +1539,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    delete caseData['assistedOrderPenalNoticeContent'];
+    delete caseData['assistedOrderPenalNoticeToggle'];
     // After second minti release this is not needed. Track fields for GENERATE_DIRECTIONS_ORDER are currently linked
     // to a hidden wa page and do not appear in mid event handlers, which is fine as they are not currently used.
     // After minti release the fields are linked to a page and hidden via field show conditions and get returned correctly.
@@ -2061,6 +2066,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
   delete responseBody.data['orderType'];
   delete responseBody.data['finalOrderTrackToggle'];
+  delete responseBody.data['assistedOrderPenalNoticeContent'];
+  delete responseBody.data['assistedOrderPenalNoticeToggle'];
   delete responseBody.data['respondent1Experts'];
   delete responseBody.data['respondent1Witnesses'];
   delete responseBody.data['setFastTrackFlag'];
@@ -2156,6 +2163,8 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  delete responseBody.data['assistedOrderPenalNoticeContent'];
+  delete responseBody.data['assistedOrderPenalNoticeToggle'];
   if (responseBody.data.finalOrderDownloadTemplateOptions) {
     caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
   }

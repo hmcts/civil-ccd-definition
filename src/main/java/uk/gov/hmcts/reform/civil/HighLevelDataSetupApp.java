@@ -10,8 +10,12 @@ import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
 import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
+import io.restassured.response.Response;
+
 import javax.crypto.AEADBadTagException;
 import javax.net.ssl.SSLException;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
@@ -110,6 +114,52 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
+    protected void importDefinition(String fileResourcePath) throws IOException {
+        try {
+            super.importDefinition(fileResourcePath);
+        } catch (ImportException e) {
+            if (e.getHttpStatusCode() != 504) {
+                throw e;
+            }
+            logger.warn("Import got 504 Gateway Timeout for {}. "
+                + "Polling /api/import-audits to check if import completed...", fileResourcePath);
+
+            String filename = new File(fileResourcePath).getName();
+            if (pollImportAudits(filename)) {
+                logger.info("Definition {} found in import audits -- import succeeded despite 504.", filename);
+                return;
+            }
+            logger.error("Definition {} NOT found in import audits after polling. Import failed.", filename);
+            throw e;
+        }
+    }
+
+    private boolean pollImportAudits(String filename) {
+        int maxAttempts = 10;
+        long delayMs = 5_000;
+
+        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+            try {
+                Thread.sleep(delayMs);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+                return false;
+            }
+            logger.info("Checking import audit for {} (attempt {}/{})", filename, attempt, maxAttempts);
+            try {
+                Response response = asAutoTestImporter().given().when().get("/api/import-audits");
+                if (response.getStatusCode() == 200
+                        && response.body().asString().contains(filename)) {
+                    return true;
+                }
+            } catch (Exception ex) {
+                logger.warn("Error polling import audits (attempt {}): {}", attempt, ex.getMessage());
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void createRoleAssignments() {
         // Do not create role assignments.
         BeftaUtils.defaultLog("Will NOT create role assignments!");
@@ -125,17 +175,21 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     protected boolean shouldTolerateDataSetupFailure(Throwable e) {
-        int httpStatusCode504 = 504;
-        if (e instanceof ImportException) {
-            ImportException importException = (ImportException) e;
-            return importException.getHttpStatusCode() == httpStatusCode504;
-        }
         if (e instanceof SSLException) {
+            logger.warn("\n\nSSL error during definition upload — definitions NOT imported. "
+                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
             return true;
         }
         if (e instanceof AEADBadTagException) {
+            logger.warn("\n\nTLS decryption error (AEADBadTagException) during definition upload — definitions NOT imported. "
+                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
             return true;
         }
-        return shouldTolerateDataSetupFailure();
+        boolean tolerate = shouldTolerateDataSetupFailure();
+        if (tolerate) {
+            logger.warn("\n\nDefinition upload failed on preview environment — definitions NOT imported. "
+                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
+        }
+        return tolerate;
     }
 }

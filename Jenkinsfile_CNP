@@ -13,6 +13,8 @@ def component = "ccd"
 def camundaBranch = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
+def wiremockMappingsBranch = "master"
+def civilServiceScriptsBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
@@ -169,6 +171,8 @@ def archiveCoreCaseDataDefinitions() {
       """
     }
 
+
+
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-${env.ENVIRONMENT}.xlsx"
@@ -195,13 +199,13 @@ def uploadCoreCaseDataDefinitions(env) {
     sh """
       set -e
       eval \$(./variables/load-${env}-environment-variables.sh)
-      ./utils/ccd-import-definition.sh ${civilCcdDefinitionFilePath}
+      ./shared/ccd-import-definition.sh ${civilCcdDefinitionFilePath}
     """
     civilGaCcdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ga-ccd-${env}.xlsx"
     sh """
       set -e
       eval \$(./variables/load-${env}-environment-variables.sh)
-      ./utils/ccd-import-definition.sh ${civilGaCcdDefinitionFilePath}
+      ./shared/ccd-import-definition.sh ${civilGaCcdDefinitionFilePath}
     """
   }
 }
@@ -226,7 +230,6 @@ withPipeline(type, product, component) {
     env.PR_FT_GROUPS = getFunctionalTestsGroups()
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-
   }
 
   // onPR {
@@ -247,6 +250,8 @@ withPipeline(type, product, component) {
   }
 
   before('highleveldatasetup') {
+    // Pull shared scripts from civil-service early - needed by build and import scripts
+    sh "./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}"
     yarnBuilder.yarn('setup')
     archiveCoreCaseDataDefinitions()
   }
@@ -264,10 +269,12 @@ withPipeline(type, product, component) {
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
+        ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
       ./bin/add-org-roles-to-users.sh
+      ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
     """
       //uploadDmnDiagrams('preview',"${CHANGE_ID}")
@@ -288,6 +295,7 @@ withPipeline(type, product, component) {
 
   before('functionalTest:preview') {
     env.IDAM_STUB_ENABLED = 'false'
+    env.UNASSIGN_CASES = true
     copyPreviousAllureHistory();
     if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
       env.RUN_ALL_FUNCTIONAL_TESTS = true
@@ -324,7 +332,10 @@ withPipeline(type, product, component) {
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
+      ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
+      . ./bin/shared/idam-get-tokens.sh
       ./bin/add-roles.sh
+      ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
       ./bin/build-release-ccd-definition.sh staging
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
@@ -344,6 +355,7 @@ withPipeline(type, product, component) {
     env.IDAM_STUB_ENABLED = 'false'
     copyPreviousAllureHistory();
     copyPrevFailedAndNotExecutedTestFilesJson();
+    env.UNASSIGN_CASES = true
   }
 
   afterAlways('smoketest:aat') {
