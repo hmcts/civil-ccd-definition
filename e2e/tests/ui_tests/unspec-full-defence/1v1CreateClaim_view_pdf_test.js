@@ -2,6 +2,7 @@ const config = require('../../../config.js');
 
 const { PUBLIC_QUERY } = require('../../../fixtures/queryTypes');
 const pdfHelper = require('../../../helpers/pdfVisualCompareHelper.js');
+
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
@@ -14,7 +15,7 @@ let caseId;
 Feature('Query Management - Raise, Respond and Follow up Queries')
   .tag('@civil-ccd-nightly @ui-qm');
 
-Scenario('01 Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
+Scenario('01 Claimant validates defendant directions questionnaire PDF after query follow up', async ({ api_spec, I, qmSteps }) => {
   const mpScenario = 'ONE_V_ONE';
 
   caseId = await api_spec.createClaimWithRepresentedRespondent(
@@ -79,7 +80,7 @@ Scenario('01 Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
     PDF_NAME
   );
 
-  await pdfHelper.downloadAndComparePdf({
+  await pdfHelper.downloadPdfAndAssertVisualMatch({
     I,
     ...pdfPaths
   });
