@@ -115,6 +115,9 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     protected void importDefinition(String fileResourcePath) throws IOException {
+        String caseType = extractCaseTypeFromFilename(fileResourcePath);
+        String currentVersion = getCaseTypeVersion(caseType);
+
         try {
             super.importDefinition(fileResourcePath);
         } catch (ImportException e) {
@@ -122,19 +125,45 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
                 throw e;
             }
             logger.warn("Import got 504 Gateway Timeout for {}. "
-                + "Polling /api/import-audits to check if import completed...", fileResourcePath);
+                + "Checking if {} case type version changed...", fileResourcePath, caseType);
 
-            String filename = new File(fileResourcePath).getName();
-            if (pollImportAudits(filename)) {
-                logger.info("Definition {} found in import audits -- import succeeded despite 504.", filename);
+            if (pollForVersionChange(caseType, currentVersion)) {
+                logger.info("Case type {} version changed after 504 -- import succeeded for {}.",
+                    caseType, fileResourcePath);
                 return;
             }
-            logger.error("Definition {} NOT found in import audits after polling. Import failed.", filename);
+            logger.error("Case type {} version unchanged after polling. Import failed for {}.",
+                caseType, fileResourcePath);
             throw e;
         }
     }
 
-    private boolean pollImportAudits(String filename) {
+    private String extractCaseTypeFromFilename(String fileResourcePath) {
+        String filename = new File(fileResourcePath).getName().toLowerCase(Locale.UK);
+        if (filename.contains("-ga-")) {
+            return "GENERALAPPLICATION";
+        }
+        return "CIVIL";
+    }
+
+    private String getCaseTypeVersion(String caseType) {
+        try {
+            Response response = asAutoTestImporter()
+                .given().when().get("/api/data/case-type/" + caseType + "/version");
+            if (response.getStatusCode() == 200) {
+                return response.body().asString().trim();
+            }
+        } catch (Exception ex) {
+            logger.warn("Could not fetch current {} case type version: {}", caseType, ex.getMessage());
+        }
+        return null;
+    }
+
+    private boolean pollForVersionChange(String caseType, String previousVersion) {
+        if (previousVersion == null) {
+            logger.warn("No previous version available for {} -- cannot verify import via version check", caseType);
+            return false;
+        }
         int maxAttempts = 10;
         long delayMs = 5_000;
 
@@ -145,15 +174,11 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
                 Thread.currentThread().interrupt();
                 return false;
             }
-            logger.info("Checking import audit for {} (attempt {}/{})", filename, attempt, maxAttempts);
-            try {
-                Response response = asAutoTestImporter().given().when().get("/api/import-audits");
-                if (response.getStatusCode() == 200
-                        && response.body().asString().contains(filename)) {
-                    return true;
-                }
-            } catch (Exception ex) {
-                logger.warn("Error polling import audits (attempt {}): {}", attempt, ex.getMessage());
+            logger.info("Checking {} case type version (attempt {}/{})", caseType, attempt, maxAttempts);
+            String newVersion = getCaseTypeVersion(caseType);
+            if (newVersion != null && !newVersion.equals(previousVersion)) {
+                logger.info("Version changed from {} to {}", previousVersion, newVersion);
+                return true;
             }
         }
         return false;
