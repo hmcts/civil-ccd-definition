@@ -1,4 +1,4 @@
-require('dotenv').config({path: '.env.tests.local'});
+require('dotenv').config({ path: '.env.tests.local' });
 const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
 
 const functional = process.env.FUNCTIONAL;
@@ -12,10 +12,7 @@ const getTests = () => {
     prevNotExecutedTestFiles = prevNotExecutedTestFiles ? prevNotExecutedTestFiles.split(',') : [];
     return [...prevFailedTestFiles, ...prevNotExecutedTestFiles];
   }
-  return [
-    './e2e/tests/api_tests/{*,**/*}_test.js',
-    './e2e/tests/ui_tests/{*,**/*}_test.js',
-  ];
+  return ['./e2e/tests/api_tests/{*,**/*}_test.js', './e2e/tests/ui_tests/{*,**/*}_test.js'];
 };
 
 exports.config = {
@@ -52,7 +49,6 @@ exports.config = {
       contextOptions: {
         recordVideo: {
           dir: 'failed-videos',
-          downloadsPath: 'e2e/tests/ui_tests/unspec-full-defence/downloads',
         },
       },
     },
@@ -60,7 +56,7 @@ exports.config = {
       require: './e2e/helpers/browser_helper.js',
     },
     PlaywrightHelper: {
-      require: "./e2e/helpers/PlaywrightHelper.js",
+      require: './e2e/helpers/PlaywrightHelper.js',
     },
     GenerateReportHelper: {
       require: './e2e/helpers/generate_report_helper.js',
@@ -99,8 +95,8 @@ exports.config = {
     },
     allure: {
       enabled: true,
-      require: "allure-codeceptjs",
-      resultsDir: "test-results/functional/allure-results",
+      require: 'allure-codeceptjs',
+      resultsDir: 'test-results/functional/allure-results',
     },
   },
   mocha: {
