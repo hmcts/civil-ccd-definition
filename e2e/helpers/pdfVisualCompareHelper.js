@@ -7,6 +7,12 @@ const codeceptjs = require('codeceptjs');
 
 const PIXELMATCH_THRESHOLD = 0.15;
 const MAX_MISMATCH_PERCENT = 0.01;
+
+// Controls whether PDF baselines can be created/updated.
+// Default behaviour:
+// - Tests FAIL if baseline is missing (prevents silent regressions)
+// To update/create baselines locally:
+//   UPDATE_PDF_BASELINE=true yarn test:functional <test-file>
 const UPDATE_PDF_BASELINE = process.env.UPDATE_PDF_BASELINE === 'true';
 
 function ensureCleanDir(dir) {
