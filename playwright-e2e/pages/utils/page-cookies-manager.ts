@@ -24,7 +24,7 @@ export default class PageCookiesManager extends BasePage {
   }
 
   async addIdamCookies() {
-    await super.addCookies(acceptIdamCookies);
+    await super.addCookies(acceptIdamCookies());
   }
 
   async addExuiCookies({ userId, name }: User) {
