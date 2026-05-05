@@ -10,8 +10,12 @@ import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
 import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
+import io.restassured.response.Response;
+
 import javax.crypto.AEADBadTagException;
 import javax.net.ssl.SSLException;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
@@ -110,6 +114,77 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
+    protected void importDefinition(String fileResourcePath) throws IOException {
+        String caseType = extractCaseTypeFromFilename(fileResourcePath);
+        String currentVersion = getCaseTypeVersion(caseType);
+
+        try {
+            super.importDefinition(fileResourcePath);
+        } catch (ImportException e) {
+            if (e.getHttpStatusCode() != 504) {
+                throw e;
+            }
+            logger.warn("Import got 504 Gateway Timeout for {}. "
+                + "Checking if {} case type version changed...", fileResourcePath, caseType);
+
+            if (pollForVersionChange(caseType, currentVersion)) {
+                logger.info("Case type {} version changed after 504 -- import succeeded for {}.",
+                    caseType, fileResourcePath);
+                return;
+            }
+            logger.error("Case type {} version unchanged after polling. Import failed for {}.",
+                caseType, fileResourcePath);
+            throw e;
+        }
+    }
+
+    private String extractCaseTypeFromFilename(String fileResourcePath) {
+        String filename = new File(fileResourcePath).getName().toLowerCase(Locale.UK);
+        if (filename.contains("-ga-")) {
+            return "GENERALAPPLICATION";
+        }
+        return "CIVIL";
+    }
+
+    private String getCaseTypeVersion(String caseType) {
+        try {
+            Response response = asAutoTestImporter()
+                .given().when().get("/api/data/case-type/" + caseType + "/version");
+            if (response.getStatusCode() == 200) {
+                return response.body().asString().trim();
+            }
+        } catch (Exception ex) {
+            logger.warn("Could not fetch current {} case type version: {}", caseType, ex.getMessage());
+        }
+        return null;
+    }
+
+    private boolean pollForVersionChange(String caseType, String previousVersion) {
+        if (previousVersion == null) {
+            logger.warn("No previous version available for {} -- cannot verify import via version check", caseType);
+            return false;
+        }
+        int maxAttempts = 10;
+        long delayMs = 5_000;
+
+        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+            try {
+                Thread.sleep(delayMs);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+                return false;
+            }
+            logger.info("Checking {} case type version (attempt {}/{})", caseType, attempt, maxAttempts);
+            String newVersion = getCaseTypeVersion(caseType);
+            if (newVersion != null && !newVersion.equals(previousVersion)) {
+                logger.info("Version changed from {} to {}", previousVersion, newVersion);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void createRoleAssignments() {
         // Do not create role assignments.
         BeftaUtils.defaultLog("Will NOT create role assignments!");
@@ -125,15 +200,6 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     protected boolean shouldTolerateDataSetupFailure(Throwable e) {
-        int httpStatusCode504 = 504;
-        if (e instanceof ImportException) {
-            ImportException importException = (ImportException) e;
-            if (importException.getHttpStatusCode() == httpStatusCode504) {
-                logger.warn("\n\nDefinition upload returned HTTP 504 (Gateway Timeout) — definitions NOT imported. "
-                                + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
-                return true;
-            }
-        }
         if (e instanceof SSLException) {
             logger.warn("\n\nSSL error during definition upload — definitions NOT imported. "
                             + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
