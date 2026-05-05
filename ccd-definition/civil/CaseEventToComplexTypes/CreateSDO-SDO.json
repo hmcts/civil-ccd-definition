@@ -197,7 +197,8 @@
     "CaseFieldID": "disposalHearingMedicalEvidence",
     "ListElementCode": "date",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "input1 = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "DisposalHearingQuestionsToExperts",
