@@ -230,16 +230,18 @@ function computeDisplayNames(events) {
         'Applicant', 'Respondent', 'Claimant', 'Defendant',
         'Mark Paid Full',
       ]);
-      const knownCount = [...suffixes.values()].filter(s => KNOWN_SUFFIXES.has(s)).length;
-      if (knownCount > 0) {
-        for (const ev of evs) {
-          if (!KNOWN_SUFFIXES.has(suffixes.get(ev.id))) {
-            suffixes.set(ev.id, 'Unspec');
-          }
-        }
-      }
+      const knownSiblingSuffixes = [...suffixes.values()].filter(s => KNOWN_SUFFIXES.has(s));
+      const onlyKnownSiblingIsSpec = knownSiblingSuffixes.length > 0
+        && knownSiblingSuffixes.every(s => s === 'Spec');
       for (const ev of evs) {
-        displayNames.set(ev.id, `${name} (${suffixes.get(ev.id)})`);
+        const suffix = suffixes.get(ev.id);
+        if (KNOWN_SUFFIXES.has(suffix)) {
+          displayNames.set(ev.id, `${name} (${suffix})`);
+        } else if (onlyKnownSiblingIsSpec) {
+          displayNames.set(ev.id, `${name} (Unspec)`);
+        } else {
+          displayNames.set(ev.id, name);
+        }
       }
     }
   }
