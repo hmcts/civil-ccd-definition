@@ -2,30 +2,52 @@ import { z } from 'zod';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
+import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec-type/claimant-response-spec-type';
 
 const yesNoSchema = z.enum(['Yes', 'No']);
 const nonEmptyString = z.string().min(1);
 
-const proceedWithClaim = (claimType: ClaimType) => ClaimTypeHelper.isClaimant2(claimType) ? {
-  applicant1ProceedWithClaimSpec2v1: yesNoSchema,
-} : {
-  applicant1ProceedWithClaim: yesNoSchema,
+const proceedWithClaim = (
+  claimType: ClaimType,
+  _claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if (ClaimTypeHelper.isClaimant2(claimType)) {
+    return {
+      applicant1ProceedWithClaimSpec2v1: yesNoSchema,
+    };
+  }
+
+  return {
+    applicant1ProceedWithClaim: yesNoSchema,
+  };
 };
 
-const determinationWithoutHearing = (claimTrack: ClaimTrack) => {
-  if (claimTrack === ClaimTrack.SMALL_CLAIM) {
+const determinationWithoutHearing = (
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if (
+    claimTrack === ClaimTrack.SMALL_CLAIM &&
+    claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
+  ) {
     return {
-      deterWithoutHearing: z.looseObject({
-        // deterWithoutHearingYesNo: yesNoSchema,
-      }),
+      // deterWithoutHearing: z.looseObject({
+      //   deterWithoutHearingYesNo: yesNoSchema,
+      // }),
     }; 
   }
 
   return {};
 };
 
-const fastTrackDq = (claimTrack: ClaimTrack) => {
-  if (claimTrack === ClaimTrack.FAST_CLAIM) 
+const fastTrackDq = (
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM &&
+    claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
+  ) {
     return {
       applicant1DQFileDirectionsQuestionnaire: z.strictObject({
         explainedToClient: z.array(nonEmptyString).min(1),
@@ -53,61 +75,93 @@ const fastTrackDq = (claimTrack: ClaimTrack) => {
         draftOrderNumber: nonEmptyString,
       }),
     };
+  }
 
   return {};
 };
 
-const experts = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM)
+const experts = (
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
+      return {
+        applicant1DQExperts: z.strictObject({
+          expertRequired: yesNoSchema,
+          details: z.array(
+            z.strictObject({
+              id: nonEmptyString,
+              value: z.looseObject({
+                partyID: nonEmptyString,
+                firstName: nonEmptyString,
+                lastName: nonEmptyString,
+                dateAdded: nonEmptyString,
+                eventAdded: nonEmptyString,
+                phoneNumber: nonEmptyString,
+                whyRequired: nonEmptyString,
+                emailAddress: nonEmptyString,
+                estimatedCost: nonEmptyString,
+              }),
+            }),
+          ).min(1),
+        }),
+      };
+    }
+
     return {
       applicant1DQExperts: z.strictObject({
-        expertRequired: yesNoSchema,
-        details: z.array(
-          z.strictObject({
-            id: nonEmptyString,
-            value: z.looseObject({
-              partyID: nonEmptyString,
-              firstName: nonEmptyString,
-              lastName: nonEmptyString,
-              dateAdded: nonEmptyString,
-              eventAdded: nonEmptyString,
-              phoneNumber: nonEmptyString,
-              whyRequired: nonEmptyString,
-              emailAddress: nonEmptyString,
-              estimatedCost: nonEmptyString,
+          expertRequired: yesNoSchema,
+          expertReportsSent: nonEmptyString,
+          jointExpertSuitable: yesNoSchema,
+          details: z.array(
+            z.strictObject({
+              id: nonEmptyString,
+              value: z.looseObject({
+                firstName: nonEmptyString,
+                lastName: nonEmptyString,
+                emailAddress: nonEmptyString,
+                phoneNumber: nonEmptyString,
+                fieldOfExpertise: nonEmptyString,
+                whyRequired: nonEmptyString,
+                estimatedCost: nonEmptyString,
+              }),
             }),
-          }),
-        ).min(1),
-      }),
-    };
+          ).min(1),
+        }),
+      };
+  }
 
-  return {
-    applicant1DQExperts: z.strictObject({
-        expertRequired: yesNoSchema,
-        expertReportsSent: nonEmptyString,
-        jointExpertSuitable: yesNoSchema,
-        details: z.array(
-          z.strictObject({
-            id: nonEmptyString,
-            value: z.looseObject({
-              firstName: nonEmptyString,
-              lastName: nonEmptyString,
-              emailAddress: nonEmptyString,
-              phoneNumber: nonEmptyString,
-              fieldOfExpertise: nonEmptyString,
-              whyRequired: nonEmptyString,
-              estimatedCost: nonEmptyString,
-            }),
-          }),
-        ).min(1),
-      }),
-    };
+  return {};
 };
 
-const witnesses = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM)
+const witnesses = (
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
+      return {
+        applicant1DQWitnessesSmallClaim: z.strictObject({
+          details: z.array(
+            z.strictObject({
+              id: nonEmptyString,
+              value: z.looseObject({
+                firstName: nonEmptyString,
+                lastName: nonEmptyString,
+                phoneNumber: nonEmptyString,
+                emailAddress: nonEmptyString,
+                reasonForWitness: nonEmptyString,
+              }),
+            }),
+          ).min(1),
+          witnessesToAppear: yesNoSchema,
+        }),
+      };
+    }
+
     return {
-      applicant1DQWitnessesSmallClaim: z.strictObject({
+      applicant1DQWitnesses: z.strictObject({
         details: z.array(
           z.strictObject({
             id: nonEmptyString,
@@ -123,62 +177,73 @@ const witnesses = (claimTrack: ClaimTrack) => {
         witnessesToAppear: yesNoSchema,
       }),
     };
+  }
 
-  return {
-    applicant1DQWitnesses: z.strictObject({
-      details: z.array(
-        z.strictObject({
-          id: nonEmptyString,
-          value: z.looseObject({
-            firstName: nonEmptyString,
-            lastName: nonEmptyString,
-            phoneNumber: nonEmptyString,
-            emailAddress: nonEmptyString,
-            reasonForWitness: nonEmptyString,
-          }),
-        }),
-      ).min(1),
-      witnessesToAppear: yesNoSchema,
-    }),
-  };
-}
-
-const language = {
-  applicant1DQLanguage: z.strictObject({
-    court: nonEmptyString,
-    documents: nonEmptyString,
-  }),
+  return {};
 };
 
-const hearing = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM)
+const language = (claimantResponseType: ClaimantResponseSpecType) => {
+  if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     return {
-      applicant1DQSmallClaimHearing: z.looseObject({
-        unavailableDatesRequired: yesNoSchema,
-        smallClaimUnavailableDate: z.array(z.looseObject({})).min(1),
+      applicant1DQLanguage: z.strictObject({
+        court: nonEmptyString,
+        documents: nonEmptyString,
       }),
-    };  
-    
-  return {
-    applicant1DQHearingLRspec: z.looseObject({
-      unavailableDatesRequired: yesNoSchema,
-    }),
-  };
-}
+    };
+  }
 
-const requestedCourtLocation = {
-  applicant1DQRequestedCourt: z.looseObject({}),
-  applicant1DQRemoteHearingLRspec: z.looseObject({
-    remoteHearingRequested: yesNoSchema,
-    reasonForRemoteHearing: nonEmptyString,
-  }),
+  return {};
 };
 
-const hearingSupport = {
-  applicant1DQHearingSupport: z.strictObject({
-    supportRequirements: yesNoSchema,
-    supportRequirementsAdditional: nonEmptyString,
-  }),
+const hearing = (
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
+      return {
+        applicant1DQSmallClaimHearing: z.looseObject({
+          unavailableDatesRequired: yesNoSchema,
+          smallClaimUnavailableDate: z.array(z.looseObject({})).min(1),
+        }),
+      };
+    }
+
+    return {
+      applicant1DQHearingLRspec: z.looseObject({
+        unavailableDatesRequired: yesNoSchema,
+      }),
+    };
+  }
+
+  return {};
+};
+
+const requestedCourtLocation = (claimantResponseType: ClaimantResponseSpecType) => {
+  if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
+    return {
+      applicant1DQRequestedCourt: z.looseObject({}),
+      applicant1DQRemoteHearingLRspec: z.looseObject({
+        remoteHearingRequested: yesNoSchema,
+        reasonForRemoteHearing: nonEmptyString,
+      }),
+    };
+  }
+
+  return {};
+};
+
+const hearingSupport = (claimantResponseType: ClaimantResponseSpecType) => {
+  if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
+    return {
+      applicant1DQHearingSupport: z.strictObject({
+        supportRequirements: yesNoSchema,
+        supportRequirementsAdditional: nonEmptyString,
+      }),
+    };
+  }
+
+  return {};
 };
 
 const vulnerabilityQuestions = {
@@ -188,17 +253,24 @@ const vulnerabilityQuestions = {
   }),
 };
 
-const applications = (claimTrack: ClaimTrack) => 
-{
-  if(claimTrack === ClaimTrack.FAST_CLAIM) 
+const application = (
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM &&
+    claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
+  ) {
     return {
       applicant1DQFutureApplications: z.strictObject({
         intentionToMakeFutureApplications: yesNoSchema,
         whatWillFutureApplicationsBeMadeFor: nonEmptyString,
       }),
+      applicant1AdditionalInformationForJudge: nonEmptyString,
     };
-  
-    return {};
+  }
+
+  return {};
 };
 
 const claimantResponseSpecSchemaComponents = {
@@ -212,7 +284,7 @@ const claimantResponseSpecSchemaComponents = {
   requestedCourtLocation,
   hearingSupport,
   vulnerabilityQuestions,
-  applications,
+  application,
 };
 
 export default claimantResponseSpecSchemaComponents;
