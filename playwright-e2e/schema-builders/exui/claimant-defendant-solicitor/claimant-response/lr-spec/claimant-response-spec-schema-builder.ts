@@ -77,27 +77,23 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     const schemaBeforeSubmission = baseSchema.omit({
       nextDeadline: true,
     });
+    const schemaShape: Record<string, z.ZodType> = {};
 
-    const schemaShape = {
-      ...claimantResponseSpecSchemaComponents.proceedWithClaim(claimType),
-    };
+    Object.assign(
+      {},
+      claimantResponseSpecSchemaComponents.proceedWithClaim(claimType, claimantResponseType),
+      claimantResponseSpecSchemaComponents.determinationWithoutHearing(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.fastTrackDq(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.experts(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.witnesses(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.language(claimantResponseType),
+      claimantResponseSpecSchemaComponents.hearing(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.requestedCourtLocation(claimantResponseType),
+      claimantResponseSpecSchemaComponents.hearingSupport(claimantResponseType),
+      claimantResponseSpecSchemaComponents.vulnerabilityQuestions,
+      claimantResponseSpecSchemaComponents.application(claimTrack, claimantResponseType),
+    );
 
-    if (claimantResponseType === ClaimantResponseSpecType.DO_NOT_PROCEED_WITH_CLAIM) {
-      return schemaBeforeSubmission.extend(schemaShape);
-    }
-
-    return schemaBeforeSubmission.extend({
-      ...schemaShape,
-      ...claimantResponseSpecSchemaComponents.determinationWithoutHearing(claimTrack),
-      ...claimantResponseSpecSchemaComponents.fastTrackDq(claimTrack),
-      ...claimantResponseSpecSchemaComponents.experts(claimTrack),
-      ...claimantResponseSpecSchemaComponents.witnesses(claimTrack),
-      ...claimantResponseSpecSchemaComponents.language,
-      ...claimantResponseSpecSchemaComponents.hearing(claimTrack),
-      ...claimantResponseSpecSchemaComponents.requestedCourtLocation,
-      ...claimantResponseSpecSchemaComponents.hearingSupport,
-      ...claimantResponseSpecSchemaComponents.vulnerabilityQuestions,
-      ...claimantResponseSpecSchemaComponents.applications(claimTrack),
-    });
+    return schemaBeforeSubmission.extend(schemaShape);
   }
 }

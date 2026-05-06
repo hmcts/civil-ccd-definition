@@ -263,16 +263,14 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
 };
 
 
-const claimDetails = (claimTrack: ClaimTrack, particularsOfClaimDocument: UploadDocumentValue) => {
+const claimDetails = (claimTrack: ClaimTrack) => {
 
   return {
     Details: {
       detailsOfClaim: 'Test details of claim',
     },
-    Upload: {
-      servedDocumentFiles: {
-        particularsOfClaimDocument: [CaseDataHelper.setIdToData(particularsOfClaimDocument)],
-      },
+    uploadParticularsOfClaim: {
+      uploadParticularsOfClaim: 'No'
     },
     ClaimValue: {
       claimValue: {

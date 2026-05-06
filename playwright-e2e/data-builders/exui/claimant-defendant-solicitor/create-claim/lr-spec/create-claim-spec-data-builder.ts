@@ -70,6 +70,12 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
   } = {}) {
+    this.setClaimantDefendantPartyTypes(claimType, {
+      claimant1PartyType,
+      claimant2PartyType,
+      defendant1PartyType,
+      defendant2PartyType,
+    });
 
     return {
       ...createClaimSpecData.references,

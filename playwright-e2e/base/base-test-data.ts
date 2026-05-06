@@ -5,6 +5,8 @@ import CaseFlags from '../models/ccd-events/case-flags/case-flag';
 import CCDCaseData from '../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-party-types';
 import TestData from '../models/test-utils/test-data';
+import ClaimType from '../constants/cases/claim-type';
+import ClaimTypeHelper from '../helpers/claim-type-helper';
 
 export default abstract class BaseTestData {
   private _testData: TestData;
@@ -65,6 +67,34 @@ export default abstract class BaseTestData {
       console.log('Set Defendant 2 Party Type: ' + this._testData.defendant2PartyType?.type);
   }
 
+  protected setClaimantDefendantPartyTypes(
+    claimType: ClaimType,
+    {
+      claimant1PartyType, 
+      claimant2PartyType, 
+      defendant1PartyType, 
+      defendant2PartyType
+    }: 
+    {
+      claimant1PartyType?: ClaimantDefendantPartyType, 
+      claimant2PartyType?: ClaimantDefendantPartyType, 
+      defendant1PartyType?: ClaimantDefendantPartyType, 
+      defendant2PartyType?: ClaimantDefendantPartyType
+    }) {
+      if(ClaimTypeHelper.isClaimant2(claimType)) {
+        this.setClaimant1PartyType = claimant1PartyType!;
+        this.setClaimant2PartyType = claimant2PartyType!;
+        this.setDefendant1PartyType = defendant1PartyType!;
+      } else if(ClaimTypeHelper.isDefendant2(claimType)) {
+        this.setClaimant1PartyType = claimant1PartyType!;
+        this.setDefendant1PartyType = defendant1PartyType!;
+        this.setDefendant2PartyType = defendant2PartyType!;
+      } else {
+        this.setClaimant1PartyType = claimant1PartyType!;
+        this.setDefendant1PartyType = defendant1PartyType!;
+      }
+  }
+
   protected get activeCaseFlags() {
     return this._testData.caseFlags.activeCaseFlags;
   }
@@ -110,14 +140,14 @@ export default abstract class BaseTestData {
     console.log(`Total Number of Active Case Flags: ${this._testData.caseFlags.activeCaseFlags}`);
   }
 
-  protected setClaimantDefendantPartyTypes() {
+  protected setDebugClaimantDefendantPartyTypes() {
     this.setClaimant1PartyType = claimantDefendantPartyTypes[this.ccdCaseData?.applicant1?.type];
     this.setClaimant2PartyType = claimantDefendantPartyTypes[this.ccdCaseData?.applicant2?.type];
     this.setDefendant1PartyType = claimantDefendantPartyTypes[this.ccdCaseData?.respondent1?.type];
     this.setDefendant2PartyType = claimantDefendantPartyTypes[this.ccdCaseData?.respondent2?.type];
   }
 
-  protected setCaseFlags() {
+  protected setDebugCaseFlags() {
     const caseFlags: CaseFlags = this._testData.caseFlags;
     CaseFlagsHelper.updateCaseFlagsObject(
       caseFlags,

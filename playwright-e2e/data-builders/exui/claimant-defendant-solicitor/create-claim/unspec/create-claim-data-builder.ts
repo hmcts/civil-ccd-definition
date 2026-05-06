@@ -67,8 +67,13 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     defendant2PartyType?: ClaimantDefendantPartyType;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory; 
+    this.setClaimantDefendantPartyTypes(claimType, {
+      claimant1PartyType,
+      claimant2PartyType,
+      defendant1PartyType,
+      defendant2PartyType,
+    });
 
-    const particularsOfClaimDocument = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     const certificateOfSuitability = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     let certificateOfSuitability2: UploadDocumentValue;
     if(ClaimTypeHelper.isClaimant2(claimType)) {
@@ -88,7 +93,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       ...createClaimData.defendant2SameSolicitor(claimType),
       ...createClaimData.defendantSolicitor2(claimType),
       ...createClaimData.claimTypeUnspec(claimTypeUnspec),
-      ...createClaimData.claimDetails(claimTrack, particularsOfClaimDocument),
+      ...createClaimData.claimDetails(claimTrack),
       ...createClaimData.statementOfTruth,
     };
   }
