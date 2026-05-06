@@ -37,7 +37,7 @@ const pageTeardown = async (page: Page, testInfo: TestInfo) => {
   const allErrorsAxe = testInfo.errors.length > 0 ? testInfo.errors.every((error) => error.value === 'accessibility') : false;
   if (allErrorsAxe && screenshotAttachment && page.video()) {
     FileSystemHelper.delete(screenshotAttachment.path, { force: true, quiet: true });
-    FileSystemHelper.delete(await page.video().path(), { force: true, quiet: true });
+    FileSystemHelper.delete(await page.video()?.path(), { force: true, quiet: true });
     test.fail();
   } else if (screenshotAttachment) {
     await testInfo.attach('failed.png', { path: screenshotAttachment.path });
