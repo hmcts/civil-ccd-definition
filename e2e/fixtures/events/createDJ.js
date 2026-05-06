@@ -2,7 +2,7 @@ const config = require('../../config.js');
 const {listElement } = require('../../api/dataHelper');
 const courts = require('../../courts.js');
 
-const today = new Date().toLocaleDateString('en-CA');
+const today = new Date().toISOString().split('T')[0];
 
 const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') => {
     const userInput = {
