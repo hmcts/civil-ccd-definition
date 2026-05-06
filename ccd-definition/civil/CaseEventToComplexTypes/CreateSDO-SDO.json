@@ -120,6 +120,24 @@
     "DisplayContext": "OPTIONAL"
   },
   {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "input2=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "DisposalHearingDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingDisclosureOfDocuments",
+    "ListElementCode": "date2",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "input2=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
     "ID": "DisposalHearingWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingWitnessOfFact",
@@ -449,6 +467,38 @@
     "CaseFieldID": "disposalOrderWithoutHearing",
     "ListElementCode": "input",
     "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "label1",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "label2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "DisposalHearingBundle",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingBundle",
+    "ListElementCode": "type",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {

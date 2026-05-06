@@ -1,14 +1,14 @@
 [
   {
-    "ID": "DisposalHearingBundle",
+    "ID": "DisposalHearingBundleDJ",
     "ListElementCode": "label1",
     "FieldType": "Label",
-    "ElementLabel": " ",
+    "ElementLabel": "## Disposal hearing bundle ##",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "DisposalHearingBundle",
+    "ID": "DisposalHearingBundleDJ",
     "ListElementCode": "input",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "DisposalHearingBundle",
+    "ID": "DisposalHearingBundleDJ",
     "ListElementCode": "label2",
     "FieldType": "Label",
     "ElementLabel": "#### Select bundle type",
@@ -24,7 +24,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "DisposalHearingBundle",
+    "ID": "DisposalHearingBundleDJ",
     "ListElementCode": "type",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalHearingBundleType",

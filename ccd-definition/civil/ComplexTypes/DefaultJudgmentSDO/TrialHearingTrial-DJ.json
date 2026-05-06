@@ -38,5 +38,14 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "TrialHearingTrialDJ",
+    "ListElementCode": "type",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "TrialHearingBundleType",
+    "ElementLabel": "Bundle type",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
