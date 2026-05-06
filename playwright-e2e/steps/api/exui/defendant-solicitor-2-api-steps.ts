@@ -17,8 +17,8 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor2User,
-      this.ccdCaseData.id!,
       CaseRole.RESPONDENT_SOLICITOR_TWO,
+      this.ccdCaseData.id!
     );
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData.id!);
   }

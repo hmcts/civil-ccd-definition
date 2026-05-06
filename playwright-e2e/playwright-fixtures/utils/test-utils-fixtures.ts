@@ -25,6 +25,7 @@ export const test = base.extend<TestDataFixture>({
   },
   _testData: async ({}, use, testInfo) => {
     await use({
+      ccdCaseData: {},
       workerIndex: testInfo.parallelIndex,
       caseFlags: { caseFlagsDetails: [], activeCaseFlags: 0 }
     });
