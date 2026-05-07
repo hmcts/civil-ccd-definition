@@ -3,7 +3,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../../exui-page/exui-page';
 import { heading, inputs } from './create-case-flags-flag-type-party-content';
-import PartyCaseFlags from '../../../../../../enums/case-flags/party-case-flags';
+import PartyCaseFlags from '../../../../../../enums/ccd-events/case-flags/party-case-flags';
 
 @AllMethodsStep()
 export default class CreateCaseFlagsFlagTypePartyPage extends ExuiPage(BasePage) {

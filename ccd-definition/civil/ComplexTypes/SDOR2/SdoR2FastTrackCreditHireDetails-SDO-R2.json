@@ -9,14 +9,6 @@
   },
   {
     "ID": "SdoR2FastTrackCreditHireDetails",
-    "ListElementCode": "dateText",
-    "FieldType": "Label",
-    "ElementLabel": "This statement must be uploaded to the Digital Portal by 4pm on",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "SdoR2FastTrackCreditHireDetails",
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",

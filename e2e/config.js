@@ -321,19 +321,14 @@ module.exports = {
   },
   applicantCitizenUser: {
     password: defaultPassword,
-    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    email: process.env.CLAIMANT_CITIZEN_EMAIL || `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
     // email: 'civilmoneyclaimsdemo@gmail.com', uncomment for local testing if required
     type: 'claimant',
   },
   defendantCitizenUser2: {
     password: defaultPassword,
-    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
+    email: process.env.DEFENDANT_CITIZEN_EMAIL || `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
     // email: 'civiluatdefendant@gmail.com', uncomment for local testing if required
-    type: 'defendant',
-  },
-  defendantLRCitizenUser:{
-    password: defaultPassword,
-    email: 'cuiuseraat@gmail.com',
     type: 'defendant',
   },
   waTaskIds: {

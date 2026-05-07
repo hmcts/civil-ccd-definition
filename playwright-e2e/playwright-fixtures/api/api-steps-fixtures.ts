@@ -1,5 +1,5 @@
-import { test as requestFactories } from './request-factory-fixtures';
 import { test as dataBuilderFactories } from './data-builder-factory-fixtures';
+import { test as schemaBuilderFactories } from './schema-builder-factory-fixtures';
 import { test as testUtils } from '../utils/test-utils-fixtures';
 import { mergeTests } from '@playwright/test';
 import CaseRoleAssignmentApiSteps from '../../steps/api/case-role-assignment-api-steps';
@@ -12,7 +12,7 @@ import DefendantSolicitor2SpecApiSteps from '../../steps/api/exui/defendant-soli
 import DefendantSolicitor2ApiSteps from '../../steps/api/exui/defendant-solicitor-2-api-steps';
 import DataApiSteps from '../../steps/api/data-api-steps';
 
-type ApiActionsFixtures = {
+type ApiStepsFixtures = {
   IdamApiSteps: IdamApiSteps;
   DataApiSteps: DataApiSteps;
   ClaimantSolicitorSpecApiSteps: ClaimantSolicitorSpecApiSteps;
@@ -24,18 +24,18 @@ type ApiActionsFixtures = {
   CaseRoleAssignmentApiSteps: CaseRoleAssignmentApiSteps;
 };
 
-export const test = mergeTests(testUtils, requestFactories, dataBuilderFactories).extend<ApiActionsFixtures>({
+export const test = mergeTests(testUtils, dataBuilderFactories, schemaBuilderFactories).extend<ApiStepsFixtures>({
   IdamApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new IdamApiSteps(_requestsFactory, _testData));
   },
   DataApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new DataApiSteps(_requestsFactory, _testData));
   },
-  ClaimantSolicitorSpecApiSteps: async ({ _claimantSolicitorDataBuilderFactory, _requestsFactory, _testData }, use) => {
-    await use(new ClaimantSolicitorSpecApiSteps(_claimantSolicitorDataBuilderFactory, _requestsFactory, _testData));
+  ClaimantSolicitorSpecApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantSolicitorSpecApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
-  ClaimantSolicitorApiSteps: async ({ _claimantSolicitorDataBuilderFactory, _requestsFactory, _testData }, use) => {
-    await use(new ClaimantSolicitorApiSteps(_claimantSolicitorDataBuilderFactory, _requestsFactory, _testData));
+  ClaimantSolicitorApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantSolicitorApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
   DefendantSolicitor1SpecApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor1SpecApiSteps(_requestsFactory, _testData));
@@ -51,5 +51,5 @@ export const test = mergeTests(testUtils, requestFactories, dataBuilderFactories
   },
   CaseRoleAssignmentApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new CaseRoleAssignmentApiSteps(_requestsFactory, _testData));
-  },
+  }
 });

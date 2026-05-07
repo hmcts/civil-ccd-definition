@@ -20,7 +20,7 @@
   {
     "ID": "PartyFlagStructure",
     "ListElementCode": "email",
-    "FieldType": "Text",
+    "FieldType": "Email",
     "ElementLabel": "Email",
     "SecurityClassification": "Public",
     "Searchable": "N",

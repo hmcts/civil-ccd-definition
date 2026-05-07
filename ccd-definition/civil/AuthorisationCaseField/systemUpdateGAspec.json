@@ -37,6 +37,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppApplicantAddlSolicitors",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppEvidenceDocument",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"

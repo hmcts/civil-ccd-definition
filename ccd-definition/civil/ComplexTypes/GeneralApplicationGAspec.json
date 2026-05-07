@@ -98,6 +98,15 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppApplicantAddlSolicitors",
+    "ElementLabel": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "GASolicitorDetailsGAspec",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppHearingDate",
     "ElementLabel": "Hearing date for all GA types",
     "FieldType": "GAHearingDateGAspec",
