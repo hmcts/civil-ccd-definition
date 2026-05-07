@@ -221,6 +221,7 @@ def getCivilServiceImage() {
 withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
+  env.BEFTA_FORCE_IMPORT_RETRY = 'true'
 
   onPR {
     env.ENVIRONMENT = "preview"
