@@ -121,7 +121,7 @@
           "caseworker-civil-solicitor",
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -206,7 +206,7 @@
           "hearing-schedule-access",
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
