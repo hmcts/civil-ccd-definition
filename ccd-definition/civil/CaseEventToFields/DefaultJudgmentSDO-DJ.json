@@ -284,7 +284,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingBundleDJToggle=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "disposalHearingMethodInPersonDJ=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
