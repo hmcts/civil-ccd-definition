@@ -1,6 +1,6 @@
-import filePaths from '../config/file-paths';
-import FileType from '../constants/test-utils/file-type';
-import FileSystemHelper from './file-system-helper';
+import filePaths from '../config/file-paths.ts';
+import FileType from '../constants/test-utils/file-type.ts';
+import FileSystemHelper from './file-system-helper.ts';
 
 export default class BankHolidaysHelper {
   static getBankHolidaysFromState = (): string[] | null => {

@@ -1,7 +1,7 @@
-import filePaths from '../config/file-paths';
-import FileType from '../constants/test-utils/file-type';
-import { AxeResults, PageResult } from '../models/test-utils/axe-results';
-import FileSystemHelper from './file-system-helper';
+import filePaths from '../config/file-paths.ts';
+import FileType from '../constants/test-utils/file-type.ts';
+import { AxeResults, PageResult } from '../models/test-utils/axe-results.ts';
+import FileSystemHelper from './file-system-helper.ts';
 
 //TODO: Could be a potential concurrency issue when caching page results when multiple workers are running but will fix later.
 //e.g. Two workers could be caching at the same time.
