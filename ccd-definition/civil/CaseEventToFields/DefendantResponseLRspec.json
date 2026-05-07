@@ -1837,7 +1837,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack=\"FAST_CLAIM\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND (responseClaimTrack=\"FAST_CLAIM\" OR responseClaimTrack=\"MULTI_CLAIM\" OR responseClaimTrack=\"INTERMEDIATE_CLAIM\")",
     "ShowSummaryChangeOption": "Y"
   },
   {

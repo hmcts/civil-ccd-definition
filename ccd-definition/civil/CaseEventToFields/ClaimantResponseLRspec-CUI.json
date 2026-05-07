@@ -981,7 +981,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND responseClaimTrack =\"FAST_CLAIM\"",
+    "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\" AND (responseClaimTrack =\"FAST_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\" OR responseClaimTrack =\"INTERMEDIATE_CLAIM\")",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": " "
   },
