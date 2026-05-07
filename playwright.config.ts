@@ -25,6 +25,7 @@ export default defineConfig({
               Architecture: os.arch(),
               NodeVersion: process.version,
             },
+            detail: false
           },
         ],
       ]
