@@ -28,6 +28,10 @@ tasks.register('highLevelDataSetup', JavaExec) {
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
 }
 
+test {
+  useJUnitPlatform()
+}
+
 
 
 def versions = [
@@ -55,6 +59,7 @@ dependencies {
   implementation group: 'io.rest-assured', name: 'rest-assured', version: '6.0.0'
 
   testImplementation libraries.junit5
+  testRuntimeOnly "org.junit.platform:junit-platform-launcher:${versions.junitPlatform}"
 }
 
 publishing {

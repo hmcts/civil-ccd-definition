@@ -3,17 +3,27 @@ package uk.gov.hmcts.reform.civil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import uk.gov.hmcts.befta.DefaultTestAutomationAdapter;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
+import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
+import io.restassured.response.Response;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
 public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     private static final Logger logger = LoggerFactory.getLogger(HighLevelDataSetupApp.class);
+    private static final int HTTP_STATUS_OK = 200;
+    private static final int HTTP_STATUS_GATEWAY_TIMEOUT = 504;
+    private static final int VERSION_POLL_MAX_ATTEMPTS = 10;
+    private static final long VERSION_POLL_DELAY_MS = 5_000;
 
     private static final CcdRoleConfig[] CCD_ROLES_NEEDED_FOR_CIVIL = {
         new CcdRoleConfig("caseworker-civil", "PUBLIC"),
@@ -78,6 +88,14 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         environment = dataSetupEnvironment;
     }
 
+    HighLevelDataSetupApp(CcdEnvironment dataSetupEnvironment, String definitionStoreUrl) {
+        super(new DefaultTestAutomationAdapter(),
+              VALID_CCD_TEST_DEFINITIONS_PATH,
+              dataSetupEnvironment,
+              definitionStoreUrl);
+        environment = dataSetupEnvironment;
+    }
+
     public static void main(String[] args) throws Throwable {
         main(HighLevelDataSetupApp.class, args);
     }
@@ -103,6 +121,88 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         String environmentName = environment.name().toLowerCase(Locale.UK);
         return List.of(String.format("build/ccd-release-config/civil-ccd-%s.xlsx", environmentName),
                        String.format("build/ccd-release-config/civil-ga-ccd-%s.xlsx", environmentName));
+    }
+
+    @Override
+    protected void importDefinition(String fileResourcePath) throws IOException {
+        String caseType = extractCaseTypeFromFilename(fileResourcePath);
+        String currentVersion = getCaseTypeVersion(caseType);
+
+        try {
+            importDefinitionFile(fileResourcePath);
+        } catch (ImportException e) {
+            if (e.getHttpStatusCode() != HTTP_STATUS_GATEWAY_TIMEOUT) {
+                throw e;
+            }
+            logger.warn("Import got 504 Gateway Timeout for {}. Checking if {} case type version changed...",
+                        fileResourcePath, caseType);
+
+            if (pollForVersionChange(caseType, currentVersion)) {
+                logger.info("Case type {} version changed after 504. Import succeeded for {}.",
+                            caseType, fileResourcePath);
+                return;
+            }
+            logger.error("Case type {} version unchanged after polling. Import failed for {}.",
+                         caseType, fileResourcePath);
+            throw e;
+        }
+    }
+
+    protected void importDefinitionFile(String fileResourcePath) throws IOException {
+        super.importDefinition(fileResourcePath);
+    }
+
+    private String extractCaseTypeFromFilename(String fileResourcePath) {
+        String filename = new File(fileResourcePath).getName().toLowerCase(Locale.UK);
+        if (filename.contains("-ga-")) {
+            return "GENERALAPPLICATION";
+        }
+        return "CIVIL";
+    }
+
+    protected String getCaseTypeVersion(String caseType) {
+        try {
+            Response response = asAutoTestImporter()
+                .given().when().get("/api/data/case-type/" + caseType + "/version");
+            if (response.getStatusCode() == HTTP_STATUS_OK) {
+                return response.body().asString().trim();
+            }
+        } catch (Exception ex) {
+            logger.warn("Could not fetch current {} case type version: {}", caseType, ex.getMessage());
+        }
+        return null;
+    }
+
+    private boolean pollForVersionChange(String caseType, String previousVersion) {
+        if (previousVersion == null) {
+            logger.warn("No previous version available for {}. Cannot verify import after 504.", caseType);
+            return false;
+        }
+
+        for (int attempt = 1; attempt <= getVersionPollMaxAttempts(); attempt++) {
+            try {
+                waitBeforeVersionCheck();
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+                return false;
+            }
+            logger.info("Checking {} case type version (attempt {}/{})",
+                        caseType, attempt, getVersionPollMaxAttempts());
+            String newVersion = getCaseTypeVersion(caseType);
+            if (newVersion != null && !newVersion.equals(previousVersion)) {
+                logger.info("Version changed from {} to {}", previousVersion, newVersion);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected int getVersionPollMaxAttempts() {
+        return VERSION_POLL_MAX_ATTEMPTS;
+    }
+
+    protected void waitBeforeVersionCheck() throws InterruptedException {
+        Thread.sleep(VERSION_POLL_DELAY_MS);
     }
 
     @Override
