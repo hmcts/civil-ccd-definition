@@ -949,7 +949,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
