@@ -15,6 +15,9 @@
   "helmv3": {
     "bumpVersion": "patch"
   },
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "regexManagers": [
     {
       "fileMatch": [
