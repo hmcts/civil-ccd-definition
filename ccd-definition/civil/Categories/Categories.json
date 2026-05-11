@@ -1302,5 +1302,13 @@
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
     "ParentCategoryID": "MediationDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "WithoutPrejudice",
+    "CategoryLabel": "Without prejudice / Part 36 offers or rejections",
+    "DisplayOrder": "16",
+    "ParentCategoryID": ""
   }
 ]
