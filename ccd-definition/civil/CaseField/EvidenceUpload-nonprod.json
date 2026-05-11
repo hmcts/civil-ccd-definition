@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "withoutPrejudiceLabel",
-    "Label": "## Without prejudice",
+    "Label": "## Without prejudice/part 36 offers or rejections",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -10,7 +10,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "withoutPrejudiceToggleText",
-    "Label": "<details><summary><u>Without prejudice</u></summary><div class=\"panel\">\n\n ## Without prejudice \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded \n\n TBC</div></details><br />",
+    "Label": "<details><summary><u>Without prejudice/part 36 offers or rejections</u></summary><div class=\"panel\">\n\n ## Without prejudice/part 36 offers or rejections\n\n A document containing a without prejudice or part 36 offer/rejection (including a paginated bundle of such documents) which should not be read by the judge until it is appropriate to do so</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,7 +27,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentPart36Rejection",
-    "Label": "Part 36 rejection",
+    "Label": "Without prejudice/part 36 offers or rejections",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndDescription",
     "SecurityClassification": "Public",
@@ -36,7 +36,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentPart36RejectionRes",
-    "Label": "Part 36 rejection",
+    "Label": "Without prejudice/part 36 offers or rejections",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndDescription",
     "SecurityClassification": "Public",
@@ -45,7 +45,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentPart36RejectionRes2",
-    "Label": "Part 36 rejection",
+    "Label": "Without prejudice/part 36 offers or rejections",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndDescription",
     "SecurityClassification": "Public",
@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentPart36RejectionApp2",
-    "Label": "Part 36 rejection",
+    "Label": "Without prejudice/part 36 offers or rejections",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndDescription",
     "SecurityClassification": "Public",
