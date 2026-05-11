@@ -6,7 +6,7 @@ const pdfHelper = require('../../../helpers/pdfVisualCompareHelper.js');
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
-const pdfDocument = 'defendant_directions_questionnaire_form_00';
+const pdfDocument = 'defendant_directions_questionnaire_form';
 const claimDocumentsTab = '.mat-tab-label:has-text("Claim Documents")';
 const PDF_NAME = 'defendant_directions_questionnaire_form.pdf';
 
