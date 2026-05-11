@@ -222,6 +222,8 @@ withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
   env.BEFTA_FORCE_IMPORT_RETRY = 'true'
+  BEFTA_IMPORT_GATEWAY_TIMEOUT_VERSION_POLL_MAX_ATTEMPTS = '30'
+  BEFTA_IMPORT_GATEWAY_TIMEOUT_VERSION_POLL_DELAY_MILLISECONDS = '10000'
 
   onPR {
     env.ENVIRONMENT = "preview"
