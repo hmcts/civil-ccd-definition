@@ -18,8 +18,8 @@ export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(inputs.extensionDate.label),
-      super.expectText(inputs.extensionDate.hintText),
+      super.expectText(inputs.extensionDate.label, { count: 1 }),
+      super.expectText(inputs.extensionDate.hintText, { count: 1 }),
     ]);
   }
 
@@ -33,6 +33,8 @@ export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(async () => {
+      await super.expectNoText(inputs.extensionDate.label, { exact: false, timeout: 5000 });
+    });
   }
 }
