@@ -30,6 +30,7 @@
     "Label": "Without prejudice/Part 36 offers or rejections",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndDescription",
+    "CategoryID": "WithoutPrejudice",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -39,6 +40,7 @@
     "Label": "Without prejudice/Part 36 offers or rejections",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndDescription",
+    "CategoryID": "WithoutPrejudice",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -48,6 +50,7 @@
     "Label": "Without prejudice/Part 36 offers or rejections",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndDescription",
+    "CategoryID": "WithoutPrejudice",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -57,6 +60,7 @@
     "Label": "Without prejudice/Part 36 offers or rejections",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndDescription",
+    "CategoryID": "WithoutPrejudice",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
