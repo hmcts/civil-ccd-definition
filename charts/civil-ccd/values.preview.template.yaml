@@ -143,7 +143,7 @@ aac-manage-case-assignment:
 
 xui-webapp:
   nodejs:
-    image: hmctspublic.azurecr.io/xui/webapp:pr-4944
+    image: hmctsprod.azurecr.io/xui/webapp:pr-4944
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       FEATURE_ACCESS_MANAGEMENT_ENABLED: true
