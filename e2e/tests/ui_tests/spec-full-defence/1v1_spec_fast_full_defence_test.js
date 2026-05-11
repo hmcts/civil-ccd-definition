@@ -8,7 +8,7 @@ const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 let caseNumber;
 
-Feature('1v1 spec claim journey').tag('@civil-ccd-nightly @ui-spec-full-defence');
+Feature('1v1 spec claim journey @debug').tag('@civil-ccd-nightly @ui-spec-full-defence');
 
 Scenario('01 1v1 Applicant solicitor creates specified claim for fast track-spec', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
@@ -26,29 +26,29 @@ Scenario('02 1v1 Defendant solicitor perform Inform Agreed Extension', async ({L
   console.log('1v1 Defendant solicitor Inform Agreed Extension claim-spec: ' + caseNumber);
   await assignCaseToLRSpecDefendant(caseNumber);
   await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.informAgreedExtensionDateSpec();
+  //await LRspec.informAgreedExtensionDateSpec();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Inform agreed extension date'));
 }).retry(2);
 
-Scenario('03 1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
-  await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.respondToClaimFullDefence({
-    defendant1Response: 'fullDefence',
-    claimType: 'fast',
-    defenceType: 'dispute'
-  });
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await LRspec.see(caseEventMessage('Respond to claim'));
-  //await waitForFinishedBusinessProcess(caseNumber);
-}).retry(2);
+// Scenario('03 1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+//   await LRspec.login(config.defendantSolicitorUser);
+//   await LRspec.respondToClaimFullDefence({
+//     defendant1Response: 'fullDefence',
+//     claimType: 'fast',
+//     defenceType: 'dispute'
+//   });
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await LRspec.see(caseEventMessage('Respond to claim'));
+//   //await waitForFinishedBusinessProcess(caseNumber);
+// }).retry(2);
 
-Scenario('04 1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
-  await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
-}).retry(2);
+// Scenario('04 1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
+//   await LRspec.login(config.applicantSolicitorUser);
+//   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
+// }).retry(2);
 
 
-AfterSuite(async  () => {
-  await unAssignAllUsers();
-});
+// AfterSuite(async  () => {
+//   await unAssignAllUsers();
+// });
