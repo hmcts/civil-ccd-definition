@@ -236,6 +236,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       paidServiceRequestDTO,
     );
     await super.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await super.fetchAndSetCCDCaseData();
   }
 
   async RespondFastTrack1v1() {
