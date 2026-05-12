@@ -12,13 +12,13 @@ let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : c
 
 Feature('Dispute resolution hearing API test - fast claim - unspec').tag('@civil-service-nightly @api-drh');
 
-Scenario('1v1 unspec create SDO for DRH @debug', async ({api}) => {
-  // await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, claimAmount);
-  // await api.amendClaimDocuments(config.applicantSolicitorUser);
-  // await api.notifyClaim(config.applicantSolicitorUser);
-  // await api.notifyClaimDetails(config.applicantSolicitorUser);
-  // await api.defendantResponse(config.defendantSolicitorUser, mpScenario1v1, null);
-  // await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v1, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
+Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, claimAmount);
+  await api.amendClaimDocuments(config.applicantSolicitorUser);
+  await api.notifyClaim(config.applicantSolicitorUser);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario1v1, null);
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v1, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
   await api.createSDO(judgeUser, 'CREATE_SMALL_DRH');
   await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario1v1, 'DRH');
   await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1, 'DRH');

@@ -252,7 +252,7 @@ const newSdoR2FastTrackCreditHireFields ={
   }
 };
 
-let caseId = '1778583500579316', eventName, legacyCaseReference;
+let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
