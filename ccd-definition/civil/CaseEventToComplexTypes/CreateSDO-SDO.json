@@ -708,7 +708,8 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateToLabel",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "smallClaimsHearing = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "SmallClaimsHearing",
@@ -716,7 +717,8 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateTo",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "smallClaimsHearing = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "SmallClaimsHearing",
