@@ -9,7 +9,7 @@ import {
 } from './response-confirm-details-content.ts';
 import { Page } from '@playwright/test';
 import SolicitorReferenceFragment from '../../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
-import partys from '../../../../../../../constants/partys.ts';
+import partys from '../../../../../../../constants/users/partys';
 import DateOfBirthFragment from '../../../../../fragments/date/date-of-birth-fragment.ts';
 
 @AllMethodsStep()

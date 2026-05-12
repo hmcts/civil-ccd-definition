@@ -1,7 +1,7 @@
-import TestData from '../../../../../models/test-data';
+import TestData from '../../../../../models/test-utils/test-data.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import BaseTestData from '../../../../../base/base-test-data';
-import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types.ts';
+import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import DefaultJudgmentPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/default-judgment/default-judgment-page-factory.ts';
 
 @AllMethodsStep()
@@ -16,7 +16,7 @@ export default class DefaultJudgmentSpecActions extends BaseTestData {
   async defendantDetails() {
     const { defendantDetailsSpecPage } = this.defaultJudgmentFactory;
     await defendantDetailsSpecPage.verifyContent(this.ccdCaseData);
-    await defendantDetailsSpecPage.selectDefendant(super.defendant1PartyType);
+    await defendantDetailsSpecPage.selectDefendant(super.defendant1PartyType!);
     await defendantDetailsSpecPage.submit();
   }
 
@@ -45,7 +45,7 @@ export default class DefaultJudgmentSpecActions extends BaseTestData {
     const { claimPartialPaymentPage } = this.defaultJudgmentFactory;
     await claimPartialPaymentPage.verifyContent(
       this.ccdCaseData,
-      claimantDefendantPartyTypes.COMPANY,
+      this.defendant1PartyType!,
     );
     await claimPartialPaymentPage.selectNoPartialPayment();
     await claimPartialPaymentPage.submit();
@@ -71,12 +71,12 @@ export default class DefaultJudgmentSpecActions extends BaseTestData {
     await paymentBreakdownPage.submit();
 
     const { paymentTypePage } = this.defaultJudgmentFactory;
-    await paymentTypePage.verifyContent(this.ccdCaseData, super.defendant1PartyType);
+    await paymentTypePage.verifyContent(this.ccdCaseData, super.defendant1PartyType!);
     await paymentTypePage.selectSetPaymentDate();
     await paymentTypePage.submit();
 
     const { paymentSetDatePage } = this.defaultJudgmentFactory;
-    await paymentSetDatePage.verifyContent(this.ccdCaseData, super.defendant1PartyType);
+    await paymentSetDatePage.verifyContent(this.ccdCaseData, super.defendant1PartyType!);
     await paymentSetDatePage.setPaymentDate();
     await paymentSetDatePage.submit();
   }
@@ -110,7 +110,7 @@ export default class DefaultJudgmentSpecActions extends BaseTestData {
     const { repaymentInformationPage } = this.defaultJudgmentFactory;
     await repaymentInformationPage.verifyContent(
       this.ccdCaseData,
-      claimantDefendantPartyTypes.COMPANY,
+      this.defendant1PartyType!,
     );
     await repaymentInformationPage.regularPaymentsAmount();
     await repaymentInformationPage.selectMonthlyRepayments();

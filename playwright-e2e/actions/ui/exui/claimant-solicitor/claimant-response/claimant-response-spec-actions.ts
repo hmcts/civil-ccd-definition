@@ -1,4 +1,4 @@
-import TestData from '../../../../../models/test-data.ts';
+import TestData from '../../../../../models/test-utils/test-data.ts';
 import { Step } from '../../../../../decorators/test-steps.ts';
 import BaseTestData from '../../../../../base/base-test-data.ts';
 import ClaimantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/claimant-response/claimant-response-page-factory.ts';
