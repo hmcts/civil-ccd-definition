@@ -453,7 +453,7 @@
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "SolicitorCreate",
@@ -488,7 +488,7 @@
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "RespondentSolicitor1Organisation",
