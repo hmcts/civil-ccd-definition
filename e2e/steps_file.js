@@ -531,15 +531,18 @@ module.exports = function () {
     async initiateDJUnspec(caseNumber, scenario) {
       eventName = events.DEFAULT_JUDGEMENT.name;
       caseId = caseNumber;
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(events.DEFAULT_JUDGEMENT, caseId),
-        () => unspecifiedDefaultJudmentPage.againstWhichDefendant(scenario),
-        () => unspecifiedDefaultJudmentPage.statementToCertify(scenario),
-        () => unspecifiedDefaultJudmentPage.hearingSelection(),
-        () => unspecifiedDefaultJudmentPage.hearingRequirements(),
-        () => event.submit('Submit', 'Judgment for damages to be decided Granted'),
-        () => event.returnToCaseDetails()
-      ]);
+        await this.triggerStepsWithScreenshot([
+          () => caseViewPage.startEvent(events.DEFAULT_JUDGEMENT, caseId),
+          () => unspecifiedDefaultJudmentPage.againstWhichDefendant(scenario),
+          () => unspecifiedDefaultJudmentPage.statementToCertify(scenario),
+          () =>
+            scenario === 'ONE_V_ONE_OTHER_REMEDY'
+              ? unspecifiedDefaultJudmentPage.abandonOtherRemedy() : null,
+          () => unspecifiedDefaultJudmentPage.hearingSelection(),
+          () => unspecifiedDefaultJudmentPage.hearingRequirements(),
+          () => event.submit('Submit', 'Judgment for damages to be decided Granted'),
+          () => event.returnToCaseDetails()
+        ]);
     },
 
     async initiateDJSpec(caseId, scenario, caseCategory = 'UNSPEC') {
