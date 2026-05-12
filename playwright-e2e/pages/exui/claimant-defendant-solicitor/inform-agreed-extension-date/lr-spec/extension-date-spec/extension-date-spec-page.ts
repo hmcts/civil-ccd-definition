@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import DateHelper from '../../../../../../helpers/date-helper';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../../../../models/ccd-case-data';
 import ExuiPage from '../../../../exui-page/exui-page';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import { inputs } from './extension-date-spec-content';
@@ -24,7 +24,7 @@ export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
   }
 
   async enterDate(ccdCaseData: CCDCaseData) {
-    const extensionDate = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline, {
+    const extensionDate = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline!, {
       days: 28,
       workingDay: true,
       addDayAfter4pm: true,

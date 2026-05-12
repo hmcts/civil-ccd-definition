@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './statement-of-truth-content';
 import StringHelper from '../../../../helpers/string-helper';

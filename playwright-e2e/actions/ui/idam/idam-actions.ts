@@ -1,7 +1,7 @@
-import User from '../../../models/user';
+import User from '../../../models/users/user';
 import config from '../../../config/config';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import BaseApi from '../../../base/base-api';
 import RequestsFactory from '../../../requests/requests-factory';
 import CookiesHelper from '../../../helpers/cookies-helper';

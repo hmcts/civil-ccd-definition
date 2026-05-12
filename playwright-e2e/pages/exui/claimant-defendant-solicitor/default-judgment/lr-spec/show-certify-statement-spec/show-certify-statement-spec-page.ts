@@ -2,7 +2,7 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { heading, paragraphs, lists, checkboxes } from './show-certify-statement-spec-content.ts';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
 import { getFormattedCaseId } from '../../../../exui-page/exui-content.ts';
 
 @AllMethodsStep()
@@ -10,8 +10,8 @@ export default class ShowCertifyStatmentSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectText(heading),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id), {exact:false}),
-      super.expectHeading(ccdCaseData.caseNamePublic, {exact:false}),
+      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), {exact:false}),
+      super.expectHeading(ccdCaseData.caseNamePublic!, {exact:false}),
       super.expectText(lists.timeExpired),
       super.expectText(lists.notResponded),
       super.expectText(lists.noOutstandingApp),

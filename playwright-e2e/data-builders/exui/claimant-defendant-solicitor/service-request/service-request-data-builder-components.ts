@@ -1,4 +1,4 @@
-export const serviceUpdateDTO = (caseId: number, paymentStatus: string) => ({
+export const serviceUpdateDTO = (paymentStatus: string, caseId?: number) => ({
   service_request_reference: '1324646546456',
   ccd_case_number: caseId,
   service_request_amount: '167.00',

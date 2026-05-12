@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { radioButtons, tableHeadings, heading } from './response-confirm-details-content.ts';
 import DateOfBirthFragment from '../../../../../fragments/date/date-of-birth-fragment.ts';
-import { Party } from '../../../../../../../models/partys.ts';
+import { Party } from '../../../../../../../models/users/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import SolicitorReferenceFragment from '../../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
 

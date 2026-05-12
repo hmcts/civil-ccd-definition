@@ -3,9 +3,9 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
