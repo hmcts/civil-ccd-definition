@@ -451,7 +451,7 @@
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[APPLICANTSOLICITORONE]",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "Yes"
   },
