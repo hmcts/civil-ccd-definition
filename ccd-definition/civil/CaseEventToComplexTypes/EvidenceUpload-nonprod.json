@@ -5,6 +5,7 @@
     "CaseFieldID": "documentPart36Rejection",
     "ListElementCode": "documentDescription",
     "EventElementLabel": "Document description",
+    "EventHintText": "For example: letter, email, or bundle of offer/rejection documents",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -23,6 +24,7 @@
     "CaseFieldID": "documentPart36RejectionApp2",
     "ListElementCode": "documentDescription",
     "EventElementLabel": "Document description",
+    "EventHintText": "For example: letter, email, or bundle of offer/rejection documents",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -41,6 +43,7 @@
     "CaseFieldID": "documentPart36RejectionRes",
     "ListElementCode": "documentDescription",
     "EventElementLabel": "Document description",
+    "EventHintText": "For example: letter, email, or bundle of offer/rejection documents",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -59,6 +62,7 @@
     "CaseFieldID": "documentPart36RejectionRes2",
     "ListElementCode": "documentDescription",
     "EventElementLabel": "Document description",
+    "EventHintText": "For example: letter, email, or bundle of offer/rejection documents",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
