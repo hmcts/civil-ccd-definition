@@ -97,11 +97,18 @@ module.exports = {
         yes: '#hearingSupportRequirementsDJ_hearingSupportQuestion_Yes',
         supportAdditionalId: '#hearingSupportRequirementsDJ_hearingSupportAdditional'
       }
+    },
+    abandonOtherRemedy: {
+      id: '#isOtherRemedyAbandoned',
+      options: {
+        yes: '#isOtherRemedyAbandoned_Yes',
+        no: '#isOtherRemedyAbandoned_No'
+      }
     }
   },
 
   async againstWhichDefendant(scenario) {
-    if(scenario==='ONE_V_ONE'){
+    if(scenario==='ONE_V_ONE'|| scenario==='ONE_V_ONE_OTHER_REMEDY'){
       await within(this.fields.defendantDefaultJudgmentOptions.id, () => {
         I.click(this.fields.defendantDefaultJudgmentOptions.options.defendantname);
       });
@@ -114,11 +121,18 @@ module.exports = {
   },
 
   async statementToCertify(scenario) {
-    if(scenario==='ONE_V_ONE'){
+    if(scenario==='ONE_V_ONE' || scenario==='ONE_V_ONE_OTHER_REMEDY'){
       await I.click(this.fields.statementsApplyForDJ.options.ONE_V_ONE);
     }else if (scenario==='ONE_V_TWO'){
       await I.click(this.fields.statementsApplyForDJ.options.ONE_V_TWO);
     }
+    await I.clickContinue();
+  },
+
+  async abandonOtherRemedy(){
+    await within(this.fields.abandonOtherRemedy.id, () => {
+      I.click(this.fields.abandonOtherRemedy.options.yes);
+    });
     await I.clickContinue();
   },
 
@@ -166,7 +180,6 @@ module.exports = {
       await date.enterDate(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.hearingTimeDateFrom, 40);
       await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingTimeOptions.hearingTimeEstimate);
       await I.fillField(this.fields.selectOrderAndHearingDetailsForDJTask.orderWithoutHearing, 'order has been made without hearing');
-      await I.click(this.fields.selectOrderAndHearingDetailsForDJTask.hearingBundleTypeDocs);
     }
     await I.clickContinue();
   },
