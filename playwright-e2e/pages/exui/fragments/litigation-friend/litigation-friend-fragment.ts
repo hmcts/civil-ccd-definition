@@ -1,12 +1,12 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { radioButtons, buttons, inputs, subheadings, links } from './litigation-friend-content';
 import filePaths from '../../../../config/file-paths';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import partys from '../../../../constants/partys';
+import partys from '../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class LitigationFriendFragment extends ExuiPage(BasePage) {

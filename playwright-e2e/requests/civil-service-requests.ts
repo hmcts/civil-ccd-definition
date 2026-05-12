@@ -1,10 +1,10 @@
 import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
-import CaseRole from '../enums/case-role';
+import CaseRole from '../constants/cases/case-role';
 import RequestOptions from '../models/api/request-options';
-import CCDCaseData, { UploadDocumentValue } from '../models/ccd/ccd-case-data';
-import User from '../models/user';
+import CCDCaseData, { UploadDocumentValue } from '../models/ccd-case-data';
+import User from '../models/users/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
 @AllMethodsStep()
@@ -34,7 +34,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     };
   }
 
-  async waitForFinishedBusinessProcess(user: User, caseId: number) {
+  async waitForFinishedBusinessProcess(user: User, caseId?: number) {
     console.log(`Waiting for business process to finish, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}/business-process`;
     const requestOptions: RequestOptions = {
@@ -45,20 +45,23 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       retryTimeInterval: 3000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
-        const businessProcess = responseJson.businessProcess;
         await super.expectResponseJsonToHavePropertyValue(
           'businessProcess.status',
           'FINISHED',
           responseJson,
           {
             message:
-              `Ongoing business process: ${businessProcess.camundaEvent}, caseId: ${caseId}, status: ${businessProcess.status},` +
-              ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`,
+              `Ongoing business process: ${responseJson.businessProcess.camundaEvent}, caseId: ${caseId}, status: ${responseJson.businessProcess.status},` +
+              ` process instance: ${responseJson.businessProcess.processInstanceId}, last finished activity: ${responseJson.businessProcess.activityId}`,
           },
         );
-        await super.expectResponseJsonToNotHaveProperty('incidentMessage', responseJson, {
-          message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
-        });
+        await super.expectResponseJsonToNotHaveProperty(
+          'incidentMessage',
+          responseJson,
+          {
+            message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
+          },
+        );
       },
     });
     console.log(`Business process successfully finished, caseId: ${caseId}`);
@@ -78,7 +81,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     console.log(`Payment for claim issue successfully updated, caseId: ${serviceRequestDTO.ccd_case_number}`);
   }
 
-  async assignCaseToDefendant(user: User, caseId: number, caseRole: CaseRole) {
+  async assignCaseToDefendant(user: User, caseRole: CaseRole, caseId?: number) {
     console.log(`Assigning role: ${caseRole} to user: ${user.name}, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/assign-case/${caseId}/${caseRole}`;
     const requestOptions: RequestOptions = {
@@ -105,7 +108,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     );
   }
 
-  async updateCaseData(user: User, caseId: number, caseData: CCDCaseData) {
+  async updateCaseData(user: User, caseData: CCDCaseData, caseId?: number) {
     console.log(`Updating case data, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}`;
     const requestOptions: RequestOptions = {
