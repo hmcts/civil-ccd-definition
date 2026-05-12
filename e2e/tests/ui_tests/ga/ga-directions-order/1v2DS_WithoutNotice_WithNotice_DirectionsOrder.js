@@ -95,3 +95,7 @@ Scenario('Without Notice application to With Notice application - Directions Ord
     states.AWAITING_DIRECTIONS_ORDER_DOCS.id
   );
 }).retry(1);
+
+AfterSuite(async ({ api_ga }) => {
+  await api_ga.cleanUp();
+});

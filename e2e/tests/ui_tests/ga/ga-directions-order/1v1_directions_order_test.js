@@ -92,7 +92,7 @@ Scenario('GA for 1v1 - Direction order journey', async ({ I, api_ga }) => {
     gaCaseReference,
     'Y'
   );
-}).retry(1);
+}).retry(0);
 
 AfterSuite(async ({ api_ga }) => {
   await api_ga.cleanUp();

@@ -1,5 +1,7 @@
 const {date, element} = require('../../../api/dataHelper');
 
+const isIsoDateString = (value) => typeof value === 'string' && /\d{4}-\d{2}-\d{2}/.test(value);
+
 const calculatedClaimsTrackWOSum = {
   ClaimsTrack: {
     fastTrackJudgementDeductionValue: (data) => typeof data.value === 'string',
@@ -10,7 +12,7 @@ const calculatedClaimsTrackWOSum = {
     },
     disposalHearingDisclosureOfDocumentsToggle: (data) => Array.isArray(data),
     disposalHearingFinalDisposalHearing: (data) => {
-      return typeof data.input === 'string' && data.date.match(/\d{4}-\d{2}-\d{2}/);
+      return typeof data.input === 'string' && isIsoDateString(data.date);
     },
     fastTrackBuildingDispute: (data) => {
       return typeof data.input1 === 'string'
@@ -103,7 +105,7 @@ const calculatedClaimsTrackWOSum = {
       return typeof data.input === 'string';
     },
     disposalHearingQuestionsToExperts: (data) => {
-      return data.date.match(/\d{4}-\d{2}-\d{2}/);
+      return isIsoDateString(data.date);
     },
     fastTrackTrial: (data) => {
       return typeof data.input1 === 'string'
@@ -170,7 +172,7 @@ const calculatedClaimsTrackWOSum = {
     smallClaimsDocuments: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
-        && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/);
+        && isIsoDateString(data.deadlineDate);
     },
     smallClaimsMethodToggle: (data) => Array.isArray(data),
     disposalHearingClaimSettlingToggle: (data) => Array.isArray(data)

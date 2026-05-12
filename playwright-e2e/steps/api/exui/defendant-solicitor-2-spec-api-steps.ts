@@ -20,6 +20,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       CaseRole.RESPONDENT_SOLICITOR_TWO,
       this.ccdCaseData.id!
     );
+    await super.fetchAndSetCCDCaseData();
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData.id!);
   }
 }

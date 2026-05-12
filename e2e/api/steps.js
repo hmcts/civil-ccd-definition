@@ -38,6 +38,8 @@ const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
 const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
 
+const isIsoDateString = (value) => typeof value === 'string' && /\d{4}-\d{2}-\d{2}/.test(value);
+
 
 const data = {
   CREATE_CLAIM: (mpScenario, claimAmount, hmcTest) => claimData.createClaim(mpScenario, claimAmount, hmcTest),
@@ -127,7 +129,7 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
     sdoR2SmallClaimsWitnessStatements: (data) => {
       return typeof data.sdoStatementOfWitness === 'string'
-        && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
+        && isIsoDateString(data.deadlineDate)
         && typeof data.isRestrictWitness === 'string'
         && typeof data.isRestrictPages === 'string'
         && typeof data.text === 'string';
@@ -145,14 +147,14 @@ const calculatedClaimsTrackDRH = {
         && typeof data.hearingCourtLocationList === 'object'
         && typeof data.methodOfHearing === 'string'
         && typeof data.physicalBundleOptions === 'string'
-        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
+        && isIsoDateString(data.sdoR2SmallClaimsHearingFirstOpenDateAfter?.listFrom);
     },
     sdoR2SmallClaimsImpNotes: (data) => {
       return typeof data.text === 'string'
-        && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
+        && isIsoDateString(data.date);
     },
     sdoR2SmallClaimsPPI: (data) => {
-      return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
+      return isIsoDateString(data.ppiDate)
         && typeof data.text === 'string';
     }
 };
@@ -250,7 +252,7 @@ const newSdoR2FastTrackCreditHireFields ={
   }
 };
 
-let caseId, eventName, legacyCaseReference;
+let caseId = '1778583500579316', eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
@@ -944,7 +946,7 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, hearingDate, user);
   },
 
-  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
+  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING', mpScenario) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'DEFAULT_JUDGEMENT';
