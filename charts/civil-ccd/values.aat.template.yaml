@@ -76,8 +76,8 @@ ccd:
     java:
       ingressHost: civil-ccd-definition-store-staging-aat.aat.platform.hmcts.net
       devcpuRequests: 2000m
-      devmemoryRequests: 4096Mi
-      devmemoryLimits: 4000m
+      devmemoryRequests: 4Gi
+      devmemoryLimits: 4Gi
       environment:
         DEFINITION_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
