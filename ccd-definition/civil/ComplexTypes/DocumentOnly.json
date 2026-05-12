@@ -39,6 +39,7 @@
     "ListElementCode": "documentDescription",
     "FieldType": "Text",
     "ElementLabel": "Document description",
+    "HintText": "For example: letter, email, or bundle of offer/rejection documents",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
