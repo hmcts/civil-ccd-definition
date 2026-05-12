@@ -206,6 +206,9 @@ ccd:
               alias: LD_SDK_KEY
   ccd-definition-store-api:
     java:
+      devcpuRequests: 2000m
+      devmemoryLimits: 4Gi
+      devcpuLimits: 4Gi
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
       environment:
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
