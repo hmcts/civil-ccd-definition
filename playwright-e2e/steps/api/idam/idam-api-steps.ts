@@ -1,5 +1,5 @@
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import User from '../../../models/user';
+import User from '../../../models/users/user';
 import UserStateHelper from '../../../helpers/users-state-helper';
 import BaseApi from '../../../base/base-api';
 

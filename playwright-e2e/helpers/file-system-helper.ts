@@ -2,7 +2,7 @@ import fs from 'fs';
 import fsAsync from 'fs/promises';
 import path from 'path';
 import FileError from '../errors/file-error';
-import FileType from '../enums/file-type';
+import FileType from '../constants/test-utils/file-type';
 import filePaths from '../config/file-paths';
 
 export default class FileSystemHelper {

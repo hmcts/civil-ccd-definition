@@ -5,7 +5,7 @@ import ExuiPage from '../../../../exui-page/exui-page';
 import { inputs, paragraphs, subheadings } from './claim-timeline-content';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import DateHelper from '../../../../../../helpers/date-helper';
-import partys from '../../../../../../constants/partys';
+import partys from '../../../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class ClaimTimelinePage extends ExuiPage(BasePage) {
