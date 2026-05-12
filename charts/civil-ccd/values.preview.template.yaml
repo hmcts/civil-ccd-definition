@@ -206,8 +206,8 @@ ccd:
   ccd-definition-store-api:
     java:
       devcpuRequests: 2000m
-      devmemoryLimits: 4096Mi
-      devcpuLimits: 4000m
+      devmemoryLimits: 4Gi
+      devcpuLimits: 4Gi
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
       environment:
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
