@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../../base/base-page.ts';
 import filePaths from '../../../../../../../config/file-paths.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import { subheadings, inputs } from './defence-response-document-content.ts';
 

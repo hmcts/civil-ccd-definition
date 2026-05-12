@@ -1,13 +1,13 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from '../party-type/party-type-content';
-import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import claimantDefendantPartyType from '../../../../enums/party-types';
-import PartyType from '../../../../enums/party-types';
+import claimantDefendantPartyType from '../../../../constants/users/party-types';
+import PartyType from '../../../../constants/users/party-types';
 import DateOfBirthFragment from '../date/date-of-birth-fragment';
 
 @AllMethodsStep()

@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../../base/base-test-data';
 import { Step } from '../../../../../decorators/test-steps';
-import TestData from '../../../../../models/test-data';
+import TestData from '../../../../../models/test-utils/test-data';
 import DefendantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/defendant-response/defendant-response-page-factory';
 
 const classKey = 'DefendantResponseSpecActions';

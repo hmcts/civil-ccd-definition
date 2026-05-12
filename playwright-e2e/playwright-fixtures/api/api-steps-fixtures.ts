@@ -1,6 +1,5 @@
 import { test as dataBuilderFactories } from './data-builder-factory-fixtures';
 import { test as schemaBuilderFactories } from './schema-builder-factory-fixtures';
-import { test as testUtils } from '../utils/test-utils-fixtures';
 import { mergeTests } from '@playwright/test';
 import CaseRoleAssignmentApiSteps from '../../steps/api/case-role-assignment-api-steps';
 import IdamApiSteps from '../../steps/api/idam/idam-api-steps';
@@ -24,7 +23,7 @@ type ApiStepsFixtures = {
   CaseRoleAssignmentApiSteps: CaseRoleAssignmentApiSteps;
 };
 
-export const test = mergeTests(testUtils, dataBuilderFactories, schemaBuilderFactories).extend<ApiStepsFixtures>({
+export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).extend<ApiStepsFixtures>({
   IdamApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new IdamApiSteps(_requestsFactory, _testData));
   },
@@ -37,8 +36,8 @@ export const test = mergeTests(testUtils, dataBuilderFactories, schemaBuilderFac
   ClaimantSolicitorApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new ClaimantSolicitorApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
-  DefendantSolicitor1SpecApiSteps: async ({ _requestsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor1SpecApiSteps(_requestsFactory, _testData));
+  DefendantSolicitor1SpecApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor1SpecApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
   DefendantSolicitor1ApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor1ApiSteps(_requestsFactory, _testData));

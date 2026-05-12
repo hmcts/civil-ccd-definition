@@ -1,7 +1,7 @@
 import urls, { getDomain } from '../../config/urls';
-import Cookie from '../../models/cookie';
+import Cookie from '../../models/test-utils/cookie';
 
-export const acceptIdamCookies: Cookie[] = [
+export const acceptIdamCookies = (): Cookie[] => [
   {
     name: 'seen_cookie_message',
     value: 'yes',

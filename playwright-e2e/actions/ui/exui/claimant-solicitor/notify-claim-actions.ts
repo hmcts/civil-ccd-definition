@@ -1,4 +1,4 @@
-import TestData from '../../../../models/test-data';
+import TestData from '../../../../models/test-utils/test-data';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import BaseTestData from '../../../../base/base-test-data';
 import NotifyClaimPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/notify-claim/notify-claim-page-factory';

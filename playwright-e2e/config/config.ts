@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
-import Environment from '../enums/environment';
-import testSpeeds from '../constants/test-speeds';
-import { TestSpeed } from '../models/test-speeds';
+import Environment from '../constants/test-utils/environment';
+import testSpeeds from '../constants/test-utils/test-speeds';
+import { TestSpeed } from '../models/test-utils/test-speeds';
 
 dotenv.config({path: '.env.tests.local'})
 
