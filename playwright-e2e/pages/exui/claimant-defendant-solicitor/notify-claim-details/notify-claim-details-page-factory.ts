@@ -1,5 +1,5 @@
 import BasePageFactory from '../../../../base/base-page-factory';
-import partys from '../../../../constants/partys';
+import partys from '../../../../constants/users/partys';
 import CertificateOfService1NotifyClaimDetailsPage from './certificate-of-service-1-notify-claim-details/certificate-of-service-1-notify-claim-details-page';
 import CertificateOfService2NotifyClaimDetailsPage from './certificate-of-service-2-notify-claim-details/certificate-of-service-2-notify-claim-details-page';
 import ConfirmNotifyClaimDetailsCOSPage from './confirm-notify-claim-details/confirm-notify-claim-details-cos-page';

@@ -1,5 +1,5 @@
-import { Party } from '../../../../../../../models/partys';
-import PartyType from '../../../../../../../enums/party-types.ts';
+import { Party } from '../../../../../../../models/users/partys';
+import PartyType from '../../../../../../../constants/users/party-types';
 
 export const subheadings = {
   application: 'Application',

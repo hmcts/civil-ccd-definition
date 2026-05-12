@@ -2,9 +2,9 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { radioButtons } from './response-confirm-name-address-content.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import partys from '../../../../../../../constants/partys.ts';
-import ClaimTrack from '../../../../../../../enums/claim-track.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
+import partys from '../../../../../../../constants/users/partys';
+import ClaimTrack from '../../../../../../../constants/cases/claim-track';
 
 @AllMethodsStep()
 export default class ResponseConfirmNameAddress1v2FastPage extends ExuiPage(BasePage) {

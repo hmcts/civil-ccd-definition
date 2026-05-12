@@ -2,7 +2,7 @@ import test, { expect as baseExpect, Locator, Page } from '@playwright/test';
 import config from '../../config/config';
 import AxeBuilder from '@axe-core/playwright';
 import AxeCacheHelper from '../../helpers/axe-cache-helper';
-import { PageResult } from '../../models/axe-results';
+import { PageResult } from '../../models/test-utils/axe-results';
 import PromiseHelper from '../../helpers/promise-helper';
 
 export const expect = baseExpect

@@ -1,7 +1,6 @@
-import TestData from '../../../../../models/test-data';
+import TestData from '../../../../../models/test-utils/test-data.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import BaseTestData from '../../../../../base/base-test-data';
-import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types.ts';
 import DefaultJudgmentPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/default-judgment/default-judgment-page-factory.ts';
 
 @AllMethodsStep()
@@ -16,14 +15,14 @@ export default class DefaultJudgmentActions extends BaseTestData {
   async defendantDetails() {
     const { defendantDetailsPage } = this.defaultJudgmentFactory;
     await defendantDetailsPage.verifyContent(this.ccdCaseData);
-    await defendantDetailsPage.selectDefendant(super.defendant1PartyType);
+    await defendantDetailsPage.selectDefendant(this.defendant1PartyType!);
     await defendantDetailsPage.submit();
   }
 
   async defendantDetails1v2() {
     const { defendantDetails1v2Page } = this.defaultJudgmentFactory;
     await defendantDetails1v2Page.verifyContent(this.ccdCaseData);
-    await defendantDetails1v2Page.selectDefendant1(super.defendant1PartyType);
+    await defendantDetails1v2Page.selectDefendant1(this.defendant1PartyType!);
     await defendantDetails1v2Page.submit();
   }
 
@@ -45,7 +44,7 @@ export default class DefaultJudgmentActions extends BaseTestData {
     const { hearingSupportRequirementsFieldDJPage } = this.defaultJudgmentFactory;
     await hearingSupportRequirementsFieldDJPage.verifyContent(this.ccdCaseData);
     await hearingSupportRequirementsFieldDJPage.selectInPerson();
-    await hearingSupportRequirementsFieldDJPage.enterDetails(super.claimant1PartyType);
+    await hearingSupportRequirementsFieldDJPage.enterDetails(super.claimant1PartyType!);
     await hearingSupportRequirementsFieldDJPage.selectNoUnavailableDates();
     await hearingSupportRequirementsFieldDJPage.selectRequireNoSupport();
     await hearingSupportRequirementsFieldDJPage.submit();
