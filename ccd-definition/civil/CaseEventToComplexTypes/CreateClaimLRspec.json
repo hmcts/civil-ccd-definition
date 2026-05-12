@@ -450,7 +450,7 @@
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[APPLICANTSOLICITORONE]",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 233,
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "Yes"
