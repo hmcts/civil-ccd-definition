@@ -125,5 +125,14 @@
     "CaseFieldID": "joSetAsideCreatedDate",
     "TabFieldDisplayOrder": 14,
     "FieldShowCondition": "joIsLiveJudgmentExists = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "isJoRequested",
+    "TabFieldDisplayOrder": 23,
+    "FieldShowCondition": "isJoRequested = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
