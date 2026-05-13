@@ -1020,6 +1020,67 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "withoutPrejudiceLabel",
+    "Label": "## Without prejudice/Part 36 offers or rejections",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "withoutPrejudiceToggleText",
+    "Label": "<details><summary><u>Without prejudice/Part 36 offers or rejections</u></summary><div class=\"panel\">\n\n ## Without prejudice/part 36 offers or rejections\n\n A document containing a without prejudice or part 36 offer/rejection (including a paginated bundle of such documents) which should not be read by the judge until it is appropriate to do so</div></details><br />",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "withoutPrejudiceSelectionEvidence",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadWithoutPrejudice",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentPart36Rejection",
+    "Label": "Without prejudice/Part 36 offers or rejections",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentAndDescription",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentPart36RejectionRes",
+    "Label": "Without prejudice/Part 36 offers or rejections",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentAndDescription",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentPart36RejectionRes2",
+    "Label": "Without prejudice/Part 36 offers or rejections",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentAndDescription",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentPart36RejectionApp2",
+    "Label": "Without prejudice/Part 36 offers or rejections",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentAndDescription",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "caseDocumentUploadDateRes",
     "Label": "upload date",
     "FieldType": "DateTime",
