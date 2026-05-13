@@ -50,7 +50,7 @@ dependencyLocking {
 }
 
 dependencies {
-  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.6-SNAPSHOT5'
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.6'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.17'
   implementation group: 'io.rest-assured', name: 'rest-assured', version: '6.0.0'
 
