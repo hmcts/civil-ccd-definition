@@ -684,7 +684,7 @@ additional information where necessary.
 
 As an alternative for a development environment there is a procedure in place where after running the command
 below the required services for Civil are created in Preview under the developer's name, so these will be exclusively
-for the named developer use..
+for the named developer use.
 
 While connected to the VPN simply run one of the below commands from your project's (civil-ccd-definition) folder:
 Note: be sure to have Docker running
