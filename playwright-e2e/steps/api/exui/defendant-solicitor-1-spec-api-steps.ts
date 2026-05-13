@@ -37,6 +37,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       CaseRole.RESPONDENT_SOLICITOR_ONE,
       this.ccdCaseData?.id
     );
+    await super.fetchAndSetCCDCaseData();
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
   }
 
@@ -185,8 +186,6 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       await defendantResponseSpecSchemaBuilder.buildSmallTrack1v2SSFullDefence(
         caseDataBeforeSubmission,
       );
-
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
-
 }
