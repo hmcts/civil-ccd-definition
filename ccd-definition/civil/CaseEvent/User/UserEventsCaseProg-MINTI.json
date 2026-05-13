@@ -73,7 +73,7 @@
     "Name": "Upload Your Documents",
     "Description": "Upload Your Documents",
     "DisplayOrder": 22,
-    "PreConditionState(s)": "*",
+    "PreConditionState(s)": "CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;All_FINAL_ORDERS_ISSUED;DECISION_OUTCOME",
     "PostConditionState": "*",
     "EventEnablingCondition": "enableUploadEvent != \"No\"",
     "SecurityClassification": "Public",
