@@ -165,6 +165,12 @@
           "cui-admin-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
