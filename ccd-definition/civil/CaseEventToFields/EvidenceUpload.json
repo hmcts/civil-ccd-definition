@@ -299,6 +299,36 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "withoutPrejudiceLabel",
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentSelectionFastTrack",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "withoutPrejudiceToggleText",
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentSelectionFastTrack",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "withoutPrejudiceSelectionEvidence",
+    "PageFieldDisplayOrder": 17,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelectionFastTrack",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "witnessLabelSmallClaim",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -774,6 +804,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentPart36Rejection",
+    "PageFieldDisplayOrder": 33,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag != \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentPart36RejectionApp2",
+    "PageFieldDisplayOrder": 34,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag = \"ApplicantTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "evidenceUploadTextRes",
     "PageFieldDisplayOrder": 2,
@@ -900,6 +954,36 @@
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "trialSelectionEvidenceRes",
     "PageFieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelectionFastTrack",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "withoutPrejudiceLabel",
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentSelectionFastTrack",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "withoutPrejudiceToggleText",
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentSelectionFastTrack",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "withoutPrejudiceSelectionEvidence",
+    "PageFieldDisplayOrder": 17,
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionFastTrack",
     "PageDisplayOrder": 3,
@@ -1381,6 +1465,30 @@
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
     "FieldShowCondition":"trialSelectionEvidenceRes = \"DO_NOT_SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "documentPart36RejectionRes",
+    "PageFieldDisplayOrder": 41,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag != \"RespondentTwoFields\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "documentPart36RejectionRes2",
+    "PageFieldDisplayOrder": 42,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag = \"RespondentTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
