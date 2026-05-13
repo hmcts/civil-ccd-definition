@@ -1,11 +1,11 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
-import partys from '../../../../../../constants/partys';
+import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types.ts';
+import partys from '../../../../../../constants/users/partys';
 import { radioButtons } from './defendant-details-content';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
 
 @AllMethodsStep()
 export default class DefendantDetailsPage extends ExuiPage(BasePage) {

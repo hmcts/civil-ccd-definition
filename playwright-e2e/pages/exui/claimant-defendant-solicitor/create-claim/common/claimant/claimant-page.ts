@@ -8,7 +8,7 @@ import PartyTypeCompanyFragment from '../../../../fragments/party-type/party-typ
 import PartyTypeOrganisationFragment from '../../../../fragments/party-type/party-type-organisation-fragment.ts';
 import PartyTypeSoleTraderFragment from '../../../../fragments/party-type/party-type-sole-trader-fragment.ts';
 import { Page } from '@playwright/test';
-import partys from '../../../../../../constants/partys.ts';
+import partys from '../../../../../../constants/users/partys';
 import AddressFragment from '../../../../fragments/address/address-fragment.ts';
 
 @AllMethodsStep()

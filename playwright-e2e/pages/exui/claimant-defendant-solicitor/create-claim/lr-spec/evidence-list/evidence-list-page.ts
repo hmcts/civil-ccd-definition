@@ -1,5 +1,5 @@
 import BasePage from '../../../../../../base/base-page';
-import partys from '../../../../../../constants/partys';
+import partys from '../../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
 import { dropdowns, inputs, paragraphs, subheadings } from './evidence-list-content';

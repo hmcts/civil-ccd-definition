@@ -1,8 +1,8 @@
-import AxeCacheHelper from '../helpers/axe-cache-helper';
-import BankHolidaysHelper from '../helpers/bank-holidays-helper';
-import CookiesHelper from '../helpers/cookies-helper';
-import UserStateHelper from '../helpers/users-state-helper';
-import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
+import AxeCacheHelper from '../helpers/axe-cache-helper.ts';
+import BankHolidaysHelper from '../helpers/bank-holidays-helper.ts';
+import CookiesHelper from '../helpers/cookies-helper.ts';
+import UserStateHelper from '../helpers/users-state-helper.ts';
+import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper.ts';
 
 const globalTeardownCI = () => {
   UserStateHelper.deleteAllUsersState();

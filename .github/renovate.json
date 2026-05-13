@@ -54,6 +54,10 @@
       "automergeSchedule": ["before 2pm every weekday"]
     },
     {
+      "matchPackageNames": ["allure-playwright"],
+      "enabled": false
+    },
+    {
       "matchPackagePatterns": ["^allure-"],
       "groupName": "Allure reporting",
       "groupSlug": "allure",

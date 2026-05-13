@@ -1,5 +1,5 @@
 import BasePageFactory from '../../../../../base/base-page-factory';
-import partys from '../../../../../constants/partys';
+import partys from '../../../../../constants/users/partys';
 import StatementOfTruthClaimantResponsePage from './common/statement-of-truth-claimant-response/statement-of-truth-claimant-response-page';
 import SubmitClaimantResponsePage from './common/submit-claimant-response/submit-claimant-response-page';
 import ConfirmClaimantResponseSpecPage from './lr-spec/confirm-claimant-response-spec/confirm-claimant-response-spec-page';

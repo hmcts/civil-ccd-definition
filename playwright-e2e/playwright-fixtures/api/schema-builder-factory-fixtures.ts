@@ -1,4 +1,4 @@
-import { test as base } from '@playwright/test';
+import { test as base } from '../utils/test-utils-fixtures';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
 
 type DataBuilderFixtures = {
@@ -6,7 +6,7 @@ type DataBuilderFixtures = {
 };
 
 export const test = base.extend<DataBuilderFixtures>({
-  _claimantDefendantSolicitorSchemaBuilderFactory: async ({}, use) => {
-    await use(new ClaimantDefendantSolicitorSchemaBuilderFactory());
+  _claimantDefendantSolicitorSchemaBuilderFactory: async ({ _testData }, use) => {
+    await use(new ClaimantDefendantSolicitorSchemaBuilderFactory(_testData));
   }
 });

@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-data';
+import TestData from '../../../../models/test-utils/test-data';
 import SdoPageFactory from '../../../../pages/exui/judge-la/sdo/sdo-page-factory';
 
 @AllMethodsStep()
@@ -73,7 +73,6 @@ export default class SdoActions extends BaseTestData {
     const { disposalHearingPage } = this.sdoPageFactory;
     await disposalHearingPage.verifyContent(this.ccdCaseData);
     await disposalHearingPage.addHearingTime();
-    await disposalHearingPage.addDisposalHearingBundle();
     await disposalHearingPage.submit();
   }
 

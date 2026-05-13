@@ -125,7 +125,8 @@
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
     "ListElementCode": "input2",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "input2=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "DisposalHearingDisclosureOfDocuments",
@@ -133,7 +134,8 @@
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
     "ListElementCode": "date2",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "input2=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "DisposalHearingWitnessOfFact",
@@ -213,7 +215,8 @@
     "CaseFieldID": "disposalHearingMedicalEvidence",
     "ListElementCode": "date",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "input1 = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "DisposalHearingQuestionsToExperts",
@@ -705,7 +708,8 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateToLabel",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "smallClaimsHearing = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "SmallClaimsHearing",
@@ -713,7 +717,8 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateTo",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "smallClaimsHearing = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "SmallClaimsHearing",
