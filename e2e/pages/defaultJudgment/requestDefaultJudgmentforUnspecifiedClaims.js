@@ -66,10 +66,6 @@ module.exports = {
         telephone: '#disposalHearingMethodDJ-disposalHearingMethodTelephoneHearing'
       },
       hearingLocation: '#disposalHearingMethodInPersonDJ',
-      hearingBundleId: '#disposalHearingBundleDJ_type',
-      hearingBundleTypeDocs: '#disposalHearingBundleDJ_type-DOCUMENTS',
-      hearingBundleTypeSummary: '#ådisposalHearingBundleDJ_type-SUMMARY',
-      hearingBundleTypeElectronic: '#disposalHearingBundleDJ_type-ELECTRONIC',
       orderWithoutHearing: '#disposalHearingOrderMadeWithoutHearingDJ_input'
     },
 
