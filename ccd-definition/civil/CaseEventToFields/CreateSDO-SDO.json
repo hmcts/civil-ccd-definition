@@ -499,7 +499,8 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingBundleToggle=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -510,7 +511,8 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingBundleToggle=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -521,7 +523,8 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingQuestionsToExpertsEndLine=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -533,7 +536,7 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingBundleToggle=\"SHOW\""
+    "FieldShowCondition": "disposalHearingBundleToggle=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -544,7 +547,8 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingBundleToggle=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",

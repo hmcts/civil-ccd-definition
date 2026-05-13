@@ -30,7 +30,6 @@ export default class SdoDJActions extends BaseTestData {
     const { disposalHearingSdoDJPage } = this.sdoDJPageFactory;
     await disposalHearingSdoDJPage.verifyContent(this.ccdCaseData);
     await disposalHearingSdoDJPage.addHearingTimeEstimate();
-    await disposalHearingSdoDJPage.addDisposalHearingBundle();
     await disposalHearingSdoDJPage.submit();
   }
 

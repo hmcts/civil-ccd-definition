@@ -16,7 +16,7 @@
     "CaseFieldID": "eaCourtLocation",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "disposalHearingBundleDJ=\"DONOTSHOW\"",
+    "PageShowCondition": "disposalHearingClaimSettlingDJToggle=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
