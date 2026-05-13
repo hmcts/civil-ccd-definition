@@ -92,7 +92,11 @@ export default abstract class BaseApi extends BaseTestData {
     expectedState: CaseState,
   ) {
     const { ccdRequests } = this.requestsFactory;
-    const { eventToken, startEventCaseData } = await ccdRequests.startEvent(user, ccdEvent, this.ccdCaseData?.id);
+    const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
     const eventData = await this.validatePages(
       ccdEvent,
       startEventCaseData,
@@ -105,6 +109,30 @@ export default abstract class BaseApi extends BaseTestData {
       ccdEvent,
       expectedState,
       eventData,
+      eventToken,
+      this.ccdCaseData?.id,
+    );
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+  }
+
+  protected async submitCCDEventWithData(
+    user: User,
+    ccdEvent: CCDEvent,
+    eventData: Record<string, any>,
+    expectedState: CaseState,
+  ) {
+    const { ccdRequests } = this.requestsFactory;
+    const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+    const eventCaseData = await ccdRequests.submitEvent(
+      user,
+      ccdEvent,
+      expectedState,
+      ObjectHelper.deepSpread(startEventCaseData, eventData),
       eventToken,
       this.ccdCaseData?.id,
     );
@@ -139,9 +167,16 @@ export default abstract class BaseApi extends BaseTestData {
     }
   }
 
-  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<string | undefined> {
+  protected async retrieveAndAssignWATask(
+    user: User,
+    validTask: WATask,
+  ): Promise<string | undefined> {
     const { workAllocationsRequests } = this.requestsFactory;
-    const waTask = await workAllocationsRequests.retrieveTask(user, validTask, this.ccdCaseData?.id);
+    const waTask = await workAllocationsRequests.retrieveTask(
+      user,
+      validTask,
+      this.ccdCaseData?.id,
+    );
     await workAllocationsRequests.assignTask(user, waTask);
     return waTask.id;
   }
@@ -150,5 +185,4 @@ export default abstract class BaseApi extends BaseTestData {
     const { workAllocationsRequests } = this.requestsFactory;
     await workAllocationsRequests.completeTask(user, waTaskId);
   }
-  
 }
