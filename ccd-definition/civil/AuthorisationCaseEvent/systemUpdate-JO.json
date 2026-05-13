@@ -58,5 +58,11 @@
     "CaseEventID": "POST_CLAIMANT_LIP_JBA_LETTER",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ISSUE_DEFAULT_JUDGEMENT_SPEC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
