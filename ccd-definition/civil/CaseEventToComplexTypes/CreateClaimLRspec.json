@@ -484,7 +484,9 @@
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[RESPONDENTSOLICITORONE]",
     "FieldDisplayOrder": 234,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "RespondentSolicitor1Organisation",
@@ -954,7 +956,9 @@
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[RESPONDENTSOLICITORTWO]",
     "FieldDisplayOrder": 235,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "SecondClaimant",
