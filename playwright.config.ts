@@ -25,6 +25,7 @@ export default defineConfig({
               Architecture: os.arch(),
               NodeVersion: process.version,
             },
+            detail: false
           },
         ],
       ]
@@ -75,9 +76,23 @@ export default defineConfig({
       testMatch: '**playwright-e2e/tests/bootstrap/case-role-assignment/**.teardown.ts',
     },
     {
-      name: 'e2e-full-functional',
+      name: 'civil-ccd-nightly',
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'users-auth-setup'],
+      grep: /@civil-ccd-nightly/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-service-nightly',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'users-setup'],
+      grep: /@civil-service-nightly/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'debug',
+      use: { ...devices['Desktop Chrome'] },
+      grep: /@debug/,
       teardown: 'case-role-assignment-teardown',
     },
   ],

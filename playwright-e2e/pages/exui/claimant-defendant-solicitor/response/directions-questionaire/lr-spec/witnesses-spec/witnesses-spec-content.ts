@@ -1,4 +1,4 @@
-import { Party } from '../../../../../../../models/partys';
+import { Party } from '../../../../../../../models/users/partys';
 
 export const subheadings = {
   witnesses: 'Witnesses',

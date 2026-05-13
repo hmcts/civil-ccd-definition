@@ -2,8 +2,8 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { radioButtons } from './respondent-response-type-content.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import partys from '../../../../../../../constants/partys.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
+import partys from '../../../../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class RespondentResponseType1v2SSPage extends ExuiPage(BasePage) {
