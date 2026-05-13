@@ -451,7 +451,9 @@
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[APPLICANTSOLICITORONE]",
     "FieldDisplayOrder": 233,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "SolicitorCreate",
@@ -958,7 +960,7 @@
     "FieldDisplayOrder": 235,
     "DisplayContext": "COMPLEX",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "SecondClaimant",
