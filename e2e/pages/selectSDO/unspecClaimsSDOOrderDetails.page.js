@@ -56,11 +56,7 @@ module.exports = {
         inPerson: '#disposalHearingMethod-disposalHearingMethodInPerson',
         video: '#disposalHearingMethod-disposalHearingMethodVideoConferenceHearing',
         telephone: '#disposalHearingMethod-disposalHearingMethodTelephoneHearing'
-      },
-      hearingBundleId: '#disposalHearingBundle_type',
-      hearingBundleTypeDocs: '#disposalHearingBundle_type-DOCUMENTS',
-      hearingBundleTypeSummary: '#disposalHearingBundle_type-SUMMARY',
-      hearingBundleTypeElectronic: '#disposalHearingBundle_type-ELECTRONIC'
+      }
     },
     orderDetailsHearingTime: {
       hearingTimeEstimate: {
@@ -85,7 +81,6 @@ module.exports = {
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.disposalHearingTimeOptions.thirtyMinutes);
       await this.selectHearingMethodOption('In Person');
       await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingMethodOptions.inPerson);
-      await I.click(this.fields.selectOrderAndHearingDetailsForSDOTask.hearingBundleTypeDocs);
     } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
       await within(this.fields.fastTrackAllocation.assignComplexityBand.id, () => {
         I.click(this.fields.fastTrackAllocation.assignComplexityBand.options.yes);
