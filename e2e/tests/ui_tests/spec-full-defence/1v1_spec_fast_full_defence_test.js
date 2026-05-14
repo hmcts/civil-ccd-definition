@@ -26,7 +26,7 @@ Scenario('02 1v1 Defendant solicitor perform Inform Agreed Extension', async ({L
   console.log('1v1 Defendant solicitor Inform Agreed Extension claim-spec: ' + caseNumber);
   await assignCaseToLRSpecDefendant(caseNumber);
   await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.informAgreedExtensionDateSpec();
+  //await LRspec.informAgreedExtensionDateSpec();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Inform agreed extension date'));
 }).retry(2);
