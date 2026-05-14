@@ -573,7 +573,7 @@
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "SolicitorCreate",
@@ -592,7 +592,7 @@
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "SolicitorCreate",
@@ -626,10 +626,10 @@
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[RESPONDENTSOLICITORONE]",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
+    "FieldDisplayOrder": 233,
+    "DisplayContext": "COMPLEX",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "SolicitorCreate",
@@ -645,9 +645,9 @@
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "PreviousOrganisations",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "RespondentSolicitor1Organisation",
