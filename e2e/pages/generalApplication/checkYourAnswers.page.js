@@ -29,7 +29,7 @@ module.exports = {
     if ('yes' === consentCheck) {
       I.click({css: '.check-your-answers tr:nth-child(8) a'});
     } else {
-      I.click({css: '.check-your-answers tr:nth-child(9) a'});
+      I.click({xpath: '//form[contains(@class,\'check-your-answers\')]//tr[9]//a[normalize-space()=\'Change\']'});
     }
     I.seeInCurrentUrl('/INITIATE_GENERAL_APPLICATIONHearingDetails');
   },

@@ -343,7 +343,8 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
 const newSdoR2FieldsSmallClaims = {
   sdoR2SmallClaimsWitnessStatementOther: (data) => {
     return typeof data.sdoStatementOfWitness === 'string'
-      && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
+      && typeof data.deadlineDate === 'string'
+      && /\d{4}-\d{2}-\d{2}/.test(data.deadlineDate)
       && typeof data.isRestrictWitness === 'string'
       && typeof data.isRestrictPages === 'string'
       && typeof data.text === 'string';
