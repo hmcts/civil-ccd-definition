@@ -450,8 +450,8 @@
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[APPLICANTSOLICITORONE]",
-    "FieldDisplayOrder": 233,
-    "DisplayContext": "COMPLEX",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "Yes"
   },
@@ -485,8 +485,8 @@
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[RESPONDENTSOLICITORONE]",
-    "FieldDisplayOrder": 234,
-    "DisplayContext": "COMPLEX",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "Yes"
   },
@@ -957,8 +957,8 @@
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[RESPONDENTSOLICITORTWO]",
-    "FieldDisplayOrder": 235,
-    "DisplayContext": "COMPLEX",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "Yes"
   },
