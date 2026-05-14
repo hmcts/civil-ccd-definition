@@ -69,11 +69,11 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
     await createCase.setDefendantType(defendantType, 1);
 
-    if (claimType == ClaimType.ONE_VS_ONE_LIP || claimType == ClaimType.ONE_VS_TWO_LIP_LR) {
-      console.log('def 1 NOT represented');
+    if (claimType == ClaimType.ONE_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE_LIP ||claimType == ClaimType.ONE_VS_TWO_LIP_LR) {
+      console.log('Defendant 1: NOT represented');
       await createCase.setDefendantLegallyRepresented(yesNo.NO, 1)
     } else {
-      console.log('def 1 REPRESENTED');
+      console.log('Defendant 1: REPRESENTED');
       await createCase.setDefendantLegallyRepresented(yesNo.YES, 1);
       await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 2');
       await createCase.setDefendantServiceAddress();
@@ -81,7 +81,9 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await createCase.setDefendantLegalRepresentativeEmail();
     }
 
-    if (claimType == ClaimType.ONE_VS_ONE || claimType == ClaimType.TWO_VS_ONE || claimType == ClaimType.ONE_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE_LIP) {
+    if (claimType == ClaimType.TWO_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE) {
+      // ignore these claim types as they cannot have a second defendant
+    } else if (claimType == ClaimType.ONE_VS_ONE || claimType == ClaimType.ONE_VS_ONE_LIP) {
       await createCase.setAnotherDefendant(yesNo.NO);
     } else {
       await createCase.setAnotherDefendant(yesNo.YES);
@@ -89,7 +91,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
       switch (claimType) {
         case ClaimType.ONE_VS_TWO_LIP_LR:
-          console.log('def2 REPRESENTED');
+          console.log('Defendant 2: REPRESENTED');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
           await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 2');
           await createCase.setDefendantLegalRepresentativeAddress(yesNo.NO,2);
@@ -97,12 +99,12 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           await createCase.setDefendantLegalRepresentativeEmail(2);
           break;
         case ClaimType.ONE_VS_TWO_SAME_SOL:
-          console.log('def2 REPRESENTED - same sols');
+          console.log('Defendant 2: REPRESENTED - same sols');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
           await createCase.setSameLegalRepresentative(yesNo.YES);
           break;
         case ClaimType.ONE_VS_TWO_DIFF_SOL:
-          console.log('def2 REPRESENTED - diff sols');
+          console.log('Defendant 2: REPRESENTED - diff sols');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
           await createCase.setSameLegalRepresentative(yesNo.NO);
           await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 3');
@@ -111,7 +113,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           await createCase.setDefendantLegalRepresentativeEmail(2);
           break;
         default:
-          console.log('def2 NOT represented');
+          console.log('Defendant 2: NOT represented');
           await createCase.setDefendantLegallyRepresented(yesNo.NO, 2);
       }
     }
@@ -122,7 +124,13 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await createCase.setSubClaimType(typeOfClaimSubType); // use from parameters in package
     }
 
-    await createCase.setDescriptionOfClaim();
+    if (typeOfClaim == unspecClaimTypes.HOUSING_DISREPAIR || typeOfClaim == unspecClaimTypes.DAMAGES_AND_OTHER_REMEDY) {
+      await createCase.setOtherRemedy();
+      await createCase.setHumanRights();
+    }
+
+    await createCase.setDescriptionOfClaim(typeOfClaim);
+
     await createCase.setUploadParticularsOfClaim();
 
     //
