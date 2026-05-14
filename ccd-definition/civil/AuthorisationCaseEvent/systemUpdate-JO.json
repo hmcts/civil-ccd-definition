@@ -61,7 +61,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ISSUE_DEFAULT_JUDGEMENT_SPEC",
+    "CaseEventID": "DEFAULT_JUDGEMENT_GRANTED_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

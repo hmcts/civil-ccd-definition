@@ -137,7 +137,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "ISSUE_DEFAULT_JUDGEMENT_SPEC",
+    "ID": "DEFAULT_JUDGEMENT_GRANTED_SPEC",
     "Name": "Issue Default Judgment",
     "Description": "Issue Default Judgment",
     "PreConditionState(s)": "JUDGMENT_REQUESTED",
