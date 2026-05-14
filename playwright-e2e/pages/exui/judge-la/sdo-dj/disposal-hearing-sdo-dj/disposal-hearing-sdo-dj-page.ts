@@ -1,18 +1,12 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import DateHelper from '../../../../../helpers/date-helper';
-import CCDCaseData from '../../../../../models/ccd-case-data';
+import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import {
-  buttons,
-  checkboxes,
-  dropdowns,
-  inputs,
   radioButtons,
   subheadings,
-  containers,
 } from './disposal-hearing-sdo-dj-content';
 
 @AllMethodsStep()
@@ -36,7 +30,6 @@ export default class DisposalHearingSdoDJPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.scheduleOfLoss),
       super.expectSubheading(subheadings.hearingTime),
       super.expectSubheading(subheadings.hearingMethod),
-      super.expectSubheading(subheadings.disposalHearingBundle),
       super.expectSubheading(subheadings.claimSettling),
       super.expectSubheading(subheadings.costs),
       super.expectSubheading(subheadings.welshLanguage),
@@ -47,20 +40,6 @@ export default class DisposalHearingSdoDJPage extends ExuiPage(BasePage) {
 
   async addHearingTimeEstimate() {
     await super.clickBySelector(radioButtons.hearingTime.thirtyMins.selector);
-  }
-
-  async addDisposalHearingBundle() {
-    await Promise.all([
-      super.expectText(checkboxes.disposalHearingBundle.bundleType.label),
-      super.expectLabel(checkboxes.disposalHearingBundle.bundleType.documents.label),
-      super.expectLabel(checkboxes.disposalHearingBundle.bundleType.electronic.label),
-      super.expectLabel(checkboxes.disposalHearingBundle.bundleType.summary.label),
-    ]);
-
-    await super.inputText('disposal hearing bundle input', inputs.disposalHearingBundle.selector);
-    await super.clickBySelector(checkboxes.disposalHearingBundle.bundleType.documents.selector);
-    await super.clickBySelector(checkboxes.disposalHearingBundle.bundleType.electronic.selector);
-    await super.clickBySelector(checkboxes.disposalHearingBundle.bundleType.summary.selector);
   }
 
   async submit() {
