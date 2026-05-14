@@ -3722,6 +3722,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQFutureApplicationsLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQFutureApplications",
     "AccessControl": [
       {
