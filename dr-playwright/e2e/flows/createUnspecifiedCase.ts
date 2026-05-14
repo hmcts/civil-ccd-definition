@@ -341,8 +341,19 @@ export class CreateUnspecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  async setDescriptionOfClaim() {
+  async setOtherRemedy(yesNo: YesNo = YesNo.YES ){
+    await this.page.locator(`#isClaimDeclarationAdded_${yesNo}`).check();
+    await this.page.locator('#claimDeclarationDescription').fill('Other remedy narrative text.');
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setDescriptionOfClaim(typeOfClaim) {
     await this.page.locator('#detailsOfClaim').fill('Test description of claim');
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setHumanRights(yesNo: YesNo = YesNo.YES) {
+    await this.page.locator(`#isHumanRightsActIssues_${yesNo}`).check();
     await this.buttonHelper.continueButton.click();
   }
 
