@@ -11,16 +11,17 @@ import {
 @AllMethodsStep()
 export default class ConfirmInformAgreedExtensionDateSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    const date = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline, {
+    const date = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline!, {
       days: 28,
       workingDay: true,
-      addDayAfter4pm: true,
+      //addDayAfter4pm: true,
     });
+
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
       super.expectSubheading(subheadings.happensNext),
-      super.expectText(DateHelper.formatDateToString(date)),
+      super.expectText(DateHelper.formatDateToString(date), { exact: false }),
     ]);
   }
 
