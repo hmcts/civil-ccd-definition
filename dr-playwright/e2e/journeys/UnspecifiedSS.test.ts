@@ -125,11 +125,12 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     await createCase.setDescriptionOfClaim();
     await createCase.setUploadParticularsOfClaim();
 
+    //
     if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY && typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS) {
       track = claimTrack.FAST_CLAIM;
     }
-    await createCase.setClaimValue(track); // use from parameters in package - if claimType ie fast etc AND type ie unspec/spec used we can work out a value to use
 
+    await createCase.setClaimValue(track, typeOfClaim); // use from parameters in package
     await buttonHelper.continueButton.click(); //Amount to pay - can do an assertion on amount by api to fee and pay to make sure fee is correct, if needed.
     await createCase.setStatementOfTruth(); //will be dependant upon case ie 1v1 etc
     await buttonHelper.submitButton.click(); //CYA

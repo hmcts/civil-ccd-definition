@@ -351,18 +351,35 @@ export class CreateUnspecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  async setClaimValue(track) {
-    let claimAmount;
-    switch (track) {
-      case claimTrack.SMALL_CLAIM:
+  async setClaimValue(track, typeOfClaim) {
+    let claimAmount = '0';
+
+    if (track == claimTrack.INTERMEDIATE_CLAIM) {
+      claimAmount = '75000';
+    }
+
+    if (typeOfClaim == unspecClaimTypes.CLINICAL_NEGLIGENCE) {
+      if (track == claimTrack.SMALL_CLAIM) {
         claimAmount = '500';
-        break;
-      case claimTrack.FAST_CLAIM:
-        claimAmount = '22000';
-        break;
-      case claimTrack.MULTI_CLAIM:
+      } else if (track == claimTrack.FAST_CLAIM) {
+        claimAmount = '20000';
+      } else if (track == claimTrack.MULTI_CLAIM) {
         claimAmount = '50000';
-        break;
+      }
+    }
+
+    if (claimAmount == '0') {
+      switch (track) {
+        case claimTrack.SMALL_CLAIM:
+          claimAmount = '5000';
+          break;
+        case claimTrack.FAST_CLAIM:
+          claimAmount = '20000';
+          break;
+        case claimTrack.MULTI_CLAIM:
+          claimAmount = '50000';
+          break;
+      }
     }
 
     await this.page.locator('#claimValue_statementOfValueInPennies').fill(claimAmount);
