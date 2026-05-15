@@ -58,6 +58,10 @@
       "enabled": false
     },
     {
+      "matchPackageNames": ["lint-staged"],
+      "enabled": false
+    },
+    {
       "matchPackagePatterns": ["^allure-"],
       "groupName": "Allure reporting",
       "groupSlug": "allure",
