@@ -2,7 +2,6 @@ import BaseApi from '../../../base/base-api';
 import {
   claimantOrganisationSuperUser,
   claimantSolicitorUser,
-  ctscAdminUser,
 } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
@@ -278,33 +277,6 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     const claimantResponseSchema =
       await claimantResponseSpecSchemaBuilder.buildSmallTrack1v1(caseDataBeforeSubmission);
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
-  }
-
-  async MediationUnsuccessful(carmEnabled = false) {
-    await this.setupApiStep(ctscAdminUser);
-    const mediationUnsuccessfulEvent = {
-      id: 'MEDIATION_UNSUCCESSFUL',
-      name: 'Mediation unsuccessful',
-    } as any;
-
-    const mediationUnsuccessfulData = carmEnabled
-      ? {
-          mediationUnsuccessfulReasonsMultiSelect: [
-            'PARTY_WITHDRAWS',
-            'APPOINTMENT_NOT_ASSIGNED',
-            'NOT_CONTACTABLE_CLAIMANT_TWO',
-          ],
-        }
-      : {
-          unsuccessfulMediationReason: 'PARTY_WITHDRAWS',
-        };
-
-    await this.submitCCDEventWithData(
-      ctscAdminUser,
-      mediationUnsuccessfulEvent,
-      mediationUnsuccessfulData,
-      CaseState.JUDICIAL_REFERRAL,
-    );
   }
 
   async RespondSmallTrackIntentToProceed1v2SS() {

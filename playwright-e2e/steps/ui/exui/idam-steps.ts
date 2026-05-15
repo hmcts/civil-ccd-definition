@@ -71,10 +71,6 @@ export default class IdamSteps {
     await this.idamActions.exuiLogin(exuiUsers.tribunalCaseworkerRegion4User);
   }
 
-  async CtscAdminUserLogin() {
-    await this.idamActions.exuiLogin(exuiUsers.ctscAdminUser);
-  }
-
   async ExuiLogin(user: User) {
     await this.idamActions.exuiLogin(user);
   }
