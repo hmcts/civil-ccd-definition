@@ -8,15 +8,12 @@ test.describe(
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
-      CtscAdminSpecSteps,
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallTrackFullDefence1v1();
       await ClaimantSolicitorSpecApiSteps.RespondSmallClaimIntentToProceed1v1();
-      await CtscAdminSpecSteps.Login();
-      await CtscAdminSpecSteps.MediationUnsuccessful();
     });
   },
 );
