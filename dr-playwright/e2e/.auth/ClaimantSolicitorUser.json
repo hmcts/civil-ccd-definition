@@ -2,8 +2,8 @@
   "cookies": [
     {
       "name": "XSRF-TOKEN",
-      "value": "d00869f3-c4d5-491e-bd6e-b255bda140ec",
-      "domain": "idam-web-public.demo.platform.hmcts.net",
+      "value": "609225d9-3bcb-46ae-8d63-fdf0ec469ece",
+      "domain": "idam-web-public.aat.platform.hmcts.net",
       "path": "/",
       "expires": -1,
       "httpOnly": true,
@@ -13,7 +13,7 @@
     {
       "name": "Idam.UI",
       "value": "classic",
-      "domain": "idam-web-public.demo.platform.hmcts.net",
+      "domain": "idam-web-public.aat.platform.hmcts.net",
       "path": "/",
       "expires": -1,
       "httpOnly": true,
@@ -23,9 +23,9 @@
     {
       "name": "seen_cookie_message",
       "value": "yes",
-      "domain": "idam-web-public.demo.platform.hmcts.net",
+      "domain": "idam-web-public.aat.platform.hmcts.net",
       "path": "/",
-      "expires": 1781193865,
+      "expires": 1781259649,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -33,9 +33,9 @@
     {
       "name": "cookies_policy",
       "value": "{\"essential\":true,\"analytics\":false,\"apm\":false}",
-      "domain": "idam-web-public.demo.platform.hmcts.net",
+      "domain": "idam-web-public.aat.platform.hmcts.net",
       "path": "/",
-      "expires": 1810310665,
+      "expires": 1810376449,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -43,17 +43,17 @@
     {
       "name": "cookies_preferences_set",
       "value": "false",
-      "domain": "idam-web-public.demo.platform.hmcts.net",
+      "domain": "idam-web-public.aat.platform.hmcts.net",
       "path": "/",
-      "expires": 1810310665,
+      "expires": 1810376449,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "Idam.Session",
-      "value": "*AAJTSQACMDIABHR5cGUAA0pXVAACUzEAAjAx*eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ZXlKMGVYQWlPaUpLVjFRaUxDSmxibU1pT2lKQk1USTRRMEpETFVoVE1qVTJJaXdpWVd4bklqb2laR2x5SW4wLi41N3R6UDNPS2pMZ0lXekpDSEV4MWJ3LmxDb0ZBRXktd2xnM2hjUC1ZenBZUWpYSjA4UVhkang3YUN4QzVweVFkMlRLeFNId01VTGR4Wlk4ckJVWHpFM2ZNc2FESVFNTEh1Sll2QnFCZWdoSnlFNFlPVlRFZ2xrUmFCanRTdTF5U1VHa2l4UHdnUTVSaVR6V3M1TTFsN1NuNm1nQmJReG8tcl9vc2FpaE0xc0JBamtLSWRTWmxWQnJiTEg5Um9lb2JTSldON3VLeXZwamVldHVYNmhjaGJHTFktbXBfcVRkNHU3YzhtWGVtcDc3eGEtckc1WmZ6MDNqV3FHRnowNHBpOFpra2ZjSUVTbTRLLVBTZFBiNzVZY3B2OE9zUWhOc2Y2bnJRWnRHWDFjOVJwT29FRmJUSFo3dEg0MjBYb05EYUlqMjlCUmFlTVhZNWxndk5yMmQwdEVDbF9qQWRiRl9nNlBSSmp2N0ZuNFlGNDUxbmoyM0NmTWZIRVZ6M2Z1Q05DMDY3bmQybzdDTUN1YVpUdDhqOUJLRUFXVVJ6S29ES2tFbHdVWElNOGM3a1NUa3VxR3ZMeHZmRzNXb05tVVIwQk1OTTVjNGg5bi0wb0M2SnpZQ0NROTVuRnRvcmtKRk1JTk1tWVBLT2FjU21HT3lQbi1VOWttSmxfMVpuaUpDVV9aSlBxQld5VkE5MDZ3X1BQZ3dTVXJ1WDN4WEVpU181dWJLcmcxYnQ5MzdDckdmRWlpTHVDUGlhMGI2VE5OREViMDFYX3VERVdNNGlzX2VLdGtGTFd0U042c2dQY1F3d0RoR0lyT2hoWUEyX01UZi1PVkRUemhMWndDNXdUbmFaa0ZhRnRJem1SNHNvTk9sNmdDRzhwbm1hakp6VlZMVWZNQkZYckZHLUlxYzFHNjVGZ2E3QXIyU2dxd0tHcmNaMkxJUWVfcUZjRGt3TEVEUG16Rkt2OTJyMHZpMkktMUJQR3hlcTFuWGo5ay1pVnNSQi1EZXdvcUpzWmlQeHFTTzRVTDNMWEdxeFBNSWwzMnZ2ckM2S3hNc09pWWcxNzVkeDZENG5NRktIRjBKVTJsdFR6YXZDd3Y1bXFYcmFJYXd5RHY1bFlGSHBhRlZubE1uVzdhalBGMGg0TWUwNzVXQXZrOGtZRmJqbFZ4RkprMUdpdjlQcnhCZWxUWEJTUTcxU1ppWlBwVnN0UjI5SmZZQ1FVbjlGMHIxQjZVRFpISXZpelNiUEpLM3VxT3p4NzZoeTA2UmVoTUhISmEzMDBVek5JUjF4aVBDY2RtaE1tb3lEQVV5MmFKR1JYRUpfcFcwNjVnM2Y4N1BsaTdlaVVjSGVhd1JfeF9iaUZ4cEJKMWpBY2ZCRVk3VTNmREZIeE43TFRuVzJQajFVbHlBQUNDVm5vR05DclkxWGNJVG5XbnlhNUw4UDIyT0MySllXclhOSzBrTHhVZWhEQXRHLXNUV19pNGhfZFZNaVlRYmNEWTlGSW5INVc5MGZSMUswSnhJYlp4MHhxUmV5RDkzbEE1czVlWVN1RVVYNjlhMXZ6NWFwRmkwaEpEZVczaFM3OUZsQWFKN2pWNndWRDJIUDI5U09pZ2cxZzE3Wm9CMGhDcTJ6MTluMFlaaHprS29UVGJJbllIZkpRcHQ1d2RWMU45WHoxQ3VzR3pfd3RpdENtQXNTT21KcmFCNTlmYVI1QU12NkpaaDFzQ2JYaTRkRTVlcnE0aXQ3ZHF4dkp5SzJ4NjJNTVA3SW9rNVNZMjYwTHNRTFBtM1ZNSGx0dWdvYXVFNjEtTlFlV3VYNFNEMExRRm1xc2lVb1FISkJ1bFNuMEdHeUZQVGlQRm1Yc3ZXbHhvQmlWYkttTmRxZkdZdjY3MFdsLTg3R2NKY2FtTGNCemFvOEw2WlNraVVKdmx6MmJoNnk5bFF6M2x5cHA0cHFXenFQYVFGM3h6eGJIdkttTldaQy1JakY5eTFrOTctNTFjbGpBRE9BLTl3TDhuRGMxa1ViNHRhX0xHaGFMeDlfZnVSMUVIVkdTRmVqZnlRaEhYcF9YQUpoSmdBTFUxY0NfTTNGX3loNUtNZEFsZW9EekdBT3JGTXpObmdSbUNMZTBVWFJxbVZ5LWRCZG44cHBqall6bG56bFh6OUszMjQ3aVhFN1FMUlh0ZWEtMHdXOGlRb21xV3VPSDBWOEhpTzJ4UUxkZDBYTTM4clp2OGxtU0hfc1haVkJ5NENDTC1qY3Z2TVJVQzg1WTM1LlM2cGNVenVMdTYxNmw0Q0ZZU3E1ekE.gZSHGAGPE9pyTT533XzMccgjY11A85Lb0oL1MKm06Go",
-      "domain": "idam-web-public.demo.platform.hmcts.net",
+      "value": "*AAJTSQACMDIABHR5cGUAA0pXVAACUzEAAjA0*eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ZXlKMGVYQWlPaUpLVjFRaUxDSmxibU1pT2lKQk1USTRRMEpETFVoVE1qVTJJaXdpWVd4bklqb2laR2x5SW4wLi5taVU0cWlpMGRWTzZrZVI0MzlSZ1pBLjVoV0ZBRnNpS2JEX2Ftcll0VlFUVnExSFNHeTBITE5TdFFCWFRRbVpxV1NuUHJlWUo0QWt0RS1ZTGo4YmN2YjI2R0dKQnVua2pDVVJQTXk3LVI4N3BzdFprOWdKcms4eEx1RmRBQjh1NS05SmNLbThYNk1EZGw4VGRweTNvRWJMUzdJRmNObXNJWFRUMTM2emFBeUdUNi1ndVk4UVk2cFBlVUpHdDFnTEE4STBOM3NQNXZHTk8yMWZiLVZWa0pCRUF0NnI1SUdvREE1NzFRb1RiUUhKS3UxWVBNMGt2REk4Yk5GZ280ZElaaWI0NEhaN2d1V3BXaGhvbWZKTVNfbDNIVGk3d1BxalBlQkdveGU3SFZjSHdYMFlWeVlWZmxGUHVQTllzSVRpRmdneW5rYzF5RmJ6bXpzRS1xTGttYndfQnpGZ0RQbUNpa0d4TXNjOTFZa19wX0Q4bjNzcDJzNDBHSHBjTmJNMFF5RkNXYU5ScHJrOElRLWtOb2VwWWF1MkxTQmZ1TWhuWE5HcjVFMHF2UnlkZTNNay02RkJ2MHhhbkFwS19WTFdHY212eVczbFlZdVM2OW10WmJXSUVtLWlDcFpDNWlVTWc2OUtJcXFvWDMxV01VdDB2N3FCaHYwYkwtRWJHbXVlY00xa3RkSGt1czhsNFBtMHZhNVoxTU9UbFRXSWs3ZjBMMGdNYTRabHBEajJ3RHJYRklpZDAwbk12OVZyeTRRSEcwVlNmU29DM3h3M0RLSUZtUjFQMnNyNkVzdTlxVzY5LVdCaUk2XzhGUGNZM0V0Y0Q3VHVsNl9ETktRYzh3YWhIQW1ucDlCenVjN0dBNXpyb1BmejlKeTZPMldnbkVzODRvOVpneTlsLU44a2hkdnA2YnhQVFV4ZmZYS0FfZERYaUxwQ0ZLd0FUS3pvLVg2Skw5SHVZU0ZPb295RzI5ZEg5Q2VIVkxmeV8wVjJUSzZveHAzTmg1aURPWF9uRmgzZllKU2VWOFdway1iV1hSWS1uN2p4OFNVM2l6QVNOWE9VckZqLWZvX1dLSGNpM09FYVF1YW1STWl6VHdMczBERm9nWUtLN3RiVGl2WGh6MV9ZUEhicTJiNVhWczVMS0RTRmNIdHNka2JSWWloYmhzblRKV1B3VnF6RDYyZnZnSU1Vc0lwQ205Y3VZM1ZLVXpfcmpRT1RxNWo2cWFqTEJ5TzBENW9xRHJIYU9OSEh6bGpHUjVfV094RmNUSjQ3bnZPWlNvRmNnalZKQ2NTclpqMVgwVjdHeTlESUN6N0hEWFBXdGhKZk5ubjY2cHhxbW0xRFNEMzYzV0xELUxWZndGUWhKakI0RlVYVVJ0ZGdZZGJfWlJBbnFfWmJUWkdVelY5SWVKaWpMQnF3SENtZXN0bFFwWjdORkpHdnRrcjBnb1Jsd0s1WExfQy1ZWm9KNUdFTG85NXdWSXo2ajZJcTA0V2FWOWxWdjNQMS0zVUNiQVJvZWdNYWV3d19LRkRudXV4WTFBZ1hBNnhvZlAycHZfeHp0YVFFQkZDS0VoeWRsZWNDT3RvQmk4b3VOWUgwYjVKajlsZjhDYl85X3hRNGQ0Tmg3bXVKZGh4UGg4NUpYWmNYdzc0RERGWWNVeFNxcGFPOEw2QXIzeTBmaUY1TUpLVEFjb05kNHh4djR4eGNjTVRyUWJ6LUdodkFLTTJvbVF1VklUQzJDS1dmTTF3eVhGQzI0NGYzd2pqWFJLMmdaclMyNFAzY2JIUWs1V2ZFSm5DejZya2FNNUJSRU55ZDhaTHdRejNqWFh1Z2dhUkxzUUlvb25xejgzYjBSLWkyS3A1enFUWk00c2tZdDNIYmF1b3lXaHVzenlaRjUwNE9NdVBmM2FpMkUtd0d5cEk5Tnd0NWs0b19RRFFFSFMyOWFlRG9BVUc5WVJ1Z3RFcm1ONHFLbFJMb21qblBFVGc2eXdmeFgxd0FmWDZfbGI2RWhobC1WbjRfZG9NeGtzdENwZUJTa2M4eUdiUE5JVDFyQ3B5Y3ZwMnk3Nmw2b2pWWHVoVHVLQ01adktRSHFES2xWXy1NeEppWGdhdnVtaksxWkx0d1dRMkN1S1AxU05wWnF4WUVhdnNnQzZQZzRzUklRWHhVd0xlakRaWk10SGctUEFHajRZaTlIYVFneXVJREdOVmpHaHgtT1dzeFpXNUxEQXpRc1dJSFcxOUg5Q2QxTWpzQmRjQUJXbGhqLmVxR3NrbTdnLTUtWEhFOFV3ZTFDNFE.czV2_3m3ahSenyU39AC5PiOLIrmS_FKC5phsHK69lpE",
+      "domain": "idam-web-public.aat.platform.hmcts.net",
       "path": "/",
       "expires": -1,
       "httpOnly": true,
@@ -62,8 +62,8 @@
     },
     {
       "name": "__userid__",
-      "value": "d7fac049-ca0c-42f4-b44e-c63982c98214",
-      "domain": "manage-case.demo.platform.hmcts.net",
+      "value": "undefined",
+      "domain": "xui-civil-citizen-ui-pr-7607.preview.platform.hmcts.net",
       "path": "/",
       "expires": -1,
       "httpOnly": false,
@@ -72,8 +72,8 @@
     },
     {
       "name": "__auth__",
-      "value": "eyJ0eXAiOiJKV1QiLCJraWQiOiJaNEJjalZnZnZ1NVpleEt6QkVFbE1TbTQzTHM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJobWN0cy5jaXZpbCtvcmdhbmlzYXRpb24uMS5zb2xpY2l0b3IuMUBnbWFpbC5jb20iLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiOTUwNmZmNTItNjg0Ni00YjVmLWFhZmYtNTNmZTFhMjhiM2Y2LTEyNDU0NzQiLCJzdWJuYW1lIjoiaG1jdHMuY2l2aWwrb3JnYW5pc2F0aW9uLjEuc29saWNpdG9yLjFAZ21haWwuY29tIiwiaXNzIjoiaHR0cHM6Ly9pZGFtLXdlYi1wdWJsaWMuZGVtby5wbGF0Zm9ybS5obWN0cy5uZXQvbyIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6IkVmSUQxc2VoMy1odm5MN0tMb0dwczl6NzNHOCIsIm5vbmNlIjoidHZGZHZ3RHF6YldieUhOU29Ec3I0TG5qaE5PRVZ4YzA3a1cwYlJDbi1rTSIsImNsaWVudF9pZCI6Inh1aXdlYmFwcCIsImF1ZCI6Inh1aXdlYmFwcCIsIm5iZiI6MTc3ODc3NDY2NiwiZ3JhbnRfdHlwZSI6ImF1dGhvcml6YXRpb25fY29kZSIsInNjb3BlIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJyb2xlcyIsImNyZWF0ZS11c2VyIiwibWFuYWdlLXVzZXIiLCJzZWFyY2gtdXNlciJdLCJhdXRoX3RpbWUiOjE3Nzg3NzQ2NjYsInJlYWxtIjoiL2htY3RzIiwiZXhwIjoxNzc4ODAzNDY2LCJpYXQiOjE3Nzg3NzQ2NjYsImV4cGlyZXNfaW4iOjI4ODAwLCJqdGkiOiJyZzhuTVYxMldyZXBfcmZzUFlEQUZaZUtuNDQifQ.j2TzeOIZvPHNCUKus_vWlDdpKlPKGwRnrBWnu3f4L6ft42QOrjDvTIIXjEtGN5on-0QmwFaowxipq-FUKIjwm7TwOcPZZoyg3DV7hcxbBB7FivhgeUywFRS7VTleR_DLa7XYOyhh37RIYJKA4R-6Mn4dOlp0eTlNobSqbfST4Cz6wBi_LQ1-bQ4WSoQd1KHogqHmnJ38NMMgLvEHI2rmO3dfpKdvY5PESWRBe9Z8sd3UNBB0dbj-5fvTFbMo_TO-8QlMe8uVubjiyfT575zBhVFVftq7Jqleiam97TNuFE0-dUNwGCW-kX2ovfEjHkEpO2E0Q8bgRpAkJ8ruYyxUPQ",
-      "domain": "manage-case.demo.platform.hmcts.net",
+      "value": "eyJ0eXAiOiJKV1QiLCJraWQiOiI3SndwS29NZDBZZ2UvZ3ZMbFdoL1U0QVN2WXc9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJobWN0cy5jaXZpbCtvcmdhbmlzYXRpb24uMS5zb2xpY2l0b3IuMUBnbWFpbC5jb20iLCJjdHMiOiJPQVVUSDJfU1RBVEVMRVNTX0dSQU5UIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiNjEwYWY4M2MtZTRiMi00YjAzLTkzNzEtZDhmY2Q5NGZlMDhhLTEyNjg3OTciLCJzdWJuYW1lIjoiaG1jdHMuY2l2aWwrb3JnYW5pc2F0aW9uLjEuc29saWNpdG9yLjFAZ21haWwuY29tIiwiaXNzIjoiaHR0cHM6Ly9pZGFtLXdlYi1wdWJsaWMuYWF0LnBsYXRmb3JtLmhtY3RzLm5ldC9vIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiNFJSVURvV0RFRnNYYnF6MDBYWW13WTVfU2pnIiwiY2xpZW50X2lkIjoieHVpd2ViYXBwIiwiYXVkIjoieHVpd2ViYXBwIiwibmJmIjoxNzc4ODQwNDQ5LCJncmFudF90eXBlIjoiYXV0aG9yaXphdGlvbl9jb2RlIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIiwiY3JlYXRlLXVzZXIiLCJtYW5hZ2UtdXNlciIsInNlYXJjaC11c2VyIl0sImF1dGhfdGltZSI6MTc3ODg0MDQ0OSwicmVhbG0iOiIvaG1jdHMiLCJleHAiOjE3Nzg4NjkyNDksImlhdCI6MTc3ODg0MDQ0OSwiZXhwaXJlc19pbiI6Mjg4MDAsImp0aSI6InZ6dzhRcEFlMEthUGtBRUNtMkp6S2E0a3JrbyJ9.We36yYOOFMrvN6DNX5Vn3SYWj0m98OWQwy5dFL87W93WNwU5tMP9pHVjHFLNFL5mjJx_w6pvGIhmGjHJsfwJaZtkfzCMs9EECtdDViUHAQcrAyxfNOiXEReAkpTvnKYZCwnTh8DPyt9-tOGu1fg7cU8BUURa8NMFlnHicoPCREFtuoA-ubnJgJx0xqtV0i1DIJfOLjGIqqcAg0FP9W0spDIIU0k6WGmhEaqzjiCEEvTD62U00lRStz0eHwERU8vXMxo04MbGL0-h6SMid0xhJ0NWYVr2zWlP4iLXAZNq5qXxXIbb6KysmMnQ5yaIBF1A56LRnDQqmOaJ-lWAQX2cfw",
+      "domain": "xui-civil-citizen-ui-pr-7607.preview.platform.hmcts.net",
       "path": "/",
       "expires": -1,
       "httpOnly": false,
@@ -82,18 +82,18 @@
     },
     {
       "name": "xui-webapp",
-      "value": "s%3ALGSYaAIMJ3Aa39mxJ2AWqaTHZIA1FfmP.dMygEWImAaVbJIW5h53eEYF5wsCZLv8g9q%2BWlSyZ1gA",
-      "domain": "manage-case.demo.platform.hmcts.net",
+      "value": "s%3AVYhR23DZCPGPamkLBmfuR2d4YkSLJlYg.BGgP1lHmbXwmCPDKZlpyzPWKdyCjQYK5ivocfoMuZKE",
+      "domain": "xui-civil-citizen-ui-pr-7607.preview.platform.hmcts.net",
       "path": "/",
       "expires": -1,
       "httpOnly": true,
-      "secure": false,
+      "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "exui-preferred-language",
       "value": "en",
-      "domain": "manage-case.demo.platform.hmcts.net",
+      "domain": "xui-civil-citizen-ui-pr-7607.preview.platform.hmcts.net",
       "path": "/",
       "expires": -1,
       "httpOnly": false,
@@ -102,8 +102,8 @@
     },
     {
       "name": "XSRF-TOKEN",
-      "value": "jIOdvBEY-j-TVyGMzlKlz3D30bXBFe_q-JarRaMr0jyWCNqI8PN4",
-      "domain": "manage-case.demo.platform.hmcts.net",
+      "value": "KTiQf0lp-41iiE5Vev1gXusLhAqlRetWaTnFnsL3PNzE3WIdwpRQ",
+      "domain": "xui-civil-citizen-ui-pr-7607.preview.platform.hmcts.net",
       "path": "/",
       "expires": -1,
       "httpOnly": false,
@@ -113,7 +113,7 @@
   ],
   "origins": [
     {
-      "origin": "https://manage-case.demo.platform.hmcts.net",
+      "origin": "https://xui-civil-citizen-ui-pr-7607.preview.platform.hmcts.net",
       "localStorage": [
         {
           "name": "ng2Idle.main.idling",
@@ -121,11 +121,11 @@
         },
         {
           "name": "ng2Idle.idleSession.expiry",
-          "value": "1778777673104"
+          "value": "1778843455460"
         },
         {
-          "name": "ld:5de6610b23ce5408280f2268:$diagnostics",
-          "value": "{\"dataSinceDate\":1778774673105,\"droppedEvents\":0,\"eventsInLastBatch\":0,\"streamInits\":[]}"
+          "name": "ld:645baeea2787d812993d9d70:$diagnostics",
+          "value": "{\"dataSinceDate\":1778840455461,\"droppedEvents\":0,\"eventsInLastBatch\":0,\"streamInits\":[]}"
         }
       ]
     }

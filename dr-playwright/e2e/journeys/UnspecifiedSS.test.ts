@@ -69,7 +69,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
     await createCase.setDefendantType(defendantType, 1);
 
-    if (claimType == ClaimType.ONE_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE_LIP ||claimType == ClaimType.ONE_VS_TWO_LIP_LR) {
+    if (claimType == ClaimType.ONE_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE_LIP || claimType == ClaimType.ONE_VS_TWO_LIP_LR || claimType == ClaimType.ONE_VS_TWO_LIPS) {
       console.log('Defendant 1: NOT represented');
       await createCase.setDefendantLegallyRepresented(yesNo.NO, 1)
     } else {
