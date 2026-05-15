@@ -14,6 +14,7 @@ import DefendantSolicitor2SpecSteps from '../../steps/ui/exui/defendant-solicito
 import DefendantSolicitor2Steps from '../../steps/ui/exui/defendant-solicitor-2-steps';
 import HearingCenterAdminSteps from '../../steps/ui/exui/hearing-center-admin-steps';
 import HearingCenterAdminSpecSteps from '../../steps/ui/exui/hearing-center-admin-spec-steps';
+import CtscAdminSpecSteps from '../../steps/ui/exui/ctsc-admin-spec-steps';
 
 type UiStepsFixtures = {
   IdamSteps: IdamSteps;
@@ -28,6 +29,7 @@ type UiStepsFixtures = {
   HearingCenterAdminSteps: HearingCenterAdminSteps;
   HearingCenterAdminSpecSteps: HearingCenterAdminSpecSteps;
   JudgeSteps: JudgeSteps;
+  CtscAdminSpecSteps: CtscAdminSpecSteps;
 };
 
 export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).extend<UiStepsFixtures>({
@@ -66,5 +68,8 @@ export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).
   },
   JudgeSteps: async ({ _exuiDashboardActions, _idamActions, _judgeLaActionsFactory: _judgeActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new JudgeSteps(_exuiDashboardActions, _idamActions, _judgeActionsFactory, _requestsFactory, _testData));
+  },
+  CtscAdminSpecSteps: async ({ _exuiDashboardActions, _idamActions, _ctscAdminActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new CtscAdminSpecSteps(_exuiDashboardActions, _idamActions, _ctscAdminActionsFactory, _requestsFactory, _testData));
   }
 });

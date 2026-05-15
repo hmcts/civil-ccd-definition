@@ -70,6 +70,7 @@ playwright-report/
 
 #AI
 AGENTS.md
+.claude/
 
 # WireMock mappings pulled from civil-wiremock-mappings at build time
 mappings/

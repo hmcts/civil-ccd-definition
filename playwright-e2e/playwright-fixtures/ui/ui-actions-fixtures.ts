@@ -12,6 +12,7 @@ import IdamPageFactory from '../../pages/idam/idam-page-factory';
 import ExuiDashboardPageFactory from '../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import RequestsFactory from '../../requests/requests-factory';
 import HearingCenterAdminActionsFactory from '../../actions/ui/exui/hearing-center-admin/hearing-center-admin-actions-factory';
+import CtscAdminActionsFactory from '../../actions/ui/exui/ctsc-admin/ctsc-admin-actions-factory';
 
 type UiActionsFixtures = {
   _idamActions: IdamActions;
@@ -21,6 +22,7 @@ type UiActionsFixtures = {
   _caseworkerActionsFactory: CaseworkerActionsFactory;
   _hearingCenterAdminActionsFactory: HearingCenterAdminActionsFactory;
   _judgeLaActionsFactory: JudgeLaActionsFactory;
+  _ctscAdminActionsFactory: CtscAdminActionsFactory;
 };
 
 export const test = mergeTests(testUtils, requestFactories).extend<UiActionsFixtures>({
@@ -44,5 +46,8 @@ export const test = mergeTests(testUtils, requestFactories).extend<UiActionsFixt
   },
   _judgeLaActionsFactory: async ({ page, _testData }, use) => {
     await use(new JudgeLaActionsFactory(page, _testData));
+  },
+  _ctscAdminActionsFactory: async ({ page, _testData }, use) => {
+    await use(new CtscAdminActionsFactory(page, _testData));
   }
 });
