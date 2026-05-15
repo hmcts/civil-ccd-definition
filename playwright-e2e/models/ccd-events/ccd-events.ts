@@ -44,6 +44,7 @@ type CCDEvents = {
   RESET_PIN: CCDEvent;
   CREATE_CASE_FLAGS: CCDEvent;
   MANAGE_CASE_FLAGS: CCDEvent;
+  MEDIATION_UNSUCCESSFUL: CCDEvent;
 };
 
 export default CCDEvents;

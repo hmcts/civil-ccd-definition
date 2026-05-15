@@ -228,6 +228,12 @@ const ccdEvents: CCDEvents = {
     description: 'Not suitable for SDO',
     order: 25,
   },
+  MEDIATION_UNSUCCESSFUL: {
+    id: 'MEDIATION_UNSUCCESSFUL',
+    name: 'Mediation Unsuccessful',
+    description: 'Mediation unsuccessful',
+    order: 26,
+  },
 };
 
 export default ccdEvents;

@@ -25,11 +25,11 @@ export default defineConfig({
               Architecture: os.arch(),
               NodeVersion: process.version,
             },
-            detail: false
+            detail: false,
           },
         ],
       ]
-    : 'list',
+    : 'html',
   timeout: 1_200_000,
   expect: {
     timeout: 60_000,
