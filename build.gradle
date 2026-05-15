@@ -31,8 +31,8 @@ tasks.register('highLevelDataSetup', JavaExec) {
 
 
 def versions = [
-  junit              : '5.14.3',
-  junitPlatform      : '1.14.3'
+  junit              : '5.14.4',
+  junitPlatform      : '1.14.4'
 ]
 
 ext.libraries = [
@@ -51,7 +51,7 @@ dependencyLocking {
 
 dependencies {
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.6-SNAPSHOT5'
-  implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.17'
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.18'
   implementation group: 'io.rest-assured', name: 'rest-assured', version: '6.0.0'
 
   testImplementation libraries.junit5
