@@ -33,5 +33,41 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "createdDateTime = \"DO_NOT_SHOW\""
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "ListElementCode": "documentDescription",
+    "FieldType": "Text",
+    "ElementLabel": "Document description",
+    "HintText": "For example: letter, email, or bundle of offer/rejection documents",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "ListElementCode": "document",
+    "FieldType": "Document",
+    "ElementLabel": "Document",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "ListElementCode": "createdDateTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date added",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "document = \"DO_NOT_SHOW\""
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "ListElementCode": "createdBy",
+    "FieldType": "Text",
+    "ElementLabel": "Created by",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "createdDateTime = \"DO_NOT_SHOW\""
   }
 ]
