@@ -22,9 +22,21 @@ export default class InformAgreedExtensionDateActions extends BaseTestData {
     await extensionDateSpecPage.submit();
   }
 
+  async extensionDate() {
+    const { extensionDatePage } = this.informAgreedExtensionDatePageFactory;
+    await extensionDatePage.verifyContent(this.ccdCaseData);
+    await extensionDatePage.submit();
+  }
+
   async confirmInformAgreedExtensionDateSpec() {
     const { confirmInformAgreedExtensionDateSpecPage } = this.informAgreedExtensionDatePageFactory;
     await confirmInformAgreedExtensionDateSpecPage.verifyContent(this.ccdCaseData);
     await confirmInformAgreedExtensionDateSpecPage.submit();
+  }
+
+  async confirmInformAgreedExtensionDate() {
+    const { confirmInformAgreedExtensionDatePage } = this.informAgreedExtensionDatePageFactory;
+    await confirmInformAgreedExtensionDatePage.verifyContent(this.ccdCaseData);
+    await confirmInformAgreedExtensionDatePage.submit();
   }
 }
