@@ -133,6 +133,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "isJoRequested",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "lblRecordJudgment",
     "Label": " ",
     "FieldType": "Label",
