@@ -11,5 +11,5 @@ export const workAllocation = {
 };
 
 export const checkYourAnswers = {
-  heading: 'Check your answers',
+  mediationFailedReason: 'Mediation failed reason',
 };

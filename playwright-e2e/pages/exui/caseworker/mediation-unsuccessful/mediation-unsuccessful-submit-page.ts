@@ -9,7 +9,7 @@ export default class MediationUnsuccessfulSubmitPage extends ExuiPage(BasePage) 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(checkYourAnswers.heading),
+      super.expectText(checkYourAnswers.mediationFailedReason, { count: 1 }),
     ]);
   }
 

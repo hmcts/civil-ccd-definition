@@ -7,7 +7,10 @@ import { checkboxes } from './mediation-unsuccessful-content';
 @AllMethodsStep()
 export default class MediationUnsuccessfulPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectLabel(checkboxes.appointmentNoAgreement.label, { count: 1 }),
+    ]);
   }
 
   async selectAppointmentNoAgreement() {
