@@ -12,9 +12,7 @@ import claimTrack from '../../enums/claim-track.ts';
 import yesNo from '../../enums/yesNo.ts';
 
 const claimType: string = ['1v1LIP', '2v1LIP', '1v2LIPS', '1v2LRLIP', '1v2LIPLR', '1v1', '2v1', '1v2SS', '1v2DS'].includes(process.env.CLAIM_TYPE) ? process.env.CLAIM_TYPE : '1v1';
-const caseType: string = ['UNSPECIFIED', 'SPECIFIED'].includes(process.env.CASE_TYPE)
-  ? process.env.CASE_TYPE
-  : 'UNSPECIFIED';
+const caseType: string = 'UNSPECIFIED';
 const claimantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.CLAIMANT_TYPE) ? process.env.CLAIMANT_TYPE : 'INDIVIDUAL';
 const defendantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.DEFENDANT_TYPE) ? process.env.DEFENDANT_TYPE : 'INDIVIDUAL';
 const typeOfClaim = process.env.TYPE_OF_CLAIM;

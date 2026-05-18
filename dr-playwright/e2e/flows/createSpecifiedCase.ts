@@ -12,7 +12,7 @@ import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
 import claimTrack from '../../enums/claim-track.ts';
 
-export class CreateUnspecifiedCase {
+export class CreateSpecifiedCase {
   private buttonHelper: ButtonHelper;
 
   constructor(public page: Page) {
@@ -233,7 +233,7 @@ export class CreateUnspecifiedCase {
     await this.page.locator(`#respondent${defendantNumber}_type-${defendantType}`).click();
     await this.page.locator(`#respondent${defendantNumber}_individualTitle`).fill(defendantNumber === 1 ? partyDetails.defendant1.title : partyDetails.defendant2.title);
     await this.page.locator(`#respondent${defendantNumber}_individualFirstName`).fill(defendantNumber === 1 ? partyDetails.defendant1.firstName : partyDetails.defendant2.firstName);
-    await this.page.locator(`#respondent${defendantNumber}_individualLastName`).fill(defendantNumber === 1 ? partyDetails.defendant1.lastName: partyDetails.defendant2.lastName);
+    await this.page.locator(`#respondent${defendantNumber}_individualLastName`).fill(defendantNumber === 1 ? partyDetails.defendant1.lastName : partyDetails.defendant2.lastName);
     await this.page.locator(`#respondent${defendantNumber}_partyEmail`).fill(defendantNumber === 1 ? partyDetails.defendant1.email : partyDetails.defendant2.email);
     await this.page.locator(`#respondent${defendantNumber}_partyPhone`).fill(defendantNumber === 1 ? partyDetails.defendant1.phone : partyDetails.defendant2.phone);
 
@@ -325,7 +325,7 @@ export class CreateUnspecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  async setOtherRemedy(yesNo: YesNo = YesNo.YES ){
+  async setOtherRemedy(yesNo: YesNo = YesNo.YES) {
     await this.page.locator(`#isClaimDeclarationAdded_${yesNo}`).check();
     await this.page.locator('#claimDeclarationDescription').fill('Other remedy narrative text.');
     await this.buttonHelper.continueButton.click();
@@ -386,6 +386,5 @@ export class CreateUnspecifiedCase {
     await this.page.locator('#uiStatementOfTruth_role').fill(legalRepresentatives.legalRepresentative1.role);
     await this.buttonHelper.continueButton.click();
   }
-
 
 }
