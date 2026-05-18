@@ -121,11 +121,11 @@ export default abstract class BaseApi extends BaseTestData {
     );
   }
 
-  protected async fetchAndSetCCDCaseData(caseId?: number) {
+  protected async fetchAndSetCCDCaseData(caseId?: number, user?: User) {
     const { ccdRequests } = this.requestsFactory;
-    await this.setupUserData(civilSystemUpdate);
+    await this.setupUserData(user ?? civilSystemUpdate);
     super.setCCDCaseData = await ccdRequests.fetchCCDCaseData(
-      civilSystemUpdate,
+      user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
     );
   }

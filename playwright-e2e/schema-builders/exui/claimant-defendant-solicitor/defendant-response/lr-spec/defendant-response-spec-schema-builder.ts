@@ -3,7 +3,7 @@ import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import defendantResponseSpecSchemaComponents from './defendant-response-spec-schema-components';
