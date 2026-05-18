@@ -122,6 +122,16 @@
     "test:UNSPEC_2v1_FAST": "yarn playwright install && CLAIM_TYPE=2v1 CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL TYPE_OF_CLAIM=PERSONAL_INJURY SUB_TYPE=NOISE_INDUCED_HEARING_LOSS npx playwright test --headed --project chromium --grep @unspecified",
     "test:UNSPEC_1v2SS_FAST": "yarn playwright install && CLAIM_TYPE=1v2SS CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL TYPE_OF_CLAIM=PERSONAL_INJURY SUB_TYPE=NOISE_INDUCED_HEARING_LOSS npx playwright test --headed --project chromium --grep @unspecified",
     "test:UNSPEC_1v2DS_FAST": "yarn playwright install && CLAIM_TYPE=1v2DS CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL TYPE_OF_CLAIM=PERSONAL_INJURY SUB_TYPE=NOISE_INDUCED_HEARING_LOSS npx playwright test --headed --project chromium --grep @unspecified",
+
+    "test:SPEC_1v1_LIP_FAST": "yarn playwright install && CLAIM_TYPE=1v1LIP CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
+    "test:SPEC_2v1_LIP_FAST": "yarn playwright install && CLAIM_TYPE=2v1LIP CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
+    "test:SPEC_1v2_LIPS_FAST": "yarn playwright install && CLAIM_TYPE=1v2LIPS CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
+    "test:SPEC_1v2_LR_LIP_FAST": "yarn playwright install && CLAIM_TYPE=1v2LRLIP CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
+    "test:SPEC_1v2_LIP_LR_FAST": "yarn playwright install && CLAIM_TYPE=1v2LIPLR CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
+    "test:SPEC_1v1_FAST": "yarn playwright install && CLAIM_TYPE=1v1 CLAIMANT_TYPE=COMPANY DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
+    "test:SPEC_1v2SS_FAST": "yarn playwright install && CLAIM_TYPE=1v2SS CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
+    "test:SPEC_1v2DS_FAST": "yarn playwright install && CLAIM_TYPE=1v2DS CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
+
     "prepare": "husky"
   },
   "license": "MIT",

@@ -2,7 +2,6 @@ import { expect, Page } from '@playwright/test';
 import { courts } from '../../fixtures/courts.ts';
 import { ButtonHelper } from '../../helpers/ButtonHelper';
 import ClaimType from '../../enums/claim-type.ts';
-import ClaimantDefendantTypes from '../../enums/claimantDefendantTypes.ts';
 import { partyDetails } from '../../fixtures/partyDetails.ts';
 import { LinkHelper } from '../../helpers/LinkHelper.ts';
 import YesNo from '../../enums/yesNo.ts';
@@ -229,7 +228,7 @@ export class CreateUnspecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  async setDefendantType(defendantType: string = ClaimantDefendantTypes.INDIVIDUAL, defendantNumber: number = 1) {
+  async setDefendantType(defendantType: string = claimantDefendantTypes.INDIVIDUAL, defendantNumber: number = 1) {
     await this.page.locator(`#respondent${defendantNumber}_type-${defendantType}`).click();
     await this.page.locator(`#respondent${defendantNumber}_individualTitle`).fill(defendantNumber === 1 ? partyDetails.defendant1.title : partyDetails.defendant2.title);
     await this.page.locator(`#respondent${defendantNumber}_individualFirstName`).fill(defendantNumber === 1 ? partyDetails.defendant1.firstName : partyDetails.defendant2.firstName);
@@ -265,7 +264,7 @@ export class CreateUnspecifiedCase {
   }
 
   //Eventually we will pass the org as parameter - will be cleaner
-  async setDefendantSolicitorOrganisation(organisationName: string = 'Civil - Organisation 2') {
+  async setSolicitorOrganisation(organisationName: string = 'Civil - Organisation 2') {
     await expect(this.page.locator('#search-org-text')).toBeVisible();
     await this.page.locator('#search-org-text').fill('civil');
 
@@ -277,12 +276,7 @@ export class CreateUnspecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  async setDefendantServiceAddress(yesNo: YesNo = YesNo.NO) {
-    await this.page.locator(`#respondentSolicitor1ServiceAddressRequired_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
-  }
-
-  async setDefendantLegalRepresentativeAddress(yesNo: YesNo = YesNo.NO, defendantNumber: number = 1) {
+  async setDefendantLegalRepresentativeCorrespondenceAddress(yesNo: YesNo = YesNo.NO, defendantNumber: number = 1) {
     await this.page.locator(`#respondentSolicitor${defendantNumber}ServiceAddressRequired_${yesNo}`).check();
     await this.buttonHelper.continueButton.click();
   }

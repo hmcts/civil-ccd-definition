@@ -73,9 +73,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     } else {
       console.log('Defendant 1: REPRESENTED');
       await createCase.setDefendantLegallyRepresented(yesNo.YES, 1);
-      await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 2');
-      await createCase.setDefendantServiceAddress();
-      await createCase.setDefendantLegalRepresentativeAddress();
+      await createCase.setSolicitorOrganisation('Civil - Organisation 2');
+      await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 1);
       await createCase.setDefendantLegalRepresentativeEmail();
     }
 
@@ -91,8 +90,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         case ClaimType.ONE_VS_TWO_LIP_LR:
           console.log('Defendant 2: REPRESENTED');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-          await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 2');
-          await createCase.setDefendantLegalRepresentativeAddress(yesNo.NO,2);
+          await createCase.setSolicitorOrganisation('Civil - Organisation 2');
+          await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO,2);
           await createCase.setDefendant2LegalRepresentativeReference();
           await createCase.setDefendantLegalRepresentativeEmail(2);
           break;
@@ -105,8 +104,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           console.log('Defendant 2: REPRESENTED - diff sols');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
           await createCase.setSameLegalRepresentative(yesNo.NO);
-          await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 3');
-          await createCase.setDefendantLegalRepresentativeAddress(yesNo.NO,2);
+          await createCase.setSolicitorOrganisation('Civil - Organisation 3');
+          await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO,2);
           await createCase.setDefendant2LegalRepresentativeReference();
           await createCase.setDefendantLegalRepresentativeEmail(2);
           break;

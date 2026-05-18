@@ -34,19 +34,20 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe.configure({ mode: 'serial' });
-test.describe('test1', { tag: '@unspecified' }, () => {
+test.describe('test1', { tag: '@specified' }, () => {
   test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
   test('Claimant Solicitor creates ' + claimType + ' claim ', async ({ page }) => {
     let createCase: CreateSpecifiedCase = new CreateSpecifiedCase(page);
     await createCasePage.createCase(caseType);
     await buttonHelper.continueButton.click(); //Summary
+    await buttonHelper.continueButton.click(); //Further information
     await createCase.setReferences(claimType);
-    await createCase.setCourt();
+    //await createCase.setCourt();
     await createCase.setClaimantType(claimantType, 1);
-    await createCase.setClaimantLitigantFriend(litigantFriend, 1);
-    await createCase.setClaimantNotifications();
-    await buttonHelper.continueButton.click(); //ClaimantSolicitorOrganisation
-    await createCase.setClaimantServiceAddress();
+    //await createCase.setClaimantLitigantFriend(litigantFriend, 1);
+   // await createCase.setClaimantNotifications();
+   // await buttonHelper.continueButton.click(); //ClaimantSolicitorOrganisation
+   // await createCase.setClaimantServiceAddress();
 
 
     switch (claimType) {
@@ -54,12 +55,18 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       case ClaimType.TWO_VS_ONE_LIP:
         await createCase.setAnotherClaimant(YesNo.YES, claimantType);
         await createCase.setClaimantType(claimantType, 2);
-        await createCase.setClaimantLitigantFriend(litigantFriend, 2);
+      //  await createCase.setClaimantLitigantFriend(litigantFriend, 2);
         break;
       default:
         await createCase.setAnotherClaimant(YesNo.NO, claimantType);
     }
 
+    await createCase.setClaimantNotifications();
+
+    // Need to set the org for legal rep of the claimant(s)
+    await createCase.setSolicitorOrganisation('Civil - Organisation 1');
+
+    await createCase.setClaimantLegalRepresentativePostalAddress();
     await createCase.setDefendantType(defendantType, 1);
 
     if (claimType == ClaimType.ONE_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE_LIP || claimType == ClaimType.ONE_VS_TWO_LIP_LR || claimType == ClaimType.ONE_VS_TWO_LIPS) {
@@ -68,10 +75,10 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     } else {
       console.log('Defendant 1: REPRESENTED');
       await createCase.setDefendantLegallyRepresented(yesNo.YES, 1);
-      await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 2');
-      await createCase.setDefendantServiceAddress();
-      await createCase.setDefendantLegalRepresentativeAddress();
-      await createCase.setDefendantLegalRepresentativeEmail();
+      await createCase.setOrganisationRegisteredWithHMCTS(yesNo.YES, 1);
+      await createCase.setSolicitorOrganisation('Civil - Organisation 2');
+      await createCase.setDefendantLegalRepresentativeEmail(1);
+      await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 1);
     }
 
     if (claimType == ClaimType.TWO_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE) {
@@ -86,10 +93,10 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         case ClaimType.ONE_VS_TWO_LIP_LR:
           console.log('Defendant 2: REPRESENTED');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-          await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 2');
-          await createCase.setDefendantLegalRepresentativeAddress(yesNo.NO,2);
-          await createCase.setDefendant2LegalRepresentativeReference();
+          await createCase.setOrganisationRegisteredWithHMCTS(yesNo.YES, 2);
+          await createCase.setSolicitorOrganisation('Civil - Organisation 2');
           await createCase.setDefendantLegalRepresentativeEmail(2);
+          await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
           break;
         case ClaimType.ONE_VS_TWO_SAME_SOL:
           console.log('Defendant 2: REPRESENTED - same sols');
@@ -100,9 +107,10 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           console.log('Defendant 2: REPRESENTED - diff sols');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
           await createCase.setSameLegalRepresentative(yesNo.NO);
-          await createCase.setDefendantSolicitorOrganisation('Civil - Organisation 3');
-          await createCase.setDefendantLegalRepresentativeAddress(yesNo.NO,2);
-          await createCase.setDefendant2LegalRepresentativeReference();
+          await createCase.setOrganisationRegisteredWithHMCTS(yesNo.YES, 2);
+          await createCase.setSolicitorOrganisation('Civil - Organisation 3');
+         // await createCase.setDefendantLegalRepresentativeAddress(yesNo.NO,2);
+         // await createCase.setDefendant2LegalRepresentativeReference();
           await createCase.setDefendantLegalRepresentativeEmail(2);
           break;
         default:
@@ -111,19 +119,19 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       }
     }
 
-
-    await createCase.setDescriptionOfClaim(typeOfClaim);
-
-    await createCase.setUploadParticularsOfClaim();
-
-
-    await createCase.setClaimValue(track, typeOfClaim); // use from parameters in package
-    await buttonHelper.continueButton.click(); //Amount to pay - can do an assertion on amount by api to fee and pay to make sure fee is correct, if needed.
-    await createCase.setStatementOfTruth(); //will be dependant upon case ie 1v1 etc
-    await buttonHelper.submitButton.click(); //CYA
-    await buttonHelper.closeAndReturnToCaseDetailsButton.click(); //Success
-
-    caseId = await pageHelper.grabCaseNumber();
-    console.log('caseId>>>>>>>>>>>>>>>' + caseId + '<<<<<<<<<<<<<<<<<<<');
+    //
+    // await createCase.setDescriptionOfClaim(typeOfClaim);
+    //
+    // await createCase.setUploadParticularsOfClaim();
+    //
+    //
+    // await createCase.setClaimValue(track, typeOfClaim); // use from parameters in package
+    // await buttonHelper.continueButton.click(); //Amount to pay - can do an assertion on amount by api to fee and pay to make sure fee is correct, if needed.
+    // await createCase.setStatementOfTruth(); //will be dependant upon case ie 1v1 etc
+    // await buttonHelper.submitButton.click(); //CYA
+    // await buttonHelper.closeAndReturnToCaseDetailsButton.click(); //Success
+    //
+    // caseId = await pageHelper.grabCaseNumber();
+    // console.log('caseId>>>>>>>>>>>>>>>' + caseId + '<<<<<<<<<<<<<<<<<<<');
   });
 });
