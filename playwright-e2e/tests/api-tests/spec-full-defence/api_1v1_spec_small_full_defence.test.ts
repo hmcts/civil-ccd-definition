@@ -4,7 +4,7 @@ test.describe(
   '1v1 spec small full defence api journey',
   { tag: '@civil-service-nightly' },
   async () => {
-    test.only('1v1 spec small full defence', async ({
+    test('1v1 spec small full defence', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
