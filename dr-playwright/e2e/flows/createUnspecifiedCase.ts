@@ -200,26 +200,14 @@ export class CreateUnspecifiedCase {
   async setClaimantLitigantFriend(yesNo: YesNo = YesNo.NO, claimantNumber: number = 1) {
     await this.page.locator(`#applicant${claimantNumber}LitigationFriendRequired_${yesNo}`).check();
     if (yesNo === YesNo.YES) {
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_firstName`)
-        .fill(partyDetails.claimantLitigantFriend1.firstname);
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_lastName`)
-        .fill(partyDetails.claimantLitigantFriend1.lastname);
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_emailAddress`)
-        .fill(partyDetails.claimantLitigantFriend1.email);
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_phoneNumber`)
-        .fill(partyDetails.claimantLitigantFriend1.phone);
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_hasSameAddressAsLitigant_${yesNo}`)
-        .check();
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_firstName`).fill(partyDetails.claimantLitigantFriend1.firstname);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_lastName`).fill(partyDetails.claimantLitigantFriend1.lastname);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_emailAddress`).fill(partyDetails.claimantLitigantFriend1.email);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_phoneNumber`).fill(partyDetails.claimantLitigantFriend1.phone);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_hasSameAddressAsLitigant_${yesNo}`).check();
 
       await this.buttonHelper.addNewButton.click();
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_certificateOfSuitability_0_document`)
-        .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_certificateOfSuitability_0_document`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
       await this.page.waitForSelector('.error-message', { state: 'hidden' });
     }
 
@@ -244,12 +232,8 @@ export class CreateUnspecifiedCase {
   async setDefendantType(defendantType: string = ClaimantDefendantTypes.INDIVIDUAL, defendantNumber: number = 1) {
     await this.page.locator(`#respondent${defendantNumber}_type-${defendantType}`).click();
     await this.page.locator(`#respondent${defendantNumber}_individualTitle`).fill(defendantNumber === 1 ? partyDetails.defendant1.title : partyDetails.defendant2.title);
-    await this.page
-      .locator(`#respondent${defendantNumber}_individualFirstName`)
-      .fill(defendantNumber === 1 ? partyDetails.defendant1.firstName : partyDetails.defendant2.firstName);
-    await this.page
-      .locator(`#respondent${defendantNumber}_individualLastName`)
-      .fill(defendantNumber === 1 ? partyDetails.defendant1.lastName: partyDetails.defendant2.lastName);
+    await this.page.locator(`#respondent${defendantNumber}_individualFirstName`).fill(defendantNumber === 1 ? partyDetails.defendant1.firstName : partyDetails.defendant2.firstName);
+    await this.page.locator(`#respondent${defendantNumber}_individualLastName`).fill(defendantNumber === 1 ? partyDetails.defendant1.lastName: partyDetails.defendant2.lastName);
     await this.page.locator(`#respondent${defendantNumber}_partyEmail`).fill(defendantNumber === 1 ? partyDetails.defendant1.email : partyDetails.defendant2.email);
     await this.page.locator(`#respondent${defendantNumber}_partyPhone`).fill(defendantNumber === 1 ? partyDetails.defendant1.phone : partyDetails.defendant2.phone);
 
@@ -369,7 +353,7 @@ export class CreateUnspecifiedCase {
       claimAmount = '75000';
     }
 
-    if (typeOfClaim == unspecClaimTypes.CLINICAL_NEGLIGENCE) {
+    if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY || typeOfClaim == unspecClaimTypes.CLINICAL_NEGLIGENCE) {
       if (track == claimTrack.SMALL_CLAIM) {
         claimAmount = '500';
       } else if (track == claimTrack.FAST_CLAIM) {
@@ -398,16 +382,8 @@ export class CreateUnspecifiedCase {
   }
 
   async setStatementOfTruth() {
-    await this.page
-      .locator('#uiStatementOfTruth_name')
-      .fill(
-        legalRepresentatives.legalRepresentative1.firstName +
-          ' ' +
-          legalRepresentatives.legalRepresentative1.lastName,
-      );
-    await this.page
-      .locator('#uiStatementOfTruth_role')
-      .fill(legalRepresentatives.legalRepresentative1.role);
+    await this.page.locator('#uiStatementOfTruth_name').fill(legalRepresentatives.legalRepresentative1.firstName + ' ' + legalRepresentatives.legalRepresentative1.lastName);
+    await this.page.locator('#uiStatementOfTruth_role').fill(legalRepresentatives.legalRepresentative1.role);
     await this.buttonHelper.continueButton.click();
   }
 
