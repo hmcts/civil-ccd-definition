@@ -16,16 +16,16 @@ export default class MediationUnsuccessfulActions extends BaseTestData {
   }
 
   async mediationUnsuccessful() {
-    const {
-      mediationUnsuccessfulPage,
-      workAllocationIntegrationFieldsPage,
-      mediationUnsuccessfulSubmitPage,
-    } = this.mediationUnsuccessfulPageFactory;
+    const { mediationUnsuccessfulPage } = this.mediationUnsuccessfulPageFactory;
     await mediationUnsuccessfulPage.verifyContent(this.ccdCaseData);
     await mediationUnsuccessfulPage.selectAppointmentNoAgreement();
     await mediationUnsuccessfulPage.submit();
+
+    const { workAllocationIntegrationFieldsPage } = this.mediationUnsuccessfulPageFactory;
     await workAllocationIntegrationFieldsPage.verifyContent(this.ccdCaseData);
     await workAllocationIntegrationFieldsPage.submit();
+
+    const { mediationUnsuccessfulSubmitPage } = this.mediationUnsuccessfulPageFactory;
     await mediationUnsuccessfulSubmitPage.verifyContent(this.ccdCaseData);
     await mediationUnsuccessfulSubmitPage.submit();
   }
