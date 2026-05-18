@@ -33,6 +33,9 @@ bin/main/application.yaml
 package-lock.json
 node_modules/
 
+# tests setup
+e2e/.auth/**
+
 # test_output
 test-results/
 e2e/e2e-documentation/results/
