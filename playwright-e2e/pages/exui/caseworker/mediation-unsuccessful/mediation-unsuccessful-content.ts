@@ -10,6 +10,6 @@ export const workAllocation = {
   },
 };
 
-export const checkYourAnswers = {
+export const table = {
   mediationFailedReason: 'Mediation failed reason',
 };
