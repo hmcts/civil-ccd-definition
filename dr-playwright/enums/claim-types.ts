@@ -1,4 +1,4 @@
-enum ClaimType {
+enum ClaimTypes {
   ONE_VS_ONE_LIP = '1v1LIP',
   TWO_VS_ONE_LIP = '2v1LIP',
   ONE_VS_TWO_LIPS = '1v2LIPS',
@@ -10,4 +10,4 @@ enum ClaimType {
   ONE_VS_TWO_DIFF_SOL = '1v2DS',
 }
 
-export default ClaimType;
+export default ClaimTypes;

@@ -1,22 +1,24 @@
 import { expect, Page } from '@playwright/test';
 import { courts } from '../../fixtures/courts.ts';
 import { ButtonHelper } from '../../helpers/ButtonHelper';
-import ClaimType from '../../enums/claim-type.ts';
+import claimTypes from '../../enums/claim-types.ts';
 import claimantDefendantTypes from '../../enums/claimantDefendantTypes.ts';
 import { legalRepresentatives } from '../../fixtures/legalRepresentatives.ts';
 import { partyDetails } from '../../fixtures/partyDetails.ts';
 import { LinkHelper } from '../../helpers/LinkHelper.ts';
 import YesNo from '../../enums/yesNo.ts';
+import claimTrack from '../../enums/claim-track.ts';
+import moment from 'moment/moment';
 
 export class CreateSpecifiedCase {
   private buttonHelper: ButtonHelper;
-
+  private monthAgo = moment().subtract(1, 'month');
   constructor(public page: Page) {
     this.buttonHelper = new ButtonHelper(this.page);
   }
 
-  async setReferences(claimType: string = ClaimType.ONE_VS_ONE) {
-    if (claimType === ClaimType.ONE_VS_ONE) {
+  async setReferences(claimType: string = claimTypes.ONE_VS_ONE) {
+    if (claimType === claimTypes.ONE_VS_ONE) {
       await this.page
         .locator('#solicitorReferences_applicantSolicitor1Reference')
         .fill('ApplicantSolicitorReference');
@@ -24,20 +26,6 @@ export class CreateSpecifiedCase {
         .locator('#solicitorReferences_respondentSolicitor1Reference')
         .fill('RespondentSolicitor1Reference');
     }
-    await this.buttonHelper.continueButton.click();
-  }
-
-  async setCourt(remoteHearing: string = 'No', court: string = 'clerkenwell') {
-    await this.page
-      .locator('#courtLocation_applicantPreferredCourtLocationList')
-      .selectOption(courts.clerkenwell.longAddress);
-    await this.page
-      .locator('#courtLocation_reasonForHearingAtSpecificCourt')
-      .fill('Test description for reasons');
-    await this.page
-      .locator(`#applicant1DQRemoteHearing_remoteHearingRequested_${remoteHearing}`)
-      .check();
-
     await this.buttonHelper.continueButton.click();
   }
 
@@ -193,35 +181,6 @@ export class CreateSpecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  async setClaimantLitigantFriend(yesNo: YesNo = YesNo.NO, claimantNumber: number = 1) {
-    await this.page.locator(`#applicant${claimantNumber}LitigationFriendRequired_${yesNo}`).check();
-    if (yesNo === YesNo.YES) {
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_firstName`)
-        .fill(partyDetails.claimantLitigantFriend1.firstname);
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_lastName`)
-        .fill(partyDetails.claimantLitigantFriend1.lastname);
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_emailAddress`)
-        .fill(partyDetails.claimantLitigantFriend1.email);
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_phoneNumber`)
-        .fill(partyDetails.claimantLitigantFriend1.phone);
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_hasSameAddressAsLitigant_${yesNo}`)
-        .check();
-
-      await this.buttonHelper.addNewButton.click();
-      await this.page
-        .locator(`#applicant${claimantNumber}LitigationFriend_certificateOfSuitability_0_document`)
-        .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
-      await this.page.waitForSelector('.error-message', { state: 'hidden' });
-    }
-
-    await this.buttonHelper.continueButton.click();
-  }
-
   async setClaimantNotifications(yesNo: YesNo = YesNo.YES) {
     await this.page.locator(`#applicantSolicitor1CheckEmail_correct_${yesNo}`).check();
     await this.buttonHelper.continueButton.click();
@@ -304,8 +263,11 @@ export class CreateSpecifiedCase {
 
   async setOrganisationRegisteredWithHMCTS(yesNo: YesNo = YesNo.YES, defendantNumber: number = 1) {
     await this.page.locator(`#respondent${defendantNumber}OrgRegistered_${yesNo}`).click();
+    await this.page
+      .locator(`#respondent${defendantNumber}OrganisationPolicy_OrgPolicyReference`)
+      .fill(`Legal Representative Organisation Reference for defendant ${defendantNumber}`);
     await this.buttonHelper.continueButton.click();
-  };
+  }
 
   async setDefendantLegallyRepresented(yesNo: YesNo = YesNo.YES, defendantNumber: number = 1) {
     await this.page.locator(`#specRespondent${defendantNumber}Represented_${yesNo}`).click();
@@ -313,6 +275,8 @@ export class CreateSpecifiedCase {
   }
 
   async setSolicitorOrganisation(organisationName: string = 'Civil - Organisation 1') {
+   // await this.page
+   //   .locator('#applicant1OrganisationPolicy_OrgPolicyReference').fill('Legal Representative Organisation Reference for applicant(s)');
     await expect(this.page.locator('#search-org-text')).toBeVisible();
     await this.page.locator('#search-org-text').fill('civil');
 
@@ -329,15 +293,21 @@ export class CreateSpecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  async setDefendantLegalRepresentativeCorrespondenceAddress(yesNo: YesNo = YesNo.NO, defendantNumber: number =  1) {
+  async setDefendantLegalRepresentativeCorrespondenceAddress(
+    yesNo: YesNo = YesNo.NO,
+    defendantNumber: number = 1,
+  ) {
     if (defendantNumber == 1) {
       await this.page.locator(`#specRespondentCorrespondenceAddressRequired_${yesNo}`).check();
     } else {
-      await this.page.locator(`#specRespondent${defendantNumber}CorrespondenceAddressRequired_${yesNo}`).check();
+      await this.page
+        .locator(`#specRespondent${defendantNumber}CorrespondenceAddressRequired_${yesNo}`)
+        .check();
     }
 
     await this.buttonHelper.continueButton.click();
   }
+
   //
   // async setDefendantLegalRepresentativeAddress(yesNo: YesNo = YesNo.NO, defendantNumber: number = 1) {
   //   await this.page.locator(`#respondentSolicitor${defendantNumber}ServiceAddressRequired_${yesNo}`).check();
@@ -365,86 +335,161 @@ export class CreateSpecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  // async setDefendant2LegalRepresentativeReference() {
-  //   await this.page.locator('#respondentSolicitor2Reference').fill('RespondentSolicitor2Reference')
-  //   await this.buttonHelper.continueButton.click();
-  // }
-  //
-  // async setTypeOfClaim(claimType?: string) {
-  //   await this.page.locator(`#claimTypeUnSpec-${claimType}`).check();
-  //   if (claimType == unspecClaimTypes.OTHER) {
-  //     await this.page.locator(`#claimTypeOther`).fill('Type of claim - Other - test text.');
-  //   }
-  //   await this.buttonHelper.continueButton.click();
-  // }
-  //
-  // async setSubClaimType(subClaimType) {
-  //   await this.page.locator(`#personalInjuryType-${subClaimType}`).check();
-  //   if (subClaimType == personalInjuryTypes.PERSONAL_INJURY_OTHER) {
-  //     await this.page.locator('#personalInjuryTypeOther').fill('Personal Injury - other test text.');
-  //   }
-  //   await this.buttonHelper.continueButton.click();
-  // }
-  //
-  // async setOtherRemedy(yesNo: YesNo = YesNo.YES) {
-  //   await this.page.locator(`#isClaimDeclarationAdded_${yesNo}`).check();
-  //   await this.page.locator('#claimDeclarationDescription').fill('Other remedy narrative text.');
-  //   await this.buttonHelper.continueButton.click();
-  // }
-  //
-  // async setDescriptionOfClaim(typeOfClaim) {
-  //   await this.page.locator('#detailsOfClaim').fill('Test description of claim');
-  //   await this.buttonHelper.continueButton.click();
-  // }
-  //
-  // async setHumanRights(yesNo: YesNo = YesNo.YES) {
-  //   await this.page.locator(`#isHumanRightsActIssues_${yesNo}`).check();
-  //   await this.buttonHelper.continueButton.click();
-  // }
-  //
-  // async setUploadParticularsOfClaim(yesNo: YesNo = YesNo.NO) {
-  //   await this.page.locator(`#uploadParticularsOfClaim_${yesNo}`).check();
-  //   await this.buttonHelper.continueButton.click();
-  // }
-  //
-  // async setClaimValue(track, typeOfClaim) {
-  //   let claimAmount = '0';
-  //
-  //   if (track == claimTrack.INTERMEDIATE_CLAIM) {
-  //     claimAmount = '75000';
-  //   }
-  //
-  //   if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY || typeOfClaim == unspecClaimTypes.CLINICAL_NEGLIGENCE) {
-  //     if (track == claimTrack.SMALL_CLAIM) {
-  //       claimAmount = '500';
-  //     } else if (track == claimTrack.FAST_CLAIM) {
-  //       claimAmount = '20000';
-  //     } else if (track == claimTrack.MULTI_CLAIM) {
-  //       claimAmount = '50000';
-  //     }
-  //   }
-  //
-  //   if (claimAmount == '0') {
-  //     switch (track) {
-  //       case claimTrack.SMALL_CLAIM:
-  //         claimAmount = '5000';
-  //         break;
-  //       case claimTrack.FAST_CLAIM:
-  //         claimAmount = '20000';
-  //         break;
-  //       case claimTrack.MULTI_CLAIM:
-  //         claimAmount = '50000';
-  //         break;
-  //     }
-  //   }
-  //
-  //   await this.page.locator('#claimValue_statementOfValueInPennies').fill(claimAmount);
-  //   await this.buttonHelper.continueButton.click();
-  // }
-  //
-  // async setStatementOfTruth() {
-  //   await this.page.locator('#uiStatementOfTruth_name').fill(legalRepresentatives.legalRepresentative1.firstName + ' ' + legalRepresentatives.legalRepresentative1.lastName);
-  //   await this.page.locator('#uiStatementOfTruth_role').fill(legalRepresentatives.legalRepresentative1.role);
-  //   await this.buttonHelper.continueButton.click();
-  // }
+  async setAirlineClaim(yesNo: YesNo = YesNo.YES) {
+    await this.page.locator(`#isFlightDelayClaim_${yesNo}`).check();
+    if (yesNo == YesNo.YES) {
+      await this.page
+        .locator(`#flightDelayDetails_airlineList`)
+        .selectOption({ label: 'Jet2.com' });
+      await this.page.locator('#flightDelayDetails_flightNumber').fill('ABC1234');
+      await this.page.locator('#scheduledDate-day').fill(this.monthAgo.date().toString());
+      await this.page.locator('#scheduledDate-month').fill((this.monthAgo.month() + 1).toString());
+      await this.page.locator('#scheduledDate-year').fill(this.monthAgo.year().toString());
+    }
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setDescriptionOfClaim() {
+    await this.page.locator('#detailsOfClaim').fill('Test description of claim');
+    await this.page
+      .locator('#specClaimDetailsDocumentFiles')
+      .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
+    await this.page.waitForSelector('.error-message', { state: 'hidden' });
+    //await this.page.waitForTimeout(2000); // waits for 2 seconds otherwise uploadButton click fails
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setTimeline(uploadManual: 'UPLOAD' | 'MANUAL') {
+    await this.page.locator(`#specClaimTimelineList-${uploadManual}`).check();
+    await this.buttonHelper.continueButton.click();
+    if (uploadManual === 'MANUAL') {
+      await this.buttonHelper.addNewButton.first().click();
+      await this.page.locator('#timelineDate-day').fill(this.monthAgo.date().toString());
+      await this.page.locator('#timelineDate-month').fill((this.monthAgo.month() + 1).toString());
+      await this.page.locator('#timelineDate-year').fill(this.monthAgo.year().toString());
+      await this.page
+        .locator('#timelineOfEvents_0_timelineDescription')
+        .fill('Test description of what happened.');
+    } else {
+      await this.page
+        .locator('#specClaimTemplateDocumentFiles')
+        .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_2.pdf');
+      await this.page.waitForSelector('.error-message', { state: 'hidden' });
+    }
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setEvidence() {
+    await this.buttonHelper.addNewButton.first().click();
+    await this.page
+      .locator(`#speclistYourEvidenceList_0_evidenceType`)
+      .selectOption({ label: 'Statement of account' });
+    await this.page
+      .locator('#speclistYourEvidenceList_0_statementOfTruthEvidence')
+      .fill('Test description of evidence.');
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setClaimValue(track) {
+    await this.buttonHelper.addNewButton.first().click();
+    await this.page
+      .locator('#claimAmountBreakup_0_claimReason')
+      .fill('Test description of what the claimant(s) are claiming for.');
+
+    let claimAmount = '0';
+
+    if (track == claimTrack.INTERMEDIATE_CLAIM) {
+      claimAmount = '75000';
+    }
+
+    if (claimAmount == '0') {
+      switch (track) {
+        case claimTrack.SMALL_CLAIM:
+          claimAmount = '5000';
+          break;
+        case claimTrack.FAST_CLAIM:
+          claimAmount = '20000';
+          break;
+        case claimTrack.MULTI_CLAIM:
+          claimAmount = '50000';
+          break;
+      }
+    }
+
+    await this.page.locator('#claimAmountBreakup_0_claimAmount').fill(claimAmount);
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setInterest(yesNo: YesNo = YesNo.NO) {
+    await this.page.locator(`#claimInterest_${yesNo}`).check();
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setInterestTypeAndRate(interestType: string = 'SAME_RATE_INTEREST', interestRate) {
+    await this.page.locator(`#interestClaimOptions-${interestType}`).check();
+    await this.buttonHelper.continueButton.click();
+
+    if (interestType === 'SAME_RATE_INTEREST') {
+      if (interestRate == '8') {
+        await this.page
+          .locator('#sameRateInterestSelection_sameRateInterestType-SAME_RATE_INTEREST_8_PC')
+          .check();
+      } else {
+        await this.page
+          .locator(
+            '#sameRateInterestSelection_sameRateInterestType-SAME_RATE_INTEREST_DIFFERENT_RATE',
+          )
+          .check();
+        await this.page.locator('#sameRateInterestSelection_differentRate').fill(interestRate);
+        await this.page
+          .locator('#sameRateInterestSelection_differentRateReason')
+          .fill('Test description of why entitled to the interest rate amount.');
+      }
+      await this.buttonHelper.continueButton.click();
+      await this.setInterestStartDate(YesNo.NO);
+    } else {
+      await this.page.locator('#breakDownInterestTotal').fill(interestRate);
+      await this.page
+        .locator('#breakDownInterestDescription')
+        .fill('Description of how the amount was calculated');
+      await this.buttonHelper.continueButton.click();
+      await this.setInterestStartDate(YesNo.YES);
+    }
+  }
+
+  async setInterestStartDate(specificDate: YesNo = YesNo.NO) {
+    if (specificDate === YesNo.NO) {
+      await this.page.locator('#interestClaimFrom-FROM_CLAIM_SUBMIT_DATE').check();
+    } else {
+      await this.page.locator('#interestClaimFrom-FROM_A_SPECIFIC_DATE').check();
+      await this.buttonHelper.continueButton.click();
+      await this.page
+        .locator('#interestFromSpecificDate-day')
+        .fill(this.monthAgo.date().toString());
+      await this.page
+        .locator('#interestFromSpecificDate-month')
+        .fill((this.monthAgo.month() + 1).toString());
+      await this.page
+        .locator('#interestFromSpecificDate-year')
+        .fill(this.monthAgo.year().toString());
+      await this.page
+        .locator('#interestFromSpecificDateDescription')
+        .fill('Description of why claiming from this date.');
+    }
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setFixedCosts(yesNo: YesNo = YesNo.NO) {
+    await this.page.locator(`#fixedCosts_claimFixedCosts_${yesNo}`).check();
+    if (yesNo == YesNo.YES) {
+      await this.page.locator('#fixedCosts_fixedCostAmount').fill('22500');
+    }
+    await this.buttonHelper.continueButton.click();
+  }
+
+  async setStatementOfTruth() {
+    await this.page.locator('#uiStatementOfTruth_name').fill(legalRepresentatives.legalRepresentative1.firstName + ' ' + legalRepresentatives.legalRepresentative1.lastName);
+    await this.page.locator('#uiStatementOfTruth_role').fill(legalRepresentatives.legalRepresentative1.role);
+    await this.buttonHelper.continueButton.click();
+  }
 }

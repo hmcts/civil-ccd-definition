@@ -1,7 +1,7 @@
 import { expect, Page } from '@playwright/test';
 import { courts } from '../../fixtures/courts.ts';
 import { ButtonHelper } from '../../helpers/ButtonHelper';
-import ClaimType from '../../enums/claim-type.ts';
+import ClaimTypes from '../../enums/claim-types.ts';
 import { partyDetails } from '../../fixtures/partyDetails.ts';
 import { LinkHelper } from '../../helpers/LinkHelper.ts';
 import YesNo from '../../enums/yesNo.ts';
@@ -18,8 +18,8 @@ export class CreateUnspecifiedCase {
     this.buttonHelper = new ButtonHelper(this.page);
   }
 
-  async setReferences(claimType: string = ClaimType.ONE_VS_ONE) {
-    if (claimType === ClaimType.ONE_VS_ONE) {
+  async setReferences(claimType: string = ClaimTypes.ONE_VS_ONE) {
+    if (claimType === ClaimTypes.ONE_VS_ONE) {
       await this.page
         .locator('#solicitorReferences_applicantSolicitor1Reference')
         .fill('ApplicantSolicitorReference');
@@ -325,7 +325,7 @@ export class CreateUnspecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  async setDescriptionOfClaim(typeOfClaim) {
+  async setDescriptionOfClaim() {
     await this.page.locator('#detailsOfClaim').fill('Test description of claim');
     await this.buttonHelper.continueButton.click();
   }

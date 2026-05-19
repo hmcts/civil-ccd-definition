@@ -4,20 +4,26 @@ import { PageHelper } from '../../helpers/PageHelper.ts';
 import { ButtonHelper } from '../../helpers/ButtonHelper.ts';
 import { CreateUnspecifiedCase } from '../flows/createUnspecifiedCase.ts';
 import { CreateCasePage } from '../page-objects/pages/createCase_page.ts';
-import YesNo from '../../enums/yesNo.ts';
-import ClaimType from '../../enums/claim-type.ts';
+import yesNo from '../../enums/yesNo.ts';
+import claimTypes from '../../enums/claim-types.ts';
 import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
 import claimTrack from '../../enums/claim-track.ts';
-import yesNo from '../../enums/yesNo.ts';
+import { cleanEnv, enums } from '@opensourcesforge/envguard';
 
-const claimType: string = ['1v1LIP', '2v1LIP', '1v2LIPS', '1v2LRLIP', '1v2LIPLR', '1v1', '2v1', '1v2SS', '1v2DS'].includes(process.env.CLAIM_TYPE) ? process.env.CLAIM_TYPE : '1v1';
+const env = cleanEnv({
+  CLAIM_TYPE: enums({
+    values: [claimTypes.ONE_VS_ONE_LIP, claimTypes.TWO_VS_ONE_LIP, claimTypes.ONE_VS_TWO_LIPS, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR, claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL] as const,
+    default: claimTypes.ONE_VS_ONE,
+  }),
+});
+const claimType: claimTypes = env.CLAIM_TYPE;
 const caseType: string = 'UNSPECIFIED';
 const claimantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.CLAIMANT_TYPE) ? process.env.CLAIMANT_TYPE : 'INDIVIDUAL';
 const defendantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.DEFENDANT_TYPE) ? process.env.DEFENDANT_TYPE : 'INDIVIDUAL';
 const typeOfClaim = process.env.TYPE_OF_CLAIM;
 const typeOfClaimSubType: string = process.env.SUB_TYPE;
-const litigantFriend: YesNo = ['Yes'].includes(process.env.LITIGANT_FRIEND) ? YesNo.YES : YesNo.NO;
+const litigantFriend: yesNo = ['Yes'].includes(process.env.LITIGANT_FRIEND) ? yesNo.YES : yesNo.NO;
 
 let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? process.env.TRACK : 'FAST_CLAIM';
 let caseId: string = '';
@@ -55,19 +61,19 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
 
     switch (claimType) {
-      case ClaimType.TWO_VS_ONE:
-      case ClaimType.TWO_VS_ONE_LIP:
-        await createCase.setAnotherClaimant(YesNo.YES, claimantType);
+      case claimTypes.TWO_VS_ONE:
+      case claimTypes.TWO_VS_ONE_LIP:
+        await createCase.setAnotherClaimant(yesNo.YES, claimantType);
         await createCase.setClaimantType(claimantType, 2);
         await createCase.setClaimantLitigantFriend(litigantFriend, 2);
         break;
       default:
-        await createCase.setAnotherClaimant(YesNo.NO, claimantType);
+        await createCase.setAnotherClaimant(yesNo.NO, claimantType);
     }
 
     await createCase.setDefendantType(defendantType, 1);
 
-    if (claimType == ClaimType.ONE_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE_LIP || claimType == ClaimType.ONE_VS_TWO_LIP_LR || claimType == ClaimType.ONE_VS_TWO_LIPS) {
+    if (claimType == claimTypes.ONE_VS_ONE_LIP || claimType == claimTypes.TWO_VS_ONE_LIP || claimType == claimTypes.ONE_VS_TWO_LIP_LR || claimType == claimTypes.ONE_VS_TWO_LIPS) {
       console.log('Defendant 1: NOT represented');
       await createCase.setDefendantLegallyRepresented(yesNo.NO, 1)
     } else {
@@ -78,16 +84,16 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await createCase.setDefendantLegalRepresentativeEmail();
     }
 
-    if (claimType == ClaimType.TWO_VS_ONE_LIP || claimType == ClaimType.TWO_VS_ONE) {
+    if (claimType == claimTypes.TWO_VS_ONE_LIP || claimType == claimTypes.TWO_VS_ONE) {
       // ignore these claim types as they cannot have a second defendant
-    } else if (claimType == ClaimType.ONE_VS_ONE || claimType == ClaimType.ONE_VS_ONE_LIP) {
+    } else if (claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.ONE_VS_ONE_LIP) {
       await createCase.setAnotherDefendant(yesNo.NO);
     } else {
       await createCase.setAnotherDefendant(yesNo.YES);
       await createCase.setDefendantType(defendantType, 2);
 
       switch (claimType) {
-        case ClaimType.ONE_VS_TWO_LIP_LR:
+        case claimTypes.ONE_VS_TWO_LIP_LR:
           console.log('Defendant 2: REPRESENTED');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
           await createCase.setSolicitorOrganisation('Civil - Organisation 2');
@@ -95,12 +101,12 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           await createCase.setDefendant2LegalRepresentativeReference();
           await createCase.setDefendantLegalRepresentativeEmail(2);
           break;
-        case ClaimType.ONE_VS_TWO_SAME_SOL:
+        case claimTypes.ONE_VS_TWO_SAME_SOL:
           console.log('Defendant 2: REPRESENTED - same sols');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
           await createCase.setSameLegalRepresentative(yesNo.YES);
           break;
-        case ClaimType.ONE_VS_TWO_DIFF_SOL:
+        case claimTypes.ONE_VS_TWO_DIFF_SOL:
           console.log('Defendant 2: REPRESENTED - diff sols');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
           await createCase.setSameLegalRepresentative(yesNo.NO);
@@ -126,7 +132,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await createCase.setHumanRights();
     }
 
-    await createCase.setDescriptionOfClaim(typeOfClaim);
+    await createCase.setDescriptionOfClaim();
 
     await createCase.setUploadParticularsOfClaim();
 
