@@ -14,3 +14,17 @@ export const radioButtons = {
     },
   },
 };
+
+export const inputs = {
+  airline: {
+    selector: '#flightDelayDetails_airlineList',
+  },
+  flightNumber: {
+    selector: '#flightDelayDetails_flightNumber',
+  },
+  dateOfFlight: {
+    day: '#scheduledDate-day',
+    month: '#scheduledDate-month',
+    year: '#scheduledDate-year',
+  },
+};
