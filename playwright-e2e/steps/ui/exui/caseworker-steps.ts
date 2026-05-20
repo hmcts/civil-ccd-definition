@@ -62,4 +62,15 @@ export default class CaseworkerSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async MediationUnsuccessful() {
+    const { mediationUnsuccessfulActions } = this.caseworkerActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await mediationUnsuccessfulActions.mediationUnsuccessful();
+      },
+      async () => {},
+      ccdEvents.MEDIATION_UNSUCCESSFUL,
+    );
+  }
 }
