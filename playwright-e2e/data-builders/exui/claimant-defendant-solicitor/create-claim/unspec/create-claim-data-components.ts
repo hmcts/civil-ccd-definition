@@ -145,6 +145,13 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
         respondentSolicitor1EmailAddress: defendantSolicitor1User.email,
       },
     };
+  if (claimType === ClaimType.ONE_VS_TWO_LIPS)
+    return {
+      LegalRepresentation: {
+        respondent1Represented: 'No',
+        respondent2Represented: 'No',
+      },
+    };
   return {
     LegalRepresentation: {
       respondent1Represented: 'No',
@@ -178,7 +185,7 @@ const defendant2Represented = (claimType: ClaimType) => {
         respondent2Represented: 'Yes',
       },
     };
-  else if (ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
+  else if (claimType === ClaimType.ONE_VS_TWO_LR_LIP) {
     return {
       SecondDefendantLegalRepresentation: {
         respondent2Represented: 'No',
@@ -200,6 +207,10 @@ const defendant2SameSolicitor = (claimType: ClaimType) => {
       SameLegalRepresentative: {
         respondent2SameLegalRepresentative: 'No',
       },
+    };
+  else if (claimType === ClaimType.ONE_VS_TWO_LIPS)
+    return {
+      SameLegalRepresentative: {},
     };
   return {};
 };
