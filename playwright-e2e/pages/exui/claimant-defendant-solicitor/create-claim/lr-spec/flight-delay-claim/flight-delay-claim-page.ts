@@ -1,10 +1,21 @@
+import { Page } from 'playwright';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
+import DateHelper from '../../../../../../helpers/date-helper';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { inputs, radioButtons, subheadings } from './flight-delay-claim-content';
+import DateFragment from '../../../../fragments/date/date-fragment';
+import { inputs, radioButtons, subheadings, dropdowns } from './flight-delay-claim-content';
 
 @AllMethodsStep()
 export default class FlightDelayClaimPage extends ExuiPage(BasePage) {
+  dateFragment: DateFragment;
+
+  constructor(page: Page, dateFragment: DateFragment) {
+    super(page);
+    this.dateFragment = dateFragment;
+  }
+
+
   async verifyContent() {
     await super.runVerifications([
       super.expectSubheading(subheadings.airlineClaim),
@@ -22,16 +33,15 @@ export default class FlightDelayClaimPage extends ExuiPage(BasePage) {
   }
 
   async enterFlightDetails() {
-    await super.selectFromDropdown('KLM', inputs.airline.selector);
+    const date = DateHelper.subtractFromToday({months: 1});
+    await super.selectFromDropdown(dropdowns.airline.options.klm, dropdowns.airline.selector);
     await super.inputText('10001', inputs.flightNumber.selector);
-    await super.inputText('1', inputs.dateOfFlight.day);
-    await super.inputText('1', inputs.dateOfFlight.month);
-    await super.inputText('2024', inputs.dateOfFlight.year);
+    this.dateFragment.enterDate(date, inputs.dateOfFlight.selectorKey);
   }
 
   async submit() {
     await super.retryClickSubmit(() =>
-      super.expectNoText('Enter flight details', { timeout: 500 }),
+      super.expectNoText(subheadings.airlineClaim, { timeout: 500 }),
     );
   }
 }
