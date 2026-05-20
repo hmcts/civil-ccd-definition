@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('1v1 unspec full defence api journey', { tag: '@civil-service-nightly' }, async () => {
-  test('1v1 unspec full defence @debug', async ({
+  test('1v1 unspec full defence', async ({
     ClaimantSolicitorApiSteps,
     CaseworkerApiSteps,
     DefendantSolicitor1ApiSteps,
@@ -16,5 +16,9 @@ test.describe('1v1 unspec full defence api journey', { tag: '@civil-service-nigh
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
     await CaseworkerApiSteps.AmendPartyDetails();
     await DefendantSolicitor1ApiSteps.AcknowledgeClaimFullDefence1v1();
+    await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
+    await DefendantSolicitor1ApiSteps.AddLitigationFriend();
+    await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence1v1();
+    await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence1v1();
   });
 });

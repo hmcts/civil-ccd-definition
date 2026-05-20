@@ -1,10 +1,14 @@
 import BaseDataBuilderFactory from '../../../base/base-data-builder-factory';
 import AcknowledgeClaimDataBuilder from './acknowledge-claim/unspec/acknowledge-claim-data-builder';
+import AddDefendantLitigationFriendDataBuilder from './add-defendant-litigation-friend/unspec/add-defendant-litigation-friend-data-builder';
 import AddOrAmendClaimDocumentsDataBuilder from './add-or-amend-claim-documents/unspec/add-or-amend-claim-documents-data-builder';
+import ClaimantResponseDataBuilder from './claimant-response/unspec/claimant-response-data-builder';
 import ClaimantResponseSpecDataBuilder from './claimant-response/lr-spec/claimant-response-spec-data-builder';
+import DefendantResponseDataBuilder from './defendant-response/unspec/defendant-response-data-builder';
 import DefendantResponseSpecDataBuilder from './defendant-response/lr-spec/defendant-response-spec-data-builder';
 import CreateClaimSpecDataBuilder from './create-claim/lr-spec/create-claim-spec-data-builder';
 import CreateClaimDataBuilder from './create-claim/unspec/create-claim-data-builder';
+import InformAgreedExtensionDateDataBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-data-builder';
 import InformAgreedExtensionDateSpecDataBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-data-builder';
 import NotifyClaimDataBuilder from './notify-claim/unspec/notify-claim-data-builder';
 import NotifyClaimDetailsDataBuilder from './notify-claim-details/unspec/notify-claim-details-data-builder';
@@ -17,6 +21,10 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
 
   get addOrAmendClaimDocumentsDataBuilder() {
     return new AddOrAmendClaimDocumentsDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get addDefendantLitigationFriendDataBuilder() {
+    return new AddDefendantLitigationFriendDataBuilder(this.requestsFactory, this.testData);
   }
 
   get createClaimDataBuilder() {
@@ -35,12 +43,24 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
     return new NotifyClaimDetailsDataBuilder(this.requestsFactory, this.testData);
   }
 
+  get defendantResponseDataBuilder() {
+    return new DefendantResponseDataBuilder(this.requestsFactory, this.testData);
+  }
+
   get defendantResponseSpecDataBuilder() {
     return new DefendantResponseSpecDataBuilder(this.requestsFactory, this.testData);
   }
 
+  get claimantResponseDataBuilder() {
+    return new ClaimantResponseDataBuilder(this.requestsFactory, this.testData);
+  }
+
   get claimantResponseSpecDataBuilder() {
     return new ClaimantResponseSpecDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get informAgreedExtensionDateDataBuilder() {
+    return new InformAgreedExtensionDateDataBuilder(this.requestsFactory, this.testData);
   }
 
   get informAgreedExtensionDateSpecDataBuilder() {
