@@ -7,7 +7,8 @@ import AcknowledgeClaimActions from './acknowledge-claim-actions';
 import AddDefendantLitigationFriendActions from './add-defendant-litigation-friend-actions';
 import DefendantResponseActions from './defendant-response/defendant-response-actions';
 import DefendantResponseSpecActions from './defendant-response/defendant-response-spec-actions';
-import InformAgreedExtensionDateActions from './inform-agreed-extension-date-actions';
+import InformAgreedExtensionDateActions from './inform-agreed-extension-date/inform-agreed-extension-date-actions';
+import InformAgreedExtensionDateSpecActions from './inform-agreed-extension-date/inform-agreed-extension-date-spec-actions';
 
 export default class DefendantActionsFactory extends BasePageActionsFactory {
   get defendantResponseActions() {
@@ -34,6 +35,13 @@ export default class DefendantActionsFactory extends BasePageActionsFactory {
 
   get informAgreedExtensionDateActions() {
     return new InformAgreedExtensionDateActions(
+      new InformAgreedExtensionDatePageFactory(this.page),
+      this.testData,
+    );
+  }
+
+  get informAgreedExtensionDateSpecActions() {
+    return new InformAgreedExtensionDateSpecActions(
       new InformAgreedExtensionDatePageFactory(this.page),
       this.testData,
     );
