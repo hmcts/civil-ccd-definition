@@ -1,9 +1,9 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 import defendantResponseSpecData from './defendant-response-spec-data-components';
 import DefendantResponseSpecTypeObjs from '../../../../../models/ccd-events/defendant-response-spec/defendant-response-spec-type-objs';
-import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response-spec/defence-route-spec';
+import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
 import { defendantSolicitor1User } from '../../../../../config/users/exui-users';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
