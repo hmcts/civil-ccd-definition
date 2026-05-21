@@ -9,11 +9,11 @@ test.describe('1v1 unspec default judgment', { tag: '@civil-ccd-nightly' }, () =
     await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.NotifyClaim();
+    await ClaimantSolicitorApiSteps.NotifyClaim();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await ClaimantSolicitorSteps.NotifyClaimDetails();
+    await ClaimantSolicitorApiSteps.NotifyClaimDetails();
     await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
+    await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RequestDefaultJudgment();
   });
 })

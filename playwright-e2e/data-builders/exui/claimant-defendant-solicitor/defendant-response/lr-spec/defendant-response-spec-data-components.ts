@@ -1,9 +1,9 @@
 import { defendantSolicitor1User } from '../../../../../config/users/exui-users';
 import preferredCourts from '../../../../../config/preferred-courts';
 import partys from '../../../../../constants/users/partys';
-import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
-import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response-spec/defence-route-spec';
+import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
 import DefendantResponseSpecTypeObjs, {
   FullDefenceDefendantResponseSpecTypeObjs,
 } from '../../../../../models/ccd-events/defendant-response-spec/defendant-response-spec-type-objs';
