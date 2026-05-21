@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
-import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 
