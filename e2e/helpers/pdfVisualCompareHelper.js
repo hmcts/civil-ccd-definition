@@ -12,7 +12,7 @@ const MAX_MISMATCH_PERCENT = 0.01;
 // Default behaviour:
 // - Tests FAIL if baseline is missing (prevents silent regressions)
 // To update/create baselines locally:
-//   UPDATE_PDF_BASELINE=true yarn test:functional <test-file>
+//   UPDATE_PDF_BASELINE=true npx codeceptjs run <test-file>
 const UPDATE_PDF_BASELINE = process.env.UPDATE_PDF_BASELINE === 'true';
 
 function ensureCleanDir(dir) {
