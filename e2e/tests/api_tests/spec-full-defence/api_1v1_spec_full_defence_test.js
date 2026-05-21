@@ -1,7 +1,8 @@
 const config = require('../../../config.js');
 const claimDocumentHelper = require('../../../helpers/claimDocumentHelper.js');
 
-const BASE_DIR = 'e2e/tests/api_tests/spec-full-defence';
+const TEST_DIR = 'e2e/tests/api_tests/spec-full-defence';
+const BASELINE_DIR = 'e2e/pdf-baselines/api-spec-full-defence';
 
 const SEALED_CLAIM_PDF = 'sealed_claim_form.pdf';
 const DEFENDANT_DIRECTIONS_QUESTIONNAIRE_PDF = 'defendant_directions_questionnaire.pdf';
@@ -17,7 +18,7 @@ Scenario('1v1 spec full defence', async ({ api_spec, I }) => {
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
 
-  await claimDocumentHelper.viewAndAssertPdf(I, 'sealed_claim_form', BASE_DIR, SEALED_CLAIM_PDF);
+  await claimDocumentHelper.viewAndAssertPdf(I, 'sealed_claim_form', TEST_DIR, BASELINE_DIR, SEALED_CLAIM_PDF);
 
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
@@ -26,8 +27,8 @@ Scenario('1v1 spec full defence', async ({ api_spec, I }) => {
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
 
-  await claimDocumentHelper.viewAndAssertPdf(I, 'defendant_directions_questionnaire_form', BASE_DIR, DEFENDANT_DIRECTIONS_QUESTIONNAIRE_PDF);
-  await claimDocumentHelper.viewAndAssertPdf(I, 'response_sealed_form', BASE_DIR, DEFENDANT_DEFENCE_PDF);
+  await claimDocumentHelper.viewAndAssertPdf(I, 'defendant_directions_questionnaire_form', TEST_DIR, BASELINE_DIR, DEFENDANT_DIRECTIONS_QUESTIONNAIRE_PDF);
+  await claimDocumentHelper.viewAndAssertPdf(I, 'response_sealed_form', TEST_DIR, BASELINE_DIR, DEFENDANT_DEFENCE_PDF);
 
   await api_spec.claimantResponse(
     config.applicantSolicitorUser,
@@ -40,7 +41,7 @@ Scenario('1v1 spec full defence', async ({ api_spec, I }) => {
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
 
-  await claimDocumentHelper.viewAndAssertPdf(I, 'claimant_directions_questionnaire_form', BASE_DIR, CLAIMANT_DIRECTIONS_QUESTIONNAIRE_PDF);
+  await claimDocumentHelper.viewAndAssertPdf(I, 'claimant_directions_questionnaire_form', TEST_DIR, BASELINE_DIR, CLAIMANT_DIRECTIONS_QUESTIONNAIRE_PDF);
 });
 
 AfterSuite(async ({ api_spec }) => {
