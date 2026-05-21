@@ -27,6 +27,7 @@ function renderPdfPagesToPng(pdfFile, outputDir) {
 
   const outputPrefix = path.join(outputDir, 'page');
 
+  // requires pdftoppm (poppler-utils): brew install poppler / apt-get install poppler-utils
   execFileSync('pdftoppm', ['-png', '-r', '150', pdfFile, outputPrefix]);
 
   return fs.readdirSync(outputDir)
@@ -272,13 +273,13 @@ async function downloadPdfAndAssertVisualMatch({
   }
 }
 
-function getPdfPaths(baseDir, pdfName) {
+function getPdfPaths(testDir, baselineDir, pdfName) {
   return {
-    actualFile: path.join(baseDir, 'downloads/actual', pdfName),
-    expectedFile: path.join(baseDir, 'downloads/expected', pdfName),
-    actualPngDir: path.join(baseDir, 'data/actualPngs'),
-    expectedPngDir: path.join(baseDir, 'data/expectedPngs'),
-    diffPngDir: path.join(baseDir, 'data/diffPngs')
+    actualFile: path.join(testDir, 'downloads/actual', pdfName),
+    expectedFile: path.join(baselineDir, pdfName),
+    actualPngDir: path.join(testDir, 'data/actualPngs'),
+    expectedPngDir: path.join(testDir, 'data/expectedPngs'),
+    diffPngDir: path.join(testDir, 'data/diffPngs')
   };
 }
 
