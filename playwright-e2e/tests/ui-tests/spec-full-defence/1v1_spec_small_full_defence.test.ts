@@ -6,6 +6,7 @@ test.describe('1v1 spec small track claim journey', { tag: '@civil-ccd-nightly' 
     DefendantSolicitor1SpecSteps,
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
+    CaseworkerSteps,
   }) => {
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.CreateClaimSmallTrack1v1();
@@ -15,5 +16,7 @@ test.describe('1v1 spec small track claim journey', { tag: '@civil-ccd-nightly' 
     await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence1v1();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondSmallClaimIntentToProceed1v1();
+    await CaseworkerSteps.Login();
+    await CaseworkerSteps.MediationUnsuccessful();
   });
 });
