@@ -1,5 +1,5 @@
 import BasePage from '../../../../base/base-page';
-import { CCDEvent } from '../../../../models/ccd/ccd-events';
+import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './event-summary-content';
 

@@ -1,4 +1,4 @@
-import CCDCaseData from '../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../models/ccd-case-data';
 
 export const headings = { caseNumber: { selector: 'ccd-markdown >> h1' } };
 

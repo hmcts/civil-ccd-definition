@@ -99,6 +99,6 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
 }).retry(1);
 
-// AfterSuite(async ({ api_ga }) => {
-//   await api_ga.cleanUp();
-// });
+AfterSuite(async ({ api_ga }) => {
+  await api_ga.cleanUp();
+});

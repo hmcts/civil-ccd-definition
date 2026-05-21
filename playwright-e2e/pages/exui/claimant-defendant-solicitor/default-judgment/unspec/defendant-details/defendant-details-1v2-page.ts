@@ -2,9 +2,9 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
 import { radioButtons } from './defendant-details-content';
-import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
-import partys from '../../../../../../constants/partys';
+import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types';
+import CCDCaseData from '../../../../../../models/ccd-case-data';
+import partys from '../../../../../../constants/users/partys';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
 
 @AllMethodsStep()

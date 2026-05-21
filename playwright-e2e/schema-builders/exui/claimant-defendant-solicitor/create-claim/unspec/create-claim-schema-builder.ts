@@ -1,13 +1,13 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
-import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTypeUnspec from '../../../../../enums/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../enums/ccd-events/create-claim/personal-injury-type';
-import ClaimTrack from '../../../../../enums/claim-track';
-import ClaimType from '../../../../../enums/claim-type';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
-import ClaimTypeUnspecObjs from '../../../../../models/unspec/claim-type-unspec-objs';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTrack from '../../../../../constants/cases/claim-track';
+import ClaimType from '../../../../../constants/cases/claim-type';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
 import createClaimResponseSchema from './create-claim-schema-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
@@ -61,7 +61,7 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
   }: {
     claimType?: ClaimType;
-    claimTypeUnspec?: ClaimTypeUnspecObjs | ClaimTypeUnspec;
+    claimTypeUnspec?: PersonalInjuryClaimTypeUnspecObjs | ClaimTypeUnspec;
     claimTrack?: ClaimTrack;
     claimant1PartyType?: ClaimantDefendantPartyType;
     claimant2PartyType?: ClaimantDefendantPartyType;

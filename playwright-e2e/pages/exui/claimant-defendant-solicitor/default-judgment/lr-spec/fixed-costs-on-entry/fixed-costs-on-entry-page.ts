@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { radioButtons } from './fixed-costs-on-entry-content.ts';
 import { getFormattedCaseId } from '../../../../exui-page/exui-content.ts';
@@ -19,8 +19,8 @@ export default class FixedCostsOnEntryPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
+      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
+      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
       super.expectLegend(radioButtons.claimFixedCosts.label),
       this.yesOrNoFragment.verifyContent(radioButtons.claimFixedCosts.selectorKey),
     ]);

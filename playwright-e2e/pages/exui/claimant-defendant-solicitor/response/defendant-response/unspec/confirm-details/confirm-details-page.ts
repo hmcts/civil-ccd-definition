@@ -1,12 +1,12 @@
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import { Page } from '@playwright/test';
 import DateOfBirthFragment from '../../../../../fragments/date/date-of-birth-fragment.ts';
-import { ClaimantDefendantPartyType } from '../../../../../../../models/claimant-defendant-party-types.ts';
+import { ClaimantDefendantPartyType } from '../../../../../../../models/users/claimant-defendant-party-types.ts';
 import { inputs } from './confirm-details-content.ts';
-import { Party } from '../../../../../../../models/partys.ts';
+import { Party } from '../../../../../../../models/users/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()

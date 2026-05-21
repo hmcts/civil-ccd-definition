@@ -2,7 +2,7 @@ import { Locator, Page } from '@playwright/test';
 import { Page as PageCore } from 'playwright-core';
 import AxeBuilder from '@axe-core/playwright';
 import config from '../config/config';
-import Cookie from '../models/cookie';
+import Cookie from '../models/test-utils/cookie';
 import { TruthyParams } from '../decorators/truthy-params';
 import { pageExpect, test } from '../playwright-fixtures';
 import Timer from '../helpers/timer';

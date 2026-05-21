@@ -2,13 +2,13 @@ import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
 import RequestOptions from '../models/api/request-options';
-import User from '../models/user';
+import User from '../models/users/user';
 import WATask from '../models/wa-task';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
 @AllMethodsStep()
 export default class WorkAllocationsRequests extends ServiceAuthProviderRequests(BaseRequest) {
-  async retrieveTask(user: User, caseId: number, validTask: WATask): Promise<WATask> {
+  async retrieveTask(user: User, validTask: WATask, caseId?: number): Promise<WATask> {
     const url = `${urls.waTaskMgmtApi}/task`;
     const body = {
       search_parameters: [
@@ -30,9 +30,11 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('tasks', responseJson);
         const tasks = responseJson.tasks;
-        await super.expectResponseJsonArrayToContain([{ type: validTask.type }], tasks, {
-          message: `Ongoing task retrieval process for case id: ${caseId}`,
-        });
+        await super.expectResponseJsonArrayToContain(
+          [{ type: validTask.type }],
+          tasks,
+          { message: `Ongoing task retrieval process for case id: ${caseId}` },
+        );
       },
     });
     const task = responseJson.tasks.find((task: any) => task.type === validTask.type);
@@ -50,14 +52,19 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
       );
       console.log(`Task ${waTask.id} assigned to user ${user.name}`);
     } else {
-      await super.expectResponseJsonToHavePropertyValue('assignee', user.userId, waTask, {
-        message: `Failed to assign task: ${waTask.id} to user: ${user.name}, task is already assigned to a user with a different userId: ${waTask.assignee}`,
-      });
+      await super.expectResponseJsonToHavePropertyValue(
+        'assignee',
+        user.userId,
+        waTask,
+        {
+          message: `Failed to assign task: ${waTask.id} to user: ${user.name}, task is already assigned to a user with a different userId: ${waTask.assignee}`,
+        },
+      );
       console.log(`Task is already assigned to user: ${user.name}`);
     }
   }
 
-  async completeTask(user: User, waTaskId: string) {
+  async completeTask(user: User, waTaskId?: string) {
     const url = `${urls.waTaskMgmtApi}/task/${waTaskId}/complete`;
     await super.retryRequest(
       url,

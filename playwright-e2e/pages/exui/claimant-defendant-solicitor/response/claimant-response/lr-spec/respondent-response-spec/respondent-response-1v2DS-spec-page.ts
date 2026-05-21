@@ -5,7 +5,7 @@ import {
   paragraphs,
   radioButtons,
 } from '../respondent-response-spec/respondent-response-spec-content.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import { getDQDocName } from '../../../../../exui-page/exui-content.ts';
 
 @AllMethodsStep()

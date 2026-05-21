@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-data';
+import TestData from '../../../../models/test-utils/test-data.ts';
 import ManageDocumentsPageFactory from '../../../../pages/exui/caseworker/manage-documents/manage-documents-page-factory.ts';
 
 @AllMethodsStep()

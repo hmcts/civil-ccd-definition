@@ -1,8 +1,8 @@
 import BasePage from '../../../base/base-page';
 import config from '../../../config/config';
-import ccdEvents from '../../../constants/ccd-events';
-import CCDCaseData from '../../../models/ccd/ccd-case-data';
-import { CCDEvent } from '../../../models/ccd/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import CCDCaseData from '../../../models/ccd-case-data';
+import { CCDEvent } from '../../../models/ccd-events/ccd-events';
 import { buttons, components, getFormattedCaseId } from './exui-content';
 
 let ccdEventstate: CCDEvent;
@@ -25,14 +25,14 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false, timeout }),
-          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false, timeout }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false, timeout }),
+          super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false, timeout }),
         ];
       } else {
         expects = [
           super.expectHeading(ccdEventstate.name, { exact: false, timeout }),
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false, timeout }),
-          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false, timeout }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false, timeout }),
+          super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false, timeout }),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });
