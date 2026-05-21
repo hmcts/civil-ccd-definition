@@ -4,6 +4,7 @@ test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' },
   async () => {
     test('1v1 case flags journey', async ({
       ClaimantSolicitorApiSteps, 
+      DefendantSolicitor1ApiSteps,
       ClaimantSolicitorSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1Steps,
@@ -11,12 +12,11 @@ test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' },
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-      await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.NotifyClaim();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await ClaimantSolicitorSteps.NotifyClaimDetails();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.AddLitigationFriend();
       await DefendantSolicitor1Steps.Login();
-      await DefendantSolicitor1Steps.AddLitigationFriend();
       await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v1();
       await ClaimantSolicitorSteps.Login();
       await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();

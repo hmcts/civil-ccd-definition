@@ -1,6 +1,6 @@
 import ClaimTrack from "../../../constants/cases/claim-track";
-import DefenceRouteSpec from "../../../constants/ccd-events/defendant-response-spec/defence-route-spec";
-import DefendantResponseSpecType from "../../../constants/ccd-events/defendant-response-spec/defendant-response-spec-type";
+import DefenceRouteSpec from "../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec";
+import DefendantResponseSpecType from "../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type";
 
 export type FullDefenceHasPaidDefendantResponseSpecType = {
   defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
