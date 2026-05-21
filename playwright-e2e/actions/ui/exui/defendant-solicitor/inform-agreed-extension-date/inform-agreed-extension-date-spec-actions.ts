@@ -1,10 +1,10 @@
-import BaseTestData from '../../../../base/base-test-data';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-utils/test-data';
-import InformAgreedExtensionDatePageFactory from '../../../../pages/exui/claimant-defendant-solicitor/inform-agreed-extension-date/inform-agreed-extension-date-page-factory';
+import BaseTestData from '../../../../../base/base-test-data';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import TestData from '../../../../../models/test-utils/test-data';
+import InformAgreedExtensionDatePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/inform-agreed-extension-date/inform-agreed-extension-date-page-factory';
 
 @AllMethodsStep()
-export default class InformAgreedExtensionDateActions extends BaseTestData {
+export default class InformAgreedExtensionDateSpecActions extends BaseTestData {
   private informAgreedExtensionDatePageFactory: InformAgreedExtensionDatePageFactory;
 
   constructor(

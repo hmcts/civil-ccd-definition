@@ -13,6 +13,7 @@ export default interface CCDCaseData {
   detailsOfClaim?: string;
   caseFlags?: CaseFlags;
   claimFee?: ClaimFee;
+  notificationSummary?: string;
   respondent1Experts?: ExpertAndWitness[];
   respondent1Witnesses?: ExpertAndWitness[];
   respondent2Experts?: ExpertAndWitness[];
