@@ -40,6 +40,7 @@ e2e/e2e-documentation/results/
 **/actualPngs/
 **/expectedPngs/
 **/diffPngs/
+**/downloads/actual/
 
 ## Helm
 charts/civil-ccd/charts/**
