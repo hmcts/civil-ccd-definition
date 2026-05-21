@@ -28,13 +28,13 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
   }
 
   async InformAgreedExtensionDateSpec() {
-    const { informAgreedExtensionDateActions } = this.defendantActionsFactory;
+    const { informAgreedExtensionDateSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await informAgreedExtensionDateActions.extensionDateSpec();
+        await informAgreedExtensionDateSpecActions.extensionDateSpec();
       },
       async () => {
-        await informAgreedExtensionDateActions.confirmInformAgreedExtensionDateSpec();
+        await informAgreedExtensionDateSpecActions.confirmInformAgreedExtensionDateSpec();
       },
       ccdEvents.INFORM_AGREED_EXTENSION_DATE_SPEC,
       { verifySuccessEvent: false },

@@ -14,6 +14,7 @@ test.describe('1v1 spec fast track claim journey', { tag: '@civil-ccd-nightly' }
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await ClaimantSolicitorSteps.NotifyClaimDetails();
     await DefendantSolicitor1Steps.Login();
+    await DefendantSolicitor1Steps.InformAgreedExtensionDate();
     await DefendantSolicitor1Steps.AcknowledgeClaimFullDefence();
     await DefendantSolicitor1Steps.AddLitigationFriend();
     await DefendantSolicitor1Steps.RespondFastTrackFullDefence1v1();
