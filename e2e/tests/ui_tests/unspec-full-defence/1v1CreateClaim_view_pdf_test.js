@@ -1,14 +1,14 @@
 const config = require('../../../config.js');
-
 const { PUBLIC_QUERY } = require('../../../fixtures/queryTypes');
-const pdfHelper = require('../../../helpers/pdfVisualCompareHelper.js');
+const claimDocumentHelper = require('../../../helpers/claimDocumentHelper.js');
+
+const BASE_DIR = 'e2e/tests/ui_tests/unspec-full-defence';
 
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
-const pdfDocument = 'defendant_directions_questionnaire_form';
-const claimDocumentsTab = '.mat-tab-label:has-text("Claim Documents")';
-const PDF_NAME = 'defendant_directions_questionnaire_form.pdf';
+
+const DEFENDANT_DIRECTIONS_QUESTIONNAIRE_PDF = 'defendant_directions_questionnaire_form.pdf';
 
 let caseId;
 
@@ -69,21 +69,7 @@ Scenario('01 Claimant validates defendant directions questionnaire PDF after que
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
 
-  I.click(claimDocumentsTab);
-  I.click(pdfDocument);
-
-  await I.wait(2);
-  I.switchToNextTab();
-
-  const pdfPaths = pdfHelper.getPdfPaths(
-    'e2e/tests/ui_tests/unspec-full-defence',
-    PDF_NAME
-  );
-
-  await pdfHelper.downloadPdfAndAssertVisualMatch({
-    I,
-    ...pdfPaths
-  });
+  await claimDocumentHelper.viewAndAssertPdf(I, 'defendant_directions_questionnaire_form', BASE_DIR, DEFENDANT_DIRECTIONS_QUESTIONNAIRE_PDF);
 });
 
 AfterSuite(async ({ api_spec }) => {
