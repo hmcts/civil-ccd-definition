@@ -1,5 +1,5 @@
 import BasePageFactory from '../../../../base/base-page-factory';
-import partys from '../../../../constants/partys';
+import partys from '../../../../constants/users/partys';
 import AddAnotherClaimantPage from './common/add-another-claimant/add-another-claimant-page';
 import AddAnotherDefendantPage from './common/add-another-defendant/add-another-defendant-page';
 import ClaimantSolicitorOrganisationPage from './common/claimant-solicitor-organisation/claimant-solicitor-organisation-page';

@@ -1,16 +1,23 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
-import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTrack from '../../../../../enums/claim-track';
-import ClaimType from '../../../../../enums/claim-type';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
+import ClaimType from '../../../../../constants/cases/claim-type';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecSchemaComponents from './create-claim-spec-schema-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
   async buildFastTrack1v1(): Promise<z.ZodType> {
-    return this.buildSchema({ claimTrack: ClaimTrack.FAST_CLAIM });
+    return this.buildSchema();
+  }
+
+  async buildFastTrack2v1(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.TWO_VS_ONE });
+  }
+
+  async buildFastTrack1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }
 
   async buildSmallTrack1v1(): Promise<z.ZodType> {
@@ -47,14 +54,12 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
 
   protected async buildSchema({
     claimType = ClaimType.ONE_VS_ONE,
-    claimTrack = ClaimTrack.SMALL_CLAIM,
     claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
   }: {
     claimType?: ClaimType;
-    claimTrack?: ClaimTrack;
     claimant1PartyType?: ClaimantDefendantPartyType;
     claimant2PartyType?: ClaimantDefendantPartyType;
     defendant1PartyType?: ClaimantDefendantPartyType;

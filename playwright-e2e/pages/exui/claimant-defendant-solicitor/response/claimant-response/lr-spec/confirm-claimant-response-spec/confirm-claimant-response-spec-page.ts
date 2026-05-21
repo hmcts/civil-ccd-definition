@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../../base/base-page.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import { confirmationHeadings, paragraphs } from './confirm-claimant-response-spec-content.ts';
 

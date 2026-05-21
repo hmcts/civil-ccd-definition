@@ -9,7 +9,7 @@ import PartyTypeIndividualFragment from '../../../../fragments/party-type/party-
 import PartyTypeOrganisationFragment from '../../../../fragments/party-type/party-type-organisation-fragment.ts';
 import PartyTypeSoleTraderFragment from '../../../../fragments/party-type/party-type-sole-trader-fragment.ts';
 import { radioButtons, subheadings } from './second-defendant-content.ts';
-import partys from '../../../../../../constants/partys.ts';
+import partys from '../../../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class SecondDefendantPage extends ExuiPage(BasePage) {

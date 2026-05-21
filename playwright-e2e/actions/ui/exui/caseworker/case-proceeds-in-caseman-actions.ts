@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../base/base-test-data.ts';
 import { AllMethodsStep } from '../../../../decorators/test-steps.ts';
-import TestData from '../../../../models/test-data.ts';
+import TestData from '../../../../models/test-utils/test-data.ts';
 import CaseProceedsInCasemanPageFactory from '../../../../pages/exui/caseworker/case-proceeds-in-caseman/case-proceeds-in-caseman-page-factory.ts';
 
 @AllMethodsStep()

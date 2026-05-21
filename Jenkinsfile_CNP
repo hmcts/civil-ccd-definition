@@ -118,6 +118,12 @@ def checkForEnableEmailNotifications(branch_name) {
   return checkForPrValuesLabel(branch_name, "enableNotifyEmails")
 }
 
+def checkForSkipFunctionalTests(branch_name) {
+  return new GithubAPI(this)
+    .getLabelsbyPattern(branch_name, "pr-values:skip-functional-tests")
+    .contains("pr-values:skip-functional-tests")
+}
+
 def checkForRunAllFunctionalTests(branch_name) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
 }
@@ -222,6 +228,8 @@ withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
   env.BEFTA_FORCE_IMPORT_RETRY = 'true'
+  env.BEFTA_IMPORT_GATEWAY_TIMEOUT_VERSION_POLL_MAX_ATTEMPTS = '90'
+  env.BEFTA_IMPORT_GATEWAY_TIMEOUT_VERSION_POLL_DELAY_MILLISECONDS = '10000'
 
   onPR {
     env.ENVIRONMENT = "preview"
@@ -298,7 +306,9 @@ withPipeline(type, product, component) {
     env.IDAM_STUB_ENABLED = 'false'
     env.UNASSIGN_CASES = true
     copyPreviousAllureHistory();
-    if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
+    if(checkForSkipFunctionalTests(env.BRANCH_NAME)) {
+      env.SKIP_FUNCTIONAL_TESTS = true
+    } else if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
       env.RUN_ALL_FUNCTIONAL_TESTS = true
     } else {
       copyPrevFailedAndNotExecutedTestFilesJson();
@@ -307,6 +317,10 @@ withPipeline(type, product, component) {
 
 
   afterAlways('functionalTest:preview') {
+    if(checkForSkipFunctionalTests(env.BRANCH_NAME)) {
+      echo "Skipping Allure report generation due to label: pr-values:skip-functional-tests"
+      return
+    }
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
     publishHTML([

@@ -5,7 +5,7 @@ import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
 import UserStateHelper from '../helpers/users-state-helper';
 import { APIRequestContext, request } from 'playwright-core';
 import { solicitorUsers } from '../config/users/exui-users';
-import User from '../models/user';
+import User from '../models/users/user';
 import config from '../config/config';
 import urls from '../config/urls';
 import { TOTP } from 'totp-generator';
@@ -90,7 +90,7 @@ const unassignCases = async () => {
           if (!solicitorUser.accessToken) {
             solicitorUser.accessToken = await getAccessToken(solicitorUser, requestContext);
           }
-          if (!civilS2sToken) {
+          if (!civilS2sToken!) {
             civilS2sToken = await fetchCivilS2sToken(requestContext);
           }
           await unassignCaseFromUser(requestContext, solicitorUser, civilS2sToken, assignedCases);

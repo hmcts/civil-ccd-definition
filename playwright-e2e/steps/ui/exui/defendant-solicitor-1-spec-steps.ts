@@ -3,9 +3,9 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
@@ -25,6 +25,20 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async Login() {
     await super.idamActions.exuiLogin(defendantSolicitor1User);
+  }
+
+  async InformAgreedExtensionDateSpec() {
+    const { informAgreedExtensionDateSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await informAgreedExtensionDateSpecActions.extensionDateSpec();
+      },
+      async () => {
+        await informAgreedExtensionDateSpecActions.confirmInformAgreedExtensionDateSpec();
+      },
+      ccdEvents.INFORM_AGREED_EXTENSION_DATE_SPEC,
+      { verifySuccessEvent: false },
+    );
   }
 
   async RespondFastTrackFullDefence1v1() {

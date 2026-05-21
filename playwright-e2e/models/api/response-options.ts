@@ -14,6 +14,7 @@ export interface _ResponseOptions {
   statusErrorMessage?: (
     response: APIResponse | any | string,
     responseData?: {
+      url?: string;
       headers?: {
         [key: string]: string;
       };
@@ -36,6 +37,7 @@ export interface ResponseOptions extends _ResponseOptions {
   statusErrorMessage?: (
     response: APIResponse,
     responseData?: {
+      url?: string;
       headers?: {
         [key: string]: string;
       };
@@ -58,6 +60,7 @@ export interface ResponseJsonOptions extends _ResponseOptions {
   statusErrorMessage?: (
     responseJson: any,
     responseData?: {
+      url?: string;
       headers?: {
         [key: string]: string;
       };
@@ -80,6 +83,7 @@ export interface ResponseTextOptions extends _ResponseOptions {
   statusErrorMessage?: (
     responseText: string,
     responseData?: {
+      url?: string;
       headers?: {
         [key: string]: string;
       };
@@ -105,6 +109,7 @@ export interface _RetryResponseOptions {
   statusErrorMessage?: (
     response: APIResponse | any | string,
     responseData?: {
+      url?: string;
       headers?: {
         [key: string]: string;
       };
@@ -127,6 +132,7 @@ export interface RetryResponseOptions extends _RetryResponseOptions {
   statusErrorMessage?: (
     response: APIResponse,
     responseData?: {
+      url?: string;
       headers?: {
         [key: string]: string;
       };
@@ -149,6 +155,7 @@ export interface RetryResponseJsonOptions extends _RetryResponseOptions {
   statusErrorMessage?: (
     responseJson: any,
     responseData?: {
+      url?: string;
       headers?: {
         [key: string]: string;
       };
@@ -171,6 +178,7 @@ export interface RetryResponseTextOptions extends _RetryResponseOptions {
   statusErrorMessage?: (
     responseText: string,
     responseData?: {
+      url?: string;
       headers?: {
         [key: string]: string;
       };

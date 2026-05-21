@@ -6,8 +6,8 @@ import {
   paragraphs,
   subheadings,
 } from '../respondent-response/respondent-response-content.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import partys from '../../../../../../../constants/partys.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
+import partys from '../../../../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class RespondentResponse2v1Page extends ExuiPage(BasePage) {

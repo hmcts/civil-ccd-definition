@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../decorators/test-steps';
 import config from '../config/config';
 import RequestOptions from '../models/api/request-options';
 import urls from '../config/urls';
-import User from '../models/user';
+import User from '../models/users/user';
 
 let civilS2sToken: string;
 

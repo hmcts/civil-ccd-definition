@@ -1,6 +1,6 @@
-import PartyType from '../../../../enums/party-types';
+import PartyType from '../../../../constants/users/party-types';
 import StringHelper from '../../../../helpers/string-helper';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 
 export const subheadings = {
   correspondenceAddress: 'Enter the correspondence address of the organisation',

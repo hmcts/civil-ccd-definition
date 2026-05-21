@@ -1,10 +1,10 @@
 import BaseApi from '../../../../base/base-api';
-import ccdEvents from '../../../../constants/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import CookiesHelper from '../../../../helpers/cookies-helper';
-import { CCDEvent } from '../../../../models/ccd/ccd-events';
-import TestData from '../../../../models/test-data';
-import User from '../../../../models/user';
+import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import TestData from '../../../../models/test-utils/test-data';
+import User from '../../../../models/users/user';
 import ExuiDashboardPageFactory from '../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import PageUtilsFactory from '../../../../pages/utils/page-utils-factory';
 import RequestsFactory from '../../../../requests/requests-factory';
@@ -44,7 +44,7 @@ export default class ExuiDashboardActions extends BaseApi {
 
   async goToCaseDetails() {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
   }
 
@@ -70,10 +70,10 @@ export default class ExuiDashboardActions extends BaseApi {
 
   async startExuiEvent(ccdEvent: CCDEvent) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
     // await caseDetailsPage.retryChooseNextStep(ccdEvent);
-    await caseDetailsPage.retryChooseNextStepWithUrl(this.ccdCaseData.id, ccdEvent);
+    await caseDetailsPage.retryChooseNextStepWithUrl(this.ccdCaseData.id!, ccdEvent);
     caseDetailsPage.setCCDEvent = ccdEvent;
   }
 
@@ -91,6 +91,6 @@ export default class ExuiDashboardActions extends BaseApi {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     if (ccdEvent === ccdEvents.CREATE_CASE_FLAGS || ccdEvent === ccdEvents.MANAGE_CASE_FLAGS)
       await caseDetailsPage.verifySuccessCaseFlagsEvent(super.activeCaseFlags, ccdEvent);
-    else await caseDetailsPage.verifySuccessEvent(super.ccdCaseData.id, ccdEvent);
+    else await caseDetailsPage.verifySuccessEvent(super.ccdCaseData.id!, ccdEvent);
   }
 }
