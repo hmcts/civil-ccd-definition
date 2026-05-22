@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DateHelper from '../../../../../helpers/date-helper';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import {
@@ -28,8 +28,8 @@ export default class SdoR2SmallClaimsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id), {exact: false}),
-      super.expectHeading(ccdCaseData.caseNamePublic, {exact: false}),
+      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), {exact: false}),
+      super.expectHeading(ccdCaseData.caseNamePublic!, {exact: false}),
       super.expectSubheading(subheadings.warning, {headingLevel: 3}),
       super.expectSubheading(subheadings.judgesRecital, {headingLevel: 3}),
       super.expectSubheading(subheadings.allocation, {headingLevel: 3}),

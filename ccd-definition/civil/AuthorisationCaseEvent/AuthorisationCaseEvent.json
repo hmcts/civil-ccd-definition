@@ -1085,5 +1085,17 @@
         "CRUD": "CR"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CASE_DATA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

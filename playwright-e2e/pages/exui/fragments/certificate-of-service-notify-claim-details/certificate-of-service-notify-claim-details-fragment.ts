@@ -12,7 +12,7 @@ import {
   dropdowns,
   radioButtons,
 } from './certificate-of-service-notify-claim-details-content';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import DateFragment from '../date/date-fragment';
 
 @AllMethodsStep()

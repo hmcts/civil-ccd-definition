@@ -3,7 +3,7 @@ import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CertificateOfServiceNotifyClaimDetailsFragment from '../../../fragments/certificate-of-service-notify-claim-details/certificate-of-service-notify-claim-details-fragment';
 import ExuiPage from '../../../exui-page/exui-page';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../../../models/ccd-case-data';
 
 @AllMethodsStep()
 export default class CertificateOfService2NotifyClaimDetailsPage extends ExuiPage(BasePage) {

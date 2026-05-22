@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
 import LitigationFriendFragment from '../../../../fragments/litigation-friend/litigation-friend-fragment';
 import { radioButtons, subheadings } from './second-claimant-litigation-friend-content';
-import partys from '../../../../../../constants/partys';
+import partys from '../../../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class SecondClaimantLitigationFriendPage extends ExuiPage(BasePage) {

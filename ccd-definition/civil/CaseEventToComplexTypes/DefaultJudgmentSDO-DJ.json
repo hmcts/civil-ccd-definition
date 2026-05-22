@@ -157,7 +157,8 @@
     "CaseFieldID": "disposalHearingMedicalEvidenceDJ",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "input1 = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "ID": "DisposalHearingMedicalEvidenceDJ",

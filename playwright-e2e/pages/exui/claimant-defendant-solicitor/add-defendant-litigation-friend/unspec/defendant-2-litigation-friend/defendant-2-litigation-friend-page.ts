@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
 import LitigationFriendFragment from '../../../../fragments/litigation-friend/litigation-friend-fragment';
 import { radioButtons, subheadings } from './defendant-2-litigation-friend-content';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../../../../models/ccd-case-data';
 
 @AllMethodsStep()
 export default class Defendant2LitigationFriendPage extends ExuiPage(BasePage) {

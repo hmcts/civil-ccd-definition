@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import ClaimTypeUnspec from '../../../../../enums/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../enums/ccd-events/create-claim/personal-injury-type';
-import ClaimTrack from '../../../../../enums/claim-track';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
-import ClaimTypeUnspecObjs from '../../../../../models/unspec/claim-type-unspec-objs';
-import ClaimType from '../../../../../enums/claim-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTrack from '../../../../../constants/cases/claim-track';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
+import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 
 const yesNoSchema = z.enum(['Yes', 'No']);
@@ -414,7 +414,7 @@ const lipResponseArtifacts = (claimType: ClaimType) => {
   }
 };
 
-const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | ClaimTypeUnspecObjs) => {
+const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimTypeUnspecObjs) => {
   const claimType =
     typeof claimTypeUnSpec === 'object' ? claimTypeUnSpec.claimTypeUnspec : claimTypeUnSpec;
 

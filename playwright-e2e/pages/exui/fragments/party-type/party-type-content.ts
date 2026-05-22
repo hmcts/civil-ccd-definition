@@ -1,5 +1,5 @@
-import { Party } from '../../../../models/partys';
-import { ClaimantDefendantPartyType } from '../../../../models/claimant-defendant-party-types';
+import { Party } from '../../../../models/users/partys';
+import { ClaimantDefendantPartyType } from '../../../../models/users/claimant-defendant-party-types';
 
 export const inputs = {
   name: {

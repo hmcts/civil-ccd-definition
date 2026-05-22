@@ -1,4 +1,4 @@
-import ClaimType from '../enums/claim-type';
+import ClaimType from '../constants/cases/claim-type';
 
 export default class ClaimTypeHelper {
   static isClaimant2(claimType: ClaimType) {
@@ -44,6 +44,10 @@ export default class ClaimTypeHelper {
       claimType === ClaimType.ONE_VS_TWO_DIFF_SOL ||
       claimType === ClaimType.ONE_VS_TWO_LIP_LR
     );
+  }
+
+  static isDefendant2RepresentedSame(claimType:ClaimType) {
+    return claimType === ClaimType.ONE_VS_TWO_SAME_SOL;
   }
 
   static isDefendant2RepresentedNotSame(claimType: ClaimType) {

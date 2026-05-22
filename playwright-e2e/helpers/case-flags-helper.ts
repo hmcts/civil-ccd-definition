@@ -1,11 +1,11 @@
-import caseFlagLocations from '../constants/case-flags/case-flag-locations';
-import CaseFlags, { CaseFlagDetails } from '../models/case-flag';
+import caseFlagLocations from '../constants/ccd-events/case-flags/case-flag-locations';
+import CaseFlags, { CaseFlagDetails } from '../models/ccd-events/case-flags/case-flag';
 import CCDCaseData, {
   ClaimantDefendant,
   LitigationFriend,
   ExpertAndWitness,
   CCDCaseFlagsDetails,
-} from '../models/ccd/ccd-case-data';
+} from '../models/ccd-case-data';
 import DateHelper from './date-helper';
 
 export default class CaseFlagsHelper {

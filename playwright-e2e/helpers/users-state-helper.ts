@@ -1,8 +1,8 @@
-import User from '../models/user';
-import FileSystemHelper from './file-system-helper';
-import FileType from '../enums/file-type';
-import UserKey from '../enums/user-key';
-import filePaths from '../config/file-paths';
+import User from '../models/users/user.ts';
+import FileSystemHelper from './file-system-helper.ts';
+import FileType from '../constants/test-utils/file-type.ts';
+import UserKey from '../constants/users/user-key.ts';
+import filePaths from '../config/file-paths.ts';
 
 export default class UserStateHelper {
   private static getUserStatePath = (userKey: UserKey) => `${filePaths.users}/${userKey}-user.json`;
