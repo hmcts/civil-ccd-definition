@@ -79,19 +79,13 @@ test.describe('test1', { tag: '@specified' }, () => {
     await buttonHelper.continueButton.click(); //Summary
     await buttonHelper.continueButton.click(); //Further information
     await createCase.setReferences(claimType);
-    //await createCase.setCourt();
     await createCase.setClaimantType(claimantType, 1);
-    //await createCase.setClaimantLitigantFriend(litigantFriend, 1);
-    // await createCase.setClaimantNotifications();
-    // await buttonHelper.continueButton.click(); //ClaimantSolicitorOrganisation
-    // await createCase.setClaimantServiceAddress();
 
     switch (claimType) {
       case claimTypes.TWO_VS_ONE:
       case claimTypes.TWO_VS_ONE_LIP:
         await createCase.setAnotherClaimant(YesNo.YES, claimantType);
         await createCase.setClaimantType(claimantType, 2);
-        //  await createCase.setClaimantLitigantFriend(litigantFriend, 2);
         break;
       default:
         await createCase.setAnotherClaimant(YesNo.NO, claimantType);
@@ -150,8 +144,6 @@ test.describe('test1', { tag: '@specified' }, () => {
           await createCase.setSameLegalRepresentative(YesNo.NO);
           await createCase.setOrganisationRegisteredWithHMCTS(YesNo.YES, 2);
           await createCase.setSolicitorOrganisation('Civil - Organisation 3');
-          // await createCase.setDefendantLegalRepresentativeAddress(yesNo.NO,2);
-          // await createCase.setDefendant2LegalRepresentativeReference();
           await createCase.setDefendantLegalRepresentativeEmail(2);
           break;
         default:

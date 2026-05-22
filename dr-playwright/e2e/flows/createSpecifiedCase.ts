@@ -308,11 +308,6 @@ export class CreateSpecifiedCase {
     await this.buttonHelper.continueButton.click();
   }
 
-  //
-  // async setDefendantLegalRepresentativeAddress(yesNo: YesNo = YesNo.NO, defendantNumber: number = 1) {
-  //   await this.page.locator(`#respondentSolicitor${defendantNumber}ServiceAddressRequired_${yesNo}`).check();
-  //   await this.buttonHelper.continueButton.click();
-  // }
 
   async setDefendantLegalRepresentativeEmail(defendantNumber: number = 1) {
     await this.page
@@ -355,7 +350,6 @@ export class CreateSpecifiedCase {
       .locator('#specClaimDetailsDocumentFiles')
       .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
     await this.page.waitForSelector('.error-message', { state: 'hidden' });
-    //await this.page.waitForTimeout(2000); // waits for 2 seconds otherwise uploadButton click fails
     await this.buttonHelper.continueButton.click();
   }
 
