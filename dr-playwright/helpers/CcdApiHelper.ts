@@ -1,5 +1,5 @@
 import {APIRequestContext, request} from "@playwright/test";
-import {ccdDataStoreApiBaseUrl, createCase, documentManagementStoreApiBaseUrl} from "../iacConfig";
+import {ccdDataStoreApiBaseUrl, createCase, documentManagementStoreApiBaseUrl} from "../civilConfig.ts";
 import fs from "fs";
 import path from "path";
 import {APIResponse} from "playwright";

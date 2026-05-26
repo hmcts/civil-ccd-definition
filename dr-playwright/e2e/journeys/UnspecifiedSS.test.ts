@@ -10,6 +10,8 @@ import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
 import claimTrack from '../../enums/claim-track.ts';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
+import { TabsHelper } from '../../helpers/TabsHelper.ts';
+import { PaymentPage } from '../page-objects/pages/payment_page.ts'
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -29,7 +31,9 @@ let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].i
 let caseId: string = '';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
+let tabsHelper: TabsHelper;
 let createCasePage: CreateCasePage;
+
 
 test.beforeAll(async ({  }) => {
   if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY && typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS) {
@@ -41,7 +45,8 @@ test.beforeEach(async ({ page }) => {
   pageHelper = new PageHelper(page);
   buttonHelper = new ButtonHelper(page);
   createCasePage = new CreateCasePage(page);
-  await page.goto(envUrl);
+  tabsHelper = new TabsHelper(page);
+  await page.goto(envUrl+ '/cases/case-details/'+caseId);
 });
 
 test.describe.configure({ mode: 'serial' });
@@ -149,5 +154,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
     caseId = await pageHelper.grabCaseNumber();
     console.log('caseId>>>>>>>>>>>>>>>' + caseId + '<<<<<<<<<<<<<<<<<<<');
+    // Pay the claim fee
+    await new PaymentPage(page).makePayment('CARD');
+
   });
 });

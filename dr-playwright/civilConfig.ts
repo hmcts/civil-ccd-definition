@@ -6,22 +6,30 @@ import config from '../playwright-e2e/config/config.ts';
 import Environment from '../playwright-e2e/enums/environment.ts';
 // Password12!
 const defaultPassword = process.env.DEFAULT_PASSWORD;
-
+const eventCode = process.env.CLAIM == 'SPEC' ? '_SPEC' : '';
 environment: process.env.ENVIRONMENT as Environment
 
 export const envUrl: string = process.env.ENVIRONMENT === 'preview' ? process.env.URL : (process.env.ENVIRONMENT === 'demo' ? 'https://manage-case.demo.platform.hmcts.net' : 'https://manage-case.aat.platform.hmcts.net');
+export const idamApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'https://idam-api.aat.platform.hmcts.net' : 'https://idam-api.demo.platform.hmcts.net';
+export const authProviderApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal' : 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal';
+export const ccdDataStoreApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'https://ccd-data-store-api-civil-service-pr-3056.preview.platform.hmcts.net' : (process.env.ENVIRONMENT === 'demo' ? 'http://ccd-data-store-api-demo.service.core-compute-demo.internal' : 'http://ccd-data-store-api-aat.service.core-compute-aat.internal');
+export const documentManagementStoreApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'http://dm-store-aat.service.core-compute-aat.internal' : 'http://dm-store-demo.service.core-compute-demo.internal';
+export const microService: string = 'iac';
+export const secret: string = process.env.ENVIRONMENT === 'preview' ? 'AABBCCDDEEFFGGHH' : (process.env.ENVIRONMENT === 'demo' ? 'AABBCCDDEEFFGGHH' : process.env.S2S_SECRET);
+export const civilServiceUrl: string = process.env.CIVIL_SERVICE_URL;
 
-
-export const createCaseUnspecified = {
+export const createCase = {
   jurisdictionCode: 'CIVIL',
   caseTypeCode: 'Civil',
-  eventCode: 'CREATE_CLAIM',
+  eventCode: 'CREATE_CLAIM' + eventCode
 }
 
-export const createCaseSpecified = {
-  jurisdictionCode: 'CIVIL',
-  caseTypeCode: 'Civil',
-  eventCode: 'CREATE_CLAIM_SPEC',
+export const createCaseTest = (caseType) => {
+  return {
+    jurisdictionCode: 'CIVIL',
+    caseTypeCode: 'Civil',
+    eventCode: 'CREATE_CLAIM' + caseType == 'SPEC' ? '_SPEC' : ''
+  }
 }
 
 
