@@ -20,6 +20,10 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }
 
+  async buildFastTrack1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
+  }
+
   async buildSmallTrack1v1(): Promise<z.ZodType> {
     return this.buildSchema();
   }

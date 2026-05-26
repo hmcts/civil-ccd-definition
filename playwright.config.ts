@@ -29,7 +29,7 @@ export default defineConfig({
           },
         ],
       ]
-    : 'list',
+    : 'html',
   timeout: 1_200_000,
   expect: {
     timeout: 60_000,
