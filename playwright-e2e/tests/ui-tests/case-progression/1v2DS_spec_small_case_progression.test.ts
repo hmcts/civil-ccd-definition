@@ -7,6 +7,7 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     DefendantSolicitor1SpecSteps,
     DefendantSolicitor2SpecSteps,
     JudgeSteps,
+    ClaimantSolicitorSpecSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -16,7 +17,10 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     await DefendantSolicitor1SpecSteps.RespondFastTrackFullDefence1v2DS();
     await DefendantSolicitor2SpecSteps.Login();
     await DefendantSolicitor2SpecSteps.RespondFastTrackFullDefence1v2DS();
-    await JudgeSteps.SdoSmallTrack();
+    await ClaimantSolicitorSpecSteps.Login();
+    await ClaimantSolicitorSpecSteps.RespondFastTrackIntentToProceed1v2DS();
+    await JudgeSteps.Login();
+    await JudgeSteps.SdoSmallTrackFromFastTrackClaim();
 
     // Upload evidence as claimant solicitor
     // Upload evidence as defendant solicitor
