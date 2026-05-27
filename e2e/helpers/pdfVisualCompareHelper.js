@@ -255,6 +255,12 @@ async function downloadPdfAndAssertVisualMatch({
     return;
   }
 
+  if (UPDATE_PDF_BASELINE) {
+    fs.copyFileSync(actualFile, expectedFile);
+    console.log('Baseline PDF updated');
+    return;
+  }
+
   const actualPngs = renderPdfPagesToPng(actualFile, actualPngDir);
   const expectedPngs = renderPdfPagesToPng(expectedFile, expectedPngDir);
 

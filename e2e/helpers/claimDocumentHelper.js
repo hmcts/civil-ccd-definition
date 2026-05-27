@@ -6,9 +6,13 @@ async function viewAndAssertPdf(I, documentName, testDir, baselineDir, pdfName) 
   const pdfPaths = pdfHelper.getPdfPaths(testDir, baselineDir, pdfName);
 
   await I.click(CLAIM_DOCUMENTS_TAB);
+  let newPagePromise;
+  await I.usePlaywrightTo('register new tab listener', async ({ browserContext }) => {
+    newPagePromise = browserContext.waitForEvent('page', { timeout: 30000 });
+  });
   await I.click(documentName);
-  await I.usePlaywrightTo('wait for new tab', async ({ browserContext }) => {
-  await browserContext.waitForEvent('page', { timeout: 10000 });
+  await I.usePlaywrightTo('wait for new tab', async () => {
+    await newPagePromise;
   });
   await I.switchToNextTab();
 
