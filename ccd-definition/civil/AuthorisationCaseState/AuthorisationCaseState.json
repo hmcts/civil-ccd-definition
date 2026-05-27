@@ -14,6 +14,32 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDGMENT_REQUESTED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-approver",
+          "wlu-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile",
+          "caseworker-civil-citizen-ui-pcqextractor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "caseworker-civil-solicitor",

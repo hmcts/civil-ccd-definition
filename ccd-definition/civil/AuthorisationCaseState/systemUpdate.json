@@ -13,6 +13,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDGMENT_REQUESTED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"

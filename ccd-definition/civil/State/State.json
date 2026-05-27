@@ -142,5 +142,13 @@
     "Description": "Case Discontinued",
     "DisplayOrder": 18,
     "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameHmctsInternal}"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "JUDGMENT_REQUESTED",
+    "Name": "Judgment Requested",
+    "Description": "Judgment Requested",
+    "DisplayOrder": 19,
+    "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameHmctsInternal}"
   }
 ]
