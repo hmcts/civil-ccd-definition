@@ -45,6 +45,7 @@ type CCDEvents = {
   CREATE_CASE_FLAGS: CCDEvent;
   MANAGE_CASE_FLAGS: CCDEvent;
   MEDIATION_UNSUCCESSFUL: CCDEvent;
+  EVIDENCE_UPLOAD_APPLICANT: CCDEvent;
 };
 
 export default CCDEvents;

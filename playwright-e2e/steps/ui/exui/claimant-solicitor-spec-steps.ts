@@ -318,4 +318,21 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async EvidenceUploadApplicant() {
+    const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUpload();
+        await evidenceUploadApplicantActions.documentSelectionSmallClaim();
+        await evidenceUploadApplicantActions.documentUpload();
+        await evidenceUploadApplicantActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadApplicantActions.confirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
+      { verifySuccessEvent: false },
+    );
+  }
 }
