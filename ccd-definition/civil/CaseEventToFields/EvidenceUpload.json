@@ -194,7 +194,8 @@
     "DisplayContext": "READONLY",
     "PageID": "DocumentSelectionFastTrack",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/createShowCondition"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -414,6 +415,36 @@
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "trialSelectionEvidenceSmallClaim",
     "PageFieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelectionSmallClaim",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "withoutPrejudiceLabelSmallClaim",
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentSelectionSmallClaim",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "withoutPrejudiceToggleTextSmallClaim",
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentSelectionSmallClaim",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "withoutPrejudiceSelectionEvidenceSmallClaim",
+    "PageFieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionSmallClaim",
     "PageDisplayOrder": 3,
@@ -812,7 +843,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag != \"ApplicantTwoFields\""
+    "FieldShowCondition": "(withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" OR withoutPrejudiceSelectionEvidenceSmallClaim CONTAINS \"PART36_REJECTION\") AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -824,7 +855,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag = \"ApplicantTwoFields\""
+    "FieldShowCondition": "(withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" OR withoutPrejudiceSelectionEvidenceSmallClaim CONTAINS \"PART36_REJECTION\") AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -857,7 +888,8 @@
     "DisplayContext": "READONLY",
     "PageID": "DocumentSelectionFastTrack",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/createShowCondition"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1077,6 +1109,36 @@
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "trialSelectionEvidenceSmallClaimRes",
     "PageFieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelectionSmallClaim",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "withoutPrejudiceLabelSmallClaimRes",
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentSelectionSmallClaim",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "withoutPrejudiceToggleTextSmallClaimRes",
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentSelectionSmallClaim",
+    "PageDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "withoutPrejudiceSelectionEvidenceSmallClaimRes",
+    "PageFieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionSmallClaim",
     "PageDisplayOrder": 3,
@@ -1476,7 +1538,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag != \"RespondentTwoFields\""
+    "FieldShowCondition": "(withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" OR withoutPrejudiceSelectionEvidenceSmallClaimRes CONTAINS \"PART36_REJECTION\") AND caseTypeFlag != \"RespondentTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1488,7 +1550,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag = \"RespondentTwoFields\""
+    "FieldShowCondition": "(withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" OR withoutPrejudiceSelectionEvidenceSmallClaimRes CONTAINS \"PART36_REJECTION\") AND caseTypeFlag = \"RespondentTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
