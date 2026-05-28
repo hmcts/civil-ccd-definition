@@ -535,7 +535,7 @@ module.exports = {
     // Per Buffer Period spec: state=PENDING_ISSUE, issueDate=null, isRegisterWithRTL=No, rtlState=null.
     const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
     const aj = response.case_data ? response.case_data.activeJudgment : null;
-    assert.ok(aj, `Expected activeJudgment to exist in buffer state but got null/undefined`);
+    assert.ok(aj, 'Expected activeJudgment to exist in buffer state but got null/undefined');
     assert.equal(aj.state, 'PENDING_ISSUE',
       `AC1 buffer state: expected activeJudgment.state=PENDING_ISSUE, got ${aj.state}`);
     assert.isTrue(aj.issueDate === null || aj.issueDate === undefined,
