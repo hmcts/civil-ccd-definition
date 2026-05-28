@@ -259,14 +259,14 @@
     "Searchable": "N"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "ID": "joSetAsideOrderType",
-  "Label": "Which type of order has been made?",
-  "FieldType": "FixedRadioList",
-  "FieldTypeParameter": "JoSetAsideOrderTypeList",
-  "SecurityClassification": "Public",
-  "Searchable": "N"
-   },
+    "CaseTypeID": "CIVIL",
+    "ID": "joSetAsideOrderType",
+    "Label": "Which type of order has been made?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "JoSetAsideOrderTypeList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "joSetAsideOrderDate",
@@ -302,13 +302,13 @@
     "Searchable": "N"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "ID": "confirmReferToJudgeDefenceReceived",
-  "Label": " ",
-  "FieldType": "MultiSelectList",
-  "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",
-  "SecurityClassification": "Public",
-  "Searchable": "N"
+    "CaseTypeID": "CIVIL",
+    "ID": "confirmReferToJudgeDefenceReceived",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
