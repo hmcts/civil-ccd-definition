@@ -21,12 +21,10 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     await ClaimantSolicitorSpecSteps.RespondFastTrackIntentToProceed1v2DS();
     await JudgeSteps.Login();
     await JudgeSteps.SdoSmallTrackFromFastTrackClaim();
-
-    // Upload evidence as claimant solicitor
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.EvidenceUploadApplicant();
-
-    // Upload evidence as defendant solicitor
+    await DefendantSolicitor1SpecSteps.Login();
+    await DefendantSolicitor1SpecSteps.EvidenceUploadRespondent();
     // Schedule a hearing
     // API pay hearing fee (make changes to same classes that handle claim issued payment)
   });

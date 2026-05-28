@@ -1,7 +1,7 @@
 import BasePage from '../../../../../base/base-page.ts';
 import ExuiPage from '../../../exui-page/exui-page.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
-import { headings, paragraphs, checkboxes } from './document-selection-small-claim-content.ts';
+import { headings, checkboxes } from './document-selection-small-claim-content.ts';
 
 @AllMethodsStep()
 export default class DocumentSelectionSmallClaimPage extends ExuiPage(BasePage) {
@@ -11,8 +11,6 @@ export default class DocumentSelectionSmallClaimPage extends ExuiPage(BasePage) 
       super.expectSubheading(headings.witnessEvidence),
       super.expectSubheading(headings.expertEvidence),
       super.expectSubheading(headings.trialDocuments),
-      super.expectText(paragraphs.expertEvidenceDescription),
-      super.expectText(paragraphs.trialDocumentsDescription),
       super.expectLabel(checkboxes.witnessStatement),
       super.expectLabel(checkboxes.witnessSummary),
       super.expectLabel(checkboxes.documentaryEvidence),

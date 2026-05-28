@@ -195,6 +195,23 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
+  async EvidenceUploadRespondent() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionSmallClaim();
+        await evidenceUploadRespondentActions.documentUpload();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.confirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RespondFastTrackFullDefence1v2() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(

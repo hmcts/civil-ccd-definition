@@ -12,8 +12,8 @@ import DefaultJudgmentPageFactory from '../../../../pages/exui/claimant-defendan
 import DefaultJudgmentActions from './default-judgment/default-judgment-actions.ts';
 import ClaimantResponseSpecActions from './claimant-response/claimant-response-spec-actions.ts';
 import DefaultJudgmentSpecActions from './default-judgment/default-judgment-spec-actions.ts';
-import EvidenceUploadApplicantActions from './evidence-upload/evidence-upload-applicant-actions.ts';
-import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/evidence-upload-applicant/evidence-upload-applicant-page-factory.ts';
+import EvidenceUploadApplicantActions from './evidence-upload/evidence-upload-actions.ts';
+import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
 
 export default class ClaimantSolicitorActionsFactory extends BasePageActionsFactory {
   get createClaimActions() {

@@ -1,7 +1,7 @@
 import TestData from '../../../../../models/test-utils/test-data.ts';
 import { Step } from '../../../../../decorators/test-steps.ts';
 import BaseTestData from '../../../../../base/base-test-data.ts';
-import EvidenceUploadPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/evidence-upload-applicant/evidence-upload-applicant-page-factory.ts';
+import EvidenceUploadPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
 
 const classKey = 'EvidenceUploadApplicantActions';
 export default class EvidenceUploadApplicantActions extends BaseTestData {

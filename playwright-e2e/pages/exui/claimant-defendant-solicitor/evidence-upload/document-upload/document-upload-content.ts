@@ -1,10 +1,14 @@
 export const headings = {
   cannotWithdraw: 'You cannot withdraw a document once you have uploaded it',
+  witnessStatement: 'Witness statement',
 };
 
 export const buttons = {
   addNew: {
     selector: "#documentWitnessStatement button[class='button write-collection-add-item__top']",
+  },
+  addNewRespondent: {
+    selector: "#documentWitnessStatementRes button[class='button write-collection-add-item__top']",
   },
 };
 

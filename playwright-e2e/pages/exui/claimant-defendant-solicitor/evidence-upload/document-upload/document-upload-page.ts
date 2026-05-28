@@ -7,11 +7,14 @@ import { headings, buttons, inputs } from './document-upload-content.ts';
 @AllMethodsStep()
 export default class DocumentUploadPage extends ExuiPage(BasePage) {
   async verifyContent() {
-    await super.runVerifications([super.expectSubheading(headings.cannotWithdraw)]);
+    await super.runVerifications([
+      super.expectSubheading(headings.cannotWithdraw),
+      super.expectSubheading(headings.witnessStatement),
+    ]);
   }
 
-  async addWitnessStatement() {
-    await super.clickBySelector(buttons.addNew.selector);
+  async addWitnessStatement(addButtonSelector = buttons.addNew.selector) {
+    await super.clickBySelector(addButtonSelector);
     await super.inputText('27', inputs.day);
     await super.inputText('05', inputs.month);
     await super.inputText('2026', inputs.year);

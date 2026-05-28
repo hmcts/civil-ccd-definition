@@ -240,6 +240,12 @@ const ccdEvents: CCDEvents = {
     description: 'Evidence upload applicant',
     order: 27,
   },
+  EVIDENCE_UPLOAD_RESPONDENT: {
+    id: 'EVIDENCE_UPLOAD_RESPONDENT',
+    name: 'Evidence upload respondent',
+    description: 'Evidence upload respondent',
+    order: 28,
+  },
 };
 
 export default ccdEvents;
