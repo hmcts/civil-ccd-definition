@@ -104,7 +104,7 @@ am-org-role-mapping-service:
     devmemoryRequests: 1024Mi
     devcpuRequests: 50m
     devmemoryLimits: 2048Mi
-    devcpuLimits: 500m
+    devcpuLimits: 700m
     keyVaults:
       am:
         secrets:

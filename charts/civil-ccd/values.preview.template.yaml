@@ -211,9 +211,9 @@ ccd:
       image: hmctsprod.azurecr.io/am/role-assignment-service:latest
       ingressHost: am-role-assignment-${SERVICE_FQDN}
       devcpuRequests: 50m
-      devcpuLimits: 500m
-      devmemoryRequests: 1024Mi
-      devmemoryLimits: 2048Mi
+      devcpuLimits: 1400m
+      devmemoryRequests: 2048Mi
+      devmemoryLimits: 4096Mi
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
         ROLE_ASSIGNMENT_DB_PASSWORD: ${POSTGRES_PASSWORD}
@@ -307,7 +307,7 @@ em-stitching:
     image: hmctsprod.azurecr.io/em/stitching:latest
     ingressHost: em-stitching-${SERVICE_FQDN}
     devcpuRequests: 50m
-    devcpuLimits: 200m
+    devcpuLimits: 500m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     environment:
