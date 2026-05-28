@@ -26,8 +26,8 @@ export default class CaseProceedsInCasemanActions extends BaseTestData {
   async caseSettledSpec() {
     const { caseProceedsInCasemanLRPage } = this.caseProceedsInCasemanPageFactory;
     await caseProceedsInCasemanLRPage.verifyContent(this.ccdCaseData);
-    await caseProceedsInCasemanLRPage.enterTodayDate();
     await caseProceedsInCasemanLRPage.selectCaseSettled();
+    await caseProceedsInCasemanLRPage.enterTodayDate();
     await caseProceedsInCasemanLRPage.submit();
   }
 }

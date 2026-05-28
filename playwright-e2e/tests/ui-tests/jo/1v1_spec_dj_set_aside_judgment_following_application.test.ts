@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures';
 
 test.describe(
-  '1v1 spec set aside judgment following application @debug',
+  '1v1 spec set aside judgment following application',
   { tag: '@civil-ccd-nightly' },
   () => {
     test('1v1 spec default judgment then set aside judgment following an application and take case offline', async ({
@@ -23,7 +23,7 @@ test.describe(
       await HearingCenterAdminSpecSteps.RequestSetAsideJudgmentFollowingApplication();
 
       await CaseworkerSteps.Login();
-      await CaseworkerSteps.CaseProceedsInCaseman();
+      await CaseworkerSteps.CaseProceedsInCasemanSpec();
     });
   },
 );

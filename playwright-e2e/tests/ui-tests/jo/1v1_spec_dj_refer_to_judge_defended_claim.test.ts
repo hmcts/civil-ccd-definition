@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
-  '1v1 spec defence received in time judgment set aside @debug',
+  '1v1 spec defence received in time judgment set aside',
   { tag: '@civil-ccd-nightly' },
   () => {
     test('1v1 spec default judgment then refer to judge defended claim and make an order', async ({

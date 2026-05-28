@@ -174,6 +174,12 @@ const ccdEvents: CCDEvents = {
     description: 'Refer to judge-defended claim',
     order: 19,
   },
+  SET_ASIDE_JUDGMENT: {
+    id: 'SET_ASIDE_JUDGMENT',
+    name: 'Set aside judgment',
+    description: 'Set aside judgment',
+    order: 20,
+  },
   GENERATE_DIRECTIONS_ORDER: {
     id: 'GENERATE_DIRECTIONS_ORDER',
     name: 'Make an order',
