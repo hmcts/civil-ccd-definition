@@ -843,7 +843,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "(withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" OR withoutPrejudiceSelectionEvidenceSmallClaim CONTAINS \"PART36_REJECTION\") AND caseTypeFlag != \"ApplicantTwoFields\""
+    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag != \"ApplicantTwoFields\" OR withoutPrejudiceSelectionEvidenceSmallClaim CONTAINS \"PART36_REJECTION\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -855,7 +855,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "(withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" OR withoutPrejudiceSelectionEvidenceSmallClaim CONTAINS \"PART36_REJECTION\") AND caseTypeFlag = \"ApplicantTwoFields\""
+    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag = \"ApplicantTwoFields\" OR withoutPrejudiceSelectionEvidenceSmallClaim CONTAINS \"PART36_REJECTION\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1538,7 +1538,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "(withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" OR withoutPrejudiceSelectionEvidenceSmallClaimRes CONTAINS \"PART36_REJECTION\") AND caseTypeFlag != \"RespondentTwoFields\""
+    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag != \"RespondentTwoFields\" OR withoutPrejudiceSelectionEvidenceSmallClaimRes CONTAINS \"PART36_REJECTION\" AND caseTypeFlag != \"RespondentTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1550,7 +1550,7 @@
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "(withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" OR withoutPrejudiceSelectionEvidenceSmallClaimRes CONTAINS \"PART36_REJECTION\") AND caseTypeFlag = \"RespondentTwoFields\""
+    "FieldShowCondition": "withoutPrejudiceSelectionEvidence CONTAINS \"PART36_REJECTION\" AND caseTypeFlag = \"RespondentTwoFields\" OR withoutPrejudiceSelectionEvidenceSmallClaimRes CONTAINS \"PART36_REJECTION\" AND caseTypeFlag = \"RespondentTwoFields\""
   },
   {
     "CaseTypeID": "CIVIL",
