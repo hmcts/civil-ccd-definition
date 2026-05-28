@@ -92,4 +92,52 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       ccdEvents.MANAGE_CASE_FLAGS,
     );
   }
+
+  async RequestReferToJudgeDefendedClaim() {
+    const { referToJudgeDefendedClaimActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await referToJudgeDefendedClaimActions.referToJudge();
+      },
+      async () => {},
+      ccdEvents.REFER_JUDGE_DEFENCE_RECEIVED,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestSetAsideJudgmentFollowingApplication() {
+    const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await setAsideJudgmentActions.orderFollowingApplication();
+      },
+      async () => {},
+      ccdEvents.SET_ASIDE_JUDGMENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestSetAsideJudgmentFollowingDefenceReceived() {
+    const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await setAsideJudgmentActions.orderFollowingDefenceReceived();
+      },
+      async () => {},
+      ccdEvents.SET_ASIDE_JUDGMENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestSetAsideJudgmentMadeInError() {
+    const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await setAsideJudgmentActions.orderJudgmentMadeInError();
+      },
+      async () => {},
+      ccdEvents.SET_ASIDE_JUDGMENT,
+      { verifySuccessEvent: false },
+    );
+  }
 }

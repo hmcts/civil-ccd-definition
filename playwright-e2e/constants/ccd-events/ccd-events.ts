@@ -168,6 +168,17 @@ const ccdEvents: CCDEvents = {
     description: 'Standard Directions Order (Judgment)',
     order: 18,
   },
+  REFER_JUDGE_DEFENCE_RECEIVED: {
+    id: 'REFER_JUDGE_DEFENCE_RECEIVED',
+    name: 'Refer to judge-defended claim',
+    description: 'Refer to judge-defended claim',
+    order: 19,
+  },
+  GENERATE_DIRECTIONS_ORDER: {
+    id: 'GENERATE_DIRECTIONS_ORDER',
+    name: 'Make an order',
+    description: 'Make an order',
+  },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
     id: 'CLAIMANT_RESPONSE_SPEC',

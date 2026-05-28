@@ -4,6 +4,10 @@ import ManageCaseFlagsPageFactory from '../../../../pages/exui/hearing-center-ad
 import CreateCaseFlagsActions from './create-case-flags/create-case-flags-actions';
 import CreateCaseFlagsSpecActions from './create-case-flags/create-case-flags-spec-actions';
 import ManageCaseFlagsActions from './manage-case-flags-actions';
+import ReferToJudgeDefendedClaimActions from './refer-to-judge-defended-claim/refer-to-judge-defended-claim-actions';
+import ReferToJudgeDefendedClaimPageFactory from '../../../../pages/exui/hearing-center-admin/refer-to-judge-defended-claim/refer-to-judge-defended-claim-page-factory';
+import SetAsideJudgmentActions from './set-aside-judgment/set-aside-judgment-actions';
+import SetAsideJudgmentPageFactory from '../../../../pages/exui/hearing-center-admin/set-aside-judgment/set-aside-judgment-page-factory';
 
 export default class HearingCenterAdminActionsFactory extends BasePageActionsFactory {
   get createCaseFlagsActions() {
@@ -16,5 +20,16 @@ export default class HearingCenterAdminActionsFactory extends BasePageActionsFac
 
   get manageCaseFlagsActions() {
     return new ManageCaseFlagsActions(new ManageCaseFlagsPageFactory(this.page), this.testData);
+  }
+
+  get referToJudgeDefendedClaimActions() {
+    return new ReferToJudgeDefendedClaimActions(
+      new ReferToJudgeDefendedClaimPageFactory(this.page),
+      this.testData,
+    );
+  }
+
+  get setAsideJudgmentActions() {
+    return new SetAsideJudgmentActions(new SetAsideJudgmentPageFactory(this.page), this.testData);
   }
 }
