@@ -506,6 +506,163 @@ module.exports = {
     await unAssignAllUsers();
   },
 
+  getCaseId: async () => {
+    console.log(`case created: ${caseId}`);
+    return caseId;
+  },
+
+  verifyEventsAvailable: async (user, state) => {
+    await assertCorrectEventsAreAvailableToUser(user, state);
+  },
+
+  verifyCaseState: async (expectedState) => {
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    assert.equal(response.state, expectedState,
+      `Expected case state ${expectedState} but got ${response.state}`);
+  },
+
+  verifyActiveJudgmentCancelled: async () => {
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const activeJudgment = response.case_data ? response.case_data.activeJudgment : null;
+    if (activeJudgment !== null && activeJudgment !== undefined) {
+      assert.equal(activeJudgment.state, 'CANCELLED',
+        `Expected activeJudgment.state CANCELLED but got ${activeJudgment.state}`);
+    }
+  },
+
+  verifyBufferStateInitialFields: async () => {
+    // DTSCCI-3661 AC1 - prove no judgment is issued/registered yet when case parks in JUDGMENT_REQUESTED.
+    // Per Buffer Period spec: state=PENDING_ISSUE, issueDate=null, isRegisterWithRTL=No, rtlState=null.
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const aj = response.case_data ? response.case_data.activeJudgment : null;
+    assert.ok(aj, `Expected activeJudgment to exist in buffer state but got null/undefined`);
+    assert.equal(aj.state, 'PENDING_ISSUE',
+      `AC1 buffer state: expected activeJudgment.state=PENDING_ISSUE, got ${aj.state}`);
+    assert.isTrue(aj.issueDate === null || aj.issueDate === undefined,
+      `AC1 buffer state: expected issueDate null/undefined (no judgment issued), got ${aj.issueDate}`);
+    assert.equal(aj.isRegisterWithRTL, 'No',
+      `AC1 buffer state: expected isRegisterWithRTL='No' (not registered with RTL), got ${aj.isRegisterWithRTL}`);
+    assert.isTrue(aj.rtlState === null || aj.rtlState === undefined,
+      `AC1 buffer state: expected rtlState null/undefined (no RTL state set), got ${aj.rtlState}`);
+    console.log(`Buffer state fields verified: state=${aj.state}, issueDate=${aj.issueDate}, isRegisterWithRTL=${aj.isRegisterWithRTL}, rtlState=${aj.rtlState}`);
+  },
+
+  verifyNotificationSent: async (caseIdToQuery, templateId, recipientEmail, user = config.applicantSolicitorUser) => {
+    const entries = await apiRequest.fetchSentNotifications(user, caseIdToQuery, templateId, recipientEmail);
+    assert.isAtLeast(entries.length, 1,
+      `Expected at least 1 notification for caseId=${caseIdToQuery}, templateId=${templateId}, recipient=${recipientEmail}, got ${entries.length}`);
+  },
+
+  verifyAnyNotificationSent: async (caseIdToQuery, user = config.applicantSolicitorUser) => {
+    const entries = await apiRequest.fetchSentNotifications(user, caseIdToQuery);
+    console.log(`Notification audit for caseId=${caseIdToQuery}: ${entries.length} entries`);
+    entries.forEach(e => console.log(`  template=${e.templateId} recipient=${e.recipientEmail} ref=${e.reference}`));
+    assert.isAtLeast(entries.length, 1,
+      `Expected at least 1 notification for caseId=${caseIdToQuery}, got 0`);
+  },
+
+  verifyDefendantResponseNotificationsSent: async (
+    ccdCaseId,
+    user = config.applicantSolicitorUser,
+    expectedApplicantTemplateId = '51fd3ba4-63ca-4ab7-b11a-0ceb8775de9f',
+    expectedRespondentTemplateId = 'e763e30d-ac6d-4d95-8dc9-1ed71dd1aa1b'
+  ) => {
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, ccdCaseId);
+    const legacyRef = response.case_data ? response.case_data.legacyCaseReference : null;
+    assert.ok(legacyRef, `Expected legacyCaseReference for ccdCaseId=${ccdCaseId}`);
+    const entries = await apiRequest.fetchSentNotifications(user, legacyRef);
+    console.log(`Notification audit for legacyRef=${legacyRef}: ${entries.length} entries`);
+    entries.forEach(e => console.log(`  template=${e.templateId} recipient=${e.recipientEmail} ref=${e.reference}`));
+
+    const applicantNotif = entries.find(e => e.reference && e.reference.includes('defendant-response-applicant-notification'));
+    const respondentNotif = entries.find(e => e.reference && e.reference.includes('defendant-lip-response-respondent-notification'));
+
+    assert.ok(applicantNotif,
+      `AC6: Expected defendant-response-applicant-notification reference for legacyRef=${legacyRef}`);
+    assert.ok(respondentNotif,
+      `AC6: Expected defendant-lip-response-respondent-notification reference for legacyRef=${legacyRef}`);
+
+    assert.equal(applicantNotif.templateId, expectedApplicantTemplateId,
+      `AC6: Expected applicant template ${expectedApplicantTemplateId} (unchanged from normal defence flow), got ${applicantNotif.templateId}`);
+    assert.equal(respondentNotif.templateId, expectedRespondentTemplateId,
+      `AC6: Expected respondent template ${expectedRespondentTemplateId} (unchanged from normal defence flow), got ${respondentNotif.templateId}`);
+  },
+
+  amendRespondent1ResponseDeadline: async (user) => {
+    await apiRequest.setupTokens(user);
+    const respondent1deadline = {'respondent1ResponseDeadline': '2025-11-19T15:59:50'};
+    await testingSupport.updateCaseData(caseId, respondent1deadline);
+    console.log('ResponseDeadline updated');
+  },
+
+  waitForBusinessProcessFinished: async () => {
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  amendJoDJCreatedDate: async (hoursAgo = 49) => {
+    const backdated = new Date(Date.now() - hoursAgo * 60 * 60 * 1000)
+      .toISOString().replace(/\.\d{3}Z$/, '');
+    await testingSupport.updateCaseData(caseId, {'joDJCreatedDate': backdated});
+    console.log(`joDJCreatedDate backdated to ${backdated} (${hoursAgo}h ago)`);
+  },
+
+  listSchedulers: async (user = config.applicantSolicitorUser) => {
+    const names = await apiRequest.listSchedulers(user);
+    console.log(`Registered schedulers: ${JSON.stringify(names)}`);
+    return names;
+  },
+
+  runScheduler: async (schedulerName, user = config.applicantSolicitorUser) => {
+    await apiRequest.triggerScheduler(user, schedulerName);
+    console.log(`Scheduler ${schedulerName} triggered`);
+  },
+
+  runSchedulerExpectingNotFound: async (schedulerName, user = config.applicantSolicitorUser) => {
+    await apiRequest.triggerScheduler(user, schedulerName, 404);
+    console.log(`Scheduler ${schedulerName} correctly returned 404`);
+  },
+
+  verifyJudgmentBufferIssued: async (maxAttempts = 36, intervalMs = 5000) => {
+    const today = new Date().toISOString().slice(0, 10);
+    let last = {};
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+      last.state = response.state;
+      last.judgment = response.case_data ? response.case_data.activeJudgment : null;
+      last.bp = response.case_data ? response.case_data.businessProcess : null;
+      const bpFinished = !last.bp || !last.bp.status || last.bp.status === 'FINISHED';
+      const judgmentIssued = last.judgment && last.judgment.state === 'ISSUED';
+      const stateFinal = last.state === 'All_FINAL_ORDERS_ISSUED';
+      if (judgmentIssued && stateFinal && bpFinished) {
+        console.log(`Buffer issued after ${attempt} attempts (state=${last.state}, bp=${last.bp && last.bp.status}, issueDate=${last.judgment.issueDate})`);
+        assert.equal(last.judgment.issueDate, today,
+          `Expected issueDate ${today} but got ${last.judgment.issueDate}`);
+        assert.equal(last.judgment.rtlState, 'R',
+          `Expected rtlState 'R' but got ${last.judgment.rtlState}`);
+        assert.equal(last.judgment.isRegisterWithRTL, 'Yes',
+          `Expected isRegisterWithRTL 'Yes' but got ${last.judgment.isRegisterWithRTL}`);
+        return last.judgment;
+      }
+      console.log(`Attempt ${attempt}/${maxAttempts}: state=${last.state}, judgment.state=${last.judgment && last.judgment.state}, bp=${last.bp && last.bp.status}`);
+      await new Promise(resolve => setTimeout(resolve, intervalMs));
+    }
+    assert.fail(`Judgment buffer did not complete in ${maxAttempts * intervalMs / 1000}s. Last: ${JSON.stringify(last)}`);
+  },
+
+  verifyJudgmentBufferUnchanged: async (waitMs = 15000) => {
+    console.log(`Waiting ${waitMs}ms then verifying case stayed in JUDGMENT_REQUESTED...`);
+    await new Promise(resolve => setTimeout(resolve, waitMs));
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const judgment = response.case_data ? response.case_data.activeJudgment : null;
+    assert.equal(response.state, 'JUDGMENT_REQUESTED',
+      `Expected case state JUDGMENT_REQUESTED but got ${response.state}. Buffer scheduler issued too early.`);
+    if (judgment) {
+      assert.notEqual(judgment.state, 'ISSUED',
+        `activeJudgment unexpectedly ISSUED (issueDate=${judgment.issueDate}). Buffer scheduler issued too early.`);
+    }
+    console.log(`Confirmed: state=${response.state}, activeJudgment.state=${judgment && judgment.state}`);
+  },
+
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
