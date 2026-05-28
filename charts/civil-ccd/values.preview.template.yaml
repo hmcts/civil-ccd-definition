@@ -5,6 +5,10 @@ civil-service:
   java:
     imagePullPolicy: Always
     image: hmctsprod.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
+    devcpuRequests: 50m
+    devcpuLimits: 500m
+    devmemoryRequests: 1536Mi
+    devmemoryLimits: 2048Mi
     keyVaults:
       civil:
         resourceGroup: civil
@@ -140,10 +144,18 @@ idam-pr:
 aac-manage-case-assignment:
   java:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
+    devcpuRequests: 50m
+    devcpuLimits: 200m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
 
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
+    devcpuRequests: 50m
+    devcpuLimits: 200m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     environment:
       FEATURE_ACCESS_MANAGEMENT_ENABLED: true
       SERVICES_DOCUMENTS_API_V2: http://${SERVICE_NAME}-cdam
@@ -183,6 +195,10 @@ ccd:
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE,queryManagementRaiseQuery,queryManagementRespondQuery
         ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
+      devcpuRequests: 50m
+      devcpuLimits: 500m
+      devmemoryRequests: 1024Mi
+      devmemoryLimits: 2048Mi
       secrets:
         DATA_STORE_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
@@ -194,6 +210,10 @@ ccd:
       imagePullPolicy: Always
       image: hmctsprod.azurecr.io/am/role-assignment-service:latest
       ingressHost: am-role-assignment-${SERVICE_FQDN}
+      devcpuRequests: 50m
+      devcpuLimits: 500m
+      devmemoryRequests: 1024Mi
+      devmemoryLimits: 2048Mi
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
         ROLE_ASSIGNMENT_DB_PASSWORD: ${POSTGRES_PASSWORD}
@@ -205,9 +225,10 @@ ccd:
               alias: LD_SDK_KEY
   ccd-definition-store-api:
     java:
-      devcpuRequests: 2000m
-      devmemoryLimits: 4Gi
-      devcpuLimits: 4Gi
+      devcpuRequests: 50m
+      devcpuLimits: 700m
+      devmemoryRequests: 1024Mi
+      devmemoryLimits: 2048Mi
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
       environment:
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
@@ -231,6 +252,10 @@ ccd:
 camunda-bpm:
   enabled: true
   java:
+    devcpuRequests: 50m
+    devcpuLimits: 500m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     disableKeyVaults: true
     environment:
 #      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
@@ -252,6 +277,10 @@ em-ccdorc:
     image: hmctsprod.azurecr.io/em/ccdorc:latest
     releaseNameOverride: ${SERVICE_NAME}-em-ccdorc
     ingressHost: em-ccdorc-${SERVICE_FQDN}
+    devcpuRequests: 50m
+    devcpuLimits: 200m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     environment:
       IDAM_API_BASE_URI: https://idam-api.aat.platform.hmcts.net
       OPEN_ID_API_BASE_URI: https://idam-web-public.aat.platform.hmcts.net/o
@@ -277,6 +306,10 @@ em-stitching:
     releaseNameOverride: ${SERVICE_NAME}-em-stitching
     image: hmctsprod.azurecr.io/em/stitching:latest
     ingressHost: em-stitching-${SERVICE_FQDN}
+    devcpuRequests: 50m
+    devcpuLimits: 200m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     environment:
       IDAM_API_BASE_URI: https://idam-api.aat.platform.hmcts.net
       OPEN_ID_API_BASE_URI: https://idam-web-public.aat.platform.hmcts.net/o
@@ -309,6 +342,10 @@ ccd-case-document-am-api:
     imagePullPolicy: Always
     image: hmctsprod.azurecr.io/ccd/case-document-am-api:latest
     ingressHost: ccd-case-document-am-api-${SERVICE_FQDN}
+    devcpuRequests: 50m
+    devcpuLimits: 200m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     environment:
       IDAM_API_URL: https://idam-api.aat.platform.hmcts.net
       IDAM_OIDC_URL: https://idam-web-public.aat.platform.hmcts.net
@@ -323,6 +360,10 @@ ccd-message-publisher:
   java:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
+    devcpuRequests: 50m
+    devcpuLimits: 200m
+    devmemoryRequests: 512Mi
+    devmemoryLimits: 1024Mi
     keyVaults:
       ccd:
         secrets:
