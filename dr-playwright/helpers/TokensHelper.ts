@@ -23,6 +23,7 @@ export class TokensHelper {
   constructor() {
   }
 
+
   private async getTokenFromIdam(user) {
     const apiRequestContext: APIRequestContext = await request.newContext();
     try {
@@ -172,5 +173,11 @@ export class TokensHelper {
       this.accessToken = await this.getAccessToken(user);
       this.s2sToken = await this.getS2SToken()
       this.uid = await this.getUserId(this.accessToken);
+
+      return {
+        accessToken: this.accessToken,
+        s2sToken: this.s2sToken,
+        uid: this.uid
+      }
   }
 }

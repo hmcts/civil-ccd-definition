@@ -57,17 +57,21 @@ export class PaymentPage {
       }
     }
 
+    await this.page.waitForTimeout(2000);
     await this.page.getByText('Pay now').click();
-
+    await this.page.waitForTimeout(2000);
 
     paymentType == 'PBA' ? await this.page.locator('#pbaAccount').click() : await this.page.locator('#cardPayment').click();
-
+    await this.page.waitForTimeout(2000);
     if (paymentType === 'PBA') {
+      await this.page.waitForTimeout(2000);
       await this.page.locator('#pbaAccountNumber').selectOption('PBA0078095');
       await this.page.locator('#pbaAccountRef').fill('PBA Account reference test text.');
       await this.page.keyboard.press('Tab');
+      await this.page.waitForTimeout(2000);
       await confirmPaymentButton.click();
     } else {
+      await this.page.waitForTimeout(2000);
       await this.page.locator('#cardPayment').click();
       await this.buttonHelper.continueButton.click();
       await this.page.fill(this.cardNoLocator, this.cardNumber);
@@ -80,45 +84,12 @@ export class PaymentPage {
       await this.page.fill(this.addressCountryLocator, this.country);
       await this.page.fill(this.addressPostcodeLocator, this.postcode);
       await this.page.fill(this.emailLocator, this.email);
-
+      await this.page.waitForTimeout(2000);
       await this.page.click(this.continueButtonLocator);
       await this.page.click(this.confirmButtonLocator);
-
-      await this.page.waitForSelector('#main-content', { state: 'visible' });
-      const message = await this.page.innerText('#main-content');
-      expect(message, 'Payment failed').toContain('Payment successful');
-
     }
-
-
-
-   // confirm payment
-
-    //
-    //
-    // else (paymentType === 'CC') {
-    //   await this.page.check(this.cardPaymentLocator);
-    //   await this.buttonHelper.continueButton.click();
-    //
-    //   await this.page.fill(this.cardNoLocator, this.cardNumber);
-    //   await this.page.fill(this.expiryMonthLocator, this.expiryMonth);
-    //   await this.page.fill(this.expiryYearLocator, this.expiryYear);
-    //   await this.page.fill(this.cardHolderNameLocator, this.nameOnCard);
-    //   await this.page.fill(this.cvcLocator, this.cvc);
-    //   await this.page.fill(this.addressLine1Locator, this.addressLine1);
-    //   await this.page.fill(this.addressCityLocator, this.city);
-    //   await this.page.fill(this.addressCountryLocator, this.country);
-    //   await this.page.fill(this.addressPostcodeLocator, this.postcode);
-    //   await this.page.fill(this.emailLocator, this.email);
-    //
-    //   await this.page.click(this.continueButtonLocator);
-    //   await this.page.click(this.confirmButtonLocator);
-    //
-    //   await this.page.waitForSelector('#main-content', { state: 'visible' });
-    //   const message = await this.page.innerText('#main-content');
-    //   expect(message, 'Payment failed').toContain('Payment successful');
-    // } else {
-    //   pbaAccount
-    // }
+    await this.page.waitForSelector('#main-content', { state: 'visible' });
+    const message = await this.page.innerText('#main-content');
+    expect(message, 'Payment failed.').toContain('Payment successful');
   }
 }

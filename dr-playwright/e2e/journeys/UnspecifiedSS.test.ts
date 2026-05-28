@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { envUrl } from '../../civilConfig.ts';
+import { civilServiceUrl, envUrl, systemupdate } from '../../civilConfig.ts';
 import { PageHelper } from '../../helpers/PageHelper.ts';
 import { ButtonHelper } from '../../helpers/ButtonHelper.ts';
 import { CreateUnspecifiedCase } from '../flows/createUnspecifiedCase.ts';
@@ -12,6 +12,7 @@ import claimTrack from '../../enums/claim-track.ts';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import { TabsHelper } from '../../helpers/TabsHelper.ts';
 import { PaymentPage } from '../page-objects/pages/payment_page.ts'
+import { TestingEndPointHelper } from '../../helpers/TestingEndPointHelper.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -155,7 +156,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     caseId = await pageHelper.grabCaseNumber();
     console.log('caseId>>>>>>>>>>>>>>>' + caseId + '<<<<<<<<<<<<<<<<<<<');
     // Pay the claim fee
-    await new PaymentPage(page).makePayment('CARD');
+    await new PaymentPage(page).makePayment('PBA');
 
+    await new TestingEndPointHelper().waitForCamundaProcessToFinish(caseId);
   });
 });

@@ -15,7 +15,7 @@ export const authProviderApiBaseUrl: string = process.env.ENVIRONMENT === 'previ
 export const ccdDataStoreApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'https://ccd-data-store-api-civil-service-pr-3056.preview.platform.hmcts.net' : (process.env.ENVIRONMENT === 'demo' ? 'http://ccd-data-store-api-demo.service.core-compute-demo.internal' : 'http://ccd-data-store-api-aat.service.core-compute-aat.internal');
 export const documentManagementStoreApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'http://dm-store-aat.service.core-compute-aat.internal' : 'http://dm-store-demo.service.core-compute-demo.internal';
 export const microService: string = 'iac';
-export const secret: string = process.env.ENVIRONMENT === 'preview' ? 'AABBCCDDEEFFGGHH' : (process.env.ENVIRONMENT === 'demo' ? 'AABBCCDDEEFFGGHH' : process.env.S2S_SECRET);
+export const secret: string = process.env.ENVIRONMENT === 'preview' ? 'AABBCCDDEEFFGGHH' : (process.env.ENVIRONMENT === 'demo' ? '4W4QUXOYX623JW64' : process.env.S2S_SECRET);
 export const civilServiceUrl: string = process.env.CIVIL_SERVICE_URL;
 
 export const createCase = {
@@ -40,4 +40,10 @@ export const claimantSolicitorCredentials = {
  // key: UserKey.CLAIMANT_SOLICITOR,
  // role: UserRole.CASEWORKER,
   orgId: config.environment === Environment.DEMO ? 'B04IXE4' : 'Q1KOKP2',
+}
+
+export const systemupdate = {
+  username: 'hmcts.civil+organisation.1.superuser@gmail.com',
+  password: defaultPassword,
+  type: 'systemupdate'
 }
