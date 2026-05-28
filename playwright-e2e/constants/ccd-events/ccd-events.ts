@@ -246,6 +246,12 @@ const ccdEvents: CCDEvents = {
     description: 'Evidence upload respondent',
     order: 28,
   },
+  HEARING_SCHEDULED: {
+    id: 'HEARING_SCHEDULED',
+    name: 'Hearing scheduled',
+    description: 'Hearing scheduled',
+    order: 29,
+  },
 };
 
 export default ccdEvents;

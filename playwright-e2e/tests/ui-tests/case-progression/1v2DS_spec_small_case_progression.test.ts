@@ -8,6 +8,7 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     DefendantSolicitor2SpecSteps,
     JudgeSteps,
     ClaimantSolicitorSpecSteps,
+    HearingCenterAdminSpecSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -25,7 +26,8 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     await ClaimantSolicitorSpecSteps.EvidenceUploadApplicant();
     await DefendantSolicitor1SpecSteps.Login();
     await DefendantSolicitor1SpecSteps.EvidenceUploadRespondent();
-    // Schedule a hearing
+    await HearingCenterAdminSpecSteps.LoginRegion1();
+    await HearingCenterAdminSpecSteps.ScheduleHearing();
     // API pay hearing fee (make changes to same classes that handle claim issued payment)
   });
 });
