@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, () => {
-  test.only('1v2 spec small case progression', async ({
+  test('1v2 spec small case progression', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecSteps,
@@ -28,6 +28,6 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     await DefendantSolicitor1SpecSteps.EvidenceUploadRespondent();
     await HearingCenterAdminSpecSteps.LoginRegion1();
     await HearingCenterAdminSpecSteps.ScheduleHearing();
-    // API pay hearing fee (make changes to same classes that handle claim issued payment)
+    await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
   });
 });

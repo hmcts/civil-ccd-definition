@@ -257,6 +257,14 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     await super.fetchAndSetCCDCaseData();
   }
 
+  async MakePaymentForHearingFee() {
+    await this.setupApiStep(claimantOrganisationSuperUser);
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.triggerHearingFeePaid(claimantSolicitorUser, this.ccdCaseData?.id);
+    await super.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await super.fetchAndSetCCDCaseData();
+  }
+
   async RespondFastTrack1v1() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
