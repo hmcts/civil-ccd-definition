@@ -1,5 +1,9 @@
 civil-service:
   java:
+    devcpuRequests: 50m
+    devcpuLimits: 700m
+    devmemoryRequests: 1536Mi
+    devmemoryLimits: 2048Mi
     image: 'hmctsprod.azurecr.io/civil/service:latest'
     keyVaults:
       civil:
