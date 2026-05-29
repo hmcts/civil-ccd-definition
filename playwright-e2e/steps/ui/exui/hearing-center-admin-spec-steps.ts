@@ -140,4 +140,28 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async CaseProceedsInCaseman() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettled();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CaseProceedsInCasemanSpec() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettledSpec();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      { verifySuccessEvent: false },
+    );
+  }
 }
