@@ -6,7 +6,7 @@ civil-service:
     imagePullPolicy: Always
     image: hmctsprod.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
     devcpuRequests: 50m
-    devcpuLimits: 500m
+    devcpuLimits: 700m
     devmemoryRequests: 1536Mi
     devmemoryLimits: 2048Mi
     keyVaults:
@@ -226,7 +226,6 @@ ccd:
   ccd-definition-store-api:
     java:
       devcpuRequests: 50m
-      devcpuLimits: 750m
       devmemoryRequests: 1024Mi
       devmemoryLimits: 2048Mi
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
