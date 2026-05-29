@@ -258,7 +258,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
   }
 
   async MakePaymentForHearingFee() {
-    await this.setupApiStep(claimantOrganisationSuperUser);
+    await this.setupApiStep(claimantSolicitorUser);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.triggerHearingFeePaid(claimantSolicitorUser, this.ccdCaseData?.id);
     await super.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
