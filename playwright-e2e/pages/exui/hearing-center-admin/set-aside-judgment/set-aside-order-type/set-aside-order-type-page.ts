@@ -5,7 +5,8 @@ import DateHelper from '../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
-import { inputs, radioButtons } from './set-aside-order-type-content';
+import { headings, inputs, radioButtons } from './set-aside-order-type-content';
+import { getFormattedCaseId } from '../../../exui-page/exui-content';
 
 @AllMethodsStep()
 export default class SetAsideOrderTypePage extends ExuiPage(BasePage) {
@@ -18,6 +19,11 @@ export default class SetAsideOrderTypePage extends ExuiPage(BasePage) {
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
+      super.expectText(headings.setAside),
+      super.expectText(headings.judgmentDetails),
+      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
+      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+
       super.expectLegend(inputs.orderDate.label),
       super.expectLabel(radioButtons.orderAfterApplication.label),
       super.expectLabel(radioButtons.orderAfterDefence.label),

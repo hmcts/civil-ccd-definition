@@ -1,4 +1,7 @@
-export const heading = 'Set aside judgment';
+export const headings = {
+  setAside: 'Set aside judgment',
+  judgmentDetails: 'Judgment details',
+};
 
 export const inputs = {
   orderDate: {

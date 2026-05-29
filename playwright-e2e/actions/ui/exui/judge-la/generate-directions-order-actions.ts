@@ -1,7 +1,7 @@
-import BaseTestData from '../../../../../base/base-test-data';
-import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import TestData from '../../../../../models/test-utils/test-data';
-import GenerateDirectionsOrderPageFactory from '../../../../../pages/exui/judge-la/generate-directions-order/generate-directions-order-page-factory';
+import BaseTestData from '../../../../base/base-test-data';
+import { AllMethodsStep } from '../../../../decorators/test-steps';
+import TestData from '../../../../models/test-utils/test-data';
+import GenerateDirectionsOrderPageFactory from '../../../../pages/exui/judge-la/generate-directions-order/generate-directions-order-page-factory';
 
 @AllMethodsStep()
 export default class GenerateDirectionsOrderActions extends BaseTestData {
@@ -14,27 +14,27 @@ export default class GenerateDirectionsOrderActions extends BaseTestData {
 
   async makeFreeFormOrder() {
     const {
-      finalOrderSelectSpecPage,
-      freeFormOrderSpecPage,
-      finalOrderPreviewSpecPage,
-      submitGenerateDirectionsOrderSpecPage,
-      confirmGenerateDirectionsOrderSpecPage,
+      finalOrderSelectPage,
+      freeFormOrderPage,
+      finalOrderPreviewPage,
+      submitGenerateDirectionsOrderPage,
+      confirmGenerateDirectionsOrderPage,
     } = this.generateDirectionsOrderPageFactory;
-    await finalOrderSelectSpecPage.verifyContent(this.ccdCaseData);
-    await finalOrderSelectSpecPage.selectFreeFormOrder();
-    await finalOrderSelectSpecPage.submit();
+    await finalOrderSelectPage.verifyContent(this.ccdCaseData);
+    await finalOrderSelectPage.selectFreeFormOrder();
+    await finalOrderSelectPage.submit();
 
-    await freeFormOrderSpecPage.verifyContent(this.ccdCaseData);
-    await freeFormOrderSpecPage.enterOrderDetails();
-    await freeFormOrderSpecPage.submit();
+    await freeFormOrderPage.verifyContent(this.ccdCaseData);
+    await freeFormOrderPage.enterOrderDetails();
+    await freeFormOrderPage.submit();
 
-    await finalOrderPreviewSpecPage.verifyContent(this.ccdCaseData);
-    await finalOrderPreviewSpecPage.submit();
+    await finalOrderPreviewPage.verifyContent(this.ccdCaseData);
+    await finalOrderPreviewPage.submit();
 
-    await submitGenerateDirectionsOrderSpecPage.verifyContent(this.ccdCaseData);
-    await submitGenerateDirectionsOrderSpecPage.submit();
+    await submitGenerateDirectionsOrderPage.verifyContent(this.ccdCaseData);
+    await submitGenerateDirectionsOrderPage.submit();
 
-    await confirmGenerateDirectionsOrderSpecPage.verifyContent(this.ccdCaseData);
-    await confirmGenerateDirectionsOrderSpecPage.submit();
+    await confirmGenerateDirectionsOrderPage.verifyContent(this.ccdCaseData);
+    await confirmGenerateDirectionsOrderPage.submit();
   }
 }

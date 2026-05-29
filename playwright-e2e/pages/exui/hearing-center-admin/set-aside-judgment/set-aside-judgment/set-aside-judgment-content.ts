@@ -1,4 +1,7 @@
-export const heading = 'Judgment details';
+export const headings = {
+  setAside: 'Set aside judgment',
+  judgmentDetails: 'Judgment details',
+};
 
 export const subheading = 'Why is this judgment being set aside?';
 

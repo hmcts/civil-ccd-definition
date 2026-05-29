@@ -6,15 +6,15 @@ import SubmitGenerateDirectionsOrderPage from './submit-generate-directions-orde
 import ConfirmGenerateDirectionsOrderPage from './confirm-generate-directions-order/confirm-generate-directions-order-page';
 
 export default class GenerateDirectionsOrderPageFactory extends BasePageFactory {
-  get finalOrderSelectSpecPage() {
+  get finalOrderSelectPage() {
     return new FinalOrderSelectPage(this.page);
   }
 
-  get freeFormOrderSpecPage() {
+  get freeFormOrderPage() {
     return new FreeFormOrderPage(this.page);
   }
 
-  get finalOrderPreviewSpecPage() {
+  get finalOrderPreviewPage() {
     return new FinalOrderPreviewPage(this.page);
   }
 

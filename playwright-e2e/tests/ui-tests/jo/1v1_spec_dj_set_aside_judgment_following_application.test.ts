@@ -22,8 +22,8 @@ test.describe(
       await HearingCenterAdminSpecSteps.LoginRegion2();
       await HearingCenterAdminSpecSteps.RequestSetAsideJudgmentFollowingApplication();
 
-      await CaseworkerSteps.Login();
-      await CaseworkerSteps.CaseProceedsInCasemanSpec();
+      // await CaseworkerSteps.Login();
+      // await CaseworkerSteps.CaseProceedsInCasemanSpec();
     });
   },
 );

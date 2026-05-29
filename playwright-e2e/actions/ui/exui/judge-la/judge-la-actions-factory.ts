@@ -5,6 +5,8 @@ import NotSuitableSdoPageFactory from '../../../../pages/exui/judge-la/not-suita
 import SdoActions from './sdo-actions';
 import SdoDJActions from './sdo-dj-actions';
 import NotSuitableSdoActions from './not-suitable-sdo-actions';
+import GenerateDirectionsOrderActions from './generate-directions-order-actions';
+import GenerateDirectionsOrderPageFactory from '../../../../pages/exui/judge-la/generate-directions-order/generate-directions-order-page-factory';
 
 export default class JudgeLAActionsFactory extends BasePageActionsFactory {
   get sdoActions() {
@@ -24,6 +26,13 @@ export default class JudgeLAActionsFactory extends BasePageActionsFactory {
   get notSuitableSdoActions() {
     return new NotSuitableSdoActions(
       new NotSuitableSdoPageFactory(this.page),
+      this.testData,
+    );
+  }
+
+  get generateDirectionsOrderActions() {
+    return new GenerateDirectionsOrderActions(
+      new GenerateDirectionsOrderPageFactory(this.page),
       this.testData,
     );
   }
