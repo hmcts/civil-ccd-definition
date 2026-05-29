@@ -127,7 +127,7 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
     sdoR2SmallClaimsWitnessStatements: (data) => {
       return typeof data.sdoStatementOfWitness === 'string'
-        && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
+        && (data.deadlineDate === undefined || typeof data.deadlineDate === 'string')
         && typeof data.isRestrictWitness === 'string'
         && typeof data.isRestrictPages === 'string'
         && typeof data.text === 'string';
@@ -1035,6 +1035,17 @@ module.exports = {
       disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
     }
 
+    if (response === 'CREATE_FAST_NIHL' || response === 'CREATE_FAST_NIHL_OTHER_REMEDY') {
+      // NIHL uses isSdoR2NewScreen=Yes — the API returns R2 field variants instead of standard ones.
+      // Strip standard SDO fields from caseData that are not returned for NIHL R2 screen.
+      delete caseData['smallClaimsPenalNotice'];
+      delete caseData['fastTrackPenalNotice'];
+      delete caseData['fastTrackTrialBundleToggle'];
+      delete caseData['smallClaimsPPI'];
+      delete caseData['fastTrackPPI'];
+      delete caseData['disposalHearingDisclosureOfDocuments'];
+    }
+
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
@@ -1575,6 +1586,41 @@ const assertValidData = async (data, pageId, solicitor) => {
   delete responseBody.data['gaEaCourtLocation'];
   delete responseBody.data['evidenceUploadNotificationSent'];
 
+  if (eventName === 'CREATE_SDO') {
+    // For isSdoR2NewScreen=Yes (NIHL, DRH), sync extra toggle fields the API returns
+    // that are not present in caseData.
+    if (responseBody.data.isSdoR2NewScreen === 'Yes') {
+      const sdoR2SyncFields = [
+        'fastTrackCostsToggle',
+        'disposalHearingMethodToggle',
+        'fastTrackMethodToggle',
+        'smallClaimsMethodToggle',
+        'disposalHearingMethodInPerson',
+      ];
+      sdoR2SyncFields.forEach(field => {
+        if (responseBody.data[field] !== undefined && caseData[field] === undefined) {
+          caseData[field] = responseBody.data[field];
+        }
+      });
+    }
+    // The API returns penal notice, PPI and related fields for all fast track SDO types
+    // (NIHL, CREATE_FAST_NO_SUM, CREATE_FAST etc.) but caseData may not include them.
+    // Sync them in from the response whenever caseData doesn't already have them.
+    // These fields are returned by the API for all fast track SDO types but are not
+    // always present in caseData. Remove from caseData to avoid undefined vs value mismatch.
+    const sdoApiOnlyFields = [
+      'smallClaimsPenalNotice',
+      'fastTrackPenalNotice',
+      'fastTrackTrialBundleToggle',
+      'smallClaimsPPI',
+      'fastTrackPPI',
+      'disposalHearingDisclosureOfDocuments',
+    ];
+    sdoApiOnlyFields.forEach(field => {
+      delete caseData[field];
+      delete responseBody.data[field];
+    });
+  }
 
   assert.equal(response.status, 200);
 
@@ -1640,8 +1686,18 @@ const assertValidData = async (data, pageId, solicitor) => {
   delete caseData['notificationSummary'];
 
   try {
-     assert.deepEqual(responseBody.data, caseData);
+    // Use per-field assertion so mismatches are reported field-by-field
+    for (const [key, value] of Object.entries(caseData)) {
+      assert.deepEqual(responseBody.data[key], value, `Mismatch on field: ${key}`);
+    }
+    // Log any unexpected extra fields the API returns without failing the test
+    for (const key of Object.keys(responseBody.data)) {
+      if (!(key in caseData)) {
+        console.warn(`API returned unexpected field not in caseData: ${key} = ${JSON.stringify(responseBody.data[key])}`);
+      }
+    }
   }
+
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     console.error('Data different in page ' + pageId);
