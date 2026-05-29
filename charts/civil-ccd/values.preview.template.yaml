@@ -226,7 +226,7 @@ ccd:
   ccd-definition-store-api:
     java:
       devcpuRequests: 50m
-      devcpuLimits: 700m
+      devcpuLimits: 750m
       devmemoryRequests: 1024Mi
       devmemoryLimits: 2048Mi
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
