@@ -47,3 +47,9 @@ export const systemupdate = {
   password: defaultPassword,
   type: 'systemupdate'
 }
+
+export const apiRetries = {
+  intervals: [1000, 2500, 5000, 10000, 15000, 20000, 30000, 40000, 50000, 55000],
+  timeout: 60000
+}
+

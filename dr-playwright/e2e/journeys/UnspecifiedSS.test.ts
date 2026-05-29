@@ -158,6 +158,6 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     // Pay the claim fee
     await new PaymentPage(page).makePayment('PBA');
 
-    await new TestingEndPointHelper().waitForCamundaProcessToFinish(caseId);
+    await new TestingEndPointHelper().waitForCamundaProcessToFinish(caseId,'CREATE_CLAIM_AFTER_PAYMENT');
   });
 });
