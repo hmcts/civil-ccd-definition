@@ -19,10 +19,6 @@ wa:
       enabled: false
   wa-case-event-handler:
     java:
-      devcpuRequests: 50m
-      devcpuLimits: 200m
-      devmemoryRequests: 512Mi
-      devmemoryLimits: 1024Mi
       ingressHost: wa-case-event-handler-${SERVICE_FQDN}
       releaseNameOverride: ${SERVICE_NAME}-wa-case-event-handler
       secrets:
@@ -46,10 +42,6 @@ wa:
 
   wa-task-monitor:
     java:
-      devcpuRequests: 50m
-      devcpuLimits: 200m
-      devmemoryRequests: 512Mi
-      devmemoryLimits: 1024Mi
       ingressHost: wa-task-monitor-${SERVICE_FQDN}
       environment:
         WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
@@ -57,10 +49,6 @@ wa:
 
   wa-task-management-api:
     java:
-      devcpuRequests: 50m
-      devcpuLimits: 200m
-      devmemoryRequests: 512Mi
-      devmemoryLimits: 1024Mi
       environment:
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
@@ -82,10 +70,6 @@ wa:
           disabled: true
   wa-workflow-api:
     java:
-      devcpuRequests: 50m
-      devcpuLimits: 200m
-      devmemoryRequests: 512Mi
-      devmemoryLimits: 1024Mi
       environment:
         DB_READER_USERNAME: ${POSTGRES_USER}
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -98,10 +82,6 @@ wa:
         disabled: true
   camunda-bpm:
     java:
-      devcpuRequests: 50m
-      devcpuLimits: 500m
-      devmemoryRequests: 512Mi
-      devmemoryLimits: 1024Mi
       environment:
         CAMUNDA_DB_USER_NAME: ${POSTGRES_USER}
         CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
@@ -124,7 +104,7 @@ am-org-role-mapping-service:
     devmemoryRequests: 1024Mi
     devcpuRequests: 50m
     devmemoryLimits: 2048Mi
-    devcpuLimits: 700m
+    devcpuLimits: 1500m
     keyVaults:
       am:
         secrets:
@@ -177,20 +157,12 @@ am-org-role-mapping-service:
 
 civil-service:
   java:
-    devcpuRequests: 50m
-    devcpuLimits: 700m
-    devmemoryRequests: 1536Mi
-    devmemoryLimits: 2048Mi
     environment:
       TASK_MANAGEMENT_ENABLED: true
       TASK_MANAGEMENT_API_URL: http://${SERVICE_NAME}-wa-task-management-api
 
 xui-webapp:
   nodejs:
-    devcpuRequests: 50m
-    devcpuLimits: 200m
-    devmemoryRequests: 512Mi
-    devmemoryLimits: 1024Mi
     environment:
       WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL"
       SERVICES_ROLE_ASSIGNMENT_MAPPING_API: https://am-org-role-mapping-service-${SERVICE_FQDN}
