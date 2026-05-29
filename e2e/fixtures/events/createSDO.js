@@ -163,7 +163,7 @@ const calculatedClaimsTrackWOSum = {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
         // && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/);
-        && (data.deadlineDate === undefined || typeof data.deadlineDate === 'string')
+        && (data.deadlineDate === undefined || typeof data.deadlineDate === 'string');
 
     },
     smallClaimsMethodToggle: (data) => Array.isArray(data),

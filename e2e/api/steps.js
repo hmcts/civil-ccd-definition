@@ -130,7 +130,7 @@ const calculatedClaimsTrackDRH = {
         && (data.deadlineDate === undefined || typeof data.deadlineDate === 'string')
         && typeof data.isRestrictWitness === 'string'
         && typeof data.isRestrictPages === 'string'
-        && typeof data.text === 'string';
+        && typeof data.text === 'string'
     },
     sdoR2SmallClaimsUploadDoc: (data) => {
       return typeof data.sdoUploadOfDocumentsTxt === 'string';
