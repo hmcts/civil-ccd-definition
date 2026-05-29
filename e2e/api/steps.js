@@ -1036,8 +1036,6 @@ module.exports = {
     }
 
     if (response === 'CREATE_FAST_NIHL' || response === 'CREATE_FAST_NIHL_OTHER_REMEDY') {
-      // NIHL uses isSdoR2NewScreen=Yes — the API returns R2 field variants instead of standard ones.
-      // Strip standard SDO fields from caseData that are not returned for NIHL R2 screen.
       delete caseData['smallClaimsPenalNotice'];
       delete caseData['fastTrackPenalNotice'];
       delete caseData['fastTrackTrialBundleToggle'];
@@ -1587,8 +1585,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   delete responseBody.data['evidenceUploadNotificationSent'];
 
   if (eventName === 'CREATE_SDO') {
-    // For isSdoR2NewScreen=Yes (NIHL, DRH), sync extra toggle fields the API returns
-    // that are not present in caseData.
     if (responseBody.data.isSdoR2NewScreen === 'Yes') {
       const sdoR2SyncFields = [
         'fastTrackCostsToggle',
@@ -1603,11 +1599,6 @@ const assertValidData = async (data, pageId, solicitor) => {
         }
       });
     }
-    // The API returns penal notice, PPI and related fields for all fast track SDO types
-    // (NIHL, CREATE_FAST_NO_SUM, CREATE_FAST etc.) but caseData may not include them.
-    // Sync them in from the response whenever caseData doesn't already have them.
-    // These fields are returned by the API for all fast track SDO types but are not
-    // always present in caseData. Remove from caseData to avoid undefined vs value mismatch.
     const sdoApiOnlyFields = [
       'smallClaimsPenalNotice',
       'fastTrackPenalNotice',
@@ -1686,11 +1677,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   delete caseData['notificationSummary'];
 
   try {
-    // Use per-field assertion so mismatches are reported field-by-field
     for (const [key, value] of Object.entries(caseData)) {
       assert.deepEqual(responseBody.data[key], value, `Mismatch on field: ${key}`);
     }
-    // Log any unexpected extra fields the API returns without failing the test
     for (const key of Object.keys(responseBody.data)) {
       if (!(key in caseData)) {
         console.warn(`API returned unexpected field not in caseData: ${key} = ${JSON.stringify(responseBody.data[key])}`);
