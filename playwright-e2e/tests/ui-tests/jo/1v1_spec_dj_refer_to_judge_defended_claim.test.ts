@@ -22,6 +22,7 @@ test.describe(
       await HearingCenterAdminSpecSteps.LoginRegion2();
       await HearingCenterAdminSpecSteps.RequestReferToJudgeDefendedClaim();
 
+      // Uncomment after DTSCCI-5517 fixed
       // await JudgeSteps.LoginRegion2();
       // await JudgeSteps.GenerateDirectionsOrder();
     });

@@ -10,6 +10,7 @@ import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
 import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
 import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
+import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -200,12 +201,14 @@ export default class JudgeSteps extends BaseExui {
 
   async GenerateDirectionsOrder() {
     const { generateDirectionsOrderActions } = this.judgeActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryWAEvent(
       async () => {
         await generateDirectionsOrderActions.makeFreeFormOrder();
       },
       async () => {},
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      judgeRegion2User,
+      defenceReceivedInTimeOrderThatJudgmentIsSetAside,
       { verifySuccessEvent: false },
     );
   }
