@@ -81,13 +81,11 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;
-    const schemaBeforeSubmission = baseSchema.omit({
-      nextDeadline: true,
-    });
     const schemaShape: Record<string, z.ZodType> = {};
 
     Object.assign(
-      {},
+      schemaShape,
+      claimantResponseSpecSchemaComponents.undefine,
       claimantResponseSpecSchemaComponents.proceedWithClaim(claimType, claimantResponseType),
       claimantResponseSpecSchemaComponents.determinationWithoutHearing(claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.fastTrackDq(claimTrack, claimantResponseType),
@@ -101,6 +99,6 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
       claimantResponseSpecSchemaComponents.application(claimTrack, claimantResponseType),
     );
 
-    return schemaBeforeSubmission.extend(schemaShape);
+    return baseSchema.extend(schemaShape);
   }
 }
