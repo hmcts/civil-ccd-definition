@@ -8,20 +8,16 @@ import notifyClaimDetailsSchemaBuilderComponents from './notify-claim-details-sc
 @AllMethodsStep()
 export default class NotifyClaimDetailsSchemaBuilder extends BaseSchemaBuilder {
    async buildSchema(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
-    let baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
+    const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;
-
-    baseSchema = baseSchema.omit({
-      // addLegalRepDeadlineRes1: true,
-      // addLegalRepDeadlineRes2: true,
-    });
 
     return baseSchema.extend({
       ...notifyClaimDetailsSchemaBuilderComponents.notification,
       ...notifyClaimDetailsSchemaBuilderComponents.defendantSolicitorNotifyClaimDetailsOptions,
       ...notifyClaimDetailsSchemaBuilderComponents.deadlines,
       ...notifyClaimDetailsSchemaBuilderComponents.servedDocumentFiles(caseDataBeforeSubmission?.servedDocumentFiles?.particularsOfClaimDocument!),
+      ...notifyClaimDetailsSchemaBuilderComponents.undefine,
     });
   }
 }

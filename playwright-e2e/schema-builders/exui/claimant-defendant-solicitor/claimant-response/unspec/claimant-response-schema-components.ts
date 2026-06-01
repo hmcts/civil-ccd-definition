@@ -1,17 +1,37 @@
 import { z } from 'zod';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
+import ClaimType from '../../../../../constants/cases/claim-type';
+import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 
 const yesNoSchema = z.enum(['Yes', 'No']);
 const nonEmptyString = z.string().min(1);
 
-const respondentResponse = {
-  applicant1ProceedWithClaim: yesNoSchema,
-  claimant2ResponseFlag: yesNoSchema,
-  applicantsProceedIntention: yesNoSchema,
-  claimantResponseDocumentToDefendant2Flag: yesNoSchema,
+const respondentResponse = (claimType: ClaimType) => {
+  if (ClaimTypeHelper.isDefendant2Represented(claimType)) {
+    return {
+      applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2: yesNoSchema,
+      applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2: yesNoSchema,
+      claimant2ResponseFlag: yesNoSchema,
+      applicantsProceedIntention: yesNoSchema,
+      claimantResponseDocumentToDefendant2Flag: yesNoSchema,
+    }
+  }
+
+  return {
+    applicant1ProceedWithClaim: yesNoSchema,
+    claimant2ResponseFlag: yesNoSchema,
+    applicantsProceedIntention: yesNoSchema,
+    claimantResponseDocumentToDefendant2Flag: yesNoSchema,
+  };
 };
 
-const applicantDefenceResponseDocument = {};
+const applicantDefenceResponseDocument = (claimType: ClaimType) => {
+  if (claimType === ClaimType.ONE_VS_TWO_DIFF_SOL) {
+    return {};
+  }
+
+  return {};
+};
 
 const fastTrackDq = (claimTrack: ClaimTrack) => {
   if (claimTrack === ClaimTrack.FAST_CLAIM) {
@@ -123,6 +143,10 @@ const furtherInformation = {
   }),
 };
 
+const undefine = {
+  nextDeadline: z.undefined().optional(),
+};
+
 const claimantResponseSchemaComponents = {
   respondentResponse,
   applicantDefenceResponseDocument,
@@ -135,6 +159,7 @@ const claimantResponseSchemaComponents = {
   hearingSupport,
   vulnerabilityQuestions,
   furtherInformation,
+  undefine,
 };
 
 export default claimantResponseSchemaComponents;

@@ -273,6 +273,10 @@ const application = (
   return {};
 };
 
+const undefine = {
+  nextDeadline: z.undefined().optional(),
+};
+
 const claimantResponseSpecSchemaComponents = {
   proceedWithClaim,
   determinationWithoutHearing,
@@ -285,6 +289,7 @@ const claimantResponseSpecSchemaComponents = {
   hearingSupport,
   vulnerabilityQuestions,
   application,
+  undefine,
 };
 
 export default claimantResponseSpecSchemaComponents;
