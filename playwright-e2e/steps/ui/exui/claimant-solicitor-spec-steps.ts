@@ -329,7 +329,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await evidenceUploadApplicantActions.submitEvidenceUpload();
       },
       async () => {
-        await evidenceUploadApplicantActions.confirm();
+        await evidenceUploadApplicantActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
       { verifySuccessEvent: false },

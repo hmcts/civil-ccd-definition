@@ -5,6 +5,7 @@ import HearingDetailsPage from './hearing-details/hearing-details-page.ts';
 import HearingInformationPage from './hearing-information/hearing-information-page.ts';
 import HearingScheduledSubmitPage from './hearing-scheduled-submit/hearing-scheduled-submit-page.ts';
 import HearingScheduledConfirmPage from './hearing-scheduled-confirm/hearing-scheduled-confirm-page.ts';
+import DateFragment from '../../fragments/date/date-fragment.ts';
 
 export default class HearingScheduledPageFactory extends BasePageFactory {
   get hearingNoticeSelectPage() {
@@ -14,7 +15,8 @@ export default class HearingScheduledPageFactory extends BasePageFactory {
     return new ListingOrRelistingPage(this.page);
   }
   get hearingDetailsPage() {
-    return new HearingDetailsPage(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new HearingDetailsPage(this.page, dateFragment);
   }
   get hearingInformationPage() {
     return new HearingInformationPage(this.page);

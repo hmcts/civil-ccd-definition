@@ -205,7 +205,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await evidenceUploadRespondentActions.submitEvidenceUpload();
       },
       async () => {
-        await evidenceUploadRespondentActions.confirm();
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       { verifySuccessEvent: false },

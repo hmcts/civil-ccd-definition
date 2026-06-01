@@ -1,8 +1,17 @@
-export const headings = {
-  createHearingNotice: 'Create a hearing notice',
-};
-export const radios = {
-  smallClaimsHearing: 'Small claims hearing',
-  trial: 'Trial (Fast, Intermediate and Multi track)',
-  other: 'Other',
+
+export const heading = 'Create a hearing notice';
+
+export const radioButtons = {
+  smallClaims: {
+    label: 'Small claims hearing',
+    selector: '#hearingNoticeList-SMALL_CLAIMS'
+  },
+  trial: {
+    label: 'Trial (Fast, Intermediate and Multi track)',
+    selector: '#hearingNoticeList-FAST_TRACK_TRIAL'
+  },
+  other: {
+    label: 'Other',
+    selector: '#hearingNoticeList-OTHER'
+  }
 };

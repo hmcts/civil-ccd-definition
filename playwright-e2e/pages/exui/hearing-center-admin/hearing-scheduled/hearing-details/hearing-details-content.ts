@@ -1,22 +1,37 @@
-export const labels = {
-  venue: 'Venue',
-  startTime: 'Start time',
+export const heading = 'Create a hearing notice';
+
+export const dropdowns = {
+  venue: {
+    label: 'Venue',
+    selector: '#hearingLocation',
+  },
+  startTime: {
+    label: 'Start time',
+    selector: '#hearingTimeHourMinute',
+  },
+  duration: {
+    label: 'Duration',
+    selector: '#hearingDuration',
+  }
+}
+
+export const radioButtons = {
+  inPerson: {
+    label: 'In Person',
+    selector: '#channel-IN_PERSON'
+  },
+  video: {
+    label: 'Video',
+    selector: '#channel-VIDEO'
+  },
+  telephone: {
+    label: 'Telephone',
+    selector: '#channel-TELEPHONE'
+  }
 };
 
-export const radios = {
-  inPerson: 'In Person',
-  video: 'Video',
-  telephone: 'Telephone',
-};
 export const inputs = {
-  venue: '#hearingLocation',
-  day: '#hearingDate-day',
-  month: '#hearingDate-month',
-  year: '#hearingDate-year',
-  startTime: '#hearingTimeHourMinute',
-  duration: '#hearingDuration',
-};
-export const values = {
-  startTime: '08:00',
-  duration: '30 minutes',
+  date: {
+    selectorKey: 'hearingDate',
+  }
 };

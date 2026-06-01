@@ -4,17 +4,31 @@ import DocumentSelectionSmallClaimPage from './document-selection-small-claim/do
 import DocumentUploadPage from './document-upload/document-upload-page.ts';
 import EvidenceUploadSubmitPage from './evidence-upload-submit/evidence-upload-applicant-submit-page.ts';
 import EvidenceUploadConfirmPage from './evidence-upload-confirm/evidence-upload-confirm-page.ts';
+import partys from '../../../../constants/users/partys.ts';
+import DateFragment from '../../fragments/date/date-fragment.ts';
 
 export default class EvidenceUploadPageFactory extends BasePageFactory {
   get evidenceUploadPage() {
     return new EvidenceUploadPage(this.page);
   }
-  get documentSelectionSmallClaimPage() {
-    return new DocumentSelectionSmallClaimPage(this.page);
+  get documentSelectionSmallClaimClaimantPage() {
+    return new DocumentSelectionSmallClaimPage(this.page, partys.CLAIMANT_1);
   }
-  get documentUploadPage() {
-    return new DocumentUploadPage(this.page);
+
+  get documentSelectionSmallClaimDS1Page() {
+    return new DocumentSelectionSmallClaimPage(this.page, partys.DEFENDANT_SOLICITOR_1);
   }
+
+  get documentUploadClaimantPage() {
+    const dataFragment = new DateFragment(this.page);
+    return new DocumentUploadPage(this.page, dataFragment, partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1, partys.CLAIMANT_EXPERT_1);
+  }
+
+  get documentUploadDS1Page() {
+    const dataFragment = new DateFragment(this.page);
+    return new DocumentUploadPage(this.page, dataFragment, partys.DEFENDANT_SOLICITOR_1, partys.DEFENDANT_1_WITNESS_1, partys.DEFENDANT_1_EXPERT_1);
+  }
+
   get evidenceUploadSubmitPage() {
     return new EvidenceUploadSubmitPage(this.page);
   }

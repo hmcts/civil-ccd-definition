@@ -1,3 +1,4 @@
 export const headings = {
-  uploadYourDocuments: 'Upload your documents',
+  deadlines: 'Deadlines for uploading documents',
+  upload: 'How to upload your evidence'
 };

@@ -21,18 +21,22 @@ export default class EvidenceUploadApplicantActions extends BaseTestData {
 
   @Step(classKey)
   async documentSelectionSmallClaim() {
-    const { documentSelectionSmallClaimPage } = this.evidenceUploadPageFactory;
-    await documentSelectionSmallClaimPage.verifyContent();
-    await documentSelectionSmallClaimPage.selectWitnessStatement();
-    await documentSelectionSmallClaimPage.submit();
+    const { documentSelectionSmallClaimClaimantPage } = this.evidenceUploadPageFactory;
+    await documentSelectionSmallClaimClaimantPage.verifyContent();
+    await documentSelectionSmallClaimClaimantPage.selectWitnessStatement();
+    // await documentSelectionSmallClaimClaimantPage.selectExpertsReport();
+    // await documentSelectionSmallClaimClaimantPage.selectAuthorities();
+    await documentSelectionSmallClaimClaimantPage.submit();
   }
 
   @Step(classKey)
   async documentUpload() {
-    const { documentUploadPage } = this.evidenceUploadPageFactory;
-    await documentUploadPage.verifyContent();
-    await documentUploadPage.addWitnessStatement();
-    await documentUploadPage.submit();
+    const { documentUploadClaimantPage } = this.evidenceUploadPageFactory;
+    await documentUploadClaimantPage.verifyContent();
+    await documentUploadClaimantPage.addWitnessStatement();
+    // await documentUploadClaimantPage.addExpertsReport();
+    // await documentUploadClaimantPage.addAuthorities();
+    await documentUploadClaimantPage.submit();
   }
 
   @Step(classKey)
@@ -43,8 +47,9 @@ export default class EvidenceUploadApplicantActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async confirm() {
+  async evidenceUploadConfirm() {
     const { evidenceUploadConfirmPage } = this.evidenceUploadPageFactory;
     await evidenceUploadConfirmPage.verifyContent();
+    await evidenceUploadConfirmPage.submit();
   }
 }

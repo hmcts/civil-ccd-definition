@@ -2,7 +2,6 @@ import TestData from '../../../../../models/test-utils/test-data.ts';
 import { Step } from '../../../../../decorators/test-steps.ts';
 import BaseTestData from '../../../../../base/base-test-data.ts';
 import EvidenceUploadPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
-import { buttons } from '../../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/document-upload/document-upload-content.ts';
 
 const classKey = 'EvidenceUploadRespondentActions';
 export default class EvidenceUploadRespondentActions extends BaseTestData {
@@ -21,19 +20,23 @@ export default class EvidenceUploadRespondentActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async documentSelectionSmallClaim() {
-    const { documentSelectionSmallClaimPage } = this.evidenceUploadPageFactory;
-    await documentSelectionSmallClaimPage.verifyContent();
-    await documentSelectionSmallClaimPage.selectWitnessStatement();
-    await documentSelectionSmallClaimPage.submit();
-  }
+    async documentSelectionSmallClaim() {
+      const { documentSelectionSmallClaimDS1Page } = this.evidenceUploadPageFactory;
+      await documentSelectionSmallClaimDS1Page.verifyContent();
+      // await documentSelectionSmallClaimDS1Page.selectWitnessStatement();
+      await documentSelectionSmallClaimDS1Page.selectExpertsReport();
+      // await documentSelectionSmallClaimDS1Page.selectAuthorities();
+      await documentSelectionSmallClaimDS1Page.submit();
+    }
 
   @Step(classKey)
   async documentUpload() {
-    const { documentUploadPage } = this.evidenceUploadPageFactory;
-    await documentUploadPage.verifyContent();
-    await documentUploadPage.addWitnessStatement(buttons.addNewRespondent.selector);
-    await documentUploadPage.submit();
+    const { documentUploadDS1Page } = this.evidenceUploadPageFactory;
+    await documentUploadDS1Page.verifyContent();
+    // await documentUploadDS1Page.addWitnessStatement();
+    await documentUploadDS1Page.addExpertsReport();
+    // await documentUploadDS1Page.addAuthorities();
+    await documentUploadDS1Page.submit();
   }
 
   @Step(classKey)
@@ -44,8 +47,9 @@ export default class EvidenceUploadRespondentActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async confirm() {
+  async evidenceUploadConfirm() {
     const { evidenceUploadConfirmPage } = this.evidenceUploadPageFactory;
     await evidenceUploadConfirmPage.verifyContent();
+    await evidenceUploadConfirmPage.submit();
   }
 }

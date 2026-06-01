@@ -7,7 +7,8 @@ import { headings } from './evidence-upload-content.ts';
 export default class EvidenceUploadPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
-      super.expectHeading(headings.uploadYourDocuments, { exact: false }),
+      super.expectHeading(headings.deadlines, { exact: false }),
+      super.expectHeading(headings.upload, { exact: false }),
     ]);
   }
 
