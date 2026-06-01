@@ -6,10 +6,6 @@ ccd:
       enabled: true
   ccd-data-store-api:
     java:
-      devcpuRequests: 50m
-      devcpuLimits: 500m
-      devmemoryRequests: 1024Mi
-      devmemoryLimits: 2048Mi
       releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api
       environment:
         ELASTIC_SEARCH_ENABLED: true
@@ -17,9 +13,6 @@ ccd:
         ELASTIC_SEARCH_DATA_NODES_HOSTS: http://${SERVICE_NAME}-es-master:9200
   ccd-definition-store-api:
     java:
-      devcpuRequests: 50m
-      devmemoryRequests: 1024Mi
-      devmemoryLimits: 2048Mi
       releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       environment:
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
@@ -115,10 +108,6 @@ civil-translation:
 
 ts-translation-service:
   java:
-    devcpuRequests: 50m
-    devcpuLimits: 200m
-    devmemoryRequests: 512Mi
-    devmemoryLimits: 1024Mi
     releaseNameOverride: ${SERVICE_NAME}-translation-service
     ingressHost: ts-${SERVICE_FQDN}
     imagePullPolicy: Always

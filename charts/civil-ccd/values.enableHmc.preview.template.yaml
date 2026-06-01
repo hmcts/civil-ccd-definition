@@ -3,10 +3,6 @@ civil-ccd-stack:
 
 civil-service:
   java:
-    devcpuRequests: 50m
-    devcpuLimits: 700m
-    devmemoryRequests: 1536Mi
-    devmemoryLimits: 2048Mi
     environment:
       CORE_CASE_DATA_API_URL: http://ccd-data-store-api-aat.service.core-compute-aat.internal
       HMC_API_URL: http://hmc-cft-hearing-service-aat.service.core-compute-aat.internal
@@ -20,10 +16,6 @@ civil-service:
 xui-webapp:
   enabled: true
   nodejs:
-    devcpuRequests: 50m
-    devcpuLimits: 200m
-    devmemoryRequests: 512Mi
-    devmemoryLimits: 1024Mi
     environment:
       SERVICES_HEARINGS_COMPONENT_API: http://jurisdiction-hearings-api-aat.service.core-compute-aat.internal
       SERVICES_HEARINGS_COMPONENT_API_SSCS: http://${SERVICE_NAME}-sscs-hearings-api
