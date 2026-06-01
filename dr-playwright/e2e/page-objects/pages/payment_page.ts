@@ -47,7 +47,7 @@ export class PaymentPage {
       const serviceRequestTableRow = serviceRequestTable.getByRole('row');
 
       if (await serviceRequestTableRow.getByRole('table').count() < 1) {
-        console.log('Refreshing webpage, try: ' + retry + ' of ' + maxRetries);
+        console.log('Refreshing webpage - waiting for "Pay now" link for Service request, try: ' + retry + ' of ' + maxRetries);
         await this.page.reload();
         const visibleElement = this.page.locator('#next-step');
         await visibleElement.waitFor({state: 'visible'});
@@ -57,21 +57,16 @@ export class PaymentPage {
       }
     }
 
-    await this.page.waitForTimeout(2000);
     await this.page.getByText('Pay now').click();
-    await this.page.waitForTimeout(2000);
 
     paymentType == 'PBA' ? await this.page.locator('#pbaAccount').click() : await this.page.locator('#cardPayment').click();
-    await this.page.waitForTimeout(2000);
+ //   await this.page.waitForTimeout(2000);
     if (paymentType === 'PBA') {
-      await this.page.waitForTimeout(2000);
       await this.page.locator('#pbaAccountNumber').selectOption('PBA0078095');
       await this.page.locator('#pbaAccountRef').fill('PBA Account reference test text.');
       await this.page.keyboard.press('Tab');
-      await this.page.waitForTimeout(2000);
       await confirmPaymentButton.click();
     } else {
-      await this.page.waitForTimeout(2000);
       await this.page.locator('#cardPayment').click();
       await this.buttonHelper.continueButton.click();
       await this.page.fill(this.cardNoLocator, this.cardNumber);
