@@ -266,7 +266,6 @@ const application = (
         intentionToMakeFutureApplications: yesNoSchema,
         whatWillFutureApplicationsBeMadeFor: nonEmptyString,
       }),
-      applicant1AdditionalInformationForJudge: nonEmptyString,
     };
   }
 
