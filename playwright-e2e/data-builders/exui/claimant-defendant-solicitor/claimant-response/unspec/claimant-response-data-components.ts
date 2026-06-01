@@ -1,23 +1,54 @@
 import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
+import ClaimType from '../../../../../constants/cases/claim-type';
 import partys from '../../../../../constants/users/partys';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import DateHelper from '../../../../../helpers/date-helper';
 import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
+import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 
-const respondentResponse = {
-  RespondentResponse: {
-    applicant1ProceedWithClaim: 'Yes',
-  },
+const respondentResponse = (claimType: ClaimType) => {
+  if(ClaimTypeHelper.isDefendant2Represented(claimType)) {
+    return {
+      RespondentResponse: {
+        applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2: 'Yes',
+        applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2: 'Yes',
+      }
+    } 
+  } else if (claimType === ClaimType.TWO_VS_ONE) {
+    return {
+      RespondentResponse: {
+        applicant1ProceedWithClaimMultiParty2v1: 'Yes',
+        applicant2ProceedWithClaimMultiParty2v1: 'Yes',
+      }
+    };
+  }
+
+  return {
+      RespondentResponse: {
+        applicant1ProceedWithClaim: 'Yes',
+      },
+    };
 };
 
-const applicantDefenceResponseDocument = (defenceResponseDocument: UploadDocumentValue) => ({
-  ApplicantDefenceResponseDocument: {
-    applicant1DefenceResponseDocument: {
-      file: defenceResponseDocument,
+const applicantDefenceResponseDocument = (claimType: ClaimType, defenceResponseDocument1: UploadDocumentValue, defenceResponseDocument2: UploadDocumentValue) => {
+  if(claimType === ClaimType.ONE_VS_TWO_DIFF_SOL) {
+    return {
+      ApplicantDefenceResponseDocument: {
+        applicant1DefenceResponseDocument: {file: defenceResponseDocument1},
+        claimantDefenceResDocToDefendant2: {file: defenceResponseDocument2},
+      }
+    }
+  }
+  
+  return {
+    ApplicantDefenceResponseDocument: {
+      applicant1DefenceResponseDocument: {
+        file: defenceResponseDocument1,
+      },
     },
-  },
-});
+  };
+};
 
 const fastTrackDq = (claimTrack: ClaimTrack) => {
   if (claimTrack === ClaimTrack.FAST_CLAIM) {

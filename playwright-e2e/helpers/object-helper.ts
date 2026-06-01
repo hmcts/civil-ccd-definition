@@ -11,14 +11,20 @@ export default class ObjectHelper {
   static deepSpread(objectToBeModified: object, modificationObject: object) {
     const modified = { ...objectToBeModified };
     for (const key in modificationObject) {
-      if (objectToBeModified[key] && typeof objectToBeModified[key] === 'object') {
-        if (Array.isArray(objectToBeModified[key])) {
-          modified[key] = modificationObject[key];
-        } else {
-          modified[key] = this.deepSpread(objectToBeModified[key], modificationObject[key]);
-        }
+      const originalValue = objectToBeModified[key];
+      const modifiedValue = modificationObject[key];
+
+      if (
+        originalValue &&
+        typeof originalValue === 'object' &&
+        !Array.isArray(originalValue) &&
+        modifiedValue &&
+        typeof modifiedValue === 'object' &&
+        !Array.isArray(modifiedValue)
+      ) {
+        modified[key] = this.deepSpread(originalValue, modifiedValue);
       } else {
-        modified[key] = modificationObject[key];
+        modified[key] = modifiedValue;
       }
     }
     return modified;
