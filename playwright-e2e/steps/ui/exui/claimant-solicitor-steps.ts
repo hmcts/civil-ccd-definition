@@ -275,12 +275,13 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
+        await notifyClaimActions.defendantSolicitorToNotify();
         await notifyClaimActions.certificateOfService1NotifyClaim();
         await notifyClaimActions.certificateOfService2NotifyClaim();
         await notifyClaimActions.submitNotifyClaim();
       },
       async () => {
-        await notifyClaimActions.confirmNotifyClaimCOS();
+        await notifyClaimActions.confirmNotifyClaim();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
 
@@ -358,6 +359,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
+        await notifyClaimDetailsActions.selectDefendantSolicitor();
         await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetails();
         await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetails();
         await notifyClaimDetailsActions.submitNotifyClaimDetailsCOS();
