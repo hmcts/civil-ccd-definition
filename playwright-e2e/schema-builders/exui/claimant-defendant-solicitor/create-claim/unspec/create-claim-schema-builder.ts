@@ -30,6 +30,13 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
+  async buildFastTrack2v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
+  }
+
   async buildSmallTrack1v1(): Promise<z.ZodType> {
     return this.buildSchema();
   }

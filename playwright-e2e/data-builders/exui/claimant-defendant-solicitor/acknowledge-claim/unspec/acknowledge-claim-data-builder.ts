@@ -12,6 +12,10 @@ export default class AcknowledgeClaimDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimType: ClaimType.ONE_VS_ONE });
   }
 
+  async buildDataDS1FullDefence2v1() {
+    return this.buildData({ claimType: ClaimType.TWO_VS_ONE });
+  }
+
   async buildDataDS1FullDefence1v2SS() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }

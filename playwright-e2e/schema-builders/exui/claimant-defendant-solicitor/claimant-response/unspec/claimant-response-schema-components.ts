@@ -14,14 +14,16 @@ const respondentResponse = (claimType: ClaimType) => {
       claimant2ResponseFlag: yesNoSchema,
       applicantsProceedIntention: yesNoSchema,
       claimantResponseDocumentToDefendant2Flag: yesNoSchema,
-    }
+    };
+  } else if (claimType === ClaimType.TWO_VS_ONE) {
+    return {
+      applicant1ProceedWithClaimMultiParty2v1: yesNoSchema,
+      applicant2ProceedWithClaimMultiParty2v1: yesNoSchema,
+    };
   }
 
   return {
     applicant1ProceedWithClaim: yesNoSchema,
-    claimant2ResponseFlag: yesNoSchema,
-    applicantsProceedIntention: yesNoSchema,
-    claimantResponseDocumentToDefendant2Flag: yesNoSchema,
   };
 };
 

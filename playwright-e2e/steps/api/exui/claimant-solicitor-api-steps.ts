@@ -100,6 +100,23 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
   }
 
+  async CreateClaimFastTrack2v1() {
+    await this.setupUserData(claimantSolicitorUser);
+    const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimData = await createClaimDataBuilder.buildFastTrack2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM,
+      createClaimData,
+      CaseState.PENDING_CASE_ISSUED,
+    );
+
+    const { createClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimResponseSchema = await createClaimSchemaBuilder.buildFastTrack2v1();
+    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+  }
+
   async CreateClaimSmallTrack2v1() {
     await this.setupUserData(claimantSolicitorUser);
     const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
@@ -344,6 +361,29 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const claimantResponseSchema =
       await claimantResponseSchemaBuilder.buildFastTrackFullDefence1v1Data(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+  }
+
+  async RespondFastTrackFullDefence2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseDataBuilder.buildFastTrackFullDefence2v1Data();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE,
+      claimantResponseEventData,
+      CaseState.JUDICIAL_REFERRAL,
+    );
+
+    const { claimantResponseSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const claimantResponseSchema =
+      await claimantResponseSchemaBuilder.buildFastTrackFullDefence2v1Data(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);

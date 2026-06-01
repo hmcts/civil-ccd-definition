@@ -10,6 +10,13 @@ import defendantResponseDataComponents from './defendant-response-data-component
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
+  async buildDS1FastTrackFullDefence2v1Data() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+    });
+  }
+
   async buildDS1FastTrackFullDefence1v2SSData() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,

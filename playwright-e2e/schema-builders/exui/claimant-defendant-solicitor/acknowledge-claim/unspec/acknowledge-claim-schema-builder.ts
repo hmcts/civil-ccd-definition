@@ -18,6 +18,15 @@ export default class AcknowledgeClaimSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
+  async buildSchemaDS1FullDefence2v1(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ) {
+    return this.buildSchema({
+      caseDataBeforeSubmission,
+      claimType: ClaimType.TWO_VS_ONE,
+    });
+  }
+
   async buildSchemaDS1FullDefence1v2SS(
     caseDataBeforeSubmission?: CCDCaseData,
   ) {

@@ -12,6 +12,14 @@ import { Party } from '../../../../../models/users/partys';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
+  async buildDS1FastTrackFullDefence2v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
   async buildDS1FastTrackFullDefence1v2SS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,

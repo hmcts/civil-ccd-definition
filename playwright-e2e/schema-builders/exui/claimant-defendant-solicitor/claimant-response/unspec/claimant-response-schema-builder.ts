@@ -9,6 +9,13 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
+  async buildFastTrackFullDefence2v1Data(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
+  }
+
   async buildFastTrackFullDefence1v2SSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,

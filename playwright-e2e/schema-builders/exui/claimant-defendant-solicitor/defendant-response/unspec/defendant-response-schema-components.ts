@@ -30,6 +30,11 @@ const respondentResponseType = (
       return {
         respondent1ClaimResponseType: z.literal(responseType),
       };
+    } else if (claimType === ClaimType.TWO_VS_ONE) {
+      return {
+        respondent1ClaimResponseType: z.literal(responseType),
+        respondent1ClaimResponseTypeToApplicant2: z.literal(responseType),
+      };
     }
 
     return {

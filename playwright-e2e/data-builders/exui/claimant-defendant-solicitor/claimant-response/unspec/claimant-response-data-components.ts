@@ -15,6 +15,13 @@ const respondentResponse = (claimType: ClaimType) => {
         applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2: 'Yes',
       }
     } 
+  } else if (claimType === ClaimType.TWO_VS_ONE) {
+    return {
+      RespondentResponse: {
+        applicant1ProceedWithClaimMultiParty2v1: 'Yes',
+        applicant2ProceedWithClaimMultiParty2v1: 'Yes',
+      }
+    };
   }
 
   return {

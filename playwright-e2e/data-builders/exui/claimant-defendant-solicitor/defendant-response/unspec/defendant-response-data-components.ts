@@ -62,6 +62,13 @@ const respondentResponseType = (
           respondent1ClaimResponseType: responseType,
         }
       };
+    } else if (claimType === ClaimType.TWO_VS_ONE) {
+      return {
+        RespondentResponseType: {
+          respondent1ClaimResponseType: responseType,
+          respondent1ClaimResponseTypeToApplicant2: responseType,
+        }
+      };
     }
     return {
       RespondentResponseType: {

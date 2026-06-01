@@ -61,6 +61,29 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
 
   }
 
+  async AcknowledgeClaimFullDefence2v1() {
+    await this.setupApiStep(defendantSolicitor1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { acknowledgeClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const acknowledgeClaimData =
+      await acknowledgeClaimDataBuilder.buildDataDS1FullDefence2v1();
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.ACKNOWLEDGE_CLAIM,
+      acknowledgeClaimData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { acknowledgeClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const acknowledgeClaimSchema =
+      await acknowledgeClaimSchemaBuilder.buildSchemaDS1FullDefence2v1(
+        caseDataBeforeSubmission,
+      );
+
+    ZodHelper.safeParse(acknowledgeClaimSchema, this.ccdCaseData);
+  }
+
   async AcknowledgeClaimFullDefence1v2SS() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -150,6 +173,30 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
       await defendantResponseSchemaBuilder.buildDS1FastTrackFullDefence(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
+
+  async RespondFastTrackFullDefence2v1() {
+    await this.setupApiStep(defendantSolicitor1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defendantResponseEventData =
+      await defendantResponseDataBuilder.buildDS1FastTrackFullDefence2v1Data();
+
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.DEFENDANT_RESPONSE,
+      defendantResponseEventData,
+      CaseState.AWAITING_APPLICANT_INTENTION,
+    );
+
+    const { defendantResponseSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defendantResponseSchema =
+      await defendantResponseSchemaBuilder.buildDS1FastTrackFullDefence2v1(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
