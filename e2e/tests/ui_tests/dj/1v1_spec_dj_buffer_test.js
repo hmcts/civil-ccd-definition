@@ -39,6 +39,9 @@ Scenario('03 LiP defendant submits defence during buffer - pending DJ cancelled,
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseid, 'SmallClaims', false, '');
   await api_spec_cui.verifyCaseState('AWAITING_APPLICANT_INTENTION');
   await api_spec_cui.verifyActiveJudgmentCancelled();
+  await api_spec_cui.amendJoDJCreatedDate(144);
+  await api_spec_cui.runScheduler('JudgementBuffer');
+  await api_spec_cui.verifyBufferNotIssuedAfterScheduler('AWAITING_APPLICANT_INTENTION');
 }).retry(2);
 
 Scenario('04 Defence-during-buffer triggers defendant-response notifications to both parties (DTSCCI-5101 AC6)', async ({api_spec_cui}) => {
@@ -56,16 +59,18 @@ Scenario('05 Scheduler issues buffered DJ once 48h+ buffer expires - full end-to
   await I.initiateDJSpec(buffCaseId, 'ONE_V_ONE', 'UNSPEC', 'Default judgment requested');
   await api_spec_cui.verifyCaseState('JUDGMENT_REQUESTED');
   await api_spec_cui.waitForBusinessProcessFinished();
+  await api_spec_cui.verifyBufferStateInitialFields();
 
   const schedulers = await api_spec_cui.listSchedulers();
   assert.include(schedulers, 'JudgementBuffer',
     `JudgementBuffer scheduler not registered. Got: ${JSON.stringify(schedulers)}`);
 
-  await api_spec_cui.amendJoDJCreatedDate(49);
+  await api_spec_cui.amendJoDJCreatedDate(144);
   await new Promise(resolve => setTimeout(resolve, 5000));
 
   await api_spec_cui.runScheduler('JudgementBuffer');
   await api_spec_cui.verifyJudgmentBufferIssued();
+  await api_spec_cui.verifyDjGrantNotificationsSent(buffCaseId);
 }).retry(2);
 
 Scenario('06 Scheduler does NOT issue DJ when buffer not yet expired (<48h) (DTSCCI-5436 negative - time gate)', async ({I, api_spec_cui}) => {
@@ -79,7 +84,7 @@ Scenario('06 Scheduler does NOT issue DJ when buffer not yet expired (<48h) (DTS
   await api_spec_cui.verifyCaseState('JUDGMENT_REQUESTED');
   await api_spec_cui.waitForBusinessProcessFinished();
 
-  await api_spec_cui.amendJoDJCreatedDate(47);
+  await api_spec_cui.amendJoDJCreatedDate(40);
   await new Promise(resolve => setTimeout(resolve, 5000));
 
   await api_spec_cui.runScheduler('JudgementBuffer');
@@ -107,7 +112,48 @@ Scenario('08 CTSC takes case offline during buffer - case proceeds offline to PR
   await api_spec_cui.waitForBusinessProcessFinished();
 
   await api_spec_cui.verifyCaseState('PROCEEDS_IN_HERITAGE_SYSTEM');
+  await api_spec_cui.amendJoDJCreatedDate(144);
+  await api_spec_cui.runScheduler('JudgementBuffer');
+  await api_spec_cui.verifyBufferNotIssuedAfterScheduler('PROCEEDS_IN_HERITAGE_SYSTEM');
 }).retry(2);
+
+Scenario('09 DJ with instalment payment plan - instalmentDetails captured at request and preserved at grant (DTSCCI-5061 field coverage)', async ({I, api_spec_cui}) => {
+  if (!judgmentBufferEnabled) return;
+  await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
+  const instCaseId = await api_spec_cui.getCaseId();
+  await api_spec_cui.amendRespondent1ResponseDeadline(config.systemupdate);
+
+  await I.login(config.applicantSolicitorUser);
+  await I.initiateDJSpec(instCaseId, 'ONE_V_ONE', 'UNSPEC', 'Default judgment requested', 'repaymentPlan');
+  await api_spec_cui.verifyCaseState('JUDGMENT_REQUESTED');
+  await api_spec_cui.waitForBusinessProcessFinished();
+  await api_spec_cui.verifyBufferStateInitialFields();
+  await api_spec_cui.verifyInstalmentDetails('MONTHLY');
+
+  await api_spec_cui.amendJoDJCreatedDate(144);
+  await api_spec_cui.runScheduler('JudgementBuffer');
+  await api_spec_cui.verifyJudgmentBufferIssued();
+  await api_spec_cui.verifyInstalmentDetails('MONTHLY');
+}).retry(2).tag('@ui-judgment-buffer');
+
+Scenario('10 Discontinued during buffer - case never issued by scheduler (DTSCCI-3663 AC1 exclusion)', async ({I, api_spec_cui}) => {
+  if (!judgmentBufferEnabled) return;
+  await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
+  const discCaseId = await api_spec_cui.getCaseId();
+  await api_spec_cui.amendRespondent1ResponseDeadline(config.systemupdate);
+
+  await I.login(config.applicantSolicitorUser);
+  await I.initiateDJSpec(discCaseId, 'ONE_V_ONE', 'UNSPEC', 'Default judgment requested');
+  await api_spec_cui.verifyCaseState('JUDGMENT_REQUESTED');
+  await api_spec_cui.waitForBusinessProcessFinished();
+
+  await api_spec_cui.discontinueClaim(config.applicantSolicitorUser, 'ONE_V_ONE_NO_P_NEEDED');
+  await api_spec_cui.verifyCaseState('CASE_DISCONTINUED');
+
+  await api_spec_cui.amendJoDJCreatedDate(144);
+  await api_spec_cui.runScheduler('JudgementBuffer');
+  await api_spec_cui.verifyBufferNotIssuedAfterScheduler('CASE_DISCONTINUED');
+}).retry(2).tag('@ui-judgment-buffer');
 
 AfterSuite(async ({api_spec_cui}) => {
   if (!judgmentBufferEnabled) return;

@@ -47,6 +47,7 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 
 let caseId, eventName;
 let caseData = {};
+let bufferAmountSnapshot = {};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
@@ -523,28 +524,77 @@ module.exports = {
 
   verifyActiveJudgmentCancelled: async () => {
     const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
-    const activeJudgment = response.case_data ? response.case_data.activeJudgment : null;
+    const cd = response.case_data || {};
+    const activeJudgment = cd.activeJudgment;
     if (activeJudgment !== null && activeJudgment !== undefined) {
       assert.equal(activeJudgment.state, 'CANCELLED',
         `Expected activeJudgment.state CANCELLED but got ${activeJudgment.state}`);
+    } else {
+      assert.notEqual(cd.joIsLiveJudgmentExists, 'Yes',
+        'activeJudgment cleared but joIsLiveJudgmentExists still Yes - pending DJ not properly cancelled');
     }
   },
 
   verifyBufferStateInitialFields: async () => {
-    // DTSCCI-3661 AC1 - prove no judgment is issued/registered yet when case parks in JUDGMENT_REQUESTED.
-    // Per Buffer Period spec: state=PENDING_ISSUE, issueDate=null, isRegisterWithRTL=No, rtlState=null.
     const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
-    const aj = response.case_data ? response.case_data.activeJudgment : null;
+    const cd = response.case_data || {};
+    const aj = cd.activeJudgment;
+
     assert.ok(aj, 'Expected activeJudgment to exist in buffer state but got null/undefined');
-    assert.equal(aj.state, 'PENDING_ISSUE',
-      `AC1 buffer state: expected activeJudgment.state=PENDING_ISSUE, got ${aj.state}`);
+
+    // State / RTL fields - prove no judgment issued/registered yet
+    assert.equal(aj.state, 'PENDING_ISSUE', `expected activeJudgment.state=PENDING_ISSUE, got ${aj.state}`);
     assert.isTrue(aj.issueDate === null || aj.issueDate === undefined,
-      `AC1 buffer state: expected issueDate null/undefined (no judgment issued), got ${aj.issueDate}`);
-    assert.equal(aj.isRegisterWithRTL, 'No',
-      `AC1 buffer state: expected isRegisterWithRTL='No' (not registered with RTL), got ${aj.isRegisterWithRTL}`);
+      `expected issueDate null/undefined, got ${aj.issueDate}`);
+    assert.equal(aj.isRegisterWithRTL, 'No', `expected isRegisterWithRTL='No', got ${aj.isRegisterWithRTL}`);
     assert.isTrue(aj.rtlState === null || aj.rtlState === undefined,
-      `AC1 buffer state: expected rtlState null/undefined (no RTL state set), got ${aj.rtlState}`);
-    console.log(`Buffer state fields verified: state=${aj.state}, issueDate=${aj.issueDate}, isRegisterWithRTL=${aj.isRegisterWithRTL}, rtlState=${aj.rtlState}`);
+      `expected rtlState null/undefined, got ${aj.rtlState}`);
+
+    // Request-time fields (from DefaultJudgementSpecHandler / DefaultJudgmentOnlineMapper)
+    assert.equal(aj.type, 'DEFAULT_JUDGMENT', `expected type=DEFAULT_JUDGMENT, got ${aj.type}`);
+    assert.ok(aj.requestDate, 'expected requestDate populated');
+    assert.ok(aj.judgmentId, 'expected judgmentId populated');
+    assert.ok(aj.defendant1Name, 'expected defendant1Name populated');
+    assert.ok(aj.defendant1Address, 'expected defendant1Address populated');
+    assert.ok(aj.paymentPlan, 'expected paymentPlan populated');
+    assert.ok(aj.paymentPlan.type, 'expected paymentPlan.type populated');
+    if (aj.paymentPlan.type === 'PAY_IN_INSTALMENTS') {
+      assert.ok(aj.instalmentDetails, 'expected instalmentDetails for PAY_IN_INSTALMENTS plan');
+      assert.ok(aj.instalmentDetails.amount, 'expected instalmentDetails.amount');
+      assert.ok(aj.instalmentDetails.startDate, 'expected instalmentDetails.startDate');
+      assert.ok(aj.instalmentDetails.paymentFrequency, 'expected instalmentDetails.paymentFrequency');
+    }
+
+    // Amount fields + calculation check
+    assert.ok(aj.orderedAmount, 'expected orderedAmount populated');
+    assert.ok(aj.claimFeeAmount, 'expected claimFeeAmount populated');
+    assert.ok(aj.costs, 'expected costs populated');
+    assert.ok(aj.totalAmount, 'expected totalAmount populated');
+    const expectedTotal = parseInt(aj.orderedAmount) + parseInt(aj.claimFeeAmount) + parseInt(aj.costs);
+    assert.equal(parseInt(aj.totalAmount), expectedTotal,
+      `totalAmount calc: expected ${aj.orderedAmount}+${aj.claimFeeAmount}+${aj.costs}=${expectedTotal}, got ${aj.totalAmount}`);
+
+    assert.isTrue(cd.joIsLiveJudgmentExists === null || cd.joIsLiveJudgmentExists === undefined || cd.joIsLiveJudgmentExists === 'No',
+      `expected joIsLiveJudgmentExists NOT yet 'Yes' at PENDING_ISSUE, got ${cd.joIsLiveJudgmentExists}`);
+    assert.ok(cd.joDJCreatedDate, 'expected joDJCreatedDate populated (DJ request timestamp)');
+    assert.isTrue(typeof cd.joDJCreatedDate === 'string' && cd.joDJCreatedDate.startsWith(aj.requestDate),
+      `expected joDJCreatedDate (${cd.joDJCreatedDate}) to start with requestDate (${aj.requestDate})`);
+    console.log(`Request-time interest/breakdown captured: totalInterest=${cd.totalInterest}, joRepaymentSummaryObject=${JSON.stringify(cd.joRepaymentSummaryObject)}`);
+
+    bufferAmountSnapshot = {
+      caseId,
+      orderedAmount: aj.orderedAmount,
+      claimFeeAmount: aj.claimFeeAmount,
+      costs: aj.costs,
+      totalAmount: aj.totalAmount,
+      totalInterest: cd.totalInterest,
+      joRepaymentSummaryObject: cd.joRepaymentSummaryObject,
+      requestDate: aj.requestDate,
+      joDJCreatedDate: cd.joDJCreatedDate,
+      paymentPlanType: aj.paymentPlan.type,
+    };
+
+    console.log(`PENDING_ISSUE verified: state=${aj.state}, joIsLiveJudgmentExists=${cd.joIsLiveJudgmentExists}, type=${aj.type}, requestDate=${aj.requestDate}, paymentPlan=${aj.paymentPlan.type}, ordered=${aj.orderedAmount}, claimFee=${aj.claimFeeAmount}, costs=${aj.costs}, total=${aj.totalAmount}, totalInterest=${cd.totalInterest}, joDJCreatedDate=${cd.joDJCreatedDate}`);
   },
 
   verifyNotificationSent: async (caseIdToQuery, templateId, recipientEmail, user = config.applicantSolicitorUser) => {
@@ -599,11 +649,18 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  amendJoDJCreatedDate: async (hoursAgo = 49) => {
-    const backdated = new Date(Date.now() - hoursAgo * 60 * 60 * 1000)
-      .toISOString().replace(/\.\d{3}Z$/, '');
+  amendJoDJCreatedDate: async (hoursAgo = 144) => {
+    // joDJCreatedDate is compared against a Europe/London wall-clock cutoff, so build it in London local time
+    const target = new Date(Date.now() - hoursAgo * 60 * 60 * 1000);
+    const p = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/London',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+    }).formatToParts(target).reduce((acc, part) => (acc[part.type] = part.value, acc), {});
+    const hour = p.hour === '24' ? '00' : p.hour;
+    const backdated = `${p.year}-${p.month}-${p.day}T${hour}:${p.minute}:${p.second}`;
     await testingSupport.updateCaseData(caseId, {'joDJCreatedDate': backdated});
-    console.log(`joDJCreatedDate backdated to ${backdated} (${hoursAgo}h ago)`);
+    console.log(`joDJCreatedDate backdated to ${backdated} (Europe/London, ${hoursAgo}h ago)`);
   },
 
   listSchedulers: async (user = config.applicantSolicitorUser) => {
@@ -622,28 +679,87 @@ module.exports = {
     console.log(`Scheduler ${schedulerName} correctly returned 404`);
   },
 
-  verifyJudgmentBufferIssued: async (maxAttempts = 36, intervalMs = 5000) => {
-    const today = new Date().toISOString().slice(0, 10);
+  verifyJudgmentBufferIssued: async (maxAttempts = 60, intervalMs = 5000) => {
+    const todayLondon = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/London'}).format(new Date());
+    const todayUtc = new Intl.DateTimeFormat('en-CA', {timeZone: 'UTC'}).format(new Date());
     let last = {};
+    let cdSnapshot = {};
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+      cdSnapshot = response.case_data || {};
       last.state = response.state;
-      last.judgment = response.case_data ? response.case_data.activeJudgment : null;
-      last.bp = response.case_data ? response.case_data.businessProcess : null;
+      last.judgment = cdSnapshot.activeJudgment;
+      last.bp = cdSnapshot.businessProcess;
       const bpFinished = !last.bp || !last.bp.status || last.bp.status === 'FINISHED';
       const judgmentIssued = last.judgment && last.judgment.state === 'ISSUED';
       const stateFinal = last.state === 'All_FINAL_ORDERS_ISSUED';
       if (judgmentIssued && stateFinal && bpFinished) {
-        console.log(`Buffer issued after ${attempt} attempts (state=${last.state}, bp=${last.bp && last.bp.status}, issueDate=${last.judgment.issueDate})`);
-        assert.equal(last.judgment.issueDate, today,
-          `Expected issueDate ${today} but got ${last.judgment.issueDate}`);
-        assert.equal(last.judgment.rtlState, 'R',
-          `Expected rtlState 'R' but got ${last.judgment.rtlState}`);
-        assert.equal(last.judgment.isRegisterWithRTL, 'Yes',
-          `Expected isRegisterWithRTL 'Yes' but got ${last.judgment.isRegisterWithRTL}`);
-        return last.judgment;
+        const aj = last.judgment;
+        console.log(`Buffer issued after ${attempt} attempts (state=${last.state}, bp=${last.bp && last.bp.status}, issueDate=${aj.issueDate})`);
+
+        // State-transition fields (set by DefaultJudgementGrantedSpecCallbackHandler.updateCaseData)
+        assert.isTrue(aj.issueDate === todayLondon || aj.issueDate === todayUtc,
+          `expected issueDate to be today (${todayLondon} London / ${todayUtc} UTC), got ${aj.issueDate}`);
+        assert.equal(aj.rtlState, 'R', `expected rtlState='R', got ${aj.rtlState}`);
+        assert.equal(aj.isRegisterWithRTL, 'Yes', `expected isRegisterWithRTL='Yes', got ${aj.isRegisterWithRTL}`);
+        assert.equal(cdSnapshot.joIsLiveJudgmentExists, 'Yes',
+          `expected joIsLiveJudgmentExists='Yes' at grant, got ${cdSnapshot.joIsLiveJudgmentExists}`);
+        if (last.bp && last.bp.camundaEvent) {
+          assert.equal(last.bp.camundaEvent, 'DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC',
+            `expected camundaEvent=DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC, got ${last.bp.camundaEvent}`);
+        }
+
+        // Preserved request-time fields (must survive request → grant transition)
+        assert.equal(aj.type, 'DEFAULT_JUDGMENT', `expected type=DEFAULT_JUDGMENT, got ${aj.type}`);
+        assert.ok(aj.requestDate, 'expected requestDate preserved from request');
+        assert.ok(aj.judgmentId, 'expected judgmentId preserved');
+        assert.ok(aj.defendant1Name, 'expected defendant1Name preserved');
+        assert.ok(aj.defendant1Address, 'expected defendant1Address preserved');
+        assert.ok(aj.paymentPlan && aj.paymentPlan.type, 'expected paymentPlan preserved');
+        if (aj.paymentPlan.type === 'PAY_IN_INSTALMENTS') {
+          assert.ok(aj.instalmentDetails, 'expected instalmentDetails preserved for PAY_IN_INSTALMENTS plan');
+          assert.ok(aj.instalmentDetails.amount, 'expected instalmentDetails.amount preserved');
+          assert.ok(aj.instalmentDetails.paymentFrequency, 'expected instalmentDetails.paymentFrequency preserved');
+        }
+        assert.ok(aj.orderedAmount, 'expected orderedAmount preserved');
+        assert.ok(aj.claimFeeAmount, 'expected claimFeeAmount preserved');
+        assert.ok(aj.costs, 'expected costs preserved');
+        assert.ok(aj.totalAmount, 'expected totalAmount preserved');
+        const expectedTotal = parseInt(aj.orderedAmount) + parseInt(aj.claimFeeAmount) + parseInt(aj.costs);
+        assert.equal(parseInt(aj.totalAmount), expectedTotal,
+          `totalAmount calc: expected ${aj.orderedAmount}+${aj.claimFeeAmount}+${aj.costs}=${expectedTotal}, got ${aj.totalAmount}`);
+
+        // Case-level fields
+        assert.ok(cdSnapshot.joDJCreatedDate, 'expected joDJCreatedDate preserved');
+
+        assert.equal(bufferAmountSnapshot.caseId, caseId,
+          `AC3 snapshot missing or for a different case (snapshot=${bufferAmountSnapshot.caseId}, current=${caseId}) - capture verifyBufferStateInitialFields on this case before issuing`);
+        {
+          assert.equal(aj.orderedAmount, bufferAmountSnapshot.orderedAmount,
+            `AC3: orderedAmount changed during buffer (was ${bufferAmountSnapshot.orderedAmount}, now ${aj.orderedAmount})`);
+          assert.equal(aj.claimFeeAmount, bufferAmountSnapshot.claimFeeAmount,
+            `AC3: claimFeeAmount changed during buffer (was ${bufferAmountSnapshot.claimFeeAmount}, now ${aj.claimFeeAmount})`);
+          assert.equal(aj.costs, bufferAmountSnapshot.costs,
+            `AC3: costs changed during buffer (was ${bufferAmountSnapshot.costs}, now ${aj.costs})`);
+          assert.equal(aj.totalAmount, bufferAmountSnapshot.totalAmount,
+            `AC3: totalAmount changed during buffer (was ${bufferAmountSnapshot.totalAmount}, now ${aj.totalAmount})`);
+          assert.equal(String(cdSnapshot.totalInterest), String(bufferAmountSnapshot.totalInterest),
+            `AC3: totalInterest accrued during buffer (was ${bufferAmountSnapshot.totalInterest}, now ${cdSnapshot.totalInterest})`);
+          assert.equal(aj.requestDate, bufferAmountSnapshot.requestDate,
+            `requestDate changed during buffer (was ${bufferAmountSnapshot.requestDate}, now ${aj.requestDate})`);
+          assert.equal(JSON.stringify(cdSnapshot.joRepaymentSummaryObject), JSON.stringify(bufferAmountSnapshot.joRepaymentSummaryObject),
+            'AC3: joRepaymentSummaryObject (interest breakdown) changed during the buffer');
+        }
+
+        console.log(`ISSUED verified: state=${aj.state}, issueDate=${aj.issueDate}, joIsLiveJudgmentExists=${cdSnapshot.joIsLiveJudgmentExists}, rtlState=${aj.rtlState}, isRegisterWithRTL=${aj.isRegisterWithRTL}, requestDate=${aj.requestDate}, type=${aj.type}, paymentPlan=${aj.paymentPlan.type}, ordered=${aj.orderedAmount}, claimFee=${aj.claimFeeAmount}, costs=${aj.costs}, total=${aj.totalAmount}, totalInterest=${cdSnapshot.totalInterest}, camundaEvent=${last.bp && last.bp.camundaEvent}`);
+        return aj;
       }
       console.log(`Attempt ${attempt}/${maxAttempts}: state=${last.state}, judgment.state=${last.judgment && last.judgment.state}, bp=${last.bp && last.bp.status}`);
+      // re-fire the scheduler periodically in case a trigger was queued/delayed
+      if (attempt % 6 === 0) {
+        await apiRequest.triggerScheduler(config.applicantSolicitorUser, 'JudgementBuffer');
+        console.log(`Re-triggered JudgementBuffer scheduler at attempt ${attempt}`);
+      }
       await new Promise(resolve => setTimeout(resolve, intervalMs));
     }
     assert.fail(`Judgment buffer did not complete in ${maxAttempts * intervalMs / 1000}s. Last: ${JSON.stringify(last)}`);
@@ -661,6 +777,44 @@ module.exports = {
         `activeJudgment unexpectedly ISSUED (issueDate=${judgment.issueDate}). Buffer scheduler issued too early.`);
     }
     console.log(`Confirmed: state=${response.state}, activeJudgment.state=${judgment && judgment.state}`);
+  },
+
+  verifyBufferNotIssuedAfterScheduler: async (expectedState, waitMs = 12000) => {
+    await new Promise(resolve => setTimeout(resolve, waitMs));
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const cd = response.case_data || {};
+    const aj = cd.activeJudgment;
+    assert.equal(response.state, expectedState,
+      `Expected case to stay in ${expectedState} after scheduler run but got ${response.state}`);
+    assert.isTrue(!aj || aj.state !== 'ISSUED',
+      `activeJudgment unexpectedly ISSUED (state=${aj && aj.state}) for a case in ${expectedState}`);
+    console.log(`Confirmed NOT issued by scheduler: state=${response.state}, activeJudgment.state=${aj && aj.state}`);
+  },
+
+  verifyInstalmentDetails: async (expectedFrequency = 'MONTHLY') => {
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const aj = (response.case_data || {}).activeJudgment;
+    assert.ok(aj, 'expected activeJudgment for instalment check');
+    assert.equal(aj.paymentPlan.type, 'PAY_IN_INSTALMENTS',
+      `expected paymentPlan.type=PAY_IN_INSTALMENTS, got ${aj.paymentPlan.type}`);
+    assert.ok(aj.instalmentDetails, 'expected instalmentDetails populated for instalment plan');
+    assert.equal(aj.instalmentDetails.paymentFrequency, expectedFrequency,
+      `expected instalmentDetails.paymentFrequency=${expectedFrequency}, got ${aj.instalmentDetails.paymentFrequency}`);
+    assert.ok(aj.instalmentDetails.amount, 'expected instalmentDetails.amount');
+    assert.ok(aj.instalmentDetails.startDate, 'expected instalmentDetails.startDate');
+    console.log(`Instalment plan verified: type=${aj.paymentPlan.type}, frequency=${aj.instalmentDetails.paymentFrequency}, amount=${aj.instalmentDetails.amount}, startDate=${aj.instalmentDetails.startDate}`);
+  },
+
+  verifyDjGrantNotificationsSent: async (ccdCaseId, user = config.applicantSolicitorUser) => {
+    const cd = (await apiRequest.fetchCaseDetails(config.adminUser, ccdCaseId)).case_data;
+    const legacyRef = cd && cd.legacyCaseReference;
+    assert.ok(legacyRef, `expected legacyCaseReference for ccdCaseId=${ccdCaseId}`);
+    const entries = await apiRequest.fetchSentNotifications(user, legacyRef);
+    entries.forEach(e => console.log(`  notif audit: ref=${e.reference} template=${e.templateId} recipient=${e.recipientEmail}`));
+    const djNotifs = entries.filter(e => e.reference && /dj|default.?judg|judgment/i.test(e.reference));
+    assert.isAtLeast(djNotifs.length, 1,
+      `AC1: expected >=1 default-judgment notification at grant for legacyRef=${legacyRef}, got refs: ${JSON.stringify(entries.map(e => e.reference))}`);
+    console.log(`DJ grant notifications sent (${djNotifs.length}): ${djNotifs.map(e => e.reference).join(', ')}`);
   },
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE') => {

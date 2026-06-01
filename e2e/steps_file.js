@@ -545,7 +545,7 @@ module.exports = function () {
         ]);
     },
 
-    async initiateDJSpec(caseId, scenario, caseCategory = 'UNSPEC', expectedHeader = 'Default Judgment Granted') {
+    async initiateDJSpec(caseId, scenario, caseCategory = 'UNSPEC', expectedHeader = 'Default Judgment Granted', paymentType = 'immediately') {
       eventName = events.DEFAULT_JUDGEMENT_SPEC.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.DEFAULT_JUDGEMENT_SPEC, caseId),
@@ -559,7 +559,7 @@ module.exports = function () {
           () => specifiedDefaultJudmentPage.claimForFixedCosts()
         ]),
         () => specifiedDefaultJudmentPage.repaymentSummary(),
-        () => specifiedDefaultJudmentPage.paymentTypeSelection(),
+        () => specifiedDefaultJudmentPage.paymentTypeSelection(paymentType),
         () => event.submit('Submit', expectedHeader),
         () => event.returnToCaseDetails()
       ]);
