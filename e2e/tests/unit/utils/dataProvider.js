@@ -21,6 +21,39 @@ const loadFileFromDefinitions = file => {
   return results;
 };
 
+const loadFilesFromDefinitions = filePrefix => {
+  const results = [];
+  const loadedFiles = new Set();
+  definitionVariants.forEach(variant => {
+    const candidateDirs = [
+      path.join(definitionsRoot, variant),
+      path.join(definitionsRoot, variant, filePrefix)
+    ];
+
+    candidateDirs.forEach(definitionDir => {
+      if (!fs.existsSync(definitionDir)) {
+        return;
+      }
+      fs.readdirSync(definitionDir)
+        .filter(filename => filename === `${filePrefix}.json` || filename.startsWith(`${filePrefix}-`))
+        .forEach(filename => {
+          const fullPath = path.join(definitionDir, filename);
+          if (loadedFiles.has(fullPath)) {
+            return;
+          }
+          loadedFiles.add(fullPath);
+          const content = Object.assign(load(fullPath), []);
+          if (Object.prototype.toString.call(content) === '[object Array]') {
+            results.push(...content);
+          } else {
+            results.push(content);
+          }
+        });
+    });
+  });
+  return results;
+};
+
 // Please update this map whenever exclusions are updated in build-release-ccd-definition.sh
 // without the *
 const exclusions = new Map([
@@ -39,7 +72,7 @@ const ccdData = {
     SearchCasesResultFields: loadFileFromDefinitions('SearchCasesResultFields'),
     SearchInputFields: loadFileFromDefinitions('SearchInputFields'),
     SearchResultFields: loadFileFromDefinitions('SearchResultFields'),
-    State: loadFileFromDefinitions('State'),
+    State: loadFilesFromDefinitions('State'),
     UserProfile: loadFileFromDefinitions('UserProfile'),
     WorkBasketInputFields: loadFileFromDefinitions('WorkBasketInputFields'),
     WorkBasketResultFields: loadFileFromDefinitions('WorkBasketResultFields')

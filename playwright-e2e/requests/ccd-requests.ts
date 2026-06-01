@@ -147,8 +147,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       }
 
       return message;
-    } else if (status >= 500) {
-      return `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, message: ${responseJson.message}`;
-    }
+    } 
+    return `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, message: ${responseJson.message}`;
   }
 }

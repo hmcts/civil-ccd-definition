@@ -73,7 +73,6 @@ export default class SdoActions extends BaseTestData {
     const { disposalHearingPage } = this.sdoPageFactory;
     await disposalHearingPage.verifyContent(this.ccdCaseData);
     await disposalHearingPage.addHearingTime();
-    await disposalHearingPage.addDisposalHearingBundle();
     await disposalHearingPage.submit();
   }
 

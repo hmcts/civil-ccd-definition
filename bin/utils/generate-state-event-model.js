@@ -21,7 +21,7 @@ function resolveDefinitionRoot() {
 }
 
 const DEFINITION_ROOT = resolveDefinitionRoot();
-const STATE_FILE = path.join(DEFINITION_ROOT, 'State.json');
+const STATE_FILE = path.join(DEFINITION_ROOT, 'State', 'State.json');
 const CASE_EVENT_DIR = path.join(DEFINITION_ROOT, 'CaseEvent');
 const AUTH_DIR = path.join(DEFINITION_ROOT, 'AuthorisationCaseEvent');
 

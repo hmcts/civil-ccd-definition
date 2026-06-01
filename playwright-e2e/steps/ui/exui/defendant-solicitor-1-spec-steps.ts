@@ -27,6 +27,20 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor1User);
   }
 
+  async InformAgreedExtensionDateSpec() {
+    const { informAgreedExtensionDateSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await informAgreedExtensionDateSpecActions.extensionDateSpec();
+      },
+      async () => {
+        await informAgreedExtensionDateSpecActions.confirmInformAgreedExtensionDateSpec();
+      },
+      ccdEvents.INFORM_AGREED_EXTENSION_DATE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RespondFastTrackFullDefence1v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
