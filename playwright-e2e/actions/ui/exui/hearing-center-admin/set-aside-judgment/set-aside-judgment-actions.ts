@@ -50,4 +50,11 @@ export default class SetAsideJudgmentSpecActions extends BaseTestData {
     await submitSetAsideJudgmentPage.verifyContent(this.ccdCaseData);
     await submitSetAsideJudgmentPage.submit();
   }
+
+  async confirmSetAsideJudgment() {
+    const { confirmSetAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
+
+    await confirmSetAsideJudgmentPage.verifyContent(this.ccdCaseData);
+    await confirmSetAsideJudgmentPage.submit();
+  }
 }

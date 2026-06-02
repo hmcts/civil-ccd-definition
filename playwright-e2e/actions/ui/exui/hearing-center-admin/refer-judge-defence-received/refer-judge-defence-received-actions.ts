@@ -21,4 +21,10 @@ export default class ReferJudgeDefenceReceivedActions extends BaseTestData {
     await referJudgeDefenceReceivedPage.selectConfirm();
     await referJudgeDefenceReceivedPage.submit();
   }
+
+  async confirmReferToJudge() {
+    const { confirmReferJudgeDefenceReceivedPage } = this.referJudgeDefenceReceivedPageFactory;
+    await confirmReferJudgeDefenceReceivedPage.verifyContent(this.ccdCaseData);
+    await confirmReferJudgeDefenceReceivedPage.submit();
+  }
 }

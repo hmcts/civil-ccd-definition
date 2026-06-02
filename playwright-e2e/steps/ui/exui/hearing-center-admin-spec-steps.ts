@@ -100,7 +100,9 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       async () => {
         await referJudgeDefenceReceivedActions.referToJudge();
       },
-      async () => {},
+      async () => {
+        await referJudgeDefenceReceivedActions.confirmReferToJudge();
+      },
       ccdEvents.REFER_JUDGE_DEFENCE_RECEIVED,
       { verifySuccessEvent: false },
     );
@@ -114,7 +116,9 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await setAsideJudgmentActions.setAsideOrderFollowingApplication();
         await setAsideJudgmentActions.submitSetAsideJudgment();
       },
-      async () => {},
+      async () => {
+        await setAsideJudgmentActions.confirmSetAsideJudgment();
+      },
       ccdEvents.SET_ASIDE_JUDGMENT,
       { verifySuccessEvent: false },
     );
@@ -128,7 +132,9 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await setAsideJudgmentActions.setAsideOrderFollowingDefenceReceived();
         await setAsideJudgmentActions.submitSetAsideJudgment();
       },
-      async () => {},
+      async () => {
+        await setAsideJudgmentActions.confirmSetAsideJudgment();
+      },
       ccdEvents.SET_ASIDE_JUDGMENT,
       { verifySuccessEvent: false },
     );
@@ -141,7 +147,9 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await setAsideJudgmentActions.setAsideJudgmentMadeInError();
         await setAsideJudgmentActions.submitSetAsideJudgment();
       },
-      async () => {},
+      async () => {
+        await setAsideJudgmentActions.confirmSetAsideJudgment();
+      },
       ccdEvents.SET_ASIDE_JUDGMENT,
       { verifySuccessEvent: false },
     );
@@ -181,6 +189,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       hearingCenterAdminRegion2User,
       judgmentOnlineSetAsideTakeCaseOffline,
+      { verifySuccessEvent: false },
     );
   }
 

@@ -218,13 +218,18 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async GenerateDirectionsOrder() {
+  async GenerateDirectionsOrderFreeForm() {
     const { generateDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
       async () => {
-        await generateDirectionsOrderActions.makeFreeFormOrder();
+        await generateDirectionsOrderActions.selectFreeFormOrder();
+        await generateDirectionsOrderActions.enterFreeFormOrderDetails();
+        await generateDirectionsOrderActions.previewFreeFormOrderDetails();
+        await generateDirectionsOrderActions.submitFreeFormOrderDetails();
       },
-      async () => {},
+      async () => {
+        await generateDirectionsOrderActions.confirmFreeFormOrderDetails();
+      },
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       judgeRegion2User,
       defenceReceivedInTimeOrderThatJudgmentIsSetAside,

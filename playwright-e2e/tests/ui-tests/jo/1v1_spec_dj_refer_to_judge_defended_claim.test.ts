@@ -24,7 +24,7 @@ test.describe(
 
       // Uncomment after DTSCCI-5517 fixed
       // await JudgeSteps.LoginRegion2();
-      // await JudgeSteps.GenerateDirectionsOrder();
+      // await JudgeSteps.GenerateDirectionsOrderFreeForm();
     });
   },
 );
