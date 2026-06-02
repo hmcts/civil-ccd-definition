@@ -49,6 +49,25 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
+  async SdoSmallTrackFromFastTrackClaim() {
+    const { sdoActions: standardDirectionsOrderActions } = this.judgeActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await standardDirectionsOrderActions.enterJudgementYes();
+        await standardDirectionsOrderActions.selectSmallTrack();
+        await standardDirectionsOrderActions.smallTrackDetails();
+        await standardDirectionsOrderActions.orderPreview();
+        await standardDirectionsOrderActions.submitSdo();
+      },
+      async () => {
+        await standardDirectionsOrderActions.confirmSdo();
+      },
+      ccdEvents.CREATE_SDO,
+      judgeRegion1User,
+      fastTrackDirectionsTask,
+    );
+  }
+
   async SdoSmallTrackDRH() {
     const { sdoActions: standardDirectionsOrderActions } = this.judgeActionsFactory;
     await super.retryWAEvent(
