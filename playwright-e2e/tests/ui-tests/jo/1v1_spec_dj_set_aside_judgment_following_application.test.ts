@@ -9,7 +9,6 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       ClaimantSolicitorSpecSteps,
       HearingCenterAdminSpecSteps,
-      CaseworkerSteps,
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -21,9 +20,7 @@ test.describe(
 
       await HearingCenterAdminSpecSteps.LoginRegion2();
       await HearingCenterAdminSpecSteps.RequestSetAsideJudgmentFollowingApplication();
-
-      await CaseworkerSteps.Login();
-      await CaseworkerSteps.CaseProceedsInCasemanSpec();
+      await HearingCenterAdminSpecSteps.CaseProceedsInCasemanSetAsideJudgment();
     });
   },
 );

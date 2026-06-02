@@ -7,6 +7,7 @@ import {
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import judgmentOnlineSetAsideTakeCaseOffline from '../../../constants/wa-tasks/judgmentOnlineSetAsideTakeCaseOffline';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -109,7 +110,9 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
     const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await setAsideJudgmentActions.orderFollowingApplication();
+        await setAsideJudgmentActions.setAsideJudgment();
+        await setAsideJudgmentActions.setAsideOrderFollowingApplication();
+        await setAsideJudgmentActions.submitSetAsideJudgment();
       },
       async () => {},
       ccdEvents.SET_ASIDE_JUDGMENT,
@@ -121,7 +124,9 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
     const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await setAsideJudgmentActions.orderFollowingDefenceReceived();
+        await setAsideJudgmentActions.setAsideJudgment();
+        await setAsideJudgmentActions.setAsideOrderFollowingDefenceReceived();
+        await setAsideJudgmentActions.submitSetAsideJudgment();
       },
       async () => {},
       ccdEvents.SET_ASIDE_JUDGMENT,
@@ -133,7 +138,8 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
     const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await setAsideJudgmentActions.orderJudgmentMadeInError();
+        await setAsideJudgmentActions.setAsideJudgmentMadeInError();
+        await setAsideJudgmentActions.submitSetAsideJudgment();
       },
       async () => {},
       ccdEvents.SET_ASIDE_JUDGMENT,
@@ -161,6 +167,20 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CaseProceedsInCasemanSetAsideJudgment() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettledSpec();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      hearingCenterAdminRegion2User,
+      judgmentOnlineSetAsideTakeCaseOffline,
       { verifySuccessEvent: false },
     );
   }

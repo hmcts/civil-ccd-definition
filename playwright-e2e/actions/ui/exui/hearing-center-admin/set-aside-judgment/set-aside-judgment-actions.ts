@@ -12,44 +12,40 @@ export default class SetAsideJudgmentSpecActions extends BaseTestData {
     this.setAsideJudgmentPageFactory = setAsideJudgmentPageFactory;
   }
 
-  async orderFollowingApplication() {
-    const { setAsideJudgmentPage, setAsideOrderTypePage, submitSetAsideJudgmentPage } =
-      this.setAsideJudgmentPageFactory;
+  async setAsideJudgment() {
+    const { setAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
 
     await setAsideJudgmentPage.verifyContent(this.ccdCaseData);
     await setAsideJudgmentPage.selectJudgeOrder();
     await setAsideJudgmentPage.submit();
+  }
+
+  async setAsideOrderFollowingApplication() {
+    const { setAsideOrderTypePage } = this.setAsideJudgmentPageFactory;
 
     await setAsideOrderTypePage.verifyContent(this.ccdCaseData);
     await setAsideOrderTypePage.fillOrderFollowingApplication();
     await setAsideOrderTypePage.submit();
-
-    await submitSetAsideJudgmentPage.verifyContent(this.ccdCaseData);
-    await submitSetAsideJudgmentPage.submit();
   }
 
-  async orderFollowingDefenceReceived() {
-    const { setAsideJudgmentPage, setAsideOrderTypePage, submitSetAsideJudgmentPage } =
-      this.setAsideJudgmentPageFactory;
-
-    await setAsideJudgmentPage.verifyContent(this.ccdCaseData);
-    await setAsideJudgmentPage.selectJudgeOrder();
-    await setAsideJudgmentPage.submit();
+  async setAsideOrderFollowingDefenceReceived() {
+    const { setAsideOrderTypePage } = this.setAsideJudgmentPageFactory;
 
     await setAsideOrderTypePage.verifyContent(this.ccdCaseData);
     await setAsideOrderTypePage.fillOrderFollowingDefenceReceived();
     await setAsideOrderTypePage.submit();
-
-    await submitSetAsideJudgmentPage.verifyContent(this.ccdCaseData);
-    await submitSetAsideJudgmentPage.submit();
   }
 
-  async orderJudgmentMadeInError() {
-    const { setAsideJudgmentPage, submitSetAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
+  async setAsideJudgmentMadeInError() {
+    const { setAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
 
     await setAsideJudgmentPage.verifyContent(this.ccdCaseData);
     await setAsideJudgmentPage.selectJudgmentError();
     await setAsideJudgmentPage.submit();
+  }
+
+  async submitSetAsideJudgment() {
+    const { submitSetAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
 
     await submitSetAsideJudgmentPage.verifyContent(this.ccdCaseData);
     await submitSetAsideJudgmentPage.submit();

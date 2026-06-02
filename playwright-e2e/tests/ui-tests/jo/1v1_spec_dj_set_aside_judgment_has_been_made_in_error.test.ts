@@ -6,7 +6,6 @@ test.describe('1v1 spec set aside judgment made in error', { tag: '@civil-ccd-ni
     CaseRoleAssignmentApiSteps,
     ClaimantSolicitorSpecSteps,
     HearingCenterAdminSpecSteps,
-    CaseworkerSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -18,8 +17,6 @@ test.describe('1v1 spec set aside judgment made in error', { tag: '@civil-ccd-ni
 
     await HearingCenterAdminSpecSteps.LoginRegion2();
     await HearingCenterAdminSpecSteps.RequestSetAsideJudgmentMadeInError();
-
-    await CaseworkerSteps.Login();
-    await CaseworkerSteps.CaseProceedsInCasemanSpec();
+    await HearingCenterAdminSpecSteps.CaseProceedsInCasemanSetAsideJudgment();
   });
 });
