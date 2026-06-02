@@ -181,6 +181,20 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       hearingCenterAdminRegion2User,
       judgmentOnlineSetAsideTakeCaseOffline,
+  async ScheduleHearing() {
+    const { hearingScheduledActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await hearingScheduledActions.hearingNoticeSelect();
+        await hearingScheduledActions.listingOrRelisting();
+        await hearingScheduledActions.hearingDetails();
+        await hearingScheduledActions.hearingInformation();
+        await hearingScheduledActions.submitHearingScheduled();
+      },
+      async () => {
+        await hearingScheduledActions.confirm();
+      },
+      ccdEvents.HEARING_SCHEDULED,
       { verifySuccessEvent: false },
     );
   }

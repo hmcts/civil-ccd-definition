@@ -10,6 +10,8 @@ import ReferToJudgeDefendedClaimActions from './refer-to-judge-defended-claim/re
 import ReferToJudgeDefendedClaimPageFactory from '../../../../pages/exui/hearing-center-admin/refer-to-judge-defended-claim/refer-to-judge-defended-claim-page-factory';
 import SetAsideJudgmentActions from './set-aside-judgment/set-aside-judgment-actions';
 import SetAsideJudgmentPageFactory from '../../../../pages/exui/hearing-center-admin/set-aside-judgment/set-aside-judgment-page-factory';
+import HearingScheduledActions from './hearing-scheduled-actions';
+import HearingScheduledPageFactory from '../../../../pages/exui/hearing-center-admin/hearing-scheduled/hearing-scheduled-page-factory';
 
 export default class HearingCenterAdminActionsFactory extends BasePageActionsFactory {
   get caseProceedsInCasemanActions() {
@@ -40,5 +42,7 @@ export default class HearingCenterAdminActionsFactory extends BasePageActionsFac
 
   get setAsideJudgmentActions() {
     return new SetAsideJudgmentActions(new SetAsideJudgmentPageFactory(this.page), this.testData);
+  get hearingScheduledActions() {
+    return new HearingScheduledActions(new HearingScheduledPageFactory(this.page), this.testData);
   }
 }
