@@ -315,8 +315,6 @@ const application = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResp
           whatWillFutureApplicationsBeMadeFor:
             `Future applications will be made for - ${partys.CLAIMANT_1.key}`,
         },
-        applicant1AdditionalInformationForJudge:
-          `Additional information for judge - ${partys.CLAIMANT_1.key}`,
       },
     };
 
