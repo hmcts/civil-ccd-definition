@@ -42,6 +42,24 @@ export const claimantSolicitorCredentials = {
   orgId: config.environment === Environment.DEMO ? 'B04IXE4' : 'Q1KOKP2',
 }
 
+export const respondent1SolicitorCredentials = {
+  name: 'Respondent1 Solicitor',
+  username: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
+  password: defaultPassword,
+  // key: UserKey.CLAIMANT_SOLICITOR,
+  // role: UserRole.CASEWORKER,
+  orgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU'
+}
+
+export const respondent2SolicitorCredentials = {
+  name: 'Respondent1 Solicitor',
+  username: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
+  password: defaultPassword,
+  // key: UserKey.CLAIMANT_SOLICITOR,
+  // role: UserRole.CASEWORKER,
+  orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
+}
+
 export const systemupdate = {
   username: 'hmcts.civil+organisation.1.superuser@gmail.com',
   password: defaultPassword,

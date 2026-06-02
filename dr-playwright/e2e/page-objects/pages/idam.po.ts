@@ -12,6 +12,9 @@ export class IdamPage {
   readonly heading = this.page.getByRole("heading", {
     name: "Sign in or create an account",
   });
+
+  readonly signOut = this.page.getByText('Sign out', { exact: true });
+
   readonly usernameInput = this.page.locator("#username");
   readonly passwordInput = this.page.locator("#password");
   readonly submitBtn = this.page.locator('[name="save"]');
@@ -21,6 +24,10 @@ export class IdamPage {
     await this.passwordInput.fill(user.password);
     await this.submitBtn.click();
     if (user.sessionFile) await this.saveSession(user);
+  }
+
+  async logout(): Promise<void> {
+    await  this.signOut.click();
   }
 
   private async saveSession(user: UserCredentials) {
