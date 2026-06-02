@@ -5,7 +5,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 import { heading, radioButtons } from './refer-to-judge-defended-claim-content';
 
 @AllMethodsStep()
-export default class ReferToJudgeDefendedClaimPage extends ExuiPage(BasePage) {
+export default class ReferJudgeDefenceReceivedPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),

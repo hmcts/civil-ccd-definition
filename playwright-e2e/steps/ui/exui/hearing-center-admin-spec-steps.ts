@@ -94,11 +94,11 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
     );
   }
 
-  async RequestReferToJudgeDefendedClaim() {
-    const { referToJudgeDefendedClaimActions } = this.hearingCenterAdminActionsFactory;
+  async RequestReferJudgeDefenceReceived() {
+    const { referJudgeDefenceReceivedActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await referToJudgeDefendedClaimActions.referToJudge();
+        await referJudgeDefenceReceivedActions.referToJudge();
       },
       async () => {},
       ccdEvents.REFER_JUDGE_DEFENCE_RECEIVED,
@@ -181,6 +181,9 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       hearingCenterAdminRegion2User,
       judgmentOnlineSetAsideTakeCaseOffline,
+    );
+  }
+
   async ScheduleHearing() {
     const { hearingScheduledActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(

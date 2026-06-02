@@ -20,7 +20,7 @@ test.describe(
       await ClaimantSolicitorSpecSteps.RequestDefaultJudgment();
 
       await HearingCenterAdminSpecSteps.LoginRegion2();
-      await HearingCenterAdminSpecSteps.RequestReferToJudgeDefendedClaim();
+      await HearingCenterAdminSpecSteps.RequestReferJudgeDefenceReceived();
 
       // Uncomment after DTSCCI-5517 fixed
       // await JudgeSteps.LoginRegion2();

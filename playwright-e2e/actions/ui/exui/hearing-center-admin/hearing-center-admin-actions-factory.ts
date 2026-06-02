@@ -6,8 +6,8 @@ import ManageCaseFlagsPageFactory from '../../../../pages/exui/hearing-center-ad
 import CreateCaseFlagsActions from './create-case-flags/create-case-flags-actions';
 import CreateCaseFlagsSpecActions from './create-case-flags/create-case-flags-spec-actions';
 import ManageCaseFlagsActions from './manage-case-flags-actions';
-import ReferToJudgeDefendedClaimActions from './refer-to-judge-defended-claim/refer-to-judge-defended-claim-actions';
-import ReferToJudgeDefendedClaimPageFactory from '../../../../pages/exui/hearing-center-admin/refer-to-judge-defended-claim/refer-to-judge-defended-claim-page-factory';
+import ReferJudgeDefenceReceivedActions from './refer-judge-defence-received/refer-judge-defence-received-actions.ts';
+import ReferJudgeDefenceReceivedPageFactory from '../../../../pages/exui/hearing-center-admin/refer-to-judge-defended-claim/refer-to-judge-defended-claim-page-factory';
 import SetAsideJudgmentActions from './set-aside-judgment/set-aside-judgment-actions';
 import SetAsideJudgmentPageFactory from '../../../../pages/exui/hearing-center-admin/set-aside-judgment/set-aside-judgment-page-factory';
 import HearingScheduledActions from './hearing-scheduled-actions';
@@ -33,15 +33,17 @@ export default class HearingCenterAdminActionsFactory extends BasePageActionsFac
     return new ManageCaseFlagsActions(new ManageCaseFlagsPageFactory(this.page), this.testData);
   }
 
-  get referToJudgeDefendedClaimActions() {
-    return new ReferToJudgeDefendedClaimActions(
-      new ReferToJudgeDefendedClaimPageFactory(this.page),
+  get referJudgeDefenceReceivedActions() {
+    return new ReferJudgeDefenceReceivedActions(
+      new ReferJudgeDefenceReceivedPageFactory(this.page),
       this.testData,
     );
   }
 
   get setAsideJudgmentActions() {
     return new SetAsideJudgmentActions(new SetAsideJudgmentPageFactory(this.page), this.testData);
+  }
+  
   get hearingScheduledActions() {
     return new HearingScheduledActions(new HearingScheduledPageFactory(this.page), this.testData);
   }
