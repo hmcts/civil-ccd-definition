@@ -28,6 +28,11 @@ const notification = {
   claimDetailsNotificationDate: nonEmptyString,
 };
 
+const undefine = {
+  // addLegalRepDeadlineRes1: z.undefined().optional(),
+  // addLegalRepDeadlineRes2: z.undefined().optional(),
+};
+
 const servedDocumentFiles = (particularOfClaimDocumentBeforeSubmission: Document[]) => {
   if(!particularOfClaimDocumentBeforeSubmission) {
     return {
@@ -53,6 +58,7 @@ const notifyClaimDetailsSchemaBuilderComponents = {
   defendantSolicitorNotifyClaimDetailsOptions,
   notification,
   servedDocumentFiles,
+  undefine,
 };
 
 export default notifyClaimDetailsSchemaBuilderComponents;
