@@ -36,13 +36,7 @@ Scenario('02 1v1 Defendant solicitor perform Inform Agreed Extension', async ({ 
   await LRspec.login(config.defendantSolicitorUser);
   //await LRspec.informAgreedExtensionDateSpec();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await LRspec.see(caseEventMessage('Inform agreed extension date'));
-
-  await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
-  await I.waitForText('Summary');
-
-  await claimDocumentHelper.viewAndAssertPdf(I, 'sealed_claim_form', TEST_DIR, BASELINE_DIR, SEALED_CLAIM_PDF);
+  //await LRspec.see(caseEventMessage('Inform agreed extension date')); 
 }).retry(2);
 
 Scenario('03 1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({ LRspec, I }) => {
@@ -72,6 +66,7 @@ Scenario('04 1v1 Claimant solicitor responds to defence - claimant Intention to 
   await I.navigateToCaseDetails(caseNumber);
   await I.waitForText('Summary');
 
+  await claimDocumentHelper.viewAndAssertPdf(I, 'sealed_claim_form', TEST_DIR, BASELINE_DIR, SEALED_CLAIM_PDF);
   await claimDocumentHelper.viewAndAssertPdf(I, 'claimant_directions_questionnaire_form', TEST_DIR, BASELINE_DIR, CLAIMANT_DIRECTIONS_QUESTIONNAIRE_PDF);
 }).retry(2);
 
