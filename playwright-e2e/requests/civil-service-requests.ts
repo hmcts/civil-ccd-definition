@@ -55,13 +55,9 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
               ` process instance: ${responseJson.businessProcess.processInstanceId}, last finished activity: ${responseJson.businessProcess.activityId}`,
           },
         );
-        await super.expectResponseJsonToNotHaveProperty(
-          'incidentMessage',
-          responseJson,
-          {
-            message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
-          },
-        );
+        await super.expectResponseJsonToNotHaveProperty('incidentMessage', responseJson, {
+          message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
+        });
       },
     });
     console.log(`Business process successfully finished, caseId: ${caseId}`);
@@ -78,7 +74,20 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       method: 'PUT',
     };
     await super.retryRequest(url, requestOptions);
-    console.log(`Payment for claim issue successfully updated, caseId: ${serviceRequestDTO.ccd_case_number}`);
+    console.log(
+      `Payment for claim issue successfully updated, caseId: ${serviceRequestDTO.ccd_case_number}`,
+    );
+  }
+
+  async triggerHearingFeePaid(user: User, caseId?: number) {
+    console.log(`Triggering hearing fee paid, caseId: ${caseId}...`);
+    const url = `${this.testingSupportUrl}/${caseId}/trigger-hearing-fee-paid`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      method: 'GET',
+    };
+    await super.retryRequest(url, requestOptions);
+    console.log(`Hearing fee paid triggered successfully, caseId: ${caseId}`);
   }
 
   async assignCaseToDefendant(user: User, caseRole: CaseRole, caseId?: number) {
