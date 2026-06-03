@@ -40,7 +40,7 @@ test.beforeEach(async ({ page }) => {
     await page.context().storageState({ path: respondent1SolicitorAuthFile });
   });
 
-  if (claimTypes.ONE_VS_TWO_DIFF_SOL) {
+  if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL) {
     setup("Authenticate Respondent2 Solicitor", async ({ page }) => {
       await idamPage.login(respondent2SolicitorCredentials);
       await expect(page.locator(caseListLocator)).toContainText(caseList);

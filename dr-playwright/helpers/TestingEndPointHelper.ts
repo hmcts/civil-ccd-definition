@@ -32,37 +32,33 @@ export class TestingEndPointHelper {
     // console.log('accessToken>>> ',this.nonEventTokens.accessToken);
     // console.log('s2sToken>>> ',this.nonEventTokens.s2sToken);
     const apiRequestContext: APIRequestContext = await request.newContext();
-    try {
-      await expect.poll(async () => {
-          const response = await apiRequestContext.get(businessProcessUrl, {
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "*/*",
-              Authorization: `Bearer ${this.nonEventTokens.accessToken}`,
-              ServiceAuthorization: this.nonEventTokens.s2sToken
-            }
-          });
-          const data = await response.json();
-          let status = await data.businessProcess.status;
-          const camundaEvent = await data.businessProcess.camundaEvent;
+    await expect.poll(async () => {
+      const response = await apiRequestContext.get(businessProcessUrl, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+          Authorization: `Bearer ${this.nonEventTokens.accessToken}`,
+          ServiceAuthorization: this.nonEventTokens.s2sToken
+        }
+      });
+      const data = await response.json();
+      let status = await data.businessProcess.status;
+      const camundaEvent = await data.businessProcess.camundaEvent;
 
-          if (camundaEventToCheckFor && camundaEvent !== camundaEventToCheckFor) {
-            status = 'NOT_FOUND';
-          }
-          console.log('businessProcess>>> ', data.businessProcess);
-          console.log('status>>> ', status);
-          return status;
-        },
-        {
-          // Wait x milliseconds between retries
-          intervals: apiRetries.intervals,
-          timeout: apiRetries.timeout,
-        }).toEqual('FINISHED');
-    } catch (error) {
-      throw new Error(
-        `An error occurred while trying to call testing endpoint. The camunda event did not complete within the allowed timeframe: ${error instanceof Error ? error.message : error}`
-      );
-    };
+      if (camundaEventToCheckFor && camundaEvent !== camundaEventToCheckFor) {
+        status = 'NOT_FOUND';
+      }
+
+      console.log('businessProcess>>> ', data.businessProcess);
+      console.log('status>>> ', status);
+      return status;
+      },
+      {
+        // Wait x milliseconds between retries
+        intervals: apiRetries.intervals,
+        timeout: apiRetries.timeout,
+        message: camundaEventToCheckFor ? 'The camunda event: '+ camundaEventToCheckFor +  ' did not fire within the allowed timeframe' : '',
+      }).toEqual('FINISHED');
   };
 
   private async getTokens(user) {
