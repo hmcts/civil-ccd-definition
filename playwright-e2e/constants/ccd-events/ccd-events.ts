@@ -234,6 +234,24 @@ const ccdEvents: CCDEvents = {
     description: 'Mediation unsuccessful',
     order: 26,
   },
+  EVIDENCE_UPLOAD_APPLICANT: {
+    id: 'EVIDENCE_UPLOAD_APPLICANT',
+    name: 'Evidence upload applicant',
+    description: 'Evidence upload applicant',
+    order: 27,
+  },
+  EVIDENCE_UPLOAD_RESPONDENT: {
+    id: 'EVIDENCE_UPLOAD_RESPONDENT',
+    name: 'Evidence upload respondent',
+    description: 'Evidence upload respondent',
+    order: 28,
+  },
+  HEARING_SCHEDULED: {
+    id: 'HEARING_SCHEDULED',
+    name: 'Hearing scheduled',
+    description: 'Hearing scheduled',
+    order: 29,
+  },
 };
 
 export default ccdEvents;
