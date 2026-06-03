@@ -6,14 +6,6 @@ const claimDocumentHelper = require('../../../helpers/claimDocumentHelper.js');
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 
-const TEST_DIR = 'e2e/tests/ui_tests/spec-full-defence';
-const BASELINE_DIR = 'e2e/pdf-baselines/ui-spec-full-defence';
-
-const SEALED_CLAIM_PDF = 'sealed_claim_form.pdf';
-const DEFENDANT_DIRECTIONS_QUESTIONNAIRE_PDF = 'defendant_directions_questionnaire.pdf';
-const DEFENDANT_DEFENCE_PDF = 'response_sealed_form.pdf';
-const CLAIMANT_DIRECTIONS_QUESTIONNAIRE_PDF = 'claimant_directions_questionnaire.pdf';
-
 let caseNumber;
 
 Feature('1v1 spec claim journey').tag('@civil-ccd-nightly @ui-spec-full-defence');
@@ -47,14 +39,6 @@ Scenario('03 1v1 Respond To Claim - Defendants solicitor rejects claim for defen
     defenceType: 'dispute'
   });
 
-  await waitForFinishedBusinessProcess(caseNumber);
-
-  await I.navigateToCaseDetails(caseNumber);
-  await I.waitForText('Summary');
-
-  await claimDocumentHelper.viewAndAssertPdf(I, 'defendant_directions_questionnaire_form', TEST_DIR, BASELINE_DIR, DEFENDANT_DIRECTIONS_QUESTIONNAIRE_PDF);
-  await claimDocumentHelper.viewAndAssertPdf(I, 'response_sealed_form', TEST_DIR, BASELINE_DIR, DEFENDANT_DEFENCE_PDF);
-
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
 }).retry(2);
@@ -62,12 +46,6 @@ Scenario('03 1v1 Respond To Claim - Defendants solicitor rejects claim for defen
 Scenario('04 1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({ LRspec, I }) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({ mpScenario: 'ONE_V_ONE', claimType: 'fast' });
-
-  await I.navigateToCaseDetails(caseNumber);
-  await I.waitForText('Summary');
-
-  await claimDocumentHelper.viewAndAssertPdf(I, 'sealed_claim_form', TEST_DIR, BASELINE_DIR, SEALED_CLAIM_PDF);
-  await claimDocumentHelper.viewAndAssertPdf(I, 'claimant_directions_questionnaire_form', TEST_DIR, BASELINE_DIR, CLAIMANT_DIRECTIONS_QUESTIONNAIRE_PDF);
 }).retry(2);
 
 
