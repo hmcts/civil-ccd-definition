@@ -10,6 +10,7 @@ export default class TransferOnlineCasePage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.expectHeading(heading),
       super.expectLabel(dropdowns.courtLocation.label),
+      super.expectLabel(inputs.reasonForTransfer.label),
     ]);
   }
 

@@ -8,7 +8,7 @@ export default class TransferOnlineCaseConfirmPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(headings.transferOnlineCase),
-      super.expectSubheading(headings.confirmationHeader),
+      super.expectHeading(headings.confirmationHeader),
       super.expectSubheading(headings.whatHappensNext),
     ]);
   }
