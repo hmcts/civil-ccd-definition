@@ -1,3 +1,4 @@
+import BaseSchemaBuilderFactory from '../../../base/base-schema-builder-factory';
 import AcknowledgeClaimSchemaBuilder from './acknowledge-claim/unspec/acknowledge-claim-schema-builder';
 import AddDefendantLitigationFriendSchemaBuilder from './add-defendant-litigation-friend/unspec/add-defendant-litigation-friend-schema-builder';
 import AddOrAmendClaimDocumentsSchemaBuilder from './add-or-amend-claim-documents/unspec/add-or-amend-claim-documents-schema-builder';
@@ -11,19 +12,8 @@ import InformAgreedExtensionDateSchemaBuilder from './inform-agreed-extension-da
 import InformAgreedExtensionDateSpecSchemaBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-schema-builder';
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
 import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notify-claim-details-schema-builder';
-import TestData from '../../../models/test-utils/test-data';
 
-export default class ClaimantDefendantSolicitorSchemaBuilderFactory {
-  private _testData: TestData;
-
-  constructor(testData: TestData) {
-    this._testData = testData;
-  }
-
-  private get testData() {
-    return this._testData;
-  }
-
+export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends BaseSchemaBuilderFactory {
   get createClaimSchemaBuilder() {
     return new CreateClaimSchemaBuilder(this.testData);
   }

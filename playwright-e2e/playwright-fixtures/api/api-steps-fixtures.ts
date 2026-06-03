@@ -11,11 +11,13 @@ import DefendantSolicitor1SpecApiSteps from '../../steps/api/exui/defendant-soli
 import DefendantSolicitor2SpecApiSteps from '../../steps/api/exui/defendant-solicitor-2-spec-api-steps';
 import DefendantSolicitor2ApiSteps from '../../steps/api/exui/defendant-solicitor-2-api-steps';
 import DataApiSteps from '../../steps/api/data-api-steps';
+import JudgeLAApiSteps from '../../steps/api/exui/judge-la-api-steps';
 
 type ApiStepsFixtures = {
   IdamApiSteps: IdamApiSteps;
   DataApiSteps: DataApiSteps;
   CaseworkerApiSteps: CaseworkerApiSteps;
+  JudgeLAApiSteps: JudgeLAApiSteps;
   ClaimantSolicitorSpecApiSteps: ClaimantSolicitorSpecApiSteps;
   ClaimantSolicitorApiSteps: ClaimantSolicitorApiSteps;
   DefendantSolicitor1SpecApiSteps: DefendantSolicitor1SpecApiSteps;
@@ -34,6 +36,9 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   },
   CaseworkerApiSteps: async ({ _caseworkerDataBuilderFactory, _caseworkerSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new CaseworkerApiSteps(_caseworkerDataBuilderFactory, _caseworkerSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  JudgeLAApiSteps: async ({ _judgeLADataBuilderFactory, _judgeLASchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new JudgeLAApiSteps(_judgeLADataBuilderFactory, _judgeLASchemaBuilderFactory, _requestsFactory, _testData));
   },
   ClaimantSolicitorSpecApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new ClaimantSolicitorSpecApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
