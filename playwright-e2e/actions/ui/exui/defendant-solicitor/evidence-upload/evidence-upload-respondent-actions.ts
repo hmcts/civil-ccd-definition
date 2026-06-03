@@ -33,7 +33,9 @@ export default class EvidenceUploadRespondentActions extends BaseTestData {
   async documentSelectionFastTrack() {
     const { documentSelectionFastTrackDS1Page } = this.evidenceUploadPageFactory;
     await documentSelectionFastTrackDS1Page.verifyContent();
-    await documentSelectionFastTrackDS1Page.selectWitnessStatement();
+    // await documentSelectionFastTrackDS1Page.selectWitnessStatement();
+    await documentSelectionFastTrackDS1Page.selectExpertsReport();
+    // await documentSelectionFastTrackDS1Page.selectAuthorities();
     await documentSelectionFastTrackDS1Page.submit();
   }
 

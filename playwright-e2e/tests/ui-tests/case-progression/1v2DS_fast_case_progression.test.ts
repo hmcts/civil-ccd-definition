@@ -1,13 +1,14 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('1v2DS fast track case progression', { tag: '@civil-ccd-nightly' }, () => {
-  test.only('1v2DS fast track case progression', async ({
+  test('1v2DS fast track case progression', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1Steps,
     DefendantSolicitor2Steps,
     ClaimantSolicitorSteps,
     JudgeSteps,
+    HearingCenterAdminSteps,
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimFastTrack1v2DS();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -28,6 +29,8 @@ test.describe('1v2DS fast track case progression', { tag: '@civil-ccd-nightly' }
     await ClaimantSolicitorSteps.EvidenceUploadApplicant();
     await DefendantSolicitor1Steps.Login();
     await DefendantSolicitor1Steps.EvidenceUploadRespondent();
+    await HearingCenterAdminSteps.LoginRegion1();
+    await HearingCenterAdminSteps.TransferOnlineCase();
   });
 });
 

@@ -116,4 +116,19 @@ export default class HearingCenterAdminSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async TransferOnlineCase() {
+    const { transferOnlineCaseActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await transferOnlineCaseActions.transferOnlineCase();
+        await transferOnlineCaseActions.submitTransferOnlineCase();
+      },
+      async () => {
+        await transferOnlineCaseActions.confirm();
+      },
+      ccdEvents.TRANSFER_ONLINE_CASE,
+      { verifySuccessEvent: false },
+    );
+  }
 }
