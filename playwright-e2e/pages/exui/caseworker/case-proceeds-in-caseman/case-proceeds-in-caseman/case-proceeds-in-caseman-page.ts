@@ -49,6 +49,6 @@ export default class CaseProceedsInCasemanPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() => super.expectNoText(inputs.date.label, { timeout: 3000 }));
   }
 }
