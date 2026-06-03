@@ -33,15 +33,3 @@ test.describe('1v2DS fast track case progression', { tag: '@civil-ccd-nightly' }
     await HearingCenterAdminSteps.TransferOnlineCase();
   });
 });
-
-// API Create Unspecified 1v2DS Fast Claim (Step already complete)
-// API Make Payment (Step already complete)
-// API Assign case to defendant 1 (Step already complete)
-// API Assign case to defendant 2 (Step already complete)
-// Respond as defendant 1 full defence (Step already complete)
-// Respond as defendant 2 full defence (Step already complete)
-// Respond as claimant intent to proceed (Step already complete)
-// Judge triggers SDO.
-// Upload evidence as claimant solicitor
-// Upload evidence as defendant solicitor
-// Transfer case online

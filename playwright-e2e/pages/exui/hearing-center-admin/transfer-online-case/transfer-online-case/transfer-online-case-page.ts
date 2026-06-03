@@ -14,7 +14,10 @@ export default class TransferOnlineCasePage extends ExuiPage(BasePage) {
   }
 
   async selectCourt() {
-    await super.selectFromDropdown(preferredCourts.transfer, dropdowns.courtLocation.selector);
+    await super.selectFromDropdown(
+      preferredCourts.transfer.default,
+      dropdowns.courtLocation.selector,
+    );
   }
 
   async enterReason() {
