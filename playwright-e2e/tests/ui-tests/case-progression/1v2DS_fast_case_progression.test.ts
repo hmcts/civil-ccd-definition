@@ -9,21 +9,21 @@ test.describe('1v2DS fast track case progression', { tag: '@civil-ccd-nightly' }
     ClaimantSolicitorSteps,
     JudgeSteps,
   }) => {
-    // await ClaimantSolicitorApiSteps.CreateClaimFastTrack1v2DS();
-    // await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-    // await ClaimantSolicitorApiSteps.AmendClaimDocuments();
-    // await ClaimantSolicitorApiSteps.NotifyClaim();
-    // await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-    // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    // await DefendantSolicitor1Steps.Login();
-    // await DefendantSolicitor1Steps.RespondFastTrackFullDefence1v2DS();
-    // await DefendantSolicitor2Steps.Login();
-    // await DefendantSolicitor2Steps.RespondFastTrackFullDefence1v2DS();
-    // await ClaimantSolicitorSteps.Login();
-    // await ClaimantSolicitorSteps.RespondFastTrackIntentToProceed1v2DS();
-    // await JudgeSteps.Login();
-    // await JudgeSteps.SdoFastTrack();
+    await ClaimantSolicitorApiSteps.CreateClaimFastTrack1v2DS();
+    await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+    await ClaimantSolicitorApiSteps.AmendClaimDocuments();
+    await ClaimantSolicitorApiSteps.NotifyClaim();
+    await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
+    await DefendantSolicitor1Steps.Login();
+    await DefendantSolicitor1Steps.RespondFastTrackFullDefence1v2DS();
+    await DefendantSolicitor2Steps.Login();
+    await DefendantSolicitor2Steps.RespondFastTrackFullDefence1v2DS();
+    await ClaimantSolicitorSteps.Login();
+    await ClaimantSolicitorSteps.RespondFastTrackIntentToProceed1v2DS();
+    await JudgeSteps.Login();
+    await JudgeSteps.SdoFastTrack();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.EvidenceUploadApplicant();
     await DefendantSolicitor1Steps.Login();

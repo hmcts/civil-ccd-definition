@@ -251,7 +251,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     await super.retryExuiEvent(
       async () => {
         await evidenceUploadRespondentActions.evidenceUpload();
-        await evidenceUploadRespondentActions.documentSelectionSmallClaim();
+        await evidenceUploadRespondentActions.documentSelectionFastTrack();
         await evidenceUploadRespondentActions.documentUpload();
         await evidenceUploadRespondentActions.submitEvidenceUpload();
       },

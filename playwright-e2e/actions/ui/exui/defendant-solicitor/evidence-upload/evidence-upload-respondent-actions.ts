@@ -20,14 +20,22 @@ export default class EvidenceUploadRespondentActions extends BaseTestData {
   }
 
   @Step(classKey)
-    async documentSelectionSmallClaim() {
-      const { documentSelectionSmallClaimDS1Page } = this.evidenceUploadPageFactory;
-      await documentSelectionSmallClaimDS1Page.verifyContent();
-      // await documentSelectionSmallClaimDS1Page.selectWitnessStatement();
-      await documentSelectionSmallClaimDS1Page.selectExpertsReport();
-      // await documentSelectionSmallClaimDS1Page.selectAuthorities();
-      await documentSelectionSmallClaimDS1Page.submit();
-    }
+  async documentSelectionSmallClaim() {
+    const { documentSelectionSmallClaimDS1Page } = this.evidenceUploadPageFactory;
+    await documentSelectionSmallClaimDS1Page.verifyContent();
+    // await documentSelectionSmallClaimDS1Page.selectWitnessStatement();
+    await documentSelectionSmallClaimDS1Page.selectExpertsReport();
+    // await documentSelectionSmallClaimDS1Page.selectAuthorities();
+    await documentSelectionSmallClaimDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async documentSelectionFastTrack() {
+    const { documentSelectionFastTrackDS1Page } = this.evidenceUploadPageFactory;
+    await documentSelectionFastTrackDS1Page.verifyContent();
+    await documentSelectionFastTrackDS1Page.selectWitnessStatement();
+    await documentSelectionFastTrackDS1Page.submit();
+  }
 
   @Step(classKey)
   async documentUpload() {
