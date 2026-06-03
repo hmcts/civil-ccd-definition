@@ -54,7 +54,7 @@
   },
   {
     "ID": "DocumentAndDescription",
-    "ListElementCode": "createdDateTime",
+    "ListElementCode": "createdDatetime",
     "FieldType": "DateTime",
     "ElementLabel": "Date added",
     "SecurityClassification": "Public",
@@ -68,6 +68,6 @@
     "ElementLabel": "Created by",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "createdDateTime = \"DO_NOT_SHOW\""
+    "FieldShowCondition": "createdDatetime = \"DO_NOT_SHOW\""
   }
 ]
