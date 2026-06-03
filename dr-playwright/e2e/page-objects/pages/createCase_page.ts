@@ -20,9 +20,8 @@ export class CreateCasePage {
     const ccJurisdiction = this.page.locator('#cc-jurisdiction');
     const ccCaseType = this.page.locator('#cc-case-type');
     const ccEvent = this.page.locator('#cc-event')
+
     await this.createCaseLink.click();
-
-
     await ccJurisdiction.selectOption(caseType === 'UNSPECIFIED' ? createCase.jurisdictionCode : createCase.jurisdictionCode);
     await ccCaseType.selectOption(caseType === 'UNSPECIFIED' ? createCase.caseTypeCode : createCase.caseTypeCode);
     await ccEvent.selectOption(caseType === 'UNSPECIFIED' ? createCase.eventCode : createCase.eventCode);
