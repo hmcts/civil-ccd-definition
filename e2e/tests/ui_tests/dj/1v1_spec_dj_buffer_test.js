@@ -11,8 +11,11 @@ const {assert} = require('chai');
 let caseid;
 let judgmentBufferEnabled;
 
+// Scheduler-expiry scenarios need Elasticsearch (the scheduler searches ES) so they run in nightly (AAT) only.
+// The non-scheduler core (request -> buffer state, event options, registry guard) is tagged @ui-judgment-buffer
+// so it also runs in the PR preview, which does not have Elasticsearch enabled.
 Feature('1v1 spec default judgment - Judgment Buffer (LR claimant vs LiP defendant)')
-  .tag('@civil-ccd-nightly @ui-dj @ui-judgment-buffer');
+  .tag('@civil-ccd-nightly @ui-dj');
 
 BeforeSuite(async () => {
   judgmentBufferEnabled = await checkToggleEnabled('judgment-buffer');
@@ -32,13 +35,13 @@ Scenario('01 Create LRvLiP spec claim, LR claimant requests DJ - case parks in J
 
   await api_spec_cui.verifyCaseState('JUDGMENT_REQUESTED');
   await api_spec_cui.verifyBufferStateInitialFields();
-}).retry(2);
+}).retry(2).tag('@ui-judgment-buffer');
 
 Scenario('02 Claimant LR retains event options in JUDGMENT_REQUESTED (DTSCCI-5327 AC2)', async ({api_spec_cui}) => {
   if (!judgmentBufferEnabled) return;
   await api_spec_cui.verifyEventsAvailable(config.applicantSolicitorUser, 'JUDGMENT_REQUESTED');
   await api_spec_cui.verifyEventsAvailable(config.adminUser, 'JUDGMENT_REQUESTED');
-}).retry(2);
+}).retry(2).tag('@ui-judgment-buffer');
 
 Scenario('03 LiP defendant submits defence during buffer - pending DJ cancelled, case moves to AWAITING_APPLICANT_INTENTION (DTSCCI-5101 AC1+AC2)', async ({api_spec_cui}) => {
   if (!judgmentBufferEnabled) return;
@@ -101,7 +104,7 @@ Scenario('06 Scheduler does NOT issue DJ when buffer not yet expired (<48h) (DTS
 Scenario('07 Scheduler endpoint rejects unknown scheduler name with 404 (DTSCCI-5436 negative - registry guard)', async ({api_spec_cui}) => {
   if (!judgmentBufferEnabled) return;
   await api_spec_cui.runSchedulerExpectingNotFound('NotARealScheduler');
-}).retry(2);
+}).retry(2).tag('@ui-judgment-buffer');
 
 Scenario('08 CTSC takes case offline during buffer - case proceeds offline to PROCEEDS_IN_HERITAGE_SYSTEM (DTSCCI-3661 AC4)', async ({I, api_spec_cui}) => {
   if (!judgmentBufferEnabled) return;
@@ -144,7 +147,7 @@ Scenario('09 DJ with instalment payment plan - instalmentDetails captured at req
   await api_spec_cui.runScheduler('JudgementBuffer');
   await api_spec_cui.verifyJudgmentBufferIssued();
   await api_spec_cui.verifyInstalmentDetails('MONTHLY');
-}).retry(2).tag('@ui-judgment-buffer');
+}).retry(2);
 
 Scenario('10 Discontinued during buffer - case never issued by scheduler (DTSCCI-3663 AC1 exclusion)', async ({I, api_spec_cui}) => {
   if (!judgmentBufferEnabled) return;
@@ -163,7 +166,7 @@ Scenario('10 Discontinued during buffer - case never issued by scheduler (DTSCCI
   await api_spec_cui.amendJoDJCreatedDate(144);
   await api_spec_cui.runScheduler('JudgementBuffer');
   await api_spec_cui.verifyBufferNotIssuedAfterScheduler('CASE_DISCONTINUED');
-}).retry(2).tag('@ui-judgment-buffer');
+}).retry(2);
 
 AfterSuite(async ({api_spec_cui}) => {
   if (!judgmentBufferEnabled) return;

@@ -6,7 +6,10 @@ const {checkToggleEnabled} = require('../../../api/testingSupport');
 // the request-time interest in activeJudgment.orderedAmount is asserted to the penny.
 let judgmentBufferEnabled;
 
-Feature('DJ interest value - pure API (DTSCCI-3923)').tag('@api-judgment-interest');
+// Non-scheduler scenarios (interest value at request + the eligibility rejection) carry @ui-judgment-buffer so
+// they run in the PR preview (no Elasticsearch needed). The full-flow scenarios (API-15..22) need the scheduler
+// to grant via Elasticsearch, so they run in nightly (AAT) only via the Feature-level @civil-ccd-nightly tag.
+Feature('DJ interest value - pure API (DTSCCI-3923)').tag('@civil-ccd-nightly @api-judgment-interest');
 
 BeforeSuite(async () => {
   judgmentBufferEnabled = await checkToggleEnabled('judgment-buffer');
@@ -24,7 +27,7 @@ const interestValueScenario = (label, opts, claimPounds, ratePct, fromDate, expe
     await api_spec_cui.verifyCaseState('JUDGMENT_REQUESTED');
     await api_spec_cui.verifyBufferStateInitialFields();
     await api_spec_cui.verifyJudgmentInterestValue(claimPounds, ratePct, fromDate, expectZero);
-  }).retry(1).tag('@api-judgment-interest');
+  }).retry(1).tag('@ui-judgment-buffer @api-judgment-interest');
 
 interestValueScenario(
   'API-12 8% same-rate to fixed submit date - exact orderedAmount 159339p',
@@ -113,7 +116,7 @@ Scenario('API-EXT extension/active response deadline blocks DJ request (no buffe
   await api_spec_cui.getCaseId();
   await api_spec_cui.setResponseDeadlineExtension(config.systemupdate, 60); // live/extended response window
   await api_spec_cui.requestDefaultJudgmentSpecExpectingRejection(config.applicantSolicitorUser);
-}).retry(1).tag('@api-judgment-lifecycle');
+}).retry(1).tag('@ui-judgment-buffer @api-judgment-lifecycle');
 
 // Exact CANCELLED/SATISFIED boundary (rule: DAYS.between(issueDate, paidDate) > issueDate.lengthOfMonth()).
 Scenario('API-20 paid exactly at the issue-month boundary (CANCELLED, just inside)', async ({api_spec_cui}) => {
