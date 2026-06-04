@@ -168,6 +168,23 @@ const ccdEvents: CCDEvents = {
     description: 'Standard Directions Order (Judgment)',
     order: 18,
   },
+  REFER_JUDGE_DEFENCE_RECEIVED: {
+    id: 'REFER_JUDGE_DEFENCE_RECEIVED',
+    name: 'Refer to judge-defended claim',
+    description: 'Refer to judge-defended claim',
+    order: 19,
+  },
+  SET_ASIDE_JUDGMENT: {
+    id: 'SET_ASIDE_JUDGMENT',
+    name: 'Set aside judgment',
+    description: 'Set aside judgment',
+    order: 20,
+  },
+  GENERATE_DIRECTIONS_ORDER: {
+    id: 'GENERATE_DIRECTIONS_ORDER',
+    name: 'Make an order',
+    description: 'Make an order',
+  },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
     id: 'CLAIMANT_RESPONSE_SPEC',
@@ -233,6 +250,24 @@ const ccdEvents: CCDEvents = {
     name: 'Mediation Unsuccessful',
     description: 'Mediation unsuccessful',
     order: 26,
+  },
+  EVIDENCE_UPLOAD_APPLICANT: {
+    id: 'EVIDENCE_UPLOAD_APPLICANT',
+    name: 'Evidence upload applicant',
+    description: 'Evidence upload applicant',
+    order: 27,
+  },
+  EVIDENCE_UPLOAD_RESPONDENT: {
+    id: 'EVIDENCE_UPLOAD_RESPONDENT',
+    name: 'Evidence upload respondent',
+    description: 'Evidence upload respondent',
+    order: 28,
+  },
+  HEARING_SCHEDULED: {
+    id: 'HEARING_SCHEDULED',
+    name: 'Hearing scheduled',
+    description: 'Hearing scheduled',
+    order: 29,
   },
 };
 

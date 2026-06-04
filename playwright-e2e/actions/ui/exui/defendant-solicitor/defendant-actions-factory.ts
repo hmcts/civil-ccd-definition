@@ -9,6 +9,8 @@ import DefendantResponseActions from './defendant-response/defendant-response-ac
 import DefendantResponseSpecActions from './defendant-response/defendant-response-spec-actions';
 import InformAgreedExtensionDateActions from './inform-agreed-extension-date/inform-agreed-extension-date-actions';
 import InformAgreedExtensionDateSpecActions from './inform-agreed-extension-date/inform-agreed-extension-date-spec-actions';
+import EvidenceUploadRespondentActions from './evidence-upload/evidence-upload-respondent-actions.ts';
+import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
 
 export default class DefendantActionsFactory extends BasePageActionsFactory {
   get defendantResponseActions() {
@@ -43,6 +45,13 @@ export default class DefendantActionsFactory extends BasePageActionsFactory {
   get informAgreedExtensionDateSpecActions() {
     return new InformAgreedExtensionDateSpecActions(
       new InformAgreedExtensionDatePageFactory(this.page),
+      this.testData,
+    );
+  }
+
+  get evidenceUploadRespondentActions() {
+    return new EvidenceUploadRespondentActions(
+      new EvidenceUploadPageFactory(this.page),
       this.testData,
     );
   }
