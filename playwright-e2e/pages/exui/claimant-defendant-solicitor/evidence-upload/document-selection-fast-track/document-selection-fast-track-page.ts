@@ -7,11 +7,11 @@ import { Party } from '../../../../../models/users/partys.ts';
 
 @AllMethodsStep()
 export default class DocumentSelectionFastTrackPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
@@ -40,15 +40,15 @@ export default class DocumentSelectionFastTrackPage extends ExuiPage(BasePage) {
   }
 
   async selectWitnessStatement() {
-    await super.clickBySelector(checkboxes.witnessStatement.selector(this.party));
+    await super.clickBySelector(checkboxes.witnessStatement.selector(this.claimantDefendantParty));
   }
 
   async selectExpertsReport() {
-    await super.clickBySelector(checkboxes.expertsReport.selector(this.party));
+    await super.clickBySelector(checkboxes.expertsReport.selector(this.claimantDefendantParty));
   }
 
   async selectAuthorities() {
-    await super.clickBySelector(checkboxes.authorities.selector(this.party));
+    await super.clickBySelector(checkboxes.authorities.selector(this.claimantDefendantParty));
   }
 
   async submit() {
