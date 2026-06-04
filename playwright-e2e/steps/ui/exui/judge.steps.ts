@@ -5,11 +5,12 @@ import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
-import { judgeRegion1User } from '../../../config/users/exui-users';
+import { judgeRegion1User, judgeRegion2User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
 import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
 import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
+import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -28,6 +29,10 @@ export default class JudgeSteps extends BaseExui {
 
   async Login() {
     await super.idamActions.exuiLogin(judgeRegion1User);
+  }
+
+  async LoginRegion2() {
+    await super.idamActions.exuiLogin(judgeRegion2User);
   }
 
   async SdoSmallTrack() {
@@ -210,6 +215,25 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.NOT_SUITABLE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+    );
+  }
+
+  async GenerateDirectionsOrderFreeForm() {
+    const { generateDirectionsOrderActions } = this.judgeActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await generateDirectionsOrderActions.selectFreeFormOrder();
+        await generateDirectionsOrderActions.enterFreeFormOrderDetails();
+        await generateDirectionsOrderActions.previewFreeFormOrderDetails();
+        await generateDirectionsOrderActions.submitFreeFormOrderDetails();
+      },
+      async () => {
+        await generateDirectionsOrderActions.confirmFreeFormOrderDetails();
+      },
+      ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      judgeRegion2User,
+      defenceReceivedInTimeOrderThatJudgmentIsSetAside,
+      { verifySuccessEvent: false },
     );
   }
 }
