@@ -1,7 +1,3 @@
-civil-service:
-  java:
-    environment:
-      SCHEDULER_ENABLED_JUDGEMENT_BUFFER: true
 ccd:
   ccd:
     adminWeb:
