@@ -3,6 +3,11 @@ const {createAccount} = require('../../../api/idamHelper');
 const {checkToggleEnabled} = require('../../../api/testingSupport');
 const {assert} = require('chai');
 
+// 1v1 spec default judgment with the judgment buffer (LR claimant vs LiP defendant). Covers the buffer state
+// machine, the activeJudgment fields, the request->grant interest freeze and the scheduler exclusions. RPA and
+// CJES are asserted at the process/data layer (suppressed during the buffer, the grant process runs at issue);
+// their external SendGrid email / CJES POST delivery is covered by the civil-service unit tests.
+
 let caseid;
 let judgmentBufferEnabled;
 
@@ -20,6 +25,7 @@ Scenario('01 Create LRvLiP spec claim, LR claimant requests DJ - case parks in J
   await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   caseid = await api_spec_cui.getCaseId();
   await api_spec_cui.amendRespondent1ResponseDeadline(config.systemupdate);
+  await api_spec_cui.verifyCaseState('AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); // pre-DJ precondition state
 
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJSpec(caseid, 'ONE_V_ONE', 'UNSPEC', 'Default judgment requested');
@@ -39,6 +45,7 @@ Scenario('03 LiP defendant submits defence during buffer - pending DJ cancelled,
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseid, 'SmallClaims', false, '');
   await api_spec_cui.verifyCaseState('AWAITING_APPLICANT_INTENTION');
   await api_spec_cui.verifyActiveJudgmentCancelled();
+  await api_spec_cui.verifyJudgmentNeverRegistered(); // defence-cancel: DJ never registered -> RPA/CJES never fired
   await api_spec_cui.amendJoDJCreatedDate(144);
   await api_spec_cui.runScheduler('JudgementBuffer');
   await api_spec_cui.verifyBufferNotIssuedAfterScheduler('AWAITING_APPLICANT_INTENTION');
@@ -112,9 +119,12 @@ Scenario('08 CTSC takes case offline during buffer - case proceeds offline to PR
   await api_spec_cui.waitForBusinessProcessFinished();
 
   await api_spec_cui.verifyCaseState('PROCEEDS_IN_HERITAGE_SYSTEM');
+  await api_spec_cui.reportState('offline-branch'); // observe park-vs-clear of the pending judgment when offline
+  await api_spec_cui.verifyJudgmentNeverRegistered(); // DJ never issued/registered offline -> RPA/CJES never fired
   await api_spec_cui.amendJoDJCreatedDate(144);
   await api_spec_cui.runScheduler('JudgementBuffer');
   await api_spec_cui.verifyBufferNotIssuedAfterScheduler('PROCEEDS_IN_HERITAGE_SYSTEM');
+  await api_spec_cui.verifyJudgmentNeverRegistered(); // still never registered after the scheduler skips it
 }).retry(2);
 
 Scenario('09 DJ with instalment payment plan - instalmentDetails captured at request and preserved at grant (DTSCCI-5061 field coverage)', async ({I, api_spec_cui}) => {

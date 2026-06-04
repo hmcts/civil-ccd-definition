@@ -48,13 +48,36 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 let caseId, eventName;
 let caseData = {};
 let bufferAmountSnapshot = {};
+let lastGrantProcessInstanceId = null; // grant camunda process instance, captured during verifyJudgmentBufferIssued polling
+
+// Expected activeJudgment.orderedAmount (pence) the buffer freezes at DJ request; mirrors InterestCalculator.
+// Deterministic only when the interest "to" date is fixed (UNTIL_CLAIM_SUBMIT_DATE).
+const daysBetween = (fromDate, toDate) => {
+  const p = (s) => String(s).slice(0, 10).split('-').map(Number); // dates may arrive as full ISO timestamps
+  const [fy, fm, fd] = p(fromDate);
+  const [ty, tm, td] = p(toDate);
+  const ms = Date.UTC(ty, tm - 1, td) - Date.UTC(fy, fm - 1, fd);
+  if (Number.isNaN(ms)) {
+    throw new Error(`daysBetween: unparseable date(s) from='${fromDate}' to='${toDate}'`);
+  }
+  const n = Math.floor(ms / 86400000);
+  return n > 0 ? n : 0; // 0 when to-date is not after from-date
+};
+
+const expectedOrderedAmountPence = (claimPounds, ratePct, fromDate, toDate, partialPaymentPounds = 0) => {
+  const days = daysBetween(fromDate, toDate);
+  const interestPerDay = Math.round((claimPounds * (ratePct / 100) / 365) * 100 + 1e-9) / 100; // per day, HALF_UP 2dp
+  const interest = interestPerDay * days;
+  const debt = claimPounds + interest - partialPaymentPounds;
+  return String(Math.round(debt * 100));
+};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   CREATE_SPEC_CLAIM_FASTTRACK: (scenario) => claimDataSpecFastLRvLiP.createClaim(scenario),
   CREATE_SPEC_CLAIM_INTTRACK: (scenario) => claimDataSpecIntLRvLiP.createClaim(scenario),
   CREATE_SPEC_CLAIM_MULTITRACK: (scenario) => claimDataSpecMultiLRvLiP.createClaim(scenario),
-  CREATE_SPEC_CLAIM: (scenario) => claimDataSpecSmallLRvLiP.createClaim(scenario),
+  CREATE_SPEC_CLAIM: (scenario, withInterest = false) => claimDataSpecSmallLRvLiP.createClaim(withInterest),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario, citizenDefendantResponse, freeMediation, carmEnabled) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario, citizenDefendantResponse, freeMediation, carmEnabled),
   CLAIMANT_RESPONSE_INTERMEDIATE_CLAIM: (response, hasLip) => require('../fixtures/events/claimantResponseIntermediateClaimSpec.js').claimantResponse(response, hasLip),
@@ -205,8 +228,8 @@ module.exports = {
     return apiRequest.taskActionByUser(user, taskId, 'claim');
   },
 
-  createSpecifiedClaimWithUnrepresentedRespondent: async (user, multipartyScenario, claimType, carmEnabled = false) => {
-    console.log(' Creating specified claim');
+  createSpecifiedClaimWithUnrepresentedRespondent: async (user, multipartyScenario, claimType, carmEnabled = false, withInterest = false) => {
+    console.log(' Creating specified claim' + (withInterest ? ' WITH 8% interest' : ''));
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
@@ -222,7 +245,7 @@ module.exports = {
       createClaimSpecData = data.CREATE_SPEC_CLAIM_FASTTRACK(multipartyScenario);
     } else {
       console.log('Creating small claims...');
-      createClaimSpecData = data.CREATE_SPEC_CLAIM(multipartyScenario);
+      createClaimSpecData = data.CREATE_SPEC_CLAIM(multipartyScenario, withInterest);
     }
 
     await apiRequest.setupTokens(user);
@@ -249,6 +272,227 @@ module.exports = {
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, (claimType === 'INTERMEDIATE' || claimType === 'MULTI'));
 
     return caseId;
+  },
+
+  // Pure-API DJ request (no browser): drives the DEFAULT_JUDGEMENT_SPEC event so the interest VALUE can be
+  // asserted at PENDING_ISSUE without Playwright, the scheduler, or a testing-support PUT. With the buffer flag
+  // on, the event parks at JUDGMENT_REQUESTED. The defendant dynamic-list code is read from the started event.
+  requestDefaultJudgmentSpecViaApi: async (user) => {
+    const djFixture = require('../fixtures/events/defaultJudgmentSpec.js');
+    await apiRequest.setupTokens(user);
+    eventName = 'DEFAULT_JUDGEMENT_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = update(caseData, {
+      claimIssuedPBADetails: {
+        applicantsPbaAccounts: {
+          value: {code: '66b21c60-aed1-11ed-8aa3-494efce63912', label: 'PBAFUNC12345'},
+          list_items: [
+            {code: '66b21c60-aed1-11ed-8aa3-494efce63912', label: 'PBAFUNC12345'},
+            {code: '66b21c61-aed1-11ed-8aa3-494efce63912', label: 'PBA0078095'},
+          ],
+        },
+        fee: {calculatedAmountInPence: '8000', code: 'FEE0205', version: '6'},
+        serviceRequestReference: '2023-1676644996295',
+      },
+    });
+    const realCode = (((caseData.defendantDetailsSpec || {}).list_items || [{}])[0] || {}).code;
+    for (const pageId of Object.keys(djFixture.userInput)) {
+      const pageData = JSON.parse(JSON.stringify(djFixture.userInput[pageId]));
+      if (pageId === 'defendantDetailsSpec' && realCode) {
+        pageData.defendantDetailsSpec.value.code = realCode;
+        pageData.defendantDetailsSpec.list_items = [{code: realCode, label: pageData.defendantDetailsSpec.value.label}];
+      }
+      caseData = update(caseData, pageData);
+      const response = await apiRequest.validatePage(eventName, pageId, caseData, caseId);
+      assert.equal(response.status, 200, `DJ page '${pageId}' validation failed (status ${response.status})`);
+      const body = clearDataForSearchCriteria(await response.json());
+      if (pageId === 'defendantDetailsSpec') {
+        delete body.data.registrationTypeRespondentOne;
+        delete body.data.registrationTypeRespondentTwo;
+      }
+      caseData = update(caseData, body.data);
+    }
+    await assertSubmittedEvent('JUDGMENT_REQUESTED');
+    console.log(`DJ requested via API -> JUDGMENT_REQUESTED (case ${caseId})`);
+  },
+
+  // Pure-API SET ASIDE (post-issue lifecycle). The judgment moves out of activeJudgment into historicJudgment;
+  // JUDGE_ORDER -> state SET_ASIDE, JUDGMENT_ERROR -> state SET_ASIDE_ERROR. Fires from All_FINAL_ORDERS_ISSUED.
+  setAsideJudgmentViaApi: async (user, reason = 'JUDGE_ORDER', orderType = 'ORDER_AFTER_APPLICATION') => {
+    const fixture = require('../fixtures/events/judgmentOnline1v1Spec.js').setAsideJudgment(reason, orderType);
+    await apiRequest.setupTokens(user);
+    eventName = 'SET_ASIDE_JUDGMENT';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    for (const pageId of Object.keys(fixture.userInput)) {
+      await assertValidData(fixture, pageId);
+    }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED');
+    await waitForFinishedBusinessProcess(caseId);
+    console.log(`Set aside via API (reason=${reason}, orderType=${orderType}, case ${caseId})`);
+  },
+
+  // Pure-API EDIT JUDGMENT (post-issue lifecycle): activeJudgment ISSUED -> MODIFIED. Fires from All_FINAL_ORDERS_ISSUED.
+  editJudgmentViaApi: async (user) => {
+    const fixture = require('../fixtures/events/judgmentOnline1v1Spec.js').editJudgment('DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+    await apiRequest.setupTokens(user);
+    eventName = 'EDIT_JUDGMENT';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    for (const pageId of Object.keys(fixture.userInput)) {
+      await assertValidData(fixture, pageId);
+    }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED');
+    await waitForFinishedBusinessProcess(caseId);
+    console.log(`Edited judgment via API (case ${caseId})`);
+  },
+
+  // Pure-API MARK PAID IN FULL (post-issue lifecycle). Payment is recorded today - a future date is rejected (422).
+  // Whether it lands CANCELLED or SATISFIED is decided by DAYS.between(issueDate, paymentDate) vs the issue month's
+  // length, so backdate the issue date first (amendJudgmentIssueDate) to exercise the SATISFIED branch.
+  markJudgmentPaidViaApi: async (user) => {
+    const today = new Date().toISOString().slice(0, 10);
+    await apiRequest.setupTokens(user);
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = update(caseData, {joJudgmentPaidInFull: {dateOfFullPaymentMade: today, confirmFullPaymentMade: ['CONFIRMED']}});
+    const response = await apiRequest.validatePage(eventName, 'MarkJudgmentPaidInFull', caseData, caseId);
+    assert.equal(response.status, 200, `MarkJudgmentPaidInFull validation failed (status ${response.status})`);
+    caseData = update(caseData, clearDataForSearchCriteria(await response.json()).data);
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED');
+    await waitForFinishedBusinessProcess(caseId);
+    console.log(`Judgment marked paid via API: paidDate=${today}, case ${caseId}`);
+  },
+
+  // Backdate activeJudgment.issueDate (read-modify-PUT the whole object so the other frozen fields survive) so that
+  // a payment recorded today is more than a month after issue -> SATISFIED rather than CANCELLED.
+  amendJudgmentIssueDate: async (daysAgo) => {
+    const cd = (await apiRequest.fetchCaseDetails(config.adminUser, caseId)).case_data;
+    const aj = {...cd.activeJudgment};
+    const backdated = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    aj.issueDate = backdated;
+    await testingSupport.updateCaseData(caseId, {activeJudgment: aj});
+    console.log(`activeJudgment.issueDate backdated to ${backdated} (${daysAgo}d ago), case ${caseId}`);
+  },
+
+  // Backdate issueDate so a payment recorded today lands on the CANCELLED/SATISFIED boundary, which is the issue
+  // month's length (CANCELLED when days-between <= month length, SATISFIED when greater). offset 0 sits on the
+  // boundary (CANCELLED), offset +1 one day past it (SATISFIED).
+  amendJudgmentIssueDateBoundary: async (offsetVsMonthLen) => {
+    const today = new Date(); today.setUTCHours(0, 0, 0, 0);
+    for (let d = 27; d <= 35; d++) {
+      const cand = new Date(today.getTime() - d * 24 * 60 * 60 * 1000);
+      const monthLen = new Date(Date.UTC(cand.getUTCFullYear(), cand.getUTCMonth() + 1, 0)).getUTCDate();
+      if (d === monthLen + offsetVsMonthLen) {
+        const iso = cand.toISOString().slice(0, 10);
+        const cd = (await apiRequest.fetchCaseDetails(config.adminUser, caseId)).case_data;
+        const aj = {...cd.activeJudgment, issueDate: iso};
+        await testingSupport.updateCaseData(caseId, {activeJudgment: aj});
+        const expected = d > monthLen ? 'SATISFIED' : 'CANCELLED';
+        console.log(`Boundary: issueDate->${iso} (daysBetween=${d}, monthLen=${monthLen}, offset=${offsetVsMonthLen} => expect ${expected}), case ${caseId}`);
+        return expected;
+      }
+    }
+    throw new Error(`could not find a boundary backdate for offset ${offsetVsMonthLen}`);
+  },
+
+  // Set a future response deadline + agreed extension so the case is not yet DJ-eligible (an active/extended
+  // deadline blocks the DJ request at the about-to-start eligibility check).
+  setResponseDeadlineExtension: async (user, daysAhead = 60) => {
+    const future = new Date(Date.now() + daysAhead * 24 * 60 * 60 * 1000);
+    const futureTs = future.toISOString().slice(0, 19); // YYYY-MM-DDTHH:mm:ss
+    const futureDate = future.toISOString().slice(0, 10);
+    await testingSupport.updateCaseData(caseId, {
+      respondent1ResponseDeadline: futureTs,
+      respondentSolicitor1AgreedDeadlineExtension: futureDate,
+    });
+    console.log(`Response deadline extended to ${futureTs} (agreed extension ${futureDate}), case ${caseId}`);
+  },
+
+  // Assert the DJ request is rejected by the eligibility guard (the about-to-start event-token call fails) and the
+  // case never enters JUDGMENT_REQUESTED.
+  requestDefaultJudgmentSpecExpectingRejection: async (user) => {
+    await apiRequest.setupTokens(user);
+    let rejected = false;
+    try {
+      await apiRequest.startEvent('DEFAULT_JUDGEMENT_SPEC', caseId);
+    } catch (e) {
+      rejected = true;
+      console.log(`DJ request rejected at eligibility (extension in force): ${String(e.message).slice(0, 120)}`);
+    }
+    const st = (await apiRequest.fetchCaseDetails(config.adminUser, caseId)).state;
+    assert.notEqual(st, 'JUDGMENT_REQUESTED',
+      `case must NOT enter the buffer while an active/extended response deadline is in force, but state=${st}`);
+    assert.isTrue(rejected, 'expected the DJ request to be blocked by the response-deadline/extension eligibility guard');
+  },
+
+  // On a non-grant buffer exit (defence or offline), the judgment must never have been issued or registered with
+  // RTL. activeJudgment may be parked (PENDING_ISSUE) or cleared (null); either is fine as long as it was never
+  // ISSUED and rtlState was never set to 'R'.
+  verifyJudgmentNeverRegistered: async () => {
+    const cd = (await apiRequest.fetchCaseDetails(config.adminUser, caseId)).case_data || {};
+    const aj = cd.activeJudgment;
+    if (aj) {
+      assert.notEqual(aj.state, 'ISSUED', `expected judgment never ISSUED on this branch, got ${aj.state}`);
+      assert.notEqual(aj.isRegisterWithRTL, 'Yes', `expected isRegisterWithRTL!='Yes' (never registered), got ${aj.isRegisterWithRTL}`);
+      assert.notEqual(aj.rtlState, 'R', `expected rtlState!='R' (never registered with RTL), got ${aj.rtlState}`);
+    }
+    assert.notEqual(cd.joIsLiveJudgmentExists, 'Yes', `expected joIsLiveJudgmentExists!='Yes', got ${cd.joIsLiveJudgmentExists}`);
+    console.log(`Judgment never registered on this branch: activeJudgment.state=${aj && aj.state}, isRegisterWithRTL=${aj && aj.isRegisterWithRTL}, rtlState=${aj && aj.rtlState}`);
+  },
+
+  // Post-issue RPA/CJES check: the grant camunda process completed (its RPA + CJES tasks ran) and the RPA/CJES
+  // payloads mapped from the issued case are correct (registration type for rtlState='R', judgment amounts,
+  // defendant). The external SendGrid email / CJES POST have no case_data write-back and are covered by the
+  // civil-service unit tests.
+  verifyPostIssueDelivery: async () => {
+    // (1) The grant process (containing the RPA + CJES service tasks) reached COMPLETED.
+    if (lastGrantProcessInstanceId) {
+      const procs = await testingSupport.getCamundaProcesses(lastGrantProcessInstanceId, null, null);
+      console.log(`Grant process ${lastGrantProcessInstanceId}: ${JSON.stringify((procs || []).map(p => ({k: p.processDefinitionKey, s: p.state})))}`);
+      assert.isTrue(Array.isArray(procs) && procs.length > 0 && procs[0].state === 'COMPLETED',
+        `expected grant camunda process ${lastGrantProcessInstanceId} COMPLETED (RPA+CJES tasks ran), got ${JSON.stringify(procs)}`);
+    } else {
+      console.log('WARN: no grant processInstanceId captured - process completion check skipped');
+    }
+    const cd = (await apiRequest.fetchCaseDetails(config.adminUser, caseId)).case_data;
+    cd.ccdCaseReference = caseId; // the mapper endpoints map from CaseData and need the case reference set
+    // (2) CJES/RTL payload mapped from the issued case: references the case + carries the judgment total.
+    const cjes = await testingSupport.getRtlActiveJudgment(cd);
+    console.log(`CJES/RTL payload: ${cjes}`);
+    assert.include(cjes, String(caseId), 'expected the CJES payload to reference the issued case');
+    assert.include(cjes, String(cd.activeJudgment.totalAmount), 'expected the CJES payload to carry the judgment total');
+    // (3) RPA payload mapped from the issued case (well-formed, non-empty robotics JSON).
+    const rpa = String(await testingSupport.getRpaJsonSpec(cd));
+    console.log(`RPA payload (first 600): ${rpa.slice(0, 600)}`);
+    assert.isTrue(rpa.length > 100 && rpa.trim().startsWith('{'), 'expected a non-empty RPA robotics JSON payload');
+  },
+
+  verifyActiveJudgmentState: async (expectedState) => {
+    const aj = (await apiRequest.fetchCaseDetails(config.adminUser, caseId)).case_data.activeJudgment || {};
+    console.log(`activeJudgment.state = ${aj.state} (expected ${expectedState}), case ${caseId}`);
+    assert.equal(aj.state, expectedState, `expected activeJudgment.state=${expectedState}, got ${aj.state}`);
+  },
+
+  // Log the current ccd state + activeJudgment state without asserting (useful when the exact state depends on the
+  // branch, e.g. defence clears vs offline parks the judgment).
+  reportState: async (label = '') => {
+    const r = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const aj = r.case_data && r.case_data.activeJudgment;
+    console.log(`OBSERVE ${label}: ccdState=${r.state}, activeJudgment.state=${aj && aj.state}, joIsLiveJudgmentExists=${r.case_data && r.case_data.joIsLiveJudgmentExists}`);
+    return r.state;
+  },
+
+  // Some lifecycle events (set aside, paid in full) move the judgment out of activeJudgment into historicJudgment,
+  // so scan both and assert at least one judgment is in the expected terminal state.
+  verifyAnyJudgmentState: async (expectedState) => {
+    const cd = (await apiRequest.fetchCaseDetails(config.adminUser, caseId)).case_data;
+    const active = cd.activeJudgment;
+    const historic = (cd.historicJudgment || []).map(e => e.value);
+    const states = [];
+    if (active) states.push(active.state);
+    historic.forEach(h => states.push(h.state));
+    console.log(`judgment states: active=${active ? active.state : 'none'}, historic=[${historic.map(h => h.state).join(',')}] (expected ${expectedState}), case ${caseId}`);
+    assert.ok(states.includes(expectedState),
+      `expected a judgment in state ${expectedState}, got active=${active ? active.state : 'none'}, historic=[${historic.map(h => h.state).join(',')}]`);
   },
 
   performCitizenDefendantResponse: async (user, caseId, claimType = 'SmallClaims', carmEnabled = false, typeOfResponse = '') => {
@@ -535,6 +779,25 @@ module.exports = {
     }
   },
 
+  // Asserts the exact orderedAmount (claim + interest). Deterministic only with UNTIL_CLAIM_SUBMIT_DATE
+  // (to-date = submittedDate, pinned to 2024-10-10 by the buffer flow). expectZero: assert orderedAmount == claim.
+  verifyJudgmentInterestValue: async (claimPounds, ratePct, fromDate, expectZero = false) => {
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const cd = response.case_data || {};
+    const aj = cd.activeJudgment || {};
+    const submittedDate = String(cd.submittedDate || '').slice(0, 10);
+    assert.match(submittedDate, /^\d{4}-\d{2}-\d{2}$/,
+      `expected a parseable submittedDate, got '${cd.submittedDate}'`);
+    const expectedPence = expectZero
+      ? String(Math.round(claimPounds * 100))
+      : expectedOrderedAmountPence(claimPounds, ratePct, fromDate, submittedDate);
+    const days = daysBetween(fromDate, submittedDate);
+    console.log(`Interest value check [case ${caseId}, state ${aj.state}]: from=${fromDate} to(submittedDate)=${submittedDate} days=${days} rate=${ratePct}% => expected orderedAmount=${expectedPence}p, actual=${aj.orderedAmount}p`);
+    assert.equal(String(aj.orderedAmount), expectedPence,
+      `orderedAmount mismatch: expected ${expectedPence}p (claim £${claimPounds} + ${ratePct}% interest over ${days} days to ${submittedDate}), got ${aj.orderedAmount}p`);
+    return expectedPence;
+  },
+
   verifyBufferStateInitialFields: async () => {
     const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
     const cd = response.case_data || {};
@@ -549,6 +812,15 @@ module.exports = {
     assert.equal(aj.isRegisterWithRTL, 'No', `expected isRegisterWithRTL='No', got ${aj.isRegisterWithRTL}`);
     assert.isTrue(aj.rtlState === null || aj.rtlState === undefined,
       `expected rtlState null/undefined, got ${aj.rtlState}`);
+
+    // The DJ-grant business process is what fires NOTIFY_RPA_DJ_SPEC (RPA) and SEND_JUDGMENT_DETAILS_CJES (CJES).
+    // On the buffer branch civil-service does not start that business process, so its camundaEvent must be absent
+    // here - confirming RPA/CJES stay suppressed during the buffer (isRegisterWithRTL='No' / rtlState=null above
+    // are the data side of the same check).
+    const GRANT_EVENTS = ['DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC', 'GENERATE_DJ_FORM_SPEC', 'NOTIFY_RPA_DJ_SPEC', 'SEND_JUDGMENT_DETAILS_CJES'];
+    const bpEvent = cd.businessProcess && cd.businessProcess.camundaEvent;
+    assert.isFalse(GRANT_EVENTS.includes(bpEvent),
+      `RPA/CJES suppression: no DJ-grant business process expected during the buffer, but businessProcess.camundaEvent=${bpEvent}`);
 
     // Request-time fields (from DefaultJudgementSpecHandler / DefaultJudgmentOnlineMapper)
     assert.equal(aj.type, 'DEFAULT_JUDGMENT', `expected type=DEFAULT_JUDGMENT, got ${aj.type}`);
@@ -679,17 +951,26 @@ module.exports = {
     console.log(`Scheduler ${schedulerName} correctly returned 404`);
   },
 
-  verifyJudgmentBufferIssued: async (maxAttempts = 60, intervalMs = 5000) => {
+  verifyJudgmentBufferIssued: async (maxAttempts = 96, intervalMs = 5000) => {
     const todayLondon = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/London'}).format(new Date());
     const todayUtc = new Intl.DateTimeFormat('en-CA', {timeZone: 'UTC'}).format(new Date());
     let last = {};
     let cdSnapshot = {};
+    // The grant business process is cleared from the terminal snapshot once it finishes, so capture every
+    // camundaEvent seen while it runs and assert on it after issue.
+    const seenGrantEvents = new Set();
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
       cdSnapshot = response.case_data || {};
       last.state = response.state;
       last.judgment = cdSnapshot.activeJudgment;
       last.bp = cdSnapshot.businessProcess;
+      if (last.bp && last.bp.camundaEvent) {
+        seenGrantEvents.add(last.bp.camundaEvent);
+      }
+      if (last.bp && last.bp.processInstanceId) {
+        lastGrantProcessInstanceId = last.bp.processInstanceId; // for the post-issue RPA/CJES process check
+      }
       const bpFinished = !last.bp || !last.bp.status || last.bp.status === 'FINISHED';
       const judgmentIssued = last.judgment && last.judgment.state === 'ISSUED';
       const stateFinal = last.state === 'All_FINAL_ORDERS_ISSUED';
@@ -704,10 +985,13 @@ module.exports = {
         assert.equal(aj.isRegisterWithRTL, 'Yes', `expected isRegisterWithRTL='Yes', got ${aj.isRegisterWithRTL}`);
         assert.equal(cdSnapshot.joIsLiveJudgmentExists, 'Yes',
           `expected joIsLiveJudgmentExists='Yes' at grant, got ${cdSnapshot.joIsLiveJudgmentExists}`);
+        // The buffer grant must have run the DJ-grant camunda process (which drives doc generation and the now-due
+        // NOTIFY_RPA_DJ_SPEC / SEND_JUDGMENT_DETAILS_CJES tasks).
         if (last.bp && last.bp.camundaEvent) {
-          assert.equal(last.bp.camundaEvent, 'DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC',
-            `expected camundaEvent=DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC, got ${last.bp.camundaEvent}`);
+          seenGrantEvents.add(last.bp.camundaEvent);
         }
+        assert.isTrue(seenGrantEvents.has('DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC'),
+          `expected the buffer grant to run camundaEvent=DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC, saw [${[...seenGrantEvents].join(', ') || 'none'}]`);
 
         // Preserved request-time fields (must survive request → grant transition)
         assert.equal(aj.type, 'DEFAULT_JUDGMENT', `expected type=DEFAULT_JUDGMENT, got ${aj.type}`);
@@ -732,23 +1016,25 @@ module.exports = {
         // Case-level fields
         assert.ok(cdSnapshot.joDJCreatedDate, 'expected joDJCreatedDate preserved');
 
+        // Freeze check only: the stored activeJudgment amounts are unchanged request->grant. The order
+        // document's request-date interest cap itself is unit-tested in civil-service, not here.
         assert.equal(bufferAmountSnapshot.caseId, caseId,
-          `AC3 snapshot missing or for a different case (snapshot=${bufferAmountSnapshot.caseId}, current=${caseId}) - capture verifyBufferStateInitialFields on this case before issuing`);
+          `Buffer snapshot missing or for a different case (snapshot=${bufferAmountSnapshot.caseId}, current=${caseId}) - capture verifyBufferStateInitialFields on this case before issuing`);
         {
           assert.equal(aj.orderedAmount, bufferAmountSnapshot.orderedAmount,
-            `AC3: orderedAmount changed during buffer (was ${bufferAmountSnapshot.orderedAmount}, now ${aj.orderedAmount})`);
+            `Buffer freeze: orderedAmount changed during buffer (was ${bufferAmountSnapshot.orderedAmount}, now ${aj.orderedAmount})`);
           assert.equal(aj.claimFeeAmount, bufferAmountSnapshot.claimFeeAmount,
-            `AC3: claimFeeAmount changed during buffer (was ${bufferAmountSnapshot.claimFeeAmount}, now ${aj.claimFeeAmount})`);
+            `Buffer freeze: claimFeeAmount changed during buffer (was ${bufferAmountSnapshot.claimFeeAmount}, now ${aj.claimFeeAmount})`);
           assert.equal(aj.costs, bufferAmountSnapshot.costs,
-            `AC3: costs changed during buffer (was ${bufferAmountSnapshot.costs}, now ${aj.costs})`);
+            `Buffer freeze: costs changed during buffer (was ${bufferAmountSnapshot.costs}, now ${aj.costs})`);
           assert.equal(aj.totalAmount, bufferAmountSnapshot.totalAmount,
-            `AC3: totalAmount changed during buffer (was ${bufferAmountSnapshot.totalAmount}, now ${aj.totalAmount})`);
+            `Buffer freeze: totalAmount changed during buffer (was ${bufferAmountSnapshot.totalAmount}, now ${aj.totalAmount})`);
           assert.equal(String(cdSnapshot.totalInterest), String(bufferAmountSnapshot.totalInterest),
-            `AC3: totalInterest accrued during buffer (was ${bufferAmountSnapshot.totalInterest}, now ${cdSnapshot.totalInterest})`);
+            `Buffer freeze: totalInterest accrued during buffer (was ${bufferAmountSnapshot.totalInterest}, now ${cdSnapshot.totalInterest})`);
           assert.equal(aj.requestDate, bufferAmountSnapshot.requestDate,
             `requestDate changed during buffer (was ${bufferAmountSnapshot.requestDate}, now ${aj.requestDate})`);
           assert.equal(JSON.stringify(cdSnapshot.joRepaymentSummaryObject), JSON.stringify(bufferAmountSnapshot.joRepaymentSummaryObject),
-            'AC3: joRepaymentSummaryObject (interest breakdown) changed during the buffer');
+            'Buffer freeze: joRepaymentSummaryObject (interest breakdown) changed during the buffer');
         }
 
         console.log(`ISSUED verified: state=${aj.state}, issueDate=${aj.issueDate}, joIsLiveJudgmentExists=${cdSnapshot.joIsLiveJudgmentExists}, rtlState=${aj.rtlState}, isRegisterWithRTL=${aj.isRegisterWithRTL}, requestDate=${aj.requestDate}, type=${aj.type}, paymentPlan=${aj.paymentPlan.type}, ordered=${aj.orderedAmount}, claimFee=${aj.claimFeeAmount}, costs=${aj.costs}, total=${aj.totalAmount}, totalInterest=${cdSnapshot.totalInterest}, camundaEvent=${last.bp && last.bp.camundaEvent}`);
