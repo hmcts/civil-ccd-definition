@@ -234,6 +234,18 @@ const ccdEvents: CCDEvents = {
     description: 'Mediation unsuccessful',
     order: 26,
   },
+  STAY_CASE: {
+    id: 'STAY_CASE',
+    name: 'Stay case',
+    description: 'Stay the case',
+    order: 27,
+  },
+  MANAGE_STAY: {
+    id: 'MANAGE_STAY',
+    name: 'Manage stay',
+    description: 'Request an update or lift the stay',
+    order: 28,
+  },
 };
 
 export default ccdEvents;
