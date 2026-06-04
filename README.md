@@ -677,7 +677,7 @@ additional information where necessary.
 
    `git config --local --unset core.hooksPath`
 
-   Still, you shouldn't be doing it so make sure you get in touch with a Technical Lead soon afterwards.
+   Still, you shouldn't be doing it so make sure you get in touch with a Technical Lead soon afterwards..
 
 
 ## Development / Debugging Environment - Preview with Mirrord
