@@ -7,6 +7,7 @@ import {
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import judgmentOnlineSetAsideTakeCaseOffline from '../../../constants/wa-tasks/judgmentOnlineSetAsideTakeCaseOffline';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -90,6 +91,123 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.MANAGE_CASE_FLAGS,
+    );
+  }
+
+  async RequestReferJudgeDefenceReceived() {
+    const { referJudgeDefenceReceivedActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await referJudgeDefenceReceivedActions.referToJudge();
+      },
+      async () => {
+        await referJudgeDefenceReceivedActions.confirmReferToJudge();
+      },
+      ccdEvents.REFER_JUDGE_DEFENCE_RECEIVED,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestSetAsideJudgmentFollowingApplication() {
+    const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await setAsideJudgmentActions.setAsideJudgment();
+        await setAsideJudgmentActions.setAsideOrderFollowingApplication();
+        await setAsideJudgmentActions.submitSetAsideJudgment();
+      },
+      async () => {
+        await setAsideJudgmentActions.confirmSetAsideJudgment();
+      },
+      ccdEvents.SET_ASIDE_JUDGMENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestSetAsideJudgmentFollowingDefenceReceived() {
+    const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await setAsideJudgmentActions.setAsideJudgment();
+        await setAsideJudgmentActions.setAsideOrderFollowingDefenceReceived();
+        await setAsideJudgmentActions.submitSetAsideJudgment();
+      },
+      async () => {
+        await setAsideJudgmentActions.confirmSetAsideJudgment();
+      },
+      ccdEvents.SET_ASIDE_JUDGMENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestSetAsideJudgmentMadeInError() {
+    const { setAsideJudgmentActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await setAsideJudgmentActions.setAsideJudgmentMadeInError();
+        await setAsideJudgmentActions.submitSetAsideJudgment();
+      },
+      async () => {
+        await setAsideJudgmentActions.confirmSetAsideJudgment();
+      },
+      ccdEvents.SET_ASIDE_JUDGMENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CaseProceedsInCaseman() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettled();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CaseProceedsInCasemanSpec() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettledSpec();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CaseProceedsInCasemanSetAsideJudgment() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettledSpec();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      hearingCenterAdminRegion2User,
+      judgmentOnlineSetAsideTakeCaseOffline,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async ScheduleHearing() {
+    const { hearingScheduledActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await hearingScheduledActions.hearingNoticeSelect();
+        await hearingScheduledActions.listingOrRelisting();
+        await hearingScheduledActions.hearingDetails();
+        await hearingScheduledActions.hearingInformation();
+        await hearingScheduledActions.submitHearingScheduled();
+      },
+      async () => {
+        await hearingScheduledActions.confirm();
+      },
+      ccdEvents.HEARING_SCHEDULED,
+      { verifySuccessEvent: false },
     );
   }
 }

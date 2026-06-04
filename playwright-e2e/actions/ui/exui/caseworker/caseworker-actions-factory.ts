@@ -5,6 +5,10 @@ import ManageDocumentsActions from './manage-documents-actions.ts';
 import ManageDocumentsPageFactory from '../../../../pages/exui/caseworker/manage-documents/manage-documents-page-factory.ts';
 import MediationUnsuccessfulActions from './mediation-unsuccessful-actions.ts';
 import MediationUnsuccessfulPageFactory from '../../../../pages/exui/caseworker/mediation-unsuccessful/mediation-unsuccessful-page-factory.ts';
+import ReferJudgeDefenceReceivedActions from '../hearing-center-admin/refer-judge-defence-received/refer-judge-defence-received-actions.ts';
+import ReferJudgeDefenceReceivedPageFactory from '../../../../pages/exui/hearing-center-admin/refer-to-judge-defended-claim/refer-to-judge-defended-claim-page-factory';
+import SetAsideJudgmentActions from '../hearing-center-admin/set-aside-judgment/set-aside-judgment-actions';
+import SetAsideJudgmentPageFactory from '../../../../pages/exui/hearing-center-admin/set-aside-judgment/set-aside-judgment-page-factory';
 
 export default class CaseworkerActionsFactory extends BasePageActionsFactory {
   get caseProceedsInCasemanActions() {
@@ -23,5 +27,16 @@ export default class CaseworkerActionsFactory extends BasePageActionsFactory {
       new MediationUnsuccessfulPageFactory(this.page),
       this.testData,
     );
+  }
+
+  get referJudgeDefenceReceivedActions() {
+    return new ReferJudgeDefenceReceivedActions(
+      new ReferJudgeDefenceReceivedPageFactory(this.page),
+      this.testData,
+    );
+  }
+
+  get setAsideJudgmentActions() {
+    return new SetAsideJudgmentActions(new SetAsideJudgmentPageFactory(this.page), this.testData);
   }
 }

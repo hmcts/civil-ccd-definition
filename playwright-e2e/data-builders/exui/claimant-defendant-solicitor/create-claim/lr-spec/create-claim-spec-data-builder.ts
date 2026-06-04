@@ -23,6 +23,13 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildFastTrack1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    })
+  }
+
   async buildSmallTrack1v1() {
     return this.buildData();
   }
