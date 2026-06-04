@@ -14,7 +14,7 @@ export const idamApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'h
 export const authProviderApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal' : 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal';
 export const ccdDataStoreApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'https://ccd-data-store-api-civil-service-pr-3056.preview.platform.hmcts.net' : (process.env.ENVIRONMENT === 'demo' ? 'http://ccd-data-store-api-demo.service.core-compute-demo.internal' : 'http://ccd-data-store-api-aat.service.core-compute-aat.internal');
 export const documentManagementStoreApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'http://dm-store-aat.service.core-compute-aat.internal' : 'http://dm-store-demo.service.core-compute-demo.internal';
-export const microService: string = 'iac';
+export const microService: string = 'civil_service';
 export const secret: string = process.env.ENVIRONMENT === 'preview' ? 'AABBCCDDEEFFGGHH' : (process.env.ENVIRONMENT === 'demo' ? '4W4QUXOYX623JW64' : process.env.S2S_SECRET);
 export const civilServiceUrl: string = process.env.CIVIL_SERVICE_URL;
 

@@ -18,7 +18,7 @@ export class CreateUnspecifiedCase {
     this.buttonHelper = new ButtonHelper(this.page);
   }
 
-  async setReferences(claimType: string = ClaimTypes.ONE_VS_ONE) {
+  async setReferences(claimType: ClaimTypes = ClaimTypes.ONE_VS_ONE) {
     if (claimType === ClaimTypes.ONE_VS_ONE) {
       await this.page
         .locator('#solicitorReferences_applicantSolicitor1Reference')

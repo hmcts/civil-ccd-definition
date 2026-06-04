@@ -9,6 +9,7 @@ import claimTypes from '../../enums/claim-types.ts';
 import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
 import claimTrack from '../../enums/claim-track.ts';
+import environment from '../../enums/environment.ts';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import { TabsHelper } from '../../helpers/TabsHelper.ts';
 import { PaymentPage } from '../page-objects/pages/payment_page.ts'
@@ -19,8 +20,13 @@ const env = cleanEnv({
     values: [claimTypes.ONE_VS_ONE_LIP, claimTypes.TWO_VS_ONE_LIP, claimTypes.ONE_VS_TWO_LIPS, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR, claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL] as const,
     default: claimTypes.ONE_VS_ONE,
   }),
+  ENVIRONMENT: enums({
+    values: [environment.AAT, environment.DEMO, environment.ITHC, environment.PREVIEW, environment.PERFTEST],
+    default: environment.PREVIEW,
+  }),
 });
 const claimType: claimTypes = env.CLAIM_TYPE;
+const runningEnvironment: environment = env.ENVIRONMENT;
 const caseType: string = 'UNSPECIFIED';
 const claimantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.CLAIMANT_TYPE) ? process.env.CLAIMANT_TYPE : 'INDIVIDUAL';
 const defendantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.DEFENDANT_TYPE) ? process.env.DEFENDANT_TYPE : 'INDIVIDUAL';
@@ -57,7 +63,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     let createCase: CreateUnspecifiedCase = new CreateUnspecifiedCase(page);
     await createCasePage.createCase(caseType);
     await buttonHelper.continueButton.click(); //Summary
-    await createCase.setReferences(claimType);
+    await createCase.setReferences(claimType); // do not think we need to pass claimtype.....
     await createCase.setCourt();
     await createCase.setClaimantType(claimantType, 1);
     await createCase.setClaimantLitigantFriend(litigantFriend, 1);
@@ -157,7 +163,14 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     console.log('caseId>>>>>>>>>>>>>>>' + caseId + '<<<<<<<<<<<<<<<<<<<');
     // Pay the claim fee
     await new PaymentPage(page).makePayment('PBA');
+    // When pay is called we send a callback url - pay should then use our callback url so that the next camunda process is kicked off which
+    // sends the appropriate party emails and generates the claim certificate.  As this is not happening we will need to manually fire the
+    // callback so the aforementioned camunda task completes and the test can continue
 
-    await new TestingEndPointHelper().waitForCamundaProcessToFinish(caseId,'CREATE_CLAIM_AFTER_PAYMENT');
+    if (runningEnvironment !== environment.PREVIEW) {
+      await new TestingEndPointHelper().waitForCamundaProcessToFinish(caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
+    } else {
+      await new TestingEndPointHelper().serviceRequestUpdateClaimIssued(caseId);
+    }
   });
 });
