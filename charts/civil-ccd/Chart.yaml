@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.67
+version: 0.0.68
 maintainers:
   - name: HMCTS Civil team
 
@@ -12,7 +12,7 @@ dependencies:
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: postgresql.enabled
   - name: civil-service
-    version: 0.0.106
+    version: 0.0.107
     repository: 'oci://hmctsprod.azurecr.io/helm'
   - name: ccd
     version: 9.2.3
@@ -73,7 +73,7 @@ dependencies:
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: em-ccdorc.enabled
   - name: em-stitching
-    version: 1.1.5
+    version: 1.1.6
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: em-stitching.enabled
 
