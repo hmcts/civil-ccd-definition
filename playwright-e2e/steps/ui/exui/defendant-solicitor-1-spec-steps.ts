@@ -195,7 +195,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async EvidenceUploadRespondent() {
+  async EvidenceUploadSmallClaim() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {

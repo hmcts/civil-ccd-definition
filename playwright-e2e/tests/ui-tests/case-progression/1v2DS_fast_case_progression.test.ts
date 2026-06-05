@@ -26,9 +26,9 @@ test.describe('1v2DS fast track case progression', { tag: '@civil-ccd-nightly' }
     await JudgeSteps.Login();
     await JudgeSteps.SdoFastTrack();
     await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.EvidenceUploadApplicant();
+    await ClaimantSolicitorSteps.EvidenceUploadFastTrack();
     await DefendantSolicitor1Steps.Login();
-    await DefendantSolicitor1Steps.EvidenceUploadRespondent();
+    await DefendantSolicitor1Steps.EvidenceUploadFastTrack();
     await HearingCenterAdminSteps.LoginRegion1();
     await HearingCenterAdminSteps.TransferOnlineCase();
   });

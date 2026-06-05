@@ -542,7 +542,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async EvidenceUploadApplicant() {
+  async EvidenceUploadFastTrack() {
     const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
