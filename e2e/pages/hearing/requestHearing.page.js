@@ -30,7 +30,7 @@ module.exports = {
 
     }, urlBefore);
     await I.waitForText('Current and upcoming');
-    await I.clickHearingHyperLinkOrButton(locate('div > exui-case-hearings > div > a').withText('Request a hearing'));
+    await I.clickHearingHyperLinkOrButton(locate('div > exui-case-hearings-ce > div > a').withText('Request a hearing'));
     await I.waitForText('Hearing requirements');
     await I.runAccessibilityTest();
     await I.clickContinue();

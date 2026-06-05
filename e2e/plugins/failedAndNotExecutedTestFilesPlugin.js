@@ -108,7 +108,6 @@ module.exports.testFilesHelper = {
       createdAt: new Date().toISOString(),
       gitCommitId: process.env.GIT_COMMIT ?? null,
       ftGroups: process.env.PR_FT_GROUPS?.split(',') ?? null,
-      ftType: process.env.FT_TYPE ?? null,
     };
 
     await fs.writeFile(testFilesReportPath, JSON.stringify(testFilesReport, null, 2));

@@ -6,9 +6,9 @@ import {
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
@@ -90,6 +90,30 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.MANAGE_CASE_FLAGS,
+    );
+  }
+
+  async CaseProceedsInCaseman() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettled();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CaseProceedsInCasemanSpec() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettledSpec();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      { verifySuccessEvent: false },
     );
   }
 }

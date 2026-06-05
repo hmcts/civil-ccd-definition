@@ -1,0 +1,40 @@
+name: Update README Functional Test Group Tables
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  generate-readme-ft-group-tables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        env:
+          YARN_ENABLE_SCRIPTS: "false"
+        run: yarn install --frozen-lockfile
+
+      - name: Regenerate functional test group JSON
+        run: |
+          yarn test:generate:ft-groups-api-data
+          yarn test:generate:ft-groups-ui-data
+
+      - name: Update README functional test group UI table
+        run: yarn test:readme:ft-groups-ui-table
+
+      - name: Update README functional test group API table
+        run: yarn test:readme:ft-groups-api-table
+
+      - name: Commit and push README updates
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: "chore: refresh README functional test group tables"
+          branch: master

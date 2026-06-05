@@ -24,7 +24,7 @@ ccd:
         TS_TRANSLATION_SERVICE_HOST: http://${SERVICE_NAME}-translation-service
   ccd-admin-web:
     nodejs:
-      image: hmctspublic.azurecr.io/ccd/admin-web:latest
+      image: hmctsprod.azurecr.io/ccd/admin-web:latest
       ingressHost: admin-web-${SERVICE_FQDN}
       environment:
         ADMINWEB_GLOBAL_SEARCH_INDEX_URL: http://${SERVICE_NAME}-ccd-definition-store/elastic-support/global-search/index
@@ -65,7 +65,7 @@ ccd:
           paths:
             - path: /
   logstash:
-    image: hmctspublic.azurecr.io/ccd/logstash
+    image: hmctsprod.azurecr.io/ccd/logstash
     imageTag: "latest"
     extraEnvs:
       - name: DATA_STORE_URL

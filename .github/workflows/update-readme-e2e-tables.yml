@@ -1,0 +1,40 @@
+name: Update README Test Documentation Tables
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  generate-readme-tables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        env:
+          YARN_ENABLE_SCRIPTS: "false"
+        run: yarn install --frozen-lockfile
+
+      - name: Regenerate documentation JSON
+        run: |
+          yarn test:generate:e2e-api-data
+          yarn test:generate:e2e-ui-data
+
+      - name: Update README UI table
+        run: yarn test:readme:e2e-ui-table
+
+      - name: Update README API table
+        run: yarn test:readme:e2e-api-table
+
+      - name: Commit and push README updates
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
+        with:
+          commit_message: "chore: refresh README test documentation tables"
+          branch: master

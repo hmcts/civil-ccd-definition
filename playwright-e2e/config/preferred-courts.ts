@@ -1,4 +1,4 @@
-import partys from '../constants/partys';
+import partys from '../constants/users/partys';
 
 const preferredCourts = {
   [partys.CLAIMANT_1.key]: {

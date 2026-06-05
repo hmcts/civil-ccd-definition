@@ -1,10 +1,10 @@
 import BasePage from '../../base/base-page';
-import User from '../../models/user';
+import User from '../../models/users/user';
 import { AllMethodsStep } from '../../decorators/test-steps';
 import { acceptIdamCookies } from '../../fixtures/cookies/idam-cookies';
 import { generateAcceptExuiCookies } from '../../fixtures/cookies/exui-cookies';
 import PageError from '../../errors/page-error';
-import Cookie from '../../models/cookie';
+import Cookie from '../../models/test-utils/cookie';
 
 @AllMethodsStep()
 export default class PageCookiesManager extends BasePage {
@@ -24,7 +24,7 @@ export default class PageCookiesManager extends BasePage {
   }
 
   async addIdamCookies() {
-    await super.addCookies(acceptIdamCookies);
+    await super.addCookies(acceptIdamCookies());
   }
 
   async addExuiCookies({ userId, name }: User) {

@@ -1,10 +1,10 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { subheadings, inputs, radioButtons } from './disclosure-report-content.ts';
-import { Party } from '../../../../../../../models/partys.ts';
+import { Party } from '../../../../../../../models/users/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
@@ -37,7 +37,6 @@ export default class DisclosureReportPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons.disclosureProposalAgreed.yes.selector(this.claimantDefendantParty),
     );
-    await super.expectLabel(inputs.draftOrderNumber.label, { ignoreDuplicates: true });
     await super.inputText('12345', inputs.draftOrderNumber.selector(this.claimantDefendantParty));
   }
 

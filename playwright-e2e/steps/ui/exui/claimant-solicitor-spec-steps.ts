@@ -3,9 +3,9 @@ import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { claimantSolicitorUser } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
@@ -184,6 +184,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -204,6 +205,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse2v1Spec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts2v1();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -224,6 +226,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -244,6 +247,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse1v2DSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -291,6 +295,43 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
       },
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastTrackIntentToProceed1v2DS() {
+    const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await claimantResponseSpecActions.respondentResponse1v2DSSpec();
+        await claimantResponseSpecActions.defenceDocumentSpec();
+        await claimantResponseSpecActions.dqFastTrackClaimantResponseSpec();
+        await claimantResponseSpecActions.dqFastTrack();
+        await claimantResponseSpecActions.application();
+        await claimantResponseSpecActions.statementOfTruthClaimantResponse();
+        await claimantResponseSpecActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseSpecActions.confirm();
+      },
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadApplicant() {
+    const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUpload();
+        await evidenceUploadApplicantActions.documentSelectionSmallClaim();
+        await evidenceUploadApplicantActions.documentUpload();
+        await evidenceUploadApplicantActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
       { verifySuccessEvent: false },
     );
   }

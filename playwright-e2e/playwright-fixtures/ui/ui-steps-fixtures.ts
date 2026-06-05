@@ -64,7 +64,7 @@ export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).
   HearingCenterAdminSpecSteps: async ({ _exuiDashboardActions, _idamActions, _hearingCenterAdminActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new HearingCenterAdminSpecSteps(_exuiDashboardActions, _idamActions, _hearingCenterAdminActionsFactory, _requestsFactory, _testData));
   },
-  JudgeSteps: async ({ _exuiDashboardActions, _idamActions, _judgeActionsFactory, _requestsFactory, _testData }, use) => {
+  JudgeSteps: async ({ _exuiDashboardActions, _idamActions, _judgeLaActionsFactory: _judgeActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new JudgeSteps(_exuiDashboardActions, _idamActions, _judgeActionsFactory, _requestsFactory, _testData));
   }
 });

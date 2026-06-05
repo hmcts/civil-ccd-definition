@@ -2,6 +2,7 @@ const {I} = inject();
 
 const CONFIRMATION_HEADER = '#confirmation-header';
 const SUMMARY_TAB = 'div[role="tab"]:nth-child(1)';
+const ALERT_MESSAGE = '.hmcts-banner__message .alert-message';
 
 module.exports = {
 
@@ -20,6 +21,14 @@ module.exports = {
     I.waitForText(buttonText);
     await I.runAccessibilityTest();
     await I.click(buttonText);
+  },
+
+   async submitSupportingDoc(buttonText, expectedMessage) {
+    I.waitForText(buttonText);
+    await I.retryUntilExists(() => I.click(buttonText), ALERT_MESSAGE);
+    await within(ALERT_MESSAGE, () => {
+      I.see(expectedMessage);
+    });
   },
 
   async returnToCaseDetails() {

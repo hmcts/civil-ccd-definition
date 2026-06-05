@@ -3,10 +3,10 @@ import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data.ts';
 import RequestsFactory from '../../../requests/requests-factory';
 import { civilAdminUser } from '../../../config/users/exui-users.ts';
-import ccdEvents from '../../../constants/ccd-events.ts';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -149,4 +149,14 @@ export default class CaseworkerSteps extends BaseExui {
     await this.exuiDashboardActions.verifyManageContactInformationUpdateDefendant1Expert();
   }
 
+  async MediationUnsuccessful() {
+    const { mediationUnsuccessfulActions } = this.caseworkerActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await mediationUnsuccessfulActions.mediationUnsuccessful();
+      },
+      async () => {},
+      ccdEvents.MEDIATION_UNSUCCESSFUL,
+    );
+  }
 }

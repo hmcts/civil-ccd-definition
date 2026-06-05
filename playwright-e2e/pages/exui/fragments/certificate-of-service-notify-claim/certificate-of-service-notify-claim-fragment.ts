@@ -12,7 +12,7 @@ import {
   dropdowns,
   radioButtons,
 } from './certificate-of-service-notify-claim-content';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import DateFragment from '../date/date-fragment';
 
 @AllMethodsStep()
@@ -54,7 +54,7 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
 
     if (this.defendantParty.number === 1) {
       dateDeemedServed = DateHelper.addToToday({ days: 2, workingDay: true, addDayAfter4pm: true });
-      dateOfService = DateHelper.addToToday({addDayAfter4pm: true});
+      dateOfService = DateHelper.getToday();
     } else {
       dateDeemedServed = DateHelper.subtractFromToday({ days: 14, workingDay: true, addDayAfter4pm: true });
       dateOfService = DateHelper.subtractFromToday({

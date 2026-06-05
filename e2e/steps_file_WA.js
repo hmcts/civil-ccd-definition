@@ -1,7 +1,8 @@
-// in this file you can append custom step methods to 'I' object
-
+const caseViewPage  = require('./pages/caseView.page.js');
 const config = require('./config.js');
 const waTaskHelper= require('./helpers/assertions/waTaskAssertions');
+
+// in this file you can append custom step methods to 'I' object
 
 module.exports = function (){
   return actor({
@@ -116,6 +117,82 @@ module.exports = function (){
 
     validateTaskInfo(createdTask, expectedTaskInfo) {
       return waTaskHelper.validateTaskInfo(createdTask, expectedTaskInfo);
-    }
+    },
+
+    goToEvent: async function (eventName) {
+      await caseViewPage.start(eventName);
+    },
+    goToTask: async function (caseId, taskName) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+      await this.waitForElement('#event');
+      await this.click('#action_claim');
+      await this.waitForElement('#action_reassign');
+      await this.waitForText(taskName);
+      await this.click(taskName);
+      await this.wait(3);
+      if (taskName === 'JudgeDecideOnApplication') {
+        await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 10);
+      } else if (taskName === 'LegalAdvisorDecideOnApplication') {
+        await this.waitInUrl('MAKE_DECISIONGAJudicialDecision', 10);
+      } else if (taskName === 'ScheduleApplicationHearing') {
+        await this.waitInUrl('HEARING_SCHEDULED_GAHearingNoticeGADetail', 10);
+      } else {
+        await this.waitInUrl('Application', 5);
+      }
+    },
+
+    referToJudge: async function () {
+      await this.waitInUrl('REFER_TO_JUDGE');
+      await this.fillField('#referToJudge_judgeReferEventDescription', 'Test test');
+      await this.fillField('#referToJudge_judgeReferAdditionalInfo', 'Test additional Info');
+      await this.click('Continue');
+      await this.waitInUrl('REFER_TO_JUDGE/submit', 5);
+      await this.click('Submit');
+      await this.wait(5);
+    },
+
+    referToLA: async function () {
+      await this.waitInUrl('REFER_TO_LEGAL_ADVISOR');
+      await this.fillField('#referToLegalAdvisor_legalAdvisorEventDescription', 'Test test');
+      await this.fillField('#referToLegalAdvisor_legalAdvisorAdditionalInfo', 'Test additional Info');
+      await this.click('Continue');
+      await this.waitInUrl('REFER_TO_LEGAL_ADVISOR/submit', 5);
+      await this.click('Submit');
+    },
+
+    runJudgeSpecificAccessApprovalSteps: async function (caseId) {
+      console.log('config.url.manageCase...', config.url.manageCase);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+      await this.waitForElement('#action_assign');
+      await this.forceClick(locate('#action_assign').at(1));
+      await this.waitForElement('#JUDICIAL');
+      await this.click('Continue');
+      await this.wait(5);
+      await this.waitForElement('#sub-title-hint');
+      await this.fillField('#inputSelectPerson', 'Shaun Micheal ');
+      await this.waitForSelector('span.mat-option-text', 20);
+      await this.forceClick(locate('span.mat-option-text').at(1));
+      await this.click('Continue');
+      await this.waitForElement('#reassign-confirm-hint');
+      await this.see('Check you are assigning work to the right person.');
+      await this.click('Assign');
+      await this.wait(5);
+    },
+
+    verifyAdminTask: async function (caseId, taskName) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+      await this.waitForElement('#event');
+      await this.click('#action_claim');
+      await this.waitForElement('#action_reassign');
+      await this.waitForText(taskName);
+      await this.see('Active tasks');
+      await this.see('Next steps');
+    },
+
+    verifyNoActiveTask: async function (caseId) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+      await this.dontSeeElement('#action_claim');
+    },
+
   });
 };

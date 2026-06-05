@@ -1,6 +1,6 @@
 const { expect, assert} = require('chai');
 const { uniqWith } = require('lodash');
-const { isFieldDuplicated } = require('../utils/utils');
+const { isFieldDuplicated, isValidCaseTypeId } = require('../utils/utils');
 const { createAssertExists } = require('../utils/assertBuilders');
 const dataProvider = require('../utils/dataProvider');
 
@@ -8,7 +8,7 @@ const assertStateExists = createAssertExists('State');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+    return isValidCaseTypeId()(v);
   });
 }
 

@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "requestHearingNoticeDynamic",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  }
-]

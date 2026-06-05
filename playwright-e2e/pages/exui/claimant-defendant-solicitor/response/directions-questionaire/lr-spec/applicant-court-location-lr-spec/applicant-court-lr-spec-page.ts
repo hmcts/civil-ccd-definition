@@ -1,11 +1,11 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { dropdowns, inputs, subheadings } from './applicant-court-lr-spec-content.ts';
 import RemoteHearingSpecFragment from '../../../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment.ts';
-import partys from '../../../../../../../constants/partys.ts';
+import partys from '../../../../../../../constants/users/partys';
 import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 
 @AllMethodsStep()

@@ -1,17 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import StringHelper from './string-helper';
-import ClaimTrack from '../enums/claim-track';
-import { Party } from '../models/partys';
-import partys from '../constants/partys';
-import { ClaimantDefendantPartyType } from '../models/claimant-defendant-party-types';
-import claimantDefendantPartyTypes from '../constants/claimant-defendant-party-types';
-import CCDCaseData, {
-  ExpertAndWitness,
-  ClaimantDefendant,
-  LitigationFriend,
-} from '../models/ccd/ccd-case-data';
-import CaseFlags, { CaseFlagDetails } from '../models/case-flag';
-import caseFlagLocations from '../constants/case-flags/case-flag-locations';
+import ClaimTrack from '../constants/cases/claim-track';
+import { Party } from '../models/users/partys';
+import partys from '../constants/users/partys';
+import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../constants/users/claimant-defendant-party-types';
 
 export default class CaseDataHelper {
   static getNextClaimNumber() {
@@ -293,7 +286,7 @@ static getPartyDateOfBirthUpdated(party: Party) {
       firstName: StringHelper.capitalise(mediationFriendParty.key),
       lastName: 'Mediation',
       emailAddress: `${mediationFriendParty.key}@mediation.com`,
-      phoneNumber: this.getPartyPhoneNumber(mediationFriendParty),
+      telephoneNumber: this.getPartyPhoneNumber(mediationFriendParty),
     };
   }
 
@@ -321,5 +314,12 @@ static getPartyDateOfBirthUpdated(party: Party) {
       case ClaimTrack.MULTI_CLAIM:
         return 110000;
     }
+  }
+
+  static getClaimTrack(claimAmount: number) {
+    if (claimAmount <= 10000) return ClaimTrack.SMALL_CLAIM;
+    if (claimAmount > 10000 && claimAmount <= 25000) return ClaimTrack.FAST_CLAIM;
+    if (claimAmount > 25000 && claimAmount <= 100000) return ClaimTrack.INTERMEDIATE_CLAIM;
+    if (claimAmount > 100000) return ClaimTrack.MULTI_CLAIM;
   }
 }

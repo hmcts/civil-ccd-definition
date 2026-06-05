@@ -1,5 +1,5 @@
 import BasePageFactory from '../../../../../base/base-page-factory';
-import partys from '../../../../../constants/partys';
+import partys from '../../../../../constants/users/partys';
 import SingleResponse2v1Page from './common/single-response-2v1/single-response-2v1-page';
 import SingleResponsePage from './common/single-response/single-response-page';
 import StatmentOfTruthDefendantResponsePage from './common/statement-of-truth-defendant-response/statement-of-truth-defendant-response-page';

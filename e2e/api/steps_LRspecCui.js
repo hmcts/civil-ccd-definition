@@ -21,13 +21,13 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
-const {uploadDocument} = require('./testingSupport');
-const {isJOLive} = require('../fixtures/featureKeys');
+const {uploadDocument, checkOtherRemedyEnabled} = require('./testingSupport');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const lipClaimantResponse = require('../fixtures/events/cui/lipClaimantResponse');
 const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
-const sdoTracks = require('../fixtures/events/createSDO');
+const sdoTracks = require('../fixtures/events/createSDO.js');
+const sdoTracksOtherRemedy = require('../fixtures/events/createSDOOtherRemedy.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
@@ -64,6 +64,8 @@ const data = {
   DISCONTINUE_CLAIM: (mpScenario) => discontinueClaimSpec.discontinueClaim(mpScenario),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   CREATE_SDO_FAST_TRACK: (userInput) => sdoTracks.createSDOFastTrackSpec(userInput),
+  CREATE_SDO_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOSmallWODamageSumInPerson(userInput),
+  CREATE_SDO_FAST_TRACK_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFastTrackSpec(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearingForTrialReadiness(allocatedTrack),
   HEARING_SCHEDULED_CUI: (allocatedTrack) => hearingScheduled.scheduleHearingForCui(allocatedTrack),
   EVIDENCE_UPLOAD_CLAIMANT: (mpScenario, document) => evidenceUploadApplicant.createClaimantSmallClaimsEvidenceUpload(document),
@@ -234,7 +236,7 @@ module.exports = {
     await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
     claimData.serviceUpdateDto(caseId, 'paid'));
     console.log('Service request update sent to callback URL');
-    
+
     await waitForFinishedBusinessProcess(caseId);
     if (claimType !== 'pinInPost') {
       await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
@@ -335,9 +337,13 @@ module.exports = {
     } else if (response === 'CREATE_FAST') {
       eventName = 'CREATE_SDO';
       disposalData = data.CREATE_SDO_FAST_TRACK();
+      if(await checkOtherRemedyEnabled())
+        disposalData = data.CREATE_SDO_FAST_TRACK_OTHER_REMEDY();
     } else {
       eventName = 'CREATE_SDO';
       disposalData = data.CREATE_SDO();
+      if(await checkOtherRemedyEnabled())
+        disposalData = data.CREATE_SDO_OTHER_REMEDY();
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -438,7 +444,7 @@ module.exports = {
 
   },
 
-  scheduleHearing: async (user, allocatedTrack = 'OTHER', claimType) => {
+  scheduleHearing: async (user, allocatedTrack = 'OTHER', claimType, expectedState = 'HEARING_READINESS') => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -456,7 +462,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await assertSubmittedEvent(expectedState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 

@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import filePaths from '../../../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../../../../models/ccd-case-data';
 import ExuiPage from '../../../../exui-page/exui-page';
 import ParticularsOfClaimFragment from '../../../../fragments/particulars-of-claim/particulars-of-claim-fragment';
 import { paragraphs, subheadings } from './upload-create-claim-content';

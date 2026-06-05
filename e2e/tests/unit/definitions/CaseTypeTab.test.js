@@ -3,13 +3,14 @@ const { uniqWith } = require('lodash');
 const {
   MEDIUM_STRING,
   isNotLongerThan,
-  noDuplicateFoundCT
+  noDuplicateFoundCT,
+  isValidCaseTypeId
 } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+    return isValidCaseTypeId()(v);
   });
   expect(row.CaseFieldID).to.be.a('string').and.satisfy(isNotLongerThan(MEDIUM_STRING));
   // todo this isn't always populated

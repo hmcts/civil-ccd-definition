@@ -8,7 +8,7 @@ export default class PbaNumberPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectText(subheadings.claimFee),
-      super.expectText(labels.amountToPay),
+      super.expectText(labels.amountToPay, {count: 1}),
     ]);
   }
 

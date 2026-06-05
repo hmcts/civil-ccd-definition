@@ -1,13 +1,13 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { radioButtons, buttons, inputs, subheadings, links } from './litigation-friend-content';
 import filePaths from '../../../../config/file-paths';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import partys from '../../../../constants/partys';
-import ccdEvents from '../../../../constants/ccd-events';
+import partys from '../../../../constants/users/partys';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class LitigationFriendFragment extends ExuiPage(BasePage) {
@@ -18,10 +18,7 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
     this.litigationFriendParty = litigationFriendParty;
   }
 
-  async verifyContent(
-    options: { ccdEventState?: { id: string } } = {}
-  ) {
-    const isManageContactInformation = options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
+  async verifyContent() {
 
     const verifications = [
     super.expectLabel(inputs.litigationFriendDetails.firstName.label),
@@ -29,11 +26,6 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
     super.expectLabel(inputs.litigationFriendDetails.email.label, { count: 1 }),
     super.expectLabel(inputs.litigationFriendDetails.phoneNumber.label, { count: 1 }),
   ];
-    if (!isManageContactInformation) {
-    verifications.push(
-      super.expectSubheading(subheadings.uploadcertificate),
-    );
-  }
 
   await super.runVerifications(verifications, { runAxe: false });
 }
@@ -61,7 +53,7 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
       inputs.litigationFriendDetails.email.selector(this.litigationFriendParty),
     );
     await super.inputText(
-      claimantLitigationFriendData.phoneNumber,
+      claimantLitigationFriendData.phoneNumber!,
       inputs.litigationFriendDetails.phoneNumber.selector(this.litigationFriendParty),
     );
   }
@@ -101,7 +93,7 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
       inputs.address.country.selector(this.litigationFriendParty),
     );
     await super.inputText(
-      addressData.PostCode,
+      addressData.PostCode!,
       inputs.address.postCode.selector(this.litigationFriendParty),
     );
   }
@@ -141,7 +133,7 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
       inputs.address.country.selector(this.litigationFriendParty),
     );
     await super.inputText(
-      addressData.PostCode,
+      addressData.PostCode!,
       inputs.address.postCode.selector(this.litigationFriendParty),
     );
   }

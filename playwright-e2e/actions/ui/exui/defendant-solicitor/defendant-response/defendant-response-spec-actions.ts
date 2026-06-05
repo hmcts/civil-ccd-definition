@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../../base/base-test-data';
 import { Step } from '../../../../../decorators/test-steps';
-import TestData from '../../../../../models/test-data';
+import TestData from '../../../../../models/test-utils/test-data';
 import DefendantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/defendant-response/defendant-response-page-factory';
 
 const classKey = 'DefendantResponseSpecActions';
@@ -323,6 +323,85 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await this.requestedCourtLRSpecDS1();
     await this.hearingSupportDS1();
     await this.vulnerabilityQuestionsSpecDS1();
+  }
+
+  @Step(classKey)
+  async dqFastTrackDS2() {
+    const { fileDirectionsQuestionaireDS2Page } = this.defendantResponsePageFactory;
+    await fileDirectionsQuestionaireDS2Page.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionaireDS2Page.enterDetails();
+    await fileDirectionsQuestionaireDS2Page.submit();
+
+    const { fixedRecoverableCostsDS2Page } = this.defendantResponsePageFactory;
+    await fixedRecoverableCostsDS2Page.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsDS2Page.selectYes();
+    await fixedRecoverableCostsDS2Page.submit();
+
+    const { disclosureOfElectronicDocumentsLRSpecDS2Page } = this.defendantResponsePageFactory;
+    await disclosureOfElectronicDocumentsLRSpecDS2Page.verifyContent(this.ccdCaseData);
+    await disclosureOfElectronicDocumentsLRSpecDS2Page.enterDetails();
+    await disclosureOfElectronicDocumentsLRSpecDS2Page.submit();
+
+    const { disclosureOfNonElectronicDocumentsLRSpecDS2Page } = this.defendantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsLRSpecDS2Page.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsLRSpecDS2Page.enterDetails();
+    await disclosureOfNonElectronicDocumentsLRSpecDS2Page.submit();
+
+    const { disclosureReportDS2Page } = this.defendantResponsePageFactory;
+    await disclosureReportDS2Page.verifyContent(this.ccdCaseData);
+    await disclosureReportDS2Page.enterDetails();
+    await disclosureReportDS2Page.submit();
+
+    const { expertsDS2Page } = this.defendantResponsePageFactory;
+    await expertsDS2Page.verifyContent(this.ccdCaseData);
+    await expertsDS2Page.useExperts();
+    await expertsDS2Page.addNewExpert();
+    await expertsDS2Page.enterExpertDetails();
+    await expertsDS2Page.submit();
+
+    const { witnessesDS2Page } = this.defendantResponsePageFactory;
+    await witnessesDS2Page.verifyContent(this.ccdCaseData);
+    await witnessesDS2Page.selectYesWitnesses();
+    await witnessesDS2Page.addWitness();
+    await witnessesDS2Page.enterWitnessDetails();
+    await witnessesDS2Page.submit();
+
+    const { languageDS2Page } = this.defendantResponsePageFactory;
+    await languageDS2Page.verifyContent(this.ccdCaseData);
+    await languageDS2Page.selectEnglishAndWelsh();
+    await languageDS2Page.submit();
+
+    const { hearingLRSpecDS2Page } = this.defendantResponsePageFactory;
+    await hearingLRSpecDS2Page.verifyContent(this.ccdCaseData);
+    await hearingLRSpecDS2Page.selectNoAvailabilityRequired();
+    await hearingLRSpecDS2Page.submit();
+
+    const { requestedCourtLRSpecDS2Page } = this.defendantResponsePageFactory;
+    await requestedCourtLRSpecDS2Page.verifyContent(this.ccdCaseData);
+    await requestedCourtLRSpecDS2Page.selectCourtLocation();
+    await requestedCourtLRSpecDS2Page.selectNoRemoteHearing();
+    await requestedCourtLRSpecDS2Page.submit();
+
+    const { hearingSupportDS2Page } = this.defendantResponsePageFactory;
+    await hearingSupportDS2Page.verifyContent(this.ccdCaseData);
+    await hearingSupportDS2Page.selectYes();
+    await hearingSupportDS2Page.enterSupportRequirementsAdditional();
+    await hearingSupportDS2Page.submit();
+
+    const { vulnerabilityQuestionsSpecDS2Page } = this.defendantResponsePageFactory;
+    await vulnerabilityQuestionsSpecDS2Page.verifyContent(this.ccdCaseData);
+    await vulnerabilityQuestionsSpecDS2Page.selectYes();
+    await vulnerabilityQuestionsSpecDS2Page.enterVulnerabilityAdjustments();
+    await vulnerabilityQuestionsSpecDS2Page.submit();
+  }
+
+  @Step(classKey)
+  async applicationDS2() {
+    const { applicationDS2Page } = this.defendantResponsePageFactory;
+    await applicationDS2Page.verifyContent(this.ccdCaseData);
+    await applicationDS2Page.selectYes();
+    await applicationDS2Page.enterAdditionalInformation();
+    await applicationDS2Page.submit();
   }
 
   @Step(classKey)

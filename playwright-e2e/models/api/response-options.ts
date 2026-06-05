@@ -11,6 +11,17 @@ export interface _ResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    response: APIResponse | any | string,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number;
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface ResponseOptions extends _ResponseOptions {
@@ -23,6 +34,17 @@ export interface ResponseOptions extends _ResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    response: APIResponse,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number;
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface ResponseJsonOptions extends _ResponseOptions {
@@ -35,6 +57,17 @@ export interface ResponseJsonOptions extends _ResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    responseJson: any,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number;
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface ResponseTextOptions extends _ResponseOptions {
@@ -47,6 +80,17 @@ export interface ResponseTextOptions extends _ResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    responseText: string,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number;
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface _RetryResponseOptions {
@@ -62,6 +106,17 @@ export interface _RetryResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    response: APIResponse | any | string,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number;
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface RetryResponseOptions extends _RetryResponseOptions {
@@ -74,6 +129,17 @@ export interface RetryResponseOptions extends _RetryResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    response: APIResponse,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number;
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface RetryResponseJsonOptions extends _RetryResponseOptions {
@@ -86,6 +152,17 @@ export interface RetryResponseJsonOptions extends _RetryResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    responseJson: any,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number;
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface RetryResponseTextOptions extends _RetryResponseOptions {
@@ -98,4 +175,15 @@ export interface RetryResponseTextOptions extends _RetryResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    responseText: string,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number;
+    },
+  ) => Promise<string | undefined>;
 }

@@ -3,9 +3,9 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor2User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
@@ -25,6 +25,31 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
 
   async Login() {
     await super.idamActions.exuiLogin(defendantSolicitor2User);
+  }
+
+  async RespondFastTrackFullDefence1v2DS() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS2();
+        await defendantResponseSpecActions.responseConfirmDetailsDS2();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS2();
+        await defendantResponseSpecActions.defenceRouteDS2();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
+        await defendantResponseSpecActions.timelineDS2();
+        await defendantResponseSpecActions.dqFastTrackDS2();
+        await defendantResponseSpecActions.applicationDS2();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS2();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+
+      { verifySuccessEvent: false },
+    );
   }
 
   async RespondSmallTrackFullDefence1v2DS() {

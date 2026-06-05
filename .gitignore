@@ -5,6 +5,9 @@
 bin/main/application.yaml
 **/target
 
+### vscode ###
+.vscode
+
 ### STS ###
 .apt_generated
 .classpath
@@ -24,7 +27,7 @@ bin/main/application.yaml
 
 # dotenv environment variables file
 .env
-.env.test
+.env.tests.local
 
 # node_modules
 package-lock.json
@@ -64,3 +67,16 @@ playwright-report/
 /playwright-e2e/fixtures/.user-cookies/
 /playwright-e2e/fixtures/.user-assigned-cases/
 /playwright-e2e/fixtures/data/bankHolidays.json
+
+#AI
+AGENTS.md
+.claude/
+
+# WireMock mappings pulled from civil-wiremock-mappings at build time
+mappings/
+__files/
+
+# Shared scripts pulled from civil-service (run bin/pull-latest-civil-shared.sh)
+bin/shared/*
+!bin/shared/.gitkeep
+.civil-service-sparse/
