@@ -14,6 +14,8 @@ import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import { TabsHelper } from '../../helpers/TabsHelper.ts';
 import { PaymentPage } from '../page-objects/pages/payment_page.ts'
 import { TestingEndPointHelper } from '../../helpers/TestingEndPointHelper.ts';
+import config from '../../../e2e/config';
+import { NotifyClaim } from '../flows/events/NotifyClaim.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -35,7 +37,7 @@ const typeOfClaimSubType: string = process.env.SUB_TYPE;
 const litigantFriend: yesNo = ['Yes'].includes(process.env.LITIGANT_FRIEND) ? yesNo.YES : yesNo.NO;
 
 let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? process.env.TRACK : 'FAST_CLAIM';
-let caseId: string = '';
+let caseId: string = '1780657287644448';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -167,10 +169,13 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     // sends the appropriate party emails and generates the claim certificate.  As this is not happening we will need to manually fire the
     // callback so the aforementioned camunda task completes and the test can continue
 
-    if (runningEnvironment !== environment.PREVIEW) {
+    if (![environment.PREVIEW, environment.DEMO].includes(runningEnvironment)) {
       await new TestingEndPointHelper().waitForCamundaProcessToFinish(caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
     } else {
       await new TestingEndPointHelper().serviceRequestUpdateClaimIssued(caseId);
     }
+
+    await new NotifyClaim(page).notify(claimType);
+
   });
 });

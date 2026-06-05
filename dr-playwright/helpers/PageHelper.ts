@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from '@playwright/test';
 // import {imageLocators} from "../fixtures/imageLocators";
 // import {TabsHelper} from "./TabsHelper";
 // import {WaitUtils} from "../e2e/utils/wait.utils";
@@ -17,12 +17,15 @@ export class PageHelper {
         return caseId;
     }
 
-    // async selectNextStep(nextStep: string) {
-    //     await this.page.selectOption('#next-step', nextStep);
-    //     await this.page.waitForTimeout(2000); // waits for 2 seconds
-    //     await this.page.getByRole('button', { name: 'Go' }).click();
-    // }
-    //
+    async selectNextStep(nextStep: string) {
+      console.log(nextStep);
+      await expect(this.page.locator('#next-step')).toContainText(nextStep);
+      await this.page.locator('#next-step').selectOption(nextStep);
+      await this.page.getByRole('button', { name: 'Go' }).click();
+       //await this.page.waitForTimeout(20000); // waits for 2 seconds
+     // await this.page.getByRole('button', { name: 'Go' }).click();
+    }
+
     // // When running as API test the search reference box is not being populated.  Tried multiple options to no avail
     // // So added 2nd parameter and use the url instead of search reference box for API tests
     // async getCase(caseId: string, isE2e: boolean = true) {

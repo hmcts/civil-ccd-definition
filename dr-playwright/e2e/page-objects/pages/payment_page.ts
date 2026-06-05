@@ -52,7 +52,7 @@ export class PaymentPage {
         const visibleElement = this.page.locator('#next-step');
         await visibleElement.waitFor({state: 'visible'});
       } else {
-        console.log('Pay now link is available. Continuing test....');
+        console.log('"Pay now" link is available. Continuing test....');
         break;
       }
     }
