@@ -16,6 +16,7 @@ import { PaymentPage } from '../page-objects/pages/payment_page.ts'
 import { TestingEndPointHelper } from '../../helpers/TestingEndPointHelper.ts';
 import config from '../../../e2e/config';
 import { NotifyClaim } from '../flows/events/NotifyClaim.ts';
+import notifyClaimOptions from '../../enums/notifyClaimOptions.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -26,6 +27,11 @@ const env = cleanEnv({
     values: [environment.AAT, environment.DEMO, environment.ITHC, environment.PREVIEW, environment.PERFTEST],
     default: environment.PREVIEW,
   }),
+  DEFENDANTS_TO_NOTIFY: enums({
+    values: [notifyClaimOptions.BOTH, notifyClaimOptions.DEFENDANT1, notifyClaimOptions.DEFENDANT2],
+    default: notifyClaimOptions.BOTH,
+  }),
+
 });
 const claimType: claimTypes = env.CLAIM_TYPE;
 const runningEnvironment: environment = env.ENVIRONMENT;
@@ -34,10 +40,11 @@ const claimantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRA
 const defendantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.DEFENDANT_TYPE) ? process.env.DEFENDANT_TYPE : 'INDIVIDUAL';
 const typeOfClaim = process.env.TYPE_OF_CLAIM;
 const typeOfClaimSubType: string = process.env.SUB_TYPE;
+const defendantsToNotify: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY;
 const litigantFriend: yesNo = ['Yes'].includes(process.env.LITIGANT_FRIEND) ? yesNo.YES : yesNo.NO;
 
 let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? process.env.TRACK : 'FAST_CLAIM';
-let caseId: string = '1780657287644448';
+let caseId: string = '1780689274737216';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -175,7 +182,6 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await new TestingEndPointHelper().serviceRequestUpdateClaimIssued(caseId);
     }
 
-    await new NotifyClaim(page).notify(claimType);
-
+    await new NotifyClaim(page).notify(claimType, defendantsToNotify);
   });
 });
