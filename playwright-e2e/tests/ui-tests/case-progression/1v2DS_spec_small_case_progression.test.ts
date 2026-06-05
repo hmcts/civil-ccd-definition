@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, () => {
-  test('1v2 spec small case progression @debug', async ({
+  test('1v2 spec small case progression', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecSteps,
