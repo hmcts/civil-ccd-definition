@@ -22,8 +22,8 @@ import {
   labels
 } from './case-details-content';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
-import partys from '../../../../constants/partys';
+import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
+import partys from '../../../../constants/users/partys';
 
 const classKey = 'CaseDetailsPage';
 

@@ -1,7 +1,7 @@
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ExuiPage from '../../exui-page/exui-page';
-import { inputs } from '../date/date-content';
+import { inputs } from './date-content';
 import DateHelper from '../../../../helpers/date-helper';
 import { Party } from '../../../../models/users/partys';
 import { ClaimantDefendantPartyType } from '../../../../models/users/claimant-defendant-party-types';

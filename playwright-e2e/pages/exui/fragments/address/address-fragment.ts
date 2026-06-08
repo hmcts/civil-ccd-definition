@@ -5,7 +5,7 @@ import ExuiPage from '../../exui-page/exui-page';
 import { buttons, inputs, dropdowns, links } from './address-content';
 import { Party } from '../../../../models/users/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import ccdEvents from '../../../../constants/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class AddressFragment extends ExuiPage(BasePage) {

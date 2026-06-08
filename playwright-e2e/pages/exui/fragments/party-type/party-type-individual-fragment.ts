@@ -8,7 +8,7 @@ import claimantDefendantPartyTypes from '../../../../constants/users/claimant-de
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import PartyType from '../../../../constants/users/party-types';
 import DateOfBirthFragment from '../date/date-of-birth-fragment';
-import ccdEvents from '../../../../constants/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {

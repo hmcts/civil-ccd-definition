@@ -3,7 +3,7 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../exui-page/exui-page';
-import { inputs } from '../party-type/party-type-content';
+import { inputs } from './party-type-content';
 import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 

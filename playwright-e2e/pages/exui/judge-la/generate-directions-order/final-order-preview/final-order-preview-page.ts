@@ -2,7 +2,6 @@ import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
-import { previewText } from './final-order-preview-content';
 
 @AllMethodsStep()
 export default class FinalOrderPreviewPage extends ExuiPage(BasePage) {

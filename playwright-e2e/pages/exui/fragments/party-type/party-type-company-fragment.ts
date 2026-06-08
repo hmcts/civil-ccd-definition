@@ -6,7 +6,7 @@ import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './party-type-content';
 import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import ccdEvents from '../../../../constants/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {

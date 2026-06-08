@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { lists, paragraphs, subheadings } from './eligibility-content';
+import { paragraphs, subheadings } from './eligibility-content';
 
 @AllMethodsStep()
 export default class EligibilityPage extends ExuiPage(BasePage) {
