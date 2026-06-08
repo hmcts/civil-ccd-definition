@@ -9,9 +9,10 @@ export default class ManageStayOptionsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectHeading(heading, { exact: false }),
-      super.expectSelector(radioButtons.requestUpdate.selector),
-      super.expectSelector(radioButtons.liftStay.selector),
+      super.expectHeading(heading),
+      super.expectText(radioButtons.label),
+      super.expectLabel(radioButtons.requestUpdate.label),
+      super.expectLabel(radioButtons.liftStay.label),
     ]);
   }
 

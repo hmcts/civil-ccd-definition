@@ -1,8 +1,6 @@
 export const confirmationHeadings = {
-  heading1: 'You have requested an update on',
-  heading2: 'this case',
+  requestedUpdate: 'You have requested an update on',
+  thisCase: 'this case',
 };
 
-export const paragraphs = {
-  notification: 'All parties have been notified',
-};
+export const subheadings = 'All parties have been notified';

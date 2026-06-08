@@ -106,7 +106,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
     );
   }
 
-  async RequestUpdateOnStayCase() {
+  async ManageStayRequestUpdate() {
     const { manageStayActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
       async () => {

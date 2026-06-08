@@ -13,16 +13,12 @@ test.describe('1v2DS spec stay case journey', { tag: '@civil-ccd-nightly' }, asy
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-
     await DefendantSolicitor1SpecSteps.Login();
     await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence1v2DS();
-
     await DefendantSolicitor2SpecSteps.Login();
     await DefendantSolicitor2SpecSteps.RespondSmallTrackFullDefence1v2DS();
-
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondSmallClaimIntentToProceed1v2DS();
-
     await HearingCenterAdminSpecSteps.LoginRegion1();
     await HearingCenterAdminSpecSteps.StayCase();
     await HearingCenterAdminSpecSteps.ManageStayRequestUpdate();

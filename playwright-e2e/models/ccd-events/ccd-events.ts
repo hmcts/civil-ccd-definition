@@ -47,6 +47,7 @@ type CCDEvents = {
   MEDIATION_UNSUCCESSFUL: CCDEvent;
   STAY_CASE: CCDEvent;
   MANAGE_STAY: CCDEvent;
+  ADD_UNAVAILABLE_DATES: CCDEvent;
 };
 
 export default CCDEvents;
