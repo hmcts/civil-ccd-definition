@@ -211,4 +211,25 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async RespondFastTrackFullAdmit2v1() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse2v1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecFullAdmitDS1();
+        await defendantResponseSpecActions.whenWillClaimBePaidImmediately();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirmDefendantResponseSpecFullAdmit();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
 }

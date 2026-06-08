@@ -5,6 +5,7 @@ import SingleResponsePage from './common/single-response/single-response-page';
 import StatmentOfTruthDefendantResponsePage from './common/statement-of-truth-defendant-response/statement-of-truth-defendant-response-page';
 import SubmitDefendantResponsePage from './common/submit-defendant-response/submit-defendant-response-page';
 import Confirm1v2SSDefendantResponseSpecPage from './lr-spec/confirm-defendant-response-spec/confirm-1v2SS-defendant-response-spec-page';
+import ConfirmDefendantResponseSpecFullAdmitPage from './lr-spec/confirm-defendant-response-spec/confirm-defendant-response-spec-full-admit-page';
 import ConfirmDefendantResponseSpecPage from './lr-spec/confirm-defendant-response-spec/confirm-defendant-response-spec-page';
 import DefenceRoutePage from './lr-spec/defence-route/defence-route-page';
 import HowToAddTimelineManualPage from './lr-spec/how-to-add-timeline-manual/how-to-add-timeline-manual-page';
@@ -63,6 +64,7 @@ import StatementOfTruthFragment from '../../../fragments/statement-of-truth/stat
 import DateOfBirthFragment from '../../../fragments/date/date-of-birth-fragment';
 import DeterminationWithoutHearingPage from '../directions-questionaire/common/determination-without-hearing/determination-without-hearing-page';
 import YesOrNoFragment from '../../../fragments/yes-or-no/yes-or-no-fragment';
+import WhenWillClaimBePaidPage from './lr-spec/when-will-claim-be-paid/when-will-claim-be-paid-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -794,5 +796,13 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get confirm1v2SSDefendantResponseSpecPage() {
     return new Confirm1v2SSDefendantResponseSpecPage(this.page);
+  }
+
+  get confirmDefendantResponseSpecFullAdmitPage() {
+    return new ConfirmDefendantResponseSpecFullAdmitPage(this.page);
+  }
+
+  get whenWillClaimBePaidPage() {
+    return new WhenWillClaimBePaidPage(this.page);
   }
 }

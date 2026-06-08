@@ -226,6 +226,13 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async confirmDefendantResponseSpecFullAdmit() {
+    const { confirmDefendantResponseSpecFullAdmitPage } = this.defendantResponsePageFactory;
+    await confirmDefendantResponseSpecFullAdmitPage.verifyContent(this.ccdCaseData);
+    await confirmDefendantResponseSpecFullAdmitPage.submit();
+  }
+
+  @Step(classKey)
   async confirm1v2SSDefendantResponseSpec() {
     const { confirm1v2SSDefendantResponseSpecPage } = this.defendantResponsePageFactory;
     await confirm1v2SSDefendantResponseSpecPage.verifyContent(this.ccdCaseData);
@@ -467,6 +474,22 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     const { submitDefendantResponsePage } = this.defendantResponsePageFactory;
     await submitDefendantResponsePage.verifyContent(this.ccdCaseData);
     await submitDefendantResponsePage.submit();
+  }
+
+  @Step(classKey)
+  async respondentResponseTypeSpecFullAdmitDS1() {
+    const { respondentResponseTypeSpecDS1Page } = this.defendantResponsePageFactory;
+    await respondentResponseTypeSpecDS1Page.verifyContent(this.ccdCaseData);
+    await respondentResponseTypeSpecDS1Page.selectFullAdmit();
+    await respondentResponseTypeSpecDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async whenWillClaimBePaidImmediately() {
+    const { whenWillClaimBePaidPage } = this.defendantResponsePageFactory;
+    await whenWillClaimBePaidPage.verifyContent(this.ccdCaseData);
+    await whenWillClaimBePaidPage.selectImmediately();
+    await whenWillClaimBePaidPage.submit();
   }
 
   private async languageDS1() {
