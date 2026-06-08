@@ -1837,7 +1837,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Applications",
-    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack=\"FAST_CLAIM\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND (responseClaimTrack=\"FAST_CLAIM\" OR responseClaimTrack=\"MULTI_CLAIM\" OR responseClaimTrack=\"INTERMEDIATE_CLAIM\")",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1876,7 +1876,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "Applications",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1888,7 +1888,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "Applications",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

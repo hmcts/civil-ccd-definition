@@ -6,6 +6,7 @@ export default interface CCDCaseData {
   addRespondent2?: string;
   submittedDate?: string;
   solicitorReferences?: SolicitorReferences;
+  respondentSolicitor2Reference?: string;
   featureToggleWA?: string;
   respondent1OrgRegistered?: string;
   applicantSolicitor1UserDetails?: ApplicantSolicitor1UserDetails;

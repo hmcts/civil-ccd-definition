@@ -266,11 +266,14 @@ const application = (
         intentionToMakeFutureApplications: yesNoSchema,
         whatWillFutureApplicationsBeMadeFor: nonEmptyString,
       }),
-      applicant1AdditionalInformationForJudge: nonEmptyString,
     };
   }
 
   return {};
+};
+
+const undefine = {
+  nextDeadline: z.undefined().optional(),
 };
 
 const claimantResponseSpecSchemaComponents = {
@@ -285,6 +288,7 @@ const claimantResponseSpecSchemaComponents = {
   hearingSupport,
   vulnerabilityQuestions,
   application,
+  undefine,
 };
 
 export default claimantResponseSpecSchemaComponents;
