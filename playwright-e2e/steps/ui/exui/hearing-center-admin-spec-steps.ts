@@ -192,22 +192,4 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
-
-  async ScheduleHearing() {
-    const { hearingScheduledActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await hearingScheduledActions.hearingNoticeSelect();
-        await hearingScheduledActions.listingOrRelisting();
-        await hearingScheduledActions.hearingDetails();
-        await hearingScheduledActions.hearingInformation();
-        await hearingScheduledActions.submitHearingScheduled();
-      },
-      async () => {
-        await hearingScheduledActions.confirm();
-      },
-      ccdEvents.HEARING_SCHEDULED,
-      { verifySuccessEvent: false },
-    );
-  }
 }

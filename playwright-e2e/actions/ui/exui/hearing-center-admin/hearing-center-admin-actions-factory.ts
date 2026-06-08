@@ -12,6 +12,8 @@ import SetAsideJudgmentActions from './set-aside-judgment/set-aside-judgment-act
 import SetAsideJudgmentPageFactory from '../../../../pages/exui/hearing-center-admin/set-aside-judgment/set-aside-judgment-page-factory';
 import HearingScheduledActions from './hearing-scheduled-actions';
 import HearingScheduledPageFactory from '../../../../pages/exui/hearing-center-admin/hearing-scheduled/hearing-scheduled-page-factory';
+import TransferOnlineCaseActions from './transfer-online-case-actions';
+import TransferOnlineCasePageFactory from '../../../../pages/exui/hearing-center-admin/transfer-online-case/transfer-online-case-page-factory';
 
 export default class HearingCenterAdminActionsFactory extends BasePageActionsFactory {
   get caseProceedsInCasemanActions() {
@@ -46,5 +48,12 @@ export default class HearingCenterAdminActionsFactory extends BasePageActionsFac
   
   get hearingScheduledActions() {
     return new HearingScheduledActions(new HearingScheduledPageFactory(this.page), this.testData);
+  }
+
+  get transferOnlineCaseActions() {
+    return new TransferOnlineCaseActions(
+      new TransferOnlineCasePageFactory(this.page),
+      this.testData,
+    );
   }
 }
