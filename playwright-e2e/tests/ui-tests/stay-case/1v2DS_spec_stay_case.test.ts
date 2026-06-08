@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2DS spec stay case journey', { tag: '@civil-ccd-nightly' }, async () => {
+test.describe('1v2DS spec stay case journey @debug', { tag: '@civil-ccd-nightly' }, async () => {
   test('1v2DS spec stay case journey', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

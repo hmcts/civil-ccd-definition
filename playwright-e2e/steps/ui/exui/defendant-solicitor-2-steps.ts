@@ -80,6 +80,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
+
       { verifySuccessEvent: false },
     );
   }

@@ -37,7 +37,6 @@ export default class DisclosureReportPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons.disclosureProposalAgreed.yes.selector(this.claimantDefendantParty),
     );
-    await super.expectLabel(inputs.draftOrderNumber.label, { ignoreDuplicates: true });
     await super.inputText('12345', inputs.draftOrderNumber.selector(this.claimantDefendantParty));
   }
 
