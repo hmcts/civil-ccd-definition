@@ -1,9 +1,9 @@
 import BasePage from '../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../exui-page/exui-page.ts';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../models/ccd-case-data.ts';
 import { Page } from '@playwright/test';
-import partys from '../../../../../constants/partys';
+import partys from '../../../../../constants/users/partys';
 import CaseDataHelper from '../../../../../helpers/case-data-helper.ts';
 import { inputs } from '../manage-contact-information-witness/manage-contact-information-witness-content.ts';
 

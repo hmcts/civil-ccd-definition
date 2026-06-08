@@ -1,11 +1,11 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import { text, radioButtons } from './party-selection-content';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
-import partys from '../../../../../constants/partys';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import partys from '../../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class PartySelection1v2SSSpecPage extends ExuiPage(BasePage) {

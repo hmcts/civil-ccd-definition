@@ -17,7 +17,6 @@ import ManageContactInformationExpertPage from './manage-contact-information-exp
 import ManageContactInformationWitnessPage from './manage-contact-information-witness/manage-contact-information-witness-page.ts';
 import ManageContactInformationSubmitPage from './manage-contact-information-submit/manage-contact-information-submit-page.ts';
 import ManageContactInformationConfirmPage from './manage-contact-information-confirm/manage-contact-information-confirm-page.ts';
-import { Party } from '../../../../models/partys';
 
 export default class ManageContactInformationPageFactory extends BasePageFactory {
 

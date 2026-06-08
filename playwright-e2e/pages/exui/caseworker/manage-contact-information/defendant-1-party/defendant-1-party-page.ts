@@ -2,12 +2,12 @@ import BasePage from '../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import { subheadings } from './defendant-1-party-content.ts';
 import ExuiPage from '../../../exui-page/exui-page.ts';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../models/ccd-case-data.ts';
 import PartyTypeCompanyFragment from '../../../fragments/party-type/party-type-company-fragment.ts';
 import { Page } from '@playwright/test';
-import partys from '../../../../../constants/partys.ts';
+import partys from '../../../../../constants/users/partys.ts';
 import AddressFragment from '../../../fragments/address/address-fragment.ts';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types.ts';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types.ts';
 
 @AllMethodsStep()
 export default class Defendant1PartyPage extends ExuiPage(BasePage) {
