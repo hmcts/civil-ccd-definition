@@ -5,7 +5,8 @@ export const heading = 'Add timeline of events (Optional)';
 export const buttons = {
   addNew: {
     title: 'Add new',
-    selector: '.write-collection-add-item__top',
+    selector: (defendantParty: Party) =>
+      `div[id='specResponseTimelineOfEvents${defendantParty.number === 1 ? '' : defendantParty.number}'] button[type='button']`,
   },
 };
 

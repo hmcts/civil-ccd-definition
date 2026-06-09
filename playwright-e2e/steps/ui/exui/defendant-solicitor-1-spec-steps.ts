@@ -212,6 +212,44 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
+  async RespondFastTrackPartAdmit2v1() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse2v1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecPartAdmitDS1();
+        await defendantResponseSpecActions.defenceAdmittedPartRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineManualDS1();
+        await defendantResponseSpecActions.whenWillClaimBePaidRepaymentPlan();
+        await defendantResponseSpecActions.financialDetailsPurpose();
+        await defendantResponseSpecActions.defendantBankAccounts();
+        await defendantResponseSpecActions.disabilityPremiumPayments();
+        await defendantResponseSpecActions.defendantHomeOptions();
+        await defendantResponseSpecActions.defendantPartnersAndDependents();
+        await defendantResponseSpecActions.employmentDeclaration();
+        await defendantResponseSpecActions.detailsOfPayingMoneyRepaymentPlan();
+        await defendantResponseSpecActions.defendantDebts();
+        await defendantResponseSpecActions.defendantIncomeExpenses();
+        await defendantResponseSpecActions.whyDoesNotPayImmediately();
+        await defendantResponseSpecActions.repaymentPlan();
+        await defendantResponseSpecActions.dqFastTrackDS1();
+        await defendantResponseSpecActions.dqPartAdmitDS1();
+        await defendantResponseSpecActions.applicationNoDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirmDefendantResponseSpecPartAdmit();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RespondFastTrackFullAdmit2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(

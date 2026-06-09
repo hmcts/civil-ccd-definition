@@ -19,6 +19,10 @@ export default class WhenWillClaimBePaidPage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.immediately.selector);
   }
 
+  async selectRepaymentPlan() {
+    await super.clickBySelector(radioButtons.repaymentPlan.selector);
+  }
+
   async submit() {
     await super.retryClickSubmit();
   }
