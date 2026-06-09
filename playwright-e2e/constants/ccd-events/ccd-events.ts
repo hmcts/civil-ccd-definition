@@ -269,6 +269,12 @@ const ccdEvents: CCDEvents = {
     description: 'Hearing scheduled',
     order: 29,
   },
+  TRANSFER_ONLINE_CASE: {
+    id: 'TRANSFER_ONLINE_CASE',
+    name: 'Transfer online case',
+    description: 'Transfer online case',
+    order: 30,
+  },
 };
 
 export default ccdEvents;

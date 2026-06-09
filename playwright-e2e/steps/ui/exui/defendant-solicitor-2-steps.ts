@@ -65,6 +65,28 @@ export default class DefendantSolicitor2Steps extends BaseExui {
     );
   }
 
+  async RespondFastTrackFullDefence1v2DS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS2();
+        await defendantResponseActions.respondentResponseTypeDS2();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS2();
+        await defendantResponseActions.uploadDefendantResponseDS2();
+        await defendantResponseActions.dqFastTrackDS2();
+        await defendantResponseActions.dqDS2();
+        await defendantResponseActions.statementOfTruthDS2();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
   async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(

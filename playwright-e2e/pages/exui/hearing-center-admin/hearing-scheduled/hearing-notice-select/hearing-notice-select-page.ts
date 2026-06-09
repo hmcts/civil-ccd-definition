@@ -13,9 +13,14 @@ export default class HearingNoticeSelectPage extends ExuiPage(BasePage) {
       super.expectLabel(radioButtons.other.label),
     ]);
   }
-  async selectSmallClaimsHearing() {
+  async selectSmallClaims() {
     await super.clickBySelector(radioButtons.smallClaims.selector);
   }
+
+  async selectTrail() {
+    await super.clickBySelector(radioButtons.smallClaims.selector);
+  }
+
   async submit() {
     await super.retryClickSubmit();
   }
