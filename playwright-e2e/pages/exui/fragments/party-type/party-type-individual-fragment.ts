@@ -8,7 +8,6 @@ import claimantDefendantPartyTypes from '../../../../constants/users/claimant-de
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import PartyType from '../../../../constants/users/party-types';
 import DateOfBirthFragment from '../date/date-of-birth-fragment';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
@@ -41,10 +40,13 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterIndividualDetails(options: { ccdEventState?: { id: string } } = {}) {
+  async enterIndividualDetails(update?: boolean) {
 
-    const updated = options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
-    const individualData = CaseDataHelper.buildClaimantAndDefendantData(this.claimantDefendantParty, this.claimantDefendantPartyType, updated ? { updated: true } : undefined );
+    const individualData = CaseDataHelper.buildClaimantAndDefendantData(
+      this.claimantDefendantParty,
+      this.claimantDefendantPartyType,
+      update,
+    );
 
       await super.inputText(
         individualData.individualTitle,
@@ -61,13 +63,11 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
         inputs.lastName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
       );
 
-      if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
-        await this.dateOfBirthFragment.enterDate(
-          this.claimantDefendantParty,
-          this.claimantDefendantPartyType,
-          updated ? { updated: true } : undefined
-        )
-      }
+      await this.dateOfBirthFragment.enterDate(
+        this.claimantDefendantParty,
+        this.claimantDefendantPartyType,
+      )
+
 
     await super.inputText(
       individualData.partyEmail,

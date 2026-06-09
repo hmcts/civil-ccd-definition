@@ -1,17 +1,17 @@
+import partys from '../../../../../constants/users/partys';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import { Party } from '../../../../../models/users/partys';
-
-export const text = { detailsUpdate: 'Which details do you want to update?' };
 
 export const radioButtons = {
   party: {
     label: 'Select party',
     claimant1: {
-      // label: 'CLAIMANT 1: Mx Claimant1 Individual:',
-      label: (claimantParty: Party, claimantPartyType: ClaimantDefendantPartyType) =>
-      `CLAIMANT 1: ${CaseDataHelper.buildClaimantAndDefendantData(claimantParty, claimantPartyType).partyName}`,
+      label: (claimantPartyType: ClaimantDefendantPartyType) =>
+      `CLAIMANT 1: ${CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, claimantPartyType).partyName}`,
       selector: '#partyChosen_CLAIMANT_1',
+    },
+    claimant1Litigation: {
+      label: () => `CLAIMANT 1: Litigation Friend: ${CaseDataHelper.buildLitigationFriendData(partys.CLAIMANT_1_LITIGATION_FRIEND).partyName}`,
     },
     claimant1LRIndividuals: {
       label: 'CLAIMANT 1: Individuals attending for the legal representative',
@@ -37,18 +37,13 @@ export const radioButtons = {
       label: 'CLAIMANTS: Experts',
       selector: '#partyChosen_CLAIMANT_1_EXPERTS',
     },
-    claimant2: {
-      label: (claimantParty: Party, claimantPartyType: ClaimantDefendantPartyType) =>
-      `CLAIMANT 2: ${CaseDataHelper.buildClaimantAndDefendantData(claimantParty, claimantPartyType).partyName}`,
-      selector: '#partyChosen_CLAIMANT_2',
-    },
     defendant1: {
-      label: (defendantParty: Party, defendantPartyType: ClaimantDefendantPartyType) =>
-      `DEFENDANT 1: ${CaseDataHelper.buildClaimantAndDefendantData(defendantParty, defendantPartyType).partyName}`,
+      label: (defendantPartyType: ClaimantDefendantPartyType) =>
+      `DEFENDANT 1: ${CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, defendantPartyType).partyName}`,
       selector: '#partyChosen_DEFENDANT_1',
     },
     defendant1LitigationFriend: {
-      label: 'DEFENDANT 1: Litigation Friend: Defendant1LitigationFriend Litigation',
+      label: () => `DEFENDANT 1: Litigation Friend: ${CaseDataHelper.buildLitigationFriendData(partys.DEFENDANT_1_LITIGATION_FRIEND).partyName}`,
       selector: '#partyChosen_DEFENDANT_1_LITIGATION_FRIEND',
     },
     defendant1OrganisationIndividuals: {
@@ -68,12 +63,12 @@ export const radioButtons = {
       selector: '#partyChosen_DEFENDANT_1_EXPERTS',
     },
     defendant2: {
-      label: (defendantParty: Party, defendantPartyType: ClaimantDefendantPartyType) =>
-      `DEFENDANT 2: ${CaseDataHelper.buildClaimantAndDefendantData(defendantParty, defendantPartyType).partyName}`,
+      label: (defendantPartyType: ClaimantDefendantPartyType) =>
+      `DEFENDANT 2: ${CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_2, defendantPartyType).partyName}`,
       selector: '#partyChosen_DEFENDANT_2',
     },
     defendant2LitigationFriend: {
-      label: 'DEFENDANT 2: Litigation Friend: Defendant2LitigationFriend Litigation',
+      label: () => `DEFENDANT 2: Litigation Friend: ${CaseDataHelper.buildLitigationFriendData(partys.DEFENDANT_2_LITIGATION_FRIEND).partyName}`,
       selector: '#partyChosen_DEFENDANT_2_LITIGATION_FRIEND',
     },
     defendant2OrganisationIndividuals: {

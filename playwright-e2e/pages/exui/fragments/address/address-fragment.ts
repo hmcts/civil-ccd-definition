@@ -5,7 +5,6 @@ import ExuiPage from '../../exui-page/exui-page';
 import { buttons, inputs, dropdowns, links } from './address-content';
 import { Party } from '../../../../models/users/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class AddressFragment extends ExuiPage(BasePage) {
@@ -20,13 +19,11 @@ export default class AddressFragment extends ExuiPage(BasePage) {
     await super.runVerifications([super.expectLabel(inputs.postCodeInput.label)]);
   }
 
-  async enterAddressManual(options: { ccdEventState?: { id: string } } = {}) {
+  async enterAddressManual(update?: boolean) {
+    const addressData = CaseDataHelper.buildAddressData(this.party, update);
 
-    const updated = options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
-    const addressData = CaseDataHelper.buildAddressData(this.party, updated ? { updated: true } : undefined );
-
-    if (!updated) {
-    await super.clickLink(links.cannotFindAddress.title);
+    if (!update) {
+      await super.clickLink(links.cannotFindAddress.title);
     }
     await super.inputText(addressData.AddressLine1, inputs.addressLine1.selector(this.party));
     await super.inputText(addressData.AddressLine2, inputs.addressLine2.selector(this.party));
@@ -34,7 +31,7 @@ export default class AddressFragment extends ExuiPage(BasePage) {
     await super.inputText(addressData.PostTown, inputs.postTown.selector(this.party));
     await super.inputText(addressData.County, inputs.county.selector(this.party));
     await super.inputText(addressData.Country, inputs.country.selector(this.party));
-    await super.inputText(addressData.PostCode, inputs.postCode.selector(this.party));
+    await super.inputText(addressData.PostCode!, inputs.postCode.selector(this.party));
   }
 
   async findAddress(postcode: string, index: number) {

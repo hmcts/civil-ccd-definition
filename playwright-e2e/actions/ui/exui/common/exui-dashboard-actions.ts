@@ -95,38 +95,4 @@ export default class ExuiDashboardActions extends BaseApi {
     else await caseDetailsPage.verifySuccessEvent(super.ccdCaseData.id!, ccdEvent);
   }
 
-  async verifyManageContactInformationUpdateClaimant1Individual() {
-    const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
-    await caseDetailsPage.verifyContent(this.ccdCaseData);
-    await caseDetailsPage.verifyClaimDetailsContentManageContactInformationClaimant1Individual();
-  }
-
-  async verifyManageContactInformationUpdateDefendant1Company() {
-    const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
-    await caseDetailsPage.verifyContent(this.ccdCaseData);
-    await caseDetailsPage.verifyClaimDetailsContentManageContactInformationDefendant1Company();
-  }
-
-  async verifyManageContactInformationUpdateDefendant1LitigationFriend() {
-    const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
-    await caseDetailsPage.verifyContent(this.ccdCaseData);
-    await caseDetailsPage.verifyManageContactInformationUpdateDefendant1LitigationFriend();
-  }
-
-  async verifyManageContactInformationUpdateDefendant1Expert() {
-    const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
-    await caseDetailsPage.verifyContent(this.ccdCaseData);
-    await caseDetailsPage.verifyManageContactInformationUpdateDefendant1Expert();
-  }
-
-  async verifyManageContactInformationUpdateDefendant2Witness() {
-    const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
-    await caseDetailsPage.verifyContent(this.ccdCaseData);
-    await caseDetailsPage.verifyManageContactInformationUpdateDefendant2Witness();
-  }
 }

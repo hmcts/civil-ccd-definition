@@ -63,13 +63,13 @@ export default class CaseworkerSteps extends BaseExui {
     );
   }
 
-  async ManageContactInformation1v1SpecClaimant1Individual() {
+  async ManageContactInformation() {
     const { manageContactInformationActions } = this.caseworkerActionsFactory;
 
     await super.retryExuiEvent(
       async () => {
-        await manageContactInformationActions.partySelectionClaimant1Individual();
-        await manageContactInformationActions.applicantParty1Individual(ccdEvents.MANAGE_CONTACT_INFORMATION);
+        await manageContactInformationActions.partySelectionClaimant1();
+        await manageContactInformationActions.applicantParty1();
         await manageContactInformationActions.manageContactInformationSubmit();
       },
       async () => {
@@ -78,15 +78,14 @@ export default class CaseworkerSteps extends BaseExui {
       ccdEvents.MANAGE_CONTACT_INFORMATION,
       { verifySuccessEvent: false },
     );
-    await this.exuiDashboardActions.verifyManageContactInformationUpdateClaimant1Individual();
   }
 
-  async ManageContactInformation1v1SpecDefendant1Company() {
+  async ManageContactInformationSpec() {
     const { manageContactInformationActions } = this.caseworkerActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await manageContactInformationActions.partySelectionDefendant1Company();
-        await manageContactInformationActions.defendantParty1Company(ccdEvents.MANAGE_CONTACT_INFORMATION);
+        await manageContactInformationActions.partySelectionSpecDefendant1();
+        await manageContactInformationActions.defendantParty1();
         await manageContactInformationActions.manageContactInformationSubmit();
       },
       async () => {
@@ -95,58 +94,6 @@ export default class CaseworkerSteps extends BaseExui {
       ccdEvents.MANAGE_CONTACT_INFORMATION,
       { verifySuccessEvent: false },
     );
-    await this.exuiDashboardActions.verifyManageContactInformationUpdateDefendant1Company();
-  }
-
-  async ManageContactInformation1v2DSDefendant1LitigationFriend() {
-    const { manageContactInformationActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await manageContactInformationActions.partySelectionDefendant1LitigationFriend();
-        await manageContactInformationActions.defendantParty1LitigationFriend(ccdEvents.MANAGE_CONTACT_INFORMATION);
-        await manageContactInformationActions.manageContactInformationSubmit();
-      },
-      async () => {
-        await manageContactInformationActions.manageContactInformationConfirm();
-      },
-      ccdEvents.MANAGE_CONTACT_INFORMATION,
-      { verifySuccessEvent: false },
-    );
-    await this.exuiDashboardActions.verifyManageContactInformationUpdateDefendant1LitigationFriend();
-  }
-
-  async ManageContactInformation1v2DSDefendant2Witness() {
-    const { manageContactInformationActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await manageContactInformationActions.partySelectionDefendant2Witness();
-        await manageContactInformationActions.defendantParty2Witness();
-        await manageContactInformationActions.manageContactInformationSubmit();
-      },
-      async () => {
-        await manageContactInformationActions.manageContactInformationConfirm();
-      },
-      ccdEvents.MANAGE_CONTACT_INFORMATION,
-      { verifySuccessEvent: false },
-    );
-    await this.exuiDashboardActions.verifyManageContactInformationUpdateDefendant2Witness();
-  }
-
-  async ManageContactInformation1v2DSDefendant1Expert() {
-    const { manageContactInformationActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await manageContactInformationActions.partySelectionDefendant1Expert();
-        await manageContactInformationActions.defendantParty1Expert();
-        await manageContactInformationActions.manageContactInformationSubmit();
-      },
-      async () => {
-        await manageContactInformationActions.manageContactInformationConfirm();
-      },
-      ccdEvents.MANAGE_CONTACT_INFORMATION,
-      { verifySuccessEvent: false },
-    );
-    await this.exuiDashboardActions.verifyManageContactInformationUpdateDefendant1Expert();
   }
 
   async MediationUnsuccessful() {

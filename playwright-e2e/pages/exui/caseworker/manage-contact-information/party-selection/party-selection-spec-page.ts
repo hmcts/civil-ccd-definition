@@ -3,9 +3,8 @@ import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
-import { text, radioButtons } from './party-selection-content';
+import { radioButtons } from './party-selection-content';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import partys from '../../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class PartySelectionSpecPage extends ExuiPage(BasePage) {
@@ -18,15 +17,12 @@ export default class PartySelectionSpecPage extends ExuiPage(BasePage) {
 
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(text.detailsUpdate),
 
-      super.expectLabel(radioButtons.party.claimant1.label(partys.CLAIMANT_1, claimant1PartyType)),
+      super.expectLabel(radioButtons.party.claimant1.label(claimant1PartyType)),
       super.expectLabel(radioButtons.party.claimant1LRIndividuals.label),
       super.expectLabel(radioButtons.party.claimant1Witnesses.label),
       super.expectLabel(radioButtons.party.claimant1Experts.label),
-
-      super.expectLabel(radioButtons.party.defendant1.label(partys.DEFENDANT_1, defendant1PartyType)),
-      super.expectLabel(radioButtons.party.defendant1OrganisationIndividuals.label),
+      super.expectLabel(radioButtons.party.defendant1.label(defendant1PartyType)),
       super.expectLabel(radioButtons.party.defendant1LRIndividuals.label),
       super.expectLabel(radioButtons.party.defendant1Witnesses.label),
       super.expectLabel(radioButtons.party.defendant1Experts.label)

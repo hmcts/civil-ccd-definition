@@ -26,10 +26,11 @@ export default class PartyTypeOrganisationFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterOrganisationDetails() {
+  async enterOrganisationDetails(update?: boolean) {
     const organisationData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
       this.partyType,
+      update,
     );
     await super.inputText(
       organisationData.organisationName,

@@ -7,7 +7,6 @@ import { radioButtons, buttons, inputs, links } from './litigation-friend-conten
 import filePaths from '../../../../config/file-paths';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import partys from '../../../../constants/users/partys';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class LitigationFriendFragment extends ExuiPage(BasePage) {
@@ -30,15 +29,10 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   await super.runVerifications(verifications, { runAxe: false });
 }
 
-  async enterLitigationFriendDetails( options: { ccdEventState?: { id: string } } = {}
-  ) {
-
-    const isManageContactInformation =
-      options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
-
-    const claimantLitigationFriendData = isManageContactInformation
-      ? CaseDataHelper.buildLitigationFriendData(this.litigationFriendParty, { updated: true })
-      : CaseDataHelper.buildLitigationFriendData(this.litigationFriendParty);
+  async enterLitigationFriendDetails() {
+    const claimantLitigationFriendData = CaseDataHelper.buildLitigationFriendData(
+      this.litigationFriendParty,
+    );
 
     await super.inputText(
       claimantLitigationFriendData.firstName,
@@ -98,14 +92,8 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async updateAddress( options: { ccdEventState?: { id: string } } = {}) {
-
-      const isManageContactInformation =
-      options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
-
-      const addressData = isManageContactInformation
-      ? CaseDataHelper.buildAddressData(this.litigationFriendParty, { updated: true })
-      : CaseDataHelper.buildAddressData(this.litigationFriendParty);
+  async updateAddress() {
+    const addressData = CaseDataHelper.buildAddressData(this.litigationFriendParty);
 
     await super.inputText(
       addressData.AddressLine1,

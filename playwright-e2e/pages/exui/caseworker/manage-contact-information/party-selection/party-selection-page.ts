@@ -3,9 +3,8 @@ import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
-import { text, radioButtons } from './party-selection-content';
+import { radioButtons } from './party-selection-content';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import partys from '../../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class PartySelectionPage extends ExuiPage(BasePage) {
@@ -16,13 +15,17 @@ export default class PartySelectionPage extends ExuiPage(BasePage) {
 
   async verifyContent(ccdCaseData: CCDCaseData, claimant1PartyType: ClaimantDefendantPartyType, defendant1PartyType: ClaimantDefendantPartyType) {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),// Manage Contact Information // 1769-5957-6997-4443 // Claimant1 Individual v Defendant1 Company
-
-      super.expectText(text.detailsUpdate), // Which details do you want to update?
-      super.expectLabel(radioButtons.party.claimant1.label(partys.CLAIMANT_1, claimant1PartyType)), // CLAIMANT 1: Mx Claimant1 Individual
-      super.expectLabel(radioButtons.party.claimant1LRIndividuals.label), // CLAIMANT 1: Individuals attending for the legal representative
-      super.expectLabel(radioButtons.party.defendant1.label(partys.DEFENDANT_1, defendant1PartyType)), // DEFENDANT 1: Mx Defendant1 Company
-      super.expectLabel(radioButtons.party.defendant1LRIndividuals.label), // DEFENDANT 1: Individuals attending for the legal representative
+      super.verifyHeadings(ccdCaseData),
+      super.expectLabel(radioButtons.party.claimant1.label(claimant1PartyType)),
+      super.expectLabel(radioButtons.party.claimant1Litigation.label()),
+      super.expectLabel(radioButtons.party.claimant1LRIndividuals.label),
+      super.expectLabel(radioButtons.party.claimant1Witnesses.label),
+      super.expectLabel(radioButtons.party.claimant1Experts.label),
+      super.expectLabel(radioButtons.party.defendant1.label(defendant1PartyType)),
+      super.expectLabel(radioButtons.party.defendant1LitigationFriend.label()),
+      super.expectLabel(radioButtons.party.defendant1LRIndividuals.label),
+      super.expectLabel(radioButtons.party.defendant1Witnesses.label),
+      super.expectLabel(radioButtons.party.defendant1Experts.label),
     ]);
   }
 

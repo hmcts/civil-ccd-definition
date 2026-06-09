@@ -166,8 +166,8 @@ static getPartyDateOfBirthUpdated(party: Party) {
     }
   }
 
-  static buildAddressData(party: Party, options?: { updated?: boolean }) {
-    const suffix = options?.updated ? 'Updated' : '';
+  static buildAddressData(party: Party, update = false) {
+    const suffix = update ? '-updated' : '';
 
     return {
       AddressLine1: `Flat 12 - ${party.key}${suffix}`,
@@ -183,16 +183,15 @@ static getPartyDateOfBirthUpdated(party: Party) {
   static buildClaimantAndDefendantData(
     claimantDefendantParty: Party,
     claimantDefendantPartyType: ClaimantDefendantPartyType,
-    options?: { updated?: boolean },
+    update = false,
   ): any {
-    const updated = options?.updated ?? false;
-    const suffix = updated ? 'Updated' : '';
+    const suffix = update ? '-updated' : '';
 
     const commonPartyData = {
       type: claimantDefendantPartyType.type,
-      partyEmail: `${claimantDefendantParty.key}@${claimantDefendantPartyType.key}${updated ? '-updated' : ''}.com`,
+      partyEmail: `${claimantDefendantParty.key}@${claimantDefendantPartyType.key}${suffix}.com`,
       partyPhone: this.getPartyPhoneNumber(claimantDefendantParty),
-      primaryAddress: this.buildAddressData(claimantDefendantParty)
+      primaryAddress: this.buildAddressData(claimantDefendantParty, update),
     };
 
     const partyKey = StringHelper.capitalise(claimantDefendantParty.key);
@@ -213,7 +212,7 @@ static getPartyDateOfBirthUpdated(party: Party) {
         return {
           ...commonPartyData,
           companyName: `${partyKey}${suffix} ${partyTypeKey}${suffix}`,
-          partyName: `${partyKey} ${partyTypeKey}`,
+          partyName: `${partyKey}${suffix} ${partyTypeKey}${suffix}`,
         };
 
       case claimantDefendantPartyTypes.SOLE_TRADER:
@@ -224,13 +223,13 @@ static getPartyDateOfBirthUpdated(party: Party) {
           soleTraderLastName: `${partyTypeKey}${suffix}`,
           soleTraderTradingAs: `${partyKey} Trade${suffix}`,
           soleTraderDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
-          partyName: `Mx ${partyKey} ${partyTypeKey}`,
+          partyName: `Mx ${partyKey}${suffix} ${partyTypeKey}${suffix}`,
         };
       case claimantDefendantPartyTypes.ORGANISATION:
         return {
           ...commonPartyData,
-          organisationName: `${partyKey} ${partyTypeKey}`,
-          partyName: `${partyKey} ${partyTypeKey}`,
+          organisationName: `${partyKey}${suffix} ${partyTypeKey}${suffix}`,
+          partyName: `${partyKey}${suffix} ${partyTypeKey}${suffix}`,
         };
     }
   }
@@ -246,38 +245,32 @@ static getPartyDateOfBirthUpdated(party: Party) {
     };
   }
 
-  static buildLitigationFriendData(
-    litigationFriendParty: Party,
-    options?: { updated?: boolean },
-  ) {
-    const updated = options?.updated ?? false;
-    const suffix = updated ? 'Updated' : '';
+  static buildLitigationFriendData(litigationFriendParty: Party, update = false) {
+    const suffix = update ? '-updated' : '';
 
     return {
-      firstName: StringHelper.capitalise(`${litigationFriendParty.key}${suffix}`),
+      firstName: `${StringHelper.capitalise(litigationFriendParty.key)}${suffix}`,
       lastName: `Litigation${suffix}`,
-      emailAddress: updated
-        ? `${litigationFriendParty.key}@litigants-updated.com`
-        : `${litigationFriendParty.key}@litigants.com`,
+      emailAddress: `${litigationFriendParty.key}@litigants${suffix}.com`,
       phoneNumber: this.getPartyPhoneNumber(litigationFriendParty),
       hasSameAddressAsLitigant: 'No',
-      primaryAddress: this.buildAddressData(litigationFriendParty, { updated }),
-      partyName: `${StringHelper.capitalise(litigationFriendParty.key)} Litigation`,
+      primaryAddress: this.buildAddressData(litigationFriendParty, update),
+      partyName: `${StringHelper.capitalise(litigationFriendParty.key)}${suffix} Litigation${suffix}`,
     };
   }
 
-  static buildExpertData(expertParty: Party, options?: { updated?: boolean }) {
-    const updated = options?.updated ?? false;
-    const suffix = updated ? 'Updated' : '';
+  static buildExpertData(expertParty: Party, update = false) {
+    const suffix = update ? '-updated' : '';
+
     return {
       firstName: `${StringHelper.capitalise(expertParty.key)}${suffix}`,
       lastName: `Expert${suffix}`,
-      emailAddress: `${expertParty.key}@experts${updated ? '-updated' : ''}.com`,
+      emailAddress: `${expertParty.key}@experts${suffix}.com`,
       phoneNumber: this.getPartyPhoneNumber(expertParty),
       fieldOfExpertise: `Field of expertise - ${expertParty.key}${suffix}`,
       whyRequired: `Reason required - ${expertParty.key}`,
       estimatedCost: this.getExpertEstimatedCost(expertParty),
-      partyName: `${StringHelper.capitalise(expertParty.key)} Expert`,
+      partyName: `${StringHelper.capitalise(expertParty.key)}${suffix} Expert${suffix}`,
     };
   }
 
@@ -290,16 +283,16 @@ static getPartyDateOfBirthUpdated(party: Party) {
     };
   }
 
-  static buildWitnessData(witnessParty: Party, options?: { updated?: boolean }) {
-    const updated = options?.updated ?? false;
-    const suffix = updated ? 'Updated' : '';
+  static buildWitnessData(witnessParty: Party, update = false) {
+    const suffix = update ? '-updated' : '';
+
     return {
       firstName: `${StringHelper.capitalise(witnessParty.key)}${suffix}`,
       lastName: `Witness${suffix}`,
       phoneNumber: this.getPartyPhoneNumber(witnessParty),
-      emailAddress: `${witnessParty.key}@witnesses${updated ? '-updated' : ''}.com`,
+      emailAddress: `${witnessParty.key}@witnesses${suffix}.com`,
       reasonForWitness: `Reason for witness - ${witnessParty.key}`,
-      partyName: `${StringHelper.capitalise(witnessParty.key)} Witness`,
+      partyName: `${StringHelper.capitalise(witnessParty.key)}${suffix} Witness${suffix}`,
     };
   }
 

@@ -6,7 +6,6 @@ import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './party-type-content';
 import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
 
 @AllMethodsStep()
 export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
@@ -26,10 +25,12 @@ export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterCompanyDetails(options: { ccdEventState?: { id: string } } = {}) {
-
-    const updated = options.ccdEventState?.id === ccdEvents.MANAGE_CONTACT_INFORMATION.id;
-    const companyData = CaseDataHelper.buildClaimantAndDefendantData(this.claimantDefendantParty, claimantDefendantPartyTypes.COMPANY, updated ? { updated: true } : undefined );
+  async enterCompanyDetails(update?: boolean) {
+    const companyData = CaseDataHelper.buildClaimantAndDefendantData(
+      this.claimantDefendantParty,
+      claimantDefendantPartyTypes.COMPANY,
+      update
+    );
 
     await super.inputText(
       companyData.companyName,

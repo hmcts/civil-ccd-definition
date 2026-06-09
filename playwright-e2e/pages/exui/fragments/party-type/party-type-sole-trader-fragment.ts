@@ -41,10 +41,11 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterSoleTraderDetails() {
+  async enterSoleTraderDetails(update?: boolean) {
     const soleTraderData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
       this.claimantDefendantPartyType,
+      update
     );
     await super.inputText(
       soleTraderData.soleTraderTitle,
