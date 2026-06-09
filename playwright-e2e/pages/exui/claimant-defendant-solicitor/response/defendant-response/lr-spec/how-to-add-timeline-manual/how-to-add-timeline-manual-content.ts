@@ -6,7 +6,7 @@ export const buttons = {
   addNew: {
     title: 'Add new',
     selector: (defendantParty: Party) =>
-      `div[id='specResponseTimelineOfEvents${defendantParty.number === 1 ? '' : defendantParty.number}'] button[type='button']`,
+      `div[id='specResponseTimelineOfEvents${defendantParty.number === 1 ? '' : defendantParty.number}'] button[class='button write-collection-add-item__top']`,
   },
 };
 

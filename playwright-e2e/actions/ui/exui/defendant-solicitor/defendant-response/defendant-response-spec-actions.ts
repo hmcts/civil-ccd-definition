@@ -614,9 +614,8 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     const { repaymentPlanPage } = this.defendantResponsePageFactory;
     await repaymentPlanPage.verifyContent(this.ccdCaseData);
     await repaymentPlanPage.enterPaymentAmount();
-    await repaymentPlanPage.selectMonthlyFrequency();
     await repaymentPlanPage.enterFirstRepaymentDate();
-    await repaymentPlanPage.submit();
+    await repaymentPlanPage.selectMonthlyFrequency();
     await repaymentPlanPage.submit();
   }
 

@@ -9,8 +9,8 @@ export default class DisabilityPremiumPaymentsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(radioButtons.disabilityPremium.no.selector),
-      super.expectLabel(radioButtons.disabilityPremium.yes.selector),
+      super.expectSelector(radioButtons.disabilityPremium.no.selector),
+      super.expectSelector(radioButtons.disabilityPremium.yes.selector),
     ]);
   }
 
