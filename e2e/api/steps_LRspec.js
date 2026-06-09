@@ -92,6 +92,7 @@ const data = {
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario),
   EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario, claimTrack) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario, claimTrack),
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario, claimTrack) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario, claimTrack),
+  EVIDENCE_UPLOAD_RESPONDENT_PART36: (mpScenario, claimTrack) => evidenceUploadRespondent.createRespondentFastClaimsPart36Upload(mpScenario, claimTrack),
   REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived(),
   SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
@@ -1339,6 +1340,20 @@ module.exports = {
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
       console.log('evidence upload fast claim respondent for case id ' + caseId);
       let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario, caseData.caseProgAllocatedTrack);
+      await validateEventPagesMinti(RespondentEvidenceFastClaimData);
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  part36UploadRespondent: async (user, multipartyScenario) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
+    mpScenario = multipartyScenario;
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
+      console.log('evidence upload fast claim respondent for case id ' + caseId);
+      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_PART36(mpScenario, caseData.caseProgAllocatedTrack);
       await validateEventPagesMinti(RespondentEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);

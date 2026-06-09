@@ -432,5 +432,179 @@ module.exports = {
         caseDocumentUploadDate: '2024-08-07T08:27:11.018Z'
       }
     };
+  },
+
+  createApplicantFastClaimsPart36Upload: (mpScenario, claimTrack) => {
+    console.log('Applicant fast claims1 part 36');
+    switch (mpScenario) {
+      case 'TWO_V_ONE': {
+        return {
+          valid: {
+            EvidenceUpload: {
+              caseProgAllocatedTrack: 'FAST_CLAIM'
+            },
+            SelectUploadOptions: {
+              caseTypeFlag: 'do_not_show',
+              evidenceUploadOptions: {
+                list_items: [
+                  selectedOptionApp,
+                  listElement('Claimant 1: Sir John Doe'),
+                  listElement('Claimant 2: Dr Foo Bar')
+                ],
+                value: selectedOptionApp
+              }
+            },
+            DocumentSelectionFastTrack: {
+              disclosureSelectionEvidence: ['DISCLOSURE_LIST'],
+              witnessSelectionEvidence: ['WITNESS_SUMMARY'],
+              expertSelectionEvidence: ['JOINT_STATEMENT'],
+              trialSelectionEvidence: ['DOCUMENTARY']
+            },
+            DocumentUpload: {
+              documentDisclosureList: [{
+                value: {
+                  documentUpload: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentWitnessSummary: [{
+                value: {
+                  witnessOptionName: 'test name',
+                  witnessOptionUploadDate: '2023-02-06',
+                  witnessOptionDocument: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentJointStatement: [{
+                value: {
+                  expertOptionName: 'test name',
+                  expertOptionExpertises: 'expertise',
+                  expertOptionUploadDate: '2023-02-06',
+                  expertDocument: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentEvidenceForTrial: [{
+                value: {
+                  typeOfDocument: 'images etc',
+                  documentIssuedDate: '2023-02-06',
+                  documentUpload: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              ...(claimTrack === 'INTERMEDIATE_CLAIM' || claimTrack === 'MULTI_CLAIM'? {
+                bundleEvidence: [{
+                  value: {
+                    bundleName: 'applicant bundle for trial',
+                    documentIssuedDate: date(30),
+                    documentUpload: {
+                      document_url: '${TEST_DOCUMENT_URL}',
+                      document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                      document_filename: '${TEST_DOCUMENT_FILENAME}'
+                    },
+                    createdDatetime: '2023-02-06T13:11:52.466Z'
+                  }
+                }]
+              } : {}),
+            }
+          }
+        };
+      }
+      default:
+      {
+        return {
+          valid: {
+            EvidenceUpload: {
+              caseProgAllocatedTrack: 'FAST_CLAIM'
+            },
+            DocumentSelectionFastTrack: {
+              caseTypeFlag: 'do_not_show',
+              disclosureSelectionEvidence: ['DISCLOSURE_LIST'],
+              witnessSelectionEvidence: ['WITNESS_SUMMARY'],
+              expertSelectionEvidence: ['JOINT_STATEMENT'],
+              trialSelectionEvidence: ['DOCUMENTARY'],
+              withoutPrejudiceSelectionEvidence: ['PART36_REJECTION']
+            },
+            DocumentUpload: {
+              documentDisclosureList: [{
+                value: {
+                  documentUpload: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentWitnessSummary: [{
+                value: {
+                  witnessOptionName: 'test name',
+                  witnessOptionUploadDate: '2023-02-06',
+                  witnessOptionDocument: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentJointStatement: [{
+                value: {
+                  expertOptionName: 'test name',
+                  expertOptionExpertises: 'expertise',
+                  expertOptionUploadDate: '2023-02-06',
+                  expertDocument: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentEvidenceForTrial: [{
+                value: {
+                  typeOfDocument: 'images etc',
+                  documentIssuedDate: '2023-02-06',
+                  documentUpload: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentPart36Rejection: [{
+                value: {
+                  documentDescription: 'part36Doc',
+                  document: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }]
+            }
+          }
+        };
+      }
+    }
   }
+
 };
