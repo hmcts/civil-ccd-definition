@@ -853,6 +853,33 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "TrialHearingDisclosureOfDocumentsDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialHearingDisclosureOfDocumentsDJ",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "TrialHearingDisclosureOfDocumentsDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialHearingDisclosureOfDocumentsDJ",
+    "ListElementCode": "input5",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "TrialHearingDisclosureOfDocumentsDJ",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "trialHearingDisclosureOfDocumentsDJ",
+    "ListElementCode": "date3",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
     "ID": "TrialHousingDisrepair",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "trialHousingDisrepair",
