@@ -1,7 +1,6 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { buttons, heading, radioButtons, subheadings, inputs } from './hearing-spec-content.ts';
 import { Party } from '../../../../../../../models/users/partys.ts';
