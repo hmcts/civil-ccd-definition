@@ -10,7 +10,7 @@ const claimantType = 'Company';
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 1v1 - General Application Journey').tag('@civil-ccd-nightly @ui-ga-make-decision');
+Feature('GA CCD 1v1 - General Application Journey').tag('@ui-ga-make-decision');
 
 Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({ I, api_ga }) => {
   civilCaseReference = await api_ga.createSpecifiedClaim(config.applicantSolicitorUser, mpScenario, claimantType);
@@ -47,7 +47,7 @@ Scenario('GA for 1v1 Specified Claim- Dismissal order journey', async ({ I, api_
 
   user = config.judgeUser2WithRegionId4;
   await I.login(user);
- 
+
   await I.judgeMakeDecision(
     'makeAnOrder',
     'dismissTheApplication',
