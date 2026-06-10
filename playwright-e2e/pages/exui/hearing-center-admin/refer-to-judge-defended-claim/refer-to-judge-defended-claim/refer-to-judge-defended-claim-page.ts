@@ -2,7 +2,7 @@ import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
-import { heading, radioButtons } from './refer-to-judge-defended-claim-content';
+import { radioButtons } from './refer-to-judge-defended-claim-content';
 
 @AllMethodsStep()
 export default class ReferJudgeDefenceReceivedPage extends ExuiPage(BasePage) {

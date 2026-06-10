@@ -1,6 +1,5 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
-import partys from '../../../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import { Party } from '../../../../../../../models/users/partys.ts';
