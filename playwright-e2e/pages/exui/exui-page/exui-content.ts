@@ -44,7 +44,7 @@ export const getResponseSealedFormDocName = (ccdCaseData: CCDCaseData) =>
 
 export const getFormattedCaseId = (caseId: number) => {
   const groups = caseId.toString().match(/.{1,4}/g);
-  const formattedString = '#' + groups.join('-');
+  const formattedString = '#' + groups?.join('-');
   return formattedString;
 };
 
