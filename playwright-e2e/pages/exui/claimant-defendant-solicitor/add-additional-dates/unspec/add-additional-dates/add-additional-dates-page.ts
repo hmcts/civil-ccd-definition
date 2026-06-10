@@ -20,7 +20,7 @@ export default class AddAdditionalDatesPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.unavailableDates),
-      super.expectButton('Add new'),
+      super.expectButton(buttons.addNew.label),
     ]);
   }
 

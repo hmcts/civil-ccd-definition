@@ -1,1 +1,1 @@
-export const heading = 'Availability updated';
+export const confirmationHeading = 'Availability updated';

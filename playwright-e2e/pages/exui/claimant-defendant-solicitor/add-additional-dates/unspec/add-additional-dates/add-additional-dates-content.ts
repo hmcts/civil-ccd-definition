@@ -5,6 +5,7 @@ export const subheadings = {
 
 export const buttons = {
   addNew: {
+    label: 'Add new',
     selector:
       "div[id='additionalUnavailableDates'] button[class='button write-collection-add-item__top']",
   },

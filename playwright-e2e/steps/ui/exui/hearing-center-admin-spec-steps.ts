@@ -107,36 +107,6 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
     );
   }
 
-  async ManageStayRequestUpdate() {
-    const { manageStayActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await manageStayActions.manageStayOptionsRequestUpdate();
-        await manageStayActions.manageStayRequestUpdate();
-        await manageStayActions.submitManageStay();
-      },
-      async () => {
-        await manageStayActions.confirmManageStayRequestUpdate();
-      },
-      ccdEvents.MANAGE_STAY,
-    );
-  }
-
-  async ManageStayLiftStayJudicialReferralInMediation() {
-    const { manageStayActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await manageStayActions.manageStayOptionsLiftStay();
-        await manageStayActions.manageStayLiftStayJudicialReferralInMediation();
-        await manageStayActions.submitManageStay();
-      },
-      async () => {
-        await manageStayActions.confirmManageStayLiftStay();
-      },
-      ccdEvents.MANAGE_STAY,
-    );
-  }
-
   async RequestReferJudgeDefenceReceived() {
     const { referJudgeDefenceReceivedActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(

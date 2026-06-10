@@ -121,7 +121,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
     );
   }
 
-  async ManageStayLiftStayJudicialReferralInMediation() {
+  async ManageStayLiftStay() {
     const { manageStayActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
       async () => {

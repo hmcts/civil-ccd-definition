@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures';
 
 test.describe(
-  '1v1 spec set aside judgment made in error @debug',
+  '1v1 spec set aside judgment made in error',
   { tag: '@civil-ccd-nightly' },
   () => {
     test('1v1 spec default judgment then set aside judgment made in error and take case offline', async ({
