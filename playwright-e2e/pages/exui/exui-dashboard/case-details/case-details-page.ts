@@ -19,7 +19,11 @@ import {
   dropdowns,
   successBannerText,
   tabs,
+  labels
 } from './case-details-content';
+import CaseDataHelper from '../../../../helpers/case-data-helper';
+import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
+import partys from '../../../../constants/users/partys';
 
 const classKey = 'CaseDetailsPage';
 
@@ -53,7 +57,9 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async verifyClaimDetailsContent(caseData: CCDCaseData) {
     await super.clickByText(tabs.claimDetails.title);
-    await super.runVerifications([], { useAxeCache: false });
+    await super.runVerifications([
+      super.verifyHeadings(caseData),
+    ], { useAxeCache: false });
   }
 
   async verifyClaimDocumentsContent(caseData: CCDCaseData) {
