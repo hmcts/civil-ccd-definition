@@ -529,80 +529,52 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await whenWillClaimBePaidPage.submit();
   }
 
-  @Step(classKey)
-  async financialDetailsPurpose() {
+  async financialDetails() {
     const { financialDetailsPurposePage } = this.defendantResponsePageFactory;
     await financialDetailsPurposePage.verifyContent(this.ccdCaseData);
     await financialDetailsPurposePage.submit();
-  }
 
-  @Step(classKey)
-  async defendantBankAccounts() {
     const { defendantBankAccountsPage } = this.defendantResponsePageFactory;
     await defendantBankAccountsPage.verifyContent(this.ccdCaseData);
     await defendantBankAccountsPage.submit();
-  }
 
-  @Step(classKey)
-  async disabilityPremiumPayments() {
     const { disabilityPremiumPaymentsPage } = this.defendantResponsePageFactory;
     await disabilityPremiumPaymentsPage.verifyContent(this.ccdCaseData);
     await disabilityPremiumPaymentsPage.selectNo();
     await disabilityPremiumPaymentsPage.submit();
-  }
 
-  @Step(classKey)
-  async defendantHomeOptions() {
     const { defendantHomeOptionsPage } = this.defendantResponsePageFactory;
     await defendantHomeOptionsPage.verifyContent(this.ccdCaseData);
     await defendantHomeOptionsPage.selectOwnedHome();
     await defendantHomeOptionsPage.submit();
-  }
-
-  @Step(classKey)
-  async defendantPartnersAndDependents() {
+    
     const { defendantPartnersAndDependentsPage } = this.defendantResponsePageFactory;
     await defendantPartnersAndDependentsPage.verifyContent(this.ccdCaseData);
     await defendantPartnersAndDependentsPage.enterDetails();
     await defendantPartnersAndDependentsPage.submit();
-  }
 
-  @Step(classKey)
-  async employmentDeclaration() {
     const { employmentDeclarationPage } = this.defendantResponsePageFactory;
     await employmentDeclarationPage.verifyContent(this.ccdCaseData);
     await employmentDeclarationPage.selectNotEmployed();
     await employmentDeclarationPage.selectUnemployed();
     await employmentDeclarationPage.enterUnemploymentDuration();
     await employmentDeclarationPage.submit();
-  }
 
-  @Step(classKey)
-  async detailsOfPayingMoneyRepaymentPlan() {
     const { detailsOfPayingMoneyRepaymentPlanPage } = this.defendantResponsePageFactory;
     await detailsOfPayingMoneyRepaymentPlanPage.verifyContent(this.ccdCaseData);
     await detailsOfPayingMoneyRepaymentPlanPage.selectNo();
     await detailsOfPayingMoneyRepaymentPlanPage.submit();
-  }
 
-  @Step(classKey)
-  async defendantDebts() {
     const { defendantDebtsPage } = this.defendantResponsePageFactory;
     await defendantDebtsPage.verifyContent(this.ccdCaseData);
     await defendantDebtsPage.selectNo();
     await defendantDebtsPage.submit();
-  }
 
-  @Step(classKey)
-  async defendantIncomeExpenses() {
     const { defendantIncomeExpensesPage } = this.defendantResponsePageFactory;
     await defendantIncomeExpensesPage.verifyContent(this.ccdCaseData);
     await defendantIncomeExpensesPage.selectNo();
     await defendantIncomeExpensesPage.submit();
-  }
 
-  @Step(classKey)
-  async whyDoesNotPayImmediately() {
     const { whyDoesNotPayImmediatelyPage } = this.defendantResponsePageFactory;
     await whyDoesNotPayImmediatelyPage.verifyContent(this.ccdCaseData);
     await whyDoesNotPayImmediatelyPage.enterReasons();
@@ -617,44 +589,6 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await repaymentPlanPage.enterFirstRepaymentDate();
     await repaymentPlanPage.selectMonthlyFrequency();
     await repaymentPlanPage.submit();
-  }
-
-  @Step(classKey)
-  async dqPartAdmitDS1() {
-    const { expertsDS1Page } = this.defendantResponsePageFactory;
-    await expertsDS1Page.verifyContent(this.ccdCaseData);
-    await expertsDS1Page.useExperts();
-    await expertsDS1Page.addNewExpert();
-    await expertsDS1Page.enterExpertDetails();
-    await expertsDS1Page.submit();
-
-    const { witnessesSpecDS1Page } = this.defendantResponsePageFactory;
-    await witnessesSpecDS1Page.verifyContent(this.ccdCaseData);
-    await witnessesSpecDS1Page.selectNoWitnesses();
-    await witnessesSpecDS1Page.submit();
-
-    await this.languageDS1();
-
-    const { hearingLRSpecDS1Page } = this.defendantResponsePageFactory;
-    await hearingLRSpecDS1Page.verifyContent(this.ccdCaseData);
-    await hearingLRSpecDS1Page.selectNoAvailabilityRequired();
-    await hearingLRSpecDS1Page.submit();
-
-    const { requestedCourtLRSpecDS1Page } = this.defendantResponsePageFactory;
-    await requestedCourtLRSpecDS1Page.verifyContent(this.ccdCaseData);
-    await requestedCourtLRSpecDS1Page.selectCourtLocation();
-    await requestedCourtLRSpecDS1Page.selectYesRemoteHearing();
-    await requestedCourtLRSpecDS1Page.submit();
-
-    const { hearingSupportDS1Page } = this.defendantResponsePageFactory;
-    await hearingSupportDS1Page.verifyContent(this.ccdCaseData);
-    await hearingSupportDS1Page.selectNo();
-    await hearingSupportDS1Page.submit();
-
-    const { vulnerabilityQuestionsSpecDS1Page } = this.defendantResponsePageFactory;
-    await vulnerabilityQuestionsSpecDS1Page.verifyContent(this.ccdCaseData);
-    await vulnerabilityQuestionsSpecDS1Page.selectNo();
-    await vulnerabilityQuestionsSpecDS1Page.submit();
   }
 
   @Step(classKey)

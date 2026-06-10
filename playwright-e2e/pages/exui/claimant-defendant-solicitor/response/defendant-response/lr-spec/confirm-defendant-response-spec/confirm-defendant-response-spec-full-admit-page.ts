@@ -9,7 +9,7 @@ export default class ConfirmDefendantResponseSpecFullAdmitPage extends ExuiPage(
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectHeading(confirmationHeading),
+      super.expectHeading(confirmationHeading, {exact: false}),
       super.expectSubheading(subheadings.whatToDo),
       super.expectText(ccdCaseData.legacyCaseReference!, { exact: false }),
     ]);

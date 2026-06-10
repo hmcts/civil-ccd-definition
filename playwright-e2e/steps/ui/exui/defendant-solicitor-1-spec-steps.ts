@@ -225,20 +225,11 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineManualDS1();
         await defendantResponseSpecActions.whenWillClaimBePaidRepaymentPlan();
-        await defendantResponseSpecActions.financialDetailsPurpose();
-        await defendantResponseSpecActions.defendantBankAccounts();
-        await defendantResponseSpecActions.disabilityPremiumPayments();
-        await defendantResponseSpecActions.defendantHomeOptions();
-        await defendantResponseSpecActions.defendantPartnersAndDependents();
-        await defendantResponseSpecActions.employmentDeclaration();
-        await defendantResponseSpecActions.detailsOfPayingMoneyRepaymentPlan();
-        await defendantResponseSpecActions.defendantDebts();
-        await defendantResponseSpecActions.defendantIncomeExpenses();
-        await defendantResponseSpecActions.whyDoesNotPayImmediately();
+        await defendantResponseSpecActions.financialDetails();
         await defendantResponseSpecActions.repaymentPlan();
         await defendantResponseSpecActions.dqFastTrackDS1();
-        await defendantResponseSpecActions.dqPartAdmitDS1();
-        await defendantResponseSpecActions.applicationNoDS1();
+        await defendantResponseSpecActions.dqDS1();
+        await defendantResponseSpecActions.applicationDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
