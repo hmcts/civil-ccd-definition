@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import { confirmationHeading, paragraphs } from './confirm-create-claim-LIP-content.ts';
+import { confirmationHeading } from './confirm-create-claim-LIP-content.ts';
 
 @AllMethodsStep()
 export default class ConfirmCreateClaimLIPPage extends ExuiPage(BasePage) {

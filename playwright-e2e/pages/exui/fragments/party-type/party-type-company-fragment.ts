@@ -25,11 +25,13 @@ export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterCompanyDetails() {
+  async enterCompanyDetails(update?: boolean) {
     const companyData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
       claimantDefendantPartyTypes.COMPANY,
+      update
     );
+
     await super.inputText(
       companyData.companyName,
       inputs.name.selector(this.claimantDefendantParty, claimantDefendantPartyTypes.COMPANY),

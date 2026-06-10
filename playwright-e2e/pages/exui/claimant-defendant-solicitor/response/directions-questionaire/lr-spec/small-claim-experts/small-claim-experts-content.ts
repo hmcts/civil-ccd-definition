@@ -1,4 +1,3 @@
-import ClaimType from '../../../../../../../constants/cases/claim-type';
 import PartyType from '../../../../../../../constants/users/party-types';
 import { Party } from '../../../../../../../models/users/partys';
 
