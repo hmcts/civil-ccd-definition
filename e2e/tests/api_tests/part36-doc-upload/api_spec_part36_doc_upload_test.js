@@ -6,7 +6,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 Feature('1v1 Spec upload Part 36 document')
-  .tag('@civil-service-pr @api-part36-upload');
+  .tag('@civil-ccd-nightly @api-part36-upload');
 
 Scenario('1v1 Create Specified claim and upload part36 document', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';

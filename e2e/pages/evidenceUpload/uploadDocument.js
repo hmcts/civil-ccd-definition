@@ -40,6 +40,16 @@ module.exports = {
       authorities: '#trialSelectionEvidenceRes-AUTHORITIES'
     },
 
+    withoutPrejudiceSelectionEvidence:{
+      id: '#withoutPrejudiceSelectionEvidence',
+      withoutPrejudice: '#withoutPrejudiceSelectionEvidence-PART36_REJECTION'
+    },
+
+    withoutPrejudiceSelectionEvidenceRes:{
+      id: '#withoutPrejudiceSelectionEvidenceRes',
+      withoutPrejudice: '#withoutPrejudiceSelectionEvidenceRes-PART36_REJECTION'
+    },
+
     documentWitnessStatement: {
       id: '#documentWitnessStatement',
       button: '#documentWitnessStatement > div:nth-child(1) > button:nth-child(2)',
@@ -112,10 +122,24 @@ module.exports = {
       id: '#documentAuthoritiesRes',
       button: '#documentAuthoritiesRes > div:nth-child(1) > button:nth-child(2)',
       document: '#documentAuthoritiesRes_0_documentUpload'
+    },
+
+    documentPart36Rejection: {
+      id: '#documentPart36Rejection',
+      button: '#documentPart36Rejection > div:nth-child(1) > button:nth-child(2)',
+      name: '#documentPart36Rejection_0_documentDescription',
+      document: '#documentPart36Rejection_0_document'
+    },
+
+    documentPart36RejectionRes: {
+      id: '#documentPart36RejectionRes',
+      button: '#documentPart36RejectionRes > div:nth-child(1) > button:nth-child(2)',
+      name: '#documentPart36RejectionRes_0_documentDescription',
+      document: '#documentPart36RejectionRes_0_document'
     }
   },
 
-  async selectType(defendant, isBundle = false, mpScenario = false, scenario = '') {
+  async selectType(defendant, isBundle = false, mpScenario = false, scenario = '', typeOfDoc = '') {
     if (mpScenario) {
       await I.waitForElement('#evidenceUploadOptions', 10);
       if (scenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
@@ -145,6 +169,11 @@ module.exports = {
           await within(this.fields.trialSelectionEvidenceRes.id, () => {
             I.click(this.fields.trialSelectionEvidenceRes.authorities);
           });
+          if(typeOfDoc === 'part36'){
+            await within(this.fields.withoutPrejudiceSelectionEvidence.id, () => {
+              I.click(this.fields.withoutPrejudiceSelectionEvidence.withoutPrejudice);
+            });
+          }
         }
       } else {
         if (isBundle) {
@@ -163,12 +192,17 @@ module.exports = {
           await within(this.fields.trialSelectionEvidence.id, () => {
             I.click(this.fields.trialSelectionEvidence.authorities);
           });
+          if(typeOfDoc === 'part36'){
+            await within(this.fields.withoutPrejudiceSelectionEvidence.id, () => {
+              I.click(this.fields.withoutPrejudiceSelectionEvidence.withoutPrejudice);
+            });
+          }
         }
       }
     await I.clickContinue();
   },
 
-  async uploadYourDocument(file, defendant, isBundle = false, mpScenario = false) {
+  async uploadYourDocument(file, defendant, isBundle = false, mpScenario = false, typeOfDoc = '') {
     const futureDate = incrementDate(new Date(), 0, 1, 0);
     const pastDate = decrementDate(new Date(), 0, 0, 1);
     await I.waitForText('Upload Your Documents');
@@ -217,6 +251,14 @@ module.exports = {
           I.click(this.fields.documentAuthoritiesRes.button);
           I.attachFile(this.fields.documentAuthoritiesRes.document, file);
         });
+        if(typeOfDoc === 'part36'){
+          await within(this.fields.documentPart36RejectionRes.id, () => {
+            I.wait(6); // Wait to avoid rate limiting issues
+            I.click(this.fields.documentPart36RejectionRes.button);
+            I.fillField(this.fields.documentPart36RejectionRes.name, 'test part36 name');
+            I.attachFile(this.fields.documentPart36RejectionRes.document, file);
+          });
+        }
       }
     } else {
       if (isBundle) {
@@ -255,6 +297,14 @@ module.exports = {
           I.click(this.fields.documentAuthorities.button);
           I.attachFile(this.fields.documentAuthorities.document, file);
         });
+        if(typeOfDoc === 'part36'){
+          await within(this.fields.documentPart36Rejection.id, () => {
+            I.wait(6); // Wait to avoid rate limiting issues
+            I.click(this.fields.documentPart36Rejection.button);
+            I.fillField(this.fields.documentPart36Rejection.name, 'test part36 name');
+            I.attachFile(this.fields.documentPart36Rejection.document, file);
+          });
+        }
       }
     }
     await I.clickContinue();

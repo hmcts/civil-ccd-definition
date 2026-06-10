@@ -1295,12 +1295,12 @@ module.exports = function () {
       ]);
     },
 
-    async evidenceUpload(caseId, defendant, isBundle = false, mpScenario = false, scenario = '') {
+    async evidenceUpload(caseId, defendant, isBundle = false, mpScenario = false, scenario = '', typeOfDoc = '') {
       defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
       await this.triggerStepsWithScreenshot([
         () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
-        () => unspecifiedEvidenceUpload.selectType(defendant, isBundle, mpScenario, scenario),
-        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant, isBundle, mpScenario),
+        () => unspecifiedEvidenceUpload.selectType(defendant, isBundle, mpScenario, scenario, typeOfDoc),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant, isBundle, mpScenario, typeOfDoc),
         () => event.submit('Submit', 'Documents uploaded')
       ]);
     },
