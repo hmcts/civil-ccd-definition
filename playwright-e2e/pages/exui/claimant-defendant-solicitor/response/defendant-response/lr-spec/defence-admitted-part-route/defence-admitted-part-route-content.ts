@@ -8,7 +8,3 @@ export const radioButtons = {
 export const inputs = {
   owingAmount: { selector: '#respondToAdmittedClaimOwingAmount' },
 };
-
-export const inputData = {
-  owingAmount: '100',
-};

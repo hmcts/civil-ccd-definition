@@ -1,3 +1,5 @@
+export const heading = 'in employment?';
+
 export const radioButtons = {
   employmentType: {
     yes: { selector: '#defenceAdmitPartEmploymentTypeRequired_Yes' },

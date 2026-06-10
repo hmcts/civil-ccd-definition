@@ -2,7 +2,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { radioButtons, inputs, inputData } from './defence-admitted-part-route-content.ts';
+import { radioButtons, inputs } from './defence-admitted-part-route-content.ts';
 
 @AllMethodsStep()
 export default class DefenceAdmittedPartRoutePage extends ExuiPage(BasePage) {
@@ -15,7 +15,7 @@ export default class DefenceAdmittedPartRoutePage extends ExuiPage(BasePage) {
   }
 
   async enterOwingAmount() {
-    await super.inputText(inputData.owingAmount, inputs.owingAmount.selector);
+    await super.inputText('100', inputs.owingAmount.selector);
   }
 
   async submit() {
