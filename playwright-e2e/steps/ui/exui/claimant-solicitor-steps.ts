@@ -504,6 +504,25 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
+  async RespondFastTrackFullDefence1v2DS() {
+    const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await claimantResponseActions.respondentResponse1v2DS();
+        await claimantResponseActions.defenceResponseDocument1v2DS();
+        await claimantResponseActions.dqFastTrack();
+        await claimantResponseActions.statementOfTruth();
+        await claimantResponseActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseActions.confirmClaimantResponse();
+      },
+      ccdEvents.CLAIMANT_RESPONSE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RequestDefaultJudgment() {
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
