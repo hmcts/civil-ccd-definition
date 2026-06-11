@@ -93,49 +93,6 @@ export default class HearingCenterAdminSteps extends BaseExui {
     );
   }
 
-  async StayCase() {
-    const { stayCaseActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await stayCaseActions.stayCase();
-      },
-      async () => {
-        await stayCaseActions.confirmStayCase();
-      },
-      ccdEvents.STAY_CASE,
-    );
-  }
-
-  async ManageStayRequestUpdate() {
-    const { manageStayActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await manageStayActions.manageStayOptionsRequestUpdate();
-        await manageStayActions.manageStayRequestUpdate();
-        await manageStayActions.submitManageStay();
-      },
-      async () => {
-        await manageStayActions.confirmManageStayRequestUpdate();
-      },
-      ccdEvents.MANAGE_STAY,
-    );
-  }
-
-  async ManageStayLiftStay() {
-    const { manageStayActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await manageStayActions.manageStayOptionsLiftStay();
-        await manageStayActions.manageStayLiftStayJudicialReferralInMediation();
-        await manageStayActions.submitManageStay();
-      },
-      async () => {
-        await manageStayActions.confirmManageStayLiftStay();
-      },
-      ccdEvents.MANAGE_STAY,
-    );
-  }
-
   async CaseProceedsInCaseman() {
     const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
