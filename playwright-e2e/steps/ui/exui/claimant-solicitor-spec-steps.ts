@@ -157,6 +157,33 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
+  async CreateClaimFastTrack1v2DS() {
+    const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.addAnotherDefendant();
+        await createClaimSpecActions.secondDefendant();
+        await createClaimSpecActions.secondDefendantDSDetails();
+        await createClaimSpecActions.claimDetailsFastTrack();
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimSpecActions.confirmCreateClaimSpec();
+      },
+      ccdEvents.CREATE_CLAIM_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RespondFastTrackIntentToProceed1v1() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
