@@ -226,6 +226,20 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async confirmDefendantResponseSpecFullAdmit() {
+    const { confirmDefendantResponseSpecFullAdmitPage } = this.defendantResponsePageFactory;
+    await confirmDefendantResponseSpecFullAdmitPage.verifyContent(this.ccdCaseData);
+    await confirmDefendantResponseSpecFullAdmitPage.submit();
+  }
+
+  @Step(classKey)
+  async confirmDefendantResponseSpecPartAdmit() {
+    const { confirmDefendantResponseSpecPartAdmitPage } = this.defendantResponsePageFactory;
+    await confirmDefendantResponseSpecPartAdmitPage.verifyContent(this.ccdCaseData);
+    await confirmDefendantResponseSpecPartAdmitPage.submit();
+  }
+
+  @Step(classKey)
   async confirm1v2SSDefendantResponseSpec() {
     const { confirm1v2SSDefendantResponseSpecPage } = this.defendantResponsePageFactory;
     await confirm1v2SSDefendantResponseSpecPage.verifyContent(this.ccdCaseData);
@@ -467,6 +481,130 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     const { submitDefendantResponsePage } = this.defendantResponsePageFactory;
     await submitDefendantResponsePage.verifyContent(this.ccdCaseData);
     await submitDefendantResponsePage.submit();
+  }
+
+  @Step(classKey)
+  async respondentResponseTypeSpecFullAdmitDS1() {
+    const { respondentResponseTypeSpecDS1Page } = this.defendantResponsePageFactory;
+    await respondentResponseTypeSpecDS1Page.verifyContent(this.ccdCaseData);
+    await respondentResponseTypeSpecDS1Page.selectFullAdmit();
+    await respondentResponseTypeSpecDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async respondentResponseTypeSpecPartAdmitDS1() {
+    const { respondentResponseTypeSpecDS1Page } = this.defendantResponsePageFactory;
+    await respondentResponseTypeSpecDS1Page.verifyContent(this.ccdCaseData);
+    await respondentResponseTypeSpecDS1Page.selectPartAdmit();
+    await respondentResponseTypeSpecDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async defenceAdmittedPartRouteDS1() {
+    const { defenceAdmittedPartRoutePage } = this.defendantResponsePageFactory;
+    await defenceAdmittedPartRoutePage.verifyContent(this.ccdCaseData);
+    await defenceAdmittedPartRoutePage.selectNo();
+    await defenceAdmittedPartRoutePage.enterOwingAmount();
+    await defenceAdmittedPartRoutePage.submit();
+  }
+
+  @Step(classKey)
+  async timelineManualDS1() {
+    const { howToAddTimelineDS1Page } = this.defendantResponsePageFactory;
+    await howToAddTimelineDS1Page.verifyContent(this.ccdCaseData);
+    await howToAddTimelineDS1Page.selectManual();
+    await howToAddTimelineDS1Page.submit();
+
+    const { howToAddTimelineManualDS1Page } = this.defendantResponsePageFactory;
+    await howToAddTimelineManualDS1Page.addNewEvent();
+    await howToAddTimelineManualDS1Page.fillEvent1Details();
+    await howToAddTimelineManualDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async whenWillClaimBePaidRepaymentPlan() {
+    const { whenWillClaimBePaidPage } = this.defendantResponsePageFactory;
+    await whenWillClaimBePaidPage.verifyContent(this.ccdCaseData);
+    await whenWillClaimBePaidPage.selectRepaymentPlan();
+    await whenWillClaimBePaidPage.submit();
+  }
+
+  async financialDetails() {
+    const { financialDetailsPurposePage } = this.defendantResponsePageFactory;
+    await financialDetailsPurposePage.verifyContent(this.ccdCaseData);
+    await financialDetailsPurposePage.submit();
+
+    const { defendantBankAccountsPage } = this.defendantResponsePageFactory;
+    await defendantBankAccountsPage.verifyContent(this.ccdCaseData);
+    await defendantBankAccountsPage.submit();
+
+    const { disabilityPremiumPaymentsPage } = this.defendantResponsePageFactory;
+    await disabilityPremiumPaymentsPage.verifyContent(this.ccdCaseData);
+    await disabilityPremiumPaymentsPage.selectNo();
+    await disabilityPremiumPaymentsPage.submit();
+
+    const { defendantHomeOptionsPage } = this.defendantResponsePageFactory;
+    await defendantHomeOptionsPage.verifyContent(this.ccdCaseData);
+    await defendantHomeOptionsPage.selectOwnedHome();
+    await defendantHomeOptionsPage.submit();
+    
+    const { defendantPartnersAndDependentsPage } = this.defendantResponsePageFactory;
+    await defendantPartnersAndDependentsPage.verifyContent(this.ccdCaseData);
+    await defendantPartnersAndDependentsPage.enterDetails();
+    await defendantPartnersAndDependentsPage.submit();
+
+    const { employmentDeclarationPage } = this.defendantResponsePageFactory;
+    await employmentDeclarationPage.verifyContent(this.ccdCaseData);
+    await employmentDeclarationPage.selectNotEmployed();
+    await employmentDeclarationPage.selectUnemployed();
+    await employmentDeclarationPage.enterUnemploymentDuration();
+    await employmentDeclarationPage.submit();
+
+    const { detailsOfPayingMoneyRepaymentPlanPage } = this.defendantResponsePageFactory;
+    await detailsOfPayingMoneyRepaymentPlanPage.verifyContent(this.ccdCaseData);
+    await detailsOfPayingMoneyRepaymentPlanPage.selectNo();
+    await detailsOfPayingMoneyRepaymentPlanPage.submit();
+
+    const { defendantDebtsPage } = this.defendantResponsePageFactory;
+    await defendantDebtsPage.verifyContent(this.ccdCaseData);
+    await defendantDebtsPage.selectNo();
+    await defendantDebtsPage.submit();
+
+    const { defendantIncomeExpensesPage } = this.defendantResponsePageFactory;
+    await defendantIncomeExpensesPage.verifyContent(this.ccdCaseData);
+    await defendantIncomeExpensesPage.selectNo();
+    await defendantIncomeExpensesPage.submit();
+
+    const { whyDoesNotPayImmediatelyPage } = this.defendantResponsePageFactory;
+    await whyDoesNotPayImmediatelyPage.verifyContent(this.ccdCaseData);
+    await whyDoesNotPayImmediatelyPage.enterReasons();
+    await whyDoesNotPayImmediatelyPage.submit();
+  }
+
+  @Step(classKey)
+  async repaymentPlan() {
+    const { repaymentPlanPage } = this.defendantResponsePageFactory;
+    await repaymentPlanPage.verifyContent(this.ccdCaseData);
+    await repaymentPlanPage.enterPaymentAmount();
+    await repaymentPlanPage.enterFirstRepaymentDate();
+    await repaymentPlanPage.selectMonthlyFrequency();
+    await repaymentPlanPage.submit();
+  }
+
+  @Step(classKey)
+  async applicationNoDS1() {
+    const { applicationDS1Page } = this.defendantResponsePageFactory;
+    await applicationDS1Page.verifyContent(this.ccdCaseData);
+    await applicationDS1Page.selectNo();
+    await applicationDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async whenWillClaimBePaidImmediately() {
+    const { whenWillClaimBePaidPage } = this.defendantResponsePageFactory;
+    await whenWillClaimBePaidPage.verifyContent(this.ccdCaseData);
+    await whenWillClaimBePaidPage.selectImmediately();
+    await whenWillClaimBePaidPage.submit();
   }
 
   private async languageDS1() {
