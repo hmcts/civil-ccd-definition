@@ -87,6 +87,20 @@ export default class DefendantSolicitor2Steps extends BaseExui {
     );
   }
 
+  async AddUnavailableDates() {
+    const { addUnavailableDatesActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await addUnavailableDatesActions.addAdditionalDates();
+        await addUnavailableDatesActions.submitAddAdditionalDates();
+      },
+      async () => {
+        await addUnavailableDatesActions.confirmAddAdditionalDates();
+      },
+      ccdEvents.ADD_UNAVAILABLE_DATES,
+    );
+  }
+
   async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(

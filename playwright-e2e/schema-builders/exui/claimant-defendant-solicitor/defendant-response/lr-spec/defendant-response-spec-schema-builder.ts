@@ -50,20 +50,31 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  protected async buildSchema(caseDataBeforeSubmission: CCDCaseData | undefined, {
-    claimType = ClaimType.ONE_VS_ONE,
-    claimTrack = ClaimTrack.SMALL_CLAIM,
-    responseType= DefendantResponseSpecType.FULL_DEFENCE,
-  }: {
-    caseDataBeforeSubmission?: CCDCaseData;
-    claimType: ClaimType;
-    claimTrack: ClaimTrack;
-    responseType: DefendantResponseSpecType;
-  }): Promise<z.ZodType> {
+  async buildSmallTrack1v2DSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  protected async buildSchema(
+    caseDataBeforeSubmission: CCDCaseData | undefined,
+    {
+      claimType = ClaimType.ONE_VS_ONE,
+      claimTrack = ClaimTrack.SMALL_CLAIM,
+      responseType = DefendantResponseSpecType.FULL_DEFENCE,
+    }: {
+      caseDataBeforeSubmission?: CCDCaseData;
+      claimType: ClaimType;
+      claimTrack: ClaimTrack;
+      responseType: DefendantResponseSpecType;
+    },
+  ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;
-    
+
     return baseSchema.extend({
       ...defendantResponseSpecSchemaComponents.responseClaimTrack(claimTrack),
       ...defendantResponseSpecSchemaComponents.singleResponse(claimType),
