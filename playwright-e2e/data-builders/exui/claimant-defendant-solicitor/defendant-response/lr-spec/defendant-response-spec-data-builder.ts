@@ -11,23 +11,26 @@ import ClaimTrack from '../../../../../constants/cases/claim-track';
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
   async buildFastTrack1v1FullDefence() {
-    return this.buildData({
+    return this.buildData({ 
       claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
+      defendantResponseSpecType: 
+        { 
+          defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE, 
+          defenceRoute: DefenceRouteSpec.DISPUTE,  
+        },
       },
-    });
+    );
   }
 
   async buildFastTrack2v1FullDefence() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
+      defendantResponseSpecType:
+        {
+          defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
+          defenceRoute: DefenceRouteSpec.DISPUTE,
+        },
     });
   }
 
@@ -35,20 +38,22 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
+      defendantResponseSpecType:
+        {
+          defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
+          defenceRoute: DefenceRouteSpec.DISPUTE,
+        },
     });
   }
 
   async buildSmallTrack1v1FullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
+      defendantResponseSpecType:
+        {
+          defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
+          defenceRoute: DefenceRouteSpec.DISPUTE,
+        },
     });
   }
 
@@ -56,61 +61,52 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
+      defendantResponseSpecType:
+        {
+          defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
+          defenceRoute: DefenceRouteSpec.DISPUTE,
+        },
     });
   }
 
-  async buildSmallTrack1v2DSFullDefence() {
-    return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
-    });
-  }
-
-  protected async buildData({
+  protected async buildData({ 
     claimType = ClaimType.ONE_VS_ONE,
     claimTrack = ClaimTrack.SMALL_CLAIM,
-    defendantResponseSpecType = {
-      defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-      defenceRoute: DefenceRouteSpec.DISPUTE,
-    },
-  }: {
-    claimType?: ClaimType;
-    claimTrack?: ClaimTrack;
-    defendantResponseSpecType?: DefendantResponseSpecTypeObjs;
-  }) {
-    const { civilServiceRequests } = this.requestsFactory;
-    const defenceResponseDocumentSpec =
-      await civilServiceRequests.uploadTestDocument(defendantSolicitor1User);
+    defendantResponseSpecType = { 
+        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE, 
+        defenceRoute: DefenceRouteSpec.DISPUTE,  
+      }
+    } : 
+    { 
+      claimType?: ClaimType;
+      claimTrack?: ClaimTrack;
+      defendantResponseSpecType?: DefendantResponseSpecTypeObjs 
+    }) {
+      const { civilServiceRequests } = this.requestsFactory; 
+      const defenceResponseDocumentSpec =
+        await civilServiceRequests.uploadTestDocument(defendantSolicitor1User);
 
-    return {
-      ...defendantResponseSpecData.defendantChecklist,
-      ...defendantResponseSpecData.responseConfirmNameAddress(claimType),
-      ...defendantResponseSpecData.responseConfirmDetails,
-      ...defendantResponseSpecData.singleResponse(claimType),
-      ...defendantResponseSpecData.defendantResponse(defendantResponseSpecType, claimType),
-      ...defendantResponseSpecData.upload(defenceResponseDocumentSpec),
-      ...defendantResponseSpecData.timeline,
-      ...defendantResponseSpecData.mediationContactInformation(claimTrack),
-      ...defendantResponseSpecData.mediationAvailability(claimTrack),
-      ...defendantResponseSpecData.determinationWithoutHearing(claimTrack),
-      ...defendantResponseSpecData.fastTrackDq(claimTrack),
-      ...defendantResponseSpecData.experts(claimTrack),
-      ...defendantResponseSpecData.witnesses(claimTrack),
-      ...defendantResponseSpecData.language,
-      ...defendantResponseSpecData.hearing(claimTrack),
-      ...defendantResponseSpecData.requestedCourtLocation,
-      ...defendantResponseSpecData.hearingSupport,
-      ...defendantResponseSpecData.vulnerabilityQuestions,
-      ...defendantResponseSpecData.applications(claimTrack),
-      ...defendantResponseSpecData.statementOfTruth,
-    };
+      return {
+        ...defendantResponseSpecData.defendantChecklist,
+        ...defendantResponseSpecData.responseConfirmNameAddress(claimType),
+        ...defendantResponseSpecData.responseConfirmDetails,
+        ...defendantResponseSpecData.singleResponse(claimType),
+        ...defendantResponseSpecData.defendantResponse(defendantResponseSpecType, claimType),
+        ...defendantResponseSpecData.upload(defenceResponseDocumentSpec),
+        ...defendantResponseSpecData.timeline,
+        ...defendantResponseSpecData.mediationContactInformation(claimTrack),
+        ...defendantResponseSpecData.mediationAvailability(claimTrack),
+        ...defendantResponseSpecData.determinationWithoutHearing(claimTrack),
+        ...defendantResponseSpecData.fastTrackDq(claimTrack),
+        ...defendantResponseSpecData.experts(claimTrack),
+        ...defendantResponseSpecData.witnesses(claimTrack),
+        ...defendantResponseSpecData.language,
+        ...defendantResponseSpecData.hearing(claimTrack),
+        ...defendantResponseSpecData.requestedCourtLocation,
+        ...defendantResponseSpecData.hearingSupport,
+        ...defendantResponseSpecData.vulnerabilityQuestions,
+        ...defendantResponseSpecData.applications(claimTrack),
+        ...defendantResponseSpecData.statementOfTruth,
+      };
   }
 }

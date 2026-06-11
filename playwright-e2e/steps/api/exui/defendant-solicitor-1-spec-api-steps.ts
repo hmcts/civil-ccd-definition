@@ -35,7 +35,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor1User,
       CaseRole.RESPONDENT_SOLICITOR_ONE,
-      this.ccdCaseData?.id,
+      this.ccdCaseData?.id
     );
     await super.fetchAndSetCCDCaseData();
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
@@ -184,30 +184,6 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
       await defendantResponseSpecSchemaBuilder.buildSmallTrack1v2SSFullDefence(
-        caseDataBeforeSubmission,
-      );
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
-  }
-
-  async RespondSmallTrackFullDefence1v2DS() {
-    await this.setupApiStep(defendantSolicitor1User);
-
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const defendantResponseEventData =
-      await defendantResponseSpecDataBuilder.buildSmallTrack1v2DSFullDefence();
-
-    await super.submitCCDEvent(
-      defendantSolicitor1User,
-      ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantResponseEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
-    );
-
-    const { defendantResponseSpecSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildSmallTrack1v2DSFullDefence(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
