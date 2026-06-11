@@ -20,7 +20,7 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     await DefendantSolicitor2SpecSteps.RespondFastTrackFullDefence1v2DS();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondFastTrackIntentToProceed1v2DS();
-    await JudgeSteps.Login();
+    await JudgeSteps.LoginRegion1();
     await JudgeSteps.SdoSmallTrackFromFastTrackClaim();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.EvidenceUploadApplicant();

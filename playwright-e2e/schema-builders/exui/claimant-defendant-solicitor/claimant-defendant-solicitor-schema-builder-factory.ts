@@ -8,6 +8,8 @@ import CreateClaimSpecSchemaBuilder from './create-claim/lr-spec/create-claim-sp
 import CreateClaimSchemaBuilder from './create-claim/unspec/create-claim-schema-builder';
 import DefendantResponseSchemaBuilder from './defendant-response/unspec/defendant-response-schema-builder';
 import DefendantResponseSpecSchemaBuilder from './defendant-response/lr-spec/defendant-response-spec-schema-builder';
+import EvidenceUploadApplicantSchemaBuilder from './evidence-upload-applicant/unspec/evidence-upload-applicant-schema-builder';
+import EvidenceUploadRespondentSchemaBuilder from './evidence-upload-respondent/unspec/evidence-upload-respondent-schema-builder';
 import InformAgreedExtensionDateSchemaBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-schema-builder';
 import InformAgreedExtensionDateSpecSchemaBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-schema-builder';
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
@@ -48,6 +50,14 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get defendantResponseSchemaBuilder() {
     return new DefendantResponseSchemaBuilder(this.testData);
+  }
+
+  get evidenceUploadApplicantSchemaBuilder() {
+    return new EvidenceUploadApplicantSchemaBuilder(this.testData);
+  }
+
+  get evidenceUploadRespondentSchemaBuilder() {
+    return new EvidenceUploadRespondentSchemaBuilder(this.testData);
   }
 
   get claimantResponseSpecSchemaBuilder() {
