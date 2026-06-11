@@ -32,7 +32,7 @@ export default class JudgeApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
-    const createSdoData = await createSdoDataBuilder.buildFastSdo();
+    const createSdoData = await createSdoDataBuilder.buildFastTrackSdo();
 
     await super.submitCCDEvent(
       judgeRegion1User,
@@ -43,8 +43,29 @@ export default class JudgeApiSteps extends BaseApi {
     await this.completeWATask(judgeRegion1User, taskId);
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema = await createSdoSchemaBuilder.buildCreateFast(caseDataBeforeSubmission);
+    const createSdoSchema = await createSdoSchemaBuilder.buildFastTrackSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+  }
+
+  async SdoTrail() {
+    await this.setupApiStep(judgeRegion1User);
+    const taskId = await super.retrieveAndAssignWATask(judgeRegion1User, fastTrackDirectionsTask);
+    // const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildTrailSdo();
+
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      CaseState.CASE_PROGRESSION,
+    );
+    await this.completeWATask(judgeRegion1User, taskId);
+
+    // const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    // const createSdoSchema = await createSdoSchemaBuilder.buildFastTrackSdo(caseDataBeforeSubmission);
+    // ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
   async GenerateDirectionsOrderAssistedOrder() {

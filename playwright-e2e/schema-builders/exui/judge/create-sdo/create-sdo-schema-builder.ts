@@ -7,7 +7,7 @@ import createSdoSchemaBuilderComponents from './create-sdo-schema-builder-compon
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateSdoSchemaBuilder extends BaseSchemaBuilder {
-  async buildCreateFast(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastTrackSdo(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission);
   }
 

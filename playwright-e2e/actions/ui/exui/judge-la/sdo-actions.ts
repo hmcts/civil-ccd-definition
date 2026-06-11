@@ -62,10 +62,17 @@ export default class SdoActions extends BaseTestData {
     await claimsTrackPage.submit();
   }
 
-  async selectDisposalHearing() {
+  async orderTypeDisposalHearing() {
     const { orderTypePage } = this.sdoPageFactory;
     await orderTypePage.verifyContent(this.ccdCaseData);
     await orderTypePage.selectDisposalHearing();
+    await orderTypePage.submit();
+  }
+
+  async orderTypeTrail() {
+    const { orderTypePage } = this.sdoPageFactory;
+    await orderTypePage.verifyContent(this.ccdCaseData);
+    await orderTypePage.selectTrail();
     await orderTypePage.submit();
   }
 
