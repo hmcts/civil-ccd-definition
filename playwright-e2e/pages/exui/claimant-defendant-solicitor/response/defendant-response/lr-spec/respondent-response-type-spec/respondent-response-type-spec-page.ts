@@ -35,6 +35,14 @@ export default class RespondentResponseTypeSpecPage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.fullDefence.selector(this.defendantParty));
   }
 
+  async selectFullAdmit() {
+    await super.clickBySelector(radioButtons.fullAdmit.selector(this.defendantParty));
+  }
+
+  async selectPartAdmit() {
+    await super.clickBySelector(radioButtons.partAdmit.selector(this.defendantParty));
+  }
+
   async submit() {
     await super.retryClickSubmit();
   }

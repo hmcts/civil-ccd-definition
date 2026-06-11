@@ -37,6 +37,10 @@ export default class WitnessesSpecPage extends ExuiPage(BasePage) {
     await super.clickBySelector(buttons.addNewWitness.selector(this.defendantParty));
   }
 
+  async selectNoWitnesses() {
+    await super.clickBySelector(radioButtons.witnessesRequired.no.selector(this.defendantParty));
+  }
+
   async enterWitnessDetails() {
     const witnessData = CaseDataHelper.buildWitnessData(this.witnessParty);
     await super.inputText(
@@ -48,7 +52,7 @@ export default class WitnessesSpecPage extends ExuiPage(BasePage) {
       inputs.witnessDetails.lastName.selector(this.defendantParty, this.witnessParty),
     );
     await super.inputText(
-      witnessData.phoneNumber,
+      witnessData.phoneNumber ?? '',
       inputs.witnessDetails.number.selector(this.defendantParty, this.witnessParty),
     );
     await super.inputText(
