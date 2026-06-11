@@ -1667,6 +1667,16 @@ module.exports = {
       },
       calculated: calculatedClaimsTrackWSum
     };
+    const nihlExcludedFields = [
+      'smallClaimsPenalNotice',
+      'fastTrackPenalNotice',
+      'fastTrackTrialBundleToggle',
+      'smallClaimsPPI',
+      'fastTrackPPI',
+      'disposalHearingDisclosureOfDocuments',
+    ];
+    nihlExcludedFields.forEach(field => delete data.calculated.ClaimsTrack[field]);
+
     data.calculated.OrderType = {
       ...data.calculated.ClaimsTrack,
       orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
@@ -1722,6 +1732,12 @@ module.exports = {
       },
       calculated: calculatedClaimsTrackDRH
     };
+    const drhExcludedFields = [
+      'sdoR2SmallClaimsPPI',
+      'sdoR2SmallClaimsPPIToggle',
+    ];
+    drhExcludedFields.forEach(field => delete data.calculated.ClaimsTrack[field]);
+
     data.calculated.OrderType = {
       ...data.calculated.ClaimsTrack,
       orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
