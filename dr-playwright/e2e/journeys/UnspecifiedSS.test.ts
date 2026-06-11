@@ -17,6 +17,7 @@ import { TestingEndPointHelper } from '../../helpers/TestingEndPointHelper.ts';
 import config from '../../../e2e/config';
 import { NotifyClaim } from '../flows/events/NotifyClaim.ts';
 import notifyClaimOptions from '../../enums/notifyClaimOptions.ts';
+import { NotifyClaimDetails } from '../flows/events/NotifyClaimDetails.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -48,6 +49,7 @@ let caseId: string = '1780689274737216';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
+let testingEndpointHelper: TestingEndPointHelper;
 let createCasePage: CreateCasePage;
 
 
@@ -62,6 +64,7 @@ test.beforeEach(async ({ page }) => {
   buttonHelper = new ButtonHelper(page);
   createCasePage = new CreateCasePage(page);
   tabsHelper = new TabsHelper(page);
+  testingEndpointHelper = new TestingEndPointHelper();
   await page.goto(envUrl+ '/cases/case-details/'+caseId);
 });
 
@@ -183,5 +186,12 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     }
 
     await new NotifyClaim(page).notify(claimType, defendantsToNotify);
+    await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'NOTIFY_DEFENDANT_OF_CLAIM');
+
+    await new NotifyClaimDetails(page).notify(claimType, defendantsToNotify);
+    await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS');
+
+    await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
+
   });
 });

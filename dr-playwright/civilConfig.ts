@@ -52,7 +52,7 @@ export const respondent1SolicitorCredentials = {
 }
 
 export const respondent2SolicitorCredentials = {
-  name: 'Respondent1 Solicitor',
+  name: 'Respondent2 Solicitor',
   username: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
   password: defaultPassword,
   // key: UserKey.CLAIMANT_SOLICITOR,

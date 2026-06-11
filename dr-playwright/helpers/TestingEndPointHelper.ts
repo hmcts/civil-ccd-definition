@@ -6,7 +6,8 @@ import { APIResponse } from 'playwright';
 import { stringify } from 'node:querystring';
 import { TokensHelper } from './TokensHelper.ts';
 import { civilSystemUpdate } from '../../playwright-e2e/config/users/exui-users.ts';
-import { civilServiceUrl, systemupdate, apiRetries } from '../civilConfig.ts';
+import { civilServiceUrl, systemupdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
+import claimTypes from '../enums/claim-types.ts';
 
 
 export class TestingEndPointHelper {
@@ -18,7 +19,7 @@ export class TestingEndPointHelper {
   private eventToken: string;
   private user;
   private nonEventTokens;
-
+  private testingSupportUrl = `${civilServiceUrl}/testing-support`
 
   constructor() {
     this.tokensHelper = new TokensHelper();
@@ -27,37 +28,35 @@ export class TestingEndPointHelper {
   async waitForCamundaProcessToFinish(caseId: string, camundaEventToCheckFor?: string) {
     await this.getTokens(systemupdate);
 
-    const businessProcessUrl = `${civilServiceUrl}/testing-support/case/${caseId}/business-process`;
+    const businessProcessUrl = `${this.testingSupportUrl}/case/${caseId}/business-process`;
     // console.log('businessProcessUrl>>> ',businessProcessUrl);
     // console.log('accessToken>>> ',this.nonEventTokens.accessToken);
     // console.log('s2sToken>>> ',this.nonEventTokens.s2sToken);
     const apiRequestContext: APIRequestContext = await request.newContext();
     await expect.poll(async () => {
       const response = await apiRequestContext.get(businessProcessUrl, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "*/*",
-          Authorization: `Bearer ${this.nonEventTokens.accessToken}`,
-          ServiceAuthorization: this.nonEventTokens.s2sToken
-        }
+        headers: this.getHeaders()
       });
       const data = await response.json();
       let status = await data.businessProcess.status;
       const camundaEvent = await data.businessProcess.camundaEvent;
+      const processInstanceId = await data.businessProcess.processInstanceId;
 
       if (camundaEventToCheckFor && camundaEvent !== camundaEventToCheckFor) {
         status = 'NOT_FOUND';
       }
 
-      console.log('businessProcess>>> ', data.businessProcess);
-      console.log('status>>> ', status);
+      console.log( 'Waiting on event: ' + camundaEventToCheckFor + '. Current status is: ' + status);
+      if (status === 'FINISHED') {
+        console.log(`Event: ${camundaEventToCheckFor} has status of: ${status}. Continuing test...`);
+      }
       return status;
       },
       {
         // Wait x milliseconds between retries
         intervals: apiRetries.intervals,
         timeout: apiRetries.timeout,
-        message: camundaEventToCheckFor ? 'The camunda event: '+ camundaEventToCheckFor +  ' did not start within the allowed timeframe' : '',
+        message: camundaEventToCheckFor ? `The camunda event: ${camundaEventToCheckFor} did not start within the allowed timeframe` : '',
       }).toEqual('FINISHED');
   };
 
@@ -83,12 +82,7 @@ export class TestingEndPointHelper {
 
     try {
       const response = await apiRequestContext.put(serviceRequestUpdateClaimIssuedUrl, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "*/*",
-          Authorization: `Bearer ${this.nonEventTokens.accessToken}`,
-          ServiceAuthorization: this.nonEventTokens.s2sToken
-        },
+        headers: this.getHeaders(),
         data: requestBody
       });
 
@@ -99,17 +93,71 @@ export class TestingEndPointHelper {
           `Failed to create appeal: ${response.status()} - ${errorText}. Ensure your VPN is connected or check your URL/SECRET.`
         );
       } else {
-        await this.waitForCamundaProcessToFinish(caseId);
+        await this.waitForCamundaProcessToFinish(caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
       }
     }
     catch (error) {
       throw new Error(
-        `An error occurred while trying to validate the page data: ${
+        `An error occurred while trying to create the appeal: ${
           error instanceof Error ? error.message : error
         }`
       );
     };
+  }
 
+  async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes) {
+    await this.getTokens(systemupdate);
+    let assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/`;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    let response;
+
+    try {
+      if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL) {
+        await this.getTokens(respondent1SolicitorCredentials);
+        assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/RESPONDENTSOLICITORONE`;
+        response = await apiRequestContext.post(assignCaseUrl, {
+          headers: this.getHeaders()
+        });
+        await this.getTokens(respondent2SolicitorCredentials);
+        assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/RESPONDENTSOLICITORTWO`;
+        response = await apiRequestContext.post(assignCaseUrl, {
+          headers: this.getHeaders()
+        });
+      }
+
+      if (claimType == claimTypes.ONE_VS_TWO_LIP_LR) {
+          await this.getTokens(respondent1SolicitorCredentials);
+          assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/RESPONDENTSOLICITORTWO`;
+          response = await apiRequestContext.post(assignCaseUrl, {
+            headers: this.getHeaders()
+          });
+      }
+
+      if (claimType == claimTypes.ONE_VS_TWO_LR_LIP || claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.ONE_VS_TWO_SAME_SOL) {
+          await this.getTokens(respondent1SolicitorCredentials);
+          assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/RESPONDENTSOLICITORONE`;
+          response = await apiRequestContext.post(assignCaseUrl, {
+            headers: this.getHeaders()
+          });
+      }
+    }
+    catch (error) {
+      throw new Error(
+        `An error occurred while trying to create the appeal: ${
+          error instanceof Error ? error.message : error
+        }`
+      );
+    };
+  }
+
+  private getHeaders() {
+    const headers = {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+      Authorization: `Bearer ${this.nonEventTokens.accessToken}`,
+      ServiceAuthorization: this.nonEventTokens.s2sToken
+    };
+    return headers;
   }
 
   private async getTokens(user) {

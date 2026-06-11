@@ -26,14 +26,11 @@ export class NotifyClaim {
           await this.page.locator('#defendantSolicitorNotifyClaimOptions').selectOption({ index: i });
           await this.buttonHelper.continueButton.click();
 
-          if (whomToNotify === notifyClaimOptions.BOTH) {
-            await this.buttonHelper.continueButton.click();
-            await this.buttonHelper.submitButton.click();
-          } else {
+          if (whomToNotify !== notifyClaimOptions.BOTH) {
             await this.buttonHelper.IgnoreWarningAndContinueButton.click();
-            await this.buttonHelper.continueButton.click();
-            await this.buttonHelper.submitButton.click();
           }
+          await this.buttonHelper.continueButton.click();
+          await this.buttonHelper.submitButton.click();
           break;
         }
       }
