@@ -106,39 +106,51 @@ export class TestingEndPointHelper {
   }
 
   async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes) {
-    await this.getTokens(systemupdate);
+  //  await this.getTokens(systemupdate);
     let assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/`;
     const apiRequestContext: APIRequestContext = await request.newContext();
     let response;
-
     try {
       if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL) {
         await this.getTokens(respondent1SolicitorCredentials);
-        assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/RESPONDENTSOLICITORONE`;
+        assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORONE`;
         response = await apiRequestContext.post(assignCaseUrl, {
           headers: this.getHeaders()
         });
-        await this.getTokens(respondent2SolicitorCredentials);
-        assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/RESPONDENTSOLICITORTWO`;
-        response = await apiRequestContext.post(assignCaseUrl, {
-          headers: this.getHeaders()
-        });
+        if (response.ok()) {
+          await this.getTokens(respondent2SolicitorCredentials);
+          assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORTWO`;
+          response = await apiRequestContext.post(assignCaseUrl, {
+            headers: this.getHeaders()
+          });
+          if (!response.ok()) {
+            throw new Error(`An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}`);
+          }
+        } else {
+          throw new Error(`An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}`);
+        }
       }
 
       if (claimType == claimTypes.ONE_VS_TWO_LIP_LR) {
-          await this.getTokens(respondent1SolicitorCredentials);
-          assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/RESPONDENTSOLICITORTWO`;
-          response = await apiRequestContext.post(assignCaseUrl, {
-            headers: this.getHeaders()
-          });
+        await this.getTokens(respondent2SolicitorCredentials);
+        assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORTWO`;
+        response = await apiRequestContext.post(assignCaseUrl, {
+          headers: this.getHeaders()
+        });
+        if (!response.ok()) {
+          throw new Error(`An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}`);
+        }
       }
 
       if (claimType == claimTypes.ONE_VS_TWO_LR_LIP || claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.ONE_VS_TWO_SAME_SOL) {
-          await this.getTokens(respondent1SolicitorCredentials);
-          assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/RESPONDENTSOLICITORONE`;
-          response = await apiRequestContext.post(assignCaseUrl, {
-            headers: this.getHeaders()
-          });
+        await this.getTokens(respondent1SolicitorCredentials);
+        assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORONE`;
+        response = await apiRequestContext.post(assignCaseUrl, {
+          headers: this.getHeaders()
+        });
+        if (!response.ok()) {
+          throw new Error(`An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}`);
+        }
       }
     }
     catch (error) {

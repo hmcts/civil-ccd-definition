@@ -9,14 +9,14 @@ const defaultPassword = process.env.DEFAULT_PASSWORD;
 const eventCode = process.env.CLAIM == 'SPEC' ? '_SPEC' : '';
 environment: process.env.ENVIRONMENT as Environment
 
-export const envUrl: string = process.env.ENVIRONMENT === 'preview' ? process.env.URL : (process.env.ENVIRONMENT === 'demo' ? 'https://manage-case.demo.platform.hmcts.net' : 'https://manage-case.aat.platform.hmcts.net');
-export const idamApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'https://idam-api.aat.platform.hmcts.net' : 'https://idam-api.demo.platform.hmcts.net';
-export const authProviderApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal' : 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal';
-export const ccdDataStoreApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'https://ccd-data-store-api-civil-service-pr-3056.preview.platform.hmcts.net' : (process.env.ENVIRONMENT === 'demo' ? 'http://ccd-data-store-api-demo.service.core-compute-demo.internal' : 'http://ccd-data-store-api-aat.service.core-compute-aat.internal');
-export const documentManagementStoreApiBaseUrl: string = process.env.ENVIRONMENT === 'preview' ? 'http://dm-store-aat.service.core-compute-aat.internal' : 'http://dm-store-demo.service.core-compute-demo.internal';
+export const envUrl: string = process.env.URL;
+export const idamApiBaseUrl: string = process.env.IDAM_API_URL;
+export const authProviderApiBaseUrl: string = process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL;
+export const ccdDataStoreApiBaseUrl: string = process.env.CCD_DATA_STORE_URL;
+export const documentManagementStoreApiBaseUrl: string = process.env.DM_STORE_URL;
 export const microService: string = 'civil_service';
-export const secret: string = process.env.ENVIRONMENT === 'preview' ? 'AABBCCDDEEFFGGHH' : (process.env.ENVIRONMENT === 'demo' ? '4W4QUXOYX623JW64' : process.env.S2S_SECRET);
 export const civilServiceUrl: string = process.env.CIVIL_SERVICE_URL;
+export const secret: string = process.env.S2S_SECRET;
 
 export const createCase = {
   jurisdictionCode: 'CIVIL',
