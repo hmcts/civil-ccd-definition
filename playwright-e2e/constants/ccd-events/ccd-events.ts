@@ -251,6 +251,24 @@ const ccdEvents: CCDEvents = {
     description: 'Mediation unsuccessful',
     order: 26,
   },
+  ADD_UNAVAILABLE_DATES: {
+    id: 'ADD_UNAVAILABLE_DATES',
+    name: 'Add Unavailable Dates',
+    description: 'Add unavailable dates after claimant response or default judgment',
+    order: 26.5,
+  },
+  STAY_CASE: {
+    id: 'STAY_CASE',
+    name: 'Stay case',
+    description: 'Stay the case',
+    order: 27,
+  },
+  MANAGE_STAY: {
+    id: 'MANAGE_STAY',
+    name: 'Manage stay',
+    description: 'Request an update or lift the stay',
+    order: 28,
+  },
   EVIDENCE_UPLOAD_APPLICANT: {
     id: 'EVIDENCE_UPLOAD_APPLICANT',
     name: 'Evidence upload applicant',

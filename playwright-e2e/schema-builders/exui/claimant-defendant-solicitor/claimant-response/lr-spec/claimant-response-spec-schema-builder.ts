@@ -69,15 +69,25 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
-  protected async buildSchema(caseDataBeforeSubmission?: CCDCaseData, {
-    claimType = ClaimType.ONE_VS_ONE,
-    claimTrack = ClaimTrack.FAST_CLAIM,
-    claimantResponseType = ClaimantResponseSpecType.PROCEED_WITH_CLAIM,
-  }: {
-    claimType?: ClaimType;
-    claimTrack?: ClaimTrack;
-    claimantResponseType?: ClaimantResponseSpecType;
-  } = {}): Promise<z.ZodType> {
+  async buildSmallTrack1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
+  protected async buildSchema(
+    caseDataBeforeSubmission?: CCDCaseData,
+    {
+      claimType = ClaimType.ONE_VS_ONE,
+      claimTrack = ClaimTrack.FAST_CLAIM,
+      claimantResponseType = ClaimantResponseSpecType.PROCEED_WITH_CLAIM,
+    }: {
+      claimType?: ClaimType;
+      claimTrack?: ClaimTrack;
+      claimantResponseType?: ClaimantResponseSpecType;
+    } = {},
+  ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;
@@ -87,7 +97,10 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
       schemaShape,
       claimantResponseSpecSchemaComponents.undefine,
       claimantResponseSpecSchemaComponents.proceedWithClaim(claimType, claimantResponseType),
-      claimantResponseSpecSchemaComponents.determinationWithoutHearing(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.determinationWithoutHearing(
+        claimTrack,
+        claimantResponseType,
+      ),
       claimantResponseSpecSchemaComponents.fastTrackDq(claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.experts(claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.witnesses(claimTrack, claimantResponseType),
