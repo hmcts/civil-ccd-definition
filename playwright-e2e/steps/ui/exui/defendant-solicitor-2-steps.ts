@@ -38,7 +38,6 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
-
       { verifySuccessEvent: false },
     );
   }
@@ -60,7 +59,6 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-
       { verifySuccessEvent: false },
     );
   }
@@ -87,6 +85,20 @@ export default class DefendantSolicitor2Steps extends BaseExui {
     );
   }
 
+  async AddUnavailableDates() {
+    const { addUnavailableDatesActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await addUnavailableDatesActions.addAdditionalDates();
+        await addUnavailableDatesActions.submitAddAdditionalDates();
+      },
+      async () => {
+        await addUnavailableDatesActions.confirmAddAdditionalDates();
+      },
+      ccdEvents.ADD_UNAVAILABLE_DATES,
+    );
+  }
+
   async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(
@@ -100,7 +112,6 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS2();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
-
       { verifySuccessEvent: false },
     );
   }
