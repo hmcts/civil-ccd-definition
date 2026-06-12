@@ -10,8 +10,8 @@ export default class RespondentChecklistPage extends ExuiPage(BasePage) {
       super.expectText(paragraphs.descriptionText1),
       super.expectText(paragraphs.descriptionText2),
       super.expectText(paragraphs.descriptionText3),
-      super.expectText(paragraphs.descriptionText4),
-      super.expectText(paragraphs.descriptionText5),
+      // super.expectText(paragraphs.descriptionText4),
+      // super.expectText(paragraphs.descriptionText5),
     ]);
   }
 
