@@ -19,11 +19,7 @@ import {
   dropdowns,
   successBannerText,
   tabs,
-  labels
 } from './case-details-content';
-import CaseDataHelper from '../../../../helpers/case-data-helper';
-import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
-import partys from '../../../../constants/users/partys';
 
 const classKey = 'CaseDetailsPage';
 
@@ -83,7 +79,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   }
 
   async grabCaseNumber() {
-    return getUnformattedCaseId(await super.getText(headings.caseNumber.selector));
+    return getUnformattedCaseId((await super.getText(headings.caseNumber.selector))!);
   }
 
   @TruthyParams(classKey, 'caseId')
