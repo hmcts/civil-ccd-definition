@@ -3,12 +3,20 @@ import { PageHelper } from '../../../helpers/PageHelper';
 import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import notifyClaimOptions from '../../../enums/notifyClaimOptions.ts';
+import moment from 'moment-business-days';
+import CoSDelivery from '../../../enums/CoSDelivery.ts';
+import { EnumsHelper } from '../../../helpers/EnumsHelper.ts';
+import CoSLocations from '../../../enums/CoSLocations.ts';
+import CoSLocationTypes from '../../../enums/CoSLocationTypes.ts';
+import { CoSHelper } from '../../../helpers/CoSHelper.ts';
 
 export class NotifyClaim {
 
   private buttonHelper: ButtonHelper;
   private pageHelper: PageHelper;
-
+  // private whatDocumentsServed: string = 'Test description of documents served - LiP defendant:';
+  // private whoClaimWasServedTo: string = 'Test description of who the claim was served to - LiP defendant:';
+  // private whereDocumentsServed: string = 'Test description of where the documents were served - LiP defendant:';
   constructor(public page: Page) {
     this.buttonHelper = new ButtonHelper(this.page);
     this.pageHelper = new PageHelper(this.page);
@@ -36,6 +44,9 @@ export class NotifyClaim {
       }
     } else {
       await this.buttonHelper.continueButton.click();
+      if (claimType === claimTypes.ONE_VS_TWO_LR_LIP || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+        await new CoSHelper(this.page).submit(claimType);
+      }
       await this.buttonHelper.submitButton.click();
     }
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();

@@ -3,6 +3,7 @@ import { PageHelper } from '../../../helpers/PageHelper';
 import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import notifyClaimOptions from '../../../enums/notifyClaimOptions.ts';
+import { CoSHelper } from '../../../helpers/CoSHelper.ts';
 
 export class NotifyClaimDetails {
 
@@ -41,6 +42,9 @@ export class NotifyClaimDetails {
     } else {
       await this.uploadNotifyClaimDetailsDocs();
       await this.buttonHelper.continueButton.click();
+      if (claimType === claimTypes.ONE_VS_TWO_LR_LIP || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+        await new CoSHelper(this.page).submit(claimType, 'NotifyClaimDetails');
+      }
       await this.buttonHelper.submitButton.click();
     }
   };
@@ -59,7 +63,6 @@ export class NotifyClaimDetails {
     const uploading: string = 'Uploading...';
 
     for (let [addNewButtonIndex, documentType] of documentsMap.entries()) {
-      console.log(addNewButtonIndex + '>>>>> ' + documentType);
       await this.page.locator(`:nth-match(:text("Add new"), ${addNewButtonIndex})`).click();
       if (documentType === 'particularsOfClaim') {
         await this.page.locator(`#servedDocumentFiles_${documentType}Document_value`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
@@ -73,7 +76,6 @@ export class NotifyClaimDetails {
 
           if (await messageLocator.innerText() === uploading || await messageLocator.innerText() === rateLimitError) {
             await documentLocator.setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_2.pdf');
-          } else {
           }
         } else {
           await messageLocator.waitFor({state: 'hidden'});

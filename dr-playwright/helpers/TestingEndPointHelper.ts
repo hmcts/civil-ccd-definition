@@ -106,18 +106,19 @@ export class TestingEndPointHelper {
   }
 
   async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes) {
-  //  await this.getTokens(systemupdate);
     let assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/`;
     const apiRequestContext: APIRequestContext = await request.newContext();
     let response;
     try {
       if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL) {
+        console.log('Assigning Defendant 1 Legal Representative to the claim...');
         await this.getTokens(respondent1SolicitorCredentials);
         assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORONE`;
         response = await apiRequestContext.post(assignCaseUrl, {
           headers: this.getHeaders()
         });
         if (response.ok()) {
+          console.log('Assigning Defendant 2 Legal Representative to the claim...');
           await this.getTokens(respondent2SolicitorCredentials);
           assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORTWO`;
           response = await apiRequestContext.post(assignCaseUrl, {
@@ -132,6 +133,7 @@ export class TestingEndPointHelper {
       }
 
       if (claimType == claimTypes.ONE_VS_TWO_LIP_LR) {
+        console.log('Assigning Defendant 2 Legal Representative to the claim...');
         await this.getTokens(respondent2SolicitorCredentials);
         assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORTWO`;
         response = await apiRequestContext.post(assignCaseUrl, {
@@ -143,6 +145,7 @@ export class TestingEndPointHelper {
       }
 
       if (claimType == claimTypes.ONE_VS_TWO_LR_LIP || claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.ONE_VS_TWO_SAME_SOL) {
+        console.log('Assigning Defendant 1 Legal Representative to the claim...');
         await this.getTokens(respondent1SolicitorCredentials);
         assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORONE`;
         response = await apiRequestContext.post(assignCaseUrl, {
@@ -160,6 +163,7 @@ export class TestingEndPointHelper {
         }`
       );
     };
+    console.log('Assignment successful. Continuing test...');
   }
 
   private getHeaders() {
