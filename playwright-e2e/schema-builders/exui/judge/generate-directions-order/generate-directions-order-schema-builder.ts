@@ -11,6 +11,10 @@ export default class GenerateDirectionsOrderSchemaBuilder extends BaseSchemaBuil
     return this.buildSchema(caseDataBeforeSubmission);
   }
 
+  async buildFreeFormOrder(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission);
+  }
+
   protected async buildSchema(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,

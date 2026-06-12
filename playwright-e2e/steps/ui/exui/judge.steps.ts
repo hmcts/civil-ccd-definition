@@ -35,7 +35,7 @@ export default class JudgeSteps extends BaseExui {
     await super.idamActions.exuiLogin(judgeRegion2User);
   }
 
-  async SdoSmallTrack() {
+  async SdoSmallTrackSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {

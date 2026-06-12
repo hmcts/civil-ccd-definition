@@ -10,6 +10,10 @@ import defendantResponseDataComponents from './defendant-response-data-component
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
+  async buildDS1SmallTrackFullDefence1v1Data() {
+    return this.buildData();
+  }
+
   async buildDS1FastTrackFullDefence2v1Data() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -67,6 +71,7 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
       defendantResponseDataComponents.solicitorReferences(this.ccdCaseData, defendantSolicitorParty),
       defendantResponseDataComponents.upload(defenceDocument, defendantSolicitorParty),
       defendantResponseDataComponents.fastTrackDq(claimTrack, defendantSolicitorParty),
+      defendantResponseDataComponents.deterWithoutHearing(claimTrack, defendantSolicitorParty),
       defendantResponseDataComponents.experts(defendantSolicitorParty),
       defendantResponseDataComponents.witnesses(defendantSolicitorParty),
       defendantResponseDataComponents.language(defendantSolicitorParty),

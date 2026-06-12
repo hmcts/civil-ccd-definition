@@ -1,29 +1,33 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import { judgeRegion1User } from '../../../../config/users/exui-users';
+import OrderType from '../../../../constants/ccd-events/generate-directions-order/order-type';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { ClaimantDefendantPartyType } from '../../../../models/users/claimant-defendant-party-types';
 import generateDirectionsOrderDataBuilderComponents from './generate-directions-order-data-builder-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class GenerateDirectionsOrderDataBuilder extends BaseDataBuilder {
-  async buildAssistedOrder(
-    claimantPartyType: ClaimantDefendantPartyType,
-    defendantPartyType: ClaimantDefendantPartyType,
-  ) {
-    return this.buildData(claimantPartyType, defendantPartyType);
+  async buildAssistedOrder() {
+    return this.buildData();
+  }
+
+  async buildFreeFormOrder() {
+    return this.buildData({orderType: OrderType.FREE_FORM_ORDER})
   }
 
   protected async buildData(
-    claimantPartyType: ClaimantDefendantPartyType,
-    defendantPartyType: ClaimantDefendantPartyType,
-  ) {
+    {
+      orderType = OrderType.ASSISTED_ORDER ,
+    } : {
+      orderType?: OrderType,
+    } = {}) {
 
     return {
-      ...generateDirectionsOrderDataBuilderComponents.finalOrderSelect,
+      ...generateDirectionsOrderDataBuilderComponents.finalOrderSelect(orderType),
       ...generateDirectionsOrderDataBuilderComponents.finalOrderAssistedOrder(
-        claimantPartyType,
-        defendantPartyType,
+        orderType,
+        super.claimant1PartyType!,
+        super.defendant1PartyType!,
       ),
+      ...generateDirectionsOrderDataBuilderComponents.freeFormOrder(orderType),
       ...generateDirectionsOrderDataBuilderComponents.finalOrderPreview(),
     };
   }

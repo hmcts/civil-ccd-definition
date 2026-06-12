@@ -1,5 +1,8 @@
 import SdoType from '../../../../constants/ccd-events/sdo/sdo-type';
 import DateHelper from '../../../../helpers/date-helper';
+import CaseDataHelper from '../../../../helpers/case-data-helper';
+import preferredCourts from '../../../../config/preferred-courts';
+import partys from '../../../../constants/users/partys';
 
 const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
@@ -25,7 +28,7 @@ const sdo = (sdoType: SdoType) => {
 const claimsTrack = (sdoType: SdoType) => {
   if(sdoType === SdoType.FAST_TRACK)
     return {
-      ClaimTrack: {
+      ClaimsTrack: {
         claimTrack: 'fastTrack',
         trialAdditionalDirectionsForFastTrack: [
           'fastClaimBuildingDispute',
@@ -41,10 +44,24 @@ const claimsTrack = (sdoType: SdoType) => {
     };
   else if(sdoType === SdoType.TRAIL)
     return {
-      ClaimTrack: {
+      ClaimsTrack: {
         drawDirectionsOrderSmallClaims: 'No',
       },
     };
+
+  else if(sdoType === SdoType.SMALL_TRACK_SUM)
+    return {
+      ClaimsTrack: {
+        drawDirectionsOrderSmallClaims: 'Yes',
+        drawDirectionsOrderSmallClaimsAdditionalDirections: [
+          'smallClaimCreditHire',
+          'smallClaimFlightDelay',
+          'smallClaimHousingDisrepair',
+          'smallClaimPPI',
+          'smallClaimRoadTrafficAccident',
+        ]
+      }
+    }
 }
 
 const orderType = (sdoType: SdoType) => {
@@ -183,24 +200,116 @@ const fastTrack = (sdoType: SdoType) => {
     };
 };
 
-const undefine = {
-  Undefine: {
-    responseClaimTrack: undefined,
-    smallClaimsFlightDelay: undefined,
-    smallClaimsFlightDelayToggle: undefined,
-    sdoR2SmallClaimsWitnessStatementOther: undefined,
-    sdoR2FastTrackWitnessOfFact: undefined,
-    sdoR2FastTrackCreditHire: undefined,
-    sdoDJR2TrialCreditHire: undefined,
-  },
+const smallClaims = (sdoType: SdoType) => {
+  if (sdoType === SdoType.SMALL_TRACK_SUM) {
+    const claimantDefaultCourt = CaseDataHelper.setCodeToData(
+      preferredCourts[partys.CLAIMANT_1.key].default,
+    );
+
+    return {
+      SmallClaims: {
+        smallClaimsCreditHire: {
+          input1: 'string',
+          input2: 'string',
+          input3: 'string',
+          input4: 'string',
+          input5: 'string',
+          input6: 'string',
+          input7: 'string',
+          input11: 'string',
+          date2: formatDate(DateHelper.addToToday({ days: 1 })),
+          date3: formatDate(DateHelper.addToToday({ days: 1 })),
+          date4: formatDate(DateHelper.addToToday({ days: 1 })),
+        },
+        sdoR2SmallClaimsUseOfWelshLanguage: {
+          description: 'string',
+        },
+        sdoR2SmallClaimsWitnessStatementOther: {
+          sdoStatementOfWitness: 'string',
+          isRestrictWitness: 'No',
+          isRestrictPages: 'No',
+          text: 'string',
+          deadlineDate: formatDate(DateHelper.addToToday({ days: 1 })),
+        },
+        smallClaimsDocuments: {
+          input1: 'string',
+          input2: 'string',
+          deadlineDate: formatDate(DateHelper.addToToday({ days: 1 })),
+        },
+        smallClaimsFlightDelay: {
+          relatedClaimsInput: 'string',
+          legalDocumentsInput: 'string',
+        },
+        smallClaimsHearing: {
+          input1: 'string',
+          time: 'THIRTY_MINUTES',
+          input2: 'string',
+          dateFrom: formatDate(DateHelper.addToToday({ days: 1 })),
+        },
+        smallClaimsHousingDisrepair: {
+          clauseA: 'string',
+          clauseB: 'string',
+          firstReportDateBy: formatDate(DateHelper.addToToday({ days: 1 })),
+          clauseCBeforeDate: 'string',
+          jointStatementDateBy: formatDate(DateHelper.addToToday({ days: 1 })),
+          clauseCAfterDate: 'string',
+          clauseD: 'string',
+          clauseE: 'string',
+        },
+        smallClaimsJudgementDeductionValue: {
+          value: 'string',
+        },
+        smallClaimsJudgesRecital: {
+          input: 'string',
+        },
+        smallClaimsMethod: 'smallClaimsMethodInPerson',
+        smallClaimsMethodInPerson: {
+          list_items: [claimantDefaultCourt],
+          value: claimantDefaultCourt,
+        },
+        smallClaimsNotes: {
+          input: 'string',
+          date: formatDate(DateHelper.addToToday({ days: 1 })),
+        },
+        smallClaimsPPI: {
+          ppiDate: formatDate(DateHelper.addToToday({ days: 1 })),
+          text: 'string',
+        },
+        smallClaimsRoadTrafficAccident: {
+          input: 'string',
+        },
+        smallClaimsWitnessStatement: {
+          input1: 'string',
+          input2: '1',
+          input3: '1',
+          input4: 'string',
+        },
+        smallClaimsAddNewDirections: [
+          {
+            directionComment: 'string',
+          },
+          {
+            directionComment: 'string',
+          },
+        ],
+      }
+    };
+  }
+
+  return {};
 };
+
+const orderPreview = {
+  OrderPreview: {}
+}
 
 const createSdoDataBuilderComponents = {
   sdo,
   claimsTrack,
   orderType,
   fastTrack,
-  undefine,
+  smallClaims,
+  orderPreview,
 };
 
 export default createSdoDataBuilderComponents;

@@ -22,8 +22,8 @@ test.describe(
       await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoTrail();
-      await ClaimantSolicitorApiSteps.EvidenceUploadApplicant();
-      await DefendantSolicitor1ApiSteps.EvidenceUploadRespondent();
+      await ClaimantSolicitorApiSteps.EvidenceUploadFastTrack();
+      await DefendantSolicitor1ApiSteps.EvidenceUploadFastTrack();
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrackTrial();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
@@ -36,7 +36,6 @@ test.describe(
       DefendantSolicitor1ApiSteps,
       HearingCenterAdminApiSteps,
       JudgeSteps,
-      JudgeApiSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimFastTrack1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -48,12 +47,11 @@ test.describe(
       await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence();
       await JudgeSteps.LoginRegion1()
       await JudgeSteps.SdoFastTrack();
-      await ClaimantSolicitorApiSteps.EvidenceUploadApplicant();
-      await DefendantSolicitor1ApiSteps.EvidenceUploadRespondent();
+      await ClaimantSolicitorApiSteps.EvidenceUploadFastTrack();
+      await DefendantSolicitor1ApiSteps.EvidenceUploadFastTrack();
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrackTrial();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
-      await JudgeApiSteps.GenerateDirectionsOrderAssistedOrder();
     });
   },
 );

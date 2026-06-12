@@ -7,6 +7,10 @@ import createSdoSchemaBuilderComponents from './create-sdo-schema-builder-compon
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateSdoSchemaBuilder extends BaseSchemaBuilder {
+  async buildSmallTrackSumSdo(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission);
+  }
+
   async buildFastTrackSdo(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission);
   }
@@ -21,6 +25,7 @@ export default class CreateSdoSchemaBuilder extends BaseSchemaBuilder {
       ...createSdoSchemaBuilderComponents.claimsTrack,
       ...createSdoSchemaBuilderComponents.orderType,
       ...createSdoSchemaBuilderComponents.fastTrack,
+      ...createSdoSchemaBuilderComponents.smallClaims,
     });
   }
 }

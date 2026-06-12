@@ -5,6 +5,10 @@ import createSdoDataBuilderComponents from './create-sdo-data-builder-components
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateSdoDataBuilder extends BaseDataBuilder {
+  async buildSmallTrackSumSdo() {
+    return this.buildData({ sdoType: SdoType.SMALL_TRACK_SUM });
+  }
+
   async buildFastTrackSdo() {
     return this.buildData({sdoType: SdoType.FAST_TRACK});
   }
@@ -25,7 +29,8 @@ export default class CreateSdoDataBuilder extends BaseDataBuilder {
       ...createSdoDataBuilderComponents.claimsTrack(sdoType),
       ...createSdoDataBuilderComponents.orderType(sdoType),
       ...createSdoDataBuilderComponents.fastTrack(sdoType),
-      ...createSdoDataBuilderComponents.undefine,
+      ...createSdoDataBuilderComponents.smallClaims(sdoType),
+      ...createSdoDataBuilderComponents.orderPreview,
     };
   }
 }

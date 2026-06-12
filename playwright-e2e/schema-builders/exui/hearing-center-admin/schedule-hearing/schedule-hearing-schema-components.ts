@@ -4,7 +4,6 @@ const nonEmptyString = z.string().min(1);
 
 const hearingNoticeSelect = {
   hearingNoticeList: nonEmptyString,
-  hearingNoticeListOther: nonEmptyString,
 };
 
 const listingOrRelisting = {

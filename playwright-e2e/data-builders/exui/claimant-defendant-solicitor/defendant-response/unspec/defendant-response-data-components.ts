@@ -99,6 +99,32 @@ const solicitorReferences = (ccdCaseData: CCDCaseData, defendantSolicitorParty: 
   return {};
 };
 
+const deterWithoutHearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+    if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+      return {
+        DeterminationWithoutHearing: {
+          deterWithoutHearingRespondent1: {
+            deterWithoutHearingWhyNot: `Determination without hearing reason - ${defendantSolicitorParty.key}`,
+            deterWithoutHearingYesNo: 'No'
+          }
+        }
+      };
+    } else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+      return {
+        DeterminationWithoutHearing: {
+          deterWithoutHearingRespondent2: {
+            deterWithoutHearingWhyNot: `Determination without hearing reason - ${defendantSolicitorParty.key}`,
+            deterWithoutHearingYesNo: 'No'
+          }
+        }
+      };
+    }
+  }
+
+  return {};
+}
+
 const upload = (defenceDocument: UploadDocumentValue, defendantSolicitorParty: Party) => {
   if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
     return {
@@ -440,6 +466,7 @@ const defendantResponseDataComponents = {
   solicitorReferences,
   upload,
   fastTrackDq,
+  deterWithoutHearing,
   experts,
   witnesses,
   language,
