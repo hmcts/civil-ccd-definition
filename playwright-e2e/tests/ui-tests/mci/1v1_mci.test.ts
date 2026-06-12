@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('1v1 - Manage Contact Information', async () => {
-  test('1v1 - Manage Contact Information @debug', async ({
+  test('1v1 - Manage Contact Information', async ({
     ClaimantSolicitorApiSteps, 
     CaseRoleAssignmentApiSteps, 
     DefendantSolicitor1ApiSteps,
