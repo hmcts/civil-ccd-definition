@@ -43,7 +43,7 @@ export class TestingEndPointHelper {
       const processInstanceId = await data.businessProcess.processInstanceId;
 
       if (camundaEventToCheckFor && camundaEvent !== camundaEventToCheckFor) {
-        status = 'NOT_FOUND';
+        status = 'NOT FOUND';
       }
 
       console.log( 'Waiting on event: ' + camundaEventToCheckFor + '. Current status is: ' + status);
