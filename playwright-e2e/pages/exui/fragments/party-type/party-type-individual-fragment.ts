@@ -62,8 +62,6 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
       inputs.lastName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
 
-    // revert when team confirm if defendant should have dob visible
-
     if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
       await this.dateOfBirthFragment.enterDate(
         this.claimantDefendantParty,
