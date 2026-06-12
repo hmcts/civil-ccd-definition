@@ -1,6 +1,7 @@
 import BasePageFactory from '../../../../base/base-page-factory.ts';
 import EvidenceUploadPage from './evidence-upload/evidence-upload-page.ts';
 import DocumentSelectionSmallClaimPage from './document-selection-small-claim/document-selection-small-claim-page.ts';
+import DocumentSelectionFastTrackPage from './document-selection-fast-track/document-selection-fast-track-page.ts';
 import DocumentUploadPage from './document-upload/document-upload-page.ts';
 import EvidenceUploadSubmitPage from './evidence-upload-submit/evidence-upload-applicant-submit-page.ts';
 import EvidenceUploadConfirmPage from './evidence-upload-confirm/evidence-upload-confirm-page.ts';
@@ -17,6 +18,14 @@ export default class EvidenceUploadPageFactory extends BasePageFactory {
 
   get documentSelectionSmallClaimDS1Page() {
     return new DocumentSelectionSmallClaimPage(this.page, partys.DEFENDANT_SOLICITOR_1);
+  }
+
+  get documentSelectionFastTrackClaimantPage() {
+    return new DocumentSelectionFastTrackPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get documentSelectionFastTrackDS1Page() {
+    return new DocumentSelectionFastTrackPage(this.page, partys.DEFENDANT_SOLICITOR_1);
   }
 
   get documentUploadClaimantPage() {

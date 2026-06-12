@@ -30,6 +30,14 @@ export default class EvidenceUploadApplicantActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async documentSelectionFastTrack() {
+    const { documentSelectionFastTrackClaimantPage } = this.evidenceUploadPageFactory;
+    await documentSelectionFastTrackClaimantPage.verifyContent();
+    await documentSelectionFastTrackClaimantPage.selectWitnessStatement();
+    await documentSelectionFastTrackClaimantPage.submit();
+  }
+
+  @Step(classKey)
   async documentUpload() {
     const { documentUploadClaimantPage } = this.evidenceUploadPageFactory;
     await documentUploadClaimantPage.verifyContent();

@@ -1195,6 +1195,24 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "FastTrackDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackDisclosureOfDocuments",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "FastTrackDisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackDisclosureOfDocuments",
+    "ListElementCode": "date3",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "hwfFeeType = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
     "ID": "FastTrackWitnessOfFact",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackWitnessOfFact",
