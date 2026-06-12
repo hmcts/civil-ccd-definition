@@ -41,33 +41,35 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
   }
 
   async enterIndividualDetails(update?: boolean) {
-
     const individualData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
       this.claimantDefendantPartyType,
       update,
     );
 
-      await super.inputText(
-        individualData.individualTitle,
-        inputs.title.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
-      );
+    await super.inputText(
+      individualData.individualTitle,
+      inputs.title.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
+    );
 
-      await super.inputText(
-        individualData.individualFirstName,
-        inputs.firstName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
-      );
+    await super.inputText(
+      individualData.individualFirstName,
+      inputs.firstName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
+    );
 
-      await super.inputText(
-        individualData.individualLastName,
-        inputs.lastName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
-      );
+    await super.inputText(
+      individualData.individualLastName,
+      inputs.lastName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
+    );
 
+    // revert when team confirm if defendant should have dob visible
+
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
       await this.dateOfBirthFragment.enterDate(
         this.claimantDefendantParty,
         this.claimantDefendantPartyType,
-      )
-
+      );
+    }
 
     await super.inputText(
       individualData.partyEmail,
@@ -78,7 +80,7 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
       individualData.partyPhone,
       inputs.phone.selector(this.claimantDefendantParty),
     );
-}
+  }
 
   async submit() {
     throw new Error('Method not implemented.');
