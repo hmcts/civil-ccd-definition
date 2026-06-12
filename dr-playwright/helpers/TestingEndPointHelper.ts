@@ -57,7 +57,7 @@ export class TestingEndPointHelper {
         intervals: apiRetries.intervals,
         timeout: apiRetries.timeout,
         message: camundaEventToCheckFor ? `The camunda event: ${camundaEventToCheckFor} did not start within the allowed timeframe` : '',
-      }).toEqual('FINISHED');
+      }).toBe('FINISHED');
   };
 
   async serviceRequestUpdateClaimIssued(caseId: string) {

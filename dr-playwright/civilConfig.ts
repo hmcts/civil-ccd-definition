@@ -67,7 +67,7 @@ export const systemupdate = {
 }
 
 export const apiRetries = {
-  intervals: [1000, 2500, 5000, 10000, 15000, 20000, 30000, 40000, 50000, 55000, 65000, 80000, 90000, 100000,115000],
+  intervals: [1000, 2500, 5000],
   timeout: 120000
 }
 
