@@ -18,6 +18,8 @@ import config from '../../../e2e/config';
 import { NotifyClaim } from '../flows/events/NotifyClaim.ts';
 import notifyClaimOptions from '../../enums/notifyClaimOptions.ts';
 import { NotifyClaimDetails } from '../flows/events/NotifyClaimDetails.ts';
+import responseIntentions from '../../enums/ResponseIntention.ts';
+import { AcknowledgeClaim } from '../flows/events/AcknowledgeClaim.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -32,10 +34,14 @@ const env = cleanEnv({
     values: [notifyClaimOptions.BOTH, notifyClaimOptions.DEFENDANT1, notifyClaimOptions.DEFENDANT2],
     default: notifyClaimOptions.BOTH,
   }),
-
+  RESPONSE_INTENTION: enums({
+    values: [responseIntentions.FULL_DEFENCE, responseIntentions.PART_DEFENCE, responseIntentions.CONTEST_JURISDICTION],
+    default: responseIntentions.FULL_DEFENCE,
+  }),
 });
 const claimType: claimTypes = env.CLAIM_TYPE;
 const runningEnvironment: environment = env.ENVIRONMENT;
+const responseIntention: responseIntentions = env.RESPONSE_INTENTION;
 const caseType: string = 'UNSPECIFIED';
 const claimantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.CLAIMANT_TYPE) ? process.env.CLAIMANT_TYPE : 'INDIVIDUAL';
 const defendantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.DEFENDANT_TYPE) ? process.env.DEFENDANT_TYPE : 'INDIVIDUAL';
@@ -194,4 +200,10 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
 
   });
+
+  test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
+  test('Defendant Solicitor acknowledges claim with response intention of ' + responseIntention, async ({ page }) => {
+    await new AcknowledgeClaim(page).acknowledge(claimType, responseIntention);
+  });
+
 });

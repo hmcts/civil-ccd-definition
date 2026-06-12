@@ -34,12 +34,12 @@ test.beforeEach(async ({ page }) => {
     await page.context().storageState({ path: claimantSolicitorAuthFile });
   });
 
-  // setup("Authenticate Respondent1 Solicitor", async ({ page }) => {
-  //   await idamPage.login(respondent1SolicitorCredentials);
-  //   await expect(page.locator(caseListLocator)).toContainText(caseList);
-  //   await page.context().storageState({ path: respondent1SolicitorAuthFile });
-  // });
-  //
+  setup("Authenticate Respondent1 Solicitor", async ({ page }) => {
+    await idamPage.login(respondent1SolicitorCredentials);
+    await expect(page.locator(caseListLocator)).toContainText(caseList);
+    await page.context().storageState({ path: respondent1SolicitorAuthFile });
+  });
+
   // if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL) {
   //   setup("Authenticate Respondent2 Solicitor", async ({ page }) => {
   //     await idamPage.login(respondent2SolicitorCredentials);
