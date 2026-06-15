@@ -29,11 +29,13 @@ Scenario('01 1v1 Applicant solicitor creates specified claim for fast track-spec
   //await LRspec.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 
-  await I.login(config.applicantSolicitorUser);
+  await waitForFinishedBusinessProcess(caseNumber);
+
   await I.navigateToCaseDetails(caseNumber);
   await I.waitForText('Summary');
+
   await claimDocumentHelper.viewAndAssertPdf(I, 'sealed_claim_form', TEST_DIRECTORY, BASELINE_DIRECTORY, SEALED_CLAIM_PDF);
-}).retry(2);
+});
 
 Scenario('02 1v1 Defendant solicitor perform Inform Agreed Extension', async ({ LRspec, I }) => {
   console.log('1v1 Defendant solicitor Inform Agreed Extension claim-spec: ' + caseNumber);
@@ -42,7 +44,7 @@ Scenario('02 1v1 Defendant solicitor perform Inform Agreed Extension', async ({ 
   //await LRspec.informAgreedExtensionDateSpec();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Inform agreed extension date')); 
-}).retry(2);
+});
 
 Scenario('03 1v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({ LRspec, I }) => {
   await LRspec.login(config.defendantSolicitorUser);
@@ -60,7 +62,7 @@ Scenario('03 1v1 Respond To Claim - Defendants solicitor rejects claim for defen
 
   await claimDocumentHelper.viewAndAssertPdf(I, 'defendant_directions_questionnaire_form', TEST_DIRECTORY, BASELINE_DIRECTORY, DEFENDANT_DIRECTIONS_QUESTIONNAIRE_PDF);
   await claimDocumentHelper.viewAndAssertPdf(I, 'response_sealed_form', TEST_DIRECTORY, BASELINE_DIRECTORY, DEFENDANT_DEFENCE_PDF);
-}).retry(2);
+});
 
 Scenario('04 1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({ LRspec, I }) => {
   await LRspec.login(config.applicantSolicitorUser);
@@ -70,7 +72,7 @@ Scenario('04 1v1 Claimant solicitor responds to defence - claimant Intention to 
   await I.waitForText('Summary');
 
   await claimDocumentHelper.viewAndAssertPdf(I, 'claimant_directions_questionnaire_form', TEST_DIRECTORY, BASELINE_DIRECTORY, CLAIMANT_DIRECTIONS_QUESTIONNAIRE_PDF);
-}).retry(2);
+});
 
 
 AfterSuite(async () => {
