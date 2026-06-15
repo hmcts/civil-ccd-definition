@@ -64,6 +64,13 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildSmallTrack1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
   protected async buildData({
     claimType = ClaimType.ONE_VS_ONE,
     claimTrack = ClaimTrack.FAST_CLAIM,
@@ -74,11 +81,15 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     claimantResponseType?: ClaimantResponseSpecType;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
-    const defenceResponseDocumentSpec = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+    const defenceResponseDocumentSpec =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
 
     return {
       ...claimantResponseSpecData.defendantResponse(claimType, claimantResponseType),
-      ...claimantResponseSpecData.claimantDefenceResponseDocument(defenceResponseDocumentSpec, claimantResponseType),
+      ...claimantResponseSpecData.claimantDefenceResponseDocument(
+        defenceResponseDocumentSpec,
+        claimantResponseType,
+      ),
       ...claimantResponseSpecData.mediationContactInformation(claimTrack, claimantResponseType),
       ...claimantResponseSpecData.mediationAvailability(claimTrack, claimantResponseType),
       ...claimantResponseSpecData.determinationWithoutHearing(claimTrack, claimantResponseType),

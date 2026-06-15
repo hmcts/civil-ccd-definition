@@ -5,7 +5,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import { Party } from '../../../../../../../models/users/partys.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { heading, inputs } from './upload-draft-directions-content.ts';
+import { inputs } from './upload-draft-directions-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
