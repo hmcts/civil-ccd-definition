@@ -223,7 +223,7 @@ const CASE_HEADER = 'ccd-markdown >> h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*=\'navigation-list\'] a';
 const CASE_DETAILS_TAB = '.mat-tab-labels';
-const CLAIM_DOCUMENTS_TAB = '.mat-tab-label:has-text("Claim Documents")';
+const CLAIM_DOCUMENTS_TAB = '.mat-tab-label:has-text("Claim documents")';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const TEST_FILE_PATH_DOC = './e2e/fixtures/exampleDOC.docx';
@@ -1319,14 +1319,16 @@ module.exports = function () {
       const pdfPaths = pdfHelper.getPdfPaths(testDir, baselineDir, pdfName);
 
       await this.navigateToCaseDetails(caseNumber);
-      await this.waitForText('Summary');
-
-      await this.click(CLAIM_DOCUMENTS_TAB);
+      await this.retryUntilExists(async () => {
+        await this.refreshPage();
+        await this.waitForSelector(CASE_DETAILS_TAB);
+        await this.click(CLAIM_DOCUMENTS_TAB);
+      }, `button:has-text("${documentName}")`, 3, 10);
       let newPagePromise;
       await this.usePlaywrightTo('register new tab listener', async ({ browserContext }) => {
         newPagePromise = browserContext.waitForEvent('page', { timeout: 30000 });
       });
-      await this.click(documentName);
+      await this.click(`button:has-text("${documentName}")`);
       await this.usePlaywrightTo('wait for new tab', async () => {
         await newPagePromise;
       });
