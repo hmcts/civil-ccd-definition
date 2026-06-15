@@ -50,6 +50,21 @@ const applicantDefenceResponseDocument = (claimType: ClaimType, defenceResponseD
   };
 };
 
+const deterWithHearing = (claimTrack: ClaimTrack) => {
+  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+    return {
+      DeterminationWithoutHearing: {
+        deterWithoutHearing: {
+          deterWithoutHearingWhyNot: `Determination without hearing reason - ${partys.CLAIMANT_1.key}`,
+          deterWithoutHearingYesNo: 'No'
+        }
+      }
+    }
+  }
+
+  return {};
+}
+
 const fastTrackDq = (claimTrack: ClaimTrack) => {
   if (claimTrack === ClaimTrack.FAST_CLAIM) {
     return {
@@ -190,6 +205,7 @@ const claimantResponseDataComponents = {
   respondentResponse,
   applicantDefenceResponseDocument,
   fastTrackDq,
+  deterWithHearing,
   experts,
   witnesses,
   language,
