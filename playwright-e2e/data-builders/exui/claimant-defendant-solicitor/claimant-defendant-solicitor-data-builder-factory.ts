@@ -6,6 +6,8 @@ import ClaimantResponseDataBuilder from './claimant-response/unspec/claimant-res
 import ClaimantResponseSpecDataBuilder from './claimant-response/lr-spec/claimant-response-spec-data-builder';
 import DefendantResponseDataBuilder from './defendant-response/unspec/defendant-response-data-builder';
 import DefendantResponseSpecDataBuilder from './defendant-response/lr-spec/defendant-response-spec-data-builder';
+import EvidenceUploadApplicantDataBuilder from './evidence-upload-applicant/unspec/evidence-upload-applicant-data-builder';
+import EvidenceUploadRespondentDataBuilder from './evidence-upload-respondent/unspec/evidence-upload-respondent-data-builder';
 import CreateClaimSpecDataBuilder from './create-claim/lr-spec/create-claim-spec-data-builder';
 import CreateClaimDataBuilder from './create-claim/unspec/create-claim-data-builder';
 import InformAgreedExtensionDateDataBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-data-builder';
@@ -49,6 +51,14 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
 
   get defendantResponseSpecDataBuilder() {
     return new DefendantResponseSpecDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get evidenceUploadApplicantDataBuilder() {
+    return new EvidenceUploadApplicantDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get evidenceUploadRespondentDataBuilder() {
+    return new EvidenceUploadRespondentDataBuilder(this.requestsFactory, this.testData);
   }
 
   get claimantResponseDataBuilder() {

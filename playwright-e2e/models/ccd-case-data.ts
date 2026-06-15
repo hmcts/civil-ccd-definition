@@ -15,6 +15,7 @@ export default interface CCDCaseData {
   caseFlags?: CaseFlags;
   claimFee?: ClaimFee;
   notificationSummary?: string;
+  hearingDueDate?: string;
   respondent1Experts?: ExpertAndWitness[];
   respondent1Witnesses?: ExpertAndWitness[];
   respondent2Experts?: ExpertAndWitness[];
