@@ -34,14 +34,19 @@ const env = cleanEnv({
     values: [notifyClaimOptions.BOTH, notifyClaimOptions.DEFENDANT1, notifyClaimOptions.DEFENDANT2],
     default: notifyClaimOptions.BOTH,
   }),
-  RESPONSE_INTENTION: enums({
+  RESPONDENT1_RESPONSE_INTENTION: enums({
+    values: [responseIntentions.FULL_DEFENCE, responseIntentions.PART_DEFENCE, responseIntentions.CONTEST_JURISDICTION],
+    default: responseIntentions.FULL_DEFENCE,
+  }),
+  RESPONDENT2_RESPONSE_INTENTION: enums({
     values: [responseIntentions.FULL_DEFENCE, responseIntentions.PART_DEFENCE, responseIntentions.CONTEST_JURISDICTION],
     default: responseIntentions.FULL_DEFENCE,
   }),
 });
 const claimType: claimTypes = env.CLAIM_TYPE;
 const runningEnvironment: environment = env.ENVIRONMENT;
-const responseIntention: responseIntentions = env.RESPONSE_INTENTION;
+const respondent1ResponseIntention: responseIntentions = env.RESPONDENT1_RESPONSE_INTENTION;
+const respondent2ResponseIntention: responseIntentions = env.RESPONDENT2_RESPONSE_INTENTION;
 const caseType: string = 'UNSPECIFIED';
 const claimantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.CLAIMANT_TYPE) ? process.env.CLAIMANT_TYPE : 'INDIVIDUAL';
 const defendantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.DEFENDANT_TYPE) ? process.env.DEFENDANT_TYPE : 'INDIVIDUAL';
@@ -51,7 +56,7 @@ const defendantsToNotify: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY;
 const litigantFriend: yesNo = ['Yes'].includes(process.env.LITIGANT_FRIEND) ? yesNo.YES : yesNo.NO;
 
 let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? process.env.TRACK : 'FAST_CLAIM';
-let caseId: string = '1780689274737216';
+let caseId: string = '1781526388168210';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -198,12 +203,25 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS');
 
     await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
-
   });
 
-  test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
-  test('Defendant Solicitor acknowledges claim with response intention of ' + responseIntention, async ({ page }) => {
-    await new AcknowledgeClaim(page).acknowledge(claimType, responseIntention);
+
+  if (claimType === claimTypes.ONE_VS_ONE || claimType === claimTypes.ONE_VS_TWO_SAME_SOL || claimType === claimTypes.ONE_VS_TWO_DIFF_SOL || claimType === claimTypes.TWO_VS_ONE || claimType === claimTypes.ONE_VS_TWO_LR_LIP) {
+    test.describe('test2', { tag: '@unspecified' }, () => {
+      test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
+      test('Defendant 1 Solicitor acknowledges claim.', async ({ page }) => {
+        await new AcknowledgeClaim(page).acknowledge(claimType, respondent1ResponseIntention, respondent2ResponseIntention , 1);
+      });
+    });
+  }
+
+
+  test.describe('test3', { tag: '@unspecified' }, () => {
+    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
+    test('Defendant 2 Solicitor acknowledges claim.', async ({ page }) => {
+      test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
+      await new AcknowledgeClaim(page).acknowledge(claimType, respondent1ResponseIntention, respondent2ResponseIntention, 2);
+    });
   });
 
 });

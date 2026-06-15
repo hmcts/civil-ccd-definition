@@ -87,7 +87,6 @@ export class TestingEndPointHelper {
       });
 
       if (!response.ok()) {
-        console.log(stringify(await response.json()));
         const errorText = await response.text();
         throw new Error(
           `Failed to create appeal: ${response.status()} - ${errorText}. Ensure your VPN is connected or check your URL/SECRET.`
@@ -106,22 +105,21 @@ export class TestingEndPointHelper {
   }
 
   async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes) {
-    let assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/`;
+    const assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/`;
     const apiRequestContext: APIRequestContext = await request.newContext();
-    let response;
+    let response: APIResponse;
     try {
       if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL) {
         console.log('Assigning Defendant 1 Legal Representative to the claim...');
         await this.getTokens(respondent1SolicitorCredentials);
-        assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORONE`;
-        response = await apiRequestContext.post(assignCaseUrl, {
+
+        response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORONE`, {
           headers: this.getHeaders()
         });
         if (response.ok()) {
           console.log('Assigning Defendant 2 Legal Representative to the claim...');
           await this.getTokens(respondent2SolicitorCredentials);
-          assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORTWO`;
-          response = await apiRequestContext.post(assignCaseUrl, {
+          response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORTWO`, {
             headers: this.getHeaders()
           });
           if (!response.ok()) {
@@ -135,8 +133,7 @@ export class TestingEndPointHelper {
       if (claimType == claimTypes.ONE_VS_TWO_LIP_LR) {
         console.log('Assigning Defendant 2 Legal Representative to the claim...');
         await this.getTokens(respondent2SolicitorCredentials);
-        assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORTWO`;
-        response = await apiRequestContext.post(assignCaseUrl, {
+        response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORTWO`, {
           headers: this.getHeaders()
         });
         if (!response.ok()) {
@@ -144,11 +141,10 @@ export class TestingEndPointHelper {
         }
       }
 
-      if (claimType == claimTypes.ONE_VS_TWO_LR_LIP || claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.ONE_VS_TWO_SAME_SOL) {
+      if (claimType == claimTypes.ONE_VS_TWO_LR_LIP || claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.TWO_VS_ONE || claimType == claimTypes.ONE_VS_TWO_SAME_SOL) {
         console.log('Assigning Defendant 1 Legal Representative to the claim...');
         await this.getTokens(respondent1SolicitorCredentials);
-        assignCaseUrl = `${assignCaseUrl}RESPONDENTSOLICITORONE`;
-        response = await apiRequestContext.post(assignCaseUrl, {
+        response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORONE`, {
           headers: this.getHeaders()
         });
         if (!response.ok()) {

@@ -1,7 +1,7 @@
   enum ResponseIntention {
-  FULL_DEFENCE = 'Defend part of the claim',
-  PART_DEFENCE = 'Defend part of the claim',
-  CONTEST_JURISDICTION = 'Contest jurisdiction',
+  FULL_DEFENCE = 'FULL_DEFENCE',
+  PART_DEFENCE = 'PART_DEFENCE',
+  CONTEST_JURISDICTION = 'CONTEST_JURISDICTION',
 }
 
 export default ResponseIntention;

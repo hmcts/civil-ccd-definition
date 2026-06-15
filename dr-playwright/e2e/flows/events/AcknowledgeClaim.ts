@@ -25,23 +25,57 @@ export class AcknowledgeClaim {
     this.pageHelper = new PageHelper(this.page);
   }
 
-  async acknowledge(claimType: claimTypes, responseIntention: ResponseIntention) {
+  async acknowledge(claimType: claimTypes, respondent1ResponseIntention: ResponseIntention, respondent2ResponseIntention: ResponseIntention, defendantNumber: number = 1) {
     const acknowledgeClaimButton = this.page.getByRole('button', { name: 'Acknowledge claim'});
     let legalRepresentativeReference: string;
     await this.pageHelper.selectNextStep('Acknowledge claim');
 
-    await this.page.locator('#individualDateOfBirth-day').fill(partyDetails.defendant1.DOB_day);
-    await this.page.locator('#individualDateOfBirth-month').fill(partyDetails.defendant1.DOB_month);
-    await this.page.locator('#individualDateOfBirth-year').fill(partyDetails.defendant1.DOB_year);
+    if (claimType !== claimTypes.ONE_VS_TWO_LIP_LR) { // remove if statement when DTSCCI-672 is merged
+      await this.page.locator('#individualDateOfBirth-day').fill(partyDetails.defendant1.DOB_day);
+      await this.page.locator('#individualDateOfBirth-month').fill(partyDetails.defendant1.DOB_month);
+      await this.page.locator('#individualDateOfBirth-year').fill(partyDetails.defendant1.DOB_year);
+    }
     await this.buttonHelper.continueButton.click();
 
-    await this.page.locator(`#respondent1ClaimResponseIntentionType-${responseIntention}`).click();
+    switch (claimType) {
+      case claimTypes.ONE_VS_ONE:
+      case claimTypes.ONE_VS_TWO_DIFF_SOL:
+      case claimTypes.ONE_VS_TWO_LR_LIP:
+      case claimTypes.ONE_VS_TWO_LIP_LR:
+        console.log(`#respondent1ClaimResponseIntentionType-${respondent1ResponseIntention}`);
+        if (defendantNumber === 1) {
+          await this.page.locator(`#respondent1ClaimResponseIntentionType-${respondent1ResponseIntention}`).click();
+        } else {
+          await this.page.locator(`#respondent2ClaimResponseIntentionType-${respondent2ResponseIntention}`).click();
+        }
+        break;
+      case claimTypes.TWO_VS_ONE:
+        await this.page.locator(`#respondent1ClaimResponseIntentionType-${respondent1ResponseIntention}`).click();
+        await this.page.locator(`#respondent1ClaimResponseIntentionTypeApplicant2-${respondent2ResponseIntention}`).click();
+        break;
+      case claimTypes.ONE_VS_TWO_SAME_SOL:
+        await this.page.locator(`#respondent1ClaimResponseIntentionType-${respondent1ResponseIntention}`).click();
+        await this.page.locator(`#respondent2ClaimResponseIntentionType-${respondent2ResponseIntention}`).click();
+        break;
+      // case claimTypes.ONE_VS_TWO_LIP_LR:
+      //   if (defendantNumber === 2) {
+      //     await this.page.locator(`#respondent2ClaimResponseIntentionType-${respondent2ResponseIntention}`).click();
+      //   }
+      //   break;
+    }
+
     await this.buttonHelper.continueButton.click();
-    legalRepresentativeReference =  await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').innerText();
-    await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').fill(`${legalRepresentativeReference} - acknowledge claim`);
+
+    if (defendantNumber === 1) {
+      legalRepresentativeReference =  await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').innerText();
+      await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').fill(`${legalRepresentativeReference} - acknowledge claim`);
+    } else {
+      legalRepresentativeReference = await this.page.locator('#respondentSolicitor2Reference').innerText();
+      await this.page.locator('#respondentSolicitor2Reference').fill(`${legalRepresentativeReference} - acknowledge claim`);
+    }
+
     await this.buttonHelper.continueButton.click();
     await acknowledgeClaimButton.click();
-
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
   };
 
