@@ -3,7 +3,6 @@ import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import {
   radioButtons,
-  paragraphs,
   subheadings,
 } from '../respondent-response/respondent-response-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';

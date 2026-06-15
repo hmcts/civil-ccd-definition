@@ -247,8 +247,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse1v2DSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
@@ -319,7 +319,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
-  async EvidenceUploadApplicant() {
+  async EvidenceUploadSmallClaim() {
     const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {

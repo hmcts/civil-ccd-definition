@@ -211,6 +211,7 @@ export interface ClaimantDefendant {
   individualTitle?: string;
   individualLastName?: string;
   individualFirstName?: string;
+  individualDateOfBirth?: string;
   partyTypeDisplayValue?: string;
 }
 

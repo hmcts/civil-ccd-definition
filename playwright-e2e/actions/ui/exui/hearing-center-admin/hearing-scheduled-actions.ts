@@ -13,10 +13,18 @@ export default class HearingScheduledActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async hearingNoticeSelect() {
+  async hearingNoticeSmallClaim() {
     const { hearingNoticeSelectPage } = this.hearingScheduledPageFactory;
     await hearingNoticeSelectPage.verifyContent();
-    await hearingNoticeSelectPage.selectSmallClaimsHearing();
+    await hearingNoticeSelectPage.selectSmallClaims();
+    await hearingNoticeSelectPage.submit();
+  }
+
+  @Step(classKey)
+  async hearingNoticeTrail() {
+    const { hearingNoticeSelectPage } = this.hearingScheduledPageFactory;
+    await hearingNoticeSelectPage.verifyContent();
+    await hearingNoticeSelectPage.selectTrail();
     await hearingNoticeSelectPage.submit();
   }
 
