@@ -26,7 +26,7 @@ export default class SdoActions extends BaseTestData {
     await sdoPage.submit();
   }
 
-  async selectSmallTrack() {
+  async selectSmallTrackSum() {
     const { claimsTrackSmallPage } = this.sdoPageFactory;
     await claimsTrackSmallPage.verifyContent(this.ccdCaseData);
     await claimsTrackSmallPage.selectYes();
@@ -51,6 +51,13 @@ export default class SdoActions extends BaseTestData {
     const { claimsTrackPage } = this.sdoPageFactory;
     await claimsTrackPage.verifyContent(this.ccdCaseData);
     await claimsTrackPage.selectFastTrack();
+    await claimsTrackPage.submit();
+  }
+
+  async selectSmallClaimNoSum() {
+    const { claimsTrackPage } = this.sdoPageFactory;
+    await claimsTrackPage.verifyContent(this.ccdCaseData);
+    await claimsTrackPage.selectSmallClaims();
     await claimsTrackPage.submit();
   }
 

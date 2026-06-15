@@ -29,7 +29,7 @@ const claimsTrack = (sdoType: SdoType) => {
   if(sdoType === SdoType.FAST_TRACK)
     return {
       ClaimsTrack: {
-        claimTrack: 'fastTrack',
+        claimsTrack: 'fastTrack',
         trialAdditionalDirectionsForFastTrack: [
           'fastClaimBuildingDispute',
           'fastClaimClinicalNegligence',
@@ -62,6 +62,21 @@ const claimsTrack = (sdoType: SdoType) => {
         ]
       }
     }
+   else if(sdoType === SdoType.SMALL_TRACK_NO_SUM)
+    return {
+      ClaimsTrack: {
+        claimsTrack: 'smallClaimsTrack',
+        smallClaims: [
+          "smallClaimCreditHire",
+          "smallClaimFlightDelay",
+          "smallClaimHousingDisrepair",
+          "smallClaimPPI",
+          "smallClaimRoadTrafficAccident"
+        ],
+      },
+    };
+
+  return {};
 }
 
 const orderType = (sdoType: SdoType) => {
@@ -201,7 +216,7 @@ const fastTrack = (sdoType: SdoType) => {
 };
 
 const smallClaims = (sdoType: SdoType) => {
-  if (sdoType === SdoType.SMALL_TRACK_SUM) {
+  if (sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM) {
     const claimantDefaultCourt = CaseDataHelper.setCodeToData(
       preferredCourts[partys.CLAIMANT_1.key].default,
     );

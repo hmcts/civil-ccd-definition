@@ -40,7 +40,7 @@ export default class JudgeSteps extends BaseExui {
     await super.retryWAEvent(
       async () => {
         await sdoActions.enterJudgementYes();
-        await sdoActions.selectSmallTrack();
+        await sdoActions.selectSmallTrackSum();
         await sdoActions.smallTrackDetails();
         await sdoActions.orderPreview();
         await sdoActions.submitSdo();
@@ -54,12 +54,32 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
+  async SdoSmallTrackNoSum() {
+    const { sdoActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await sdoActions.enterJudgementNo();
+        await sdoActions.selectSmallClaimNoSum();
+        await sdoActions.smallTrackDetails();
+        await sdoActions.orderPreview();
+        await sdoActions.submitSdo();
+      },
+      async () => {
+        await sdoActions.confirmSdo();
+      },
+      ccdEvents.CREATE_SDO,
+      judgeRegion1User,
+      smallClaimDirectionsTask,
+    );
+  }
+
+
   async SdoSmallTrackFromFastTrackClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
         await sdoActions.enterJudgementYes();
-        await sdoActions.selectSmallTrack();
+        await sdoActions.selectSmallTrackSum();
         await sdoActions.smallTrackDetails();
         await sdoActions.orderPreview();
         await sdoActions.submitSdo();

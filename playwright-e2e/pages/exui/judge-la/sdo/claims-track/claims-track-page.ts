@@ -26,7 +26,6 @@ export default class ClaimsTrackPage extends ExuiPage(BasePage) {
     ]);
     await super.clickBySelector(checkboxes.smallClaims.creditHire.selector);
     await super.clickBySelector(checkboxes.smallClaims.roadTrafficAccident.selector);
-    await super.clickBySelector(checkboxes.smallClaims.disputeResolutionHearing.selector);
     await super.clickBySelector(checkboxes.smallClaims.flightDelay.selector);
   }
 

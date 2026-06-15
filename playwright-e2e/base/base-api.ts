@@ -110,8 +110,6 @@ export default abstract class BaseApi extends BaseTestData {
       eventToken,
     );
 
-    FileSystemHelper.writeFile(eventData, 'eventData.json', FileType.JSON, {force: true})
-
     const eventCaseData = await ccdRequests.submitEvent(
       user,
       ccdEvent,
