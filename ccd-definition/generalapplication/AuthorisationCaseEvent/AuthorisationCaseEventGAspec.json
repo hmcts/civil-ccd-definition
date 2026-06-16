@@ -432,5 +432,44 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "TRIGGER_APPLICATION_PROCEEDS_IN_HERITAGE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAIN_CASE_CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPLICATION_PROCEEDS_IN_HERITAGE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
