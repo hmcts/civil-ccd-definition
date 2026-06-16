@@ -1324,13 +1324,11 @@ module.exports = function () {
         await this.waitForSelector(CASE_DETAILS_TAB);
         await this.click(CLAIM_DOCUMENTS_TAB);
       }, `button:has-text("${documentName}")`, 3, 10);
-      let newPagePromise;
-      await this.usePlaywrightTo('register new tab listener', async ({ browserContext }) => {
-        newPagePromise = browserContext.waitForEvent('page', { timeout: 30000 });
-      });
-      await this.click(`button:has-text("${documentName}")`);
-      await this.usePlaywrightTo('wait for new tab', async () => {
-        await newPagePromise;
+      await this.usePlaywrightTo('open document in new tab', async ({ page, browserContext }) => {
+        const newPagePromise = browserContext.waitForEvent('page', { timeout: 30000 });
+        await page.click(`button:has-text("${documentName}")`);
+        const newPage = await newPagePromise;
+        await newPage.waitForLoadState();
       });
       await this.switchToNextTab();
 

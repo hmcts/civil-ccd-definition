@@ -23,11 +23,16 @@ function ensureCleanDir(dir) {
 }
 
 function renderPdfPagesToPng(pdfFile, outputDir) {
+  try {
+    execFileSync('pdftoppm', ['-v'], { stdio: 'ignore' });
+  } catch {
+    throw new Error('pdftoppm not found. Install poppler: brew install poppler / apt-get install poppler-utils');
+  }
+
   ensureCleanDir(outputDir);
 
   const outputPrefix = path.join(outputDir, 'page');
 
-  // requires pdftoppm (poppler-utils): brew install poppler / apt-get install poppler-utils
   execFileSync('pdftoppm', ['-png', '-r', '150', pdfFile, outputPrefix]);
 
   return fs.readdirSync(outputDir)
@@ -283,9 +288,9 @@ function getPdfPaths(testDir, baselineDir, pdfName) {
   return {
     actualFile: path.join(testDir, 'downloads/actual', pdfName),
     expectedFile: path.join(baselineDir, pdfName),
-    actualPngDir: path.join(testDir, 'data/actualPngs'),
-    expectedPngDir: path.join(testDir, 'data/expectedPngs'),
-    diffPngDir: path.join(testDir, 'data/diffPngs')
+    actualPngDir: path.join(testDir, 'data/actualPngs', pdfName),
+    expectedPngDir: path.join(testDir, 'data/expectedPngs', pdfName),
+    diffPngDir: path.join(testDir, 'data/diffPngs', pdfName)
   };
 }
 
