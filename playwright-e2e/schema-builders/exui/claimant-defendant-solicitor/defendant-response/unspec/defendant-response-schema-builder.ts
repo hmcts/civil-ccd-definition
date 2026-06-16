@@ -12,6 +12,16 @@ import { Party } from '../../../../../models/users/partys';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
+  async buildDS1SmallTrackFullDefence1v1(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      claimType: ClaimType.ONE_VS_ONE,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
   async buildDS1FastTrackFullDefence2v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -74,6 +84,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
       ),
       defendantResponseSchemaComponents.solicitorReferences,
       defendantResponseSchemaComponents.upload,
+      defendantResponseSchemaComponents.deterWithoutHearing(claimTrack, defendantSolicitorParty),
       defendantResponseSchemaComponents.fastTrackDq(claimTrack, defendantSolicitorParty),
       defendantResponseSchemaComponents.experts(defendantSolicitorParty),
       defendantResponseSchemaComponents.witnesses(defendantSolicitorParty),
