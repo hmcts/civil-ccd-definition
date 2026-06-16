@@ -21,7 +21,7 @@
     "RoleName" : "idam:caseworker-civil-staff",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
-    "AccessProfiles": "caseworker-civil-staff",
+    "AccessProfiles": "caseworker-civil-staff,ga-basic-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
