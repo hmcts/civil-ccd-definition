@@ -13,6 +13,7 @@ import DefendantSolicitor2ApiSteps from '../../steps/api/exui/defendant-solicito
 import DataApiSteps from '../../steps/api/data-api-steps';
 import HearingCenterAdminApiSteps from '../../steps/api/exui/hearing-center-admin-api-steps';
 import JudgeApiSteps from '../../steps/api/exui/judge-api-steps';
+import LegalAdvisorApiSteps from '../../steps/api/exui/legal-advisor-api-steps';
 
 type ApiStepsFixtures = {
   IdamApiSteps: IdamApiSteps;
@@ -27,6 +28,7 @@ type ApiStepsFixtures = {
   DefendantSolicitor2SpecApiSteps: DefendantSolicitor2SpecApiSteps;
   DefendantSolicitor2ApiSteps: DefendantSolicitor2ApiSteps;
   CaseRoleAssignmentApiSteps: CaseRoleAssignmentApiSteps;
+  LegalAdvisorApiSteps: LegalAdvisorApiSteps;
 };
 
 export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).extend<ApiStepsFixtures>({
@@ -40,12 +42,7 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
     await use(new CaseworkerApiSteps(_caseworkerDataBuilderFactory, _caseworkerSchemaBuilderFactory, _requestsFactory, _testData));
   },
   HearingCenterAdminApiSteps: async ({ _hearingCenterAdminDataBuilderFactory, _hearingCenterAdminSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
-    await use(new HearingCenterAdminApiSteps(
-      _hearingCenterAdminDataBuilderFactory,
-      _hearingCenterAdminSchemaBuilderFactory,
-      _requestsFactory,
-      _testData,
-    ));
+    await use(new HearingCenterAdminApiSteps(_hearingCenterAdminDataBuilderFactory, _hearingCenterAdminSchemaBuilderFactory, _requestsFactory, _testData));
   },
   JudgeApiSteps: async ({ _judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new JudgeApiSteps(_judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData));
@@ -60,25 +57,18 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
     await use(new DefendantSolicitor1SpecApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
   DefendantSolicitor1ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor1ApiSteps(
-      _claimantDefendantSolicitorDataBuilderFactory,
-      _claimantDefendantSolicitorSchemaBuilderFactory,
-      _requestsFactory,
-      _testData,
-    ));
+    await use(new DefendantSolicitor1ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
   DefendantSolicitor2SpecApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor2SpecApiSteps(_requestsFactory, _testData));
   },
   DefendantSolicitor2ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor2ApiSteps(
-      _claimantDefendantSolicitorDataBuilderFactory,
-      _claimantDefendantSolicitorSchemaBuilderFactory,
-      _requestsFactory,
-      _testData,
-    ));
+    await use(new DefendantSolicitor2ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
   CaseRoleAssignmentApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new CaseRoleAssignmentApiSteps(_requestsFactory, _testData));
+  },
+  LegalAdvisorApiSteps: async ({ _requestsFactory, _testData }, use) => {
+    await use(new LegalAdvisorApiSteps(_requestsFactory, _testData));
   }
 });
