@@ -370,7 +370,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
