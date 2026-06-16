@@ -349,7 +349,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQRequestedCourt",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",

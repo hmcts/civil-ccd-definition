@@ -768,7 +768,7 @@
           "caseworker-civil-solicitor",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       },
       {
         "UserRoles": [

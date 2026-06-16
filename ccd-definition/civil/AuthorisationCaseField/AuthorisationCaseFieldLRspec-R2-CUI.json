@@ -453,7 +453,7 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },

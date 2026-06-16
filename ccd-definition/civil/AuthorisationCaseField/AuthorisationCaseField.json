@@ -848,7 +848,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "RU"
+        "CRUD": "R"
       },
       {
         "UserRoles": [
@@ -2968,7 +2968,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       },
       {
         "UserRoles": [
