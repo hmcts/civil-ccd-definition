@@ -54,6 +54,28 @@ const solicitorReferences = {};
 
 const upload = {};
 
+const deterWithoutHearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if (claimTrack === ClaimTrack.SMALL_CLAIM) {
+    if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+      return {
+        deterWithoutHearingRespondent1: z.strictObject({
+          deterWithoutHearingWhyNot: nonEmptyString,
+          deterWithoutHearingYesNo: yesNoSchema,
+        }).optional(),
+      };
+    } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+      return {
+        deterWithoutHearingRespondent2: z.strictObject({
+          deterWithoutHearingWhyNot: nonEmptyString,
+          deterWithoutHearingYesNo: yesNoSchema,
+        }).optional(),
+      };
+    }
+  }
+
+  return {};
+};
+
 const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   if (claimTrack === ClaimTrack.FAST_CLAIM) {
     return {
@@ -305,6 +327,7 @@ const defendantResponseSchemaComponents = {
   solicitorReferences,
   respondentResponseType,
   upload,
+  deterWithoutHearing,
   fastTrackDq,
   experts,
   witnesses,
