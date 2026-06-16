@@ -31,7 +31,7 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Max": 255
+    "Max": 250,
     "Searchable": "N"
   }
 ]
