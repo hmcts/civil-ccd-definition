@@ -94,7 +94,8 @@
     "PageID": "ConfirmDetails",
     "PageLabel": "Confirm defendant's name and address",
     "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
