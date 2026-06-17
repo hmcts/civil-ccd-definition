@@ -6,6 +6,7 @@ export default interface CCDCaseData {
   addRespondent2?: string;
   submittedDate?: string;
   solicitorReferences?: SolicitorReferences;
+  respondentSolicitor2Reference?: string;
   featureToggleWA?: string;
   respondent1OrgRegistered?: string;
   applicantSolicitor1UserDetails?: ApplicantSolicitor1UserDetails;
@@ -13,6 +14,8 @@ export default interface CCDCaseData {
   detailsOfClaim?: string;
   caseFlags?: CaseFlags;
   claimFee?: ClaimFee;
+  notificationSummary?: string;
+  hearingDueDate?: string;
   respondent1Experts?: ExpertAndWitness[];
   respondent1Witnesses?: ExpertAndWitness[];
   respondent2Experts?: ExpertAndWitness[];
@@ -208,6 +211,7 @@ export interface ClaimantDefendant {
   individualTitle?: string;
   individualLastName?: string;
   individualFirstName?: string;
+  individualDateOfBirth?: string;
   partyTypeDisplayValue?: string;
 }
 

@@ -168,6 +168,23 @@ const ccdEvents: CCDEvents = {
     description: 'Standard Directions Order (Judgment)',
     order: 18,
   },
+  REFER_JUDGE_DEFENCE_RECEIVED: {
+    id: 'REFER_JUDGE_DEFENCE_RECEIVED',
+    name: 'Refer to judge-defended claim',
+    description: 'Refer to judge-defended claim',
+    order: 19,
+  },
+  SET_ASIDE_JUDGMENT: {
+    id: 'SET_ASIDE_JUDGMENT',
+    name: 'Set aside judgment',
+    description: 'Set aside judgment',
+    order: 20,
+  },
+  GENERATE_DIRECTIONS_ORDER: {
+    id: 'GENERATE_DIRECTIONS_ORDER',
+    name: 'Make an order',
+    description: 'Make an order',
+  },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
     id: 'CLAIMANT_RESPONSE_SPEC',
@@ -227,6 +244,54 @@ const ccdEvents: CCDEvents = {
     name: 'Not suitable for SDO',
     description: 'Not suitable for SDO',
     order: 25,
+  },
+  MEDIATION_UNSUCCESSFUL: {
+    id: 'MEDIATION_UNSUCCESSFUL',
+    name: 'Mediation Unsuccessful',
+    description: 'Mediation unsuccessful',
+    order: 26,
+  },
+  ADD_UNAVAILABLE_DATES: {
+    id: 'ADD_UNAVAILABLE_DATES',
+    name: 'Add Unavailable Dates',
+    description: 'Add unavailable dates after claimant response or default judgment',
+    order: 26.5,
+  },
+  STAY_CASE: {
+    id: 'STAY_CASE',
+    name: 'Stay case',
+    description: 'Stay the case',
+    order: 27,
+  },
+  MANAGE_STAY: {
+    id: 'MANAGE_STAY',
+    name: 'Manage stay',
+    description: 'Request an update or lift the stay',
+    order: 28,
+  },
+  EVIDENCE_UPLOAD_APPLICANT: {
+    id: 'EVIDENCE_UPLOAD_APPLICANT',
+    name: 'Evidence upload applicant',
+    description: 'Evidence upload applicant',
+    order: 27,
+  },
+  EVIDENCE_UPLOAD_RESPONDENT: {
+    id: 'EVIDENCE_UPLOAD_RESPONDENT',
+    name: 'Evidence upload respondent',
+    description: 'Evidence upload respondent',
+    order: 28,
+  },
+  HEARING_SCHEDULED: {
+    id: 'HEARING_SCHEDULED',
+    name: 'Hearing scheduled',
+    description: 'Hearing scheduled',
+    order: 29,
+  },
+  TRANSFER_ONLINE_CASE: {
+    id: 'TRANSFER_ONLINE_CASE',
+    name: 'Transfer online case',
+    description: 'Transfer online case',
+    order: 30,
   },
 };
 

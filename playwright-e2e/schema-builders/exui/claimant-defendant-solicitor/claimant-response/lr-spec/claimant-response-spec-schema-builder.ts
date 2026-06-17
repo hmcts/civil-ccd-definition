@@ -43,6 +43,13 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
+  async buildFastTrack1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
+  }
+
   async buildFastTrack1v2SSDoNotProceed(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -62,27 +69,38 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
-  protected async buildSchema(caseDataBeforeSubmission?: CCDCaseData, {
-    claimType = ClaimType.ONE_VS_ONE,
-    claimTrack = ClaimTrack.FAST_CLAIM,
-    claimantResponseType = ClaimantResponseSpecType.PROCEED_WITH_CLAIM,
-  }: {
-    claimType?: ClaimType;
-    claimTrack?: ClaimTrack;
-    claimantResponseType?: ClaimantResponseSpecType;
-  } = {}): Promise<z.ZodType> {
+  async buildSmallTrack1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
+  protected async buildSchema(
+    caseDataBeforeSubmission?: CCDCaseData,
+    {
+      claimType = ClaimType.ONE_VS_ONE,
+      claimTrack = ClaimTrack.FAST_CLAIM,
+      claimantResponseType = ClaimantResponseSpecType.PROCEED_WITH_CLAIM,
+    }: {
+      claimType?: ClaimType;
+      claimTrack?: ClaimTrack;
+      claimantResponseType?: ClaimantResponseSpecType;
+    } = {},
+  ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;
-    const schemaBeforeSubmission = baseSchema.omit({
-      nextDeadline: true,
-    });
     const schemaShape: Record<string, z.ZodType> = {};
 
     Object.assign(
-      {},
+      schemaShape,
+      claimantResponseSpecSchemaComponents.undefine,
       claimantResponseSpecSchemaComponents.proceedWithClaim(claimType, claimantResponseType),
-      claimantResponseSpecSchemaComponents.determinationWithoutHearing(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.determinationWithoutHearing(
+        claimTrack,
+        claimantResponseType,
+      ),
       claimantResponseSpecSchemaComponents.fastTrackDq(claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.experts(claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.witnesses(claimTrack, claimantResponseType),
@@ -94,6 +112,6 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
       claimantResponseSpecSchemaComponents.application(claimTrack, claimantResponseType),
     );
 
-    return schemaBeforeSubmission.extend(schemaShape);
+    return baseSchema.extend(schemaShape);
   }
 }

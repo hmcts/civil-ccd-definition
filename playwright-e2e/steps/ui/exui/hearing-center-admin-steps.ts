@@ -92,4 +92,92 @@ export default class HearingCenterAdminSteps extends BaseExui {
       ccdEvents.MANAGE_CASE_FLAGS,
     );
   }
+
+  async StayCase() {
+    const { stayCaseActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await stayCaseActions.stayCase();
+      },
+      async () => {
+        await stayCaseActions.confirmStayCase();
+      },
+      ccdEvents.STAY_CASE,
+    );
+  }
+
+  async ManageStayRequestUpdate() {
+    const { manageStayActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await manageStayActions.manageStayOptionsRequestUpdate();
+        await manageStayActions.manageStayRequestUpdate();
+        await manageStayActions.submitManageStay();
+      },
+      async () => {
+        await manageStayActions.confirmManageStayRequestUpdate();
+      },
+      ccdEvents.MANAGE_STAY,
+    );
+  }
+
+  async ManageStayLiftStay() {
+    const { manageStayActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await manageStayActions.manageStayOptionsLiftStay();
+        await manageStayActions.manageStayLiftStayJudicialReferralInMediation();
+        await manageStayActions.submitManageStay();
+      },
+      async () => {
+        await manageStayActions.confirmManageStayLiftStay();
+      },
+      ccdEvents.MANAGE_STAY,
+    );
+  }
+
+  async CaseProceedsInCaseman() {
+    const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettled();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async TransferOnlineCase() {
+    const { transferOnlineCaseActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await transferOnlineCaseActions.transferOnlineCase();
+        await transferOnlineCaseActions.submitTransferOnlineCase();
+      },
+      async () => {
+        await transferOnlineCaseActions.confirm();
+      },
+      ccdEvents.TRANSFER_ONLINE_CASE,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async ScheduleHearingSmallClaim() {
+    const { hearingScheduledActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await hearingScheduledActions.hearingNoticeSmallClaim();
+        await hearingScheduledActions.listingOrRelisting();
+        await hearingScheduledActions.hearingDetails();
+        await hearingScheduledActions.hearingInformation();
+        await hearingScheduledActions.submitHearingScheduled();
+      },
+      async () => {
+        await hearingScheduledActions.confirm();
+      },
+      ccdEvents.HEARING_SCHEDULED,
+      { verifySuccessEvent: false },
+    );
+  }
 }

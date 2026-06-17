@@ -46,6 +46,7 @@ export default class ExuiDashboardActions extends BaseApi {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
+    await caseDetailsPage.verifyClaimDetailsContent(this.ccdCaseData);
   }
 
   async signOut() {
@@ -93,4 +94,5 @@ export default class ExuiDashboardActions extends BaseApi {
       await caseDetailsPage.verifySuccessCaseFlagsEvent(super.activeCaseFlags, ccdEvent);
     else await caseDetailsPage.verifySuccessEvent(super.ccdCaseData.id!, ccdEvent);
   }
+
 }

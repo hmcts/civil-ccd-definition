@@ -75,7 +75,7 @@ export default class ExpertPage extends ExuiPage(BasePage) {
     );
 
     await super.inputText(
-      expertData.phoneNumber,
+      expertData.phoneNumber!,
       inputs.expertDetails.phoneNumber.selector(this.claimantDefendantParty, this.expertParty),
     );
 
@@ -90,7 +90,7 @@ export default class ExpertPage extends ExuiPage(BasePage) {
     );
 
     await super.inputText(
-      expertData.estimatedCost,
+      expertData.estimatedCost!,
       inputs.expertDetails.estimatedCost.selector(this.claimantDefendantParty, this.expertParty),
     );
   }

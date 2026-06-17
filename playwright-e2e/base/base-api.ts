@@ -11,6 +11,8 @@ import DateHelper from '../helpers/date-helper';
 import WATask from '../models/wa-task';
 import CaseState from '../constants/cases/case-state';
 import CCDCaseData from '../models/ccd-case-data';
+import FileType from '../constants/test-utils/file-type';
+import FileSystemHelper from '../helpers/file-system-helper';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -71,16 +73,18 @@ export default abstract class BaseApi extends BaseTestData {
     let eventData = startEventCaseData ?? {};
     for (const pageId of Object.keys(pageDataMap)) {
       eventData = ObjectHelper.deepSpread(eventData, pageDataMap[pageId]);
-      const pageData = await ccdRequests.validatePageData(
-        ccdEvent,
-        user,
-        pageId,
-        pageDataMap[pageId],
-        eventData,
-        ccdEventToken,
-        this.ccdCaseData?.id,
-      );
-      eventData = ObjectHelper.deepSpread(eventData, pageData);
+      if(pageId !== 'Undefine') {
+        const pageData = await ccdRequests.validatePageData(
+          ccdEvent,
+          user,
+          pageId,
+          pageDataMap[pageId],
+          eventData,
+          ccdEventToken,
+          this.ccdCaseData?.id,
+        );
+        eventData = ObjectHelper.deepSpread(eventData, pageData);
+      }
     }
     return eventData;
   }
@@ -89,10 +93,15 @@ export default abstract class BaseApi extends BaseTestData {
     user: User,
     ccdEvent: CCDEvent,
     pageDataMap: Record<string, any>,
-    expectedState: CaseState,
+    expectedState?: CaseState,
   ) {
     const { ccdRequests } = this.requestsFactory;
-    const { eventToken, startEventCaseData } = await ccdRequests.startEvent(user, ccdEvent, this.ccdCaseData?.id);
+    const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+    
     const eventData = await this.validatePages(
       ccdEvent,
       startEventCaseData,
@@ -100,13 +109,14 @@ export default abstract class BaseApi extends BaseTestData {
       user,
       eventToken,
     );
+
     const eventCaseData = await ccdRequests.submitEvent(
       user,
       ccdEvent,
-      expectedState,
       eventData,
       eventToken,
       this.ccdCaseData?.id,
+      expectedState,
     );
     await this.waitForFinishedBusinessProcess(eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
@@ -121,11 +131,11 @@ export default abstract class BaseApi extends BaseTestData {
     );
   }
 
-  protected async fetchAndSetCCDCaseData(caseId?: number) {
+  protected async fetchAndSetCCDCaseData(caseId?: number, user?: User) {
     const { ccdRequests } = this.requestsFactory;
-    await this.setupUserData(civilSystemUpdate);
+    await this.setupUserData(user ?? civilSystemUpdate);
     super.setCCDCaseData = await ccdRequests.fetchCCDCaseData(
-      civilSystemUpdate,
+      user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
     );
   }
@@ -139,9 +149,16 @@ export default abstract class BaseApi extends BaseTestData {
     }
   }
 
-  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<string | undefined> {
+  protected async retrieveAndAssignWATask(
+    user: User,
+    validTask: WATask,
+  ): Promise<string | undefined> {
     const { workAllocationsRequests } = this.requestsFactory;
-    const waTask = await workAllocationsRequests.retrieveTask(user, validTask, this.ccdCaseData?.id);
+    const waTask = await workAllocationsRequests.retrieveTask(
+      user,
+      validTask,
+      this.ccdCaseData?.id,
+    );
     await workAllocationsRequests.assignTask(user, waTask);
     return waTask.id;
   }
@@ -150,5 +167,4 @@ export default abstract class BaseApi extends BaseTestData {
     const { workAllocationsRequests } = this.requestsFactory;
     await workAllocationsRequests.completeTask(user, waTaskId);
   }
-  
 }
