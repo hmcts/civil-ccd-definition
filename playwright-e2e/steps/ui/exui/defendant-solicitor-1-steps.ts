@@ -59,6 +59,23 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     );
   }
 
+  async AddLitigationFriend1v2SS() {
+    const { addDefendantLitigationFriendActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await addDefendantLitigationFriendActions.selectALitigationFriend();
+        await addDefendantLitigationFriendActions.commonLitigationFriend();
+        await addDefendantLitigationFriendActions.submitAddDefendantLitigationFriend();
+      },
+      async () => {
+        await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
+      },
+      ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RespondFastTrackFullDefence1v1() {
     const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
@@ -185,6 +202,29 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       async () => {
         await defendantResponseActions.confirmDefendantResponse1v2DS();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastTrackFullDefence1v2SS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS1();
+        await defendantResponseActions.singleResponse();
+        await defendantResponseActions.respondentResponseTypeDS1();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
+        await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqFastTrackDS1();
+        await defendantResponseActions.dqDS1();
+        await defendantResponseActions.statementOfTruthDS1();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
 

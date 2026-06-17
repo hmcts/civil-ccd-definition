@@ -50,6 +50,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
   async CreateClaimSmallTrack1v1() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
@@ -223,6 +224,31 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
+  async CreateClaimFastTrack1v2SS() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.addAnotherDefendant();
+        await createClaimActions.secondDefendantSS();
+        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
   async NotifyClaim() {
     const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
@@ -307,6 +333,22 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async NotifyClaimDetails() {
+    const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await notifyClaimDetailsActions.uploadNotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetails();
+      },
+      async () => {
+        await notifyClaimDetailsActions.confirmNotifyClaimDetails();
+      },
+      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async NotifyClaimDetails1v2SS() {
     const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -510,6 +552,25 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       async () => {
         await claimantResponseActions.respondentResponse1v2DS();
         await claimantResponseActions.defenceResponseDocument1v2DS();
+        await claimantResponseActions.dqFastTrack();
+        await claimantResponseActions.statementOfTruth();
+        await claimantResponseActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseActions.confirmClaimantResponse();
+      },
+      ccdEvents.CLAIMANT_RESPONSE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastTrackIntentToProceed1v2SS() {
+    const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await claimantResponseActions.respondentResponse1v2SS();
+        await claimantResponseActions.defenceResponseDocument1v2SS();
         await claimantResponseActions.dqFastTrack();
         await claimantResponseActions.statementOfTruth();
         await claimantResponseActions.submitClaimantResponse();

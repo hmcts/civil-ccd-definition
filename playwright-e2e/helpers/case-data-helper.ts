@@ -95,6 +95,8 @@ static getPartyDateOfBirthUpdated(party: Party) {
         return '07906789012';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return '07321654987';
+      case partys.DEFENDANT_COMMON_LITIGATION_FRIEND:
+        return '07398765432';
       case partys.DEFENDANT_SOLICITOR_1:
         return '07987654321';
       case partys.DEFENDANT_SOLICITOR_2:
@@ -142,6 +144,8 @@ static getPartyDateOfBirthUpdated(party: Party) {
         return 'SO15 2JY';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return 'B1 1AA';
+      case partys.DEFENDANT_COMMON_LITIGATION_FRIEND:
+        return 'NE1 4ST';
       case partys.DEFENDANT_SOLICITOR_1:
         return 'EX1 1JG';
       case partys.DEFENDANT_SOLICITOR_2:
