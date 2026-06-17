@@ -1,0 +1,13 @@
+{
+  "CaseTypeID": "CIVIL",
+  "ID": "CANCEL_DOCUMENT_TRANSLATION_TASK",
+  "Name": "Cancel doc translation task",
+  "Description": "Cancel english/welsh document translation task",
+  "PreConditionState(s)": "*",
+  "PostConditionState": "*",
+  "SecurityClassification": "Public",
+  "ShowSummary": "N",
+  "ShowEventNotes": "N",
+  "RetriesTimeoutURLAboutToSubmitEvent": 0,
+  "Publish": "Y"
+}
