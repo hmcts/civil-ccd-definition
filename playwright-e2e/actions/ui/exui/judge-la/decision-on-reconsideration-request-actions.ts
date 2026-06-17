@@ -19,7 +19,6 @@ export default class DecisionOnReconsiderationRequestActions extends BaseTestDat
     const { judgeResponseToReconsiderationPage } = this.decisionOnReconsiderationRequestPageFactory;
     await judgeResponseToReconsiderationPage.verifyContent(this.ccdCaseData);
     await judgeResponseToReconsiderationPage.selectYes();
-    await judgeResponseToReconsiderationPage.enterReasonForUpholdingPreviousOrder();
     await judgeResponseToReconsiderationPage.submit();
   }
 

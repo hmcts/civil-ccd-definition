@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures';
 
 test.describe(
-  '1v1 spec request for reconsideration',
+  '1v1 spec request for reconsideration > create a new sdo',
   {
     tag: ['@civil-ccd-nightly'],
   },
@@ -27,8 +27,7 @@ test.describe(
       await ClaimantSolicitorSpecSteps.RequestForReconsideration();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.DecisionOnReconsiderationRequestCreateSdo();
-      await LegalAdvisorSteps.LoginRegion1();
-      await LegalAdvisorSteps.SdoSmallTrackNoSum();
+      await JudgeSteps.SdoSmallTrackNoSum();
     });
   },
 );
