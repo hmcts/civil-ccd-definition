@@ -284,8 +284,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
@@ -326,8 +326,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
@@ -459,6 +459,23 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await evidenceUploadApplicantActions.evidenceUpload();
         await evidenceUploadApplicantActions.documentSelectionSmallClaim();
+        await evidenceUploadApplicantActions.documentUpload();
+        await evidenceUploadApplicantActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadFastTrack() {
+    const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUpload();
+        await evidenceUploadApplicantActions.documentSelectionFastTrack();
         await evidenceUploadApplicantActions.documentUpload();
         await evidenceUploadApplicantActions.submitEvidenceUpload();
       },
