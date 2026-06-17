@@ -4,8 +4,6 @@ import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import {
   confirmationHeading,
-  subheading,
-  paragraph,
 } from './confirm-request-for-reconsideration-content';
 
 @AllMethodsStep()
@@ -14,8 +12,6 @@ export default class ConfirmRequestForReconsiderationPage extends ExuiPage(BaseP
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
-      super.expectSubheading(subheading, { headingLevel: 3 }),
-      super.expectText(paragraph),
     ]);
   }
 

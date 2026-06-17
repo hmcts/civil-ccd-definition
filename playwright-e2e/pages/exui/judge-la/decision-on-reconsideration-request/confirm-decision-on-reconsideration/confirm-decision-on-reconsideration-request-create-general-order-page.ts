@@ -4,9 +4,9 @@ import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import {
   confirmationHeading,
-  subheading,
-  paragraph,
-} from './confirm-decision-on-reconsideration-create-general-order-content';
+  subheadings,
+  paragraphs,
+} from './confirm-decision-on-reconsideration-request-content';
 
 @AllMethodsStep()
 export default class ConfirmDecisionOnReconsiderationRequestCreateGeneralOrderPage extends ExuiPage(
@@ -16,8 +16,8 @@ export default class ConfirmDecisionOnReconsiderationRequestCreateGeneralOrderPa
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
-      super.expectSubheading(subheading, { headingLevel: 3 }),
-      super.expectText(paragraph),
+      super.expectSubheading(subheadings.createGeneralOrder, { headingLevel: 3 }),
+      super.expectText(paragraphs.createGeneralOrder),
     ]);
   }
 

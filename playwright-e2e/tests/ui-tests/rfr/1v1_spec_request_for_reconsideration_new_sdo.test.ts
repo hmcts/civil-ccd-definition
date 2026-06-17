@@ -10,8 +10,8 @@ test.describe(
       ClaimantSolicitorSpecApiSteps,
       DefendantSolicitor1SpecApiSteps,
       CaseRoleAssignmentApiSteps,
-      CaseworkerSteps,
-      LegalAdvisorApiSteps,
+      CaseworkerApiSteps,
+      LegalAdvisorSteps,
       ClaimantSolicitorSpecSteps,
       JudgeSteps,
     }) => {
@@ -20,14 +20,15 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallTrackFullDefence1v1();
       await ClaimantSolicitorSpecApiSteps.RespondSmallClaimIntentToProceed1v1();
-      await CaseworkerSteps.Login();
-      await CaseworkerSteps.MediationUnsuccessful();
-      await LegalAdvisorApiSteps.CreateSdoSmallTrack();
+      await CaseworkerApiSteps.MediationUnsuccessful();
+      await LegalAdvisorSteps.LoginRegion1();
+      await LegalAdvisorSteps.SdoSmallTrackNoSum();
       await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.RequestForReconsideration();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.DecisionOnReconsiderationRequestCreateSdo();
-      await LegalAdvisorApiSteps.CreateSdoSmallTrack();
+      await LegalAdvisorSteps.LoginRegion1();
+      await LegalAdvisorSteps.SdoSmallTrackNoSum();
     });
   },
 );

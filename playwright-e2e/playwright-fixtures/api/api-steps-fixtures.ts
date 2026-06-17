@@ -68,7 +68,7 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   CaseRoleAssignmentApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new CaseRoleAssignmentApiSteps(_requestsFactory, _testData));
   },
-  LegalAdvisorApiSteps: async ({ _requestsFactory, _testData }, use) => {
-    await use(new LegalAdvisorApiSteps(_requestsFactory, _testData));
+  LegalAdvisorApiSteps: async ({ _judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new LegalAdvisorApiSteps(_judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData));
   }
 });

@@ -5,7 +5,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 import {
   subheadings,
   inputs,
-  radios,
+  radioButtons,
   paragraphs,
   containers,
 } from './judge-response-to-reconsideration-content';
@@ -15,22 +15,18 @@ export default class JudgeResponseToReconsiderationPage extends ExuiPage(BasePag
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSelector(radios.yes),
-      super.expectSelector(radios.noCreateNewSdo),
-      super.expectSelector(radios.noCreateGeneralOrder),
+      super.expectLabel(radioButtons.yes.label),
+      super.expectLabel(radioButtons.noCreateNewSdo.label),
+      super.expectLabel(radioButtons.noCreateGeneralOrder.label),
     ]);
   }
 
   async selectYes() {
-    await super.clickBySelector(radios.yes);
-  }
-
-  async enterReasonForUpholdingPreviousOrder() {
-    await super.inputText(inputs.reason.text, inputs.reason.selector);
+    await super.clickBySelector(radioButtons.yes.selector);
   }
 
   async selectNoCreateNewSdo() {
-    await super.clickBySelector(radios.noCreateNewSdo);
+    await super.clickBySelector(radioButtons.noCreateNewSdo.selector);
     await super.expectSubheading(subheadings.createNewSDO, {
       headingLevel: 3,
       containerSelector: containers.createNewSDO,
@@ -41,7 +37,7 @@ export default class JudgeResponseToReconsiderationPage extends ExuiPage(BasePag
   }
 
   async selectNoCreateGeneralOrder() {
-    await super.clickBySelector(radios.noCreateGeneralOrder);
+    await super.clickBySelector(radioButtons.noCreateGeneralOrder.selector);
     await super.expectSubheading(subheadings.createGeneralOrder, {
       headingLevel: 3,
       containerSelector: containers.createGeneralOrder,

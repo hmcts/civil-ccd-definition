@@ -163,6 +163,15 @@ export const hearingCenterAdminRegion4User: User = getUser({
   wa: true,
 });
 
+export const tribunalCaseworkerRegion1User: User = getUser({
+  name: 'Tribunal Legal Caseworker Region 1',
+  email: 'tribunal_legal_caseworker_reg1@justice.gov.uk',
+  password: defaultPassword,
+  role: UserRole.CASEWORKER,
+  key: UserKey.TRIBUNAL_CASEWORKER_REGION_1,
+  wa: true,
+});
+
 export const tribunalCaseworkerRegion4User: User = getUser({
   name: 'Tribunal Legal Caseworker Region 4',
   email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',

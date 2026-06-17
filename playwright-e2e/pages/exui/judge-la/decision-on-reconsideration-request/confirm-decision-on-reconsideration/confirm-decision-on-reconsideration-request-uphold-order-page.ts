@@ -4,20 +4,20 @@ import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import {
   confirmationHeading,
-  subheading,
-  paragraph,
-} from './confirm-decision-on-reconsideration-request-create-sdo-content';
+  subheadings,
+  paragraphs,
+} from './confirm-decision-on-reconsideration-request-content';
 
 @AllMethodsStep()
-export default class ConfirmDecisionOnReconsiderationRequestCreateSdoPage extends ExuiPage(
+export default class ConfirmDecisionOnReconsiderationRequestUpholdOrderPage extends ExuiPage(
   BasePage,
 ) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
-      super.expectSubheading(subheading, { headingLevel: 3 }),
-      super.expectText(paragraph),
+      super.expectSubheading(subheadings.upholdOrder, { headingLevel: 3 }),
+      super.expectText(paragraphs.upholdOrder),
     ]);
   }
 
