@@ -16,6 +16,7 @@ enum UserKey {
   HEARING_CENTER_ADMIN_REGION_1 = 'hearing-center-admin-region-1',
   HEARING_CENTER_ADMIN_REGION_2 = 'hearing-center-admin-region-2',
   HEARING_CENTER_ADMIN_REGION_4 = 'hearing-center-admin-region-4',
+  TRIBUNAL_CASEWORKER_REGION_1 = 'tribunal-caseworker-region-1',
   TRIBUNAL_CASEWORKER_REGION_4 = 'tribunal-caseworker-region-4',
   CTSC_ADMIN = 'ctsc-admin',
   CIVIL_SYSTEM_UPDATE = 'system_update',

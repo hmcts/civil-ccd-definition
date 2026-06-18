@@ -102,7 +102,7 @@ export const nbcLocalUser: User = getUser({
 
 export const judgeRegion1User: User = getUser({
   name: 'Judge Region 1',
-  email: '4917924EMP-@ejudiciary.net',
+  email: 'DJ.Amy.Powell@ejudiciary.net',
   password: judgeDefaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.JUDGE_REGION_1,
@@ -160,6 +160,15 @@ export const hearingCenterAdminRegion4User: User = getUser({
   password: defaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.HEARING_CENTER_ADMIN_REGION_4,
+  wa: true,
+});
+
+export const tribunalCaseworkerRegion1User: User = getUser({
+  name: 'Tribunal Legal Caseworker Region 1',
+  email: 'tribunal_legal_caseworker_reg1@justice.gov.uk',
+  password: defaultPassword,
+  role: UserRole.CASEWORKER,
+  key: UserKey.TRIBUNAL_CASEWORKER_REGION_1,
   wa: true,
 });
 

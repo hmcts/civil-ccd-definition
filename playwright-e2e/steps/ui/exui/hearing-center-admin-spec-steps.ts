@@ -94,6 +94,19 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
     );
   }
 
+  async StayCase() {
+    const { stayCaseActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await stayCaseActions.stayCase();
+      },
+      async () => {
+        await stayCaseActions.confirmStayCase();
+      },
+      ccdEvents.STAY_CASE,
+    );
+  }
+
   async RequestReferJudgeDefenceReceived() {
     const { referJudgeDefenceReceivedActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
