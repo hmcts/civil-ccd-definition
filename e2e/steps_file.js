@@ -785,6 +785,7 @@ module.exports = function () {
         () => requestedCourtPage.selectSpecCourtLocation(parties.APPLICANT_SOLICITOR_1),
         () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
         () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
+        () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit your response', 'You have decided to proceed with the claim\nClaim number: '),
         () => event.returnToCaseDetails()
