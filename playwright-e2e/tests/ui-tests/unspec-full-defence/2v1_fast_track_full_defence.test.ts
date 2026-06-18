@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('2v1 unspec fast track claim journey', { tag: '@civil-ccd-nightly' }, async () => {
-  test('2v1 unspec fast track claim journey', async ({
+test.describe('2v1 fast track claim journey', { tag: '@civil-ccd-nightly' }, async () => {
+  test('2v1 fast track claim journey', async ({
     ClaimantSolicitorSteps,
     DefendantSolicitor1Steps,
     ClaimantSolicitorApiSteps,
