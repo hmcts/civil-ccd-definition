@@ -274,6 +274,31 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
+  async CreateClaimFastTrack2v1() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.addAnotherClaimant();
+        await createClaimActions.secondClaimant();
+        await createClaimActions.secondClaimantLitigationFriend();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
   async NotifyClaim() {
     const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
@@ -596,6 +621,25 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       async () => {
         await claimantResponseActions.respondentResponse1v2SS();
         await claimantResponseActions.defenceResponseDocument1v2SS();
+        await claimantResponseActions.dqFastTrack();
+        await claimantResponseActions.statementOfTruth();
+        await claimantResponseActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseActions.confirmClaimantResponse();
+      },
+      ccdEvents.CLAIMANT_RESPONSE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastTrackIntentToProceed2v1() {
+    const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await claimantResponseActions.respondentResponse2v1();
+        await claimantResponseActions.defenceResponseDocument();
         await claimantResponseActions.dqFastTrack();
         await claimantResponseActions.statementOfTruth();
         await claimantResponseActions.submitClaimantResponse();

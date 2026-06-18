@@ -9,7 +9,7 @@ import { paragraphs } from './extension-date-content';
 export default class ExtensionDatePage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     const extensionDate = DateHelper.addToDate(ccdCaseData.claimDetailsNotificationDate!, {
-      days: ccdCaseData.respondent2AcknowledgeNotificationDate ? 56 : 42,
+      days: ccdCaseData.respondent2AcknowledgeNotificationDate || ccdCaseData.applicant2 ? 56 : 42,
       workingDay: true,
     });
     await super.runVerifications([
