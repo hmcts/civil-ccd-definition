@@ -30,7 +30,11 @@ const env = cleanEnv({
     values: [environment.AAT, environment.DEMO, environment.ITHC, environment.PREVIEW, environment.PERFTEST],
     default: environment.PREVIEW,
   }),
-  DEFENDANTS_TO_NOTIFY: enums({
+  DEFENDANTS_TO_NOTIFY_CLAIM: enums({
+    values: [notifyClaimOptions.BOTH, notifyClaimOptions.DEFENDANT1, notifyClaimOptions.DEFENDANT2],
+    default: notifyClaimOptions.BOTH,
+  }),
+  DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS: enums({
     values: [notifyClaimOptions.BOTH, notifyClaimOptions.DEFENDANT1, notifyClaimOptions.DEFENDANT2],
     default: notifyClaimOptions.BOTH,
   }),
@@ -52,7 +56,8 @@ const claimantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRA
 const defendantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(process.env.DEFENDANT_TYPE) ? process.env.DEFENDANT_TYPE : 'INDIVIDUAL';
 const typeOfClaim = process.env.TYPE_OF_CLAIM;
 const typeOfClaimSubType: string = process.env.SUB_TYPE;
-const defendantsToNotify: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY;
+const defendantsToNotifyClaim: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM;
+const defendantsToNotifyClaimDetails: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS;
 const litigantFriend: yesNo = ['Yes'].includes(process.env.LITIGANT_FRIEND) ? yesNo.YES : yesNo.NO;
 
 let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? process.env.TRACK : 'FAST_CLAIM';
@@ -195,21 +200,40 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     } else {
       await new TestingEndPointHelper().serviceRequestUpdateClaimIssued(caseId);
     }
+  });
 
-    await new NotifyClaim(page).notify(claimType, defendantsToNotify);
-    await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'NOTIFY_DEFENDANT_OF_CLAIM');
-
-    await new NotifyClaimDetails(page).notify(claimType, defendantsToNotify);
-    await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS');
-
-    await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
+  test.describe('test2.1', { tag: '@unspecified' }, () => {
+    test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
+    test('Claimant Solicitor undertakes event: Notify claim ', async ({ page }) => {
+      await new NotifyClaim(page).notify(claimType, defendantsToNotifyClaim);
+      await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'NOTIFY_DEFENDANT_OF_CLAIM');
+    });
   });
 
 
+  if (defendantsToNotifyClaim !== notifyClaimOptions.BOTH) {
+    console.log('Notify claim -> Claim goes offline')
+    return 'Notify claim -> Claim goes offline';
+  }
+
+  test.describe('test2.2', { tag: '@unspecified' }, () => {
+    test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
+    test('Claimant Solicitor undertakes event: Notify claim details ', async ({ page }) => {
+      await new NotifyClaimDetails(page).notify(claimType, defendantsToNotifyClaimDetails);
+      await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS');
+    });
+  });
+
+  if (defendantsToNotifyClaimDetails !== notifyClaimOptions.BOTH) {
+    console.log('Notify claim details -> Claim goes offline');
+    return 'Notify claim details -> Claim goes offline';
+  }
+
   if (claimType === claimTypes.ONE_VS_ONE || claimType === claimTypes.ONE_VS_TWO_SAME_SOL || claimType === claimTypes.ONE_VS_TWO_DIFF_SOL || claimType === claimTypes.TWO_VS_ONE || claimType === claimTypes.ONE_VS_TWO_LR_LIP) {
-    test.describe('test2', { tag: '@unspecified' }, () => {
+    test.describe('test2.9', { tag: '@unspecified' }, () => {
       test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
       test('Defendant 1 Solicitor acknowledges claim.', async ({ page }) => {
+        await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
         await new AcknowledgeClaim(page).acknowledge(claimType, respondent1ResponseIntention, respondent2ResponseIntention , 1);
       });
     });
