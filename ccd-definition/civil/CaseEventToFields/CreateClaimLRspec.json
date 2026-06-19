@@ -121,7 +121,7 @@
     "PageColumnNumber": 1,
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/appOrgPolicy",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "true",
+    "FieldShowCondition": "addApplicant2 = \"*\"",
     "RetainHiddenValue": "Yes"
   },
   {
