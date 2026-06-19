@@ -8,17 +8,17 @@ import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
-import JudgeDataBuilderFactory from '../../../data-builders/exui/judge/judge-data-builder-factory';
-import JudgeSchemaBuilderFactory from '../../../schema-builders/exui/judge/judge-schema-builder-factory';
+import JudgeLADataBuilderFactory from '../../../data-builders/exui/judge-la/judge-la-data-builder-factory';
+import JudgeLASchemaBuilderFactory from '../../../schema-builders/exui/judge-la/judge-la-schema-builder-factory';
 
 @AllMethodsStep()
 export default class JudgeApiSteps extends BaseApi {
-  private judgeDataBuilderFactory: JudgeDataBuilderFactory;
-  private judgeSchemaBuilderFactory: JudgeSchemaBuilderFactory;
+  private judgeDataBuilderFactory: JudgeLADataBuilderFactory;
+  private judgeSchemaBuilderFactory: JudgeLASchemaBuilderFactory;
 
   constructor(
-    judgeDataBuilderFactory: JudgeDataBuilderFactory,
-    judgeSchemaBuilderFactory: JudgeSchemaBuilderFactory,
+    judgeDataBuilderFactory: JudgeLADataBuilderFactory,
+    judgeSchemaBuilderFactory: JudgeLASchemaBuilderFactory,
     requestsFactory: RequestsFactory,
     testData: TestData,
   ) {

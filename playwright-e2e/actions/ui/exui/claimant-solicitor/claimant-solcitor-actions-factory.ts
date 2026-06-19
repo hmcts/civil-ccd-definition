@@ -17,6 +17,8 @@ import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant
 import DiscontinueClaimSpecActions from './discontinue-claim/discontinue-claim-spec-actions';
 import DiscontinueClaimActions from './discontinue-claim/discontinue-claim-actions';
 import DiscontinueClaimPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/discontinue-claim/discontinue-claim-page-factory';
+import RequestForReconsiderationActions from './request-for-reconsideration-actions';
+import RequestForReconsiderationPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/request-for-reconsideration/request-for-reconsideration-page-factory';
 
 export default class ClaimantSolicitorActionsFactory extends BasePageActionsFactory {
   get createClaimActions() {
@@ -73,5 +75,11 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
 
   get discontinueClaimActions() {
     return new DiscontinueClaimActions(new DiscontinueClaimPageFactory(this.page), this.testData);
+  }
+  get requestForReconsiderationActions() {
+    return new RequestForReconsiderationActions(
+      new RequestForReconsiderationPageFactory(this.page),
+      this.testData,
+    );
   }
 }

@@ -233,6 +233,18 @@ const ccdEvents: CCDEvents = {
     description: 'Reset Pin for case',
     order: 7,
   },
+  REQUEST_FOR_RECONSIDERATION: {
+    id: 'REQUEST_FOR_RECONSIDERATION',
+    name: 'Request for reconsideration',
+    description: 'Request for reconsideration check',
+    order: 22.5,
+  },
+  DECISION_ON_RECONSIDERATION_REQUEST: {
+    id: 'DECISION_ON_RECONSIDERATION_REQUEST',
+    name: 'Decision on reconsideration',
+    description: 'Decision on reconsideration',
+    order: 22.6,
+  },
   CREATE_CASE_FLAGS: {
     id: 'CREATE_CASE_FLAGS',
     name: 'Create case flags',

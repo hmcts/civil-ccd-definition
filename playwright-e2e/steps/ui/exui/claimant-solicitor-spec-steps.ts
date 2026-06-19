@@ -284,8 +284,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
@@ -326,8 +326,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
@@ -435,6 +435,20 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
+    );
+  }
+
+  async RequestForReconsideration() {
+    const { requestForReconsiderationActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await requestForReconsiderationActions.enterReason();
+        await requestForReconsiderationActions.submitRequestForReconsideration();
+      },
+      async () => {
+        await requestForReconsiderationActions.confirmRequestForReconsideration();
+      },
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
       { verifySuccessEvent: false },
     );
   }
@@ -505,6 +519,22 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await discontinueClaimSpecActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+    );
+  }
+
+  async EvidenceUploadFastTrack() {
+    const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUpload();
+        await evidenceUploadApplicantActions.documentSelectionFastTrack();
+        await evidenceUploadApplicantActions.documentUpload();
+        await evidenceUploadApplicantActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
       { verifySuccessEvent: false },
     );
   }
