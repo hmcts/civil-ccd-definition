@@ -67,6 +67,7 @@
     "PageID": "Respondent1SolicitorEmail",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "true",
     "RetainHiddenValue": "Yes"
   },
   {
@@ -225,6 +226,7 @@
     "PageID": "Applicant1SolicitorEmail",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "true",
     "RetainHiddenValue": "Yes"
   },
   {

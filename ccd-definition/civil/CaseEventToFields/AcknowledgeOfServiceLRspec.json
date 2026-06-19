@@ -95,6 +95,7 @@
     "PageLabel": "Confirm defendant's name and address",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "true",
     "RetainHiddenValue": "Yes"
   },
   {
