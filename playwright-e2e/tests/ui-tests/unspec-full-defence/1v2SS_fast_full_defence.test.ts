@@ -13,7 +13,7 @@ test.describe('1v2SS fast track claim journey', { tag: '@civil-ccd-nightly' }, a
     await ClaimantSolicitorSteps.NotifyClaim();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await ClaimantSolicitorSteps.NotifyClaimDetails1v2SS();
+    await ClaimantSolicitorSteps.NotifyClaimDetails();
     await DefendantSolicitor1Steps.Login();
     await DefendantSolicitor1Steps.AcknowledgeClaimFullDefence1v2SS();
     await DefendantSolicitor1Steps.InformAgreedExtensionDate();

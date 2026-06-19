@@ -43,29 +43,33 @@ export default class CaseDataHelper {
         return '1982-09-25';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return '1989-04-06';
+      case partys.DEFENDANT_COMMON_LITIGATION_FRIEND:
+        return '1985-11-14';
     }
   }
 
-static getPartyDateOfBirthUpdated(party: Party) {
-  switch (party) {
-    case partys.CLAIMANT_1:
-      return '1981-06-25';
-    case partys.CLAIMANT_2:
-      return '1993-09-12';
-    case partys.CLAIMANT_1_LITIGATION_FRIEND:
-      return '1988-04-18';
-    case partys.CLAIMANT_2_LITIGATION_FRIEND:
-      return '1996-12-03';
-    case partys.DEFENDANT_1:
-      return '1985-02-01';
-    case partys.DEFENDANT_2:
-      return '1991-08-20';
-    case partys.DEFENDANT_1_LITIGATION_FRIEND:
-      return '1983-10-26';
-    case partys.DEFENDANT_2_LITIGATION_FRIEND:
-      return '1990-05-07';
+  static getPartyDateOfBirthUpdated(party: Party) {
+    switch (party) {
+      case partys.CLAIMANT_1:
+        return '1981-06-25';
+      case partys.CLAIMANT_2:
+        return '1993-09-12';
+      case partys.CLAIMANT_1_LITIGATION_FRIEND:
+        return '1988-04-18';
+      case partys.CLAIMANT_2_LITIGATION_FRIEND:
+        return '1996-12-03';
+      case partys.DEFENDANT_1:
+        return '1985-02-01';
+      case partys.DEFENDANT_2:
+        return '1991-08-20';
+      case partys.DEFENDANT_1_LITIGATION_FRIEND:
+        return '1983-10-26';
+      case partys.DEFENDANT_2_LITIGATION_FRIEND:
+        return '1990-05-07';
+      case partys.DEFENDANT_COMMON_LITIGATION_FRIEND:
+        return '1986-12-15';
+    }
   }
-}
 
   static getPartyPhoneNumber(party: Party) {
     switch (party) {

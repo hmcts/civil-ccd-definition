@@ -14,7 +14,10 @@ export default class SelectALitigationFriendPage extends ExuiPage(BasePage) {
   }
 
   async selectBoth() {
-    await super.selectFromDropdown(1, dropdowns.selectLitigationFriend.selector);
+    await super.selectFromDropdown(
+      dropdowns.selectLitigationFriend.options.both,
+      dropdowns.selectLitigationFriend.selector,
+    );
   }
 
   async submit() {

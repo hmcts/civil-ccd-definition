@@ -6,7 +6,6 @@ import SubmitAddDefendantLitigationFriendPage from './unspec/submit-add-defendan
 import LitigationFriendFragment from '../../fragments/litigation-friend/litigation-friend-fragment';
 import Defendant2LitigationFriendPage from './unspec/defendant-2-litigation-friend/defendant-2-litigation-friend-page';
 import SelectALitigationFriendPage from './unspec/select-a-litigation-friend/select-a-litigation-friend-page';
-import CommonLitigationFriendPage from './unspec/common-litigation-friend/common-litigation-friend-page';
 
 export default class AddDefendantLitigationFriendPageFactory extends BasePageFactory {
   get selectALitigationFriendPage() {
@@ -34,7 +33,7 @@ export default class AddDefendantLitigationFriendPageFactory extends BasePageFac
       this.page,
       partys.DEFENDANT_COMMON_LITIGATION_FRIEND,
     );
-    return new CommonLitigationFriendPage(this.page, litigationFriendFragment);
+    return new LitigationFriendPage(this.page, litigationFriendFragment);
   }
 
   get submitAddDefendantLitigationFriend() {
