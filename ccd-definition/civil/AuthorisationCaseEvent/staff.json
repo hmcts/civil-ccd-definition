@@ -250,11 +250,5 @@
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CANCEL_DOCUMENT_TRANSLATION_TASK",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
   }
 ]

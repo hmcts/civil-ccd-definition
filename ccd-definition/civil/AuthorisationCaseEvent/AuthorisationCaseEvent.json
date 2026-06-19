@@ -1097,15 +1097,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CANCEL_DOCUMENT_TRANSLATION_TASK",
-    "AccessControl": [
-      {
-        "UserRoles": ["caseworker-civil-admin"],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
