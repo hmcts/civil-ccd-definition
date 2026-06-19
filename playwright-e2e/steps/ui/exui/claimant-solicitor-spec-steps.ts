@@ -435,6 +435,20 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
+    );
+  }
+
+  async RequestForReconsideration() {
+    const { requestForReconsiderationActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await requestForReconsiderationActions.enterReason();
+        await requestForReconsiderationActions.submitRequestForReconsideration();
+      },
+      async () => {
+        await requestForReconsiderationActions.confirmRequestForReconsideration();
+      },
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
       { verifySuccessEvent: false },
     );
   }
