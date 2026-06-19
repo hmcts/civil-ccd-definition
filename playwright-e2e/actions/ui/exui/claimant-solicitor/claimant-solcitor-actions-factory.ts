@@ -14,6 +14,9 @@ import ClaimantResponseSpecActions from './claimant-response/claimant-response-s
 import DefaultJudgmentSpecActions from './default-judgment/default-judgment-spec-actions.ts';
 import EvidenceUploadApplicantActions from './evidence-upload/evidence-upload-actions.ts';
 import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
+import DiscontinueClaimSpecActions from './discontinue-claim/discontinue-claim-spec-actions';
+import DiscontinueClaimActions from './discontinue-claim/discontinue-claim-actions';
+import DiscontinueClaimPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/discontinue-claim/discontinue-claim-page-factory';
 
 export default class ClaimantSolicitorActionsFactory extends BasePageActionsFactory {
   get createClaimActions() {
@@ -59,5 +62,16 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
       new EvidenceUploadPageFactory(this.page),
       this.testData,
     );
+  }
+
+  get discontinueClaimSpecActions() {
+    return new DiscontinueClaimSpecActions(
+      new DiscontinueClaimPageFactory(this.page),
+      this.testData,
+    );
+  }
+
+  get discontinueClaimActions() {
+    return new DiscontinueClaimActions(new DiscontinueClaimPageFactory(this.page), this.testData);
   }
 }

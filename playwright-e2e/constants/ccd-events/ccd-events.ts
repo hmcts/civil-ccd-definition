@@ -89,6 +89,12 @@ const ccdEvents: CCDEvents = {
     description: 'Discontinue a claim',
     order: 11,
   },
+  DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Discontinue this claim',
+    description: 'Discontinue this claim',
+    order: 11,
+  },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',

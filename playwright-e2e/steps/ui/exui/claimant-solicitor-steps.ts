@@ -577,4 +577,57 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async RequestDiscontinueClaimFullDiscontinuance1v1() {
+    const { discontinueClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await discontinueClaimActions.selectPermissionNeededYes();
+        await discontinueClaimActions.selectPermissionGrantedYes();
+        await discontinueClaimActions.selectFullDiscontinuance();
+        await discontinueClaimActions.submitDiscontinueClaimPage();
+      },
+      async () => {
+        await discontinueClaimActions.confirmDiscontinueClaimPage();
+      },
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestDiscontinueClaimFullDiscontinuance1v2DS() {
+    const { discontinueClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await discontinueClaimActions.selectPermissionNeededYes();
+        await discontinueClaimActions.selectPermissionGrantedYes();
+        await discontinueClaimActions.selectDiscontinueAgainstBothDefendantsYes();
+        await discontinueClaimActions.selectFullDiscontinuance();
+        await discontinueClaimActions.submitDiscontinueClaimPage();
+      },
+      async () => {
+        await discontinueClaimActions.confirmDiscontinueClaimPage();
+      },
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestDiscontinueClaimFullDiscontinuance2v1() {
+    const { discontinueClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await discontinueClaimActions.selectBothClaimantsDiscontinuing();
+        await discontinueClaimActions.selectPermissionNeededYes();
+        await discontinueClaimActions.selectPermissionGrantedYes();
+        await discontinueClaimActions.selectFullDiscontinuance();
+        await discontinueClaimActions.submitDiscontinueClaimPage();
+      },
+      async () => {
+        await discontinueClaimActions.confirmDiscontinueClaimPage();
+      },
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      { verifySuccessEvent: false },
+    );
+  }
 }
