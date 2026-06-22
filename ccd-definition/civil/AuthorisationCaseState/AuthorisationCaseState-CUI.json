@@ -12,7 +12,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "GS_profile"
     ],
     "CRUD": "R"
   },
