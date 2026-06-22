@@ -60,4 +60,23 @@ export default class CaseworkerApiSteps extends BaseApi {
     const amendPartyDetailsSchema = await amendPartyDetailsSchemaBuilder.buildData(caseDataBeforeSubmission);
     ZodHelper.safeParse(amendPartyDetailsSchema, this.ccdCaseData);
   }
+
+  async MediationUnsuccessful() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { mediationUnsuccessfulDataBuilder } = this.caseworkerDataBuilderFactory;
+    const mediationUnsuccessfulData = await mediationUnsuccessfulDataBuilder.buildData();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.MEDIATION_UNSUCCESSFUL,
+      mediationUnsuccessfulData,
+      CaseState.JUDICIAL_REFERRAL,
+    );
+
+    const { mediationUnsuccessfulSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const mediationUnsuccessfulSchema =
+      await mediationUnsuccessfulSchemaBuilder.buildData(caseDataBeforeSubmission);
+    ZodHelper.safeParse(mediationUnsuccessfulSchema, this.ccdCaseData);
+  }
 }

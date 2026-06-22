@@ -11,6 +11,7 @@ import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirect
 import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
 import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
 import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
+import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -72,7 +73,6 @@ export default class JudgeSteps extends BaseExui {
       smallClaimDirectionsTask,
     );
   }
-
 
   async SdoSmallTrackFromFastTrackClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
@@ -273,6 +273,58 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       judgeRegion2User,
       defenceReceivedInTimeOrderThatJudgmentIsSetAside,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async DecisionOnReconsiderationRequestUpholdOrder() {
+    const { decisionOnReconsiderationRequestActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await decisionOnReconsiderationRequestActions.selectYes();
+        await decisionOnReconsiderationRequestActions.orderPreview();
+        await decisionOnReconsiderationRequestActions.submitDecisionOnReconsideration();
+      },
+      async () => {
+        await decisionOnReconsiderationRequestActions.confirmDecisionOnReconsiderationRequestUpholdOrder();
+      },
+      ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
+      judgeRegion1User,
+      decisionOnReconsiderationRequestTask,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async DecisionOnReconsiderationRequestCreateSdo() {
+    const { decisionOnReconsiderationRequestActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await decisionOnReconsiderationRequestActions.selectNoCreateNewSdo();
+        await decisionOnReconsiderationRequestActions.submitDecisionOnReconsideration();
+      },
+      async () => {
+        await decisionOnReconsiderationRequestActions.confirmDecisionOnReconsiderationRequestCreateSdo();
+      },
+      ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
+      judgeRegion1User,
+      decisionOnReconsiderationRequestTask,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async DecisionOnReconsiderationRequestPreviousOrderNeedsAmending() {
+    const { decisionOnReconsiderationRequestActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await decisionOnReconsiderationRequestActions.selectNoPreviousOrderNeedsAmending();
+        await decisionOnReconsiderationRequestActions.submitDecisionOnReconsideration();
+      },
+      async () => {
+        await decisionOnReconsiderationRequestActions.confirmDecisionOnReconsiderationRequestCreateGeneralOrder();
+      },
+      ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
+      judgeRegion1User,
+      decisionOnReconsiderationRequestTask,
       { verifySuccessEvent: false },
     );
   }

@@ -1012,23 +1012,23 @@ __metadata:
   linkType: hard
 
 "allure-codeceptjs@npm:^3.4.2":
-  version: 3.9.0
-  resolution: "allure-codeceptjs@npm:3.9.0"
+  version: 3.10.0
+  resolution: "allure-codeceptjs@npm:3.10.0"
   dependencies:
-    allure-js-commons: "npm:3.9.0"
-    allure-mocha: "npm:3.9.0"
+    allure-js-commons: "npm:3.10.0"
+    allure-mocha: "npm:3.10.0"
   peerDependencies:
     codeceptjs: ">=2.3.6"
-  checksum: 10/5db71e8e01b6f7904ea3be0ed227dda4203205567481b22415044b8bb7132fe840d07dcbb1d0afc5bd5ee0de1b3e9731e375f83381f47478a44401517f7a3965
+  checksum: 10/0d30f8211335b319cf385b716054185d3d251666aac167511cd585ae77e913e941b652f4ff09de859405f44ce1dd9c27691158ebada854a1bb5fd5c5f4800bdc
   languageName: node
   linkType: hard
 
 "allure-commandline@npm:^2.29.0":
-  version: 2.42.0
-  resolution: "allure-commandline@npm:2.42.0"
+  version: 2.42.1
+  resolution: "allure-commandline@npm:2.42.1"
   bin:
     allure: bin/allure
-  checksum: 10/8744e61be5dd4260ba458c48e06869c86c0048d27d82b35f3f2e4d68f0c4fdddb367995969f04458cf9daf95db5800d21bff0c7da1dec7f6ad56cc9abee6030e
+  checksum: 10/c69ce036a01e66cd06d9828f2a863c4f440b993a5110026147bded94188148b9736bc6a3ea1c50d1ac7736d7db8db6d29d8bea28189707636e6c125a97eff8d5
   languageName: node
   linkType: hard
 
@@ -1043,28 +1043,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"allure-js-commons@npm:3.9.0, allure-js-commons@npm:^3.4.2":
-  version: 3.9.0
-  resolution: "allure-js-commons@npm:3.9.0"
+"allure-js-commons@npm:3.10.0, allure-js-commons@npm:^3.4.2":
+  version: 3.10.0
+  resolution: "allure-js-commons@npm:3.10.0"
   dependencies:
     md5: "npm:^2.3.0"
   peerDependencies:
-    allure-playwright: 3.9.0
+    allure-playwright: 3.10.0
   peerDependenciesMeta:
     allure-playwright:
       optional: true
-  checksum: 10/213d98d8fddea9d7cf7f399815a52fd08fcfc434809cbd76519e27c9c5ac726e6ae4839e3385d9c85ae679ff377570a7ca15e419e2124744c26076466aaedd31
+  checksum: 10/30ffaf5300182dd511de8a1fdb4496bbca353df7028c0216140acb1ada493e183572fb175012d762f38d0656cd0becd346e8a1ee50746f3414724c905df8d085
   languageName: node
   linkType: hard
 
-"allure-mocha@npm:3.9.0":
-  version: 3.9.0
-  resolution: "allure-mocha@npm:3.9.0"
+"allure-mocha@npm:3.10.0":
+  version: 3.10.0
+  resolution: "allure-mocha@npm:3.10.0"
   dependencies:
-    allure-js-commons: "npm:3.9.0"
+    allure-js-commons: "npm:3.10.0"
   peerDependencies:
     mocha: ">=6.2.0"
-  checksum: 10/ec1508bf41cc163ca9f743c3481b21dc16d31d19e348983c5faf36a2e5e4fe0d31df9dac1e1bbd9e3aaa2bbf92a9e209ec72f877b3a0d047a4cc864c9abacb27
+  checksum: 10/0ec2e718dd4df774b02dbac1be00a6998c0dbb5b8aa48b59fbc47b65139730554b5a0817df404560e94d4cb76dfc22865eb29021cc16860bf435060614bb8a88
   languageName: node
   linkType: hard
 
@@ -1895,7 +1895,9 @@ __metadata:
     mochawesome: "npm:^7.0.1"
     node-cache: "npm:^5.1.2"
     node-fetch: "npm:^2.6.9"
+    pixelmatch: "npm:5.3.0"
     playwright-core: "npm:^1.47.2"
+    pngjs: "npm:7.0.0"
     prettier: "npm:^3.3.3"
     proper-lockfile: "npm:^4.1.2"
     totp-generator: "npm:^1.0.0"
@@ -5672,6 +5674,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pixelmatch@npm:5.3.0":
+  version: 5.3.0
+  resolution: "pixelmatch@npm:5.3.0"
+  dependencies:
+    pngjs: "npm:^6.0.0"
+  bin:
+    pixelmatch: bin/pixelmatch
+  checksum: 10/10778aaa432211253ab0ae9160233d8aa56769ab6312b6bf8375100b67aaa126821626a0c3b433fb2a977864a8d2d145d754d4afa9ac14b84fcb1a0bdf98a4ae
+  languageName: node
+  linkType: hard
+
 "playwright-core@npm:1.56.1, playwright-core@npm:^1.47.2":
   version: 1.56.1
   resolution: "playwright-core@npm:1.56.1"
@@ -5693,6 +5706,20 @@ __metadata:
   bin:
     playwright: cli.js
   checksum: 10/f1743f93b26f1d497257771428d93f3c9ed2d75b00d935f0cd1556ff2dc61d47f2df8b381d752fbd2c47082b685f0ffe4cc4b7ba440d7b4ba3a08572aec58fba
+  languageName: node
+  linkType: hard
+
+"pngjs@npm:7.0.0":
+  version: 7.0.0
+  resolution: "pngjs@npm:7.0.0"
+  checksum: 10/e843ebbb0df092ee0f3a3e7dbd91ff87a239a4e4c4198fff202916bfb33b67622f4b83b3c29f3ccae94fcb97180c289df06068624554f61686fe6b9a4811f7db
+  languageName: node
+  linkType: hard
+
+"pngjs@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "pngjs@npm:6.0.0"
+  checksum: 10/692751ccd5e762623103900922caac982caa90258d9c6c04a6e2bc3397b1dedbaf9db826fc0fa068a29d607cad3df1d1eded0dec2ee35a0015c65cb5ef33ad18
   languageName: node
   linkType: hard
 
