@@ -1317,6 +1317,20 @@ module.exports = function () {
     },
 
     async viewAndAssertPdf(documentName, testDir, baselineDir, pdfName, caseNumber) {
+      if (process.env.RUN_PDF_COMPARISON !== 'true') {
+        output.print(`Skipping PDF comparison for "${documentName}": RUN_PDF_COMPARISON is not set to true`);
+        return;
+      }
+
+      if (process.env.ENVIRONMENT === 'preview') {
+        output.print(
+          `Skipping PDF comparison for "${documentName}": preview environments use a separate `
+          + 'Docmosis Tornado instance to AAT (see PREVIEW_DOCMOSIS_TORNADO_URL), so rendered PDFs will not '
+          + 'match the AAT-captured baseline. Run this against AAT instead.'
+        );
+        return;
+      }
+
       const pdfPaths = pdfHelper.getPdfPaths(testDir, baselineDir, pdfName);
 
       await this.navigateToCaseDetails(caseNumber);
