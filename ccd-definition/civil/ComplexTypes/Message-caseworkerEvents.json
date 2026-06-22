@@ -73,7 +73,7 @@
     "ElementLabel": "Subject",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Max": 250
+    "Max": 255
   },
   {
     "ID": "Message",

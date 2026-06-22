@@ -31,7 +31,7 @@
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageMetadata",
     "ListElementCode": "subject",
-    "EventElementLabel": "Enter the subject and it should not exceed 250 characters",
+    "EventElementLabel": "Enter the subject and it should not exceed 255 characters",
     "FieldShowCondition": "sendMessageMetadata.subjectType = \"*\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
