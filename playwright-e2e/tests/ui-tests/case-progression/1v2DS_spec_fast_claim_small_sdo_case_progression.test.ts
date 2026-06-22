@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, () => {
-  test('1v2 spec small case progression', async ({
+test.describe('1v2 spec fast claim to small sdo case progression', { tag: '@civil-ccd-nightly' }, () => {
+  test('1v2 spec fast claim to small sdo case progression', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecSteps,
@@ -10,7 +10,7 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     ClaimantSolicitorSpecSteps,
     HearingCenterAdminSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
