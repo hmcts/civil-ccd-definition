@@ -84,10 +84,10 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
   async submitEvent(
     user: User,
     ccdEvent: CCDEvent,
-    expectedState: CaseState,
     eventData: any,
     ccdEventToken: string,
     caseId?: number,
+    expectedState?: CaseState,
   ): Promise<CCDCaseData> {
     console.log(
       `Submitting event: ${ccdEvent.id}` +
@@ -111,12 +111,13 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       statusErrorMessage: async (responseJson, { url, status, expectedStatus }) =>
         this.getStatusErrorMessage(responseJson, { url, status, expectedStatus }),
       verifyResponse: async (responseJson) => {
-        await super.expectResponseJsonToHavePropertyValue(
-          'state',
-          expectedState,
-          responseJson,
-          { nonRetryable: true },
-        );
+        if(expectedState)
+          await super.expectResponseJsonToHavePropertyValue(
+            'state',
+            expectedState,
+            responseJson,
+            { nonRetryable: true },
+          );
       }
     });
     const caseData: CCDCaseData = { id: responseJson.id, ...responseJson.case_data };

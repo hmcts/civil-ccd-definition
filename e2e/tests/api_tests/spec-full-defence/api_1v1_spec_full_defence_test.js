@@ -1,5 +1,3 @@
-
-
 const config = require('../../../config.js');
 
 Feature('1v1 spec full defence api journey').tag('@civil-service-nightly @api-spec-full-defence');

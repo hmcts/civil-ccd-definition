@@ -215,6 +215,7 @@ const {getAppTypes} = require('./pages/generalApplication/generalApplicationType
 const apiRequest = require('./api/apiRequest');
 const genAppJudgeMakeDecisionData = require('./fixtures/ga-events/ga-ccd/judgeMakeDecision');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
+const pdfHelper = require('./helpers/pdfVisualCompareHelper.js');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -222,6 +223,7 @@ const CASE_HEADER = 'ccd-markdown >> h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*=\'navigation-list\'] a';
 const CASE_DETAILS_TAB = '.mat-tab-labels';
+const CLAIM_DOCUMENTS_TAB = '.mat-tab-label:has-text("Claim documents")';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const TEST_FILE_PATH_DOC = './e2e/fixtures/exampleDOC.docx';
@@ -783,6 +785,7 @@ module.exports = function () {
         () => requestedCourtPage.selectSpecCourtLocation(parties.APPLICANT_SOLICITOR_1),
         () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
         () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
+        () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit your response', 'You have decided to proceed with the claim\nClaim number: '),
         () => event.returnToCaseDetails()
@@ -1311,6 +1314,27 @@ module.exports = function () {
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
       }, CASE_DETAILS_TAB, undefined, 20);
+    },
+
+    async viewAndAssertPdf(documentName, testDir, baselineDir, pdfName, caseNumber) {
+      const pdfPaths = pdfHelper.getPdfPaths(testDir, baselineDir, pdfName);
+
+      await this.navigateToCaseDetails(caseNumber);
+      await this.retryUntilExists(async () => {
+        await this.refreshPage();
+        await this.waitForSelector(CASE_DETAILS_TAB);
+        await this.click(CLAIM_DOCUMENTS_TAB);
+      }, `button:has-text("${documentName}")`, 3, 10);
+      await this.usePlaywrightTo('open document in new tab', async ({ page, browserContext }) => {
+        const newPagePromise = browserContext.waitForEvent('page', { timeout: 30000 });
+        await page.click(`button:has-text("${documentName}")`);
+        const newPage = await newPagePromise;
+        await newPage.waitForLoadState();
+      });
+      await this.switchToNextTab();
+
+      await pdfHelper.downloadPdfAndAssertVisualMatch({ I: this, ...pdfPaths });
+      await this.closeCurrentTab();
     },
 
     async initiateNoticeOfChange(caseId, clientName) {

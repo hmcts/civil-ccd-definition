@@ -93,7 +93,7 @@ export default abstract class BaseApi extends BaseTestData {
     user: User,
     ccdEvent: CCDEvent,
     pageDataMap: Record<string, any>,
-    expectedState: CaseState,
+    expectedState?: CaseState,
   ) {
     const { ccdRequests } = this.requestsFactory;
     const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
@@ -113,10 +113,10 @@ export default abstract class BaseApi extends BaseTestData {
     const eventCaseData = await ccdRequests.submitEvent(
       user,
       ccdEvent,
-      expectedState,
       eventData,
       eventToken,
       this.ccdCaseData?.id,
+      expectedState,
     );
     await this.waitForFinishedBusinessProcess(eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
