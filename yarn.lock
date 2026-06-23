@@ -527,14 +527,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.47.1":
-  version: 1.56.1
-  resolution: "@playwright/test@npm:1.56.1"
+"@playwright/test@npm:^1.60.0":
+  version: 1.61.0
+  resolution: "@playwright/test@npm:1.61.0"
   dependencies:
-    playwright: "npm:1.56.1"
+    playwright: "npm:1.61.0"
   bin:
     playwright: cli.js
-  checksum: 10/9933fa9f8eb9e775e792421b99c984c310b92092e65de57508ae1951a2589d87bbb5f1c4114bfdf7f69c15c0a3acb3f31259e143fa597aa28e97f4b223e37637
+  checksum: 10/359a9a4a59a87361d416818966bb810a38970d9f2b8364349d22099fb23eb043530714374a83010f9f3471c7e758df43c49bf32128745af13277adfb211aa752
   languageName: node
   linkType: hard
 
@@ -1867,7 +1867,7 @@ __metadata:
   dependencies:
     "@axe-core/playwright": "npm:^4.10.0"
     "@eslint/js": "npm:^9.11.0"
-    "@playwright/test": "npm:^1.47.1"
+    "@playwright/test": "npm:^1.60.0"
     "@types/node": "npm:^24.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
@@ -1896,7 +1896,7 @@ __metadata:
     node-cache: "npm:^5.1.2"
     node-fetch: "npm:^2.6.9"
     pixelmatch: "npm:5.3.0"
-    playwright-core: "npm:^1.47.2"
+    playwright-core: "npm:^1.60.0"
     pngjs: "npm:7.0.0"
     prettier: "npm:^3.3.3"
     proper-lockfile: "npm:^4.1.2"
@@ -5685,27 +5685,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.56.1, playwright-core@npm:^1.47.2":
-  version: 1.56.1
-  resolution: "playwright-core@npm:1.56.1"
+"playwright-core@npm:1.61.0, playwright-core@npm:^1.60.0":
+  version: 1.61.0
+  resolution: "playwright-core@npm:1.61.0"
   bin:
     playwright-core: cli.js
-  checksum: 10/df785eb3b3a8392b10dcde5f768e09b7fe459a7b06ed81180da69e048f2154b761f86d79572c2b62037a1f18a44e4ace72f5b6547f4f473b4ab13ab1d94007d2
+  checksum: 10/e7ac4b2ef1c5f1701ec8086e47bc341988a3f753009d450e2a62daab5ade1fa943f1ef7fb48c721618dd7bd42667a11ff73c2e5dbd0674c20a3397b3c5be2f61
   languageName: node
   linkType: hard
 
-"playwright@npm:1.56.1":
-  version: 1.56.1
-  resolution: "playwright@npm:1.56.1"
+"playwright@npm:1.61.0":
+  version: 1.61.0
+  resolution: "playwright@npm:1.61.0"
   dependencies:
     fsevents: "npm:2.3.2"
-    playwright-core: "npm:1.56.1"
+    playwright-core: "npm:1.61.0"
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: 10/f1743f93b26f1d497257771428d93f3c9ed2d75b00d935f0cd1556ff2dc61d47f2df8b381d752fbd2c47082b685f0ffe4cc4b7ba440d7b4ba3a08572aec58fba
+  checksum: 10/b5faf97391315334a30e88e03216fd6090988b99896e71b341995a27c49d49dcebc825ec389dabc9b2d2cab6368c418cad9cbb925a88de35fb3b26a19bf05bea
   languageName: node
   linkType: hard
 
