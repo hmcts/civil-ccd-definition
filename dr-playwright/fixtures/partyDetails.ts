@@ -11,7 +11,7 @@ export const partyDetails = {
     lastName: 'Claimant1_lastname',
     DOB_day: '01',
     DOB_month: '01',
-    DOB_year: '2000',
+    DOB_year: '2010',
     email: 'claimant1@email.com',
     phone: '02099999999',
     address: {
@@ -33,7 +33,7 @@ export const partyDetails = {
     lastName: 'Claimant2_lastname',
     DOB_day: '01',
     DOB_month: '01',
-    DOB_year: '2000',
+    DOB_year: '2011',
     email: 'claimant2@email.com',
     phone: '02088888888',
     address: {
@@ -46,11 +46,17 @@ export const partyDetails = {
       postcode: 'SW1A 1AA'
     }
   },
-  claimantLitigantFriend1: {
+  claimant1LitigantFriend: {
     firstname: 'Claimant1LitigantFriend_firstname',
     lastname: 'Claimant1LitigantFriend_lastname',
     email: 'Claimant1LitigantFriend@email.com',
     phone: '02087777777',
+  },
+  claimant2LitigantFriend: {
+    firstname: 'Claimant2LitigantFriend_firstname',
+    lastname: 'Claimant2LitigantFriend_lastname',
+    email: 'Claimant2LitigantFriend@email.com',
+    phone: '02087777666',
   },
   defendant1: {
     companyName: 'Defendant 1 company name',

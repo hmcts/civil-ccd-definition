@@ -199,10 +199,10 @@ export class CreateUnspecifiedCase {
   async setClaimantLitigantFriend(yesNo: YesNo = YesNo.NO, claimantNumber: number = 1) {
     await this.page.locator(`#applicant${claimantNumber}LitigationFriendRequired_${yesNo}`).check();
     if (yesNo === YesNo.YES) {
-      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_firstName`).fill(partyDetails.claimantLitigantFriend1.firstname);
-      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_lastName`).fill(partyDetails.claimantLitigantFriend1.lastname);
-      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_emailAddress`).fill(partyDetails.claimantLitigantFriend1.email);
-      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_phoneNumber`).fill(partyDetails.claimantLitigantFriend1.phone);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_firstName`).fill(claimantNumber === 1 ? partyDetails.claimant1LitigantFriend.firstname : partyDetails.claimant2LitigantFriend.firstname);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_lastName`).fill(claimantNumber === 1 ? partyDetails.claimant1LitigantFriend.lastname : partyDetails.claimant2LitigantFriend.lastname);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_emailAddress`).fill(claimantNumber === 1 ? partyDetails.claimant1LitigantFriend.email : partyDetails.claimant2LitigantFriend.email);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_phoneNumber`).fill(claimantNumber === 1 ? partyDetails.claimant1LitigantFriend.phone : partyDetails.claimant2LitigantFriend.phone);
       await this.page.locator(`#applicant${claimantNumber}LitigationFriend_hasSameAddressAsLitigant_${yesNo}`).check();
 
       await this.buttonHelper.addNewButton.click();
