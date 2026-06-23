@@ -76,6 +76,7 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
   get discontinueClaimActions() {
     return new DiscontinueClaimActions(new DiscontinueClaimPageFactory(this.page), this.testData);
   }
+
   get requestForReconsiderationActions() {
     return new RequestForReconsiderationActions(
       new RequestForReconsiderationPageFactory(this.page),

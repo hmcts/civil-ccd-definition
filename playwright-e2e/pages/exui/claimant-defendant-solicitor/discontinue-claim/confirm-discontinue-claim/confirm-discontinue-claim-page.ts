@@ -9,6 +9,7 @@ export default class ConfirmDiscontinueClaimPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
+      super.expectHeading(heading),
       super.expectText(paragraphs.paragraph1),
       super.expectText(paragraphs.paragraph2),
     ]);

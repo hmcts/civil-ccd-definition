@@ -7,7 +7,7 @@ import { headings, radioButtons } from './court-permission-content';
 import { getFormattedCaseId } from '../../../exui-page/exui-content';
 
 @AllMethodsStep()
-export default class CourtPermissionSpecPage extends ExuiPage(BasePage) {
+export default class CourtPermissionPage extends ExuiPage(BasePage) {
   constructor(page: Page) {
     super(page);
   }

@@ -40,13 +40,6 @@ export default class DiscontinueClaimSpecActions extends BaseTestData {
     await permissionGrantedPage.submit();
   }
 
-  async selectPermissionGrantedNo() {
-    const { permissionGrantedPage } = this.discontinueClaimPageFactory;
-    await permissionGrantedPage.verifyContent(this.ccdCaseData);
-    await permissionGrantedPage.selectPermissionGrantedNo();
-    await permissionGrantedPage.submit();
-  }
-
   async selectDiscontinueAgainstBothDefendantsYes() {
     const { discontinuingAgainstDefendantsPage } = this.discontinueClaimPageFactory;
     await discontinuingAgainstDefendantsPage.verifyContent(this.ccdCaseData);

@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
-import YesOrNoFragment from '../../../fragments/yes-or-no/yes-or-no-fragment';
+import DateHelper from '../../../../../helpers/date-helper.ts';
 import {
   headings,
   subheading,
@@ -38,13 +38,8 @@ export default class PermissionGrantedPage extends ExuiPage(BasePage) {
   async selectPermissionGrantedYes() {
     await super.clickBySelector(radioButtons.yes.selector);
     await super.inputText('Testing', inputs.judgeName);
-    await this.dateFragment.enterDate(new Date(2024, 7, 29), selectorKeys.permissionGrantedDate);
-  }
-
-  async selectPermissionGrantedNo() {
-    await super.clickBySelector(radioButtons.no.selector);
-    super.expectText(subheading);
-    super.expectText(paragraph);
+    const permissionGrantedDate = DateHelper.subtractFromToday({ months: 6 });
+    await this.dateFragment.enterDate(permissionGrantedDate, selectorKeys.permissionGrantedDate);
   }
 
   async submit() {
