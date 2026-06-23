@@ -4,6 +4,10 @@ const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
+const TEST_DIRECTORY = 'e2e/tests/ui_tests/case-progression';
+const BASELINE_DIRECTORY = 'e2e/pdf-baselines/case-progression';
+const STANDARD_DIRECTIONS_ORDER_PDF = 'standard_directions_order.pdf';
+
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 
@@ -44,6 +48,8 @@ Scenario('02 Judge triggers SDO', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
+
+  await I.viewAndAssertPdf('Amy Powell', TEST_DIRECTORY, BASELINE_DIRECTORY, STANDARD_DIRECTIONS_ORDER_PDF, caseNumber);
 }).retry(2);
 
 Scenario('03 Claimant solicitor uploads evidence', async ({I}) => {
