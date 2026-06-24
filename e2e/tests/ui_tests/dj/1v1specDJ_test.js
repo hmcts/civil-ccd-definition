@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 
 const TEST_DIRECTORY = 'e2e/tests/ui_tests/dj';
-const BASELINE_DIRECTORY = 'e2e/pdf-baselines/ui-dj';
+const BASELINE_DIRECTORY = 'e2e/pdf-baselines/dj';
 const DEFAULT_JUDGMENT_CLAIMANT_PDF = 'default_judgment_claimant_spec_form.pdf';
 const DEFAULT_JUDGMENT_DEFENDANT_PDF = 'default_judgment_defendant_spec_form.pdf';
 

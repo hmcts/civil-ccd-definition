@@ -6,6 +6,11 @@ const serviceRequest = require('../../../pages/createClaim/serviceRequest.page')
 const judgeUserToBeUsed = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
+const TEST_DIRECTORY = 'e2e/tests/ui_tests/dj';
+const BASELINE_DIRECTORY = 'e2e/pdf-baselines/dj';
+const DEFAULT_JUDGMENT_PDF = 'default_judgment_form.pdf';
+const DEFAULT_JUDGMENT_SDO_ORDER_PDF = 'default_judgment_sdo_order.pdf';
+
 if (config.runWAApiTest) {
   validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
   validScheduleAHearingTask = require('../../../../wa/tasks/scheduleADisposalHearing.js');
@@ -53,6 +58,9 @@ Scenario('03 Judge perform direction order', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(judgeUserToBeUsed, taskId);
   }
+
+  await I.viewAndAssertPdf('default_judgment_form', TEST_DIRECTORY, BASELINE_DIRECTORY, DEFAULT_JUDGMENT_PDF, caseId);
+  await I.viewAndAssertPdf('Amy Powell', TEST_DIRECTORY, BASELINE_DIRECTORY, DEFAULT_JUDGMENT_SDO_ORDER_PDF, caseId);
 }).retry(2);
 
 Scenario('04 Hearing schedule', async ({I, api, WA}) => {
