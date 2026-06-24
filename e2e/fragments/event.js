@@ -12,7 +12,7 @@ module.exports = {
     await I.retryUntilExists(() => I.click(buttonText), CONFIRMATION_HEADER);
     await I.runAccessibilityTest();
     if (expectedMessage && expectedMessage.length > 0) {
-      await I.see(expectedMessage, CONFIRMATION_HEADER);
+      I.seeTextEquals(expectedMessage, 'h1');
     }
   },
 
