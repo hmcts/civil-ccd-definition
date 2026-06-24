@@ -11,9 +11,11 @@ module.exports = {
     await I.runAccessibilityTest();
     await I.retryUntilExists(() => I.click(buttonText), CONFIRMATION_HEADER);
     await I.runAccessibilityTest();
-    if (expectedMessage && expectedMessage.length > 0) {
-      I.seeTextEquals(expectedMessage, 'h1');
-    }
+    await within(CONFIRMATION_HEADER, () => {
+      if (expectedMessage && expectedMessage.length > 0) {
+        I.seeTextEquals(expectedMessage, 'h1');
+      }
+    });
   },
 
   async submitWithoutHeader(buttonText) {
