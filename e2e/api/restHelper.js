@@ -7,7 +7,8 @@ const {retry} = require('./retryHelper');
 const request = (url, headers, body, method = 'POST') =>  fetch(url, {
     method: method,
     body: body ? JSON.stringify(body) : undefined,
-    headers: headers
+    headers: headers,
+    timeout: parseInt(process.env.E2E_HTTP_TIMEOUT_MS || '30000')
   });
 
 const retriedRequest = async (url, headers, body, method = 'POST', expectedStatus = 200) => {
