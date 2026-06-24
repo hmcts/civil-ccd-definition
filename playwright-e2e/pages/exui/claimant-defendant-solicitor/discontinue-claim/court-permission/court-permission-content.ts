@@ -4,8 +4,8 @@ export const headings = {
 };
 
 export const radioButtons = {
-  permissionNeeded: `Is the court's permission needed to discontinue?`,
-  moreInformation: 'For more information, refer to the Civil Procedure Rules 38.2.',
+  label: `Is the court's permission needed to discontinue?`,
+  hintText: 'For more information, refer to the Civil Procedure Rules 38.2.',
   yes: {
     label: 'Yes',
     selector: '#courtPermissionNeeded-YES',

@@ -4,7 +4,7 @@ export const headings = {
 };
 
 export const radioButtons = {
-  fullOrPart: 'Is this a full or part discontinuance?',
+  label: 'Is this a full or part discontinuance?',
   fullDiscontinuance: {
     label: 'Full discontinuance',
     selector: '#typeOfDiscontinuance-FULL_DISCONTINUANCE',

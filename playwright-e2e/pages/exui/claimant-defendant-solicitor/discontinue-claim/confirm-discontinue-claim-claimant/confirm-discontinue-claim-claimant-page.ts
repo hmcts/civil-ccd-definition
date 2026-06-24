@@ -1,16 +1,17 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
-import { heading, subheading } from './submit-discontinue-claim-content';
+import CCDCaseData from '../../../../../models/ccd-case-data';
+import { heading, paragraphs } from './confirm-discontinue-claim-claimant-content';
 
 @AllMethodsStep()
-export default class SubmitDiscontinueClaimPage extends ExuiPage(BasePage) {
+export default class ConfirmDiscontinueClaimClaimantPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
-      super.expectSubheading(subheading),
+      super.expectText(paragraphs.paragraph1),
+      super.expectText(paragraphs.paragraph2),
     ]);
   }
 

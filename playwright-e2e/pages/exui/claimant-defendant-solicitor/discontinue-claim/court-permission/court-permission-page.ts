@@ -18,8 +18,8 @@ export default class CourtPermissionPage extends ExuiPage(BasePage) {
       super.expectHeading(headings.permissionFromCourt),
       super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
       super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false }),
-      super.expectLegend(radioButtons.permissionNeeded),
-      super.expectLegend(radioButtons.moreInformation),
+      super.expectLegend(radioButtons.label),
+      super.expectLegend(radioButtons.hintText),
       super.expectRadioLabel(radioButtons.yes.label, radioButtons.yes.selector),
       super.expectRadioLabel(radioButtons.no.label, radioButtons.no.selector),
     ]);

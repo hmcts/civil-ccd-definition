@@ -14,9 +14,8 @@ import ClaimantResponseSpecActions from './claimant-response/claimant-response-s
 import DefaultJudgmentSpecActions from './default-judgment/default-judgment-spec-actions.ts';
 import EvidenceUploadApplicantActions from './evidence-upload/evidence-upload-actions.ts';
 import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
-import DiscontinueClaimSpecActions from './discontinue-claim/discontinue-claim-spec-actions';
-import DiscontinueClaimActions from './discontinue-claim/discontinue-claim-actions';
-import DiscontinueClaimPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/discontinue-claim/discontinue-claim-page-factory';
+import DiscontinueClaimClaimantActions from './discontinue-claim-claimant/discontinue-claim-claimant-actions.ts';
+import DiscontinueClaimClaimantPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/discontinue-claim/discontinue-claim-claimant-page-factory.ts';
 import RequestForReconsiderationActions from './request-for-reconsideration-actions';
 import RequestForReconsiderationPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/request-for-reconsideration/request-for-reconsideration-page-factory';
 
@@ -66,15 +65,8 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
     );
   }
 
-  get discontinueClaimSpecActions() {
-    return new DiscontinueClaimSpecActions(
-      new DiscontinueClaimPageFactory(this.page),
-      this.testData,
-    );
-  }
-
-  get discontinueClaimActions() {
-    return new DiscontinueClaimActions(new DiscontinueClaimPageFactory(this.page), this.testData);
+  get discontinueClaimClaimantActions() {
+    return new DiscontinueClaimClaimantActions(new DiscontinueClaimClaimantPageFactory(this.page), this.testData);
   }
 
   get requestForReconsiderationActions() {

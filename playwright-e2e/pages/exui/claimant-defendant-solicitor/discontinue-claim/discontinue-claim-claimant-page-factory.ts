@@ -1,14 +1,14 @@
 import BasePageFactory from '../../../../base/base-page-factory';
 import DateFragment from '../../fragments/date/date-fragment';
-import ConfirmDiscontinueClaimPage from './confirm-discontinue-claim/confirm-discontinue-claim-page';
+import ConfirmDiscontinueClaimClaimantPage from './confirm-discontinue-claim-claimant/confirm-discontinue-claim-claimant-page';
 import CourtPermissionPage from './court-permission/court-permission-page';
 import DiscontinuanceTypePage from './discontinuance-type/discontinuance-type-page';
 import DiscontinuingAgainstDefendantsPage from './discontinuing-against-defendants/discontinuing-against-defendants-page';
 import MultipleClaimantPage from './multiple-claimant/multiple-claimant-page';
 import PermissionGrantedPage from './permission-granted/permission-granted-page';
-import SubmitDiscontinueClaimPage from './submit-discontinue-claim/submit-discontinue-claim-page';
+import SubmitDiscontinueClaimClaimantPage from './submit-discontinue-claim-claimant/submit-discontinue-claim-claimant-page';
 
-export default class DiscontinueClaimPageFactory extends BasePageFactory {
+export default class DiscontinueClaimClaimantPageFactory extends BasePageFactory {
   get multipleClaimantPage() {
     return new MultipleClaimantPage(this.page);
   }
@@ -30,11 +30,11 @@ export default class DiscontinueClaimPageFactory extends BasePageFactory {
     return new DiscontinuingAgainstDefendantsPage(this.page);
   }
 
-  get submitDiscontinueClaimPage() {
-    return new SubmitDiscontinueClaimPage(this.page);
+  get submitDiscontinueClaimClaimantPage() {
+    return new SubmitDiscontinueClaimClaimantPage(this.page);
   }
 
-  get confirmDiscontinueClaimPage() {
-    return new ConfirmDiscontinueClaimPage(this.page);
+  get confirmDiscontinueClaimClaimantPage() {
+    return new ConfirmDiscontinueClaimClaimantPage(this.page);
   }
 }

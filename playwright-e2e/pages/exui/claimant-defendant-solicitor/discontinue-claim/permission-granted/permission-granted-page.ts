@@ -7,10 +7,8 @@ import DateFragment from '../../../fragments/date/date-fragment';
 import DateHelper from '../../../../../helpers/date-helper.ts';
 import {
   headings,
-  subheading,
   radioButtons,
   inputs,
-  paragraph,
   selectorKeys,
 } from './permission-granted-content';
 import { getFormattedCaseId } from '../../../exui-page/exui-content';
@@ -29,7 +27,7 @@ export default class PermissionGrantedPage extends ExuiPage(BasePage) {
       super.expectText(headings.discontinueThisClaim),
       super.expectHeading(headings.permissionGranted),
       super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
-      super.expectLegend(radioButtons.permissionGranted),
+      super.expectLegend(radioButtons.label),
       super.expectRadioLabel(radioButtons.yes.label, radioButtons.yes.selector),
       super.expectRadioLabel(radioButtons.no.label, radioButtons.no.selector),
     ]);

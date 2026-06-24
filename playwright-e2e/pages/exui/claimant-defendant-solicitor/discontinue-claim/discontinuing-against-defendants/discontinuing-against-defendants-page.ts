@@ -13,7 +13,7 @@ export default class DiscontinuingAgainstDefendantsPage extends ExuiPage(BasePag
       super.expectHeading(headings.discontinuingAgainstDefendants),
       super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
       super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false }),
-      super.expectLegend(radioButtons.discontinuingAgainstBothDefendants),
+      super.expectLegend(radioButtons.label),
       super.expectRadioLabel(radioButtons.yes.label, radioButtons.yes.selector),
       super.expectRadioLabel(radioButtons.no.label, radioButtons.no.selector),
     ]);

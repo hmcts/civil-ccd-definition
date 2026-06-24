@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('2v1 spec discontinue claim', { tag: ['@civil-ccd-nightly'] }, () => {
-  test('2v1 spec discontinue this claim - full discontinuance', async ({
+  test('2v1 spec discontinue this claim - full discontinuance @debug', async ({
     ClaimantSolicitorSpecSteps,
     ClaimantSolicitorSpecApiSteps,
     DefendantSolicitor1SpecSteps,
@@ -14,6 +14,6 @@ test.describe('2v1 spec discontinue claim', { tag: ['@civil-ccd-nightly'] }, () 
     await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence2v1();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondSmallClaimIntentToProceed2v1();
-    await ClaimantSolicitorSpecSteps.RequestDiscontinueClaimFullDiscontinuance2v1();
+    await ClaimantSolicitorSpecSteps.DiscontinueClaim2v1();
   });
 });

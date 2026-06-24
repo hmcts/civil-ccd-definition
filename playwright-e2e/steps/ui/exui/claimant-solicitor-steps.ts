@@ -578,53 +578,53 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RequestDiscontinueClaimFullDiscontinuance1v1() {
-    const { discontinueClaimActions } = this.claimantSolicitorActionsFactory;
+  async DiscontinueClaim1v1() {
+    const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await discontinueClaimActions.selectPermissionNeededYes();
-        await discontinueClaimActions.selectPermissionGrantedYes();
-        await discontinueClaimActions.selectFullDiscontinuance();
-        await discontinueClaimActions.submitDiscontinueClaimPage();
+        await discontinueClaimClaimantActions.courtPermissionYes();
+        await discontinueClaimClaimantActions.permissionGrantedYes();
+        await discontinueClaimClaimantActions.fullDiscontinuance();
+        await discontinueClaimClaimantActions.submitDiscontinueClaimPage();
       },
       async () => {
-        await discontinueClaimActions.confirmDiscontinueClaimPage();
+        await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
       { verifySuccessEvent: false },
     );
   }
 
-  async RequestDiscontinueClaimFullDiscontinuance1v2DS() {
-    const { discontinueClaimActions } = this.claimantSolicitorActionsFactory;
+  async DiscontinueClaim1v2DS() {
+    const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await discontinueClaimActions.selectPermissionNeededYes();
-        await discontinueClaimActions.selectPermissionGrantedYes();
-        await discontinueClaimActions.selectDiscontinueAgainstBothDefendantsYes();
-        await discontinueClaimActions.selectFullDiscontinuance();
-        await discontinueClaimActions.submitDiscontinueClaimPage();
+        await discontinueClaimClaimantActions.courtPermissionYes();
+        await discontinueClaimClaimantActions.permissionGrantedYes();
+        await discontinueClaimClaimantActions.selectDiscontinueAgainstBothDefendantsYes();
+        await discontinueClaimClaimantActions.fullDiscontinuance();
+        await discontinueClaimClaimantActions.submitDiscontinueClaimPage();
       },
       async () => {
-        await discontinueClaimActions.confirmDiscontinueClaimPage();
+        await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
       { verifySuccessEvent: false },
     );
   }
 
-  async RequestDiscontinueClaimFullDiscontinuance2v1() {
-    const { discontinueClaimActions } = this.claimantSolicitorActionsFactory;
+  async DiscontinueClaim2v1() {
+    const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await discontinueClaimActions.selectBothClaimantsDiscontinuing();
-        await discontinueClaimActions.selectPermissionNeededYes();
-        await discontinueClaimActions.selectPermissionGrantedYes();
-        await discontinueClaimActions.selectFullDiscontinuance();
-        await discontinueClaimActions.submitDiscontinueClaimPage();
+        await discontinueClaimClaimantActions.selectBothClaimantsDiscontinuing();
+        await discontinueClaimClaimantActions.courtPermissionYes();
+        await discontinueClaimClaimantActions.permissionGrantedYes();
+        await discontinueClaimClaimantActions.fullDiscontinuance();
+        await discontinueClaimClaimantActions.submitDiscontinueClaimPage();
       },
       async () => {
-        await discontinueClaimActions.confirmDiscontinueClaimPage();
+        await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
       { verifySuccessEvent: false },

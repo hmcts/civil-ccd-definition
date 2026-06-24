@@ -26,7 +26,7 @@ test.describe(
       await DefendantSolicitor1ApiSteps.EvidenceUploadFastTrack();
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrackTrial();
       await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.RequestDiscontinueClaimFullDiscontinuance1v1();
+      await ClaimantSolicitorSteps.DiscontinueClaim1v1();
     });
   },
 );

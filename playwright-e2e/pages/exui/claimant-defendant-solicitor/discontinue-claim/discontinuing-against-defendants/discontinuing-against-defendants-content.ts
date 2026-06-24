@@ -4,7 +4,7 @@ export const headings = {
 };
 
 export const radioButtons = {
-  discontinuingAgainstBothDefendants: 'Is the discontinuance against all defendants?',
+  label: 'Is the discontinuance against all defendants?',
   yes: {
     label: 'Yes',
     selector: '#isDiscontinuingAgainstBothDefendants-YES',
