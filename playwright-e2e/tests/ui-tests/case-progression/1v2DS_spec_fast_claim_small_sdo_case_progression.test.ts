@@ -1,14 +1,14 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, () => {
-  test('1v2 spec small case progression', async ({
+test.describe('1v2 spec fast claim to small sdo case progression', { tag: '@civil-ccd-nightly' }, () => {
+  test('1v2 spec fast claim to small sdo case progression', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecSteps,
     DefendantSolicitor2SpecSteps,
     JudgeSteps,
     ClaimantSolicitorSpecSteps,
-    HearingCenterAdminSpecSteps,
+    HearingCenterAdminSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -20,14 +20,14 @@ test.describe('1v2 spec small case progression', { tag: '@civil-ccd-nightly' }, 
     await DefendantSolicitor2SpecSteps.RespondFastTrackFullDefence1v2DS();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondFastTrackIntentToProceed1v2DS();
-    await JudgeSteps.Login();
+    await JudgeSteps.LoginRegion1();
     await JudgeSteps.SdoSmallTrackFromFastTrackClaim();
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.EvidenceUploadApplicant();
+    await ClaimantSolicitorSpecSteps.EvidenceUploadSmallClaim();
     await DefendantSolicitor1SpecSteps.Login();
-    await DefendantSolicitor1SpecSteps.EvidenceUploadRespondent();
-    await HearingCenterAdminSpecSteps.LoginRegion1();
-    await HearingCenterAdminSpecSteps.ScheduleHearing();
+    await DefendantSolicitor1SpecSteps.EvidenceUploadSmallClaim();
+    await HearingCenterAdminSteps.LoginRegion1();
+    await HearingCenterAdminSteps.ScheduleHearingSmallClaim();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
   });
 });

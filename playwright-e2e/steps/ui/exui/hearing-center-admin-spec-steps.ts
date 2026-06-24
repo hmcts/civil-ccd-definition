@@ -94,6 +94,19 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
     );
   }
 
+  async StayCase() {
+    const { stayCaseActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await stayCaseActions.stayCase();
+      },
+      async () => {
+        await stayCaseActions.confirmStayCase();
+      },
+      ccdEvents.STAY_CASE,
+    );
+  }
+
   async RequestReferJudgeDefenceReceived() {
     const { referJudgeDefenceReceivedActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
@@ -189,24 +202,6 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       hearingCenterAdminRegion2User,
       judgmentOnlineSetAsideTakeCaseOffline,
-      { verifySuccessEvent: false },
-    );
-  }
-
-  async ScheduleHearing() {
-    const { hearingScheduledActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await hearingScheduledActions.hearingNoticeSelect();
-        await hearingScheduledActions.listingOrRelisting();
-        await hearingScheduledActions.hearingDetails();
-        await hearingScheduledActions.hearingInformation();
-        await hearingScheduledActions.submitHearingScheduled();
-      },
-      async () => {
-        await hearingScheduledActions.confirm();
-      },
-      ccdEvents.HEARING_SCHEDULED,
       { verifySuccessEvent: false },
     );
   }
