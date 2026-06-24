@@ -14,6 +14,8 @@ import ClaimantResponseSpecActions from './claimant-response/claimant-response-s
 import DefaultJudgmentSpecActions from './default-judgment/default-judgment-spec-actions.ts';
 import EvidenceUploadApplicantActions from './evidence-upload/evidence-upload-actions.ts';
 import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
+import DiscontinueClaimClaimantActions from './discontinue-claim-claimant/discontinue-claim-claimant-actions.ts';
+import DiscontinueClaimClaimantPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/discontinue-claim/discontinue-claim-claimant-page-factory.ts';
 import RequestForReconsiderationActions from './request-for-reconsideration-actions';
 import RequestForReconsiderationPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/request-for-reconsideration/request-for-reconsideration-page-factory';
 
@@ -61,6 +63,10 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
       new EvidenceUploadPageFactory(this.page),
       this.testData,
     );
+  }
+
+  get discontinueClaimClaimantActions() {
+    return new DiscontinueClaimClaimantActions(new DiscontinueClaimClaimantPageFactory(this.page), this.testData);
   }
 
   get requestForReconsiderationActions() {
