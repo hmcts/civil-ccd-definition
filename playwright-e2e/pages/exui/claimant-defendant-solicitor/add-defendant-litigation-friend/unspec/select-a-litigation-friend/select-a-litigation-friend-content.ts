@@ -3,7 +3,7 @@ export const dropdowns = {
     label: 'Who requires a litigation friend?',
     selector: '#selectLitigationFriend',
     options: {
-      both: 1,
+      both: 'Both',
     },
   },
 };
