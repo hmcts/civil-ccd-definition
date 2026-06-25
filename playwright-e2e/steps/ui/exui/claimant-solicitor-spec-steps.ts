@@ -305,8 +305,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse2v1Spec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.smallClaimExperts2v1();
+        await claimantResponseSpecActions.determinationWithoutHearing();
         await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
@@ -467,6 +467,58 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       },
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
       { verifySuccessEvent: false },
+    );
+  }
+
+  async DiscontinueClaim1v1() {
+    const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await discontinueClaimClaimantActions.courtPermissionYes();
+        await discontinueClaimClaimantActions.permissionGrantedYes();
+        await discontinueClaimClaimantActions.fullDiscontinuance();
+        await discontinueClaimClaimantActions.submitDiscontinueClaimPage();
+      },
+      async () => {
+        await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
+      },
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async DiscontinueClaim1v2DS() {
+    const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await discontinueClaimClaimantActions.courtPermissionYes();
+        await discontinueClaimClaimantActions.permissionGrantedYes();
+        await discontinueClaimClaimantActions.selectDiscontinueAgainstBothDefendantsYes();
+        await discontinueClaimClaimantActions.fullDiscontinuance();
+        await discontinueClaimClaimantActions.submitDiscontinueClaimPage();
+      },
+      async () => {
+        await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
+      },
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async DiscontinueClaim2v1() {
+    const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await discontinueClaimClaimantActions.selectBothClaimantsDiscontinuing();
+        await discontinueClaimClaimantActions.courtPermissionYes();
+        await discontinueClaimClaimantActions.permissionGrantedYes();
+        await discontinueClaimClaimantActions.fullDiscontinuance();
+        await discontinueClaimClaimantActions.submitDiscontinueClaimPage();
+      },
+      async () => {
+        await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
+      },
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
     );
   }
 
