@@ -28,7 +28,6 @@ export default class DefendantSolicitor1Steps extends BaseExui {
   }
 
   async InformAgreedExtensionDate() {
-    await super.fetchAndSetCCDCaseData();
     const { informAgreedExtensionDateActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {

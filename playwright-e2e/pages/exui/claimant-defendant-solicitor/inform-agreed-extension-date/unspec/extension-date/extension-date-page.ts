@@ -8,11 +8,8 @@ import { paragraphs } from './extension-date-content';
 @AllMethodsStep()
 export default class ExtensionDatePage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    const isMultiPartyExtension =
-      Boolean(ccdCaseData.respondent2AcknowledgeNotificationDate) ||
-      Boolean(ccdCaseData.applicant2);
     const extensionDate = DateHelper.addToDate(ccdCaseData.claimDetailsNotificationDate!, {
-      days: isMultiPartyExtension ? 56 : 42,
+      days: ccdCaseData.respondent2AcknowledgeNotificationDate ? 56 : 42,
       workingDay: true,
     });
 
