@@ -12,6 +12,7 @@ export default class ExtensionDatePage extends ExuiPage(BasePage) {
       days: ccdCaseData.respondent2AcknowledgeNotificationDate ? 56 : 42,
       workingDay: true,
     });
+
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(paragraphs.descriptionText, { count: 1 }),
