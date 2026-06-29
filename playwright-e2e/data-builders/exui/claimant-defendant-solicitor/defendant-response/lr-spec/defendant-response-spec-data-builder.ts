@@ -2,13 +2,12 @@ import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 import defendantResponseSpecData from './defendant-response-spec-data-components';
-import DefendantResponseSpecTypeObjs from '../../../../../models/ccd-events/defendant-response-spec/defendant-response-spec-type-objs';
-import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
 import { defendantSolicitor1User, defendantSolicitor2User } from '../../../../../config/users/exui-users';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import partys from '../../../../../constants/users/partys';
 import { Party } from '../../../../../models/users/partys';
+import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
@@ -19,20 +18,58 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
   async buildDS1FastTrackFullDefenceData() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
+    });
+  }
+
+  async buildDS1FastTrackPartAdmitData() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallTrackPartAdmitData() {
+    return this.buildData({
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1FastTrackPartAdmit1v2SSData() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallTrackPartAdmit1v2SSData() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1FastTrackPartAdmit2v1Data() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallTrackPartAdmit2v1Data() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
     });
   }
 
   async buildDS2FastTrackFullDefenceData() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
@@ -40,10 +77,6 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
   async buildDS2SmallTrackFullDefenceData() {
     return this.buildData({
       claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
@@ -52,10 +85,6 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
     });
   }
 
@@ -63,10 +92,6 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
     });
   }
 
@@ -74,10 +99,6 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
     });
   }
 
@@ -85,15 +106,14 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     {
       claimType = ClaimType.ONE_VS_ONE,
       claimTrack = ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType = {
-        defendantResponseSpecType: DefendantResponseSpecType.FULL_DEFENCE,
-        defenceRoute: DefenceRouteSpec.DISPUTE,
-      },
+      defendantResponseSpecType = DefendantResponseSpecType.FULL_DEFENCE,
+      defenceRouteSpec = DefenceRouteSpec.DISPUTE,
       defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1
     }: {
       claimType?: ClaimType;
       claimTrack?: ClaimTrack;
-      defendantResponseSpecType?: DefendantResponseSpecTypeObjs;
+      defendantResponseSpecType?: DefendantResponseSpecType;
+      defenceRouteSpec?: DefenceRouteSpec;
       defendantSolicitorParty?: Party
     } = {}
   ) {
@@ -118,7 +138,8 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
         claimType,
         defendantSolicitorParty,
       ),
-      defendantResponseSpecData.defenceRoute(defendantResponseSpecType, defendantSolicitorParty),
+      defendantResponseSpecData.defenceRoute(defendantResponseSpecType, defenceRouteSpec, claimTrack, defendantSolicitorParty),
+      defendantResponseSpecData.defenceAdmittedPartRoute(defendantResponseSpecType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecData.upload(defenceResponseDocumentSpec, defendantSolicitorParty),
       defendantResponseSpecData.timeline(defendantSolicitorParty),
       defendantResponseSpecData.mediationContactInformation(claimTrack, defendantSolicitorParty),

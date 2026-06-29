@@ -17,7 +17,7 @@ test.describe('1v2DS stay case journey', { tag: '@civil-ccd-nightly' }, () => {
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
     await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence1v2DS();
     await DefendantSolicitor2ApiSteps.RespondFastTrackFullDefence();
-    await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence1v2DS();
+    await ClaimantSolicitorApiSteps.RespondFastTrackProceed1v2DS();
     await DefendantSolicitor2Steps.Login();
     await DefendantSolicitor2Steps.AddUnavailableDates();
     await HearingCenterAdminSteps.LoginRegion1();

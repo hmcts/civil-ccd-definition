@@ -8,18 +8,29 @@ import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec-type/claimant-response-spec-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import DateHelper from '../../../../../helpers/date-helper';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 
 const defendantResponse = (
   claimType: ClaimType,
   claimantResponseType: ClaimantResponseSpecType,
+  defendantResponseSpecType: DefendantResponseSpecType
 ) => {
-  if(ClaimTypeHelper.isClaimant2(claimType))
+  if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION) {
+    return {
+      RespondentResponse: {
+        applicant1PartAdmitConfirmAmountPaidSpec: 'Yes'
+      }
+    };
+  }
+
+  if(ClaimTypeHelper.isClaimant2(claimType)) {
     return {
       RespondentResponse: {
         applicant1ProceedWithClaimSpec2v1:
           claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No'
       }
     };
+  }
 
   return {
     RespondentResponse: {
@@ -28,6 +39,19 @@ const defendantResponse = (
     },
   };
 };
+
+const intentionToSettleClaim = (defendantResponseSpecType: DefendantResponseSpecType, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
+    return {
+      IntentionToSettleClaim: {
+        applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
+        applicant1PartAdmitRejectReasonSpec: `Part admit reject reason - ${partys.CLAIMANT_1.key}`
+      }
+    }
+  }
+
+  return {};
+}
 
 const claimantDefenceResponseDocument = (defenceResponseDocumentSpec: UploadDocumentValue, claimantResponseType:  ClaimantResponseSpecType) => {
   if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM)
@@ -332,6 +356,7 @@ const statementOfTruth = {
 
 const claimantResponseSpecData = {
   defendantResponse,
+  intentionToSettleClaim,
   claimantDefenceResponseDocument,
   mediationContactInformation,
   mediationAvailability,

@@ -73,11 +73,38 @@ const respondentResponseType = (
   return {};
 };
 
-const defenceRoute = (defendantSolicitorParty: Party) => ({
-  [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-    ? 'defenceRouteRequired'
-    : 'defenceRouteRequired2']: nonEmptyString,
-});
+const defenceRoute = (
+  responseType: DefendantResponseSpecType,
+  defendantSolicitorParty: Party,
+) => {
+  if(responseType === DefendantResponseSpecType.FULL_DEFENCE)
+    return {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'defenceRouteRequired'
+        : 'defenceRouteRequired2']: nonEmptyString,
+    };
+
+  return {};
+};
+
+const defenceAdmittedPartRoute = (
+  responseType: DefendantResponseSpecType,
+  defendantSolicitorParty: Party,
+) => {
+  if(responseType === DefendantResponseSpecType.PART_ADMISSION)
+    return {
+      specDefenceAdmittedRequired: yesNoSchema,
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondToAdmittedClaim'
+        : 'respondToAdmittedClaim2']: z.looseObject({
+        howMuchWasPaid: nonEmptyString,
+        whenWasThisAmountPaid: nonEmptyString,
+        howWasThisAmountPaid: nonEmptyString,
+      }),
+    };
+
+  return {};
+};
 
 const upload = (defendantSolicitorParty: Party) => ({
   [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -385,6 +412,7 @@ const defendantResponseSpecSchemaComponents = {
   responseConfirmDetails,
   respondentResponseType,
   defenceRoute,
+  defenceAdmittedPartRoute,
   upload,
   timeline,
   mediationContactInformation,

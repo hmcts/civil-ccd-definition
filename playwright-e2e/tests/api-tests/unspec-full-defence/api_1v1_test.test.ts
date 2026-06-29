@@ -19,6 +19,6 @@ test.describe('1v1 unspec full defence api journey', { tag: '@civil-service-nigh
     await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
     await DefendantSolicitor1ApiSteps.AddLitigationFriend();
     await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence();
-    await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence();
+    await ClaimantSolicitorApiSteps.RespondFastTrackProceed();
   });
 });
