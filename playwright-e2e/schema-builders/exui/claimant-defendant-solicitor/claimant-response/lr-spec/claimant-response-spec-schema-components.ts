@@ -135,8 +135,8 @@ const experts = (
     }
 
     return {
-      applicant1DQExperts: z.strictObject({
-          expertRequired: yesNoSchema,
+      applicant1DQExperts: z.looseObject({
+          // expertRequired: yesNoSchema,
           expertReportsSent: nonEmptyString,
           jointExpertSuitable: yesNoSchema,
           details: z.array(

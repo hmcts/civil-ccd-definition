@@ -154,7 +154,7 @@ const defenceAdmittedPartRoute = (
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondToAdmittedClaim'
           : 'respondToAdmittedClaim2']: {
-          howMuchWasPaid: (CaseDataHelper.getClaimValue(claimTrack) / 2).toFixed().toString(),
+          howMuchWasPaid: ((CaseDataHelper.getClaimValue(claimTrack)/2)*100).toFixed().toString(),
           whenWasThisAmountPaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 1}), {outputFormat: 'YYYY-MM-DD'}),
           howWasThisAmountPaid: 'CREDIT_CARD',
         },
