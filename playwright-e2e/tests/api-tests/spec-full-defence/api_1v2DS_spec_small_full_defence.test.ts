@@ -1,13 +1,11 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2DS spec discontinue claim', { tag: ['@civil-ccd-nightly'] }, () => {
-  test('1v2DS spec discontinue this claim - full discontinuance', async ({
-    ClaimantSolicitorSpecSteps,
+test.describe('1v2DS spec small full defence api journey', { tag: '@civil-service-nightly' }, async () => {
+  test('1v2DS spec small full defence', async ({
     ClaimantSolicitorSpecApiSteps,
+    CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
     DefendantSolicitor2SpecApiSteps,
-    DefendantSolicitor2SpecSteps,
-    CaseRoleAssignmentApiSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -16,7 +14,5 @@ test.describe('1v2DS spec discontinue claim', { tag: ['@civil-ccd-nightly'] }, (
     await DefendantSolicitor1SpecApiSteps.RespondSmallTrackFullDefence1v2DS();
     await DefendantSolicitor2SpecApiSteps.RespondSmallTrackFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallClaimIntentToProceed1v2DS();
-    await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.DiscontinueClaim1v2DS();
   });
 });
