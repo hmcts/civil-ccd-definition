@@ -20,6 +20,14 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildDS1FastTrackPartAdmit(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
   async buildDS2FastTrackFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
@@ -107,7 +115,11 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
         claimType,
         defendantSolicitorParty,
       ),
-      ...defendantResponseSpecSchemaComponents.defenceRoute(defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.defenceRoute(responseType, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.defenceAdmittedPartRoute(
+        responseType,
+        defendantSolicitorParty,
+      ),
       ...defendantResponseSpecSchemaComponents.upload(defendantSolicitorParty),
       ...defendantResponseSpecSchemaComponents.timeline(defendantSolicitorParty),
       ...defendantResponseSpecSchemaComponents.mediationContactInformation(claimTrack, defendantSolicitorParty),

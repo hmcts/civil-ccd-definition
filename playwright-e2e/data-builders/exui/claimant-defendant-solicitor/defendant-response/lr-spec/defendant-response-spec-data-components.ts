@@ -4,9 +4,6 @@ import partys from '../../../../../constants/users/partys';
 import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
-import DefendantResponseSpecTypeObjs, {
-  FullDefenceDefendantResponseSpecTypeObjs,
-} from '../../../../../models/ccd-events/defendant-response-spec/defendant-response-spec-type-objs';
 import DateHelper from '../../../../../helpers/date-helper';
 import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
 import ClaimType from '../../../../../constants/cases/claim-type';
@@ -76,37 +73,68 @@ const singleResponse = (
 }
 
 const respondentResponseTypeSpec = (
-  defendantResponseType: DefendantResponseSpecType | DefendantResponseSpecTypeObjs,
+  defendantResponseType: DefendantResponseSpecType,
   claimType: ClaimType,
   defendantSolicitorParty: Party,
 ) => {
-  const isFullDefence = typeof defendantResponseType === 'object' 
-  && (defendantResponseType as FullDefenceDefendantResponseSpecTypeObjs).defendantResponseSpecType 
-    === DefendantResponseSpecType.FULL_DEFENCE;
-
-  if(isFullDefence) {
-    defendantResponseType = defendantResponseType as FullDefenceDefendantResponseSpecTypeObjs;
-    if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-      if(ClaimTypeHelper.isClaimant2(claimType)) {
-        return {
-          RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: defendantResponseType.defendantResponseSpecType,
-            claimant1ClaimResponseTypeForSpec: defendantResponseType.defendantResponseSpecType,
-            claimant2ClaimResponseTypeForSpec: defendantResponseType.defendantResponseSpecType,
-          },
-        };
-      }
-
+  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+    if(ClaimTypeHelper.isClaimant2(claimType)) {
       return {
         RespondentResponseTypeSpec: {
-          respondent1ClaimResponseTypeForSpec: defendantResponseType.defendantResponseSpecType,
+          respondent1ClaimResponseTypeForSpec: defendantResponseType,
+          claimant1ClaimResponseTypeForSpec: defendantResponseType,
+          claimant2ClaimResponseTypeForSpec: defendantResponseType,
         },
       };
-    } else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+    }
+
+    return {
+      RespondentResponseTypeSpec: {
+        respondent1ClaimResponseTypeForSpec: defendantResponseType,
+      },
+    };
+  } else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+    return {
+      RespondentResponseTypeSpec: {
+        respondent2ClaimResponseTypeForSpec: defendantResponseType,
+      }
+    };
+  }
+
+  return {};
+};
+
+const defenceRoute = (
+  defendantResponseType: DefendantResponseSpecType,
+  defenceRoute: DefenceRouteSpec,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if(defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE) {
+    if(defenceRoute === DefenceRouteSpec.DISPUTE) {
       return {
-        RespondentResponseTypeSpec: {
-          respondent2ClaimResponseTypeForSpec: defendantResponseType.defendantResponseSpecType,
-        }
+        defenceRoute: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'defenceRouteRequired'
+            : 'defenceRouteRequired2']: defenceRoute,
+        },
+      };
+    }
+
+    else if(defenceRoute === DefenceRouteSpec.HAS_PAID) {
+      return {
+        defenceRoute: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'defenceRouteRequired'
+            : 'defenceRouteRequired2']: defenceRoute,
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondToClaim'
+            : 'respondToClaim2']: {
+            howMuchWasPaid: CaseDataHelper.getClaimValue(claimTrack).toFixed().toString(),
+            howWasThisAmountPaid: 'CREDIT_CARD',
+            whenWasThisAmountPaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 1}), {outputFormat: 'YYYY-MM-DD'}),
+          },
+        },
       };
     }
   }
@@ -114,57 +142,24 @@ const respondentResponseTypeSpec = (
   return {};
 };
 
-const defenceRoute = (
-  defendantResponseType: DefendantResponseSpecType | DefendantResponseSpecTypeObjs,
+const defenceAdmittedPartRoute = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
   defendantSolicitorParty: Party,
 ) => {
-  const isFullDefence = typeof defendantResponseType === 'object' 
-  && (defendantResponseType as FullDefenceDefendantResponseSpecTypeObjs).defendantResponseSpecType 
-    === DefendantResponseSpecType.FULL_DEFENCE;
-
-  if(isFullDefence) {
-    defendantResponseType = defendantResponseType as FullDefenceDefendantResponseSpecTypeObjs;
-    if(defendantResponseType.defenceRoute === DefenceRouteSpec.DISPUTE) {
-      if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-        return {
-          defenceRoute: {
-            defenceRouteRequired: defendantResponseType.defenceRoute,
-          },
-        };
-      } else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-        return {
-          defenceRoute: {
-            defenceRouteRequired2: defendantResponseType.defenceRoute,
-          },
-        };
-      }
-    }
-
-    else if(defendantResponseType.defenceRoute === DefenceRouteSpec.HAS_PAID) {
-      if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-        return {
-          defenceRoute: {
-            defenceRouteRequired: defendantResponseType.defenceRoute,
-            respondToClaim: {
-              howMuchWasPaid: CaseDataHelper.getClaimValue(defendantResponseType.claimTrack),
-              howWasThisAmountPaid: 'CREDIT_CARD',
-              whenWasThisAmountPaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 1}), {outputFormat: 'YYYY-MM-DD'}),
-            },
-          },
-        };
-      } else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-        return {
-          defenceRoute: {
-            defenceRouteRequired2: defendantResponseType.defenceRoute,
-            respondToClaim2: {
-              howMuchWasPaid: CaseDataHelper.getClaimValue(defendantResponseType.claimTrack),
-              howWasThisAmountPaid: 'CREDIT_CARD',
-              whenWasThisAmountPaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 1}), {outputFormat: 'YYYY-MM-DD'}),
-            },
-          },
-        };
-      }
-    }
+  if(defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) {
+    return {
+      defenceAdmittedPartRoute: {
+        specDefenceAdmittedRequired: 'Yes',
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondToAdmittedClaim'
+          : 'respondToAdmittedClaim2']: {
+          howMuchWasPaid: (CaseDataHelper.getClaimValue(claimTrack) / 2).toFixed().toString(),
+          whenWasThisAmountPaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 1}), {outputFormat: 'YYYY-MM-DD'}),
+          howWasThisAmountPaid: 'CREDIT_CARD',
+        },
+      },
+    };
   }
 
   return {};
@@ -600,6 +595,7 @@ const defendantResponseSpecData = {
   singleResponse,
   respondentResponseTypeSpec,
   defenceRoute,
+  defenceAdmittedPartRoute,
   upload,
   timeline,
   mediationContactInformation,

@@ -3,6 +3,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec-type/claimant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 
 const yesNoSchema = z.enum(['Yes', 'No']);
 const nonEmptyString = z.string().min(1);
@@ -10,7 +11,14 @@ const nonEmptyString = z.string().min(1);
 const proceedWithClaim = (
   claimType: ClaimType,
   _claimantResponseType: ClaimantResponseSpecType,
+  defendantResponseSpecType: DefendantResponseSpecType,
 ) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION) {
+    return {
+      applicant1PartAdmitConfirmAmountPaidSpec: yesNoSchema,
+    };
+  }
+
   if (ClaimTypeHelper.isClaimant2(claimType)) {
     return {
       applicant1ProceedWithClaimSpec2v1: yesNoSchema,
@@ -20,6 +28,23 @@ const proceedWithClaim = (
   return {
     applicant1ProceedWithClaim: yesNoSchema,
   };
+};
+
+const intentionToSettleClaim = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(
+    defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION &&
+    claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
+  ) {
+    return {
+      applicant1PartAdmitIntentionToSettleClaimSpec: yesNoSchema,
+      // applicant1PartAdmitRejectReasonSpec: nonEmptyString,
+    };
+  }
+
+  return {};
 };
 
 const determinationWithoutHearing = (
@@ -278,6 +303,7 @@ const undefine = {
 
 const claimantResponseSpecSchemaComponents = {
   proceedWithClaim,
+  intentionToSettleClaim,
   determinationWithoutHearing,
   fastTrackDq,
   experts,

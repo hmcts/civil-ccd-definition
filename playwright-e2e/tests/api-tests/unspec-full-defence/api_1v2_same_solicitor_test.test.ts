@@ -23,7 +23,7 @@ test.describe(
         await DefendantSolicitor1ApiSteps.AcknowledgeClaimFullDefence1v2SS();
         await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
         await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence1v2SS();
-        await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence1v2SS();
+        await ClaimantSolicitorApiSteps.RespondFastTrackProceed1v2SS();
       },
     );
   },

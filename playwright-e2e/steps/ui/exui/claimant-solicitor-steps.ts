@@ -466,7 +466,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackIntentToProceed1v1() {
+  async RespondFastTrackProceed1v1() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -485,7 +485,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackIntentToProceed1v2DS() {
+  async RespondFastTrackProceed1v2DS() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -504,7 +504,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondSmallClaimIntentToProceed1v1() {
+  async RespondSmallClaimProceed1v1() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -523,7 +523,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondSmallClaimIntentToProceed2v1() {
+  async RespondSmallClaimProceed2v1() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -542,7 +542,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondSmallClaimIntentToProceed1v2SS() {
+  async RespondSmallClaimProceed1v2SS() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -561,7 +561,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondSmallClaimIntentToProceed1v2DS() {
+  async RespondSmallClaimProceed1v2DS() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -599,7 +599,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackIntentToProceed1v2SS() {
+  async RespondFastTrackProceed1v2SS() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -618,7 +618,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackIntentToProceed2v1() {
+  async RespondFastTrackProceed2v1() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
