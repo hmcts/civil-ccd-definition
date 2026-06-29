@@ -25,6 +25,12 @@
           "legal-adviser"
         ],
         "CRUD": "U"
+      },
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
