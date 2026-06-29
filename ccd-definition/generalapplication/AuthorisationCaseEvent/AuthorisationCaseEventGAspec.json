@@ -36,6 +36,30 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "NOTIFY_GENERAL_APPLICATION_RESPONDENT",
     "AccessControl": [
       {
