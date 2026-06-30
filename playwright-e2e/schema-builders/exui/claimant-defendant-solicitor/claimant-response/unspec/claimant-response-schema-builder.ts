@@ -25,7 +25,7 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildFastTrackFullDefence1v2SSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildFastTrackProceed1v2SSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,

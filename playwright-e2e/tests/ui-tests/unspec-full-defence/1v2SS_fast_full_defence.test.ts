@@ -20,6 +20,6 @@ test.describe('1v2SS fast track claim journey', { tag: '@civil-ccd-nightly' }, a
     await DefendantSolicitor1Steps.AddLitigationFriend1v2SS();
     await DefendantSolicitor1Steps.RespondFastTrackFullDefence1v2SS();
     await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.RespondFastTrackIntentToProceed1v2SS();
+    await ClaimantSolicitorSteps.RespondFastTrackProceed1v2SS();
   });
 });
