@@ -1316,18 +1316,36 @@ module.exports = function () {
       }, CASE_DETAILS_TAB, undefined, 20);
     },
 
-    async viewAndAssertPdf(documentName, testDir, baselineDir, pdfName, caseNumber) {
+    // buttonIndex picks which match to click when documentName appears more than
+    // once on the Claim Documents tab (e.g. claimant/defendant default judgment
+    // forms share an identical filename) — defaults to the first match.
+    async viewAndAssertPdf(documentName, testDir, baselineDir, pdfName, caseNumber, buttonIndex = 0) {
+      if (process.env.RUN_PDF_COMPARISON !== 'true') {
+        output.print(`Skipping PDF comparison for "${documentName}": RUN_PDF_COMPARISON is not set to true`);
+        return;
+      }
+
+      if (process.env.ENVIRONMENT === 'preview') {
+        output.print(
+          `Skipping PDF comparison for "${documentName}": preview environments use a separate `
+          + 'Docmosis Tornado instance to AAT (see PREVIEW_DOCMOSIS_TORNADO_URL), so rendered PDFs will not '
+          + 'match the AAT-captured baseline. Run this against AAT instead.'
+        );
+        return;
+      }
+
       const pdfPaths = pdfHelper.getPdfPaths(testDir, baselineDir, pdfName);
+      const selector = `button:has-text("${documentName}")`;
 
       await this.navigateToCaseDetails(caseNumber);
       await this.retryUntilExists(async () => {
         await this.refreshPage();
         await this.waitForSelector(CASE_DETAILS_TAB);
         await this.click(CLAIM_DOCUMENTS_TAB);
-      }, `button:has-text("${documentName}")`, 3, 10);
+      }, selector, 3, 10);
       await this.usePlaywrightTo('open document in new tab', async ({ page, browserContext }) => {
         const newPagePromise = browserContext.waitForEvent('page', { timeout: 30000 });
-        await page.click(`button:has-text("${documentName}")`);
+        await page.locator(selector).nth(buttonIndex).click();
         const newPage = await newPagePromise;
         await newPage.waitForLoadState();
       });

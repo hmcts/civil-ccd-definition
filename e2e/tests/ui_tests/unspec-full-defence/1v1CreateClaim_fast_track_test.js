@@ -18,6 +18,10 @@ const respondent1 = {
   representativeOrgNumber: 2
 };
 
+const TEST_DIRECTORY = 'e2e/tests/ui_tests/unspec-full-defence';
+const BASELINE_DIRECTORY = 'e2e/pdf-baselines/unspec-full-defence';
+const ACKNOWLEDGEMENT_OF_CLAIM_PDF = 'acknowledgement_of_claim.pdf';
+
 let caseNumber;
 let claimType = 'Personal injury';
 
@@ -55,6 +59,8 @@ Scenario('04 Defendant solicitor acknowledges claim', async ({I}) => {
   await I.acknowledgeClaim('fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Acknowledge claim'));
+
+  await I.viewAndAssertPdf('acknowledgement_of_claim_form', TEST_DIRECTORY, BASELINE_DIRECTORY, ACKNOWLEDGEMENT_OF_CLAIM_PDF, caseNumber);
 }).retry(2);
 
 Scenario('05 Defendant solicitor requests deadline extension', async ({I}) => {
