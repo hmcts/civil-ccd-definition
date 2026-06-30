@@ -180,4 +180,64 @@ export default class HearingCenterAdminSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async RequestNewHearing() {
+    const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryHearingRequest(
+      async () => {
+        await this.exuiDashboardActions.goToHearingsTab();
+        await requestHearingActions.requestNewHearing();
+        await requestHearingActions.checkRequirements();
+        await requestHearingActions.selectFacilities();
+        await requestHearingActions.selectStage();
+        await requestHearingActions.selectAttendance();
+        await requestHearingActions.selectVenue();
+        await requestHearingActions.selectJudge();
+        await requestHearingActions.selectTiming();
+        await requestHearingActions.enterAdditionalInstructions();
+        await requestHearingActions.submitHearing();
+      },
+      async () => {
+        await requestHearingActions.confirmHearing();
+      },
+    );
+  }
+
+  async UpdateHearing() {
+    const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryHearingRequest(
+      async () => {
+        await this.exuiDashboardActions.goToHearingsTab();
+        await requestHearingActions.viewDetails();
+        await requestHearingActions.editHearing();
+        await requestHearingActions.changeAdditionalFacilities();
+        await requestHearingActions.updateAdditionalFacilities();
+        await requestHearingActions.changeJudgeTypes();
+        await requestHearingActions.updateJudgeTypes();
+        await requestHearingActions.changeAttendance();
+        await requestHearingActions.updateAttendance();
+        await requestHearingActions.changeTimings();
+        await requestHearingActions.updateTimings();
+        await requestHearingActions.changeAdditionalInstructions();
+        await requestHearingActions.updateAdditionalInstructions();
+        await requestHearingActions.submitUpdatedRequest();
+        await requestHearingActions.hearingChangeReason();
+      },
+      async () => {
+        await requestHearingActions.confirmHearing();
+      },
+    );
+  }
+
+  async CancelHearing() {
+    const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryHearingRequest(
+      async () => {
+        await this.exuiDashboardActions.goToHearingsTab();
+        await requestHearingActions.cancelHearing();
+        await requestHearingActions.cancelHearingListedInError();
+      },
+      async () => {},
+    );
+  }
 }
