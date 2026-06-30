@@ -7,11 +7,58 @@ import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claima
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import claimantResponseSpecSchemaComponents from './claimant-response-spec-schema-components';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
-  async buildFastTrack1v1(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastTrack(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
+  async buildFastTrackPartAdmitProceed(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildFastTrackPartAdmitProceed1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildFastTrackPartAdmitProceed2v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildSmallTrackPartAdmitProceed(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildSmallTrackPartAdmitProceed1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildSmallTrackPartAdmitProceed2v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
   }
 
   async buildFastTrack1v1DoNotProceed(caseDataBeforeSubmission?: CCDCaseData) {
@@ -82,10 +129,12 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
       claimType = ClaimType.ONE_VS_ONE,
       claimTrack = ClaimTrack.FAST_CLAIM,
       claimantResponseType = ClaimantResponseSpecType.PROCEED_WITH_CLAIM,
+      defendantResponseSpecType = DefendantResponseSpecType.FULL_DEFENCE,
     }: {
       claimType?: ClaimType;
       claimTrack?: ClaimTrack;
       claimantResponseType?: ClaimantResponseSpecType;
+      defendantResponseSpecType?: DefendantResponseSpecType;
     } = {},
   ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
@@ -96,7 +145,15 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     Object.assign(
       schemaShape,
       claimantResponseSpecSchemaComponents.undefine,
-      claimantResponseSpecSchemaComponents.proceedWithClaim(claimType, claimantResponseType),
+      claimantResponseSpecSchemaComponents.proceedWithClaim(
+        claimType,
+        claimantResponseType,
+        defendantResponseSpecType,
+      ),
+      claimantResponseSpecSchemaComponents.intentionToSettleClaim(
+        defendantResponseSpecType,
+        claimantResponseType,
+      ),
       claimantResponseSpecSchemaComponents.determinationWithoutHearing(
         claimTrack,
         claimantResponseType,
