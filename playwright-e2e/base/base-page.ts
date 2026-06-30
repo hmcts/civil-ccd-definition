@@ -1791,4 +1791,10 @@ export default abstract class BasePage {
       message: message ?? 'Assertion failed, reloading page and trying again',
     });
   }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  @TruthyParams(classKey, 'selector')
+  protected async countBySelector(selector: string): Promise<number> {
+    return await this.page.locator(selector).count();
+  }
 }

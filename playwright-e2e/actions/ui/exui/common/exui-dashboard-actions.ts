@@ -49,6 +49,13 @@ export default class ExuiDashboardActions extends BaseApi {
     await caseDetailsPage.verifyClaimDetailsContent(this.ccdCaseData);
   }
 
+  async goToHearingsTab() {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
+    await caseDetailsPage.verifyContent(this.ccdCaseData);
+    await caseDetailsPage.verifyHearingsContent(this.ccdCaseData);
+  }
+
   async signOut() {
     const { navBar } = this.exuiDashboardPageFactory;
     await navBar.clickSignOut();

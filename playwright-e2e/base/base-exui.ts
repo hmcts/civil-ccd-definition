@@ -92,4 +92,28 @@ export default abstract class BaseExui extends BaseApi {
     });
     await super.completeWATask(user, taskId);
   }
+
+  @Step(classKey)
+  async retryHearingRequest(
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
+    { retries = config.exui.eventRetries, camundaProcess = true } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    while (retries >= 0) {
+      try {
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Hearing request failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
+    await confirmActions();
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+  }
 }

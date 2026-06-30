@@ -72,6 +72,18 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       await super.clickBySelector(buttons.addNew.selector);
     }
 
+    protected async clickContinue() {
+      await super.clickButtonByName(buttons.continue.title);
+    }
+
+    protected async submitRequest() {
+      await super.clickButtonByName(buttons.submitRequest.title);
+    }
+
+    protected async submitUpdatedRequest() {
+      await super.clickButtonByName(buttons.submitUpdatedRequest.title);
+    }
+
     protected async waitForPageToLoad() {
       await Promise.race([
         super.waitForSelectorToDetach(components.loading.selector, {
