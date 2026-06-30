@@ -19,7 +19,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallTrackFullDefence();
-      await ClaimantSolicitorSpecApiSteps.RespondSmallClaimIntentToProceed();
+      await ClaimantSolicitorSpecApiSteps.RespondSmallClaimProceed();
       await CaseworkerApiSteps.MediationUnsuccessful();
       await LegalAdvisorSteps.LoginRegion1();
       await LegalAdvisorSteps.SdoSmallTrackNoSum();

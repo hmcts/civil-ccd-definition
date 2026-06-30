@@ -19,6 +19,6 @@ test.describe('1v1 spec fast track claim journey', { tag: '@civil-ccd-nightly' }
     await DefendantSolicitor1Steps.AddLitigationFriend();
     await DefendantSolicitor1Steps.RespondFastTrackFullDefence1v1();
     await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.RespondFastTrackIntentToProceed1v1();
+    await ClaimantSolicitorSteps.RespondFastTrackProceed1v1();
   });
 });
