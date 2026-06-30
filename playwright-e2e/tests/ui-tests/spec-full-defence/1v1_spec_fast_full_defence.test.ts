@@ -18,7 +18,7 @@ test.describe(
       await DefendantSolicitor1SpecSteps.InformAgreedExtensionDateSpec();
       await DefendantSolicitor1SpecSteps.RespondFastTrackFullDefence1v1();
       await ClaimantSolicitorSpecSteps.Login();
-      await ClaimantSolicitorSpecSteps.RespondFastTrackIntentToProceed1v1();
+      await ClaimantSolicitorSpecSteps.RespondFastTrackProceed1v1();
     });
   },
 );

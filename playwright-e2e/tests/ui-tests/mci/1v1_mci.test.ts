@@ -14,7 +14,7 @@ test.describe('1v1 - Manage Contact Information', async () => {
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
     await DefendantSolicitor1ApiSteps.AddLitigationFriend();
     await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence();
-    await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence();
+    await ClaimantSolicitorApiSteps.RespondFastTrackProceed();
     await CaseworkerSteps.Login();
     await CaseworkerSteps.ManageContactInformation()
   });
