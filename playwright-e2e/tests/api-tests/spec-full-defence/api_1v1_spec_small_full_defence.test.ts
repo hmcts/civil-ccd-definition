@@ -13,7 +13,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
-      await ClaimantSolicitorSpecApiSteps.RespondSmallProceed();
+      await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed();
     });
   },
 );

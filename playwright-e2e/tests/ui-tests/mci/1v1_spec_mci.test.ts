@@ -11,7 +11,7 @@ test.describe('1v1 Spec - Manage Contact Information', async () => {
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondFastProceed();
+    await ClaimantSolicitorSpecApiSteps.RespondFastFullDefenceProceed();
     await CaseworkerSteps.Login();
     await CaseworkerSteps.ManageContactInformationSpec();
   });

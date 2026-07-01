@@ -15,7 +15,7 @@ test.describe('1v2DS spec discontinue claim', { tag: ['@civil-ccd-nightly'] }, (
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence1v2DS();
     await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondSmallProceed1v2DS();
+    await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed1v2DS();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.DiscontinueClaim1v2DS();
   });

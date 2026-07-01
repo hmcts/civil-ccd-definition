@@ -9,7 +9,7 @@ test.describe('1v2SS spec fast part admit api journey', { tag: '@civil-service-n
     await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2SS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    // await DefendantSolicitor1SpecApiSteps.RespondFastPartAdmitSetDate1v2SS();
-    // await ClaimantSolicitorSpecApiSteps.RespondFastPartAdmitProceed1v2SS();
+    await DefendantSolicitor1SpecApiSteps.RespondFastPartAdmitSetDate1v2SS();
+    await ClaimantSolicitorSpecApiSteps.RespondFastPartAdmitProceed1v2SS();
   });
 });

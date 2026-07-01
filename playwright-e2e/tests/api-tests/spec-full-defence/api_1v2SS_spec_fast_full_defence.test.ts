@@ -10,7 +10,7 @@ test.describe('1v2SS spec api fast track journeys', { tag: '@civil-service-night
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2SS();
-    await ClaimantSolicitorSpecApiSteps.RespondFastProceed1v2SS();
+    await ClaimantSolicitorSpecApiSteps.RespondFastFullDefenceProceed1v2SS();
   });
 
   test('1v2SS fast claim full defence and not proceed', async ({
@@ -22,6 +22,6 @@ test.describe('1v2SS spec api fast track journeys', { tag: '@civil-service-night
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2SS();
-    await ClaimantSolicitorSpecApiSteps.RespondFastNotProceed1v2SS();
+    await ClaimantSolicitorSpecApiSteps.RespondFastFullDefenceNotProceed1v2SS();
   });
 });

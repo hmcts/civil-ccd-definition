@@ -265,7 +265,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     await super.fetchAndSetCCDCaseData();
   }
 
-  async RespondFastProceed() {
+  async RespondFastFullDefenceProceed() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -484,7 +484,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondSmallProceed() {
+  async RespondSmallFullDefenceProceed() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -504,27 +504,8 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondSmallTrackProceed1v2SS() {
-    await this.setupApiStep(claimantSolicitorUser);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
-    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const claimantResponseEventData = await claimantResponseSpecDataBuilder.buildSmall1v2SS();
-    await super.submitCCDEvent(
-      claimantSolicitorUser,
-      ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      claimantResponseEventData,
-      CaseState.IN_MEDIATION,
-    );
-
-    const { claimantResponseSpecSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const claimantResponseSchema =
-      await claimantResponseSpecSchemaBuilder.buildSmall1v2SS(caseDataBeforeSubmission);
-    ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
-  }
-
-  async RespondFastProceed2v1() {
+  async RespondFastFullDefenceProceed2v1() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -544,7 +525,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondFastProceed1v2SS() {
+  async RespondFastFullDefenceProceed1v2SS() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -564,7 +545,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondFastNotProceed1v2SS() {
+  async RespondFastFullDefenceNotProceed1v2SS() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -587,7 +568,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondSmallProceed1v2DS() {
+  async RespondSmallFullDefenceProceed1v2DS() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 

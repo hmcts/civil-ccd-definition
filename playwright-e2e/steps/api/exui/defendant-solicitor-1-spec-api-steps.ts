@@ -340,7 +340,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondFast2v1FullDefence() {
+  async RespondFastFullDefence2v1() {
     await this.setupApiStep(defendantSolicitor1User);
 
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
