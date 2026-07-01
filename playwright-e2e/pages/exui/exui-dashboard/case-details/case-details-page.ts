@@ -53,9 +53,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async verifyClaimDetailsContent(caseData: CCDCaseData) {
     await super.clickByText(tabs.claimDetails.title);
-    await super.runVerifications([
-      super.verifyHeadings(caseData),
-    ], { useAxeCache: false });
+    await super.runVerifications([super.verifyHeadings(caseData)], { useAxeCache: false });
   }
 
   async verifyClaimDocumentsContent(caseData: CCDCaseData) {
@@ -75,6 +73,11 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async verifyCaseFlagsContent(caseData: CCDCaseData) {
     await super.clickByText(tabs.caseFlags.title);
+    await super.runVerifications([], { useAxeCache: false });
+  }
+
+  async verifyHearingsContent(caseData: CCDCaseData) {
+    await super.clickByText(tabs.hearings.title);
     await super.runVerifications([], { useAxeCache: false });
   }
 
