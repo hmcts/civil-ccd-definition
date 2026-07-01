@@ -22,7 +22,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence1v2DS();
       await DefendantSolicitor2ApiSteps.RespondFastTrackFullDefence1v2DS();
-      await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence1v2DS();
+      await ClaimantSolicitorApiSteps.RespondFastTrackProceed1v2DS();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoFastTrack();
       await HearingCenterAdminSteps.LoginRegion1();
