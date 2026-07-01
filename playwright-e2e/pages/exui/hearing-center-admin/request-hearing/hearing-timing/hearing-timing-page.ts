@@ -21,7 +21,7 @@ export default class HearingTimingPage extends ExuiPage(BasePage) {
   }
 
   async updateHearingLength() {
-    await super.expectText(heading, { exact: false });
+    await super.expectText(heading);
     await super.inputText(
       inputs.lengthOfHearing.hours.value2,
       inputs.lengthOfHearing.hours.selector,

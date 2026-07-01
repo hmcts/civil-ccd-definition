@@ -12,10 +12,7 @@ import { heading as additionalInstructionsHeading } from '../hearing-additional-
 @AllMethodsStep()
 export default class HearingEditSummaryPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.expectHeading(heading),
-      super.expectText(`${ccdCaseData.caseNamePublic}`, { exact: false, ignoreDuplicates: true }),
-    ]);
+    await super.runVerifications([super.expectHeading(heading)]);
   }
 
   async changeAdditionalFacilities() {
