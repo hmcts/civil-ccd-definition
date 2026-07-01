@@ -274,7 +274,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async EvidenceUploadFastTrack() {
+  async EvidenceUploadFast() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -295,7 +295,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
   }
 
-  async EvidenceUploadSmallClaim() {
+  async EvidenceUploadSmall() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 

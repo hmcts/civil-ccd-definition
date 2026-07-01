@@ -7,7 +7,7 @@ test.describe('1v1 unspec full defence api journey', { tag: '@civil-service-nigh
     DefendantSolicitor1ApiSteps,
     CaseRoleAssignmentApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimFastTrack1v1();
+    await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await CaseworkerApiSteps.AddCaseNote();
     await ClaimantSolicitorApiSteps.AmendClaimDocuments();
@@ -19,6 +19,6 @@ test.describe('1v1 unspec full defence api journey', { tag: '@civil-service-nigh
     await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
     await DefendantSolicitor1ApiSteps.AddLitigationFriend();
     await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-    await ClaimantSolicitorApiSteps.RespondFastTrackProceed();
+    await ClaimantSolicitorApiSteps.RespondFastProceed();
   });
 });

@@ -27,7 +27,7 @@ export default class JudgeApiSteps extends BaseApi {
     this.judgeSchemaBuilderFactory = judgeSchemaBuilderFactory;
   }
 
-  async SdoFastTrack() {
+  async SdoFast() {
     await this.setupApiStep(judgeRegion1User);
     const taskId = await super.retrieveAndAssignWATask(judgeRegion1User, fastTrackDirectionsTask);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);

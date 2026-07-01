@@ -10,6 +10,6 @@ test.describe('2v1 spec small part admit api journey', { tag: '@civil-service-ni
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     // await DefendantSolicitor1SpecApiSteps.RespondSmallPartAdmitRepayment2v1();
-    // await ClaimantSolicitorSpecApiSteps.RespondSmallClaimPartAdmitProceed2v1();
+    // await ClaimantSolicitorSpecApiSteps.RespondSmallPartAdmitProceed2v1();
   });
 });
