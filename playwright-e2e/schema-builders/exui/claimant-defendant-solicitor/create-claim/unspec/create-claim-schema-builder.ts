@@ -12,60 +12,60 @@ import createClaimResponseSchema from './create-claim-schema-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
-  async buildFastTrack1v1(): Promise<z.ZodType> {
+  async buildFast1v1(): Promise<z.ZodType> {
     return this.buildSchema({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildFastTrack1v2DS(): Promise<z.ZodType> {
+  async buildFast1v2DS(): Promise<z.ZodType> {
     return this.buildSchema({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildFastTrack1v2SS(): Promise<z.ZodType> {
+  async buildFast1v2SS(): Promise<z.ZodType> {
     return this.buildSchema({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildFastTrack2v1(): Promise<z.ZodType> {
+  async buildFast2v1(): Promise<z.ZodType> {
     return this.buildSchema({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildSmallTrack1v1(): Promise<z.ZodType> {
+  async buildSmall1v1(): Promise<z.ZodType> {
     return this.buildSchema();
   }
 
-  async buildSmallTrack2v1(): Promise<z.ZodType> {
+  async buildSmall2v1(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.TWO_VS_ONE });
   }
 
-  async buildSmallTrack1v2SS(): Promise<z.ZodType> {
+  async buildSmall1v2SS(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }
 
-  async buildSmallTrack1v2DS(): Promise<z.ZodType> {
+  async buildSmall1v2DS(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
-  async buildSmallTrack1vLIP(): Promise<z.ZodType> {
+  async buildSmall1vLIP(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
-  async buildSmallTrack1v2LIPs(): Promise<z.ZodType> {
+  async buildSmall1v2LIPs(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LIPS });
   }
 
-  async buildSmallTrack1v2LIPLR(): Promise<z.ZodType> {
+  async buildSmall1v2LIPLR(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LIP_LR });
   }
 
-  async buildSmallTrack1v2LRLIP(): Promise<z.ZodType> {
+  async buildSmall1v2LRLIP(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 

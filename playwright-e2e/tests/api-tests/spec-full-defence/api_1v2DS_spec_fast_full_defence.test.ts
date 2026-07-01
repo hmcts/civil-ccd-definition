@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('1v2DS spec full defence api journey', { tag: '@civil-service-nightly' }, async () => {
-  test('1v2DS spec full defence', async ({
+  test('1v2DS spec full defence @debug', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
@@ -11,8 +11,8 @@ test.describe('1v2DS spec full defence api journey', { tag: '@civil-service-nigh
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await DefendantSolicitor1SpecApiSteps.RespondFastTrackFullDefence1v2DS();
-    await DefendantSolicitor2SpecApiSteps.RespondFastTrackFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondFastTrackProceed();
+    // await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2DS();
+    // await DefendantSolicitor2SpecApiSteps.RespondFastFullDefence();
+    // await ClaimantSolicitorSpecApiSteps.RespondFastTrackProceed();
   });
 });

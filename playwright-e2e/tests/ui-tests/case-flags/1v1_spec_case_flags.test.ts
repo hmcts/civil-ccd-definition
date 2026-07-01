@@ -11,7 +11,7 @@ test.describe('1v1 spec case flags journey', { tag: '@civil-ccd-nightly' },
       await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondSmallTrackFullDefence();
+      await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
       await ClaimantSolicitorSpecApiSteps.RespondSmallClaimProceed();
       await HearingCenterAdminSpecSteps.LoginRegion1();
       await HearingCenterAdminSpecSteps.CreateCaseLevelCaseFlag();

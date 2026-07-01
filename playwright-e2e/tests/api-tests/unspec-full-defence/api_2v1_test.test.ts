@@ -20,7 +20,7 @@ test.describe(
       await CaseworkerApiSteps.AmendPartyDetails();
       await DefendantSolicitor1ApiSteps.AcknowledgeClaimFullDefence2v1();
       await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
-      await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence2v1();
+      await DefendantSolicitor1ApiSteps.RespondFast2v1FullDefence();
       await ClaimantSolicitorApiSteps.RespondFastTrackProceed2v1();
     });
   },

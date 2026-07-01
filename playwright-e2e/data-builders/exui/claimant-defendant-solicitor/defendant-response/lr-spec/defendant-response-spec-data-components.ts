@@ -10,6 +10,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { Party } from '../../../../../models/users/partys';
+import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
 
 const defendantChecklist = {
   RespondentChecklist: {},
@@ -148,9 +149,13 @@ const defenceAdmittedPartRoute = (
   defendantSolicitorParty: Party,
 ) => {
   if(defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) {
+    //Has paid defence admitted part route
+    /*
     return {
       defenceAdmittedPartRoute: {
-        specDefenceAdmittedRequired: 'Yes',
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
+          ? 'specDefenceAdmittedRequired' 
+          : 'specDefenceAdmitted2Required']: 'Yes',
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondToAdmittedClaim'
           : 'respondToAdmittedClaim2']: {
@@ -160,88 +165,33 @@ const defenceAdmittedPartRoute = (
         },
       },
     };
-  }
+    */
 
-  return {};
-};
-
-const upload = (defenceResponseDocumentSpec: UploadDocumentValue, defendantSolicitorParty: Party) => {
-  return {
-    Upload: {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'detailsOfWhyDoesYouDisputeTheClaim'
-        : 'detailsOfWhyDoesYouDisputeTheClaim2']: `Dispute reason - ${defendantSolicitorParty.key}`,
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'respondent1SpecDefenceResponseDocument'
-        : 'respondent2SpecDefenceResponseDocument']: {file: defenceResponseDocumentSpec},
-    },
-  };
-};
-
-const timeline = (defendantSolicitorParty: Party) => {
-  return {
-    HowToAddTimeline: {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'specClaimResponseTimelineList'
-        : 'specClaimResponseTimelineList2']: 'MANUAL',
-    },
-    HowToAddTimelineManual: {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'specResponseTimelineOfEvents'
-        : 'specResponseTimelineOfEvents2']: [
-        {
-          value: {
-            timelineDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 10}), {outputFormat: 'YYYY-MM-DD'}),
-            timelineDescription: `Timeline event 1 - ${defendantSolicitorParty.key}`,
-          }
-        },
-        {
-          value: {
-            timelineDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 11}), {outputFormat: 'YYYY-MM-DD'}),
-            timelineDescription: `Timeline event 2 - ${defendantSolicitorParty.key}`,
-          }
-        }
-      ]
+    return {
+      defenceAdmittedPartRoute: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
+          ? 'specDefenceAdmittedRequired' 
+          : 'specDefenceAdmitted2Required']: 'No',
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondToAdmittedClaimOwingAmountPounds'
+          : 'respondToAdmittedClaimOwingAmountPounds2']: ((CaseDataHelper.getClaimValue(claimTrack)/2)*100).toFixed().toString(),
+      }
     }
-  };
-}
-
-const mediationContactInformation = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
-    return {
-      MediationContactInformation: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'resp1MediationContactInfo'
-          : 'resp2MediationContactInfo']: CaseDataHelper.buildMediationData(
-          defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? partys.DEFENDANT_1_MEDIATION_FRIEND
-            : partys.DEFENDANT_2_MEDIATION_FRIEND,
-        ),
-      },
-    };
   }
+
   return {};
 };
 
-const mediationAvailability = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
-    const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {
-      outputFormat: 'YYYY-MM-DD',
-    });
+const upload = (defendantResponseType: DefendantResponseSpecType, defenceResponseDocumentSpec: UploadDocumentValue, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
     return {
-      MediationAvailability: {
+      Upload: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'resp1MediationAvailability'
-          : 'resp2MediationAvailability']: {
-          isMediationUnavailablityExists: 'Yes',
-          unavailableDatesForMediation: [
-            CaseDataHelper.setIdToData({
-              unavailableDateType: 'SINGLE_DATE',
-              date: unavailableDate,
-            }),
-          ],
-        },
+          ? 'detailsOfWhyDoesYouDisputeTheClaim'
+          : 'detailsOfWhyDoesYouDisputeTheClaim2']: `Dispute reason - ${defendantSolicitorParty.key}`,
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1SpecDefenceResponseDocument'
+          : 'respondent2SpecDefenceResponseDocument']: {file: defenceResponseDocumentSpec},
       },
     };
   }
@@ -249,81 +199,412 @@ const mediationAvailability = (claimTrack: ClaimTrack, defendantSolicitorParty: 
   return {};
 };
 
-const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM) {
+const timeline = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
     return {
-      FileDirectionsQuestionnaire: {
+      HowToAddTimeline: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'respondent1DQFileDirectionsQuestionnaire'
-          : 'respondent2DQFileDirectionsQuestionnaire']: {
-          oneMonthStayRequested: 'Yes',
-          reactionProtocolCompliedWith: 'No',
-          reactionProtocolNotCompliedWithReason: `Reaction protocol not complied with reason - ${defendantSolicitorParty.key}`,
-          explainedToClient: [
-              'CONFIRM'
-          ]
-        }
+          ? 'specClaimResponseTimelineList'
+          : 'specClaimResponseTimelineList2']: 'MANUAL',
       },
-      FixedRecoverableCosts: {
+      HowToAddTimelineManual: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'respondent1DQFixedRecoverableCosts'
-          : 'respondent2DQFixedRecoverableCosts']: {
-          isSubjectToFixedRecoverableCostRegime: 'Yes',
-          band: 'BAND_4',
-          complexityBandingAgreed: 'Yes',
-          reasons: `Recoverable costs reason - ${defendantSolicitorParty.key}`,
-        },
-      },
-      DisclosureOfElectronicDocumentsLRspec: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'specRespondent1DQDisclosureOfElectronicDocuments'
-          : 'specRespondent2DQDisclosureOfElectronicDocuments']: {
-          reachedAgreement: 'No',
-          agreementLikely: 'No',
-          reasonForNoAgreement: `Reason for no agreement - ${defendantSolicitorParty.key}`,
-        }
-      },
-      DisclosureOfNonElectronicDocumentsLRspec: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'specRespondent1DQDisclosureOfNonElectronicDocuments'
-          : 'specRespondent2DQDisclosureOfNonElectronicDocuments']: {
-          bespokeDirections: `Directions are proposed for disclosure - ${defendantSolicitorParty.key}`,
-        },
-      },
-      DisclosureReport: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'respondent1DQDisclosureReport'
-          : 'respondent2DQDisclosureReport']: {
-          disclosureFormFiledAndServed: "Yes",
-          disclosureProposalAgreed: "Yes",
-          draftOrderNumber: "12345"
-        }
+          ? 'specResponseTimelineOfEvents'
+          : 'specResponseTimelineOfEvents2']: [
+          {
+            value: {
+              timelineDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 10}), {outputFormat: 'YYYY-MM-DD'}),
+              timelineDescription: `Timeline event 1 - ${defendantSolicitorParty.key}`,
+            }
+          },
+          {
+            value: {
+              timelineDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 11}), {outputFormat: 'YYYY-MM-DD'}),
+              timelineDescription: `Timeline event 2 - ${defendantSolicitorParty.key}`,
+            }
+          }
+        ]
       }
     };
   }
 
   return {};
+}
+
+const mediationContactInformation = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+      return {
+        MediationContactInformation: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'resp1MediationContactInfo'
+            : 'resp2MediationContactInfo']: CaseDataHelper.buildMediationData(
+            defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+              ? partys.DEFENDANT_1_MEDIATION_FRIEND
+              : partys.DEFENDANT_2_MEDIATION_FRIEND,
+          ),
+        },
+      };
+    }
+  }
+  return {};
 };
 
-const deterWithoutHearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
-    return {
-      DeterminationWithoutHearing: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'deterWithoutHearingRespondent1'
-          : 'deterWithoutHearingRespondent2']: {
-          deterWithoutHearingWhyNot: `Determination without hearing reason - ${defendantSolicitorParty.key}`,
-          deterWithoutHearingYesNo: 'No',
+const mediationAvailability = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+      const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {
+        outputFormat: 'YYYY-MM-DD',
+      });
+      return {
+        MediationAvailability: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'resp1MediationAvailability'
+            : 'resp2MediationAvailability']: {
+            isMediationUnavailablityExists: 'Yes',
+            unavailableDatesForMediation: [
+              CaseDataHelper.setIdToData({
+                unavailableDateType: 'SINGLE_DATE',
+                date: unavailableDate,
+              }),
+            ],
+          },
         },
-      },
-    };
+      };
+    }
   }
 
   return {};
 };
 
-const experts = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+const whenWillClaimBePaid = (defendantResponseType: DefendantResponseSpecType, paymentTypeSpec: PaymentTypeSpec, defendantSolicitorParty: Party) => {
+  if(defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) {
+    if(paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE) {
+      return {
+        WhenWillClaimBePaid: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'defenceAdmitPartPaymentTimeRouteRequired'
+            : 'defenceAdmitPartPaymentTimeRouteRequired2']: paymentTypeSpec,
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondToClaimAdmitPartLRspec'
+            : 'respondToClaimAdmitPartLRspec2']: {
+            whenWillThisAmountBePaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({months: 1}), {outputFormat: 'YYYY-MM-DD'}),
+          },
+        },
+      };
+    }
+    return {
+      WhenWillClaimBePaid: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'defenceAdmitPartPaymentTimeRouteRequired'
+          : 'defenceAdmitPartPaymentTimeRouteRequired2']: paymentTypeSpec,
+      },
+    }
+  }
+
+  return {};
+}
+
+
+const defendant1FinancialDetails = (defendantResponseType: DefendantResponseSpecType, paymentTypeSpec: PaymentTypeSpec, defendantSolicitorParty: Party) => {
+  if((defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION)
+    && (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE || paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN) 
+  && (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1)
+  ) {
+    return {
+      FinancialDetailsPurpose: {},
+      DefendantBankAccounts: {
+        respondent1BankAccountList: [{
+          value: {
+            accountType: 'CURRENT',
+            jointAccount: 'Yes',
+            balance: '1000'
+          },
+        }]
+      },
+      DisabilityPremiumPayments: {
+        disabilityPremiumPayments: 'Yes',
+        severeDisabilityPremiumPayments: 'No'
+      },
+      defendantHomeOptions: {
+        respondent1DQHomeDetails: {
+          type: 'PRIVATE_RENTAL'
+        },
+      },
+      DefendantPartnersAndDependents: {
+        respondent1PartnerAndDependent: {
+          liveWithPartnerRequired: 'Yes',
+          partnerAgedOver: 'Yes',
+          haveAnyChildrenRequired: 'Yes',
+          receiveDisabilityPayments: 'No',
+          supportedAnyoneFinancialRequired: 'Yes',
+          supportPeopleNumber: '1',
+          supportPeopleDetails: `financial support details - ${partys.DEFENDANT_SOLICITOR_1.key}`,
+          howManyChildrenByAgeGroup: {
+            numberOfUnderEleven: '0',
+            numberOfElevenToFifteen: '1',
+            numberOfSixteenToNineteen: '0'
+          },
+        },
+      },
+      EmploymentDeclaration: {
+        defenceAdmitPartEmploymentTypeRequired: 'Yes',
+        respondToClaimAdmitPartEmploymentTypeLRspec: [
+          'EMPLOYED',
+          'SELF'
+        ],
+      },
+      HowToAddEmploymentDetails: {
+        responseClaimAdmitPartEmployer: {
+          employerDetails: [
+            {
+              value: {
+                employerName: `Company - ${partys.DEFENDANT_SOLICITOR_1.key}`,
+                jobTitle: `Job - ${partys.DEFENDANT_SOLICITOR_1.key}`
+              },
+            }
+          ],
+        },
+      },
+      DefendantSelfEmployment: {
+        specDefendant1SelfEmploymentDetails: {
+          jobTitle: 'Self Employed',
+          annualTurnover: '100000',
+          isBehindOnTaxPayment: 'Yes',
+          amountOwed: '000',
+          reason: `Tax Payments Behind Reason - ${partys.DEFENDANT_SOLICITOR_1.key}`
+        },
+      },
+      DetailsOfPayingMoneyRepaymentPlan: {
+        respondent1CourtOrderPaymentOption: 'Yes',
+        respondent1CourtOrderDetails: [
+          {
+            value: {
+              claimNumberText: '123456',
+              amountOwed: '10000',
+              monthlyInstalmentAmount: '200'
+            },
+          }
+        ],
+      },
+      DefendantDebts: {
+        respondent1LoanCreditOption: 'Yes',
+        respondent1LoanCreditDetails: [
+          {
+            value: {
+              loanCardDebtDetail: 'Amex',
+              totalOwed: '10000',
+              monthlyPayment: '200'
+            },
+          }
+        ],
+      },
+      DefendantIncomeExpensesFullAdmission: {
+        respondent1DQCarerAllowanceCreditFullAdmission: 'Yes',
+        respondent1DQRecurringIncomeFA: [
+          {
+            value: {
+              type: 'JOB',
+              amount: '50000',
+              frequency: 'ONCE_ONE_WEEK'
+            },
+          }
+        ],
+        respondent1DQRecurringExpensesFA: [
+          {
+            value: {
+              type: 'RENT',
+              amount: '10000',
+              frequency: 'ONCE_ONE_MONTH'
+            },
+          },
+          {
+            value: {
+              type: 'GAS',
+              amount: '3000',
+              frequency: 'ONCE_ONE_WEEK'
+            },
+          }
+        ],
+      },
+      WhyDoesNotPayImmediately: {
+        responseToClaimAdmitPartWhyNotPayLRspec: `Cannot pay immediately reason - ${partys.DEFENDANT_SOLICITOR_1.key}`
+      },
+    };
+  }
+  return {};
+};
+
+const defendant2FinancialDetails = (defendantResponseType: DefendantResponseSpecType, paymentTypeSpec: PaymentTypeSpec, claimType: ClaimType, defendantSolicitorParty: Party) => {
+  if((defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION)
+    && (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE || paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN)
+    && (claimType === ClaimType.ONE_VS_TWO_SAME_SOL || defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
+  ) {
+    return {
+      FinancialDetailsPurpose2: {},
+      DefendantBankAccountsRespondent2: {
+        respondent2BankAccountList: [
+          {
+            value: {
+              accountType: 'SAVINGS',
+              jointAccount: 'No',
+              balance: '200'
+            },
+          }
+        ]
+      },
+      DisabilityPremiumPaymentsRespondent2: {
+        disabilityPremiumPaymentsRespondent2: 'No'
+      },
+      defendantHomeOptionsRespondent2: {
+        respondent2DQHomeDetails: {type: 'OWNED_HOME'}
+      },
+      Defendant2PartnersAndDependents: {
+        respondent2PartnerAndDependent: {
+          haveAnyChildrenRequired: 'No',
+          liveWithPartnerRequired: 'No',
+          supportedAnyoneFinancialRequired: 'No',
+        }
+      },
+      EmploymentDeclarationRespondent2: {
+        defenceAdmitPartEmploymentTypeRequiredRespondent2: 'No',
+        respondToClaimAdmitPartUnemployedLRspecRespondent2: {
+          unemployedComplexTypeRequired: 'RETIRED'
+        },
+      },
+      DetailsOfPayingMoneyRepaymentPlanRespondent2: {
+        respondent2CourtOrderPaymentOption: 'No'
+      },
+      DefendantDebtsRespondent2: {
+        respondent2LoanCreditOption: 'No'
+      },
+      DefendantIncomeExpensesRespondent2: {
+        respondent2DQCarerAllowanceCredit: 'No'
+      },
+      WhyDoesNotPayImmediatelyRespondent2: {
+        responseToClaimAdmitPartWhyNotPayLRspec2: `Cannot pay immediately reason - ${partys.DEFENDANT_SOLICITOR_2.key}`
+      }
+    }
+  }
+  return {};
+}
+
+const defendant1RepaymentPlan = (defendantResponseType: DefendantResponseSpecType, paymentTypeSpec: PaymentTypeSpec, defendantSolicitorParty: Party) => {
+  if((defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION)
+    && paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN
+    && defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+  ) {
+    return {
+      RepaymentPlan:{
+        respondent1RepaymentPlan: {
+          firstRepaymentDate: DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {outputFormat: 'YYYY-MM-DD'}),
+          paymentAmount: '5000',
+          repaymentFrequency: 'ONCE_ONE_WEEK'
+        }
+      }
+    };
+  }
+  return {};
+}
+
+const defendant2RepaymentPlan = (defendantResponseType: DefendantResponseSpecType,paymentTypeSpec: PaymentTypeSpec, claimType: ClaimType, defendantSolicitorParty: Party) => {
+  if((defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION)
+    && paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN
+    && (claimType === ClaimType.ONE_VS_TWO_SAME_SOL || defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
+  ) {
+    return {
+      RepaymentPlanRespondent2: {
+        respondent2RepaymentPlan: {
+          firstRepaymentDate: DateHelper.formatDateToString(DateHelper.addToToday({months: 2}), {outputFormat: 'YYYY-MM-DD'}),
+          paymentAmount: '5000',
+          repaymentFrequency: 'ONCE_ONE_MONTH'
+        }
+      }
+    };
+  }
+  return {};
+}
+
+const fastTrackDq = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    if(claimTrack === ClaimTrack.FAST_CLAIM) {
+      return {
+        FileDirectionsQuestionnaire: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondent1DQFileDirectionsQuestionnaire'
+            : 'respondent2DQFileDirectionsQuestionnaire']: {
+            oneMonthStayRequested: 'Yes',
+            reactionProtocolCompliedWith: 'No',
+            reactionProtocolNotCompliedWithReason: `Reaction protocol not complied with reason - ${defendantSolicitorParty.key}`,
+            explainedToClient: [
+                'CONFIRM'
+            ]
+          }
+        },
+        FixedRecoverableCosts: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondent1DQFixedRecoverableCosts'
+            : 'respondent2DQFixedRecoverableCosts']: {
+            isSubjectToFixedRecoverableCostRegime: 'Yes',
+            band: 'BAND_4',
+            complexityBandingAgreed: 'Yes',
+            reasons: `Recoverable costs reason - ${defendantSolicitorParty.key}`,
+          },
+        },
+        DisclosureOfElectronicDocumentsLRspec: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'specRespondent1DQDisclosureOfElectronicDocuments'
+            : 'specRespondent2DQDisclosureOfElectronicDocuments']: {
+            reachedAgreement: 'No',
+            agreementLikely: 'No',
+            reasonForNoAgreement: `Reason for no agreement - ${defendantSolicitorParty.key}`,
+          }
+        },
+        DisclosureOfNonElectronicDocumentsLRspec: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'specRespondent1DQDisclosureOfNonElectronicDocuments'
+            : 'specRespondent2DQDisclosureOfNonElectronicDocuments']: {
+            bespokeDirections: `Directions are proposed for disclosure - ${defendantSolicitorParty.key}`,
+          },
+        },
+        DisclosureReport: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondent1DQDisclosureReport'
+            : 'respondent2DQDisclosureReport']: {
+            disclosureFormFiledAndServed: "Yes",
+            disclosureProposalAgreed: "Yes",
+            draftOrderNumber: "12345"
+          }
+        }
+      };
+    }
+  }
+
+  return {};
+};
+
+const deterWithoutHearing = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+      return {
+        DeterminationWithoutHearing: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'deterWithoutHearingRespondent1'
+            : 'deterWithoutHearingRespondent2']: {
+            deterWithoutHearingWhyNot: `Determination without hearing reason - ${defendantSolicitorParty.key}`,
+            deterWithoutHearingYesNo: 'No',
+          },
+        },
+      };
+    }
+  }
+
+  return {};
+};
+
+const experts = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && claimTrack === ClaimTrack.SMALL_CLAIM) {
     const defendantExpert =
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? partys.DEFENDANT_1_EXPERT_1
@@ -342,7 +623,7 @@ const experts = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
           : 'responseClaimExpertSpecRequired2']: 'Yes',
       },
     };
-  } else if(claimTrack === ClaimTrack.FAST_CLAIM) {
+  } else if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && claimTrack === ClaimTrack.FAST_CLAIM) {
     const defendantExperts =
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? [partys.DEFENDANT_1_EXPERT_1, partys.DEFENDANT_1_EXPERT_2]
@@ -370,8 +651,8 @@ const experts = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   return {};
 };
 
-const witnesses = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+const witnesses = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && claimTrack === ClaimTrack.SMALL_CLAIM) {
     const defendantWitnesses =
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? [partys.DEFENDANT_1_WITNESS_1, partys.DEFENDANT_1_WITNESS_2]
@@ -394,7 +675,7 @@ const witnesses = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
     };
   }
 
-  else if(claimTrack === ClaimTrack.FAST_CLAIM) {
+  else if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && claimTrack === ClaimTrack.FAST_CLAIM) {
     const defendantWitnesses =
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? [partys.DEFENDANT_1_WITNESS_1, partys.DEFENDANT_1_WITNESS_2]
@@ -429,25 +710,29 @@ const witnesses = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   return {};
 };
 
-const language = (defendantSolicitorParty: Party) => {
-  return {
-    Language: {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'respondent1DQLanguage'
-        : 'respondent2DQLanguage']: {
-        court: 'BOTH',
-        documents: 'BOTH',
+const language = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    return {
+      Language: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQLanguage'
+          : 'respondent2DQLanguage']: {
+          court: 'BOTH',
+          documents: 'BOTH',
+        },
       },
-    },
-  };
+    };
+  }
+
+  return {};
 };
 
-const hearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+const hearing = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {
     outputFormat: 'YYYY-MM-DD',
   });
 
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && claimTrack === ClaimTrack.SMALL_CLAIM) {
     return {
       SmallClaimHearing: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -472,7 +757,7 @@ const hearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
     };
   }
 
-  if(claimTrack === ClaimTrack.FAST_CLAIM) {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && claimTrack === ClaimTrack.FAST_CLAIM) {
     return {
       HearingLRspec: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -487,61 +772,76 @@ const hearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   return {};
 };
 
-const requestedCourtLocation = (defendantSolicitorParty: Party) => {
+const requestedCourtLocation = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
   const preferredCourtParty =
     defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
       ? partys.DEFENDANT_1
       : partys.DEFENDANT_2;
   const preferredCourt = CaseDataHelper.setCodeToData(preferredCourts[preferredCourtParty.key].default);
 
-  return {
-    RequestedCourtLocationLRspec: {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
-        ? 'respondToCourtLocation' 
-        : 'respondToCourtLocation2']: {
-        responseCourtLocations: {
-          list_items: [preferredCourt],
-          value: preferredCourt,
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    return {
+      RequestedCourtLocationLRspec: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
+          ? 'respondToCourtLocation' 
+          : 'respondToCourtLocation2']: {
+          responseCourtLocations: {
+            list_items: [preferredCourt],
+            value: preferredCourt,
+          },
+          reasonForHearingAtSpecificCourt: `Court location reason - ${defendantSolicitorParty.key}`,
         },
-        reasonForHearingAtSpecificCourt: `Court location reason - ${defendantSolicitorParty.key}`,
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
+          ? 'respondent1DQRemoteHearingLRspec' 
+          : 'respondent2DQRemoteHearingLRspec']: {
+          remoteHearingRequested: 'Yes',
+          reasonForRemoteHearing: `Court location reason - ${defendantSolicitorParty.key}`,
+        },
       },
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
-        ? 'respondent1DQRemoteHearingLRspec' 
-        : 'respondent2DQRemoteHearingLRspec']: {
-        remoteHearingRequested: 'Yes',
-        reasonForRemoteHearing: `Court location reason - ${defendantSolicitorParty.key}`,
-      },
-    },
-  };
+    };
+  }
+
+  return {};
 };
 
-const hearingSupport = (defendantSolicitorParty: Party) => {
-  return {
-    HearingSupport: {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'respondent1DQHearingSupport'
-        : 'respondent2DQHearingSupport']: {
-        supportRequirements: 'Yes',
-        supportRequirementsAdditional: `Support requirements for ${defendantSolicitorParty.key}`,
+const hearingSupport = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    return {
+      HearingSupport: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQHearingSupport'
+          : 'respondent2DQHearingSupport']: {
+          supportRequirements: 'Yes',
+          supportRequirementsAdditional: `Support requirements for ${defendantSolicitorParty.key}`,
+        },
       },
-    },
-  };
+    };
+  }
+
+  return {};
 };
 
-const vulnerabilityQuestions = (defendantSolicitorParty: Party) => {
-  return {
-    VulnerabilityQuestions: {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'respondent1DQVulnerabilityQuestions'
-        : 'respondent2DQVulnerabilityQuestions']: {
-        vulnerabilityAdjustmentsRequired: 'Yes',
-        vulnerabilityAdjustments: `Vulnerability adjustments - ${defendantSolicitorParty.key}`,
+const vulnerabilityQuestions = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    return {
+      VulnerabilityQuestions: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQVulnerabilityQuestions'
+          : 'respondent2DQVulnerabilityQuestions']: {
+          vulnerabilityAdjustmentsRequired: 'Yes',
+          vulnerabilityAdjustments: `Vulnerability adjustments - ${defendantSolicitorParty.key}`,
+        },
       },
-    },
-  };
+    };
+  }
+
+  return {};
 };
 
-const applications = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+const applications = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if(defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimTrack === ClaimTrack.SMALL_CLAIM)
     return {};
 
@@ -560,27 +860,33 @@ const applications = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) =>
   };
 };
 
-const statementOfTruth = (defendantSolicitorParty: Party) => {
+const statementOfTruth = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
   const defendantSolicitorUser =
     defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
       ? defendantSolicitor2User
       : defendantSolicitor1User;
 
-  return {
-    StatementOfTruth: {
-      uiStatementOfTruth: {
-        name: defendantSolicitorUser.name,
-        role: 'Solicitor',
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    return {
+      StatementOfTruth: {
+        uiStatementOfTruth: {
+          name: defendantSolicitorUser.name,
+          role: 'Solicitor',
+        },
       },
-    },
-  };
+    };
+  }
+
+  return {};
 };
 
-const undefine = (defendantSolicitorParty: Party) => {
-  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    return {
-      Undefine: {
-        respondent1DetailsForClaimDetailsTab: undefined
+const undefine = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION) {
+    if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+      return {
+        Undefine: {
+          respondent1DetailsForClaimDetailsTab: undefined
+        }
       }
     }
   }
@@ -598,6 +904,11 @@ const defendantResponseSpecData = {
   defenceAdmittedPartRoute,
   upload,
   timeline,
+  whenWillClaimBePaid,
+  defendant1FinancialDetails,
+  defendant2FinancialDetails,
+  defendant1RepaymentPlan,
+  defendant2RepaymentPlan,
   mediationContactInformation,
   mediationAvailability,
   deterWithoutHearing,

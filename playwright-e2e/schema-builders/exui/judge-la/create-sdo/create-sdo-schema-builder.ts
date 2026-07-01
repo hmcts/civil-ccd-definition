@@ -8,15 +8,15 @@ import createSdoSchemaBuilderComponents from './create-sdo-schema-builder-compon
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateSdoSchemaBuilder extends BaseSchemaBuilder {
-  async buildSmallTrackNoSumSdo(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildSmallNoSumSdo(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.SMALL_TRACK_NO_SUM });
   }
 
-  async buildSmallTrackSumSdo(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildSmallSumSdo(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.SMALL_TRACK_SUM });
   }
 
-  async buildFastTrackSdo(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastSdo(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.FAST_TRACK });
   }
 
