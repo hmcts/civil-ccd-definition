@@ -8,7 +8,7 @@ import ClaimTrack from '../../../../../constants/cases/claim-track';
 
 @AllMethodsStep()
 export default class EvidenceUploadApplicantSchemaBuilder extends BaseSchemaBuilder {
-  async buildFastTrackSchema(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastSchema(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {claimTrack: ClaimTrack.FAST_CLAIM})
   }
 

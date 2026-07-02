@@ -163,7 +163,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
     );
   }
 
-  async ScheduleHearingSmallClaim() {
+  async ScheduleHearingSmall() {
     const { hearingScheduledActions } = this.hearingCenterAdminActionsFactory;
     await super.retryExuiEvent(
       async () => {

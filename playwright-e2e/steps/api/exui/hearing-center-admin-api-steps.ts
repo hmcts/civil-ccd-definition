@@ -28,7 +28,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     this.hearingCenterAdminSchemaBuilderFactory = hearingCenterAdminSchemaBuilderFactory;
   }
 
-  async ScheduleHearingFastTrackTrial() {
+  async ScheduleHearingFastTrial() {
     await this.setupApiStep(hearingCenterAdminRegion1User);
     const taskId = await super.retrieveAndAssignWATask(
       hearingCenterAdminRegion1User,
@@ -37,7 +37,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { scheduleHearingDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
-    const scheduleHearingData = await scheduleHearingDataBuilder.buildFastTrackData();
+    const scheduleHearingData = await scheduleHearingDataBuilder.buildFastData();
     await super.submitCCDEvent(
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
@@ -52,7 +52,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     ZodHelper.safeParse(scheduleHearingSchema, this.ccdCaseData);
   }
 
-  async ScheduleHearingSmallClaimTrail() {
+  async ScheduleHearingSmallTrail() {
     await this.setupApiStep(hearingCenterAdminRegion1User);
     const taskId = await super.retrieveAndAssignWATask(
       hearingCenterAdminRegion1User,

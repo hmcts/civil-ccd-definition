@@ -10,18 +10,18 @@ import defendantResponseDataComponents from './defendant-response-data-component
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
-  async buildDS1SmallTrackFullDefence1v1Data() {
+  async buildDS1SmallFullDefence1v1Data() {
     return this.buildData();
   }
 
-  async buildDS1FastTrackFullDefence2v1Data() {
+  async buildDS1FastFullDefence2v1Data() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
     });
   }
 
-  async buildDS1FastTrackFullDefence1v2SSData() {
+  async buildDS1FastFullDefence1v2SSData() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -35,11 +35,11 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     });
   }
   
-  async buildDS1FastTrackFullDefenceData() {
+  async buildDS1FastFullDefenceData() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildDS2FastTrackFullDefenceData() {
+  async buildDS2FastFullDefenceData() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,

@@ -41,14 +41,14 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData.id!);
   }
 
-  async RespondFastTrackFullDefence() {
+  async RespondFastFullDefence() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseSpecDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseSpecDataBuilder.buildDS2FastTrackFullDefenceData();
+      await defendantResponseSpecDataBuilder.buildDS2FastFullDefenceData();
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
@@ -60,21 +60,21 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS2FastTrackFullDefence(
+      await defendantResponseSpecSchemaBuilder.buildDS2FastFullDefence(
         caseDataBeforeSubmission,
       );
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondSmallTrackFullDefence() {
+  async RespondSmallFullDefence() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseSpecDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseSpecDataBuilder.buildDS2SmallTrackFullDefenceData();
+      await defendantResponseSpecDataBuilder.buildDS2SmallFullDefenceData();
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
@@ -86,7 +86,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS2SmallTrack1v2DSFullDefence(
+      await defendantResponseSpecSchemaBuilder.buildDS2Small1v2DSFullDefence(
         caseDataBeforeSubmission,
       );
 
