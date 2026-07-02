@@ -3,15 +3,11 @@ package uk.gov.hmcts.reform.civil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import uk.gov.hmcts.befta.BeftaMain;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
-import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
-import javax.crypto.AEADBadTagException;
-import javax.net.ssl.SSLException;
 import java.util.List;
 import java.util.Locale;
 
@@ -113,42 +109,5 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     public void createRoleAssignments() {
         // Do not create role assignments.
         BeftaUtils.defaultLog("Will NOT create role assignments!");
-    }
-
-    @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        if (BeftaMain.getConfig().getDefinitionStoreUrl().contains(".preview.")) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    protected boolean shouldTolerateDataSetupFailure(Throwable e) {
-        int httpStatusCode504 = 504;
-        if (e instanceof ImportException) {
-            ImportException importException = (ImportException) e;
-            if (importException.getHttpStatusCode() == httpStatusCode504) {
-                logger.warn("\n\nDefinition upload returned HTTP 504 (Gateway Timeout) — definitions NOT imported. "
-                                + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
-                return true;
-            }
-        }
-        if (e instanceof SSLException) {
-            logger.warn("\n\nSSL error during definition upload — definitions NOT imported. "
-                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
-            return true;
-        }
-        if (e instanceof AEADBadTagException) {
-            logger.warn("\n\nTLS decryption error (AEADBadTagException) during definition upload — definitions NOT imported. "
-                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
-            return true;
-        }
-        boolean tolerate = shouldTolerateDataSetupFailure();
-        if (tolerate) {
-            logger.warn("\n\nDefinition upload failed on preview environment — definitions NOT imported. "
-                            + "Smoke tests may fail as a result. Error: {}\n\n", e.getMessage());
-        }
-        return tolerate;
     }
 }

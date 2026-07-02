@@ -1,4 +1,4 @@
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 
 export const content = 'Enter organisation details manually. The claim will then continue offline.';
 

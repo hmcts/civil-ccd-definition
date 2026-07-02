@@ -3,9 +3,9 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor2User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
@@ -38,7 +38,6 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
-
       { verifySuccessEvent: false },
     );
   }
@@ -60,8 +59,43 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastTrackFullDefence1v2DS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS2();
+        await defendantResponseActions.respondentResponseTypeDS2();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS2();
+        await defendantResponseActions.uploadDefendantResponseDS2();
+        await defendantResponseActions.dqFastTrackDS2();
+        await defendantResponseActions.dqDS2();
+        await defendantResponseActions.statementOfTruthDS2();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
 
       { verifySuccessEvent: false },
+    );
+  }
+
+  async AddUnavailableDates() {
+    const { addUnavailableDatesActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await addUnavailableDatesActions.addAdditionalDates();
+        await addUnavailableDatesActions.submitAddAdditionalDates();
+      },
+      async () => {
+        await addUnavailableDatesActions.confirmAddAdditionalDates();
+      },
+      ccdEvents.ADD_UNAVAILABLE_DATES,
     );
   }
 
@@ -78,7 +112,6 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS2();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
-
       { verifySuccessEvent: false },
     );
   }

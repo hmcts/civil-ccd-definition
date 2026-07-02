@@ -1,9 +1,9 @@
 import BasePage from '../../../../../../base/base-page';
-import caseFlagLocations from '../../../../../../constants/case-flags/case-flag-locations';
+import caseFlagLocations from '../../../../../../constants/ccd-events/case-flags/case-flag-locations';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import { CaseFlagLocation } from '../../../../../../models/case-flags/case-flag-locations';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
-import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
+import { CaseFlagLocation } from '../../../../../../models/ccd-events/case-flags/case-flag-locations';
+import CCDCaseData from '../../../../../../models/ccd-case-data';
+import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types';
 import ExuiPage from '../../../../exui-page/exui-page';
 
 @AllMethodsStep()

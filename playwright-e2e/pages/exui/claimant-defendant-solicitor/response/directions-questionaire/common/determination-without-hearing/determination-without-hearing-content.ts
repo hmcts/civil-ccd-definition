@@ -1,6 +1,6 @@
-import partys from '../../../../../../../constants/partys';
+import partys from '../../../../../../../constants/users/partys';
 import StringHelper from '../../../../../../../helpers/string-helper';
-import { Party } from '../../../../../../../models/partys';
+import { Party } from '../../../../../../../models/users/partys';
 
 export const heading = 'Determination without Hearing Questions';
 

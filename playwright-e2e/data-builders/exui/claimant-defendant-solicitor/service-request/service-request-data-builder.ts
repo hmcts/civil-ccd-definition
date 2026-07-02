@@ -4,13 +4,13 @@ import { serviceUpdateDTO } from './service-request-data-builder-components';
 
 @AllMethodsStep()
 export default class ServiceRequestDataBuilder extends BaseDataBuilder {
-  async buildPaidServiceRequestDTO(caseId: number, paymentStatus: string) {
-    return this.buildData(caseId, paymentStatus);
+  async buildPaidServiceRequestDTO(paymentStatus: string, caseId?: number) {
+    return this.buildData(paymentStatus, caseId);
   }
 
-  protected async buildData(caseId: number, paymentStatus: string) {
+  protected async buildData(paymentStatus: string, caseId?: number) {
     return {
-      ...serviceUpdateDTO(caseId, paymentStatus),
+      ...serviceUpdateDTO(paymentStatus, caseId),
     };
   }
 }

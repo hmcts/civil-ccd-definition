@@ -1,10 +1,10 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { subheadings, buttons, inputs, radioButtons } from './witnesses-spec-content.ts';
-import { Party } from '../../../../../../../models/partys.ts';
+import { Party } from '../../../../../../../models/users/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 
@@ -37,6 +37,10 @@ export default class WitnessesSpecPage extends ExuiPage(BasePage) {
     await super.clickBySelector(buttons.addNewWitness.selector(this.defendantParty));
   }
 
+  async selectNoWitnesses() {
+    await super.clickBySelector(radioButtons.witnessesRequired.no.selector(this.defendantParty));
+  }
+
   async enterWitnessDetails() {
     const witnessData = CaseDataHelper.buildWitnessData(this.witnessParty);
     await super.inputText(
@@ -48,7 +52,7 @@ export default class WitnessesSpecPage extends ExuiPage(BasePage) {
       inputs.witnessDetails.lastName.selector(this.defendantParty, this.witnessParty),
     );
     await super.inputText(
-      witnessData.phoneNumber,
+      witnessData.phoneNumber ?? '',
       inputs.witnessDetails.number.selector(this.defendantParty, this.witnessParty),
     );
     await super.inputText(

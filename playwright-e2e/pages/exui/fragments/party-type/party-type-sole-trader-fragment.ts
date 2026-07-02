@@ -1,13 +1,12 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../exui-page/exui-page';
-import { inputs } from '../party-type/party-type-content';
-import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
+import { inputs } from './party-type-content';
+import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import claimantDefendantPartyType from '../../../../enums/party-types';
-import PartyType from '../../../../enums/party-types';
+import PartyType from '../../../../constants/users/party-types';
 import DateOfBirthFragment from '../date/date-of-birth-fragment';
 
 @AllMethodsStep()
@@ -42,10 +41,11 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterSoleTraderDetails() {
+  async enterSoleTraderDetails(update?: boolean) {
     const soleTraderData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
       this.claimantDefendantPartyType,
+      update
     );
     await super.inputText(
       soleTraderData.soleTraderTitle,
@@ -63,7 +63,7 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
       soleTraderData.soleTraderTradingAs,
       inputs.tradingAs.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
-    if (this.claimantDefendantParty.partyType === claimantDefendantPartyType.CLAIMANT) {
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
       await this.dateOfBirthFragment.enterDate(
         this.claimantDefendantParty,
         this.claimantDefendantPartyType,

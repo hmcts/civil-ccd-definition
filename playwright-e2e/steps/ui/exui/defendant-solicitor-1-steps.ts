@@ -3,9 +3,9 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
@@ -27,11 +27,43 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor1User);
   }
 
+  async InformAgreedExtensionDate() {
+    const { informAgreedExtensionDateActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await informAgreedExtensionDateActions.extensionDate();
+      },
+      async () => {
+        await informAgreedExtensionDateActions.confirmInformAgreedExtensionDate();
+      },
+      ccdEvents.INFORM_AGREED_EXTENSION_DATE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
   async AddLitigationFriend() {
     const { addDefendantLitigationFriendActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
         await addDefendantLitigationFriendActions.litigationFriend();
+        await addDefendantLitigationFriendActions.submitAddDefendantLitigationFriend();
+      },
+      async () => {
+        await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
+      },
+      ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async AddLitigationFriend1v2SS() {
+    const { addDefendantLitigationFriendActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await addDefendantLitigationFriendActions.selectALitigationFriend();
+        await addDefendantLitigationFriendActions.commonLitigationFriend();
         await addDefendantLitigationFriendActions.submitAddDefendantLitigationFriend();
       },
       async () => {
@@ -154,6 +186,73 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     );
   }
 
+  async RespondFastTrackFullDefence1v2DS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS1();
+        await defendantResponseActions.respondentResponseTypeDS1();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
+        await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqFastTrackDS1();
+        await defendantResponseActions.dqDS1();
+        await defendantResponseActions.statementOfTruthDS1();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse1v2DS();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastTrackFullDefence1v2SS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS1();
+        await defendantResponseActions.singleResponse();
+        await defendantResponseActions.respondentResponseTypeDS1();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
+        await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqFastTrackDS1();
+        await defendantResponseActions.dqDS1();
+        await defendantResponseActions.statementOfTruthDS1();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastTrackFullDefence2v1() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS1();
+        await defendantResponseActions.respondentResponseType2v1();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
+        await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqFastTrackDS1();
+        await defendantResponseActions.dqDS1();
+        await defendantResponseActions.statementOfTruthDS1();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
   async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(
@@ -204,6 +303,23 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
 
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadFastTrack() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrack();
+        await evidenceUploadRespondentActions.documentUpload();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       { verifySuccessEvent: false },
     );
   }

@@ -1,4 +1,4 @@
-import TestData from '../../../../../models/test-data.ts';
+import TestData from '../../../../../models/test-utils/test-data.ts';
 import { Step } from '../../../../../decorators/test-steps.ts';
 import BaseTestData from '../../../../../base/base-test-data.ts';
 import ClaimantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/claimant-response/claimant-response-page-factory.ts';
@@ -96,6 +96,14 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async determinationWithoutHearing() {
+    const { determinationWithoutHearingPage } = this.claimantResponsePageFactory;
+    await determinationWithoutHearingPage.verifyContent(this.ccdCaseData);
+    await determinationWithoutHearingPage.selectYes();
+    await determinationWithoutHearingPage.submit();
+  }
+
+  @Step(classKey)
   async smallClaimExperts2v1() {
     const { smallClaimExperts2v1Page } = this.claimantResponsePageFactory;
     await smallClaimExperts2v1Page.verifyContent(this.ccdCaseData);
@@ -115,10 +123,6 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
 
   @Step(classKey)
   async dqSmallTrack() {
-    const { determinationWithoutHearingPage } = this.claimantResponsePageFactory;
-    await determinationWithoutHearingPage.verifyContent(this.ccdCaseData);
-    await determinationWithoutHearingPage.selectYes();
-    await determinationWithoutHearingPage.submit();
 
     const { smallClaimWitnessesPage } = this.claimantResponsePageFactory;
     await smallClaimWitnessesPage.verifyContent(this.ccdCaseData);

@@ -22,5 +22,13 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "SmallClaimsDocuments",
+    "ListElementCode": "deadlineDate",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -1,5 +1,4 @@
 import BasePage from '../../../../../../base/base-page';
-import partys from '../../../../../../constants/partys';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
 import { inputs, subheadings, radioButtons } from './fixed-commencement-costs-content';

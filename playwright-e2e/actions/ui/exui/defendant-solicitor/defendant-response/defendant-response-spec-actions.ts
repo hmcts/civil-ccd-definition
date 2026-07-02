@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../../base/base-test-data';
 import { Step } from '../../../../../decorators/test-steps';
-import TestData from '../../../../../models/test-data';
+import TestData from '../../../../../models/test-utils/test-data';
 import DefendantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/defendant-response/defendant-response-page-factory';
 
 const classKey = 'DefendantResponseSpecActions';
@@ -226,6 +226,20 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async confirmDefendantResponseSpecFullAdmit() {
+    const { confirmDefendantResponseSpecFullAdmitPage } = this.defendantResponsePageFactory;
+    await confirmDefendantResponseSpecFullAdmitPage.verifyContent(this.ccdCaseData);
+    await confirmDefendantResponseSpecFullAdmitPage.submit();
+  }
+
+  @Step(classKey)
+  async confirmDefendantResponseSpecPartAdmit() {
+    const { confirmDefendantResponseSpecPartAdmitPage } = this.defendantResponsePageFactory;
+    await confirmDefendantResponseSpecPartAdmitPage.verifyContent(this.ccdCaseData);
+    await confirmDefendantResponseSpecPartAdmitPage.submit();
+  }
+
+  @Step(classKey)
   async confirm1v2SSDefendantResponseSpec() {
     const { confirm1v2SSDefendantResponseSpecPage } = this.defendantResponsePageFactory;
     await confirm1v2SSDefendantResponseSpecPage.verifyContent(this.ccdCaseData);
@@ -326,6 +340,85 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async dqFastTrackDS2() {
+    const { fileDirectionsQuestionaireDS2Page } = this.defendantResponsePageFactory;
+    await fileDirectionsQuestionaireDS2Page.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionaireDS2Page.enterDetails();
+    await fileDirectionsQuestionaireDS2Page.submit();
+
+    const { fixedRecoverableCostsDS2Page } = this.defendantResponsePageFactory;
+    await fixedRecoverableCostsDS2Page.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsDS2Page.selectYes();
+    await fixedRecoverableCostsDS2Page.submit();
+
+    const { disclosureOfElectronicDocumentsLRSpecDS2Page } = this.defendantResponsePageFactory;
+    await disclosureOfElectronicDocumentsLRSpecDS2Page.verifyContent(this.ccdCaseData);
+    await disclosureOfElectronicDocumentsLRSpecDS2Page.enterDetails();
+    await disclosureOfElectronicDocumentsLRSpecDS2Page.submit();
+
+    const { disclosureOfNonElectronicDocumentsLRSpecDS2Page } = this.defendantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsLRSpecDS2Page.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsLRSpecDS2Page.enterDetails();
+    await disclosureOfNonElectronicDocumentsLRSpecDS2Page.submit();
+
+    const { disclosureReportDS2Page } = this.defendantResponsePageFactory;
+    await disclosureReportDS2Page.verifyContent(this.ccdCaseData);
+    await disclosureReportDS2Page.enterDetails();
+    await disclosureReportDS2Page.submit();
+
+    const { expertsDS2Page } = this.defendantResponsePageFactory;
+    await expertsDS2Page.verifyContent(this.ccdCaseData);
+    await expertsDS2Page.useExperts();
+    await expertsDS2Page.addNewExpert();
+    await expertsDS2Page.enterExpertDetails();
+    await expertsDS2Page.submit();
+
+    const { witnessesDS2Page } = this.defendantResponsePageFactory;
+    await witnessesDS2Page.verifyContent(this.ccdCaseData);
+    await witnessesDS2Page.selectYesWitnesses();
+    await witnessesDS2Page.addWitness();
+    await witnessesDS2Page.enterWitnessDetails();
+    await witnessesDS2Page.submit();
+
+    const { languageDS2Page } = this.defendantResponsePageFactory;
+    await languageDS2Page.verifyContent(this.ccdCaseData);
+    await languageDS2Page.selectEnglishAndWelsh();
+    await languageDS2Page.submit();
+
+    const { hearingLRSpecDS2Page } = this.defendantResponsePageFactory;
+    await hearingLRSpecDS2Page.verifyContent(this.ccdCaseData);
+    await hearingLRSpecDS2Page.selectNoAvailabilityRequired();
+    await hearingLRSpecDS2Page.submit();
+
+    const { requestedCourtLRSpecDS2Page } = this.defendantResponsePageFactory;
+    await requestedCourtLRSpecDS2Page.verifyContent(this.ccdCaseData);
+    await requestedCourtLRSpecDS2Page.selectCourtLocation();
+    await requestedCourtLRSpecDS2Page.selectNoRemoteHearing();
+    await requestedCourtLRSpecDS2Page.submit();
+
+    const { hearingSupportDS2Page } = this.defendantResponsePageFactory;
+    await hearingSupportDS2Page.verifyContent(this.ccdCaseData);
+    await hearingSupportDS2Page.selectYes();
+    await hearingSupportDS2Page.enterSupportRequirementsAdditional();
+    await hearingSupportDS2Page.submit();
+
+    const { vulnerabilityQuestionsSpecDS2Page } = this.defendantResponsePageFactory;
+    await vulnerabilityQuestionsSpecDS2Page.verifyContent(this.ccdCaseData);
+    await vulnerabilityQuestionsSpecDS2Page.selectYes();
+    await vulnerabilityQuestionsSpecDS2Page.enterVulnerabilityAdjustments();
+    await vulnerabilityQuestionsSpecDS2Page.submit();
+  }
+
+  @Step(classKey)
+  async applicationDS2() {
+    const { applicationDS2Page } = this.defendantResponsePageFactory;
+    await applicationDS2Page.verifyContent(this.ccdCaseData);
+    await applicationDS2Page.selectYes();
+    await applicationDS2Page.enterAdditionalInformation();
+    await applicationDS2Page.submit();
+  }
+
+  @Step(classKey)
   async dqSmallTrackDS2() {
     const { determinationWithoutHearingDS2Page } = this.defendantResponsePageFactory;
     await determinationWithoutHearingDS2Page.verifyContent(this.ccdCaseData);
@@ -388,6 +481,130 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     const { submitDefendantResponsePage } = this.defendantResponsePageFactory;
     await submitDefendantResponsePage.verifyContent(this.ccdCaseData);
     await submitDefendantResponsePage.submit();
+  }
+
+  @Step(classKey)
+  async respondentResponseTypeSpecFullAdmitDS1() {
+    const { respondentResponseTypeSpecDS1Page } = this.defendantResponsePageFactory;
+    await respondentResponseTypeSpecDS1Page.verifyContent(this.ccdCaseData);
+    await respondentResponseTypeSpecDS1Page.selectFullAdmit();
+    await respondentResponseTypeSpecDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async respondentResponseTypeSpecPartAdmitDS1() {
+    const { respondentResponseTypeSpecDS1Page } = this.defendantResponsePageFactory;
+    await respondentResponseTypeSpecDS1Page.verifyContent(this.ccdCaseData);
+    await respondentResponseTypeSpecDS1Page.selectPartAdmit();
+    await respondentResponseTypeSpecDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async defenceAdmittedPartRouteDS1() {
+    const { defenceAdmittedPartRoutePage } = this.defendantResponsePageFactory;
+    await defenceAdmittedPartRoutePage.verifyContent(this.ccdCaseData);
+    await defenceAdmittedPartRoutePage.selectNo();
+    await defenceAdmittedPartRoutePage.enterOwingAmount();
+    await defenceAdmittedPartRoutePage.submit();
+  }
+
+  @Step(classKey)
+  async timelineManualDS1() {
+    const { howToAddTimelineDS1Page } = this.defendantResponsePageFactory;
+    await howToAddTimelineDS1Page.verifyContent(this.ccdCaseData);
+    await howToAddTimelineDS1Page.selectManual();
+    await howToAddTimelineDS1Page.submit();
+
+    const { howToAddTimelineManualDS1Page } = this.defendantResponsePageFactory;
+    await howToAddTimelineManualDS1Page.addNewEvent();
+    await howToAddTimelineManualDS1Page.fillEvent1Details();
+    await howToAddTimelineManualDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async whenWillClaimBePaidRepaymentPlan() {
+    const { whenWillClaimBePaidPage } = this.defendantResponsePageFactory;
+    await whenWillClaimBePaidPage.verifyContent(this.ccdCaseData);
+    await whenWillClaimBePaidPage.selectRepaymentPlan();
+    await whenWillClaimBePaidPage.submit();
+  }
+
+  async financialDetails() {
+    const { financialDetailsPurposePage } = this.defendantResponsePageFactory;
+    await financialDetailsPurposePage.verifyContent(this.ccdCaseData);
+    await financialDetailsPurposePage.submit();
+
+    const { defendantBankAccountsPage } = this.defendantResponsePageFactory;
+    await defendantBankAccountsPage.verifyContent(this.ccdCaseData);
+    await defendantBankAccountsPage.submit();
+
+    const { disabilityPremiumPaymentsPage } = this.defendantResponsePageFactory;
+    await disabilityPremiumPaymentsPage.verifyContent(this.ccdCaseData);
+    await disabilityPremiumPaymentsPage.selectNo();
+    await disabilityPremiumPaymentsPage.submit();
+
+    const { defendantHomeOptionsPage } = this.defendantResponsePageFactory;
+    await defendantHomeOptionsPage.verifyContent(this.ccdCaseData);
+    await defendantHomeOptionsPage.selectOwnedHome();
+    await defendantHomeOptionsPage.submit();
+    
+    const { defendantPartnersAndDependentsPage } = this.defendantResponsePageFactory;
+    await defendantPartnersAndDependentsPage.verifyContent(this.ccdCaseData);
+    await defendantPartnersAndDependentsPage.enterDetails();
+    await defendantPartnersAndDependentsPage.submit();
+
+    const { employmentDeclarationPage } = this.defendantResponsePageFactory;
+    await employmentDeclarationPage.verifyContent(this.ccdCaseData);
+    await employmentDeclarationPage.selectNotEmployed();
+    await employmentDeclarationPage.selectUnemployed();
+    await employmentDeclarationPage.enterUnemploymentDuration();
+    await employmentDeclarationPage.submit();
+
+    const { detailsOfPayingMoneyRepaymentPlanPage } = this.defendantResponsePageFactory;
+    await detailsOfPayingMoneyRepaymentPlanPage.verifyContent(this.ccdCaseData);
+    await detailsOfPayingMoneyRepaymentPlanPage.selectNo();
+    await detailsOfPayingMoneyRepaymentPlanPage.submit();
+
+    const { defendantDebtsPage } = this.defendantResponsePageFactory;
+    await defendantDebtsPage.verifyContent(this.ccdCaseData);
+    await defendantDebtsPage.selectNo();
+    await defendantDebtsPage.submit();
+
+    const { defendantIncomeExpensesPage } = this.defendantResponsePageFactory;
+    await defendantIncomeExpensesPage.verifyContent(this.ccdCaseData);
+    await defendantIncomeExpensesPage.selectNo();
+    await defendantIncomeExpensesPage.submit();
+
+    const { whyDoesNotPayImmediatelyPage } = this.defendantResponsePageFactory;
+    await whyDoesNotPayImmediatelyPage.verifyContent(this.ccdCaseData);
+    await whyDoesNotPayImmediatelyPage.enterReasons();
+    await whyDoesNotPayImmediatelyPage.submit();
+  }
+
+  @Step(classKey)
+  async repaymentPlan() {
+    const { repaymentPlanPage } = this.defendantResponsePageFactory;
+    await repaymentPlanPage.verifyContent(this.ccdCaseData);
+    await repaymentPlanPage.enterPaymentAmount();
+    await repaymentPlanPage.enterFirstRepaymentDate();
+    await repaymentPlanPage.selectMonthlyFrequency();
+    await repaymentPlanPage.submit();
+  }
+
+  @Step(classKey)
+  async applicationNoDS1() {
+    const { applicationDS1Page } = this.defendantResponsePageFactory;
+    await applicationDS1Page.verifyContent(this.ccdCaseData);
+    await applicationDS1Page.selectNo();
+    await applicationDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async whenWillClaimBePaidImmediately() {
+    const { whenWillClaimBePaidPage } = this.defendantResponsePageFactory;
+    await whenWillClaimBePaidPage.verifyContent(this.ccdCaseData);
+    await whenWillClaimBePaidPage.selectImmediately();
+    await whenWillClaimBePaidPage.submit();
   }
 
   private async languageDS1() {

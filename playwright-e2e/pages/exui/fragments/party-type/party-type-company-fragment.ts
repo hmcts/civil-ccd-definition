@@ -1,10 +1,10 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './party-type-content';
-import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
@@ -25,11 +25,13 @@ export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterCompanyDetails() {
+  async enterCompanyDetails(update?: boolean) {
     const companyData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
       claimantDefendantPartyTypes.COMPANY,
+      update
     );
+
     await super.inputText(
       companyData.companyName,
       inputs.name.selector(this.claimantDefendantParty, claimantDefendantPartyTypes.COMPANY),

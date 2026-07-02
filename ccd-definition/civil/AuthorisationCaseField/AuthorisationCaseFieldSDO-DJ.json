@@ -710,7 +710,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -1281,6 +1282,20 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialPPI",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
           "judge-profile"
         ],
         "CRUD": "CRU"

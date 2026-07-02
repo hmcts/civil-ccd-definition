@@ -10,7 +10,7 @@ const additionalInfoStatus = states.AWAITING_ADDITIONAL_INFORMATION.name;
 
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA 1v1 Judge Make Decision Additional Information tests').tag('@civil-ccd-nightly @ui-ga-add-info');
+Feature('GA 1v1 Judge Make Decision Additional Information tests').tag('@ui-ga-add-info');
 
 Scenario('GA for 1v1- respond to application - Request more information', async ({ I, api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
@@ -99,6 +99,6 @@ Scenario('GA for 1v1- respond to application - Request more information', async 
   console.log('Responded to Judge Additional Information on case: ' + gaCaseReference);
 }).retry(1);
 
-// AfterSuite(async ({ api_ga }) => {
-//   await api_ga.cleanUp();
-// });
+AfterSuite(async ({ api_ga }) => {
+  await api_ga.cleanUp();
+});

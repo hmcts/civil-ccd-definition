@@ -1,12 +1,12 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../exui-page/exui-page';
-import { radioButtons, buttons, inputs, subheadings, links } from './litigation-friend-content';
+import { radioButtons, buttons, inputs, links } from './litigation-friend-content';
 import filePaths from '../../../../config/file-paths';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import partys from '../../../../constants/partys';
+import partys from '../../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class LitigationFriendFragment extends ExuiPage(BasePage) {
@@ -18,24 +18,22 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   }
 
   async verifyContent() {
-    await super.runVerifications(
-      [
-        super.expectLabel(inputs.litigationFriendDetails.firstName.label),
-        super.expectLabel(inputs.litigationFriendDetails.lastName.label),
-        super.expectLabel(inputs.litigationFriendDetails.email.label),
-        super.expectLabel(inputs.litigationFriendDetails.phoneNumber.label),
-        super.expectSubheading(subheadings.uploadcertificate),
-      ],
-      {
-        runAxe: false,
-      },
-    );
-  }
+
+    const verifications = [
+    super.expectLabel(inputs.litigationFriendDetails.firstName.label),
+    super.expectLabel(inputs.litigationFriendDetails.lastName.label),
+    super.expectLabel(inputs.litigationFriendDetails.email.label, { count: 1 }),
+    super.expectLabel(inputs.litigationFriendDetails.phoneNumber.label, { count: 1 }),
+  ];
+
+  await super.runVerifications(verifications, { runAxe: false });
+}
 
   async enterLitigationFriendDetails() {
     const claimantLitigationFriendData = CaseDataHelper.buildLitigationFriendData(
       this.litigationFriendParty,
     );
+
     await super.inputText(
       claimantLitigationFriendData.firstName,
       inputs.litigationFriendDetails.firstName.selector(this.litigationFriendParty),
@@ -49,7 +47,7 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
       inputs.litigationFriendDetails.email.selector(this.litigationFriendParty),
     );
     await super.inputText(
-      claimantLitigationFriendData.phoneNumber,
+      claimantLitigationFriendData.phoneNumber!,
       inputs.litigationFriendDetails.phoneNumber.selector(this.litigationFriendParty),
     );
   }
@@ -89,7 +87,41 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
       inputs.address.country.selector(this.litigationFriendParty),
     );
     await super.inputText(
-      addressData.PostCode,
+      addressData.PostCode!,
+      inputs.address.postCode.selector(this.litigationFriendParty),
+    );
+  }
+
+  async updateAddress() {
+    const addressData = CaseDataHelper.buildAddressData(this.litigationFriendParty);
+
+    await super.inputText(
+      addressData.AddressLine1,
+      inputs.address.addressLine1.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.AddressLine2,
+      inputs.address.addressLine2.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.AddressLine3,
+      inputs.address.addressLine3.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.PostTown,
+      inputs.address.postTown.selector(this.litigationFriendParty),
+    );
+    if (this.litigationFriendParty !== partys.CLAIMANT_2_LITIGATION_FRIEND)
+      await super.inputText(
+        addressData.County,
+        inputs.address.county.selector(this.litigationFriendParty),
+      );
+    await super.inputText(
+      addressData.Country,
+      inputs.address.country.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.PostCode!,
       inputs.address.postCode.selector(this.litigationFriendParty),
     );
   }

@@ -2,7 +2,7 @@ import { Locator, Page } from '@playwright/test';
 import { Page as PageCore } from 'playwright-core';
 import AxeBuilder from '@axe-core/playwright';
 import config from '../config/config';
-import Cookie from '../models/cookie';
+import Cookie from '../models/test-utils/cookie';
 import { TruthyParams } from '../decorators/truthy-params';
 import { pageExpect, test } from '../playwright-fixtures';
 import Timer from '../helpers/timer';
@@ -82,9 +82,20 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'name')
   protected async clickButtonByName(
     name: string,
-    options: { timeout?: number; exact?: boolean } = {},
+    options: {
+      timeout?: number;
+      exact?: boolean;
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+    } = {},
   ) {
-    await this.page.getByRole('button', { name, exact: options.exact ?? true }).click(options);
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    let locator = this.page.getByRole('button', { name, exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.click({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'name')
@@ -272,9 +283,15 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'filePath', 'selector')
   @TruthyParams(classKey)
-  protected async uploadFile(filePath: string, selector: string) {
-    await this.page.locator(selector).setInputFiles([]);
-    await this.page.locator(selector).setInputFiles([filePath]);
+  protected async uploadFile(
+    filePath: string,
+    selector: string,
+    options: { containerSelector?: string; index?: number; first?: boolean } = {},
+  ) {
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.setInputFiles([]);
+    await locator.setInputFiles([filePath]);
   }
 
   @BoxedDetailedStep(classKey, 'selector')

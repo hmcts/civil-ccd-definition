@@ -1,11 +1,11 @@
 import BasePage from '../../../base/base-page';
 import config from '../../../config/config';
-import ccdEvents from '../../../constants/ccd-events';
-import CCDCaseData from '../../../models/ccd/ccd-case-data';
-import { CCDEvent } from '../../../models/ccd/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import CCDCaseData from '../../../models/ccd-case-data';
+import { CCDEvent } from '../../../models/ccd-events/ccd-events';
 import { buttons, components, getFormattedCaseId } from './exui-content';
 
-let ccdEventstate: CCDEvent;
+let ccdEventstate: CCDEvent | undefined;
 
 export default function ExuiPage<TBase extends abstract new (...args: any[]) => BasePage>(
   Base: TBase,
@@ -25,14 +25,14 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false, timeout }),
-          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false, timeout }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false, timeout }),
+          super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false, timeout }),
         ];
       } else {
         expects = [
           super.expectHeading(ccdEventstate.name, { exact: false, timeout }),
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false, timeout }),
-          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false, timeout }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false, timeout }),
+          super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false, timeout }),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });
@@ -41,10 +41,22 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     protected async retryUploadFile(
       filePath: string,
       selector: string,
-      { retries = 3, timeout = 5000 } = {},
+      {
+        retries = 3,
+        timeout = 5000,
+        containerSelector,
+        index,
+        first,
+      }: {
+        retries?: number;
+        timeout?: number;
+        containerSelector?: string;
+        index?: number;
+        first?: boolean;
+      } = {},
     ) {
       await this.retryAction(
-        () => super.uploadFile(filePath, selector),
+        () => super.uploadFile(filePath, selector, { containerSelector, index, first }),
         () =>
           super.expectNoSelector(components.uploadDocError.selector, {
             timeout,

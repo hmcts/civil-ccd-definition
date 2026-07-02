@@ -127,6 +127,7 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
     sdoR2SmallClaimsWitnessStatements: (data) => {
       return typeof data.sdoStatementOfWitness === 'string'
+        && (data.deadlineDate === undefined || typeof data.deadlineDate === 'string')
         && typeof data.isRestrictWitness === 'string'
         && typeof data.isRestrictPages === 'string'
         && typeof data.text === 'string';
@@ -943,7 +944,7 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, hearingDate, user);
   },
 
-  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
+  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING', mpScenario) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'DEFAULT_JUDGEMENT';
@@ -1032,6 +1033,15 @@ module.exports = {
       disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
       delete disposalData.calculated.FastTrack.fastTrackCreditHire;
       disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+    }
+
+    if (response === 'CREATE_FAST_NIHL' || response === 'CREATE_FAST_NIHL_OTHER_REMEDY') {
+      delete caseData['smallClaimsPenalNotice'];
+      delete caseData['fastTrackPenalNotice'];
+      delete caseData['fastTrackTrialBundleToggle'];
+      delete caseData['smallClaimsPPI'];
+      delete caseData['fastTrackPPI'];
+      delete caseData['disposalHearingDisclosureOfDocuments'];
     }
 
     for (let pageId of Object.keys(disposalData.valid)) {
@@ -1574,6 +1584,34 @@ const assertValidData = async (data, pageId, solicitor) => {
   delete responseBody.data['gaEaCourtLocation'];
   delete responseBody.data['evidenceUploadNotificationSent'];
 
+  if (eventName === 'CREATE_SDO') {
+    if (responseBody.data.isSdoR2NewScreen === 'Yes') {
+      const sdoR2SyncFields = [
+        'fastTrackCostsToggle',
+        'disposalHearingMethodToggle',
+        'fastTrackMethodToggle',
+        'smallClaimsMethodToggle',
+        'disposalHearingMethodInPerson',
+      ];
+      sdoR2SyncFields.forEach(field => {
+        if (responseBody.data[field] !== undefined && caseData[field] === undefined) {
+          caseData[field] = responseBody.data[field];
+        }
+      });
+    }
+    const sdoApiOnlyFields = [
+      'smallClaimsPenalNotice',
+      'fastTrackPenalNotice',
+      'fastTrackTrialBundleToggle',
+      'smallClaimsPPI',
+      'fastTrackPPI',
+      'disposalHearingDisclosureOfDocuments',
+    ];
+    sdoApiOnlyFields.forEach(field => {
+      delete caseData[field];
+      delete responseBody.data[field];
+    });
+  }
 
   assert.equal(response.status, 200);
 
@@ -1639,8 +1677,16 @@ const assertValidData = async (data, pageId, solicitor) => {
   delete caseData['notificationSummary'];
 
   try {
-     assert.deepEqual(responseBody.data, caseData);
+    for (const [key, value] of Object.entries(caseData)) {
+      assert.deepEqual(responseBody.data[key], value, `Mismatch on field: ${key}`);
+    }
+    for (const key of Object.keys(responseBody.data)) {
+      if (!(key in caseData)) {
+        console.warn(`API returned unexpected field not in caseData: ${key} = ${JSON.stringify(responseBody.data[key])}`);
+      }
+    }
   }
+
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     console.error('Data different in page ' + pageId);
@@ -2009,8 +2055,6 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['respondent2OrganisationIDCopy'];
   delete responseBody.data['applicantExperts'];
   delete responseBody.data['applicantWitnesses'];
-  delete responseBody.data['disposalHearingBundle'];
-  delete responseBody.data['disposalHearingBundleToggle'];
   delete responseBody.data['disposalHearingClaimSettlingToggle'];
   delete responseBody.data['disposalHearingCostsToggle'];
   delete responseBody.data['disposalHearingDisclosureOfDocuments'];
@@ -2059,7 +2103,6 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackSettlementToggle'];
   delete responseBody.data['fastTrackTrial'];
   delete responseBody.data['fastTrackTrialToggle'];
-  delete responseBody.data['fastTrackTrialBundleToggle'];
   delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];

@@ -1,6 +1,6 @@
-import partys from '../../../../../../../constants/partys';
-import ClaimTrack from '../../../../../../../enums/claim-track';
-import { Party } from '../../../../../../../models/partys';
+import partys from '../../../../../../../constants/users/partys';
+import ClaimTrack from '../../../../../../../constants/cases/claim-track';
+import { Party } from '../../../../../../../models/users/partys';
 
 export const heading = 'Respond to claim';
 

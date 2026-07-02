@@ -729,7 +729,8 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -1587,7 +1588,8 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -1613,9 +1615,109 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isClaimDeclarationAdded",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-caa"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimDeclarationDescription",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-caa"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isHumanRightsActIssues",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-caa"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "otherRemedyFee",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
       }
     ]
   }

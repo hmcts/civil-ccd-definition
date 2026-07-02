@@ -3,8 +3,8 @@ import config from '../../../../config/config';
 import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
-import CCDCaseData from '../../../../models/ccd/ccd-case-data';
-import { CCDEvent } from '../../../../models/ccd/ccd-events';
+import CCDCaseData from '../../../../models/ccd-case-data';
+import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
 import {
   components,
   getFormattedCaseId,
@@ -53,7 +53,9 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async verifyClaimDetailsContent(caseData: CCDCaseData) {
     await super.clickByText(tabs.claimDetails.title);
-    await super.runVerifications([], { useAxeCache: false });
+    await super.runVerifications([
+      super.verifyHeadings(caseData),
+    ], { useAxeCache: false });
   }
 
   async verifyClaimDocumentsContent(caseData: CCDCaseData) {
@@ -77,7 +79,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   }
 
   async grabCaseNumber() {
-    return getUnformattedCaseId(await super.getText(headings.caseNumber.selector));
+    return getUnformattedCaseId((await super.getText(headings.caseNumber.selector))!);
   }
 
   @TruthyParams(classKey, 'caseId')

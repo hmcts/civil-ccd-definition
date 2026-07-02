@@ -1,23 +1,15 @@
 [
   {
     "ID": "TrialHousingDisrepair",
-    "ListElementCode": "label",
+    "ListElementCode": "introLine",
     "FieldType": "Label",
-    "ElementLabel": " ",
+    "ElementLabel": "Expert evidence is directed as follows:",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "TrialHousingDisrepair",
-    "ListElementCode": "input1",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "TrialHousingDisrepair",
-    "ListElementCode": "input2",
+    "ListElementCode": "clauseA",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
@@ -25,7 +17,7 @@
   },
   {
     "ID": "TrialHousingDisrepair",
-    "ListElementCode": "input3",
+    "ListElementCode": "clauseB",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
@@ -33,7 +25,7 @@
   },
   {
     "ID": "TrialHousingDisrepair",
-    "ListElementCode": "date1",
+    "ListElementCode": "firstReportDateBy",
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
@@ -41,7 +33,7 @@
   },
   {
     "ID": "TrialHousingDisrepair",
-    "ListElementCode": "input4",
+    "ListElementCode": "clauseCBeforeDate",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
@@ -49,8 +41,32 @@
   },
   {
     "ID": "TrialHousingDisrepair",
-    "ListElementCode": "date2",
+    "ListElementCode": "jointStatementDateBy",
     "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "TrialHousingDisrepair",
+    "ListElementCode": "clauseCAfterDate",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "TrialHousingDisrepair",
+    "ListElementCode": "clauseD",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "TrialHousingDisrepair",
+    "ListElementCode": "clauseE",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

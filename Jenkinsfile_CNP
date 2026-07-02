@@ -14,8 +14,6 @@ def camundaBranch = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 def wiremockMappingsBranch = "master"
-def civilServiceScriptsBranch = "master"
-
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -75,6 +73,14 @@ def getFunctionalTestsGroups() {
   return functionalTestGroups.join(",")
 }
 
+def getCivilServiceSharedBranch() {
+  def githubApi = new GithubAPI(this)
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilShared:")) {
+    return label.minus("civilShared:").trim()
+  }
+  return "master"
+}
+
 def secrets = [
   'rpx-${env}': [
     secret('mc-idam-client-secret', 'IDAM_CLIENT_SECRET'),
@@ -116,6 +122,12 @@ def secrets = [
 
 def checkForEnableEmailNotifications(branch_name) {
   return checkForPrValuesLabel(branch_name, "enableNotifyEmails")
+}
+
+def checkForSkipFunctionalTests(branch_name) {
+  return new GithubAPI(this)
+    .getLabelsbyPattern(branch_name, "pr-values:skip-functional-tests")
+    .contains("pr-values:skip-functional-tests")
 }
 
 def checkForRunAllFunctionalTests(branch_name) {
@@ -221,6 +233,9 @@ def getCivilServiceImage() {
 withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
+  env.BEFTA_FORCE_IMPORT_RETRY = 'true'
+  env.BEFTA_IMPORT_GATEWAY_TIMEOUT_VERSION_POLL_MAX_ATTEMPTS = '90'
+  env.BEFTA_IMPORT_GATEWAY_TIMEOUT_VERSION_POLL_DELAY_MILLISECONDS = '10000'
 
   onPR {
     env.ENVIRONMENT = "preview"
@@ -251,7 +266,7 @@ withPipeline(type, product, component) {
 
   before('highleveldatasetup') {
     // Pull shared scripts from civil-service early - needed by build and import scripts
-    sh "./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}"
+    sh "./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}"
     yarnBuilder.yarn('setup')
     archiveCoreCaseDataDefinitions()
   }
@@ -269,11 +284,11 @@ withPipeline(type, product, component) {
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-        ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
+        ./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
-      ./bin/add-org-roles-to-users.sh
+      ./bin/shared/add-org-roles-to-users.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
     """
@@ -297,7 +312,9 @@ withPipeline(type, product, component) {
     env.IDAM_STUB_ENABLED = 'false'
     env.UNASSIGN_CASES = true
     copyPreviousAllureHistory();
-    if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
+    if(checkForSkipFunctionalTests(env.BRANCH_NAME)) {
+      env.SKIP_FUNCTIONAL_TESTS = true
+    } else if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
       env.RUN_ALL_FUNCTIONAL_TESTS = true
     } else {
       copyPrevFailedAndNotExecutedTestFilesJson();
@@ -306,6 +323,10 @@ withPipeline(type, product, component) {
 
 
   afterAlways('functionalTest:preview') {
+    if(checkForSkipFunctionalTests(env.BRANCH_NAME)) {
+      echo "Skipping Allure report generation due to label: pr-values:skip-functional-tests"
+      return
+    }
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
     publishHTML([
@@ -332,9 +353,9 @@ withPipeline(type, product, component) {
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
-      ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
+      ./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}
       . ./bin/shared/idam-get-tokens.sh
-      ./bin/add-roles.sh
+      ./bin/shared/add-roles.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
       ./bin/build-release-ccd-definition.sh staging

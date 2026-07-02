@@ -1,11 +1,12 @@
-import { Party } from '../../../../../../../models/partys';
+import { Party } from '../../../../../../../models/users/partys';
 
 export const heading = 'Add timeline of events (Optional)';
 
 export const buttons = {
   addNew: {
     title: 'Add new',
-    selector: '.write-collection-add-item__top',
+    selector: (defendantParty: Party) =>
+      `div[id='specResponseTimelineOfEvents${defendantParty.number === 1 ? '' : defendantParty.number}'] button[class='button write-collection-add-item__top']`,
   },
 };
 

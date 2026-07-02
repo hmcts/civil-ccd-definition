@@ -1,6 +1,6 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import { checkboxes, radioButtons } from './claims-track-content';
 
@@ -26,7 +26,6 @@ export default class ClaimsTrackPage extends ExuiPage(BasePage) {
     ]);
     await super.clickBySelector(checkboxes.smallClaims.creditHire.selector);
     await super.clickBySelector(checkboxes.smallClaims.roadTrafficAccident.selector);
-    await super.clickBySelector(checkboxes.smallClaims.disputeResolutionHearing.selector);
     await super.clickBySelector(checkboxes.smallClaims.flightDelay.selector);
   }
 

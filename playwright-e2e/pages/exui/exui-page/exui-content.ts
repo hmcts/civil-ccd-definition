@@ -1,4 +1,4 @@
-import CCDCaseData from '../../../models/ccd/ccd-case-data';
+import CCDCaseData from '../../../models/ccd-case-data';
 
 export const headings = { caseNumber: { selector: 'ccd-markdown >> h1' } };
 
@@ -44,7 +44,7 @@ export const getResponseSealedFormDocName = (ccdCaseData: CCDCaseData) =>
 
 export const getFormattedCaseId = (caseId: number) => {
   const groups = caseId.toString().match(/.{1,4}/g);
-  const formattedString = '#' + groups.join('-');
+  const formattedString = '#' + groups?.join('-');
   return formattedString;
 };
 

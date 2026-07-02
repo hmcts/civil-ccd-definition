@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-data';
+import TestData from '../../../../models/test-utils/test-data';
 import SdoPageFactory from '../../../../pages/exui/judge-la/sdo/sdo-page-factory';
 
 @AllMethodsStep()
@@ -26,7 +26,7 @@ export default class SdoActions extends BaseTestData {
     await sdoPage.submit();
   }
 
-  async selectSmallTrack() {
+  async selectSmallTrackSum() {
     const { claimsTrackSmallPage } = this.sdoPageFactory;
     await claimsTrackSmallPage.verifyContent(this.ccdCaseData);
     await claimsTrackSmallPage.selectYes();
@@ -54,6 +54,13 @@ export default class SdoActions extends BaseTestData {
     await claimsTrackPage.submit();
   }
 
+  async selectSmallClaimNoSum() {
+    const { claimsTrackPage } = this.sdoPageFactory;
+    await claimsTrackPage.verifyContent(this.ccdCaseData);
+    await claimsTrackPage.selectSmallClaims();
+    await claimsTrackPage.submit();
+  }
+
   async selectFastTrackNIHL() {
     const { claimsTrackPage } = this.sdoPageFactory;
     await claimsTrackPage.verifyContent(this.ccdCaseData);
@@ -62,10 +69,17 @@ export default class SdoActions extends BaseTestData {
     await claimsTrackPage.submit();
   }
 
-  async selectDisposalHearing() {
+  async orderTypeDisposalHearing() {
     const { orderTypePage } = this.sdoPageFactory;
     await orderTypePage.verifyContent(this.ccdCaseData);
     await orderTypePage.selectDisposalHearing();
+    await orderTypePage.submit();
+  }
+
+  async orderTypeTrail() {
+    const { orderTypePage } = this.sdoPageFactory;
+    await orderTypePage.verifyContent(this.ccdCaseData);
+    await orderTypePage.selectTrail();
     await orderTypePage.submit();
   }
 
@@ -73,7 +87,6 @@ export default class SdoActions extends BaseTestData {
     const { disposalHearingPage } = this.sdoPageFactory;
     await disposalHearingPage.verifyContent(this.ccdCaseData);
     await disposalHearingPage.addHearingTime();
-    await disposalHearingPage.addDisposalHearingBundle();
     await disposalHearingPage.submit();
   }
 

@@ -15,6 +15,9 @@
   "helmv3": {
     "bumpVersion": "patch"
   },
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "regexManagers": [
     {
       "fileMatch": [
@@ -49,6 +52,14 @@
       "automerge": false,
       "automergeType": "pr",
       "automergeSchedule": ["before 2pm every weekday"]
+    },
+    {
+      "matchPackageNames": ["allure-playwright"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["lint-staged"],
+      "enabled": false
     },
     {
       "matchPackagePatterns": ["^allure-"],

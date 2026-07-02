@@ -32,14 +32,20 @@
   },
   {
     "ID": "CaseManagementOrderAdditional",
+    "ListElementCode": "OrderTypeTrialAdditionalDirectionsPPI",
+    "ListElement": "Payment Protection Insurance (PPI)",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "CaseManagementOrderAdditional",
     "ListElementCode": "OrderTypeTrialAdditionalDirectionsPersonalInjury",
     "ListElement": "Personal Injury",
-    "DisplayOrder": 6
+    "DisplayOrder": 7
   },
   {
     "ID": "CaseManagementOrderAdditional",
     "ListElementCode": "OrderTypeTrialAdditionalDirectionsRoadTrafficAccident",
     "ListElement": "Road Traffic Accident",
-    "DisplayOrder": 7
+    "DisplayOrder": 8
   }
 ]

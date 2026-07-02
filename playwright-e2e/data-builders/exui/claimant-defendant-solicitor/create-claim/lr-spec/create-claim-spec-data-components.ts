@@ -3,13 +3,13 @@ import {
   defendantSolicitor1User,
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
-import partys from '../../../../../constants/partys';
-import CaseRole from '../../../../../enums/case-role';
-import ClaimTrack from '../../../../../enums/claim-track';
-import ClaimType from '../../../../../enums/claim-type';
+import partys from '../../../../../constants/users/partys';
+import CaseRole from '../../../../../constants/cases/case-role';
+import ClaimTrack from '../../../../../constants/cases/claim-track';
+import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
-import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
+import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 
 const references = {
   References: {

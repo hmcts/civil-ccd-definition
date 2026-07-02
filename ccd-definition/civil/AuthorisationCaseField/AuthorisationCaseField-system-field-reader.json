@@ -361,6 +361,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1DQFutureApplicationsLabel",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQFutureApplications",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -1639,12 +1645,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundleTitle",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoR2DrhUseOfWelshIncludeInOrderToggle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -1892,12 +1892,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjPaymentPaidSomeAmountInPoundsLabel",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -5245,12 +5239,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundleEndLine",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isApplicationUrgent",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -5420,12 +5408,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingHelpFeesReferenceNumber",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundleStartLine",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -6805,12 +6787,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundleDJToggle",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentMPClaimResponseTypeForSpecLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -7940,12 +7916,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseProgAllocatedTrack",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundleToggle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -10417,12 +10387,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "disposalHearingBundleDJ",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hwfOutstandingFeePaymentDoneForHearingFee",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -10916,6 +10880,138 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "useOfWelshLanguageTrial",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingBundleStartLine",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingBundleTitle",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingBundleToggle",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingBundle",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingBundleEndLine",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingBundleDJToggle",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "disposalHearingBundleDJ",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isClaimDeclarationAdded",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimDeclarationDescription",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isHumanRightsActIssues",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "smallClaimsPenalNoticeTitle",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "smallClaimsPenalNoticeToggle",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "smallClaimsPenalNotice",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackPenalNoticeTitle",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackPenalNoticeToggle",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackPenalNotice",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "smallClaimsPPI",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fastTrackPPI",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialPPI",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "smallClaimsHousingDisrepair",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isOtherRemedyAbandoned",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "otherRemedyAbandonedDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   }

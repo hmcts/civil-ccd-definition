@@ -1,4 +1,4 @@
-import { CCDEvent } from '../../../../models/ccd/ccd-events';
+import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
 
 export const tabs = {
   summary: {
@@ -71,3 +71,4 @@ export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =
 
 export const caseFlagsNoticeText = (activeCaseFlags: number) =>
   `There ${activeCaseFlags === 1 ? 'is' : 'are'} ${activeCaseFlags} active flag${activeCaseFlags === 1 ? '' : 's'} on this case.`;
+

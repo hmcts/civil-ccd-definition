@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-data';
+import TestData from '../../../../models/test-utils/test-data';
 import NotSuitableSdoPageFactory from '../../../../pages/exui/judge-la/not-suitable-for-sdo/not-suitable-sdo-page-factory';
 
 @AllMethodsStep()

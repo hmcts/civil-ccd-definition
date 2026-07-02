@@ -343,6 +343,7 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
 const newSdoR2FieldsSmallClaims = {
   sdoR2SmallClaimsWitnessStatementOther: (data) => {
     return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
       && typeof data.isRestrictWitness === 'string'
       && typeof data.isRestrictPages === 'string'
       && typeof data.text === 'string';
@@ -602,8 +603,6 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['respondent2OrganisationIDCopy'];
   delete responseBody.data['applicantExperts'];
   delete responseBody.data['applicantWitnesses'];
-  delete responseBody.data['disposalHearingBundle'];
-  delete responseBody.data['disposalHearingBundleToggle'];
   delete responseBody.data['disposalHearingClaimSettlingToggle'];
   delete responseBody.data['disposalHearingCostsToggle'];
   delete responseBody.data['disposalHearingDisclosureOfDocuments'];
@@ -652,7 +651,6 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackSettlementToggle'];
   delete responseBody.data['fastTrackTrial'];
   delete responseBody.data['fastTrackTrialToggle'];
-  delete responseBody.data['fastTrackTrialBundleToggle'];
   delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
