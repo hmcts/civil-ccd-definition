@@ -103,6 +103,7 @@ export default abstract class BaseExui extends BaseApi {
     await super.setDebugTestData();
     while (retries >= 0) {
       try {
+        await this.exuiDashboardActions.goToHearingsTab();
         await eventActions();
         break;
       } catch (error) {

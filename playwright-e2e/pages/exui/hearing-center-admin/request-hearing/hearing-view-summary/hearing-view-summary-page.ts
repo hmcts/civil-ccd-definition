@@ -1,5 +1,5 @@
 import BasePage from '../../../../../base/base-page';
-import ExuiPage from '../../../exui-page/exui-page';
+import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import { heading, button } from './hearing-view-summary-content';
 

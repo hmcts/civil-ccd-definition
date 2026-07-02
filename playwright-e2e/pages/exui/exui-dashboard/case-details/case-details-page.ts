@@ -10,8 +10,8 @@ import {
   getFormattedCaseId,
   getUnformattedCaseId,
   headings,
-} from '../../exui-page/exui-content';
-import ExuiPage from '../../exui-page/exui-page';
+} from '../../mixin-pages/exui-page/exui-content';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import {
   buttons,
   caseFlagsNoticeText,

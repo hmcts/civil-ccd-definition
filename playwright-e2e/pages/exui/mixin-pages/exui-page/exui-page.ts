@@ -1,8 +1,8 @@
-import BasePage from '../../../base/base-page';
-import config from '../../../config/config';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import CCDCaseData from '../../../models/ccd-case-data';
-import { CCDEvent } from '../../../models/ccd-events/ccd-events';
+import BasePage from '../../../../base/base-page';
+import config from '../../../../config/config';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events';
+import CCDCaseData from '../../../../models/ccd-case-data';
+import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
 import { buttons, components, getFormattedCaseId } from './exui-content';
 
 let ccdEventstate: CCDEvent | undefined;

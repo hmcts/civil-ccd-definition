@@ -3,10 +3,10 @@ import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DateHelper from '../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
-import ExuiPage from '../../../exui-page/exui-page';
+import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import { headings, inputs, radioButtons } from './set-aside-order-type-content';
-import { getFormattedCaseId } from '../../../exui-page/exui-content';
+import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content';
 
 @AllMethodsStep()
 export default class SetAsideOrderTypePage extends ExuiPage(BasePage) {

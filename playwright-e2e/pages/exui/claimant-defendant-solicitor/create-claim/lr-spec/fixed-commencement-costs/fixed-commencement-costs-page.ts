@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { inputs, subheadings, radioButtons } from './fixed-commencement-costs-content';
 
 @AllMethodsStep()

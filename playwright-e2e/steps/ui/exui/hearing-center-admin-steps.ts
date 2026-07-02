@@ -185,7 +185,6 @@ export default class HearingCenterAdminSteps extends BaseExui {
     const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
     await super.retryHearingRequest(
       async () => {
-        await this.exuiDashboardActions.goToHearingsTab();
         await requestHearingActions.requestNewHearing();
         await requestHearingActions.checkRequirements();
         await requestHearingActions.selectFacilities();
@@ -207,7 +206,6 @@ export default class HearingCenterAdminSteps extends BaseExui {
     const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
     await super.retryHearingRequest(
       async () => {
-        await this.exuiDashboardActions.goToHearingsTab();
         await requestHearingActions.viewDetails();
         await requestHearingActions.editHearing();
         await requestHearingActions.changeAdditionalFacilities();
@@ -233,7 +231,6 @@ export default class HearingCenterAdminSteps extends BaseExui {
     const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
     await super.retryHearingRequest(
       async () => {
-        await this.exuiDashboardActions.goToHearingsTab();
         await requestHearingActions.cancelHearing();
         await requestHearingActions.cancelHearingListedInError();
       },
