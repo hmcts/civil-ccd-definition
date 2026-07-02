@@ -181,7 +181,7 @@ export default class RequestHearingActions extends BaseTestData {
 
   async cancelHearingListedInError() {
     const { hearingCancelPage } = this.requestHearingPageFactory;
-    await hearingCancelPage.verifyContent(this.ccdCaseData);
+    await hearingCancelPage.verifyContent();
     await hearingCancelPage.selectListedInError();
     await hearingCancelPage.submit();
   }
