@@ -13,18 +13,18 @@ test.describe(
       HearingCenterAdminApiSteps,
       CaseRoleAssignmentApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFastTrack1v2DS();
+      await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-      await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence1v2DS();
-      await DefendantSolicitor2ApiSteps.RespondFastTrackFullDefence();
-      await ClaimantSolicitorApiSteps.RespondFastTrackProceed1v2DS();
+      await DefendantSolicitor1ApiSteps.RespondFastFullDefence1v2DS();
+      await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+      await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
       await JudgeSteps.LoginRegion1();
-      await JudgeSteps.SdoFastTrack();
-      await HearingCenterAdminApiSteps.ScheduleHearingFastTrackTrial();
+      await JudgeSteps.SdoFast();
+      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
       await ClaimantSolicitorSteps.Login();
       await ClaimantSolicitorSteps.DiscontinueClaim1v2DS();
     });

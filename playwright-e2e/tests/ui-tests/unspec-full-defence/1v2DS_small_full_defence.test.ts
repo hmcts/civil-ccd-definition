@@ -20,6 +20,6 @@ test.describe('1v2DS small track claim journey', { tag: '@civil-ccd-nightly' }, 
     await DefendantSolicitor2Steps.Login();
     await DefendantSolicitor2Steps.RespondSmallTrackFullDefence1v2DS();
     await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.RespondSmallClaimProceed1v2DS();
+    await ClaimantSolicitorSteps.RespondSmallProceed1v2DS();
   });
 });
