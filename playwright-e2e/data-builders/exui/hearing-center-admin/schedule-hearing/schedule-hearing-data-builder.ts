@@ -5,7 +5,7 @@ import scheduleHearingDataBuilderComponents from './schedule-hearing-data-builde
 
 @AllMethodsStep()
 export default class ScheduleHearingDataBuilder extends BaseDataBuilder {
-  async buildFastTrackData() {
+  async buildFastData() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM});
   }
 

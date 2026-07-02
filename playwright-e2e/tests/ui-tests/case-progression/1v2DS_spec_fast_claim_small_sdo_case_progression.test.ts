@@ -10,24 +10,24 @@ test.describe('1v2 spec fast claim to small sdo case progression', { tag: '@civi
     ClaimantSolicitorSpecSteps,
     HearingCenterAdminSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v2DS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await DefendantSolicitor1SpecSteps.Login();
-    await DefendantSolicitor1SpecSteps.RespondFastTrackFullDefence1v2DS();
+    await DefendantSolicitor1SpecSteps.RespondFastFullDefence1v2DS();
     await DefendantSolicitor2SpecSteps.Login();
-    await DefendantSolicitor2SpecSteps.RespondFastTrackFullDefence1v2DS();
+    await DefendantSolicitor2SpecSteps.RespondFastFullDefence1v2DS();
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.RespondFastTrackProceed1v2DS();
+    await ClaimantSolicitorSpecSteps.RespondFastProceed1v2DS();
     await JudgeSteps.LoginRegion1();
-    await JudgeSteps.SdoSmallTrackFromFastTrackClaim();
+    await JudgeSteps.SdoSmallTrackFromFastClaim();
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.EvidenceUploadSmallClaim();
+    await ClaimantSolicitorSpecSteps.EvidenceUploadSmall();
     await DefendantSolicitor1SpecSteps.Login();
-    await DefendantSolicitor1SpecSteps.EvidenceUploadSmallClaim();
+    await DefendantSolicitor1SpecSteps.EvidenceUploadSmall();
     await HearingCenterAdminSteps.LoginRegion1();
-    await HearingCenterAdminSteps.ScheduleHearingSmallClaim();
+    await HearingCenterAdminSteps.ScheduleHearingSmall();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
   });
 });
