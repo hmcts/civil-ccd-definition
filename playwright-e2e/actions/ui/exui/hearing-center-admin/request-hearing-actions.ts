@@ -13,69 +13,68 @@ export default class RequestHearingActions extends BaseTestData {
   }
 
   async requestNewHearing() {
-    const { hearingsPage } = this.requestHearingPageFactory;
-    await hearingsPage.verifyContent();
-    await hearingsPage.requestHearing();
+    const { caseDetailsPage } = this.requestHearingPageFactory;
+    await caseDetailsPage.requestHearing();
   }
 
   async checkRequirements() {
     const { hearingRequirementsPage } = this.requestHearingPageFactory;
     await hearingRequirementsPage.verifyContent(this.ccdCaseData);
-    await hearingRequirementsPage.submit();
+    await hearingRequirementsPage.continue();
   }
 
-  async selectFacilities() {
+  async addHearingFacilities() {
     const { hearingFacilitiesPage } = this.requestHearingPageFactory;
     await hearingFacilitiesPage.verifyContent(this.ccdCaseData);
     await hearingFacilitiesPage.selectAdditionalFacilities();
-    await hearingFacilitiesPage.submit();
+    await hearingFacilitiesPage.continue();
   }
 
-  async selectStage() {
+  async addStage() {
     const { hearingStagePage } = this.requestHearingPageFactory;
     await hearingStagePage.verifyContent(this.ccdCaseData);
     await hearingStagePage.selectStage();
-    await hearingStagePage.submit();
+    await hearingStagePage.continue();
   }
 
-  async selectAttendance() {
+  async addAttendance() {
     const { hearingAttendancePage } = this.requestHearingPageFactory;
     await hearingAttendancePage.verifyContent(this.ccdCaseData);
     await hearingAttendancePage.selectAttendance();
-    await hearingAttendancePage.submit();
+    await hearingAttendancePage.continue();
   }
 
-  async selectVenue() {
+  async addVenue() {
     const { hearingVenuePage } = this.requestHearingPageFactory;
     await hearingVenuePage.verifyContent(this.ccdCaseData);
-    await hearingVenuePage.submit();
+    await hearingVenuePage.continue();
   }
 
-  async selectJudge() {
+  async addJudge() {
     const { hearingJudgePage } = this.requestHearingPageFactory;
     await hearingJudgePage.verifyContent(this.ccdCaseData);
     await hearingJudgePage.selectJudges();
-    await hearingJudgePage.submit();
+    await hearingJudgePage.continue();
   }
 
-  async selectTiming() {
+  async addTiming() {
     const { hearingTimingPage } = this.requestHearingPageFactory;
     await hearingTimingPage.verifyContent(this.ccdCaseData);
     await hearingTimingPage.enterHearingLength();
-    await hearingTimingPage.submit();
+    await hearingTimingPage.continue();
   }
 
   async enterAdditionalInstructions() {
     const { hearingAdditionalInstructionsPage } = this.requestHearingPageFactory;
     await hearingAdditionalInstructionsPage.verifyContent(this.ccdCaseData);
     await hearingAdditionalInstructionsPage.enterAdditionalInstructions();
-    await hearingAdditionalInstructionsPage.submit();
+    await hearingAdditionalInstructionsPage.continue();
   }
 
   async submitHearing() {
     const { hearingSubmitPage } = this.requestHearingPageFactory;
     await hearingSubmitPage.verifyContent(this.ccdCaseData);
-    await hearingSubmitPage.submit();
+    await hearingSubmitPage.continue();
   }
 
   async confirmHearing() {
@@ -85,9 +84,8 @@ export default class RequestHearingActions extends BaseTestData {
   }
 
   async viewDetails() {
-    const { hearingsPage } = this.requestHearingPageFactory;
-    await hearingsPage.verifyContent();
-    await hearingsPage.viewDetails();
+    const { caseDetailsPage } = this.requestHearingPageFactory;
+    await caseDetailsPage.viewHearingDetails();
   }
 
   async editHearing() {
@@ -106,7 +104,7 @@ export default class RequestHearingActions extends BaseTestData {
     const { hearingFacilitiesPage } = this.requestHearingPageFactory;
     await hearingFacilitiesPage.verifyContent(this.ccdCaseData);
     await hearingFacilitiesPage.updateAdditionalFacilities();
-    await hearingFacilitiesPage.submit();
+    await hearingFacilitiesPage.continue();
   }
 
   async changeJudgeTypes() {
@@ -119,7 +117,7 @@ export default class RequestHearingActions extends BaseTestData {
     const { hearingJudgePage } = this.requestHearingPageFactory;
     await hearingJudgePage.verifyContent(this.ccdCaseData);
     await hearingJudgePage.updateJudges();
-    await hearingJudgePage.submit();
+    await hearingJudgePage.continue();
   }
 
   async changeAttendance() {
@@ -131,7 +129,7 @@ export default class RequestHearingActions extends BaseTestData {
   async updateAttendance() {
     const { hearingAttendancePage } = this.requestHearingPageFactory;
     await hearingAttendancePage.verifyContent(this.ccdCaseData);
-    await hearingAttendancePage.submit();
+    await hearingAttendancePage.continue();
   }
 
   async changeTimings() {
@@ -144,7 +142,7 @@ export default class RequestHearingActions extends BaseTestData {
     const { hearingTimingPage } = this.requestHearingPageFactory;
     await hearingTimingPage.verifyContent(this.ccdCaseData);
     await hearingTimingPage.updateHearingLength();
-    await hearingTimingPage.submit();
+    await hearingTimingPage.continue();
   }
 
   async changeAdditionalInstructions() {
@@ -157,32 +155,31 @@ export default class RequestHearingActions extends BaseTestData {
     const { hearingAdditionalInstructionsPage } = this.requestHearingPageFactory;
     await hearingAdditionalInstructionsPage.verifyContent(this.ccdCaseData);
     await hearingAdditionalInstructionsPage.enterUpdatedInstructions();
-    await hearingAdditionalInstructionsPage.submit();
+    await hearingAdditionalInstructionsPage.continue();
   }
 
   async submitUpdatedRequest() {
     const { hearingEditSummaryPage } = this.requestHearingPageFactory;
     await hearingEditSummaryPage.verifyContent(this.ccdCaseData);
-    await hearingEditSummaryPage.submit();
+    await hearingEditSummaryPage.continue();
   }
 
   async hearingChangeReason() {
     const { hearingChangeReasonPage } = this.requestHearingPageFactory;
     await hearingChangeReasonPage.verifyContent(this.ccdCaseData);
     await hearingChangeReasonPage.selectReasonPartyRequestedChange();
-    await hearingChangeReasonPage.submit();
+    await hearingChangeReasonPage.continue();
   }
 
   async cancelHearing() {
-    const { hearingsPage } = this.requestHearingPageFactory;
-    await hearingsPage.verifyContent();
-    await hearingsPage.cancel();
+    const { caseDetailsPage } = this.requestHearingPageFactory;
+    await caseDetailsPage.cancelHearing();
   }
 
   async cancelHearingListedInError() {
     const { hearingCancelPage } = this.requestHearingPageFactory;
     await hearingCancelPage.verifyContent();
     await hearingCancelPage.selectListedInError();
-    await hearingCancelPage.submit();
+    await hearingCancelPage.continue();
   }
 }

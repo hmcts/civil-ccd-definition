@@ -183,16 +183,16 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async RequestNewHearing() {
     const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryHearingRequest(
+    await super.retryHearingEvent(
       async () => {
         await requestHearingActions.requestNewHearing();
         await requestHearingActions.checkRequirements();
-        await requestHearingActions.selectFacilities();
-        await requestHearingActions.selectStage();
-        await requestHearingActions.selectAttendance();
-        await requestHearingActions.selectVenue();
-        await requestHearingActions.selectJudge();
-        await requestHearingActions.selectTiming();
+        await requestHearingActions.addHearingFacilities();
+        await requestHearingActions.addStage();
+        await requestHearingActions.addAttendance();
+        await requestHearingActions.addVenue();
+        await requestHearingActions.addJudge();
+        await requestHearingActions.addTiming();
         await requestHearingActions.enterAdditionalInstructions();
         await requestHearingActions.submitHearing();
       },
@@ -204,7 +204,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async UpdateHearing() {
     const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryHearingRequest(
+    await super.retryHearingEvent(
       async () => {
         await requestHearingActions.viewDetails();
         await requestHearingActions.editHearing();
@@ -229,7 +229,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async CancelHearing() {
     const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryHearingRequest(
+    await super.retryHearingEvent(
       async () => {
         await requestHearingActions.cancelHearing();
         await requestHearingActions.cancelHearingListedInError();

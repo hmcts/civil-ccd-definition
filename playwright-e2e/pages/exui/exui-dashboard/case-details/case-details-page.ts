@@ -17,6 +17,8 @@ import {
   caseFlagsNoticeText,
   containers,
   dropdowns,
+  hearingsTabSubheadings,
+  links,
   successBannerText,
   tabs,
 } from './case-details-content';
@@ -76,9 +78,52 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     await super.runVerifications([], { useAxeCache: false });
   }
 
-  async verifyHearingsContent(caseData: CCDCaseData) {
-    await super.clickByText(tabs.hearings.title);
-    await super.runVerifications([], { useAxeCache: false });
+  async retryClickHearingsTab() {
+    await super.retryClickByText(tabs.hearings.title, () => [
+      super.expectText(hearingsTabSubheadings.currentAndUpcoming, 
+        {timeout: config.playwright.shortExpectTimeout}),
+      super.expectText(hearingsTabSubheadings.pastOrCancelled, 
+        {timeout: config.playwright.shortExpectTimeout}),
+    ],  () => super.clickByText(tabs.summary.title),
+      { retries: 3, message: 'Clicking on hearings tab failed, trying again' },);
+  }
+
+  async requestHearing() {
+    await this.retryHearingAction(
+      links.requestHearing.label,
+      () => super.clickByText(links.requestHearing.label),
+    );
+  }
+
+  async viewHearingDetails() {
+    await this.retryHearingAction(
+      buttons.viewHearingDetails.label,
+      () => super.clickBySelector(buttons.viewHearingDetails.selector),
+    );
+  }
+
+  async cancelHearing() {
+    await this.retryHearingAction(
+      buttons.cancelHearing.label,
+      () => super.clickBySelector(buttons.cancelHearing.selector),
+    );
+  }
+
+  private async retryHearingAction(
+    actionName: string,
+    action: () => Promise<void>,
+  ) {
+    await super.retryAction(
+      action,
+      async () => {
+        await super.waitForPageToLoad();
+        await super.expectNoSelector(tabs.hearings.selector, {
+          timeout: config.playwright.shortExpectTimeout,
+        });
+      },
+      () => super.reload(),
+      { retries: 3, message: `${actionName} failed, trying again` },
+    );
   }
 
   async grabCaseNumber() {

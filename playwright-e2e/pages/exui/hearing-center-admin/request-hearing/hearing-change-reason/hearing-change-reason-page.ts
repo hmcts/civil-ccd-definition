@@ -1,14 +1,14 @@
 import BasePage from '../../../../../base/base-page';
-import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
+import ExuiHearingsPage from '../../../mixin-pages/exui-hearings-page/exui-hearings-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import { heading, checkboxes } from './hearing-change-reason-content';
 
 @AllMethodsStep()
-export default class HearingChangeReasonPage extends ExuiPage(BasePage) {
+export default class HearingChangeReasonPage extends ExuiHearingsPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.expectText(`${ccdCaseData.caseNamePublic}`, { exact: false, ignoreDuplicates: true }),
+      super.verifyCaseName(ccdCaseData, { ignoreDuplicates: true }),
       super.expectText(heading),
     ]);
   }
@@ -17,7 +17,7 @@ export default class HearingChangeReasonPage extends ExuiPage(BasePage) {
     await super.clickBySelector(checkboxes.partyRequestedChange.selector);
   }
 
-  async submit() {
+  async continue() {
     await super.clickButtonByName('Submit change request');
   }
 }

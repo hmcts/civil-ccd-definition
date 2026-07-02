@@ -1,14 +1,14 @@
 import BasePage from '../../../../../base/base-page';
-import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
+import ExuiHearingsPage from '../../../mixin-pages/exui-hearings-page/exui-hearings-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import { heading, radioButtons, checkboxes, dropdowns, inputs } from './hearing-attendance-content';
 
 @AllMethodsStep()
-export default class HearingAttendancePage extends ExuiPage(BasePage) {
+export default class HearingAttendancePage extends ExuiHearingsPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.expectText(`${ccdCaseData.caseNamePublic}`, { exact: false }),
+      super.verifyCaseName(ccdCaseData),
       super.expectHeading(heading),
     ]);
   }
@@ -28,7 +28,7 @@ export default class HearingAttendancePage extends ExuiPage(BasePage) {
     await super.clickBySelector(checkboxes.inPerson.selector);
   }
 
-  async submit() {
+  async continue() {
     await super.clickContinue();
   }
 }

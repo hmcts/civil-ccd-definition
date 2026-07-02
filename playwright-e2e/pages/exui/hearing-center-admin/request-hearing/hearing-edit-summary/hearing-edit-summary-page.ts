@@ -1,5 +1,5 @@
 import BasePage from '../../../../../base/base-page';
-import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
+import ExuiHearingsPage from '../../../mixin-pages/exui-hearings-page/exui-hearings-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import { heading, button } from './hearing-edit-summary-content';
@@ -10,7 +10,7 @@ import { heading as timingHeading } from '../hearing-timing/hearing-timing-conte
 import { heading as additionalInstructionsHeading } from '../hearing-additional-instructions/hearing-additional-instructions-content';
 
 @AllMethodsStep()
-export default class HearingEditSummaryPage extends ExuiPage(BasePage) {
+export default class HearingEditSummaryPage extends ExuiHearingsPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.expectHeading(heading)]);
   }
@@ -40,7 +40,7 @@ export default class HearingEditSummaryPage extends ExuiPage(BasePage) {
     await super.expectHeading(additionalInstructionsHeading);
   }
 
-  async submit() {
+  async continue() {
     await super.submitUpdatedRequest();
   }
 }

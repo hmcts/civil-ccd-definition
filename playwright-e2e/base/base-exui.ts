@@ -94,10 +94,10 @@ export default abstract class BaseExui extends BaseApi {
   }
 
   @Step(classKey)
-  async retryHearingRequest(
+  async retryHearingEvent(
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
-    { retries = config.exui.eventRetries, camundaProcess = true } = {},
+    { retries = config.exui.eventRetries } = {},
   ) {
     await super.setupBankHolidays();
     await super.setDebugTestData();
@@ -113,8 +113,7 @@ export default abstract class BaseExui extends BaseApi {
         await this.exuiDashboardActions.clearCCDEvent();
       }
     }
-    await confirmActions();
-    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await confirmActions()
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
   }
 }

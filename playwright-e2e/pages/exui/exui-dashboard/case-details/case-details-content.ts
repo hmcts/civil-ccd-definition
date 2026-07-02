@@ -67,6 +67,20 @@ export const buttons = {
     title: 'Submit request',
     selector: "button[name='Submit request']",
   },
+  viewHearingDetails: {
+    label: 'View details',
+    selector: 'button[id^="link-view-details"]',
+  },
+  cancelHearing: {
+    label: 'Cancel',
+    selector: 'button[id^="link-cancel"]',
+  },
+};
+
+export const links = {
+  requestHearing: {
+    label: 'Request a hearing',
+  },
 };
 
 export const containers = {
@@ -77,6 +91,11 @@ export const containers = {
     selector: '#errors',
   },
 };
+
+export const hearingsTabSubheadings = {
+  currentAndUpcoming: 'Current and upcoming',
+  pastOrCancelled: 'Past or cancelled',
+}
 
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
   `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;

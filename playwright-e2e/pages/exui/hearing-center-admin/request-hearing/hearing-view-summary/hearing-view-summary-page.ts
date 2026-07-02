@@ -1,10 +1,10 @@
 import BasePage from '../../../../../base/base-page';
-import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
+import ExuiHearingsPage from '../../../mixin-pages/exui-hearings-page/exui-hearings-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import { heading, button } from './hearing-view-summary-content';
 
 @AllMethodsStep()
-export default class HearingViewSummaryPage extends ExuiPage(BasePage) {
+export default class HearingViewSummaryPage extends ExuiHearingsPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([super.expectHeading(heading)]);
   }
@@ -13,7 +13,7 @@ export default class HearingViewSummaryPage extends ExuiPage(BasePage) {
     await super.clickBySelector(button.editHearing.selector);
   }
 
-  async submit() {
-    // not needed???
+  async continue() {
+    throw new Error('Method not implemented.');
   }
 }

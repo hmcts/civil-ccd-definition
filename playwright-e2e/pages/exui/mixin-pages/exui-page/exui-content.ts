@@ -7,18 +7,6 @@ export const buttons = {
     title: 'Submit',
     selector: 'button[type=submit]',
   },
-  continue: {
-    title: 'Continue',
-    selector: 'button:has-text("Continue")',
-  },
-  submitRequest: {
-    title: 'Submit request',
-    selector: 'button:has-text("Submit request")',
-  },
-  submitUpdatedRequest: {
-    title: 'Submit updated request',
-    selector: 'button:has-text("Submit updated request")',
-  },
   addNew: { title: 'Add new', selector: "button[class='button write-collection-add-item__top']" },
 };
 

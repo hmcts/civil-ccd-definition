@@ -1,5 +1,4 @@
 import BasePageFactory from '../../../../base/base-page-factory';
-import HearingsPage from './hearings/hearings-page';
 import HearingRequirementsPage from './hearing-requirements/hearing-requirements-page';
 import HearingFacilitiesPage from './hearing-facilities/hearing-facilities-page';
 import HearingStagePage from './hearing-stage/hearing-stage-page';
@@ -14,10 +13,11 @@ import HearingViewSummaryPage from './hearing-view-summary/hearing-view-summary-
 import HearingEditSummaryPage from './hearing-edit-summary/hearing-edit-summary-page';
 import HearingUpdateReasonPage from './hearing-change-reason/hearing-change-reason-page';
 import HearingCancelPage from './hearing-cancel/hearing-cancel-page';
+import CaseDetailsPage from '../../exui-dashboard/case-details/case-details-page';
 
 export default class RequestHearingPageFactory extends BasePageFactory {
-  get hearingsPage() {
-    return new HearingsPage(this.page);
+  get caseDetailsPage() {
+    return new CaseDetailsPage(this.page);
   }
 
   get hearingRequirementsPage() {

@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('2v1 spec fast full admit repayment api journey', { tag: '@civil-service-nightly' }, async () => {
-  test('2v1 spec fast full admit repayment setup before defendant response @debug', async ({
+  test('2v1 spec fast full admit repayment setup before defendant response', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,

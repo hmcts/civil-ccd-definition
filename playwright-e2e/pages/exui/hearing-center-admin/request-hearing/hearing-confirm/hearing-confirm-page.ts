@@ -1,19 +1,19 @@
 import BasePage from '../../../../../base/base-page';
-import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
+import ExuiHearingsPage from '../../../mixin-pages/exui-hearings-page/exui-hearings-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import { heading, link } from './hearing-confirm-content';
+import { heading, links } from './hearing-confirm-content';
 
 @AllMethodsStep()
-export default class HearingConfirmPage extends ExuiPage(BasePage) {
+export default class HearingConfirmPage extends ExuiHearingsPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([super.expectHeading(heading)]);
   }
 
   async clickViewStatus() {
-    await super.clickLink(link.viewStatusInHearingsTab);
+    await super.clickLink(links.viewStatusInHearingsTab);
   }
 
-  async submit() {
-    // not needed???
+  async continue() {
+    throw new Error('Method not implemented.');
   }
 }
