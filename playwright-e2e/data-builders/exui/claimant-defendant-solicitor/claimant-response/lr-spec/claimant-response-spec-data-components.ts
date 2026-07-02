@@ -9,61 +9,44 @@ import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claima
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import DateHelper from '../../../../../helpers/date-helper';
 import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
-import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
 
 const defendantResponse = (
   claimType: ClaimType,
   claimantResponseType: ClaimantResponseSpecType,
   defendantResponseSpecType: DefendantResponseSpecType,
-  paymentTypeSpec: PaymentTypeSpec,
 ) => {
-  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION && paymentTypeSpec === PaymentTypeSpec.IMMEDIATELY)
-    return {};
+  if(defendantResponseSpecType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseSpecType !== DefendantResponseSpecType.PART_ADMISSION) {
+    if(ClaimTypeHelper.isClaimant2(claimType)) {
+      return {
+        RespondentResponse: {
+          applicant1ProceedWithClaimSpec2v1:
+            claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No'
+        }
+      };
+    }
 
-  if(ClaimTypeHelper.isClaimant2(claimType)) {
     return {
       RespondentResponse: {
-        applicant1ProceedWithClaimSpec2v1:
-          claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No'
-      }
+        applicant1ProceedWithClaim:
+          claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No',
+      },
     };
   }
 
-  return {
-    RespondentResponse: {
-      applicant1ProceedWithClaim:
-        claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No',
-    },
-  };
+  return {};
 };
 
 const defendantResponsePartAdmit = (defendantResponseSpecType: DefendantResponseSpecType) => {
   if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION) {
     return {
       RespondentResponse: {
-        applicant1PartAdmitConfirmAmountPaidSpec: 'Yes'
-      }
-    };
-  }
-
-  return {};
-};
-
-const intentionToSettleClaim = (defendantResponseSpecType: DefendantResponseSpecType, claimantResponseType:  ClaimantResponseSpecType) => {
-  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
-    return {};
-
-  if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
-    return {
-      IntentionToSettleClaim: {
-        applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
-        applicant1PartAdmitRejectReasonSpec: `Part admit reject reason - ${partys.CLAIMANT_1.key}`
+        applicant1AcceptAdmitAmountPaidSpec: ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No'
       }
     }
   }
 
   return {};
-}
+};
 
 const claimantDefenceResponseDocument = (defendantResponseSpecType: DefendantResponseSpecType, defenceResponseDocumentSpec: UploadDocumentValue | undefined, claimantResponseType:  ClaimantResponseSpecType) => {
   if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
@@ -425,7 +408,6 @@ const claimantResponseSpecData = {
   undefine,
   defendantResponse,
   defendantResponsePartAdmit,
-  intentionToSettleClaim,
   claimantDefenceResponseDocument,
   mediationContactInformation,
   mediationAvailability,

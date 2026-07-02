@@ -133,7 +133,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS1FastPartAdmit(
+      await defendantResponseSpecSchemaBuilder.buildDS1FastPartAdmitImmediately(
         caseDataBeforeSubmission,
       );
 
@@ -233,7 +233,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS1SmallPartAdmit(
+      await defendantResponseSpecSchemaBuilder.buildDS1SmallPartAdmitImmediately(
         caseDataBeforeSubmission,
       );
 
@@ -258,7 +258,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS1FastPartAdmit1v2SSSchema(
+      await defendantResponseSpecSchemaBuilder.buildDS1FastPartAdmitSetDate1v2SS(
         caseDataBeforeSubmission,
       );
 
@@ -283,7 +283,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS1SmallPartAdmit1v2SSSchema(
+      await defendantResponseSpecSchemaBuilder.buildDS1SmallPartAdmitSetDate1v2SS(
         caseDataBeforeSubmission,
       );
 
@@ -308,7 +308,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS1FastPartAdmit2v1Schema(
+      await defendantResponseSpecSchemaBuilder.buildDS1FastPartAdmitRepayment2v1(
         caseDataBeforeSubmission,
       );
 
@@ -333,7 +333,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS1SmallPartAdmit2v1Schema(
+      await defendantResponseSpecSchemaBuilder.buildDS1SmallPartAdmitRepayment2v1(
         caseDataBeforeSubmission,
       );
 

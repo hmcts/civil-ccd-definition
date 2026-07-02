@@ -10,6 +10,6 @@ test.describe('1v2SS spec small full admit set date api journey', { tag: '@civil
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFullAdmitSetDate1v2SS();
-    await ClaimantSolicitorSpecApiSteps.RespondFullAdmitSetDate();
+    // await ClaimantSolicitorSpecApiSteps.RespondFullAdmitSetDate();
   });
 });

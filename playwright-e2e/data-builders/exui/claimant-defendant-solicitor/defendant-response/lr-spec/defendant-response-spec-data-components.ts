@@ -173,8 +173,11 @@ const defenceAdmittedPartRoute = (
           ? 'specDefenceAdmittedRequired' 
           : 'specDefenceAdmitted2Required']: 'No',
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondToAdmittedClaimOwingAmount'
+          : 'respondToAdmittedClaimOwingAmount2']: ((CaseDataHelper.getClaimValue(claimTrack) / 2) * 100).toFixed().toString(),
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondToAdmittedClaimOwingAmountPounds'
-          : 'respondToAdmittedClaimOwingAmountPounds2']: ((CaseDataHelper.getClaimValue(claimTrack)/2)*100).toFixed().toString(),
+          : 'respondToAdmittedClaimOwingAmountPounds2']: (CaseDataHelper.getClaimValue(claimTrack) / 2).toFixed().toString()
       }
     }
   }

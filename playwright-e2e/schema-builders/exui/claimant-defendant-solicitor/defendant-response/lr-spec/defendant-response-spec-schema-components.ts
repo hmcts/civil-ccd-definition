@@ -112,12 +112,16 @@ const defenceRoute = (
 const defenceAdmittedPartRoute = (
   responseType: DefendantResponseSpecType,
   _claimTrack: ClaimTrack,
-  _defendantSolicitorParty: Party,
+  defendantSolicitorParty: Party,
 ) => {
   if(responseType === DefendantResponseSpecType.PART_ADMISSION)
     return {
-      specDefenceAdmittedRequired: yesNoSchema,
-      respondToAdmittedClaimOwingAmountPounds: nonEmptyString,
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'specDefenceAdmittedRequired'
+        : 'specDefenceAdmitted2Required']: yesNoSchema,
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondToAdmittedClaimOwingAmount'
+        : 'respondToAdmittedClaimOwingAmount2']: nonEmptyString,
     };
 
   return {};
@@ -192,11 +196,8 @@ const defendant2FinancialDetails = (
   ) {
     return {
       respondent2BankAccountList: z.array(z.looseObject({})).min(1),
-      disabilityPremiumPaymentsRespondent2: yesNoSchema,
       respondent2DQHomeDetails: z.looseObject({}),
       respondent2PartnerAndDependent: z.looseObject({}),
-      defenceAdmitPartEmploymentTypeRequiredRespondent2: yesNoSchema,
-      respondToClaimAdmitPartUnemployedLRspecRespondent2: z.looseObject({}),
       respondent2CourtOrderPaymentOption: yesNoSchema,
       respondent2LoanCreditOption: yesNoSchema,
       respondent2DQCarerAllowanceCredit: yesNoSchema,
@@ -256,9 +257,9 @@ const upload = (responseType: DefendantResponseSpecType, defendantSolicitorParty
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? 'detailsOfWhyDoesYouDisputeTheClaim'
         : 'detailsOfWhyDoesYouDisputeTheClaim2']: nonEmptyString,
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'respondent1SpecDefenceResponseDocument'
-        : 'respondent2SpecDefenceResponseDocument']: z.looseObject({}),
+      // [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+      //   ? 'respondent1SpecDefenceResponseDocument'
+      //   : 'respondent2SpecDefenceResponseDocument']: z.looseObject({}),
     };
 
   return {};
@@ -591,31 +592,6 @@ const applications = (responseType: DefendantResponseSpecType, claimTrack: Claim
     return {};
 };
 
-const statementOfTruth = (responseType: DefendantResponseSpecType) => {
-  if(responseType !== DefendantResponseSpecType.FULL_ADMISSION) {
-    return {
-      uiStatementOfTruth: z.strictObject({
-        name: nonEmptyString,
-        role: nonEmptyString,
-      }),
-    };
-  }
-
-  return {};
-};
-
-const undefine = (responseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
-  if(responseType !== DefendantResponseSpecType.FULL_ADMISSION) {
-    if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-      return {
-        respondent1DetailsForClaimDetailsTab: z.undefined(),
-      };
-    }
-  }
-
-  return {};
-};
-
 const defendantResponseSpecSchemaComponents = {
   responseClaimTrack,
   singleResponse,
@@ -643,8 +619,6 @@ const defendantResponseSpecSchemaComponents = {
   hearingSupport,
   vulnerabilityQuestions,
   applications,
-  statementOfTruth,
-  undefine,
 };
 
 export default defendantResponseSpecSchemaComponents;

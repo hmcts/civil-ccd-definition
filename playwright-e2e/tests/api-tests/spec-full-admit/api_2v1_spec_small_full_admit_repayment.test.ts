@@ -10,6 +10,6 @@ test.describe('2v1 spec small full admit repayment api journey', { tag: '@civil-
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFullAdmitRepayment2v1();
-    // await ClaimantSolicitorSpecApiSteps.RespondFullAdmitRepayment2v1();
+    // await ClaimantSolicitorSpecApiSteps.RespondFullAdmitRepayment();
   });
 });

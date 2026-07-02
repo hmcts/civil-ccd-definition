@@ -25,63 +25,26 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
 
   async buildFullAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
-      claimTrack: ClaimTrack.FAST_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.IMMEDIATELY,
     });
   }
 
   async buildFullAdmitSetDate(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
-      claimTrack: ClaimTrack.FAST_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
       paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
     });
   }
 
-  async buildFullAdmitRepayment2v1(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFullAdmitRepayment(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
       paymentTypeSpec: PaymentTypeSpec.REPAYMENT_PLAN,
     });
   }
 
-  async buildFastPartAdmitProceed1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildFastPartAdmitProceed2v1(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
   async buildSmallPartAdmitProceed(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildSmallPartAdmitProceed1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildSmallPartAdmitProceed2v1(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.SMALL_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
     });
@@ -131,8 +94,12 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
-  async buildSmall1v1(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildSmall(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.SMALL_CLAIM });
+  }
+
+  async buildSmall1v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSmall(caseDataBeforeSubmission);
   }
 
   async buildSmall1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
@@ -172,18 +139,12 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
 
     Object.assign(
       schemaShape,
-      claimantResponseSpecSchemaComponents.undefine,
+      claimantResponseSpecSchemaComponents.undefine(defendantResponseSpecType),
       claimantResponseSpecSchemaComponents.defendantResponse(
         claimType,
-        claimantResponseType,
         defendantResponseSpecType,
-        paymentTypeSpec,
       ),
       claimantResponseSpecSchemaComponents.defendantResponsePartAdmit(defendantResponseSpecType),
-      claimantResponseSpecSchemaComponents.intentionToSettleClaim(
-        defendantResponseSpecType,
-        claimantResponseType,
-      ),
       claimantResponseSpecSchemaComponents.claimantDefenceResponseDocument(
         defendantResponseSpecType,
         claimantResponseType,

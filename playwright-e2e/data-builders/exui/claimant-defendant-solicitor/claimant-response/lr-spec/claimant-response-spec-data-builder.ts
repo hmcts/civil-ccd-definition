@@ -34,47 +34,15 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildFullAdmitRepayment2v1() {
+  async buildFullAdmitRepayment() {
     return this.buildData({
       defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
       paymentTypeSpec: PaymentTypeSpec.REPAYMENT_PLAN,
     });
   }
 
-  async buildFastPartAdmitProceed1v2SS() {
-    return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildFastPartAdmitProceed2v1() {
-    return this.buildData({
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
   async buildSmallPartAdmitProceed() {
     return this.buildData({
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildSmallPartAdmitProceed1v2SS() {
-    return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildSmallPartAdmitProceed2v1() {
-    return this.buildData({
-      claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.SMALL_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
     });
@@ -163,9 +131,8 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     Object.assign(
       eventData,
       claimantResponseSpecData.undefine(defendantResponseSpecType),
-      claimantResponseSpecData.defendantResponse(claimType, claimantResponseType, defendantResponseSpecType, paymentTypeSpec),
+      claimantResponseSpecData.defendantResponse(claimType, claimantResponseType, defendantResponseSpecType),
       claimantResponseSpecData.defendantResponsePartAdmit(defendantResponseSpecType),
-      claimantResponseSpecData.intentionToSettleClaim(defendantResponseSpecType, claimantResponseType),
       claimantResponseSpecData.claimantDefenceResponseDocument(
         defendantResponseSpecType,
         defenceResponseDocumentSpec,

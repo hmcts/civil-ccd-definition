@@ -4,20 +4,17 @@ import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec-type/claimant-response-spec-type';
 import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
-import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
 
 const yesNoSchema = z.enum(['Yes', 'No']);
 const nonEmptyString = z.string().min(1);
 
 const defendantResponse = (
   claimType: ClaimType,
-  claimantResponseType: ClaimantResponseSpecType,
   defendantResponseSpecType: DefendantResponseSpecType,
-  paymentTypeSpec: PaymentTypeSpec,
 ) => {
   if(
-    defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION &&
-    paymentTypeSpec === PaymentTypeSpec.IMMEDIATELY
+    defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION ||
+    defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION
   )
     return {};
 
@@ -35,27 +32,7 @@ const defendantResponse = (
 const defendantResponsePartAdmit = (defendantResponseSpecType: DefendantResponseSpecType) => {
   if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION) {
     return {
-      applicant1PartAdmitConfirmAmountPaidSpec: yesNoSchema,
-    };
-  }
-
-  return {};
-};
-
-const intentionToSettleClaim = (
-  defendantResponseSpecType: DefendantResponseSpecType,
-  claimantResponseType: ClaimantResponseSpecType,
-) => {
-  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
-    return {};
-
-  if(
-    defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION &&
-    claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
-  ) {
-    return {
-      applicant1PartAdmitIntentionToSettleClaimSpec: yesNoSchema,
-      // applicant1PartAdmitRejectReasonSpec: nonEmptyString,
+      applicant1AcceptAdmitAmountPaidSpec: yesNoSchema,
     };
   }
 
@@ -127,11 +104,8 @@ const determinationWithoutHearing = (
     return {
       // deterWithoutHearing: z.looseObject({
       //   deterWithoutHearingYesNo: yesNoSchema,
+      //   deterWithoutHearingWhyNot: nonEmptyString,
       // }),
-      deterWithoutHearing: z.looseObject({
-        deterWithoutHearingYesNo: yesNoSchema,
-        deterWithoutHearingWhyNot: nonEmptyString,
-      }),
     }; 
   }
 
@@ -396,14 +370,16 @@ const application = (
   return {};
 };
 
-const undefine = {
-  nextDeadline: z.undefined().optional(),
+const undefine = (defendantResponseSpecType: DefendantResponseSpecType) => {
+  return {
+    nextDeadline: z.undefined().optional(),
+  };
 };
 
 const claimantResponseSpecSchemaComponents = {
+  undefine,
   defendantResponse,
   defendantResponsePartAdmit,
-  intentionToSettleClaim,
   claimantDefenceResponseDocument,
   mediationContactInformation,
   mediationAvailability,
@@ -417,7 +393,6 @@ const claimantResponseSpecSchemaComponents = {
   hearingSupport,
   vulnerabilityQuestions,
   application,
-  undefine,
 };
 
 export default claimantResponseSpecSchemaComponents;
