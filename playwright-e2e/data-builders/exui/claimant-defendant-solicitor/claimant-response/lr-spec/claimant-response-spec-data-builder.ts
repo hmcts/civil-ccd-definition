@@ -5,11 +5,58 @@ import claimantResponseSpecData from './claimant-response-spec-data-components';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec-type/claimant-response-spec-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
-  async buildFastTrack1v1() {
+  async buildFastTrack() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
+  async buildFastTrackPartAdmitProceed() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildFastTrackPartAdmitProceed1v2SS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildFastTrackPartAdmitProceed2v1() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildSmallTrackPartAdmitProceed() {
+    return this.buildData({
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildSmallTrackPartAdmitProceed1v2SS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildSmallTrackPartAdmitProceed2v1() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
   }
 
   async buildFastTrack1v1DoNotProceed() {
@@ -53,7 +100,7 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildSmallTrack1v1() {
+  async buildSmallTrack() {
     return this.buildData({ claimTrack: ClaimTrack.SMALL_CLAIM });
   }
 
@@ -75,17 +122,20 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     claimType = ClaimType.ONE_VS_ONE,
     claimTrack = ClaimTrack.FAST_CLAIM,
     claimantResponseType = ClaimantResponseSpecType.PROCEED_WITH_CLAIM,
+    defendantResponseSpecType = DefendantResponseSpecType.FULL_DEFENCE,
   }: {
     claimType?: ClaimType;
     claimTrack?: ClaimTrack;
     claimantResponseType?: ClaimantResponseSpecType;
+    defendantResponseSpecType?: DefendantResponseSpecType,
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
     const defenceResponseDocumentSpec =
       await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
 
     return {
-      ...claimantResponseSpecData.defendantResponse(claimType, claimantResponseType),
+      ...claimantResponseSpecData.defendantResponse(claimType, claimantResponseType, defendantResponseSpecType),
+      ...claimantResponseSpecData.intentionToSettleClaim(defendantResponseSpecType, claimantResponseType),
       ...claimantResponseSpecData.claimantDefenceResponseDocument(
         defenceResponseDocumentSpec,
         claimantResponseType,
