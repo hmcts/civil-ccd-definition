@@ -89,6 +89,12 @@ const ccdEvents: CCDEvents = {
     description: 'Discontinue a claim',
     order: 11,
   },
+  DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Discontinue this claim',
+    description: 'Discontinue this claim',
+    order: 11,
+  },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',
@@ -227,6 +233,18 @@ const ccdEvents: CCDEvents = {
     description: 'Reset Pin for case',
     order: 7,
   },
+  REQUEST_FOR_RECONSIDERATION: {
+    id: 'REQUEST_FOR_RECONSIDERATION',
+    name: 'Request for reconsideration',
+    description: 'Request for reconsideration check',
+    order: 22.5,
+  },
+  DECISION_ON_RECONSIDERATION_REQUEST: {
+    id: 'DECISION_ON_RECONSIDERATION_REQUEST',
+    name: 'Decision on reconsideration',
+    description: 'Decision on reconsideration',
+    order: 22.6,
+  },
   CREATE_CASE_FLAGS: {
     id: 'CREATE_CASE_FLAGS',
     name: 'Create case flags',
@@ -250,6 +268,24 @@ const ccdEvents: CCDEvents = {
     name: 'Mediation Unsuccessful',
     description: 'Mediation unsuccessful',
     order: 26,
+  },
+  ADD_UNAVAILABLE_DATES: {
+    id: 'ADD_UNAVAILABLE_DATES',
+    name: 'Add Unavailable Dates',
+    description: 'Add unavailable dates after claimant response or default judgment',
+    order: 26.5,
+  },
+  STAY_CASE: {
+    id: 'STAY_CASE',
+    name: 'Stay case',
+    description: 'Stay the case',
+    order: 27,
+  },
+  MANAGE_STAY: {
+    id: 'MANAGE_STAY',
+    name: 'Manage stay',
+    description: 'Request an update or lift the stay',
+    order: 28,
   },
   EVIDENCE_UPLOAD_APPLICANT: {
     id: 'EVIDENCE_UPLOAD_APPLICANT',

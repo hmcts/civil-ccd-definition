@@ -7,6 +7,8 @@ import DefendantResponseSpecType from '../../../../../constants/ccd-events/defen
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import defendantResponseSpecSchemaComponents from './defendant-response-spec-schema-components';
+import partys from '../../../../../constants/users/partys';
+import { Party } from '../../../../../models/users/partys';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
@@ -15,6 +17,63 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
       responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1FastTrackPartAdmit(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallTrackPartAdmit(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1FastTrackPartAdmit1v2SSSchema(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallTrackPartAdmit1v2SSSchema(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1FastTrackPartAdmit2v1Schema(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallTrackPartAdmit2v1Schema(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS2FastTrackFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
@@ -50,39 +109,71 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  protected async buildSchema(caseDataBeforeSubmission: CCDCaseData | undefined, {
-    claimType = ClaimType.ONE_VS_ONE,
-    claimTrack = ClaimTrack.SMALL_CLAIM,
-    responseType= DefendantResponseSpecType.FULL_DEFENCE,
-  }: {
-    caseDataBeforeSubmission?: CCDCaseData;
-    claimType: ClaimType;
-    claimTrack: ClaimTrack;
-    responseType: DefendantResponseSpecType;
-  }): Promise<z.ZodType> {
+  async buildSmallTrack1v2DSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS2SmallTrack1v2DSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
+  protected async buildSchema(
+    caseDataBeforeSubmission: CCDCaseData | undefined,
+    {
+      claimType = ClaimType.ONE_VS_ONE,
+      claimTrack = ClaimTrack.SMALL_CLAIM,
+      responseType = DefendantResponseSpecType.FULL_DEFENCE,
+      defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
+    }: {
+      caseDataBeforeSubmission?: CCDCaseData;
+      claimType: ClaimType;
+      claimTrack: ClaimTrack;
+      responseType: DefendantResponseSpecType;
+      defendantSolicitorParty?: Party;
+    },
+  ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;
-    
+
     return baseSchema.extend({
       ...defendantResponseSpecSchemaComponents.responseClaimTrack(claimTrack),
       ...defendantResponseSpecSchemaComponents.singleResponse(claimType),
-      ...defendantResponseSpecSchemaComponents.responseConfirmNameAddress(claimType),
-      ...defendantResponseSpecSchemaComponents.responseConfirmDetails,
-      ...defendantResponseSpecSchemaComponents.respondentResponseType(responseType, claimType),
-      ...defendantResponseSpecSchemaComponents.defenceRoute,
-      ...defendantResponseSpecSchemaComponents.upload,
-      ...defendantResponseSpecSchemaComponents.timeline,
-      ...defendantResponseSpecSchemaComponents.determinationWithoutHearing(claimTrack),
-      ...defendantResponseSpecSchemaComponents.fastTrackDq(claimTrack),
-      ...defendantResponseSpecSchemaComponents.experts(claimTrack),
-      ...defendantResponseSpecSchemaComponents.witnesses(claimTrack),
-      ...defendantResponseSpecSchemaComponents.language,
-      ...defendantResponseSpecSchemaComponents.hearing(claimTrack),
-      ...defendantResponseSpecSchemaComponents.requestedCourtLocation,
-      ...defendantResponseSpecSchemaComponents.hearingSupport,
-      ...defendantResponseSpecSchemaComponents.vulnerabilityQuestions,
-      ...defendantResponseSpecSchemaComponents.applications(claimTrack),
+      ...defendantResponseSpecSchemaComponents.responseConfirmNameAddress(claimType, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.responseConfirmDetails(defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.respondentResponseType(
+        responseType,
+        claimType,
+        defendantSolicitorParty,
+      ),
+      ...defendantResponseSpecSchemaComponents.defenceRoute(responseType, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.defenceAdmittedPartRoute(
+        responseType,
+        defendantSolicitorParty,
+      ),
+      ...defendantResponseSpecSchemaComponents.upload(defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.timeline(defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.mediationContactInformation(claimTrack, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.mediationAvailability(claimTrack, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.determinationWithoutHearing(claimTrack, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.fastTrackDq(claimTrack, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.experts(claimTrack, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.witnesses(claimTrack, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.language(defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.hearing(claimTrack, defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.requestedCourtLocation(defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.hearingSupport(defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.vulnerabilityQuestions(defendantSolicitorParty),
+      ...defendantResponseSpecSchemaComponents.applications(claimTrack, defendantSolicitorParty),
     });
   }
 }

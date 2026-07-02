@@ -99,35 +99,42 @@ const solicitorReferences = (ccdCaseData: CCDCaseData, defendantSolicitorParty: 
   return {};
 };
 
-const upload = (defenceDocument: UploadDocumentValue, defendantSolicitorParty: Party) => {
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+const deterWithoutHearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
     return {
-      Upload: {
-        respondent1ClaimResponseDocument: {
-          file: defenceDocument,
-        },
-      },
-    };
-  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    return {
-      Upload: {
-        respondent2ClaimResponseDocument: {
-          file: defenceDocument,
-        },
-      },
+      DeterminationWithoutHearing: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'deterWithoutHearingRespondent1'
+          : 'deterWithoutHearingRespondent2']: {
+          deterWithoutHearingWhyNot: `Determination without hearing reason - ${defendantSolicitorParty.key}`,
+          deterWithoutHearingYesNo: 'No'
+        }
+      }
     };
   }
 
   return {};
+}
+
+const upload = (defenceDocument: UploadDocumentValue, defendantSolicitorParty: Party) => {
+  return {
+    Upload: {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1ClaimResponseDocument'
+        : 'respondent2ClaimResponseDocument']: {
+        file: defenceDocument,
+      },
+    },
+  };
 };
 
 const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   if (claimTrack === ClaimTrack.FAST_CLAIM) {
     return {
       FileDirectionsQuestionnaire: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
-          ? 'respondent2DQFileDirectionsQuestionnaire'
-          : 'respondent1DQFileDirectionsQuestionnaire']: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQFileDirectionsQuestionnaire'
+          : 'respondent2DQFileDirectionsQuestionnaire']: {
           explainedToClient: ['CONFIRM'],
           oneMonthStayRequested: 'No',
           reactionProtocolCompliedWith: 'No',
@@ -135,9 +142,9 @@ const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => 
         },
       },
       FixedRecoverableCosts: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
-          ? 'respondent2DQFixedRecoverableCosts'
-          : 'respondent1DQFixedRecoverableCosts']: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQFixedRecoverableCosts'
+          : 'respondent2DQFixedRecoverableCosts']: {
           isSubjectToFixedRecoverableCostRegime: 'Yes',
           band: 'BAND_2',
           complexityBandingAgreed: 'No',
@@ -145,9 +152,9 @@ const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => 
         },
       },
       DisclosureOfNonElectronicDocuments: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
-          ? 'respondent2DQDisclosureOfNonElectronicDocuments'
-          : 'respondent1DQDisclosureOfNonElectronicDocuments']: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQDisclosureOfNonElectronicDocuments'
+          : 'respondent2DQDisclosureOfNonElectronicDocuments']: {
           directionsForDisclosureProposed: 'Yes',
           standardDirectionsRequired: 'No',
           bespokeDirections: `No directions required - ${defendantSolicitorParty.key}`,
@@ -208,201 +215,117 @@ const witnesses = (defendantSolicitorParty: Party) => {
 };
 
 const language = (defendantSolicitorParty: Party) => {
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    return {
-      Language: {
-        respondent1DQLanguage: {
-          court: 'BOTH',
-          documents: 'BOTH',
-        },
+  return {
+    Language: {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQLanguage'
+        : 'respondent2DQLanguage']: {
+        court: 'BOTH',
+        documents: 'BOTH',
       },
-    };
-  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    return {
-      Language: {
-        respondent2DQLanguage: {
-          court: 'BOTH',
-          documents: 'BOTH',
-        },
-      },
-    };
-  }
-
-  return {};
+    },
+  };
 };
 
 const hearing = (defendantSolicitorParty: Party) => {
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    return {
-      Hearing: {
-        respondent1DQHearing: {
-          unavailableDatesRequired: 'Yes',
-          unavailableDates: [
-            CaseDataHelper.setIdToData({
-              unavailableDateType: 'SINGLE_DATE',
-              date: DateHelper.formatDateToString(DateHelper.addToToday({ months: 6 }), {
-                outputFormat: 'YYYY-MM-DD',
-              }),
+  return {
+    Hearing: {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQHearing'
+        : 'respondent2DQHearing']: {
+        unavailableDatesRequired: 'Yes',
+        unavailableDates: [
+          CaseDataHelper.setIdToData({
+            unavailableDateType: 'SINGLE_DATE',
+            date: DateHelper.formatDateToString(DateHelper.addToToday({ months: 6 }), {
+              outputFormat: 'YYYY-MM-DD',
             }),
-          ],
-        },
+          }),
+        ],
       },
-    };
-  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    return {
-      Hearing: {
-        respondent2DQHearing: {
-          unavailableDatesRequired: 'Yes',
-          unavailableDates: [
-            CaseDataHelper.setIdToData({
-              unavailableDateType: 'SINGLE_DATE',
-              date: DateHelper.formatDateToString(DateHelper.addToToday({ months: 6 }), {
-                outputFormat: 'YYYY-MM-DD',
-              }),
-            }),
-          ],
-        },
-      },
-    };
-  }
-
-  return {};
+    },
+  };
 };
 
 const draftDirections = (
   draftDirectionsDocument: UploadDocumentValue,
   defendantSolicitorParty: Party,
 ) => {
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    return {
-      DraftDirections: {
-        respondent1DQDraftDirections: draftDirectionsDocument,
-      },
-    };
-  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    return {
-      DraftDirections: {
-        respondent2DQDraftDirections: draftDirectionsDocument,
-      },
-    };
-  }
-
-  return {};
+  return {
+    DraftDirections: {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQDraftDirections'
+        : 'respondent2DQDraftDirections']: draftDirectionsDocument,
+    },
+  };
 };
 
 const requestedCourt = (defendantSolicitorParty: Party) => {
+  const preferredCourtParty =
+    defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+      ? partys.DEFENDANT_1
+      : partys.DEFENDANT_2;
+  const preferredCourt = CaseDataHelper.setCodeToData(preferredCourts[preferredCourtParty.key].default);
 
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    const preferredCourt = CaseDataHelper.setCodeToData(preferredCourts[partys.DEFENDANT_1.key].default);
-    return {
-      RequestedCourt: {
-        respondent1DQRequestedCourt: {
-          responseCourtLocations: {
-            list_items: [preferredCourt],
-            value: preferredCourt,
-          },
-          reasonForHearingAtSpecificCourt: `Reason for preferred court - ${defendantSolicitorParty.key}`,
+  return {
+    RequestedCourt: {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQRequestedCourt'
+        : 'respondent2DQRequestedCourt']: {
+        responseCourtLocations: {
+          list_items: [preferredCourt],
+          value: preferredCourt,
         },
-        respondent1DQRemoteHearing: {
-          remoteHearingRequested: 'Yes',
-          reasonForRemoteHearing: `Reason for remote hearing - ${defendantSolicitorParty.key}`,
-        },
+        reasonForHearingAtSpecificCourt: `Reason for preferred court - ${defendantSolicitorParty.key}`,
       },
-    };
-  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    const preferredCourt = CaseDataHelper.setCodeToData(preferredCourts[partys.DEFENDANT_2.key].default);
-    return {
-      RequestedCourt: {
-        respondent2DQRequestedCourt: {
-          responseCourtLocations: {
-            list_items: [preferredCourt],
-            value: preferredCourt,
-          },
-          reasonForHearingAtSpecificCourt: `Reason for preferred court - ${defendantSolicitorParty.key}`,
-        },
-        respondent2DQRemoteHearing: {
-          remoteHearingRequested: 'Yes',
-          reasonForRemoteHearing: `Reason for remote hearing - ${defendantSolicitorParty.key}`,
-        },
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQRemoteHearing'
+        : 'respondent2DQRemoteHearing']: {
+        remoteHearingRequested: 'Yes',
+        reasonForRemoteHearing: `Reason for remote hearing - ${defendantSolicitorParty.key}`,
       },
-    };
-  }
-
-  return {};
+    },
+  };
 };
 
 const hearingSupport = (defendantSolicitorParty: Party) => {
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    return {
-      HearingSupport: {
-        respondent1DQHearingSupport: {
-          supportRequirements: 'Yes',
-          supportRequirementsAdditional: `Support requirements for ${defendantSolicitorParty.key}`,
-        },
+  return {
+    HearingSupport: {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQHearingSupport'
+        : 'respondent2DQHearingSupport']: {
+        supportRequirements: 'Yes',
+        supportRequirementsAdditional: `Support requirements for ${defendantSolicitorParty.key}`,
       },
-    };
-  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    return {
-      HearingSupport: {
-        respondent2DQHearingSupport: {
-          supportRequirements: 'Yes',
-          supportRequirementsAdditional: `Support requirements for ${defendantSolicitorParty.key}`,
-        },
-      },
-    };
-  }
-
-  return {};
+    },
+  };
 };
 
 const vulnerabilityQuestions = (defendantSolicitorParty: Party) => {
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    return {
-      VulnerabilityQuestions: {
-        respondent1DQVulnerabilityQuestions: {
-          vulnerabilityAdjustmentsRequired: 'Yes',
-          vulnerabilityAdjustments: `Vulnerability adjustments - ${defendantSolicitorParty.key}`,
-        },
+  return {
+    VulnerabilityQuestions: {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQVulnerabilityQuestions'
+        : 'respondent2DQVulnerabilityQuestions']: {
+        vulnerabilityAdjustmentsRequired: 'Yes',
+        vulnerabilityAdjustments: `Vulnerability adjustments - ${defendantSolicitorParty.key}`,
       },
-    };
-  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    return {
-      VulnerabilityQuestions: {
-        respondent2DQVulnerabilityQuestions: {
-          vulnerabilityAdjustmentsRequired: 'Yes',
-          vulnerabilityAdjustments: `Vulnerability adjustments - ${defendantSolicitorParty.key}`,
-        },
-      },
-    };
-  }
-
-  return {};
+    },
+  };
 };
 
 const furtherInformation = (defendantSolicitorParty: Party) => {
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    return {
-      FurtherInformation: {
-        respondent1DQFurtherInformation: {
-          futureApplications: 'Yes',
-          reasonForFutureApplications: `Further information - ${defendantSolicitorParty.key}`,
-          otherInformationForJudge: `Further information - ${defendantSolicitorParty.key}`,
-        },
+  return {
+    FurtherInformation: {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQFurtherInformation'
+        : 'respondent2DQFurtherInformation']: {
+        futureApplications: 'Yes',
+        reasonForFutureApplications: `Further information - ${defendantSolicitorParty.key}`,
+        otherInformationForJudge: `Further information - ${defendantSolicitorParty.key}`,
       },
-    };
-  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
-    return {
-      FurtherInformation: {
-        respondent2DQFurtherInformation: {
-          futureApplications: 'Yes',
-          reasonForFutureApplications: `Further information - ${defendantSolicitorParty.key}`,
-          otherInformationForJudge: `Further information - ${defendantSolicitorParty.key}`,
-        },
-      },
-    };
-  }
-
-  return {};
+    },
+  };
 };
 
 const statementOfTruth = (defendantSolicitorParty: Party) => {
@@ -440,6 +363,7 @@ const defendantResponseDataComponents = {
   solicitorReferences,
   upload,
   fastTrackDq,
+  deterWithoutHearing,
   experts,
   witnesses,
   language,

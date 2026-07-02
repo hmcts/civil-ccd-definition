@@ -1,5 +1,3 @@
-import { Party } from '../../../../../../models/users/partys';
-
 export const subheadings = {
   litigationDetails: 'Defendant 2 litigation details',
 };

@@ -7,11 +7,15 @@ import claimantResponseDataComponents from './claimant-response-data-components'
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
+  async buildSmallTrackFullDefence1v1Data() {
+    return this.buildData();
+  }
+
   async buildFastTrackFullDefence2v1Data() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.TWO_VS_ONE});
   }
 
-  async buildFastTrackFullDefence1v2SSData() {
+  async buildFastTrackProceed1v2SSData() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.ONE_VS_TWO_SAME_SOL});
   }
 
@@ -51,6 +55,7 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
         defenceResponseDocument2!,
       ),
       ...claimantResponseDataComponents.fastTrackDq(claimTrack),
+      ...claimantResponseDataComponents.deterWithHearing(claimTrack),
       ...claimantResponseDataComponents.experts,
       ...claimantResponseDataComponents.witnesses,
       ...claimantResponseDataComponents.language,

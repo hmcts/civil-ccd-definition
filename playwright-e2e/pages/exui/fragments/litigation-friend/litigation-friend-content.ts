@@ -3,6 +3,7 @@ import { Party } from '../../../../models/users/partys';
 export const subheadings = {
   litigationFriendAddress: "Litigation friend's address",
   uploadcertificate: 'Upload the certificate of suitability',
+  litigationFriend: 'Litigation friend',
   litigationDetails: (litigationParty: Party) =>
     `Defendant ${litigationParty.number === 1 ? '' : litigationParty.number} litigation details`,
 };

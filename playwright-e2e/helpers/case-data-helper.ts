@@ -43,6 +43,31 @@ export default class CaseDataHelper {
         return '1982-09-25';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return '1989-04-06';
+      case partys.DEFENDANT_COMMON_LITIGATION_FRIEND:
+        return '1985-11-14';
+    }
+  }
+
+  static getPartyDateOfBirthUpdated(party: Party) {
+    switch (party) {
+      case partys.CLAIMANT_1:
+        return '1981-06-25';
+      case partys.CLAIMANT_2:
+        return '1993-09-12';
+      case partys.CLAIMANT_1_LITIGATION_FRIEND:
+        return '1988-04-18';
+      case partys.CLAIMANT_2_LITIGATION_FRIEND:
+        return '1996-12-03';
+      case partys.DEFENDANT_1:
+        return '1985-02-01';
+      case partys.DEFENDANT_2:
+        return '1991-08-20';
+      case partys.DEFENDANT_1_LITIGATION_FRIEND:
+        return '1983-10-26';
+      case partys.DEFENDANT_2_LITIGATION_FRIEND:
+        return '1990-05-07';
+      case partys.DEFENDANT_COMMON_LITIGATION_FRIEND:
+        return '1986-12-15';
     }
   }
 
@@ -74,6 +99,8 @@ export default class CaseDataHelper {
         return '07906789012';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return '07321654987';
+      case partys.DEFENDANT_COMMON_LITIGATION_FRIEND:
+        return '07398765432';
       case partys.DEFENDANT_SOLICITOR_1:
         return '07987654321';
       case partys.DEFENDANT_SOLICITOR_2:
@@ -121,6 +148,8 @@ export default class CaseDataHelper {
         return 'SO15 2JY';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return 'B1 1AA';
+      case partys.DEFENDANT_COMMON_LITIGATION_FRIEND:
+        return 'NE1 4ST';
       case partys.DEFENDANT_SOLICITOR_1:
         return 'EX1 1JG';
       case partys.DEFENDANT_SOLICITOR_2:
@@ -145,14 +174,16 @@ export default class CaseDataHelper {
     }
   }
 
-  static buildAddressData(party: Party) {
+  static buildAddressData(party: Party, update = false) {
+    const suffix = update ? '-updated' : '';
+
     return {
-      AddressLine1: `Flat 12 - ${party.key}`,
-      AddressLine2: `House 15 - 17 - ${party.key}`,
-      AddressLine3: `Street - ${party.key} `,
-      PostTown: `Town - ${party.key}`,
-      County: `County - ${party.key}`,
-      Country: `Country - ${party.key}`,
+      AddressLine1: `Flat 12 - ${party.key}${suffix}`,
+      AddressLine2: `House 15 - 17 - ${party.key}${suffix}`,
+      AddressLine3: `Street - ${party.key}${suffix}`,
+      PostTown: `Town - ${party.key}${suffix}`,
+      County: `County - ${party.key}${suffix}`,
+      Country: `Country - ${party.key}${suffix}`,
       PostCode: this.getPartyPostCode(party),
     };
   }
@@ -160,12 +191,15 @@ export default class CaseDataHelper {
   static buildClaimantAndDefendantData(
     claimantDefendantParty: Party,
     claimantDefendantPartyType: ClaimantDefendantPartyType,
+    update = false,
   ): any {
+    const suffix = update ? '-updated' : '';
+
     const commonPartyData = {
       type: claimantDefendantPartyType.type,
-      partyEmail: `${claimantDefendantParty.key}@${claimantDefendantPartyType.key}.com`,
+      partyEmail: `${claimantDefendantParty.key}@${claimantDefendantPartyType.key}${suffix}.com`,
       partyPhone: this.getPartyPhoneNumber(claimantDefendantParty),
-      primaryAddress: this.buildAddressData(claimantDefendantParty),
+      primaryAddress: this.buildAddressData(claimantDefendantParty, update),
     };
 
     const partyKey = StringHelper.capitalise(claimantDefendantParty.key);
@@ -176,34 +210,34 @@ export default class CaseDataHelper {
         return {
           ...commonPartyData,
           individualTitle: 'Mx',
-          individualFirstName: partyKey,
-          individualLastName: partyTypeKey,
+          individualFirstName: `${partyKey}${suffix}`,
+          individualLastName: `${partyTypeKey}${suffix}`,
           individualDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
-          partyName: `Mx ${partyKey} ${partyTypeKey}`,
+          partyName: `Mx ${partyKey}${suffix} ${partyTypeKey}${suffix}`,
         };
 
       case claimantDefendantPartyTypes.COMPANY:
         return {
           ...commonPartyData,
-          companyName: `${partyKey} ${partyTypeKey}`,
-          partyName: `${partyKey} ${partyTypeKey}`,
+          companyName: `${partyKey}${suffix} ${partyTypeKey}${suffix}`,
+          partyName: `${partyKey}${suffix} ${partyTypeKey}${suffix}`,
         };
 
       case claimantDefendantPartyTypes.SOLE_TRADER:
         return {
           ...commonPartyData,
           soleTraderTitle: 'Mx',
-          soleTraderFirstName: partyKey,
-          soleTraderLastName: partyTypeKey,
-          soleTraderTradingAs: `${partyKey} Trade`,
+          soleTraderFirstName: `${partyKey}${suffix}`,
+          soleTraderLastName: `${partyTypeKey}${suffix}`,
+          soleTraderTradingAs: `${partyKey} Trade${suffix}`,
           soleTraderDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
-          partyName: `Mx ${partyKey} ${partyTypeKey}`,
+          partyName: `Mx ${partyKey}${suffix} ${partyTypeKey}${suffix}`,
         };
       case claimantDefendantPartyTypes.ORGANISATION:
         return {
           ...commonPartyData,
-          organisationName: `${partyKey} ${partyTypeKey}`,
-          partyName: `${partyKey} ${partyTypeKey}`,
+          organisationName: `${partyKey}${suffix} ${partyTypeKey}${suffix}`,
+          partyName: `${partyKey}${suffix} ${partyTypeKey}${suffix}`,
         };
     }
   }
@@ -219,28 +253,32 @@ export default class CaseDataHelper {
     };
   }
 
-  static buildLitigationFriendData(litigationFriendParty: Party) {
+  static buildLitigationFriendData(litigationFriendParty: Party, update = false) {
+    const suffix = update ? '-updated' : '';
+
     return {
-      firstName: StringHelper.capitalise(litigationFriendParty.key),
-      lastName: 'Litigation',
-      emailAddress: `${litigationFriendParty.key}@litigants.com`,
+      firstName: `${StringHelper.capitalise(litigationFriendParty.key)}${suffix}`,
+      lastName: `Litigation${suffix}`,
+      emailAddress: `${litigationFriendParty.key}@litigants${suffix}.com`,
       phoneNumber: this.getPartyPhoneNumber(litigationFriendParty),
       hasSameAddressAsLitigant: 'No',
-      primaryAddress: this.buildAddressData(litigationFriendParty),
-      partyName: `${StringHelper.capitalise(litigationFriendParty.key)} Litigation`,
+      primaryAddress: this.buildAddressData(litigationFriendParty, update),
+      partyName: `${StringHelper.capitalise(litigationFriendParty.key)}${suffix} Litigation${suffix}`,
     };
   }
 
-  static buildExpertData(expertParty: Party) {
+  static buildExpertData(expertParty: Party, update = false) {
+    const suffix = update ? '-updated' : '';
+
     return {
-      firstName: StringHelper.capitalise(expertParty.key),
-      lastName: 'Expert',
-      emailAddress: `${expertParty.key}@experts.com`,
+      firstName: `${StringHelper.capitalise(expertParty.key)}${suffix}`,
+      lastName: `Expert${suffix}`,
+      emailAddress: `${expertParty.key}@experts${suffix}.com`,
       phoneNumber: this.getPartyPhoneNumber(expertParty),
-      fieldOfExpertise: `Field of expertise - ${expertParty.key}`,
+      fieldOfExpertise: `Field of expertise - ${expertParty.key}${suffix}`,
       whyRequired: `Reason required - ${expertParty.key}`,
       estimatedCost: this.getExpertEstimatedCost(expertParty),
-      partyName: `${StringHelper.capitalise(expertParty.key)} Expert`,
+      partyName: `${StringHelper.capitalise(expertParty.key)}${suffix} Expert${suffix}`,
     };
   }
 
@@ -253,14 +291,16 @@ export default class CaseDataHelper {
     };
   }
 
-  static buildWitnessData(witnessParty: Party) {
+  static buildWitnessData(witnessParty: Party, update = false) {
+    const suffix = update ? '-updated' : '';
+
     return {
-      firstName: StringHelper.capitalise(witnessParty.key),
-      lastName: 'Witness',
+      firstName: `${StringHelper.capitalise(witnessParty.key)}${suffix}`,
+      lastName: `Witness${suffix}`,
       phoneNumber: this.getPartyPhoneNumber(witnessParty),
-      emailAddress: `${witnessParty.key}@witnesses.com`,
+      emailAddress: `${witnessParty.key}@witnesses${suffix}.com`,
       reasonForWitness: `Reason for witness - ${witnessParty.key}`,
-      partyName: `${StringHelper.capitalise(witnessParty.key)} Witness`,
+      partyName: `${StringHelper.capitalise(witnessParty.key)}${suffix} Witness${suffix}`,
     };
   }
 

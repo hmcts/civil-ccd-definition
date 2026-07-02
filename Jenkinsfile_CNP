@@ -14,8 +14,6 @@ def camundaBranch = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 def wiremockMappingsBranch = "master"
-def civilServiceScriptsBranch = "master"
-
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -73,6 +71,14 @@ def getFunctionalTestsGroups() {
     functionalTestGroups.add(label.substring(6, label.length()))
   }
   return functionalTestGroups.join(",")
+}
+
+def getCivilServiceSharedBranch() {
+  def githubApi = new GithubAPI(this)
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilShared:")) {
+    return label.minus("civilShared:").trim()
+  }
+  return "master"
 }
 
 def secrets = [
@@ -260,7 +266,7 @@ withPipeline(type, product, component) {
 
   before('highleveldatasetup') {
     // Pull shared scripts from civil-service early - needed by build and import scripts
-    sh "./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}"
+    sh "./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}"
     yarnBuilder.yarn('setup')
     archiveCoreCaseDataDefinitions()
   }
@@ -278,11 +284,11 @@ withPipeline(type, product, component) {
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-        ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
+        ./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
-      ./bin/add-org-roles-to-users.sh
+      ./bin/shared/add-org-roles-to-users.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
     """
@@ -347,9 +353,9 @@ withPipeline(type, product, component) {
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
-      ./bin/pull-latest-civil-shared.sh ${civilServiceScriptsBranch}
+      ./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}
       . ./bin/shared/idam-get-tokens.sh
-      ./bin/add-roles.sh
+      ./bin/shared/add-roles.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
       ./bin/build-release-ccd-definition.sh staging

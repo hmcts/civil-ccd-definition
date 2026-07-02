@@ -1,6 +1,5 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
-import partys from '../../../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import { Party } from '../../../../../../../models/users/partys.ts';
@@ -34,6 +33,14 @@ export default class RespondentResponseTypeSpecPage extends ExuiPage(BasePage) {
 
   async selectFullDefence() {
     await super.clickBySelector(radioButtons.fullDefence.selector(this.defendantParty));
+  }
+
+  async selectFullAdmit() {
+    await super.clickBySelector(radioButtons.fullAdmit.selector(this.defendantParty));
+  }
+
+  async selectPartAdmit() {
+    await super.clickBySelector(radioButtons.partAdmit.selector(this.defendantParty));
   }
 
   async submit() {

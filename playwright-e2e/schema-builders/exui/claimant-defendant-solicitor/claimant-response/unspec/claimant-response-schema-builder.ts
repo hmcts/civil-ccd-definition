@@ -9,6 +9,15 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
+  async buildSmallTrackFullDefence1v1Data(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
   async buildFastTrackFullDefence2v1Data(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.TWO_VS_ONE,
@@ -16,7 +25,7 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildFastTrackFullDefence1v2SSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildFastTrackProceed1v2SSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -52,6 +61,7 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
       schemaShape,
       claimantResponseSchemaComponents.respondentResponse(claimType),
       claimantResponseSchemaComponents.applicantDefenceResponseDocument(claimType),
+      claimantResponseSchemaComponents.deterWithoutHearing(claimTrack),
       claimantResponseSchemaComponents.fastTrackDq(claimTrack),
       claimantResponseSchemaComponents.experts,
       claimantResponseSchemaComponents.witnesses,

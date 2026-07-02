@@ -61,6 +61,19 @@ const fastTrackDq = (claimTrack: ClaimTrack) => {
   return {};
 };
 
+const deterWithoutHearing = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.SMALL_CLAIM) {
+    return {
+      deterWithoutHearing: z.strictObject({
+        deterWithoutHearingWhyNot: nonEmptyString,
+        deterWithoutHearingYesNo: yesNoSchema,
+      }).optional(),
+    };
+  }
+
+  return {};
+};
+
 const experts = {
   applicant1DQExperts: z.strictObject({
     expertRequired: yesNoSchema,
@@ -153,6 +166,7 @@ const claimantResponseSchemaComponents = {
   respondentResponse,
   applicantDefenceResponseDocument,
   fastTrackDq,
+  deterWithoutHearing,
   experts,
   witnesses,
   language,
