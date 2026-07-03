@@ -223,67 +223,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalOrderDocClaimant",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalOrderDocRespondentSol",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalOrderDocRespondentSolTwo",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "consentOrderDocStaff",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "consentOrderDocClaimant",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "consentOrderDocRespondentSol",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "consentOrderDocRespondentSolTwo",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocStaff",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "dismissalOrderDocClaimant",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "dismissalOrderDocRespondentSol",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "dismissalOrderDocRespondentSolTwo",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
@@ -296,24 +242,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocStaff",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "directionOrderDocClaimant",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "directionOrderDocRespondentSol",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "directionOrderDocRespondentSolTwo",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
