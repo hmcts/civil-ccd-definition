@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 import { radioButtons } from './response-intention-content.ts';
 import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
 import partys from '../../../../../../constants/users/partys';

@@ -27,6 +27,13 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
     });
   }
+
+  async buildDS1FastTrackFullDefence1v2DSData() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
   
   async buildDS1FastFullDefenceData() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
@@ -35,6 +42,14 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
   async buildDS2FastFullDefenceData() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
+  async buildDS2FastTrackFullDefence1v2DSData() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
