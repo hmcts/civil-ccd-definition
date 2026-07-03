@@ -1,7 +1,7 @@
 import BasePage from '../../../../base/base-page';
 import filePaths from '../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { buttons, inputs, subheadings } from './particulars-of-claim-content';
 
 @AllMethodsStep()

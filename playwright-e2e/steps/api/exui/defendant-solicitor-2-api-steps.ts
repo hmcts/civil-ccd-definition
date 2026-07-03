@@ -108,4 +108,28 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
         );
       ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
     }
+
+  async RespondFastTrackFullDefence1v2DS() {
+    await this.setupApiStep(defendantSolicitor2User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defendantResponseEventData =
+      await defendantResponseDataBuilder.buildDS2FastTrackFullDefence1v2DSData();
+
+    await super.submitCCDEvent(
+      defendantSolicitor2User,
+      ccdEvents.DEFENDANT_RESPONSE,
+      defendantResponseEventData,
+      CaseState.AWAITING_APPLICANT_INTENTION,
+    );
+
+    const { defendantResponseSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defendantResponseSchema =
+      await defendantResponseSchemaBuilder.buildDS2FastTrackFullDefence1v2DS(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
 }
