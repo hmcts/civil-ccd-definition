@@ -3,7 +3,7 @@ import BasePage from '../../../../base/base-page';
 import filePaths from '../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import {
   heading,
   inputs,

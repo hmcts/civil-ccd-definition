@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import AddressFragment from '../../../../fragments/address/address-fragment.ts';
 import ChoosePartyTypeFragment from '../../../../fragments/choose-party-type/choose-party-type-fragment.ts';
 import PartyTypeCompanyFragment from '../../../../fragments/party-type/party-type-company-fragment.ts';

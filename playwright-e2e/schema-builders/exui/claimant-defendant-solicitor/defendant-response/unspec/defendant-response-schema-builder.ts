@@ -53,6 +53,15 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
+  async buildDS2FastTrackFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
   protected async buildSchema(
     caseDataBeforeSubmission?: CCDCaseData,
     {
