@@ -217,24 +217,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingNoticeDocClaimant",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingNoticeDocRespondentSol",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingNoticeDocRespondentSolTwo",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalOrderDocStaff",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
@@ -307,31 +289,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDraftDocument",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocStaff",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDraftDocClaimant",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDraftDocRespondentSol",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaDraftDocRespondentSolTwo",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
   },
