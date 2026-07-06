@@ -21,7 +21,7 @@
     "test:fullfunctional": "./e2e/run-full-functional-tests.sh",
     "test:civil-ccd-smoke": "yarn playwright install chromium && MOCHAWESOME_REPORTFILENAME=civil-ccd-smoke REPORT_DIR=test-results/smokeTest REPORT_FILE=test-results/smokeTest/results.xml npx codeceptjs run --grep @civil-ccd-smoke --reporter mocha-multi --verbose",
     "test:civil-ccd-master": "MOCHAWESOME_REPORTFILENAME=civil-ccd-master FUNCTIONAL=true npx codeceptjs run-workers --suites 12 --grep @civil-ccd-master --reporter mocha-multi --plugins allure --verbose",
-    "test:civil-ccd-pr": "MOCHAWESOME_REPORTFILENAME=civil-ccd-pr FUNCTIONAL=true npx codeceptjs run-workers --suites 12 --grep @civil-ccd-pr --reporter mocha-multi --plugins allure --verbose",
+    "test:civil-ccd-pr": "MOCHAWESOME_REPORTFILENAME=civil-ccd-pr FUNCTIONAL=true npx codeceptjs run-workers --suites 12 --grep @testing --reporter mocha-multi --plugins allure --verbose",
     "test:civil-ccd-nightly": "MOCHAWESOME_REPORTFILENAME=civil-ccd-nightly FUNCTIONAL=true npx codeceptjs run-workers --suites 15 --grep @civil-ccd-nightly --reporter mocha-multi --plugins allure --verbose",
     "test:civil-service-smoke": "yarn playwright install chromium && MOCHAWESOME_REPORTFILENAME=civil-service-smoke REPORT_DIR=test-results/smokeTest REPORT_FILE=test-results/smokeTest/results.xml npx codeceptjs run --grep @civil-service-smoke --reporter mocha-multi --verbose",
     "test:civil-service-master": "MOCHAWESOME_REPORTFILENAME=civil-service-master FUNCTIONAL=true npx codeceptjs  run-workers --suites 14 --grep @civil-service-master --reporter mocha-multi --verbose",
