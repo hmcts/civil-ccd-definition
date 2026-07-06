@@ -13,47 +13,45 @@ import DefendantResponseSpecType from '../../../../../constants/ccd-events/defen
 const defendantResponse = (
   claimType: ClaimType,
   claimantResponseType: ClaimantResponseSpecType,
-  defendantResponseSpecType: DefendantResponseSpecType
+  defendantResponseSpecType: DefendantResponseSpecType,
 ) => {
+  if(defendantResponseSpecType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseSpecType !== DefendantResponseSpecType.PART_ADMISSION) {
+    if(ClaimTypeHelper.isClaimant2(claimType)) {
+      return {
+        RespondentResponse: {
+          applicant1ProceedWithClaimSpec2v1:
+            claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No'
+        }
+      };
+    }
+
+    return {
+      RespondentResponse: {
+        applicant1ProceedWithClaim:
+          claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No',
+      },
+    };
+  }
+
+  return {};
+};
+
+const defendantResponsePartAdmit = (defendantResponseSpecType: DefendantResponseSpecType) => {
   if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION) {
     return {
       RespondentResponse: {
-        applicant1PartAdmitConfirmAmountPaidSpec: 'Yes'
-      }
-    };
-  }
-
-  if(ClaimTypeHelper.isClaimant2(claimType)) {
-    return {
-      RespondentResponse: {
-        applicant1ProceedWithClaimSpec2v1:
-          claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No'
-      }
-    };
-  }
-
-  return {
-    RespondentResponse: {
-      applicant1ProceedWithClaim:
-        claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No',
-    },
-  };
-};
-
-const intentionToSettleClaim = (defendantResponseSpecType: DefendantResponseSpecType, claimantResponseType:  ClaimantResponseSpecType) => {
-  if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
-    return {
-      IntentionToSettleClaim: {
-        applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
-        applicant1PartAdmitRejectReasonSpec: `Part admit reject reason - ${partys.CLAIMANT_1.key}`
+        applicant1AcceptAdmitAmountPaidSpec: ClaimantResponseSpecType.PROCEED_WITH_CLAIM ? 'Yes' : 'No'
       }
     }
   }
 
   return {};
-}
+};
 
-const claimantDefenceResponseDocument = (defenceResponseDocumentSpec: UploadDocumentValue, claimantResponseType:  ClaimantResponseSpecType) => {
+const claimantDefenceResponseDocument = (defendantResponseSpecType: DefendantResponseSpecType, defenceResponseDocumentSpec: UploadDocumentValue | undefined, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM)
     return {
       ApplicantDefenceResponseDocument: {
@@ -66,7 +64,10 @@ const claimantDefenceResponseDocument = (defenceResponseDocumentSpec: UploadDocu
     return {};
 };
 
-const mediationContactInformation = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+const mediationContactInformation = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimTrack === ClaimTrack.SMALL_CLAIM && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM)
     return {
       MediationContactInformation: {
@@ -79,7 +80,10 @@ const mediationContactInformation = (claimTrack: ClaimTrack, claimantResponseTyp
   return {};
 };
 
-const mediationAvailability = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+const mediationAvailability = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimTrack === ClaimTrack.SMALL_CLAIM && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     const fromDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {
       outputFormat: 'YYYY-MM-DD',
@@ -103,7 +107,10 @@ const mediationAvailability = (claimTrack: ClaimTrack, claimantResponseType:  Cl
   return {};
 };
 
-const fastTrackDq = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+const fastTrackDq = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (claimTrack === ClaimTrack.FAST_CLAIM && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     return {
       FileDirectionsQuestionnaire: {
@@ -148,7 +155,10 @@ const fastTrackDq = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResp
 
   return {};
 };
-const experts = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+const experts = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     if(claimTrack === ClaimTrack.SMALL_CLAIM)
       return {
@@ -184,7 +194,10 @@ const experts = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponse
   return {};
 };
 
-const determinationWithoutHearing = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+const determinationWithoutHearing = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (claimTrack === ClaimTrack.SMALL_CLAIM && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     return {
       DeterminationWithoutHearing: {
@@ -198,7 +211,10 @@ const determinationWithoutHearing = (claimTrack: ClaimTrack, claimantResponseTyp
   return {};
 };
 
-const witnesses = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+const witnesses = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     if(claimTrack === ClaimTrack.SMALL_CLAIM)
       return {
@@ -241,7 +257,10 @@ const witnesses = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantRespon
   return {};
 };
 
-const language = (claimantResponseType:  ClaimantResponseSpecType) => {
+const language = (defendantResponseSpecType: DefendantResponseSpecType, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     return {
       Language: {
@@ -256,7 +275,10 @@ const language = (claimantResponseType:  ClaimantResponseSpecType) => {
   return {};
 };
 
-const hearing = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+const hearing = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     const fromDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {outputFormat: 'YYYY-MM-DD'});
     const toDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1, days: 3}),{outputFormat: 'YYYY-MM-DD'});
@@ -284,7 +306,10 @@ const hearing = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponse
   return {};
 };
 
-const requestedCourtLocation = (claimantResponseType:  ClaimantResponseSpecType) => {
+const requestedCourtLocation = (defendantResponseSpecType: DefendantResponseSpecType, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     const preferredCourt = CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default);
 
@@ -307,7 +332,10 @@ const requestedCourtLocation = (claimantResponseType:  ClaimantResponseSpecType)
   return {};
 };
 
-const hearingSupport = (claimantResponseType:  ClaimantResponseSpecType) => {
+const hearingSupport = (defendantResponseSpecType: DefendantResponseSpecType, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     return {
       HearingSupport: {
@@ -321,16 +349,24 @@ const hearingSupport = (claimantResponseType:  ClaimantResponseSpecType) => {
   return {};
 };
 
-const vulnerabilityQuestions = {
-  VulnerabilityQuestions: {
-    applicant1DQVulnerabilityQuestions: {
-      vulnerabilityAdjustmentsRequired: 'Yes',
-      vulnerabilityAdjustments: `Vulnerability adjustments - ${partys.CLAIMANT_1.key}`,
+const vulnerabilityQuestions = (defendantResponseSpecType: DefendantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
+  return {
+    VulnerabilityQuestions: {
+      applicant1DQVulnerabilityQuestions: {
+        vulnerabilityAdjustmentsRequired: 'Yes',
+        vulnerabilityAdjustments: `Vulnerability adjustments - ${partys.CLAIMANT_1.key}`,
+      },
     },
-  },
+  };
 };
 
-const application = (claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+const application = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if(claimTrack === ClaimTrack.FAST_CLAIM && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM)
     return {
       Application: {
@@ -354,9 +390,24 @@ const statementOfTruth = {
   },
 };
 
+const undefine = (defendantResponseSpecType: DefendantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION) {
+    return {
+      Undefine: {
+        respondToCourtLocation: undefined,
+        respondToCourtLocation2: undefined,
+        applicant1DQRequestedCourt: undefined,
+      },
+    };
+  }
+
+  return {};
+};
+
 const claimantResponseSpecData = {
+  undefine,
   defendantResponse,
-  intentionToSettleClaim,
+  defendantResponsePartAdmit,
   claimantDefenceResponseDocument,
   mediationContactInformation,
   mediationAvailability,

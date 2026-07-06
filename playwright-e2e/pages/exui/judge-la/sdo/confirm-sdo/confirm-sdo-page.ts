@@ -1,12 +1,8 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
-import ExuiPage from '../../../exui-page/exui-page';
-import {
-  confirmationHeading,
-  paragraphs,
-  subheading,
-} from './confirm-sdo-content';
+import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
+import { confirmationHeading, paragraphs, subheading } from './confirm-sdo-content';
 
 @AllMethodsStep()
 export default class ConfirmSdoPage extends ExuiPage(BasePage) {

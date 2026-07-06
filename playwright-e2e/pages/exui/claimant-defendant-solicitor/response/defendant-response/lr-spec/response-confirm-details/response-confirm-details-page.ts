@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import { radioButtons, tableHeadings, heading } from './response-confirm-details-content.ts';
 import DateOfBirthFragment from '../../../../../fragments/date/date-of-birth-fragment.ts';
 import { Party } from '../../../../../../../models/users/partys.ts';

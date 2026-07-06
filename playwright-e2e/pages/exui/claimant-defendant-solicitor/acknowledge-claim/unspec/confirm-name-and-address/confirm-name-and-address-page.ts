@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 import DateOfBirthFragment from '../../../../fragments/date/date-of-birth-fragment.ts';
 import { Page } from '@playwright/test';
 import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types.ts';

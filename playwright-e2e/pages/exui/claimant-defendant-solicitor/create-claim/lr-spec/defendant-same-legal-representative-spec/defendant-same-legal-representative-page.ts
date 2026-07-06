@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import { subheadings, labels, selectors } from './defendant-same-legal-representative-content';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 
 @AllMethodsStep()
 export default class DefendantSameLegalRepresentativePage extends ExuiPage(BasePage) {

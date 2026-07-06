@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { buttons, inputs, dropdowns, links } from './unregistered-organisation-address-content';
 import { Party } from '../../../../models/users/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';

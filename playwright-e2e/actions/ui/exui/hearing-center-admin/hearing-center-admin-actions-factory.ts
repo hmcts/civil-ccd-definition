@@ -18,6 +18,8 @@ import HearingScheduledActions from './hearing-scheduled-actions';
 import HearingScheduledPageFactory from '../../../../pages/exui/hearing-center-admin/hearing-scheduled/hearing-scheduled-page-factory';
 import TransferOnlineCaseActions from './transfer-online-case-actions';
 import TransferOnlineCasePageFactory from '../../../../pages/exui/hearing-center-admin/transfer-online-case/transfer-online-case-page-factory';
+import RequestHearingActions from './request-hearing-actions';
+import RequestHearingPageFactory from '../../../../pages/exui/hearing-center-admin/request-hearing/request-hearing-page-factory';
 
 export default class HearingCenterAdminActionsFactory extends BasePageActionsFactory {
   get caseProceedsInCasemanActions() {
@@ -67,5 +69,9 @@ export default class HearingCenterAdminActionsFactory extends BasePageActionsFac
       new TransferOnlineCasePageFactory(this.page),
       this.testData,
     );
+  }
+
+  get requestHearingActions() {
+    return new RequestHearingActions(new RequestHearingPageFactory(this.page), this.testData);
   }
 }
