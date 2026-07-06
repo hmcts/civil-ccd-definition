@@ -13,7 +13,8 @@ const request = (url, headers, body, method = 'POST') =>  fetch(url, {
     method: method,
     body: body ? JSON.stringify(body) : undefined,
     headers: headers,
-    agent: isHttpsUrl(url) ? httpsAgent : undefined
+    agent: isHttpsUrl(url) ? httpsAgent : undefined,
+    compress: false
   });
 
 const retriedRequest = async (url, headers, body, method = 'POST', expectedStatus = 200) => {
