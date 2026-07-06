@@ -16,9 +16,23 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData();
   }
 
+  async buildDS1SmallCounterClaimData() {
+    return this.buildData({
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
   async buildDS1FastFullDefenceData() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
+    });
+  }
+
+  async buildDS1FastCounterClaimData() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
 
@@ -93,6 +107,22 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1FastCounterClaim2v1Data() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
+  async buildDS1SmallCounterClaim2v1Data() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
   async buildDS1FastFullDefence1v2SSData() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -100,10 +130,26 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1FastCounterClaim1v2SSData() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
   async buildDS1SmallFullDefence1v2SSData() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
+  async buildDS1SmallCounterClaim1v2SSData() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
 
@@ -189,8 +235,8 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       defendantResponseSpecData.hearingSupport(defendantResponseSpecType, defendantSolicitorParty),
       defendantResponseSpecData.vulnerabilityQuestions(defendantResponseSpecType, defendantSolicitorParty),
       defendantResponseSpecData.applications(defendantResponseSpecType, claimTrack, defendantSolicitorParty),
-      defendantResponseSpecData.statementOfTruth(defendantResponseSpecType, defendantSolicitorParty),
-      defendantResponseSpecData.undefine(defendantResponseSpecType, defendantSolicitorParty),
+      defendantResponseSpecData.statementOfTruth(defendantSolicitorParty),
+      defendantResponseSpecData.undefine(defendantSolicitorParty),
     );
 
     return eventData;
