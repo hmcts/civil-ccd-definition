@@ -22,6 +22,7 @@ import responseIntentions from '../../enums/ResponseIntention.ts';
 import { AcknowledgeClaim } from '../flows/events/AcknowledgeClaim.ts';
 import respondentResponses from '../../enums/RespondentResponses.ts';
 import { RespondToClaim } from '../flows/events/RespondToClaim.ts';
+import ClaimTypes from '../../enums/claim-types.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -91,6 +92,14 @@ const env = cleanEnv({
     default: respondentResponses.FULL_DEFENCE
   }),
 });
+
+let defendant1Journey : ClaimTypes[] = [
+  claimTypes.ONE_VS_ONE,
+  claimTypes.ONE_VS_TWO_SAME_SOL,
+  claimTypes.ONE_VS_TWO_DIFF_SOL,
+  claimTypes.TWO_VS_ONE,
+  claimTypes.ONE_VS_TWO_LR_LIP
+];
 const claimType: claimTypes = env.CLAIM_TYPE;
 const runningEnvironment: environment = env.ENVIRONMENT;
 const respondent1ResponseIntention: responseIntentions = env.RESPONDENT1_RESPONSE_INTENTION;
@@ -131,7 +140,7 @@ let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].i
 )
   ? process.env.TRACK
   : 'FAST_CLAIM';
-let caseId: string = '1781526388168210';
+let caseId: string = '1783425246460380';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -322,16 +331,10 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     return 'Notify claim details -> Claim goes offline';
   }
 
-  if (
-    claimType === claimTypes.ONE_VS_ONE ||
-    claimType === claimTypes.ONE_VS_TWO_SAME_SOL ||
-    claimType === claimTypes.ONE_VS_TWO_DIFF_SOL ||
-    claimType === claimTypes.TWO_VS_ONE ||
-    claimType === claimTypes.ONE_VS_TWO_LR_LIP
-  ) {
-    test.describe('test4', { tag: '@unspecified' }, () => {
-      test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
-      test('Defendant 1 Solicitor acknowledges claim.', async ({ page }) => {
+  test.describe('test4', { tag: '@unspecified' }, () => {
+    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
+    test('Defendant 1 Solicitor acknowledges claim.', async ({ page }) => {
+      test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
         await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
         await new AcknowledgeClaim(page).acknowledge(
           claimType,
@@ -339,9 +342,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           respondent2ResponseIntention,
           1,
         );
-      });
     });
-  }
+  });
 
   test.describe('test5', { tag: '@unspecified' }, () => {
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
@@ -356,37 +358,31 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     });
   });
 
-  if (
-    claimType === claimTypes.ONE_VS_ONE ||
-    claimType === claimTypes.ONE_VS_TWO_SAME_SOL ||
-    claimType === claimTypes.ONE_VS_TWO_DIFF_SOL ||
-    claimType === claimTypes.TWO_VS_ONE ||
-    claimType === claimTypes.ONE_VS_TWO_LR_LIP
-  ) {
-    test.describe('test6', { tag: '@unspecified' }, () => {
-      test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
-      test('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
-        await new RespondToClaim(page).submit(
-          claimType,
-          respondent1Response,
-          respondent2Response,
-          1,
-        );
-      });
-    });
-  }
-
-  test.describe('test7', { tag: '@unspecified' }, () => {
-    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
-    test('Defendant 2 Solicitor acknowledges claim.', async ({ page }) => {
-      test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
+  test.describe('test6', { tag: '@unspecified' }, () => {
+    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
+    test('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
+      test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
       await new RespondToClaim(page).submit(
         claimType,
         respondent1Response,
         respondent2Response,
-        2,
+        1
       );
     });
   });
+  //
+  //
+  // test.describe('test7', { tag: '@unspecified' }, () => {
+  //   test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
+  //   test('Defendant 2 Solicitor acknowledges claim.', async ({ page }) => {
+  //     test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
+  //     await new RespondToClaim(page).submit(
+  //       claimType,
+  //       respondent1Response,
+  //       respondent2Response,
+  //       2,
+  //     );
+  //   });
+  // });
 
 });

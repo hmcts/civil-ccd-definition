@@ -20,10 +20,17 @@ export class PageHelper {
     async selectNextStep(nextStep: string) {
       console.log(nextStep);
       await expect(this.page.locator('#next-step')).toContainText(nextStep);
-      await this.page.locator('#next-step').selectOption(nextStep);
-      await this.page.getByRole('button', { name: 'Go' }).click();
-       //await this.page.waitForTimeout(20000); // waits for 2 seconds
-     // await this.page.getByRole('button', { name: 'Go' }).click();
+      await this.page.locator('#next-step').selectOption({ label: nextStep });
+     // await this.page.waitForTimeout(2000); // waits for 2 seconds
+
+      await expect(async () => {
+        // This entire block re-runs if page.goto throws an error
+        await this.page.getByRole('button', { name: 'Go' }).click();
+      }).toPass({
+        intervals: [2000, 5000], // Time to wait between retries (in ms)
+        timeout: 30000,          // Total maximum time for all retries combined (in ms)
+      });
+
     }
 
     // // When running as API test the search reference box is not being populated.  Tried multiple options to no avail

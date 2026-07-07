@@ -3,6 +3,7 @@ import { PageHelper } from '../../../helpers/PageHelper';
 import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import RespondentResponses from '../../../enums/RespondentResponses.ts';
+import YesNo from '../../../enums/yesNo.ts';
 
 export class RespondToClaim {
   private buttonHelper: ButtonHelper;
@@ -21,6 +22,8 @@ export class RespondToClaim {
     respondent1Response: RespondentResponses = RespondentResponses.FULL_DEFENCE,
     respondent2Response: RespondentResponses = RespondentResponses.FULL_DEFENCE,
     defendantNumber: number = 1,
+    oneMonthStay: YesNo = YesNo.YES,
+    preActionProtocol: YesNo = YesNo.NO
   ) {
     await this.pageHelper.selectNextStep('Respond to claim');
     await this.buttonHelper.continueButton.click(); // Confirm Details
@@ -49,6 +52,8 @@ export class RespondToClaim {
         break;
     }
 
+    await this.buttonHelper.continueButton.click();
+
     let legalRepresentativeReference: string;
     if (defendantNumber === 1) {
       legalRepresentativeReference = await this.page
@@ -65,5 +70,19 @@ export class RespondToClaim {
         .locator('#respondentSolicitor2Reference')
         .fill(`${legalRepresentativeReference} - acknowledge claim`);
     }
+
+    await this.buttonHelper.continueButton.click();
+    await this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_3.pdf');
+    await this.page.waitForSelector('.error-message', { state: 'hidden' });
+    await this.buttonHelper.continueButton.click();
+
+    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_${oneMonthStay}`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_${preActionProtocol}`).click();
+
+    if (preActionProtocol === YesNo.NO) {
+      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`).fill('Pre-action protocol explanation');
+    }
+    await this.buttonHelper.continueButton.click();
   }
 }
