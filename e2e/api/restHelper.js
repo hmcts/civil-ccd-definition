@@ -53,4 +53,25 @@ const retriedRequestFor400 = async (url, headers, body, method = 'POST', expecte
   });
 };
 
-module.exports = {request, retriedRequest, retriedRequestFor400, retriedRequestFor201};
+const retriedJsonRequest = async (url, headers, body, method = 'POST', expectedStatus = 200) => {
+  return retry(() => {
+    return request(url, headers, body, method).then(async response => {
+      if (response.status !== expectedStatus) {
+        throw new Error(`Expected status: ${expectedStatus}, actual status: ${response.status}, `
+          + `message: ${response.statusText}, url: ${response.url}`);
+      }
+
+      const responseBody = await response.json();
+      return {
+        status: response.status,
+        statusText: response.statusText,
+        url: response.url,
+        headers: response.headers,
+        json: async () => responseBody,
+        text: async () => JSON.stringify(responseBody)
+      };
+    });
+  });
+};
+
+module.exports = {request, retriedRequest, retriedRequestFor400, retriedRequestFor201, retriedJsonRequest};
