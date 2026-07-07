@@ -22,6 +22,22 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildDS1FastCounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
+  async buildDS1SmallCounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
   async buildDS1FastPartAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
@@ -89,6 +105,22 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildDS1FastCounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
+  async buildDS1SmallCounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
   async buildDS1SmallPartAdmitRepayment2v1(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.TWO_VS_ONE,
@@ -140,6 +172,14 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildDS1FastCounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
+    });
+  }
+
   async buildSmall1v1FullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
@@ -153,6 +193,14 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
       responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1SmallCounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
 
@@ -200,7 +248,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
 
     Object.assign(
       responseSchemaFields,
-      defendantResponseSpecSchemaComponents.responseClaimTrack,
+      defendantResponseSpecSchemaComponents.responseClaimTrack(responseType),
       defendantResponseSpecSchemaComponents.singleResponse(claimType),
       defendantResponseSpecSchemaComponents.responseConfirmNameAddress(claimType, defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.responseConfirmDetails(defendantSolicitorParty),
@@ -212,12 +260,10 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       defendantResponseSpecSchemaComponents.defenceRoute(
         responseType,
         defenceRouteSpec,
-        claimTrack,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defenceAdmittedPartRoute(
         responseType,
-        claimTrack,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.upload(responseType, defendantSolicitorParty),

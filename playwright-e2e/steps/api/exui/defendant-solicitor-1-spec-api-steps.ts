@@ -340,6 +340,150 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
+  async RespondFastCounterClaim() {
+    await this.setupApiStep(defendantSolicitor1User);
+
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defendantResponseEventData =
+      await defendantResponseSpecDataBuilder.buildDS1FastCounterClaimData();
+
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      defendantResponseEventData,
+    );
+
+    const { defendantResponseSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defendantResponseSchema =
+      await defendantResponseSpecSchemaBuilder.buildDS1FastCounterClaim(
+        caseDataBeforeSubmission,
+      );
+
+    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
+
+  async RespondSmallCounterClaim() {
+    await this.setupApiStep(defendantSolicitor1User);
+
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defendantResponseEventData =
+      await defendantResponseSpecDataBuilder.buildDS1SmallCounterClaimData();
+
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      defendantResponseEventData,
+    );
+
+    const { defendantResponseSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defendantResponseSchema =
+      await defendantResponseSpecSchemaBuilder.buildDS1SmallCounterClaim(
+        caseDataBeforeSubmission,
+      );
+
+    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
+
+  async RespondFastCounterClaim2v1() {
+    await this.setupApiStep(defendantSolicitor1User);
+
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defendantResponseEventData =
+      await defendantResponseSpecDataBuilder.buildDS1FastCounterClaim2v1Data();
+
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      defendantResponseEventData,
+    );
+
+    const { defendantResponseSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defendantResponseSchema =
+      await defendantResponseSpecSchemaBuilder.buildDS1FastCounterClaim2v1(
+        caseDataBeforeSubmission,
+      );
+
+    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
+
+  async RespondSmallCounterClaim2v1() {
+    await this.setupApiStep(defendantSolicitor1User);
+
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defendantResponseEventData =
+      await defendantResponseSpecDataBuilder.buildDS1SmallCounterClaim2v1Data();
+
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      defendantResponseEventData,
+    );
+
+    const { defendantResponseSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defendantResponseSchema =
+      await defendantResponseSpecSchemaBuilder.buildDS1SmallCounterClaim2v1(
+        caseDataBeforeSubmission,
+      );
+
+    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
+
+  async RespondFastCounterClaim1v2SS() {
+    await this.setupApiStep(defendantSolicitor1User);
+
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defendantResponseEventData =
+      await defendantResponseSpecDataBuilder.buildDS1FastCounterClaim1v2SSData();
+
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      defendantResponseEventData,
+    );
+
+    const { defendantResponseSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defendantResponseSchema =
+      await defendantResponseSpecSchemaBuilder.buildDS1FastCounterClaim1v2SS(
+        caseDataBeforeSubmission,
+      );
+
+    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
+
+  async RespondSmallCounterClaim1v2SS() {
+    await this.setupApiStep(defendantSolicitor1User);
+
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defendantResponseEventData =
+      await defendantResponseSpecDataBuilder.buildDS1SmallCounterClaim1v2SSData();
+
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      defendantResponseEventData,
+    );
+
+    const { defendantResponseSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defendantResponseSchema =
+      await defendantResponseSpecSchemaBuilder.buildDS1SmallCounterClaim1v2SS(
+        caseDataBeforeSubmission,
+      );
+
+    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
+
   async RespondFastFullDefence2v1() {
     await this.setupApiStep(defendantSolicitor1User);
 

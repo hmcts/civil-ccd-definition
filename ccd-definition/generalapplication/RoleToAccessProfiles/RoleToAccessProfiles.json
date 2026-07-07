@@ -18,6 +18,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "idam:caseworker-civil-staff",
+    "Authorisation": "",
+    "CaseTypeID": "GENERALAPPLICATION",
+    "AccessProfiles": "caseworker-civil-staff,ga-basic-access",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName": "idam:caseworker-ras-validation",
     "Authorisation": "",
     "CaseTypeID": "GENERALAPPLICATION",
