@@ -192,7 +192,7 @@ const intermediateTrackDq = (
           reactionProtocolNotCompliedWithReason: `No explanation - ${defendantSolicitorParty.key}`,
         },
       },
-      FixedRecoverableCosts: {
+      FixedRecoverableCostsIntermediate: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondent1DQFixedRecoverableCostsIntermediate'
           : 'respondent2DQFixedRecoverableCostsIntermediate']: {

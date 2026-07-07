@@ -156,6 +156,55 @@ const fastTrackDq = (
   return {};
 };
 
+const intermediateTrackDq = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
+  if (
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM &&
+    claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
+  ) {
+    return {
+      applicant1DQFileDirectionsQuestionnaire: z.strictObject({
+        explainedToClient: z.array(nonEmptyString).min(1),
+        oneMonthStayRequested: yesNoSchema,
+        reactionProtocolCompliedWith: yesNoSchema,
+        reactionProtocolNotCompliedWithReason: nonEmptyString,
+      }),
+      applicant1DQFixedRecoverableCostsIntermediate: z.strictObject({
+        isSubjectToFixedRecoverableCostRegime: yesNoSchema,
+        band: nonEmptyString,
+        complexityBandingAgreed: yesNoSchema,
+        reasons: nonEmptyString,
+        frcSupportingDocument: z.looseObject({
+          document_url: nonEmptyString,
+          document_binary_url: nonEmptyString,
+          document_filename: nonEmptyString,
+        }),
+      }),
+      specApplicant1DQDisclosureOfElectronicDocuments: z.strictObject({
+        reachedAgreement: yesNoSchema,
+        agreementLikely: yesNoSchema,
+        reasonForNoAgreement: nonEmptyString,
+      }),
+      specApplicant1DQDisclosureOfNonElectronicDocuments: z.strictObject({
+        bespokeDirections: nonEmptyString,
+      }),
+      applicant1DQDisclosureReport: z.strictObject({
+        disclosureFormFiledAndServed: yesNoSchema,
+        disclosureProposalAgreed: yesNoSchema,
+        draftOrderNumber: nonEmptyString,
+      }),
+    };
+  }
+
+  return {};
+};
+
 const experts = (
   defendantResponseSpecType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
@@ -385,6 +434,7 @@ const claimantResponseSpecSchemaComponents = {
   mediationAvailability,
   determinationWithoutHearing,
   fastTrackDq,
+  intermediateTrackDq,
   experts,
   witnesses,
   language,

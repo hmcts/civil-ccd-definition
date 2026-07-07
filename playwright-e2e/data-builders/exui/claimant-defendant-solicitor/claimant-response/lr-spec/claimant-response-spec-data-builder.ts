@@ -14,9 +14,20 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
+  async buildIntermediateProceed() {
+    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
   async buildFastPartAdmitProceed() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildIntermediatePartAdmitProceed() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
     });
   }
@@ -125,6 +136,10 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
       defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION
         ? undefined
         : await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+    const frcSupportingDocument =
+      claimTrack === ClaimTrack.INTERMEDIATE_CLAIM
+        ? await civilServiceRequests.uploadTestDocument(claimantSolicitorUser)
+        : undefined;
 
     const eventData: Record<string, unknown> = {};
 
@@ -142,6 +157,12 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
       claimantResponseSpecData.mediationAvailability(defendantResponseSpecType, claimTrack, claimantResponseType),
       claimantResponseSpecData.determinationWithoutHearing(defendantResponseSpecType, claimTrack, claimantResponseType),
       claimantResponseSpecData.fastTrackDq(defendantResponseSpecType, claimTrack, claimantResponseType),
+      claimantResponseSpecData.intermediateTrackDq(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+        frcSupportingDocument,
+      ),
       claimantResponseSpecData.experts(defendantResponseSpecType, claimTrack, claimantResponseType),
       claimantResponseSpecData.witnesses(defendantResponseSpecType, claimTrack, claimantResponseType),
       claimantResponseSpecData.language(defendantResponseSpecType, claimantResponseType),

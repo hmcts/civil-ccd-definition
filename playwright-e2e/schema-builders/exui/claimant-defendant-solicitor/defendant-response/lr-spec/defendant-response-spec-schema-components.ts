@@ -382,6 +382,60 @@ const fastTrackDq = (responseType: DefendantResponseSpecType, claimTrack: ClaimT
   return {};
 };
 
+const intermediateTrackDq = (
+  responseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (responseType !== DefendantResponseSpecType.FULL_ADMISSION
+    && claimTrack === ClaimTrack.INTERMEDIATE_CLAIM
+    && responseType !== DefendantResponseSpecType.COUNTER_CLAIM)
+    return {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQFileDirectionsQuestionnaire'
+        : 'respondent2DQFileDirectionsQuestionnaire']: z.strictObject({
+        explainedToClient: z.array(nonEmptyString).min(1),
+        oneMonthStayRequested: yesNoSchema,
+        reactionProtocolCompliedWith: yesNoSchema,
+        reactionProtocolNotCompliedWithReason: nonEmptyString,
+      }),
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQFixedRecoverableCostsIntermediate'
+        : 'respondent2DQFixedRecoverableCostsIntermediate']: z.strictObject({
+        isSubjectToFixedRecoverableCostRegime: yesNoSchema,
+        band: nonEmptyString,
+        complexityBandingAgreed: yesNoSchema,
+        reasons: nonEmptyString,
+        frcSupportingDocument: z.looseObject({
+          document_url: nonEmptyString,
+          document_binary_url: nonEmptyString,
+          document_filename: nonEmptyString,
+        }),
+      }),
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'specRespondent1DQDisclosureOfElectronicDocuments'
+        : 'specRespondent2DQDisclosureOfElectronicDocuments']: z.strictObject({
+        reachedAgreement: yesNoSchema,
+        agreementLikely: yesNoSchema,
+        reasonForNoAgreement: nonEmptyString,
+      }),
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'specRespondent1DQDisclosureOfNonElectronicDocuments'
+        : 'specRespondent2DQDisclosureOfNonElectronicDocuments']: z.strictObject({
+        bespokeDirections: nonEmptyString,
+      }),
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? 'respondent1DQDisclosureReport'
+        : 'respondent2DQDisclosureReport']: z.strictObject({
+        disclosureFormFiledAndServed: yesNoSchema,
+        disclosureProposalAgreed: yesNoSchema,
+        draftOrderNumber: nonEmptyString,
+      }),
+    };
+
+  return {};
+};
+
 const experts = (responseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   if(responseType !== DefendantResponseSpecType.FULL_ADMISSION && responseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
     if(claimTrack === ClaimTrack.SMALL_CLAIM)
@@ -630,6 +684,7 @@ const defendantResponseSpecSchemaComponents = {
   mediationAvailability,
   deterWithoutHearing,
   fastTrackDq,
+  intermediateTrackDq,
   experts,
   witnesses,
   language,

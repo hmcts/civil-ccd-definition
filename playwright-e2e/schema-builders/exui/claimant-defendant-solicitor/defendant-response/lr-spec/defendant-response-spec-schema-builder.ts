@@ -14,7 +14,7 @@ import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-resp
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
-  async buildFast1v1FullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -22,18 +22,18 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildDS1FastCounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildIntermediateFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
     });
   }
 
-  async buildDS1SmallCounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildDS1CounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
+      claimTrack: ClaimTrack.FAST_CLAIM,
       responseType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
@@ -42,6 +42,14 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1IntermediatePartAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       responseType: DefendantResponseSpecType.PART_ADMISSION,
     });
   }
@@ -105,18 +113,10 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildDS1FastCounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildDS1CounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildDS1SmallCounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
       responseType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
@@ -134,6 +134,15 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
+  async buildDS2IntermediateFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       responseType: DefendantResponseSpecType.FULL_DEFENCE,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
@@ -164,7 +173,15 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildDS1FastCounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildIntermediate1v2SSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1CounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -172,7 +189,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildSmall1v1FullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildSmallFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.SMALL_CLAIM,
@@ -185,14 +202,6 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
       responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildDS1SmallCounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
 
@@ -269,6 +278,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       defendantResponseSpecSchemaComponents.mediationAvailability(responseType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.deterWithoutHearing(responseType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.fastTrackDq(responseType, claimTrack, defendantSolicitorParty),
+      defendantResponseSpecSchemaComponents.intermediateTrackDq(responseType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.experts(responseType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.witnesses(responseType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.language(responseType, defendantSolicitorParty),

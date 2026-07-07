@@ -111,7 +111,7 @@ const intermediateTrackDq = (
           reactionProtocolNotCompliedWithReason: `Reaction protocol not complied reason - ${partys.CLAIMANT_1.key}`,
         },
       },
-      FixedRecoverableCosts: {
+      FixedRecoverableCostsIntermediate: {
         applicant1DQFixedRecoverableCostsIntermediate: {
           isSubjectToFixedRecoverableCostRegime: 'Yes',
           band: 'BAND_1',
