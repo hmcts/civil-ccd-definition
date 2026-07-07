@@ -8,6 +8,7 @@ test.describe('2v1 unspec intermediate track api journey', {
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1ApiSteps,
     JudgeApiSteps,
+    HearingCenterAdminApiSteps
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimIntermediate2v1();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -16,6 +17,8 @@ test.describe('2v1 unspec intermediate track api journey', {
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
     await DefendantSolicitor1ApiSteps.RespondIntermediateFullDefence2v1();
     await ClaimantSolicitorApiSteps.RespondIntermediateProceed2v1();
-    await JudgeApiSteps.GenerateDirectionsOrderIntermediateDownloadOrderTemplate();
+    await JudgeApiSteps.GenerateDirectionsOrderIntermediate();
+    await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
+    await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
   });
 });

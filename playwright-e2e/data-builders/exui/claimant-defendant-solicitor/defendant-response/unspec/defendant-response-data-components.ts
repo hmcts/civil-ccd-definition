@@ -88,7 +88,16 @@ const respondentResponseType = (
 };
 
 const solicitorReferences = (ccdCaseData: CCDCaseData, defendantSolicitorParty: Party) => {
-  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+    return {
+      SolicitorReferences: {
+        solicitorReferences: {
+          respondentSolicitor1Reference: ccdCaseData?.solicitorReferences?.respondentSolicitor1Reference,
+        },
+      },
+    };
+  }
+  else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       SolicitorReferences: {
         respondentSolicitor2Reference: ccdCaseData?.respondentSolicitor2Reference,
@@ -149,6 +158,57 @@ const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => 
           band: 'BAND_2',
           complexityBandingAgreed: 'No',
           reasons: `No explanation - ${defendantSolicitorParty.key}`,
+        },
+      },
+      DisclosureOfNonElectronicDocuments: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQDisclosureOfNonElectronicDocuments'
+          : 'respondent2DQDisclosureOfNonElectronicDocuments']: {
+          directionsForDisclosureProposed: 'Yes',
+          standardDirectionsRequired: 'No',
+          bespokeDirections: `No directions required - ${defendantSolicitorParty.key}`,
+        },
+      },
+    };
+  }
+
+  return {};
+};
+
+const intermediateTrackDq = (
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+  frcSupportingDocument?: UploadDocumentValue,
+) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      FileDirectionsQuestionnaire: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQFileDirectionsQuestionnaire'
+          : 'respondent2DQFileDirectionsQuestionnaire']: {
+          explainedToClient: ['CONFIRM'],
+          oneMonthStayRequested: 'No',
+          reactionProtocolCompliedWith: 'No',
+          reactionProtocolNotCompliedWithReason: `No explanation - ${defendantSolicitorParty.key}`,
+        },
+      },
+      FixedRecoverableCosts: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQFixedRecoverableCostsIntermediate'
+          : 'respondent2DQFixedRecoverableCostsIntermediate']: {
+          isSubjectToFixedRecoverableCostRegime: 'Yes',
+          band: 'BAND_2',
+          complexityBandingAgreed: 'No',
+          reasons: `No explanation - ${defendantSolicitorParty.key}`,
+          frcSupportingDocument,
+        },
+      },
+      DisclosureOfElectronicDocuments: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQDisclosureOfElectronicDocuments'
+          : 'respondent2DQDisclosureOfElectronicDocuments']: {
+          reachedAgreement: 'No',
+          agreementLikely: 'Yes',
         },
       },
       DisclosureOfNonElectronicDocuments: {
@@ -248,16 +308,21 @@ const hearing = (defendantSolicitorParty: Party) => {
 };
 
 const draftDirections = (
+  claimTrack: ClaimTrack,
   draftDirectionsDocument: UploadDocumentValue,
   defendantSolicitorParty: Party,
 ) => {
-  return {
-    DraftDirections: {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? 'respondent1DQDraftDirections'
-        : 'respondent2DQDraftDirections']: draftDirectionsDocument,
-    },
-  };
+  if (claimTrack === ClaimTrack.FAST_CLAIM || claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      DraftDirections: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQDraftDirections'
+          : 'respondent2DQDraftDirections']: draftDirectionsDocument,
+      },
+    };
+  }
+
+  return {};
 };
 
 const requestedCourt = (defendantSolicitorParty: Party) => {
@@ -363,6 +428,7 @@ const defendantResponseDataComponents = {
   solicitorReferences,
   upload,
   fastTrackDq,
+  intermediateTrackDq,
   deterWithoutHearing,
   experts,
   witnesses,

@@ -93,6 +93,57 @@ const fastTrackDq = (claimTrack: ClaimTrack) => {
       },
     }
   }
+
+  return {};
+};
+
+const intermediateTrackDq = (
+  claimTrack: ClaimTrack,
+  frcSupportingDocument?: UploadDocumentValue,
+) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      FileDirectionsQuestionnaire: {
+        applicant1DQFileDirectionsQuestionnaire: {
+          explainedToClient: ['CONFIRM'],
+          oneMonthStayRequested: 'Yes',
+          reactionProtocolCompliedWith: 'No',
+          reactionProtocolNotCompliedWithReason: `Reaction protocol not complied reason - ${partys.CLAIMANT_1.key}`,
+        },
+      },
+      FixedRecoverableCosts: {
+        applicant1DQFixedRecoverableCostsIntermediate: {
+          isSubjectToFixedRecoverableCostRegime: 'Yes',
+          band: 'BAND_1',
+          complexityBandingAgreed: 'Yes',
+          reasons: `Recoverable costs reason - ${partys.CLAIMANT_1.key}`,
+          frcSupportingDocument,
+        },
+      },
+      DisclosureOfElectronicDocuments: {
+        applicant1DQDisclosureOfElectronicDocuments: {
+          reachedAgreement: 'No',
+          agreementLikely: 'Yes',
+        },
+      },
+      DisclosureOfNonElectronicDocuments: {
+        applicant1DQDisclosureOfNonElectronicDocuments: {
+          directionsForDisclosureProposed: 'Yes',
+          standardDirectionsRequired: 'No',
+          bespokeDirections: `Directions are proposed for disclosure - ${partys.CLAIMANT_1.key}`,
+        },
+      },
+      DisclosureReport: {
+        applicant1DQDisclosureReport: {
+          disclosureFormFiledAndServed: 'Yes',
+          disclosureProposalAgreed: 'Yes',
+          draftOrderNumber: '012345',
+        },
+      },
+    };
+  }
+
+  return {};
 };
 
 const experts = {
@@ -205,6 +256,7 @@ const claimantResponseDataComponents = {
   respondentResponse,
   applicantDefenceResponseDocument,
   fastTrackDq,
+  intermediateTrackDq,
   deterWithHearing,
   experts,
   witnesses,

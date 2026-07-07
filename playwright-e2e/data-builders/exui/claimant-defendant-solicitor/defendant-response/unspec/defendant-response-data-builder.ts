@@ -21,9 +21,23 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1IntermediateFullDefence2v1Data() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+    });
+  }
+
   async buildDS1FastFullDefence1v2SSData() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildDS1IntermediateFullDefence1v2SSData() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
     });
   }
@@ -37,6 +51,10 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
   
   async buildDS1FastFullDefenceData() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
+  async buildDS1IntermediateFullDefenceData() {
+    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
   async buildDS2FastFullDefenceData() {
@@ -68,6 +86,7 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     } = {}
   ) {
     const { civilServiceRequests } = this.requestsFactory;
+    let frcSupportingDocument;
     const defendantSolicitorUser =
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? defendantSolicitor1User
@@ -75,6 +94,11 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     const defenceDocument = await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
     const draftDirectionsDocument =
       await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
+    if(claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+      frcSupportingDocument =
+        await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
+    }
+    
 
     const eventData: Record<string, unknown> = {};
 
@@ -86,12 +110,13 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
       defendantResponseDataComponents.solicitorReferences(this.ccdCaseData, defendantSolicitorParty),
       defendantResponseDataComponents.upload(defenceDocument, defendantSolicitorParty),
       defendantResponseDataComponents.fastTrackDq(claimTrack, defendantSolicitorParty),
+      defendantResponseDataComponents.intermediateTrackDq(claimTrack, defendantSolicitorParty, frcSupportingDocument),
       defendantResponseDataComponents.deterWithoutHearing(claimTrack, defendantSolicitorParty),
       defendantResponseDataComponents.experts(defendantSolicitorParty),
       defendantResponseDataComponents.witnesses(defendantSolicitorParty),
       defendantResponseDataComponents.language(defendantSolicitorParty),
       defendantResponseDataComponents.hearing(defendantSolicitorParty),
-      defendantResponseDataComponents.draftDirections(draftDirectionsDocument, defendantSolicitorParty),
+      defendantResponseDataComponents.draftDirections(claimTrack, draftDirectionsDocument, defendantSolicitorParty),
       defendantResponseDataComponents.requestedCourt(defendantSolicitorParty),
       defendantResponseDataComponents.hearingSupport(defendantSolicitorParty),
       defendantResponseDataComponents.vulnerabilityQuestions(defendantSolicitorParty),
