@@ -10,7 +10,7 @@ const retry = (fn, remainingRetries = 5, retryTimeout = 2000, err = null) => {
   return fn().catch(async err => {
     console.log(`${err.message}, retrying in ${retryTimeout / 1000} seconds (Retries left: ${remainingRetries})`);
     await sleep(retryTimeout);
-    return retry(fn, remainingRetries - 1, retryTimeout, err);
+    return retry(fn, remainingRetries - 1, retryTimeout * 2, err);
   });
 };
 
