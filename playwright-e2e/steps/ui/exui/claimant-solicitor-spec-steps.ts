@@ -453,6 +453,51 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
+  async SettleClaimConfirmPaidInFull1v1() {
+    const { settleClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await settleClaimActions.singleClaimant();
+        await settleClaimActions.submitSettleClaim();
+      },
+      async () => {
+        await settleClaimActions.confirmSettleClaimMarkPaidFull();
+      },
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async SettleClaimConfirmPaidInFull1v2DS() {
+    const { settleClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await settleClaimActions.singleClaimant();
+        await settleClaimActions.submitSettleClaim();
+      },
+      async () => {
+        await settleClaimActions.confirmSettleClaimMarkPaidFull();
+      },
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async SettleClaimConfirmPaidInFull2v1() {
+    const { settleClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await settleClaimActions.multipleClaimants();
+        await settleClaimActions.submitSettleClaim();
+      },
+      async () => {
+        await settleClaimActions.confirmSettleClaimMarkPaidFull();
+      },
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async EvidenceUploadSmall() {
     const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(

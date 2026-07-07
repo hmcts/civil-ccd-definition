@@ -18,6 +18,8 @@ import DiscontinueClaimClaimantActions from './discontinue-claim-claimant/discon
 import DiscontinueClaimClaimantPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/discontinue-claim/discontinue-claim-claimant-page-factory.ts';
 import RequestForReconsiderationActions from './request-for-reconsideration-actions';
 import RequestForReconsiderationPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/request-for-reconsideration/request-for-reconsideration-page-factory';
+import SettleClaimActions from './settle-claim-actions';
+import SettleClaimPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/settle-claim-mark-paid-full/settle-claim-page-factory.ts';
 
 export default class ClaimantSolicitorActionsFactory extends BasePageActionsFactory {
   get createClaimActions() {
@@ -66,7 +68,10 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
   }
 
   get discontinueClaimClaimantActions() {
-    return new DiscontinueClaimClaimantActions(new DiscontinueClaimClaimantPageFactory(this.page), this.testData);
+    return new DiscontinueClaimClaimantActions(
+      new DiscontinueClaimClaimantPageFactory(this.page),
+      this.testData,
+    );
   }
 
   get requestForReconsiderationActions() {
@@ -74,5 +79,9 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
       new RequestForReconsiderationPageFactory(this.page),
       this.testData,
     );
+  }
+
+  get settleClaimActions() {
+    return new SettleClaimActions(new SettleClaimPageFactory(this.page), this.testData);
   }
 }
