@@ -10,61 +10,61 @@ import defendantResponseDataComponents from './defendant-response-data-component
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
-  async buildDS1SmallFullDefence1v1Data() {
+  async buildDS1SmallFullDefence1v1() {
     return this.buildData();
   }
 
-  async buildDS1FastFullDefence2v1Data() {
+  async buildDS1FastFullDefence2v1() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
     });
   }
 
-  async buildDS1IntermediateFullDefence2v1Data() {
+  async buildDS1IntermediateFullDefence2v1() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
     });
   }
 
-  async buildDS1FastFullDefence1v2SSData() {
+  async buildDS1FastFullDefence1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
     });
   }
 
-  async buildDS1IntermediateFullDefence1v2SSData() {
+  async buildDS1IntermediateFullDefence1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
     });
   }
 
-  async buildDS1FastTrackFullDefence1v2DSData() {
+  async buildDS1FastTrackFullDefence1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
     });
   }
   
-  async buildDS1FastFullDefenceData() {
+  async buildDS1FastFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildDS1IntermediateFullDefenceData() {
+  async buildDS1IntermediateFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
-  async buildDS2FastFullDefenceData() {
+  async buildDS2FastFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
-  async buildDS2FastTrackFullDefence1v2DSData() {
+  async buildDS2FastTrackFullDefence1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,

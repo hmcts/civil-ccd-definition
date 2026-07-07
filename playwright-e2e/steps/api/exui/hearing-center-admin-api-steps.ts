@@ -33,7 +33,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { scheduleHearingDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
-    const scheduleHearingData = await scheduleHearingDataBuilder.buildFastData();
+    const scheduleHearingData = await scheduleHearingDataBuilder.buildFast();
     await super.submitCCDEvent(
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
@@ -56,7 +56,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { scheduleHearingDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
-    const scheduleHearingData = await scheduleHearingDataBuilder.buildFastData();
+    const scheduleHearingData = await scheduleHearingDataBuilder.buildFast();
     await super.submitCCDEvent(
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
@@ -80,7 +80,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { scheduleHearingDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
-    const scheduleHearingData = await scheduleHearingDataBuilder.buildSmallClaimData();
+    const scheduleHearingData = await scheduleHearingDataBuilder.buildSmallClaim();
     await super.submitCCDEvent(
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
