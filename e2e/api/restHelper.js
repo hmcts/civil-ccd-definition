@@ -1,11 +1,11 @@
 
 
-const fetch = require('@browserbasehq/sdk/_shims/index');
+const fetch = require('node-fetch');
 const https = require('https');
 
 const {retry} = require('./retryHelper');
 
-const httpsAgent = new https.Agent({ keepAlive: true });
+const httpsAgent = new https.Agent({ keepAlive: false });
 
 const isHttpsUrl = (url) => typeof url === 'string' ? url.startsWith('https:') : url.protocol === 'https:';
 
