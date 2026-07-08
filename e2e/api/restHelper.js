@@ -1,20 +1,13 @@
 
 
-const fetch = require('node-fetch');
-const https = require('https');
 
 const {retry} = require('./retryHelper');
-
-const httpsAgent = new https.Agent({ keepAlive: false });
-
-const isHttpsUrl = (url) => typeof url === 'string' ? url.startsWith('https:') : url.protocol === 'https:';
 
 const request = (url, headers, body, method = 'POST') =>  fetch(url, {
     method: method,
     body: body ? JSON.stringify(body) : undefined,
     headers: headers,
-    agent: isHttpsUrl(url) ? httpsAgent : undefined,
-    compress: false
+    keepalive: true
   });
 
 const retriedRequest = async (url, headers, body, method = 'POST', expectedStatus = 200) => {
