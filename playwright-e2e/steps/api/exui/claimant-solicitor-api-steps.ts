@@ -509,4 +509,30 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       await evidenceUploadApplicantSchemaBuilder.buildSmallClaimSchema(caseDataBeforeSubmission);
     ZodHelper.safeParse(evidenceUploadApplicantSchema, this.ccdCaseData);
   }
+
+  async RequestDefaultJudgement() {
+    await this.setupApiStep(claimantSolicitorUser);
+
+    const { requestDefaultJudgementDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestDefaultJudgementData = await requestDefaultJudgementDataBuilder.buildData();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DEFAULT_JUDGEMENT,
+      requestDefaultJudgementData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+  }
+
+  async RequestDefaultJudgementSpec() {
+    await this.setupApiStep(claimantSolicitorUser);
+
+    const { requestDefaultJudgementSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestDefaultJudgementSpecData = await requestDefaultJudgementSpecDataBuilder.buildData();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      requestDefaultJudgementSpecData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+  }
 }
