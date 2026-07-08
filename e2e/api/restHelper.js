@@ -1,6 +1,6 @@
 
 
-const fetch = require('node-fetch');
+const fetch = require('@browserbasehq/sdk/_shims/index');
 const https = require('https');
 
 const {retry} = require('./retryHelper');
