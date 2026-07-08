@@ -5,7 +5,7 @@ const https = require('https');
 
 const {retry} = require('./retryHelper');
 
-const httpsAgent = new https.Agent({ keepAlive: false });
+const httpsAgent = new https.Agent({ keepAlive: true });
 
 const isHttpsUrl = (url) => typeof url === 'string' ? url.startsWith('https:') : url.protocol === 'https:';
 
