@@ -9,7 +9,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
-  async buildSmallTrackFullDefence1v1Data(
+  async buildSmallFullDefence1v1Data(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -18,25 +18,25 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildFastTrackFullDefence2v1Data(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildFastFullDefence2v1Data(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildFastTrackFullDefence1v2SSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildFastProceed1v2SSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildFastTrackFullDefence1v1Data(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildFastFullDefence1v1Data(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildFastTrackFullDefence1v2DSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildFastFullDefence1v2DSData(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, { claimType: ClaimType.ONE_VS_TWO_DIFF_SOL, claimTrack: ClaimTrack.FAST_CLAIM });
   }
 

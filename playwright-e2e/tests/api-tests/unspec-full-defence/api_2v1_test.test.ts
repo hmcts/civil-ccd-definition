@@ -10,7 +10,7 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFastTrack2v1();
+      await ClaimantSolicitorApiSteps.CreateClaimFast2v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await CaseworkerApiSteps.AddCaseNote();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
@@ -20,8 +20,8 @@ test.describe(
       await CaseworkerApiSteps.AmendPartyDetails();
       await DefendantSolicitor1ApiSteps.AcknowledgeClaimFullDefence2v1();
       await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
-      await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence2v1();
-      await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence2v1();
+      await DefendantSolicitor1ApiSteps.RespondFast2v1FullDefence();
+      await ClaimantSolicitorApiSteps.RespondFastProceed2v1();
     });
   },
 );

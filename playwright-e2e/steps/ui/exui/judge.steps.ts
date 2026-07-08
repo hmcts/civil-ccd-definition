@@ -74,7 +74,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackFromFastTrackClaim() {
+  async SdoSmallTrackFromFastClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -112,7 +112,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoFastTrack() {
+  async SdoFast() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -151,7 +151,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoFastTrackNIHL() {
+  async SdoFastNIHL() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -242,7 +242,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async NotSuitableSdoFastTrackOtherReason() {
+  async NotSuitableSdoFastOtherReason() {
     const { notSuitableSdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {

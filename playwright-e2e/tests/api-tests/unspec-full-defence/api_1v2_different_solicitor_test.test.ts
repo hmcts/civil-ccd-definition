@@ -8,7 +8,7 @@ test.describe('1v2 different solicitor unspec full defence api journey', { tag: 
     DefendantSolicitor1ApiSteps,
     DefendantSolicitor2ApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimFastTrack1v2DS();
+    await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await CaseworkerApiSteps.AddCaseNote();
     await ClaimantSolicitorApiSteps.AmendClaimDocuments();
@@ -21,8 +21,8 @@ test.describe('1v2 different solicitor unspec full defence api journey', { tag: 
     await DefendantSolicitor2ApiSteps.AcknowledgeClaimFullDefence();
     await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
     await DefendantSolicitor2ApiSteps.InformAgreedExtensionDate();
-    await DefendantSolicitor1ApiSteps.RespondFastTrackFullDefence1v2DS();
-    await DefendantSolicitor2ApiSteps.RespondFastTrackFullDefence();
-    await ClaimantSolicitorApiSteps.RespondFastTrackFullDefence1v2DS();
+    await DefendantSolicitor1ApiSteps.RespondFastFullDefence1v2DS();
+    await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+    await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
   });
 });

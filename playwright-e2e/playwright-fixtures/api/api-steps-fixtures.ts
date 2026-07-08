@@ -59,8 +59,8 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   DefendantSolicitor1ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor1ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
-  DefendantSolicitor2SpecApiSteps: async ({ _requestsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor2SpecApiSteps(_requestsFactory, _testData));
+  DefendantSolicitor2SpecApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor2SpecApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
   DefendantSolicitor2ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor2ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));

@@ -7,23 +7,23 @@ import claimantResponseDataComponents from './claimant-response-data-components'
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
-  async buildSmallTrackFullDefence1v1Data() {
+  async buildSmallFullDefence1v1Data() {
     return this.buildData();
   }
 
-  async buildFastTrackFullDefence2v1Data() {
+  async buildFastFullDefence2v1Data() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.TWO_VS_ONE});
   }
 
-  async buildFastTrackFullDefence1v2SSData() {
+  async buildFastProceed1v2SSData() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.ONE_VS_TWO_SAME_SOL});
   }
 
-  async buildFastTrackFullDefence1v1Data() {
+  async buildFastFullDefence1v1Data() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM});
   }
 
-  async buildFastTrackFullDefence1v2DSData() {
+  async buildFastFullDefence1v2DSData() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.ONE_VS_TWO_DIFF_SOL});
   }
 

@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { subheadings, paragraphs, inputs } from './interest-from-specific-date-content';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import DateHelper from '../../../../../../helpers/date-helper';

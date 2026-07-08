@@ -1,3 +1,9 @@
+/**
+ * CUI/LiP Test Ownership:
+ * civil-ccd-definition: Owns workflow and API-level integration tests.
+ * civil-citizen-ui: Owns citizen-rendered UI and routing tests.
+ */
+
 const config = require('../../../config.js');
 const { createAccount, deleteCitizenAccount } = require('../../../api/idamHelper');
 const intermediateTrackClaimAmount = '99000';

@@ -27,13 +27,13 @@ export default class JudgeApiSteps extends BaseApi {
     this.judgeSchemaBuilderFactory = judgeSchemaBuilderFactory;
   }
 
-  async SdoFastTrack() {
+  async SdoFast() {
     await this.setupApiStep(judgeRegion1User);
     const taskId = await super.retrieveAndAssignWATask(judgeRegion1User, fastTrackDirectionsTask);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
-    const createSdoData = await createSdoDataBuilder.buildFastTrackSdo();
+    const createSdoData = await createSdoDataBuilder.buildFastSdo();
 
     await super.submitCCDEvent(
       judgeRegion1User,
@@ -44,7 +44,7 @@ export default class JudgeApiSteps extends BaseApi {
     await this.completeWATask(judgeRegion1User, taskId);
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema = await createSdoSchemaBuilder.buildFastTrackSdo(caseDataBeforeSubmission);
+    const createSdoSchema = await createSdoSchemaBuilder.buildFastSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
@@ -54,7 +54,7 @@ export default class JudgeApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
-    const createSdoData = await createSdoDataBuilder.buildSmallTrackSumSdo();
+    const createSdoData = await createSdoDataBuilder.buildSmallSumSdo();
 
     await super.submitCCDEvent(
       judgeRegion1User,
@@ -66,7 +66,7 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const createSdoSchema =
-      await createSdoSchemaBuilder.buildSmallTrackSumSdo(caseDataBeforeSubmission);
+      await createSdoSchemaBuilder.buildSmallSumSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
@@ -76,7 +76,7 @@ export default class JudgeApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
-    const createSdoData = await createSdoDataBuilder.buildSmallTrackNoSumSdo();
+    const createSdoData = await createSdoDataBuilder.buildSmallNoSumSdo();
 
     await super.submitCCDEvent(
       judgeRegion1User,
@@ -88,7 +88,7 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const createSdoSchema =
-      await createSdoSchemaBuilder.buildSmallTrackNoSumSdo(caseDataBeforeSubmission);
+      await createSdoSchemaBuilder.buildSmallNoSumSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
@@ -109,7 +109,7 @@ export default class JudgeApiSteps extends BaseApi {
     await this.completeWATask(judgeRegion1User, taskId);
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema = await createSdoSchemaBuilder.buildFastTrackSdo(caseDataBeforeSubmission);
+    const createSdoSchema = await createSdoSchemaBuilder.buildFastSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 

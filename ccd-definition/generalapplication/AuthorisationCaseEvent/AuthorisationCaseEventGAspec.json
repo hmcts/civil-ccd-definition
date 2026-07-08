@@ -25,6 +25,36 @@
           "legal-adviser"
         ],
         "CRUD": "U"
+      },
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "END_BUSINESS_PROCESS_GASPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -427,6 +457,30 @@
           "civil-administrator-standard",
           "civil-administrator-basic",
           "caseworker-ras-validation",
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "MAIN_CASE_CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "APPLICATION_PROCEEDS_IN_HERITAGE",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "ga-basic-access"
         ],
         "CRUD": "R"

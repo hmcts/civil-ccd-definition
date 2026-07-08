@@ -8,12 +8,12 @@ test.describe('1v2SS spec fast track claim journey', { tag: '@civil-ccd-nightly'
     ClaimantSolicitorSpecSteps,
   }) => {
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.CreateClaimFastTrack1v2SS();
+    await ClaimantSolicitorSpecSteps.CreateClaimFast1v2SS();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecSteps.Login();
-    await DefendantSolicitor1SpecSteps.RespondFastTrackFullDefence1v2SS();
+    await DefendantSolicitor1SpecSteps.RespondFastFullDefence1v2SS();
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.RespondFastTrackIntentToProceed1v2SS();
+    await ClaimantSolicitorSpecSteps.RespondFastProceed1v2SS();
   });
 });

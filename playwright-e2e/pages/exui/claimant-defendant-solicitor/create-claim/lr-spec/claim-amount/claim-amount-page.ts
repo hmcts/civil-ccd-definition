@@ -3,7 +3,7 @@ import partys from '../../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../constants/cases/claim-track';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { paragraphs, subheadings, inputs } from './claim-amount-content';
 
 @AllMethodsStep()

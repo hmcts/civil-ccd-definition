@@ -6,11 +6,11 @@ import evidenceUploadApplicantDataBuilderComponents from './evidence-upload-appl
 
 @AllMethodsStep()
 export default class EvidenceUploadApplicantDataBuilder extends BaseDataBuilder {
-  async buildFastTrackData() {
+  async buildFastData() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildSmallTrackData() {
+  async buildSmallData() {
     return this.buildData({ claimTrack: ClaimTrack.SMALL_CLAIM });
   }
 

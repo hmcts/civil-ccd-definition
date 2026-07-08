@@ -154,13 +154,13 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     ZodHelper.safeParse(addDefendantLitigationFriendSchema, this.ccdCaseData);
   }
 
-  async RespondFastTrackFullDefence() {
+  async RespondFastFullDefence() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS1FastTrackFullDefenceData();
+      await defendantResponseDataBuilder.buildDS1FastFullDefenceData();
 
     await super.submitCCDEvent(
       defendantSolicitor1User,
@@ -172,19 +172,19 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     const { defendantResponseSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS1FastTrackFullDefence(
+      await defendantResponseSchemaBuilder.buildDS1FastFullDefence(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondSmallTrackFullDefence() {
+  async RespondSmallFullDefence() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS1SmallTrackFullDefence1v1Data();
+      await defendantResponseDataBuilder.buildDS1SmallFullDefence1v1Data();
 
     await super.submitCCDEvent(
       defendantSolicitor1User,
@@ -196,19 +196,19 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     const { defendantResponseSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS1SmallTrackFullDefence1v1(
+      await defendantResponseSchemaBuilder.buildDS1SmallFullDefence1v1(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondFastTrackFullDefence2v1() {
+  async RespondFast2v1FullDefence() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS1FastTrackFullDefence2v1Data();
+      await defendantResponseDataBuilder.buildDS1FastFullDefence2v1Data();
 
     await super.submitCCDEvent(
       defendantSolicitor1User,
@@ -220,19 +220,19 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     const { defendantResponseSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS1FastTrackFullDefence2v1(
+      await defendantResponseSchemaBuilder.buildDS1FastFullDefence2v1(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondFastTrackFullDefence1v2SS() {
+  async RespondFastFullDefence1v2SS() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS1FastTrackFullDefence1v2SSData();
+      await defendantResponseDataBuilder.buildDS1FastFullDefence1v2SSData();
 
     await super.submitCCDEvent(
       defendantSolicitor1User,
@@ -244,19 +244,19 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     const { defendantResponseSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS1FastTrackFullDefence1v2SS(
+      await defendantResponseSchemaBuilder.buildDS1FastFullDefence1v2SS(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondFastTrackFullDefence1v2DS() {
+  async RespondFastFullDefence1v2DS() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS1FastTrackFullDefenceData();
+      await defendantResponseDataBuilder.buildDS1FastFullDefenceData();
 
     await super.submitCCDEvent(
       defendantSolicitor1User,
@@ -268,19 +268,19 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     const { defendantResponseSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS1FastTrackFullDefence(
+      await defendantResponseSchemaBuilder.buildDS1FastFullDefence(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async EvidenceUploadFastTrack() {
+  async EvidenceUploadFast() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { evidenceUploadRespondentDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const evidenceUploadRespondentData = await evidenceUploadRespondentDataBuilder.buildDS1FastTrackData();
+    const evidenceUploadRespondentData = await evidenceUploadRespondentDataBuilder.buildDS1FastData();
     await super.submitCCDEvent(
       defendantSolicitor1User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
@@ -291,11 +291,11 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     const { evidenceUploadRespondentSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const evidenceUploadRespondentSchema =
-      await evidenceUploadRespondentSchemaBuilder.buildDS1FastTrackSchema(caseDataBeforeSubmission);
+      await evidenceUploadRespondentSchemaBuilder.buildDS1FastSchema(caseDataBeforeSubmission);
     ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
   }
 
-  async EvidenceUploadSmallClaim() {
+  async EvidenceUploadSmall() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 

@@ -5,15 +5,15 @@ import createSdoDataBuilderComponents from './create-sdo-data-builder-components
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateSdoDataBuilder extends BaseDataBuilder {
-  async buildSmallTrackNoSumSdo() {
+  async buildSmallNoSumSdo() {
     return this.buildData({sdoType: SdoType.SMALL_TRACK_NO_SUM});
   }
 
-  async buildSmallTrackSumSdo() {
+  async buildSmallSumSdo() {
     return this.buildData({ sdoType: SdoType.SMALL_TRACK_SUM });
   }
 
-  async buildFastTrackSdo() {
+  async buildFastSdo() {
     return this.buildData({sdoType: SdoType.FAST_TRACK});
   }
 
