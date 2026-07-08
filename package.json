@@ -201,6 +201,9 @@
     "minimatch": "^3.0.5"
   },
   "packageManager": "yarn@4.10.3",
+  "engines": {
+    "node": ">=24.18.0"
+  },
   "dependencies": {
     "pixelmatch": "5.3.0",
     "pngjs": "7.0.0"
