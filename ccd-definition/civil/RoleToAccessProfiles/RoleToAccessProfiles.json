@@ -18,15 +18,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "idam:caseworker-civil-staff",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "caseworker-civil-staff,GS_profile",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "idam:caseworker-civil-solicitor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
