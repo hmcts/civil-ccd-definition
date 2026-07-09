@@ -179,7 +179,7 @@
     "mocha-multi": "^1.1.6",
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^2.6.9",
     "playwright-core": "1.60.0",
     "prettier": "^3.3.3",
     "proper-lockfile": "^4.1.2",
