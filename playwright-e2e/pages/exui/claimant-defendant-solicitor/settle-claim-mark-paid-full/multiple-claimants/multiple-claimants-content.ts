@@ -19,10 +19,10 @@ export const radioButtons = {
   claimantRelatesTo: {
     label: 'Select the claimant this relates to',
     claimant1: {
-      label: (claimant1PartyType: ClaimantDefendantPartyType) => CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, claimant1PartyType),
+      label: (claimant1PartyType: ClaimantDefendantPartyType) => CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, claimant1PartyType).partyName,
     },
     claimant2: {
-      label: (claimant2PartyType: ClaimantDefendantPartyType) => CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, claimant2PartyType),
+      label: (claimant2PartyType: ClaimantDefendantPartyType) => CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_2, claimant2PartyType).partyName,
     },
   },
 };
