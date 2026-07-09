@@ -24,7 +24,7 @@ test.describe(
       await LegalAdvisorSteps.LoginRegion1();
       await LegalAdvisorSteps.SdoSmallTrackNoSum();
       await ClaimantSolicitorSpecSteps.Login();
-      await ClaimantSolicitorSpecSteps.SettleClaimConfirmPaidInFull1v2DS();
+      await ClaimantSolicitorSpecSteps.SettleClaimMarkPaidInFull();
     });
   },
 );

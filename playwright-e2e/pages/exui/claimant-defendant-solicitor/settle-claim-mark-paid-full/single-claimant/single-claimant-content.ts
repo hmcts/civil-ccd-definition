@@ -1,7 +1,7 @@
 export const heading = 'Confirm settle this claim';
 
 export const radioButtons = {
-  paidInFullYes: {
+  markPaidConsent: {
     label: 'Yes',
     selector: '#markPaidConsent-YES',
   },

@@ -1,7 +1,11 @@
+import partys from "../../../../../constants/users/partys";
+import CaseDataHelper from "../../../../../helpers/case-data-helper";
+import { ClaimantDefendantPartyType } from "../../../../../models/users/claimant-defendant-party-types";
+
 export const heading = 'Settle this claim';
 
 export const radioButtons = {
-  relateToAllClaimants: {
+  markPaidForAllClaimants: {
     label: 'Does marking this Claim as settled relate to all claimants?',
     yes: {
       label: 'Yes',
@@ -15,10 +19,10 @@ export const radioButtons = {
   claimantRelatesTo: {
     label: 'Select the claimant this relates to',
     claimant1: {
-      label: 'Test Inc',
+      label: (claimant1PartyType: ClaimantDefendantPartyType) => CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, claimant1PartyType),
     },
     claimant2: {
-      label: 'Claim 2',
+      label: (claimant2PartyType: ClaimantDefendantPartyType) => CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, claimant2PartyType),
     },
   },
 };

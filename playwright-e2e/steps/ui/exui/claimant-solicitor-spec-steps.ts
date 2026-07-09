@@ -453,45 +453,30 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
-  async SettleClaimConfirmPaidInFull1v1() {
-    const { settleClaimActions } = this.claimantSolicitorActionsFactory;
+  async SettleClaimMarkPaidInFull() {
+    const { settleClaimMarkPaidFullActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await settleClaimActions.singleClaimant();
-        await settleClaimActions.submitSettleClaim();
+        await settleClaimMarkPaidFullActions.singleClaimant();
+        await settleClaimMarkPaidFullActions.submitSettleClaim();
       },
       async () => {
-        await settleClaimActions.confirmSettleClaimMarkPaidFull();
+        await settleClaimMarkPaidFullActions.confirmSettleClaimMarkPaidFull();
       },
       ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
       { verifySuccessEvent: false },
     );
   }
 
-  async SettleClaimConfirmPaidInFull1v2DS() {
-    const { settleClaimActions } = this.claimantSolicitorActionsFactory;
+  async SettleClaimMarkPaidInFull2v1() {
+    const { settleClaimMarkPaidFullActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await settleClaimActions.singleClaimant();
-        await settleClaimActions.submitSettleClaim();
+        await settleClaimMarkPaidFullActions.multipleClaimants();
+        await settleClaimMarkPaidFullActions.submitSettleClaim();
       },
       async () => {
-        await settleClaimActions.confirmSettleClaimMarkPaidFull();
-      },
-      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
-      { verifySuccessEvent: false },
-    );
-  }
-
-  async SettleClaimConfirmPaidInFull2v1() {
-    const { settleClaimActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await settleClaimActions.multipleClaimants();
-        await settleClaimActions.submitSettleClaim();
-      },
-      async () => {
-        await settleClaimActions.confirmSettleClaimMarkPaidFull();
+        await settleClaimMarkPaidFullActions.confirmSettleClaimMarkPaidFull();
       },
       ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
       { verifySuccessEvent: false },

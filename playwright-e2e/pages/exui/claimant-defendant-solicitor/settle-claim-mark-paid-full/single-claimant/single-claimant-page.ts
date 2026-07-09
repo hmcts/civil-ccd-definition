@@ -10,12 +10,12 @@ export default class SingleClaimantPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
-      super.expectLabel(radioButtons.paidInFullYes.label),
+      super.expectLabel(radioButtons.markPaidConsent.label),
     ]);
   }
 
   async selectYes() {
-    await super.clickBySelector(radioButtons.paidInFullYes.selector);
+    await super.clickBySelector(radioButtons.markPaidConsent.selector);
   }
 
   async submit() {

@@ -1,29 +1,22 @@
 import BaseTestData from '../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import TestData from '../../../../models/test-utils/test-data';
-import SettleClaimPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/settle-claim-mark-paid-full/settle-claim-page-factory';
+import SettleClaimPageFactory from '../../../../pages/exui/hearing-center-admin/settle-claim/settle-claim-page-factory';
+import SettleClaimMarkPaidFullPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/settle-claim-mark-paid-full/settle-claim-mark-paid-full-page-factory';
 
 @AllMethodsStep()
 export default class SettleClaimActions extends BaseTestData {
   private settleClaimPageFactory: SettleClaimPageFactory;
+  private settleClaimMarkPaidFullPageFactory: SettleClaimMarkPaidFullPageFactory;
 
-  constructor(settleClaimPageFactory: SettleClaimPageFactory, testData: TestData) {
+  constructor(
+    settleClaimPageFactory: SettleClaimPageFactory,
+    settleClaimMarkPaidFullPageFactory: SettleClaimMarkPaidFullPageFactory,
+    testData: TestData,
+  ) {
     super(testData);
     this.settleClaimPageFactory = settleClaimPageFactory;
-  }
-
-  async singleClaimant() {
-    const { singleClaimantPage } = this.settleClaimPageFactory;
-    await singleClaimantPage.verifyContent(this.ccdCaseData);
-    await singleClaimantPage.selectYes();
-    await singleClaimantPage.submit();
-  }
-
-  async multipleClaimants() {
-    const { multipleClaimantsPage } = this.settleClaimPageFactory;
-    await multipleClaimantsPage.verifyContent(this.ccdCaseData);
-    await multipleClaimantsPage.selectYes();
-    await multipleClaimantsPage.submit();
+    this.settleClaimMarkPaidFullPageFactory = settleClaimMarkPaidFullPageFactory;
   }
 
   async consentOrderApproved() {
@@ -41,15 +34,9 @@ export default class SettleClaimActions extends BaseTestData {
   }
 
   async submitSettleClaim() {
-    const { submitSettleClaimPage } = this.settleClaimPageFactory;
+    const { submitSettleClaimPage } = this.settleClaimMarkPaidFullPageFactory;
     await submitSettleClaimPage.verifyContent(this.ccdCaseData);
     await submitSettleClaimPage.submit();
-  }
-
-  async confirmSettleClaimMarkPaidFull() {
-    const { confirmSettleClaimMarkPaidFullPage } = this.settleClaimPageFactory;
-    await confirmSettleClaimMarkPaidFullPage.verifyContent(this.ccdCaseData);
-    await confirmSettleClaimMarkPaidFullPage.submit();
   }
 
   async confirmSettleClaim() {

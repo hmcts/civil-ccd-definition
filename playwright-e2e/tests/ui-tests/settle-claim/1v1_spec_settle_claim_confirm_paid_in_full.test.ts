@@ -18,6 +18,6 @@ test.describe('1v1 spec settle claim confirm paid in full', { tag: ['@civil-ccd-
     await LegalAdvisorSteps.LoginRegion1();
     await LegalAdvisorSteps.SdoSmallTrackNoSum();
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.SettleClaimConfirmPaidInFull1v1();
+    await ClaimantSolicitorSpecSteps.SettleClaimMarkPaidInFull();
   });
 });
