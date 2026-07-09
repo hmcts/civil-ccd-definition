@@ -9,7 +9,6 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
       HearingCenterAdminApiSteps,
-      JudgeSteps,
       JudgeApiSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
@@ -20,8 +19,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
       await ClaimantSolicitorApiSteps.RespondFastProceed();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.SdoTrail();
+      await JudgeApiSteps.SdoTrail();
       await ClaimantSolicitorApiSteps.EvidenceUploadFast();
       await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
@@ -35,7 +33,7 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
       HearingCenterAdminApiSteps,
-      JudgeSteps,
+      JudgeApiSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -45,8 +43,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
       await ClaimantSolicitorApiSteps.RespondFastProceed();
-      await JudgeSteps.LoginRegion1()
-      await JudgeSteps.SdoFast();
+      await JudgeApiSteps.SdoFast();
       await ClaimantSolicitorApiSteps.EvidenceUploadFast();
       await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
