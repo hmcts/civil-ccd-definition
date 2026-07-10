@@ -10,7 +10,7 @@ test.describe(
       DefendantSolicitor2SpecApiSteps,
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
-      LegalAdvisorSteps,
+      LegalAdvisorApiSteps,
       ClaimantSolicitorSpecSteps,
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v2DS();
@@ -21,8 +21,7 @@ test.describe(
       await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
       await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed1v2DS();
       await CaseworkerApiSteps.MediationUnsuccessful();
-      await LegalAdvisorSteps.LoginRegion1();
-      await LegalAdvisorSteps.SdoSmallTrackNoSum();
+      await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
       await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.SettleClaimMarkPaidInFull();
     });

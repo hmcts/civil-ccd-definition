@@ -6,7 +6,7 @@ test.describe(
     tag: ['@civil-ccd-nightly'],
   },
   () => {
-    test('1v1 spec request for reconsideration > create a new sdo @debug', async ({
+    test('1v1 spec request for reconsideration > create a new sdo', async ({
       ClaimantSolicitorSpecApiSteps,
       DefendantSolicitor1SpecApiSteps,
       CaseRoleAssignmentApiSteps,

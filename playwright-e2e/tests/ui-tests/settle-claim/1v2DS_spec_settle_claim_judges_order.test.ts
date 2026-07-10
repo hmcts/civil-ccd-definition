@@ -7,7 +7,7 @@ test.describe('1v2DS spec settle claim judges order', { tag: ['@civil-ccd-nightl
     DefendantSolicitor2SpecApiSteps,
     CaseRoleAssignmentApiSteps,
     CaseworkerApiSteps,
-    LegalAdvisorSteps,
+    LegalAdvisorApiSteps,
     HearingCenterAdminSpecSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v2DS();
@@ -18,8 +18,7 @@ test.describe('1v2DS spec settle claim judges order', { tag: ['@civil-ccd-nightl
     await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed1v2DS();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorSteps.LoginRegion1();
-    await LegalAdvisorSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
     await HearingCenterAdminSpecSteps.LoginRegion1();
     await HearingCenterAdminSpecSteps.SettleClaimJudgesOrder();
   });

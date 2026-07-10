@@ -6,7 +6,7 @@ test.describe('1v1 spec settle claim confirm paid in full', { tag: ['@civil-ccd-
     DefendantSolicitor1SpecApiSteps,
     CaseRoleAssignmentApiSteps,
     CaseworkerApiSteps,
-    LegalAdvisorSteps,
+    LegalAdvisorApiSteps,
     ClaimantSolicitorSpecSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
@@ -15,8 +15,7 @@ test.describe('1v1 spec settle claim confirm paid in full', { tag: ['@civil-ccd-
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorSteps.LoginRegion1();
-    await LegalAdvisorSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.SettleClaimMarkPaidInFull();
   });
