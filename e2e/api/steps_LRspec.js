@@ -1441,6 +1441,25 @@ module.exports = {
     return caseId;
   },
 
+  verifyEventsAvailable: async (user, state) => {
+    await assertCorrectEventsAreAvailableToUser(user, state);
+  },
+
+  verifyCaseState: async (expectedState) => {
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    assert.equal(response.state, expectedState,
+      `Expected case state ${expectedState} but got ${response.state}`);
+  },
+
+  verifyActiveJudgmentCancelled: async () => {
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const activeJudgment = response.case_data ? response.case_data.activeJudgment : null;
+    if (activeJudgment !== null && activeJudgment !== undefined) {
+      assert.equal(activeJudgment.state, 'CANCELLED',
+        `Expected activeJudgment.state CANCELLED but got ${activeJudgment.state}`);
+    }
+  },
+
   retrieveTaskDetails: async (user, caseNumber, taskId) => {
     return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
   },
