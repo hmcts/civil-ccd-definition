@@ -8,16 +8,15 @@ import DefendantResponseSpecType from '../../../../../constants/ccd-events/defen
 const yesNoSchema = z.enum(['Yes', 'No']);
 const nonEmptyString = z.string().min(1);
 
-const proceedWithClaim = (
+const defendantResponse = (
   claimType: ClaimType,
-  _claimantResponseType: ClaimantResponseSpecType,
   defendantResponseSpecType: DefendantResponseSpecType,
 ) => {
-  if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION) {
-    return {
-      applicant1PartAdmitConfirmAmountPaidSpec: yesNoSchema,
-    };
-  }
+  if(
+    defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION ||
+    defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION
+  )
+    return {};
 
   if (ClaimTypeHelper.isClaimant2(claimType)) {
     return {
@@ -30,27 +29,74 @@ const proceedWithClaim = (
   };
 };
 
-const intentionToSettleClaim = (
-  defendantResponseSpecType: DefendantResponseSpecType,
-  claimantResponseType: ClaimantResponseSpecType,
-) => {
-  if(
-    defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION &&
-    claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
-  ) {
+const defendantResponsePartAdmit = (defendantResponseSpecType: DefendantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.PART_ADMISSION) {
     return {
-      applicant1PartAdmitIntentionToSettleClaimSpec: yesNoSchema,
-      // applicant1PartAdmitRejectReasonSpec: nonEmptyString,
+      applicant1AcceptAdmitAmountPaidSpec: yesNoSchema,
     };
   }
 
   return {};
 };
 
-const determinationWithoutHearing = (
+const claimantDefenceResponseDocument = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
+  if(claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM)
+    return {
+      applicant1DefenceResponseDocumentSpec: z.looseObject({}),
+    };
+
+  return {};
+};
+
+const mediationContactInformation = (
+  defendantResponseSpecType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
   claimantResponseType: ClaimantResponseSpecType,
 ) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
+  if(claimTrack === ClaimTrack.SMALL_CLAIM && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM)
+    return {
+      app1MediationContactInfo: z.looseObject({}),
+    };
+
+  return {};
+};
+
+const mediationAvailability = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
+  if(claimTrack === ClaimTrack.SMALL_CLAIM && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM)
+    return {
+      app1MediationAvailability: z.looseObject({
+        isMediationUnavailablityExists: yesNoSchema,
+        unavailableDatesForMediation: z.array(z.looseObject({})).min(1),
+      }),
+    };
+
+  return {};
+};
+
+const determinationWithoutHearing = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (
     claimTrack === ClaimTrack.SMALL_CLAIM &&
     claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
@@ -58,6 +104,7 @@ const determinationWithoutHearing = (
     return {
       // deterWithoutHearing: z.looseObject({
       //   deterWithoutHearingYesNo: yesNoSchema,
+      //   deterWithoutHearingWhyNot: nonEmptyString,
       // }),
     }; 
   }
@@ -66,9 +113,13 @@ const determinationWithoutHearing = (
 };
 
 const fastTrackDq = (
+  defendantResponseSpecType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
   claimantResponseType: ClaimantResponseSpecType,
 ) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (
     claimTrack === ClaimTrack.FAST_CLAIM &&
     claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
@@ -105,32 +156,68 @@ const fastTrackDq = (
   return {};
 };
 
-const experts = (
+const intermediateTrackDq = (
+  defendantResponseSpecType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
   claimantResponseType: ClaimantResponseSpecType,
 ) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
+  if (
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM &&
+    claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
+  ) {
+    return {
+      applicant1DQFileDirectionsQuestionnaire: z.strictObject({
+        explainedToClient: z.array(nonEmptyString).min(1),
+        oneMonthStayRequested: yesNoSchema,
+        reactionProtocolCompliedWith: yesNoSchema,
+        reactionProtocolNotCompliedWithReason: nonEmptyString,
+      }),
+      applicant1DQFixedRecoverableCostsIntermediate: z.strictObject({
+        isSubjectToFixedRecoverableCostRegime: yesNoSchema,
+        band: nonEmptyString,
+        complexityBandingAgreed: yesNoSchema,
+        reasons: nonEmptyString,
+        frcSupportingDocument: z.looseObject({
+          document_url: nonEmptyString,
+          document_binary_url: nonEmptyString,
+          document_filename: nonEmptyString,
+        }),
+      }),
+      specApplicant1DQDisclosureOfElectronicDocuments: z.strictObject({
+        reachedAgreement: yesNoSchema,
+        agreementLikely: yesNoSchema,
+        reasonForNoAgreement: nonEmptyString,
+      }),
+      specApplicant1DQDisclosureOfNonElectronicDocuments: z.strictObject({
+        bespokeDirections: nonEmptyString,
+      }),
+      applicant1DQDisclosureReport: z.strictObject({
+        disclosureFormFiledAndServed: yesNoSchema,
+        disclosureProposalAgreed: yesNoSchema,
+        draftOrderNumber: nonEmptyString,
+      }),
+    };
+  }
+
+  return {};
+};
+
+const experts = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
-        applicant1DQExperts: z.strictObject({
-          expertRequired: yesNoSchema,
-          details: z.array(
-            z.strictObject({
-              id: nonEmptyString,
-              value: z.looseObject({
-                partyID: nonEmptyString,
-                firstName: nonEmptyString,
-                lastName: nonEmptyString,
-                dateAdded: nonEmptyString,
-                eventAdded: nonEmptyString,
-                phoneNumber: nonEmptyString,
-                whyRequired: nonEmptyString,
-                emailAddress: nonEmptyString,
-                estimatedCost: nonEmptyString,
-              }),
-            }),
-          ).min(1),
-        }),
+        applicant1RespondToClaimExperts: z.looseObject({}),
+        applicant1ClaimExpertSpecRequired: yesNoSchema,
       };
     }
 
@@ -161,9 +248,13 @@ const experts = (
 };
 
 const witnesses = (
+  defendantResponseSpecType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
   claimantResponseType: ClaimantResponseSpecType,
 ) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
@@ -207,7 +298,13 @@ const witnesses = (
   return {};
 };
 
-const language = (claimantResponseType: ClaimantResponseSpecType) => {
+const language = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     return {
       applicant1DQLanguage: z.strictObject({
@@ -221,9 +318,13 @@ const language = (claimantResponseType: ClaimantResponseSpecType) => {
 };
 
 const hearing = (
+  defendantResponseSpecType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
   claimantResponseType: ClaimantResponseSpecType,
 ) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
@@ -244,7 +345,13 @@ const hearing = (
   return {};
 };
 
-const requestedCourtLocation = (claimantResponseType: ClaimantResponseSpecType) => {
+const requestedCourtLocation = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     return {
       applicant1DQRequestedCourt: z.looseObject({}),
@@ -258,7 +365,13 @@ const requestedCourtLocation = (claimantResponseType: ClaimantResponseSpecType) 
   return {};
 };
 
-const hearingSupport = (claimantResponseType: ClaimantResponseSpecType) => {
+const hearingSupport = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimantResponseType: ClaimantResponseSpecType,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
     return {
       applicant1DQHearingSupport: z.strictObject({
@@ -271,17 +384,26 @@ const hearingSupport = (claimantResponseType: ClaimantResponseSpecType) => {
   return {};
 };
 
-const vulnerabilityQuestions = {
-  applicant1DQVulnerabilityQuestions: z.strictObject({
-    vulnerabilityAdjustmentsRequired: yesNoSchema,
-    vulnerabilityAdjustments: nonEmptyString,
-  }),
+const vulnerabilityQuestions = (defendantResponseSpecType: DefendantResponseSpecType) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
+  return {
+    applicant1DQVulnerabilityQuestions: z.strictObject({
+      vulnerabilityAdjustmentsRequired: yesNoSchema,
+      vulnerabilityAdjustments: nonEmptyString,
+    }),
+  };
 };
 
 const application = (
+  defendantResponseSpecType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
   claimantResponseType: ClaimantResponseSpecType,
 ) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
   if (
     claimTrack === ClaimTrack.FAST_CLAIM &&
     claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM
@@ -297,15 +419,22 @@ const application = (
   return {};
 };
 
-const undefine = {
-  nextDeadline: z.undefined().optional(),
+const undefine = (defendantResponseSpecType: DefendantResponseSpecType) => {
+  return {
+    nextDeadline: z.undefined().optional(),
+  };
 };
 
 const claimantResponseSpecSchemaComponents = {
-  proceedWithClaim,
-  intentionToSettleClaim,
+  undefine,
+  defendantResponse,
+  defendantResponsePartAdmit,
+  claimantDefenceResponseDocument,
+  mediationContactInformation,
+  mediationAvailability,
   determinationWithoutHearing,
   fastTrackDq,
+  intermediateTrackDq,
   experts,
   witnesses,
   language,
@@ -314,7 +443,6 @@ const claimantResponseSpecSchemaComponents = {
   hearingSupport,
   vulnerabilityQuestions,
   application,
-  undefine,
 };
 
 export default claimantResponseSpecSchemaComponents;

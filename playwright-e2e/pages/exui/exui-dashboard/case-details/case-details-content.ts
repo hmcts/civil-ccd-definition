@@ -41,6 +41,10 @@ export const tabs = {
     title: 'Case Flags',
     selector: "div[role='tab'] >> 'Case Flags'",
   },
+  hearings: {
+    title: 'Hearings',
+    selector: "div[role='tab'] >> 'Hearings'",
+  },
 };
 
 export const dropdowns = {
@@ -55,6 +59,28 @@ export const buttons = {
     title: 'go',
     selector: "button[type='submit']",
   },
+  continue: {
+    title: 'Continue',
+    selector: 'button.govuk-button',
+  },
+  submitRequest: {
+    title: 'Submit request',
+    selector: "button[name='Submit request']",
+  },
+  viewHearingDetails: {
+    label: 'View details',
+    selector: 'button[id^="link-view-details"]',
+  },
+  cancelHearing: {
+    label: 'Cancel',
+    selector: 'button[id^="link-cancel"]',
+  },
+};
+
+export const links = {
+  requestHearing: {
+    label: 'Request a hearing',
+  },
 };
 
 export const containers = {
@@ -66,9 +92,13 @@ export const containers = {
   },
 };
 
+export const hearingsTabSubheadings = {
+  currentAndUpcoming: 'Current and upcoming',
+  pastOrCancelled: 'Past or cancelled',
+}
+
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
   `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;
 
 export const caseFlagsNoticeText = (activeCaseFlags: number) =>
   `There ${activeCaseFlags === 1 ? 'is' : 'are'} ${activeCaseFlags} active flag${activeCaseFlags === 1 ? '' : 's'} on this case.`;
-

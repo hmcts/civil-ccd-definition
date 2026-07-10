@@ -13,60 +13,78 @@ import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/
 import createClaimData from './create-claim-data-components';
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimDataBuilder extends BaseDataBuilder {
-  async buildFastTrack1v1() {
+  async buildFast1v1() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildFastTrack1v2DS() {
+  async buildFast1v2DS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildFastTrack1v2SS() {
+  async buildFast1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildFastTrack2v1() {
+  async buildFast2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildSmallTrack1v1() {
+  async buildIntermediate1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediate1v2SS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildIntermediate2v1() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildSmall1v1() {
     return this.buildData();
   }
 
-  async buildSmallTrack2v1() {
+  async buildSmall2v1() {
     return this.buildData({ claimType: ClaimType.TWO_VS_ONE });
   }
 
-  async buildSmallTrack1v2SS() {
+  async buildSmall1v2SS() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }
 
-  async buildSmallTrack1v2DS() {
+  async buildSmall1v2DS() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
-  async buildSmallTrack1vLIP() {
+  async buildSmall1vLIP() {
     return this.buildData({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
-  async buildSmallTrack1v2LIPs() {
+  async buildSmall1v2LIPs() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LIPS });
   }
 
-  async buildSmallTrack1v2LIPLR() {
+  async buildSmall1v2LIPLR() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LIP_LR });
   }
 
-  async buildSmallTrack1v2LRLIP() {
+  async buildSmall1v2LRLIP() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 

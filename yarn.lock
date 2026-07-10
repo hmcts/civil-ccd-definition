@@ -654,12 +654,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^24.0.0":
-  version: 24.12.4
-  resolution: "@types/node@npm:24.12.4"
+"@types/node@npm:^24.1.0":
+  version: 24.13.3
+  resolution: "@types/node@npm:24.13.3"
   dependencies:
-    undici-types: "npm:~7.16.0"
-  checksum: 10/4e5ce6faaf0e6f291114d6ac14fe546d491812b306107620802d5bef00ca36fb290637e79ec4fc24f33214f78f58c9b63254bd0ce94788bebfec03f26d45f2ea
+    undici-types: "npm:~7.18.0"
+  checksum: 10/cfa6ed1e16c4624d1e83b09aeb72a2f50a7e17d837bf5a1259a52e346f33a693afd289402d3b6118ce3abea7aff35f2a4f13a0284b96bc5807a50f0e22e1ec77
   languageName: node
   linkType: hard
 
@@ -1012,14 +1012,14 @@ __metadata:
   linkType: hard
 
 "allure-codeceptjs@npm:^3.4.2":
-  version: 3.10.1
-  resolution: "allure-codeceptjs@npm:3.10.1"
+  version: 3.10.2
+  resolution: "allure-codeceptjs@npm:3.10.2"
   dependencies:
-    allure-js-commons: "npm:3.10.1"
-    allure-mocha: "npm:3.10.1"
+    allure-js-commons: "npm:3.10.2"
+    allure-mocha: "npm:3.10.2"
   peerDependencies:
     codeceptjs: ">=2.3.6"
-  checksum: 10/12b9793b03c7f7639c1b339c08e33aeb83602fa8e15d30ea451023ba64d3d25e70d26cab7387e7e7f25cf8dfb88d909d2bceb8d881f1410598808a6ce3a474ac
+  checksum: 10/99d061d71bc9c892ca239e6e81e30ff3e4254bde02f57d90052f9412ebaac62eb2243f8158548f9aed186a894e245583e427d65be5cfcb1f3ecde06f3541e75a
   languageName: node
   linkType: hard
 
@@ -1032,39 +1032,48 @@ __metadata:
   languageName: node
   linkType: hard
 
-"allure-js-commons@npm:3.10.1, allure-js-commons@npm:^3.4.2":
-  version: 3.10.1
-  resolution: "allure-js-commons@npm:3.10.1"
+"allure-js-commons@npm:2.15.1":
+  version: 2.15.1
+  resolution: "allure-js-commons@npm:2.15.1"
+  dependencies:
+    md5: "npm:^2.3.0"
+    properties: "npm:^1.2.1"
+    strip-ansi: "npm:^5.2.0"
+  checksum: 10/ceade5bf806b454cab4d5de4bb21d8ec08514d27fe2a24ad76c566ea2f76214fc25fd2d9c86291bfada52e867587dcb68335719b8089a8dea83bbace9a8b91b9
+  languageName: node
+  linkType: hard
+
+"allure-js-commons@npm:3.10.2, allure-js-commons@npm:^3.4.2":
+  version: 3.10.2
+  resolution: "allure-js-commons@npm:3.10.2"
   dependencies:
     md5: "npm:^2.3.0"
   peerDependencies:
-    allure-playwright: 3.10.1
+    allure-playwright: 3.10.2
   peerDependenciesMeta:
     allure-playwright:
       optional: true
-  checksum: 10/890e22f3f002baf6c9e95a16d10b6d954a10709ac7f918abdb135cf554219220c1b5ec29728ad952c87cf416d514ab7d9656d0b37dece98863cf09046fc837e5
+  checksum: 10/afb8a946c1c9a36abf3b3493d669fa671743880ba9aa41bc8b5c152273569d3f657f88e072cd9eb2fa60b17eb6552fa794fd93ccf6bd3286855ddb25b56702d7
   languageName: node
   linkType: hard
 
-"allure-mocha@npm:3.10.1":
-  version: 3.10.1
-  resolution: "allure-mocha@npm:3.10.1"
+"allure-mocha@npm:3.10.2":
+  version: 3.10.2
+  resolution: "allure-mocha@npm:3.10.2"
   dependencies:
-    allure-js-commons: "npm:3.10.1"
+    allure-js-commons: "npm:3.10.2"
   peerDependencies:
     mocha: ">=6.2.0"
-  checksum: 10/e5a597635a99711704b74b895e6913e6642e1d61236e2b834089d85fa4b2cd4de7e6f83f6864293b2a4be3a4d93e993114c743130b7239e430f76bd64df7054a
+  checksum: 10/4072c3d67e9777330cecf0093139bef35427459c99e374441aac1b904e1d2e0f8239f876e7c0fdec53e1fa4d3d23803ce27b82413fb75477789c69f6af6e1fa7
   languageName: node
   linkType: hard
 
-"allure-playwright@npm:3.10.1":
-  version: 3.10.1
-  resolution: "allure-playwright@npm:3.10.1"
+"allure-playwright@npm:2.15.1":
+  version: 2.15.1
+  resolution: "allure-playwright@npm:2.15.1"
   dependencies:
-    allure-js-commons: "npm:3.10.1"
-  peerDependencies:
-    "@playwright/test": ">=1.53.0"
-  checksum: 10/372a0766a4274ebbd102a435dafd588131c403ec345a163ad450638e65f763ca6936d96134c9a6493bc2beba0fe06e20e8a0c24090f54465687dba69624aa865
+    allure-js-commons: "npm:2.15.1"
+  checksum: 10/b8148cb55b7f0f8d5ef831c8383eea729baa261e405975d8d837cf784912a57618bad5be58c4057ecc7c6873a6b7d6aafcd87f2b4199db6a1bf06d0f9987a9e3
   languageName: node
   linkType: hard
 
@@ -1859,13 +1868,13 @@ __metadata:
     "@axe-core/playwright": "npm:^4.10.0"
     "@eslint/js": "npm:^9.11.0"
     "@playwright/test": "npm:1.60.0"
-    "@types/node": "npm:^24.0.0"
+    "@types/node": "npm:^24.1.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
     allure-codeceptjs: "npm:^3.4.2"
     allure-commandline: "npm:^2.29.0"
     allure-js-commons: "npm:^3.4.2"
-    allure-playwright: "npm:3.10.1"
+    allure-playwright: "npm:2.15.1"
     chai: "npm:^4.3.4"
     codeceptjs: "npm:3.5.11"
     custom-eslint-plugin: "portal:./plugins/custom-eslint-plugins"
@@ -1885,7 +1894,7 @@ __metadata:
     mocha-multi: "npm:^1.1.6"
     mochawesome: "npm:^7.0.1"
     node-cache: "npm:^5.1.2"
-    node-fetch: "npm:^2.6.9"
+    node-fetch: "npm:^2.6.7"
     pixelmatch: "npm:5.3.0"
     playwright-core: "npm:1.60.0"
     pngjs: "npm:7.0.0"
@@ -5183,7 +5192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.6.9":
+"node-fetch@npm:^2.6.7":
   version: 2.7.0
   resolution: "node-fetch@npm:2.7.0"
   dependencies:
@@ -5815,6 +5824,13 @@ __metadata:
     retry: "npm:^0.12.0"
     signal-exit: "npm:^3.0.2"
   checksum: 10/000a4875f543f591872b36ca94531af8a6463ddb0174f41c0b004d19e231d7445268b422ff1ea595e43d238655c702250cd3d27f408e7b9d97b56f1533ba26bf
+  languageName: node
+  linkType: hard
+
+"properties@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "properties@npm:1.2.1"
+  checksum: 10/f8a4b4210a834e45a4b1af493b87955af8aff1245721a1806bb12e17c7bee0cff4ab5e8d2f96714379d156dce4e89f6ed23d685fb8f53a869a433166e3f12fd6
   languageName: node
   linkType: hard
 
@@ -6888,10 +6904,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~7.16.0":
-  version: 7.16.0
-  resolution: "undici-types@npm:7.16.0"
-  checksum: 10/db43439f69c2d94cc29f75cbfe9de86df87061d6b0c577ebe9bb3255f49b22c50162a7d7eb413b0458b6510b8ca299ac7cff38c3a29fbd31af9f504bcf7fbc0d
+"undici-types@npm:~7.18.0":
+  version: 7.18.2
+  resolution: "undici-types@npm:7.18.2"
+  checksum: 10/e61a5918f624d68420c3ca9d301e9f15b61cba6e97be39fe2ce266dd6151e4afe424d679372638826cb506be33952774e0424141200111a9857e464216c009af
   languageName: node
   linkType: hard
 
