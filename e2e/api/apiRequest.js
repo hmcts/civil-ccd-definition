@@ -287,7 +287,7 @@ module.exports = {
     return response;
   },
   validatePage: async (eventName, pageId, caseData, caseId, expectedStatus = 200) => {
-    return restHelper.retriedRequest(`${getCcdDataStoreBaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
+    return restHelper.retriedJsonRequest(`${getCcdDataStoreBaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
       {
         case_reference: caseId,
         data: caseData,
