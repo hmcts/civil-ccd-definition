@@ -24,7 +24,7 @@ test.describe(
       await JudgeSteps.SdoTrail();
       await ClaimantSolicitorApiSteps.EvidenceUploadFast();
       await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
-      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+      await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
       await JudgeApiSteps.GenerateDirectionsOrderAssistedOrder();
@@ -49,7 +49,7 @@ test.describe(
       await JudgeSteps.SdoFast();
       await ClaimantSolicitorApiSteps.EvidenceUploadFast();
       await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
-      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+      await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
     });

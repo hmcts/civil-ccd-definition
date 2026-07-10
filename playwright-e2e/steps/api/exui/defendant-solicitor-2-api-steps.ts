@@ -90,7 +90,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
   
       const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
       const defendantResponseEventData =
-        await defendantResponseDataBuilder.buildDS2FastFullDefenceData();
+        await defendantResponseDataBuilder.buildDS2FastFullDefence();
       
   
       await super.submitCCDEvent(
@@ -115,7 +115,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS2FastTrackFullDefence1v2DSData();
+      await defendantResponseDataBuilder.buildDS2FastTrackFullDefence1v2DS();
 
     await super.submitCCDEvent(
       defendantSolicitor2User,

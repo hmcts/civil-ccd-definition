@@ -12,45 +12,51 @@ import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-respo
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
-  async buildDS1SmallFullDefenceData() {
+  async buildDS1SmallFullDefence() {
     return this.buildData();
   }
 
-  async buildDS1SmallCounterClaimData() {
-    return this.buildData({
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildDS1FastFullDefenceData() {
+  async buildDS1FastFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildDS1FastCounterClaimData() {
+  async buildDS1IntermediateFullDefence() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildDS1CounterClaim() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
 
-  async buildDS1FastPartAdmitImmediatelyData() {
+  async buildDS1FastPartAdmitImmediately() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
     });
   }
 
-  async buildDS1SmallPartAdmitImmediatelyData() {
+  async buildDS1IntermediatePartAdmitImmediately() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallPartAdmitImmediately() {
     return this.buildData({
       claimTrack: ClaimTrack.SMALL_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
     });
   }
 
-  async buildDS1FastPartAdmitSetDate1v2SSData() {
+  async buildDS1FastPartAdmitSetDate1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -59,7 +65,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1SmallPartAdmitSetDate1v2SSData() {
+  async buildDS1SmallPartAdmitSetDate1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
@@ -68,7 +74,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1FastPartAdmitRepayment2v1Data() {
+  async buildDS1FastPartAdmitRepayment2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -77,7 +83,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1SmallPartAdmitRepayment2v1Data() {
+  async buildDS1SmallPartAdmitRepayment2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.SMALL_CLAIM,
@@ -86,28 +92,35 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS2FastFullDefenceData() {
+  async buildDS2FastFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
-  async buildDS2SmallFullDefenceData() {
+  async buildDS2IntermediateFullDefence() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
+  async buildDS2SmallFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.SMALL_CLAIM,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
-  async buildDS1Fast2v1FullDefenceData() {
+  async buildDS1Fast2v1FullDefence() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildDS1FastCounterClaim2v1Data() {
+  async buildDS1CounterClaim2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -115,22 +128,21 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1SmallCounterClaim2v1Data() {
-    return this.buildData({
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildDS1FastFullDefence1v2SSData() {
+  async buildDS1FastFullDefence1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildDS1FastCounterClaim1v2SSData() {
+  async buildDS1IntermediateFullDefence1v2SS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildDS1CounterClaim1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -138,29 +150,21 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1SmallFullDefence1v2SSData() {
+  async buildDS1SmallFullDefence1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
     });
   }
 
-  async buildDS1SmallCounterClaim1v2SSData() {
-    return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      defendantResponseSpecType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildDS1FullAdmitImmediatelyData() {
+  async buildDS1FullAdmitImmediately() {
     return this.buildData({
       defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
       paymentTypeSpec: PaymentTypeSpec.IMMEDIATELY,
     });
   }
 
-  async buildDS1FullAdmitSetDate1v2SSData() {
+  async buildDS1FullAdmitSetDate1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
@@ -168,7 +172,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1FullAdmitRepayment2v1Data() {
+  async buildDS1FullAdmitRepayment2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
@@ -198,8 +202,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? defendantSolicitor1User
         : defendantSolicitor2User;
+    let frcSupportingDocument;
     const defenceResponseDocumentSpec =
       await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
+    if(claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+      frcSupportingDocument =
+        await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
+    }
 
     const eventData: Record<string, unknown> = {};
 
@@ -227,6 +236,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       defendantResponseSpecData.mediationAvailability(defendantResponseSpecType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecData.deterWithoutHearing(defendantResponseSpecType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecData.fastTrackDq(defendantResponseSpecType, claimTrack, defendantSolicitorParty),
+      defendantResponseSpecData.intermediateTrackDq(defendantResponseSpecType, claimTrack, defendantSolicitorParty, frcSupportingDocument),
       defendantResponseSpecData.experts(defendantResponseSpecType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecData.witnesses(defendantResponseSpecType, claimTrack, defendantSolicitorParty),
       defendantResponseSpecData.language(defendantResponseSpecType, defendantSolicitorParty),

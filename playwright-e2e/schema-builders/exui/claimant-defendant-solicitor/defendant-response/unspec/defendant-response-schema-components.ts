@@ -108,6 +108,45 @@ const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => 
   return {};
 };
 
+const intermediateTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
+        ? 'respondent2DQFileDirectionsQuestionnaire'
+        : 'respondent1DQFileDirectionsQuestionnaire']: z.strictObject({
+        explainedToClient: z.array(nonEmptyString).min(1),
+        oneMonthStayRequested: yesNoSchema,
+        reactionProtocolCompliedWith: yesNoSchema,
+        reactionProtocolNotCompliedWithReason: nonEmptyString,
+      }),
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
+        ? 'respondent2DQFixedRecoverableCostsIntermediate'
+        : 'respondent1DQFixedRecoverableCostsIntermediate']: z.strictObject({
+        isSubjectToFixedRecoverableCostRegime: yesNoSchema,
+        band: nonEmptyString,
+        complexityBandingAgreed: yesNoSchema,
+        reasons: nonEmptyString,
+        frcSupportingDocument: z.looseObject({}),
+      }),
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
+        ? 'respondent2DQDisclosureOfElectronicDocuments'
+        : 'respondent1DQDisclosureOfElectronicDocuments']: z.strictObject({
+        reachedAgreement: yesNoSchema,
+        agreementLikely: yesNoSchema,
+      }),
+      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
+        ? 'respondent2DQDisclosureOfNonElectronicDocuments'
+        : 'respondent1DQDisclosureOfNonElectronicDocuments']: z.strictObject({
+        directionsForDisclosureProposed: yesNoSchema,
+        standardDirectionsRequired: yesNoSchema,
+        bespokeDirections: nonEmptyString,
+      }),
+    };
+  }
+
+  return {};
+};
+
 const experts = (defendantSolicitorParty: Party) => ({
   [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
     ? 'respondent2DQExperts'
@@ -329,6 +368,7 @@ const defendantResponseSchemaComponents = {
   upload,
   deterWithoutHearing,
   fastTrackDq,
+  intermediateTrackDq,
   experts,
   witnesses,
   language,
