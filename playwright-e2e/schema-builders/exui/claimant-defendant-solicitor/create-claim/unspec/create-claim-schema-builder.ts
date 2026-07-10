@@ -37,6 +37,24 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
+  async buildIntermediate1v1(): Promise<z.ZodType> {
+    return this.buildSchema({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediate1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildIntermediate2v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   async buildSmall1v1(): Promise<z.ZodType> {
     return this.buildSchema();
   }

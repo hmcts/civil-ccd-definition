@@ -8,7 +8,7 @@ test.describe(
       ClaimantSolicitorSteps,
       ClaimantSolicitorApiSteps,
       DefendantSolicitor1ApiSteps,
-      JudgeSteps,
+      JudgeApiSteps,
       HearingCenterAdminApiSteps,
       CaseRoleAssignmentApiSteps,
     }) => {
@@ -20,11 +20,10 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
       await ClaimantSolicitorApiSteps.RespondFastProceed();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.SdoFast();
+      await JudgeApiSteps.SdoFast();
       await ClaimantSolicitorApiSteps.EvidenceUploadFast();
       await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
-      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+      await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await ClaimantSolicitorSteps.Login();
       await ClaimantSolicitorSteps.DiscontinueClaim1v1();
     });

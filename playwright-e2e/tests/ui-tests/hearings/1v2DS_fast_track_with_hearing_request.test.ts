@@ -11,7 +11,7 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
       DefendantSolicitor2ApiSteps,
-      JudgeSteps,
+      JudgeApiSteps,
       HearingCenterAdminSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
@@ -22,9 +22,8 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondFastFullDefence1v2DS();
       await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
-      await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.SdoFast();
+      await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();;
+      await JudgeApiSteps.SdoFast();
       await HearingCenterAdminSteps.LoginRegion1();
       await HearingCenterAdminSteps.RequestNewHearing();
       await HearingCenterAdminSteps.UpdateHearing();

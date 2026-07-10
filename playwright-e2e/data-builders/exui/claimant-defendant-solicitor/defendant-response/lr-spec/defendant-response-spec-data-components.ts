@@ -587,6 +587,70 @@ const fastTrackDq = (defendantResponseType: DefendantResponseSpecType, claimTrac
   return {};
 };
 
+const intermediateTrackDq = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+  frcSupportingDocument?: UploadDocumentValue,
+) => {
+  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
+    if(claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+      return {
+        FileDirectionsQuestionnaire: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondent1DQFileDirectionsQuestionnaire'
+            : 'respondent2DQFileDirectionsQuestionnaire']: {
+            oneMonthStayRequested: 'Yes',
+            reactionProtocolCompliedWith: 'No',
+            reactionProtocolNotCompliedWithReason: `Reaction protocol not complied with reason - ${defendantSolicitorParty.key}`,
+            explainedToClient: [
+              'CONFIRM'
+            ],
+          },
+        },
+        FixedRecoverableCostsIntermediate: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondent1DQFixedRecoverableCostsIntermediate'
+            : 'respondent2DQFixedRecoverableCostsIntermediate']: {
+            isSubjectToFixedRecoverableCostRegime: 'Yes',
+            band: 'BAND_2',
+            complexityBandingAgreed: 'Yes',
+            reasons: `Recoverable costs reason - ${defendantSolicitorParty.key}`,
+            frcSupportingDocument,
+          },
+        },
+        DisclosureOfElectronicDocumentsLRspec: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'specRespondent1DQDisclosureOfElectronicDocuments'
+            : 'specRespondent2DQDisclosureOfElectronicDocuments']: {
+            reachedAgreement: 'No',
+            agreementLikely: 'No',
+            reasonForNoAgreement: `Reason for no agreement - ${defendantSolicitorParty.key}`,
+          },
+        },
+        DisclosureOfNonElectronicDocumentsLRspec: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'specRespondent1DQDisclosureOfNonElectronicDocuments'
+            : 'specRespondent2DQDisclosureOfNonElectronicDocuments']: {
+            bespokeDirections: `Directions are proposed for disclosure - ${defendantSolicitorParty.key}`,
+          },
+        },
+        DisclosureReport: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondent1DQDisclosureReport'
+            : 'respondent2DQDisclosureReport']: {
+            disclosureFormFiledAndServed: 'Yes',
+            disclosureProposalAgreed: 'Yes',
+            draftOrderNumber: '12345',
+          },
+        },
+      };
+    }
+  }
+
+  return {};
+};
+
 const deterWithoutHearing = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
     if(claimTrack === ClaimTrack.SMALL_CLAIM) {
@@ -627,30 +691,29 @@ const experts = (defendantResponseType: DefendantResponseSpecType, claimTrack: C
             : 'responseClaimExpertSpecRequired2']: 'Yes',
         },
       };
-    } else if(claimTrack === ClaimTrack.FAST_CLAIM) {
-      const defendantExperts =
-        defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? [partys.DEFENDANT_1_EXPERT_1, partys.DEFENDANT_1_EXPERT_2]
-          : [partys.DEFENDANT_2_EXPERT_1, partys.DEFENDANT_2_EXPERT_2];
+    } 
+    const defendantExperts =
+      defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? [partys.DEFENDANT_1_EXPERT_1, partys.DEFENDANT_1_EXPERT_2]
+        : [partys.DEFENDANT_2_EXPERT_1, partys.DEFENDANT_2_EXPERT_2];
 
-      return {
-        Experts: {
-          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? 'respondent1DQExperts'
-            : 'respondent2DQExperts']: {
-            expertRequired: 'Yes',
-            expertReportsSent: 'YES',
-            jointExpertSuitable: 'Yes',
-            details: defendantExperts.map((expertParty) =>
-              CaseDataHelper.setIdToData({
-                ...CaseDataHelper.buildExpertData(expertParty),
-                partyName: undefined,
-              }),
-            ),
-          },
+    return {
+      Experts: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQExperts'
+          : 'respondent2DQExperts']: {
+          expertRequired: 'Yes',
+          expertReportsSent: 'YES',
+          jointExpertSuitable: 'Yes',
+          details: defendantExperts.map((expertParty) =>
+            CaseDataHelper.setIdToData({
+              ...CaseDataHelper.buildExpertData(expertParty),
+              partyName: undefined,
+            }),
+          ),
         },
-      };
-    }
+      },
+    };
   }
 
   return {};
@@ -681,37 +744,36 @@ const witnesses = (defendantResponseType: DefendantResponseSpecType, claimTrack:
       };
     }
 
-    else if(claimTrack === ClaimTrack.FAST_CLAIM) {
-      const defendantWitnesses =
-        defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? [partys.DEFENDANT_1_WITNESS_1, partys.DEFENDANT_1_WITNESS_2]
-          : [partys.DEFENDANT_2_WITNESS_1, partys.DEFENDANT_2_WITNESS_2];
+    
+    const defendantWitnesses =
+      defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+        ? [partys.DEFENDANT_1_WITNESS_1, partys.DEFENDANT_1_WITNESS_2]
+        : [partys.DEFENDANT_2_WITNESS_1, partys.DEFENDANT_2_WITNESS_2];
 
-      const witnessDetails = defendantWitnesses.map((witnessParty) =>
-        CaseDataHelper.setIdToData({
-          ...CaseDataHelper.buildWitnessData(witnessParty),
-          partyName: undefined,
-        }),
-      );
+    const witnessDetails = defendantWitnesses.map((witnessParty) =>
+      CaseDataHelper.setIdToData({
+        ...CaseDataHelper.buildWitnessData(witnessParty),
+        partyName: undefined,
+      }),
+    );
 
-      if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-        return {
-          Witnesses: {
-            respondent1DQWitnessesRequiredSpec: 'Yes',
-            respondent1DQWitnessesDetailsSpec: witnessDetails,
-          },
-        };
-      }
-
+    if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
       return {
         Witnesses: {
-          respondent2DQWitnesses: {
-            witnessesToAppear: 'Yes',
-            details: witnessDetails,
-          },
+          respondent1DQWitnessesRequiredSpec: 'Yes',
+          respondent1DQWitnessesDetailsSpec: witnessDetails,
         },
       };
     }
+
+    return {
+      Witnesses: {
+        respondent2DQWitnesses: {
+          witnessesToAppear: 'Yes',
+          details: witnessDetails,
+        },
+      },
+    };
   }
 
   return {};
@@ -765,17 +827,15 @@ const hearing = (defendantResponseType: DefendantResponseSpecType, claimTrack: C
       };
     }
 
-    if(claimTrack === ClaimTrack.FAST_CLAIM) {
-      return {
-        HearingLRspec: {
-          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? 'respondent1DQHearing'
-            : 'respondent2DQHearing']: {
-            unavailableDatesRequired: 'No',
-          },
+    return {
+      HearingLRspec: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQHearing'
+          : 'respondent2DQHearing']: {
+          unavailableDatesRequired: 'No',
         },
-      };
-    }
+      },
+    };
   }
 
   return {};
@@ -849,21 +909,23 @@ const vulnerabilityQuestions = (defendantResponseType: DefendantResponseSpecType
 
 const applications = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
   if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack !== ClaimTrack.SMALL_CLAIM) {
-      return {
-        Applications: {
-          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? 'additionalInformationForJudge'
-            : 'additionalInformationForJudge2']: `Additional information - ${defendantSolicitorParty.key}`,
-          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? 'respondent1DQFutureApplications'
-            : 'respondent2DQFutureApplications']: {
-            intentionToMakeFutureApplications: 'Yes',
-            whatWillFutureApplicationsBeMadeFor: `Reason - ${defendantSolicitorParty.key}`,
-          },
-        },
-      };
+    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+      return {};
     }
+
+    return {
+      Applications: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'additionalInformationForJudge'
+          : 'additionalInformationForJudge2']: `Additional information - ${defendantSolicitorParty.key}`,
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQFutureApplications'
+          : 'respondent2DQFutureApplications']: {
+          intentionToMakeFutureApplications: 'Yes',
+          whatWillFutureApplicationsBeMadeFor: `Reason - ${defendantSolicitorParty.key}`,
+        },
+      },
+    };
   }
 
   return {};
@@ -916,6 +978,7 @@ const defendantResponseSpecData = {
   mediationAvailability,
   deterWithoutHearing,
   fastTrackDq,
+  intermediateTrackDq,
   experts,
   witnesses,
   language,

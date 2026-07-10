@@ -22,6 +22,9 @@ module.exports = {
       //events.ENTER_BREATHING_SPACE_SPEC,
       //events.LIFT_BREATHING_SPACE_SPEC,
     ],
+    JUDGMENT_REQUESTED: [
+      events.CHANGE_SOLICITOR_EMAIL,
+    ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
       events.CHANGE_SOLICITOR_EMAIL,
@@ -49,6 +52,11 @@ module.exports = {
       events.INFORM_AGREED_EXTENSION_DATE_SPEC,
       events.CHANGE_SOLICITOR_EMAIL,
     ],
+    JUDGMENT_REQUESTED: [
+      events.DEFENDANT_RESPONSE_SPEC,
+      events.INFORM_AGREED_EXTENSION_DATE_SPEC,
+      events.CHANGE_SOLICITOR_EMAIL,
+    ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
       events.ACKNOWLEDGEMENT_OF_SERVICE,
@@ -72,6 +80,11 @@ module.exports = {
       events.ADD_CASE_NOTE
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
+      events.CASE_PROCEEDS_IN_CASEMAN,
+      events.AMEND_PARTY_DETAILS,
+      events.ADD_CASE_NOTE
+    ],
+    JUDGMENT_REQUESTED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE

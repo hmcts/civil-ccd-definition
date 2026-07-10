@@ -153,7 +153,7 @@
     "@axe-core/playwright": "^4.10.0",
     "@eslint/js": "^9.11.0",
     "@playwright/test": "1.60.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^24.1.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "allure-codeceptjs": "^3.4.2",
@@ -179,7 +179,7 @@
     "mocha-multi": "^1.1.6",
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.9",
+    "node-fetch": "^2.6.7",
     "playwright-core": "1.60.0",
     "prettier": "^3.3.3",
     "proper-lockfile": "^4.1.2",
@@ -201,6 +201,9 @@
     "minimatch": "^3.0.5"
   },
   "packageManager": "yarn@4.10.3",
+  "engines": {
+    "node": ">=24.18.0"
+  },
   "dependencies": {
     "pixelmatch": "5.3.0",
     "pngjs": "7.0.0"

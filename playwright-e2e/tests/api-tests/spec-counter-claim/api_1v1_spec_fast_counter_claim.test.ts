@@ -9,6 +9,6 @@ test.describe('1v1 spec fast counter claim api journey', { tag: '@civil-service-
     await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondFastCounterClaim();
+    await DefendantSolicitor1SpecApiSteps.RespondCounterClaim();
   });
 });
