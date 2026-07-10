@@ -47,6 +47,7 @@ run_functional_test_groups() {
 }
 
 run_functional_tests() {
+  yarn setup
   echo "Running all functional tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
     yarn test:civil-ccd-master
