@@ -10,43 +10,61 @@ import defendantResponseDataComponents from './defendant-response-data-component
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
-  async buildDS1SmallFullDefence1v1Data() {
+  async buildDS1SmallFullDefence1v1() {
     return this.buildData();
   }
 
-  async buildDS1FastFullDefence2v1Data() {
+  async buildDS1FastFullDefence2v1() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
     });
   }
 
-  async buildDS1FastFullDefence1v2SSData() {
+  async buildDS1IntermediateFullDefence2v1() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+    });
+  }
+
+  async buildDS1FastFullDefence1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
     });
   }
 
-  async buildDS1FastTrackFullDefence1v2DSData() {
+  async buildDS1IntermediateFullDefence1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildDS1FastTrackFullDefence1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
     });
   }
   
-  async buildDS1FastFullDefenceData() {
+  async buildDS1FastFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildDS2FastFullDefenceData() {
+  async buildDS1IntermediateFullDefence() {
+    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildDS2FastFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
-  async buildDS2FastTrackFullDefence1v2DSData() {
+  async buildDS2FastTrackFullDefence1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
@@ -68,6 +86,7 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     } = {}
   ) {
     const { civilServiceRequests } = this.requestsFactory;
+    let frcSupportingDocument;
     const defendantSolicitorUser =
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? defendantSolicitor1User
@@ -75,6 +94,11 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     const defenceDocument = await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
     const draftDirectionsDocument =
       await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
+    if(claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+      frcSupportingDocument =
+        await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
+    }
+    
 
     const eventData: Record<string, unknown> = {};
 
@@ -86,12 +110,13 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
       defendantResponseDataComponents.solicitorReferences(this.ccdCaseData, defendantSolicitorParty),
       defendantResponseDataComponents.upload(defenceDocument, defendantSolicitorParty),
       defendantResponseDataComponents.fastTrackDq(claimTrack, defendantSolicitorParty),
+      defendantResponseDataComponents.intermediateTrackDq(claimTrack, defendantSolicitorParty, frcSupportingDocument),
       defendantResponseDataComponents.deterWithoutHearing(claimTrack, defendantSolicitorParty),
       defendantResponseDataComponents.experts(defendantSolicitorParty),
       defendantResponseDataComponents.witnesses(defendantSolicitorParty),
       defendantResponseDataComponents.language(defendantSolicitorParty),
       defendantResponseDataComponents.hearing(defendantSolicitorParty),
-      defendantResponseDataComponents.draftDirections(draftDirectionsDocument, defendantSolicitorParty),
+      defendantResponseDataComponents.draftDirections(claimTrack, draftDirectionsDocument, defendantSolicitorParty),
       defendantResponseDataComponents.requestedCourt(defendantSolicitorParty),
       defendantResponseDataComponents.hearingSupport(defendantSolicitorParty),
       defendantResponseDataComponents.vulnerabilityQuestions(defendantSolicitorParty),

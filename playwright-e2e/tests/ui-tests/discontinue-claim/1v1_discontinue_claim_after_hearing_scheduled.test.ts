@@ -24,7 +24,7 @@ test.describe(
       await JudgeSteps.SdoFast();
       await ClaimantSolicitorApiSteps.EvidenceUploadFast();
       await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
-      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+      await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await ClaimantSolicitorSteps.Login();
       await ClaimantSolicitorSteps.DiscontinueClaim1v1();
     });
