@@ -51,6 +51,40 @@ const fetchCaseDetails = async (user, caseId, response = 200) => {
       .then(response => response.json());
 };
 
+const fetchSentNotifications = async (user, caseId, templateId, recipientEmail, response = 200) => {
+  let eventUserAuth = await idamHelper.accessToken(user);
+  const params = new URLSearchParams();
+  if (caseId) params.append('caseId', caseId);
+  if (templateId) params.append('templateId', templateId);
+  if (recipientEmail) params.append('recipientEmail', recipientEmail);
+  const url = `${config.url.civilService}/testing-support/notifications/sent?${params.toString()}`;
+  return await restHelper.retriedRequest(url, {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${eventUserAuth}`
+  }, null, 'GET', response)
+    .then(r => r.json());
+};
+
+const triggerScheduler = async (user, schedulerName, response = 202) => {
+  let eventUserAuth = await idamHelper.accessToken(user);
+  const url = `${config.url.civilService}/testing-support/run-scheduler/${schedulerName}`;
+  return await restHelper.retriedRequest(url, {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${eventUserAuth}`
+  }, null, 'GET', response)
+    .then(r => r.text());
+};
+
+const listSchedulers = async (user, response = 200) => {
+  let eventUserAuth = await idamHelper.accessToken(user);
+  const url = `${config.url.civilService}/testing-support/schedulers`;
+  return await restHelper.retriedRequest(url, {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${eventUserAuth}`
+  }, null, 'GET', response)
+    .then(r => r.json());
+};
+
 const fetchWaTasks = async (user, caseNumber, expectedStatus = 200) => {
   const userToken = await idamHelper.accessToken(user);
   const s2sToken = await restHelper.retriedRequest(
@@ -108,6 +142,9 @@ module.exports = {
   },
 
   fetchCaseDetails,
+  fetchSentNotifications,
+  triggerScheduler,
+  listSchedulers,
   fetchCaseDetailsAsSystemUser: async (caseId) => {
     const { userAuth, userId } = tokens;
     const details = await fetchCaseDetails(config.systemUpdate2, caseId, 200);
