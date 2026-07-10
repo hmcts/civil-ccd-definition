@@ -24,6 +24,6 @@ module.exports = {
     await date.enterDate(this.fields.transferredDate.id, -1);
     I.click(this.fields.claimProceedsInCasemanReason.id);
     I.fillField(this.fields.otherDescription.id, 'A reason other than Application and Judgement request.');
-    I.click( { role: 'button', name: 'Take offline' });
+    I.click('Take offline');
   }
 };
