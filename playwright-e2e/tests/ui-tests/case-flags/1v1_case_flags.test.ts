@@ -10,7 +10,7 @@ test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' },
       DefendantSolicitor1Steps,
       HearingCenterAdminSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

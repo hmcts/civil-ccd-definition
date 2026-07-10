@@ -12,7 +12,7 @@ test.describe(
       JudgeSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();
@@ -37,7 +37,7 @@ test.describe(
       HearingCenterAdminApiSteps,
       JudgeSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();
