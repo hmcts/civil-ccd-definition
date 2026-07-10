@@ -24,7 +24,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoFast();
-      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+      await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await ClaimantSolicitorSteps.Login();
       await ClaimantSolicitorSteps.DiscontinueClaim1v2DS();
     });

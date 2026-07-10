@@ -16,9 +16,20 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
+  async buildIntermediateProceed(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
   async buildFastPartAdmitProceed(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildIntermediatePartAdmitProceed(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
     });
   }
@@ -50,7 +61,7 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
-  async buildFast1v1DoNotProceed(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastDoNotProceed(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimantResponseType: ClaimantResponseSpecType.DO_NOT_PROCEED_WITH_CLAIM,
@@ -64,7 +75,7 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
-  async buildFast2v1DoNotProceed(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastDoNotProceed2v1(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -86,7 +97,7 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
-  async buildFast1v2SSDoNotProceed(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastDoNotProceed1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -172,6 +183,11 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
         claimantResponseType,
       ),
       claimantResponseSpecSchemaComponents.fastTrackDq(defendantResponseSpecType, claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.intermediateTrackDq(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
       claimantResponseSpecSchemaComponents.experts(defendantResponseSpecType, claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.witnesses(defendantResponseSpecType, claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.language(defendantResponseSpecType, claimantResponseType),

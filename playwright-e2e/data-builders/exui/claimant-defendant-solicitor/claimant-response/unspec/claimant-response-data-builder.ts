@@ -7,23 +7,35 @@ import claimantResponseDataComponents from './claimant-response-data-components'
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
-  async buildSmallFullDefence1v1Data() {
+  async buildSmallFullDefence1v1() {
     return this.buildData();
   }
 
-  async buildFastFullDefence2v1Data() {
+  async buildFastFullDefence2v1() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.TWO_VS_ONE});
   }
 
-  async buildFastProceed1v2SSData() {
+  async buildIntermediateFullDefence2v1() {
+    return this.buildData({claimTrack: ClaimTrack.INTERMEDIATE_CLAIM, claimType: ClaimType.TWO_VS_ONE});
+  }
+
+  async buildFastProceed1v2SS() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.ONE_VS_TWO_SAME_SOL});
   }
 
-  async buildFastFullDefence1v1Data() {
+  async buildIntermediateProceed1v2SS() {
+    return this.buildData({claimTrack: ClaimTrack.INTERMEDIATE_CLAIM, claimType: ClaimType.ONE_VS_TWO_SAME_SOL});
+  }
+
+  async buildFastFullDefence1v1() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM});
   }
 
-  async buildFastFullDefence1v2DSData() {
+  async buildIntermediateFullDefence1v1() {
+    return this.buildData({claimTrack: ClaimTrack.INTERMEDIATE_CLAIM});
+  }
+
+  async buildFastFullDefence1v2DS() {
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.ONE_VS_TWO_DIFF_SOL});
   }
 
@@ -35,8 +47,9 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
     { 
       claimTrack?: ClaimTrack, 
       claimType?: ClaimType 
-    } = {}) {
+  } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
+    let frcSupportingDocument;
     const defenceResponseDocument1 =
       await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     let defenceResponseDocument2;
@@ -46,6 +59,10 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
     }
     const draftDirectionsDocument =
       await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+    if(claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+      frcSupportingDocument =
+        await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+    }
 
     return {
       ...claimantResponseDataComponents.respondentResponse(claimType),
@@ -55,6 +72,7 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
         defenceResponseDocument2!,
       ),
       ...claimantResponseDataComponents.fastTrackDq(claimTrack),
+      ...claimantResponseDataComponents.intermediateTrackDq(claimTrack, frcSupportingDocument),
       ...claimantResponseDataComponents.deterWithHearing(claimTrack),
       ...claimantResponseDataComponents.experts,
       ...claimantResponseDataComponents.witnesses,

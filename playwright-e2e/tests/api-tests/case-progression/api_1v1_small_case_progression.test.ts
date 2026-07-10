@@ -19,7 +19,7 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
-      await ClaimantSolicitorApiSteps.RespondSmallTrackProceed();
+      await ClaimantSolicitorApiSteps.RespondSmallProceed();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoSmallTrackSum();
       await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();
@@ -44,7 +44,7 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
-      await ClaimantSolicitorApiSteps.RespondSmallTrackProceed();
+      await ClaimantSolicitorApiSteps.RespondSmallProceed();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoSmallTrackNoSum();
       await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();

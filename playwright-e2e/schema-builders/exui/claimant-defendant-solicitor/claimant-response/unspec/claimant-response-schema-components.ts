@@ -61,6 +61,42 @@ const fastTrackDq = (claimTrack: ClaimTrack) => {
   return {};
 };
 
+const intermediateTrackDq = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      applicant1DQFileDirectionsQuestionnaire: z.strictObject({
+        explainedToClient: z.array(nonEmptyString).min(1),
+        oneMonthStayRequested: yesNoSchema,
+        reactionProtocolCompliedWith: yesNoSchema,
+        reactionProtocolNotCompliedWithReason: nonEmptyString,
+      }),
+      applicant1DQFixedRecoverableCostsIntermediate: z.strictObject({
+        isSubjectToFixedRecoverableCostRegime: yesNoSchema,
+        band: nonEmptyString,
+        complexityBandingAgreed: yesNoSchema,
+        reasons: nonEmptyString,
+        frcSupportingDocument: z.looseObject({}),
+      }),
+      applicant1DQDisclosureOfElectronicDocuments: z.strictObject({
+        reachedAgreement: yesNoSchema,
+        agreementLikely: yesNoSchema,
+      }),
+      applicant1DQDisclosureOfNonElectronicDocuments: z.strictObject({
+        directionsForDisclosureProposed: yesNoSchema,
+        standardDirectionsRequired: yesNoSchema,
+        bespokeDirections: nonEmptyString,
+      }),
+      applicant1DQDisclosureReport: z.strictObject({
+        disclosureFormFiledAndServed: yesNoSchema,
+        disclosureProposalAgreed: yesNoSchema,
+        draftOrderNumber: nonEmptyString,
+      }),
+    };
+  }
+
+  return {};
+};
+
 const deterWithoutHearing = (claimTrack: ClaimTrack) => {
   if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     return {
@@ -166,6 +202,7 @@ const claimantResponseSchemaComponents = {
   respondentResponse,
   applicantDefenceResponseDocument,
   fastTrackDq,
+  intermediateTrackDq,
   deterWithoutHearing,
   experts,
   witnesses,
