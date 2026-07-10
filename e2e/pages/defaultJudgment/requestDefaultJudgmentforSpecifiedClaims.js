@@ -82,9 +82,22 @@ module.exports = {
     await I.clickContinue();
   },
 
-  async paymentTypeSelection(){
-    await I.click(this.fields.paymentTypeSelection.options.immediately);
-    await I.clickContinue();
+  async paymentTypeSelection(paymentType = 'immediately'){
+    if (paymentType === 'repaymentPlan') {
+      await I.click(this.fields.paymentTypeSelection.options.repaymentPlan);
+      await I.clickContinue();
+      await I.fillField('#repaymentSuggestion', '100');
+      await I.click('#repaymentFrequency-ONCE_ONE_MONTH');
+      const date = new Date();
+      date.setMonth(date.getMonth() + 2);
+      await I.fillField('#repaymentDate-day', `${date.getDate()}`);
+      await I.fillField('#repaymentDate-month', `${date.getMonth() + 1}`);
+      await I.fillField('#repaymentDate-year', `${date.getFullYear()}`);
+      await I.clickContinue();
+    } else {
+      await I.click(this.fields.paymentTypeSelection.options.immediately);
+      await I.clickContinue();
+    }
   },
 
   async statementToCertify(scenario) {
