@@ -104,6 +104,13 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.SMALL_CLAIM });
   }
 
+  async buildSmall2v1() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
   async buildSmall1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
