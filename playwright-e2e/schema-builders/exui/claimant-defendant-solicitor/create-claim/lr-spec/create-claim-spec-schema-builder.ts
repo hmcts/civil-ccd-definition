@@ -36,6 +36,22 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
+  async buildMulti1v1(): Promise<z.ZodType> {
+    return this.buildSchema();
+  }
+
+  async buildMulti2v1(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.TWO_VS_ONE });
+  }
+
+  async buildMulti1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
+  }
+
+  async buildMulti1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
+  }
+
   async buildSmall1v1(): Promise<z.ZodType> {
     return this.buildSchema();
   }
