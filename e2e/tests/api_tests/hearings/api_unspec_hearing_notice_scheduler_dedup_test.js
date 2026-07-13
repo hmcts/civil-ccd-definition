@@ -1,6 +1,5 @@
 const config = require('../../../config');
 
-// Skipped for now: failing in CI on a shared restHelper 'Headers' TypeError, not a test-logic issue.
 Feature('Unspec automated hearing notice scheduler - duplicate detection').tag('@civil-service-pr @api-hearings');
 
 const judgeUser = config.judgeUserWithRegionId1;
@@ -19,7 +18,7 @@ BeforeSuite(async ({hearings}) => {
   await hearings.setupStaticMocks();
 });
 
-Scenario.skip('01 Create Unspec claim with SDO', async ({api}) => {
+Scenario('01 Create Unspec claim with SDO', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
   caseId = await api.getCaseId();
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -30,13 +29,13 @@ Scenario.skip('01 Create Unspec claim with SDO', async ({api}) => {
   await api.createSDO(judgeUser, 'CREATE_FAST');
 }).retry(3);
 
-Scenario.skip('02 Generate hearing notice for a single HMC response', async ({hearings}) => {
+Scenario('02 Generate hearing notice for a single HMC response', async ({hearings}) => {
   const h = await hearings.createUnspecDisposalHearingV(caseId, 1);
   await hearings.setPartiesNotifiedResponses([]);
   await hearings.triggerUnspecAutomatedHearingNoticeScheduler(h.hearingId);
 }).retry(3);
 
-Scenario.skip('03 Skip hearing notice when the current version is already notified', async ({hearings}) => {
+Scenario('03 Skip hearing notice when the current version is already notified', async ({hearings}) => {
   const h = await hearings.createUnspecTrialHearingV(caseId, 1);
   const sched = hearings.listedHearingSchedule();
   await hearings.setPartiesNotifiedResponses([
@@ -45,7 +44,7 @@ Scenario.skip('03 Skip hearing notice when the current version is already notifi
   await hearings.triggerUnspecSchedulerExpectingNoNotice(h.hearingId);
 }).retry(3);
 
-Scenario.skip('04 Notify only the current version when multiple HMC responses exist', async ({hearings}) => {
+Scenario('04 Notify only the current version when multiple HMC responses exist', async ({hearings}) => {
   const h = await hearings.createUnspecDisposalHearingV(caseId, 2);
   await hearings.setPartiesNotifiedResponses([
     {requestVersion: 1, responseReceivedDateTime: plus1d(h.receivedDateTime), serviceData: serviceData(changedSchedule())},
@@ -54,7 +53,7 @@ Scenario.skip('04 Notify only the current version when multiple HMC responses ex
   await hearings.triggerUnspecAutomatedHearingNoticeScheduler(h.hearingId);
 }).retry(3);
 
-Scenario.skip('05 Generate hearing notice for a re-listed hearing version', async ({hearings}) => {
+Scenario('05 Generate hearing notice for a re-listed hearing version', async ({hearings}) => {
   const h = await hearings.createUnspecTrialHearingV(caseId, 2);
   await hearings.setPartiesNotifiedResponses([
     {requestVersion: 1, responseReceivedDateTime: minus1d(h.receivedDateTime), serviceData: serviceData(changedSchedule())}
@@ -62,7 +61,7 @@ Scenario.skip('05 Generate hearing notice for a re-listed hearing version', asyn
   await hearings.triggerUnspecAutomatedHearingNoticeScheduler(h.hearingId);
 }).retry(3);
 
-Scenario.skip('06 Acknowledge an unchanged hearing without generating a notice', async ({hearings}) => {
+Scenario('06 Acknowledge an unchanged hearing without generating a notice', async ({hearings}) => {
   const h = await hearings.createUnspecDisposalHearingV(caseId, 1);
   const sched = hearings.listedHearingSchedule();
   await hearings.setPartiesNotifiedResponses([
@@ -71,7 +70,7 @@ Scenario.skip('06 Acknowledge an unchanged hearing without generating a notice',
   await hearings.triggerUnspecSchedulerExpectingNoNotice(h.hearingId);
 }).retry(3);
 
-Scenario.skip('07 Avoid a duplicate hearing notice when the scheduler re-runs', async ({hearings}) => {
+Scenario('07 Avoid a duplicate hearing notice when the scheduler re-runs', async ({hearings}) => {
   const h = await hearings.createUnspecDisposalHearingV(caseId, 1);
   const sched = hearings.listedHearingSchedule();
   await hearings.setPartiesNotifiedResponses([]);
@@ -82,7 +81,7 @@ Scenario.skip('07 Avoid a duplicate hearing notice when the scheduler re-runs', 
   await hearings.triggerUnspecSchedulerExpectingNoNotice(h.hearingId);
 }).retry(3);
 
-Scenario.skip('08 Handle partial HMC response data and still generate the notice', async ({hearings}) => {
+Scenario('08 Handle partial HMC response data and still generate the notice', async ({hearings}) => {
   const h = await hearings.createUnspecDisposalHearingV(caseId, 1);
   await hearings.setPartiesNotifiedResponses([
     {responseReceivedDateTime: null, serviceData: serviceData(changedSchedule())}
