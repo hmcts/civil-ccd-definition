@@ -16,6 +16,16 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
+  async buildFastNIHL1v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimTypeUnspec: {
+        claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
+        personalInjuryType: PersonalInjuryType.NOISE_INDUCED_HEARING_LOSS,
+      },
+    });
+  }
+
   async buildFast1v2DS(): Promise<z.ZodType> {
     return this.buildSchema({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,

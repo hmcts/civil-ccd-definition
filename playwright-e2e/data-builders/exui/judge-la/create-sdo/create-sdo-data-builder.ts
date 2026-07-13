@@ -6,7 +6,7 @@ import createSdoDataBuilderComponents from './create-sdo-data-builder-components
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateSdoDataBuilder extends BaseDataBuilder {
   async buildSmallNoSumSdo() {
-    return this.buildData({sdoType: SdoType.SMALL_TRACK_NO_SUM});
+    return this.buildData({ sdoType: SdoType.SMALL_TRACK_NO_SUM });
   }
 
   async buildSmallSumSdo() {
@@ -14,25 +14,32 @@ export default class CreateSdoDataBuilder extends BaseDataBuilder {
   }
 
   async buildFastSdo() {
-    return this.buildData({sdoType: SdoType.FAST_TRACK});
+    return this.buildData({ sdoType: SdoType.FAST_TRACK });
+  }
+
+  async buildFastNIHLSdo() {
+    return this.buildData({ sdoType: SdoType.FAST_TRACK_NIHL });
   }
 
   async buildTrailSdo() {
-    return this.buildData({sdoType: SdoType.TRAIL});
+    return this.buildData({ sdoType: SdoType.TRAIL });
   }
 
-  protected async buildData(
-    {
-      sdoType = SdoType.SMALL_TRACK_NO_SUM
-    }: {
-      sdoType?: SdoType
-    } =
-    {}) {
+  async buildTrailNIHLSdo() {
+    return this.buildData({ sdoType: SdoType.TRAIL_NIHL });
+  }
+
+  protected async buildData({
+    sdoType = SdoType.SMALL_TRACK_NO_SUM,
+  }: {
+    sdoType?: SdoType;
+  } = {}) {
     return {
       ...createSdoDataBuilderComponents.sdo(sdoType),
       ...createSdoDataBuilderComponents.claimsTrack(sdoType),
       ...createSdoDataBuilderComponents.orderType(sdoType),
       ...createSdoDataBuilderComponents.fastTrack(sdoType),
+      ...createSdoDataBuilderComponents.sdoR2FastTrack(sdoType),
       ...createSdoDataBuilderComponents.smallClaims(sdoType),
       ...createSdoDataBuilderComponents.orderPreview,
     };

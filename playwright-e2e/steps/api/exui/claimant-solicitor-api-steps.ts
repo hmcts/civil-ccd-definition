@@ -66,6 +66,23 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
   }
 
+  async CreateClaimFastNIHL1v1() {
+    await this.setupUserData(claimantSolicitorUser);
+    const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimData = await createClaimDataBuilder.buildFastNIHL1v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM,
+      createClaimData,
+      CaseState.PENDING_CASE_ISSUED,
+    );
+
+    const { createClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimResponseSchema = await createClaimSchemaBuilder.buildFastNIHL1v1();
+    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+  }
+
   async CreateClaimFast1v2DS() {
     await this.setupUserData(claimantSolicitorUser);
     const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;

@@ -8,7 +8,11 @@ const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
 
 const sdo = (sdoType: SdoType) => {
-  if (sdoType === SdoType.TRAIL || sdoType === SdoType.SMALL_TRACK_SUM)
+  if (
+    sdoType === SdoType.TRAIL ||
+    sdoType === SdoType.SMALL_TRACK_SUM ||
+    sdoType === SdoType.TRAIL_NIHL
+  )
     return {
       SDO: {
         drawDirectionsOrderRequired: 'Yes',
@@ -30,7 +34,7 @@ const claimsTrack = (sdoType: SdoType) => {
     return {
       ClaimsTrack: {
         claimsTrack: 'fastTrack',
-        trialAdditionalDirectionsForFastTrack: [
+        fastClaims: [
           'fastClaimBuildingDispute',
           'fastClaimClinicalNegligence',
           'fastClaimCreditHire',
@@ -42,7 +46,14 @@ const claimsTrack = (sdoType: SdoType) => {
         ],
       },
     };
-  else if (sdoType === SdoType.TRAIL)
+  else if (sdoType === SdoType.FAST_TRACK_NIHL)
+    return {
+      ClaimsTrack: {
+        claimsTrack: 'fastTrack',
+        fastClaims: ['fastClaimNoiseInducedHearingLoss'],
+      },
+    };
+  else if (sdoType === SdoType.TRAIL || sdoType === SdoType.TRAIL_NIHL)
     return {
       ClaimsTrack: {
         drawDirectionsOrderSmallClaims: 'No',
@@ -79,10 +90,10 @@ const claimsTrack = (sdoType: SdoType) => {
 };
 
 const orderType = (sdoType: SdoType) => {
-  if (sdoType === SdoType.TRAIL || sdoType === SdoType.DISPOSAL_HEARING)
+  if (sdoType === SdoType.TRAIL)
     return {
       OrderType: {
-        orderType: sdoType,
+        orderType: 'DECIDE_DAMAGES',
         trialAdditionalDirectionsForFastTrack: [
           'fastClaimBuildingDispute',
           'fastClaimClinicalNegligence',
@@ -93,6 +104,19 @@ const orderType = (sdoType: SdoType) => {
           'fastClaimPersonalInjury',
           'fastClaimRoadTrafficAccident',
         ],
+      },
+    };
+  else if (sdoType === SdoType.DISPOSAL_HEARING)
+    return {
+      OrderType: {
+        orderType: 'DISPOSAL',
+      },
+    };
+  else if (sdoType === SdoType.TRAIL_NIHL)
+    return {
+      OrderType: {
+        orderType: 'DECIDE_DAMAGES',
+        trialAdditionalDirectionsForFastTrack: ['fastClaimNoiseInducedHearingLoss'],
       },
     };
 
@@ -240,8 +264,7 @@ const smallClaims = (sdoType: SdoType) => {
   if (sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM) {
     return {
       SmallClaims: {
-        smallClaimsPenalNotice:
-          'string',
+        smallClaimsPenalNotice: 'string',
         smallClaimsJudgesRecital: {
           input: 'string',
         },
@@ -331,6 +354,124 @@ const smallClaims = (sdoType: SdoType) => {
   return {};
 };
 
+const sdoR2FastTrack = (sdoType: SdoType) => {
+  const claimantDefaultCourt = CaseDataHelper.setCodeToData(
+    preferredCourts[partys.CLAIMANT_1.key].default,
+  );
+  const hearingMethodInPerson = CaseDataHelper.setCodeToData('In Person');
+
+  if (sdoType === SdoType.FAST_TRACK_NIHL || sdoType === SdoType.TRAIL_NIHL) {
+    return {
+      SdoR2FastTrack: {
+        sdoFastTrackJudgesRecital: {
+          input: 'string',
+        },
+        sdoR2DisclosureOfDocuments: {
+          standardDisclosureTxt: 'string',
+          standardDisclosureDate: formatDate(DateHelper.addToToday({ days: 14 })),
+          inspectionTxt: 'string',
+          inspectionDate: formatDate(DateHelper.addToToday({ days: 21 })),
+          requestsWillBeCompiledLabel: 'within 7 days of receipt.',
+        },
+        sdoR2WitnessesOfFact: {
+          sdoStatementOfWitness: 'string',
+          sdoWitnessDeadline: 'string',
+          sdoWitnessDeadlineDate: formatDate(DateHelper.addToToday({ days: 70 })),
+          sdoWitnessDeadlineText: 'string',
+        },
+        sdoR2ExpertEvidence: {
+          sdoClaimantPermissionToRelyTxt: 'string',
+        },
+        sdoR2AddendumReport: {
+          sdoAddendumReportTxt: 'string',
+          sdoAddendumReportDate: formatDate(DateHelper.addToToday({ days: 56 })),
+        },
+        sdoR2FurtherAudiogram: {
+          sdoClaimantShallUndergoTxt: 'string',
+          sdoClaimantShallUndergoDate: formatDate(DateHelper.addToToday({ days: 42 })),
+          sdoServiceReportTxt: 'string',
+          sdoServiceReportDate: formatDate(DateHelper.addToToday({ days: 98 })),
+        },
+        sdoR2QuestionsClaimantExpert: {
+          sdoDefendantMayAskTxt: 'string',
+          sdoDefendantMayAskDate: formatDate(DateHelper.addToToday({ days: 126 })),
+          sdoQuestionsShallBeAnsweredTxt: 'string',
+          sdoQuestionsShallBeAnsweredDate: formatDate(DateHelper.addToToday({ days: 147 })),
+          sdoUploadedToDigitalPortalTxt: 'string',
+          sdoApplicationToRelyOnFurther: {
+            doRequireApplicationToRely: 'No',
+          },
+        },
+        sdoR2PermissionToRelyOnExpert: {
+          sdoPermissionToRelyOnExpertTxt: 'string',
+          sdoPermissionToRelyOnExpertDate: formatDate(DateHelper.addToToday({ days: 119 })),
+          sdoJointMeetingOfExpertsTxt: 'string',
+          sdoJointMeetingOfExpertsDate: formatDate(DateHelper.addToToday({ days: 147 })),
+          sdoUploadedToDigitalPortalTxt: 'string',
+        },
+        sdoR2EvidenceAcousticEngineer: {
+          sdoEvidenceAcousticEngineerTxt: 'string',
+          sdoInstructionOfTheExpertTxt: 'string',
+          sdoInstructionOfTheExpertDate: formatDate(DateHelper.addToToday({ days: 42 })),
+          sdoInstructionOfTheExpertTxtArea: 'string',
+          sdoExpertReportTxt: 'string',
+          sdoExpertReportDate: formatDate(DateHelper.addToToday({ days: 280 })),
+          sdoExpertReportDigitalPortalTxt: 'string',
+          sdoWrittenQuestionsTxt: 'string',
+          sdoWrittenQuestionsDate: formatDate(DateHelper.addToToday({ days: 294 })),
+          sdoWrittenQuestionsDigitalPortalTxt: 'string',
+          sdoRepliesTxt: 'string',
+          sdoRepliesDate: formatDate(DateHelper.addToToday({ days: 315 })),
+          sdoRepliesDigitalPortalTxt: 'string',
+          sdoServiceOfOrderTxt: 'string',
+        },
+        sdoR2QuestionsToEntExpert: {
+          sdoWrittenQuestionsTxt: 'string',
+          sdoWrittenQuestionsDate: formatDate(DateHelper.addToToday({ days: 336 })),
+          sdoWrittenQuestionsDigPortalTxt: 'string',
+          sdoQuestionsShallBeAnsweredTxt: 'string',
+          sdoQuestionsShallBeAnsweredDate: formatDate(DateHelper.addToToday({ days: 350 })),
+          sdoShallBeUploadedTxt: 'string',
+        },
+        sdoR2ScheduleOfLoss: {
+          sdoR2ScheduleOfLossClaimantText: 'string',
+          sdoR2ScheduleOfLossClaimantDate: formatDate(DateHelper.addToToday({ days: 84 })),
+          sdoR2ScheduleOfLossDefendantText: 'string',
+          sdoR2ScheduleOfLossDefendantDate: formatDate(DateHelper.addToToday({ days: 98 })),
+          isClaimForPecuniaryLoss: 'No',
+        },
+        sdoR2UploadOfDocuments: {
+          sdoUploadOfDocumentsTxt: 'string',
+        },
+        sdoR2Trial: {
+          trialOnOptions: 'OPEN_DATE',
+          lengthList: 'FIVE_HOURS',
+          hearingCourtLocationList: {
+            list_items: [claimantDefaultCourt],
+            value: claimantDefaultCourt,
+          },
+          methodOfHearing: {
+            list_items: [hearingMethodInPerson],
+            value: hearingMethodInPerson,
+          },
+          physicalBundleOptions: 'PARTY',
+          physicalBundlePartyTxt: 'string',
+          sdoR2TrialFirstOpenDateAfter: {
+            listFrom: formatDate(DateHelper.addToToday({ days: 434 })),
+          },
+        },
+        sdoR2NihlUseOfWelshLanguage: {
+          description: 'string',
+        },
+        sdoR2ImportantNotesTxt: 'string',
+        sdoR2ImportantNotesDate: formatDate(DateHelper.addToToday({ days: 7 })),
+      },
+    };
+  }
+
+  return {};
+};
+
 const orderPreview = {
   OrderPreview: {},
 };
@@ -340,6 +481,7 @@ const createSdoDataBuilderComponents = {
   claimsTrack,
   orderType,
   fastTrack,
+  sdoR2FastTrack,
   smallClaims,
   orderPreview,
 };
