@@ -18,6 +18,10 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
+  async buildMultiProceed() {
+    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
   async buildFastPartAdmitProceed() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -28,6 +32,13 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
   async buildIntermediatePartAdmitProceed() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildMultiPartAdmitProceed() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
     });
   }
@@ -123,13 +134,13 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     claimTrack = ClaimTrack.FAST_CLAIM,
     claimantResponseType = ClaimantResponseSpecType.PROCEED_WITH_CLAIM,
     defendantResponseSpecType = DefendantResponseSpecType.FULL_DEFENCE,
-    paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY
+    paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY,
   }: {
     claimType?: ClaimType;
     claimTrack?: ClaimTrack;
     claimantResponseType?: ClaimantResponseSpecType;
-    defendantResponseSpecType?: DefendantResponseSpecType,
-    paymentTypeSpec?: PaymentTypeSpec,
+    defendantResponseSpecType?: DefendantResponseSpecType;
+    paymentTypeSpec?: PaymentTypeSpec;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
     const defenceResponseDocumentSpec =
@@ -146,31 +157,82 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     Object.assign(
       eventData,
       claimantResponseSpecData.undefine(defendantResponseSpecType),
-      claimantResponseSpecData.defendantResponse(claimType, claimantResponseType, defendantResponseSpecType),
+      claimantResponseSpecData.defendantResponse(
+        claimType,
+        claimantResponseType,
+        defendantResponseSpecType,
+      ),
       claimantResponseSpecData.defendantResponsePartAdmit(defendantResponseSpecType),
       claimantResponseSpecData.claimantDefenceResponseDocument(
         defendantResponseSpecType,
         defenceResponseDocumentSpec,
         claimantResponseType,
       ),
-      claimantResponseSpecData.mediationContactInformation(defendantResponseSpecType, claimTrack, claimantResponseType),
-      claimantResponseSpecData.mediationAvailability(defendantResponseSpecType, claimTrack, claimantResponseType),
-      claimantResponseSpecData.determinationWithoutHearing(defendantResponseSpecType, claimTrack, claimantResponseType),
-      claimantResponseSpecData.fastTrackDq(defendantResponseSpecType, claimTrack, claimantResponseType),
-      claimantResponseSpecData.intermediateTrackDq(
+      claimantResponseSpecData.mediationContactInformation(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
+      claimantResponseSpecData.mediationAvailability(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
+      claimantResponseSpecData.determinationWithoutHearing(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
+      claimantResponseSpecData.fileDirectionsQuestionnaire(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
+      claimantResponseSpecData.fixedRecoverableCosts(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
+      claimantResponseSpecData.fixedRecoverableCostsIntermediate(
         defendantResponseSpecType,
         claimTrack,
         claimantResponseType,
         frcSupportingDocument,
       ),
+      claimantResponseSpecData.disclosureOfElectronicDocuments(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
+      claimantResponseSpecData.disclosureOfNonElectronicDocuments(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
+      claimantResponseSpecData.disclosureReport(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
       claimantResponseSpecData.experts(defendantResponseSpecType, claimTrack, claimantResponseType),
-      claimantResponseSpecData.witnesses(defendantResponseSpecType, claimTrack, claimantResponseType),
+      claimantResponseSpecData.witnesses(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
       claimantResponseSpecData.language(defendantResponseSpecType, claimantResponseType),
       claimantResponseSpecData.hearing(defendantResponseSpecType, claimTrack, claimantResponseType),
-      claimantResponseSpecData.requestedCourtLocation(defendantResponseSpecType, claimantResponseType),
+      claimantResponseSpecData.requestedCourtLocation(
+        defendantResponseSpecType,
+        claimantResponseType,
+      ),
       claimantResponseSpecData.hearingSupport(defendantResponseSpecType, claimantResponseType),
       claimantResponseSpecData.vulnerabilityQuestions(defendantResponseSpecType),
-      claimantResponseSpecData.application(defendantResponseSpecType, claimTrack, claimantResponseType),
+      claimantResponseSpecData.application(
+        defendantResponseSpecType,
+        claimTrack,
+        claimantResponseType,
+      ),
       claimantResponseSpecData.statementOfTruth,
     );
 

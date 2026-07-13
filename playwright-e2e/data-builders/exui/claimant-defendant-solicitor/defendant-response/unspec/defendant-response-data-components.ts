@@ -1,5 +1,8 @@
 import preferredCourts from '../../../../../config/preferred-courts';
-import { defendantSolicitor1User, defendantSolicitor2User } from '../../../../../config/users/exui-users';
+import {
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+} from '../../../../../config/users/exui-users';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/unspec/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
@@ -9,9 +12,13 @@ import CCDCaseData, { UploadDocumentValue } from '../../../../../models/ccd-case
 import { Party } from '../../../../../models/users/partys';
 import ClaimType from '../../../../../constants/cases/claim-type';
 
-const confirmDetails = (claimType: ClaimType, ccdCaseData: CCDCaseData, defendantSolicitorParty: Party) => {
+const confirmDetails = (
+  claimType: ClaimType,
+  ccdCaseData: CCDCaseData,
+  defendantSolicitorParty: Party,
+) => {
   if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+    if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
       return {
         ConfirmDetails: {
           respondent1: structuredClone(ccdCaseData.respondent1),
@@ -39,16 +46,16 @@ const confirmDetails = (claimType: ClaimType, ccdCaseData: CCDCaseData, defendan
 };
 
 const singleResponse = (claimType: ClaimType) => {
-  if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+  if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
     return {
       SingleResponse: {
-        respondentResponseIsSame: 'Yes'
+        respondentResponseIsSame: 'Yes',
       },
     };
-  };
+  }
 
   return {};
-}
+};
 
 const respondentResponseType = (
   claimType: ClaimType,
@@ -56,18 +63,18 @@ const respondentResponseType = (
   defendantSolicitorParty: Party,
 ) => {
   if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+    if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
       return {
         RespondentResponseType: {
           respondent1ClaimResponseType: responseType,
-        }
+        },
       };
     } else if (claimType === ClaimType.TWO_VS_ONE) {
       return {
         RespondentResponseType: {
           respondent1ClaimResponseType: responseType,
           respondent1ClaimResponseTypeToApplicant2: responseType,
-        }
+        },
       };
     }
     return {
@@ -88,16 +95,16 @@ const respondentResponseType = (
 };
 
 const solicitorReferences = (ccdCaseData: CCDCaseData, defendantSolicitorParty: Party) => {
-  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
     return {
       SolicitorReferences: {
         solicitorReferences: {
-          respondentSolicitor1Reference: ccdCaseData?.solicitorReferences?.respondentSolicitor1Reference,
+          respondentSolicitor1Reference:
+            ccdCaseData?.solicitorReferences?.respondentSolicitor1Reference,
         },
       },
     };
-  }
-  else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       SolicitorReferences: {
         respondentSolicitor2Reference: ccdCaseData?.respondentSolicitor2Reference,
@@ -109,21 +116,21 @@ const solicitorReferences = (ccdCaseData: CCDCaseData, defendantSolicitorParty: 
 };
 
 const deterWithoutHearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+  if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     return {
       DeterminationWithoutHearing: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'deterWithoutHearingRespondent1'
           : 'deterWithoutHearingRespondent2']: {
           deterWithoutHearingWhyNot: `Determination without hearing reason - ${defendantSolicitorParty.key}`,
-          deterWithoutHearingYesNo: 'No'
-        }
-      }
+          deterWithoutHearingYesNo: 'No',
+        },
+      },
     };
   }
 
   return {};
-}
+};
 
 const upload = (defenceDocument: UploadDocumentValue, defendantSolicitorParty: Party) => {
   return {
@@ -137,8 +144,12 @@ const upload = (defenceDocument: UploadDocumentValue, defendantSolicitorParty: P
   };
 };
 
-const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if (claimTrack === ClaimTrack.FAST_CLAIM) {
+const fileDirectionsQuestionnaire = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+    claimTrack === ClaimTrack.MULTI_CLAIM
+  ) {
     return {
       FileDirectionsQuestionnaire: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -150,6 +161,15 @@ const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => 
           reactionProtocolNotCompliedWithReason: `No explanation - ${defendantSolicitorParty.key}`,
         },
       },
+    };
+  }
+
+  return {};
+};
+
+const fixedRecoverableCosts = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if (claimTrack === ClaimTrack.FAST_CLAIM) {
+    return {
       FixedRecoverableCosts: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondent1DQFixedRecoverableCosts'
@@ -160,38 +180,19 @@ const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => 
           reasons: `No explanation - ${defendantSolicitorParty.key}`,
         },
       },
-      DisclosureOfNonElectronicDocuments: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'respondent1DQDisclosureOfNonElectronicDocuments'
-          : 'respondent2DQDisclosureOfNonElectronicDocuments']: {
-          directionsForDisclosureProposed: 'Yes',
-          standardDirectionsRequired: 'No',
-          bespokeDirections: `No directions required - ${defendantSolicitorParty.key}`,
-        },
-      },
     };
   }
 
   return {};
 };
 
-const intermediateTrackDq = (
+const fixedRecoverableCostsIntermediate = (
   claimTrack: ClaimTrack,
   defendantSolicitorParty: Party,
   frcSupportingDocument?: UploadDocumentValue,
 ) => {
   if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
     return {
-      FileDirectionsQuestionnaire: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'respondent1DQFileDirectionsQuestionnaire'
-          : 'respondent2DQFileDirectionsQuestionnaire']: {
-          explainedToClient: ['CONFIRM'],
-          oneMonthStayRequested: 'No',
-          reactionProtocolCompliedWith: 'No',
-          reactionProtocolNotCompliedWithReason: `No explanation - ${defendantSolicitorParty.key}`,
-        },
-      },
       FixedRecoverableCostsIntermediate: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondent1DQFixedRecoverableCostsIntermediate'
@@ -203,6 +204,18 @@ const intermediateTrackDq = (
           frcSupportingDocument,
         },
       },
+    };
+  }
+
+  return {};
+};
+
+const disclosureOfElectronicDocuments = (
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM || claimTrack === ClaimTrack.MULTI_CLAIM) {
+    return {
       DisclosureOfElectronicDocuments: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondent1DQDisclosureOfElectronicDocuments'
@@ -211,6 +224,22 @@ const intermediateTrackDq = (
           agreementLikely: 'Yes',
         },
       },
+    };
+  }
+
+  return {};
+};
+
+const disclosureOfNonElectronicDocuments = (
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+    claimTrack === ClaimTrack.MULTI_CLAIM
+  ) {
+    return {
       DisclosureOfNonElectronicDocuments: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondent1DQDisclosureOfNonElectronicDocuments'
@@ -330,7 +359,9 @@ const requestedCourt = (defendantSolicitorParty: Party) => {
     defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
       ? partys.DEFENDANT_1
       : partys.DEFENDANT_2;
-  const preferredCourt = CaseDataHelper.setCodeToData(preferredCourts[preferredCourtParty.key].default);
+  const preferredCourt = CaseDataHelper.setCodeToData(
+    preferredCourts[preferredCourtParty.key].default,
+  );
 
   return {
     RequestedCourt: {
@@ -410,15 +441,15 @@ const statementOfTruth = (defendantSolicitorParty: Party) => {
 };
 
 const undefine = (defendantSolicitorParty: Party) => {
-  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       Undefine: {
         respondent1DetailsForClaimDetailsTab: undefined,
-      }
-    }
+      },
+    };
   } else {
     return {};
-  } 
+  }
 };
 
 const defendantResponseDataComponents = {
@@ -427,8 +458,11 @@ const defendantResponseDataComponents = {
   respondentResponseType,
   solicitorReferences,
   upload,
-  fastTrackDq,
-  intermediateTrackDq,
+  fileDirectionsQuestionnaire,
+  fixedRecoverableCosts,
+  fixedRecoverableCostsIntermediate,
+  disclosureOfElectronicDocuments,
+  disclosureOfNonElectronicDocuments,
   deterWithoutHearing,
   experts,
   witnesses,

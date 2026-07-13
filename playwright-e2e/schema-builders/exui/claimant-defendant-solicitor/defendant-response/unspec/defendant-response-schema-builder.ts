@@ -12,9 +12,7 @@ import { Party } from '../../../../../models/users/partys';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
-  async buildDS1SmallFullDefence1v1(
-    caseDataBeforeSubmission?: CCDCaseData,
-  ): Promise<z.ZodType> {
+  async buildDS1SmallFullDefence1v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.SMALL_CLAIM,
       claimType: ClaimType.ONE_VS_ONE,
@@ -30,9 +28,19 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence2v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildDS1IntermediateFullDefence2v1(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1MultiFullDefence2v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.MULTI_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
       responseType: DefendantResponseType.FULL_DEFENCE,
     });
@@ -46,9 +54,19 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence1v2SS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildDS1IntermediateFullDefence1v2SS(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1MultiFullDefence1v2SS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.MULTI_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       responseType: DefendantResponseType.FULL_DEFENCE,
     });
@@ -61,9 +79,26 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildDS1IntermediateFullDefence(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1MultiFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1MultiFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       responseType: DefendantResponseType.FULL_DEFENCE,
     });
   }
@@ -76,9 +111,20 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS2FastTrackFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildDS2FastTrackFullDefence1v2DS(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
+  async buildDS2MultiFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.MULTI_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       responseType: DefendantResponseType.FULL_DEFENCE,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
@@ -117,8 +163,23 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
       defendantResponseSchemaComponents.solicitorReferences,
       defendantResponseSchemaComponents.upload,
       defendantResponseSchemaComponents.deterWithoutHearing(claimTrack, defendantSolicitorParty),
-      defendantResponseSchemaComponents.fastTrackDq(claimTrack, defendantSolicitorParty),
-      defendantResponseSchemaComponents.intermediateTrackDq(claimTrack, defendantSolicitorParty),
+      defendantResponseSchemaComponents.fileDirectionsQuestionnaire(
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSchemaComponents.fixedRecoverableCosts(claimTrack, defendantSolicitorParty),
+      defendantResponseSchemaComponents.fixedRecoverableCostsIntermediate(
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSchemaComponents.disclosureOfElectronicDocuments(
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSchemaComponents.disclosureOfNonElectronicDocuments(
+        claimTrack,
+        defendantSolicitorParty,
+      ),
       defendantResponseSchemaComponents.experts(defendantSolicitorParty),
       defendantResponseSchemaComponents.witnesses(defendantSolicitorParty),
       defendantResponseSchemaComponents.language(defendantSolicitorParty),
@@ -129,7 +190,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
       defendantResponseSchemaComponents.vulnerabilityQuestions(defendantSolicitorParty),
       defendantResponseSchemaComponents.furtherInformation(defendantSolicitorParty),
       defendantResponseSchemaComponents.statementOfTruth(defendantSolicitorParty),
-      defendantResponseSchemaComponents.undefine(defendantSolicitorParty)
+      defendantResponseSchemaComponents.undefine(defendantSolicitorParty),
     );
 
     return baseSchema.extend(schemaShape);
