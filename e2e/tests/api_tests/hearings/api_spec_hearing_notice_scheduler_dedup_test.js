@@ -1,6 +1,6 @@
 const config = require('../../../config');
 
-Feature('Spec automated hearing notice scheduler - duplicate detection').tag('@civil-service-pr @api-hearings');
+Feature('Spec automated hearing notice scheduler - duplicate detection');
 
 let caseId;
 
