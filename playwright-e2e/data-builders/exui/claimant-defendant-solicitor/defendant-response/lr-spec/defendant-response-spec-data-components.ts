@@ -1,4 +1,7 @@
-import { defendantSolicitor1User, defendantSolicitor2User } from '../../../../../config/users/exui-users';
+import {
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+} from '../../../../../config/users/exui-users';
 import preferredCourts from '../../../../../config/preferred-courts';
 import partys from '../../../../../constants/users/partys';
 import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
@@ -13,12 +16,12 @@ import { Party } from '../../../../../models/users/partys';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
 
 const defendantChecklist = {
-    RespondentChecklist: {},
-  };
+  RespondentChecklist: {},
+};
 
 const responseConfirmNameAddress = (claimType: ClaimType, defendantSolictorParty: Party) => {
-  if(defendantSolictorParty === partys.DEFENDANT_SOLICITOR_1) {
-    if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+  if (defendantSolictorParty === partys.DEFENDANT_SOLICITOR_1) {
+    if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
       return {
         ResponseConfirmNameAddress: {
           specAoSApplicantCorrespondenceAddressRequired: 'Yes',
@@ -31,11 +34,11 @@ const responseConfirmNameAddress = (claimType: ClaimType, defendantSolictorParty
         specAoSApplicantCorrespondenceAddressRequired: 'Yes',
       },
     };
-  } else if(defendantSolictorParty === partys.DEFENDANT_SOLICITOR_2) {
+  } else if (defendantSolictorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       ResponseConfirmNameAddress: {
-        specAoSRespondent2HomeAddressRequired: 'Yes'
-      }
+        specAoSRespondent2HomeAddressRequired: 'Yes',
+      },
     };
   }
 
@@ -52,35 +55,33 @@ const responseConfirmDetails = (defendantSolicitorParty: Party) => {
   };
 };
 
-const singleResponse = (
-  claimType: ClaimType
-) => {
-  if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+const singleResponse = (claimType: ClaimType) => {
+  if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
     return {
       SingleResponse: {
-        respondentResponseIsSame: 'Yes'
-      }
+        respondentResponseIsSame: 'Yes',
+      },
     };
   }
 
-  if(ClaimTypeHelper.isClaimant2(claimType)) {
+  if (ClaimTypeHelper.isClaimant2(claimType)) {
     return {
       SingleResponse2v1: {
-        defendantSingleResponseToBothClaimants: 'Yes'
-      }
+        defendantSingleResponseToBothClaimants: 'Yes',
+      },
     };
   }
 
   return {};
-}
+};
 
 const respondentResponseTypeSpec = (
   defendantResponseType: DefendantResponseSpecType,
   claimType: ClaimType,
   defendantSolicitorParty: Party,
 ) => {
-  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    if(ClaimTypeHelper.isClaimant2(claimType)) {
+  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+    if (ClaimTypeHelper.isClaimant2(claimType)) {
       return {
         RespondentResponseTypeSpec: {
           respondent1ClaimResponseTypeForSpec: defendantResponseType,
@@ -95,11 +96,11 @@ const respondentResponseTypeSpec = (
         respondent1ClaimResponseTypeForSpec: defendantResponseType,
       },
     };
-  } else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       RespondentResponseTypeSpec: {
         respondent2ClaimResponseTypeForSpec: defendantResponseType,
-      }
+      },
     };
   }
 
@@ -112,8 +113,8 @@ const defenceRoute = (
   claimTrack: ClaimTrack,
   defendantSolicitorParty: Party,
 ) => {
-  if(defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE) {
-    if(defenceRoute === DefenceRouteSpec.DISPUTE) {
+  if (defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE) {
+    if (defenceRoute === DefenceRouteSpec.DISPUTE) {
       return {
         defenceRoute: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -121,9 +122,7 @@ const defenceRoute = (
             : 'defenceRouteRequired2']: defenceRoute,
         },
       };
-    }
-
-    else if(defenceRoute === DefenceRouteSpec.HAS_PAID) {
+    } else if (defenceRoute === DefenceRouteSpec.HAS_PAID) {
       return {
         defenceRoute: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -134,7 +133,10 @@ const defenceRoute = (
             : 'respondToClaim2']: {
             howMuchWasPaid: CaseDataHelper.getClaimValue(claimTrack).toFixed().toString(),
             howWasThisAmountPaid: 'CREDIT_CARD',
-            whenWasThisAmountPaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 1}), {outputFormat: 'YYYY-MM-DD'}),
+            whenWasThisAmountPaid: DateHelper.formatDateToString(
+              DateHelper.subtractFromToday({ days: 1 }),
+              { outputFormat: 'YYYY-MM-DD' },
+            ),
           },
         },
       };
@@ -149,7 +151,7 @@ const defenceAdmittedPartRoute = (
   claimTrack: ClaimTrack,
   defendantSolicitorParty: Party,
 ) => {
-  if(defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) {
+  if (defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) {
     //Has paid defence admitted part route
     /*
     return {
@@ -170,32 +172,24 @@ const defenceAdmittedPartRoute = (
 
     return {
       defenceAdmittedPartRoute: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
-          ? 'specDefenceAdmittedRequired' 
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'specDefenceAdmittedRequired'
           : 'specDefenceAdmitted2Required']: 'No',
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondToAdmittedClaimOwingAmount'
-          : 'respondToAdmittedClaimOwingAmount2']: ((CaseDataHelper.getClaimValue(claimTrack) / 2) * 100).toFixed().toString(),
+          : 'respondToAdmittedClaimOwingAmount2']: (
+          (CaseDataHelper.getClaimValue(claimTrack) / 2) *
+          100
+        )
+          .toFixed()
+          .toString(),
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondToAdmittedClaimOwingAmountPounds'
-          : 'respondToAdmittedClaimOwingAmountPounds2']: (CaseDataHelper.getClaimValue(claimTrack) / 2).toFixed().toString()
-      }
-    }
-  }
-
-  return {};
-};
-
-const upload = (defendantResponseType: DefendantResponseSpecType, defenceResponseDocumentSpec: UploadDocumentValue, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    return {
-      Upload: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'detailsOfWhyDoesYouDisputeTheClaim'
-          : 'detailsOfWhyDoesYouDisputeTheClaim2']: `Dispute reason - ${defendantSolicitorParty.key}`,
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'respondent1SpecDefenceResponseDocument'
-          : 'respondent2SpecDefenceResponseDocument']: {file: defenceResponseDocumentSpec},
+          : 'respondToAdmittedClaimOwingAmountPounds2']: (
+          CaseDataHelper.getClaimValue(claimTrack) / 2
+        )
+          .toFixed()
+          .toString(),
       },
     };
   }
@@ -203,8 +197,39 @@ const upload = (defendantResponseType: DefendantResponseSpecType, defenceRespons
   return {};
 };
 
-const timeline = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
+const upload = (
+  defendantResponseType: DefendantResponseSpecType,
+  defenceResponseDocumentSpec: UploadDocumentValue,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    return {
+      Upload: {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'detailsOfWhyDoesYouDisputeTheClaim'
+          : 'detailsOfWhyDoesYouDisputeTheClaim2']:
+          `Dispute reason - ${defendantSolicitorParty.key}`,
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1SpecDefenceResponseDocument'
+          : 'respondent2SpecDefenceResponseDocument']: { file: defenceResponseDocumentSpec },
+      },
+    };
+  }
+
+  return {};
+};
+
+const timeline = (
+  defendantResponseType: DefendantResponseSpecType,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
     return {
       HowToAddTimeline: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -217,27 +242,40 @@ const timeline = (defendantResponseType: DefendantResponseSpecType, defendantSol
           : 'specResponseTimelineOfEvents2']: [
           {
             value: {
-              timelineDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 10}), {outputFormat: 'YYYY-MM-DD'}),
+              timelineDate: DateHelper.formatDateToString(
+                DateHelper.subtractFromToday({ days: 10 }),
+                { outputFormat: 'YYYY-MM-DD' },
+              ),
               timelineDescription: `Timeline event 1 - ${defendantSolicitorParty.key}`,
-            }
+            },
           },
           {
             value: {
-              timelineDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 11}), {outputFormat: 'YYYY-MM-DD'}),
+              timelineDate: DateHelper.formatDateToString(
+                DateHelper.subtractFromToday({ days: 11 }),
+                { outputFormat: 'YYYY-MM-DD' },
+              ),
               timelineDescription: `Timeline event 2 - ${defendantSolicitorParty.key}`,
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     };
   }
 
   return {};
-}
+};
 
-const mediationContactInformation = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+const mediationContactInformation = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
         MediationContactInformation: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -254,10 +292,17 @@ const mediationContactInformation = (defendantResponseType: DefendantResponseSpe
   return {};
 };
 
-const mediationAvailability = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
-      const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {
+const mediationAvailability = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
+      const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({ months: 1 }), {
         outputFormat: 'YYYY-MM-DD',
       });
       return {
@@ -281,9 +326,16 @@ const mediationAvailability = (defendantResponseType: DefendantResponseSpecType,
   return {};
 };
 
-const whenWillClaimBePaid = (defendantResponseType: DefendantResponseSpecType, paymentTypeSpec: PaymentTypeSpec, defendantSolicitorParty: Party) => {
-  if(defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) {
-    if(paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE) {
+const whenWillClaimBePaid = (
+  defendantResponseType: DefendantResponseSpecType,
+  paymentTypeSpec: PaymentTypeSpec,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
+  ) {
+    if (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE) {
       return {
         WhenWillClaimBePaid: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -292,7 +344,10 @@ const whenWillClaimBePaid = (defendantResponseType: DefendantResponseSpecType, p
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
             ? 'respondToClaimAdmitPartLRspec'
             : 'respondToClaimAdmitPartLRspec2']: {
-            whenWillThisAmountBePaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({months: 1}), {outputFormat: 'YYYY-MM-DD'}),
+            whenWillThisAmountBePaid: DateHelper.formatDateToString(
+              DateHelper.subtractFromToday({ months: 1 }),
+              { outputFormat: 'YYYY-MM-DD' },
+            ),
           },
         },
       };
@@ -303,36 +358,44 @@ const whenWillClaimBePaid = (defendantResponseType: DefendantResponseSpecType, p
           ? 'defenceAdmitPartPaymentTimeRouteRequired'
           : 'defenceAdmitPartPaymentTimeRouteRequired2']: paymentTypeSpec,
       },
-    }
+    };
   }
 
   return {};
-}
+};
 
-
-const defendant1FinancialDetails = (defendantResponseType: DefendantResponseSpecType, paymentTypeSpec: PaymentTypeSpec, defendantSolicitorParty: Party) => {
-  if((defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION)
-    && (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE || paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN) 
-  && (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1)
+const defendant1FinancialDetails = (
+  defendantResponseType: DefendantResponseSpecType,
+  paymentTypeSpec: PaymentTypeSpec,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    (defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
+      defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) &&
+    (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE ||
+      paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN) &&
+    defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
   ) {
     return {
       FinancialDetailsPurpose: {},
       DefendantBankAccounts: {
-        respondent1BankAccountList: [{
-          value: {
-            accountType: 'CURRENT',
-            jointAccount: 'Yes',
-            balance: '1000'
+        respondent1BankAccountList: [
+          {
+            value: {
+              accountType: 'CURRENT',
+              jointAccount: 'Yes',
+              balance: '1000',
+            },
           },
-        }]
+        ],
       },
       DisabilityPremiumPayments: {
         disabilityPremiumPayments: 'Yes',
-        severeDisabilityPremiumPayments: 'No'
+        severeDisabilityPremiumPayments: 'No',
       },
       defendantHomeOptions: {
         respondent1DQHomeDetails: {
-          type: 'PRIVATE_RENTAL'
+          type: 'PRIVATE_RENTAL',
         },
       },
       DefendantPartnersAndDependents: {
@@ -347,16 +410,13 @@ const defendant1FinancialDetails = (defendantResponseType: DefendantResponseSpec
           howManyChildrenByAgeGroup: {
             numberOfUnderEleven: '0',
             numberOfElevenToFifteen: '1',
-            numberOfSixteenToNineteen: '0'
+            numberOfSixteenToNineteen: '0',
           },
         },
       },
       EmploymentDeclaration: {
         defenceAdmitPartEmploymentTypeRequired: 'Yes',
-        respondToClaimAdmitPartEmploymentTypeLRspec: [
-          'EMPLOYED',
-          'SELF'
-        ],
+        respondToClaimAdmitPartEmploymentTypeLRspec: ['EMPLOYED', 'SELF'],
       },
       HowToAddEmploymentDetails: {
         responseClaimAdmitPartEmployer: {
@@ -364,7 +424,7 @@ const defendant1FinancialDetails = (defendantResponseType: DefendantResponseSpec
             {
               value: {
                 employerName: `Company - ${partys.DEFENDANT_SOLICITOR_1.key}`,
-                jobTitle: `Job - ${partys.DEFENDANT_SOLICITOR_1.key}`
+                jobTitle: `Job - ${partys.DEFENDANT_SOLICITOR_1.key}`,
               },
             },
           ],
@@ -376,7 +436,7 @@ const defendant1FinancialDetails = (defendantResponseType: DefendantResponseSpec
           annualTurnover: '100000',
           isBehindOnTaxPayment: 'Yes',
           amountOwed: '000',
-          reason: `Tax Payments Behind Reason - ${partys.DEFENDANT_SOLICITOR_1.key}`
+          reason: `Tax Payments Behind Reason - ${partys.DEFENDANT_SOLICITOR_1.key}`,
         },
       },
       DetailsOfPayingMoneyRepaymentPlan: {
@@ -386,9 +446,9 @@ const defendant1FinancialDetails = (defendantResponseType: DefendantResponseSpec
             value: {
               claimNumberText: '123456',
               amountOwed: '10000',
-              monthlyInstalmentAmount: '200'
+              monthlyInstalmentAmount: '200',
             },
-          }
+          },
         ],
       },
       DefendantDebts: {
@@ -398,9 +458,9 @@ const defendant1FinancialDetails = (defendantResponseType: DefendantResponseSpec
             value: {
               loanCardDebtDetail: 'Amex',
               totalOwed: '10000',
-              monthlyPayment: '200'
+              monthlyPayment: '200',
             },
-          }
+          },
         ],
       },
       DefendantIncomeExpensesFullAdmission: {
@@ -410,39 +470,48 @@ const defendant1FinancialDetails = (defendantResponseType: DefendantResponseSpec
             value: {
               type: 'JOB',
               amount: '50000',
-              frequency: 'ONCE_ONE_WEEK'
+              frequency: 'ONCE_ONE_WEEK',
             },
-          }
+          },
         ],
         respondent1DQRecurringExpensesFA: [
           {
             value: {
               type: 'RENT',
               amount: '10000',
-              frequency: 'ONCE_ONE_MONTH'
+              frequency: 'ONCE_ONE_MONTH',
             },
           },
           {
             value: {
               type: 'GAS',
               amount: '3000',
-              frequency: 'ONCE_ONE_WEEK'
+              frequency: 'ONCE_ONE_WEEK',
             },
           },
         ],
       },
       WhyDoesNotPayImmediately: {
-        responseToClaimAdmitPartWhyNotPayLRspec: `Cannot pay immediately reason - ${partys.DEFENDANT_SOLICITOR_1.key}`
+        responseToClaimAdmitPartWhyNotPayLRspec: `Cannot pay immediately reason - ${partys.DEFENDANT_SOLICITOR_1.key}`,
       },
     };
   }
   return {};
 };
 
-const defendant2FinancialDetails = (defendantResponseType: DefendantResponseSpecType, paymentTypeSpec: PaymentTypeSpec, claimType: ClaimType, defendantSolicitorParty: Party) => {
-  if((defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION)
-    && (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE || paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN)
-    && (claimType === ClaimType.ONE_VS_TWO_SAME_SOL || defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
+const defendant2FinancialDetails = (
+  defendantResponseType: DefendantResponseSpecType,
+  paymentTypeSpec: PaymentTypeSpec,
+  claimType: ClaimType,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    (defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
+      defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) &&
+    (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE ||
+      paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN) &&
+    (claimType === ClaimType.ONE_VS_TWO_SAME_SOL ||
+      defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
   ) {
     return {
       FinancialDetailsPurpose2: {},
@@ -452,86 +521,115 @@ const defendant2FinancialDetails = (defendantResponseType: DefendantResponseSpec
             value: {
               accountType: 'SAVINGS',
               jointAccount: 'No',
-              balance: '200'
+              balance: '200',
             },
-          }
-        ]
+          },
+        ],
       },
       DisabilityPremiumPaymentsRespondent2: {
-        disabilityPremiumPaymentsRespondent2: 'No'
+        disabilityPremiumPaymentsRespondent2: 'No',
       },
       defendantHomeOptionsRespondent2: {
-        respondent2DQHomeDetails: {type: 'OWNED_HOME'}
+        respondent2DQHomeDetails: { type: 'OWNED_HOME' },
       },
       Defendant2PartnersAndDependents: {
         respondent2PartnerAndDependent: {
           haveAnyChildrenRequired: 'No',
           liveWithPartnerRequired: 'No',
           supportedAnyoneFinancialRequired: 'No',
-        }
+        },
       },
       EmploymentDeclarationRespondent2: {
         defenceAdmitPartEmploymentTypeRequiredRespondent2: 'No',
         respondToClaimAdmitPartUnemployedLRspecRespondent2: {
-          unemployedComplexTypeRequired: 'RETIRED'
+          unemployedComplexTypeRequired: 'RETIRED',
         },
       },
       DetailsOfPayingMoneyRepaymentPlanRespondent2: {
-        respondent2CourtOrderPaymentOption: 'No'
+        respondent2CourtOrderPaymentOption: 'No',
       },
       DefendantDebtsRespondent2: {
-        respondent2LoanCreditOption: 'No'
+        respondent2LoanCreditOption: 'No',
       },
       DefendantIncomeExpensesRespondent2: {
-        respondent2DQCarerAllowanceCredit: 'No'
+        respondent2DQCarerAllowanceCredit: 'No',
       },
       WhyDoesNotPayImmediatelyRespondent2: {
-        responseToClaimAdmitPartWhyNotPayLRspec2: `Cannot pay immediately reason - ${partys.DEFENDANT_SOLICITOR_2.key}`
-      }
-    }
-  }
-  return {};
-}
-
-const defendant1RepaymentPlan = (defendantResponseType: DefendantResponseSpecType, paymentTypeSpec: PaymentTypeSpec, defendantSolicitorParty: Party) => {
-  if((defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION)
-    && paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN
-    && defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-  ) {
-    return {
-      RepaymentPlan:{
-        respondent1RepaymentPlan: {
-          firstRepaymentDate: DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {outputFormat: 'YYYY-MM-DD'}),
-          paymentAmount: '5000',
-          repaymentFrequency: 'ONCE_ONE_WEEK'
-        }
-      }
+        responseToClaimAdmitPartWhyNotPayLRspec2: `Cannot pay immediately reason - ${partys.DEFENDANT_SOLICITOR_2.key}`,
+      },
     };
   }
   return {};
-}
+};
 
-const defendant2RepaymentPlan = (defendantResponseType: DefendantResponseSpecType,paymentTypeSpec: PaymentTypeSpec, claimType: ClaimType, defendantSolicitorParty: Party) => {
-  if((defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION || defendantResponseType === DefendantResponseSpecType.PART_ADMISSION)
-    && paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN
-    && (claimType === ClaimType.ONE_VS_TWO_SAME_SOL || defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
+const defendant1RepaymentPlan = (
+  defendantResponseType: DefendantResponseSpecType,
+  paymentTypeSpec: PaymentTypeSpec,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    (defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
+      defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) &&
+    paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN &&
+    defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+  ) {
+    return {
+      RepaymentPlan: {
+        respondent1RepaymentPlan: {
+          firstRepaymentDate: DateHelper.formatDateToString(DateHelper.addToToday({ months: 1 }), {
+            outputFormat: 'YYYY-MM-DD',
+          }),
+          paymentAmount: '5000',
+          repaymentFrequency: 'ONCE_ONE_WEEK',
+        },
+      },
+    };
+  }
+  return {};
+};
+
+const defendant2RepaymentPlan = (
+  defendantResponseType: DefendantResponseSpecType,
+  paymentTypeSpec: PaymentTypeSpec,
+  claimType: ClaimType,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    (defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
+      defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) &&
+    paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN &&
+    (claimType === ClaimType.ONE_VS_TWO_SAME_SOL ||
+      defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
   ) {
     return {
       RepaymentPlanRespondent2: {
         respondent2RepaymentPlan: {
-          firstRepaymentDate: DateHelper.formatDateToString(DateHelper.addToToday({months: 2}), {outputFormat: 'YYYY-MM-DD'}),
+          firstRepaymentDate: DateHelper.formatDateToString(DateHelper.addToToday({ months: 2 }), {
+            outputFormat: 'YYYY-MM-DD',
+          }),
           paymentAmount: '5000',
-          repaymentFrequency: 'ONCE_ONE_MONTH'
-        }
-      }
+          repaymentFrequency: 'ONCE_ONE_MONTH',
+        },
+      },
     };
   }
   return {};
-}
+};
 
-const fastTrackDq = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.FAST_CLAIM) {
+const fileDirectionsQuestionnaire = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (
+      claimTrack === ClaimTrack.FAST_CLAIM ||
+      claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+      claimTrack === ClaimTrack.MULTI_CLAIM
+    ) {
       return {
         FileDirectionsQuestionnaire: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -540,11 +638,27 @@ const fastTrackDq = (defendantResponseType: DefendantResponseSpecType, claimTrac
             oneMonthStayRequested: 'Yes',
             reactionProtocolCompliedWith: 'No',
             reactionProtocolNotCompliedWithReason: `Reaction protocol not complied with reason - ${defendantSolicitorParty.key}`,
-            explainedToClient: [
-                'CONFIRM'
-            ]
-          }
+            explainedToClient: ['CONFIRM'],
+          },
         },
+      };
+    }
+  }
+
+  return {};
+};
+
+const fixedRecoverableCosts = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.FAST_CLAIM) {
+      return {
         FixedRecoverableCosts: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
             ? 'respondent1DQFixedRecoverableCosts'
@@ -555,31 +669,6 @@ const fastTrackDq = (defendantResponseType: DefendantResponseSpecType, claimTrac
             reasons: `Recoverable costs reason - ${defendantSolicitorParty.key}`,
           },
         },
-        DisclosureOfElectronicDocumentsLRspec: {
-          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? 'specRespondent1DQDisclosureOfElectronicDocuments'
-            : 'specRespondent2DQDisclosureOfElectronicDocuments']: {
-            reachedAgreement: 'No',
-            agreementLikely: 'No',
-            reasonForNoAgreement: `Reason for no agreement - ${defendantSolicitorParty.key}`,
-          }
-        },
-        DisclosureOfNonElectronicDocumentsLRspec: {
-          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? 'specRespondent1DQDisclosureOfNonElectronicDocuments'
-            : 'specRespondent2DQDisclosureOfNonElectronicDocuments']: {
-            bespokeDirections: `Directions are proposed for disclosure - ${defendantSolicitorParty.key}`,
-          },
-        },
-        DisclosureReport: {
-          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? 'respondent1DQDisclosureReport'
-            : 'respondent2DQDisclosureReport']: {
-            disclosureFormFiledAndServed: "Yes",
-            disclosureProposalAgreed: "Yes",
-            draftOrderNumber: "12345"
-          }
-        }
       };
     }
   }
@@ -587,27 +676,18 @@ const fastTrackDq = (defendantResponseType: DefendantResponseSpecType, claimTrac
   return {};
 };
 
-const intermediateTrackDq = (
+const fixedRecoverableCostsIntermediate = (
   defendantResponseType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
   defendantSolicitorParty: Party,
   frcSupportingDocument?: UploadDocumentValue,
 ) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
       return {
-        FileDirectionsQuestionnaire: {
-          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-            ? 'respondent1DQFileDirectionsQuestionnaire'
-            : 'respondent2DQFileDirectionsQuestionnaire']: {
-            oneMonthStayRequested: 'Yes',
-            reactionProtocolCompliedWith: 'No',
-            reactionProtocolNotCompliedWithReason: `Reaction protocol not complied with reason - ${defendantSolicitorParty.key}`,
-            explainedToClient: [
-              'CONFIRM'
-            ],
-          },
-        },
         FixedRecoverableCostsIntermediate: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
             ? 'respondent1DQFixedRecoverableCostsIntermediate'
@@ -619,6 +699,28 @@ const intermediateTrackDq = (
             frcSupportingDocument,
           },
         },
+      };
+    }
+  }
+
+  return {};
+};
+
+const disclosureOfElectronicDocumentsLRspec = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (
+      claimTrack === ClaimTrack.FAST_CLAIM ||
+      claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+      claimTrack === ClaimTrack.MULTI_CLAIM
+    ) {
+      return {
         DisclosureOfElectronicDocumentsLRspec: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
             ? 'specRespondent1DQDisclosureOfElectronicDocuments'
@@ -628,6 +730,28 @@ const intermediateTrackDq = (
             reasonForNoAgreement: `Reason for no agreement - ${defendantSolicitorParty.key}`,
           },
         },
+      };
+    }
+  }
+
+  return {};
+};
+
+const disclosureOfNonElectronicDocumentsLRspec = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (
+      claimTrack === ClaimTrack.FAST_CLAIM ||
+      claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+      claimTrack === ClaimTrack.MULTI_CLAIM
+    ) {
+      return {
         DisclosureOfNonElectronicDocumentsLRspec: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
             ? 'specRespondent1DQDisclosureOfNonElectronicDocuments'
@@ -635,6 +759,28 @@ const intermediateTrackDq = (
             bespokeDirections: `Directions are proposed for disclosure - ${defendantSolicitorParty.key}`,
           },
         },
+      };
+    }
+  }
+
+  return {};
+};
+
+const disclosureReport = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (
+      claimTrack === ClaimTrack.FAST_CLAIM ||
+      claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+      claimTrack === ClaimTrack.MULTI_CLAIM
+    ) {
+      return {
         DisclosureReport: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
             ? 'respondent1DQDisclosureReport'
@@ -651,9 +797,16 @@ const intermediateTrackDq = (
   return {};
 };
 
-const deterWithoutHearing = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+const deterWithoutHearing = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
         DeterminationWithoutHearing: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -670,9 +823,16 @@ const deterWithoutHearing = (defendantResponseType: DefendantResponseSpecType, c
   return {};
 };
 
-const experts = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+const experts = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       const defendantExpert =
         defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? partys.DEFENDANT_1_EXPERT_1
@@ -691,7 +851,7 @@ const experts = (defendantResponseType: DefendantResponseSpecType, claimTrack: C
             : 'responseClaimExpertSpecRequired2']: 'Yes',
         },
       };
-    } 
+    }
     const defendantExperts =
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? [partys.DEFENDANT_1_EXPERT_1, partys.DEFENDANT_1_EXPERT_2]
@@ -719,9 +879,16 @@ const experts = (defendantResponseType: DefendantResponseSpecType, claimTrack: C
   return {};
 };
 
-const witnesses = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+const witnesses = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       const defendantWitnesses =
         defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? [partys.DEFENDANT_1_WITNESS_1, partys.DEFENDANT_1_WITNESS_2]
@@ -744,7 +911,6 @@ const witnesses = (defendantResponseType: DefendantResponseSpecType, claimTrack:
       };
     }
 
-    
     const defendantWitnesses =
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? [partys.DEFENDANT_1_WITNESS_1, partys.DEFENDANT_1_WITNESS_2]
@@ -757,7 +923,7 @@ const witnesses = (defendantResponseType: DefendantResponseSpecType, claimTrack:
       }),
     );
 
-    if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+    if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
       return {
         Witnesses: {
           respondent1DQWitnessesRequiredSpec: 'Yes',
@@ -779,8 +945,14 @@ const witnesses = (defendantResponseType: DefendantResponseSpecType, claimTrack:
   return {};
 };
 
-const language = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
+const language = (
+  defendantResponseType: DefendantResponseSpecType,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
     return {
       Language: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -796,13 +968,20 @@ const language = (defendantResponseType: DefendantResponseSpecType, defendantSol
   return {};
 };
 
-const hearing = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({months: 1}), {
+const hearing = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({ months: 1 }), {
     outputFormat: 'YYYY-MM-DD',
   });
 
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
         SmallClaimHearing: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -841,18 +1020,26 @@ const hearing = (defendantResponseType: DefendantResponseSpecType, claimTrack: C
   return {};
 };
 
-const requestedCourtLocation = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
+const requestedCourtLocation = (
+  defendantResponseType: DefendantResponseSpecType,
+  defendantSolicitorParty: Party,
+) => {
   const preferredCourtParty =
     defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
       ? partys.DEFENDANT_1
       : partys.DEFENDANT_2;
-  const preferredCourt = CaseDataHelper.setCodeToData(preferredCourts[preferredCourtParty.key].default);
+  const preferredCourt = CaseDataHelper.setCodeToData(
+    preferredCourts[preferredCourtParty.key].default,
+  );
 
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
     return {
       RequestedCourtLocationLRspec: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
-          ? 'respondToCourtLocation' 
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondToCourtLocation'
           : 'respondToCourtLocation2']: {
           responseCourtLocations: {
             list_items: [preferredCourt],
@@ -860,8 +1047,8 @@ const requestedCourtLocation = (defendantResponseType: DefendantResponseSpecType
           },
           reasonForHearingAtSpecificCourt: `Court location reason - ${defendantSolicitorParty.key}`,
         },
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
-          ? 'respondent1DQRemoteHearingLRspec' 
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondent1DQRemoteHearingLRspec'
           : 'respondent2DQRemoteHearingLRspec']: {
           remoteHearingRequested: 'Yes',
           reasonForRemoteHearing: `Court location reason - ${defendantSolicitorParty.key}`,
@@ -873,8 +1060,14 @@ const requestedCourtLocation = (defendantResponseType: DefendantResponseSpecType
   return {};
 };
 
-const hearingSupport = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
+const hearingSupport = (
+  defendantResponseType: DefendantResponseSpecType,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
     return {
       HearingSupport: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -890,8 +1083,14 @@ const hearingSupport = (defendantResponseType: DefendantResponseSpecType, defend
   return {};
 };
 
-const vulnerabilityQuestions = (defendantResponseType: DefendantResponseSpecType, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
+const vulnerabilityQuestions = (
+  defendantResponseType: DefendantResponseSpecType,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
     return {
       VulnerabilityQuestions: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -907,9 +1106,16 @@ const vulnerabilityQuestions = (defendantResponseType: DefendantResponseSpecType
   return {};
 };
 
-const applications = (defendantResponseType: DefendantResponseSpecType, claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if(defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION && defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM) {
-    if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+const applications = (
+  defendantResponseType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
+    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+  ) {
+    if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {};
     }
 
@@ -917,7 +1123,8 @@ const applications = (defendantResponseType: DefendantResponseSpecType, claimTra
       Applications: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'additionalInformationForJudge'
-          : 'additionalInformationForJudge2']: `Additional information - ${defendantSolicitorParty.key}`,
+          : 'additionalInformationForJudge2']:
+          `Additional information - ${defendantSolicitorParty.key}`,
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
           ? 'respondent1DQFutureApplications'
           : 'respondent2DQFutureApplications']: {
@@ -948,16 +1155,16 @@ const statementOfTruth = (defendantSolicitorParty: Party) => {
 };
 
 const undefine = (defendantSolicitorParty: Party) => {
-  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       Undefine: {
-        respondent1DetailsForClaimDetailsTab: undefined
-      }
-    }
+        respondent1DetailsForClaimDetailsTab: undefined,
+      },
+    };
   }
 
   return {};
-}
+};
 
 const defendantResponseSpecData = {
   defendantChecklist,
@@ -977,8 +1184,12 @@ const defendantResponseSpecData = {
   mediationContactInformation,
   mediationAvailability,
   deterWithoutHearing,
-  fastTrackDq,
-  intermediateTrackDq,
+  fileDirectionsQuestionnaire,
+  fixedRecoverableCosts,
+  fixedRecoverableCostsIntermediate,
+  disclosureOfElectronicDocumentsLRspec,
+  disclosureOfNonElectronicDocumentsLRspec,
+  disclosureReport,
   experts,
   witnesses,
   language,
@@ -988,7 +1199,7 @@ const defendantResponseSpecData = {
   vulnerabilityQuestions,
   applications,
   statementOfTruth,
-  undefine
+  undefine,
 };
 
 export default defendantResponseSpecData;

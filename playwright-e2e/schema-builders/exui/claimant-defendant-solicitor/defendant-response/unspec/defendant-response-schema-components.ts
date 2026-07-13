@@ -58,17 +58,21 @@ const deterWithoutHearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Pa
   if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
       return {
-        deterWithoutHearingRespondent1: z.strictObject({
-          deterWithoutHearingWhyNot: nonEmptyString,
-          deterWithoutHearingYesNo: yesNoSchema,
-        }).optional(),
+        deterWithoutHearingRespondent1: z
+          .strictObject({
+            deterWithoutHearingWhyNot: nonEmptyString,
+            deterWithoutHearingYesNo: yesNoSchema,
+          })
+          .optional(),
       };
     } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
       return {
-        deterWithoutHearingRespondent2: z.strictObject({
-          deterWithoutHearingWhyNot: nonEmptyString,
-          deterWithoutHearingYesNo: yesNoSchema,
-        }).optional(),
+        deterWithoutHearingRespondent2: z
+          .strictObject({
+            deterWithoutHearingWhyNot: nonEmptyString,
+            deterWithoutHearingYesNo: yesNoSchema,
+          })
+          .optional(),
       };
     }
   }
@@ -76,8 +80,12 @@ const deterWithoutHearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Pa
   return {};
 };
 
-const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
-  if (claimTrack === ClaimTrack.FAST_CLAIM) {
+const fileDirectionsQuestionnaire = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+    claimTrack === ClaimTrack.MULTI_CLAIM
+  ) {
     return {
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
         ? 'respondent2DQFileDirectionsQuestionnaire'
@@ -87,6 +95,15 @@ const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => 
         reactionProtocolCompliedWith: yesNoSchema,
         reactionProtocolNotCompliedWithReason: nonEmptyString,
       }),
+    };
+  }
+
+  return {};
+};
+
+const fixedRecoverableCosts = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+  if (claimTrack === ClaimTrack.FAST_CLAIM) {
+    return {
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
         ? 'respondent2DQFixedRecoverableCosts'
         : 'respondent1DQFixedRecoverableCosts']: z.strictObject({
@@ -95,30 +112,18 @@ const fastTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => 
         complexityBandingAgreed: yesNoSchema,
         reasons: nonEmptyString,
       }),
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
-        ? 'respondent2DQDisclosureOfNonElectronicDocuments'
-        : 'respondent1DQDisclosureOfNonElectronicDocuments']: z.strictObject({
-        directionsForDisclosureProposed: yesNoSchema,
-        standardDirectionsRequired: yesNoSchema,
-        bespokeDirections: nonEmptyString,
-      }),
     };
   }
 
   return {};
 };
 
-const intermediateTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Party) => {
+const fixedRecoverableCostsIntermediate = (
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
   if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
     return {
-      [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
-        ? 'respondent2DQFileDirectionsQuestionnaire'
-        : 'respondent1DQFileDirectionsQuestionnaire']: z.strictObject({
-        explainedToClient: z.array(nonEmptyString).min(1),
-        oneMonthStayRequested: yesNoSchema,
-        reactionProtocolCompliedWith: yesNoSchema,
-        reactionProtocolNotCompliedWithReason: nonEmptyString,
-      }),
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
         ? 'respondent2DQFixedRecoverableCostsIntermediate'
         : 'respondent1DQFixedRecoverableCostsIntermediate']: z.strictObject({
@@ -128,12 +133,40 @@ const intermediateTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Pa
         reasons: nonEmptyString,
         frcSupportingDocument: z.looseObject({}),
       }),
+    };
+  }
+
+  return {};
+};
+
+const disclosureOfElectronicDocuments = (
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM || claimTrack === ClaimTrack.MULTI_CLAIM) {
+    return {
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
         ? 'respondent2DQDisclosureOfElectronicDocuments'
         : 'respondent1DQDisclosureOfElectronicDocuments']: z.strictObject({
         reachedAgreement: yesNoSchema,
         agreementLikely: yesNoSchema,
       }),
+    };
+  }
+
+  return {};
+};
+
+const disclosureOfNonElectronicDocuments = (
+  claimTrack: ClaimTrack,
+  defendantSolicitorParty: Party,
+) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+    claimTrack === ClaimTrack.MULTI_CLAIM
+  ) {
+    return {
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
         ? 'respondent2DQDisclosureOfNonElectronicDocuments'
         : 'respondent1DQDisclosureOfNonElectronicDocuments']: z.strictObject({
@@ -150,12 +183,12 @@ const intermediateTrackDq = (claimTrack: ClaimTrack, defendantSolicitorParty: Pa
 const experts = (defendantSolicitorParty: Party) => ({
   [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2
     ? 'respondent2DQExperts'
-    : 'respondent1DQExperts']:
-    z.strictObject({
-      expertRequired: yesNoSchema,
-      expertReportsSent: nonEmptyString,
-      jointExpertSuitable: yesNoSchema,
-      details: z.array(
+    : 'respondent1DQExperts']: z.strictObject({
+    expertRequired: yesNoSchema,
+    expertReportsSent: nonEmptyString,
+    jointExpertSuitable: yesNoSchema,
+    details: z
+      .array(
         z.strictObject({
           id: nonEmptyString,
           value: z.looseObject({
@@ -171,8 +204,9 @@ const experts = (defendantSolicitorParty: Party) => ({
             dateAdded: nonEmptyString,
           }),
         }),
-      ).min(1),
-    }),
+      )
+      .min(1),
+  }),
 });
 
 const witnesses = (defendantSolicitorParty: Party) => ({
@@ -180,21 +214,23 @@ const witnesses = (defendantSolicitorParty: Party) => ({
     ? 'respondent2DQWitnesses'
     : 'respondent1DQWitnesses']: z.strictObject({
     witnessesToAppear: yesNoSchema,
-    details: z.array(
-      z.strictObject({
-        id: nonEmptyString,
-        value: z.looseObject({
-          partyID: nonEmptyString,
-          firstName: nonEmptyString,
-          lastName: nonEmptyString,
-          phoneNumber: nonEmptyString,
-          emailAddress: nonEmptyString,
-          reasonForWitness: nonEmptyString,
-          eventAdded: nonEmptyString,
-          dateAdded: nonEmptyString,
+    details: z
+      .array(
+        z.strictObject({
+          id: nonEmptyString,
+          value: z.looseObject({
+            partyID: nonEmptyString,
+            firstName: nonEmptyString,
+            lastName: nonEmptyString,
+            phoneNumber: nonEmptyString,
+            emailAddress: nonEmptyString,
+            reasonForWitness: nonEmptyString,
+            eventAdded: nonEmptyString,
+            dateAdded: nonEmptyString,
+          }),
         }),
-      }),
-    ).min(1),
+      )
+      .min(1),
   }),
 });
 
@@ -347,18 +383,18 @@ const statementOfTruth = (defendantSolicitorParty: Party) => {
 };
 
 const undefine = (defendantSolicitorParty: Party) => {
-  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
     return {
       isRespondent1: z.undefined().optional(),
       respondent2DocumentGeneration: z.undefined().optional(),
     };
-  } else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       respondent1ClaimResponseDocument: z.undefined().optional(),
       respondent1DQDraftDirections: z.undefined().optional(),
-     };
+    };
   }
-}
+};
 
 const defendantResponseSchemaComponents = {
   confirmDetails,
@@ -367,8 +403,11 @@ const defendantResponseSchemaComponents = {
   respondentResponseType,
   upload,
   deterWithoutHearing,
-  fastTrackDq,
-  intermediateTrackDq,
+  fileDirectionsQuestionnaire,
+  fixedRecoverableCosts,
+  fixedRecoverableCostsIntermediate,
+  disclosureOfElectronicDocuments,
+  disclosureOfNonElectronicDocuments,
   experts,
   witnesses,
   language,
