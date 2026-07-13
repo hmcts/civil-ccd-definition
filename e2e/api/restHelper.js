@@ -6,7 +6,8 @@ const {retry} = require('./retryHelper');
 const request = (url, headers, body, method = 'POST') =>  fetch(url, {
     method: method,
     body: body ? JSON.stringify(body) : undefined,
-    headers: headers,
+    // native fetch (undici) throws on `headers: null`; node-fetch tolerated it. Normalise null -> undefined.
+    headers: headers || undefined,
     keepalive: true
   });
 
