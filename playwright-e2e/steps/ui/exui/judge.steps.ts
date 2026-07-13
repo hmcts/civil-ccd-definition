@@ -7,6 +7,7 @@ import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import { judgeRegion1User, judgeRegion2User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/nihlFastTrackDirectionsTask';
 import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
 import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
 import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
@@ -166,7 +167,7 @@ export default class JudgeSteps extends BaseExui {
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
-      fastTrackDirectionsTask,
+      nihlFastTrackDirectionsTask,
     );
   }
 
