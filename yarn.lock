@@ -1896,7 +1896,7 @@ __metadata:
     node-cache: "npm:^5.1.2"
     node-fetch: "npm:^2.6.7"
     pixelmatch: "npm:5.3.0"
-    playwright-core: "npm:1.60.0"
+    playwright-core: "npm:1.61.0"
     pngjs: "npm:7.0.0"
     prettier: "npm:^3.3.3"
     proper-lockfile: "npm:^4.1.2"
@@ -5691,6 +5691,15 @@ __metadata:
   bin:
     playwright-core: cli.js
   checksum: 10/66c0f83d627e673261c848dd6fe1f2856d5b5b6859268acb61a45c00f5bf926e596a351a9c481a3a4e82a45022c7c6b5d99ebc3906fc6876ac582ed6f7e16190
+  languageName: node
+  linkType: hard
+
+"playwright-core@npm:1.61.0":
+  version: 1.61.0
+  resolution: "playwright-core@npm:1.61.0"
+  bin:
+    playwright-core: cli.js
+  checksum: 10/e7ac4b2ef1c5f1701ec8086e47bc341988a3f753009d450e2a62daab5ade1fa943f1ef7fb48c721618dd7bd42667a11ff73c2e5dbd0674c20a3397b3c5be2f61
   languageName: node
   linkType: hard
 
