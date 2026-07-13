@@ -8,11 +8,11 @@ import evidenceUploadRespondentDataBuilderComponents from './evidence-upload-res
 
 @AllMethodsStep()
 export default class EvidenceUploadRespondentDataBuilder extends BaseDataBuilder {
-  async buildDS1FastData() {
+  async buildDS1Fast() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildDS1SmallClaimData() {
+  async buildDS1SmallClaim() {
     return this.buildData();
   }
 

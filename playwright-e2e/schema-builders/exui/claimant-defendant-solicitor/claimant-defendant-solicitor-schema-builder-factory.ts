@@ -6,6 +6,8 @@ import ClaimantResponseSchemaBuilder from './claimant-response/unspec/claimant-r
 import ClaimantResponseSpecSchemaBuilder from './claimant-response/lr-spec/claimant-response-spec-schema-builder';
 import CreateClaimSpecSchemaBuilder from './create-claim/lr-spec/create-claim-spec-schema-builder';
 import CreateClaimSchemaBuilder from './create-claim/unspec/create-claim-schema-builder';
+import DefaultJudgementSpecSchemaBuilder from './default-judgement/lr-spec/default-judgement-spec-schema-builder';
+import DefaultJudgementSchemaBuilder from './default-judgement/unspec/default-judgement-schema-builder';
 import DefendantResponseSchemaBuilder from './defendant-response/unspec/defendant-response-schema-builder';
 import DefendantResponseSpecSchemaBuilder from './defendant-response/lr-spec/defendant-response-spec-schema-builder';
 import EvidenceUploadApplicantSchemaBuilder from './evidence-upload-applicant/unspec/evidence-upload-applicant-schema-builder';
@@ -66,6 +68,14 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get claimantResponseSchemaBuilder() {
     return new ClaimantResponseSchemaBuilder(this.testData);
+  }
+
+  get defaultJudgementSchemaBuilder() {
+    return new DefaultJudgementSchemaBuilder(this.testData);
+  }
+
+  get defaultJudgementSpecSchemaBuilder() {
+    return new DefaultJudgementSpecSchemaBuilder(this.testData);
   }
 
   get informAgreedExtensionDateSchemaBuilder() {

@@ -30,6 +30,24 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     })
   }
 
+  async buildIntermediate1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediate1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildIntermediate1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
   async buildSmall1v1() {
     return this.buildData();
   }

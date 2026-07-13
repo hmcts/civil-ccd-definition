@@ -30,6 +30,14 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
+  async buildDS1IntermediateFullDefence2v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
   async buildDS1FastFullDefence1v2SS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -38,9 +46,24 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
+  async buildDS1IntermediateFullDefence1v2SS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
   async buildDS1FastFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1IntermediateFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       responseType: DefendantResponseType.FULL_DEFENCE,
     });
   }
@@ -95,6 +118,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
       defendantResponseSchemaComponents.upload,
       defendantResponseSchemaComponents.deterWithoutHearing(claimTrack, defendantSolicitorParty),
       defendantResponseSchemaComponents.fastTrackDq(claimTrack, defendantSolicitorParty),
+      defendantResponseSchemaComponents.intermediateTrackDq(claimTrack, defendantSolicitorParty),
       defendantResponseSchemaComponents.experts(defendantSolicitorParty),
       defendantResponseSchemaComponents.witnesses(defendantSolicitorParty),
       defendantResponseSchemaComponents.language(defendantSolicitorParty),
