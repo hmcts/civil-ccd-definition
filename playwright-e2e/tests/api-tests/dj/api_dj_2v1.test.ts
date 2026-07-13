@@ -1,19 +1,16 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 default judgment', { tag: '@civil-ccd-nightly' }, () => {
-  test('1v1 default judgment', async ({
-    ClaimantSolicitorSteps,
+test.describe('2v1 default judgement api journey', { tag: '@civil-service-nightly' }, async () => {
+  test('2v1 default judgement api', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
+    await ClaimantSolicitorApiSteps.CreateClaimFast2v1();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
     await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
-    await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.RequestDefaultJudgment();
+    await ClaimantSolicitorApiSteps.DefaultJudgement();
   });
 });

@@ -4,6 +4,7 @@ import {
   claimantSolicitorUser,
 } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import DJSpecType from '../../../constants/ccd-events/default-judgement/dj-spec-type';
 import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseState from '../../../constants/cases/case-state';
@@ -617,6 +618,45 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
+  }
+
+  async DefaultJudgementSpec() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { defaultJudgementSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestDefaultJudgementSpecData = await defaultJudgementSpecDataBuilder.build();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      requestDefaultJudgementSpecData,
+    );
+
+    const { defaultJudgementSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defaultJudgementSpecSchema =
+      await defaultJudgementSpecSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(defaultJudgementSpecSchema, this.ccdCaseData);
+  }
+
+  async DefaultJudgementSpec1v2() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { defaultJudgementSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestDefaultJudgementSpecData = await defaultJudgementSpecDataBuilder.build1v2SSNonDivergent();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      requestDefaultJudgementSpecData,
+      CaseState.PROCEEDS_IN_HERITAGE_SYSTEM,
+    );
+
+    const { defaultJudgementSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defaultJudgementSpecSchema =
+      await defaultJudgementSpecSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(defaultJudgementSpecSchema, this.ccdCaseData);
   }
 
   async AmendRespondent2ResponseDeadline() {
