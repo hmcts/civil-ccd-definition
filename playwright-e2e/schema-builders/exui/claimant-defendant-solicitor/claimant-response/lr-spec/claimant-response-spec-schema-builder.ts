@@ -142,6 +142,13 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     return this.buildSmall(caseDataBeforeSubmission);
   }
 
+  async buildSmall2v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
   async buildSmall1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,

@@ -9,10 +9,9 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
       HearingCenterAdminApiSteps,
-      JudgeSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();
@@ -20,8 +19,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.SdoSmallTrackSum();
+      await JudgeApiSteps.SdoSmallTrackSum();
       await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();
       await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
       await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
@@ -37,7 +35,7 @@ test.describe(
       HearingCenterAdminApiSteps,
       JudgeSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();

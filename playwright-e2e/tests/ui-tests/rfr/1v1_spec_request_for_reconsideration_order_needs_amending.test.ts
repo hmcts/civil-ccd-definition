@@ -11,7 +11,7 @@ test.describe(
       DefendantSolicitor1SpecApiSteps,
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
-      LegalAdvisorSteps,
+      LegalAdvisorApiSteps,
       ClaimantSolicitorSpecSteps,
       JudgeSteps,
     }) => {
@@ -21,8 +21,7 @@ test.describe(
       await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
       await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed();
       await CaseworkerApiSteps.MediationUnsuccessful();
-      await LegalAdvisorSteps.LoginRegion1();
-      await LegalAdvisorSteps.SdoSmallTrackNoSum();
+      await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
       await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.RequestForReconsideration();
       await JudgeSteps.LoginRegion1();

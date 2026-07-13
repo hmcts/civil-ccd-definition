@@ -2,7 +2,7 @@ import { z } from 'zod';
 import SdoType from '../../../../constants/ccd-events/sdo/sdo-type';
 
 const sdo = (sdoType: SdoType) => {
-  if(sdoType === SdoType.TRAIL || sdoType === SdoType.SMALL_TRACK_SUM) {
+  if (sdoType === SdoType.TRAIL || sdoType === SdoType.SMALL_TRACK_SUM) {
     return {
       drawDirectionsOrderRequired: z.string(),
       drawDirectionsOrder: z.looseObject({
@@ -17,27 +17,26 @@ const sdo = (sdoType: SdoType) => {
 };
 
 const claimsTrack = (sdoType: SdoType) => {
-  if(sdoType === SdoType.FAST_TRACK) {
+  if (sdoType === SdoType.FAST_TRACK) {
     return {
-      claimsTrack: z.string(),
       trialAdditionalDirectionsForFastTrack: z.array(z.string()),
     };
   }
 
-  if(sdoType === SdoType.TRAIL) {
+  if (sdoType === SdoType.TRAIL) {
     return {
       drawDirectionsOrderSmallClaims: z.string(),
     };
   }
 
-  if(sdoType === SdoType.SMALL_TRACK_SUM) {
+  if (sdoType === SdoType.SMALL_TRACK_SUM) {
     return {
       drawDirectionsOrderSmallClaims: z.string(),
       drawDirectionsOrderSmallClaimsAdditionalDirections: z.array(z.string()),
     };
   }
 
-  if(sdoType === SdoType.SMALL_TRACK_NO_SUM) {
+  if (sdoType === SdoType.SMALL_TRACK_NO_SUM) {
     return {
       claimsTrack: z.string(),
       smallClaims: z.array(z.string()),
@@ -48,7 +47,7 @@ const claimsTrack = (sdoType: SdoType) => {
 };
 
 const orderType = (sdoType: SdoType) => {
-  if(sdoType === SdoType.TRAIL || sdoType === SdoType.DISPOSAL_HEARING) {
+  if (sdoType === SdoType.TRAIL || sdoType === SdoType.DISPOSAL_HEARING) {
     return {
       orderType: z.string(),
       trialAdditionalDirectionsForFastTrack: z.array(z.string()),
@@ -59,7 +58,7 @@ const orderType = (sdoType: SdoType) => {
 };
 
 const fastTrack = (sdoType: SdoType) => {
-  if(sdoType === SdoType.FAST_TRACK || sdoType === SdoType.TRAIL) {
+  if (sdoType === SdoType.FAST_TRACK || sdoType === SdoType.TRAIL) {
     return {
       fastTrackJudgesRecital: z.looseObject({
         input: z.string(),
@@ -76,17 +75,19 @@ const fastTrack = (sdoType: SdoType) => {
         date2: z.string(),
         input3: z.string(),
       }),
-      fastTrackWitnessOfFact: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        input4: z.string(),
-        input5: z.string(),
-        input6: z.string(),
-        input7: z.string(),
-        input8: z.string(),
-        date: z.string(),
-        input9: z.string(),
+      sdoR2FastTrackWitnessOfFact: z.looseObject({
+        sdoStatementOfWitness: z.string(),
+        sdoWitnessDeadline: z.string(),
+        sdoWitnessDeadlineDate: z.string(),
+        sdoWitnessDeadlineText: z.string(),
+        sdoRestrictPages: z.looseObject({
+          isRestrictPages: z.string(),
+          restrictNoOfPagesDetails: z.looseObject({
+            noOfPages: z.number(),
+            fontDetails: z.string(),
+            witnessShouldNotMoreThanTxt: z.string(),
+          }),
+        }),
       }),
       fastTrackSchedulesOfLoss: z.looseObject({
         input1: z.string(),
@@ -133,14 +134,14 @@ const fastTrack = (sdoType: SdoType) => {
         date4: z.string(),
         input8: z.string(),
       }),
-      fastTrackHousingDisrepair: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        date1: z.string(),
-        input4: z.string(),
-        date2: z.string(),
-      }),
+      // fastTrackHousingDisrepair: z.looseObject({
+      //   input1: z.string(),
+      //   input2: z.string(),
+      //   input3: z.string(),
+      //   date1: z.string(),
+      //   input4: z.string(),
+      //   date2: z.string(),
+      // }),
       fastTrackPersonalInjury: z.looseObject({
         input1: z.string(),
         date1: z.string(),
@@ -152,13 +153,23 @@ const fastTrack = (sdoType: SdoType) => {
         input: z.string(),
         date: z.string(),
       }),
-      fastTrackAddNewDirections: z.array(z.looseObject({ directionComment: z.string() })),
+      fastTrackAddNewDirections: z.array(
+        z.looseObject({
+          id: z.string(),
+          value: z.looseObject({
+            directionComment: z.string(),
+          }),
+        }),
+      ),
       fastTrackNotes: z.looseObject({
         input: z.string(),
         date: z.string(),
       }),
       fastTrackHearingNotes: z.looseObject({
         input: z.string(),
+      }),
+      sdoR2FastTrackUseOfWelshLanguage: z.strictObject({
+        description: z.string(),
       }),
     };
   }
@@ -167,8 +178,9 @@ const fastTrack = (sdoType: SdoType) => {
 };
 
 const smallClaims = (sdoType: SdoType) => {
-  if(sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM) {
+  if (sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM) {
     return {
+      smallClaimsPenalNotice: z.string(),
       smallClaimsCreditHire: z.looseObject({
         input1: z.string(),
         input2: z.string(),
@@ -217,6 +229,8 @@ const smallClaims = (sdoType: SdoType) => {
         clauseD: z.string(),
         clauseE: z.string(),
       }),
+      sdoHearingNotes: z.strictObject({input: z.string()}),
+      hearingMethodValuesSmallClaims: z.looseObject({}),
       smallClaimsJudgementDeductionValue: z.looseObject({
         value: z.string(),
       }),
@@ -225,12 +239,6 @@ const smallClaims = (sdoType: SdoType) => {
       }),
       smallClaimsMethod: z.string(),
       smallClaimsMethodInPerson: z.looseObject({
-        list_items: z.array(
-          z.looseObject({
-            code: z.string(),
-            label: z.string(),
-          }),
-        ),
         value: z.looseObject({
           code: z.string(),
           label: z.string(),
@@ -247,13 +255,14 @@ const smallClaims = (sdoType: SdoType) => {
       smallClaimsRoadTrafficAccident: z.looseObject({
         input: z.string(),
       }),
-      smallClaimsWitnessStatement: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        input4: z.string(),
-      }),
-      smallClaimsAddNewDirections: z.array(z.looseObject({ directionComment: z.string() })),
+      smallClaimsAddNewDirections:  z.array(
+        z.looseObject({
+          id: z.string(),
+          value: z.looseObject({
+            directionComment: z.string(),
+          }),
+        }),
+      ),
     };
   }
 
