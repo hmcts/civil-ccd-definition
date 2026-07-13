@@ -115,12 +115,12 @@ const fastTrackDq = (defendantResponseSpecType: DefendantResponseSpecType, claim
     return {
       FileDirectionsQuestionnaire: {
         applicant1DQFileDirectionsQuestionnaire: {
-            oneMonthStayRequested: 'Yes',
-            reactionProtocolCompliedWith: 'No',
-            reactionProtocolNotCompliedWithReason: `Reaction protocol not complied with reason - ${partys.CLAIMANT_1.key}`,
-            explainedToClient: [
-                'CONFIRM'
-            ]
+          oneMonthStayRequested: 'Yes',
+          reactionProtocolCompliedWith: 'No',
+          reactionProtocolNotCompliedWithReason: `Reaction protocol not complied with reason - ${partys.CLAIMANT_1.key}`,
+          explainedToClient: [
+              'CONFIRM'
+          ]
         }
       },
       FixedRecoverableCosts: {
@@ -155,6 +155,62 @@ const fastTrackDq = (defendantResponseSpecType: DefendantResponseSpecType, claim
 
   return {};
 };
+
+const intermediateTrackDq = (
+  defendantResponseSpecType: DefendantResponseSpecType,
+  claimTrack: ClaimTrack,
+  claimantResponseType: ClaimantResponseSpecType,
+  frcSupportingDocument?: UploadDocumentValue,
+) => {
+  if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
+    return {};
+
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM && claimantResponseType === ClaimantResponseSpecType.PROCEED_WITH_CLAIM) {
+    return {
+      FileDirectionsQuestionnaire: {
+        applicant1DQFileDirectionsQuestionnaire: {
+          oneMonthStayRequested: 'Yes',
+          reactionProtocolCompliedWith: 'No',
+          reactionProtocolNotCompliedWithReason: `Reaction protocol not complied with reason - ${partys.CLAIMANT_1.key}`,
+          explainedToClient: [
+            'CONFIRM'
+          ]
+        }
+      },
+      FixedRecoverableCostsIntermediate: {
+        applicant1DQFixedRecoverableCostsIntermediate: {
+          isSubjectToFixedRecoverableCostRegime: 'Yes',
+          band: 'BAND_2',
+          complexityBandingAgreed: 'Yes',
+          reasons: `Recoverable costs reason - ${partys.CLAIMANT_1.key}`,
+          frcSupportingDocument,
+        },
+      },
+      DisclosureOfElectronicDocuments: {
+        specApplicant1DQDisclosureOfElectronicDocuments: {
+          reachedAgreement: 'No',
+          agreementLikely: 'No',
+          reasonForNoAgreement: `Reason for no agreement - ${partys.CLAIMANT_1.key}`,
+        }
+      },
+      DisclosureOfNonElectronicDocuments: {
+        specApplicant1DQDisclosureOfNonElectronicDocuments: {
+          bespokeDirections: `Directions are proposed for disclosure - ${partys.CLAIMANT_1.key}`,
+        },
+      },
+      DisclosureReport: {
+        applicant1DQDisclosureReport: {
+          disclosureFormFiledAndServed: 'Yes',
+          disclosureProposalAgreed: 'Yes',
+          draftOrderNumber: '12345'
+        }
+      }
+    };
+  };
+
+  return {};
+};
+
 const experts = (defendantResponseSpecType: DefendantResponseSpecType, claimTrack: ClaimTrack, claimantResponseType:  ClaimantResponseSpecType) => {
   if(defendantResponseSpecType === DefendantResponseSpecType.FULL_ADMISSION)
     return {};
@@ -413,6 +469,7 @@ const claimantResponseSpecData = {
   mediationAvailability,
   determinationWithoutHearing,
   fastTrackDq,
+  intermediateTrackDq,
   experts,
   witnesses,
   language,

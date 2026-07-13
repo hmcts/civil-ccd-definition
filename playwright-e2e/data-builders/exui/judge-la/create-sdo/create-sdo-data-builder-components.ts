@@ -8,16 +8,16 @@ const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
 
 const sdo = (sdoType: SdoType) => {
-  if(sdoType === SdoType.TRAIL || sdoType === SdoType.SMALL_TRACK_SUM)
+  if (sdoType === SdoType.TRAIL || sdoType === SdoType.SMALL_TRACK_SUM)
     return {
       SDO: {
         drawDirectionsOrderRequired: 'Yes',
         drawDirectionsOrder: {
-          judgementSum: '100'
-        }
-      }
-    }
-  
+          judgementSum: '100',
+        },
+      },
+    };
+
   return {
     SDO: {
       drawDirectionsOrderRequired: 'No',
@@ -26,7 +26,7 @@ const sdo = (sdoType: SdoType) => {
 };
 
 const claimsTrack = (sdoType: SdoType) => {
-  if(sdoType === SdoType.FAST_TRACK)
+  if (sdoType === SdoType.FAST_TRACK)
     return {
       ClaimsTrack: {
         claimsTrack: 'fastTrack',
@@ -38,18 +38,17 @@ const claimsTrack = (sdoType: SdoType) => {
           'fastClaimHousingDisrepair',
           'fastClaimPPI',
           'fastClaimPersonalInjury',
-          'fastClaimRoadTrafficAccident'
+          'fastClaimRoadTrafficAccident',
         ],
       },
     };
-  else if(sdoType === SdoType.TRAIL)
+  else if (sdoType === SdoType.TRAIL)
     return {
       ClaimsTrack: {
         drawDirectionsOrderSmallClaims: 'No',
       },
     };
-
-  else if(sdoType === SdoType.SMALL_TRACK_SUM)
+  else if (sdoType === SdoType.SMALL_TRACK_SUM)
     return {
       ClaimsTrack: {
         drawDirectionsOrderSmallClaims: 'Yes',
@@ -59,28 +58,28 @@ const claimsTrack = (sdoType: SdoType) => {
           'smallClaimHousingDisrepair',
           'smallClaimPPI',
           'smallClaimRoadTrafficAccident',
-        ]
-      }
-    }
-   else if(sdoType === SdoType.SMALL_TRACK_NO_SUM)
+        ],
+      },
+    };
+  else if (sdoType === SdoType.SMALL_TRACK_NO_SUM)
     return {
       ClaimsTrack: {
         claimsTrack: 'smallClaimsTrack',
         smallClaims: [
-          "smallClaimCreditHire",
-          "smallClaimFlightDelay",
-          "smallClaimHousingDisrepair",
-          "smallClaimPPI",
-          "smallClaimRoadTrafficAccident"
+          'smallClaimCreditHire',
+          'smallClaimFlightDelay',
+          'smallClaimHousingDisrepair',
+          'smallClaimPPI',
+          'smallClaimRoadTrafficAccident',
         ],
       },
     };
 
   return {};
-}
+};
 
 const orderType = (sdoType: SdoType) => {
-  if(sdoType === SdoType.TRAIL || sdoType === SdoType.DISPOSAL_HEARING) 
+  if (sdoType === SdoType.TRAIL || sdoType === SdoType.DISPOSAL_HEARING)
     return {
       OrderType: {
         orderType: sdoType,
@@ -92,69 +91,80 @@ const orderType = (sdoType: SdoType) => {
           'fastClaimHousingDisrepair',
           'fastClaimPPI',
           'fastClaimPersonalInjury',
-          'fastClaimRoadTrafficAccident'
+          'fastClaimRoadTrafficAccident',
         ],
-      }
+      },
     };
 
   return {};
-}
+};
 
 const fastTrack = (sdoType: SdoType) => {
-  if(sdoType === SdoType.FAST_TRACK || sdoType === SdoType.TRAIL)
+  const claimantDefaultCourt = CaseDataHelper.setCodeToData(
+    preferredCourts[partys.CLAIMANT_1.key].default,
+  );
+  const hearingMethodInPerson = CaseDataHelper.setCodeToData('In Person');
+
+  if (sdoType === SdoType.FAST_TRACK || sdoType === SdoType.TRAIL)
     return {
       FastTrack: {
+        isSdoR2NewScreen: 'No',
+        setFastTrackFlag: 'Yes',
+        hearingMethodValuesFastTrack: {
+          list_items: [hearingMethodInPerson],
+          value: hearingMethodInPerson,
+        },
+        fastTrackMethodInPerson: {
+          list_items: [claimantDefaultCourt],
+          value: claimantDefaultCourt,
+        },
         fastTrackJudgesRecital: {
           input: 'string',
         },
         fastTrackAllocation: {
           assignComplexityBand: 'Yes',
-          band: 'BAND_2',
-          reasons: 'reasons',
+          band: 'BAND_1',
+          reasons: 'string',
         },
         fastTrackDisclosureOfDocuments: {
           input1: 'string',
-          date1: formatDate(DateHelper.subtractFromToday({ days: 1 })),
+          date1: formatDate(DateHelper.addToToday({ days: 14 })),
           input2: 'string',
-          date2: formatDate(DateHelper.subtractFromToday({ days: 1 })),
+          date2: formatDate(DateHelper.addToToday({ days: 21 })),
           input3: 'string',
         },
-        fastTrackWitnessOfFact: {
-          input1: 'string',
-          input2: '1',
-          input3: '1',
-          input4: 'string',
-          input5: 'string',
-          input6: '1',
-          input7: 'string',
-          input8: 'string',
-          date: formatDate(DateHelper.addToToday({ days: 1 })),
-          input9: 'string',
+        sdoR2FastTrackWitnessOfFact: {
+          sdoStatementOfWitness: 'string',
+          sdoWitnessDeadline: 'string',
+          sdoWitnessDeadlineDate: formatDate(DateHelper.addToToday({ days: 35 })),
+          sdoWitnessDeadlineText: 'string',
+          sdoR2RestrictWitness: {
+            isRestrictWitness: 'No',
+          },
+          sdoRestrictPages: {
+            isRestrictPages: 'No',
+          },
         },
         fastTrackSchedulesOfLoss: {
           input1: 'string',
-          date1: formatDate(DateHelper.addToToday({ days: 1 })),
+          date1: formatDate(DateHelper.addToToday({ days: 84 })),
           input2: 'string',
-          date2: formatDate(DateHelper.addToToday({ days: 1 })),
+          date2: formatDate(DateHelper.addToToday({ days: 98 })),
           input3: 'string',
         },
-        fastTrackTrial: {
-          input1: 'string',
-          date1: formatDate(DateHelper.addToToday({ days: 1 })),
-          date2: formatDate(DateHelper.addToToday({ days: 1 })),
-          input2: 'string',
-          input3: 'string',
-          type: ['DOCUMENTS'],
+        fastTrackHearingTime: {
+          dateFrom: formatDate(DateHelper.addToToday({ days: 140 })),
+          dateTo: formatDate(DateHelper.addToToday({ days: 203 })),
+          hearingDuration: 'ONE_HOUR',
+          helpText1: 'string',
         },
-        fastTrackMethod: 'fastTrackMethodTelephoneHearing',
-        fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
         fastTrackBuildingDispute: {
           input1: 'string',
           input2: 'string',
           input3: 'string',
-          date1: formatDate(DateHelper.addToToday({ days: 1 })),
+          date1: formatDate(DateHelper.addToToday({ days: 70 })),
           input4: 'string',
-          date2: formatDate(DateHelper.addToToday({ days: 1 })),
+          date2: formatDate(DateHelper.addToToday({ days: 84 })),
         },
         fastTrackClinicalNegligence: {
           input1: 'string',
@@ -162,152 +172,159 @@ const fastTrack = (sdoType: SdoType) => {
           input3: 'string',
           input4: 'string',
         },
-        fastTrackCreditHire: {
+        sdoR2FastTrackCreditHire: {
           input1: 'string',
-          input2: 'string',
-          date1: formatDate(DateHelper.addToToday({ days: 1 })),
-          input3: 'string',
-          input4: 'string',
-          date2: formatDate(DateHelper.addToToday({ days: 1 })),
           input5: 'string',
           input6: 'string',
-          date3: formatDate(DateHelper.addToToday({ days: 1 })),
+          date3: formatDate(DateHelper.addToToday({ days: 56 })),
           input7: 'string',
-          date4: formatDate(DateHelper.addToToday({ days: 1 })),
+          date4: formatDate(DateHelper.addToToday({ days: 70 })),
           input8: 'string',
+          sdoR2FastTrackCreditHireDetails: {
+            input2: 'string',
+            input3: 'string',
+            input4: 'string',
+            date2: formatDate(DateHelper.addToToday({ days: 42 })),
+          },
         },
         fastTrackHousingDisrepair: {
-          input1: 'string',
-          input2: 'string',
-          input3: 'string',
-          date1: formatDate(DateHelper.addToToday({ days: 1 })),
-          input4: 'string',
-          date2: formatDate(DateHelper.addToToday({ days: 1 })),
+          clauseA: 'string',
+          clauseB: 'string',
+          firstReportDateBy: formatDate(DateHelper.addToToday({ days: 28 })),
+          clauseCBeforeDate: 'string',
+          jointStatementDateBy: formatDate(DateHelper.addToToday({ days: 56 })),
+          clauseCAfterDate: 'string',
+          clauseD: 'string',
+          clauseE: 'string',
         },
         fastTrackPersonalInjury: {
           input1: 'string',
-          date1: formatDate(DateHelper.addToToday({ days: 1 })),
           input2: 'string',
-          date2: formatDate(DateHelper.addToToday({ days: 1 })),
+          date2: formatDate(DateHelper.addToToday({ days: 49 })),
           input3: 'string',
+          date3: formatDate(DateHelper.addToToday({ days: 63 })),
+          input4: 'string',
+          date4: formatDate(DateHelper.addToToday({ days: 70 })),
+          date1: formatDate(DateHelper.addToToday({ days: 1 })),
         },
         fastTrackRoadTrafficAccident: {
           input: 'string',
-          date: formatDate(DateHelper.addToToday({ days: 1 })),
+          date: formatDate(DateHelper.addToToday({ days: 56 })),
+        },
+        fastTrackPPI: {
+          ppiDate: formatDate(DateHelper.addToToday({ days: 28 })),
+          text: 'string',
         },
         fastTrackAddNewDirections: [
-          {
+          CaseDataHelper.setIdToData({
             directionComment: 'string',
-          },
-          {
-            directionComment: 'string',
-          },
+          }),
         ],
-        fastTrackNotes: {
-          input: 'string',
-          date: formatDate(DateHelper.addToToday({ days: 1 })),
-        },
         fastTrackHearingNotes: {
-          input:
-            "Claimant's expert will be joining via Video\nRemaining hearing participants will attend in person",
+          input: 'string',
+        },
+        sdoR2FastTrackUseOfWelshLanguage: 'string',
+        fastTrackOrderWithoutJudgement: {
+          input: 'string',
         },
       },
     };
 };
 
 const smallClaims = (sdoType: SdoType) => {
-  if (sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM) {
-    const claimantDefaultCourt = CaseDataHelper.setCodeToData(
-      preferredCourts[partys.CLAIMANT_1.key].default,
-    );
+  const claimantDefaultCourt = CaseDataHelper.setCodeToData(
+    preferredCourts[partys.CLAIMANT_1.key].default,
+  );
+  const hearingMethodInPerson = CaseDataHelper.setCodeToData('In Person');
 
+  if (sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM) {
     return {
       SmallClaims: {
-        smallClaimsCreditHire: {
-          input1: 'string',
-          input2: 'string',
-          input3: 'string',
-          input4: 'string',
-          input5: 'string',
-          input6: 'string',
-          input7: 'string',
-          input11: 'string',
-          date2: formatDate(DateHelper.addToToday({ days: 1 })),
-          date3: formatDate(DateHelper.addToToday({ days: 1 })),
-          date4: formatDate(DateHelper.addToToday({ days: 1 })),
+        smallClaimsPenalNotice:
+          'string',
+        smallClaimsJudgesRecital: {
+          input: 'string',
         },
-        sdoR2SmallClaimsUseOfWelshLanguage: {
-          description: 'string',
-        },
-        sdoR2SmallClaimsWitnessStatementOther: {
-          sdoStatementOfWitness: 'string',
-          isRestrictWitness: 'No',
-          isRestrictPages: 'No',
-          text: 'string',
-          deadlineDate: formatDate(DateHelper.addToToday({ days: 1 })),
-        },
-        smallClaimsDocuments: {
-          input1: 'string',
-          input2: 'string',
-          deadlineDate: formatDate(DateHelper.addToToday({ days: 1 })),
+        smallClaimsJudgementDeductionValue: {
+          value: '100.0%',
         },
         smallClaimsFlightDelay: {
           relatedClaimsInput: 'string',
           legalDocumentsInput: 'string',
         },
         smallClaimsHearing: {
-          input1: 'string',
+          dateFrom: formatDate(DateHelper.addToToday({ days: 42 })),
           time: 'THIRTY_MINUTES',
           input2: 'string',
-          dateFrom: formatDate(DateHelper.addToToday({ days: 1 })),
+          input1: 'string',
         },
-        smallClaimsHousingDisrepair: {
-          clauseA: 'string',
-          clauseB: 'string',
-          firstReportDateBy: formatDate(DateHelper.addToToday({ days: 1 })),
-          clauseCBeforeDate: 'string',
-          jointStatementDateBy: formatDate(DateHelper.addToToday({ days: 1 })),
-          clauseCAfterDate: 'string',
-          clauseD: 'string',
-          clauseE: 'string',
+        hearingMethodValuesSmallClaims: {
+          list_items: [hearingMethodInPerson],
+          value: hearingMethodInPerson,
         },
-        smallClaimsJudgementDeductionValue: {
-          value: 'string',
-        },
-        smallClaimsJudgesRecital: {
-          input: 'string',
-        },
-        smallClaimsMethod: 'smallClaimsMethodInPerson',
         smallClaimsMethodInPerson: {
           list_items: [claimantDefaultCourt],
           value: claimantDefaultCourt,
         },
+        sdoHearingNotes: {
+          input: 'string',
+        },
+        sdoR2SmallClaimsUseOfWelshLanguage: {
+          description: 'string',
+        },
         smallClaimsNotes: {
           input: 'string',
-          date: formatDate(DateHelper.addToToday({ days: 1 })),
+          date: formatDate(DateHelper.addToToday({ days: 7 })),
         },
-        smallClaimsPPI: {
-          ppiDate: formatDate(DateHelper.addToToday({ days: 1 })),
+        smallClaimsDocuments: {
+          input1: 'string',
+          deadlineDate: formatDate(DateHelper.addToToday({ days: 28 })),
+          input2: 'string',
+        },
+        sdoR2SmallClaimsWitnessStatementOther: {
+          sdoStatementOfWitness: 'string',
+          deadlineDate: formatDate(DateHelper.addToToday({ days: 28 })),
+          isRestrictWitness: 'No',
+          isRestrictPages: 'No',
           text: 'string',
+        },
+        smallClaimsCreditHire: {
+          input1: 'string',
+          input2: 'string',
+          input3: 'string',
+          input4: 'string',
+          date2: formatDate(DateHelper.addToToday({ days: 42 })),
+          input5: 'string',
+          input6: 'string',
+          date3: formatDate(DateHelper.addToToday({ days: 56 })),
+          input7: 'string',
+          date4: formatDate(DateHelper.addToToday({ days: 70 })),
+          input11: 'string',
+          date1: formatDate(DateHelper.addToToday({ days: 1 })),
         },
         smallClaimsRoadTrafficAccident: {
           input: 'string',
         },
-        smallClaimsWitnessStatement: {
-          input1: 'string',
-          input2: '1',
-          input3: '1',
-          input4: 'string',
+        smallClaimsPPI: {
+          ppiDate: formatDate(DateHelper.addToToday({ days: 28 })),
+          text: 'string',
+        },
+        smallClaimsHousingDisrepair: {
+          clauseA: 'string',
+          clauseB: 'string',
+          firstReportDateBy: formatDate(DateHelper.addToToday({ days: 28 })),
+          clauseCBeforeDate: 'string',
+          jointStatementDateBy: formatDate(DateHelper.addToToday({ days: 56 })),
+          clauseCAfterDate: 'string',
+          clauseD: 'string',
+          clauseE: 'string',
         },
         smallClaimsAddNewDirections: [
-          {
+          CaseDataHelper.setIdToData({
             directionComment: 'string',
-          },
-          {
-            directionComment: 'string',
-          },
+          }),
         ],
-      }
+      },
     };
   }
 
@@ -315,8 +332,8 @@ const smallClaims = (sdoType: SdoType) => {
 };
 
 const orderPreview = {
-  OrderPreview: {}
-}
+  OrderPreview: {},
+};
 
 const createSdoDataBuilderComponents = {
   sdo,

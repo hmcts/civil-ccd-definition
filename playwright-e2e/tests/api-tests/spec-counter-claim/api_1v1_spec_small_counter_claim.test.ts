@@ -9,6 +9,6 @@ test.describe('1v1 spec small counter claim api journey', { tag: '@civil-service
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondSmallCounterClaim();
+    await DefendantSolicitor1SpecApiSteps.RespondCounterClaim();
   });
 });
