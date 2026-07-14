@@ -7,12 +7,11 @@ import { confirmationHeading } from './confirm-add-additional-dates-content';
 @AllMethodsStep()
 export default class ConfirmAddAdditionalDatesPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData), super.expectHeading(confirmationHeading)]);
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectHeading(confirmationHeading),
+    ]);
   }
-
-  // async closeAndReturnToCaseDetails() {
-  //   await super.clickButtonByName('Close and Return to case details');
-  // }
 
   async submit() {
     await super.retryClickSubmit();

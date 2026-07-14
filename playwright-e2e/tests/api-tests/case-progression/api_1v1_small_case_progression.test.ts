@@ -9,10 +9,9 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
       HearingCenterAdminApiSteps,
-      JudgeSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();
@@ -20,9 +19,8 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.SdoSmallTrackSum();
-      await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();
+      await JudgeApiSteps.SdoSmallTrackSum();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
       await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
       await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
@@ -37,7 +35,7 @@ test.describe(
       HearingCenterAdminApiSteps,
       JudgeSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();
@@ -47,7 +45,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoSmallTrackNoSum();
-      await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
       await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
       await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();

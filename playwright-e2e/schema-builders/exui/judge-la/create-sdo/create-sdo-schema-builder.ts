@@ -16,23 +16,40 @@ export default class CreateSdoSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.SMALL_TRACK_SUM });
   }
 
+  async buildSmallSumDRHSdo(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.SMALL_TRACK_SUM_DRH });
+  }
+
+  async buildSmallNoSumDRHSdo(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema({
+      caseDataBeforeSubmission,
+      sdoType: SdoType.SMALL_TRACK_NO_SUM_DRH,
+    });
+  }
+
   async buildFastSdo(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.FAST_TRACK });
+  }
+
+  async buildFastNIHLSdo(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.FAST_TRACK_NIHL });
   }
 
   async buildTrailSdo(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.TRAIL });
   }
 
-  protected async buildSchema(
-    {
-      caseDataBeforeSubmission,
-      sdoType = SdoType.SMALL_TRACK_NO_SUM,
-    }: {
-      caseDataBeforeSubmission?: CCDCaseData,
-      sdoType?: SdoType,
-    } = {},
-  ): Promise<z.ZodType> {
+  async buildTrailNIHLSdo(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.TRAIL_NIHL });
+  }
+
+  protected async buildSchema({
+    caseDataBeforeSubmission,
+    sdoType = SdoType.SMALL_TRACK_NO_SUM,
+  }: {
+    caseDataBeforeSubmission?: CCDCaseData;
+    sdoType?: SdoType;
+  } = {}): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;
@@ -42,7 +59,9 @@ export default class CreateSdoSchemaBuilder extends BaseSchemaBuilder {
       ...createSdoSchemaBuilderComponents.claimsTrack(sdoType),
       ...createSdoSchemaBuilderComponents.orderType(sdoType),
       ...createSdoSchemaBuilderComponents.fastTrack(sdoType),
+      ...createSdoSchemaBuilderComponents.sdoR2FastTrack(sdoType),
       ...createSdoSchemaBuilderComponents.smallClaims(sdoType),
+      ...createSdoSchemaBuilderComponents.sdoR2SmallClaims(sdoType),
       ...createSdoSchemaBuilderComponents.orderPreview,
     });
   }
