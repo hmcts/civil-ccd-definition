@@ -4,7 +4,6 @@ import {
   claimantSolicitorUser,
 } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import DJSpecType from '../../../constants/ccd-events/default-judgement/dj-spec-type';
 import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseState from '../../../constants/cases/case-state';
@@ -797,6 +796,26 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     const evidenceUploadApplicantSchema =
       await evidenceUploadApplicantSchemaBuilder.buildSmallClaim(caseDataBeforeSubmission);
     ZodHelper.safeParse(evidenceUploadApplicantSchema, this.ccdCaseData);
+  }
+
+  async UploadMediationDocuments() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { uploadMediationDocumentsDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const uploadMediationDocumentsData = await uploadMediationDocumentsDataBuilder.buildCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      uploadMediationDocumentsData,
+    );
+
+    const { uploadMediationDocumentsSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const uploadMediationDocumentsSchema =
+      await uploadMediationDocumentsSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
   }
 
   async AmendRespondent1ResponseDeadline() {

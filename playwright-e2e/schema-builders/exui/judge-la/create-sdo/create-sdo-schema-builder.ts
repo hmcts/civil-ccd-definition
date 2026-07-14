@@ -16,6 +16,17 @@ export default class CreateSdoSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.SMALL_TRACK_SUM });
   }
 
+  async buildSmallSumDRHSdo(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.SMALL_TRACK_SUM_DRH });
+  }
+
+  async buildSmallNoSumDRHSdo(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema({
+      caseDataBeforeSubmission,
+      sdoType: SdoType.SMALL_TRACK_NO_SUM_DRH,
+    });
+  }
+
   async buildFastSdo(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema({ caseDataBeforeSubmission, sdoType: SdoType.FAST_TRACK });
   }
@@ -50,6 +61,7 @@ export default class CreateSdoSchemaBuilder extends BaseSchemaBuilder {
       ...createSdoSchemaBuilderComponents.fastTrack(sdoType),
       ...createSdoSchemaBuilderComponents.sdoR2FastTrack(sdoType),
       ...createSdoSchemaBuilderComponents.smallClaims(sdoType),
+      ...createSdoSchemaBuilderComponents.sdoR2SmallClaims(sdoType),
       ...createSdoSchemaBuilderComponents.orderPreview,
     });
   }

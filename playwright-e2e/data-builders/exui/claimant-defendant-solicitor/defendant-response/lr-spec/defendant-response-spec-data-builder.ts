@@ -165,6 +165,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1Small2v1FullDefence() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
   async buildDS1CounterClaim2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,

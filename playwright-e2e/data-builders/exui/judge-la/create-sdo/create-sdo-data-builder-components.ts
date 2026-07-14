@@ -72,6 +72,13 @@ const claimsTrack = (sdoType: SdoType) => {
         ],
       },
     };
+  else if (sdoType === SdoType.SMALL_TRACK_SUM_DRH)
+    return {
+      ClaimsTrack: {
+        drawDirectionsOrderSmallClaims: 'Yes',
+        drawDirectionsOrderSmallClaimsAdditionalDirections: ['smallClaimDisputeResolutionHearing'],
+      },
+    };
   else if (sdoType === SdoType.SMALL_TRACK_NO_SUM)
     return {
       ClaimsTrack: {
@@ -83,6 +90,13 @@ const claimsTrack = (sdoType: SdoType) => {
           'smallClaimPPI',
           'smallClaimRoadTrafficAccident',
         ],
+      },
+    };
+  else if (sdoType === SdoType.SMALL_TRACK_NO_SUM_DRH)
+    return {
+      ClaimsTrack: {
+        claimsTrack: 'smallClaimsTrack',
+        smallClaims: ['smallClaimDisputeResolutionHearing'],
       },
     };
 
@@ -378,6 +392,12 @@ const sdoR2FastTrack = (sdoType: SdoType) => {
           sdoWitnessDeadline: 'string',
           sdoWitnessDeadlineDate: formatDate(DateHelper.addToToday({ days: 70 })),
           sdoWitnessDeadlineText: 'string',
+          sdoR2RestrictWitness: {
+            isRestrictWitness: 'No',
+          },
+          sdoRestrictPages: {
+            isRestrictPages: 'No',
+          },
         },
         sdoR2ExpertEvidence: {
           sdoClaimantPermissionToRelyTxt: 'string',
@@ -459,12 +479,73 @@ const sdoR2FastTrack = (sdoType: SdoType) => {
           sdoR2TrialFirstOpenDateAfter: {
             listFrom: formatDate(DateHelper.addToToday({ days: 434 })),
           },
+          hearingNotesTxt: 'string',
         },
         sdoR2NihlUseOfWelshLanguage: {
           description: 'string',
         },
         sdoR2ImportantNotesTxt: 'string',
         sdoR2ImportantNotesDate: formatDate(DateHelper.addToToday({ days: 7 })),
+      },
+    };
+  }
+
+  return {};
+};
+
+const sdoR2SmallClaims = (sdoType: SdoType) => {
+  const claimantDefaultCourt = CaseDataHelper.setCodeToData(
+    preferredCourts[partys.CLAIMANT_1.key].default,
+  );
+  const hearingMethodInPerson = CaseDataHelper.setCodeToData('In Person');
+
+  if (sdoType === SdoType.SMALL_TRACK_SUM_DRH || sdoType === SdoType.SMALL_TRACK_NO_SUM_DRH) {
+    return {
+      SdoR2SmallClaims: {
+        sdoR2SmallClaimsJudgesRecital: {
+          input: 'string',
+        },
+        sdoR2SmallClaimsPPI: {
+          ppiDate: formatDate(DateHelper.addToToday({ days: 21 })),
+          text: 'string',
+        },
+        sdoR2SmallClaimsWitnessStatements: {
+          sdoStatementOfWitness: 'string',
+          deadlineDate: formatDate(DateHelper.addToToday({ days: 149 })),
+          isRestrictWitness: 'No',
+          isRestrictPages: 'No',
+          text: 'string',
+        },
+        sdoR2SmallClaimsUploadDoc: {
+          sdoUploadOfDocumentsTxt: 'string',
+        },
+        sdoR2SmallClaimsHearing: {
+          trialOnOptions: 'OPEN_DATE',
+          lengthList: 'THIRTY_MINUTES',
+          hearingCourtLocationList: {
+            list_items: [claimantDefaultCourt],
+            value: claimantDefaultCourt,
+          },
+          methodOfHearing: {
+            list_items: [hearingMethodInPerson],
+            value: hearingMethodInPerson,
+          },
+          physicalBundleOptions: 'PARTY',
+          hearingNotesTxt: 'string',
+          sdoR2SmallClaimsHearingFirstOpenDateAfter: {
+            listFrom: formatDate(DateHelper.addToToday({ days: 56 })),
+          },
+          sdoR2SmallClaimsBundleOfDocs: {
+            physicalBundlePartyTxt: 'string',
+          },
+        },
+        sdoR2DrhUseOfWelshLanguage: {
+          description: 'string',
+        },
+        sdoR2SmallClaimsImpNotes: {
+          text: 'string',
+          date: formatDate(DateHelper.addToToday({ days: 7 })),
+        },
       },
     };
   }
@@ -482,6 +563,7 @@ const createSdoDataBuilderComponents = {
   orderType,
   fastTrack,
   sdoR2FastTrack,
+  sdoR2SmallClaims,
   smallClaims,
   orderPreview,
 };

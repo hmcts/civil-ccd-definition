@@ -118,6 +118,50 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
+  async SdoSmallTrackSumDRH() {
+    await this.setupApiStep(judgeRegion1User);
+    const taskId = await super.retrieveAndAssignWATask(judgeRegion1User, smallClaimDirectionsTask);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildSmallSumDRHSdo();
+
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      CaseState.CASE_PROGRESSION,
+    );
+    await this.completeWATask(judgeRegion1User, taskId);
+
+    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const createSdoSchema =
+      await createSdoSchemaBuilder.buildSmallSumDRHSdo(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+  }
+
+  async SdoSmallTrackNoSumDRH() {
+    await this.setupApiStep(judgeRegion1User);
+    const taskId = await super.retrieveAndAssignWATask(judgeRegion1User, smallClaimDirectionsTask);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildSmallNoSumDRHSdo();
+
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      CaseState.CASE_PROGRESSION,
+    );
+    await this.completeWATask(judgeRegion1User, taskId);
+
+    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const createSdoSchema =
+      await createSdoSchemaBuilder.buildSmallNoSumDRHSdo(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+  }
+
   async SdoTrail() {
     await this.setupApiStep(judgeRegion1User);
     const taskId = await super.retrieveAndAssignWATask(judgeRegion1User, fastTrackDirectionsTask);
