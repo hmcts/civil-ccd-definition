@@ -16,6 +16,16 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
+  async buildFastNIHL1v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimTypeUnspec: {
+        claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
+        personalInjuryType: PersonalInjuryType.NOISE_INDUCED_HEARING_LOSS,
+      },
+    });
+  }
+
   async buildFast1v2DS(): Promise<z.ZodType> {
     return this.buildSchema({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
@@ -52,6 +62,31 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildMulti1v1(): Promise<z.ZodType> {
+    return this.buildSchema({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildMulti2v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildMulti1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildMulti1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
     });
   }
 

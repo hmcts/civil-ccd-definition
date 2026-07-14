@@ -20,6 +20,10 @@ export default class GenerateDirectionsOrderDataBuilder extends BaseDataBuilder 
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
+   async buildMultiOrder() {
+    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
   protected async buildData(
     {
       claimTrack = ClaimTrack.SMALL_CLAIM,

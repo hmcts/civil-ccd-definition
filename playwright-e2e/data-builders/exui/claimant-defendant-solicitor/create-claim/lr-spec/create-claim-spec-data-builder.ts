@@ -27,7 +27,7 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-    })
+    });
   }
 
   async buildIntermediate1v1() {
@@ -44,6 +44,31 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
   async buildIntermediate1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
+  async buildMulti1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildMulti2v1() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+    });
+  }
+
+  async buildMulti1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildMulti1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
     });
   }

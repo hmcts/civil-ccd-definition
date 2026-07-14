@@ -17,6 +17,16 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
+  async buildFastNIHL1v1() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimTypeUnspec: {
+        claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
+        personalInjuryType: PersonalInjuryType.NOISE_INDUCED_HEARING_LOSS,
+      },
+    });
+  }
+
   async buildFast1v2DS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
@@ -56,6 +66,31 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildMulti1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildMulti2v1() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildMulti1v2SS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildMulti1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
   async buildSmall1v1() {
     return this.buildData();
   }
@@ -90,7 +125,10 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
 
   protected async buildData({
     claimType = ClaimType.ONE_VS_ONE,
-    claimTypeUnspec = {claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY, personalInjuryType: PersonalInjuryType.ROAD_ACCIDENT},
+    claimTypeUnspec = {
+      claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
+      personalInjuryType: PersonalInjuryType.ROAD_ACCIDENT,
+    },
     claimTrack = ClaimTrack.SMALL_CLAIM,
     claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
@@ -105,7 +143,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
   } = {}) {
-    const { civilServiceRequests } = this.requestsFactory; 
+    const { civilServiceRequests } = this.requestsFactory;
     this.setClaimantDefendantPartyTypes(claimType, {
       claimant1PartyType,
       claimant2PartyType,
@@ -113,10 +151,12 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       defendant2PartyType,
     });
 
-    const certificateOfSuitability = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+    const certificateOfSuitability =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     let certificateOfSuitability2: UploadDocumentValue;
-    if(ClaimTypeHelper.isClaimant2(claimType)) {
-      certificateOfSuitability2 = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+    if (ClaimTypeHelper.isClaimant2(claimType)) {
+      certificateOfSuitability2 =
+        await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     }
 
     return {
