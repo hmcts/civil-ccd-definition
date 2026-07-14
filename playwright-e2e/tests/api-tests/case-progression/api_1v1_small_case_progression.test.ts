@@ -20,7 +20,7 @@ test.describe(
       await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
       await JudgeApiSteps.SdoSmallTrackSum();
-      await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
       await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
       await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
@@ -45,7 +45,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoSmallTrackNoSum();
-      await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
       await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
       await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();

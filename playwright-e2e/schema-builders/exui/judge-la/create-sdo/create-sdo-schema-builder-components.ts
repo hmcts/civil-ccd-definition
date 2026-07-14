@@ -41,14 +41,14 @@ const claimsTrack = (sdoType: SdoType) => {
     };
   }
 
-  if (sdoType === SdoType.SMALL_TRACK_SUM) {
+  if (sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_SUM_DRH) {
     return {
       drawDirectionsOrderSmallClaims: z.string(),
       drawDirectionsOrderSmallClaimsAdditionalDirections: z.array(z.string()),
     };
   }
 
-  if (sdoType === SdoType.SMALL_TRACK_NO_SUM) {
+  if (sdoType === SdoType.SMALL_TRACK_NO_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM_DRH) {
     return {
       claimsTrack: z.string(),
       smallClaims: z.array(z.string()),
@@ -98,6 +98,9 @@ const fastTrack = (sdoType: SdoType) => {
         sdoWitnessDeadline: z.string(),
         sdoWitnessDeadlineDate: z.string(),
         sdoWitnessDeadlineText: z.string(),
+        sdoR2RestrictWitness: z.looseObject({
+          isRestrictWitness: z.string(),
+        }),
         sdoRestrictPages: z.looseObject({
           isRestrictPages: z.string(),
           restrictNoOfPagesDetails: z.looseObject({
@@ -305,6 +308,12 @@ const sdoR2FastTrack = (sdoType: SdoType) => {
         sdoWitnessDeadline: z.string(),
         sdoWitnessDeadlineDate: z.string(),
         sdoWitnessDeadlineText: z.string(),
+        sdoR2RestrictWitness: z.looseObject({
+          isRestrictWitness: z.string(),
+        }),
+        sdoRestrictPages: z.looseObject({
+          isRestrictPages: z.string(),
+        }),
       }),
       sdoR2ExpertEvidence: z.looseObject({
         sdoClaimantPermissionToRelyTxt: z.string(),
@@ -385,12 +394,66 @@ const sdoR2FastTrack = (sdoType: SdoType) => {
         sdoR2TrialFirstOpenDateAfter: z.looseObject({
           listFrom: z.string(),
         }),
+        hearingNotesTxt: z.string(),
       }),
       sdoR2NihlUseOfWelshLanguage: z.looseObject({
         description: z.string(),
       }),
       sdoR2ImportantNotesTxt: z.string(),
       sdoR2ImportantNotesDate: z.string(),
+    };
+  }
+
+  return {};
+};
+
+const sdoR2SmallClaims = (sdoType: SdoType) => {
+  if (sdoType === SdoType.SMALL_TRACK_SUM_DRH || sdoType === SdoType.SMALL_TRACK_NO_SUM_DRH) {
+    return {
+      sdoR2SmallClaimsJudgesRecital: z.looseObject({
+        input: z.string(),
+      }),
+      sdoR2SmallClaimsPPI: z.looseObject({
+        ppiDate: z.string(),
+        text: z.string(),
+      }),
+      sdoR2SmallClaimsWitnessStatements: z.looseObject({
+        sdoStatementOfWitness: z.string(),
+        deadlineDate: z.string(),
+        isRestrictWitness: z.string(),
+        isRestrictPages: z.string(),
+        text: z.string(),
+      }),
+      sdoR2SmallClaimsUploadDoc: z.looseObject({
+        sdoUploadOfDocumentsTxt: z.string(),
+      }),
+      sdoR2SmallClaimsHearing: z.looseObject({
+        trialOnOptions: z.string(),
+        lengthList: z.string(),
+        hearingCourtLocationList: z.looseObject({
+          list_items: z.array(z.looseObject({})),
+          value: z.looseObject({}),
+        }),
+        methodOfHearing: z.looseObject({
+          list_items: z.array(z.looseObject({})),
+          value: z.looseObject({}),
+        }),
+        physicalBundleOptions: z.string(),
+        hearingNotesTxt: z.string(),
+        sdoR2SmallClaimsHearingFirstOpenDateAfter: z.looseObject({
+          listFrom: z.string(),
+        }),
+        sdoR2SmallClaimsBundleOfDocs: z.looseObject({
+          physicalBundlePartyTxt: z.string(),
+        }),
+      }),
+      sdoR2DrhUseOfWelshLanguage: z.looseObject({
+        description: z.string(),
+      }),
+      sdoR2SmallClaimsImpNotes: z.looseObject({
+        text: z.string(),
+        date: z.string(),
+      }),
     };
   }
 
@@ -405,6 +468,7 @@ export default {
   orderType,
   fastTrack,
   sdoR2FastTrack,
+  sdoR2SmallClaims,
   smallClaims,
   orderPreview,
 };

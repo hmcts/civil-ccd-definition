@@ -323,6 +323,12 @@ const ccdEvents: CCDEvents = {
     description: 'Transfer online case',
     order: 30,
   },
+  UPLOAD_MEDIATION_DOCUMENTS: {
+    id: 'UPLOAD_MEDIATION_DOCUMENTS',
+    name: 'Upload mediation documents',
+    description: 'Upload mediation documents',
+    order: 24
+  }
 };
 
 export default ccdEvents;

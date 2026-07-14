@@ -13,6 +13,14 @@ export default class CreateSdoDataBuilder extends BaseDataBuilder {
     return this.buildData({ sdoType: SdoType.SMALL_TRACK_SUM });
   }
 
+  async buildSmallSumDRHSdo() {
+    return this.buildData({ sdoType: SdoType.SMALL_TRACK_SUM_DRH });
+  }
+
+  async buildSmallNoSumDRHSdo() {
+    return this.buildData({ sdoType: SdoType.SMALL_TRACK_NO_SUM_DRH });
+  }
+
   async buildFastSdo() {
     return this.buildData({ sdoType: SdoType.FAST_TRACK });
   }
@@ -41,6 +49,7 @@ export default class CreateSdoDataBuilder extends BaseDataBuilder {
       ...createSdoDataBuilderComponents.fastTrack(sdoType),
       ...createSdoDataBuilderComponents.sdoR2FastTrack(sdoType),
       ...createSdoDataBuilderComponents.smallClaims(sdoType),
+      ...createSdoDataBuilderComponents.sdoR2SmallClaims(sdoType),
       ...createSdoDataBuilderComponents.orderPreview,
     };
   }
