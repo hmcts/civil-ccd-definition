@@ -11,13 +11,13 @@
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "enterBreathing",
-    "TabFieldDisplayOrder": 2
+    "TabFieldDisplayOrder": 98
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "liftBreathing",
-    "TabFieldDisplayOrder": 2
+    "TabFieldDisplayOrder": 99
   },
   {
     "CaseTypeID": "CIVIL",
