@@ -1029,7 +1029,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "withoutPrejudiceToggleText",
-    "Label": "<details><summary><u>Without prejudice/Part 36 offers or rejections</u></summary><div class=\"panel\">\n\n ## Without prejudice/Part 36 offers or rejections\n\n A document containing a without prejudice or part 36 offer/rejection (including a paginated bundle of such documents) which should not be read by the judge until it is appropriate to do so</div></details><br />",
+    "Label": "<details><summary><u>Without prejudice/Part 36 offers or rejections</u></summary><div class=\"panel\">\n\n ## Without prejudice/Part 36 offers or rejections\n\n A document containing a without prejudice or part 36 offer/rejection (including a paginated bundle of such documents) which : (i) has been or is intended to be disclosed to all parties at the point it is uploaded; and (ii) should not be read by the judge until it is appropriate to do so</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1054,7 +1054,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "withoutPrejudiceToggleTextSmallClaim",
-    "Label": "<details><summary><u>Without prejudice/Part 36 offers or rejections</u></summary><div class=\"panel\">\n\n ## Without prejudice/Part 36 offers or rejections\n\n A document containing a without prejudice or part 36 offer/rejection (including a paginated bundle of such documents) which should not be read by the judge until it is appropriate to do so</div></details><br />",
+    "Label": "<details><summary><u>Without prejudice/Part 36 offers or rejections</u></summary><div class=\"panel\">\n\n ## Without prejudice/Part 36 offers or rejections\n\n A document containing a without prejudice or part 36 offer/rejection (including a paginated bundle of such documents) which : (i) has been or is intended to be disclosed to all parties at the point it is uploaded; and (ii) should not be read by the judge until it is appropriate to do so</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1079,7 +1079,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "withoutPrejudiceToggleTextSmallClaimRes",
-    "Label": "<details><summary><u>Without prejudice/Part 36 offers or rejections</u></summary><div class=\"panel\">\n\n ## Without prejudice/Part 36 offers or rejections\n\n A document containing a without prejudice or part 36 offer/rejection (including a paginated bundle of such documents) which should not be read by the judge until it is appropriate to do so</div></details><br />",
+    "Label": "<details><summary><u>Without prejudice/Part 36 offers or rejections</u></summary><div class=\"panel\">\n\n ## Without prejudice/Part 36 offers or rejections\n\n A document containing a without prejudice or part 36 offer/rejection (including a paginated bundle of such documents) which : (i) has been or is intended to be disclosed to all parties at the point it is uploaded; and (ii) should not be read by the judge until it is appropriate to do so</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
