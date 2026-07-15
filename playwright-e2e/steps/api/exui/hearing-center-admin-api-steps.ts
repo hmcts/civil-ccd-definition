@@ -11,6 +11,7 @@ import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import HearingCenterAdminDataBuilderFactory from '../../../data-builders/exui/hearing-center-admin/hearing-center-admin-data-builder-factory';
 import HearingCenterAdminSchemaBuilderFactory from '../../../schema-builders/exui/hearing-center-admin/hearing-center-admin-schema-builder-factory';
+import caseFlag from "../../../models/ccd-events/case-flags/case-flag.ts";
 
 @AllMethodsStep()
 export default class HearingCenterAdminApiSteps extends BaseApi {
@@ -91,4 +92,41 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     );
     await super.fetchAndSetCCDCaseData();
   }
+
+  async CreateCaseFlags() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { caseFlagsDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    const caseFlagsData = await caseFlagsDataBuilder.buildComplexCaseData();
+    await super.submitCCDEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.CREATE_CASE_FLAGS,
+      caseFlagsData
+    );
+
+    const { caseFlagsSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const caseFlagsSchema =
+      await caseFlagsSchemaBuilder.buildSchema(caseDataBeforeSubmission);
+    ZodHelper.safeParse(caseFlagsSchema, this.ccdCaseData);
+  }
+
+  async CreateApplicant1SpecialMeasureCaseFlag() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { caseFlagsDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    const caseFlagsData = await caseFlagsDataBuilder.buildApplicant1SpecialMeasureData();
+    await super.submitCCDEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.CREATE_CASE_FLAGS,
+      caseFlagsData,
+    );
+
+    const { caseFlagsSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const caseFlagsSchema =
+      await caseFlagsSchemaBuilder.buildApplicant1SpecialMeasureSchema(caseDataBeforeSubmission);
+    ZodHelper.safeParse(caseFlagsSchema, this.ccdCaseData);
+  }
+
 }

@@ -15,14 +15,14 @@ const hearingNoticeSelect = (claimTrack: ClaimTrack) => {
         hearingNoticeList: 'FAST_TRACK_TRIAL',
       },
     };
-  
+
   else if(claimTrack === ClaimTrack.SMALL_CLAIM)
     return {
       HearingNoticeSelect: {
         hearingNoticeList: 'SMALL_CLAIMS',
       },
     };
-  
+
   return {};
 };
 
