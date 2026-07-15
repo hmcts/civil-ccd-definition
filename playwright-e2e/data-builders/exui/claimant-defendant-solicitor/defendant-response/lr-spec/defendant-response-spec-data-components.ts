@@ -14,6 +14,7 @@ import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { Party } from '../../../../../models/users/partys';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-admitted-part-route-spec';
 
 const defendantChecklist = {
   RespondentChecklist: {},
@@ -149,26 +150,25 @@ const defenceRoute = (
 const defenceAdmittedPartRoute = (
   defendantResponseType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) {
-    //Has paid defence admitted part route
-    /*
-    return {
-      defenceAdmittedPartRoute: {
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
-          ? 'specDefenceAdmittedRequired' 
-          : 'specDefenceAdmitted2Required']: 'Yes',
-        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-          ? 'respondToAdmittedClaim'
-          : 'respondToAdmittedClaim2']: {
-          howMuchWasPaid: ((CaseDataHelper.getClaimValue(claimTrack)/2)*100).toFixed().toString(),
-          whenWasThisAmountPaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 1}), {outputFormat: 'YYYY-MM-DD'}),
-          howWasThisAmountPaid: 'CREDIT_CARD',
+    if(defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_PAID)
+      return {
+        defenceAdmittedPartRoute: {
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 
+            ? 'specDefenceAdmittedRequired' 
+            : 'specDefenceAdmitted2Required']: 'Yes',
+          [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+            ? 'respondToAdmittedClaim'
+            : 'respondToAdmittedClaim2']: {
+            howMuchWasPaid: ((CaseDataHelper.getClaimValue(claimTrack)/2)*100).toFixed().toString(),
+            whenWasThisAmountPaid: DateHelper.formatDateToString(DateHelper.subtractFromToday({days: 1}), {outputFormat: 'YYYY-MM-DD'}),
+            howWasThisAmountPaid: 'CREDIT_CARD',
+          },
         },
-      },
-    };
-    */
+      };
 
     return {
       defenceAdmittedPartRoute: {
@@ -203,8 +203,8 @@ const upload = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     return {
       Upload: {
@@ -227,8 +227,8 @@ const timeline = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     return {
       HowToAddTimeline: {
@@ -272,8 +272,8 @@ const mediationContactInformation = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
@@ -298,8 +298,8 @@ const mediationAvailability = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       const unavailableDate = DateHelper.formatDateToString(DateHelper.addToToday({ months: 1 }), {
@@ -329,11 +329,13 @@ const mediationAvailability = (
 const whenWillClaimBePaid = (
   defendantResponseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
-    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
+    (defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) 
+    && defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID
   ) {
     if (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE) {
       return {
@@ -367,6 +369,7 @@ const whenWillClaimBePaid = (
 const defendant1FinancialDetails = (
   defendantResponseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
@@ -374,6 +377,7 @@ const defendant1FinancialDetails = (
       defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) &&
     (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE ||
       paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN) &&
+    defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID &&
     defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
   ) {
     return {
@@ -503,6 +507,7 @@ const defendant2FinancialDetails = (
   defendantResponseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
   claimType: ClaimType,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
@@ -510,6 +515,7 @@ const defendant2FinancialDetails = (
       defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) &&
     (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE ||
       paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN) &&
+    defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID &&
     (claimType === ClaimType.ONE_VS_TWO_SAME_SOL ||
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
   ) {
@@ -565,12 +571,14 @@ const defendant2FinancialDetails = (
 const defendant1RepaymentPlan = (
   defendantResponseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
     (defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
       defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) &&
     paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN &&
+    defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID &&
     defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
   ) {
     return {
@@ -592,12 +600,14 @@ const defendant2RepaymentPlan = (
   defendantResponseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
   claimType: ClaimType,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
     (defendantResponseType === DefendantResponseSpecType.FULL_ADMISSION ||
       defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) &&
     paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN &&
+    defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID &&
     (claimType === ClaimType.ONE_VS_TWO_SAME_SOL ||
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
   ) {
@@ -622,8 +632,8 @@ const fileDirectionsQuestionnaire = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (
       claimTrack === ClaimTrack.FAST_CLAIM ||
@@ -654,8 +664,8 @@ const fixedRecoverableCosts = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.FAST_CLAIM) {
       return {
@@ -683,8 +693,8 @@ const fixedRecoverableCostsIntermediate = (
   frcSupportingDocument?: UploadDocumentValue,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
       return {
@@ -712,8 +722,8 @@ const disclosureOfElectronicDocumentsLRspec = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (
       claimTrack === ClaimTrack.FAST_CLAIM ||
@@ -743,8 +753,8 @@ const disclosureOfNonElectronicDocumentsLRspec = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (
       claimTrack === ClaimTrack.FAST_CLAIM ||
@@ -772,8 +782,8 @@ const disclosureReport = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (
       claimTrack === ClaimTrack.FAST_CLAIM ||
@@ -803,8 +813,8 @@ const deterWithoutHearing = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
@@ -829,8 +839,8 @@ const experts = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       const defendantExpert =
@@ -885,8 +895,8 @@ const witnesses = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       const defendantWitnesses =
@@ -950,8 +960,8 @@ const language = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     return {
       Language: {
@@ -978,8 +988,8 @@ const hearing = (
   });
 
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
@@ -1033,8 +1043,8 @@ const requestedCourtLocation = (
   );
 
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     return {
       RequestedCourtLocationLRspec: {
@@ -1065,8 +1075,8 @@ const hearingSupport = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     return {
       HearingSupport: {
@@ -1088,8 +1098,8 @@ const vulnerabilityQuestions = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     return {
       VulnerabilityQuestions: {
@@ -1112,8 +1122,8 @@ const applications = (
   defendantSolicitorParty: Party,
 ) => {
   if (
-    defendantResponseType !== DefendantResponseSpecType.FULL_ADMISSION &&
-    defendantResponseType !== DefendantResponseSpecType.COUNTER_CLAIM
+    defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
+    defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {};
