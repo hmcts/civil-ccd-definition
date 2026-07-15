@@ -323,9 +323,9 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
     return {
       respondent1Represented: z.literal('No'),
       respondent1OrganisationPolicy: organisationPolicySchema,
-      respondentSolicitor1EmailAddress: z.undefined(),
-      respondentSolicitor1ServiceAddressRequired: z.undefined(),
-      respondentSolicitor1ServiceAddress: z.undefined(),
+      respondentSolicitor1EmailAddress: z.undefined().optional(),
+      respondentSolicitor1ServiceAddressRequired: z.undefined().optional(),
+      respondentSolicitor1ServiceAddress: z.undefined().optional(),
     };
   }
 };

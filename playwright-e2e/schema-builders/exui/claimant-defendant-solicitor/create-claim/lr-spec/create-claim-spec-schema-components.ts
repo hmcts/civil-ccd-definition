@@ -309,7 +309,7 @@ const claimant2 = (
 
   return {
     addApplicant2: z.literal('No'),
-    applicant2: z.undefined(),
+    applicant2: z.undefined().optional(),
   };
 };
 
@@ -328,7 +328,7 @@ const defendantSolicitor1 = (claimType: ClaimType): SchemaShape => {
       respondentSolicitor1EmailAddress: nonEmptyString,
       specRespondentCorrespondenceAddressRequired: yesNoSchema,
       specRespondentCorrespondenceAddressdetails: addressSchema,
-      respondent1PinToPostLRspec: z.undefined(),
+      respondent1PinToPostLRspec: z.undefined().optional(),
     };
   }
 
@@ -336,11 +336,13 @@ const defendantSolicitor1 = (claimType: ClaimType): SchemaShape => {
     respondent1Represented: z.literal('No'),
     specRespondent1Represented: z.literal('No'),
     respondent1OrganisationPolicy: organisationPolicySchema,
-    respondentSolicitor1EmailAddress: z.undefined(),
-    specRespondentCorrespondenceAddressRequired: z.undefined(),
-    specRespondentCorrespondenceAddressdetails: z.undefined(),
+    respondentSolicitor1EmailAddress: z.undefined().optional(),
+    specRespondentCorrespondenceAddressRequired: z.undefined().optional(),
+    specRespondentCorrespondenceAddressdetails: z.undefined().optional(),
     respondent1PinToPostLRspec:
-      claimType === ClaimType.ONE_VS_ONE_LIP ? respondentPinToPostSchema : z.undefined(),
+      claimType === ClaimType.ONE_VS_ONE_LIP
+        ? respondentPinToPostSchema
+        : z.undefined().optional(),
   };
 };
 
@@ -358,8 +360,8 @@ const defendant2 = (
 
   return {
     addRespondent2: z.literal('No'),
-    respondent2: z.undefined(),
-    respondent2DetailsForClaimDetailsTab: z.undefined(),
+    respondent2: z.undefined().optional(),
+    respondent2DetailsForClaimDetailsTab: z.undefined().optional(),
   };
 };
 
@@ -371,15 +373,18 @@ const respondent2SolicitorFields: SchemaShape = {
 };
 
 const respondent2SolicitorFieldsAbsent = Object.fromEntries(
-  Object.keys(respondent2SolicitorFields).map((fieldName) => [fieldName, z.undefined()]),
+  Object.keys(respondent2SolicitorFields).map((fieldName) => [
+    fieldName,
+    z.undefined().optional(),
+  ]),
 ) as SchemaShape;
 
 const defendant2Representation = (claimType: ClaimType): SchemaShape => {
   if (!ClaimTypeHelper.isDefendant2(claimType)) {
     return {
-      respondent2Represented: z.undefined(),
-      specRespondent2Represented: z.undefined(),
-      respondent2SameLegalRepresentative: z.undefined(),
+      respondent2Represented: z.undefined().optional(),
+      specRespondent2Represented: z.undefined().optional(),
+      respondent2SameLegalRepresentative: z.undefined().optional(),
       respondent2OrganisationPolicy: organisationPolicySchema,
       ...respondent2SolicitorFieldsAbsent,
     };
@@ -401,7 +406,7 @@ const defendant2Representation = (claimType: ClaimType): SchemaShape => {
     respondent2Represented: z.literal('No'),
     specRespondent2Represented: z.literal('No'),
     respondent2SameLegalRepresentative:
-      claimType === ClaimType.ONE_VS_TWO_LIPS ? z.literal('No') : z.undefined(),
+      claimType === ClaimType.ONE_VS_TWO_LIPS ? z.literal('No') : z.undefined().optional(),
     respondent2OrganisationPolicy: organisationPolicySchema,
     ...respondent2SolicitorFieldsAbsent,
   };
