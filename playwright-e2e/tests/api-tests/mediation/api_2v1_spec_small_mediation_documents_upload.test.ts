@@ -1,13 +1,11 @@
-import { test } from '../../../playwright-fixtures';
+import { test } from '../../../playwright-fixtures/index';
 
-test.describe('2v1 spec settle claim confirm paid in full', { tag: ['@civil-ccd-nightly'] }, () => {
-  test('2v1 spec - settle claim - confirm paid in full', async ({
+test.describe('Spec small claims mediation api journey', { tag: '@civil-service-nightly' }, async () => {
+  test('2v1 claimant and defendant upload mediation documents', async ({
     ClaimantSolicitorSpecApiSteps,
-    DefendantSolicitor1SpecApiSteps,
     CaseRoleAssignmentApiSteps,
+    DefendantSolicitor1SpecApiSteps,
     CaseworkerApiSteps,
-    LegalAdvisorApiSteps,
-    ClaimantSolicitorSpecSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack2v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -15,8 +13,7 @@ test.describe('2v1 spec settle claim confirm paid in full', { tag: ['@civil-ccd-
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence2v1();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence2v1();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
-    await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.SettleClaimMarkPaidInFull2v1();
+    await ClaimantSolicitorSpecApiSteps.UploadMediationDocuments2v1();
+    await DefendantSolicitor1SpecApiSteps.UploadMediationDocuments();
   });
 });
