@@ -2,7 +2,7 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import DateHelper from '../../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../../models/ccd-case-data';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { paragraphs } from './extension-date-content';
 
 @AllMethodsStep()
@@ -12,6 +12,7 @@ export default class ExtensionDatePage extends ExuiPage(BasePage) {
       days: ccdCaseData.respondent2AcknowledgeNotificationDate ? 56 : 42,
       workingDay: true,
     });
+
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(paragraphs.descriptionText, { count: 1 }),

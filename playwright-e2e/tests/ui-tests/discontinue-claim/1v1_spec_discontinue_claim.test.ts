@@ -10,8 +10,8 @@ test.describe('1v1 spec discontinue claim', { tag: ['@civil-ccd-nightly'] }, () 
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondSmallTrackFullDefence1v1();
-    await ClaimantSolicitorSpecApiSteps.RespondSmallClaimIntentToProceed1v1();
+    await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
+    await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.DiscontinueClaim1v1();
   });

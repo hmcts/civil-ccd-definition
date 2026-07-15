@@ -6,11 +6,11 @@ test.describe('1v2SS spec api fast track journeys', { tag: '@civil-service-night
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v2SS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2SS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondFastTrackFullDefence1v2SS();
-    await ClaimantSolicitorSpecApiSteps.RespondFastTrackIntentToProceed1v2SS();
+    await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2SS();
+    await ClaimantSolicitorSpecApiSteps.RespondFastFullDefenceProceed1v2SS();
   });
 
   test('1v2SS fast claim full defence and not proceed', async ({
@@ -18,10 +18,10 @@ test.describe('1v2SS spec api fast track journeys', { tag: '@civil-service-night
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v2SS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2SS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondFastTrackFullDefence1v2SS();
-    await ClaimantSolicitorSpecApiSteps.RespondFastTrackDoNotProceed1v2SS();
+    await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2SS();
+    await ClaimantSolicitorSpecApiSteps.RespondFastFullDefenceNotProceed1v2SS();
   });
 });

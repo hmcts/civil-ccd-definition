@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../../models/ccd-case-data';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { heading, inputs } from './create-case-flags-flag-type-case-level-content';
 import CaseLevelFlags from '../../../../../../constants/ccd-events/case-flags/case-level-flags';
 

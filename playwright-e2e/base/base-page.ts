@@ -1554,6 +1554,25 @@ export default abstract class BasePage {
   }
 
   @Step(classKey)
+  @TruthyParams(classKey, 'text')
+  protected async retryClickByText(
+    text: string,
+    assertions: () => Promise<void>[] | Promise<void>,
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
+  ) {
+    await this.retryAction(
+      () => this.clickByText(text),
+      assertions,
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message: message ?? `Click action failed, text: ${text}, trying again`,
+      },
+    );
+  }
+
+  @Step(classKey)
   @TruthyParams(classKey, 'name')
   protected async retryClickLink(
     name: string,
@@ -1790,5 +1809,11 @@ export default abstract class BasePage {
       assertFirst: true,
       message: message ?? 'Assertion failed, reloading page and trying again',
     });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  @TruthyParams(classKey, 'selector')
+  protected async countBySelector(selector: string): Promise<number> {
+    return await this.page.locator(selector).count();
   }
 }
