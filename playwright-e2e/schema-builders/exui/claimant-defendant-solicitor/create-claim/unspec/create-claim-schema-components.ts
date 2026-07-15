@@ -296,9 +296,9 @@ const claimant2 = (claimType: ClaimType, claimant2PartyType: ClaimantDefendantPa
   } else {
     return {
       addApplicant2: z.literal('No'),
-      applicant2: z.undefined(),
-      applicant2LitigationFriendRequired: z.undefined(),
-      applicant2LitigationFriend: z.undefined(),
+      applicant2: z.undefined().optional(),
+      applicant2LitigationFriendRequired: z.undefined().optional(),
+      applicant2LitigationFriend: z.undefined().optional(),
     };
   }
 };
@@ -341,9 +341,9 @@ const defendant2 = (claimType: ClaimType, defendant2PartyType: ClaimantDefendant
   } else {
     return {
       addRespondent2: z.literal('No'),
-      respondent2: z.undefined(),
-      respondent2DetailsForClaimDetailsTab: z.undefined(),
-      defendant2LIPAtClaimIssued: z.undefined(),
+      respondent2: z.undefined().optional(),
+      respondent2DetailsForClaimDetailsTab: z.undefined().optional(),
+      defendant2LIPAtClaimIssued: z.undefined().optional(),
     };
   }
 };
@@ -356,14 +356,17 @@ const respondent2SolicitorFields = {
 };
 
 const respondent2SolicitorFieldsAbsent = Object.fromEntries(
-  Object.keys(respondent2SolicitorFields).map((fieldName) => [fieldName, z.undefined()]),
+  Object.keys(respondent2SolicitorFields).map((fieldName) => [
+    fieldName,
+    z.undefined().optional(),
+  ]),
 );
 
 const defendant2Representation = (claimType: ClaimType) => {
   if (!ClaimTypeHelper.isDefendant2(claimType)) {
     return {
-      respondent2Represented: z.undefined(),
-      respondent2SameLegalRepresentative: z.undefined(),
+      respondent2Represented: z.undefined().optional(),
+      respondent2SameLegalRepresentative: z.undefined().optional(),
       ...respondent2SolicitorFieldsAbsent,
     };
   } else if (ClaimTypeHelper.isDefendant2RepresentedNotSame(claimType)) {
@@ -392,7 +395,7 @@ const lipResponseArtifacts = (claimType: ClaimType) => {
       defendant1LIPAtClaimIssued: ClaimTypeHelper.isDefendant1Unrepresented(claimType)
         ? z.literal('Yes')
         : z.literal('No'),
-      defendant2LIPAtClaimIssued: z.undefined(),
+      defendant2LIPAtClaimIssued: z.undefined().optional(),
       claimIssuedPBADetails: claimIssuedPbaDetailsSchema,
     };
   } else if (ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
