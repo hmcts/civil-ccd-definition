@@ -13,9 +13,19 @@ export default class UploadMediationDocumentsSchemaBuilder extends BaseSchemaBui
     return this.buildSchema(caseDataBeforeSubmission);
   }
 
+  async buildCS12v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission);
+  }
+
   async buildDS1(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimantDefendantSolicitorParty: partys.DEFENDANT_SOLICITOR_1,
+    });
+  }
+
+  async buildDS2(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimantDefendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 

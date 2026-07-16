@@ -13,7 +13,7 @@ test.describe('1v1 spec settle claim confirm paid in full', { tag: ['@civil-ccd-
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed();
+    await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
     await CaseworkerApiSteps.MediationUnsuccessful();
     await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
     await ClaimantSolicitorSpecSteps.Login();

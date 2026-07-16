@@ -13,7 +13,7 @@ test.describe('1v1 spec settle claim consent order', { tag: ['@civil-ccd-nightly
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed();
+    await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
     await CaseworkerApiSteps.MediationUnsuccessful();
     await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
     await HearingCenterAdminSpecSteps.LoginRegion1();

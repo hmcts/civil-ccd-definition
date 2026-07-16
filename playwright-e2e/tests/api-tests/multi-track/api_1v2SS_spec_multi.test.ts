@@ -12,7 +12,7 @@ test.describe('1v2SS spec api multi track journey', { tag: '@civil-service-night
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondMultiFullDefence1v2SS();
-    await ClaimantSolicitorSpecApiSteps.RespondMultiProceed1v2SS();
+    await ClaimantSolicitorSpecApiSteps.RespondMultiRejectFullDefence1v2SS();
     await JudgeApiSteps.GenerateDirectionsOrderMulti();
     await ClaimantSolicitorSpecApiSteps.EvidenceUploadFast();
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();

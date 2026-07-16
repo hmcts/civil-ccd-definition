@@ -47,7 +47,7 @@ export default class JudgeApiSteps extends BaseApi {
     await this.completeWATask(judgeRegion1User, taskId);
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema = await createSdoSchemaBuilder.buildTrailSdo(caseDataBeforeSubmission);
+    const createSdoSchema = await createSdoSchemaBuilder.buildFastSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 

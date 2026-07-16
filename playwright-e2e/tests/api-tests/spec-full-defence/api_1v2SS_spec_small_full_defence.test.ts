@@ -10,6 +10,6 @@ test.describe('1v2SS spec api small track journeys', { tag: '@civil-service-nigh
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence1v2SS();
-    await ClaimantSolicitorSpecApiSteps.RespondFastFullDefenceProceed1v2SS();
+    await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence1v2SS();
   });
 });
