@@ -1,9 +1,9 @@
-import DateHelper from '../../../../../helpers/date-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
-import CaseDataHelper from '../../../../../helpers/case-data-helper';
-import ClaimTrack from '../../../../../constants/cases/claim-track';
-import partys from '../../../../../constants/users/partys';
-import { Party } from '../../../../../models/users/partys';
+import DateHelper from '../../../../helpers/date-helper';
+import { UploadDocumentValue } from '../../../../models/ccd-case-data';
+import CaseDataHelper from '../../../../helpers/case-data-helper';
+import { Party } from '../../../../models/users/partys';
+import ClaimTrack from '../../../../constants/cases/claim-track';
+import ClaimType from '../../../../constants/cases/claim-type';
 
 const createDate = () =>
   DateHelper.formatDateToString(DateHelper.getToday(), { outputFormat: 'YYYY-MM-DD' });
@@ -13,30 +13,35 @@ const createDateTime = () =>
     outputFormat: 'YYYY-MM-DDTHH:MM:SS',
   });
 
-const evidenceUpload = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM)
-    return {
-      EvidenceUpload: {
-        caseProgAllocatedTrack: 'FAST_CLAIM',
-      },
-    };
-  else if (claimTrack === ClaimTrack.SMALL_CLAIM)
-    return {
-      EvidenceUpload: {
-        caseProgAllocatedTrack: 'SMALL_CLAIM',
-      }
-    };
-  return {};
+const evidenceUpload = {
+  EvidenceUpload: {
+    caseProgAllocatedTrack: 'FAST_CLAIM',
+  },
 };
+
+const selectUploadOptions = (claimType: ClaimType) => {
+  if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+    return {
+      SelectUploadOptions: {
+        evidenceUploadOptions: {
+          list_items: [CaseDataHelper.setCodeToData('Defendant 1 and 2')],
+          value: CaseDataHelper.setCodeToData('Defendant 1 and 2')
+        }
+      }
+    }
+  }
+
+  return {};
+}
 
 const documentSelection = (claimTrack: ClaimTrack) => {
   if(claimTrack === ClaimTrack.FAST_CLAIM)
     return {
       DocumentSelectionFastTrack: {
-        disclosureSelectionEvidence: ['DISCLOSURE_LIST'],
-        witnessSelectionEvidence: ['WITNESS_SUMMARY'],
-        expertSelectionEvidence: ['JOINT_STATEMENT'],
-        trialSelectionEvidence: ['DOCUMENTARY'],
+        disclosureSelectionEvidenceRes: ['DISCLOSURE_LIST'],
+        witnessSelectionEvidenceRes: ['WITNESS_SUMMARY'],
+        expertSelectionEvidenceRes: ['QUESTIONS_FOR_EXPERTS'],
+        trialSelectionEvidenceRes: ['COSTS'],
       },
     };
   else if(claimTrack === ClaimTrack.SMALL_CLAIM)
@@ -46,76 +51,78 @@ const documentSelection = (claimTrack: ClaimTrack) => {
         trialSelectionEvidenceSmallClaim: ['AUTHORITIES'],
         expertSelectionEvidenceSmallClaim: ['EXPERT_REPORT'],
       }
-    }
+    };
+
   return {};
 };
 
-
 const documentUploadFastTrack = (
   claimTrack: ClaimTrack,
+  witnessParty: Party,
+  expertParty: Party,
   disclosureDocument: UploadDocumentValue,
   witnessSummaryDocument: UploadDocumentValue,
-  jointStatementDocument: UploadDocumentValue,
-  trialDocument: UploadDocumentValue
+  questionsDocument: UploadDocumentValue,
+  authoritiesDocument: UploadDocumentValue,
 ) => {
   if(claimTrack === ClaimTrack.FAST_CLAIM) {
-    const witnessData = CaseDataHelper.buildWitnessData(partys.CLAIMANT_WITNESS_1);
-    const expertData = CaseDataHelper.buildExpertData(partys.CLAIMANT_EXPERT_1);
-  
+    const witnessPartyData = CaseDataHelper.buildWitnessData(witnessParty);
+    const expertPartyData = CaseDataHelper.buildExpertData(expertParty);
+
     return {
       DocumentUpload: {
-        documentDisclosureList: [
+        documentDisclosureListRes: [
           CaseDataHelper.setIdToData({
             documentUpload: disclosureDocument,
             createdDatetime: createDateTime(),
           }),
         ],
-        documentWitnessSummary: [
+        documentWitnessSummaryRes: [
           CaseDataHelper.setIdToData({
-            witnessOptionName: witnessData.partyName,
+            witnessOptionName: witnessPartyData.partyName,
             witnessOptionUploadDate: createDate(),
             witnessOptionDocument: witnessSummaryDocument,
             createdDatetime: createDateTime(),
           }),
         ],
-        documentJointStatement: [
+        documentQuestionsRes: [
           CaseDataHelper.setIdToData({
-            expertOptionName: expertData.partyName,
-            expertOptionExpertises: expertData.fieldOfExpertise,
+            expertOptionName: expertPartyData.partyName,
+            expertOptionOtherParty: 'text',
+            expertDocumentQuestion: 'question',
             expertOptionUploadDate: createDate(),
-            expertDocument: jointStatementDocument,
+            expertDocument: questionsDocument,
             createdDatetime: createDateTime(),
           }),
         ],
-        documentEvidenceForTrial: [
+        documentAuthoritiesRes: [
           CaseDataHelper.setIdToData({
-            typeOfDocument: 'images etc',
-            documentIssuedDate: createDate(),
-            documentUpload: trialDocument,
+            documentUpload: authoritiesDocument,
             createdDatetime: createDateTime(),
           }),
         ],
       },
     };
   }
-
-  return {};
 };
 
 const documentUploadSmallClaim = (
   claimTrack: ClaimTrack,
+  witness1Party: Party,
+  witness2Party: Party,
+  expertParty: Party,
   witnessStatement1: UploadDocumentValue,
   witnessStatement2: UploadDocumentValue,
   expertReport: UploadDocumentValue,
   authoritiesDocument: UploadDocumentValue,
 ) => {
   if(claimTrack === ClaimTrack.SMALL_CLAIM) {
-    const witness1Data = CaseDataHelper.buildWitnessData(partys.CLAIMANT_WITNESS_1);
-    const witness2Data = CaseDataHelper.buildWitnessData(partys.CLAIMANT_WITNESS_2);
-    const expertData = CaseDataHelper.buildExpertData(partys.CLAIMANT_EXPERT_1);
+    const witness1Data = CaseDataHelper.buildWitnessData(witness1Party);
+    const witness2Data = CaseDataHelper.buildWitnessData(witness2Party);
+    const expertData = CaseDataHelper.buildExpertData(expertParty);
     return {
       DocumentUpload: {
-        documentWitnessStatement: [
+        documentWitnessStatementRes: [
           CaseDataHelper.setIdToData({
             witnessOptionName: witness1Data.partyName,
             witnessOptionUploadDate: createDate(),
@@ -127,7 +134,7 @@ const documentUploadSmallClaim = (
             witnessOptionDocument: witnessStatement2,
           }),
         ],
-        documentExpertReport: [
+        documentExpertReportRes: [
           CaseDataHelper.setIdToData({
             expertOptionName: expertData.partyName,
             expertOptionExpertise: expertData.fieldOfExpertise,
@@ -135,7 +142,7 @@ const documentUploadSmallClaim = (
             expertDocument: expertReport,
           }),
         ],
-        documentAuthorities: [
+        documentAuthoritiesRes: [
           CaseDataHelper.setIdToData({
             documentUpload: authoritiesDocument,
           }),
@@ -143,11 +150,21 @@ const documentUploadSmallClaim = (
       },
     };
   }
+}
+
+const undefine = {
+  Undefine: {
+    witnessSelectionEvidenceSmallClaim: undefined,
+    trialSelectionEvidenceSmallClaim: undefined,
+    expertSelectionEvidenceSmallClaim: undefined,
+  }
 };
 
 export default {
   evidenceUpload,
+  selectUploadOptions,
   documentSelection,
   documentUploadFastTrack,
   documentUploadSmallClaim,
+  undefine
 };

@@ -787,7 +787,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { evidenceUploadRespondentDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
     const evidenceUploadRespondentData =
-      await evidenceUploadRespondentDataBuilder.buildDS1SmallClaim();
+      await evidenceUploadRespondentDataBuilder.buildDS1Small();
     await super.submitCCDEvent(
       defendantSolicitor1User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
