@@ -442,14 +442,6 @@ const hearing = (
           },
         },
       };
-
-    return {
-      Hearing: {
-        applicant1DQHearingLRspec: {
-          unavailableDatesRequired: 'No',
-        },
-      },
-    };
   }
   return {};
 };
