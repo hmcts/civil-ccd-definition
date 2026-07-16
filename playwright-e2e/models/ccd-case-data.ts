@@ -305,6 +305,8 @@ export interface HearingAttendeeValue {
 }
 
 export interface CaseFlags {
+  groupId?: string | null;
+  visibility?: string | null;
   details?: CCDCaseFlagsDetails[];
   partyName?: string;
   roleOnCase?: string;
@@ -321,9 +323,14 @@ export interface CaseFlagsDetailsValue {
   status?: string;
   flagCode?: string;
   flagComment?: string;
+  flagComment_cy?: string;
+  flagUpdateComment?: string;
   dateTimeCreated?: string;
+  dateTimeModified?: string;
   hearingRelevant?: string;
   otherDescription?: string;
+  otherDescription_cy?: string;
+  availableExternally?: string;
 }
 
 export interface CaseFlagsDetailsValuePath {

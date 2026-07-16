@@ -1,4 +1,5 @@
 import DateHelper from '../../../../helpers/date-helper';
+import CCDCaseData from '../../../../models/ccd-case-data';
 
 const complexCaseLevelCaseFlag = {
   CaseFlags: {
@@ -50,7 +51,131 @@ const applicant1SpecialMeasureFlag = {
   },
 };
 
+const updateCaseLevelComplexCaseFlag = (caseData: CCDCaseData) => {
+  const existingFlag = caseData?.caseFlags?.details?.find(
+    (detail) => detail.value.flagCode === 'CF0002',
+  );
+
+  return {
+    ManageCaseFlags: {
+      caseFlags: {
+        groupId: caseData?.caseFlags?.groupId ?? null,
+        visibility: caseData?.caseFlags?.visibility ?? null,
+        details: [
+          {
+            id: existingFlag?.id,
+            value: {
+              ...existingFlag?.value,
+              flagComment: 'Case Level - Complex case - API Test - Update 365',
+              dateTimeModified: DateHelper.formatDateToString(DateHelper.getToday(), {
+                outputFormat: 'YYYY-MM-DDTHH:MM:SS',
+              }),
+            },
+          },
+        ],
+      },
+    },
+  };
+};
+
+const deactivateCaseLevelComplexCaseFlag = (caseData: CCDCaseData) => {
+  const existingFlag = caseData?.caseFlags?.details?.find(
+    (detail) => detail.value.flagCode === 'CF0002',
+  );
+
+  return {
+    ManageCaseFlags: {
+      caseFlags: {
+        groupId: caseData?.caseFlags?.groupId ?? null,
+        visibility: caseData?.caseFlags?.visibility ?? null,
+        details: [
+          {
+            id: existingFlag?.id,
+            value: {
+              ...existingFlag?.value,
+              status: 'Inactive',
+              flagComment: 'Case Level - Complex case - API Test - Update Make Inactive',
+              dateTimeModified: DateHelper.formatDateToString(DateHelper.getToday(), {
+                outputFormat: 'YYYY-MM-DDTHH:MM:SS',
+              }),
+            },
+          },
+        ],
+      },
+    },
+  };
+};
+
+const updateApplicant1SpecialMeasureFlag = (
+  caseData: CCDCaseData,
+  { flagComment }: { flagComment: string },
+) => {
+  const existingFlag = caseData?.applicant1?.flags?.details?.find(
+    (detail) => detail.value?.flagCode === 'OT0001',
+  );
+
+  return {
+    ManageCaseFlags: {
+      applicant1: {
+        ...caseData?.applicant1,
+        flags: {
+          ...caseData?.applicant1?.flags,
+          details: [
+            {
+              id: existingFlag?.id,
+              value: {
+                ...existingFlag?.value,
+                flagComment,
+                dateTimeModified: DateHelper.formatDateToString(DateHelper.getToday(), {
+                  outputFormat: 'YYYY-MM-DDTHH:MM:SS',
+                }),
+              },
+            },
+          ],
+        },
+      },
+    },
+  };
+};
+
+const deactivateApplicant1SpecialMeasureFlag = (
+  caseData: CCDCaseData,
+  { flagComment }: { flagComment: string },
+) => {
+  const existingFlag = caseData?.applicant1?.flags?.details?.find(
+    (detail) => detail.value?.flagCode === 'OT0001',
+  );
+
+  return {
+    ManageCaseFlags: {
+      applicant1: {
+        ...caseData?.applicant1,
+        flags: {
+          ...caseData?.applicant1?.flags,
+          details: [
+            {
+              id: existingFlag?.id,
+              value: {
+                ...existingFlag?.value,
+                flagComment,
+                status: 'Inactive',
+                dateTimeModified: DateHelper.formatDateToString(DateHelper.getToday(), {
+                  outputFormat: 'YYYY-MM-DDTHH:MM:SS',
+                }),
+              },
+            },
+          ],
+        },
+      },
+    },
+  };
+};
+
 export default {
   complexCaseFlag: complexCaseLevelCaseFlag,
   applicant1SpecialMeasureFlag : applicant1SpecialMeasureFlag,
+  updateCaseLevelComplexCaseFlag : updateCaseLevelComplexCaseFlag,
+  deactivateCaseLevelComplexCaseFlag : deactivateCaseLevelComplexCaseFlag,
+  updateApplicant1SpecialMeasureFlag : updateApplicant1SpecialMeasureFlag,
+  deactivateApplicant1SpecialMeasureFlag : deactivateApplicant1SpecialMeasureFlag,
 };
