@@ -2480,7 +2480,7 @@
     "FieldType": "BreathingSpaceStartInfo",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Label": "enter breathing space"
+    "Label": ""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2488,12 +2488,12 @@
     "FieldType": "BreathingSpaceLiftInfo",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Label": "lift breathing space"
+    "Label": ""
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "breathingSpaceLabel",
-    "Label": "<strong class=\"text-16\">This claim is in Breathing Space with a change by Toyin</strong>",
+    "Label": "<strong class=\"text-16\">This claim is in Breathing Space</strong>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

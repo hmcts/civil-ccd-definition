@@ -11,13 +11,15 @@
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "enterBreathing",
-    "TabFieldDisplayOrder": 98
+    "FieldShowCondition": "totalClaimAmount=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 2
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "liftBreathing",
-    "TabFieldDisplayOrder": 99
+    "FieldShowCondition": "totalClaimAmount=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 2
   },
   {
     "CaseTypeID": "CIVIL",
