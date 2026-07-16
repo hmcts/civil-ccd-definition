@@ -359,6 +359,29 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
   }
 
+  // async RespondIntermediateProceed1v2DS() {
+  //   await this.setupApiStep(claimantSolicitorUser);
+  //   const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+  //   const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+  //   const claimantResponseEventData =
+  //     await claimantResponseSpecDataBuilder.buildIntermediateProceed1v2DS();
+  //   await super.submitCCDEvent(
+  //     claimantSolicitorUser,
+  //     ccdEvents.CLAIMANT_RESPONSE_SPEC,
+  //     claimantResponseEventData,
+  //     CaseState.JUDICIAL_REFERRAL,
+  //   );
+
+  //   const { claimantResponseSpecSchemaBuilder } =
+  //     this.claimantDefendantSolicitorSchemaBuilderFactory;
+  //   const claimantResponseSchema =
+  //     await claimantResponseSpecSchemaBuilder.buildIntermediateProceed1v2DS(
+  //       caseDataBeforeSubmission,
+  //     );
+  //   ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+  // }
+
   async RespondFastPartAdmitProceed() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -510,7 +533,6 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       await claimantResponseSpecSchemaBuilder.buildSmall(caseDataBeforeSubmission);
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
   }
-
 
   async RespondFastFullDefenceProceed2v1() {
     await this.setupApiStep(claimantSolicitorUser);

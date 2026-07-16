@@ -26,6 +26,12 @@ export default class GenerateDirectionsOrderSchemaBuilder extends BaseSchemaBuil
     });
   }
 
+  async buildMultiOrder(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
   protected async buildSchema(
     caseDataBeforeSubmission?: CCDCaseData,
     {

@@ -20,6 +20,13 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
+  async buildIntermediateProceed1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   async buildFastPartAdmitProceed(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,

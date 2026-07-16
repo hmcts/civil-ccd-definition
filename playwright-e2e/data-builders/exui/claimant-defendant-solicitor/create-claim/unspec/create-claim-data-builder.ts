@@ -49,6 +49,13 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildIntermediate1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   async buildIntermediate2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
@@ -90,7 +97,10 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
 
   protected async buildData({
     claimType = ClaimType.ONE_VS_ONE,
-    claimTypeUnspec = {claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY, personalInjuryType: PersonalInjuryType.ROAD_ACCIDENT},
+    claimTypeUnspec = {
+      claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
+      personalInjuryType: PersonalInjuryType.ROAD_ACCIDENT,
+    },
     claimTrack = ClaimTrack.SMALL_CLAIM,
     claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
@@ -105,7 +115,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
   } = {}) {
-    const { civilServiceRequests } = this.requestsFactory; 
+    const { civilServiceRequests } = this.requestsFactory;
     this.setClaimantDefendantPartyTypes(claimType, {
       claimant1PartyType,
       claimant2PartyType,
@@ -113,10 +123,12 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       defendant2PartyType,
     });
 
-    const certificateOfSuitability = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+    const certificateOfSuitability =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     let certificateOfSuitability2: UploadDocumentValue;
-    if(ClaimTypeHelper.isClaimant2(claimType)) {
-      certificateOfSuitability2 = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+    if (ClaimTypeHelper.isClaimant2(claimType)) {
+      certificateOfSuitability2 =
+        await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     }
 
     return {

@@ -16,19 +16,17 @@ export default class EvidenceUploadRespondentDataBuilder extends BaseDataBuilder
     return this.buildData();
   }
 
-  protected async buildData(
-    {
-      claimTrack = ClaimTrack.SMALL_CLAIM,
-      witness1Party = partys.DEFENDANT_1_WITNESS_1,
-      witness2Party = partys.DEFENDANT_1_WITNESS_2,
-      expertParty = partys.DEFENDANT_1_EXPERT_1
-    } : {
-      claimTrack?: ClaimTrack,
-      witness1Party?: Party,
-      witness2Party?: Party,
-      expertParty?: Party
-    } = {}
-  ) {
+  protected async buildData({
+    claimTrack = ClaimTrack.SMALL_CLAIM,
+    witness1Party = partys.DEFENDANT_1_WITNESS_1,
+    witness2Party = partys.DEFENDANT_1_WITNESS_2,
+    expertParty = partys.DEFENDANT_1_EXPERT_1,
+  }: {
+    claimTrack?: ClaimTrack;
+    witness1Party?: Party;
+    witness2Party?: Party;
+    expertParty?: Party;
+  } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
     const doc1 = await civilServiceRequests.uploadTestDocument(defendantSolicitor1User);
     const doc2 = await civilServiceRequests.uploadTestDocument(defendantSolicitor1User);
@@ -57,7 +55,7 @@ export default class EvidenceUploadRespondentDataBuilder extends BaseDataBuilder
         doc3,
         doc4,
       ),
-      ...evidenceUploadRespondentDataBuilderComponents.undefine
+      ...evidenceUploadRespondentDataBuilderComponents.undefine,
     };
   }
 }

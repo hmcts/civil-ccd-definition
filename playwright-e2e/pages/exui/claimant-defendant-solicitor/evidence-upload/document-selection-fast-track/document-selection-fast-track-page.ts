@@ -36,6 +36,7 @@ export default class DocumentSelectionFastTrackPage extends ExuiPage(BasePage) {
       super.expectLabel(checkboxes.authorities.label),
       super.expectLabel(checkboxes.costs.label),
       super.expectLabel(checkboxes.documentary.label),
+      super.expectLabel(checkboxes.bundles.label),
     ]);
   }
 
@@ -49,6 +50,10 @@ export default class DocumentSelectionFastTrackPage extends ExuiPage(BasePage) {
 
   async selectAuthorities() {
     await super.clickBySelector(checkboxes.authorities.selector(this.claimantDefendantParty));
+  }
+
+  async selectBundles() {
+    await super.clickBySelector(checkboxes.bundles.selector);
   }
 
   async submit() {

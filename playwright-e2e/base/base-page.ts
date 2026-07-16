@@ -1816,4 +1816,15 @@ export default abstract class BasePage {
   protected async countBySelector(selector: string): Promise<number> {
     return await this.page.locator(selector).count();
   }
+
+  protected async blurSelector(
+    selector: string,
+    { index = 0, containerSelector }: { index?: number; containerSelector?: string } = {},
+  ) {
+    const locator = containerSelector
+      ? this.page.locator(containerSelector).locator(selector).nth(index)
+      : this.page.locator(selector).nth(index);
+
+    await locator.blur();
+  }
 }

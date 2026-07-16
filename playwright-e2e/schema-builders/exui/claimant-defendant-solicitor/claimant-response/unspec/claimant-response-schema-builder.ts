@@ -9,9 +9,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
-  async buildSmallFullDefence1v1(
-    caseDataBeforeSubmission?: CCDCaseData,
-  ): Promise<z.ZodType> {
+  async buildSmallFullDefence1v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.SMALL_CLAIM,
@@ -25,7 +23,9 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildIntermediateFullDefence2v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildIntermediateFullDefence2v1(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
@@ -50,23 +50,36 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildIntermediateFullDefence1v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
-    return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  async buildIntermediateFullDefence1v1(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
   }
 
   async buildFastFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
-    return this.buildSchema(caseDataBeforeSubmission, { claimType: ClaimType.ONE_VS_TWO_DIFF_SOL, claimTrack: ClaimTrack.FAST_CLAIM });
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
+  }
+
+  async buildIntermediateProceed1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
   }
 
   protected async buildSchema(
     caseDataBeforeSubmission?: CCDCaseData,
-    { 
-      claimType = ClaimType.ONE_VS_ONE, 
-      claimTrack = ClaimTrack.SMALL_CLAIM 
-    } : 
-    { 
-      claimType?: ClaimType, 
-      claimTrack?: ClaimTrack 
+    {
+      claimType = ClaimType.ONE_VS_ONE,
+      claimTrack = ClaimTrack.SMALL_CLAIM,
+    }: {
+      claimType?: ClaimType;
+      claimTrack?: ClaimTrack;
     } = {},
   ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {

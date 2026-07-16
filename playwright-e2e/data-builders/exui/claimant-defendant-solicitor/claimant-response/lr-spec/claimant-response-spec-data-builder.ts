@@ -18,6 +18,13 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
+  async buildIntermediateProceed1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   async buildFastPartAdmitProceed() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
