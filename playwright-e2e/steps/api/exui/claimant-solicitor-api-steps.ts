@@ -454,6 +454,27 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
   }
 
+  async ManageContactInformation() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { manageContactInformationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const manageContactInformationData =
+      await manageContactInformationDataBuilder.buildClaimant();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.MANAGE_CONTACT_INFORMATION,
+      manageContactInformationData,
+    );
+
+    const { manageContactInformationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const manageContactInformationSchema =
+      await manageContactInformationSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(manageContactInformationSchema, this.ccdCaseData);
+  }
+
   async AmendRespondent1ResponseDeadline() {
     await this.setupApiStep(claimantOrganisationSuperUser);
     const newRespondent1Deadline = DateHelper.subtractFromToday({ days: 1 });
