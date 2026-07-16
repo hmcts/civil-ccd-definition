@@ -75,8 +75,8 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_IN_UI\"",
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
