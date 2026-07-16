@@ -12,6 +12,7 @@ import CreateClaimSpecDataBuilder from './create-claim/lr-spec/create-claim-spec
 import CreateClaimDataBuilder from './create-claim/unspec/create-claim-data-builder';
 import InformAgreedExtensionDateDataBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-data-builder';
 import InformAgreedExtensionDateSpecDataBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-data-builder';
+import ManageContactInformationDataBuilder from '../common/manage-contact-information/manage-contact-information-data-builder';
 import NotifyClaimDataBuilder from './notify-claim/unspec/notify-claim-data-builder';
 import NotifyClaimDetailsDataBuilder from './notify-claim-details/unspec/notify-claim-details-data-builder';
 import ServiceRequestDataBuilder from './service-request/service-request-data-builder';
@@ -78,6 +79,10 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
 
   get informAgreedExtensionDateSpecDataBuilder() {
     return new InformAgreedExtensionDateSpecDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get manageContactInformationDataBuilder() {
+    return new ManageContactInformationDataBuilder(this.requestsFactory, this.testData);
   }
 
   get serviceRequestDataBuilder() {
