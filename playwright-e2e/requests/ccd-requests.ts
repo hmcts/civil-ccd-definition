@@ -111,7 +111,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       statusErrorMessage: async (responseJson, { url, status, expectedStatus }) =>
         this.getStatusErrorMessage(responseJson, { url, status, expectedStatus }),
       verifyResponse: async (responseJson) => {
-        if(expectedState)
+        if (expectedState)
           await super.expectResponseJsonToHavePropertyValue(
             'state',
             expectedState,
