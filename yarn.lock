@@ -346,10 +346,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:^5.5.3":
-  version: 5.5.3
-  resolution: "@faker-js/faker@npm:5.5.3"
-  checksum: 10/1a4fd61d1a9132f5776b447a2bc9c14d9b472611ddf22f7060adcf103c76d2af238e0bc132e633601b19a00b4f3a23643c4f2b7671ab9866ae9f91221d191788
+"@faker-js/faker@npm:^10.0.0":
+  version: 10.5.0
+  resolution: "@faker-js/faker@npm:10.5.0"
+  checksum: 10/1f83f46bf4dd0aa4197b72b289d5a73706b0150c9ce2c93066bf4282db8c6f4af19e5da73f62819813cfa4134083ce3a6e708e875fb7e6da745e23a0558b6550
   languageName: node
   linkType: hard
 
@@ -1840,7 +1840,7 @@ __metadata:
   dependencies:
     "@axe-core/playwright": "npm:^4.10.0"
     "@eslint/js": "npm:^9.11.0"
-    "@faker-js/faker": "npm:^5.5.3"
+    "@faker-js/faker": "npm:^10.0.0"
     "@playwright/test": "npm:1.60.0"
     "@types/node": "npm:^24.1.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
