@@ -422,7 +422,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { notifyClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const notifyClaimData = await notifyClaimDataBuilder.buildData();
+    const notifyClaimData = await notifyClaimDataBuilder.build();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
@@ -435,12 +435,66 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     ZodHelper.safeParse(notifyClaimSchema, this.ccdCaseData);
   }
 
+  async NotifyClaim1vLIP() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { notifyClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const notifyClaimData = await notifyClaimDataBuilder.build1vLIP();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
+      notifyClaimData,
+      CaseState.AWAITING_CASE_DETAILS_NOTIFICATION,
+    );
+
+    const { notifyClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const notifyClaimSchema = await notifyClaimSchemaBuilder.build1vLIP(caseDataBeforeSubmission);
+    ZodHelper.safeParse(notifyClaimSchema, this.ccdCaseData);
+  }
+
+  async NotifyClaim1v2LRLIP() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { notifyClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const notifyClaimData = await notifyClaimDataBuilder.build1v2LRLIP();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
+      notifyClaimData,
+      CaseState.AWAITING_CASE_DETAILS_NOTIFICATION,
+    );
+
+    const { notifyClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const notifyClaimSchema = await notifyClaimSchemaBuilder.build1v2LRLIP(caseDataBeforeSubmission);
+    ZodHelper.safeParse(notifyClaimSchema, this.ccdCaseData);
+  }
+
+  async NotifyClaim1v2LIPS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { notifyClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const notifyClaimData = await notifyClaimDataBuilder.build1v2LIPS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
+      notifyClaimData,
+      CaseState.AWAITING_CASE_DETAILS_NOTIFICATION,
+    );
+
+    const { notifyClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const notifyClaimSchema = await notifyClaimSchemaBuilder.build1v2LIPS(caseDataBeforeSubmission);
+    ZodHelper.safeParse(notifyClaimSchema, this.ccdCaseData);
+  }
+
   async NotifyClaimDetails() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { notifyClaimDetailsDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const notifyClaimDetailsData = await notifyClaimDetailsDataBuilder.buildData();
+    const notifyClaimDetailsData = await notifyClaimDetailsDataBuilder.build();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
@@ -451,6 +505,63 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const { notifyClaimDetailsSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const notifyClaimDetailsSchema =
       await notifyClaimDetailsSchemaBuilder.buildSchema(caseDataBeforeSubmission);
+    ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
+  }
+
+  async NotifyClaimDetails1vLIP() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { notifyClaimDetailsDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const notifyClaimDetailsData = await notifyClaimDetailsDataBuilder.build1vLIP();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
+      notifyClaimDetailsData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { notifyClaimDetailsSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const notifyClaimDetailsSchema =
+      await notifyClaimDetailsSchemaBuilder.build1vLIP(caseDataBeforeSubmission);
+    ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
+  }
+
+  async NotifyClaimDetails1v2LRLIP() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { notifyClaimDetailsDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const notifyClaimDetailsData = await notifyClaimDetailsDataBuilder.build1v2LRLIP();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
+      notifyClaimDetailsData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { notifyClaimDetailsSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const notifyClaimDetailsSchema =
+      await notifyClaimDetailsSchemaBuilder.build1v2LRLIP(caseDataBeforeSubmission);
+    ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
+  }
+
+  async NotifyClaimDetails1v2LIPS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { notifyClaimDetailsDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const notifyClaimDetailsData = await notifyClaimDetailsDataBuilder.build1v2LIPS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
+      notifyClaimDetailsData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { notifyClaimDetailsSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const notifyClaimDetailsSchema =
+      await notifyClaimDetailsSchemaBuilder.build1v2LIPS(caseDataBeforeSubmission);
     ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
   }
 
