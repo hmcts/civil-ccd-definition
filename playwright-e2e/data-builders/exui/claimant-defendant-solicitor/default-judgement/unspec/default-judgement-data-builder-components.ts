@@ -11,7 +11,7 @@ const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
 
 const defendantDetails = (claimType: ClaimType, defendant1Party: ClaimantDefendantPartyType) => {
-  if(ClaimTypeHelper.isDefendant2(claimType)) {
+  if (ClaimTypeHelper.isDefendant2(claimType)) {
     return {
       defendantDetails: {
         defendantDetails: {

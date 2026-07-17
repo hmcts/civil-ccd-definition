@@ -4,7 +4,7 @@ import ClaimTrack from '../../../../constants/cases/claim-track';
 const nonEmptyString = z.string().min(1);
 
 const finalOrderDocumentCollection = (claimTrack: ClaimTrack) => {
-  if(
+  if (
     claimTrack === ClaimTrack.FAST_CLAIM ||
     claimTrack === ClaimTrack.SMALL_CLAIM
   ) {
@@ -29,7 +29,7 @@ const finalOrderDocumentCollection = (claimTrack: ClaimTrack) => {
         }),
       ).min(1),
     };
-  } else if(
+  } else if (
     claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
     claimTrack === ClaimTrack.MULTI_CLAIM) {
       return {

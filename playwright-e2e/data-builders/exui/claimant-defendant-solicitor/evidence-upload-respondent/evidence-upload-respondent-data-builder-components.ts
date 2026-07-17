@@ -1,8 +1,9 @@
-import DateHelper from '../../../../../helpers/date-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
-import CaseDataHelper from '../../../../../helpers/case-data-helper';
-import { Party } from '../../../../../models/users/partys';
-import ClaimTrack from '../../../../../constants/cases/claim-track';
+import DateHelper from '../../../../helpers/date-helper';
+import { UploadDocumentValue } from '../../../../models/ccd-case-data';
+import CaseDataHelper from '../../../../helpers/case-data-helper';
+import { Party } from '../../../../models/users/partys';
+import ClaimTrack from '../../../../constants/cases/claim-track';
+import ClaimType from '../../../../constants/cases/claim-type';
 
 const createDate = () =>
   DateHelper.formatDateToString(DateHelper.getToday(), { outputFormat: 'YYYY-MM-DD' });
@@ -18,8 +19,23 @@ const evidenceUpload = {
   },
 };
 
+const selectUploadOptions = (claimType: ClaimType) => {
+  if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+    return {
+      SelectUploadOptions: {
+        evidenceUploadOptions: {
+          list_items: [CaseDataHelper.setCodeToData('Defendant 1 and 2')],
+          value: CaseDataHelper.setCodeToData('Defendant 1 and 2')
+        }
+      }
+    }
+  }
+
+  return {};
+}
+
 const documentSelection = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM)
+  if (claimTrack === ClaimTrack.FAST_CLAIM)
     return {
       DocumentSelectionFastTrack: {
         disclosureSelectionEvidenceRes: ['DISCLOSURE_LIST'],
@@ -28,7 +44,7 @@ const documentSelection = (claimTrack: ClaimTrack) => {
         trialSelectionEvidenceRes: ['COSTS'],
       },
     };
-  else if(claimTrack === ClaimTrack.SMALL_CLAIM)
+  else if (claimTrack === ClaimTrack.SMALL_CLAIM)
     return {
       DocumentSelectionSmallClaim: {
         witnessSelectionEvidenceSmallClaim: ['WITNESS_SUMMARY'],
@@ -49,7 +65,7 @@ const documentUploadFastTrack = (
   questionsDocument: UploadDocumentValue,
   authoritiesDocument: UploadDocumentValue,
 ) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM) {
+  if (claimTrack === ClaimTrack.FAST_CLAIM) {
     const witnessPartyData = CaseDataHelper.buildWitnessData(witnessParty);
     const expertPartyData = CaseDataHelper.buildExpertData(expertParty);
 
@@ -100,7 +116,7 @@ const documentUploadSmallClaim = (
   expertReport: UploadDocumentValue,
   authoritiesDocument: UploadDocumentValue,
 ) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+  if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     const witness1Data = CaseDataHelper.buildWitnessData(witness1Party);
     const witness2Data = CaseDataHelper.buildWitnessData(witness2Party);
     const expertData = CaseDataHelper.buildExpertData(expertParty);
@@ -146,6 +162,7 @@ const undefine = {
 
 export default {
   evidenceUpload,
+  selectUploadOptions,
   documentSelection,
   documentUploadFastTrack,
   documentUploadSmallClaim,

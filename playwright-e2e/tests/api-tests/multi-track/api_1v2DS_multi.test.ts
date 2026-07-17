@@ -13,6 +13,7 @@ test.describe('1v2DS unspec multi track journey', { tag: '@civil-service-nightly
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
     await DefendantSolicitor1ApiSteps.RespondMultiFullDefence();
     await DefendantSolicitor2ApiSteps.RespondMultiFullDefence();

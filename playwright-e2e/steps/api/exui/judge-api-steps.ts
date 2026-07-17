@@ -47,7 +47,7 @@ export default class JudgeApiSteps extends BaseApi {
     await this.completeWATask(judgeRegion1User, taskId);
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema = await createSdoSchemaBuilder.buildTrailSdo(caseDataBeforeSubmission);
+    const createSdoSchema = await createSdoSchemaBuilder.buildFastSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
@@ -290,5 +290,41 @@ export default class JudgeApiSteps extends BaseApi {
     const generateDirectionsOrderSchema =
       await generateDirectionsOrderSchemaBuilder.buildMultiOrder(caseDataBeforeSubmission);
     ZodHelper.safeParse(generateDirectionsOrderSchema, this.ccdCaseData);
+  }
+
+  async NotSuitableSdoChangeLocation() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const notSuitableSdoData = await notSuitableSdoDataBuilder.buildChangeLocation();
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.NOT_SUITABLE_SDO,
+      notSuitableSdoData,
+    );
+
+    const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const notSuitableSdoSchema =
+      await notSuitableSdoSchemaBuilder.buildChangeLocation(caseDataBeforeSubmission);
+    ZodHelper.safeParse(notSuitableSdoSchema, this.ccdCaseData);
+  }
+
+  async NotSuitableSdoOther() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const notSuitableSdoData = await notSuitableSdoDataBuilder.buildOtherReasons();
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.NOT_SUITABLE_SDO,
+      notSuitableSdoData,
+    );
+
+    const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const notSuitableSdoSchema =
+      await notSuitableSdoSchemaBuilder.buildOtherReasons(caseDataBeforeSubmission);
+    ZodHelper.safeParse(notSuitableSdoSchema, this.ccdCaseData);
   }
 }
