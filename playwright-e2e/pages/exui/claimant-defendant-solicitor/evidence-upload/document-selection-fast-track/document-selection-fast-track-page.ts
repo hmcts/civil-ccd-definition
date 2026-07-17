@@ -36,7 +36,6 @@ export default class DocumentSelectionFastTrackPage extends ExuiPage(BasePage) {
       super.expectLabel(checkboxes.authorities.label),
       super.expectLabel(checkboxes.costs.label),
       super.expectLabel(checkboxes.documentary.label),
-      super.expectLabel(checkboxes.bundles.label),
     ]);
   }
 

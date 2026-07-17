@@ -28,7 +28,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
       await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
       await DefendantSolicitor2SpecSteps.Login();
-      await DefendantSolicitor2SpecSteps.EvidenceUploadFast();
+      await DefendantSolicitor2SpecSteps.EvidenceUploadBundle();
     });
   },
 );

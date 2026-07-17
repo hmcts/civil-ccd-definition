@@ -82,16 +82,28 @@ export default class DocumentUploadPage extends ExuiPage(BasePage) {
     });
   }
 
-  async addBundle() {
-    const hearingDate = DateHelper.addToToday({ days: 30 });
+  async addBundle({ documentNumber = 0 }: { documentNumber?: number } = {}) {
+    const hearingDate = DateHelper.addToToday({ months: 1 });
+
     await super.clickButtonByName(buttons.bundle.addNew.label, {
       containerSelector: containers.bundle.selector,
+      first: true,
     });
-    await super.inputText('Test bundle name', inputs.bundle.bundleName.selector(0));
+
+    await super.inputText(
+      inputs.bundle.bundleName.label(documentNumber),
+      inputs.bundle.bundleName.selector(documentNumber),
+    );
+
     await this.dateFragment.enterDate(hearingDate, inputs.bundle.date.selectorKey);
-    await super.retryUploadFile(filePaths.testPdfFile, inputs.bundle.file.selector(0), {
-      containerSelector: containers.bundle.selector,
-    });
+
+    await super.retryUploadFile(
+      filePaths.testPdfFile,
+      inputs.bundle.file.selector(documentNumber),
+      {
+        containerSelector: containers.bundle.selector,
+      },
+    );
   }
 
   async submit() {

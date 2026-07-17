@@ -91,7 +91,8 @@ export const inputs = {
   },
   bundle: {
     bundleName: {
-      label: 'Bundle name',
+      label: (documentNumber?: number) =>
+        documentNumber !== 0 ? `Bundle name ${documentNumber}` : 'Bundle name',
       selector: (documentNumber: number) => `#bundleEvidence_${documentNumber}_bundleName`,
     },
     date: {

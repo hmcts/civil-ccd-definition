@@ -116,13 +116,13 @@ export default class DefendantSolicitor2Steps extends BaseExui {
     );
   }
 
-  async EvidenceUploadFast() {
+  async EvidenceUploadBundle() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
         await evidenceUploadRespondentActions.evidenceUpload();
         await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
-        await evidenceUploadRespondentActions.documentUploadDS2();
+        await evidenceUploadRespondentActions.documentUploadBundleDS2();
         await evidenceUploadRespondentActions.submitEvidenceUpload();
       },
       async () => {

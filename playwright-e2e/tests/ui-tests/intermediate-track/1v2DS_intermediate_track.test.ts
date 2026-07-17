@@ -30,7 +30,7 @@ test.describe(
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.GenerateDirectionsOrderMulti();
       await DefendantSolicitor2Steps.Login();
-      await DefendantSolicitor2Steps.EvidenceUploadFast();
+      await DefendantSolicitor2Steps.EvidenceUploadBundle();
     });
   },
 );

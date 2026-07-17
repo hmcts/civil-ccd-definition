@@ -59,6 +59,14 @@ export default class EvidenceUploadRespondentActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async documentSelectionFastTrackBundle() {
+    const { documentSelectionFastTrackDS1Page } = this.evidenceUploadPageFactory;
+    await documentSelectionFastTrackDS1Page.verifyContent();
+    await documentSelectionFastTrackDS1Page.selectBundles();
+    await documentSelectionFastTrackDS1Page.submit();
+  }
+
+  @Step(classKey)
   async documentUpload() {
     const { documentUploadDS1Page } = this.evidenceUploadPageFactory;
     await documentUploadDS1Page.verifyContent();
@@ -69,7 +77,17 @@ export default class EvidenceUploadRespondentActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async documentUploadDS2() {
+  async documentUploadBundleDS1() {
+    const { documentUploadDS1Page } = this.evidenceUploadPageFactory;
+    await documentUploadDS1Page.verifyContent();
+    await documentUploadDS1Page.addBundle({
+      documentNumber: 1,
+    });
+    await documentUploadDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async documentUploadBundleDS2() {
     const { documentUploadDS2Page } = this.evidenceUploadPageFactory;
     await documentUploadDS2Page.verifyContent();
     await documentUploadDS2Page.addBundle();
