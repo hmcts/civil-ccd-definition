@@ -278,6 +278,43 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
+  async GenerateDirectionsOrderIntermediate() {
+    const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await generateDirectionsOrderActions.trackAllocationIntermediate();
+        await generateDirectionsOrderActions.intermediateTrackComplexityBand();
+        await generateDirectionsOrderActions.selectTemplateIntermediate();
+        await generateDirectionsOrderActions.downloadTemplate();
+        await generateDirectionsOrderActions.uploadOrder();
+        await generateDirectionsOrderActions.submitGenerateDirectionsOrder();
+      },
+      async () => {
+        await generateDirectionsOrderActions.confirmGenerateDirectionsOrder();
+      },
+      ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async GenerateDirectionsOrderMulti() {
+    const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await generateDirectionsOrderActions.trackAllocationMulti();
+        await generateDirectionsOrderActions.selectTemplateMulti();
+        await generateDirectionsOrderActions.downloadTemplate();
+        await generateDirectionsOrderActions.uploadOrder();
+        await generateDirectionsOrderActions.submitGenerateDirectionsOrder();
+      },
+      async () => {
+        await generateDirectionsOrderActions.confirmGenerateDirectionsOrder();
+      },
+      ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async DecisionOnReconsiderationRequestUpholdOrder() {
     const { decisionOnReconsiderationRequestActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
