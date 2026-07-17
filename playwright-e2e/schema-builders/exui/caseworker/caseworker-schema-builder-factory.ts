@@ -3,6 +3,7 @@ import AddCaseNoteSchemaBuilder from './add-case-note/add-case-note-schema-build
 import AmendPartyDetailsSchemaBuilder from './amend-party-details/amend-party-details-schema-builder';
 import ManageContactInformationSchemaBuilder from '../common/manage-contact-information/manage-contact-information-schema-builder';
 import MediationUnsuccessfulSchemaBuilder from './mediation-unsuccessful/mediation-unsuccessful-schema-builder';
+import TransferOnlineCaseSchemaBuilder from './transfer-online-case/transfer-online-case-schema-builder';
 
 export default class CaseworkerSchemaBuilderFactory extends BaseSchemaBuilderFactory {
   get addCaseNoteSchemaBuilder() {
@@ -19,5 +20,9 @@ export default class CaseworkerSchemaBuilderFactory extends BaseSchemaBuilderFac
 
   get mediationUnsuccessfulSchemaBuilder() {
     return new MediationUnsuccessfulSchemaBuilder(this.testData);
+  }
+
+  get transferOnlineCaseSchemaBuilder() {
+    return new TransferOnlineCaseSchemaBuilder(this.testData);
   }
 }
