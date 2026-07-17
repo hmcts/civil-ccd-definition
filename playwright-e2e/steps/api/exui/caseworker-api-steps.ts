@@ -79,4 +79,25 @@ export default class CaseworkerApiSteps extends BaseApi {
       await mediationUnsuccessfulSchemaBuilder.buildData(caseDataBeforeSubmission);
     ZodHelper.safeParse(mediationUnsuccessfulSchema, this.ccdCaseData);
   }
+
+  async ManageContactInformation() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { manageContactInformationDataBuilder } = this.caseworkerDataBuilderFactory;
+    const manageContactInformationData =
+      await manageContactInformationDataBuilder.buildDS1LegalRepresentation();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.MANAGE_CONTACT_INFORMATION,
+      manageContactInformationData,
+    );
+
+    const { manageContactInformationSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const manageContactInformationSchema =
+      await manageContactInformationSchemaBuilder.buildDS1LegalRepresentation(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(manageContactInformationSchema, this.ccdCaseData);
+  }
 }
