@@ -328,7 +328,7 @@ const ccdEvents: CCDEvents = {
     name: 'Upload mediation documents',
     description: 'Upload mediation documents',
     order: 24
-  }
+  },
 };
 
 export default ccdEvents;
