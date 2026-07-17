@@ -15,7 +15,7 @@ const selectDefendantSolicitor = {
 };
 
 const upload = (claimType: ClaimType, particularsOfClaimDocument: UploadDocumentValue) => {
-  if(ClaimTypeHelper.isDefendant1Represented(claimType) || ClaimTypeHelper.isDefendant2Represented(claimType)) {
+  if (ClaimTypeHelper.isDefendant1Represented(claimType) || ClaimTypeHelper.isDefendant2Represented(claimType)) {
     return {
       Upload: particularsOfClaimDocument ? {
         servedDocumentFiles: {
@@ -31,7 +31,7 @@ const upload = (claimType: ClaimType, particularsOfClaimDocument: UploadDocument
 };
 
 const certificateOfService1 = (claimType: ClaimType, defendant1SupportEvidenceCos: UploadDocumentValue) => {
-  if(ClaimTypeHelper.isDefendant1Unrepresented(claimType)) {
+  if (ClaimTypeHelper.isDefendant1Unrepresented(claimType)) {
     const serviceDate = DateHelper.formatDateToString(
       DateHelper.subtractFromToday({ days: 1 }),
       { outputFormat: 'YYYY-MM-DD' },
@@ -65,7 +65,7 @@ const certificateOfService1 = (claimType: ClaimType, defendant1SupportEvidenceCo
 }
 
 const certificateOfService2 = (claimType: ClaimType, defendant2SupportEvidenceCos: UploadDocumentValue) => {
-  if(ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
+  if (ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
     const serviceDate = DateHelper.formatDateToString(
       DateHelper.subtractFromToday({ days: 1 }),
       { outputFormat: 'YYYY-MM-DD' },

@@ -52,7 +52,7 @@ const undefine = {
 };
 
 const servedDocumentFiles = (particularOfClaimDocumentBeforeSubmission: Document[]) => {
-  if(!particularOfClaimDocumentBeforeSubmission) {
+  if (!particularOfClaimDocumentBeforeSubmission) {
     return {
       servedDocumentFiles: z.looseObject({
         particularsOfClaimDocument: z.array(

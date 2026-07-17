@@ -15,7 +15,7 @@ const selectDefendantSolicitorToNotify = {
 };
 
 const accessGrantedWarning = (claimType: ClaimType) => {
-  if(ClaimTypeHelper.isDefendant1Represented(claimType) || ClaimTypeHelper.isDefendant2Represented(claimType)) {
+  if (ClaimTypeHelper.isDefendant1Represented(claimType) || ClaimTypeHelper.isDefendant2Represented(claimType)) {
     return {
       AccessGrantedWarning: {}
     };
@@ -23,7 +23,7 @@ const accessGrantedWarning = (claimType: ClaimType) => {
 };
 
 const certificateOfService1 = (claimType: ClaimType) => {
-  if(ClaimTypeHelper.isDefendant1Unrepresented(claimType)) {
+  if (ClaimTypeHelper.isDefendant1Unrepresented(claimType)) {
     const serviceDate = DateHelper.formatDateToString(
       DateHelper.subtractFromToday({ days: 1 }),
       { outputFormat: 'YYYY-MM-DD' },
@@ -54,7 +54,7 @@ const certificateOfService1 = (claimType: ClaimType) => {
 }
 
 const certificateOfService2 = (claimType: ClaimType) => {
-  if(ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
+  if (ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
     const serviceDate = DateHelper.formatDateToString(
       DateHelper.subtractFromToday({ days: 1 }),
       { outputFormat: 'YYYY-MM-DD' },

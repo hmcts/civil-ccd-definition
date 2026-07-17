@@ -33,7 +33,7 @@ export default class NotifyClaimDetailsDataBuilder extends BaseDataBuilder {
     let defendant1SupportEvidenceCos;
     let defendant2SupportEvidenceCos;
 
-    if(!this.ccdCaseData?.servedDocumentFiles?.particularsOfClaimDocument && (
+    if (!this.ccdCaseData?.servedDocumentFiles?.particularsOfClaimDocument && (
       ClaimTypeHelper.isDefendant1Represented(claimType) ||
       ClaimTypeHelper.isDefendant2Represented(claimType)
     )) {
@@ -42,13 +42,13 @@ export default class NotifyClaimDetailsDataBuilder extends BaseDataBuilder {
         await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     }
 
-    if(ClaimTypeHelper.isDefendant1Unrepresented(claimType)) {
+    if (ClaimTypeHelper.isDefendant1Unrepresented(claimType)) {
       const { civilServiceRequests } = this.requestsFactory;
       defendant1SupportEvidenceCos =
         await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     }
 
-    if(ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
+    if (ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
       const { civilServiceRequests } = this.requestsFactory;
       defendant2SupportEvidenceCos =
         await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
