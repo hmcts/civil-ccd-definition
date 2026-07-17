@@ -19,12 +19,14 @@ export class PageHelper {
 
     async selectNextStep(nextStep: string) {
       console.log(nextStep);
+      await expect(this.page.locator('#next-step')).toBeEnabled();
       await expect(this.page.locator('#next-step')).toContainText(nextStep);
       await this.page.locator('#next-step').selectOption({ label: nextStep });
      // await this.page.waitForTimeout(2000); // waits for 2 seconds
 
       await expect(async () => {
         // This entire block re-runs if page.goto throws an error
+        await this.page.getByRole('button', { name: 'Go' }).isEnabled();
         await this.page.getByRole('button', { name: 'Go' }).click();
       }).toPass({
         intervals: [2000, 5000], // Time to wait between retries (in ms)

@@ -4,6 +4,7 @@ import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import RespondentResponses from '../../../enums/RespondentResponses.ts';
 import YesNo from '../../../enums/yesNo.ts';
+import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 
 export class RespondToClaim {
   private buttonHelper: ButtonHelper;
@@ -23,7 +24,9 @@ export class RespondToClaim {
     respondent2Response: RespondentResponses = RespondentResponses.FULL_DEFENCE,
     defendantNumber: number = 1,
     oneMonthStay: YesNo = YesNo.YES,
-    preActionProtocol: YesNo = YesNo.NO
+    preActionProtocol: YesNo = YesNo.NO,
+    fixedRecoverableCosts: YesNo = YesNo.NO,
+    fixedRecoverableCostsBand: FixedRecoveryCostsBands = FixedRecoveryCostsBands.BAND1,
   ) {
     await this.pageHelper.selectNextStep('Respond to claim');
     await this.buttonHelper.continueButton.click(); // Confirm Details
@@ -72,17 +75,43 @@ export class RespondToClaim {
     }
 
     await this.buttonHelper.continueButton.click();
-    await this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_3.pdf');
+    await this.page
+      .locator(`#respondent${defendantNumber}ClaimResponseDocument_file`)
+      .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_3.pdf');
     await this.page.waitForSelector('.error-message', { state: 'hidden' });
     await this.buttonHelper.continueButton.click();
 
-    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_${oneMonthStay}`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_${preActionProtocol}`).click();
+    await this.page
+      .locator(
+        `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`,
+      )
+      .click();
+    await this.page
+      .locator(
+        `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_${oneMonthStay}`,
+      )
+      .click();
+    await this.page
+      .locator(
+        `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_${preActionProtocol}`,
+      )
+      .click();
 
     if (preActionProtocol === YesNo.NO) {
-      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`).fill('Pre-action protocol explanation');
+      await this.page
+        .locator(
+          `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`,
+        )
+        .fill('Pre-action protocol explanation');
     }
+    await this.buttonHelper.continueButton.click();
+
+    await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_${fixedRecoverableCosts}`).click();
+    if (fixedRecoverableCosts === YesNo.YES) {
+      await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_band-${fixedRecoverableCostsBand}`).click();
+      await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_complexityBandingAgreed_${fixedRecoverableCosts}`).click();
+    }
+    await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_reasons`).fill('Fixed Recoverable Costs explanation');
     await this.buttonHelper.continueButton.click();
   }
 }

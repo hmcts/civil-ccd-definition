@@ -23,6 +23,7 @@ import { AcknowledgeClaim } from '../flows/events/AcknowledgeClaim.ts';
 import respondentResponses from '../../enums/RespondentResponses.ts';
 import { RespondToClaim } from '../flows/events/RespondToClaim.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
+import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -91,7 +92,17 @@ const env = cleanEnv({
     ],
     default: respondentResponses.FULL_DEFENCE
   }),
+  FIXED_RECOVERY_COSTS_BAND: enums({
+    values: [
+      fixedRecoveryCostsBands.BAND1,
+      fixedRecoveryCostsBands.BAND2,
+      fixedRecoveryCostsBands.BAND3,
+      fixedRecoveryCostsBands.BAND4
+    ],
+    default: fixedRecoveryCostsBands.BAND1
+  }),
 });
+
 
 let defendant1Journey : ClaimTypes[] = [
   claimTypes.ONE_VS_ONE,
@@ -106,7 +117,10 @@ const respondent1ResponseIntention: responseIntentions = env.RESPONDENT1_RESPONS
 const respondent2ResponseIntention: responseIntentions = env.RESPONDENT2_RESPONSE_INTENTION;
 const respondent1Response: respondentResponses = env.RESPONDENT1_RESPONSE;
 const respondent2Response: respondentResponses = env.RESPONDENT2_RESPONSE;
-
+const fixedRecoverableCosts: yesNo = ['Yes'].includes(process.env.CLAIMANT1_LITIGANT_FRIEND)
+  ? yesNo.YES
+  : yesNo.NO;
+const fixedRecoveryCostsBand: fixedRecoveryCostsBands = env.FIXED_RECOVERY_COSTS_BAND;
 const caseType: string = 'UNSPECIFIED';
 const claimantType: string = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(
   process.env.CLAIMANT_TYPE,
@@ -122,6 +136,7 @@ const typeOfClaim = process.env.TYPE_OF_CLAIM;
 const typeOfClaimSubType: string = process.env.SUB_TYPE;
 const defendantsToNotifyClaim: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM;
 const defendantsToNotifyClaimDetails: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS;
+
 const claimant1LitigantFriend: yesNo = ['Yes'].includes(process.env.CLAIMANT1_LITIGANT_FRIEND)
   ? yesNo.YES
   : yesNo.NO;
@@ -134,13 +149,19 @@ const defendant1LitigantFriend: yesNo = ['Yes'].includes(process.env.DEFENDANT1_
 const defendant2LitigantFriend: yesNo = ['Yes'].includes(process.env.DEFENDANT2_LITIGANT_FRIEND)
   ? yesNo.YES
   : yesNo.NO;
+const oneMonthStay: YesNo = ['Yes'].includes(process.env.ONE_MONTH_STAY)
+  ? yesNo.YES
+  : yesNo.NO;
+const preActionProtocol: YesNo = ['Yes'].includes(process.env.ONE_MONTH_STAY)
+  ? yesNo.YES
+  : yesNo.NO;
 
 let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(
   process.env.TRACK,
 )
   ? process.env.TRACK
   : 'FAST_CLAIM';
-let caseId: string = '1783425246460380';
+let caseId: string = '1784279016229395';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -166,6 +187,9 @@ test.beforeEach(async ({ page }) => {
   tabsHelper = new TabsHelper(page);
   testingEndpointHelper = new TestingEndPointHelper();
   await page.goto(envUrl + '/cases/case-details/' + caseId);
+  if (page.url() != envUrl + '/cases/case-details/' + caseId) {
+    await page.goto(envUrl + '/cases/case-details/' + caseId);
+  }
 });
 
 test.describe.configure({ mode: 'serial' });
@@ -360,13 +384,18 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
   test.describe('test6', { tag: '@unspecified' }, () => {
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
-    test('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
-      test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
+    test.only('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
+     // test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
+      console.log('>>>> ', fixedRecoveryCostsBand);
       await new RespondToClaim(page).submit(
         claimType,
         respondent1Response,
         respondent2Response,
-        1
+        1,
+        oneMonthStay,
+        preActionProtocol,
+        fixedRecoverableCosts,
+        fixedRecoveryCostsBand,
       );
     });
   });
