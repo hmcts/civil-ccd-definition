@@ -1,10 +1,10 @@
 import { test } from '../../../playwright-fixtures/index';
 
 async function run1v1BaseJourney({
-                                   ClaimantSolicitorApiSteps,
-                                   CaseRoleAssignmentApiSteps,
-                                   HearingCenterAdminSteps,
-                                 }) {
+ClaimantSolicitorApiSteps,
+CaseRoleAssignmentApiSteps,
+HearingCenterAdminSteps,
+}) {
   await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
   await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
   await ClaimantSolicitorApiSteps.NotifyClaim();
@@ -15,12 +15,12 @@ async function run1v1BaseJourney({
 
 test.describe('1v1 update case flags api journey', { tag: '@civil-service-nightly' }, () => {
 
-  test('1v1 update case level flag', async ({
-                                              ClaimantSolicitorApiSteps,
-                                              CaseRoleAssignmentApiSteps,
-                                              HearingCenterAdminApiSteps,
-                                              HearingCenterAdminSteps,
-                                            }) => {
+  test('1v1 update case level flag api journey', async ({
+  ClaimantSolicitorApiSteps,
+  CaseRoleAssignmentApiSteps,
+  HearingCenterAdminApiSteps,
+  HearingCenterAdminSteps,
+  }) => {
     await run1v1BaseJourney({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,

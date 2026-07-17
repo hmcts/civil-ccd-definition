@@ -30,7 +30,7 @@ HearingCenterAdminSteps,
   await HearingCenterAdminApiSteps.CreateCaseFlags();
 });
 
-test('1v1 applicant1 special measure case flag', async ({
+test('1v1 applicant1 special measure case flag api journey', async ({
 ClaimantSolicitorApiSteps,
 CaseRoleAssignmentApiSteps,
 HearingCenterAdminApiSteps,

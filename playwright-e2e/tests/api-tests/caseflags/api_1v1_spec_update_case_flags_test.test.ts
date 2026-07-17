@@ -12,13 +12,12 @@ async function run1v1SpecBaseJourney({
 
 test.describe('1v1 spec update case flags api journey', { tag: '@civil-service-nightly' }, () => {
 
-  test('1v1 spec update party case flag', async ({
-                                            CaseRoleAssignmentApiSteps,
-                                            HearingCenterAdminApiSteps,
-                                            HearingCenterAdminSteps,
-                                            ClaimantSolicitorSpecApiSteps
-                                          }) => {
-
+  test('1v1 spec update party case flag api journey', async ({
+  CaseRoleAssignmentApiSteps,
+  HearingCenterAdminApiSteps,
+  HearingCenterAdminSteps,
+  ClaimantSolicitorSpecApiSteps
+  }) => {
     await run1v1SpecBaseJourney({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
@@ -28,13 +27,12 @@ test.describe('1v1 spec update case flags api journey', { tag: '@civil-service-n
     await HearingCenterAdminApiSteps.UpdateApplicant1SpecialMeasureFlag();
   });
 
-  test('1v1 spec deactivate party case flag', async ({
-                                                  CaseRoleAssignmentApiSteps,
-                                                  HearingCenterAdminApiSteps,
-                                                  HearingCenterAdminSteps,
-                                                  ClaimantSolicitorSpecApiSteps
-                                                }) => {
-
+  test('1v1 spec deactivate party case flag api journey', async ({
+  CaseRoleAssignmentApiSteps,
+  HearingCenterAdminApiSteps,
+  HearingCenterAdminSteps,
+  ClaimantSolicitorSpecApiSteps
+  }) => {
     await run1v1SpecBaseJourney({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,

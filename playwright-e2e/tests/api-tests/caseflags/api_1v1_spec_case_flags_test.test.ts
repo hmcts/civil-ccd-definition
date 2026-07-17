@@ -10,9 +10,9 @@ HearingCenterAdminSteps,
   await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
   await HearingCenterAdminSteps.LoginRegion1();}
 
-test.describe('1v1 case flags api journey', { tag: '@civil-service-nightly' }, () => {
+test.describe('1v1 spec case flags api journey', { tag: '@civil-service-nightly' }, () => {
 
-test('1v1 spec party case flag', async ({
+test('1v1 spec party case flag api journey', async ({
 CaseRoleAssignmentApiSteps,
 HearingCenterAdminApiSteps,
 HearingCenterAdminSteps,
@@ -27,7 +27,7 @@ ClaimantSolicitorSpecApiSteps
     await HearingCenterAdminApiSteps.CreateApplicant1SpecialMeasureCaseFlag();
   });
 
-test('1v1 spec case flag', async ({
+test('1v1 spec case flag api journey', async ({
 CaseRoleAssignmentApiSteps,
 HearingCenterAdminApiSteps,
 HearingCenterAdminSteps,
