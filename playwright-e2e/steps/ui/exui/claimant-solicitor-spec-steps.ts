@@ -453,6 +453,36 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
+  async SettleClaimMarkPaidInFull() {
+    const { settleClaimMarkPaidFullActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await settleClaimMarkPaidFullActions.singleClaimant();
+        await settleClaimMarkPaidFullActions.submitSettleClaim();
+      },
+      async () => {
+        await settleClaimMarkPaidFullActions.confirmSettleClaimMarkPaidFull();
+      },
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async SettleClaimMarkPaidInFull2v1() {
+    const { settleClaimMarkPaidFullActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await settleClaimMarkPaidFullActions.multipleClaimants();
+        await settleClaimMarkPaidFullActions.submitSettleClaim();
+      },
+      async () => {
+        await settleClaimMarkPaidFullActions.confirmSettleClaimMarkPaidFull();
+      },
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async EvidenceUploadSmall() {
     const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(

@@ -239,6 +239,18 @@ const ccdEvents: CCDEvents = {
     description: 'Request for reconsideration check',
     order: 22.5,
   },
+  SETTLE_CLAIM: {
+    id: 'SETTLE_CLAIM',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 12,
+  },
+  SETTLE_CLAIM_MARK_PAID_FULL: {
+    id: 'SETTLE_CLAIM_MARK_PAID_FULL',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 13,
+  },
   DECISION_ON_RECONSIDERATION_REQUEST: {
     id: 'DECISION_ON_RECONSIDERATION_REQUEST',
     name: 'Decision on reconsideration',
@@ -310,6 +322,12 @@ const ccdEvents: CCDEvents = {
     name: 'Transfer online case',
     description: 'Transfer online case',
     order: 30,
+  },
+  UPLOAD_MEDIATION_DOCUMENTS: {
+    id: 'UPLOAD_MEDIATION_DOCUMENTS',
+    name: 'Upload mediation documents',
+    description: 'Upload mediation documents',
+    order: 24
   },
 };
 

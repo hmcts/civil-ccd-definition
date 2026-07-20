@@ -73,7 +73,7 @@ export default abstract class BaseApi extends BaseTestData {
     let eventData = startEventCaseData ?? {};
     for (const pageId of Object.keys(pageDataMap)) {
       eventData = ObjectHelper.deepSpread(eventData, pageDataMap[pageId]);
-      if(pageId !== 'Undefine') {
+      if (pageId !== 'Undefine') {
         const pageData = await ccdRequests.validatePageData(
           ccdEvent,
           user,

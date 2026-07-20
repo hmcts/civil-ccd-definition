@@ -9,14 +9,14 @@ const selectedHearingLocation = CaseDataHelper.setCodeToData(
 );
 
 const hearingNoticeSelect = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM)
+  if (claimTrack === ClaimTrack.FAST_CLAIM)
     return {
       HearingNoticeSelect: {
         hearingNoticeList: 'FAST_TRACK_TRIAL',
       },
     };
-
-  else if(claimTrack === ClaimTrack.SMALL_CLAIM)
+  
+  else if (claimTrack === ClaimTrack.SMALL_CLAIM)
     return {
       HearingNoticeSelect: {
         hearingNoticeList: 'SMALL_CLAIMS',

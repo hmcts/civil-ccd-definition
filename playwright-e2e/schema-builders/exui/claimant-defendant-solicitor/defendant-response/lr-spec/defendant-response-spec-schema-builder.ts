@@ -11,10 +11,11 @@ import partys from '../../../../../constants/users/partys';
 import { Party } from '../../../../../models/users/partys';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-admitted-part-route-spec';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
-  async buildFast1v1FullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildFastFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -22,7 +23,39 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildDS1FastCounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildIntermediateFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildMultiFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildMultiFullDefence1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildMultiFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1CounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -30,10 +63,10 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildDS1SmallCounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildDS1MultiCounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
       responseType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
@@ -46,9 +79,34 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildDS1IntermediatePartAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1MultiPartAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
   async buildDS1FullAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
+      responseType: DefendantResponseSpecType.FULL_ADMISSION,
+      paymentTypeSpec: PaymentTypeSpec.IMMEDIATELY,
+    });
+  }
+
+  async buildDS1MultiFullAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
       responseType: DefendantResponseSpecType.FULL_ADMISSION,
       paymentTypeSpec: PaymentTypeSpec.IMMEDIATELY,
     });
@@ -75,6 +133,15 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.SMALL_CLAIM,
       responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallPartAdmitHasPaid(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+      defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec.HAS_PAID,
     });
   }
 
@@ -105,18 +172,10 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildDS1FastCounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildDS1CounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildDS1SmallCounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
       responseType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
@@ -139,6 +198,24 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildDS2IntermediateFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
+  async buildDS2MultiFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
   async buildDS2SmallFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
@@ -156,6 +233,14 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildSmall2v1FullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
   async buildFast1v2SSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -164,7 +249,15 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildDS1FastCounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildIntermediate1v2SSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1CounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -172,7 +265,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
-  async buildSmall1v1FullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildSmallFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.SMALL_CLAIM,
@@ -185,14 +278,6 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
       responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildDS1SmallCounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
     });
   }
 
@@ -221,6 +306,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       responseType = DefendantResponseSpecType.FULL_DEFENCE,
       defenceRouteSpec = DefenceRouteSpec.DISPUTE,
       paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY,
+      defenceAdmittedPartRoute = DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
       defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
     }: {
       caseDataBeforeSubmission?: CCDCaseData;
@@ -229,6 +315,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       responseType?: DefendantResponseSpecType;
       defenceRouteSpec?: DefenceRouteSpec;
       paymentTypeSpec?: PaymentTypeSpec;
+      defenceAdmittedPartRoute?: DefenceAdmittedPartRouteSpec;
       defendantSolicitorParty?: Party;
     },
   ): Promise<z.ZodType> {
@@ -242,7 +329,10 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       responseSchemaFields,
       defendantResponseSpecSchemaComponents.responseClaimTrack(responseType),
       defendantResponseSpecSchemaComponents.singleResponse(claimType),
-      defendantResponseSpecSchemaComponents.responseConfirmNameAddress(claimType, defendantSolicitorParty),
+      defendantResponseSpecSchemaComponents.responseConfirmNameAddress(
+        claimType,
+        defendantSolicitorParty,
+      ),
       defendantResponseSpecSchemaComponents.responseConfirmDetails(defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.respondentResponseType(
         responseType,
@@ -256,27 +346,118 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       ),
       defendantResponseSpecSchemaComponents.defenceAdmittedPartRoute(
         responseType,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.upload(responseType, defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.timeline(responseType, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.whenWillClaimBePaid(responseType, paymentTypeSpec, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.defendant1FinancialDetails(responseType, paymentTypeSpec, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.defendant2FinancialDetails(responseType, paymentTypeSpec, claimType, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.defendant1RepaymentPlan(responseType, paymentTypeSpec, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.defendant2RepaymentPlan(responseType, paymentTypeSpec, claimType, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.mediationContactInformation(responseType, claimTrack, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.mediationAvailability(responseType, claimTrack, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.deterWithoutHearing(responseType, claimTrack, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.fastTrackDq(responseType, claimTrack, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.experts(responseType, claimTrack, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.witnesses(responseType, claimTrack, defendantSolicitorParty),
+      defendantResponseSpecSchemaComponents.whenWillClaimBePaid(
+        responseType,
+        paymentTypeSpec,
+        defenceAdmittedPartRoute,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.defendant1FinancialDetails(
+        responseType,
+        paymentTypeSpec,
+        defenceAdmittedPartRoute,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.defendant2FinancialDetails(
+        responseType,
+        paymentTypeSpec,
+        claimType,
+        defenceAdmittedPartRoute,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.defendant1RepaymentPlan(
+        responseType,
+        paymentTypeSpec,
+        defenceAdmittedPartRoute,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.defendant2RepaymentPlan(
+        responseType,
+        paymentTypeSpec,
+        claimType,
+        defenceAdmittedPartRoute,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.mediationContactInformation(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.mediationAvailability(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.deterWithoutHearing(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.fileDirectionsQuestionnaire(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.fixedRecoverableCosts(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.fixedRecoverableCostsIntermediate(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.disclosureOfElectronicDocumentsLRspec(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.disclosureOfNonElectronicDocumentsLRspec(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.disclosureReport(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.experts(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.witnesses(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
       defendantResponseSpecSchemaComponents.language(responseType, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.hearing(responseType, claimTrack, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.requestedCourtLocation(responseType, defendantSolicitorParty),
+      defendantResponseSpecSchemaComponents.hearing(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.requestedCourtLocation(
+        responseType,
+        defendantSolicitorParty,
+      ),
       defendantResponseSpecSchemaComponents.hearingSupport(responseType, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.vulnerabilityQuestions(responseType, defendantSolicitorParty),
-      defendantResponseSpecSchemaComponents.applications(responseType, claimTrack, defendantSolicitorParty),
+      defendantResponseSpecSchemaComponents.vulnerabilityQuestions(
+        responseType,
+        defendantSolicitorParty,
+      ),
+      defendantResponseSpecSchemaComponents.applications(
+        responseType,
+        claimTrack,
+        defendantSolicitorParty,
+      ),
     );
 
     return baseSchema.extend(responseSchemaFields);

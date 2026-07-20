@@ -12,6 +12,7 @@ export default interface CCDCaseData {
   applicantSolicitor1UserDetails?: ApplicantSolicitor1UserDetails;
   applicantSolicitor1PbaAccounts?: ApplicantSolicitor1PbaAccounts;
   detailsOfClaim?: string;
+  fixedCosts?: FixedCosts;
   caseFlags?: CaseFlags;
   claimFee?: ClaimFee;
   notificationSummary?: string;
@@ -263,6 +264,11 @@ export interface ClaimFee {
   code?: string;
   version?: number;
   calculatedAmountInPence?: number;
+}
+
+export interface FixedCosts {
+  claimFixedCosts?: string;
+  fixedCostAmount?: number;
 }
 
 export interface CaseManagementLocation {

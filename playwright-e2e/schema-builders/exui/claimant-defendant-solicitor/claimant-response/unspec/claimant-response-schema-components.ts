@@ -35,21 +35,76 @@ const applicantDefenceResponseDocument = (claimType: ClaimType) => {
   return {};
 };
 
-const fastTrackDq = (claimTrack: ClaimTrack) => {
-  if (claimTrack === ClaimTrack.FAST_CLAIM) {
+const fileDirectionsQuestionnaire = (claimTrack: ClaimTrack) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+    claimTrack === ClaimTrack.MULTI_CLAIM
+  ) {
     return {
       applicant1DQFileDirectionsQuestionnaire: z.strictObject({
         explainedToClient: z.array(nonEmptyString).min(1),
         oneMonthStayRequested: yesNoSchema,
         reactionProtocolCompliedWith: yesNoSchema,
-        reactionProtocolNotCompliedWithReason: nonEmptyString
+        reactionProtocolNotCompliedWithReason: nonEmptyString,
       }),
+    };
+  }
+
+  return {};
+};
+
+const fixedRecoverableCosts = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.FAST_CLAIM) {
+    return {
       applicant1DQFixedRecoverableCosts: z.strictObject({
         isSubjectToFixedRecoverableCostRegime: yesNoSchema,
         band: nonEmptyString,
         complexityBandingAgreed: yesNoSchema,
         reasons: nonEmptyString,
       }),
+    };
+  }
+
+  return {};
+};
+
+const fixedRecoverableCostsIntermediate = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      applicant1DQFixedRecoverableCostsIntermediate: z.strictObject({
+        isSubjectToFixedRecoverableCostRegime: yesNoSchema,
+        band: nonEmptyString,
+        complexityBandingAgreed: yesNoSchema,
+        reasons: nonEmptyString,
+        frcSupportingDocument: z.looseObject({}),
+      }),
+    };
+  }
+
+  return {};
+};
+
+const disclosureOfElectronicDocuments = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM || claimTrack === ClaimTrack.MULTI_CLAIM) {
+    return {
+      applicant1DQDisclosureOfElectronicDocuments: z.strictObject({
+        reachedAgreement: yesNoSchema,
+        agreementLikely: yesNoSchema,
+      }),
+    };
+  }
+
+  return {};
+};
+
+const disclosureOfNonElectronicDocuments = (claimTrack: ClaimTrack) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+    claimTrack === ClaimTrack.MULTI_CLAIM
+  ) {
+    return {
       applicant1DQDisclosureOfNonElectronicDocuments: z.strictObject({
         directionsForDisclosureProposed: yesNoSchema,
         standardDirectionsRequired: yesNoSchema,
@@ -61,13 +116,29 @@ const fastTrackDq = (claimTrack: ClaimTrack) => {
   return {};
 };
 
+const disclosureReport = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      applicant1DQDisclosureReport: z.strictObject({
+        disclosureFormFiledAndServed: yesNoSchema,
+        disclosureProposalAgreed: yesNoSchema,
+        draftOrderNumber: nonEmptyString,
+      }),
+    };
+  }
+
+  return {};
+};
+
 const deterWithoutHearing = (claimTrack: ClaimTrack) => {
   if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     return {
-      deterWithoutHearing: z.strictObject({
-        deterWithoutHearingWhyNot: nonEmptyString,
-        deterWithoutHearingYesNo: yesNoSchema,
-      }).optional(),
+      deterWithoutHearing: z
+        .strictObject({
+          deterWithoutHearingWhyNot: nonEmptyString,
+          deterWithoutHearingYesNo: yesNoSchema,
+        })
+        .optional(),
     };
   }
 
@@ -79,44 +150,48 @@ const experts = {
     expertRequired: yesNoSchema,
     expertReportsSent: nonEmptyString,
     jointExpertSuitable: yesNoSchema,
-    details: z.array(
-      z.strictObject({
-        id: nonEmptyString,
-        value: z.looseObject({
-          partyID: nonEmptyString,
-          firstName: nonEmptyString,
-          lastName: nonEmptyString,
-          phoneNumber: nonEmptyString,
-          emailAddress: nonEmptyString,
-          fieldOfExpertise: nonEmptyString,
-          whyRequired: nonEmptyString,
-          estimatedCost: nonEmptyString,
-          eventAdded: nonEmptyString,
-          dateAdded: nonEmptyString,
+    details: z
+      .array(
+        z.strictObject({
+          id: nonEmptyString,
+          value: z.looseObject({
+            partyID: nonEmptyString,
+            firstName: nonEmptyString,
+            lastName: nonEmptyString,
+            phoneNumber: nonEmptyString,
+            emailAddress: nonEmptyString,
+            fieldOfExpertise: nonEmptyString,
+            whyRequired: nonEmptyString,
+            estimatedCost: nonEmptyString,
+            eventAdded: nonEmptyString,
+            dateAdded: nonEmptyString,
+          }),
         }),
-      }),
-    ).min(1),
+      )
+      .min(1),
   }),
 };
 
 const witnesses = {
   applicant1DQWitnesses: z.strictObject({
     witnessesToAppear: yesNoSchema,
-    details: z.array(
-      z.strictObject({
-        id: nonEmptyString,
-        value: z.looseObject({
-          partyID: nonEmptyString,
-          firstName: nonEmptyString,
-          lastName: nonEmptyString,
-          phoneNumber: nonEmptyString,
-          emailAddress: nonEmptyString,
-          reasonForWitness: nonEmptyString,
-          eventAdded: nonEmptyString,
-          dateAdded: nonEmptyString,
+    details: z
+      .array(
+        z.strictObject({
+          id: nonEmptyString,
+          value: z.looseObject({
+            partyID: nonEmptyString,
+            firstName: nonEmptyString,
+            lastName: nonEmptyString,
+            phoneNumber: nonEmptyString,
+            emailAddress: nonEmptyString,
+            reasonForWitness: nonEmptyString,
+            eventAdded: nonEmptyString,
+            dateAdded: nonEmptyString,
+          }),
         }),
-      }),
-    ).min(1),
+      )
+      .min(1),
   }),
 };
 
@@ -165,7 +240,12 @@ const undefine = {
 const claimantResponseSchemaComponents = {
   respondentResponse,
   applicantDefenceResponseDocument,
-  fastTrackDq,
+  fileDirectionsQuestionnaire,
+  fixedRecoverableCosts,
+  fixedRecoverableCostsIntermediate,
+  disclosureOfElectronicDocuments,
+  disclosureOfNonElectronicDocuments,
+  disclosureReport,
   deterWithoutHearing,
   experts,
   witnesses,
