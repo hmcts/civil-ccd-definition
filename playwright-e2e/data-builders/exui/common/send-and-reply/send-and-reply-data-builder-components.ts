@@ -5,11 +5,11 @@ import { MessagesToReplyTo } from '../../../../models/ccd-case-data';
 const sendAndReplyOption = (sendAndReplyOption: SendAndReplyOption) => {
   return {
     sendAndReplyOption: (messagesToReply: MessagesToReplyTo) => {
-      if(sendAndReplyOption === SendAndReplyOption.SEND) {
+      if (sendAndReplyOption === SendAndReplyOption.SEND) {
         return {
             sendAndReplyOption: sendAndReplyOption
           }
-      } else if(sendAndReplyOption === SendAndReplyOption.REPLY) {
+      } else if (sendAndReplyOption === SendAndReplyOption.REPLY) {
         return {
           sendAndReplyOption: sendAndReplyOption,
             messagesToReplyTo: {
@@ -25,7 +25,7 @@ const sendAndReplyOption = (sendAndReplyOption: SendAndReplyOption) => {
 };
 
 const sendMessageMetadata = (sendAndReplyOption: SendAndReplyOption, recipientRoleType: RecipientRoleType) => {
-  if(sendAndReplyOption === SendAndReplyOption.SEND) {
+  if (sendAndReplyOption === SendAndReplyOption.SEND) {
     return {
       sendMessageMetaData: {
         sendMessageMetadata: {
@@ -42,7 +42,7 @@ const sendMessageMetadata = (sendAndReplyOption: SendAndReplyOption, recipientRo
 }
 
 const replyToMessage = (sendAndReplyOption: SendAndReplyOption) => {
-  if(sendAndReplyOption === SendAndReplyOption.REPLY) {
+  if (sendAndReplyOption === SendAndReplyOption.REPLY) {
     return {
       replyToMessage: {
         messageReplyMetadata: {

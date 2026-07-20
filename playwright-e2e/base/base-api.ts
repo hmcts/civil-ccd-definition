@@ -70,7 +70,7 @@ export default abstract class BaseApi extends BaseTestData {
     const { ccdRequests } = this.requestsFactory;
     let eventData = startEventCaseData ?? {};
     for (const pageId of Object.keys(pageDataMap)) {
-      if(pageId === 'sendAndReplyOption') {
+      if (pageId === 'sendAndReplyOption') {
         pageDataMap[pageId] = pageDataMap[pageId](eventData.messagesToReplyTo)
       }
       eventData = ObjectHelper.deepSpread(eventData, pageDataMap[pageId]);

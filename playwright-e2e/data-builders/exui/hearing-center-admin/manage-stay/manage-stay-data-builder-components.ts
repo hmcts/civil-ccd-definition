@@ -9,7 +9,7 @@ const manageStayOptions = (manageStayOption: ManageStayOption) => {
 }
 
 const manageStayCaseProgressedHearingReadyPrepareForHearing = (manageStayOption: ManageStayOption) => {
-  if(manageStayOption === ManageStayOption.LIFT_STAY) {
+  if (manageStayOption === ManageStayOption.LIFT_STAY) {
     return {
       manageStayCaseProgressedHearingReadyPrepareForHearing: {}
     }
@@ -19,7 +19,7 @@ const manageStayCaseProgressedHearingReadyPrepareForHearing = (manageStayOption:
 }
 
 const manageStayRequestUpdate = (manageStayOption: ManageStayOption) => {
-  if(manageStayOption === ManageStayOption.REQUEST_UPDATE) {
+  if (manageStayOption === ManageStayOption.REQUEST_UPDATE) {
     return {
       manageStayRequestUpdate: {}
     }
