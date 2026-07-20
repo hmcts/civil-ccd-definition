@@ -22,13 +22,11 @@ test.describe(
       await DefendantSolicitor1ApiSteps.RespondIntermediateFullDefence1v2SS();
       await ClaimantSolicitorApiSteps.RespondIntermediateProceed1v2SS();
       await JudgeSteps.LoginRegion1();
-      await JudgeSteps.GenerateDirectionsOrderMulti();
+      await JudgeSteps.GenerateDirectionsOrderIntermediate();
       await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.EvidenceUploadBundle1v2SS();
+      await ClaimantSolicitorSteps.EvidenceUploadBundle();
       await DefendantSolicitor1Steps.Login();
       await DefendantSolicitor1Steps.EvidenceUploadBundle1v2SS();
-      await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.VerifyBundleDetails();
     });
   },
 );

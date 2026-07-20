@@ -6,13 +6,12 @@ test.describe(
     tag: ['@civil-ccd-nightly'],
   },
   () => {
-    test('1v2DS spec intermediate track', async ({
+    test('1v2DS spec intermediate track @debug', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
       DefendantSolicitor2SpecApiSteps,
-      JudgeApiSteps,
-      HearingCenterAdminApiSteps,
+      JudgeSteps,
       DefendantSolicitor2SpecSteps,
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v2DS();
@@ -22,11 +21,8 @@ test.describe(
       await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence();
       await DefendantSolicitor2SpecApiSteps.RespondIntermediateFullDefence();
       await ClaimantSolicitorSpecApiSteps.RespondIntermediateProceed1v2DS();
-      await JudgeApiSteps.GenerateDirectionsOrderIntermediate();
-      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
-      await HearingCenterAdminApiSteps.AmendHearingDueDate();
-      await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
-      await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
+      await JudgeSteps.LoginRegion1();
+      await JudgeSteps.GenerateDirectionsOrderIntermediate();
       await DefendantSolicitor2SpecSteps.Login();
       await DefendantSolicitor2SpecSteps.EvidenceUploadBundle();
     });

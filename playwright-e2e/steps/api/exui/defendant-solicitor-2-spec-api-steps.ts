@@ -139,14 +139,13 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async EvidenceUploadFast1v2DS() {
+  async EvidenceUploadFast() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { evidenceUploadRespondentDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const evidenceUploadRespondentData =
-      await evidenceUploadRespondentDataBuilder.buildDS2Fast1v2DS();
+    const evidenceUploadRespondentData = await evidenceUploadRespondentDataBuilder.buildDS2Fast();
     await super.submitCCDEvent(
       defendantSolicitor2User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
@@ -157,30 +156,16 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
     const { evidenceUploadRespondentSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const evidenceUploadRespondentSchema =
-      await evidenceUploadRespondentSchemaBuilder.buildDS2Fast1v2DS(caseDataBeforeSubmission);
+      await evidenceUploadRespondentSchemaBuilder.buildDS2Fast(caseDataBeforeSubmission);
     ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
   }
 
+  async EvidenceUploadFast1v2DS() {
+    await this.EvidenceUploadFast();
+  }
+
   async EvidenceUploadFast1v2SS() {
-    await this.setupApiStep(defendantSolicitor2User);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-
-    const { evidenceUploadRespondentDataBuilder } =
-      this.claimantDefendantSolicitorDataBuilderFactory;
-    const evidenceUploadRespondentData =
-      await evidenceUploadRespondentDataBuilder.buildDS2Fast1v2SS();
-    await super.submitCCDEvent(
-      defendantSolicitor2User,
-      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
-      evidenceUploadRespondentData,
-      CaseState.CASE_PROGRESSION,
-    );
-
-    const { evidenceUploadRespondentSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const evidenceUploadRespondentSchema =
-      await evidenceUploadRespondentSchemaBuilder.buildDS2Fast1v2SS(caseDataBeforeSubmission);
-    ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
+    await this.EvidenceUploadFast();
   }
 
   async UploadMediationDocuments() {

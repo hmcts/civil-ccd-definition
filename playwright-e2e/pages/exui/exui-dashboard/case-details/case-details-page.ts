@@ -224,12 +224,6 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     });
   }
 
-  async verifyBundleDetails() {
-    await super.clickByText(tabs.bundles.title);
-    await super.expectText(subheadings.bundlesTab.bundleName, { count: 2 });
-    await super.expectButton('.pdf', { exact: false, count: 2 });
-  }
-
   async submit() {
     throw new Error('Method not implemented.');
   }

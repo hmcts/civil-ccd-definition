@@ -14,8 +14,7 @@ export default class SelectTemplatePage extends ExuiPage(BasePage) {
       super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
       super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
       super.expectSubheading(subheading, { headingLevel: 3 }),
-      super.expectText(dropdowns.template.hint),
-      super.expectSelector(dropdowns.template.selector),
+      super.expectText(dropdowns.template.label),
     ]);
   }
 

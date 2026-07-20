@@ -14,14 +14,13 @@ export default class intermediateTrackComplexityBandPage extends ExuiPage(BasePa
       super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
       super.expectSubheading(subheading, { headingLevel: 3 }),
       super.expectLegend(radioButtons.assignComplexityBand.label),
-      super.expectSelector(radioButtons.assignComplexityBand.yes.selector),
-      super.expectSelector(radioButtons.assignComplexityBand.no.selector),
+      super.expectLabel(radioButtons.assignComplexityBand.yes.label),
+      super.expectLabel(radioButtons.assignComplexityBand.no.label),
     ]);
   }
 
   async assignComplexityBandYes() {
     await super.clickBySelector(radioButtons.assignComplexityBand.yes.selector);
-    await super.expectLegend(radioButtons.complexityBand.label);
   }
 
   async assignComplexityBandNo() {

@@ -50,7 +50,7 @@ export default class DateOfBirthFragment extends ExuiPage(BasePage) {
       ? CaseDataHelper.getPartyDateOfBirthUpdated(claimantDefendantParty)
       : CaseDataHelper.getPartyDateOfBirth(claimantDefendantParty);
 
-    const dateOfBirth = new Date(dobString);
+    const dateOfBirth = new Date(dobString!);
 
     await super.inputText(
       DateHelper.getTwoDigitDay(dateOfBirth),

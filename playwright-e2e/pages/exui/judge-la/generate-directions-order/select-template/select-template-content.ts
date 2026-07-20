@@ -6,7 +6,7 @@ export const subheading = 'Which template do you wish to use?';
 
 export const dropdowns = {
   template: {
-    hint: 'Select an option from the dropdown',
+    label: 'Select an option from the dropdown',
     selector: '#finalOrderDownloadTemplateOptions',
   },
 };

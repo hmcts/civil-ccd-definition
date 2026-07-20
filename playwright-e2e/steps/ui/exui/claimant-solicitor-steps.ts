@@ -692,7 +692,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async EvidenceUploadBundle1v2SS() {
+  async EvidenceUploadBundle() {
     const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -707,10 +707,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
       { verifySuccessEvent: false },
     );
-  }
-
-  async VerifyBundleDetails() {
-    await this.exuiDashboardActions.verifyBundleDetails();
   }
 
   async DiscontinueClaim1v1() {

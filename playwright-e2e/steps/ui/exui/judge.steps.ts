@@ -13,6 +13,7 @@ import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDire
 import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
 import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
 import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
+import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/intermediateTrackDirectionsTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -299,7 +300,7 @@ export default class JudgeSteps extends BaseExui {
 
   async GenerateDirectionsOrderMulti() {
     const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryWAEvent(
       async () => {
         await generateDirectionsOrderActions.trackAllocationMulti();
         await generateDirectionsOrderActions.selectTemplateMulti();
@@ -311,6 +312,8 @@ export default class JudgeSteps extends BaseExui {
         await generateDirectionsOrderActions.confirmGenerateDirectionsOrder();
       },
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      judgeRegion1User,
+      intermediateTrackDirectionsTask,
       { verifySuccessEvent: false },
     );
   }

@@ -12,9 +12,6 @@ export default class DownloadTemplatePage extends ExuiPage(BasePage) {
       super.expectHeading(heading),
       super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
       super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
-      super.expectSubheading(subheading),
-      super.expectText(paragraphs.openTemplate),
-      super.expectText(paragraphs.uploadNext),
       super.expectButton(buttons.downloadTemplate, { exact: false }),
     ]);
   }

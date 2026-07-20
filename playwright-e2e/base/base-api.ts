@@ -11,8 +11,6 @@ import DateHelper from '../helpers/date-helper';
 import WATask from '../models/wa-task';
 import CaseState from '../constants/cases/case-state';
 import CCDCaseData from '../models/ccd-case-data';
-import FileType from '../constants/test-utils/file-type';
-import FileSystemHelper from '../helpers/file-system-helper';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;

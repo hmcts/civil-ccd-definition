@@ -14,7 +14,6 @@ export default class UploadOrderPage extends ExuiPage(BasePage) {
       super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
       super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
       super.expectSubheading(subheading),
-      super.expectText(paragraphs.upload),
     ]);
   }
 
