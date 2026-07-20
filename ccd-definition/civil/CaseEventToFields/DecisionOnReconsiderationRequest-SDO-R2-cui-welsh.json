@@ -154,6 +154,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "casePartyRequestForReconsideration",
+    "PageFieldDisplayOrder": 13,
+    "DisplayContext": "READONLY",
+    "PageID": "JudgeResponseToReconsideration",
+    "PageLabel": "Decision on reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "reasonForReconsiderationSeparator=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "decisionOnReconsiderationDocument",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
