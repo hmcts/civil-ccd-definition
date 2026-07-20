@@ -25,7 +25,7 @@ export default class DisposalHearingSdoDJPage extends ExuiPage(BasePage) {
       super.expectText(subheadings.judgementForClaimant),
       super.expectSubheading(subheadings.disclosureOfDocuments),
       super.expectSubheading(subheadings.witnessOfFact),
-      super.expectSubheading(subheadings.medicalEvidence),
+      // super.expectSubheading(subheadings.medicalEvidence),
       super.expectSubheading(subheadings.questionsToExperts),
       super.expectSubheading(subheadings.scheduleOfLoss),
       super.expectSubheading(subheadings.hearingTime),

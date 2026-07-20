@@ -4,6 +4,7 @@
     test('1v1 default judgement api', async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
+      JudgeApiSteps
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -13,5 +14,6 @@
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
       await ClaimantSolicitorApiSteps.DefaultJudgement();
+      await JudgeApiSteps.SdoDJTrail();
     });
   });

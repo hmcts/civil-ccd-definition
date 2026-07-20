@@ -11,8 +11,6 @@ import DateHelper from '../helpers/date-helper';
 import WATask from '../models/wa-task';
 import CaseState from '../constants/cases/case-state';
 import CCDCaseData from '../models/ccd-case-data';
-import FileType from '../constants/test-utils/file-type';
-import FileSystemHelper from '../helpers/file-system-helper';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -72,6 +70,9 @@ export default abstract class BaseApi extends BaseTestData {
     const { ccdRequests } = this.requestsFactory;
     let eventData = startEventCaseData ?? {};
     for (const pageId of Object.keys(pageDataMap)) {
+      if(pageId === 'sendAndReplyOption') {
+        pageDataMap[pageId] = pageDataMap[pageId](eventData.messagesToReplyTo)
+      }
       eventData = ObjectHelper.deepSpread(eventData, pageDataMap[pageId]);
       if (pageId !== 'Undefine') {
         const pageData = await ccdRequests.validatePageData(
@@ -120,6 +121,18 @@ export default abstract class BaseApi extends BaseTestData {
     );
     await this.waitForFinishedBusinessProcess(eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
+  }
+
+  protected async submitWAEvent(
+    user: User,
+    validTask: WATask,
+    ccdEvent: CCDEvent,
+    pageDataMap: Record<string, any>,
+    expectedState?: CaseState,
+  ) {
+    const taskId = await this.retrieveAndAssignWATask(user, validTask);
+    await this.submitCCDEvent(user, ccdEvent, pageDataMap, expectedState);
+    await this.completeWATask(user, taskId);
   }
 
   protected async waitForFinishedBusinessProcess(caseId?: number) {
