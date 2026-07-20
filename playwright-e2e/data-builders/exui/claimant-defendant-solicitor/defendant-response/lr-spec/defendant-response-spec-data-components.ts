@@ -154,7 +154,7 @@ const defenceAdmittedPartRoute = (
   defendantSolicitorParty: Party,
 ) => {
   if (defendantResponseType === DefendantResponseSpecType.PART_ADMISSION) {
-    if(defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_PAID)
+    if (defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_PAID)
       return {
         defenceAdmittedPartRoute: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 

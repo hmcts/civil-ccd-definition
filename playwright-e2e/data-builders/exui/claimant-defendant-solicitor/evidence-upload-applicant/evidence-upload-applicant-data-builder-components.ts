@@ -14,7 +14,7 @@ const createDateTime = () =>
   });
 
 const selectUploadOptions = (claimType: ClaimType) => {
-  if(claimType === ClaimType.TWO_VS_ONE) {
+  if (claimType === ClaimType.TWO_VS_ONE) {
     return {
       SelectUploadOptions: {
         evidenceUploadOptions: {
@@ -29,7 +29,7 @@ const selectUploadOptions = (claimType: ClaimType) => {
 }
 
 const evidenceUpload = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM)
+  if (claimTrack === ClaimTrack.FAST_CLAIM)
     return {
       EvidenceUpload: {
         caseProgAllocatedTrack: 'FAST_CLAIM',
@@ -45,7 +45,7 @@ const evidenceUpload = (claimTrack: ClaimTrack) => {
 };
 
 const documentSelection = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM)
+  if (claimTrack === ClaimTrack.FAST_CLAIM)
     return {
       DocumentSelectionFastTrack: {
         disclosureSelectionEvidence: ['DISCLOSURE_LIST'],
@@ -54,7 +54,7 @@ const documentSelection = (claimTrack: ClaimTrack) => {
         trialSelectionEvidence: ['DOCUMENTARY'],
       },
     };
-  else if(claimTrack === ClaimTrack.SMALL_CLAIM)
+  else if (claimTrack === ClaimTrack.SMALL_CLAIM)
     return {
       DocumentSelectionSmallClaim: {
         witnessSelectionEvidenceSmallClaim: ['WITNESS_SUMMARY'],
@@ -73,7 +73,7 @@ const documentUploadFastTrack = (
   jointStatementDocument: UploadDocumentValue,
   trialDocument: UploadDocumentValue
 ) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM) {
+  if (claimTrack === ClaimTrack.FAST_CLAIM) {
     const witnessData = CaseDataHelper.buildWitnessData(partys.CLAIMANT_WITNESS_1);
     const expertData = CaseDataHelper.buildExpertData(partys.CLAIMANT_EXPERT_1);
   
@@ -124,7 +124,7 @@ const documentUploadSmallClaim = (
   expertReport: UploadDocumentValue,
   authoritiesDocument: UploadDocumentValue,
 ) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+  if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     const witness1Data = CaseDataHelper.buildWitnessData(partys.CLAIMANT_WITNESS_1);
     const witness2Data = CaseDataHelper.buildWitnessData(partys.CLAIMANT_WITNESS_2);
     const expertData = CaseDataHelper.buildExpertData(partys.CLAIMANT_EXPERT_1);

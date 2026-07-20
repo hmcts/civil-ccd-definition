@@ -4,7 +4,10 @@ import ClaimTrack from '../../../../constants/cases/claim-track';
 const nonEmptyString = z.string().min(1);
 
 const finalOrderDocumentCollection = (claimTrack: ClaimTrack) => {
-  if (claimTrack === ClaimTrack.FAST_CLAIM || claimTrack === ClaimTrack.SMALL_CLAIM) {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.SMALL_CLAIM
+  ) {
     return {
       finalOrderDocumentCollection: z
         .array(

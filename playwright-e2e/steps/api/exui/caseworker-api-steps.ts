@@ -100,4 +100,22 @@ export default class CaseworkerApiSteps extends BaseApi {
       );
     ZodHelper.safeParse(manageContactInformationSchema, this.ccdCaseData);
   }
+
+  async TransferOnlineCase() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { transferOnlineCaseDataBuilder } = this.caseworkerDataBuilderFactory;
+    const transferOnlineCaseData = await transferOnlineCaseDataBuilder.buildData();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.TRANSFER_ONLINE_CASE,
+      transferOnlineCaseData,
+    );
+
+    const { transferOnlineCaseSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const transferOnlineCaseSchema =
+      await transferOnlineCaseSchemaBuilder.buildData(caseDataBeforeSubmission);
+    ZodHelper.safeParse(transferOnlineCaseSchema, this.ccdCaseData);
+  }
 }

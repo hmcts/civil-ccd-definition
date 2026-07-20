@@ -61,7 +61,7 @@ const defendantResponse = (
 };
 
 const intentionToSettle = (claimantResponseSpecType: ClaimantResponseSpecType) => {
-  if(
+  if (
     claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID ||
     claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_PART_ADMIT_PAID_CONFIRM_HAS_PAID
   ) {
@@ -530,7 +530,7 @@ const hearingSupport = (
 };
 
 const vulnerabilityQuestions = (claimantResponseType: ClaimantResponseSpecType) => {
-  if(claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
       claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
       claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
       claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {

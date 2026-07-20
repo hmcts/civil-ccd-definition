@@ -34,7 +34,7 @@ export default class GenerateDirectionsOrderDataBuilder extends BaseDataBuilder 
     } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
     let templateDocument: UploadDocumentValue | undefined;
-    if(claimTrack === ClaimTrack.INTERMEDIATE_CLAIM || claimTrack === ClaimTrack.MULTI_CLAIM) {
+    if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM || claimTrack === ClaimTrack.MULTI_CLAIM) {
       templateDocument = await civilServiceRequests.uploadTestDocument(judgeRegion1User);
     }
 

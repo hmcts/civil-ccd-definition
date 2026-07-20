@@ -20,7 +20,7 @@ const evidenceUpload = {
 };
 
 const selectUploadOptions = (claimType: ClaimType) => {
-  if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+  if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
     return {
       SelectUploadOptions: {
         evidenceUploadOptions: {
@@ -35,7 +35,7 @@ const selectUploadOptions = (claimType: ClaimType) => {
 }
 
 const documentSelection = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM)
+  if (claimTrack === ClaimTrack.FAST_CLAIM)
     return {
       DocumentSelectionFastTrack: {
         disclosureSelectionEvidenceRes: ['DISCLOSURE_LIST'],
@@ -44,7 +44,7 @@ const documentSelection = (claimTrack: ClaimTrack) => {
         trialSelectionEvidenceRes: ['COSTS'],
       },
     };
-  else if(claimTrack === ClaimTrack.SMALL_CLAIM)
+  else if (claimTrack === ClaimTrack.SMALL_CLAIM)
     return {
       DocumentSelectionSmallClaim: {
         witnessSelectionEvidenceSmallClaim: ['WITNESS_SUMMARY'],
@@ -65,7 +65,7 @@ const documentUploadFastTrack = (
   questionsDocument: UploadDocumentValue,
   authoritiesDocument: UploadDocumentValue,
 ) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM) {
+  if (claimTrack === ClaimTrack.FAST_CLAIM) {
     const witnessPartyData = CaseDataHelper.buildWitnessData(witnessParty);
     const expertPartyData = CaseDataHelper.buildExpertData(expertParty);
 
@@ -116,7 +116,7 @@ const documentUploadSmallClaim = (
   expertReport: UploadDocumentValue,
   authoritiesDocument: UploadDocumentValue,
 ) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+  if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     const witness1Data = CaseDataHelper.buildWitnessData(witness1Party);
     const witness2Data = CaseDataHelper.buildWitnessData(witness2Party);
     const expertData = CaseDataHelper.buildExpertData(expertParty);
