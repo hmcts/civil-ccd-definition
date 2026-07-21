@@ -169,7 +169,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
     );
 
     const { defendantResponseSpecSchemaBuilder } =

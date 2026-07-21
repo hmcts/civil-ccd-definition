@@ -95,10 +95,7 @@ export default class DocumentUploadPage extends ExuiPage(BasePage) {
       inputs.bundle.bundleName.selector(documentNumber),
     );
 
-    await this.dateFragment.enterDate(hearingDate, inputs.bundle.date.selectorKey, {
-      containerSelector: containers.bundle.selector,
-      index: documentNumber,
-    });
+    await this.dateFragment.enterDate(hearingDate, inputs.bundle.date.selectorKey);
 
     await super.retryUploadFile(
       filePaths.testPdfFile,
