@@ -12,6 +12,7 @@ import partys from '../../../../../constants/users/partys';
 import { Party } from '../../../../../models/users/partys';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-admitted-part-route-spec';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
@@ -126,6 +127,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       claimTrack: ClaimTrack.SMALL_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
       paymentTypeSpec: PaymentTypeSpec.REPAYMENT_PLAN,
+    });
+  }
+
+  async buildDS1SmallPartAdmitHasPaid() {
+    return this.buildData({
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+      defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec.HAS_PAID,
     });
   }
 
@@ -246,6 +254,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     defendantResponseSpecType = DefendantResponseSpecType.FULL_DEFENCE,
     defenceRouteSpec = DefenceRouteSpec.DISPUTE,
     paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY,
+    defenceAdmittedPartRoute = DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
     defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
   }: {
     claimType?: ClaimType;
@@ -253,6 +262,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     defendantResponseSpecType?: DefendantResponseSpecType;
     defenceRouteSpec?: DefenceRouteSpec;
     paymentTypeSpec?: PaymentTypeSpec;
+    defenceAdmittedPartRoute?: DefenceAdmittedPartRouteSpec;
     defendantSolicitorParty?: Party;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
@@ -289,6 +299,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       defendantResponseSpecData.defenceAdmittedPartRoute(
         defendantResponseSpecType,
         claimTrack,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.upload(
@@ -300,28 +311,33 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       defendantResponseSpecData.whenWillClaimBePaid(
         defendantResponseSpecType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.defendant1FinancialDetails(
         defendantResponseSpecType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.defendant2FinancialDetails(
         defendantResponseSpecType,
         paymentTypeSpec,
         claimType,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.defendant1RepaymentPlan(
         defendantResponseSpecType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.defendant2RepaymentPlan(
         defendantResponseSpecType,
         paymentTypeSpec,
         claimType,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.mediationContactInformation(

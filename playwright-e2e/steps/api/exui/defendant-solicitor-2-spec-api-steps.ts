@@ -138,4 +138,46 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
+
+  async EvidenceUploadFast1v2SS() {
+    await this.setupApiStep(defendantSolicitor2User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { evidenceUploadRespondentDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const evidenceUploadRespondentData =
+      await evidenceUploadRespondentDataBuilder.buildDS2Fast1v2SS();
+    await super.submitCCDEvent(
+      defendantSolicitor2User,
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      evidenceUploadRespondentData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { evidenceUploadRespondentSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const evidenceUploadRespondentSchema =
+      await evidenceUploadRespondentSchemaBuilder.buildDS2Fast1v2SS(caseDataBeforeSubmission);
+    ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
+  }
+
+  async UploadMediationDocuments() {
+    await this.setupApiStep(defendantSolicitor2User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { uploadMediationDocumentsDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const uploadMediationDocumentsData = await uploadMediationDocumentsDataBuilder.buildDS2();
+    await super.submitCCDEvent(
+      defendantSolicitor2User,
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      uploadMediationDocumentsData,
+    );
+
+    const { uploadMediationDocumentsSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const uploadMediationDocumentsSchema =
+      await uploadMediationDocumentsSchemaBuilder.buildDS2(caseDataBeforeSubmission);
+    ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
+  }
 }

@@ -11,8 +11,8 @@ const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
 
 const defendantDetailsSpec = (claimType: ClaimType, djSpecType: DJSpecType, defendant1Party: ClaimantDefendantPartyType) => {
-  if(ClaimTypeHelper.isDefendant2(claimType)) {
-    if(djSpecType === DJSpecType.NON_DIVERGENT) {
+  if (ClaimTypeHelper.isDefendant2(claimType)) {
+    if (djSpecType === DJSpecType.NON_DIVERGENT) {
       return {
         defendantDetails: {
           defendantDetails: {
@@ -80,7 +80,7 @@ const paymentType = (djPaymentTypeSpec: DJPaymentTypeSpec) => ({
 });
 
 const paymentSetDate = (djPaymentTypeSpec: DJPaymentTypeSpec) => {
-  if(djPaymentTypeSpec === DJPaymentTypeSpec.SET_DATE) {
+  if (djPaymentTypeSpec === DJPaymentTypeSpec.SET_DATE) {
     return {
       paymentSetDate: {
         paymentSetDate: formatDate(DateHelper.addToToday({months: 1}))
@@ -92,7 +92,7 @@ const paymentSetDate = (djPaymentTypeSpec: DJPaymentTypeSpec) => {
 }
 
 const repaymentInformation = (djPaymentTypeSpec: DJPaymentTypeSpec) => {
-  if(djPaymentTypeSpec === DJPaymentTypeSpec.REPAYMENT_PLAN) {
+  if (djPaymentTypeSpec === DJPaymentTypeSpec.REPAYMENT_PLAN) {
     return {
       repaymentInformation: {
         repaymentDate: formatDate(DateHelper.addToToday({months: 1})),

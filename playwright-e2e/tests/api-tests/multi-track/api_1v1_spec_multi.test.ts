@@ -12,7 +12,7 @@ test.describe('1v1 spec api multi track journeys', { tag: '@civil-service-nightl
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondMultiFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondMultiProceed();
+    await ClaimantSolicitorSpecApiSteps.RespondMultiRejectFullDefence();
     await JudgeApiSteps.GenerateDirectionsOrderMulti();
     await ClaimantSolicitorSpecApiSteps.EvidenceUploadFast();
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
@@ -39,7 +39,7 @@ test.describe('1v1 spec api multi track journeys', { tag: '@civil-service-nightl
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondMultiPartAdmitImmediately();
-    await ClaimantSolicitorSpecApiSteps.RespondMultiPartAdmitProceed();
+    await ClaimantSolicitorSpecApiSteps.RespondMultiRejectPartAdmit();
   });
 
   test('1v1 spec counter claim multi claim', async ({

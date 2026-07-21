@@ -13,7 +13,7 @@ test.describe('2v1 spec settle claim judges order', { tag: ['@civil-ccd-nightly'
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence2v1();
-    await ClaimantSolicitorSpecApiSteps.RespondSmallFullDefenceProceed2v1();
+    await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence2v1();
     await CaseworkerApiSteps.MediationUnsuccessful();
     await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
     await HearingCenterAdminSpecSteps.LoginRegion2();

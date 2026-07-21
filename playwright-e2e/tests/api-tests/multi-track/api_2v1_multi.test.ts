@@ -16,7 +16,7 @@ test.describe('2v1 unspec multi track journey', { tag: '@civil-service-nightly' 
     await DefendantSolicitor1ApiSteps.RespondMultiFullDefence2v1();
     await ClaimantSolicitorApiSteps.RespondMultiProceed2v1();
     await JudgeApiSteps.GenerateDirectionsOrderMulti();
-    await ClaimantSolicitorApiSteps.EvidenceUploadFast();
+    await ClaimantSolicitorApiSteps.EvidenceUploadFast2v1();
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
   });
 });

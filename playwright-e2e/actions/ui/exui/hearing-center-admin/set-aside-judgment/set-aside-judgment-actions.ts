@@ -14,7 +14,6 @@ export default class SetAsideJudgmentSpecActions extends BaseTestData {
 
   async setAsideJudgment() {
     const { setAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
-
     await setAsideJudgmentPage.verifyContent(this.ccdCaseData);
     await setAsideJudgmentPage.selectJudgeOrder();
     await setAsideJudgmentPage.submit();
@@ -22,7 +21,6 @@ export default class SetAsideJudgmentSpecActions extends BaseTestData {
 
   async setAsideOrderFollowingApplication() {
     const { setAsideOrderTypePage } = this.setAsideJudgmentPageFactory;
-
     await setAsideOrderTypePage.verifyContent(this.ccdCaseData);
     await setAsideOrderTypePage.fillOrderFollowingApplication();
     await setAsideOrderTypePage.submit();
@@ -30,7 +28,6 @@ export default class SetAsideJudgmentSpecActions extends BaseTestData {
 
   async setAsideOrderFollowingDefenceReceived() {
     const { setAsideOrderTypePage } = this.setAsideJudgmentPageFactory;
-
     await setAsideOrderTypePage.verifyContent(this.ccdCaseData);
     await setAsideOrderTypePage.fillOrderFollowingDefenceReceived();
     await setAsideOrderTypePage.submit();
@@ -38,7 +35,6 @@ export default class SetAsideJudgmentSpecActions extends BaseTestData {
 
   async setAsideJudgmentMadeInError() {
     const { setAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
-
     await setAsideJudgmentPage.verifyContent(this.ccdCaseData);
     await setAsideJudgmentPage.selectJudgmentError();
     await setAsideJudgmentPage.submit();
@@ -46,14 +42,12 @@ export default class SetAsideJudgmentSpecActions extends BaseTestData {
 
   async submitSetAsideJudgment() {
     const { submitSetAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
-
     await submitSetAsideJudgmentPage.verifyContent(this.ccdCaseData);
     await submitSetAsideJudgmentPage.submit();
   }
 
   async confirmSetAsideJudgment() {
     const { confirmSetAsideJudgmentPage } = this.setAsideJudgmentPageFactory;
-
     await confirmSetAsideJudgmentPage.verifyContent(this.ccdCaseData);
     await confirmSetAsideJudgmentPage.submit();
   }
