@@ -1,5 +1,5 @@
 import BaseApi from '../../../base/base-api';
-import { civilAdminUser } from '../../../config/users/exui-users';
+import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
 import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
@@ -117,5 +117,39 @@ export default class CaseworkerApiSteps extends BaseApi {
     const transferOnlineCaseSchema =
       await transferOnlineCaseSchemaBuilder.buildData(caseDataBeforeSubmission);
     ZodHelper.safeParse(transferOnlineCaseSchema, this.ccdCaseData);
+  }
+
+  async SendMessage() {
+    await this.setupApiStep(ctscAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { sendAndReplyDataBuilder } = this.caseworkerDataBuilderFactory;
+    const sendAndReplyData = await sendAndReplyDataBuilder.buildSendDistrictJudge();
+    await super.submitCCDEvent(
+      ctscAdminUser,
+      ccdEvents.SEND_AND_REPLY,
+      sendAndReplyData,
+    );
+
+    const { sendAndReplySchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+  }
+
+  async ReplyMessage() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { sendAndReplyDataBuilder } = this.caseworkerDataBuilderFactory;
+    const sendAndReplyData = await sendAndReplyDataBuilder.buildReply();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.SEND_AND_REPLY,
+      sendAndReplyData,
+    );
+
+    const { sendAndReplySchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
   }
 }
