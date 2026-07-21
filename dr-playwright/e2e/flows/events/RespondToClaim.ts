@@ -27,6 +27,7 @@ export class RespondToClaim {
     preActionProtocol: YesNo = YesNo.NO,
     fixedRecoverableCosts: YesNo = YesNo.NO,
     fixedRecoverableCostsBand: FixedRecoveryCostsBands = FixedRecoveryCostsBands.BAND1,
+    disclosure: YesNo = YesNo.YES,
   ) {
     await this.pageHelper.selectNextStep('Respond to claim');
     await this.buttonHelper.continueButton.click(); // Confirm Details
@@ -113,5 +114,14 @@ export class RespondToClaim {
     }
     await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_reasons`).fill('Fixed Recoverable Costs explanation');
     await this.buttonHelper.continueButton.click();
+
+    await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_${disclosure}`).click();
+    if (fixedRecoverableCosts === YesNo.YES) {
+      await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`).click();
+      await this.page.locator(`respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_bespokeDirections`).fill('Bespoke directions text.');
+    }
+
+    await this.buttonHelper.continueButton.click();
+
   }
 }
