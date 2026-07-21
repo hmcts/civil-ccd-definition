@@ -32,6 +32,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1IntermediateFullDefence1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   async buildDS1MultiFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.MULTI_CLAIM,
