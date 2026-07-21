@@ -7,12 +7,12 @@ test.describe('1v2DS spec full defence api journey', { tag: '@civil-service-nigh
     DefendantSolicitor1SpecApiSteps,
     DefendantSolicitor2SpecApiSteps
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack1v2DS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await DefendantSolicitor1SpecApiSteps.RespondFastTrackFullDefence1v2DS();
-    await DefendantSolicitor2SpecApiSteps.RespondFastTrackFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondFastTrackProceed();
+    await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2DS();
+    await DefendantSolicitor2SpecApiSteps.RespondFastFullDefence();
+    await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
   });
 });

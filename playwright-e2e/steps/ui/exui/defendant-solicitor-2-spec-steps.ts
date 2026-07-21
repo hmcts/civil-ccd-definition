@@ -27,7 +27,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor2User);
   }
 
-  async RespondFastTrackFullDefence1v2DS() {
+  async RespondFastFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -73,6 +73,23 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
 
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadBundle() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
+        await evidenceUploadRespondentActions.documentUploadBundleDS2();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       { verifySuccessEvent: false },
     );
   }

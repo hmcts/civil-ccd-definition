@@ -13,7 +13,7 @@ test.describe('2v1 spec discontinue claim', { tag: ['@civil-ccd-nightly'] }, () 
     await DefendantSolicitor1SpecSteps.Login();
     await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence2v1();
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.RespondSmallClaimProceed2v1();
+    await ClaimantSolicitorSpecSteps.RespondSmallProceed2v1();
     await ClaimantSolicitorSpecSteps.DiscontinueClaim2v1();
   });
 });

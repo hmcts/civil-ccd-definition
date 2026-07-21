@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import { CaseFlagLocation } from '../../../../../../models/ccd-events/case-flags/case-flag-locations';
 import CCDCaseData from '../../../../../../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 
 @AllMethodsStep()
 export default class CreateCaseFlagsLocationPage extends ExuiPage(BasePage) {

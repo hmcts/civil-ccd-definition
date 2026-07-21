@@ -7,11 +7,13 @@ import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import { judgeRegion1User, judgeRegion2User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/nihlFastTrackDirectionsTask';
 import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
 import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
 import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
 import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
 import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
+import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/intermediateTrackDirectionsTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -74,7 +76,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackFromFastTrackClaim() {
+  async SdoSmallTrackFromFastClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -112,7 +114,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoFastTrack() {
+  async SdoFast() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -151,7 +153,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoFastTrackNIHL() {
+  async SdoFastNIHL() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -166,7 +168,7 @@ export default class JudgeSteps extends BaseExui {
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
-      fastTrackDirectionsTask,
+      nihlFastTrackDirectionsTask,
     );
   }
 
@@ -242,7 +244,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async NotSuitableSdoFastTrackOtherReason() {
+  async NotSuitableSdoFastOtherReason() {
     const { notSuitableSdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -273,6 +275,45 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       judgeRegion2User,
       defenceReceivedInTimeOrderThatJudgmentIsSetAside,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async GenerateDirectionsOrderIntermediate() {
+    const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await generateDirectionsOrderActions.trackAllocationIntermediate();
+        await generateDirectionsOrderActions.intermediateTrackComplexityBand();
+        await generateDirectionsOrderActions.selectTemplateIntermediate();
+        await generateDirectionsOrderActions.downloadTemplate();
+        await generateDirectionsOrderActions.uploadOrder();
+        await generateDirectionsOrderActions.submitGenerateDirectionsOrder();
+      },
+      async () => {
+        await generateDirectionsOrderActions.confirmGenerateDirectionsOrder();
+      },
+      ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async GenerateDirectionsOrderMulti() {
+    const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await generateDirectionsOrderActions.trackAllocationMulti();
+        await generateDirectionsOrderActions.selectTemplateMulti();
+        await generateDirectionsOrderActions.downloadTemplate();
+        await generateDirectionsOrderActions.uploadOrder();
+        await generateDirectionsOrderActions.submitGenerateDirectionsOrder();
+      },
+      async () => {
+        await generateDirectionsOrderActions.confirmGenerateDirectionsOrder();
+      },
+      ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      judgeRegion1User,
+      intermediateTrackDirectionsTask,
       { verifySuccessEvent: false },
     );
   }

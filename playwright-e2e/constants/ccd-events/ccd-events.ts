@@ -95,6 +95,12 @@ const ccdEvents: CCDEvents = {
     description: 'Discontinue this claim',
     order: 11,
   },
+  DISMISS_CASE: {
+    id: 'DISMISS_CASE',
+    name: 'Dismiss case',
+    description: 'Dismiss case',
+    order: 11.5,
+  },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',
@@ -239,6 +245,18 @@ const ccdEvents: CCDEvents = {
     description: 'Request for reconsideration check',
     order: 22.5,
   },
+  SETTLE_CLAIM: {
+    id: 'SETTLE_CLAIM',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 12,
+  },
+  SETTLE_CLAIM_MARK_PAID_FULL: {
+    id: 'SETTLE_CLAIM_MARK_PAID_FULL',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 13,
+  },
   DECISION_ON_RECONSIDERATION_REQUEST: {
     id: 'DECISION_ON_RECONSIDERATION_REQUEST',
     name: 'Decision on reconsideration',
@@ -287,6 +305,12 @@ const ccdEvents: CCDEvents = {
     description: 'Request an update or lift the stay',
     order: 28,
   },
+  SEND_AND_REPLY: {
+    id: 'SEND_AND_REPLY',
+    name: 'Send and reply',
+    description: 'Send and reply',
+    order: 28.5,
+  },
   EVIDENCE_UPLOAD_APPLICANT: {
     id: 'EVIDENCE_UPLOAD_APPLICANT',
     name: 'Evidence upload applicant',
@@ -310,6 +334,12 @@ const ccdEvents: CCDEvents = {
     name: 'Transfer online case',
     description: 'Transfer online case',
     order: 30,
+  },
+  UPLOAD_MEDIATION_DOCUMENTS: {
+    id: 'UPLOAD_MEDIATION_DOCUMENTS',
+    name: 'Upload mediation documents',
+    description: 'Upload mediation documents',
+    order: 24
   },
 };
 

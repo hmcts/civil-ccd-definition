@@ -9,22 +9,20 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
       HearingCenterAdminApiSteps,
-      JudgeSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondSmallTrackFullDefence();
-      await ClaimantSolicitorApiSteps.RespondSmallTrackProceed();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.SdoSmallTrackSum();
-      await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();
-      await DefendantSolicitor1ApiSteps.EvidenceUploadSmallClaim();
-      await HearingCenterAdminApiSteps.ScheduleHearingSmallClaimTrail();
+      await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
+      await ClaimantSolicitorApiSteps.RespondSmallProceed();
+      await JudgeApiSteps.SdoSmallTrackSum();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
+      await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
+      await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
       await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
@@ -35,21 +33,20 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
       HearingCenterAdminApiSteps,
-      JudgeSteps,
+      JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondSmallTrackFullDefence();
-      await ClaimantSolicitorApiSteps.RespondSmallTrackProceed();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.SdoSmallTrackNoSum();
-      await ClaimantSolicitorApiSteps.EvidenceUploadSmallTrack();
-      await DefendantSolicitor1ApiSteps.EvidenceUploadSmallClaim();
-      await HearingCenterAdminApiSteps.ScheduleHearingSmallClaimTrail();
+      await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
+      await ClaimantSolicitorApiSteps.RespondSmallProceed();
+      await JudgeApiSteps.SdoSmallTrackNoSum();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
+      await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
+      await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
     });
