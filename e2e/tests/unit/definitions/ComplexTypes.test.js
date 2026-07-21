@@ -36,6 +36,19 @@ dataProvider.exclusions.forEach((value, key) =>  {
       it('should have only valid definitions', () => {
         uniqResult.forEach(assertFieldDefinitionIsValid);
       });
+
+      it('should not cap stored send and reply message subjects', () => {
+        const messageSubject = complexTypesConfig.find(row =>
+          row.ID === 'Message' && row.ListElementCode === 'subject');
+        const messageReplySubject = complexTypesConfig.find(row =>
+          row.ID === 'MessageReply' && row.ListElementCode === 'subject');
+        const sendMessageMetadataSubject = complexTypesConfig.find(row =>
+          row.ID === 'SendMessageMetadata' && row.ListElementCode === 'subject');
+
+        expect(messageSubject).to.not.have.property('Max');
+        expect(messageReplySubject).to.not.have.property('Max');
+        expect(sendMessageMetadataSubject.Max).to.eq(255);
+      });
     });
   });
 });
