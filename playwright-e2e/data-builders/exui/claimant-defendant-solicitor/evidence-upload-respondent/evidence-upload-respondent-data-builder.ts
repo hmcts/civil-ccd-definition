@@ -18,14 +18,20 @@ export default class EvidenceUploadRespondentDataBuilder extends BaseDataBuilder
   }
 
   async buildDS1Fast1v2SS() {
-    return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
-  }
-
-  async buildDS2Fast1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      user: defendantSolicitor2User,
+    });
+  }
+
+  async buildDS2Fast() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      witness1Party: partys.DEFENDANT_2_WITNESS_1,
+      witness2Party: partys.DEFENDANT_2_WITNESS_2,
+      expertParty: partys.DEFENDANT_1_EXPERT_1,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2
     });
   }
 
@@ -33,24 +39,23 @@ export default class EvidenceUploadRespondentDataBuilder extends BaseDataBuilder
     return this.buildData();
   }
 
-  protected async buildData(
-    {
-      claimTrack = ClaimTrack.SMALL_CLAIM,
-      claimType = ClaimType.ONE_VS_ONE,
-      witness1Party = partys.DEFENDANT_1_WITNESS_1,
-      witness2Party = partys.DEFENDANT_1_WITNESS_2,
-      expertParty = partys.DEFENDANT_1_EXPERT_1,
-      user = defendantSolicitor1User
-    } : {
-      claimTrack?: ClaimTrack,
-      claimType?: ClaimType
-      witness1Party?: Party,
-      witness2Party?: Party,
-      expertParty?: Party,
-      user?: User
-    } = {}
-  ) {
+  protected async buildData({
+    claimTrack = ClaimTrack.SMALL_CLAIM,
+    claimType = ClaimType.ONE_VS_ONE,
+    witness1Party = partys.DEFENDANT_1_WITNESS_1,
+    witness2Party = partys.DEFENDANT_1_WITNESS_2,
+    expertParty = partys.DEFENDANT_1_EXPERT_1,
+    defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
+  }: {
+    claimTrack?: ClaimTrack;
+    claimType?: ClaimType;
+    witness1Party?: Party;
+    witness2Party?: Party;
+    expertParty?: Party;
+    defendantSolicitorParty?: Party;
+  } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
+    const user = defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 ? defendantSolicitor1User : defendantSolicitor2User
     const doc1 = await civilServiceRequests.uploadTestDocument(user);
     const doc2 = await civilServiceRequests.uploadTestDocument(user);
     const doc3 = await civilServiceRequests.uploadTestDocument(user);
@@ -79,7 +84,7 @@ export default class EvidenceUploadRespondentDataBuilder extends BaseDataBuilder
         doc3,
         doc4,
       ),
-      ...evidenceUploadRespondentDataBuilderComponents.undefine
+      ...evidenceUploadRespondentDataBuilderComponents.undefine,
     };
   }
 }

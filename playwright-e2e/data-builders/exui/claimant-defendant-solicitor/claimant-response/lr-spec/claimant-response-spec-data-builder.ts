@@ -15,6 +15,13 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
+  async buildIntermediateProceed1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   async buildMultiRejectFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
   }
@@ -163,10 +170,10 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
     const defenceResponseDocumentSpec =
-      (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+      claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
       claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
       claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-      claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
+      claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID
         ? await civilServiceRequests.uploadTestDocument(claimantSolicitorUser)
         : undefined;
     const frcSupportingDocument =
@@ -179,68 +186,33 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     Object.assign(
       eventData,
       claimantResponseSpecData.undefine(claimantResponseType),
-      claimantResponseSpecData.defendantResponse(
-        claimType,
-        claimantResponseType,
-      ),
+      claimantResponseSpecData.defendantResponse(claimType, claimantResponseType),
       claimantResponseSpecData.intentionToSettle(claimantResponseType),
       claimantResponseSpecData.claimantDefenceResponseDocument(
         defenceResponseDocumentSpec,
         claimantResponseType,
       ),
-      claimantResponseSpecData.mediationContactInformation(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecData.mediationAvailability(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecData.determinationWithoutHearing(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecData.fileDirectionsQuestionnaire(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecData.fixedRecoverableCosts(
-        claimTrack,
-        claimantResponseType,
-      ),
+      claimantResponseSpecData.mediationContactInformation(claimTrack, claimantResponseType),
+      claimantResponseSpecData.mediationAvailability(claimTrack, claimantResponseType),
+      claimantResponseSpecData.determinationWithoutHearing(claimTrack, claimantResponseType),
+      claimantResponseSpecData.fileDirectionsQuestionnaire(claimTrack, claimantResponseType),
+      claimantResponseSpecData.fixedRecoverableCosts(claimTrack, claimantResponseType),
       claimantResponseSpecData.fixedRecoverableCostsIntermediate(
         claimTrack,
         claimantResponseType,
         frcSupportingDocument,
       ),
-      claimantResponseSpecData.disclosureOfElectronicDocuments(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecData.disclosureOfNonElectronicDocuments(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecData.disclosureReport(
-        claimTrack,
-        claimantResponseType,
-      ),
+      claimantResponseSpecData.disclosureOfElectronicDocuments(claimTrack, claimantResponseType),
+      claimantResponseSpecData.disclosureOfNonElectronicDocuments(claimTrack, claimantResponseType),
+      claimantResponseSpecData.disclosureReport(claimTrack, claimantResponseType),
       claimantResponseSpecData.experts(claimTrack, claimantResponseType),
-      claimantResponseSpecData.witnesses(
-        claimTrack,
-        claimantResponseType,
-      ),
+      claimantResponseSpecData.witnesses(claimTrack, claimantResponseType),
       claimantResponseSpecData.language(claimantResponseType),
       claimantResponseSpecData.hearing(claimTrack, claimantResponseType),
-      claimantResponseSpecData.requestedCourtLocation(
-        claimantResponseType,
-      ),
+      claimantResponseSpecData.requestedCourtLocation(claimantResponseType),
       claimantResponseSpecData.hearingSupport(claimantResponseType),
       claimantResponseSpecData.vulnerabilityQuestions(claimantResponseType),
-      claimantResponseSpecData.application(
-        claimTrack,
-        claimantResponseType,
-      ),
+      claimantResponseSpecData.application(claimTrack, claimantResponseType),
       claimantResponseSpecData.statementOfTruth,
     );
 
