@@ -95,6 +95,12 @@ const ccdEvents: CCDEvents = {
     description: 'Discontinue this claim',
     order: 11,
   },
+  DISMISS_CASE: {
+    id: 'DISMISS_CASE',
+    name: 'Dismiss case',
+    description: 'Dismiss case',
+    order: 11.5,
+  },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',
@@ -298,6 +304,12 @@ const ccdEvents: CCDEvents = {
     name: 'Manage stay',
     description: 'Request an update or lift the stay',
     order: 28,
+  },
+  SEND_AND_REPLY: {
+    id: 'SEND_AND_REPLY',
+    name: 'Send and reply',
+    description: 'Send and reply',
+    order: 28.5,
   },
   EVIDENCE_UPLOAD_APPLICANT: {
     id: 'EVIDENCE_UPLOAD_APPLICANT',

@@ -7,6 +7,7 @@ test.describe(
     test('1v2SS default judgement api', async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
+      JudgeApiSteps
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimFast1v2SS();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -15,6 +16,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
       await ClaimantSolicitorApiSteps.DefaultJudgement1v2SS();
+      await JudgeApiSteps.SdoDJDisposal();
     });
   },
 );

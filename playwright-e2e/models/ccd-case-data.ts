@@ -14,6 +14,9 @@ export default interface CCDCaseData {
   detailsOfClaim?: string;
   fixedCosts?: FixedCosts;
   caseFlags?: CaseFlags;
+  messagesToReplyTo?: string;
+  sendMessageContent?: string;
+  messages?: Message[];
   claimFee?: ClaimFee;
   notificationSummary?: string;
   hearingDueDate?: string;
@@ -269,6 +272,32 @@ export interface ClaimFee {
 export interface FixedCosts {
   claimFixedCosts?: string;
   fixedCostAmount?: number;
+}
+
+export interface MessagesToReplyTo {
+  list_items?: MessagesToReplyToListItem[];
+}
+
+export interface MessagesToReplyToListItem {
+  code?: string;
+  label?: string;
+}
+
+export interface Message {
+  id?: string;
+  value?: MessageValue;
+}
+
+export interface MessageValue {
+  subject?: string;
+  isUrgent?: string;
+  sentTime?: string;
+  messageId?: string;
+  senderName?: string;
+  subjectType?: string;
+  updatedTime?: string;
+  messageContent?: string;
+  recipientRoleType?: string;
 }
 
 export interface CaseManagementLocation {

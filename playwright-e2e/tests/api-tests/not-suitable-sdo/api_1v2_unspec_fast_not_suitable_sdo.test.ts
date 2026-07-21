@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Transfer Online Case 1v2 API test - fast claim - unspec @debug', { tag: '@civil-service-nightly' }, async () => {
+test.describe('Transfer Online Case 1v2 API test - fast claim - unspec', { tag: '@civil-service-nightly' }, async () => {
   test('1v2 full defence unspecified - not suitable SDO - Transfer Case)', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
