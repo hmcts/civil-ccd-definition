@@ -1,7 +1,7 @@
 import ClaimType from "../../../../../constants/cases/claim-type";
 
 const singleClaimant = (claimType: ClaimType) => {
-  if(claimType !== ClaimType.TWO_VS_ONE) {
+  if (claimType !== ClaimType.TWO_VS_ONE) {
     return {
       SingleClaimant: {
         markPaidConsent: 'YES'
@@ -13,7 +13,7 @@ const singleClaimant = (claimType: ClaimType) => {
 }
 
 const multipleClaimant = (claimType: ClaimType) => {
-  if(claimType === ClaimType.TWO_VS_ONE) {
+  if (claimType === ClaimType.TWO_VS_ONE) {
     return {
       MultipleClaimant: {
         markPaidForAllClaimants: 'Yes'
