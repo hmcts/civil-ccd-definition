@@ -20,6 +20,13 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
+  async buildIntermediateProceed1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   async buildMultiRejectFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.MULTI_CLAIM,
@@ -182,22 +189,14 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     Object.assign(
       schemaShape,
       claimantResponseSpecSchemaComponents.undefine,
-      claimantResponseSpecSchemaComponents.defendantResponse(
-        claimType,
-        claimantResponseType,
-      ),
+      claimantResponseSpecSchemaComponents.defendantResponse(claimType, claimantResponseType),
       claimantResponseSpecSchemaComponents.intentionToSettle(claimantResponseType),
-      claimantResponseSpecSchemaComponents.claimantDefenceResponseDocument(
-        claimantResponseType,
-      ),
+      claimantResponseSpecSchemaComponents.claimantDefenceResponseDocument(claimantResponseType),
       claimantResponseSpecSchemaComponents.mediationContactInformation(
         claimTrack,
         claimantResponseType,
       ),
-      claimantResponseSpecSchemaComponents.mediationAvailability(
-        claimTrack,
-        claimantResponseType,
-      ),
+      claimantResponseSpecSchemaComponents.mediationAvailability(claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.determinationWithoutHearing(
         claimTrack,
         claimantResponseType,
@@ -206,10 +205,7 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
         claimTrack,
         claimantResponseType,
       ),
-      claimantResponseSpecSchemaComponents.fixedRecoverableCosts(
-        claimTrack,
-        claimantResponseType,
-      ),
+      claimantResponseSpecSchemaComponents.fixedRecoverableCosts(claimTrack, claimantResponseType),
       claimantResponseSpecSchemaComponents.fixedRecoverableCostsIntermediate(
         claimTrack,
         claimantResponseType,
@@ -222,36 +218,15 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
         claimTrack,
         claimantResponseType,
       ),
-      claimantResponseSpecSchemaComponents.disclosureReport(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecSchemaComponents.experts(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecSchemaComponents.witnesses(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecSchemaComponents.language(
-        claimantResponseType,
-      ),
-      claimantResponseSpecSchemaComponents.hearing(
-        claimTrack,
-        claimantResponseType,
-      ),
-      claimantResponseSpecSchemaComponents.requestedCourtLocation(
-        claimantResponseType,
-      ),
-      claimantResponseSpecSchemaComponents.hearingSupport(
-        claimantResponseType,
-      ),
+      claimantResponseSpecSchemaComponents.disclosureReport(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.experts(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.witnesses(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.language(claimantResponseType),
+      claimantResponseSpecSchemaComponents.hearing(claimTrack, claimantResponseType),
+      claimantResponseSpecSchemaComponents.requestedCourtLocation(claimantResponseType),
+      claimantResponseSpecSchemaComponents.hearingSupport(claimantResponseType),
       claimantResponseSpecSchemaComponents.vulnerabilityQuestions(claimantResponseType),
-      claimantResponseSpecSchemaComponents.application(
-        claimTrack,
-        claimantResponseType,
-      ),
+      claimantResponseSpecSchemaComponents.application(claimTrack, claimantResponseType),
     );
 
     return baseSchema.extend(schemaShape);

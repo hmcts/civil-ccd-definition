@@ -72,8 +72,7 @@
     "FieldType": "Text",
     "ElementLabel": "Subject",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Max": 255
+    "Searchable": "N"
   },
   {
     "ID": "Message",

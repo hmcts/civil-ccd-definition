@@ -5,6 +5,7 @@ test.describe('1v1 default judgment', { tag: '@civil-ccd-nightly' }, () => {
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
+    JudgeSteps
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -15,5 +16,7 @@ test.describe('1v1 default judgment', { tag: '@civil-ccd-nightly' }, () => {
     await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RequestDefaultJudgment();
+    await JudgeSteps.LoginRegion1();
+    await JudgeSteps.SdoDJDisposalHearing();
   });
 });
