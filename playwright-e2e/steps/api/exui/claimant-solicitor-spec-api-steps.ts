@@ -948,6 +948,34 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
   }
 
+  async RequestForReconsideration() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { requestForReconsiderationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestForReconsiderationData = await requestForReconsiderationDataBuilder.buildCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
+      requestForReconsiderationData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { requestForReconsiderationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const requestForReconsiderationSchema =
+      await requestForReconsiderationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(requestForReconsiderationSchema, this.ccdCaseData);
+  }
+
+  async RequestForReconsiderationError() {
+    return super.startCCDEventError(
+      claimantSolicitorUser,
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
+    );
+  }
+
   async AmendRespondent1ResponseDeadline() {
     await this.setupApiStep(claimantOrganisationSuperUser);
     const newRespondent1Deadline = DateHelper.subtractFromToday({ days: 1 });

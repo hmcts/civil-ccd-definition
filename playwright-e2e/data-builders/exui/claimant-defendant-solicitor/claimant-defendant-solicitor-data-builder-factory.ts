@@ -15,6 +15,7 @@ import InformAgreedExtensionDateSpecDataBuilder from './inform-agreed-extension-
 import ManageContactInformationDataBuilder from '../common/manage-contact-information/manage-contact-information-data-builder';
 import NotifyClaimDataBuilder from './notify-claim/unspec/notify-claim-data-builder';
 import NotifyClaimDetailsDataBuilder from './notify-claim-details/unspec/notify-claim-details-data-builder';
+import RequestForReconsiderationDataBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-data-builder';
 import ServiceRequestDataBuilder from './service-request/service-request-data-builder';
 import DefaultJudgementDataBuilder from './default-judgement/unspec/default-judgement-data-builder.ts';
 import DefaultJudgementSpecDataBuilder from './default-judgement/lr-spec/default-judgement-spec-data-builder.ts';
@@ -99,5 +100,9 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
 
   get uploadMediationDocumentsDataBuilder() {
     return new UploadMediationDocumentsDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get requestForReconsiderationDataBuilder() {
+    return new RequestForReconsiderationDataBuilder(this.requestsFactory, this.testData);
   }
 }
