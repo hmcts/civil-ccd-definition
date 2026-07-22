@@ -4,6 +4,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import FlightDelayClaim from '../../../../../constants/cases/flight-delay-claim';
 
 type SchemaShape = Record<string, z.ZodType>;
 
@@ -412,7 +413,22 @@ const defendant2Representation = (claimType: ClaimType): SchemaShape => {
   };
 };
 
-const claimDetails = (): SchemaShape => ({
+const flightDelayDetailsSchema = z.strictObject({
+  airlineList: z.strictObject({
+    value: z.strictObject({
+      code: nonEmptyString,
+      label: nonEmptyString,
+    }),
+  }),
+  flightNumber: nonEmptyString,
+  scheduledDate: nonEmptyString,
+  flightCourtLocation: z.strictObject({
+    region: z.string().nullable(),
+    baseLocation: z.string().nullable(),
+  }),
+});
+
+const claimDetails = (isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO): SchemaShape => ({
   allPartyNames: nonEmptyString,
   submittedDate: nonEmptyString,
   anyRepresented: nonEmptyString,
@@ -426,8 +442,9 @@ const claimDetails = (): SchemaShape => ({
   applicantSolicitor1PbaAccountsIsEmpty: yesNoSchema,
   claimIssuedPaymentDetails: claimIssuedPaymentDetailsSchema,
   claimIssuedPBADetails: claimIssuedPbaDetailsSchema,
-  isFlightDelayClaim: z.literal('No'),
-  flightDelayDetails: z.unknown(),
+  isFlightDelayClaim: z.literal(isFlightDelayClaim),
+  flightDelayDetails:
+    isFlightDelayClaim === FlightDelayClaim.YES ? flightDelayDetailsSchema : z.unknown(),
   timelineOfEvents: timelineOfEventsSchema,
   speclistYourEvidenceList: evidenceListSchema,
   claimAmountBreakup: claimAmountBreakupSchema,
