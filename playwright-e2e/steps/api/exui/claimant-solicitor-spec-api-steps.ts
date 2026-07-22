@@ -1003,6 +1003,40 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(defaultJudgementSpecSchema, this.ccdCaseData);
   }
 
+  async SettleClaim() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { settleClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const settleClaimData = await settleClaimDataBuilder.build();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      settleClaimData,
+    );
+
+    const { settleClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const settleClaimSchema = await settleClaimSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(settleClaimSchema, this.ccdCaseData);
+  }
+
+  async SettleClaim2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { settleClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const settleClaimData = await settleClaimDataBuilder.build2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      settleClaimData,
+    );
+
+    const { settleClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const settleClaimSchema = await settleClaimSchemaBuilder.build2v1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(settleClaimSchema, this.ccdCaseData);
+  }
+
   async AmendRespondent2ResponseDeadline() {
     await this.setupApiStep(claimantOrganisationSuperUser);
     const newRespondent2Deadline = DateHelper.subtractFromToday({ days: 1 });
