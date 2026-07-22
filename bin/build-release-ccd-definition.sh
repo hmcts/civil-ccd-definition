@@ -33,11 +33,13 @@ fi
 # deciding which enviornment should be excluded for unshuttered/shuttered
 if [ "$activateShutter" = true ] ; then
   echo "We are activating shuttered file for $environment"
-  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-unshuttered.json"
+  # Civil: keep the shuttered auth file. GA: keep the shuttered auth file and drop the CUI
+  # auth files so citizen/wlu roles have no access to GENERALAPPLICATION while shuttered.
+  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-unshuttered.json,AuthorisationCaseTypeGAspec-unshuttered.json,AuthorisationCaseTypeGAspec-CUI.json,AuthorisationCaseTypeGAspec-CUI-Welsh.json"
   echo "${excludedFilenamePatterns}"
 else
   echo "We are activating unshuttered file for $environment"
-  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-shuttered.json"
+  excludedFilenamePatterns="${excludedFilenamePatterns},AuthorisationCaseType-shuttered.json,AuthorisationCaseTypeGAspec-shuttered.json"
   echo "${excludedFilenamePatterns}"
 fi
 
