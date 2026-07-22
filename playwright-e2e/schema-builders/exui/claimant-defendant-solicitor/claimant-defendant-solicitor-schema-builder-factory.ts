@@ -17,6 +17,7 @@ import InformAgreedExtensionDateSpecSchemaBuilder from './inform-agreed-extensio
 import ManageContactInformationSchemaBuilder from '../common/manage-contact-information/manage-contact-information-schema-builder';
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
 import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notify-claim-details-schema-builder';
+import RequestForReconsiderationSchemaBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
 
 export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends BaseSchemaBuilderFactory {
@@ -94,5 +95,9 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get uploadMediationDocumentsSchemaBuilder() {
     return new UploadMediationDocumentsSchemaBuilder(this.testData);
+  }
+
+  get requestForReconsiderationSchemaBuilder() {
+    return new RequestForReconsiderationSchemaBuilder(this.testData);
   }
 }

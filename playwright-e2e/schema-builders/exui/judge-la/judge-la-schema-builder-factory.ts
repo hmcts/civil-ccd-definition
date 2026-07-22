@@ -1,8 +1,9 @@
 import BaseSchemaBuilderFactory from '../../../base/base-schema-builder-factory';
-import SendAndReplySchemaBuilder from '../common/send-and-reply/send-and-reply-schema-builder';
 import CreateSdoSchemaBuilder from './create-sdo/create-sdo-schema-builder';
+import DecisionOnReconsiderationRequestSchemaBuilder from './decision-on-reconsideration-request/decision-on-reconsideration-request-schema-builder';
 import GenerateDirectionsOrderSchemaBuilder from './generate-directions-order/generate-directions-order-schema-builder';
 import NotSuitableSdoSchemaBuilder from './not-suitable-sdo/not-suitable-sdo-schema-builder';
+import SendAndReplySchemaBuilder from '../common/send-and-reply/send-and-reply-schema-builder';
 import SdoDJSchemaBuilder from './sdo-dj/sdo-dj-schema-builder';
 
 export default class JudgeLASchemaBuilderFactory extends BaseSchemaBuilderFactory {
@@ -24,5 +25,9 @@ export default class JudgeLASchemaBuilderFactory extends BaseSchemaBuilderFactor
 
   get sdoDJSchemaBuilder() {
     return new SdoDJSchemaBuilder(this.testData);
+  }
+
+  get decisionOnReconsiderationRequestSchemaBuilder() {
+    return new DecisionOnReconsiderationRequestSchemaBuilder(this.testData);
   }
 }
