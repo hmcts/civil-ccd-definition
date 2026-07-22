@@ -27,6 +27,12 @@ export default class InterestSummaryPage extends ExuiPage(BasePage) {
     await super.expectTableValueByRowName(tableRowNames.totalAmount, amount);
   }
 
+  async verifyMultiTrack() {
+    const amount = `£ ${CaseDataHelper.getClaimValue(ClaimTrack.MULTI_CLAIM).toFixed(2)}`;
+    await super.expectTableValueByRowName(tableRowNames.claimAmount, amount);
+    await super.expectTableValueByRowName(tableRowNames.totalAmount, amount);
+  }
+
   async submit() {
     await super.retryClickSubmit();
   }

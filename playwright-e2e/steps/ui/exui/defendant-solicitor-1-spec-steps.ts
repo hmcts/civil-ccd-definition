@@ -249,6 +249,31 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
+  async RespondMultiFullDefence1v2SS() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddress1v2();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.dqMultiTrackDS1();
+        await defendantResponseSpecActions.applicationDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpec();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async EvidenceUploadSmall() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
@@ -273,6 +298,24 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await evidenceUploadRespondentActions.evidenceUpload();
         await evidenceUploadRespondentActions.documentSelectionFastTrack();
         await evidenceUploadRespondentActions.documentUpload();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadBundle1v2SS() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.selectUploadOptions();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackBundle();
+        await evidenceUploadRespondentActions.documentUploadBundleDS1();
         await evidenceUploadRespondentActions.submitEvidenceUpload();
       },
       async () => {
