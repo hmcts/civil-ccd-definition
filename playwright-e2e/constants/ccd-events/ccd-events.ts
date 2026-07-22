@@ -95,6 +95,12 @@ const ccdEvents: CCDEvents = {
     description: 'Discontinue this claim',
     order: 11,
   },
+  VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Validate Discontinuance',
+    description: 'Validate Discontinuance',
+    order: 11.1,
+  },
   DISMISS_CASE: {
     id: 'DISMISS_CASE',
     name: 'Dismiss case',

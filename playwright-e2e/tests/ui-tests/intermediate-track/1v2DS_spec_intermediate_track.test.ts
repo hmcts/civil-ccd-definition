@@ -6,7 +6,7 @@ test.describe(
     tag: ['@civil-ccd-nightly'],
   },
   () => {
-    test('1v2DS spec intermediate track @debug', async ({
+    test('1v2DS spec intermediate track', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,

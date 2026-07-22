@@ -34,7 +34,8 @@ export default class ClaimTypeHelper {
       claimType === ClaimType.ONE_VS_TWO_LR_LIP ||
       claimType === ClaimType.ONE_VS_TWO_SAME_SOL ||
       claimType === ClaimType.ONE_VS_TWO_LIPS ||
-      claimType === ClaimType.ONE_VS_TWO_LIP_LR
+      claimType === ClaimType.ONE_VS_TWO_LIP_LR ||
+      claimType === ClaimType.ONE_VS_TWO
     );
   }
 
@@ -42,7 +43,8 @@ export default class ClaimTypeHelper {
     return (
       claimType === ClaimType.ONE_VS_TWO_SAME_SOL ||
       claimType === ClaimType.ONE_VS_TWO_DIFF_SOL ||
-      claimType === ClaimType.ONE_VS_TWO_LIP_LR
+      claimType === ClaimType.ONE_VS_TWO_LIP_LR ||
+      claimType === ClaimType.ONE_VS_TWO
     );
   }
 

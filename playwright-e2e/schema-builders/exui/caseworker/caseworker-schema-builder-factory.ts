@@ -5,6 +5,7 @@ import ManageContactInformationSchemaBuilder from '../common/manage-contact-info
 import MediationUnsuccessfulSchemaBuilder from './mediation-unsuccessful/mediation-unsuccessful-schema-builder';
 import SendAndReplySchemaBuilder from '../common/send-and-reply/send-and-reply-schema-builder';
 import TransferOnlineCaseSchemaBuilder from './transfer-online-case/transfer-online-case-schema-builder';
+import ValidateDiscontinueClaimClaimantSchemaBuilder from './validate-discontinue-claim-claimant/validate-discontinue-claim-claimant-schema-builder';
 
 export default class CaseworkerSchemaBuilderFactory extends BaseSchemaBuilderFactory {
   get addCaseNoteSchemaBuilder() {
@@ -29,5 +30,9 @@ export default class CaseworkerSchemaBuilderFactory extends BaseSchemaBuilderFac
 
   get sendAndReplySchemaBuilder() {
     return new SendAndReplySchemaBuilder(this.testData);
+  }
+
+  get validateDiscontinueClaimClaimantSchemaBuilder() {
+    return new ValidateDiscontinueClaimClaimantSchemaBuilder(this.testData);
   }
 }
