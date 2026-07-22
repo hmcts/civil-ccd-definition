@@ -4,6 +4,8 @@ import DiscontinuanceType from '../../../../../constants/ccd-events/discontinue-
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 
+const nonEmptyString = z.string().min(1);
+
 const multipleClaimant = (claimType: ClaimType) => {
   if (claimType === ClaimType.TWO_VS_ONE) {
     return {
@@ -25,7 +27,7 @@ const courtPermission = (courtPermissionNeeded: CourtPermissionNeeded) => {
   } else if (courtPermissionNeeded === CourtPermissionNeeded.NO) {
     return {
       courtPermissionNeeded: z.literal('NO'),
-      courtPermissionNeededChecked: z.array(z.string()).min(1),
+      courtPermissionNeededChecked: z.array(nonEmptyString).min(1),
     };
   }
 
@@ -37,8 +39,8 @@ const permissionGranted = (courtPermissionNeeded: CourtPermissionNeeded) => {
     return {
       isPermissionGranted: z.literal('YES'),
       permissionGrantedComplex: z.looseObject({
-        permissionGrantedJudge: z.string(),
-        permissionGrantedDate: z.string(),
+        permissionGrantedJudge: nonEmptyString,
+        permissionGrantedDate: nonEmptyString,
       }),
     };
   }
@@ -49,7 +51,7 @@ const permissionGranted = (courtPermissionNeeded: CourtPermissionNeeded) => {
 const discontinuingAgainstDefendants = (claimType: ClaimType) => {
   if (ClaimTypeHelper.isDefendant2Represented(claimType)) {
     return {
-      isDiscontinuingAgainstBothDefendants: z.string(),
+      isDiscontinuingAgainstBothDefendants: nonEmptyString,
     };
   }
 
@@ -64,7 +66,7 @@ const discontinuanceType = (discontinuanceType: DiscontinuanceType) => {
   } else if (discontinuanceType === DiscontinuanceType.PART_DISCONTINUANCE) {
     return {
       typeOfDiscontinuance: z.literal(DiscontinuanceType.PART_DISCONTINUANCE),
-      partDiscontinuanceDetails: z.string(),
+      partDiscontinuanceDetails: nonEmptyString,
     };
   }
 
