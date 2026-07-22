@@ -99,13 +99,13 @@ const ccdEvents: CCDEvents = {
     id: 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT',
     name: 'Validate Discontinuance',
     description: 'Validate Discontinuance',
-    order: 11.1,
+    order: 11,
   },
   DISMISS_CASE: {
     id: 'DISMISS_CASE',
     name: 'Dismiss case',
     description: 'Dismiss case',
-    order: 11.5,
+    order: 11,
   },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
@@ -249,7 +249,7 @@ const ccdEvents: CCDEvents = {
     id: 'REQUEST_FOR_RECONSIDERATION',
     name: 'Request for reconsideration',
     description: 'Request for reconsideration check',
-    order: 22.5,
+    order: 22,
   },
   SETTLE_CLAIM: {
     id: 'SETTLE_CLAIM',
@@ -267,7 +267,7 @@ const ccdEvents: CCDEvents = {
     id: 'DECISION_ON_RECONSIDERATION_REQUEST',
     name: 'Decision on reconsideration',
     description: 'Decision on reconsideration',
-    order: 22.6,
+    order: 22,
   },
   CREATE_CASE_FLAGS: {
     id: 'CREATE_CASE_FLAGS',
@@ -297,7 +297,7 @@ const ccdEvents: CCDEvents = {
     id: 'ADD_UNAVAILABLE_DATES',
     name: 'Add Unavailable Dates',
     description: 'Add unavailable dates after claimant response or default judgment',
-    order: 26.5,
+    order: 26,
   },
   STAY_CASE: {
     id: 'STAY_CASE',
@@ -315,7 +315,7 @@ const ccdEvents: CCDEvents = {
     id: 'SEND_AND_REPLY',
     name: 'Send and reply',
     description: 'Send and reply',
-    order: 28.5,
+    order: 28,
   },
   EVIDENCE_UPLOAD_APPLICANT: {
     id: 'EVIDENCE_UPLOAD_APPLICANT',
