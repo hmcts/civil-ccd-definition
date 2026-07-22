@@ -11,7 +11,10 @@
       "legal-adviser",
       "civil-administrator-basic",
       "ga-basic-access",
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "citizen-profile",
+      "cui-admin-profile",
+      "wlu-admin"
     ],
     "CRUD": "D"
   },
