@@ -10,6 +10,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import FlightDelayClaim from '../../../../../constants/cases/flight-delay-claim';
 
 const references = {
   References: {
@@ -189,10 +190,8 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
   return {};
 };
 
-const claimDetails = (claimTrack: ClaimTrack) => ({
-  FlightDelayClaim: {
-    isFlightDelayClaim: 'No',
-  },
+const claimDetails = (claimTrack: ClaimTrack, isFlightDelayClaim: FlightDelayClaim) => ({
+  ...flightDelayClaim(isFlightDelayClaim),
   Details: {
     detailsOfClaim: 'Test details of claim',
   },
@@ -251,6 +250,28 @@ const statementOfTruth = {
   },
 };
 
+const flightDelayClaim = (isFlightDelayClaim: FlightDelayClaim) => {
+  if (isFlightDelayClaim === FlightDelayClaim.YES)
+    return {
+      FlightDelayClaim: {
+        isFlightDelayClaim: FlightDelayClaim.YES,
+        flightDelayDetails: {
+          airlineList: {
+            value: { code: 'Aer Lingus', label: 'Aer Lingus' },
+          },
+          flightNumber: '101010',
+          scheduledDate: '2025-01-01',
+        },
+      },
+    };
+
+  return {
+    FlightDelayClaim: {
+      isFlightDelayClaim: FlightDelayClaim.NO,
+    },
+  };
+};
+
 const createClaimSpecData = {
   references,
   claimant1,
@@ -264,6 +285,7 @@ const createClaimSpecData = {
   defendantSolicitor2,
   claimDetails,
   statementOfTruth,
+  flightDelayClaim,
 };
 
 export default createClaimSpecData;
