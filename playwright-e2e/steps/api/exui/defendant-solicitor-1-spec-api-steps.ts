@@ -157,7 +157,6 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-
   async RespondSmallFullDefence() {
     await this.setupApiStep(defendantSolicitor1User);
 
@@ -170,7 +169,6 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -636,9 +634,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildSmall2v1FullDefence(
-        caseDataBeforeSubmission,
-      );
+      await defendantResponseSpecSchemaBuilder.buildSmall2v1FullDefence(caseDataBeforeSubmission);
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
@@ -786,13 +782,11 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
 
     const { evidenceUploadRespondentDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const evidenceUploadRespondentData =
-      await evidenceUploadRespondentDataBuilder.buildDS1Small();
+    const evidenceUploadRespondentData = await evidenceUploadRespondentDataBuilder.buildDS1Small();
     await super.submitCCDEvent(
       defendantSolicitor1User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       evidenceUploadRespondentData,
-      CaseState.CASE_PROGRESSION,
     );
 
     const { evidenceUploadRespondentSchemaBuilder } =

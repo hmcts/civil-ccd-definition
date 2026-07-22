@@ -90,6 +90,13 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
+  async buildIntermediateProceed1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   protected async buildSchema(
     caseDataBeforeSubmission?: CCDCaseData,
     {
