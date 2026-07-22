@@ -1,17 +1,19 @@
 import { z } from 'zod';
 import SdoDJType from '../../../../constants/ccd-events/sdo-dj/sdo-dj-type';
 
+const nonEmptyString = z.string().min(1);
+
 const caseManagementOrder = (sdoDJType: SdoDJType) => {
   if (sdoDJType === SdoDJType.DISPOSAL_HEARING) {
     return {
-      caseManagementOrderSelection: z.string(),
+      caseManagementOrderSelection: nonEmptyString,
     };
   }
 
   if (sdoDJType === SdoDJType.TRIAL) {
     return {
-      caseManagementOrderSelection: z.string(),
-      caseManagementOrderAdditional: z.array(z.string()),
+      caseManagementOrderSelection: nonEmptyString,
+      caseManagementOrderAdditional: z.array(nonEmptyString),
     };
   }
 
@@ -22,40 +24,40 @@ const disposalHearing = (sdoDJType: SdoDJType) => {
   if (sdoDJType === SdoDJType.DISPOSAL_HEARING) {
     return {
       disposalHearingJudgesRecitalDJ: z.looseObject({
-        input: z.string(),
-        judgeNameTitle: z.string(),
+        input: nonEmptyString,
+        judgeNameTitle: nonEmptyString,
       }),
       disposalHearingDisclosureOfDocumentsDJ: z.looseObject({
-        input: z.string(),
-        date: z.string(),
+        input: nonEmptyString,
+        date: nonEmptyString,
       }),
       disposalHearingWitnessOfFactDJ: z.looseObject({
-        input1: z.string(),
-        date1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        date2: z.string(),
-        input4: z.string(),
+        input1: nonEmptyString,
+        date1: nonEmptyString,
+        input2: nonEmptyString,
+        input3: nonEmptyString,
+        date2: nonEmptyString,
+        input4: nonEmptyString,
       }),
       disposalHearingMedicalEvidenceDJ: z.looseObject({
-        input1: z.string(),
+        input1: nonEmptyString,
       }),
       disposalHearingQuestionsToExpertsDJ: z.looseObject({
-        date: z.string(),
+        date: nonEmptyString,
       }),
       disposalHearingSchedulesOfLossDJ: z.looseObject({
-        input1: z.string(),
-        date1: z.string(),
-        input2: z.string(),
-        date2: z.string(),
-        input3: z.string(),
-        date3: z.string(),
-        inputText4: z.string(),
+        input1: nonEmptyString,
+        date1: nonEmptyString,
+        input2: nonEmptyString,
+        date2: nonEmptyString,
+        input3: nonEmptyString,
+        date3: nonEmptyString,
+        inputText4: nonEmptyString,
       }),
       disposalHearingFinalDisposalHearingTimeDJ: z.looseObject({
-        input: z.string(),
-        date: z.string(),
-        time: z.string(),
+        input: nonEmptyString,
+        date: nonEmptyString,
+        time: nonEmptyString,
       }),
       hearingMethodValuesDisposalHearingDJ: z.looseObject({
         list_items: z.array(z.looseObject({})),
@@ -66,19 +68,19 @@ const disposalHearing = (sdoDJType: SdoDJType) => {
         value: z.looseObject({}),
       }),
       disposalHearingHearingNotesDJ: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       sdoR2DisposalHearingWelshLanguageDJ: z.looseObject({
-        description: z.string(),
+        description: nonEmptyString,
       }),
       disposalHearingOrderMadeWithoutHearingDJ: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       disposalHearingAddNewDirectionsDJ: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
-            directionComment: z.string(),
+            directionComment: nonEmptyString,
           }),
         }),
       ),
@@ -92,41 +94,41 @@ const trailHearing = (sdoDJType: SdoDJType) => {
   if (sdoDJType === SdoDJType.TRIAL) {
     return {
       trialHearingJudgesRecitalDJ: z.looseObject({
-        input: z.string(),
-        judgeNameTitle: z.string(),
+        input: nonEmptyString,
+        judgeNameTitle: nonEmptyString,
       }),
       trialHearingDisclosureOfDocumentsDJ: z.looseObject({
-        input1: z.string(),
-        date1: z.string(),
-        input2: z.string(),
-        date2: z.string(),
-        input3: z.string(),
+        input1: nonEmptyString,
+        date1: nonEmptyString,
+        input2: nonEmptyString,
+        date2: nonEmptyString,
+        input3: nonEmptyString,
       }),
       trialHearingWitnessOfFactDJ: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        input4: z.string(),
-        input5: z.string(),
-        input6: z.string(),
-        input7: z.string(),
-        input8: z.string(),
-        date1: z.string(),
-        input9: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        input3: nonEmptyString,
+        input4: nonEmptyString,
+        input5: nonEmptyString,
+        input6: nonEmptyString,
+        input7: nonEmptyString,
+        input8: nonEmptyString,
+        date1: nonEmptyString,
+        input9: nonEmptyString,
       }),
       trialHearingSchedulesOfLossDJ: z.looseObject({
-        input1: z.string(),
-        date1: z.string(),
-        input2: z.string(),
-        date2: z.string(),
-        input3: z.string(),
+        input1: nonEmptyString,
+        date1: nonEmptyString,
+        input2: nonEmptyString,
+        date2: nonEmptyString,
+        input3: nonEmptyString,
       }),
       trialHearingTimeDJ: z.looseObject({
-        date1: z.string(),
-        date2: z.string(),
-        hearingTimeEstimate: z.string(),
-        helpText1: z.string(),
-        helpText2: z.string(),
+        date1: nonEmptyString,
+        date2: nonEmptyString,
+        hearingTimeEstimate: nonEmptyString,
+        helpText1: nonEmptyString,
+        helpText2: nonEmptyString,
       }),
       hearingMethodValuesTrialHearingDJ: z.looseObject({
         list_items: z.array(z.looseObject({})),
@@ -137,74 +139,74 @@ const trailHearing = (sdoDJType: SdoDJType) => {
         value: z.looseObject({}),
       }),
       trialHearingHearingNotesDJ: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       sdoR2TrialWelshLanguageDJ: z.looseObject({
-        description: z.string(),
+        description: nonEmptyString,
       }),
       trialOrderMadeWithoutHearingDJ: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       trialBuildingDispute: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        date1: z.string(),
-        input4: z.string(),
-        date2: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        input3: nonEmptyString,
+        date1: nonEmptyString,
+        input4: nonEmptyString,
+        date2: nonEmptyString,
       }),
       trialClinicalNegligence: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        input4: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        input3: nonEmptyString,
+        input4: nonEmptyString,
       }),
       sdoDJR2TrialCreditHire: z.looseObject({
-        input1: z.string(),
-        input6: z.string(),
-        date3: z.string(),
-        input7: z.string(),
-        date4: z.string(),
-        input8: z.string(),
+        input1: nonEmptyString,
+        input6: nonEmptyString,
+        date3: nonEmptyString,
+        input7: nonEmptyString,
+        date4: nonEmptyString,
+        input8: nonEmptyString,
         sdoDJR2TrialCreditHireDetails: z.looseObject({
-          input2: z.string(),
-          input4: z.string(),
-          input5: z.string(),
-          date2: z.string(),
+          input2: nonEmptyString,
+          input4: nonEmptyString,
+          input5: nonEmptyString,
+          date2: nonEmptyString,
         }),
       }),
       trialHousingDisrepair: z.looseObject({
-        clauseA: z.string(),
-        clauseB: z.string(),
-        firstReportDateBy: z.string(),
-        clauseCBeforeDate: z.string(),
-        jointStatementDateBy: z.string(),
-        clauseCAfterDate: z.string(),
-        clauseD: z.string(),
-        clauseE: z.string(),
+        clauseA: nonEmptyString,
+        clauseB: nonEmptyString,
+        firstReportDateBy: nonEmptyString,
+        clauseCBeforeDate: nonEmptyString,
+        jointStatementDateBy: nonEmptyString,
+        clauseCAfterDate: nonEmptyString,
+        clauseD: nonEmptyString,
+        clauseE: nonEmptyString,
       }),
       trialPPI: z.looseObject({
-        ppiDate: z.string(),
-        text: z.string(),
+        ppiDate: nonEmptyString,
+        text: nonEmptyString,
       }),
       trialPersonalInjury: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        date2: z.string(),
-        input3: z.string(),
-        date3: z.string(),
-        input4: z.string(),
-        date4: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        date2: nonEmptyString,
+        input3: nonEmptyString,
+        date3: nonEmptyString,
+        input4: nonEmptyString,
+        date4: nonEmptyString,
       }),
       trialRoadTrafficAccident: z.looseObject({
-        input: z.string(),
-        date1: z.string(),
+        input: nonEmptyString,
+        date1: nonEmptyString,
       }),
       trialHearingAddNewDirectionsDJ: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
-            directionComment: z.string(),
+            directionComment: nonEmptyString,
           }),
         }),
       ),

@@ -10,6 +10,7 @@ import DefaultJudgementSpecSchemaBuilder from './default-judgement/lr-spec/defau
 import DefaultJudgementSchemaBuilder from './default-judgement/unspec/default-judgement-schema-builder';
 import DefendantResponseSchemaBuilder from './defendant-response/unspec/defendant-response-schema-builder';
 import DefendantResponseSpecSchemaBuilder from './defendant-response/lr-spec/defendant-response-spec-schema-builder';
+import DiscontinueClaimSchemaBuilder from './discontinue-claim/lr-spec/discontinue-claim-schema-builder';
 import EvidenceUploadApplicantSchemaBuilder from './evidence-upload-applicant/unspec/evidence-upload-applicant-schema-builder';
 import EvidenceUploadRespondentSchemaBuilder from './evidence-upload-respondent/unspec/evidence-upload-respondent-schema-builder';
 import InformAgreedExtensionDateSchemaBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-schema-builder';
@@ -94,5 +95,9 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get uploadMediationDocumentsSchemaBuilder() {
     return new UploadMediationDocumentsSchemaBuilder(this.testData);
+  }
+
+  get discontinueClaimSchemaBuilder() {
+    return new DiscontinueClaimSchemaBuilder(this.testData);
   }
 }

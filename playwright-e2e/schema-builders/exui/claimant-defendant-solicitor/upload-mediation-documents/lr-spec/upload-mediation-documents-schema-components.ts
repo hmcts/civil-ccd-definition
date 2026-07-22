@@ -2,12 +2,14 @@ import { z } from 'zod';
 import { Party } from '../../../../../models/users/partys';
 import partys from '../../../../../constants/users/partys';
 
+const nonEmptyString = z.string().min(1);
+
 const uploadedDocument = z.looseObject({
-  category_id: z.string(),
-  document_url: z.string(),
-  upload_timestamp: z.string(),
-  document_binary_url: z.string(),
-  document_filename: z.string(),
+  category_id: nonEmptyString,
+  document_url: nonEmptyString,
+  upload_timestamp: nonEmptyString,
+  document_binary_url: nonEmptyString,
+  document_filename: nonEmptyString,
 });
 
 const mediationDocumentsReferred = (claimantDefendantSolicitorParty: Party) => {
@@ -15,12 +17,12 @@ const mediationDocumentsReferred = (claimantDefendantSolicitorParty: Party) => {
     return {
       app1MediationDocumentsReferred: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
             document: uploadedDocument,
-            documentDate: z.string(),
-            documentType: z.string(),
-            documentUploadedDatetime: z.string(),
+            documentDate: nonEmptyString,
+            documentType: nonEmptyString,
+            documentUploadedDatetime: nonEmptyString,
           }),
         }),
       ).min(1),
@@ -30,12 +32,12 @@ const mediationDocumentsReferred = (claimantDefendantSolicitorParty: Party) => {
     return {
       res1MediationDocumentsReferred: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
             document: uploadedDocument,
-            documentDate: z.string(),
-            documentType: z.string(),
-            documentUploadedDatetime: z.string(),
+            documentDate: nonEmptyString,
+            documentType: nonEmptyString,
+            documentUploadedDatetime: nonEmptyString,
           }),
         }),
       ).min(1),
@@ -45,12 +47,12 @@ const mediationDocumentsReferred = (claimantDefendantSolicitorParty: Party) => {
     return {
       res2MediationDocumentsReferred: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
             document: uploadedDocument,
-            documentDate: z.string(),
-            documentType: z.string(),
-            documentUploadedDatetime: z.string(),
+            documentDate: nonEmptyString,
+            documentType: nonEmptyString,
+            documentUploadedDatetime: nonEmptyString,
           }),
         }),
       ).min(1),
@@ -64,12 +66,12 @@ const mediationNonAttendanceDocs = (claimantDefendantSolicitorParty: Party) => {
     return {
       app1MediationNonAttendanceDocs: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
             document: uploadedDocument,
-            yourName: z.string(),
-            documentDate: z.string(),
-            documentUploadedDatetime: z.string(),
+            yourName: nonEmptyString,
+            documentDate: nonEmptyString,
+            documentUploadedDatetime: nonEmptyString,
           }),
         }),
       ).min(1),
@@ -79,12 +81,12 @@ const mediationNonAttendanceDocs = (claimantDefendantSolicitorParty: Party) => {
     return {
       res1MediationNonAttendanceDocs: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
             document: uploadedDocument,
-            yourName: z.string(),
-            documentDate: z.string(),
-            documentUploadedDatetime: z.string(),
+            yourName: nonEmptyString,
+            documentDate: nonEmptyString,
+            documentUploadedDatetime: nonEmptyString,
           }),
         }),
       ).min(1),
@@ -94,12 +96,12 @@ const mediationNonAttendanceDocs = (claimantDefendantSolicitorParty: Party) => {
     return {
       res2MediationNonAttendanceDocs: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
             document: uploadedDocument,
-            yourName: z.string(),
-            documentDate: z.string(),
-            documentUploadedDatetime: z.string(),
+            yourName: nonEmptyString,
+            documentDate: nonEmptyString,
+            documentUploadedDatetime: nonEmptyString,
           }),
         }),
       ).min(1),

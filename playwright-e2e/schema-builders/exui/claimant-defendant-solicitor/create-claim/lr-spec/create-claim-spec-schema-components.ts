@@ -12,10 +12,10 @@ const nonEmptyString = z.string().min(1);
 
 const addressSchema = z.strictObject({
   AddressLine1: nonEmptyString,
-  AddressLine2: z.string().optional(),
-  AddressLine3: z.string().optional(),
+  AddressLine2: nonEmptyString.optional(),
+  AddressLine3: nonEmptyString.optional(),
   PostTown: nonEmptyString,
-  County: z.string().optional(),
+  County: nonEmptyString.optional(),
   Country: nonEmptyString,
   PostCode: nonEmptyString,
 });
@@ -36,8 +36,8 @@ const partyBaseSchema = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
   flags: flagsSchema,
 };
 
@@ -93,8 +93,8 @@ const detailsForClaimTabPartyBaseFields = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
 };
 
 const individualDetailsForClaimTabPartySchema = z.strictObject({
@@ -144,7 +144,7 @@ export const detailsForClaimTabPartySchema = (partyType: ClaimantDefendantPartyT
 
 const organisationPolicySchema = z.strictObject({
   OrgPolicyCaseAssignedRole: nonEmptyString,
-  OrgPolicyReference: z.string().optional(),
+  OrgPolicyReference: nonEmptyString.optional(),
   Organisation: z
     .strictObject({
       OrganisationID: nonEmptyString,
