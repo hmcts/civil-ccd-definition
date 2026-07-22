@@ -65,7 +65,6 @@
     "FieldType": "Text",
     "ElementLabel": "Subject",
     "SecurityClassification": "Public",
-    "Max": 255,
     "Searchable": "N"
   },
   {
