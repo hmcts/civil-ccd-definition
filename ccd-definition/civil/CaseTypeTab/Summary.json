@@ -189,6 +189,6 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "enterBreathing",
     "TabFieldDisplayOrder": 21,
-    "FieldShowCondition": "enterBreathing=\"*\" AND liftBreathing!=\"*\""
+    "FieldShowCondition": "enterBreathing=\"*\""
   }
 ]
