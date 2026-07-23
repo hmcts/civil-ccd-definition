@@ -19,7 +19,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let errors = [];
 
       before(() => {
-        authorisationCaseType = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseType', key);
+        authorisationCaseType = dataProvider.getConfig('../../../../ccd-definition/generalapplication/AuthorisationCaseType', key);
         uniqResult = uniqWith(authorisationCaseType, noDuplicateFoundACT);
       });
 
