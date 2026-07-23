@@ -30,7 +30,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let caseFieldConfig = [];
       let errors = [];
       before(() => {
-        caseFieldConfig = dataProvider.getConfig('../../../../ga-ccd-definition/CaseField', key);
+        caseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/generalapplication/CaseField', key);
         uniqResult = uniqWith(caseFieldConfig, noDuplicateFound);
       });
 
