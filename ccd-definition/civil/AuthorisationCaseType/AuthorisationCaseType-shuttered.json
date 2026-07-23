@@ -14,7 +14,6 @@
       "caseworker-approver",
       "caseworker-caa",
       "next-hearing-date-admin",
-      "caseworker-wa-task-configuration",
       "caseworker-civil-rparobot",
       "wlu-admin",
       "GS_profile",
@@ -31,7 +30,8 @@
   {
     "CaseTypeID": "CIVIL",
     "UserRoles": [
-      "caseworker-civil-systemupdate"
+      "caseworker-civil-systemupdate",
+      "caseworker-wa-task-configuration"
     ],
     "CRUD": "CRUD"
   }
