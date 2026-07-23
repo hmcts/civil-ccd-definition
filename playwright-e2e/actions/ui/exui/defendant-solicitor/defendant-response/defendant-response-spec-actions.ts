@@ -247,7 +247,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqFastTrackDS1() {
+  async dqFastDS1() {
     const { fileDirectionsQuestionaireDS1Page } = this.defendantResponsePageFactory;
     await fileDirectionsQuestionaireDS1Page.verifyContent(this.ccdCaseData);
     await fileDirectionsQuestionaireDS1Page.enterDetails();
@@ -275,7 +275,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqMultiTrackDS1() {
+  async dqMultiDS1() {
     const { fileDirectionsQuestionaireDS1Page } = this.defendantResponsePageFactory;
     await fileDirectionsQuestionaireDS1Page.verifyContent(this.ccdCaseData);
     await fileDirectionsQuestionaireDS1Page.enterDetails();
@@ -358,7 +358,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqSmallTrackDS1() {
+  async dqSmallDS1() {
     const { determinationWithoutHearingDS1Page } = this.defendantResponsePageFactory;
     await determinationWithoutHearingDS1Page.verifyContent(this.ccdCaseData);
     await determinationWithoutHearingDS1Page.selectNo();
@@ -394,7 +394,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqFastTrackDS2() {
+  async dqFastDS2() {
     const { fileDirectionsQuestionaireDS2Page } = this.defendantResponsePageFactory;
     await fileDirectionsQuestionaireDS2Page.verifyContent(this.ccdCaseData);
     await fileDirectionsQuestionaireDS2Page.enterDetails();
@@ -473,7 +473,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqSmallTrackDS2() {
+  async dqSmallDS2() {
     const { determinationWithoutHearingDS2Page } = this.defendantResponsePageFactory;
     await determinationWithoutHearingDS2Page.verifyContent(this.ccdCaseData);
     await determinationWithoutHearingDS2Page.selectNo();

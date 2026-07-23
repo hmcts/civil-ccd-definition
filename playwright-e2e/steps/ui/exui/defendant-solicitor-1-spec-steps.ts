@@ -52,7 +52,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.dqFastTrackDS1();
+        await defendantResponseSpecActions.dqFastDS1();
         await defendantResponseSpecActions.dqDS1();
         await defendantResponseSpecActions.applicationDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
@@ -79,7 +79,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
         await defendantResponseSpecActions.mediationDS1();
-        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.dqSmallDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -105,7 +105,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
         await defendantResponseSpecActions.mediationDS1();
-        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.dqSmallDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -131,7 +131,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
         await defendantResponseSpecActions.mediationDS1();
-        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.dqSmallDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -156,7 +156,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
         await defendantResponseSpecActions.mediationDS1();
-        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.dqSmallDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -180,7 +180,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.dqFastTrackDS1();
+        await defendantResponseSpecActions.dqFastDS1();
         await defendantResponseSpecActions.dqDS1();
         await defendantResponseSpecActions.applicationDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
@@ -207,7 +207,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.dqFastTrackDS1();
+        await defendantResponseSpecActions.dqFastDS1();
         await defendantResponseSpecActions.dqDS1();
         await defendantResponseSpecActions.applicationDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
@@ -234,7 +234,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.dqFastTrackDS1();
+        await defendantResponseSpecActions.dqFastDS1();
         await defendantResponseSpecActions.dqDS1();
         await defendantResponseSpecActions.applicationDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
@@ -261,7 +261,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.dqMultiTrackDS1();
+        await defendantResponseSpecActions.dqMultiDS1();
         await defendantResponseSpecActions.applicationDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
@@ -341,7 +341,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.whenWillClaimBePaidRepaymentPlan();
         await defendantResponseSpecActions.financialDetails();
         await defendantResponseSpecActions.repaymentPlan();
-        await defendantResponseSpecActions.dqFastTrackDS1();
+        await defendantResponseSpecActions.dqFastDS1();
         await defendantResponseSpecActions.dqDS1();
         await defendantResponseSpecActions.applicationDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
