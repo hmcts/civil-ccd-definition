@@ -28,5 +28,35 @@
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\"",
     "Publish": "Y"
+  },
+  {
+    "ID": "ReasonForReconsideration",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "reasonForReconsiderationApplicant",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\"",
+    "Publish": "Y"
+  },
+  {
+    "ID": "ReasonForReconsideration",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "reasonForReconsiderationRespondent1",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\"",
+    "Publish": "Y"
+  },
+  {
+    "ID": "ReasonForReconsideration",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "reasonForReconsiderationRespondent2",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\"",
+    "Publish": "Y"
   }
 ]
