@@ -5,6 +5,7 @@ import ManageContactInformationDataBuilder from '../common/manage-contact-inform
 import MediationUnsuccessfulDataBuilder from './mediation-unsuccessful/mediation-unsuccessful-data-builder';
 import SendAndReplyDataBuilder from '../common/send-and-reply/send-and-reply-data-builder';
 import TransferOnlineCaseDataBuilder from './transfer-online-case/transfer-online-case-data-builder';
+import ValidateDiscontinueClaimClaimantDataBuilder from './validate-discontinue-claim-claimant/validate-discontinue-claim-claimant-data-builder';
 
 export default class CaseworkerDataBuilderFactory extends BaseDataBuilderFactory {
   get addCaseNoteDataBuilder() {
@@ -29,5 +30,9 @@ export default class CaseworkerDataBuilderFactory extends BaseDataBuilderFactory
 
   get sendAndReplyDataBuilder() {
     return new SendAndReplyDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get validateDiscontinueClaimClaimantDataBuilder() {
+    return new ValidateDiscontinueClaimClaimantDataBuilder(this.requestsFactory, this.testData);
   }
 }

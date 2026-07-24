@@ -123,6 +123,19 @@ export default abstract class BaseApi extends BaseTestData {
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
   }
 
+  protected async startCCDEventError(
+    user: User,
+    ccdEvent: CCDEvent,
+  ): Promise<string> {
+    await this.setupApiStep(user);
+    const { ccdRequests } = this.requestsFactory;
+    return ccdRequests.startEventError(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+  }
+
   protected async submitCaseFlagsEvent(
     user: User,
     ccdEvent: CCDEvent,
