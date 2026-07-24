@@ -261,6 +261,15 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Non-represented defendants must have an address in England or Wales"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.AddressLine1",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
@@ -676,6 +685,15 @@
     "ListElementCode": "soleTraderTradingAs",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "primaryAddress",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Non-represented defendants must have an address in England or Wales"
   },
   {
     "ID": "SecondDefendant",

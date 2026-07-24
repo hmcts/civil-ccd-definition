@@ -350,8 +350,17 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
-    "ListElementCode": "primaryAddress.AddressLine1",
+    "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Non-represented defendants must have an address in England or Wales"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.AddressLine1",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -359,14 +368,6 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.AddressLine2",
-    "FieldDisplayOrder": 12,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "Defendant",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent1",
-    "ListElementCode": "primaryAddress.AddressLine3",
     "FieldDisplayOrder": 13,
     "DisplayContext": "OPTIONAL"
   },
@@ -374,7 +375,7 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
-    "ListElementCode": "primaryAddress.PostTown",
+    "ListElementCode": "primaryAddress.AddressLine3",
     "FieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL"
   },
@@ -382,7 +383,7 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
-    "ListElementCode": "primaryAddress.County",
+    "ListElementCode": "primaryAddress.PostTown",
     "FieldDisplayOrder": 15,
     "DisplayContext": "OPTIONAL"
   },
@@ -390,7 +391,7 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
-    "ListElementCode": "primaryAddress.Country",
+    "ListElementCode": "primaryAddress.County",
     "FieldDisplayOrder": 16,
     "DisplayContext": "OPTIONAL"
   },
@@ -398,8 +399,16 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
-    "ListElementCode": "primaryAddress.PostCode",
+    "ListElementCode": "primaryAddress.Country",
     "FieldDisplayOrder": 17,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Defendant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "primaryAddress.PostCode",
+    "FieldDisplayOrder": 18,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -993,8 +1002,17 @@
     "ID": "SecondDefendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.AddressLine1",
+    "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Non-represented defendants must have an address in England or Wales"
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "primaryAddress.AddressLine1",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1002,14 +1020,6 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.AddressLine2",
-    "FieldDisplayOrder": 12,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "SecondDefendant",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.AddressLine3",
     "FieldDisplayOrder": 13,
     "DisplayContext": "OPTIONAL"
   },
@@ -1017,7 +1027,7 @@
     "ID": "SecondDefendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.PostTown",
+    "ListElementCode": "primaryAddress.AddressLine3",
     "FieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL"
   },
@@ -1025,7 +1035,7 @@
     "ID": "SecondDefendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.County",
+    "ListElementCode": "primaryAddress.PostTown",
     "FieldDisplayOrder": 15,
     "DisplayContext": "OPTIONAL"
   },
@@ -1033,7 +1043,7 @@
     "ID": "SecondDefendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.Country",
+    "ListElementCode": "primaryAddress.County",
     "FieldDisplayOrder": 16,
     "DisplayContext": "OPTIONAL"
   },
@@ -1041,8 +1051,16 @@
     "ID": "SecondDefendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.PostCode",
+    "ListElementCode": "primaryAddress.Country",
     "FieldDisplayOrder": 17,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "primaryAddress.PostCode",
+    "FieldDisplayOrder": 18,
     "DisplayContext": "MANDATORY"
   },
   {
