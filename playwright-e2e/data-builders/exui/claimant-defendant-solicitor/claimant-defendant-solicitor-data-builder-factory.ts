@@ -19,6 +19,8 @@ import RequestForReconsiderationDataBuilder from './request-for-reconsideration/
 import ServiceRequestDataBuilder from './service-request/service-request-data-builder';
 import DefaultJudgementDataBuilder from './default-judgement/unspec/default-judgement-data-builder.ts';
 import DefaultJudgementSpecDataBuilder from './default-judgement/lr-spec/default-judgement-spec-data-builder.ts';
+import SettleClaimDataBuilder from './settle-claim/lr-spec/settle-claim-data-builder';
+import DiscontinueClaimDataBuilder from './discontinue-claim/lr-spec/discontinue-claim-data-builder';
 import UploadMediationDocumentsDataBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-data-builder';
 
 export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDataBuilderFactory {
@@ -102,6 +104,14 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
     return new UploadMediationDocumentsDataBuilder(this.requestsFactory, this.testData);
   }
 
+  get settleClaimDataBuilder() {
+    return new SettleClaimDataBuilder(this.requestsFactory, this.testData);
+  }
+  
+  get discontinueClaimDataBuilder() {
+    return new DiscontinueClaimDataBuilder(this.requestsFactory, this.testData);
+  }
+  
   get requestForReconsiderationDataBuilder() {
     return new RequestForReconsiderationDataBuilder(this.requestsFactory, this.testData);
   }
