@@ -815,4 +815,25 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       await uploadMediationDocumentsSchemaBuilder.buildDS1(caseDataBeforeSubmission);
     ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
   }
+
+  async RequestForReconsideration() {
+    await this.setupApiStep(defendantSolicitor1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { requestForReconsiderationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestForReconsiderationData = await requestForReconsiderationDataBuilder.buildDS1();
+    await super.submitCCDEvent(
+      defendantSolicitor1User,
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
+      requestForReconsiderationData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { requestForReconsiderationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const requestForReconsiderationSchema =
+      await requestForReconsiderationSchemaBuilder.buildDS1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(requestForReconsiderationSchema, this.ccdCaseData);
+  }
 }
