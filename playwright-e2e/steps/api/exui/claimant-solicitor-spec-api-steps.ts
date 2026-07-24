@@ -391,6 +391,66 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     await super.fetchAndSetCCDCaseData();
   }
 
+  async DiscontinueClaimFull() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { discontinueClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const discontinueClaimEventData = await discontinueClaimDataBuilder.buildFull();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      discontinueClaimEventData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { discontinueClaimSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const discontinueClaimSchema =
+      await discontinueClaimSchemaBuilder.buildFull(caseDataBeforeSubmission);
+    ZodHelper.safeParse(discontinueClaimSchema, this.ccdCaseData);
+  }
+
+  async DiscontinueClaimFull1v2() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { discontinueClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const discontinueClaimEventData = await discontinueClaimDataBuilder.buildFull1v2();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      discontinueClaimEventData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { discontinueClaimSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const discontinueClaimSchema =
+      await discontinueClaimSchemaBuilder.buildFull1v2(caseDataBeforeSubmission);
+    ZodHelper.safeParse(discontinueClaimSchema, this.ccdCaseData);
+  }
+
+  async DiscontinueClaimFull2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { discontinueClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const discontinueClaimEventData = await discontinueClaimDataBuilder.buildFull2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      discontinueClaimEventData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { discontinueClaimSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const discontinueClaimSchema =
+      await discontinueClaimSchemaBuilder.buildFull2v1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(discontinueClaimSchema, this.ccdCaseData);
+  }
+
   async RespondFastRejectFullDefence() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -948,6 +1008,34 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
   }
 
+  async RequestForReconsideration() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { requestForReconsiderationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestForReconsiderationData = await requestForReconsiderationDataBuilder.buildCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
+      requestForReconsiderationData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { requestForReconsiderationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const requestForReconsiderationSchema =
+      await requestForReconsiderationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(requestForReconsiderationSchema, this.ccdCaseData);
+  }
+
+  async RequestForReconsiderationError() {
+    return super.startCCDEventError(
+      claimantSolicitorUser,
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
+    );
+  }
+
   async AmendRespondent1ResponseDeadline() {
     await this.setupApiStep(claimantOrganisationSuperUser);
     const newRespondent1Deadline = DateHelper.subtractFromToday({ days: 1 });
@@ -1001,6 +1089,40 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     const defaultJudgementSpecSchema =
       await defaultJudgementSpecSchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(defaultJudgementSpecSchema, this.ccdCaseData);
+  }
+
+  async SettleClaim() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { settleClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const settleClaimData = await settleClaimDataBuilder.build();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      settleClaimData,
+    );
+
+    const { settleClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const settleClaimSchema = await settleClaimSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(settleClaimSchema, this.ccdCaseData);
+  }
+
+  async SettleClaim2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { settleClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const settleClaimData = await settleClaimDataBuilder.build2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      settleClaimData,
+    );
+
+    const { settleClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const settleClaimSchema = await settleClaimSchemaBuilder.build2v1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(settleClaimSchema, this.ccdCaseData);
   }
 
   async AmendRespondent2ResponseDeadline() {
