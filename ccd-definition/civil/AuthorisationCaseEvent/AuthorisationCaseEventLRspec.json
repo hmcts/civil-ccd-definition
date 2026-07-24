@@ -485,7 +485,6 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
-          "caseworker-civil-solicitor",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
