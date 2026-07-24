@@ -7,9 +7,18 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "legal-adviser",
+          "hearing-schedule-access",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -19,7 +28,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
@@ -32,7 +42,6 @@
       },
       {
         "UserRoles": [
-          "judge-profile",
           "legal-adviser",
           "hearing-schedule-access",
           "caseworker-civil-admin"
@@ -47,7 +56,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
@@ -60,7 +70,6 @@
       },
       {
         "UserRoles": [
-          "judge-profile",
           "legal-adviser",
           "hearing-schedule-access",
           "caseworker-civil-admin"
@@ -75,7 +84,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
@@ -88,7 +98,6 @@
       },
       {
         "UserRoles": [
-          "judge-profile",
           "legal-adviser",
           "hearing-schedule-access",
           "caseworker-civil-admin"
@@ -105,13 +114,16 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "judge-profile"
+          "legal-adviser",
+          "hearing-schedule-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
