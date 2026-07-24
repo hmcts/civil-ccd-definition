@@ -4197,7 +4197,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -4205,7 +4206,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -4217,7 +4220,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -4225,7 +4229,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
       }
