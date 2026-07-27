@@ -10,6 +10,7 @@ import ReferJudgeDefenceReceivedDataBuilder from './refer-judge-defence-received
 import SendAndReplyDataBuilder from '../common/send-and-reply/send-and-reply-data-builder';
 import SetAsideOrderTypeDataBuilder from './set-aside-order-type/set-aside-order-type-data-builder';
 import TransferOnlineCaseDataBuilder from './transfer-online-case/transfer-online-case-data-builder';
+import ValidateDiscontinueClaimClaimantDataBuilder from './validate-discontinue-claim-claimant/validate-discontinue-claim-claimant-data-builder';
 
 export default class CaseworkerDataBuilderFactory extends BaseDataBuilderFactory {
   get addCaseNoteDataBuilder() {
@@ -53,6 +54,10 @@ export default class CaseworkerDataBuilderFactory extends BaseDataBuilderFactory
   }
 
   get setAsideOrderTypeDataBuilder() {
-    return new SetAsideOrderTypeDataBuilder(this.requestsFactory, this.testData);
+    return new SetAsideOrderTypeDataBuilder(this.requestsFactory, this.testData); 
+  }
+  
+  get validateDiscontinueClaimClaimantDataBuilder() {
+    return new ValidateDiscontinueClaimClaimantDataBuilder(this.requestsFactory, this.testData);
   }
 }

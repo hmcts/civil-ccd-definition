@@ -1,8 +1,9 @@
 import BaseDataBuilderFactory from '../../../base/base-data-builder-factory';
-import SendAndReplyDataBuilder from '../common/send-and-reply/send-and-reply-data-builder';
 import CreateSdoDataBuilder from './create-sdo/create-sdo-data-builder';
+import DecisionOnReconsiderationRequestDataBuilder from './decision-on-reconsideration-request/decision-on-reconsideration-request-data-builder';
 import GenerateDirectionsOrderDataBuilder from './generate-directions-order/generate-directions-order-data-builder';
 import NotSuitableSdoDataBuilder from './not-suitable-sdo/not-suitable-sdo-data-builder';
+import SendAndReplyDataBuilder from '../common/send-and-reply/send-and-reply-data-builder';
 import SdoDJDataBuilder from './sdo-dj/sdo-dj-data-builder';
 
 export default class JudgeLADataBuilderFactory extends BaseDataBuilderFactory {
@@ -24,5 +25,9 @@ export default class JudgeLADataBuilderFactory extends BaseDataBuilderFactory {
 
   get sdoDJDataBuilder() {
     return new SdoDJDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get decisionOnReconsiderationRequestDataBuilder() {
+    return new DecisionOnReconsiderationRequestDataBuilder(this.requestsFactory, this.testData);
   }
 }
