@@ -226,6 +226,52 @@ export default class CaseworkerApiSteps extends BaseApi {
       await referJudgeDefenceReceivedSchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(referJudgeDefenceReceivedSchema, this.ccdCaseData);
   }
+  
+  async ValidateDiscontinueClaimYes() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { validateDiscontinueClaimClaimantDataBuilder } = this.caseworkerDataBuilderFactory;
+    const validateDiscontinueClaimClaimantData =
+      await validateDiscontinueClaimClaimantDataBuilder.buildYesPermission();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT,
+      validateDiscontinueClaimClaimantData,
+      CaseState.CASE_DISCONTINUED,
+    );
+
+    const { validateDiscontinueClaimClaimantSchemaBuilder } =
+      this.caseworkerSchemaBuilderFactory;
+    const validateDiscontinueClaimClaimantSchema =
+      await validateDiscontinueClaimClaimantSchemaBuilder.buildYesPermission(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(validateDiscontinueClaimClaimantSchema, this.ccdCaseData);
+  }
+
+  async ValidateDiscontinueClaimNo() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { validateDiscontinueClaimClaimantDataBuilder } = this.caseworkerDataBuilderFactory;
+    const validateDiscontinueClaimClaimantData =
+      await validateDiscontinueClaimClaimantDataBuilder.buildNoPermission();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT,
+      validateDiscontinueClaimClaimantData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { validateDiscontinueClaimClaimantSchemaBuilder } =
+      this.caseworkerSchemaBuilderFactory;
+    const validateDiscontinueClaimClaimantSchema =
+      await validateDiscontinueClaimClaimantSchemaBuilder.buildNoPermission(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(validateDiscontinueClaimClaimantSchema, this.ccdCaseData);
+  }
 
   async SendMessage() {
     await this.setupApiStep(ctscAdminUser);

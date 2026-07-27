@@ -10,6 +10,7 @@ import DefaultJudgementSpecSchemaBuilder from './default-judgement/lr-spec/defau
 import DefaultJudgementSchemaBuilder from './default-judgement/unspec/default-judgement-schema-builder';
 import DefendantResponseSchemaBuilder from './defendant-response/unspec/defendant-response-schema-builder';
 import DefendantResponseSpecSchemaBuilder from './defendant-response/lr-spec/defendant-response-spec-schema-builder';
+import DiscontinueClaimSchemaBuilder from './discontinue-claim/lr-spec/discontinue-claim-schema-builder';
 import EvidenceUploadApplicantSchemaBuilder from './evidence-upload-applicant/unspec/evidence-upload-applicant-schema-builder';
 import EvidenceUploadRespondentSchemaBuilder from './evidence-upload-respondent/unspec/evidence-upload-respondent-schema-builder';
 import InformAgreedExtensionDateSchemaBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-schema-builder';
@@ -18,6 +19,8 @@ import JudgmentPaidInFullSchemaBuilder from './judgment-paid-in-full/lr-spec/jud
 import ManageContactInformationSchemaBuilder from '../common/manage-contact-information/manage-contact-information-schema-builder';
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
 import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notify-claim-details-schema-builder';
+import SettleClaimSchemaBuilder from './settle-claim/lr-spec/settle-claim-schema-builder';
+import RequestForReconsiderationSchemaBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
 
 export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends BaseSchemaBuilderFactory {
@@ -99,5 +102,17 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get uploadMediationDocumentsSchemaBuilder() {
     return new UploadMediationDocumentsSchemaBuilder(this.testData);
+  }
+
+  get settleClaimSchemaBuilder() {
+    return new SettleClaimSchemaBuilder(this.testData);
+  }
+  
+  get discontinueClaimSchemaBuilder() {
+    return new DiscontinueClaimSchemaBuilder(this.testData);
+  }
+  
+  get requestForReconsiderationSchemaBuilder() {
+    return new RequestForReconsiderationSchemaBuilder(this.testData);
   }
 }

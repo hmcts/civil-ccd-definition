@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import SdoType from '../../../../constants/ccd-events/sdo/sdo-type';
 
+const nonEmptyString = z.string().min(1);
+
 const sdo = (sdoType: SdoType) => {
   if (
     sdoType === SdoType.TRAIL ||
@@ -8,50 +10,50 @@ const sdo = (sdoType: SdoType) => {
     sdoType === SdoType.TRAIL_NIHL
   ) {
     return {
-      drawDirectionsOrderRequired: z.string(),
+      drawDirectionsOrderRequired: nonEmptyString,
       drawDirectionsOrder: z.looseObject({
-        judgementSum: z.string(),
+        judgementSum: nonEmptyString,
       }),
     };
   }
 
   return {
-    drawDirectionsOrderRequired: z.string(),
+    drawDirectionsOrderRequired: nonEmptyString,
   };
 };
 
 const claimsTrack = (sdoType: SdoType) => {
   if (sdoType === SdoType.FAST_TRACK) {
     return {
-      claimsTrack: z.string(),
-      fastClaims: z.array(z.string()),
+      claimsTrack: nonEmptyString,
+      fastClaims: z.array(nonEmptyString),
     };
   }
 
   if (sdoType === SdoType.FAST_TRACK_NIHL) {
     return {
-      claimsTrack: z.string(),
-      fastClaims: z.array(z.string()),
+      claimsTrack: nonEmptyString,
+      fastClaims: z.array(nonEmptyString),
     };
   }
 
   if (sdoType === SdoType.TRAIL || sdoType === SdoType.TRAIL_NIHL) {
     return {
-      drawDirectionsOrderSmallClaims: z.string(),
+      drawDirectionsOrderSmallClaims: nonEmptyString,
     };
   }
 
   if (sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_SUM_DRH) {
     return {
-      drawDirectionsOrderSmallClaims: z.string(),
-      drawDirectionsOrderSmallClaimsAdditionalDirections: z.array(z.string()),
+      drawDirectionsOrderSmallClaims: nonEmptyString,
+      drawDirectionsOrderSmallClaimsAdditionalDirections: z.array(nonEmptyString),
     };
   }
 
   if (sdoType === SdoType.SMALL_TRACK_NO_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM_DRH) {
     return {
-      claimsTrack: z.string(),
-      smallClaims: z.array(z.string()),
+      claimsTrack: nonEmptyString,
+      smallClaims: z.array(nonEmptyString),
     };
   }
 
@@ -61,14 +63,14 @@ const claimsTrack = (sdoType: SdoType) => {
 const orderType = (sdoType: SdoType) => {
   if (sdoType === SdoType.TRAIL || sdoType === SdoType.TRAIL_NIHL) {
     return {
-      orderType: z.string(),
-      trialAdditionalDirectionsForFastTrack: z.array(z.string()),
+      orderType: nonEmptyString,
+      trialAdditionalDirectionsForFastTrack: z.array(nonEmptyString),
     };
   }
 
   if (sdoType === SdoType.DISPOSAL_HEARING) {
     return {
-      orderType: z.string(),
+      orderType: nonEmptyString,
     };
   }
 
@@ -79,118 +81,118 @@ const fastTrack = (sdoType: SdoType) => {
   if (sdoType === SdoType.FAST_TRACK || sdoType === SdoType.TRAIL) {
     return {
       fastTrackJudgesRecital: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       fastTrackAllocation: z.looseObject({
-        assignComplexityBand: z.string(),
-        band: z.string(),
-        reasons: z.string(),
+        assignComplexityBand: nonEmptyString,
+        band: nonEmptyString,
+        reasons: nonEmptyString,
       }),
       fastTrackDisclosureOfDocuments: z.looseObject({
-        input1: z.string(),
-        date1: z.string(),
-        input2: z.string(),
-        date2: z.string(),
-        input3: z.string(),
+        input1: nonEmptyString,
+        date1: nonEmptyString,
+        input2: nonEmptyString,
+        date2: nonEmptyString,
+        input3: nonEmptyString,
       }),
       sdoR2FastTrackWitnessOfFact: z.looseObject({
-        sdoStatementOfWitness: z.string(),
-        sdoWitnessDeadline: z.string(),
-        sdoWitnessDeadlineDate: z.string(),
-        sdoWitnessDeadlineText: z.string(),
+        sdoStatementOfWitness: nonEmptyString,
+        sdoWitnessDeadline: nonEmptyString,
+        sdoWitnessDeadlineDate: nonEmptyString,
+        sdoWitnessDeadlineText: nonEmptyString,
         sdoR2RestrictWitness: z.looseObject({
-          isRestrictWitness: z.string(),
+          isRestrictWitness: nonEmptyString,
         }),
         sdoRestrictPages: z.looseObject({
-          isRestrictPages: z.string(),
+          isRestrictPages: nonEmptyString,
           restrictNoOfPagesDetails: z.looseObject({
             noOfPages: z.number(),
-            fontDetails: z.string(),
-            witnessShouldNotMoreThanTxt: z.string(),
+            fontDetails: nonEmptyString,
+            witnessShouldNotMoreThanTxt: nonEmptyString,
           }),
         }),
       }),
       fastTrackSchedulesOfLoss: z.looseObject({
-        input1: z.string(),
-        date1: z.string(),
-        input2: z.string(),
-        date2: z.string(),
-        input3: z.string(),
+        input1: nonEmptyString,
+        date1: nonEmptyString,
+        input2: nonEmptyString,
+        date2: nonEmptyString,
+        input3: nonEmptyString,
       }),
       fastTrackTrial: z.looseObject({
-        input1: z.string(),
-        date1: z.string(),
-        date2: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        type: z.array(z.string()),
+        input1: nonEmptyString,
+        date1: nonEmptyString,
+        date2: nonEmptyString,
+        input2: nonEmptyString,
+        input3: nonEmptyString,
+        type: z.array(nonEmptyString),
       }),
-      fastTrackMethod: z.string(),
-      fastTrackMethodTelephoneHearing: z.string().optional(),
+      fastTrackMethod: nonEmptyString,
+      fastTrackMethodTelephoneHearing: nonEmptyString.optional(),
       fastTrackBuildingDispute: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        date1: z.string(),
-        input4: z.string(),
-        date2: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        input3: nonEmptyString,
+        date1: nonEmptyString,
+        input4: nonEmptyString,
+        date2: nonEmptyString,
       }),
       fastTrackClinicalNegligence: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        input4: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        input3: nonEmptyString,
+        input4: nonEmptyString,
       }),
       fastTrackCreditHire: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        date1: z.string(),
-        input3: z.string(),
-        input4: z.string(),
-        date2: z.string(),
-        input5: z.string(),
-        input6: z.string(),
-        date3: z.string(),
-        input7: z.string(),
-        date4: z.string(),
-        input8: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        date1: nonEmptyString,
+        input3: nonEmptyString,
+        input4: nonEmptyString,
+        date2: nonEmptyString,
+        input5: nonEmptyString,
+        input6: nonEmptyString,
+        date3: nonEmptyString,
+        input7: nonEmptyString,
+        date4: nonEmptyString,
+        input8: nonEmptyString,
       }),
       // fastTrackHousingDisrepair: z.looseObject({
-      //   input1: z.string(),
-      //   input2: z.string(),
-      //   input3: z.string(),
-      //   date1: z.string(),
-      //   input4: z.string(),
-      //   date2: z.string(),
+      //   input1: nonEmptyString,
+      //   input2: nonEmptyString,
+      //   input3: nonEmptyString,
+      //   date1: nonEmptyString,
+      //   input4: nonEmptyString,
+      //   date2: nonEmptyString,
       // }),
       fastTrackPersonalInjury: z.looseObject({
-        input1: z.string(),
-        date1: z.string(),
-        input2: z.string(),
-        date2: z.string(),
-        input3: z.string(),
+        input1: nonEmptyString,
+        date1: nonEmptyString,
+        input2: nonEmptyString,
+        date2: nonEmptyString,
+        input3: nonEmptyString,
       }),
       fastTrackRoadTrafficAccident: z.looseObject({
-        input: z.string(),
-        date: z.string(),
+        input: nonEmptyString,
+        date: nonEmptyString,
       }),
       fastTrackAddNewDirections: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
-            directionComment: z.string(),
+            directionComment: nonEmptyString,
           }),
         }),
       ),
       fastTrackNotes: z.looseObject({
-        input: z.string(),
-        date: z.string(),
+        input: nonEmptyString,
+        date: nonEmptyString,
       }),
       fastTrackHearingNotes: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       sdoR2FastTrackUseOfWelshLanguage: z.strictObject({
-        description: z.string(),
+        description: nonEmptyString,
       }),
     };
   }
@@ -201,86 +203,86 @@ const fastTrack = (sdoType: SdoType) => {
 const smallClaims = (sdoType: SdoType) => {
   if (sdoType === SdoType.SMALL_TRACK_SUM || sdoType === SdoType.SMALL_TRACK_NO_SUM) {
     return {
-      smallClaimsPenalNotice: z.string(),
+      smallClaimsPenalNotice: nonEmptyString,
       smallClaimsCreditHire: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        input3: z.string(),
-        input4: z.string(),
-        input5: z.string(),
-        input6: z.string(),
-        input7: z.string(),
-        input11: z.string(),
-        date2: z.string(),
-        date3: z.string(),
-        date4: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        input3: nonEmptyString,
+        input4: nonEmptyString,
+        input5: nonEmptyString,
+        input6: nonEmptyString,
+        input7: nonEmptyString,
+        input11: nonEmptyString,
+        date2: nonEmptyString,
+        date3: nonEmptyString,
+        date4: nonEmptyString,
       }),
       sdoR2SmallClaimsUseOfWelshLanguage: z.looseObject({
-        description: z.string(),
+        description: nonEmptyString,
       }),
       sdoR2SmallClaimsWitnessStatementOther: z.looseObject({
-        sdoStatementOfWitness: z.string(),
-        isRestrictWitness: z.string(),
-        isRestrictPages: z.string(),
-        text: z.string(),
-        deadlineDate: z.string(),
+        sdoStatementOfWitness: nonEmptyString,
+        isRestrictWitness: nonEmptyString,
+        isRestrictPages: nonEmptyString,
+        text: nonEmptyString,
+        deadlineDate: nonEmptyString,
       }),
       smallClaimsDocuments: z.looseObject({
-        input1: z.string(),
-        input2: z.string(),
-        deadlineDate: z.string(),
+        input1: nonEmptyString,
+        input2: nonEmptyString,
+        deadlineDate: nonEmptyString,
       }),
       smallClaimsFlightDelay: z.looseObject({
-        relatedClaimsInput: z.string(),
-        legalDocumentsInput: z.string(),
+        relatedClaimsInput: nonEmptyString,
+        legalDocumentsInput: nonEmptyString,
       }),
       smallClaimsHearing: z.looseObject({
-        input1: z.string(),
-        time: z.string(),
-        input2: z.string(),
-        dateFrom: z.string(),
+        input1: nonEmptyString,
+        time: nonEmptyString,
+        input2: nonEmptyString,
+        dateFrom: nonEmptyString,
       }),
       smallClaimsHousingDisrepair: z.looseObject({
-        clauseA: z.string(),
-        clauseB: z.string(),
-        firstReportDateBy: z.string(),
-        clauseCBeforeDate: z.string(),
-        jointStatementDateBy: z.string(),
-        clauseCAfterDate: z.string(),
-        clauseD: z.string(),
-        clauseE: z.string(),
+        clauseA: nonEmptyString,
+        clauseB: nonEmptyString,
+        firstReportDateBy: nonEmptyString,
+        clauseCBeforeDate: nonEmptyString,
+        jointStatementDateBy: nonEmptyString,
+        clauseCAfterDate: nonEmptyString,
+        clauseD: nonEmptyString,
+        clauseE: nonEmptyString,
       }),
-      sdoHearingNotes: z.strictObject({ input: z.string() }),
+      sdoHearingNotes: z.strictObject({ input: nonEmptyString }),
       hearingMethodValuesSmallClaims: z.looseObject({}),
       smallClaimsJudgementDeductionValue: z.looseObject({
-        value: z.string(),
+        value: nonEmptyString,
       }),
       smallClaimsJudgesRecital: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
-      smallClaimsMethod: z.string(),
+      smallClaimsMethod: nonEmptyString,
       smallClaimsMethodInPerson: z.looseObject({
         value: z.looseObject({
-          code: z.string(),
-          label: z.string(),
+          code: nonEmptyString,
+          label: nonEmptyString,
         }),
       }),
       smallClaimsNotes: z.looseObject({
-        input: z.string(),
-        date: z.string(),
+        input: nonEmptyString,
+        date: nonEmptyString,
       }),
       smallClaimsPPI: z.looseObject({
-        ppiDate: z.string(),
-        text: z.string(),
+        ppiDate: nonEmptyString,
+        text: nonEmptyString,
       }),
       smallClaimsRoadTrafficAccident: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       smallClaimsAddNewDirections: z.array(
         z.looseObject({
-          id: z.string(),
+          id: nonEmptyString,
           value: z.looseObject({
-            directionComment: z.string(),
+            directionComment: nonEmptyString,
           }),
         }),
       ),
@@ -294,94 +296,94 @@ const sdoR2FastTrack = (sdoType: SdoType) => {
   if (sdoType === SdoType.FAST_TRACK_NIHL || sdoType === SdoType.TRAIL_NIHL) {
     return {
       sdoFastTrackJudgesRecital: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       sdoR2DisclosureOfDocuments: z.looseObject({
-        standardDisclosureTxt: z.string(),
-        standardDisclosureDate: z.string(),
-        inspectionTxt: z.string(),
-        inspectionDate: z.string(),
-        requestsWillBeCompiledLabel: z.string(),
+        standardDisclosureTxt: nonEmptyString,
+        standardDisclosureDate: nonEmptyString,
+        inspectionTxt: nonEmptyString,
+        inspectionDate: nonEmptyString,
+        requestsWillBeCompiledLabel: nonEmptyString,
       }),
       sdoR2WitnessesOfFact: z.looseObject({
-        sdoStatementOfWitness: z.string(),
-        sdoWitnessDeadline: z.string(),
-        sdoWitnessDeadlineDate: z.string(),
-        sdoWitnessDeadlineText: z.string(),
+        sdoStatementOfWitness: nonEmptyString,
+        sdoWitnessDeadline: nonEmptyString,
+        sdoWitnessDeadlineDate: nonEmptyString,
+        sdoWitnessDeadlineText: nonEmptyString,
         sdoR2RestrictWitness: z.looseObject({
-          isRestrictWitness: z.string(),
+          isRestrictWitness: nonEmptyString,
         }),
         sdoRestrictPages: z.looseObject({
-          isRestrictPages: z.string(),
+          isRestrictPages: nonEmptyString,
         }),
       }),
       sdoR2ExpertEvidence: z.looseObject({
-        sdoClaimantPermissionToRelyTxt: z.string(),
+        sdoClaimantPermissionToRelyTxt: nonEmptyString,
       }),
       sdoR2AddendumReport: z.looseObject({
-        sdoAddendumReportTxt: z.string(),
-        sdoAddendumReportDate: z.string(),
+        sdoAddendumReportTxt: nonEmptyString,
+        sdoAddendumReportDate: nonEmptyString,
       }),
       sdoR2FurtherAudiogram: z.looseObject({
-        sdoClaimantShallUndergoTxt: z.string(),
-        sdoClaimantShallUndergoDate: z.string(),
-        sdoServiceReportTxt: z.string(),
-        sdoServiceReportDate: z.string(),
+        sdoClaimantShallUndergoTxt: nonEmptyString,
+        sdoClaimantShallUndergoDate: nonEmptyString,
+        sdoServiceReportTxt: nonEmptyString,
+        sdoServiceReportDate: nonEmptyString,
       }),
       sdoR2QuestionsClaimantExpert: z.looseObject({
-        sdoDefendantMayAskTxt: z.string(),
-        sdoDefendantMayAskDate: z.string(),
-        sdoQuestionsShallBeAnsweredTxt: z.string(),
-        sdoQuestionsShallBeAnsweredDate: z.string(),
-        sdoUploadedToDigitalPortalTxt: z.string(),
+        sdoDefendantMayAskTxt: nonEmptyString,
+        sdoDefendantMayAskDate: nonEmptyString,
+        sdoQuestionsShallBeAnsweredTxt: nonEmptyString,
+        sdoQuestionsShallBeAnsweredDate: nonEmptyString,
+        sdoUploadedToDigitalPortalTxt: nonEmptyString,
         sdoApplicationToRelyOnFurther: z.looseObject({
-          doRequireApplicationToRely: z.string(),
+          doRequireApplicationToRely: nonEmptyString,
         }),
       }),
       sdoR2PermissionToRelyOnExpert: z.looseObject({
-        sdoPermissionToRelyOnExpertTxt: z.string(),
-        sdoPermissionToRelyOnExpertDate: z.string(),
-        sdoJointMeetingOfExpertsTxt: z.string(),
-        sdoJointMeetingOfExpertsDate: z.string(),
-        sdoUploadedToDigitalPortalTxt: z.string(),
+        sdoPermissionToRelyOnExpertTxt: nonEmptyString,
+        sdoPermissionToRelyOnExpertDate: nonEmptyString,
+        sdoJointMeetingOfExpertsTxt: nonEmptyString,
+        sdoJointMeetingOfExpertsDate: nonEmptyString,
+        sdoUploadedToDigitalPortalTxt: nonEmptyString,
       }),
       sdoR2EvidenceAcousticEngineer: z.looseObject({
-        sdoEvidenceAcousticEngineerTxt: z.string(),
-        sdoInstructionOfTheExpertTxt: z.string(),
-        sdoInstructionOfTheExpertDate: z.string(),
-        sdoInstructionOfTheExpertTxtArea: z.string(),
-        sdoExpertReportTxt: z.string(),
-        sdoExpertReportDate: z.string(),
-        sdoExpertReportDigitalPortalTxt: z.string(),
-        sdoWrittenQuestionsTxt: z.string(),
-        sdoWrittenQuestionsDate: z.string(),
-        sdoWrittenQuestionsDigitalPortalTxt: z.string(),
-        sdoRepliesTxt: z.string(),
-        sdoRepliesDate: z.string(),
-        sdoRepliesDigitalPortalTxt: z.string(),
-        sdoServiceOfOrderTxt: z.string(),
+        sdoEvidenceAcousticEngineerTxt: nonEmptyString,
+        sdoInstructionOfTheExpertTxt: nonEmptyString,
+        sdoInstructionOfTheExpertDate: nonEmptyString,
+        sdoInstructionOfTheExpertTxtArea: nonEmptyString,
+        sdoExpertReportTxt: nonEmptyString,
+        sdoExpertReportDate: nonEmptyString,
+        sdoExpertReportDigitalPortalTxt: nonEmptyString,
+        sdoWrittenQuestionsTxt: nonEmptyString,
+        sdoWrittenQuestionsDate: nonEmptyString,
+        sdoWrittenQuestionsDigitalPortalTxt: nonEmptyString,
+        sdoRepliesTxt: nonEmptyString,
+        sdoRepliesDate: nonEmptyString,
+        sdoRepliesDigitalPortalTxt: nonEmptyString,
+        sdoServiceOfOrderTxt: nonEmptyString,
       }),
       sdoR2QuestionsToEntExpert: z.looseObject({
-        sdoWrittenQuestionsTxt: z.string(),
-        sdoWrittenQuestionsDate: z.string(),
-        sdoWrittenQuestionsDigPortalTxt: z.string(),
-        sdoQuestionsShallBeAnsweredTxt: z.string(),
-        sdoQuestionsShallBeAnsweredDate: z.string(),
-        sdoShallBeUploadedTxt: z.string(),
+        sdoWrittenQuestionsTxt: nonEmptyString,
+        sdoWrittenQuestionsDate: nonEmptyString,
+        sdoWrittenQuestionsDigPortalTxt: nonEmptyString,
+        sdoQuestionsShallBeAnsweredTxt: nonEmptyString,
+        sdoQuestionsShallBeAnsweredDate: nonEmptyString,
+        sdoShallBeUploadedTxt: nonEmptyString,
       }),
       sdoR2ScheduleOfLoss: z.looseObject({
-        sdoR2ScheduleOfLossClaimantText: z.string(),
-        sdoR2ScheduleOfLossClaimantDate: z.string(),
-        sdoR2ScheduleOfLossDefendantText: z.string(),
-        sdoR2ScheduleOfLossDefendantDate: z.string(),
-        isClaimForPecuniaryLoss: z.string(),
+        sdoR2ScheduleOfLossClaimantText: nonEmptyString,
+        sdoR2ScheduleOfLossClaimantDate: nonEmptyString,
+        sdoR2ScheduleOfLossDefendantText: nonEmptyString,
+        sdoR2ScheduleOfLossDefendantDate: nonEmptyString,
+        isClaimForPecuniaryLoss: nonEmptyString,
       }),
       sdoR2UploadOfDocuments: z.looseObject({
-        sdoUploadOfDocumentsTxt: z.string(),
+        sdoUploadOfDocumentsTxt: nonEmptyString,
       }),
       sdoR2Trial: z.looseObject({
-        trialOnOptions: z.string(),
-        lengthList: z.string(),
+        trialOnOptions: nonEmptyString,
+        lengthList: nonEmptyString,
         hearingCourtLocationList: z.looseObject({
           value: z.looseObject({}),
         }),
@@ -389,18 +391,18 @@ const sdoR2FastTrack = (sdoType: SdoType) => {
           list_items: z.array(z.looseObject({})),
           value: z.looseObject({}),
         }),
-        physicalBundleOptions: z.string(),
-        physicalBundlePartyTxt: z.string(),
+        physicalBundleOptions: nonEmptyString,
+        physicalBundlePartyTxt: nonEmptyString,
         sdoR2TrialFirstOpenDateAfter: z.looseObject({
-          listFrom: z.string(),
+          listFrom: nonEmptyString,
         }),
-        hearingNotesTxt: z.string(),
+        hearingNotesTxt: nonEmptyString,
       }),
       sdoR2NihlUseOfWelshLanguage: z.looseObject({
-        description: z.string(),
+        description: nonEmptyString,
       }),
-      sdoR2ImportantNotesTxt: z.string(),
-      sdoR2ImportantNotesDate: z.string(),
+      sdoR2ImportantNotesTxt: nonEmptyString,
+      sdoR2ImportantNotesDate: nonEmptyString,
     };
   }
 
@@ -411,25 +413,25 @@ const sdoR2SmallClaims = (sdoType: SdoType) => {
   if (sdoType === SdoType.SMALL_TRACK_SUM_DRH || sdoType === SdoType.SMALL_TRACK_NO_SUM_DRH) {
     return {
       sdoR2SmallClaimsJudgesRecital: z.looseObject({
-        input: z.string(),
+        input: nonEmptyString,
       }),
       sdoR2SmallClaimsPPI: z.looseObject({
-        ppiDate: z.string(),
-        text: z.string(),
+        ppiDate: nonEmptyString,
+        text: nonEmptyString,
       }),
       sdoR2SmallClaimsWitnessStatements: z.looseObject({
-        sdoStatementOfWitness: z.string(),
-        deadlineDate: z.string(),
-        isRestrictWitness: z.string(),
-        isRestrictPages: z.string(),
-        text: z.string(),
+        sdoStatementOfWitness: nonEmptyString,
+        deadlineDate: nonEmptyString,
+        isRestrictWitness: nonEmptyString,
+        isRestrictPages: nonEmptyString,
+        text: nonEmptyString,
       }),
       sdoR2SmallClaimsUploadDoc: z.looseObject({
-        sdoUploadOfDocumentsTxt: z.string(),
+        sdoUploadOfDocumentsTxt: nonEmptyString,
       }),
       sdoR2SmallClaimsHearing: z.looseObject({
-        trialOnOptions: z.string(),
-        lengthList: z.string(),
+        trialOnOptions: nonEmptyString,
+        lengthList: nonEmptyString,
         hearingCourtLocationList: z.looseObject({
           list_items: z.array(z.looseObject({})),
           value: z.looseObject({}),
@@ -438,21 +440,21 @@ const sdoR2SmallClaims = (sdoType: SdoType) => {
           list_items: z.array(z.looseObject({})),
           value: z.looseObject({}),
         }),
-        physicalBundleOptions: z.string(),
-        hearingNotesTxt: z.string(),
+        physicalBundleOptions: nonEmptyString,
+        hearingNotesTxt: nonEmptyString,
         sdoR2SmallClaimsHearingFirstOpenDateAfter: z.looseObject({
-          listFrom: z.string(),
+          listFrom: nonEmptyString,
         }),
         sdoR2SmallClaimsBundleOfDocs: z.looseObject({
-          physicalBundlePartyTxt: z.string(),
+          physicalBundlePartyTxt: nonEmptyString,
         }),
       }),
       sdoR2DrhUseOfWelshLanguage: z.looseObject({
-        description: z.string(),
+        description: nonEmptyString,
       }),
       sdoR2SmallClaimsImpNotes: z.looseObject({
-        text: z.string(),
-        date: z.string(),
+        text: nonEmptyString,
+        date: nonEmptyString,
       }),
     };
   }
