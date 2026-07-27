@@ -207,19 +207,19 @@ const ccdEvents: CCDEvents = {
     id: 'CONFIRM_ORDER_REVIEW',
     name: 'Confirm order review',
     description: 'Confirm order review',
-    order: 18.5,
+    order: 18,
   },
   RECORD_JUDGMENT: {
     id: 'RECORD_JUDGMENT',
     name: 'Record Judgment',
     description: 'Record Judgment',
-    order: 18.6,
+    order: 18,
   },
   EDIT_JUDGMENT: {
     id: 'EDIT_JUDGMENT',
     name: 'Edit Judgment',
     description: 'Edit Judgment',
-    order: 18.7,
+    order: 18,
   },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
