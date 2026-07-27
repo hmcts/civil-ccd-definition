@@ -24,6 +24,11 @@ export default class ClaimAmountDetailsPage extends ExuiPage(BasePage) {
     await super.expectTableValueByRowName(tableRowNames.total, amount);
   }
 
+  async verifyMultiTrack() {
+    const amount = `£ ${CaseDataHelper.getClaimValue(ClaimTrack.MULTI_CLAIM).toFixed(2)}`;
+    await super.expectTableValueByRowName(tableRowNames.total, amount);
+  }
+
   async submit() {
     await super.retryClickSubmit();
   }
