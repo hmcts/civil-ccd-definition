@@ -89,6 +89,9 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ isFlightDelayClaim: FlightDelayClaim.YES });
   }
 
+  async buildSmall1v1FlightDelayOtherAirline(): Promise<z.ZodType> {
+    return this.buildSchema({ isFlightDelayClaim: FlightDelayClaim.YES, isOtherAirline: true });
+  }
   protected async buildSchema({
                                 claimType = ClaimType.ONE_VS_ONE,
                                 claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
@@ -96,6 +99,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
                                 defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
                                 defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
                                 isFlightDelayClaim = FlightDelayClaim.NO,
+                                isOtherAirline = false,
                               }: {
     claimType?: ClaimType;
     claimant1PartyType?: ClaimantDefendantPartyType;
@@ -103,6 +107,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
     isFlightDelayClaim?: FlightDelayClaim;
+    isOtherAirline?: boolean;
   } = {}): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
@@ -115,7 +120,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
       createClaimSpecSchemaComponents.defendant1(defendant1PartyType),
       createClaimSpecSchemaComponents.statementOfTruth,
       createClaimSpecSchemaComponents.solicitorReferences(claimType),
-      createClaimSpecSchemaComponents.claimDetails(isFlightDelayClaim),
+      createClaimSpecSchemaComponents.claimDetails(isFlightDelayClaim, isOtherAirline),
       createClaimSpecSchemaComponents.claimant2(claimType, claimant2PartyType),
       createClaimSpecSchemaComponents.defendantSolicitor1(claimType),
       createClaimSpecSchemaComponents.defendant2(claimType, defendant2PartyType),

@@ -1013,4 +1013,23 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
   }
+
+  async CreateClaimSmallTrackFlightDelayOtherAirline1v1() {
+    await this.setupUserData(claimantSolicitorUser);
+
+    const { createClaimSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimEventData = await createClaimSpecDataBuilder.buildSmall1v1FlightDelayOtherAirline();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+      createClaimEventData,
+      CaseState.PENDING_CASE_ISSUED,
+    );
+
+    const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimResponseSchema =
+      await createClaimSpecSchemaBuilder.buildSmall1v1FlightDelayOtherAirline();
+    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+  }
 }

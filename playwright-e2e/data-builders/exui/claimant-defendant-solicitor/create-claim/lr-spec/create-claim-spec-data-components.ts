@@ -190,8 +190,8 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
   return {};
 };
 
-const claimDetails = (claimTrack: ClaimTrack, isFlightDelayClaim: FlightDelayClaim) => ({
-  ...flightDelayClaim(isFlightDelayClaim),
+const claimDetails = (claimTrack: ClaimTrack, isFlightDelayClaim: FlightDelayClaim, isOtherAirline = false, ) => ({
+  ...flightDelayClaim(isFlightDelayClaim, isOtherAirline),
   Details: {
     detailsOfClaim: 'Test details of claim',
   },
@@ -250,18 +250,27 @@ const statementOfTruth = {
   },
 };
 
-const flightDelayClaim = (isFlightDelayClaim: FlightDelayClaim) => {
+const flightDelayClaim = (isFlightDelayClaim: FlightDelayClaim, isOtherAirline = false) => {
   if (isFlightDelayClaim === FlightDelayClaim.YES)
     return {
       FlightDelayClaim: {
         isFlightDelayClaim: FlightDelayClaim.YES,
-        flightDelayDetails: {
-          airlineList: {
-            value: { code: 'Aer Lingus', label: 'Aer Lingus' },
+        flightDelayDetails: isOtherAirline
+          ? {
+            airlineList: {
+              value: { code: 'OTHER', label: 'OTHER' },
+            },
+            nameOfAirline: 'Other Airline Name',
+            flightNumber: '011111',
+            scheduledDate: '2025-01-01',
+          }
+          : {
+            airlineList: {
+              value: { code: 'Aer Lingus', label: 'Aer Lingus' },
+            },
+            flightNumber: '101010',
+            scheduledDate: '2025-01-01',
           },
-          flightNumber: '101010',
-          scheduledDate: '2025-01-01',
-        },
       },
     };
 

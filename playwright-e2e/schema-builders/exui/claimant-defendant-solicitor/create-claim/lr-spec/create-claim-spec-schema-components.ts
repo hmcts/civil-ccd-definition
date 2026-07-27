@@ -413,22 +413,30 @@ const defendant2Representation = (claimType: ClaimType): SchemaShape => {
   };
 };
 
-const flightDelayDetailsSchema = z.strictObject({
-  airlineList: z.strictObject({
-    value: z.strictObject({
-      code: nonEmptyString,
-      label: nonEmptyString,
+const flightDelayDetailsSchema = (isOtherAirline: boolean) =>
+  z.strictObject({
+    airlineList: z.strictObject({
+      value: z.strictObject({
+        code: nonEmptyString,
+        label: nonEmptyString,
+      }),
+      list_items: z
+        .array(z.strictObject({ code: nonEmptyString, label: nonEmptyString }))
+        .min(1)
+        .optional(),
     }),
-  }),
-  flightNumber: nonEmptyString,
-  scheduledDate: nonEmptyString,
-  flightCourtLocation: z.strictObject({
-    region: z.string().nullable(),
-    baseLocation: z.string().nullable(),
-  }),
-});
+    ...(isOtherAirline && { nameOfAirline: nonEmptyString }),
+    flightNumber: nonEmptyString,
+    scheduledDate: nonEmptyString,
+    flightCourtLocation: z
+      .strictObject({
+        region: z.string().nullable(),
+        baseLocation: z.string().nullable(),
+      })
+      .optional(),
+  });
 
-const claimDetails = (isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO): SchemaShape => ({
+const claimDetails = (isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO, isOtherAirline = false): SchemaShape => ({
   allPartyNames: nonEmptyString,
   submittedDate: nonEmptyString,
   anyRepresented: nonEmptyString,
@@ -444,7 +452,9 @@ const claimDetails = (isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO
   claimIssuedPBADetails: claimIssuedPbaDetailsSchema,
   isFlightDelayClaim: z.literal(isFlightDelayClaim),
   flightDelayDetails:
-    isFlightDelayClaim === FlightDelayClaim.YES ? flightDelayDetailsSchema : z.unknown(),
+    isFlightDelayClaim === FlightDelayClaim.YES
+      ? flightDelayDetailsSchema(isOtherAirline)
+      : z.unknown(),
   timelineOfEvents: timelineOfEventsSchema,
   speclistYourEvidenceList: evidenceListSchema,
   claimAmountBreakup: claimAmountBreakupSchema,

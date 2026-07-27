@@ -15,6 +15,9 @@ import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import JudgeLADataBuilderFactory from '../../../data-builders/exui/judge-la/judge-la-data-builder-factory';
 import JudgeLASchemaBuilderFactory from '../../../schema-builders/exui/judge-la/judge-la-schema-builder-factory';
+import initialDirectionsFlightDelayTask from "../../../constants/wa-tasks/initialDirectionsFlightDelayTask.ts";
+import initialDirectionsOtherFlightDelayTask
+  from "../../../constants/wa-tasks/initialDirectionsOtherFlightDelayTask.ts";
 
 @AllMethodsStep()
 export default class JudgeApiSteps extends BaseApi {
@@ -366,5 +369,46 @@ export default class JudgeApiSteps extends BaseApi {
     const { sendAndReplySchemaBuilder } = this.judgeSchemaBuilderFactory;
     const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+  }
+
+  async SdoSmallTrackSumFlightDelay() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildSmallSumSdo();
+
+    await super.submitWAEvent(
+      judgeRegion1User,
+      initialDirectionsFlightDelayTask,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const createSdoSchema = await createSdoSchemaBuilder.buildSmallSumSdo(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+  }
+
+  async SdoSmallTrackNoSumFlightDelay() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildSmallNoSumSdo();
+
+    await super.submitWAEvent(
+      judgeRegion1User,
+      initialDirectionsOtherFlightDelayTask,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const createSdoSchema =
+      await createSdoSchemaBuilder.buildSmallNoSumSdo(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 }
