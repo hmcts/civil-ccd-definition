@@ -14,6 +14,7 @@ import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgme
 import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
 import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
 import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/intermediateTrackDirectionsTask';
+import multiTrackDirectionsTask from '../../../constants/wa-tasks/multiTrackDirectionsTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -313,7 +314,7 @@ export default class JudgeSteps extends BaseExui {
       },
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       judgeRegion1User,
-      intermediateTrackDirectionsTask,
+      multiTrackDirectionsTask,
       { verifySuccessEvent: false },
     );
   }
