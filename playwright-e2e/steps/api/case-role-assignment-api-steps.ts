@@ -33,10 +33,27 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
 
   async UnassignCasesForUser(user: User) {
     await this.setupApiStep(user);
+    const { civilServiceRequests } = this.requestsFactory;
     const assignedCases = await UserAssignedCasesHelper.getUserAssignedCases(user);
+
+    // It seems that CCD doesn't like large arrays of users to unassign cases from
+    // Seeing 500 error - chunking the array (into an array of arrays) alleviates
+    // this issue - only seeing this on the nightly pipeline due to the number of
+    // cases being generated
+
     if (assignedCases) {
-      const { civilServiceRequests } = this.requestsFactory;
-      await civilServiceRequests.unassignUserFromCases(user, assignedCases);
+      const chunkedArray = [];
+      const size = 5;  // if the 500 error resurfaces, then increase this value
+      for (let i = 0; i < assignedCases.length; i += size) {
+        chunkedArray.push(assignedCases.slice(i, i + size));
+      }
+
+      if (chunkedArray.length > 0) {
+        for (let i = 0; i < chunkedArray.length; i++) {
+          console.log('assignedCases: ', chunkedArray[i]);
+          await civilServiceRequests.unassignUserFromCases(user, chunkedArray[i]);
+        }
+      }
     }
   }
 }
