@@ -25,7 +25,7 @@ const accessGrantedWarning = (claimType: ClaimType) => {
 const certificateOfService1 = (claimType: ClaimType) => {
   if (ClaimTypeHelper.isDefendant1Unrepresented(claimType)) {
     const serviceDate = DateHelper.formatDateToString(
-      DateHelper.subtractFromToday({ days: 1 }),
+      DateHelper.subtractFromToday({ days: 1, workingDay: true }),
       { outputFormat: 'YYYY-MM-DD' },
     );
 
@@ -56,7 +56,7 @@ const certificateOfService1 = (claimType: ClaimType) => {
 const certificateOfService2 = (claimType: ClaimType) => {
   if (ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
     const serviceDate = DateHelper.formatDateToString(
-      DateHelper.subtractFromToday({ days: 1 }),
+      DateHelper.subtractFromToday({ days: 1, workingDay: true }),
       { outputFormat: 'YYYY-MM-DD' },
     );
 
