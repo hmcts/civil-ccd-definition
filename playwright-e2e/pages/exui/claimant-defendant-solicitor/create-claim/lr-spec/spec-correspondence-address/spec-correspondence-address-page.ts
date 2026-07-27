@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { heading, paragraphs, radioButtons } from './spec-correspondence-address-content';
 import CorrespondenceAddressFragment from '../../../../fragments/correspondence-address/correspondence-address-fragment';
 

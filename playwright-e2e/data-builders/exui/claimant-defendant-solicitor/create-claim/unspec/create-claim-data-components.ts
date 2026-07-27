@@ -234,7 +234,7 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
 const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimTypeUnspecObjs) => {
   const isPersonalInjuryClaimType = typeof claimTypeUnSpec === 'object' && (claimTypeUnSpec as PersonalInjuryClaimTypeUnspecObjs).claimTypeUnspec === ClaimTypeUnspec.PERSONAL_INJURY;
 
-  if(isPersonalInjuryClaimType) {
+  if (isPersonalInjuryClaimType) {
     return {
       ClaimTypeUnSpec: {
         claimTypeUnSpec: (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).claimTypeUnspec,
@@ -246,7 +246,7 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
     }
   }
 
-  if((claimTypeUnSpec as ClaimTypeUnspec) === ClaimTypeUnspec.OTHER) {
+  if ((claimTypeUnSpec as ClaimTypeUnspec) === ClaimTypeUnspec.OTHER) {
     return {
       ClaimTypeUnSpec: {
         claimTypeUnSpec: claimTypeUnSpec as ClaimTypeUnspec,

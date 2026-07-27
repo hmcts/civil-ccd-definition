@@ -28,52 +28,85 @@ export default class LegalAdvisorApiSteps extends BaseApi {
 
   async SdoSmallTrackSum() {
     await this.setupApiStep(tribunalCaseworkerRegion1User);
-    const taskId = await super.retrieveAndAssignWATask(
-      tribunalCaseworkerRegion1User,
-      legalAdvisorSmallClaimsTrackDirectionsTask,
-    );
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
-    const createSdoData = await createSdoDataBuilder.buildSmallTrackSumSdo();
+    const createSdoData = await createSdoDataBuilder.buildSmallSumSdo();
 
-    await super.submitCCDEvent(
+    await super.submitWAEvent(
       tribunalCaseworkerRegion1User,
+      legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
       CaseState.CASE_PROGRESSION,
     );
-    await this.completeWATask(tribunalCaseworkerRegion1User, taskId);
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const createSdoSchema =
-      await createSdoSchemaBuilder.buildSmallTrackSumSdo(caseDataBeforeSubmission);
+      await createSdoSchemaBuilder.buildSmallSumSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
   async SdoSmallTrackNoSum() {
     await this.setupApiStep(tribunalCaseworkerRegion1User);
-    const taskId = await super.retrieveAndAssignWATask(
-      tribunalCaseworkerRegion1User,
-      legalAdvisorSmallClaimsTrackDirectionsTask,
-    );
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
-    const createSdoData = await createSdoDataBuilder.buildSmallTrackNoSumSdo();
+    const createSdoData = await createSdoDataBuilder.buildSmallNoSumSdo();
 
-    await super.submitCCDEvent(
+    await super.submitWAEvent(
       tribunalCaseworkerRegion1User,
+      legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
       CaseState.CASE_PROGRESSION,
     );
-    await this.completeWATask(tribunalCaseworkerRegion1User, taskId);
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const createSdoSchema =
-      await createSdoSchemaBuilder.buildSmallTrackNoSumSdo(caseDataBeforeSubmission);
+      await createSdoSchemaBuilder.buildSmallNoSumSdo(caseDataBeforeSubmission);
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
+  async SdoSmallTrackSumDRH() {
+    await this.setupApiStep(tribunalCaseworkerRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildSmallSumDRHSdo();
+
+    await super.submitWAEvent(
+      tribunalCaseworkerRegion1User,
+      legalAdvisorSmallClaimsTrackDirectionsTask,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const createSdoSchema =
+      await createSdoSchemaBuilder.buildSmallSumDRHSdo(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+  }
+
+  async SdoSmallTrackNoSumDRH() {
+    await this.setupApiStep(tribunalCaseworkerRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildSmallNoSumDRHSdo();
+
+    await super.submitWAEvent(
+      tribunalCaseworkerRegion1User,
+      legalAdvisorSmallClaimsTrackDirectionsTask,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const createSdoSchema =
+      await createSdoSchemaBuilder.buildSmallNoSumDRHSdo(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+  }
 }

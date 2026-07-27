@@ -14,10 +14,8 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
-
       await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.RequestDefaultJudgment();
-
       await HearingCenterAdminSpecSteps.LoginRegion2();
       await HearingCenterAdminSpecSteps.RequestSetAsideJudgmentFollowingApplication();
       await HearingCenterAdminSpecSteps.CaseProceedsInCasemanSetAsideJudgment();

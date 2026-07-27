@@ -8,39 +8,43 @@ import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 
 const respondentResponse = (claimType: ClaimType) => {
-  if(ClaimTypeHelper.isDefendant2Represented(claimType)) {
+  if (ClaimTypeHelper.isDefendant2Represented(claimType)) {
     return {
       RespondentResponse: {
         applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2: 'Yes',
         applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2: 'Yes',
-      }
-    } 
+      },
+    };
   } else if (claimType === ClaimType.TWO_VS_ONE) {
     return {
       RespondentResponse: {
         applicant1ProceedWithClaimMultiParty2v1: 'Yes',
         applicant2ProceedWithClaimMultiParty2v1: 'Yes',
-      }
+      },
     };
   }
 
   return {
-      RespondentResponse: {
-        applicant1ProceedWithClaim: 'Yes',
-      },
-    };
+    RespondentResponse: {
+      applicant1ProceedWithClaim: 'Yes',
+    },
+  };
 };
 
-const applicantDefenceResponseDocument = (claimType: ClaimType, defenceResponseDocument1: UploadDocumentValue, defenceResponseDocument2: UploadDocumentValue) => {
-  if(claimType === ClaimType.ONE_VS_TWO_DIFF_SOL) {
+const applicantDefenceResponseDocument = (
+  claimType: ClaimType,
+  defenceResponseDocument1: UploadDocumentValue,
+  defenceResponseDocument2: UploadDocumentValue,
+) => {
+  if (claimType === ClaimType.ONE_VS_TWO_DIFF_SOL) {
     return {
       ApplicantDefenceResponseDocument: {
-        applicant1DefenceResponseDocument: {file: defenceResponseDocument1},
-        claimantDefenceResDocToDefendant2: {file: defenceResponseDocument2},
-      }
-    }
+        applicant1DefenceResponseDocument: { file: defenceResponseDocument1 },
+        claimantDefenceResDocToDefendant2: { file: defenceResponseDocument2 },
+      },
+    };
   }
-  
+
   return {
     ApplicantDefenceResponseDocument: {
       applicant1DefenceResponseDocument: {
@@ -51,31 +55,47 @@ const applicantDefenceResponseDocument = (claimType: ClaimType, defenceResponseD
 };
 
 const deterWithHearing = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.SMALL_CLAIM) {
+  if (claimTrack === ClaimTrack.SMALL_CLAIM) {
     return {
       DeterminationWithoutHearing: {
         deterWithoutHearing: {
           deterWithoutHearingWhyNot: `Determination without hearing reason - ${partys.CLAIMANT_1.key}`,
-          deterWithoutHearingYesNo: 'No'
-        }
-      }
-    }
+          deterWithoutHearingYesNo: 'No',
+        },
+      },
+    };
   }
 
   return {};
-}
+};
 
-const fastTrackDq = (claimTrack: ClaimTrack) => {
-  if (claimTrack === ClaimTrack.FAST_CLAIM) {
+const fileDirectionsQuestionnaire = (claimTrack: ClaimTrack) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+    claimTrack === ClaimTrack.MULTI_CLAIM
+  ) {
     return {
       FileDirectionsQuestionnaire: {
         applicant1DQFileDirectionsQuestionnaire: {
           explainedToClient: ['CONFIRM'],
-          oneMonthStayRequested: 'Yes',
+          oneMonthStayRequested: claimTrack === ClaimTrack.MULTI_CLAIM ? 'No' : 'Yes',
           reactionProtocolCompliedWith: 'No',
-          reactionProtocolNotCompliedWithReason: `Reaction protocol not complied reason - ${partys.CLAIMANT_1.key}`,
+          reactionProtocolNotCompliedWithReason:
+            claimTrack === ClaimTrack.MULTI_CLAIM
+              ? `No explanation - ${partys.CLAIMANT_1.key}`
+              : `Reaction protocol not complied reason - ${partys.CLAIMANT_1.key}`,
         },
       },
+    };
+  }
+
+  return {};
+};
+
+const fixedRecoverableCosts = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.FAST_CLAIM) {
+    return {
       FixedRecoverableCosts: {
         applicant1DQFixedRecoverableCosts: {
           isSubjectToFixedRecoverableCostRegime: 'Yes',
@@ -84,15 +104,85 @@ const fastTrackDq = (claimTrack: ClaimTrack) => {
           reasons: `Recoverable costs reason - ${partys.CLAIMANT_1.key}`,
         },
       },
+    };
+  }
+
+  return {};
+};
+
+const fixedRecoverableCostsIntermediate = (
+  claimTrack: ClaimTrack,
+  frcSupportingDocument?: UploadDocumentValue,
+) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      FixedRecoverableCostsIntermediate: {
+        applicant1DQFixedRecoverableCostsIntermediate: {
+          isSubjectToFixedRecoverableCostRegime: 'Yes',
+          band: 'BAND_1',
+          complexityBandingAgreed: 'Yes',
+          reasons: `Recoverable costs reason - ${partys.CLAIMANT_1.key}`,
+          frcSupportingDocument,
+        },
+      },
+    };
+  }
+
+  return {};
+};
+
+const disclosureOfElectronicDocuments = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM || claimTrack === ClaimTrack.MULTI_CLAIM) {
+    return {
+      DisclosureOfElectronicDocuments: {
+        applicant1DQDisclosureOfElectronicDocuments: {
+          reachedAgreement: 'No',
+          agreementLikely: 'Yes',
+        },
+      },
+    };
+  }
+
+  return {};
+};
+
+const disclosureOfNonElectronicDocuments = (claimTrack: ClaimTrack) => {
+  if (
+    claimTrack === ClaimTrack.FAST_CLAIM ||
+    claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
+    claimTrack === ClaimTrack.MULTI_CLAIM
+  ) {
+    return {
       DisclosureOfNonElectronicDocuments: {
         applicant1DQDisclosureOfNonElectronicDocuments: {
           directionsForDisclosureProposed: 'Yes',
           standardDirectionsRequired: 'No',
-          bespokeDirections: `Directions are proposed for disclosure - ${partys.CLAIMANT_1.key}`,
+          bespokeDirections:
+            claimTrack === ClaimTrack.MULTI_CLAIM
+              ? `No directions required - ${partys.CLAIMANT_1.key}`
+              : `Directions are proposed for disclosure - ${partys.CLAIMANT_1.key}`,
         },
       },
-    }
+    };
   }
+
+  return {};
+};
+
+const disclosureReport = (claimTrack: ClaimTrack) => {
+  if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    return {
+      DisclosureReport: {
+        applicant1DQDisclosureReport: {
+          disclosureFormFiledAndServed: 'Yes',
+          disclosureProposalAgreed: 'Yes',
+          draftOrderNumber: '012345',
+        },
+      },
+    };
+  }
+
+  return {};
 };
 
 const experts = {
@@ -204,7 +294,12 @@ const statementOfTruth = {
 const claimantResponseDataComponents = {
   respondentResponse,
   applicantDefenceResponseDocument,
-  fastTrackDq,
+  fileDirectionsQuestionnaire,
+  fixedRecoverableCosts,
+  fixedRecoverableCostsIntermediate,
+  disclosureOfElectronicDocuments,
+  disclosureOfNonElectronicDocuments,
+  disclosureReport,
   deterWithHearing,
   experts,
   witnesses,

@@ -68,7 +68,7 @@ export default class LegalAdvisorSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackFromFastTrackClaim() {
+  async SdoSmallTrackFromFastClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {

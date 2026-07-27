@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import DateHelper from '../../../../../../helpers/date-helper';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import CCDCaseData from '../../../../../../models/ccd-case-data';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import { subheadings, buttons, inputs, radioButtons } from './add-additional-dates-content';

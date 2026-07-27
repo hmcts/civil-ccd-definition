@@ -4080,7 +4080,8 @@
           "caseworker-civil-staff",
           "caseworker-civil-admin",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "ga-basic-access"
         ],
         "CRUD": "R"
       }

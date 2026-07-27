@@ -41,7 +41,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackFullDefence1v1() {
+  async RespondFastFullDefence1v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -169,7 +169,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackFullDefence1v2DS() {
+  async RespondFastFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -195,7 +195,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackFullDefence1v2SS() {
+  async RespondFastFullDefence1v2SS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -222,7 +222,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackFullDefence2v1() {
+  async RespondFastFullDefence2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -249,7 +249,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async EvidenceUploadSmallClaim() {
+  async EvidenceUploadSmall() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -266,7 +266,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async EvidenceUploadFastTrack() {
+  async EvidenceUploadFast() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -283,7 +283,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackPartAdmit2v1() {
+  async RespondFastPartAdmit2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -312,7 +312,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackFullAdmit2v1() {
+  async RespondFastFullAdmit2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {

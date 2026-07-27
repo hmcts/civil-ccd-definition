@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { radioButtons } from './defendant-details-content';
 import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types';
 import CCDCaseData from '../../../../../../models/ccd-case-data';

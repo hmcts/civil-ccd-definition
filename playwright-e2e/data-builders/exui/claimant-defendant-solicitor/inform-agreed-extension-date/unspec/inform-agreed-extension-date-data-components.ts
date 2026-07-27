@@ -19,13 +19,13 @@ const extensionDate = (
     { outputFormat: 'YYYY-MM-DD' },
   );
 
-  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
     return {
       ExtensionDate: {
         respondentSolicitor1AgreedDeadlineExtension: agreedDeadlineExtension,
       },
     };
-  } else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  } else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       ExtensionDate: {
         respondentSolicitor2AgreedDeadlineExtension: agreedDeadlineExtension,

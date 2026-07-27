@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
 import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
 import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 import { subheadings, radioButtons } from './payment-type-content.ts';
 
 @AllMethodsStep()

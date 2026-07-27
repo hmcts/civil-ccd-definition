@@ -1,8 +1,8 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
-import ExuiPage from '../../../exui-page/exui-page';
-import { getFormattedCaseId } from '../../../exui-page/exui-content';
+import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
+import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content';
 import { headings, radioButtons } from './discontinuing-against-defendants-content';
 
 @AllMethodsStep()

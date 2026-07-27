@@ -186,6 +186,41 @@ module.exports =  {
       }, caseData, 'PUT');
   },
 
+  // Post-issue RPA/CJES helpers: the grant camunda process completion (getCamundaProcesses) shows the RPA + CJES
+  // tasks ran, and the two mapper endpoints return the RPA/CJES payload mapped from the issued case.
+  getRpaJsonSpec: async (caseData, user = config.applicantSolicitorUser) => {
+    const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await serviceAuthHelper.civilServiceAuth();
+    const response = await restHelper.request(
+      `${config.url.civilService}/testing-support/rpaJsonSpec`,
+      {'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}`, 'ServiceAuthorization': s2sAuth},
+      caseData, 'POST');
+    return await response.text();
+  },
+
+  getRtlActiveJudgment: async (caseData, user = config.applicantSolicitorUser) => {
+    const authToken = await idamHelper.accessToken(user);
+    const s2sAuth = await serviceAuthHelper.civilServiceAuth();
+    const response = await restHelper.request(
+      `${config.url.civilService}/testing-support/rtlActiveJudgment`,
+      {'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}`, 'ServiceAuthorization': s2sAuth},
+      caseData, 'POST');
+    return await response.text();
+  },
+
+  getCamundaProcesses: async (processInstanceId, definitionKey, variables) => {
+    const authToken = await idamHelper.accessToken(config.systemUpdate2);
+    const s2sAuth = await serviceAuthHelper.civilServiceAuth();
+    const url = new URL(`${config.url.civilService}/testing-support/camunda-processes`);
+    const params = {processInstanceId, definitionKey, variables};
+    Object.keys(params).forEach(key => { if (params[key]) url.searchParams.append(key, params[key]); });
+    const response = await restHelper.request(
+      url.toString(),
+      {'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}`, 'ServiceAuthorization': s2sAuth},
+      null, 'GET');
+    return await response.json();
+  },
+
   uploadDocument: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();

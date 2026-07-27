@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/users/partys';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { radioButtons, buttons, inputs, links } from './litigation-friend-content';
 import filePaths from '../../../../config/file-paths';
 import CaseDataHelper from '../../../../helpers/case-data-helper';

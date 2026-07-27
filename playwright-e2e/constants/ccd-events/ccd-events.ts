@@ -95,6 +95,18 @@ const ccdEvents: CCDEvents = {
     description: 'Discontinue this claim',
     order: 11,
   },
+  VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Validate Discontinuance',
+    description: 'Validate Discontinuance',
+    order: 11,
+  },
+  DISMISS_CASE: {
+    id: 'DISMISS_CASE',
+    name: 'Dismiss case',
+    description: 'Dismiss case',
+    order: 11,
+  },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',
@@ -237,13 +249,25 @@ const ccdEvents: CCDEvents = {
     id: 'REQUEST_FOR_RECONSIDERATION',
     name: 'Request for reconsideration',
     description: 'Request for reconsideration check',
-    order: 22.5,
+    order: 22,
+  },
+  SETTLE_CLAIM: {
+    id: 'SETTLE_CLAIM',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 12,
+  },
+  SETTLE_CLAIM_MARK_PAID_FULL: {
+    id: 'SETTLE_CLAIM_MARK_PAID_FULL',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 13,
   },
   DECISION_ON_RECONSIDERATION_REQUEST: {
     id: 'DECISION_ON_RECONSIDERATION_REQUEST',
     name: 'Decision on reconsideration',
     description: 'Decision on reconsideration',
-    order: 22.6,
+    order: 22,
   },
   CREATE_CASE_FLAGS: {
     id: 'CREATE_CASE_FLAGS',
@@ -273,7 +297,7 @@ const ccdEvents: CCDEvents = {
     id: 'ADD_UNAVAILABLE_DATES',
     name: 'Add Unavailable Dates',
     description: 'Add unavailable dates after claimant response or default judgment',
-    order: 26.5,
+    order: 26,
   },
   STAY_CASE: {
     id: 'STAY_CASE',
@@ -285,6 +309,12 @@ const ccdEvents: CCDEvents = {
     id: 'MANAGE_STAY',
     name: 'Manage stay',
     description: 'Request an update or lift the stay',
+    order: 28,
+  },
+  SEND_AND_REPLY: {
+    id: 'SEND_AND_REPLY',
+    name: 'Send and reply',
+    description: 'Send and reply',
     order: 28,
   },
   EVIDENCE_UPLOAD_APPLICANT: {
@@ -310,6 +340,12 @@ const ccdEvents: CCDEvents = {
     name: 'Transfer online case',
     description: 'Transfer online case',
     order: 30,
+  },
+  UPLOAD_MEDIATION_DOCUMENTS: {
+    id: 'UPLOAD_MEDIATION_DOCUMENTS',
+    name: 'Upload mediation documents',
+    description: 'Upload mediation documents',
+    order: 24
   },
 };
 

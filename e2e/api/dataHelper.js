@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 const uuid = require('uuid');
 const config = require('../config.js');
 const address = require('../fixtures/address');

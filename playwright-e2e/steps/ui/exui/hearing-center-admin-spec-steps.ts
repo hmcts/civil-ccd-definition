@@ -205,4 +205,34 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async SettleClaimConsentOrder() {
+    const { settleClaimActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await settleClaimActions.consentOrderApproved();
+        await settleClaimActions.submitSettleClaim();
+      },
+      async () => {
+        await settleClaimActions.confirmSettleClaim();
+      },
+      ccdEvents.SETTLE_CLAIM,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async SettleClaimJudgesOrder() {
+    const { settleClaimActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await settleClaimActions.settledFollowingJudgesOrder();
+        await settleClaimActions.submitSettleClaim();
+      },
+      async () => {
+        await settleClaimActions.confirmSettleClaim();
+      },
+      ccdEvents.SETTLE_CLAIM,
+      { verifySuccessEvent: false },
+    );
+  }
 }
