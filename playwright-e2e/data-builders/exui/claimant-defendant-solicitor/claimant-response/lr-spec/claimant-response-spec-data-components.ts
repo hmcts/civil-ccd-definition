@@ -55,7 +55,7 @@ const defendantResponse = (
           : 'No',
       },
     };
-  } else if(
+  } else if (
     claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT ||
     claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_ADMIT_REPAYMENT
   ) {
@@ -72,7 +72,7 @@ const defendantResponse = (
 };
 
 const ccjPaymentPaidSome = (claimantResponseSpecType: ClaimantResponseSpecType) => {
-  if(claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
     return {
       CcjPaymentPaidSome: {
         ccjPaymentPaidSomeOption: 'No',
@@ -101,7 +101,7 @@ const intentionToSettle = (claimantResponseSpecType: ClaimantResponseSpecType) =
 };
 
 const fixedCost = (claimantResponseSpecType: ClaimantResponseSpecType,) => {
-  if(claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
     return {
       FixedCost: {
         ccjJudgmentFixedCostOption: 'Yes',
@@ -605,7 +605,7 @@ const application = (
 };
 
 const ccjJudgmentSummary = (claimantResponseSpecType: ClaimantResponseSpecType,) => {
-  if(claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
     return {
       CcjJudgmentSummary: {}
     }

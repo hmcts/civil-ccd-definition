@@ -21,7 +21,7 @@ const recordJudgment = (
         joIsRegisteredWithRTL: 'Yes',
       },
     };
-  } else if(joPaymentPlan === JoPaymentPlan.SET_DATE) {
+  } else if (joPaymentPlan === JoPaymentPlan.SET_DATE) {
     return {
       RecordJudgment: {
         joJudgmentRecordReason: judgmentRecordReason,
@@ -39,7 +39,7 @@ const recordJudgment = (
         joIsRegisteredWithRTL: 'Yes',
       },
     };
-  } else if(joPaymentPlan === JoPaymentPlan.INSTALMENTS) {
+  } else if (joPaymentPlan === JoPaymentPlan.INSTALMENTS) {
     return {
       RecordJudgment: {
         joJudgmentRecordReason: judgmentRecordReason,
