@@ -2,18 +2,18 @@ import { z } from 'zod';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
-import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec-type/claimant-response-spec-type';
+import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec/claimant-response-spec-type';
 
 const yesNoSchema = z.enum(['Yes', 'No']);
 const nonEmptyString = z.string().min(1);
 
 const defendantResponse = (
   claimType: ClaimType,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
-    claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.ACCEPT_FULL_DEFENCE
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_DEFENCE
   ) {
     if (ClaimTypeHelper.isClaimant2(claimType)) {
       return {
@@ -27,9 +27,9 @@ const defendantResponse = (
   }
 
   if (
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.ACCEPT_PART_ADMIT_PAID_CONFIRM_HAS_PAID
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_PART_ADMIT_PAID_CONFIRM_HAS_PAID
   ) {
     return {
       applicant1PartAdmitConfirmAmountPaidSpec: yesNoSchema,
@@ -37,11 +37,30 @@ const defendantResponse = (
   }
 
   if (
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.ACCEPT_PART_ADMIT
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_PART_ADMIT
   ) {
     return {
       applicant1AcceptAdmitAmountPaidSpec: yesNoSchema,
+    };
+  }
+
+  if (
+    claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_ADMIT_REPAYMENT
+  ) {
+    return {
+      applicant1AcceptFullAdmitPaymentPlanSpec: yesNoSchema,
+    };
+  }
+
+  return {};
+};
+
+const ccjPaymentPaidSome = (claimantResponseSpecType: ClaimantResponseSpecType) => {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
+    return {
+      ccjPaymentPaidSomeOption: yesNoSchema,
     };
   }
 
@@ -49,11 +68,11 @@ const defendantResponse = (
 };
 
 const intentionToSettle = (
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.ACCEPT_PART_ADMIT_PAID_CONFIRM_HAS_PAID
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_PART_ADMIT_PAID_CONFIRM_HAS_PAID
   ) {
     return {
       applicant1PartAdmitIntentionToSettleClaimSpec: yesNoSchema,
@@ -63,13 +82,23 @@ const intentionToSettle = (
   return {};
 };
 
+const fixedCost = (claimantResponseSpecType: ClaimantResponseSpecType) => {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
+    return {
+      ccjJudgmentFixedCostOption: yesNoSchema,
+    };
+  }
+
+  return {};
+};
+
 const claimantDefenceResponseDocument = (
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
-  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
+  if (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
     return {
       applicant1DefenceResponseDocumentSpec: z.looseObject({}),
     };
@@ -79,14 +108,14 @@ const claimantDefenceResponseDocument = (
 
 const mediationContactInformation = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
     claimTrack === ClaimTrack.SMALL_CLAIM &&
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
   )
     return {
       app1MediationContactInfo: z.looseObject({}),
@@ -97,14 +126,14 @@ const mediationContactInformation = (
 
 const mediationAvailability = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
     claimTrack === ClaimTrack.SMALL_CLAIM &&
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
   )
     return {
       app1MediationAvailability: z.looseObject({
@@ -118,14 +147,14 @@ const mediationAvailability = (
 
 const determinationWithoutHearing = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
     claimTrack === ClaimTrack.SMALL_CLAIM &&
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
   ) {
     return {
       // deterWithoutHearing: z.looseObject({
@@ -140,13 +169,13 @@ const determinationWithoutHearing = (
 
 const fileDirectionsQuestionnaire = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
     (claimTrack === ClaimTrack.FAST_CLAIM ||
       claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
       claimTrack === ClaimTrack.MULTI_CLAIM)
@@ -166,13 +195,13 @@ const fileDirectionsQuestionnaire = (
 
 const fixedRecoverableCosts = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
     claimTrack === ClaimTrack.FAST_CLAIM
   ) {
     return {
@@ -190,13 +219,13 @@ const fixedRecoverableCosts = (
 
 const fixedRecoverableCostsIntermediate = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
     claimTrack === ClaimTrack.INTERMEDIATE_CLAIM
   ) {
     return {
@@ -219,13 +248,13 @@ const fixedRecoverableCostsIntermediate = (
 
 const disclosureOfElectronicDocuments = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
     (claimTrack === ClaimTrack.FAST_CLAIM ||
       claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
       claimTrack === ClaimTrack.MULTI_CLAIM)
@@ -244,13 +273,13 @@ const disclosureOfElectronicDocuments = (
 
 const disclosureOfNonElectronicDocuments = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
     (claimTrack === ClaimTrack.FAST_CLAIM ||
       claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
       claimTrack === ClaimTrack.MULTI_CLAIM)
@@ -267,13 +296,13 @@ const disclosureOfNonElectronicDocuments = (
 
 const disclosureReport = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) &&
     (claimTrack === ClaimTrack.FAST_CLAIM ||
       claimTrack === ClaimTrack.INTERMEDIATE_CLAIM ||
       claimTrack === ClaimTrack.MULTI_CLAIM)
@@ -292,12 +321,12 @@ const disclosureReport = (
 
 const experts = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
-  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
         applicant1RespondToClaimExperts: z.looseObject({}),
@@ -335,12 +364,12 @@ const experts = (
 
 const witnesses = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
-  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
         applicant1DQWitnessesSmallClaim: z.strictObject({
@@ -388,12 +417,12 @@ const witnesses = (
 };
 
 const language = (
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
-  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     return {
       applicant1DQLanguage: z.strictObject({
         court: nonEmptyString,
@@ -407,12 +436,12 @@ const language = (
 
 const hearing = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
-  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     if (claimTrack === ClaimTrack.SMALL_CLAIM) {
       return {
         applicant1DQSmallClaimHearing: z.looseObject({
@@ -428,12 +457,12 @@ const hearing = (
 };
 
 const requestedCourtLocation = (
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
-  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     return {
       applicant1DQRequestedCourt: z.looseObject({}),
       applicant1DQRemoteHearingLRspec: z.looseObject({
@@ -447,12 +476,12 @@ const requestedCourtLocation = (
 };
 
 const hearingSupport = (
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
-  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     return {
       applicant1DQHearingSupport: z.strictObject({
         supportRequirements: yesNoSchema,
@@ -464,11 +493,11 @@ const hearingSupport = (
   return {};
 };
 
-const vulnerabilityQuestions = (claimantResponseType: ClaimantResponseSpecType) => {
-  if (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
+const vulnerabilityQuestions = (claimantResponseSpecType: ClaimantResponseSpecType) => {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     return {
       applicant1DQVulnerabilityQuestions: z.strictObject({
         vulnerabilityAdjustmentsRequired: yesNoSchema,
@@ -482,14 +511,14 @@ const vulnerabilityQuestions = (claimantResponseType: ClaimantResponseSpecType) 
 
 const application = (
   claimTrack: ClaimTrack,
-  claimantResponseType: ClaimantResponseSpecType,
+  claimantResponseSpecType: ClaimantResponseSpecType,
 ) => {
   if (
     claimTrack === ClaimTrack.FAST_CLAIM &&
-    (claimantResponseType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-    claimantResponseType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
+    (claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+    claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID)
   ) {
     return {
       applicant1DQFutureApplications: z.strictObject({
@@ -502,6 +531,14 @@ const application = (
   return {};
 };
 
+const ccjJudgmentSummary = (claimantResponseSpecType: ClaimantResponseSpecType) => {
+  if (claimantResponseSpecType === ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT) {
+    return {};
+  }
+
+  return {};
+};
+
 const undefine = {
   nextDeadline: z.undefined().optional(),
 };
@@ -509,7 +546,9 @@ const undefine = {
 const claimantResponseSpecSchemaComponents = {
   undefine,
   defendantResponse,
+  ccjPaymentPaidSome,
   intentionToSettle,
+  fixedCost,
   claimantDefenceResponseDocument,
   mediationContactInformation,
   mediationAvailability,
@@ -528,6 +567,7 @@ const claimantResponseSpecSchemaComponents = {
   hearingSupport,
   vulnerabilityQuestions,
   application,
+  ccjJudgmentSummary,
 };
 
 export default claimantResponseSpecSchemaComponents;

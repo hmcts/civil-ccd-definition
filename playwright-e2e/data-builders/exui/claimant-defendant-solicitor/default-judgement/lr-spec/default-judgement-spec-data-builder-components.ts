@@ -13,17 +13,14 @@ const formatDate = (date: Date) =>
 const defendantDetailsSpec = (claimType: ClaimType, djSpecType: DJSpecType, defendant1Party: ClaimantDefendantPartyType) => {
   if (ClaimTypeHelper.isDefendant2(claimType)) {
     if (djSpecType === DJSpecType.NON_DIVERGENT) {
+      const bothDefendants = CaseDataHelper.setCodeToData('Both Defendants');
       return {
-        defendantDetails: {
-          defendantDetails: {
+        defendantDetailsSpec: {
+          defendantDetailsSpec: {
             list_items: [
-              CaseDataHelper.setCodeToData(
-                'Both Defendants'
-              ),
+              bothDefendants
             ],
-            value: CaseDataHelper.setCodeToData(
-              'Both Defendants'
-            ),
+            value: bothDefendants
           },
         },
       };
@@ -31,8 +28,8 @@ const defendantDetailsSpec = (claimType: ClaimType, djSpecType: DJSpecType, defe
   }
 
   return {
-    defendantDetails: {
-      defendantDetails: {
+    defendantDetailsSpec: {
+      defendantDetailsSpec: {
         list_items: [
           CaseDataHelper.setCodeToData(
             CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, defendant1Party)

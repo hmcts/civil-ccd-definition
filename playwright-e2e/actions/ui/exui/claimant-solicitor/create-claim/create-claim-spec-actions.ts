@@ -194,6 +194,35 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await this.fixedCommencementCosts();
   }
 
+  async claimDetailsMultiTrack() {
+    await this.flightDelayClaim();
+    await this.detailsSpec();
+    await this.uploadClaimDocument();
+    await this.claimTimeLineUpload();
+    await this.evidenceList();
+
+    const { claimAmountPage } = this.createClaimPageFactory;
+    await claimAmountPage.verifyContent();
+    await claimAmountPage.addNew();
+    await claimAmountPage.enterClaimDetailsMultiTrack();
+    await claimAmountPage.submit();
+
+    const { claimAmountDetailsPage } = this.createClaimPageFactory;
+    await claimAmountDetailsPage.verifyContent();
+    await claimAmountDetailsPage.verifyMultiTrack();
+    await claimAmountDetailsPage.submit();
+
+    await this.claimInterest();
+
+    const { interestSummaryPage } = this.createClaimPageFactory;
+    await interestSummaryPage.verifyContent();
+    await interestSummaryPage.verifyMultiTrack();
+    await interestSummaryPage.submit();
+
+    await this.pbaNumber();
+    await this.fixedCommencementCosts();
+  }
+
   async claimDetailsSmallTrack() {
     await this.flightDelayClaim();
     await this.detailsSpec();

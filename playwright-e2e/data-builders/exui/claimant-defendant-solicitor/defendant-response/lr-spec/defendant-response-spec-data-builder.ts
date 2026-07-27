@@ -239,6 +239,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1FullAdmitSetDate() {
+    return this.buildData({
+      defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
+      paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
+    });
+  }
+
   async buildDS1FullAdmitSetDate1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
