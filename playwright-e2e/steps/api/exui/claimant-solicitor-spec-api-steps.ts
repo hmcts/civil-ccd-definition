@@ -638,6 +638,49 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
   }
 
+  async RespondAcceptFullAdmitRepayment() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildAcceptFullAdmitRepayment();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      CaseState.All_FINAL_ORDERS_ISSUED
+    );
+
+    const { claimantResponseSpecSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const claimantResponseSchema =
+      await claimantResponseSpecSchemaBuilder.buildAcceptFullAdmitRepayment(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+  }
+
+  async JudgmentPaidInFull() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { judgmentPaidInFullDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const judgmentPaidInFullEventData = await judgmentPaidInFullDataBuilder.build();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.JUDGMENT_PAID_IN_FULL,
+      judgmentPaidInFullEventData,
+      CaseState.All_FINAL_ORDERS_ISSUED,
+    );
+
+    const { judgmentPaidInFullSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const judgmentPaidInFullSchema =
+      await judgmentPaidInFullSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(judgmentPaidInFullSchema, this.ccdCaseData);
+  }
+
   async RespondSmallRejectPartAdmit() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -988,12 +1031,12 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defaultJudgementSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const requestDefaultJudgementSpecData = await defaultJudgementSpecDataBuilder.build1v2SSNonDivergent();
+    const requestDefaultJudgementSpecData = await defaultJudgementSpecDataBuilder.build1v2NonDivergent();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
       requestDefaultJudgementSpecData,
-      CaseState.PROCEEDS_IN_HERITAGE_SYSTEM,
+      CaseState.All_FINAL_ORDERS_ISSUED,
     );
 
     const { defaultJudgementSpecSchemaBuilder } =

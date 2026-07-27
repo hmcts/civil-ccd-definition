@@ -14,6 +14,7 @@ import EvidenceUploadApplicantSchemaBuilder from './evidence-upload-applicant/un
 import EvidenceUploadRespondentSchemaBuilder from './evidence-upload-respondent/unspec/evidence-upload-respondent-schema-builder';
 import InformAgreedExtensionDateSchemaBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-schema-builder';
 import InformAgreedExtensionDateSpecSchemaBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-schema-builder';
+import JudgmentPaidInFullSchemaBuilder from './judgment-paid-in-full/lr-spec/judgment-paid-in-full-schema-builder';
 import ManageContactInformationSchemaBuilder from '../common/manage-contact-information/manage-contact-information-schema-builder';
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
 import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notify-claim-details-schema-builder';
@@ -78,6 +79,10 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get defaultJudgementSpecSchemaBuilder() {
     return new DefaultJudgementSpecSchemaBuilder(this.testData);
+  }
+
+  get judgmentPaidInFullSchemaBuilder() {
+    return new JudgmentPaidInFullSchemaBuilder(this.testData);
   }
 
   get informAgreedExtensionDateSchemaBuilder() {

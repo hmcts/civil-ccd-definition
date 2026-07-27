@@ -192,10 +192,34 @@ const ccdEvents: CCDEvents = {
     description: 'Set aside judgment',
     order: 20,
   },
+  JUDGMENT_PAID_IN_FULL: {
+    id: 'JUDGMENT_PAID_IN_FULL',
+    name: 'Judgment paid in full',
+    description: 'Judgment paid in full',
+    order: 21,
+  },
   GENERATE_DIRECTIONS_ORDER: {
     id: 'GENERATE_DIRECTIONS_ORDER',
     name: 'Make an order',
     description: 'Make an order',
+  },
+  CONFIRM_ORDER_REVIEW: {
+    id: 'CONFIRM_ORDER_REVIEW',
+    name: 'Confirm order review',
+    description: 'Confirm order review',
+    order: 18.5,
+  },
+  RECORD_JUDGMENT: {
+    id: 'RECORD_JUDGMENT',
+    name: 'Record Judgment',
+    description: 'Record Judgment',
+    order: 18.6,
+  },
+  EDIT_JUDGMENT: {
+    id: 'EDIT_JUDGMENT',
+    name: 'Edit Judgment',
+    description: 'Edit Judgment',
+    order: 18.7,
   },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
