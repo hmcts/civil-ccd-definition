@@ -61,9 +61,11 @@ const hearingFeePBADetails = {
       version: nonEmptyString,
       calculatedAmountInPence: nonEmptyString,
     }),
-    applicantsPbaAccounts: z.looseObject({
-      list_items: z.array(z.looseObject({ code: nonEmptyString, label: nonEmptyString })).min(1),
-    }),
+    applicantsPbaAccounts: z
+      .looseObject({
+        list_items: z.array(z.looseObject({ code: nonEmptyString, label: nonEmptyString })).min(1),
+      })
+      .optional(),
     serviceRequestReference: nonEmptyString,
   }),
 };
