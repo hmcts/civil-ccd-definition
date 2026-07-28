@@ -152,4 +152,22 @@ export default class CaseworkerApiSteps extends BaseApi {
     const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
   }
+
+  async CaseProceedsInCaseman() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { caseProceedsInCasemanDataBuilder } = this.caseworkerDataBuilderFactory;
+    const caseProceedsInCasemanData = await caseProceedsInCasemanDataBuilder.buildData();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      caseProceedsInCasemanData,
+    );
+
+    const { caseProceedsInCasemanSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const caseProceedsInCasemanSchema =
+      await caseProceedsInCasemanSchemaBuilder.buildSchema(caseDataBeforeSubmission);
+    ZodHelper.safeParse(caseProceedsInCasemanSchema, this.ccdCaseData);
+  }
 }
