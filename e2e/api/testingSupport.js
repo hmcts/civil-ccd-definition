@@ -149,27 +149,29 @@ module.exports =  {
     const authToken = await idamHelper.accessToken(user);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
 
-    await retry(() => {
-      return restHelper.request(
+    console.log(`The user: ${user} will be unassigned from the following cases:`);
+    caseIds.forEach(caseId => console.log( `[${caseId}]`));
+
+
+    await retry(async () => {
+      const response = await restHelper.request(
         `${config.url.civilService}/testing-support/unassign-user`,
         {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${authToken}`,
-          'ServiceAuthorization': s2sAuth
+          'ServiceAuthorization': s2sAuth,
         },
         {
-          caseIds
+          caseIds,
         },
-        'POST')
-        .then(response => {
-          if (response.status === 200) {
-            caseIds.forEach(caseId => console.log( `User unassigned from case [${caseId}] successfully`));
-          }
-          else  {
-            console.log(`Error occurred with status : ${response.status}`);
-            //throw new Error(`Error occurred with status : ${response.status}`);
-          }
-        });
+        'POST');
+      if (response.status === 200) {
+        caseIds.forEach(caseId => console.log(`User unassigned from case [${caseId}] successfully`));
+      } else {
+        // caseIds.forEach(caseId_1 => console.log(`Failed to unassign user from case [${caseId_1}]. Status: ${response.status}`));
+        //console.log(`Error occurred with status : ${response.status}`);
+        throw new Error(`Error occurred with status : ${response.status}`);
+      }
     });
   },
 
