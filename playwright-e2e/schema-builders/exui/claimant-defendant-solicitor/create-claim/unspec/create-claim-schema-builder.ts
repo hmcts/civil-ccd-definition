@@ -51,6 +51,13 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
+  async buildIntermediate1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
   async buildIntermediate1v2SS(): Promise<z.ZodType> {
     return this.buildSchema({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,

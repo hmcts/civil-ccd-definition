@@ -692,6 +692,23 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
+  async EvidenceUploadBundle() {
+    const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUpload();
+        await evidenceUploadApplicantActions.documentSelectionFastTrackBundle();
+        await evidenceUploadApplicantActions.documentUploadBundle();
+        await evidenceUploadApplicantActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async DiscontinueClaim1v1() {
     const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(

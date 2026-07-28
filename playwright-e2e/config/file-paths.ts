@@ -5,6 +5,7 @@ const filePaths = {
   axe: 'playwright-test-results/accessibility-cache',
   testPdfFile: 'playwright-e2e/fixtures/files/test.pdf',
   testTextFile: 'playwright-e2e/fixtures/files/fileupload.txt',
+  testDocxFile: 'playwright-e2e/fixtures/files/exampleDOC.docx',
   bankHolidaysJson: 'playwright-e2e/fixtures/data/bankHolidays.json',
 };
 

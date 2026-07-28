@@ -237,6 +237,33 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
+  async CreateClaimMulti1v2SS() {
+    const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.addAnotherDefendant();
+        await createClaimSpecActions.secondDefendant();
+        await createClaimSpecActions.secondDefedantSSDetails();
+        await createClaimSpecActions.claimDetailsMultiTrack();
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimSpecActions.confirmCreateClaimSpec();
+      },
+      ccdEvents.CREATE_CLAIM_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RespondFastProceed1v1() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
@@ -438,6 +465,26 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
+  async RespondMultiProceed1v2SS() {
+    const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await claimantResponseSpecActions.respondentResponse1v2SSSpec();
+        await claimantResponseSpecActions.defenceDocumentSpec();
+        await claimantResponseSpecActions.dqMultiTrackClaimantResponseSpec();
+        await claimantResponseSpecActions.dqMultiTrack();
+        await claimantResponseSpecActions.application();
+        await claimantResponseSpecActions.statementOfTruthClaimantResponse();
+        await claimantResponseSpecActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseSpecActions.confirm();
+      },
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RequestForReconsideration() {
     const { requestForReconsiderationActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
@@ -559,6 +606,23 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await evidenceUploadApplicantActions.evidenceUpload();
         await evidenceUploadApplicantActions.documentSelectionFastTrack();
         await evidenceUploadApplicantActions.documentUpload();
+        await evidenceUploadApplicantActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadBundle() {
+    const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadApplicantActions.evidenceUpload();
+        await evidenceUploadApplicantActions.documentSelectionFastTrackBundle();
+        await evidenceUploadApplicantActions.documentUploadBundle();
         await evidenceUploadApplicantActions.submitEvidenceUpload();
       },
       async () => {

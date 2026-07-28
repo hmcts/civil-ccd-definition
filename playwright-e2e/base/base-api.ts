@@ -123,6 +123,51 @@ export default abstract class BaseApi extends BaseTestData {
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
   }
 
+  protected async startCCDEventError(
+    user: User,
+    ccdEvent: CCDEvent,
+  ): Promise<string> {
+    await this.setupApiStep(user);
+    const { ccdRequests } = this.requestsFactory;
+    return ccdRequests.startEventError(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+  }
+
+  protected async submitCaseFlagsEvent(
+    user: User,
+    ccdEvent: CCDEvent,
+    caseFlagData: (caseFlagLocationData?: any) => Partial<CCDCaseData>,
+    expectedState?: CaseState,
+  ) {
+    const { ccdRequests } = this.requestsFactory;
+    const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+    const caseFlagLocation = caseFlagData.name as keyof CCDCaseData;
+    if (!caseFlagLocation) {
+      throw new Error('Case flags data component must be a named function.');
+    }
+
+    const eventCaseData = await ccdRequests.submitEvent(
+      user,
+      ccdEvent,
+      {
+        ...startEventCaseData,
+        ...(await caseFlagData(startEventCaseData[caseFlagLocation])),
+      },
+      eventToken,
+      this.ccdCaseData?.id,
+      expectedState,
+    );
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+  }
+
   protected async submitWAEvent(
     user: User,
     validTask: WATask,

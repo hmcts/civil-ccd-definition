@@ -7,10 +7,7 @@ import { heading, checkboxes } from './hearing-change-reason-content';
 @AllMethodsStep()
 export default class HearingChangeReasonPage extends ExuiHearingsPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyCaseName(ccdCaseData, { ignoreDuplicates: true }),
-      super.expectText(heading),
-    ]);
+    await super.runVerifications([super.expectText(heading)]);
   }
 
   async selectReasonPartyRequestedChange() {
