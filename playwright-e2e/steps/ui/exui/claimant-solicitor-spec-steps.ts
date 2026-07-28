@@ -53,7 +53,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1v1() {
+  async CreateClaimSmall1v1() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -78,7 +78,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack2v1() {
+  async CreateClaimSmall2v1() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -103,7 +103,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1v2SS() {
+  async CreateClaimSmall1v2SS() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -130,7 +130,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1v2DS() {
+  async CreateClaimSmall1v2DS() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
