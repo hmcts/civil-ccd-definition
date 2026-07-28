@@ -10,7 +10,7 @@ test.describe('Request for reconsideration - 1v2DS - spec', { tag: '@civil-servi
     JudgeApiSteps,
     CaseworkerApiSteps
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v2DS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
@@ -18,7 +18,7 @@ test.describe('Request for reconsideration - 1v2DS - spec', { tag: '@civil-servi
     await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2DS();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallNoSum();
     await DefendantSolicitor2SpecApiSteps.RequestForReconsideration();
     await JudgeApiSteps.DecisionOnReconsiderationRequestAmend();
   });

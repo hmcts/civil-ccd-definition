@@ -5,7 +5,7 @@ test.describe('LR v 2 LIPs unspec notice of change api journey', { tag: '@civil-
     ClaimantSolicitorApiSteps,
     OtherDefendantSolicitor1ApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v2LIPs();
+    await ClaimantSolicitorApiSteps.CreateClaimSmall1v2LIPs();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim1v2LIPS();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails1v2LIPS();
@@ -18,7 +18,7 @@ test.describe('LR v 2 LIPs unspec notice of change api journey', { tag: '@civil-
     OtherDefendantSolicitor1ApiSteps,
     OtherDefendantSolicitor2ApiSteps
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v2LIPs();
+    await ClaimantSolicitorApiSteps.CreateClaimSmall1v2LIPs();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim1v2LIPS();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails1v2LIPS();

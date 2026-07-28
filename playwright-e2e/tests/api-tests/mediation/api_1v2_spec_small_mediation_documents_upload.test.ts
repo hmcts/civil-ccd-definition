@@ -7,7 +7,7 @@ test.describe('Spec small claims mediation api journey', { tag: '@civil-service-
     DefendantSolicitor1SpecApiSteps,
     CaseworkerApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v2SS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2SS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence1v2SS();
@@ -24,7 +24,7 @@ test.describe('Spec small claims mediation api journey', { tag: '@civil-service-
     DefendantSolicitor2SpecApiSteps,
     CaseworkerApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v2DS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();

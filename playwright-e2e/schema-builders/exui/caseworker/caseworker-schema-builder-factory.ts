@@ -10,6 +10,7 @@ import ReferJudgeDefenceReceivedSchemaBuilder from './refer-judge-defence-receiv
 import SendAndReplySchemaBuilder from '../common/send-and-reply/send-and-reply-schema-builder';
 import SetAsideOrderTypeSchemaBuilder from './set-aside-order-type/set-aside-order-type-schema-builder';
 import TransferOnlineCaseSchemaBuilder from './transfer-online-case/transfer-online-case-schema-builder';
+import CaseProceedsInCasemanSchemaBuilder from './case-proceeds-in-caseman/case-proceeds-in-caseman-schema-builder'
 import ValidateDiscontinueClaimClaimantSchemaBuilder from './validate-discontinue-claim-claimant/validate-discontinue-claim-claimant-schema-builder';
 
 export default class CaseworkerSchemaBuilderFactory extends BaseSchemaBuilderFactory {
@@ -53,6 +54,10 @@ export default class CaseworkerSchemaBuilderFactory extends BaseSchemaBuilderFac
     return new SendAndReplySchemaBuilder(this.testData);
   }
 
+  get caseProceedsInCasemanSchemaBuilder() {
+    return new CaseProceedsInCasemanSchemaBuilder(this.testData); 
+  }
+  
   get setAsideOrderTypeSchemaBuilder() {
     return new SetAsideOrderTypeSchemaBuilder(this.testData);
   }

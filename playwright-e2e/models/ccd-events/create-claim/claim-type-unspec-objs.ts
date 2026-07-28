@@ -1,5 +1,5 @@
-import ClaimTypeUnspec from "../../../constants/ccd-events/create-claim/claim-type-unspec";
-import PersonalInjuryType from "../../../constants/ccd-events/create-claim/personal-injury-type";
+import ClaimTypeUnspec from "../../../constants/ccd-events/create-claim/unspec/claim-type-unspec";
+import PersonalInjuryType from "../../../constants/ccd-events/create-claim/unspec/personal-injury-type";
 
 
 export type PersonalInjuryClaimTypeUnSpec = {
