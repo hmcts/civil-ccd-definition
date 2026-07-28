@@ -468,4 +468,5 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       await evidenceUploadRespondentSchemaBuilder.buildDS1SmallClaim(caseDataBeforeSubmission);
     ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
   }
+
 }

@@ -1,4 +1,5 @@
 import BaseRequestsFactory from '../base/base-requests-factory';
+import CaseAssignmentServiceRequests from './case-assignment-service-requests';
 import CCDRequests from './ccd-requests';
 import CivilServiceRequests from './civil-service-requests';
 import GovUKRequests from './gov-uk-requests';
@@ -24,5 +25,9 @@ export default class RequestsFactory extends BaseRequestsFactory {
 
   get workAllocationsRequests() {
     return new WorkAllocationsRequests(this.requestContext);
+  }
+
+  get caseAssignmentServiceRequests() {
+    return new CaseAssignmentServiceRequests(this.requestContext);
   }
 }
