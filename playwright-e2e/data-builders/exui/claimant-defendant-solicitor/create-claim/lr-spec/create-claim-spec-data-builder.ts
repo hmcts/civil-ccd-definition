@@ -5,7 +5,8 @@ import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecData from './create-claim-spec-data-components';
-import FlightDelayClaim from '../../../../../constants/cases/flight-delay-claim';
+import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
@@ -106,12 +107,12 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 
-  async buildSmall1v1FlightDelay() {
-    return this.buildData({ isFlightDelayClaim: FlightDelayClaim.YES });
+  async buildSmallFlightDelay() {
+    return this.buildData({ flightDelayClaim: FlightDelayClaim.YES });
   }
 
-  async buildSmall1v1FlightDelayOtherAirline() {
-    return this.buildData({ isFlightDelayClaim: FlightDelayClaim.YES, isOtherAirline: true });
+  async buildSmallFlightDelayOther() {
+    return this.buildData({ flightDelayClaim: FlightDelayClaim.YES, airline: Airline.OTHER });
   }
 
   protected async buildData({
@@ -121,8 +122,8 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    isFlightDelayClaim = FlightDelayClaim.NO,
-    isOtherAirline = false,
+    flightDelayClaim = FlightDelayClaim.NO,
+    airline = Airline.BA,
   }: {
     claimType?: ClaimType;
     claimTrack?: ClaimTrack;
@@ -130,8 +131,8 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     claimant2PartyType?: ClaimantDefendantPartyType;
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
-    isFlightDelayClaim?: FlightDelayClaim;
-    isOtherAirline?: boolean;
+    flightDelayClaim?: FlightDelayClaim;
+    airline?: Airline;
   } = {}) {
     this.setClaimantDefendantPartyTypes(claimType, {
       claimant1PartyType,
@@ -151,8 +152,9 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
       ...createClaimSpecData.defendant2Represented(claimType),
       ...createClaimSpecData.defendant2SameSolicitor(claimType),
       ...createClaimSpecData.defendantSolicitor2(claimType),
+      ...createClaimSpecData.flightDelayClaim(flightDelayClaim, airline),
+      ...createClaimSpecData.claimDetails(claimTrack),
       ...createClaimSpecData.statementOfTruth,
-      ...createClaimSpecData.claimDetails(claimTrack, isFlightDelayClaim, isOtherAirline),
     };
   }
 }

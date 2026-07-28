@@ -11,7 +11,7 @@ test.describe(
         JudgeApiSteps,
         CaseworkerApiSteps,
       }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallFlightDelayOtherAirline1v1()
+      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallFlightDelayOther()
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence()
@@ -27,7 +27,7 @@ test.describe(
         JudgeApiSteps,
         CaseworkerApiSteps,
       }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallFlightDelay1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallFlightDelay();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence()

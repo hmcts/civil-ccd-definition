@@ -4,7 +4,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import FlightDelayClaim from '../../../../../constants/cases/flight-delay-claim';
+import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
 
 type SchemaShape = Record<string, z.ZodType>;
 

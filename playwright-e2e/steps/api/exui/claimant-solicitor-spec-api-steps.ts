@@ -367,6 +367,43 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
   }
 
+  async CreateClaimSmallFlightDelay() {
+    await this.setupUserData(claimantSolicitorUser);
+
+    const { createClaimSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallFlightDelay();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+      createClaimEventData,
+      CaseState.PENDING_CASE_ISSUED,
+    );
+
+    const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimResponseSchema = await createClaimSpecSchemaBuilder.buildSmallFlightDelay();
+    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+  }
+
+  async CreateClaimSmallFlightDelayOther() {
+    await this.setupUserData(claimantSolicitorUser);
+
+    const { createClaimSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallFlightDelayOther();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+      createClaimEventData,
+      CaseState.PENDING_CASE_ISSUED,
+    );
+
+    const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimResponseSchema =
+      await createClaimSpecSchemaBuilder.buildSmallFlightDelayOther();
+    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+  }
+
   async MakePaymentForClaimIssue() {
     await this.setupApiStep(claimantSolicitorUser);
     const { serviceRequestDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
@@ -1182,42 +1219,5 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
-  }
-
-  async CreateClaimSmallFlightDelay1v1() {
-    await this.setupUserData(claimantSolicitorUser);
-
-    const { createClaimSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const createClaimEventData = await createClaimSpecDataBuilder.buildSmall1v1FlightDelay();
-    await super.submitCCDEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-      createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
-    );
-
-    const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const createClaimResponseSchema = await createClaimSpecSchemaBuilder.buildSmall1v1FlightDelay();
-    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
-  }
-
-  async CreateClaimSmallFlightDelayOtherAirline1v1() {
-    await this.setupUserData(claimantSolicitorUser);
-
-    const { createClaimSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const createClaimEventData = await createClaimSpecDataBuilder.buildSmall1v1FlightDelayOtherAirline();
-    await super.submitCCDEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-      createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
-    );
-
-    const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const createClaimResponseSchema =
-      await createClaimSpecSchemaBuilder.buildSmall1v1FlightDelayOtherAirline();
-    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
   }
 }

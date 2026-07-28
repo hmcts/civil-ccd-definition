@@ -9,8 +9,13 @@ import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
+import DateHelper from '../../../../../helpers/date-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import FlightDelayClaim from '../../../../../constants/cases/flight-delay-claim';
+import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
+
+const formatDate = (date: Date) =>
+  DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
 
 const references = {
   References: {
@@ -190,8 +195,31 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
   return {};
 };
 
-const claimDetails = (claimTrack: ClaimTrack, isFlightDelayClaim: FlightDelayClaim, isOtherAirline = false, ) => ({
-  ...flightDelayClaim(isFlightDelayClaim, isOtherAirline),
+const flightDelayClaim = (flightDelayClaim: FlightDelayClaim, airline: Airline) => {
+  if (flightDelayClaim === FlightDelayClaim.YES)
+    return {
+      FlightDelayClaim: {
+        isFlightDelayClaim: FlightDelayClaim.YES,
+        flightDelayDetails: {
+          airlineList: {
+            list_items: [{code: airline, label: airline}],
+            value: { code: airline, label: airline },
+          },
+          nameOfAirline: airline === Airline.OTHER ? 'Other Airline Name' : undefined,
+          flightNumber: '011111',
+          scheduledDate: formatDate(DateHelper.subtractFromToday({ months: 1 })),
+        }
+      },
+    };
+
+  return {
+    FlightDelayClaim: {
+      isFlightDelayClaim: FlightDelayClaim.NO,
+    },
+  };
+};
+
+const claimDetails = (claimTrack: ClaimTrack) => ({
   Details: {
     detailsOfClaim: 'Test details of claim',
   },
@@ -199,7 +227,7 @@ const claimDetails = (claimTrack: ClaimTrack, isFlightDelayClaim: FlightDelayCla
     timelineOfEvents: [
       {
         value: {
-          timelineDate: '2021-02-01',
+          timelineDate: formatDate(DateHelper.subtractFromToday({ years: 1 })),
           timelineDescription: 'event 1',
         },
       },
@@ -250,37 +278,6 @@ const statementOfTruth = {
   },
 };
 
-const flightDelayClaim = (isFlightDelayClaim: FlightDelayClaim, isOtherAirline = false) => {
-  if (isFlightDelayClaim === FlightDelayClaim.YES)
-    return {
-      FlightDelayClaim: {
-        isFlightDelayClaim: FlightDelayClaim.YES,
-        flightDelayDetails: isOtherAirline
-          ? {
-            airlineList: {
-              value: { code: 'OTHER', label: 'OTHER' },
-            },
-            nameOfAirline: 'Other Airline Name',
-            flightNumber: '011111',
-            scheduledDate: '2025-01-01',
-          }
-          : {
-            airlineList: {
-              value: { code: 'Aer Lingus', label: 'Aer Lingus' },
-            },
-            flightNumber: '101010',
-            scheduledDate: '2025-01-01',
-          },
-      },
-    };
-
-  return {
-    FlightDelayClaim: {
-      isFlightDelayClaim: FlightDelayClaim.NO,
-    },
-  };
-};
-
 const createClaimSpecData = {
   references,
   claimant1,
@@ -292,9 +289,9 @@ const createClaimSpecData = {
   defendant2Represented,
   defendant2SameSolicitor,
   defendantSolicitor2,
+  flightDelayClaim,
   claimDetails,
   statementOfTruth,
-  flightDelayClaim,
 };
 
 export default createClaimSpecData;

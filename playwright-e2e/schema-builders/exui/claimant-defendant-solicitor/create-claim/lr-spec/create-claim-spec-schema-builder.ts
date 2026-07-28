@@ -5,7 +5,7 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecSchemaComponents from './create-claim-spec-schema-components';
-import FlightDelayClaim from '../../../../../constants/cases/flight-delay-claim';
+import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
@@ -85,11 +85,11 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 
-  async buildSmall1v1FlightDelay(): Promise<z.ZodType> {
+  async buildSmallFlightDelay(): Promise<z.ZodType> {
     return this.buildSchema({ isFlightDelayClaim: FlightDelayClaim.YES });
   }
 
-  async buildSmall1v1FlightDelayOtherAirline(): Promise<z.ZodType> {
+  async buildSmallFlightDelayOther(): Promise<z.ZodType> {
     return this.buildSchema({ isFlightDelayClaim: FlightDelayClaim.YES, isOtherAirline: true });
   }
   protected async buildSchema({
