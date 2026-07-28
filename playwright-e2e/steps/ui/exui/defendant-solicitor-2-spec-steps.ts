@@ -38,7 +38,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS2();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
         await defendantResponseSpecActions.timelineDS2();
-        await defendantResponseSpecActions.dqFastTrackDS2();
+        await defendantResponseSpecActions.dqFastDS2();
         await defendantResponseSpecActions.applicationDS2();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS2();
         await defendantResponseSpecActions.submitDefendantResponse();
@@ -64,7 +64,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
         await defendantResponseSpecActions.timelineDS2();
         await defendantResponseSpecActions.mediationDS2();
-        await defendantResponseSpecActions.dqSmallTrackDS2();
+        await defendantResponseSpecActions.dqSmallDS2();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
