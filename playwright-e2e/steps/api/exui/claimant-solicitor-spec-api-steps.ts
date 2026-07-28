@@ -1183,4 +1183,5 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     );
     await super.fetchAndSetCCDCaseData();
   }
+
 }
