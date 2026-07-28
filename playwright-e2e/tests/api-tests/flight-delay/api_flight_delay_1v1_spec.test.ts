@@ -4,7 +4,7 @@ test.describe(
   '1v1 spec flight delay api journey',
   { tag: '@civil-service-nightly' },
   async () => {
-    test('1v1 spec flight delay other airline api', async ({
+    test('1v1 spec flight delay other airline api @debug', async ({
         ClaimantSolicitorSpecApiSteps,
         CaseRoleAssignmentApiSteps,
         DefendantSolicitor1SpecApiSteps,

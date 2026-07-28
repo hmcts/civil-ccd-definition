@@ -5,6 +5,7 @@ import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
 
 type SchemaShape = Record<string, z.ZodType>;
 
@@ -413,19 +414,15 @@ const defendant2Representation = (claimType: ClaimType): SchemaShape => {
   };
 };
 
-const flightDelayDetailsSchema = (isOtherAirline: boolean) =>
+const flightDelayDetailsSchema = (airline: Airline) =>
   z.strictObject({
     airlineList: z.strictObject({
       value: z.strictObject({
-        code: nonEmptyString,
-        label: nonEmptyString,
+        code: z.string(),
+        label: z.string(),
       }),
-      list_items: z
-        .array(z.strictObject({ code: nonEmptyString, label: nonEmptyString }))
-        .min(1)
-        .optional(),
     }),
-    ...(isOtherAirline && { nameOfAirline: nonEmptyString }),
+    ...(airline === Airline.OTHER && { nameOfAirline: nonEmptyString }),
     flightNumber: nonEmptyString,
     scheduledDate: nonEmptyString,
     flightCourtLocation: z
@@ -436,7 +433,10 @@ const flightDelayDetailsSchema = (isOtherAirline: boolean) =>
       .optional(),
   });
 
-const claimDetails = (isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO, isOtherAirline = false): SchemaShape => ({
+const claimDetails = (
+  isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO,
+  airline = Airline.BA,
+): SchemaShape => ({
   allPartyNames: nonEmptyString,
   submittedDate: nonEmptyString,
   anyRepresented: nonEmptyString,
@@ -450,10 +450,10 @@ const claimDetails = (isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO
   applicantSolicitor1PbaAccountsIsEmpty: yesNoSchema,
   claimIssuedPaymentDetails: claimIssuedPaymentDetailsSchema,
   claimIssuedPBADetails: claimIssuedPbaDetailsSchema,
-  isFlightDelayClaim: z.literal(isFlightDelayClaim),
+  isFlightDelayClaim: z.string(),
   flightDelayDetails:
     isFlightDelayClaim === FlightDelayClaim.YES
-      ? flightDelayDetailsSchema(isOtherAirline)
+      ? flightDelayDetailsSchema(airline)
       : z.unknown(),
   timelineOfEvents: timelineOfEventsSchema,
   speclistYourEvidenceList: evidenceListSchema,

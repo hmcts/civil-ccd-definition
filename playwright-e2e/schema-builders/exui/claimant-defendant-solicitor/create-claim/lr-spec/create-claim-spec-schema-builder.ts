@@ -6,6 +6,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecSchemaComponents from './create-claim-spec-schema-components';
 import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
@@ -90,7 +91,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
   }
 
   async buildSmallFlightDelayOther(): Promise<z.ZodType> {
-    return this.buildSchema({ isFlightDelayClaim: FlightDelayClaim.YES, isOtherAirline: true });
+    return this.buildSchema({ isFlightDelayClaim: FlightDelayClaim.YES, airline: Airline.OTHER });
   }
   protected async buildSchema({
                                 claimType = ClaimType.ONE_VS_ONE,
@@ -99,7 +100,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
                                 defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
                                 defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
                                 isFlightDelayClaim = FlightDelayClaim.NO,
-                                isOtherAirline = false,
+                                airline = Airline.BA,
                               }: {
     claimType?: ClaimType;
     claimant1PartyType?: ClaimantDefendantPartyType;
@@ -107,7 +108,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
     isFlightDelayClaim?: FlightDelayClaim;
-    isOtherAirline?: boolean;
+    airline?: Airline;
   } = {}): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
@@ -120,7 +121,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
       createClaimSpecSchemaComponents.defendant1(defendant1PartyType),
       createClaimSpecSchemaComponents.statementOfTruth,
       createClaimSpecSchemaComponents.solicitorReferences(claimType),
-      createClaimSpecSchemaComponents.claimDetails(isFlightDelayClaim, isOtherAirline),
+      createClaimSpecSchemaComponents.claimDetails(isFlightDelayClaim, airline),
       createClaimSpecSchemaComponents.claimant2(claimType, claimant2PartyType),
       createClaimSpecSchemaComponents.defendantSolicitor1(claimType),
       createClaimSpecSchemaComponents.defendant2(claimType, defendant2PartyType),
