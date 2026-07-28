@@ -53,32 +53,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
-    "CaseFieldID": "reasonForReconsiderationClaimant",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "JudgeResponseToReconsideration",
-    "PageLabel": "Decision on reconsideration",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
-    "CaseFieldID": "reasonForReconsiderationDefendant",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "JudgeResponseToReconsideration",
-    "PageLabel": "Decision on reconsideration",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "bilingualHint",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
