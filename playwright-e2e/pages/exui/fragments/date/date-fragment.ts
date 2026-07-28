@@ -48,6 +48,10 @@ export default class DateFragment extends ExuiPage(BasePage) {
       index,
       containerSelector,
     });
+    await super.blurSelector(inputs.year.selector(selectorKey), {
+      index,
+      containerSelector,
+    });
   }
 
   async submit() {

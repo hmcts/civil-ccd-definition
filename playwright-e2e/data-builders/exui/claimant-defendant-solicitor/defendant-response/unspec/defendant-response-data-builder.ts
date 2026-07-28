@@ -45,6 +45,13 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1IntermediateFullDefence1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
   async buildDS1IntermediateFullDefence1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
@@ -103,6 +110,14 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
   async buildDS2MultiFullDefence1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
+  async buildDS2IntermediateFullDefence1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });

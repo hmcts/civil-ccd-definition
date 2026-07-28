@@ -37,6 +37,15 @@ export default class ClaimAmountPage extends ExuiPage(BasePage) {
     await super.inputText(claimAmount, inputs.claim.amount.selector(1));
   }
 
+  async enterClaimDetailsMultiTrack() {
+    const claimAmount = CaseDataHelper.getClaimValue(ClaimTrack.MULTI_CLAIM);
+    await super.inputText(
+      `Roof damage - ${partys.CLAIMANT_1.key}`,
+      inputs.claim.reason.selector(1),
+    );
+    await super.inputText(claimAmount, inputs.claim.amount.selector(1));
+  }
+
   async submit() {
     await super.retryClickSubmit();
   }
