@@ -312,7 +312,7 @@ export default class CaseworkerApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { caseProceedsInCasemanDataBuilder } = this.caseworkerDataBuilderFactory;
-    const caseProceedsInCasemanData = await caseProceedsInCasemanDataBuilder.buildData();
+    const caseProceedsInCasemanData = await caseProceedsInCasemanDataBuilder.build();
     await super.submitCCDEvent(
       civilAdminUser,
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
@@ -321,7 +321,7 @@ export default class CaseworkerApiSteps extends BaseApi {
 
     const { caseProceedsInCasemanSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
     const caseProceedsInCasemanSchema =
-      await caseProceedsInCasemanSchemaBuilder.buildSchema(caseDataBeforeSubmission);
+      await caseProceedsInCasemanSchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(caseProceedsInCasemanSchema, this.ccdCaseData);
   }
 }

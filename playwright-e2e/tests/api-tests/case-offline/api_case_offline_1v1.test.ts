@@ -5,8 +5,8 @@ test.describe(
   { tag: '@civil-service-nightly' },
   async () => {
     test('1v1 case offline', async ({
-                                      ClaimantSolicitorApiSteps,
-                                      CaseworkerApiSteps,
+      ClaimantSolicitorApiSteps,
+      CaseworkerApiSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
       await CaseworkerApiSteps.CaseProceedsInCaseman();
