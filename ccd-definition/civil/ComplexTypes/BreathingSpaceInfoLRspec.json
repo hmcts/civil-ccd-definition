@@ -56,7 +56,7 @@
   {
     "ID": "BreathingSpaceLiftInfo",
     "ListElementCode": "eventDescription",
-    "ElementLabel": "Event Description",
+    "ElementLabel": "Why is breathing space being lifted?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
