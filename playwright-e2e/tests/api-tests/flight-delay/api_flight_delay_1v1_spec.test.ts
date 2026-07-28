@@ -5,35 +5,35 @@ test.describe(
   { tag: '@civil-service-nightly' },
   async () => {
     test('1v1 spec flight delay other airline api', async ({
-                                                             ClaimantSolicitorSpecApiSteps,
-                                                             CaseRoleAssignmentApiSteps,
-                                                             DefendantSolicitor1SpecApiSteps,
-                                                             JudgeApiSteps,
-                                                             CaseworkerApiSteps,
-                                                           }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrackFlightDelayOtherAirline1v1()
+        ClaimantSolicitorSpecApiSteps,
+        CaseRoleAssignmentApiSteps,
+        DefendantSolicitor1SpecApiSteps,
+        JudgeApiSteps,
+        CaseworkerApiSteps,
+      }) => {
+      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallFlightDelayOtherAirline1v1()
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence()
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
       await CaseworkerApiSteps.MediationUnsuccessful();
-      await JudgeApiSteps.SdoSmallTrackNoSumFlightDelay();
+      await JudgeApiSteps.SdoSmallNoSumFlightDelay();
     });
 
     test('1v1 spec flight delay api', async ({
-                                                    ClaimantSolicitorSpecApiSteps,
-                                                    CaseRoleAssignmentApiSteps,
-                                                    DefendantSolicitor1SpecApiSteps,
-                                                    JudgeApiSteps,
-                                                    CaseworkerApiSteps,
-                                                  }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrackFlightDelay1v1();
+        ClaimantSolicitorSpecApiSteps,
+        CaseRoleAssignmentApiSteps,
+        DefendantSolicitor1SpecApiSteps,
+        JudgeApiSteps,
+        CaseworkerApiSteps,
+      }) => {
+      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallFlightDelay1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence()
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
       await CaseworkerApiSteps.MediationUnsuccessful();
-      await JudgeApiSteps.SdoSmallTrackSumFlightDelay();
+      await JudgeApiSteps.SdoSmallSumFlightDelay();
     });
   },
 );

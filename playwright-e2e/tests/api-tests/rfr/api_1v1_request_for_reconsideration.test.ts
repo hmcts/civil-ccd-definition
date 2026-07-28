@@ -9,13 +9,13 @@ test.describe('Request for reconsideration - 1v1 - spec', { tag: '@civil-service
     CaseworkerApiSteps,
     JudgeApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallNoSum();
     await ClaimantSolicitorSpecApiSteps.RequestForReconsideration();
     await JudgeApiSteps.DecisionOnReconsiderationRequestUphold();
   });
@@ -28,16 +28,16 @@ test.describe('Request for reconsideration - 1v1 - spec', { tag: '@civil-service
     CaseworkerApiSteps,
     JudgeApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallNoSum();
     await DefendantSolicitor1SpecApiSteps.RequestForReconsideration();
     await JudgeApiSteps.DecisionOnReconsiderationRequestSdo();
-    await JudgeApiSteps.SdoSmallTrackNoSum();
+    await JudgeApiSteps.SdoSmallNoSum();
   });
 
   test('1v1 spec request for reconsideration for create general order', async ({
@@ -48,13 +48,13 @@ test.describe('Request for reconsideration - 1v1 - spec', { tag: '@civil-service
     CaseworkerApiSteps,
     JudgeApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallNoSum();
     await DefendantSolicitor1SpecApiSteps.RequestForReconsideration();
     await JudgeApiSteps.DecisionOnReconsiderationRequestAmend();
   });
@@ -82,13 +82,13 @@ test.describe('Request for reconsideration - 1v1 - spec', { tag: '@civil-service
     CaseworkerApiSteps,
     JudgeApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallNoSum();
     await DefendantSolicitor1SpecApiSteps.RequestForReconsideration();
     await JudgeApiSteps.DecisionOnReconsiderationRequestSdo();
   });

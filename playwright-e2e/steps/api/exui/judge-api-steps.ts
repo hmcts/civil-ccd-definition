@@ -76,7 +76,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackSum() {
+  async SdoSmallSum() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -96,7 +96,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackNoSum() {
+  async SdoSmallNoSum() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -117,7 +117,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackSumDRH() {
+  async SdoSmallSumDRH() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -138,7 +138,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackNoSumDRH() {
+  async SdoSmallNoSumDRH() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -441,7 +441,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackSumFlightDelay() {
+  async SdoSmallSumFlightDelay() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -461,7 +461,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackNoSumFlightDelay() {
+  async SdoSmallNoSumFlightDelay() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 

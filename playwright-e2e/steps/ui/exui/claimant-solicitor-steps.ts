@@ -51,7 +51,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1v1() {
+  async CreateClaimSmall1v1() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -75,7 +75,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1vLIP() {
+  async CreateClaimSmall1vLIP() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -99,7 +99,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack2v1() {
+  async CreateClaimSmall2v1() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -124,7 +124,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1v2SS() {
+  async CreateClaimSmall1v2SS() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -149,7 +149,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1v2LIPs() {
+  async CreateClaimSmall1v2LIPs() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -174,7 +174,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1v2LRLIP() {
+  async CreateClaimSmall1v2LRLIP() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -199,7 +199,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmallTrack1v2DS() {
+  async CreateClaimSmall1v2DS() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
