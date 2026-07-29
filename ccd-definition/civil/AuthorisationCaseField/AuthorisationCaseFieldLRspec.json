@@ -1877,7 +1877,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -4205,6 +4208,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
