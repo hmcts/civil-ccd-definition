@@ -2,6 +2,12 @@
   "name": "civil-ccd-definition",
   "version": "0.0.1",
   "description": "Civil e2e tests",
+  "resolutions": {
+    "axios@npm:^0.26.0": "npm:1.13.6",
+    "axios@npm:1.6.3": "npm:1.13.6",
+    "minimatch": "^3.0.5",
+    "js-yaml": "^4.3.0"
+  },
   "scripts": {
     "lint": "./bin/run-commands-series.sh -c \"yarn eslint\" \"yarn lint:no-dup-classes\"",
     "lint:staged:no-dup-classes": "./bin/run-commands-series.sh -c \"yarn lint-staged\" \"yarn lint:no-dup-classes\"",
@@ -162,12 +168,12 @@
     "allure-js-commons": "^3.4.2",
     "allure-playwright": "2.15.1",
     "chai": "^4.3.4",
-    "codeceptjs": "3.6.5",
+    "codeceptjs": "3.5.15",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
     "deep-equal-in-any-order": "^1.0.28",
     "dotenv": "^16.4.5",
     "eslint": "^9.11.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-codeceptjs": "^1.3.0",
     "globals": "^17.0.0",
     "html_codesniffer": "^2.5.1",
@@ -176,7 +182,7 @@
     "lodash": "^4.17.21",
     "mocha": "10.6.0",
     "mocha-junit-reporter": "^2.0.2",
-    "mocha-multi": "^1.1.6",
+    "mocha-multi": "^1.1.7",
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.7",
@@ -194,11 +200,6 @@
   "lint-staged": {
     "playwright-ui/**/*.{ts,tsx}": "prettier --write",
     "**/*.{ts,tsx,js,mjs,cjs}": "eslint"
-  },
-  "resolutions": {
-    "axios@npm:^0.26.0": "npm:1.13.6",
-    "axios@npm:1.6.3": "npm:1.13.6",
-    "minimatch": "^3.0.5"
   },
   "packageManager": "yarn@4.10.3",
   "engines": {
