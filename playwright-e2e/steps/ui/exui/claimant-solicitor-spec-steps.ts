@@ -568,4 +568,61 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async RaiseANewQuery() {
+    const { queryManagementActions } = this.claimantSolicitorActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.enterQueryDetailsNew();
+        await queryManagementActions.reviewQueryDetails();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+    );
+  }
+
+  async RaiseANewQueryWithHearing() {
+    const { queryManagementActions } = this.claimantSolicitorActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.enterQueryDetailsHearing();
+        await queryManagementActions.reviewQueryDetails();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+    );
+  }
+
+  async RaiseFollowUpQuery() {
+    const { queryManagementActions } = this.claimantSolicitorActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.openQuery();
+        await queryManagementActions.askFollowUpQuestion();
+        await queryManagementActions.enterQueryDetailsFollowup();
+        await queryManagementActions.reviewQueryDetailsFollowup();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+    );
+  }
+
+  async VerifyQueryCaseOffline() {
+    const { queryManagementActions } = this.claimantSolicitorActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.verifyQueryCaseOffline();
+      },
+      async () => {},
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+    );
+  }
 }

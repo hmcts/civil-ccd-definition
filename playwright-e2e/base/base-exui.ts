@@ -94,6 +94,24 @@ export default abstract class BaseExui extends BaseApi {
   }
 
   @Step(classKey)
+  async retryWATaskEvent(
+    eventActions: (waTask: WATask) => Promise<void>,
+    confirmActions: () => Promise<void>,
+    user: User,
+    validTask: WATask,
+    { camundaProcess = true } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    const waTask = await super.retrieveAndAssignWATaskDetails(user, validTask);
+    await eventActions(waTask);
+    await confirmActions();
+    if (camundaProcess) await super.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await super.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+    await super.completeWATask(user, waTask.id);
+  }
+
+  @Step(classKey)
   async retryHearingEvent(
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
@@ -113,7 +131,38 @@ export default abstract class BaseExui extends BaseApi {
         await this.exuiDashboardActions.clearCCDEvent();
       }
     }
-    await confirmActions()
+    await confirmActions();
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+  }
+
+  @Step(classKey)
+  async retryQueryManagementEvent(
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
+    ccdEvent?: CCDEvent,
+    { retries = config.exui.eventRetries, camundaProcess = true } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    while (retries >= 0) {
+      try {
+        if (ccdEvent === ccdEvents.QUERY_MANAGEMENT_RAISE) {
+          await this.exuiDashboardActions.startExuiEventFromNextStep(ccdEvent);
+        } else {
+          await this.exuiDashboardActions.goToQueriesTab();
+        }
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Event failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
+    await confirmActions();
+    await this.exuiDashboardActions.clearCCDEvent();
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
   }
 }

@@ -369,4 +369,37 @@ export default class JudgeSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async VerifyQueryWithHearing() {
+    const { queryManagementActions } = this.judgeLaActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.openQuery();
+        await queryManagementActions.verifyQueryWithHearing();
+      },
+      async () => {},
+    );
+  }
+
+  async VerifyQueryNonHearing() {
+    const { queryManagementActions } = this.judgeLaActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.openQuery();
+        await queryManagementActions.verifyQueryNonHearing();
+      },
+      async () => {},
+    );
+  }
+
+  async VerifyQueryResponseAndFollowup() {
+    const { queryManagementActions } = this.judgeLaActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.openQuery();
+        await queryManagementActions.verifyQueryResponseAndFollowup();
+      },
+      async () => {},
+    );
+  }
 }

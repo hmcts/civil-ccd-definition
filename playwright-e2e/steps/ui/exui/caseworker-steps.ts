@@ -5,8 +5,9 @@ import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data.ts';
 import RequestsFactory from '../../../requests/requests-factory';
-import { civilAdminUser } from '../../../config/users/exui-users.ts';
+import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users.ts';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import respondToQueryCtscTask from '../../../constants/wa-tasks/respondToQueryCtscTask';
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -25,6 +26,10 @@ export default class CaseworkerSteps extends BaseExui {
 
   async Login() {
     await super.idamActions.exuiLogin(civilAdminUser);
+  }
+
+  async LoginCTSC() {
+    await super.idamActions.exuiLogin(ctscAdminUser);
   }
 
   async CaseProceedsInCaseman() {
@@ -104,6 +109,43 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.MEDIATION_UNSUCCESSFUL,
+    );
+  }
+
+  async RespondToQuery() {
+    const { queryManagementActions } = this.caseworkerActionsFactory;
+    await super.retryWATaskEvent(
+      async (waTask) => {
+        await queryManagementActions.enterResponseToQuery(waTask);
+        await queryManagementActions.reviewQueryResponse();
+      },
+      async () => {
+        await queryManagementActions.confirmQueryResponse();
+      },
+      ctscAdminUser,
+      respondToQueryCtscTask,
+    );
+  }
+
+  async VerifyQueryResponseAndFollowup() {
+    const { queryManagementActions } = this.caseworkerActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.openQuery();
+        await queryManagementActions.verifyQueryResponseAndFollowup();
+      },
+      async () => {},
+    );
+  }
+
+  async VerifyQueryNonHearing() {
+    const { queryManagementActions } = this.caseworkerActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.openQuery();
+        await queryManagementActions.verifyQueryNonHearing();
+      },
+      async () => {},
     );
   }
 }

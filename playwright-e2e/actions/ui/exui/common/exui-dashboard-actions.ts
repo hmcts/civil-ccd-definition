@@ -55,6 +55,12 @@ export default class ExuiDashboardActions extends BaseApi {
     await caseDetailsPage.retryClickHearingsTab();
   }
 
+  async goToQueriesTab() {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
+    await caseDetailsPage.retryClickQueriesTab();
+  }
+
   async signOut() {
     const { navBar } = this.exuiDashboardPageFactory;
     await navBar.clickSignOut();
@@ -79,8 +85,14 @@ export default class ExuiDashboardActions extends BaseApi {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
-    // await caseDetailsPage.retryChooseNextStep(ccdEvent);
     await caseDetailsPage.retryChooseNextStepWithUrl(this.ccdCaseData.id!, ccdEvent);
+    caseDetailsPage.setCCDEvent = ccdEvent;
+  }
+
+  async startExuiEventFromNextStep(ccdEvent: CCDEvent) {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
+    await caseDetailsPage.retryChooseNextStep(ccdEvent);
     caseDetailsPage.setCCDEvent = ccdEvent;
   }
 
@@ -100,5 +112,4 @@ export default class ExuiDashboardActions extends BaseApi {
       await caseDetailsPage.verifySuccessCaseFlagsEvent(super.activeCaseFlags, ccdEvent);
     else await caseDetailsPage.verifySuccessEvent(super.ccdCaseData.id!, ccdEvent);
   }
-
 }

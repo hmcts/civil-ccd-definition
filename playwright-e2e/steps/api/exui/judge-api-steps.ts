@@ -321,11 +321,7 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
     const notSuitableSdoData = await notSuitableSdoDataBuilder.buildChangeLocation();
-    await super.submitCCDEvent(
-      judgeRegion1User,
-      ccdEvents.NOT_SUITABLE_SDO,
-      notSuitableSdoData,
-    );
+    await super.submitCCDEvent(judgeRegion1User, ccdEvents.NOT_SUITABLE_SDO, notSuitableSdoData);
 
     const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const notSuitableSdoSchema =
@@ -339,11 +335,7 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
     const notSuitableSdoData = await notSuitableSdoDataBuilder.buildOtherReasons();
-    await super.submitCCDEvent(
-      judgeRegion1User,
-      ccdEvents.NOT_SUITABLE_SDO,
-      notSuitableSdoData,
-    );
+    await super.submitCCDEvent(judgeRegion1User, ccdEvents.NOT_SUITABLE_SDO, notSuitableSdoData);
 
     const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const notSuitableSdoSchema =
@@ -357,11 +349,7 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { sendAndReplyDataBuilder } = this.judgeDataBuilderFactory;
     const sendAndReplyData = await sendAndReplyDataBuilder.buildReply();
-    await super.submitCCDEvent(
-      judgeRegion1User,
-      ccdEvents.SEND_AND_REPLY,
-      sendAndReplyData,
-    );
+    await super.submitCCDEvent(judgeRegion1User, ccdEvents.SEND_AND_REPLY, sendAndReplyData);
 
     const { sendAndReplySchemaBuilder } = this.judgeSchemaBuilderFactory;
     const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);

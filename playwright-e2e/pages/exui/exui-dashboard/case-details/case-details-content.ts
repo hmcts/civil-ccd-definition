@@ -41,6 +41,10 @@ export const tabs = {
     title: 'Case Flags',
     selector: "div[role='tab'] >> 'Case Flags'",
   },
+  queries: {
+    title: 'Queries',
+    selector: "div[role='tab'] >> 'Queries'",
+  },
   hearings: {
     title: 'Hearings',
     selector: "div[role='tab'] >> 'Hearings'",
@@ -99,6 +103,12 @@ export const subheadings = {
   },
   bundlesTab: {
     bundleName: 'Bundle name',
+  },
+  queriesTab: {
+    allQueries: 'All queries',
+    queryDetails: 'Query details',
+    response: 'Response',
+    followUpQuery: 'Follow up query',
   },
 };
 

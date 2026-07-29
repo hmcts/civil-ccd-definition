@@ -235,4 +235,15 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async VerifyQueryWithHearing() {
+    const { queryManagementActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.openQuery();
+        await queryManagementActions.verifyQueryWithHearing();
+      },
+      async () => {},
+    );
+  }
 }

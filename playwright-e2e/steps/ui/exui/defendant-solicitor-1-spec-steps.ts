@@ -332,4 +332,34 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async RaiseANewQueryWithHearing() {
+    const { queryManagementActions } = this.defendantActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.enterQueryDetailsHearing();
+        await queryManagementActions.reviewQueryDetails();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+    );
+  }
+
+  async RaiseANewQuery() {
+    const { queryManagementActions } = this.defendantActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.enterQueryDetailsNew();
+        await queryManagementActions.reviewQueryDetails();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+    );
+  }
 }

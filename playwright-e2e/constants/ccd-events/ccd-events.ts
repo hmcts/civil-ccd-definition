@@ -341,6 +341,18 @@ const ccdEvents: CCDEvents = {
     description: 'Upload mediation documents',
     order: 24
   },
+  QUERY_MANAGEMENT_RAISE: {
+    id: 'queryManagementRaiseQuery',
+    name: 'Raise a new query',
+    description: 'Raise a new query',
+    order: 31,
+  },
+  QUERY_MANAGEMENT_RESPOND: {
+    id: 'queryManagementRespondQuery',
+    name: 'Respond to a query',
+    description: 'Respond to a query',
+    order: 32,
+  },
 };
 
 export default ccdEvents;

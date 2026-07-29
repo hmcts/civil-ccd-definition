@@ -12,6 +12,7 @@ import {
   headings,
 } from '../../mixin-pages/exui-page/exui-content';
 import ExuiPage from '../../mixin-pages/exui-page/exui-page';
+import { containers as queryManagementContainers } from '../../common/query-management/query-list/query-list-content';
 import {
   buttons,
   caseFlagsNoticeText,
@@ -94,6 +95,22 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     );
   }
 
+  async retryClickQueriesTab() {
+    await super.retryClickByText(
+      tabs.queries.title,
+      () => [
+        super.expectSelector(queryManagementContainers.queryTable.selector, {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+        super.expectUrlEnd('#Queries', {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+      ],
+      () => super.clickByText(tabs.summary.title),
+      { retries: 3, message: 'Clicking on queries tab failed, trying again' },
+    );
+  }
+
   async requestHearing() {
     await this.retryHearingAction(links.requestHearing.label, () =>
       super.clickByText(links.requestHearing.label),
@@ -141,6 +158,20 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     console.log(`Navigating to case with ccd case id: ${caseId}`);
     await super.retryGoTo(
       `${urls.manageCase}/cases/case-details/${caseId}`,
+      () =>
+        super.expectSelector(tabs.summary.selector, {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+      undefined,
+      { retries: 3, message: `Navigating to case with ccd case id: ${caseId}, trying again` },
+    );
+  }
+
+  @TruthyParams(classKey, 'caseId')
+  async retryGoToQueryManagment(caseId: number) {
+    console.log(`Navigating to case with ccd case id: ${caseId}`);
+    await super.retryGoTo(
+      `${urls.manageCase}/query-management/query/${caseId}`,
       () =>
         super.expectSelector(tabs.summary.selector, {
           timeout: config.playwright.shortExpectTimeout,
