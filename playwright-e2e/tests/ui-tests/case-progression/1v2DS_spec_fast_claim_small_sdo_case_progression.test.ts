@@ -21,7 +21,7 @@ test.describe('1v2 spec fast claim to small sdo case progression', { tag: '@civi
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondFastProceed1v2DS();
     await JudgeSteps.LoginRegion1();
-    await JudgeSteps.SdoSmallTrackFromFastClaim();
+    await JudgeSteps.SdoSmallFromFastClaim();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.EvidenceUploadSmall();
     await DefendantSolicitor1SpecSteps.Login();

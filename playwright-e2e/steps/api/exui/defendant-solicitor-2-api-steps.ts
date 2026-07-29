@@ -1,5 +1,8 @@
 import BaseApi from '../../../base/base-api';
-import { defendantSolicitor2User } from '../../../config/users/exui-users';
+import {
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+} from '../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseRole from '../../../constants/cases/case-role';
 import CaseState from '../../../constants/cases/case-state';
@@ -104,7 +107,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondFastTrackFullDefence1v2DS() {
+  async RespondFastFullDefence1v2DS() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -170,5 +173,23 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
       );
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+  }
+
+  async NoticeOfChange() {
+    await this.setupApiStep(defendantSolicitor2User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { noticeOfChangeDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const noticeOfChangeAnswers = await noticeOfChangeDataBuilder.buildDefendant2();
+    await super.submitNocEvent(
+      defendantSolicitor2User,
+      undefined,
+      noticeOfChangeAnswers,
+    );
+
+    const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const noticeOfChangeSchema =
+      await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
+    ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
   }
 }

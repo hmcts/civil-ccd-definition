@@ -7,7 +7,7 @@ test.describe('1v2DS spec small full defence api journey', { tag: '@civil-servic
     DefendantSolicitor1SpecApiSteps,
     DefendantSolicitor2SpecApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v2DS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
