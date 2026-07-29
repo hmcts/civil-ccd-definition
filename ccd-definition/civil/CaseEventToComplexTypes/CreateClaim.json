@@ -353,7 +353,7 @@
     "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY",
-    "EventElementLabel": "Address\n\nNon-represented defendants must have an address in England or Wales\n\n### Please enter address details"
+    "EventElementLabel": "<span class='form-label'>Address</span><br /><span>Non-represented defendants must have an address in England or Wales</span><br /><br /><span class='form-label'>Please enter address details</span>"
   },
   {
     "ID": "Defendant",
@@ -1005,7 +1005,7 @@
     "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY",
-    "EventElementLabel": "Address\n\nNon-represented defendants must have an address in England or Wales\n\n### Please enter address details"
+    "EventElementLabel": "<span class='form-label'>Address</span><br /><span>Non-represented defendants must have an address in England or Wales</span><br /><br /><span class='form-label'>Please enter address details</span>"
   },
   {
     "ID": "SecondDefendant",
