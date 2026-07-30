@@ -45,7 +45,6 @@ ccd:
       requests:
         cpu: "25m"
         memory: "512Mi"
-    minimumMasterNodes: 1
     antiAffinity: "soft"
     esJavaOpts: "-Xmx512m -Xms512m"
     extraEnvs:
