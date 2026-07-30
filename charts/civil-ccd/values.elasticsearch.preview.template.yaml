@@ -47,11 +47,11 @@ ccd:
         memory: "512Mi"
     antiAffinity: "soft"
     esJavaOpts: "-Xmx512m -Xms512m"
-    extraEnvs:
-      - name: discovery.type
-        value: single-node
-      - name: action.auto_create_index
-        value: .security*,.watches,.triggered_watches,.watcher-history-*,.logstash_dead_letter,.ml*
+    esConfig:
+      elasticsearch.yml: |
+        action.auto_create_index: .security*,.watches,.triggered_watches,.watcher-history-*,.logstash_dead_letter,.ml*,ccd-logstash-dead-letter
+        xpack.security.enabled: false
+        discovery.type: single-node
     persistence:
       enabled: false
     ingress:
