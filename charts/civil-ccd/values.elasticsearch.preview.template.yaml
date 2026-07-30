@@ -48,12 +48,20 @@ ccd:
     minimumMasterNodes: 1
     antiAffinity: "soft"
     esJavaOpts: "-Xmx512m -Xms512m"
-    esConfig:
-      elasticsearch.yml: |
-        action.auto_create_index: .security*,.watches,.triggered_watches,.watcher-history-*,.logstash_dead_letter,.ml*,ccd-logstash-dead-letter
-        xpack.security.enabled: false
-        discovery.type: single-node
-
+    extraEnvs:
+      - name: discovery.type
+        value: single-node
+      - name: action.auto_create_index
+        value: .security*,.watches,.triggered_watches,.watcher-history-*,.logstash_dead_letter,.ml*
+    persistence:
+      enabled: false
+    ingress:
+      enabled: true
+      className: traefik
+      hosts:
+        - host: es-${SERVICE_FQDN}
+          paths:
+            - path: /
   logstash:
     image: hmctsprod.azurecr.io/ccd/logstash
     imageTag: "latest"
