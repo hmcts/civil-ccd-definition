@@ -34,6 +34,25 @@ ccd:
         ADMINWEB_GET_DICTIONARY_URL: http://${SERVICE_NAME}-translation-service/dictionary
         ALLOW_CONFIG_MUTATIONS: true
       keyVaults: [ ]
+  elasticsearch:
+    nameOverride: ${SERVICE_NAME}-es
+    clusterName: "es"
+    replicas: 1
+    initResources:
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
+      requests:
+        cpu: "25m"
+        memory: "512Mi"
+    minimumMasterNodes: 1
+    antiAffinity: "soft"
+    esJavaOpts: "-Xmx512m -Xms512m"
+    esConfig:
+      elasticsearch.yml: |
+        action.auto_create_index: .security*,.watches,.triggered_watches,.watcher-history-*,.logstash_dead_letter,.ml*,ccd-logstash-dead-letter
+        xpack.security.enabled: false
+        discovery.type: single-node
 
   logstash:
     image: hmctsprod.azurecr.io/ccd/logstash
