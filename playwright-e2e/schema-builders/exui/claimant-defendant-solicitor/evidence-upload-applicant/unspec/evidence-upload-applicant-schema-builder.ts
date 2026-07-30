@@ -12,6 +12,10 @@ export default class EvidenceUploadApplicantSchemaBuilder extends BaseSchemaBuil
     return this.buildSchema(caseDataBeforeSubmission, {claimTrack: ClaimTrack.FAST_CLAIM})
   }
 
+  async buildFast2v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {claimTrack: ClaimTrack.FAST_CLAIM})
+  }
+
   async buildSmallClaim(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission);
   }

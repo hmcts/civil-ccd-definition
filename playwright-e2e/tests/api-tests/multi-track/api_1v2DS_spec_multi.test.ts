@@ -15,7 +15,7 @@ test.describe('1v2DS spec api multi track journey', { tag: '@civil-service-night
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await DefendantSolicitor1SpecApiSteps.RespondMultiFullDefence();
     await DefendantSolicitor2SpecApiSteps.RespondMultiFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondMultiProceed1v2DS();
+    await ClaimantSolicitorSpecApiSteps.RespondMultiRejectFullDefence1v2DS();
     await JudgeApiSteps.GenerateDirectionsOrderMulti();
     await ClaimantSolicitorSpecApiSteps.EvidenceUploadFast();
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();

@@ -10,6 +10,6 @@ test.describe('1v1 spec part admit api journey', { tag: '@civil-service-nightly'
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFastPartAdmitImmediately();
-    await ClaimantSolicitorSpecApiSteps.RespondFastPartAdmitProceed();
+    await ClaimantSolicitorSpecApiSteps.RespondFastRejectPartAdmit();
   });
 });

@@ -5,12 +5,7 @@ import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import DateHelper from '../../../../../helpers/date-helper.ts';
-import {
-  headings,
-  radioButtons,
-  inputs,
-  selectorKeys,
-} from './permission-granted-content';
+import { headings, radioButtons, inputs, selectorKeys } from './permission-granted-content';
 import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content';
 
 @AllMethodsStep()
@@ -35,12 +30,14 @@ export default class PermissionGrantedPage extends ExuiPage(BasePage) {
 
   async selectPermissionGrantedYes() {
     await super.clickBySelector(radioButtons.yes.selector);
-    await super.inputText('Testing', inputs.judgeName);
+    await super.inputText('Testing', inputs.judgeName.selector);
     const permissionGrantedDate = DateHelper.subtractFromToday({ months: 6 });
     await this.dateFragment.enterDate(permissionGrantedDate, selectorKeys.permissionGrantedDate);
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() =>
+      super.expectNoSelector(inputs.judgeName.selector, { timeout: 3000 }),
+    );
   }
 }

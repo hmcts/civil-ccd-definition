@@ -10,6 +10,6 @@ test.describe('2v1 spec full defence api journey', { tag: '@civil-service-nightl
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence2v1();
-    await ClaimantSolicitorSpecApiSteps.RespondFastFullDefenceProceed2v1();
+    await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence2v1();
   });
 });

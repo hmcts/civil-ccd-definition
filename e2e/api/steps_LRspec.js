@@ -9,6 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess, checkOtherRemedyEnabled} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
+const {retry} = require('./retryHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -924,6 +925,47 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
+  submitAgreedExtensionDate: async () => {
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  informAgreedExtensionDateRespondent2: async (user) => {
+    eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE('CREATE_CLAIM_SPEC_AFTER_PAYMENT');
+    delete informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension;
+    informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor2AgreedDeadlineExtension = await dateNoWeekends(42);
+
+    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
+      await assertValidData(informAgreedExtensionData, pageId);
+    }
+
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await waitForFinishedBusinessProcess(caseId);
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.secondDefendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  },
+
+  assertAllPartiesExtensionEmailsSent: async (caseId, expectedRecipients) => {
+    // notifications/sent filters on the reference, which carries the legacy case reference
+    const details = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    const legacyRef = details.case_data.legacyCaseReference;
+    await retry(async () => {
+      const entries = await apiRequest.fetchSentNotifications(config.applicantSolicitorUser, legacyRef);
+      const extension = entries.filter(e => (e.reference || '').includes('agreed-extension'));
+      const recipients = [...new Set(extension.map(e => e.recipientEmail))];
+      assert.include(recipients, config.applicantSolicitorUser.email,
+        `applicant solicitor not notified of agreed extension on ${legacyRef}, recipients: ${recipients}`);
+      assert.isAtLeast(recipients.length, expectedRecipients,
+        `expected ${expectedRecipients} parties notified of agreed extension on ${legacyRef}, `
+        + `got ${recipients.length}: ${recipients}`);
+    }, 5, 5000);
   },
 
   cleanUp: async () => {

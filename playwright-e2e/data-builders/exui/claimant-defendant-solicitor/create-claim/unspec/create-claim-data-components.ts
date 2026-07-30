@@ -5,8 +5,8 @@ import {
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
 import partys from '../../../../../constants/users/partys';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
@@ -234,7 +234,7 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
 const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimTypeUnspecObjs) => {
   const isPersonalInjuryClaimType = typeof claimTypeUnSpec === 'object' && (claimTypeUnSpec as PersonalInjuryClaimTypeUnspecObjs).claimTypeUnspec === ClaimTypeUnspec.PERSONAL_INJURY;
 
-  if(isPersonalInjuryClaimType) {
+  if (isPersonalInjuryClaimType) {
     return {
       ClaimTypeUnSpec: {
         claimTypeUnSpec: (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).claimTypeUnspec,
@@ -246,7 +246,7 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
     }
   }
 
-  if((claimTypeUnSpec as ClaimTypeUnspec) === ClaimTypeUnspec.OTHER) {
+  if ((claimTypeUnSpec as ClaimTypeUnspec) === ClaimTypeUnspec.OTHER) {
     return {
       ClaimTypeUnSpec: {
         claimTypeUnSpec: claimTypeUnSpec as ClaimTypeUnspec,

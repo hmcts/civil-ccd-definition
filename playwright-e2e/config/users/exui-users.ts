@@ -55,6 +55,33 @@ export const defendantSolicitor2User: User = getUser({
   orgId: process.env.ENVIRONMENT === Environment.DEMO ? 'LCVTI1I' : 'H2156A0',
 });
 
+export const otherSolicitorUser1: User = getUser({
+  name: 'Other Solicitor 1',
+  email: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',
+  password: defaultPassword,
+  key: UserKey.OTHER_SOLICITOR_1,
+  role: UserRole.CASEWORKER,
+  orgId: process.env.ENVIRONMENT === Environment.DEMO ? 'OZO586V' : '0FA7S8S',
+});
+
+export const otherSolicitorUser2: User = getUser({
+  name: 'Other Solicitor 2',
+  email: 'civil.damages.claims+organisation.2.solicitor.1@gmail.com',
+  password: defaultPassword,
+  key: UserKey.OTHER_SOLICITOR_2,
+  role: UserRole.CASEWORKER,
+  orgId: process.env.ENVIRONMENT === Environment.DEMO ? 'DOSS3I2' : 'N5AFUXG',
+});
+
+export const otherSolicitorUser3: User = getUser({
+  name: 'Other Solicitor 3',
+  email: 'hmcts.civil+organisation.1.solicitor.2@gmail.com',
+  password: defaultPassword,
+  key: UserKey.OTHER_SOLICITOR_3,
+  role: UserRole.CASEWORKER,
+  orgId: process.env.ENVIRONMENT === Environment.DEMO ? 'B04IXE4' : 'Q1KOKP2',
+});
+
 export const civilAdminUser: User = getUser({
   name: 'Civil Admin',
   email: 'civil-admin@mailnesia.com',
@@ -102,7 +129,7 @@ export const nbcLocalUser: User = getUser({
 
 export const judgeRegion1User: User = getUser({
   name: 'Judge Region 1',
-  email: '4917924EMP-@ejudiciary.net',
+  email: 'DJ.Amy.Powell@ejudiciary.net',
   password: judgeDefaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.JUDGE_REGION_1,

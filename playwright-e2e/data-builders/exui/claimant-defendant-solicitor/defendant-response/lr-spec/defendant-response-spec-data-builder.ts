@@ -12,6 +12,7 @@ import partys from '../../../../../constants/users/partys';
 import { Party } from '../../../../../models/users/partys';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-admitted-part-route-spec';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
@@ -27,6 +28,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
 
   async buildDS1IntermediateFullDefence() {
     return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildDS1IntermediateFullDefence1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
     });
   }
@@ -129,6 +137,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1SmallPartAdmitHasPaid() {
+    return this.buildData({
+      defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
+      defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec.HAS_PAID,
+    });
+  }
+
   async buildDS2FastFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -224,6 +239,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildDS1FullAdmitSetDate() {
+    return this.buildData({
+      defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
+      paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
+    });
+  }
+
   async buildDS1FullAdmitSetDate1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -246,6 +268,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     defendantResponseSpecType = DefendantResponseSpecType.FULL_DEFENCE,
     defenceRouteSpec = DefenceRouteSpec.DISPUTE,
     paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY,
+    defenceAdmittedPartRoute = DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
     defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
   }: {
     claimType?: ClaimType;
@@ -253,6 +276,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     defendantResponseSpecType?: DefendantResponseSpecType;
     defenceRouteSpec?: DefenceRouteSpec;
     paymentTypeSpec?: PaymentTypeSpec;
+    defenceAdmittedPartRoute?: DefenceAdmittedPartRouteSpec;
     defendantSolicitorParty?: Party;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
@@ -289,6 +313,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       defendantResponseSpecData.defenceAdmittedPartRoute(
         defendantResponseSpecType,
         claimTrack,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.upload(
@@ -300,28 +325,33 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       defendantResponseSpecData.whenWillClaimBePaid(
         defendantResponseSpecType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.defendant1FinancialDetails(
         defendantResponseSpecType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.defendant2FinancialDetails(
         defendantResponseSpecType,
         paymentTypeSpec,
         claimType,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.defendant1RepaymentPlan(
         defendantResponseSpecType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.defendant2RepaymentPlan(
         defendantResponseSpecType,
         paymentTypeSpec,
         claimType,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecData.mediationContactInformation(

@@ -12,7 +12,7 @@ test.describe('1v1 spec intermediate track api journey', { tag: '@civil-service-
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondIntermediateProceed();
+    await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectFullDefence();
     await JudgeApiSteps.GenerateDirectionsOrderIntermediate();
     await DefendantSolicitor1SpecApiSteps.EvidenceUploadFast();
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
@@ -39,7 +39,7 @@ test.describe('1v1 spec intermediate track api journey', { tag: '@civil-service-
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondIntermediatePartAdmitImmediately();
-    await ClaimantSolicitorSpecApiSteps.RespondIntermediatePartAdmitProceed();
+    await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectPartAdmit();
   });
 
   test('1v1 spec counter claim intermediate claim', async ({

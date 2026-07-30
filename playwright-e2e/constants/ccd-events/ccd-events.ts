@@ -95,6 +95,18 @@ const ccdEvents: CCDEvents = {
     description: 'Discontinue this claim',
     order: 11,
   },
+  VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Validate Discontinuance',
+    description: 'Validate Discontinuance',
+    order: 11,
+  },
+  DISMISS_CASE: {
+    id: 'DISMISS_CASE',
+    name: 'Dismiss case',
+    description: 'Dismiss case',
+    order: 11,
+  },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',
@@ -186,10 +198,34 @@ const ccdEvents: CCDEvents = {
     description: 'Set aside judgment',
     order: 20,
   },
+  JUDGMENT_PAID_IN_FULL: {
+    id: 'JUDGMENT_PAID_IN_FULL',
+    name: 'Judgment paid in full',
+    description: 'Judgment paid in full',
+    order: 21,
+  },
   GENERATE_DIRECTIONS_ORDER: {
     id: 'GENERATE_DIRECTIONS_ORDER',
     name: 'Make an order',
     description: 'Make an order',
+  },
+  CONFIRM_ORDER_REVIEW: {
+    id: 'CONFIRM_ORDER_REVIEW',
+    name: 'Confirm order review',
+    description: 'Confirm order review',
+    order: 18,
+  },
+  RECORD_JUDGMENT: {
+    id: 'RECORD_JUDGMENT',
+    name: 'Record Judgment',
+    description: 'Record Judgment',
+    order: 18,
+  },
+  EDIT_JUDGMENT: {
+    id: 'EDIT_JUDGMENT',
+    name: 'Edit Judgment',
+    description: 'Edit Judgment',
+    order: 18,
   },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
@@ -237,7 +273,7 @@ const ccdEvents: CCDEvents = {
     id: 'REQUEST_FOR_RECONSIDERATION',
     name: 'Request for reconsideration',
     description: 'Request for reconsideration check',
-    order: 22.5,
+    order: 22,
   },
   SETTLE_CLAIM: {
     id: 'SETTLE_CLAIM',
@@ -255,7 +291,7 @@ const ccdEvents: CCDEvents = {
     id: 'DECISION_ON_RECONSIDERATION_REQUEST',
     name: 'Decision on reconsideration',
     description: 'Decision on reconsideration',
-    order: 22.6,
+    order: 22,
   },
   CREATE_CASE_FLAGS: {
     id: 'CREATE_CASE_FLAGS',
@@ -285,7 +321,7 @@ const ccdEvents: CCDEvents = {
     id: 'ADD_UNAVAILABLE_DATES',
     name: 'Add Unavailable Dates',
     description: 'Add unavailable dates after claimant response or default judgment',
-    order: 26.5,
+    order: 26,
   },
   STAY_CASE: {
     id: 'STAY_CASE',
@@ -297,6 +333,12 @@ const ccdEvents: CCDEvents = {
     id: 'MANAGE_STAY',
     name: 'Manage stay',
     description: 'Request an update or lift the stay',
+    order: 28,
+  },
+  SEND_AND_REPLY: {
+    id: 'SEND_AND_REPLY',
+    name: 'Send and reply',
+    description: 'Send and reply',
     order: 28,
   },
   EVIDENCE_UPLOAD_APPLICANT: {
@@ -328,7 +370,7 @@ const ccdEvents: CCDEvents = {
     name: 'Upload mediation documents',
     description: 'Upload mediation documents',
     order: 24
-  }
+  },
 };
 
 export default ccdEvents;

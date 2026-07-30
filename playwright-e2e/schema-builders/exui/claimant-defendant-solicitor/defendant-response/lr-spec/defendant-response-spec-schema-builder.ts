@@ -11,6 +11,7 @@ import partys from '../../../../../constants/users/partys';
 import { Party } from '../../../../../models/users/partys';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-admitted-part-route-spec';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
@@ -25,6 +26,14 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
   async buildIntermediateFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+    });
+  }
+
+  async buildIntermediate1v2DSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       responseType: DefendantResponseSpecType.FULL_DEFENCE,
     });
@@ -111,6 +120,14 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildDS1FullAdmitSetDate(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      responseType: DefendantResponseSpecType.FULL_ADMISSION,
+      paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
+    });
+  }
+
   async buildDS1FullAdmitSetDate1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -132,6 +149,15 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       claimType: ClaimType.ONE_VS_ONE,
       claimTrack: ClaimTrack.SMALL_CLAIM,
       responseType: DefendantResponseSpecType.PART_ADMISSION,
+    });
+  }
+
+  async buildDS1SmallPartAdmitHasPaid(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      responseType: DefendantResponseSpecType.PART_ADMISSION,
+      defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec.HAS_PAID,
     });
   }
 
@@ -197,6 +223,14 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
     });
   }
 
+  async buildDS2Intermediate1v2DSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
   async buildDS2MultiFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
@@ -296,6 +330,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       responseType = DefendantResponseSpecType.FULL_DEFENCE,
       defenceRouteSpec = DefenceRouteSpec.DISPUTE,
       paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY,
+      defenceAdmittedPartRoute = DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
       defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
     }: {
       caseDataBeforeSubmission?: CCDCaseData;
@@ -304,6 +339,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       responseType?: DefendantResponseSpecType;
       defenceRouteSpec?: DefenceRouteSpec;
       paymentTypeSpec?: PaymentTypeSpec;
+      defenceAdmittedPartRoute?: DefenceAdmittedPartRouteSpec;
       defendantSolicitorParty?: Party;
     },
   ): Promise<z.ZodType> {
@@ -334,6 +370,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       ),
       defendantResponseSpecSchemaComponents.defenceAdmittedPartRoute(
         responseType,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.upload(responseType, defendantSolicitorParty),
@@ -341,28 +378,33 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       defendantResponseSpecSchemaComponents.whenWillClaimBePaid(
         responseType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defendant1FinancialDetails(
         responseType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defendant2FinancialDetails(
         responseType,
         paymentTypeSpec,
         claimType,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defendant1RepaymentPlan(
         responseType,
         paymentTypeSpec,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defendant2RepaymentPlan(
         responseType,
         paymentTypeSpec,
         claimType,
+        defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.mediationContactInformation(

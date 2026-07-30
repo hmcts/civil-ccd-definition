@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
-const pixelmatch = require('pixelmatch');
+const { default: pixelmatch } = require('pixelmatch');
 const { PNG } = require('pngjs');
 const codeceptjs = require('codeceptjs');
 

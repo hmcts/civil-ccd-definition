@@ -20,8 +20,16 @@ export default class UploadMediationDocumentsDataBuilder extends BaseDataBuilder
     return this.buildData({claimantDefendantSolicitorParty: partys.DEFENDANT_SOLICITOR_1})
   }
 
+  async buildDS2() {
+    return this.buildData({claimantDefendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2})
+  }
+
   async buildCS1() {
     return this.buildData()
+  }
+
+  async buildCS12v1() {
+    return this.buildData({ claimType: ClaimType.TWO_VS_ONE })
   }
 
   protected async buildData({

@@ -19,7 +19,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
-      await JudgeApiSteps.SdoSmallTrackSumDRH();
+      await JudgeApiSteps.SdoSmallSumDRH();
       await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
       await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
       await HearingCenterAdminApiSteps.ScheduleHearingSmallTrailWA();
