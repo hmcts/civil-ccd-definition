@@ -60,8 +60,6 @@ The below labels are options to get the different services running on the PR
 
   "pr-values:enableNotifyEmails" label to be able to send live notifications on the PR
 
-  "pr-values:elasticsearch" label to have elastic search running - needed for scheduler testing
-
   "pr-values:enableWA" label to verify work allocation task
 
   "pr-values:enableHmc" label to enable the HMC integration with services running in AAT.
