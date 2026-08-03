@@ -7,6 +7,7 @@ import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-p
 import TestData from '../models/test-utils/test-data';
 import ClaimType from '../constants/cases/claim-type';
 import ClaimTypeHelper from '../helpers/claim-type-helper';
+import { claimants, defendants } from '../config/users/cui-users';
 
 export default abstract class BaseTestData {
   private _testData: TestData;
@@ -223,5 +224,13 @@ export default abstract class BaseTestData {
 
   protected get isDebugTestDataSetup() {
     return this._testData.isDebugTestDataSetup;
+  }
+
+  protected get claimantCitizenUser() {
+    return claimants[this.workerIndex]
+  }
+
+  protected get defendantCitizenUser() {
+    return defendants[this.workerIndex]
   }
 }

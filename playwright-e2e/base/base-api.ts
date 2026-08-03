@@ -5,13 +5,12 @@ import { bankHolidays } from '../config/data';
 import { CCDEvent } from '../models/ccd-events/ccd-events';
 import ObjectHelper from '../helpers/object-helper';
 import TestData from '../models/test-utils/test-data';
-import { civilAdminUser, civilSystemUpdate } from '../config/users/exui-users';
+import { civilSystemUpdate } from '../config/users/exui-users';
 import config from '../config/config';
 import DateHelper from '../helpers/date-helper';
 import WATask from '../models/wa-task';
 import CaseState from '../constants/cases/case-state';
 import CCDCaseData from '../models/ccd-case-data';
-import { NocAnswer } from '../requests/case-assignment-service-requests';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -182,10 +181,35 @@ export default abstract class BaseApi extends BaseTestData {
 
     await this.waitForFinishedBusinessProcess(caseId);
     
-    if(oldSolicitor)
+    if (oldSolicitor)
       await ccdRequests.fetchCCDCaseData(oldSolicitor, caseId, 404);
     await ccdRequests.fetchCCDCaseData(newSolicitor, caseId);
     await this.fetchAndSetCCDCaseData(caseId);
+  }
+
+  protected async submitCuiEvent(
+    user: User,
+    ccdEvent: CCDEvent,
+    caseDataUpdate: CCDCaseData,
+    expectedState?: CaseState,
+  ): Promise<CCDCaseData> {
+    await this.setupApiStep(user);
+    const { civilServiceRequests } = this.requestsFactory;
+    const payload = {
+      event: ccdEvent.id,
+      caseDataUpdate,
+    };
+
+    const eventCaseData = await civilServiceRequests.submitEventCitizen(
+      user,
+      payload,
+      this.ccdCaseData?.id ?? 'draft',
+      expectedState,
+    );
+
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    return eventCaseData;
   }
 
   protected async submitWAEvent(

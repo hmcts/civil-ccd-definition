@@ -3,13 +3,72 @@ import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
 import CaseRole from '../constants/cases/case-role';
 import RequestOptions from '../models/api/request-options';
-import CCDCaseData, { UploadDocumentValue } from '../models/ccd-case-data';
+import CCDCaseData, { ClaimFee, UploadDocumentValue } from '../models/ccd-case-data';
 import User from '../models/users/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
+import CaseState from '../constants/cases/case-state';
 
 @AllMethodsStep()
 export default class CivilServiceRequests extends ServiceAuthProviderRequests(BaseRequest) {
   private testingSupportUrl = `${urls.civilService}/testing-support`;
+
+  async submitEventCitizen(
+    user: User,
+    payload: Record<string, any>,
+    caseId: number | 'draft' = 'draft',
+    expectedState?: CaseState,
+  ): Promise<CCDCaseData> {
+    console.log(`Submitting citizen event, caseId: ${caseId}`);
+
+    const url = `${urls.civilService}/cases/${caseId}/citizen/${user.userId}/event`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      body: payload,
+      method: 'POST',
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('id', responseJson);
+        await super.expectResponseJsonToHaveProperty('case_data', responseJson);
+        if (expectedState) {
+          await super.expectResponseJsonToHavePropertyValue(
+            'state',
+            expectedState,
+            responseJson,
+            { nonRetryable: true },
+          );
+        }
+      },
+    });
+
+    console.log(`Citizen event submitted successfully, caseId: ${responseJson.id}`);
+    return {
+      id: Number(responseJson.id),
+      ...responseJson.case_data,
+    };
+  }
+
+  async getClaimFeeData(user: User, amount: number): Promise<ClaimFee> {
+    const roundedAmount = Number(amount.toFixed(2));
+    console.log(`Getting claim fee data, amount: ${roundedAmount}`);
+    const url = `${urls.civilService}/fees/claim/${roundedAmount}`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('calculatedAmountInPence', responseJson);
+        await super.expectResponseJsonToHaveProperty('code', responseJson);
+        await super.expectResponseJsonToHaveProperty('version', responseJson);
+      },
+    });
+    console.log(
+      `Claim fee of ${responseJson.calculatedAmountInPence} retrieved based on claim amount ${roundedAmount} successfully`,
+    );
+    return responseJson;
+  }
 
   async uploadTestDocument(user: User): Promise<UploadDocumentValue> {
     console.log('Uploading test document...');
