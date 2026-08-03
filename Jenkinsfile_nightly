@@ -1,7 +1,7 @@
 #!groovy
 
 properties([
-  pipelineTriggers([cron('H 08 * * 1-5')]),
+  // pipelineTriggers([cron('H 08 * * 1-5')]),
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'],
@@ -320,15 +320,15 @@ withNightlyPipeline(type, product, component) {
   }
 
   if(!forceGreenBuild) {
-    before('fullFunctionalTest') {
-      if(runPrevFailedAndNotExecutedTestFiles) {
-        copyPrevFailedAndNotExecutedTestFilesJson()
-      }
-      copyPreviousAllureHistory()
-    }
+    // before('fullFunctionalTest') {
+    //   if(runPrevFailedAndNotExecutedTestFiles) {
+    //     copyPrevFailedAndNotExecutedTestFilesJson()
+    //   }
+    //   copyPreviousAllureHistory()
+    // }
   }
 
-  enableFullFunctionalTest(200)
+  // enableFullFunctionalTest(200)
 
   if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
