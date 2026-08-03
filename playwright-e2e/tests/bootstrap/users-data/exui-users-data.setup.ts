@@ -2,7 +2,7 @@ import { test as setup } from '../../../playwright-fixtures/index';
 import { exuiUserDataSetupUsers } from '../../../config/users/exui-users';
 import config from '../../../config/config';
 
-if (config.runUserDataSetup) {
+if (config.runExuiUserDataSetup) {
   setup.describe('Setting up exui user data', () => {
     setup.describe.configure({ mode: 'parallel' });
 
