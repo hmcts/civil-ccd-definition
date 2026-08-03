@@ -15,7 +15,7 @@
     "ListElementCode": "reasonForReconsiderationTxt",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\"",
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"APPLICANT\"",
     "Publish": "Y"
   },
   {
@@ -25,7 +25,7 @@
     "ListElementCode": "reasonForReconsiderationTxt",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\"",
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"RESPONDENT1\"",
     "Publish": "Y"
   },
   {
@@ -35,7 +35,7 @@
     "ListElementCode": "reasonForReconsiderationTxt",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\"",
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"RESPONDENT2\"",
     "Publish": "Y"
   }
 ]

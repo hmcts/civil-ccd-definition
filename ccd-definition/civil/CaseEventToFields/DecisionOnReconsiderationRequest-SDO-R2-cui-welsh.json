@@ -23,7 +23,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\""
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"APPLICANT\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -37,7 +37,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\""
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"RESPONDENT1\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -51,7 +51,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\""
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"RESPONDENT2\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -157,7 +157,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
-    "CaseFieldID": "casePartyRequestForReconsideration",
+    "CaseFieldID": "casePartiesRequestingReconsideration",
     "PageFieldDisplayOrder": 13,
     "DisplayContext": "READONLY",
     "PageID": "JudgeResponseToReconsideration",
