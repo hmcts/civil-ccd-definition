@@ -41,7 +41,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondFastTrackFullDefence1v1() {
+  async RespondFastFullDefence1v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -52,7 +52,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.dqFastTrackDS1();
+        await defendantResponseSpecActions.dqFastDS1();
         await defendantResponseSpecActions.dqDS1();
         await defendantResponseSpecActions.applicationDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
@@ -67,7 +67,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v1() {
+  async RespondSmallFullDefence1v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -79,7 +79,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
         await defendantResponseSpecActions.mediationDS1();
-        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.dqSmallDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -92,7 +92,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence2v1() {
+  async RespondSmallFullDefence2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -105,7 +105,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
         await defendantResponseSpecActions.mediationDS1();
-        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.dqSmallDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -118,7 +118,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v2SS() {
+  async RespondSmallFullDefence1v2SS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -131,7 +131,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
         await defendantResponseSpecActions.mediationDS1();
-        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.dqSmallDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -144,7 +144,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -156,7 +156,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
         await defendantResponseSpecActions.mediationDS1();
-        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.dqSmallDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -165,6 +165,213 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
 
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastFullDefence1v2DS() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.dqFastDS1();
+        await defendantResponseSpecActions.dqDS1();
+        await defendantResponseSpecActions.applicationDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastFullDefence1v2SS() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddress1v2();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.dqFastDS1();
+        await defendantResponseSpecActions.dqDS1();
+        await defendantResponseSpecActions.applicationDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpec();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastFullDefence2v1() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse2v1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.dqFastDS1();
+        await defendantResponseSpecActions.dqDS1();
+        await defendantResponseSpecActions.applicationDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondMultiFullDefence1v2SS() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddress1v2();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.dqMultiDS1();
+        await defendantResponseSpecActions.applicationDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpec();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadSmall() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionSmallClaim();
+        await evidenceUploadRespondentActions.documentUpload();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadFast() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrack();
+        await evidenceUploadRespondentActions.documentUpload();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadBundle1v2SS() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.selectUploadOptions();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackBundle();
+        await evidenceUploadRespondentActions.documentUploadBundleDS1();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastPartAdmit2v1() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse2v1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecPartAdmitDS1();
+        await defendantResponseSpecActions.defenceAdmittedPartRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineManualDS1();
+        await defendantResponseSpecActions.whenWillClaimBePaidRepaymentPlan();
+        await defendantResponseSpecActions.financialDetails();
+        await defendantResponseSpecActions.repaymentPlan();
+        await defendantResponseSpecActions.dqFastDS1();
+        await defendantResponseSpecActions.dqDS1();
+        await defendantResponseSpecActions.applicationDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirmDefendantResponseSpecPartAdmit();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastFullAdmit2v1() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse2v1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecFullAdmitDS1();
+        await defendantResponseSpecActions.whenWillClaimBePaidImmediately();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirmDefendantResponseSpecFullAdmit();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
       { verifySuccessEvent: false },
     );
   }

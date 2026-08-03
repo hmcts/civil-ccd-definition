@@ -15,13 +15,13 @@ export default class ManageCaseFlagsActions extends BaseTestData {
   async makeInactiveCaseFlag() {
     const { manageCaseFlagsChooseFlagPage } = this.manageCaseFlagsPageFactory;
     await manageCaseFlagsChooseFlagPage.verifyContent(this.ccdCaseData, this.caseFlagsDetails);
-    await manageCaseFlagsChooseFlagPage.selectFlag(this.firstActiveCaseFlagDetails);
+    await manageCaseFlagsChooseFlagPage.selectFlag(this.firstActiveCaseFlagDetails!);
     await manageCaseFlagsChooseFlagPage.submit();
 
     const { manageCaseFlagsUpdateFlagPage } = this.manageCaseFlagsPageFactory;
     await manageCaseFlagsUpdateFlagPage.verifyContent(
       this.ccdCaseData,
-      this.firstActiveCaseFlagDetails,
+      this.firstActiveCaseFlagDetails!,
     );
     await manageCaseFlagsUpdateFlagPage.clickMakeInactive();
     await manageCaseFlagsUpdateFlagPage.submit();

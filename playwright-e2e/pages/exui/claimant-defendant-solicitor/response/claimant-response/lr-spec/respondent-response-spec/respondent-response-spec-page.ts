@@ -1,9 +1,9 @@
 import BasePage from '../../../../../../../base/base-page';
-import ExuiPage from '../../../../../exui-page/exui-page';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps';
 import { paragraphs, radioButtons } from './respondent-response-spec-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
-import { getResponseSealedFormDocName } from '../../../../../exui-page/exui-content.ts';
+import { getResponseSealedFormDocName } from '../../../../../mixin-pages/exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class RespondentResponseSpecPage extends ExuiPage(BasePage) {

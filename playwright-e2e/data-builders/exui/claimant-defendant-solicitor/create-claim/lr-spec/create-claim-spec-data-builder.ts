@@ -5,54 +5,114 @@ import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecData from './create-claim-spec-data-components';
+import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
-  async buildFastTrack1v1() {
+  async buildFast1v1() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildFastTrack2v1() {
+  async buildFast2v1() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.TWO_VS_ONE });
   }
 
-  async buildFastTrack1v2SS() {
+  async buildFast1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
     });
   }
 
-  async buildSmallTrack1v1() {
+  async buildFast1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
+  async buildIntermediate1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediate1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildIntermediate1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
+  async buildMulti1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildMulti2v1() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+    });
+  }
+
+  async buildMulti1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildMulti1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
+  async buildSmall1v1() {
     return this.buildData();
   }
 
-  async buildSmallTrack2v1() {
+  async buildSmall2v1() {
     return this.buildData({ claimType: ClaimType.TWO_VS_ONE });
   }
 
-  async buildSmallTrack1v2SS() {
+  async buildSmall1v2SS() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }
 
-  async buildSmallTrack1v2DS() {
+  async buildSmall1v2DS() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
-  async buildSmallTrack1vLIP() {
+  async buildSmall1vLIP() {
     return this.buildData({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
-  async buildSmallTrack1v2LIPs() {
+  async buildSmall1v2LIPs() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LIPS });
   }
 
-  async buildSmallTrack1v2LIPLR() {
+  async buildSmall1v2LIPLR() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LIP_LR });
   }
 
-  async buildSmallTrack1v2LRLIP() {
+  async buildSmall1v2LRLIP() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
+  }
+
+  async buildSmallFlightDelay() {
+    return this.buildData({ flightDelayClaim: FlightDelayClaim.YES });
+  }
+
+  async buildSmallFlightDelayOther() {
+    return this.buildData({ flightDelayClaim: FlightDelayClaim.YES, airline: Airline.OTHER });
   }
 
   protected async buildData({
@@ -62,6 +122,8 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    flightDelayClaim = FlightDelayClaim.NO,
+    airline = Airline.BA,
   }: {
     claimType?: ClaimType;
     claimTrack?: ClaimTrack;
@@ -69,6 +131,8 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     claimant2PartyType?: ClaimantDefendantPartyType;
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
+    flightDelayClaim?: FlightDelayClaim;
+    airline?: Airline;
   } = {}) {
     this.setClaimantDefendantPartyTypes(claimType, {
       claimant1PartyType,
@@ -88,6 +152,7 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
       ...createClaimSpecData.defendant2Represented(claimType),
       ...createClaimSpecData.defendant2SameSolicitor(claimType),
       ...createClaimSpecData.defendantSolicitor2(claimType),
+      ...createClaimSpecData.flightDelayClaim(flightDelayClaim, airline),
       ...createClaimSpecData.claimDetails(claimTrack),
       ...createClaimSpecData.statementOfTruth,
     };

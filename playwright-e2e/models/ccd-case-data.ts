@@ -6,14 +6,20 @@ export default interface CCDCaseData {
   addRespondent2?: string;
   submittedDate?: string;
   solicitorReferences?: SolicitorReferences;
+  respondentSolicitor2Reference?: string;
   featureToggleWA?: string;
   respondent1OrgRegistered?: string;
   applicantSolicitor1UserDetails?: ApplicantSolicitor1UserDetails;
   applicantSolicitor1PbaAccounts?: ApplicantSolicitor1PbaAccounts;
   detailsOfClaim?: string;
+  fixedCosts?: FixedCosts;
   caseFlags?: CaseFlags;
+  messagesToReplyTo?: string;
+  sendMessageContent?: string;
+  messages?: Message[];
   claimFee?: ClaimFee;
   notificationSummary?: string;
+  hearingDueDate?: string;
   respondent1Experts?: ExpertAndWitness[];
   respondent1Witnesses?: ExpertAndWitness[];
   respondent2Experts?: ExpertAndWitness[];
@@ -209,6 +215,7 @@ export interface ClaimantDefendant {
   individualTitle?: string;
   individualLastName?: string;
   individualFirstName?: string;
+  individualDateOfBirth?: string;
   partyTypeDisplayValue?: string;
 }
 
@@ -260,6 +267,37 @@ export interface ClaimFee {
   code?: string;
   version?: number;
   calculatedAmountInPence?: number;
+}
+
+export interface FixedCosts {
+  claimFixedCosts?: string;
+  fixedCostAmount?: number;
+}
+
+export interface MessagesToReplyTo {
+  list_items?: MessagesToReplyToListItem[];
+}
+
+export interface MessagesToReplyToListItem {
+  code?: string;
+  label?: string;
+}
+
+export interface Message {
+  id?: string;
+  value?: MessageValue;
+}
+
+export interface MessageValue {
+  subject?: string;
+  isUrgent?: string;
+  sentTime?: string;
+  messageId?: string;
+  senderName?: string;
+  subjectType?: string;
+  updatedTime?: string;
+  messageContent?: string;
+  recipientRoleType?: string;
 }
 
 export interface CaseManagementLocation {

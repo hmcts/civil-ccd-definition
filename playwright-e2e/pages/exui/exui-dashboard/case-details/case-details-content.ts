@@ -41,6 +41,10 @@ export const tabs = {
     title: 'Case Flags',
     selector: "div[role='tab'] >> 'Case Flags'",
   },
+  hearings: {
+    title: 'Hearings',
+    selector: "div[role='tab'] >> 'Hearings'",
+  },
 };
 
 export const dropdowns = {
@@ -55,6 +59,28 @@ export const buttons = {
     title: 'go',
     selector: "button[type='submit']",
   },
+  continue: {
+    title: 'Continue',
+    selector: 'button.govuk-button',
+  },
+  submitRequest: {
+    title: 'Submit request',
+    selector: "button[name='Submit request']",
+  },
+  viewHearingDetails: {
+    label: 'View details',
+    selector: 'button[id^="link-view-details"]',
+  },
+  cancelHearing: {
+    label: 'Cancel',
+    selector: 'button[id^="link-cancel"]',
+  },
+};
+
+export const links = {
+  requestHearing: {
+    label: 'Request a hearing',
+  },
 };
 
 export const containers = {
@@ -63,6 +89,16 @@ export const containers = {
   },
   errors: {
     selector: '#errors',
+  },
+};
+
+export const subheadings = {
+  hearingsTab: {
+    currentAndUpcoming: 'Current and upcoming',
+    pastOrCancelled: 'Past or cancelled',
+  },
+  bundlesTab: {
+    bundleName: 'Bundle name',
   },
 };
 

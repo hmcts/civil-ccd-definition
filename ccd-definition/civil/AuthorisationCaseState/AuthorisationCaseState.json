@@ -434,7 +434,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
-      "next-hearing-date-admin"
+      "next-hearing-date-admin",
+      "GS_profile"
     ],
     "CRUD": "CRUD"
   },

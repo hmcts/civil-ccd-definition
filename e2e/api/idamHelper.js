@@ -1,5 +1,6 @@
 const config = require('../config.js');
 const restHelper = require('./restHelper');
+const {retry} = require('./retryHelper');
 const NodeCache = require('node-cache');
 //Idam access token expires for every 8 hrs
 const idamTokenCache = new NodeCache({ stdTTL: 25200, checkperiod: 1800 });
@@ -33,12 +34,20 @@ async function accessToken(user) {
 }
 
 async function userId(authToken) {
-    return restHelper.retriedRequest(
+    return retry(async () => {
+        const response = await restHelper.request(
             `${idamUrl}/o/userinfo`, {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': `Bearer ${authToken}`
-            })
-        .then(response => response.json()).then(data => data.uid);
+            });
+
+        if (response.status !== 200) {
+            throw new Error(`Expected status: 200, actual status: ${response.status}, `
+                + `message: ${response.statusText}, url: ${response.url}`);
+        }
+
+        return response.json().then(data => data.uid);
+    });
 }
 
 async function createAccount(email, password) {

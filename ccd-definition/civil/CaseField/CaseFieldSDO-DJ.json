@@ -781,5 +781,21 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialPPI",
+    "Label": "Payment Protection Insurance (PPI)",
+    "FieldType": "TrialPPI",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialHousingDisrepair",
+    "Label": "Housing Disrepair",
+    "FieldType": "TrialHousingDisrepair",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

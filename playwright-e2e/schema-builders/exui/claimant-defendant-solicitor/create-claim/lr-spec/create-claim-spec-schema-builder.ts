@@ -5,65 +5,110 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecSchemaComponents from './create-claim-spec-schema-components';
+import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
-  async buildFastTrack1v1(): Promise<z.ZodType> {
+  async buildFast1v1(): Promise<z.ZodType> {
     return this.buildSchema();
   }
 
-  async buildFastTrack2v1(): Promise<z.ZodType> {
+  async buildFast2v1(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.TWO_VS_ONE });
   }
 
-  async buildFastTrack1v2SS(): Promise<z.ZodType> {
+  async buildFast1v2SS(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }
 
-  async buildSmallTrack1v1(): Promise<z.ZodType> {
-    return this.buildSchema();
-  }
-
-  async buildSmallTrack2v1(): Promise<z.ZodType> {
-    return this.buildSchema({ claimType: ClaimType.TWO_VS_ONE });
-  }
-
-  async buildSmallTrack1v2SS(): Promise<z.ZodType> {
-    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
-  }
-
-  async buildSmallTrack1v2DS(): Promise<z.ZodType> {
+  async buildFast1v2DS(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
-  async buildSmallTrack1vLIP(): Promise<z.ZodType> {
+  async buildIntermediate1v1(): Promise<z.ZodType> {
+    return this.buildSchema();
+  }
+
+  async buildIntermediate1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
+  }
+
+  async buildIntermediate1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
+  }
+
+  async buildMulti1v1(): Promise<z.ZodType> {
+    return this.buildSchema();
+  }
+
+  async buildMulti2v1(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.TWO_VS_ONE });
+  }
+
+  async buildMulti1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
+  }
+
+  async buildMulti1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
+  }
+
+  async buildSmall1v1(): Promise<z.ZodType> {
+    return this.buildSchema();
+  }
+
+  async buildSmall2v1(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.TWO_VS_ONE });
+  }
+
+  async buildSmall1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
+  }
+
+  async buildSmall1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
+  }
+
+  async buildSmall1vLIP(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
-  async buildSmallTrack1v2LIPs(): Promise<z.ZodType> {
+  async buildSmall1v2LIPs(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LIPS });
   }
 
-  async buildSmallTrack1v2LIPLR(): Promise<z.ZodType> {
+  async buildSmall1v2LIPLR(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LIP_LR });
   }
 
-  async buildSmallTrack1v2LRLIP(): Promise<z.ZodType> {
+  async buildSmall1v2LRLIP(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 
+  async buildSmallFlightDelay(): Promise<z.ZodType> {
+    return this.buildSchema({ isFlightDelayClaim: FlightDelayClaim.YES });
+  }
+
+  async buildSmallFlightDelayOther(): Promise<z.ZodType> {
+    return this.buildSchema({ isFlightDelayClaim: FlightDelayClaim.YES, airline: Airline.OTHER });
+  }
   protected async buildSchema({
-    claimType = ClaimType.ONE_VS_ONE,
-    claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-  }: {
+                                claimType = ClaimType.ONE_VS_ONE,
+                                claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+                                claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+                                defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+                                defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+                                isFlightDelayClaim = FlightDelayClaim.NO,
+                                airline = Airline.BA,
+                              }: {
     claimType?: ClaimType;
     claimant1PartyType?: ClaimantDefendantPartyType;
     claimant2PartyType?: ClaimantDefendantPartyType;
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
+    isFlightDelayClaim?: FlightDelayClaim;
+    airline?: Airline;
   } = {}): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
@@ -76,7 +121,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
       createClaimSpecSchemaComponents.defendant1(defendant1PartyType),
       createClaimSpecSchemaComponents.statementOfTruth,
       createClaimSpecSchemaComponents.solicitorReferences(claimType),
-      createClaimSpecSchemaComponents.claimDetails(),
+      createClaimSpecSchemaComponents.claimDetails(isFlightDelayClaim, airline),
       createClaimSpecSchemaComponents.claimant2(claimType, claimant2PartyType),
       createClaimSpecSchemaComponents.defendantSolicitor1(claimType),
       createClaimSpecSchemaComponents.defendant2(claimType, defendant2PartyType),

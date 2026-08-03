@@ -10,12 +10,9 @@ export default class AddOrAmendClaimDocumentsSchemaBuilder extends BaseSchemaBui
   async buildSchema(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     const schemaCaseData = structuredClone(caseDataBeforeSubmission);
 
-    let baseSchema = ZodHelper.createSchemaFromJson(schemaCaseData, {
+    const baseSchema = ZodHelper.createSchemaFromJson(schemaCaseData, {
       strictObjects: false,
     }) as z.ZodObject<any>;
-    baseSchema = baseSchema.omit({
-      applicantSolicitor1ClaimStatementOfTruth: true,
-    });
 
     return baseSchema.extend({
       ...addOrAmendClaimDocumentsSchemaBuilderComponents.servedDocumentFiles,

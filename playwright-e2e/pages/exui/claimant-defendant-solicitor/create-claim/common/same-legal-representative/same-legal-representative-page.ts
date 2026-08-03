@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import { radioButtons } from './same-legal-representative-content.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 
 @AllMethodsStep()
 export default class SameLegalRepresentativePage extends ExuiPage(BasePage) {

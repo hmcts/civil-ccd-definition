@@ -5,8 +5,8 @@ waStandaloneBranch=${3:-master}
 echo "Loading Environment Variables"
 source ./bin/variables/load-dev-user-preview-environment-variables.sh
 echo "Importing Roles to the CCD pod"
-./bin/add-roles.sh
-./bin/add-org-roles-to-users.sh
+./bin/shared/add-roles.sh
+./bin/shared/add-org-roles-to-users.sh
 echo "Importing CCD definitions"
 ./bin/build-release-ccd-definition.sh preview
 civilCcdDefinitionFilePath="$(pwd)/build/ccd-release-config/civil-ccd-preview.xlsx"

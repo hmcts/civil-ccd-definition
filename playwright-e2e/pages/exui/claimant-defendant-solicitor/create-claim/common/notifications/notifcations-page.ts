@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { claimantSolicitorUser } from '../../../../../../config/users/exui-users.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 import { inputs, radioButtons, subheadings } from './notifcations-content.ts';
 
 @AllMethodsStep()

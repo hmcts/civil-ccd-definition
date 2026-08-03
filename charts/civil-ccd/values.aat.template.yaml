@@ -19,6 +19,7 @@ civil-service:
     devmemoryLimits: 8Gi
     devcpuLimits: 4500m
     environment:
+      SCHEDULER_ENABLED_JUDGEMENT_BUFFER: true
       LAUNCH_DARKLY_ENV: ccd-staging
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.aat.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.aat.platform.hmcts.net/service-request-update-claim-issued

@@ -4,6 +4,7 @@ export const confirmationHeading1v2SS = 'The defendants have chosen their respon
 
 export const subheadings = {
   happensNext: 'What happens next',
+  whatToDo: 'What you need to do:',
 };
 
 export const paragraphs = {

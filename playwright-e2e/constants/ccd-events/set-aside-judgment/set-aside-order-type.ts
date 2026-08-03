@@ -1,0 +1,6 @@
+enum SetAsideOrderType {
+  ORDER_AFTER_DEFENCE = 'ORDER_AFTER_DEFENCE',
+  ORDER_AFTER_APPLICATION = 'ORDER_AFTER_APPLICATION',
+};
+
+export default SetAsideOrderType;

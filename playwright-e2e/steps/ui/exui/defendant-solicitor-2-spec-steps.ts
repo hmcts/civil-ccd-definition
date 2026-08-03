@@ -27,7 +27,32 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor2User);
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondFastFullDefence1v2DS() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS2();
+        await defendantResponseSpecActions.responseConfirmDetailsDS2();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS2();
+        await defendantResponseSpecActions.defenceRouteDS2();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
+        await defendantResponseSpecActions.timelineDS2();
+        await defendantResponseSpecActions.dqFastDS2();
+        await defendantResponseSpecActions.applicationDS2();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS2();
+        await defendantResponseSpecActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
+      },
+      ccdEvents.DEFENDANT_RESPONSE_SPEC,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -39,7 +64,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
         await defendantResponseSpecActions.timelineDS2();
         await defendantResponseSpecActions.mediationDS2();
-        await defendantResponseSpecActions.dqSmallTrackDS2();
+        await defendantResponseSpecActions.dqSmallDS2();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -48,6 +73,23 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
 
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadBundle() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
+        await evidenceUploadRespondentActions.documentUploadBundleDS2();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       { verifySuccessEvent: false },
     );
   }

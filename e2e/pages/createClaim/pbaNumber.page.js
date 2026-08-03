@@ -34,7 +34,7 @@ module.exports = {
       await I.clickContinue();
     } else if (claimType === 'Housing disrepair') {
       await this.verifyClaimAmountToPay('£1,250.00');
-      await this.verifyOtherRemedyAmountToPay('£377.00');
+      await this.verifyOtherRemedyAmountToPay('£387.00');
       await I.clickContinue();
     } else if(claimType === 'Damages and other remedy'){
       await this.verifyClaimAmountToPay('£1,250.00');

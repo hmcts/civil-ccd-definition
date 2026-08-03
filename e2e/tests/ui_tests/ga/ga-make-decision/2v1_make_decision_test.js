@@ -9,7 +9,7 @@ const claimantType = 'Company';
 const awaitingPaymentStatus = states.AWAITING_APPLICATION_PAYMENT.name;
 let civilCaseReference, gaCaseReference, user;
 
-Feature('GA CCD 2v1 - General Application Journey').tag('@civil-ccd-nightly @ui-ga-make-decision');
+Feature('GA CCD 2v1 - General Application Journey').tag('@ui-ga-make-decision');
 
 Scenario(
   'GA for 2v1 - Concurrent written representations - without notice to with notice journey',
@@ -80,7 +80,7 @@ Scenario(
 
     await I.signOut();
     await I.login(config.judgeUser2WithRegionId2);
-  
+
     await I.judgeWrittenRepresentationsDecision(
       'orderForWrittenRepresentations',
       'concurrentRep',

@@ -2,9 +2,9 @@ import config from '../../../../config/config';
 import BasePage from '../../../../base/base-page';
 import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { dropdowns } from './case-filter-content';
-import { buttons } from '../../exui-page/exui-content';
+import { buttons } from '../../mixin-pages/exui-page/exui-content';
 import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
 
 @AllMethodsStep()

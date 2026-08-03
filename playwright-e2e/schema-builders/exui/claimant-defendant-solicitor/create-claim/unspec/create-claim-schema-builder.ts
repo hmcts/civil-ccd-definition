@@ -2,8 +2,8 @@ import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
@@ -12,39 +12,120 @@ import createClaimResponseSchema from './create-claim-schema-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
-  async buildFastTrack1v1(): Promise<z.ZodType> {
+  async buildFast1v1(): Promise<z.ZodType> {
     return this.buildSchema({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildSmallTrack1v1(): Promise<z.ZodType> {
+  async buildFastNIHL1v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimTypeUnspec: {
+        claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
+        personalInjuryType: PersonalInjuryType.NOISE_INDUCED_HEARING_LOSS,
+      },
+    });
+  }
+
+  async buildFast1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
+  }
+
+  async buildFast1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
+  }
+
+  async buildFast2v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
+  }
+
+  async buildIntermediate1v1(): Promise<z.ZodType> {
+    return this.buildSchema({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediate1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildIntermediate1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildIntermediate2v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
+  }
+
+  async buildMulti1v1(): Promise<z.ZodType> {
+    return this.buildSchema({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildMulti2v1(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildMulti1v2SS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildMulti1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildSmall1v1(): Promise<z.ZodType> {
     return this.buildSchema();
   }
 
-  async buildSmallTrack2v1(): Promise<z.ZodType> {
+  async buildSmall2v1(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.TWO_VS_ONE });
   }
 
-  async buildSmallTrack1v2SS(): Promise<z.ZodType> {
+  async buildSmall1v2SS(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }
 
-  async buildSmallTrack1v2DS(): Promise<z.ZodType> {
+  async buildSmall1v2DS(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
-  async buildSmallTrack1vLIP(): Promise<z.ZodType> {
+  async buildSmall1vLIP(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
-  async buildSmallTrack1v2LIPs(): Promise<z.ZodType> {
+  async buildSmall1v2LIPs(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LIPS });
   }
 
-  async buildSmallTrack1v2LIPLR(): Promise<z.ZodType> {
+  async buildSmall1v2LIPLR(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LIP_LR });
   }
 
-  async buildSmallTrack1v2LRLIP(): Promise<z.ZodType> {
+  async buildSmall1v2LRLIP(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 

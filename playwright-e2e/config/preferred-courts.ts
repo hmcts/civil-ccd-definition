@@ -16,6 +16,9 @@ const preferredCourts = {
     default:
       'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL',
   },
+  transfer: {
+    default: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
+  },
 };
 
 export default preferredCourts;

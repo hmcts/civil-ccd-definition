@@ -5,6 +5,8 @@ import SingleResponsePage from './common/single-response/single-response-page';
 import StatmentOfTruthDefendantResponsePage from './common/statement-of-truth-defendant-response/statement-of-truth-defendant-response-page';
 import SubmitDefendantResponsePage from './common/submit-defendant-response/submit-defendant-response-page';
 import Confirm1v2SSDefendantResponseSpecPage from './lr-spec/confirm-defendant-response-spec/confirm-1v2SS-defendant-response-spec-page';
+import ConfirmDefendantResponseSpecFullAdmitPage from './lr-spec/confirm-defendant-response-spec/confirm-defendant-response-spec-full-admit-page';
+import ConfirmDefendantResponseSpecPartAdmitPage from './lr-spec/confirm-defendant-response-spec/confirm-defendant-response-spec-part-admit-page';
 import ConfirmDefendantResponseSpecPage from './lr-spec/confirm-defendant-response-spec/confirm-defendant-response-spec-page';
 import DefenceRoutePage from './lr-spec/defence-route/defence-route-page';
 import HowToAddTimelineManualPage from './lr-spec/how-to-add-timeline-manual/how-to-add-timeline-manual-page';
@@ -63,6 +65,19 @@ import StatementOfTruthFragment from '../../../fragments/statement-of-truth/stat
 import DateOfBirthFragment from '../../../fragments/date/date-of-birth-fragment';
 import DeterminationWithoutHearingPage from '../directions-questionaire/common/determination-without-hearing/determination-without-hearing-page';
 import YesOrNoFragment from '../../../fragments/yes-or-no/yes-or-no-fragment';
+import WhenWillClaimBePaidPage from './lr-spec/when-will-claim-be-paid/when-will-claim-be-paid-page';
+import DefenceAdmittedPartRoutePage from './lr-spec/defence-admitted-part-route/defence-admitted-part-route-page';
+import FinancialDetailsPurposePage from './lr-spec/financial-details-purpose/financial-details-purpose-page';
+import DefendantBankAccountsPage from './lr-spec/defendant-bank-accounts/defendant-bank-accounts-page';
+import DisabilityPremiumPaymentsPage from './lr-spec/disability-premium-payments/disability-premium-payments-page';
+import DefendantHomeOptionsPage from './lr-spec/defendant-home-options/defendant-home-options-page';
+import DefendantPartnersAndDependentsPage from './lr-spec/defendant-partners-and-dependents/defendant-partners-and-dependents-page';
+import EmploymentDeclarationPage from './lr-spec/employment-declaration/employment-declaration-page';
+import DetailsOfPayingMoneyRepaymentPlanPage from './lr-spec/details-of-paying-money-repayment-plan/details-of-paying-money-repayment-plan-page';
+import DefendantDebtsPage from './lr-spec/defendant-debts/defendant-debts-page';
+import DefendantIncomeExpensesPage from './lr-spec/defendant-income-expenses/defendant-income-expenses-page';
+import WhyDoesNotPayImmediatelyPage from './lr-spec/why-does-not-pay-immediately/why-does-not-pay-immediately-page';
+import RepaymentPlanPage from './lr-spec/repayment-plan/repayment-plan-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -794,5 +809,66 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get confirm1v2SSDefendantResponseSpecPage() {
     return new Confirm1v2SSDefendantResponseSpecPage(this.page);
+  }
+
+  get confirmDefendantResponseSpecPartAdmitPage() {
+    return new ConfirmDefendantResponseSpecPartAdmitPage(this.page);
+  }
+
+  get confirmDefendantResponseSpecFullAdmitPage() {
+    return new ConfirmDefendantResponseSpecFullAdmitPage(this.page);
+  }
+
+  get whenWillClaimBePaidPage() {
+    return new WhenWillClaimBePaidPage(this.page);
+  }
+
+  get defenceAdmittedPartRoutePage() {
+    return new DefenceAdmittedPartRoutePage(this.page);
+  }
+
+  get financialDetailsPurposePage() {
+    return new FinancialDetailsPurposePage(this.page);
+  }
+
+  get defendantBankAccountsPage() {
+    return new DefendantBankAccountsPage(this.page);
+  }
+
+  get disabilityPremiumPaymentsPage() {
+    return new DisabilityPremiumPaymentsPage(this.page);
+  }
+
+  get defendantHomeOptionsPage() {
+    return new DefendantHomeOptionsPage(this.page);
+  }
+
+  get defendantPartnersAndDependentsPage() {
+    return new DefendantPartnersAndDependentsPage(this.page);
+  }
+
+  get employmentDeclarationPage() {
+    return new EmploymentDeclarationPage(this.page);
+  }
+
+  get detailsOfPayingMoneyRepaymentPlanPage() {
+    return new DetailsOfPayingMoneyRepaymentPlanPage(this.page);
+  }
+
+  get defendantDebtsPage() {
+    return new DefendantDebtsPage(this.page);
+  }
+
+  get defendantIncomeExpensesPage() {
+    return new DefendantIncomeExpensesPage(this.page);
+  }
+
+  get whyDoesNotPayImmediatelyPage() {
+    return new WhyDoesNotPayImmediatelyPage(this.page);
+  }
+
+  get repaymentPlanPage() {
+    const dateFragment = new DateFragment(this.page);
+    return new RepaymentPlanPage(this.page, dateFragment);
   }
 }

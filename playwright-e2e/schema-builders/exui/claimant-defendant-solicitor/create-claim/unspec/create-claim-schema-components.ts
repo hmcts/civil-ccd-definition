@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
@@ -12,10 +12,10 @@ const nonEmptyString = z.string().min(1);
 
 const addressSchema = z.strictObject({
   AddressLine1: nonEmptyString,
-  AddressLine2: z.string().optional(),
-  AddressLine3: z.string().optional(),
+  AddressLine2: nonEmptyString.optional(),
+  AddressLine3: nonEmptyString.optional(),
   PostTown: nonEmptyString,
-  County: z.string().optional(),
+  County: nonEmptyString.optional(),
   Country: nonEmptyString,
   PostCode: nonEmptyString,
 });
@@ -40,8 +40,8 @@ const partyBaseSchema = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
   flags: flagsSchema,
 };
 
@@ -107,7 +107,7 @@ const litigationFriendSchema = z.strictObject({
 
 const organisationPolicySchema = z.strictObject({
   OrgPolicyCaseAssignedRole: nonEmptyString,
-  OrgPolicyReference: z.string().optional(),
+  OrgPolicyReference: nonEmptyString.optional(),
   Organisation: z
     .looseObject({
       OrganisationID: nonEmptyString,
@@ -187,8 +187,8 @@ const detailsForClaimTabPartyBaseFields = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
 };
 
 const individualDetailsForClaimTabPartySchema = z.strictObject({
@@ -296,9 +296,9 @@ const claimant2 = (claimType: ClaimType, claimant2PartyType: ClaimantDefendantPa
   } else {
     return {
       addApplicant2: z.literal('No'),
-      applicant2: z.undefined(),
-      applicant2LitigationFriendRequired: z.undefined(),
-      applicant2LitigationFriend: z.undefined(),
+      applicant2: z.undefined().optional(),
+      applicant2LitigationFriendRequired: z.undefined().optional(),
+      applicant2LitigationFriend: z.undefined().optional(),
     };
   }
 };
@@ -323,9 +323,9 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
     return {
       respondent1Represented: z.literal('No'),
       respondent1OrganisationPolicy: organisationPolicySchema,
-      respondentSolicitor1EmailAddress: z.undefined(),
-      respondentSolicitor1ServiceAddressRequired: z.undefined(),
-      respondentSolicitor1ServiceAddress: z.undefined(),
+      respondentSolicitor1EmailAddress: z.undefined().optional(),
+      respondentSolicitor1ServiceAddressRequired: z.undefined().optional(),
+      respondentSolicitor1ServiceAddress: z.undefined().optional(),
     };
   }
 };
@@ -341,9 +341,9 @@ const defendant2 = (claimType: ClaimType, defendant2PartyType: ClaimantDefendant
   } else {
     return {
       addRespondent2: z.literal('No'),
-      respondent2: z.undefined(),
-      respondent2DetailsForClaimDetailsTab: z.undefined(),
-      defendant2LIPAtClaimIssued: z.undefined(),
+      respondent2: z.undefined().optional(),
+      respondent2DetailsForClaimDetailsTab: z.undefined().optional(),
+      defendant2LIPAtClaimIssued: z.undefined().optional(),
     };
   }
 };
@@ -356,14 +356,17 @@ const respondent2SolicitorFields = {
 };
 
 const respondent2SolicitorFieldsAbsent = Object.fromEntries(
-  Object.keys(respondent2SolicitorFields).map((fieldName) => [fieldName, z.undefined()]),
+  Object.keys(respondent2SolicitorFields).map((fieldName) => [
+    fieldName,
+    z.undefined().optional(),
+  ]),
 );
 
 const defendant2Representation = (claimType: ClaimType) => {
   if (!ClaimTypeHelper.isDefendant2(claimType)) {
     return {
-      respondent2Represented: z.undefined(),
-      respondent2SameLegalRepresentative: z.undefined(),
+      respondent2Represented: z.undefined().optional(),
+      respondent2SameLegalRepresentative: z.undefined().optional(),
       ...respondent2SolicitorFieldsAbsent,
     };
   } else if (ClaimTypeHelper.isDefendant2RepresentedNotSame(claimType)) {
@@ -392,7 +395,7 @@ const lipResponseArtifacts = (claimType: ClaimType) => {
       defendant1LIPAtClaimIssued: ClaimTypeHelper.isDefendant1Unrepresented(claimType)
         ? z.literal('Yes')
         : z.literal('No'),
-      defendant2LIPAtClaimIssued: z.undefined(),
+      defendant2LIPAtClaimIssued: z.undefined().optional(),
       claimIssuedPBADetails: claimIssuedPbaDetailsSchema,
     };
   } else if (ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {

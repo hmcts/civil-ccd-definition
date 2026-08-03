@@ -13,7 +13,6 @@ const task: WATask = {
   region: '1',
   case_type_id: 'CIVIL',
   case_category: 'Civil',
-  case_name: 'Test Inc & Dr Jane Doe',
   auto_assigned: false,
   warnings: false,
   case_management_category: 'Civil',

@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import YesOrNoFragment from '../../../../fragments/yes-or-no/yes-or-no-fragment.ts';
 import { radioButtons } from './add-another-claimant-content.ts';
 

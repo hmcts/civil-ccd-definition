@@ -89,6 +89,24 @@ const ccdEvents: CCDEvents = {
     description: 'Discontinue a claim',
     order: 11,
   },
+  DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Discontinue this claim',
+    description: 'Discontinue this claim',
+    order: 11,
+  },
+  VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Validate Discontinuance',
+    description: 'Validate Discontinuance',
+    order: 11,
+  },
+  DISMISS_CASE: {
+    id: 'DISMISS_CASE',
+    name: 'Dismiss case',
+    description: 'Dismiss case',
+    order: 11,
+  },
   CASE_PROCEEDS_IN_CASEMAN: {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',
@@ -168,6 +186,47 @@ const ccdEvents: CCDEvents = {
     description: 'Standard Directions Order (Judgment)',
     order: 18,
   },
+  REFER_JUDGE_DEFENCE_RECEIVED: {
+    id: 'REFER_JUDGE_DEFENCE_RECEIVED',
+    name: 'Refer to judge-defended claim',
+    description: 'Refer to judge-defended claim',
+    order: 19,
+  },
+  SET_ASIDE_JUDGMENT: {
+    id: 'SET_ASIDE_JUDGMENT',
+    name: 'Set aside judgment',
+    description: 'Set aside judgment',
+    order: 20,
+  },
+  JUDGMENT_PAID_IN_FULL: {
+    id: 'JUDGMENT_PAID_IN_FULL',
+    name: 'Judgment paid in full',
+    description: 'Judgment paid in full',
+    order: 21,
+  },
+  GENERATE_DIRECTIONS_ORDER: {
+    id: 'GENERATE_DIRECTIONS_ORDER',
+    name: 'Make an order',
+    description: 'Make an order',
+  },
+  CONFIRM_ORDER_REVIEW: {
+    id: 'CONFIRM_ORDER_REVIEW',
+    name: 'Confirm order review',
+    description: 'Confirm order review',
+    order: 18,
+  },
+  RECORD_JUDGMENT: {
+    id: 'RECORD_JUDGMENT',
+    name: 'Record Judgment',
+    description: 'Record Judgment',
+    order: 18,
+  },
+  EDIT_JUDGMENT: {
+    id: 'EDIT_JUDGMENT',
+    name: 'Edit Judgment',
+    description: 'Edit Judgment',
+    order: 18,
+  },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
     id: 'CLAIMANT_RESPONSE_SPEC',
@@ -210,6 +269,30 @@ const ccdEvents: CCDEvents = {
     description: 'Reset Pin for case',
     order: 7,
   },
+  REQUEST_FOR_RECONSIDERATION: {
+    id: 'REQUEST_FOR_RECONSIDERATION',
+    name: 'Request for reconsideration',
+    description: 'Request for reconsideration check',
+    order: 22,
+  },
+  SETTLE_CLAIM: {
+    id: 'SETTLE_CLAIM',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 12,
+  },
+  SETTLE_CLAIM_MARK_PAID_FULL: {
+    id: 'SETTLE_CLAIM_MARK_PAID_FULL',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 13,
+  },
+  DECISION_ON_RECONSIDERATION_REQUEST: {
+    id: 'DECISION_ON_RECONSIDERATION_REQUEST',
+    name: 'Decision on reconsideration',
+    description: 'Decision on reconsideration',
+    order: 22,
+  },
   CREATE_CASE_FLAGS: {
     id: 'CREATE_CASE_FLAGS',
     name: 'Create case flags',
@@ -233,6 +316,60 @@ const ccdEvents: CCDEvents = {
     name: 'Mediation Unsuccessful',
     description: 'Mediation unsuccessful',
     order: 26,
+  },
+  ADD_UNAVAILABLE_DATES: {
+    id: 'ADD_UNAVAILABLE_DATES',
+    name: 'Add Unavailable Dates',
+    description: 'Add unavailable dates after claimant response or default judgment',
+    order: 26,
+  },
+  STAY_CASE: {
+    id: 'STAY_CASE',
+    name: 'Stay case',
+    description: 'Stay the case',
+    order: 27,
+  },
+  MANAGE_STAY: {
+    id: 'MANAGE_STAY',
+    name: 'Manage stay',
+    description: 'Request an update or lift the stay',
+    order: 28,
+  },
+  SEND_AND_REPLY: {
+    id: 'SEND_AND_REPLY',
+    name: 'Send and reply',
+    description: 'Send and reply',
+    order: 28,
+  },
+  EVIDENCE_UPLOAD_APPLICANT: {
+    id: 'EVIDENCE_UPLOAD_APPLICANT',
+    name: 'Evidence upload applicant',
+    description: 'Evidence upload applicant',
+    order: 27,
+  },
+  EVIDENCE_UPLOAD_RESPONDENT: {
+    id: 'EVIDENCE_UPLOAD_RESPONDENT',
+    name: 'Evidence upload respondent',
+    description: 'Evidence upload respondent',
+    order: 28,
+  },
+  HEARING_SCHEDULED: {
+    id: 'HEARING_SCHEDULED',
+    name: 'Hearing scheduled',
+    description: 'Hearing scheduled',
+    order: 29,
+  },
+  TRANSFER_ONLINE_CASE: {
+    id: 'TRANSFER_ONLINE_CASE',
+    name: 'Transfer online case',
+    description: 'Transfer online case',
+    order: 30,
+  },
+  UPLOAD_MEDIATION_DOCUMENTS: {
+    id: 'UPLOAD_MEDIATION_DOCUMENTS',
+    name: 'Upload mediation documents',
+    description: 'Upload mediation documents',
+    order: 24
   },
 };
 

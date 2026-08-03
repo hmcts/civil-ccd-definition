@@ -13,7 +13,6 @@ const task: WATask = {
   region: "2",
   case_type_id: "CIVIL",
   case_category: "Civil",
-  case_name: "Test Inc",
   auto_assigned: false,
   warnings: false,
   case_management_category: "Civil",

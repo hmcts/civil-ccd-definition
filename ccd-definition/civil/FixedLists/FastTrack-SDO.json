@@ -41,5 +41,11 @@
     "ListElementCode": "fastClaimRoadTrafficAccident",
     "ListElement": "Road Traffic Accident",
     "DisplayOrder": 9
+  },
+  {
+    "ID": "FastTrack",
+    "ListElementCode": "fastClaimPPI",
+    "ListElement": "Payment Protection Insurance (PPI)",
+    "DisplayOrder": 7
   }
 ]

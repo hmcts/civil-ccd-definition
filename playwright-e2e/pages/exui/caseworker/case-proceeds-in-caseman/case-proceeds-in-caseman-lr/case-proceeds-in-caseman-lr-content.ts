@@ -15,11 +15,11 @@ export const radioButtons = {
     label: 'Reason for proceeding on paper',
     application: {
       label: 'Application',
-      selector: '#claimProceedsInCaseman_reason-APPLICATION',
+      selector: '#claimProceedsInCasemanLR_reason-APPLICATION',
     },
     judgment: {
       label: 'Judgment request',
-      selector: '#claimProceedsInCaseman_reason-JUDGEMENT_REQUEST',
+      selector: '#claimProceedsInCasemanLR_reason-JUDGEMENT_REQUEST',
     },
     solicitorDoesNotConsent: {
       label: 'Defendant solicitor does not consent to accept service through MyHMCTS',
@@ -27,11 +27,11 @@ export const radioButtons = {
     },
     caseSettled: {
       label: 'Case settled',
-      selector: '#claimProceedsInCaseman_reason-CASE_SETTLED',
+      selector: '#claimProceedsInCasemanLR_reason-CASE_SETTLED',
     },
     other: {
       label: 'Other',
-      selector: '#claimProceedsInCaseman_reason-OTHER',
+      selector: '#claimProceedsInCasemanLR_reason-OTHER',
     },
   },
 };

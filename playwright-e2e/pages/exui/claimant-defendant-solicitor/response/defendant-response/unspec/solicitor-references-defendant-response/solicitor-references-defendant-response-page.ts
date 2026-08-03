@@ -4,9 +4,8 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
 import { Party } from '../../../../../../../models/users/partys.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import SolicitorReferenceFragment from '../../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
-import { subheadings } from './solicitor-references-defendant-response-content.ts';
 
 @AllMethodsStep()
 export default class SolicitorReferencesDefendantResponsePage extends ExuiPage(BasePage) {

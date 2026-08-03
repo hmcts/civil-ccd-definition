@@ -6,13 +6,24 @@ import ClaimantResponseDataBuilder from './claimant-response/unspec/claimant-res
 import ClaimantResponseSpecDataBuilder from './claimant-response/lr-spec/claimant-response-spec-data-builder';
 import DefendantResponseDataBuilder from './defendant-response/unspec/defendant-response-data-builder';
 import DefendantResponseSpecDataBuilder from './defendant-response/lr-spec/defendant-response-spec-data-builder';
+import EvidenceUploadApplicantDataBuilder from './evidence-upload-applicant/evidence-upload-applicant-data-builder';
+import EvidenceUploadRespondentDataBuilder from './evidence-upload-respondent/evidence-upload-respondent-data-builder';
 import CreateClaimSpecDataBuilder from './create-claim/lr-spec/create-claim-spec-data-builder';
 import CreateClaimDataBuilder from './create-claim/unspec/create-claim-data-builder';
 import InformAgreedExtensionDateDataBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-data-builder';
 import InformAgreedExtensionDateSpecDataBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-data-builder';
+import ManageContactInformationDataBuilder from '../common/manage-contact-information/manage-contact-information-data-builder';
+import NoticeOfChangeDataBuilder from './notice-of-change/notice-of-change-data-builder';
 import NotifyClaimDataBuilder from './notify-claim/unspec/notify-claim-data-builder';
 import NotifyClaimDetailsDataBuilder from './notify-claim-details/unspec/notify-claim-details-data-builder';
+import RequestForReconsiderationDataBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-data-builder';
 import ServiceRequestDataBuilder from './service-request/service-request-data-builder';
+import DefaultJudgementDataBuilder from './default-judgement/unspec/default-judgement-data-builder.ts';
+import DefaultJudgementSpecDataBuilder from './default-judgement/lr-spec/default-judgement-spec-data-builder.ts';
+import JudgmentPaidInFullDataBuilder from './judgment-paid-in-full/lr-spec/judgment-paid-in-full-data-builder';
+import SettleClaimDataBuilder from './settle-claim/lr-spec/settle-claim-data-builder';
+import DiscontinueClaimDataBuilder from './discontinue-claim/lr-spec/discontinue-claim-data-builder';
+import UploadMediationDocumentsDataBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-data-builder';
 
 export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDataBuilderFactory {
   get acknowledgeClaimDataBuilder() {
@@ -51,6 +62,14 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
     return new DefendantResponseSpecDataBuilder(this.requestsFactory, this.testData);
   }
 
+  get evidenceUploadApplicantDataBuilder() {
+    return new EvidenceUploadApplicantDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get evidenceUploadRespondentDataBuilder() {
+    return new EvidenceUploadRespondentDataBuilder(this.requestsFactory, this.testData);
+  }
+
   get claimantResponseDataBuilder() {
     return new ClaimantResponseDataBuilder(this.requestsFactory, this.testData);
   }
@@ -67,7 +86,43 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
     return new InformAgreedExtensionDateSpecDataBuilder(this.requestsFactory, this.testData);
   }
 
+  get manageContactInformationDataBuilder() {
+    return new ManageContactInformationDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get noticeOfChangeDataBuilder() {
+    return new NoticeOfChangeDataBuilder(this.requestsFactory, this.testData);
+  }
+
   get serviceRequestDataBuilder() {
     return new ServiceRequestDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get defaultJudgementDataBuilder() {
+    return new DefaultJudgementDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get defaultJudgementSpecDataBuilder() {
+    return new DefaultJudgementSpecDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get judgmentPaidInFullDataBuilder() {
+    return new JudgmentPaidInFullDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get uploadMediationDocumentsDataBuilder() {
+    return new UploadMediationDocumentsDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get settleClaimDataBuilder() {
+    return new SettleClaimDataBuilder(this.requestsFactory, this.testData);
+  }
+  
+  get discontinueClaimDataBuilder() {
+    return new DiscontinueClaimDataBuilder(this.requestsFactory, this.testData);
+  }
+  
+  get requestForReconsiderationDataBuilder() {
+    return new RequestForReconsiderationDataBuilder(this.requestsFactory, this.testData);
   }
 }

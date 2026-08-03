@@ -38,12 +38,11 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
-
       { verifySuccessEvent: false },
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -60,8 +59,43 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastFullDefence1v2DS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS2();
+        await defendantResponseActions.respondentResponseTypeDS2();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS2();
+        await defendantResponseActions.uploadDefendantResponseDS2();
+        await defendantResponseActions.dqFastTrackDS2();
+        await defendantResponseActions.dqDS2();
+        await defendantResponseActions.statementOfTruthDS2();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
 
       { verifySuccessEvent: false },
+    );
+  }
+
+  async AddUnavailableDates() {
+    const { addUnavailableDatesActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await addUnavailableDatesActions.addAdditionalDates();
+        await addUnavailableDatesActions.submitAddAdditionalDates();
+      },
+      async () => {
+        await addUnavailableDatesActions.confirmAddAdditionalDates();
+      },
+      ccdEvents.ADD_UNAVAILABLE_DATES,
     );
   }
 
@@ -78,7 +112,23 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS2();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
+      { verifySuccessEvent: false },
+    );
+  }
 
+  async EvidenceUploadBundle() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
+        await evidenceUploadRespondentActions.documentUploadBundleDS2();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       { verifySuccessEvent: false },
     );
   }
