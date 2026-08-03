@@ -123,6 +123,23 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 
+  async buildFast1v1OtherRemedy() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
+      isOtherRemedy: true,
+    });
+  }
+
+  async buildSmall1v1OtherRemedy() {
+    return this.buildData({
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
+      isOtherRemedy: true,
+      claimAmount: 3000,
+    });
+  }
+
   protected async buildData({
     claimType = ClaimType.ONE_VS_ONE,
     claimTypeUnspec = {
@@ -134,6 +151,8 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    isOtherRemedy = false,
+    claimAmount,
   }: {
     claimType?: ClaimType;
     claimTypeUnspec?: PersonalInjuryClaimTypeUnspecObjs | ClaimTypeUnspec;
@@ -142,6 +161,8 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     claimant2PartyType?: ClaimantDefendantPartyType;
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
+    isOtherRemedy?: boolean;
+    claimAmount?: number;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
     this.setClaimantDefendantPartyTypes(claimType, {
@@ -172,7 +193,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       ...createClaimData.defendant2SameSolicitor(claimType),
       ...createClaimData.defendantSolicitor2(claimType),
       ...createClaimData.claimTypeUnspec(claimTypeUnspec),
-      ...createClaimData.claimDetails(claimTrack),
+      ...createClaimData.claimDetails(claimTrack, isOtherRemedy, claimAmount),
       ...createClaimData.statementOfTruth,
     };
   }

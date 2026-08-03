@@ -18,6 +18,7 @@ import ManageContactInformationSchemaBuilder from '../common/manage-contact-info
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
 import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notify-claim-details-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
+import TrialReadinessSchemaBuilder from './trial-readiness/trial-readiness-schema-builder';
 
 export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends BaseSchemaBuilderFactory {
   get createClaimSchemaBuilder() {
@@ -94,5 +95,9 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get uploadMediationDocumentsSchemaBuilder() {
     return new UploadMediationDocumentsSchemaBuilder(this.testData);
+  }
+
+  get trialReadinessSchemaBuilder() {
+    return new TrialReadinessSchemaBuilder(this.testData);
   }
 }

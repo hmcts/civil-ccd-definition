@@ -122,6 +122,22 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 
+  async buildFast1v1OtherRemedy(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
+      isOtherRemedy: true,
+    });
+  }
+
+  async buildSmall1v1OtherRemedy(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
+      isOtherRemedy: true,
+    });
+  }
+
   protected async buildSchema({
     claimType = ClaimType.ONE_VS_ONE,
     claimTypeUnspec = {
@@ -133,6 +149,7 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    isOtherRemedy = false,
   }: {
     claimType?: ClaimType;
     claimTypeUnspec?: PersonalInjuryClaimTypeUnspecObjs | ClaimTypeUnspec;
@@ -141,6 +158,7 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     claimant2PartyType?: ClaimantDefendantPartyType;
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
+    isOtherRemedy?: boolean;
   } = {}): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
@@ -153,7 +171,7 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
       createClaimResponseSchema.defendant1(defendant1PartyType),
       createClaimResponseSchema.statementOfTruth,
       createClaimResponseSchema.solicitorReferences(claimType),
-      createClaimResponseSchema.claimDetails(claimTrack),
+      createClaimResponseSchema.claimDetails(claimTrack, isOtherRemedy),
       createClaimResponseSchema.claimant2(claimType, claimant2PartyType),
       createClaimResponseSchema.defendantSolicitor1(claimType),
       createClaimResponseSchema.defendant2(claimType, defendant2PartyType),

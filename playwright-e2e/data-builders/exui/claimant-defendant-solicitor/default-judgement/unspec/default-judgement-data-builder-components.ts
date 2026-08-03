@@ -91,11 +91,19 @@ const hearingSupportRequirementsFieldDJ = (claimant1PartyType: ClaimantDefendant
   };
 };
 
+const otherRemedyAbandoned = () => ({
+  OtherRemedyAbandoned: {
+    isOtherRemedyAbandoned: 'Yes',
+    otherRemedyAbandonedDate: formatDate(DateHelper.getToday()),
+  },
+});
+
 const requestDefaultJudgementBuilderComponents = {
   defendantDetails,
   showCertifyStatement,
   hearingType,
   hearingSupportRequirementsFieldDJ,
+  otherRemedyAbandoned,
 };
 
 export default requestDefaultJudgementBuilderComponents;

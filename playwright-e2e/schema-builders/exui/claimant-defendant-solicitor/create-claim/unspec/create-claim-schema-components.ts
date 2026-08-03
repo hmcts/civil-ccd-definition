@@ -443,7 +443,14 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
   };
 };
 
-const claimDetails = (claimTrack: ClaimTrack) => ({
+const otherRemedySchema = {
+  isClaimDeclarationAdded: z.literal('Yes'),
+  claimDeclarationDescription: nonEmptyString,
+  isHumanRightsActIssues: z.literal('Yes'),
+  otherRemedyFee: feeSchema.optional(),
+};
+
+const claimDetails = (claimTrack: ClaimTrack, isOtherRemedy = false) => ({
   allPartyNames: nonEmptyString,
   submittedDate: nonEmptyString,
 
@@ -464,6 +471,8 @@ const claimDetails = (claimTrack: ClaimTrack) => ({
   applicantSolicitor1PbaAccounts: pbaAccountsSchema,
   applicantSolicitor1PbaAccountsIsEmpty: yesNoSchema,
   claimIssuedPaymentDetails: claimIssuedPaymentDetailsSchema,
+
+  ...(isOtherRemedy ? otherRemedySchema : {}),
 });
 
 const statementOfTruth = {
@@ -482,6 +491,7 @@ const createClaimResponseSchema = {
   defendant2,
   defendant2Representation,
   claimTypeUnspec,
+  otherRemedySchema,
   claimDetails,
   statementOfTruth,
   lipResponseArtifacts,

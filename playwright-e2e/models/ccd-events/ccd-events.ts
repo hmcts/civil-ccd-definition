@@ -1,3 +1,5 @@
+import ccdEvents from "../../constants/ccd-events/ccd-events.ts";
+
 export type CCDEvent = {
   id: string;
   name: string;
@@ -63,6 +65,7 @@ type CCDEvents = {
   SETTLE_CLAIM: CCDEvent;
   SETTLE_CLAIM_MARK_PAID_FULL: CCDEvent;
   UPLOAD_MEDIATION_DOCUMENTS: CCDEvent;
+  TRIAL_READINESS: CCDEvent;
 };
 
 export default CCDEvents;

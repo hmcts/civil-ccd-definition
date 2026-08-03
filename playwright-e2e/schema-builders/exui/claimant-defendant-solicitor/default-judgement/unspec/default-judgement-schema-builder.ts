@@ -15,7 +15,11 @@ export default class DefaultJudgementSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema(caseDataBeforeSubmission);
   }
 
-  protected async buildSchema(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async build1v1OtherRemedy(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, { isOtherRemedy: true });
+  }
+
+  protected async buildSchema(caseDataBeforeSubmission?: CCDCaseData, { isOtherRemedy = false }: { isOtherRemedy?: boolean } = {}): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;
@@ -24,6 +28,7 @@ export default class DefaultJudgementSchemaBuilder extends BaseSchemaBuilder {
       ...defaultJudgementSchemaComponents.defendantDetails(),
       ...defaultJudgementSchemaComponents.hearingType(),
       ...defaultJudgementSchemaComponents.hearingSupportRequirementsFieldDJ(),
+      ...(isOtherRemedy ? defaultJudgementSchemaComponents.otherRemedyAbandoned() : {}),
     });
   }
 }
