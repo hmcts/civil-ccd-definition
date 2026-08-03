@@ -320,15 +320,15 @@ withNightlyPipeline(type, product, component) {
   }
 
   if(!forceGreenBuild) {
-    // before('fullFunctionalTest') {
-    //   if(runPrevFailedAndNotExecutedTestFiles) {
-    //     copyPrevFailedAndNotExecutedTestFilesJson()
-    //   }
-    //   copyPreviousAllureHistory()
-    // }
+    before('fullFunctionalTest') {
+      if(runPrevFailedAndNotExecutedTestFiles) {
+        copyPrevFailedAndNotExecutedTestFilesJson()
+      }
+      copyPreviousAllureHistory()
+    }
   }
 
-  // enableFullFunctionalTest(200)
+  enableFullFunctionalTest(200)
 
   if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
