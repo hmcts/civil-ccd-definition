@@ -10,7 +10,7 @@ test.describe('1v2DS spec settle claim consent order', { tag: ['@civil-ccd-night
     LegalAdvisorApiSteps,
     HearingCenterAdminSpecSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v2DS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
@@ -18,7 +18,7 @@ test.describe('1v2DS spec settle claim consent order', { tag: ['@civil-ccd-night
     await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2DS();
     await CaseworkerApiSteps.MediationUnsuccessful();
-    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallNoSum();
     await HearingCenterAdminSpecSteps.LoginRegion1();
     await HearingCenterAdminSpecSteps.SettleClaimConsentOrder();
   });

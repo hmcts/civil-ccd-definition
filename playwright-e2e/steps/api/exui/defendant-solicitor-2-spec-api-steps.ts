@@ -187,4 +187,44 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       await uploadMediationDocumentsSchemaBuilder.buildDS2(caseDataBeforeSubmission);
     ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
   }
+
+  async RequestForReconsideration() {
+    await this.setupApiStep(defendantSolicitor2User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { requestForReconsiderationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestForReconsiderationData = await requestForReconsiderationDataBuilder.buildDS2();
+    await super.submitCCDEvent(
+      defendantSolicitor2User,
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
+      requestForReconsiderationData,
+      CaseState.CASE_PROGRESSION,
+    );
+
+    const { requestForReconsiderationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const requestForReconsiderationSchema =
+      await requestForReconsiderationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
+    ZodHelper.safeParse(requestForReconsiderationSchema, this.ccdCaseData);
+  }
+
+  async NoticeOfChange() {
+    await this.setupApiStep(defendantSolicitor2User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { noticeOfChangeDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const noticeOfChangeAnswers = await noticeOfChangeDataBuilder.buildDefendant2();
+    await super.submitNocEvent(
+      defendantSolicitor2User,
+      undefined,
+      noticeOfChangeAnswers,
+    );
+
+    const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const noticeOfChangeSchema =
+      await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
+    ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
+  }
+
 }

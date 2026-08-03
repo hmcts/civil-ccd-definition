@@ -14,6 +14,7 @@ import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgme
 import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
 import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
 import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/intermediateTrackDirectionsTask';
+import multiTrackDirectionsTask from '../../../constants/wa-tasks/multiTrackDirectionsTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -38,7 +39,7 @@ export default class JudgeSteps extends BaseExui {
     await super.idamActions.exuiLogin(judgeRegion2User);
   }
 
-  async SdoSmallTrackSum() {
+  async SdoSmallSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -57,7 +58,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackNoSum() {
+  async SdoSmallNoSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -76,7 +77,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackFromFastClaim() {
+  async SdoSmallFromFastClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -95,7 +96,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackDRH() {
+  async SdoSmallDRH() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -228,7 +229,7 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async NotSuitableSdoSmallTrackTransferCase() {
+  async NotSuitableSdoSmallTransferCase() {
     const { notSuitableSdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -313,7 +314,7 @@ export default class JudgeSteps extends BaseExui {
       },
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       judgeRegion1User,
-      intermediateTrackDirectionsTask,
+      multiTrackDirectionsTask,
       { verifySuccessEvent: false },
     );
   }

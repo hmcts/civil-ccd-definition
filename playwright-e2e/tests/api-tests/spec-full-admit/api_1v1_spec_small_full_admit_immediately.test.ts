@@ -6,7 +6,7 @@ test.describe('1v1 spec small claims full admit api journey', { tag: '@civil-ser
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFullAdmitImmediately();
