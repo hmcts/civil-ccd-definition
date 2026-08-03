@@ -193,7 +193,6 @@ export default abstract class BaseApi extends BaseTestData {
     caseDataUpdate: CCDCaseData,
     expectedState?: CaseState,
   ): Promise<CCDCaseData> {
-    await this.setupApiStep(user);
     const { civilServiceRequests } = this.requestsFactory;
     const payload = {
       event: ccdEvent.id,

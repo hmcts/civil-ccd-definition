@@ -112,7 +112,6 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
       grep: /@debug/,
-      teardown: 'case-role-assignment-teardown',
     },
   ],
 });
