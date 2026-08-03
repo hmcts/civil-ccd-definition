@@ -67,7 +67,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v1() {
+  async RespondSmallFullDefence1v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -92,7 +92,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence2v1() {
+  async RespondSmallFullDefence2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -118,7 +118,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v2SS() {
+  async RespondSmallFullDefence1v2SS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -144,7 +144,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {

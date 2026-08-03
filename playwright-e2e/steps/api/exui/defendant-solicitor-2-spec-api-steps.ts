@@ -208,4 +208,23 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       await requestForReconsiderationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
     ZodHelper.safeParse(requestForReconsiderationSchema, this.ccdCaseData);
   }
+
+  async NoticeOfChange() {
+    await this.setupApiStep(defendantSolicitor2User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { noticeOfChangeDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const noticeOfChangeAnswers = await noticeOfChangeDataBuilder.buildDefendant2();
+    await super.submitNocEvent(
+      defendantSolicitor2User,
+      undefined,
+      noticeOfChangeAnswers,
+    );
+
+    const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const noticeOfChangeSchema =
+      await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
+    ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
+  }
+
 }

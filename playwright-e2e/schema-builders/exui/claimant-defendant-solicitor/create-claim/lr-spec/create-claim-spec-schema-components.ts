@@ -4,6 +4,8 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
 
 type SchemaShape = Record<string, z.ZodType>;
 
@@ -412,7 +414,29 @@ const defendant2Representation = (claimType: ClaimType): SchemaShape => {
   };
 };
 
-const claimDetails = (): SchemaShape => ({
+const flightDelayDetailsSchema = (airline: Airline) =>
+  z.strictObject({
+    airlineList: z.strictObject({
+      value: z.strictObject({
+        code: z.string(),
+        label: z.string(),
+      }),
+    }),
+    ...(airline === Airline.OTHER && { nameOfAirline: nonEmptyString }),
+    flightNumber: nonEmptyString,
+    scheduledDate: nonEmptyString,
+    flightCourtLocation: z
+      .strictObject({
+        region: z.string().nullable(),
+        baseLocation: z.string().nullable(),
+      })
+      .optional(),
+  });
+
+const claimDetails = (
+  isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO,
+  airline = Airline.BA,
+): SchemaShape => ({
   allPartyNames: nonEmptyString,
   submittedDate: nonEmptyString,
   anyRepresented: nonEmptyString,
@@ -426,8 +450,11 @@ const claimDetails = (): SchemaShape => ({
   applicantSolicitor1PbaAccountsIsEmpty: yesNoSchema,
   claimIssuedPaymentDetails: claimIssuedPaymentDetailsSchema,
   claimIssuedPBADetails: claimIssuedPbaDetailsSchema,
-  isFlightDelayClaim: z.literal('No'),
-  flightDelayDetails: z.unknown(),
+  isFlightDelayClaim: z.string(),
+  flightDelayDetails:
+    isFlightDelayClaim === FlightDelayClaim.YES
+      ? flightDelayDetailsSchema(airline)
+      : z.unknown(),
   timelineOfEvents: timelineOfEventsSchema,
   speclistYourEvidenceList: evidenceListSchema,
   claimAmountBreakup: claimAmountBreakupSchema,
