@@ -49,6 +49,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "casePartiesRequestingReconsideration",
+    "Label": "Parties requesting reconsideration",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ReconsiderationParties",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimTypeUnSpec",
     "Label": "Type of claim",
     "FieldType": "FixedRadioList",

@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "ReconsiderationParties",
+    "ListElementCode": "APPLICANT",
+    "ListElement": "Applicant",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ReconsiderationParties",
+    "ListElementCode": "RESPONDENT1",
+    "ListElement": "Respondent 1",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "ReconsiderationParties",
+    "ListElementCode": "RESPONDENT2",
+    "ListElement": "Respondent 2",
+    "DisplayOrder": 3
+  }
+]
