@@ -74,8 +74,14 @@ properties([
       description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),
     choice(name: 'PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS', choices: ['false', 'true'],
       description: 'Runs accessibility tests for playwright during test execution'),
-    choice(name: 'PLAYWRIGHT_RUN_SETUP', choices: ['true', 'false'],
-      description: 'Runs setup projects before functional test suite'),
+    choice(name: 'PLAYWRIGHT_RUN_CUI_USER_SETUP', choices: ['true', 'false'],
+      description: 'Runs setup projects for creation of citizen users before running functional tests'),
+    choice(name: 'PLAYWRIGHT_RUN_EXUI_AUTH_SETUP', choices: ['true', 'false'],
+      description: 'Runs setup projects for caching authentication state of exui/citizen users before running functional tests'),
+    choice(name: 'PLAYWRIGHT_RUN_USER_DATA_SETUP', choices: ['true', 'false'],
+      description: 'Runs setup projects for caching additional user data for exui/citizen users (userId and accessToken) before running functional tests'),
+    choice(name: 'PLAYWRIGHT_RUN_DATA_SETUP', choices: ['true', 'false'],
+      description: 'Runs setup projects for caching data before running functional tests'),    
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
       description: 'Functional tests waitForTimeout value'),
@@ -200,7 +206,10 @@ withNightlyPipeline(type, product, component) {
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
   env.PLAYWRIGHT_EXUI_RETRIES=params.PLAYWRIGHT_EXUI_RETRIES
   env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS=params.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS
-  env.PLAYWRIGHT_RUN_SETUP=params.PLAYWRIGHT_RUN_SETUP
+  env.PLAYWRIGHT_RUN_CUI_USER_SETUP=params.PLAYWRIGHT_RUN_CUI_USER_SETUP
+  env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP=params.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP
+  env.PLAYWRIGHT_RUN_USER_DATA_SETUP=params.PLAYWRIGHT_RUN_USER_DATA_SETUP
+  env.PLAYWRIGHT_RUN_DATA_SETUP=params.PLAYWRIGHT_RUN_DATA_SETUP
   env.PLAYWRIGHT_UNASSIGN_CASES = true
   env.PLAYWRIGHT_TEST_SPEED=params.PLAYWRIGHT_TEST_SPEED
 
@@ -220,6 +229,7 @@ withNightlyPipeline(type, product, component) {
   def civilServiceUrl = resolvePreviewUrl(params.CIVIL_SERVICE_URL, 'CIVIL_SERVICE_URL')
 
   env.URL=frontendUrl
+  env.PR_NUMBER=prNumber
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_WEB_URL=params.IDAM_WEB_URL
   env.IDAM_API_URL=params.IDAM_API_URL
@@ -230,6 +240,7 @@ withNightlyPipeline(type, product, component) {
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
   env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
   env.PAYMENT_API_URL = params.PAYMENT_API_URL
+  env.SECURITY_RULES = params.SECURITY_RULES
   env.URL_FOR_SECURITY_SCAN = civilServiceUrl
   env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   env.UNASSIGN_CASES = true

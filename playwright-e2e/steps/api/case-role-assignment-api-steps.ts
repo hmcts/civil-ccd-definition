@@ -31,6 +31,18 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData?.id);
   }
 
+  async AssignCaseRoleToDC() {
+    await this.setupApiStep(this.defendantCitizenUser);
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.assignCaseToDefendant(
+      this.defendantCitizenUser,
+      CaseRole.DEFENDANT,
+      this.ccdCaseData?.id,
+    );
+    await super.fetchAndSetCCDCaseData();
+    UserAssignedCasesHelper.addAssignedCaseToUser(this.defendantCitizenUser, this.ccdCaseData?.id);
+  }
+
   async UnassignCasesForUser(user: User) {
     await this.setupApiStep(user);
     const assignedCases = await UserAssignedCasesHelper.getUserAssignedCases(user);
