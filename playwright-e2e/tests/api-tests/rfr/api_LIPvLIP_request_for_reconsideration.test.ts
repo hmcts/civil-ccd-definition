@@ -8,9 +8,9 @@ test.describe(
       ClaimantCitizenApiSteps,
       CaseRoleAssignmentApiSteps,
     }) => {
-      // await ClaimantCitizenApiSteps.CreateLipClaimSmall();
+      await ClaimantCitizenApiSteps.CreateLipClaimSmall();
       // await ClaimantCitizenApiSteps.MakePaymentForClaimIssue();
-      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDC();
+      // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDC();
     });
   },
 );

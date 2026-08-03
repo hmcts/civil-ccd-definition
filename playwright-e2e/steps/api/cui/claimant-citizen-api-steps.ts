@@ -43,7 +43,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
   }
 
   async CreateLipClaimFast() {
-    await this.setupApiStep(this.claimantCitizenUser);
+    await this.setupUserData(this.claimantCitizenUser);
     const createClaimDataBuilder =
       this.claimantDefendantCitizenDataBuilderFactory.createClaimDataBuilder;
     const createClaimSchemaBuilder =

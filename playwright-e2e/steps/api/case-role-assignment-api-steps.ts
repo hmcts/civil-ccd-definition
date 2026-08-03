@@ -8,7 +8,7 @@ import UserAssignedCasesHelper from '../../helpers/user-assigned-cases-helper';
 @AllMethodsStep()
 export default class CaseRoleAssignmentApiSteps extends BaseApi {
   async AssignCaseRoleToDS1() {
-    await this.setupApiStep(defendantSolicitor1User);
+    await this.setupUserData(defendantSolicitor1User);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor1User,
@@ -20,7 +20,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
   }
 
   async AssignCaseRoleToDS2() {
-    await this.setupApiStep(defendantSolicitor2User);
+    await this.setupUserData(defendantSolicitor2User);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor2User,
@@ -32,7 +32,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
   }
 
   async AssignCaseRoleToDC() {
-    await this.setupApiStep(this.defendantCitizenUser);
+    await this.setupUserData(this.defendantCitizenUser);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
       this.defendantCitizenUser,
@@ -44,7 +44,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
   }
 
   async UnassignCasesForUser(user: User) {
-    await this.setupApiStep(user);
+    await this.setupUserData(user);
     const assignedCases = await UserAssignedCasesHelper.getUserAssignedCases(user);
     if (assignedCases) {
       const { civilServiceRequests } = this.requestsFactory;
