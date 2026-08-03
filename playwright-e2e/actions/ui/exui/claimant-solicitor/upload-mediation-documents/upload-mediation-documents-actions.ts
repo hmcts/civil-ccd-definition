@@ -82,19 +82,19 @@ export default class UploadMediationDocumentsActions extends BaseTestData {
 
   @Step(classKey)
   async uploadBothDocuments() {
-    const { documentUploadPage } = this.uploadMediationDocumentsPageFactory;
-    await documentUploadPage.verifyContent(this.ccdCaseData);
-    await documentUploadPage.uploadDocumentNonAttendanceStatement();
-    await documentUploadPage.uploadDocumentsReferred();
-    await documentUploadPage.submit();
+    const { documentUploadMediationPage } = this.uploadMediationDocumentsPageFactory;
+    await documentUploadMediationPage.verifyContent(this.ccdCaseData);
+    await documentUploadMediationPage.uploadDocumentNonAttendanceStatement();
+    await documentUploadMediationPage.uploadDocumentsReferred();
+    await documentUploadMediationPage.submit();
   }
 
   @Step(classKey)
   async uploadNonAttendanceStatement() {
-    const { documentUploadPage } = this.uploadMediationDocumentsPageFactory;
-    await documentUploadPage.verifyContent(this.ccdCaseData);
-    await documentUploadPage.uploadDocumentNonAttendanceStatement();
-    await documentUploadPage.submit();
+    const { documentUploadMediationPage } = this.uploadMediationDocumentsPageFactory;
+    await documentUploadMediationPage.verifyContent(this.ccdCaseData);
+    await documentUploadMediationPage.uploadDocumentNonAttendanceStatement();
+    await documentUploadMediationPage.submit();
   }
 
   @Step(classKey)

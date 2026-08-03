@@ -7,10 +7,10 @@ import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import DateFragment from '../../../fragments/date/date-fragment';
 import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content.ts';
-import { buttons, containers, headings, inputs } from './document-upload-content';
+import { buttons, containers, headings, inputs } from './document-upload-mediation-content';
 
 @AllMethodsStep()
-export default class DocumentUploadPage extends ExuiPage(BasePage) {
+export default class DocumentUploadMediationPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
 
   constructor(page: Page, dateFragment: DateFragment) {
