@@ -8,12 +8,13 @@ import config from "../config";
 export const claimants: User[] = config.users.claimantCitizenEmail
   ? [
       {
-        name: 'Claimant Citizen',
+        name: 'Claimant Citizen 1',
         email: config.users.claimantCitizenEmail,
         password: config.users.defaultPassword,
         role: UserRole.CITIZEN,
         key: UserKey.CLAIMANT_CITIZEN,
-        cookiesPath: `${filePaths.userCookies}/${UserKey.CLAIMANT_CITIZEN}-0.json`,
+        cookiesPath: `${filePaths.userCookies}/${UserKey.CLAIMANT_CITIZEN}-1.json`,
+        workerIndex: 0,
       },
     ]
   : getUsers(generateCitizenUsers(UserKey.CLAIMANT_CITIZEN));
@@ -21,12 +22,13 @@ export const claimants: User[] = config.users.claimantCitizenEmail
 export const defendants: User[] = config.users.defendantCitizenEmail
   ? [
       {
-        name: 'Defendant Citizen',
+        name: 'Defendant Citizen 1',
         email: config.users.defendantCitizenEmail,
         password: config.users.defaultPassword,
         role: UserRole.CITIZEN,
         key: UserKey.DEFENDANT_CITIZEN,
-        cookiesPath: `${filePaths.userCookies}/${UserKey.DEFENDANT_CITIZEN}-0.json`,
+        cookiesPath: `${filePaths.userCookies}/${UserKey.DEFENDANT_CITIZEN}-1.json`,
+        workerIndex: 0,
       },
     ]
   : getUsers(generateCitizenUsers(UserKey.DEFENDANT_CITIZEN));

@@ -15,12 +15,13 @@ export const hasDefendantCitizenEmail = () => config.users.defendantCitizenEmail
 
 export const generateCitizenUsers = (userKey: UserKey): User[] => {
     return Array.from({ length: config.playwright.workers }, (_, index) => ({
-      name: 'Claimant Citizen',
+      name: `Claimant Citizen ${index + 1}`,
       email: `${userKey}-${Math.random().toString(36).slice(2, 9).toLowerCase()}@gmail.com`,
       password: process.env.DEFAULT_PASSWORD,
       role: UserRole.CITIZEN,
       key: userKey,
       cookiesPath: `${filePaths.userCookies}/${userKey}-${index + 1}.json`,
+      workerIndex: index,
     }));
   };
 
