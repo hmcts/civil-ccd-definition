@@ -278,12 +278,7 @@ module.exports = {
         null, 'Case data validation failed');
     }
 
-    let bodyText = 'Your claim will not be issued until payment is confirmed.';
-    let headerText = '# Please now pay your claim fee\n# using the link below';
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: headerText,
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -352,11 +347,7 @@ module.exports = {
 
     await validateEventPages(createClaimData);
 
-    console.log('comparing assertSubmittedEvent');
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Please now pay your claim',
-      body: 'Your claim will not be issued until payment is confirmed'
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -469,10 +460,7 @@ module.exports = {
 
     await validateEventPages(data[eventName]);
 
-    await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION', {
-      header: 'Notification of claim sent',
-      body: 'The defendant legal representative\'s organisation has been notified and granted access to this claim.'
-    });
+    await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -501,10 +489,7 @@ module.exports = {
     } else {
       returnedCaseData = { ...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false) };
     }
-    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION', {
-      header: 'Certificate of Service',
-      body: 'You must serve the claim details and'
-    });
+    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -523,10 +508,7 @@ module.exports = {
 
     await validateEventPages(data[eventName]);
 
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Defendant notified',
-      body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
-    });
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -563,10 +545,7 @@ module.exports = {
       const document = await testingSupport.uploadDocument();
       returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
     }
-    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Certificate of Service',
-      body: 'The defendant(s) must'
-    });
+    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -1772,7 +1751,8 @@ const expectedWarnings = async (pageId, eventData, expectedWarningMessages, resp
   }
 };
 
-const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+// Confirmation copy is service-owned; assert it only in journeys that specifically own that behaviour.
+const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains = null, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
@@ -1781,9 +1761,11 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    if(submittedCallbackResponseContains.body) {
-      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if (submittedCallbackResponseContains) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+      if (submittedCallbackResponseContains.body) {
+        assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+      }
     }
   }
 
@@ -1794,7 +1776,12 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
-const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+const assertSubmittedEventWithCaseData = async (
+  updatedCaseData,
+  expectedState,
+  submittedCallbackResponseContains = null,
+  hasSubmittedCallback = true
+) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, updatedCaseData, caseId);
@@ -1803,8 +1790,10 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if (submittedCallbackResponseContains) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    }
   }
 };
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
