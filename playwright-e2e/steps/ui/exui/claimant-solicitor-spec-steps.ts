@@ -27,6 +27,42 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(claimantSolicitorUser);
   }
 
+  async UploadMediationDocumentsForClaimant() {
+    const { uploadMediationDocumentsActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await uploadMediationDocumentsActions.uploadMediationDocumentsExplanation();
+        await uploadMediationDocumentsActions.selectClaimant1();
+        await uploadMediationDocumentsActions.selectBothDocumentTypes();
+        await uploadMediationDocumentsActions.uploadBothDocuments();
+        await uploadMediationDocumentsActions.submitUploadMediationDocuments();
+      },
+      async () => {
+        await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
+      },
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async UploadMediationDocumentsForBothClaimants() {
+    const { uploadMediationDocumentsActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await uploadMediationDocumentsActions.uploadMediationDocumentsExplanation();
+        await uploadMediationDocumentsActions.selectBothClaimants();
+        await uploadMediationDocumentsActions.selectBothDocumentTypes();
+        await uploadMediationDocumentsActions.uploadBothDocuments();
+        await uploadMediationDocumentsActions.submitUploadMediationDocuments();
+      },
+      async () => {
+        await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
+      },
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async CreateClaimFast1v1() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(

@@ -59,6 +59,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         () => super.uploadFile(filePath, selector, { containerSelector, index, first }),
         () =>
           super.expectNoSelector(components.uploadDocError.selector, {
+            containerSelector,
             timeout,
             all: true,
             message: 'Uploading document failed',

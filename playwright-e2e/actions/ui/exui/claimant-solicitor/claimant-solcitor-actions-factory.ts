@@ -20,6 +20,8 @@ import RequestForReconsiderationActions from './request-for-reconsideration-acti
 import RequestForReconsiderationPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/request-for-reconsideration/request-for-reconsideration-page-factory';
 import SettleClaimMarkPaidFullActions from './settle-claim-mark-paid-full-actions';
 import SettleClaimMarkPaidFullPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/settle-claim-mark-paid-full/settle-claim-mark-paid-full-page-factory.ts';
+import UploadMediationDocumentsActions from './upload-mediation-documents/upload-mediation-documents-actions';
+import UploadMediationDocumentsPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/upload-mediation-documents/upload-mediation-documents-page-factory';
 
 export default class ClaimantSolicitorActionsFactory extends BasePageActionsFactory {
   get createClaimActions() {
@@ -84,6 +86,13 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
   get settleClaimMarkPaidFullActions() {
     return new SettleClaimMarkPaidFullActions(
       new SettleClaimMarkPaidFullPageFactory(this.page),
+      this.testData,
+    );
+  }
+
+  get uploadMediationDocumentsActions() {
+    return new UploadMediationDocumentsActions(
+      new UploadMediationDocumentsPageFactory(this.page),
       this.testData,
     );
   }
