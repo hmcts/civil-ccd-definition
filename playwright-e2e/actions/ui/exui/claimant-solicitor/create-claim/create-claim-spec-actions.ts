@@ -182,36 +182,6 @@ export default class CreateClaimSpecActions extends BaseTestData {
   }
 
   async claimDetailsFastTrack() {
-    await this.flightDelayClaim();
-    await this.detailsSpec();
-    await this.uploadClaimDocument();
-    await this.claimTimeLineUpload();
-    await this.evidenceList();
-
-    const { claimAmountPage } = this.createClaimPageFactory;
-    await claimAmountPage.verifyContent();
-    await claimAmountPage.addNew();
-    await claimAmountPage.enterClaimDetailsFastTrack();
-    await claimAmountPage.submit();
-
-    const { claimAmountDetailsPage } = this.createClaimPageFactory;
-    await claimAmountDetailsPage.verifyContent();
-    await claimAmountDetailsPage.verifyFastTrack();
-    await claimAmountDetailsPage.submit();
-
-    await this.claimInterest();
-
-    const { interestSummaryPage } = this.createClaimPageFactory;
-    await interestSummaryPage.verifyContent();
-    await interestSummaryPage.verifyFastTrack();
-    await interestSummaryPage.submit();
-
-    await this.pbaNumber();
-    await this.fixedCommencementCosts();
-  }
-
-  async claimDetailsFastTrackFlightDelay() {
-    await this.flightDelayClaimYes();
     await this.detailsSpec();
     await this.uploadClaimDocument();
     await this.claimTimeLineUpload();
@@ -240,7 +210,6 @@ export default class CreateClaimSpecActions extends BaseTestData {
   }
 
   async claimDetailsMultiTrack() {
-    await this.flightDelayClaim();
     await this.detailsSpec();
     await this.uploadClaimDocument();
     await this.claimTimeLineUpload();
@@ -269,7 +238,6 @@ export default class CreateClaimSpecActions extends BaseTestData {
   }
 
   async claimDetailsSmallTrack() {
-    await this.flightDelayClaim();
     await this.detailsSpec();
     await this.uploadClaimDocument();
     await this.claimTimeLineUpload();
@@ -316,14 +284,14 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await confirmCreateClaimSpecPage.submit();
   }
 
-  private async flightDelayClaim() {
+  async flightDelayClaimNo() {
     const { flightDelayClaimPage } = this.createClaimPageFactory;
     await flightDelayClaimPage.verifyContent();
     await flightDelayClaimPage.selectNo();
     await flightDelayClaimPage.submit();
   }
 
-  private async flightDelayClaimYes() {
+  async flightDelayClaimYes() {
     const { flightDelayClaimPage } = this.createClaimPageFactory;
     await flightDelayClaimPage.verifyContent();
     await flightDelayClaimPage.selectYes();

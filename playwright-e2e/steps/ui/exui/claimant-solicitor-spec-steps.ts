@@ -40,6 +40,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.defendant();
         await createClaimSpecActions.defendantDetails();
         await createClaimSpecActions.noAddAnotherDefendant();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsFastTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
@@ -66,6 +67,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.defendant();
         await createClaimSpecActions.defendantDetails();
         await createClaimSpecActions.noAddAnotherDefendant();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsSmallTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
@@ -91,6 +93,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.claimantDetails();
         await createClaimSpecActions.defendant();
         await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsSmallTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
@@ -118,6 +121,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.addAnotherDefendant();
         await createClaimSpecActions.secondDefendant();
         await createClaimSpecActions.secondDefedantSSDetails();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsSmallTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
@@ -145,6 +149,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.addAnotherDefendant();
         await createClaimSpecActions.secondDefendant();
         await createClaimSpecActions.secondDefendantDSDetails();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsSmallTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
@@ -172,6 +177,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.addAnotherDefendant();
         await createClaimSpecActions.secondDefendant();
         await createClaimSpecActions.secondDefendantDSDetails();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsFastTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
@@ -199,7 +205,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.addAnotherDefendant();
         await createClaimSpecActions.secondOrganisationDefendant();
         await createClaimSpecActions.secondDefendantDSDetails();
-        await createClaimSpecActions.claimDetailsFastTrackFlightDelay();
+        await createClaimSpecActions.flightDelayClaimYes();
+        await createClaimSpecActions.claimDetailsFastTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
       },
@@ -226,6 +233,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.addAnotherDefendant();
         await createClaimSpecActions.secondDefendant();
         await createClaimSpecActions.secondDefedantSSDetails();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsFastTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
@@ -251,6 +259,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.claimantDetails();
         await createClaimSpecActions.defendant();
         await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsFastTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
@@ -279,6 +288,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.addAnotherDefendant();
         await createClaimSpecActions.secondDefendant();
         await createClaimSpecActions.secondDefedantSSDetails();
+        await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsMultiTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
