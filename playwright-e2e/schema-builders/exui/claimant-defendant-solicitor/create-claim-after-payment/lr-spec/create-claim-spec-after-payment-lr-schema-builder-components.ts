@@ -12,8 +12,14 @@ const createClaimSpecAfterPayment = {
   respondent2ResponseDeadline: nonEmptyString.optional(),
 };
 
+const ignore = {
+  specClaimDetailsDocumentFiles: z.any().optional(),
+  specClaimTemplateDocumentFiles: z.any().optional(),
+}
+
 const createClaimSpecAfterPaymentLRSchemaComponents = {
   createClaimSpecAfterPayment,
+  ignore,
 };
 
 export default createClaimSpecAfterPaymentLRSchemaComponents;

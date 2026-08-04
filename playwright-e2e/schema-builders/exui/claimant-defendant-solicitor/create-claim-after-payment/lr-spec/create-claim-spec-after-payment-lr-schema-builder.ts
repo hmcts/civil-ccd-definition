@@ -18,6 +18,7 @@ export default class CreateClaimSpecAfterPaymentLRSchemaBuilder extends BaseSche
 
     return baseSchema.extend({
       ...createClaimSpecAfterPaymentLRSchemaComponents.createClaimSpecAfterPayment,
+      ...createClaimSpecAfterPaymentLRSchemaComponents.ignore,
     });
   }
 }
