@@ -35,7 +35,7 @@ export default class CertificateOfServiceNotifyClaimDetailsSubmitFragment extend
   async verifyDefendant1Answers() {
     const dateDeemedServed = DateHelper.getToday();
     const dateOfService = DateHelper.addToToday({
-      days: 2,
+      days: 1,
       workingDay: true,
       addDayAfter4pm: true,
     });
@@ -64,7 +64,7 @@ export default class CertificateOfServiceNotifyClaimDetailsSubmitFragment extend
   async verifyDefendant2Answers() {
     const dateDeemedServed = DateHelper.getToday();
     const dateOfService = DateHelper.addToToday({
-      days: 2,
+      days: 1,
       workingDay: true,
       addDayAfter4pm: true,
     });
