@@ -121,30 +121,6 @@
   },
   {
     "ID": "Party",
-    "ListElementCode": "defendantAddressHeadingLabel",
-    "FieldType": "Label",
-    "ElementLabel": "### Address",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "Party",
-    "ListElementCode": "nonRepresentedDefendantAddressLabel",
-    "FieldType": "Label",
-    "ElementLabel": "Non-represented defendants must have an address in England or Wales",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "Party",
-    "ListElementCode": "defendantAddressDetailsLabel",
-    "FieldType": "Label",
-    "ElementLabel": "**Please enter address details**",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "Party",
     "ListElementCode": "primaryAddress",
     "FieldType": "AddressUK",
     "ElementLabel": "Address",
