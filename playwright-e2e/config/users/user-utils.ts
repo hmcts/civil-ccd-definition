@@ -13,9 +13,9 @@ let userKeysBeingUsed: Set<UserKey> | undefined = new Set<UserKey>();
 export const hasClaimantCitizenEmail = () => config.users.claimantCitizenEmail;
 export const hasDefendantCitizenEmail = () => config.users.defendantCitizenEmail;
 
-export const generateCitizenUsers = (userKey: UserKey): User[] => {
+export const generateCitizenUsers = (userName: string,userKey: UserKey): User[] => {
     return Array.from({ length: config.playwright.workers }, (_, index) => ({
-      name: `Claimant Citizen ${index + 1}`,
+      name: `${userName} ${index + 1}`,
       email: `${userKey}-${Math.random().toString(36).slice(2, 9).toLowerCase()}@gmail.com`,
       password: process.env.DEFAULT_PASSWORD,
       role: UserRole.CITIZEN,

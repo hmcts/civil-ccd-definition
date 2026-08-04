@@ -17,7 +17,7 @@ export const claimants: User[] = config.users.claimantCitizenEmail
         workerIndex: 0,
       },
     ]
-  : getUsers(generateCitizenUsers(UserKey.CLAIMANT_CITIZEN));
+  : getUsers(generateCitizenUsers('Claimant Citizen', UserKey.CLAIMANT_CITIZEN));
 
 export const defendants: User[] = config.users.defendantCitizenEmail
   ? [
@@ -31,4 +31,4 @@ export const defendants: User[] = config.users.defendantCitizenEmail
         workerIndex: 0,
       },
     ]
-  : getUsers(generateCitizenUsers(UserKey.DEFENDANT_CITIZEN));
+  : getUsers(generateCitizenUsers('Defendant Citizen', UserKey.DEFENDANT_CITIZEN));
