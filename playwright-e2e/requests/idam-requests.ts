@@ -34,7 +34,7 @@ export default class IdamRequests extends BaseRequest {
     const responseJson = await super.requestJson(url, requestOptions, {
       expectedStatus: [201, 409],
     });
-    console.log(`User with email: ${citizenUser.email} successfully created`);
+    console.log(`User with email: ${citizenUser.email} successfully/already created`);
     return await responseJson;
   }
 
