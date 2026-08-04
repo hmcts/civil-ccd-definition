@@ -13,14 +13,14 @@ const documentArray = z.array(
 ).min(1);
 
 const documentUpload = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM)
+  if (claimTrack === ClaimTrack.FAST_CLAIM)
     return {
       documentDisclosureListRes: documentArray,
       documentWitnessSummaryRes: documentArray,
       documentQuestionsRes: documentArray,
       documentAuthoritiesRes: documentArray,
     };
-  else if(claimTrack === ClaimTrack.SMALL_CLAIM)
+  else if (claimTrack === ClaimTrack.SMALL_CLAIM)
     return {
       documentExpertReportRes: documentArray,
       documentWitnessStatementRes: documentArray,

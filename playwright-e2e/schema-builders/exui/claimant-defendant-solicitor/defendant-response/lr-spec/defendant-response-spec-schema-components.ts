@@ -7,6 +7,7 @@ import partys from '../../../../../constants/users/partys';
 import { Party } from '../../../../../models/users/partys';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-admitted-part-route-spec';
 
 const yesNoSchema = z.enum(['Yes', 'No']);
 const nonEmptyString = z.string().min(1);
@@ -118,17 +119,33 @@ const defenceRoute = (
 
 const defenceAdmittedPartRoute = (
   responseType: DefendantResponseSpecType,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
-  if (responseType === DefendantResponseSpecType.PART_ADMISSION)
+  if (responseType === DefendantResponseSpecType.PART_ADMISSION) {
+    if (defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_PAID)
+      return {
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'specDefenceAdmittedRequired'
+          : 'specDefenceAdmitted2Required']: z.literal('Yes'),
+        [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+          ? 'respondToAdmittedClaim'
+          : 'respondToAdmittedClaim2']: z.looseObject({
+          howMuchWasPaid: nonEmptyString,
+          whenWasThisAmountPaid: nonEmptyString,
+          howWasThisAmountPaid: nonEmptyString,
+        }),
+      };
+
     return {
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? 'specDefenceAdmittedRequired'
-        : 'specDefenceAdmitted2Required']: yesNoSchema,
+        : 'specDefenceAdmitted2Required']: z.literal('No'),
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
         ? 'respondToAdmittedClaimOwingAmount'
         : 'respondToAdmittedClaimOwingAmount2']: nonEmptyString,
     };
+  }
 
   return {};
 };
@@ -136,11 +153,13 @@ const defenceAdmittedPartRoute = (
 const whenWillClaimBePaid = (
   responseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
     responseType === DefendantResponseSpecType.FULL_ADMISSION ||
-    responseType === DefendantResponseSpecType.PART_ADMISSION
+    (responseType === DefendantResponseSpecType.PART_ADMISSION &&
+      defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID)
   )
     return {
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -163,6 +182,7 @@ const whenWillClaimBePaid = (
 const defendant1FinancialDetails = (
   responseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
@@ -170,6 +190,7 @@ const defendant1FinancialDetails = (
       responseType === DefendantResponseSpecType.PART_ADMISSION) &&
     (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE ||
       paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN) &&
+    defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID &&
     defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
   ) {
     return {
@@ -200,6 +221,7 @@ const defendant2FinancialDetails = (
   responseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
   claimType: ClaimType,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
@@ -207,6 +229,7 @@ const defendant2FinancialDetails = (
       responseType === DefendantResponseSpecType.PART_ADMISSION) &&
     (paymentTypeSpec === PaymentTypeSpec.BY_SET_DATE ||
       paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN) &&
+    defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID &&
     (claimType === ClaimType.ONE_VS_TWO_SAME_SOL ||
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
   ) {
@@ -227,12 +250,14 @@ const defendant2FinancialDetails = (
 const defendant1RepaymentPlan = (
   responseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
     (responseType === DefendantResponseSpecType.FULL_ADMISSION ||
       responseType === DefendantResponseSpecType.PART_ADMISSION) &&
     paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN &&
+    defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID &&
     defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
   ) {
     return {
@@ -251,12 +276,14 @@ const defendant2RepaymentPlan = (
   responseType: DefendantResponseSpecType,
   paymentTypeSpec: PaymentTypeSpec,
   claimType: ClaimType,
+  defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec,
   defendantSolicitorParty: Party,
 ) => {
   if (
     (responseType === DefendantResponseSpecType.FULL_ADMISSION ||
       responseType === DefendantResponseSpecType.PART_ADMISSION) &&
     paymentTypeSpec === PaymentTypeSpec.REPAYMENT_PLAN &&
+    defenceAdmittedPartRoute === DefenceAdmittedPartRouteSpec.HAS_NOT_PAID &&
     (claimType === ClaimType.ONE_VS_TWO_SAME_SOL ||
       defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2)
   ) {

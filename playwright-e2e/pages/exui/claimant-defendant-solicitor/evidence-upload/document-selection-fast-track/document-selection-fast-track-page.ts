@@ -21,21 +21,6 @@ export default class DocumentSelectionFastTrackPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.witnessEvidence),
       super.expectSubheading(subheadings.expertEvidence),
       super.expectSubheading(subheadings.trialDocuments),
-      super.expectLabel(checkboxes.disclosureList.label),
-      super.expectLabel(checkboxes.documentsForDisclosure.label),
-      super.expectLabel(checkboxes.witnessStatement.label),
-      super.expectLabel(checkboxes.witnessSummary.label),
-      super.expectLabel(checkboxes.noticeOfIntention.label),
-      super.expectLabel(checkboxes.documentsReferred.label),
-      super.expectLabel(checkboxes.expertsReport.label),
-      super.expectLabel(checkboxes.jointStatement.label),
-      super.expectLabel(checkboxes.questionsForExperts.label),
-      super.expectLabel(checkboxes.answersForExperts.label),
-      super.expectLabel(checkboxes.caseSummary.label),
-      super.expectLabel(checkboxes.skeletonArgument.label),
-      super.expectLabel(checkboxes.authorities.label),
-      super.expectLabel(checkboxes.costs.label),
-      super.expectLabel(checkboxes.documentary.label),
     ]);
   }
 
@@ -49,6 +34,10 @@ export default class DocumentSelectionFastTrackPage extends ExuiPage(BasePage) {
 
   async selectAuthorities() {
     await super.clickBySelector(checkboxes.authorities.selector(this.claimantDefendantParty));
+  }
+
+  async selectBundles() {
+    await super.clickBySelector(checkboxes.bundles.selector);
   }
 
   async submit() {

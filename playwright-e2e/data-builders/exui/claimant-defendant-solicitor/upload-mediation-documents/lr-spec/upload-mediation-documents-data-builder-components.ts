@@ -17,8 +17,8 @@ const whoIsDocumentFor = (
     defendant1PartyType: ClaimantDefendantPartyType,
     defendant2PartyType: ClaimantDefendantPartyType,
   ) => {
-  if(claimantDefendantSolicitorParty === partys.CLAIMANT_SOLICITOR_1) {
-    if(claimType === ClaimType.TWO_VS_ONE) {
+  if (claimantDefendantSolicitorParty === partys.CLAIMANT_SOLICITOR_1) {
+    if (claimType === ClaimType.TWO_VS_ONE) {
       return {
         WhoIsDocumentFor: {
           uploadMediationDocumentsPartyChosen: {
@@ -49,8 +49,8 @@ const whoIsDocumentFor = (
       }
     }
   }
-  else if(claimantDefendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) 
+  else if (claimantDefendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+    if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) 
       return {
         WhoIsDocumentFor: {
           uploadMediationDocumentsPartyChosen: {
@@ -81,7 +81,7 @@ const whoIsDocumentFor = (
       }
     };
   }
-  else if(claimantDefendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  else if (claimantDefendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       WhoIsDocumentFor: {
         uploadMediationDocumentsPartyChosen: {

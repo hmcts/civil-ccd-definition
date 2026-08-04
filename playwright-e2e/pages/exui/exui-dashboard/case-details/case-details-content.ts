@@ -92,10 +92,15 @@ export const containers = {
   },
 };
 
-export const hearingsTabSubheadings = {
-  currentAndUpcoming: 'Current and upcoming',
-  pastOrCancelled: 'Past or cancelled',
-}
+export const subheadings = {
+  hearingsTab: {
+    currentAndUpcoming: 'Current and upcoming',
+    pastOrCancelled: 'Past or cancelled',
+  },
+  bundlesTab: {
+    bundleName: 'Bundle name',
+  },
+};
 
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
   `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;

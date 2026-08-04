@@ -38,7 +38,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS2();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
         await defendantResponseSpecActions.timelineDS2();
-        await defendantResponseSpecActions.dqFastTrackDS2();
+        await defendantResponseSpecActions.dqFastDS2();
         await defendantResponseSpecActions.applicationDS2();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS2();
         await defendantResponseSpecActions.submitDefendantResponse();
@@ -52,7 +52,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -64,7 +64,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
         await defendantResponseSpecActions.timelineDS2();
         await defendantResponseSpecActions.mediationDS2();
-        await defendantResponseSpecActions.dqSmallTrackDS2();
+        await defendantResponseSpecActions.dqSmallDS2();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -73,6 +73,23 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
 
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async EvidenceUploadBundle() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
+        await evidenceUploadRespondentActions.documentUploadBundleDS2();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       { verifySuccessEvent: false },
     );
   }

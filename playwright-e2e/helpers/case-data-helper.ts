@@ -304,6 +304,17 @@ export default class CaseDataHelper {
     };
   }
 
+  static buildSolicitorData(solicitorParty: Party, update = false) {
+    const suffix = update ? '-updated' : '';
+
+    return {
+      firstName: `${StringHelper.capitalise(solicitorParty.key)}${suffix}`,
+      lastName: `Witness${suffix}`,
+      phoneNumber: this.getPartyPhoneNumber(solicitorParty),
+      emailAddress: `${solicitorParty.key}@solicitors${suffix}.com`,
+    };
+  }
+
   static getClaimValue(claimTrack: ClaimTrack) {
     switch (claimTrack) {
       case ClaimTrack.SMALL_CLAIM:
