@@ -350,9 +350,9 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
-    "ListElementCode": "defendantAddressHeadingLabel",
+    "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 11,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Defendant",
@@ -374,17 +374,8 @@
     "ID": "Defendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
-    "ListElementCode": "primaryAddress",
-    "FieldDisplayOrder": 14,
-    "DisplayContext": "MANDATORY",
-    "EventElementLabel": " "
-  },
-  {
-    "ID": "Defendant",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.AddressLine1",
-    "FieldDisplayOrder": 15,
+    "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -392,7 +383,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.AddressLine2",
-    "FieldDisplayOrder": 16,
+    "FieldDisplayOrder": 15,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -400,7 +391,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.AddressLine3",
-    "FieldDisplayOrder": 17,
+    "FieldDisplayOrder": 16,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -408,7 +399,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.PostTown",
-    "FieldDisplayOrder": 18,
+    "FieldDisplayOrder": 17,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -416,7 +407,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.County",
-    "FieldDisplayOrder": 19,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -424,7 +415,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.Country",
-    "FieldDisplayOrder": 20,
+    "FieldDisplayOrder": 19,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -432,7 +423,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress.PostCode",
-    "FieldDisplayOrder": 21,
+    "FieldDisplayOrder": 20,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1026,9 +1017,9 @@
     "ID": "SecondDefendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "defendantAddressHeadingLabel",
+    "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 11,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SecondDefendant",
@@ -1050,17 +1041,8 @@
     "ID": "SecondDefendant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress",
-    "FieldDisplayOrder": 14,
-    "DisplayContext": "MANDATORY",
-    "EventElementLabel": " "
-  },
-  {
-    "ID": "SecondDefendant",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.AddressLine1",
-    "FieldDisplayOrder": 15,
+    "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1068,7 +1050,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.AddressLine2",
-    "FieldDisplayOrder": 16,
+    "FieldDisplayOrder": 15,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1076,7 +1058,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.AddressLine3",
-    "FieldDisplayOrder": 17,
+    "FieldDisplayOrder": 16,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1084,7 +1066,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.PostTown",
-    "FieldDisplayOrder": 18,
+    "FieldDisplayOrder": 17,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1092,7 +1074,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.County",
-    "FieldDisplayOrder": 19,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1100,7 +1082,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.Country",
-    "FieldDisplayOrder": 20,
+    "FieldDisplayOrder": 19,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1108,7 +1090,7 @@
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress.PostCode",
-    "FieldDisplayOrder": 21,
+    "FieldDisplayOrder": 20,
     "DisplayContext": "MANDATORY"
   },
   {
