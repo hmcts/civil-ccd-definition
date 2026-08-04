@@ -50,7 +50,7 @@ export default class CertificateOfServiceNotifyClaimDetailsFragment extends Exui
 
   async fillCertificateOfService() {
     const dateDeemedServed = DateHelper.addToToday({
-      days: 2,
+      days: 1,
       workingDay: true,
     });
     const dateOfService = DateHelper.getToday();
