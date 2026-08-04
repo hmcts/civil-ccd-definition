@@ -10,7 +10,7 @@ import FileSystemHelper from './file-system-helper.ts';
 
 export default class UserAssignedCasesHelper {
   private static getUserAssignedCasesPath = (user: User) =>{
-    if(user.workerIndex) {
+    if (user.workerIndex) {
       return `${filePaths.userAssignedCases}/${user.key}-${user.workerIndex + 1}.json`;
     }
     return `${filePaths.userAssignedCases}/${user.key}.json`;
