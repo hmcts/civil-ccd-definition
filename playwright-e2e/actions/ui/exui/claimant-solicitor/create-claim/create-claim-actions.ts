@@ -203,7 +203,22 @@ export default class CreateClaimActions extends BaseTestData {
     await this.claimType();
     await this.personalInjuryType();
     await this.details();
-    await this.uploadParticularsOfClaim();
+    await this.uploadParticularsOfClaimNo();
+
+    const { claimValuePage } = this.createClaimPageFactory;
+    await claimValuePage.verifyContent();
+    await claimValuePage.enterClaimDetailsFastTrack();
+    await claimValuePage.submit();
+
+    await this.pbaNumber();
+  }
+
+  async claimDetailsFastTrackOtherRemedy() {
+    await this.claimTypeOtherRemedy();
+    await this.claimDeclaration();
+    await this.humanRightsAct();
+    await this.details();
+    await this.uploadParticularsOfClaimNo();
 
     const { claimValuePage } = this.createClaimPageFactory;
     await claimValuePage.verifyContent();
@@ -217,7 +232,7 @@ export default class CreateClaimActions extends BaseTestData {
     await this.claimType();
     await this.personalInjuryType();
     await this.details();
-    await this.uploadParticularsOfClaim();
+    await this.uploadParticularsOfClaimNo();
 
     const { claimValuePage } = this.createClaimPageFactory;
     await claimValuePage.verifyContent();
@@ -274,6 +289,27 @@ export default class CreateClaimActions extends BaseTestData {
     await claimTypePage.submit();
   }
 
+  private async claimTypeOtherRemedy() {
+    const { claimTypePage } = this.createClaimPageFactory;
+    await claimTypePage.verifyContent();
+    await claimTypePage.selectDamagesAndOtherRemedy();
+    await claimTypePage.submit();
+  }
+
+  private async claimDeclaration() {
+    const { claimDeclarationPage } = this.createClaimPageFactory;
+    await claimDeclarationPage.verifyContent();
+    await claimDeclarationPage.selectNo();
+    await claimDeclarationPage.submit();
+  }
+
+  private async humanRightsAct() {
+    const { humanRightsActPage } = this.createClaimPageFactory;
+    await humanRightsActPage.verifyContent();
+    await humanRightsActPage.selectNo();
+    await humanRightsActPage.submit();
+  }
+
   private async personalInjuryType() {
     const { personalInjuryType } = this.createClaimPageFactory;
     await personalInjuryType.verifyContent();
@@ -288,7 +324,7 @@ export default class CreateClaimActions extends BaseTestData {
     await detailsPage.submit();
   }
 
-  private async uploadParticularsOfClaim() {
+  private async uploadParticularsOfClaimNo() {
     const { uploadParticularsOfClaimPage } = this.createClaimPageFactory;
     await uploadParticularsOfClaimPage.verifyContent();
     await uploadParticularsOfClaimPage.selectNo();

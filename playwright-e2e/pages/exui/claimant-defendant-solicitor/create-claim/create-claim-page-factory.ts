@@ -17,6 +17,7 @@ import BreakDownInterestPage from './lr-spec/break-down-interest/break-down-inte
 import ChecklistPage from './lr-spec/check-list/checklist-page';
 import ClaimAmountDetailsPage from './lr-spec/claim-amount-details/claim-amount-details-page';
 import ClaimAmountPage from './lr-spec/claim-amount/claim-amount-page';
+import ClaimDeclarationPage from './unspec/claim-declaration/claim-declaration-page';
 import ClaimInterestOptionsPage from './lr-spec/claim-interest-options/claim-interest-options-page';
 import ClaimInterestPage from './lr-spec/claim-interest/claim-interest-page';
 import ClaimTimelineUploadPage from './lr-spec/claim-timeline-upload/claim-timeline-upload-page';
@@ -56,6 +57,7 @@ import DefendantSolicitorOrganisationPage from './unspec/defendant-solicitor-org
 import DefendantSolicitorServiceAddressPage from './unspec/defendant-solicitor-service-address/defendant-solicitor-service-address-page';
 import DetailsPage from './unspec/details/details-page';
 import EligibilityPage from './unspec/eligibility/eligibility-page';
+import HumanRightsActPage from './unspec/human-rights-act/human-rights-act-page';
 import LegalRepresentationPage from './unspec/legal-representation/legal-representation-page';
 import PersonalInjuryTypePage from './unspec/personal-injury-type/personal-injury-type-page';
 import SecondClaimantLitigationFriendPage from './unspec/second-claimant-litigation-friend/second-claimant-litigation-friend-page';
@@ -334,6 +336,14 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get claimTypePage() {
     return new ClaimTypePage(this.page);
+  }
+
+  get claimDeclarationPage() {
+    return new ClaimDeclarationPage(this.page, new YesOrNoFragment(this.page));
+  }
+
+  get humanRightsActPage() {
+    return new HumanRightsActPage(this.page, new YesOrNoFragment(this.page));
   }
 
   get flightDelayClaimPage() {
