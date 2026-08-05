@@ -6,7 +6,7 @@ test.describe(
     tag: ['@civil-ccd-nightly'],
   },
   () => {
-    test('1v1 spec query management follow up journey @debug', async ({
+    test('1v1 spec query management follow up journey', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
@@ -20,12 +20,12 @@ test.describe(
       await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence();
       await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectFullDefence();
       await JudgeApiSteps.GenerateDirectionsOrderIntermediate();
-      // await ClaimantSolicitorSpecSteps.Login();
+      await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.RaiseANewQuery();
-      // await CaseworkerSteps.LoginCTSC();
-      // await CaseworkerSteps.RespondToQuery();
-      // await ClaimantSolicitorSpecSteps.Login();
-      // await ClaimantSolicitorSpecSteps.RaiseFollowUpQuery();
+      await CaseworkerSteps.LoginCTSC();
+      await CaseworkerSteps.RespondToQuery();
+      await ClaimantSolicitorSpecSteps.Login();
+      await ClaimantSolicitorSpecSteps.RaiseFollowUpQuery();
     });
   },
 );
