@@ -2,7 +2,7 @@ import { test as setup } from '../../../playwright-fixtures/index';
 import { exuiAuthSetupUsers } from '../../../config/users/exui-users';
 import config from '../../../config/config';
 
-if (config.runSetup) {
+if (config.runExuiAuthSetup) {
   setup.describe('Authenticating exui user(s) and saving cookies', () => {
     setup.describe.configure({ mode: 'parallel' });
 
