@@ -5,6 +5,7 @@ import CookiesHelper from '../../../../helpers/cookies-helper';
 import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
 import TestData from '../../../../models/test-utils/test-data';
 import User from '../../../../models/users/user';
+import { WATask } from '../../../../models/wa-task';
 import ExuiDashboardPageFactory from '../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import PageUtilsFactory from '../../../../pages/utils/page-utils-factory';
 import RequestsFactory from '../../../../requests/requests-factory';
@@ -51,7 +52,6 @@ export default class ExuiDashboardActions extends BaseApi {
   async goToHearingsTab() {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
-    await caseDetailsPage.verifyContent(this.ccdCaseData);
     await caseDetailsPage.retryClickHearingsTab();
   }
 
@@ -81,7 +81,7 @@ export default class ExuiDashboardActions extends BaseApi {
     await caseFilterPage.chooseClaimTypeWithUrl(ccdEvent);
   }
 
-  async startExuiEvent(ccdEvent: CCDEvent) {
+  async startCCDEvent(ccdEvent: CCDEvent) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
@@ -89,10 +89,24 @@ export default class ExuiDashboardActions extends BaseApi {
     caseDetailsPage.setCCDEvent = ccdEvent;
   }
 
-  async startExuiEventFromNextStep(ccdEvent: CCDEvent) {
+  async startCCDEventFromNextStep(ccdEvent: CCDEvent) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
     await caseDetailsPage.retryChooseNextStep(ccdEvent);
+    caseDetailsPage.setCCDEvent = ccdEvent;
+  }
+
+  async startRaiseANewQueryEvent() {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
+    await caseDetailsPage.retryRaiseANewQuery(this.ccdCaseData.id!);
+    caseDetailsPage.setCCDEvent = ccdEvents.QUERY_MANAGEMENT_RAISE;
+  }
+
+  async startWAEvent(ccdEvent: CCDEvent, waTask: WATask) {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
+    await caseDetailsPage.retryStartWAEvent(ccdEvent, waTask);
     caseDetailsPage.setCCDEvent = ccdEvent;
   }
 

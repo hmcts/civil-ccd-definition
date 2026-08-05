@@ -1,7 +1,6 @@
 import BaseTestData from '../../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-utils/test-data';
-import WATask from '../../../../../models/wa-task';
 import QueryManagementPageFactory from '../../../../../pages/exui/common/query-management/query-management-page-factory';
 import { paragraphs } from '../../../../../pages/exui/common/query-management/query-details/query-details-content';
 
@@ -18,7 +17,7 @@ export default class QueryManagementActions extends BaseTestData {
     const { qualifyingQuestionOptionPage } = this.queryManagementPageFactory;
     await qualifyingQuestionOptionPage.verifyContent();
     await qualifyingQuestionOptionPage.selectRaiseANewQuery();
-    await qualifyingQuestionOptionPage.continue();
+    await qualifyingQuestionOptionPage.submit();
   }
 
   async enterQueryDetailsNew() {
@@ -28,7 +27,7 @@ export default class QueryManagementActions extends BaseTestData {
     await queryDetailsNewPage.enterQueryDetail();
     await queryDetailsNewPage.selectIsQueryHearingRelatedNo();
     await queryDetailsNewPage.attachDocument();
-    await queryDetailsNewPage.continue();
+    await queryDetailsNewPage.submit();
   }
 
   async enterQueryDetailsHearing() {
@@ -38,14 +37,14 @@ export default class QueryManagementActions extends BaseTestData {
     await queryDetailsNewPage.enterQueryDetail(paragraphs.hearingQuery.queryBody);
     await queryDetailsNewPage.selectIsQueryHearingRelatedYes();
     await queryDetailsNewPage.enterHearingDate();
-    await queryDetailsNewPage.continue();
+    await queryDetailsNewPage.submit();
   }
 
   async enterQueryDetailsFollowup() {
     const { queryDetailsFollowupPage } = this.queryManagementPageFactory;
     await queryDetailsFollowupPage.verifyContent(this.ccdCaseData);
     await queryDetailsFollowupPage.enterFollowupQuestion();
-    await queryDetailsFollowupPage.continue();
+    await queryDetailsFollowupPage.submit();
   }
 
   async reviewQueryDetails() {
@@ -60,13 +59,12 @@ export default class QueryManagementActions extends BaseTestData {
     await reviewQueryFollowupPage.submit();
   }
 
-  async enterResponseToQuery(waTask: WATask) {
+  async enterResponseToQuery() {
     const { queryDetailsResponsePage } = this.queryManagementPageFactory;
-    await queryDetailsResponsePage.goToQueryManagementTask(waTask, this.ccdCaseData.id!);
     await queryDetailsResponsePage.verifyContent(this.ccdCaseData);
     await queryDetailsResponsePage.enterResponseDetail();
     await queryDetailsResponsePage.attachDocument();
-    await queryDetailsResponsePage.continue();
+    await queryDetailsResponsePage.submit();
   }
 
   async reviewQueryResponse() {
@@ -85,42 +83,9 @@ export default class QueryManagementActions extends BaseTestData {
     await confirmQueryResponsePage.verifyContent();
   }
 
-  async openQuery() {
-    const { queryListPage } = this.queryManagementPageFactory;
-    await queryListPage.verifyContent();
-    await queryListPage.openQuery();
-  }
-
   async askFollowUpQuestion() {
-    const { queryPage } = this.queryManagementPageFactory;
-    await queryPage.verifyContent();
-    await queryPage.askFollowUpQuestion();
+    const { caseDetailsPage } = this.queryManagementPageFactory;
+    await caseDetailsPage.askFollowUpQuestion();
   }
 
-  // async verifyQueryResponse() {
-  //   const { queryPage } = this.queryManagementPageFactory;
-  //   await queryPage.verifyContent();
-  // }
-
-  async verifyQueryWithHearing() {
-    const { queryPage } = this.queryManagementPageFactory;
-    await queryPage.verifyQueryWithHearing();
-  }
-
-  async verifyQueryNonHearing() {
-    const { queryPage } = this.queryManagementPageFactory;
-    await queryPage.verifyQueryNonHearing();
-  }
-
-  async verifyQueryCaseOffline() {
-    const { queryDetailsNewPage } = this.queryManagementPageFactory;
-    await queryDetailsNewPage.verifyCaseOffline(this.ccdCaseData);
-  }
-
-  async verifyQueryResponseAndFollowup() {
-    const { queryPage } = this.queryManagementPageFactory;
-    await queryPage.verifyContent();
-    await queryPage.verifyQueryResponse();
-    await queryPage.verifyQueryFollowup();
-  }
 }

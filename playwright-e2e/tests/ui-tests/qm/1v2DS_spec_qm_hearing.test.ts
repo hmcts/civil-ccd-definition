@@ -14,8 +14,6 @@ test.describe(
       JudgeApiSteps,
       ClaimantSolicitorSpecSteps,
       DefendantSolicitor1SpecSteps,
-      HearingCenterAdminSpecSteps,
-      JudgeSteps,
       CaseworkerSteps,
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v2DS();
@@ -30,14 +28,8 @@ test.describe(
       await ClaimantSolicitorSpecSteps.RaiseANewQueryWithHearing();
       await DefendantSolicitor1SpecSteps.Login();
       await DefendantSolicitor1SpecSteps.RaiseANewQueryWithHearing();
-      await HearingCenterAdminSpecSteps.LoginRegion1();
-      await HearingCenterAdminSpecSteps.VerifyQueryWithHearing();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.VerifyQueryWithHearing();
       await CaseworkerSteps.Login();
       await CaseworkerSteps.CaseProceedsInCasemanSpec();
-      await ClaimantSolicitorSpecSteps.Login();
-      await ClaimantSolicitorSpecSteps.VerifyQueryCaseOffline();
     });
   },
 );

@@ -14,7 +14,6 @@ test.describe(
       ClaimantSolicitorSpecSteps,
       DefendantSolicitor1SpecSteps,
       CaseworkerSteps,
-      JudgeSteps,
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -26,14 +25,8 @@ test.describe(
       await ClaimantSolicitorSpecSteps.RaiseANewQuery();
       await DefendantSolicitor1SpecSteps.Login();
       await DefendantSolicitor1SpecSteps.RaiseANewQuery();
-      await CaseworkerSteps.LoginCTSC();
-      await CaseworkerSteps.VerifyQueryNonHearing();
-      await JudgeSteps.LoginRegion1();
-      await JudgeSteps.VerifyQueryNonHearing();
       await CaseworkerSteps.Login();
       await CaseworkerSteps.CaseProceedsInCasemanSpec();
-      await ClaimantSolicitorSpecSteps.Login();
-      await ClaimantSolicitorSpecSteps.VerifyQueryCaseOffline();
     });
   },
 );

@@ -1,27 +1,14 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ExuiPage from '../../../mixin-pages/exui-page/exui-page.ts';
-import { headings, subheadings, radioButtons } from './qualifying-question-option-content';
+import ExuiQmPage from '../../../mixin-pages/exui-qm-page/exui-qm-page.ts';
+import { heading, subheading, radioButtons } from './qualifying-question-option-content';
 
 @AllMethodsStep()
-export default class qualifyingQuestionOptionPage extends ExuiPage(BasePage) {
-  // async goToQueryManagement(caseId: number) {
-  //   await super.retryGoTo(
-  //     `${urls.manageCase}/query-management/query/${caseId}`,
-  //     () =>
-  //       super.expectHeading(headings, {
-  //         exact: false,
-  //         timeout: config.exui.pageSubmitTimeout,
-  //       }),
-  //     undefined,
-  //     { retries: 2, message: `Navigating to query management for ccd case id: ${caseId}` },
-  //   );
-  // }
-
+export default class QualifyingQuestionOptionPage extends ExuiQmPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
-      super.expectHeading(headings),
-      super.expectSubheading(subheadings),
+      super.expectHeading(heading),
+      super.expectSubheading(subheading),
       super.expectLabel(radioButtons.giveUpdate.label),
       super.expectLabel(radioButtons.askForUpdate.label),
       super.expectLabel(radioButtons.sendDocuments.label),
@@ -38,11 +25,7 @@ export default class qualifyingQuestionOptionPage extends ExuiPage(BasePage) {
     await super.clickByLabel(radioButtons.raiseANewQuery.label);
   }
 
-  async continue() {
-    await super.retryClickContinue();
-  }
-
   async submit() {
-    throw new Error('Method not implemented.');
+    await super.retryClickContinue();
   }
 }

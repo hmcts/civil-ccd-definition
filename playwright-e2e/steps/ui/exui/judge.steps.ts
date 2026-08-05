@@ -13,7 +13,6 @@ import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDire
 import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
 import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
 import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
-import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/intermediateTrackDirectionsTask';
 import multiTrackDirectionsTask from '../../../constants/wa-tasks/multiTrackDirectionsTask';
 
 @AllMethodsStep()
@@ -282,7 +281,7 @@ export default class JudgeSteps extends BaseExui {
 
   async GenerateDirectionsOrderIntermediate() {
     const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await generateDirectionsOrderActions.trackAllocationIntermediate();
         await generateDirectionsOrderActions.intermediateTrackComplexityBand();
@@ -371,36 +370,4 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async VerifyQueryWithHearing() {
-    const { queryManagementActions } = this.judgeLaActionsFactory;
-    await super.retryQueryManagementEvent(
-      async () => {
-        await queryManagementActions.openQuery();
-        await queryManagementActions.verifyQueryWithHearing();
-      },
-      async () => {},
-    );
-  }
-
-  async VerifyQueryNonHearing() {
-    const { queryManagementActions } = this.judgeLaActionsFactory;
-    await super.retryQueryManagementEvent(
-      async () => {
-        await queryManagementActions.openQuery();
-        await queryManagementActions.verifyQueryNonHearing();
-      },
-      async () => {},
-    );
-  }
-
-  async VerifyQueryResponseAndFollowup() {
-    const { queryManagementActions } = this.judgeLaActionsFactory;
-    await super.retryQueryManagementEvent(
-      async () => {
-        await queryManagementActions.openQuery();
-        await queryManagementActions.verifyQueryResponseAndFollowup();
-      },
-      async () => {},
-    );
-  }
 }

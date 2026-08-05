@@ -1,6 +1,6 @@
-export const headings = 'Raise a new query';
+export const heading = 'Raise a new query';
 
-export const subheadings = 'What do you need help to do?';
+export const subheading = 'What do you need help to do?';
 
 export const radioButtons = {
   giveUpdate: {

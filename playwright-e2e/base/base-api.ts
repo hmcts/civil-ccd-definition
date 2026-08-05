@@ -195,9 +195,9 @@ export default abstract class BaseApi extends BaseTestData {
     pageDataMap: Record<string, any>,
     expectedState?: CaseState,
   ) {
-    const taskId = await this.retrieveAndAssignWATask(user, validTask);
+    const waTask = await this.retrieveAndAssignWATask(user, validTask);
     await this.submitCCDEvent(user, ccdEvent, pageDataMap, expectedState);
-    await this.completeWATask(user, taskId);
+    await this.completeWATask(user, waTask.id);
   }
 
   protected async waitForFinishedBusinessProcess(caseId?: number) {
@@ -227,14 +227,7 @@ export default abstract class BaseApi extends BaseTestData {
     }
   }
 
-  protected async retrieveAndAssignWATask(
-    user: User,
-    validTask: WATask,
-  ): Promise<string | undefined> {
-    return (await this.retrieveAndAssignWATaskDetails(user, validTask)).id;
-  }
-
-  protected async retrieveAndAssignWATaskDetails(user: User, validTask: WATask): Promise<WATask> {
+  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<WATask> {
     const { workAllocationsRequests } = this.requestsFactory;
     const waTask = await workAllocationsRequests.retrieveTask(
       user,

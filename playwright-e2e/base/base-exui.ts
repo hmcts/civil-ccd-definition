@@ -11,6 +11,7 @@ import RequestsFactory from '../requests/requests-factory';
 import BaseApi from './base-api';
 import User from '../models/users/user';
 import WATask from '../models/wa-task';
+import respondToQueryCtscTask from '../constants/wa-tasks/respondToQueryCtscTask';
 
 const classKey = 'BaseExui';
 export default abstract class BaseExui extends BaseApi {
@@ -37,7 +38,7 @@ export default abstract class BaseExui extends BaseApi {
   }
 
   @Step(classKey)
-  async retryExuiEvent(
+  async retryCCDEvent(
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
@@ -50,7 +51,7 @@ export default abstract class BaseExui extends BaseApi {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
           await this.exuiDashboardActions.createCase(ccdEvent);
         } else {
-          await this.exuiDashboardActions.startExuiEvent(ccdEvent);
+          await this.exuiDashboardActions.startCCDEvent(ccdEvent);
         }
         await eventActions();
         break;
@@ -80,34 +81,34 @@ export default abstract class BaseExui extends BaseApi {
     ccdEvent: CCDEvent,
     user: User,
     validTask: WATask,
-    { retries = config.exui.eventRetries, verifySuccessEvent = true, camundaProcess = true } = {},
+    { 
+      retries = config.exui.eventRetries, 
+      verifySuccessEvent = true, 
+      camundaProcess = true,
+      isCCDEvent = true, 
+    } = {},
   ) {
     await super.setupBankHolidays();
     await super.setDebugTestData();
-    const taskId = await super.retrieveAndAssignWATask(user, validTask);
-    await this.retryExuiEvent(eventActions, confirmActions, ccdEvent, {
-      retries,
-      verifySuccessEvent,
-      camundaProcess,
-    });
-    await super.completeWATask(user, taskId);
-  }
-
-  @Step(classKey)
-  async retryWATaskEvent(
-    eventActions: (waTask: WATask) => Promise<void>,
-    confirmActions: () => Promise<void>,
-    user: User,
-    validTask: WATask,
-    { camundaProcess = true } = {},
-  ) {
-    await super.setupBankHolidays();
-    await super.setDebugTestData();
-    const waTask = await super.retrieveAndAssignWATaskDetails(user, validTask);
-    await eventActions(waTask);
+    const waTask = await super.retrieveAndAssignWATask(user, validTask);
+    while (retries >= 0) {
+      try {
+        if(isCCDEvent) {
+          await this.exuiDashboardActions.startCCDEvent(ccdEvent);
+        }
+        await this.exuiDashboardActions.startWAEvent(ccdEvent, waTask);
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
     await confirmActions();
-    if (camundaProcess) await super.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
-    await super.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
     await super.completeWATask(user, waTask.id);
   }
 
@@ -147,7 +148,7 @@ export default abstract class BaseExui extends BaseApi {
     while (retries >= 0) {
       try {
         if (ccdEvent === ccdEvents.QUERY_MANAGEMENT_RAISE) {
-          await this.exuiDashboardActions.startExuiEventFromNextStep(ccdEvent);
+          await this.exuiDashboardActions.startRaiseANewQueryEvent();
         } else {
           await this.exuiDashboardActions.goToQueriesTab();
         }

@@ -1,7 +1,7 @@
 import BasePage from '../../../../../base/base-page.ts';
 import { Page } from '@playwright/test';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
-import ExuiPage from '../../../mixin-pages/exui-page/exui-page.ts';
+import ExuiQmPage from '../../../mixin-pages/exui-qm-page/exui-qm-page.ts';
 import CCDCaseData from '../../../../../models/ccd-case-data.ts';
 import DateHelper from '../../../../../helpers/date-helper.ts';
 import DateFragment from '../../../fragments/date/date-fragment.ts';
@@ -9,7 +9,6 @@ import {
   headings,
   buttons,
   inputs,
-  containers,
   paragraphs,
   radioButtons,
 } from './query-details-content.ts';
@@ -17,7 +16,7 @@ import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content.
 import filePaths from '../../../../../config/file-paths.ts';
 
 @AllMethodsStep()
-export default class QueryDetailsNewPage extends ExuiPage(BasePage) {
+export default class QueryDetailsNewPage extends ExuiQmPage(BasePage) {
   private dateFragment: DateFragment;
 
   constructor(page: Page, dateFragment: DateFragment) {
@@ -30,7 +29,6 @@ export default class QueryDetailsNewPage extends ExuiPage(BasePage) {
       super.expectHeading(headings.enterQueryDetails),
       super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
       super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false }),
-      super.expectText(paragraphs.civilProcedureRule),
       super.expectSelector(inputs.querySubject.selector),
       super.expectSelector(inputs.queryDetail.selector),
       super.expectSelector(radioButtons.isQueryHearingRelated.yes.selector),
@@ -39,18 +37,8 @@ export default class QueryDetailsNewPage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async verifyCaseOffline(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.expectHeading(headings.enterQueryDetails),
-      super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
-      super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false }),
-      super.expectText(paragraphs.offlineCaseError),
-      super.expectNoSelector(inputs.querySubject.selector),
-    ]);
-  }
-
   async enterQuerySubject() {
-    await super.inputText(paragraphs.queryDetails.querySubject, inputs.querySubject.selector);
+    await super.inputText('Test query subject', inputs.querySubject.selector);
   }
 
   async enterQueryDetail(queryDetail = paragraphs.queryDetails.queryBody) {
@@ -74,14 +62,10 @@ export default class QueryDetailsNewPage extends ExuiPage(BasePage) {
 
   async attachDocument() {
     await super.clickAddNew();
-    await super.retryUploadFile(filePaths.testDocxFile, containers.attachDocument.selector);
-  }
-
-  async continue() {
-    await super.retryClickContinue();
+    await super.retryUploadFile(filePaths.testDocxFile, inputs.attachDocument.selector);
   }
 
   async submit() {
-    throw new Error('Method not implemented.');
+    await super.retryClickContinue();
   }
 }

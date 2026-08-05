@@ -1,10 +1,10 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
+import ExuiQmPage from '../../../mixin-pages/exui-qm-page/exui-qm-page';
 import { headings, text } from './confirm-query-content';
 
 @AllMethodsStep()
-export default class ConfirmQueryResponsePage extends ExuiPage(BasePage) {
+export default class ConfirmQueryResponsePage extends ExuiQmPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(headings.queryResponseSubmitted),

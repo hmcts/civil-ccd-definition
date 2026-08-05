@@ -34,7 +34,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async CaseProceedsInCaseman() {
     const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await caseProceedsInCasemanActions.caseSettled();
       },
@@ -46,7 +46,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async CaseProceedsInCasemanSpec() {
     const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await caseProceedsInCasemanActions.caseSettledSpec();
       },
@@ -58,7 +58,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async ManageDocuments() {
     const { manageDocumentsActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageDocumentsActions.addDocuments();
       },
@@ -71,7 +71,7 @@ export default class CaseworkerSteps extends BaseExui {
   async ManageContactInformation() {
     const { manageContactInformationActions } = this.caseworkerActionsFactory;
 
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageContactInformationActions.partySelectionClaimant1();
         await manageContactInformationActions.applicantParty1();
@@ -87,7 +87,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async ManageContactInformationSpec() {
     const { manageContactInformationActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageContactInformationActions.partySelectionSpecDefendant1();
         await manageContactInformationActions.defendantParty1();
@@ -103,7 +103,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async MediationUnsuccessful() {
     const { mediationUnsuccessfulActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await mediationUnsuccessfulActions.mediationUnsuccessful();
       },
@@ -114,38 +114,19 @@ export default class CaseworkerSteps extends BaseExui {
 
   async RespondToQuery() {
     const { queryManagementActions } = this.caseworkerActionsFactory;
-    await super.retryWATaskEvent(
-      async (waTask) => {
-        await queryManagementActions.enterResponseToQuery(waTask);
+    await super.retryWAEvent(
+      async () => {
+        await queryManagementActions.enterResponseToQuery();
         await queryManagementActions.reviewQueryResponse();
       },
       async () => {
         await queryManagementActions.confirmQueryResponse();
       },
+      ccdEvents.QUERY_MANAGEMENT_RESPOND,
       ctscAdminUser,
       respondToQueryCtscTask,
+      {isCCDEvent: false}
     );
   }
 
-  async VerifyQueryResponseAndFollowup() {
-    const { queryManagementActions } = this.caseworkerActionsFactory;
-    await super.retryQueryManagementEvent(
-      async () => {
-        await queryManagementActions.openQuery();
-        await queryManagementActions.verifyQueryResponseAndFollowup();
-      },
-      async () => {},
-    );
-  }
-
-  async VerifyQueryNonHearing() {
-    const { queryManagementActions } = this.caseworkerActionsFactory;
-    await super.retryQueryManagementEvent(
-      async () => {
-        await queryManagementActions.openQuery();
-        await queryManagementActions.verifyQueryNonHearing();
-      },
-      async () => {},
-    );
-  }
 }
