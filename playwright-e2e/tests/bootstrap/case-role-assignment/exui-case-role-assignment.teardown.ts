@@ -3,7 +3,7 @@ import { solicitorUsers } from '../../../config/users/exui-users';
 import config from '../../../config/config';
 
 if (config.unassignCases) {
-  teardown.describe('Unassigning case roles for solicitor users', () => {
+  teardown.describe('Unassigning case roles for exui users', () => {
     teardown.describe.configure({ mode: 'parallel' });
 
     for (const solicitorUser of solicitorUsers) {
@@ -13,5 +13,5 @@ if (config.unassignCases) {
     }
   });
 } else {
-  console.log('Skipping case role unassignment for users');
+  console.log('Skipping case role unassignment for exui users');
 }
