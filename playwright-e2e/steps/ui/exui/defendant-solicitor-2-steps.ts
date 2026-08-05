@@ -42,7 +42,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {

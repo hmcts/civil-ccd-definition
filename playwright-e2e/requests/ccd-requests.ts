@@ -15,13 +15,13 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     return `${urls.ccdDataStore}/${role}s/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
   }
 
-  async fetchCCDCaseData(user: User, caseId?: number) {
+  async fetchCCDCaseData(user: User, caseId?: number, expectedStatus = 200) {
     console.log(`Fetching CCD case data, caseId: ${caseId}`);
     const url = `${this.getCCDDataStoreBaseUrl(user)}/cases/${caseId}`;
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),
     };
-    const responseJson = await super.retryRequestJson(url, requestOptions);
+    const responseJson = await super.retryRequestJson(url, requestOptions, { expectedStatus });
     console.log(`CCD case data fetched successfully, caseId: ${caseId}`);
     return { id: responseJson.id, ...responseJson.case_data };
   }

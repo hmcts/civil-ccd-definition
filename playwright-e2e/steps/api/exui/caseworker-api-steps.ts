@@ -119,6 +119,114 @@ export default class CaseworkerApiSteps extends BaseApi {
     ZodHelper.safeParse(transferOnlineCaseSchema, this.ccdCaseData);
   }
 
+  async SetAsideJudgmentError() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { setAsideOrderTypeDataBuilder } = this.caseworkerDataBuilderFactory;
+    const setAsideOrderTypeData = await setAsideOrderTypeDataBuilder.buildJudgementError();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.SET_ASIDE_JUDGMENT,
+      setAsideOrderTypeData,
+    );
+
+    const { setAsideOrderTypeSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const setAsideOrderTypeSchema =
+      await setAsideOrderTypeSchemaBuilder.buildJudgementError(caseDataBeforeSubmission);
+    ZodHelper.safeParse(setAsideOrderTypeSchema, this.ccdCaseData);
+  }
+
+  async SetAsideJudgmentOrder() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { setAsideOrderTypeDataBuilder } = this.caseworkerDataBuilderFactory;
+    const setAsideOrderTypeData = await setAsideOrderTypeDataBuilder.buildJudgeOrder();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.SET_ASIDE_JUDGMENT,
+      setAsideOrderTypeData,
+    );
+
+    const { setAsideOrderTypeSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const setAsideOrderTypeSchema =
+      await setAsideOrderTypeSchemaBuilder.buildJudgeOrder(caseDataBeforeSubmission);
+    ZodHelper.safeParse(setAsideOrderTypeSchema, this.ccdCaseData);
+  }
+
+  async ConfirmOrderReview() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { confirmOrderReviewDataBuilder } = this.caseworkerDataBuilderFactory;
+    const confirmOrderReviewData = await confirmOrderReviewDataBuilder.build();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.CONFIRM_ORDER_REVIEW,
+      confirmOrderReviewData,
+    );
+
+    const { confirmOrderReviewSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const confirmOrderReviewSchema =
+      await confirmOrderReviewSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(confirmOrderReviewSchema, this.ccdCaseData);
+  }
+
+  async RecordJudgmentDeterMeansImmediately() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { recordJudgmentDataBuilder } = this.caseworkerDataBuilderFactory;
+    const recordJudgmentData = await recordJudgmentDataBuilder.buildDeterMeansImmediately();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.RECORD_JUDGMENT,
+      recordJudgmentData,
+    );
+
+    const { recordJudgmentSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const recordJudgmentSchema =
+      await recordJudgmentSchemaBuilder.buildDeterMeansImmediately(caseDataBeforeSubmission);
+    ZodHelper.safeParse(recordJudgmentSchema, this.ccdCaseData);
+  }
+
+  async EditJudgmentDeterMeansSetDate() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { editJudgmentDataBuilder } = this.caseworkerDataBuilderFactory;
+    const editJudgmentData = await editJudgmentDataBuilder.buildDeterMeansSetDate();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.EDIT_JUDGMENT,
+      editJudgmentData,
+    );
+
+    const { editJudgmentSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const editJudgmentSchema =
+      await editJudgmentSchemaBuilder.buildDeterMeansSetDate(caseDataBeforeSubmission);
+    ZodHelper.safeParse(editJudgmentSchema, this.ccdCaseData);
+  }
+
+  async ReferJudgeDefenceReceived() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { referJudgeDefenceReceivedDataBuilder } = this.caseworkerDataBuilderFactory;
+    const referJudgeDefenceReceivedData = await referJudgeDefenceReceivedDataBuilder.build();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.REFER_JUDGE_DEFENCE_RECEIVED,
+      referJudgeDefenceReceivedData,
+    );
+
+    const { referJudgeDefenceReceivedSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const referJudgeDefenceReceivedSchema =
+      await referJudgeDefenceReceivedSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(referJudgeDefenceReceivedSchema, this.ccdCaseData);
+  }
+  
   async ValidateDiscontinueClaimYes() {
     await this.setupApiStep(civilAdminUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -197,5 +305,23 @@ export default class CaseworkerApiSteps extends BaseApi {
     const { sendAndReplySchemaBuilder } = this.caseworkerSchemaBuilderFactory;
     const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+  }
+
+  async CaseProceedsInCaseman() {
+    await this.setupApiStep(civilAdminUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { caseProceedsInCasemanDataBuilder } = this.caseworkerDataBuilderFactory;
+    const caseProceedsInCasemanData = await caseProceedsInCasemanDataBuilder.build();
+    await super.submitCCDEvent(
+      civilAdminUser,
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      caseProceedsInCasemanData,
+    );
+
+    const { caseProceedsInCasemanSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+    const caseProceedsInCasemanSchema =
+      await caseProceedsInCasemanSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(caseProceedsInCasemanSchema, this.ccdCaseData);
   }
 }
