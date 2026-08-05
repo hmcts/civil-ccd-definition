@@ -12,6 +12,12 @@ const ccdEvents: CCDEvents = {
     name: 'Case issued after payment',
     description: 'Move to case issued when fee paid',
   },
+  CREATE_LIP_CLAIM: {
+    id: 'CREATE_LIP_CLAIM',
+    name: 'Create LiP claim',
+    description: 'Create LiP claim from citizen UI',
+    order: 1,
+  },
   CREATE_CLAIM_SPEC: {
     id: 'CREATE_CLAIM_SPEC',
     name: 'Create claim - Specified',

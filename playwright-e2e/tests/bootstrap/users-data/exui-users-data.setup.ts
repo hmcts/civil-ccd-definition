@@ -2,8 +2,8 @@ import { test as setup } from '../../../playwright-fixtures/index';
 import { exuiUserDataSetupUsers } from '../../../config/users/exui-users';
 import config from '../../../config/config';
 
-if (config.runSetup) {
-  setup.describe('Setting up user data', () => {
+if (config.runExuiUserDataSetup) {
+  setup.describe('Setting up exui user data', () => {
     setup.describe.configure({ mode: 'parallel' });
 
     exuiUserDataSetupUsers.forEach((exuiAuthSetupUser) => {
@@ -13,6 +13,6 @@ if (config.runSetup) {
     });
   });
 } else {
-  console.log('Skipping setting up user data');
-  console.log('All users will get user data when needed during test execution');
+  console.log('Skipping setting up exui user data');
+  console.log('All exui users will get user data when needed during test execution');
 }
