@@ -13,8 +13,6 @@ import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import PersonalInjuryClaimTypeUnspecObjs, { PersonalInjuryClaimTypeUnSpec } from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
-
 const references = {
   References: {
     solicitorReferences: {
@@ -231,24 +229,23 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
   return {};
 };
 
-const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimTypeUnspecObjs) => {
-  const isPersonalInjuryClaimType = typeof claimTypeUnSpec === 'object' && (claimTypeUnSpec as PersonalInjuryClaimTypeUnspecObjs).claimTypeUnspec === ClaimTypeUnspec.PERSONAL_INJURY;
+const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec, personalInjuryType?: PersonalInjuryType) => {
 
-  if (isPersonalInjuryClaimType) {
+  if (claimTypeUnSpec === ClaimTypeUnspec.PERSONAL_INJURY) {
     return {
-      ClaimTypeUnSpec: {
-        claimTypeUnSpec: (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).claimTypeUnspec,
+      ClaimType: {
+        claimTypeUnspec,
       },
       PersonalInjuryType: {
-        personalInjuryType: (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).personalInjuryType,
-        personalInjuryTypeOther: (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).personalInjuryType === PersonalInjuryType.PERSONAL_INJURY_OTHER ? 'Personal injury other description' : undefined,
+        personalInjuryType: personalInjuryType,
+        personalInjuryTypeOther: personalInjuryType === PersonalInjuryType.PERSONAL_INJURY_OTHER ? 'Personal injury other description' : undefined,
       },
     }
   }
 
   if ((claimTypeUnSpec as ClaimTypeUnspec) === ClaimTypeUnspec.OTHER) {
     return {
-      ClaimTypeUnSpec: {
+      ClaimType: {
         claimTypeUnSpec: claimTypeUnSpec as ClaimTypeUnspec,
         claimTypeOther: 'Other claim type description',
       }
@@ -256,42 +253,55 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
   }
 
   return {
-    ClaimTypeUnSpec: {
-      claimTypeUnSpec: isPersonalInjuryClaimType ? (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).claimTypeUnspec : claimTypeUnSpec,
+    ClaimType: {
+      claimTypeUnSpec,
     },
   };
 };
 
+const otherRemedy = (claimTypeUnSpec: ClaimTypeUnspec) => {
+  if(
+    claimTypeUnSpec === ClaimTypeUnspec.HOUSING_DISREPAIR ||
+    claimTypeUnSpec === ClaimTypeUnspec.DAMAGES_AND_OTHER_REMEDY
+  ) {
+    return {
+      ClaimDeclaration: {
+        isClaimDeclarationAdded: 'Yes',
+        claimDeclarationDescription: 'Claim declaration description',
+      },
+      HumanRightsAct: {
+        isHumanRightsActIssues: 'Yes',
+      }
+    };
+  }
 
-const claimDetails = (claimTrack: ClaimTrack, isOtherRemedy = false, claimAmount?: number) => {
+  return {};
+};
+
+const details = {
+  Details: {
+    detailsOfClaim: 'Test details of claim',
+  },
+};
+
+const uploadParticularsOfClaim = {
+  uploadParticularsOfClaim: {
+    uploadParticularsOfClaim: 'No',
+  },
+};
+
+const claimValue = (claimTrack: ClaimTrack) => {
   return {
-    Details: {
-      detailsOfClaim: 'Test details of claim',
-    },
-    ...otherRemedy(isOtherRemedy),
-    uploadParticularsOfClaim: {
-      uploadParticularsOfClaim: 'No',
-    },
     ClaimValue: {
       claimValue: {
         statementOfValueInPennies: `${CaseDataHelper.getClaimValue(claimTrack) * 100}`,
       },
     },
-    PbaNumber: {},
   };
 };
 
-
-const otherRemedy = (isOtherRemedy: boolean) => {
-  if (!isOtherRemedy) return {};
-
-  return {
-    OtherRemedy: {
-      isClaimDeclarationAdded: 'Yes',
-      claimDeclarationDescription: 'Claim declaration description',
-      isHumanRightsActIssues: 'Yes',
-    },
-  };
+const pbaNumber = {
+  PbaNumber: {},
 };
 
 const statementOfTruth = {
@@ -316,7 +326,10 @@ const createClaimData = {
   defendant2SameSolicitor,
   defendantSolicitor2,
   claimTypeUnspec,
-  claimDetails,
+  details,
+  uploadParticularsOfClaim,
+  claimValue,
+  pbaNumber,
   otherRemedy,
   statementOfTruth,
 };
