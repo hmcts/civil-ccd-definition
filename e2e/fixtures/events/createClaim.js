@@ -457,7 +457,7 @@ const hasRespondent2 = (mpScenario) => {
     || mpScenario ===  'ONE_V_TWO_TWO_LEGAL_REP_OTHER_REMEDY';
 };
 
-module. exports = {
+module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, isMintiEnabled) => {
     return {
       midEventData: {
