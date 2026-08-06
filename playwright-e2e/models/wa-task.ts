@@ -23,7 +23,7 @@ export type WATask = {
   case_management_category?: string;
   work_type_id: string;
   work_type_label: string;
-  description: string;
+  description?: string;
   role_category: string;
   minor_priority?: number;
   major_priority?: number;

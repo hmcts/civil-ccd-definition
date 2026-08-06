@@ -32,8 +32,22 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildFast1vLIP() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_ONE_LIP,
+    });
+  }
+
   async buildIntermediate1v1() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediate1vLIP() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_ONE_LIP,
+    });
   }
 
   async buildIntermediate1v2SS() {
@@ -52,6 +66,13 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
 
   async buildMulti1v1() {
     return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildMulti1vLIP() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_ONE_LIP,
+    });
   }
 
   async buildMulti2v1() {

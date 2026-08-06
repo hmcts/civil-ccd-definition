@@ -3,9 +3,11 @@ import { test as schemaBuilderFactories } from './schema-builder-factory-fixture
 import { mergeTests } from '@playwright/test';
 import CaseRoleAssignmentApiSteps from '../../steps/api/case-role-assignment-api-steps';
 import CaseworkerApiSteps from '../../steps/api/exui/caseworker-api-steps';
+import ClaimantCitizenApiSteps from '../../steps/api/cui/claimant-citizen-api-steps';
 import IdamApiSteps from '../../steps/api/idam/idam-api-steps';
 import ClaimantSolicitorApiSteps from '../../steps/api/exui/claimant-solicitor-api-steps';
 import ClaimantSolicitorSpecApiSteps from '../../steps/api/exui/claimant-solicitor-spec-api-steps';
+import DefendantCitizenApiSteps from '../../steps/api/cui/defendant-citizen-api-steps';
 import DefendantSolicitor1ApiSteps from '../../steps/api/exui/defendant-solicitor-1-api-steps';
 import DefendantSolicitor1SpecApiSteps from '../../steps/api/exui/defendant-solicitor-1-spec-api-steps';
 import DefendantSolicitor2SpecApiSteps from '../../steps/api/exui/defendant-solicitor-2-spec-api-steps';
@@ -22,6 +24,8 @@ type ApiStepsFixtures = {
   IdamApiSteps: IdamApiSteps;
   DataApiSteps: DataApiSteps;
   CaseworkerApiSteps: CaseworkerApiSteps;
+  ClaimantCitizenApiSteps: ClaimantCitizenApiSteps;
+  DefendantCitizenApiSteps: DefendantCitizenApiSteps;
   HearingCenterAdminApiSteps: HearingCenterAdminApiSteps;
   JudgeApiSteps: JudgeApiSteps;
   ClaimantSolicitorSpecApiSteps: ClaimantSolicitorSpecApiSteps;
@@ -46,6 +50,12 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   },
   CaseworkerApiSteps: async ({ _caseworkerDataBuilderFactory, _caseworkerSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new CaseworkerApiSteps(_caseworkerDataBuilderFactory, _caseworkerSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  ClaimantCitizenApiSteps: async ({ _claimantDefendantCitizenDataBuilderFactory, _claimantDefendantCitizenSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantCitizenApiSteps(_claimantDefendantCitizenDataBuilderFactory, _claimantDefendantCitizenSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  DefendantCitizenApiSteps: async ({ _claimantDefendantCitizenDataBuilderFactory, _claimantDefendantCitizenSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantCitizenApiSteps(_claimantDefendantCitizenDataBuilderFactory, _claimantDefendantCitizenSchemaBuilderFactory, _requestsFactory, _testData));
   },
   HearingCenterAdminApiSteps: async ({ _hearingCenterAdminDataBuilderFactory, _hearingCenterAdminSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new HearingCenterAdminApiSteps(_hearingCenterAdminDataBuilderFactory, _hearingCenterAdminSchemaBuilderFactory, _requestsFactory, _testData));

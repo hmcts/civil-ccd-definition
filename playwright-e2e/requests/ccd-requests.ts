@@ -160,12 +160,13 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     }: {
       url: string;
       status: number;
-      expectedStatus: number;
+      expectedStatus: number | number[];
     },
   ) {
+    const expectedStatusMessage = Array.isArray(expectedStatus) ? expectedStatus.join(', ') : expectedStatus;
     if (status === 422) {
       let message =
-        `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
+        `Expected Status: ${expectedStatusMessage}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
 
       if (responseJson.details?.field_errors?.length) {
         message += `, field errors: ${responseJson.details.field_errors
@@ -175,6 +176,6 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
 
       return message;
     } 
-    return `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, message: ${responseJson.message}`;
+    return `Expected Status: ${expectedStatusMessage}, actual status: ${status}, url: ${url}, message: ${responseJson.message}`;
   }
 }
