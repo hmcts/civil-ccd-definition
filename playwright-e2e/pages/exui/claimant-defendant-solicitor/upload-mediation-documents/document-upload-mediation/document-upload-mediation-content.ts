@@ -31,21 +31,21 @@ export const inputs = {
   nonAttendanceStatement: {
     name: {
       label: 'Your name',
-      selector: '#nonAttendanceStatementForm_0_yourName',
+      selector: (docNum: number) => `#nonAttendanceStatementForm_${docNum}_yourName`,
     },
     document: {
       label: 'Upload a file',
-      selector: '#nonAttendanceStatementForm_0_document',
+      selector: (docNum: number) => `#nonAttendanceStatementForm_${docNum}_document`,
     },
   },
   referredDocuments: {
     documentType: {
       label: 'Document type',
-      selector: '#documentsReferredForm_0_documentType',
+      selector: (docNum: number) => `#documentsReferredForm_${docNum}_documentType`,
     },
     document: {
       label: 'Upload a file',
-      selector: '#documentsReferredForm_0_document',
+      selector: (docNum: number) => `#documentsReferredForm_${docNum}_document`,
     },
   },
 };

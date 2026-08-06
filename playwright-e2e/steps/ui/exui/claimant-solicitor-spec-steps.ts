@@ -27,13 +27,13 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(claimantSolicitorUser);
   }
 
-  async UploadMediationDocumentsForClaimant() {
+  async UploadMediationDocuments() {
     const { uploadMediationDocumentsActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
-        await uploadMediationDocumentsActions.uploadMediationDocumentsExplanation();
+        await uploadMediationDocumentsActions.explanation();
         await uploadMediationDocumentsActions.selectClaimant1();
-        await uploadMediationDocumentsActions.selectBothDocumentTypes();
+        await uploadMediationDocumentsActions.selectDocumentTypes();
         await uploadMediationDocumentsActions.uploadBothDocuments();
         await uploadMediationDocumentsActions.submitUploadMediationDocuments();
       },
@@ -45,13 +45,13 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
-  async UploadMediationDocumentsForBothClaimants() {
+  async UploadMediationDocuments2v1() {
     const { uploadMediationDocumentsActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
-        await uploadMediationDocumentsActions.uploadMediationDocumentsExplanation();
+        await uploadMediationDocumentsActions.explanation();
         await uploadMediationDocumentsActions.selectBothClaimants();
-        await uploadMediationDocumentsActions.selectBothDocumentTypes();
+        await uploadMediationDocumentsActions.selectDocumentTypes();
         await uploadMediationDocumentsActions.uploadBothDocuments();
         await uploadMediationDocumentsActions.submitUploadMediationDocuments();
       },

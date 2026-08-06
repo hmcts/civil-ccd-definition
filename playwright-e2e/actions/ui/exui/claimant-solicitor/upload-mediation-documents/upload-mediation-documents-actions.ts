@@ -17,7 +17,7 @@ export default class UploadMediationDocumentsActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async uploadMediationDocumentsExplanation() {
+  async explanation() {
     const { explanationPage } = this.uploadMediationDocumentsPageFactory;
     await explanationPage.verifyContent(this.ccdCaseData);
     await explanationPage.submit();
@@ -27,7 +27,7 @@ export default class UploadMediationDocumentsActions extends BaseTestData {
   async selectClaimant1() {
     const { whoIsDocumentForPage } = this.uploadMediationDocumentsPageFactory;
     await whoIsDocumentForPage.verifyContent(this.ccdCaseData);
-    await whoIsDocumentForPage.selectClaimant1();
+    await whoIsDocumentForPage.selectClaimant1(this.claimant1PartyType!);
     await whoIsDocumentForPage.submit();
   }
 
@@ -40,23 +40,23 @@ export default class UploadMediationDocumentsActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async selectDefendant1() {
+  async selectD1() {
     const { whoIsDocumentForPage } = this.uploadMediationDocumentsPageFactory;
     await whoIsDocumentForPage.verifyContent(this.ccdCaseData);
-    await whoIsDocumentForPage.selectDefendant1();
+    await whoIsDocumentForPage.selectD1(this.defendant1PartyType!);
     await whoIsDocumentForPage.submit();
   }
 
   @Step(classKey)
-  async selectDefendant2() {
+  async selectD2() {
     const { whoIsDocumentForPage } = this.uploadMediationDocumentsPageFactory;
     await whoIsDocumentForPage.verifyContent(this.ccdCaseData);
-    await whoIsDocumentForPage.selectDefendant2();
+    await whoIsDocumentForPage.selectD2(this.defendant2PartyType!);
     await whoIsDocumentForPage.submit();
   }
 
   @Step(classKey)
-  async selectBothDocumentTypes() {
+  async selectDocumentTypes() {
     const { documentTypePage } = this.uploadMediationDocumentsPageFactory;
     await documentTypePage.verifyContent(this.ccdCaseData);
     await documentTypePage.selectNonAttendanceStatement();

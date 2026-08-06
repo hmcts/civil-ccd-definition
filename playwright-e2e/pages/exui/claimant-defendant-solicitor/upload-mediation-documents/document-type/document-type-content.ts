@@ -1,8 +1,7 @@
-export const headings = {
-  selectDocumentType: 'Select the type of document you want to upload',
-};
+export const heading =  'Select the type of document you want to upload';
 
-export const inputs = {
+
+export const checkboxes = {
   nonAttendanceStatement: {
     label: 'Non-attendance statement',
     selector: '#mediationDocumentsType-NON_ATTENDANCE_STATEMENT',
@@ -11,12 +10,4 @@ export const inputs = {
     label: 'Documents referred to in the statement',
     selector: '#mediationDocumentsType-REFERRED_DOCUMENTS',
   },
-};
-
-export const paragraphs = {
-  youCanSelectMoreThanOneType: 'You can select more than one type of document',
-};
-
-export const subheadings = {
-  mediationNonAttendance: 'Mediation non-attendance',
 };

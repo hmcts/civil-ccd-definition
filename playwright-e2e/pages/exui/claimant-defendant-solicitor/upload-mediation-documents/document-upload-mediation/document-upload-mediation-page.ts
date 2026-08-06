@@ -30,7 +30,7 @@ export default class DocumentUploadMediationPage extends ExuiPage(BasePage) {
     await super.clickButtonByName(buttons.nonAttendanceStatement.addNew.label, {
       containerSelector: containers.nonAttendanceStatement.selector,
     });
-    await super.inputText('Test name', inputs.nonAttendanceStatement.name.selector);
+    await super.inputText('Non attendance statement', inputs.nonAttendanceStatement.name.selector(0));
     await this.dateFragment.enterDate(
       DateHelper.subtractFromToday({ days: 1 }),
       inputs.date.selectorKey,
@@ -38,7 +38,7 @@ export default class DocumentUploadMediationPage extends ExuiPage(BasePage) {
     );
     await super.retryUploadFile(
       filePaths.testPdfFile,
-      inputs.nonAttendanceStatement.document.selector,
+      inputs.nonAttendanceStatement.document.selector(0),
       { containerSelector: containers.nonAttendanceStatement.selector },
     );
   }
@@ -47,13 +47,13 @@ export default class DocumentUploadMediationPage extends ExuiPage(BasePage) {
     await super.clickButtonByName(buttons.referredDocuments.addNew.label, {
       containerSelector: containers.referredDocuments.selector,
     });
-    await super.inputText('Test document', inputs.referredDocuments.documentType.selector);
+    await super.inputText('Referred document', inputs.referredDocuments.documentType.selector(0));
     await this.dateFragment.enterDate(
       DateHelper.subtractFromToday({ days: 1 }),
       inputs.date.selectorKey,
       { containerSelector: containers.referredDocuments.selector },
     );
-    await super.retryUploadFile(filePaths.testPdfFile, inputs.referredDocuments.document.selector, {
+    await super.retryUploadFile(filePaths.testPdfFile, inputs.referredDocuments.document.selector(0), {
       containerSelector: containers.referredDocuments.selector,
     });
   }

@@ -19,9 +19,9 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence2v1();
       await CaseworkerApiSteps.MediationUnsuccessful();
       await ClaimantSolicitorSpecSteps.Login();
-      await ClaimantSolicitorSpecSteps.UploadMediationDocumentsForBothClaimants();
+      await ClaimantSolicitorSpecSteps.UploadMediationDocuments2v1();
       await DefendantSolicitor1SpecSteps.Login();
-      await DefendantSolicitor1SpecSteps.UploadMediationDocumentsForDefendant1();
+      await DefendantSolicitor1SpecSteps.UploadMediationDocumentsD1();
     });
   },
 );

@@ -22,10 +22,10 @@ test.describe(
       await CaseworkerApiSteps.MediationUnsuccessful();
       await LegalAdvisorApiSteps.SdoSmallSum();
       await ClaimantSolicitorSpecSteps.Login();
-      await ClaimantSolicitorSpecSteps.UploadMediationDocumentsForClaimant();
+      await ClaimantSolicitorSpecSteps.UploadMediationDocuments();
       await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
       await DefendantSolicitor1SpecSteps.Login();
-      await DefendantSolicitor1SpecSteps.UploadMediationDocumentsForDefendant1();
+      await DefendantSolicitor1SpecSteps.UploadMediationDocumentsD1();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
       await DefendantSolicitor1SpecSteps.Login();
