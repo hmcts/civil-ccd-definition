@@ -6,13 +6,13 @@ import filePaths from '../config/file-paths.ts';
 
 export default class UserStateHelper {
   private static getUserStatePath = (userKey: UserKey) => `${filePaths.users}/${userKey}-user.json`;
-
+  
   private static getUsersStatePath = (userKey: UserKey) =>
     `${filePaths.users}/${userKey}-users.json`;
 
   static addUsersToState = (users: User[]) => {
-    const usersStateExists = this.usersStateExists(users);
-    FileSystemHelper.writeFile(users, this.getUserStatePath(users[0].key), FileType.JSON);
+    const usersStateExists = this.usersStateExists(users[0]);
+    FileSystemHelper.writeFile(users, this.getUsersStatePath(users[0].key), FileType.JSON);
     console.log(
       `Users with key: ${users[0].key} ${usersStateExists ? 'successfully updated' : 'successfully created'}`,
     );
@@ -26,7 +26,7 @@ export default class UserStateHelper {
     );
   };
 
-  static getUserFromState = ({ key: userKey }: User): User => {
+  static getUserFromState = ({ key: userKey }: User): User | null => {
     let user: User;
     try {
       user = FileSystemHelper.readFile(this.getUserStatePath(userKey), FileType.JSON);
@@ -36,7 +36,7 @@ export default class UserStateHelper {
     }
   };
 
-  static getUsersFromState = ([{ key: userKey }]: User[]): User[] => {
+  static getUsersFromState = ({ key: userKey }: User): User[] | null => {
     let users: User[];
     try {
       users = FileSystemHelper.readFile(this.getUsersStatePath(userKey), FileType.JSON);
@@ -50,7 +50,7 @@ export default class UserStateHelper {
     return FileSystemHelper.exists(this.getUserStatePath(userKey));
   };
 
-  static usersStateExists = ([{ key: userKey }]: User[]) => {
+  static usersStateExists = ({ key: userKey }: User) => {
     return FileSystemHelper.exists(this.getUsersStatePath(userKey));
   };
 
@@ -58,7 +58,7 @@ export default class UserStateHelper {
     FileSystemHelper.delete(this.getUserStatePath(userKey));
   };
 
-  static deleteUsersState = ([{ key: userKey }]: User[]) => {
+  static deleteUsersState = ({ key: userKey }: User) => {
     FileSystemHelper.delete(this.getUsersStatePath(userKey));
   };
 

@@ -391,18 +391,28 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
   async MakePaymentForClaimIssue() {
     await this.setupApiStep(claimantSolicitorUser);
-    const { serviceRequestDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const paidServiceRequestDTO = await serviceRequestDataBuilder.buildPaidServiceRequestDTO(
-      'paid',
-      this.ccdCaseData?.id,
-    );
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createClaimAfterPaymentDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const paidCreateClaimAfterPaymentDTO =
+      await createClaimAfterPaymentDataBuilder.build(
+        'paid',
+        this.ccdCaseData?.id,
+      );
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.updatePaymentForClaimIssue(
       claimantSolicitorUser,
-      paidServiceRequestDTO,
+      paidCreateClaimAfterPaymentDTO,
     );
     await super.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
     await super.fetchAndSetCCDCaseData();
+
+    const { createClaimAfterPaymentSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimAfterPaymentSchema =
+      await createClaimAfterPaymentSchemaBuilder.build(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createClaimAfterPaymentSchema, this.ccdCaseData);
   }
 
   async MakePaymentForHearingFee() {
@@ -484,7 +494,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     const { notifyClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const notifyClaimSchema = await notifyClaimSchemaBuilder.build1v2LRLIP(caseDataBeforeSubmission);
+    const notifyClaimSchema =
+      await notifyClaimSchemaBuilder.build1v2LRLIP(caseDataBeforeSubmission);
     ZodHelper.safeParse(notifyClaimSchema, this.ccdCaseData);
   }
 
@@ -588,8 +599,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     const { manageContactInformationDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const manageContactInformationData =
-      await manageContactInformationDataBuilder.buildClaimant();
+    const manageContactInformationData = await manageContactInformationDataBuilder.buildClaimant();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.MANAGE_CONTACT_INFORMATION,
@@ -987,5 +997,4 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       await defaultJudgementSchemaBuilder.build1v2SS(caseDataBeforeSubmission);
     ZodHelper.safeParse(defaultJudgementSchema, this.ccdCaseData);
   }
-
 }
