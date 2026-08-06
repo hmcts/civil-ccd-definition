@@ -3262,7 +3262,10 @@
     "CaseFieldID": "enterBreathing",
     "AccessControl": [
       {
-        "UserRoles": ["APP-SOL-SPEC-PROFILE", "APP-SOL-UNSPEC-PROFILE"],
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE"
+        ],
         "CRUD": "CRU"
       },
       {
