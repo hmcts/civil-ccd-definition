@@ -973,6 +973,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
     );
 
+
     const { defaultJudgementSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defaultJudgementSchema =
       await defaultJudgementSchemaBuilder.build1v1(caseDataBeforeSubmission);
@@ -996,5 +997,75 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const defaultJudgementSchema =
       await defaultJudgementSchemaBuilder.build1v2SS(caseDataBeforeSubmission);
     ZodHelper.safeParse(defaultJudgementSchema, this.ccdCaseData);
+  }
+
+  async CreateClaimFastOtherRemedy1v1() {
+    await this.setupUserData(claimantSolicitorUser);
+    const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimData = await createClaimDataBuilder.buildFast1v1OtherRemedy();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM,
+      createClaimData,
+      CaseState.PENDING_CASE_ISSUED,
+    );
+
+    const { createClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimResponseSchema = await createClaimSchemaBuilder.buildFast1v1OtherRemedy();
+    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+  }
+
+  async CreateClaimSmallOtherRemedy1v1() {
+    await this.setupUserData(claimantSolicitorUser);
+    const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimData = await createClaimDataBuilder.buildSmall1v1OtherRemedy();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM,
+      createClaimData,
+      CaseState.PENDING_CASE_ISSUED,
+    );
+
+    const { createClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimResponseSchema = await createClaimSchemaBuilder.buildSmall1v1OtherRemedy();
+    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+  }
+
+  async DefaultJudgementOtherRemedy() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { defaultJudgementDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const defaultJudgementData = await defaultJudgementDataBuilder.buildOtherRemedy1v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DEFAULT_JUDGEMENT,
+      defaultJudgementData,
+      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+    );
+
+    const { defaultJudgementSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const defaultJudgementSchema =
+      await defaultJudgementSchemaBuilder.build1v1OtherRemedy(caseDataBeforeSubmission);
+    ZodHelper.safeParse(defaultJudgementSchema, this.ccdCaseData);
+  }
+
+  async ConfirmTrialArrangements() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { trialReadinessDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const trialReadinessData = await trialReadinessDataBuilder.buildClaimant();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.TRIAL_READINESS,
+      trialReadinessData,
+    );
+
+    const { trialReadinessSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const trialReadinessSchema = await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission);
+    ZodHelper.safeParse(trialReadinessSchema, this.ccdCaseData);
   }
 }

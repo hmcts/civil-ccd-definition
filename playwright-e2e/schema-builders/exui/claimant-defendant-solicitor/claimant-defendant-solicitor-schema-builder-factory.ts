@@ -25,6 +25,7 @@ import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notif
 import SettleClaimSchemaBuilder from './settle-claim/lr-spec/settle-claim-schema-builder';
 import RequestForReconsiderationSchemaBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
+import TrialReadinessSchemaBuilder from './trial-readiness/trial-readiness-schema-builder';
 
 export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends BaseSchemaBuilderFactory {
   get createClaimSchemaBuilder() {
@@ -119,6 +120,10 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
     return new UploadMediationDocumentsSchemaBuilder(this.testData);
   }
 
+  get trialReadinessSchemaBuilder() {
+    return new TrialReadinessSchemaBuilder(this.testData);
+  }
+  
   get settleClaimSchemaBuilder() {
     return new SettleClaimSchemaBuilder(this.testData);
   }

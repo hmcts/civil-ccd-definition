@@ -12,7 +12,7 @@ export const radioButtons = {
     hintText: 'You can use the options below to let the court know who this document is from',
     parties: {
       claimant1: {
-        label: (claimant1PartyType: ClaimantDefendantPartyType) => `Claimant 1:${CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1,claimant1PartyType).partyName}`,
+        label: (claimant1PartyType: ClaimantDefendantPartyType) => `Claimant 1: ${CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1,claimant1PartyType).partyName}`,
         selector:'#uploadMediationDocumentsPartyChosen_CLAIMANT_1',
       },
       claimant2: {
