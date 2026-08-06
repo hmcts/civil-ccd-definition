@@ -5,8 +5,9 @@ import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data.ts';
 import RequestsFactory from '../../../requests/requests-factory';
-import { civilAdminUser } from '../../../config/users/exui-users.ts';
+import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users.ts';
 import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import respondToQueryCtscTask from '../../../constants/wa-tasks/respondToQueryCtscTask';
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -27,9 +28,13 @@ export default class CaseworkerSteps extends BaseExui {
     await super.idamActions.exuiLogin(civilAdminUser);
   }
 
+  async LoginCTSC() {
+    await super.idamActions.exuiLogin(ctscAdminUser);
+  }
+
   async CaseProceedsInCaseman() {
     const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await caseProceedsInCasemanActions.caseSettled();
       },
@@ -41,7 +46,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async CaseProceedsInCasemanSpec() {
     const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await caseProceedsInCasemanActions.caseSettledSpec();
       },
@@ -53,7 +58,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async ManageDocuments() {
     const { manageDocumentsActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageDocumentsActions.addDocuments();
       },
@@ -66,7 +71,7 @@ export default class CaseworkerSteps extends BaseExui {
   async ManageContactInformation() {
     const { manageContactInformationActions } = this.caseworkerActionsFactory;
 
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageContactInformationActions.partySelectionClaimant1();
         await manageContactInformationActions.applicantParty1();
@@ -82,7 +87,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async ManageContactInformationSpec() {
     const { manageContactInformationActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageContactInformationActions.partySelectionSpecDefendant1();
         await manageContactInformationActions.defendantParty1();
@@ -98,7 +103,7 @@ export default class CaseworkerSteps extends BaseExui {
 
   async MediationUnsuccessful() {
     const { mediationUnsuccessfulActions } = this.caseworkerActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await mediationUnsuccessfulActions.mediationUnsuccessful();
       },
@@ -106,4 +111,22 @@ export default class CaseworkerSteps extends BaseExui {
       ccdEvents.MEDIATION_UNSUCCESSFUL,
     );
   }
+
+  async RespondToQuery() {
+    const { queryManagementActions } = this.caseworkerActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await queryManagementActions.enterResponseToQuery();
+        await queryManagementActions.reviewQueryResponse();
+      },
+      async () => {
+        await queryManagementActions.confirmQueryResponse();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RESPOND,
+      ctscAdminUser,
+      respondToQueryCtscTask,
+      {isCCDEvent: false}
+    );
+  }
+
 }

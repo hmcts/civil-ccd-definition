@@ -81,7 +81,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickButtonByName(
-    name: string,
+    name: string | RegExp,
     options: {
       timeout?: number;
       exact?: boolean;
@@ -219,7 +219,7 @@ export default abstract class BasePage {
     if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
-    const index = options.first ? undefined : options.index ?? 0;
+    const index = options.first ? undefined : (options.index ?? 0);
     let locator = this.page.locator(selector);
     locator = this.getNewLocator(locator, options.containerSelector, index, options.first);
     await locator.blur({ timeout: options.timeout });

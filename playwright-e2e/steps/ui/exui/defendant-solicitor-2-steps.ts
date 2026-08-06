@@ -29,7 +29,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
 
   async AddLitigationFriend() {
     const { addDefendantLitigationFriendActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await addDefendantLitigationFriendActions.defendant2LitigationFriend();
         await addDefendantLitigationFriendActions.submitAddDefendantLitigationFriend();
@@ -44,7 +44,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
 
   async RespondSmallFullDefence1v2DS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS2();
         await defendantResponseActions.respondentResponseTypeDS2();
@@ -65,7 +65,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
 
   async RespondFastFullDefence1v2DS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS2();
         await defendantResponseActions.respondentResponseTypeDS2();
@@ -87,7 +87,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
 
   async AddUnavailableDates() {
     const { addUnavailableDatesActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await addUnavailableDatesActions.addAdditionalDates();
         await addUnavailableDatesActions.submitAddAdditionalDates();
@@ -101,7 +101,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
 
   async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
         await acknowlegdeClaimActions.responseIntentionDS2();
@@ -118,7 +118,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
 
   async EvidenceUploadBundle() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await evidenceUploadRespondentActions.evidenceUpload();
         await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
