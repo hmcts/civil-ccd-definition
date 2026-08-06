@@ -5,13 +5,12 @@ import { bankHolidays } from '../config/data';
 import { CCDEvent } from '../models/ccd-events/ccd-events';
 import ObjectHelper from '../helpers/object-helper';
 import TestData from '../models/test-utils/test-data';
-import { civilAdminUser, civilSystemUpdate } from '../config/users/exui-users';
+import { civilSystemUpdate } from '../config/users/exui-users';
 import config from '../config/config';
 import DateHelper from '../helpers/date-helper';
 import WATask from '../models/wa-task';
 import CaseState from '../constants/cases/case-state';
 import CCDCaseData from '../models/ccd-case-data';
-import { NocAnswer } from '../requests/case-assignment-service-requests';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -182,10 +181,34 @@ export default abstract class BaseApi extends BaseTestData {
 
     await this.waitForFinishedBusinessProcess(caseId);
     
-    if(oldSolicitor)
+    if (oldSolicitor)
       await ccdRequests.fetchCCDCaseData(oldSolicitor, caseId, 404);
     await ccdRequests.fetchCCDCaseData(newSolicitor, caseId);
     await this.fetchAndSetCCDCaseData(caseId);
+  }
+
+  protected async submitCuiEvent(
+    user: User,
+    ccdEvent: CCDEvent,
+    caseDataUpdate: CCDCaseData,
+    expectedState?: CaseState,
+  ): Promise<CCDCaseData> {
+    const { civilServiceRequests } = this.requestsFactory;
+    const payload = {
+      event: ccdEvent.id,
+      caseDataUpdate,
+    };
+
+    const eventCaseData = await civilServiceRequests.submitEventCitizen(
+      user,
+      payload,
+      this.ccdCaseData?.id ?? 'draft',
+      expectedState,
+    );
+
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    return eventCaseData;
   }
 
   protected async submitWAEvent(
@@ -195,9 +218,9 @@ export default abstract class BaseApi extends BaseTestData {
     pageDataMap: Record<string, any>,
     expectedState?: CaseState,
   ) {
-    const taskId = await this.retrieveAndAssignWATask(user, validTask);
+    const waTask = await this.retrieveAndAssignWATask(user, validTask);
     await this.submitCCDEvent(user, ccdEvent, pageDataMap, expectedState);
-    await this.completeWATask(user, taskId);
+    await this.completeWATask(user, waTask.id);
   }
 
   protected async waitForFinishedBusinessProcess(caseId?: number) {
@@ -227,10 +250,7 @@ export default abstract class BaseApi extends BaseTestData {
     }
   }
 
-  protected async retrieveAndAssignWATask(
-    user: User,
-    validTask: WATask,
-  ): Promise<string | undefined> {
+  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<WATask> {
     const { workAllocationsRequests } = this.requestsFactory;
     const waTask = await workAllocationsRequests.retrieveTask(
       user,
@@ -238,7 +258,7 @@ export default abstract class BaseApi extends BaseTestData {
       this.ccdCaseData?.id,
     );
     await workAllocationsRequests.assignTask(user, waTask);
-    return waTask.id;
+    return waTask;
   }
 
   protected async completeWATask(user: User, waTaskId?: string) {

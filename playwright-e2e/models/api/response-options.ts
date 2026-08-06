@@ -1,7 +1,7 @@
 import { APIResponse } from '@playwright/test';
 
 export interface _ResponseOptions {
-  expectedStatus?: number;
+  expectedStatus?: number | number[];
   verifyResponse?: (
     response: APIResponse | any | string,
     responseData?: {
@@ -19,7 +19,7 @@ export interface _ResponseOptions {
         [key: string]: string;
       };
       status?: number;
-      expectedStatus?: number;
+      expectedStatus?: number | number[];
     },
   ) => Promise<string | undefined>;
 }
@@ -42,7 +42,7 @@ export interface ResponseOptions extends _ResponseOptions {
         [key: string]: string;
       };
       status?: number;
-      expectedStatus?: number;
+      expectedStatus?: number | number[];
     },
   ) => Promise<string | undefined>;
 }
@@ -65,7 +65,7 @@ export interface ResponseJsonOptions extends _ResponseOptions {
         [key: string]: string;
       };
       status?: number;
-      expectedStatus?: number;
+      expectedStatus?: number | number[];
     },
   ) => Promise<string | undefined>;
 }
@@ -88,13 +88,13 @@ export interface ResponseTextOptions extends _ResponseOptions {
         [key: string]: string;
       };
       status?: number;
-      expectedStatus?: number;
+      expectedStatus?: number | number[];
     },
   ) => Promise<string | undefined>;
 }
 
 export interface _RetryResponseOptions {
-  expectedStatus?: number;
+  expectedStatus?: number | number[];
   retries?: number;
   retryTimeInterval?: number;
   verifyResponse?: (
@@ -114,7 +114,7 @@ export interface _RetryResponseOptions {
         [key: string]: string;
       };
       status?: number;
-      expectedStatus?: number;
+      expectedStatus?: number | number[];
     },
   ) => Promise<string | undefined>;
 }
@@ -137,7 +137,7 @@ export interface RetryResponseOptions extends _RetryResponseOptions {
         [key: string]: string;
       };
       status?: number;
-      expectedStatus?: number;
+      expectedStatus?: number | number[];
     },
   ) => Promise<string | undefined>;
 }
@@ -160,7 +160,7 @@ export interface RetryResponseJsonOptions extends _RetryResponseOptions {
         [key: string]: string;
       };
       status?: number;
-      expectedStatus?: number;
+      expectedStatus?: number | number[];
     },
   ) => Promise<string | undefined>;
 }
@@ -183,7 +183,7 @@ export interface RetryResponseTextOptions extends _RetryResponseOptions {
         [key: string]: string;
       };
       status?: number;
-      expectedStatus?: number;
+      expectedStatus?: number | number[];
     },
   ) => Promise<string | undefined>;
 }

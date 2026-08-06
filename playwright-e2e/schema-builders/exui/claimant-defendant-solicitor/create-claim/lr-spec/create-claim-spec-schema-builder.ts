@@ -26,8 +26,16 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
+  async buildFast1vLIP(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_ONE_LIP });
+  }
+
   async buildIntermediate1v1(): Promise<z.ZodType> {
     return this.buildSchema();
+  }
+
+  async buildIntermediate1vLIP(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
   async buildIntermediate1v2SS(): Promise<z.ZodType> {
@@ -40,6 +48,10 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
 
   async buildMulti1v1(): Promise<z.ZodType> {
     return this.buildSchema();
+  }
+
+  async buildMulti1vLIP(): Promise<z.ZodType> {
+    return this.buildSchema({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
   async buildMulti2v1(): Promise<z.ZodType> {

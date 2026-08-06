@@ -53,12 +53,12 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
     let dateOfService: Date;
 
     if (this.defendantParty.number === 1) {
-      dateDeemedServed = DateHelper.addToToday({ days: 2, workingDay: true, addDayAfter4pm: true });
+      dateDeemedServed = DateHelper.addToToday({ days: 1, workingDay: true, addDayAfter4pm: true });
       dateOfService = DateHelper.getToday();
     } else {
-      dateDeemedServed = DateHelper.subtractFromToday({ days: 14, workingDay: true, addDayAfter4pm: true });
+      dateDeemedServed = DateHelper.subtractFromToday({ days: 13, workingDay: true, addDayAfter4pm: true });
       dateOfService = DateHelper.subtractFromToday({
-        days: 14,
+        days: 13,
         workingDay: true,
         addDayAfter4pm: true,
       });

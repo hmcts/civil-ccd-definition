@@ -29,7 +29,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
 
   async RespondFastFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS2();
@@ -54,7 +54,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
 
   async RespondSmallFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS2();
@@ -79,7 +79,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
 
   async EvidenceUploadBundle() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await evidenceUploadRespondentActions.evidenceUpload();
         await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
