@@ -999,7 +999,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     ZodHelper.safeParse(defaultJudgementSchema, this.ccdCaseData);
   }
 
-  async CreateClaimFast1v1OtherRemedy() {
+  async CreateClaimFastOtherRemedy1v1() {
     await this.setupUserData(claimantSolicitorUser);
     const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const createClaimData = await createClaimDataBuilder.buildFast1v1OtherRemedy();
@@ -1016,7 +1016,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
   }
 
-  async CreateClaimSmall1v1OtherRemedy() {
+  async CreateClaimSmallOtherRemedy1v1() {
     await this.setupUserData(claimantSolicitorUser);
     const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const createClaimData = await createClaimDataBuilder.buildSmall1v1OtherRemedy();
@@ -1038,7 +1038,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defaultJudgementDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const defaultJudgementData = await defaultJudgementDataBuilder.build1v1OtherRemedy();
+    const defaultJudgementData = await defaultJudgementDataBuilder.buildOtherRemedy1v1();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.DEFAULT_JUDGEMENT,
@@ -1057,7 +1057,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { trialReadinessDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const trialReadinessData = await trialReadinessDataBuilder.buildApplicant();
+    const trialReadinessData = await trialReadinessDataBuilder.buildClaimant();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.TRIAL_READINESS,
@@ -1065,7 +1065,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     const { trialReadinessSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const trialReadinessSchema = await trialReadinessSchemaBuilder.buildApplicant(caseDataBeforeSubmission);
+    const trialReadinessSchema = await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission);
     ZodHelper.safeParse(trialReadinessSchema, this.ccdCaseData);
   }
 }

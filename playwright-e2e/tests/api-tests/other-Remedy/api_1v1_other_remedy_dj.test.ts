@@ -11,7 +11,7 @@ test.describe(
     DefendantSolicitor1ApiSteps,
     HearingCenterAdminApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v1OtherRemedy();
+      await ClaimantSolicitorApiSteps.CreateClaimFastOtherRemedy1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

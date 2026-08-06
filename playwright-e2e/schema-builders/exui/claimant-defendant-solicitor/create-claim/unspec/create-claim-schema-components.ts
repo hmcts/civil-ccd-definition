@@ -3,7 +3,6 @@ import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/un
 import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 
@@ -417,21 +416,18 @@ const lipResponseArtifacts = (claimType: ClaimType) => {
   }
 };
 
-const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimTypeUnspecObjs) => {
-  const claimType =
-    typeof claimTypeUnSpec === 'object' ? claimTypeUnSpec.claimTypeUnspec : claimTypeUnSpec;
-
-  if (typeof claimTypeUnSpec === 'object' && claimType === ClaimTypeUnspec.PERSONAL_INJURY) {
+const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec, personalInjuryType?: PersonalInjuryType) => {
+  if (claimTypeUnSpec === ClaimTypeUnspec.PERSONAL_INJURY) {
     return {
       claimTypeUnSpec: z.literal(ClaimTypeUnspec.PERSONAL_INJURY),
-      personalInjuryType: z.literal(claimTypeUnSpec.personalInjuryType),
-      ...(claimTypeUnSpec.personalInjuryType === PersonalInjuryType.PERSONAL_INJURY_OTHER
+      personalInjuryType: z.literal(personalInjuryType),
+      ...(personalInjuryType === PersonalInjuryType.PERSONAL_INJURY_OTHER
         ? { personalInjuryTypeOther: nonEmptyString }
         : {}),
     };
   }
 
-  if (claimType === ClaimTypeUnspec.OTHER) {
+  if (claimTypeUnSpec === ClaimTypeUnspec.OTHER) {
     return {
       claimTypeUnSpec: z.literal(ClaimTypeUnspec.OTHER),
       claimTypeOther: nonEmptyString,
@@ -439,18 +435,26 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
   }
 
   return {
-    claimTypeUnSpec: z.literal(claimType),
+    claimTypeUnSpec: z.literal(claimTypeUnSpec),
   };
 };
 
-const otherRemedySchema = {
-  isClaimDeclarationAdded: z.literal('Yes'),
-  claimDeclarationDescription: nonEmptyString,
-  isHumanRightsActIssues: z.literal('Yes'),
-  otherRemedyFee: feeSchema.optional(),
+const otherRemedy = (claimTypeUnSpec: ClaimTypeUnspec) => {
+  if (
+    claimTypeUnSpec === ClaimTypeUnspec.HOUSING_DISREPAIR ||
+    claimTypeUnSpec === ClaimTypeUnspec.DAMAGES_AND_OTHER_REMEDY
+  ) {
+    return {
+      isClaimDeclarationAdded: nonEmptyString,
+      claimDeclarationDescription: nonEmptyString,
+      isHumanRightsActIssues: nonEmptyString,
+    };
+  }
+
+  return {};
 };
 
-const claimDetails = (claimTrack: ClaimTrack, isOtherRemedy = false) => ({
+const details = (claimTrack: ClaimTrack) => ({
   allPartyNames: nonEmptyString,
   submittedDate: nonEmptyString,
 
@@ -460,8 +464,17 @@ const claimDetails = (claimTrack: ClaimTrack, isOtherRemedy = false) => ({
   anyRepresented: nonEmptyString,
 
   detailsOfClaim: nonEmptyString,
+});
+
+const uploadParticularsOfClaim = {
   claimFee: feeSchema,
+};
+
+const claimValue = {
   claimValue: claimValueSchema,
+};
+
+const pbaNumber = {
   paymentTypePBA: nonEmptyString,
 
   legacyCaseReference: nonEmptyString,
@@ -471,9 +484,7 @@ const claimDetails = (claimTrack: ClaimTrack, isOtherRemedy = false) => ({
   applicantSolicitor1PbaAccounts: pbaAccountsSchema,
   applicantSolicitor1PbaAccountsIsEmpty: yesNoSchema,
   claimIssuedPaymentDetails: claimIssuedPaymentDetailsSchema,
-
-  ...(isOtherRemedy ? otherRemedySchema : {}),
-});
+};
 
 const statementOfTruth = {
   applicantSolicitor1ClaimStatementOfTruth: statementOfTruthSchema,
@@ -491,8 +502,11 @@ const createClaimResponseSchema = {
   defendant2,
   defendant2Representation,
   claimTypeUnspec,
-  otherRemedySchema,
-  claimDetails,
+  otherRemedy,
+  details,
+  uploadParticularsOfClaim,
+  claimValue,
+  pbaNumber,
   statementOfTruth,
   lipResponseArtifacts,
 };

@@ -7,7 +7,6 @@ import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
 import createClaimResponseSchema from './create-claim-schema-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
@@ -19,10 +18,8 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
   async buildFastNIHL1v1(): Promise<z.ZodType> {
     return this.buildSchema({
       claimTrack: ClaimTrack.FAST_CLAIM,
-      claimTypeUnspec: {
-        claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
-        personalInjuryType: PersonalInjuryType.NOISE_INDUCED_HEARING_LOSS,
-      },
+      claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
+      personalInjuryType: PersonalInjuryType.NOISE_INDUCED_HEARING_LOSS,
     });
   }
 
@@ -133,7 +130,6 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
-      isOtherRemedy: true,
     });
   }
 
@@ -141,31 +137,27 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({
       claimTrack: ClaimTrack.SMALL_CLAIM,
       claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
-      isOtherRemedy: true,
     });
   }
 
   protected async buildSchema({
     claimType = ClaimType.ONE_VS_ONE,
-    claimTypeUnspec = {
-      claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
-      personalInjuryType: PersonalInjuryType.ROAD_ACCIDENT,
-    },
+    claimTypeUnspec = ClaimTypeUnspec.PERSONAL_INJURY,
+    personalInjuryType = PersonalInjuryType.ROAD_ACCIDENT,
     claimTrack = ClaimTrack.SMALL_CLAIM,
     claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    isOtherRemedy = false,
   }: {
     claimType?: ClaimType;
-    claimTypeUnspec?: PersonalInjuryClaimTypeUnspecObjs | ClaimTypeUnspec;
+    claimTypeUnspec?: ClaimTypeUnspec;
+    personalInjuryType?: PersonalInjuryType;
     claimTrack?: ClaimTrack;
     claimant1PartyType?: ClaimantDefendantPartyType;
     claimant2PartyType?: ClaimantDefendantPartyType;
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
-    isOtherRemedy?: boolean;
   } = {}): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
@@ -178,13 +170,17 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
       createClaimResponseSchema.defendant1(defendant1PartyType),
       createClaimResponseSchema.statementOfTruth,
       createClaimResponseSchema.solicitorReferences(claimType),
-      createClaimResponseSchema.claimDetails(claimTrack, isOtherRemedy),
+      createClaimResponseSchema.details(claimTrack),
+      createClaimResponseSchema.otherRemedy(claimTypeUnspec),
+      createClaimResponseSchema.uploadParticularsOfClaim,
+      createClaimResponseSchema.claimValue,
+      createClaimResponseSchema.pbaNumber,
       createClaimResponseSchema.claimant2(claimType, claimant2PartyType),
       createClaimResponseSchema.defendantSolicitor1(claimType),
       createClaimResponseSchema.defendant2(claimType, defendant2PartyType),
       createClaimResponseSchema.defendant2Representation(claimType),
       createClaimResponseSchema.lipResponseArtifacts(claimType),
-      createClaimResponseSchema.claimTypeUnspec(claimTypeUnspec),
+      createClaimResponseSchema.claimTypeUnspec(claimTypeUnspec, personalInjuryType),
     );
 
     return z.looseObject(schemaShape);

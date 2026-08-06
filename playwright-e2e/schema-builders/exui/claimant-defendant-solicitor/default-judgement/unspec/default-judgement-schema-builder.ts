@@ -19,6 +19,10 @@ export default class DefaultJudgementSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema(caseDataBeforeSubmission, { isOtherRemedy: true });
   }
 
+  async buildOtherRemedy1v1(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, { isOtherRemedy: true });
+  }
+
   protected async buildSchema(caseDataBeforeSubmission?: CCDCaseData, { isOtherRemedy = false }: { isOtherRemedy?: boolean } = {}): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,

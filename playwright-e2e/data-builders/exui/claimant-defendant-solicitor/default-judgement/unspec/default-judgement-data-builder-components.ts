@@ -6,6 +6,7 @@ import DJHearingType from '../../../../../constants/ccd-events/default-judgement
 import preferredCourts from '../../../../../config/preferred-courts.ts';
 import ClaimType from '../../../../../constants/cases/claim-type.ts';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper.ts';
+import DJOtherRemedy from '../../../../../constants/ccd-events/default-judgement/dj-other-remedy.ts';
 
 const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
@@ -53,6 +54,18 @@ const showCertifyStatement = () => ({
   },
 });
 
+const otherRemedyAbandoned = (djOtherRemedy: DJOtherRemedy) => {
+  if (djOtherRemedy === DJOtherRemedy.YES) {
+    return {
+      OtherRemedyAbandoned: {
+        isOtherRemedyAbandoned: 'Yes',
+      },
+    }
+  }
+
+  return {};
+};
+
 const hearingType = (djHearingType: DJHearingType) => {
   return {
     HearingType: {
@@ -90,13 +103,6 @@ const hearingSupportRequirementsFieldDJ = (claimant1PartyType: ClaimantDefendant
     },
   };
 };
-
-const otherRemedyAbandoned = () => ({
-  OtherRemedyAbandoned: {
-    isOtherRemedyAbandoned: 'Yes',
-    otherRemedyAbandonedDate: formatDate(DateHelper.getToday()),
-  },
-});
 
 const requestDefaultJudgementBuilderComponents = {
   defendantDetails,
