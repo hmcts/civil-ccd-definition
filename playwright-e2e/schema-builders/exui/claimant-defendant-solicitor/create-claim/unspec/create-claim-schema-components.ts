@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
@@ -12,10 +12,10 @@ const nonEmptyString = z.string().min(1);
 
 const addressSchema = z.strictObject({
   AddressLine1: nonEmptyString,
-  AddressLine2: z.string().optional(),
-  AddressLine3: z.string().optional(),
+  AddressLine2: nonEmptyString.optional(),
+  AddressLine3: nonEmptyString.optional(),
   PostTown: nonEmptyString,
-  County: z.string().optional(),
+  County: nonEmptyString.optional(),
   Country: nonEmptyString,
   PostCode: nonEmptyString,
 });
@@ -40,8 +40,8 @@ const partyBaseSchema = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
   flags: flagsSchema,
 };
 
@@ -107,7 +107,7 @@ const litigationFriendSchema = z.strictObject({
 
 const organisationPolicySchema = z.strictObject({
   OrgPolicyCaseAssignedRole: nonEmptyString,
-  OrgPolicyReference: z.string().optional(),
+  OrgPolicyReference: nonEmptyString.optional(),
   Organisation: z
     .looseObject({
       OrganisationID: nonEmptyString,
@@ -187,8 +187,8 @@ const detailsForClaimTabPartyBaseFields = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
 };
 
 const individualDetailsForClaimTabPartySchema = z.strictObject({

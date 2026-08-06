@@ -26,7 +26,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
     this.judgeSchemaBuilderFactory = judgeSchemaBuilderFactory;
   }
 
-  async SdoSmallTrackSum() {
+  async SdoSmallSum() {
     await this.setupApiStep(tribunalCaseworkerRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -47,7 +47,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackNoSum() {
+  async SdoSmallNoSum() {
     await this.setupApiStep(tribunalCaseworkerRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -68,7 +68,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackSumDRH() {
+  async SdoSmallSumDRH() {
     await this.setupApiStep(tribunalCaseworkerRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -89,7 +89,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackNoSumDRH() {
+  async SdoSmallNoSumDRH() {
     await this.setupApiStep(tribunalCaseworkerRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 

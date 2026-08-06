@@ -1,27 +1,29 @@
 import { z } from 'zod';
 import DJPaymentTypeSpec from '../../../../../constants/ccd-events/default-judgement/dj-payment-type-spec';
 
+const nonEmptyString = z.string().min(1);
+
 const defendantDetailsSpec = () => ({
   defendantDetailsSpec: z.looseObject({
     list_items: z.array(
       z.looseObject({
-        code: z.string(),
-        label: z.string(),
+        code: nonEmptyString,
+        label: nonEmptyString,
       }),
     ),
     value: z.looseObject({
-      code: z.string(),
-      label: z.string(),
+      code: nonEmptyString,
+      label: nonEmptyString,
     }),
   }),
 });
 
 const claimPartialPayment = () => ({
-  partialPayment: z.string(),
+  partialPayment: nonEmptyString,
 });
 
 const fixedCostsOnEntry = () => ({
-  claimFixedCostsOnEntryDJ: z.string(),
+  claimFixedCostsOnEntryDJ: nonEmptyString,
 });
 
 const paymentBreakdown = () => ({
@@ -29,13 +31,13 @@ const paymentBreakdown = () => ({
 });
 
 const paymentType = () => ({
-  paymentTypeSelection: z.string(),
+  paymentTypeSelection: nonEmptyString,
 });
 
 const paymentSetDate = (djPaymentTypeSpec: DJPaymentTypeSpec) => {
   if (djPaymentTypeSpec === DJPaymentTypeSpec.SET_DATE) {
     return {
-      paymentSetDate: z.string(),
+      paymentSetDate: nonEmptyString,
     };
   }
 
@@ -45,9 +47,9 @@ const paymentSetDate = (djPaymentTypeSpec: DJPaymentTypeSpec) => {
 const repaymentInformation = (djPaymentTypeSpec: DJPaymentTypeSpec) => {
   if (djPaymentTypeSpec === DJPaymentTypeSpec.REPAYMENT_PLAN) {
     return {
-      repaymentDate: z.string(),
-      repaymentFrequency: z.string(),
-      repaymentSuggestion: z.string(),
+      repaymentDate: nonEmptyString,
+      repaymentFrequency: nonEmptyString,
+      repaymentSuggestion: nonEmptyString,
     };
   }
 

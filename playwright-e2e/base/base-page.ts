@@ -81,7 +81,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickButtonByName(
-    name: string,
+    name: string | RegExp,
     options: {
       timeout?: number;
       exact?: boolean;
@@ -206,6 +206,23 @@ export default abstract class BasePage {
     let locator = this.page.locator(selector);
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
     await locator.fill(input.toString());
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  @TruthyParams(classKey, 'selector')
+  protected async blurSelector(
+    selector: string,
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {
+      index: 0,
+    },
+  ) {
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    const index = options.first ? undefined : (options.index ?? 0);
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, index, options.first);
+    await locator.blur({ timeout: options.timeout });
   }
 
   @TruthyParams(classKey)
@@ -1561,15 +1578,10 @@ export default abstract class BasePage {
     actionAfterFirstAttempt?: () => Promise<void>,
     { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
-    await this.retryAction(
-      () => this.clickByText(text),
-      assertions,
-      actionAfterFirstAttempt,
-      {
-        retries,
-        message: message ?? `Click action failed, text: ${text}, trying again`,
-      },
-    );
+    await this.retryAction(() => this.clickByText(text), assertions, actionAfterFirstAttempt, {
+      retries,
+      message: message ?? `Click action failed, text: ${text}, trying again`,
+    });
   }
 
   @Step(classKey)

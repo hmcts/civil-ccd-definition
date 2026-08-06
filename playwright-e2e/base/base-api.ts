@@ -123,6 +123,94 @@ export default abstract class BaseApi extends BaseTestData {
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
   }
 
+  protected async startCCDEventError(
+    user: User,
+    ccdEvent: CCDEvent,
+  ): Promise<string> {
+    await this.setupApiStep(user);
+    const { ccdRequests } = this.requestsFactory;
+    return ccdRequests.startEventError(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+  }
+
+  protected async submitCaseFlagsEvent(
+    user: User,
+    ccdEvent: CCDEvent,
+    caseFlagData: (caseFlagLocationData?: any) => Partial<CCDCaseData>,
+    expectedState?: CaseState,
+  ) {
+    const { ccdRequests } = this.requestsFactory;
+    const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+    const caseFlagLocation = caseFlagData.name as keyof CCDCaseData;
+    if (!caseFlagLocation) {
+      throw new Error('Case flags data component must be a named function.');
+    }
+
+    const eventCaseData = await ccdRequests.submitEvent(
+      user,
+      ccdEvent,
+      {
+        ...startEventCaseData,
+        ...(await caseFlagData(startEventCaseData[caseFlagLocation])),
+      },
+      eventToken,
+      this.ccdCaseData?.id,
+      expectedState,
+    );
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+  }
+
+  protected async submitNocEvent(
+    newSolicitor: User,
+    oldSolicitor?: User,
+    nocData?: { question_id: string, value: string }[],
+  ) {
+    const caseId = this.ccdCaseData?.id!;
+
+    const { caseAssignmentServiceRequests, ccdRequests } = this.requestsFactory;
+    await caseAssignmentServiceRequests.validateNocAnswers(caseId, nocData!, newSolicitor);
+    await caseAssignmentServiceRequests.submitNocRequest(caseId, nocData!, newSolicitor);
+
+    await this.waitForFinishedBusinessProcess(caseId);
+    
+    if (oldSolicitor)
+      await ccdRequests.fetchCCDCaseData(oldSolicitor, caseId, 404);
+    await ccdRequests.fetchCCDCaseData(newSolicitor, caseId);
+    await this.fetchAndSetCCDCaseData(caseId);
+  }
+
+  protected async submitCuiEvent(
+    user: User,
+    ccdEvent: CCDEvent,
+    caseDataUpdate: CCDCaseData,
+    expectedState?: CaseState,
+  ): Promise<CCDCaseData> {
+    const { civilServiceRequests } = this.requestsFactory;
+    const payload = {
+      event: ccdEvent.id,
+      caseDataUpdate,
+    };
+
+    const eventCaseData = await civilServiceRequests.submitEventCitizen(
+      user,
+      payload,
+      this.ccdCaseData?.id ?? 'draft',
+      expectedState,
+    );
+
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    return eventCaseData;
+  }
+
   protected async submitWAEvent(
     user: User,
     validTask: WATask,
@@ -130,9 +218,9 @@ export default abstract class BaseApi extends BaseTestData {
     pageDataMap: Record<string, any>,
     expectedState?: CaseState,
   ) {
-    const taskId = await this.retrieveAndAssignWATask(user, validTask);
+    const waTask = await this.retrieveAndAssignWATask(user, validTask);
     await this.submitCCDEvent(user, ccdEvent, pageDataMap, expectedState);
-    await this.completeWATask(user, taskId);
+    await this.completeWATask(user, waTask.id);
   }
 
   protected async waitForFinishedBusinessProcess(caseId?: number) {
@@ -162,10 +250,7 @@ export default abstract class BaseApi extends BaseTestData {
     }
   }
 
-  protected async retrieveAndAssignWATask(
-    user: User,
-    validTask: WATask,
-  ): Promise<string | undefined> {
+  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<WATask> {
     const { workAllocationsRequests } = this.requestsFactory;
     const waTask = await workAllocationsRequests.retrieveTask(
       user,
@@ -173,7 +258,7 @@ export default abstract class BaseApi extends BaseTestData {
       this.ccdCaseData?.id,
     );
     await workAllocationsRequests.assignTask(user, waTask);
-    return waTask.id;
+    return waTask;
   }
 
   protected async completeWATask(user: User, waTaskId?: string) {

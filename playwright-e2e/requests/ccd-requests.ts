@@ -15,13 +15,13 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     return `${urls.ccdDataStore}/${role}s/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
   }
 
-  async fetchCCDCaseData(user: User, caseId?: number) {
+  async fetchCCDCaseData(user: User, caseId?: number, expectedStatus = 200) {
     console.log(`Fetching CCD case data, caseId: ${caseId}`);
     const url = `${this.getCCDDataStoreBaseUrl(user)}/cases/${caseId}`;
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),
     };
-    const responseJson = await super.retryRequestJson(url, requestOptions);
+    const responseJson = await super.retryRequestJson(url, requestOptions, { expectedStatus });
     console.log(`CCD case data fetched successfully, caseId: ${caseId}`);
     return { id: responseJson.id, ...responseJson.case_data };
   }
@@ -81,6 +81,32 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     return { eventToken: response.token, startEventCaseData: response.case_details.case_data };
   }
 
+  async startEventError(user: User, ccdEvent: CCDEvent, caseId?: number): Promise<string> {
+    console.log(
+      `Starting event expecting callback error: ${ccdEvent.id}` +
+        (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
+    );
+    let url = this.getCCDDataStoreBaseUrl(user);
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+    url += `/event-triggers/${ccdEvent.id}/token`;
+
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+    };
+    const response = await super.retryRequestJson(url, requestOptions, {
+      expectedStatus: 422,
+      statusErrorMessage: async (responseJson, { url, status, expectedStatus }) =>
+        this.getStatusErrorMessage(responseJson, { url, status, expectedStatus }),
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('callbackErrors', responseJson);
+      },
+    });
+    console.log(`Event: ${ccdEvent.id} returned callback error successfully`);
+    return response.callbackErrors[0];
+  }
+
   async submitEvent(
     user: User,
     ccdEvent: CCDEvent,
@@ -134,12 +160,13 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     }: {
       url: string;
       status: number;
-      expectedStatus: number;
+      expectedStatus: number | number[];
     },
   ) {
+    const expectedStatusMessage = Array.isArray(expectedStatus) ? expectedStatus.join(', ') : expectedStatus;
     if (status === 422) {
       let message =
-        `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
+        `Expected Status: ${expectedStatusMessage}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
 
       if (responseJson.details?.field_errors?.length) {
         message += `, field errors: ${responseJson.details.field_errors
@@ -149,6 +176,6 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
 
       return message;
     } 
-    return `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, message: ${responseJson.message}`;
+    return `Expected Status: ${expectedStatusMessage}, actual status: ${status}, url: ${url}, message: ${responseJson.message}`;
   }
 }

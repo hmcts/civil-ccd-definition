@@ -11,7 +11,7 @@ export default class DefaultJudgementSpecDataBuilder extends BaseDataBuilder {
     return this.buildData();
   }
 
-  async build1v2SSNonDivergent() {
+  async build1v2NonDivergent() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       djSpecType: DJSpecType.NON_DIVERGENT

@@ -13,6 +13,8 @@ import InformAgreedExtensionDateActions from './inform-agreed-extension-date/inf
 import InformAgreedExtensionDateSpecActions from './inform-agreed-extension-date/inform-agreed-extension-date-spec-actions';
 import EvidenceUploadRespondentActions from './evidence-upload/evidence-upload-respondent-actions.ts';
 import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
+import QueryManagementActions from '../common/query-management/query-management-actions.ts';
+import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory.ts';
 
 export default class DefendantActionsFactory extends BasePageActionsFactory {
   get defendantResponseActions() {
@@ -63,5 +65,9 @@ export default class DefendantActionsFactory extends BasePageActionsFactory {
       new EvidenceUploadPageFactory(this.page),
       this.testData,
     );
+  }
+
+  get queryManagementActions() {
+    return new QueryManagementActions(new QueryManagementPageFactory(this.page), this.testData);
   }
 }

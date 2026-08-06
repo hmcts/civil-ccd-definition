@@ -2,8 +2,8 @@ import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
@@ -49,6 +49,13 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
 
   async buildIntermediate1v1(): Promise<z.ZodType> {
     return this.buildSchema({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediate1v2DS(): Promise<z.ZodType> {
+    return this.buildSchema({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
   }
 
   async buildIntermediate1v2SS(): Promise<z.ZodType> {

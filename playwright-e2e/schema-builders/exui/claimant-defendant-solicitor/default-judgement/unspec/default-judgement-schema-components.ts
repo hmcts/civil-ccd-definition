@@ -1,53 +1,55 @@
 import { z } from 'zod';
 
+const nonEmptyString = z.string().min(1);
+
 const defendantDetails = () => ({
   defendantDetails: z.looseObject({
     list_items: z.array(
       z.looseObject({
-        code: z.string(),
-        label: z.string(),
+        code: nonEmptyString,
+        label: nonEmptyString,
       }),
     ),
     value: z.looseObject({
-      code: z.string(),
-      label: z.string(),
+      code: nonEmptyString,
+      label: nonEmptyString,
     }),
   }),
 });
 
 const hearingType = () => ({
-  hearingSelection: z.string(),
-  detailsOfDirection: z.string(),
+  hearingSelection: nonEmptyString,
+  detailsOfDirection: nonEmptyString,
 });
 
 const hearingSupportRequirementsFieldDJ = () => ({
   hearingSupportRequirementsDJ: z.looseObject({
-    hearingType: z.string(),
+    hearingType: nonEmptyString,
     hearingTemporaryLocation: z.looseObject({
       list_items: z.array(
         z.looseObject({
-          code: z.string(),
-          label: z.string(),
+          code: nonEmptyString,
+          label: nonEmptyString,
         }),
       ),
       value: z.looseObject({
-        code: z.string(),
-        label: z.string(),
+        code: nonEmptyString,
+        label: nonEmptyString,
       }),
     }),
-    hearingUnavailableDates: z.string(),
+    hearingUnavailableDates: nonEmptyString,
     hearingDates: z.array(
       z.looseObject({
         value: z.looseObject({
-          hearingUnavailableFrom: z.string(),
-          hearingUnavailableUntil: z.string(),
+          hearingUnavailableFrom: nonEmptyString,
+          hearingUnavailableUntil: nonEmptyString,
         }),
       }),
     ),
-    hearingSupportQuestion: z.string(),
-    hearingSupportAdditional: z.string(),
-    hearingPreferredEmail: z.string(),
-    hearingPreferredTelephoneNumber1: z.string(),
+    hearingSupportQuestion: nonEmptyString,
+    hearingSupportAdditional: nonEmptyString,
+    hearingPreferredEmail: nonEmptyString,
+    hearingPreferredTelephoneNumber1: nonEmptyString,
   }),
 });
 

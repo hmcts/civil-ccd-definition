@@ -2,8 +2,8 @@ import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
@@ -50,6 +50,13 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
 
   async buildIntermediate1v1() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediate1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+    });
   }
 
   async buildIntermediate1v2SS() {

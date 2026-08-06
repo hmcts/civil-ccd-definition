@@ -33,6 +33,13 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
+  async buildIntermediateProceed1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
   async buildIntermediateProceed1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
