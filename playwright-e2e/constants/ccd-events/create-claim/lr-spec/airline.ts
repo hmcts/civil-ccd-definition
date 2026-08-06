@@ -2,7 +2,8 @@ enum Airline {
   AEGEAN = 'Aegean',
   LUFTHANSA = 'Lufthansa',
   BA = 'BA/Cityflyer',
-  OTHER = 'OTHER'
-};
+  KLM = 'KLM',
+  OTHER = 'OTHER',
+}
 
 export default Airline;

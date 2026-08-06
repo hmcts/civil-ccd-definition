@@ -15,6 +15,8 @@ import EvidenceUploadRespondentActions from './evidence-upload/evidence-upload-r
 import EvidenceUploadPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/evidence-upload/evidence-upload-page-factory.ts';
 import UploadMediationDocumentsActions from '../claimant-solicitor/upload-mediation-documents/upload-mediation-documents-actions';
 import UploadMediationDocumentsPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/upload-mediation-documents/upload-mediation-documents-page-factory';
+import QueryManagementActions from '../common/query-management/query-management-actions.ts';
+import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory.ts';
 
 export default class DefendantActionsFactory extends BasePageActionsFactory {
   get defendantResponseActions() {
@@ -72,5 +74,9 @@ export default class DefendantActionsFactory extends BasePageActionsFactory {
       new UploadMediationDocumentsPageFactory(this.page),
       this.testData,
     );
+  }
+  
+  get queryManagementActions() {
+    return new QueryManagementActions(new QueryManagementPageFactory(this.page), this.testData);
   }
 }

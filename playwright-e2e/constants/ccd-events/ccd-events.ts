@@ -12,6 +12,12 @@ const ccdEvents: CCDEvents = {
     name: 'Case issued after payment',
     description: 'Move to case issued when fee paid',
   },
+  CREATE_LIP_CLAIM: {
+    id: 'CREATE_LIP_CLAIM',
+    name: 'Create LiP claim',
+    description: 'Create LiP claim from citizen UI',
+    order: 1,
+  },
   CREATE_CLAIM_SPEC: {
     id: 'CREATE_CLAIM_SPEC',
     name: 'Create claim - Specified',
@@ -370,6 +376,18 @@ const ccdEvents: CCDEvents = {
     name: 'Upload mediation documents',
     description: 'Upload mediation documents',
     order: 24
+  },
+  QUERY_MANAGEMENT_RAISE: {
+    id: 'queryManagementRaiseQuery',
+    name: 'Raise a new query',
+    description: 'Raise a new query',
+    order: 31,
+  },
+  QUERY_MANAGEMENT_RESPOND: {
+    id: 'queryManagementRespondQuery',
+    name: 'Respond to a query',
+    description: 'Respond to a query',
+    order: 32,
   },
 };
 

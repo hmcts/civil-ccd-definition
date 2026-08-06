@@ -22,6 +22,8 @@ import SettleClaimMarkPaidFullActions from './settle-claim-mark-paid-full-action
 import SettleClaimMarkPaidFullPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/settle-claim-mark-paid-full/settle-claim-mark-paid-full-page-factory.ts';
 import UploadMediationDocumentsActions from './upload-mediation-documents/upload-mediation-documents-actions';
 import UploadMediationDocumentsPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/upload-mediation-documents/upload-mediation-documents-page-factory';
+import QueryManagementActions from '../common/query-management/query-management-actions';
+import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory.ts';
 
 export default class ClaimantSolicitorActionsFactory extends BasePageActionsFactory {
   get createClaimActions() {
@@ -95,5 +97,9 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
       new UploadMediationDocumentsPageFactory(this.page),
       this.testData,
     );
+  }
+  
+  get queryManagementActions() {
+    return new QueryManagementActions(new QueryManagementPageFactory(this.page), this.testData);
   }
 }
