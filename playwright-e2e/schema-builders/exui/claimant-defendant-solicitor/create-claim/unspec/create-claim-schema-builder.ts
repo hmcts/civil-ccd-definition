@@ -130,7 +130,6 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
-      //claimTypeUnspec: ClaimTypeUnspec.DAMAGES_AND_OTHER_REMEDY,
     });
   }
 

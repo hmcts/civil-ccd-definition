@@ -53,7 +53,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
 
   async CreateClaimFast1v1OtherRemedyDamages() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimActions.eligibility();
         await createClaimActions.references();
@@ -77,7 +77,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
 
   async CreateClaimFast1v1HousingDisrepair() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimActions.eligibility();
         await createClaimActions.references();
@@ -274,7 +274,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
 
   async CreateClaimSmall1v2DSHousingDisrepair() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimActions.eligibility();
         await createClaimActions.references();
@@ -731,7 +731,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
 
   async RequestDefaultJudgmentOtherRemedy() {
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await defaultJudgementActions.defendantDetails();
         await defaultJudgementActions.showCertifyStatement();

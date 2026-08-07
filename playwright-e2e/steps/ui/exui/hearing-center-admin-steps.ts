@@ -73,7 +73,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async CreateClaimant1CaseFlagVulnerable() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createCaseFlagsActions.selectClaimant1();
         await createCaseFlagsActions.claimant1VulnerableCaseFlag();
@@ -85,7 +85,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async CreateDefendantSolicitor1ExpertCaseFlag() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createCaseFlagsActions.selectDefendantSolicitor1Expert();
         await createCaseFlagsActions.defendantSolicitor1ExpertBehaviourCaseFlag();
@@ -120,7 +120,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async UpdateClaimant1CaseFlagComment() {
     const { manageCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageCaseFlagsActions.updateCaseFlagComment(
           caseFlagLocations.CLAIMANT_1(this.claimant1PartyType!),
@@ -133,7 +133,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async UpdateDefendantSolicitor1ExpertCaseFlagComment() {
     const { manageCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageCaseFlagsActions.updateCaseFlagComment(caseFlagLocations.DEFENDANT_1_EXPERT_1);
       },
