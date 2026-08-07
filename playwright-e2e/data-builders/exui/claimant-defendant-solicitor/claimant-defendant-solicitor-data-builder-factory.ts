@@ -25,6 +25,7 @@ import JudgmentPaidInFullDataBuilder from './judgment-paid-in-full/lr-spec/judgm
 import SettleClaimDataBuilder from './settle-claim/lr-spec/settle-claim-data-builder';
 import DiscontinueClaimDataBuilder from './discontinue-claim/lr-spec/discontinue-claim-data-builder';
 import UploadMediationDocumentsDataBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-data-builder';
+import TrialReadinessDataBuilder from './trial-readiness/trial-readiness-data-builder';
 
 export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDataBuilderFactory {
   get acknowledgeClaimDataBuilder() {
@@ -119,6 +120,10 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
     return new UploadMediationDocumentsDataBuilder(this.requestsFactory, this.testData);
   }
 
+  get trialReadinessDataBuilder() {
+    return new TrialReadinessDataBuilder(this.requestsFactory, this.testData);
+  }
+  
   get settleClaimDataBuilder() {
     return new SettleClaimDataBuilder(this.requestsFactory, this.testData);
   }
