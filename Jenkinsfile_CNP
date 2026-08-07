@@ -248,7 +248,6 @@ withPipeline(type, product, component) {
   // }
   onMaster {
     env.ENVIRONMENT = "aat"
-    disableCleanupOfHelmReleaseOnFailure()
     enableHelmOnMaster()
   }
   onDemo {
