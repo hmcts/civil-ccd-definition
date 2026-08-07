@@ -5,6 +5,8 @@ let civilCaseReference, gaCaseReference;
 
 Feature('Spec 1v2 - General Application after SDO Journey').tag('@civil-service-nightly @api-ga-make-decision');
 
+// DTSCCI-5195 decision: retain as skipped. Post-SDO hearing and final-order wiring is cross-service
+// behaviour outside the main GA callbacks migrated by this ticket.
 Scenario.skip('Spec Claimant create GA - CASE_PROGRESSION state', async ({ api_ga, I }) => {
   civilCaseReference = await api_ga.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   console.log('Civil Case created for general application: ' + civilCaseReference);
