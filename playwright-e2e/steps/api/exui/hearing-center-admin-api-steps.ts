@@ -77,7 +77,6 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;

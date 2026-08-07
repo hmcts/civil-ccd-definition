@@ -27,6 +27,42 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor1User);
   }
 
+  async UploadMediationDocumentsD1() {
+    const { uploadMediationDocumentsActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await uploadMediationDocumentsActions.explanation();
+        await uploadMediationDocumentsActions.selectD1();
+        await uploadMediationDocumentsActions.selectNonAttendanceStatement();
+        await uploadMediationDocumentsActions.uploadNonAttendanceStatement();
+        await uploadMediationDocumentsActions.submitUploadMediationDocuments();
+      },
+      async () => {
+        await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
+      },
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async UploadMediationDocumentsD2() {
+    const { uploadMediationDocumentsActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await uploadMediationDocumentsActions.explanation();
+        await uploadMediationDocumentsActions.selectD2();
+        await uploadMediationDocumentsActions.selectDocumentTypes();
+        await uploadMediationDocumentsActions.uploadBothDocuments();
+        await uploadMediationDocumentsActions.submitUploadMediationDocuments();
+      },
+      async () => {
+        await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
+      },
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async InformAgreedExtensionDateSpec() {
     const { informAgreedExtensionDateSpecActions } = this.defendantActionsFactory;
     await super.retryCCDEvent(
