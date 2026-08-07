@@ -5,6 +5,8 @@ let civilCaseReference, gaCaseReference;
 
 Feature(' GA - WA Application Closed');
 
+// DTSCCI-5195 decision: retain as skipped. This scenario owns Work Allocation and scheduler
+// integration, which is not replaced by the migrated GA callback tests.
 Scenario.skip('1v1 Unspec GA-WA Application closed test', async ({api_ga}) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(
   config.applicantSolicitorUser, mpScenario, 'Company');

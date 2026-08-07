@@ -11,6 +11,8 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
+// DTSCCI-5195 decision: retain these as skipped. LiP fee and payment wiring are outside the
+// service-owned main GA callback paths migrated by this ticket.
 Scenario.skip('GA 1v1 Free Fee  - LR initiates GA vs LIP', async ({ api_ga, I }) => {
 
   civilCaseReference = await api_ga.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario);

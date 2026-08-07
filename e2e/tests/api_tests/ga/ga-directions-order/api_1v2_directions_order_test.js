@@ -3,9 +3,11 @@ const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge Make Order Directions Order API tests').tag('@civil-service-nightly @api-ga-directions-order');
+Feature('Smoke - 1v2 GA response and decision CCD wiring').tag('@civil-service-smoke @api-ga-directions-order');
 
-Scenario('Judge makes decision 1V2 - DIRECTIONS ORDER', async ({api_ga}) => {
+// Service-owned response and decision outputs are covered by civil-service workflow integration tests.
+// This scenario retains multi-party access, collection and event wiring through CCD.
+Scenario('Respond to and decide a multi-party GA through CCD', async ({api_ga}) => {
 
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');

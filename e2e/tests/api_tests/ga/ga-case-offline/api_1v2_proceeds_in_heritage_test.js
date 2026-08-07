@@ -5,7 +5,9 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge accepts strike out application API tests').tag('@civil-service-nightly @api-ga-case-offline');
 
-Scenario('Judge makes decision 1V2 - Accept Strike out application', async ({api_ga}) => {
+// The strike-out decision and offline state are covered by civil-service workflow integration tests.
+// Retain the journey as skipped so it can be re-enabled for local multi-party CCD checks.
+Scenario.skip('Judge makes decision 1V2 - Accept Strike out application', async ({api_ga}) => {
 
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');

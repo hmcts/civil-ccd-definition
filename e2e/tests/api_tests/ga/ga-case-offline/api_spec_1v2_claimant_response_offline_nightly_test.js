@@ -4,6 +4,7 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA SPEC Claim 1v2 Claimant Response Case Close API tests').tag('@civil-service-nightly');
 
+// Replaced by civil-service offline workflow integration coverage; retained for optional local CCD checks.
 Scenario.skip('Case offline LISTING_FOR_A_HEARING', async ({api_ga}) => {
   civilCaseReference = await api_ga.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   console.log('Civil Case created for general application: ' + civilCaseReference);
