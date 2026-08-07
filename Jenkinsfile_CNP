@@ -4,7 +4,7 @@ properties([
 ]);
 
 
-@Library("Infrastructure@2.4.4")
+@Library("Infrastructure@Enable-helm-on-staging")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
@@ -249,6 +249,7 @@ withPipeline(type, product, component) {
   onMaster {
     env.ENVIRONMENT = "aat"
     disableCleanupOfHelmReleaseOnFailure()
+    enableHelmOnMaster()
   }
   onDemo {
     env.ENVIRONMENT = "demo"
