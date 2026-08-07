@@ -4,6 +4,8 @@ import AddDefendantLitigationFriendSchemaBuilder from './add-defendant-litigatio
 import AddOrAmendClaimDocumentsSchemaBuilder from './add-or-amend-claim-documents/unspec/add-or-amend-claim-documents-schema-builder';
 import ClaimantResponseSchemaBuilder from './claimant-response/unspec/claimant-response-schema-builder';
 import ClaimantResponseSpecSchemaBuilder from './claimant-response/lr-spec/claimant-response-spec-schema-builder';
+import CreateClaimSpecAfterPaymentLRSchemaBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-lr-schema-builder';
+import CreateClaimAfterPaymentSchemaBuilder from './create-claim-after-payment/unspec/create-claim-after-payment-schema-builder';
 import CreateClaimSpecSchemaBuilder from './create-claim/lr-spec/create-claim-spec-schema-builder';
 import CreateClaimSchemaBuilder from './create-claim/unspec/create-claim-schema-builder';
 import DefaultJudgementSpecSchemaBuilder from './default-judgement/lr-spec/default-judgement-spec-schema-builder';
@@ -23,10 +25,19 @@ import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notif
 import SettleClaimSchemaBuilder from './settle-claim/lr-spec/settle-claim-schema-builder';
 import RequestForReconsiderationSchemaBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
+import TrialReadinessSchemaBuilder from './trial-readiness/trial-readiness-schema-builder';
 
 export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends BaseSchemaBuilderFactory {
   get createClaimSchemaBuilder() {
     return new CreateClaimSchemaBuilder(this.testData);
+  }
+
+  get createClaimAfterPaymentSchemaBuilder() {
+    return new CreateClaimAfterPaymentSchemaBuilder(this.testData);
+  }
+
+  get createClaimSpecAfterPaymentSchemaBuilder() {
+    return new CreateClaimSpecAfterPaymentLRSchemaBuilder(this.testData);
   }
 
   get acknowledgeClaimSchemaBuilder() {
@@ -109,14 +120,18 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
     return new UploadMediationDocumentsSchemaBuilder(this.testData);
   }
 
+  get trialReadinessSchemaBuilder() {
+    return new TrialReadinessSchemaBuilder(this.testData);
+  }
+  
   get settleClaimSchemaBuilder() {
     return new SettleClaimSchemaBuilder(this.testData);
   }
-  
+
   get discontinueClaimSchemaBuilder() {
     return new DiscontinueClaimSchemaBuilder(this.testData);
   }
-  
+
   get requestForReconsiderationSchemaBuilder() {
     return new RequestForReconsiderationSchemaBuilder(this.testData);
   }

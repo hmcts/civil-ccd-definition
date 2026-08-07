@@ -27,9 +27,45 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(claimantSolicitorUser);
   }
 
+  async UploadMediationDocuments() {
+    const { uploadMediationDocumentsActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await uploadMediationDocumentsActions.explanation();
+        await uploadMediationDocumentsActions.selectClaimant1();
+        await uploadMediationDocumentsActions.selectDocumentTypes();
+        await uploadMediationDocumentsActions.uploadBothDocuments();
+        await uploadMediationDocumentsActions.submitUploadMediationDocuments();
+      },
+      async () => {
+        await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
+      },
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async UploadMediationDocuments2v1() {
+    const { uploadMediationDocumentsActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await uploadMediationDocumentsActions.explanation();
+        await uploadMediationDocumentsActions.selectBothClaimants();
+        await uploadMediationDocumentsActions.selectDocumentTypes();
+        await uploadMediationDocumentsActions.uploadBothDocuments();
+        await uploadMediationDocumentsActions.submitUploadMediationDocuments();
+      },
+      async () => {
+        await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
+      },
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async CreateClaimFast1v1() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -56,7 +92,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimSmall1v1() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -82,7 +118,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimSmall2v1() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -108,7 +144,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimSmall1v2SS() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -136,7 +172,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimSmall1v2DS() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -164,7 +200,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimFast1v2DS() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -192,7 +228,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimFast1v2DSFlightDelay() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -220,7 +256,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimFast1v2SS() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -248,7 +284,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimFast2v1() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -275,7 +311,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async CreateClaimMulti1v2SS() {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
@@ -303,7 +339,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondFastProceed1v1() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -323,7 +359,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondFastProceed2v1() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponse2v1Spec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -343,7 +379,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondSmallProceed1v1() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -364,7 +400,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondSmallProceed2v1() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponse2v1Spec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -385,7 +421,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondSmallProceed1v2SS() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -406,7 +442,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondSmallProceed1v2DS() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2DSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -427,7 +463,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RequestDefaultJudgment() {
     const { defaultJudgementSpecActions } = this.claimantSolicitorActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await defaultJudgementSpecActions.defendantDetails();
         await defaultJudgementSpecActions.showCertifyStatement();
@@ -446,7 +482,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RequestDefaultJudgment1v2() {
     const { defaultJudgementSpecActions } = this.claimantSolicitorActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await defaultJudgementSpecActions.defendantDetails1v2();
         await defaultJudgementSpecActions.showCertifyStatementMultipleDefendants();
@@ -465,7 +501,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondFastProceed1v2DS() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2DSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -485,7 +521,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondFastProceed1v2SS() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -504,7 +540,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RespondMultiProceed1v2SS() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
@@ -524,7 +560,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async RequestForReconsideration() {
     const { requestForReconsiderationActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await requestForReconsiderationActions.enterReason();
         await requestForReconsiderationActions.submitRequestForReconsideration();
@@ -539,7 +575,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async SettleClaimMarkPaidInFull() {
     const { settleClaimMarkPaidFullActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await settleClaimMarkPaidFullActions.singleClaimant();
         await settleClaimMarkPaidFullActions.submitSettleClaim();
@@ -554,7 +590,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async SettleClaimMarkPaidInFull2v1() {
     const { settleClaimMarkPaidFullActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await settleClaimMarkPaidFullActions.multipleClaimants();
         await settleClaimMarkPaidFullActions.submitSettleClaim();
@@ -569,7 +605,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async EvidenceUploadSmall() {
     const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await evidenceUploadApplicantActions.evidenceUpload();
         await evidenceUploadApplicantActions.documentSelectionSmallClaim();
@@ -586,7 +622,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async DiscontinueClaim1v1() {
     const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await discontinueClaimClaimantActions.courtPermissionYes();
         await discontinueClaimClaimantActions.permissionGrantedYes();
@@ -603,7 +639,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async DiscontinueClaim1v2DS() {
     const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await discontinueClaimClaimantActions.courtPermissionYes();
         await discontinueClaimClaimantActions.permissionGrantedYes();
@@ -621,7 +657,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async DiscontinueClaim2v1() {
     const { discontinueClaimClaimantActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await discontinueClaimClaimantActions.selectBothClaimantsDiscontinuing();
         await discontinueClaimClaimantActions.courtPermissionYes();
@@ -638,7 +674,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async EvidenceUploadFast() {
     const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await evidenceUploadApplicantActions.evidenceUpload();
         await evidenceUploadApplicantActions.documentSelectionFastTrack();
@@ -655,7 +691,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
 
   async EvidenceUploadBundle() {
     const { evidenceUploadApplicantActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await evidenceUploadApplicantActions.evidenceUpload();
         await evidenceUploadApplicantActions.documentSelectionFastTrackBundle();
@@ -669,4 +705,49 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async RaiseANewQuery() {
+    const { queryManagementActions } = this.claimantSolicitorActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.enterQueryDetailsNew();
+        await queryManagementActions.reviewQueryDetails();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RAISE
+    );
+  }
+
+  async RaiseANewQueryWithHearing() {
+    const { queryManagementActions } = this.claimantSolicitorActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.enterQueryDetailsHearing();
+        await queryManagementActions.reviewQueryDetails();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RAISE
+    );
+  }
+
+  async RaiseFollowUpQuery() {
+    const { queryManagementActions } = this.claimantSolicitorActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.askFollowUpQuestion();
+        await queryManagementActions.enterQueryDetailsFollowup();
+        await queryManagementActions.reviewQueryDetailsFollowup();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+    );
+  }
+
 }

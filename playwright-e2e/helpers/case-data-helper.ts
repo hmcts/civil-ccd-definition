@@ -25,6 +25,10 @@ export default class CaseDataHelper {
     };
   }
 
+  static getUuid() {
+    return uuidv4();
+  }
+
   static getPartyDateOfBirth(party: Party) {
     switch (party) {
       case partys.CLAIMANT_1:
