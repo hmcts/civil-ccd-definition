@@ -37,6 +37,10 @@ export default interface CCDCaseData {
   respondent1ResponseDate?: string;
   applicantSolicitor1PbaAccountsIsEmpty?: string;
   CaseAccessCategory?: string;
+  casePartyRequestForReconsideration?: string;
+  reasonForReconsiderationApplicant?: ReasonForReconsideration;
+  reasonForReconsiderationRespondent1?: ReasonForReconsideration;
+  reasonForReconsiderationRespondent2?: ReasonForReconsideration;
   multiPartyResponseTypeFlags?: string;
   applicant1?: ClaimantDefendant;
   applicant1LitigationFriend?: LitigationFriend;
@@ -381,6 +385,11 @@ export interface Address {
   AddressLine1?: string;
   AddressLine2?: string;
   AddressLine3?: string;
+}
+
+export interface ReasonForReconsideration {
+  requestor?: string;
+  reasonForReconsiderationTxt?: string;
 }
 
 export interface DQExperts {
