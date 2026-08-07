@@ -66,6 +66,23 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
   }
 
+  async CreateClaimFast1v1OtherRemedy() {
+    await this.setupUserData(claimantSolicitorUser);
+    const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimData = await createClaimDataBuilder.buildFast1v1OtherRemedy();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM,
+      createClaimData,
+      CaseState.PENDING_CASE_ISSUED,
+    );
+
+    const { createClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const createClaimResponseSchema = await createClaimSchemaBuilder.buildFast1v1OtherRemedy();
+    ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+  }
+
   async CreateClaimFastNIHL1v1() {
     await this.setupUserData(claimantSolicitorUser);
     const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
@@ -484,7 +501,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     const { notifyClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const notifyClaimSchema = await notifyClaimSchemaBuilder.build1v2LRLIP(caseDataBeforeSubmission);
+    const notifyClaimSchema =
+      await notifyClaimSchemaBuilder.build1v2LRLIP(caseDataBeforeSubmission);
     ZodHelper.safeParse(notifyClaimSchema, this.ccdCaseData);
   }
 
@@ -588,8 +606,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     const { manageContactInformationDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const manageContactInformationData =
-      await manageContactInformationDataBuilder.buildClaimant();
+    const manageContactInformationData = await manageContactInformationDataBuilder.buildClaimant();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.MANAGE_CONTACT_INFORMATION,
@@ -987,5 +1004,4 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       await defaultJudgementSchemaBuilder.build1v2SS(caseDataBeforeSubmission);
     ZodHelper.safeParse(defaultJudgementSchema, this.ccdCaseData);
   }
-
 }

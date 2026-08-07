@@ -213,8 +213,8 @@ export default class CreateClaimActions extends BaseTestData {
     await this.pbaNumber();
   }
 
-  async claimDetailsFastTrackOtherRemedy() {
-    await this.claimTypeOtherRemedy();
+  async claimDetailsFastTrackOtherRemedyDamages() {
+    await this.claimTypeOtherRemedyDamages();
     await this.claimDeclaration();
     await this.humanRightsAct();
     await this.details();
@@ -226,6 +226,21 @@ export default class CreateClaimActions extends BaseTestData {
     await claimValuePage.submit();
 
     await this.pbaNumber();
+  }
+
+  async claimDetailsFastTrackHousingDisrepair() {
+    await this.claimTypeHousingDisrepair();
+    await this.claimDeclarationHousingDisrepair();
+    await this.humanRightsActHousingDisrepair();
+    await this.details();
+    await this.uploadParticularsOfClaimNo();
+
+    const { claimValuePage } = this.createClaimPageFactory;
+    await claimValuePage.verifyContent();
+    await claimValuePage.enterClaimDetailsFastTrack();
+    await claimValuePage.submit();
+
+    await this.pbaNumberOtherRemedy();
   }
 
   async smallTrackClaimDetails() {
@@ -240,6 +255,21 @@ export default class CreateClaimActions extends BaseTestData {
     await claimValuePage.submit();
 
     await this.pbaNumber();
+  }
+
+  async claimDetailsSmallTrackHousingDisrepair() {
+    await this.claimTypeHousingDisrepair();
+    await this.claimDeclarationHousingDisrepair();
+    await this.humanRightsActHousingDisrepair();
+    await this.details();
+    await this.uploadParticularsOfClaimNo();
+
+    const { claimValuePage } = this.createClaimPageFactory;
+    await claimValuePage.verifyContent();
+    await claimValuePage.enterClaimDetailsSmallTrack();
+    await claimValuePage.submit();
+
+    await this.pbaNumberOtherRemedy();
   }
 
   async statementOfTruthCreateClaim() {
@@ -289,10 +319,17 @@ export default class CreateClaimActions extends BaseTestData {
     await claimTypePage.submit();
   }
 
-  private async claimTypeOtherRemedy() {
+  private async claimTypeOtherRemedyDamages() {
     const { claimTypePage } = this.createClaimPageFactory;
     await claimTypePage.verifyContent();
     await claimTypePage.selectDamagesAndOtherRemedy();
+    await claimTypePage.submit();
+  }
+
+  private async claimTypeHousingDisrepair() {
+    const { claimTypePage } = this.createClaimPageFactory;
+    await claimTypePage.verifyContent();
+    await claimTypePage.selectHousingDisrepair();
     await claimTypePage.submit();
   }
 
@@ -307,6 +344,20 @@ export default class CreateClaimActions extends BaseTestData {
     const { humanRightsActPage } = this.createClaimPageFactory;
     await humanRightsActPage.verifyContent();
     await humanRightsActPage.selectNo();
+    await humanRightsActPage.submit();
+  }
+
+  private async claimDeclarationHousingDisrepair() {
+    const { claimDeclarationPage } = this.createClaimPageFactory;
+    await claimDeclarationPage.verifyContent();
+    await claimDeclarationPage.selectYesAndEnterDescription();
+    await claimDeclarationPage.submit();
+  }
+
+  private async humanRightsActHousingDisrepair() {
+    const { humanRightsActPage } = this.createClaimPageFactory;
+    await humanRightsActPage.verifyContent();
+    await humanRightsActPage.selectYes();
     await humanRightsActPage.submit();
   }
 
@@ -335,5 +386,11 @@ export default class CreateClaimActions extends BaseTestData {
     const { pbaNumberPage } = this.createClaimPageFactory;
     await pbaNumberPage.verifyContent();
     await pbaNumberPage.submit();
+  }
+
+  private async pbaNumberOtherRemedy() {
+    const { pbaNumberOtherRemedyPage } = this.createClaimPageFactory;
+    await pbaNumberOtherRemedyPage.verifyContent();
+    await pbaNumberOtherRemedyPage.submit();
   }
 }

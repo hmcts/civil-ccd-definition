@@ -17,6 +17,13 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
+  async buildFast1v1OtherRemedy() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimTypeUnspec: ClaimTypeUnspec.DAMAGES_AND_OTHER_REMEDY,
+    });
+  }
+
   async buildFastNIHL1v1() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,

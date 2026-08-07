@@ -7,6 +7,7 @@ import ClaimantPage from './common/claimant/claimant-page';
 import DefendantPage from './common/defendant/defendant-page';
 import NotificationsPage from './common/notifications/notifcations-page';
 import PbaNumberPage from './common/pba-number/pba-number-page';
+import PbaNumberOtherRemedyPage from './common/pba-number/pba-number-other-remedy-page';
 import ReferencesPage from './common/references/references-page';
 import SameLegalRepresentativePage from './common/same-legal-representative/same-legal-representative-page';
 import SecondClaimantPage from './common/second-claimant/second-claimant-page';
@@ -435,6 +436,10 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get pbaNumberPage() {
     return new PbaNumberPage(this.page);
+  }
+
+  get pbaNumberOtherRemedyPage() {
+    return new PbaNumberOtherRemedyPage(this.page);
   }
 
   get fixedCommencementCostsPage() {

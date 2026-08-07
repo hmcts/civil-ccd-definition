@@ -3,7 +3,7 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import YesOrNoFragment from '../../../../fragments/yes-or-no/yes-or-no-fragment';
 import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
-import { radioButtons } from './claim-declaration-content';
+import { inputs, radioButtons } from './claim-declaration-content';
 
 @AllMethodsStep()
 export default class ClaimDeclarationPage extends ExuiPage(BasePage) {
@@ -12,7 +12,6 @@ export default class ClaimDeclarationPage extends ExuiPage(BasePage) {
   constructor(page: Page, yesOrNoFragment: YesOrNoFragment) {
     super(page);
     this.yesOrNoFragment = yesOrNoFragment;
-    radioButtons;
   }
 
   async verifyContent() {
@@ -26,6 +25,14 @@ export default class ClaimDeclarationPage extends ExuiPage(BasePage) {
 
   async selectYes() {
     await this.yesOrNoFragment.selectYes(radioButtons.addOtherRemedy.selector);
+  }
+
+  async selectYesAndEnterDescription() {
+    await this.selectYes();
+    await super.inputText(
+      'Details of the claim text for type OtherRemedy',
+      inputs.description.selector,
+    );
   }
 
   async selectNo() {

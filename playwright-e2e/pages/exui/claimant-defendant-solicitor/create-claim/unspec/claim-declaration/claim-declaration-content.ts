@@ -5,3 +5,10 @@ export const radioButtons = {
     selector: 'isClaimDeclarationAdded',
   },
 };
+
+export const inputs = {
+  description: {
+    label: 'Describe the other remedy',
+    selector: '#claimDeclarationDescription',
+  },
+};

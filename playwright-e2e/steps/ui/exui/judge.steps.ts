@@ -77,6 +77,25 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
+  async SdoSmallNoSumOtherRemedy() {
+    const { sdoActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await sdoActions.enterJudgementNo();
+        await sdoActions.selectSmallClaimNoSumOtherRemedy();
+        await sdoActions.smallTrackDetails();
+        await sdoActions.orderPreview();
+        await sdoActions.submitSdo();
+      },
+      async () => {
+        await sdoActions.confirmSdo();
+      },
+      ccdEvents.CREATE_SDO,
+      judgeRegion1User,
+      smallClaimDirectionsTask,
+    );
+  }
+
   async SdoSmallFromFastClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
@@ -121,6 +140,25 @@ export default class JudgeSteps extends BaseExui {
       async () => {
         await sdoActions.enterJudgementNo();
         await sdoActions.selectFastTrack();
+        await sdoActions.fastTrackDetails();
+        await sdoActions.orderPreview();
+        await sdoActions.submitSdo();
+      },
+      async () => {
+        await sdoActions.confirmSdo();
+      },
+      ccdEvents.CREATE_SDO,
+      judgeRegion1User,
+      fastTrackDirectionsTask,
+    );
+  }
+
+  async SdoFastOtherRemedy() {
+    const { sdoActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await sdoActions.enterJudgementNo();
+        await sdoActions.selectFastTrackOtherRemedy();
         await sdoActions.fastTrackDetails();
         await sdoActions.orderPreview();
         await sdoActions.submitSdo();
