@@ -17,6 +17,7 @@ export default interface CCDCaseData {
   messagesToReplyTo?: string;
   sendMessageContent?: string;
   messages?: Message[];
+  qmLatestQuery?: QmLatestQuery;
   claimFee?: ClaimFee;
   notificationSummary?: string;
   hearingDueDate?: string;
@@ -120,6 +121,12 @@ export default interface CCDCaseData {
   respondent2ClaimResponseIntentionType?: string;
   respondent1AcknowledgeNotificationDate?: string;
   respondent2AcknowledgeNotificationDate?: string;
+}
+
+export interface QmLatestQuery {
+  isWelsh?: string;
+  queryId?: string;
+  isHearingRelated?: string;
 }
 
 export interface ServedDocumentFiles {

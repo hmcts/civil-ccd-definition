@@ -1,7 +1,7 @@
 import { test as setup } from '../../../playwright-fixtures/index';
 import config from '../../../config/config';
 
-if (config.runSetup) {
+if (config.runDataSetup) {
   setup.describe('Setting up data', () => {
     setup.describe.configure({ mode: 'parallel' });
 

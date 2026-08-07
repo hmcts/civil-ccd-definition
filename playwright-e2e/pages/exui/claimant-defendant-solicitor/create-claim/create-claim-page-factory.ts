@@ -337,7 +337,8 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   }
 
   get flightDelayClaimPage() {
-    return new FlightDelayClaimPage(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new FlightDelayClaimPage(this.page, dateFragment);
   }
 
   get personalInjuryType() {
