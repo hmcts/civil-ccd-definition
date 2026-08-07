@@ -10,11 +10,14 @@ properties([
       description: 'Runs the failed test files and test files that were not executed, contained within the \'testFilesReport.json\', from the latest previous pipeline run'),
     choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'],
       description: 'Environment to test'),
+    choice(name: 'USE_WIREMOCK', choices: ['false', 'true'],
+      description: 'For AAT only, run against the civil staging AAT stack backed by WireMock'),
     string(name: 'PR_NUMBER',
       defaultValue: '', description: 'PR Number of deployed environment to be used to run tests against'),
     choice(name: 'FRONTEND_URL',
       choices: [
                   'https://manage-case.aat.platform.hmcts.net',
+                  'https://civil-ccd-xui-staging.aat.platform.hmcts.net',
                   'https://manage-case.demo.platform.hmcts.net',
                   'https://manage-case-int.demo.platform.hmcts.net',
                   'https://manage-case-int1.demo.platform.hmcts.net',
@@ -41,6 +44,7 @@ properties([
     choice(name: 'CCD_DATA_STORE_URL',
       choices: [
                   'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+                  'https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net',
                   'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
                   'https://ccd-data-store-api-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://ccd-data-store-api-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
@@ -52,6 +56,7 @@ properties([
     choice(name: 'CIVIL_SERVICE_URL',
       choices: [
                   'http://civil-service-aat.service.core-compute-aat.internal',
+                  'https://civil-ccd-staging.aat.platform.hmcts.net',
                   'http://civil-service-demo.service.core-compute-demo.internal',
                   'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
@@ -98,6 +103,12 @@ properties([
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
+def wiremockMappingsBranch = "master"
+def stagingAatFrontendUrl = "https://civil-ccd-xui-staging.aat.platform.hmcts.net"
+def stagingAatCcdDataStoreUrl = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
+def stagingAatCivilServiceUrl = "https://civil-ccd-staging.aat.platform.hmcts.net"
+def stagingAatAacUrl = "https://manage-case-assignment-civil-ccd-staging-aat.aat.platform.hmcts.net"
+def stagingAatWiremockUrl = "https://civil-ccd-wiremock-staging-aat.aat.platform.hmcts.net"
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -204,6 +215,11 @@ withNightlyPipeline(type, product, component) {
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES
   env.ENVIRONMENT=params.ENVIRONMENT
+  boolean useWiremock = (params.USE_WIREMOCK ?: 'false').toBoolean()
+  env.USE_WIREMOCK=useWiremock.toString()
+  if(useWiremock && params.ENVIRONMENT != 'aat') {
+    error "USE_WIREMOCK can only be used with ENVIRONMENT=aat because it targets the civil staging AAT stack."
+  }
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
   env.PLAYWRIGHT_EXUI_RETRIES=params.PLAYWRIGHT_EXUI_RETRIES
@@ -231,6 +247,12 @@ withNightlyPipeline(type, product, component) {
   def ccdDataStoreUrl = resolvePreviewUrl(params.CCD_DATA_STORE_URL, 'CCD_DATA_STORE_URL')
   def civilServiceUrl = resolvePreviewUrl(params.CIVIL_SERVICE_URL, 'CIVIL_SERVICE_URL')
 
+  if(useWiremock) {
+    frontendUrl = stagingAatFrontendUrl
+    ccdDataStoreUrl = stagingAatCcdDataStoreUrl
+    civilServiceUrl = stagingAatCivilServiceUrl
+  }
+
   env.URL=frontendUrl
   env.PR_NUMBER=prNumber
   env.DM_STORE_URL=params.DM_STORE_URL
@@ -240,12 +262,18 @@ withNightlyPipeline(type, product, component) {
   env.SERVICE_AUTH_PROVIDER_API_BASE_URL = params.SERVICE_AUTH_PROVIDER_API_BASE_URL
   env.CCD_DATA_STORE_URL = ccdDataStoreUrl
   env.CIVIL_SERVICE_URL = civilServiceUrl
+  if(useWiremock) {
+    env.AAC_API_URL = stagingAatAacUrl
+    env.WIREMOCK_URL = stagingAatWiremockUrl
+    env.WIRE_MOCK_SERVICE_URL = stagingAatWiremockUrl
+    env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+  }
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
   env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
   env.PAYMENT_API_URL = params.PAYMENT_API_URL
   env.SECURITY_RULES = params.SECURITY_RULES
   env.URL_FOR_SECURITY_SCAN = civilServiceUrl
-  env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
+  env.RUN_WA_API_TEST = (useWiremock || params.ENVIRONMENT == 'preview') ? false : true
   env.UNASSIGN_CASES = true
   overrideVaultEnvironments([
     'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
@@ -256,6 +284,18 @@ withNightlyPipeline(type, product, component) {
   boolean flowInterrupted = false
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
   boolean runPrevFailedAndNotExecutedTestFiles = env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
+  boolean wiremockMappingsLoaded = false;
+  def loadWiremockMappingsIfRequired = {
+    if(useWiremock && !wiremockMappingsLoaded) {
+      echo "Loading WireMock mappings into ${env.WIREMOCK_URL}"
+      sh """
+        set -e
+        ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
+        ./bin/load-wiremock-mappings.sh
+      """
+      wiremockMappingsLoaded = true
+    }
+  }
   boolean playwrightRunSetup =
     env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
     env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP.toBoolean() ||
@@ -266,6 +306,12 @@ withNightlyPipeline(type, product, component) {
 
   if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
+      if(useWiremock) {
+        stage('Load WireMock mappings') {
+          loadWiremockMappingsIfRequired()
+        }
+      }
+
       stage('Playwright test setup') {
         try {
           yarnBuilder.yarn('test:playwright:setup:install')
@@ -329,6 +375,7 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
+      loadWiremockMappingsIfRequired()
       if(runPrevFailedAndNotExecutedTestFiles) {
         copyPrevFailedAndNotExecutedTestFilesJson()
       }
