@@ -27,9 +27,45 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor1User);
   }
 
+  async UploadMediationDocumentsD1() {
+    const { uploadMediationDocumentsActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await uploadMediationDocumentsActions.explanation();
+        await uploadMediationDocumentsActions.selectD1();
+        await uploadMediationDocumentsActions.selectNonAttendanceStatement();
+        await uploadMediationDocumentsActions.uploadNonAttendanceStatement();
+        await uploadMediationDocumentsActions.submitUploadMediationDocuments();
+      },
+      async () => {
+        await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
+      },
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async UploadMediationDocumentsD2() {
+    const { uploadMediationDocumentsActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await uploadMediationDocumentsActions.explanation();
+        await uploadMediationDocumentsActions.selectD2();
+        await uploadMediationDocumentsActions.selectDocumentTypes();
+        await uploadMediationDocumentsActions.uploadBothDocuments();
+        await uploadMediationDocumentsActions.submitUploadMediationDocuments();
+      },
+      async () => {
+        await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
+      },
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async InformAgreedExtensionDateSpec() {
     const { informAgreedExtensionDateSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await informAgreedExtensionDateSpecActions.extensionDateSpec();
       },
@@ -43,7 +79,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondFastFullDefence1v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
@@ -69,7 +105,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondSmallFullDefence1v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
@@ -94,7 +130,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondSmallFullDefence2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
@@ -120,7 +156,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondSmallFullDefence1v2SS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddress1v2();
@@ -146,7 +182,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondSmallFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
@@ -171,7 +207,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondFastFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
@@ -197,7 +233,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondFastFullDefence1v2SS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddress1v2();
@@ -224,7 +260,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondFastFullDefence2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
@@ -251,7 +287,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondMultiFullDefence1v2SS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddress1v2();
@@ -276,7 +312,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async EvidenceUploadSmall() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await evidenceUploadRespondentActions.evidenceUpload();
         await evidenceUploadRespondentActions.documentSelectionSmallClaim();
@@ -293,7 +329,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async EvidenceUploadFast() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await evidenceUploadRespondentActions.evidenceUpload();
         await evidenceUploadRespondentActions.documentSelectionFastTrack();
@@ -310,7 +346,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async EvidenceUploadBundle1v2SS() {
     const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await evidenceUploadRespondentActions.evidenceUpload();
         await evidenceUploadRespondentActions.selectUploadOptions();
@@ -328,7 +364,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondFastPartAdmit2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
@@ -357,7 +393,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
 
   async RespondFastFullAdmit2v1() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
@@ -373,6 +409,36 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       { verifySuccessEvent: false },
+    );
+  }
+
+  async RaiseANewQueryWithHearing() {
+    const { queryManagementActions } = this.defendantActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.enterQueryDetailsHearing();
+        await queryManagementActions.reviewQueryDetails();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RAISE
+    );
+  }
+
+  async RaiseANewQuery() {
+    const { queryManagementActions } = this.defendantActionsFactory;
+    await super.retryQueryManagementEvent(
+      async () => {
+        await queryManagementActions.raiseANewQuery();
+        await queryManagementActions.enterQueryDetailsNew();
+        await queryManagementActions.reviewQueryDetails();
+      },
+      async () => {
+        await queryManagementActions.confirmQuery();
+      },
+      ccdEvents.QUERY_MANAGEMENT_RAISE
     );
   }
 }

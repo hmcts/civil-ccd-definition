@@ -14,3 +14,23 @@ export const radioButtons = {
     },
   },
 };
+
+export const dropdowns = {
+  airline: {
+    label: 'Airline',
+    selector: '#flightDelayDetails_airlineList',
+    options: {
+      klm: 'KLM',
+    },
+  },
+};
+
+export const inputs = {
+  flightNumber: {
+    label: 'Flight number',
+    selector: '#flightDelayDetails_flightNumber',
+  },
+  dateOfFlight: {
+    selectorKey: 'scheduledDate',
+  },
+};

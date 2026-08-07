@@ -8,7 +8,7 @@ import UserAssignedCasesHelper from '../../helpers/user-assigned-cases-helper';
 @AllMethodsStep()
 export default class CaseRoleAssignmentApiSteps extends BaseApi {
   async AssignCaseRoleToDS1() {
-    await this.setupApiStep(defendantSolicitor1User);
+    await this.setupUserData(defendantSolicitor1User);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor1User,
@@ -20,7 +20,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
   }
 
   async AssignCaseRoleToDS2() {
-    await this.setupApiStep(defendantSolicitor2User);
+    await this.setupUserData(defendantSolicitor2User);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor2User,
@@ -31,12 +31,41 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData?.id);
   }
 
+  async AssignCaseRoleToDC() {
+    await this.setupUserData(this.defendantCitizenUser);
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.assignCaseToDefendant(
+      this.defendantCitizenUser,
+      CaseRole.DEFENDANT,
+      this.ccdCaseData?.id,
+    );
+    await super.fetchAndSetCCDCaseData();
+    UserAssignedCasesHelper.addAssignedCaseToUser(this.defendantCitizenUser, this.ccdCaseData?.id);
+  }
+
   async UnassignCasesForUser(user: User) {
-    await this.setupApiStep(user);
+    await this.setupUserData(user);
     const assignedCases = await UserAssignedCasesHelper.getUserAssignedCases(user);
     if (assignedCases) {
       const { civilServiceRequests } = this.requestsFactory;
       await civilServiceRequests.unassignUserFromCases(user, assignedCases);
     }
+  }
+
+  async AssignBothCaseRolesToDS1() {
+    await this.setupApiStep(defendantSolicitor1User);
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.assignCaseToDefendant(
+      defendantSolicitor1User,
+      CaseRole.RESPONDENT_SOLICITOR_ONE,
+      this.ccdCaseData?.id,
+    );
+    await civilServiceRequests.assignCaseToDefendant(
+      defendantSolicitor1User,
+      CaseRole.RESPONDENT_SOLICITOR_TWO,
+      this.ccdCaseData?.id,
+    );
+    await super.fetchAndSetCCDCaseData();
+    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
   }
 }
