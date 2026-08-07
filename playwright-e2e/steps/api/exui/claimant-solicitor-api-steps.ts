@@ -395,11 +395,10 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     const { createClaimAfterPaymentDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const paidCreateClaimAfterPaymentDTO =
-      await createClaimAfterPaymentDataBuilder.build(
-        'paid',
-        this.ccdCaseData?.id,
-      );
+    const paidCreateClaimAfterPaymentDTO = await createClaimAfterPaymentDataBuilder.build(
+      'paid',
+      this.ccdCaseData?.id,
+    );
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.updatePaymentForClaimIssue(
       claimantSolicitorUser,
@@ -973,7 +972,6 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
     );
 
-
     const { defaultJudgementSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defaultJudgementSchema =
       await defaultJudgementSchemaBuilder.build1v1(caseDataBeforeSubmission);
@@ -998,7 +996,6 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       await defaultJudgementSchemaBuilder.build1v2SS(caseDataBeforeSubmission);
     ZodHelper.safeParse(defaultJudgementSchema, this.ccdCaseData);
   }
-
   async CreateClaimFastOtherRemedy1v1() {
     await this.setupUserData(claimantSolicitorUser);
     const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
@@ -1065,7 +1062,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     const { trialReadinessSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const trialReadinessSchema = await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission);
+    const trialReadinessSchema =
+      await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission);
     ZodHelper.safeParse(trialReadinessSchema, this.ccdCaseData);
   }
 }

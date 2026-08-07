@@ -32,4 +32,27 @@ export default class ManageCaseFlagsActions extends BaseTestData {
 
     this.deactivateCaseFlag(0);
   }
+
+  async updateCaseFlagComment(caseFlagLocation: string) {
+    const caseFlagUpdateComment = 'Updated comment';
+    const caseFlagDetails = this.caseFlagsDetails.find(
+      (caseFlagDetail) => caseFlagDetail.caseFlagLocation === caseFlagLocation,
+    );
+
+    const { manageCaseFlagsChooseFlagPage } = this.manageCaseFlagsPageFactory;
+    await manageCaseFlagsChooseFlagPage.verifyContent(this.ccdCaseData, this.caseFlagsDetails);
+    await manageCaseFlagsChooseFlagPage.selectFlag(caseFlagDetails!);
+    await manageCaseFlagsChooseFlagPage.submit();
+
+    const { manageCaseFlagsUpdateFlagPage } = this.manageCaseFlagsPageFactory;
+    await manageCaseFlagsUpdateFlagPage.verifyContent(this.ccdCaseData, caseFlagDetails!);
+    await manageCaseFlagsUpdateFlagPage.updateComment(caseFlagUpdateComment);
+    await manageCaseFlagsUpdateFlagPage.submit();
+
+    const { submitManageCaseFlagsPage } = this.manageCaseFlagsPageFactory;
+    await submitManageCaseFlagsPage.verifyContent(this.ccdCaseData);
+    await submitManageCaseFlagsPage.submit();
+
+    caseFlagDetails!.caseFlagComment = caseFlagUpdateComment;
+  }
 }

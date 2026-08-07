@@ -51,6 +51,54 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
+  async CreateClaimFast1v1OtherRemedyDamages() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.noAddAnotherDefendant();
+        await createClaimActions.claimDetailsFastTrackOtherRemedyDamages();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CreateClaimFast1v1HousingDisrepair() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.noAddAnotherDefendant();
+        await createClaimActions.claimDetailsFastTrackHousingDisrepair();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
   async CreateClaimSmall1v1() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(
@@ -212,6 +260,31 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantDSdetails();
         await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CreateClaimSmall1v2DSHousingDisrepair() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.addAnotherDefendant();
+        await createClaimActions.secondDefendantDSdetails();
+        await createClaimActions.claimDetailsSmallTrackHousingDisrepair();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -652,6 +725,25 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.DEFAULT_JUDGEMENT,
 
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestDefaultJudgmentOtherRemedy() {
+    const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
+    await this.retryCCDEvent(
+      async () => {
+        await defaultJudgementActions.defendantDetails();
+        await defaultJudgementActions.showCertifyStatement();
+        await defaultJudgementActions.abandonOtherRemedy();
+        await defaultJudgementActions.hearingType();
+        await defaultJudgementActions.hearingSupportRequirementsFieldDJ();
+        await defaultJudgementActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementActions.confirmDefaultJudgment();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT,
       { verifySuccessEvent: false },
     );
   }

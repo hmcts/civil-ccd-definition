@@ -52,6 +52,17 @@ export default class CreateCaseFlagsActions extends BaseTestData {
     await createCaseFlagsLocationPage.submit();
   }
 
+  async selectDefendantSolicitor1Expert() {
+    const { createCaseFlagsLocationPage } = this.createCaseFlagsPageFactory;
+    await createCaseFlagsLocationPage.verifyContent(
+      super.ccdCaseData,
+      super.claimant1PartyType,
+      super.defendant1PartyType,
+    );
+    await createCaseFlagsLocationPage.selectLocation(caseFlagLocations.DEFENDANT_1_EXPERT_1);
+    await createCaseFlagsLocationPage.submit();
+  }
+
   async caseLevelComplexCaseCaseFlag() {
     const caseFlagComment = 'The case is very complex';
     const { createCaseFlagsFlagTypeCaseLevelPage } = this.createCaseFlagsPageFactory;
@@ -97,6 +108,50 @@ export default class CreateCaseFlagsActions extends BaseTestData {
     super.addCaseFlag({
       caseFlagLocation: caseFlagLocations.CLAIMANT_1(super.claimant1PartyType),
       caseFlagType: SpecialMeasureFlags.SCREENING_WITNESS,
+      caseFlagComment,
+    });
+  }
+
+  async claimant1VulnerableCaseFlag() {
+    const caseFlagComment = 'Vulnerable user';
+    const { createCaseFlagsFlagTypePartyPage } = this.createCaseFlagsPageFactory;
+    await createCaseFlagsFlagTypePartyPage.verifyContent(this.ccdCaseData);
+    await createCaseFlagsFlagTypePartyPage.selectFlag(PartyCaseFlags.VULNERABLE);
+    await createCaseFlagsFlagTypePartyPage.submit();
+
+    const { createCaseFlagsCommentsPage } = this.createCaseFlagsPageFactory;
+    await createCaseFlagsCommentsPage.verifyContent(this.ccdCaseData);
+    await createCaseFlagsCommentsPage.addCaseFlagComment(caseFlagComment);
+    await createCaseFlagsCommentsPage.submit();
+
+    const { submitCreateCaseFlagsPage } = this.createCaseFlagsPageFactory;
+    await submitCreateCaseFlagsPage.verifyContent(this.ccdCaseData);
+    await submitCreateCaseFlagsPage.submit();
+    super.addCaseFlag({
+      caseFlagLocation: caseFlagLocations.CLAIMANT_1(super.claimant1PartyType),
+      caseFlagType: PartyCaseFlags.VULNERABLE,
+      caseFlagComment,
+    });
+  }
+
+  async defendantSolicitor1ExpertBehaviourCaseFlag() {
+    const caseFlagComment = 'Unacceptable/disruptive customer behaviour';
+    const { createCaseFlagsFlagTypePartyPage } = this.createCaseFlagsPageFactory;
+    await createCaseFlagsFlagTypePartyPage.verifyContent(this.ccdCaseData);
+    await createCaseFlagsFlagTypePartyPage.selectFlag(PartyCaseFlags.BEHAVIOUR);
+    await createCaseFlagsFlagTypePartyPage.submit();
+
+    const { createCaseFlagsCommentsPage } = this.createCaseFlagsPageFactory;
+    await createCaseFlagsCommentsPage.verifyContent(this.ccdCaseData);
+    await createCaseFlagsCommentsPage.addCaseFlagComment(caseFlagComment);
+    await createCaseFlagsCommentsPage.submit();
+
+    const { submitCreateCaseFlagsPage } = this.createCaseFlagsPageFactory;
+    await submitCreateCaseFlagsPage.verifyContent(this.ccdCaseData);
+    await submitCreateCaseFlagsPage.submit();
+    super.addCaseFlag({
+      caseFlagLocation: caseFlagLocations.DEFENDANT_1_EXPERT_1,
+      caseFlagType: PartyCaseFlags.BEHAVIOUR,
       caseFlagComment,
     });
   }

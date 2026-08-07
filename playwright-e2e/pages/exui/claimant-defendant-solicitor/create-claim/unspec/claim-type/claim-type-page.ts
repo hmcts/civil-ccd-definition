@@ -15,12 +15,22 @@ export default class ClaimTypePage extends ExuiPage(BasePage) {
       super.expectLabel(radioButtons.claimType.breachOfContract.label),
       super.expectLabel(radioButtons.claimType.consumer.label),
       super.expectLabel(radioButtons.claimType.consumerCredit.label),
+      super.expectLabel(radioButtons.claimType.housingDisrepair.label),
+      super.expectLabel(radioButtons.claimType.damagesAndOtherRemedy.label),
       super.expectLabel(radioButtons.claimType.other.label),
     ]);
   }
 
   async selectPersonalInjury() {
     await super.clickBySelector(radioButtons.claimType.personalInjury.selector);
+  }
+
+  async selectDamagesAndOtherRemedy() {
+    await super.clickBySelector(radioButtons.claimType.damagesAndOtherRemedy.selector);
+  }
+
+  async selectHousingDisrepair() {
+    await super.clickBySelector(radioButtons.claimType.housingDisrepair.selector);
   }
 
   async submit() {
