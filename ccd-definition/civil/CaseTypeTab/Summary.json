@@ -181,5 +181,14 @@
     "CaseFieldID": "otherRemedyFee",
     "TabFieldDisplayOrder": 8,
     "FieldShowCondition": "isClaimDeclarationAdded = \"Yes\" AND (claimType = \"HOUSING_DISREPAIR\" OR claimType = \"DAMAGES_AND_OTHER_REMEDY\")"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "enterBreathing",
+    "TabFieldDisplayOrder": 21,
+    "FieldShowCondition": "enterBreathing=\"*\""
   }
 ]
