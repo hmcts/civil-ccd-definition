@@ -4,15 +4,11 @@
     "CaseFieldID": "respondStatementOfTruthLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -22,15 +18,11 @@
     "CaseFieldID": "respondStatementOfTruthSubmitLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -62,10 +54,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "timelineOfEvents",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
@@ -73,15 +62,11 @@
     "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -113,10 +98,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "speclistYourEvidenceList",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
     "CRUD": "CR"
   },
   {
@@ -128,10 +110,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimAmountBreakup",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
     "CRUD": "CRUD"
   },
   {
@@ -151,10 +130,7 @@
     "CaseFieldID": "totalClaimAmount",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -164,10 +140,7 @@
     "CaseFieldID": "totalInterest",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -189,10 +162,7 @@
     "CaseFieldID": "claimInterest",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -214,10 +184,7 @@
     "CaseFieldID": "interestClaimOptions",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -233,10 +200,7 @@
     "CaseFieldID": "sameRateInterestSelection",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -258,10 +222,7 @@
     "CaseFieldID": "breakDownInterestTotal",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -271,10 +232,7 @@
     "CaseFieldID": "breakDownInterestDescription",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -290,10 +248,7 @@
     "CaseFieldID": "interestClaimFrom",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -309,10 +264,7 @@
     "CaseFieldID": "interestFromSpecificDate",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -322,10 +274,7 @@
     "CaseFieldID": "interestFromSpecificDateDescription",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -341,10 +290,7 @@
     "CaseFieldID": "interestClaimUntil",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -378,16 +324,11 @@
     "CaseFieldID": "specClaimDetailsDocumentFiles",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "caseworker-civil-systemupdate"],
         "CRUD": "R"
       }
     ]
@@ -397,16 +338,11 @@
     "CaseFieldID": "specClaimTimelineList",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "caseworker-civil-systemupdate"],
         "CRUD": "R"
       }
     ]
@@ -416,15 +352,11 @@
     "CaseFieldID": "specPbaAccountsInformationLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -432,10 +364,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentSolicitor1EmailAddress",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "caseworker-civil-admin"],
     "CRUD": "CRU"
   },
   {
@@ -443,17 +372,11 @@
     "CaseFieldID": "specClaimTemplateDocumentFiles",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "caseworker-civil-systemupdate"],
         "CRUD": "R"
       }
     ]
@@ -487,15 +410,11 @@
     "CaseFieldID": "specApplicantCorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -505,17 +424,11 @@
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "judge-profile", "legal-adviser"],
         "CRUD": "R"
       }
     ]
@@ -531,15 +444,11 @@
     "CaseFieldID": "specRespondentCorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -555,15 +464,11 @@
     "CaseFieldID": "specRespondent2CorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -573,17 +478,11 @@
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "legal-adviser",
-          "judge-profile",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["legal-adviser", "judge-profile", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -593,17 +492,11 @@
     "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "legal-adviser",
-          "judge-profile",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["legal-adviser", "judge-profile", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -613,15 +506,11 @@
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -631,15 +520,11 @@
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -649,15 +534,11 @@
     "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -667,15 +548,11 @@
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -685,15 +562,11 @@
     "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -703,15 +576,11 @@
     "CaseFieldID": "specAoSRespondent2CorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -727,16 +596,11 @@
     "CaseFieldID": "defenceRouteRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -746,15 +610,11 @@
     "CaseFieldID": "defenceRouteRequired2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -764,16 +624,11 @@
     "CaseFieldID": "specDefenceAdmittedRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -783,15 +638,11 @@
     "CaseFieldID": "specDefenceAdmitted2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -799,52 +650,37 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim2",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaim",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaim2",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaimOwingAmount",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaimOwingAmount2",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor"],
     "CRUD": "CRU"
   },
   {
@@ -852,16 +688,11 @@
     "CaseFieldID": "detailsOfWhyDoesYouDisputeTheClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -871,15 +702,11 @@
     "CaseFieldID": "detailsOfWhyDoesYouDisputeTheClaim2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -889,16 +716,11 @@
     "CaseFieldID": "specResponseTimelineDocumentFiles",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "caseworker-civil-systemupdate"],
         "CRUD": "R"
       }
     ]
@@ -908,16 +730,11 @@
     "CaseFieldID": "specResponsTimelineDocumentFiles2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "caseworker-civil-systemupdate"],
         "CRUD": "R"
       }
     ]
@@ -925,37 +742,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseTimelineOfEvents",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseTimelineOfEvents2",
-    "UserRoles": [
-      "caseworker-civil-solicitor"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponselistYourEvidenceList",
-    "UserRoles": [
-       "caseworker-civil-solicitor",
-       "CITIZEN-DEFENDANT-PROFILE"
-      ],
-      "CRUD": "CUR"
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
+    "CRUD": "CUR"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimTrack",
-    "UserRoles": [
-      "caseworker-civil-solicitor",
-      "caseworker-civil-admin",
-      "legal-adviser"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "caseworker-civil-admin", "legal-adviser"],
     "CRUD": "CR"
   },
   {
@@ -963,22 +768,15 @@
     "CaseFieldID": "responseClaimMediationSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       },
       {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -988,21 +786,15 @@
     "CaseFieldID": "responseClaimMediationSpec2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       },
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -1012,22 +804,15 @@
     "CaseFieldID": "responseClaimExpertSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       },
       {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -1037,21 +822,15 @@
     "CaseFieldID": "responseClaimExpertSpecRequired2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       },
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -1061,16 +840,11 @@
     "CaseFieldID": "responseClaimCourtLocationRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1080,21 +854,15 @@
     "CaseFieldID": "responseClaimCourtLocation2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       },
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -1104,9 +872,7 @@
     "CaseFieldID": "respondToClaimExperts",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       }
     ]
@@ -1116,9 +882,7 @@
     "CaseFieldID": "respondToClaimExperts2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       }
     ]
@@ -1128,9 +892,7 @@
     "CaseFieldID": "respondToCourtLocation",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       }
     ]
@@ -1140,9 +902,7 @@
     "CaseFieldID": "respondToCourtLocation2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       }
     ]
@@ -1152,21 +912,15 @@
     "CaseFieldID": "responseClaimWitnesses",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       },
       {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -1176,21 +930,15 @@
     "CaseFieldID": "responseClaimWitnesses2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       },
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -1200,15 +948,11 @@
     "CaseFieldID": "SmallClaimHearingInterpreterRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1218,15 +962,11 @@
     "CaseFieldID": "SmallClaimHearingInterpreter2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1236,15 +976,11 @@
     "CaseFieldID": "SmallClaimHearingInterpreterDescription",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1254,15 +990,11 @@
     "CaseFieldID": "smallClaimHearingInterpreterDescription2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1288,10 +1020,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspecGeneric",
-    "UserRoles": [
-        "caseworker-civil-solicitor",
-        "CITIZEN-DEFENDANT-PROFILE"
-    ],
+    "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
 
     "CRUD": "CRUD"
   },
@@ -1312,16 +1041,11 @@
     "CaseFieldID": "defenceAdmitPartPaymentTimeRouteRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1331,15 +1055,11 @@
     "CaseFieldID": "defenceAdmitPartPaymentTimeRouteRequired2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1349,16 +1069,11 @@
     "CaseFieldID": "respondToClaimAdmitPartLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1368,15 +1083,11 @@
     "CaseFieldID": "respondToClaimAdmitPartLRspec2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1386,16 +1097,11 @@
     "CaseFieldID": "defenceAdmitPartEmploymentTypeRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1405,15 +1111,11 @@
     "CaseFieldID": "defenceAdmitPartEmploymentType2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1423,15 +1125,11 @@
     "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspec2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1441,16 +1139,11 @@
     "CaseFieldID": "respondToClaimAdmitPartUnemployedLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1460,15 +1153,11 @@
     "CaseFieldID": "respondToClaimAdmitPartUnemployedLRspec2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1478,15 +1167,11 @@
     "CaseFieldID": "defenceAdmitPartEmploymentTypeRequiredRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1496,15 +1181,11 @@
     "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspecRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1514,15 +1195,11 @@
     "CaseFieldID": "respondToClaimAdmitPartUnemployedLRspecRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1544,16 +1221,11 @@
     "CaseFieldID": "responseClaimAdmitPartEmployer",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1563,15 +1235,11 @@
     "CaseFieldID": "responseClaimAdmitPartEmployer2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1581,15 +1249,11 @@
     "CaseFieldID": "responseClaimAdmitPartEmployerRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1611,16 +1275,11 @@
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1630,15 +1289,11 @@
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1648,15 +1303,11 @@
     "CaseFieldID": "specDefenceFullAdmittedRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1666,15 +1317,11 @@
     "CaseFieldID": "specDefenceFullAdmitted2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1684,16 +1331,11 @@
     "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1703,15 +1345,11 @@
     "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1721,15 +1359,11 @@
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1739,15 +1373,11 @@
     "CaseFieldID": "applicantMPClaimMediationSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1757,15 +1387,11 @@
     "CaseFieldID": "applicant1ClaimExpertSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1775,10 +1401,7 @@
     "CaseFieldID": "deterWithoutHearing",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "APP-SOL-UNSPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-SPEC-PROFILE", "APP-SOL-UNSPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -1798,15 +1421,11 @@
     "CaseFieldID": "applicantMPClaimExpertSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1816,15 +1435,11 @@
     "CaseFieldID": "respondStatementOfTruthHeaderLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1834,9 +1449,7 @@
     "CaseFieldID": "applicant1RespondToClaimExperts",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       }
     ]
@@ -1846,15 +1459,11 @@
     "CaseFieldID": "applicant1ClaimWitnesses",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1864,9 +1473,7 @@
     "CaseFieldID": "applicant1DQRequestedCourt",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       }
     ]
@@ -1877,7 +1484,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -1888,15 +1498,11 @@
     "CaseFieldID": "applicantStatementOfTruthLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1906,17 +1512,11 @@
     "CaseFieldID": "specAoSRespondentInformation",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1926,17 +1526,11 @@
     "CaseFieldID": "specAoSRespondent2Information",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1955,9 +1549,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -1967,18 +1559,12 @@
     "CaseFieldID": "specAoSRespondent2HomeAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "_Comment": "need both because 1v2 same sol only has respondent solicitor 1 role",
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1996,11 +1582,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE",
-          "judge-profile"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE", "judge-profile"],
         "CRUD": "R"
       }
     ]
@@ -2010,17 +1592,11 @@
     "CaseFieldID": "respondent1ClaimResponsePaymentAdmissionForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2030,10 +1606,7 @@
     "CaseFieldID": "respondent1ClaimResponseTypeForSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2043,17 +1616,11 @@
     "CaseFieldID": "respondentMPClaimResponseTypeForSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2063,17 +1630,11 @@
     "CaseFieldID": "specDefenceRouteAmountClaimedLabel2v1",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2083,17 +1644,11 @@
     "CaseFieldID": "specDefenceRouteAmountClaimedLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2103,17 +1658,11 @@
     "CaseFieldID": "specDefenceRouteAmountClaimedRespondent2Label",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2123,17 +1672,11 @@
     "CaseFieldID": "specMPDefenceRouteAmountClaimedLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2143,17 +1686,11 @@
     "CaseFieldID": "specDefenceRouteAdmittedAmountClaimedLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2163,17 +1700,11 @@
     "CaseFieldID": "specDefenceRouteAdmittedAmountClaimed2Label",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2183,17 +1714,11 @@
     "CaseFieldID": "specDefenceRouteAdmittedAmountClaimedLabel2V1",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2203,17 +1728,11 @@
     "CaseFieldID": "specDefenceRouteAdmittedAmountClaimedMPLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2223,17 +1742,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2243,17 +1756,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentLabelRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2263,17 +1770,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentMPLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2283,17 +1784,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentHelpLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2303,17 +1798,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentHelpLabel2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2323,17 +1812,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2343,17 +1826,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel2Respondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2363,17 +1840,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel3",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2383,17 +1854,11 @@
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel4",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2403,17 +1868,11 @@
     "CaseFieldID": "respondent1SpecDefenceResponseDocument",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2423,17 +1882,11 @@
     "CaseFieldID": "respondent2SpecDefenceResponseDocument",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2451,10 +1904,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2464,17 +1914,11 @@
     "CaseFieldID": "specClaimResponseTimelineList2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2484,17 +1928,11 @@
     "CaseFieldID": "specDefenceRouteManualTimelineLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2504,16 +1942,11 @@
     "CaseFieldID": "responseClaimMediationSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2523,17 +1956,11 @@
     "CaseFieldID": "responseMPClaimMediationSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2543,16 +1970,11 @@
     "CaseFieldID": "responseClaimMediationSpecLabelRes2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -2571,11 +1993,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE",
-          "APP-SOL-UNSPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE", "APP-SOL-UNSPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2594,11 +2012,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE",
-          "APP-SOL-UNSPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE", "APP-SOL-UNSPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2608,17 +2022,11 @@
     "CaseFieldID": "responseClaimExpertSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2628,17 +2036,11 @@
     "CaseFieldID": "responseClaimCourtLocationLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2656,10 +2058,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2669,17 +2068,11 @@
     "CaseFieldID": "respondent1DQRemoteHearingLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-UNSPEC-PROFILE", "RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-UNSPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CR"
       },
       {
@@ -2699,17 +2092,11 @@
     "CaseFieldID": "respondent2DQRemoteHearingLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-UNSPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-UNSPEC-PROFILE", "RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "CR"
       },
       {
@@ -2729,17 +2116,11 @@
     "CaseFieldID": "respondent2DQHearingSmallClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2757,10 +2138,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2778,9 +2156,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -2798,10 +2174,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2811,17 +2184,11 @@
     "CaseFieldID": "specRespondent2DQDisclosureOfNonElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2831,10 +2198,7 @@
     "CaseFieldID": "applicant1DQRemoteHearingLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -2863,10 +2227,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2876,17 +2237,11 @@
     "CaseFieldID": "specRespondent2DQDisclosureOfElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2896,17 +2251,11 @@
     "CaseFieldID": "respondent1DQFutureApplications",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2924,9 +2273,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -2936,17 +2283,11 @@
     "CaseFieldID": "additionalInformationForJudge",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2964,9 +2305,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -2976,17 +2315,11 @@
     "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2996,17 +2329,11 @@
     "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabelBothDefendants",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3016,16 +2343,11 @@
     "CaseFieldID": "specFinancialDetailsPurpose",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3043,9 +2365,7 @@
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3063,9 +2383,7 @@
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3075,16 +2393,11 @@
     "CaseFieldID": "respondent2BankAccountList",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3102,9 +2415,7 @@
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3122,9 +2433,7 @@
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3142,9 +2451,7 @@
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3154,16 +2461,11 @@
     "CaseFieldID": "specDefendant2Debts",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3173,16 +2475,11 @@
     "CaseFieldID": "respondent2LoanCreditOption",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3192,16 +2489,11 @@
     "CaseFieldID": "respondent2LoanCreditDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3211,17 +2503,11 @@
     "CaseFieldID": "respondent1CourtOrderPayment",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3239,10 +2525,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3260,10 +2543,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3273,17 +2553,11 @@
     "CaseFieldID": "respondent2CourtOrderPaymentOption",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3293,17 +2567,11 @@
     "CaseFieldID": "respondent2CourtOrderDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3321,9 +2589,7 @@
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3333,16 +2599,11 @@
     "CaseFieldID": "specDefendant2SelfEmploymentDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3360,9 +2621,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3372,16 +2631,11 @@
     "CaseFieldID": "respondent2DQHomeDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3399,9 +2653,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3411,16 +2663,11 @@
     "CaseFieldID": "respondent2DQCarerAllowanceCredit",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3438,9 +2685,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3450,16 +2695,11 @@
     "CaseFieldID": "respondent2DQCarerAllowanceCreditFullAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3477,9 +2717,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3489,16 +2727,11 @@
     "CaseFieldID": "respondent2DQRecurringIncome",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3516,9 +2749,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3528,16 +2759,11 @@
     "CaseFieldID": "respondent2DQRecurringIncomeFA",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3555,9 +2781,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3575,9 +2799,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3587,16 +2809,11 @@
     "CaseFieldID": "respondent2DQRecurringExpenses",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3606,16 +2823,11 @@
     "CaseFieldID": "respondent2DQRecurringExpensesFA",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3625,17 +2837,11 @@
     "CaseFieldID": "respondent1RepaymentPlanLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3653,10 +2859,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3666,17 +2869,11 @@
     "CaseFieldID": "respondent2RepaymentPlan",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3686,17 +2883,11 @@
     "CaseFieldID": "respondent2RepaymentPlanLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3706,16 +2897,11 @@
     "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3725,11 +2911,7 @@
     "CaseFieldID": "applicant1DQFutureApplicationsLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "APP-SOL-SPEC-PROFILE", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3739,16 +2921,11 @@
     "CaseFieldID": "applicant1DQFutureApplications",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3758,16 +2935,11 @@
     "CaseFieldID": "applicant1AdditionalInformationForJudge",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3777,17 +2949,11 @@
     "CaseFieldID": "defendantSingleResponseToBothClaimantsLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-systemupdate", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3797,17 +2963,11 @@
     "CaseFieldID": "defendantSingleResponseToBothClaimants",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-systemupdate", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3817,17 +2977,11 @@
     "CaseFieldID": "claimant1ClaimResponseTypeForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-systemupdate", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3837,17 +2991,11 @@
     "CaseFieldID": "claimant2ClaimResponseTypeForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-systemupdate", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3857,17 +3005,11 @@
     "CaseFieldID": "claimant1ClaimResponseTypeForSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-systemupdate", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3877,17 +3019,11 @@
     "CaseFieldID": "claimant2ClaimResponseTypeForSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-systemupdate", "caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -3897,18 +3033,11 @@
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE",
-          "judge-profile"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE", "judge-profile"],
         "CRUD": "R"
       }
     ]
@@ -3918,9 +3047,7 @@
     "CaseFieldID": "respondent2ClaimResponseTypeForSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -3930,17 +3057,11 @@
     "CaseFieldID": "specFullAdmissionOrPartAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3950,17 +3071,11 @@
     "CaseFieldID": "sameSolicitorSameResponse",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3970,17 +3085,11 @@
     "CaseFieldID": "specPaidLessAmountOrDisputesOrPartAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -3990,17 +3099,11 @@
     "CaseFieldID": "specFullDefenceOrPartAdmission1V1",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4010,17 +3113,11 @@
     "CaseFieldID": "specFullDefenceOrPartAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4030,16 +3127,11 @@
     "CaseFieldID": "respondentClaimResponseTypeForSpecGeneric",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4049,17 +3141,11 @@
     "CaseFieldID": "specDisputesOrPartAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4069,10 +3155,7 @@
     "CaseFieldID": "applicant1DQHearingLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -4091,10 +3174,7 @@
     "CaseFieldID": "applicant1DQSmallClaimHearing",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -4113,9 +3193,7 @@
     "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -4133,10 +3211,7 @@
     "CaseFieldID": "applicant1ProceedWithClaimSpec2v1",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -4163,10 +3238,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4176,17 +3248,11 @@
     "CaseFieldID": "respondent2PartnerAndDependent",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4205,6 +3271,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
@@ -4219,9 +3287,7 @@
     "CaseFieldID": "liftBreathing",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -4239,17 +3305,11 @@
     "CaseFieldID": "disabilityPremiumPaymentsLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4267,10 +3327,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4288,10 +3345,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4301,17 +3355,11 @@
     "CaseFieldID": "disabilityPremiumPaymentsRespondent2Label",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4321,17 +3369,11 @@
     "CaseFieldID": "disabilityPremiumPaymentsRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4341,17 +3383,11 @@
     "CaseFieldID": "severeDisabilityPremiumPaymentsRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4361,17 +3397,11 @@
     "CaseFieldID": "specPartAdmitPaid",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4381,17 +3411,11 @@
     "CaseFieldID": "specFullAdmitPaid",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4401,17 +3425,11 @@
     "CaseFieldID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4421,17 +3439,11 @@
     "CaseFieldID": "responseClaimAdmitFullClaimWhenToPaySpecLabelBothDefendants",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4441,17 +3453,11 @@
     "CaseFieldID": "partAdmissionWhenWillDefendantPayImmediatelyLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4461,17 +3467,11 @@
     "CaseFieldID": "partAdmissionWhenWillDefendantPayImmediately2Label",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4481,17 +3481,11 @@
     "CaseFieldID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlanLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4501,17 +3495,11 @@
     "CaseFieldID": "partAdmissionWhenWillDefendantPaySuggestRepaymentPlan2Label",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4521,16 +3509,11 @@
     "CaseFieldID": "specFinancialDetailsPurposeRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRUD"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -4540,17 +3523,11 @@
     "CaseFieldID": "minusBeforeOverdrawnAmount",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4560,17 +3537,11 @@
     "CaseFieldID": "minusBeforeOverdrawnAmount2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4580,17 +3551,11 @@
     "CaseFieldID": "minusBeforeOverdrawnAmountRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4600,17 +3565,11 @@
     "CaseFieldID": "minusBeforeOverdrawnAmount2Respondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4620,17 +3579,11 @@
     "CaseFieldID": "homeOptionsTitleLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4640,17 +3593,11 @@
     "CaseFieldID": "homeOptionsTitleLRspecRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4660,17 +3607,11 @@
     "CaseFieldID": "respondent1PartnerAndDependentLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4680,17 +3621,11 @@
     "CaseFieldID": "respondent2PartnerAndDependentLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4700,17 +3635,11 @@
     "CaseFieldID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4720,17 +3649,11 @@
     "CaseFieldID": "responseClaimAdmitPartOfClaimEmploymentDeclarationLabelRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4740,17 +3663,11 @@
     "CaseFieldID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4760,17 +3677,11 @@
     "CaseFieldID": "responseClaimAdmitPartOfClaimEmploymentSpecLabel2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4780,17 +3691,11 @@
     "CaseFieldID": "respondent1CourtOrderPaymentLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4800,17 +3705,11 @@
     "CaseFieldID": "respondent1DQIncomeAndExpenseLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4820,17 +3719,11 @@
     "CaseFieldID": "respondent2DQIncomeAndExpenseLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4840,17 +3733,11 @@
     "CaseFieldID": "respondent1DQIncomeAndExpenseLabelFullAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4860,17 +3747,11 @@
     "CaseFieldID": "respondent2DQIncomeAndExpenseLabelFullAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4880,17 +3761,11 @@
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4900,17 +3775,11 @@
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspecLabel2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4920,17 +3789,11 @@
     "CaseFieldID": "specClaimResponseTimelineLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4940,17 +3803,11 @@
     "CaseFieldID": "respondent1DQWitnessesLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4960,17 +3817,11 @@
     "CaseFieldID": "respondent1SmallClaimWitnessesLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -4980,17 +3831,11 @@
     "CaseFieldID": "respondent1DQHearingFastClaimLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5000,17 +3845,11 @@
     "CaseFieldID": "respondent1DQFutureApplicationsLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5020,17 +3859,11 @@
     "CaseFieldID": "responseClaimMediationSpecLabel2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5040,17 +3873,11 @@
     "CaseFieldID": "respondent1DQWitnessesRequiredSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5060,17 +3887,11 @@
     "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5080,16 +3901,11 @@
     "CaseFieldID": "applicant1DQRequestedCourtSpecLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5099,16 +3915,11 @@
     "CaseFieldID": "applicant1SmallClaimWitnessesLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "RES-SOL-ONE-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5160,10 +3971,7 @@
     "CaseFieldID": "claimantCounterClaimLabel_2v1",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5182,9 +3990,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -5203,11 +4009,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5227,9 +4029,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -5239,10 +4039,7 @@
     "CaseFieldID": "applicant1DQLanguage",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -5261,16 +4058,11 @@
     "CaseFieldID": "applicant2DQLanguage",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "RES-SOL-ONE-UNSPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5280,9 +4072,7 @@
     "CaseFieldID": "paymentTypePBASpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
@@ -5301,17 +4091,11 @@
     "CaseFieldID": "respondentPayImmediatelyLabel",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5329,10 +4113,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5350,10 +4131,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5363,10 +4141,7 @@
     "CaseFieldID": "showResponseOneVOneFlag",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -5385,16 +4160,11 @@
     "CaseFieldID": "respondent1DocumentURL",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "GS_profile"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "GS_profile"],
         "CRUD": "R"
       }
     ]
@@ -5404,16 +4174,11 @@
     "CaseFieldID": "respondent2DocumentURL",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "GS_profile"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "GS_profile"],
         "CRUD": "R"
       }
     ]
@@ -5423,16 +4188,11 @@
     "CaseFieldID": "respondent2DocumentGeneration",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "GS_profile"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "GS_profile"],
         "CRUD": "R"
       }
     ]
@@ -5442,10 +4202,7 @@
     "CaseFieldID": "applicant1DQWitnessesSmallClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -5464,17 +4221,11 @@
     "CaseFieldID": "specAoSCompanyOrganisationRespondentInformation",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5484,17 +4235,11 @@
     "CaseFieldID": "specAoSCompanyOrganisationRespondent2Information",
     "AccessControl": [
       {
-        "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
+        "UserRoles": ["RES-SOL-ONE-SPEC-PROFILE", "RES-SOL-TWO-SPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5504,10 +4249,7 @@
     "CaseFieldID": "respondent1DQWitnessesSmallClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
+        "UserRoles": ["judge-profile", "legal-adviser"],
         "CRUD": "R"
       }
     ]
@@ -5517,10 +4259,7 @@
     "CaseFieldID": "respondent2DQWitnessesSmallClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
+        "UserRoles": ["judge-profile", "legal-adviser"],
         "CRUD": "R"
       }
     ]
@@ -5538,10 +4277,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-UNSPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5559,11 +4295,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -5573,15 +4305,11 @@
     "CaseFieldID": "bulkCustomerId",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -5591,15 +4319,11 @@
     "CaseFieldID": "sdtRequestId",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -5609,15 +4333,11 @@
     "CaseFieldID": "sdtRequestIdFromSdt",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-admin"],
         "CRUD": "R"
       }
     ]
@@ -5627,11 +4347,7 @@
     "CaseFieldID": "specApplicant1DQDisclosureOfElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["APP-SOL-UNSPEC-PROFILE", "APP-SOL-SPEC-PROFILE", "CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -5669,10 +4385,7 @@
     "CaseFieldID": "specRespondent1Represented",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin"
-        ],
+        "UserRoles": ["caseworker-civil-solicitor", "caseworker-civil-admin"],
         "CRUD": "CRU"
       }
     ]
@@ -5682,17 +4395,11 @@
     "CaseFieldID": "specRespondent2Represented",
     "AccessControl": [
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
-        ],
+        "UserRoles": ["caseworker-civil-admin", "caseworker-civil-solicitor"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
+        "UserRoles": ["judge-profile", "legal-adviser"],
         "CRUD": "R"
       }
     ]

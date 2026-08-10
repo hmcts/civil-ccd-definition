@@ -25,7 +25,7 @@
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "breathingSpaceLabel",
-    "FieldShowCondition": "totalClaimAmount=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "enterBreathing=\"*\" AND liftBreathing!=\"*\"",
     "TabFieldDisplayOrder": 0
   },
   {
