@@ -45,7 +45,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async UploadMediationDocumentsForDefendant2() {
+  async UploadMediationDocumentsD2() {
     const { uploadMediationDocumentsActions } = this.defendantActionsFactory;
     await super.retryCCDEvent(
       async () => {
