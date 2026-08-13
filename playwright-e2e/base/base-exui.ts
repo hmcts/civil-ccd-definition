@@ -81,11 +81,11 @@ export default abstract class BaseExui extends BaseApi {
     ccdEvent: CCDEvent,
     user: User,
     validTask: WATask,
-    { 
-      retries = config.exui.eventRetries, 
-      verifySuccessEvent = true, 
+    {
+      retries = config.exui.eventRetries,
+      verifySuccessEvent = true,
       camundaProcess = true,
-      isCCDEvent = true, 
+      isCCDEvent = true,
     } = {},
   ) {
     await super.setupBankHolidays();
@@ -93,7 +93,7 @@ export default abstract class BaseExui extends BaseApi {
     const waTask = await super.retrieveAndAssignWATask(user, validTask);
     while (retries >= 0) {
       try {
-        if(isCCDEvent) {
+        if (isCCDEvent) {
           await this.exuiDashboardActions.startCCDEvent(ccdEvent);
         }
         await this.exuiDashboardActions.startWAEvent(ccdEvent, waTask);
@@ -164,6 +164,55 @@ export default abstract class BaseExui extends BaseApi {
     await confirmActions();
     await this.exuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+  }
+
+  @Step(classKey)
+  async retryServiceRequestEvent(
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
+    { retries = config.exui.eventRetries } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    while (retries >= 0) {
+      try {
+        await this.exuiDashboardActions.goToServiceRequestTab();
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Service request failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
+    await confirmActions();
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+  }
+
+  @Step(classKey)
+  async retryRefundEvent(
+    goToRefunds: () => Promise<void>,
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
+    { retries = config.exui.eventRetries } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    while (retries >= 0) {
+      try {
+        await goToRefunds();
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Refund event failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
+    await confirmActions();
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
   }
 }

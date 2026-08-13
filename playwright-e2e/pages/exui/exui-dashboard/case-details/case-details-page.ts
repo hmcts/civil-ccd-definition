@@ -112,6 +112,19 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     );
   }
 
+  async retryClickServiceRequestTab() {
+    await super.retryClickByText(
+      tabs.serviceRequest.title,
+      () => [
+        super.expectUrlEnd('#Service%20Request', {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+      ],
+      () => super.clickByText(tabs.summary.title),
+      { retries: 3, message: 'Clicking on service request tab failed, trying again' },
+    );
+  }
+
   async requestHearing() {
     await this.retryTabAction(links.requestHearing.label, tabs.hearings.selector, () =>
       super.clickByText(links.requestHearing.label),
@@ -131,14 +144,21 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   }
 
   async askFollowUpQuestion() {
-    await this.retryTabAction(buttons.askFollowUpQuestion.selector, tabs.queries.selector, async() => {
+    await this.retryTabAction(
+      buttons.askFollowUpQuestion.selector,
+      tabs.queries.selector,
+      async () => {
         await super.clickBySelector(links.firstQueryLink.selector);
         await super.clickBySelector(buttons.askFollowUpQuestion.selector);
-      }
+      },
     );
   }
 
-  private async retryTabAction(actionName: string, tabSelector: string, action: () => Promise<void>) {
+  private async retryTabAction(
+    actionName: string,
+    tabSelector: string,
+    action: () => Promise<void>,
+  ) {
     await super.retryAction(
       action,
       async () => {
@@ -239,7 +259,10 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
           timeout: config.exui.pageSubmitTimeout,
         }),
       undefined,
-      { retries: 2, message: `Starting event with url: ${ccdEvents.QUERY_MANAGEMENT_RAISE.id} failed, trying again` },
+      {
+        retries: 2,
+        message: `Starting event with url: ${ccdEvents.QUERY_MANAGEMENT_RAISE.id} failed, trying again`,
+      },
     );
   }
 

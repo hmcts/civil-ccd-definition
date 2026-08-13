@@ -341,4 +341,46 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async ReturnRefundToCaseworker() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      () => refundActions.goToRefunds(),
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.returnToCaseworker();
+      },
+      async () => {
+        await refundActions.refundConfirmReturnedPage();
+      },
+    );
+  }
+
+  async ApproveRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      () => refundActions.goToRefunds(),
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.approve();
+      },
+      async () => {
+        await refundActions.refundConfirmApprovedPage();
+      },
+    );
+  }
+
+  async RejectRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      () => refundActions.goToRefunds(),
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.reject();
+      },
+      async () => {
+        await refundActions.refundConfirmRejectedPage();
+      },
+    );
+  }
 }

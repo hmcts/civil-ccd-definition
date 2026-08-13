@@ -85,7 +85,7 @@ export const buttons = {
   },
   askFollowUpQuestion: {
     title: 'Ask a follow-up question',
-    selector: "#ask-follow-up-question",
+    selector: '#ask-follow-up-question',
   },
 };
 
@@ -94,8 +94,8 @@ export const links = {
     label: 'Request a hearing',
   },
   firstQueryLink: {
-    selector: '.govuk-table__cell.query-list__cell.query-list__cell--first button'
-  }
+    selector: '.govuk-table__cell.query-list__cell.query-list__cell--first button',
+  },
 };
 
 export const containers = {
@@ -116,8 +116,6 @@ export const subheadings = {
     bundleName: 'Bundle name',
   },
 };
-
-
 
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
   `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;

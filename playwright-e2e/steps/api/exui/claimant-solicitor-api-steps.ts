@@ -395,11 +395,10 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     const { createClaimAfterPaymentDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const paidCreateClaimAfterPaymentDTO =
-      await createClaimAfterPaymentDataBuilder.build(
-        'paid',
-        this.ccdCaseData?.id,
-      );
+    const paidCreateClaimAfterPaymentDTO = await createClaimAfterPaymentDataBuilder.build(
+      'paid',
+      this.ccdCaseData?.id,
+    );
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.updatePaymentForClaimIssue(
       claimantSolicitorUser,
@@ -413,6 +412,12 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const createClaimAfterPaymentSchema =
       await createClaimAfterPaymentSchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(createClaimAfterPaymentSchema, this.ccdCaseData);
+  }
+
+  async MakePaymentForRefund() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const { paymentRequests } = this.requestsFactory;
+    await paymentRequests.createRefundablePayment(claimantSolicitorUser, this.ccdCaseData.id!);
   }
 
   async MakePaymentForHearingFee() {
@@ -973,7 +978,6 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
     );
 
-
     const { defaultJudgementSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defaultJudgementSchema =
       await defaultJudgementSchemaBuilder.build1v1(caseDataBeforeSubmission);
@@ -1065,7 +1069,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     const { trialReadinessSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const trialReadinessSchema = await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission);
+    const trialReadinessSchema =
+      await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission);
     ZodHelper.safeParse(trialReadinessSchema, this.ccdCaseData);
   }
 }

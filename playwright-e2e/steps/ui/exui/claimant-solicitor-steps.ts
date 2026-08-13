@@ -761,4 +761,38 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async RequestRefund() {
+    const { refundActions } = this.claimantSolicitorActionsFactory;
+    await super.retryServiceRequestEvent(
+      async () => {
+        await refundActions.review();
+        await refundActions.issueRefund();
+        await refundActions.selectFee();
+        await refundActions.selectAmendedClaim();
+        await refundActions.enterContactInformation();
+        await refundActions.refundRequestSubmit();
+      },
+      async () => {
+        await refundActions.refundConfirmSubmittedPage();
+      },
+    );
+  }
+
+  async AmendReturnedRefund() {
+    const { refundActions } = this.claimantSolicitorActionsFactory;
+    await super.retryRefundEvent(
+      () => refundActions.goToRefunds(),
+      async () => {
+        await refundActions.reviewRefund();
+        await refundActions.changeRefundDetails();
+        await refundActions.changeReason();
+        await refundActions.selectSystemTechnicalError();
+        await refundActions.refundRequestSubmit();
+      },
+      async () => {
+        await refundActions.refundConfirmSubmittedPage();
+      },
+    );
+  }
 }

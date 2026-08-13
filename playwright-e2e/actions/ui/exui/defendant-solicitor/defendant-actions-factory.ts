@@ -17,6 +17,8 @@ import UploadMediationDocumentsActions from '../claimant-solicitor/upload-mediat
 import UploadMediationDocumentsPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/upload-mediation-documents/upload-mediation-documents-page-factory';
 import QueryManagementActions from '../common/query-management/query-management-actions.ts';
 import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory.ts';
+import RefundActions from '../refunds/refund-actions';
+import RefundPageFactory from '../../../../pages/exui/refunds/refund-page-factory';
 
 export default class DefendantActionsFactory extends BasePageActionsFactory {
   get defendantResponseActions() {
@@ -75,8 +77,12 @@ export default class DefendantActionsFactory extends BasePageActionsFactory {
       this.testData,
     );
   }
-  
+
   get queryManagementActions() {
     return new QueryManagementActions(new QueryManagementPageFactory(this.page), this.testData);
+  }
+
+  get refundActions() {
+    return new RefundActions(new RefundPageFactory(this.page), this.testData);
   }
 }

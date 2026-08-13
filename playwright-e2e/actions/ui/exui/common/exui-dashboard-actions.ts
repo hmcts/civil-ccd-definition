@@ -61,6 +61,12 @@ export default class ExuiDashboardActions extends BaseApi {
     await caseDetailsPage.retryClickQueriesTab();
   }
 
+  async goToServiceRequestTab() {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
+    await caseDetailsPage.retryClickServiceRequestTab();
+  }
+
   async signOut() {
     const { navBar } = this.exuiDashboardPageFactory;
     await navBar.clickSignOut();
