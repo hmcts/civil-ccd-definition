@@ -163,5 +163,25 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ATTACH_SCANNED_DOCS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
