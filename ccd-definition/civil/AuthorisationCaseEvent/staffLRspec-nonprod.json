@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
-  }
-]
