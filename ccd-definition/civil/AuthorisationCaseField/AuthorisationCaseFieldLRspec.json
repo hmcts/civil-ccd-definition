@@ -1480,21 +1480,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "breathingSpaceLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantStatementOfTruthLabel",
     "AccessControl": [
       {
@@ -3253,49 +3238,6 @@
       },
       {
         "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "enterBreathing",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "APP-SOL-UNSPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "liftBreathing",
-    "AccessControl": [
-      {
-        "UserRoles": ["APP-SOL-SPEC-PROFILE"],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
         "CRUD": "R"
       }
     ]
