@@ -3252,7 +3252,10 @@
         "CRUD": "CRU"
       },
       {
-        "UserRoles": ["caseworker-civil-admin", "APP-SOL-SPEC-PROFILE"],
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "APP-SOL-SPEC-PROFILE"
+        ],
         "CRUD": "R"
       }
     ]
