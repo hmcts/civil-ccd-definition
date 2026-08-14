@@ -17,9 +17,9 @@ const ignore = {
   specClaimTemplateDocumentFiles: z.any().optional(),
 }
 
-const createClaimSpecAfterPaymentLRSchemaComponents = {
+const createClaimSpecAfterPaymentSchemaComponents = {
   createClaimSpecAfterPayment,
   ignore,
 };
 
-export default createClaimSpecAfterPaymentLRSchemaComponents;
+export default createClaimSpecAfterPaymentSchemaComponents;

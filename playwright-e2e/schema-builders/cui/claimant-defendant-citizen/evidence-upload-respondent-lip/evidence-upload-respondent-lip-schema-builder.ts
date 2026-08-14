@@ -3,10 +3,10 @@ import BaseSchemaBuilder from '../../../../base/base-schema-builder';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';
-import createClaimSpecAfterPaymentLIPSchemaComponents from './create-claim-spec-after-payment-lip-schema-builder-components';
+import evidenceUploadRespondentLipSchemaBuilderComponents from './evidence-upload-respondent-lip-schema-builder-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
-export default class CreateClaimSpecAfterPaymentLIPSchemaBuilder extends BaseSchemaBuilder {
+export default class EvidenceUploadRespondentLipSchemaBuilder extends BaseSchemaBuilder {
   async build(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission);
   }
@@ -17,7 +17,7 @@ export default class CreateClaimSpecAfterPaymentLIPSchemaBuilder extends BaseSch
     }) as z.ZodObject<any>;
 
     return baseSchema.extend({
-      ...createClaimSpecAfterPaymentLIPSchemaComponents,
+      ...evidenceUploadRespondentLipSchemaBuilderComponents,
     });
   }
 }

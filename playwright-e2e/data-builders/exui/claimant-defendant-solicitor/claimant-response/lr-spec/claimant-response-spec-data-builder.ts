@@ -1,5 +1,4 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import claimantResponseSpecData from './claimant-response-spec-data-components';
 import ClaimType from '../../../../../constants/cases/claim-type';
@@ -11,11 +10,11 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildIntermediateRejectFullDefence() {
+  async buildInterRejectFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
-  async buildIntermediateProceed1v2DS() {
+  async buildInterProceed1v2DS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
@@ -61,7 +60,7 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildIntermediateRejectPartAdmit() {
+  async buildInterRejectPartAdmit() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimantResponseSpecType: ClaimantResponseSpecType.REJECT_PART_ADMIT,
@@ -175,17 +174,6 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
     claimantResponseSpecType?: ClaimantResponseSpecType;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
-    const defenceResponseDocumentSpec =
-      claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
-      claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
-      claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
-      claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID
-        ? await civilServiceRequests.uploadTestDocument(claimantSolicitorUser)
-        : undefined;
-    const frcSupportingDocument =
-      claimTrack === ClaimTrack.INTERMEDIATE_CLAIM
-        ? await civilServiceRequests.uploadTestDocument(claimantSolicitorUser)
-        : undefined;
 
     const eventData: Record<string, unknown> = {};
 
@@ -196,19 +184,19 @@ export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
       claimantResponseSpecData.ccjPaymentPaidSome(claimantResponseSpecType),
       claimantResponseSpecData.intentionToSettle(claimantResponseSpecType),
       claimantResponseSpecData.fixedCost(claimantResponseSpecType),
-      claimantResponseSpecData.claimantDefenceResponseDocument(
-        defenceResponseDocumentSpec,
+      await claimantResponseSpecData.claimantDefenceResponseDocument(
         claimantResponseSpecType,
+        civilServiceRequests,
       ),
       claimantResponseSpecData.mediationContactInformation(claimTrack, claimantResponseSpecType),
       claimantResponseSpecData.mediationAvailability(claimTrack, claimantResponseSpecType),
       claimantResponseSpecData.determinationWithoutHearing(claimTrack, claimantResponseSpecType),
       claimantResponseSpecData.fileDirectionsQuestionnaire(claimTrack, claimantResponseSpecType),
       claimantResponseSpecData.fixedRecoverableCosts(claimTrack, claimantResponseSpecType),
-      claimantResponseSpecData.fixedRecoverableCostsIntermediate(
+      await claimantResponseSpecData.fixedRecoverableCostsIntermediate(
         claimTrack,
         claimantResponseSpecType,
-        frcSupportingDocument,
+        civilServiceRequests,
       ),
       claimantResponseSpecData.disclosureOfElectronicDocuments(claimTrack, claimantResponseSpecType),
       claimantResponseSpecData.disclosureOfNonElectronicDocuments(claimTrack, claimantResponseSpecType),
