@@ -2480,7 +2480,7 @@
     "FieldType": "BreathingSpaceStartInfo",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Label": ""
+    "Label": " "
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2488,7 +2488,7 @@
     "FieldType": "BreathingSpaceLiftInfo",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Label": ""
+    "Label": " "
   },
   {
     "CaseTypeID": "CIVIL",
