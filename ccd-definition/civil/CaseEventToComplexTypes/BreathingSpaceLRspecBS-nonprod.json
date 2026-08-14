@@ -29,7 +29,7 @@
     "CaseFieldID": "liftBreathing",
     "ListElementCode": "expectedEnd",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "BreathingSpaceLiftInfo",
