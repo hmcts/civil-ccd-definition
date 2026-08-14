@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const nonEmptyString = z.string().min(1);
 
-const createClaimSpecAfterPaymentLIPSchemaComponents = {
+const createClaimSpecAfterPaymentLipSchemaComponents = {
   issueDate: nonEmptyString,
   nextDeadline: nonEmptyString,
   claimNotificationDate: nonEmptyString,
@@ -10,4 +10,4 @@ const createClaimSpecAfterPaymentLIPSchemaComponents = {
   respondent1ResponseDeadline: nonEmptyString,
 };
 
-export default createClaimSpecAfterPaymentLIPSchemaComponents;
+export default createClaimSpecAfterPaymentLipSchemaComponents;

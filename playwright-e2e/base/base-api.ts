@@ -203,11 +203,10 @@ export default abstract class BaseApi extends BaseTestData {
       user,
       payload,
       this.ccdCaseData?.id ?? 'draft',
-      expectedState,
     );
 
     await this.waitForFinishedBusinessProcess(eventCaseData.id);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id, undefined, expectedState);
     return eventCaseData;
   }
 
@@ -232,12 +231,18 @@ export default abstract class BaseApi extends BaseTestData {
     );
   }
 
-  protected async fetchAndSetCCDCaseData(caseId?: number, user?: User) {
+  protected async fetchAndSetCCDCaseData(
+    caseId?: number,
+    user?: User,
+    expectedCaseState?: CaseState,
+  ) {
     const { ccdRequests } = this.requestsFactory;
     await this.setupUserData(user ?? civilSystemUpdate);
     super.setCCDCaseData = await ccdRequests.fetchCCDCaseData(
       user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
+      200,
+      expectedCaseState,
     );
   }
 

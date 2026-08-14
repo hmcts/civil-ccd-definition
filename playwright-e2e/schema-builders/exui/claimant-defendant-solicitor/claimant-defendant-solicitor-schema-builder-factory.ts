@@ -4,7 +4,7 @@ import AddDefendantLitigationFriendSchemaBuilder from './add-defendant-litigatio
 import AddOrAmendClaimDocumentsSchemaBuilder from './add-or-amend-claim-documents/unspec/add-or-amend-claim-documents-schema-builder';
 import ClaimantResponseSchemaBuilder from './claimant-response/unspec/claimant-response-schema-builder';
 import ClaimantResponseSpecSchemaBuilder from './claimant-response/lr-spec/claimant-response-spec-schema-builder';
-import CreateClaimSpecAfterPaymentLRSchemaBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-lr-schema-builder';
+import CreateClaimSpecAfterPaymentSchemaBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-schema-builder';
 import CreateClaimAfterPaymentSchemaBuilder from './create-claim-after-payment/unspec/create-claim-after-payment-schema-builder';
 import CreateClaimSpecSchemaBuilder from './create-claim/lr-spec/create-claim-spec-schema-builder';
 import CreateClaimSchemaBuilder from './create-claim/unspec/create-claim-schema-builder';
@@ -37,7 +37,7 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
   }
 
   get createClaimSpecAfterPaymentSchemaBuilder() {
-    return new CreateClaimSpecAfterPaymentLRSchemaBuilder(this.testData);
+    return new CreateClaimSpecAfterPaymentSchemaBuilder(this.testData);
   }
 
   get acknowledgeClaimSchemaBuilder() {

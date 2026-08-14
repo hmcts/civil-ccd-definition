@@ -11,14 +11,14 @@ test.describe('1v2DS spec intermediate track api journey', {
     JudgeApiSteps,
     HearingCenterAdminApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v2DS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v2DS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence();
-    await DefendantSolicitor2SpecApiSteps.RespondIntermediateFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectFullDefence();
-    await JudgeApiSteps.GenerateDirectionsOrderIntermediate();
+    await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
+    await DefendantSolicitor2SpecApiSteps.RespondInterFullDefence();
+    await ClaimantSolicitorSpecApiSteps.RespondInterRejectFullDefence();
+    await JudgeApiSteps.GenerateDirectionsOrderInter();
     await DefendantSolicitor1SpecApiSteps.EvidenceUploadFast();
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
   });

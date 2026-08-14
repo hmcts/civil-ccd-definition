@@ -1,9 +1,9 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import { createClaimSpecAfterPaymentDTO } from './create-claim-spec-after-payment-lr-data-builder-components';
+import { createClaimSpecAfterPaymentDTO } from './create-claim-spec-after-payment-data-builder-components';
 
 @AllMethodsStep()
-export default class CreateClaimSpecAfterPaymentLrDataBuilder extends BaseDataBuilder {
+export default class CreateClaimSpecAfterPaymentDataBuilder extends BaseDataBuilder {
   async build(paymentStatus: string, caseId?: number) {
     return this.buildData(paymentStatus, caseId);
   }
