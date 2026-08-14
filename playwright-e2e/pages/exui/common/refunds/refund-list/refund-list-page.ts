@@ -1,7 +1,7 @@
-import BasePage from '../../../../base/base-page';
-import urls from '../../../../config/urls';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { getFormattedCaseId } from '../../mixin-pages/exui-page/exui-content';
+import BasePage from '../../../../../base/base-page';
+import urls from '../../../../../config/urls';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content';
 import { containers, headings, links, sortHeaders, subheadings } from './refund-list-content';
 
 const getRefundListCaseId = (caseId: number) => getFormattedCaseId(caseId).replace(/^#/, ''); //remove #

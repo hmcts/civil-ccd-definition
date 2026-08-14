@@ -24,8 +24,8 @@ import UploadMediationDocumentsActions from './upload-mediation-documents/upload
 import UploadMediationDocumentsPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/upload-mediation-documents/upload-mediation-documents-page-factory';
 import QueryManagementActions from '../common/query-management/query-management-actions';
 import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory.ts';
-import RefundActions from '../refunds/refund-actions';
-import RefundPageFactory from '../../../../pages/exui/refunds/refund-page-factory';
+import RefundActions from '../common/refunds/refund-actions';
+import RefundPageFactory from '../../../../pages/exui/common/refunds/refund-page-factory';
 
 export default class ClaimantSolicitorActionsFactory extends BasePageActionsFactory {
   get createClaimActions() {

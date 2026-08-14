@@ -1,6 +1,6 @@
-import BasePage from '../../../../base/base-page';
-import ExuiServiceRequestPage from '../../mixin-pages/exui-service-request-page/exui-service-request-page';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
+import BasePage from '../../../../../base/base-page';
+import ExuiServiceRequestPage from '../../../mixin-pages/exui-service-request-page/exui-service-request-page';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import { containers, headings, links } from './refund-submit-content';
 
 @AllMethodsStep()

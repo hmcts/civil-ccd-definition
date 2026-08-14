@@ -1,7 +1,7 @@
-import BaseTestData from '../../../../base/base-test-data';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-utils/test-data';
-import RefundPageFactory from '../../../../pages/exui/refunds/refund-page-factory';
+import BaseTestData from '../../../../../base/base-test-data';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import TestData from '../../../../../models/test-utils/test-data';
+import RefundPageFactory from '../../../../../pages/exui/common/refunds/refund-page-factory';
 @AllMethodsStep()
 export default class RefundActions extends BaseTestData {
   private refundPageFactory: RefundPageFactory;

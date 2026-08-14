@@ -1,5 +1,5 @@
-import BasePage from '../../../../base/base-page';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
+import BasePage from '../../../../../base/base-page';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import { headings, paragraphs } from './refund-confirm-content';
 
 @AllMethodsStep()

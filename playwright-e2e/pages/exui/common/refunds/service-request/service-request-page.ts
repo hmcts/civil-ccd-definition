@@ -1,7 +1,7 @@
-import BasePage from '../../../../base/base-page';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
-import CCDCaseData from '../../../../models/ccd-case-data';
-import { getFormattedCaseId } from '../../mixin-pages/exui-page/exui-content';
+import BasePage from '../../../../../base/base-page';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import CCDCaseData from '../../../../../models/ccd-case-data';
+import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content';
 import { buttons, headings, links } from './service-request-content';
 
 @AllMethodsStep()

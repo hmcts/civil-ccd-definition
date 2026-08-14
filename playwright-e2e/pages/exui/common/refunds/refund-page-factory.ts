@@ -1,4 +1,4 @@
-import BasePageFactory from '../../../base/base-page-factory';
+import BasePageFactory from '../../../../base/base-page-factory';
 import RefundListPage from './refund-list/refund-list-page';
 import ServiceRequestPage from './service-request/service-request-page';
 import ProcessRefundPage from './process-refund/process-refund-page';

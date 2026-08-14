@@ -1,6 +1,6 @@
-import BasePage from '../../../../base/base-page';
-import ExuiServiceRequestPage from '../../mixin-pages/exui-service-request-page/exui-service-request-page.ts';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
+import BasePage from '../../../../../base/base-page';
+import ExuiServiceRequestPage from '../../../mixin-pages/exui-service-request-page/exui-service-request-page.ts';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import { headings, subheadings, radioButtons, inputs } from './process-refund-content';
 
 @AllMethodsStep()
