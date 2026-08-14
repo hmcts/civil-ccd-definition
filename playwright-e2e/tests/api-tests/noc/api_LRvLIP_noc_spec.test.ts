@@ -4,7 +4,7 @@ test.describe(
   'LR v LiP notice of change spec api journey',
   { tag: '@civil-service-nightly' },
   async () => {
-    test('LR v LiP notice of change @debug', async ({
+    test('LR v LiP notice of change', async ({
       ClaimantCitizenApiSteps,
       ClaimantSolicitorApiSteps,
       ClaimantSolicitorSpecApiSteps,
