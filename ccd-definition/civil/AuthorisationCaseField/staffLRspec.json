@@ -31,18 +31,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1ResponseMethod",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2ResponseMethod",
-    "UserRole": "caseworker-civil-staff",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1ClaimResponseTypeForSpecLabel",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
