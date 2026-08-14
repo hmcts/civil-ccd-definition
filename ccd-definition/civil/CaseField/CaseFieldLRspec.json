@@ -589,24 +589,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1ResponseMethod",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ResponseMethod",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2ResponseMethod",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ResponseMethod",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseTypeForSpecLabel",
     "Label": "## Defendant: ${respondent1.partyName}\n",
     "FieldType": "Label",
