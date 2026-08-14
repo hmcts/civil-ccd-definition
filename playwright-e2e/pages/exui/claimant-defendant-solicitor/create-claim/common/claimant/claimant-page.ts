@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import { radioButtons, subheadings } from './claimant-content.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 import ChoosePartyTypeFragment from '../../../../fragments/choose-party-type/choose-party-type-fragment.ts';
 import PartyTypeIndividualFragment from '../../../../fragments/party-type/party-type-individual-fragment.ts';
 import PartyTypeCompanyFragment from '../../../../fragments/party-type/party-type-company-fragment.ts';

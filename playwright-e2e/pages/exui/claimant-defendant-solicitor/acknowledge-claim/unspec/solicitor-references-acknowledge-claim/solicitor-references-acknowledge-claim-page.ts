@@ -1,14 +1,14 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import { heading, inputs, subheadings } from './solicitor-references-acknowledge-claim-content.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 import SolicitorReferenceFragment from '../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
 import { Page } from '@playwright/test';
 import { Party } from '../../../../../../models/users/partys.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';
 import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
 import partys from '../../../../../../constants/users/partys';
-import { getFormattedCaseId } from '../../../../exui-page/exui-content.ts';
+import { getFormattedCaseId } from '../../../../mixin-pages/exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class SolicitorReferencesAcknowledgeClaimPage extends ExuiPage(BasePage) {

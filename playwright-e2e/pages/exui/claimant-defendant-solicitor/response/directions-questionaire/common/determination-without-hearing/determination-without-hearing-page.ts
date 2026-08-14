@@ -3,11 +3,11 @@ import { Party } from '../../../../../../../models/users/partys.ts';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import { heading, inputs, radioButtons } from './determination-without-hearing-content.ts';
 import YesOrNoFragment from '../../../../../fragments/yes-or-no/yes-or-no-fragment.ts';
-import { getFormattedCaseId } from '../../../../../exui-page/exui-content.ts';
+import { getFormattedCaseId } from '../../../../../mixin-pages/exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class DeterminationWithoutHearingPage extends ExuiPage(BasePage) {

@@ -5,8 +5,13 @@ import LitigationFriendPage from './unspec/litigation-friend/litigation-friend-p
 import SubmitAddDefendantLitigationFriendPage from './unspec/submit-add-defendant-litigation-friend/submit-add-defendant-litigation-friend-page';
 import LitigationFriendFragment from '../../fragments/litigation-friend/litigation-friend-fragment';
 import Defendant2LitigationFriendPage from './unspec/defendant-2-litigation-friend/defendant-2-litigation-friend-page';
+import SelectALitigationFriendPage from './unspec/select-a-litigation-friend/select-a-litigation-friend-page';
 
 export default class AddDefendantLitigationFriendPageFactory extends BasePageFactory {
+  get selectALitigationFriendPage() {
+    return new SelectALitigationFriendPage(this.page);
+  }
+
   get litigationFriendPage() {
     const litigationFriendFragment = new LitigationFriendFragment(
       this.page,
@@ -21,6 +26,14 @@ export default class AddDefendantLitigationFriendPageFactory extends BasePageFac
       partys.DEFENDANT_2_LITIGATION_FRIEND,
     );
     return new Defendant2LitigationFriendPage(this.page, litigationFriendFragment);
+  }
+
+  get commonLitigationFriendPage() {
+    const litigationFriendFragment = new LitigationFriendFragment(
+      this.page,
+      partys.DEFENDANT_COMMON_LITIGATION_FRIEND,
+    );
+    return new LitigationFriendPage(this.page, litigationFriendFragment);
   }
 
   get submitAddDefendantLitigationFriend() {

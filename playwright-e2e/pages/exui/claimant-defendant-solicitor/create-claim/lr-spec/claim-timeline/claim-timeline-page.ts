@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { inputs, paragraphs, subheadings } from './claim-timeline-content';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import DateHelper from '../../../../../../helpers/date-helper';

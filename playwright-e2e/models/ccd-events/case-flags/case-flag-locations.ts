@@ -1,4 +1,4 @@
-import { ClaimantDefendantPartyType } from '../users/claimant-defendant-party-types';
+import { ClaimantDefendantPartyType } from '../../users/claimant-defendant-party-types';
 
 export type CaseFlagLocation = string;
 

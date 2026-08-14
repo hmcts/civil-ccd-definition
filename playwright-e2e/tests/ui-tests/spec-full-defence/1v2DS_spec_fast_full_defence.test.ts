@@ -4,20 +4,20 @@ test.describe('1v2DS spec fast track claim journey', { tag: '@civil-ccd-nightly'
   test('1v2DS spec fast track claim journey', async ({
     DefendantSolicitor1SpecSteps,
     CaseRoleAssignmentApiSteps,
-    ClaimantSolicitorApiSteps,
+    ClaimantSolicitorSpecApiSteps,
     DefendantSolicitor2SpecSteps,
     ClaimantSolicitorSpecSteps,
   }) => {
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.CreateClaimFastTrack1v2DS();
-    await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+    await ClaimantSolicitorSpecSteps.CreateClaimFast1v2DS();
+    await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await DefendantSolicitor1SpecSteps.Login();
-    await DefendantSolicitor1SpecSteps.RespondFastTrackFullDefence1v2DS();
+    await DefendantSolicitor1SpecSteps.RespondFastFullDefence1v2DS();
     await DefendantSolicitor2SpecSteps.Login();
-    await DefendantSolicitor2SpecSteps.RespondFastTrackFullDefence1v2DS();
+    await DefendantSolicitor2SpecSteps.RespondFastFullDefence1v2DS();
     await ClaimantSolicitorSpecSteps.Login();
-    await ClaimantSolicitorSpecSteps.RespondFastTrackIntentToProceed1v2DS();
+    await ClaimantSolicitorSpecSteps.RespondFastProceed1v2DS();
   });
 });

@@ -15,6 +15,20 @@ export default class AddDefendantLitigationFriendActions extends BaseTestData {
     this.addDefendantLitigationFriendPageFactory = addDefendantLitigationFriendPageFactory;
   }
 
+  async selectALitigationFriend() {
+    const { selectALitigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
+    await selectALitigationFriendPage.verifyContent(this.ccdCaseData);
+    await selectALitigationFriendPage.selectBoth();
+    await selectALitigationFriendPage.submit();
+  }
+
+  async commonLitigationFriend() {
+    const { commonLitigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
+    await commonLitigationFriendPage.verifyContent(this.ccdCaseData);
+    await commonLitigationFriendPage.enterLitigationFriendDetails();
+    await commonLitigationFriendPage.submit();
+  }
+
   async litigationFriend() {
     const { litigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
     await litigationFriendPage.verifyContent(this.ccdCaseData);

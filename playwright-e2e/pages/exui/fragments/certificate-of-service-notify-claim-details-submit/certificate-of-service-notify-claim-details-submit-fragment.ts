@@ -1,7 +1,7 @@
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import {
   getDefendantHeading,
   subheading,
@@ -35,7 +35,7 @@ export default class CertificateOfServiceNotifyClaimDetailsSubmitFragment extend
   async verifyDefendant1Answers() {
     const dateDeemedServed = DateHelper.getToday();
     const dateOfService = DateHelper.addToToday({
-      days: 2,
+      days: 1,
       workingDay: true,
       addDayAfter4pm: true,
     });
@@ -64,7 +64,7 @@ export default class CertificateOfServiceNotifyClaimDetailsSubmitFragment extend
   async verifyDefendant2Answers() {
     const dateDeemedServed = DateHelper.getToday();
     const dateOfService = DateHelper.addToToday({
-      days: 2,
+      days: 1,
       workingDay: true,
       addDayAfter4pm: true,
     });

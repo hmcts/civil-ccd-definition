@@ -7,6 +7,7 @@ import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-p
 import TestData from '../models/test-utils/test-data';
 import ClaimType from '../constants/cases/claim-type';
 import ClaimTypeHelper from '../helpers/claim-type-helper';
+import { claimants, defendants } from '../config/users/cui-users';
 
 export default abstract class BaseTestData {
   private _testData: TestData;
@@ -81,11 +82,11 @@ export default abstract class BaseTestData {
       defendant1PartyType?: ClaimantDefendantPartyType, 
       defendant2PartyType?: ClaimantDefendantPartyType
     }) {
-      if(ClaimTypeHelper.isClaimant2(claimType)) {
+      if (ClaimTypeHelper.isClaimant2(claimType)) {
         this.setClaimant1PartyType = claimant1PartyType!;
         this.setClaimant2PartyType = claimant2PartyType!;
         this.setDefendant1PartyType = defendant1PartyType!;
-      } else if(ClaimTypeHelper.isDefendant2(claimType)) {
+      } else if (ClaimTypeHelper.isDefendant2(claimType)) {
         this.setClaimant1PartyType = claimant1PartyType!;
         this.setDefendant1PartyType = defendant1PartyType!;
         this.setDefendant2PartyType = defendant2PartyType!;
@@ -223,5 +224,13 @@ export default abstract class BaseTestData {
 
   protected get isDebugTestDataSetup() {
     return this._testData.isDebugTestDataSetup;
+  }
+
+  protected get claimantCitizenUser() {
+    return claimants[this.workerIndex]
+  }
+
+  protected get defendantCitizenUser() {
+    return defendants[this.workerIndex]
   }
 }

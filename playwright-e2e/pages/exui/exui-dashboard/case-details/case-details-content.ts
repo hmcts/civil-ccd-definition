@@ -1,6 +1,10 @@
 import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
 
 export const tabs = {
+  tasks: {
+    title: 'Tasks',
+    selector: "div[role='tab'] >> 'Tasks'",
+  },
   summary: {
     title: 'Summary',
     selector: "div[role='tab'] >> 'Summary'",
@@ -41,6 +45,14 @@ export const tabs = {
     title: 'Case Flags',
     selector: "div[role='tab'] >> 'Case Flags'",
   },
+  queries: {
+    title: 'Queries',
+    selector: "div[role='tab'] >> 'Queries'",
+  },
+  hearings: {
+    title: 'Hearings',
+    selector: "div[role='tab'] >> 'Hearings'",
+  },
 };
 
 export const dropdowns = {
@@ -55,6 +67,35 @@ export const buttons = {
     title: 'go',
     selector: "button[type='submit']",
   },
+  continue: {
+    title: 'Continue',
+    selector: 'button.govuk-button',
+  },
+  submitRequest: {
+    title: 'Submit request',
+    selector: "button[name='Submit request']",
+  },
+  viewHearingDetails: {
+    label: 'View details',
+    selector: 'button[id^="link-view-details"]',
+  },
+  cancelHearing: {
+    label: 'Cancel',
+    selector: 'button[id^="link-cancel"]',
+  },
+  askFollowUpQuestion: {
+    title: 'Ask a follow-up question',
+    selector: "#ask-follow-up-question",
+  },
+};
+
+export const links = {
+  requestHearing: {
+    label: 'Request a hearing',
+  },
+  firstQueryLink: {
+    selector: '.govuk-table__cell.query-list__cell.query-list__cell--first button'
+  }
 };
 
 export const containers = {
@@ -66,9 +107,20 @@ export const containers = {
   },
 };
 
+export const subheadings = {
+  hearingsTab: {
+    currentAndUpcoming: 'Current and upcoming',
+    pastOrCancelled: 'Past or cancelled',
+  },
+  bundlesTab: {
+    bundleName: 'Bundle name',
+  },
+};
+
+
+
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
   `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;
 
 export const caseFlagsNoticeText = (activeCaseFlags: number) =>
   `There ${activeCaseFlags === 1 ? 'is' : 'are'} ${activeCaseFlags} active flag${activeCaseFlags === 1 ? '' : 's'} on this case.`;
-

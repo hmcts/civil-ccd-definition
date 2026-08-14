@@ -11,9 +11,10 @@ import ReferJudgeDefenceReceivedActions from '../hearing-center-admin/refer-judg
 import ReferJudgeDefenceReceivedPageFactory from '../../../../pages/exui/hearing-center-admin/refer-to-judge-defended-claim/refer-to-judge-defended-claim-page-factory';
 import SetAsideJudgmentActions from '../hearing-center-admin/set-aside-judgment/set-aside-judgment-actions';
 import SetAsideJudgmentPageFactory from '../../../../pages/exui/hearing-center-admin/set-aside-judgment/set-aside-judgment-page-factory';
+import QueryManagementActions from '../common/query-management/query-management-actions';
+import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory.ts';
 
 export default class CaseworkerActionsFactory extends BasePageActionsFactory {
-
   get caseProceedsInCasemanActions() {
     return new CaseProceedsInCasemanActions(
       new CaseProceedsInCasemanPageFactory(this.page),
@@ -22,15 +23,14 @@ export default class CaseworkerActionsFactory extends BasePageActionsFactory {
   }
 
   get manageDocumentsActions() {
-    return new ManageDocumentsActions(
-      new ManageDocumentsPageFactory(this.page),
-      this.testData);
+    return new ManageDocumentsActions(new ManageDocumentsPageFactory(this.page), this.testData);
   }
 
   get manageContactInformationActions() {
     return new ManageContactInformationActions(
       new ManageContactInformationPageFactory(this.page),
-      this.testData);
+      this.testData,
+    );
   }
 
   get mediationUnsuccessfulActions() {
@@ -49,5 +49,9 @@ export default class CaseworkerActionsFactory extends BasePageActionsFactory {
 
   get setAsideJudgmentActions() {
     return new SetAsideJudgmentActions(new SetAsideJudgmentPageFactory(this.page), this.testData);
+  }
+
+  get queryManagementActions() {
+    return new QueryManagementActions(new QueryManagementPageFactory(this.page), this.testData);
   }
 }

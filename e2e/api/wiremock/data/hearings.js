@@ -1,14 +1,17 @@
-const {incrementDate, appendTime} = require('../../dataHelper');
+const {incrementDate} = require('../../dataHelper');
 
-const listedHearing = (caseId, hearingId, hearingType, serviceCode) => {
+const listedHearing = (caseId, hearingId, hearingType, serviceCode,
+  versionNumber = 1, receivedDateTime = new Date().toISOString()) => {
   const today = new Date();
   const hearingDate = incrementDate(today, 5, null, null);
+  const hearingStart = new Date(hearingDate); hearingStart.setUTCHours(9, 0, 0, 0);
+  const hearingEnd = new Date(hearingDate); hearingEnd.setUTCHours(16, 0, 0, 0);
 
   return {
     'requestDetails': {
       'status': 'LISTED',
       'timestamp': `${today.toISOString()}`,
-      'versionNumber': 1,
+      'versionNumber': versionNumber,
       'hearingRequestID': `${hearingId}`
     },
     'hearingDetails': {
@@ -262,8 +265,8 @@ const listedHearing = (caseId, hearingId, hearingType, serviceCode) => {
     'hearingResponse': {
       'hearingDaySchedule': [
         {
-          'hearingStartDateTime': `${appendTime(hearingDate, 9, 0).toISOString()}`,
-          'hearingEndDateTime': `${appendTime(hearingDate, 16, 0).toISOString()}`,
+          'hearingStartDateTime': `${hearingStart.toISOString()}`,
+          'hearingEndDateTime': `${hearingEnd.toISOString()}`,
           'hearingVenueId': '739514',
           'hearingRoomId': 'Clerkenwell and Shoreditch Floating List',
           'hearingJudgeId': null,
@@ -311,12 +314,25 @@ const listedHearing = (caseId, hearingId, hearingType, serviceCode) => {
       ],
       'laCaseStatus': 'LISTED',
       'listingStatus': 'FIXED',
-      'receivedDateTime': `${today.toISOString()}`,
-      'requestVersion': 1
+      'receivedDateTime': `${receivedDateTime}`,
+      'requestVersion': versionNumber
     }
   };
 };
 
+const listedHearingSchedule = () => {
+  const hearingDate = incrementDate(new Date(), 5, null, null);
+  const start = new Date(hearingDate); start.setUTCHours(9, 0, 0, 0);
+  const end = new Date(hearingDate); end.setUTCHours(16, 0, 0, 0);
+  const toLondon = d => new Date(d).toLocaleString('sv-SE', {timeZone: 'Europe/London'}).replace(' ', 'T');
+  return {
+    hearingStartDateTime: toLondon(start),
+    hearingEndDateTime: toLondon(end),
+    hearingVenueId: '739514'
+  };
+};
+
 module.exports = {
-  listedHearing
+  listedHearing,
+  listedHearingSchedule
 };

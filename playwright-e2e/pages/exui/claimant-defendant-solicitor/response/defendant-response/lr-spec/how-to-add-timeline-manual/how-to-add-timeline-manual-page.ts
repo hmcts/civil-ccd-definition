@@ -3,7 +3,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import { heading, inputs, buttons } from './how-to-add-timeline-manual-content.ts';
 import { Party } from '../../../../../../../models/users/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';

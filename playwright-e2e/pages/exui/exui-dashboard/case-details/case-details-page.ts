@@ -10,16 +10,20 @@ import {
   getFormattedCaseId,
   getUnformattedCaseId,
   headings,
-} from '../../exui-page/exui-content';
-import ExuiPage from '../../exui-page/exui-page';
+} from '../../mixin-pages/exui-page/exui-content';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import {
   buttons,
   caseFlagsNoticeText,
   containers,
   dropdowns,
+  subheadings,
+  links,
   successBannerText,
   tabs,
 } from './case-details-content';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events';
+import WATask from '../../../../models/wa-task';
 
 const classKey = 'CaseDetailsPage';
 
@@ -53,9 +57,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async verifyClaimDetailsContent(caseData: CCDCaseData) {
     await super.clickByText(tabs.claimDetails.title);
-    await super.runVerifications([
-      super.verifyHeadings(caseData),
-    ], { useAxeCache: false });
+    await super.runVerifications([super.verifyHeadings(caseData)], { useAxeCache: false });
   }
 
   async verifyClaimDocumentsContent(caseData: CCDCaseData) {
@@ -76,6 +78,78 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async verifyCaseFlagsContent(caseData: CCDCaseData) {
     await super.clickByText(tabs.caseFlags.title);
     await super.runVerifications([], { useAxeCache: false });
+  }
+
+  async retryClickHearingsTab() {
+    await super.retryClickByText(
+      tabs.hearings.title,
+      () => [
+        super.expectText(subheadings.hearingsTab.currentAndUpcoming, {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+        super.expectText(subheadings.hearingsTab.pastOrCancelled, {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+      ],
+      () => super.clickByText(tabs.summary.title),
+      { retries: 3, message: 'Clicking on hearings tab failed, trying again' },
+    );
+  }
+
+  async retryClickQueriesTab() {
+    await super.retryClickByText(
+      tabs.queries.title,
+      () => [
+        super.expectSelector(links.firstQueryLink.selector, {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+        super.expectUrlEnd('#Queries', {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+      ],
+      () => super.clickByText(tabs.summary.title),
+      { retries: 3, message: 'Clicking on queries tab failed, trying again' },
+    );
+  }
+
+  async requestHearing() {
+    await this.retryTabAction(links.requestHearing.label, tabs.hearings.selector, () =>
+      super.clickByText(links.requestHearing.label),
+    );
+  }
+
+  async viewHearingDetails() {
+    await this.retryTabAction(buttons.viewHearingDetails.label, tabs.hearings.selector, () =>
+      super.clickBySelector(buttons.viewHearingDetails.selector),
+    );
+  }
+
+  async cancelHearing() {
+    await this.retryTabAction(buttons.cancelHearing.label, tabs.hearings.selector, () =>
+      super.clickBySelector(buttons.cancelHearing.selector),
+    );
+  }
+
+  async askFollowUpQuestion() {
+    await this.retryTabAction(buttons.askFollowUpQuestion.selector, tabs.queries.selector, async() => {
+        await super.clickBySelector(links.firstQueryLink.selector);
+        await super.clickBySelector(buttons.askFollowUpQuestion.selector);
+      }
+    );
+  }
+
+  private async retryTabAction(actionName: string, tabSelector: string, action: () => Promise<void>) {
+    await super.retryAction(
+      action,
+      async () => {
+        await super.waitForPageToLoad();
+        await super.expectNoSelector(tabSelector, {
+          timeout: config.playwright.shortExpectTimeout,
+        });
+      },
+      () => super.reload(),
+      { retries: 3, message: `${actionName} failed, trying again` },
+    );
   }
 
   async grabCaseNumber() {
@@ -106,7 +180,6 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     console.log(`Starting event: ${ccdEvent.name}`);
     await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
     await super.clickBySelector(buttons.go.selector);
-    super.setCCDEvent = ccdEvent;
   }
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
@@ -155,7 +228,46 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       undefined,
       { retries: 2, message: `Starting event with url: ${ccdEvent.id} failed, trying again` },
     );
-    super.setCCDEvent = ccdEvent;
+  }
+
+  async retryRaiseANewQuery(caseId: number) {
+    console.log(`Starting event with url: ${ccdEvents.QUERY_MANAGEMENT_RAISE.id}`);
+    await super.retryGoTo(
+      `${urls.manageCase}/query-management/query/${caseId}`,
+      async () =>
+        super.expectNoSelector(tabs.summary.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        }),
+      undefined,
+      { retries: 2, message: `Starting event with url: ${ccdEvents.QUERY_MANAGEMENT_RAISE.id} failed, trying again` },
+    );
+  }
+
+  async retryStartWAEvent(ccdEvent: CCDEvent, waTask: WATask) {
+    console.log(`Starting event: ${ccdEvent.name}`);
+    await super.retryAction(
+      async () => {
+        await super.retryReload(
+          async () => {
+            await super.expectSelector(tabs.tasks.selector);
+            await super.clickBySelector(tabs.tasks.selector, {
+              timeout: 5_000,
+            });
+          },
+          undefined,
+          { retries: 1 },
+        );
+        await super.clickLink(waTask.name);
+      },
+      async () => {
+        await super.waitForPageToLoad();
+        await super.expectNoSelector(tabs.summary.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        });
+      },
+      () => super.reload(),
+      { retries: 3, message: `Starting event: ${ccdEvent.name} failed, trying again` },
+    );
   }
 
   async verifySuccessEvent(caseId: number, ccdEvent: CCDEvent) {

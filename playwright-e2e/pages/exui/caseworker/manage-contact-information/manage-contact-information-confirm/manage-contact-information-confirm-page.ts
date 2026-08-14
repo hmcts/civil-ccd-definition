@@ -1,7 +1,7 @@
 import BasePage from '../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../models/ccd-case-data.ts';
-import ExuiPage from '../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../mixin-pages/exui-page/exui-page.ts';
 import { Page } from '@playwright/test';
 import { text } from './manage-contact-information-confirm-content.ts';
 

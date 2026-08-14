@@ -3,106 +3,228 @@ import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import claimantResponseSpecData from './claimant-response-spec-data-components';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec-type/claimant-response-spec-type';
+import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec/claimant-response-spec-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
-
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {
-  async buildFastTrack1v1() {
+  async buildFastRejectFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildFastTrack1v1DoNotProceed() {
+  async buildIntermediateRejectFullDefence() {
+    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildIntermediateProceed1v2DS() {
     return this.buildData({
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      claimantResponseType: ClaimantResponseSpecType.DO_NOT_PROCEED_WITH_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
     });
   }
 
-  async buildFastTrack2v1() {
+  async buildMultiRejectFullDefence() {
+    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildMultiRejectFullDefence1v2SS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildMultiRejectFullDefence1v2DS() {
+    return this.buildData({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildFastRejectPartAdmit() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimantResponseSpecType: ClaimantResponseSpecType.REJECT_PART_ADMIT,
+    });
+  }
+
+  async buildSmallRejectPartAdmitPaidConfirmNotPaid() {
+    return this.buildData({
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      claimantResponseSpecType: ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID,
+    });
+  }
+
+  async buildSmallRejectPartAdmitPaidConfirmPaid() {
+    return this.buildData({
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      claimantResponseSpecType: ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID,
+    });
+  }
+
+  async buildIntermediateRejectPartAdmit() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimantResponseSpecType: ClaimantResponseSpecType.REJECT_PART_ADMIT,
+    });
+  }
+
+  async buildMultiRejectPartAdmit() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimantResponseSpecType: ClaimantResponseSpecType.REJECT_PART_ADMIT,
+    });
+  }
+
+  async buildFullAdmitImmediately() {
+    return this.buildData({
+      claimantResponseSpecType: ClaimantResponseSpecType.ACCEPT_FULL_ADMIT,
+    });
+  }
+
+  async buildFullAdmitSetDate() {
+    return this.buildData({
+      claimantResponseSpecType: ClaimantResponseSpecType.ACCEPT_FULL_ADMIT,
+    });
+  }
+
+  async buildFullAdmitRepayment() {
+    return this.buildData({
+      claimantResponseSpecType: ClaimantResponseSpecType.ACCEPT_FULL_ADMIT,
+    });
+  }
+
+  async buildSmallRejectPartAdmit() {
+    return this.buildData({
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+      claimantResponseSpecType: ClaimantResponseSpecType.REJECT_PART_ADMIT,
+    });
+  }
+
+  async buildFastRejectFullDefence2v1() {
     return this.buildData({ claimType: ClaimType.TWO_VS_ONE, claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildFastTrack2v1DoNotProceed() {
+  async buildFastAcceptFullDefence2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.FAST_CLAIM,
-      claimantResponseType: ClaimantResponseSpecType.DO_NOT_PROCEED_WITH_CLAIM,
+      claimantResponseSpecType: ClaimantResponseSpecType.ACCEPT_FULL_DEFENCE,
     });
   }
 
-  async buildFastTrack1v2SS() {
+  async buildFastRejectFullDefence1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildFastTrack1v2DS() {
+  async buildFastRejectFullDefence1v2DS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
     });
   }
 
-  async buildFastTrack1v2SSDoNotProceed() {
+  async buildFastAcceptFullDefence1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.FAST_CLAIM,
-      claimantResponseType: ClaimantResponseSpecType.DO_NOT_PROCEED_WITH_CLAIM,
+      claimantResponseSpecType: ClaimantResponseSpecType.ACCEPT_FULL_DEFENCE,
     });
   }
 
-  async buildSmallTrack1v1() {
+  async buildSmallRejectFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.SMALL_CLAIM });
   }
 
-  async buildSmallTrack1v2SS() {
+  async buildSmallRejectFullDefence2v1() {
+    return this.buildData({
+      claimType: ClaimType.TWO_VS_ONE,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
+  async buildSmallRejectFullDefence1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
     });
   }
 
-  async buildSmallTrack1v2DS() {
+  async buildSmallRejectFullDefence1v2DS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
+  async buildAcceptFullAdmitRepayment() {
+    return this.buildData({
+      claimantResponseSpecType: ClaimantResponseSpecType.ACCEPT_FULL_ADMIT_REPAYMENT,
     });
   }
 
   protected async buildData({
     claimType = ClaimType.ONE_VS_ONE,
     claimTrack = ClaimTrack.FAST_CLAIM,
-    claimantResponseType = ClaimantResponseSpecType.PROCEED_WITH_CLAIM,
+    claimantResponseSpecType = ClaimantResponseSpecType.REJECT_FULL_DEFENCE,
   }: {
     claimType?: ClaimType;
     claimTrack?: ClaimTrack;
-    claimantResponseType?: ClaimantResponseSpecType;
+    claimantResponseSpecType?: ClaimantResponseSpecType;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
     const defenceResponseDocumentSpec =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+      claimantResponseSpecType === ClaimantResponseSpecType.REJECT_FULL_DEFENCE ||
+      claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT ||
+      claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
+      claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID
+        ? await civilServiceRequests.uploadTestDocument(claimantSolicitorUser)
+        : undefined;
+    const frcSupportingDocument =
+      claimTrack === ClaimTrack.INTERMEDIATE_CLAIM
+        ? await civilServiceRequests.uploadTestDocument(claimantSolicitorUser)
+        : undefined;
 
-    return {
-      ...claimantResponseSpecData.defendantResponse(claimType, claimantResponseType),
-      ...claimantResponseSpecData.claimantDefenceResponseDocument(
+    const eventData: Record<string, unknown> = {};
+
+    Object.assign(
+      eventData,
+      claimantResponseSpecData.undefine(claimantResponseSpecType),
+      claimantResponseSpecData.defendantResponse(claimType, claimantResponseSpecType),
+      claimantResponseSpecData.ccjPaymentPaidSome(claimantResponseSpecType),
+      claimantResponseSpecData.intentionToSettle(claimantResponseSpecType),
+      claimantResponseSpecData.fixedCost(claimantResponseSpecType),
+      claimantResponseSpecData.claimantDefenceResponseDocument(
         defenceResponseDocumentSpec,
-        claimantResponseType,
+        claimantResponseSpecType,
       ),
-      ...claimantResponseSpecData.mediationContactInformation(claimTrack, claimantResponseType),
-      ...claimantResponseSpecData.mediationAvailability(claimTrack, claimantResponseType),
-      ...claimantResponseSpecData.determinationWithoutHearing(claimTrack, claimantResponseType),
-      ...claimantResponseSpecData.fastTrackDq(claimTrack, claimantResponseType),
-      ...claimantResponseSpecData.experts(claimTrack, claimantResponseType),
-      ...claimantResponseSpecData.witnesses(claimTrack, claimantResponseType),
-      ...claimantResponseSpecData.language(claimantResponseType),
-      ...claimantResponseSpecData.hearing(claimTrack, claimantResponseType),
-      ...claimantResponseSpecData.requestedCourtLocation(claimantResponseType),
-      ...claimantResponseSpecData.hearingSupport(claimantResponseType),
-      ...claimantResponseSpecData.vulnerabilityQuestions,
-      ...claimantResponseSpecData.application(claimTrack, claimantResponseType),
-      ...claimantResponseSpecData.statementOfTruth,
-    };
+      claimantResponseSpecData.mediationContactInformation(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.mediationAvailability(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.determinationWithoutHearing(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.fileDirectionsQuestionnaire(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.fixedRecoverableCosts(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.fixedRecoverableCostsIntermediate(
+        claimTrack,
+        claimantResponseSpecType,
+        frcSupportingDocument,
+      ),
+      claimantResponseSpecData.disclosureOfElectronicDocuments(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.disclosureOfNonElectronicDocuments(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.disclosureReport(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.experts(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.witnesses(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.language(claimantResponseSpecType),
+      claimantResponseSpecData.hearing(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.requestedCourtLocation(claimantResponseSpecType),
+      claimantResponseSpecData.hearingSupport(claimantResponseSpecType),
+      claimantResponseSpecData.vulnerabilityQuestions(claimantResponseSpecType),
+      claimantResponseSpecData.application(claimTrack, claimantResponseSpecType),
+      claimantResponseSpecData.ccjJudgmentSummary(claimantResponseSpecType),
+      claimantResponseSpecData.statementOfTruth,
+    );
+
+    return eventData;
   }
 }

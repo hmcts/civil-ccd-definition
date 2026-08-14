@@ -94,6 +94,12 @@ const partys: Partys = {
     number: 2,
     partyType: PartyType.LITIGATION_FRIEND,
   },
+  DEFENDANT_COMMON_LITIGATION_FRIEND: {
+    key: 'defendantCommonLitigationFriend',
+    oldKey: 'genericLitigationFriend',
+    number: 1,
+    partyType: PartyType.LITIGATION_FRIEND,
+  },
   DEFENDANT_SOLICITOR_1: {
     key: 'defendantSolicitor1',
     oldKey: 'respondentSolicitor1',

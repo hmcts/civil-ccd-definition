@@ -12,7 +12,12 @@ export default interface CCDCaseData {
   applicantSolicitor1UserDetails?: ApplicantSolicitor1UserDetails;
   applicantSolicitor1PbaAccounts?: ApplicantSolicitor1PbaAccounts;
   detailsOfClaim?: string;
+  fixedCosts?: FixedCosts;
   caseFlags?: CaseFlags;
+  messagesToReplyTo?: string;
+  sendMessageContent?: string;
+  messages?: Message[];
+  qmLatestQuery?: QmLatestQuery;
   claimFee?: ClaimFee;
   notificationSummary?: string;
   hearingDueDate?: string;
@@ -116,6 +121,12 @@ export default interface CCDCaseData {
   respondent2ClaimResponseIntentionType?: string;
   respondent1AcknowledgeNotificationDate?: string;
   respondent2AcknowledgeNotificationDate?: string;
+}
+
+export interface QmLatestQuery {
+  isWelsh?: string;
+  queryId?: string;
+  isHearingRelated?: string;
 }
 
 export interface ServedDocumentFiles {
@@ -263,6 +274,37 @@ export interface ClaimFee {
   code?: string;
   version?: number;
   calculatedAmountInPence?: number;
+}
+
+export interface FixedCosts {
+  claimFixedCosts?: string;
+  fixedCostAmount?: number;
+}
+
+export interface MessagesToReplyTo {
+  list_items?: MessagesToReplyToListItem[];
+}
+
+export interface MessagesToReplyToListItem {
+  code?: string;
+  label?: string;
+}
+
+export interface Message {
+  id?: string;
+  value?: MessageValue;
+}
+
+export interface MessageValue {
+  subject?: string;
+  isUrgent?: string;
+  sentTime?: string;
+  messageId?: string;
+  senderName?: string;
+  subjectType?: string;
+  updatedTime?: string;
+  messageContent?: string;
+  recipientRoleType?: string;
 }
 
 export interface CaseManagementLocation {

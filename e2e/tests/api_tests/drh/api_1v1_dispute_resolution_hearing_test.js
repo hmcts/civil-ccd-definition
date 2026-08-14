@@ -47,6 +47,7 @@ Scenario.skip('1v1 full defence unspecified - judge draws small claims DRH - hea
   }
   await api.amendHearingDueDate(config.systemupdate);
   await api.hearingFeePaidDRH(hearingCenterAdminToBeUsed);
+  await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
 });
 
 

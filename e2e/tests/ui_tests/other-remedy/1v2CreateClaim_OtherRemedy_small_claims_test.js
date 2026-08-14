@@ -1,13 +1,13 @@
 const config = require('../../../config.js');
 const parties = require('../../../helpers/party');
-const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
+const { assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers } = require('../../../api/caseRoleAssignmentHelper');
+const { waitForFinishedBusinessProcess } = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP_OTHER_REMEDY';
 
-let caseNumber, validFastTrackDirectionsTask;
+let caseNumber, validSmallClaimDirectionsTask;
 
 if (config.runWAApiTest) {
-  validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
+  validSmallClaimDirectionsTask = require('../../../../wa/tasks/smallClaimDirectionsTaskForRegion1');
 }
 
 Feature('1v2 Different Solicitors small claims - Claim Journey Other Remedy').tag('@civil-ccd-nightly @ui-other-remedy');
@@ -51,15 +51,15 @@ Scenario('07 Judge triggers SDO', async ({I, api, WA}) => {
   await I.login(config.judgeUserWithRegionId1);
   let taskId;
   if (config.runWAApiTest) {
-    const fastTrackDirections = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseNumber, config.waTaskIds.fastTrackDirections);
-    console.log('fastTrackDirections...' , fastTrackDirections);
-    WA.validateTaskInfo(fastTrackDirections, validFastTrackDirectionsTask);
-    taskId = fastTrackDirections['id'];
-    api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
+    const smallClaimDirections = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseNumber, config.waTaskIds.smallClaimDirections);
+    console.log('smallClaimDirections...' , smallClaimDirections);
+    WA.validateTaskInfo(smallClaimDirections, validSmallClaimDirectionsTask);
+    taskId = smallClaimDirections['id'];
+    await api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
   }
   await I.initiateSDOforOtherRemedy(null, null, 'smallClaims', null);
   if (config.runWAApiTest) {
-    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+    await api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
 }).retry(2);
 

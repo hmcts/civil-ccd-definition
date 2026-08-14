@@ -2,11 +2,14 @@ const {triggerCamundaProcess, waitForCompletedCamundaProcess} = require('./testi
 const apiRequest = require('./apiRequest.js');
 const {addAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {getHearingsPayload} = require('./apiRequest');
+const idamHelper = require('./idamHelper');
+const serviceAuthHelper = require('./serviceAuthorisationHelper');
+const restHelper = require('./restHelper');
 const chai = require('chai');
 const {expect} = chai;
 const {date} = require('../api/dataHelper');
 const config = require('../config');
-const {listedHearing} = require('./wiremock/data/hearings');
+const {listedHearing, listedHearingSchedule} = require('./wiremock/data/hearings');
 const {createUpdateStub} = require('./wiremock/wiremock');
 const {hearingStubRequestBody, unnotifiedHearingStubRequestBody, getpartiesNotifiedStubRequestBody,
   putPartiesNotifiedStubRequestBody
@@ -853,12 +856,31 @@ const getExpectedPayload = (serviceId) => {
   }
 ;
 
-const createHearing = async (caseId, hearingType, serviceCode) => {
+const createHearing = async (caseId, hearingType, serviceCode,
+  versionNumber = 1, receivedDateTime = new Date().toISOString()) => {
   const hearingId = createHearingId();
-  const hearing = listedHearing(caseId, hearingId, hearingType, serviceCode);
+  const hearing = listedHearing(caseId, hearingId, hearingType, serviceCode, versionNumber, receivedDateTime);
   await createUpdateStub(hearingStubRequestBody(hearing, hearingId));
-  console.log(`Created new hearing mock: [${hearingId} - ${hearingType}]`);
-  return hearingId;
+  console.log(`Created new hearing mock: [${hearingId} - ${hearingType} - v${versionNumber}]`);
+  return {hearingId, versionNumber, receivedDateTime};
+};
+
+const setPartiesNotifiedResponses = async (responses) => {
+  await createUpdateStub(getpartiesNotifiedStubRequestBody(responses));
+};
+
+const getNoticeProcessCount = async (hearingId) => {
+  const authToken = await idamHelper.accessToken(config.systemUpdate2);
+  const s2sAuth = await serviceAuthHelper.civilServiceAuth();
+  const url = new URL(`${config.url.civilService}/testing-support/camunda-processes`);
+  url.searchParams.append('definitionKey', AUTOMATED_HEARING_NOTICE);
+  url.searchParams.append('variables', `hearingId_eq_${hearingId}`);
+  const response = await restHelper.request(url.toString(), {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${authToken}`,
+    'ServiceAuthorization': s2sAuth
+  }, null, 'GET').then(r => r.json());
+  return (response || []).filter(p => p.state === 'COMPLETED').length;
 };
 
 const triggerHearingNoticeScheduler = async (expectedHearingId, definitionKey) => {
@@ -873,6 +895,20 @@ const triggerHearingNoticeScheduler = async (expectedHearingId, definitionKey) =
 
   // Wait for hearing notice process
   await waitForCompletedCamundaProcess(AUTOMATED_HEARING_NOTICE, null, `hearingId_eq_${expectedHearingId}`);
+};
+
+const triggerHearingNoticeSchedulerExpectingNoNotice = async (expectedHearingId, definitionKey) => {
+  const before = await getNoticeProcessCount(expectedHearingId);
+  await createUpdateStub(unnotifiedHearingStubRequestBody([expectedHearingId]));
+
+  const process = await triggerCamundaProcess(definitionKey);
+  console.log(`Started hearing notice scheduler process (expecting no notice): ${getUILink(process)}`);
+  await waitForCompletedCamundaProcess(null, process.id, null);
+
+  await new Promise(resolve => setTimeout(resolve, 5000));
+  const after = await getNoticeProcessCount(expectedHearingId);
+  expect(after).to.equal(before,
+    `Expected no new hearing notice for hearing ${expectedHearingId} (had ${before}, now ${after})`);
 };
 
 module.exports = {
@@ -915,16 +951,32 @@ module.exports = {
     await createUpdateStub(getpartiesNotifiedStubRequestBody());
     await createUpdateStub(putPartiesNotifiedStubRequestBody());
   },
-  createUnspecTrialHearing: async (caseId) => createHearing(caseId, 'TRI', 'AAA7'),
-  createUnspecDisposalHearing: async (caseId) => createHearing(caseId, 'DIS', 'AAA7'),
-  createUnspecDisputeResolutionHearing: async (caseId) => createHearing(caseId, 'DRH', 'AAA7'),
-  createSpecTrialHearing: async (caseId) => createHearing(caseId, 'TRI', 'AAA6'),
-  createSpecDisposalHearing: async (caseId) => createHearing(caseId, 'DIS', 'AAA6'),
-  createSpecDisputeResolutionHearing: async (caseId) => createHearing(caseId, 'DRH', 'AAA6'),
+  createUnspecTrialHearing: async (caseId) => (await createHearing(caseId, 'TRI', 'AAA7')).hearingId,
+  createUnspecDisposalHearing: async (caseId) => (await createHearing(caseId, 'DIS', 'AAA7')).hearingId,
+  createUnspecDisputeResolutionHearing: async (caseId) => (await createHearing(caseId, 'DRH', 'AAA7')).hearingId,
+  createSpecTrialHearing: async (caseId) => (await createHearing(caseId, 'TRI', 'AAA6')).hearingId,
+  createSpecDisposalHearing: async (caseId) => (await createHearing(caseId, 'DIS', 'AAA6')).hearingId,
+  createSpecDisputeResolutionHearing: async (caseId) => (await createHearing(caseId, 'DRH', 'AAA6')).hearingId,
   triggerUnspecAutomatedHearingNoticeScheduler: async (expectedHearingId) => {
     return await triggerHearingNoticeScheduler(expectedHearingId, UNSPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER);
   },
   triggerSpecAutomatedHearingNoticeScheduler: async (expectedHearingId) => {
     return await triggerHearingNoticeScheduler(expectedHearingId, SPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER);
-  }
+  },
+
+  createUnspecDisposalHearingV: async (caseId, version = 1, receivedDateTime = new Date().toISOString()) =>
+    createHearing(caseId, 'DIS', 'AAA7', version, receivedDateTime),
+  createUnspecTrialHearingV: async (caseId, version = 1, receivedDateTime = new Date().toISOString()) =>
+    createHearing(caseId, 'TRI', 'AAA7', version, receivedDateTime),
+  createSpecDisposalHearingV: async (caseId, version = 1, receivedDateTime = new Date().toISOString()) =>
+    createHearing(caseId, 'DIS', 'AAA6', version, receivedDateTime),
+  createSpecTrialHearingV: async (caseId, version = 1, receivedDateTime = new Date().toISOString()) =>
+    createHearing(caseId, 'TRI', 'AAA6', version, receivedDateTime),
+  setPartiesNotifiedResponses: async (responses) => setPartiesNotifiedResponses(responses),
+  listedHearingSchedule: () => listedHearingSchedule(),
+  getNoticeProcessCount: async (hearingId) => getNoticeProcessCount(hearingId),
+  triggerSpecSchedulerExpectingNoNotice: async (expectedHearingId) =>
+    triggerHearingNoticeSchedulerExpectingNoNotice(expectedHearingId, SPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER),
+  triggerUnspecSchedulerExpectingNoNotice: async (expectedHearingId) =>
+    triggerHearingNoticeSchedulerExpectingNoNotice(expectedHearingId, UNSPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER)
 };

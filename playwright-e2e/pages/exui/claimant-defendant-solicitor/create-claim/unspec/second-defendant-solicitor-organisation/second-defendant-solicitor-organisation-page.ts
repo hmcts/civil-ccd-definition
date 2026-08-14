@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import OrganisationFragment from '../../../../fragments/organisation/organisation-fragment';
 import { heading, subheadings } from './second-defendant-solicitor-organisation-content';
 

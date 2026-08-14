@@ -28,7 +28,7 @@ export default class LegalAdvisorSteps extends BaseExui {
     await super.idamActions.exuiLogin(tribunalCaseworkerRegion1User);
   }
 
-  async SdoSmallTrackSum() {
+  async SdoSmallSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -48,7 +48,7 @@ export default class LegalAdvisorSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackNoSum() {
+  async SdoSmallNoSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -68,7 +68,7 @@ export default class LegalAdvisorSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackFromFastTrackClaim() {
+  async SdoSmallFromFastClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -88,7 +88,7 @@ export default class LegalAdvisorSteps extends BaseExui {
     );
   }
 
-  async SdoSmallTrackDRH() {
+  async SdoSmallDRH() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {

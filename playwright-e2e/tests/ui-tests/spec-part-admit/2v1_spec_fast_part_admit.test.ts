@@ -6,10 +6,10 @@ test.describe('2v1 Multi Party fast part admit claim', { tag: '@civil-ccd-nightl
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFastTrack2v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimFast2v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecSteps.Login();
-    await DefendantSolicitor1SpecSteps.RespondFastTrackPartAdmit2v1();
+    await DefendantSolicitor1SpecSteps.RespondFastPartAdmit2v1();
   });
 });

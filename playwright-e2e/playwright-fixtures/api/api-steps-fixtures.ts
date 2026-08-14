@@ -3,13 +3,18 @@ import { test as schemaBuilderFactories } from './schema-builder-factory-fixture
 import { mergeTests } from '@playwright/test';
 import CaseRoleAssignmentApiSteps from '../../steps/api/case-role-assignment-api-steps';
 import CaseworkerApiSteps from '../../steps/api/exui/caseworker-api-steps';
+import ClaimantCitizenApiSteps from '../../steps/api/cui/claimant-citizen-api-steps';
 import IdamApiSteps from '../../steps/api/idam/idam-api-steps';
 import ClaimantSolicitorApiSteps from '../../steps/api/exui/claimant-solicitor-api-steps';
 import ClaimantSolicitorSpecApiSteps from '../../steps/api/exui/claimant-solicitor-spec-api-steps';
+import DefendantCitizenApiSteps from '../../steps/api/cui/defendant-citizen-api-steps';
 import DefendantSolicitor1ApiSteps from '../../steps/api/exui/defendant-solicitor-1-api-steps';
 import DefendantSolicitor1SpecApiSteps from '../../steps/api/exui/defendant-solicitor-1-spec-api-steps';
 import DefendantSolicitor2SpecApiSteps from '../../steps/api/exui/defendant-solicitor-2-spec-api-steps';
 import DefendantSolicitor2ApiSteps from '../../steps/api/exui/defendant-solicitor-2-api-steps';
+import OtherClaimantSolicitor1ApiSteps from '../../steps/api/exui/other-claimant-solicitor-1-api-steps';
+import OtherDefendantSolicitor1ApiSteps from '../../steps/api/exui/other-defendant-solicitor-1-api-steps';
+import OtherDefendantSolicitor2ApiSteps from '../../steps/api/exui/other-defendant-solicitor-2-api-steps';
 import DataApiSteps from '../../steps/api/data-api-steps';
 import HearingCenterAdminApiSteps from '../../steps/api/exui/hearing-center-admin-api-steps';
 import JudgeApiSteps from '../../steps/api/exui/judge-api-steps';
@@ -19,6 +24,8 @@ type ApiStepsFixtures = {
   IdamApiSteps: IdamApiSteps;
   DataApiSteps: DataApiSteps;
   CaseworkerApiSteps: CaseworkerApiSteps;
+  ClaimantCitizenApiSteps: ClaimantCitizenApiSteps;
+  DefendantCitizenApiSteps: DefendantCitizenApiSteps;
   HearingCenterAdminApiSteps: HearingCenterAdminApiSteps;
   JudgeApiSteps: JudgeApiSteps;
   ClaimantSolicitorSpecApiSteps: ClaimantSolicitorSpecApiSteps;
@@ -27,6 +34,9 @@ type ApiStepsFixtures = {
   DefendantSolicitor1ApiSteps: DefendantSolicitor1ApiSteps;
   DefendantSolicitor2SpecApiSteps: DefendantSolicitor2SpecApiSteps;
   DefendantSolicitor2ApiSteps: DefendantSolicitor2ApiSteps;
+  OtherClaimantSolicitor1ApiSteps: OtherClaimantSolicitor1ApiSteps;
+  OtherDefendantSolicitor1ApiSteps: OtherDefendantSolicitor1ApiSteps;
+  OtherDefendantSolicitor2ApiSteps: OtherDefendantSolicitor2ApiSteps;
   CaseRoleAssignmentApiSteps: CaseRoleAssignmentApiSteps;
   LegalAdvisorApiSteps: LegalAdvisorApiSteps;
 };
@@ -40,6 +50,12 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   },
   CaseworkerApiSteps: async ({ _caseworkerDataBuilderFactory, _caseworkerSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new CaseworkerApiSteps(_caseworkerDataBuilderFactory, _caseworkerSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  ClaimantCitizenApiSteps: async ({ _claimantDefendantCitizenDataBuilderFactory, _claimantDefendantCitizenSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantCitizenApiSteps(_claimantDefendantCitizenDataBuilderFactory, _claimantDefendantCitizenSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  DefendantCitizenApiSteps: async ({ _claimantDefendantCitizenDataBuilderFactory, _claimantDefendantCitizenSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantCitizenApiSteps(_claimantDefendantCitizenDataBuilderFactory, _claimantDefendantCitizenSchemaBuilderFactory, _requestsFactory, _testData));
   },
   HearingCenterAdminApiSteps: async ({ _hearingCenterAdminDataBuilderFactory, _hearingCenterAdminSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new HearingCenterAdminApiSteps(_hearingCenterAdminDataBuilderFactory, _hearingCenterAdminSchemaBuilderFactory, _requestsFactory, _testData));
@@ -59,11 +75,20 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   DefendantSolicitor1ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor1ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
-  DefendantSolicitor2SpecApiSteps: async ({ _requestsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor2SpecApiSteps(_requestsFactory, _testData));
+  DefendantSolicitor2SpecApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor2SpecApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
   DefendantSolicitor2ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor2ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  OtherClaimantSolicitor1ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new OtherClaimantSolicitor1ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  OtherDefendantSolicitor1ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new OtherDefendantSolicitor1ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  OtherDefendantSolicitor2ApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new OtherDefendantSolicitor2ApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));
   },
   CaseRoleAssignmentApiSteps: async ({ _requestsFactory, _testData }, use) => {
     await use(new CaseRoleAssignmentApiSteps(_requestsFactory, _testData));
