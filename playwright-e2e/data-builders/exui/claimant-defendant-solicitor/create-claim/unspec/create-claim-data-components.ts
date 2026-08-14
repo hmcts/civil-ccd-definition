@@ -248,7 +248,7 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec, personalInjuryType?: 
   if (claimTypeUnSpec === ClaimTypeUnspec.PERSONAL_INJURY) {
     return {
       ClaimType: {
-        claimTypeUnspec,
+        claimTypeUnSpec: claimTypeUnSpec,
       },
       PersonalInjuryType: {
         personalInjuryType: personalInjuryType,
