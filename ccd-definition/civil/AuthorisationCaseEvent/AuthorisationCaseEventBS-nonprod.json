@@ -32,7 +32,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
