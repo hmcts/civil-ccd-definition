@@ -98,7 +98,7 @@ properties([
   ])
 ])
 
-@Library("Infrastructure")
+@Library("Infrastructure@Enable-helm-on-staging")
 
 def type = "nodejs"
 def product = "civil"
