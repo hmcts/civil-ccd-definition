@@ -212,25 +212,7 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
-  stage('Create deployment PR') {
-    def prUrl = sh(
-      script: '''
-        set -e
-        gh pr create \
-          --base master \
-          --fill \
-          --label only_deploy
-      ''',
-      returnStdout: true
-    ).trim()
-
-    env.PR_NUMBER = sh(
-      script: "gh pr view ${prUrl} --json number --jq '.number'",
-      returnStdout: true
-    ).trim()
-
-    echo "Created deployment PR #${env.PR_NUMBER} with only_deploy label"
-  }
+  deployNightlyInstance(valuesEnvironment: 'aat')
 
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES
@@ -295,8 +277,28 @@ withNightlyPipeline(type, product, component) {
   env.URL_FOR_SECURITY_SCAN = civilServiceUrl
   env.RUN_WA_API_TEST = (useWiremock || params.ENVIRONMENT == 'preview') ? false : true
   env.UNASSIGN_CASES = true
+
+  def useDeployedNightlyInstanceUrls = {
+    if (!env.AKS_TEST_URL?.trim()) {
+      return
+    }
+
+    def serviceHost = env.AKS_TEST_URL.replaceFirst('^https?://', '').replaceFirst('/$', '')
+    env.ENVIRONMENT = 'preview'
+    env.URL = "https://xui-${serviceHost}"
+    env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-${serviceHost}"
+    env.CIVIL_SERVICE_URL = env.AKS_TEST_URL
+    env.AAC_API_URL = "https://manage-case-assignment-${serviceHost}"
+    env.WIREMOCK_URL = "https://wiremock-${serviceHost}"
+    env.WIRE_MOCK_SERVICE_URL = env.WIREMOCK_URL
+    env.URL_FOR_SECURITY_SCAN = env.CIVIL_SERVICE_URL
+    env.RUN_WA_API_TEST = false
+    echo "Using nightly deployed instance at ${env.CIVIL_SERVICE_URL}"
+  }
+
   overrideVaultEnvironments([
-    'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
+    'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT,
+    'preview': 'aat'
   ])
   loadVaultSecrets(secrets)
 
@@ -324,67 +326,67 @@ withNightlyPipeline(type, product, component) {
     env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
 
 
-  if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
-    afterAlways('DependencyCheckNightly') {
-      if(useWiremock) {
-        stage('Load WireMock mappings') {
-          loadWiremockMappingsIfRequired()
+  def runPlaywrightNightlyTests = {
+    if(useWiremock) {
+      stage('Load WireMock mappings') {
+        loadWiremockMappingsIfRequired()
+      }
+    }
+
+    stage('Playwright test setup') {
+      try {
+        yarnBuilder.yarn('test:playwright:setup:install')
+        if(playwrightRunSetup) {
+          yarnBuilder.yarn('test:playwright:setup:civil-ccd-nightly:ci')
+        }
+      } catch (Exception error) {
+        if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+          flowInterrupted = true
+        }
+        if(playwrightRunSetup) {
+          playwrightSetupPassed=false
+        }
+        unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+      } finally {
+        if(playwrightRunSetup) {
+          yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
         }
       }
+    }
 
-      stage('Playwright test setup') {
+    stage('Playwright full functional test') {
+      try {
+        if(flowInterrupted) {
+          throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
+        }
+        if(playwrightSetupPassed) {
+          yarnBuilder.yarn('test:playwright:civil-ccd-nightly:ci')
+        }
+      } catch (Exception error) {
+        if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+          flowInterrupted = true
+        }
+        unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+      } finally {
+        if(playwrightSetupPassed) {
+          copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
+          sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+          yarnBuilder.yarn('test:playwright:functional:generate-report')
+          publishFunctionalReport()
+        }
+      }
+    }
+
+    if(playwrightRunSetup) {
+      stage('Playwright test teardown') {
         try {
-          yarnBuilder.yarn('test:playwright:setup:install')
-          if(playwrightRunSetup) {
-            yarnBuilder.yarn('test:playwright:setup:civil-ccd-nightly:ci')
-          }
+          yarnBuilder.yarn('test:playwright:teardown:civil-ccd-nightly:ci')
         } catch (Exception error) {
-          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-            flowInterrupted = true
-          }
-          if(playwrightRunSetup) {
-            playwrightSetupPassed=false
-          }
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
+          copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+          sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
           if(playwrightRunSetup) {
-            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
-          }
-        }
-      }
-
-      stage('Playwright full functional test') {
-        try {
-          if(flowInterrupted) {
-            throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
-          }
-          if(playwrightSetupPassed) {
-            yarnBuilder.yarn('test:playwright:civil-ccd-nightly:ci')
-          }
-        } catch (Exception error) {
-          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-            flowInterrupted = true
-          }
-          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-        } finally {
-          if(playwrightSetupPassed) {
-            copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
-            sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
-            yarnBuilder.yarn('test:playwright:functional:generate-report')
-            publishFunctionalReport()
-          }
-        }
-      }
-
-      if(playwrightRunSetup) {
-        stage('Playwright test teardown') {
-          try {
-            yarnBuilder.yarn('test:playwright:teardown:civil-ccd-nightly:ci')
-          } catch (Exception error) {
-            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-          } finally {
-            copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
-            sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
             yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
             publishBootstrapReport()
           }
@@ -395,9 +397,12 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-      loadWiremockMappingsIfRequired()
+      useDeployedNightlyInstanceUrls()
       if(runPrevFailedAndNotExecutedTestFiles) {
+        loadWiremockMappingsIfRequired()
         copyPrevFailedAndNotExecutedTestFilesJson()
+      } else {
+        runPlaywrightNightlyTests()
       }
       copyPreviousAllureHistory()
     }
