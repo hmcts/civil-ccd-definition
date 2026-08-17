@@ -1,5 +1,8 @@
+import CaseState from '../constants/cases/case-state';
+
 export default interface CCDCaseData {
   id?: number;
+  state?: CaseState;
   respondent1PaymentDateToStringSpec?: string;
   respondent1ClaimResponseTypeForSpec?: string;
   respondent1DQRemoteHearingLRspec?: DQRemoteHearing;
@@ -16,6 +19,8 @@ export default interface CCDCaseData {
   caseFlags?: CaseFlags;
   messagesToReplyTo?: string;
   sendMessageContent?: string;
+  requestForReviewCommentsClaimant?: string;
+  requestForReviewCommentsDefendant?: string;
   messages?: Message[];
   qmLatestQuery?: QmLatestQuery;
   claimFee?: ClaimFee;
