@@ -212,6 +212,7 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
+  env.CIVIL_SERVICE_IMAGE = 'latest'
   deployNightlyInstance(valuesEnvironment: 'aat')
 
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
