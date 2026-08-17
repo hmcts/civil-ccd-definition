@@ -1,13 +1,10 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimData from './create-claim-data-components';
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
@@ -45,25 +42,25 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildIntermediate1v1() {
+  async buildInter1v1() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
-  async buildIntermediate1v2DS() {
+  async buildInter1v2DS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
     });
   }
 
-  async buildIntermediate1v2SS() {
+  async buildInter1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
     });
   }
 
-  async buildIntermediate2v1() {
+  async buildInter2v1() {
     return this.buildData({
       claimType: ClaimType.TWO_VS_ONE,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
@@ -168,20 +165,12 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       defendant2PartyType,
     });
 
-    const certificateOfSuitability =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    let certificateOfSuitability2: UploadDocumentValue;
-    if (ClaimTypeHelper.isClaimant2(claimType)) {
-      certificateOfSuitability2 =
-        await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    }
-
     return {
       ...createClaimData.references,
       ...createClaimData.claimantCourt,
-      ...createClaimData.claimant1(claimant1PartyType, certificateOfSuitability),
+      ...(await createClaimData.claimant1(claimant1PartyType, civilServiceRequests)),
       ...createClaimData.claimantSolicitor1,
-      ...createClaimData.claimant2(claimType, claimant2PartyType, certificateOfSuitability2!),
+      ...(await createClaimData.claimant2(claimType, claimant2PartyType, civilServiceRequests)),
       ...createClaimData.defendant1(defendant1PartyType),
       ...createClaimData.defendantSolicitor1(claimType),
       ...createClaimData.defendant2(claimType, defendant2PartyType),

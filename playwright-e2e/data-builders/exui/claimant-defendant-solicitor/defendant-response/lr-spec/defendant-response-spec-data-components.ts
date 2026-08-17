@@ -4,17 +4,22 @@ import {
 } from '../../../../../config/users/exui-users';
 import preferredCourts from '../../../../../config/preferred-courts';
 import partys from '../../../../../constants/users/partys';
-import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response-spec/defendant-response-spec-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
-import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
+import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response-spec/defence-route-spec';
 import DateHelper from '../../../../../helpers/date-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { Party } from '../../../../../models/users/partys';
-import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
-import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-admitted-part-route-spec';
+import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response-spec/payment-type-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
+import CivilServiceRequests from '../../../../../requests/civil-service-requests';
+
+const getDefendantSolicitorUser = (defendantSolicitorParty: Party) =>
+  defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+    ? defendantSolicitor1User
+    : defendantSolicitor2User;
 
 const defendantChecklist = {
   RespondentChecklist: {},
@@ -197,15 +202,19 @@ const defenceAdmittedPartRoute = (
   return {};
 };
 
-const upload = (
+const upload = async (
   defendantResponseType: DefendantResponseSpecType,
-  defenceResponseDocumentSpec: UploadDocumentValue,
   defendantSolicitorParty: Party,
+  civilServiceRequests: CivilServiceRequests,
 ) => {
   if (
     defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
     defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
+    const defenceResponseDocumentSpec = await civilServiceRequests.uploadTestDocument(
+      getDefendantSolicitorUser(defendantSolicitorParty),
+    );
+
     return {
       Upload: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -686,17 +695,21 @@ const fixedRecoverableCosts = (
   return {};
 };
 
-const fixedRecoverableCostsIntermediate = (
+const fixedRecoverableCostsIntermediate = async (
   defendantResponseType: DefendantResponseSpecType,
   claimTrack: ClaimTrack,
   defendantSolicitorParty: Party,
-  frcSupportingDocument?: UploadDocumentValue,
+  civilServiceRequests: CivilServiceRequests,
 ) => {
   if (
     defendantResponseType === DefendantResponseSpecType.FULL_DEFENCE ||
     defendantResponseType === DefendantResponseSpecType.PART_ADMISSION
   ) {
     if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+      const frcSupportingDocument = await civilServiceRequests.uploadTestDocument(
+        getDefendantSolicitorUser(defendantSolicitorParty),
+      );
+
       return {
         FixedRecoverableCostsIntermediate: {
           [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1

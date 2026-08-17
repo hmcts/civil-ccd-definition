@@ -1,5 +1,4 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import { claimantSolicitorUser } from '../../../../config/users/exui-users';
 import ClaimTrack from '../../../../constants/cases/claim-track';
 import ClaimType from '../../../../constants/cases/claim-type';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
@@ -30,22 +29,19 @@ export default class EvidenceUploadApplicantDataBuilder extends BaseDataBuilder 
     } = {}
   ) {
     const { civilServiceRequests } = this.requestsFactory;
-    const doc1 = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    const doc2 = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    const doc3 = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    const doc4 = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
 
     return {
       ...evidenceUploadApplicantDataBuilderComponents.evidenceUpload(claimTrack),
       ...evidenceUploadApplicantDataBuilderComponents.selectUploadOptions(claimType),
       ...evidenceUploadApplicantDataBuilderComponents.documentSelection(claimTrack),
-      ...evidenceUploadApplicantDataBuilderComponents.documentUploadFastTrack(claimTrack, doc1, doc2, doc3, doc4),
-      ...evidenceUploadApplicantDataBuilderComponents.documentUploadSmallClaim(claimTrack,
-            doc1,
-            doc2,
-            doc3,
-            doc4,
-          ),
+      ...(await evidenceUploadApplicantDataBuilderComponents.documentUploadFastTrack(
+        claimTrack,
+        civilServiceRequests,
+      )),
+      ...(await evidenceUploadApplicantDataBuilderComponents.documentUploadSmallClaim(
+        claimTrack,
+        civilServiceRequests,
+      )),
     };
   }
 }

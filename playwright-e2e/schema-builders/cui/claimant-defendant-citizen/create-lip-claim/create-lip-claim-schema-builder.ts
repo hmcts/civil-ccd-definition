@@ -16,7 +16,7 @@ export default class CreateLipClaimSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildIntermediate(): Promise<z.ZodType> {
+  async buildInter(): Promise<z.ZodType> {
     return this.buildSchema({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
@@ -48,7 +48,6 @@ export default class CreateLipClaimSchemaBuilder extends BaseSchemaBuilder {
       createClaimSchemaComponents.timelineOfEvents,
       createClaimSchemaComponents.flightDelay,
       createClaimSchemaComponents.claimFee,
-      createClaimSchemaComponents.generatedCaseData,
     );
 
     return z.looseObject(schemaShape);
