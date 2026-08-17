@@ -31,10 +31,7 @@
     "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
     "AccessControl": [
       {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE", "APP-SOL-SPEC-PROFILE", "APP-SOL-UNSPEC-PROFILE"],
         "CRUD": "CRU"
       },
       {
