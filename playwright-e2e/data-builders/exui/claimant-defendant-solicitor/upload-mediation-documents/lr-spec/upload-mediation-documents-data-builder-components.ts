@@ -1,10 +1,16 @@
+import {
+  claimantSolicitorUser,
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+} from "../../../../../config/users/exui-users";
 import ClaimType from "../../../../../constants/cases/claim-type";
 import partys from "../../../../../constants/users/partys";
 import CaseDataHelper from "../../../../../helpers/case-data-helper";
 import DateHelper from "../../../../../helpers/date-helper";
-import { UploadDocumentValue } from "../../../../../models/ccd-case-data";
 import { ClaimantDefendantPartyType } from "../../../../../models/users/claimant-defendant-party-types";
 import { Party } from "../../../../../models/users/partys";
+import User from "../../../../../models/users/user";
+import CivilServiceRequests from "../../../../../requests/civil-service-requests";
 
 const explanation = {
   Explanation: {}
@@ -108,26 +114,40 @@ const documentType = {
   }
 }
 
-const documentUpload = (nonAttendanceStatementDoc: UploadDocumentValue, referredDoc: UploadDocumentValue, claimantDefendantSolicitorParty: Party) => ({
-  DocumentUpload: {
-    nonAttendanceStatementForm: 
-    [
-      CaseDataHelper.setIdToData({
-        yourName: `Your name - ${claimantDefendantSolicitorParty.key}`,
-        documentDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({ months: 1 }), {outputFormat: 'YYYY-MM-DD'}),
-        document: nonAttendanceStatementDoc
-      })
-    ],
-    documentsReferredForm: 
-    [
-      CaseDataHelper.setIdToData({
-        documentType: `Non Attendance Statement Doc - ${claimantDefendantSolicitorParty.key}`,
-        documentDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({ months: 2 }), {outputFormat: 'YYYY-MM-DD'}),
-        document: referredDoc
-      })
-    ]
-  }
-});
+const documentUpload = async (
+  claimantDefendantSolicitorParty: Party,
+  civilServiceRequests: CivilServiceRequests,
+) => {
+  const uploadUsersByParty = new Map<Party, User>([
+    [partys.CLAIMANT_SOLICITOR_1, claimantSolicitorUser],
+    [partys.DEFENDANT_SOLICITOR_1, defendantSolicitor1User],
+    [partys.DEFENDANT_SOLICITOR_2, defendantSolicitor2User],
+  ]);
+  const user = uploadUsersByParty.get(claimantDefendantSolicitorParty);
+  const nonAttendanceStatementDoc = await civilServiceRequests.uploadTestDocument(user!);
+  const referredDoc = await civilServiceRequests.uploadTestDocument(user!);
+
+  return {
+    DocumentUpload: {
+      nonAttendanceStatementForm: 
+      [
+        CaseDataHelper.setIdToData({
+          yourName: `Your name - ${claimantDefendantSolicitorParty.key}`,
+          documentDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({ months: 1 }), {outputFormat: 'YYYY-MM-DD'}),
+          document: nonAttendanceStatementDoc
+        })
+      ],
+      documentsReferredForm: 
+      [
+        CaseDataHelper.setIdToData({
+          documentType: `Non Attendance Statement Doc - ${claimantDefendantSolicitorParty.key}`,
+          documentDate: DateHelper.formatDateToString(DateHelper.subtractFromToday({ months: 2 }), {outputFormat: 'YYYY-MM-DD'}),
+          document: referredDoc
+        })
+      ]
+    }
+  };
+};
 
 const uploadMediationDocumentsDataBuilderComponents = {
   explanation,

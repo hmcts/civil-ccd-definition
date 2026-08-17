@@ -17,7 +17,7 @@ import NoticeOfChangeDataBuilder from './notice-of-change/notice-of-change-data-
 import NotifyClaimDataBuilder from './notify-claim/unspec/notify-claim-data-builder';
 import NotifyClaimDetailsDataBuilder from './notify-claim-details/unspec/notify-claim-details-data-builder';
 import RequestForReconsiderationDataBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-data-builder';
-import CreateClaimSpecAfterPaymentLrDataBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-lr-data-builder';
+import CreateClaimSpecAfterPaymentDataBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-data-builder';
 import CreateClaimAfterPaymentDataBuilder from './create-claim-after-payment/unspec/create-claim-after-payment-data-builder';
 import DefaultJudgementDataBuilder from './default-judgement/unspec/default-judgement-data-builder.ts';
 import DefaultJudgementSpecDataBuilder from './default-judgement/lr-spec/default-judgement-spec-data-builder.ts';
@@ -101,7 +101,7 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
   }
 
   get createClaimSpecAfterPaymentDataBuilder() {
-    return new CreateClaimSpecAfterPaymentLrDataBuilder(this.requestsFactory, this.testData);
+    return new CreateClaimSpecAfterPaymentDataBuilder(this.requestsFactory, this.testData);
   }
 
   get defaultJudgementDataBuilder() {

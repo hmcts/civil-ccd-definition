@@ -1,6 +1,6 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import createClaimSpecAfterPaymentLIPDataBuilderComponents from './create-claim-spec-after-payment-lip-data-builder-components';
+import createClaimSpecAfterPaymentLipDataBuilderComponents from './create-claim-spec-after-payment-lip-data-builder-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimSpecAfterPaymentLipDataBuilder extends BaseDataBuilder {
@@ -10,7 +10,7 @@ export default class CreateClaimSpecAfterPaymentLipDataBuilder extends BaseDataB
 
   protected async buildData() {
     return {
-      ...createClaimSpecAfterPaymentLIPDataBuilderComponents.issueClaim(),
+      ...createClaimSpecAfterPaymentLipDataBuilderComponents.issueClaim(),
     };
   }
 }

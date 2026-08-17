@@ -58,7 +58,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(this.claimantCitizenUser, this.ccdCaseData?.id);
   }
 
-  async CreateLipClaimIntermediate() {
+  async CreateLipClaimInter() {
     await this.setupUserData(this.claimantCitizenUser);
     const createClaimDataBuilder =
       this.claimantDefendantCitizenDataBuilderFactory.createClaimDataBuilder;
@@ -67,10 +67,10 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
     await this.submitCuiEvent(
       this.claimantCitizenUser,
       ccdEvents.CREATE_LIP_CLAIM,
-      await createClaimDataBuilder.buildIntermediate(),
+      await createClaimDataBuilder.buildInter(),
       CaseState.PENDING_CASE_ISSUED,
     );
-    ZodHelper.safeParse(await createClaimSchemaBuilder.buildIntermediate(), this.ccdCaseData);
+    ZodHelper.safeParse(await createClaimSchemaBuilder.buildInter(), this.ccdCaseData);
     UserAssignedCasesHelper.addAssignedCaseToUser(this.claimantCitizenUser, this.ccdCaseData?.id);
   }
 
@@ -110,5 +110,177 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
     const createClaimSpecAfterPaymentSchema =
       await createClaimSpecAfterPaymentSchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(createClaimSpecAfterPaymentSchema, this.ccdCaseData);
+  }
+
+  async RespondSmallRejectFullDefence() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const claimantResponseDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.claimantResponseDataBuilder;
+    const claimantResponseSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.claimantResponseSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.CLAIMANT_RESPONSE_CUI,
+      await claimantResponseDataBuilder.buildSmallRejectFullDefence(),
+      CaseState.IN_MEDIATION,
+    );
+    ZodHelper.safeParse(
+      await claimantResponseSchemaBuilder.buildSmallRejectFullDefence(caseDataBeforeSubmission),
+      this.ccdCaseData,
+    );
+  }
+
+  async RespondSmallRejectPartAdmit() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const claimantResponseDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.claimantResponseDataBuilder;
+    const claimantResponseSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.claimantResponseSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.CLAIMANT_RESPONSE_CUI,
+      await claimantResponseDataBuilder.buildSmallRejectPartAdmit(),
+      CaseState.IN_MEDIATION,
+    );
+    ZodHelper.safeParse(
+      await claimantResponseSchemaBuilder.buildSmallRejectPartAdmit(caseDataBeforeSubmission),
+      this.ccdCaseData,
+    );
+  }
+
+  async RespondFastRejectFullDefence() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const claimantResponseDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.claimantResponseDataBuilder;
+    const claimantResponseSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.claimantResponseSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.CLAIMANT_RESPONSE_CUI,
+      await claimantResponseDataBuilder.buildFastRejectFullDefence(),
+      CaseState.JUDICIAL_REFERRAL,
+    );
+    ZodHelper.safeParse(
+      await claimantResponseSchemaBuilder.buildFastRejectFullDefence(caseDataBeforeSubmission),
+      this.ccdCaseData,
+    );
+  }
+
+  async RespondInterRejectFullDefence() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const claimantResponseDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.claimantResponseDataBuilder;
+    const claimantResponseSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.claimantResponseSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.CLAIMANT_RESPONSE_CUI,
+      await claimantResponseDataBuilder.buildInterRejectFullDefence(),
+      CaseState.JUDICIAL_REFERRAL,
+    );
+    ZodHelper.safeParse(
+      await claimantResponseSchemaBuilder.buildInterRejectFullDefence(caseDataBeforeSubmission),
+      this.ccdCaseData,
+    );
+  }
+
+  async RespondMultiRejectFullDefence() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const claimantResponseDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.claimantResponseDataBuilder;
+    const claimantResponseSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.claimantResponseSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.CLAIMANT_RESPONSE_CUI,
+      await claimantResponseDataBuilder.buildMultiRejectFullDefence(),
+      CaseState.JUDICIAL_REFERRAL,
+    );
+    ZodHelper.safeParse(
+      await claimantResponseSchemaBuilder.buildMultiRejectFullDefence(caseDataBeforeSubmission),
+      this.ccdCaseData,
+    );
+  }
+
+  async RespondSmallAcceptFullAdmitSetDateCCJ() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const claimantResponseDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.claimantResponseDataBuilder;
+    const claimantResponseSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.claimantResponseSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.CLAIMANT_RESPONSE_CUI,
+      await claimantResponseDataBuilder.buildSmallAcceptFullAdmitSetDateCcj(),
+      CaseState.All_FINAL_ORDERS_ISSUED,
+    );
+    ZodHelper.safeParse(
+      await claimantResponseSchemaBuilder.buildSmallAcceptFullAdmitSetDateCcj(
+        caseDataBeforeSubmission,
+      ),
+      this.ccdCaseData,
+    );
+  }
+
+  async EvidenceUpload() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const evidenceUploadApplicantDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.evidenceUploadApplicantDataBuilder;
+    const evidenceUploadApplicantSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.evidenceUploadApplicantSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
+      await evidenceUploadApplicantDataBuilder.build(),
+      CaseState.CASE_PROGRESSION,
+    );
+    ZodHelper.safeParse(
+      await evidenceUploadApplicantSchemaBuilder.build(caseDataBeforeSubmission),
+      this.ccdCaseData,
+    );
+  }
+
+  async TrailReadiness() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const trialReadinessDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.trailReadinessDataBuilder;
+    const trialReadinessSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.trailReadinessSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.TRIAL_READINESS,
+      await trialReadinessDataBuilder.buildClaimant(),
+    );
+    ZodHelper.safeParse(
+      await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission),
+      this.ccdCaseData,
+    );
+  }
+
+  async RequestForReconsideration() {
+    await this.setupApiStep(this.claimantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+    const requestForReconsiderationDataBuilder =
+      this.claimantDefendantCitizenDataBuilderFactory.requestForReconsiderationDataBuilder;
+    const requestForReconsiderationSchemaBuilder =
+      this.claimantDefendantCitizenSchemaBuilderFactory.requestForReconsiderationSchemaBuilder;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
+      await requestForReconsiderationDataBuilder.buildClaimant(),
+      CaseState.CASE_PROGRESSION,
+    );
+    ZodHelper.safeParse(
+      await requestForReconsiderationSchemaBuilder.buildClaimant(caseDataBeforeSubmission),
+      this.ccdCaseData,
+    );
   }
 }
