@@ -29,9 +29,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -48,9 +48,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -67,9 +67,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -86,9 +86,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -105,9 +105,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -124,9 +124,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -143,9 +143,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -162,9 +162,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -181,9 +181,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -200,9 +200,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -219,9 +219,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -238,9 +238,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -257,9 +257,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -276,9 +276,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -295,9 +295,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -314,9 +314,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
     const defendantResponseSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.DEFENDANT_RESPONSE_CUI,
@@ -333,9 +333,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const evidenceUploadRespondentDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.evidenceUploadRespondentDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.evidenceUploadRespondentLipDataBuilder;
     const evidenceUploadRespondentSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.evidenceUploadRespondentSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.evidenceUploadRespondentLipSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
@@ -352,9 +352,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const trialReadinessDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.trailReadinessDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.trailReadinessLipDataBuilder;
     const trialReadinessSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.trailReadinessSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.trailReadinessLipSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.TRIAL_READINESS,
@@ -370,9 +370,9 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
     const requestForReconsiderationDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.requestForReconsiderationDataBuilder;
+      this.claimantDefendantCitizenDataBuilderFactory.requestForReconsiderationLipDataBuilder;
     const requestForReconsiderationSchemaBuilder =
-      this.claimantDefendantCitizenSchemaBuilderFactory.requestForReconsiderationSchemaBuilder;
+      this.claimantDefendantCitizenSchemaBuilderFactory.requestForReconsiderationLipSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
       ccdEvents.REQUEST_FOR_RECONSIDERATION,
@@ -383,5 +383,59 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       await requestForReconsiderationSchemaBuilder.buildDefendant(caseDataBeforeSubmission),
       this.ccdCaseData,
     );
+  }
+
+  async RaiseLipQuery() {
+    await this.setupApiStep(this.defendantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRaiseLipDataBuilder } = this.claimantDefendantCitizenDataBuilderFactory;
+    await super.submitQmEvent(
+      this.defendantCitizenUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseLipDataBuilder.buildRaiseQueryDefendantLip(),
+    );
+
+    const { queryManagementRaiseLipSchemaBuilder } =
+      this.claimantDefendantCitizenSchemaBuilderFactory;
+    const queryManagementRaiseSchema =
+      await queryManagementRaiseLipSchemaBuilder.buildRaiseQuery(caseDataBeforeSubmission);
+    ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+  }
+
+  async RaiseLipHearingQuery() {
+    await this.setupApiStep(this.defendantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRaiseLipDataBuilder } = this.claimantDefendantCitizenDataBuilderFactory;
+    await super.submitQmEvent(
+      this.defendantCitizenUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseLipDataBuilder.buildRaiseQueryHearingDefendantLip(),
+    );
+
+    const { queryManagementRaiseLipSchemaBuilder } =
+      this.claimantDefendantCitizenSchemaBuilderFactory;
+    const queryManagementRaiseSchema =
+      await queryManagementRaiseLipSchemaBuilder.buildRaiseQuery(caseDataBeforeSubmission);
+    ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+  }
+
+  async FollowUpOnLipQuery() {
+    await this.setupApiStep(this.defendantCitizenUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRaiseLipDataBuilder } = this.claimantDefendantCitizenDataBuilderFactory;
+    await super.submitQmEvent(
+      this.defendantCitizenUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseLipDataBuilder.buildFollowQueryDefendantLip(),
+    );
+
+    const { queryManagementRaiseLipSchemaBuilder } =
+      this.claimantDefendantCitizenSchemaBuilderFactory;
+    const queryManagementRaiseSchema =
+      await queryManagementRaiseLipSchemaBuilder.buildFollowUpQuery(caseDataBeforeSubmission);
+    ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
   }
 }

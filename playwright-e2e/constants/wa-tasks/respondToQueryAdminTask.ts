@@ -2,7 +2,7 @@ import type WATask from '../../models/wa-task';
 
 const task: WATask = {
   name: 'Respond to a query',
-  type: 'respondToQueryCTSC',
+  type: 'respondToQueryAdmin',
   task_system: 'SELF',
   security_classification: 'PUBLIC',
   task_title: 'Respond to a query',
@@ -15,9 +15,9 @@ const task: WATask = {
   case_management_category: 'Civil',
   work_type_id: 'query_work',
   work_type_label: 'Query work',
-  role_category: 'CTSC',
+  role_category: 'ADMIN',
   minor_priority: 500,
-  major_priority: 5000,
+  major_priority: 2000,
 };
 
 export default task;

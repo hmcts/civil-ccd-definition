@@ -168,6 +168,31 @@ export default abstract class BaseApi extends BaseTestData {
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
   }
 
+  protected async submitQmEvent(
+    user: User,
+    ccdEvent: CCDEvent,
+    qmEventData: Record<string, any>,
+    expectedState?: CaseState,
+  ) {
+    const { ccdRequests } = this.requestsFactory;
+    const { eventToken } = await ccdRequests.startEvent(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+
+    const eventCaseData = await ccdRequests.submitEvent(
+      user,
+      ccdEvent,
+      qmEventData,
+      eventToken,
+      this.ccdCaseData?.id,
+      expectedState,
+    );
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+  }
+
   protected async submitNocEvent(
     newSolicitor: User,
     oldSolicitor?: User,

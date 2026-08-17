@@ -5,39 +5,44 @@ import CreateLipClaimDataBuilder from './create-lip-claim/create-lip-claim-data-
 import DefendantResponseCuiDataBuilder from './defendant-response-cui/defendant-response-cui-data-builder';
 import EvidenceUploadApplicantLipDataBuilder from './evidence-upload-applicant-lip/evidence-upload-applicant-lip-data-builder';
 import EvidenceUploadRespondentLipDataBuilder from './evidence-upload-respondent-lip/evidence-upload-respondent-lip-data-builder';
+import QueryManagementRaiseLipDataBuilder from '../common/query-management-raise/query-management-raise-data-builder';
 import RequestForReconsiderationLipDataBuilder from './request-for-reconsideration-lip/request-for-reconsideration-lip-data-builder';
-import TrailReadinessDataBuilder from './trail-readiness/trail-readiness-data-builder';
+import TrailReadinessLipDataBuilder from './trail-readiness-lip/trail-readiness-lip-data-builder';
 
 export default class ClaimantDefendantCitizenDataBuilderFactory extends BaseDataBuilderFactory {
-  get createClaimDataBuilder() {
+  get createLipClaimDataBuilder() {
     return new CreateLipClaimDataBuilder(this.requestsFactory, this.testData);
   }
 
-  get createClaimSpecAfterPaymentDataBuilder() {
+  get createClaimSpecAfterPaymentLipDataBuilder() {
     return new CreateClaimSpecAfterPaymentLipDataBuilder(this.requestsFactory, this.testData);
   }
 
-  get defendantResponseDataBuilder() {
+  get defendantResponseCuiDataBuilder() {
     return new DefendantResponseCuiDataBuilder(this.requestsFactory, this.testData);
   }
 
-  get claimantResponseDataBuilder() {
+  get claimantResponseCuiDataBuilder() {
     return new ClaimantResponseCuiDataBuilder(this.requestsFactory, this.testData);
   }
 
-  get evidenceUploadApplicantDataBuilder() {
+  get evidenceUploadApplicantLipDataBuilder() {
     return new EvidenceUploadApplicantLipDataBuilder(this.requestsFactory, this.testData);
   }
 
-  get evidenceUploadRespondentDataBuilder() {
+  get evidenceUploadRespondentLipDataBuilder() {
     return new EvidenceUploadRespondentLipDataBuilder(this.requestsFactory, this.testData);
   }
 
-  get trailReadinessDataBuilder() {
-    return new TrailReadinessDataBuilder(this.requestsFactory, this.testData);
+  get trailReadinessLipDataBuilder() {
+    return new TrailReadinessLipDataBuilder(this.requestsFactory, this.testData);
   }
 
-  get requestForReconsiderationDataBuilder() {
+  get requestForReconsiderationLipDataBuilder() {
     return new RequestForReconsiderationLipDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get queryManagementRaiseLipDataBuilder() {
+    return new QueryManagementRaiseLipDataBuilder(this.requestsFactory, this.testData);
   }
 }
