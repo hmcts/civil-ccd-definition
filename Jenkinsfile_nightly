@@ -294,6 +294,8 @@ withNightlyPipeline(type, product, component) {
           }
           if(playwrightSetupPassed) {
             yarnBuilder.yarn('test:playwright:civil-ccd-nightly:ci')
+          } else {
+            unstable(message: "${STAGE_NAME} did not run: 'Playwright test setup' failed, so no functional tests were executed.")
           }
         } catch (Exception error) {
           if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
