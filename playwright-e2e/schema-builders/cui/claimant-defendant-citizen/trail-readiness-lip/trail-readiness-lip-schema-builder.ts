@@ -5,10 +5,10 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';
 import { Party } from '../../../../models/users/partys';
-import trailReadinessSchemaBuilderComponents from './trail-readiness-schema-builder-components';
+import trailReadinessSchemaBuilderComponents from './trail-readiness-lip-schema-builder-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
-export default class TrailReadinessSchemaBuilder extends BaseSchemaBuilder {
+export default class TrailReadinessLipSchemaBuilder extends BaseSchemaBuilder {
   async buildClaimant(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, { party: partys.CLAIMANT_1 });
   }

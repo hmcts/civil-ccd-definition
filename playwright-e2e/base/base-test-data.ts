@@ -2,7 +2,7 @@ import claimantDefendantPartyTypes from '../constants/users/claimant-defendant-p
 import CaseFlagsHelper from '../helpers/case-flags-helper';
 import DateHelper from '../helpers/date-helper';
 import CaseFlags from '../models/ccd-events/case-flags/case-flag';
-import CCDCaseData from '../models/ccd-case-data';
+import CCDCaseData, { QmQueryMessage } from '../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-party-types';
 import TestData from '../models/test-utils/test-data';
 import ClaimType from '../constants/cases/claim-type';
@@ -139,6 +139,11 @@ export default abstract class BaseTestData {
     console.log('Decrementing Total Active Case Flags');
     this._testData.caseFlags.activeCaseFlags--;
     console.log(`Total Number of Active Case Flags: ${this._testData.caseFlags.activeCaseFlags}`);
+  }
+
+  protected retrieveLatestQuery(): QmQueryMessage {
+    const caseMessages = this.ccdCaseData!.queries!.caseMessages!;
+    return caseMessages[caseMessages.length - 1].value!;
   }
 
   protected setDebugClaimantDefendantPartyTypes() {
