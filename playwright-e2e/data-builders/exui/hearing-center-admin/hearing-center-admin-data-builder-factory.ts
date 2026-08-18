@@ -3,6 +3,8 @@ import DismissCaseDataBuilder from '../common/dismiss-case/dismiss-case-data-bui
 import CreateCaseFlagsDataBuilder from './create-case-flags/create-case-flags-data-builder';
 import ManageCaseFlagsDataBuilder from './manage-case-flags/manage-case-flags-data-builder';
 import ManageStayDataBuilder from './manage-stay/manage-stay-data-builder';
+import QueryManagementRaiseDataBuilder from '../common/query-management-raise/query-management-raise-data-builder';
+import QueryManagementRespondDataBuilder from '../common/query-management-respond/query-management-respond-data-builder';
 import ScheduleHearingDataBuilder from './schedule-hearing/schedule-hearing-data-builder';
 import StayCaseDataBuilder from './stay-case/stay-case-data-builder';
 
@@ -29,5 +31,13 @@ export default class HearingCenterAdminDataBuilderFactory extends BaseDataBuilde
 
   get dismissCaseDataBuilder() {
     return new DismissCaseDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get queryManagementRaiseDataBuilder() {
+    return new QueryManagementRaiseDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get queryManagementRespondDataBuilder() {
+    return new QueryManagementRespondDataBuilder(this.requestsFactory, this.testData);
   }
 }
