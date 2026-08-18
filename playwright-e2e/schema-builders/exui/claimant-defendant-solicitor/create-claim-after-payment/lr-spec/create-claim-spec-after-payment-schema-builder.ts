@@ -3,10 +3,10 @@ import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
-import createClaimSpecAfterPaymentLRSchemaComponents from './create-claim-spec-after-payment-lr-schema-builder-components';
+import createClaimSpecAfterPaymentSchemaComponents from './create-claim-spec-after-payment-schema-builder-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
-export default class CreateClaimSpecAfterPaymentLRSchemaBuilder extends BaseSchemaBuilder {
+export default class CreateClaimSpecAfterPaymentSchemaBuilder extends BaseSchemaBuilder {
   async build(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission);
   }
@@ -17,8 +17,8 @@ export default class CreateClaimSpecAfterPaymentLRSchemaBuilder extends BaseSche
     }) as z.ZodObject<any>;
 
     return baseSchema.extend({
-      ...createClaimSpecAfterPaymentLRSchemaComponents.createClaimSpecAfterPayment,
-      ...createClaimSpecAfterPaymentLRSchemaComponents.ignore,
+      ...createClaimSpecAfterPaymentSchemaComponents.createClaimSpecAfterPayment,
+      ...createClaimSpecAfterPaymentSchemaComponents.ignore,
     });
   }
 }

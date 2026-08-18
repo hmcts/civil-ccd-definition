@@ -6,8 +6,8 @@ const issueClaim = () => ({
   }),
 });
 
-const createClaimSpecAfterPaymentLIPDataBuilderComponents = {
+const createClaimSpecAfterPaymentLipDataBuilderComponents = {
   issueClaim,
 };
 
-export default createClaimSpecAfterPaymentLIPDataBuilderComponents;
+export default createClaimSpecAfterPaymentLipDataBuilderComponents;
