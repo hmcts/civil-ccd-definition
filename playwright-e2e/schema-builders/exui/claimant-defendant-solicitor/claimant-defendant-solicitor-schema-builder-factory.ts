@@ -22,6 +22,8 @@ import ManageContactInformationSchemaBuilder from '../common/manage-contact-info
 import NoticeOfChangeSchemaBuilder from './notice-of-change/notice-of-change-schema-builder';
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
 import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notify-claim-details-schema-builder';
+import QueryManagementRaiseSchemaBuilder from '../common/query-management-raise/query-management-raise-schema-builder';
+import QueryManagementRespondSchemaBuilder from '../common/query-management-respond/query-management-respond-schema-builder';
 import SettleClaimSchemaBuilder from './settle-claim/lr-spec/settle-claim-schema-builder';
 import RequestForReconsiderationSchemaBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
@@ -114,6 +116,14 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get noticeOfChangeSchemaBuilder() {
     return new NoticeOfChangeSchemaBuilder(this.testData);
+  }
+
+  get queryManagementRaiseSchemaBuilder() {
+    return new QueryManagementRaiseSchemaBuilder(this.testData);
+  }
+
+  get queryManagementRespondSchemaBuilder() {
+    return new QueryManagementRespondSchemaBuilder(this.testData);
   }
 
   get uploadMediationDocumentsSchemaBuilder() {
