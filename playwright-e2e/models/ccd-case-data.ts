@@ -1,5 +1,8 @@
+import CaseState from '../constants/cases/case-state';
+
 export default interface CCDCaseData {
   id?: number;
+  state?: CaseState;
   respondent1PaymentDateToStringSpec?: string;
   respondent1ClaimResponseTypeForSpec?: string;
   respondent1DQRemoteHearingLRspec?: DQRemoteHearing;
@@ -16,7 +19,10 @@ export default interface CCDCaseData {
   caseFlags?: CaseFlags;
   messagesToReplyTo?: string;
   sendMessageContent?: string;
+  requestForReviewCommentsClaimant?: string;
+  requestForReviewCommentsDefendant?: string;
   messages?: Message[];
+  queries?: QmQueryCollection;
   qmLatestQuery?: QmLatestQuery;
   claimFee?: ClaimFee;
   notificationSummary?: string;
@@ -127,6 +133,29 @@ export interface QmLatestQuery {
   isWelsh?: string;
   queryId?: string;
   isHearingRelated?: string;
+}
+
+export interface QmQueryCollection {
+  partyName?: string;
+  caseMessages?: QmQueryMessageElement[];
+}
+
+export interface QmQueryMessageElement {
+  id?: string;
+  value?: QmQueryMessage;
+}
+
+export interface QmQueryMessage {
+  id?: string;
+  body?: string;
+  name?: string;
+  subject?: string;
+  createdBy?: string;
+  createdOn?: string;
+  attachments?: unknown[];
+  isHearingRelated?: string;
+  hearingDate?: string;
+  parentId?: string;
 }
 
 export interface ServedDocumentFiles {

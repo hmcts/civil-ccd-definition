@@ -4,13 +4,19 @@ import {
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/unspec/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
 import DateHelper from '../../../../../helpers/date-helper';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
-import CCDCaseData, { UploadDocumentValue } from '../../../../../models/ccd-case-data';
+import CCDCaseData from '../../../../../models/ccd-case-data';
 import { Party } from '../../../../../models/users/partys';
 import ClaimType from '../../../../../constants/cases/claim-type';
+import CivilServiceRequests from '../../../../../requests/civil-service-requests';
+
+const getDefendantSolicitorUser = (defendantSolicitorParty: Party) =>
+  defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+    ? defendantSolicitor1User
+    : defendantSolicitor2User;
 
 const confirmDetails = (
   claimType: ClaimType,
@@ -132,7 +138,14 @@ const deterWithoutHearing = (claimTrack: ClaimTrack, defendantSolicitorParty: Pa
   return {};
 };
 
-const upload = (defenceDocument: UploadDocumentValue, defendantSolicitorParty: Party) => {
+const upload = async (
+  defendantSolicitorParty: Party,
+  civilServiceRequests: CivilServiceRequests,
+) => {
+  const defenceDocument = await civilServiceRequests.uploadTestDocument(
+    getDefendantSolicitorUser(defendantSolicitorParty),
+  );
+
   return {
     Upload: {
       [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -186,12 +199,16 @@ const fixedRecoverableCosts = (claimTrack: ClaimTrack, defendantSolicitorParty: 
   return {};
 };
 
-const fixedRecoverableCostsIntermediate = (
+const fixedRecoverableCostsIntermediate = async (
   claimTrack: ClaimTrack,
   defendantSolicitorParty: Party,
-  frcSupportingDocument?: UploadDocumentValue,
+  civilServiceRequests: CivilServiceRequests,
 ) => {
   if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    const frcSupportingDocument = await civilServiceRequests.uploadTestDocument(
+      getDefendantSolicitorUser(defendantSolicitorParty),
+    );
+
     return {
       FixedRecoverableCostsIntermediate: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
@@ -336,12 +353,16 @@ const hearing = (defendantSolicitorParty: Party) => {
   };
 };
 
-const draftDirections = (
+const draftDirections = async (
   claimTrack: ClaimTrack,
-  draftDirectionsDocument: UploadDocumentValue,
   defendantSolicitorParty: Party,
+  civilServiceRequests: CivilServiceRequests,
 ) => {
   if (claimTrack === ClaimTrack.FAST_CLAIM || claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    const draftDirectionsDocument = await civilServiceRequests.uploadTestDocument(
+      getDefendantSolicitorUser(defendantSolicitorParty),
+    );
+
     return {
       DraftDirections: {
         [defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1

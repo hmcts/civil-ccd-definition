@@ -1,9 +1,7 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import { judgeRegion1User } from '../../../../config/users/exui-users';
 import ClaimTrack from '../../../../constants/cases/claim-track';
 import OrderType from '../../../../constants/ccd-events/generate-directions-order/order-type';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import { UploadDocumentValue } from '../../../../models/ccd-case-data';
 import generateDirectionsOrderDataBuilderComponents from './generate-directions-order-data-builder-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
@@ -16,7 +14,7 @@ export default class GenerateDirectionsOrderDataBuilder extends BaseDataBuilder 
     return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, orderType: OrderType.FREE_FORM_ORDER})
   }
 
-  async buildIntermediateOrder() {
+  async buildInterOrder() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
@@ -33,10 +31,6 @@ export default class GenerateDirectionsOrderDataBuilder extends BaseDataBuilder 
       orderType?: OrderType,
     } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
-    let templateDocument: UploadDocumentValue | undefined;
-    if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM || claimTrack === ClaimTrack.MULTI_CLAIM) {
-      templateDocument = await civilServiceRequests.uploadTestDocument(judgeRegion1User);
-    }
 
     return {
       ...generateDirectionsOrderDataBuilderComponents.finalOrderSelect(claimTrack, orderType),
@@ -53,7 +47,10 @@ export default class GenerateDirectionsOrderDataBuilder extends BaseDataBuilder 
       ...generateDirectionsOrderDataBuilderComponents.selectTemplate(claimTrack),
       ...generateDirectionsOrderDataBuilderComponents.orderAfterHearingDate(claimTrack),
       ...generateDirectionsOrderDataBuilderComponents.downloadTemplate(claimTrack),
-      ...generateDirectionsOrderDataBuilderComponents.uploadOrder(claimTrack, templateDocument!),
+      ...(await generateDirectionsOrderDataBuilderComponents.uploadOrder(
+        claimTrack,
+        civilServiceRequests,
+      )),
     };
   }
 }

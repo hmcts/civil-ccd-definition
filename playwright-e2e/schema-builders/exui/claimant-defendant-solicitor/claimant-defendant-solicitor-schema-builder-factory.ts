@@ -4,7 +4,7 @@ import AddDefendantLitigationFriendSchemaBuilder from './add-defendant-litigatio
 import AddOrAmendClaimDocumentsSchemaBuilder from './add-or-amend-claim-documents/unspec/add-or-amend-claim-documents-schema-builder';
 import ClaimantResponseSchemaBuilder from './claimant-response/unspec/claimant-response-schema-builder';
 import ClaimantResponseSpecSchemaBuilder from './claimant-response/lr-spec/claimant-response-spec-schema-builder';
-import CreateClaimSpecAfterPaymentLRSchemaBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-lr-schema-builder';
+import CreateClaimSpecAfterPaymentSchemaBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-schema-builder';
 import CreateClaimAfterPaymentSchemaBuilder from './create-claim-after-payment/unspec/create-claim-after-payment-schema-builder';
 import CreateClaimSpecSchemaBuilder from './create-claim/lr-spec/create-claim-spec-schema-builder';
 import CreateClaimSchemaBuilder from './create-claim/unspec/create-claim-schema-builder';
@@ -22,6 +22,8 @@ import ManageContactInformationSchemaBuilder from '../common/manage-contact-info
 import NoticeOfChangeSchemaBuilder from './notice-of-change/notice-of-change-schema-builder';
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
 import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notify-claim-details-schema-builder';
+import QueryManagementRaiseSchemaBuilder from '../common/query-management-raise/query-management-raise-schema-builder';
+import QueryManagementRespondSchemaBuilder from '../common/query-management-respond/query-management-respond-schema-builder';
 import SettleClaimSchemaBuilder from './settle-claim/lr-spec/settle-claim-schema-builder';
 import RequestForReconsiderationSchemaBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
@@ -37,7 +39,7 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
   }
 
   get createClaimSpecAfterPaymentSchemaBuilder() {
-    return new CreateClaimSpecAfterPaymentLRSchemaBuilder(this.testData);
+    return new CreateClaimSpecAfterPaymentSchemaBuilder(this.testData);
   }
 
   get acknowledgeClaimSchemaBuilder() {
@@ -114,6 +116,14 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get noticeOfChangeSchemaBuilder() {
     return new NoticeOfChangeSchemaBuilder(this.testData);
+  }
+
+  get queryManagementRaiseSchemaBuilder() {
+    return new QueryManagementRaiseSchemaBuilder(this.testData);
+  }
+
+  get queryManagementRespondSchemaBuilder() {
+    return new QueryManagementRespondSchemaBuilder(this.testData);
   }
 
   get uploadMediationDocumentsSchemaBuilder() {

@@ -18,7 +18,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     caseId: number | 'draft' = 'draft',
     expectedState?: CaseState,
   ): Promise<CCDCaseData> {
-    console.log(`Submitting citizen event, caseId: ${caseId}`);
+    console.log(`Submitting citizen event, event: ${payload.event}, caseId: ${caseId}, user: ${user.name}`);
 
     const url = `${urls.civilService}/cases/${caseId}/citizen/${user.userId}/event`;
     const requestOptions: RequestOptions = {
@@ -28,6 +28,22 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     };
 
     const responseJson = await super.retryRequestJson(url, requestOptions, {
+      statusErrorMessage: async (responseJson, { url, status, expectedStatus }) => {
+        if(status === 404) {
+          return await responseJson.text();
+        } else if(status === 422) {
+          let message =
+            `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
+
+          if (responseJson.details?.field_errors?.length) {
+            message += `, field errors: ${responseJson.details.field_errors
+              .map((item: any) => `{id: ${item.id}, message: ${item.message}}`)
+              .join(', ')}`;
+          }
+
+          return message;
+        }
+      },
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('id', responseJson);
         await super.expectResponseJsonToHaveProperty('case_data', responseJson);
@@ -42,7 +58,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       },
     });
 
-    console.log(`Citizen event submitted successfully, caseId: ${responseJson.id}`);
+    console.log(`Citizen event submitted successfully, event: ${payload.event}, caseId: ${responseJson.id}, user: ${user.name}`);
     return {
       id: Number(responseJson.id),
       ...responseJson.case_data,

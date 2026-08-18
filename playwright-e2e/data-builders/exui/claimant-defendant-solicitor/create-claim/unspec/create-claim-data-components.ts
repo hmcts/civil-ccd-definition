@@ -5,14 +5,14 @@ import {
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
 import partys from '../../../../../constants/users/partys';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import CivilServiceRequests from '../../../../../requests/civil-service-requests';
 const references = {
   References: {
     solicitorReferences: {
@@ -37,7 +37,13 @@ const claimantCourt = {
   },
 };
 
-const claimant1 = (partyType: ClaimantDefendantPartyType, certificateOfSuitability: UploadDocumentValue) => {
+const claimant1 = async (
+  partyType: ClaimantDefendantPartyType,
+  civilServiceRequests: CivilServiceRequests,
+) => {
+  const certificateOfSuitability =
+    await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
   return {
     Claimant: {
       applicant1: CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, partyType),
@@ -82,8 +88,15 @@ const claimantSolicitor1 = {
   },
 };
 
-const claimant2 = (claimType: ClaimType, partyType: ClaimantDefendantPartyType, certificateOfSuitability: UploadDocumentValue) => {
-  if (ClaimTypeHelper.isClaimant2(claimType))
+const claimant2 = async (
+  claimType: ClaimType,
+  partyType: ClaimantDefendantPartyType,
+  civilServiceRequests: CivilServiceRequests,
+) => {
+  if (ClaimTypeHelper.isClaimant2(claimType)) {
+    const certificateOfSuitability =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
     return {
       AddAnotherClaimant: {
         addApplicant2: 'Yes',
@@ -104,6 +117,7 @@ const claimant2 = (claimType: ClaimType, partyType: ClaimantDefendantPartyType, 
         },
       },
     };
+  }
   return {
     AddAnotherClaimant: {
       addApplicant2: 'No',
@@ -234,7 +248,7 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec, personalInjuryType?: 
   if (claimTypeUnSpec === ClaimTypeUnspec.PERSONAL_INJURY) {
     return {
       ClaimType: {
-        claimTypeUnspec,
+        claimTypeUnSpec: claimTypeUnSpec,
       },
       PersonalInjuryType: {
         personalInjuryType: personalInjuryType,
