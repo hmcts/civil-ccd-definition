@@ -1545,7 +1545,15 @@ export default abstract class BasePage {
         assertFirst = false;
 
         if (actionAfterFirstAttempt) {
-          await actionAfterFirstAttempt();
+          try {
+            await actionAfterFirstAttempt();
+          } catch (recoveryError) {
+            // The recovery action failing tells us nothing about why the assertion failed,
+            // and letting it propagate replaces the real error with a misleading one.
+            console.log(`Recovery action failed: ${recoveryError}`);
+            console.log('Reporting the original failure instead');
+            throw error;
+          }
         }
       }
     }
