@@ -35,7 +35,8 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
         });
       },
     });
-    const task = responseJson.tasks.find((task: any) => task.type === validTask.type);
+    const task = responseJson.tasks.find((task: WATask) => 
+      task.type === validTask.type && task.name === validTask.name);
     await super.expectResponseJsonToContain(validTask, task);
     return task as WATask;
   }

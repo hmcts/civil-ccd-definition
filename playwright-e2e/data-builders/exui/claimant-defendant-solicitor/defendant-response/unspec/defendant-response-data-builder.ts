@@ -1,11 +1,7 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import {
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../../../../config/users/exui-users';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/unspec/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import { Party } from '../../../../../models/users/partys';
@@ -24,7 +20,7 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence2v1() {
+  async buildDS1InterFullDefence2v1() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
@@ -45,14 +41,14 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence1v2DS() {
+  async buildDS1InterFullDefence1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
     });
   }
 
-  async buildDS1IntermediateFullDefence1v2SS() {
+  async buildDS1InterFullDefence1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -84,7 +80,7 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildDS1IntermediateFullDefence() {
+  async buildDS1InterFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
@@ -115,7 +111,7 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS2IntermediateFullDefence1v2DS() {
+  async buildDS2InterFullDefence1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
@@ -135,17 +131,6 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     defendantSolicitorParty?: Party;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
-    let frcSupportingDocument;
-    const defendantSolicitorUser =
-      defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? defendantSolicitor1User
-        : defendantSolicitor2User;
-    const defenceDocument = await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
-    const draftDirectionsDocument =
-      await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
-    if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
-      frcSupportingDocument = await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
-    }
 
     const eventData: Record<string, unknown> = {};
 
@@ -166,16 +151,16 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
         this.ccdCaseData,
         defendantSolicitorParty,
       ),
-      defendantResponseDataComponents.upload(defenceDocument, defendantSolicitorParty),
+      await defendantResponseDataComponents.upload(defendantSolicitorParty, civilServiceRequests),
       defendantResponseDataComponents.fileDirectionsQuestionnaire(
         claimTrack,
         defendantSolicitorParty,
       ),
       defendantResponseDataComponents.fixedRecoverableCosts(claimTrack, defendantSolicitorParty),
-      defendantResponseDataComponents.fixedRecoverableCostsIntermediate(
+      await defendantResponseDataComponents.fixedRecoverableCostsIntermediate(
         claimTrack,
         defendantSolicitorParty,
-        frcSupportingDocument,
+        civilServiceRequests,
       ),
       defendantResponseDataComponents.disclosureOfElectronicDocuments(
         claimTrack,
@@ -190,10 +175,10 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
       defendantResponseDataComponents.witnesses(defendantSolicitorParty),
       defendantResponseDataComponents.language(defendantSolicitorParty),
       defendantResponseDataComponents.hearing(defendantSolicitorParty),
-      defendantResponseDataComponents.draftDirections(
+      await defendantResponseDataComponents.draftDirections(
         claimTrack,
-        draftDirectionsDocument,
         defendantSolicitorParty,
+        civilServiceRequests,
       ),
       defendantResponseDataComponents.requestedCourt(defendantSolicitorParty),
       defendantResponseDataComponents.hearingSupport(defendantSolicitorParty),

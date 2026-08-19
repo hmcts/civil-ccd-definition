@@ -1,4 +1,5 @@
 import preferredCourts from '../../../../config/preferred-courts';
+import { judgeRegion1User } from '../../../../config/users/exui-users';
 import ClaimTrack from '../../../../constants/cases/claim-track';
 import OrderType from '../../../../constants/ccd-events/generate-directions-order/order-type';
 import MultiIntermediateTemplateTypes from '../../../../constants/ccd-events/generate-directions-order/multi-intermediate-template-types';
@@ -6,7 +7,7 @@ import partys from '../../../../constants/users/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import DateHelper from '../../../../helpers/date-helper';
 import { ClaimantDefendantPartyType } from '../../../../models/users/claimant-defendant-party-types';
-import { UploadDocumentValue } from '../../../../models/ccd-case-data';
+import CivilServiceRequests from '../../../../requests/civil-service-requests';
 
 const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
@@ -41,7 +42,7 @@ const finalOrderAssistedOrder = (
       partys.DEFENDANT_1,
       defendantPartyType,
     ).partyName;
-    const preferredCourt = preferredCourts[partys.CLAIMANT_1.key].default;
+    const preferredCourt = preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default;
     const alternativeHearingLocation = CaseDataHelper.setCodeToData(preferredCourt);
 
     return {
@@ -236,8 +237,13 @@ const downloadTemplate = (claimTrack: ClaimTrack) => {
   return {};
 };
 
-const uploadOrder = (claimTrack: ClaimTrack, templateDocument: UploadDocumentValue) => {
+const uploadOrder = async (
+  claimTrack: ClaimTrack,
+  civilServiceRequests: CivilServiceRequests,
+) => {
   if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM || claimTrack === ClaimTrack.MULTI_CLAIM) {
+    const templateDocument = await civilServiceRequests.uploadTestDocument(judgeRegion1User);
+
     return {
       UploadOrder: {
         uploadOrderDocumentFromTemplate: templateDocument,

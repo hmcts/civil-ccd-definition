@@ -1,15 +1,21 @@
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
+import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
+import CivilServiceRequests from '../../../../../requests/civil-service-requests';
 
-const upload = (particularsOfClaimDocument: UploadDocumentValue) => ({
-  Upload: {
-    servedDocumentFiles: {
-      particularsOfClaimDocument: [
-        CaseDataHelper.setIdToData(particularsOfClaimDocument)
-      ],
+const upload = async (civilServiceRequests: CivilServiceRequests) => {
+  const particularsOfClaimDocument =
+    await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
+  return {
+    Upload: {
+      servedDocumentFiles: {
+        particularsOfClaimDocument: [
+          CaseDataHelper.setIdToData(particularsOfClaimDocument)
+        ],
+      },
     },
-  },
-});
+  };
+};
 
 const addOrAmendClaimDocumentsDataBuilderComponents = {
   upload,
