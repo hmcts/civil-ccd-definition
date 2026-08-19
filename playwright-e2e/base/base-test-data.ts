@@ -1,13 +1,10 @@
 import claimantDefendantPartyTypes from '../constants/users/claimant-defendant-party-types';
-import partys from '../constants/users/partys';
 import CaseFlagsHelper from '../helpers/case-flags-helper';
 import DateHelper from '../helpers/date-helper';
 import CaseFlags from '../models/ccd-events/case-flags/case-flag';
-import CCDCaseData from '../models/ccd-case-data';
 import GaCCDCaseData from '../models/ga-ccd-case-data';
 import CCDCaseData, { QmQueryMessage } from '../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-party-types';
-import { Party } from '../models/users/partys';
 import TestData from '../models/test-utils/test-data';
 import ClaimType from '../constants/cases/claim-type';
 import ClaimTypeHelper from '../helpers/claim-type-helper';
