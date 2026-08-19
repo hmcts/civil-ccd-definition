@@ -17,6 +17,7 @@ import {
   caseFlagsNoticeText,
   containers,
   dropdowns,
+  getWATaskEventLinkSelector,
   subheadings,
   links,
   successBannerText,
@@ -316,7 +317,9 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
           undefined,
           { retries: 1 },
         );
-        await super.clickLink(waTask.name);
+        const waTaskEventLinkSelector = getWATaskEventLinkSelector(ccdEvent);
+        await super.expectSelector(waTaskEventLinkSelector, { count: 1 });
+        await super.clickBySelector(waTaskEventLinkSelector);
       },
       async () => {
         await super.waitForPageToLoad();
