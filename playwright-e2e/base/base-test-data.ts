@@ -1,13 +1,18 @@
 import claimantDefendantPartyTypes from '../constants/users/claimant-defendant-party-types';
+import partys from '../constants/users/partys';
 import CaseFlagsHelper from '../helpers/case-flags-helper';
 import DateHelper from '../helpers/date-helper';
 import CaseFlags from '../models/ccd-events/case-flags/case-flag';
 import CCDCaseData from '../models/ccd-case-data';
+import GaCCDCaseData from '../models/ga-ccd-case-data';
 import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-party-types';
+import { Party } from '../models/users/partys';
 import TestData from '../models/test-utils/test-data';
 import ClaimType from '../constants/cases/claim-type';
 import ClaimTypeHelper from '../helpers/claim-type-helper';
 import { claimants, defendants } from '../config/users/cui-users';
+import User from '../models/users/user';
+import { claimantSolicitorUser, defendantSolicitor1User, defendantSolicitor2User } from '../config/users/exui-users';
 
 export default abstract class BaseTestData {
   private _testData: TestData;
@@ -26,6 +31,45 @@ export default abstract class BaseTestData {
 
   protected set setCCDCaseData(ccdCaseData: CCDCaseData) {
     this._testData.ccdCaseData = ccdCaseData;
+  }
+
+  protected set setGaCCDCaseData(gaCCDCaseData: GaCCDCaseData) {
+    this._testData.gaCCDCaseDatas ??= [];
+    this._testData.gaCCDCaseDatas.push(gaCCDCaseData);
+  }
+
+  protected getAllGaCCDCaseData() {
+    return this._testData.gaCCDCaseDatas;
+  }
+
+  protected getGaCCDCaseData(index?: number): GaCCDCaseData | undefined {
+    return index === undefined
+      ? this._testData.gaCCDCaseDatas?.at(-1)
+      : this._testData.gaCCDCaseDatas?.[index];
+  }
+
+  protected getGaCCDCaseIdFromParentCase(index?: number): number {
+    const generalApplication = index === undefined
+      ? this._testData.ccdCaseData?.generalApplications?.at(-1)
+      : this._testData.ccdCaseData?.generalApplications?.[index];
+      
+    return Number(generalApplication?.value?.caseLink?.CaseReference);
+  }
+
+  protected getGaCCDCaseIdFromParentCaseUsingSolicitorUser(solicitorUser: User): number {
+    let generalApplicationDetails;
+
+    if (solicitorUser === claimantSolicitorUser) {
+      generalApplicationDetails = this._testData.ccdCaseData?.claimantGaAppDetails;
+    } else if (solicitorUser === defendantSolicitor1User) {
+      generalApplicationDetails = this._testData.ccdCaseData?.respondentSolGaAppDetails;
+    } else if (solicitorUser === defendantSolicitor2User) {
+      generalApplicationDetails = this._testData.ccdCaseData?.respondentSolTwoGaAppDetails;
+    }
+
+    const generalApplication = generalApplicationDetails?.at(-1);
+
+    return Number(generalApplication?.value?.caseLink?.CaseReference);
   }
 
   protected get claimant1PartyType() {

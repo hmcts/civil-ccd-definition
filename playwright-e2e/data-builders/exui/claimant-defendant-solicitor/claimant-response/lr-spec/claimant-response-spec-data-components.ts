@@ -530,7 +530,7 @@ const requestedCourtLocation = (
     claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
     claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     const preferredCourt = CaseDataHelper.setCodeToData(
-      preferredCourts[partys.CLAIMANT_1.key].default,
+      preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
     );
 
     return {

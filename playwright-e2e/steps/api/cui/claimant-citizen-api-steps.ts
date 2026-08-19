@@ -180,7 +180,6 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       ccdEvents.CLAIMANT_RESPONSE_CUI,
       await claimantResponseDataBuilder.buildInterRejectFullDefence(),
-      CaseState.JUDICIAL_REFERRAL,
     );
     ZodHelper.safeParse(
       await claimantResponseSchemaBuilder.buildInterRejectFullDefence(caseDataBeforeSubmission),

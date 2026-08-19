@@ -126,6 +126,17 @@ export default interface CCDCaseData {
   respondent2ClaimResponseIntentionType?: string;
   respondent1AcknowledgeNotificationDate?: string;
   respondent2AcknowledgeNotificationDate?: string;
+  generalAppTypeLR?: GeneralAppType;
+  generalApplications?: GeneralApplication[];
+  claimantGaAppDetails?: ClaimantGaAppDetail[];
+  respondentSolGaAppDetails?: ClaimantGaAppDetail[];
+  respondentSolTwoGaAppDetails?: ClaimantGaAppDetail[];
+  gaDetailsMasterCollection?: ClaimantGaAppDetail[];
+  gaAddlDocStaff?: SystemGeneratedCaseDocument[];
+  gaAddlDocClaimant?: SystemGeneratedCaseDocument[];
+  claimIssuedPBADetails?: ClaimIssuedPBADetails;
+  caseNameHmctsInternal?: string;
+  claimDismissedDeadline?: string;
 }
 
 export interface QmLatestQuery {
@@ -277,8 +288,8 @@ export interface Organisation {
 
 export interface ClaimFee {
   code?: string;
-  version?: number;
-  calculatedAmountInPence?: number;
+  version?: number | string;
+  calculatedAmountInPence?: number | string;
 }
 
 export interface FixedCosts {
@@ -313,8 +324,140 @@ export interface MessageValue {
 }
 
 export interface CaseManagementLocation {
-  region?: number;
-  baseLocation?: number;
+  region?: number | string;
+  baseLocation?: number | string;
+  address?: string;
+  postcode?: string;
+  siteName?: string;
+}
+
+export interface GeneralAppType {
+  types?: string[];
+}
+
+export interface GeneralApplication {
+  id?: string;
+  value?: GeneralApplicationValue;
+}
+
+export interface GeneralApplicationValue {
+  caseLink?: CaseLink;
+  certOfSC?: Record<string, unknown>;
+  gaWaTrackLabel?: string;
+  generalAppType?: GeneralAppType;
+  businessProcess?: BusinessProcess;
+  isGaApplicantLip?: string;
+  litigiousPartyID?: string;
+  caseNameGaInternal?: string;
+  emailPartyReference?: string;
+  generalAppPBADetails?: GeneralAppPBADetails;
+  isGaRespondentOneLip?: string;
+  isGaRespondentTwoLip?: string;
+  civilServiceUserRoles?: Record<string, unknown>;
+  generalAppHearingDate?: GeneralAppHearingDate;
+  mainCaseSubmittedDate?: string;
+  caseManagementCategory?: Record<string, unknown> | CaseManagementCategory;
+  caseManagementLocation?: CaseManagementLocation;
+  generalAppDateDeadline?: string;
+  generalAppApplnSolicitor?: Record<string, unknown>;
+  generalAppHearingDetails?: GeneralAppHearingDetails;
+  parentClaimantIsApplicant?: string;
+  generalAppInformOtherParty?: GeneralAppInformOtherParty;
+  generalAppStatementOfTruth?: ClaimStatementOfTruth;
+  generalAppUrgencyRequirement?: GeneralAppUrgencyRequirement;
+  generalAppRespondentAgreement?: GeneralAppRespondentAgreement;
+  generalAppSubmittedDateGAspec?: string;
+}
+
+export interface CaseLink {
+  CaseReference?: string;
+}
+
+export interface BusinessProcess {
+  status?: string;
+  camundaEvent?: string;
+  processInstanceId?: string;
+  readyOn?: string;
+}
+
+export interface GeneralAppPBADetails {
+  fee?: ClaimFee;
+  generalAppFeeToPayInText?: string;
+}
+
+export interface GeneralAppHearingDate {
+  hearingScheduledPreferenceYesNo?: string;
+  hearingScheduledDate?: string;
+}
+
+export interface GeneralAppHearingDetails {
+  hearingYesorNo?: string;
+  hearingDate?: string;
+  trialRequiredYesOrNo?: string;
+  trialDateFrom?: string;
+  trailDateTo?: string;
+  HearingPreferencesPreferredType?: string;
+  ReasonForPreferredHearingType?: string;
+  HearingPreferredLocation?: CourtLocationList;
+  HearingDetailsTelephoneNumber?: string;
+  HearingDetailsEmailID?: string;
+  HearingDuration?: string;
+  generalAppUnavailableDates?: GeneralAppUnavailableDate[];
+  vulnerabilityQuestionsYesOrNo?: string;
+  vulnerabilityQuestion?: string;
+  SupportRequirement?: string[];
+  SupportRequirementLanguageInterpreter?: string;
+  SupportRequirementOther?: string;
+  SupportRequirementSignLanguage?: string;
+}
+
+export interface CourtLocationList {
+  value?: CaseManagementCategoryValue;
+  list_items?: CaseManagementCategoryValue[];
+}
+
+export interface GeneralAppUnavailableDate {
+  id?: string;
+  value?: GeneralAppUnavailableDateValue;
+}
+
+export interface GeneralAppUnavailableDateValue {
+  unavailableTrialDateFrom?: string;
+  unavailableTrialDateTo?: string;
+}
+
+export interface GeneralAppInformOtherParty {
+  isWithNotice?: string;
+  reasonsForWithoutNotice?: string;
+}
+
+export interface GeneralAppUrgencyRequirement {
+  generalAppUrgency?: string;
+  reasonsForUrgency?: string;
+  urgentAppConsiderationDate?: string;
+}
+
+export interface GeneralAppRespondentAgreement {
+  hasAgreed?: string;
+}
+
+export interface ClaimantGaAppDetail {
+  id?: string;
+  value?: ClaimantGaAppDetailValue;
+}
+
+export interface ClaimantGaAppDetailValue {
+  caseLink?: CaseLink;
+  caseState?: string;
+  generalApplicationType?: string;
+  parentClaimantIsApplicant?: string;
+  generalAppSubmittedDateGAspec?: string;
+}
+
+export interface ClaimIssuedPBADetails {
+  fee?: ClaimFee;
+  applicantsPbaAccounts?: ApplicantSolicitor1PbaAccounts;
+  serviceRequestReference?: string;
 }
 
 export interface CaseManagementCategory {

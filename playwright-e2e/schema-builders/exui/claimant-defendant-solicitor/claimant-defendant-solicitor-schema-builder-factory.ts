@@ -17,6 +17,7 @@ import EvidenceUploadApplicantSchemaBuilder from './evidence-upload-applicant/un
 import EvidenceUploadRespondentSchemaBuilder from './evidence-upload-respondent/unspec/evidence-upload-respondent-schema-builder';
 import InformAgreedExtensionDateSchemaBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-schema-builder';
 import InformAgreedExtensionDateSpecSchemaBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-schema-builder';
+import InitiateGeneralApplicationGaSchemaBuilder from '../../ga-exui/initiate-general-application-ga/initiate-general-application-ga-schema-builder';
 import JudgmentPaidInFullSchemaBuilder from './judgment-paid-in-full/lr-spec/judgment-paid-in-full-schema-builder';
 import ManageContactInformationSchemaBuilder from '../common/manage-contact-information/manage-contact-information-schema-builder';
 import NoticeOfChangeSchemaBuilder from './notice-of-change/notice-of-change-schema-builder';
@@ -26,6 +27,7 @@ import SettleClaimSchemaBuilder from './settle-claim/lr-spec/settle-claim-schema
 import RequestForReconsiderationSchemaBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
 import TrialReadinessSchemaBuilder from './trial-readiness/trial-readiness-schema-builder';
+import InitiateGeneralApplicationSchemaBuilder from './initiate-general-application/initiate-general-application-schema-builder';
 
 export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends BaseSchemaBuilderFactory {
   get createClaimSchemaBuilder() {
@@ -106,6 +108,14 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
 
   get informAgreedExtensionDateSpecSchemaBuilder() {
     return new InformAgreedExtensionDateSpecSchemaBuilder(this.testData);
+  }
+
+  get initiateGeneralApplicationSchemaBuilder() {
+    return new InitiateGeneralApplicationSchemaBuilder(this.testData);
+  }
+
+  get initiateGeneralApplicationGaSchemaBuilder() {
+    return new InitiateGeneralApplicationGaSchemaBuilder(this.testData);
   }
 
   get manageContactInformationSchemaBuilder() {
