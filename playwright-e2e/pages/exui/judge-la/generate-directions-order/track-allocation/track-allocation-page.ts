@@ -30,7 +30,7 @@ export default class TrackAllocationPage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.finalOrderAllocateToTrack.no.selector);
   }
 
-  async selectIntermediateTrack() {
+  async selectInterTrack() {
     await super.clickBySelector(radioButtons.finalOrderTrackAllocation.intermediateClaim.selector);
   }
 

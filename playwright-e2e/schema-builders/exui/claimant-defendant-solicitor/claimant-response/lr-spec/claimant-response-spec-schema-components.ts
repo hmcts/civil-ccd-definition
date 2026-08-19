@@ -543,6 +543,11 @@ const undefine = {
   nextDeadline: z.undefined().optional(),
 };
 
+const ignore = {
+  respondent1ClaimResponseDocumentSpec: z.any().optional(),
+  respondent1GeneratedResponseDocument: z.any().optional(),
+}
+
 const claimantResponseSpecSchemaComponents = {
   undefine,
   defendantResponse,
@@ -568,6 +573,7 @@ const claimantResponseSpecSchemaComponents = {
   vulnerabilityQuestions,
   application,
   ccjJudgmentSummary,
+  ignore
 };
 
 export default claimantResponseSpecSchemaComponents;

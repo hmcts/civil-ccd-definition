@@ -317,13 +317,13 @@ export default class JudgeSteps extends BaseExui {
     );
   }
 
-  async GenerateDirectionsOrderIntermediate() {
+  async GenerateDirectionsOrderInter() {
     const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
     await super.retryCCDEvent(
       async () => {
-        await generateDirectionsOrderActions.trackAllocationIntermediate();
+        await generateDirectionsOrderActions.trackAllocationInter();
         await generateDirectionsOrderActions.intermediateTrackComplexityBand();
-        await generateDirectionsOrderActions.selectTemplateIntermediate();
+        await generateDirectionsOrderActions.selectTemplateInter();
         await generateDirectionsOrderActions.downloadTemplate();
         await generateDirectionsOrderActions.uploadOrder();
         await generateDirectionsOrderActions.submitGenerateDirectionsOrder();
