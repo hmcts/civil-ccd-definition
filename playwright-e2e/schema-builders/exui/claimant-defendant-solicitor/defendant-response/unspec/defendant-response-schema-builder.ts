@@ -2,7 +2,7 @@ import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/unspec/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/defendant-response-type';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
@@ -28,7 +28,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence2v1(
+  async buildDS1InterFullDefence2v1(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -38,7 +38,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence1v2DS(
+  async buildDS1InterFullDefence1v2DS(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -64,7 +64,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence1v2SS(
+  async buildDS1InterFullDefence1v2SS(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -89,7 +89,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence(
+  async buildDS1InterFullDefence(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -141,7 +141,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS2IntermediateFullDefence1v2DS(
+  async buildDS2InterFullDefence1v2DS(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {

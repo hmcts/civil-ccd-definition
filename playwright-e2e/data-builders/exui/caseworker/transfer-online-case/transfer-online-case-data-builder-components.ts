@@ -7,7 +7,7 @@ const transferOnlineCase = {
     transferCourtLocationList: {
       value: CaseDataHelper.setCodeToData(preferredCourts.transfer.default),
       list_items: [
-        CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default),
+        CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default),
       ],
     },
     reasonForTransfer: 'Allocated court location is not appropriate',
