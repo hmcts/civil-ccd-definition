@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 spec fast track claim journey', { tag: '@civil-ccd-nightly' }, async () => {
-  test('1v1 spec fast track claim journey', async ({
+test.describe('1v1 fast track claim journey', { tag: '@civil-ccd-nightly' }, async () => {
+  test('1v1 fast track claim journey', async ({
     ClaimantSolicitorSteps,
     DefendantSolicitor1Steps,
     ClaimantSolicitorApiSteps,
@@ -17,8 +17,8 @@ test.describe('1v1 spec fast track claim journey', { tag: '@civil-ccd-nightly' }
     await DefendantSolicitor1Steps.InformAgreedExtensionDate();
     await DefendantSolicitor1Steps.AcknowledgeClaimFullDefence();
     await DefendantSolicitor1Steps.AddLitigationFriend();
-    await DefendantSolicitor1Steps.RespondFastFullDefence1v1();
+    await DefendantSolicitor1Steps.RespondFastFullDefence();
     await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.RespondFastProceed1v1();
+    await ClaimantSolicitorSteps.RespondFastProceed();
   });
 });

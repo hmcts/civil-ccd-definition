@@ -98,6 +98,9 @@ export const links = {
   },
 };
 
+export const getWATaskEventLinkSelector = (ccdEvent: CCDEvent) =>
+  `a[href*="/trigger/${ccdEvent.id}/"]`;
+
 export const containers = {
   eventHistory: {
     selector: '.EventLogTable',
