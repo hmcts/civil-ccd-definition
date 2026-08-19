@@ -42,7 +42,7 @@ const finalOrderAssistedOrder = (
       partys.DEFENDANT_1,
       defendantPartyType,
     ).partyName;
-    const preferredCourt = preferredCourts[partys.CLAIMANT_1.key].default;
+    const preferredCourt = preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default;
     const alternativeHearingLocation = CaseDataHelper.setCodeToData(preferredCourt);
 
     return {

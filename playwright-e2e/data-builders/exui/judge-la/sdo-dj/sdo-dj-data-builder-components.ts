@@ -8,7 +8,7 @@ const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
 
 const claimantDefaultCourt = () =>
-  CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default);
+  CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default);
 
 const hearingMethodInPerson = () => CaseDataHelper.setCodeToData('In Person');
 

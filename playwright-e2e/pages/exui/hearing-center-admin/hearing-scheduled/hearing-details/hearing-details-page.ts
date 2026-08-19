@@ -31,7 +31,7 @@ export default class HearingDetailsPage extends ExuiPage(BasePage) {
   async enterHearingDetails() {
     const hearingDate = DateHelper.addToToday({ days: 2, workingDay: true });
     await super.selectFromDropdown(
-      preferredCourts[partys.CLAIMANT_1.key].default!,
+      preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default!,
       dropdowns.venue.selector,
     );
     await super.clickBySelector(radioButtons.inPerson.selector);

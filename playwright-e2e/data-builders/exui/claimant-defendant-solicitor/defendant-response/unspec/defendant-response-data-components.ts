@@ -376,12 +376,8 @@ const draftDirections = async (
 };
 
 const requestedCourt = (defendantSolicitorParty: Party) => {
-  const preferredCourtParty =
-    defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-      ? partys.DEFENDANT_1
-      : partys.DEFENDANT_2;
   const preferredCourt = CaseDataHelper.setCodeToData(
-    preferredCourts[preferredCourtParty.key].default,
+    preferredCourts[defendantSolicitorParty.key].default,
   );
 
   return {

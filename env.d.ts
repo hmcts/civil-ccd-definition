@@ -38,7 +38,9 @@ declare global {
       PLAYWRIGHT_TEST_SPEED: string;
       PLAYWRIGHT_RETRIES: string;
       PLAYWRIGHT_EXUI_RETRIES: string;
+      PLAYWRIGHT_IDAM_RETRIES: string
       PLAYWRIGHT_DEBUG_CASE_ID: string;
+      PLAYWRIGHT_GA_DEBUG_CASE_ID: string;
       CLAIMANT_CITIZEN_EMAIL: string;
       DEFENDANT_CITIZEN_EMAIL: string;
       PREV_FAILED_TEST_FILES: string;
