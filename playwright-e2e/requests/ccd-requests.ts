@@ -7,7 +7,6 @@ import CCDCaseData from '../models/ccd-case-data';
 import User from '../models/users/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 import { CCDEvent } from '../models/ccd-events/ccd-events';
-import CaseState from '../constants/cases/case-state';
 
 @AllMethodsStep({ methodNamesToIgnore: ['getCCDDataStoreBaseUrl'] })
 export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -19,7 +18,6 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     user: User,
     caseId?: number,
     expectedStatus = 200,
-    expectedCaseState?: CaseState,
   ) {
     console.log(`Fetching CCD case data, caseId: ${caseId}, user: ${user.name}`);
     const url = `${this.getCCDDataStoreBaseUrl(user)}/cases/${caseId}`;
@@ -28,15 +26,6 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     };
     const responseJson = await super.retryRequestJson(url, requestOptions, {
       expectedStatus,
-      verifyResponse: async (responseJson) => {
-        if (expectedCaseState)
-          await super.expectResponseJsonToHavePropertyValue(
-            'state',
-            expectedCaseState,
-            responseJson,
-            { nonRetryable: true },
-          );
-      },
     });
     console.log(`CCD case data fetched successfully, caseId: ${caseId}, user: ${user.name}`);
     return { id: responseJson.id, state: responseJson.state, ...responseJson.case_data };
@@ -134,7 +123,6 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     eventData: any,
     ccdEventToken: string,
     caseId?: number,
-    expectedState?: CaseState,
   ): Promise<CCDCaseData> {
     console.log(
       `Submitting event: ${ccdEvent.id}` +
@@ -158,15 +146,6 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       expectedStatus: 201,
       statusErrorMessage: async (responseJson, { url, status, expectedStatus }) =>
         this.getStatusErrorMessage(responseJson, { url, status, expectedStatus }),
-      verifyResponse: async (responseJson) => {
-        if (expectedState)
-          await super.expectResponseJsonToHavePropertyValue(
-            'state',
-            expectedState,
-            responseJson,
-            { nonRetryable: true },
-          );
-      }
     });
     const caseData: CCDCaseData = { id: responseJson.id, ...responseJson.case_data };
     console.log(`Event: ${ccdEvent.id} submitted successfully, caseId: ${caseData.id}, user: ${user.name}`);
