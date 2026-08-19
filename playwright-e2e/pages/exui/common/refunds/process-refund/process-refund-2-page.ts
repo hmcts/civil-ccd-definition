@@ -1,7 +1,7 @@
-import BasePage from '../../../../../base/base-page.js';
-import ExuiRefundsPage from '../../../mixin-pages/exui-refunds-page/exui-refunds-page.js';
-import { AllMethodsStep } from '../../../../../decorators/test-steps.js';
-import { headings, inputs } from './process-refund-content.js';
+import ExuiRefundsPage from '../../../mixin-pages/exui-refunds-page/exui-refunds-page';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import { headings, inputs } from './process-refund-content';
+import BasePage from '../../../../../base/base-page';
 
 @AllMethodsStep()
 export default class ProcessRefund2Page extends ExuiRefundsPage(BasePage) {
