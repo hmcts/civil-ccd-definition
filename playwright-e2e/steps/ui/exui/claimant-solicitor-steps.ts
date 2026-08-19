@@ -768,7 +768,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
 
   async RequestRefund() {
     const { refundActions } = this.claimantSolicitorActionsFactory;
-    await super.retryServiceRequestEvent(
+    await super.retryRequestRefundEvent(
       async () => {
         await refundActions.review();
         await refundActions.issueRefund();
@@ -786,7 +786,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   async AmendReturnedRefund() {
     const { refundActions } = this.claimantSolicitorActionsFactory;
     await super.retryRefundEvent(
-      () => refundActions.goToRefunds(),
       async () => {
         await refundActions.reviewRefund();
         await refundActions.changeRefundDetails();

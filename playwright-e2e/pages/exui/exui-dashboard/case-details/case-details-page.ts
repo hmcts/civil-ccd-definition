@@ -126,19 +126,19 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   }
 
   async requestHearing() {
-    await this.retryTabAction(links.requestHearing.label, tabs.hearings.selector, () =>
-      super.clickByText(links.requestHearing.label),
+    await this.retryTabAction(links.requestHearing.title, tabs.hearings.selector, () =>
+      super.clickByText(links.requestHearing.title),
     );
   }
 
   async viewHearingDetails() {
-    await this.retryTabAction(buttons.viewHearingDetails.label, tabs.hearings.selector, () =>
+    await this.retryTabAction(buttons.viewHearingDetails.title, tabs.hearings.selector, () =>
       super.clickBySelector(buttons.viewHearingDetails.selector),
     );
   }
 
   async cancelHearing() {
-    await this.retryTabAction(buttons.cancelHearing.label, tabs.hearings.selector, () =>
+    await this.retryTabAction(buttons.cancelHearing.title, tabs.hearings.selector, () =>
       super.clickBySelector(buttons.cancelHearing.selector),
     );
   }
@@ -153,6 +153,26 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       },
     );
   }
+
+  async clickReview() {
+      await super.expectLink(links.review.title, { ignoreDuplicates: true });
+      await super.retryAction(
+        async () => super.clickLink(links.review.title, { index: 1 }),
+        async () => super.expectButton(buttons.issueRefund.title),
+        async () => super.reload(),
+        {message: `Click action failed on '${links.review.title}' link, trying again`, retries: 1},
+      );
+    }
+  
+    async clickIssueRefund() {
+      await super.expectButton(buttons.issueRefund.title, { ignoreDuplicates: true })
+       await super.retryAction(
+        async () => super.clickButtonByName(buttons.issueRefund.title),
+        async () => super.expectNoButton(buttons.issueRefund.title),
+        undefined,
+        {message: `Click action failed on '${buttons.issueRefund.title}' button, trying again`, retries: 1},
+      );
+    }
 
   private async retryTabAction(
     actionName: string,
@@ -262,6 +282,22 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       {
         retries: 2,
         message: `Starting event with url: ${ccdEvents.QUERY_MANAGEMENT_RAISE.id} failed, trying again`,
+      },
+    );
+  }
+
+  async retryGoToRefunds() {
+    console.log(`Starting event with url: REFUNDS`);
+    await super.retryGoTo(
+      `${urls.manageCase}/refunds`,
+      async () =>
+        super.expectNoSelector(tabs.summary.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        }),
+      undefined,
+      {
+        retries: 2,
+        message: `Starting event with url: REFUNDS failed, trying again`,
       },
     );
   }

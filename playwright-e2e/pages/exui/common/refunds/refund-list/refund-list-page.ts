@@ -1,22 +1,14 @@
 import BasePage from '../../../../../base/base-page';
-import urls from '../../../../../config/urls';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content';
-import { containers, headings, links, sortHeaders, subheadings } from './refund-list-content';
-
-const getRefundListCaseId = (caseId: number) => getFormattedCaseId(caseId).replace(/^#/, ''); //remove #
+import { containers, headings, links, sortHeaders, subheadings, getRefundListCaseId } from './refund-list-content';
 
 @AllMethodsStep()
 export default class RefundListPage extends BasePage {
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(headings.refundList),
-      super.expectSubheading(subheadings.refundsReturnedToCaseworker),
+      super.expectSubheading(subheadings.refundsReturnedToCaseworker, ),
     ]);
-  }
-
-  async goToRefunds() {
-    await super.retryGoTo(`${urls.manageCase}/refunds`, () => this.verifyContent());
   }
 
   async processRefund(caseId: number) {

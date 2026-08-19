@@ -11,7 +11,7 @@ export const inputs = {
     label: 'Organisation fee',
     selector: '[name="organisation"]',
   },
-  whyAreYouMakingThisRefund: {
+  refundReason: {
     label: 'Why are you making this refund?',
     amendedClaim: {
       selector: 'input[id="Amended claim"]',

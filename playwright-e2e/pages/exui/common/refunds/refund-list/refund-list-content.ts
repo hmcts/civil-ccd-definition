@@ -1,3 +1,5 @@
+import { getFormattedCaseId } from "../../../mixin-pages/exui-page/exui-content";
+
 export const headings = {
   refundList: 'Refund list',
   reviewRefundDetails: 'Review refund details',
@@ -28,3 +30,5 @@ export const links = {
     selector: 'a:has-text("Review refund")',
   },
 };
+
+export const getRefundListCaseId = (caseId: number) => getFormattedCaseId(caseId).replace(/^#/, ''); //remove #

@@ -7,42 +7,32 @@ import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
 @AllMethodsStep()
 export default class PaymentRequests extends ServiceAuthProviderRequests(BaseRequest) {
-  async createRefundablePayment(user: User, caseId: number) {
-    console.log(`Creating refundable payment, caseId: ${caseId}`);
+  async createAPBAPayment(user: User, caseId: number, refundablePaymentBody: any) {
+    console.log(`Creating APBA payment, caseId: ${caseId}, user: ${user.name}`);
+    const url = `${urls.paymentApi}/credit-account-payments`
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),
-      body: {
-        account_number: 'PBA0088192',
-        amount: 550,
-        case_reference: `${caseId}`,
-        ccd_case_number: `${caseId}`,
-        currency: 'GBP',
-        customer_reference: 'string',
-        description: 'string',
-        fees: [
-          {
-            calculated_amount: 550,
-            code: 'FEE0209',
-            fee_amount: 550,
-            version: 3,
-            volume: 1,
-          },
-        ],
-        organisation_name: 'string',
-        service: 'CIVIL',
-        site_id: 'AAA7',
-      },
+      body: refundablePaymentBody,
       method: 'POST',
     };
-    await super.retryRequest(`${urls.paymentApi}/credit-account-payments`, requestOptions, {
+    await super.retryRequest(url, requestOptions, {
       expectedStatus: 201,
     });
+    console.log(`APBA payment successfully created, caseId: ${caseId}, user: ${user.name}`);
+  }
 
-    console.log(`Rolling back refundable payment date, caseId: ${caseId}`);
+  async rollbackPaymentDate(user: User, caseId: number) {
+    console.log(`Rolling back payment date, caseId: ${caseId}, user: ${user.name}`);
+    const url = `${urls.paymentApi}/payments/ccd_case_reference/${caseId}/lag_time/25`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      method: 'PATCH'
+    }
     await super.retryRequest(
-      `${urls.paymentApi}/payments/ccd_case_reference/${caseId}/lag_time/25`,
-      { headers: await super.getRequestHeaders(user), method: 'PATCH' },
+      url,
+      requestOptions,
       { expectedStatus: 204 },
     );
+    console.log(`Payment date successfully rolled back, caseId: ${caseId}, user: ${user.name}`);
   }
 }

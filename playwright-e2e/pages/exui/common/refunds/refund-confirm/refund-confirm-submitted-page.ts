@@ -7,6 +7,5 @@ export default class RefundConfirmSubmittedPage extends BasePage {
   async verifyContent() {
     await super.expectHeading(headings.refundSubmitted);
     await super.expectText(paragraphs.refundReference, { exact: false });
-    await super.expectText(paragraphs.confirmMessage);
   }
 }

@@ -7,6 +7,4 @@ export const headings = {
 
 export const paragraphs = {
   refundReference: 'RF-',
-  confirmMessage:
-    'A refund request for £550.00 has been created and will be passed to a team leader to approve.',
 };

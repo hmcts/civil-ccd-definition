@@ -342,10 +342,9 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     );
   }
 
-  async ReturnRefundToCaseworker() {
+  async ReturnRefund() {
     const { refundActions } = this.defendantActionsFactory;
     await super.retryRefundEvent(
-      () => refundActions.goToRefunds(),
       async () => {
         await refundActions.processRefund();
         await refundActions.returnToCaseworker();
@@ -359,7 +358,6 @@ export default class DefendantSolicitor1Steps extends BaseExui {
   async ApproveRefund() {
     const { refundActions } = this.defendantActionsFactory;
     await super.retryRefundEvent(
-      () => refundActions.goToRefunds(),
       async () => {
         await refundActions.processRefund();
         await refundActions.approve();
@@ -373,7 +371,6 @@ export default class DefendantSolicitor1Steps extends BaseExui {
   async RejectRefund() {
     const { refundActions } = this.defendantActionsFactory;
     await super.retryRefundEvent(
-      () => refundActions.goToRefunds(),
       async () => {
         await refundActions.processRefund();
         await refundActions.reject();

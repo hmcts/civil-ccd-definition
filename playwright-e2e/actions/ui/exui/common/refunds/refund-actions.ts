@@ -12,48 +12,41 @@ export default class RefundActions extends BaseTestData {
   }
 
   async review() {
-    const { serviceRequestPage } = this.refundPageFactory;
-    await serviceRequestPage.verifyContent(this.ccdCaseData);
-    await serviceRequestPage.clickReview();
+    const { caseDetailsPage } = this.refundPageFactory;
+    await caseDetailsPage.clickReview();
   }
 
   async issueRefund() {
-    const { serviceRequestPage } = this.refundPageFactory;
-    await serviceRequestPage.verifyContent(this.ccdCaseData);
-    await serviceRequestPage.clickIssueRefund();
+    const { caseDetailsPage } = this.refundPageFactory;
+    await caseDetailsPage.clickIssueRefund();
   }
 
   async selectFee() {
-    const { processRefundPage } = this.refundPageFactory;
-    await processRefundPage.verifyContent();
-    await processRefundPage.selectFeeToBeRefunded();
-    await processRefundPage.submit();
+    const { processRefund1Page } = this.refundPageFactory;
+    await processRefund1Page.verifyContent();
+    await processRefund1Page.selectFeeToBeRefunded();
+    await processRefund1Page.submit();
   }
 
   async selectAmendedClaim() {
-    const { processRefundPage } = this.refundPageFactory;
-    await processRefundPage.verifyContent();
-    await processRefundPage.selectReasonAmendedClaim();
-    await processRefundPage.submit();
+    const { processRefund2Page } = this.refundPageFactory;
+    await processRefund2Page.verifyContent();
+    await processRefund2Page.selectReasonAmendedClaim();
+    await processRefund2Page.submit();
   }
 
   async selectSystemTechnicalError() {
-    const { processRefundPage } = this.refundPageFactory;
-    await processRefundPage.verifyContent();
-    await processRefundPage.selectReasonSystemTechnicalError();
-    await processRefundPage.submit();
+    const { processRefund2Page } = this.refundPageFactory;
+    await processRefund2Page.verifyContent();
+    await processRefund2Page.selectReasonSystemTechnicalError();
+    await processRefund2Page.submit();
   }
 
   async enterContactInformation() {
-    const { processRefundPage } = this.refundPageFactory;
-    await processRefundPage.verifyContent();
-    await processRefundPage.enterContactInformation();
-    await processRefundPage.submit();
-  }
-
-  async goToRefunds() {
-    const { refundListPage } = this.refundPageFactory;
-    await refundListPage.goToRefunds();
+    const { processRefund3Page } = this.refundPageFactory;
+    await processRefund3Page.verifyContent();
+    await processRefund3Page.enterContactInformation();
+    await processRefund3Page.submit();
   }
 
   async processRefund() {

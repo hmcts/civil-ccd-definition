@@ -102,15 +102,21 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'name')
   protected async clickLink(
     name: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = {
-      exact: true,
-      index: 0,
-    },
+    options: {
+      timeout?: number;
+      exact?: boolean;
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+    } = {},
   ) {
-    await this.page
-      .getByRole('link', { name, exact: options.exact ?? true })
-      .nth(options.index ?? 0)
-      .click({ timeout: options.timeout });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    let locator = this.page.getByRole('link', { name, exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.click({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -652,6 +658,7 @@ export default abstract class BasePage {
   protected async expectNoSubheading(
     text: string | number,
     options: {
+      headingLevel?: 2 | 3 | 4 | 5 | 6;
       message?: string;
       exact?: boolean;
       containerSelector?: string;
@@ -670,7 +677,7 @@ export default abstract class BasePage {
 
     let locator = this.page.getByRole('heading', {
       name: text.toString(),
-      level: 2,
+      level: options.headingLevel ?? 2,
       exact: options.exact ?? true,
     });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
@@ -1334,6 +1341,18 @@ export default abstract class BasePage {
     options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('button', { name, exact: options.exact ?? true }), {
+      message: options.message,
+    }).toBeHidden({
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'name')
+  protected async expectNoLink(
+    name: string,
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
+  ) {
+    await pageExpect(this.page.getByRole('link', { name, exact: options.exact ?? true }), {
       message: options.message,
     }).toBeHidden({
       timeout: options.timeout,
