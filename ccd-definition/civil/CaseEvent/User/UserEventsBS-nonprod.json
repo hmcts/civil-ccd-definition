@@ -17,7 +17,7 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "enterBreathing.type!=\"STANDARD\" AND enterBreathing.type!=\"MENTAL_HEALTH\""
+    "EventEnablingCondition": "enterBreathing.type!=\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -37,6 +37,6 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "(enterBreathing.type=\"STANDARD\" OR enterBreathing.type=\"MENTAL_HEALTH\") AND liftBreathing.expectedEnd!=\"*\""
+    "EventEnablingCondition": "enterBreathing.type=\"*\" AND liftBreathing!=\"*\""
   }
 ]
