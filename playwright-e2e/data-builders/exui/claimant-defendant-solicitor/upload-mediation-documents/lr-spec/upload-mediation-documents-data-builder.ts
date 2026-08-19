@@ -1,15 +1,8 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import {
-  claimantSolicitorUser,
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../../../../config/users/exui-users';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import partys from '../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import { Party } from '../../../../../models/users/partys';
-import User from '../../../../../models/users/user';
 import uploadMediationDocumentsDataBuilderComponents from './upload-mediation-documents-data-builder-components';
 
 
@@ -39,16 +32,7 @@ export default class UploadMediationDocumentsDataBuilder extends BaseDataBuilder
     claimType?: ClaimType,
     claimantDefendantSolicitorParty?: Party
   } = {}) {
-    const uploadUsersByParty = new Map<Party, User>([
-      [partys.CLAIMANT_SOLICITOR_1, claimantSolicitorUser],
-      [partys.DEFENDANT_SOLICITOR_1, defendantSolicitor1User],
-      [partys.DEFENDANT_SOLICITOR_2, defendantSolicitor2User],
-    ]);
-    const user = uploadUsersByParty.get(claimantDefendantSolicitorParty);
-
     const { civilServiceRequests } = this.requestsFactory;
-    const nonAttendanceStatementDoc = await civilServiceRequests.uploadTestDocument(user!);
-    const referredDoc = await civilServiceRequests.uploadTestDocument(user!);
 
     return {
       ...uploadMediationDocumentsDataBuilderComponents.explanation,
@@ -60,11 +44,10 @@ export default class UploadMediationDocumentsDataBuilder extends BaseDataBuilder
         this.defendant2PartyType!,
       ),
       ...uploadMediationDocumentsDataBuilderComponents.documentType,
-      ...uploadMediationDocumentsDataBuilderComponents.documentUpload(
-        nonAttendanceStatementDoc,
-        referredDoc,
+      ...(await uploadMediationDocumentsDataBuilderComponents.documentUpload(
         claimantDefendantSolicitorParty,
-      ),
+        civilServiceRequests,
+      )),
     };
   }
 }

@@ -76,7 +76,7 @@ const hearingType = (djHearingType: DJHearingType) => {
 };
 
 const hearingSupportRequirementsFieldDJ = (claimant1PartyType: ClaimantDefendantPartyType) => {
-  const preferredCourt = preferredCourts[partys.CLAIMANT_1.key].default;
+  const preferredCourt = preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default;
   const claimant1Data = CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, claimant1PartyType)
   return {
     HearingSupportRequirementsFieldDJ: {
