@@ -3,10 +3,10 @@ import partys from '../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import CCDCaseData from '../../../../models/ccd-case-data';
 import { Party } from '../../../../models/users/partys';
-import trailReadinessDataBuilderComponents from './trail-readiness-data-builder-components';
+import trailReadinessDataBuilderComponents from './trail-readiness-lip-data-builder-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
-export default class TrailReadinessDataBuilder extends BaseDataBuilder {
+export default class TrailReadinessLipDataBuilder extends BaseDataBuilder {
   async buildClaimant() {
     return this.buildData({ party: partys.CLAIMANT_1 });
   }

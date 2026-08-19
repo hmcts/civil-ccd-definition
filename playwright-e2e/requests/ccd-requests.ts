@@ -19,7 +19,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     caseId?: number,
     expectedStatus = 200,
   ) {
-    console.log(`Fetching CCD case data, caseId: ${caseId}`);
+    console.log(`Fetching CCD case data, caseId: ${caseId}, user: ${user.name}`);
     const url = `${this.getCCDDataStoreBaseUrl(user)}/cases/${caseId}`;
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),
@@ -27,7 +27,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     const responseJson = await super.retryRequestJson(url, requestOptions, {
       expectedStatus,
     });
-    console.log(`CCD case data fetched successfully, caseId: ${caseId}`);
+    console.log(`CCD case data fetched successfully, caseId: ${caseId}, user: ${user.name}`);
     return { id: responseJson.id, state: responseJson.state, ...responseJson.case_data };
   }
 
@@ -64,7 +64,8 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
   async startEvent(user: User, ccdEvent: CCDEvent, caseId?: number): Promise<{eventToken: string, startEventCaseData: CCDCaseData}> {
     console.log(
       `Starting event: ${ccdEvent.id}` +
-        (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
+        (typeof caseId !== 'undefined' ? `, caseId: ${caseId}` : '') + 
+        `, user: ${user.name}`,
     );
     let url = this.getCCDDataStoreBaseUrl(user);
     if (caseId) {
@@ -82,14 +83,18 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
         await super.expectResponseJsonToHaveProperty('token', responseJson);
       },
     });
-    console.log(`Event: ${ccdEvent.id} started successfully`);
+    console.log(
+      `Event: ${ccdEvent.id} started successfully` + 
+      (typeof caseId !== 'undefined' ? `, caseId: ${caseId}` : '') + 
+        `, user: ${user.name}`,);
     return { eventToken: response.token, startEventCaseData: response.case_details.case_data };
   }
 
   async startEventError(user: User, ccdEvent: CCDEvent, caseId?: number): Promise<string> {
     console.log(
       `Starting event expecting callback error: ${ccdEvent.id}` +
-        (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
+        (typeof caseId !== 'undefined' ? `, caseId: ${caseId}` : '') +
+        `, user: ${user.name}`,
     );
     let url = this.getCCDDataStoreBaseUrl(user);
     if (caseId) {
@@ -108,7 +113,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
         await super.expectResponseJsonToHaveProperty('callbackErrors', responseJson);
       },
     });
-    console.log(`Event: ${ccdEvent.id} returned callback error successfully`);
+    console.log(`Event: ${ccdEvent.id} returned callback error successfully, user: ${user.name}`);
     return response.callbackErrors[0];
   }
 
@@ -121,7 +126,8 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
   ): Promise<CCDCaseData> {
     console.log(
       `Submitting event: ${ccdEvent.id}` +
-        (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
+        (typeof caseId !== 'undefined' ? `, caseId: ${caseId}` : '') +
+        `, user: ${user.name}`,
     );
     let url = `${this.getCCDDataStoreBaseUrl(user)}/cases`;
     if (caseId) {
@@ -142,7 +148,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
         this.getStatusErrorMessage(responseJson, { url, status, expectedStatus }),
     });
     const caseData: CCDCaseData = { id: responseJson.id, ...responseJson.case_data };
-    console.log(`Event: ${ccdEvent.id} submitted successfully, caseId: ${caseData.id}`);
+    console.log(`Event: ${ccdEvent.id} submitted successfully, caseId: ${caseData.id}, user: ${user.name}`);
     return caseData;
   }
 

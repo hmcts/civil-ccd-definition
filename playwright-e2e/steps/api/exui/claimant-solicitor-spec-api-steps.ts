@@ -1299,7 +1299,61 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     );
     await super.fetchAndSetCCDCaseData();
   }
+  
+  async RaiseLRQuery() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
+    const { queryManagementRaiseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    await super.submitQmEvent(
+      claimantSolicitorUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseDataBuilder.buildRaiseQueryCS(),
+    );
+
+    const { queryManagementRaiseSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const queryManagementRaiseSchema =
+      await queryManagementRaiseSchemaBuilder.buildRaiseQuery(caseDataBeforeSubmission);
+    ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+  }
+
+  async RaiseLRHearingQuery() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRaiseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    await super.submitQmEvent(
+      claimantSolicitorUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseDataBuilder.buildRaiseQueryHearingCS(),
+    );
+
+    const { queryManagementRaiseSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const queryManagementRaiseSchema =
+      await queryManagementRaiseSchemaBuilder.buildRaiseQuery(caseDataBeforeSubmission);
+    ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+  }
+
+  async FollowUpOnLRQuery() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRaiseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    await super.submitQmEvent(
+      claimantSolicitorUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseDataBuilder.buildFollowQueryCS(),
+    );
+
+    const { queryManagementRaiseSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const queryManagementRaiseSchema =
+      await queryManagementRaiseSchemaBuilder.buildFollowUpQuery(caseDataBeforeSubmission);
+    ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+  }
+  
   async InitiateGeneralApplication() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -1326,6 +1380,6 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       await initiateGeneralApplicationGaSchemaBuilder.build();
     ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
 
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseIdFromParentCase());
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseIdFromParentCase()); 
   }
 }
