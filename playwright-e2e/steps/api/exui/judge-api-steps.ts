@@ -43,9 +43,9 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildFastSdo();
 
-    await super.submitCCDEvent(
+    await super.submitWAEvent(
       judgeRegion1User,
-      // fastTrackDirectionsTask,
+      fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
       CaseState.CASE_PROGRESSION,

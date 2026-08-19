@@ -37,21 +37,45 @@ export default class IdamActions extends BaseApi {
     const { pageCookiesManager } = this.pageUtilsFactory;
     await pageCookiesManager.cookiesSignOut();
     if (!config.runExuiAuthSetup || this.isSetupTest || !(await CookiesHelper.cookiesExist(user))) {
-      const { loginPage } = this.idamPageFactory;
-
-      if (this.verifyCookiesBanner) {
-        const { idamsCookiesBanner } = this.idamPageFactory;
-        await loginPage.openManageCase();
-        await idamsCookiesBanner.verifyContent();
-        await idamsCookiesBanner.acceptCookies();
-      } else {
-        await pageCookiesManager.addIdamCookies();
-        await this.setupUserData(user);
-        await pageCookiesManager.addExuiCookies(user);
-        await loginPage.openManageCase();
+      const { enterEmailPage } = this.idamPageFactory;
+      const { enterPasswordPage } = this.idamPageFactory;
+      let retries = config.idam.eventRetries;
+      let firstAttempt = false;
+      while (retries >= 0) {
+        try {
+          if(!firstAttempt) {
+            if (this.verifyCookiesBanner) {
+              const { idamsCookiesBanner } = this.idamPageFactory;
+              // await loginPage.openManageCase();
+              await enterEmailPage.openManageCase();
+              await idamsCookiesBanner.verifyContent();
+              await idamsCookiesBanner.acceptCookies();
+            } else {
+              await pageCookiesManager.addIdamCookies();
+              await this.setupUserData(user);
+              await pageCookiesManager.addExuiCookies(user);
+              // await loginPage.openManageCase();
+              await enterEmailPage.openManageCase();
+            }
+          } else {
+            await enterEmailPage.openManageCase();
+          }
+          // await loginPage.verifyContent();
+          // await loginPage.manageCaseLogin(user);
+          await enterEmailPage.verifyContent();
+          await enterEmailPage.enterEmail(user);
+          await enterEmailPage.submit();
+          await enterPasswordPage.verifyContent();
+          await enterPasswordPage.enterPassword(user);
+          await enterPasswordPage.submit(user);
+          break;
+        } catch(error) {
+          if (retries <= 0) throw error;
+          console.log(`Login user: ${user.name}, email: ${user.email}, failed, trying again (Retries left: ${retries})`);
+          retries--;
+          firstAttempt = true
+        }
       }
-      await loginPage.verifyContent();
-      await loginPage.manageCaseLogin(user);
     } else {
       const cookies = await CookiesHelper.getCookies(user, this.isTeardownTest);
       await pageCookiesManager.cookiesLogin(user, cookies);

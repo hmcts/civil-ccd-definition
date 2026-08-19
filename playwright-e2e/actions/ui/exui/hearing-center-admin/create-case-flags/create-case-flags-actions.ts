@@ -20,8 +20,8 @@ export default class CreateCaseFlagsActions extends BaseTestData {
     const { createCaseFlagsLocationPage } = this.createCaseFlagsPageFactory;
     await createCaseFlagsLocationPage.verifyContent(
       super.ccdCaseData,
-      super.claimant1PartyType,
-      super.defendant1PartyType,
+      super.claimant1PartyType!,
+      super.defendant1PartyType!,
     );
     await createCaseFlagsLocationPage.selectLocation(caseFlagLocations.CASE_LEVEL);
     await createCaseFlagsLocationPage.submit();
@@ -31,9 +31,9 @@ export default class CreateCaseFlagsActions extends BaseTestData {
     const { createCaseFlagsLocation1v2DSPage } = this.createCaseFlagsPageFactory;
     await createCaseFlagsLocation1v2DSPage.verifyContent(
       super.ccdCaseData,
-      super.claimant1PartyType,
-      super.defendant1PartyType,
-      super.defendant2PartyType,
+      super.claimant1PartyType!,
+      super.defendant1PartyType!,
+      super.defendant2PartyType!,
     );
     await createCaseFlagsLocation1v2DSPage.selectLocation(caseFlagLocations.CASE_LEVEL);
     await createCaseFlagsLocation1v2DSPage.submit();
@@ -43,11 +43,11 @@ export default class CreateCaseFlagsActions extends BaseTestData {
     const { createCaseFlagsLocationPage } = this.createCaseFlagsPageFactory;
     await createCaseFlagsLocationPage.verifyContent(
       super.ccdCaseData,
-      super.claimant1PartyType,
-      super.defendant1PartyType,
+      super.claimant1PartyType!,
+      super.defendant1PartyType!,
     );
     await createCaseFlagsLocationPage.selectLocation(
-      caseFlagLocations.CLAIMANT_1(this.claimant1PartyType),
+      caseFlagLocations.CLAIMANT_1(this.claimant1PartyType!),
     );
     await createCaseFlagsLocationPage.submit();
   }
@@ -95,7 +95,7 @@ export default class CreateCaseFlagsActions extends BaseTestData {
     await submitCreateCaseFlagsPage.verifyContent(this.ccdCaseData);
     await submitCreateCaseFlagsPage.submit();
     super.addCaseFlag({
-      caseFlagLocation: caseFlagLocations.CLAIMANT_1(super.claimant1PartyType),
+      caseFlagLocation: caseFlagLocations.CLAIMANT_1(super.claimant1PartyType!),
       caseFlagType: SpecialMeasureFlags.SCREENING_WITNESS,
       caseFlagComment,
     });
