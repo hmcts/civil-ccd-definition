@@ -7,6 +7,8 @@ import ManageContactInformationSchemaBuilder from '../common/manage-contact-info
 import MediationUnsuccessfulSchemaBuilder from './mediation-unsuccessful/mediation-unsuccessful-schema-builder';
 import RecordJudgmentSchemaBuilder from './record-judgment/record-judgment-schema-builder';
 import ReferJudgeDefenceReceivedSchemaBuilder from './refer-judge-defence-received/refer-judge-defence-received-schema-builder';
+import QueryManagementRaiseSchemaBuilder from '../common/query-management-raise/query-management-raise-schema-builder';
+import QueryManagementRespondSchemaBuilder from '../common/query-management-respond/query-management-respond-schema-builder';
 import SendAndReplySchemaBuilder from '../common/send-and-reply/send-and-reply-schema-builder';
 import SetAsideOrderTypeSchemaBuilder from './set-aside-order-type/set-aside-order-type-schema-builder';
 import TransferOnlineCaseSchemaBuilder from './transfer-online-case/transfer-online-case-schema-builder';
@@ -52,6 +54,14 @@ export default class CaseworkerSchemaBuilderFactory extends BaseSchemaBuilderFac
 
   get sendAndReplySchemaBuilder() {
     return new SendAndReplySchemaBuilder(this.testData);
+  }
+
+  get queryManagementRaiseSchemaBuilder() {
+    return new QueryManagementRaiseSchemaBuilder(this.testData);
+  }
+
+  get queryManagementRespondSchemaBuilder() {
+    return new QueryManagementRespondSchemaBuilder(this.testData);
   }
 
   get caseProceedsInCasemanSchemaBuilder() {

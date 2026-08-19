@@ -139,7 +139,7 @@ const orderType = (sdoType: SdoType) => {
 
 const fastTrack = (sdoType: SdoType) => {
   const claimantDefaultCourt = CaseDataHelper.setCodeToData(
-    preferredCourts[partys.CLAIMANT_1.key].default,
+    preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
   );
   const hearingMethodInPerson = CaseDataHelper.setCodeToData('In Person');
 
@@ -271,7 +271,7 @@ const fastTrack = (sdoType: SdoType) => {
 
 const smallClaims = (sdoType: SdoType) => {
   const claimantDefaultCourt = CaseDataHelper.setCodeToData(
-    preferredCourts[partys.CLAIMANT_1.key].default,
+    preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
   );
   const hearingMethodInPerson = CaseDataHelper.setCodeToData('In Person');
 
@@ -370,7 +370,7 @@ const smallClaims = (sdoType: SdoType) => {
 
 const sdoR2FastTrack = (sdoType: SdoType) => {
   const claimantDefaultCourt = CaseDataHelper.setCodeToData(
-    preferredCourts[partys.CLAIMANT_1.key].default,
+    preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
   );
   const hearingMethodInPerson = CaseDataHelper.setCodeToData('In Person');
 
@@ -495,7 +495,7 @@ const sdoR2FastTrack = (sdoType: SdoType) => {
 
 const sdoR2SmallClaims = (sdoType: SdoType) => {
   const claimantDefaultCourt = CaseDataHelper.setCodeToData(
-    preferredCourts[partys.CLAIMANT_1.key].default,
+    preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
   );
   const hearingMethodInPerson = CaseDataHelper.setCodeToData('In Person');
 

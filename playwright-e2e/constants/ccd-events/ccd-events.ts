@@ -71,10 +71,22 @@ const ccdEvents: CCDEvents = {
     description: 'Defendant response to Specified claim',
     order: 6,
   },
+  DEFENDANT_RESPONSE_CUI: {
+    id: 'DEFENDANT_RESPONSE_CUI',
+    name: 'Respond to claim',
+    description: 'Citizen defendant response to Specified claim',
+    order: 6,
+  },
   CLAIMANT_RESPONSE: {
     id: 'CLAIMANT_RESPONSE',
     name: 'View and respond to defence',
     description: 'View and respond to defendant',
+    order: 7,
+  },
+  CLAIMANT_RESPONSE_CUI: {
+    id: 'CLAIMANT_RESPONSE_CUI',
+    name: 'View and respond to defence',
+    description: 'Citizen claimant response to Specified claim',
     order: 7,
   },
   WITHDRAW_CLAIM: {
