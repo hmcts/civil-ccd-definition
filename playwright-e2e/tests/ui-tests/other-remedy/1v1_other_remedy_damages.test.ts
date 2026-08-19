@@ -6,20 +6,18 @@ test.describe(
   () => {
     test('1v1 create fast track claim with type other remedy damages', async ({
       ClaimantSolicitorSteps,
-      DefendantSolicitor1Steps,
+      DefendantSolicitor1ApiSteps,
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
     }) => {
       await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.CreateClaimFastOtherRemedy1v1();
+      await ClaimantSolicitorSteps.CreateClaimFastOtherRemedy();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSteps.NotifyClaimDetails();
-      await DefendantSolicitor1Steps.Login();
-      await DefendantSolicitor1Steps.RespondFastFullDefence1v1();
-      await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.RespondFastProceed1v1();
+      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
+      await ClaimantSolicitorApiSteps.RespondFastProceed();
     });
   },
 );

@@ -42,7 +42,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.noAddAnotherClaimant();
         await createClaimActions.defendantDetails();
         await createClaimActions.noAddAnotherDefendant();
-        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.claimDetailsFast();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -55,7 +55,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimFastOtherRemedy1v1() {
+  async CreateClaimFastOtherRemedy() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(
       async () => {
@@ -79,7 +79,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimFastHousingDisrepair1v1() {
+  async CreateClaimFastHousingDisrepair() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(
       async () => {
@@ -114,7 +114,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.noAddAnotherClaimant();
         await createClaimActions.defendantDetails();
         await createClaimActions.noAddAnotherDefendant();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -138,7 +138,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.noAddAnotherClaimant();
         await createClaimActions.defendantDetailsLIP(); // Placeholder for LIP-specific defendant details journey
         await createClaimActions.noAddAnotherDefendant();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -163,7 +163,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.secondClaimant();
         await createClaimActions.secondClaimantLitigationFriend();
         await createClaimActions.defendantDetails();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -188,7 +188,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantSS();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -213,7 +213,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetailsLIP(); // First defendant (LIP)
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantLIP(); // Second defendant (LIP)
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -238,7 +238,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails(); // First defendant (Legally Represented)
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantLIP(); // Second defendant (LIP)
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -263,7 +263,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantDSdetails();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -288,7 +288,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantDSdetails();
-        await createClaimActions.claimDetailsSmallTrackHousingDisrepair();
+        await createClaimActions.claimDetailsSmallHousingDisrepair();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -313,7 +313,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantSS();
-        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.claimDetailsFast();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -338,7 +338,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantDSdetails();
-        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.claimDetailsFast();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -363,7 +363,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.secondClaimant();
         await createClaimActions.secondClaimantLitigationFriend();
         await createClaimActions.defendantDetails();
-        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.claimDetailsFast();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -543,7 +543,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RespondFastProceed1v1() {
+  async RespondFastProceed() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryCCDEvent(
       async () => {

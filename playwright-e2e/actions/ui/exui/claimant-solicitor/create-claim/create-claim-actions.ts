@@ -199,78 +199,65 @@ export default class CreateClaimActions extends BaseTestData {
     await secondDefendantSolicitorEmailPage.submit();
   }
 
-  async fastTrackClaimDetails() {
+  async claimDetailsFast() {
     await this.claimType();
     await this.personalInjuryType();
     await this.details();
     await this.uploadParticularsOfClaimNo();
 
-    const { claimValuePage } = this.createClaimPageFactory;
-    await claimValuePage.verifyContent();
-    await claimValuePage.enterClaimDetailsFastTrack();
-    await claimValuePage.submit();
+    await this.claimValueFast();
 
     await this.pbaNumber();
   }
 
   async claimDetailsFastOtherRemedy() {
     await this.claimTypeOtherRemedy();
-    await this.claimDeclaration();
-    await this.humanRightsAct();
+    await this.claimDeclarationNo();
+    await this.humanRightsActNo();
     await this.details();
     await this.uploadParticularsOfClaimNo();
 
-    const { claimValuePage } = this.createClaimPageFactory;
-    await claimValuePage.verifyContent();
-    await claimValuePage.enterClaimDetailsFastTrack();
-    await claimValuePage.submit();
+    await this.claimValueFast();
 
     await this.pbaNumber();
   }
 
   async claimDetailsFastHousingDisrepair() {
     await this.claimTypeHousingDisrepair();
-    await this.claimDeclarationHousingDisrepair();
-    await this.humanRightsActHousingDisrepair();
+    await this.claimDeclarationYes();
+    await this.humanRightsActYes();
     await this.details();
     await this.uploadParticularsOfClaimNo();
 
-    const { claimValuePage } = this.createClaimPageFactory;
-    await claimValuePage.verifyContent();
-    await claimValuePage.enterClaimDetailsFastTrack();
-    await claimValuePage.submit();
+    await this.claimValueFast();
 
     await this.pbaNumberOtherRemedy();
   }
 
-  async smallTrackClaimDetails() {
+  async claimDetailsSmall() {
     await this.claimType();
     await this.personalInjuryType();
     await this.details();
     await this.uploadParticularsOfClaimNo();
 
-    const { claimValuePage } = this.createClaimPageFactory;
-    await claimValuePage.verifyContent();
-    await claimValuePage.enterClaimDetailsSmallTrack();
-    await claimValuePage.submit();
+    await this.claimValueSmall();
 
     await this.pbaNumber();
   }
 
-  async claimDetailsSmallTrackHousingDisrepair() {
+  async claimDetailsSmallHousingDisrepair() {
     await this.claimTypeHousingDisrepair();
-    await this.claimDeclarationHousingDisrepair();
-    await this.humanRightsActHousingDisrepair();
+    await this.claimDeclarationYes();
+    await this.humanRightsActYes();
     await this.details();
     await this.uploadParticularsOfClaimNo();
 
-    const { claimValuePage } = this.createClaimPageFactory;
-    await claimValuePage.verifyContent();
-    await claimValuePage.enterClaimDetailsSmallTrack();
-    await claimValuePage.submit();
+    await this.claimValueSmall();
 
     await this.pbaNumberOtherRemedy();
   }
+
+  
 
   async statementOfTruthCreateClaim() {
     const { statementOfTruthCreateClaimPage } = this.createClaimPageFactory;
@@ -333,28 +320,28 @@ export default class CreateClaimActions extends BaseTestData {
     await claimTypePage.submit();
   }
 
-  private async claimDeclaration() {
+  private async claimDeclarationNo() {
     const { claimDeclarationPage } = this.createClaimPageFactory;
     await claimDeclarationPage.verifyContent();
     await claimDeclarationPage.selectNo();
     await claimDeclarationPage.submit();
   }
 
-  private async humanRightsAct() {
+  private async humanRightsActNo() {
     const { humanRightsActPage } = this.createClaimPageFactory;
     await humanRightsActPage.verifyContent();
     await humanRightsActPage.selectNo();
     await humanRightsActPage.submit();
   }
 
-  private async claimDeclarationHousingDisrepair() {
+  private async claimDeclarationYes() {
     const { claimDeclarationPage } = this.createClaimPageFactory;
     await claimDeclarationPage.verifyContent();
     await claimDeclarationPage.selectYesAndEnterDescription();
     await claimDeclarationPage.submit();
   }
 
-  private async humanRightsActHousingDisrepair() {
+  private async humanRightsActYes() {
     const { humanRightsActPage } = this.createClaimPageFactory;
     await humanRightsActPage.verifyContent();
     await humanRightsActPage.selectYes();
@@ -392,5 +379,19 @@ export default class CreateClaimActions extends BaseTestData {
     const { pbaNumberOtherRemedyPage } = this.createClaimPageFactory;
     await pbaNumberOtherRemedyPage.verifyContent();
     await pbaNumberOtherRemedyPage.submit();
+  }
+
+  private async claimValueSmall() {
+    const { claimValuePage } = this.createClaimPageFactory;
+    await claimValuePage.verifyContent();
+    await claimValuePage.enterClaimDetailsSmallTrack();
+    await claimValuePage.submit();
+  }
+
+  private async claimValueFast() {
+    const { claimValuePage } = this.createClaimPageFactory;
+    await claimValuePage.verifyContent();
+    await claimValuePage.enterClaimDetailsFastTrack();
+    await claimValuePage.submit();
   }
 }

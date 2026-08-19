@@ -75,7 +75,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     );
   }
 
-  async RespondFastFullDefence1v1() {
+  async RespondFastFullDefence() {
     const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryCCDEvent(
       async () => {

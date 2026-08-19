@@ -6,21 +6,19 @@ test.describe(
   () => {
     test('1v1 create fast track claim with type housing disrepair', async ({
       ClaimantSolicitorSteps,
-      DefendantSolicitor1Steps,
+      DefendantSolicitor1ApiSteps,
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
       JudgeSteps,
     }) => {
       await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.CreateClaimFastHousingDisrepair1v1();
+      await ClaimantSolicitorSteps.CreateClaimFastHousingDisrepair();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-      await ClaimantSolicitorSteps.NotifyClaim();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await ClaimantSolicitorSteps.NotifyClaimDetails();
-      await DefendantSolicitor1Steps.Login();
-      await DefendantSolicitor1Steps.RespondFastFullDefence1v1();
-      await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.RespondFastProceed1v1();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
+      await ClaimantSolicitorApiSteps.RespondFastProceed();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoFastOtherRemedy();
     });

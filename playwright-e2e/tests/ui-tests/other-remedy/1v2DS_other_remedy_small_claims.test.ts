@@ -15,10 +15,10 @@ test.describe(
       await ClaimantSolicitorSteps.Login();
       await ClaimantSolicitorSteps.CreateClaimSmallHousingDisrepair1v2DS();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-      await ClaimantSolicitorSteps.NotifyClaim1v2DS();
-      await ClaimantSolicitorSteps.NotifyClaimDetails1v2DS();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1Steps.Login();
       await DefendantSolicitor1Steps.RespondSmallFullDefence1v2DS();
       await DefendantSolicitor2Steps.Login();
