@@ -8,10 +8,10 @@ test.describe('1v2SS spec intermediate track api journey', {
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v2SS();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v2SS();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence1v2SS();
-    await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectFullDefence();
+    await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence1v2SS();
+    await ClaimantSolicitorSpecApiSteps.RespondInterRejectFullDefence();
   });
 });

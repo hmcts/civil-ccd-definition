@@ -5,8 +5,8 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecSchemaComponents from './create-claim-spec-schema-components';
-import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
-import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
+import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/create-claim/create-claim-spec/airline';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
@@ -30,19 +30,19 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
-  async buildIntermediate1v1(): Promise<z.ZodType> {
+  async buildInter1v1(): Promise<z.ZodType> {
     return this.buildSchema();
   }
 
-  async buildIntermediate1vLIP(): Promise<z.ZodType> {
+  async buildInter1vLIP(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_ONE_LIP });
   }
 
-  async buildIntermediate1v2SS(): Promise<z.ZodType> {
+  async buildInter1v2SS(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
   }
 
-  async buildIntermediate1v2DS(): Promise<z.ZodType> {
+  async buildInter1v2DS(): Promise<z.ZodType> {
     return this.buildSchema({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 

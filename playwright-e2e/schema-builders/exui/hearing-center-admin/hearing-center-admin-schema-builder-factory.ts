@@ -3,6 +3,8 @@ import DismissCaseSchemaBuilder from '../common/dismiss-case/dismiss-case-schema
 import CreateCaseFlagsSchemaBuilder from './create-case-flags/create-case-flags-schema-builder';
 import ManageCaseFlagsSchemaBuilder from './manage-case-flags/manage-case-flags-schema-builder';
 import ManageStaySchemaBuilder from './manage-stay/manage-stay-schema-builder';
+import QueryManagementRaiseSchemaBuilder from '../common/query-management-raise/query-management-raise-schema-builder';
+import QueryManagementRespondSchemaBuilder from '../common/query-management-respond/query-management-respond-schema-builder';
 import ScheduleHearingSchemaBuilder from './schedule-hearing/schedule-hearing-schema-builder';
 import StayCaseSchemaBuilder from './stay-case/stay-case-schema-builder';
 
@@ -29,5 +31,13 @@ export default class HearingCenterAdminSchemaBuilderFactory extends BaseSchemaBu
 
   get dismissCaseSchemaBuilder() {
     return new DismissCaseSchemaBuilder(this.testData);
+  }
+
+  get queryManagementRaiseSchemaBuilder() {
+    return new QueryManagementRaiseSchemaBuilder(this.testData);
+  }
+
+  get queryManagementRespondSchemaBuilder() {
+    return new QueryManagementRespondSchemaBuilder(this.testData);
   }
 }

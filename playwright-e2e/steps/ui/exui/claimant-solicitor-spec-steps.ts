@@ -27,6 +27,11 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(claimantSolicitorUser);
   }
 
+  async NavigateToCaseDetails() {
+    await super.setDebugTestData();
+    await super.exuiDashboardActions.goToCaseDetails();
+  }
+
   async UploadMediationDocuments() {
     const { uploadMediationDocumentsActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(

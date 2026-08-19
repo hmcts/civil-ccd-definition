@@ -27,9 +27,12 @@ export default abstract class BaseRequest {
   ): Promise<any | string | null> {
     switch (responseDataType) {
       case ResponseDataType.JSON:
-        return response.json();
+        return response.json().catch(async (error) => {
+        });
       case ResponseDataType.TEXT:
-        return response.text();
+        return response.text().catch(async (error) => {
+          
+        });
       default:
         return null;
     }
