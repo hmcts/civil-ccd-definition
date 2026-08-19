@@ -13,7 +13,7 @@ test.describe(
       JudgeSteps,
     }) => {
       await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.CreateClaimSmall1v2DSHousingDisrepair();
+      await ClaimantSolicitorSteps.CreateClaimSmallHousingDisrepair1v2DS();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();

@@ -18,16 +18,16 @@ export default class HumanRightsActPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(),
       super.expectLegend(radioButtons.humanRightsAct.label),
-      this.yesOrNoFragment.verifyContent(radioButtons.humanRightsAct.selector),
+      this.yesOrNoFragment.verifyContent(radioButtons.humanRightsAct.selectorKey),
     ]);
   }
 
   async selectYes() {
-    await this.yesOrNoFragment.selectYes(radioButtons.humanRightsAct.selector);
+    await this.yesOrNoFragment.selectYes(radioButtons.humanRightsAct.selectorKey);
   }
 
   async selectNo() {
-    await this.yesOrNoFragment.selectNo(radioButtons.humanRightsAct.selector);
+    await this.yesOrNoFragment.selectNo(radioButtons.humanRightsAct.selectorKey);
   }
 
   async submit() {

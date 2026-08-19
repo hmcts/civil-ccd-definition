@@ -83,17 +83,6 @@ export default class HearingCenterAdminSteps extends BaseExui {
     );
   }
 
-  async CreateDefendantSolicitor1ExpertCaseFlag() {
-    const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryCCDEvent(
-      async () => {
-        await createCaseFlagsActions.selectDefendantSolicitor1Expert();
-        await createCaseFlagsActions.defendantSolicitor1ExpertBehaviourCaseFlag();
-      },
-      async () => {},
-      ccdEvents.CREATE_CASE_FLAGS,
-    );
-  }
 
   async CreateClaimant1CaseFlag1v2DS() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
@@ -112,30 +101,6 @@ export default class HearingCenterAdminSteps extends BaseExui {
     await super.retryCCDEvent(
       async () => {
         await manageCaseFlagsActions.makeInactiveCaseFlag();
-      },
-      async () => {},
-      ccdEvents.MANAGE_CASE_FLAGS,
-    );
-  }
-
-  async UpdateClaimant1CaseFlagComment() {
-    const { manageCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryCCDEvent(
-      async () => {
-        await manageCaseFlagsActions.updateCaseFlagComment(
-          caseFlagLocations.CLAIMANT_1(this.claimant1PartyType!),
-        );
-      },
-      async () => {},
-      ccdEvents.MANAGE_CASE_FLAGS,
-    );
-  }
-
-  async UpdateDefendantSolicitor1ExpertCaseFlagComment() {
-    const { manageCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryCCDEvent(
-      async () => {
-        await manageCaseFlagsActions.updateCaseFlagComment(caseFlagLocations.DEFENDANT_1_EXPERT_1);
       },
       async () => {},
       ccdEvents.MANAGE_CASE_FLAGS,

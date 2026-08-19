@@ -11,13 +11,12 @@ test.describe(
       CaseRoleAssignmentApiSteps,
     }) => {
       await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.CreateClaimFast1v1OtherRemedyDamages();
+      await ClaimantSolicitorSteps.CreateClaimFastOtherRemedy1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSteps.NotifyClaimDetails();
       await DefendantSolicitor1Steps.Login();
-      await DefendantSolicitor1Steps.AcknowledgeClaimFullDefence();
       await DefendantSolicitor1Steps.RespondFastFullDefence1v1();
       await ClaimantSolicitorSteps.Login();
       await ClaimantSolicitorSteps.RespondFastProceed1v1();

@@ -26,7 +26,7 @@ export const radioButtons = {
       label: 'Housing disrepair',
       selector: '#claimTypeUnSpec-HOUSING_DISREPAIR',
     },
-    damagesAndOtherRemedy: {
+    otherRemedy: {
       label: 'Damages and an ‘other’ remedy e.g. Payment Protection Insurance (PPI), Motor finance',
       selector: '#claimTypeUnSpec-DAMAGES_AND_OTHER_REMEDY',
     },

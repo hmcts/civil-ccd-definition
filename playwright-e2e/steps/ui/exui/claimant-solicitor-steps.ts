@@ -55,7 +55,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimFast1v1OtherRemedyDamages() {
+  async CreateClaimFastOtherRemedy1v1() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(
       async () => {
@@ -66,7 +66,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.noAddAnotherClaimant();
         await createClaimActions.defendantDetails();
         await createClaimActions.noAddAnotherDefendant();
-        await createClaimActions.claimDetailsFastTrackOtherRemedyDamages();
+        await createClaimActions.claimDetailsFastOtherRemedy();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -79,7 +79,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimFast1v1HousingDisrepair() {
+  async CreateClaimFastHousingDisrepair1v1() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(
       async () => {
@@ -90,7 +90,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.noAddAnotherClaimant();
         await createClaimActions.defendantDetails();
         await createClaimActions.noAddAnotherDefendant();
-        await createClaimActions.claimDetailsFastTrackHousingDisrepair();
+        await createClaimActions.claimDetailsFastHousingDisrepair();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -276,7 +276,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async CreateClaimSmall1v2DSHousingDisrepair() {
+  async CreateClaimSmallHousingDisrepair1v2DS() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(
       async () => {

@@ -16,7 +16,7 @@ export default class ClaimTypePage extends ExuiPage(BasePage) {
       super.expectLabel(radioButtons.claimType.consumer.label),
       super.expectLabel(radioButtons.claimType.consumerCredit.label),
       super.expectLabel(radioButtons.claimType.housingDisrepair.label),
-      super.expectLabel(radioButtons.claimType.damagesAndOtherRemedy.label),
+      super.expectLabel(radioButtons.claimType.otherRemedy.label),
       super.expectLabel(radioButtons.claimType.other.label),
     ]);
   }
@@ -25,8 +25,8 @@ export default class ClaimTypePage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.claimType.personalInjury.selector);
   }
 
-  async selectDamagesAndOtherRemedy() {
-    await super.clickBySelector(radioButtons.claimType.damagesAndOtherRemedy.selector);
+  async selectOtherRemedy() {
+    await super.clickBySelector(radioButtons.claimType.otherRemedy.selector);
   }
 
   async selectHousingDisrepair() {

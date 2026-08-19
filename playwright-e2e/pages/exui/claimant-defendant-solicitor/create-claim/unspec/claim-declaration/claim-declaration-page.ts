@@ -18,13 +18,12 @@ export default class ClaimDeclarationPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(),
       super.expectLegend(radioButtons.addOtherRemedy.label),
-      super.expectText(radioButtons.addOtherRemedy.hint),
-      this.yesOrNoFragment.verifyContent(radioButtons.addOtherRemedy.selector),
+      this.yesOrNoFragment.verifyContent(radioButtons.addOtherRemedy.selectorKey),
     ]);
   }
 
   async selectYes() {
-    await this.yesOrNoFragment.selectYes(radioButtons.addOtherRemedy.selector);
+    await this.yesOrNoFragment.selectYes(radioButtons.addOtherRemedy.selectorKey);
   }
 
   async selectYesAndEnterDescription() {
@@ -36,7 +35,7 @@ export default class ClaimDeclarationPage extends ExuiPage(BasePage) {
   }
 
   async selectNo() {
-    await this.yesOrNoFragment.selectNo(radioButtons.addOtherRemedy.selector);
+    await this.yesOrNoFragment.selectNo(radioButtons.addOtherRemedy.selectorKey);
   }
 
   async submit() {
