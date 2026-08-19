@@ -18,7 +18,7 @@ export default class SelectTemplatePage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async selectTemplateIntermediate() {
+  async selectTemplateInter() {
     await super.selectFromDropdown(
       MultiIntermediateTemplateTypes.FIX_DATE_CMC,
       dropdowns.template.selector,

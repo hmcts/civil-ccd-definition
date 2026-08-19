@@ -35,11 +35,11 @@ export default class GenerateDirectionsOrderActions extends BaseTestData {
     await finalOrderPreviewPage.submit();
   }
 
-  async trackAllocationIntermediate() {
+  async trackAllocationInter() {
     const { trackAllocationPage } = this.generateDirectionsOrderPageFactory;
     await trackAllocationPage.verifyContent(this.ccdCaseData);
     await trackAllocationPage.finalOrderAllocateToTrackYes();
-    await trackAllocationPage.selectIntermediateTrack();
+    await trackAllocationPage.selectInterTrack();
     await trackAllocationPage.submit();
   }
 
@@ -59,10 +59,10 @@ export default class GenerateDirectionsOrderActions extends BaseTestData {
     await trackAllocationPage.submit();
   }
 
-  async selectTemplateIntermediate() {
+  async selectTemplateInter() {
     const { selectTemplatePage } = this.generateDirectionsOrderPageFactory;
     await selectTemplatePage.verifyContent(this.ccdCaseData);
-    await selectTemplatePage.selectTemplateIntermediate();
+    await selectTemplatePage.selectTemplateInter();
     await selectTemplatePage.submit();
   }
 

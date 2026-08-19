@@ -278,13 +278,13 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(generateDirectionsOrderSchema, this.ccdCaseData);
   }
 
-  async GenerateDirectionsOrderIntermediate() {
+  async GenerateDirectionsOrderInter() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { generateDirectionsOrderDataBuilder } = this.judgeDataBuilderFactory;
     const generateDirectionsOrderData =
-      await generateDirectionsOrderDataBuilder.buildIntermediateOrder();
+      await generateDirectionsOrderDataBuilder.buildInterOrder();
     await super.submitWAEvent(
       judgeRegion1User,
       intermediateTrackDirectionsTask,
@@ -295,7 +295,7 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { generateDirectionsOrderSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const generateDirectionsOrderSchema =
-      await generateDirectionsOrderSchemaBuilder.buildIntermediateOrder(caseDataBeforeSubmission);
+      await generateDirectionsOrderSchemaBuilder.buildInterOrder(caseDataBeforeSubmission);
     ZodHelper.safeParse(generateDirectionsOrderSchema, this.ccdCaseData);
   }
 
