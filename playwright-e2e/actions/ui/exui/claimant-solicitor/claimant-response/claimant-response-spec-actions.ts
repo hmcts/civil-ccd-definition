@@ -104,6 +104,31 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async dqMultiTrack1vLIP() {
+    const { fileDirectionsQuestionairePage } = this.claimantResponsePageFactory;
+    await fileDirectionsQuestionairePage.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionairePage.enterDetails();
+    await fileDirectionsQuestionairePage.submit();
+
+    const { disclosureOfElectronicDocumentsPage } = this.claimantResponsePageFactory;
+    await disclosureOfElectronicDocumentsPage.verifyContent(this.ccdCaseData);
+    await disclosureOfElectronicDocumentsPage.enterDetails();
+    await disclosureOfElectronicDocumentsPage.submit();
+
+    const { disclosureOfNonElectronicDocumentsSpecPage } = this.claimantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsSpecPage.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsSpecPage.submit();
+
+    const { disclosureReportPage } = this.claimantResponsePageFactory;
+    await disclosureReportPage.verifyContent(this.ccdCaseData);
+    await disclosureReportPage.enterDetails();
+    await disclosureReportPage.submit();
+
+    await this.dqMultiTrack();
+    await this.applicationNo();
+  }
+
+  @Step(classKey)
   async mediationClaimantResponseSpec() {
     const { mediationContactInformationPage } = this.claimantResponsePageFactory;
     await mediationContactInformationPage.verifyContent(this.ccdCaseData);
