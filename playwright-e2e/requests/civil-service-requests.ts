@@ -234,7 +234,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     );
   }
 
-  async updatePaymentForGaClaimIsue(user: User, serviceRequestDTO: any) {
+  async updatePaymentForGaClaimIssue(user: User, serviceRequestDTO: any) {
     console.log(
       `Updating payment for general application, caseId: ${serviceRequestDTO.ccd_case_number}...`,
     );

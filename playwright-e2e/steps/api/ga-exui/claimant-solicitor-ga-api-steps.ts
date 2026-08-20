@@ -33,7 +33,7 @@ export default class ClaimantSolicitorGaApiSteps extends BaseApi {
     const initiateGeneralApplicationAfterPaymentDTO =
       await initiateGeneralApplicationAfterPaymentDataBuilder.build();
     const { civilServiceRequests } = this.requestsFactory;
-    await civilServiceRequests.updatePaymentForGaClaimIsue(
+    await civilServiceRequests.updatePaymentForGaClaimIssue(
       claimantSolicitorUser,
       initiateGeneralApplicationAfterPaymentDTO,
     );
