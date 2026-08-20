@@ -1,8 +1,8 @@
 import BaseApi from '../../../../base/base-api';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import CookiesHelper from '../../../../helpers/cookies-helper';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import TestData from '../../../../models/test-utils/test-data';
 import User from '../../../../models/users/user';
 import { WATask } from '../../../../models/wa-task';

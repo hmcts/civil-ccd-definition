@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import ClaimantResponseCuiType from '../../../../constants/ccd-events/claimant-response-cui/claimant-response-cui-type';
+import ClaimantResponseCuiType from '../../../../constants/ccd-events/cui-ccd-events/claimant-response-cui/claimant-response-cui-type';
 import { ClaimantDefendantPartyType } from '../../../../models/users/claimant-defendant-party-types';
 import User from '../../../../models/users/user';
 

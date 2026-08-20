@@ -17,7 +17,7 @@ import EvidenceUploadApplicantSchemaBuilder from './evidence-upload-applicant/un
 import EvidenceUploadRespondentSchemaBuilder from './evidence-upload-respondent/unspec/evidence-upload-respondent-schema-builder';
 import InformAgreedExtensionDateSchemaBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-schema-builder';
 import InformAgreedExtensionDateSpecSchemaBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-schema-builder';
-import InitiateGeneralApplicationGaSchemaBuilder from '../../ga-exui/initiate-general-application-ga/initiate-general-application-ga-schema-builder';
+import InitiateGeneralApplicationGaSchemaBuilder from '../../ga-exui/claimant-defendant-solicitor/initiate-general-application-ga/initiate-general-application-ga-schema-builder';
 import JudgmentPaidInFullSchemaBuilder from './judgment-paid-in-full/lr-spec/judgment-paid-in-full-schema-builder';
 import ManageContactInformationSchemaBuilder from '../common/manage-contact-information/manage-contact-information-schema-builder';
 import NoticeOfChangeSchemaBuilder from './notice-of-change/notice-of-change-schema-builder';

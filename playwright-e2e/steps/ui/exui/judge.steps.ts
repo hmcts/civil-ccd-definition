@@ -6,14 +6,14 @@ import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import { judgeRegion1User, judgeRegion2User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/nihlFastTrackDirectionsTask';
-import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
-import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
-import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
-import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
-import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
-import multiTrackDirectionsTask from '../../../constants/wa-tasks/multiTrackDirectionsTask';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/exui/nihlFastTrackDirectionsTask';
+import fastTrackDirectionsTask from '../../../constants/wa-tasks/exui/fastTrackDirectionsTask';
+import smallClaimDirectionsTask from '../../../constants/wa-tasks/exui/smallClaimDirectionsTask';
+import summaryJudgmentDirections from '../../../constants/wa-tasks/exui/summaryJudgmentDirectionsTask';
+import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/exui/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
+import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/exui/decisionOnReconsiderationRequestTask';
+import multiTrackDirectionsTask from '../../../constants/wa-tasks/exui/multiTrackDirectionsTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {

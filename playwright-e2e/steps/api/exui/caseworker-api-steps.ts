@@ -1,15 +1,15 @@
 import BaseApi from '../../../base/base-api';
 import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import CaseState from '../../../constants/cases/case-state';
-import respondToQueryCtscTask from '../../../constants/wa-tasks/respondToQueryCtscTask';
+import respondToQueryCtscTask from '../../../constants/wa-tasks/exui/respondToQueryCtscTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import CaseworkerDataBuilderFactory from '../../../data-builders/exui/caseworker/caseworker-data-builder-factory';
 import CaseworkerSchemaBuilderFactory from '../../../schema-builders/exui/caseworker/caseworker-schema-builder-factory';
-import respondToHearingQueryCtscTask from '../../../constants/wa-tasks/respondToHearingQueryCtscTask';
+import respondToHearingQueryCtscTask from '../../../constants/wa-tasks/exui/respondToHearingQueryCtscTask';
 
 @AllMethodsStep()
 export default class CaseworkerApiSteps extends BaseApi {
@@ -320,6 +320,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       ctscAdminUser,
       ccdEvents.QUERY_MANAGEMENT_RESPOND,
       queryManagementRespondData,
+    
     );
     await super.completeWATask(ctscAdminUser, waTask.id);
 

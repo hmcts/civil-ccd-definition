@@ -5,7 +5,7 @@ import CaseRoleAssignmentApiSteps from '../../steps/api/case-role-assignment-api
 import CaseworkerApiSteps from '../../steps/api/exui/caseworker-api-steps';
 import ClaimantCitizenApiSteps from '../../steps/api/cui/claimant-citizen-api-steps';
 import ClaimantSolicitorGaApiSteps from '../../steps/api/ga-exui/claimant-solicitor-ga-api-steps';
-import ClaimantSolicitorSpecGaApiSteps from '../../steps/api/ga-exui/claimant-solicitor-spec-ga-api-steps';
+import DefendantSolicitor1GaApiSteps from '../../steps/api/ga-exui/defendant-solicitor-1-ga-api-steps';
 import IdamApiSteps from '../../steps/api/idam/idam-api-steps';
 import ClaimantSolicitorApiSteps from '../../steps/api/exui/claimant-solicitor-api-steps';
 import ClaimantSolicitorSpecApiSteps from '../../steps/api/exui/claimant-solicitor-spec-api-steps';
@@ -19,6 +19,7 @@ import OtherDefendantSolicitor1ApiSteps from '../../steps/api/exui/other-defenda
 import OtherDefendantSolicitor2ApiSteps from '../../steps/api/exui/other-defendant-solicitor-2-api-steps';
 import DataApiSteps from '../../steps/api/data-api-steps';
 import HearingCenterAdminApiSteps from '../../steps/api/exui/hearing-center-admin-api-steps';
+import JudgeGaApiSteps from '../../steps/api/ga-exui/judge-ga-api-steps';
 import JudgeApiSteps from '../../steps/api/exui/judge-api-steps';
 import LegalAdvisorApiSteps from '../../steps/api/exui/legal-advisor-api-steps';
 
@@ -29,9 +30,10 @@ type ApiStepsFixtures = {
   ClaimantCitizenApiSteps: ClaimantCitizenApiSteps;
   DefendantCitizenApiSteps: DefendantCitizenApiSteps;
   HearingCenterAdminApiSteps: HearingCenterAdminApiSteps;
+  JudgeGaApiSteps: JudgeGaApiSteps;
   JudgeApiSteps: JudgeApiSteps;
   ClaimantSolicitorGaApiSteps: ClaimantSolicitorGaApiSteps;
-  ClaimantSolicitorSpecGaApiSteps: ClaimantSolicitorSpecGaApiSteps;
+  DefendantSolicitor1GaApiSteps: DefendantSolicitor1GaApiSteps;
   ClaimantSolicitorSpecApiSteps: ClaimantSolicitorSpecApiSteps;
   ClaimantSolicitorApiSteps: ClaimantSolicitorApiSteps;
   DefendantSolicitor1SpecApiSteps: DefendantSolicitor1SpecApiSteps;
@@ -67,11 +69,14 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   JudgeApiSteps: async ({ _judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new JudgeApiSteps(_judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData));
   },
-  ClaimantSolicitorGaApiSteps: async ({ _gaExuiDataBuilderFactory, _gaExuiSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
-    await use(new ClaimantSolicitorGaApiSteps(_gaExuiDataBuilderFactory, _gaExuiSchemaBuilderFactory, _requestsFactory, _testData));
+  JudgeGaApiSteps: async ({ _judgeGaDataBuilderFactory, _judgeGaSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new JudgeGaApiSteps(_judgeGaDataBuilderFactory, _judgeGaSchemaBuilderFactory, _requestsFactory, _testData));
   },
-  ClaimantSolicitorSpecGaApiSteps: async ({ _gaExuiDataBuilderFactory, _gaExuiSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
-    await use(new ClaimantSolicitorSpecGaApiSteps(_gaExuiDataBuilderFactory, _gaExuiSchemaBuilderFactory, _requestsFactory, _testData));
+  ClaimantSolicitorGaApiSteps: async ({ _claimantDefendantSolicitorGaDataBuilderFactory, _claimantDefendantSolicitorGaSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantSolicitorGaApiSteps(_claimantDefendantSolicitorGaDataBuilderFactory, _claimantDefendantSolicitorGaSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  DefendantSolicitor1GaApiSteps: async ({ _claimantDefendantSolicitorGaDataBuilderFactory, _claimantDefendantSolicitorGaSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor1GaApiSteps(_claimantDefendantSolicitorGaDataBuilderFactory, _claimantDefendantSolicitorGaSchemaBuilderFactory, _requestsFactory, _testData));
   },
   ClaimantSolicitorSpecApiSteps: async ({ _claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new ClaimantSolicitorSpecApiSteps(_claimantDefendantSolicitorDataBuilderFactory, _claimantDefendantSolicitorSchemaBuilderFactory, _requestsFactory, _testData));

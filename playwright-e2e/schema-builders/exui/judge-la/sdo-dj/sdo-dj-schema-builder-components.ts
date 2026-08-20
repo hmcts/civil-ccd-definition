@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import SdoDJType from '../../../../constants/ccd-events/sdo-dj/sdo-dj-type';
+import SdoDJType from '../../../../constants/ccd-events/ccd-events/sdo-dj/sdo-dj-type';
 
 const nonEmptyString = z.string().min(1);
 
