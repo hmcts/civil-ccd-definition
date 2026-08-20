@@ -5,9 +5,8 @@ import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data.ts';
 import RequestsFactory from '../../../requests/requests-factory';
-import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users.ts';
+import { civilAdminUser } from '../../../config/users/exui-users.ts';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events.ts';
-import respondToQueryCtscTask from '../../../constants/wa-tasks/exui/respondToQueryCtscTask';
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -26,10 +25,6 @@ export default class CaseworkerSteps extends BaseExui {
 
   async Login() {
     await super.idamActions.exuiLogin(civilAdminUser);
-  }
-
-  async LoginCTSC() {
-    await super.idamActions.exuiLogin(ctscAdminUser);
   }
 
   async CaseProceedsInCaseman() {
@@ -109,23 +104,6 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.MEDIATION_UNSUCCESSFUL,
-    );
-  }
-
-  async RespondToQuery() {
-    const { queryManagementActions } = this.caseworkerActionsFactory;
-    await super.retryWAEvent(
-      async () => {
-        await queryManagementActions.enterResponseToQuery();
-        await queryManagementActions.reviewQueryResponse();
-      },
-      async () => {
-        await queryManagementActions.confirmQueryResponse();
-      },
-      ccdEvents.QUERY_MANAGEMENT_RESPOND,
-      ctscAdminUser,
-      respondToQueryCtscTask,
-      {startWithWATaskName: true, verifySuccessEvent: false}
     );
   }
 

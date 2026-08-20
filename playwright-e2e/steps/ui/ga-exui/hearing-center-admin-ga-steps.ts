@@ -1,29 +1,29 @@
-import ClaimantSolicitorGaActionsFactory from '../../../actions/ui/ga-exui/claimant-solicitor/claimant-solcitor-ga-actions-factory';
+import HearingCenterAdminGaActionsFactory from '../../../actions/ui/ga-exui/hearing-center-admin/hearing-center-admin-ga-actions-factory';
 import GaExuiDashboardActions from '../../../actions/ui/ga-exui/common/ga-exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseGaExui from '../../../base/base-ga-exui';
-import { claimantSolicitorUser } from '../../../config/users/exui-users';
+import { hearingCenterAdminRegion1User } from '../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
-export default class ClaimantSolicitorGaSteps extends BaseGaExui {
-  private claimantSolicitorGaActionsFactory: ClaimantSolicitorGaActionsFactory;
+export default class HearingCenterAdminGaSteps extends BaseGaExui {
+  private hearingCenterAdminGaActionsFactory: HearingCenterAdminGaActionsFactory;
 
   constructor(
     gaExuiDashboardActions: GaExuiDashboardActions,
     idamActions: IdamActions,
-    claimantSolicitorGaActionsFactory: ClaimantSolicitorGaActionsFactory,
+    hearingCenterAdminGaActionsFactory: HearingCenterAdminGaActionsFactory,
     requestsFactory: RequestsFactory,
     testData: TestData,
   ) {
     super(gaExuiDashboardActions, idamActions, requestsFactory, testData);
-    this.claimantSolicitorGaActionsFactory = claimantSolicitorGaActionsFactory;
+    this.hearingCenterAdminGaActionsFactory = hearingCenterAdminGaActionsFactory;
   }
 
   async Login() {
-    await super.idamActions.exuiLogin(claimantSolicitorUser);
+    await super.idamActions.exuiLogin(hearingCenterAdminRegion1User);
   }
 
   async NavigateToGaCaseDetails() {
