@@ -1957,6 +1957,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breathingSpaceLifted",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "SmallClaimHearingInterpreter2Required",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"

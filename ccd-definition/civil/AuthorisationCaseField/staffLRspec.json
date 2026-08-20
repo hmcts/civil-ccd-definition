@@ -319,6 +319,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breathingSpaceLifted",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel3",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
