@@ -543,6 +543,24 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     );
   }
 
+  async RespondInterProceed1vLIP() {
+    const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await claimantResponseSpecActions.respondentResponseSpec();
+        await claimantResponseSpecActions.defenceDocumentSpec();
+        await claimantResponseSpecActions.dqIntermediateTrack1vLIP();
+        await claimantResponseSpecActions.statementOfTruthClaimantResponse();
+        await claimantResponseSpecActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseSpecActions.confirm();
+      },
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async RespondMultiProceed1v2SS() {
     const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(
@@ -722,7 +740,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await queryManagementActions.confirmQuery();
       },
-      ccdEvents.QUERY_MANAGEMENT_RAISE
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
     );
   }
 
@@ -737,7 +755,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await queryManagementActions.confirmQuery();
       },
-      ccdEvents.QUERY_MANAGEMENT_RAISE
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
     );
   }
 
@@ -754,5 +772,4 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       },
     );
   }
-
 }

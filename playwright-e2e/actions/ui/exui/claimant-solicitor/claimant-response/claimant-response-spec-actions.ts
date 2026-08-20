@@ -146,7 +146,6 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
 
   @Step(classKey)
   async dqSmallTrack() {
-
     const { smallClaimWitnessesPage } = this.claimantResponsePageFactory;
     await smallClaimWitnessesPage.verifyContent(this.ccdCaseData);
     await smallClaimWitnessesPage.selectYes();
@@ -200,6 +199,66 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async dqIntermediateTrack1vLIP() {
+    const { fileDirectionsQuestionairePage } = this.claimantResponsePageFactory;
+    await fileDirectionsQuestionairePage.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionairePage.enterDetails();
+    await fileDirectionsQuestionairePage.submit();
+
+    const { fixedRecoverableCostsIntermediatePage } = this.claimantResponsePageFactory;
+    await fixedRecoverableCostsIntermediatePage.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsIntermediatePage.selectYes();
+    await fixedRecoverableCostsIntermediatePage.submit();
+
+    const { disclosureOfElectronicDocumentsPage } = this.claimantResponsePageFactory;
+    await disclosureOfElectronicDocumentsPage.verifyContent(this.ccdCaseData);
+    await disclosureOfElectronicDocumentsPage.enterDetails();
+    await disclosureOfElectronicDocumentsPage.submit();
+
+    const { disclosureOfNonElectronicDocumentsSpecPage } = this.claimantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsSpecPage.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsSpecPage.submit();
+
+    const { disclosureReportPage } = this.claimantResponsePageFactory;
+    await disclosureReportPage.verifyContent(this.ccdCaseData);
+    await disclosureReportPage.enterDetails();
+    await disclosureReportPage.submit();
+
+    const { expertsPage } = this.claimantResponsePageFactory;
+    await expertsPage.verifyContent(this.ccdCaseData);
+    await expertsPage.useExperts();
+    await expertsPage.addNewExpert();
+    await expertsPage.enterExpertDetails();
+    await expertsPage.submit();
+
+    const { witnessesPage } = this.claimantResponsePageFactory;
+    await witnessesPage.verifyContent(this.ccdCaseData);
+    await witnessesPage.selectYesWitnesses();
+    await witnessesPage.addWitness();
+    await witnessesPage.enterWitnessDetails();
+    await witnessesPage.submit();
+
+    await this.language();
+
+    const { hearingFastSpecPage } = this.claimantResponsePageFactory;
+    await hearingFastSpecPage.verifyContent();
+    await hearingFastSpecPage.selectYesUnavailabilityRequired();
+    await hearingFastSpecPage.addNewUnavailableDate();
+    await hearingFastSpecPage.selectSingleDateFastTrack();
+    await hearingFastSpecPage.submit();
+
+    const { draftDirectionsPage } = this.claimantResponsePageFactory;
+    await draftDirectionsPage.verifyContent(this.ccdCaseData);
+    await draftDirectionsPage.uploadEvidence();
+    await draftDirectionsPage.submit();
+
+    await this.applicantCourtLocationLRSpec();
+    await this.hearingSupport();
+    await this.vulnerabilityQuestions();
+    await this.applicationNo();
+  }
+
+  @Step(classKey)
   async dqMultiTrack() {
     const { expertsPage } = this.claimantResponsePageFactory;
     await expertsPage.verifyContent(this.ccdCaseData);
@@ -240,6 +299,14 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
     await applicationPage.verifyContent(this.ccdCaseData);
     await applicationPage.selectYes();
     await applicationPage.enterAdditionalInformation();
+    await applicationPage.submit();
+  }
+
+  @Step(classKey)
+  async applicationNo() {
+    const { applicationPage } = this.claimantResponsePageFactory;
+    await applicationPage.verifyContent(this.ccdCaseData);
+    await applicationPage.selectNo();
     await applicationPage.submit();
   }
 
