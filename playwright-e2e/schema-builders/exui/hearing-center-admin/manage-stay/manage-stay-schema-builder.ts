@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';
 import manageStaySchemaBuilderComponents from './manage-stay-schema-builder-components';
-import ManageStayOption from '../../../../constants/ccd-events/manage-stay/manage-stay-option';
+import ManageStayOption from '../../../../constants/ccd-events/ccd-events/manage-stay/manage-stay-option';
 
 @AllMethodsStep()
 export default class ManageStaySchemaBuilder extends BaseSchemaBuilder {

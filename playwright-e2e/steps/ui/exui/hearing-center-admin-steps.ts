@@ -6,8 +6,8 @@ import {
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
-import caseFlagLocations from '../../../constants/ccd-events/case-flags/case-flag-locations';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import caseFlagLocations from '../../../constants/ccd-events/ccd-events/case-flags/case-flag-locations';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -65,18 +65,6 @@ export default class HearingCenterAdminSteps extends BaseExui {
       async () => {
         await createCaseFlagsActions.selectClaimant1();
         await createCaseFlagsActions.claimant1SpecialMeasureCaseFlag();
-      },
-      async () => {},
-      ccdEvents.CREATE_CASE_FLAGS,
-    );
-  }
-
-  async CreateClaimant1CaseFlagVulnerable() {
-    const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryCCDEvent(
-      async () => {
-        await createCaseFlagsActions.selectClaimant1();
-        await createCaseFlagsActions.claimant1VulnerableCaseFlag();
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,

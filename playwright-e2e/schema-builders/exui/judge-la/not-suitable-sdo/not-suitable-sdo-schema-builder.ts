@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../base/base-schema-builder';
-import NotSuitableSdoOption from '../../../../constants/ccd-events/non-suitable-sdo/not-suitable-sdo-option';
+import NotSuitableSdoOption from '../../../../constants/ccd-events/ccd-events/non-suitable-sdo/not-suitable-sdo-option';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';

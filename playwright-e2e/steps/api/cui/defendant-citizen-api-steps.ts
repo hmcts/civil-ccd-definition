@@ -1,6 +1,6 @@
 import BaseApi from '../../../base/base-api';
 import CaseState from '../../../constants/cases/case-state';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import cuiCCDEvents from '../../../constants/ccd-events/cui-ccd-events/cui-ccd-events';
 import ClaimantDefendantCitizenDataBuilderFactory from '../../../data-builders/cui/claimant-defendant-citizen/claimant-defendant-citizen-data-builder-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
@@ -28,14 +28,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondSmallFullDefence() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildSmallFullDefence(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildSmallFullDefence(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -47,14 +47,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondFastFullDefence() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildFastFullDefence(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildFastFullDefence(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -66,14 +66,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondInterFullDefence() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildInterFullDefence(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildInterFullDefence(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -85,14 +85,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondMultiFullDefence() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildMultiFullDefence(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildMultiFullDefence(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -104,14 +104,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondSmallFullAdmitImmediately() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildSmallFullAdmitImmediately(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildSmallFullAdmitImmediately(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -123,14 +123,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondSmallFullAdmitSetDate() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildSmallFullAdmitSetDate(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildSmallFullAdmitSetDate(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -142,14 +142,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondSmallFullAdmitRepayment() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildSmallFullAdmitRepayment(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildSmallFullAdmitRepayment(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -161,14 +161,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondFastFullAdmitImmediately() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildFastFullAdmitImmediately(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildFastFullAdmitImmediately(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -180,14 +180,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondFastFullAdmitSetDate() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildFastFullAdmitSetDate(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildFastFullAdmitSetDate(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -199,14 +199,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondFastFullAdmitRepayment() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildFastFullAdmitRepayment(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildFastFullAdmitRepayment(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -218,14 +218,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondSmallPartAdmitImmediately() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildSmallPartAdmitImmediately(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildSmallPartAdmitImmediately(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -237,14 +237,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondSmallPartAdmitSetDate() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildSmallPartAdmitSetDate(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildSmallPartAdmitSetDate(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -256,14 +256,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondSmallPartAdmitRepayment() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildSmallPartAdmitRepayment(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildSmallPartAdmitRepayment(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -275,14 +275,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondFastPartAdmitImmediately() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildFastPartAdmitImmediately(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildFastPartAdmitImmediately(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -294,14 +294,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondFastPartAdmitSetDate() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildFastPartAdmitSetDate(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildFastPartAdmitSetDate(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -313,14 +313,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RespondFastPartAdmitRepayment() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const defendantResponseDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.defendantResponseCuiDataBuilder;
+    const {defendantResponseCuiDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const defendantResponseSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.defendantResponseCuiSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.DEFENDANT_RESPONSE_CUI,
-      await defendantResponseDataBuilder.buildFastPartAdmitRepayment(),
+      cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
+      await defendantResponseCuiDataBuilder.buildFastPartAdmitRepayment(),
       CaseState.AWAITING_APPLICANT_INTENTION,
     );
     ZodHelper.safeParse(
@@ -332,14 +332,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async EvidenceUpload() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const evidenceUploadRespondentDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.evidenceUploadRespondentLipDataBuilder;
+    const {evidenceUploadRespondentLipDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const evidenceUploadRespondentSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.evidenceUploadRespondentLipSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
-      await evidenceUploadRespondentDataBuilder.build(),
+      cuiCCDEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      await evidenceUploadRespondentLipDataBuilder.build(),
       CaseState.CASE_PROGRESSION,
     );
     ZodHelper.safeParse(
@@ -351,14 +351,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async TrailReadiness() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const trialReadinessDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.trailReadinessLipDataBuilder;
+    const {trailReadinessLipDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const trialReadinessSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.trailReadinessLipSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.TRIAL_READINESS,
-      await trialReadinessDataBuilder.buildDefendant(),
+      cuiCCDEvents.TRIAL_READINESS,
+      await trailReadinessLipDataBuilder.buildDefendant(),
     );
     ZodHelper.safeParse(
       await trialReadinessSchemaBuilder.buildDefendant(caseDataBeforeSubmission),
@@ -369,14 +369,14 @@ export default class DefendantCitizenApiSteps extends BaseApi {
   async RequestForReconsideration() {
     await this.setupApiStep(this.defendantCitizenUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const requestForReconsiderationDataBuilder =
-      this.claimantDefendantCitizenDataBuilderFactory.requestForReconsiderationLipDataBuilder;
+    const {requestForReconsiderationLipDataBuilder} =
+      this.claimantDefendantCitizenDataBuilderFactory;
     const requestForReconsiderationSchemaBuilder =
       this.claimantDefendantCitizenSchemaBuilderFactory.requestForReconsiderationLipSchemaBuilder;
     await this.submitCuiEvent(
       this.defendantCitizenUser,
-      ccdEvents.REQUEST_FOR_RECONSIDERATION,
-      await requestForReconsiderationDataBuilder.buildDefendant(),
+      cuiCCDEvents.REQUEST_FOR_RECONSIDERATION,
+      await requestForReconsiderationLipDataBuilder.buildDefendant(),
       CaseState.CASE_PROGRESSION,
     );
     ZodHelper.safeParse(
@@ -392,7 +392,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     const { queryManagementRaiseLipDataBuilder } = this.claimantDefendantCitizenDataBuilderFactory;
     await super.submitQmEvent(
       this.defendantCitizenUser,
-      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      cuiCCDEvents.QUERY_MANAGEMENT_RAISE,
       await queryManagementRaiseLipDataBuilder.buildRaiseQueryDefendantLip(),
     );
 
@@ -410,7 +410,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     const { queryManagementRaiseLipDataBuilder } = this.claimantDefendantCitizenDataBuilderFactory;
     await super.submitQmEvent(
       this.defendantCitizenUser,
-      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      cuiCCDEvents.QUERY_MANAGEMENT_RAISE,
       await queryManagementRaiseLipDataBuilder.buildRaiseQueryHearingDefendantLip(),
     );
 
@@ -428,7 +428,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
     const { queryManagementRaiseLipDataBuilder } = this.claimantDefendantCitizenDataBuilderFactory;
     await super.submitQmEvent(
       this.defendantCitizenUser,
-      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      cuiCCDEvents.QUERY_MANAGEMENT_RAISE,
       await queryManagementRaiseLipDataBuilder.buildFollowQueryDefendantLip(),
     );
 

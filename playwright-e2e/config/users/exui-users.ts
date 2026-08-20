@@ -239,6 +239,7 @@ export const exuiUserDataSetupUsers = [
   defendantSolicitor1User,
   defendantSolicitor2User,
   civilAdminUser,
+  ctscAdminUser,
   judgeRegion1User,
   judgeRegion4User,
   hearingCenterAdminRegion1User,
