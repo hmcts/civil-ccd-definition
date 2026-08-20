@@ -4,6 +4,7 @@ import AddDefendantLitigationFriendDataBuilder from './add-defendant-litigation-
 import AddOrAmendClaimDocumentsDataBuilder from './add-or-amend-claim-documents/unspec/add-or-amend-claim-documents-data-builder';
 import ClaimantResponseDataBuilder from './claimant-response/unspec/claimant-response-data-builder';
 import ClaimantResponseSpecDataBuilder from './claimant-response/lr-spec/claimant-response-spec-data-builder';
+import CreateAPBAPaymentDataBuilder from '../common/create-apba-payment/create-apba-payment-data-builder.ts';
 import DefendantResponseDataBuilder from './defendant-response/unspec/defendant-response-data-builder';
 import DefendantResponseSpecDataBuilder from './defendant-response/lr-spec/defendant-response-spec-data-builder';
 import EvidenceUploadApplicantDataBuilder from './evidence-upload-applicant/evidence-upload-applicant-data-builder';
@@ -117,6 +118,10 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
 
   get createClaimSpecAfterPaymentDataBuilder() {
     return new CreateClaimSpecAfterPaymentDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get createAPBAPaymentDataBuilder() {
+    return new CreateAPBAPaymentDataBuilder(this.requestsFactory, this.testData);
   }
 
   get defaultJudgementDataBuilder() {
