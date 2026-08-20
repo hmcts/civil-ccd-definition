@@ -6,6 +6,7 @@ import CaseworkerApiSteps from '../../steps/api/exui/caseworker-api-steps';
 import ClaimantCitizenApiSteps from '../../steps/api/cui/claimant-citizen-api-steps';
 import ClaimantSolicitorGaApiSteps from '../../steps/api/ga-exui/claimant-solicitor-ga-api-steps';
 import DefendantSolicitor1GaApiSteps from '../../steps/api/ga-exui/defendant-solicitor-1-ga-api-steps';
+import HearingCenterAdminGaApiSteps from '../../steps/api/ga-exui/hearing-center-admin-ga-api-steps';
 import IdamApiSteps from '../../steps/api/idam/idam-api-steps';
 import ClaimantSolicitorApiSteps from '../../steps/api/exui/claimant-solicitor-api-steps';
 import ClaimantSolicitorSpecApiSteps from '../../steps/api/exui/claimant-solicitor-spec-api-steps';
@@ -30,6 +31,7 @@ type ApiStepsFixtures = {
   ClaimantCitizenApiSteps: ClaimantCitizenApiSteps;
   DefendantCitizenApiSteps: DefendantCitizenApiSteps;
   HearingCenterAdminApiSteps: HearingCenterAdminApiSteps;
+  HearingCenterAdminGaApiSteps: HearingCenterAdminGaApiSteps;
   JudgeGaApiSteps: JudgeGaApiSteps;
   JudgeApiSteps: JudgeApiSteps;
   ClaimantSolicitorGaApiSteps: ClaimantSolicitorGaApiSteps;
@@ -65,6 +67,9 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   },
   HearingCenterAdminApiSteps: async ({ _hearingCenterAdminDataBuilderFactory, _hearingCenterAdminSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new HearingCenterAdminApiSteps(_hearingCenterAdminDataBuilderFactory, _hearingCenterAdminSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  HearingCenterAdminGaApiSteps: async ({ _hearingCenterAdminGaDataBuilderFactory, _hearingCenterAdminGaSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
+    await use(new HearingCenterAdminGaApiSteps(_hearingCenterAdminGaDataBuilderFactory, _hearingCenterAdminGaSchemaBuilderFactory, _requestsFactory, _testData));
   },
   JudgeApiSteps: async ({ _judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new JudgeApiSteps(_judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData));

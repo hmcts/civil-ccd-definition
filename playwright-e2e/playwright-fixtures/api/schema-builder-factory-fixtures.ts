@@ -3,6 +3,7 @@ import ClaimantDefendantCitizenSchemaBuilderFactory from '../../schema-builders/
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
 import CaseworkerSchemaBuilderFactory from '../../schema-builders/exui/caseworker/caseworker-schema-builder-factory';
 import ClaimantDefendantSolicitorGaSchemaBuilderFactory from '../../schema-builders/ga-exui/claimant-defendant-solicitor/claimant-defendant-solicitor-ga-schema-builder-factory';
+import HearingCenterAdminGaSchemaBuilderFactory from '../../schema-builders/ga-exui/hearing-center-admin/hearing-center-admin-ga-schema-builder-factory';
 import HearingCenterAdminSchemaBuilderFactory from '../../schema-builders/exui/hearing-center-admin/hearing-center-admin-schema-builder-factory';
 import JudgeGaSchemaBuilderFactory from '../../schema-builders/ga-exui/judge/judge-ga-schema-builder-factory';
 import JudgeLASchemaBuilderFactory from '../../schema-builders/exui/judge-la/judge-la-schema-builder-factory';
@@ -12,6 +13,7 @@ type DataBuilderFixtures = {
   _claimantDefendantSolicitorSchemaBuilderFactory: ClaimantDefendantSolicitorSchemaBuilderFactory;
   _caseworkerSchemaBuilderFactory: CaseworkerSchemaBuilderFactory;
   _claimantDefendantSolicitorGaSchemaBuilderFactory: ClaimantDefendantSolicitorGaSchemaBuilderFactory;
+  _hearingCenterAdminGaSchemaBuilderFactory: HearingCenterAdminGaSchemaBuilderFactory;
   _hearingCenterAdminSchemaBuilderFactory: HearingCenterAdminSchemaBuilderFactory;
   _judgeGaSchemaBuilderFactory: JudgeGaSchemaBuilderFactory;
   _judgeSchemaBuilderFactory: JudgeLASchemaBuilderFactory;
@@ -29,6 +31,9 @@ export const test = base.extend<DataBuilderFixtures>({
   },
   _claimantDefendantSolicitorGaSchemaBuilderFactory: async ({ _testData }, use) => {
     await use(new ClaimantDefendantSolicitorGaSchemaBuilderFactory(_testData));
+  },
+  _hearingCenterAdminGaSchemaBuilderFactory: async ({ _testData }, use) => {
+    await use(new HearingCenterAdminGaSchemaBuilderFactory(_testData));
   },
   _hearingCenterAdminSchemaBuilderFactory: async ({ _testData }, use) => {
     await use(new HearingCenterAdminSchemaBuilderFactory(_testData));
