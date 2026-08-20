@@ -415,11 +415,10 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     const { createClaimAfterPaymentDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const paidCreateClaimAfterPaymentDTO =
-      await createClaimAfterPaymentDataBuilder.build(
-        'paid',
-        this.ccdCaseData?.id,
-      );
+    const paidCreateClaimAfterPaymentDTO = await createClaimAfterPaymentDataBuilder.build(
+      'paid',
+      this.ccdCaseData?.id,
+    );
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.updatePaymentForClaimIssue(
       claimantSolicitorUser,
@@ -433,6 +432,26 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const createClaimAfterPaymentSchema =
       await createClaimAfterPaymentSchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(createClaimAfterPaymentSchema, this.ccdCaseData);
+  }
+
+  async CreateAPBAPayment() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const { createAPBAPaymentDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const refundablePaymentBody = await createAPBAPaymentDataBuilder.build();
+    const { paymentRequests } = this.requestsFactory;
+    await paymentRequests.createAPBAPayment(
+      claimantSolicitorUser,
+      this.ccdCaseData.id!,
+      refundablePaymentBody,
+    );
+    await super.fetchAndSetCCDCaseData();
+  }
+
+  async RollbackPaymentDate() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const { paymentRequests } = this.requestsFactory;
+    await paymentRequests.rollbackPaymentDate(claimantSolicitorUser, this.ccdCaseData.id!);
+    await super.fetchAndSetCCDCaseData();
   }
 
   async MakePaymentForHearingFee() {
@@ -993,7 +1012,6 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
     );
 
-
     const { defaultJudgementSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defaultJudgementSchema =
       await defaultJudgementSchemaBuilder.build1v1(caseDataBeforeSubmission);
@@ -1018,7 +1036,6 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       await defaultJudgementSchemaBuilder.build1v2SS(caseDataBeforeSubmission);
     ZodHelper.safeParse(defaultJudgementSchema, this.ccdCaseData);
   }
-
   async CreateClaimFastOtherRemedy1v1() {
     await this.setupUserData(claimantSolicitorUser);
     const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
@@ -1085,10 +1102,11 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     const { trialReadinessSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const trialReadinessSchema = await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission);
+    const trialReadinessSchema =
+      await trialReadinessSchemaBuilder.buildClaimant(caseDataBeforeSubmission);
     ZodHelper.safeParse(trialReadinessSchema, this.ccdCaseData);
   }
-
+  
   async RaiseLRQuery() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -1141,5 +1159,35 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const queryManagementRaiseSchema =
       await queryManagementRaiseSchemaBuilder.buildFollowUpQuery(caseDataBeforeSubmission);
     ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+  }
+
+  async InitiateGeneralApplication() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+
+    const { initiateGeneralApplicationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const initiateGeneralApplicationData =
+      await initiateGeneralApplicationDataBuilder.buildCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.INITIATE_GENERAL_APPLICATION,
+      initiateGeneralApplicationData,
+    );
+
+    const { initiateGeneralApplicationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const initiateGeneralApplicationSchema =
+      await initiateGeneralApplicationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+
+    const { initiateGeneralApplicationGaSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const initiateGeneralApplicationGaSchema =
+      await initiateGeneralApplicationGaSchemaBuilder.build();
+    ZodHelper.safeParse(initiateGeneralApplicationGaSchema, super.getGaCCDCaseData());
+    
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseIdFromParentCase());
   }
 }

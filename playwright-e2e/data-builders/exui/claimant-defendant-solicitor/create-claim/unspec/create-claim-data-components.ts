@@ -26,8 +26,8 @@ const claimantCourt = {
   Court: {
     courtLocation: {
       applicantPreferredCourtLocationList: {
-        list_items: [CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default)],
-        value: CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default),
+        list_items: [CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default)],
+        value: CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default),
       },
     },
     applicant1DQRemoteHearing: {
