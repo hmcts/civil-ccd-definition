@@ -3,7 +3,7 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -75,7 +75,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     );
   }
 
-  async RespondFastFullDefence1v1() {
+  async RespondFastFullDefence() {
     const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryCCDEvent(
       async () => {
@@ -339,6 +339,45 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       { verifySuccessEvent: false },
+    );
+  }
+
+  async ReturnRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.returnToCaseworker();
+      },
+      async () => {
+        await refundActions.refundConfirmReturnedPage();
+      },
+    );
+  }
+
+  async ApproveRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.approve();
+      },
+      async () => {
+        await refundActions.refundConfirmApprovedPage();
+      },
+    );
+  }
+
+  async RejectRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.reject();
+      },
+      async () => {
+        await refundActions.refundConfirmRejectedPage();
+      },
     );
   }
 }

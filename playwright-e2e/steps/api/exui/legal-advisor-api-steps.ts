@@ -1,8 +1,8 @@
 import BaseApi from '../../../base/base-api';
 import { tribunalCaseworkerRegion1User } from '../../../config/users/exui-users';
 import CaseState from '../../../constants/cases/case-state';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import legalAdvisorSmallClaimsTrackDirectionsTask from '../../../constants/wa-tasks/legalAdvisorSmallClaimsTrackDirectionsTask';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import legalAdvisorSmallClaimsTrackDirectionsTask from '../../../constants/wa-tasks/exui/legalAdvisorSmallClaimsTrackDirectionsTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
@@ -33,7 +33,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallSumSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -54,7 +54,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallNoSumSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -75,7 +75,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallSumDRHSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -96,7 +96,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallNoSumDRHSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,

@@ -83,7 +83,6 @@ export const civilAdminUser: User = getUser({
   password: config.users.defaultPassword,
   key: UserKey.CIVIL_ADMIN,
   role: UserRole.CASEWORKER,
-  wa: true,
 });
 
 export const nbcRegion1User: User = getUser({
@@ -240,11 +239,12 @@ export const exuiUserDataSetupUsers = [
   defendantSolicitor1User,
   defendantSolicitor2User,
   civilAdminUser,
+  ctscAdminUser,
   judgeRegion1User,
   judgeRegion4User,
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion4User,
-  civilSystemUpdate
+  civilSystemUpdate,
 ];
 
 const exuiUsers = {

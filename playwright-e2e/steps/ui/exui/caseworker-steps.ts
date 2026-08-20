@@ -6,8 +6,8 @@ import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data.ts';
 import RequestsFactory from '../../../requests/requests-factory';
 import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users.ts';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import respondToQueryCtscTask from '../../../constants/wa-tasks/respondToQueryCtscTask';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events.ts';
+import respondToQueryCtscTask from '../../../constants/wa-tasks/exui/respondToQueryCtscTask';
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -125,7 +125,7 @@ export default class CaseworkerSteps extends BaseExui {
       ccdEvents.QUERY_MANAGEMENT_RESPOND,
       ctscAdminUser,
       respondToQueryCtscTask,
-      {isCCDEvent: false}
+      {startWithWATaskName: true, verifySuccessEvent: false}
     );
   }
 

@@ -27,9 +27,12 @@ export default abstract class BaseRequest {
   ): Promise<any | string | null> {
     switch (responseDataType) {
       case ResponseDataType.JSON:
-        return response.json();
+        return response.json().catch(async (error) => {
+        });
       case ResponseDataType.TEXT:
-        return response.text();
+        return response.text().catch(async (error) => {
+          
+        });
       default:
         return null;
     }
@@ -217,7 +220,7 @@ export default abstract class BaseRequest {
             `Expected status: ${expectedStatus}, actual status: ${actualStatus}, ` +
               `message: ${statusText}, url: ${url}`,
         ) as any
-      ).toBeOneOfStatuses(expectedStatus);
+      ).toBeOneOf(expectedStatus);
     } catch (error: any) {
       if (nonRetryable) {
         throw NonRetryableError.mark(error);
@@ -279,6 +282,33 @@ export default abstract class BaseRequest {
         options.message ??
           `Expected response json to have property '${keyPath.split('.').join(' => ')}'`,
       ).toHaveProperty(keyPath, value);
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
+  }
+
+  @BoxedDetailedStep(classKey, 'keyPath', 'value')
+  protected async expectResponseJsonPropertyToBe(
+    keyPath: string,
+    value: any | any[],
+    responseJson: any,
+    options: ExpectOptions = {},
+  ) {
+    try {
+      const actualValue = keyPath
+        .split('.')
+        .reduce((currentValue, property) => currentValue?.[property], responseJson);
+
+      (
+        apiExpect(
+          actualValue,
+          options.message ??
+            `Expected response json property '${keyPath.split('.').join(' => ')}' to be ${value}`,
+        ) as any
+      ).toBeOneOf(value);
     } catch (error: any) {
       if (options.nonRetryable) {
         throw NonRetryableError.mark(error);

@@ -1,5 +1,5 @@
 import preferredCourts from '../../../../config/preferred-courts';
-import SdoDJType from '../../../../constants/ccd-events/sdo-dj/sdo-dj-type';
+import SdoDJType from '../../../../constants/ccd-events/ccd-events/sdo-dj/sdo-dj-type';
 import partys from '../../../../constants/users/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import DateHelper from '../../../../helpers/date-helper';
@@ -8,7 +8,7 @@ const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
 
 const claimantDefaultCourt = () =>
-  CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default);
+  CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default);
 
 const hearingMethodInPerson = () => CaseDataHelper.setCodeToData('In Person');
 

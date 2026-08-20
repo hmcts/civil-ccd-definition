@@ -9,12 +9,12 @@ export type WATask = {
   security_classification?: string;
   created_date?: string;
   due_date?: string;
-  location_name: string;
-  location: string;
+  location_name?: string;
+  location?: string;
   location_id?: string;
   execution_type: string;
   jurisdiction: string;
-  region: string;
+  region?: string;
   case_type_id: string;
   case_category: string;
   case_name?: string;

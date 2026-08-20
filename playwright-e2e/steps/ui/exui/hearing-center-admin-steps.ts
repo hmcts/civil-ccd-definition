@@ -6,7 +6,8 @@ import {
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import caseFlagLocations from '../../../constants/ccd-events/ccd-events/case-flags/case-flag-locations';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -69,6 +70,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       ccdEvents.CREATE_CASE_FLAGS,
     );
   }
+
 
   async CreateClaimant1CaseFlag1v2DS() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;

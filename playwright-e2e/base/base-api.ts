@@ -2,7 +2,6 @@ import BaseTestData from './base-test-data';
 import RequestsFactory from '../requests/requests-factory';
 import User from '../models/users/user';
 import { bankHolidays } from '../config/data';
-import { CCDEvent } from '../models/ccd-events/ccd-events';
 import ObjectHelper from '../helpers/object-helper';
 import TestData from '../models/test-utils/test-data';
 import { civilSystemUpdate } from '../config/users/exui-users';
@@ -11,6 +10,10 @@ import DateHelper from '../helpers/date-helper';
 import WATask from '../models/wa-task';
 import CaseState from '../constants/cases/case-state';
 import CCDCaseData from '../models/ccd-case-data';
+import ccdEvents from '../constants/ccd-events/ccd-events/ccd-events';
+import CCDEvent from '../models/ccd-events/ccdEvent';
+import CaseType from '../constants/cases/case-type';
+import GaCaseState from '../constants/cases/ga-case-states';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -66,6 +69,7 @@ export default abstract class BaseApi extends BaseTestData {
     pageDataMap: Record<string, any>,
     user: User,
     ccdEventToken: string,
+    caseType?: CaseType
   ): Promise<CCDCaseData> {
     const { ccdRequests } = this.requestsFactory;
     let eventData = startEventCaseData ?? {};
@@ -83,6 +87,7 @@ export default abstract class BaseApi extends BaseTestData {
           eventData,
           ccdEventToken,
           this.ccdCaseData?.id,
+          caseType
         );
         eventData = ObjectHelper.deepSpread(eventData, pageData);
       }
@@ -117,10 +122,44 @@ export default abstract class BaseApi extends BaseTestData {
       eventData,
       eventToken,
       this.ccdCaseData?.id,
-      expectedState,
     );
-    await this.waitForFinishedBusinessProcess(eventCaseData.id);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
+
+    if(ccdEvent === ccdEvents.INITIATE_GENERAL_APPLICATION) {
+      await this.waitForGAFinishedBusinessProcess(eventCaseData.id);
+      await this.fetchAndSetCCDCaseData(eventCaseData.id);
+      await this.waitForFinishedBusinessProcess(this.getGaCCDCaseIdFromParentCase(), undefined, GaCaseState.AWAITING_APPLICATION_PAYMENT);
+      await this.fetchAndSetGaCCDCaseData(this.getGaCCDCaseIdFromParentCase());
+      console.log(`General application, caseId: ${this.getGaCCDCaseIdFromParentCase()} successfully created`)
+    } else {
+      await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    }
+  }
+
+  protected async submitGaCCDEvent(
+    user: User,
+    ccdEvent: CCDEvent,
+    eventData: Record<string, any>,
+    expectedState?: GaCaseState,
+  ) {
+    const { ccdRequests } = this.requestsFactory;
+    const { eventToken } = await ccdRequests.startEvent(
+      user,
+      ccdEvent,
+      this.getGaCCDCaseData()?.id,
+      CaseType.GA
+    );
+
+    const eventCaseData = await ccdRequests.submitEvent(
+      user,
+      ccdEvent,
+      eventData,
+      eventToken,
+      this.getGaCCDCaseData()?.id,
+      CaseType.GA
+    );
+    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
+    await this.fetchAndSetGaCCDCaseData(eventCaseData.id);
   }
 
   protected async startCCDEventError(
@@ -162,9 +201,32 @@ export default abstract class BaseApi extends BaseTestData {
       },
       eventToken,
       this.ccdCaseData?.id,
-      expectedState,
     );
-    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+  }
+
+  protected async submitQmEvent(
+    user: User,
+    ccdEvent: CCDEvent,
+    qmEventData: Record<string, any>,
+    expectedState?: CaseState,
+  ) {
+    const { ccdRequests } = this.requestsFactory;
+    const { eventToken } = await ccdRequests.startEvent(
+      user,
+      ccdEvent,
+      this.ccdCaseData?.id,
+    );
+
+    const eventCaseData = await ccdRequests.submitEvent(
+      user,
+      ccdEvent,
+      qmEventData,
+      eventToken,
+      this.ccdCaseData?.id,
+    );
+    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
   }
 
@@ -203,15 +265,14 @@ export default abstract class BaseApi extends BaseTestData {
       user,
       payload,
       this.ccdCaseData?.id ?? 'draft',
-      expectedState,
     );
 
-    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     return eventCaseData;
   }
 
-  protected async submitWAEvent(
+  protected async submitWaEvent(
     user: User,
     validTask: WATask,
     ccdEvent: CCDEvent,
@@ -223,39 +284,87 @@ export default abstract class BaseApi extends BaseTestData {
     await this.completeWATask(user, waTask.id);
   }
 
-  protected async waitForFinishedBusinessProcess(caseId?: number) {
+  protected async submitGaWaEvent(
+    user: User,
+    validTask: WATask,
+    ccdEvent: CCDEvent,
+    eventData: Record<string, any>,
+    expectedState?: GaCaseState,
+  ) {
+    const waTask = await this.retrieveAndAssignWATask(user, validTask, this.getGaCCDCaseData()?.id);
+    await this.submitGaCCDEvent(user, ccdEvent, eventData, expectedState);
+    await this.completeWATask(user, waTask.id);
+  }
+
+  protected async waitForFinishedBusinessProcess(
+    caseId?: number,
+    user?: User,
+    expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
+  ) {
     const { civilServiceRequests } = this.requestsFactory;
     await this.setupUserData(civilSystemUpdate);
     await civilServiceRequests.waitForFinishedBusinessProcess(
-      civilSystemUpdate,
+      user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
+      expectedCaseState,
     );
   }
 
-  protected async fetchAndSetCCDCaseData(caseId?: number, user?: User) {
-    const { ccdRequests } = this.requestsFactory;
-    await this.setupUserData(user ?? civilSystemUpdate);
-    super.setCCDCaseData = await ccdRequests.fetchCCDCaseData(
+  protected async waitForGAFinishedBusinessProcess(caseId?: number, user?: User) {
+    const { civilServiceRequests } = this.requestsFactory;
+    await this.setupUserData(civilSystemUpdate);
+    await civilServiceRequests.waitForGAFinishedBusinessProcess(
       user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
     );
   }
 
+  protected async fetchAndSetCCDCaseData(
+    caseId?: number,
+    user?: User,
+  ) {
+    const { ccdRequests } = this.requestsFactory;
+    await this.setupUserData(user ?? civilSystemUpdate);
+    super.setCCDCaseData = await ccdRequests.fetchCCDCaseData(
+      user ?? civilSystemUpdate,
+      caseId ?? this.ccdCaseData?.id,
+      200,
+    );
+  }
+
+  protected async fetchAndSetGaCCDCaseData(caseId?: number, user?: User) {
+    const { ccdRequests } = this.requestsFactory;
+    await this.setupUserData(user ?? civilSystemUpdate);
+    super.setGaCCDCaseData = await ccdRequests.fetchCCDCaseData(
+      user ?? civilSystemUpdate,
+      caseId ?? super.getGaCCDCaseIdFromParentCase(),
+      200,
+      CaseType.GA,
+    );
+  }
+
   protected async setDebugTestData() {
-    if (config.debugCaseId && !super.isDebugTestDataSetup && !this.ccdCaseData?.id) {
+    if (
+      (config.debugCaseId || (config.gaDebugCaseId && config.debugCaseId)) 
+      && !super.isDebugTestDataSetup 
+      && (!this.ccdCaseData?.id || (!this.ccdCaseData?.id && !super.getAllGaCCDCaseData.length))) {
+
       await this.fetchAndSetCCDCaseData(config.debugCaseId);
       super.setDebugClaimantDefendantPartyTypes();
       super.setDebugCaseFlags();
+      if((config.gaDebugCaseId && config.debugCaseId) && !super.getAllGaCCDCaseData.length) {
+        await this.fetchAndSetGaCCDCaseData(config.gaDebugCaseId)
+      }
       super.setIsDebugTestDataSetup();
     }
   }
 
-  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<WATask> {
+  protected async retrieveAndAssignWATask(user: User, validTask: WATask, caseId?: number): Promise<WATask> {
     const { workAllocationsRequests } = this.requestsFactory;
     const waTask = await workAllocationsRequests.retrieveTask(
       user,
       validTask,
-      this.ccdCaseData?.id,
+      caseId ?? this.ccdCaseData?.id,
     );
     await workAllocationsRequests.assignTask(user, waTask);
     return waTask;

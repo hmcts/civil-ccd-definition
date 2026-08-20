@@ -7,6 +7,8 @@ import ManageContactInformationDataBuilder from '../common/manage-contact-inform
 import MediationUnsuccessfulDataBuilder from './mediation-unsuccessful/mediation-unsuccessful-data-builder';
 import RecordJudgmentDataBuilder from './record-judgment/record-judgment-data-builder';
 import ReferJudgeDefenceReceivedDataBuilder from './refer-judge-defence-received/refer-judge-defence-received-data-builder';
+import QueryManagementRaiseDataBuilder from '../common/query-management-raise/query-management-raise-data-builder';
+import QueryManagementRespondDataBuilder from '../common/query-management-respond/query-management-respond-data-builder';
 import SendAndReplyDataBuilder from '../common/send-and-reply/send-and-reply-data-builder';
 import SetAsideOrderTypeDataBuilder from './set-aside-order-type/set-aside-order-type-data-builder';
 import TransferOnlineCaseDataBuilder from './transfer-online-case/transfer-online-case-data-builder';
@@ -52,6 +54,14 @@ export default class CaseworkerDataBuilderFactory extends BaseDataBuilderFactory
 
   get sendAndReplyDataBuilder() {
     return new SendAndReplyDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get queryManagementRaiseDataBuilder() {
+    return new QueryManagementRaiseDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get queryManagementRespondDataBuilder() {
+    return new QueryManagementRespondDataBuilder(this.requestsFactory, this.testData);
   }
 
   get caseProceedsInCasemanDataBuilder() {
