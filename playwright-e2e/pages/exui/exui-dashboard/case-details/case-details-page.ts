@@ -113,33 +113,73 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     );
   }
 
+  async retryClickServiceRequestTab() {
+    await super.retryClickByText(
+      tabs.serviceRequest.title,
+      () => [
+        super.expectUrlEnd('#Service%20Request', {
+          timeout: config.playwright.shortExpectTimeout,
+        }),
+      ],
+      () => super.clickByText(tabs.summary.title),
+      { retries: 3, message: 'Clicking on service request tab failed, trying again' },
+    );
+  }
+
   async requestHearing() {
-    await this.retryTabAction(links.requestHearing.label, tabs.hearings.selector, () =>
-      super.clickByText(links.requestHearing.label),
+    await this.retryTabAction(links.requestHearing.title, tabs.hearings.selector, () =>
+      super.clickByText(links.requestHearing.title),
     );
   }
 
   async viewHearingDetails() {
-    await this.retryTabAction(buttons.viewHearingDetails.label, tabs.hearings.selector, () =>
+    await this.retryTabAction(buttons.viewHearingDetails.title, tabs.hearings.selector, () =>
       super.clickBySelector(buttons.viewHearingDetails.selector),
     );
   }
 
   async cancelHearing() {
-    await this.retryTabAction(buttons.cancelHearing.label, tabs.hearings.selector, () =>
+    await this.retryTabAction(buttons.cancelHearing.title, tabs.hearings.selector, () =>
       super.clickBySelector(buttons.cancelHearing.selector),
     );
   }
 
   async askFollowUpQuestion() {
-    await this.retryTabAction(buttons.askFollowUpQuestion.selector, tabs.queries.selector, async() => {
+    await this.retryTabAction(
+      buttons.askFollowUpQuestion.selector,
+      tabs.queries.selector,
+      async () => {
         await super.clickBySelector(links.firstQueryLink.selector);
         await super.clickBySelector(buttons.askFollowUpQuestion.selector);
-      }
+      },
     );
   }
 
-  private async retryTabAction(actionName: string, tabSelector: string, action: () => Promise<void>) {
+  async clickReview() {
+      await super.expectLink(links.review.title, { ignoreDuplicates: true });
+      await super.retryAction(
+        async () => super.clickLink(links.review.title, { index: 1 }),
+        async () => super.expectButton(buttons.issueRefund.title),
+        async () => super.reload(),
+        {message: `Click action failed on '${links.review.title}' link, trying again`, retries: 1},
+      );
+    }
+  
+    async clickIssueRefund() {
+      await super.expectButton(buttons.issueRefund.title, { ignoreDuplicates: true })
+       await super.retryAction(
+        async () => super.clickButtonByName(buttons.issueRefund.title),
+        async () => super.expectNoButton(buttons.issueRefund.title),
+        undefined,
+        {message: `Click action failed on '${buttons.issueRefund.title}' button, trying again`, retries: 1},
+      );
+    }
+
+  private async retryTabAction(
+    actionName: string,
+    tabSelector: string,
+    action: () => Promise<void>,
+  ) {
     await super.retryAction(
       action,
       async () => {
@@ -240,7 +280,26 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
           timeout: config.exui.pageSubmitTimeout,
         }),
       undefined,
-      { retries: 2, message: `Starting event with url: ${ccdEvents.QUERY_MANAGEMENT_RAISE.id} failed, trying again` },
+      {
+        retries: 2,
+        message: `Starting event with url: ${ccdEvents.QUERY_MANAGEMENT_RAISE.id} failed, trying again`,
+      },
+    );
+  }
+
+  async retryGoToRefunds() {
+    console.log(`Starting event with url: REFUNDS`);
+    await super.retryGoTo(
+      `${urls.manageCase}/refunds`,
+      async () =>
+        super.expectNoSelector(tabs.summary.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        }),
+      undefined,
+      {
+        retries: 2,
+        message: `Starting event with url: REFUNDS failed, trying again`,
+      },
     );
   }
 

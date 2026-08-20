@@ -434,6 +434,26 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     ZodHelper.safeParse(createClaimAfterPaymentSchema, this.ccdCaseData);
   }
 
+  async CreateAPBAPayment() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const { createAPBAPaymentDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const refundablePaymentBody = await createAPBAPaymentDataBuilder.build();
+    const { paymentRequests } = this.requestsFactory;
+    await paymentRequests.createAPBAPayment(
+      claimantSolicitorUser,
+      this.ccdCaseData.id!,
+      refundablePaymentBody,
+    );
+    await super.fetchAndSetCCDCaseData();
+  }
+
+  async RollbackPaymentDate() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const { paymentRequests } = this.requestsFactory;
+    await paymentRequests.rollbackPaymentDate(claimantSolicitorUser, this.ccdCaseData.id!);
+    await super.fetchAndSetCCDCaseData();
+  }
+
   async MakePaymentForHearingFee() {
     await this.setupApiStep(claimantSolicitorUser);
     const { civilServiceRequests } = this.requestsFactory;

@@ -227,9 +227,8 @@ export default abstract class BaseApi extends BaseTestData {
       qmEventData,
       eventToken,
       this.ccdCaseData?.id,
-      expectedState,
     );
-    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
   }
 
