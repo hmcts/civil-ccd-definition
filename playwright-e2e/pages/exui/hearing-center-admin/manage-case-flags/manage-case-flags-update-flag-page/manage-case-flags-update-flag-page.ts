@@ -20,6 +20,10 @@ export default class ManageCaseFlagsUpdateFlagPage extends ExuiPage(BasePage) {
     await super.clickButtonByName(buttons.makeInactive.label);
   }
 
+  async updateComment(comment: string) {
+    await super.inputText(comment, inputs.flagComment.selector);
+  }
+
   async submit() {
     await super.retryClickSubmit();
   }

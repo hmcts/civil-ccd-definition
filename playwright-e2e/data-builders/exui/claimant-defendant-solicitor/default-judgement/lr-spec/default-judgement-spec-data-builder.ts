@@ -38,7 +38,7 @@ export default class DefaultJudgementSpecDataBuilder extends BaseDataBuilder {
       ...requestDefaultJudgementSpecBuilderComponents.fixedCostsOnEntry(),
       ...requestDefaultJudgementSpecBuilderComponents.paymentBreakdown(
         this.ccdCaseData.totalClaimAmount,
-        this.ccdCaseData.claimFee?.calculatedAmountInPence,
+        Number(this.ccdCaseData.claimFee?.calculatedAmountInPence),
         this.ccdCaseData.fixedCosts?.fixedCostAmount,
       ),
       ...requestDefaultJudgementSpecBuilderComponents.paymentType(djPaymentTypeSpec),

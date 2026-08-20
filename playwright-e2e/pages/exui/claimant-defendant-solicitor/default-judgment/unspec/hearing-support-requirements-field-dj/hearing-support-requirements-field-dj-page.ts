@@ -53,7 +53,7 @@ export default class HearingSupportRequirementsFieldDJPage extends ExuiPage(Base
 
   async enterDetails(claimantPartyType: ClaimantDefendantPartyType) {
     await super.selectFromDropdown(
-      preferredCourts[partys.CLAIMANT_1.key].dj,
+      preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].dj,
       dropdowns.courtLocation.selector,
     );
     const claimantData = CaseDataHelper.buildClaimantAndDefendantData(

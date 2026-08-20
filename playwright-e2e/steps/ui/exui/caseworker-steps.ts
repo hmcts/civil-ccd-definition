@@ -125,7 +125,7 @@ export default class CaseworkerSteps extends BaseExui {
       ccdEvents.QUERY_MANAGEMENT_RESPOND,
       ctscAdminUser,
       respondToQueryCtscTask,
-      {isCCDEvent: false}
+      {startWithWATaskName: true, verifySuccessEvent: false}
     );
   }
 
