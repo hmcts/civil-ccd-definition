@@ -1,8 +1,6 @@
 import BasePage from '../../../../base/base-page';
 import config from '../../../../config/config';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
-import CCDCaseData from '../../../../models/ccd-case-data';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import GaCCDCaseData from '../../../../models/ga-ccd-case-data';
 import { buttons, components, getFormattedCaseId } from './ga-exui-content';
 

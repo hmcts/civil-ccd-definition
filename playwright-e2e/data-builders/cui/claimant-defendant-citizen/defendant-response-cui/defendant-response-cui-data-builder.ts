@@ -1,7 +1,7 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import DefendantResponseSpecType from '../../../../constants/ccd-events/defendant-response-cui/defendant-response-spec-type';
-import PaymentTypeSpec from '../../../../constants/ccd-events/defendant-response-cui/payment-type-spec';
+import DefendantResponseSpecType from '../../../../constants/ccd-events/cui-ccd-events/defendant-response-cui/defendant-response-spec-type';
+import PaymentTypeSpec from '../../../../constants/ccd-events/cui-ccd-events/defendant-response-cui/payment-type-spec';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import defendantResponseCuiDataBuilderComponents from './defendant-response-cui-data-builder-components';
 

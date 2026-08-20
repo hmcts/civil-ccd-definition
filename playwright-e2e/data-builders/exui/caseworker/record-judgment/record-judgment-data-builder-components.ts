@@ -1,5 +1,5 @@
-import JoPaymentPlan from '../../../../constants/ccd-events/record-edit-judgment/jo-payment-plan';
-import JudgmentRecordReason from '../../../../constants/ccd-events/record-edit-judgment/judgment-record-reason';
+import JoPaymentPlan from '../../../../constants/ccd-events/ccd-events/record-edit-judgment/jo-payment-plan';
+import JudgmentRecordReason from '../../../../constants/ccd-events/ccd-events/record-edit-judgment/judgment-record-reason';
 import DateHelper from '../../../../helpers/date-helper';
 
 const recordJudgment = (

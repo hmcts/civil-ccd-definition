@@ -1,0 +1,10 @@
+import CCDEvent from "../ccdEvent.ts";
+
+type GaCCDEvents = {
+  INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT: CCDEvent;
+  RESPOND_TO_APPLICATION: CCDEvent;
+  MAKE_DECISION: CCDEvent;
+  RESPOND_TO_JUDGE_ADDITIONAL_INFO: CCDEvent;
+};
+
+export default GaCCDEvents;
