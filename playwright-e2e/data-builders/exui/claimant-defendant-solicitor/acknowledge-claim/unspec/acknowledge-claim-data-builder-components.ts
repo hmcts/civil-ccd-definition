@@ -1,6 +1,6 @@
 import ClaimType from '../../../../../constants/cases/claim-type';
 import CCDCaseData from '../../../../../models/ccd-case-data';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/unspec/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/defendant-response-type';
 import { Party } from '../../../../../models/users/partys';
 import partys from '../../../../../constants/users/partys';
 

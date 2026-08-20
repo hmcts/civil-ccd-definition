@@ -16,6 +16,7 @@ const config = {
   runAxeTests: process.env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS === 'true',
   unassignCases: process.env.PLAYWRIGHT_UNASSIGN_CASES === 'true',
   debugCaseId: parseInt(process.env.PLAYWRIGHT_DEBUG_CASE_ID),
+  gaDebugCaseId: parseInt(process.env.PLAYWRIGHT_GA_DEBUG_CASE_ID),
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH',
@@ -41,6 +42,10 @@ const config = {
   exui: {
     eventRetries: parseInt(process.env.PLAYWRIGHT_EXUI_RETRIES),
     pageSubmitTimeout: 45_000,
+  },
+  idam: {
+    eventRetries: parseInt(process.env.PLAYWRIGHT_IDAM_RETRIES),
+    pageSubmitTimeout: 30_000
   },
   users: {
     defaultPassword: process.env.DEFAULT_PASSWORD,

@@ -4,6 +4,7 @@ import CCDRequests from './ccd-requests';
 import CivilServiceRequests from './civil-service-requests';
 import GovUKRequests from './gov-uk-requests';
 import IdamRequests from './idam-requests';
+import PaymentRequests from './payment-requests';
 import WorkAllocationsRequests from './work-allocations-requests';
 
 export default class RequestsFactory extends BaseRequestsFactory {
@@ -29,5 +30,9 @@ export default class RequestsFactory extends BaseRequestsFactory {
 
   get caseAssignmentServiceRequests() {
     return new CaseAssignmentServiceRequests(this.requestContext);
+  }
+
+  get paymentRequests() {
+    return new PaymentRequests(this.requestContext);
   }
 }
