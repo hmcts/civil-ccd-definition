@@ -7,17 +7,17 @@ test.describe(
     test('1v1 LiP v LR defendant and claimant response', async ({
       ClaimantCitizenApiSteps,
       DefendantSolicitor1SpecApiSteps,
-      CaseworkerApiSteps
+      CtscAdminApiSteps,
     }) => {
       await ClaimantCitizenApiSteps.CreateLipClaimSmall();
       await ClaimantCitizenApiSteps.MakePaymentForClaimIssue();
       await DefendantSolicitor1SpecApiSteps.NoticeOfChangeD1();
       await DefendantSolicitor1SpecApiSteps.RaiseLRQuery();
       await ClaimantCitizenApiSteps.RaiseLipQuery();
-      await CaseworkerApiSteps.RespondToQuery();
+      await CtscAdminApiSteps.RespondToQuery();
       await ClaimantCitizenApiSteps.FollowUpOnLipQuery();
       await DefendantSolicitor1SpecApiSteps.RaiseLRQuery();
-      await CaseworkerApiSteps.RespondToQuery();
+      await CtscAdminApiSteps.RespondToQuery();
       await DefendantSolicitor1SpecApiSteps.FollowUpOnLRQuery();
     });
   },
