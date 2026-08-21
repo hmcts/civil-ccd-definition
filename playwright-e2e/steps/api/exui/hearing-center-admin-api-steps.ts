@@ -39,7 +39,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -59,7 +59,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       scheduleAHearingFastTrack,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -97,7 +97,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       scheduleAHearing,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -132,7 +132,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.STAY_CASE,
       stayCaseData,
-      CaseState.CASE_STAYED,
+      { expectedState: CaseState.CASE_STAYED },
     );
 
     const { stayCaseSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -184,7 +184,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.DISMISS_CASE,
       dismissCaseData,
-      CaseState.CASE_DISMISSED,
+      { expectedState: CaseState.CASE_DISMISSED },
     );
 
     const { dismissCaseSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
