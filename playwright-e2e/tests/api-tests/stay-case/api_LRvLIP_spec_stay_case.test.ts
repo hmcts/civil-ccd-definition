@@ -8,6 +8,7 @@ test.describe('LR v LIP spec stay case api journey', { tag: '@civil-service-nigh
     JudgeApiSteps,
     HearingCenterAdminApiSteps,
     CaseworkerApiSteps,
+    CtscAdminApiSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1vLIP();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -16,7 +17,7 @@ test.describe('LR v LIP spec stay case api journey', { tag: '@civil-service-nigh
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
     await HearingCenterAdminApiSteps.StayCase();
     await HearingCenterAdminApiSteps.ManageStayRequestUpdate();
-    await CaseworkerApiSteps.SendMessage();
+    await CtscAdminApiSteps.SendMessage();
     await JudgeApiSteps.ReplyMessage();
     await CaseworkerApiSteps.ReplyMessage();
     await HearingCenterAdminApiSteps.ManageStayLiftStay();

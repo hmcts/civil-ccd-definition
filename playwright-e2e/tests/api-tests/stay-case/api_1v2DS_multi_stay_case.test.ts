@@ -9,6 +9,7 @@ test.describe('1v2DS stay case api journey', { tag: '@civil-service-nightly' }, 
     JudgeApiSteps,
     HearingCenterAdminApiSteps,
     CaseworkerApiSteps,
+    CtscAdminApiSteps,
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimMulti1v2DS();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -21,7 +22,7 @@ test.describe('1v2DS stay case api journey', { tag: '@civil-service-nightly' }, 
     await ClaimantSolicitorApiSteps.RespondMultiProceed1v2DS();
     await HearingCenterAdminApiSteps.StayCase();
     await HearingCenterAdminApiSteps.ManageStayRequestUpdate();
-    await CaseworkerApiSteps.SendMessage();
+    await CtscAdminApiSteps.SendMessage();
     await JudgeApiSteps.ReplyMessage();
     await CaseworkerApiSteps.ReplyMessage();
     await HearingCenterAdminApiSteps.ManageStayLiftStay();
