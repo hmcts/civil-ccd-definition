@@ -1,5 +1,5 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import NotSuitableSdoOption from '../../../../constants/ccd-events/non-suitable-sdo/not-suitable-sdo-option';
+import NotSuitableSdoOption from '../../../../constants/ccd-events/ccd-events/non-suitable-sdo/not-suitable-sdo-option';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import notSuitableSdoDataBuilderComponents from './not-suitable-sdo-data-builder-components';
 

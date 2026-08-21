@@ -1,9 +1,8 @@
 import BaseApi from '../../../base/base-api';
 import {
   defendantSolicitor1User,
-  otherSolicitorUser2,
 } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import CaseRole from '../../../constants/cases/case-role';
 import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';

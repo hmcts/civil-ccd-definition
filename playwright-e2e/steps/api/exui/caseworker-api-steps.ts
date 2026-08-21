@@ -1,15 +1,13 @@
 import BaseApi from '../../../base/base-api';
-import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import { civilAdminUser } from '../../../config/users/exui-users';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import CaseState from '../../../constants/cases/case-state';
-import respondToQueryCtscTask from '../../../constants/wa-tasks/respondToQueryCtscTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import CaseworkerDataBuilderFactory from '../../../data-builders/exui/caseworker/caseworker-data-builder-factory';
 import CaseworkerSchemaBuilderFactory from '../../../schema-builders/exui/caseworker/caseworker-schema-builder-factory';
-import respondToHearingQueryCtscTask from '../../../constants/wa-tasks/respondToHearingQueryCtscTask';
 
 @AllMethodsStep()
 export default class CaseworkerApiSteps extends BaseApi {
@@ -275,23 +273,6 @@ export default class CaseworkerApiSteps extends BaseApi {
     ZodHelper.safeParse(validateDiscontinueClaimClaimantSchema, this.ccdCaseData);
   }
 
-  async SendMessage() {
-    await this.setupApiStep(ctscAdminUser);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-
-    const { sendAndReplyDataBuilder } = this.caseworkerDataBuilderFactory;
-    const sendAndReplyData = await sendAndReplyDataBuilder.buildSendDistrictJudge();
-    await super.submitCCDEvent(
-      ctscAdminUser,
-      ccdEvents.SEND_AND_REPLY,
-      sendAndReplyData,
-    );
-
-    const { sendAndReplySchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
-    ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
-  }
-
   async ReplyMessage() {
     await this.setupApiStep(civilAdminUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -307,46 +288,6 @@ export default class CaseworkerApiSteps extends BaseApi {
     const { sendAndReplySchemaBuilder } = this.caseworkerSchemaBuilderFactory;
     const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
-  }
-
-  async RespondToQuery() {
-    await this.setupApiStep(ctscAdminUser);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-
-    const { queryManagementRespondDataBuilder } = this.caseworkerDataBuilderFactory;
-    const queryManagementRespondData = await queryManagementRespondDataBuilder.buildQueryCtsc();
-    const waTask = await super.retrieveAndAssignWATask(ctscAdminUser, respondToQueryCtscTask);
-    await super.submitQmEvent(
-      ctscAdminUser,
-      ccdEvents.QUERY_MANAGEMENT_RESPOND,
-      queryManagementRespondData,
-    );
-    await super.completeWATask(ctscAdminUser, waTask.id);
-
-    const { queryManagementRespondSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const queryManagementRespondSchema =
-      await queryManagementRespondSchemaBuilder.buildQueryCtsc(caseDataBeforeSubmission);
-    ZodHelper.safeParse(queryManagementRespondSchema, this.ccdCaseData);
-  }
-
-  async RespondToHearingQuery() {
-    await this.setupApiStep(ctscAdminUser);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-
-    const { queryManagementRespondDataBuilder } = this.caseworkerDataBuilderFactory;
-    const queryManagementRespondData = await queryManagementRespondDataBuilder.buildQueryCtsc();
-    const waTask = await super.retrieveAndAssignWATask(ctscAdminUser, respondToHearingQueryCtscTask);
-    await super.submitQmEvent(
-      ctscAdminUser,
-      ccdEvents.QUERY_MANAGEMENT_RESPOND,
-      queryManagementRespondData,
-    );
-    await super.completeWATask(ctscAdminUser, waTask.id);
-
-    const { queryManagementRespondSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const queryManagementRespondSchema =
-      await queryManagementRespondSchemaBuilder.buildQueryCtsc(caseDataBeforeSubmission);
-    ZodHelper.safeParse(queryManagementRespondSchema, this.ccdCaseData);
   }
 
   async CaseProceedsInCaseman() {

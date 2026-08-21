@@ -1,4 +1,4 @@
-import ManageStayOption from '../../../../constants/ccd-events/manage-stay/manage-stay-option';
+import ManageStayOption from '../../../../constants/ccd-events/ccd-events/manage-stay/manage-stay-option';
 
 const manageStayOptions = (manageStayOption: ManageStayOption) => {
   return {

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import ConfirmOrderGivesPermission
-  from '../../../../constants/ccd-events/validate-discontinue-claim-claimant/confirm-order-gives-permission';
+  from '../../../../constants/ccd-events/ccd-events/validate-discontinue-claim-claimant/confirm-order-gives-permission';
 
 const validateDiscontinuance = (confirmOrderGivesPermission: ConfirmOrderGivesPermission) => ({
   confirmOrderGivesPermission: z.literal(confirmOrderGivesPermission),

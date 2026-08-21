@@ -1,5 +1,5 @@
 import { optional, z } from 'zod'
-import ManageStayOption from '../../../../constants/ccd-events/manage-stay/manage-stay-option';
+import ManageStayOption from '../../../../constants/ccd-events/ccd-events/manage-stay/manage-stay-option';
 
 const nonEmptyString = z.string().min(1);
 
