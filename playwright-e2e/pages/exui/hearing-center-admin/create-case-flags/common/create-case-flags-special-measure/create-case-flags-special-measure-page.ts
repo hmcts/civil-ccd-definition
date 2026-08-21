@@ -3,7 +3,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../../models/ccd-case-data';
 import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { heading, inputs } from './create-case-flags-special-measure-content';
-import SpecialMeasureFlags from '../../../../../../constants/ccd-events/case-flags/special-measure-flags';
+import SpecialMeasureFlags from '../../../../../../constants/ccd-events/ccd-events/case-flags/special-measure-flags';
 
 @AllMethodsStep()
 export default class CreateCaseFlagsSpecialMeasurePage extends ExuiPage(BasePage) {

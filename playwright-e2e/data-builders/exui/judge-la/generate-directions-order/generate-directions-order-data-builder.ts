@@ -1,6 +1,6 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import OrderType from '../../../../constants/ccd-events/generate-directions-order/order-type';
+import OrderType from '../../../../constants/ccd-events/ccd-events/generate-directions-order/order-type';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import generateDirectionsOrderDataBuilderComponents from './generate-directions-order-data-builder-components';
 

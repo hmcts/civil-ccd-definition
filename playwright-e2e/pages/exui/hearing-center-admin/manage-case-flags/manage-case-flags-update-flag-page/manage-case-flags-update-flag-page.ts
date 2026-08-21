@@ -1,6 +1,6 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import { CaseFlagDetails } from '../../../../../models/ccd-events/case-flags/case-flag';
+import { CaseFlagDetails } from '../../../../../models/ccd-events/ccd-events/case-flags/case-flag';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import { buttons, heading, inputs } from './manage-case-flags-update-flag-content';

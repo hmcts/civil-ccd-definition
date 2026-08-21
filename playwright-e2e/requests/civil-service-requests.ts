@@ -2,14 +2,15 @@ import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
 import CaseRole from '../constants/cases/case-role';
-import RespondentAgreed from '../constants/ccd-events/initiate-general-application/respondent-agreed';
-import WithNotice from '../constants/ccd-events/initiate-general-application/with-notice';
+import RespondentAgreed from '../constants/ccd-events/ccd-events/initiate-general-application/respondent-agreed';
+import WithNotice from '../constants/ccd-events/ccd-events/initiate-general-application/with-notice';
 import RequestOptions from '../models/api/request-options';
 import CCDCaseData, { ClaimFee, UploadDocumentValue } from '../models/ccd-case-data';
-import GeneralApplicationFeeRequest from '../models/ccd-events/initiate-general-application/general-application-fee-request';
-import User from '../models/users/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 import CaseState from '../constants/cases/case-state';
+import GeneralApplicationFeeRequest from '../models/ccd-events/ccd-events/initiate-general-application/general-application-fee-request';
+import User from '../models/users/user';
+import GaCaseState from '../constants/cases/ga-case-states';
 
 @AllMethodsStep()
 export default class CivilServiceRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -151,7 +152,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   async waitForFinishedBusinessProcess(
     user: User,
     caseId?: number,
-    expectedCaseState?: CaseState,
+    expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
   ) {
     console.log(`Waiting for business process to finish, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}/business-process`;
@@ -163,7 +164,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       retryTimeInterval: 3000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
-        await super.expectResponseJsonToHavePropertyValue(
+        await super.expectResponseJsonPropertyToBe(
           'businessProcess.status',
           'FINISHED',
           responseJson,
@@ -177,7 +178,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
           message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
         });
         if (expectedCaseState)
-          await super.expectResponseJsonToHavePropertyValue(
+          await super.expectResponseJsonPropertyToBe(
             'ccdState',
             expectedCaseState,
             responseJson,
@@ -233,7 +234,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     );
   }
 
-  async updatePaymentForGaClaimIsue(user: User, serviceRequestDTO: any) {
+  async updatePaymentForGaClaimIssue(user: User, serviceRequestDTO: any) {
     console.log(
       `Updating payment for general application, caseId: ${serviceRequestDTO.ccd_case_number}...`,
     );

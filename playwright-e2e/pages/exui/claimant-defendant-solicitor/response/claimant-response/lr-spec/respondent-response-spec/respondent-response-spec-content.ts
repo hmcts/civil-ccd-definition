@@ -20,3 +20,9 @@ export const radioButtons = {
     },
   },
 };
+
+export const buttons = {
+  defendantResponseForm: {
+    selector: 'button:has-text("response_sealed_form")',
+  },
+};

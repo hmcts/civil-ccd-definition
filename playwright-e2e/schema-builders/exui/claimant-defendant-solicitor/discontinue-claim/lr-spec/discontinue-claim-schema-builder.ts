@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import CourtPermissionNeeded from '../../../../../constants/ccd-events/discontinue-claim/court-permission-needed';
-import DiscontinuanceType from '../../../../../constants/ccd-events/discontinue-claim/discontinuance-type';
+import CourtPermissionNeeded from '../../../../../constants/ccd-events/ccd-events/discontinue-claim/court-permission-needed';
+import DiscontinuanceType from '../../../../../constants/ccd-events/ccd-events/discontinue-claim/discontinuance-type';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';

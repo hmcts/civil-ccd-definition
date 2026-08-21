@@ -1,4 +1,4 @@
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 
 export const tabs = {
   tasks: {
@@ -103,9 +103,6 @@ export const links = {
     title: 'Review',
   },
 };
-
-export const getWATaskEventLinkSelector = (ccdEvent: CCDEvent) =>
-  `a[href*="/trigger/${ccdEvent.id}/"]`;
 
 export const containers = {
   eventHistory: {

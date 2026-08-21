@@ -1,4 +1,4 @@
-import NotSuitableSdoOption from "../../../../constants/ccd-events/non-suitable-sdo/not-suitable-sdo-option";
+import NotSuitableSdoOption from "../../../../constants/ccd-events/ccd-events/non-suitable-sdo/not-suitable-sdo-option";
 
 const notSuitableSdo = (notSuitableSdoOption: NotSuitableSdoOption) => {
   if (notSuitableSdoOption === NotSuitableSdoOption.CHANGE_LOCATION) {

@@ -4,7 +4,7 @@ import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
 import CCDCaseData from '../../../../models/ccd-case-data';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import {
   components,
   getFormattedCaseId,
@@ -17,13 +17,12 @@ import {
   caseFlagsNoticeText,
   containers,
   dropdowns,
-  getWATaskEventLinkSelector,
   subheadings,
   links,
   successBannerText,
   tabs,
 } from './case-details-content';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events/ccd-events';
 import WATask from '../../../../models/wa-task';
 
 const classKey = 'CaseDetailsPage';
@@ -317,9 +316,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
           undefined,
           { retries: 1 },
         );
-        const waTaskEventLinkSelector = getWATaskEventLinkSelector(ccdEvent);
-        await super.expectSelector(waTaskEventLinkSelector, { count: 1 });
-        await super.clickBySelector(waTaskEventLinkSelector);
+         await super.clickLink(waTask.name);
       },
       async () => {
         await super.waitForPageToLoad();
