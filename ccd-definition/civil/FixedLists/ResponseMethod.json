@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "ResponseMethod",
+    "ListElementCode": "DIGITAL",
+    "ListElement": "Digital",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ResponseMethod",
+    "ListElementCode": "OFFLINE",
+    "ListElement": "Offline",
+    "DisplayOrder": 2
+  }
+]

@@ -581,6 +581,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1ResponseMethod",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ResponseMethod",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2ResponseMethod",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ResponseMethod",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondentSingleResponseRequiredLabel",
     "Label": "You will be required to complete a single directions questionnaire for all defendants.",
     "FieldType": "Label",
