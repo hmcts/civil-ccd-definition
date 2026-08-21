@@ -1,5 +1,5 @@
-import SetAsideOrderType from '../../../../constants/ccd-events/set-aside-judgment/set-aside-order-type';
-import SetAsideReason from '../../../../constants/ccd-events/set-aside-judgment/set-aside-reason';
+import SetAsideOrderType from '../../../../constants/ccd-events/ccd-events/set-aside-judgment/set-aside-order-type';
+import SetAsideReason from '../../../../constants/ccd-events/ccd-events/set-aside-judgment/set-aside-reason';
 import DateHelper from '../../../../helpers/date-helper';
 
 const setAsideJudgment = (setAsideReason: SetAsideReason) => {

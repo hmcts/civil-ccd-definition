@@ -4,16 +4,16 @@ import {
 } from '../../../../../config/users/exui-users';
 import preferredCourts from '../../../../../config/preferred-courts';
 import partys from '../../../../../constants/users/partys';
-import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
-import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response-spec/defence-route-spec';
+import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
 import DateHelper from '../../../../../helpers/date-helper';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { Party } from '../../../../../models/users/partys';
-import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response-spec/payment-type-spec';
-import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
+import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
 import CivilServiceRequests from '../../../../../requests/civil-service-requests';
 
 const getDefendantSolicitorUser = (defendantSolicitorParty: Party) =>

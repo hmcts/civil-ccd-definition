@@ -2,7 +2,6 @@ import BaseTestData from './base-test-data';
 import RequestsFactory from '../requests/requests-factory';
 import User from '../models/users/user';
 import { bankHolidays } from '../config/data';
-import { CCDEvent } from '../models/ccd-events/ccd-events';
 import ObjectHelper from '../helpers/object-helper';
 import TestData from '../models/test-utils/test-data';
 import { civilSystemUpdate } from '../config/users/exui-users';
@@ -11,7 +10,10 @@ import DateHelper from '../helpers/date-helper';
 import WATask from '../models/wa-task';
 import CaseState from '../constants/cases/case-state';
 import CCDCaseData from '../models/ccd-case-data';
-import ccdEvents from '../constants/ccd-events/ccd-events';
+import ccdEvents from '../constants/ccd-events/ccd-events/ccd-events';
+import CCDEvent from '../models/ccd-events/ccdEvent';
+import CaseType from '../constants/cases/case-type';
+import GaCaseState from '../constants/cases/ga-case-states';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -67,6 +69,7 @@ export default abstract class BaseApi extends BaseTestData {
     pageDataMap: Record<string, any>,
     user: User,
     ccdEventToken: string,
+    caseType?: CaseType
   ): Promise<CCDCaseData> {
     const { ccdRequests } = this.requestsFactory;
     let eventData = startEventCaseData ?? {};
@@ -84,6 +87,7 @@ export default abstract class BaseApi extends BaseTestData {
           eventData,
           ccdEventToken,
           this.ccdCaseData?.id,
+          caseType
         );
         eventData = ObjectHelper.deepSpread(eventData, pageData);
       }
@@ -124,7 +128,7 @@ export default abstract class BaseApi extends BaseTestData {
     if(ccdEvent === ccdEvents.INITIATE_GENERAL_APPLICATION) {
       await this.waitForGAFinishedBusinessProcess(eventCaseData.id);
       await this.fetchAndSetCCDCaseData(eventCaseData.id);
-      await this.waitForFinishedBusinessProcess(this.getGaCCDCaseIdFromParentCase());
+      await this.waitForFinishedBusinessProcess(this.getGaCCDCaseIdFromParentCase(), undefined, GaCaseState.AWAITING_APPLICATION_PAYMENT);
       await this.fetchAndSetGaCCDCaseData(this.getGaCCDCaseIdFromParentCase());
       console.log(`General application, caseId: ${this.getGaCCDCaseIdFromParentCase()} successfully created`)
     } else {
@@ -135,22 +139,15 @@ export default abstract class BaseApi extends BaseTestData {
   protected async submitGaCCDEvent(
     user: User,
     ccdEvent: CCDEvent,
-    pageDataMap: Record<string, any>,
-    expectedState?: CaseState,
+    eventData: Record<string, any>,
+    expectedState?: GaCaseState,
   ) {
     const { ccdRequests } = this.requestsFactory;
-    const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
+    const { eventToken } = await ccdRequests.startEvent(
       user,
       ccdEvent,
       this.getGaCCDCaseData()?.id,
-    );
-    
-    const eventData = await this.validatePages(
-      ccdEvent,
-      startEventCaseData,
-      pageDataMap,
-      user,
-      eventToken,
+      CaseType.GA
     );
 
     const eventCaseData = await ccdRequests.submitEvent(
@@ -159,6 +156,7 @@ export default abstract class BaseApi extends BaseTestData {
       eventData,
       eventToken,
       this.getGaCCDCaseData()?.id,
+      CaseType.GA
     );
     await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
     await this.fetchAndSetGaCCDCaseData(eventCaseData.id);
@@ -227,9 +225,8 @@ export default abstract class BaseApi extends BaseTestData {
       qmEventData,
       eventToken,
       this.ccdCaseData?.id,
-      expectedState,
     );
-    await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
   }
 
@@ -275,7 +272,7 @@ export default abstract class BaseApi extends BaseTestData {
     return eventCaseData;
   }
 
-  protected async submitWAEvent(
+  protected async submitWaEvent(
     user: User,
     validTask: WATask,
     ccdEvent: CCDEvent,
@@ -287,10 +284,22 @@ export default abstract class BaseApi extends BaseTestData {
     await this.completeWATask(user, waTask.id);
   }
 
+  protected async submitGaWaEvent(
+    user: User,
+    validTask: WATask,
+    ccdEvent: CCDEvent,
+    eventData: Record<string, any>,
+    expectedState?: GaCaseState,
+  ) {
+    const waTask = await this.retrieveAndAssignWATask(user, validTask, this.getGaCCDCaseData()?.id);
+    await this.submitGaCCDEvent(user, ccdEvent, eventData, expectedState);
+    await this.completeWATask(user, waTask.id);
+  }
+
   protected async waitForFinishedBusinessProcess(
     caseId?: number,
     user?: User,
-    expectedCaseState?: CaseState,
+    expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
   ) {
     const { civilServiceRequests } = this.requestsFactory;
     await this.setupUserData(civilSystemUpdate);
@@ -330,6 +339,7 @@ export default abstract class BaseApi extends BaseTestData {
       user ?? civilSystemUpdate,
       caseId ?? super.getGaCCDCaseIdFromParentCase(),
       200,
+      CaseType.GA,
     );
   }
 
@@ -349,12 +359,12 @@ export default abstract class BaseApi extends BaseTestData {
     }
   }
 
-  protected async retrieveAndAssignWATask(user: User, validTask: WATask): Promise<WATask> {
+  protected async retrieveAndAssignWATask(user: User, validTask: WATask, caseId?: number): Promise<WATask> {
     const { workAllocationsRequests } = this.requestsFactory;
     const waTask = await workAllocationsRequests.retrieveTask(
       user,
       validTask,
-      this.ccdCaseData?.id,
+      caseId ?? this.ccdCaseData?.id,
     );
     await workAllocationsRequests.assignTask(user, waTask);
     return waTask;

@@ -1,5 +1,5 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import ConfirmOrderGivesPermission from '../../../../constants/ccd-events/validate-discontinue-claim-claimant/confirm-order-gives-permission';
+import ConfirmOrderGivesPermission from '../../../../constants/ccd-events/ccd-events/validate-discontinue-claim-claimant/confirm-order-gives-permission';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import validateDiscontinueClaimClaimantDataBuilderComponents
   from './validate-discontinue-claim-claimant-data-builder-components';

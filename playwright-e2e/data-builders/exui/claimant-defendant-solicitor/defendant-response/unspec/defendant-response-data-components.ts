@@ -4,7 +4,7 @@ import {
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
 import DateHelper from '../../../../../helpers/date-helper';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';

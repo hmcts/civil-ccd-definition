@@ -5,8 +5,8 @@ import {
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
 import partys from '../../../../../constants/users/partys';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';

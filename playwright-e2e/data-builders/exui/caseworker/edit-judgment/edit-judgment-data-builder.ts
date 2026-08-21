@@ -1,6 +1,6 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import JoPaymentPlan from '../../../../constants/ccd-events/record-edit-judgment/jo-payment-plan';
-import JudgmentRecordReason from '../../../../constants/ccd-events/record-edit-judgment/judgment-record-reason';
+import JoPaymentPlan from '../../../../constants/ccd-events/ccd-events/record-edit-judgment/jo-payment-plan';
+import JudgmentRecordReason from '../../../../constants/ccd-events/ccd-events/record-edit-judgment/judgment-record-reason';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import editJudgmentDataBuilderComponents from './edit-judgment-data-builder-components';
 

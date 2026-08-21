@@ -1,5 +1,5 @@
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import ClaimantResponseCuiType from '../../../../constants/ccd-events/claimant-response-cui/claimant-response-cui-type';
+import ClaimantResponseCuiType from '../../../../constants/ccd-events/cui-ccd-events/claimant-response-cui/claimant-response-cui-type';
 import partys from '../../../../constants/users/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import DateHelper from '../../../../helpers/date-helper';

@@ -6,7 +6,7 @@ import {
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseRole from '../../../constants/cases/case-role';
 import CaseState from '../../../constants/cases/case-state';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
 import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper';
 import ZodHelper from '../../../helpers/zod-helper';
@@ -104,29 +104,6 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
       await defendantResponseSchemaBuilder.buildDS2FastFullDefence(caseDataBeforeSubmission);
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
-  }
-
-  async RespondFastFullDefence1v2DS() {
-    await this.setupApiStep(defendantSolicitor2User);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-
-    const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS2FastTrackFullDefence1v2DS();
-
-    await super.submitCCDEvent(
-      defendantSolicitor2User,
-      ccdEvents.DEFENDANT_RESPONSE,
-      defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
-    );
-
-    const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS2FastTrackFullDefence1v2DS(
-        caseDataBeforeSubmission,
-      );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 

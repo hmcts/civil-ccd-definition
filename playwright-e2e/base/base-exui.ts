@@ -2,10 +2,10 @@ import { claimantSolicitorUser } from '../config/users/exui-users';
 import ExuiDashboardActions from '../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../actions/ui/idam/idam-actions';
 import config from '../config/config';
-import ccdEvents from '../constants/ccd-events/ccd-events';
+import ccdEvents from '../constants/ccd-events/ccd-events/ccd-events';
 import { Step } from '../decorators/test-steps';
 import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
-import { CCDEvent } from '../models/ccd-events/ccd-events';
+import CCDEvent from '../models/ccd-events/ccdEvent';
 import TestData from '../models/test-utils/test-data';
 import RequestsFactory from '../requests/requests-factory';
 import BaseApi from './base-api';
@@ -80,20 +80,36 @@ export default abstract class BaseExui extends BaseApi {
     ccdEvent: CCDEvent,
     user: User,
     validTask: WATask,
-    { 
-      retries = config.exui.eventRetries, 
-      verifySuccessEvent = true, 
+    {
+      retries = config.exui.eventRetries,
+      verifySuccessEvent = true,
       camundaProcess = true,
+      startWithWATaskName = false, 
     } = {},
   ) {
     await super.setupBankHolidays();
     await super.setDebugTestData();
     const waTask = await super.retrieveAndAssignWATask(user, validTask);
-    await this.retryCCDEvent(eventActions, confirmActions, ccdEvent, {
-      retries,
-      verifySuccessEvent,
-      camundaProcess,
-    });
+    while (retries >= 0) {
+      try {
+        if(startWithWATaskName) {
+          await this.exuiDashboardActions.startWithWATaskName(ccdEvent, waTask); 
+        } else {
+          await this.exuiDashboardActions.startCCDEvent(ccdEvent);
+        }
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
+    await confirmActions();
+    if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
     await super.completeWATask(user, waTask.id);
   }
 
@@ -149,6 +165,54 @@ export default abstract class BaseExui extends BaseApi {
     await confirmActions();
     await this.exuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+  }
+
+  @Step(classKey)
+  async retryRequestRefundEvent(
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
+    { retries = config.exui.eventRetries } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    while (retries >= 0) {
+      try {
+        await this.exuiDashboardActions.goToServiceRequestTab();
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Service request failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
+    await confirmActions();
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+  }
+
+  @Step(classKey)
+  async retryRefundEvent(
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
+    { retries = config.exui.eventRetries } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    while (retries >= 0) {
+      try {
+        await this.exuiDashboardActions.startRefundsEvent();
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Refund event failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
+    await confirmActions();
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
   }
 }

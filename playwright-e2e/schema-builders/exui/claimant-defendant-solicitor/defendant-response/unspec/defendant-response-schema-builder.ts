@@ -2,7 +2,7 @@ import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';

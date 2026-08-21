@@ -1,6 +1,6 @@
 import BasePage from '../../../../base/base-page';
 import config from '../../../../config/config';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import { buttons } from './idam-content';
 
 let ccdEventstate: CCDEvent | undefined;

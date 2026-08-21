@@ -1,8 +1,8 @@
 import preferredCourts from "../../../../config/preferred-courts";
-import GaTypeLr from "../../../../constants/ccd-events/initiate-general-application/ga-type-lr";
-import GaUrgency from "../../../../constants/ccd-events/initiate-general-application/ga-urgency";
-import RespondentAgreed from "../../../../constants/ccd-events/initiate-general-application/respondent-agreed";
-import WithNotice from "../../../../constants/ccd-events/initiate-general-application/with-notice";
+import GaTypeLr from "../../../../constants/ccd-events/ccd-events/initiate-general-application/ga-type-lr";
+import GaUrgency from "../../../../constants/ccd-events/ccd-events/initiate-general-application/ga-urgency";
+import RespondentAgreed from "../../../../constants/ccd-events/ccd-events/initiate-general-application/respondent-agreed";
+import WithNotice from "../../../../constants/ccd-events/ccd-events/initiate-general-application/with-notice";
 import CaseDataHelper from "../../../../helpers/case-data-helper";
 import DateHelper from "../../../../helpers/date-helper";
 import { Party } from "../../../../models/users/partys";
@@ -61,7 +61,7 @@ const gaWithOrWithoutNoticePage = (withNotice: WithNotice, solicitorParty: Party
     GAWithOrWithoutNoticePage: {
       generalAppInformOtherParty: {
         isWithNotice: withNotice,
-        reasonsForWithoutNotice: `Without notice reason - ${solicitorParty.key}`
+        ...(withNotice === WithNotice.NO ? {reasonsForWithoutNotice: `Without notice reason - ${solicitorParty.key}`} : {})
       }
     }
   }

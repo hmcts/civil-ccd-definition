@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../base/base-schema-builder';
-import DecisionOnRequestReconsiderationOption from '../../../../constants/ccd-events/decision-on-reconsideration-request/decision-on-request-reconsideration-option';
+import DecisionOnRequestReconsiderationOption from '../../../../constants/ccd-events/ccd-events/decision-on-reconsideration-request/decision-on-request-reconsideration-option';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';
