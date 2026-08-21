@@ -165,7 +165,7 @@
     "allure-js-commons": "^3.4.2",
     "allure-playwright": "2.15.1",
     "chai": "^4.3.4",
-    "codeceptjs": "3.5.15",
+    "codeceptjs": "3.7.9",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
     "deep-equal-in-any-order": "^1.0.28",
     "dotenv": "^16.4.5",
@@ -177,7 +177,7 @@
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "lodash": "^4.17.21",
-    "mocha": "10.6.0",
+    "mocha": "10.8.2",
     "mocha-junit-reporter": "^2.0.2",
     "mocha-multi": "^1.1.7",
     "mochawesome": "^8.0.0",
@@ -195,8 +195,8 @@
     "zod": "^4.3.6"
   },
   "resolutions": {
-    "axios@npm:^0.26.0": "npm:1.13.6",
-    "axios@npm:1.6.3": "npm:1.13.6",
+    "axios@npm:^0.26.0": "npm:axios@1.19.0",
+    "axios@npm:1.6.3": "npm:axios@1.19.0",
     "minimatch": "^3.0.5",
     "js-yaml": "^5.0.0"
   },
@@ -204,7 +204,7 @@
     "playwright-ui/**/*.{ts,tsx}": "prettier --write",
     "**/*.{ts,tsx,js,mjs,cjs}": "eslint"
   },
-  "packageManager": "yarn@4.10.3",
+  "packageManager": "yarn@4.18.0",
   "engines": {
     "node": ">=24.18.0"
   },
