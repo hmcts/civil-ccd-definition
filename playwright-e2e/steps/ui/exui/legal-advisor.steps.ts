@@ -3,8 +3,8 @@ import JudgeLAActionsFactory from '../../../actions/ui/exui/judge-la/judge-la-ac
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { tribunalCaseworkerRegion1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import legalAdvisorSmallClaimsTrackDirectionsTask from '../../../constants/wa-tasks/legalAdvisorSmallClaimsTrackDirectionsTask';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import legalAdvisorSmallClaimsTrackDirectionsTask from '../../../constants/wa-tasks/exui/legalAdvisorSmallClaimsTrackDirectionsTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';

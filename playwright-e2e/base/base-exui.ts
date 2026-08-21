@@ -2,10 +2,10 @@ import { claimantSolicitorUser } from '../config/users/exui-users';
 import ExuiDashboardActions from '../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../actions/ui/idam/idam-actions';
 import config from '../config/config';
-import ccdEvents from '../constants/ccd-events/ccd-events';
+import ccdEvents from '../constants/ccd-events/ccd-events/ccd-events';
 import { Step } from '../decorators/test-steps';
 import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
-import { CCDEvent } from '../models/ccd-events/ccd-events';
+import CCDEvent from '../models/ccd-events/ccdEvent';
 import TestData from '../models/test-utils/test-data';
 import RequestsFactory from '../requests/requests-factory';
 import BaseApi from './base-api';
@@ -84,7 +84,7 @@ export default abstract class BaseExui extends BaseApi {
       retries = config.exui.eventRetries,
       verifySuccessEvent = true,
       camundaProcess = true,
-      startWithWATaskName = true, 
+      startWithWATaskName = false, 
     } = {},
   ) {
     await super.setupBankHolidays();

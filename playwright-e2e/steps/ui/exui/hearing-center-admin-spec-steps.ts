@@ -6,8 +6,8 @@ import {
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import judgmentOnlineSetAsideTakeCaseOffline from '../../../constants/wa-tasks/judgmentOnlineSetAsideTakeCaseOffline';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import judgmentOnlineSetAsideTakeCaseOffline from '../../../constants/wa-tasks/exui/judgmentOnlineSetAsideTakeCaseOffline';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';

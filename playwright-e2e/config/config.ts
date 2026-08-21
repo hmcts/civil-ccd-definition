@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv'
 import Environment from '../constants/test-utils/environment';
 import testSpeeds from '../constants/test-utils/test-speeds';
 import { TestSpeed } from '../models/test-utils/test-speeds';
+import CaseType from '../constants/cases/case-type';
 
 dotenv.config({path: '.env.tests.local'})
 
@@ -27,7 +28,8 @@ const config = {
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'CIVIL',
+    caseType: CaseType.CIVIL,
+    caseTypeGA: CaseType.GA,
   },
   playwright: {
     softExpect: process.env.PLAYWRIGHT_UI_SOFT_EXPECT === 'true',
