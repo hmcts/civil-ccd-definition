@@ -25,6 +25,12 @@ export default class InitiateGeneralApplicationSchemaBuilder extends BaseSchemaB
     }) as z.ZodObject<any>;
 
     return baseSchema.extend({
+      applicant1: (baseSchema.shape.applicant1 as z.ZodObject<any>).extend({
+        unavailableDates: z.array(z.looseObject({})).optional(),
+      }),
+      respondent1: (baseSchema.shape.respondent1 as z.ZodObject<any>).extend({
+        unavailableDates: z.array(z.looseObject({})).optional(),
+      }),
       ...initiateGeneralApplicationSchemaBuilderComponents.generalApplications,
       ...initiateGeneralApplicationSchemaBuilderComponents.claimantGaAppDetails,
       ...initiateGeneralApplicationSchemaBuilderComponents.gaDocuments,

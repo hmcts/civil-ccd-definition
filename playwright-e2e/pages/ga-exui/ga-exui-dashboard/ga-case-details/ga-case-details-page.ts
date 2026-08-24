@@ -1,12 +1,14 @@
-import { expect } from "@playwright/test";
-import BasePage from "../../../../base/base-page";
-import { AllMethodsStep } from "../../../../decorators/test-steps";
-import GaExuiPage from "../../mixin-pages/ga-exui-page/ga-exui-page";
-import GaCCDCaseData from "../../../../models/ga-ccd-case-data";
-import { tabs } from "./ga-case-details-content";
-import { TruthyParams } from "../../../../decorators/truthy-params";
-import urls from "../../../../config/urls";
-import config from "../../../../config/config";
+import { expect } from '@playwright/test';
+import BasePage from '../../../../base/base-page';
+import { AllMethodsStep } from '../../../../decorators/test-steps';
+import GaExuiPage from '../../mixin-pages/ga-exui-page/ga-exui-page';
+import GaCCDCaseData from '../../../../models/ga-ccd-case-data';
+import { tabs } from './ga-case-details-content';
+import { TruthyParams } from '../../../../decorators/truthy-params';
+import urls from '../../../../config/urls';
+import config from '../../../../config/config';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
+import { components } from '../../mixin-pages/ga-exui-page/ga-exui-content';
 
 const classKey = 'GaCaseDetailsPage';
 
@@ -38,6 +40,20 @@ export default class GaCaseDetailsPage extends GaExuiPage(BasePage) {
       undefined,
       { retries: 3, message: `Navigating to case with ccd case id: ${caseId}, trying again` },
     );
+  }
+
+  async retryChooseNextStepWithUrl(caseId: number, ccdEvent: CCDEvent) {
+    console.log(`Starting GA event with url: ${ccdEvent.id}`);
+    await super.retryGoTo(
+      `${urls.manageCase}/cases/case-details/${caseId}/trigger/${ccdEvent.id}/${ccdEvent.id}`,
+      () =>
+        super.expectSelector(components.eventTrigger.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        }),
+      undefined,
+      { retries: 2, message: `Starting GA event: ${ccdEvent.name} failed, trying again` },
+    );
+    super.setCCDEvent = ccdEvent;
   }
 
   async submit() {
