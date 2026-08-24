@@ -28,7 +28,7 @@ Scenario.skip('Default judgment Spec claim 1v2 - Set Aside after defence - Case 
   await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
 });
 
-// DTSCCI-5198 REMOVE: already skipped. Record / edit covered by integration tests.
+// DTSCCI-5198 Record / edit covered by integration tests.
 Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario);
