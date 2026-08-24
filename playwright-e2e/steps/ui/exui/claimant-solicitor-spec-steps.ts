@@ -274,7 +274,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false, expectedState: CaseState.PENDING_CASE_ISSUED, },
+      { verifySuccessEvent: false, expectedState: CaseState.PENDING_CASE_ISSUED },
     );
   }
 
@@ -564,6 +564,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false },
     );
   }
 
