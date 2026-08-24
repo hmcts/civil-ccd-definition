@@ -4,7 +4,7 @@ civil-wa:
 civil-service:
   java:
     imagePullPolicy: Always
-    image: hmctsprod.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
+    image: hmctsprod.azurecr.io/civil/service:pr-8274
     devcpuRequests: 50m
     devcpuLimits: 700m
     devmemoryRequests: 1536Mi
