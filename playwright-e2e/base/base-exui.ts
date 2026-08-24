@@ -105,11 +105,13 @@ export default abstract class BaseExui extends BaseApi {
   ) {
     await super.setupBankHolidays();
     await super.setDebugTestData();
-    const waTask = await super.retrieveAndAssignWATask(user, validTask);
+    let waTask;
+    if(config.waEnabled)
+      waTask = await super.retrieveAndAssignWATask(user, validTask);
     while (retries >= 0) {
       try {
         if(startWithWATaskName) {
-          await this.exuiDashboardActions.startWithWATaskName(ccdEvent, waTask); 
+          await this.exuiDashboardActions.startWithWATaskName(ccdEvent, waTask!); 
         } else {
           await this.exuiDashboardActions.startCCDEvent(ccdEvent);
         }
@@ -125,7 +127,8 @@ export default abstract class BaseExui extends BaseApi {
     await confirmActions();
     if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
     if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
-    await super.completeWATask(user, waTask.id);
+    if(config.waEnabled)
+      await super.completeWATask(user, waTask?.id);
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id, undefined, expectedState);
   }
 

@@ -14,6 +14,7 @@ import ccdEvents from '../constants/ccd-events/ccd-events/ccd-events';
 import CCDEvent from '../models/ccd-events/ccdEvent';
 import CaseType from '../constants/cases/case-type';
 import GaCaseState from '../constants/cases/ga-case-states';
+import StudRequestBody from '../models/wire-mock/stud-request-body';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -254,6 +255,28 @@ export default abstract class BaseApi extends BaseTestData {
     await this.fetchAndSetCCDCaseData(eventCaseData.id, undefined, expectedState);
   }
 
+  protected async submitQmWaEvent(
+    user: User,
+    validTask: WATask,
+    ccdEvent: CCDEvent,
+    qmEventData: Record<string, any>,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: CaseState[] | CaseState,
+      camundaProcess?: boolean
+    } = {},
+  ) {
+    if(config.waEnabled) {
+      const waTask = await this.retrieveAndAssignWATask(user, validTask);
+      await this.submitQmEvent(user, ccdEvent, qmEventData, {expectedState, camundaProcess});
+      await this.completeWATask(user, waTask?.id);
+    } else {
+      await this.submitQmEvent(user, ccdEvent, qmEventData, {expectedState, camundaProcess});
+    } 
+  }
+
   protected async submitNocEvent(
     newSolicitor: User,
     oldSolicitor?: User,
@@ -322,9 +345,13 @@ export default abstract class BaseApi extends BaseTestData {
       camundaProcess?: boolean
     } = {},
   ) {
-    const waTask = await this.retrieveAndAssignWATask(user, validTask);
-    await this.submitCCDEvent(user, ccdEvent, pageDataMap, {expectedState, camundaProcess});
-    await this.completeWATask(user, waTask.id);
+    if(config.waEnabled) {
+      const waTask = await this.retrieveAndAssignWATask(user, validTask);
+      await this.submitCCDEvent(user, ccdEvent, pageDataMap, {expectedState, camundaProcess});
+      await this.completeWATask(user, waTask?.id);
+    } else {
+      await this.submitCCDEvent(user, ccdEvent, pageDataMap, {expectedState, camundaProcess});
+    } 
   }
 
   protected async submitGaWaEvent(
@@ -340,9 +367,13 @@ export default abstract class BaseApi extends BaseTestData {
       camundaProcess?: boolean
     } = {},
   ) {
-    const waTask = await this.retrieveAndAssignWATask(user, validTask, this.getGaCCDCaseData()?.id);
-    await this.submitGaCCDEvent(user, ccdEvent, eventData, {expectedState, camundaProcess});
-    await this.completeWATask(user, waTask.id);
+    if(config.waEnabled) {
+      const waTask = await this.retrieveAndAssignWATask(user, validTask, this.getGaCCDCaseData()?.id);
+      await this.submitGaCCDEvent(user, ccdEvent, eventData, {expectedState, camundaProcess});
+      await this.completeWATask(user, waTask.id);
+    } else {
+      await this.submitGaCCDEvent(user, ccdEvent, eventData, {expectedState, camundaProcess});
+    }
   }
 
   protected async waitForFinishedBusinessProcess(
@@ -428,5 +459,29 @@ export default abstract class BaseApi extends BaseTestData {
   protected async completeWATask(user: User, waTaskId?: string) {
     const { workAllocationsRequests } = this.requestsFactory;
     await workAllocationsRequests.completeTask(user, waTaskId);
+  }
+
+  protected async createUpdateStud(studRequestBodys: StudRequestBody[] | StudRequestBody) {
+    if(!Array.isArray(studRequestBodys))
+      studRequestBodys = [studRequestBodys];
+    const {wiremockRequests} = this.requestsFactory;
+
+    const existingStuds = await wiremockRequests.getStubs();
+    for (const studRequestBody of studRequestBodys) {
+      const existingStud = existingStuds.find((stud) =>
+        stud.request.method === studRequestBody.request.method &&
+        this.getStubUrl(stud) === this.getStubUrl(studRequestBody),
+      );
+
+      if (existingStud && existingStud.id) {
+        await wiremockRequests.updateStubById(existingStud.id, studRequestBody);
+      } else {
+        await wiremockRequests.createStub(studRequestBody);
+      }
+    }
+  }
+
+  private getStubUrl(stub: Record<string, any>) {
+    return stub.request.url || stub.request.urlPath || stub.request.urlPathPattern;
   }
 }

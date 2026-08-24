@@ -35,6 +35,7 @@ declare global {
       PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP: string;
       PLAYWRIGHT_RUN_DATA_SETUP: string
       PLAYWRIGHT_UNASSIGN_CASES: string;
+      PLAYWRIGHT_WA_ENABLED: string
       PLAYWRIGHT_TEST_SPEED: string;
       PLAYWRIGHT_RETRIES: string;
       PLAYWRIGHT_EXUI_RETRIES: string;

@@ -300,6 +300,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       caseProceedsInCasemanData,
+      {expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM}
     );
 
     const { caseProceedsInCasemanSchemaBuilder } = this.caseworkerSchemaBuilderFactory;

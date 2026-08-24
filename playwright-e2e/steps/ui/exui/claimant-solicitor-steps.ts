@@ -4,6 +4,7 @@ import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { claimantSolicitorUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -52,7 +53,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -124,7 +128,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -148,7 +155,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -173,7 +183,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -198,7 +211,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -223,7 +239,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -248,7 +267,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -273,7 +295,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -323,7 +348,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -348,7 +376,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -373,7 +404,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -389,7 +423,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_CASE_DETAILS_NOTIFICATION,
+      },
     );
   }
 
@@ -439,7 +476,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_CASE_DETAILS_NOTIFICATION,
+      },
     );
   }
 
@@ -472,7 +512,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -523,7 +566,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -559,7 +605,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CLAIMANT_RESPONSE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.JUDICIAL_REFERRAL,
+      },
     );
   }
 
@@ -578,7 +627,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CLAIMANT_RESPONSE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.JUDICIAL_REFERRAL,
+      },
     );
   }
 
@@ -692,7 +744,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CLAIMANT_RESPONSE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.JUDICIAL_REFERRAL,
+      },
     );
   }
 
@@ -711,7 +766,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.CLAIMANT_RESPONSE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.JUDICIAL_REFERRAL,
+      },
     );
   }
 
@@ -785,7 +843,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await evidenceUploadApplicantActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
