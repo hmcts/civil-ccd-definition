@@ -36,7 +36,7 @@ export default class DefendantSolicitor1GaApiSteps extends BaseApi {
       defendantSolicitor1User,
       gaCCDEvents.RESPOND_TO_APPLICATION,
       respondToApplicationEventData,
-      GaCaseState.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION
+      { expectedState: GaCaseState.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION },
     );
 
     const { respondToApplicationSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;
@@ -57,7 +57,7 @@ export default class DefendantSolicitor1GaApiSteps extends BaseApi {
       defendantSolicitor1User,
       gaCCDEvents.RESPOND_TO_JUDGE_ADDITIONAL_INFO,
       respondToJudgeAdditionalInfoEventData,
-      GaCaseState.AWAITING_ADDITIONAL_INFORMATION,
+      { expectedState: GaCaseState.AWAITING_ADDITIONAL_INFORMATION },
     );
 
     const { respondToJudgeAdditionalInfoSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;

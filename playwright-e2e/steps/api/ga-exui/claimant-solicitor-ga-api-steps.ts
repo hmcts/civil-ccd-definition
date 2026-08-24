@@ -37,8 +37,15 @@ export default class ClaimantSolicitorGaApiSteps extends BaseApi {
       claimantSolicitorUser,
       initiateGeneralApplicationAfterPaymentDTO,
     );
-    await super.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id, undefined, [GaCaseState.AWAITING_RESPONDENT_RESPONSE, GaCaseState.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION]);
-    await super.fetchAndSetGaCCDCaseData(this.getGaCCDCaseData()?.id);
+    await super.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id);
+    await super.fetchAndSetGaCCDCaseData(
+      this.getGaCCDCaseData()?.id,
+      undefined,
+      [
+        GaCaseState.AWAITING_RESPONDENT_RESPONSE,
+        GaCaseState.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION,
+      ],
+    );
 
     const { initiateGeneralApplicationAfterPaymentSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;
     const initiateGeneralApplicationAfterPaymentSchema =
@@ -58,7 +65,7 @@ export default class ClaimantSolicitorGaApiSteps extends BaseApi {
       claimantSolicitorUser,
       gaCCDEvents.RESPOND_TO_APPLICATION,
       respondToApplicationEventData,
-      GaCaseState.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION
+      { expectedState: GaCaseState.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION },
     );
 
     const { respondToApplicationSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;
