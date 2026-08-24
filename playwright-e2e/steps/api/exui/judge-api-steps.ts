@@ -47,7 +47,7 @@ export default class JudgeApiSteps extends BaseApi {
       fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -67,7 +67,7 @@ export default class JudgeApiSteps extends BaseApi {
       nihlFastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -87,7 +87,7 @@ export default class JudgeApiSteps extends BaseApi {
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -107,7 +107,7 @@ export default class JudgeApiSteps extends BaseApi {
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -128,7 +128,7 @@ export default class JudgeApiSteps extends BaseApi {
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -149,7 +149,7 @@ export default class JudgeApiSteps extends BaseApi {
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -170,7 +170,7 @@ export default class JudgeApiSteps extends BaseApi {
       fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -190,7 +190,7 @@ export default class JudgeApiSteps extends BaseApi {
       nihlFastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -211,7 +211,7 @@ export default class JudgeApiSteps extends BaseApi {
       summaryJudgmentDirectionsTask,
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       sdoDJData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { sdoDJSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -231,7 +231,7 @@ export default class JudgeApiSteps extends BaseApi {
       summaryJudgmentDirectionsTask,
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       sdoDJData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { sdoDJSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -289,7 +289,7 @@ export default class JudgeApiSteps extends BaseApi {
       intermediateTrackDirectionsTask,
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       generateDirectionsOrderData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { generateDirectionsOrderSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -309,7 +309,7 @@ export default class JudgeApiSteps extends BaseApi {
       multiTrackDirectionsTask,
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       generateDirectionsOrderData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { generateDirectionsOrderSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -358,7 +358,7 @@ export default class JudgeApiSteps extends BaseApi {
       decisionOnReconsiderationRequestTask,
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       decisionOnReconsiderationRequestData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { decisionOnReconsiderationRequestSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -381,7 +381,7 @@ export default class JudgeApiSteps extends BaseApi {
       decisionOnReconsiderationRequestTask,
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       decisionOnReconsiderationRequestData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { decisionOnReconsiderationRequestSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -404,7 +404,7 @@ export default class JudgeApiSteps extends BaseApi {
       decisionOnReconsiderationRequestTask,
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       decisionOnReconsiderationRequestData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { decisionOnReconsiderationRequestSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -440,7 +440,7 @@ export default class JudgeApiSteps extends BaseApi {
       initialDirectionsFlightDelayTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -460,7 +460,7 @@ export default class JudgeApiSteps extends BaseApi {
       initialDirectionsOtherFlightDelayTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;

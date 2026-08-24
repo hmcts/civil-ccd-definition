@@ -14,6 +14,7 @@ import ccdEvents from '../constants/ccd-events/ccd-events/ccd-events';
 import CCDEvent from '../models/ccd-events/ccdEvent';
 import CaseType from '../constants/cases/case-type';
 import GaCaseState from '../constants/cases/ga-case-states';
+import StudRequestBody from '../models/wire-mock/stud-request-body';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -99,7 +100,13 @@ export default abstract class BaseApi extends BaseTestData {
     user: User,
     ccdEvent: CCDEvent,
     pageDataMap: Record<string, any>,
-    expectedState?: CaseState,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: CaseState[] | CaseState,
+      camundaProcess?: boolean
+    } = {},
   ) {
     const { ccdRequests } = this.requestsFactory;
     const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
@@ -123,16 +130,16 @@ export default abstract class BaseApi extends BaseTestData {
       eventToken,
       this.ccdCaseData?.id,
     );
-    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
+    await this.waitForFinishedBusinessProcess(eventCaseData.id);
 
     if(ccdEvent === ccdEvents.INITIATE_GENERAL_APPLICATION) {
-      await this.waitForGAFinishedBusinessProcess(eventCaseData.id);
+      if(camundaProcess) await this.waitForGAFinishedBusinessProcess(eventCaseData.id);
       await this.fetchAndSetCCDCaseData(eventCaseData.id);
-      await this.waitForFinishedBusinessProcess(this.getGaCCDCaseIdFromParentCase(), undefined, GaCaseState.AWAITING_APPLICATION_PAYMENT);
-      await this.fetchAndSetGaCCDCaseData(this.getGaCCDCaseIdFromParentCase());
+      if(camundaProcess) await this.waitForFinishedBusinessProcess(this.getGaCCDCaseIdFromParentCase());
+      await this.fetchAndSetGaCCDCaseData(this.getGaCCDCaseIdFromParentCase(), undefined, GaCaseState.AWAITING_APPLICATION_PAYMENT);
       console.log(`General application, caseId: ${this.getGaCCDCaseIdFromParentCase()} successfully created`)
     } else {
-      await this.fetchAndSetCCDCaseData(eventCaseData.id);
+      await this.fetchAndSetCCDCaseData(eventCaseData.id, undefined, expectedState);
     }
   }
 
@@ -140,7 +147,13 @@ export default abstract class BaseApi extends BaseTestData {
     user: User,
     ccdEvent: CCDEvent,
     eventData: Record<string, any>,
-    expectedState?: GaCaseState,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: GaCaseState[] | GaCaseState,
+      camundaProcess?: boolean
+    } = {},
   ) {
     const { ccdRequests } = this.requestsFactory;
     const { eventToken } = await ccdRequests.startEvent(
@@ -158,8 +171,8 @@ export default abstract class BaseApi extends BaseTestData {
       this.getGaCCDCaseData()?.id,
       CaseType.GA
     );
-    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
-    await this.fetchAndSetGaCCDCaseData(eventCaseData.id);
+    if(camundaProcess) await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetGaCCDCaseData(eventCaseData.id, undefined, expectedState);
   }
 
   protected async startCCDEventError(
@@ -179,7 +192,13 @@ export default abstract class BaseApi extends BaseTestData {
     user: User,
     ccdEvent: CCDEvent,
     caseFlagData: (caseFlagLocationData?: any) => Partial<CCDCaseData>,
-    expectedState?: CaseState,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: CaseState[] | CaseState,
+      camundaProcess?: boolean
+    } = {},
   ) {
     const { ccdRequests } = this.requestsFactory;
     const { eventToken, startEventCaseData } = await ccdRequests.startEvent(
@@ -202,15 +221,21 @@ export default abstract class BaseApi extends BaseTestData {
       eventToken,
       this.ccdCaseData?.id,
     );
-    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    if(camundaProcess) await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id, undefined, expectedState);
   }
 
   protected async submitQmEvent(
     user: User,
     ccdEvent: CCDEvent,
     qmEventData: Record<string, any>,
-    expectedState?: CaseState,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: CaseState[] | CaseState,
+      camundaProcess?: boolean
+    } = {},
   ) {
     const { ccdRequests } = this.requestsFactory;
     const { eventToken } = await ccdRequests.startEvent(
@@ -226,14 +251,43 @@ export default abstract class BaseApi extends BaseTestData {
       eventToken,
       this.ccdCaseData?.id,
     );
-    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    if(camundaProcess) await this.waitForFinishedBusinessProcess(eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id, undefined, expectedState);
+  }
+
+  protected async submitQmWaEvent(
+    user: User,
+    validTask: WATask,
+    ccdEvent: CCDEvent,
+    qmEventData: Record<string, any>,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: CaseState[] | CaseState,
+      camundaProcess?: boolean
+    } = {},
+  ) {
+    if(config.waEnabled) {
+      const waTask = await this.retrieveAndAssignWATask(user, validTask);
+      await this.submitQmEvent(user, ccdEvent, qmEventData, {expectedState, camundaProcess});
+      await this.completeWATask(user, waTask?.id);
+    } else {
+      await this.submitQmEvent(user, ccdEvent, qmEventData, {expectedState, camundaProcess});
+    } 
   }
 
   protected async submitNocEvent(
     newSolicitor: User,
     oldSolicitor?: User,
     nocData?: { question_id: string, value: string }[],
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: CaseState[] | CaseState,
+      camundaProcess?: boolean
+    } = {},
   ) {
     const caseId = this.ccdCaseData?.id!;
 
@@ -241,19 +295,25 @@ export default abstract class BaseApi extends BaseTestData {
     await caseAssignmentServiceRequests.validateNocAnswers(caseId, nocData!, newSolicitor);
     await caseAssignmentServiceRequests.submitNocRequest(caseId, nocData!, newSolicitor);
 
-    await this.waitForFinishedBusinessProcess(caseId);
+    if(camundaProcess) await this.waitForFinishedBusinessProcess(caseId);
     
     if (oldSolicitor)
       await ccdRequests.fetchCCDCaseData(oldSolicitor, caseId, 404);
     await ccdRequests.fetchCCDCaseData(newSolicitor, caseId);
-    await this.fetchAndSetCCDCaseData(caseId);
+    await this.fetchAndSetCCDCaseData(caseId, undefined, expectedState);
   }
 
   protected async submitCuiEvent(
     user: User,
     ccdEvent: CCDEvent,
     caseDataUpdate: CCDCaseData,
-    expectedState?: CaseState,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: CaseState[] | CaseState,
+      camundaProcess?: boolean
+    } = {},
   ): Promise<CCDCaseData> {
     const { civilServiceRequests } = this.requestsFactory;
     const payload = {
@@ -267,8 +327,8 @@ export default abstract class BaseApi extends BaseTestData {
       this.ccdCaseData?.id ?? 'draft',
     );
 
-    await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined, expectedState);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
+    if(camundaProcess) await this.waitForFinishedBusinessProcess(eventCaseData.id, undefined);
+    await this.fetchAndSetCCDCaseData(eventCaseData.id, undefined, expectedState);
     return eventCaseData;
   }
 
@@ -277,11 +337,21 @@ export default abstract class BaseApi extends BaseTestData {
     validTask: WATask,
     ccdEvent: CCDEvent,
     pageDataMap: Record<string, any>,
-    expectedState?: CaseState,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: CaseState[] | CaseState,
+      camundaProcess?: boolean
+    } = {},
   ) {
-    const waTask = await this.retrieveAndAssignWATask(user, validTask);
-    await this.submitCCDEvent(user, ccdEvent, pageDataMap, expectedState);
-    await this.completeWATask(user, waTask.id);
+    if(config.waEnabled) {
+      const waTask = await this.retrieveAndAssignWATask(user, validTask);
+      await this.submitCCDEvent(user, ccdEvent, pageDataMap, {expectedState, camundaProcess});
+      await this.completeWATask(user, waTask?.id);
+    } else {
+      await this.submitCCDEvent(user, ccdEvent, pageDataMap, {expectedState, camundaProcess});
+    } 
   }
 
   protected async submitGaWaEvent(
@@ -289,24 +359,32 @@ export default abstract class BaseApi extends BaseTestData {
     validTask: WATask,
     ccdEvent: CCDEvent,
     eventData: Record<string, any>,
-    expectedState?: GaCaseState,
+    {
+      expectedState,
+      camundaProcess = true, 
+    }: {
+      expectedState?: GaCaseState[] | GaCaseState,
+      camundaProcess?: boolean
+    } = {},
   ) {
-    const waTask = await this.retrieveAndAssignWATask(user, validTask, this.getGaCCDCaseData()?.id);
-    await this.submitGaCCDEvent(user, ccdEvent, eventData, expectedState);
-    await this.completeWATask(user, waTask.id);
+    if(config.waEnabled) {
+      const waTask = await this.retrieveAndAssignWATask(user, validTask, this.getGaCCDCaseData()?.id);
+      await this.submitGaCCDEvent(user, ccdEvent, eventData, {expectedState, camundaProcess});
+      await this.completeWATask(user, waTask.id);
+    } else {
+      await this.submitGaCCDEvent(user, ccdEvent, eventData, {expectedState, camundaProcess});
+    }
   }
 
   protected async waitForFinishedBusinessProcess(
     caseId?: number,
     user?: User,
-    expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
   ) {
     const { civilServiceRequests } = this.requestsFactory;
     await this.setupUserData(civilSystemUpdate);
     await civilServiceRequests.waitForFinishedBusinessProcess(
       user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
-      expectedCaseState,
     );
   }
 
@@ -322,6 +400,7 @@ export default abstract class BaseApi extends BaseTestData {
   protected async fetchAndSetCCDCaseData(
     caseId?: number,
     user?: User,
+    expectedCaseState?: CaseState[] | CaseState,
   ) {
     const { ccdRequests } = this.requestsFactory;
     await this.setupUserData(user ?? civilSystemUpdate);
@@ -329,10 +408,16 @@ export default abstract class BaseApi extends BaseTestData {
       user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
       200,
+      CaseType.CIVIL,
+      expectedCaseState
     );
   }
 
-  protected async fetchAndSetGaCCDCaseData(caseId?: number, user?: User) {
+  protected async fetchAndSetGaCCDCaseData(
+    caseId?: number, 
+    user?: User, 
+    expectedCaseState?: GaCaseState[] | GaCaseState,
+  ) {
     const { ccdRequests } = this.requestsFactory;
     await this.setupUserData(user ?? civilSystemUpdate);
     super.setGaCCDCaseData = await ccdRequests.fetchCCDCaseData(
@@ -340,6 +425,7 @@ export default abstract class BaseApi extends BaseTestData {
       caseId ?? super.getGaCCDCaseIdFromParentCase(),
       200,
       CaseType.GA,
+      expectedCaseState
     );
   }
 
@@ -373,5 +459,29 @@ export default abstract class BaseApi extends BaseTestData {
   protected async completeWATask(user: User, waTaskId?: string) {
     const { workAllocationsRequests } = this.requestsFactory;
     await workAllocationsRequests.completeTask(user, waTaskId);
+  }
+
+  protected async createUpdateStud(studRequestBodys: StudRequestBody[] | StudRequestBody) {
+    if(!Array.isArray(studRequestBodys))
+      studRequestBodys = [studRequestBodys];
+    const {wiremockRequests} = this.requestsFactory;
+
+    const existingStuds = await wiremockRequests.getStubs();
+    for (const studRequestBody of studRequestBodys) {
+      const existingStud = existingStuds.find((stud) =>
+        stud.request.method === studRequestBody.request.method &&
+        this.getStubUrl(stud) === this.getStubUrl(studRequestBody),
+      );
+
+      if (existingStud && existingStud.id) {
+        await wiremockRequests.updateStubById(existingStud.id, studRequestBody);
+      } else {
+        await wiremockRequests.createStub(studRequestBody);
+      }
+    }
+  }
+
+  private getStubUrl(stub: Record<string, any>) {
+    return stub.request.url || stub.request.urlPath || stub.request.urlPathPattern;
   }
 }
