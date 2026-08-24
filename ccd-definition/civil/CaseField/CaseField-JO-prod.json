@@ -383,7 +383,7 @@
     "Label": " ",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
