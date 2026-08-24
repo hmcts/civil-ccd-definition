@@ -18,6 +18,7 @@ const config = {
   unassignCases: process.env.PLAYWRIGHT_UNASSIGN_CASES === 'true',
   debugCaseId: parseInt(process.env.PLAYWRIGHT_DEBUG_CASE_ID),
   gaDebugCaseId: parseInt(process.env.PLAYWRIGHT_GA_DEBUG_CASE_ID),
+  waEnabled: process.env.PLAYWRIGHT_WA_ENABLED === 'true',
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH',

@@ -4,6 +4,7 @@ import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { tribunalCaseworkerRegion1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import legalAdvisorSmallClaimsTrackDirectionsTask from '../../../constants/wa-tasks/exui/legalAdvisorSmallClaimsTrackDirectionsTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
@@ -44,7 +45,10 @@ export default class LegalAdvisorSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
-      { verifySuccessEvent: false }
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      }
     );
   }
 
@@ -64,7 +68,10 @@ export default class LegalAdvisorSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
-      { verifySuccessEvent: false }
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      }
     );
   }
 

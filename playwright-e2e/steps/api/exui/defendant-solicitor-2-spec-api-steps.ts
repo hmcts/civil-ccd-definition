@@ -53,7 +53,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -76,7 +76,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -101,7 +101,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -126,7 +126,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -150,7 +150,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       evidenceUploadRespondentData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadRespondentSchemaBuilder } =
@@ -199,7 +199,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.REQUEST_FOR_RECONSIDERATION,
       requestForReconsiderationData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { requestForReconsiderationSchemaBuilder } =

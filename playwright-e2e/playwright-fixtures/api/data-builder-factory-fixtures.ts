@@ -10,6 +10,10 @@ import HearingCenterAdminDataBuilderFactory from '../../data-builders/exui/heari
 import JudgeGaDataBuilderFactory from '../../data-builders/ga-exui/judge/judge-ga-data-builder-factory';
 import JudgeLADataBuilderFactory from '../../data-builders/exui/judge-la/judge-la-data-builder-factory';
 import { mergeTests } from '@playwright/test';
+import WireMockStudsDataBuilder from '../../data-builders/wire-mock-studs/wire-mock-studs-data-builder';
+import ListedHearingDataBuilder from '../../data-builders/hearings/listed-hearing/unspec/listed-hearing-data-builder';
+import ListedHearingSpecDataBuilder from '../../data-builders/hearings/listed-hearing/lr-spec/listed-hearing-spec-data-builder';
+import GetPartiesNotifiedResponsesDataBuilder from '../../data-builders/hearings/get-parties-notified-responses/get-parties-notified-responses-data-builder';
 
 type DataBuilderFixtures = {
   _claimantDefendantCitizenDataBuilderFactory: ClaimantDefendantCitizenDataBuilderFactory;
@@ -21,6 +25,10 @@ type DataBuilderFixtures = {
   _hearingCenterAdminDataBuilderFactory: HearingCenterAdminDataBuilderFactory;
   _judgeGaDataBuilderFactory: JudgeGaDataBuilderFactory;
   _judgeDataBuilderFactory: JudgeLADataBuilderFactory;
+  _wireMockStudsDataBuilder: WireMockStudsDataBuilder,
+  _listedHearingDataBuilder: ListedHearingDataBuilder,
+  _listedHearingSpecDataBuilder: ListedHearingSpecDataBuilder,
+  _getPartiesNotifiedResponsesDataBuilder: GetPartiesNotifiedResponsesDataBuilder,
 };
 
 export const test = mergeTests(testUtils, requestFactories).extend<DataBuilderFixtures>({
@@ -50,5 +58,17 @@ export const test = mergeTests(testUtils, requestFactories).extend<DataBuilderFi
   },
   _judgeDataBuilderFactory: async ({ _requestsFactory, _testData }, use) => {
     await use(new JudgeLADataBuilderFactory(_requestsFactory, _testData));
+  },
+  _wireMockStudsDataBuilder: async ({ _requestsFactory, _testData }, use) => {
+    await use(new WireMockStudsDataBuilder(_requestsFactory, _testData));
+  },
+  _listedHearingDataBuilder: async ({ _requestsFactory, _testData }, use) => {
+    await use(new ListedHearingDataBuilder(_requestsFactory, _testData));
+  },
+  _listedHearingSpecDataBuilder: async ({ _requestsFactory, _testData }, use) => {
+    await use(new ListedHearingSpecDataBuilder(_requestsFactory, _testData));
+  },
+  _getPartiesNotifiedResponsesDataBuilder: async ({ _requestsFactory, _testData }, use) => {
+    await use(new GetPartiesNotifiedResponsesDataBuilder(_requestsFactory, _testData));
   },
 });

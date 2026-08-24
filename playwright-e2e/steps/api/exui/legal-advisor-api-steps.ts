@@ -38,7 +38,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
       legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -59,7 +59,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
       legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -80,7 +80,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
       legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -101,7 +101,7 @@ export default class LegalAdvisorApiSteps extends BaseApi {
       legalAdvisorSmallClaimsTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
