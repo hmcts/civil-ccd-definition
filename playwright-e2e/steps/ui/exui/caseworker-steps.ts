@@ -5,9 +5,9 @@ import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data.ts';
 import RequestsFactory from '../../../requests/requests-factory';
-import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users.ts';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import respondToQueryCtscTask from '../../../constants/wa-tasks/respondToQueryCtscTask';
+import { civilAdminUser } from '../../../config/users/exui-users.ts';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events.ts';
+import CaseState from '../../../constants/cases/case-state';
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -28,10 +28,6 @@ export default class CaseworkerSteps extends BaseExui {
     await super.idamActions.exuiLogin(civilAdminUser);
   }
 
-  async LoginCTSC() {
-    await super.idamActions.exuiLogin(ctscAdminUser);
-  }
-
   async CaseProceedsInCaseman() {
     const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
     await super.retryCCDEvent(
@@ -40,7 +36,7 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
@@ -52,7 +48,7 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
@@ -109,23 +105,7 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.MEDIATION_UNSUCCESSFUL,
-    );
-  }
-
-  async RespondToQuery() {
-    const { queryManagementActions } = this.caseworkerActionsFactory;
-    await super.retryWAEvent(
-      async () => {
-        await queryManagementActions.enterResponseToQuery();
-        await queryManagementActions.reviewQueryResponse();
-      },
-      async () => {
-        await queryManagementActions.confirmQueryResponse();
-      },
-      ccdEvents.QUERY_MANAGEMENT_RESPOND,
-      ctscAdminUser,
-      respondToQueryCtscTask,
-      {startWithWATaskName: true, verifySuccessEvent: false}
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 

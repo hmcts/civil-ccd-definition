@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import DJPaymentTypeSpec from '../../../../../constants/ccd-events/default-judgement/dj-payment-type-spec';
+import DJPaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-payment-type-spec';
 
 const nonEmptyString = z.string().min(1);
 

@@ -2,14 +2,17 @@ import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
 import CaseRole from '../constants/cases/case-role';
-import RespondentAgreed from '../constants/ccd-events/initiate-general-application/respondent-agreed';
-import WithNotice from '../constants/ccd-events/initiate-general-application/with-notice';
+import RespondentAgreed from '../constants/ccd-events/ccd-events/initiate-general-application/respondent-agreed';
+import WithNotice from '../constants/ccd-events/ccd-events/initiate-general-application/with-notice';
 import RequestOptions from '../models/api/request-options';
 import CCDCaseData, { ClaimFee, UploadDocumentValue } from '../models/ccd-case-data';
-import GeneralApplicationFeeRequest from '../models/ccd-events/initiate-general-application/general-application-fee-request';
-import User from '../models/users/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 import CaseState from '../constants/cases/case-state';
+import GeneralApplicationFeeRequest from '../models/ccd-events/ccd-events/initiate-general-application/general-application-fee-request';
+import User from '../models/users/user';
+import GaCaseState from '../constants/cases/ga-case-states';
+import { civilSystemUpdate } from '../config/users/exui-users';
+import CamundaProcess from '../constants/camunda/camunda-processes';
 
 @AllMethodsStep()
 export default class CivilServiceRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -125,6 +128,131 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     return responseJson;
   }
 
+  async getHearingsPayload(user: User, caseId?: number): Promise<Record<string, any>> {
+    console.log(`Getting hearings payload, caseId: ${caseId}`);
+    const url = `${urls.civilService}/serviceHearingValues`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      body: {
+        caseReference: caseId,
+        hearingId: 'HER123123123',
+      },
+      method: 'POST',
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('caseDeepLink', responseJson);
+        await super.expectResponseJsonToHaveProperty('hmctsServiceID', responseJson);
+        await super.expectResponseJsonToHaveProperty('parties', responseJson);
+        await super.expectResponseJsonToHaveProperty('caseFlags', responseJson);
+      },
+    });
+
+    console.log(`Hearings payload retrieved successfully, caseId: ${caseId}`);
+    return responseJson;
+  }
+
+  async triggerCamundaProcess(
+    user: User,
+    processName: CamundaProcess,
+    variables: Record<string, any> = {},
+  ): Promise<Record<string, any>> {
+    console.log(`Triggering Camunda process, processName: ${processName}`);
+    const url = `${this.testingSupportUrl}/trigger-camunda-process`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      body: {
+        name: processName,
+        variables,
+      },
+      method: 'POST',
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('id', responseJson);
+      },
+    });
+
+    console.log(`Camunda process triggered successfully, processName: ${processName}, processId: ${responseJson.id}`);
+    return responseJson;
+  }
+
+  async waitForCompletedCamundaProcess(
+    user: User,
+    definitionKey?: string,
+    processInstanceId?: string,
+    variables?: string,
+  ) {
+    console.log(
+      `Waiting for Camunda process to complete, definitionKey: ${definitionKey}, processInstanceId: ${processInstanceId}, variables: ${variables}`,
+    );
+    const params = {
+      ...(definitionKey ? { definitionKey } : {}),
+      ...(processInstanceId ? { processInstanceId } : {}),
+      ...(variables ? { variables } : {}),
+    };
+    const url = `${this.testingSupportUrl}/camunda-processes`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      params,
+    };
+
+    await super.retryRequestJson(url, requestOptions, {
+      retries: 10,
+      retryTimeInterval: 2000,
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonPropertyToBe(
+          '0.state',
+          'COMPLETED',
+          responseJson,
+          { message: 'Waiting for camunda process to complete' },
+        );
+      },
+    });
+
+    console.log(
+      `Camunda process completed successfully, definitionKey: ${definitionKey}, processInstanceId: ${processInstanceId}, variables: ${variables}`,
+    );
+  }
+
+  async getCompletedCamundaProcessCount(
+    user: User,
+    definitionKey: CamundaProcess,
+    variables?: string,
+    options: { expectCount?: number } = {},
+  ): Promise<number> {
+    console.log(`Getting completed Camunda process count, definitionKey: ${definitionKey}, variables: ${variables}`);
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      params: {
+        definitionKey,
+        ...(variables ? { variables } : {}),
+      },
+    };
+
+    const responseJson = await super.requestJson(`${this.testingSupportUrl}/camunda-processes`, requestOptions);
+    const completedProcessCount = (responseJson || []).filter((process: Record<string, any>) => process.state === 'COMPLETED').length;
+
+    if (options.expectCount !== undefined) {
+      await super.expectResponseJsonPropertyToBe(
+        'completedProcessCount',
+        options.expectCount,
+        { completedProcessCount },
+        {
+          nonRetryable: true,
+          message:
+            `Expected completed Camunda process count to be ${options.expectCount}, ` +
+            `definitionKey: ${definitionKey}, variables: ${variables}, actual count: ${completedProcessCount}`,
+        },
+      );
+    }
+
+    console.log(`Completed Camunda process count retrieved, count: ${completedProcessCount}`);
+    return completedProcessCount;
+  }
+
   async uploadTestDocument(user: User): Promise<UploadDocumentValue> {
     console.log('Uploading test document...');
     const url = `${this.testingSupportUrl}/upload/test-document`;
@@ -151,7 +279,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   async waitForFinishedBusinessProcess(
     user: User,
     caseId?: number,
-    expectedCaseState?: CaseState,
+    expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
   ) {
     console.log(`Waiting for business process to finish, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}/business-process`;
@@ -163,7 +291,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       retryTimeInterval: 3000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
-        await super.expectResponseJsonToHavePropertyValue(
+        await super.expectResponseJsonPropertyToBe(
           'businessProcess.status',
           'FINISHED',
           responseJson,
@@ -177,7 +305,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
           message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
         });
         if (expectedCaseState)
-          await super.expectResponseJsonToHavePropertyValue(
+          await super.expectResponseJsonPropertyToBe(
             'ccdState',
             expectedCaseState,
             responseJson,
@@ -233,7 +361,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     );
   }
 
-  async updatePaymentForGaClaimIsue(user: User, serviceRequestDTO: any) {
+  async updatePaymentForGaClaimIssue(user: User, serviceRequestDTO: any) {
     console.log(
       `Updating payment for general application, caseId: ${serviceRequestDTO.ccd_case_number}...`,
     );
