@@ -3,7 +3,7 @@ import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
-import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec/claimant-response-spec-type';
+import ClaimantResponseSpecType from '../../../../../constants/ccd-events/ccd-events/claimant-response-spec/claimant-response-spec-type';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import claimantResponseSpecSchemaComponents from './claimant-response-spec-schema-components';
@@ -14,13 +14,13 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildIntermediateRejectFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildInterRejectFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
     });
   }
 
-  async buildIntermediateProceed1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildInterProceed1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
@@ -68,7 +68,7 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
     });
   }
 
-  async buildIntermediateRejectPartAdmit(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildInterRejectPartAdmit(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimantResponseSpecType: ClaimantResponseSpecType.REJECT_PART_ADMIT,
@@ -236,6 +236,7 @@ export default class ClaimantResponseSpecSchemaBuilder extends BaseSchemaBuilder
       claimantResponseSpecSchemaComponents.vulnerabilityQuestions(claimantResponseSpecType),
       claimantResponseSpecSchemaComponents.application(claimTrack, claimantResponseSpecType),
       claimantResponseSpecSchemaComponents.ccjJudgmentSummary(claimantResponseSpecType),
+      claimantResponseSpecSchemaComponents.ignore,
     );
 
     return baseSchema.extend(schemaShape);

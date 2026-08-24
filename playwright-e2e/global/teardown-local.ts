@@ -145,7 +145,7 @@ const globalTeardownLocal = async () => {
   CookiesHelper.deleteAllCookies();
   AxeCacheHelper.deleteAllCache();
   BankHolidaysHelper.deleteBankHolidays();
-  // UserAssignedCasesHelper.deleteAllUsersAssignedCases();
+  UserAssignedCasesHelper.deleteAllUsersAssignedCases();
 };
 
 export default globalTeardownLocal;

@@ -5,7 +5,7 @@ import CaseDataHelper from '../../../../helpers/case-data-helper';
 import ClaimTrack from '../../../../constants/cases/claim-track';
 
 const selectedHearingLocation = CaseDataHelper.setCodeToData(
-  preferredCourts[partys.CLAIMANT_1.key].default,
+  preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
 );
 
 const hearingNoticeSelect = (claimTrack: ClaimTrack) => {
