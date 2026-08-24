@@ -41,8 +41,8 @@ export default class QueryDetailsNewPage extends ExuiQmPage(BasePage) {
     await super.inputText('Test query subject', inputs.querySubject.selector);
   }
 
-  async enterQueryDetail(queryDetail = paragraphs.queryDetails.queryBody) {
-    await super.inputText(queryDetail, inputs.queryDetail.selector);
+  async enterQueryDetail() {
+    await super.inputText(paragraphs.queryDetails.queryBody, inputs.queryDetail.selector);
   }
 
   async selectIsQueryHearingRelatedYes() {

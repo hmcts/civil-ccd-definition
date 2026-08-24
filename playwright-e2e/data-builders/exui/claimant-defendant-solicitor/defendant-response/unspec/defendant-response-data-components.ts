@@ -4,7 +4,7 @@ import {
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
 import DateHelper from '../../../../../helpers/date-helper';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
@@ -376,12 +376,8 @@ const draftDirections = async (
 };
 
 const requestedCourt = (defendantSolicitorParty: Party) => {
-  const preferredCourtParty =
-    defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-      ? partys.DEFENDANT_1
-      : partys.DEFENDANT_2;
   const preferredCourt = CaseDataHelper.setCodeToData(
-    preferredCourts[preferredCourtParty.key].default,
+    preferredCourts[defendantSolicitorParty.key].default,
   );
 
   return {

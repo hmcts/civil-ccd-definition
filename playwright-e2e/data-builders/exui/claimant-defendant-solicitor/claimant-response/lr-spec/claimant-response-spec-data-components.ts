@@ -4,7 +4,7 @@ import partys from '../../../../../constants/users/partys';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
-import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec/claimant-response-spec-type';
+import ClaimantResponseSpecType from '../../../../../constants/ccd-events/ccd-events/claimant-response-spec/claimant-response-spec-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import DateHelper from '../../../../../helpers/date-helper';
 import CivilServiceRequests from '../../../../../requests/civil-service-requests';
@@ -530,7 +530,7 @@ const requestedCourtLocation = (
     claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_NOT_PAID ||
     claimantResponseSpecType === ClaimantResponseSpecType.REJECT_PART_ADMIT_PAID_CONFIRM_PAID) {
     const preferredCourt = CaseDataHelper.setCodeToData(
-      preferredCourts[partys.CLAIMANT_1.key].default,
+      preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
     );
 
     return {

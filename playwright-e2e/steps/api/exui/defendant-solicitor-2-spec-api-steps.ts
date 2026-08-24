@@ -1,6 +1,6 @@
 import BaseApi from '../../../base/base-api';
 import { defendantSolicitor2User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseRole from '../../../constants/cases/case-role';
 import CaseState from '../../../constants/cases/case-state';
@@ -225,6 +225,28 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
     const noticeOfChangeSchema =
       await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
     ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
+  }
+
+  async InitiateGeneralApplication() {
+    await this.setupApiStep(defendantSolicitor2User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { initiateGeneralApplicationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const initiateGeneralApplicationData =
+      await initiateGeneralApplicationDataBuilder.buildDS2();
+    await super.submitCCDEvent(
+      defendantSolicitor2User,
+      ccdEvents.INITIATE_GENERAL_APPLICATION,
+      initiateGeneralApplicationData,
+    );
+
+    const { initiateGeneralApplicationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const initiateGeneralApplicationSchema =
+      await initiateGeneralApplicationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
+    ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, super.getGaCCDCaseIdFromParentCase());
   }
 
 }

@@ -1,8 +1,8 @@
 import preferredCourts from '../../../../config/preferred-courts';
 import { judgeRegion1User } from '../../../../config/users/exui-users';
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import OrderType from '../../../../constants/ccd-events/generate-directions-order/order-type';
-import MultiIntermediateTemplateTypes from '../../../../constants/ccd-events/generate-directions-order/multi-intermediate-template-types';
+import OrderType from '../../../../constants/ccd-events/ccd-events/generate-directions-order/order-type';
+import MultiIntermediateTemplateTypes from '../../../../constants/ccd-events/ccd-events/generate-directions-order/multi-intermediate-template-types';
 import partys from '../../../../constants/users/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import DateHelper from '../../../../helpers/date-helper';
@@ -42,7 +42,7 @@ const finalOrderAssistedOrder = (
       partys.DEFENDANT_1,
       defendantPartyType,
     ).partyName;
-    const preferredCourt = preferredCourts[partys.CLAIMANT_1.key].default;
+    const preferredCourt = preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default;
     const alternativeHearingLocation = CaseDataHelper.setCodeToData(preferredCourt);
 
     return {

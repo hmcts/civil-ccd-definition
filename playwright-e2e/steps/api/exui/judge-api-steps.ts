@@ -1,24 +1,23 @@
 import BaseApi from '../../../base/base-api';
 import { judgeRegion1User } from '../../../config/users/exui-users';
 import CaseState from '../../../constants/cases/case-state';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
-import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
-import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/intermediateTrackDirectionsTask';
-import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/nihlFastTrackDirectionsTask';
-import multiTrackDirectionsTask from '../../../constants/wa-tasks/multiTrackDirectionsTask';
-import reviewMessageFastJudicial from '../../../constants/wa-tasks/reviewMessageFastJudicial';
-import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
-import summaryJudgmentDirectionsTask from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events.ts';
+import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/exui/decisionOnReconsiderationRequestTask';
+import fastTrackDirectionsTask from '../../../constants/wa-tasks/exui/fastTrackDirectionsTask';
+import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/exui/intermediateTrackDirectionsTask';
+import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/exui/nihlFastTrackDirectionsTask';
+import multiTrackDirectionsTask from '../../../constants/wa-tasks/exui/multiTrackDirectionsTask';
+import smallClaimDirectionsTask from '../../../constants/wa-tasks/exui/smallClaimDirectionsTask';
+import summaryJudgmentDirectionsTask from '../../../constants/wa-tasks/exui/summaryJudgmentDirectionsTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import JudgeLADataBuilderFactory from '../../../data-builders/exui/judge-la/judge-la-data-builder-factory';
 import JudgeLASchemaBuilderFactory from '../../../schema-builders/exui/judge-la/judge-la-schema-builder-factory';
-import initialDirectionsFlightDelayTask from "../../../constants/wa-tasks/initialDirectionsFlightDelayTask.ts";
+import initialDirectionsFlightDelayTask from "../../../constants/wa-tasks/exui/initialDirectionsFlightDelayTask.ts";
 import initialDirectionsOtherFlightDelayTask
-  from "../../../constants/wa-tasks/initialDirectionsOtherFlightDelayTask.ts";
+  from "../../../constants/wa-tasks/exui/initialDirectionsOtherFlightDelayTask.ts";
 
 @AllMethodsStep()
 export default class JudgeApiSteps extends BaseApi {
@@ -43,9 +42,9 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildFastSdo();
 
-    await super.submitCCDEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
-      // fastTrackDirectionsTask,
+      fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
       CaseState.CASE_PROGRESSION,
@@ -63,7 +62,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildFastNIHLSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       nihlFastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -83,7 +82,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallSumSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -103,7 +102,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallNoSumSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -124,7 +123,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallSumDRHSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -145,7 +144,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallNoSumDRHSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -166,7 +165,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildTrailSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -186,7 +185,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildTrailNIHLSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       nihlFastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
@@ -207,7 +206,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { sdoDJDataBuilder } = this.judgeDataBuilderFactory;
     const sdoDJData = await sdoDJDataBuilder.buildDisposalHearing();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       summaryJudgmentDirectionsTask,
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
@@ -227,7 +226,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { sdoDJDataBuilder } = this.judgeDataBuilderFactory;
     const sdoDJData = await sdoDJDataBuilder.buildTrial();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       summaryJudgmentDirectionsTask,
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
@@ -285,7 +284,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { generateDirectionsOrderDataBuilder } = this.judgeDataBuilderFactory;
     const generateDirectionsOrderData =
       await generateDirectionsOrderDataBuilder.buildInterOrder();
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       intermediateTrackDirectionsTask,
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
@@ -305,7 +304,7 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { generateDirectionsOrderDataBuilder } = this.judgeDataBuilderFactory;
     const generateDirectionsOrderData = await generateDirectionsOrderDataBuilder.buildMultiOrder();
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       multiTrackDirectionsTask,
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
@@ -354,7 +353,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { decisionOnReconsiderationRequestDataBuilder } = this.judgeDataBuilderFactory;
     const decisionOnReconsiderationRequestData =
       await decisionOnReconsiderationRequestDataBuilder.buildUpholdPreviousOrder();
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
@@ -377,7 +376,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { decisionOnReconsiderationRequestDataBuilder } = this.judgeDataBuilderFactory;
     const decisionOnReconsiderationRequestData =
       await decisionOnReconsiderationRequestDataBuilder.buildCreateNewSdo();
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
@@ -400,7 +399,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { decisionOnReconsiderationRequestDataBuilder } = this.judgeDataBuilderFactory;
     const decisionOnReconsiderationRequestData =
       await decisionOnReconsiderationRequestDataBuilder.buildOrderNeedsAmending();
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
@@ -436,7 +435,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallSumSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       initialDirectionsFlightDelayTask,
       ccdEvents.CREATE_SDO,
@@ -456,7 +455,7 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallNoSumSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       initialDirectionsOtherFlightDelayTask,
       ccdEvents.CREATE_SDO,
