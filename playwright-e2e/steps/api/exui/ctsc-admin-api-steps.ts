@@ -49,14 +49,12 @@ export default class CtscAdminApiSteps extends BaseApi {
 
     const { queryManagementRespondDataBuilder } = this.ctscAdminDataBuilderFactory;
     const queryManagementRespondData = await queryManagementRespondDataBuilder.buildQueryCtsc();
-    const waTask = await super.retrieveAndAssignWATask(ctscAdminUser, respondToQueryCtscTask);
-    await super.submitQmEvent(
+    await super.submitQmWaEvent(
       ctscAdminUser,
+      respondToQueryCtscTask,
       ccdEvents.QUERY_MANAGEMENT_RESPOND,
       queryManagementRespondData,
     );
-    await super.completeWATask(ctscAdminUser, waTask.id);
-
     const { queryManagementRespondSchemaBuilder } = this.ctscAdminSchemaBuilderFactory;
     const queryManagementRespondSchema =
       await queryManagementRespondSchemaBuilder.buildQueryCtsc(caseDataBeforeSubmission);
@@ -69,13 +67,12 @@ export default class CtscAdminApiSteps extends BaseApi {
 
     const { queryManagementRespondDataBuilder } = this.ctscAdminDataBuilderFactory;
     const queryManagementRespondData = await queryManagementRespondDataBuilder.buildQueryCtsc();
-    const waTask = await super.retrieveAndAssignWATask(ctscAdminUser, respondToHearingQueryCtscTask);
-    await super.submitQmEvent(
+    await super.submitQmWaEvent(
       ctscAdminUser,
+      respondToHearingQueryCtscTask,
       ccdEvents.QUERY_MANAGEMENT_RESPOND,
       queryManagementRespondData,
     );
-    await super.completeWATask(ctscAdminUser, waTask.id);
 
     const { queryManagementRespondSchemaBuilder } = this.ctscAdminSchemaBuilderFactory;
     const queryManagementRespondSchema =

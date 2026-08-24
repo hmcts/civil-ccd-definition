@@ -24,6 +24,7 @@ import HearingCenterAdminApiSteps from '../../steps/api/exui/hearing-center-admi
 import JudgeGaApiSteps from '../../steps/api/ga-exui/judge-ga-api-steps';
 import JudgeApiSteps from '../../steps/api/exui/judge-api-steps';
 import LegalAdvisorApiSteps from '../../steps/api/exui/legal-advisor-api-steps';
+import HearingsApiSteps from '../../steps/api/hearings-api-steps';
 
 type ApiStepsFixtures = {
   IdamApiSteps: IdamApiSteps;
@@ -49,6 +50,7 @@ type ApiStepsFixtures = {
   OtherDefendantSolicitor2ApiSteps: OtherDefendantSolicitor2ApiSteps;
   CaseRoleAssignmentApiSteps: CaseRoleAssignmentApiSteps;
   LegalAdvisorApiSteps: LegalAdvisorApiSteps;
+  HearingsApiSteps: HearingsApiSteps;
 };
 
 export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).extend<ApiStepsFixtures>({
@@ -120,5 +122,15 @@ export const test = mergeTests(dataBuilderFactories, schemaBuilderFactories).ext
   },
   LegalAdvisorApiSteps: async ({ _judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData }, use) => {
     await use(new LegalAdvisorApiSteps(_judgeDataBuilderFactory, _judgeSchemaBuilderFactory, _requestsFactory, _testData));
+  },
+  HearingsApiSteps: async ({ _requestsFactory, _wireMockStudsDataBuilder, _listedHearingDataBuilder, _listedHearingSpecDataBuilder, _getPartiesNotifiedResponsesDataBuilder, _testData }, use) => {
+    await use(new HearingsApiSteps(
+      _requestsFactory,
+      _wireMockStudsDataBuilder,
+      _listedHearingDataBuilder,
+      _listedHearingSpecDataBuilder,
+      _getPartiesNotifiedResponsesDataBuilder,
+      _testData,
+    ));
   }
 });

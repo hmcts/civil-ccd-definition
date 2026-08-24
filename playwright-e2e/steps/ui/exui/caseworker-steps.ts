@@ -7,6 +7,7 @@ import TestData from '../../../models/test-utils/test-data.ts';
 import RequestsFactory from '../../../requests/requests-factory';
 import { civilAdminUser } from '../../../config/users/exui-users.ts';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events.ts';
+import CaseState from '../../../constants/cases/case-state';
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -35,7 +36,7 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
@@ -47,7 +48,7 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
@@ -104,6 +105,7 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.MEDIATION_UNSUCCESSFUL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
