@@ -16,7 +16,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
   }
 
   async AssignCaseRoleToDS2() {
@@ -28,7 +28,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData?.id);
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData?.id);
   }
 
   async AssignCaseRoleToDC() {
@@ -40,7 +40,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
-    UserAssignedCasesHelper.addAssignedCaseToUser(this.defendantCitizenUser, this.ccdCaseData?.id);
+    await UserAssignedCasesHelper.addAssignedCaseToUser(this.defendantCitizenUser, this.ccdCaseData?.id);
   }
 
   async UnassignCasesForUser(user: User) {
@@ -50,5 +50,22 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
       const { civilServiceRequests } = this.requestsFactory;
       await civilServiceRequests.unassignUserFromCases(user, assignedCases);
     }
+  }
+
+  async AssignBothCaseRolesToDS1() {
+    await this.setupApiStep(defendantSolicitor1User);
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.assignCaseToDefendant(
+      defendantSolicitor1User,
+      CaseRole.RESPONDENT_SOLICITOR_ONE,
+      this.ccdCaseData?.id,
+    );
+    await civilServiceRequests.assignCaseToDefendant(
+      defendantSolicitor1User,
+      CaseRole.RESPONDENT_SOLICITOR_TWO,
+      this.ccdCaseData?.id,
+    );
+    await super.fetchAndSetCCDCaseData();
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
   }
 }

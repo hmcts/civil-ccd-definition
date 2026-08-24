@@ -14,15 +14,15 @@ test.describe(
       JudgeSteps,
       DefendantSolicitor2SpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v2DS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v2DS();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-      await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence();
-      await DefendantSolicitor2SpecApiSteps.RespondIntermediateFullDefence();
-      await ClaimantSolicitorSpecApiSteps.RespondIntermediateProceed1v2DS();
+      await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
+      await DefendantSolicitor2SpecApiSteps.RespondInterFullDefence();
+      await ClaimantSolicitorSpecApiSteps.RespondInterProceed1v2DS();
       await JudgeSteps.LoginRegion1();
-      await JudgeSteps.GenerateDirectionsOrderIntermediate();
+      await JudgeSteps.GenerateDirectionsOrderInter();
       await DefendantSolicitor2SpecSteps.Login();
       await DefendantSolicitor2SpecSteps.EvidenceUploadBundle();
     });

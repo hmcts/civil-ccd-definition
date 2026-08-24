@@ -1,9 +1,14 @@
+import {
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+} from '../../../../config/users/exui-users';
 import DateHelper from '../../../../helpers/date-helper';
-import { UploadDocumentValue } from '../../../../models/ccd-case-data';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import { Party } from '../../../../models/users/partys';
 import ClaimTrack from '../../../../constants/cases/claim-track';
 import ClaimType from '../../../../constants/cases/claim-type';
+import partys from '../../../../constants/users/partys';
+import CivilServiceRequests from '../../../../requests/civil-service-requests';
 
 const createDate = () =>
   DateHelper.formatDateToString(DateHelper.getToday(), { outputFormat: 'YYYY-MM-DD' });
@@ -56,16 +61,24 @@ const documentSelection = (claimTrack: ClaimTrack) => {
   return {};
 };
 
-const documentUploadFastTrack = (
+const getUploadUser = (defendantSolicitorParty: Party) =>
+  defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
+    ? defendantSolicitor1User
+    : defendantSolicitor2User;
+
+const documentUploadFastTrack = async (
   claimTrack: ClaimTrack,
   witnessParty: Party,
   expertParty: Party,
-  disclosureDocument: UploadDocumentValue,
-  witnessSummaryDocument: UploadDocumentValue,
-  questionsDocument: UploadDocumentValue,
-  authoritiesDocument: UploadDocumentValue,
+  defendantSolicitorParty: Party,
+  civilServiceRequests: CivilServiceRequests,
 ) => {
   if (claimTrack === ClaimTrack.FAST_CLAIM) {
+    const user = getUploadUser(defendantSolicitorParty);
+    const disclosureDocument = await civilServiceRequests.uploadTestDocument(user);
+    const witnessSummaryDocument = await civilServiceRequests.uploadTestDocument(user);
+    const questionsDocument = await civilServiceRequests.uploadTestDocument(user);
+    const authoritiesDocument = await civilServiceRequests.uploadTestDocument(user);
     const witnessPartyData = CaseDataHelper.buildWitnessData(witnessParty);
     const expertPartyData = CaseDataHelper.buildExpertData(expertParty);
 
@@ -106,17 +119,20 @@ const documentUploadFastTrack = (
   }
 };
 
-const documentUploadSmallClaim = (
+const documentUploadSmallClaim = async (
   claimTrack: ClaimTrack,
   witness1Party: Party,
   witness2Party: Party,
   expertParty: Party,
-  witnessStatement1: UploadDocumentValue,
-  witnessStatement2: UploadDocumentValue,
-  expertReport: UploadDocumentValue,
-  authoritiesDocument: UploadDocumentValue,
+  defendantSolicitorParty: Party,
+  civilServiceRequests: CivilServiceRequests,
 ) => {
   if (claimTrack === ClaimTrack.SMALL_CLAIM) {
+    const user = getUploadUser(defendantSolicitorParty);
+    const witnessStatement1 = await civilServiceRequests.uploadTestDocument(user);
+    const witnessStatement2 = await civilServiceRequests.uploadTestDocument(user);
+    const expertReport = await civilServiceRequests.uploadTestDocument(user);
+    const authoritiesDocument = await civilServiceRequests.uploadTestDocument(user);
     const witness1Data = CaseDataHelper.buildWitnessData(witness1Party);
     const witness2Data = CaseDataHelper.buildWitnessData(witness2Party);
     const expertData = CaseDataHelper.buildExpertData(expertParty);

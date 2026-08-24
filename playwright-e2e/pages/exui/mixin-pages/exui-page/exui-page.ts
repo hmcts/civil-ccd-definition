@@ -1,8 +1,8 @@
 import BasePage from '../../../../base/base-page';
 import config from '../../../../config/config';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events/ccd-events';
 import CCDCaseData from '../../../../models/ccd-case-data';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import { buttons, components, getFormattedCaseId } from './exui-content';
 
 let ccdEventstate: CCDEvent | undefined;
@@ -59,6 +59,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         () => super.uploadFile(filePath, selector, { containerSelector, index, first }),
         () =>
           super.expectNoSelector(components.uploadDocError.selector, {
+            containerSelector,
             timeout,
             all: true,
             message: 'Uploading document failed',

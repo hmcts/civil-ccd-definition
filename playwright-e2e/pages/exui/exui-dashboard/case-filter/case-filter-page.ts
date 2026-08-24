@@ -5,7 +5,7 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { dropdowns } from './case-filter-content';
 import { buttons } from '../../mixin-pages/exui-page/exui-content';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 
 @AllMethodsStep()
 export default class CaseFilterPage extends ExuiPage(BasePage) {

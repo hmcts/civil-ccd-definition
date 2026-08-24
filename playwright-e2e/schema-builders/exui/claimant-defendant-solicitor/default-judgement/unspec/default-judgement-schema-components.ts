@@ -53,10 +53,15 @@ const hearingSupportRequirementsFieldDJ = () => ({
   }),
 });
 
+const otherRemedyAbandoned = () => ({
+  isOtherRemedyAbandoned: nonEmptyString,
+});
+
 const defaultJudgementSchemaComponents = {
   defendantDetails,
   hearingType,
   hearingSupportRequirementsFieldDJ,
+  otherRemedyAbandoned,
 };
 
 export default defaultJudgementSchemaComponents;

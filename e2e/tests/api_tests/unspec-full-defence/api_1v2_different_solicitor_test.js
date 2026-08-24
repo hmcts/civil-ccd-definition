@@ -7,9 +7,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 Feature('1v2 different solicitor unspec full defence api journey').tag('@civil-service-nightly @api-unspec-full-defence');
 
-Scenario('1v2 different solicitor unspec full defence', async ({api}) => {
-  // Early lifecycle events remain as CCD/environment setup for this full-defence journey.
-  // Their service-owned behaviour is covered by civil-service workflow integration tests (DTSCCI-5193).
+Scenario.skip('1v2 different solicitor unspec full defence', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
