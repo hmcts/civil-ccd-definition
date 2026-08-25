@@ -24,7 +24,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     caseType = CaseType.CIVIL,
     expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
   ) {
-    console.log(`Fetching CCD case data, caseId: ${caseId}, user: ${user.name}`);
+    console.log(`Fetching ${caseType === CaseType.GA ? 'GA' : ''} CCD case data, caseId: ${caseId}, user: ${user.name}`);
     const url = `${this.getCCDDataStoreBaseUrl(user, caseType)}/cases/${caseId}`;
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),
