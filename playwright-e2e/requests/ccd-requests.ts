@@ -8,6 +8,8 @@ import User from '../models/users/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 import CCDEvent from '../models/ccd-events/ccdEvent';
 import CaseType from '../constants/cases/case-type';
+import CaseState from '../constants/cases/case-state';
+import GaCaseState from '../constants/cases/ga-case-states';
 
 @AllMethodsStep({ methodNamesToIgnore: ['getCCDDataStoreBaseUrl'] })
 export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -19,7 +21,8 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     user: User,
     caseId?: number,
     expectedStatus = 200,
-    caseType = CaseType.CIVIL
+    caseType = CaseType.CIVIL,
+    expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
   ) {
     console.log(`Fetching CCD case data, caseId: ${caseId}, user: ${user.name}`);
     const url = `${this.getCCDDataStoreBaseUrl(user, caseType)}/cases/${caseId}`;
@@ -28,6 +31,15 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     };
     const responseJson = await super.retryRequestJson(url, requestOptions, {
       expectedStatus,
+      verifyResponse: async (responseJson) => {
+         if (expectedCaseState)
+          await super.expectResponseJsonPropertyToBe(
+            'state',
+            expectedCaseState,
+            responseJson,
+            { nonRetryable: true },
+          );
+      }
     });
     console.log(`CCD case data fetched successfully, caseId: ${caseId}, user: ${user.name}`);
     return { id: responseJson.id, state: responseJson.state, ...responseJson.case_data };
