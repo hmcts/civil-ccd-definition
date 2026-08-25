@@ -68,6 +68,7 @@
     "test:ui-ga-vary-payment": "MOCHAWESOME_REPORTFILENAME=ui-ga-vary-payment npx codeceptjs run-workers --suites 2 --grep @ui-ga-vary-payment --reporter mocha-multi --verbose",
     "test:ui-other-remedy": "MOCHAWESOME_REPORTFILENAME=ui-other-remedy npx codeceptjs run-workers --suites 2 --grep @ui-other-remedy --reporter mocha-multi --verbose",
     "test:ui-other-remedy-dj": "MOCHAWESOME_REPORTFILENAME=ui-other-remedy-dj npx codeceptjs run-workers --suites 2 --grep @ui-other-remedy-dj --reporter mocha-multi --verbose",
+    "test:ui-breathing-space": "MOCHAWESOME_REPORTFILENAME=ui-breathing-space npx codeceptjs run-workers --suites 2 --grep @ui-breathing-space --reporter mocha-multi --verbose",
     "test:api-bulk-claim": "MOCHAWESOME_REPORTFILENAME=api-bulk-claim npx codeceptjs run-workers --suites 2 --grep @api-bulk-claim --reporter mocha-multi --verbose",
     "test:api-case-flags": "MOCHAWESOME_REPORTFILENAME=api-case-flags npx codeceptjs run-workers --suites 2 --grep @api-case-flags --reporter mocha-multi --verbose",
     "test:api-case-offline": "MOCHAWESOME_REPORTFILENAME=api-case-offline npx codeceptjs run-workers --suites 2 --grep @api-case-offline --reporter mocha-multi --verbose",
