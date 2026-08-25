@@ -4,6 +4,7 @@ import GaExuiDashboardPageFactory from '../../../../pages/ga-exui/ga-exui-dashbo
 import TestData from '../../../../models/test-utils/test-data';
 import RequestsFactory from '../../../../requests/requests-factory';
 import CCDEvent from '../../../../models/ccd-events/ccdEvent';
+import WATask from '../../../../models/wa-task';
 
 @AllMethodsStep()
 export default class GaExuiDashboardActions extends BaseApi {
@@ -24,10 +25,18 @@ export default class GaExuiDashboardActions extends BaseApi {
     await gaCaseDetailsPage.verifyContent(this.getGaCCDCaseData()!);
   }
 
-  async startCCDEvent(ccdEvent: CCDEvent) {
+  async startWithGaWaTaskName(ccdEvent: CCDEvent, waTask: WATask) {
     const { gaCaseDetailsPage } = this.gaExuiDashboardPageFactory;
-    const gaCaseData = this.getGaCCDCaseData()!;
-    await gaCaseDetailsPage.retryChooseNextStepWithUrl(gaCaseData.id!, ccdEvent);
+    await gaCaseDetailsPage.retryGoToGaCaseDetails(this.getGaCCDCaseData()?.id!);
+    await gaCaseDetailsPage.retryStartWAEvent(ccdEvent, waTask);
+    gaCaseDetailsPage.setCCDEvent = ccdEvent;
+  }
+
+  async startGaCCDEvent(ccdEvent: CCDEvent) {
+    const { gaCaseDetailsPage } = this.gaExuiDashboardPageFactory;
+    await gaCaseDetailsPage.retryGoToGaCaseDetails(this.getGaCCDCaseData()?.id!);
+    await gaCaseDetailsPage.verifyContent(this.getGaCCDCaseData()!);
+    await gaCaseDetailsPage.retryChooseNextStepWithUrl(this.getGaCCDCaseData()?.id!, ccdEvent);
   }
 
   async clearCCDEvent() {

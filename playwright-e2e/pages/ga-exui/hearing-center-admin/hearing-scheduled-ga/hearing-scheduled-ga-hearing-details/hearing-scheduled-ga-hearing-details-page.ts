@@ -1,12 +1,12 @@
-import BasePage from '../../../../base/base-page';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
-import DateHelper from '../../../../helpers/date-helper';
-import GaCCDCaseData from '../../../../models/ga-ccd-case-data';
-import GaExuiPage from '../../mixin-pages/ga-exui-page/ga-exui-page';
-import { dropdowns, inputs, radioButtons } from './make-decision-hearing-details-content';
+import BasePage from '../../../../../base/base-page';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import DateHelper from '../../../../../helpers/date-helper';
+import GaCCDCaseData from '../../../../../models/ga-ccd-case-data';
+import GaExuiPage from '../../../mixin-pages/ga-exui-page/ga-exui-page';
+import { dropdowns, inputs, radioButtons } from './hearing-scheduled-ga-hearing-details-content';
 
 @AllMethodsStep()
-export default class MakeDecisionHearingDetailsPage extends GaExuiPage(BasePage) {
+export default class HearingScheduledGaHearingDetailsPage extends GaExuiPage(BasePage) {
   async verifyContent(gaCaseData: GaCCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(gaCaseData),
@@ -19,9 +19,13 @@ export default class MakeDecisionHearingDetailsPage extends GaExuiPage(BasePage)
       super.expectLabel(dropdowns.duration.label),
     ]);
   }
+
   async enterHearingDetails() {
     const hearingDate = DateHelper.addToToday({ days: 2 });
-    await super.selectFromDropdown(dropdowns.location.option, dropdowns.location.selector);
+    await super.selectFromDropdown(
+      dropdowns.location.options.centralLondon,
+      dropdowns.location.selector,
+    );
     await super.clickBySelector(radioButtons.channel.inPerson.selector);
     await super.inputText(DateHelper.getTwoDigitDay(hearingDate), inputs.hearingDate.day.selector);
     await super.inputText(
@@ -30,9 +34,13 @@ export default class MakeDecisionHearingDetailsPage extends GaExuiPage(BasePage)
     );
     await super.inputText(hearingDate.getFullYear(), inputs.hearingDate.year.selector);
     await super.blurSelector(inputs.hearingDate.year.selector);
-    await super.selectFromDropdown(dropdowns.time.option, dropdowns.time.selector);
-    await super.selectFromDropdown(dropdowns.duration.option, dropdowns.duration.selector);
+    await super.selectFromDropdown(dropdowns.time.options.nineAm, dropdowns.time.selector);
+    await super.selectFromDropdown(
+      dropdowns.duration.options.thirtyMinutes,
+      dropdowns.duration.selector,
+    );
   }
+
   async submit() {
     await super.retryClickSubmit();
   }

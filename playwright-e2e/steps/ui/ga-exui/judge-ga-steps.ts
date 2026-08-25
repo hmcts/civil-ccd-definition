@@ -34,17 +34,17 @@ export default class JudgeGaSteps extends BaseGaExui {
     await super.gaExuiDashboardActions.goToGaCaseDetails();
   }
 
-  async MakeAssistedOrderWithoutNotice() {
-    const { makeDecisionActions } = this.judgeGaActionsFactory;
+  async GenerateDirectionsOrderAssistedWithoutNotice() {
+    const { generateDirectionsOrderGaActions } = this.judgeGaActionsFactory;
     await super.retryGaCCDEvent(
       async () => {
-        await makeDecisionActions.selectAssistedOrder();
-        await makeDecisionActions.enterAssistedOrderDetails();
-        await makeDecisionActions.reviewDraftOrder();
-        await makeDecisionActions.submitOrder();
+        await generateDirectionsOrderGaActions.selectAssistedOrder();
+        await generateDirectionsOrderGaActions.enterAssistedOrderDetails();
+        await generateDirectionsOrderGaActions.reviewDraftOrder();
+        await generateDirectionsOrderGaActions.submitOrder();
       },
       async () => {
-        await makeDecisionActions.confirmOrder();
+        await generateDirectionsOrderGaActions.confirmOrder();
       },
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
     );

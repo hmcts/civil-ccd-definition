@@ -1175,11 +1175,11 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       initiateGeneralApplicationData,
     );
 
-    const { initiateGeneralApplicationSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const initiateGeneralApplicationSchema =
-      await initiateGeneralApplicationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
-    ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+    // const { initiateGeneralApplicationSchemaBuilder } =
+    //   this.claimantDefendantSolicitorSchemaBuilderFactory;
+    // const initiateGeneralApplicationSchema =
+    //   await initiateGeneralApplicationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+    // ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
 
     const { initiateGeneralApplicationGaSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -1187,7 +1187,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       await initiateGeneralApplicationGaSchemaBuilder.build();
     ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
 
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseIdFromParentCase()); 
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseData()?.id); 
   }
 
   async InitiateGAWithNotice() {

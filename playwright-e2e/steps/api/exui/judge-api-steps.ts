@@ -239,7 +239,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(sdoDJSchema, this.ccdCaseData);
   }
 
-  async GenerateDirectionsOrderAssistedOrder() {
+  async GenerateDirectionsOrderAssisted() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -258,7 +258,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(generateDirectionsOrderSchema, this.ccdCaseData);
   }
 
-  async GenerateDirectionsOrderFreeFormOrder() {
+  async GenerateDirectionsOrderFreeForm() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 

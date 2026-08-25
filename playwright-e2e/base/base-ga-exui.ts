@@ -42,6 +42,39 @@ export default abstract class BaseGaExui extends BaseApi {
     return this._idamActions;
   }
 
+  async retryCCDEvent(
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
+    ccdEvent: CCDEvent,
+    { retries = config.exui.eventRetries, verifySuccessEvent = true, camundaProcess = true } = {},
+  ) {
+    await super.setupBankHolidays();
+    await super.setDebugTestData();
+    while (retries >= 0) {
+      try {
+        await this.exuiDashboardActions.startCCDEvent(ccdEvent);
+
+        await eventActions();
+        break;
+      } catch (error) {
+        if (retries <= 0) throw error;
+        console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
+        retries--;
+        await this.exuiDashboardActions.clearCCDEvent();
+      }
+    }
+    await confirmActions();
+    if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
+      const caseId = await this.exuiDashboardActions.grabCaseNumber();
+      super.setCCDCaseData = { id: caseId };
+      UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
+    }
+    if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
+    await this.exuiDashboardActions.clearCCDEvent();
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+  }
+
   async retryGaCCDEvent(
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
@@ -52,7 +85,7 @@ export default abstract class BaseGaExui extends BaseApi {
     await super.setDebugTestData();
     while (retries >= 0) {
       try {
-        await this.gaExuiDashboardActions.startCCDEvent(ccdEvent);
+        await this.gaExuiDashboardActions.startGaCCDEvent(ccdEvent);
         await eventActions();
         break;
       } catch (error) {
@@ -100,24 +133,34 @@ export default abstract class BaseGaExui extends BaseApi {
       }
     }
     await confirmActions();
-    if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent); //ga dashboard
-    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id);
+    if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
     await super.completeWATask(user, waTask.id);
   }
 
-  async retryCCDEvent(
+  async retryGAWaEvent(
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
-    { retries = config.exui.eventRetries, verifySuccessEvent = true, camundaProcess = true } = {},
+    user: User,
+    validTask: WATask,
+    {
+      retries = config.exui.eventRetries,
+      camundaProcess = true,
+      startWithWATaskName = false,
+    } = {},
   ) {
     await super.setupBankHolidays();
     await super.setDebugTestData();
+    const waTask = await super.retrieveAndAssignWATask(user, validTask, this.getGaCCDCaseData()?.id);
     while (retries >= 0) {
       try {
-        await this.exuiDashboardActions.startCCDEvent(ccdEvent);
-
+        if (startWithWATaskName) {
+          await this.gaExuiDashboardActions.startWithGaWaTaskName(ccdEvent, waTask);
+        } else {
+          await this.gaExuiDashboardActions.startGaCCDEvent(ccdEvent);
+        }
         await eventActions();
         break;
       } catch (error) {
@@ -128,14 +171,8 @@ export default abstract class BaseGaExui extends BaseApi {
       }
     }
     await confirmActions();
-    if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
-      const caseId = await this.exuiDashboardActions.grabCaseNumber();
-      super.setCCDCaseData = { id: caseId };
-      UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
-    }
-    if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
-    await this.exuiDashboardActions.clearCCDEvent();
-    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
-    await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id);
+    await this.fetchAndSetCCDCaseData(this.getGaCCDCaseData()?.id);
+    await super.completeWATask(user, waTask.id);
   }
 }

@@ -1,7 +1,7 @@
-import BasePage from '../../../../base/base-page';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
-import GaCCDCaseData from '../../../../models/ga-ccd-case-data';
-import GaExuiPage from '../../mixin-pages/ga-exui-page/ga-exui-page';
+import BasePage from '../../../../../base/base-page';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import GaCCDCaseData from '../../../../../models/ga-ccd-case-data';
+import GaExuiPage from '../../../mixin-pages/ga-exui-page/ga-exui-page';
 import { subheading } from './hearing-scheduled-ga-submit-content';
 
 @AllMethodsStep()

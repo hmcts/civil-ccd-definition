@@ -5,5 +5,9 @@ export const radioButtons = {
       label: 'Assisted order',
       selector: '#finalOrderSelection-ASSISTED_ORDER',
     },
+    freeFormOrder: {
+      label: 'Assisted Order',
+      selector: '#finalOrderSelection-FREE_FORM_ORDER',
+    }
   },
 };

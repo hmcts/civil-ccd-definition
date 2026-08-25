@@ -9,6 +9,8 @@ import urls from '../../../../config/urls';
 import config from '../../../../config/config';
 import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import { components } from '../../mixin-pages/ga-exui-page/ga-exui-content';
+import { test } from '../../../../playwright-fixtures';
+import WATask from '../../../../models/wa-task';
 
 const classKey = 'GaCaseDetailsPage';
 
@@ -54,6 +56,34 @@ export default class GaCaseDetailsPage extends GaExuiPage(BasePage) {
       { retries: 2, message: `Starting GA event: ${ccdEvent.name} failed, trying again` },
     );
     super.setCCDEvent = ccdEvent;
+  }
+
+  async retryStartWAEvent(ccdEvent: CCDEvent, waTask: WATask) {
+    test.fail(!config.waEnabled, `Environment variable: PLAYWRIGHT_WA_ENABLED must be set to 'true' to start task with tasks tab, current value: ${config.waEnabled}`)
+    console.log(`Starting event: ${ccdEvent.name}, using tasks tab, with task name: ${waTask.name}`);
+    await super.retryAction(
+      async () => {
+        await super.retryReload(
+          async () => {
+            await super.expectSelector(tabs.tasks.selector, {
+              timeout: 10_000,
+            });
+            await super.clickBySelector(tabs.tasks.selector);
+          },
+          undefined,
+          { retries: 1 },
+        );
+        await super.clickLink(waTask.name);
+      },
+      async () => {
+        await super.waitForPageToLoad();
+        await super.expectNoSelector(tabs.application.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        });
+      },
+      () => super.reload(),
+      { retries: 3, message: `Starting event: ${ccdEvent.name}, using tasks tab, with task name: ${waTask.name} failed, trying again` },
+    );
   }
 
   async submit() {

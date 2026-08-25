@@ -21,10 +21,10 @@ test.describe(
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
         await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-        await DefendantSolicitor1ApiSteps.RespondFastFullDefence1v2DS();
+        await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
         await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
         await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
-        await DefendantSolicitor2ApiSteps.InitiateGeneralApplication();
+        await DefendantSolicitor2ApiSteps.InitiateGA();
         await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();
         await JudgeGaApiSteps.MakeADecisionListHearing();
         await HearingCenterAdminGaSteps.Login();

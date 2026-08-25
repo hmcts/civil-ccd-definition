@@ -12,7 +12,7 @@ export default class HearingScheduledGaActions extends BaseTestData {
     this.hearingScheduledGaPageFactory = hearingScheduledGaPageFactory;
   }
 
-  async applicationDetails() {
+  async hearingNoticeGaDetails() {
     const { hearingNoticeGaDetailPage } = this.hearingScheduledGaPageFactory;
     await hearingNoticeGaDetailPage.verifyContent(this.getGaCCDCaseData()!);
     await hearingNoticeGaDetailPage.enterApplicationDetails();
@@ -20,27 +20,27 @@ export default class HearingScheduledGaActions extends BaseTestData {
   }
 
   async hearingDetails() {
-    const { hearingDetailsPage } = this.hearingScheduledGaPageFactory;
-    await hearingDetailsPage.verifyContent(this.getGaCCDCaseData()!);
-    await hearingDetailsPage.enterHearingDetails();
-    await hearingDetailsPage.submit();
+    const { hearingScheduledGaHearingDetailsPage } = this.hearingScheduledGaPageFactory;
+    await hearingScheduledGaHearingDetailsPage.verifyContent(this.getGaCCDCaseData()!);
+    await hearingScheduledGaHearingDetailsPage.enterHearingDetails();
+    await hearingScheduledGaHearingDetailsPage.submit();
   }
 
   async hearingInformation() {
-    const { hearingInformationPage } = this.hearingScheduledGaPageFactory;
-    await hearingInformationPage.verifyContent(this.getGaCCDCaseData()!);
-    await hearingInformationPage.enterInformation();
-    await hearingInformationPage.submit();
+    const { hearingScheduledGaHearingInformationPage } = this.hearingScheduledGaPageFactory;
+    await hearingScheduledGaHearingInformationPage.verifyContent(this.getGaCCDCaseData()!);
+    await hearingScheduledGaHearingInformationPage.enterInformation();
+    await hearingScheduledGaHearingInformationPage.submit();
   }
 
   async submitHearingNotice() {
-    const { submitPage } = this.hearingScheduledGaPageFactory;
-    await submitPage.verifyContent(this.getGaCCDCaseData()!);
-    await submitPage.submit();
+    const { hearingScheduledGaSubmitPage } = this.hearingScheduledGaPageFactory;
+    await hearingScheduledGaSubmitPage.verifyContent(this.getGaCCDCaseData()!);
+    await hearingScheduledGaSubmitPage.submit();
   }
 
   async confirmHearingNotice() {
-    const { confirmPage } = this.hearingScheduledGaPageFactory;
-    await confirmPage.verifyContent(this.getGaCCDCaseData()!);
+    const { hearingScheduledGaConfirmPage } = this.hearingScheduledGaPageFactory;
+    await hearingScheduledGaConfirmPage.verifyContent(this.getGaCCDCaseData()!);
   }
 }
