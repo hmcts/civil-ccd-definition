@@ -1,6 +1,10 @@
 import CCDEvent from "../../../../models/ccd-events/ccdEvent";
 
 export const tabs = {
+  tasks: {
+    title: 'Tasks',
+    selector: "div[role='tab'] >> 'Tasks'",
+  },
   application: {
     title: 'Application',
     selector: "div[role='tab'] >> 'Application'",
