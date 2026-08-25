@@ -1,10 +1,10 @@
 import BasePage from '../../../../../base/base-page.ts';
 import ExuiPage from '../../../mixin-pages/exui-page/exui-page.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
-import { heading, inputs } from './hearing-information-content.ts';
+import { heading, inputs } from './hearing-scheduled-hearing-information-content.ts';
 
 @AllMethodsStep()
-export default class HearingInformationPage extends ExuiPage(BasePage) {
+export default class HearingScheduledHearingInformationPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(heading),
