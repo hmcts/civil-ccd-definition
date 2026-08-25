@@ -20,7 +20,7 @@ export default class GenerateDirectionsOrderSchemaBuilder extends BaseSchemaBuil
     });
   }
 
-  async buildIntermediateOrder(caseDataBeforeSubmission?: CCDCaseData) {
+  async buildInterOrder(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
     });

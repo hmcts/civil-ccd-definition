@@ -1,4 +1,4 @@
-import MultiIntermediateTemplateTypes from '../../../../../constants/ccd-events/generate-directions-order/multi-intermediate-template-types';
+import MultiIntermediateTemplateTypes from '../../../../../constants/ccd-events/ccd-events/generate-directions-order/multi-intermediate-template-types';
 
 export const heading = 'Select template';
 

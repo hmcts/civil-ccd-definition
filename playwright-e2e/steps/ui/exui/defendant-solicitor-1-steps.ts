@@ -3,7 +3,8 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -38,7 +39,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.INFORM_AGREED_EXTENSION_DATE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -54,7 +58,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -75,7 +82,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     );
   }
 
-  async RespondFastFullDefence1v1() {
+  async RespondFastFullDefence() {
     const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryCCDEvent(
       async () => {
@@ -93,7 +100,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_APPLICANT_INTENTION,
+      },
     );
   }
 
@@ -204,7 +214,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -227,7 +240,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_APPLICANT_INTENTION,
+      },
     );
   }
 
@@ -249,7 +265,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_APPLICANT_INTENTION,
+      },
     );
   }
 
@@ -267,7 +286,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -285,7 +307,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -303,7 +328,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -320,7 +348,10 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await evidenceUploadRespondentActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
@@ -339,6 +370,45 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       { verifySuccessEvent: false },
+    );
+  }
+
+  async ReturnRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.returnToCaseworker();
+      },
+      async () => {
+        await refundActions.refundConfirmReturnedPage();
+      },
+    );
+  }
+
+  async ApproveRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.approve();
+      },
+      async () => {
+        await refundActions.refundConfirmApprovedPage();
+      },
+    );
+  }
+
+  async RejectRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.reject();
+      },
+      async () => {
+        await refundActions.refundConfirmRejectedPage();
+      },
     );
   }
 }

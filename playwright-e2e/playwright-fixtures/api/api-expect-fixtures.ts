@@ -1,24 +1,24 @@
 import { expect as baseExpect } from '@playwright/test';
 
 export const apiExpect = baseExpect.extend({
-  toBeOneOfStatuses(actualStatus: number, expectedStatus: number | number[]) {
-    const assertionName = 'toBeOneOfStatuses';
-    const isExpectedStatusList = Array.isArray(expectedStatus);
-    const expectedStatusMessage = this.utils.printExpected(expectedStatus);
-    const pass = isExpectedStatusList ? expectedStatus.includes(actualStatus) : expectedStatus === actualStatus;
+  toBeOneOf(actualValue: any, expectValue: any | any[]) {
+    const assertionName = 'toBeOneOf';
+    const isExpectedStatusList = Array.isArray(expectValue);
+    const expectedStatusMessage = this.utils.printExpected(expectValue);
+    const pass = isExpectedStatusList ? expectValue.includes(actualValue) : expectValue === actualValue;
 
     return {
       name: assertionName,
       pass,
-      expected: expectedStatus,
-      actual: actualStatus,
+      expected: expectValue,
+      actual: actualValue,
       message: () =>
         this.utils.matcherHint(assertionName, undefined, undefined, {
           isNot: this.isNot
         }) +
         '\n\n' +
-        `Expected Status(es): ${expectedStatusMessage}\n` +
-        `Received Status: ${this.utils.printReceived(actualStatus)}`
+        `Expected Value(s): ${expectedStatusMessage}\n` +
+        `Received Value: ${this.utils.printReceived(actualValue)}`
     };
   }
 });
