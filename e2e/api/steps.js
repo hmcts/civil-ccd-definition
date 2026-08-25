@@ -318,7 +318,11 @@ module.exports = {
     await updateLROrganisation(caseId, manageContactInformationData);
   },
 
-  createClaimWithRespondentLitigantInPerson: async (user, multipartyScenario) => {
+  createClaimWithRespondentLitigantInPerson: async (
+    user,
+    multipartyScenario,
+    assertServiceOwnedCallbackData = true
+  ) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
@@ -345,7 +349,7 @@ module.exports = {
       claimTypeUnSpec: 'CONSUMER_CREDIT'
     };
 
-    await validateEventPages(createClaimData);
+    await validateEventPages(createClaimData, undefined, assertServiceOwnedCallbackData);
 
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
@@ -468,7 +472,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
 
-  notifyClaimLip: async (user, multipartyScenario) => {
+  notifyClaimLip: async (user, multipartyScenario, assertServiceOwnedCallbackData = true) => {
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
     mpScenario = multipartyScenario;
@@ -479,7 +483,7 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     // assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data[eventName]);
+    await validateEventPages(data[eventName], undefined, assertServiceOwnedCallbackData);
     returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
 
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
@@ -516,7 +520,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
-  notifyClaimDetailsLip: async (user, multipartyScenario) => {
+  notifyClaimDetailsLip: async (user, multipartyScenario, assertServiceOwnedCallbackData = true) => {
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     mpScenario = multipartyScenario;
@@ -527,7 +531,7 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     // assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data[eventName]);
+    await validateEventPages(data[eventName], undefined, assertServiceOwnedCallbackData);
     returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
       returnedCaseData = {};
@@ -1468,18 +1472,18 @@ const getLatestMessageToReplyTo = (caseData) => {
   return null;
 };
 
-const validateEventPages = async (data, solicitor) => {
+const validateEventPages = async (data, solicitor, assertServiceOwnedCallbackData = true) => {
   //transform the data
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'DefendantLitigationFriend' || pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    await assertValidData(data, pageId, solicitor);
+    await assertValidData(data, pageId, solicitor, assertServiceOwnedCallbackData);
   }
 };
 
-const assertValidData = async (data, pageId, solicitor) => {
+const assertValidData = async (data, pageId, solicitor, assertServiceOwnedCallbackData = true) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
   const validDataForPage = data.valid[pageId];
@@ -1654,6 +1658,10 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
 
   delete caseData['notificationSummary'];
+
+  if (!assertServiceOwnedCallbackData) {
+    return;
+  }
 
   try {
     for (const [key, value] of Object.entries(caseData)) {

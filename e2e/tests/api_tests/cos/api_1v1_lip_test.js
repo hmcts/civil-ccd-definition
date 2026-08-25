@@ -6,9 +6,9 @@ Feature('Smoke - 1v1 LiP unspec claim lifecycle CCD wiring').tag('@civil-service
 // Service-owned lifecycle behaviour is covered by civil-service workflow integration tests.
 // This scenario only verifies CCD event, state and environment wiring.
 Scenario('Create and notify a claim with a LiP respondent through CCD', async ({api}) => {
-  await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaimLip(config.applicantSolicitorUser);
-  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
+  await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario, false);
+  await api.notifyClaimLip(config.applicantSolicitorUser, mpScenario, false);
+  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario, false);
 });
 
 AfterSuite(async ({api}) => {
