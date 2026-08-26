@@ -15,13 +15,12 @@ export default class JudgeGaSteps extends BaseGaExui {
 
   constructor(
     gaExuiDashboardActions: GaExuiDashboardActions,
-    exuiDashboardActions: ExuiDashboardActions,
     idamActions: IdamActions,
     judgeGaActionsFactory: JudgeGaActionsFactory,
     requestsFactory: RequestsFactory,
     testData: TestData,
   ) {
-    super(gaExuiDashboardActions, exuiDashboardActions, idamActions, requestsFactory, testData);
+    super(gaExuiDashboardActions, idamActions, requestsFactory, testData);
     this.judgeGaActionsFactory = judgeGaActionsFactory;
   }
 
