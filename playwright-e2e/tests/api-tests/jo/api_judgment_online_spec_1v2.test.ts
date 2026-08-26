@@ -4,7 +4,8 @@ test.describe(
   '1v2 spec record judgment api test',
   { tag: '@civil-service-nightly' },
   async () => {
-    test('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({
+    // DTSCCI-5198: same SET_ASIDE_JUDGMENT handler as the 1v1 JO smoke path.
+    test.skip('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
@@ -17,7 +18,8 @@ test.describe(
       await CaseworkerApiSteps.SetAsideJudgmentOrder();
     });
 
-    test('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline', async ({
+    // DTSCCI-5198: paid in full + set aside after defence are in civil-service integration tests.
+    test.skip('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
@@ -32,7 +34,8 @@ test.describe(
       await CaseworkerApiSteps.SetAsideJudgmentOrder();
     });
 
-    test('Record Judgment with mark judgment paid Spec claim 1v2', async ({
+    // DTSCCI-5198: record / edit covered by RecordJudgmentWorkflowTest and EditJudgmentWorkflowTest.
+    test.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
