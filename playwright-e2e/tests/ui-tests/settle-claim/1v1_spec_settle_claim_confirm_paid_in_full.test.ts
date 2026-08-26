@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures';
 
-test.describe('1v1 spec settle claim confirm paid in full', { tag: ['@civil-ccd-nightly'] }, () => {
+test.describe('1v1 spec settle claim confirm paid in full',  () => {
   test('1v1 spec - settle claim - confirm paid in full', async ({
     ClaimantSolicitorSpecApiSteps,
     DefendantSolicitor1SpecApiSteps,

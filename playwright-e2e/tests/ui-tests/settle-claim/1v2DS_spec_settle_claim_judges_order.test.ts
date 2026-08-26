@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures';
 
-test.describe('1v2DS spec settle claim judges order', { tag: ['@civil-ccd-nightly'] }, () => {
+test.describe('1v2DS spec settle claim judges order',  () => {
   test(`1v2DS spec - settle claim - reason for settlement - following judge's order`, async ({
     ClaimantSolicitorSpecApiSteps,
     DefendantSolicitor1SpecApiSteps,

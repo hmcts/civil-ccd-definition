@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1vLIP spec multi track journey', { tag: ['@civil-ccd-nightly'] }, () => {
+test.describe('1vLIP spec multi track journey',  () => {
   test('1vLIP spec multi track', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

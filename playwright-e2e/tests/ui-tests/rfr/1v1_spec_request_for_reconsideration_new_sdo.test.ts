@@ -2,9 +2,7 @@ import { test } from '../../../playwright-fixtures';
 
 test.describe(
   '1v1 spec request for reconsideration > create a new sdo',
-  {
-    tag: ['@civil-ccd-nightly'],
-  },
+  
   () => {
     test('1v1 spec request for reconsideration > create a new sdo', async ({
       ClaimantSolicitorSpecApiSteps,

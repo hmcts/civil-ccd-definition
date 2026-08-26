@@ -2,9 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 spec query management non-hearing journey',
-  {
-    tag: ['@civil-ccd-nightly'],
-  },
+  
   () => {
     test('1v1 spec query management non-hearing journey', async ({
       ClaimantSolicitorSpecApiSteps,

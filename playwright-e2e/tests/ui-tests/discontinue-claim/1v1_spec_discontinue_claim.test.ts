@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 spec discontinue claim', { tag: ['@civil-ccd-nightly'] }, () => {
+test.describe('1v1 spec discontinue claim',  () => {
   test('1v1 spec discontinue this claim - full discontinuance', async ({
     ClaimantSolicitorSpecSteps,
     ClaimantSolicitorSpecApiSteps,

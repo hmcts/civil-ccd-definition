@@ -2,7 +2,7 @@ import { test } from '../../../../playwright-fixtures';
 
 test.describe(
   'After SDO 1v2 - GA CP - Hearing Notice document',
-  { tag: ['@civil-ccd-nightly'] },
+  
   () => {
     test.fail(
       'Claimant Hearing notice - Without notice journey',

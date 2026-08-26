@@ -2,9 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2DS fast track with hearing request',
-  {
-    tag: ['@civil-ccd-nightly'],
-  },
+  
   () => {
     test('1v2DS create fast track with hearing request', async ({
       ClaimantSolicitorApiSteps,

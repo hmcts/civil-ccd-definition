@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2DS spec fast track flight delay claim journey',
-  { tag: ['@civil-ccd-nightly'] },
+  
   async () => {
     test('1v2DS spec fast track flight delay claim journey', async ({
       ClaimantSolicitorSpecSteps,
