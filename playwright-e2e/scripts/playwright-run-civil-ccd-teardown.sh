@@ -1,4 +1,4 @@
-if [ "$RUN_FAILED_TESTS" != "true" ]; then
+if [ "$RUN_FAILED_TESTS" = "true" ]; then
   PLAYWRIGHT_LAST_RUN_REPORT='playwright-functional-test-results/civil-ccd-nightly/.last-run.json'
 
   if [ ! -f "$PLAYWRIGHT_LAST_RUN_REPORT" ] || [ ! -s "$PLAYWRIGHT_LAST_RUN_REPORT" ]; then
