@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "ScannedDocumentType",
+    "ListElementCode": "cherished",
+    "ListElement": "Cherished",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ScannedDocumentType",
+    "ListElementCode": "other",
+    "ListElement": "Other",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "ScannedDocumentType",
+    "ListElementCode": "form",
+    "ListElement": "Form",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "ScannedDocumentType",
+    "ListElementCode": "coversheet",
+    "ListElement": "Coversheet",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "ScannedDocumentType",
+    "ListElementCode": "letter",
+    "ListElement": "Letter",
+    "DisplayOrder": 5
+  }
+]
