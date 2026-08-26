@@ -7,7 +7,7 @@ properties([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'],
       description: 'Should force pipeline to go green by not running any functional tests'),
     choice(name: 'RUN_FAILED_TESTS', choices: ['false', 'true'],
-      description: 'Runs the failed tests, if any, for CodeceptJS and Playwright tests'),
+      description: 'Runs the failed tests, if any, for CodeceptJS and Playwright tests, this also includes the ones not executed for CodeceptJS tests'),
     choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'],
       description: 'Environment to test'),
     string(name: 'PR_NUMBER',
