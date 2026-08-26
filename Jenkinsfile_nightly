@@ -356,7 +356,7 @@ withNightlyPipeline(type, product, component) {
         copyPrevFailedAndNotExecutedTestFilesJson()
         hasFailedTestFiles = checkHasFailedTestFiles()
       }
-      if (!runFailedTests || hasFailedTestFiles) {
+      if (!runFailedTests || !hasFailedTestFiles) {
         copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
       }
     }
@@ -366,7 +366,7 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
-      if (!runFailedTests || hasFailedTestFiles) {
+      if (!runFailedTests || !hasFailedTestFiles) {
         yarnBuilder.yarn('test:generate-report')
         publishAllureReport(
           'allure-functional-report',
