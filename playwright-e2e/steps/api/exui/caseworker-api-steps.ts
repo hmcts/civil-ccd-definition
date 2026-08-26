@@ -35,7 +35,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.ADD_CASE_NOTE,
       addCaseNoteData,
-      CaseState.CASE_ISSUED,
+      { expectedState: CaseState.CASE_ISSUED },
     );
 
     const { addCaseNoteSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
@@ -53,7 +53,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.AMEND_PARTY_DETAILS,
       amendPartyDetailsData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { amendPartyDetailsSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
@@ -71,7 +71,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.MEDIATION_UNSUCCESSFUL,
       mediationUnsuccessfulData,
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     const { mediationUnsuccessfulSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
@@ -238,7 +238,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT,
       validateDiscontinueClaimClaimantData,
-      CaseState.CASE_DISCONTINUED,
+      { expectedState: CaseState.CASE_DISCONTINUED },
     );
 
     const { validateDiscontinueClaimClaimantSchemaBuilder } =
@@ -261,7 +261,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT,
       validateDiscontinueClaimClaimantData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { validateDiscontinueClaimClaimantSchemaBuilder } =
@@ -300,6 +300,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       caseProceedsInCasemanData,
+      {expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM}
     );
 
     const { caseProceedsInCasemanSchemaBuilder } = this.caseworkerSchemaBuilderFactory;

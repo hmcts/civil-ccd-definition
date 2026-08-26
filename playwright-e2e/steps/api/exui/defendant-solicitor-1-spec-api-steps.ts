@@ -55,7 +55,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.INFORM_AGREED_EXTENSION_DATE_SPEC,
       informAgreedExtensionDateEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { informAgreedExtensionDateSpecSchemaBuilder } =
@@ -77,6 +77,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
+      { expectedState: [CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT, CaseState.AWAITING_APPLICANT_INTENTION] },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -145,7 +146,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -190,7 +191,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -215,7 +216,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -240,7 +241,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -265,7 +266,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -290,7 +291,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -315,7 +316,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -339,7 +340,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -364,7 +365,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -389,7 +390,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -414,7 +415,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -439,7 +440,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -464,7 +465,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -489,7 +490,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -514,7 +515,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -561,7 +562,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.PROCEEDS_IN_HERITAGE_SYSTEM,
+      { expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -628,7 +629,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -651,7 +652,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -674,7 +675,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -697,7 +698,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -722,7 +723,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -744,7 +745,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -767,7 +768,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -789,7 +790,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       evidenceUploadRespondentData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadRespondentSchemaBuilder } =
@@ -850,7 +851,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.REQUEST_FOR_RECONSIDERATION,
       requestForReconsiderationData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { requestForReconsiderationSchemaBuilder } =

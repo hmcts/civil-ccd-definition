@@ -38,7 +38,7 @@ export default class HearingCenterAdminGaApiSteps extends BaseApi {
       scheduleApplicationHearingFast,
       gaCCDEvents.HEARING_SCHEDULED_GA,
       hearingScheduledGaData,
-      GaCaseState.HEARING_SCHEDULED,
+      {expectedState: GaCaseState.HEARING_SCHEDULED},
     );
 
     const { hearingScheduledGaSchemaBuilder } = this.hearingCenterAdminGaSchemaBuilderFactory;

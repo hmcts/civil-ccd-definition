@@ -59,11 +59,11 @@ export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).
   CtscAdminSteps: async ({ _exuiDashboardActions, _idamActions, _ctscAdminActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new CtscAdminSteps(_exuiDashboardActions, _idamActions, _ctscAdminActionsFactory, _requestsFactory, _testData));
   },
-  HearingCenterAdminGaSteps: async ({ _gaExuiDashboardActions, _idamActions, _hearingCenterAdminGaActionsFactory, _requestsFactory, _testData }, use) => {
-    await use(new HearingCenterAdminGaSteps(_gaExuiDashboardActions, _idamActions, _hearingCenterAdminGaActionsFactory, _requestsFactory, _testData));
+  HearingCenterAdminGaSteps: async ({ _gaExuiDashboardActions, _exuiDashboardActions, _idamActions, _hearingCenterAdminGaActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new HearingCenterAdminGaSteps(_gaExuiDashboardActions, _exuiDashboardActions, _idamActions, _hearingCenterAdminGaActionsFactory, _requestsFactory, _testData));
   },
-  JudgeGaSteps: async ({ _gaExuiDashboardActions, _idamActions, _judgeGaActionsFactory, _requestsFactory, _testData }, use) => {
-    await use(new JudgeGaSteps(_gaExuiDashboardActions, _idamActions, _judgeGaActionsFactory, _requestsFactory, _testData));
+  JudgeGaSteps: async ({ _gaExuiDashboardActions, _exuiDashboardActions, _idamActions, _judgeGaActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new JudgeGaSteps(_gaExuiDashboardActions, _exuiDashboardActions, _idamActions, _judgeGaActionsFactory, _requestsFactory, _testData));
   },
   DefendantSolicitor1Steps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor1Steps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData));
