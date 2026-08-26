@@ -2,7 +2,6 @@ import BaseApi from '../../../base/base-api';
 import { hearingCenterAdminRegion1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import CaseState from '../../../constants/cases/case-state';
-import respondToQueryAdminTask from '../../../constants/wa-tasks/exui/respondToQueryAdminTask';
 import scheduleAHearingFastTrack from '../../../constants/wa-tasks/exui/scheduleAHearingFastTrack';
 import scheduleAHearing from '../../../constants/wa-tasks/exui/scheduleAHearing';
 import { AllMethodsStep } from '../../../decorators/test-steps';
@@ -39,7 +38,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -59,7 +58,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       scheduleAHearingFastTrack,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -97,7 +96,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       scheduleAHearing,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -122,6 +121,34 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     await super.fetchAndSetCCDCaseData();
   }
 
+  async GenerateHearingsPayload() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+
+    const { civilServiceRequests } = this.requestsFactory;
+    const hearingsPayload = await civilServiceRequests.getHearingsPayload(
+      hearingCenterAdminRegion1User,
+      this.ccdCaseData?.id,
+    );
+
+    const { serviceHearingValuesSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const serviceHearingValuesSchema = await serviceHearingValuesSchemaBuilder.build();
+    ZodHelper.safeParse(serviceHearingValuesSchema, hearingsPayload);
+  }
+
+  async GenerateHearingsPayloadSpec() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+
+    const { civilServiceRequests } = this.requestsFactory;
+    const hearingsPayload = await civilServiceRequests.getHearingsPayload(
+      hearingCenterAdminRegion1User,
+      this.ccdCaseData?.id,
+    );
+
+    const { serviceHearingValuesSpecSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const serviceHearingValuesSpecSchema = await serviceHearingValuesSpecSchemaBuilder.build();
+    ZodHelper.safeParse(serviceHearingValuesSpecSchema, hearingsPayload);
+  }
+
   async StayCase() {
     await this.setupApiStep(hearingCenterAdminRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -132,7 +159,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.STAY_CASE,
       stayCaseData,
-      CaseState.CASE_STAYED,
+      { expectedState: CaseState.CASE_STAYED },
     );
 
     const { stayCaseSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -184,7 +211,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.DISMISS_CASE,
       dismissCaseData,
-      CaseState.CASE_DISMISSED,
+      { expectedState: CaseState.CASE_DISMISSED },
     );
 
     const { dismissCaseSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;

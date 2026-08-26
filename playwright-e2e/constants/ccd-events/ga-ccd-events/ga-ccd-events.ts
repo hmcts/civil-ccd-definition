@@ -1,3 +1,4 @@
+import { description } from "../../../../wa/tasks/summaryJudgmentDirectionsTask";
 import GaCCDEvents from "../../../models/ccd-events/ga-ccd-events/ga-ccd-events";
 
 const gaCCDEvents: GaCCDEvents = {
@@ -24,7 +25,13 @@ const gaCCDEvents: GaCCDEvents = {
     description: 'Respond to Judge Additional Info',
     name: 'Respond to Judge Additional Info',
     order: 4
-  }
+  },
+  HEARING_SCHEDULED_GA: {
+    id: 'HEARING_SCHEDULED_GA',
+    description: 'Update General App Location',
+    name: 'Hearing Scheduled',
+    order: 4
+  },
 };
 
 export default gaCCDEvents;

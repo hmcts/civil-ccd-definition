@@ -36,7 +36,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildSmallFullDefence(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildSmallFullDefence(caseDataBeforeSubmission),
@@ -55,7 +55,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildFastFullDefence(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildFastFullDefence(caseDataBeforeSubmission),
@@ -74,7 +74,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildInterFullDefence(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildInterFullDefence(caseDataBeforeSubmission),
@@ -93,7 +93,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildMultiFullDefence(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildMultiFullDefence(caseDataBeforeSubmission),
@@ -112,7 +112,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildSmallFullAdmitImmediately(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildSmallFullAdmitImmediately(caseDataBeforeSubmission),
@@ -131,7 +131,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildSmallFullAdmitSetDate(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildSmallFullAdmitSetDate(caseDataBeforeSubmission),
@@ -150,7 +150,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildSmallFullAdmitRepayment(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildSmallFullAdmitRepayment(caseDataBeforeSubmission),
@@ -169,7 +169,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildFastFullAdmitImmediately(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildFastFullAdmitImmediately(caseDataBeforeSubmission),
@@ -188,7 +188,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildFastFullAdmitSetDate(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildFastFullAdmitSetDate(caseDataBeforeSubmission),
@@ -207,7 +207,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildFastFullAdmitRepayment(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildFastFullAdmitRepayment(caseDataBeforeSubmission),
@@ -226,7 +226,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildSmallPartAdmitImmediately(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildSmallPartAdmitImmediately(caseDataBeforeSubmission),
@@ -245,7 +245,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildSmallPartAdmitSetDate(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildSmallPartAdmitSetDate(caseDataBeforeSubmission),
@@ -264,7 +264,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildSmallPartAdmitRepayment(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildSmallPartAdmitRepayment(caseDataBeforeSubmission),
@@ -283,7 +283,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildFastPartAdmitImmediately(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildFastPartAdmitImmediately(caseDataBeforeSubmission),
@@ -302,7 +302,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildFastPartAdmitSetDate(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildFastPartAdmitSetDate(caseDataBeforeSubmission),
@@ -321,7 +321,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.DEFENDANT_RESPONSE_CUI,
       await defendantResponseCuiDataBuilder.buildFastPartAdmitRepayment(),
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
     ZodHelper.safeParse(
       await defendantResponseSchemaBuilder.buildFastPartAdmitRepayment(caseDataBeforeSubmission),
@@ -340,7 +340,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.EVIDENCE_UPLOAD_RESPONDENT,
       await evidenceUploadRespondentLipDataBuilder.build(),
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
     ZodHelper.safeParse(
       await evidenceUploadRespondentSchemaBuilder.build(caseDataBeforeSubmission),
@@ -377,7 +377,7 @@ export default class DefendantCitizenApiSteps extends BaseApi {
       this.defendantCitizenUser,
       cuiCCDEvents.REQUEST_FOR_RECONSIDERATION,
       await requestForReconsiderationLipDataBuilder.buildDefendant(),
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
     ZodHelper.safeParse(
       await requestForReconsiderationSchemaBuilder.buildDefendant(caseDataBeforeSubmission),

@@ -6,7 +6,7 @@ test.describe(
   async () => {
     test('1v2DS full defence defendant and claimant response', async ({
       ClaimantSolicitorApiSteps,
-      CaseworkerApiSteps,
+      CtscAdminApiSteps,
       DefendantSolicitor1ApiSteps,
       DefendantSolicitor2ApiSteps,
       CaseRoleAssignmentApiSteps,
@@ -21,13 +21,13 @@ test.describe(
       await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
       await ClaimantSolicitorApiSteps.RaiseLRQuery();
-      await CaseworkerApiSteps.RespondToQuery();
+      await CtscAdminApiSteps.RespondToQuery();
       await ClaimantSolicitorApiSteps.FollowUpOnLRQuery();
       await DefendantSolicitor1ApiSteps.RaiseLRQuery();
-      await CaseworkerApiSteps.RespondToQuery();
+      await CtscAdminApiSteps.RespondToQuery();
       await DefendantSolicitor1ApiSteps.FollowUpOnLRQuery();
       await DefendantSolicitor2ApiSteps.RaiseLRQuery();
-      await CaseworkerApiSteps.RespondToQuery();
+      await CtscAdminApiSteps.RespondToQuery();
       await DefendantSolicitor2ApiSteps.FollowUpOnLRQuery();
     });
   },

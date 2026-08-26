@@ -36,7 +36,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CREATE_LIP_CLAIM,
       await createLipClaimDataBuilder.buildSmall(),
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
     ZodHelper.safeParse(await createClaimSchemaBuilder.buildSmall(), this.ccdCaseData);
     UserAssignedCasesHelper.addAssignedCaseToUser(this.claimantCitizenUser, this.ccdCaseData?.id);
@@ -52,7 +52,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CREATE_LIP_CLAIM,
       await createLipClaimDataBuilder.buildFast(),
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
     ZodHelper.safeParse(await createClaimSchemaBuilder.buildFast(), this.ccdCaseData);
     UserAssignedCasesHelper.addAssignedCaseToUser(this.claimantCitizenUser, this.ccdCaseData?.id);
@@ -68,7 +68,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CREATE_LIP_CLAIM,
       await createLipClaimDataBuilder.buildInter(),
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
     ZodHelper.safeParse(await createClaimSchemaBuilder.buildInter(), this.ccdCaseData);
     UserAssignedCasesHelper.addAssignedCaseToUser(this.claimantCitizenUser, this.ccdCaseData?.id);
@@ -84,7 +84,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CREATE_LIP_CLAIM,
       await createLipClaimDataBuilder.buildMulti(),
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
     ZodHelper.safeParse(await createClaimSchemaBuilder.buildMulti(), this.ccdCaseData);
     UserAssignedCasesHelper.addAssignedCaseToUser(this.claimantCitizenUser, this.ccdCaseData?.id);
@@ -123,7 +123,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CLAIMANT_RESPONSE_CUI,
       await claimantResponseCuiDataBuilder.buildSmallRejectFullDefence(),
-      CaseState.IN_MEDIATION,
+      { expectedState: CaseState.IN_MEDIATION },
     );
     ZodHelper.safeParse(
       await claimantResponseSchemaBuilder.buildSmallRejectFullDefence(caseDataBeforeSubmission),
@@ -142,7 +142,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CLAIMANT_RESPONSE_CUI,
       await claimantResponseCuiDataBuilder.buildSmallRejectPartAdmit(),
-      CaseState.IN_MEDIATION,
+      { expectedState: CaseState.IN_MEDIATION },
     );
     ZodHelper.safeParse(
       await claimantResponseSchemaBuilder.buildSmallRejectPartAdmit(caseDataBeforeSubmission),
@@ -161,7 +161,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CLAIMANT_RESPONSE_CUI,
       await claimantResponseCuiDataBuilder.buildFastRejectFullDefence(),
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
     ZodHelper.safeParse(
       await claimantResponseSchemaBuilder.buildFastRejectFullDefence(caseDataBeforeSubmission),
@@ -198,7 +198,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CLAIMANT_RESPONSE_CUI,
       await claimantResponseCuiDataBuilder.buildMultiRejectFullDefence(),
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
     ZodHelper.safeParse(
       await claimantResponseSchemaBuilder.buildMultiRejectFullDefence(caseDataBeforeSubmission),
@@ -217,7 +217,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.CLAIMANT_RESPONSE_CUI,
       await claimantResponseCuiDataBuilder.buildSmallAcceptFullAdmitSetDateCcj(),
-      CaseState.All_FINAL_ORDERS_ISSUED,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
     ZodHelper.safeParse(
       await claimantResponseSchemaBuilder.buildSmallAcceptFullAdmitSetDateCcj(
@@ -238,7 +238,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.EVIDENCE_UPLOAD_APPLICANT,
       await evidenceUploadApplicantLipDataBuilder.build(),
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
     ZodHelper.safeParse(
       await evidenceUploadApplicantSchemaBuilder.build(caseDataBeforeSubmission),
@@ -275,7 +275,7 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
       this.claimantCitizenUser,
       cuiCCDEvents.REQUEST_FOR_RECONSIDERATION,
       await requestForReconsiderationLipDataBuilder.buildClaimant(),
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
     ZodHelper.safeParse(
       await requestForReconsiderationSchemaBuilder.buildClaimant(caseDataBeforeSubmission),
