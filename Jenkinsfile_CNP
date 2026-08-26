@@ -12,7 +12,7 @@ def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
 def dmnBranch = "master"
-def waStandaloneBranch = "master"
+def waStandaloneBranch = "DTSCCI-5827"
 def wiremockMappingsBranch = "master"
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
