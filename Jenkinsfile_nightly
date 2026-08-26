@@ -155,6 +155,15 @@ def copyPrevFailedAndNotExecutedTestFilesJson() {
   }
 }
 
+def checkPlaywrightLastRunStatus(expectedStatuses) {
+  def lastRunStatus = sh(
+    script: "jq -r '.status // empty' playwright-functional-test-results/civil-ccd-nightly/.last-run.json",
+    returnStdout: true
+  ).trim()
+  def statuses = expectedStatuses instanceof Collection ? expectedStatuses : [expectedStatuses]
+  return statuses.contains(lastRunStatus)
+}
+
 def copyCivilCCDNightlyTestResults() {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
@@ -163,14 +172,9 @@ def copyCivilCCDNightlyTestResults() {
     try {
       sh 'rm -rf playwright-functional-test-results/civil-ccd-nightly'
       copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "playwright-functional-test-results/civil-ccd-nightly/**/*"
-      def lastRunStatus = sh(
-        script: "jq -r '.status // empty' playwright-functional-test-results/civil-ccd-nightly/.last-run.json",
-        returnStdout: true
-      ).trim()
-
-      if (!(lastRunStatus == 'passed' || lastRunStatus == 'failed')) {
+      if (!checkPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
-          "Skipping copied playwright-functional-test-results from build ${buildNumber} because .last-run.json status was '${lastRunStatus}'"
+          "Skipping copied playwright-functional-test-results from build ${buildNumber} because .last-run.json status was not 'passed' or 'failed'"
         )
       }
       buildFound = true
@@ -245,16 +249,8 @@ withNightlyPipeline(type, product, component) {
   ])
   loadVaultSecrets(secrets)
 
-  boolean playwrightSetupPassed = true
-  boolean flowInterrupted = false
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
   boolean runFailedTests = env.RUN_FAILED_TESTS.toBoolean();
-  boolean playwrightRunSetup =
-    env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
-    env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP.toBoolean() ||
-    env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP.toBoolean() ||
-    env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean() ||
-    env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
 
 
   if(!forceGreenBuild) {
@@ -262,22 +258,35 @@ withNightlyPipeline(type, product, component) {
       if(runFailedTests) {
         copyCivilCCDNightlyTestResults()
       }
-      stage('Playwright test setup') {
-        try {
-          if(playwrightRunSetup) {
-            sh './playwright-e2e/scripts/playwright-run-civil-ccd-setup.sh'
-          }
-        } catch (Exception error) {
-          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-            flowInterrupted = true
-          }
-          if(playwrightRunSetup) {
-            playwrightSetupPassed=false
-          }
-          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-        } finally {
-          if(playwrightRunSetup) {
-            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+
+      boolean playwrightSetupPassed = true;
+      boolean flowInterrupted = false;
+      boolean lastRunPassed = env.RUN_FAILED_TESTS.toBoolean() && checkPlaywrightLastRunStatus('passed');
+      boolean playwrightRunSetup =
+        env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
+        env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP.toBoolean() ||
+        env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP.toBoolean() ||
+        env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean() ||
+        env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
+
+      if(!lastRunPassed) {
+        stage('Playwright test setup') {
+          try {
+            if(playwrightRunSetup) {
+              sh './playwright-e2e/scripts/playwright-run-civil-ccd-setup.sh'
+            }
+          } catch (Exception error) {
+            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+              flowInterrupted = true
+            }
+            if(playwrightRunSetup) {
+              playwrightSetupPassed=false
+            }
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+          } finally {
+            if(playwrightRunSetup ) {
+              yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+            }
           }
         }
       }
@@ -296,7 +305,7 @@ withNightlyPipeline(type, product, component) {
           }
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
-          if(playwrightSetupPassed) {
+          if(playwrightSetupPassed && !lastRunPassed) {
             archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-functional-test-results/**/*'
             copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
             sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
@@ -310,7 +319,7 @@ withNightlyPipeline(type, product, component) {
         }
       }
 
-      if(playwrightRunSetup) {
+      if(playwrightRunSetup && !lastRunPassed) {
         stage('Playwright test teardown') {
           try {
             sh './playwright-e2e/scripts/playwright-run-civil-ccd-teardown.sh'
