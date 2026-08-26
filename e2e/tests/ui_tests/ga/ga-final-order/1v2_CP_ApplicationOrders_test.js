@@ -6,7 +6,7 @@ const listForHearingStatus = states.LISTING_FOR_A_HEARING.name;
 let civilCaseReference, gaCaseReference, user;
 const config = require('../../../../config.js');
 Feature('Before SDO 1v2 - GA CP - Applications Orders')
-  .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-ga-final-order');
+  .tag('@civil-ccd-master @civil-ccd-pr @ui-ga-final-order');
 
 Scenario('1v2 - Assisted order - With Further Hearing', async ({ I, api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(

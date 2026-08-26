@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 create fast track claim with type housing disrepair and default judgment',
-  { tag: '@civil-ccd-nightly' },
+ 
   () => {
     test('1v1 create fast track claim with type housing disrepair and default judgment', async ({
       ClaimantSolicitorApiSteps,

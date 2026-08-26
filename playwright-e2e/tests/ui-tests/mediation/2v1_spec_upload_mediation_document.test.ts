@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '2v1 spec - SDO Carm - Upload mediation documents',
-  { tag: '@civil-ccd-nightly' },
+ 
   () => {
     test('2v1 spec - SDO Carm - Upload mediation documents', async ({
       ClaimantSolicitorSpecApiSteps,

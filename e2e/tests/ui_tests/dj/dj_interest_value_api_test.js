@@ -8,8 +8,8 @@ let judgmentBufferEnabled;
 
 // Non-scheduler scenarios (interest value at request + the eligibility rejection) carry @ui-judgment-buffer so
 // they run in the PR preview (no Elasticsearch needed). The full-flow scenarios (API-15..22) need the scheduler
-// to grant via Elasticsearch, so they run in nightly (AAT) only via the Feature-level @civil-ccd-nightly tag.
-Feature('DJ interest value - pure API (DTSCCI-3923)').tag('@civil-ccd-nightly @api-judgment-interest');
+// to grant via Elasticsearch, so they run in nightly (AAT) only via the Feature-level tag.
+Feature('DJ interest value - pure API (DTSCCI-3923)').tag('@api-judgment-interest');
 
 BeforeSuite(async () => {
   judgmentBufferEnabled = await checkToggleEnabled('judgment-buffer');

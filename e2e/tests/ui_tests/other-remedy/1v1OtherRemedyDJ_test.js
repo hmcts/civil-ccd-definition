@@ -7,7 +7,7 @@ if (config.runWAApiTest) {
 }
 const mpScenarioOtherRemedy = 'ONE_V_ONE_OTHER_REMEDY';
 
-Feature('1v1 Unspec Other Remedy default judgment').tag('@civil-ccd-nightly @ui-other-remedy-dj');
+Feature('1v1 Unspec Other Remedy default judgment').tag('@ui-other-remedy-dj');
 
 Scenario('01 Create 1v1 other remedy claim, notify claim, notify claim details, request default judgement', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenarioOtherRemedy, '11000');

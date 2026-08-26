@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 create fast track claim with type other remedy damages',
-  { tag: '@civil-ccd-nightly' },
+ 
   () => {
     test('1v1 create fast track claim with type other remedy damages', async ({
       ClaimantSolicitorSteps,

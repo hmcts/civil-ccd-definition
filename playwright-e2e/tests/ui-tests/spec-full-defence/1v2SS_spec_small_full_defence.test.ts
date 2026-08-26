@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2SS spec small track claim journey', { tag: '@civil-ccd-nightly' }, async () => {
+test.describe('1v2SS spec small track claim journey', async () => {
   test('1v2SS spec small track claim journey', async ({
     ClaimantSolicitorSpecSteps,
     DefendantSolicitor1SpecSteps,

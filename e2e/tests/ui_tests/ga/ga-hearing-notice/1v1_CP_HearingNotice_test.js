@@ -5,7 +5,7 @@ const hnStatus = states.HEARING_SCHEDULED.name;
 const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, gaCaseReference;
 const config = require('../../../../config.js');
-Feature('Before SDO 1v1 - GA CP - Hearing Notice document').tag('@civil-ccd-nightly @ui-ga-hearing-notice');
+Feature('Before SDO 1v1 - GA CP - Hearing Notice document').tag('@ui-ga-hearing-notice');
 
 BeforeSuite(async ({ api_ga }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(

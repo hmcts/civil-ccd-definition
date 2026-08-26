@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2 LIPs COS notify claim journey', { tag: '@civil-ccd-nightly' }, () => {
+test.describe('1v2 LIPs COS notify claim journey', () => {
   test('1v2 LIPs - notify and notify claim details', async ({
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,

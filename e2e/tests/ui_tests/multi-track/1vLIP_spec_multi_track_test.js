@@ -8,7 +8,7 @@ const config = require('../../../config.js');
 const { createAccount, deleteCitizenAccount } = require('../../../api/idamHelper');
 const claimAmountMulti = '200001';
 
-Feature('1vLIP spec multi track journey').tag('@civil-ccd-nightly @ui-multi-track');
+Feature('1vLIP spec multi track journey').tag('@ui-multi-track');
 
 Scenario('1vLIP multi track', async ({api_spec_cui, I}) => {
   const mpScenario = 'ONE_V_ONE';

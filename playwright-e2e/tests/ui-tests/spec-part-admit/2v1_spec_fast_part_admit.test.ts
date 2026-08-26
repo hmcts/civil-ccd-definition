@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('2v1 Multi Party fast part admit claim', { tag: '@civil-ccd-nightly' }, () => {
+test.describe('2v1 Multi Party fast part admit claim', () => {
   test('2v1 Multi Party fast part admit claim', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

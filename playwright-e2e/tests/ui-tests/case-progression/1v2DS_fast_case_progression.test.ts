@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2DS fast track case progression', { tag: '@civil-ccd-nightly' }, () => {
+test.describe('1v2DS fast track case progression', () => {
   test('1v2DS fast track case progression', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,

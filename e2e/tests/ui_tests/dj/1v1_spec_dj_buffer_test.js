@@ -15,7 +15,7 @@ let judgmentBufferEnabled;
 // The non-scheduler core (request -> buffer state, event options, registry guard) is tagged @ui-judgment-buffer
 // so it also runs in the PR preview, which does not have Elasticsearch enabled.
 Feature('1v1 spec default judgment - Judgment Buffer (LR claimant vs LiP defendant)')
-  .tag('@civil-ccd-nightly @ui-dj');
+  .tag('@ui-dj');
 
 BeforeSuite(async () => {
   judgmentBufferEnabled = await checkToggleEnabled('judgment-buffer');

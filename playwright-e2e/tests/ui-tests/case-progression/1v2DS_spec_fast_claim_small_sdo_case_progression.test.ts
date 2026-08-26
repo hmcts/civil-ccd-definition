@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2 spec fast claim to small sdo case progression', { tag: '@civil-ccd-nightly' }, () => {
+test.describe('1v2 spec fast claim to small sdo case progression', () => {
   test('1v2 spec fast claim to small sdo case progression', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
