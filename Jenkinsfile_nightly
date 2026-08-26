@@ -6,8 +6,8 @@ properties([
   parameters([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'],
       description: 'Should force pipeline to go green by not running any functional tests'),
-    choice(name: 'RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES', choices: ['false', 'true'],
-      description: 'Runs the failed test files and test files that were not executed, contained within the \'testFilesReport.json\', from the latest previous pipeline run'),
+    choice(name: 'RUN_FAILED_TESTS', choices: ['false', 'true'],
+      description: 'Runs the failed tests, if any, for CodeceptJS and Playwright tests'),
     choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'],
       description: 'Environment to test'),
     string(name: 'PR_NUMBER',
@@ -112,33 +112,19 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-void publishBootstrapReport() {
-    publishHTML([
-            allowMissing: true,
-            alwaysLinkToLastBuild: true,
-            keepAll: true,
-            reportDir: 'playwright-allure-bootstrap-report',
-            reportFiles: 'index.html',
-            reportName: 'Playwright Allure Bootstrap Report'
-        ])
-    sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-bootstrap-history"
-    archiveArtifacts artifacts: 'allure-bootstrap-history/**', fingerprint: true
-  }
+void publishAllureReport(String reportDir, String reportName, String historyArchiveDir) {
+  publishHTML([
+    alwaysLinkToLastBuild: true,
+    keepAll: true,
+    reportDir: reportDir,
+    reportFiles: 'index.html',
+    reportName: reportName
+  ])
+  sh "cp -r ./${reportDir}/history/ ./${historyArchiveDir}"
+  archiveArtifacts artifacts: "${historyArchiveDir}/**", fingerprint: true
+}
 
-  void publishFunctionalReport() {
-    publishHTML([
-            allowMissing: true,
-            alwaysLinkToLastBuild: true,
-            keepAll: true,
-            reportDir: 'playwright-allure-functional-report',
-            reportFiles: 'index.html',
-            reportName: 'Playwright Allure Functional Report'
-        ])
-    sh "cp -r ./playwright-allure-functional-report/history/  ./allure-functional-history"
-    archiveArtifacts artifacts: 'allure-functional-history/**', fingerprint: true
-  }
-
-def copyPreviousHistory(historyDir, resultsDir) {
+def copyPreviousAllureHistory(historyDir, resultsDir) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
@@ -149,31 +135,6 @@ def copyPreviousHistory(historyDir, resultsDir) {
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
-      buildNumber--
-    }
-  }
-}
-
-def copyPreviousAllureHistory() {
-  def buildFound = false
-  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
-  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
-  def targetDir = "test-results/functional/allure-results/history"
-
-  while (!buildFound && buildNumber > minBuildNumber) {
-    try {
-      copyArtifacts(
-        projectName: env.JOB_NAME,
-        selector: specific("${buildNumber}"),
-        filter: "test-results/functional/allure-report/history/*",
-        target: targetDir,
-        flatten: true
-      )
-
-      buildFound = true
-      echo "Successfully imported Allure history from build ${buildNumber}"
-    } catch (Exception error) {
-      echo "Allure history artifact not found in build ${buildNumber}. Trying previous..."
       buildNumber--
     }
   }
@@ -194,6 +155,32 @@ def copyPrevFailedAndNotExecutedTestFilesJson() {
   }
 }
 
+def copyCivilCCDNightlyTestResults() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      sh 'rm -rf playwright-functional-test-results/civil-ccd-nightly'
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "playwright-functional-test-results/civil-ccd-nightly/**/*"
+      def lastRunStatus = sh(
+        script: "jq -r '.status // empty' playwright-functional-test-results/civil-ccd-nightly/.last-run.json",
+        returnStdout: true
+      ).trim()
+
+      if (!(lastRunStatus == 'passed' || lastRunStatus == 'failed')) {
+        throw new Exception(
+          "Skipping copied playwright-functional-test-results from build ${buildNumber} because .last-run.json status was '${lastRunStatus}'"
+        )
+      }
+      buildFound = true
+    } catch (Exception error) {
+      echo "artifact not found: " + error.toString()
+      buildNumber--
+    }
+  }
+}
+
 def secrets = [
   'civil-${env}': [
     secret('microservicekey-civil-service', 'S2S_SECRET'),
@@ -206,7 +193,7 @@ def secrets = [
 
 withNightlyPipeline(type, product, component) {
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
-  env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES
+  env.RUN_FAILED_TESTS=params.RUN_FAILED_TESTS
   env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
@@ -261,7 +248,7 @@ withNightlyPipeline(type, product, component) {
   boolean playwrightSetupPassed = true
   boolean flowInterrupted = false
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
-  boolean runPrevFailedAndNotExecutedTestFiles = env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
+  boolean runFailedTests = env.RUN_FAILED_TESTS.toBoolean();
   boolean playwrightRunSetup =
     env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
     env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP.toBoolean() ||
@@ -270,13 +257,15 @@ withNightlyPipeline(type, product, component) {
     env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
 
 
-  if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
+  if(!forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
+      if(runFailedTests) {
+        copyCivilCCDNightlyTestResults()
+      }
       stage('Playwright test setup') {
         try {
-          yarnBuilder.yarn('test:playwright:setup:install')
           if(playwrightRunSetup) {
-            yarnBuilder.yarn('test:playwright:setup:civil-ccd-nightly:ci')
+            sh './playwright-e2e/scripts/playwright-run-civil-ccd-setup.sh'
           }
         } catch (Exception error) {
           if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
@@ -299,7 +288,7 @@ withNightlyPipeline(type, product, component) {
             throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
           }
           if(playwrightSetupPassed) {
-            yarnBuilder.yarn('test:playwright:civil-ccd-nightly:ci')
+            sh './playwright-e2e/scripts/playwright-run-civil-ccd-nightly-tests.sh'
           }
         } catch (Exception error) {
           if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
@@ -308,10 +297,15 @@ withNightlyPipeline(type, product, component) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
           if(playwrightSetupPassed) {
-            copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-functional-test-results/**/*'
+            copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
             sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
             yarnBuilder.yarn('test:playwright:functional:generate-report')
-            publishFunctionalReport()
+            publishAllureReport(
+              'playwright-allure-functional-report',
+              'Playwright Allure Functional Report',
+              'playwright-allure-functional-history'
+            )
           }
         }
       }
@@ -319,14 +313,18 @@ withNightlyPipeline(type, product, component) {
       if(playwrightRunSetup) {
         stage('Playwright test teardown') {
           try {
-            yarnBuilder.yarn('test:playwright:teardown:civil-ccd-nightly:ci')
+            sh './playwright-e2e/scripts/playwright-run-civil-ccd-teardown.sh'
           } catch (Exception error) {
             unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
           } finally {
-            copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+            copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
             sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
             yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
-            publishBootstrapReport()
+            publishAllureReport(
+              'playwright-allure-bootstrap-report',
+              'Playwright Allure Bootstrap Report',
+              'playwright-allure-bootstrap-history'
+            )
           }
         }
       }
@@ -335,10 +333,10 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-      if(runPrevFailedAndNotExecutedTestFiles) {
+      if(runFailedTests) {
         copyPrevFailedAndNotExecutedTestFilesJson()
       }
-      copyPreviousAllureHistory()
+      copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
     }
   }
 
@@ -346,15 +344,12 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
-      steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
-      publishHTML([
-        allowMissing: false,
-        alwaysLinkToLastBuild: true,
-        keepAll: true,
-        reportDir: 'test-results/functional/allure-report',
-        reportFiles: 'index.html',
-        reportName: 'Nightly E2E Allure Report'
-      ])
+      yarnBuilder.yarn('test:generate-report')
+      publishAllureReport(
+        'allure-functional-report',
+        'Allure Functional Report',
+        'allure-functional-history',
+      )
       archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     }
   }

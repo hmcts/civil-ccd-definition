@@ -34,6 +34,8 @@
     "test:civil-wa-master": "yarn playwright install chromium && MOCHAWESOME_REPORTFILENAME=civil-wa-master FUNCTIONAL=true npx codeceptjs run-workers --suites 4 --grep @civil-wa-master --reporter mocha-multi --verbose",
     "test:civil-wa-pr": "yarn playwright install chromium && MOCHAWESOME_REPORTFILENAME=civil-wa-pr FUNCTIONAL=true npx codeceptjs run-workers --suites 4 --grep @civil-wa-pr --reporter mocha-multi --verbose",
     "test:civil-wa-nightly": "yarn playwright install chromium && MOCHAWESOME_REPORTFILENAME=civil-wa-nightly FUNCTIONAL=true npx codeceptjs run-workers --suites 4 --grep @civil-wa-nightly --reporter mocha-multi --verbose",
+    "test:generate-report": "allure generate allure-functional-results --clean -o allure-functional-report",
+    "test:open-report": "allure open allure-functional-report",
     "test:functional": "./e2e/run-functional-tests.sh",
     "test:ui-case-flags": "MOCHAWESOME_REPORTFILENAME=ui-case-flags npx codeceptjs run-workers --suites 2 --grep @ui-case-flags --reporter mocha-multi --verbose",
     "test:ui-case-offline": "MOCHAWESOME_REPORTFILENAME=ui-case-offline npx codeceptjs run-workers --suites 2 --grep @ui-case-offline --reporter mocha-multi --verbose",
