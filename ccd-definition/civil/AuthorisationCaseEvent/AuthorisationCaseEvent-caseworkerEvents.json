@@ -166,7 +166,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "ATTACH_SCANNED_DOCS",
+    "CaseEventID": "attachScannedDocs",
     "AccessControl": [
       {
         "UserRoles": [

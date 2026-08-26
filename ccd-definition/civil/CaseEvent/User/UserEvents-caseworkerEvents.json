@@ -63,7 +63,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "ATTACH_SCANNED_DOCS",
+    "ID": "attachScannedDocs",
     "Name": "Attach scanned docs",
     "Description": "Attach scanned documents to a case",
     "PreConditionState(s)": "*",
