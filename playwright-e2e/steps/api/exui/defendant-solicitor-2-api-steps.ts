@@ -206,7 +206,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
     ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
   }
   
-  async InitiateGeneralApplication() {
+  async InitiateGA() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -220,11 +220,18 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
       initiateGeneralApplicationData,
     );
 
-    const { initiateGeneralApplicationSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const initiateGeneralApplicationSchema =
-      await initiateGeneralApplicationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
-    ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, super.getGaCCDCaseIdFromParentCase());
+    // const { initiateGeneralApplicationSchemaBuilder } =
+    //   this.claimantDefendantSolicitorSchemaBuilderFactory;
+    // const initiateGeneralApplicationSchema =
+    //   await initiateGeneralApplicationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
+    // ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+
+    const { initiateGeneralApplicationGaSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const initiateGeneralApplicationSpecGaSchema =
+        await initiateGeneralApplicationGaSchemaBuilder.build();
+      ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
+
+    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, super.getGaCCDCaseData()?.id);
   }
 }
