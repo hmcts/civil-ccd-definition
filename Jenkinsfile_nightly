@@ -155,13 +155,21 @@ def copyPrevFailedAndNotExecutedTestFilesJson() {
   }
 }
 
-def checkPlaywrightLastRunStatus(expectedStatuses) {
+def checkHasPlaywrightLastRunStatus(expectedStatuses) {
   def lastRunStatus = sh(
     script: "jq -r '.status // empty' playwright-functional-test-results/civil-ccd-nightly/.last-run.json",
     returnStdout: true
   ).trim()
   def statuses = expectedStatuses instanceof Collection ? expectedStatuses : [expectedStatuses]
   return statuses.contains(lastRunStatus)
+}
+
+def checkHasFailedTestFiles() {
+  def failedTestFiles = sh(
+    script: "jq -r '.failedTestFiles | length' test-results/functional/testFilesReport.json",
+    returnStdout: true
+  ).trim()
+  return failedTestFiles == '0'
 }
 
 def copyCivilCCDNightlyTestResults() {
@@ -172,7 +180,7 @@ def copyCivilCCDNightlyTestResults() {
     try {
       sh 'rm -rf playwright-functional-test-results/civil-ccd-nightly'
       copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "playwright-functional-test-results/civil-ccd-nightly/**/*"
-      if (!checkPlaywrightLastRunStatus(['passed', 'failed'])) {
+      if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
           "Skipping copied playwright-functional-test-results from build ${buildNumber} because .last-run.json status was not 'passed' or 'failed'"
         )
@@ -261,7 +269,7 @@ withNightlyPipeline(type, product, component) {
 
       boolean playwrightSetupPassed = true;
       boolean flowInterrupted = false;
-      boolean lastRunPassed = env.RUN_FAILED_TESTS.toBoolean() && checkPlaywrightLastRunStatus('passed');
+      boolean lastRunPassed = env.RUN_FAILED_TESTS.toBoolean() && checkHasPlaywrightLastRunStatus('passed');
       boolean playwrightRunSetup =
         env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
         env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP.toBoolean() ||
@@ -306,7 +314,6 @@ withNightlyPipeline(type, product, component) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
           if(playwrightSetupPassed && !lastRunPassed) {
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-functional-test-results/**/*'
             copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
             sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
             yarnBuilder.yarn('test:playwright:functional:generate-report')
@@ -316,6 +323,7 @@ withNightlyPipeline(type, product, component) {
               'playwright-allure-functional-history'
             )
           }
+          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-functional-test-results/**/*'
         }
       }
 
@@ -340,12 +348,17 @@ withNightlyPipeline(type, product, component) {
     }
   }
 
+  boolean hasFailedTestFiles = false;
+
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
       if(runFailedTests) {
         copyPrevFailedAndNotExecutedTestFilesJson()
+        hasFailedTestFiles = checkHasFailedTestFiles()
       }
-      copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
+      if (!runFailedTests || hasFailedTestFiles) {
+        copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
+      }
     }
   }
 
@@ -353,12 +366,14 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
-      yarnBuilder.yarn('test:generate-report')
-      publishAllureReport(
-        'allure-functional-report',
-        'Allure Functional Report',
-        'allure-functional-history',
-      )
+      if (!runFailedTests || hasFailedTestFiles) {
+        yarnBuilder.yarn('test:generate-report')
+        publishAllureReport(
+          'allure-functional-report',
+          'Allure Functional Report',
+          'allure-functional-history',
+        )
+      }
       archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     }
   }
