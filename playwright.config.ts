@@ -28,6 +28,7 @@ export default defineConfig({
             detail: false,
           },
         ],
+        ['./playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts'],
       ]
     : 'list',
   timeout: 1_200_000,
@@ -103,7 +104,7 @@ export default defineConfig({
     },
     {
       name: 'civil-ccd-nightly',
-      outputDir: './playwright-functional-test-results/civil-ccd-nightly',
+      outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
       grep: /@civil-ccd-nightly/,
@@ -111,7 +112,7 @@ export default defineConfig({
     },
     {
       name: 'civil-service-nightly',
-      outputDir: './playwright-functional-test-results/civil-service-nightly',
+      outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
       grep: /@civil-service-nightly/,
@@ -119,7 +120,7 @@ export default defineConfig({
     },
     {
       name: 'debug',
-      outputDir: './playwright-functional-test-results/debug',
+      outputDir: `${config.playwright.functionalTestResultsDir}/debug`,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
       grep: /@debug/,
