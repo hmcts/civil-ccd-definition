@@ -31,12 +31,18 @@
     "CaseFieldID": "liftBreathing",
     "AccessControl": [
       {
-        "UserRoles": ["APP-SOL-SPEC-PROFILE", "APP-SOL-UNSPEC-PROFILE", "CITIZEN-CLAIMANT-PROFILE"],
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
