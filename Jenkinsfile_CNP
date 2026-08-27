@@ -24,13 +24,13 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-def copyPrevFailedAndNotExecutedTestFilesJson() {
+def copyPrevTestFilesReport(reportFilePath) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/testFilesReport.json"
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: reportFilePath
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
@@ -325,7 +325,7 @@ withPipeline(type, product, component) {
     } else if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
       env.RUN_ALL_FUNCTIONAL_TESTS = true
     } else {
-      copyPrevFailedAndNotExecutedTestFilesJson();
+      copyPrevTestFilesReport("test-results/functional/testFilesReport.json");
     }
   }
 
@@ -376,7 +376,7 @@ withPipeline(type, product, component) {
   before('functionalTest:aat') {
     env.IDAM_STUB_ENABLED = 'false'
     copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
-    copyPrevFailedAndNotExecutedTestFilesJson();
+    copyPrevTestFilesReport("test-results/functional/testFilesReport.json");
     env.UNASSIGN_CASES = true
   }
 

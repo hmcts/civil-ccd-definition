@@ -140,13 +140,13 @@ def copyPreviousAllureHistory(historyDir, resultsDir) {
   }
 }
 
-def copyPrevFailedAndNotExecutedTestFilesJson() {
+def copyPrevTestFilesReport(reportFilePath) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/testFilesReport.json"
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: reportFilePath
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
@@ -172,17 +172,21 @@ def checkHasFailedTestFiles() {
   return failedTestFiles == '0'
 }
 
-def copyCivilCCDNightlyTestResults() {
+def copyPrevPlaywrightLastRun() {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
       sh "rm -rf ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}"
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
+      copyArtifacts(
+        projectName: env.JOB_NAME,
+        selector: specific("${buildNumber}"),
+        filter: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+      )
       if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
-          "Skipping copied playwright-functional-test-results from build ${buildNumber} because .last-run.json status was not 'passed' or 'failed'"
+          "Skipping copied .last-run.json from build ${buildNumber} because status was not 'passed' or 'failed'"
         )
       }
       buildFound = true
@@ -265,7 +269,8 @@ withNightlyPipeline(type, product, component) {
   if(!forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
       if(runFailedTests) {
-        copyCivilCCDNightlyTestResults()
+        copyPrevPlaywrightLastRun()
+        copyPrevTestFilesReport("${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json")
       }
 
       boolean playwrightSetupPassed = true;
@@ -354,7 +359,7 @@ withNightlyPipeline(type, product, component) {
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
       if(runFailedTests) {
-        copyPrevFailedAndNotExecutedTestFilesJson()
+        copyPrevTestFilesReport("test-results/functional/testFilesReport.json")
         hasFailedTestFiles = checkHasFailedTestFiles()
       }
       if (!runFailedTests || !hasFailedTestFiles) {
