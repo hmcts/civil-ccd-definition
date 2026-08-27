@@ -283,24 +283,22 @@ withNightlyPipeline(type, product, component) {
         env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean() ||
         env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
 
-      if(!lastRunPassed) {
-        stage('Playwright test setup') {
-          try {
-            if(playwrightRunSetup) {
-              sh './playwright-e2e/scripts/playwright-run-civil-ccd-setup.sh'
-            }
-          } catch (Exception error) {
-            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-              flowInterrupted = true
-            }
-            if(playwrightRunSetup) {
-              playwrightSetupPassed=false
-            }
-            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-          } finally {
-            if(playwrightRunSetup ) {
-              yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
-            }
+      stage('Playwright test setup') {
+        try {
+          if(playwrightRunSetup) {
+            sh './playwright-e2e/scripts/playwright-run-civil-ccd-setup.sh'
+          }
+        } catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+          if(playwrightRunSetup) {
+            playwrightSetupPassed=false
+          }
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(playwrightRunSetup && !lastRunPassed) {
+            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
           }
         }
       }
@@ -333,21 +331,23 @@ withNightlyPipeline(type, product, component) {
         }
       }
 
-      if(playwrightRunSetup && !lastRunPassed) {
+      if(playwrightRunSetup) {
         stage('Playwright test teardown') {
           try {
             sh './playwright-e2e/scripts/playwright-run-civil-ccd-teardown.sh'
           } catch (Exception error) {
             unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
           } finally {
-            copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
-            sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
-            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
-            publishAllureReport(
-              'playwright-allure-bootstrap-report',
-              'Playwright Allure Bootstrap Report',
-              'playwright-allure-bootstrap-history'
-            )
+            if(!lastRunPassed) {
+              copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+              sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
+              yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+              publishAllureReport(
+                'playwright-allure-bootstrap-report',
+                'Playwright Allure Bootstrap Report',
+                'playwright-allure-bootstrap-history'
+              )
+            }
           }
         }
       }
