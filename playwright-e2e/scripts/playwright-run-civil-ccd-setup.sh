@@ -1,5 +1,5 @@
 if [ "$RUN_FAILED_TESTS" = "true" ]; then
-  PLAYWRIGHT_LAST_RUN_REPORT='playwright-functional-test-results/civil-ccd-nightly/.last-run.json'
+  PLAYWRIGHT_LAST_RUN_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
 
   if [ ! -f "$PLAYWRIGHT_LAST_RUN_REPORT" ] || [ ! -s "$PLAYWRIGHT_LAST_RUN_REPORT" ]; then
     echo ".last-run.json not found or is empty."
