@@ -7,7 +7,7 @@ if [ "$RUN_FAILED_TESTS" = "true" ]; then
     exit 1
 
   # Check if the previous last run json has status passed.
-  elif [ "$(jq -r '.status // empty' "$PLAYWRIPREV_PLAYWRIGHT_LAST_RUN_REPORTGHT_LAST_RUN_REPORT")" = "passed" ]; then
+  elif [ "$(jq -r '.status // empty' "$PREV_PLAYWRIGHT_LAST_RUN_REPORT")" = "passed" ]; then
     echo ".last-run.json status is passed"
     exit 0
     
