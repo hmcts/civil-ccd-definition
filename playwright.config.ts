@@ -9,28 +9,7 @@ export default defineConfig({
   fullyParallel: true,
   retries: config.playwright.retries ?? 0,
   workers: config.playwright.workers,
-  reporter: process.env.CI
-    ? [
-        [
-          'allure-playwright',
-          {
-            outputFolder:
-              process.env.FUNCTIONAL === 'true'
-                ? 'playwright-allure-functional-results'
-                : 'playwright-allure-bootstrap-results',
-            environmentInfo: {
-              Environment: config.environment,
-              Workers: process.env.PLAYWRIGHT_WORKERS,
-              OS: os.platform(),
-              Architecture: os.arch(),
-              NodeVersion: process.version,
-            },
-            detail: false,
-          },
-        ],
-        ['./playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts'],
-      ]
-    : 'list',
+  reporter: getReporter(),
   timeout: 1_200_000,
   expect: {
     timeout: 60_000,
@@ -127,3 +106,32 @@ export default defineConfig({
     },
   ],
 });
+
+function getReporter(): any {
+  const allurePlaywright = [
+    'allure-playwright',
+    {
+      outputFolder: 'playwright-allure-functional-results',
+      environmentInfo: {
+        Environment: config.environment,
+        Workers: process.env.PLAYWRIGHT_WORKERS,
+        OS: os.platform(),
+        Architecture: os.arch(),
+        NodeVersion: process.version,
+      },
+      detail: false,
+    },
+  ];
+
+  const failedAndNotExecutedTestFilesReporter = ['./playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts'];
+  
+  if (process.env.CI && process.env.PLAYWRIGHT_FUNCTIONAL) {
+    return [
+      allurePlaywright,
+      failedAndNotExecutedTestFilesReporter,
+    ];
+  } else if (process.env.CI)  {
+    return [allurePlaywright];
+  }
+  return 'list';
+}
