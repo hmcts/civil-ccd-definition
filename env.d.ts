@@ -3,6 +3,7 @@ declare global {
     interface ProcessEnv {
       CI: string;
       FUNCTIONAL: string;
+      PLAYWRIGHT_FUNCTIONAL: string;
       PLAYWRIGHT_WORKERS: string;
       ENVIRONMENT: string;
       URL: string;
