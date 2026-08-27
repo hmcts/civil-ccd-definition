@@ -272,8 +272,7 @@ withNightlyPipeline(type, product, component) {
       if(runFailedTests) {
         copyPrevPlaywrightLastRun()
         copyPrevTestFilesReport(
-          "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}",
-          "playwrightTestFilesReport.json"
+          "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/playwrightTestFilesReport.json"
         )
       }
 
