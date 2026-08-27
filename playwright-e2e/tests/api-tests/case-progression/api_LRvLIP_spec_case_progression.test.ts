@@ -18,6 +18,6 @@ test.describe('1v1 LIP v LIP and LR v LIP spec api journeys', { tag: '@civil-ser
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
     await DefendantCitizenApiSteps.TrailReadiness();
-    await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
+    await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
   });
 });

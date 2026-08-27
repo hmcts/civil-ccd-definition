@@ -22,7 +22,7 @@ test.describe(
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await ClaimantCitizenApiSteps.TrailReadiness();
       await DefendantCitizenApiSteps.TrailReadiness();
-      await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
     });
   },
 );

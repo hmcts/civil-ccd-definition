@@ -71,7 +71,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.ACKNOWLEDGE_CLAIM,
       acknowledgeClaimData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { acknowledgeClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -91,7 +91,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.ACKNOWLEDGE_CLAIM,
       acknowledgeClaimData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { acknowledgeClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -111,7 +111,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.ACKNOWLEDGE_CLAIM,
       acknowledgeClaimData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { acknowledgeClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -135,7 +135,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.INFORM_AGREED_EXTENSION_DATE,
       informAgreedExtensionDateEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { informAgreedExtensionDateSchemaBuilder } =
@@ -158,7 +158,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
       addDefendantLitigationFriendData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { addDefendantLitigationFriendSchemaBuilder } =
@@ -179,7 +179,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -200,7 +200,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -221,7 +221,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -242,7 +242,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -265,7 +265,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -286,7 +286,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -307,7 +307,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -330,32 +330,12 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
       await defendantResponseSchemaBuilder.buildDS1MultiFullDefence1v2SS(caseDataBeforeSubmission);
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
-  }
-
-  async RespondFastFullDefence1v2DS() {
-    await this.setupApiStep(defendantSolicitor1User);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-
-    const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const defendantResponseEventData = await defendantResponseDataBuilder.buildDS1FastFullDefence();
-
-    await super.submitCCDEvent(
-      defendantSolicitor1User,
-      ccdEvents.DEFENDANT_RESPONSE,
-      defendantResponseEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
-    );
-
-    const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS1FastFullDefence(caseDataBeforeSubmission);
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
@@ -371,7 +351,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -394,7 +374,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -436,7 +416,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       evidenceUploadRespondentData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadRespondentSchemaBuilder } =
@@ -458,7 +438,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       evidenceUploadRespondentData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadRespondentSchemaBuilder } =
@@ -479,7 +459,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       evidenceUploadRespondentData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadRespondentSchemaBuilder } =

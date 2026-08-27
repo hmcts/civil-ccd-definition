@@ -7,6 +7,7 @@ import {
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import judgmentOnlineSetAsideTakeCaseOffline from '../../../constants/wa-tasks/exui/judgmentOnlineSetAsideTakeCaseOffline';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
@@ -104,6 +105,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await stayCaseActions.confirmStayCase();
       },
       ccdEvents.STAY_CASE,
+      { expectedState: CaseState.CASE_STAYED },
     );
   }
 
@@ -176,7 +178,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
