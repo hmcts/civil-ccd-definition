@@ -13,7 +13,7 @@ if [ "$RUN_FAILED_TESTS" = "true" ]; then
     
   # Check if the last run json has a status other than failed.
   elif [ "$(jq -r '.status // empty' "$PLAYWRIGHT_LAST_RUN_REPORT")" != "failed" ]; then
-    LAST_RUN_STATUS=$(jq -r '.status // empty' "$PREV_PLAYWRIGHT_LAST_RUN_REPORT")
+    LAST_RUN_STATUS=$(jq -r '.status // empty' "$PLAYWRIGHT_LAST_RUN_REPORT")
     echo ".last-run.json status is '$LAST_RUN_STATUS', expected 'passed' or 'failed'"
     exit 1
 
