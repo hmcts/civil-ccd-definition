@@ -64,6 +64,7 @@ export default abstract class BaseGaExui extends BaseApi {
     }
     await confirmActions();
     if (verifySuccessEvent) await this.gaExuiDashboardActions.verifySuccessEvent(ccdEvent);
+    await this.gaExuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id);
     await this.fetchAndSetGaCCDCaseData(this.getGaCCDCaseData()?.id, undefined, expectedState);
   }
@@ -111,6 +112,7 @@ export default abstract class BaseGaExui extends BaseApi {
     }
     await confirmActions();
     if (verifySuccessEvent) await this.gaExuiDashboardActions.verifySuccessEvent(ccdEvent);
+    await this.gaExuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id);
     await this.fetchAndSetGaCCDCaseData(this.getGaCCDCaseData()?.id, undefined, expectedState);
     if(config.waEnabled)
