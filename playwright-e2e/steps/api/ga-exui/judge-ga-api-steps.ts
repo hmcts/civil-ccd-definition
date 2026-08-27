@@ -38,7 +38,7 @@ export default class JudgeGaApiSteps extends BaseApi {
       judgeDecideOnApplicationFast,
       gaCCDEvents.MAKE_DECISION,
       makeDecisionData,
-      GaCaseState.AWAITING_ADDITIONAL_INFORMATION,
+      { expectedState: GaCaseState.AWAITING_ADDITIONAL_INFORMATION },
     );
 
     const { makeDecisionSchemaBuilder } = this.judgeGaSchemaBuilderFactory;
@@ -58,7 +58,7 @@ export default class JudgeGaApiSteps extends BaseApi {
       judgeDecideOnApplicationFast,
       gaCCDEvents.MAKE_DECISION,
       makeDecisionData,
-      GaCaseState.LISTING_FOR_A_HEARING,
+      { expectedState: GaCaseState.LISTING_FOR_A_HEARING },
     );
 
     const { makeDecisionSchemaBuilder } = this.judgeGaSchemaBuilderFactory;

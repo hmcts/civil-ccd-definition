@@ -26,7 +26,7 @@ test.describe(
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
-      await JudgeApiSteps.GenerateDirectionsOrderAssistedOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderAssisted();
     });
 
     test.skip('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages (fast track) - hearing scheduled', async ({

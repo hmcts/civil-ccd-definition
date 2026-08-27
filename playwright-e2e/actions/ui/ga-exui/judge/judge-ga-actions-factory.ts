@@ -1,9 +1,9 @@
 import BasePageActionsFactory from '../../../../base/base-page-actions-factory';
-import MakeDecisionPageFactory from '../../../../pages/ga-exui/judge/make-decision/make-decision-page-factory';
-import MakeDecisionActions from './make-decision/make-decision-actions';
+import GenerateDirectionsOrderGaPageFactory from '../../../../pages/ga-exui/judge/generate-directions-order-ga/generate-directions-order-ga-page-factory';
+import GenerateDirectionsOrderGaActions from './generate-directions-order-ga/generate-directions-order-ga-actions';
 
 export default class JudgeGaActionsFactory extends BasePageActionsFactory {
-  get makeDecisionActions() {
-    return new MakeDecisionActions(new MakeDecisionPageFactory(this.page), this.testData);
+  get generateDirectionsOrderGaActions() {
+    return new GenerateDirectionsOrderGaActions(new GenerateDirectionsOrderGaPageFactory(this.page), this.testData);
   }
 }
