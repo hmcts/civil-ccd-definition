@@ -10,6 +10,7 @@ test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' },
       DefendantSolicitor1Steps,
       HearingCenterAdminSteps,
     }) => {
+      test.setTimeout(1_000);
       await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
