@@ -2,28 +2,36 @@ if [ "$RUN_FAILED_TESTS" = "true" ]; then
   PLAYWRIGHT_TEST_FILES_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
   PREV_PLAYWRIGHT_TEST_FILES_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/prevPlaywrightTestFilesReport.json"
   PLAYWRIGHT_LAST_RUN_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+  PREV_PLAYWRIGHT_LAST_RUN_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.prev-last-run.json"
 
   mv "$PLAYWRIGHT_TEST_FILES_REPORT" "$PREV_PLAYWRIGHT_TEST_FILES_REPORT"
+  mv "$PLAYWRIGHT_LAST_RUN_REPORT" "$PREV_PLAYWRIGHT_LAST_RUN_REPORT"
 
   # Check if the last run json is not found or is empty.
-  if [ ! -f "$PLAYWRIGHT_LAST_RUN_REPORT" ] || [ ! -s "$PLAYWRIGHT_LAST_RUN_REPORT" ]; then
+  if [ ! -f "$PREV_PLAYWRIGHT_LAST_RUN_REPORT" ] || [ ! -s "$PREV_PLAYWRIGHT_LAST_RUN_REPORT" ]; then
     echo ".last-run.json not found or is empty."
     exit 1
 
   # Check if the last run json has status passed.
-  elif [ "$(jq -r '.status // empty' "$PLAYWRIGHT_LAST_RUN_REPORT")" = "passed" ]; then
+  elif [ "$(jq -r '.status // empty' "$PREV_PLAYWRIGHT_LAST_RUN_REPORT")" = "passed" ]; then
     echo ".last-run.json status is passed"
     exit 0
     
   # Check if the last run json has a status other than failed.
-  elif [ "$(jq -r '.status // empty' "$PLAYWRIGHT_LAST_RUN_REPORT")" != "failed" ]; then
-    LAST_RUN_STATUS=$(jq -r '.status // empty' "$PLAYWRIGHT_LAST_RUN_REPORT")
-    echo ".last-run.json status is '$LAST_RUN_STATUS', expected 'passed' or 'failed'"
+  elif [ "$(jq -r '.status // empty' "$PREV_PLAYWRIGHT_LAST_RUN_REPORT")" != "failed" ]; then
+    PREV_LAST_RUN_STATUS=$(jq -r '.status // empty' "$PREV_PLAYWRIGHT_LAST_RUN_REPORT")
+    echo ".last-run.json status is '$PREV_LAST_RUN_STATUS', expected 'passed' or 'failed'"
     exit 1
+
+  else
+    # Run the Playwright setup install and nightly tests for a failed last run.
+    export PLAYWRIGHT_FUNCTIONAL=true
+    yarn test:playwright:setup:install
+    yarn test:playwright:civil-ccd-nightly:ci --last-failed --last-failed-file="$PREV_PLAYWRIGHT_LAST_RUN_REPORT"
   fi
 fi
 
-# Run the Playwright setup install and nightly tests for a failed last run or a normal run.
+# Run the Playwright setup install and nightly tests for a normal run.
 export PLAYWRIGHT_FUNCTIONAL=true
 yarn test:playwright:setup:install
 yarn test:playwright:civil-ccd-nightly:ci
