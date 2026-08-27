@@ -1,5 +1,5 @@
 if [ "$RUN_FAILED_TESTS" = "true" ]; then
-  PREV_PLAYWRIGHT_LAST_RUN_REPORT="playwright-functional-results/.prev-last-run.json"
+  PREV_PLAYWRIGHT_LAST_RUN_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.prev-last-run.json"
 
   # Check if the previous last run json is not found or is empty.
   if [ ! -f "$PREV_PLAYWRIGHT_LAST_RUN_REPORT" ] || [ ! -s "$PREV_PLAYWRIGHT_LAST_RUN_REPORT" ]; then

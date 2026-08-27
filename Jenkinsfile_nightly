@@ -157,7 +157,7 @@ def copyPrevTestFilesReport(reportFilePath) {
 
 def checkHasPlaywrightLastRunStatus(expectedStatuses) {
   def lastRunStatus = sh(
-    script: "jq -r '.status // empty' ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json",
+    script: "jq -r '.status // empty' ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json",
     returnStdout: true
   ).trim()
   def statuses = expectedStatuses instanceof Collection ? expectedStatuses : [expectedStatuses]
@@ -178,11 +178,11 @@ def copyPrevPlaywrightLastRun() {
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      sh "rm -rf ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}"
+      sh "rm -rf ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}"
       copyArtifacts(
         projectName: env.JOB_NAME,
         selector: specific("${buildNumber}"),
-        filter: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+        filter: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json"
       )
       if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
@@ -208,7 +208,8 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
-  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'playwright-functional-test-results/civil-ccd-nightly'
+  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'playwright-functional-test-results'
+  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR = 'civil-ccd-nightly'
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_FAILED_TESTS=params.RUN_FAILED_TESTS
   env.ENVIRONMENT=params.ENVIRONMENT
@@ -270,7 +271,10 @@ withNightlyPipeline(type, product, component) {
     afterAlways('DependencyCheckNightly') {
       if(runFailedTests) {
         copyPrevPlaywrightLastRun()
-        copyPrevTestFilesReport("${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json")
+        copyPrevTestFilesReport(
+          "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}",
+          "playwrightTestFilesReport.json"
+        )
       }
 
       boolean playwrightSetupPassed = true;
@@ -327,7 +331,7 @@ withNightlyPipeline(type, product, component) {
               'playwright-allure-functional-history'
             )
           }
-          archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
+          archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/**/*"
         }
       }
 
