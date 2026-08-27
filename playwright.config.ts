@@ -108,10 +108,10 @@ export default defineConfig({
 });
 
 function getReporter(): any {
-  const allurePlaywright = [
+  const allurePlaywright = (outputFolder: string) => [
     'allure-playwright',
     {
-      outputFolder: 'playwright-allure-functional-results',
+      outputFolder: outputFolder,
       environmentInfo: {
         Environment: config.environment,
         Workers: process.env.PLAYWRIGHT_WORKERS,
@@ -127,11 +127,11 @@ function getReporter(): any {
   
   if (process.env.CI && process.env.PLAYWRIGHT_FUNCTIONAL) {
     return [
-      allurePlaywright,
+      allurePlaywright('playwright-allure-functional-results'),
       failedAndNotExecutedTestFilesReporter,
     ];
   } else if (process.env.CI)  {
-    return [allurePlaywright];
+    return [allurePlaywright('playwright-allure-bootstrap-results')];
   }
   return 'list';
 }
