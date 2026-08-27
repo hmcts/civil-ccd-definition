@@ -91,6 +91,6 @@ export default class FailedAndNotExecutedTestFilesReporter implements Reporter {
       // ftGroups: process.env.PR_FT_GROUPS?.split(',') ?? null,
     };
 
-    await FileSystemHelper.writeFileAsync(report, reportPath, FileType.JSON, { force: true });
+    await FileSystemHelper.writeFileAsync(report, reportPath, FileType.JSON);
   }
 }
