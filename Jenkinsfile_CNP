@@ -43,7 +43,6 @@ def copyPreviousAllureHistory(historyDir, resultsDir) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
-  def targetDir = "${resultsDir}/history"
 
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
@@ -53,7 +52,7 @@ def copyPreviousAllureHistory(historyDir, resultsDir) {
         filter: "**/${historyDir}/**",
         target: resultsDir
       )
-      sh "mv ${resultsDir}/${historyDir} ${targetDir}"
+      sh "mv ${resultsDir}/${historyDir} ${resultsDir}/history"
       buildFound = true
       echo "Successfully imported Allure history from build ${buildNumber}"
     } catch (Exception error) {
