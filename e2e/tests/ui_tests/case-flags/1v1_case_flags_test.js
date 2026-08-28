@@ -14,7 +14,6 @@ Scenario('01 Prepare 1v1 unspec claim up to case progression', async ({api, I}) 
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   // await api.notifyClaim(config.applicantSolicitorUser);
   // await api.notifyClaimDetails(config.applicantSolicitorUser);
-  throw Error('This test does not work');
   // await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
   // await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
   // caseNumber = await api.getCaseId();
