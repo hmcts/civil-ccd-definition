@@ -70,7 +70,7 @@ properties([
       description: 'Number of times playwright will retry tests'),
     string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1',
       description: 'Number of times playwright tests will retry exui events'),
-    string(name: 'PLAYWRIGHT_IDAM_RETRIES', defaultValue: '2',
+    string(name: 'PLAYWRIGHT_IDAM_RETRIES', defaultValue: '1',
       description: 'Number of times playwright tests will retry idam events'),
     choice(name: 'PLAYWRIGHT_TEST_SPEED', choices: ['fast', 'medium', 'slow'],
       description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),

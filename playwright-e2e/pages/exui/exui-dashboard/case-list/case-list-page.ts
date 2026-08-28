@@ -16,7 +16,7 @@ export default class CaseListPage extends BasePage {
     await super.retryGoTo(
       urls.manageCase,
       () =>
-        super.expectUrlEnd('/cases', { timeout: 6_000 }),
+        super.expectUrlEnd('/cases', { timeout: 5_000 }),
       undefined,
       { retries: 1 },
     );
