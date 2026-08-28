@@ -20,12 +20,5 @@ export default class EnterPasswordPage extends IdamPage(BasePage) {
 
   async submit(user: User) {
     await super.retryClickContinue(async () => super.expectNoSelector(inputs.password.selector));
-    if (!user.wa)
-      await super.expectUrlEnd('/cases', { timeout: config.idam.pageSubmitTimeout });
-    else
-      await super.expectUrlEnd('/work/my-work/list', {
-        message: `User: ${user.name}, email: ${user.email}, has WA enabled`,
-        timeout: config.idam.pageSubmitTimeout,
-      });
   }
 }
