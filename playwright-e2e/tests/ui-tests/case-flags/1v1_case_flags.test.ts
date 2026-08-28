@@ -11,7 +11,6 @@ test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' },
       HearingCenterAdminSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
-      throw new Error('This test fails');
       // await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       // await ClaimantSolicitorApiSteps.NotifyClaim();
       // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
