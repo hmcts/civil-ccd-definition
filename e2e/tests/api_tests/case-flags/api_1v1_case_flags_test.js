@@ -5,7 +5,6 @@ Feature('1v1 case flags api journey').tag('@civil-service-nightly @api-case-flag
 
 Scenario('1v1 case flags', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  throw Error('This test does not work');
   // await api.notifyClaim(config.applicantSolicitorUser);
   // await api.notifyClaimDetails(config.applicantSolicitorUser);
   // await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
