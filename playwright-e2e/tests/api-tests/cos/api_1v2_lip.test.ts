@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Unspec 1v2lips api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('Unspec 1v2lips api journey',  async () => {
   test('Create claim where one respondent is LIP one is LR and notify/notify details', async ({
     ClaimantSolicitorApiSteps,
   }) => {

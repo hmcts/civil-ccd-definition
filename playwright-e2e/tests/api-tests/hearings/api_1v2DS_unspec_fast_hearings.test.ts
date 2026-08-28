@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('CCD 1v2 Unspec fast hearings API test', { tag: '@civil-service-nightly' }, async () => {
+test.describe('CCD 1v2 Unspec fast hearings API test',  async () => {
   test('1v2DS full defence defendant and claimant response', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,

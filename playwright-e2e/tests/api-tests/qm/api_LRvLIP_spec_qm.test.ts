@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('LR v LIP query management spec api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('LR v LIP query management spec api journey',  async () => {
   test('LR v LIP query management spec', async ({
     ClaimantSolicitorSpecApiSteps,
     DefendantCitizenApiSteps,

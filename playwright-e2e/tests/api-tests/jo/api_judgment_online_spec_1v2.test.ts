@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2 spec record judgment api test',
-  { tag: '@civil-service-nightly' },
+  
   async () => {
     test('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({
       ClaimantSolicitorSpecApiSteps,

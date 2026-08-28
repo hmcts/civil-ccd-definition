@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   'Noise Induced Hearing Loss API test - fast claim - unspec',
-  { tag: '@civil-service-nightly' },
+  
   async () => {
     test('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({
       ClaimantSolicitorApiSteps,

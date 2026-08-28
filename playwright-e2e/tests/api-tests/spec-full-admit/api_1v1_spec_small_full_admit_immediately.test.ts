@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 spec small claims full admit api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('1v1 spec small claims full admit api journey',  async () => {
   test('1v1 spec small claims full admit setup before defendant response', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

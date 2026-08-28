@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2 spec default judgement api journey',
-  { tag: '@civil-service-nightly' },
+  
   async () => {
     test('Default Judgment Spec claim 1v2 non divergent', async ({
       ClaimantSolicitorSpecApiSteps,

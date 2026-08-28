@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Request for reconsideration - 1v1 - spec', { tag: '@civil-service-nightly' }, async () => {
+test.describe('Request for reconsideration - 1v1 - spec',  async () => {
   test('1v1 spec request for reconsideration for uphold previous order', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

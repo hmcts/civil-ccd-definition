@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 dispute resolution hearing api journey',
-  { tag: '@civil-service-nightly' },
+  
   async () => {
     test('1v1 full defence unspecified - judge draws small claims DRH - hearing scheduled', async ({
       ClaimantSolicitorApiSteps,

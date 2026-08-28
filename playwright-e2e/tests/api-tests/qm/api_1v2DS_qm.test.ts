@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2 different solicitor query management api journey',
-  { tag: '@civil-service-nightly' },
+  
   async () => {
     test('1v2DS full defence defendant and claimant response', async ({
       ClaimantSolicitorApiSteps,

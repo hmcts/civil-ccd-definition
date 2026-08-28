@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Spec small claims mediation api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('Spec small claims mediation api journey',  async () => {
   test('1v2 same solicitor claimant and defendant upload mediation documents', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

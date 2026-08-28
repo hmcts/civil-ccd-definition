@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2 different solicitor unspec full defence api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('1v2 different solicitor unspec full defence api journey',  async () => {
   test('1v2 different solicitor unspec full defence', async ({
     ClaimantSolicitorApiSteps,
     CaseworkerApiSteps,

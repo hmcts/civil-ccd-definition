@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2SS spec small full admit set date api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('1v2SS spec small full admit set date api journey',  async () => {
   test('1v2SS spec small full admit set date', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
