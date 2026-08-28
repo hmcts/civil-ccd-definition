@@ -18,7 +18,7 @@ export default class EnterPasswordPage extends IdamPage(BasePage) {
     await super.inputSensitiveText(user.password, inputs.password.selector);
   }
 
-  async submit(user: User) {
+  async submit() {
     await super.retryClickContinue(async () => super.expectNoSelector(inputs.password.selector));
   }
 }

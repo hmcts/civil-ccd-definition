@@ -12,12 +12,18 @@ export default class MyWorkPage extends BasePage {
     ])
   }
 
-  async verifyUrl() {
-    await super.expectUrlEnd('/work/my-work/list', { timeout: config.idam.pageSubmitTimeout });
+  async openManageCase() {
+    await super.retryGoTo(
+      urls.manageCase,
+      () =>
+         super.expectUrlEnd('/work/my-work/list', { timeout: 6_000 }),
+      undefined,
+      { retries: 1 },
+    );
   }
 
-  async verifyUrlQuick() {
-    await super.expectUrlEnd('/work/my-work/list', { timeout: 6_000 });
+  async verifyUrl() {
+    await super.expectUrlEnd('/work/my-work/list', { timeout: config.idam.pageSubmitTimeout });
   }
 
   async openCaseList() {
