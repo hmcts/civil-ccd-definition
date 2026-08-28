@@ -3,7 +3,7 @@ const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_TWO_SAME_SOL';
 let civilCaseReference, gaCaseReference;
 
-Feature('Spec 1v2 - General Application after SDO Journey').tag('@civil-service-nightly @api-ga-make-decision');
+Feature('Spec 1v2 - General Application after SDO Journey').tag('@api-ga-make-decision');
 
 Scenario.skip('Spec Claimant create GA - CASE_PROGRESSION state', async ({ api_ga, I }) => {
   civilCaseReference = await api_ga.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

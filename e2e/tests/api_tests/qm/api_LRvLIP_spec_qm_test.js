@@ -12,7 +12,7 @@ const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQ
 
 let caseId;
 
-Feature('LR v LIP query management spec api journey').tag('@civil-service-nightly');
+Feature('LR v LIP query management spec api journey');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);

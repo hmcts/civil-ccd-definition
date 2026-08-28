@@ -3,7 +3,7 @@ const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge Dismiss Application API tests').tag('@civil-service-nightly @api-ga-make-decision');
+Feature('GA 1v2 Judge Dismiss Application API tests').tag('@api-ga-make-decision');
 
 Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION', async ({api_ga}) => {
 

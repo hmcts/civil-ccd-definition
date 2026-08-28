@@ -8,7 +8,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 //  const judgeUser = config.judgeUserWithRegionId1Local;
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('1v2 spec record judgment api test').tag('@civil-service-nightly');
+Feature('1v2 spec record judgment api test');
 
 // DTSCCI-5198 REDUCE: same SET_ASIDE_JUDGMENT handler as the 1v1 JO smoke path.
 Scenario.skip('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {

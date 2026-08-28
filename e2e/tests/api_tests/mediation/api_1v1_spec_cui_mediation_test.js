@@ -15,7 +15,7 @@ let mediationAdmin = config.nbcUserWithRegionId1;
 
 // set config.localMediationTests to true to run locally
 Feature('Unsuccessful mediation for spec small claim with unrepresented defendant')
-  .tag('@civil-service-nightly @api-mediation');
+  .tag('@api-mediation');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);

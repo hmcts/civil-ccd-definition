@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 
-Feature('Inform agreed extension date spec notifications').tag('@civil-service-nightly @api-spec-full-defence @dtscci-5893');
+Feature('Inform agreed extension date spec notifications').tag('@api-spec-full-defence @dtscci-5893');
 
 Scenario('1v1 spec - respondent solicitor 1 agrees extension - applicant solicitor notified', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

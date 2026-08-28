@@ -9,7 +9,7 @@ const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper')
 
 let caseId;
 
-Feature('LIPvLIP spec request for reconsideration api journeys').tag('@civil-service-nightly');
+Feature('LIPvLIP spec request for reconsideration api journeys');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);

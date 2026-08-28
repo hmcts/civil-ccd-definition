@@ -7,7 +7,7 @@ const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQ
 const claimType = 'SmallClaims';
 let caseId;
 
-Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@civil-service-nightly');
+Feature('1v1 LIP v LIP and LR v LIP spec api journeys');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);

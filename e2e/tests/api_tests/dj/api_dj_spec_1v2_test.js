@@ -2,7 +2,7 @@
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO';
 
-Feature('Spec 1v2 api default judgment journey').tag('@civil-service-nightly @api-dj');
+Feature('Spec 1v2 api default judgment journey').tag('@api-dj');
 
 // DTSCCI-5198 REDUCE: DEFAULT_JUDGEMENT_SPEC non-divergent 1v2 is service-owned
 // (DefaultJudgementSpecWorkflowTest). Spec 1v1 remains the API smoke path.
