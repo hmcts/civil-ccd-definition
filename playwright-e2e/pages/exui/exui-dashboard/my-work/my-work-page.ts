@@ -16,7 +16,7 @@ export default class MyWorkPage extends BasePage {
     await super.retryGoTo(
       urls.manageCase,
       () =>
-         super.expectUrlEnd('/work/my-work/list', { timeout: 6_000 }),
+         super.expectUrlEnd('/work/my-work/list', { timeout: 5_000 }),
       undefined,
       { retries: 1 },
     );
