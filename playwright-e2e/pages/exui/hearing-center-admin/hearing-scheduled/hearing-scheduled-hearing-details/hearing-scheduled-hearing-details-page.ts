@@ -4,12 +4,12 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import preferredCourts from '../../../../../config/preferred-courts.ts';
 import partys from '../../../../../constants/users/partys.ts';
 import DateHelper from '../../../../../helpers/date-helper.ts';
-import { heading, radioButtons, inputs, dropdowns } from './hearing-details-content.ts';
+import { heading, radioButtons, inputs, dropdowns } from './hearing-scheduled-hearing-details-content.ts';
 import DateFragment from '../../../fragments/date/date-fragment.ts';
 import { Page } from 'playwright-core';
 
 @AllMethodsStep()
-export default class HearingDetailsPage extends ExuiPage(BasePage) {
+export default class HearingScheduledHearingDetailsPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
 
   constructor(page: Page, dateFragment: DateFragment) {
