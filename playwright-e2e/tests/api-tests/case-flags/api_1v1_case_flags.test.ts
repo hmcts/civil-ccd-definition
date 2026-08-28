@@ -8,17 +8,18 @@ test.describe('1v1 case flags api journey', { tag: '@civil-service-nightly' }, a
     HearingCenterAdminApiSteps,
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
-    await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-    await ClaimantSolicitorApiSteps.NotifyClaim();
-    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-    await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-    await ClaimantSolicitorApiSteps.RespondFastProceed();
-    await HearingCenterAdminApiSteps.CreateCaseFlagCaseLevel();
-    await HearingCenterAdminApiSteps.CreateCaseFlagClaimant1();
-    await HearingCenterAdminApiSteps.CreateCaseFlagDefendant1();
-    await HearingCenterAdminApiSteps.ManageCaseFlagCaseLevel();
-    await HearingCenterAdminApiSteps.ManageCaseFlagClaimant1();
-    await HearingCenterAdminApiSteps.ManageCaseFlagDefendant1();
+    throw new Error('This test does not work')
+    // await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+    // await ClaimantSolicitorApiSteps.NotifyClaim();
+    // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+    // await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+    // await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
+    // await ClaimantSolicitorApiSteps.RespondFastProceed();
+    // await HearingCenterAdminApiSteps.CreateCaseFlagCaseLevel();
+    // await HearingCenterAdminApiSteps.CreateCaseFlagClaimant1();
+    // await HearingCenterAdminApiSteps.CreateCaseFlagDefendant1();
+    // await HearingCenterAdminApiSteps.ManageCaseFlagCaseLevel();
+    // await HearingCenterAdminApiSteps.ManageCaseFlagClaimant1();
+    // await HearingCenterAdminApiSteps.ManageCaseFlagDefendant1();
   });
 });
