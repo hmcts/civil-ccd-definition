@@ -45,13 +45,12 @@ export default class IdamActions extends BaseApi {
       let firstAttempt = false;
       while (retries >= 0) {
         try {
+          await enterEmailPage.openManageCase();
           if(!firstAttempt) {
             await pageCookiesManager.addIdamCookies();
             await this.setupUserData(user);
             await pageCookiesManager.addExuiCookies(user);
-            await enterEmailPage.openManageCase();
           } else {
-            await enterEmailPage.openManageCase();
             try {
               if(user.wa) {
                 await myWorkPage.verifyUrlQuick(); 
@@ -65,7 +64,6 @@ export default class IdamActions extends BaseApi {
           // await loginPage.openManageCase();
           // await loginPage.verifyContent();
           // await loginPage.manageCaseLogin(user);
-          await enterEmailPage.openManageCase();
           await enterEmailPage.verifyContent();
           await enterEmailPage.enterEmail(user);
           await enterEmailPage.submit();
