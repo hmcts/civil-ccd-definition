@@ -12,6 +12,8 @@ Feature('Unspec 1v1 api default judgment journey').tag('@api-dj');
 
 let caseId;
 
+// DTSCCI-5198: DJ callback is in DefaultJudgementWorkflowTest. Keep this
+// nightly journey for SDO, evidence, hearing fee and trial readiness after DJ.
 Scenario('01 Default Judgment claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
@@ -59,6 +61,7 @@ Scenario('05 Verify Case progression trial bundle', async ({I, api, WA}) => {
 });
 
 Scenario.skip('06 Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
+  // DTSCCI-5198: remains skipped. WA listing task, not service DJ logic.
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);

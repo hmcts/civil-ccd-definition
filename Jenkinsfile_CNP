@@ -385,8 +385,8 @@ withPipeline(type, product, component) {
 
   afterAlways('functionalTest:aat') {
     createGithubRelease()
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     yarnBuilder.yarn('test:generate-report')
     publishAllureReport('allure-functional-report', 'Allure Functional Report', 'allure-functional-history')
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 }
