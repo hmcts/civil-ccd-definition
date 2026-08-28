@@ -8,6 +8,7 @@ test.describe('1v1 case flags api journey', { tag: '@civil-service-nightly' }, a
     HearingCenterAdminApiSteps,
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+    throw new Error('This test does not work')
     // await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     // await ClaimantSolicitorApiSteps.NotifyClaim();
     // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
