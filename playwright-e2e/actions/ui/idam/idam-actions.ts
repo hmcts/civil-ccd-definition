@@ -45,7 +45,6 @@ export default class IdamActions extends BaseApi {
       let firstAttempt = false;
       while (retries >= 0) {
         try {
-          await enterEmailPage.openManageCase();
           if(!firstAttempt) {
             await pageCookiesManager.addIdamCookies();
             await this.setupUserData(user);
@@ -53,9 +52,9 @@ export default class IdamActions extends BaseApi {
           } else {
             try {
               if(user.wa) {
-                await myWorkPage.verifyUrlQuick(); 
+                await myWorkPage.openManageCase();
               } else {
-                await caseListPage.verifyUrlQuick();
+                await caseListPage.openManageCase();
               }
               break;
               // eslint-disable-next-line no-empty
@@ -64,12 +63,13 @@ export default class IdamActions extends BaseApi {
           // await loginPage.openManageCase();
           // await loginPage.verifyContent();
           // await loginPage.manageCaseLogin(user);
+          await enterEmailPage.openManageCase();
           await enterEmailPage.verifyContent();
           await enterEmailPage.enterEmail(user);
           await enterEmailPage.submit();
           await enterPasswordPage.verifyContent();
           await enterPasswordPage.enterPassword(user);
-          await enterPasswordPage.submit(user);
+          await enterPasswordPage.submit();
           if(user.wa) {
             await myWorkPage.verifyUrl();
           } else {
