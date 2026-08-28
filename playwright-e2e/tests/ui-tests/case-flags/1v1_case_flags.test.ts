@@ -16,7 +16,6 @@ test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' },
       // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       // await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       // await DefendantSolicitor1ApiSteps.AddLitigationFriend();
-      throw Error('Test does not work')
       // await DefendantSolicitor1Steps.Login();
       // await DefendantSolicitor1Steps.RespondSmallFullDefence1v1();
       // await ClaimantSolicitorSteps.Login();
