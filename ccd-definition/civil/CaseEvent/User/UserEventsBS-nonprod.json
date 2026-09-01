@@ -16,8 +16,7 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
+    "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
     "CaseTypeID": "CIVIL",
@@ -37,6 +36,6 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
+    "EventEnablingCondition": "enterBreathing=\"*\""
   }
 ]
