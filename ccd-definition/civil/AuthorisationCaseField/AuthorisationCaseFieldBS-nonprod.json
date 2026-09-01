@@ -7,13 +7,13 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
           "RES-SOL-ONE-SPEC-PROFILE",
@@ -33,14 +33,13 @@
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
-          "APP-SOL-UNSPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser",
           "RES-SOL-ONE-SPEC-PROFILE",
