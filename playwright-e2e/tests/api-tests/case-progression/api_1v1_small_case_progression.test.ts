@@ -1,10 +1,11 @@
 import { test } from '../../../playwright-fixtures/index';
 
+// DTSCCI-5196: service logic covered by CreateSdoWorkflowTest, HearingScheduledWorkflowTest
 test.describe(
   '1v1 small case progression api journey',
   { tag: '@civil-service-nightly' },
   async () => {
-    test('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({
+    test.skip('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
@@ -28,7 +29,7 @@ test.describe(
       await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
     });
 
-    test('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({
+    test.skip('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
