@@ -95,7 +95,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -110,39 +110,39 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS2MultiFullDefence1v2DS();
+      await defendantResponseDataBuilder.buildDS2MultiFullDefence();
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS2MultiFullDefence1v2DS(caseDataBeforeSubmission);
+      await defendantResponseSchemaBuilder.buildDS2MultiFullDefence(caseDataBeforeSubmission);
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondInterFullDefence1v2DS() {
+  async RespondInterFullDefence() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS2InterFullDefence1v2DS();
+      await defendantResponseDataBuilder.buildDS2InterFullDefence();
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS2InterFullDefence1v2DS(caseDataBeforeSubmission);
+      await defendantResponseSchemaBuilder.buildDS2InterFullDefence(caseDataBeforeSubmission);
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }

@@ -158,7 +158,11 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
       addDefendantLitigationFriendData,
-      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
+      { expectedState: [
+          CaseState.AWAITING_APPLICANT_INTENTION,
+          CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+        ],
+      },
     );
 
     const { addDefendantLitigationFriendSchemaBuilder } =
@@ -200,7 +204,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -351,35 +355,12 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
       await defendantResponseSchemaBuilder.buildDS1InterFullDefence(
-        caseDataBeforeSubmission,
-      );
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
-  }
-
-  async RespondInterFullDefence1v2DS() {
-    await this.setupApiStep(defendantSolicitor1User);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-
-    const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS1InterFullDefence1v2DS();
-
-    await super.submitCCDEvent(
-      defendantSolicitor1User,
-      ccdEvents.DEFENDANT_RESPONSE,
-      defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
-    );
-
-    const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS1InterFullDefence1v2DS(
         caseDataBeforeSubmission,
       );
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
@@ -397,6 +378,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
+      {expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT]},
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
