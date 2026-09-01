@@ -4,8 +4,8 @@ import {
   defendantSolicitor1User,
   defendantSolicitor2User,
 } from '../../../../config/users/exui-users';
-import FollowUp from '../../../../constants/ccd-events/query-management-raise/follow-up';
-import HearingRelated from '../../../../constants/ccd-events/query-management-raise/hearing-related';
+import FollowUp from '../../../../constants/ccd-events/ccd-events/query-management-raise/follow-up';
+import HearingRelated from '../../../../constants/ccd-events/ccd-events/query-management-raise/hearing-related';
 import partys from '../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/users/partys';

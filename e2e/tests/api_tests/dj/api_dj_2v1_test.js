@@ -13,6 +13,7 @@ Feature('Unspec 2v1 api default judgment journey').tag('@civil-service-nightly @
 
 let caseId;
 
+// DTSCCI-5198 RETAIN: only 2v1 unspec DJ to SDO to case progression API journey.
 Scenario('01 Default Judgment claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);

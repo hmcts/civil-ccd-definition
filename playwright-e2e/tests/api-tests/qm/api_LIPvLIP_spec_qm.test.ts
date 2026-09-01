@@ -9,7 +9,7 @@ test.describe(
       DefendantCitizenApiSteps,
       CaseRoleAssignmentApiSteps,
       JudgeApiSteps,
-      CaseworkerApiSteps,
+      CtscAdminApiSteps,
     }) => {
       await ClaimantCitizenApiSteps.CreateLipClaimFast();
       await ClaimantCitizenApiSteps.MakePaymentForClaimIssue();
@@ -18,10 +18,10 @@ test.describe(
       await ClaimantCitizenApiSteps.RespondFastRejectFullDefence();
       await JudgeApiSteps.SdoFast();
       await ClaimantCitizenApiSteps.RaiseLipQuery();
-      await CaseworkerApiSteps.RespondToQuery();
+      await CtscAdminApiSteps.RespondToQuery();
       await ClaimantCitizenApiSteps.FollowUpOnLipQuery();
       await DefendantCitizenApiSteps.RaiseLipQuery();
-      await CaseworkerApiSteps.RespondToQuery();
+      await CtscAdminApiSteps.RespondToQuery();
       await DefendantCitizenApiSteps.FollowUpOnLipQuery();
     });
   },

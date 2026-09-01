@@ -4,7 +4,7 @@ import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
 import CCDCaseData from '../../../../models/ccd-case-data';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import {
   components,
   getFormattedCaseId,
@@ -17,14 +17,15 @@ import {
   caseFlagsNoticeText,
   containers,
   dropdowns,
-  getWATaskEventLinkSelector,
   subheadings,
   links,
   successBannerText,
   tabs,
 } from './case-details-content';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events/ccd-events';
 import WATask from '../../../../models/wa-task';
+import { test } from '../../../../playwright-fixtures/index'
+
 
 const classKey = 'CaseDetailsPage';
 
@@ -304,22 +305,21 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   }
 
   async retryStartWAEvent(ccdEvent: CCDEvent, waTask: WATask) {
-    console.log(`Starting event: ${ccdEvent.name}`);
+    test.fail(!config.waEnabled, `Environment variable: PLAYWRIGHT_WA_ENABLED must be set to 'true' to start task with tasks tab, current value: ${config.waEnabled}`)
+    console.log(`Starting event: ${ccdEvent.name}, using tasks tab, with task name: ${waTask.name}`);
     await super.retryAction(
       async () => {
         await super.retryReload(
           async () => {
-            await super.expectSelector(tabs.tasks.selector);
-            await super.clickBySelector(tabs.tasks.selector, {
-              timeout: 5_000,
+            await super.expectSelector(tabs.tasks.selector, {
+              timeout: 10_000,
             });
+            await super.clickBySelector(tabs.tasks.selector);
           },
           undefined,
           { retries: 1 },
         );
-        const waTaskEventLinkSelector = getWATaskEventLinkSelector(ccdEvent);
-        await super.expectSelector(waTaskEventLinkSelector, { count: 1 });
-        await super.clickBySelector(waTaskEventLinkSelector);
+        await super.clickLink(waTask.name);
       },
       async () => {
         await super.waitForPageToLoad();
@@ -328,7 +328,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
         });
       },
       () => super.reload(),
-      { retries: 3, message: `Starting event: ${ccdEvent.name} failed, trying again` },
+      { retries: 3, message: `Starting event: ${ccdEvent.name}, using tasks tab, with task name: ${waTask.name} failed, trying again` },
     );
   }
 
