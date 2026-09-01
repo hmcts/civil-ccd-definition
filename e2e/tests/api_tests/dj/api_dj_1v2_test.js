@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
@@ -9,7 +9,7 @@ if (config.runWAApiTest) {
 }
 
 Feature('Unspec 1v2 api default judgment journey')
-  .tag('@civil-service-master @civil-service-nightly @civil-wa-master @civil-wa-pr @civil-wa-nightly @api-dj');
+  .tag('@civil-service-master @civil-wa-master @civil-wa-pr @civil-wa-nightly @api-dj');
 
 let caseId;
 
