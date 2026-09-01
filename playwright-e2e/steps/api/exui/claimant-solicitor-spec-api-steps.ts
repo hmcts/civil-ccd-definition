@@ -2,8 +2,9 @@ import BaseApi from '../../../base/base-api';
 import {
   claimantOrganisationSuperUser,
   claimantSolicitorUser,
+  defendantSolicitor1User,
 } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseState from '../../../constants/cases/case-state';
@@ -41,7 +42,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -59,7 +60,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -77,7 +78,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -95,7 +96,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -113,7 +114,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -131,7 +132,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -149,7 +150,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -167,7 +168,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -185,7 +186,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -203,7 +204,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -221,7 +222,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -239,7 +240,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -257,7 +258,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -275,7 +276,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -292,7 +293,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -309,7 +310,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -326,7 +327,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -343,7 +344,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -360,7 +361,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -377,7 +378,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -394,7 +395,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -411,7 +412,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -429,7 +430,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -447,7 +448,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      CaseState.PENDING_CASE_ISSUED,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
 
     const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -501,7 +502,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
       discontinueClaimEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { discontinueClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -520,7 +521,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
       discontinueClaimEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { discontinueClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -539,7 +540,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
       discontinueClaimEventData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     const { discontinueClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -559,7 +560,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -580,6 +581,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
+      {expectedState: [CaseState.JUDICIAL_REFERRAL]}
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -602,7 +604,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -625,7 +627,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -646,7 +648,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -669,7 +671,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -813,7 +815,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.All_FINAL_ORDERS_ISSUED,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -835,7 +837,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.JUDGMENT_PAID_IN_FULL,
       judgmentPaidInFullEventData,
-      CaseState.All_FINAL_ORDERS_ISSUED,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     const { judgmentPaidInFullSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -919,7 +921,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.IN_MEDIATION,
+      { expectedState: CaseState.IN_MEDIATION },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -940,7 +942,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -963,7 +965,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.IN_MEDIATION,
+      { expectedState: CaseState.IN_MEDIATION },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -1008,7 +1010,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -1031,7 +1033,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.IN_MEDIATION,
+      { expectedState: CaseState.IN_MEDIATION },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -1054,7 +1056,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantResponseEventData,
-      CaseState.IN_MEDIATION,
+      { expectedState: CaseState.IN_MEDIATION },
     );
 
     const { claimantResponseSpecSchemaBuilder } =
@@ -1077,7 +1079,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
       evidenceUploadApplicantData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadApplicantSchemaBuilder } =
@@ -1098,7 +1100,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
       evidenceUploadApplicantData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadApplicantSchemaBuilder } =
@@ -1119,7 +1121,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
       evidenceUploadApplicantData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadApplicantSchemaBuilder } =
@@ -1180,7 +1182,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.REQUEST_FOR_RECONSIDERATION,
       requestForReconsiderationData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { requestForReconsiderationSchemaBuilder } =
@@ -1240,7 +1242,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
       requestDefaultJudgementSpecData,
-      CaseState.All_FINAL_ORDERS_ISSUED,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     const { defaultJudgementSpecSchemaBuilder } =
@@ -1354,7 +1356,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
   }
   
-  async InitiateGeneralApplication() {
+  async InitiateGA() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -1381,5 +1383,35 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
 
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseIdFromParentCase()); 
+  }
+
+  async InitiateGAWithNotice() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { initiateGeneralApplicationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const initiateGeneralApplicationData =
+      await initiateGeneralApplicationDataBuilder.buildWithNoticeCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.INITIATE_GENERAL_APPLICATION,
+      initiateGeneralApplicationData,
+    );
+
+    const { initiateGeneralApplicationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const initiateGeneralApplicationSchema =
+      await initiateGeneralApplicationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+
+    const { initiateGeneralApplicationGaSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const initiateGeneralApplicationSpecGaSchema =
+      await initiateGeneralApplicationGaSchemaBuilder.build();
+    ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
+
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseIdFromParentCase()); 
+     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, super.getGaCCDCaseIdFromParentCase());  
   }
 }

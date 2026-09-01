@@ -1,7 +1,6 @@
 import claimantDefendantPartyTypes from '../constants/users/claimant-defendant-party-types';
 import CaseFlagsHelper from '../helpers/case-flags-helper';
 import DateHelper from '../helpers/date-helper';
-import CaseFlags from '../models/ccd-events/case-flags/case-flag';
 import GaCCDCaseData from '../models/ga-ccd-case-data';
 import CCDCaseData, { QmQueryMessage } from '../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../models/users/claimant-defendant-party-types';
@@ -11,6 +10,7 @@ import ClaimTypeHelper from '../helpers/claim-type-helper';
 import { claimants, defendants } from '../config/users/cui-users';
 import User from '../models/users/user';
 import { claimantSolicitorUser, defendantSolicitor1User, defendantSolicitor2User } from '../config/users/exui-users';
+import CaseFlags from '../models/ccd-events/ccd-events/case-flags/case-flag';
 
 export default abstract class BaseTestData {
   private _testData: TestData;
