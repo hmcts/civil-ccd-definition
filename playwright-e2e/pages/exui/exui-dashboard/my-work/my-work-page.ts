@@ -1,11 +1,11 @@
 import urls from '../../../../config/urls';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import {heading} from './case-list-content'
+import {heading} from './my-work-content';
 import config from '../../../../config/config';
 
 @AllMethodsStep()
-export default class CaseListPage extends BasePage {
+export default class MyWorkPage extends BasePage {
   async verifyContent(): Promise<void> {
     await super.runVerifications([
       super.expectHeading(heading),
@@ -16,14 +16,14 @@ export default class CaseListPage extends BasePage {
     await super.retryGoTo(
       urls.manageCase,
       () =>
-        super.expectUrlEnd('/cases', { timeout: 5_000 }),
+         super.expectUrlEnd('/work/my-work/list', { timeout: 5_000 }),
       undefined,
       { retries: 1 },
     );
   }
 
   async verifyUrl() {
-    await super.expectUrlEnd('/cases', { timeout: config.idam.pageSubmitTimeout });
+    await super.expectUrlEnd('/work/my-work/list', { timeout: config.idam.pageSubmitTimeout });
   }
 
   async openCaseList() {
