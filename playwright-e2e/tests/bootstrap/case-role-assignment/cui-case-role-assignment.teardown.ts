@@ -4,7 +4,7 @@ import config from '../../../config/config';
 
 if (config.unassignCases) {
   teardown.describe('Unassigning case roles for cui users', () => {
-    teardown.describe.configure({ mode: 'serial' });
+    teardown.describe.configure({ mode: 'parallel' });
 
     for (let workerIndex = 0; workerIndex < config.playwright.workers; workerIndex++) {
       teardown(`Worker ${workerIndex + 1}: Claimant`, async ({ CaseRoleAssignmentApiSteps }) => {

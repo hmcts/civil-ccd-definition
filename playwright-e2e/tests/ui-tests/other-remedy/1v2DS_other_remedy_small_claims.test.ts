@@ -8,8 +8,8 @@ test.describe(
       ClaimantSolicitorSteps,
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
-      DefendantSolicitor1Steps,
-      DefendantSolicitor2Steps,
+      DefendantSolicitor1ApiSteps,
+      DefendantSolicitor2ApiSteps,
       JudgeSteps,
     }) => {
       await ClaimantSolicitorSteps.Login();
@@ -19,12 +19,9 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1Steps.Login();
-      await DefendantSolicitor1Steps.RespondSmallFullDefence1v2DS();
-      await DefendantSolicitor2Steps.Login();
-      await DefendantSolicitor2Steps.RespondSmallFullDefence1v2DS();
-      await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.RespondSmallProceed1v2DS();
+      await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
+      await DefendantSolicitor2ApiSteps.RespondSmallFullDefence();
+      await ClaimantSolicitorApiSteps.RespondSmallProceed1v2DS();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoSmallNoSumOtherRemedy();
     });
