@@ -61,10 +61,12 @@ export default class FailedAndNotExecutedTestFilesReporter implements Reporter {
 
     if (result.status === 'passed') {
       this.passedTestsById.set(testEntry.id, testEntry);
+      this.failedTestsById.delete(testEntry.id);
     }
 
     if (result.status === 'failed' || result.status === 'timedOut' || result.status === 'interrupted') {
       this.failedTestsById.set(testEntry.id, testEntry);
+      this.passedTestsById.delete(testEntry.id);
     }
   }
 
@@ -72,9 +74,9 @@ export default class FailedAndNotExecutedTestFilesReporter implements Reporter {
     const failedTests = [...this.failedTestsById.values()];
     const passedTests = [...this.passedTestsById.values()];
 
-    const failedTestFiles = [...new Set(failedTests.map((test) => test.file))].sort();
-    const passedTestFiles = [...new Set(passedTests.map((test) => test.file))]
-      .filter((passedTestFile) => !failedTestFiles.includes(passedTestFile))
+    const passedTestFiles = [...new Set(passedTests.map((test) => test.file))].sort();
+    const failedTestFiles = [...new Set(failedTests.map((test) => test.file))]
+      .filter((failedTestFile) => !passedTestFiles.includes(failedTestFile))
       .sort();
 
     const executedTestFiles = new Set([...failedTestFiles, ...passedTestFiles]);
