@@ -1,8 +1,5 @@
 import BaseApi from '../../../base/base-api';
-import {
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../../config/users/exui-users';
+import { defendantSolicitor1User, defendantSolicitor2User } from '../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseRole from '../../../constants/cases/case-role';
 import CaseState from '../../../constants/cases/case-state';
@@ -98,7 +95,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -113,41 +110,39 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS2MultiFullDefence1v2DS();
+      await defendantResponseDataBuilder.buildDS2MultiFullDefence();
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS2MultiFullDefence1v2DS(caseDataBeforeSubmission);
+      await defendantResponseSchemaBuilder.buildDS2MultiFullDefence(caseDataBeforeSubmission);
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
-  async RespondInterFullDefence1v2DS() {
+  async RespondInterFullDefence() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDS2InterFullDefence1v2DS();
+      await defendantResponseDataBuilder.buildDS2InterFullDefence();
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSchemaBuilder.buildDS2InterFullDefence1v2DS(
-        caseDataBeforeSubmission,
-      );
+      await defendantResponseSchemaBuilder.buildDS2InterFullDefence(caseDataBeforeSubmission);
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
@@ -158,18 +153,14 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
 
     const { noticeOfChangeDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const noticeOfChangeAnswers = await noticeOfChangeDataBuilder.buildDefendant2();
-    await super.submitNocEvent(
-      defendantSolicitor2User,
-      undefined,
-      noticeOfChangeAnswers,
-    );
+    await super.submitNocEvent(defendantSolicitor2User, undefined, noticeOfChangeAnswers);
 
     const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const noticeOfChangeSchema =
       await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
     ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
   }
-  
+
   async RaiseLRQuery() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -205,15 +196,14 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
       await queryManagementRaiseSchemaBuilder.buildFollowUpQuery(caseDataBeforeSubmission);
     ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
   }
-  
-  async InitiateGeneralApplication() {
+
+  async InitiateGA() {
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { initiateGeneralApplicationDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const initiateGeneralApplicationData =
-      await initiateGeneralApplicationDataBuilder.buildDS2();
+    const initiateGeneralApplicationData = await initiateGeneralApplicationDataBuilder.buildDS2();
     await super.submitCCDEvent(
       defendantSolicitor2User,
       ccdEvents.INITIATE_GENERAL_APPLICATION,
@@ -225,6 +215,16 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
     const initiateGeneralApplicationSchema =
       await initiateGeneralApplicationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
     ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, super.getGaCCDCaseIdFromParentCase());
+
+    const { initiateGeneralApplicationGaSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const initiateGeneralApplicationSpecGaSchema =
+      await initiateGeneralApplicationGaSchemaBuilder.build();
+    ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
+
+    UserAssignedCasesHelper.addAssignedCaseToUser(
+      defendantSolicitor2User,
+      super.getGaCCDCaseData()?.id,
+    );
   }
 }

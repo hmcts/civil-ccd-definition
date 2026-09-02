@@ -4,15 +4,15 @@ import config from '../../../config/config';
 
 if (config.unassignCases) {
   teardown.describe('Unassigning case roles for cui users', () => {
-    teardown.describe.configure({ mode: 'parallel' });
+    teardown.describe.configure({ mode: 'serial' });
 
     for (let workerIndex = 0; workerIndex < config.playwright.workers; workerIndex++) {
       teardown(`Worker ${workerIndex + 1}: Claimant`, async ({ CaseRoleAssignmentApiSteps }) => {
-        await CaseRoleAssignmentApiSteps.UnassignCasesForUser(claimants[workerIndex]);
+        await CaseRoleAssignmentApiSteps.UnassignCases(claimants[workerIndex]);
       });
 
       teardown(`Worker ${workerIndex + 1}: Defendant`, async ({ CaseRoleAssignmentApiSteps }) => {
-        await CaseRoleAssignmentApiSteps.UnassignCasesForUser(defendants[workerIndex]);
+        await CaseRoleAssignmentApiSteps.UnassignCases(defendants[workerIndex]);
       });
     }
   });
