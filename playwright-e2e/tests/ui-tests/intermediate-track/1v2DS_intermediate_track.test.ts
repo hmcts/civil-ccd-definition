@@ -20,8 +20,8 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondInterFullDefence1v2DS();
-      await DefendantSolicitor2ApiSteps.RespondInterFullDefence1v2DS();
+      await DefendantSolicitor1ApiSteps.RespondInterFullDefence();
+      await DefendantSolicitor2ApiSteps.RespondInterFullDefence();
       await ClaimantSolicitorApiSteps.RespondInterProceed1v2DS();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.GenerateDirectionsOrderInter();

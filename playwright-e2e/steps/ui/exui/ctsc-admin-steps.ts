@@ -4,6 +4,7 @@ import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { ctscAdminUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import respondToQueryCtscTask from '../../../constants/wa-tasks/exui/respondToQueryCtscTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
@@ -41,7 +42,10 @@ export default class CtscAdminSteps extends BaseExui {
       ccdEvents.QUERY_MANAGEMENT_RESPOND,
       ctscAdminUser,
       respondToQueryCtscTask,
-      { startWithWATaskName: true, verifySuccessEvent: false },
+      {
+        startWithWATaskName: true,
+        verifySuccessEvent: false,
+      },
     );
   }
 }
