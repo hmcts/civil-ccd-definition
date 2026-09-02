@@ -21,7 +21,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesSmallClaims",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
