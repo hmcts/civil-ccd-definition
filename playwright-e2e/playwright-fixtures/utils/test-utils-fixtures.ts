@@ -5,7 +5,6 @@ import FileSystemHelper from '../../helpers/file-system-helper';
 type TestDataFixture = {
   _isSetupTest: boolean;
   _isTeardownTest: boolean;
-  _verifyCookiesBanner: boolean;
   _testData: TestData;
 };
 
@@ -19,9 +18,6 @@ export const test = base.extend<TestDataFixture>({
   },
   _isTeardownTest: async ({}, use, testInfo) => {
     await use(testInfo.project.name.endsWith('teardown'));
-  },
-  _verifyCookiesBanner: async ({}, use, testInfo) => {
-    await use(testInfo.tags.includes('@verify-cookies-banner'));
   },
   _testData: async ({}, use, testInfo) => {
     await use({
