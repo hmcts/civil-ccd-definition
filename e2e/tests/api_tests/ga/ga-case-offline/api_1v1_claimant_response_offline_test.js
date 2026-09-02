@@ -26,7 +26,8 @@ Scenario('Take a live GA offline when the parent claim goes offline', async ({ap
   await api_ga.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 }).retry(1);
 
-// Terminal-state preservation is covered in civil-service; retain this for optional local CCD checks.
+// Terminal-state preservation is covered in civil-service. Retain this as a disabled reference
+// journey; manually re-enable it for local CCD diagnostics.
 Scenario.skip('Case offline ORDER_MADE', async ({api_ga}) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company');
   await api_ga.amendClaimDocuments(config.applicantSolicitorUser);

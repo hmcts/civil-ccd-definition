@@ -5,7 +5,8 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA Claim 1v2 Notify Claim Case Close API tests').tag('@civil-service-nightly');
 
-// Replaced by civil-service offline workflow integration coverage; retained for optional local CCD checks.
+// Replaced by civil-service offline workflow integration coverage. Retained as a disabled reference
+// journey; manually re-enable it for local CCD diagnostics.
 Scenario.skip('Case offline 1V2 notify_claim_details AWAITING_ADDITIONAL_INFORMATION', async ({api_ga}) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');

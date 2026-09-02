@@ -471,7 +471,7 @@ module.exports = {
   // integration tests. These helpers retain the CCD submission, callback status, persisted state,
   // parent/child case, payment and access checks needed by cross-service journeys. Specialist API
   // journeys remain active where they also exercise distinct payment, document, access, scheduler,
-  // LiP or work-allocation behaviour that has not been replaced by the core lifecycle tests.
+  // LiP or Work Allocation behaviour that has not been replaced by the core lifecycle tests.
   initiateGeneralApplicationWithState: async (user, parentCaseId, expectState) => {
     var isCoscEnabled = await checkToggleEnabled(COSC);
     var gaData = isCoscEnabled ? data.INITIATE_GENERAL_APPLICATION_LR
