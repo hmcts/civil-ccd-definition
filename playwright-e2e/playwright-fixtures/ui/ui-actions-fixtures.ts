@@ -35,8 +35,16 @@ type UiActionsFixtures = {
 };
 
 export const test = mergeTests(testUtils, requestFactories).extend<UiActionsFixtures>({
-  _idamActions: async ({ page, request, _testData, _isSetupTest, _isTeardownTest, _verifyCookiesBanner }, use) => {
-    await use(new IdamActions(new PageUtilsFactory(page), new IdamPageFactory(page), new RequestsFactory(request), _isSetupTest, _isTeardownTest, _verifyCookiesBanner, _testData));
+  _idamActions: async ({ page, request, _testData, _isSetupTest, _isTeardownTest }, use) => {
+    await use(new IdamActions(
+      new PageUtilsFactory(page),
+      new IdamPageFactory(page),
+      new ExuiDashboardPageFactory(page),
+      new RequestsFactory(request),
+      _isSetupTest,
+      _isTeardownTest,
+      _testData,
+    ));
   },
   _exuiDashboardActions: async ({ page, request, _testData }, use) => {
     await use(new ExuiDashboardActions(new PageUtilsFactory(page), new ExuiDashboardPageFactory(page), new RequestsFactory(request), _testData));

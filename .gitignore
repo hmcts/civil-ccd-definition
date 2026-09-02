@@ -41,6 +41,10 @@ e2e/e2e-documentation/results/
 **/expectedPngs/
 **/diffPngs/
 **/downloads/actual/
+allure-results/
+allure-functional-results/
+allure-functional-report/
+allure-report/
 
 ## Helm
 charts/civil-ccd/charts/**
@@ -61,12 +65,12 @@ playwright/.cache/
 
 # Playwright
 playwright-test-results/
-allure-results/
+playwright-bootstrap-test-results/
+playwright-functional-test-results/
 playwright-allure-functional-results/
 playwright-allure-bootstrap-results/
 playwright-allure-bootstrap-report/
 playwright-allure-functional-report/
-allure-report/
 playwright-report/
 /playwright-e2e/fixtures/.users/
 /playwright-e2e/fixtures/.user-cookies/

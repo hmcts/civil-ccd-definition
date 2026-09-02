@@ -4,11 +4,11 @@ import config from '../../../config/config';
 
 if (config.unassignCases) {
   teardown.describe('Unassigning case roles for exui users', () => {
-    teardown.describe.configure({ mode: 'parallel' });
+    teardown.describe.configure({ mode: 'serial' });
 
     for (const solicitorUser of solicitorUsers) {
       teardown(solicitorUser.name, async ({ CaseRoleAssignmentApiSteps }) => {
-        await CaseRoleAssignmentApiSteps.UnassignCasesForUser(solicitorUser);
+        await CaseRoleAssignmentApiSteps.UnassignCases(solicitorUser);
       });
     }
   });
