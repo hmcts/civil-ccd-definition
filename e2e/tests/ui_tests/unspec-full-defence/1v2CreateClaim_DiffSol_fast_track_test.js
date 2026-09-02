@@ -17,7 +17,7 @@ if (config.runWAApiTest) {
 }
 
 Feature('1v2 Different Solicitors fast track - Claim Journey')
-  .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-unspec-full-defence');
+  .tag('@civil-ccd-master @civil-ccd-pr @ui-unspec-full-defence');
 
 Scenario('01 Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
