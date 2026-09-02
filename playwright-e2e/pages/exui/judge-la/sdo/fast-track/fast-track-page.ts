@@ -246,10 +246,18 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
   async addHousingDisrepair() {
     await super.expectSubheading(subheadings.housingDisrepair);
 
-    await super.inputText('housing disrepair input 1', inputs.housingDisrepair.input1.selector);
-    await super.inputText('housing disrepair input 2', inputs.housingDisrepair.input2.selector);
-    await super.inputText('housing disrepair input 3', inputs.housingDisrepair.input3.selector);
-    await super.inputText('housing disrepair input 4', inputs.housingDisrepair.input4.selector);
+    await super.inputText('housing disrepair clause A', inputs.housingDisrepair.clauseA.selector);
+    await super.inputText('housing disrepair clause B', inputs.housingDisrepair.clauseB.selector);
+    await super.inputText(
+      'housing disrepair clause C before date',
+      inputs.housingDisrepair.clauseCBeforeDate.selector,
+    );
+    await super.inputText(
+      'housing disrepair clause C after date',
+      inputs.housingDisrepair.clauseCAfterDate.selector,
+    );
+    await super.inputText('housing disrepair clause D', inputs.housingDisrepair.clauseD.selector);
+    await super.inputText('housing disrepair clause E', inputs.housingDisrepair.clauseE.selector);
 
     const date1 = DateHelper.getToday();
     const date2 = DateHelper.addToToday({ days: 1, workingDay: true });

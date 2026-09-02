@@ -4,7 +4,7 @@ import CCDCaseData from '../../../../../models/ccd-case-data';
 import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import { heading, subheading, dropdowns } from './select-template-content';
 import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content.ts';
-import MultiIntermediateTemplateTypes from '../../../../../constants/ccd-events/generate-directions-order/multi-intermediate-template-types';
+import MultiIntermediateTemplateTypes from '../../../../../constants/ccd-events/ccd-events/generate-directions-order/multi-intermediate-template-types.ts';
 
 @AllMethodsStep()
 export default class SelectTemplatePage extends ExuiPage(BasePage) {
@@ -18,7 +18,7 @@ export default class SelectTemplatePage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async selectTemplateIntermediate() {
+  async selectTemplateInter() {
     await super.selectFromDropdown(
       MultiIntermediateTemplateTypes.FIX_DATE_CMC,
       dropdowns.template.selector,

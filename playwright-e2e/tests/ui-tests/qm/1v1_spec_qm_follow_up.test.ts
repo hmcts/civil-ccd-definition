@@ -11,19 +11,19 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
       JudgeApiSteps,
-      CaseworkerSteps,
+      CtscAdminSteps,
       ClaimantSolicitorSpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence();
-      await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectFullDefence();
-      await JudgeApiSteps.GenerateDirectionsOrderIntermediate();
+      await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
+      await ClaimantSolicitorSpecApiSteps.RespondInterRejectFullDefence();
+      await JudgeApiSteps.GenerateDirectionsOrderInter();
       await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.RaiseANewQuery();
-      await CaseworkerSteps.LoginCTSC();
-      await CaseworkerSteps.RespondToQuery();
+      await CtscAdminSteps.Login();
+      await CtscAdminSteps.RespondToQuery();
       await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.RaiseFollowUpQuery();
     });

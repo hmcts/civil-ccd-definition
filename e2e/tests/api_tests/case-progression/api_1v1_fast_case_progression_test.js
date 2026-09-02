@@ -7,6 +7,7 @@ const claimAmountJudge = '11000';
 Feature('1v1 fast track case progression api journeys')
   .tag('@civil-service-nightly @api-case-progression');
 
+// DTSCCI-5196: service logic covered by CreateSdoWorkflowTest, HearingScheduledWorkflowTest, GenerateDirectionsOrderWorkflowTest
 Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -26,6 +27,7 @@ Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of
   await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
 }).tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr');
 
+// DTSCCI-5196: same handlers as above, already skipped
 Scenario.skip('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
   await api.amendClaimDocuments(config.applicantSolicitorUser);

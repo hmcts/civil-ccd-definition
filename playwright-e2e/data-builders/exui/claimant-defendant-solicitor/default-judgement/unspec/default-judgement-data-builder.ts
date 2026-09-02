@@ -1,7 +1,7 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder.ts';
 import ClaimType from '../../../../../constants/cases/claim-type.ts';
-import DJHearingType from '../../../../../constants/ccd-events/default-judgement/dj-hearing-type.ts';
-import DJOtherRemedy from '../../../../../constants/ccd-events/default-judgement/dj-other-remedy.ts';
+import DJHearingType from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-hearing-type.ts';
+import DJOtherRemedy from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-other-remedy.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import requestDefaultJudgementBuilderComponents from './default-judgement-data-builder-components.ts';
 
