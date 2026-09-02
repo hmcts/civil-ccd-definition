@@ -43,10 +43,10 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
     await UserAssignedCasesHelper.addAssignedCaseToUser(this.defendantCitizenUser, this.ccdCaseData?.id);
   }
 
-  async UnassignCasesForUser(user: User) {
-    await this.setupUserData(user);
+  async UnassignCases(user: User) {
     const assignedCases = await UserAssignedCasesHelper.getUserAssignedCases(user);
     if (assignedCases) {
+      await this.setupUserData(user);
       const { civilServiceRequests } = this.requestsFactory;
       await civilServiceRequests.unassignUserFromCases(user, assignedCases);
     }
