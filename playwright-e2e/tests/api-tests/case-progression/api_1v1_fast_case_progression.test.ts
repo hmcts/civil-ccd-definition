@@ -1,10 +1,11 @@
 import { test } from '../../../playwright-fixtures/index';
 
+// DTSCCI-5196: service logic covered by CreateSdoWorkflowTest, HearingScheduledWorkflowTest, GenerateDirectionsOrderWorkflowTest
 test.describe(
   '1v1 fast case progression api journey',
   { tag: '@civil-service-nightly' },
   async () => {
-    test('1v1 full defence unspecified - judge draws fast track WITH sum of damages (fast track - trail) - hearing scheduled', async ({
+    test.skip('1v1 full defence unspecified - judge draws fast track WITH sum of damages (fast track - trail) - hearing scheduled', async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
@@ -25,10 +26,10 @@ test.describe(
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
-      await JudgeApiSteps.GenerateDirectionsOrderAssistedOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderAssisted();
     });
 
-    test('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages (fast track) - hearing scheduled', async ({
+    test.skip('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages (fast track) - hearing scheduled', async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,

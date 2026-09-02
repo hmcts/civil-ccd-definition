@@ -77,6 +77,12 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
+      {
+        expectedState: [
+          CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+          CaseState.AWAITING_APPLICANT_INTENTION,
+        ],
+      },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -99,14 +105,13 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
+      {expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildInterFullDefence(
-        caseDataBeforeSubmission,
-      );
+      await defendantResponseSpecSchemaBuilder.buildInterFullDefence(caseDataBeforeSubmission);
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
@@ -123,6 +128,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
+      {expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT]},
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -168,6 +174,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
+      {expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -320,9 +327,8 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
 
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema = await defendantResponseSpecSchemaBuilder.buildDS1FullAdmitSetDate(
-      caseDataBeforeSubmission,
-    );
+    const defendantResponseSchema =
+      await defendantResponseSpecSchemaBuilder.buildDS1FullAdmitSetDate(caseDataBeforeSubmission);
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
@@ -703,9 +709,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildInter1v2SSFullDefence(
-        caseDataBeforeSubmission,
-      );
+      await defendantResponseSpecSchemaBuilder.buildInter1v2SSFullDefence(caseDataBeforeSubmission);
 
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
@@ -729,52 +733,6 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
       await defendantResponseSpecSchemaBuilder.buildSmall1v2SSFullDefence(caseDataBeforeSubmission);
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
-  }
-
-  async RespondFastFullDefence1v2DS() {
-    await this.setupApiStep(defendantSolicitor1User);
-
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const defendantResponseEventData =
-      await defendantResponseSpecDataBuilder.buildDS1FastFullDefence();
-
-    await super.submitCCDEvent(
-      defendantSolicitor1User,
-      ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
-    );
-
-    const { defendantResponseSpecSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildFastFullDefence(caseDataBeforeSubmission);
-
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
-  }
-
-  async RespondSmallFullDefence1v2DS() {
-    await this.setupApiStep(defendantSolicitor1User);
-
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-    const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const defendantResponseEventData =
-      await defendantResponseSpecDataBuilder.buildDS1SmallFullDefence();
-
-    await super.submitCCDEvent(
-      defendantSolicitor1User,
-      ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantResponseEventData,
-      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
-    );
-
-    const { defendantResponseSpecSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildSmallFullDefence(caseDataBeforeSubmission);
-
     ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
   }
 
@@ -866,11 +824,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
 
     const { noticeOfChangeDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const noticeOfChangeAnswers = await noticeOfChangeDataBuilder.buildDefendant1();
-    await super.submitNocEvent(
-      defendantSolicitor1User,
-      undefined,
-      noticeOfChangeAnswers,
-    );
+    await super.submitNocEvent(defendantSolicitor1User, undefined, noticeOfChangeAnswers);
 
     const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
     const noticeOfChangeSchema =
@@ -931,15 +885,14 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       await queryManagementRaiseSchemaBuilder.buildFollowUpQuery(caseDataBeforeSubmission);
     ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
   }
-  
+
   async InitiateGeneralApplication() {
     await this.setupApiStep(defendantSolicitor1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { initiateGeneralApplicationDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const initiateGeneralApplicationData =
-      await initiateGeneralApplicationDataBuilder.buildDS1();
+    const initiateGeneralApplicationData = await initiateGeneralApplicationDataBuilder.buildDS1();
     await super.submitCCDEvent(
       defendantSolicitor1User,
       ccdEvents.INITIATE_GENERAL_APPLICATION,
@@ -951,6 +904,9 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     const initiateGeneralApplicationSchema =
       await initiateGeneralApplicationSchemaBuilder.buildDS1(caseDataBeforeSubmission);
     ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, super.getGaCCDCaseIdFromParentCase());
+    UserAssignedCasesHelper.addAssignedCaseToUser(
+      defendantSolicitor1User,
+      super.getGaCCDCaseIdFromParentCase(),
+    );
   }
 }

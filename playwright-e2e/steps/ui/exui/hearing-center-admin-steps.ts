@@ -45,6 +45,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -57,6 +58,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -69,9 +71,9 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
-
 
   async CreateClaimant1CaseFlag1v2DS() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
@@ -82,6 +84,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -122,6 +125,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await manageStayActions.confirmManageStayRequestUpdate();
       },
       ccdEvents.MANAGE_STAY,
+      { expectedState: CaseState.CASE_STAYED },
     );
   }
 
@@ -137,6 +141,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await manageStayActions.confirmManageStayLiftStay();
       },
       ccdEvents.MANAGE_STAY,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -163,7 +168,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await transferOnlineCaseActions.confirm();
       },
       ccdEvents.TRANSFER_ONLINE_CASE,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -181,7 +186,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await hearingScheduledActions.confirm();
       },
       ccdEvents.HEARING_SCHEDULED,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.HEARING_READINESS },
     );
   }
 

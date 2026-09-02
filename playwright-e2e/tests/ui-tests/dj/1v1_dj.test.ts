@@ -5,7 +5,7 @@ test.describe('1v1 default judgment', { tag: '@civil-ccd-nightly' }, () => {
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
-    JudgeSteps
+    JudgeSteps,
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
