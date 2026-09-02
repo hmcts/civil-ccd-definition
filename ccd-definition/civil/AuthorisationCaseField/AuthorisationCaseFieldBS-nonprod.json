@@ -31,15 +31,11 @@
     "CaseFieldID": "liftBreathing",
     "AccessControl": [
       {
-<<<<<<< HEAD
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-civil-admin"
         ],
-=======
-        "UserRoles": ["APP-SOL-SPEC-PROFILE", "APP-SOL-UNSPEC-PROFILE", "CITIZEN-CLAIMANT-PROFILE"],
->>>>>>> 7df43c8b6 (removing duplicate caseField)
         "CRUD": "CRU"
       },
       {
