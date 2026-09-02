@@ -160,6 +160,7 @@ export default abstract class BaseExui extends BaseApi {
       }
     }
     await confirmActions();
+    await this.exuiDashboardActions.clearCCDEvent();
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id, undefined, expectedState);
   }
 
@@ -229,6 +230,7 @@ export default abstract class BaseExui extends BaseApi {
       }
     }
     await confirmActions();
+    await this.exuiDashboardActions.clearCCDEvent();
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id, undefined, expectedState);
   }
 
@@ -259,6 +261,7 @@ export default abstract class BaseExui extends BaseApi {
       }
     }
     await confirmActions();
+    await this.exuiDashboardActions.clearCCDEvent();
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id, undefined, expectedState);
   }
 }
