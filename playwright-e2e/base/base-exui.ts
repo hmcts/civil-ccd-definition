@@ -42,15 +42,16 @@ export default abstract class BaseExui extends BaseApi {
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
-    { retries = config.exui.eventRetries, 
-      verifySuccessEvent = true, 
+    {
+      retries = config.exui.eventRetries,
+      verifySuccessEvent = true,
       camundaProcess = true,
-      expectedState
+      expectedState,
     }: {
-      retries?: number,
-      verifySuccessEvent?: boolean,
-      camundaProcess?: boolean,
-      expectedState?: CaseState | CaseState[]
+      retries?: number;
+      verifySuccessEvent?: boolean;
+      camundaProcess?: boolean;
+      expectedState?: CaseState | CaseState[];
     } = {},
   ) {
     await super.setupBankHolidays();
@@ -90,28 +91,28 @@ export default abstract class BaseExui extends BaseApi {
     ccdEvent: CCDEvent,
     user: User,
     validTask: WATask,
-    { retries = config.exui.eventRetries, 
-      verifySuccessEvent = true, 
+    {
+      retries = config.exui.eventRetries,
+      verifySuccessEvent = true,
       camundaProcess = true,
-      startWithWATaskName = false, 
-      expectedState
+      startWithWATaskName = false,
+      expectedState,
     }: {
-      retries?: number,
-      verifySuccessEvent?: boolean,
-      camundaProcess?: boolean,
-      startWithWATaskName?: boolean,
-      expectedState?: CaseState | CaseState[]
+      retries?: number;
+      verifySuccessEvent?: boolean;
+      camundaProcess?: boolean;
+      startWithWATaskName?: boolean;
+      expectedState?: CaseState | CaseState[];
     } = {},
   ) {
     await super.setupBankHolidays();
     await super.setDebugTestData();
     let waTask;
-    if(config.waEnabled)
-      waTask = await super.retrieveAndAssignWATask(user, validTask);
+    if (config.waEnabled) waTask = await super.retrieveAndAssignWATask(user, validTask);
     while (retries >= 0) {
       try {
-        if(startWithWATaskName) {
-          await this.exuiDashboardActions.startWithWATaskName(ccdEvent, waTask!); 
+        if (startWithWATaskName) {
+          await this.exuiDashboardActions.startWithWATaskName(ccdEvent, waTask!);
         } else {
           await this.exuiDashboardActions.startCCDEvent(ccdEvent);
         }
@@ -128,8 +129,7 @@ export default abstract class BaseExui extends BaseApi {
     if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
     await this.exuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
-    if(config.waEnabled)
-      await super.completeWATask(user, waTask!);
+    if (config.waEnabled) await super.completeWATask(user, waTask?.id);
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id, undefined, expectedState);
   }
 
@@ -137,11 +137,12 @@ export default abstract class BaseExui extends BaseApi {
   async retryHearingEvent(
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
-    { retries = config.exui.eventRetries,
-      expectedState
+    {
+      retries = config.exui.eventRetries,
+      expectedState,
     }: {
-      retries?: number,
-      expectedState?: CaseState | CaseState[]
+      retries?: number;
+      expectedState?: CaseState | CaseState[];
     } = {},
   ) {
     await super.setupBankHolidays();
@@ -168,13 +169,14 @@ export default abstract class BaseExui extends BaseApi {
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
     ccdEvent?: CCDEvent,
-    { retries = config.exui.eventRetries, 
+    {
+      retries = config.exui.eventRetries,
       camundaProcess = true,
-      expectedState
+      expectedState,
     }: {
-      retries?: number,
-      camundaProcess?: boolean,
-      expectedState?: CaseState | CaseState[]
+      retries?: number;
+      camundaProcess?: boolean;
+      expectedState?: CaseState | CaseState[];
     } = {},
   ) {
     await super.setupBankHolidays();
@@ -205,11 +207,12 @@ export default abstract class BaseExui extends BaseApi {
   async retryRequestRefundEvent(
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
-    { retries = config.exui.eventRetries, 
-      expectedState
+    {
+      retries = config.exui.eventRetries,
+      expectedState,
     }: {
-      retries?: number,
-      expectedState?: CaseState | CaseState[]
+      retries?: number;
+      expectedState?: CaseState | CaseState[];
     } = {},
   ) {
     await super.setupBankHolidays();
@@ -235,11 +238,12 @@ export default abstract class BaseExui extends BaseApi {
   async retryRefundEvent(
     eventActions: () => Promise<void>,
     confirmActions: () => Promise<void>,
-    { retries = config.exui.eventRetries, 
-      expectedState
+    {
+      retries = config.exui.eventRetries,
+      expectedState,
     }: {
-      retries?: number,
-      expectedState?: CaseState | CaseState[]
+      retries?: number;
+      expectedState?: CaseState | CaseState[];
     } = {},
   ) {
     await super.setupBankHolidays();
