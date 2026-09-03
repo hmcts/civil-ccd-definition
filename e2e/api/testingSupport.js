@@ -319,13 +319,15 @@ module.exports =  {
           let businessProcess = response.businessProcess;
           if (response.incidentMessage) {
             incidentMessage = response.incidentMessage;
-          } else if (businessProcess && businessProcess.status !== 'FINISHED' && response.ccdState !== ccdState) {
+          } else if (!businessProcess) {
+            throw new Error(`Business process not yet available for case: ${caseId}`);
+          } else if (businessProcess.status !== 'FINISHED' && response.ccdState !== ccdState) {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
               + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
-          } else if (businessProcess && businessProcess.status !== 'FINISHED') {
+          } else if (businessProcess.status !== 'FINISHED') {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
                             + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`);
-          } else if (businessProcess && businessProcess.status === 'FINISHED' && response.ccdState !== ccdState) {
+          } else if (response.ccdState !== ccdState) {
             throw new Error(`Ongoing business process: ${businessProcess.camundaEvent}, case id: ${caseId}, status: ${businessProcess.status},`
               + ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId},`
               + ` Present Case state: ${response.ccdState}, Expected State: ${ccdState}`);
