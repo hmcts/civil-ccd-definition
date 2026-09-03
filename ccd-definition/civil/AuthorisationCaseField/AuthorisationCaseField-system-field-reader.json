@@ -7873,6 +7873,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "casePartiesRequestingReconsideration",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "headingClaimantProposedPlan",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
