@@ -129,7 +129,7 @@ export default abstract class BaseExui extends BaseApi {
     if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
     await this.exuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
-    if (config.waEnabled) await super.completeWATask(user, waTask?.id);
+    if (config.waEnabled) await super.completeWATask(user, waTask!);
     await this.fetchAndSetCCDCaseData(this.ccdCaseData?.id, undefined, expectedState);
   }
 
