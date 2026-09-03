@@ -5,7 +5,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const claimAmountJudge = '11000';
 
 Feature('1v1 fast track case progression api journeys')
-  .tag('@civil-service-nightly @api-case-progression');
+  .tag('@api-case-progression');
 
 Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled', async ({ api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
