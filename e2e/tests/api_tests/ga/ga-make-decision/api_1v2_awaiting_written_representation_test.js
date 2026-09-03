@@ -5,8 +5,8 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge Make Order Written Rep API tests').tag('@civil-service-nightly @api-ga-make-decision');
 
-// The written-representations decision and state are covered by civil-service workflow integration tests.
-// Retain the journey as skipped so it can be re-enabled for local multi-party CCD checks.
+// The resulting written-representations state is covered by civil-service workflow integration tests.
+// Retain this as a disabled reference; manually re-enable it for local multi-party CCD diagnostics.
 Scenario.skip('Judge makes decision 1V2 - WRITTEN_REPRESENTATIONS', async ({api_ga}) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');
