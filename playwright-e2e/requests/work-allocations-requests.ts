@@ -9,6 +9,7 @@ import ServiceAuthProviderRequests from './service-auth-provider-requests';
 @AllMethodsStep()
 export default class WorkAllocationsRequests extends ServiceAuthProviderRequests(BaseRequest) {
   async retrieveTask(user: User, validTask: WATask, caseId?: number): Promise<WATask> {
+    console.log(`Retrieving task, caseId: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`);
     const url = `${urls.waTaskMgmtApi}/task`;
     const body = {
       search_parameters: [
@@ -31,17 +32,19 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
         await super.expectResponseJsonToHaveProperty('tasks', responseJson);
         const tasks = responseJson.tasks;
         await super.expectResponseJsonArrayToContain([{ type: validTask.type }], tasks, {
-          message: `Ongoing task retrieval process for case id: ${caseId}`,
+          message: `Ongoing task retrieval process, case id: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`,
         });
       },
     });
     const task = responseJson.tasks.find((task: WATask) => 
       task.type === validTask.type && task.name === validTask.name);
     await super.expectResponseJsonToContain(validTask, task);
+    console.log(`Successfully retrieved task, caseId: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`);
     return task as WATask;
   }
 
   async assignTask(user: User, waTask: WATask) {
+    console.log(`Assigning task, taskType: ${waTask.type}, taskId: ${waTask.id}, user: ${user.name}`);
     const url = `${urls.waTaskMgmtApi}/task/${waTask.id}/claim`;
     if (waTask.task_state !== 'assigned') {
       await super.retryRequest(
@@ -52,19 +55,21 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
       console.log(`Task ${waTask.id} assigned to user ${user.name}`);
     } else {
       await super.expectResponseJsonToHavePropertyValue('assignee', user.userId, waTask, {
-        message: `Failed to assign task: ${waTask.id} to user: ${user.name}, task is already assigned to a user with a different userId: ${waTask.assignee}`,
+        message: `Failed to assign taskType: ${waTask.type}, taskId: ${waTask.id}, to user: ${user.name}, task is already assigned to a user with a different userId: ${waTask.assignee}`,
       });
       console.log(`Task is already assigned to user: ${user.name}`);
     }
+    console.log(`Successfully assigned Task, taskType: ${waTask.type}, taskId: ${waTask.id}, user: ${user.name}`);
   }
 
-  async completeTask(user: User, waTaskId?: string) {
-    const url = `${urls.waTaskMgmtApi}/task/${waTaskId}/complete`;
+  async completeTask(user: User, waTask: WATask) {
+    console.log(`Completing task, taskType: ${waTask.type}, taskId: ${waTask?.id}, user: ${user.name}`);
+    const url = `${urls.waTaskMgmtApi}/task/${waTask.id}/complete`;
     await super.retryRequest(
       url,
       { headers: await this.getRequestHeaders(user), method: 'POST' },
       { expectedStatus: 204 },
     );
-    console.log(`Task ${waTaskId} assigned to user ${user.name}`);
+    console.log(`Successfully complete task, taskType: ${waTask.type}, taskId: ${waTask.id}, user: ${user.name}`);
   }
 }
