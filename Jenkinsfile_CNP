@@ -334,9 +334,13 @@ withPipeline(type, product, component) {
       echo "Skipping Allure report generation due to label: pr-values:skip-functional-tests"
       return
     }
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     yarnBuilder.yarn('test:generate-report')
     publishAllureReport('allure-functional-report', 'Allure Functional Report', 'allure-functional-history')
+    // Archive last, so the generated report is included. allure-functional-report/data/categories.json
+    // is what makes a failure diagnosable, and Jenkins retention on this job is ~2 days, so anything
+    // not archived at the time is lost permanently. See DTSCCI-6322.
+    steps.archiveArtifacts allowEmptyArchive: true,
+      artifacts: 'test-results/functional/**/*, allure-functional-report/**'
   }
 
   before('smoketest:aat') {
@@ -385,8 +389,9 @@ withPipeline(type, product, component) {
 
   afterAlways('functionalTest:aat') {
     createGithubRelease()
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     yarnBuilder.yarn('test:generate-report')
     publishAllureReport('allure-functional-report', 'Allure Functional Report', 'allure-functional-history')
+    steps.archiveArtifacts allowEmptyArchive: true,
+      artifacts: 'test-results/functional/**/*, allure-functional-report/**'
   }
 }
