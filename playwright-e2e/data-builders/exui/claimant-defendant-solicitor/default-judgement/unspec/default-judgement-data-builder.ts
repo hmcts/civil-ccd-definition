@@ -18,23 +18,16 @@ export default class DefaultJudgementDataBuilder extends BaseDataBuilder {
     return this.buildData({claimType: ClaimType.ONE_VS_TWO_DIFF_SOL});
   }
 
-  async build1v1OtherRemedy() {
-    return this.buildData({ isOtherRemedy: true });
-  }
-
   protected async buildData({
     claimType = ClaimType.ONE_VS_ONE,
     djHearingType = DJHearingType.DISPOSAL_HEARING,
-    isOtherRemedy = false,
   } : {
     claimType?: ClaimType,
     djHearingType?: DJHearingType,
-    isOtherRemedy?: boolean;
   } = {}) {
     return {
       ...requestDefaultJudgementBuilderComponents.defendantDetails(claimType, this.defendant1PartyType!),
       ...requestDefaultJudgementBuilderComponents.showCertifyStatement(),
-      ...(isOtherRemedy ? requestDefaultJudgementBuilderComponents.otherRemedyAbandoned() : {}),
       ...requestDefaultJudgementBuilderComponents.hearingType(djHearingType),
       ...requestDefaultJudgementBuilderComponents.hearingSupportRequirementsFieldDJ(this.claimant1PartyType!),
     };

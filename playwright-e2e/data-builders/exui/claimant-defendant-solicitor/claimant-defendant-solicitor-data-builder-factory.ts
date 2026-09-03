@@ -19,7 +19,6 @@ import ServiceRequestDataBuilder from './service-request/service-request-data-bu
 import DefaultJudgementDataBuilder from './default-judgement/unspec/default-judgement-data-builder.ts';
 import DefaultJudgementSpecDataBuilder from './default-judgement/lr-spec/default-judgement-spec-data-builder.ts';
 import UploadMediationDocumentsDataBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-data-builder';
-import TrialReadinessDataBuilder from './trial-readiness/trial-readiness-data-builder';
 
 export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDataBuilderFactory {
   get acknowledgeClaimDataBuilder() {
@@ -100,9 +99,5 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
 
   get uploadMediationDocumentsDataBuilder() {
     return new UploadMediationDocumentsDataBuilder(this.requestsFactory, this.testData);
-  }
-
-  get trialReadinessDataBuilder() {
-    return new TrialReadinessDataBuilder(this.requestsFactory, this.testData);
   }
 }

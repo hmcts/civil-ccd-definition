@@ -51,7 +51,7 @@ const claimant1 = (partyType: ClaimantDefendantPartyType, certificateOfSuitabili
       applicant1LitigationFriend: {
         ...CaseDataHelper.buildLitigationFriendData(
           partys.CLAIMANT_1_LITIGATION_FRIEND,
-        ),
+        ), 
         partyName: undefined,
         certificateOfSuitability: [CaseDataHelper.setIdToData({document: certificateOfSuitability})],
       },
@@ -263,14 +263,14 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
 };
 
 
-const claimDetails = (claimTrack: ClaimTrack, isOtherRemedy = false, claimAmount?: number) => {
+const claimDetails = (claimTrack: ClaimTrack) => {
+
   return {
     Details: {
       detailsOfClaim: 'Test details of claim',
     },
-    ...otherRemedy(isOtherRemedy),
     uploadParticularsOfClaim: {
-      uploadParticularsOfClaim: 'No',
+      uploadParticularsOfClaim: 'No'
     },
     ClaimValue: {
       claimValue: {
@@ -278,19 +278,6 @@ const claimDetails = (claimTrack: ClaimTrack, isOtherRemedy = false, claimAmount
       },
     },
     PbaNumber: {},
-  };
-};
-
-
-const otherRemedy = (isOtherRemedy: boolean) => {
-  if (!isOtherRemedy) return {};
-
-  return {
-    OtherRemedy: {
-      isClaimDeclarationAdded: 'Yes',
-      claimDeclarationDescription: 'Claim declaration description',
-      isHumanRightsActIssues: 'Yes',
-    },
   };
 };
 
@@ -317,7 +304,6 @@ const createClaimData = {
   defendantSolicitor2,
   claimTypeUnspec,
   claimDetails,
-  otherRemedy,
   statementOfTruth,
 };
 

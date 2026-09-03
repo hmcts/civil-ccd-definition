@@ -341,12 +341,6 @@ const ccdEvents: CCDEvents = {
     description: 'Upload mediation documents',
     order: 24
   },
-  TRIAL_READINESS: {
-    id: 'TRIAL_READINESS',
-    name: 'Trial readiness',
-    description: 'Confirm trial arrangements',
-    order: 31,
-  },
 };
 
 export default ccdEvents;
