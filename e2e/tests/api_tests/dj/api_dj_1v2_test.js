@@ -9,7 +9,7 @@ if (config.runWAApiTest) {
 }
 
 Feature('Unspec 1v2 api default judgment journey')
-  .tag('@civil-service-master @civil-service-nightly @civil-wa-master @civil-wa-pr @civil-wa-nightly @api-dj');
+  .tag('@civil-service-master @civil-wa-master @civil-wa-pr @civil-wa-nightly @api-dj');
 
 let caseId;
 
