@@ -27,6 +27,20 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM",
+    "CaseFieldID": "hearingDate",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "ReasonForSettlement",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "settleReason=\"DO NOT SHOW IN UI\"",
+    "PageShowCondition": "ccdState!=\"CASE_ISSUED\" AND ccdState!=\"AWAITING_CASE_DETAILS_NOTIFICATION\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SETTLE_CLAIM",
     "CaseFieldID": "partiesNames",
     "PageID": "ConfirmSettlement",
     "PageLabel": "Settle this claim",
