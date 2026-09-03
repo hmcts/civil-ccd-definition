@@ -16,6 +16,8 @@ if (config.runWAApiTest) {
 
 Feature(' GA - WA Judge Revisit Applications');
 
+// DTSCCI-5195 decision: retain these as skipped. They exercise Work Allocation tasks and scheduler
+// integration rather than the service-owned main GA callbacks migrated by this ticket.
 Scenario.skip('Before SDO GA - Directions Order Additional Response time Expired', async ({ api_ga, wa }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(
     config.applicantSolicitorUser, mpScenario, 'Company');

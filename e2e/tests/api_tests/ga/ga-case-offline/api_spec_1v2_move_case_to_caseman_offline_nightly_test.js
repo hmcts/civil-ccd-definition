@@ -4,7 +4,9 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA SPEC Claim 1v2 Move to Case Man Case Close API tests').tag('@civil-service-nightly @api-ga-case-offline');
 
-Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api_ga}) => {
+// Replaced by civil-service offline workflow integration coverage. Retained as a disabled reference
+// journey; manually re-enable it for local CCD diagnostics.
+Scenario.skip('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async ({api_ga}) => {
   civilCaseReference = await api_ga.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -17,7 +19,7 @@ Scenario('Case offline APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION', async 
   await api_ga.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'PROCEEDS_IN_HERITAGE');
 }).retry(1);
 
-Scenario('Case offline ORDER_MADE', async ({api_ga}) => {
+Scenario.skip('Case offline ORDER_MADE', async ({api_ga}) => {
   civilCaseReference = await api_ga.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 
@@ -35,7 +37,7 @@ Scenario('Case offline ORDER_MADE', async ({api_ga}) => {
   await api_ga.verifyGAState(config.applicantSolicitorUser, civilCaseReference, gaCaseReference, 'ORDER_MADE');
 }).retry(1);
 
-Scenario('Case offline APPLICATION_DISMISSED', async ({api_ga}) => {
+Scenario.skip('Case offline APPLICATION_DISMISSED', async ({api_ga}) => {
   civilCaseReference = await api_ga.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
 

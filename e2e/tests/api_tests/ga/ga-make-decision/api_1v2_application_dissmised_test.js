@@ -5,7 +5,9 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 Judge Dismiss Application API tests').tag('@civil-service-nightly @api-ga-make-decision');
 
-Scenario('Judge makes decision 1V2 - DISMISS_THE_APPLICATION', async ({api_ga}) => {
+// The resulting dismissal state is covered by civil-service workflow integration tests.
+// Retain this as a disabled reference; manually re-enable it for local multi-party CCD diagnostics.
+Scenario.skip('Judge makes decision 1V2 - DISMISS_THE_APPLICATION', async ({api_ga}) => {
 
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,
     mpScenario, 'SoleTrader', '11000');

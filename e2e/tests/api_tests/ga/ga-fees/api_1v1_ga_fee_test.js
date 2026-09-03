@@ -5,6 +5,8 @@ let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v1 GA Fee API tests').tag('@ga-fees');
 
+// DTSCCI-5195 decision: retain as skipped. Fee calculation and payment wiring are outside the
+// service-owned main GA callback paths migrated by this ticket.
 Scenario.skip('MixTypesWithVary - 119 pounds', async ({api_ga}) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
