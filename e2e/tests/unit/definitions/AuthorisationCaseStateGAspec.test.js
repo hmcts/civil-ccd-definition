@@ -14,7 +14,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let errors = [];
 
       before(() => {
-        authorisationCaseState = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseState', key);
+        authorisationCaseState = dataProvider.getConfig('../../../../ccd-definition/generalapplication/AuthorisationCaseState', key);
         stateConfig = dataProvider.ccdData.State;
       });
 

@@ -1,11 +1,11 @@
 import CaseDataHelper from '../../../../../helpers/case-data-helper.ts';
 import {ClaimantDefendantPartyType} from "../../../../../models/users/claimant-defendant-party-types.ts";
 import partys from "../../../../../constants/users/partys.ts";
-import DJPaymentTypeSpec from '../../../../../constants/ccd-events/default-judgement/dj-payment-type-spec.ts';
+import DJPaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-payment-type-spec.ts';
 import DateHelper from '../../../../../helpers/date-helper.ts';
 import ClaimType from '../../../../../constants/cases/claim-type.ts';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper.ts';
-import DJSpecType from '../../../../../constants/ccd-events/default-judgement/dj-spec-type.ts';
+import DJSpecType from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-spec-type.ts';
 
 const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
@@ -13,17 +13,14 @@ const formatDate = (date: Date) =>
 const defendantDetailsSpec = (claimType: ClaimType, djSpecType: DJSpecType, defendant1Party: ClaimantDefendantPartyType) => {
   if (ClaimTypeHelper.isDefendant2(claimType)) {
     if (djSpecType === DJSpecType.NON_DIVERGENT) {
+      const bothDefendants = CaseDataHelper.setCodeToData('Both Defendants');
       return {
-        defendantDetails: {
-          defendantDetails: {
+        defendantDetailsSpec: {
+          defendantDetailsSpec: {
             list_items: [
-              CaseDataHelper.setCodeToData(
-                'Both Defendants'
-              ),
+              bothDefendants
             ],
-            value: CaseDataHelper.setCodeToData(
-              'Both Defendants'
-            ),
+            value: bothDefendants
           },
         },
       };
@@ -31,8 +28,8 @@ const defendantDetailsSpec = (claimType: ClaimType, djSpecType: DJSpecType, defe
   }
 
   return {
-    defendantDetails: {
-      defendantDetails: {
+    defendantDetailsSpec: {
+      defendantDetailsSpec: {
         list_items: [
           CaseDataHelper.setCodeToData(
             CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, defendant1Party)

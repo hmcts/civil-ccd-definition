@@ -13,6 +13,7 @@ Feature('Unspec 1v2 api default judgment journey')
 
 let caseId;
 
+// DTSCCI-5198 RETAIN: WA summaryJudgmentDirectionsTask after unspec DJ. Not covered by integration tests.
 Scenario('01 Default Judgment claim 1v2 and SDO', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
@@ -41,6 +42,7 @@ Scenario('03 Summary judgment Directions task ', async ({I, api}) => {
 });
 
 //change back after CIV-12451 merged
+// DTSCCI-5198: remains skipped. Case progression after DJ is covered by unspec 1v1 nightly.
 Scenario.skip('04 Case progression tests (Upload evidence, schedule a hearing, amend hearing date, pay fee, confirm trial readiness)', async ({I, api}) => {
   await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'NOTE_ONLY', 'CASE_PROGRESSION');
   await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_ONLY', 'CASE_PROGRESSION');

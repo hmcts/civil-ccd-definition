@@ -1,8 +1,11 @@
 import BaseRequestsFactory from '../base/base-requests-factory';
+import CaseAssignmentServiceRequests from './case-assignment-service-requests';
 import CCDRequests from './ccd-requests';
 import CivilServiceRequests from './civil-service-requests';
 import GovUKRequests from './gov-uk-requests';
 import IdamRequests from './idam-requests';
+import PaymentRequests from './payment-requests';
+import WireMockRequests from './wire-mock-requests';
 import WorkAllocationsRequests from './work-allocations-requests';
 
 export default class RequestsFactory extends BaseRequestsFactory {
@@ -24,5 +27,17 @@ export default class RequestsFactory extends BaseRequestsFactory {
 
   get workAllocationsRequests() {
     return new WorkAllocationsRequests(this.requestContext);
+  }
+
+  get caseAssignmentServiceRequests() {
+    return new CaseAssignmentServiceRequests(this.requestContext);
+  }
+
+  get paymentRequests() {
+    return new PaymentRequests(this.requestContext);
+  }
+
+  get wiremockRequests() {
+    return new WireMockRequests(this.requestContext);
   }
 }

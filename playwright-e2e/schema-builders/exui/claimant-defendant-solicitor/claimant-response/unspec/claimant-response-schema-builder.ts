@@ -9,10 +9,15 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
-  async buildSmallFullDefence1v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildSmallFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
+    });
+  }
+
+  async buildSmallFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
     });
   }
 
@@ -23,7 +28,7 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildIntermediateFullDefence2v1(
+  async buildInterFullDefence2v1(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -46,7 +51,7 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildIntermediateProceed1v2SS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildInterProceed1v2SS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
@@ -64,7 +69,7 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildIntermediateFullDefence1v1(
+  async buildInterFullDefence1v1(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -87,6 +92,13 @@ export default class ClaimantResponseSchemaBuilder extends BaseSchemaBuilder {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.MULTI_CLAIM,
+    });
+  }
+
+  async buildInterProceed1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
     });
   }
 

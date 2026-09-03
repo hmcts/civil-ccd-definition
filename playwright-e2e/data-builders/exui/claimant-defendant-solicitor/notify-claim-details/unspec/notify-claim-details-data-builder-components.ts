@@ -1,8 +1,9 @@
+import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import DateHelper from '../../../../../helpers/date-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
+import CivilServiceRequests from '../../../../../requests/civil-service-requests';
 
 
 const selectDefendantSolicitor = {
@@ -14,26 +15,42 @@ const selectDefendantSolicitor = {
   }
 };
 
-const upload = (claimType: ClaimType, particularsOfClaimDocument: UploadDocumentValue) => {
-  if (ClaimTypeHelper.isDefendant1Represented(claimType) || ClaimTypeHelper.isDefendant2Represented(claimType)) {
+const upload = async (
+  claimType: ClaimType,
+  hasParticularsOfClaimDocument: boolean,
+  civilServiceRequests: CivilServiceRequests,
+) => {
+  if (
+    !hasParticularsOfClaimDocument &&
+    (ClaimTypeHelper.isDefendant1Represented(claimType) ||
+      ClaimTypeHelper.isDefendant2Represented(claimType))
+  ) {
+    const particularsOfClaimDocument =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
     return {
-      Upload: particularsOfClaimDocument ? {
+      Upload: {
         servedDocumentFiles: {
           particularsOfClaimDocument: [
             CaseDataHelper.setIdToData(particularsOfClaimDocument)
           ],
         },
-      } : {},
+      },
     };
   }
 
   return {};
 };
 
-const certificateOfService1 = (claimType: ClaimType, defendant1SupportEvidenceCos: UploadDocumentValue) => {
+const certificateOfService1 = async (
+  claimType: ClaimType,
+  civilServiceRequests: CivilServiceRequests,
+) => {
   if (ClaimTypeHelper.isDefendant1Unrepresented(claimType)) {
+    const defendant1SupportEvidenceCos =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     const serviceDate = DateHelper.formatDateToString(
-      DateHelper.subtractFromToday({ days: 1 }),
+      DateHelper.subtractFromToday({ days: 1, workingDay: true }),
       { outputFormat: 'YYYY-MM-DD' },
     );
 
@@ -64,10 +81,15 @@ const certificateOfService1 = (claimType: ClaimType, defendant1SupportEvidenceCo
   return {};
 }
 
-const certificateOfService2 = (claimType: ClaimType, defendant2SupportEvidenceCos: UploadDocumentValue) => {
+const certificateOfService2 = async (
+  claimType: ClaimType,
+  civilServiceRequests: CivilServiceRequests,
+) => {
   if (ClaimTypeHelper.isDefendant2Unrepresented(claimType)) {
+    const defendant2SupportEvidenceCos =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
     const serviceDate = DateHelper.formatDateToString(
-      DateHelper.subtractFromToday({ days: 1 }),
+      DateHelper.subtractFromToday({ days: 1, workingDay: true }),
       { outputFormat: 'YYYY-MM-DD' },
     );
 

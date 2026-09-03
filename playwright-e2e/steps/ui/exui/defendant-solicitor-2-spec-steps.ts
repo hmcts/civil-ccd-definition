@@ -3,7 +3,8 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor2User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -29,7 +30,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
 
   async RespondFastFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS2();
@@ -38,7 +39,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS2();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
         await defendantResponseSpecActions.timelineDS2();
-        await defendantResponseSpecActions.dqFastTrackDS2();
+        await defendantResponseSpecActions.dqFastDS2();
         await defendantResponseSpecActions.applicationDS2();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS2();
         await defendantResponseSpecActions.submitDefendantResponse();
@@ -47,14 +48,13 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await defendantResponseSpecActions.respondentChecklist();
         await defendantResponseSpecActions.responseConfirmNameAddressDS2();
@@ -64,7 +64,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
         await defendantResponseSpecActions.timelineDS2();
         await defendantResponseSpecActions.mediationDS2();
-        await defendantResponseSpecActions.dqSmallTrackDS2();
+        await defendantResponseSpecActions.dqSmallDS2();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1();
         await defendantResponseSpecActions.submitDefendantResponse();
       },
@@ -72,8 +72,24 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+    );
+  }
 
-      { verifySuccessEvent: false },
+  async EvidenceUploadBundle() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
+        await evidenceUploadRespondentActions.documentUploadBundleDS2();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 }

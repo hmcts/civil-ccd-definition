@@ -53,34 +53,6 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqFastTrackClaimantResponseSpec() {
-    const { fileDirectionsQuestionairePage } = this.claimantResponsePageFactory;
-    await fileDirectionsQuestionairePage.verifyContent(this.ccdCaseData);
-    await fileDirectionsQuestionairePage.enterDetails();
-    await fileDirectionsQuestionairePage.submit();
-
-    const { fixedRecoverableCostsPage } = this.claimantResponsePageFactory;
-    await fixedRecoverableCostsPage.verifyContent(this.ccdCaseData);
-    await fixedRecoverableCostsPage.selectYes();
-    await fixedRecoverableCostsPage.submit();
-
-    const { disclosureOfElectronicDocumentsPage } = this.claimantResponsePageFactory;
-    await disclosureOfElectronicDocumentsPage.verifyContent(this.ccdCaseData);
-    await disclosureOfElectronicDocumentsPage.enterDetails();
-    await disclosureOfElectronicDocumentsPage.submit();
-
-    const { disclosureOfNonElectronicDocumentsSpecPage } = this.claimantResponsePageFactory;
-    await disclosureOfNonElectronicDocumentsSpecPage.verifyContent(this.ccdCaseData);
-    await disclosureOfNonElectronicDocumentsSpecPage.enterDetails();
-    await disclosureOfNonElectronicDocumentsSpecPage.submit();
-
-    const { disclosureReportPage } = this.claimantResponsePageFactory;
-    await disclosureReportPage.verifyContent(this.ccdCaseData);
-    await disclosureReportPage.enterDetails();
-    await disclosureReportPage.submit();
-  }
-
-  @Step(classKey)
   async mediationClaimantResponseSpec() {
     const { mediationContactInformationPage } = this.claimantResponsePageFactory;
     await mediationContactInformationPage.verifyContent(this.ccdCaseData);
@@ -123,7 +95,6 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
 
   @Step(classKey)
   async dqSmallTrack() {
-
     const { smallClaimWitnessesPage } = this.claimantResponsePageFactory;
     await smallClaimWitnessesPage.verifyContent(this.ccdCaseData);
     await smallClaimWitnessesPage.selectYes();
@@ -147,42 +118,79 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqFastTrack() {
-    const { expertsPage } = this.claimantResponsePageFactory;
-    await expertsPage.verifyContent(this.ccdCaseData);
-    await expertsPage.useExperts();
-    await expertsPage.addNewExpert();
-    await expertsPage.enterExpertDetails();
-    await expertsPage.submit();
-
-    const { witnessesPage } = this.claimantResponsePageFactory;
-    await witnessesPage.verifyContent(this.ccdCaseData);
-    await witnessesPage.selectYesWitnesses();
-    await witnessesPage.addWitness();
-    await witnessesPage.enterWitnessDetails();
-    await witnessesPage.submit();
-
-    await this.language();
-
-    const { hearingFastSpecPage } = this.claimantResponsePageFactory;
-    await hearingFastSpecPage.verifyContent();
-    await hearingFastSpecPage.selectYesUnavailabilityRequired();
-    await hearingFastSpecPage.addNewUnavailableDate();
-    await hearingFastSpecPage.selectSingleDateFastTrack();
-    await hearingFastSpecPage.submit();
-
-    await this.applicantCourtLocationLRSpec();
-    await this.hearingSupport();
-    await this.vulnerabilityQuestions();
-  }
-
-  @Step(classKey)
   async application() {
     const { applicationPage } = this.claimantResponsePageFactory;
     await applicationPage.verifyContent(this.ccdCaseData);
     await applicationPage.selectYes();
     await applicationPage.enterAdditionalInformation();
     await applicationPage.submit();
+  }
+
+  @Step(classKey)
+  async dqFastTrack() {
+    await this.fileDirectionsQuestionaire();
+    await this.fixedRecoverableCosts();
+    await this.disclosureOfElectronicDocuments();
+    await this.disclosureOfNonElectronicDocumentsSpec();
+    await this.disclosureReport();
+    await this.experts();
+    await this.witnesses();
+    await this.language();
+    await this.hearingFastSpec();
+    await this.applicantCourtLocationLRSpec();
+    await this.hearingSupport();
+    await this.vulnerabilityQuestions();
+  }
+
+  @Step(classKey)
+  async dqIntermediateTrack() {
+    await this.fileDirectionsQuestionaire();
+    await this.fixedRecoverableCostsIntermediate();
+    await this.disclosureOfElectronicDocuments();
+    await this.disclosureOfNonElectronicDocumentsSpec(false);
+    await this.disclosureReport();
+    await this.experts();
+    await this.witnesses();
+    await this.language();
+    await this.hearingFastSpec();
+    await this.draftDirections();
+    await this.applicantCourtLocationLRSpec();
+    await this.hearingSupport();
+    await this.vulnerabilityQuestions();
+    await this.applicationNo();
+  }
+
+  @Step(classKey)
+  async dqMultiTrack() {
+    await this.fileDirectionsQuestionaire();
+    await this.disclosureOfElectronicDocuments();
+    await this.disclosureOfNonElectronicDocumentsSpec();
+    await this.disclosureReport();
+    await this.experts();
+    await this.witnesses();
+    await this.language();
+    await this.hearingFastSpec();
+    await this.draftDirections();
+    await this.applicantCourtLocationLRSpec();
+    await this.hearingSupport();
+    await this.vulnerabilityQuestions();
+  }
+
+  @Step(classKey)
+  async dqMultiTrack1vLIP() {
+    await this.fileDirectionsQuestionaire();
+    await this.disclosureOfElectronicDocuments();
+    await this.disclosureOfNonElectronicDocumentsSpec(false);
+    await this.disclosureReport();
+    await this.experts();
+    await this.witnesses();
+    await this.language();
+    await this.hearingFastSpec();
+    await this.draftDirections();
+    await this.applicantCourtLocationLRSpec();
+    await this.hearingSupport();
+    await this.vulnerabilityQuestions();
+    await this.applicationNo();
   }
 
   @Step(classKey)
@@ -205,6 +213,91 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
     const { confirmClaimantResponseSpecPage } = this.claimantResponsePageFactory;
     await confirmClaimantResponseSpecPage.verifyContent(this.ccdCaseData);
     await confirmClaimantResponseSpecPage.submit();
+  }
+
+  private async fileDirectionsQuestionaire() {
+    const { fileDirectionsQuestionairePage } = this.claimantResponsePageFactory;
+    await fileDirectionsQuestionairePage.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionairePage.enterDetails();
+    await fileDirectionsQuestionairePage.submit();
+  }
+
+  private async fixedRecoverableCosts() {
+    const { fixedRecoverableCostsPage } = this.claimantResponsePageFactory;
+    await fixedRecoverableCostsPage.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsPage.selectYes();
+    await fixedRecoverableCostsPage.submit();
+  }
+
+  private async fixedRecoverableCostsIntermediate() {
+    const { fixedRecoverableCostsIntermediatePage } = this.claimantResponsePageFactory;
+    await fixedRecoverableCostsIntermediatePage.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsIntermediatePage.selectYes();
+    await fixedRecoverableCostsIntermediatePage.submit();
+  }
+
+  private async disclosureOfElectronicDocuments() {
+    const { disclosureOfElectronicDocumentsPage } = this.claimantResponsePageFactory;
+    await disclosureOfElectronicDocumentsPage.verifyContent(this.ccdCaseData);
+    await disclosureOfElectronicDocumentsPage.enterDetails();
+    await disclosureOfElectronicDocumentsPage.submit();
+  }
+
+  private async disclosureOfNonElectronicDocumentsSpec(enterDetails = true) {
+    const { disclosureOfNonElectronicDocumentsSpecPage } = this.claimantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsSpecPage.verifyContent(this.ccdCaseData);
+    if (enterDetails) {
+      await disclosureOfNonElectronicDocumentsSpecPage.enterDetails();
+    }
+    await disclosureOfNonElectronicDocumentsSpecPage.submit();
+  }
+
+  private async disclosureReport() {
+    const { disclosureReportPage } = this.claimantResponsePageFactory;
+    await disclosureReportPage.verifyContent(this.ccdCaseData);
+    await disclosureReportPage.enterDetails();
+    await disclosureReportPage.submit();
+  }
+
+  private async experts() {
+    const { expertsPage } = this.claimantResponsePageFactory;
+    await expertsPage.verifyContent(this.ccdCaseData);
+    await expertsPage.useExperts();
+    await expertsPage.addNewExpert();
+    await expertsPage.enterExpertDetails();
+    await expertsPage.submit();
+  }
+
+  private async witnesses() {
+    const { witnessesPage } = this.claimantResponsePageFactory;
+    await witnessesPage.verifyContent(this.ccdCaseData);
+    await witnessesPage.selectYesWitnesses();
+    await witnessesPage.addWitness();
+    await witnessesPage.enterWitnessDetails();
+    await witnessesPage.submit();
+  }
+
+  private async hearingFastSpec() {
+    const { hearingFastSpecPage } = this.claimantResponsePageFactory;
+    await hearingFastSpecPage.verifyContent();
+    await hearingFastSpecPage.selectYesUnavailabilityRequired();
+    await hearingFastSpecPage.addNewUnavailableDate();
+    await hearingFastSpecPage.selectSingleDateFastTrack();
+    await hearingFastSpecPage.submit();
+  }
+
+  private async draftDirections() {
+    const { draftDirectionsPage } = this.claimantResponsePageFactory;
+    await draftDirectionsPage.verifyContent(this.ccdCaseData);
+    await draftDirectionsPage.uploadEvidence();
+    await draftDirectionsPage.submit();
+  }
+
+  private async applicationNo() {
+    const { applicationPage } = this.claimantResponsePageFactory;
+    await applicationPage.verifyContent(this.ccdCaseData);
+    await applicationPage.selectNo();
+    await applicationPage.submit();
   }
 
   private async language() {

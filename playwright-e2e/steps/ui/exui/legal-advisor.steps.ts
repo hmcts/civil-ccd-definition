@@ -3,8 +3,9 @@ import JudgeLAActionsFactory from '../../../actions/ui/exui/judge-la/judge-la-ac
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { tribunalCaseworkerRegion1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import legalAdvisorSmallClaimsTrackDirectionsTask from '../../../constants/wa-tasks/legalAdvisorSmallClaimsTrackDirectionsTask';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
+import legalAdvisorSmallClaimsTrackDirectionsTask from '../../../constants/wa-tasks/exui/legalAdvisorSmallClaimsTrackDirectionsTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -28,7 +29,7 @@ export default class LegalAdvisorSteps extends BaseExui {
     await super.idamActions.exuiLogin(tribunalCaseworkerRegion1User);
   }
 
-  async SdoSmallTrackSum() {
+  async SdoSmallSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -44,11 +45,14 @@ export default class LegalAdvisorSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
-      { verifySuccessEvent: false }
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
-  async SdoSmallTrackNoSum() {
+  async SdoSmallNoSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -64,11 +68,14 @@ export default class LegalAdvisorSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
-      { verifySuccessEvent: false }
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
-  async SdoSmallTrackFromFastClaim() {
+  async SdoSmallFromFastClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -84,11 +91,11 @@ export default class LegalAdvisorSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
-      { verifySuccessEvent: false }
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async SdoSmallTrackDRH() {
+  async SdoSmallDRH() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -104,7 +111,7 @@ export default class LegalAdvisorSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
-      { verifySuccessEvent: false }
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 }

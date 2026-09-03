@@ -8,7 +8,7 @@ test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-serv
     CaseworkerApiSteps,
     LegalAdvisorApiSteps
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallPartAdmitHasPaid();
@@ -16,7 +16,7 @@ test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-serv
     await CaseworkerApiSteps.MediationUnsuccessful();
     await ClaimantSolicitorSpecApiSteps.UploadMediationDocuments();
     await DefendantSolicitor1SpecApiSteps.UploadMediationDocuments();
-    await LegalAdvisorApiSteps.SdoSmallTrackNoSum();
+    await LegalAdvisorApiSteps.SdoSmallNoSum();
   });
 
   test('1v1 claimant and defendant part admit states paid- claimant received payment rejects PA - upload mediation documents', async ({
@@ -25,7 +25,7 @@ test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-serv
     DefendantSolicitor1SpecApiSteps,
     CaseworkerApiSteps
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallPartAdmitHasPaid();
@@ -42,7 +42,7 @@ test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-serv
     CaseworkerApiSteps,
     LegalAdvisorApiSteps
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallPartAdmitImmediately();
@@ -50,7 +50,7 @@ test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-serv
     await CaseworkerApiSteps.MediationUnsuccessful();
     await ClaimantSolicitorSpecApiSteps.UploadMediationDocuments();
     await DefendantSolicitor1SpecApiSteps.UploadMediationDocuments();
-    await LegalAdvisorApiSteps.SdoSmallTrackSum();
+    await LegalAdvisorApiSteps.SdoSmallSum();
   });
 
   test('1v1 claimant and defendant upload mediation documents', async ({
@@ -60,7 +60,7 @@ test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-serv
     LegalAdvisorApiSteps,
     CaseworkerApiSteps
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
@@ -68,6 +68,6 @@ test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-serv
     await CaseworkerApiSteps.MediationUnsuccessful();
     await ClaimantSolicitorSpecApiSteps.UploadMediationDocuments();
     await DefendantSolicitor1SpecApiSteps.UploadMediationDocuments();
-    await LegalAdvisorApiSteps.SdoSmallTrackSum();
+    await LegalAdvisorApiSteps.SdoSmallSum();
   });
 });

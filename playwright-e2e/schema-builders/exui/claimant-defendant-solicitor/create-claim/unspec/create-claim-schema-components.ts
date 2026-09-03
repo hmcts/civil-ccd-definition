@@ -1,9 +1,8 @@
 import { z } from 'zod';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import PersonalInjuryClaimTypeUnspecObjs from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 
@@ -12,10 +11,10 @@ const nonEmptyString = z.string().min(1);
 
 const addressSchema = z.strictObject({
   AddressLine1: nonEmptyString,
-  AddressLine2: z.string().optional(),
-  AddressLine3: z.string().optional(),
+  AddressLine2: nonEmptyString.optional(),
+  AddressLine3: nonEmptyString.optional(),
   PostTown: nonEmptyString,
-  County: z.string().optional(),
+  County: nonEmptyString.optional(),
   Country: nonEmptyString,
   PostCode: nonEmptyString,
 });
@@ -40,8 +39,8 @@ const partyBaseSchema = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
   flags: flagsSchema,
 };
 
@@ -107,7 +106,7 @@ const litigationFriendSchema = z.strictObject({
 
 const organisationPolicySchema = z.strictObject({
   OrgPolicyCaseAssignedRole: nonEmptyString,
-  OrgPolicyReference: z.string().optional(),
+  OrgPolicyReference: nonEmptyString.optional(),
   Organisation: z
     .looseObject({
       OrganisationID: nonEmptyString,
@@ -187,8 +186,8 @@ const detailsForClaimTabPartyBaseFields = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
 };
 
 const individualDetailsForClaimTabPartySchema = z.strictObject({
@@ -417,21 +416,18 @@ const lipResponseArtifacts = (claimType: ClaimType) => {
   }
 };
 
-const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimTypeUnspecObjs) => {
-  const claimType =
-    typeof claimTypeUnSpec === 'object' ? claimTypeUnSpec.claimTypeUnspec : claimTypeUnSpec;
-
-  if (typeof claimTypeUnSpec === 'object' && claimType === ClaimTypeUnspec.PERSONAL_INJURY) {
+const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec, personalInjuryType?: PersonalInjuryType) => {
+  if (claimTypeUnSpec === ClaimTypeUnspec.PERSONAL_INJURY) {
     return {
       claimTypeUnSpec: z.literal(ClaimTypeUnspec.PERSONAL_INJURY),
-      personalInjuryType: z.literal(claimTypeUnSpec.personalInjuryType),
-      ...(claimTypeUnSpec.personalInjuryType === PersonalInjuryType.PERSONAL_INJURY_OTHER
+      personalInjuryType: z.literal(personalInjuryType),
+      ...(personalInjuryType === PersonalInjuryType.PERSONAL_INJURY_OTHER
         ? { personalInjuryTypeOther: nonEmptyString }
         : {}),
     };
   }
 
-  if (claimType === ClaimTypeUnspec.OTHER) {
+  if (claimTypeUnSpec === ClaimTypeUnspec.OTHER) {
     return {
       claimTypeUnSpec: z.literal(ClaimTypeUnspec.OTHER),
       claimTypeOther: nonEmptyString,
@@ -439,11 +435,26 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
   }
 
   return {
-    claimTypeUnSpec: z.literal(claimType),
+    claimTypeUnSpec: z.literal(claimTypeUnSpec),
   };
 };
 
-const claimDetails = (claimTrack: ClaimTrack) => ({
+const otherRemedy = (claimTypeUnSpec: ClaimTypeUnspec) => {
+  if (
+    claimTypeUnSpec === ClaimTypeUnspec.HOUSING_DISREPAIR ||
+    claimTypeUnSpec === ClaimTypeUnspec.DAMAGES_AND_OTHER_REMEDY
+  ) {
+    return {
+      isClaimDeclarationAdded: nonEmptyString,
+      claimDeclarationDescription: nonEmptyString,
+      isHumanRightsActIssues: nonEmptyString,
+    };
+  }
+
+  return {};
+};
+
+const details = (claimTrack: ClaimTrack) => ({
   allPartyNames: nonEmptyString,
   submittedDate: nonEmptyString,
 
@@ -453,8 +464,17 @@ const claimDetails = (claimTrack: ClaimTrack) => ({
   anyRepresented: nonEmptyString,
 
   detailsOfClaim: nonEmptyString,
+});
+
+const uploadParticularsOfClaim = {
   claimFee: feeSchema,
+};
+
+const claimValue = {
   claimValue: claimValueSchema,
+};
+
+const pbaNumber = {
   paymentTypePBA: nonEmptyString,
 
   legacyCaseReference: nonEmptyString,
@@ -464,7 +484,7 @@ const claimDetails = (claimTrack: ClaimTrack) => ({
   applicantSolicitor1PbaAccounts: pbaAccountsSchema,
   applicantSolicitor1PbaAccountsIsEmpty: yesNoSchema,
   claimIssuedPaymentDetails: claimIssuedPaymentDetailsSchema,
-});
+};
 
 const statementOfTruth = {
   applicantSolicitor1ClaimStatementOfTruth: statementOfTruthSchema,
@@ -482,7 +502,11 @@ const createClaimResponseSchema = {
   defendant2,
   defendant2Representation,
   claimTypeUnspec,
-  claimDetails,
+  otherRemedy,
+  details,
+  uploadParticularsOfClaim,
+  claimValue,
+  pbaNumber,
   statementOfTruth,
   lipResponseArtifacts,
 };

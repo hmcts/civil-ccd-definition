@@ -9,16 +9,16 @@ test.describe('1v2DS small track claim journey', { tag: '@civil-ccd-nightly' }, 
     DefendantSolicitor2Steps,
   }) => {
     await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.CreateClaimSmallTrack1v2DS();
+    await ClaimantSolicitorSteps.CreateClaimSmall1v2DS();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await ClaimantSolicitorSteps.NotifyClaim1v2DS();
     await ClaimantSolicitorSteps.NotifyClaimDetails1v2DS();
     await DefendantSolicitor1Steps.Login();
-    await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v2DS();
+    await DefendantSolicitor1Steps.RespondSmallFullDefence1v2DS();
     await DefendantSolicitor2Steps.Login();
-    await DefendantSolicitor2Steps.RespondSmallTrackFullDefence1v2DS();
+    await DefendantSolicitor2Steps.RespondSmallFullDefence1v2DS();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondSmallProceed1v2DS();
   });

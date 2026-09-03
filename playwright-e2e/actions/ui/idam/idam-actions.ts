@@ -6,52 +6,83 @@ import BaseApi from '../../../base/base-api';
 import RequestsFactory from '../../../requests/requests-factory';
 import CookiesHelper from '../../../helpers/cookies-helper';
 import IdamPageFactory from '../../../pages/idam/idam-page-factory';
+import ExuiDashboardPageFactory from '../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import PageUtilsFactory from '../../../pages/utils/page-utils-factory';
 
 @AllMethodsStep()
 export default class IdamActions extends BaseApi {
   private isSetupTest: boolean;
   private isTeardownTest: boolean;
-  private verifyCookiesBanner: boolean;
   private pageUtilsFactory: PageUtilsFactory;
   private idamPageFactory: IdamPageFactory;
+  private exuiDashboardPageFactory: ExuiDashboardPageFactory;
 
   constructor(
     pageUtilsFactory: PageUtilsFactory,
     idamPageFactory: IdamPageFactory,
+    exuiDashboardPageFactory: ExuiDashboardPageFactory,
     requestsFactory: RequestsFactory,
     isSetupTest: boolean,
     isTeardownTest: boolean,
-    verifyCookiesBanner: boolean,
     testData: TestData,
   ) {
     super(requestsFactory, testData);
     this.isSetupTest = isSetupTest;
     this.isTeardownTest = isTeardownTest;
-    this.verifyCookiesBanner = verifyCookiesBanner;
     this.pageUtilsFactory = pageUtilsFactory;
     this.idamPageFactory = idamPageFactory;
+    this.exuiDashboardPageFactory = exuiDashboardPageFactory;
   }
 
   async exuiLogin(user: User) {
     const { pageCookiesManager } = this.pageUtilsFactory;
     await pageCookiesManager.cookiesSignOut();
-    if (!config.runSetup || this.isSetupTest || !(await CookiesHelper.cookiesExist(user))) {
-      const { loginPage } = this.idamPageFactory;
-
-      if (this.verifyCookiesBanner) {
-        const { idamsCookiesBanner } = this.idamPageFactory;
-        await loginPage.openManageCase();
-        await idamsCookiesBanner.verifyContent();
-        await idamsCookiesBanner.acceptCookies();
-      } else {
-        await pageCookiesManager.addIdamCookies();
-        await this.setupUserData(user);
-        await pageCookiesManager.addExuiCookies(user);
-        await loginPage.openManageCase();
+    if (!config.runExuiAuthSetup || this.isSetupTest || !(await CookiesHelper.cookiesExist(user))) {
+      const { enterEmailPage } = this.idamPageFactory;
+      const { enterPasswordPage } = this.idamPageFactory;
+      const { caseListPage, myWorkPage } = this.exuiDashboardPageFactory;
+      let retries = config.idam.eventRetries;
+      let firstAttempt = false;
+      while (retries >= 0) {
+        try {
+          if(!firstAttempt) {
+            await pageCookiesManager.addIdamCookies();
+            await this.setupUserData(user);
+            await pageCookiesManager.addExuiCookies(user);
+          } else {
+            try {
+              if(user.wa) {
+                await myWorkPage.openManageCase();
+              } else {
+                await caseListPage.openManageCase();
+              }
+              break;
+              // eslint-disable-next-line no-empty
+            } catch(error) {}
+          }
+          // await loginPage.openManageCase();
+          // await loginPage.verifyContent();
+          // await loginPage.manageCaseLogin(user);
+          await enterEmailPage.openManageCase();
+          await enterEmailPage.verifyContent();
+          await enterEmailPage.enterEmail(user);
+          await enterEmailPage.submit();
+          await enterPasswordPage.verifyContent();
+          await enterPasswordPage.enterPassword(user);
+          await enterPasswordPage.submit();
+          if(user.wa) {
+            await myWorkPage.verifyUrl();
+          } else {
+            await caseListPage.verifyUrl();
+          }
+          break;
+        } catch(error) {
+          if (retries <= 0) throw error;
+          console.log(`Login user: ${user.name}, email: ${user.email}, failed, trying again (Retries left: ${retries})`);
+          retries--;
+          firstAttempt = true
+        }
       }
-      await loginPage.verifyContent();
-      await loginPage.manageCaseLogin(user);
     } else {
       const cookies = await CookiesHelper.getCookies(user, this.isTeardownTest);
       await pageCookiesManager.cookiesLogin(user, cookies);

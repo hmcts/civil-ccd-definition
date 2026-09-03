@@ -4,7 +4,7 @@ properties([
 ]);
 
 
-@Library("Infrastructure@2.4.4")
+@Library("Infrastructure@Enable-helm-on-staging")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
@@ -24,13 +24,13 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-def copyPrevFailedAndNotExecutedTestFilesJson() {
+def copyPrevTestFilesReport(reportFilePath) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/testFilesReport.json"
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: reportFilePath
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
@@ -39,22 +39,20 @@ def copyPrevFailedAndNotExecutedTestFilesJson() {
   }
 }
 
-def copyPreviousAllureHistory() {
+def copyPreviousAllureHistory(historyDir, resultsDir) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
-  def targetDir = "test-results/functional/allure-results/history"
 
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
       copyArtifacts(
         projectName: env.JOB_NAME,
         selector: specific("${buildNumber}"),
-        filter: "test-results/functional/allure-report/history/*",
-        target: targetDir,
-        flatten: true
+        filter: "**/${historyDir}/**",
+        target: resultsDir
       )
-
+      sh "mv ${resultsDir}/${historyDir} ${resultsDir}/history"
       buildFound = true
       echo "Successfully imported Allure history from build ${buildNumber}"
     } catch (Exception error) {
@@ -62,6 +60,18 @@ def copyPreviousAllureHistory() {
       buildNumber--
     }
   }
+}
+
+void publishAllureReport(String reportDir, String reportName, String historyArchiveDir) {
+  publishHTML([
+    alwaysLinkToLastBuild: true,
+    keepAll: true,
+    reportDir: reportDir,
+    reportFiles: 'index.html',
+    reportName: reportName
+  ])
+  sh "cp -r ./${reportDir}/history/ ./${historyArchiveDir}"
+  archiveArtifacts artifacts: "${historyArchiveDir}/**", fingerprint: true
 }
 
 def getFunctionalTestsGroups() {
@@ -233,10 +243,6 @@ def getCivilServiceImage() {
 withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
-  env.BEFTA_FORCE_IMPORT_RETRY = 'true'
-  env.BEFTA_IMPORT_GATEWAY_TIMEOUT_VERSION_POLL_MAX_ATTEMPTS = '90'
-  env.BEFTA_IMPORT_GATEWAY_TIMEOUT_VERSION_POLL_DELAY_MILLISECONDS = '10000'
-
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -252,6 +258,7 @@ withPipeline(type, product, component) {
   // }
   onMaster {
     env.ENVIRONMENT = "aat"
+    enableHelmOnMaster()
   }
   onDemo {
     env.ENVIRONMENT = "demo"
@@ -311,13 +318,13 @@ withPipeline(type, product, component) {
   before('functionalTest:preview') {
     env.IDAM_STUB_ENABLED = 'false'
     env.UNASSIGN_CASES = true
-    copyPreviousAllureHistory();
+    copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
     if(checkForSkipFunctionalTests(env.BRANCH_NAME)) {
       env.SKIP_FUNCTIONAL_TESTS = true
     } else if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
       env.RUN_ALL_FUNCTIONAL_TESTS = true
     } else {
-      copyPrevFailedAndNotExecutedTestFilesJson();
+      copyPrevTestFilesReport("test-results/functional/testFilesReport.json");
     }
   }
 
@@ -328,15 +335,8 @@ withPipeline(type, product, component) {
       return
     }
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
-    steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
-    publishHTML([
-      allowMissing: false,
-      alwaysLinkToLastBuild: true,
-      keepAll: true,
-      reportDir: 'test-results/functional/allure-report',
-      reportFiles: 'index.html',
-      reportName: 'Non-Prod E2E Allure Report'
-    ])
+    yarnBuilder.yarn('test:generate-report')
+    publishAllureReport('allure-functional-report', 'Allure Functional Report', 'allure-functional-history')
   }
 
   before('smoketest:aat') {
@@ -374,8 +374,8 @@ withPipeline(type, product, component) {
 
   before('functionalTest:aat') {
     env.IDAM_STUB_ENABLED = 'false'
-    copyPreviousAllureHistory();
-    copyPrevFailedAndNotExecutedTestFilesJson();
+    copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
+    copyPrevTestFilesReport("test-results/functional/testFilesReport.json");
     env.UNASSIGN_CASES = true
   }
 
@@ -385,15 +385,8 @@ withPipeline(type, product, component) {
 
   afterAlways('functionalTest:aat') {
     createGithubRelease()
-    steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
-    publishHTML([
-      allowMissing: false,
-      alwaysLinkToLastBuild: true,
-      keepAll: true,
-      reportDir: 'test-results/functional/allure-report',
-      reportFiles: 'index.html',
-      reportName: 'Prod E2E Allure Report'
-    ])
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+    yarnBuilder.yarn('test:generate-report')
+    publishAllureReport('allure-functional-report', 'Allure Functional Report', 'allure-functional-history')
   }
 }

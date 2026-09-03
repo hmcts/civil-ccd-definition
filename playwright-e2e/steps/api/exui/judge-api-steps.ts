@@ -1,20 +1,23 @@
 import BaseApi from '../../../base/base-api';
 import { judgeRegion1User } from '../../../config/users/exui-users';
 import CaseState from '../../../constants/cases/case-state';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
-import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/intermediateTrackDirectionsTask';
-import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/nihlFastTrackDirectionsTask';
-import multiTrackDirectionsTask from '../../../constants/wa-tasks/multiTrackDirectionsTask';
-import reviewMessageFastJudicial from '../../../constants/wa-tasks/reviewMessageFastJudicial';
-import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
-import summaryJudgmentDirectionsTask from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events.ts';
+import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/exui/decisionOnReconsiderationRequestTask';
+import fastTrackDirectionsTask from '../../../constants/wa-tasks/exui/fastTrackDirectionsTask';
+import intermediateTrackDirectionsTask from '../../../constants/wa-tasks/exui/intermediateTrackDirectionsTask';
+import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/exui/nihlFastTrackDirectionsTask';
+import multiTrackDirectionsTask from '../../../constants/wa-tasks/exui/multiTrackDirectionsTask';
+import smallClaimDirectionsTask from '../../../constants/wa-tasks/exui/smallClaimDirectionsTask';
+import summaryJudgmentDirectionsTask from '../../../constants/wa-tasks/exui/summaryJudgmentDirectionsTask';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import JudgeLADataBuilderFactory from '../../../data-builders/exui/judge-la/judge-la-data-builder-factory';
 import JudgeLASchemaBuilderFactory from '../../../schema-builders/exui/judge-la/judge-la-schema-builder-factory';
+import initialDirectionsFlightDelayTask from "../../../constants/wa-tasks/exui/initialDirectionsFlightDelayTask.ts";
+import initialDirectionsOtherFlightDelayTask
+  from "../../../constants/wa-tasks/exui/initialDirectionsOtherFlightDelayTask.ts";
 
 @AllMethodsStep()
 export default class JudgeApiSteps extends BaseApi {
@@ -39,12 +42,12 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildFastSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -59,12 +62,12 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildFastNIHLSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       nihlFastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -72,19 +75,19 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackSum() {
+  async SdoSmallSum() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallSumSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -92,19 +95,19 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackNoSum() {
+  async SdoSmallNoSum() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallNoSumSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -113,19 +116,19 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackSumDRH() {
+  async SdoSmallSumDRH() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallSumDRHSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -134,19 +137,19 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 
-  async SdoSmallTrackNoSumDRH() {
+  async SdoSmallNoSumDRH() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildSmallNoSumDRHSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       smallClaimDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -162,12 +165,12 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildTrailSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -182,12 +185,12 @@ export default class JudgeApiSteps extends BaseApi {
     const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
     const createSdoData = await createSdoDataBuilder.buildTrailNIHLSdo();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       nihlFastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -203,12 +206,12 @@ export default class JudgeApiSteps extends BaseApi {
     const { sdoDJDataBuilder } = this.judgeDataBuilderFactory;
     const sdoDJData = await sdoDJDataBuilder.buildDisposalHearing();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       summaryJudgmentDirectionsTask,
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       sdoDJData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { sdoDJSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -223,12 +226,12 @@ export default class JudgeApiSteps extends BaseApi {
     const { sdoDJDataBuilder } = this.judgeDataBuilderFactory;
     const sdoDJData = await sdoDJDataBuilder.buildTrial();
 
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       summaryJudgmentDirectionsTask,
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       sdoDJData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { sdoDJSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -236,7 +239,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(sdoDJSchema, this.ccdCaseData);
   }
 
-  async GenerateDirectionsOrderAssistedOrder() {
+  async GenerateDirectionsOrderAssisted() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -255,7 +258,7 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(generateDirectionsOrderSchema, this.ccdCaseData);
   }
 
-  async GenerateDirectionsOrderFreeFormOrder() {
+  async GenerateDirectionsOrderFreeForm() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -274,24 +277,24 @@ export default class JudgeApiSteps extends BaseApi {
     ZodHelper.safeParse(generateDirectionsOrderSchema, this.ccdCaseData);
   }
 
-  async GenerateDirectionsOrderIntermediate() {
+  async GenerateDirectionsOrderInter() {
     await this.setupApiStep(judgeRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { generateDirectionsOrderDataBuilder } = this.judgeDataBuilderFactory;
     const generateDirectionsOrderData =
-      await generateDirectionsOrderDataBuilder.buildIntermediateOrder();
-    await super.submitWAEvent(
+      await generateDirectionsOrderDataBuilder.buildInterOrder();
+    await super.submitWaEvent(
       judgeRegion1User,
       intermediateTrackDirectionsTask,
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       generateDirectionsOrderData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { generateDirectionsOrderSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const generateDirectionsOrderSchema =
-      await generateDirectionsOrderSchemaBuilder.buildIntermediateOrder(caseDataBeforeSubmission);
+      await generateDirectionsOrderSchemaBuilder.buildInterOrder(caseDataBeforeSubmission);
     ZodHelper.safeParse(generateDirectionsOrderSchema, this.ccdCaseData);
   }
 
@@ -301,12 +304,12 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { generateDirectionsOrderDataBuilder } = this.judgeDataBuilderFactory;
     const generateDirectionsOrderData = await generateDirectionsOrderDataBuilder.buildMultiOrder();
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       judgeRegion1User,
       multiTrackDirectionsTask,
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       generateDirectionsOrderData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { generateDirectionsOrderSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -321,11 +324,7 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
     const notSuitableSdoData = await notSuitableSdoDataBuilder.buildChangeLocation();
-    await super.submitCCDEvent(
-      judgeRegion1User,
-      ccdEvents.NOT_SUITABLE_SDO,
-      notSuitableSdoData,
-    );
+    await super.submitCCDEvent(judgeRegion1User, ccdEvents.NOT_SUITABLE_SDO, notSuitableSdoData);
 
     const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const notSuitableSdoSchema =
@@ -339,16 +338,81 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
     const notSuitableSdoData = await notSuitableSdoDataBuilder.buildOtherReasons();
-    await super.submitCCDEvent(
-      judgeRegion1User,
-      ccdEvents.NOT_SUITABLE_SDO,
-      notSuitableSdoData,
-    );
+    await super.submitCCDEvent(judgeRegion1User, ccdEvents.NOT_SUITABLE_SDO, notSuitableSdoData);
 
     const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
     const notSuitableSdoSchema =
       await notSuitableSdoSchemaBuilder.buildOtherReasons(caseDataBeforeSubmission);
     ZodHelper.safeParse(notSuitableSdoSchema, this.ccdCaseData);
+  }
+
+  async DecisionOnReconsiderationRequestUphold() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { decisionOnReconsiderationRequestDataBuilder } = this.judgeDataBuilderFactory;
+    const decisionOnReconsiderationRequestData =
+      await decisionOnReconsiderationRequestDataBuilder.buildUpholdPreviousOrder();
+    await super.submitWaEvent(
+      judgeRegion1User,
+      decisionOnReconsiderationRequestTask,
+      ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
+      decisionOnReconsiderationRequestData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    const { decisionOnReconsiderationRequestSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const decisionOnReconsiderationRequestSchema =
+      await decisionOnReconsiderationRequestSchemaBuilder.buildUpholdPreviousOrder(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(decisionOnReconsiderationRequestSchema, this.ccdCaseData);
+  }
+
+  async DecisionOnReconsiderationRequestSdo() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { decisionOnReconsiderationRequestDataBuilder } = this.judgeDataBuilderFactory;
+    const decisionOnReconsiderationRequestData =
+      await decisionOnReconsiderationRequestDataBuilder.buildCreateNewSdo();
+    await super.submitWaEvent(
+      judgeRegion1User,
+      decisionOnReconsiderationRequestTask,
+      ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
+      decisionOnReconsiderationRequestData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    const { decisionOnReconsiderationRequestSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const decisionOnReconsiderationRequestSchema =
+      await decisionOnReconsiderationRequestSchemaBuilder.buildCreateNewSdo(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(decisionOnReconsiderationRequestSchema, this.ccdCaseData);
+  }
+
+  async DecisionOnReconsiderationRequestAmend() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { decisionOnReconsiderationRequestDataBuilder } = this.judgeDataBuilderFactory;
+    const decisionOnReconsiderationRequestData =
+      await decisionOnReconsiderationRequestDataBuilder.buildOrderNeedsAmending();
+    await super.submitWaEvent(
+      judgeRegion1User,
+      decisionOnReconsiderationRequestTask,
+      ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
+      decisionOnReconsiderationRequestData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    const { decisionOnReconsiderationRequestSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const decisionOnReconsiderationRequestSchema =
+      await decisionOnReconsiderationRequestSchemaBuilder.buildOrderNeedsAmending(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(decisionOnReconsiderationRequestSchema, this.ccdCaseData);
   }
 
   async ReplyMessage() {
@@ -357,14 +421,51 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { sendAndReplyDataBuilder } = this.judgeDataBuilderFactory;
     const sendAndReplyData = await sendAndReplyDataBuilder.buildReply();
-    await super.submitCCDEvent(
-      judgeRegion1User,
-      ccdEvents.SEND_AND_REPLY,
-      sendAndReplyData,
-    );
+    await super.submitCCDEvent(judgeRegion1User, ccdEvents.SEND_AND_REPLY, sendAndReplyData);
 
     const { sendAndReplySchemaBuilder } = this.judgeSchemaBuilderFactory;
     const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+  }
+
+  async SdoSmallSumFlightDelay() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildSmallSumSdo();
+
+    await super.submitWaEvent(
+      judgeRegion1User,
+      initialDirectionsFlightDelayTask,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const createSdoSchema = await createSdoSchemaBuilder.buildSmallSumSdo(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+  }
+
+  async SdoSmallNoSumFlightDelay() {
+    await this.setupApiStep(judgeRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createSdoDataBuilder } = this.judgeDataBuilderFactory;
+    const createSdoData = await createSdoDataBuilder.buildSmallNoSumSdo();
+
+    await super.submitWaEvent(
+      judgeRegion1User,
+      initialDirectionsOtherFlightDelayTask,
+      ccdEvents.CREATE_SDO,
+      createSdoData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+    const createSdoSchema =
+      await createSdoSchemaBuilder.buildSmallNoSumSdo(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
   }
 }

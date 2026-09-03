@@ -81,7 +81,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickButtonByName(
-    name: string,
+    name: string | RegExp,
     options: {
       timeout?: number;
       exact?: boolean;
@@ -102,15 +102,21 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'name')
   protected async clickLink(
     name: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = {
-      exact: true,
-      index: 0,
-    },
+    options: {
+      timeout?: number;
+      exact?: boolean;
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+    } = {},
   ) {
-    await this.page
-      .getByRole('link', { name, exact: options.exact ?? true })
-      .nth(options.index ?? 0)
-      .click({ timeout: options.timeout });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    let locator = this.page.getByRole('link', { name, exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.click({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -206,6 +212,23 @@ export default abstract class BasePage {
     let locator = this.page.locator(selector);
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
     await locator.fill(input.toString());
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  @TruthyParams(classKey, 'selector')
+  protected async blurSelector(
+    selector: string,
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {
+      index: 0,
+    },
+  ) {
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    const index = options.first ? undefined : (options.index ?? 0);
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, index, options.first);
+    await locator.blur({ timeout: options.timeout });
   }
 
   @TruthyParams(classKey)
@@ -635,6 +658,7 @@ export default abstract class BasePage {
   protected async expectNoSubheading(
     text: string | number,
     options: {
+      headingLevel?: 2 | 3 | 4 | 5 | 6;
       message?: string;
       exact?: boolean;
       containerSelector?: string;
@@ -653,7 +677,7 @@ export default abstract class BasePage {
 
     let locator = this.page.getByRole('heading', {
       name: text.toString(),
-      level: 2,
+      level: options.headingLevel ?? 2,
       exact: options.exact ?? true,
     });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
@@ -1323,6 +1347,18 @@ export default abstract class BasePage {
     });
   }
 
+  @BoxedDetailedStep(classKey, 'name')
+  protected async expectNoLink(
+    name: string,
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
+  ) {
+    await pageExpect(this.page.getByRole('link', { name, exact: options.exact ?? true }), {
+      message: options.message,
+    }).toBeHidden({
+      timeout: options.timeout,
+    });
+  }
+
   @BoxedDetailedStep(classKey, 'selector')
   @TruthyParams(classKey, 'selector')
   protected async expectOptionChecked(
@@ -1561,15 +1597,10 @@ export default abstract class BasePage {
     actionAfterFirstAttempt?: () => Promise<void>,
     { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
-    await this.retryAction(
-      () => this.clickByText(text),
-      assertions,
-      actionAfterFirstAttempt,
-      {
-        retries,
-        message: message ?? `Click action failed, text: ${text}, trying again`,
-      },
-    );
+    await this.retryAction(() => this.clickByText(text), assertions, actionAfterFirstAttempt, {
+      retries,
+      message: message ?? `Click action failed, text: ${text}, trying again`,
+    });
   }
 
   @Step(classKey)
@@ -1662,7 +1693,7 @@ export default abstract class BasePage {
       actionAfterFirstAttempt,
       {
         retries,
-        message: message ?? 'Navigation failed, trying again',
+        message: message ?? `Navigation failed, url: ${url}, trying again`,
       },
     );
   }

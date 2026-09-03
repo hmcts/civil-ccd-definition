@@ -4,6 +4,8 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
+import FlightDelayClaim from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
 
 type SchemaShape = Record<string, z.ZodType>;
 
@@ -12,10 +14,10 @@ const nonEmptyString = z.string().min(1);
 
 const addressSchema = z.strictObject({
   AddressLine1: nonEmptyString,
-  AddressLine2: z.string().optional(),
-  AddressLine3: z.string().optional(),
+  AddressLine2: nonEmptyString.optional(),
+  AddressLine3: nonEmptyString.optional(),
   PostTown: nonEmptyString,
-  County: z.string().optional(),
+  County: nonEmptyString.optional(),
   Country: nonEmptyString,
   PostCode: nonEmptyString,
 });
@@ -36,8 +38,8 @@ const partyBaseSchema = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
   flags: flagsSchema,
 };
 
@@ -93,8 +95,8 @@ const detailsForClaimTabPartyBaseFields = {
   primaryAddress: addressSchema,
   partyName: nonEmptyString,
   partyTypeDisplayValue: nonEmptyString,
-  partyEmail: z.string().optional(),
-  partyPhone: z.string().optional(),
+  partyEmail: nonEmptyString.optional(),
+  partyPhone: nonEmptyString.optional(),
 };
 
 const individualDetailsForClaimTabPartySchema = z.strictObject({
@@ -144,7 +146,7 @@ export const detailsForClaimTabPartySchema = (partyType: ClaimantDefendantPartyT
 
 const organisationPolicySchema = z.strictObject({
   OrgPolicyCaseAssignedRole: nonEmptyString,
-  OrgPolicyReference: z.string().optional(),
+  OrgPolicyReference: nonEmptyString.optional(),
   Organisation: z
     .strictObject({
       OrganisationID: nonEmptyString,
@@ -412,7 +414,29 @@ const defendant2Representation = (claimType: ClaimType): SchemaShape => {
   };
 };
 
-const claimDetails = (): SchemaShape => ({
+const flightDelayDetailsSchema = (airline: Airline) =>
+  z.strictObject({
+    airlineList: z.strictObject({
+      value: z.strictObject({
+        code: z.string(),
+        label: z.string(),
+      }),
+    }),
+    ...(airline === Airline.OTHER && { nameOfAirline: nonEmptyString }),
+    flightNumber: nonEmptyString,
+    scheduledDate: nonEmptyString,
+    flightCourtLocation: z
+      .strictObject({
+        region: z.string().nullable(),
+        baseLocation: z.string().nullable(),
+      })
+      .optional(),
+  });
+
+const claimDetails = (
+  isFlightDelayClaim: FlightDelayClaim = FlightDelayClaim.NO,
+  airline = Airline.BA,
+): SchemaShape => ({
   allPartyNames: nonEmptyString,
   submittedDate: nonEmptyString,
   anyRepresented: nonEmptyString,
@@ -426,8 +450,11 @@ const claimDetails = (): SchemaShape => ({
   applicantSolicitor1PbaAccountsIsEmpty: yesNoSchema,
   claimIssuedPaymentDetails: claimIssuedPaymentDetailsSchema,
   claimIssuedPBADetails: claimIssuedPbaDetailsSchema,
-  isFlightDelayClaim: z.literal('No'),
-  flightDelayDetails: z.unknown(),
+  isFlightDelayClaim: z.string(),
+  flightDelayDetails:
+    isFlightDelayClaim === FlightDelayClaim.YES
+      ? flightDelayDetailsSchema(airline)
+      : z.unknown(),
   timelineOfEvents: timelineOfEventsSchema,
   speclistYourEvidenceList: evidenceListSchema,
   claimAmountBreakup: claimAmountBreakupSchema,

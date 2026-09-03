@@ -1,5 +1,4 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
@@ -7,15 +6,19 @@ import claimantResponseDataComponents from './claimant-response-data-components'
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
-  async buildSmallFullDefence1v1() {
+  async buildSmallFullDefence() {
     return this.buildData();
+  }
+
+  async buildSmallFullDefence1v2DS() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
   async buildFastFullDefence2v1() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.TWO_VS_ONE });
   }
 
-  async buildIntermediateFullDefence2v1() {
+  async buildInterFullDefence2v1() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
@@ -33,7 +36,14 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildIntermediateProceed1v2SS() {
+  async buildInterProceed1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
+  async buildInterProceed1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -51,7 +61,7 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildIntermediateFullDefence1v1() {
+  async buildInterFullDefence1v1() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
@@ -81,33 +91,19 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
     claimType?: ClaimType;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
-    let frcSupportingDocument;
-    const defenceResponseDocument1 =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    let defenceResponseDocument2;
-    if (claimType === ClaimType.ONE_VS_TWO_DIFF_SOL) {
-      defenceResponseDocument2 =
-        await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    }
-    const draftDirectionsDocument =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
-      frcSupportingDocument = await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    }
 
     return {
       ...claimantResponseDataComponents.respondentResponse(claimType),
-      ...claimantResponseDataComponents.applicantDefenceResponseDocument(
+      ...(await claimantResponseDataComponents.applicantDefenceResponseDocument(
         claimType,
-        defenceResponseDocument1,
-        defenceResponseDocument2!,
-      ),
+        civilServiceRequests,
+      )),
       ...claimantResponseDataComponents.fileDirectionsQuestionnaire(claimTrack),
       ...claimantResponseDataComponents.fixedRecoverableCosts(claimTrack),
-      ...claimantResponseDataComponents.fixedRecoverableCostsIntermediate(
+      ...(await claimantResponseDataComponents.fixedRecoverableCostsIntermediate(
         claimTrack,
-        frcSupportingDocument,
-      ),
+        civilServiceRequests,
+      )),
       ...claimantResponseDataComponents.disclosureOfElectronicDocuments(claimTrack),
       ...claimantResponseDataComponents.disclosureOfNonElectronicDocuments(claimTrack),
       ...claimantResponseDataComponents.disclosureReport(claimTrack),
@@ -116,7 +112,7 @@ export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
       ...claimantResponseDataComponents.witnesses,
       ...claimantResponseDataComponents.language,
       ...claimantResponseDataComponents.hearing,
-      ...claimantResponseDataComponents.draftDirections(draftDirectionsDocument),
+      ...(await claimantResponseDataComponents.draftDirections(civilServiceRequests)),
       ...claimantResponseDataComponents.hearingSupport,
       ...claimantResponseDataComponents.vulnerabilityQuestions,
       ...claimantResponseDataComponents.furtherInformation,

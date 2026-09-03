@@ -9,6 +9,8 @@ import GenerateDirectionsOrderActions from './generate-directions-order-actions'
 import GenerateDirectionsOrderPageFactory from '../../../../pages/exui/judge-la/generate-directions-order/generate-directions-order-page-factory';
 import DecisionOnReconsiderationRequestActions from './decision-on-reconsideration-request-actions';
 import DecisionOnReconsiderationRequestPageFactory from '../../../../pages/exui/judge-la/decision-on-reconsideration-request/decision-on-reconsideration-request-page-factory';
+import QueryManagementActions from '../common/query-management/query-management-actions';
+import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory';
 
 export default class JudgeLAActionsFactory extends BasePageActionsFactory {
   get sdoActions() {
@@ -35,5 +37,9 @@ export default class JudgeLAActionsFactory extends BasePageActionsFactory {
       new DecisionOnReconsiderationRequestPageFactory(this.page),
       this.testData,
     );
+  }
+
+  get queryManagementActions() {
+    return new QueryManagementActions(new QueryManagementPageFactory(this.page), this.testData);
   }
 }
