@@ -409,7 +409,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       },
       method: 'POST',
     };
-    await super.retryRequest(url, requestOptions);
+    await super.retryRequest(url, requestOptions, {retries: 5});
     caseIds.forEach((caseId) =>
       console.log(`User: ${user.name} unassigned from case [${caseId}] successfully`),
     );
