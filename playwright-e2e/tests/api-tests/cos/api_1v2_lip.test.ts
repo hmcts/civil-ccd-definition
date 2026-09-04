@@ -1,8 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-// DTSCCI-5193: service-owned party variations are covered by civil-service integration tests.
-// Retain these skipped for local diagnostics; UI and Notice-of-Change journeys cover cross-service wiring.
-test.describe.skip('Unspec 1v2lips api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('Unspec 1v2lips api journey', { tag: '@civil-service-nightly' }, async () => {
   test('Create claim where one respondent is LIP one is LR and notify/notify details', async ({
     ClaimantSolicitorApiSteps,
   }) => {

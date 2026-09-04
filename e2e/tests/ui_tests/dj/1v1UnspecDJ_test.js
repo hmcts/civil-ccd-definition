@@ -11,7 +11,7 @@ if (config.runWAApiTest) {
   validScheduleAHearingTask = require('../../../../wa/tasks/scheduleADisposalHearing.js');
 }
 
-Feature('1v1 unspec default judgment').tag('@civil-ccd-nightly @ui-dj');
+Feature('1v1 unspec default judgment').tag('@ui-dj');
 
 Scenario('01 Create 1v1 unspec claim, notify claim, notify claim details, request default judgement', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
