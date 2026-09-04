@@ -37,7 +37,7 @@
   },
   {
     "ID": "BreathingSpaceLiftInfo",
-    "ListElementCode": "reasonToLiftBS",
+    "ListElementCode": "reasonToLift",
     "ElementLabel": "Reason for lifting Breathing Space",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
