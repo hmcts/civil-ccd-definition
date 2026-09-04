@@ -20,9 +20,7 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
   await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
 }).tag('@api-jo');
 
-// DTSCCI-5198 REMOVE: already skipped. Record / edit / paid-in-full are in
-// RecordJudgmentWorkflowTest, EditJudgmentWorkflowTest, JudgmentPaidInFullWorkflowTest.
-Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
+Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
@@ -36,8 +34,7 @@ Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I
   await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
 });
 
-// DTSCCI-5198 RETAIN skipped: referToJudgeDefenceReceived is not a migrated judgment handler.
-Scenario.skip('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
+Scenario('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
@@ -50,8 +47,7 @@ Scenario.skip('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({
   await api_spec.referToJudgeDefenceReceived(caseWorkerUserReg1);
 });
 
-// DTSCCI-5198 REDUCE: JUDGE_ORDER / ORDER_AFTER_APPLICATION is in SetAsideJudgmentWorkflowTest.
-Scenario.skip('SetAside Default Judgment Spec claim 1v1 - Record new judgment after hearing', async ({I, api_spec}) => {
+Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after hearing', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
   await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);

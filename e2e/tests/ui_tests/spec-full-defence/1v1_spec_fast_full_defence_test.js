@@ -15,7 +15,7 @@ const CLAIMANT_DIRECTIONS_QUESTIONNAIRE_PDF = 'claimant_directions_questionnaire
 
 let caseNumber;
 
-Feature('1v1 spec claim journey').tag('@civil-ccd-nightly @ui-spec-full-defence');
+Feature('1v1 spec claim journey').tag('@ui-spec-full-defence');
 
 Scenario('01 1v1 Applicant solicitor creates specified claim for fast track-spec', async ({ LRspec, I }) => {
   await LRspec.login(config.applicantSolicitorUser);
