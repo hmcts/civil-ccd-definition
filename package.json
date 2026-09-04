@@ -110,7 +110,7 @@
     "test:api-ga-make-decision": "MOCHAWESOME_REPORTFILENAME=api-ga-make-decision npx codeceptjs run-workers --suites 2 --grep @api-ga-make-decision --reporter mocha-multi --verbose",
     "test:api-other-remedy": "MOCHAWESOME_REPORTFILENAME=api-other-remedy npx codeceptjs run-workers --suites 2 --grep @api-other-remedy --reporter mocha-multi --verbose",
     "test:api-other-remedy-dj": "MOCHAWESOME_REPORTFILENAME=api-other-remedy-dj npx codeceptjs run-workers --suites 2 --grep @api-other-remedy-dj --reporter mocha-multi --verbose",
-    "test:api-breathing-space": "MOCHAWESOME_REPORTFILENAME=api-breathing-space npx codeceptjs run-workers --suites 2 --grep @api-breathing-space--reporter mocha-multi --verbose",
+    "test:api-breathing-space": "MOCHAWESOME_REPORTFILENAME=api-breathing-space npx codeceptjs run-workers --suites 2 --grep @api-spec-bs --reporter mocha-multi --verbose",
     "test:generate:e2e-api-data": "node e2e/e2e-documentation/generator/e2e-data/generate-e2e-api-data.js",
     "test:generate:e2e-ui-data": "node e2e/e2e-documentation/generator/e2e-data/generate-e2e-ui-data.js",
     "generate:state-event-model": "node bin/utils/generate-state-event-model.js build/state-event-model.json",
