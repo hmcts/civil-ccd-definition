@@ -9,7 +9,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 // DTSCCI-5196 SMOKE: keep one GENERATE_DIRECTIONS_ORDER + evidence + hearing path through CCD + Camunda
 Feature('1v1 unspec intermediate track api journey')
-  .tag('@civil-service-smoke @civil-camunda-master @civil-camunda-pr @civil-service-nightly @api-intermediate-track');
+  .tag('@civil-service-smoke @civil-camunda-master @civil-camunda-pr @api-intermediate-track');
 
 Scenario('1v1 Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
