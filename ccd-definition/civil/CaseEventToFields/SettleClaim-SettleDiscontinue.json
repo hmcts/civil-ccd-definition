@@ -10,7 +10,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "ccdState!=\"CASE_ISSUED\" AND ccdState!=\"AWAITING_CASE_DETAILS_NOTIFICATION\""
+    "PageShowCondition": "ccdState!=\"AWAITING_CASE_DETAILS_NOTIFICATION\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -23,7 +23,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "settleReason=\"DO NOT SHOW IN UI\"",
-    "PageShowCondition": "ccdState!=\"CASE_ISSUED\" AND ccdState!=\"AWAITING_CASE_DETAILS_NOTIFICATION\"",
+    "PageShowCondition": "ccdState!=\"AWAITING_CASE_DETAILS_NOTIFICATION\"",
     "Publish": "Y"
   },
   {
