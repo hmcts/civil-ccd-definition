@@ -88,6 +88,14 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await defendantPage.submit();
   }
 
+  async organisationDefendant() {
+    const { defendantPage } = this.createClaimPageFactory;
+    await defendantPage.verifyContent();
+    await defendantPage.chooseOrganisationAndEnterDetails();
+    super.setDefendant1PartyType = claimantDefendantPartyTypes.ORGANISATION;
+    await defendantPage.submit();
+  }
+
   async defendantDetails() {
     const { legalRepresentationSpecPage } = this.createClaimPageFactory;
     await legalRepresentationSpecPage.verifyContent();
@@ -132,6 +140,14 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await secondDefendantPage.submit();
   }
 
+  async secondOrganisationDefendant() {
+    const { secondDefendantPage } = this.createClaimPageFactory;
+    await secondDefendantPage.verifyContent();
+    await secondDefendantPage.chooseOrganisationAndEnterDetails();
+    super.setDefendant2PartyType = claimantDefendantPartyTypes.ORGANISATION;
+    await secondDefendantPage.submit();
+  }
+
   async secondDefedantSSDetails() {
     await this.legalRepresentationRespondent2();
 
@@ -166,7 +182,6 @@ export default class CreateClaimSpecActions extends BaseTestData {
   }
 
   async claimDetailsFastTrack() {
-    await this.flightDelayClaim();
     await this.detailsSpec();
     await this.uploadClaimDocument();
     await this.claimTimeLineUpload();
@@ -194,8 +209,35 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await this.fixedCommencementCosts();
   }
 
+  async claimDetailsMultiTrack() {
+    await this.detailsSpec();
+    await this.uploadClaimDocument();
+    await this.claimTimeLineUpload();
+    await this.evidenceList();
+
+    const { claimAmountPage } = this.createClaimPageFactory;
+    await claimAmountPage.verifyContent();
+    await claimAmountPage.addNew();
+    await claimAmountPage.enterClaimDetailsMultiTrack();
+    await claimAmountPage.submit();
+
+    const { claimAmountDetailsPage } = this.createClaimPageFactory;
+    await claimAmountDetailsPage.verifyContent();
+    await claimAmountDetailsPage.verifyMultiTrack();
+    await claimAmountDetailsPage.submit();
+
+    await this.claimInterest();
+
+    const { interestSummaryPage } = this.createClaimPageFactory;
+    await interestSummaryPage.verifyContent();
+    await interestSummaryPage.verifyMultiTrack();
+    await interestSummaryPage.submit();
+
+    await this.pbaNumber();
+    await this.fixedCommencementCosts();
+  }
+
   async claimDetailsSmallTrack() {
-    await this.flightDelayClaim();
     await this.detailsSpec();
     await this.uploadClaimDocument();
     await this.claimTimeLineUpload();
@@ -242,10 +284,18 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await confirmCreateClaimSpecPage.submit();
   }
 
-  private async flightDelayClaim() {
+  async flightDelayClaimNo() {
     const { flightDelayClaimPage } = this.createClaimPageFactory;
     await flightDelayClaimPage.verifyContent();
     await flightDelayClaimPage.selectNo();
+    await flightDelayClaimPage.submit();
+  }
+
+  async flightDelayClaimYes() {
+    const { flightDelayClaimPage } = this.createClaimPageFactory;
+    await flightDelayClaimPage.verifyContent();
+    await flightDelayClaimPage.selectYes();
+    await flightDelayClaimPage.enterFlightDetails();
     await flightDelayClaimPage.submit();
   }
 

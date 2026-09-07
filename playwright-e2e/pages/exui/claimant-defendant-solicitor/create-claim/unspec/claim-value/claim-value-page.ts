@@ -2,7 +2,7 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../constants/cases/claim-track';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { inputs, paragraphs, subheadings } from './claim-value-content';
 
 @AllMethodsStep()

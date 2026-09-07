@@ -52,15 +52,13 @@ To access Camunda visit url (login and password are both `admin`):
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
 
-The below labels are options to get the different services running on the PR
+The below labels are options to get the different services running on the PR. Use a CUI PR for elasticsearch & camunda scheduler testing
 
 ```
 
   "enable_keep_helm" label to retain helm release on preview
 
   "pr-values:enableNotifyEmails" label to be able to send live notifications on the PR
-
-  "pr-values:elasticsearch" label to have elastic search running - needed for scheduler testing
 
   "pr-values:enableWA" label to verify work allocation task
 

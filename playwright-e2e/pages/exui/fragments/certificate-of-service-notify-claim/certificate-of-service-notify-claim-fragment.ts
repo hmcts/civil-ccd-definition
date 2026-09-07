@@ -3,7 +3,7 @@ import BasePage from '../../../../base/base-page';
 import filePaths from '../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import {
   heading,
   inputs,
@@ -53,12 +53,12 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
     let dateOfService: Date;
 
     if (this.defendantParty.number === 1) {
-      dateDeemedServed = DateHelper.addToToday({ days: 2, workingDay: true, addDayAfter4pm: true });
+      dateDeemedServed = DateHelper.addToToday({ days: 1, workingDay: true, addDayAfter4pm: true });
       dateOfService = DateHelper.getToday();
     } else {
-      dateDeemedServed = DateHelper.subtractFromToday({ days: 14, workingDay: true, addDayAfter4pm: true });
+      dateDeemedServed = DateHelper.subtractFromToday({ days: 13, workingDay: true, addDayAfter4pm: true });
       dateOfService = DateHelper.subtractFromToday({
-        days: 14,
+        days: 13,
         workingDay: true,
         addDayAfter4pm: true,
       });

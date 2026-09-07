@@ -38,12 +38,28 @@ export default class EvidenceUploadApplicantActions extends BaseTestData {
   }
 
   @Step(classKey)
+  async documentSelectionFastTrackBundle() {
+    const { documentSelectionFastTrackClaimantPage } = this.evidenceUploadPageFactory;
+    await documentSelectionFastTrackClaimantPage.verifyContent();
+    await documentSelectionFastTrackClaimantPage.selectBundles();
+    await documentSelectionFastTrackClaimantPage.submit();
+  }
+
+  @Step(classKey)
   async documentUpload() {
     const { documentUploadClaimantPage } = this.evidenceUploadPageFactory;
     await documentUploadClaimantPage.verifyContent();
     await documentUploadClaimantPage.addWitnessStatement();
     // await documentUploadClaimantPage.addExpertsReport();
     // await documentUploadClaimantPage.addAuthorities();
+    await documentUploadClaimantPage.submit();
+  }
+
+  @Step(classKey)
+  async documentUploadBundle() {
+    const { documentUploadClaimantPage } = this.evidenceUploadPageFactory;
+    await documentUploadClaimantPage.verifyContent();
+    await documentUploadClaimantPage.addBundle({ documentNumber: 0 });
     await documentUploadClaimantPage.submit();
   }
 

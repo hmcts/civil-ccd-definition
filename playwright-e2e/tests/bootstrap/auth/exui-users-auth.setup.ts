@@ -1,0 +1,18 @@
+import { test as setup } from '../../../playwright-fixtures/index';
+import { exuiAuthSetupUsers } from '../../../config/users/exui-users';
+import config from '../../../config/config';
+
+if (config.runExuiAuthSetup) {
+  setup.describe('Authenticating exui user(s) and saving cookies', () => {
+    setup.describe.configure({ mode: 'parallel' });
+    for (const exuiAuthSetupUser of exuiAuthSetupUsers) {
+      setup(exuiAuthSetupUser.name, async ({ IdamSteps, ExuiDashboardSteps }) => {
+        await IdamSteps.ExuiLogin(exuiAuthSetupUser);
+        await ExuiDashboardSteps.SaveCookies(exuiAuthSetupUser);
+      });
+    }
+  });
+} else {
+  console.log('Skipping authenticate exui users and save cookies setup');
+  console.log('All exui users will be logged in via Idam when needed during each test execution');
+}

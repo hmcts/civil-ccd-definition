@@ -1,6 +1,6 @@
 import ClaimType from '../../../../../constants/cases/claim-type';
 import CCDCaseData from '../../../../../models/ccd-case-data';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/unspec/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import { Party } from '../../../../../models/users/partys';
 import partys from '../../../../../constants/users/partys';
 
@@ -40,14 +40,14 @@ const responseIntention = (
   defendantSolicitorParty: Party 
 ) => {
   if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    if(claimType === ClaimType.TWO_VS_ONE) {
+    if (claimType === ClaimType.TWO_VS_ONE) {
       return {
         ResponseIntention: {
           respondent1ClaimResponseIntentionType: defendantResponseType,
           respondent1ClaimResponseIntentionTypeApplicant2: defendantResponseType,
         },
       };
-    } else if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+    } else if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
       return {
         ResponseIntention: {
           respondent1ClaimResponseIntentionType: defendantResponseType,
@@ -76,8 +76,8 @@ const solicitorReferences = (
 ) => {
   const solicitorReferences = structuredClone(ccdCaseData.solicitorReferences);
 
-  if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
-    if(claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
+  if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1) {
+    if (claimType === ClaimType.ONE_VS_TWO_SAME_SOL) {
       return {
         SolicitorReferences: {
           solicitorReferences,
@@ -97,7 +97,7 @@ const solicitorReferences = (
     };
   }
 
-  else if(defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
+  else if (defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_2) {
     return {
       SolicitorReferences: {
         respondentSolicitor2Reference: ccdCaseData?.respondentSolicitor2Reference,

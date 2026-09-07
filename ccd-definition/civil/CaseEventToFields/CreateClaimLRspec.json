@@ -750,7 +750,8 @@
     "PageDisplayOrder": 34,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "interestClaimOptions = \"SAME_RATE_INTEREST\" AND claimInterest = \"Yes\""
+    "PageShowCondition": "interestClaimOptions = \"SAME_RATE_INTEREST\" AND claimInterest = \"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -761,7 +762,8 @@
     "PageID": "SameRateInterestSelection",
     "PageDisplayOrder": 34,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -772,7 +774,8 @@
     "PageID": "SameRateInterestSelection",
     "PageDisplayOrder": 34,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -784,7 +787,8 @@
     "PageDisplayOrder": 35,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "interestClaimOptions = \"BREAK_DOWN_INTEREST\" AND claimInterest = \"Yes\""
+    "PageShowCondition": "interestClaimOptions = \"BREAK_DOWN_INTEREST\" AND claimInterest = \"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -795,7 +799,8 @@
     "PageID": "BreakDownInterest",
     "PageDisplayOrder": 35,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -806,7 +811,8 @@
     "PageID": "BreakDownInterest",
     "PageDisplayOrder": 35,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/ValidateClaimInterestDate"
   },
   {
     "CaseTypeID": "CIVIL",

@@ -5,18 +5,18 @@ import CaseDataHelper from '../../../../helpers/case-data-helper';
 import ClaimTrack from '../../../../constants/cases/claim-track';
 
 const selectedHearingLocation = CaseDataHelper.setCodeToData(
-  preferredCourts[partys.CLAIMANT_1.key].default,
+  preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
 );
 
 const hearingNoticeSelect = (claimTrack: ClaimTrack) => {
-  if(claimTrack === ClaimTrack.FAST_CLAIM)
+  if (claimTrack === ClaimTrack.FAST_CLAIM)
     return {
       HearingNoticeSelect: {
         hearingNoticeList: 'FAST_TRACK_TRIAL',
       },
     };
   
-  else if(claimTrack === ClaimTrack.SMALL_CLAIM)
+  else if (claimTrack === ClaimTrack.SMALL_CLAIM)
     return {
       HearingNoticeSelect: {
         hearingNoticeList: 'SMALL_CLAIMS',

@@ -54,7 +54,7 @@ async function createAccount(email, password) {
   try {
     const token = await accessToken(adminUser);
     let body = {'password': password, 'user': {'email': email, 'forename': 'forename', 'surname': 'surname', 'displayName': 'displayName', 'roleNames': ['citizen']}};
-    await restHelper.request(`${idamTestSupportUrl}/test/idam/users`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body);
+    await restHelper.retriedRequest(`${idamTestSupportUrl}/test/idam/users`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body, 'POST', [201, 409]);
 
     console.log('Account created: ', email);
 

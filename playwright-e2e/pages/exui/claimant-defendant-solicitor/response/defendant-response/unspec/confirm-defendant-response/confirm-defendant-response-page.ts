@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import { confirmationHeading, paragraphs } from './confirm-defendant-response-content.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
 
@@ -16,7 +16,7 @@ export default class ConfirmDefendantResponsePage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
-      super.expectText(ccdCaseData.legacyCaseReference, { exact: false }),
+      super.expectText(ccdCaseData.legacyCaseReference!, { exact: false }),
       super.expectText(
         paragraphs.claimantsResponse(
           DateHelper.formatDateToString(claimantResponseDate, { outputFormat: 'DD Month YYYY' }),

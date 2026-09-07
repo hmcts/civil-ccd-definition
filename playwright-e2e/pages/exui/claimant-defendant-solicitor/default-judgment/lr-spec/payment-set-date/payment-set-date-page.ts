@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import DateHelper from '../../../../../../helpers/date-helper.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 import { inputs, subheadings } from './payment-set-date-content.ts';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import CCDCaseData from '../../../../../../models/ccd-case-data.ts';

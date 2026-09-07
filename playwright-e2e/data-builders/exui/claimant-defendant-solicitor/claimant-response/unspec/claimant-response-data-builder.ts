@@ -1,5 +1,4 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
@@ -7,60 +6,113 @@ import claimantResponseDataComponents from './claimant-response-data-components'
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
-  async buildSmallTrackFullDefence1v1Data() {
+  async buildSmallFullDefence() {
     return this.buildData();
   }
 
-  async buildFastTrackFullDefence2v1Data() {
-    return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.TWO_VS_ONE});
+  async buildSmallFullDefence1v2DS() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
-  async buildFastTrackFullDefence1v2SSData() {
-    return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.ONE_VS_TWO_SAME_SOL});
+  async buildFastFullDefence2v1() {
+    return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.TWO_VS_ONE });
   }
 
-  async buildFastTrackFullDefence1v1Data() {
-    return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM});
+  async buildInterFullDefence2v1() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.TWO_VS_ONE,
+    });
   }
 
-  async buildFastTrackFullDefence1v2DSData() {
-    return this.buildData({claimTrack: ClaimTrack.FAST_CLAIM, claimType: ClaimType.ONE_VS_TWO_DIFF_SOL});
+  async buildMultiFullDefence2v1() {
+    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM, claimType: ClaimType.TWO_VS_ONE });
   }
 
-  protected async buildData(
-    {
-      claimTrack = ClaimTrack.SMALL_CLAIM, 
-      claimType = ClaimType.ONE_VS_ONE
-    } : 
-    { 
-      claimTrack?: ClaimTrack, 
-      claimType?: ClaimType 
-    } = {}) {
+  async buildFastProceed1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildInterProceed1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
+  async buildInterProceed1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildMultiProceed1v2SS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+    });
+  }
+
+  async buildFastFullDefence1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
+  async buildInterFullDefence1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
+  }
+
+  async buildMultiFullDefence1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildFastFullDefence1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
+  async buildMultiFullDefence1v2DS() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+    });
+  }
+
+  protected async buildData({
+    claimTrack = ClaimTrack.SMALL_CLAIM,
+    claimType = ClaimType.ONE_VS_ONE,
+  }: {
+    claimTrack?: ClaimTrack;
+    claimType?: ClaimType;
+  } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
-    const defenceResponseDocument1 =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    let defenceResponseDocument2;
-    if(claimType === ClaimType.ONE_VS_TWO_DIFF_SOL) {
-      defenceResponseDocument2 =
-        await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    }
-    const draftDirectionsDocument =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
 
     return {
       ...claimantResponseDataComponents.respondentResponse(claimType),
-      ...claimantResponseDataComponents.applicantDefenceResponseDocument(
+      ...(await claimantResponseDataComponents.applicantDefenceResponseDocument(
         claimType,
-        defenceResponseDocument1,
-        defenceResponseDocument2!,
-      ),
-      ...claimantResponseDataComponents.fastTrackDq(claimTrack),
+        civilServiceRequests,
+      )),
+      ...claimantResponseDataComponents.fileDirectionsQuestionnaire(claimTrack),
+      ...claimantResponseDataComponents.fixedRecoverableCosts(claimTrack),
+      ...(await claimantResponseDataComponents.fixedRecoverableCostsIntermediate(
+        claimTrack,
+        civilServiceRequests,
+      )),
+      ...claimantResponseDataComponents.disclosureOfElectronicDocuments(claimTrack),
+      ...claimantResponseDataComponents.disclosureOfNonElectronicDocuments(claimTrack),
+      ...claimantResponseDataComponents.disclosureReport(claimTrack),
       ...claimantResponseDataComponents.deterWithHearing(claimTrack),
       ...claimantResponseDataComponents.experts,
       ...claimantResponseDataComponents.witnesses,
       ...claimantResponseDataComponents.language,
       ...claimantResponseDataComponents.hearing,
-      ...claimantResponseDataComponents.draftDirections(draftDirectionsDocument),
+      ...(await claimantResponseDataComponents.draftDirections(civilServiceRequests)),
       ...claimantResponseDataComponents.hearingSupport,
       ...claimantResponseDataComponents.vulnerabilityQuestions,
       ...claimantResponseDataComponents.furtherInformation,

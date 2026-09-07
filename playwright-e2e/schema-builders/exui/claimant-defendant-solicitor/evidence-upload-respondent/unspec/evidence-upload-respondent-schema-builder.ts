@@ -8,20 +8,34 @@ import ClaimTrack from '../../../../../constants/cases/claim-track';
 
 @AllMethodsStep()
 export default class EvidenceUploadRespondentSchemaBuilder extends BaseSchemaBuilder {
-  async buildDS1FastTrackSchema(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {claimTrack: ClaimTrack.FAST_CLAIM})
+  async buildDS1Fast(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildDS1SmallClaimSchema(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission)
+  async buildDS1Fast1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  protected async buildSchema(caseDataBeforeSubmission?: CCDCaseData, 
+  async buildDS2Fast(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
+  async buildDS2Fast1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission, { claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
+  async buildDS1SmallClaim(caseDataBeforeSubmission?: CCDCaseData) {
+    return this.buildSchema(caseDataBeforeSubmission);
+  }
+
+  protected async buildSchema(
+    caseDataBeforeSubmission?: CCDCaseData,
     {
-    claimTrack = ClaimTrack.SMALL_CLAIM
-  }: {
-    claimTrack?: ClaimTrack
-  } = {}): Promise<z.ZodType> {
+      claimTrack = ClaimTrack.SMALL_CLAIM,
+    }: {
+      claimTrack?: ClaimTrack;
+    } = {},
+  ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
     }) as z.ZodObject<any>;

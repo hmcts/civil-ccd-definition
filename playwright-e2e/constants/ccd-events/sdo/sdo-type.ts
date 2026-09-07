@@ -1,9 +1,0 @@
-enum SdoType {
-  SMALL_TRACK_NO_SUM,
-  SMALL_TRACK_SUM,
-  FAST_TRACK,
-  TRAIL = 'DECIDE_DAMAGES',
-  DISPOSAL_HEARING = 'DISPOSAL',
-};
-
-export default SdoType;

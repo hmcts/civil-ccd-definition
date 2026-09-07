@@ -33,6 +33,13 @@ export default class DefaultJudgmentActions extends BaseTestData {
     await showCertifyStatementPage.submit();
   }
 
+  async abandonOtherRemedy() {
+    const { abandonOtherRemedyPage } = this.defaultJudgmentFactory;
+    await abandonOtherRemedyPage.verifyContent(this.ccdCaseData);
+    await abandonOtherRemedyPage.selectYes();
+    await abandonOtherRemedyPage.submit();
+  }
+
   async hearingType() {
     const { hearingTypePage } = this.defaultJudgmentFactory;
     await hearingTypePage.verifyContent(this.ccdCaseData);

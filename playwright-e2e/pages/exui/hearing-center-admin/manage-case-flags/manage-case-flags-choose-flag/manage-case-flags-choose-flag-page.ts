@@ -1,9 +1,9 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import { CaseFlagDetails } from '../../../../../models/ccd-events/case-flags/case-flag';
+import { CaseFlagDetails } from '../../../../../models/ccd-events/ccd-events/case-flags/case-flag';
 import CCDCaseData from '../../../../../models/ccd-case-data';
-import { getFormattedCaseId } from '../../../exui-page/exui-content';
-import ExuiPage from '../../../exui-page/exui-page';
+import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content';
+import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import { heading } from './manage-case-flags-choose-flag-content';
 
 @AllMethodsStep()

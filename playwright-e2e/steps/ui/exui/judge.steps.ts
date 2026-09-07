@@ -6,12 +6,15 @@ import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import { judgeRegion1User, judgeRegion2User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
-import fastTrackDirectionsTask from '../../../constants/wa-tasks/fastTrackDirectionsTask';
-import smallClaimDirectionsTask from '../../../constants/wa-tasks/smallClaimDirectionsTask';
-import summaryJudgmentDirections from '../../../constants/wa-tasks/summaryJudgmentDirectionsTask';
-import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
-import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/decisionOnReconsiderationRequestTask';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
+import nihlFastTrackDirectionsTask from '../../../constants/wa-tasks/exui/nihlFastTrackDirectionsTask';
+import fastTrackDirectionsTask from '../../../constants/wa-tasks/exui/fastTrackDirectionsTask';
+import smallClaimDirectionsTask from '../../../constants/wa-tasks/exui/smallClaimDirectionsTask';
+import summaryJudgmentDirections from '../../../constants/wa-tasks/exui/summaryJudgmentDirectionsTask';
+import defenceReceivedInTimeOrderThatJudgmentIsSetAside from '../../../constants/wa-tasks/exui/defenceReceivedInTimeOrderThatJudgmentIsSetAside';
+import decisionOnReconsiderationRequestTask from '../../../constants/wa-tasks/exui/decisionOnReconsiderationRequestTask';
+import multiTrackDirectionsTask from '../../../constants/wa-tasks/exui/multiTrackDirectionsTask';
 
 @AllMethodsStep()
 export default class JudgeSteps extends BaseExui {
@@ -36,7 +39,7 @@ export default class JudgeSteps extends BaseExui {
     await super.idamActions.exuiLogin(judgeRegion2User);
   }
 
-  async SdoSmallTrackSum() {
+  async SdoSmallSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -52,10 +55,11 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async SdoSmallTrackNoSum() {
+  async SdoSmallNoSum() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -71,10 +75,31 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async SdoSmallTrackFromFastTrackClaim() {
+  async SdoSmallNoSumOtherRemedy() {
+    const { sdoActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await sdoActions.enterJudgementNo();
+        await sdoActions.selectSmallClaimNoSumOtherRemedy();
+        await sdoActions.smallTrackDetails();
+        await sdoActions.orderPreview();
+        await sdoActions.submitSdo();
+      },
+      async () => {
+        await sdoActions.confirmSdo();
+      },
+      ccdEvents.CREATE_SDO,
+      judgeRegion1User,
+      smallClaimDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
+    );
+  }
+
+  async SdoSmallFromFastClaim() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -90,10 +115,11 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async SdoSmallTrackDRH() {
+  async SdoSmallDRH() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -109,10 +135,11 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async SdoFastTrack() {
+  async SdoFast() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -128,6 +155,27 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
+    );
+  }
+
+  async SdoFastOtherRemedy() {
+    const { sdoActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await sdoActions.enterJudgementNo();
+        await sdoActions.selectFastTrackOtherRemedy();
+        await sdoActions.fastTrackDetails();
+        await sdoActions.orderPreview();
+        await sdoActions.submitSdo();
+      },
+      async () => {
+        await sdoActions.confirmSdo();
+      },
+      ccdEvents.CREATE_SDO,
+      judgeRegion1User,
+      fastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -148,10 +196,11 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async SdoFastTrackNIHL() {
+  async SdoFastNIHL() {
     const { sdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -166,7 +215,8 @@ export default class JudgeSteps extends BaseExui {
       },
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
-      fastTrackDirectionsTask,
+      nihlFastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -187,6 +237,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -205,6 +256,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       judgeRegion1User,
       summaryJudgmentDirections,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -223,10 +275,11 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       judgeRegion1User,
       summaryJudgmentDirections,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async NotSuitableSdoSmallTrackTransferCase() {
+  async NotSuitableSdoSmallTransferCase() {
     const { notSuitableSdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -239,10 +292,11 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.NOT_SUITABLE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async NotSuitableSdoFastTrackOtherReason() {
+  async NotSuitableSdoFastOtherReason() {
     const { notSuitableSdoActions } = this.judgeLaActionsFactory;
     await super.retryWAEvent(
       async () => {
@@ -255,6 +309,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.NOT_SUITABLE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -273,7 +328,52 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       judgeRegion2User,
       defenceReceivedInTimeOrderThatJudgmentIsSetAside,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
+    );
+  }
+
+  async GenerateDirectionsOrderInter() {
+    const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await generateDirectionsOrderActions.trackAllocationInter();
+        await generateDirectionsOrderActions.intermediateTrackComplexityBand();
+        await generateDirectionsOrderActions.selectTemplateInter();
+        await generateDirectionsOrderActions.downloadTemplate();
+        await generateDirectionsOrderActions.uploadOrder();
+        await generateDirectionsOrderActions.submitGenerateDirectionsOrder();
+      },
+      async () => {
+        await generateDirectionsOrderActions.confirmGenerateDirectionsOrder();
+      },
+      ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
+    );
+  }
+
+  async GenerateDirectionsOrderMulti() {
+    const { generateDirectionsOrderActions } = this.judgeLaActionsFactory;
+    await super.retryWAEvent(
+      async () => {
+        await generateDirectionsOrderActions.trackAllocationMulti();
+        await generateDirectionsOrderActions.selectTemplateMulti();
+        await generateDirectionsOrderActions.downloadTemplate();
+        await generateDirectionsOrderActions.uploadOrder();
+        await generateDirectionsOrderActions.submitGenerateDirectionsOrder();
+      },
+      async () => {
+        await generateDirectionsOrderActions.confirmGenerateDirectionsOrder();
+      },
+      ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      judgeRegion1User,
+      multiTrackDirectionsTask,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
@@ -291,7 +391,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -308,7 +408,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -325,7 +425,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 }

@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 
 Feature('1v1 spec default judgment')
-  .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-dj');
+  .tag('@civil-ccd-master @civil-ccd-pr @ui-dj');
 
 Scenario('1v1 create spec claim request default judgment', async ({I, api_spec}) => {
 

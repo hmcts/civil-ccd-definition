@@ -1,6 +1,10 @@
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 
 export const tabs = {
+  tasks: {
+    title: 'Tasks',
+    selector: "div[role='tab'] >> 'Tasks'",
+  },
   summary: {
     title: 'Summary',
     selector: "div[role='tab'] >> 'Summary'",
@@ -41,6 +45,14 @@ export const tabs = {
     title: 'Case Flags',
     selector: "div[role='tab'] >> 'Case Flags'",
   },
+  queries: {
+    title: 'Queries',
+    selector: "div[role='tab'] >> 'Queries'",
+  },
+  hearings: {
+    title: 'Hearings',
+    selector: "div[role='tab'] >> 'Hearings'",
+  },
 };
 
 export const dropdowns = {
@@ -55,6 +67,41 @@ export const buttons = {
     title: 'go',
     selector: "button[type='submit']",
   },
+  continue: {
+    title: 'Continue',
+    selector: 'button.govuk-button',
+  },
+  submitRequest: {
+    title: 'Submit request',
+    selector: "button[name='Submit request']",
+  },
+  viewHearingDetails: {
+    title: 'View details',
+    selector: 'button[id^="link-view-details"]',
+  },
+  cancelHearing: {
+    title: 'Cancel',
+    selector: 'button[id^="link-cancel"]',
+  },
+  askFollowUpQuestion: {
+    title: 'Ask a follow-up question',
+    selector: '#ask-follow-up-question',
+  },
+  issueRefund: {
+    title: 'Issue refund',
+  },
+};
+
+export const links = {
+  requestHearing: {
+    title: 'Request a hearing',
+  },
+  firstQueryLink: {
+    selector: '.govuk-table__cell.query-list__cell.query-list__cell--first button',
+  },
+  review: {
+    title: 'Review',
+  },
 };
 
 export const containers = {
@@ -66,9 +113,18 @@ export const containers = {
   },
 };
 
+export const subheadings = {
+  hearingsTab: {
+    currentAndUpcoming: 'Current and upcoming',
+    pastOrCancelled: 'Past or cancelled',
+  },
+  bundlesTab: {
+    bundleName: 'Bundle name',
+  },
+};
+
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
   `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;
 
 export const caseFlagsNoticeText = (activeCaseFlags: number) =>
   `There ${activeCaseFlags === 1 ? 'is' : 'are'} ${activeCaseFlags} active flag${activeCaseFlags === 1 ? '' : 's'} on this case.`;
-

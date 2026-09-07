@@ -5,7 +5,7 @@ import AxeCacheHelper from '../../helpers/axe-cache-helper';
 import { PageResult } from '../../models/test-utils/axe-results';
 import PromiseHelper from '../../helpers/promise-helper';
 
-export const expect = baseExpect
+export const pageExpect = baseExpect
   .extend({
     async toHaveNoAxeViolationsCache(pageName: string, axeBuilder: AxeBuilder, page: Page) {
       const assertionName = 'toHaveNoAxeViolationsCache';

@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_ONE';
 
 let civilCaseReference;
 
-Feature('Smoke test - 1v1 spec create claim');
+Feature('Smoke test - 1v1 unspec create claim');
 
 Scenario('1v1 spec create claim', async ({I, api_spec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

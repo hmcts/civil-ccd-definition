@@ -1,5 +1,4 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import { defendantSolicitor1User } from '../../../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import addDefendantLitigationFriendDataComponents from './add-defendant-litigation-friend-data-components';
 
@@ -11,13 +10,11 @@ export default class AddDefendantLitigationFriendDataBuilder extends BaseDataBui
 
   protected async buildData() {
     const { civilServiceRequests } = this.requestsFactory;
-    const certificateOfSuitability =
-      await civilServiceRequests.uploadTestDocument(defendantSolicitor1User);
 
     return {
-      ...addDefendantLitigationFriendDataComponents.defendantLitigationFriend(
-        certificateOfSuitability,
-      ),
+      ...(await addDefendantLitigationFriendDataComponents.defendantLitigationFriend(
+        civilServiceRequests,
+      )),
     };
   }
 }

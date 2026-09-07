@@ -16,7 +16,10 @@ export const radioButtons = {
 };
 
 export const inputs = {
-  judgeName: '#permissionGrantedComplex_permissionGrantedJudge',
+  judgeName: {
+    label: 'Judge name',
+    selector: '#permissionGrantedComplex_permissionGrantedJudge',
+  },
 };
 
 export const selectorKeys = {

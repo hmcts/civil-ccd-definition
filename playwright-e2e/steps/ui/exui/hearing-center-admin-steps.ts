@@ -6,7 +6,9 @@ import {
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import caseFlagLocations from '../../../constants/ccd-events/ccd-events/case-flags/case-flag-locations';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -36,55 +38,59 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async CreateCaseLevelCaseFlag() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createCaseFlagsActions.selectCaseLevel();
         await createCaseFlagsActions.caseLevelComplexCaseCaseFlag();
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
   async CreateCaseLevelCaseFlag1v2DS() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createCaseFlagsActions.selectCaseLevel();
         await createCaseFlagsActions.caseLevelComplexCaseCaseFlag();
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
   async CreateClaimant1CaseFlag() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createCaseFlagsActions.selectClaimant1();
         await createCaseFlagsActions.claimant1SpecialMeasureCaseFlag();
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
   async CreateClaimant1CaseFlag1v2DS() {
     const { createCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await createCaseFlagsActions.selectClaimant1();
         await createCaseFlagsActions.claimant1SpecialMeasureCaseFlag();
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
   async ManageCaseFlags() {
     const { manageCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageCaseFlagsActions.makeInactiveCaseFlag();
       },
@@ -95,7 +101,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
 
   async StayCase() {
     const { stayCaseActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await stayCaseActions.stayCase();
       },
@@ -103,12 +109,13 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await stayCaseActions.confirmStayCase();
       },
       ccdEvents.STAY_CASE,
+      { expectedState: CaseState.CASE_STAYED },
     );
   }
 
   async ManageStayRequestUpdate() {
     const { manageStayActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageStayActions.manageStayOptionsRequestUpdate();
         await manageStayActions.manageStayRequestUpdate();
@@ -118,12 +125,13 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await manageStayActions.confirmManageStayRequestUpdate();
       },
       ccdEvents.MANAGE_STAY,
+      { expectedState: CaseState.CASE_STAYED },
     );
   }
 
   async ManageStayLiftStay() {
     const { manageStayActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await manageStayActions.manageStayOptionsLiftStay();
         await manageStayActions.manageStayLiftStayJudicialReferralInMediation();
@@ -133,24 +141,25 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await manageStayActions.confirmManageStayLiftStay();
       },
       ccdEvents.MANAGE_STAY,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
   async CaseProceedsInCaseman() {
     const { caseProceedsInCasemanActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await caseProceedsInCasemanActions.caseSettled();
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
   async TransferOnlineCase() {
     const { transferOnlineCaseActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await transferOnlineCaseActions.transferOnlineCase();
         await transferOnlineCaseActions.submitTransferOnlineCase();
@@ -159,13 +168,13 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await transferOnlineCaseActions.confirm();
       },
       ccdEvents.TRANSFER_ONLINE_CASE,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
-  async ScheduleHearingSmallClaim() {
+  async ScheduleHearingSmall() {
     const { hearingScheduledActions } = this.hearingCenterAdminActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await hearingScheduledActions.hearingNoticeSmallClaim();
         await hearingScheduledActions.listingOrRelisting();
@@ -177,7 +186,64 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await hearingScheduledActions.confirm();
       },
       ccdEvents.HEARING_SCHEDULED,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.HEARING_READINESS },
+    );
+  }
+
+  async RequestNewHearing() {
+    const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryHearingEvent(
+      async () => {
+        await requestHearingActions.requestNewHearing();
+        await requestHearingActions.checkRequirements();
+        await requestHearingActions.addHearingFacilities();
+        await requestHearingActions.addStage();
+        await requestHearingActions.addAttendance();
+        await requestHearingActions.addVenue();
+        await requestHearingActions.addJudge();
+        await requestHearingActions.addTiming();
+        await requestHearingActions.enterAdditionalInstructions();
+        await requestHearingActions.submitHearing();
+      },
+      async () => {
+        await requestHearingActions.confirmHearing();
+      },
+    );
+  }
+
+  async UpdateHearing() {
+    const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryHearingEvent(
+      async () => {
+        await requestHearingActions.viewDetails();
+        await requestHearingActions.editHearing();
+        await requestHearingActions.changeAdditionalFacilities();
+        await requestHearingActions.updateAdditionalFacilities();
+        await requestHearingActions.changeJudgeTypes();
+        await requestHearingActions.updateJudgeTypes();
+        await requestHearingActions.changeAttendance();
+        await requestHearingActions.updateAttendance();
+        await requestHearingActions.changeTimings();
+        await requestHearingActions.updateTimings();
+        await requestHearingActions.changeAdditionalInstructions();
+        await requestHearingActions.updateAdditionalInstructions();
+        await requestHearingActions.submitUpdatedRequest();
+        await requestHearingActions.hearingChangeReason();
+      },
+      async () => {
+        await requestHearingActions.confirmHearing();
+      },
+    );
+  }
+
+  async CancelHearing() {
+    const { requestHearingActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryHearingEvent(
+      async () => {
+        await requestHearingActions.cancelHearing();
+        await requestHearingActions.cancelHearingListedInError();
+      },
+      async () => {},
     );
   }
 }

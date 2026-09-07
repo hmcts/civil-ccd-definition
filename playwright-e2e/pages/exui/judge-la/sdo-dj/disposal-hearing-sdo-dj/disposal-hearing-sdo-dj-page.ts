@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd-case-data';
-import ExuiPage from '../../../exui-page/exui-page';
+import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import {
   radioButtons,
@@ -25,7 +25,6 @@ export default class DisposalHearingSdoDJPage extends ExuiPage(BasePage) {
       super.expectText(subheadings.judgementForClaimant),
       super.expectSubheading(subheadings.disclosureOfDocuments),
       super.expectSubheading(subheadings.witnessOfFact),
-      super.expectSubheading(subheadings.medicalEvidence),
       super.expectSubheading(subheadings.questionsToExperts),
       super.expectSubheading(subheadings.scheduleOfLoss),
       super.expectSubheading(subheadings.hearingTime),

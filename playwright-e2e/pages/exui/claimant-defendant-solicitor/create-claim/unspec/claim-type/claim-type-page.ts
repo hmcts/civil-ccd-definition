@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { labels, radioButtons } from './claim-type-content';
 
 @AllMethodsStep()
@@ -15,12 +15,22 @@ export default class ClaimTypePage extends ExuiPage(BasePage) {
       super.expectLabel(radioButtons.claimType.breachOfContract.label),
       super.expectLabel(radioButtons.claimType.consumer.label),
       super.expectLabel(radioButtons.claimType.consumerCredit.label),
+      super.expectLabel(radioButtons.claimType.housingDisrepair.label),
+      super.expectLabel(radioButtons.claimType.otherRemedy.label),
       super.expectLabel(radioButtons.claimType.other.label),
     ]);
   }
 
   async selectPersonalInjury() {
     await super.clickBySelector(radioButtons.claimType.personalInjury.selector);
+  }
+
+  async selectOtherRemedy() {
+    await super.clickBySelector(radioButtons.claimType.otherRemedy.selector);
+  }
+
+  async selectHousingDisrepair() {
+    await super.clickBySelector(radioButtons.claimType.housingDisrepair.selector);
   }
 
   async submit() {

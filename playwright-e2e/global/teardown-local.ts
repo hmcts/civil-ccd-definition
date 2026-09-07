@@ -4,11 +4,13 @@ import CookiesHelper from '../helpers/cookies-helper';
 import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
 import UserStateHelper from '../helpers/users-state-helper';
 import { APIRequestContext, request } from 'playwright-core';
-import { solicitorUsers } from '../config/users/exui-users';
+import { civilSystemUpdate, solicitorUsers } from '../config/users/exui-users';
 import User from '../models/users/user';
 import config from '../config/config';
 import urls from '../config/urls';
 import { TOTP } from 'totp-generator';
+import { claimants, defendants } from '../config/users/cui-users';
+import { hasClaimantCitizenEmail, hasDefendantCitizenEmail } from '../config/users/user-utils';
 
 /*
 This is last resort teardown for unassigning case if test execution gets interupted in local.
@@ -103,8 +105,42 @@ const unassignCases = async () => {
   }
 };
 
+const deleteUsers = async (users: User[]) => {
+  const requestContext = await request.newContext();
+  if (UserStateHelper.usersStateExists(users[0])) {
+    try {
+      users = UserStateHelper.getUsersFromState(users[0]) as User[];
+      if (!civilSystemUpdate.accessToken) {
+        civilSystemUpdate.accessToken = await getAccessToken(civilSystemUpdate, requestContext);
+      }
+      if (users) {
+        for (const user of users) {
+          const response = await requestContext.delete(
+            `${urls.idamTestSupportApi}/test/idam/users/${user.email}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${civilSystemUpdate.accessToken}`
+              }
+            }
+          );
+          if (response.status() !== 204) {
+            throw new Error(`Error deleting user: ${user.email}`);
+          }
+          console.log(`User with email: ${user.email} successfully deleted`);
+        }
+      }
+    } catch (error: any) {
+      if (error.name !== 'FileError') console.log(error.message);
+    }
+  }
+};
+
 const globalTeardownLocal = async () => {
   await unassignCases();
+  if (!hasClaimantCitizenEmail())
+    await deleteUsers(claimants);
+  if (!hasDefendantCitizenEmail())
+    await deleteUsers(defendants);
   UserStateHelper.deleteAllUsersState();
   CookiesHelper.deleteAllCookies();
   AxeCacheHelper.deleteAllCache();

@@ -1,7 +1,7 @@
 import BasePage from '../../../../base/base-page';
 import filePaths from '../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { buttons, inputs, subheadings } from './particulars-of-claim-content';
 
 @AllMethodsStep()
@@ -10,7 +10,7 @@ export default class ParticularsOfClaimFragment extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.expectSubheading(subheadings.uploadDocuments),
-        super.expectSubheading(subheadings.partiularsOfClaim),
+        super.expectSubheading(subheadings.particularsOfClaim),
         super.expectSubheading(subheadings.scheduleOfLoss),
         super.expectSubheading(subheadings.certificateOfSuitability),
       ],
@@ -19,8 +19,7 @@ export default class ParticularsOfClaimFragment extends ExuiPage(BasePage) {
   }
 
   async uploadDocuments() {
-    await super.clickBySelector(buttons.addPartiularsOfClaim.selector);
-    await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadPartiularsOfClaim.selector);
+    await this.uploadParticularsOfClaim();
     await super.clickBySelector(buttons.addMedicalReports.selector);
     await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadMedicalReports.selector);
     await super.clickBySelector(buttons.addScheduleOfLoss.selector);
@@ -30,6 +29,11 @@ export default class ParticularsOfClaimFragment extends ExuiPage(BasePage) {
       filePaths.testPdfFile,
       inputs.uploadCertificateOfSuitability.selector,
     );
+  }
+
+  async uploadParticularsOfClaim() {
+    await super.clickBySelector(buttons.addParticularsOfClaim.selector);
+    await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadParticularsOfClaim.selector);
   }
 
   async submit() {

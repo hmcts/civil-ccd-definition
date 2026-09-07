@@ -3,7 +3,7 @@ import { Party } from '../../../../../../models/users/partys.ts';
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd-case-data.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page.ts';
 import { subheadings, paragraphs, inputs } from './mediation-contact-information-content.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';

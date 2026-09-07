@@ -25,6 +25,10 @@ export default class CaseDataHelper {
     };
   }
 
+  static getUuid() {
+    return uuidv4();
+  }
+
   static getPartyDateOfBirth(party: Party) {
     switch (party) {
       case partys.CLAIMANT_1:
@@ -301,6 +305,17 @@ export default class CaseDataHelper {
       emailAddress: `${witnessParty.key}@witnesses${suffix}.com`,
       reasonForWitness: `Reason for witness - ${witnessParty.key}`,
       partyName: `${StringHelper.capitalise(witnessParty.key)}${suffix} Witness${suffix}`,
+    };
+  }
+
+  static buildSolicitorData(solicitorParty: Party, update = false) {
+    const suffix = update ? '-updated' : '';
+
+    return {
+      firstName: `${StringHelper.capitalise(solicitorParty.key)}${suffix}`,
+      lastName: `Witness${suffix}`,
+      phoneNumber: this.getPartyPhoneNumber(solicitorParty),
+      emailAddress: `${solicitorParty.key}@solicitors${suffix}.com`,
     };
   }
 

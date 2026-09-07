@@ -13,7 +13,6 @@ import SetAsideJudgmentActions from '../hearing-center-admin/set-aside-judgment/
 import SetAsideJudgmentPageFactory from '../../../../pages/exui/hearing-center-admin/set-aside-judgment/set-aside-judgment-page-factory';
 
 export default class CaseworkerActionsFactory extends BasePageActionsFactory {
-
   get caseProceedsInCasemanActions() {
     return new CaseProceedsInCasemanActions(
       new CaseProceedsInCasemanPageFactory(this.page),
@@ -22,15 +21,14 @@ export default class CaseworkerActionsFactory extends BasePageActionsFactory {
   }
 
   get manageDocumentsActions() {
-    return new ManageDocumentsActions(
-      new ManageDocumentsPageFactory(this.page),
-      this.testData);
+    return new ManageDocumentsActions(new ManageDocumentsPageFactory(this.page), this.testData);
   }
 
   get manageContactInformationActions() {
     return new ManageContactInformationActions(
       new ManageContactInformationPageFactory(this.page),
-      this.testData);
+      this.testData,
+    );
   }
 
   get mediationUnsuccessfulActions() {
@@ -50,4 +48,5 @@ export default class CaseworkerActionsFactory extends BasePageActionsFactory {
   get setAsideJudgmentActions() {
     return new SetAsideJudgmentActions(new SetAsideJudgmentPageFactory(this.page), this.testData);
   }
+
 }

@@ -8,6 +8,7 @@ export const subheadings = {
   witnessEvidence: 'Witness evidence',
   expertEvidence: 'Expert evidence',
   trialDocuments: 'Trial Documents',
+  bundles: 'Bundles',
 };
 
 const res = (party: Party) => (party === partys.CLAIMANT_1 ? '' : 'Res');
@@ -73,5 +74,9 @@ export const checkboxes = {
   documentary: {
     label: 'Documentary evidence for trial',
     selector: (party: Party) => `#trialSelectionEvidence${res(party)}-DOCUMENTARY`,
+  },
+  bundles: {
+    label: 'Bundles',
+    selector: '#bundleSelectionEvidence-BUNDLE_UPLOAD',
   },
 };

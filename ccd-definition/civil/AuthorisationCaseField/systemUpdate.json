@@ -765,7 +765,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DetailsForClaimDetailsTab",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",

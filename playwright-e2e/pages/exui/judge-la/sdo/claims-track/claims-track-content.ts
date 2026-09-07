@@ -52,6 +52,14 @@ export const checkboxes = {
       selectorDrawDirections:
         '#drawDirectionsOrderSmallClaimsAdditionalDirections-smallClaimFlightDelay',
     },
+    housingDisrepair: {
+      label: 'Housing Disrepair',
+      selector: '#smallClaims-smallClaimHousingDisrepair',
+    },
+    paymentProtectionInsurancePPI: {
+      label: 'Payment Protection Insurance (PPI)',
+      selector: '#smallClaims-smallClaimPPI',
+    },
   },
   fastTrack: {
     label: 'Select additional directions for Fast Track, if any (Optional)',
@@ -74,6 +82,10 @@ export const checkboxes = {
     housingDisrepair: {
       label: 'Housing Disrepair',
       selector: '#fastClaims-fastClaimHousingDisrepair',
+    },
+    paymentProtectionInsurancePPI: {
+      label: 'Payment Protection Insurance (PPI)',
+      selector: '#fastClaims-fastClaimPPI',
     },
     personalInjury: {
       label: 'Personal Injury',

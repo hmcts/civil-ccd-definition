@@ -1,6 +1,6 @@
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { inputs } from './date-content';
 import DateHelper from '../../../../helpers/date-helper';
 
@@ -45,6 +45,10 @@ export default class DateFragment extends ExuiPage(BasePage) {
       containerSelector,
     });
     await super.inputText(date.getFullYear(), inputs.year.selector(selectorKey), {
+      index,
+      containerSelector,
+    });
+    await super.blurSelector(inputs.year.selector(selectorKey), {
       index,
       containerSelector,
     });

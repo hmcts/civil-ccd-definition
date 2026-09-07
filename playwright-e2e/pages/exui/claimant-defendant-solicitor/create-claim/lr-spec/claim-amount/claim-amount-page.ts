@@ -3,7 +3,7 @@ import partys from '../../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../constants/cases/claim-track';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { paragraphs, subheadings, inputs } from './claim-amount-content';
 
 @AllMethodsStep()
@@ -30,6 +30,15 @@ export default class ClaimAmountPage extends ExuiPage(BasePage) {
 
   async enterClaimDetailsFastTrack() {
     const claimAmount = CaseDataHelper.getClaimValue(ClaimTrack.FAST_CLAIM);
+    await super.inputText(
+      `Roof damage - ${partys.CLAIMANT_1.key}`,
+      inputs.claim.reason.selector(1),
+    );
+    await super.inputText(claimAmount, inputs.claim.amount.selector(1));
+  }
+
+  async enterClaimDetailsMultiTrack() {
+    const claimAmount = CaseDataHelper.getClaimValue(ClaimTrack.MULTI_CLAIM);
     await super.inputText(
       `Roof damage - ${partys.CLAIMANT_1.key}`,
       inputs.claim.reason.selector(1),
