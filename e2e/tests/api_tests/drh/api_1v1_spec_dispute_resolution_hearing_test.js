@@ -10,7 +10,7 @@ const claimAmount = '100';
 
 let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcTeamLeaderWithRegionId4;
 
-Feature('Dispute resolution hearing API test - fast claim - unspec').tag('@civil-service-nightly @api-drh');
+Feature('Dispute resolution hearing API test - fast claim - unspec').tag('@api-drh');
 
 Scenario('1v1 spec small create SDO for DRH - CARM enabled', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, true);

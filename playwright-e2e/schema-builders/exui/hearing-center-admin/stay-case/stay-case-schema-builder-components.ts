@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
+const nonEmptyString = z.string().min(1);
+
 const stayCase = {
-  caseStayDate: z.string()
+  caseStayDate: nonEmptyString
 }
 
 const undefine = {

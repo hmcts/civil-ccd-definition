@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../base/base-schema-builder';
-import SdoType from '../../../../constants/ccd-events/sdo/sdo-type';
+import SdoType from '../../../../constants/ccd-events/ccd-events/sdo/sdo-type';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';

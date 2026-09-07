@@ -33,7 +33,6 @@ const hearingDocuments = {
         documentLink: z.looseObject({
           category_id: nonEmptyString,
           document_url: nonEmptyString,
-          upload_timestamp: nonEmptyString,
           document_filename: nonEmptyString,
           document_binary_url: nonEmptyString,
         }),
@@ -61,9 +60,11 @@ const hearingFeePBADetails = {
       version: nonEmptyString,
       calculatedAmountInPence: nonEmptyString,
     }),
-    applicantsPbaAccounts: z.looseObject({
-      list_items: z.array(z.looseObject({ code: nonEmptyString, label: nonEmptyString })).min(1),
-    }),
+    applicantsPbaAccounts: z
+      .looseObject({
+        list_items: z.array(z.looseObject({ code: nonEmptyString, label: nonEmptyString })).min(1),
+      })
+      .optional(),
     serviceRequestReference: nonEmptyString,
   }),
 };

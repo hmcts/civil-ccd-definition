@@ -14,8 +14,8 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let errors = [];
 
       before(() => {
-        authorisationCaseFieldConfig = dataProvider.getConfig('../../../../ga-ccd-definition/AuthorisationCaseField', key);
-        caseFieldConfig = dataProvider.getConfig('../../../../ga-ccd-definition/CaseField', key);
+        authorisationCaseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/generalapplication/AuthorisationCaseField', key);
+        caseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/generalapplication/CaseField', key);
       });
 
       it('contain a unique case field ID, case type ID and role (no duplicates)', () => {

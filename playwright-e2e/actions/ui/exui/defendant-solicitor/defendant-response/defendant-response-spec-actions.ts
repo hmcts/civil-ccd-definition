@@ -247,7 +247,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqFastTrackDS1() {
+  async dqFastDS1() {
     const { fileDirectionsQuestionaireDS1Page } = this.defendantResponsePageFactory;
     await fileDirectionsQuestionaireDS1Page.verifyContent(this.ccdCaseData);
     await fileDirectionsQuestionaireDS1Page.enterDetails();
@@ -272,6 +272,60 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await disclosureReportDS1Page.verifyContent(this.ccdCaseData);
     await disclosureReportDS1Page.enterDetails();
     await disclosureReportDS1Page.submit();
+  }
+
+  @Step(classKey)
+  async dqMultiDS1() {
+    const { fileDirectionsQuestionaireDS1Page } = this.defendantResponsePageFactory;
+    await fileDirectionsQuestionaireDS1Page.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionaireDS1Page.enterDetails();
+    await fileDirectionsQuestionaireDS1Page.submit();
+
+    const { disclosureOfElectronicDocumentsLRSpecDS1Page } = this.defendantResponsePageFactory;
+    await disclosureOfElectronicDocumentsLRSpecDS1Page.verifyContent(this.ccdCaseData);
+    await disclosureOfElectronicDocumentsLRSpecDS1Page.enterDetails();
+    await disclosureOfElectronicDocumentsLRSpecDS1Page.submit();
+
+    const { disclosureOfNonElectronicDocumentsLRSpecDS1Page } = this.defendantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsLRSpecDS1Page.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsLRSpecDS1Page.enterDetails();
+    await disclosureOfNonElectronicDocumentsLRSpecDS1Page.submit();
+
+    const { disclosureReportDS1Page } = this.defendantResponsePageFactory;
+    await disclosureReportDS1Page.verifyContent(this.ccdCaseData);
+    await disclosureReportDS1Page.enterDetails();
+    await disclosureReportDS1Page.submit();
+
+    const { expertsDS1Page } = this.defendantResponsePageFactory;
+    await expertsDS1Page.verifyContent(this.ccdCaseData);
+    await expertsDS1Page.useExperts();
+    await expertsDS1Page.addNewExpert();
+    await expertsDS1Page.enterExpertDetails();
+    await expertsDS1Page.submit();
+
+    const { witnessesSpecDS1Page } = this.defendantResponsePageFactory;
+    await witnessesSpecDS1Page.verifyContent(this.ccdCaseData);
+    await witnessesSpecDS1Page.addWitnesses();
+    await witnessesSpecDS1Page.enterWitnessDetails();
+    await witnessesSpecDS1Page.submit();
+
+    await this.languageDS1();
+
+    const { hearingLRSpecDS1Page } = this.defendantResponsePageFactory;
+    await hearingLRSpecDS1Page.verifyContent(this.ccdCaseData);
+    await hearingLRSpecDS1Page.selectYesAvailabilityRequired();
+    await hearingLRSpecDS1Page.addNewUnavailableDate();
+    await hearingLRSpecDS1Page.selectSingleDate();
+    await hearingLRSpecDS1Page.submit();
+
+    const { draftDirectionsDS1Page } = this.defendantResponsePageFactory;
+    await draftDirectionsDS1Page.verifyContent(this.ccdCaseData);
+    await draftDirectionsDS1Page.uploadEvidence();
+    await draftDirectionsDS1Page.submit();
+
+    await this.requestedCourtLRSpecDS1();
+    await this.hearingSupportDS1();
+    await this.vulnerabilityQuestionsSpecDS1();
   }
 
   @Step(classKey)
@@ -304,7 +358,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqSmallTrackDS1() {
+  async dqSmallDS1() {
     const { determinationWithoutHearingDS1Page } = this.defendantResponsePageFactory;
     await determinationWithoutHearingDS1Page.verifyContent(this.ccdCaseData);
     await determinationWithoutHearingDS1Page.selectNo();
@@ -340,7 +394,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqFastTrackDS2() {
+  async dqFastDS2() {
     const { fileDirectionsQuestionaireDS2Page } = this.defendantResponsePageFactory;
     await fileDirectionsQuestionaireDS2Page.verifyContent(this.ccdCaseData);
     await fileDirectionsQuestionaireDS2Page.enterDetails();
@@ -419,7 +473,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqSmallTrackDS2() {
+  async dqSmallDS2() {
     const { determinationWithoutHearingDS2Page } = this.defendantResponsePageFactory;
     await determinationWithoutHearingDS2Page.verifyContent(this.ccdCaseData);
     await determinationWithoutHearingDS2Page.selectNo();

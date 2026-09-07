@@ -8,12 +8,12 @@ test.describe('1v1 spec intermediate track api journey', { tag: '@civil-service-
     JudgeApiSteps,
     HearingCenterAdminApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectFullDefence();
-    await JudgeApiSteps.GenerateDirectionsOrderIntermediate();
+    await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
+    await ClaimantSolicitorSpecApiSteps.RespondInterRejectFullDefence();
+    await JudgeApiSteps.GenerateDirectionsOrderInter();
     await DefendantSolicitor1SpecApiSteps.EvidenceUploadFast();
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
   });
@@ -23,7 +23,7 @@ test.describe('1v1 spec intermediate track api journey', { tag: '@civil-service-
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondFullAdmitImmediately();
@@ -35,11 +35,11 @@ test.describe('1v1 spec intermediate track api journey', { tag: '@civil-service-
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondIntermediatePartAdmitImmediately();
-    await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectPartAdmit();
+    await DefendantSolicitor1SpecApiSteps.RespondInterPartAdmitImmediately();
+    await ClaimantSolicitorSpecApiSteps.RespondInterRejectPartAdmit();
   });
 
   test('1v1 spec counter claim intermediate claim', async ({
@@ -47,7 +47,7 @@ test.describe('1v1 spec intermediate track api journey', { tag: '@civil-service-
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondCounterClaim();

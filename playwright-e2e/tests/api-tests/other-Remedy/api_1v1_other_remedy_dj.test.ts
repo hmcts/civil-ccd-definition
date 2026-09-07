@@ -11,7 +11,7 @@ test.describe(
     DefendantSolicitor1ApiSteps,
     HearingCenterAdminApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v1OtherRemedy();
+      await ClaimantSolicitorApiSteps.CreateClaimFastOtherRemedy1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
@@ -24,7 +24,7 @@ test.describe(
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
-      await JudgeApiSteps.GenerateDirectionsOrderAssistedOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderAssisted();
       await ClaimantSolicitorApiSteps.ConfirmTrialArrangements();
     });
   },

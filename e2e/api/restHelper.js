@@ -11,11 +11,21 @@ const request = (url, headers, body, method = 'POST') =>  fetch(url, {
     keepalive: true
   });
 
+const isExpectedStatus = (actualStatus, expectedStatus) => {
+  return Array.isArray(expectedStatus)
+    ? expectedStatus.includes(actualStatus)
+    : actualStatus === expectedStatus;
+};
+
+const expectedStatusMessage = (expectedStatus) => {
+  return Array.isArray(expectedStatus) ? expectedStatus.join(', ') : expectedStatus;
+};
+
 const retriedRequest = async (url, headers, body, method = 'POST', expectedStatus = 200) => {
   return retry(() => {
     return request(url, headers, body, method).then(response => {
-      if (response.status !== expectedStatus) {
-        throw new Error(`Expected status: ${expectedStatus}, actual status: ${response.status}, `
+      if (!isExpectedStatus(response.status, expectedStatus)) {
+        throw new Error(`Expected status: ${expectedStatusMessage(expectedStatus)}, actual status: ${response.status}, `
           + `message: ${response.statusText}, url: ${response.url}`);
       }
       return response;
@@ -26,8 +36,8 @@ const retriedRequest = async (url, headers, body, method = 'POST', expectedStatu
 const retriedRequestFor201 = async (url, headers, body, method = 'POST', expectedStatus = 201) => {
   return retry(() => {
     return request(url, headers, body, method).then(response => {
-      if (response.status !== expectedStatus) {
-        throw new Error(`Expected status: ${expectedStatus}, actual status: ${response.status}, `
+      if (!isExpectedStatus(response.status, expectedStatus)) {
+        throw new Error(`Expected status: ${expectedStatusMessage(expectedStatus)}, actual status: ${response.status}, `
           + `message: ${response.statusText}, url: ${response.url}`);
       }
       return response;
@@ -38,8 +48,8 @@ const retriedRequestFor201 = async (url, headers, body, method = 'POST', expecte
 const retriedRequestFor400 = async (url, headers, body, method = 'POST', expectedStatus = 400) => {
   return retry(() => {
     return request(url, headers, body, method).then(response => {
-      if (response.status !== expectedStatus) {
-        throw new Error(`Expected status: ${expectedStatus}, actual status: ${response.status}, `
+      if (!isExpectedStatus(response.status, expectedStatus)) {
+        throw new Error(`Expected status: ${expectedStatusMessage(expectedStatus)}, actual status: ${response.status}, `
           + `message: ${response.statusText}, url: ${response.url}`);
       }
       return response;
@@ -50,8 +60,8 @@ const retriedRequestFor400 = async (url, headers, body, method = 'POST', expecte
 const retriedJsonRequest = async (url, headers, body, method = 'POST', expectedStatus = 200) => {
   return retry(() => {
     return request(url, headers, body, method).then(async response => {
-      if (response.status !== expectedStatus) {
-        throw new Error(`Expected status: ${expectedStatus}, actual status: ${response.status}, `
+      if (!isExpectedStatus(response.status, expectedStatus)) {
+        throw new Error(`Expected status: ${expectedStatusMessage(expectedStatus)}, actual status: ${response.status}, `
           + `message: ${response.statusText}, url: ${response.url}`);
       }
 

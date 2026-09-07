@@ -38,15 +38,19 @@ export default class DateOfBirthFragment extends ExuiPage(BasePage) {
   async enterDate(
     claimantDefendantParty: Party,
     claimantDefendantPartyType: ClaimantDefendantPartyType,
-    { index, containerSelector, updated }: { index?: number; containerSelector?: string; updated?: boolean } = {},
+    {
+      index,
+      containerSelector,
+      updated,
+    }: { index?: number; containerSelector?: string; updated?: boolean } = {},
   ) {
     const selectorKey = `${claimantDefendantPartyType.key}DateOfBirth`;
     // const dateOfBirth = new Date(CaseDataHelper.getPartyDateOfBirth(claimantDefendantParty));
     const dobString = updated
-    ? CaseDataHelper.getPartyDateOfBirthUpdated(claimantDefendantParty)
-    : CaseDataHelper.getPartyDateOfBirth(claimantDefendantParty);
+      ? CaseDataHelper.getPartyDateOfBirthUpdated(claimantDefendantParty)
+      : CaseDataHelper.getPartyDateOfBirth(claimantDefendantParty);
 
-    const dateOfBirth = new Date(dobString);
+    const dateOfBirth = new Date(dobString!);
 
     await super.inputText(
       DateHelper.getTwoDigitDay(dateOfBirth),
@@ -59,6 +63,10 @@ export default class DateOfBirthFragment extends ExuiPage(BasePage) {
       { index },
     );
     await super.inputText(dateOfBirth.getFullYear(), inputs.year.selector(selectorKey), {
+      index,
+      containerSelector,
+    });
+    await super.blurSelector(inputs.year.selector(selectorKey), {
       index,
       containerSelector,
     });

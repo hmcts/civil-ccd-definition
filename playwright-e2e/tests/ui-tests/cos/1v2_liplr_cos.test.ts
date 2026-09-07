@@ -5,7 +5,7 @@ test.describe('1v2 LIP LR COS notify claim journey', { tag: '@civil-ccd-nightly'
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimSmallTrack1v2LRLIP();
+    await ClaimantSolicitorApiSteps.CreateClaimSmall1v2LRLIP();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.NotifyClaim1v1LIP1LR();

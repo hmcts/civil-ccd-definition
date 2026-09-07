@@ -12,6 +12,7 @@ type User = {
   readonly cookiesPath?: string;
   userId?: string;
   accessToken?: string;
+  workerIndex?: number;
 };
 
 export default User;

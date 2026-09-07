@@ -2,7 +2,7 @@ import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/unspec/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
@@ -12,11 +12,13 @@ import { Party } from '../../../../../models/users/partys';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
-  async buildDS1SmallFullDefence1v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildDS1SmallFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission);
+  }
+
+  async buildDS2SmallFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      claimType: ClaimType.ONE_VS_ONE,
-      responseType: DefendantResponseType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
@@ -28,12 +30,22 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence2v1(
+  async buildDS1InterFullDefence2v1(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+    });
+  }
+
+  async buildDS1InterFullDefence1v2DS(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       responseType: DefendantResponseType.FULL_DEFENCE,
     });
   }
@@ -54,7 +66,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence1v2SS(
+  async buildDS1InterFullDefence1v2SS(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -79,7 +91,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence(
+  async buildDS1InterFullDefence(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
@@ -95,14 +107,6 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1MultiFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      responseType: DefendantResponseType.FULL_DEFENCE,
-    });
-  }
-
   async buildDS2FastFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
@@ -111,21 +115,29 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS2FastTrackFullDefence1v2DS(
+  async buildDS2FastTrackFullDefence(
     caseDataBeforeSubmission?: CCDCaseData,
   ): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       responseType: DefendantResponseType.FULL_DEFENCE,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
-  async buildDS2MultiFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
+  async buildDS2MultiFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.MULTI_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      responseType: DefendantResponseType.FULL_DEFENCE,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
+    });
+  }
+
+  async buildDS2InterFullDefence(
+    caseDataBeforeSubmission?: CCDCaseData,
+  ): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       responseType: DefendantResponseType.FULL_DEFENCE,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });

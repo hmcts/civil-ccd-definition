@@ -54,10 +54,25 @@ export default class SdoActions extends BaseTestData {
     await claimsTrackPage.submit();
   }
 
+  async selectFastTrackOtherRemedy() {
+    const { claimsTrackPage } = this.sdoPageFactory;
+    await claimsTrackPage.verifyContent(this.ccdCaseData);
+    await claimsTrackPage.selectFastTrack();
+    await claimsTrackPage.selectFastTrackAdditionalDirectionsOtherRemedy();
+    await claimsTrackPage.submit();
+  }
+
   async selectSmallClaimNoSum() {
     const { claimsTrackPage } = this.sdoPageFactory;
     await claimsTrackPage.verifyContent(this.ccdCaseData);
     await claimsTrackPage.selectSmallClaims();
+    await claimsTrackPage.submit();
+  }
+
+  async selectSmallClaimNoSumOtherRemedy() {
+    const { claimsTrackPage } = this.sdoPageFactory;
+    await claimsTrackPage.verifyContent(this.ccdCaseData);
+    await claimsTrackPage.selectSmallClaimsOtherRemedy();
     await claimsTrackPage.submit();
   }
 

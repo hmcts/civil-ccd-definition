@@ -29,6 +29,19 @@ export default class ClaimsTrackPage extends ExuiPage(BasePage) {
     await super.clickBySelector(checkboxes.smallClaims.flightDelay.selector);
   }
 
+  async selectSmallClaimsOtherRemedy() {
+    await super.clickBySelector(radioButtons.claimsTrack.smallClaims.selector);
+    await Promise.all([
+      super.expectLegend(checkboxes.smallClaims.label, { count: 1 }),
+      super.expectLabel(checkboxes.smallClaims.creditHire.label, { count: 1 }),
+      super.expectLabel(checkboxes.smallClaims.housingDisrepair.label, { count: 1 }),
+      super.expectLabel(checkboxes.smallClaims.paymentProtectionInsurancePPI.label, { count: 1 }),
+    ]);
+    await super.clickBySelector(checkboxes.smallClaims.creditHire.selector);
+    await super.clickBySelector(checkboxes.smallClaims.housingDisrepair.selector);
+    await super.clickBySelector(checkboxes.smallClaims.paymentProtectionInsurancePPI.selector);
+  }
+
   async selectSmallTrackAdditionalDirections() {
     await super.clickBySelector(checkboxes.fastTrack.buildingDispute.selector);
     await super.clickBySelector(checkboxes.fastTrack.clinicialNegligence.selector);
@@ -47,7 +60,7 @@ export default class ClaimsTrackPage extends ExuiPage(BasePage) {
       super.expectLabel(checkboxes.fastTrack.clinicialNegligence.label),
       super.expectLabel(checkboxes.fastTrack.creditHire.label, { count: 1 }),
       super.expectLabel(checkboxes.fastTrack.employersLiability.label),
-      super.expectLabel(checkboxes.fastTrack.housingDisrepair.label, {count: 1}),
+      super.expectLabel(checkboxes.fastTrack.housingDisrepair.label, { count: 1 }),
       super.expectLabel(checkboxes.fastTrack.noiseInducedHearingLoss.label),
       super.expectLabel(checkboxes.fastTrack.personalInjury.label),
       super.expectLabel(checkboxes.fastTrack.roadTrafficAccident.label, { count: 1 }),
@@ -61,6 +74,13 @@ export default class ClaimsTrackPage extends ExuiPage(BasePage) {
     await super.clickBySelector(checkboxes.fastTrack.employersLiability.selector);
     await super.clickBySelector(checkboxes.fastTrack.housingDisrepair.selector);
     await super.clickBySelector(checkboxes.fastTrack.personalInjury.selector);
+    await super.clickBySelector(checkboxes.fastTrack.roadTrafficAccident.selector);
+  }
+
+  async selectFastTrackAdditionalDirectionsOtherRemedy() {
+    await super.clickBySelector(checkboxes.fastTrack.clinicialNegligence.selector);
+    await super.clickBySelector(checkboxes.fastTrack.housingDisrepair.selector);
+    await super.clickBySelector(checkboxes.fastTrack.paymentProtectionInsurancePPI.selector);
     await super.clickBySelector(checkboxes.fastTrack.roadTrafficAccident.selector);
   }
 

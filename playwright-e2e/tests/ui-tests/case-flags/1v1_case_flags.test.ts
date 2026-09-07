@@ -17,7 +17,7 @@ test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' },
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await DefendantSolicitor1ApiSteps.AddLitigationFriend();
       await DefendantSolicitor1Steps.Login();
-      await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v1();
+      await DefendantSolicitor1Steps.RespondSmallFullDefence1v1();
       await ClaimantSolicitorSteps.Login();
       await ClaimantSolicitorSteps.RespondSmallProceed1v1();
       await HearingCenterAdminSteps.LoginRegion1();

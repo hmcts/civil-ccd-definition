@@ -7,7 +7,7 @@ test.describe('Spec small claims mediation api journey', { tag: '@civil-service-
     DefendantSolicitor1SpecApiSteps,
     CaseworkerApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack2v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall2v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence2v1();

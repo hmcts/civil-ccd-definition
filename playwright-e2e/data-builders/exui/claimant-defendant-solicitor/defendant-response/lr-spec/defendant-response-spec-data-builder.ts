@@ -1,18 +1,14 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response/lr-spec/defendant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 import defendantResponseSpecData from './defendant-response-spec-data-components';
-import {
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../../../../config/users/exui-users';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import partys from '../../../../../constants/users/partys';
 import { Party } from '../../../../../models/users/partys';
-import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-route-spec';
-import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/payment-type-spec';
-import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response/lr-spec/defence-admitted-part-route-spec';
+import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
+import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
@@ -26,7 +22,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence() {
+  async buildDS1InterFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
     });
@@ -41,13 +37,6 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
   async buildDS1MultiFullDefence1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-    });
-  }
-
-  async buildDS1MultiFullDefence1v2DS() {
-    return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.MULTI_CLAIM,
     });
   }
@@ -73,7 +62,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1IntermediatePartAdmitImmediately() {
+  async buildDS1InterPartAdmitImmediately() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.PART_ADMISSION,
@@ -144,16 +133,15 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS2IntermediateFullDefence() {
+  async buildDS2InterFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
-  async buildDS2MultiFullDefence1v2DS() {
+  async buildDS2MultiFullDefence() {
     return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.MULTI_CLAIM,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
@@ -195,7 +183,7 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1IntermediateFullDefence1v2SS() {
+  async buildDS1InterFullDefence1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
@@ -229,6 +217,13 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
       claimTrack: ClaimTrack.MULTI_CLAIM,
       defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
       paymentTypeSpec: PaymentTypeSpec.IMMEDIATELY,
+    });
+  }
+
+  async buildDS1FullAdmitSetDate() {
+    return this.buildData({
+      defendantResponseSpecType: DefendantResponseSpecType.FULL_ADMISSION,
+      paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
     });
   }
 
@@ -266,16 +261,6 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     defendantSolicitorParty?: Party;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
-    const defendantSolicitorUser =
-      defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1
-        ? defendantSolicitor1User
-        : defendantSolicitor2User;
-    let frcSupportingDocument;
-    const defenceResponseDocumentSpec =
-      await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
-    if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
-      frcSupportingDocument = await civilServiceRequests.uploadTestDocument(defendantSolicitorUser);
-    }
 
     const eventData: Record<string, unknown> = {};
 
@@ -302,10 +287,10 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
         defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
-      defendantResponseSpecData.upload(
+      await defendantResponseSpecData.upload(
         defendantResponseSpecType,
-        defenceResponseDocumentSpec,
         defendantSolicitorParty,
+        civilServiceRequests,
       ),
       defendantResponseSpecData.timeline(defendantResponseSpecType, defendantSolicitorParty),
       defendantResponseSpecData.whenWillClaimBePaid(
@@ -365,11 +350,11 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
         claimTrack,
         defendantSolicitorParty,
       ),
-      defendantResponseSpecData.fixedRecoverableCostsIntermediate(
+      await defendantResponseSpecData.fixedRecoverableCostsIntermediate(
         defendantResponseSpecType,
         claimTrack,
         defendantSolicitorParty,
-        frcSupportingDocument,
+        civilServiceRequests,
       ),
       defendantResponseSpecData.disclosureOfElectronicDocumentsLRspec(
         defendantResponseSpecType,

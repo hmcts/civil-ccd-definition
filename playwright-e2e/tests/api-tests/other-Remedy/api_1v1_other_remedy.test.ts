@@ -9,7 +9,7 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v1OtherRemedy();
+      await ClaimantSolicitorApiSteps.CreateClaimFastOtherRemedy1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();

@@ -1,9 +1,9 @@
 import BaseApi from '../../../base/base-api';
 import { hearingCenterAdminRegion1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import CaseState from '../../../constants/cases/case-state';
-import scheduleAHearingFastTrack from '../../../constants/wa-tasks/scheduleAHearingFastTrack';
-import scheduleAHearing from '../../../constants/wa-tasks/scheduleAHearing';
+import scheduleAHearingFastTrack from '../../../constants/wa-tasks/exui/scheduleAHearingFastTrack';
+import scheduleAHearing from '../../../constants/wa-tasks/exui/scheduleAHearing';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import DateHelper from '../../../helpers/date-helper';
 import ZodHelper from '../../../helpers/zod-helper';
@@ -38,7 +38,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -53,12 +53,12 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
 
     const { scheduleHearingDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
     const scheduleHearingData = await scheduleHearingDataBuilder.buildFast();
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       hearingCenterAdminRegion1User,
       scheduleAHearingFastTrack,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -77,7 +77,6 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -92,12 +91,12 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
 
     const { scheduleHearingDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
     const scheduleHearingData = await scheduleHearingDataBuilder.buildSmallClaim();
-    await super.submitWAEvent(
+    await super.submitWaEvent(
       hearingCenterAdminRegion1User,
       scheduleAHearing,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
-      CaseState.HEARING_READINESS,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     const { scheduleHearingSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -122,6 +121,34 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
     await super.fetchAndSetCCDCaseData();
   }
 
+  async GenerateHearingsPayload() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+
+    const { civilServiceRequests } = this.requestsFactory;
+    const hearingsPayload = await civilServiceRequests.getHearingsPayload(
+      hearingCenterAdminRegion1User,
+      this.ccdCaseData?.id,
+    );
+
+    const { serviceHearingValuesSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const serviceHearingValuesSchema = await serviceHearingValuesSchemaBuilder.build();
+    ZodHelper.safeParse(serviceHearingValuesSchema, hearingsPayload);
+  }
+
+  async GenerateHearingsPayloadSpec() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+
+    const { civilServiceRequests } = this.requestsFactory;
+    const hearingsPayload = await civilServiceRequests.getHearingsPayload(
+      hearingCenterAdminRegion1User,
+      this.ccdCaseData?.id,
+    );
+
+    const { serviceHearingValuesSpecSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const serviceHearingValuesSpecSchema = await serviceHearingValuesSpecSchemaBuilder.build();
+    ZodHelper.safeParse(serviceHearingValuesSpecSchema, hearingsPayload);
+  }
+
   async StayCase() {
     await this.setupApiStep(hearingCenterAdminRegion1User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -132,7 +159,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.STAY_CASE,
       stayCaseData,
-      CaseState.CASE_STAYED,
+      { expectedState: CaseState.CASE_STAYED },
     );
 
     const { stayCaseSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
@@ -184,11 +211,135 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.DISMISS_CASE,
       dismissCaseData,
-      CaseState.CASE_DISMISSED,
+      { expectedState: CaseState.CASE_DISMISSED },
     );
 
     const { dismissCaseSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
     const dismissCaseSchema = await dismissCaseSchemaBuilder.build(caseDataBeforeSubmission);
     ZodHelper.safeParse(dismissCaseSchema, this.ccdCaseData);
+  }
+
+  async RespondToQuery() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRespondDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    const queryManagementRespondData =
+      await queryManagementRespondDataBuilder.buildQueryHearingCentreAdmin();
+    await super.submitQmEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.QUERY_MANAGEMENT_RESPOND,
+      queryManagementRespondData,
+    );
+
+    const { queryManagementRespondSchemaBuilder } =
+      this.hearingCenterAdminSchemaBuilderFactory;
+    const queryManagementRespondSchema =
+      await queryManagementRespondSchemaBuilder.buildQueryHearingCentreAdmin(
+        caseDataBeforeSubmission,
+      );
+    ZodHelper.safeParse(queryManagementRespondSchema, this.ccdCaseData);
+  }
+
+  async CreateCaseFlagCaseLevel() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createCaseFlagsDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    await super.submitCaseFlagsEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.CREATE_CASE_FLAGS,
+      await createCaseFlagsDataBuilder.buildCaseFlags(),
+    );
+
+    const { createCaseFlagsSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const createCaseFlagsSchema =
+      await createCaseFlagsSchemaBuilder.buildCaseFlags(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createCaseFlagsSchema, this.ccdCaseData);
+  }
+
+  async CreateCaseFlagClaimant1() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createCaseFlagsDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    await super.submitCaseFlagsEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.CREATE_CASE_FLAGS,
+      await createCaseFlagsDataBuilder.buildApplicant1(),
+    );
+
+    const { createCaseFlagsSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const createCaseFlagsSchema =
+      await createCaseFlagsSchemaBuilder.buildApplicant1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createCaseFlagsSchema, this.ccdCaseData);
+  }
+
+  async CreateCaseFlagDefendant1() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createCaseFlagsDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    await super.submitCaseFlagsEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.CREATE_CASE_FLAGS,
+      await createCaseFlagsDataBuilder.buildRespondent1(),
+    );
+
+    const { createCaseFlagsSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const createCaseFlagsSchema =
+      await createCaseFlagsSchemaBuilder.buildRespondent1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(createCaseFlagsSchema, this.ccdCaseData);
+  }
+
+  async ManageCaseFlagCaseLevel() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { manageCaseFlagsDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    await super.submitCaseFlagsEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.MANAGE_CASE_FLAGS,
+      await manageCaseFlagsDataBuilder.buildCaseFlags(),
+    );
+
+    const { manageCaseFlagsSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const manageCaseFlagsSchema =
+      await manageCaseFlagsSchemaBuilder.buildCaseFlags(caseDataBeforeSubmission);
+    ZodHelper.safeParse(manageCaseFlagsSchema, this.ccdCaseData);
+  }
+
+  async ManageCaseFlagClaimant1() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { manageCaseFlagsDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    await super.submitCaseFlagsEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.MANAGE_CASE_FLAGS,
+      await manageCaseFlagsDataBuilder.buildApplicant1(),
+    );
+
+    const { manageCaseFlagsSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const manageCaseFlagsSchema =
+      await manageCaseFlagsSchemaBuilder.buildApplicant1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(manageCaseFlagsSchema, this.ccdCaseData);
+  }
+
+  async ManageCaseFlagDefendant1() {
+    await this.setupApiStep(hearingCenterAdminRegion1User);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { manageCaseFlagsDataBuilder } = this.hearingCenterAdminDataBuilderFactory;
+    await super.submitCaseFlagsEvent(
+      hearingCenterAdminRegion1User,
+      ccdEvents.MANAGE_CASE_FLAGS,
+      await manageCaseFlagsDataBuilder.buildRespondent1(),
+    );
+
+    const { manageCaseFlagsSchemaBuilder } = this.hearingCenterAdminSchemaBuilderFactory;
+    const manageCaseFlagsSchema =
+      await manageCaseFlagsSchemaBuilder.buildRespondent1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(manageCaseFlagsSchema, this.ccdCaseData);
   }
 }

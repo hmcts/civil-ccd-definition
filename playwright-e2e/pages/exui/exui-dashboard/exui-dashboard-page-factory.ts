@@ -4,6 +4,7 @@ import CaseFilterPage from './case-filter/case-filter-page';
 import CaseListPage from './case-list/case-list-page';
 import ExuiCookiesBanner from './exui-cookies-banner/exui-cookies-banner';
 import ExuiNavBar from './exui-nav-bar/exui-nav-bar';
+import MyWorkPage from './my-work/my-work-page';
 
 export default class ExuiDashboardPageFactory extends BasePageFactory {
   get exuiCookiesBanner() {
@@ -24,5 +25,9 @@ export default class ExuiDashboardPageFactory extends BasePageFactory {
 
   get caseDetailsPage() {
     return new CaseDetailsPage(this.page);
+  }
+
+  get myWorkPage() {
+    return new MyWorkPage(this.page);
   }
 }

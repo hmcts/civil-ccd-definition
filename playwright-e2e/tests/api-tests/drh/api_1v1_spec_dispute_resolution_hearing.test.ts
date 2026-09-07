@@ -11,7 +11,7 @@ test.describe(
       CaseworkerApiSteps,
       LegalAdvisorApiSteps
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
@@ -19,7 +19,7 @@ test.describe(
       await CaseworkerApiSteps.MediationUnsuccessful();
       await ClaimantSolicitorSpecApiSteps.UploadMediationDocuments();
       await DefendantSolicitor1SpecApiSteps.UploadMediationDocuments();
-      await LegalAdvisorApiSteps.SdoSmallTrackSumDRH();
+      await LegalAdvisorApiSteps.SdoSmallSumDRH();
     });
   },
 );

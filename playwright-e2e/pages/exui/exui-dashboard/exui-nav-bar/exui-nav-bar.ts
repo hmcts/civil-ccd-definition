@@ -24,6 +24,8 @@ export default class ExuiNavBar extends BasePage {
 
   async clickSignOut() {
     await super.clickBySelector(links.signOut.selector);
-    await super.expectDomain('idam-web-public');
+    // Accept both the legacy IDAM Web Public and the new HMCTS Access sign-in
+    // domains during the migration transition (DTSCCI-5284 / DTSCCI-5285).
+    await super.expectDomain('(idam-web-public|hmcts-access)');
   }
 }

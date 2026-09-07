@@ -218,7 +218,7 @@ const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSu
 const pdfHelper = require('./helpers/pdfVisualCompareHelper.js');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
-const SIGNED_OUT_SELECTOR = '#global-header';
+const SIGNED_OUT_SELECTOR = '#email';
 const CASE_HEADER = 'ccd-markdown >> h1';
 const GA_CASE_HEADER = '.heading-h2';
 const SIGN_OUT_LINK = 'ul[class*=\'navigation-list\'] a';

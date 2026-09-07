@@ -1,8 +1,8 @@
 import BasePage from '../../../../base/base-page';
 import config from '../../../../config/config';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events/ccd-events';
 import CCDCaseData from '../../../../models/ccd-case-data';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import { buttons, components, getFormattedCaseId } from './exui-content';
 
 let ccdEventstate: CCDEvent | undefined;
@@ -59,6 +59,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         () => super.uploadFile(filePath, selector, { containerSelector, index, first }),
         () =>
           super.expectNoSelector(components.uploadDocError.selector, {
+            containerSelector,
             timeout,
             all: true,
             message: 'Uploading document failed',
@@ -90,31 +91,6 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         message: 'Field validation error on UI',
       });
     }
-
-    // protected async retryClickSubmit(expect?: () => Promise<void>) {
-    //   await super.retryClickBySelectorTimeout(
-    //     buttons.submit.selector,
-    //     async () => {
-    //       await this.waitForPageToLoad();
-    //       await super.expectNoSelector(components.error.selector, {
-    //         timeout: 200,
-    //         all: true,
-    //       });
-    //       if (expect) await expect();
-    //     },
-    //     { timeout: 45_000 },
-    //     async () =>
-    //       super.expectNoSelector(components.loading.selector, {
-    //         timeout: 10,
-    //         message: `Loading spinner expected to disappear after ${config.exui.pageSubmitTimeout}ms`,
-    //       }),
-    //   );
-    //   await super.expectNoSelector(components.fieldError.selector, {
-    //     timeout: 200,
-    //     all: true,
-    //     message: 'Field Validation Error on UI',
-    //   });
-    // }
 
     protected async retryClickSubmit(expect?: () => Promise<void>) {
       await super.retryClickBySelector(

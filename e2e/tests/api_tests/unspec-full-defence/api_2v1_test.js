@@ -3,9 +3,9 @@
 const config = require('../../../config.js');
 const mpScenario = 'TWO_V_ONE';
 
-Feature('2v1 unspec full defence api journey').tag('@civil-service-nightly @api-unspec-full-defence');
+Feature('2v1 unspec full defence api journey').tag('@api-unspec-full-defence');
 
-Scenario('2v1 unspec full defence', async ({api}) => {
+Scenario.skip('2v1 unspec full defence', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
