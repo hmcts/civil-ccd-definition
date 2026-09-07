@@ -37,7 +37,6 @@ export default class CertificateOfServiceNotifyClaimDetailsSubmitFragment extend
     const dateOfService = DateHelper.addToToday({
       days: 1,
       workingDay: true,
-      addDayAfter4pm: true,
     });
     await super.runVerifications(
       [
@@ -66,7 +65,6 @@ export default class CertificateOfServiceNotifyClaimDetailsSubmitFragment extend
     const dateOfService = DateHelper.addToToday({
       days: 1,
       workingDay: true,
-      addDayAfter4pm: true,
     });
     await super.runVerifications(
       [

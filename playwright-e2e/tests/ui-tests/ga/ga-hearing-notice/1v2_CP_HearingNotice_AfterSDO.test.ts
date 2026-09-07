@@ -28,7 +28,7 @@ test.describe(
         await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();
         await JudgeGaApiSteps.MakeADecisionListHearing();
         await HearingCenterAdminGaSteps.Login();
-        await HearingCenterAdminGaSteps.CreateHearingNotice();
+        await HearingCenterAdminGaSteps.HearingScheduledGa();
       },
     );
   },

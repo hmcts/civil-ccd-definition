@@ -3,12 +3,12 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import GaExuiPage from '../../mixin-pages/ga-exui-page/ga-exui-page';
 import GaCCDCaseData from '../../../../models/ga-ccd-case-data';
-import { tabs } from './ga-case-details-content';
+import { successBannerText, tabs } from './ga-case-details-content';
 import { TruthyParams } from '../../../../decorators/truthy-params';
 import urls from '../../../../config/urls';
 import config from '../../../../config/config';
 import CCDEvent from '../../../../models/ccd-events/ccdEvent';
-import { components } from '../../mixin-pages/ga-exui-page/ga-exui-content';
+import { components, getFormattedCaseId } from '../../mixin-pages/ga-exui-page/ga-exui-content';
 import { test } from '../../../../playwright-fixtures';
 import WATask from '../../../../models/wa-task';
 
@@ -84,6 +84,11 @@ export default class GaCaseDetailsPage extends GaExuiPage(BasePage) {
       () => super.reload(),
       { retries: 3, message: `Starting event: ${ccdEvent.name}, using tasks tab, with task name: ${waTask.name} failed, trying again` },
     );
+  }
+
+  async verifySuccessEvent(caseId: number, ccdEvent: CCDEvent) {
+    console.log(`Verifying success banner and event history: ${ccdEvent.name}`);
+    await super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent));
   }
 
   async submit() {

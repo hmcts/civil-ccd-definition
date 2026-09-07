@@ -9,8 +9,12 @@ import defendantResponseDataComponents from './defendant-response-data-component
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
-  async buildDS1SmallFullDefence1v1() {
+  async buildDS1SmallFullDefence() {
     return this.buildData();
+  }
+
+  async buildDS2SmallFullDefence() {
+    return this.buildData({defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2});
   }
 
   async buildDS1FastFullDefence2v1() {
@@ -62,20 +66,6 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1FastTrackFullDefence1v2DS() {
-    return this.buildData({
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-    });
-  }
-
-  async buildDS1MultiFullDefence1v2DS() {
-    return this.buildData({
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-    });
-  }
-
   async buildDS1FastFullDefence() {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
@@ -95,26 +85,23 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS2FastTrackFullDefence1v2DS() {
+  async buildDS2FastTrackFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.FAST_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
-  async buildDS2MultiFullDefence1v2DS() {
+  async buildDS2MultiFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.MULTI_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }
 
-  async buildDS2InterFullDefence1v2DS() {
+  async buildDS2InterFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });
   }

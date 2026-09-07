@@ -271,7 +271,7 @@ export default abstract class BaseApi extends BaseTestData {
     if(config.waEnabled) {
       const waTask = await this.retrieveAndAssignWATask(user, validTask);
       await this.submitQmEvent(user, ccdEvent, qmEventData, {expectedState, camundaProcess});
-      await this.completeWATask(user, waTask?.id);
+      await this.completeWATask(user, waTask);
     } else {
       await this.submitQmEvent(user, ccdEvent, qmEventData, {expectedState, camundaProcess});
     } 
@@ -348,7 +348,7 @@ export default abstract class BaseApi extends BaseTestData {
     if(config.waEnabled) {
       const waTask = await this.retrieveAndAssignWATask(user, validTask);
       await this.submitCCDEvent(user, ccdEvent, pageDataMap, {expectedState, camundaProcess});
-      await this.completeWATask(user, waTask?.id);
+      await this.completeWATask(user, waTask);
     } else {
       await this.submitCCDEvent(user, ccdEvent, pageDataMap, {expectedState, camundaProcess});
     } 
@@ -370,7 +370,7 @@ export default abstract class BaseApi extends BaseTestData {
     if(config.waEnabled) {
       const waTask = await this.retrieveAndAssignWATask(user, validTask, this.getGaCCDCaseData()?.id);
       await this.submitGaCCDEvent(user, ccdEvent, eventData, {expectedState, camundaProcess});
-      await this.completeWATask(user, waTask.id);
+      await this.completeWATask(user, waTask);
     } else {
       await this.submitGaCCDEvent(user, ccdEvent, eventData, {expectedState, camundaProcess});
     }
@@ -456,9 +456,9 @@ export default abstract class BaseApi extends BaseTestData {
     return waTask;
   }
 
-  protected async completeWATask(user: User, waTaskId?: string) {
+  protected async completeWATask(user: User, waTask: WATask) {
     const { workAllocationsRequests } = this.requestsFactory;
-    await workAllocationsRequests.completeTask(user, waTaskId);
+    await workAllocationsRequests.completeTask(user, waTask);
   }
 
   protected async createUpdateStud(studRequestBodys: StudRequestBody[] | StudRequestBody) {

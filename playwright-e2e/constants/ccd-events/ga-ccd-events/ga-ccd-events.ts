@@ -1,4 +1,3 @@
-import { description } from "../../../../wa/tasks/summaryJudgmentDirectionsTask";
 import GaCCDEvents from "../../../models/ccd-events/ga-ccd-events/ga-ccd-events";
 
 const gaCCDEvents: GaCCDEvents = {

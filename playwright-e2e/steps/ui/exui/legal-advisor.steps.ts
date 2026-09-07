@@ -48,7 +48,7 @@ export default class LegalAdvisorSteps extends BaseExui {
       {
         verifySuccessEvent: false,
         expectedState: CaseState.CASE_PROGRESSION,
-      }
+      },
     );
   }
 
@@ -71,7 +71,7 @@ export default class LegalAdvisorSteps extends BaseExui {
       {
         verifySuccessEvent: false,
         expectedState: CaseState.CASE_PROGRESSION,
-      }
+      },
     );
   }
 
@@ -91,7 +91,7 @@ export default class LegalAdvisorSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
-      { verifySuccessEvent: false }
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -111,7 +111,7 @@ export default class LegalAdvisorSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       tribunalCaseworkerRegion1User,
       legalAdvisorSmallClaimsTrackDirectionsTask,
-      { verifySuccessEvent: false }
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 }

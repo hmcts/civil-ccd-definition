@@ -45,6 +45,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -57,6 +58,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -69,6 +71,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -81,6 +84,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -119,7 +123,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await referJudgeDefenceReceivedActions.confirmReferToJudge();
       },
       ccdEvents.REFER_JUDGE_DEFENCE_RECEIVED,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
   }
 
@@ -135,7 +139,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await setAsideJudgmentActions.confirmSetAsideJudgment();
       },
       ccdEvents.SET_ASIDE_JUDGMENT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
   }
 
@@ -151,7 +155,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await setAsideJudgmentActions.confirmSetAsideJudgment();
       },
       ccdEvents.SET_ASIDE_JUDGMENT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
   }
 
@@ -166,7 +170,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await setAsideJudgmentActions.confirmSetAsideJudgment();
       },
       ccdEvents.SET_ASIDE_JUDGMENT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
   }
 
@@ -190,7 +194,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
@@ -204,7 +208,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       hearingCenterAdminRegion2User,
       judgmentOnlineSetAsideTakeCaseOffline,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
@@ -219,7 +223,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await settleClaimActions.confirmSettleClaim();
       },
       ccdEvents.SETTLE_CLAIM,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_SETTLED },
     );
   }
 
@@ -234,8 +238,7 @@ export default class HearingCenterAdminSpecSteps extends BaseExui {
         await settleClaimActions.confirmSettleClaim();
       },
       ccdEvents.SETTLE_CLAIM,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_SETTLED },
     );
   }
-
 }
