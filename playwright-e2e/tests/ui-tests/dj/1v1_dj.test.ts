@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 default judgment', { tag: ['@civil-ccd-nightly', '@pw-ui-dj'] }, () => {
+test.describe('1v1 default judgment', { tag: ['@civil-ccd-nightly', '@pw-ui-dj', '@civil-ccd-master', '@civil-ccd-pr'] }, () => {
   test('1v1 default judgment', async ({
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,

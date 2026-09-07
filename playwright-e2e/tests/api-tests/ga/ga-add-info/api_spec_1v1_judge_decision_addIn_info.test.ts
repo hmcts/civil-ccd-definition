@@ -1,6 +1,6 @@
 import { test } from '../../../../playwright-fixtures';
 
-test.describe('GA 1v1 Judge Make Decision Additional Information Required API tests', { tag: ['@civil-service-nightly', '@pw-api-ga-add-info'] }, () => {
+test.describe('GA 1v1 Judge Make Decision Additional Information Required API tests', { tag: ['@civil-service-nightly', '@pw-api-ga-add-info', '@civil-service-master', '@civil-service-pr'] }, () => {
   test.fail('Judge makes decision 1V1 - AWAITING_ADDITIONAL_INFORMATION', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,

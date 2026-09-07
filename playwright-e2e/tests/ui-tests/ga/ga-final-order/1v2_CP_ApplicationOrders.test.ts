@@ -2,7 +2,7 @@ import { test } from '../../../../playwright-fixtures';
 
 test.describe(
   'Before SDO 1v2 - GA CP - Applications Orders',
-  { tag: ['@civil-ccd-nightly', '@pw-ui-ga-final-order'] },
+  { tag: ['@civil-ccd-nightly', '@pw-ui-ga-final-order', '@civil-ccd-master', '@civil-ccd-pr'] },
   () => {
     test.fail(
       '1v2 - Assisted order - With Further Hearing',

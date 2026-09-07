@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2SS default judgement api journey',
-  { tag: ['@civil-service-nightly', '@pw-api-dj'] },
+  { tag: ['@civil-service-nightly', '@pw-api-dj', '@civil-service-master', '@civil-wa-master', '@civil-wa-pr'] },
   async () => {
     test('1v2SS default judgement api', async ({
       ClaimantSolicitorApiSteps,
