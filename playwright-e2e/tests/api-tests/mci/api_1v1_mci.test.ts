@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 manage contact information api journey', { tag: ['@civil-service-nightly', '@pw-api-mci'] }, async () => {
+test.describe('1v1 manage contact information api journey', { tag: ['@civil-service-nightly', '@api-mci'] }, async () => {
   test('1v1 manage contact information', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,

@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Spec automated hearing notice schedulers', { tag: ['@pw-api-hearings', '@civil-service-pr'] }, async () => {
+test.describe('Spec automated hearing notice schedulers', { tag: ['@api-hearings', '@civil-service-pr'] }, async () => {
   test('Create Spec claim with SDO', async ({
     HearingsApiSteps,
     ClaimantSolicitorSpecApiSteps,

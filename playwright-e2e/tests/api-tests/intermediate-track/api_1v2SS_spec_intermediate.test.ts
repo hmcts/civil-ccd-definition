@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('1v2SS spec intermediate track api journey', {
-  tag: ['@civil-service-nightly', '@pw-api-intermediate-track', '@civil-wa-master', '@civil-wa-pr'],
+  tag: ['@civil-service-nightly', '@api-intermediate-track', '@civil-wa-master', '@civil-wa-pr'],
 }, async () => {
   test('1v2SS spec full defence intermediate claim', async ({
     ClaimantSolicitorSpecApiSteps,

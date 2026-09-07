@@ -1,6 +1,6 @@
   import { test } from '../../../playwright-fixtures/index';
 
-  test.describe('1v1 default judgement api journey', { tag: ['@civil-service-nightly', '@pw-api-dj'] }, async () => {
+  test.describe('1v1 default judgement api journey', { tag: ['@civil-service-nightly', '@api-dj'] }, async () => {
     test('1v1 default judgement api', async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,

@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 discontinue claim after hearing scheduled',
-  { tag: ['@civil-ccd-nightly', '@pw-ui-discontinue-claim'] },
+  { tag: ['@civil-ccd-nightly', '@ui-discontinue-claim'] },
   () => {
     test('1v1 Discontinue This Claim After Hearing Schedule - Full discontinuance', async ({
       ClaimantSolicitorSteps,

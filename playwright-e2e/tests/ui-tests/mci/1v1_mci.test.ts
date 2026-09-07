@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 - Manage Contact Information', { tag: '@pw-ui-mci' }, async () => {
+test.describe('1v1 - Manage Contact Information', { tag: '@ui-mci' }, async () => {
   test('1v1 - Manage Contact Information', async ({
     ClaimantSolicitorApiSteps, 
     CaseRoleAssignmentApiSteps, 

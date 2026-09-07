@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('LRvLIP spec request for reconsideration api journeys', { tag: ['@civil-service-nightly', '@pw-api-rfr'] }, async () => {
-  test('1v1 LR v LiP Request for reconsideration', async ({
+test.describe('LRvLIP spec request for reconsideration api journeys', { tag: ['@civil-service-nightly'] }, async () => {
+  test('1v1 LR v LiP Request for reconsideration', { tag: '@api-rfr' }, async ({
     ClaimantSolicitorSpecApiSteps,
     DefendantCitizenApiSteps,
     CaseRoleAssignmentApiSteps,

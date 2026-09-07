@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Request for reconsideration - 1v1 - spec', { tag: ['@civil-service-nightly', '@pw-api-rfr'] }, async () => {
-  test('1v1 spec request for reconsideration for uphold previous order', async ({
+test.describe('Request for reconsideration - 1v1 - spec', { tag: ['@civil-service-nightly'] }, async () => {
+  test('1v1 spec request for reconsideration for uphold previous order', { tag: '@api-rfr' }, async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
@@ -20,7 +20,7 @@ test.describe('Request for reconsideration - 1v1 - spec', { tag: ['@civil-servic
     await JudgeApiSteps.DecisionOnReconsiderationRequestUphold();
   });
 
-  test('1v1 spec request for reconsideration for create new SDO', async ({
+  test('1v1 spec request for reconsideration for create new SDO', { tag: '@api-rfr' }, async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,

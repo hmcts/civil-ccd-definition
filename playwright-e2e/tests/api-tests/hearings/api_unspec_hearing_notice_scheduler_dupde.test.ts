@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Unspec automated hearing notice scheduler - duplicate detection', { tag: ['@pw-api-hearings', '@civil-service-pr'] }, async () => {
+test.describe('Unspec automated hearing notice scheduler - duplicate detection', { tag: ['@api-hearings', '@civil-service-pr'] }, async () => {
   test('Create Unspec claim with SDO', async ({
     HearingsApiSteps,
     ClaimantSolicitorApiSteps,

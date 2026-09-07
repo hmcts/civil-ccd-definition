@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('1v2SS unspec intermediate track api journey', {
-  tag: ['@civil-service-nightly', '@pw-api-intermediate-track'],
+  tag: ['@civil-service-nightly', '@api-intermediate-track'],
 }, async () => {
   test('1v2 Same Solicitor Create Unspecified Inter Track claim', async ({
     ClaimantSolicitorApiSteps,

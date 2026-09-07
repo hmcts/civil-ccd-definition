@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Transfer Online Case 1v2 API test - fast claim - spec', { tag: ['@civil-service-nightly', '@pw-api-not-suitable-sdo'] }, async () => {
+test.describe('Transfer Online Case 1v2 API test - fast claim - spec', { tag: ['@civil-service-nightly'] }, async () => {
   test('Transfer Online Spec claim 1v2 - not suitable SDO - Transfer Case', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
@@ -17,7 +17,7 @@ test.describe('Transfer Online Case 1v2 API test - fast claim - spec', { tag: ['
     await CaseworkerApiSteps.TransferOnlineCase();
   });
 
-  test('Transfer Online Spec claim 1v2 - not suitable SDO - Other reasons', async ({
+  test('Transfer Online Spec claim 1v2 - not suitable SDO - Other reasons', { tag: '@api-not-suitable-sdo' }, async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,

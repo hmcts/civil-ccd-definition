@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 fast case offline api journey',
-  { tag: ['@civil-service-nightly', '@pw-api-case-offline'] },
+  { tag: ['@civil-service-nightly', '@api-case-offline'] },
   async () => {
     test('1v1 case offline', async ({
       ClaimantSolicitorApiSteps,

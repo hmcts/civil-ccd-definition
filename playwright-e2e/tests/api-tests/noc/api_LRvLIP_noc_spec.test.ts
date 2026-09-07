@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   'LR v LiP notice of change spec api journey',
-  { tag: ['@civil-service-nightly', '@pw-api-noc'] },
+  { tag: ['@civil-service-nightly', '@api-noc'] },
   async () => {
     test('LR v LiP notice of change', async ({
       ClaimantCitizenApiSteps,

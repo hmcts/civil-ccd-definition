@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('2v1 query management api journey', { tag: ['@civil-service-nightly', '@pw-api-qm'] }, async () => {
+test.describe('2v1 query management api journey', { tag: ['@civil-service-nightly', '@api-qm'] }, async () => {
   test('2v1 defendant and claimant response', async ({
     ClaimantSolicitorApiSteps,
     CtscAdminApiSteps,

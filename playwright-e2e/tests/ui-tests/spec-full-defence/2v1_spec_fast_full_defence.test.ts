@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('2v1 spec fast track claim journey', { tag: ['@civil-ccd-nightly', '@pw-ui-spec-full-defence'] }, async () => {
+test.describe('2v1 spec fast track claim journey', { tag: ['@civil-ccd-nightly', '@ui-spec-full-defence'] }, async () => {
   test('2v1 spec fast track claim journey', async ({
     ClaimantSolicitorSpecSteps,
     DefendantSolicitor1SpecSteps,
