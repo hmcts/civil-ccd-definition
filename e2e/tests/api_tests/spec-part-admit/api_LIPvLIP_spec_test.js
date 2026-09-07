@@ -12,7 +12,7 @@ const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper')
 const claimType = 'SmallClaims';
 let caseId;
 
-Feature('LIP v LIP spec part admit api journeys').tag('@civil-service-nightly @api-spec-part-admit');
+Feature('LIP v LIP spec part admit api journeys').tag('@api-spec-part-admit');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
