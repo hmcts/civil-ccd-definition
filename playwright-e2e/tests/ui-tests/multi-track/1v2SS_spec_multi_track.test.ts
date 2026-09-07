@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2SS spec multi track journey', { tag: '@civil-ccd-nightly' }, async () => {
+test.describe('1v2SS spec multi track journey', { tag: ['@civil-ccd-nightly', '@pw-ui-multi-track'] }, async () => {
   test('1v2SS spec multi track journey', async ({
     ClaimantSolicitorSpecSteps,
     ClaimantSolicitorSpecApiSteps,

@@ -1,6 +1,6 @@
 import {test} from '../../../playwright-fixtures/index';
 
-test.describe('1v1 case flags journey', { tag: '@civil-ccd-nightly' }, 
+test.describe('1v1 case flags journey', { tag: ['@civil-ccd-nightly', '@pw-ui-case-flags'] },
   async () => {
     test('1v1 case flags journey', async ({
       ClaimantSolicitorApiSteps, 

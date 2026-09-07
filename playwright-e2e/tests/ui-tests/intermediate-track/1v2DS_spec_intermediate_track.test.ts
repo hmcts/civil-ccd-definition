@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures/index';
 test.describe(
   '1v2DS spec intermediate track journey',
   {
-    tag: ['@civil-ccd-nightly'],
+    tag: ['@civil-ccd-nightly', '@pw-ui-intermediate-track'],
   },
   () => {
     test('1v2DS spec intermediate track', async ({

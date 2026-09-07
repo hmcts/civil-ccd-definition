@@ -2,7 +2,7 @@ import { test } from '../../../../playwright-fixtures';
 
 test.describe(
   'GA 1v2 application collection for different solicitor API tests',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@pw-api-ga-collections'] },
   () => {
     test.fail('GA 1v2 - Without Notice Application Collection After Judge Makes Decision List for Hearing', async ({
       ClaimantSolicitorApiSteps,

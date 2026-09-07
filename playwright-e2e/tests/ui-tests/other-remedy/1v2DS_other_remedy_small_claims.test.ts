@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2DS create small claim with type housing disrepair',
-  { tag: '@civil-ccd-nightly' },
+  { tag: ['@civil-ccd-nightly', '@pw-ui-other-remedy'] },
   () => {
     test('1v2DS create small claim with type housing disrepair', async ({
       ClaimantSolicitorSteps,

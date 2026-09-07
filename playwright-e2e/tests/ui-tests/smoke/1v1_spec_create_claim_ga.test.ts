@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures';
 
-test.describe('Smoke test - API 1v1 spec create claim and create general application', () => {
+test.describe('Smoke test - API 1v1 spec create claim and create general application', { tag: '@pw-ui-smoke' }, () => {
   test('1v1 spec create claim and create general application', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

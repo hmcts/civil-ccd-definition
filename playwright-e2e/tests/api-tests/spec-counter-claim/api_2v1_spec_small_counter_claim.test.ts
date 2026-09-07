@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('2v1 spec small counter claim api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('2v1 spec small counter claim api journey', { tag: ['@civil-service-nightly', '@pw-api-spec-counter-claim'] }, async () => {
   test('2v1 spec small counter claim', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
