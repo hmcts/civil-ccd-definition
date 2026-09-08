@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import DecisionOnRequestReconsiderationOption from '../../../../constants/ccd-events/decision-on-reconsideration-request/decision-on-request-reconsideration-option';
+import DecisionOnRequestReconsiderationOption from '../../../../constants/ccd-events/ccd-events/decision-on-reconsideration-request/decision-on-request-reconsideration-option';
 
 const nonEmptyString = z.string().min(1);
 

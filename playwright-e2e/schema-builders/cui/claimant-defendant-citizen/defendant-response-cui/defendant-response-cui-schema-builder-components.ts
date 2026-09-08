@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import DefendantResponseSpecType from '../../../../constants/ccd-events/defendant-response-cui/defendant-response-spec-type';
-import PaymentTypeSpec from '../../../../constants/ccd-events/defendant-response-cui/payment-type-spec';
+import DefendantResponseSpecType from '../../../../constants/ccd-events/cui-ccd-events/defendant-response-cui/defendant-response-spec-type';
+import PaymentTypeSpec from '../../../../constants/ccd-events/cui-ccd-events/defendant-response-cui/payment-type-spec';
 import { ClaimantDefendantPartyType } from '../../../../models/users/claimant-defendant-party-types';
 import User from '../../../../models/users/user';
 

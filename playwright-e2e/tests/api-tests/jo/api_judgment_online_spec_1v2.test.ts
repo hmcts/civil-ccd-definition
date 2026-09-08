@@ -45,7 +45,7 @@ test.describe(
       await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2SS();
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence1v2SS();
       await JudgeApiSteps.SdoTrail();
-      await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
       await CaseworkerApiSteps.ConfirmOrderReview();
       await CaseworkerApiSteps.RecordJudgmentDeterMeansImmediately();
       await CaseworkerApiSteps.EditJudgmentDeterMeansSetDate();

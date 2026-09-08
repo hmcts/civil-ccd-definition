@@ -1,5 +1,5 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import SdoType from '../../../../constants/ccd-events/sdo/sdo-type';
+import SdoType from '../../../../constants/ccd-events/ccd-events/sdo/sdo-type';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import createSdoDataBuilderComponents from './create-sdo-data-builder-components';
 

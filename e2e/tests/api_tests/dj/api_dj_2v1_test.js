@@ -1,4 +1,4 @@
- 
+
 
 const { assert } = require('chai');
 const config = require('../../../config.js');
@@ -9,10 +9,11 @@ if (config.runWAApiTest) {
   caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
 }
 
-Feature('Unspec 2v1 api default judgment journey').tag('@civil-service-nightly @api-dj');
+Feature('Unspec 2v1 api default judgment journey').tag('@api-dj');
 
 let caseId;
 
+// DTSCCI-5198 RETAIN: only 2v1 unspec DJ to SDO to case progression API journey.
 Scenario('01 Default Judgment claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);

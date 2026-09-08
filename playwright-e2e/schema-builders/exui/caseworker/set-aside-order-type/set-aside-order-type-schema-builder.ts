@@ -4,8 +4,8 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';
 import setAsideOrderTypeSchemaBuilderComponents from './set-aside-order-type-schema-builder-components';
-import SetAsideOrderType from '../../../../constants/ccd-events/set-aside-judgment/set-aside-order-type';
-import SetAsideReason from '../../../../constants/ccd-events/set-aside-judgment/set-aside-reason';
+import SetAsideOrderType from '../../../../constants/ccd-events/ccd-events/set-aside-judgment/set-aside-order-type';
+import SetAsideReason from '../../../../constants/ccd-events/ccd-events/set-aside-judgment/set-aside-reason';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class SetAsideOrderTypeSchemaBuilder extends BaseSchemaBuilder {

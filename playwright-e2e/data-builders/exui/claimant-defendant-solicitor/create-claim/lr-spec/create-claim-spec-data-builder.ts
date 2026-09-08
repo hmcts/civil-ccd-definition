@@ -5,8 +5,8 @@ import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecData from './create-claim-spec-data-components';
-import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
-import Airline from '../../../../../constants/ccd-events/create-claim/create-claim-spec/airline';
+import FlightDelayClaim from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {

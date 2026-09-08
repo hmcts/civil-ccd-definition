@@ -18,7 +18,7 @@ export const acceptIdamCookies = (): Cookie[] => [
   },
   {
     name: 'cookies_policy',
-    value: '{"essential":true,"analytics":true,"apm":true}',
+    value: 'eyJlc3NlbnRpYWwiOnRydWUsImFuYWx5dGljcyI6dHJ1ZSwiYXBtIjp0cnVlfQ==',
     domain: getDomain(urls.idamWeb),
     path: '/',
     secure: true,

@@ -1,4 +1,4 @@
-import ClaimantSolicitorGaActionsFactory from '../../../actions/ui/ga-exui/claimant-solicitor-ga/claimant-solcitor-ga-actions-factory';
+import ClaimantSolicitorGaActionsFactory from '../../../actions/ui/ga-exui/claimant-solicitor/claimant-solcitor-ga-actions-factory';
 import GaExuiDashboardActions from '../../../actions/ui/ga-exui/common/ga-exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseGaExui from '../../../base/base-ga-exui';

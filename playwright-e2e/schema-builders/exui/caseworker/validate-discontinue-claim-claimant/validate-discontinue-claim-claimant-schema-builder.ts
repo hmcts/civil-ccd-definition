@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../base/base-schema-builder';
 import ConfirmOrderGivesPermission
-  from '../../../../constants/ccd-events/validate-discontinue-claim-claimant/confirm-order-gives-permission';
+  from '../../../../constants/ccd-events/ccd-events/validate-discontinue-claim-claimant/confirm-order-gives-permission';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';

@@ -2,7 +2,7 @@ import { z } from 'zod';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
-import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec/claimant-response-spec-type';
+import ClaimantResponseSpecType from '../../../../../constants/ccd-events/ccd-events/claimant-response-spec/claimant-response-spec-type';
 
 const yesNoSchema = z.enum(['Yes', 'No']);
 const nonEmptyString = z.string().min(1);

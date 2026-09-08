@@ -6,6 +6,8 @@ import ManageStaySchemaBuilder from './manage-stay/manage-stay-schema-builder';
 import QueryManagementRaiseSchemaBuilder from '../common/query-management-raise/query-management-raise-schema-builder';
 import QueryManagementRespondSchemaBuilder from '../common/query-management-respond/query-management-respond-schema-builder';
 import ScheduleHearingSchemaBuilder from './schedule-hearing/schedule-hearing-schema-builder';
+import ServiceHearingValuesSpecSchemaBuilder from '../common/service-hearing-values/lr-spec/service-hearing-values-spec-schema-builder';
+import ServiceHearingValuesSchemaBuilder from '../common/service-hearing-values/unspec/service-hearing-values-schema-builder';
 import StayCaseSchemaBuilder from './stay-case/stay-case-schema-builder';
 
 export default class HearingCenterAdminSchemaBuilderFactory extends BaseSchemaBuilderFactory {
@@ -39,5 +41,13 @@ export default class HearingCenterAdminSchemaBuilderFactory extends BaseSchemaBu
 
   get queryManagementRespondSchemaBuilder() {
     return new QueryManagementRespondSchemaBuilder(this.testData);
+  }
+
+  get serviceHearingValuesSpecSchemaBuilder() {
+    return new ServiceHearingValuesSpecSchemaBuilder(this.testData);
+  }
+
+  get serviceHearingValuesSchemaBuilder() {
+    return new ServiceHearingValuesSchemaBuilder(this.testData);
   }
 }

@@ -33,6 +33,7 @@ export default class QueryManagementActions extends BaseTestData {
     const { queryDetailsNewPage } = this.queryManagementPageFactory;
     await queryDetailsNewPage.verifyContent(this.ccdCaseData);
     await queryDetailsNewPage.enterQuerySubject();
+    await queryDetailsNewPage.enterQueryDetail();
     await queryDetailsNewPage.selectIsQueryHearingRelatedYes();
     await queryDetailsNewPage.enterHearingDate();
     await queryDetailsNewPage.submit();

@@ -1,6 +1,6 @@
 import BaseApi from '../../../base/base-api';
 import { defendantSolicitor2User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseRole from '../../../constants/cases/case-role';
 import CaseState from '../../../constants/cases/case-state';
@@ -53,7 +53,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -76,7 +76,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
@@ -95,19 +95,19 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
 
     const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseSpecDataBuilder.buildDS2MultiFullDefence1v2DS();
+      await defendantResponseSpecDataBuilder.buildDS2MultiFullDefence();
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS2MultiFullDefence1v2DS(
+      await defendantResponseSpecSchemaBuilder.buildDS2MultiFullDefence(
         caseDataBeforeSubmission,
       );
 
@@ -126,13 +126,13 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      CaseState.AWAITING_APPLICANT_INTENTION,
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     const { defendantResponseSpecSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
     const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS2Small1v2DSFullDefence(
+      await defendantResponseSpecSchemaBuilder.buildDS2SmallFullDefence(
         caseDataBeforeSubmission,
       );
 
@@ -150,7 +150,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       evidenceUploadRespondentData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { evidenceUploadRespondentSchemaBuilder } =
@@ -158,14 +158,6 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
     const evidenceUploadRespondentSchema =
       await evidenceUploadRespondentSchemaBuilder.buildDS2Fast(caseDataBeforeSubmission);
     ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
-  }
-
-  async EvidenceUploadFast1v2DS() {
-    await this.EvidenceUploadFast();
-  }
-
-  async EvidenceUploadFast1v2SS() {
-    await this.EvidenceUploadFast();
   }
 
   async UploadMediationDocuments() {
@@ -199,7 +191,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.REQUEST_FOR_RECONSIDERATION,
       requestForReconsiderationData,
-      CaseState.CASE_PROGRESSION,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     const { requestForReconsiderationSchemaBuilder } =

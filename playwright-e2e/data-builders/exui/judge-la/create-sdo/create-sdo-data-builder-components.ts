@@ -1,4 +1,4 @@
-import SdoType from '../../../../constants/ccd-events/sdo/sdo-type';
+import SdoType from '../../../../constants/ccd-events/ccd-events/sdo/sdo-type';
 import DateHelper from '../../../../helpers/date-helper';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import preferredCourts from '../../../../config/preferred-courts';

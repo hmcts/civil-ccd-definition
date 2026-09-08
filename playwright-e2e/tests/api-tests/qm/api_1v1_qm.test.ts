@@ -5,7 +5,7 @@ test.describe('1v1 query management api journey', { tag: '@civil-service-nightly
     ClaimantSolicitorApiSteps,
     DefendantSolicitor1ApiSteps,
     CaseRoleAssignmentApiSteps,
-    CaseworkerApiSteps,
+    CtscAdminApiSteps,
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -15,10 +15,10 @@ test.describe('1v1 query management api journey', { tag: '@civil-service-nightly
     await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
     await ClaimantSolicitorApiSteps.RespondFastProceed();
     await ClaimantSolicitorApiSteps.RaiseLRHearingQuery();
-    await CaseworkerApiSteps.RespondToHearingQuery();
+    await CtscAdminApiSteps.RespondToHearingQuery();
     await ClaimantSolicitorApiSteps.FollowUpOnLRQuery();
     await DefendantSolicitor1ApiSteps.RaiseLRQuery();
-    await CaseworkerApiSteps.RespondToQuery();
+    await CtscAdminApiSteps.RespondToQuery();
     await DefendantSolicitor1ApiSteps.FollowUpOnLRQuery();
   });
 });

@@ -2,11 +2,11 @@ import CaseDataHelper from '../../../../../helpers/case-data-helper.ts';
 import DateHelper from '../../../../../helpers/date-helper.ts';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types.ts';
 import partys from '../../../../../constants/users/partys.ts';
-import DJHearingType from '../../../../../constants/ccd-events/default-judgement/dj-hearing-type.ts';
+import DJHearingType from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-hearing-type.ts';
 import preferredCourts from '../../../../../config/preferred-courts.ts';
 import ClaimType from '../../../../../constants/cases/claim-type.ts';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper.ts';
-import DJOtherRemedy from '../../../../../constants/ccd-events/default-judgement/dj-other-remedy.ts';
+import DJOtherRemedy from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-other-remedy.ts';
 
 const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });

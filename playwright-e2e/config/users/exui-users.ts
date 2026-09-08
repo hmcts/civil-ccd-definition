@@ -83,6 +83,7 @@ export const civilAdminUser: User = getUser({
   password: config.users.defaultPassword,
   key: UserKey.CIVIL_ADMIN,
   role: UserRole.CASEWORKER,
+  wa: true
 });
 
 export const nbcRegion1User: User = getUser({
@@ -123,7 +124,7 @@ export const nbcLocalUser: User = getUser({
 
 export const judgeRegion1User: User = getUser({
   name: 'Judge Region 1',
-  email: 'DJ.Amy.Powell@ejudiciary.net',
+  email: '4917924EMP-@ejudiciary.net',
   password: config.users.judgeDefaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.JUDGE_REGION_1,
@@ -239,6 +240,7 @@ export const exuiUserDataSetupUsers = [
   defendantSolicitor1User,
   defendantSolicitor2User,
   civilAdminUser,
+  ctscAdminUser,
   judgeRegion1User,
   judgeRegion4User,
   hearingCenterAdminRegion1User,

@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import CourtPermissionNeeded from '../../../../../constants/ccd-events/discontinue-claim/court-permission-needed';
-import DiscontinuanceType from '../../../../../constants/ccd-events/discontinue-claim/discontinuance-type';
+import CourtPermissionNeeded from '../../../../../constants/ccd-events/ccd-events/discontinue-claim/court-permission-needed';
+import DiscontinuanceType from '../../../../../constants/ccd-events/ccd-events/discontinue-claim/discontinuance-type';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 

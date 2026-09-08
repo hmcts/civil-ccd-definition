@@ -6,7 +6,7 @@ test.describe('LR v LIP query management spec api journey', { tag: '@civil-servi
     DefendantCitizenApiSteps,
     CaseRoleAssignmentApiSteps,
     JudgeApiSteps,
-    CaseworkerApiSteps
+    CtscAdminApiSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimFast1vLIP();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -15,10 +15,10 @@ test.describe('LR v LIP query management spec api journey', { tag: '@civil-servi
     await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
     await JudgeApiSteps.SdoFast();
     await ClaimantSolicitorSpecApiSteps.RaiseLRHearingQuery();
-    await CaseworkerApiSteps.RespondToHearingQuery();
+    await CtscAdminApiSteps.RespondToHearingQuery();
     await ClaimantSolicitorSpecApiSteps.FollowUpOnLRQuery();
     await DefendantCitizenApiSteps.RaiseLipQuery();
-    await CaseworkerApiSteps.RespondToQuery();
+    await CtscAdminApiSteps.RespondToQuery();
     await DefendantCitizenApiSteps.FollowUpOnLipQuery();
   });
 });

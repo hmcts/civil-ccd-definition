@@ -1,6 +1,6 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import ClaimantResponseCuiType from '../../../../constants/ccd-events/claimant-response-cui/claimant-response-cui-type';
+import ClaimantResponseCuiType from '../../../../constants/ccd-events/cui-ccd-events/claimant-response-cui/claimant-response-cui-type';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import claimantResponseCuiDataBuilderComponents from './claimant-response-cui-data-builder-components';
 

@@ -1,6 +1,6 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import DefendantResponseType from '../../../../../constants/ccd-events/defendant-response/defendant-response-type';
+import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import { Party } from '../../../../../models/users/partys';

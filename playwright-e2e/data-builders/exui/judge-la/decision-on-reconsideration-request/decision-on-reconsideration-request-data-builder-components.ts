@@ -1,4 +1,4 @@
-import DecisionOnRequestReconsiderationOption from "../../../../constants/ccd-events/decision-on-reconsideration-request/decision-on-request-reconsideration-option";
+import DecisionOnRequestReconsiderationOption from "../../../../constants/ccd-events/ccd-events/decision-on-reconsideration-request/decision-on-request-reconsideration-option";
 
 const judgeResponseToReconsideration = (decisionOnRequestReconsiderationOption: DecisionOnRequestReconsiderationOption) => {
   if (decisionOnRequestReconsiderationOption === DecisionOnRequestReconsiderationOption.YES) {

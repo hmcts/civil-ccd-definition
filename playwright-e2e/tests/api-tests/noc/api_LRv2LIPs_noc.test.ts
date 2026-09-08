@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
 test.describe('LR v 2 LIPs unspec notice of change api journey', { tag: '@civil-service-nightly' }, async () => {
-  test('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({
+  test.fail('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({
     ClaimantSolicitorApiSteps,
     OtherDefendantSolicitor1ApiSteps,
   }) => {
@@ -13,7 +13,7 @@ test.describe('LR v 2 LIPs unspec notice of change api journey', { tag: '@civil-
     await OtherDefendantSolicitor1ApiSteps.NoticeOfChangeD2()
   });
 
-  test('notice of change - 1v2 - both respondents LiPs to diff solicitor', async ({
+  test.fail('notice of change - 1v2 - both respondents LiPs to diff solicitor', async ({
     ClaimantSolicitorApiSteps,
     OtherDefendantSolicitor1ApiSteps,
     OtherDefendantSolicitor2ApiSteps

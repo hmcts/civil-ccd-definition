@@ -4,10 +4,10 @@ import {
   defendantSolicitor1User,
   defendantSolicitor2User,
 } from '../../../../config/users/exui-users';
-import GaTypeLr from '../../../../constants/ccd-events/initiate-general-application/ga-type-lr';
-import GaUrgency from '../../../../constants/ccd-events/initiate-general-application/ga-urgency';
-import RespondentAgreed from '../../../../constants/ccd-events/initiate-general-application/respondent-agreed';
-import WithNotice from '../../../../constants/ccd-events/initiate-general-application/with-notice';
+import GaTypeLr from '../../../../constants/ccd-events/ccd-events/initiate-general-application/ga-type-lr';
+import GaUrgency from '../../../../constants/ccd-events/ccd-events/initiate-general-application/ga-urgency';
+import RespondentAgreed from '../../../../constants/ccd-events/ccd-events/initiate-general-application/respondent-agreed';
+import WithNotice from '../../../../constants/ccd-events/ccd-events/initiate-general-application/with-notice';
 import partys from '../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/users/partys';
@@ -18,6 +18,10 @@ import initiateGeneralApplicationDataBuilderComponents from './initiate-general-
 export default class InitiateGeneralApplicationDataBuilder extends BaseDataBuilder {
   async buildCS1() {
     return this.buildData();
+  }
+
+  async buildWithNoticeCS1() {
+    return this.buildData({withNotice: WithNotice.YES});
   }
 
   async buildDS1() {

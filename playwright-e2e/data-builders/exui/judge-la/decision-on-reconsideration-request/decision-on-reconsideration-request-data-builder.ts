@@ -1,5 +1,5 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import DecisionOnRequestReconsiderationOption from '../../../../constants/ccd-events/decision-on-reconsideration-request/decision-on-request-reconsideration-option';
+import DecisionOnRequestReconsiderationOption from '../../../../constants/ccd-events/ccd-events/decision-on-reconsideration-request/decision-on-request-reconsideration-option';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import decisionOnReconsiderationRequestDataBuilderComponents from './decision-on-reconsideration-request-data-builder-components';
 

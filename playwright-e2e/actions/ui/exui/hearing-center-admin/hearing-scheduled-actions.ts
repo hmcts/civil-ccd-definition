@@ -38,18 +38,18 @@ export default class HearingScheduledActions extends BaseTestData {
 
   @Step(classKey)
   async hearingDetails() {
-    const { hearingDetailsPage } = this.hearingScheduledPageFactory;
-    await hearingDetailsPage.verifyContent();
-    await hearingDetailsPage.enterHearingDetails();
-    await hearingDetailsPage.submit();
+    const { hearingScheduledHearingDetailsPage } = this.hearingScheduledPageFactory;
+    await hearingScheduledHearingDetailsPage.verifyContent();
+    await hearingScheduledHearingDetailsPage.enterHearingDetails();
+    await hearingScheduledHearingDetailsPage.submit();
   }
 
   @Step(classKey)
   async hearingInformation() {
-    const { hearingInformationPage } = this.hearingScheduledPageFactory;
-    await hearingInformationPage.verifyContent();
-    await hearingInformationPage.enterMoreInformation();
-    await hearingInformationPage.submit();
+    const { hearingScheduledHearingInformationPage } = this.hearingScheduledPageFactory;
+    await hearingScheduledHearingInformationPage.verifyContent();
+    await hearingScheduledHearingInformationPage.enterMoreInformation();
+    await hearingScheduledHearingInformationPage.submit();
   }
 
   @Step(classKey)

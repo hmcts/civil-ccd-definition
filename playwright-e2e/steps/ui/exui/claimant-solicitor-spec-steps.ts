@@ -3,7 +3,8 @@ import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { claimantSolicitorUser } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -46,7 +47,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
       },
       ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -64,7 +65,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await uploadMediationDocumentsActions.confirmUploadMediationDocuments();
       },
       ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -91,7 +92,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM_SPEC,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -117,7 +121,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -143,7 +150,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -171,7 +181,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -199,7 +212,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -227,7 +243,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -255,7 +274,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PENDING_CASE_ISSUED },
     );
   }
 
@@ -283,7 +302,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -310,7 +332,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       },
       ccdEvents.CREATE_CLAIM_SPEC,
 
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -338,7 +363,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -348,7 +376,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.dqFastTrackClaimantResponseSpec();
         await claimantResponseSpecActions.dqFastTrack();
         await claimantResponseSpecActions.application();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -358,7 +385,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -368,7 +395,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponse2v1Spec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.dqFastTrackClaimantResponseSpec();
         await claimantResponseSpecActions.dqFastTrack();
         await claimantResponseSpecActions.application();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -378,7 +404,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -399,7 +425,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: [CaseState.JUDICIAL_REFERRAL, CaseState.IN_MEDIATION],
+      },
     );
   }
 
@@ -420,7 +449,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -441,7 +470,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -462,7 +491,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -481,7 +510,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
       },
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
   }
 
@@ -500,7 +529,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
       },
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
   }
 
@@ -510,7 +539,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2DSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.dqFastTrackClaimantResponseSpec();
         await claimantResponseSpecActions.dqFastTrack();
         await claimantResponseSpecActions.application();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -520,7 +548,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -530,7 +558,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.dqFastTrackClaimantResponseSpec();
         await claimantResponseSpecActions.dqFastTrack();
         await claimantResponseSpecActions.application();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -540,6 +567,43 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+  }
+
+  async RespondInterProceed1vLIP() {
+    const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await claimantResponseSpecActions.respondentResponseSpec();
+        await claimantResponseSpecActions.defenceDocumentSpec();
+        await claimantResponseSpecActions.dqIntermediateTrack();
+        await claimantResponseSpecActions.statementOfTruthClaimantResponse();
+        await claimantResponseSpecActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseSpecActions.confirm();
+      },
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+    );
+  }
+
+  async RespondMultiProceed1vLIP() {
+    const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await claimantResponseSpecActions.respondentResponseSpec();
+        await claimantResponseSpecActions.defenceDocumentSpec();
+        await claimantResponseSpecActions.dqMultiTrack1vLIP();
+        await claimantResponseSpecActions.statementOfTruthClaimantResponse();
+        await claimantResponseSpecActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseSpecActions.confirm();
+      },
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
   }
 
@@ -549,7 +613,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.dqMultiTrackClaimantResponseSpec();
         await claimantResponseSpecActions.dqMultiTrack();
         await claimantResponseSpecActions.application();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
@@ -559,7 +622,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -574,7 +637,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await requestForReconsiderationActions.confirmRequestForReconsideration();
       },
       ccdEvents.REQUEST_FOR_RECONSIDERATION,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
@@ -589,7 +655,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await settleClaimMarkPaidFullActions.confirmSettleClaimMarkPaidFull();
       },
       ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_STAYED },
     );
   }
 
@@ -604,7 +670,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await settleClaimMarkPaidFullActions.confirmSettleClaimMarkPaidFull();
       },
       ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_STAYED },
     );
   }
 
@@ -621,7 +687,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await evidenceUploadApplicantActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
@@ -638,7 +707,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -656,7 +725,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -674,6 +743,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      { verifySuccessEvent: false, expectedState: CaseState.IN_MEDIATION },
     );
   }
 
@@ -690,7 +760,10 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await evidenceUploadApplicantActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
@@ -707,7 +780,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await evidenceUploadApplicantActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PREPARE_FOR_HEARING_CONDUCT_HEARING },
     );
   }
 
@@ -722,7 +795,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await queryManagementActions.confirmQuery();
       },
-      ccdEvents.QUERY_MANAGEMENT_RAISE
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -737,7 +811,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await queryManagementActions.confirmQuery();
       },
-      ccdEvents.QUERY_MANAGEMENT_RAISE
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -754,5 +829,4 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       },
     );
   }
-
 }

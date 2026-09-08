@@ -1,5 +1,5 @@
-import RecipientRoleType from '../../../../constants/ccd-events/send-and-reply/recipient-role-type';
-import SendAndReplyOption from '../../../../constants/ccd-events/send-and-reply/send-and-reply-option';
+import RecipientRoleType from '../../../../constants/ccd-events/ccd-events/send-and-reply/recipient-role-type';
+import SendAndReplyOption from '../../../../constants/ccd-events/ccd-events/send-and-reply/send-and-reply-option';
 import { MessagesToReplyTo } from '../../../../models/ccd-case-data';
 
 const sendAndReplyOption = (sendAndReplyOption: SendAndReplyOption) => {

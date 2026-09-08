@@ -24,7 +24,7 @@ test.describe(
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
-      await JudgeApiSteps.GenerateDirectionsOrderAssistedOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderAssisted();
       await ClaimantSolicitorApiSteps.ConfirmTrialArrangements();
     });
   },

@@ -1,14 +1,14 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import DefendantResponseSpecType from '../../../../../constants/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import DefendantResponseSpecType from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 import defendantResponseSpecData from './defendant-response-spec-data-components';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import partys from '../../../../../constants/users/partys';
 import { Party } from '../../../../../models/users/partys';
-import DefenceRouteSpec from '../../../../../constants/ccd-events/defendant-response-spec/defence-route-spec';
-import PaymentTypeSpec from '../../../../../constants/ccd-events/defendant-response-spec/payment-type-spec';
-import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
+import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
+import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
+import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
@@ -28,13 +28,6 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS1InterFullDefence1v2DS() {
-    return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-    });
-  }
-
   async buildDS1MultiFullDefence() {
     return this.buildData({
       claimTrack: ClaimTrack.MULTI_CLAIM,
@@ -44,13 +37,6 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
   async buildDS1MultiFullDefence1v2SS() {
     return this.buildData({
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-    });
-  }
-
-  async buildDS1MultiFullDefence1v2DS() {
-    return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.MULTI_CLAIM,
     });
   }
@@ -154,9 +140,8 @@ export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildDS2MultiFullDefence1v2DS() {
+  async buildDS2MultiFullDefence() {
     return this.buildData({
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       claimTrack: ClaimTrack.MULTI_CLAIM,
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     });

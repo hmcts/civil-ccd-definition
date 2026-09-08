@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import NotSuitableSdoOption from '../../../../constants/ccd-events/non-suitable-sdo/not-suitable-sdo-option';
+import NotSuitableSdoOption from '../../../../constants/ccd-events/ccd-events/non-suitable-sdo/not-suitable-sdo-option';
 
 const nonEmptyString = z.string().min(1);
 

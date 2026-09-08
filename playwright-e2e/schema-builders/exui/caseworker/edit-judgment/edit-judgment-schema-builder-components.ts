@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import JoPaymentPlan from '../../../../constants/ccd-events/record-edit-judgment/jo-payment-plan';
-import JudgmentRecordReason from '../../../../constants/ccd-events/record-edit-judgment/judgment-record-reason';
+import JoPaymentPlan from '../../../../constants/ccd-events/ccd-events/record-edit-judgment/jo-payment-plan';
+import JudgmentRecordReason from '../../../../constants/ccd-events/ccd-events/record-edit-judgment/judgment-record-reason';
 
 const nonEmptyString = z.string().min(1);
 

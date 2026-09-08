@@ -2,7 +2,7 @@ import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import claimantResponseSpecData from './claimant-response-spec-data-components';
 import ClaimType from '../../../../../constants/cases/claim-type';
-import ClaimantResponseSpecType from '../../../../../constants/ccd-events/claimant-response-spec/claimant-response-spec-type';
+import ClaimantResponseSpecType from '../../../../../constants/ccd-events/ccd-events/claimant-response-spec/claimant-response-spec-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseSpecDataBuilder extends BaseDataBuilder {

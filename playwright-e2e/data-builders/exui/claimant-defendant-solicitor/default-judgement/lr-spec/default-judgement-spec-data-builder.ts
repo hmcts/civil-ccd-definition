@@ -1,7 +1,7 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder.ts';
 import ClaimType from '../../../../../constants/cases/claim-type.ts';
-import DJPaymentTypeSpec from '../../../../../constants/ccd-events/default-judgement/dj-payment-type-spec.ts';
-import DJSpecType from '../../../../../constants/ccd-events/default-judgement/dj-spec-type.ts';
+import DJPaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-payment-type-spec.ts';
+import DJSpecType from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-spec-type.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import requestDefaultJudgementSpecBuilderComponents from './default-judgement-spec-data-builder-components.ts';
 

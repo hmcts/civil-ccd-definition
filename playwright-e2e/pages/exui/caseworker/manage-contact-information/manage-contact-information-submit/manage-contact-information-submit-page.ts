@@ -4,7 +4,7 @@ import CCDCaseData from '../../../../../models/ccd-case-data.ts';
 import ExuiPage from '../../../mixin-pages/exui-page/exui-page.ts';
 import EventSummaryFragment from '../../../fragments/event-summary/event-summary-fragment.ts';
 import { Page } from '@playwright/test';
-import ccdEvents from '../../../../../constants/ccd-events/ccd-events.ts';
+import ccdEvents from '../../../../../constants/ccd-events/ccd-events/ccd-events.ts';
 
 @AllMethodsStep()
 export default class ManageContactInformationSubmitPage extends ExuiPage(BasePage) {
