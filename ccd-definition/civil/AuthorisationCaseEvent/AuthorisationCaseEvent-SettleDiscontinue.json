@@ -22,6 +22,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "SETTLE_CLAIM_UNSPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
     "AccessControl": [
       {
