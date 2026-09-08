@@ -146,11 +146,9 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
-      name: 'debug',
-      outputDir: `${config.playwright.functionalTestResultsDir}/debug`,
+      name: 'functional-tests',
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
-      grep: /@debug/,
     },
   ],
 });

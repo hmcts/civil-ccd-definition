@@ -83,6 +83,15 @@ def getFunctionalTestsGroups() {
   return functionalTestGroups.join(",")
 }
 
+def getPlaywrightFunctionalTestsGroups() {
+  def githubApi = new GithubAPI(this)
+  def functionalTestGroups = []
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "pr_ft_pw_")) {
+    functionalTestGroups.add(label.substring(6, label.length()))
+  }
+  return functionalTestGroups.join(",")
+}
+
 def getCivilServiceSharedBranch() {
   def githubApi = new GithubAPI(this)
   for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilShared:")) {
@@ -249,6 +258,7 @@ withPipeline(type, product, component) {
     env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
     env.PR_FT_GROUPS = getFunctionalTestsGroups()
+    env.PLAYWRIGHT_PR_FT_GROUPS = getPlaywrightFunctionalTestsGroups()
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
   }
