@@ -35,7 +35,7 @@
     "ID": "BreathingSpaceLiftInfo",
     "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
     "CaseFieldID": "liftBreathing",
-    "ListElementCode": "eventDescription",
+    "ListElementCode": "reasonToLift",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   }
