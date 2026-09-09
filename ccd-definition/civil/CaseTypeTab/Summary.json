@@ -190,5 +190,14 @@
     "CaseFieldID": "enterBreathing",
     "TabFieldDisplayOrder": 21,
     "FieldShowCondition": "enterBreathing=\"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "liftBreathing",
+    "TabFieldDisplayOrder": 22,
+    "FieldShowCondition": "liftBreathing=\"*\""
   }
 ]
