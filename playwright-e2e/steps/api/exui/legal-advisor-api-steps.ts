@@ -41,10 +41,12 @@ export default class LegalAdvisorApiSteps extends BaseApi {
       { expectedState: CaseState.CASE_PROGRESSION },
     );
 
-    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema =
-      await createSdoSchemaBuilder.buildSmallSumSdo(caseDataBeforeSubmission);
-    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+      const createSdoSchema =
+        await createSdoSchemaBuilder.buildSmallSumSdo(caseDataBeforeSubmission);
+      ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+    });
   }
 
   async SdoSmallNoSum() {
@@ -62,10 +64,12 @@ export default class LegalAdvisorApiSteps extends BaseApi {
       { expectedState: CaseState.CASE_PROGRESSION },
     );
 
-    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema =
-      await createSdoSchemaBuilder.buildSmallNoSumSdo(caseDataBeforeSubmission);
-    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+      const createSdoSchema =
+        await createSdoSchemaBuilder.buildSmallNoSumSdo(caseDataBeforeSubmission);
+      ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+    });
   }
 
   async SdoSmallSumDRH() {
@@ -83,10 +87,12 @@ export default class LegalAdvisorApiSteps extends BaseApi {
       { expectedState: CaseState.CASE_PROGRESSION },
     );
 
-    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema =
-      await createSdoSchemaBuilder.buildSmallSumDRHSdo(caseDataBeforeSubmission);
-    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+      const createSdoSchema =
+        await createSdoSchemaBuilder.buildSmallSumDRHSdo(caseDataBeforeSubmission);
+      ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+    });
   }
 
   async SdoSmallNoSumDRH() {
@@ -104,9 +110,11 @@ export default class LegalAdvisorApiSteps extends BaseApi {
       { expectedState: CaseState.CASE_PROGRESSION },
     );
 
-    const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
-    const createSdoSchema =
-      await createSdoSchemaBuilder.buildSmallNoSumDRHSdo(caseDataBeforeSubmission);
-    ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { createSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
+      const createSdoSchema =
+        await createSdoSchemaBuilder.buildSmallNoSumDRHSdo(caseDataBeforeSubmission);
+      ZodHelper.safeParse(createSdoSchema, this.ccdCaseData);
+    });
   }
 }
