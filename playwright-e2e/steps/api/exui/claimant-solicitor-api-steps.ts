@@ -1194,11 +1194,11 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       initiateGeneralApplicationData,
     );
 
-    // const { initiateGeneralApplicationSchemaBuilder } =
-    //   this.claimantDefendantSolicitorSchemaBuilderFactory;
-    // const initiateGeneralApplicationSchema =
-    //   await initiateGeneralApplicationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
-    // ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+    const { initiateGeneralApplicationSchemaBuilder } =
+      this.claimantDefendantSolicitorSchemaBuilderFactory;
+    const initiateGeneralApplicationSchema =
+      await initiateGeneralApplicationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+    ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
 
     const { initiateGeneralApplicationGaSchemaBuilder } =
       this.claimantDefendantSolicitorSchemaBuilderFactory;
