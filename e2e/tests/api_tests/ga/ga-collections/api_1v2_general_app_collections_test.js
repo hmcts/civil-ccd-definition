@@ -4,7 +4,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
 Feature('GA 1v2 application collection for different solicitor API tests')
-  .tag('@civil-service-nightly @api-ga-collections');
+  .tag('@api-ga-collections');
 
 
 Scenario('GA 1v2  - Without Notice Application Collection After Judge Makes Decision List for Hearing', async ({api_ga}) => {
