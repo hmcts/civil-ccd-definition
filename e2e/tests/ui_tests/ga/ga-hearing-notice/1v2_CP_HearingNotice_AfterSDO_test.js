@@ -36,7 +36,7 @@ Scenario('Claimant Hearing notice - Without notice journey', async ({ api_ga, I 
   await I.see(states.LISTING_FOR_A_HEARING.name);
 
   await I.navigateToCaseDetails(gaCaseReference);
-  const scheduleHearingOption = '#next-step option[value="HEARING_SCHEDULED_GA"]';
+  const scheduleHearingOption = '//select[@id="next-step"]/option[normalize-space(.)="Schedule hearing"]';
   await I.waitForVisible('#next-step', 30);
   await I.waitForElement(scheduleHearingOption, 30);
   await I.seeTextEquals('Schedule hearing', scheduleHearingOption);
