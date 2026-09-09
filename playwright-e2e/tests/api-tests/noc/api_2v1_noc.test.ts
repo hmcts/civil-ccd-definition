@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('2v1 unspec notice of change api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('2v1 unspec notice of change api journey', { tag: ['@civil-service-nightly', '@api-noc'] }, async () => {
   test('2v1 unspec notice of change', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
