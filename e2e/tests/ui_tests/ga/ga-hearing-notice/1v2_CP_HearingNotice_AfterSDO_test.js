@@ -34,6 +34,13 @@ Scenario('Claimant Hearing notice - Without notice journey', async ({ api_ga, I 
 
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.LISTING_FOR_A_HEARING.name);
+
+  await I.navigateToCaseDetails(gaCaseReference);
+  const scheduleHearingOption = '#next-step option[value="HEARING_SCHEDULED_GA"]';
+  await I.waitForVisible('#next-step', 30);
+  await I.waitForElement(scheduleHearingOption, 30);
+  await I.seeTextEquals('Schedule hearing', scheduleHearingOption);
+
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimant', 'default', 'IN_PERSON');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.hearingCenterAdminWithRegionId2);
