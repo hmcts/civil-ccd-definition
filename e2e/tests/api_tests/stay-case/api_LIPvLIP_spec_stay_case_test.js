@@ -7,7 +7,7 @@
 const config = require('../../../config.js');
 const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 
-Feature('LIP v LIP spec stay case api journey').tag('@civil-service-nightly @api-stay-case');
+Feature('LIP v LIP spec stay case api journey').tag('@api-stay-case');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);

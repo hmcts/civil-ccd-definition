@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures/index';
 test.describe(
   '1v2DS spec query management hearing journey',
   {
-    tag: ['@civil-ccd-nightly'],
+    tag: ['@civil-ccd-nightly', '@ui-qm'],
   },
   () => {
     test('1v2DS spec query management hearing journey', async ({

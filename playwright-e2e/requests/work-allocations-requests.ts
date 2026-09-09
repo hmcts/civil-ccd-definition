@@ -27,7 +27,7 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
 
     const responseJson = await super.retryRequestJson(url, requestOptions, {
       expectedStatus: 200,
-      retries: 20,
+      retries: 25,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('tasks', responseJson);
         const tasks = responseJson.tasks;

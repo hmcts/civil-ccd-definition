@@ -21,4 +21,4 @@ fi
 
 # Run the Playwright teardown tests for a failed last run or a normal run.
 yarn test:playwright:setup:install
-yarn test:playwright:teardown:civil-ccd-nightly:ci
+yarn test:playwright:teardown:civil-ccd:ci
