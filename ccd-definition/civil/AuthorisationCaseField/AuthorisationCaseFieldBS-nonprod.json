@@ -33,6 +33,7 @@
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-civil-admin"
         ],
