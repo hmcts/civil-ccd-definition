@@ -38,7 +38,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "FINAL_ORDER_TRANSLATED_DOCUMENT",
-    "ListElement": "Translated Judge final order",
+    "ListElement": "Translated Judge Order",
     "DisplayOrder": 32
   },
   {
