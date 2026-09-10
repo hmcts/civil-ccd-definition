@@ -56,12 +56,14 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
-    const { defendantResponseSpecSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS2FastFullDefence(caseDataBeforeSubmission);
+    await this.runZodValidation(async () => {
+      const { defendantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const defendantResponseSchema =
+        await defendantResponseSpecSchemaBuilder.buildDS2FastFullDefence(caseDataBeforeSubmission);
 
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+      ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+    });
   }
 
   async RespondInterFullDefence() {
@@ -79,14 +81,16 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
-    const { defendantResponseSpecSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS2InterFullDefence(
-        caseDataBeforeSubmission,
-      );
+    await this.runZodValidation(async () => {
+      const { defendantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const defendantResponseSchema =
+        await defendantResponseSpecSchemaBuilder.buildDS2InterFullDefence(
+          caseDataBeforeSubmission,
+        );
 
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+      ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+    });
   }
 
   async RespondMultiFullDefence() {
@@ -104,14 +108,16 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
-    const { defendantResponseSpecSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS2MultiFullDefence(
-        caseDataBeforeSubmission,
-      );
+    await this.runZodValidation(async () => {
+      const { defendantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const defendantResponseSchema =
+        await defendantResponseSpecSchemaBuilder.buildDS2MultiFullDefence(
+          caseDataBeforeSubmission,
+        );
 
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+      ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+    });
   }
 
   async RespondSmallFullDefence() {
@@ -129,14 +135,16 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
-    const { defendantResponseSpecSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const defendantResponseSchema =
-      await defendantResponseSpecSchemaBuilder.buildDS2SmallFullDefence(
-        caseDataBeforeSubmission,
-      );
+    await this.runZodValidation(async () => {
+      const { defendantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const defendantResponseSchema =
+        await defendantResponseSpecSchemaBuilder.buildDS2SmallFullDefence(
+          caseDataBeforeSubmission,
+        );
 
-    ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+      ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
+    });
   }
 
   async EvidenceUploadFast() {
@@ -153,11 +161,13 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       { expectedState: CaseState.CASE_PROGRESSION },
     );
 
-    const { evidenceUploadRespondentSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const evidenceUploadRespondentSchema =
-      await evidenceUploadRespondentSchemaBuilder.buildDS2Fast(caseDataBeforeSubmission);
-    ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { evidenceUploadRespondentSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const evidenceUploadRespondentSchema =
+        await evidenceUploadRespondentSchemaBuilder.buildDS2Fast(caseDataBeforeSubmission);
+      ZodHelper.safeParse(evidenceUploadRespondentSchema, this.ccdCaseData);
+    });
   }
 
   async UploadMediationDocuments() {
@@ -173,11 +183,13 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       uploadMediationDocumentsData,
     );
 
-    const { uploadMediationDocumentsSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const uploadMediationDocumentsSchema =
-      await uploadMediationDocumentsSchemaBuilder.buildDS2(caseDataBeforeSubmission);
-    ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { uploadMediationDocumentsSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const uploadMediationDocumentsSchema =
+        await uploadMediationDocumentsSchemaBuilder.buildDS2(caseDataBeforeSubmission);
+      ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
+    });
   }
 
   async RequestForReconsideration() {
@@ -194,11 +206,13 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       { expectedState: CaseState.CASE_PROGRESSION },
     );
 
-    const { requestForReconsiderationSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const requestForReconsiderationSchema =
-      await requestForReconsiderationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
-    ZodHelper.safeParse(requestForReconsiderationSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { requestForReconsiderationSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const requestForReconsiderationSchema =
+        await requestForReconsiderationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
+      ZodHelper.safeParse(requestForReconsiderationSchema, this.ccdCaseData);
+    });
   }
 
   async NoticeOfChange() {
@@ -213,10 +227,12 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       noticeOfChangeAnswers,
     );
 
-    const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const noticeOfChangeSchema =
-      await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
-    ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const noticeOfChangeSchema =
+        await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
+      ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
+    });
   }
 
   async InitiateGeneralApplication() {
@@ -233,11 +249,13 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       initiateGeneralApplicationData,
     );
 
-    const { initiateGeneralApplicationSchemaBuilder } =
-      this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const initiateGeneralApplicationSchema =
-      await initiateGeneralApplicationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
-    ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { initiateGeneralApplicationSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const initiateGeneralApplicationSchema =
+        await initiateGeneralApplicationSchemaBuilder.buildDS2(caseDataBeforeSubmission);
+      ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+    });
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, super.getGaCCDCaseIdFromParentCase());
   }
 

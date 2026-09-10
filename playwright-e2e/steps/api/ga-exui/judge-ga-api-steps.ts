@@ -41,9 +41,11 @@ export default class JudgeGaApiSteps extends BaseApi {
       { expectedState: GaCaseState.AWAITING_ADDITIONAL_INFORMATION },
     );
 
-    const { makeDecisionSchemaBuilder } = this.judgeGaSchemaBuilderFactory;
-    const makeDecisionSchema = await makeDecisionSchemaBuilder.buildAddInfo(gaCaseDataBeforeSubmission);
-    ZodHelper.safeParse(makeDecisionSchema, this.getGaCCDCaseData());
+    await this.runZodValidation(async () => {
+      const { makeDecisionSchemaBuilder } = this.judgeGaSchemaBuilderFactory;
+      const makeDecisionSchema = await makeDecisionSchemaBuilder.buildAddInfo(gaCaseDataBeforeSubmission);
+      ZodHelper.safeParse(makeDecisionSchema, this.getGaCCDCaseData());
+    });
   }
 
   async MakeADecisionListHearing() {
@@ -61,8 +63,10 @@ export default class JudgeGaApiSteps extends BaseApi {
       { expectedState: GaCaseState.LISTING_FOR_A_HEARING },
     );
 
-    const { makeDecisionSchemaBuilder } = this.judgeGaSchemaBuilderFactory;
-    const makeDecisionSchema = await makeDecisionSchemaBuilder.buildListHearing(gaCaseDataBeforeSubmission);
-    ZodHelper.safeParse(makeDecisionSchema, this.getGaCCDCaseData());
+    await this.runZodValidation(async () => {
+      const { makeDecisionSchemaBuilder } = this.judgeGaSchemaBuilderFactory;
+      const makeDecisionSchema = await makeDecisionSchemaBuilder.buildListHearing(gaCaseDataBeforeSubmission);
+      ZodHelper.safeParse(makeDecisionSchema, this.getGaCCDCaseData());
+    });
   }
 }
