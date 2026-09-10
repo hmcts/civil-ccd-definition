@@ -745,7 +745,23 @@
     "ID": "TimelineEvents",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "timelineOfEvents",
-    "ListElementCode": "timelineDate",
+    "ListElementCode": "timelineDay",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineMonth",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineYear",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -1271,7 +1287,6 @@
     "FieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\" OR respondent1.type = \"ORGANISATION\" OR respondent1.type = \"COMPANY\""
-
   },
   {
     "ID": "Defendant",
