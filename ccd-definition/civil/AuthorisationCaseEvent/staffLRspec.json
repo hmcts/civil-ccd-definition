@@ -82,5 +82,17 @@
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_BREATHING_SPACE_LIFTED",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_LIP_APPLICANT_BREATHING_SPACE_LIFTED",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_LIP_RESPONDENT1_BREATHING_SPACE_LIFTED",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
