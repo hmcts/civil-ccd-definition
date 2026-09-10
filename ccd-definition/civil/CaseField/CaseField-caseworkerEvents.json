@@ -295,5 +295,14 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "scannedDocuments",
+    "Label": "Scanned Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "ScannedDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -1,0 +1,82 @@
+[
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "fileName",
+    "FieldType": "Text",
+    "ElementLabel": "File Name",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "controlNumber",
+    "FieldType": "Text",
+    "ElementLabel": "Control Number",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "type",
+    "FieldType": "Text",
+    "ElementLabel": "Type",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "subtype",
+    "FieldType": "Text",
+    "ElementLabel": "Subtype",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "formSubtype",
+    "FieldType": "Text",
+    "ElementLabel": "Form Subtype",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "submittedBy",
+    "FieldType": "Text",
+    "ElementLabel": "Submitted By",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "scannedDate",
+    "FieldType": "DateTime",
+    "ElementLabel": "Scanned Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "deliveryDate",
+    "FieldType": "DateTime",
+    "ElementLabel": "Delivery Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "url",
+    "FieldType": "Document",
+    "ElementLabel": "URL",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ScannedDocument",
+    "ListElementCode": "exceptionRecordReference",
+    "FieldType": "Text",
+    "ElementLabel": "Exception Record Reference",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
