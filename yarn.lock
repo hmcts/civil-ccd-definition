@@ -1903,11 +1903,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 26.4.1
-  resolution: "@types/node@npm:26.4.1"
+  version: 26.5.1
+  resolution: "@types/node@npm:26.5.1"
   dependencies:
-    undici-types: "npm:~8.3.0"
-  checksum: 10/63fbe80250fc8824d52a1c8787b591f17be566db11560fad0a29e9e3d230303ca7a3e77d5c474d60438d14120dcb9323950641db754197b4822e4fae3c506927
+    undici-types: "npm:~8.9.0"
+  checksum: 10/5b509d30dc9344c91cba3291acecf6f424320cb763c8192befd50cc8b1a8207dd7dcff8c4f313eea6468e9f2121cc78ffb6affbd7ecd951b4b32e2629ea9856d
   languageName: node
   linkType: hard
 
@@ -1921,11 +1921,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^24.1.0":
-  version: 24.13.3
-  resolution: "@types/node@npm:24.13.3"
+  version: 24.13.4
+  resolution: "@types/node@npm:24.13.4"
   dependencies:
     undici-types: "npm:~7.18.0"
-  checksum: 10/cfa6ed1e16c4624d1e83b09aeb72a2f50a7e17d837bf5a1259a52e346f33a693afd289402d3b6118ce3abea7aff35f2a4f13a0284b96bc5807a50f0e22e1ec77
+  checksum: 10/e0f13f5b40384287df3d8be1b68ecc0a43b030330343d60d2e6a191890f10c2e1bfe37a1274b7a105a1576c455373d6c508fb99e0528ffc02726ebed156c4d00
   languageName: node
   linkType: hard
 
@@ -2417,14 +2417,14 @@ __metadata:
   linkType: hard
 
 "allure-codeceptjs@npm:^3.4.2":
-  version: 3.12.0
-  resolution: "allure-codeceptjs@npm:3.12.0"
+  version: 3.12.1
+  resolution: "allure-codeceptjs@npm:3.12.1"
   dependencies:
-    allure-js-commons: "npm:3.12.0"
-    allure-mocha: "npm:3.12.0"
+    allure-js-commons: "npm:3.12.1"
+    allure-mocha: "npm:3.12.1"
   peerDependencies:
     codeceptjs: ">=2.3.6"
-  checksum: 10/56929de8669d7c89d22e9799b3b388c0e4da9b170e53d1da7f054dbaca7ca13705c212f3cc764eb3082878876aef7240b11710e79a74047eab72a4e4a56a4155
+  checksum: 10/3b4e8f69f8b3aa88238f6e3f5f320cfecc2e645d424aa32ded8d1b222a89f3c11329b582f3194346583ef986a17d6e79ebf037ef1e4d471a49de73aeed245796
   languageName: node
   linkType: hard
 
@@ -2448,28 +2448,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"allure-js-commons@npm:3.12.0, allure-js-commons@npm:^3.4.2":
-  version: 3.12.0
-  resolution: "allure-js-commons@npm:3.12.0"
+"allure-js-commons@npm:3.12.1, allure-js-commons@npm:^3.4.2":
+  version: 3.12.1
+  resolution: "allure-js-commons@npm:3.12.1"
   dependencies:
     md5: "npm:^2.3.0"
   peerDependencies:
-    allure-playwright: 3.12.0
+    allure-playwright: 3.12.1
   peerDependenciesMeta:
     allure-playwright:
       optional: true
-  checksum: 10/5ba9c4b9ee79c96e5fbe57d4efd11aab3333aea28414be3002a58b5a0e845e6b8334f90e45933c29e68a067dac482a84f835d7c2445fc441361acc63419b4b3f
+  checksum: 10/7b5eb56dc325bd10dbd647c7b36ab0c492bca64356785ee16be2f413fbbb0e8021cad5072ed81cea3c46b488a18272bb7ef9c2e0c820a724641b0c22d37096f3
   languageName: node
   linkType: hard
 
-"allure-mocha@npm:3.12.0":
-  version: 3.12.0
-  resolution: "allure-mocha@npm:3.12.0"
+"allure-mocha@npm:3.12.1":
+  version: 3.12.1
+  resolution: "allure-mocha@npm:3.12.1"
   dependencies:
-    allure-js-commons: "npm:3.12.0"
+    allure-js-commons: "npm:3.12.1"
   peerDependencies:
     mocha: ">=6.2.0"
-  checksum: 10/dd54918c3699811d71f8f12e59e9afbf2c23eed0e13440812ab98995be9fb58119eff907d6a07d1c775281ec353552a5165ffcc4bea9b66b79d3ae5eb392dfa8
+  checksum: 10/13355846694d500d26e17da0afa50a9463e74a5832ffa6f0431348e15fc5467438f478440afb274975343394ded4a41f77e0ad0ee73a7322e9d0cc13df4e35b4
   languageName: node
   linkType: hard
 
@@ -10689,10 +10689,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~8.3.0":
-  version: 8.3.0
-  resolution: "undici-types@npm:8.3.0"
-  checksum: 10/6681d2837ac75a75ac1cc46090aa2b8ddc7c6b8ecc295a6cdb06838752a730da3d8afeecf05e5ab7903160eafad3a8b6ffa1927e5ded260590f4d4fef18646d5
+"undici-types@npm:~8.9.0":
+  version: 8.9.0
+  resolution: "undici-types@npm:8.9.0"
+  checksum: 10/8785591929de2b71d281c684e915c4a8c41becc225adbf42a3e89148f8b384724a21533494c30a1cbb85b4cbccd088d020788ff4f2d605013eb2863cd47a1639
   languageName: node
   linkType: hard
 
