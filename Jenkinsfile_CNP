@@ -4,7 +4,7 @@ properties([
 ]);
 
 
-@Library("Infrastructure@Enable-helm-on-staging")
+@Library("Infrastructure@2.7.0")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
@@ -252,6 +252,7 @@ def getCivilServiceImage() {
 withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
+  enableBuildCache()
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
