@@ -34,5 +34,40 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "settleReason=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SETTLE_CLAIM_UNSPEC",
+    "CaseFieldID": "partiesNames",
+    "PageID": "ConfirmSettlement",
+    "PageLabel": "Confirm settle this claim",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SETTLE_CLAIM_UNSPEC",
+    "CaseFieldID": "markPaidConsent",
+    "DisplayContext": "MANDATORY",
+    "PageID": "ConfirmSettlement",
+    "PageLabel": "Confirm settle this claim",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SETTLE_CLAIM_UNSPEC",
+    "CaseFieldID": "lblUpdateCourtSingle",
+    "PageID": "ConfirmSettlement",
+    "PageLabel": "Confirm settle this claim",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
   }
 ]
