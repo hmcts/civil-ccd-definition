@@ -28,7 +28,7 @@ const gaCCDEvents: GaCCDEvents = {
   HEARING_SCHEDULED_GA: {
     id: 'HEARING_SCHEDULED_GA',
     description: 'Update General App Location',
-    name: 'Hearing Scheduled',
+    name: 'Schedule hearing',
     order: 4
   },
 };
