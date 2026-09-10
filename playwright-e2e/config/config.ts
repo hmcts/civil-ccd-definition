@@ -19,6 +19,7 @@ const config = {
   debugCaseId: parseInt(process.env.PLAYWRIGHT_DEBUG_CASE_ID),
   gaDebugCaseId: parseInt(process.env.PLAYWRIGHT_GA_DEBUG_CASE_ID),
   waEnabled: process.env.PLAYWRIGHT_WA_ENABLED === 'true',
+  zodValidationEnabled: process.env.PLAYWRIGHT_ZOD_VALIDATION_ENABLED === 'true',
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH',
@@ -61,7 +62,6 @@ const config = {
     systemUserDefaultPassword: process.env.SYSTEM_USER_PASSWORD,
     claimantCitizenEmail: process.env.CLAIMANT_CITIZEN_EMAIL,
     defendantCitizenEmail: process.env.DEFENDANT_CITIZEN_EMAIL,
-
   }
 };
 
