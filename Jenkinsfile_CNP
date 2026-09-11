@@ -269,7 +269,6 @@ withPipeline(type, product, component) {
   // }
   onMaster {
     env.ENVIRONMENT = "aat"
-    enableHelmOnMaster()
   }
   onDemo {
     env.ENVIRONMENT = "demo"
