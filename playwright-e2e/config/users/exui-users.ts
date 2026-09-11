@@ -83,6 +83,7 @@ export const civilAdminUser: User = getUser({
   password: config.users.defaultPassword,
   key: UserKey.CIVIL_ADMIN,
   role: UserRole.CASEWORKER,
+  wa: true
 });
 
 export const nbcRegion1User: User = getUser({

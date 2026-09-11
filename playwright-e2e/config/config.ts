@@ -19,6 +19,7 @@ const config = {
   debugCaseId: parseInt(process.env.PLAYWRIGHT_DEBUG_CASE_ID),
   gaDebugCaseId: parseInt(process.env.PLAYWRIGHT_GA_DEBUG_CASE_ID),
   waEnabled: process.env.PLAYWRIGHT_WA_ENABLED === 'true',
+  zodValidationEnabled: process.env.PLAYWRIGHT_ZOD_VALIDATION_ENABLED === 'true',
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH',
@@ -41,6 +42,10 @@ const config = {
     retries: parseInt(process.env.PLAYWRIGHT_RETRIES),
     testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED.toUpperCase() as string] as TestSpeed,
     shortExpectTimeout: 20_000,
+    functionalTestResultsDir: process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR &&
+      process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR
+      ? `${process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}`
+      : './playwright-test-results',
   },
   exui: {
     eventRetries: parseInt(process.env.PLAYWRIGHT_EXUI_RETRIES),
@@ -57,7 +62,6 @@ const config = {
     systemUserDefaultPassword: process.env.SYSTEM_USER_PASSWORD,
     claimantCitizenEmail: process.env.CLAIMANT_CITIZEN_EMAIL,
     defendantCitizenEmail: process.env.DEFENDANT_CITIZEN_EMAIL,
-
   }
 };
 

@@ -39,8 +39,20 @@ export default class GaExuiDashboardActions extends BaseApi {
     await gaCaseDetailsPage.retryChooseNextStepWithUrl(this.getGaCCDCaseData()?.id!, ccdEvent);
   }
 
+  async startWithWATaskName(ccdEvent: CCDEvent, waTask: WATask) {
+    const { gaCaseDetailsPage } = this.gaExuiDashboardPageFactory;
+    await gaCaseDetailsPage.retryGoToGaCaseDetails(this.getGaCCDCaseData()?.id!);
+    await gaCaseDetailsPage.retryStartWAEvent(ccdEvent, waTask);
+    gaCaseDetailsPage.setCCDEvent = ccdEvent;
+  }
+
   async clearCCDEvent() {
     const { gaCaseDetailsPage } = this.gaExuiDashboardPageFactory;
     gaCaseDetailsPage.clearCCDEvent();
+  }
+
+   async verifySuccessEvent(ccdEvent: CCDEvent) {
+    const { gaCaseDetailsPage } = this.gaExuiDashboardPageFactory;
+    await gaCaseDetailsPage.verifySuccessEvent(super.ccdCaseData.id!, ccdEvent);
   }
 }

@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2 settle claim spec api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('1v2 settle claim spec api journey', { tag: ['@civil-service-nightly', '@api-settle-claim'] }, async () => {
   test('1v2 settle claim spec', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
@@ -11,7 +11,7 @@ test.describe('1v2 settle claim spec api journey', { tag: '@civil-service-nightl
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2DS();
+    await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
     await DefendantSolicitor2SpecApiSteps.RespondFastFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
     await ClaimantSolicitorSpecApiSteps.SettleClaim();

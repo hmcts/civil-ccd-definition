@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures/index';
 test.describe(
   '1v2DS intermediate track journey',
   {
-    tag: ['@civil-ccd-nightly'],
+    tag: ['@civil-ccd-nightly', '@ui-intermediate-track'],
   },
   () => {
     test('1v2DS intermediate track', async ({
@@ -20,8 +20,8 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondInterFullDefence1v2DS();
-      await DefendantSolicitor2ApiSteps.RespondInterFullDefence1v2DS();
+      await DefendantSolicitor1ApiSteps.RespondInterFullDefence();
+      await DefendantSolicitor2ApiSteps.RespondInterFullDefence();
       await ClaimantSolicitorApiSteps.RespondInterProceed1v2DS();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.GenerateDirectionsOrderInter();

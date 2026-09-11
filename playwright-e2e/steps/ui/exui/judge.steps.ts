@@ -55,7 +55,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -75,7 +75,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -95,6 +95,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -114,7 +115,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -134,6 +135,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -153,7 +155,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -173,7 +175,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -194,7 +196,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -214,7 +216,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       nihlFastTrackDirectionsTask,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -235,6 +237,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.CREATE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -253,6 +256,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       judgeRegion1User,
       summaryJudgmentDirections,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -271,6 +275,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.STANDARD_DIRECTION_ORDER_DJ,
       judgeRegion1User,
       summaryJudgmentDirections,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -287,6 +292,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.NOT_SUITABLE_SDO,
       judgeRegion1User,
       smallClaimDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -303,6 +309,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.NOT_SUITABLE_SDO,
       judgeRegion1User,
       fastTrackDirectionsTask,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -321,7 +328,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       judgeRegion2User,
       defenceReceivedInTimeOrderThatJudgmentIsSetAside,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -384,7 +391,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -401,7 +408,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -418,8 +425,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
-
 }

@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Spec small claims mediation api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('Spec small claims mediation api journey', { tag: ['@civil-service-nightly'] }, async () => {
   test('1v2 same solicitor claimant and defendant upload mediation documents', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
@@ -17,7 +17,7 @@ test.describe('Spec small claims mediation api journey', { tag: '@civil-service-
     await DefendantSolicitor1SpecApiSteps.UploadMediationDocuments();
   });
 
-  test('1v2 different solicitor claimant and defendant upload mediation documents', async ({
+  test('1v2 different solicitor claimant and defendant upload mediation documents', { tag: '@api-mediation' }, async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
@@ -28,7 +28,7 @@ test.describe('Spec small claims mediation api journey', { tag: '@civil-service-
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence1v2DS();
+    await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
     await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2DS();
     await CaseworkerApiSteps.MediationUnsuccessful();

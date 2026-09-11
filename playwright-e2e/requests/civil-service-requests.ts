@@ -24,7 +24,9 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     caseId: number | 'draft' = 'draft',
     expectedState?: CaseState,
   ): Promise<CCDCaseData> {
-    console.log(`Submitting citizen event, event: ${payload.event}, caseId: ${caseId}, user: ${user.name}`);
+    console.log(
+      `Submitting citizen event, event: ${payload.event}, caseId: ${caseId}, user: ${user.name}`,
+    );
 
     const url = `${urls.civilService}/cases/${caseId}/citizen/${user.userId}/event`;
     const requestOptions: RequestOptions = {
@@ -35,11 +37,10 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
 
     const responseJson = await super.retryRequestJson(url, requestOptions, {
       statusErrorMessage: async (responseJson, { url, status, expectedStatus }) => {
-        if(status === 404) {
+        if (status === 404) {
           return await responseJson.text();
-        } else if(status === 422) {
-          let message =
-            `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
+        } else if (status === 422) {
+          let message = `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
 
           if (responseJson.details?.field_errors?.length) {
             message += `, field errors: ${responseJson.details.field_errors
@@ -54,17 +55,16 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
         await super.expectResponseJsonToHaveProperty('id', responseJson);
         await super.expectResponseJsonToHaveProperty('case_data', responseJson);
         if (expectedState) {
-          await super.expectResponseJsonToHavePropertyValue(
-            'state',
-            expectedState,
-            responseJson,
-            { nonRetryable: true },
-          );
+          await super.expectResponseJsonToHavePropertyValue('state', expectedState, responseJson, {
+            nonRetryable: true,
+          });
         }
       },
     });
 
-    console.log(`Citizen event submitted successfully, event: ${payload.event}, caseId: ${responseJson.id}, user: ${user.name}`);
+    console.log(
+      `Citizen event submitted successfully, event: ${payload.event}, caseId: ${responseJson.id}, user: ${user.name}`,
+    );
     return {
       id: Number(responseJson.id),
       ...responseJson.case_data,
@@ -94,12 +94,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
 
   async getGaClaimFeeData(
     user: User,
-    {
-      gaTypesLr,
-      respondentAgreed,
-      withNotice,
-      hearingDate,
-    }: GeneralApplicationFeeRequest,
+    { gaTypesLr, respondentAgreed, withNotice, hearingDate }: GeneralApplicationFeeRequest,
   ): Promise<ClaimFee> {
     console.log(
       `Getting general application claim fee data, applicationTypes: ${gaTypesLr.join(', ')}`,
@@ -175,7 +170,9 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       },
     });
 
-    console.log(`Camunda process triggered successfully, processName: ${processName}, processId: ${responseJson.id}`);
+    console.log(
+      `Camunda process triggered successfully, processName: ${processName}, processId: ${responseJson.id}`,
+    );
     return responseJson;
   }
 
@@ -203,12 +200,9 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       retries: 10,
       retryTimeInterval: 2000,
       verifyResponse: async (responseJson) => {
-        await super.expectResponseJsonPropertyToBe(
-          '0.state',
-          'COMPLETED',
-          responseJson,
-          { message: 'Waiting for camunda process to complete' },
-        );
+        await super.expectResponseJsonPropertyToBe('0.state', 'COMPLETED', responseJson, {
+          message: 'Waiting for camunda process to complete',
+        });
       },
     });
 
@@ -223,7 +217,9 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     variables?: string,
     options: { expectCount?: number } = {},
   ): Promise<number> {
-    console.log(`Getting completed Camunda process count, definitionKey: ${definitionKey}, variables: ${variables}`);
+    console.log(
+      `Getting completed Camunda process count, definitionKey: ${definitionKey}, variables: ${variables}`,
+    );
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),
       params: {
@@ -232,8 +228,13 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       },
     };
 
-    const responseJson = await super.requestJson(`${this.testingSupportUrl}/camunda-processes`, requestOptions);
-    const completedProcessCount = (responseJson || []).filter((process: Record<string, any>) => process.state === 'COMPLETED').length;
+    const responseJson = await super.requestJson(
+      `${this.testingSupportUrl}/camunda-processes`,
+      requestOptions,
+    );
+    const completedProcessCount = (responseJson || []).filter(
+      (process: Record<string, any>) => process.state === 'COMPLETED',
+    ).length;
 
     if (options.expectCount !== undefined) {
       await super.expectResponseJsonPropertyToBe(
@@ -305,12 +306,9 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
           message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
         });
         if (expectedCaseState)
-          await super.expectResponseJsonPropertyToBe(
-            'ccdState',
-            expectedCaseState,
-            responseJson,
-            { nonRetryable: true },
-          );
+          await super.expectResponseJsonPropertyToBe('ccdState', expectedCaseState, responseJson, {
+            nonRetryable: true,
+          });
       },
     });
     console.log(`Business process successfully finished, caseId: ${caseId}`);
@@ -409,10 +407,15 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       },
       method: 'POST',
     };
-    await super.retryRequest(url, requestOptions);
-    caseIds.forEach((caseId) =>
-      console.log(`User: ${user.name} unassigned from case [${caseId}] successfully`),
-    );
+    try {
+      await super.retryRequest(url, requestOptions, { retries: 5 });
+      caseIds.forEach((caseId) =>
+        console.log(`User: ${user.name} unassigned from case [${caseId}] successfully`),
+      );
+    } catch (error) {
+      console.log(`Could not unassign cases for ${user.name}`);
+      console.log(error);
+    }
   }
 
   async updateCaseData(user: User, caseData: CCDCaseData, caseId?: number) {

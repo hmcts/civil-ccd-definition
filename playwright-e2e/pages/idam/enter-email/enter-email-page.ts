@@ -20,7 +20,7 @@ export default class EnterEmailPage extends IdamPage(BasePage) {
       () =>
         super.expectLabel(inputs.email.label, { timeout: config.idam.pageSubmitTimeout }),
       undefined,
-      { retries: 2 },
+      { retries: 1 },
     );
   }
 

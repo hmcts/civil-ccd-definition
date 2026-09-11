@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('Request for reconsideration - 1v2DS - spec', { tag: '@civil-service-nightly' }, async () => {
-  test('1v2 spec request for reconsideration by defendant 2 for create general order', async ({
+test.describe('Request for reconsideration - 1v2DS - spec', { tag: ['@civil-service-nightly'] }, async () => {
+  test('1v2 spec request for reconsideration by defendant 2 for create general order', { tag: '@api-rfr' }, async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
@@ -14,7 +14,7 @@ test.describe('Request for reconsideration - 1v2DS - spec', { tag: '@civil-servi
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence1v2DS();
+    await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
     await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2DS();
     await CaseworkerApiSteps.MediationUnsuccessful();

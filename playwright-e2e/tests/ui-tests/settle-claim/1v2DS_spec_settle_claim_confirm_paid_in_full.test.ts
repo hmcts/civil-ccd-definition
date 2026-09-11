@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures';
 
 test.describe(
   '1v2DS spec settle claim confirm paid in full',
-  { tag: ['@civil-ccd-nightly'] },
+  { tag: ['@civil-ccd-nightly', '@ui-settle-claim'] },
   () => {
     test('1v2DS spec - settle claim - confirm paid in full', async ({
       ClaimantSolicitorSpecApiSteps,
@@ -17,7 +17,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-      await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence1v2DS();
+      await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
       await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2DS();
       await CaseworkerApiSteps.MediationUnsuccessful();

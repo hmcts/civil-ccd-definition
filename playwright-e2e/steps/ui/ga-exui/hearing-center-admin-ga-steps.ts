@@ -9,6 +9,7 @@ import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import scheduleApplicationHearingFast from '../../../constants/wa-tasks/ga-exui/scheduleApplicationHearingFast';
+import GaCaseState from '../../../constants/cases/ga-case-states';
 
 @AllMethodsStep()
 export default class HearingCenterAdminGaSteps extends BaseGaExui {
@@ -16,13 +17,12 @@ export default class HearingCenterAdminGaSteps extends BaseGaExui {
 
   constructor(
     gaExuiDashboardActions: GaExuiDashboardActions,
-    exuiDashboardActions: ExuiDashboardActions,
     idamActions: IdamActions,
     hearingCenterAdminGaActionsFactory: HearingCenterAdminGaActionsFactory,
     requestsFactory: RequestsFactory,
     testData: TestData,
   ) {
-    super(gaExuiDashboardActions, exuiDashboardActions, idamActions, requestsFactory, testData);
+    super(gaExuiDashboardActions, idamActions, requestsFactory, testData);
     this.hearingCenterAdminGaActionsFactory = hearingCenterAdminGaActionsFactory;
   }
 
@@ -35,7 +35,7 @@ export default class HearingCenterAdminGaSteps extends BaseGaExui {
     await super.gaExuiDashboardActions.goToGaCaseDetails();
   }
 
-  async CreateHearingNotice() {
+  async HearingScheduledGa() {
     const { hearingScheduledGaActions } = this.hearingCenterAdminGaActionsFactory;
     await super.retryGAWaEvent(
       async () => {
@@ -49,7 +49,8 @@ export default class HearingCenterAdminGaSteps extends BaseGaExui {
       },
       gaCCDEvents.HEARING_SCHEDULED_GA,
       hearingCenterAdminRegion1User,
-      scheduleApplicationHearingFast
+      scheduleApplicationHearingFast,
+      {expectedState: GaCaseState.HEARING_SCHEDULED},
     );
   }
 }

@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures';
 
-test.describe('1v2DS spec settle claim consent order', { tag: ['@civil-ccd-nightly'] }, () => {
+test.describe('1v2DS spec settle claim consent order', { tag: ['@civil-ccd-nightly', '@ui-settle-claim'] }, () => {
   test('1v2DS spec - settle claim - reason for settlement - consent order', async ({
     ClaimantSolicitorSpecApiSteps,
     DefendantSolicitor1SpecApiSteps,
@@ -14,7 +14,7 @@ test.describe('1v2DS spec settle claim consent order', { tag: ['@civil-ccd-night
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence1v2DS();
+    await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
     await DefendantSolicitor2SpecApiSteps.RespondSmallFullDefence();
     await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2DS();
     await CaseworkerApiSteps.MediationUnsuccessful();

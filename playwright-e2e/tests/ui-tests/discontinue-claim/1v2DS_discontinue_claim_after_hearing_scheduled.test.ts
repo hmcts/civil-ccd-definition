@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2 discontinue claim after hearing scheduled',
-  { tag: ['@civil-ccd-nightly'] },
+  { tag: ['@civil-ccd-nightly', '@ui-discontinue-claim'] },
   () => {
     test('1v2 discontinue this claim after hearing schedule - full discontinuance', async ({
       ClaimantSolicitorSteps,
@@ -19,7 +19,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence1v2DS();
+      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
       await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
       await JudgeApiSteps.SdoFast();
