@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-service-nightly' }, async () => {
-  test('1v1 claimant and defendant part admit states paid- claimant not received payment - upload mediation documents', async ({
+test.describe('1v1 spec small claims mediation api journey', { tag: ['@civil-service-nightly'] }, async () => {
+  test('1v1 claimant and defendant part admit states paid- claimant not received payment - upload mediation documents', { tag: ['@civil-service-master', '@civil-service-pr'] }, async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,
@@ -53,7 +53,7 @@ test.describe('1v1 spec small claims mediation api journey', { tag: '@civil-serv
     await LegalAdvisorApiSteps.SdoSmallSum();
   });
 
-  test('1v1 claimant and defendant upload mediation documents', async ({
+  test('1v1 claimant and defendant upload mediation documents', { tag: '@api-mediation' }, async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,
     DefendantSolicitor1SpecApiSteps,

@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import ClaimType from '../../../../../constants/cases/claim-type';

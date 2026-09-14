@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v2 spec record judgment api test',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly'] },
   async () => {
     test('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({
       ClaimantSolicitorSpecApiSteps,
@@ -32,7 +32,7 @@ test.describe(
       await CaseworkerApiSteps.SetAsideJudgmentOrder();
     });
 
-    test('Record Judgment with mark judgment paid Spec claim 1v2', async ({
+    test('Record Judgment with mark judgment paid Spec claim 1v2', { tag: '@api-jo' }, async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
@@ -45,7 +45,7 @@ test.describe(
       await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2SS();
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence1v2SS();
       await JudgeApiSteps.SdoTrail();
-      await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
       await CaseworkerApiSteps.ConfirmOrderReview();
       await CaseworkerApiSteps.RecordJudgmentDeterMeansImmediately();
       await CaseworkerApiSteps.EditJudgmentDeterMeansSetDate();

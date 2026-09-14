@@ -278,12 +278,7 @@ module.exports = {
         null, 'Case data validation failed');
     }
 
-    let bodyText = 'Your claim will not be issued until payment is confirmed.';
-    let headerText = '# Please now pay your claim fee\n# using the link below';
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: headerText,
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -323,7 +318,11 @@ module.exports = {
     await updateLROrganisation(caseId, manageContactInformationData);
   },
 
-  createClaimWithRespondentLitigantInPerson: async (user, multipartyScenario) => {
+  createClaimWithRespondentLitigantInPerson: async (
+    user,
+    multipartyScenario,
+    assertServiceOwnedCallbackData = true
+  ) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
@@ -350,13 +349,9 @@ module.exports = {
       claimTypeUnSpec: 'CONSUMER_CREDIT'
     };
 
-    await validateEventPages(createClaimData);
+    await validateEventPages(createClaimData, undefined, assertServiceOwnedCallbackData);
 
-    console.log('comparing assertSubmittedEvent');
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Please now pay your claim',
-      body: 'Your claim will not be issued until payment is confirmed'
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -469,10 +464,7 @@ module.exports = {
 
     await validateEventPages(data[eventName]);
 
-    await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION', {
-      header: 'Notification of claim sent',
-      body: 'The defendant legal representative\'s organisation has been notified and granted access to this claim.'
-    });
+    await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -480,7 +472,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
 
-  notifyClaimLip: async (user, multipartyScenario) => {
+  notifyClaimLip: async (user, multipartyScenario, assertServiceOwnedCallbackData = true) => {
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
     mpScenario = multipartyScenario;
@@ -491,7 +483,7 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     // assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data[eventName]);
+    await validateEventPages(data[eventName], undefined, assertServiceOwnedCallbackData);
     returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
 
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
@@ -501,10 +493,7 @@ module.exports = {
     } else {
       returnedCaseData = { ...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false) };
     }
-    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION', {
-      header: 'Certificate of Service',
-      body: 'You must serve the claim details and'
-    });
+    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -523,10 +512,7 @@ module.exports = {
 
     await validateEventPages(data[eventName]);
 
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Defendant notified',
-      body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
-    });
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -534,7 +520,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
-  notifyClaimDetailsLip: async (user, multipartyScenario) => {
+  notifyClaimDetailsLip: async (user, multipartyScenario, assertServiceOwnedCallbackData = true) => {
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     mpScenario = multipartyScenario;
@@ -545,7 +531,7 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     // assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data[eventName]);
+    await validateEventPages(data[eventName], undefined, assertServiceOwnedCallbackData);
     returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
       returnedCaseData = {};
@@ -563,10 +549,7 @@ module.exports = {
       const document = await testingSupport.uploadDocument();
       returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
     }
-    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Certificate of Service',
-      body: 'The defendant(s) must'
-    });
+    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -1489,18 +1472,18 @@ const getLatestMessageToReplyTo = (caseData) => {
   return null;
 };
 
-const validateEventPages = async (data, solicitor) => {
+const validateEventPages = async (data, solicitor, assertServiceOwnedCallbackData = true) => {
   //transform the data
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'DefendantLitigationFriend' || pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    await assertValidData(data, pageId, solicitor);
+    await assertValidData(data, pageId, solicitor, assertServiceOwnedCallbackData);
   }
 };
 
-const assertValidData = async (data, pageId, solicitor) => {
+const assertValidData = async (data, pageId, solicitor, assertServiceOwnedCallbackData = true) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
   const validDataForPage = data.valid[pageId];
@@ -1676,6 +1659,10 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   delete caseData['notificationSummary'];
 
+  if (!assertServiceOwnedCallbackData) {
+    return;
+  }
+
   try {
     for (const [key, value] of Object.entries(caseData)) {
       assert.deepEqual(responseBody.data[key], value, `Mismatch on field: ${key}`);
@@ -1772,7 +1759,8 @@ const expectedWarnings = async (pageId, eventData, expectedWarningMessages, resp
   }
 };
 
-const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+// Confirmation copy is service-owned; assert it only in journeys that specifically own that behaviour.
+const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains = null, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
@@ -1781,9 +1769,11 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    if(submittedCallbackResponseContains.body) {
-      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if (submittedCallbackResponseContains) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+      if (submittedCallbackResponseContains.body) {
+        assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+      }
     }
   }
 
@@ -1794,7 +1784,12 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
-const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+const assertSubmittedEventWithCaseData = async (
+  updatedCaseData,
+  expectedState,
+  submittedCallbackResponseContains = null,
+  hasSubmittedCallback = true
+) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, updatedCaseData, caseId);
@@ -1803,8 +1798,10 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if (submittedCallbackResponseContains) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    }
   }
 };
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {

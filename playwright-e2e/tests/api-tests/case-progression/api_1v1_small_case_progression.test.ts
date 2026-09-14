@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 small case progression api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-case-progression'] },
   async () => {
     test('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({
       ClaimantSolicitorApiSteps,
@@ -25,7 +25,7 @@ test.describe(
       await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
       await HearingCenterAdminApiSteps.AmendHearingDueDate();
       await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
-      await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
     });
 
     test('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({

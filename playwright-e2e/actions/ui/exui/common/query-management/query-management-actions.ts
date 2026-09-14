@@ -2,7 +2,6 @@ import BaseTestData from '../../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-utils/test-data';
 import QueryManagementPageFactory from '../../../../../pages/exui/common/query-management/query-management-page-factory';
-import { paragraphs } from '../../../../../pages/exui/common/query-management/query-details/query-details-content';
 
 @AllMethodsStep()
 export default class QueryManagementActions extends BaseTestData {
@@ -34,7 +33,7 @@ export default class QueryManagementActions extends BaseTestData {
     const { queryDetailsNewPage } = this.queryManagementPageFactory;
     await queryDetailsNewPage.verifyContent(this.ccdCaseData);
     await queryDetailsNewPage.enterQuerySubject();
-    await queryDetailsNewPage.enterQueryDetail(paragraphs.hearingQuery.queryBody);
+    await queryDetailsNewPage.enterQueryDetail();
     await queryDetailsNewPage.selectIsQueryHearingRelatedYes();
     await queryDetailsNewPage.enterHearingDate();
     await queryDetailsNewPage.submit();

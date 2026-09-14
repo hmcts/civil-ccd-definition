@@ -13,7 +13,7 @@ const addressSchema = z.strictObject({
   AddressLine3: nonEmptyString.optional(),
   PostTown: nonEmptyString,
   County: nonEmptyString.optional(),
-  Country: nonEmptyString,
+  Country: nonEmptyString.optional(),
   PostCode: nonEmptyString,
 });
 
@@ -175,75 +175,11 @@ const helpWithFeesSchema = z.strictObject({
   helpWithFee: z.literal('No'),
 });
 
-const businessProcessSchema = z.strictObject({
-  status: nonEmptyString,
-  camundaEvent: z.literal('CREATE_LIP_CLAIM'),
-  readyOn: nonEmptyString.optional(),
-});
-
-const searchCriteriaSchema = z.strictObject({
-  SearchParties: z
-    .array(
-      z.strictObject({
-        id: nonEmptyString,
-        value: z.strictObject({
-          Name: nonEmptyString,
-          PostCode: nonEmptyString,
-          DateOfBirth: nonEmptyString.optional(),
-          AddressLine1: nonEmptyString,
-        }),
-      }),
-    )
-    .min(1),
-  OtherCaseReferences: z
-    .array(
-      z.strictObject({
-        id: nonEmptyString,
-        value: nonEmptyString,
-      }),
-    )
-    .min(1),
-});
-
-const claimIssuedPbaDetailsSchema = z.strictObject({
-  fee: feeSchema,
-  serviceRequestReference: nonEmptyString,
-});
-
-const caseManagementLocationSchema = z.strictObject({
-  region: nonEmptyString,
-  baseLocation: nonEmptyString,
-});
-
 const respondentPinToPostSchema = z.strictObject({
   accessCode: nonEmptyString,
   expiryDate: nonEmptyString,
   respondentCaseRole: nonEmptyString,
 });
-
-const documentLinkSchema = z.strictObject({
-  category_id: nonEmptyString.optional(),
-  document_url: nonEmptyString,
-  upload_timestamp: nonEmptyString.optional(),
-  document_filename: nonEmptyString,
-  document_binary_url: nonEmptyString,
-});
-
-const systemGeneratedCaseDocumentsSchema = z
-  .array(
-    z.strictObject({
-      id: nonEmptyString,
-      value: z.strictObject({
-        createdBy: nonEmptyString,
-        documentLink: documentLinkSchema,
-        documentName: nonEmptyString,
-        documentSize: z.number(),
-        documentType: nonEmptyString,
-        createdDatetime: nonEmptyString,
-      }),
-    }),
-  )
-  .min(1);
 
 const claimant1 = (claimantPartyType: ClaimantDefendantPartyType): SchemaShape => ({
   applicant1: partySchema(claimantPartyType),
@@ -300,25 +236,6 @@ const claimFee: SchemaShape = {
   claimFee: feeSchema,
 };
 
-const generatedCaseData: SchemaShape = {
-  CaseAccessCategory: z.literal('SPEC_CLAIM'),
-  locationName: nonEmptyString,
-  allPartyNames: nonEmptyString,
-  submittedDate: nonEmptyString,
-  SearchCriteria: searchCriteriaSchema,
-  anyRepresented: z.literal('No'),
-  caseNamePublic: nonEmptyString,
-  businessProcess: businessProcessSchema,
-  legacyCaseReference: nonEmptyString,
-  caseNameHmctsInternal: nonEmptyString,
-  claimIssuedPBADetails: claimIssuedPbaDetailsSchema,
-  caseManagementLocation: caseManagementLocationSchema,
-  serviceRequestReference: nonEmptyString,
-  respondent2OrganisationPolicy: organisationPolicySchema,
-  systemGeneratedCaseDocuments: systemGeneratedCaseDocumentsSchema,
-  claimantLanguagePreferenceDisplay: nonEmptyString,
-};
-
 const createClaimSchemaComponents = {
   claimant1,
   defendant1,
@@ -331,7 +248,6 @@ const createClaimSchemaComponents = {
   timelineOfEvents,
   flightDelay,
   claimFee,
-  generatedCaseData,
 };
 
 export default createClaimSchemaComponents;

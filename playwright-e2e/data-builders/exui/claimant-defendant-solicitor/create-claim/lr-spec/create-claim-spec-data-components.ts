@@ -11,8 +11,8 @@ import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import DateHelper from '../../../../../helpers/date-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
-import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
+import FlightDelayClaim from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
 
 const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });

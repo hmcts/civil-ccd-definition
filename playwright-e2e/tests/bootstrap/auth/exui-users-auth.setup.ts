@@ -5,23 +5,11 @@ import config from '../../../config/config';
 if (config.runExuiAuthSetup) {
   setup.describe('Authenticating exui user(s) and saving cookies', () => {
     setup.describe.configure({ mode: 'parallel' });
-
-    for (const [index, exuiAuthSetupUser] of exuiAuthSetupUsers.entries()) {
-      if (index === 0) {
-        setup(
-          exuiAuthSetupUser.name,
-          { tag: '@verify-cookies-banner' },
-          async ({ IdamSteps, ExuiDashboardSteps }) => {
-            await IdamSteps.ExuiLogin(exuiAuthSetupUser);
-            await ExuiDashboardSteps.AcceptCookies();
-            await ExuiDashboardSteps.SaveCookies(exuiAuthSetupUser);
-          },
-        );
-      } else
-        setup(exuiAuthSetupUser.name, async ({ IdamSteps, ExuiDashboardSteps }) => {
-          await IdamSteps.ExuiLogin(exuiAuthSetupUser);
-          await ExuiDashboardSteps.SaveCookies(exuiAuthSetupUser);
-        });
+    for (const exuiAuthSetupUser of exuiAuthSetupUsers) {
+      setup(exuiAuthSetupUser.name, async ({ IdamSteps, ExuiDashboardSteps }) => {
+        await IdamSteps.ExuiLogin(exuiAuthSetupUser);
+        await ExuiDashboardSteps.SaveCookies(exuiAuthSetupUser);
+      });
     }
   });
 } else {

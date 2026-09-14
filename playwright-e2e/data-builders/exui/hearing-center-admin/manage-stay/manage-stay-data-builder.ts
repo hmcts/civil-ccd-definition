@@ -1,5 +1,5 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import ManageStayOption from '../../../../constants/ccd-events/manage-stay/manage-stay-option';
+import ManageStayOption from '../../../../constants/ccd-events/ccd-events/manage-stay/manage-stay-option';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import manageStayDataBuilderComponents from './manage-stay-data-builder-components';
 

@@ -4,7 +4,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('..
 let caseNumber;
 
 Feature('Claim creation 1v2 Diff Solicitor with fast claims')
-  .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-spec-full-defence');
+  .tag('@civil-ccd-master @civil-ccd-pr @ui-spec-full-defence');
 
 Scenario('01 Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims-spec', async ({api_spec_fast, LRspec}) => {
   console.log('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims-spec');

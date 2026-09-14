@@ -1,8 +1,8 @@
 import BaseApi from '../../../../base/base-api';
-import ccdEvents from '../../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../../constants/ccd-events/ccd-events/ccd-events';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import CookiesHelper from '../../../../helpers/cookies-helper';
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 import TestData from '../../../../models/test-utils/test-data';
 import User from '../../../../models/users/user';
 import { WATask } from '../../../../models/wa-task';
@@ -61,6 +61,12 @@ export default class ExuiDashboardActions extends BaseApi {
     await caseDetailsPage.retryClickQueriesTab();
   }
 
+  async goToServiceRequestTab() {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
+    await caseDetailsPage.retryClickServiceRequestTab();
+  }
+
   async signOut() {
     const { navBar } = this.exuiDashboardPageFactory;
     await navBar.clickSignOut();
@@ -103,11 +109,16 @@ export default class ExuiDashboardActions extends BaseApi {
     caseDetailsPage.setCCDEvent = ccdEvents.QUERY_MANAGEMENT_RAISE;
   }
 
-  async startWAEvent(ccdEvent: CCDEvent, waTask: WATask) {
+  async startWithWATaskName(ccdEvent: CCDEvent, waTask: WATask) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
     await caseDetailsPage.retryStartWAEvent(ccdEvent, waTask);
     caseDetailsPage.setCCDEvent = ccdEvent;
+  }
+
+  async startRefundsEvent() {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.retryGoToRefunds();
   }
 
   async clearCCDEvent() {

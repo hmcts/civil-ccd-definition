@@ -1,14 +1,17 @@
 export const subheadings = {
   uploadDocuments: 'Upload documents',
-  partiularsOfClaim: 'Particulars of claim (Optional)',
+  particularsOfClaim: 'Particulars of claim (Optional)',
   scheduleOfLoss: 'Schedule of loss',
   certificateOfSuitability: 'Certificate of suitability',
 };
 
 export const inputs = {
-  uploadPartiularsOfClaim: {
+  uploadParticularsOfClaim: {
     title: 'Document (Optional)',
     selector: '#servedDocumentFiles_particularsOfClaimDocument_value',
+    claimText: {
+      selector: '#servedDocumentFiles_particularsOfClaimText',
+    },
   },
   uploadMedicalReports: {
     title: 'Document (Optional)',
@@ -25,7 +28,7 @@ export const inputs = {
 };
 
 export const buttons = {
-  addPartiularsOfClaim: {
+  addParticularsOfClaim: {
     title: 'Add new',
     selector:
       "div[id='servedDocumentFiles_particularsOfClaimDocument'] button[class='button write-collection-add-item__top']",

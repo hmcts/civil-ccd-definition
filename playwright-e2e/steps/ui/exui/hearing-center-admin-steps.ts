@@ -6,7 +6,9 @@ import {
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion2User,
 } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import caseFlagLocations from '../../../constants/ccd-events/ccd-events/case-flags/case-flag-locations';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -43,6 +45,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -55,6 +58,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -67,6 +71,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -79,6 +84,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -103,6 +109,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await stayCaseActions.confirmStayCase();
       },
       ccdEvents.STAY_CASE,
+      { expectedState: CaseState.CASE_STAYED },
     );
   }
 
@@ -118,6 +125,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await manageStayActions.confirmManageStayRequestUpdate();
       },
       ccdEvents.MANAGE_STAY,
+      { expectedState: CaseState.CASE_STAYED },
     );
   }
 
@@ -133,6 +141,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await manageStayActions.confirmManageStayLiftStay();
       },
       ccdEvents.MANAGE_STAY,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -144,7 +153,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
     );
   }
 
@@ -159,7 +168,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await transferOnlineCaseActions.confirm();
       },
       ccdEvents.TRANSFER_ONLINE_CASE,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -177,7 +186,7 @@ export default class HearingCenterAdminSteps extends BaseExui {
         await hearingScheduledActions.confirm();
       },
       ccdEvents.HEARING_SCHEDULED,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.HEARING_READINESS },
     );
   }
 

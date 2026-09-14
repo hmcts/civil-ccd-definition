@@ -1,6 +1,6 @@
 import BaseApi from '../../../base/base-api';
-import { civilAdminUser, ctscAdminUser } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import { civilAdminUser } from '../../../config/users/exui-users';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
@@ -35,12 +35,14 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.ADD_CASE_NOTE,
       addCaseNoteData,
-      CaseState.CASE_ISSUED,
+      { expectedState: CaseState.CASE_ISSUED },
     );
 
-    const { addCaseNoteSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const addCaseNoteSchema = await addCaseNoteSchemaBuilder.buildData(caseDataBeforeSubmission);
-    ZodHelper.safeParse(addCaseNoteSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { addCaseNoteSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const addCaseNoteSchema = await addCaseNoteSchemaBuilder.buildData(caseDataBeforeSubmission);
+      ZodHelper.safeParse(addCaseNoteSchema, this.ccdCaseData);
+    });
   }
 
   async AmendPartyDetails() {
@@ -53,12 +55,14 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.AMEND_PARTY_DETAILS,
       amendPartyDetailsData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
-    const { amendPartyDetailsSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const amendPartyDetailsSchema = await amendPartyDetailsSchemaBuilder.buildData(caseDataBeforeSubmission);
-    ZodHelper.safeParse(amendPartyDetailsSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { amendPartyDetailsSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const amendPartyDetailsSchema = await amendPartyDetailsSchemaBuilder.buildData(caseDataBeforeSubmission);
+      ZodHelper.safeParse(amendPartyDetailsSchema, this.ccdCaseData);
+    });
   }
 
   async MediationUnsuccessful() {
@@ -71,13 +75,15 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.MEDIATION_UNSUCCESSFUL,
       mediationUnsuccessfulData,
-      CaseState.JUDICIAL_REFERRAL,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
-    const { mediationUnsuccessfulSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const mediationUnsuccessfulSchema =
-      await mediationUnsuccessfulSchemaBuilder.buildData(caseDataBeforeSubmission);
-    ZodHelper.safeParse(mediationUnsuccessfulSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { mediationUnsuccessfulSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const mediationUnsuccessfulSchema =
+        await mediationUnsuccessfulSchemaBuilder.buildData(caseDataBeforeSubmission);
+      ZodHelper.safeParse(mediationUnsuccessfulSchema, this.ccdCaseData);
+    });
   }
 
   async ManageContactInformation() {
@@ -93,12 +99,14 @@ export default class CaseworkerApiSteps extends BaseApi {
       manageContactInformationData,
     );
 
-    const { manageContactInformationSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const manageContactInformationSchema =
-      await manageContactInformationSchemaBuilder.buildDS1LegalRepresentation(
-        caseDataBeforeSubmission,
-      );
-    ZodHelper.safeParse(manageContactInformationSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { manageContactInformationSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const manageContactInformationSchema =
+        await manageContactInformationSchemaBuilder.buildDS1LegalRepresentation(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(manageContactInformationSchema, this.ccdCaseData);
+    });
   }
 
   async TransferOnlineCase() {
@@ -113,10 +121,12 @@ export default class CaseworkerApiSteps extends BaseApi {
       transferOnlineCaseData,
     );
 
-    const { transferOnlineCaseSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const transferOnlineCaseSchema =
-      await transferOnlineCaseSchemaBuilder.buildData(caseDataBeforeSubmission);
-    ZodHelper.safeParse(transferOnlineCaseSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { transferOnlineCaseSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const transferOnlineCaseSchema =
+        await transferOnlineCaseSchemaBuilder.buildData(caseDataBeforeSubmission);
+      ZodHelper.safeParse(transferOnlineCaseSchema, this.ccdCaseData);
+    });
   }
 
   async SetAsideJudgmentError() {
@@ -131,10 +141,12 @@ export default class CaseworkerApiSteps extends BaseApi {
       setAsideOrderTypeData,
     );
 
-    const { setAsideOrderTypeSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const setAsideOrderTypeSchema =
-      await setAsideOrderTypeSchemaBuilder.buildJudgementError(caseDataBeforeSubmission);
-    ZodHelper.safeParse(setAsideOrderTypeSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { setAsideOrderTypeSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const setAsideOrderTypeSchema =
+        await setAsideOrderTypeSchemaBuilder.buildJudgementError(caseDataBeforeSubmission);
+      ZodHelper.safeParse(setAsideOrderTypeSchema, this.ccdCaseData);
+    });
   }
 
   async SetAsideJudgmentOrder() {
@@ -149,10 +161,12 @@ export default class CaseworkerApiSteps extends BaseApi {
       setAsideOrderTypeData,
     );
 
-    const { setAsideOrderTypeSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const setAsideOrderTypeSchema =
-      await setAsideOrderTypeSchemaBuilder.buildJudgeOrder(caseDataBeforeSubmission);
-    ZodHelper.safeParse(setAsideOrderTypeSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { setAsideOrderTypeSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const setAsideOrderTypeSchema =
+        await setAsideOrderTypeSchemaBuilder.buildJudgeOrder(caseDataBeforeSubmission);
+      ZodHelper.safeParse(setAsideOrderTypeSchema, this.ccdCaseData);
+    });
   }
 
   async ConfirmOrderReview() {
@@ -167,10 +181,12 @@ export default class CaseworkerApiSteps extends BaseApi {
       confirmOrderReviewData,
     );
 
-    const { confirmOrderReviewSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const confirmOrderReviewSchema =
-      await confirmOrderReviewSchemaBuilder.build(caseDataBeforeSubmission);
-    ZodHelper.safeParse(confirmOrderReviewSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { confirmOrderReviewSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const confirmOrderReviewSchema =
+        await confirmOrderReviewSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(confirmOrderReviewSchema, this.ccdCaseData);
+    });
   }
 
   async RecordJudgmentDeterMeansImmediately() {
@@ -185,10 +201,12 @@ export default class CaseworkerApiSteps extends BaseApi {
       recordJudgmentData,
     );
 
-    const { recordJudgmentSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const recordJudgmentSchema =
-      await recordJudgmentSchemaBuilder.buildDeterMeansImmediately(caseDataBeforeSubmission);
-    ZodHelper.safeParse(recordJudgmentSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { recordJudgmentSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const recordJudgmentSchema =
+        await recordJudgmentSchemaBuilder.buildDeterMeansImmediately(caseDataBeforeSubmission);
+      ZodHelper.safeParse(recordJudgmentSchema, this.ccdCaseData);
+    });
   }
 
   async EditJudgmentDeterMeansSetDate() {
@@ -203,10 +221,12 @@ export default class CaseworkerApiSteps extends BaseApi {
       editJudgmentData,
     );
 
-    const { editJudgmentSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const editJudgmentSchema =
-      await editJudgmentSchemaBuilder.buildDeterMeansSetDate(caseDataBeforeSubmission);
-    ZodHelper.safeParse(editJudgmentSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { editJudgmentSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const editJudgmentSchema =
+        await editJudgmentSchemaBuilder.buildDeterMeansSetDate(caseDataBeforeSubmission);
+      ZodHelper.safeParse(editJudgmentSchema, this.ccdCaseData);
+    });
   }
 
   async ReferJudgeDefenceReceived() {
@@ -221,10 +241,12 @@ export default class CaseworkerApiSteps extends BaseApi {
       referJudgeDefenceReceivedData,
     );
 
-    const { referJudgeDefenceReceivedSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const referJudgeDefenceReceivedSchema =
-      await referJudgeDefenceReceivedSchemaBuilder.build(caseDataBeforeSubmission);
-    ZodHelper.safeParse(referJudgeDefenceReceivedSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { referJudgeDefenceReceivedSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const referJudgeDefenceReceivedSchema =
+        await referJudgeDefenceReceivedSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(referJudgeDefenceReceivedSchema, this.ccdCaseData);
+    });
   }
   
   async ValidateDiscontinueClaimYes() {
@@ -238,16 +260,18 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT,
       validateDiscontinueClaimClaimantData,
-      CaseState.CASE_DISCONTINUED,
+      { expectedState: CaseState.CASE_DISCONTINUED },
     );
 
-    const { validateDiscontinueClaimClaimantSchemaBuilder } =
-      this.caseworkerSchemaBuilderFactory;
-    const validateDiscontinueClaimClaimantSchema =
-      await validateDiscontinueClaimClaimantSchemaBuilder.buildYesPermission(
-        caseDataBeforeSubmission,
-      );
-    ZodHelper.safeParse(validateDiscontinueClaimClaimantSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { validateDiscontinueClaimClaimantSchemaBuilder } =
+        this.caseworkerSchemaBuilderFactory;
+      const validateDiscontinueClaimClaimantSchema =
+        await validateDiscontinueClaimClaimantSchemaBuilder.buildYesPermission(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(validateDiscontinueClaimClaimantSchema, this.ccdCaseData);
+    });
   }
 
   async ValidateDiscontinueClaimNo() {
@@ -261,33 +285,18 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT,
       validateDiscontinueClaimClaimantData,
-      CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
-    const { validateDiscontinueClaimClaimantSchemaBuilder } =
-      this.caseworkerSchemaBuilderFactory;
-    const validateDiscontinueClaimClaimantSchema =
-      await validateDiscontinueClaimClaimantSchemaBuilder.buildNoPermission(
-        caseDataBeforeSubmission,
-      );
-    ZodHelper.safeParse(validateDiscontinueClaimClaimantSchema, this.ccdCaseData);
-  }
-
-  async SendMessage() {
-    await this.setupApiStep(ctscAdminUser);
-    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
-
-    const { sendAndReplyDataBuilder } = this.caseworkerDataBuilderFactory;
-    const sendAndReplyData = await sendAndReplyDataBuilder.buildSendDistrictJudge();
-    await super.submitCCDEvent(
-      ctscAdminUser,
-      ccdEvents.SEND_AND_REPLY,
-      sendAndReplyData,
-    );
-
-    const { sendAndReplySchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
-    ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { validateDiscontinueClaimClaimantSchemaBuilder } =
+        this.caseworkerSchemaBuilderFactory;
+      const validateDiscontinueClaimClaimantSchema =
+        await validateDiscontinueClaimClaimantSchemaBuilder.buildNoPermission(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(validateDiscontinueClaimClaimantSchema, this.ccdCaseData);
+    });
   }
 
   async ReplyMessage() {
@@ -302,9 +311,11 @@ export default class CaseworkerApiSteps extends BaseApi {
       sendAndReplyData,
     );
 
-    const { sendAndReplySchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
-    ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { sendAndReplySchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+    });
   }
 
   async CaseProceedsInCaseman() {
@@ -317,11 +328,14 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       caseProceedsInCasemanData,
+      {expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM}
     );
 
-    const { caseProceedsInCasemanSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
-    const caseProceedsInCasemanSchema =
-      await caseProceedsInCasemanSchemaBuilder.build(caseDataBeforeSubmission);
-    ZodHelper.safeParse(caseProceedsInCasemanSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { caseProceedsInCasemanSchemaBuilder } = this.caseworkerSchemaBuilderFactory;
+      const caseProceedsInCasemanSchema =
+        await caseProceedsInCasemanSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(caseProceedsInCasemanSchema, this.ccdCaseData);
+    });
   }
 }

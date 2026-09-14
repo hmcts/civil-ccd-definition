@@ -1,6 +1,6 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import RecipientRoleType from '../../../../constants/ccd-events/send-and-reply/recipient-role-type';
-import SendAndReplyOption from '../../../../constants/ccd-events/send-and-reply/send-and-reply-option';
+import RecipientRoleType from '../../../../constants/ccd-events/ccd-events/send-and-reply/recipient-role-type';
+import SendAndReplyOption from '../../../../constants/ccd-events/ccd-events/send-and-reply/send-and-reply-option';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import sendAndReplyDataBuilderComponents from './send-and-reply-data-builder-components';
 

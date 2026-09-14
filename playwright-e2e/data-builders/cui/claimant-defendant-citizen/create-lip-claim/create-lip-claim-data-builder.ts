@@ -3,7 +3,6 @@ import ClaimTrack from '../../../../constants/cases/claim-track';
 import ClaimType from '../../../../constants/cases/claim-type';
 import claimantDefendantPartyTypes from '../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import CaseDataHelper from '../../../../helpers/case-data-helper';
 import { ClaimantDefendantPartyType } from '../../../../models/users/claimant-defendant-party-types';
 import createClaimData from './create-lip-claim-data-builder-components';
 
@@ -17,7 +16,7 @@ export default class CreateLipClaimDataBuilder extends BaseDataBuilder {
     return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
   }
 
-  async buildIntermediate() {
+  async buildInter() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
@@ -40,11 +39,6 @@ export default class CreateLipClaimDataBuilder extends BaseDataBuilder {
     });
 
     const { civilServiceRequests } = this.requestsFactory;
-    const claimValue = CaseDataHelper.getClaimValue(claimTrack);
-    const claimFee = await civilServiceRequests.getClaimFeeData(
-      this.claimantCitizenUser,
-      claimValue,
-    );
 
     return {
       ...createClaimData.claimant1(claimantPartyType, this.claimantCitizenUser),
@@ -58,7 +52,7 @@ export default class CreateLipClaimDataBuilder extends BaseDataBuilder {
       ...createClaimData.claimant1AdditionalLipPartyDetails(claimantPartyType),
       ...createClaimData.timelineOfEvents,
       ...createClaimData.flightDelay,
-      ...createClaimData.claimFee(claimFee),
+      ...(await createClaimData.claimFee(claimTrack, this.claimantCitizenUser, civilServiceRequests)),
     };
   }
 }

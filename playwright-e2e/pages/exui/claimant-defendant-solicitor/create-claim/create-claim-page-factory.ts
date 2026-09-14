@@ -7,6 +7,7 @@ import ClaimantPage from './common/claimant/claimant-page';
 import DefendantPage from './common/defendant/defendant-page';
 import NotificationsPage from './common/notifications/notifcations-page';
 import PbaNumberPage from './common/pba-number/pba-number-page';
+import PbaNumberOtherRemedyPage from './common/pba-number/pba-number-other-remedy-page';
 import ReferencesPage from './common/references/references-page';
 import SameLegalRepresentativePage from './common/same-legal-representative/same-legal-representative-page';
 import SecondClaimantPage from './common/second-claimant/second-claimant-page';
@@ -17,6 +18,7 @@ import BreakDownInterestPage from './lr-spec/break-down-interest/break-down-inte
 import ChecklistPage from './lr-spec/check-list/checklist-page';
 import ClaimAmountDetailsPage from './lr-spec/claim-amount-details/claim-amount-details-page';
 import ClaimAmountPage from './lr-spec/claim-amount/claim-amount-page';
+import ClaimDeclarationPage from './unspec/claim-declaration/claim-declaration-page';
 import ClaimInterestOptionsPage from './lr-spec/claim-interest-options/claim-interest-options-page';
 import ClaimInterestPage from './lr-spec/claim-interest/claim-interest-page';
 import ClaimTimelineUploadPage from './lr-spec/claim-timeline-upload/claim-timeline-upload-page';
@@ -56,6 +58,7 @@ import DefendantSolicitorOrganisationPage from './unspec/defendant-solicitor-org
 import DefendantSolicitorServiceAddressPage from './unspec/defendant-solicitor-service-address/defendant-solicitor-service-address-page';
 import DetailsPage from './unspec/details/details-page';
 import EligibilityPage from './unspec/eligibility/eligibility-page';
+import HumanRightsActPage from './unspec/human-rights-act/human-rights-act-page';
 import LegalRepresentationPage from './unspec/legal-representation/legal-representation-page';
 import PersonalInjuryTypePage from './unspec/personal-injury-type/personal-injury-type-page';
 import SecondClaimantLitigationFriendPage from './unspec/second-claimant-litigation-friend/second-claimant-litigation-friend-page';
@@ -336,6 +339,14 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new ClaimTypePage(this.page);
   }
 
+  get claimDeclarationPage() {
+    return new ClaimDeclarationPage(this.page, new YesOrNoFragment(this.page));
+  }
+
+  get humanRightsActPage() {
+    return new HumanRightsActPage(this.page, new YesOrNoFragment(this.page));
+  }
+
   get flightDelayClaimPage() {
     const dateFragment = new DateFragment(this.page);
     return new FlightDelayClaimPage(this.page, dateFragment);
@@ -425,6 +436,10 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get pbaNumberPage() {
     return new PbaNumberPage(this.page);
+  }
+
+  get pbaNumberOtherRemedyPage() {
+    return new PbaNumberOtherRemedyPage(this.page);
   }
 
   get fixedCommencementCostsPage() {

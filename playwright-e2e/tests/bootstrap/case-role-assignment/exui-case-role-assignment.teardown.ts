@@ -8,7 +8,7 @@ if (config.unassignCases) {
 
     for (const solicitorUser of solicitorUsers) {
       teardown(solicitorUser.name, async ({ CaseRoleAssignmentApiSteps }) => {
-        await CaseRoleAssignmentApiSteps.UnassignCasesForUser(solicitorUser);
+        await CaseRoleAssignmentApiSteps.UnassignCases(solicitorUser);
       });
     }
   });

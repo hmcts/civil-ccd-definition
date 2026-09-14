@@ -1,4 +1,4 @@
-import { CCDEvent } from '../../../../models/ccd-events/ccd-events';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 
 export const tabs = {
   tasks: {
@@ -76,26 +76,32 @@ export const buttons = {
     selector: "button[name='Submit request']",
   },
   viewHearingDetails: {
-    label: 'View details',
+    title: 'View details',
     selector: 'button[id^="link-view-details"]',
   },
   cancelHearing: {
-    label: 'Cancel',
+    title: 'Cancel',
     selector: 'button[id^="link-cancel"]',
   },
   askFollowUpQuestion: {
     title: 'Ask a follow-up question',
-    selector: "#ask-follow-up-question",
+    selector: '#ask-follow-up-question',
+  },
+  issueRefund: {
+    title: 'Issue refund',
   },
 };
 
 export const links = {
   requestHearing: {
-    label: 'Request a hearing',
+    title: 'Request a hearing',
   },
   firstQueryLink: {
-    selector: '.govuk-table__cell.query-list__cell.query-list__cell--first button'
-  }
+    selector: '.govuk-table__cell.query-list__cell.query-list__cell--first button',
+  },
+  review: {
+    title: 'Review',
+  },
 };
 
 export const containers = {
@@ -116,8 +122,6 @@ export const subheadings = {
     bundleName: 'Bundle name',
   },
 };
-
-
 
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
   `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;

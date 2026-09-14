@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures/index';
 test.describe(
   '1v1 spec query management non-hearing journey',
   {
-    tag: ['@civil-ccd-nightly'],
+    tag: ['@civil-ccd-nightly', '@ui-qm'],
   },
   () => {
     test('1v1 spec query management non-hearing journey', async ({
@@ -15,12 +15,12 @@ test.describe(
       DefendantSolicitor1SpecSteps,
       CaseworkerSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimIntermediate1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondIntermediateFullDefence();
-      await ClaimantSolicitorSpecApiSteps.RespondIntermediateRejectFullDefence();
-      await JudgeApiSteps.GenerateDirectionsOrderIntermediate();
+      await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
+      await ClaimantSolicitorSpecApiSteps.RespondInterRejectFullDefence();
+      await JudgeApiSteps.GenerateDirectionsOrderInter();
       await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.RaiseANewQuery();
       await DefendantSolicitor1SpecSteps.Login();

@@ -4,6 +4,7 @@ import AddDefendantLitigationFriendDataBuilder from './add-defendant-litigation-
 import AddOrAmendClaimDocumentsDataBuilder from './add-or-amend-claim-documents/unspec/add-or-amend-claim-documents-data-builder';
 import ClaimantResponseDataBuilder from './claimant-response/unspec/claimant-response-data-builder';
 import ClaimantResponseSpecDataBuilder from './claimant-response/lr-spec/claimant-response-spec-data-builder';
+import CreateAPBAPaymentDataBuilder from '../common/create-apba-payment/create-apba-payment-data-builder.ts';
 import DefendantResponseDataBuilder from './defendant-response/unspec/defendant-response-data-builder';
 import DefendantResponseSpecDataBuilder from './defendant-response/lr-spec/defendant-response-spec-data-builder';
 import EvidenceUploadApplicantDataBuilder from './evidence-upload-applicant/evidence-upload-applicant-data-builder';
@@ -12,12 +13,15 @@ import CreateClaimSpecDataBuilder from './create-claim/lr-spec/create-claim-spec
 import CreateClaimDataBuilder from './create-claim/unspec/create-claim-data-builder';
 import InformAgreedExtensionDateDataBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-data-builder';
 import InformAgreedExtensionDateSpecDataBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-data-builder';
+import InitiateGeneralApplicationDataBuilder from './initiate-general-application/initiate-general-application-data-builder';
 import ManageContactInformationDataBuilder from '../common/manage-contact-information/manage-contact-information-data-builder';
 import NoticeOfChangeDataBuilder from './notice-of-change/notice-of-change-data-builder';
 import NotifyClaimDataBuilder from './notify-claim/unspec/notify-claim-data-builder';
 import NotifyClaimDetailsDataBuilder from './notify-claim-details/unspec/notify-claim-details-data-builder';
+import QueryManagementRaiseDataBuilder from '../common/query-management-raise/query-management-raise-data-builder';
+import QueryManagementRespondDataBuilder from '../common/query-management-respond/query-management-respond-data-builder';
 import RequestForReconsiderationDataBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-data-builder';
-import CreateClaimSpecAfterPaymentLrDataBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-lr-data-builder';
+import CreateClaimSpecAfterPaymentDataBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-data-builder';
 import CreateClaimAfterPaymentDataBuilder from './create-claim-after-payment/unspec/create-claim-after-payment-data-builder';
 import DefaultJudgementDataBuilder from './default-judgement/unspec/default-judgement-data-builder.ts';
 import DefaultJudgementSpecDataBuilder from './default-judgement/lr-spec/default-judgement-spec-data-builder.ts';
@@ -88,6 +92,10 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
     return new InformAgreedExtensionDateSpecDataBuilder(this.requestsFactory, this.testData);
   }
 
+  get initiateGeneralApplicationDataBuilder() {
+    return new InitiateGeneralApplicationDataBuilder(this.requestsFactory, this.testData);
+  }
+
   get manageContactInformationDataBuilder() {
     return new ManageContactInformationDataBuilder(this.requestsFactory, this.testData);
   }
@@ -96,12 +104,24 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
     return new NoticeOfChangeDataBuilder(this.requestsFactory, this.testData);
   }
 
+  get queryManagementRaiseDataBuilder() {
+    return new QueryManagementRaiseDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get queryManagementRespondDataBuilder() {
+    return new QueryManagementRespondDataBuilder(this.requestsFactory, this.testData);
+  }
+
   get createClaimAfterPaymentDataBuilder() {
     return new CreateClaimAfterPaymentDataBuilder(this.requestsFactory, this.testData);
   }
 
   get createClaimSpecAfterPaymentDataBuilder() {
-    return new CreateClaimSpecAfterPaymentLrDataBuilder(this.requestsFactory, this.testData);
+    return new CreateClaimSpecAfterPaymentDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get createAPBAPaymentDataBuilder() {
+    return new CreateAPBAPaymentDataBuilder(this.requestsFactory, this.testData);
   }
 
   get defaultJudgementDataBuilder() {

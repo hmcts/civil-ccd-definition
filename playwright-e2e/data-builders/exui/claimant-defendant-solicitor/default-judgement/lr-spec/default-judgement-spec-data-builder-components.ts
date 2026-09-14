@@ -1,11 +1,11 @@
 import CaseDataHelper from '../../../../../helpers/case-data-helper.ts';
 import {ClaimantDefendantPartyType} from "../../../../../models/users/claimant-defendant-party-types.ts";
 import partys from "../../../../../constants/users/partys.ts";
-import DJPaymentTypeSpec from '../../../../../constants/ccd-events/default-judgement/dj-payment-type-spec.ts';
+import DJPaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-payment-type-spec.ts';
 import DateHelper from '../../../../../helpers/date-helper.ts';
 import ClaimType from '../../../../../constants/cases/claim-type.ts';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper.ts';
-import DJSpecType from '../../../../../constants/ccd-events/default-judgement/dj-spec-type.ts';
+import DJSpecType from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-spec-type.ts';
 
 const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });

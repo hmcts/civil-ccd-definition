@@ -2,9 +2,9 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 spec record judgment api test',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly'] },
   async () => {
-    test('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({
+    test('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', { tag: '@api-jo' }, async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
@@ -31,7 +31,7 @@ test.describe(
       await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
       await JudgeApiSteps.SdoTrail();
-      await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
       await CaseworkerApiSteps.ConfirmOrderReview();
       await CaseworkerApiSteps.RecordJudgmentDeterMeansImmediately();
       await CaseworkerApiSteps.EditJudgmentDeterMeansSetDate();
@@ -51,7 +51,7 @@ test.describe(
       await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
       await JudgeApiSteps.SdoTrail();
-      await JudgeApiSteps.GenerateDirectionsOrderFreeFormOrder();
+      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
       await CaseworkerApiSteps.ConfirmOrderReview();
       await CaseworkerApiSteps.RecordJudgmentDeterMeansImmediately();
       await CaseworkerApiSteps.ReferJudgeDefenceReceived();

@@ -3,7 +3,8 @@ import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { claimantSolicitorUser } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -27,6 +28,11 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     await super.idamActions.exuiLogin(claimantSolicitorUser);
   }
 
+  async NavigateToCaseDetails() {
+    await super.setDebugTestData();
+    await super.exuiDashboardActions.goToCaseDetails();
+  }
+
   async CreateClaimFast1v1() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryCCDEvent(
@@ -38,7 +44,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.noAddAnotherClaimant();
         await createClaimActions.defendantDetails();
         await createClaimActions.noAddAnotherDefendant();
-        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.claimDetailsFast();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -46,8 +52,56 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
+    );
+  }
 
-      { verifySuccessEvent: false },
+  async CreateClaimFastOtherRemedy() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.noAddAnotherDefendant();
+        await createClaimActions.claimDetailsFastOtherRemedy();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+      { verifySuccessEvent: false, expectedState: CaseState.PENDING_CASE_ISSUED },
+    );
+  }
+
+  async CreateClaimFastHousingDisrepair() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.noAddAnotherDefendant();
+        await createClaimActions.claimDetailsFastHousingDisrepair();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+      { verifySuccessEvent: false, expectedState: CaseState.PENDING_CASE_ISSUED },
     );
   }
 
@@ -62,7 +116,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.noAddAnotherClaimant();
         await createClaimActions.defendantDetails();
         await createClaimActions.noAddAnotherDefendant();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -70,8 +124,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -86,7 +142,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.noAddAnotherClaimant();
         await createClaimActions.defendantDetailsLIP(); // Placeholder for LIP-specific defendant details journey
         await createClaimActions.noAddAnotherDefendant();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -94,8 +150,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaimLIP();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -111,7 +169,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.secondClaimant();
         await createClaimActions.secondClaimantLitigationFriend();
         await createClaimActions.defendantDetails();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -119,8 +177,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -136,7 +196,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantSS();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -144,8 +204,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -161,7 +223,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetailsLIP(); // First defendant (LIP)
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantLIP(); // Second defendant (LIP)
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -169,8 +231,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaimLIP();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -186,7 +250,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails(); // First defendant (Legally Represented)
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantLIP(); // Second defendant (LIP)
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -194,8 +258,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaimLIP();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -211,7 +277,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantDSdetails();
-        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.claimDetailsSmall();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -219,8 +285,34 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
+    );
+  }
 
-      { verifySuccessEvent: false },
+  async CreateClaimSmallHousingDisrepair1v2DS() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.addAnotherDefendant();
+        await createClaimActions.secondDefendantDSdetails();
+        await createClaimActions.claimDetailsSmallHousingDisrepair();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+      { verifySuccessEvent: false, expectedState: CaseState.PENDING_CASE_ISSUED },
     );
   }
 
@@ -236,7 +328,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantSS();
-        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.claimDetailsFast();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -244,8 +336,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -261,7 +355,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.defendantDetails();
         await createClaimActions.addAnotherDefendant();
         await createClaimActions.secondDefendantDSdetails();
-        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.claimDetailsFast();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -269,8 +363,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -286,7 +382,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.secondClaimant();
         await createClaimActions.secondClaimantLitigationFriend();
         await createClaimActions.defendantDetails();
-        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.claimDetailsFast();
         await createClaimActions.statementOfTruthCreateClaim();
         await createClaimActions.submitCreateClaim();
       },
@@ -294,8 +390,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
     );
   }
 
@@ -310,8 +408,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimActions.confirmNotifyClaim();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_CASE_DETAILS_NOTIFICATION,
+      },
     );
   }
 
@@ -327,8 +427,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimActions.confirmNotifyClaim();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_CASE_DETAILS_NOTIFICATION },
     );
   }
 
@@ -343,8 +442,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimActions.confirmNotifyClaimCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_CASE_DETAILS_NOTIFICATION },
     );
   }
   async NotifyClaim1v2LIPS() {
@@ -360,8 +458,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimActions.confirmNotifyClaim();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_CASE_DETAILS_NOTIFICATION,
+      },
     );
   }
 
@@ -377,8 +477,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimActions.confirmNotifyClaimCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_CASE_DETAILS_NOTIFICATION },
     );
   }
 
@@ -393,8 +492,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimDetailsActions.confirmNotifyClaimDetails();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -410,8 +511,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimDetailsActions.confirmNotifyClaimDetails();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
   }
 
@@ -426,8 +526,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
   }
 
@@ -444,8 +543,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
@@ -461,12 +562,11 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
   }
 
-  async RespondFastProceed1v1() {
+  async RespondFastProceed() {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryCCDEvent(
       async () => {
@@ -480,8 +580,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.JUDICIAL_REFERRAL,
+      },
     );
   }
 
@@ -499,8 +601,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.JUDICIAL_REFERRAL,
+      },
     );
   }
 
@@ -518,8 +622,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -537,8 +640,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -556,8 +658,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -575,8 +676,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -594,8 +694,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -613,8 +712,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.JUDICIAL_REFERRAL,
+      },
     );
   }
 
@@ -632,8 +733,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.JUDICIAL_REFERRAL,
+      },
     );
   }
 
@@ -651,8 +754,26 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await defaultJudgementActions.confirmDefaultJudgment();
       },
       ccdEvents.DEFAULT_JUDGEMENT,
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+  }
 
-      { verifySuccessEvent: false },
+  async RequestDefaultJudgmentOtherRemedy() {
+    const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
+    await this.retryCCDEvent(
+      async () => {
+        await defaultJudgementActions.defendantDetails();
+        await defaultJudgementActions.showCertifyStatement();
+        await defaultJudgementActions.abandonOtherRemedy();
+        await defaultJudgementActions.hearingType();
+        await defaultJudgementActions.hearingSupportRequirementsFieldDJ();
+        await defaultJudgementActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementActions.confirmDefaultJudgment();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT,
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -670,8 +791,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await defaultJudgementActions.confirmDefaultJudgment();
       },
       ccdEvents.DEFAULT_JUDGEMENT,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.JUDICIAL_REFERRAL },
     );
   }
 
@@ -688,7 +808,10 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await evidenceUploadApplicantActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
     );
   }
 
@@ -705,7 +828,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await evidenceUploadApplicantActions.evidenceUploadConfirm();
       },
       ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -722,7 +845,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.HEARING_READINESS },
     );
   }
 
@@ -740,7 +863,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.HEARING_READINESS },
     );
   }
 
@@ -758,7 +881,40 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await discontinueClaimClaimantActions.confirmDiscontinueClaimPage();
       },
       ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.HEARING_READINESS },
+    );
+  }
+
+  async RequestRefund() {
+    const { refundActions } = this.claimantSolicitorActionsFactory;
+    await super.retryRequestRefundEvent(
+      async () => {
+        await refundActions.review();
+        await refundActions.issueRefund();
+        await refundActions.selectFee();
+        await refundActions.selectAmendedClaim();
+        await refundActions.enterContactInformation();
+        await refundActions.refundRequestSubmit();
+      },
+      async () => {
+        await refundActions.refundConfirmSubmittedPage();
+      },
+    );
+  }
+
+  async AmendReturnedRefund() {
+    const { refundActions } = this.claimantSolicitorActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.reviewRefund();
+        await refundActions.changeRefundDetails();
+        await refundActions.changeReason();
+        await refundActions.selectSystemTechnicalError();
+        await refundActions.refundRequestSubmit();
+      },
+      async () => {
+        await refundActions.refundConfirmSubmittedPage();
+      },
     );
   }
 }

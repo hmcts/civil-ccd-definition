@@ -4,6 +4,7 @@ import path from 'path';
 import FileError from '../errors/file-error';
 import FileType from '../constants/test-utils/file-type';
 import filePaths from '../config/file-paths';
+import config from '../config/config';
 
 export default class FileSystemHelper {
   private static writePaths = [
@@ -11,6 +12,7 @@ export default class FileSystemHelper {
     `${filePaths.userAssignedCases}/`,
     `${filePaths.userCookies}/`,
     `${filePaths.axe}/`,
+    `${config.playwright.functionalTestResultsDir}/`,
     filePaths.bankHolidaysJson,
   ];
 

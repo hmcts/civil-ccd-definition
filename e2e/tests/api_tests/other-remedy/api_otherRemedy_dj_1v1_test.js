@@ -8,10 +8,11 @@ if (config.runWAApiTest) {
   caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
 }
 
-Feature('Unspec 1v1 api Other Remedy default judgment journey').tag('@civil-service-nightly @api-other-remedy-dj');
+Feature('Unspec 1v1 api Other Remedy default judgment journey').tag('@api-other-remedy-dj');
 
 let caseId;
 
+// DTSCCI-5198 RETAIN: other-remedy CCD fields plus DJ to SDO. Not covered by DJ integration tests.
 Scenario('01 Default Judgment claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenarioOtherRemedy, '22000');
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);

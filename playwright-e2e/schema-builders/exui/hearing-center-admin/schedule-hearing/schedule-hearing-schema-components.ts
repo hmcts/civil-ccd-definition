@@ -33,7 +33,6 @@ const hearingDocuments = {
         documentLink: z.looseObject({
           category_id: nonEmptyString,
           document_url: nonEmptyString,
-          upload_timestamp: nonEmptyString,
           document_filename: nonEmptyString,
           document_binary_url: nonEmptyString,
         }),

@@ -28,7 +28,7 @@ export default class ApplicantCourtLocationLRSpecPage extends ExuiPage(BasePage)
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      preferredCourts[partys.CLAIMANT_1.key].default,
+      preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
       dropdowns.courtLocations.selector,
     );
     await super.inputText(

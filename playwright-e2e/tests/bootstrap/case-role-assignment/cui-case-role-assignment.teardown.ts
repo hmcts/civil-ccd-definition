@@ -8,11 +8,11 @@ if (config.unassignCases) {
 
     for (let workerIndex = 0; workerIndex < config.playwright.workers; workerIndex++) {
       teardown(`Worker ${workerIndex + 1}: Claimant`, async ({ CaseRoleAssignmentApiSteps }) => {
-        await CaseRoleAssignmentApiSteps.UnassignCasesForUser(claimants[workerIndex]);
+        await CaseRoleAssignmentApiSteps.UnassignCases(claimants[workerIndex]);
       });
 
       teardown(`Worker ${workerIndex + 1}: Defendant`, async ({ CaseRoleAssignmentApiSteps }) => {
-        await CaseRoleAssignmentApiSteps.UnassignCasesForUser(defendants[workerIndex]);
+        await CaseRoleAssignmentApiSteps.UnassignCases(defendants[workerIndex]);
       });
     }
   });

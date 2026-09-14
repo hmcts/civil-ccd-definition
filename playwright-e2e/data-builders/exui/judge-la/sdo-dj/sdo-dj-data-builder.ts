@@ -1,5 +1,5 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import SdoDJType from '../../../../constants/ccd-events/sdo-dj/sdo-dj-type';
+import SdoDJType from '../../../../constants/ccd-events/ccd-events/sdo-dj/sdo-dj-type';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import sdoDJDataBuilderComponents from './sdo-dj-data-builder-components';
 

@@ -16,7 +16,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
   }
 
   async AssignCaseRoleToDS2() {
@@ -28,7 +28,7 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData?.id);
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData?.id);
   }
 
   async AssignCaseRoleToDC() {
@@ -40,13 +40,13 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
-    UserAssignedCasesHelper.addAssignedCaseToUser(this.defendantCitizenUser, this.ccdCaseData?.id);
+    await UserAssignedCasesHelper.addAssignedCaseToUser(this.defendantCitizenUser, this.ccdCaseData?.id);
   }
 
-  async UnassignCasesForUser(user: User) {
-    await this.setupUserData(user);
+  async UnassignCases(user: User) {
     const assignedCases = await UserAssignedCasesHelper.getUserAssignedCases(user);
     if (assignedCases) {
+      await this.setupUserData(user);
       const { civilServiceRequests } = this.requestsFactory;
       await civilServiceRequests.unassignUserFromCases(user, assignedCases);
     }
@@ -66,6 +66,6 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
       this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
   }
 }
