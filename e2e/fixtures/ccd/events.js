@@ -316,5 +316,11 @@ module.exports = {
     name: 'Create a hearing notice',
     description: 'Create a hearing notice',
     order: 18
-  }
+  },
+  ENTER_BREATHING_SPACE_SPEC: {
+    id: 'ENTER_BREATHING_SPACE_SPEC',
+    name: 'Enter Breathing Space',
+    description: 'Enter Breathing Space',
+    order: 51,
+  },
 };

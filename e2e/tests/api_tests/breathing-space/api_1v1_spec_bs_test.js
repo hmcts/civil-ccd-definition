@@ -22,7 +22,7 @@ const breathingSpaceDetailsMentalHealth = [
   'refMental1234'
 ];
 
-Feature('1v1 spec enter into BS').tag('@civil-service-nightly @api-spec-bs');
+Feature('1v1 spec enter into BS').tag('@civil-service-nightly @api-breathing-space');
 
 Scenario('1v1 spec full defence and enter into Standard BS', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
