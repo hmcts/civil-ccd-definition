@@ -38,24 +38,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM_UNSPEC",
-    "CaseFieldID": "partiesNames",
-    "PageID": "ConfirmSettlement",
-    "PageLabel": "Confirm settle this claim",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "SETTLE_CLAIM_UNSPEC",
     "CaseFieldID": "markPaidConsent",
     "DisplayContext": "MANDATORY",
     "PageID": "ConfirmSettlement",
     "PageLabel": "Confirm settle this claim",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
@@ -66,7 +54,7 @@
     "PageID": "ConfirmSettlement",
     "PageLabel": "Confirm settle this claim",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N"
   }
