@@ -5,117 +5,27 @@ import DefendantResponseType from '../../../../../constants/ccd-events/ccd-event
 import partys from '../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DefendantResponseOptions from '../../../../../models/ccd-events/cui-ccd-events/defendant-response-options';
+import { Party } from '../../../../../models/users/partys';
 import defendantResponseDataComponents from './defendant-response-data-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
-  async buildDefendantResponse(options: DefendantResponseOptions = {}) {
+  async buildDefendantResponseDS1(options: DefendantResponseOptions = {}) {
     return this.buildData(options);
   }
 
-  async buildDS1SmallFullDefence() {
-    return this.buildData();
+  async buildDefendantResponseDS2(options: DefendantResponseOptions = {}) {
+    return this.buildData(options, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  async buildDS2SmallFullDefence() {
-    return this.buildData({ defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2 });
-  }
-
-  async buildDS1FastFullDefence2v1() {
-    return this.buildData({
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      claimType: ClaimType.TWO_VS_ONE,
-    });
-  }
-
-  async buildDS1InterFullDefence2v1() {
-    return this.buildData({
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      claimType: ClaimType.TWO_VS_ONE,
-    });
-  }
-
-  async buildDS1MultiFullDefence2v1() {
-    return this.buildData({
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      claimType: ClaimType.TWO_VS_ONE,
-    });
-  }
-
-  async buildDS1FastFullDefence1v2SS() {
-    return this.buildData({
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-    });
-  }
-
-  async buildDS1InterFullDefence1v2DS() {
-    return this.buildData({
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-    });
-  }
-
-  async buildDS1InterFullDefence1v2SS() {
-    return this.buildData({
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-    });
-  }
-
-  async buildDS1MultiFullDefence1v2SS() {
-    return this.buildData({
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-    });
-  }
-
-  async buildDS1FastFullDefence() {
-    return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
-  }
-
-  async buildDS1InterFullDefence() {
-    return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
-  }
-
-  async buildDS1MultiFullDefence() {
-    return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
-  }
-
-  async buildDS2FastFullDefence() {
-    return this.buildData({
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-
-  async buildDS2FastTrackFullDefence() {
-    return this.buildData({
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-
-  async buildDS2MultiFullDefence() {
-    return this.buildData({
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-
-  async buildDS2InterFullDefence() {
-    return this.buildData({
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-
-  protected async buildData({
-    claimType = ClaimType.ONE_VS_ONE,
-    claimTrack = ClaimTrack.SMALL_CLAIM,
-    responseType = DefendantResponseType.FULL_DEFENCE,
-    defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
-  }: DefendantResponseOptions = {}) {
+  protected async buildData(
+    {
+      claimType = ClaimType.ONE_VS_ONE,
+      claimTrack = ClaimTrack.SMALL_CLAIM,
+      responseType = DefendantResponseType.FULL_DEFENCE,
+    }: DefendantResponseOptions = {},
+    defendantSolicitorParty: Party = partys.DEFENDANT_SOLICITOR_1,
+  ) {
     const { civilServiceRequests } = this.requestsFactory;
 
     const eventData: Record<string, unknown> = {};

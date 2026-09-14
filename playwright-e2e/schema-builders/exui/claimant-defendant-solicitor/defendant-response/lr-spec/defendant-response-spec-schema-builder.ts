@@ -16,9 +16,32 @@ import DefendantResponseSpecOptions from '../../../../../models/ccd-events/cui-c
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
-  async buildDefendantResponse(
+  async buildDefendantResponseDS1(
     caseDataBeforeSubmission: CCDCaseData | undefined,
     options: DefendantResponseSpecOptions = {},
+  ) {
+    return this.buildDefendantResponse(
+      caseDataBeforeSubmission,
+      options,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+  }
+
+  async buildDefendantResponseDS2(
+    caseDataBeforeSubmission: CCDCaseData | undefined,
+    options: DefendantResponseSpecOptions = {},
+  ) {
+    return this.buildDefendantResponse(
+      caseDataBeforeSubmission,
+      options,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
+  }
+
+  private async buildDefendantResponse(
+    caseDataBeforeSubmission: CCDCaseData | undefined,
+    options: DefendantResponseSpecOptions,
+    defendantSolicitorParty: Party,
   ) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: options.claimTrack,
@@ -27,304 +50,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       defenceRouteSpec: options.defenceRoute,
       paymentTypeSpec: options.paymentType,
       defenceAdmittedPartRoute: options.defenceAdmittedPartRoute,
-      defendantSolicitorParty: options.defendantSolicitorParty,
-    });
-  }
-
-  async buildFastFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildInterFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildInter1v2DSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildMultiFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildMultiFullDefence1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildMultiFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildDS1CounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildDS1MultiCounterClaim(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildDS1FastPartAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildDS1InterPartAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildDS1MultiPartAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildDS1FullAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      responseType: DefendantResponseSpecType.FULL_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.IMMEDIATELY,
-    });
-  }
-
-  async buildDS1MultiFullAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.IMMEDIATELY,
-    });
-  }
-
-  async buildDS1FullAdmitSetDate(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      responseType: DefendantResponseSpecType.FULL_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
-    });
-  }
-
-  async buildDS1FullAdmitSetDate1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      responseType: DefendantResponseSpecType.FULL_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
-    });
-  }
-
-  async buildDS1FullAdmitRepayment2v1(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      responseType: DefendantResponseSpecType.FULL_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.REPAYMENT_PLAN,
-    });
-  }
-
-  async buildDS1SmallPartAdmitImmediately(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-    });
-  }
-
-  async buildDS1SmallPartAdmitHasPaid(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-      defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec.HAS_PAID,
-    });
-  }
-
-  async buildDS1FastPartAdmitSetDate1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
-    });
-  }
-
-  async buildDS1SmallPartAdmitSetDate1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.BY_SET_DATE,
-    });
-  }
-
-  async buildDS1FastPartAdmitRepayment2v1(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.REPAYMENT_PLAN,
-    });
-  }
-
-  async buildDS1CounterClaim2v1(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildDS1SmallPartAdmitRepayment2v1(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.PART_ADMISSION,
-      paymentTypeSpec: PaymentTypeSpec.REPAYMENT_PLAN,
-    });
-  }
-
-  async buildDS2FastFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-
-  async buildDS2InterFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-
-  async buildDS2Inter1v2DSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-  async buildDS2MultiFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimTrack: ClaimTrack.MULTI_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-
-  async buildDS2SmallFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
-    });
-  }
-
-  async buildFast2v1FullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildSmall2v1FullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildFast1v2SSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildInter1v2SSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildDS1CounterClaim1v2SS(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      responseType: DefendantResponseSpecType.COUNTER_CLAIM,
-    });
-  }
-
-  async buildSmallFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_ONE,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildSmall1v2SSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
-    });
-  }
-
-  async buildSmall1v2DSFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      responseType: DefendantResponseSpecType.FULL_DEFENCE,
+      defendantSolicitorParty,
     });
   }
 

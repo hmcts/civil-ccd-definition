@@ -10,7 +10,6 @@ import DefenceAdmittedPartRouteSpec from '../../../constants/ccd-events/ccd-even
 import DefenceRouteSpec from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
 import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 import PaymentTypeSpec from '../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
-import partys from '../../../constants/users/partys';
 import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
 import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper';
 import ZodHelper from '../../../helpers/zod-helper';
@@ -57,7 +56,6 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defenceRoute: DefenceRouteSpec.DISPUTE,
       paymentType: PaymentTypeSpec.IMMEDIATELY,
       defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
       ...options,
     };
 
@@ -73,7 +71,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
 
     const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseSpecDataBuilder.buildDefendantResponse(responseOptions);
+      await defendantResponseSpecDataBuilder.buildDefendantResponseDS2(responseOptions);
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
@@ -86,7 +84,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       const { defendantResponseSpecSchemaBuilder } =
         this.claimantDefendantSolicitorSchemaBuilderFactory;
       const defendantResponseSchema =
-        await defendantResponseSpecSchemaBuilder.buildDefendantResponse(
+        await defendantResponseSpecSchemaBuilder.buildDefendantResponseDS2(
           caseDataBeforeSubmission,
           responseOptions,
         );

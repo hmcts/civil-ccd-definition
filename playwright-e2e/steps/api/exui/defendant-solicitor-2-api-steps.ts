@@ -7,7 +7,6 @@ import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
 import DefendantResponseType from '../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
-import partys from '../../../constants/users/partys';
 import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
 import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper';
 import ZodHelper from '../../../helpers/zod-helper';
@@ -98,7 +97,6 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
       claimTrack: ClaimTrack.FAST_CLAIM,
       claimType: ClaimType.ONE_VS_ONE,
       responseType: DefendantResponseType.FULL_DEFENCE,
-      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
       ...options,
     };
 
@@ -113,7 +111,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDefendantResponse(responseOptions);
+      await defendantResponseDataBuilder.buildDefendantResponseDS2(responseOptions);
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
@@ -125,7 +123,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
     await this.runZodValidation(async () => {
       const { defendantResponseSchemaBuilder } =
         this.claimantDefendantSolicitorSchemaBuilderFactory;
-      const defendantResponseSchema = await defendantResponseSchemaBuilder.buildDefendantResponse(
+      const defendantResponseSchema = await defendantResponseSchemaBuilder.buildDefendantResponseDS2(
         caseDataBeforeSubmission,
         responseOptions,
       );
