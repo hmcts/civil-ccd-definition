@@ -6,8 +6,12 @@ import claimantResponseDataComponents from './claimant-response-data-components'
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class ClaimantResponseDataBuilder extends BaseDataBuilder {
-  async buildSmallFullDefence1v1() {
+  async buildSmallFullDefence() {
     return this.buildData();
+  }
+
+  async buildSmallFullDefence1v2DS() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
   async buildFastFullDefence2v1() {

@@ -9,8 +9,12 @@ import defendantResponseDataComponents from './defendant-response-data-component
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
-  async buildDS1SmallFullDefence1v1() {
+  async buildDS1SmallFullDefence() {
     return this.buildData();
+  }
+
+  async buildDS2SmallFullDefence() {
+    return this.buildData({defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2});
   }
 
   async buildDS1FastFullDefence2v1() {

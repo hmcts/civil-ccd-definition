@@ -2,9 +2,8 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 spec default judgement api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@civil-service-smoke', '@api-dj'] },
   async () => {
-    // DTSCCI-5198 SMOKE (Playwright nightly): service logic is in DefaultJudgementSpecWorkflowTest.
     test('1v1 spec default judgement api', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,

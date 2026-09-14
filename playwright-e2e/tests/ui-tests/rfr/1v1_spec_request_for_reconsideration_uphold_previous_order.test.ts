@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures';
 test.describe(
   '1v1 spec request for reconsideration > yes, uphold the previous order made',
   {
-    tag: ['@civil-ccd-nightly'],
+    tag: ['@civil-ccd-nightly', '@ui-rfr'],
   },
   () => {
     test('1v1 spec request for reconsideration > yes, uphold the previous order made', async ({

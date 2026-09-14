@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('LR v LIP spec stay case api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('LR v LIP spec stay case api journey', { tag: ['@civil-service-nightly', '@api-stay-case'] }, async () => {
   test('LR v LIP spec stay case', async ({
     ClaimantSolicitorSpecApiSteps,
     DefendantCitizenApiSteps,
@@ -9,6 +9,7 @@ test.describe('LR v LIP spec stay case api journey', { tag: '@civil-service-nigh
     HearingCenterAdminApiSteps,
     CaseworkerApiSteps,
     CtscAdminApiSteps,
+    LegalAdvisorApiSteps
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1vLIP();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
@@ -21,7 +22,7 @@ test.describe('LR v LIP spec stay case api journey', { tag: '@civil-service-nigh
     await JudgeApiSteps.ReplyMessage();
     await CaseworkerApiSteps.ReplyMessage();
     await HearingCenterAdminApiSteps.ManageStayLiftStay();
-    await JudgeApiSteps.SdoSmallSum();
+    await LegalAdvisorApiSteps.SdoSmallSum();
     await HearingCenterAdminApiSteps.DismissCase();
   });
 });

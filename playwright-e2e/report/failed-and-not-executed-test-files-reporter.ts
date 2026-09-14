@@ -15,7 +15,7 @@ type TestFilesReport = {
   notExecutedTestFiles: string[];
   createdAt: string;
   gitCommitId: string | null;
-  // ftGroups: string[] | null;
+  ftGroups: string[] | null;
 };
 
 const reportDir = config.playwright.functionalTestResultsDir;
@@ -61,10 +61,12 @@ export default class FailedAndNotExecutedTestFilesReporter implements Reporter {
 
     if (result.status === 'passed') {
       this.passedTestsById.set(testEntry.id, testEntry);
+      this.failedTestsById.delete(testEntry.id);
     }
 
     if (result.status === 'failed' || result.status === 'timedOut' || result.status === 'interrupted') {
       this.failedTestsById.set(testEntry.id, testEntry);
+      this.passedTestsById.delete(testEntry.id);
     }
   }
 
@@ -72,9 +74,9 @@ export default class FailedAndNotExecutedTestFilesReporter implements Reporter {
     const failedTests = [...this.failedTestsById.values()];
     const passedTests = [...this.passedTestsById.values()];
 
-    const failedTestFiles = [...new Set(failedTests.map((test) => test.file))].sort();
-    const passedTestFiles = [...new Set(passedTests.map((test) => test.file))]
-      .filter((passedTestFile) => !failedTestFiles.includes(passedTestFile))
+    const passedTestFiles = [...new Set(passedTests.map((test) => test.file))].sort();
+    const failedTestFiles = [...new Set(failedTests.map((test) => test.file))]
+      .filter((failedTestFile) => !passedTestFiles.includes(failedTestFile))
       .sort();
 
     const executedTestFiles = new Set([...failedTestFiles, ...passedTestFiles]);
@@ -88,7 +90,7 @@ export default class FailedAndNotExecutedTestFilesReporter implements Reporter {
       notExecutedTestFiles,
       createdAt: new Date().toISOString(),
       gitCommitId: process.env.GIT_COMMIT ?? null,
-      // ftGroups: process.env.PR_FT_GROUPS?.split(',') ?? null,
+      ftGroups: process.env.PLAYWRIGHT_PR_FT_GROUPS?.split(',') ?? null,
     };
 
     await FileSystemHelper.writeFileAsync(report, reportPath, FileType.JSON);
