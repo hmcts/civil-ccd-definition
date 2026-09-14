@@ -26,4 +26,4 @@ if [ "$RUN_FAILED_TESTS" = "true" ]; then
 fi
 # Run the Playwright setup install and setup tests for a failed last run or a normal run.
 yarn test:playwright:setup:install
-yarn test:playwright:setup:civil-ccd-nightly:ci
+yarn test:playwright:setup:civil-ccd:ci

@@ -2,9 +2,9 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   'LIPvLIP spec request for reconsideration api journeys',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly'] },
   async () => {
-    test.fail('1v1 LiP v LiP Request for reconsideration', async ({
+    test.fail('1v1 LiP v LiP Request for reconsideration', { tag: '@api-rfr' }, async ({
       ClaimantCitizenApiSteps,
       DefendantCitizenApiSteps,
       CaseRoleAssignmentApiSteps,

@@ -15,7 +15,7 @@ type TestFilesReport = {
   notExecutedTestFiles: string[];
   createdAt: string;
   gitCommitId: string | null;
-  // ftGroups: string[] | null;
+  ftGroups: string[] | null;
 };
 
 const reportDir = config.playwright.functionalTestResultsDir;
@@ -90,7 +90,7 @@ export default class FailedAndNotExecutedTestFilesReporter implements Reporter {
       notExecutedTestFiles,
       createdAt: new Date().toISOString(),
       gitCommitId: process.env.GIT_COMMIT ?? null,
-      // ftGroups: process.env.PR_FT_GROUPS?.split(',') ?? null,
+      ftGroups: process.env.PLAYWRIGHT_PR_FT_GROUPS?.split(',') ?? null,
     };
 
     await FileSystemHelper.writeFileAsync(report, reportPath, FileType.JSON);

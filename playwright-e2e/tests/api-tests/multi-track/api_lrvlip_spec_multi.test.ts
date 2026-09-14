@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 LR v LiP multi track api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('1v1 LR v LiP multi track api journey', { tag: ['@civil-service-nightly', '@api-multi-track'] }, async () => {
   test.fail('1v1 LR v LiP multi track', async ({
     ClaimantSolicitorSpecApiSteps,
     DefendantCitizenApiSteps,
