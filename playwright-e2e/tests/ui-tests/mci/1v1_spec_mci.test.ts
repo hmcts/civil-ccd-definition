@@ -10,9 +10,9 @@ test.describe('1v1 Spec - Manage Contact Information', { tag: '@ui-mci' }, async
     await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
     await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
+    await DefendantSolicitor1SpecApiSteps.DefendantResponse();
     await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
     await CaseworkerSteps.Login();
     await CaseworkerSteps.ManageContactInformationSpec();
   });
-})
+});

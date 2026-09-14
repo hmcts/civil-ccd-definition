@@ -21,8 +21,8 @@ test.describe(
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
         await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-        await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-        await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+        await DefendantSolicitor1ApiSteps.DefendantResponse();
+        await DefendantSolicitor2ApiSteps.DefendantResponse();
         await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
         await DefendantSolicitor2ApiSteps.InitiateGA();
         await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();

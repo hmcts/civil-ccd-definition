@@ -4,17 +4,21 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import { Party } from '../../../../../models/users/partys';
+import DefendantResponseOptions from '../../../../../models/ccd-events/cui-ccd-events/defendant-response-options';
 import defendantResponseDataComponents from './defendant-response-data-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
+  async buildDefendantResponse(options: DefendantResponseOptions = {}) {
+    return this.buildData(options);
+  }
+
   async buildDS1SmallFullDefence() {
     return this.buildData();
   }
 
   async buildDS2SmallFullDefence() {
-    return this.buildData({defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2});
+    return this.buildData({ defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2 });
   }
 
   async buildDS1FastFullDefence2v1() {
@@ -111,12 +115,7 @@ export default class DefendantResponseDataBuilder extends BaseDataBuilder {
     claimTrack = ClaimTrack.SMALL_CLAIM,
     responseType = DefendantResponseType.FULL_DEFENCE,
     defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
-  }: {
-    claimType?: ClaimType;
-    claimTrack?: ClaimTrack;
-    responseType?: DefendantResponseType;
-    defendantSolicitorParty?: Party;
-  } = {}) {
+  }: DefendantResponseOptions = {}) {
     const { civilServiceRequests } = this.requestsFactory;
 
     const eventData: Record<string, unknown> = {};

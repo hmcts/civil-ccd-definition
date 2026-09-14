@@ -20,8 +20,8 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-      await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse();
+      await DefendantSolicitor2ApiSteps.DefendantResponse();
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
       await JudgeApiSteps.SdoFast();
       await HearingCenterAdminSteps.LoginRegion1();

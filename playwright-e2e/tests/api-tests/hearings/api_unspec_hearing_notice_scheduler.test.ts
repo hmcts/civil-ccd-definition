@@ -16,7 +16,7 @@ test.describe('Unspec automated hearing notice schedulers', { tag: '@api-hearing
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
     await DefendantSolicitor1ApiSteps.AddLitigationFriend();
-    await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
+    await DefendantSolicitor1ApiSteps.DefendantResponse();
     await ClaimantSolicitorApiSteps.RespondFastProceed();
     await JudgeApiSteps.SdoFast();
     await HearingsApiSteps.GenerateDisposalHearingNotice();

@@ -9,9 +9,22 @@ import { Party } from '../../../../../models/users/partys';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
 import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
+import DefendantResponseSpecOptions from '../../../../../models/ccd-events/cui-ccd-events/defendant-response-spec-options';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
+  async buildDefendantResponse(options: DefendantResponseSpecOptions = {}) {
+    return this.buildData({
+      claimTrack: options.claimTrack,
+      claimType: options.claimType,
+      defendantResponseSpecType: options.responseType,
+      defenceRouteSpec: options.defenceRoute,
+      paymentTypeSpec: options.paymentType,
+      defenceAdmittedPartRoute: options.defenceAdmittedPartRoute,
+      defendantSolicitorParty: options.defendantSolicitorParty,
+    });
+  }
+
   async buildDS1SmallFullDefence() {
     return this.buildData();
   }

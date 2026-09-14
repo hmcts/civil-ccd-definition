@@ -12,9 +12,25 @@ import { Party } from '../../../../../models/users/partys';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
 import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
+import DefendantResponseSpecOptions from '../../../../../models/ccd-events/cui-ccd-events/defendant-response-spec-options';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
+  async buildDefendantResponse(
+    caseDataBeforeSubmission: CCDCaseData | undefined,
+    options: DefendantResponseSpecOptions = {},
+  ) {
+    return this.buildSchema(caseDataBeforeSubmission, {
+      claimTrack: options.claimTrack,
+      claimType: options.claimType,
+      responseType: options.responseType,
+      defenceRouteSpec: options.defenceRoute,
+      paymentTypeSpec: options.paymentType,
+      defenceAdmittedPartRoute: options.defenceAdmittedPartRoute,
+      defendantSolicitorParty: options.defendantSolicitorParty,
+    });
+  }
+
   async buildFastFullDefence(caseDataBeforeSubmission?: CCDCaseData) {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimType: ClaimType.ONE_VS_ONE,

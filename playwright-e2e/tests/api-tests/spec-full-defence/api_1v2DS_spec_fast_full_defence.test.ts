@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2DS spec full defence api journey',
@@ -14,8 +15,12 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-      await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
-      await DefendantSolicitor2SpecApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      });
+      await DefendantSolicitor2SpecApiSteps.DefendantResponse({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
     });
   },

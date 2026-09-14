@@ -8,10 +8,17 @@ import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import defendantResponseSchemaComponents from './defendant-response-schema-components';
 import partys from '../../../../../constants/users/partys';
-import { Party } from '../../../../../models/users/partys';
+import UnspecDefendantResponseOptions from '../../../../../models/ccd-events/cui-ccd-events/defendant-response-options';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
+  async buildDefendantResponse(
+    caseDataBeforeSubmission?: CCDCaseData,
+    options: UnspecDefendantResponseOptions = {},
+  ): Promise<z.ZodType> {
+    return this.buildSchema(caseDataBeforeSubmission, options);
+  }
+
   async buildDS1SmallFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission);
   }
@@ -30,9 +37,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1InterFullDefence2v1(
-    caseDataBeforeSubmission?: CCDCaseData,
-  ): Promise<z.ZodType> {
+  async buildDS1InterFullDefence2v1(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.TWO_VS_ONE,
@@ -40,9 +45,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1InterFullDefence1v2DS(
-    caseDataBeforeSubmission?: CCDCaseData,
-  ): Promise<z.ZodType> {
+  async buildDS1InterFullDefence1v2DS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
@@ -66,9 +69,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1InterFullDefence1v2SS(
-    caseDataBeforeSubmission?: CCDCaseData,
-  ): Promise<z.ZodType> {
+  async buildDS1InterFullDefence1v2SS(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
@@ -91,9 +92,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS1InterFullDefence(
-    caseDataBeforeSubmission?: CCDCaseData,
-  ): Promise<z.ZodType> {
+  async buildDS1InterFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       responseType: DefendantResponseType.FULL_DEFENCE,
@@ -115,9 +114,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS2FastTrackFullDefence(
-    caseDataBeforeSubmission?: CCDCaseData,
-  ): Promise<z.ZodType> {
+  async buildDS2FastTrackFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.FAST_CLAIM,
       responseType: DefendantResponseType.FULL_DEFENCE,
@@ -133,9 +130,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
     });
   }
 
-  async buildDS2InterFullDefence(
-    caseDataBeforeSubmission?: CCDCaseData,
-  ): Promise<z.ZodType> {
+  async buildDS2InterFullDefence(caseDataBeforeSubmission?: CCDCaseData): Promise<z.ZodType> {
     return this.buildSchema(caseDataBeforeSubmission, {
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       responseType: DefendantResponseType.FULL_DEFENCE,
@@ -150,12 +145,7 @@ export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
       claimTrack = ClaimTrack.SMALL_CLAIM,
       responseType = DefendantResponseType.FULL_DEFENCE,
       defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
-    }: {
-      claimType?: ClaimType;
-      claimTrack?: ClaimTrack;
-      responseType?: DefendantResponseType;
-      defendantSolicitorParty?: Party;
-    } = {},
+    }: UnspecDefendantResponseOptions = {},
   ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,

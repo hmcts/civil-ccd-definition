@@ -15,8 +15,8 @@ test.describe('1v2DS stay case journey', { tag: ['@civil-ccd-nightly', '@ui-stay
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-    await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-    await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+    await DefendantSolicitor1ApiSteps.DefendantResponse();
+    await DefendantSolicitor2ApiSteps.DefendantResponse();
     await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
     await DefendantSolicitor2Steps.Login();
     await DefendantSolicitor2Steps.AddUnavailableDates();
