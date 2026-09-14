@@ -26,12 +26,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
