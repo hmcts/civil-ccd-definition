@@ -14,15 +14,15 @@ export class IdamPage {
   });
 
   readonly signOut = this.page.getByText('Sign out', { exact: true });
-
-  readonly usernameInput = this.page.locator("#username");
+  readonly emailInput = this.page.locator("#email");
   readonly passwordInput = this.page.locator("#password");
-  readonly submitBtn = this.page.locator('[name="save"]');
+  readonly continueBtn = this.page.getByRole("button", { name: "Continue" });
 
   async login(user: UserCredentials): Promise<void> {
-    await this.usernameInput.fill(user.username);
+    await this.emailInput.fill(user.username);
+    await this.continueBtn.click();
     await this.passwordInput.fill(user.password);
-    await this.submitBtn.click();
+    await this.continueBtn.click();
     if (user.sessionFile) await this.saveSession(user);
   }
 

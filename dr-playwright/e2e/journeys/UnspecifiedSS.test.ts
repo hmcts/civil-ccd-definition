@@ -161,7 +161,7 @@ let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].i
 )
   ? process.env.TRACK
   : 'FAST_CLAIM';
-let caseId: string = '1784279016229395';
+let caseId: string = '';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -384,8 +384,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
   test.describe('test6', { tag: '@unspecified' }, () => {
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
-    test.only('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
-     // test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
+    test.skip('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
+      test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
       console.log('>>>> ', fixedRecoveryCostsBand);
       await new RespondToClaim(page).submit(
         claimType,
