@@ -41,9 +41,11 @@ export default class OtherDefendantSolicitor2ApiSteps extends BaseApi {
       noticeOfChangeAnswers,
     );
 
-    const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-    const noticeOfChangeSchema =
-      await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
-    ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const noticeOfChangeSchema =
+        await noticeOfChangeSchemaBuilder.buildDefendant2(caseDataBeforeSubmission);
+      ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
+    });
   }
 }
