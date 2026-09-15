@@ -294,22 +294,21 @@ withNightlyPipeline(type, product, component) {
         env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean() ||
         env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
 
-      stage('Playwright test setup') {
-        try {
-          if(playwrightRunSetup) {
-            sh './playwright-e2e/scripts/civil-ccd-nightly/playwright-run-civil-ccd-nightly-setup.sh'
-          }
-        } catch (Exception error) {
-          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-            flowInterrupted = true
-          }
-          if(playwrightRunSetup) {
-            playwrightSetupPassed=false
-          }
-          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-        } finally {
-          if(playwrightRunSetup && !lastRunPassed) {
-            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+      if(playwrightRunSetup) {
+        stage('Playwright test setup') {
+          try {
+              sh './playwright-e2e/scripts/civil-ccd-nightly/playwright-run-civil-ccd-nightly-setup.sh'
+            }
+           catch (Exception error) {
+            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+              flowInterrupted = true
+            }
+              playwrightSetupPassed=false
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+          } finally {
+            if(lastRunPassed) {
+              yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+            }
           }
         }
       }

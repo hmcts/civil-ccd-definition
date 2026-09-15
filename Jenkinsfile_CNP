@@ -387,24 +387,21 @@ withPipeline(type, product, component) {
   }
 
   afterSuccess('highleveldatasetup') {
-    stage('Playwright test setup') {
-      try {
-        if(playwrightRunSetup) {
-          sh './playwright-e2e/scripts/civil-ccd-master-pr/playwright-run-civil-ccd-master-pr-setup.sh'
-        }
-      } catch (Exception error) {
-        if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-          flowInterrupted = true
-          env.PLAYWRIGHT_FLOW_INTERRUPTED = true
-        }
-        if(playwrightRunSetup) {
-          playwrightSetupPassed=false
-          env.PLAYWRIGHT_SETUP_PASSED = false
-        }
-        unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-      } finally {
-        if(playwrightRunSetup && !lastRunPassed) {
-          yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+    if(playwrightRunSetup) {
+      stage('Playwright test setup') {
+        try {
+            sh './playwright-e2e/scripts/civil-ccd-nightly/playwright-run-civil-ccd-nightly-setup.sh'
+          }
+          catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+            playwrightSetupPassed=false
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(lastRunPassed) {
+            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+          }
         }
       }
     }

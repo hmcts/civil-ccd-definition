@@ -13,17 +13,7 @@ run_smoke_tests() {
 
 #MAIN SCRIPT
 
-#Check if flow was interrupted
-if [ "$PLAYWRIGHT_FLOW_INTERRUPTED" = "true" ]; then
-  echo "Playwright flow was interrupted. Exiting."
-  exit 0
-fi
-
-#Check if playwright setup passed
-if [ "$PLAYWRIGHT_SETUP_PASSED" = "false" ]; then
-  echo "Playwright setup failed. Exiting."
-  exit 0
-fi
+exit_if_playwright_flow_cannot_continue
 
 #Check if latest current git commit is the not the same as git commit of prev playwright test files report 
 if previous_commit_changed; then 

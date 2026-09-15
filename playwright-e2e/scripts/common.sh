@@ -64,3 +64,17 @@ should_skip_functional_tests() {
 should_run_failed_tests() {
   [ "$RUN_FAILED_TESTS" = "true" ]
 }
+
+exit_if_playwright_flow_cannot_continue() {
+  # Check if flow was interrupted.
+  if [ "$PLAYWRIGHT_FLOW_INTERRUPTED" = "true" ]; then
+    echo "Playwright flow was interrupted. Exiting."
+    exit 1
+  fi
+
+  # Check if playwright setup passed.
+  if [ "$PLAYWRIGHT_SETUP_PASSED" = "false" ]; then
+    echo "Playwright setup failed. Exiting."
+    exit 1
+  fi
+}
