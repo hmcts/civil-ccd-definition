@@ -216,7 +216,7 @@ const apiRequest = require('./api/apiRequest');
 const genAppJudgeMakeDecisionData = require('./fixtures/ga-events/ga-ccd/judgeMakeDecision');
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
 const pdfHelper = require('./helpers/pdfVisualCompareHelper.js');
-const enterBreathingSpacePage = require("./pages/enterBreathingSpace/breathingSpaceDetails.page");
+const enterBreathingSpacePage = require('./pages/enterBreathingSpace/breathingSpaceDetails.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#email';
