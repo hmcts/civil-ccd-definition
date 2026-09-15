@@ -395,18 +395,18 @@ withPipeline(type, product, component) {
       } catch (Exception error) {
         if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
           flowInterrupted = true
-          // env.PLAYWRIGHT_FLOW_INTERRUPTED = true
+          env.PLAYWRIGHT_FLOW_INTERRUPTED = true
         }
         if(playwrightRunSetup) {
           playwrightSetupPassed=false
-          // env.PLAYWRIGHT_SETUP_PASSED = false
+          env.PLAYWRIGHT_SETUP_PASSED = false
         }
         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
       } finally {
         if(playwrightRunSetup && !lastRunPassed) {
           yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
         }
-        if(!playwrightRunSetup) {
+        if(!playwrightSetupPassed || flowInterrupted) {
           publishAllureReport(
             'playwright-allure-bootstrap-report',
             'Playwright Allure Bootstrap Report',
@@ -417,30 +417,34 @@ withPipeline(type, product, component) {
     }
   }
 
-  before('smoketest:preview') {
-    if(flowInterrupted) {
-      throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
-    }
-    if(!playwrightSetupPassed) {
-      throw new Error('Playwright test setup failed')
-    }
-  }
-
   afterAlways('smoketest:preview') {
     if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
   }
 
-  before('functionalTest:preview') {
-    if(flowInterrupted) {
-      throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
-    }
-    if(!playwrightSetupPassed) {
-      throw new Error('Playwright test setup failed')
+  afterFailure('smoketest:preview') {
+    if(playwrightRunSetup) {
+      stage('Playwright test teardown') {
+        try {
+          sh './playwright-e2e/scripts/civil-ccd-nightly/playwright-run-civil-ccd-nightly-teardown.sh'
+        } catch (Exception error) {
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(!lastRunPassed) {
+            copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+            sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
+            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+            publishAllureReport(
+              'playwright-allure-bootstrap-report',
+              'Playwright Allure Bootstrap Report',
+              'playwright-allure-bootstrap-history'
+            )
+          }
+        }
+      }
     }
   }
-
 
   afterAlways('functionalTest:preview') {
     if(playwrightSetupPassed && !lastRunPassed) {

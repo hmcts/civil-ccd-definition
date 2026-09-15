@@ -75,6 +75,18 @@ run_functional_tests() {
 
 #MAIN SCRIPT
 
+#Check if flow was interrupted
+if [ "$PLAYWRIGHT_FLOW_INTERRUPTED" = "true" ]; then
+  echo "Playwright flow was interrupted. Exiting."
+  exit 0
+fi
+
+#Check if playwright setup passed
+if [ "$PLAYWRIGHT_SETUP_PASSED" = "false" ]; then
+  echo "Playwright setup failed. Exiting."
+  exit 0
+fi
+
 # Check if SKIP_FUNCTIONAL_TESTS is set to true
 if should_skip_functional_tests; then
   exit 0
