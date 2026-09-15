@@ -74,22 +74,49 @@ void publishAllureReport(String reportDir, String reportName, String historyArch
   archiveArtifacts artifacts: "${historyArchiveDir}/**", fingerprint: true
 }
 
-def getFunctionalTestsGroups() {
+def getPlaywrightFunctionalTestsGroups() {
   def githubApi = new GithubAPI(this)
   def functionalTestGroups = []
-  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "pr_ft_")) {
-    functionalTestGroups.add(label.substring(6, label.length()))
+  def labelPrefix = "pr_ft_pw_"
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, labelPrefix)) {
+    functionalTestGroups.add(label.substring(labelPrefix.length()))
   }
   return functionalTestGroups.join(",")
 }
 
-def getPlaywrightFunctionalTestsGroups() {
-  def githubApi = new GithubAPI(this)
-  def functionalTestGroups = []
-  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "pr_ft_pw_")) {
-    functionalTestGroups.add(label.substring(6, label.length()))
+def copyPrevPlaywrightLastRun() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      sh "rm -rf ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}"
+      copyArtifacts(
+        projectName: env.JOB_NAME,
+        selector: specific("${buildNumber}"),
+        filter: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json"
+      )
+      if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
+        throw new Exception(
+          "Skipping copied .last-run.json from build ${buildNumber} because status was not 'passed' or 'failed'"
+        )
+      }
+      buildFound = true
+    } catch (Exception error) {
+      echo "artifact not found: " + error.toString()
+      buildNumber--
+    }
   }
-  return functionalTestGroups.join(",")
+  return buildFound
+}
+
+def checkHasPlaywrightLastRunStatus(expectedStatuses) {
+  def lastRunStatus = sh(
+    script: "jq -r '.status // empty' ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json",
+    returnStdout: true
+  ).trim()
+  def statuses = expectedStatuses instanceof Collection ? expectedStatuses : [expectedStatuses]
+  return statuses.contains(lastRunStatus)
 }
 
 def getCivilServiceSharedBranch() {
@@ -249,19 +276,55 @@ def getCivilServiceImage() {
   return "latest"
 }
 
+
+
 withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
   enableBuildCache()
+
+  env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'playwright-smoke-test-results/civil-ccd-smoke'
+  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'playwright-functional-test-results'
+  env.PLAYWRIGHT_WORKERS = 8
+  env.PLAYWRIGHT_RETRIES = 1
+  env.PLAYWRIGHT_EXUI_RETRIES = 1
+  env.PLAYWRIGHT_IDAM_RETRIES = 1
+  env.PLAYWRIGHT_TEST_SPEED = 'fast'
+  env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS = false
+  env.PLAYWRIGHT_RUN_CUI_USER_SETUP = false
+  env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP = false
+  env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP = false
+  env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP = false
+  env.PLAYWRIGHT_RUN_DATA_SETUP = false
+  env.PLAYWRIGHT_WA_ENABLED = false
+  env.PLAYWRIGHT_ZOD_VALIDATION_ENABLED = false
+  env.PLAYWRIGHT_UNASSIGN_CASES = true
+  boolean playwrightSetupPassed = true;
+  boolean flowInterrupted = false;
+  boolean lastRunPassed = false;
+  boolean playwrightRunSetup =
+    env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
+    env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP.toBoolean() ||
+    env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP.toBoolean() ||
+    env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean() ||
+    env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
+  
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
-    env.PR_FT_GROUPS = getFunctionalTestsGroups()
-    env.PLAYWRIGHT_PR_FT_GROUPS = getPlaywrightFunctionalTestsGroups()
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR = 'civil-ccd-pr'
+    env.PLAYWRIGHT_PR_FT_GROUPS = getPlaywrightFunctionalTestsGroups()
+    env.SKIP_FUNCTIONAL_TESTS = checkForSkipFunctionalTests(env.BRANCH_NAME)
+    env.RUN_ALL_FUNCTIONAL_TESTS = checkForRunAllFunctionalTests(env.BRANCH_NAME)
+
+    lastRunPassed = copyPrevPlaywrightLastRun() && checkHasPlaywrightLastRunStatus('passed')
+    copyPrevTestFilesReport(
+      "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/playwrightTestFilesReport.json"
+    )
   }
 
   // onPR {
@@ -269,6 +332,11 @@ withPipeline(type, product, component) {
   // }
   onMaster {
     env.ENVIRONMENT = "aat"
+    env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR = 'civil-ccd-master'
+    lastRunPassed = copyPrevPlaywrightLastRun() && checkHasPlaywrightLastRunStatus('passed')
+    copyPrevTestFilesReport(
+      "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/playwrightTestFilesReport.json"
+    )
   }
   onDemo {
     env.ENVIRONMENT = "demo"
@@ -318,35 +386,89 @@ withPipeline(type, product, component) {
     }
   }
 
+  afterSuccess('highleveldatasetup') {
+    if(playwrightRunSetup) {
+      stage('Playwright test setup') {
+        try {
+            sh './playwright-e2e/scripts/civil-ccd-nightly/playwright-run-civil-ccd-nightly-setup.sh'
+          }
+          catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+            playwrightSetupPassed=false
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(lastRunPassed) {
+            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+          }
+        }
+      }
+    }
+  }
+
   afterAlways('smoketest:preview') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
     if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
   }
 
-  before('functionalTest:preview') {
-    env.IDAM_STUB_ENABLED = 'false'
-    env.UNASSIGN_CASES = true
-    copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
-    if(checkForSkipFunctionalTests(env.BRANCH_NAME)) {
-      env.SKIP_FUNCTIONAL_TESTS = true
-    } else if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
-      env.RUN_ALL_FUNCTIONAL_TESTS = true
-    } else {
-      copyPrevTestFilesReport("test-results/functional/testFilesReport.json");
+  afterFailure('smoketest:preview') {
+    if(playwrightRunSetup) {
+      stage('Playwright test teardown') {
+        try {
+          sh './playwright-e2e/scripts/civil-ccd-nightly/playwright-run-civil-ccd-nightly-teardown.sh'
+        } catch (Exception error) {
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(!lastRunPassed) {
+            copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+            sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
+            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+            publishAllureReport(
+              'playwright-allure-bootstrap-report',
+              'Playwright Allure Bootstrap Report',
+              'playwright-allure-bootstrap-history'
+            )
+          }
+        }
+      }
     }
   }
 
-
   afterAlways('functionalTest:preview') {
-    if(checkForSkipFunctionalTests(env.BRANCH_NAME)) {
-      echo "Skipping Allure report generation due to label: pr-values:skip-functional-tests"
-      return
+    if(playwrightSetupPassed && !lastRunPassed) {
+      copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
+      sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+      yarnBuilder.yarn('test:playwright:functional:generate-report')
+      publishAllureReport(
+        'playwright-allure-functional-report',
+        'Playwright Allure Functional Report',
+        'playwright-allure-functional-history'
+      )
     }
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
-    yarnBuilder.yarn('test:generate-report')
-    publishAllureReport('allure-functional-report', 'Allure Functional Report', 'allure-functional-history')
+    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
+
+    if(playwrightRunSetup) {
+      stage('Playwright test teardown') {
+        try {
+          sh './playwright-e2e/scripts/civil-ccd-nightly/playwright-run-civil-ccd-nightly-teardown.sh'
+        } catch (Exception error) {
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(!lastRunPassed) {
+            copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+            sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
+            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+            publishAllureReport(
+              'playwright-allure-bootstrap-report',
+              'Playwright Allure Bootstrap Report',
+              'playwright-allure-bootstrap-history'
+            )
+          }
+        }
+      }
+    }
   }
 
   before('smoketest:aat') {
@@ -382,15 +504,12 @@ withPipeline(type, product, component) {
     uploadCoreCaseDataDefinitions('staging')
   }
 
-  before('functionalTest:aat') {
-    env.IDAM_STUB_ENABLED = 'false'
-    copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
-    copyPrevTestFilesReport("test-results/functional/testFilesReport.json");
-    env.UNASSIGN_CASES = true
-  }
-
   afterAlways('smoketest:aat') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
+  }
+
+  before('functionalTest:aat') {
+    
   }
 
   afterAlways('functionalTest:aat') {
