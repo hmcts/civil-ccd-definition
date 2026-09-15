@@ -17,7 +17,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse();
       await ClaimantSolicitorApiSteps.RespondFastProceed();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoFastOtherRemedy();

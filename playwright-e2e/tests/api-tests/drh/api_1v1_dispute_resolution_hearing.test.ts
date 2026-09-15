@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 dispute resolution hearing api journey',
@@ -9,7 +10,7 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
       JudgeApiSteps,
-      HearingCenterAdminApiSteps
+      HearingCenterAdminApiSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -17,7 +18,9 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
       await JudgeApiSteps.SdoSmallSumDRH();
       await ClaimantSolicitorApiSteps.EvidenceUploadSmall();

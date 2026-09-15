@@ -24,8 +24,8 @@ test.describe(
       await DefendantSolicitor2ApiSteps.AcknowledgeClaimFullDefence();
       await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
       await DefendantSolicitor2ApiSteps.InformAgreedExtensionDate();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-      await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse();
+      await DefendantSolicitor2ApiSteps.DefendantResponse();
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
     });
   },
