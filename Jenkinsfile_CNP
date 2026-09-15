@@ -406,13 +406,6 @@ withPipeline(type, product, component) {
         if(playwrightRunSetup && !lastRunPassed) {
           yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
         }
-        if(!playwrightSetupPassed || flowInterrupted) {
-          publishAllureReport(
-            'playwright-allure-bootstrap-report',
-            'Playwright Allure Bootstrap Report',
-            'playwright-allure-bootstrap-history'
-          )
-        }
       }
     }
   }
