@@ -45,6 +45,14 @@
   },
   {
     "ID": "BreathingSpaceInfo",
+    "ListElementCode": "defendantLabel",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "BreathingSpaceInfo",
     "ListElementCode": "enter",
     "ElementLabel": " ",
     "FieldType": "BreathingSpaceStartInfo",
@@ -57,6 +65,7 @@
     "ElementLabel": " ",
     "FieldType": "BreathingSpaceLiftInfo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "lift=\"*\""
   }
 ]
