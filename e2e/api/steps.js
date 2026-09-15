@@ -37,7 +37,7 @@ const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
 const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
-
+const enterIntoBreathingSpace = require('../fixtures/events/enterIntoBreathingSpace');
 
 const data = {
   CREATE_CLAIM: (mpScenario, claimAmount, hmcTest) => claimData.createClaim(mpScenario, claimAmount, hmcTest),
@@ -108,7 +108,8 @@ const data = {
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStayDamages(),
   DISMISS_CASE: () => dismissCase.dismissCaseDamages(),
   SEND_MESSAGE: () => sendAndReplyMessage.sendMessage(),
-  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessage(messageCode, messageLabel)
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessage(messageCode, messageLabel),
+  ENTER_INTO_BS: (mpScenario, breathingSpaceDetails) => enterIntoBreathingSpace.enterIntoBS(mpScenario, breathingSpaceDetails)
 };
 const calculatedClaimsTrackDRH = {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
@@ -1454,6 +1455,27 @@ module.exports = {
       body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
     }, true);
 
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  enterIntoBS: async (user, mpScenario, breathingSpaceDetails, state) => {
+    console.log('Enter into BS for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'ENTER_BREATHING_SPACE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.ENTER_INTO_BS(mpScenario, breathingSpaceDetails);
+
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    await assertSubmittedEvent(state);
     await waitForFinishedBusinessProcess(caseId);
   },
 

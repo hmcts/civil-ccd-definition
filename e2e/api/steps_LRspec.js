@@ -35,6 +35,7 @@ const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplic
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
+const enterIntoBreathingSpace = require('../fixtures/events/enterIntoBreathingSpace');
 const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
@@ -97,6 +98,7 @@ const data = {
   SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
   DISCONTINUE_CLAIM: (mpScenario) => discontinueClaimSpec.discontinueClaim(mpScenario),
+  ENTER_INTO_BS: (mpScenario, breathingSpaceDetails) => enterIntoBreathingSpace.enterIntoBS(mpScenario, breathingSpaceDetails),
   VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: (permission) => validateDiscontinueClaimClaimantSpec.validateDiscontinueClaimClaimant(permission),
   STAY_CASE: () => stayCase.stayCaseSpec(),
   MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
@@ -1947,6 +1949,27 @@ module.exports = {
       body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
     }, true);
 
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  enterIntoBS: async (user, mpScenario, breathingSpaceDetails, state) => {
+    console.log('Enter into BS for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'ENTER_BREATHING_SPACE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.ENTER_INTO_BS(mpScenario, breathingSpaceDetails);
+
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    await assertSubmittedEvent(state);
     await waitForFinishedBusinessProcess(caseId);
   },
 };
