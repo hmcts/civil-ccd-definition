@@ -316,5 +316,5 @@ module.exports = {
     name: 'Create a hearing notice',
     description: 'Create a hearing notice',
     order: 18
-  }
+  },
 };
