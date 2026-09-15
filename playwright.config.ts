@@ -82,6 +82,14 @@ export default defineConfig({
       testMatch: '**playwright-e2e/tests/bootstrap/case-role-assignment/**.teardown.ts',
     },
     {
+      name: 'civil-ccd-smoke',
+      outputDir: config.playwright.smokeTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
+      grep: /@civil-ccd-smoke/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
       name: 'civil-ccd-pr',
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
@@ -103,6 +111,14 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
       grep: /@civil-ccd-nightly/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-service-smoke',
+      outputDir: config.playwright.smokeTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      grep: /@civil-service-smoke/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -130,6 +146,14 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
+      name: 'civil-wa-smoke',
+      outputDir: config.playwright.smokeTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      grep: /@civil-wa-smoke/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
       name: 'civil-wa-pr',
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
@@ -149,6 +173,7 @@ export default defineConfig({
       name: 'functional-tests',
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      teardown: 'case-role-assignment-teardown',
     },
   ],
 });
@@ -176,6 +201,8 @@ function getReporter(): any {
       allurePlaywright('playwright-allure-functional-results'),
       failedAndNotExecutedTestFilesReporter,
     ];
+  } else if (process.env.CI && process.env.PLAYWRIGHT_SMOKE) {
+    return [allurePlaywright('playwright-allure-functional-results')];
   } else if (process.env.CI)  {
     return [allurePlaywright('playwright-allure-bootstrap-results')];
   }

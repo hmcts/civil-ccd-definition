@@ -45,7 +45,8 @@ const config = {
     functionalTestResultsDir: process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR &&
       process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR
       ? `${process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}`
-      : './playwright-test-results',
+      : './playwright-functional-test-results',
+    smokeTestResultsDir: process.env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR ?? './playwright-smoke-test-results',
   },
   exui: {
     eventRetries: parseInt(process.env.PLAYWRIGHT_EXUI_RETRIES),

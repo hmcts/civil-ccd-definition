@@ -4,6 +4,7 @@ declare global {
       CI: string;
       FUNCTIONAL: string;
       PLAYWRIGHT_FUNCTIONAL: string;
+      PLATWRIGHT_SMOKE: string;
       PLAYWRIGHT_WORKERS: string;
       ENVIRONMENT: string;
       URL: string;
@@ -43,6 +44,7 @@ declare global {
       PLAYWRIGHT_IDAM_RETRIES: string
       PLAYWRIGHT_DEBUG_CASE_ID: string;
       PLAYWRIGHT_GA_DEBUG_CASE_ID: string;
+      PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR: string;
       PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR: string;
       PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR: string;
       PLAYWRIGHT_ZOD_VALIDATION_ENABLED: string;
