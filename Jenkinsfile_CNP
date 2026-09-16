@@ -320,11 +320,6 @@ withPipeline(type, product, component) {
     env.PLAYWRIGHT_PR_FT_GROUPS = getPlaywrightFunctionalTestsGroups()
     env.SKIP_FUNCTIONAL_TESTS = checkForSkipFunctionalTests(env.BRANCH_NAME)
     env.RUN_ALL_FUNCTIONAL_TESTS = checkForRunAllFunctionalTests(env.BRANCH_NAME)
-
-    lastRunPassed = copyPrevPlaywrightLastRun() && checkHasPlaywrightLastRunStatus('passed')
-    copyPrevTestFilesReport(
-      "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
-    )
   }
 
   // onPR {
@@ -333,10 +328,6 @@ withPipeline(type, product, component) {
   onMaster {
     env.ENVIRONMENT = "aat"
     env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'civil-ccd-master'
-    lastRunPassed = copyPrevPlaywrightLastRun() && checkHasPlaywrightLastRunStatus('passed')
-    copyPrevTestFilesReport(
-      "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
-    )
   }
   onDemo {
     env.ENVIRONMENT = "demo"
@@ -386,6 +377,14 @@ withPipeline(type, product, component) {
     }
   }
 
+  before('smoketest:preview') {
+    copyPrevPlaywrightLastRun()
+    lastRunPassed = checkHasPlaywrightLastRunStatus('passed')
+    copyPrevTestFilesReport(
+      "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
+    )
+  }
+
   afterAlways('smoketest:preview') {
     if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
@@ -426,8 +425,6 @@ withPipeline(type, product, component) {
   }
 
   afterAlways('functionalTest:preview') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
-
     if(!lastRunPassed) {
       archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR}/**/*"
       archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
