@@ -391,8 +391,7 @@ withPipeline(type, product, component) {
     }
 
     if(!lastRunPassed) {
-      archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR}/**/*"
-      archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR}/**/*"
+      archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
 
       def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
@@ -426,8 +425,7 @@ withPipeline(type, product, component) {
 
   afterAlways('functionalTest:preview') {
     if(!lastRunPassed) {
-      archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR}/**/*"
-      archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
+      archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
 
       copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
       sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
