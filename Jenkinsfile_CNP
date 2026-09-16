@@ -24,21 +24,6 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-def copyPrevTestFilesReport(reportFilePath) {
-  def buildFound = false
-  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
-  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
-  while (!buildFound && buildNumber > minBuildNumber) {
-    try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: reportFilePath
-      buildFound = true
-    } catch (Exception error) {
-      echo "artifact not found: " + error.toString()
-      buildNumber--
-    }
-  }
-}
-
 def copyPreviousAllureHistory(historyDir, resultsDir) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
@@ -84,17 +69,19 @@ def getPlaywrightFunctionalTestsGroups() {
   return functionalTestGroups.join(",")
 }
 
-def copyPrevPlaywrightLastRun() {
+def copyPrevPlaywrightLastRunAndTestFilesReport() {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  def lastRunFilePath = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+  def testFilesReportPath = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      sh "rm -rf ${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}"
+      sh "rm -f ${lastRunFilePath} ${testFilesReportPath}"
       copyArtifacts(
         projectName: env.JOB_NAME,
         selector: specific("${buildNumber}"),
-        filter: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+        filter: "${lastRunFilePath},${testFilesReportPath}"
       )
       if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
@@ -378,11 +365,8 @@ withPipeline(type, product, component) {
   }
 
   before('smoketest:preview') {
-    copyPrevPlaywrightLastRun()
+    copyPrevPlaywrightLastRunAndTestFilesReport()
     lastRunPassed = checkHasPlaywrightLastRunStatus('passed')
-    copyPrevTestFilesReport(
-      "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
-    )
   }
 
   afterAlways('smoketest:preview') {
@@ -390,8 +374,9 @@ withPipeline(type, product, component) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
 
+    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
+
     if(!lastRunPassed) {
-      archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
 
       def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
@@ -424,8 +409,9 @@ withPipeline(type, product, component) {
   }
 
   afterAlways('functionalTest:preview') {
+    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
+    
     if(!lastRunPassed) {
-      archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
 
       copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
       sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
