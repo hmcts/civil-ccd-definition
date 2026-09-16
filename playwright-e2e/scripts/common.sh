@@ -42,6 +42,8 @@ write_tests_skipped_flag() {
   smoke_tests_failed=$(get_report_flag "PLAYWRIGHT_SMOKE_TESTS_FAILED")
 
   write_report_flags "$setup_tests_failed" "$smoke_tests_failed" true
+
+  echo "Skipping smoke and functionaltests. PLAYWRIGHT_TESTS_SKIPPED=true"
 }
 
 # Returns success when the report is unavailable so callers can choose the action.
@@ -111,5 +113,31 @@ should_run_all_functional_tests() {
     echo "Running all functional tests."
     return 0
   fi
+  return 1
+}
+
+compare_ft_groups() {
+  local ft_groups_csv pr_ft_groups_csv
+
+  # Extract ftGroups array as a comma-separated string (sorted).
+  ft_groups_csv=$(jq -r '
+    if (.ftGroups == null or (.ftGroups | length == 0))
+    then ""
+    else (.ftGroups | sort | join(","))
+    end
+  ' "$PREV_PLAYWRIGHT_TEST_FILES_REPORT")
+
+  # Normalize PLAYWRIGHT_PR_FT_GROUPS (sort, trim spaces, split by comma, then rejoin sorted).
+  pr_ft_groups_csv=""
+  if [ -n "$PLAYWRIGHT_PR_FT_GROUPS" ]; then
+    pr_ft_groups_csv=$(echo "$PLAYWRIGHT_PR_FT_GROUPS" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sort | paste -sd "," -)
+  fi
+
+  if [ "$ft_groups_csv" = "$pr_ft_groups_csv" ]; then
+    echo "ftGroups do match PLAYWRIGHT_PR_FT_GROUPS"
+    return 0
+  fi
+
+  echo "ftGroups do NOT match PLAYWRIGHT_PR_FT_GROUPS"
   return 1
 }
