@@ -1,10 +1,22 @@
 #!/bin/bash
 
 # Shared report paths; source after configuring the results directory and project.
-PLAYWRIGHT_TEST_FILES_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/playwrightTestFilesReport.json"
-PREV_PLAYWRIGHT_TEST_FILES_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/prevPlaywrightTestFilesReport.json"
-PLAYWRIGHT_LAST_RUN_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json"
-PREV_PLAYWRIGHT_LAST_RUN_REPORT="${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.prev-last-run.json"
+PLAYWRIGHT_TEST_FILES_REPORT="${PLAYWRIGHT_TEST_RESULTS_DIR}/${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
+PREV_PLAYWRIGHT_TEST_FILES_REPORT="${PLAYWRIGHT_TEST_RESULTS_DIR}/prevPlaywrightTestFilesReport.json"
+PLAYWRIGHT_LAST_RUN_REPORT="${PLAYWRIGHT_TEST_RESULTS_DIR}/${PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+PREV_PLAYWRIGHT_LAST_RUN_REPORT="${PLAYWRIGHT_TEST_RESULTS_DIR}/.prev-last-run.json"
+PLAYWRIGHT_TESTS_FLAGS="${PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
+
+write_report_flags() {
+  local setup_tests_failed="${1:-false}"
+  local smoke_tests_failed="${2:-false}"
+
+  mkdir -p "$(dirname "$PLAYWRIGHT_TESTS_FLAGS")"
+  {
+    echo "PLAYWRIGHT_SETUP_TESTS_FAILED=$setup_tests_failed"
+    echo "PLAYWRIGHT_SMOKE_TESTS_FAILED=$smoke_tests_failed"
+  } > "$PLAYWRIGHT_TESTS_FLAGS"
+}
 
 # Returns success when the report is unavailable so callers can choose the action.
 report_missing_or_empty() {
@@ -65,16 +77,11 @@ should_run_failed_tests() {
   [ "$RUN_FAILED_TESTS" = "true" ]
 }
 
-exit_if_playwright_flow_cannot_continue() {
-  # Check if flow was interrupted.
-  if [ "$PLAYWRIGHT_FLOW_INTERRUPTED" = "true" ]; then
-    echo "Playwright flow was interrupted. Exiting."
-    exit 1
+should_run_all_functional_tests() {
+  if [ "$RUN_ALL_FUNCTIONAL_TESTS" = "true" ]; then
+    echo "The label 'runAllFunctionalTests' exists on the PR."
+    echo "Running all functional tests."
+    return 0
   fi
-
-  # Check if playwright setup passed.
-  if [ "$PLAYWRIGHT_SETUP_PASSED" = "false" ]; then
-    echo "Playwright setup failed. Exiting."
-    exit 1
-  fi
+  return 1
 }

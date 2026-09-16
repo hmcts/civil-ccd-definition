@@ -56,7 +56,6 @@ run_failed_functional_tests() {
   else
     yarn test:playwright:civil-ccd-pr:ci --last-failed
   fi
-  exit 0
 }
 
 run_functional_tests() {
@@ -70,30 +69,34 @@ run_functional_tests() {
   else
     run_functional_test_groups
   fi
+}
+
+run_playwright_teardown() {
+  echo "Running playwright teardown tests on ${ENVIRONMENT} env"
+  yarn test:playwright:setup:install
+  yarn test:playwright:teardown:civil-ccd:ci
   exit 0
 }
 
 #MAIN SCRIPT
-
-exit_if_playwright_flow_cannot_continue
 
 # Check if SKIP_FUNCTIONAL_TESTS is set to true
 if should_skip_functional_tests; then
   exit 0
 
 #Check if RUN_ALL_FUNCTIONAL_TESTS is set to true
-elif [ "$RUN_ALL_FUNCTIONAL_TESTS" = "true" ]; then
-  echo "The label 'runAllFunctionalTests' exists on the PR."
-  echo "Running all fucntional tests."
+elif should_run_all_functional_tests; then
   run_functional_tests
 
 #Check if latest current git commit is the not the same as git commit of prev playwright test files report 
 elif previous_commit_changed; then 
   run_functional_tests
+  run_playwright_teardown
 
 # Check if the previous last run json is not found or is empty.
 elif report_missing_or_empty "$PREV_PLAYWRIGHT_LAST_RUN_REPORT"; then
   run_functional_tests
+  run_playwright_teardown
   
 # Check if the previous last run json has status passed.
 elif previous_run_has_status_passed; then
@@ -102,8 +105,9 @@ elif previous_run_has_status_passed; then
 # Check if the previous last run json has a status other than failed.
 elif ! previous_run_has_status_failed; then
   run_functional_tests
+  run_playwright_teardown
 
 else
   run_failed_functional_tests
-
+  run_playwright_teardown
 fi

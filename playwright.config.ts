@@ -30,19 +30,19 @@ export default defineConfig({
   projects: [
     {
       name: 'data-setup',
-      outputDir: './playwright-bootstrap-test-results/data-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/data-setup`,
       testMatch: '**playwright-e2e/tests/bootstrap/data/**.setup.ts',
       retries: 0,
     },
     {
       name: 'exui-users-data-setup',
-      outputDir: './playwright-bootstrap-test-results/exui-users-data-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/exui-users-data-setup`,
       testMatch: '**playwright-e2e/tests/bootstrap/users-data/exui-users-data.setup.ts',
       retries: 0,
     },
     {
       name: 'cui-users-setup',
-      outputDir: './playwright-bootstrap-test-results/cui-users-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/cui-users-setup`,
       testMatch: '**playwright-e2e/tests/bootstrap/users/cui-users.setup.ts',
       dependencies: ['exui-users-data-setup'],
       teardown: 'cui-users-teardown',
@@ -50,14 +50,14 @@ export default defineConfig({
     },
     {
       name: 'cui-users-data-setup',
-      outputDir: './playwright-bootstrap-test-results/cui-users-data-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/cui-users-data-setup`,
       testMatch: '**playwright-e2e/tests/bootstrap/users-data/cui-users-data.setup.ts',
       dependencies: ['cui-users-setup'],
       retries: 0,
     },
     {
       name: 'exui-users-auth-setup',
-      outputDir: './playwright-bootstrap-test-results/exui-users-auth-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/exui-users-auth-setup`,
       use: { ...devices['Desktop Chrome'] },
       testMatch: '**playwright-e2e/tests/bootstrap/auth/exui-users-auth.setup.ts',
       dependencies: ['exui-users-data-setup'],
@@ -65,19 +65,19 @@ export default defineConfig({
     },
     {
       name: 'cui-users-teardown',
-      outputDir: './playwright-bootstrap-test-results/cui-users-teardown',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/cui-users-teardown`,
       testMatch: '**playwright-e2e/tests/bootstrap/users/cui-users.teardown.ts',
       retries: 0,
     },
     {
       name: 'exui-users-auth-teardown',
-      outputDir: './playwright-bootstrap-test-results/exui-users-auth-teardown',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/exui-users-auth-teardown`,
       use: { ...devices['Desktop Chrome'] },
       testMatch: '**playwright-e2e/tests/bootstrap/auth/exui-users-auth.teardown.ts',
     },
     {
       name: 'case-role-assignment-teardown',
-      outputDir: './playwright-bootstrap-test-results/case-role-assignment-teardown',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/case-role-assignment-teardown`,
       use: { ...devices['Desktop Chrome'] },
       testMatch: '**playwright-e2e/tests/bootstrap/case-role-assignment/**.teardown.ts',
     },
