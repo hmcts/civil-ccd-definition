@@ -287,14 +287,6 @@ withPipeline(type, product, component) {
   env.PLAYWRIGHT_WA_ENABLED = false
   env.PLAYWRIGHT_ZOD_VALIDATION_ENABLED = false
   env.PLAYWRIGHT_UNASSIGN_CASES = true
-  boolean playwrightSetupPassed = true;
-  boolean lastRunPassed = false;
-  boolean playwrightRunSetup =
-    env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
-    env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP.toBoolean() ||
-    env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP.toBoolean() ||
-    env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean() ||
-    env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
   
   onPR {
     env.ENVIRONMENT = "preview"
@@ -366,7 +358,6 @@ withPipeline(type, product, component) {
 
   before('smoketest:preview') {
     copyPrevPlaywrightLastRunAndTestFilesReport()
-    lastRunPassed = checkHasPlaywrightLastRunStatus('passed')
   }
 
   afterAlways('smoketest:preview') {
@@ -376,12 +367,12 @@ withPipeline(type, product, component) {
 
     archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
 
-    if(!lastRunPassed) {
+    def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
-      def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
+    if (fileExists(playwrightTestsFlags)) {
+      def reportFlags = readProperties file: playwrightTestsFlags
 
-      if (fileExists(playwrightTestsFlags)) {
-        def reportFlags = readProperties file: playwrightTestsFlags
+      if(!(reportFlags.PLAYWRIGHT_TESTS_SKIPPED == 'true')) {
 
         if (reportFlags.PLAYWRIGHT_SETUP_TESTS_FAILED == 'true') {
           copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
@@ -410,26 +401,32 @@ withPipeline(type, product, component) {
 
   afterAlways('functionalTest:preview') {
     archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
-    
-    if(!lastRunPassed) {
 
-      copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
-      sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
-      yarnBuilder.yarn('test:playwright:functional:generate-report')
-      publishAllureReport(
-        'playwright-allure-functional-report',
-        'Playwright Allure Functional Report',
-        'playwright-allure-functional-history'
-      )
+    def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
-      copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
-      sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
-      yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
-      publishAllureReport(
-        'playwright-allure-bootstrap-report',
-        'Playwright Allure Bootstrap Report',
-        'playwright-allure-bootstrap-history'
-      )
+    if (fileExists(playwrightTestsFlags)) {
+      def reportFlags = readProperties file: playwrightTestsFlags
+
+      if(!(reportFlags.PLAYWRIGHT_TESTS_SKIPPED == 'true')) {
+
+        copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
+        sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+        yarnBuilder.yarn('test:playwright:functional:generate-report')
+        publishAllureReport(
+          'playwright-allure-functional-report',
+          'Playwright Allure Functional Report',
+          'playwright-allure-functional-history'
+        )
+
+        copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+        sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
+        yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+        publishAllureReport(
+          'playwright-allure-bootstrap-report',
+          'Playwright Allure Bootstrap Report',
+          'playwright-allure-bootstrap-history'
+        )
+      }
     }
   }
 

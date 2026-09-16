@@ -10,12 +10,38 @@ PLAYWRIGHT_TESTS_FLAGS="${PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.prop
 write_report_flags() {
   local setup_tests_failed="${1:-false}"
   local smoke_tests_failed="${2:-false}"
+  local tests_skipped="${3:-false}"
 
   mkdir -p "$(dirname "$PLAYWRIGHT_TESTS_FLAGS")"
   {
     echo "PLAYWRIGHT_SETUP_TESTS_FAILED=$setup_tests_failed"
     echo "PLAYWRIGHT_SMOKE_TESTS_FAILED=$smoke_tests_failed"
+    echo "PLAYWRIGHT_TESTS_SKIPPED=$tests_skipped"
   } > "$PLAYWRIGHT_TESTS_FLAGS"
+}
+
+get_report_flag() {
+  local flag_name="$1"
+  local default_value="${2:-false}"
+
+  if [ ! -f "$PLAYWRIGHT_TESTS_FLAGS" ]; then
+    echo "$default_value"
+    return
+  fi
+
+  local flag_value
+  flag_value=$(grep "^${flag_name}=" "$PLAYWRIGHT_TESTS_FLAGS" | tail -n 1 | cut -d '=' -f 2-) || true
+  echo "${flag_value:-$default_value}"
+}
+
+write_tests_skipped_flag() {
+  local setup_tests_failed
+  local smoke_tests_failed
+
+  setup_tests_failed=$(get_report_flag "PLAYWRIGHT_SETUP_TESTS_FAILED")
+  smoke_tests_failed=$(get_report_flag "PLAYWRIGHT_SMOKE_TESTS_FAILED")
+
+  write_report_flags "$setup_tests_failed" "$smoke_tests_failed" true
 }
 
 # Returns success when the report is unavailable so callers can choose the action.
@@ -47,6 +73,7 @@ previous_run_has_status() {
 previous_run_has_status_passed() {
   if previous_run_has_status passed; then
     echo ".prev-last-run.json status is passed"
+    write_tests_skipped_flag
     return 0
   fi
   return 1
@@ -68,6 +95,7 @@ should_skip_functional_tests() {
   if [ "$SKIP_FUNCTIONAL_TESTS" = "true" ]; then
     echo "The label 'pr-values:skip-functional-tests' exists on the PR."
     echo "Skipping functional tests."
+    write_tests_skipped_flag
     return 0
   fi
   return 1
