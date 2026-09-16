@@ -16,6 +16,6 @@ export default class HearingScheduledGaConfirmPage extends GaExuiPage(BasePage) 
   }
 
   async submit() {
-    throw new Error('Method not implemented.');
+    await super.retryClickSubmit();
   }
 }
