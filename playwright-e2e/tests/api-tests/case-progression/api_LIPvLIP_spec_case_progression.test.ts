@@ -9,7 +9,7 @@ test.describe(
       DefendantCitizenApiSteps,
       CaseRoleAssignmentApiSteps,
       JudgeApiSteps,
-      HearingCenterAdminApiSteps
+      HearingCenterAdminApiSteps,
     }) => {
       await ClaimantCitizenApiSteps.CreateLipClaimFast();
       await ClaimantCitizenApiSteps.MakePaymentForClaimIssue();
