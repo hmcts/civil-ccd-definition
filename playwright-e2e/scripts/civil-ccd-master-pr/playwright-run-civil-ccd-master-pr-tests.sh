@@ -51,9 +51,9 @@ run_functional_test_groups() {
 run_failed_functional_tests() {
   echo "Running failed playwright functional tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
-    yarn PLAYWRIGHT_FUNCTIONAL=true test:playwright:civil-ccd-master:ci --last-failed
+    PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-master:ci --last-failed
   else
-    yarn PLAYWRIGHT_FUNCTIONAL=true test:playwright:civil-ccd-pr:ci --last-failed
+    PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-pr:ci --last-failed
   fi
 }
 
@@ -61,9 +61,9 @@ run_functional_tests() {
   echo "Running functional playwright tests on ${ENVIRONMENT} env"
   echo "Running all functional tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
-    yarn PLAYWRIGHT_FUNCTIONAL=true test:playwright:civil-ccd-master:ci
+    PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-master:ci
   elif [ -z "$PR_FT_GROUPS" ]; then
-    yarn PLAYWRIGHT_FUNCTIONAL=true test:playwright:civil-ccd-pr:ci
+    PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-pr:ci
   else
     run_functional_test_groups
   fi
