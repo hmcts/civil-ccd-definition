@@ -4,7 +4,7 @@ set -e
 source "$(dirname "${BASH_SOURCE[0]}")/../common.sh"
 
 run_functional_test_groups() {
-  command="PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-pr:ci --grep "
+  command="yarn test:playwright:civil-ccd-pr:ci --grep "
   playwright_pr_ft_groups=$(echo "$PLAYWRIGHT_PR_FT_GROUPS" | awk '{print tolower($0)}')
   
   regex_pattern=""
@@ -26,18 +26,18 @@ run_functional_test_groups() {
 run_failed_functional_tests() {
   echo "Running failed playwright functional tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
-    PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-master:ci --last-failed
+    yarn test:playwright:civil-ccd-master:ci --last-failed
   else
-    PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-pr:ci --last-failed
+    yarn test:playwright:civil-ccd-pr:ci --last-failed
   fi
 }
 
 run_functional_tests() {
   echo "Running functional playwright tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
-    PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-master:ci
+    yarn test:playwright:civil-ccd-master:ci
   elif [ -z "$PLAYWRIGHT_PR_FT_GROUPS" ]; then
-    PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-pr:ci
+    yarn test:playwright:civil-ccd-pr:ci
   else
     run_functional_test_groups
   fi
