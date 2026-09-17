@@ -391,11 +391,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      {
-        startWithWATaskName: true,
-        verifySuccessEvent: false,
-        expectedState: CaseState.CASE_PROGRESSION,
-      },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -412,11 +408,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      {
-        startWithWATaskName: true,
-        verifySuccessEvent: false,
-        expectedState: CaseState.CASE_PROGRESSION,
-      },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 
@@ -433,11 +425,7 @@ export default class JudgeSteps extends BaseExui {
       ccdEvents.DECISION_ON_RECONSIDERATION_REQUEST,
       judgeRegion1User,
       decisionOnReconsiderationRequestTask,
-      {
-        startWithWATaskName: true,
-        verifySuccessEvent: false,
-        expectedState: CaseState.CASE_PROGRESSION,
-      },
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 }
