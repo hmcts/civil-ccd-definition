@@ -8,18 +8,19 @@
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "DisplayContext": "COMPLEX",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "REFER_TO_JUDGE",
     "CaseFieldID": "generalAppUrgencyRequirement",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "GAUrgencyRecordPage",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "referToJudge = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -32,7 +33,7 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "referToJudge = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -44,7 +45,7 @@
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "referToJudge = \"DO_NOT_SHOW_IN_UI\"",
     "DisplayContext": "OPTIONAL",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
@@ -56,7 +57,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 8,
     "PageColumnNumber": 1,
     "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
@@ -69,7 +70,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage2",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
@@ -82,7 +83,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "isMultiPartyPage2",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 9,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
