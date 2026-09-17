@@ -8,7 +8,7 @@
     "PageID": "GAUrgencyRecordPage",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "PageShowCondition": "referToJudge = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -21,7 +21,7 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "PageShowCondition": "referToJudge = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -33,7 +33,7 @@
     "PageFieldDisplayOrder": 1,
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "PageShowCondition": "referToJudge = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "DisplayContext": "OPTIONAL",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
@@ -73,6 +73,7 @@
     "PageID": "isMultiPartyPage2",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
+    "PageShowCondition": "generalAppUrgencyRequirement = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
