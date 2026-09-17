@@ -4,7 +4,7 @@ set -e
 source "$(dirname "${BASH_SOURCE[0]}")/../common.sh"
 
 run_functional_test_groups() {
-  command="yarn test:playwright:civil-ccd-pr:ci --grep "
+  command="PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-pr:ci --grep "
   playwright_pr_ft_groups=$(echo "$PLAYWRIGHT_PR_FT_GROUPS" | awk '{print tolower($0)}')
   
   regex_pattern=""
