@@ -140,7 +140,7 @@
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "SecurityClassification": "Public",
     "EndButtonLabel": "Submit",
-    "ShowSummary": "N",
+    "ShowSummary": "Y",
     "ShowEventNotes": "Y",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
