@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe('Unspec automated hearing notice schedulers', async () => {
   test('Prepare unspec claim up to SDO', async ({
@@ -9,7 +10,7 @@ test.describe('Unspec automated hearing notice schedulers', async () => {
     JudgeApiSteps,
   }) => {
     await HearingsApiSteps.SetupStaticMocks();
-    await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+    await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.AmendClaimDocuments();
     await ClaimantSolicitorApiSteps.NotifyClaim();

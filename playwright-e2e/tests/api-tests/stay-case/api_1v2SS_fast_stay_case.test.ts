@@ -1,4 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe('1v2SS stay case api journey', { tag: '@civil-service-nightly' }, async () => {
   test('1v2SS LR UNSPEC claim hearing readiness', async ({
@@ -9,7 +11,10 @@ test.describe('1v2SS stay case api journey', { tag: '@civil-service-nightly' }, 
     CaseworkerApiSteps,
     CtscAdminApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimFast1v2SS();
+    await ClaimantSolicitorApiSteps.CreateClaim({
+      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

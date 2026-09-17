@@ -1,4 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimTypeUnspec from '../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
 
 test.describe(
   'Noise Induced Hearing Loss API test - fast claim - unspec',
@@ -11,7 +14,11 @@ test.describe(
       HearingCenterAdminApiSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFastNIHL1v1();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
+        personalInjuryType: PersonalInjuryType.NOISE_INDUCED_HEARING_LOSS,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();

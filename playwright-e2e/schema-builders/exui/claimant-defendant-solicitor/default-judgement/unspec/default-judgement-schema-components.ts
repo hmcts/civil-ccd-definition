@@ -54,10 +54,6 @@ const hearingSupportRequirementsFieldDJ = () => ({
 });
 
 const otherRemedyAbandoned = () => ({
-  isOtherRemedyAbandoned: nonEmptyString,
-});
-
-const otherRemedyAbandoned = () => ({
   isOtherRemedyAbandoned: z.literal('Yes'),
   otherRemedyAbandonedDate: z.string(),
 });

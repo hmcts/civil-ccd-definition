@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   'Spec 1v1 judgment by admission mark paid in full api test',
@@ -7,9 +8,9 @@ test.describe(
     test('1v1 LR v LR defendant response with full admit pay by set date judgment by admission mark paid in full', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
-      DefendantSolicitor1SpecApiSteps
+      DefendantSolicitor1SpecApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondFullAdmitSetDate();

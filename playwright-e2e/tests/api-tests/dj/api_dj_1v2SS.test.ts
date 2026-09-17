@@ -1,4 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2SS default judgement api journey',
@@ -7,9 +9,12 @@ test.describe(
     test('1v2SS default judgement api', async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
-      JudgeApiSteps
+      JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v2SS();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

@@ -1,10 +1,11 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe('Unspec 1v2lips api journey', { tag: '@civil-service-nightly' }, async () => {
   test('Create claim where one respondent is LIP one is LR and notify/notify details', async ({
     ClaimantSolicitorApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimSmall1v2LRLIP();
+    await ClaimantSolicitorApiSteps.CreateClaim({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim1v2LRLIP();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails1v2LRLIP();
@@ -13,7 +14,7 @@ test.describe('Unspec 1v2lips api journey', { tag: '@civil-service-nightly' }, a
   test('Create claim where two respondents are LIP and notify/notify details', async ({
     ClaimantSolicitorApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimSmall1v2LIPs();
+    await ClaimantSolicitorApiSteps.CreateClaim({ claimType: ClaimType.ONE_VS_TWO_LIPS });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim1v2LIPS();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails1v2LIPS();

@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track.ts';
 
 test.describe('1v1 case flags api journey', { tag: '@civil-service-nightly' }, async () => {
   test('1v1 case flags', async ({
@@ -7,7 +8,7 @@ test.describe('1v1 case flags api journey', { tag: '@civil-service-nightly' }, a
     DefendantSolicitor1ApiSteps,
     HearingCenterAdminApiSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+    await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

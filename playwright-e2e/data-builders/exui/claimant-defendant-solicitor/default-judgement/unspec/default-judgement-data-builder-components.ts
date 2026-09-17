@@ -54,18 +54,6 @@ const showCertifyStatement = () => ({
   },
 });
 
-const otherRemedyAbandoned = (djOtherRemedy: DJOtherRemedy) => {
-  if (djOtherRemedy === DJOtherRemedy.YES) {
-    return {
-      OtherRemedyAbandoned: {
-        isOtherRemedyAbandoned: 'Yes',
-      },
-    }
-  }
-
-  return {};
-};
-
 const hearingType = (djHearingType: DJHearingType) => {
   return {
     HearingType: {
