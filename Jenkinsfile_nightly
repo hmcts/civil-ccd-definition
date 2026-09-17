@@ -193,6 +193,9 @@ def copyPrevPlaywrightLastRunAndTestFilesReport() {
         selector: specific("${buildNumber}"),
         filter: "${lastRunFilePath},${testFilesReportPath}"
       )
+      if (!fileExists(lastRunFilePath) || !fileExists(testFilesReportPath)) {
+        throw new Exception("Missing one or more Playwright previous run artifacts from build ${buildNumber}")
+      }
       if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
           "Skipping copied .last-run.json from build ${buildNumber} because status was not 'passed' or 'failed'"
@@ -200,10 +203,11 @@ def copyPrevPlaywrightLastRunAndTestFilesReport() {
       }
       buildFound = true
     } catch (Exception error) {
-      echo "artifact not found: " + error.toString()
+      echo "Previous Playwright artifacts not usable from build ${buildNumber}: " + error.toString()
       buildNumber--
     }
   }
+  return buildFound
 }
 
 def secrets = [

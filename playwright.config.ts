@@ -189,6 +189,8 @@ function getReporter(): any {
         OS: os.platform(),
         Architecture: os.arch(),
         NodeVersion: process.version,
+        ftGroups: process.env.PLAYWRIGHT_PR_FT_GROUPS ? process.env.PLAYWRIGHT_PR_FT_GROUPS : 'None',
+        gitCommit: process.env.GIT_COMMIT ? process.env.GIT_COMMIT : 'None',
       },
       detail: false,
     },

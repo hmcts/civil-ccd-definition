@@ -83,6 +83,9 @@ def copyPrevPlaywrightLastRunAndTestFilesReport() {
         selector: specific("${buildNumber}"),
         filter: "${lastRunFilePath},${testFilesReportPath}"
       )
+      if (!fileExists(lastRunFilePath) || !fileExists(testFilesReportPath)) {
+        throw new Exception("Missing one or more Playwright previous run artifacts from build ${buildNumber}")
+      }
       if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
           "Skipping copied .last-run.json from build ${buildNumber} because status was not 'passed' or 'failed'"
@@ -90,7 +93,7 @@ def copyPrevPlaywrightLastRunAndTestFilesReport() {
       }
       buildFound = true
     } catch (Exception error) {
-      echo "artifact not found: " + error.toString()
+      echo "Previous Playwright artifacts not usable from build ${buildNumber}: " + error.toString()
       buildNumber--
     }
   }
@@ -365,14 +368,13 @@ withPipeline(type, product, component) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
 
-    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
-
     def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
     if (fileExists(playwrightTestsFlags)) {
       def reportFlags = readProperties file: playwrightTestsFlags
 
       if(!(reportFlags.PLAYWRIGHT_TESTS_SKIPPED == 'true')) {
+        archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
 
         if (reportFlags.PLAYWRIGHT_SETUP_TESTS_FAILED == 'true') {
           copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
@@ -400,14 +402,13 @@ withPipeline(type, product, component) {
   }
 
   afterAlways('functionalTest:preview') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
-
     def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
     if (fileExists(playwrightTestsFlags)) {
       def reportFlags = readProperties file: playwrightTestsFlags
 
       if(!(reportFlags.PLAYWRIGHT_TESTS_SKIPPED == 'true')) {
+        archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
 
         copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
         sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
