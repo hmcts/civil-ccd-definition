@@ -8,6 +8,9 @@ if (config.unassignCases) {
 
     for (let workerIndex = 0; workerIndex < config.playwright.workers; workerIndex++) {
       teardown(`Worker ${workerIndex + 1}: Claimant`, async ({ CaseRoleAssignmentApiSteps }) => {
+        if(process.env.RUN_FAILING_TEARDOWN_TESTS === 'true') {
+          throw new Error('This test is currently failing and is being skipped. Please check the test and fix it before enabling it again.');
+        }
         await CaseRoleAssignmentApiSteps.UnassignCases(claimants[workerIndex]);
       });
 
