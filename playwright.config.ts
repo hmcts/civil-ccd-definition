@@ -94,7 +94,7 @@ export default defineConfig({
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
-      grep: /@civil-ccd-pr/,
+      grep: process.env.PLAYWRIGHT_PR_FT_GROUPS ? undefined : /@civil-ccd-pr/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -126,7 +126,7 @@ export default defineConfig({
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
-      grep: /@civil-service-pr/,
+      grep: process.env.PLAYWRIGHT_PR_FT_GROUPS ? undefined : /@civil-service-pr/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -158,7 +158,7 @@ export default defineConfig({
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
-      grep: /@civil-wa-pr/,
+      grep: process.env.PLAYWRIGHT_PR_FT_GROUPS ? undefined : /@civil-wa-pr/,
       teardown: 'case-role-assignment-teardown',
     },
     {

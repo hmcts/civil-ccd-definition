@@ -34,7 +34,6 @@ run_failed_functional_tests() {
 
 run_functional_tests() {
   echo "Running functional playwright tests on ${ENVIRONMENT} env"
-  echo "Running all functional tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
     PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-master:ci
   elif [ -z "$PLAYWRIGHT_PR_FT_GROUPS" ]; then
