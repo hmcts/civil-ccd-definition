@@ -106,6 +106,12 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
+      name: 'civil-ccd-smoke',
+      outputDir: './playwright-smoke-test-results',
+      use: { ...devices['Desktop Chrome'] },
+      grep: /@civil-ccd-smoke/,
+    },
+    {
       name: 'civil-service-pr',
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
