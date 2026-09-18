@@ -8,6 +8,9 @@ if (config.runExuiUserDataSetup) {
 
     exuiUserDataSetupUsers.forEach((exuiAuthSetupUser) => {
       setup(exuiAuthSetupUser.name, async ({ IdamApiSteps }) => {
+        if(process.env.RUN_FAILING_SETUP_TESTS === 'true') {
+          throw new Error('This test is currently failing and is being skipped. Please check the test and fix it before enabling it again.');
+        }
         await IdamApiSteps.SetupUserData(exuiAuthSetupUser);
       });
     });
