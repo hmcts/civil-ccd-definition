@@ -141,7 +141,7 @@
     "SecurityClassification": "Public",
     "EndButtonLabel": "Submit",
     "ShowSummary": "Y",
-    "ShowEventNotes": "N",
+    "ShowEventNotes": "Y",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
     "Publish": "Y"
