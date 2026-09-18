@@ -181,6 +181,7 @@ export default class DefendantSolicitor2SpecApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
       uploadMediationDocumentsData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     await this.runZodValidation(async () => {

@@ -81,6 +81,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.HEARING_SCHEDULED,
       scheduleHearingData,
+      { expectedState: CaseState.HEARING_READINESS },
     );
 
     await this.runZodValidation(async () => {
@@ -191,6 +192,7 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.MANAGE_STAY,
       manageStayData,
+      { expectedState: CaseState.CASE_STAYED },
     );
 
     await this.runZodValidation(async () => {
@@ -210,6 +212,12 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.MANAGE_STAY,
       manageStayData,
+      {
+        expectedState: [
+          CaseState.JUDICIAL_REFERRAL,
+          CaseState.CASE_PROGRESSION,
+        ],
+      },
     );
 
     await this.runZodValidation(async () => {

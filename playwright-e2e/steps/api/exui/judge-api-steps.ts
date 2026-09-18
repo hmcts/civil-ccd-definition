@@ -47,7 +47,12 @@ export default class JudgeApiSteps extends BaseApi {
       fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      {
+        expectedState: [
+          CaseState.CASE_PROGRESSION,
+          CaseState.PREPARE_FOR_HEARING_CONDUCT_HEARING,
+        ],
+      },
     );
 
     await this.runZodValidation(async () => {
@@ -270,6 +275,7 @@ export default class JudgeApiSteps extends BaseApi {
       judgeRegion1User,
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       generateDirectionsOrderData,
+      { expectedState: CaseState.PREPARE_FOR_HEARING_CONDUCT_HEARING },
     );
 
     await this.runZodValidation(async () => {
@@ -291,6 +297,12 @@ export default class JudgeApiSteps extends BaseApi {
       judgeRegion1User,
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
       generateDirectionsOrderData,
+      {
+        expectedState: [
+          CaseState.CASE_PROGRESSION,
+          CaseState.PREPARE_FOR_HEARING_CONDUCT_HEARING,
+        ],
+      },
     );
 
     await this.runZodValidation(async () => {
@@ -352,7 +364,14 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
     const notSuitableSdoData = await notSuitableSdoDataBuilder.buildChangeLocation();
-    await super.submitCCDEvent(judgeRegion1User, ccdEvents.NOT_SUITABLE_SDO, notSuitableSdoData);
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.NOT_SUITABLE_SDO,
+      notSuitableSdoData,
+      {
+        expectedState: [CaseState.JUDICIAL_REFERRAL, CaseState.CASE_PROGRESSION],
+      },
+    );
 
     await this.runZodValidation(async () => {
       const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -368,7 +387,18 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
     const notSuitableSdoData = await notSuitableSdoDataBuilder.buildOtherReasons();
-    await super.submitCCDEvent(judgeRegion1User, ccdEvents.NOT_SUITABLE_SDO, notSuitableSdoData);
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.NOT_SUITABLE_SDO,
+      notSuitableSdoData,
+      {
+        expectedState: [
+          CaseState.JUDICIAL_REFERRAL,
+          CaseState.CASE_PROGRESSION,
+          CaseState.PROCEEDS_IN_HERITAGE_SYSTEM,
+        ],
+      },
+    );
 
     await this.runZodValidation(async () => {
       const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -459,7 +489,12 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { sendAndReplyDataBuilder } = this.judgeDataBuilderFactory;
     const sendAndReplyData = await sendAndReplyDataBuilder.buildReply();
-    await super.submitCCDEvent(judgeRegion1User, ccdEvents.SEND_AND_REPLY, sendAndReplyData);
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.SEND_AND_REPLY,
+      sendAndReplyData,
+      { expectedState: CaseState.CASE_STAYED },
+    );
 
     await this.runZodValidation(async () => {
       const { sendAndReplySchemaBuilder } = this.judgeSchemaBuilderFactory;
