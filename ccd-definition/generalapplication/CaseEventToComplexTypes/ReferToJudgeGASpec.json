@@ -1,5 +1,23 @@
 [
   {
+    "ID": "ReferToJudge",
+    "CaseEventID": "REFER_TO_JUDGE",
+    "CaseFieldID": "referToJudge",
+    "ListElementCode": "judgeReferEventDescription",
+    "EventElementLabel": "  ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "ReferToJudge",
+    "CaseEventID": "REFER_TO_JUDGE",
+    "CaseFieldID": "referToJudge",
+    "ListElementCode": "judgeReferAdditionalInfo",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "GAUrgencyRecordPage",
     "CaseEventID": "REFER_TO_JUDGE",
     "CaseFieldID": "generalAppUrgencyRequirement",
