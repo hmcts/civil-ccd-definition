@@ -7,7 +7,7 @@ import { legalRepresentatives } from '../../fixtures/legalRepresentatives.ts';
 import { partyDetails } from '../../fixtures/partyDetails.ts';
 import { LinkHelper } from '../../helpers/LinkHelper.ts';
 import YesNo from '../../enums/yesNo.ts';
-import claimTrack from '../../enums/claim-track.ts';
+import claimTrack from '../../enums/track.ts';
 import moment from 'moment/moment';
 
 export class CreateSpecifiedCase {

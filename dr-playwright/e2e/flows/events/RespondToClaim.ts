@@ -5,6 +5,7 @@ import claimTypes from '../../../enums/claim-types.ts';
 import RespondentResponses from '../../../enums/RespondentResponses.ts';
 import YesNo from '../../../enums/yesNo.ts';
 import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
+import trackType from '../../../enums/track.ts';
 
 export class RespondToClaim {
   private buttonHelper: ButtonHelper;
@@ -20,9 +21,11 @@ export class RespondToClaim {
 
   async submit(
     claimType: claimTypes,
+    track: trackType,
     respondent1Response: RespondentResponses = RespondentResponses.FULL_DEFENCE,
     respondent2Response: RespondentResponses = RespondentResponses.FULL_DEFENCE,
     defendantNumber: number = 1,
+    determinationWithoutHearing: YesNo = YesNo.NO,
     oneMonthStay: YesNo = YesNo.YES,
     preActionProtocol: YesNo = YesNo.NO,
     fixedRecoverableCosts: YesNo = YesNo.NO,
@@ -46,9 +49,7 @@ export class RespondToClaim {
         break;
       case claimTypes.TWO_VS_ONE:
         await this.page.locator(`#respondent1ClaimResponseType-${respondent1Response}`).click();
-        await this.page
-          .locator(`#respondent1ClaimResponseTypeApplicant2-${respondent2Response}`)
-          .click();
+        await this.page.locator(`#respondent1ClaimResponseTypeApplicant2-${respondent2Response}`).click();
         break;
       case claimTypes.ONE_VS_TWO_SAME_SOL:
         await this.page.locator(`#respondent1ClaimResponseType-${respondent1Response}`).click();
@@ -60,50 +61,33 @@ export class RespondToClaim {
 
     let legalRepresentativeReference: string;
     if (defendantNumber === 1) {
-      legalRepresentativeReference = await this.page
-        .locator('#solicitorReferences_respondentSolicitor1Reference')
-        .innerText();
-      await this.page
-        .locator('#solicitorReferences_respondentSolicitor1Reference')
-        .fill(`${legalRepresentativeReference} Respond to claim`);
+      legalRepresentativeReference = await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').innerText();
+      await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').fill(`${legalRepresentativeReference} Respond to claim`);
     } else {
-      legalRepresentativeReference = await this.page
-        .locator('#respondentSolicitor2Reference')
-        .innerText();
-      await this.page
-        .locator('#respondentSolicitor2Reference')
-        .fill(`${legalRepresentativeReference} - acknowledge claim`);
+      legalRepresentativeReference = await this.page.locator('#respondentSolicitor2Reference').innerText();
+      await this.page.locator('#respondentSolicitor2Reference').fill(`${legalRepresentativeReference} - Respond to claim`);
     }
 
     await this.buttonHelper.continueButton.click();
-    await this.page
-      .locator(`#respondent${defendantNumber}ClaimResponseDocument_file`)
-      .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_3.pdf');
+    await this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_3.pdf');
     await this.page.waitForSelector('.error-message', { state: 'hidden' });
     await this.buttonHelper.continueButton.click();
 
-    await this.page
-      .locator(
-        `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`,
-      )
-      .click();
-    await this.page
-      .locator(
-        `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_${oneMonthStay}`,
-      )
-      .click();
-    await this.page
-      .locator(
-        `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_${preActionProtocol}`,
-      )
-      .click();
+
+    if (track === trackType.SMALL) {
+      await this.page.locator(`#deterWithoutHearing${defendantNumber}_deterWithoutHearingYesNo_${determinationWithoutHearing}`).click();
+
+      if (determinationWithoutHearing == YesNo.YES) {
+        await this.page.locator(`#deterWithoutHearing${defendantNumber}_deterWithoutHearingWhyNot`).fill(`Defendant${defendantNumber} determination with hearing reason.`);
+      }
+    }
+
+    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_${oneMonthStay}`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_${preActionProtocol}`).click();
 
     if (preActionProtocol === YesNo.NO) {
-      await this.page
-        .locator(
-          `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`,
-        )
-        .fill('Pre-action protocol explanation');
+      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`).fill('Pre-action protocol explanation');
     }
     await this.buttonHelper.continueButton.click();
 
@@ -122,6 +106,5 @@ export class RespondToClaim {
     }
 
     await this.buttonHelper.continueButton.click();
-
   }
 }

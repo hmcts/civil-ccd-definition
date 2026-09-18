@@ -9,7 +9,7 @@ import { legalRepresentatives } from '../../fixtures/legalRepresentatives.ts';
 import claimantDefendantTypes from '../../enums/claimantDefendantTypes.ts';
 import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
-import claimTrack from '../../enums/claim-track.ts';
+import claimTrack from '../../enums/track.ts';
 
 export class CreateUnspecifiedCase {
   private buttonHelper: ButtonHelper;
@@ -343,29 +343,29 @@ export class CreateUnspecifiedCase {
   async setClaimValue(track, typeOfClaim) {
     let claimAmount = '0';
 
-    if (track == claimTrack.INTERMEDIATE_CLAIM) {
+    if (track == claimTrack.INTERMEDIATE) {
       claimAmount = '75000';
     }
 
     if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY || typeOfClaim == unspecClaimTypes.CLINICAL_NEGLIGENCE) {
-      if (track == claimTrack.SMALL_CLAIM) {
+      if (track == claimTrack.SMALL) {
         claimAmount = '500';
-      } else if (track == claimTrack.FAST_CLAIM) {
+      } else if (track == claimTrack.FAST) {
         claimAmount = '20000';
-      } else if (track == claimTrack.MULTI_CLAIM) {
+      } else if (track == claimTrack.MULTI) {
         claimAmount = '50000';
       }
     }
 
     if (claimAmount == '0') {
       switch (track) {
-        case claimTrack.SMALL_CLAIM:
+        case claimTrack.SMALL:
           claimAmount = '5000';
           break;
-        case claimTrack.FAST_CLAIM:
+        case claimTrack.FAST:
           claimAmount = '20000';
           break;
-        case claimTrack.MULTI_CLAIM:
+        case claimTrack.MULTI:
           claimAmount = '50000';
           break;
       }
