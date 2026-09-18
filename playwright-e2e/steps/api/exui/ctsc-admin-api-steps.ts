@@ -1,5 +1,6 @@
 import BaseApi from '../../../base/base-api';
 import { ctscAdminUser } from '../../../config/users/exui-users';
+import CaseState from '../../../constants/cases/case-state';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import respondToHearingQueryCtscTask from '../../../constants/wa-tasks/exui/respondToHearingQueryCtscTask';
 import respondToQueryCtscTask from '../../../constants/wa-tasks/exui/respondToQueryCtscTask';
@@ -36,6 +37,7 @@ export default class CtscAdminApiSteps extends BaseApi {
       ctscAdminUser,
       ccdEvents.SEND_AND_REPLY,
       sendAndReplyData,
+      { expectedState: CaseState.CASE_STAYED },
     );
 
     await this.runZodValidation(async () => {
