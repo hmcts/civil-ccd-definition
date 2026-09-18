@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v2DS create small claim with type housing disrepair',
@@ -19,8 +20,12 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
-      await DefendantSolicitor2ApiSteps.RespondSmallFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
+      await DefendantSolicitor2ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.RespondSmallProceed1v2DS();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.SdoSmallNoSumOtherRemedy();
