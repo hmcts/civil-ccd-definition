@@ -143,8 +143,6 @@ module.exports = function (){
 
     referToJudge: async function () {
       await this.waitInUrl('REFER_TO_JUDGE');
-      await this.fillField('#referToJudge_judgeReferEventDescription', 'Test test');
-      await this.fillField('#referToJudge_judgeReferAdditionalInfo', 'Test additional Info');
       await this.click('Continue');
       await this.waitInUrl('REFER_TO_JUDGE/submit', 5);
       await this.click('Submit');
