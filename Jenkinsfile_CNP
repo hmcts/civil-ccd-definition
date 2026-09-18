@@ -4,7 +4,7 @@ properties([
 ]);
 
 
-@Library("Infrastructure@2.7.0")
+@Library("Infrastructure@DTSPO-30107-jenkins-agents")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
