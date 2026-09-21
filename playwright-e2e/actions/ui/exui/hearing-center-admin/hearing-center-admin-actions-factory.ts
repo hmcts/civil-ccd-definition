@@ -23,6 +23,8 @@ import RequestHearingPageFactory from '../../../../pages/exui/hearing-center-adm
 import SettleClaimActions from './settle-claim-actions';
 import SettleClaimPageFactory from '../../../../pages/exui/hearing-center-admin/settle-claim/settle-claim-page-factory';
 import SettleClaimMarkPaidFullPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/settle-claim-mark-paid-full/settle-claim-mark-paid-full-page-factory.ts';
+import QueryManagementActions from '../common/query-management/query-management-actions.ts';
+import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory.ts';
 
 export default class HearingCenterAdminActionsFactory extends BasePageActionsFactory {
   get caseProceedsInCasemanActions() {
@@ -84,5 +86,9 @@ export default class HearingCenterAdminActionsFactory extends BasePageActionsFac
       new SettleClaimMarkPaidFullPageFactory(this.page),
       this.testData,
     );
+  }
+
+  get queryManagementActions() {
+    return new QueryManagementActions(new QueryManagementPageFactory(this.page), this.testData);
   }
 }

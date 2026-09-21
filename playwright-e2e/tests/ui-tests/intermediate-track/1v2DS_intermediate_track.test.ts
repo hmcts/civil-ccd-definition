@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures/index';
 test.describe(
   '1v2DS intermediate track journey',
   {
-    tag: ['@civil-ccd-nightly'],
+    tag: ['@civil-ccd-nightly', '@ui-intermediate-track'],
   },
   () => {
     test('1v2DS intermediate track', async ({
@@ -14,17 +14,17 @@ test.describe(
       JudgeSteps,
       DefendantSolicitor2Steps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimIntermediate1v2DS();
+      await ClaimantSolicitorApiSteps.CreateClaimInter1v2DS();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondIntermediateFullDefence1v2DS();
-      await DefendantSolicitor2ApiSteps.RespondIntermediateFullDefence1v2DS();
-      await ClaimantSolicitorApiSteps.RespondIntermediateProceed1v2DS();
+      await DefendantSolicitor1ApiSteps.RespondInterFullDefence();
+      await DefendantSolicitor2ApiSteps.RespondInterFullDefence();
+      await ClaimantSolicitorApiSteps.RespondInterProceed1v2DS();
       await JudgeSteps.LoginRegion1();
-      await JudgeSteps.GenerateDirectionsOrderIntermediate();
+      await JudgeSteps.GenerateDirectionsOrderInter();
       await DefendantSolicitor2Steps.Login();
       await DefendantSolicitor2Steps.EvidenceUploadBundle();
     });

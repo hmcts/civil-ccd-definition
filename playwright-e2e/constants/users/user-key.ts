@@ -1,4 +1,6 @@
 enum UserKey {
+  CLAIMANT_CITIZEN = 'claimant-citizen',
+  DEFENDANT_CITIZEN = 'defendant-citizen',
   CLAIMANT_SOLICITOR = 'claimant-solicitor',
   CLAIMANT_ORGANISATION_SUPER = 'claimant-organisation-super',
   CLAIMANT_SOLICITOR_BULK_SCAN = 'claimant-solicitor-bulk-scan',

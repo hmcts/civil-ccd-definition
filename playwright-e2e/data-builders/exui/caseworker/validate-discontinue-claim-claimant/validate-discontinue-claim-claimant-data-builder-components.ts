@@ -1,4 +1,4 @@
-import ConfirmOrderGivesPermission from "../../../../constants/ccd-events/validate-discontinue-claim-claimant/confirm-order-gives-permission";
+import ConfirmOrderGivesPermission from "../../../../constants/ccd-events/ccd-events/validate-discontinue-claim-claimant/confirm-order-gives-permission";
 
 const validateDiscontinuance = (confirmOrderGivesPermission: ConfirmOrderGivesPermission) => {
   return {

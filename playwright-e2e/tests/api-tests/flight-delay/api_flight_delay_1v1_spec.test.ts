@@ -2,9 +2,9 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 spec flight delay api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-flight-delay'] },
   async () => {
-    test('1v1 spec flight delay other airline api @debug', async ({
+    test('1v1 spec flight delay other airline api', async ({
         ClaimantSolicitorSpecApiSteps,
         CaseRoleAssignmentApiSteps,
         DefendantSolicitor1SpecApiSteps,

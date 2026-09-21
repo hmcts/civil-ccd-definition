@@ -9,7 +9,7 @@ const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper')
 
 let caseId;
 
-Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@civil-service-nightly @api-case-progression');
+Feature('1v1 LIP v LIP and LR v LIP spec api journeys').tag('@api-case-progression');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);

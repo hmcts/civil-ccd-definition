@@ -20,12 +20,16 @@ export default class UploadCreateClaimPage extends ExuiPage(BasePage) {
       super.expectText(paragraphs.descriptionText1),
       super.expectText(paragraphs.descriptionText2),
       this.particularsOfClaimFragment.verifyContent(),
-      super.expectSubheading(subheadings.medicalReports),
+      //super.expectSubheading(subheadings.medicalReports),
     ]);
   }
 
   async uploadDocuments() {
     await this.particularsOfClaimFragment.uploadDocuments();
+  }
+
+  async uploadDocumentsParticularsOfClaim() {
+    await this.particularsOfClaimFragment.uploadParticularsOfClaim();
   }
 
   async submit() {

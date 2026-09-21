@@ -4,6 +4,8 @@ import AddDefendantLitigationFriendSchemaBuilder from './add-defendant-litigatio
 import AddOrAmendClaimDocumentsSchemaBuilder from './add-or-amend-claim-documents/unspec/add-or-amend-claim-documents-schema-builder';
 import ClaimantResponseSchemaBuilder from './claimant-response/unspec/claimant-response-schema-builder';
 import ClaimantResponseSpecSchemaBuilder from './claimant-response/lr-spec/claimant-response-spec-schema-builder';
+import CreateClaimSpecAfterPaymentSchemaBuilder from './create-claim-after-payment/lr-spec/create-claim-spec-after-payment-schema-builder';
+import CreateClaimAfterPaymentSchemaBuilder from './create-claim-after-payment/unspec/create-claim-after-payment-schema-builder';
 import CreateClaimSpecSchemaBuilder from './create-claim/lr-spec/create-claim-spec-schema-builder';
 import CreateClaimSchemaBuilder from './create-claim/unspec/create-claim-schema-builder';
 import DefaultJudgementSpecSchemaBuilder from './default-judgement/lr-spec/default-judgement-spec-schema-builder';
@@ -15,18 +17,31 @@ import EvidenceUploadApplicantSchemaBuilder from './evidence-upload-applicant/un
 import EvidenceUploadRespondentSchemaBuilder from './evidence-upload-respondent/unspec/evidence-upload-respondent-schema-builder';
 import InformAgreedExtensionDateSchemaBuilder from './inform-agreed-extension-date/unspec/inform-agreed-extension-date-schema-builder';
 import InformAgreedExtensionDateSpecSchemaBuilder from './inform-agreed-extension-date/lr-spec/inform-agreed-extension-date-spec-schema-builder';
+import InitiateGeneralApplicationGaSchemaBuilder from '../../ga-exui/claimant-defendant-solicitor/initiate-general-application-ga/initiate-general-application-ga-schema-builder';
 import JudgmentPaidInFullSchemaBuilder from './judgment-paid-in-full/lr-spec/judgment-paid-in-full-schema-builder';
 import ManageContactInformationSchemaBuilder from '../common/manage-contact-information/manage-contact-information-schema-builder';
 import NoticeOfChangeSchemaBuilder from './notice-of-change/notice-of-change-schema-builder';
 import NotifyClaimSchemaBuilder from './notify-claim/unspec/notify-claim-schema-builder';
 import NotifyClaimDetailsSchemaBuilder from './notify-claim-details/unspec/notify-claim-details-schema-builder';
+import QueryManagementRaiseSchemaBuilder from '../common/query-management-raise/query-management-raise-schema-builder';
+import QueryManagementRespondSchemaBuilder from '../common/query-management-respond/query-management-respond-schema-builder';
 import SettleClaimSchemaBuilder from './settle-claim/lr-spec/settle-claim-schema-builder';
 import RequestForReconsiderationSchemaBuilder from './request-for-reconsideration/lr-spec/request-for-reconsideration-schema-builder';
 import UploadMediationDocumentsSchemaBuilder from './upload-mediation-documents/lr-spec/upload-mediation-documents-schema-builder';
+import TrialReadinessSchemaBuilder from './trial-readiness/trial-readiness-schema-builder';
+import InitiateGeneralApplicationSchemaBuilder from './initiate-general-application/initiate-general-application-schema-builder';
 
 export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends BaseSchemaBuilderFactory {
   get createClaimSchemaBuilder() {
     return new CreateClaimSchemaBuilder(this.testData);
+  }
+
+  get createClaimAfterPaymentSchemaBuilder() {
+    return new CreateClaimAfterPaymentSchemaBuilder(this.testData);
+  }
+
+  get createClaimSpecAfterPaymentSchemaBuilder() {
+    return new CreateClaimSpecAfterPaymentSchemaBuilder(this.testData);
   }
 
   get acknowledgeClaimSchemaBuilder() {
@@ -97,6 +112,14 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
     return new InformAgreedExtensionDateSpecSchemaBuilder(this.testData);
   }
 
+  get initiateGeneralApplicationSchemaBuilder() {
+    return new InitiateGeneralApplicationSchemaBuilder(this.testData);
+  }
+
+  get initiateGeneralApplicationGaSchemaBuilder() {
+    return new InitiateGeneralApplicationGaSchemaBuilder(this.testData);
+  }
+
   get manageContactInformationSchemaBuilder() {
     return new ManageContactInformationSchemaBuilder(this.testData);
   }
@@ -105,18 +128,30 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
     return new NoticeOfChangeSchemaBuilder(this.testData);
   }
 
+  get queryManagementRaiseSchemaBuilder() {
+    return new QueryManagementRaiseSchemaBuilder(this.testData);
+  }
+
+  get queryManagementRespondSchemaBuilder() {
+    return new QueryManagementRespondSchemaBuilder(this.testData);
+  }
+
   get uploadMediationDocumentsSchemaBuilder() {
     return new UploadMediationDocumentsSchemaBuilder(this.testData);
   }
 
+  get trialReadinessSchemaBuilder() {
+    return new TrialReadinessSchemaBuilder(this.testData);
+  }
+  
   get settleClaimSchemaBuilder() {
     return new SettleClaimSchemaBuilder(this.testData);
   }
-  
+
   get discontinueClaimSchemaBuilder() {
     return new DiscontinueClaimSchemaBuilder(this.testData);
   }
-  
+
   get requestForReconsiderationSchemaBuilder() {
     return new RequestForReconsiderationSchemaBuilder(this.testData);
   }

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
-import DJPaymentTypeSpec from '../../../../../constants/ccd-events/default-judgement/dj-payment-type-spec';
+import DJPaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/default-judgement/dj-payment-type-spec';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';

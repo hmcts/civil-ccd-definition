@@ -1,12 +1,13 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v2SS stay case api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('1v2SS stay case api journey', { tag: ['@civil-service-nightly', '@api-stay-case'] }, async () => {
   test('1v2SS LR UNSPEC claim hearing readiness', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
     HearingCenterAdminApiSteps,
     JudgeApiSteps,
     CaseworkerApiSteps,
+    CtscAdminApiSteps,
   }) => {
     await ClaimantSolicitorApiSteps.CreateClaimFast1v2SS();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
@@ -19,7 +20,7 @@ test.describe('1v2SS stay case api journey', { tag: '@civil-service-nightly' }, 
     await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
     await HearingCenterAdminApiSteps.StayCase();
     await HearingCenterAdminApiSteps.ManageStayRequestUpdate();
-    await CaseworkerApiSteps.SendMessage();
+    await CtscAdminApiSteps.SendMessage();
     await JudgeApiSteps.ReplyMessage();
     await CaseworkerApiSteps.ReplyMessage();
     await HearingCenterAdminApiSteps.ManageStayLiftStay();

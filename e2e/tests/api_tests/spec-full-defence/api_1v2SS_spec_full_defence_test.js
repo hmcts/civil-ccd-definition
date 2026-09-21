@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v2SS spec full defence api journeys').tag('@civil-service-nightly @api-spec-full-defence');
+Feature('1v2SS spec full defence api journeys').tag('@api-spec-full-defence');
 
 Scenario('1v2SS small claim full defence, defendant response', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
@@ -19,7 +19,7 @@ Scenario('1v2SS small claim full defence, claimant response', async ({I, api_spe
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
     'JUDICIAL_REFERRAL');
-}).tag('@civil-service-master @civil-service-pr @civil-camunda-master @civil-camunda-pr');
+}).tag('@civil-service-master @civil-service-pr');
 
 Scenario('1v2SS small claim full defence, claimant response not proceed', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');

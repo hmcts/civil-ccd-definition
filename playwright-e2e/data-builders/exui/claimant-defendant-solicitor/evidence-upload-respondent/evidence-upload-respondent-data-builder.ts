@@ -1,14 +1,9 @@
 import BaseDataBuilder from '../../../../base/base-data-builder';
-import {
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../../../config/users/exui-users';
 import ClaimTrack from '../../../../constants/cases/claim-track';
 import ClaimType from '../../../../constants/cases/claim-type';
 import partys from '../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/users/partys';
-import User from '../../../../models/users/user';
 import evidenceUploadRespondentDataBuilderComponents from './evidence-upload-respondent-data-builder-components';
 
 @AllMethodsStep()
@@ -55,35 +50,26 @@ export default class EvidenceUploadRespondentDataBuilder extends BaseDataBuilder
     defendantSolicitorParty?: Party;
   } = {}) {
     const { civilServiceRequests } = this.requestsFactory;
-    const user = defendantSolicitorParty === partys.DEFENDANT_SOLICITOR_1 ? defendantSolicitor1User : defendantSolicitor2User
-    const doc1 = await civilServiceRequests.uploadTestDocument(user);
-    const doc2 = await civilServiceRequests.uploadTestDocument(user);
-    const doc3 = await civilServiceRequests.uploadTestDocument(user);
-    const doc4 = await civilServiceRequests.uploadTestDocument(user);
 
     return {
       ...evidenceUploadRespondentDataBuilderComponents.evidenceUpload,
       ...evidenceUploadRespondentDataBuilderComponents.selectUploadOptions(claimType),
       ...evidenceUploadRespondentDataBuilderComponents.documentSelection(claimTrack),
-      ...evidenceUploadRespondentDataBuilderComponents.documentUploadFastTrack(
+      ...(await evidenceUploadRespondentDataBuilderComponents.documentUploadFastTrack(
         claimTrack,
         witness1Party,
         expertParty,
-        doc1,
-        doc2,
-        doc3,
-        doc4,
-      ),
-      ...evidenceUploadRespondentDataBuilderComponents.documentUploadSmallClaim(
+        defendantSolicitorParty,
+        civilServiceRequests,
+      )),
+      ...(await evidenceUploadRespondentDataBuilderComponents.documentUploadSmallClaim(
         claimTrack,
         witness1Party,
         witness2Party,
         expertParty,
-        doc1,
-        doc2,
-        doc3,
-        doc4,
-      ),
+        defendantSolicitorParty,
+        civilServiceRequests,
+      )),
       ...evidenceUploadRespondentDataBuilderComponents.undefine,
     };
   }

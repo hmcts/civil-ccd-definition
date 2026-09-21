@@ -5,8 +5,8 @@ import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import createClaimSpecData from './create-claim-spec-data-components';
-import FlightDelayClaim from '../../../../../constants/ccd-events/create-claim/lr-spec/flight-delay-claim';
-import Airline from '../../../../../constants/ccd-events/create-claim/lr-spec/airline';
+import FlightDelayClaim from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
+import Airline from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
@@ -32,18 +32,32 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     });
   }
 
-  async buildIntermediate1v1() {
+  async buildFast1vLIP() {
+    return this.buildData({
+      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimType: ClaimType.ONE_VS_ONE_LIP,
+    });
+  }
+
+  async buildInter1v1() {
     return this.buildData({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
   }
 
-  async buildIntermediate1v2SS() {
+  async buildInter1vLIP() {
+    return this.buildData({
+      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      claimType: ClaimType.ONE_VS_ONE_LIP,
+    });
+  }
+
+  async buildInter1v2SS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
     });
   }
 
-  async buildIntermediate1v2DS() {
+  async buildInter1v2DS() {
     return this.buildData({
       claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
       claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
@@ -52,6 +66,13 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
 
   async buildMulti1v1() {
     return this.buildData({ claimTrack: ClaimTrack.MULTI_CLAIM });
+  }
+
+  async buildMulti1vLIP() {
+    return this.buildData({
+      claimTrack: ClaimTrack.MULTI_CLAIM,
+      claimType: ClaimType.ONE_VS_ONE_LIP,
+    });
   }
 
   async buildMulti2v1() {

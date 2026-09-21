@@ -10,28 +10,28 @@ const nocAnswers = (
   defendant1PartyType: ClaimantDefendantPartyType,
   defendant2PartyType: ClaimantDefendantPartyType,
 ) => {
-  if(claimantDefendantParty === partys.CLAIMANT_1) {
+  if (claimantDefendantParty === partys.CLAIMANT_1) {
     return [
       { 
         question_id: 'clientName', 
         value: CaseDataHelper.buildClaimantAndDefendantData(claimantDefendantParty, claimant1PartyType).partyName 
       },
     ];
-  } else if(claimantDefendantParty === partys.CLAIMANT_2) {
+  } else if (claimantDefendantParty === partys.CLAIMANT_2) {
     return [
       { 
         question_id: 'clientName', 
         value: CaseDataHelper.buildClaimantAndDefendantData(claimantDefendantParty, claimant2PartyType).partyName 
       },
     ];
-  } else if(claimantDefendantParty === partys.DEFENDANT_1) {
+  } else if (claimantDefendantParty === partys.DEFENDANT_1) {
     return [
       { 
         question_id: 'clientName', 
         value: CaseDataHelper.buildClaimantAndDefendantData(claimantDefendantParty, defendant1PartyType).partyName 
       },
     ];
-  } else if(claimantDefendantParty === partys.DEFENDANT_2) {
+  } else if (claimantDefendantParty === partys.DEFENDANT_2) {
     return [
       { 
         question_id: 'clientName', 

@@ -42,7 +42,7 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      preferredCourts[this.defendantParty.key].default,
+      preferredCourts[this.solicitorParty.key].default,
       dropdowns.courtLocations.selector(this.defendantParty),
     );
   }

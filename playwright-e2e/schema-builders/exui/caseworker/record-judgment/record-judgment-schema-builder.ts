@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../base/base-schema-builder';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import JoPaymentPlan from '../../../../constants/ccd-events/record-edit-judgment/jo-payment-plan';
-import JudgmentRecordReason from '../../../../constants/ccd-events/record-edit-judgment/judgment-record-reason';
+import JoPaymentPlan from '../../../../constants/ccd-events/ccd-events/record-edit-judgment/jo-payment-plan';
+import JudgmentRecordReason from '../../../../constants/ccd-events/ccd-events/record-edit-judgment/judgment-record-reason';
 import ZodHelper from '../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../models/ccd-case-data';
 import recordJudgmentSchemaBuilderComponents from './record-judgment-schema-builder-components';

@@ -1,4 +1,5 @@
 enum ClaimType {
+  LIP_VS_LIP = 'LIPvLIP',
   ONE_VS_ONE_LIP = '1v1LIP',
   TWO_VS_ONE_LIP = '2v1LIP',
   ONE_VS_TWO_LIPS = '1v2LIPS',

@@ -4,8 +4,8 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import partys from '../../../../../constants/users/partys';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import DateHelper from '../../../../../helpers/date-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
+import CivilServiceRequests from '../../../../../requests/civil-service-requests';
 
 const respondentResponse = (claimType: ClaimType) => {
   if (ClaimTypeHelper.isDefendant2Represented(claimType)) {
@@ -31,12 +31,17 @@ const respondentResponse = (claimType: ClaimType) => {
   };
 };
 
-const applicantDefenceResponseDocument = (
+const applicantDefenceResponseDocument = async (
   claimType: ClaimType,
-  defenceResponseDocument1: UploadDocumentValue,
-  defenceResponseDocument2: UploadDocumentValue,
+  civilServiceRequests: CivilServiceRequests,
 ) => {
+  const defenceResponseDocument1 =
+    await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
   if (claimType === ClaimType.ONE_VS_TWO_DIFF_SOL) {
+    const defenceResponseDocument2 =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
     return {
       ApplicantDefenceResponseDocument: {
         applicant1DefenceResponseDocument: { file: defenceResponseDocument1 },
@@ -110,11 +115,14 @@ const fixedRecoverableCosts = (claimTrack: ClaimTrack) => {
   return {};
 };
 
-const fixedRecoverableCostsIntermediate = (
+const fixedRecoverableCostsIntermediate = async (
   claimTrack: ClaimTrack,
-  frcSupportingDocument?: UploadDocumentValue,
+  civilServiceRequests: CivilServiceRequests,
 ) => {
   if (claimTrack === ClaimTrack.INTERMEDIATE_CLAIM) {
+    const frcSupportingDocument =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
     return {
       FixedRecoverableCostsIntermediate: {
         applicant1DQFixedRecoverableCostsIntermediate: {
@@ -248,11 +256,16 @@ const hearing = {
   },
 };
 
-const draftDirections = (draftDirectionsDocument: UploadDocumentValue) => ({
-  DraftDirections: {
-    applicant1DQDraftDirections: draftDirectionsDocument,
-  },
-});
+const draftDirections = async (civilServiceRequests: CivilServiceRequests) => {
+  const draftDirectionsDocument =
+    await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
+  return {
+    DraftDirections: {
+      applicant1DQDraftDirections: draftDirectionsDocument,
+    },
+  };
+};
 
 const hearingSupport = {
   HearingSupport: {

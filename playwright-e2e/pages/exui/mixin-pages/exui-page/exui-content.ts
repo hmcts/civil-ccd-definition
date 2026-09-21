@@ -8,6 +8,7 @@ export const buttons = {
     selector: 'button[type=submit]',
   },
   addNew: { title: 'Add new', selector: "button[class='button write-collection-add-item__top']" },
+  continue: { title: 'Continue' },
 };
 
 export const components = {

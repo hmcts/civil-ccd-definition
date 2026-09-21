@@ -5,16 +5,14 @@ import {
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
 import partys from '../../../../../constants/users/partys';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/create-claim/unspec/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/create-claim/unspec/personal-injury-type';
+import ClaimTypeUnspec from '../../../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import ClaimType from '../../../../../constants/cases/claim-type';
 import CaseDataHelper from '../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
-import { UploadDocumentValue } from '../../../../../models/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
-import PersonalInjuryClaimTypeUnspecObjs, { PersonalInjuryClaimTypeUnSpec } from '../../../../../models/ccd-events/create-claim/claim-type-unspec-objs';
-
+import CivilServiceRequests from '../../../../../requests/civil-service-requests';
 const references = {
   References: {
     solicitorReferences: {
@@ -28,8 +26,8 @@ const claimantCourt = {
   Court: {
     courtLocation: {
       applicantPreferredCourtLocationList: {
-        list_items: [CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default)],
-        value: CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default),
+        list_items: [CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default)],
+        value: CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default),
       },
     },
     applicant1DQRemoteHearing: {
@@ -39,7 +37,13 @@ const claimantCourt = {
   },
 };
 
-const claimant1 = (partyType: ClaimantDefendantPartyType, certificateOfSuitability: UploadDocumentValue) => {
+const claimant1 = async (
+  partyType: ClaimantDefendantPartyType,
+  civilServiceRequests: CivilServiceRequests,
+) => {
+  const certificateOfSuitability =
+    await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
   return {
     Claimant: {
       applicant1: CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, partyType),
@@ -51,7 +55,7 @@ const claimant1 = (partyType: ClaimantDefendantPartyType, certificateOfSuitabili
       applicant1LitigationFriend: {
         ...CaseDataHelper.buildLitigationFriendData(
           partys.CLAIMANT_1_LITIGATION_FRIEND,
-        ), 
+        ),
         partyName: undefined,
         certificateOfSuitability: [CaseDataHelper.setIdToData({document: certificateOfSuitability})],
       },
@@ -84,8 +88,15 @@ const claimantSolicitor1 = {
   },
 };
 
-const claimant2 = (claimType: ClaimType, partyType: ClaimantDefendantPartyType, certificateOfSuitability: UploadDocumentValue) => {
-  if (ClaimTypeHelper.isClaimant2(claimType))
+const claimant2 = async (
+  claimType: ClaimType,
+  partyType: ClaimantDefendantPartyType,
+  civilServiceRequests: CivilServiceRequests,
+) => {
+  if (ClaimTypeHelper.isClaimant2(claimType)) {
+    const certificateOfSuitability =
+      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
+
     return {
       AddAnotherClaimant: {
         addApplicant2: 'Yes',
@@ -106,6 +117,7 @@ const claimant2 = (claimType: ClaimType, partyType: ClaimantDefendantPartyType, 
         },
       },
     };
+  }
   return {
     AddAnotherClaimant: {
       addApplicant2: 'No',
@@ -231,24 +243,23 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
   return {};
 };
 
-const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimTypeUnspecObjs) => {
-  const isPersonalInjuryClaimType = typeof claimTypeUnSpec === 'object' && (claimTypeUnSpec as PersonalInjuryClaimTypeUnspecObjs).claimTypeUnspec === ClaimTypeUnspec.PERSONAL_INJURY;
+const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec, personalInjuryType?: PersonalInjuryType) => {
 
-  if (isPersonalInjuryClaimType) {
+  if (claimTypeUnSpec === ClaimTypeUnspec.PERSONAL_INJURY) {
     return {
-      ClaimTypeUnSpec: {
-        claimTypeUnSpec: (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).claimTypeUnspec,
+      ClaimType: {
+        claimTypeUnSpec: claimTypeUnSpec,
       },
       PersonalInjuryType: {
-        personalInjuryType: (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).personalInjuryType,
-        personalInjuryTypeOther: (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).personalInjuryType === PersonalInjuryType.PERSONAL_INJURY_OTHER ? 'Personal injury other description' : undefined,
+        personalInjuryType: personalInjuryType,
+        personalInjuryTypeOther: personalInjuryType === PersonalInjuryType.PERSONAL_INJURY_OTHER ? 'Personal injury other description' : undefined,
       },
     }
   }
 
   if ((claimTypeUnSpec as ClaimTypeUnspec) === ClaimTypeUnspec.OTHER) {
     return {
-      ClaimTypeUnSpec: {
+      ClaimType: {
         claimTypeUnSpec: claimTypeUnSpec as ClaimTypeUnspec,
         claimTypeOther: 'Other claim type description',
       }
@@ -256,29 +267,55 @@ const claimTypeUnspec = (claimTypeUnSpec: ClaimTypeUnspec | PersonalInjuryClaimT
   }
 
   return {
-    ClaimTypeUnSpec: {
-      claimTypeUnSpec: isPersonalInjuryClaimType ? (claimTypeUnSpec as PersonalInjuryClaimTypeUnSpec).claimTypeUnspec : claimTypeUnSpec,
+    ClaimType: {
+      claimTypeUnSpec,
     },
   };
 };
 
+const otherRemedy = (claimTypeUnSpec: ClaimTypeUnspec) => {
+  if(
+    claimTypeUnSpec === ClaimTypeUnspec.HOUSING_DISREPAIR ||
+    claimTypeUnSpec === ClaimTypeUnspec.DAMAGES_AND_OTHER_REMEDY
+  ) {
+    return {
+      ClaimDeclaration: {
+        isClaimDeclarationAdded: 'Yes',
+        claimDeclarationDescription: 'Claim declaration description',
+      },
+      HumanRightsAct: {
+        isHumanRightsActIssues: 'Yes',
+      }
+    };
+  }
 
-const claimDetails = (claimTrack: ClaimTrack) => {
+  return {};
+};
 
+const details = {
+  Details: {
+    detailsOfClaim: 'Test details of claim',
+  },
+};
+
+const uploadParticularsOfClaim = {
+  uploadParticularsOfClaim: {
+    uploadParticularsOfClaim: 'No',
+  },
+};
+
+const claimValue = (claimTrack: ClaimTrack) => {
   return {
-    Details: {
-      detailsOfClaim: 'Test details of claim',
-    },
-    uploadParticularsOfClaim: {
-      uploadParticularsOfClaim: 'No'
-    },
     ClaimValue: {
       claimValue: {
         statementOfValueInPennies: `${CaseDataHelper.getClaimValue(claimTrack) * 100}`,
       },
     },
-    PbaNumber: {},
   };
+};
+
+const pbaNumber = {
+  PbaNumber: {},
 };
 
 const statementOfTruth = {
@@ -303,7 +340,11 @@ const createClaimData = {
   defendant2SameSolicitor,
   defendantSolicitor2,
   claimTypeUnspec,
-  claimDetails,
+  details,
+  uploadParticularsOfClaim,
+  claimValue,
+  pbaNumber,
+  otherRemedy,
   statementOfTruth,
 };
 

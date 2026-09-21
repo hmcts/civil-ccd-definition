@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures/index';
 test.describe(
   '1v2DS fast track with hearing request',
   {
-    tag: ['@civil-ccd-nightly'],
+    tag: ['@civil-ccd-nightly', '@ui-hearings'],
   },
   () => {
     test('1v2DS create fast track with hearing request', async ({
@@ -20,9 +20,9 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence1v2DS();
+      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
       await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
-      await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();;
+      await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
       await JudgeApiSteps.SdoFast();
       await HearingCenterAdminSteps.LoginRegion1();
       await HearingCenterAdminSteps.RequestNewHearing();
