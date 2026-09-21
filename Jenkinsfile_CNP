@@ -109,7 +109,7 @@ def checkHasPlaywrightLastRunStatus(expectedStatuses) {
   return statuses.contains(lastRunStatus)
 }
 
-def publishPlaywrightSmokeReports() {
+def publishPlaywrightSmokeReports(yarnBuilder) {
   def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
   if (fileExists(playwrightTestsFlags)) {
@@ -142,7 +142,7 @@ def publishPlaywrightSmokeReports() {
   }
 }
 
-def publishPlaywrightFunctionalReports() {
+def publishPlaywrightFunctionalReports(yarnBuilder) {
   def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
   if (fileExists(playwrightTestsFlags)) {
@@ -430,12 +430,12 @@ withPipeline(type, product, component) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
     archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
-    publishPlaywrightSmokeReports()
+    publishPlaywrightSmokeReports(yarnBuilder)
   }
 
   afterAlways('functionalTest:preview') {
     archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
-    publishPlaywrightFunctionalReports()
+    publishPlaywrightFunctionalReports(yarnBuilder)
   }
 
   before('smoketest:aat') {
@@ -474,12 +474,12 @@ withPipeline(type, product, component) {
 
   afterAlways('smoketest:aat') {
     archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
-    publishPlaywrightSmokeReports()
+    publishPlaywrightSmokeReports(yarnBuilder)
   }
 
   afterAlways('functionalTest:aat') {
     createGithubRelease()
     archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
-    publishPlaywrightFunctionalReports()
+    publishPlaywrightFunctionalReports(yarnBuilder)
   }
 }
