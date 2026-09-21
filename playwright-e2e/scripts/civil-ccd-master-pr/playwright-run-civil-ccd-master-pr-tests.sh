@@ -26,20 +26,35 @@ run_functional_test_groups() {
 run_failed_functional_tests() {
   echo "Running failed playwright functional tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
-    yarn test:playwright:civil-ccd-master:ci --last-failed
+    if ! yarn test:playwright:civil-ccd-master:ci --last-failed; then
+      run_playwright_teardown
+      exit 1
+    fi
   else
-    yarn test:playwright:civil-ccd-pr:ci --last-failed
+    if ! yarn test:playwright:civil-ccd-pr:ci --last-failed; then
+      run_playwright_teardown
+      exit 1
+    fi
   fi
 }
 
 run_functional_tests() {
   echo "Running functional playwright tests on ${ENVIRONMENT} env"
   if [ "$ENVIRONMENT" = "aat" ]; then
-    yarn test:playwright:civil-ccd-master:ci
+    if ! yarn test:playwright:civil-ccd-master:ci; then
+      run_playwright_teardown
+      exit 1
+    fi
   elif [ -z "$PLAYWRIGHT_PR_FT_GROUPS" ]; then
-    yarn test:playwright:civil-ccd-pr:ci
+    if ! yarn test:playwright:civil-ccd-pr:ci; then
+      run_playwright_teardown
+      exit 1
+    fi
   else
-    run_functional_test_groups
+    if ! run_functional_test_groups; then
+      run_playwright_teardown
+      exit 1
+    fi
   fi
 }
 
@@ -47,7 +62,6 @@ run_playwright_teardown() {
   echo "Running playwright teardown tests on ${ENVIRONMENT} env"
   yarn test:playwright:setup:install
   yarn test:playwright:teardown:civil-ccd:ci
-  exit 0
 }
 
 #MAIN SCRIPT
