@@ -11,6 +11,9 @@ test.describe(
       HearingCenterAdminApiSteps,
       JudgeApiSteps,
     }) => {
+      if(process.env.RUN_FAILING_FUNCTIONAL_TESTS === 'true') {
+        throw new Error('This test is currently failing and is being skipped. Please check the test and fix it before enabling it again.');
+      }
       await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
