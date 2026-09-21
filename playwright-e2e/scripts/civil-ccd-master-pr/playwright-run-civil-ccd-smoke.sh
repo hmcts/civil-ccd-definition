@@ -7,8 +7,8 @@ run_playwright_setup() {
   echo "Running playwright setup tests on ${ENVIRONMENT} env"
   yarn test:playwright:setup:install
   if ! yarn test:playwright:setup:civil-ccd:ci; then
-    yarn test:playwright:teardown:civil-ccd:ci
     write_report_flags true false
+    run_playwright_teardown
     exit 1
   fi
 }
@@ -17,8 +17,8 @@ run_smoke_tests() {
   echo "Running playwright smoke tests on ${ENVIRONMENT} env"
   yarn test:playwright:setup:install
   if ! yarn test:playwright:civil-ccd-smoke:ci; then
-    yarn test:playwright:teardown:civil-ccd:ci
     write_report_flags true true
+    run_playwright_teardown
     exit 1
   fi
   exit 0

@@ -46,6 +46,12 @@ write_tests_skipped_flag() {
   echo "Skipping smoke and functionaltests. PLAYWRIGHT_TESTS_SKIPPED=true"
 }
 
+run_playwright_teardown() {
+  echo "Running playwright teardown tests on ${ENVIRONMENT} env"
+  yarn test:playwright:setup:install
+  yarn test:playwright:teardown:civil-ccd:ci
+}
+
 # Returns success when the report is unavailable so callers can choose the action.
 report_missing_or_empty() {
   local report="$1"

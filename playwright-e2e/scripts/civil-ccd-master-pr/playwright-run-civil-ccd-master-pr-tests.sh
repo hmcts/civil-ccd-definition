@@ -58,12 +58,6 @@ run_functional_tests() {
   fi
 }
 
-run_playwright_teardown() {
-  echo "Running playwright teardown tests on ${ENVIRONMENT} env"
-  yarn test:playwright:setup:install
-  yarn test:playwright:teardown:civil-ccd:ci
-}
-
 #MAIN SCRIPT
 
 # Check if SKIP_FUNCTIONAL_TESTS is set to true
