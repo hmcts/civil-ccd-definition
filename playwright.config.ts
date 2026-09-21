@@ -197,16 +197,26 @@ function getReporter(): any {
   ];
 
   const failedAndNotExecutedTestFilesReporter = ['./playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts'];
+  const junitReporter = process.env.PLAYWRIGHT_JUNIT_OUTPUT_FILE
+    ? [['junit', { outputFile: process.env.PLAYWRIGHT_JUNIT_OUTPUT_FILE }]]
+    : [];
   
   if (process.env.CI && process.env.PLAYWRIGHT_FUNCTIONAL) {
     return [
       allurePlaywright('playwright-allure-functional-results'),
       failedAndNotExecutedTestFilesReporter,
+      ...junitReporter,
     ];
   } else if (process.env.CI && process.env.PLAYWRIGHT_SMOKE) {
-    return [allurePlaywright('playwright-allure-functional-results')];
+    return [
+      allurePlaywright('playwright-allure-functional-results'),
+      ...junitReporter,
+    ];
   } else if (process.env.CI)  {
-    return [allurePlaywright('playwright-allure-bootstrap-results')];
+    return [
+      allurePlaywright('playwright-allure-bootstrap-results'),
+      ...junitReporter,
+    ];
   }
   return 'list';
 }
