@@ -13,7 +13,13 @@ write_empty_smoke_results_xml() {
   mkdir -p "$(dirname "$smoke_results_xml")"
   cat > "$smoke_results_xml" <<'XML'
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="0" failures="0" skipped="0" errors="0" time="0"></testsuites>
+<testsuites tests="1" failures="0" skipped="1" errors="0" time="0">
+  <testsuite name="playwright-smoke-skipped" tests="1" failures="0" skipped="1" errors="0" time="0">
+    <testcase classname="playwright-smoke-skipped" name="smoke tests skipped" time="0">
+      <skipped message="Smoke tests were skipped before execution."/>
+    </testcase>
+  </testsuite>
+</testsuites>
 XML
 }
 
