@@ -43,7 +43,7 @@ write_tests_skipped_flag() {
 
   write_report_flags "$setup_tests_failed" "$smoke_tests_failed" true
 
-  echo "Skipping smoke and functionaltests. PLAYWRIGHT_TESTS_SKIPPED=true"
+  echo "Skipping smoke and functional tests. PLAYWRIGHT_TESTS_SKIPPED=true"
 }
 
 run_playwright_teardown() {
