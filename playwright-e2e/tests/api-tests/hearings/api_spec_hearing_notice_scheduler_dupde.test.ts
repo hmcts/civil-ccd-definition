@@ -19,7 +19,7 @@ test.describe('Spec automated hearing notice scheduler - duplicate detection', {
     await JudgeApiSteps.SdoSmallSum();
     await HearingsApiSteps.GenerateSingleHmcResponseHearingNoticeSpec();
     await HearingsApiSteps.SkipCurrentVersionNotifiedHearingNoticeSpec();
-    // await HearingsApiSteps.GenerateCurrentVersionMultiHmcResponsesHearingNoticeSpec();
+    await HearingsApiSteps.GenerateCurrentVersionMultiHmcResponsesHearingNoticeSpec();
     await HearingsApiSteps.GenerateRelistedVersionHearingNoticeSpec();
     await HearingsApiSteps.AcknowledgeUnchangedHearingWithoutNoticeSpec();
     await HearingsApiSteps.AvoidDuplicateNoticeWithoutGeneratingNoticeSpec();

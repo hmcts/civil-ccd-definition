@@ -6,7 +6,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/../common.sh"
 run_playwright_setup() {
   echo "Running playwright setup tests on ${ENVIRONMENT} env"
   yarn test:playwright:setup:install
-  if ! yarn test:playwright:setup:civil-ccd:ci; then
+  if ! yarn "$PLAYWRIGHT_SETUP_COMMAND"; then
     write_report_flags true false
     run_playwright_teardown
     exit 1
@@ -16,7 +16,7 @@ run_playwright_setup() {
 run_smoke_tests() {
   echo "Running playwright smoke tests on ${ENVIRONMENT} env"
   yarn test:playwright:setup:install
-  if ! yarn test:playwright:civil-ccd-smoke:ci; then
+  if ! yarn "$PLAYWRIGHT_SMOKE_COMMAND"; then
     write_report_flags true true
     run_playwright_teardown
     exit 1
@@ -54,8 +54,8 @@ if report_missing_or_empty "$PREV_PLAYWRIGHT_LAST_RUN_REPORT"; then
   run_playwright_setup
   run_smoke_tests
 
-#Check if latest current git commit is the not the same as git commit of prev playwright test files report 
-elif previous_commit_changed; then 
+#Check if latest current git commit is the not the same as git commit of prev playwright test files report
+elif previous_commit_changed; then
   run_playwright_setup
   run_smoke_tests
 
@@ -74,7 +74,7 @@ elif ! previous_run_has_status_failed; then
   run_playwright_setup
   run_smoke_tests
 
-else 
+else
   run_playwright_setup
   run_smoke_tests
 fi

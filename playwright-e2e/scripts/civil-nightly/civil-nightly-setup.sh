@@ -16,11 +16,11 @@ if should_run_failed_tests; then
 
   mv "$PLAYWRIGHT_TEST_FILES_REPORT" "$PREV_PLAYWRIGHT_TEST_FILES_REPORT"
   cp "$PLAYWRIGHT_LAST_RUN_REPORT" "$PREV_PLAYWRIGHT_LAST_RUN_REPORT"
-  
+
   # Check if the previous last run json is not found or is empty.
   if report_missing_or_empty "$PREV_PLAYWRIGHT_LAST_RUN_REPORT"; then
     exit 1
-    
+
   # Check if the previous last run json has status passed.
   elif previous_run_has_status_passed; then
     exit 0
@@ -30,6 +30,7 @@ if should_run_failed_tests; then
     exit 1
   fi
 fi
+
 # Run the Playwright setup install and setup tests for a failed last run or a normal run.
 yarn test:playwright:setup:install
-yarn test:playwright:setup:civil-ccd:ci
+yarn "$PLAYWRIGHT_SETUP_COMMAND"
