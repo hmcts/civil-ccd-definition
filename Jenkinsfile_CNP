@@ -4,7 +4,7 @@ properties([
 ]);
 
 
-@Library("Infrastructure@2.7.0")
+@Library("Infrastructure@2.9.0")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
@@ -333,8 +333,6 @@ def getCivilServiceImage() {
 withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
-  enableBuildCache()
-
   env.PLAYWRIGHT_TEST_RESULTS_DIR = 'playwright-test-results'
   env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR = 'civil-ccd-bootstrap'
   env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'civil-ccd-smoke'
