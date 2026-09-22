@@ -14,7 +14,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "SEND_CLAIM_SETTLED_LETTER_TO_LIP_DEFENDANT1_UNSPEC",
+    "ID": "SEND_UNSPEC_CLAIM_SETTLED_LETTER_TO_LIP_DEFENDANT1",
     "Name": "Claim settled letter",
     "Description": "Send Claim Settled Letter to LiP Defendant 1",
     "PreConditionState(s)": "*",

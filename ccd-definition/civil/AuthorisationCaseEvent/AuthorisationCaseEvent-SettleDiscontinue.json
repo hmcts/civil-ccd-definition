@@ -284,7 +284,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SEND_CLAIM_SETTLED_LETTER_TO_LIP_DEFENDANT1_UNSPEC",
+    "CaseEventID": "SEND_UNSPEC_CLAIM_SETTLED_LETTER_TO_LIP_DEFENDANT1",
     "AccessControl": [
       {
         "UserRoles": [
