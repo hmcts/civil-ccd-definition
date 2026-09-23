@@ -476,8 +476,8 @@ withPipeline(type, product, component) {
   }
 
   afterAlways('functionalTest:aat') {
-    createGithubRelease()
     archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
     publishPlaywrightFunctionalReports(yarnBuilder)
+    createGithubRelease()
   }
 }
