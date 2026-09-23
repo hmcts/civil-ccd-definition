@@ -1,12 +1,16 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 lip unspec api journey',  async () => {
-  test('Create claim where respondent is litigant in person and notify/notify details', async ({
-    ClaimantSolicitorApiSteps,
-  }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimSmall1vLIP();
-    await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-    await ClaimantSolicitorApiSteps.NotifyClaim1vLIP();
-    await ClaimantSolicitorApiSteps.NotifyClaimDetails1vLIP();
-  });
-});
+test.describe(
+  '1v1 lip unspec api journey',
+  { tag: ['@civil-service-nightly-smoke', '@api-cos'] },
+  async () => {
+    test('Create claim where respondent is litigant in person and notify/notify details', async ({
+      ClaimantSolicitorApiSteps,
+    }) => {
+      await ClaimantSolicitorApiSteps.CreateClaimSmall1vLIP();
+      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.NotifyClaim1vLIP();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails1vLIP();
+    });
+  },
+);

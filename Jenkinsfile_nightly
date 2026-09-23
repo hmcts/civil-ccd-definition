@@ -87,7 +87,9 @@ properties([
     choice(name: 'PLAYWRIGHT_RUN_DATA_SETUP', choices: ['true', 'false'],
       description: 'Runs setup projects for caching data before running functional tests'),
     choice(name: 'PLAYWRIGHT_WA_ENABLED', choices: ['true', 'false'],
-      description: 'Will include work allocation functionality in tests when set to \'true\''),     
+      description: 'Will include work allocation functionality in tests when set to \'true\''),
+    choice(name: 'PLAYWRIGHT_ZOD_VALIDATION_ENABLED', choices: ['true', 'false'],
+      description: 'Enables Zod schema validation in Playwright API steps'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
       description: 'Functional tests waitForTimeout value'),
@@ -229,6 +231,7 @@ withNightlyPipeline(type, product, component) {
   env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP=params.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP
   env.PLAYWRIGHT_RUN_DATA_SETUP=params.PLAYWRIGHT_RUN_DATA_SETUP
   env.PLAYWRIGHT_WA_ENABLED=params.PLAYWRIGHT_WA_ENABLED
+  env.PLAYWRIGHT_ZOD_VALIDATION_ENABLED=params.PLAYWRIGHT_ZOD_VALIDATION_ENABLED
   env.PLAYWRIGHT_UNASSIGN_CASES = true
   env.PLAYWRIGHT_TEST_SPEED=params.PLAYWRIGHT_TEST_SPEED
 
@@ -270,6 +273,10 @@ withNightlyPipeline(type, product, component) {
 
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
   boolean runFailedTests = env.RUN_FAILED_TESTS.toBoolean();
+<<<<<<< HEAD
+=======
+  boolean playwrightSmokeTestFailed = false;
+>>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
 
 
   if(!forceGreenBuild) {
@@ -311,24 +318,37 @@ withNightlyPipeline(type, product, component) {
         }
       }
 
-      stage('Playwright full functional test') {
+      stage('Playwright smoke test') {
         try {
           if(flowInterrupted) {
             throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
           }
           if(playwrightSetupPassed) {
+<<<<<<< HEAD
             sh './playwright-e2e/scripts/playwright-run-civil-ccd-nightly-tests.sh'
+=======
+            sh 'PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-nightly-smoke:ci'
+>>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
           } else {
             throw new Error('Playwright test setup failed')
           }
         } catch (Exception error) {
-          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-            flowInterrupted = true
-          }
+          flowInterrupted = true
+          playwrightSmokeTestFailed = true
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
+<<<<<<< HEAD
           if(playwrightSetupPassed && !lastRunPassed) {
             copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
+=======
+          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-smoke-test-results/**/*'
+
+            if (playwrightSmokeTestFailed) {
+            copyPreviousAllureHistory(
+              'playwright-allure-functional-history',
+              'playwright-allure-functional-results'
+            )
+>>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
             sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
             yarnBuilder.yarn('test:playwright:functional:generate-report')
             publishAllureReport(
@@ -336,6 +356,38 @@ withNightlyPipeline(type, product, component) {
               'Playwright Allure Functional Report',
               'playwright-allure-functional-history'
             )
+<<<<<<< HEAD
+=======
+          }
+        }
+      }
+
+      if(!flowInterrupted) {
+        stage('Playwright full functional test') {
+          try {
+            if(playwrightSetupPassed) {
+              sh './playwright-e2e/scripts/playwright-run-civil-ccd-nightly-tests.sh'
+            } else {
+              throw new Error('Playwright test setup failed')
+            }
+          } catch (Exception error) {
+            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+              flowInterrupted = true
+            }
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+          } finally {
+            if(playwrightSetupPassed && !lastRunPassed) {
+              copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
+              sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+              yarnBuilder.yarn('test:playwright:functional:generate-report')
+              publishAllureReport(
+                'playwright-allure-functional-report',
+                'Playwright Allure Functional Report',
+                'playwright-allure-functional-history'
+              )
+            }
+            archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
+>>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
           }
           archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
         }
@@ -368,6 +420,13 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
+<<<<<<< HEAD
+=======
+      if(playwrightSmokeTestFailed) {
+        env.SKIP_FULL_FUNCTIONAL_TESTS = 'true'
+        return
+      }
+>>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
       if(runFailedTests) {
         copyPrevTestFilesReport("test-results/functional/testFilesReport.json")
         hasFailedTestFiles = checkHasFailedTestFiles()
@@ -382,6 +441,13 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
+<<<<<<< HEAD
+=======
+      if(playwrightSmokeTestFailed) {
+        echo 'Skipping functional test report generation because the Playwright smoke test failed.'
+        return
+      }
+>>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
       if (!runFailedTests || !hasFailedTestFiles) {
         yarnBuilder.yarn('test:generate-report')
         publishAllureReport(
