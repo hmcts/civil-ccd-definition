@@ -61,19 +61,12 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       testMatch: '**playwright-e2e/tests/bootstrap/auth/exui-users-auth.setup.ts',
       dependencies: ['exui-users-data-setup'],
-      teardown: 'exui-users-auth-teardown',
     },
     {
       name: 'cui-users-teardown',
       outputDir: `${config.playwright.bootstrapTestResultsDir}/cui-users-teardown`,
       testMatch: '**playwright-e2e/tests/bootstrap/users/cui-users.teardown.ts',
       retries: 0,
-    },
-    {
-      name: 'exui-users-auth-teardown',
-      outputDir: `${config.playwright.bootstrapTestResultsDir}/exui-users-auth-teardown`,
-      use: { ...devices['Desktop Chrome'] },
-      testMatch: '**playwright-e2e/tests/bootstrap/auth/exui-users-auth.teardown.ts',
     },
     {
       name: 'case-role-assignment-teardown',
