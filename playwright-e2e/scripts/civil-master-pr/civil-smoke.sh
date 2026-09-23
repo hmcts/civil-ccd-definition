@@ -26,7 +26,7 @@ run_smoke_tests() {
 
 #MAIN SCRIPT
 
-# Check if SKIP_FUNCTIONAL_TESTS is set to true
+# Check if PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS is set to true
 if should_skip_functional_tests; then
   write_empty_smoke_results_xml
   exit 0
@@ -34,7 +34,7 @@ fi
 
 write_report_flags false false
 
-#Check if RUN_ALL_FUNCTIONAL_TESTS is set to true
+#Check if PLAYWRIGHT_RUN_ALL_FUNCTIONAL_TESTS is set to true
 if should_run_all_functional_tests; then
   run_playwright_setup
   run_smoke_tests

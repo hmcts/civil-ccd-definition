@@ -60,11 +60,11 @@ run_functional_tests() {
 
 #MAIN SCRIPT
 
-# Check if SKIP_FUNCTIONAL_TESTS is set to true
+# Check if PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS is set to true
 if should_skip_functional_tests; then
   exit 0
 
-#Check if RUN_ALL_FUNCTIONAL_TESTS is set to true
+#Check if PLAYWRIGHT_RUN_ALL_FUNCTIONAL_TESTS is set to true
 elif should_run_all_functional_tests; then
   run_functional_tests
   run_playwright_teardown

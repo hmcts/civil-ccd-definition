@@ -116,7 +116,7 @@ previous_run_has_status_failed() {
 }
 
 should_skip_functional_tests() {
-  if [ "$SKIP_FUNCTIONAL_TESTS" = "true" ]; then
+  if [ "$PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS" = "true" ]; then
     echo "The label 'pr-values:skip-functional-tests' exists on the PR."
     echo "Skipping functional tests."
     write_tests_skipped_flag
@@ -130,7 +130,7 @@ should_run_failed_tests() {
 }
 
 should_run_all_functional_tests() {
-  if [ "$RUN_ALL_FUNCTIONAL_TESTS" = "true" ]; then
+  if [ "$PLAYWRIGHT_RUN_ALL_FUNCTIONAL_TESTS" = "true" ]; then
     echo "The label 'runAllFunctionalTests' exists on the PR."
     echo "Running all functional tests."
     return 0
