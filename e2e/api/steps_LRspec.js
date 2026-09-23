@@ -45,6 +45,7 @@ const dismissCase = require('../fixtures/events/dismissCase');
 const genAppClaimData = require('../fixtures/events/createGeneralApplication');
 const genAppClaimDataLR = require('../fixtures/events/createGeneralApplicationLR');
 const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
+const liftBreathingSpace = require("../fixtures/events/liftBreathingSpace");
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};
@@ -99,6 +100,7 @@ const data = {
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
   DISCONTINUE_CLAIM: (mpScenario) => discontinueClaimSpec.discontinueClaim(mpScenario),
   ENTER_INTO_BS: (mpScenario, breathingSpaceDetails) => enterIntoBreathingSpace.enterIntoBS(mpScenario, breathingSpaceDetails),
+  LIFT_BS: (mpScenario, breathingSpaceDetails) => liftBreathingSpace.liftBS(mpScenario, breathingSpaceDetails),
   VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: (permission) => validateDiscontinueClaimClaimantSpec.validateDiscontinueClaimClaimant(permission),
   STAY_CASE: () => stayCase.stayCaseSpec(),
   MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
@@ -1964,6 +1966,27 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
 
     let disposalData = data.ENTER_INTO_BS(mpScenario, breathingSpaceDetails);
+
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    await assertSubmittedEvent(state);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  liftBS: async (user, mpScenario, breathingSpaceDetails, state) => {
+    console.log('Lift BS for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'LIFT_BREATHING_SPACE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.LIFT_BS(mpScenario, breathingSpaceDetails);
 
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
