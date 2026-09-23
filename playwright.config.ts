@@ -98,18 +98,18 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
+      name: 'civil-ccd-nightly-smoke',
+      outputDir: './playwright-smoke-test-results',
+      use: { ...devices['Desktop Chrome'] },
+      grep: /@civil-ccd-smoke/,
+    },
+    {
       name: 'civil-ccd-nightly',
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
       grep: /@civil-ccd-nightly/,
       teardown: 'case-role-assignment-teardown',
-    },
-    {
-      name: 'civil-ccd-smoke',
-      outputDir: './playwright-smoke-test-results',
-      use: { ...devices['Desktop Chrome'] },
-      grep: /@civil-ccd-smoke/,
     },
     {
       name: 'civil-service-pr',
