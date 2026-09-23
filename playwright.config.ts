@@ -99,7 +99,7 @@ export default defineConfig({
     },
     {
       name: 'civil-ccd-nightly-smoke',
-      outputDir: './playwright-smoke-test-results',
+      outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       grep: /@civil-ccd-smoke/,
     },
@@ -126,6 +126,12 @@ export default defineConfig({
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
       grep: /@civil-service-master/,
       teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-service-nightly-smoke',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      grep: /@civil-service-nightly-smoke/,
     },
     {
       name: 'civil-service-nightly',
@@ -175,14 +181,16 @@ function getReporter(): any {
     },
   ];
 
-  const failedAndNotExecutedTestFilesReporter = ['./playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts'];
-  
+  const failedAndNotExecutedTestFilesReporter = [
+    './playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts',
+  ];
+
   if (process.env.CI && process.env.PLAYWRIGHT_FUNCTIONAL) {
     return [
       allurePlaywright('playwright-allure-functional-results'),
       failedAndNotExecutedTestFilesReporter,
     ];
-  } else if (process.env.CI)  {
+  } else if (process.env.CI) {
     return [allurePlaywright('playwright-allure-bootstrap-results')];
   }
   return 'list';
