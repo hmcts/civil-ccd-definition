@@ -24,7 +24,7 @@ const liftBreathingSpaceDetails = [
 
 let caseId;
 
-Feature('Enter into BS Mental Health and then Exit  - 1v1 - UnSpec').tag('@civil-ccd-nightly @ui-breathing-space');
+Feature('Enter into BS Mental Health and then Exit  - 1v1 - UnSpec').tag('@civil-ccd-pr @ui-breathing-space');
 
 Scenario('01 1v1 UnSpec with state as Awaiting Defendant Response', async ({api}) => {
   caseId = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);

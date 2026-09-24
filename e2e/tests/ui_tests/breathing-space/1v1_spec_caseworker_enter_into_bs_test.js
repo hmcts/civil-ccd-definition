@@ -24,7 +24,7 @@ const liftBreathingSpaceDetails = [
   'test reason'
 ];
 
-Feature('Case Worker enter into BS Standard and then Exit  - 1v1 - spec').tag('@civil-ccd-nightly @ui-breathing-space');
+Feature('Case Worker enter into BS Standard and then Exit  - 1v1 - spec').tag('@civil-ccd-pr @ui-breathing-space');
 
 Scenario('01 1v1 spec with state as Awaiting Defendant Response', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
