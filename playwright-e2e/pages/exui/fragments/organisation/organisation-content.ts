@@ -5,6 +5,11 @@ export const subheadings = {
   organisations: 'Organisation name and address',
 };
 
+export const hints = {
+  headOfficeAddress:
+    'Address shown will be the legal representative’s head office. If the legal representative correspondence address is elsewhere you can update this on an upcoming screen',
+};
+
 export const inputs = {
   organisationReference: {
     label: 'Reference (Optional)',

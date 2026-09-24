@@ -434,6 +434,15 @@
     "ID": "SolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicant1OrganisationPolicy",
+    "ListElementCode": "Organisation",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Address shown will be the legal representative’s head office. If the legal representative correspondence address is elsewhere you can update this on an upcoming screen"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -464,6 +473,15 @@
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "TRUE"
+  },
+  {
+    "ID": "SolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "ListElementCode": "Organisation",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Address shown will be the legal representative’s head office. If the legal representative correspondence address is elsewhere you can update this on an upcoming screen"
   },
   {
     "ID": "SolicitorCreate",
@@ -947,6 +965,15 @@
     "DisplayContext": "MANDATORY"
   },
 
+  {
+    "ID": "SecondSolicitorCreate",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "ListElementCode": "Organisation",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Address shown will be the legal representative’s head office. If the legal representative correspondence address is elsewhere you can update this on an upcoming screen"
+  },
   {
     "ID": "SecondSolicitorCreate",
     "CaseEventID": "CREATE_CLAIM_SPEC",

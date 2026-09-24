@@ -3,7 +3,7 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/users/partys';
 import ExuiPage from '../../mixin-pages/exui-page/exui-page';
-import { inputs, subheadings, links } from './organisation-content';
+import { hints, inputs, subheadings, links } from './organisation-content';
 
 @AllMethodsStep()
 export default class OrganisationFragment extends ExuiPage(BasePage) {
@@ -21,6 +21,7 @@ export default class OrganisationFragment extends ExuiPage(BasePage) {
         super.expectSubheading(subheadings.organisations),
         super.expectLabel(inputs.search.label),
         super.expectSubheading(subheadings.search),
+        super.expectText(hints.headOfficeAddress),
       ],
       {
         runAxe: false,
