@@ -6,13 +6,23 @@ let caseNumber;
 // For today's date
 const today = new Date().toISOString().split('T')[0];
 
+//For next weeks date
+const date1 = new Date();
+date1.setDate(date1.getDate() + 7);
+const nextWeekDate = date1.toISOString().split('T')[0];
+
 const breathingSpaceDetailsStandard = [
   'Standard Breathing Space',
   today,
   'refStandard1234'
 ];
 
-Feature('Enter into BS Standard  - 1v1 - spec').tag('@civil-ccd-nightly @ui-breathing-space');
+const liftBreathingSpaceDetails = [
+  nextWeekDate,
+  'test reason'
+];
+
+Feature('Enter into BS Standard and then Exit  - 1v1 - spec').tag('@civil-ccd-nightly @ui-breathing-space');
 
 Scenario('01 1v1 spec with state as Awaiting Claimant Intention', async ({api_spec_small, LRspec}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
@@ -25,6 +35,11 @@ Scenario('01 1v1 spec with state as Awaiting Claimant Intention', async ({api_sp
 Scenario('02 Enter into BS Standard', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.enterIntoBS(breathingSpaceDetailsStandard);
+});
+
+Scenario('03 Lift BS Mental Health', async ({LRspec}) => {
+  await LRspec.login(config.applicantSolicitorUser);
+  await LRspec.liftBS(liftBreathingSpaceDetails);
 });
 
 AfterSuite(async ({api_spec_small}) => {

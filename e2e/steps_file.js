@@ -217,6 +217,7 @@ const genAppJudgeMakeDecisionData = require('./fixtures/ga-events/ga-ccd/judgeMa
 const {waitForGACamundaEventsFinishedBusinessProcess} = require('./api/testingSupport');
 const pdfHelper = require('./helpers/pdfVisualCompareHelper.js');
 const enterBreathingSpacePage = require('./pages/enterBreathingSpace/breathingSpaceDetails.page');
+const liftBreathingSpacePage = require('./pages/liftBreathingSpace/liftBreathingSpaceDetails.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#email';
@@ -1948,6 +1949,20 @@ module.exports = function () {
         () => this.waitForText('Check your answers'),
         () => this.click('Submit'),
         () => this.waitForText('Breathing Space Entered'),
+        () => this.waitForText('We have sent you a confirmation email.'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async liftBS(breathingSpaceDetails, caseId) {
+      eventName = events.LIFT_BREATHING_SPACE_SPEC.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.LIFT_BREATHING_SPACE_SPEC, caseId),
+        () => this.waitForText('Lift Breathing Space'),
+        () => liftBreathingSpacePage.liftBreathingSpaceDetails(breathingSpaceDetails),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Breathing Space lifted'),
         () => this.waitForText('We have sent you a confirmation email.'),
       ]);
       await this.takeScreenshot();
