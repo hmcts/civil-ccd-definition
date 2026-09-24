@@ -8,7 +8,7 @@ if [ "$FORCE_GREEN_BUILD" == "true" ]; then
   exit 0
 fi
 
-if [ "$PLAYWRIGHT_NIGHTLY_SMOKE_TESTS_FAILED" = "true" ]; then
+if [ "$PLAYWRIGHT_NIGHTLY_SETUP_OR_SMOKE_TESTS_FAILED" = "true" ]; then
   echo "Playwright smoke test failed, no functional tests will be run."
   exit 0
 fi

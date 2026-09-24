@@ -290,7 +290,7 @@ withNightlyPipeline(type, product, component) {
       }
 
       boolean playwrightSetupFailed = false;
-      boolean playwrightSmokeTestFailed = false;
+      boolean playwrightSmokeTestsFailed = false;
       boolean flowInterrupted = false;
       boolean lastRunPassed = env.RUN_FAILED_TESTS.toBoolean() && checkHasPlaywrightLastRunStatus('passed');
       boolean playwrightRunSetup =
@@ -323,10 +323,10 @@ withNightlyPipeline(type, product, component) {
             if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
               flowInterrupted = true
             }
-            playwrightSmokeTestFailed = true
+            playwrightSmokeTestsFailed = true
             unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
           } finally {
-            if (playwrightSmokeTestFailed && !lastRunPassed) {
+            if (playwrightSmokeTestsFailed && !lastRunPassed) {
               copyPreviousAllureHistory(
                 'playwright-allure-functional-history',
                 'playwright-allure-functional-results'
@@ -345,7 +345,7 @@ withNightlyPipeline(type, product, component) {
         }
       }
 
-      if(!flowInterrupted && !playwrightSetupFailed && !playwrightSmokeTestFailed) {
+      if(!flowInterrupted && !playwrightSetupFailed && !playwrightSmokeTestsFailed) {
         stage('Playwright full functional test') {
           try {
             sh './playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-tests.sh'
@@ -398,8 +398,8 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-      if(playwrightSmokeTestFailed) {
-        env.PLAYWRIGHT_NIGHTLY_SMOKE_TESTS_FAILED = 'true'
+      if(playwrightSmokeTestsFailed) {
+        env.PLAYWRIGHT_NIGHTLY_SETUP_OR_SMOKE_TESTS_FAILED = 'true'
         return
       }
       if(runFailedTests) {
@@ -416,8 +416,8 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
-      if(playwrightSmokeTestFailed) {
-        echo 'Skipping functional test report generation because the Playwright smoke test failed.'
+      if(playwrightSetupFailed || playwrightSmokeTestsFailed) {
+        echo 'Skipping functional test report generation because the Playwright setup or smoke test failed.'
         return
       }
       if (!runFailedTests || !hasFailedTestFiles) {
