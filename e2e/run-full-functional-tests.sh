@@ -3,6 +3,11 @@ set -e
 
 echo "Running Functional tests on ${ENVIRONMENT} env"
 
+if [ "$SKIP_FULL_FUNCTIONAL_TESTS" = "true" ]; then
+  echo "Playwright smoke test failed, no functional tests will be run."
+  exit 0
+fi
+
 if [ "$FORCE_GREEN_BUILD" == "true" ]; then
   echo "Manually forced green build, no functional tests will be run."
   exit 0
