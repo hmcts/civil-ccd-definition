@@ -34,7 +34,7 @@ const liftBreathingSpaceDetails = [
   'test reason'
 ];
 
-Feature('1v1 unSpec enter into BS and then exit').tag('@civil-service-nightly @api-breathing-space @raja');
+Feature('1v1 unSpec enter into BS and then exit').tag('@civil-service-nightly @api-breathing-space');
 
 Scenario('1v1 unSpec full defence and enter into Standard BS and then exit', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);

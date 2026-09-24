@@ -32,7 +32,7 @@ const liftBreathingSpaceDetails = [
   'test reason'
 ];
 
-Feature('1v1 spec enter into BS and then exit').tag('@civil-service-nightly @api-breathing-space @raja');
+Feature('1v1 spec enter into BS and then exit').tag('@civil-service-nightly @api-breathing-space');
 
 Scenario('1v1 spec full defence and enter into Standard BS and then exit', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
