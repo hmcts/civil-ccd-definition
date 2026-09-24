@@ -8,15 +8,25 @@ const date = new Date();
 date.setDate(date.getDate() - 7);
 const lastWeekDate = date.toISOString().split('T')[0];
 
+//For next weeks date
+const date1 = new Date();
+date1.setDate(date1.getDate() + 7);
+const nextWeekDate = date1.toISOString().split('T')[0];
+
 const breathingSpaceDetailsStandard = [
   'Standard Breathing Space',
   lastWeekDate,
   'refStandard1234'
 ];
 
+const liftBreathingSpaceDetails = [
+  nextWeekDate,
+  'test reason'
+];
+
 let caseId;
 
-Feature('Case Worker enter into BS Standard  - 1v1 - UnSpec').tag('@civil-ccd-nightly @ui-breathing-space');
+Feature('Case Worker enter into BS Standard and then Exit  - 1v1 - UnSpec').tag('@civil-ccd-nightly @ui-breathing-space');
 
 Scenario('01 1v1 UnSpec with state as Awaiting Claimant Intention', async ({api}) => {
   caseId = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -28,6 +38,11 @@ Scenario('01 1v1 UnSpec with state as Awaiting Claimant Intention', async ({api}
 Scenario('02 Case Worker enter into BS Standard', async ({I}) => {
   await I.login(config.ctscAdminUser);
   await I.enterIntoBS(breathingSpaceDetailsStandard, caseId);
+});
+
+Scenario('03 Lift BS Mental Health', async ({I}) => {
+  await I.login(config.ctscAdminUser);
+  await I.liftBS(liftBreathingSpaceDetails, caseId);
 });
 
 AfterSuite(async () => {
