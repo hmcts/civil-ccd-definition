@@ -164,7 +164,7 @@ def copyPrevTestFilesReport(reportFilePath) {
 
 def checkHasPlaywrightLastRunStatus(expectedStatuses) {
   def lastRunStatus = sh(
-    script: "jq -r '.status // empty' ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json",
+    script: "jq -r '.status // empty' ${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json",
     returnStdout: true
   ).trim()
   def statuses = expectedStatuses instanceof Collection ? expectedStatuses : [expectedStatuses]
@@ -179,18 +179,23 @@ def checkHasFailedTestFiles() {
   return failedTestFiles == '0'
 }
 
-def copyPrevPlaywrightLastRun() {
+def copyPrevPlaywrightLastRunAndTestFilesReport() {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  def lastRunFilePath = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+  def testFilesReportPath = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      sh "rm -rf ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}"
+      sh "rm -f ${lastRunFilePath} ${testFilesReportPath}"
       copyArtifacts(
         projectName: env.JOB_NAME,
         selector: specific("${buildNumber}"),
-        filter: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json"
+        filter: "${lastRunFilePath},${testFilesReportPath}"
       )
+      if (!fileExists(lastRunFilePath) || !fileExists(testFilesReportPath)) {
+        throw new Exception("Missing one or more Playwright previous run artifacts from build ${buildNumber}")
+      }
       if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
           "Skipping copied .last-run.json from build ${buildNumber} because status was not 'passed' or 'failed'"
@@ -198,10 +203,11 @@ def copyPrevPlaywrightLastRun() {
       }
       buildFound = true
     } catch (Exception error) {
-      echo "artifact not found: " + error.toString()
+      echo "Previous Playwright artifacts not usable from build ${buildNumber}: " + error.toString()
       buildNumber--
     }
   }
+  return buildFound
 }
 
 def secrets = [
@@ -215,8 +221,9 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
-  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'playwright-functional-test-results'
-  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR = 'civil-ccd-nightly'
+  env.PLAYWRIGHT_TEST_RESULTS_DIR = 'playwright-test-results'
+  env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR = 'civil-ccd-bootstrap'
+  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'civil-ccd-nightly'
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_FAILED_TESTS=params.RUN_FAILED_TESTS
   env.ENVIRONMENT=params.ENVIRONMENT
@@ -279,10 +286,7 @@ withNightlyPipeline(type, product, component) {
   if(!forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
       if(runFailedTests) {
-        copyPrevPlaywrightLastRun()
-        copyPrevTestFilesReport(
-          "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/playwrightTestFilesReport.json"
-        )
+        copyPrevPlaywrightLastRunAndTestFilesReport()
       }
 
       boolean playwrightSetupPassed = true;
@@ -295,22 +299,17 @@ withNightlyPipeline(type, product, component) {
         env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean() ||
         env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
 
-      stage('Playwright test setup') {
-        try {
-          if(playwrightRunSetup) {
-            sh './playwright-e2e/scripts/playwright-run-civil-ccd-setup.sh'
-          }
-        } catch (Exception error) {
-          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-            flowInterrupted = true
-          }
-          if(playwrightRunSetup) {
+      if(playwrightRunSetup) {
+        stage('Playwright test setup') {
+          try {
+              sh './playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-setup.sh'
+            }
+           catch (Exception error) {
+            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+              flowInterrupted = true
+            }
             playwrightSetupPassed=false
-          }
-          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-        } finally {
-          if(playwrightRunSetup && !lastRunPassed) {
-            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
           }
         }
       }
@@ -352,7 +351,7 @@ withNightlyPipeline(type, product, component) {
         stage('Playwright full functional test') {
           try {
             if(playwrightSetupPassed) {
-              sh './playwright-e2e/scripts/playwright-run-civil-ccd-nightly-tests.sh'
+              sh './playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-tests.sh'
             } else {
               throw new Error('Playwright test setup failed')
             }
@@ -380,7 +379,7 @@ withNightlyPipeline(type, product, component) {
       if(playwrightRunSetup) {
         stage('Playwright test teardown') {
           try {
-            sh './playwright-e2e/scripts/playwright-run-civil-ccd-teardown.sh'
+            sh './playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-teardown.sh'
           } catch (Exception error) {
             unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
           } finally {
@@ -394,6 +393,7 @@ withNightlyPipeline(type, product, component) {
                 'playwright-allure-bootstrap-history'
               )
             }
+            archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
           }
         }
       }
