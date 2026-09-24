@@ -81,6 +81,7 @@ const vulnerabilityPage = require('./pages/respondToClaimLRspec/vulnerabilityLRs
 const supportAccessLRspecPage = require('./pages/respondToClaimLRspec/supportAccessLRspec.page');
 const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestions.page');
 const enterBreathingSpacePage = require('./pages/enterBreathingSpace/breathingSpaceDetails.page');
+const liftBreathingSpacePage = require('./pages/liftBreathingSpace/liftBreathingSpaceDetails.page');
 const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
 const confirm2ndDefLRspecPage = require('./pages/respondToClaimLRspec/enter2ndDefendantDetailsLRspec.page');
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
@@ -1147,6 +1148,20 @@ module.exports = function () {
         () => this.waitForText('Check your answers'),
         () => this.click('Submit'),
         () => this.waitForText('Breathing Space Entered'),
+        () => this.waitForText('We have sent you a confirmation email.'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async liftBS(breathingSpaceDetails) {
+      eventName = events.LIFT_BREATHING_SPACE_SPEC.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.LIFT_BREATHING_SPACE_SPEC, caseId),
+        () => this.waitForText('Lift Breathing Space'),
+        () => liftBreathingSpacePage.liftBreathingSpaceDetails(breathingSpaceDetails),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Breathing Space lifted'),
         () => this.waitForText('We have sent you a confirmation email.'),
       ]);
       await this.takeScreenshot();
