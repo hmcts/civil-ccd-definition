@@ -80,7 +80,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "JUDGE_FINAL_ORDER",
-    "ListElement": "Order",
+    "ListElement": "Judge Order",
     "DisplayOrder": 14
   },
   {
