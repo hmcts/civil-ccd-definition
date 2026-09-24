@@ -15,6 +15,6 @@ export default class GenerateDirectionsOrderGaConfirmPage extends GaExuiPage(Bas
   }
 
   async submit() {
-    throw new Error('Method not implemented.');
+    await super.retryClickSubmit();
   }
 }

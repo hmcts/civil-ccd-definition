@@ -42,5 +42,6 @@ export default class HearingScheduledGaActions extends BaseTestData {
   async confirmHearingNotice() {
     const { hearingScheduledGaConfirmPage } = this.hearingScheduledGaPageFactory;
     await hearingScheduledGaConfirmPage.verifyContent(this.getGaCCDCaseData()!);
+    await hearingScheduledGaConfirmPage.submit();
   }
 }
