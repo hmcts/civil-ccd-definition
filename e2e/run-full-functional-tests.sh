@@ -3,7 +3,7 @@ set -e
 
 echo "Running Functional tests on ${ENVIRONMENT} env"
 
-if [ "$SKIP_FULL_FUNCTIONAL_TESTS" = "true" ]; then
+if [ "$PLAYWRIGHT_SKIP_FULL_FUNCTIONAL_TESTS" = "true" ]; then
   echo "Playwright smoke test failed, no functional tests will be run."
   exit 0
 fi
