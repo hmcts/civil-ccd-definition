@@ -321,7 +321,7 @@ withNightlyPipeline(type, product, component) {
             throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
           }
           if(playwrightSetupPassed) {
-            sh 'PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-nightly-smoke:ci'
+            sh 'PLAYWRIGHT_FUNCTIONAL=true ./playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-smoke.sh'
           } else {
             throw new Error('Playwright test setup failed')
           }
@@ -330,8 +330,6 @@ withNightlyPipeline(type, product, component) {
           playwrightSmokeTestFailed = true
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
-          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-smoke-test-results/**/*'
-
             if (playwrightSmokeTestFailed) {
             copyPreviousAllureHistory(
               'playwright-allure-functional-history',
@@ -345,6 +343,7 @@ withNightlyPipeline(type, product, component) {
               'playwright-allure-functional-history'
             )
           }
+          archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
         }
       }
 
