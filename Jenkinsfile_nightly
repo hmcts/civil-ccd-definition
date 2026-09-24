@@ -223,6 +223,7 @@ def secrets = [
 withNightlyPipeline(type, product, component) {
   env.PLAYWRIGHT_TEST_RESULTS_DIR = 'playwright-test-results'
   env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR = 'civil-ccd-bootstrap'
+  env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'civil-ccd-nightly-smoke'
   env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'civil-ccd-nightly'
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_FAILED_TESTS=params.RUN_FAILED_TESTS
@@ -347,32 +348,33 @@ withNightlyPipeline(type, product, component) {
         }
       }
 
-      if(!flowInterrupted) {
-        stage('Playwright full functional test') {
-          try {
-            if(playwrightSetupPassed) {
-              sh './playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-tests.sh'
-            } else {
-              throw new Error('Playwright test setup failed')
-            }
-          } catch (Exception error) {
-            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-              flowInterrupted = true
-            }
-            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-          } finally {
-            if(playwrightSetupPassed && !lastRunPassed) {
-              copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
-              sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
-              yarnBuilder.yarn('test:playwright:functional:generate-report')
-              publishAllureReport(
-                'playwright-allure-functional-report',
-                'Playwright Allure Functional Report',
-                'playwright-allure-functional-history'
-              )
-            }
-            archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
+      stage('Playwright full functional test') {
+        try {
+          if(flowInterrupted) {
+            throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
           }
+          if(playwrightSetupPassed) {
+            sh './playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-tests.sh'
+          } else {
+            throw new Error('Playwright test setup failed')
+          }
+        } catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(playwrightSetupPassed && !lastRunPassed) {
+            copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
+            sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+            yarnBuilder.yarn('test:playwright:functional:generate-report')
+            publishAllureReport(
+              'playwright-allure-functional-report',
+              'Playwright Allure Functional Report',
+              'playwright-allure-functional-history'
+            )
+          }
+          archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
         }
       }
 
