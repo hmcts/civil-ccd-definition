@@ -9,7 +9,7 @@ import YesNo from '../../enums/yesNo.ts';
 import claimTypes from '../../enums/claim-types.ts';
 import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
-import claimTrack from '../../enums/claim-track.ts';
+import claimTrack from '../../enums/track.ts';
 import environment from '../../enums/environment.ts';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import { TabsHelper } from '../../helpers/TabsHelper.ts';
@@ -149,6 +149,9 @@ const defendant1LitigantFriend: yesNo = ['Yes'].includes(process.env.DEFENDANT1_
 const defendant2LitigantFriend: yesNo = ['Yes'].includes(process.env.DEFENDANT2_LITIGANT_FRIEND)
   ? yesNo.YES
   : yesNo.NO;
+const determinationWithoutHearing: YesNo = ['Yes'].includes(process.env.DETERMINATION_WITHOUT_HEARING)
+  ? yesNo.YES
+  : yesNo.NO;
 const oneMonthStay: YesNo = ['Yes'].includes(process.env.ONE_MONTH_STAY)
   ? yesNo.YES
   : yesNo.NO;
@@ -156,11 +159,11 @@ const preActionProtocol: YesNo = ['Yes'].includes(process.env.ONE_MONTH_STAY)
   ? yesNo.YES
   : yesNo.NO;
 
-let track = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(
+let track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(
   process.env.TRACK,
 )
-  ? process.env.TRACK
-  : 'FAST_CLAIM';
+  ? (process.env.TRACK as claimTrack)
+  : claimTrack.FAST;
 let caseId: string = '';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
@@ -176,7 +179,7 @@ test.beforeAll(async ({}) => {
     expect(
       track,
       `Invalid claim track: ${track} used for type: ${typeOfClaim} and sub type: ${typeOfClaimSubType} combination. Either do not specify a track or set the track to FAST_CLAIM.`,
-    ).toEqual(claimTrack.FAST_CLAIM);
+    ).toEqual(claimTrack.FAST);
   }
 });
 
@@ -296,7 +299,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       typeOfClaim == unspecClaimTypes.PERSONAL_INJURY &&
       typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS
     ) {
-      track = claimTrack.FAST_CLAIM;
+      track = claimTrack.FAST;
     }
 
     await createCase.setClaimValue(track, typeOfClaim); // use from parameters in package
@@ -389,9 +392,11 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       console.log('>>>> ', fixedRecoveryCostsBand);
       await new RespondToClaim(page).submit(
         claimType,
+        track,
         respondent1Response,
         respondent2Response,
         1,
+        determinationWithoutHearing,
         oneMonthStay,
         preActionProtocol,
         fixedRecoverableCosts,
