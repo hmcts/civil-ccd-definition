@@ -20,7 +20,7 @@ module.exports = {
     await I.fillField(this.fields.endMonth, month);
     await I.fillField(this.fields.endYear, year);
 
-    await I.see('Why is breathing space being lifted? (Optional)')
+    await I.see('Why is breathing space being lifted? (Optional)');
     await I.fillField(this.fields.liftBreathingSpaceReasonToLift, reasonToLift);
 
     await I.clickContinue();

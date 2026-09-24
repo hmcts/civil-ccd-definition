@@ -45,7 +45,7 @@ const dismissCase = require('../fixtures/events/dismissCase');
 const genAppClaimData = require('../fixtures/events/createGeneralApplication');
 const genAppClaimDataLR = require('../fixtures/events/createGeneralApplicationLR');
 const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
-const liftBreathingSpace = require("../fixtures/events/liftBreathingSpace");
+const liftBreathingSpace = require('../fixtures/events/liftBreathingSpace');
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};
