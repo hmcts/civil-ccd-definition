@@ -318,9 +318,6 @@ withNightlyPipeline(type, product, component) {
       if(!flowInterrupted && playwrightSetupPassed) {
         stage('Playwright smoke test') {
           try {
-            if(flowInterrupted) {
-              throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
-            }
             sh './playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-smoke.sh'
           } catch (Exception error) {
             if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
@@ -344,15 +341,13 @@ withNightlyPipeline(type, product, component) {
             }
             archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
           }
+          archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
         }
       }
 
       if(!flowInterrupted && playwrightSetupPassed && playwrightSmokeTestPassed) {
         stage('Playwright full functional test') {
           try {
-            if(flowInterrupted) {
-              throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
-            }
             sh './playwright-e2e/scripts/civil-nightly/civil-ccd/playwright-run-civil-ccd-nightly-tests.sh'
           } catch (Exception error) {
             if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
