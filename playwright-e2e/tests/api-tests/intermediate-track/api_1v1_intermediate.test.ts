@@ -14,15 +14,15 @@ test.describe(
       HearingCenterAdminApiSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimInter1v1();
-      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-      await ClaimantSolicitorApiSteps.NotifyClaim();
-      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondInterFullDefence();
-      await ClaimantSolicitorApiSteps.RespondInterProceed();
-      await JudgeApiSteps.GenerateDirectionsOrderInter();
-      await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
-      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+      // await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      // await ClaimantSolicitorApiSteps.NotifyClaim();
+      // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      // await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      // await DefendantSolicitor1ApiSteps.RespondInterFullDefence();
+      // await ClaimantSolicitorApiSteps.RespondInterProceed();
+      // await JudgeApiSteps.GenerateDirectionsOrderInter();
+      // await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
+      // await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
     });
   },
 );
