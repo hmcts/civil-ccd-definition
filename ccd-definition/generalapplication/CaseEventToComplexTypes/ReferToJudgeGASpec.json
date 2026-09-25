@@ -6,7 +6,7 @@
     "ListElementCode": "judgeReferEventDescription",
     "EventElementLabel": "  ",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "ReferToJudge",
@@ -15,7 +15,7 @@
     "ListElementCode": "judgeReferAdditionalInfo",
     "EventElementLabel": " ",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "GAUrgencyRecordPage",
