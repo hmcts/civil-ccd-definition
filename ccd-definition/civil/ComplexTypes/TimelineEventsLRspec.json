@@ -1,8 +1,8 @@
 [
   {
     "ID": "TimelineOfEvents",
-    "ListElementCode": "timelineDate",
-    "FieldType": "Date",
+    "ListElementCode": "timelineDateLabel",
+    "FieldType": "Label",
     "ElementLabel": "Date",
     "HintText": "For example, 12 11 2007",
     "SecurityClassification": "Public",
@@ -10,10 +10,42 @@
   },
   {
     "ID": "TimelineOfEvents",
+    "ListElementCode": "timelineDay",
+    "FieldType": "Number",
+    "ElementLabel": "Day",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Max": 2,
+    "DisplayContext": "OPTIONAL",
+    "FieldDisplayOrder": 2
+  },
+  {
+    "ID": "TimelineOfEvents",
+    "ListElementCode": "timelineMonth",
+    "FieldType": "Number",
+    "ElementLabel": "Month",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Max": 2,
+    "FieldDisplayOrder": 2
+  },
+  {
+    "ID": "TimelineOfEvents",
+    "ListElementCode": "timelineYear",
+    "FieldType": "Number",
+    "ElementLabel": "Year",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Max": 4,
+    "FieldDisplayOrder": 2
+  },
+  {
+    "ID": "TimelineOfEvents",
     "ListElementCode": "timelineDescription",
     "FieldType": "TextArea",
     "ElementLabel": "What happened",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldDisplayOrder": 3
   }
 ]

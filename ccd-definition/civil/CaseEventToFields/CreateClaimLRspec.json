@@ -548,7 +548,7 @@
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "timelineOfEvents",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "ClaimTimeline",
     "PageDisplayOrder": 27,
     "PageColumnNumber": 1,
