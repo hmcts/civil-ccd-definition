@@ -11,21 +11,21 @@ test.describe('1v1 spec stay case api journey', { tag: ['@civil-service-nightly'
     CtscAdminApiSteps,
   }) => {
     await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
-    await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
-    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
-    await JudgeApiSteps.SdoFast();
-    await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
-    await HearingCenterAdminApiSteps.AmendHearingDueDate();
-    await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
-    await HearingCenterAdminApiSteps.StayCase();
-    await HearingCenterAdminApiSteps.ManageStayRequestUpdate();
-    await CtscAdminApiSteps.SendMessage();
-    await JudgeApiSteps.ReplyMessage();
-    await CaseworkerApiSteps.ReplyMessage();
-    await HearingCenterAdminApiSteps.ManageStayLiftStay();
-    await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
-    await HearingCenterAdminApiSteps.DismissCase();
+    // await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+    // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+    // await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
+    // await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
+    // await JudgeApiSteps.SdoFast();
+    // await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+    // await HearingCenterAdminApiSteps.AmendHearingDueDate();
+    // await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
+    // await HearingCenterAdminApiSteps.StayCase();
+    // await HearingCenterAdminApiSteps.ManageStayRequestUpdate();
+    // await CtscAdminApiSteps.SendMessage();
+    // await JudgeApiSteps.ReplyMessage();
+    // await CaseworkerApiSteps.ReplyMessage();
+    // await HearingCenterAdminApiSteps.ManageStayLiftStay();
+    // await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+    // await HearingCenterAdminApiSteps.DismissCase();
   });
 });

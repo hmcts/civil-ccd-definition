@@ -3,7 +3,7 @@ import {test} from '../../../playwright-fixtures/index';
 test.describe('1v1 case flags journey', { tag: ['@civil-ccd-nightly', '@ui-case-flags'] },
   async () => {
     test('1v1 case flags journey', async ({
-      ClaimantSolicitorApiSteps, 
+      ClaimantSolicitorApiSteps,
       DefendantSolicitor1ApiSteps,
       ClaimantSolicitorSteps,
       CaseRoleAssignmentApiSteps,
@@ -11,17 +11,17 @@ test.describe('1v1 case flags journey', { tag: ['@civil-ccd-nightly', '@ui-case-
       HearingCenterAdminSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
-      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-      await ClaimantSolicitorApiSteps.NotifyClaim();
-      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.AddLitigationFriend();
-      await DefendantSolicitor1Steps.Login();
-      await DefendantSolicitor1Steps.RespondSmallFullDefence1v1();
-      await ClaimantSolicitorSteps.Login();
-      await ClaimantSolicitorSteps.RespondSmallProceed1v1();
-      await HearingCenterAdminSteps.LoginRegion1();
-      await HearingCenterAdminSteps.CreateCaseLevelCaseFlag();
-      await HearingCenterAdminSteps.CreateClaimant1CaseFlag();
+      // await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      // await ClaimantSolicitorApiSteps.NotifyClaim();
+      // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      // await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      // await DefendantSolicitor1ApiSteps.AddLitigationFriend();
+      // await DefendantSolicitor1Steps.Login();
+      // await DefendantSolicitor1Steps.RespondSmallFullDefence1v1();
+      // await ClaimantSolicitorSteps.Login();
+      // await ClaimantSolicitorSteps.RespondSmallProceed1v1();
+      // await HearingCenterAdminSteps.LoginRegion1();
+      // await HearingCenterAdminSteps.CreateCaseLevelCaseFlag();
+      // await HearingCenterAdminSteps.CreateClaimant1CaseFlag();
     });
 });

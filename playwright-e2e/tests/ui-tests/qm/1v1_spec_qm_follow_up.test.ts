@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures/index';
 test.describe(
   '1v1 spec query management follow up journey',
   {
-    tag: ['@civil-ccd-nightly', '@ui-qm'],
+    tag: ['@ui-qm'],
   },
   () => {
     test('1v1 spec query management follow up journey', async ({

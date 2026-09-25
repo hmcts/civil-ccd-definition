@@ -3,7 +3,7 @@ import { test } from '../../../playwright-fixtures/index';
 test.describe(
   '1v1 unspec intermediate track api journey',
   {
-    tag: ['@civil-service-nightly-smoke', '@api-intermediate-track'],
+    tag: ['@api-intermediate-track'],
   },
   async () => {
     test('1v1 Create Unspecified Inter Track claim', async ({

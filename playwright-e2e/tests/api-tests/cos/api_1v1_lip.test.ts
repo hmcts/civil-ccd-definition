@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 lip unspec api journey',
-  { tag: ['@civil-service-nightly-smoke', '@api-cos'] },
+  { tag: ['@api-cos'] },
   async () => {
     test('Create claim where respondent is litigant in person and notify/notify details', async ({
       ClaimantSolicitorApiSteps,

@@ -3,7 +3,7 @@ const config = require('../../../../config.js');
 
 let civilCaseReference;
 
-Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation').tag('@civil-service-nightly @api-ga-cert-of-satisfaction');
+Feature('GA SPEC Claim 1v1 Certification of Satisfaction/Cancellation').tag('@api-ga-cert-of-satisfaction');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);

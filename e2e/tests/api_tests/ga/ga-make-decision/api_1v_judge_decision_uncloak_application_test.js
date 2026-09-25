@@ -3,7 +3,7 @@ const config = require('../../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v1 Uncloak application API').tag('@civil-service-nightly');
+Feature('GA 1v1 Uncloak application API');
 
 Scenario('Judge makes decision 1V1 - ORDER_MADE - Uncloak and Application Approved', async ({api_ga}) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');

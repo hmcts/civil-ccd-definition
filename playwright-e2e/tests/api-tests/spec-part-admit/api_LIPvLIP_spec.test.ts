@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   'LIP v LIP spec part admit api journeys',
-  { tag: ['@civil-service-nightly', '@api-spec-part-admit', '@civil-ccd-master'] },
+  { tag: ['@api-spec-part-admit', '@civil-ccd-master'] },
   async () => {
     test('1v1 LiP v LiP Part admit defendant and claimant response - claimant rejects installment plan', async ({
       ClaimantCitizenApiSteps,

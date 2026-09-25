@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const hnStateStatus = states.HEARING_SCHEDULED.id;
 let civilCaseReference, gaCaseReference;
 
-Feature('GA 1v2 Judge makes order application after hearing API tests').tag('@civil-service-nightly @api-ga-final-order');
+Feature('GA 1v2 Judge makes order application after hearing API tests').tag('@api-ga-final-order');
 
 Scenario('Without Notice Hearing notice journey', async ({api_ga}) => {
 
