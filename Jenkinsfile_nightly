@@ -281,7 +281,9 @@ withNightlyPipeline(type, product, component) {
 
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
   boolean runFailedTests = env.RUN_FAILED_TESTS.toBoolean();
-
+  boolean playwrightSetupFailed = false;
+  boolean playwrightSmokeTestsFailed = false;
+  boolean flowInterrupted = false;
 
   if(!forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
@@ -289,9 +291,6 @@ withNightlyPipeline(type, product, component) {
         copyPrevPlaywrightLastRunAndTestFilesReport()
       }
 
-      boolean playwrightSetupFailed = false;
-      boolean playwrightSmokeTestsFailed = false;
-      boolean flowInterrupted = false;
       boolean lastRunPassed = env.RUN_FAILED_TESTS.toBoolean() && checkHasPlaywrightLastRunStatus('passed');
       boolean playwrightRunSetup =
         env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
