@@ -397,7 +397,7 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-      if(playwrightSmokeTestsFailed) {
+      if (playwrightSetupFailed || playwrightSmokeTestsFailed) {
         env.PLAYWRIGHT_NIGHTLY_SETUP_OR_SMOKE_TESTS_FAILED = 'true'
         return
       }
