@@ -151,7 +151,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "INVALID_HEARING_NOTICE_COMPLETED",
-    "Name": "Invalid hearing notice completed",
+    "Name": "Invalid hearing notice done",
     "Description": "Triggered when an invalid hearing notice has been cancelled and manually relisted",
     "DisplayOrder": 1,
     "PreConditionState(s)": "*",
