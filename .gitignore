@@ -80,3 +80,4 @@ AGENTS.md
 allure-functional-results/
 bin/shared/
 dr-playwright/debug-*.png
+dr-playwright/e2e/.auth/
