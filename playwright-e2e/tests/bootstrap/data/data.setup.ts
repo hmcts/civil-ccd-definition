@@ -5,8 +5,8 @@ if (config.runDataSetup) {
   setup.describe('Setting up data', () => {
     setup.describe.configure({ mode: 'parallel' });
 
-    setup('Upcoming bank holidays', async () => {
-      throw new Error('Intentional failure: validating the nightly Playwright setup stage');
+    setup('Upcoming bank holidays', async ({ DataApiSteps }) => {
+      await DataApiSteps.SetupBankHolidaysData();
     });
   });
 } else {
