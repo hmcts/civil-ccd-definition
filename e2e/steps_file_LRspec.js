@@ -80,8 +80,8 @@ const respondent2SameLegalRepresentativeLRspec = require('./pages/createClaim/re
 const vulnerabilityPage = require('./pages/respondToClaimLRspec/vulnerabilityLRspec.page');
 const supportAccessLRspecPage = require('./pages/respondToClaimLRspec/supportAccessLRspec.page');
 const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestions.page');
-const enterBreathingSpacePage = require('./pages/respondToClaimLRspec/enterBreathingSpace.page');
-const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathingSpace.page');
+const enterBreathingSpacePage = require('./pages/enterBreathingSpace/breathingSpaceDetails.page');
+const liftBreathingSpacePage = require('./pages/liftBreathingSpace/liftBreathingSpaceDetails.page');
 const witnessesLRspecPage = require('./pages/respondToClaimLRspec/witnessesLRspec.page.js');
 const confirm2ndDefLRspecPage = require('./pages/respondToClaimLRspec/enter2ndDefendantDetailsLRspec.page');
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
@@ -454,27 +454,6 @@ module.exports = function () {
          () => event.returnToCaseDetails(),
        ]);
      },
-
-   async enterBreathingSpace() {
-    eventName = events.ENTER_BREATHING_SPACE_SPEC.name;
-    await this.triggerStepsWithScreenshot([
-              () => caseViewPage.startEvent(events.ENTER_BREATHING_SPACE_SPEC, caseId
-              ),
-              () => enterBreathingSpacePage.selectBSType(),
-              () => event.submit('Submit', ''),
-              () => event.returnToCaseDetails()
-            ]);
-    },
-
-   async liftBreathingSpace() {
-    eventName = events.LIFT_BREATHING_SPACE_SPEC.name;
-    await this.triggerStepsWithScreenshot([
-              () => caseViewPage.startEvent(events.LIFT_BREATHING_SPACE_SPEC, caseId),
-              () => liftBreathingSpacePage.liftBS(),
-              () => event.submit('Submit', ''),
-              () => event.returnToCaseDetails()
-            ]);
-        },
 
     async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
       eventName = events.DEFENDANT_RESPONSE_SPEC.name;
@@ -1156,6 +1135,34 @@ module.exports = function () {
         () => this.click('Close and Return to case details'),
         () => this.waitForText('Sign out'),
         () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async enterIntoBS(breathingSpaceDetails) {
+      eventName = events.ENTER_BREATHING_SPACE_SPEC.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.ENTER_BREATHING_SPACE_SPEC, caseId),
+        () => this.waitForText('Breathing space details'),
+        () => enterBreathingSpacePage.enterBreathingSpaceDetails(breathingSpaceDetails),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Breathing Space Entered'),
+        () => this.waitForText('We have sent you a confirmation email.'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async liftBS(breathingSpaceDetails) {
+      eventName = events.LIFT_BREATHING_SPACE_SPEC.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.LIFT_BREATHING_SPACE_SPEC, caseId),
+        () => this.waitForText('Lift Breathing Space'),
+        () => liftBreathingSpacePage.liftBreathingSpaceDetails(breathingSpaceDetails),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Breathing Space lifted'),
+        () => this.waitForText('We have sent you a confirmation email.'),
       ]);
       await this.takeScreenshot();
     },

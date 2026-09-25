@@ -1957,6 +1957,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breathingSpaceActive",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "storedBreathingSpace",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breathingSpaceDefendant1Details",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breathingSpaceDefendant2Details",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "SmallClaimHearingInterpreter2Required",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
