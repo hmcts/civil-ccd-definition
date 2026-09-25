@@ -1,10 +1,11 @@
+import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 
 test.describe(
   'Before SDO 1v2 - GA CP - Applications Orders',
   
   () => {
-    test.fail(
+    test(
       '1v2 - Assisted order - With Further Hearing',
       async ({
         ClaimantSolicitorApiSteps,
@@ -16,6 +17,7 @@ test.describe(
         HearingCenterAdminGaApiSteps,
         JudgeGaSteps,
       }) => {
+        test.fail(config.zodValidationEnabled);
         await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
         await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
         await ClaimantSolicitorApiSteps.NotifyClaim();

@@ -5,6 +5,7 @@ import ClaimantDefendantCitizenDataBuilderFactory from '../../../data-builders/c
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
+import { test } from '../../../playwright-fixtures';
 import RequestsFactory from '../../../requests/requests-factory';
 import ClaimantDefendantCitizenSchemaBuilderFactory from '../../../schema-builders/cui/claimant-defendant-citizen/claimant-defendant-citizen-schema-builder-factory';
 

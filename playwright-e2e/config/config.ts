@@ -41,10 +41,17 @@ const config = {
     retries: parseInt(process.env.PLAYWRIGHT_RETRIES),
     testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED.toUpperCase() as string] as TestSpeed,
     shortExpectTimeout: 20_000,
-    functionalTestResultsDir: process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR &&
-      process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR
-      ? `${process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}`
-      : './playwright-test-results',
+    bootstrapTestResultsDir: process.env.PLAYWRIGHT_TEST_RESULTS_DIR &&
+      process.env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR 
+      ? `./${process.env.PLAYWRIGHT_TEST_RESULTS_DIR}/${process.env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR}`
+      : './playwright-test-results/playwright-bootstrap-test-results',
+    functionalTestResultsDir: process.env.PLAYWRIGHT_TEST_RESULTS_DIR &&
+      process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR
+      ? `${process.env.PLAYWRIGHT_TEST_RESULTS_DIR}/${process.env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}`
+      : './playwright-test-results/playwright-functional-test-results',
+    smokeTestResultsDir: process.env.PLAYWRIGHT_TEST_RESULTS_DIR && process.env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR
+      ? `${process.env.PLAYWRIGHT_TEST_RESULTS_DIR}/${process.env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR}`
+      : './playwright-test-results/playwright-smoke-test-results',
   },
   exui: {
     eventRetries: parseInt(process.env.PLAYWRIGHT_EXUI_RETRIES),

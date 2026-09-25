@@ -1,10 +1,11 @@
+import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 
 test.describe(
   'After SDO 1v2 - GA CP - Hearing Notice document',
   
   () => {
-    test.fail(
+    test(
       'Claimant Hearing notice - Without notice journey',
       async ({
         ClaimantSolicitorApiSteps,
@@ -15,6 +16,7 @@ test.describe(
         JudgeGaApiSteps,
         HearingCenterAdminGaSteps,
       }) => {
+        test.fail(config.zodValidationEnabled);
         await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
         await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
         await ClaimantSolicitorApiSteps.NotifyClaim();

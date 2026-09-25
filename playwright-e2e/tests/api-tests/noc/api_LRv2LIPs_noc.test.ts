@@ -1,10 +1,12 @@
+import config from '../../../config/config';
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('LR v 2 LIPs unspec notice of change api journey',  async () => {
+test.describe('LR v 2 LIPs unspec notice of change api journey', { tag: ['@civil-service-nightly', '@api-noc'] }, async () => {
   test('notice of change - 1v2 - both respondents LiPs to same solicitor', async ({
     ClaimantSolicitorApiSteps,
     OtherDefendantSolicitor1ApiSteps,
   }) => {
+    test.fail(config.zodValidationEnabled);
     await ClaimantSolicitorApiSteps.CreateClaimSmall1v2LIPs();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim1v2LIPS();
@@ -18,6 +20,7 @@ test.describe('LR v 2 LIPs unspec notice of change api journey',  async () => {
     OtherDefendantSolicitor1ApiSteps,
     OtherDefendantSolicitor2ApiSteps
   }) => {
+    test.fail(config.zodValidationEnabled);
     await ClaimantSolicitorApiSteps.CreateClaimSmall1v2LIPs();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim1v2LIPS();

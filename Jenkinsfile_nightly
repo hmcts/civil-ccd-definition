@@ -1,13 +1,13 @@
 #!groovy
 
 properties([
-  // pipelineTriggers([cron('H 08 * * 1-5')]),
-  copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
+  pipelineTriggers([cron('H 17 * * 1-5')]),
+  copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-service/*'),
   parameters([
     choice(name: 'FORCE_GREEN_BUILD', choices: ['false', 'true'],
       description: 'Should force pipeline to go green by not running any functional tests'),
     choice(name: 'RUN_FAILED_TESTS', choices: ['false', 'true'],
-      description: 'Runs the failed tests, if any, for CodeceptJS and Playwright tests, this also includes the ones not executed for CodeceptJS tests'),
+      description: 'Runs the failed test files and test files that were not executed, contained within the \'testFilesReport.json\', from the latest previous pipeline run'),
     choice(name: 'ENVIRONMENT', choices: ['aat', 'demo', 'preview'],
       description: 'Environment to test'),
     string(name: 'PR_NUMBER',
@@ -24,12 +24,8 @@ properties([
                   'https://xui-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://xui-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                   'https://xui-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://xui-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://xui-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net',
                 ],
       description: 'The URL you want to run the full functional tests against'),
-    choice(name: 'IDAM_WEB_URL', choices: ['https://idam-web.aat.platform.hmcts.net', 'https://idam-web.demo.platform.hmcts.net'],
-      description: 'The URL of idam web'),
     choice(name: 'IDAM_API_URL', choices: ['https://idam-api.aat.platform.hmcts.net', 'https://idam-api.demo.platform.hmcts.net'],
       description: 'The URL of idam api'),
     choice(name: 'IDAM_TEST_SUPPORT_API_URL', choices: ['https://idam-testing-support-api.aat.platform.hmcts.net', 'https://idam-testing-support-api.demo.platform.hmcts.net'],
@@ -38,31 +34,31 @@ properties([
       description: 'The URL of dm store'),
     choice(name: 'SERVICE_AUTH_PROVIDER_API_BASE_URL', choices: ['http://rpe-service-auth-provider-aat.service.core-compute-aat.internal', 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal'],
       description: 'The URL of service auth provider'),
-    choice(name: 'CCD_DATA_STORE_URL',
-      choices: [
-                  'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
-                  'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
-                  'https://ccd-data-store-api-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://ccd-data-store-api-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://ccd-data-store-api-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://ccd-data-store-api-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://ccd-data-store-api-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net'
-                ],
+    choice(name: 'CCD_DATA_STORE_URL', choices: [
+                                                  'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+                                                  'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+                                                  'https://ccd-data-store-api-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                                                  'https://ccd-data-store-api-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                                                  'https://ccd-data-store-api-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                                                ],
       description: 'The URL of ccd data store'),
-    choice(name: 'CIVIL_SERVICE_URL',
-      choices: [
-                  'http://civil-service-aat.service.core-compute-aat.internal',
-                  'http://civil-service-demo.service.core-compute-demo.internal',
-                  'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://civil-citizen-ui-pr-{PR_NUMBER}-civil-service.preview.platform.hmcts.net',
-                  'https://civil-service-civil-ga-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
-                  'https://civil-service-civil-general-applications-pr-{PR_NUMBER}.preview.platform.hmcts.net'
-                ],
+    choice(name: 'CIVIL_SERVICE_URL', choices: [
+                                                  'http://civil-service-aat.service.core-compute-aat.internal',
+                                                  'http://civil-service-demo.service.core-compute-demo.internal',
+                                                  'https://civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                                                  'https://civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                                                  'https://civil-citizen-ui-pr-{PR_NUMBER}-civil-service.preview.platform.hmcts.net',
+                                                ],
       description: 'The URL of civil service'),
+    choice(name: 'AAC_API_URL', choices: [
+                                            'http://aac-manage-case-assignment-aat.service.core-compute-aat.internal',
+                                            'http://aac-manage-case-assignment-demo.service.core-compute-demo.internal',
+                                            'https://manage-case-assignment-civil-ccd-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                                            'https://manage-case-assignment-civil-service-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                                            'https://manage-case-assignment-civil-citizen-ui-pr-{PR_NUMBER}.preview.platform.hmcts.net',
+                                          ],
+      description: 'The URL of case assignment service'),
     choice(name: 'WA_TASK_MGMT_URL', choices: ['http://wa-task-management-api-aat.service.core-compute-aat.internal', 'http://wa-task-management-api-demo.service.core-compute-demo.internal'],
-       description: 'The URL of wa task management'),
-    choice(name: 'PAYMENT_API_URL', choices: ['http://payment-api-aat.service.core-compute-aat.internal', 'http://payment-api-demo.service.core-compute-demo.internal'],
        description: 'The URL of wa task management'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8',
       description: 'Number of workers for playwright'),
@@ -70,7 +66,7 @@ properties([
       description: 'Number of times playwright will retry tests'),
     string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1',
       description: 'Number of times playwright tests will retry exui events'),
-    string(name: 'PLAYWRIGHT_IDAM_RETRIES', defaultValue: '1',
+    string(name: 'PLAYWRIGHT_IDAM_RETRIES', defaultValue: '2',
       description: 'Number of times playwright tests will retry idam events'),
     choice(name: 'PLAYWRIGHT_TEST_SPEED', choices: ['fast', 'medium', 'slow'],
       description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),
@@ -78,8 +74,6 @@ properties([
       description: 'Runs accessibility tests for playwright during test execution'),
     choice(name: 'PLAYWRIGHT_RUN_CUI_USER_SETUP', choices: ['true', 'false'],
       description: 'Runs setup projects for creation of citizen users before running functional tests'),
-    choice(name: 'PLAYWRIGHT_RUN_EXUI_AUTH_SETUP', choices: ['true', 'false'],
-      description: 'Runs setup projects for caching authentication state of exui/citizen users before running functional tests'),
     choice(name: 'PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP', choices: ['true', 'false'],
       description: 'Runs setup projects for caching additional exui user data (userId and accessToken) before running functional tests'),
     choice(name: 'PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP', choices: ['true', 'false'],
@@ -101,10 +95,11 @@ properties([
 
 @Library("Infrastructure")
 
-def type = "nodejs"
+def type = "java"
 def product = "civil"
-def component = "ccd"
+def component = "service"
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
+def ccdBranch = "master"
 
 static Map<String, Object> secret(String secretName, String envVariable) {
   [$class     : 'AzureKeyVaultSecret',
@@ -114,8 +109,10 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
+
 void publishAllureReport(String reportDir, String reportName, String historyArchiveDir) {
   publishHTML([
+    allowMissing: true,
     alwaysLinkToLastBuild: true,
     keepAll: true,
     reportDir: reportDir,
@@ -137,7 +134,7 @@ def copyPreviousAllureHistory(historyDir, resultsDir) {
         selector: specific("${buildNumber}"),
         filter: "**/${historyDir}/**",
         target: resultsDir
-      );
+      )
       sh "mv ${resultsDir}/${historyDir} ${resultsDir}/history"
       buildFound = true
     } catch (Exception error) {
@@ -164,33 +161,38 @@ def copyPrevTestFilesReport(reportFilePath) {
 
 def checkHasPlaywrightLastRunStatus(expectedStatuses) {
   def lastRunStatus = sh(
-    script: "jq -r '.status // empty' ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json",
+    script: "jq -r '.status // empty' ${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json",
     returnStdout: true
   ).trim()
   def statuses = expectedStatuses instanceof Collection ? expectedStatuses : [expectedStatuses]
   return statuses.contains(lastRunStatus)
 }
 
-def checkHasFailedTestFiles() {
+def checkHasFailedTestFiles(reportFilePath) {
   def failedTestFiles = sh(
-    script: "jq -r '.failedTestFiles | length' test-results/functional/testFilesReport.json",
+    script: "jq -r '.failedTestFiles | length' ${reportFilePath}",
     returnStdout: true
   ).trim()
   return failedTestFiles == '0'
 }
 
-def copyPrevPlaywrightLastRun() {
+def copyPrevPlaywrightLastRunAndTestFilesReport() {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  def lastRunFilePath = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+  def testFilesReportPath = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      sh "rm -rf ${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}"
+      sh "rm -f ${lastRunFilePath} ${testFilesReportPath}"
       copyArtifacts(
         projectName: env.JOB_NAME,
         selector: specific("${buildNumber}"),
-        filter: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/.last-run.json"
+        filter: "${lastRunFilePath},${testFilesReportPath}"
       )
+      if (!fileExists(lastRunFilePath) || !fileExists(testFilesReportPath)) {
+        throw new Exception("Missing one or more Playwright previous run artifacts from build ${buildNumber}")
+      }
       if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
         throw new Exception(
           "Skipping copied .last-run.json from build ${buildNumber} because status was not 'passed' or 'failed'"
@@ -198,10 +200,11 @@ def copyPrevPlaywrightLastRun() {
       }
       buildFound = true
     } catch (Exception error) {
-      echo "artifact not found: " + error.toString()
+      echo "Previous Playwright artifacts not usable from build ${buildNumber}: " + error.toString()
       buildNumber--
     }
   }
+  return buildFound
 }
 
 def secrets = [
@@ -210,23 +213,25 @@ def secrets = [
     secret('default-password', 'DEFAULT_PASSWORD'),
     secret('judge-default-password', 'JUDGE_DEFAULT_PASSWORD'),
     secret('iac-default-password', 'IAC_DEFAULT_PASSWORD'),
+    secret('generic-docker-pact-broker-password', 'GENERIC_DOCKER_PACT_BROKER_YAML_PASS'),
     secret('system-update-user-password', 'SYSTEM_USER_PASSWORD')
   ]
 ]
 
 withNightlyPipeline(type, product, component) {
-  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'playwright-functional-test-results'
-  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR = 'civil-ccd-nightly'
+  env.PLAYWRIGHT_TEST_RESULTS_DIR = 'playwright-test-results'
+  env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR = 'civil-service-bootstrap'
+  env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'civil-service-nightly-smoke'
+  env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'civil-service-nightly'
+  env.GRADLE_OPTS = "-Dorg.gradle.workers.max=3"
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_FAILED_TESTS=params.RUN_FAILED_TESTS
-  env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
   env.PLAYWRIGHT_EXUI_RETRIES=params.PLAYWRIGHT_EXUI_RETRIES
   env.PLAYWRIGHT_IDAM_RETRIES=params.PLAYWRIGHT_IDAM_RETRIES
   env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS=params.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS
   env.PLAYWRIGHT_RUN_CUI_USER_SETUP=params.PLAYWRIGHT_RUN_CUI_USER_SETUP
-  env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP=params.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP
   env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP=params.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP
   env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP=params.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP
   env.PLAYWRIGHT_RUN_DATA_SETUP=params.PLAYWRIGHT_RUN_DATA_SETUP
@@ -249,134 +254,107 @@ withNightlyPipeline(type, product, component) {
   def frontendUrl = resolvePreviewUrl(params.FRONTEND_URL, 'FRONTEND_URL')
   def ccdDataStoreUrl = resolvePreviewUrl(params.CCD_DATA_STORE_URL, 'CCD_DATA_STORE_URL')
   def civilServiceUrl = resolvePreviewUrl(params.CIVIL_SERVICE_URL, 'CIVIL_SERVICE_URL')
+  def aacApiUrl = resolvePreviewUrl(params.AAC_API_URL, 'AAC_API_URL')
 
   env.URL=frontendUrl
-  env.PR_NUMBER=prNumber
   env.DM_STORE_URL=params.DM_STORE_URL
-  env.IDAM_WEB_URL=params.IDAM_WEB_URL
   env.IDAM_API_URL=params.IDAM_API_URL
   env.IDAM_TEST_SUPPORT_API_URL=params.IDAM_TEST_SUPPORT_API_URL
   env.SERVICE_AUTH_PROVIDER_API_BASE_URL = params.SERVICE_AUTH_PROVIDER_API_BASE_URL
+  env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
   env.CCD_DATA_STORE_URL = ccdDataStoreUrl
   env.CIVIL_SERVICE_URL = civilServiceUrl
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
-  env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
-  env.PAYMENT_API_URL = params.PAYMENT_API_URL
-  env.SECURITY_RULES = params.SECURITY_RULES
-  env.URL_FOR_SECURITY_SCAN = civilServiceUrl
-  env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
+  env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
+  env.TESTS_FOR_ACCESSIBILITY = true
+  env.NIGHTLY_RUN = true
+  env.AAC_API_URL = aacApiUrl
   env.UNASSIGN_CASES = true
   overrideVaultEnvironments([
-    'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
+   'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
   ])
   loadVaultSecrets(secrets)
 
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
   boolean runFailedTests = env.RUN_FAILED_TESTS.toBoolean();
-<<<<<<< HEAD
-=======
-  boolean playwrightSmokeTestFailed = false;
->>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
-
+  boolean playwrightSmokeTestsFailed = false;
 
   if(!forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
+      sh """
+        ./bin/pull-latest-civil-ccd-files.sh ${ccdBranch}
+      """
+      yarnBuilder.yarn('install-dependencies')
+
       if(runFailedTests) {
-        copyPrevPlaywrightLastRun()
-        copyPrevTestFilesReport(
-          "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_PROJECT_DIR}/playwrightTestFilesReport.json"
-        )
+        copyPrevPlaywrightLastRunAndTestFilesReport()
       }
 
-      boolean playwrightSetupPassed = true;
+      boolean playwrightSetupFailed = false;
+      playwrightSmokeTestsFailed = false;
       boolean flowInterrupted = false;
       boolean lastRunPassed = env.RUN_FAILED_TESTS.toBoolean() && checkHasPlaywrightLastRunStatus('passed');
       boolean playwrightRunSetup =
         env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
         env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP.toBoolean() ||
         env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP.toBoolean() ||
-        env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean() ||
-        env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP.toBoolean();
+        env.PLAYWRIGHT_RUN_CUI_USER_SETUP.toBoolean();
 
-      stage('Playwright test setup') {
-        try {
-          if(playwrightRunSetup) {
-            sh './playwright-e2e/scripts/playwright-run-civil-ccd-setup.sh'
-          }
-        } catch (Exception error) {
-          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-            flowInterrupted = true
-          }
-          if(playwrightRunSetup) {
-            playwrightSetupPassed=false
-          }
-          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-        } finally {
-          if(playwrightRunSetup && !lastRunPassed) {
-            yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+      if(playwrightRunSetup) {
+        stage('Playwright test setup') {
+          try {
+            sh 'bash ./playwright-e2e/scripts/civil-nightly/civil-service/playwright-run-civil-service-nightly-setup.sh'
+          } catch (Exception error) {
+            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+              flowInterrupted = true
+            }
+            playwrightSetupFailed = true
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
           }
         }
       }
 
-      stage('Playwright smoke test') {
-        try {
-          if(flowInterrupted) {
-            throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
-          }
-          if(playwrightSetupPassed) {
-<<<<<<< HEAD
-            sh './playwright-e2e/scripts/playwright-run-civil-ccd-nightly-tests.sh'
-=======
-            sh 'PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-ccd-nightly-smoke:ci'
->>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
-          } else {
-            throw new Error('Playwright test setup failed')
-          }
-        } catch (Exception error) {
-          flowInterrupted = true
-          playwrightSmokeTestFailed = true
-          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-        } finally {
-<<<<<<< HEAD
-          if(playwrightSetupPassed && !lastRunPassed) {
-            copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
-=======
-          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-smoke-test-results/**/*'
+      if(!flowInterrupted && !playwrightSetupFailed) {
+        stage('Playwright smoke test') {
+          try {
+            sh 'PLAYWRIGHT_FUNCTIONAL=true yarn test:playwright:civil-service-nightly-smoke:ci'
+          } catch (Exception error) {
+            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+              flowInterrupted = true
+            }
+            playwrightSmokeTestsFailed = true
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+          } finally {
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-smoke-test-results/**/*'
 
-            if (playwrightSmokeTestFailed) {
-            copyPreviousAllureHistory(
-              'playwright-allure-functional-history',
-              'playwright-allure-functional-results'
-            )
->>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
-            sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
-            yarnBuilder.yarn('test:playwright:functional:generate-report')
-            publishAllureReport(
-              'playwright-allure-functional-report',
-              'Playwright Allure Functional Report',
-              'playwright-allure-functional-history'
-            )
-<<<<<<< HEAD
-=======
+            if (playwrightSmokeTestsFailed && !lastRunPassed) {
+              copyPreviousAllureHistory(
+                'playwright-allure-functional-history',
+                'playwright-allure-functional-results'
+              )
+              sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+              yarnBuilder.yarn('test:playwright:functional:generate-report')
+              publishAllureReport(
+                'playwright-allure-functional-report',
+                'Playwright Allure Functional Report',
+                'playwright-allure-functional-history'
+              )
+            }
           }
         }
       }
 
-      if(!flowInterrupted) {
+      if(!flowInterrupted && !playwrightSetupFailed && !playwrightSmokeTestsFailed) {
         stage('Playwright full functional test') {
           try {
-            if(playwrightSetupPassed) {
-              sh './playwright-e2e/scripts/playwright-run-civil-ccd-nightly-tests.sh'
-            } else {
-              throw new Error('Playwright test setup failed')
-            }
+            sh 'bash ./playwright-e2e/scripts/civil-nightly/civil-service/playwright-run-civil-service-nightly-tests.sh'
           } catch (Exception error) {
             if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
               flowInterrupted = true
             }
             unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
           } finally {
-            if(playwrightSetupPassed && !lastRunPassed) {
+            if(!lastRunPassed) {
               copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
               sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
               yarnBuilder.yarn('test:playwright:functional:generate-report')
@@ -386,17 +364,15 @@ withNightlyPipeline(type, product, component) {
                 'playwright-allure-functional-history'
               )
             }
-            archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
->>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
+            archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
           }
-          archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/**/*"
         }
       }
 
       if(playwrightRunSetup) {
         stage('Playwright test teardown') {
           try {
-            sh './playwright-e2e/scripts/playwright-run-civil-ccd-teardown.sh'
+            sh 'bash ./playwright-e2e/scripts/civil-nightly/civil-service/playwright-run-civil-service-nightly-teardown.sh'
           } catch (Exception error) {
             unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
           } finally {
@@ -414,50 +390,51 @@ withNightlyPipeline(type, product, component) {
         }
       }
     }
-  }
 
-  boolean hasFailedTestFiles = false;
+    if(!runFailedTests && !forceGreenBuild) {
+      enableFortifyScan()
 
-  if(!forceGreenBuild) {
-    before('fullFunctionalTest') {
-<<<<<<< HEAD
-=======
-      if(playwrightSmokeTestFailed) {
-        env.SKIP_FULL_FUNCTIONAL_TESTS = 'true'
-        return
+      afterAlways('fortify-scan') {
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/Fortify Scan/**/*'
       }
->>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
-      if(runFailedTests) {
-        copyPrevTestFilesReport("test-results/functional/testFilesReport.json")
-        hasFailedTestFiles = checkHasFailedTestFiles()
+    }
+
+    boolean hasFailedTestFiles = false;
+
+    if(!forceGreenBuild) {
+      before('fullFunctionalTest') {
+        if(playwrightSmokeTestsFailed) {
+          env.PLAYWRIGHT_NIGHTLY_SETUP_OR_SMOKE_TESTS_FAILED = 'true'
+          return
+        }
+        if(runFailedTests) {
+          def testFilesReportPath = "test-results/functional/testFilesReport.json"
+          copyPrevTestFilesReport(testFilesReportPath)
+          hasFailedTestFiles = checkHasFailedTestFiles(testFilesReportPath)
+        }
       }
-      if (!runFailedTests || !hasFailedTestFiles) {
-        copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
+    }
+
+    enableFullFunctionalTest(200)
+
+    if(!forceGreenBuild) {
+      afterAlways('fullFunctionalTest') {
+        if(playwrightSetupFailed || playwrightSmokeTestsFailed) {
+          echo 'Skipping functional test report generation because the Playwright setup or smoke test failed.'
+          return
+        }
+        if (!runFailedTests || !hasFailedTestFiles) {
+          copyPreviousAllureHistory('allure-functional-history', 'allure-functional-results');
+          yarnBuilder.yarn('test:generate-report')
+          publishAllureReport(
+            'allure-functional-report',
+            'Allure Functional Report',
+            'allure-functional-history',
+          )
+        }
+        archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+        env.TESTS_FOR_ACCESSIBILITY = false
       }
     }
   }
-
-  enableFullFunctionalTest(200)
-
-  if(!forceGreenBuild) {
-    afterAlways('fullFunctionalTest') {
-<<<<<<< HEAD
-=======
-      if(playwrightSmokeTestFailed) {
-        echo 'Skipping functional test report generation because the Playwright smoke test failed.'
-        return
-      }
->>>>>>> DTSCCI-6484-add-new-playwright-smoke-test-step
-      if (!runFailedTests || !hasFailedTestFiles) {
-        yarnBuilder.yarn('test:generate-report')
-        publishAllureReport(
-          'allure-functional-report',
-          'Allure Functional Report',
-          'allure-functional-history',
-        )
-      }
-      archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
-    }
-  }
-
 }
