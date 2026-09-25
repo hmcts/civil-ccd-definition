@@ -6,6 +6,7 @@ import RespondentResponses from '../../../enums/RespondentResponses.ts';
 import YesNo from '../../../enums/yesNo.ts';
 import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import trackType from '../../../enums/track.ts';
+import LanguageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
 
 export class RespondToClaim {
   private buttonHelper: ButtonHelper;
@@ -32,6 +33,8 @@ export class RespondToClaim {
     fixedRecoverableCostsBand: FixedRecoveryCostsBands = FixedRecoveryCostsBands.BAND1,
     disclosure: YesNo = YesNo.YES,
     noOfExperts: number = 0,
+    noOfWitnesses: number = 0,
+    language: LanguageSpokenAndDocuments = LanguageSpokenAndDocuments.ENGLISH,
   ) {
     await this.pageHelper.selectNextStep('Respond to claim');
     await this.buttonHelper.continueButton.click(); // Confirm Details
@@ -127,5 +130,23 @@ export class RespondToClaim {
     }
     await this.buttonHelper.continueButton.click();
 
+    const witnessesRequired = noOfWitnesses >= 1 ? YesNo.YES : YesNo.NO;
+    await this.page.locator(`#respondent${defendantNumber}DQWitnesses_witnessesToAppear_${witnessesRequired}`).click();
+    if (witnessesRequired === YesNo.YES) {
+      for (let i = 0; i < noOfWitnesses; i++) {
+        await this.buttonHelper.addNewButton.first().click();
+        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_firstName`).fill(`Witness${i + 1}Firstname`);
+        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_lastName`).fill(`Witness${i + 1}Lastname`);
+        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_emailAddress`).fill(`witness${i + 1}@example.com`);
+        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_phoneNumber`).fill('07700900000');
+        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_reasonForWitness`).fill(`Witness${i + 1}: Test event witnessed.`);
+      }
+    }
+    await this.buttonHelper.continueButton.click();
+
+
+    await this.page.locator(`#respondent${defendantNumber}DQLanguage_court-${language}`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQLanguage_documents-${language}`).click();
+    await this.buttonHelper.continueButton.click();
   }
 }

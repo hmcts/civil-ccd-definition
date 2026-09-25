@@ -24,6 +24,7 @@ import respondentResponses from '../../enums/RespondentResponses.ts';
 import { RespondToClaim } from '../flows/events/RespondToClaim.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
+import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -161,6 +162,8 @@ const preActionProtocol: YesNo = ['Yes'].includes(process.env.ONE_MONTH_STAY)
 
 let track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? (process.env.TRACK as claimTrack) : claimTrack.FAST;
 const noOfExperts: string = process.env.EXPERTS ?? '0';
+const noOfWitnesses: string = process.env.WITNESSES ?? '0';
+const language: languageSpokenAndDocuments = ['WELSH', 'ENGLISH', 'BOTH'].includes(process.env.LANGUAGE) ? (process.env.LANGUAGE as languageSpokenAndDocuments) : languageSpokenAndDocuments.ENGLISH;
 
 let caseId: string = '1790352478349308';
 let pageHelper: PageHelper;
@@ -188,6 +191,16 @@ test.beforeAll(async ({}) => {
   expect(
     Number(noOfExperts),
     `Invalid EXPERTS value: ${noOfExperts}. It must be >= 0.`,
+  ).toBeGreaterThanOrEqual(0);
+
+  expect(
+    noOfWitnesses,
+    `Invalid WITNESSES value: ${noOfWitnesses}. It must be an integer.`,
+  ).toMatch(/^\d+$/);
+
+  expect(
+    Number(noOfWitnesses),
+    `Invalid WITNESSES value: ${noOfWitnesses}. It must be >= 0.`,
   ).toBeGreaterThanOrEqual(0);
 });
 
@@ -411,6 +424,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         fixedRecoveryCostsBand,
         yesNo.YES,
         Number(noOfExperts),
+        Number(noOfWitnesses),
+        language,
       );
     });
   });
