@@ -6,6 +6,7 @@ import {
 import {IdamPage} from '../e2e/page-objects/pages/idam.po';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import claimTypes from '../enums/claim-types.ts';
+import { SessionUtils } from '../e2e/utils/session.utils.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -19,22 +20,32 @@ const caseList: string = 'Case list'
 const claimantSolicitorAuthFile = "./dr-playwright/e2e/.auth/ClaimantSolicitorUser.json";
 const respondent1SolicitorAuthFile = "./dr-playwright/e2e/.auth/Respondent1SolicitorUser.json";
 const respondent2SolicitorAuthFile = "./dr-playwright/e2e/.auth/Respondent2SolicitorUser.json";
+const authCookieName = "__auth__";
+const tokenValidityBufferSeconds = 60 * 60;
 
 let idamPage: IdamPage;
 
 test.beforeEach(async ({ page }) => {
-    // Go to the starting url before each test.
     idamPage = new IdamPage(page);
-    await page.goto(envUrl);
 });
 
   setup("Authenticate Claimant Solicitor", async ({ page }) => {
+    setup.skip(
+      SessionUtils.isSessionValid(claimantSolicitorAuthFile, authCookieName, tokenValidityBufferSeconds),
+      "Reusing existing valid session"
+    );
+    await page.goto(envUrl);
     await idamPage.login(claimantSolicitorCredentials);
     await expect(page.locator(caseListLocator)).toContainText(caseList);
     await page.context().storageState({ path: claimantSolicitorAuthFile });
   });
 
   setup("Authenticate Respondent1 Solicitor", async ({ page }) => {
+    setup.skip(
+      SessionUtils.isSessionValid(respondent1SolicitorAuthFile, authCookieName, tokenValidityBufferSeconds),
+      "Reusing existing valid session"
+    );
+    await page.goto(envUrl);
     await idamPage.login(respondent1SolicitorCredentials);
     await expect(page.locator(caseListLocator)).toContainText(caseList);
     await page.context().storageState({ path: respondent1SolicitorAuthFile });
@@ -42,6 +53,11 @@ test.beforeEach(async ({ page }) => {
 
   if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
     setup("Authenticate Respondent2 Solicitor", async ({ page }) => {
+      setup.skip(
+        SessionUtils.isSessionValid(respondent2SolicitorAuthFile, authCookieName, tokenValidityBufferSeconds),
+        "Reusing existing valid session"
+      );
+      await page.goto(envUrl);
       await idamPage.login(respondent2SolicitorCredentials);
       await expect(page.locator(caseListLocator)).toContainText(caseList);
       await page.context().storageState({ path: respondent2SolicitorAuthFile });

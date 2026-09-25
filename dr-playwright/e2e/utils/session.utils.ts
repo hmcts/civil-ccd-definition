@@ -16,16 +16,22 @@ export class SessionUtils {
   }
 
   /**
-   * Opens a new browser context and returns the page
+   * Checks whether a saved storage state file still holds a valid (non-expired) session.
    *
-   * @param path {@link string} - path of the session file
-   * @param cookieName {@link string} - name of the cookie used for session validation
+   * IDAM/XUI's auth cookie is a session cookie (`expires: -1` in the storage state file),
+   * so browser-level cookie expiry can't be used. Instead this decodes the `exp` claim
+   * from the cookie's JWT value.
+   *
+   * @param path {@link string} - path of the storage state file
+   * @param cookieName {@link string} - name of the cookie holding the JWT access token
+   * @param bufferSeconds {@link number} - minimum number of seconds the token must still have left to be considered valid
    *
    */
-  public static isSessionValid(path: string, cookieName: string): boolean {
-    // consider the cookie valid if there's at least 2 hours left on the session
-    const expiryTime = 2 * 60 * 60 * 1000;
-
+  public static isSessionValid(
+    path: string,
+    cookieName: string,
+    bufferSeconds: number = 60 * 60
+  ): boolean {
     // In the case the file doesn't exist, it should attempt to login
     if (!fs.existsSync(path)) return false;
 
@@ -34,10 +40,16 @@ export class SessionUtils {
       const cookie = data.cookies.find(
         (cookie: Cookie) => cookie.name === cookieName
       );
-      const expiry = new Date(cookie.expires * 1000);
-      return expiry.getTime() - Date.now() > expiryTime;
-    } catch (error) {
-      throw new Error(`Could not read session data: ${error} for ${path}`);
+      if (!cookie) return false;
+
+      const payload = cookie.value.split(".")[1];
+      const decoded = JSON.parse(Buffer.from(payload, "base64url").toString("utf-8"));
+      const expiryMs = decoded.exp * 1000;
+
+      return expiryMs - Date.now() > bufferSeconds * 1000;
+    } catch {
+      // Any parsing failure means the cached session can't be trusted - force a fresh login
+      return false;
     }
   }
 }
