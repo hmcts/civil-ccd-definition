@@ -159,12 +159,10 @@ const preActionProtocol: YesNo = ['Yes'].includes(process.env.ONE_MONTH_STAY)
   ? yesNo.YES
   : yesNo.NO;
 
-let track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(
-  process.env.TRACK,
-)
-  ? (process.env.TRACK as claimTrack)
-  : claimTrack.FAST;
-let caseId: string = '';
+let track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? (process.env.TRACK as claimTrack) : claimTrack.FAST;
+const noOfExperts: string = process.env.EXPERTS ?? '0';
+
+let caseId: string = '1790352478349308';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -181,6 +179,16 @@ test.beforeAll(async ({}) => {
       `Invalid claim track: ${track} used for type: ${typeOfClaim} and sub type: ${typeOfClaimSubType} combination. Either do not specify a track or set the track to FAST_CLAIM.`,
     ).toEqual(claimTrack.FAST);
   }
+
+  expect(
+    noOfExperts,
+    `Invalid EXPERTS value: ${noOfExperts}. It must be an integer.`,
+  ).toMatch(/^\d+$/);
+
+  expect(
+    Number(noOfExperts),
+    `Invalid EXPERTS value: ${noOfExperts}. It must be >= 0.`,
+  ).toBeGreaterThanOrEqual(0);
 });
 
 test.beforeEach(async ({ page }) => {
@@ -385,9 +393,9 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     });
   });
 
-  test.describe('test6', { tag: '@unspecified' }, () => {
+  test.describe.only('test6', { tag: '@unspecified' }, () => {
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
-    test.skip('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
+    test('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
       test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
       console.log('>>>> ', fixedRecoveryCostsBand);
       await new RespondToClaim(page).submit(
@@ -401,6 +409,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         preActionProtocol,
         fixedRecoverableCosts,
         fixedRecoveryCostsBand,
+        yesNo.YES,
+        Number(noOfExperts),
       );
     });
   });

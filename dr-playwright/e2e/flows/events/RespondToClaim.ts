@@ -31,6 +31,7 @@ export class RespondToClaim {
     fixedRecoverableCosts: YesNo = YesNo.NO,
     fixedRecoverableCostsBand: FixedRecoveryCostsBands = FixedRecoveryCostsBands.BAND1,
     disclosure: YesNo = YesNo.YES,
+    noOfExperts: number = 0,
   ) {
     await this.pageHelper.selectNextStep('Respond to claim');
     await this.buttonHelper.continueButton.click(); // Confirm Details
@@ -100,11 +101,31 @@ export class RespondToClaim {
     await this.buttonHelper.continueButton.click();
 
     await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_${disclosure}`).click();
-    if (fixedRecoverableCosts === YesNo.YES) {
+    if (disclosure === YesNo.YES) {
       await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`).click();
-      await this.page.locator(`respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_bespokeDirections`).fill('Bespoke directions text.');
+      await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_bespokeDirections`).fill('Bespoke directions text.');
     }
 
     await this.buttonHelper.continueButton.click();
+
+    const expertRequired = noOfExperts >= 1 ? YesNo.YES : YesNo.NO;
+    await this.page.locator(`#respondent${defendantNumber}DQExperts_expertRequired_${expertRequired}`).click();
+    if (expertRequired === YesNo.YES) {
+      await this.page.locator(`#respondent${defendantNumber}DQExperts_expertReportsSent-YES`).click();
+      await this.page.locator(`#respondent${defendantNumber}DQExperts_jointExpertSuitable_No`).click();
+
+      for (let i = 0; i < noOfExperts; i++) {
+        await this.buttonHelper.addNewButton.first().click();
+        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_firstName`).fill(`Expert${i + 1}Firstname`);
+        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_lastName`).fill(`Expert${i + 1}Lastname`);
+        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_emailAddress`).fill(`expert${i + 1}@example.com`);
+        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_phoneNumber`).fill('07700900000');
+        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_fieldOfExpertise`).fill(`Expert${i + 1}: Test field of expertise`);
+        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_whyRequired`).fill(`Expert${i + 1}: Test reason why this expert is required.`);
+        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_estimatedCost`).fill('500');
+      }
+    }
+    await this.buttonHelper.continueButton.click();
+
   }
 }
