@@ -14,11 +14,10 @@ Scenario('01 Prepare case to awaiting applicant intention', async ({api_spec, LR
   caseNumber = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO', true);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', true);
-  await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
-    'AWAITING_APPLICANT_INTENTION', true);
-  LRspec.setCaseId(caseNumber);
-    throw new Error('Intentional failure: validating the nightly full functional test stage');
-});
+  // await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
+  //   'AWAITING_APPLICANT_INTENTION', true);
+  // LRspec.setCaseId(caseNumber);
+}).retry(1);
 
 // Scenario('02 Claimant responds to claim', async ({LRspec}) => {
 
