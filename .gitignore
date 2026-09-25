@@ -74,3 +74,9 @@ playwright-report/
 
 #AI
 AGENTS.md
+
+# Local tooling / generated output
+.playwright-mcp/
+allure-functional-results/
+bin/shared/
+dr-playwright/debug-*.png
