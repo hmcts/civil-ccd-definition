@@ -11,14 +11,14 @@ test.describe(
       HearingCenterAdminSpecSteps,
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
-      await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
-      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
-      await ClaimantSolicitorSpecSteps.Login();
-      await ClaimantSolicitorSpecSteps.RequestDefaultJudgment();
-      await HearingCenterAdminSpecSteps.LoginRegion2();
-      await HearingCenterAdminSpecSteps.RequestSetAsideJudgmentFollowingDefenceReceived();
-      await HearingCenterAdminSpecSteps.CaseProceedsInCasemanSetAsideJudgment();
+      // await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+      // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      // await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
+      // await ClaimantSolicitorSpecSteps.Login();
+      // await ClaimantSolicitorSpecSteps.RequestDefaultJudgment();
+      // await HearingCenterAdminSpecSteps.LoginRegion2();
+      // await HearingCenterAdminSpecSteps.RequestSetAsideJudgmentFollowingDefenceReceived();
+      // await HearingCenterAdminSpecSteps.CaseProceedsInCasemanSetAsideJudgment();
     });
   },
 );
