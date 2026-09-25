@@ -31,7 +31,7 @@ Scenario('01 Create LRvLiP spec claim, LR claimant requests DJ - case parks in J
   await api_spec_cui.verifyCaseState('AWAITING_RESPONDENT_ACKNOWLEDGEMENT'); // pre-DJ precondition state
 
   await I.login(config.applicantSolicitorUser);
-  await I.initiateDJSpec(caseid, 'ONE_V_ONE', 'UNSPEC', 'Default judgment requested');
+  await I.initiateDJSpecAA(caseid, 'ONE_V_ONE', 'UNSPEC', 'Default judgment requested');
 
   await api_spec_cui.verifyCaseState('JUDGMENT_REQUESTED');
   await api_spec_cui.verifyBufferStateInitialFields();

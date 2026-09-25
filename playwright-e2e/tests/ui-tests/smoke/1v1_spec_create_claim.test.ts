@@ -5,7 +5,7 @@ test.describe('Smoke test - 1v1 spec create claim', { tag: '@civil-ccd-master-pr
     ClaimantSolicitorSpecApiSteps,
     ClaimantSolicitorSpecSteps
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1a();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.NavigateToCaseDetails();
   });
