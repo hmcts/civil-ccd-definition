@@ -325,6 +325,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "storedBreathingSpace",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breathingSpaceDefendant1Details",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breathingSpaceDefendant2Details",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "specDefenceRouteUploadDocumentLabel3",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
