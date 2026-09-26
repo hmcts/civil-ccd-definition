@@ -75,11 +75,11 @@ export default defineConfig({
       testMatch: '**playwright-e2e/tests/bootstrap/case-role-assignment/**.teardown.ts',
     },
     {
-      name: 'civil-ccd-smoke',
+      name: 'civil-ccd-master-pr-smoke',
       outputDir: config.playwright.smokeTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
-      grep: /@civil-ccd-smoke/,
+      grep: /@civil-ccd-master-pr-smoke/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -99,6 +99,12 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
+      name: 'civil-ccd-nightly-smoke',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      grep: /@civil-ccd-master-pr-smoke/,
+    },
+    {
       name: 'civil-ccd-nightly',
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
@@ -107,11 +113,11 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
-      name: 'civil-service-smoke',
+      name: 'civil-service-master-pr-smoke',
       outputDir: config.playwright.smokeTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
-      grep: /@civil-service-smoke/,
+      grep: /@civil-service-master-pr-smoke/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -131,6 +137,12 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
+      name: 'civil-service-nightly-smoke',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      grep: /@civil-service-nightly-smoke/,
+    },
+    {
       name: 'civil-service-nightly',
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
@@ -139,11 +151,11 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
-      name: 'civil-wa-smoke',
+      name: 'civil-wa-master-pr-smoke',
       outputDir: config.playwright.smokeTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
-      grep: /@civil-wa-smoke/,
+      grep: /@civil-wa-master-pr-smoke/,
       teardown: 'case-role-assignment-teardown',
     },
     {
