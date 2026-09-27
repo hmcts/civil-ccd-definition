@@ -1,10 +1,11 @@
+import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 
 test.describe(
   'GA 1v2 application collection for different solicitor API tests',
   { tag: ['@civil-service-nightly', '@api-ga-collections'] },
   () => {
-    test.fail('GA 1v2 - Without Notice Application Collection After Judge Makes Decision List for Hearing', { tag: ['@civil-service-master', '@civil-service-pr'] }, async ({
+    test('GA 1v2 - Without Notice Application Collection After Judge Makes Decision List for Hearing', { tag: ['@civil-service-master', '@civil-service-pr'] }, async ({
       ClaimantSolicitorApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
@@ -12,6 +13,7 @@ test.describe(
       ClaimantSolicitorGaApiSteps,
       JudgeGaApiSteps,
     }) => {
+      test.fail(config.zodValidationEnabled);
       await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();

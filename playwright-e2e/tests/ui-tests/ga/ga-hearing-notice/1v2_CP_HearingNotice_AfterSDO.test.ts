@@ -1,10 +1,11 @@
+import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 
 test.describe(
   'After SDO 1v2 - GA CP - Hearing Notice document',
   { tag: ['@civil-ccd-nightly', '@ui-ga-hearing-notice', '@civil-ccd-master', '@civil-ccd-pr'] },
   () => {
-    test.fail(
+    test(
       'Claimant Hearing notice - Without notice journey',
       async ({
         ClaimantSolicitorApiSteps,
@@ -15,6 +16,7 @@ test.describe(
         JudgeGaApiSteps,
         HearingCenterAdminGaSteps,
       }) => {
+        test.fail(config.zodValidationEnabled);
         await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
         await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
         await ClaimantSolicitorApiSteps.NotifyClaim();

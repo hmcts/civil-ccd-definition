@@ -157,8 +157,14 @@ export default class DateHelper {
     return dateString!;
   }
 
-  private static isAfter4pm(date: Date) {
-    return date.getHours() >= 16;
+  private static isAfter4pm(date: Date): boolean {
+    const hour = Number(new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+      hour: '2-digit',
+      hour12: false,
+    }).formatToParts(date).find((part) => part.type === 'hour')?.value);
+
+    return hour >= 16;
   }
 
   private static isWeekend(date: Date): boolean {
