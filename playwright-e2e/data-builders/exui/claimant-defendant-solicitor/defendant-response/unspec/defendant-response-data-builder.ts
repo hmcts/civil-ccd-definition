@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DefendantResponseOptions from '../../../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
 import defendantResponseDataComponents from './defendant-response-data-components';
 
-@AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
+@AllMethodsStep()
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
   async buildData({
     claimType,

@@ -10,7 +10,7 @@ import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defe
 import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
 import DefendantResponseSpecOptions from '../../../../../models/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-options';
 
-@AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
+@AllMethodsStep()
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
   async buildData({
     claimType = ClaimType.ONE_VS_ONE,

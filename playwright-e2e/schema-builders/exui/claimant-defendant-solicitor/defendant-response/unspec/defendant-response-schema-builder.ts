@@ -7,7 +7,7 @@ import defendantResponseSchemaComponents from './defendant-response-schema-compo
 import partys from '../../../../../constants/users/partys';
 import DefendantResponseOptions from '../../../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
 
-@AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
+@AllMethodsStep()
 export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
   async buildSchema(
     caseDataBeforeSubmission: CCDCaseData | undefined,

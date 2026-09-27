@@ -13,7 +13,7 @@ import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/def
 import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
 import DefendantResponseSpecOptions from '../../../../../models/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-options';
 
-@AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
+@AllMethodsStep()
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
   async buildSchema(
     caseDataBeforeSubmission: CCDCaseData | undefined,
