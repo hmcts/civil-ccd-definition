@@ -1,33 +1,31 @@
+import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 
 test.describe(
   'GA 1v2 application collection for different solicitor API tests',
   { tag: ['@civil-service-nightly', '@api-ga-collections'] },
   () => {
-    test.fail(
-      'GA 1v2 - Without Notice Application Collection After Judge Makes Decision List for Hearing',
-      { tag: ['@civil-service-master', '@civil-service-pr'] },
-      async ({
-        ClaimantSolicitorApiSteps,
-        CaseRoleAssignmentApiSteps,
-        DefendantSolicitor1ApiSteps,
-        DefendantSolicitor2ApiSteps,
-        ClaimantSolicitorGaApiSteps,
-        JudgeGaApiSteps,
-      }) => {
-        await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
-        await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-        await ClaimantSolicitorApiSteps.NotifyClaim();
-        await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-        await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-        await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-        await DefendantSolicitor1ApiSteps.DefendantResponse();
+    test('GA 1v2 - Without Notice Application Collection After Judge Makes Decision List for Hearing', { tag: ['@civil-service-master', '@civil-service-pr'] }, async ({
+      ClaimantSolicitorApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1ApiSteps,
+      DefendantSolicitor2ApiSteps,
+      ClaimantSolicitorGaApiSteps,
+      JudgeGaApiSteps,
+    }) => {
+      test.fail(config.zodValidationEnabled);
+      await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
+      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.DefendantResponse();
         await DefendantSolicitor2ApiSteps.DefendantResponse();
-        await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
-        await ClaimantSolicitorApiSteps.InitiateGA();
-        await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();
-        await JudgeGaApiSteps.MakeADecisionListHearing();
-      },
-    );
+      await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
+      await ClaimantSolicitorApiSteps.InitiateGA();
+      await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();
+      await JudgeGaApiSteps.MakeADecisionListHearing();
+    });
   },
 );
