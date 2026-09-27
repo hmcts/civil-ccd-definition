@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
 
-test.describe('2v1 spec full defence api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('2v1 spec full defence api journey', { tag: ['@civil-service-nightly', '@api-spec-full-defence'] }, async () => {
   test('2v1 spec full defence', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

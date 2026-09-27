@@ -30,19 +30,19 @@ export default defineConfig({
   projects: [
     {
       name: 'data-setup',
-      outputDir: './playwright-bootstrap-test-results/data-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/data-setup`,
       testMatch: '**playwright-e2e/tests/bootstrap/data/**.setup.ts',
       retries: 0,
     },
     {
       name: 'exui-users-data-setup',
-      outputDir: './playwright-bootstrap-test-results/exui-users-data-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/exui-users-data-setup`,
       testMatch: '**playwright-e2e/tests/bootstrap/users-data/exui-users-data.setup.ts',
       retries: 0,
     },
     {
       name: 'cui-users-setup',
-      outputDir: './playwright-bootstrap-test-results/cui-users-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/cui-users-setup`,
       testMatch: '**playwright-e2e/tests/bootstrap/users/cui-users.setup.ts',
       dependencies: ['exui-users-data-setup'],
       teardown: 'cui-users-teardown',
@@ -50,36 +50,53 @@ export default defineConfig({
     },
     {
       name: 'cui-users-data-setup',
-      outputDir: './playwright-bootstrap-test-results/cui-users-data-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/cui-users-data-setup`,
       testMatch: '**playwright-e2e/tests/bootstrap/users-data/cui-users-data.setup.ts',
       dependencies: ['cui-users-setup'],
       retries: 0,
     },
     {
       name: 'exui-users-auth-setup',
-      outputDir: './playwright-bootstrap-test-results/exui-users-auth-setup',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/exui-users-auth-setup`,
       use: { ...devices['Desktop Chrome'] },
       testMatch: '**playwright-e2e/tests/bootstrap/auth/exui-users-auth.setup.ts',
       dependencies: ['exui-users-data-setup'],
-      teardown: 'exui-users-auth-teardown',
     },
     {
       name: 'cui-users-teardown',
-      outputDir: './playwright-bootstrap-test-results/cui-users-teardown',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/cui-users-teardown`,
       testMatch: '**playwright-e2e/tests/bootstrap/users/cui-users.teardown.ts',
       retries: 0,
     },
     {
-      name: 'exui-users-auth-teardown',
-      outputDir: './playwright-bootstrap-test-results/exui-users-auth-teardown',
-      use: { ...devices['Desktop Chrome'] },
-      testMatch: '**playwright-e2e/tests/bootstrap/auth/exui-users-auth.teardown.ts',
-    },
-    {
       name: 'case-role-assignment-teardown',
-      outputDir: './playwright-bootstrap-test-results/case-role-assignment-teardown',
+      outputDir: `${config.playwright.bootstrapTestResultsDir}/case-role-assignment-teardown`,
       use: { ...devices['Desktop Chrome'] },
       testMatch: '**playwright-e2e/tests/bootstrap/case-role-assignment/**.teardown.ts',
+    },
+    {
+      name: 'civil-ccd-smoke',
+      outputDir: config.playwright.smokeTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
+      grep: /@civil-ccd-smoke/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-ccd-pr',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
+      grep: process.env.PLAYWRIGHT_PR_FT_GROUPS ? undefined : /@civil-ccd-pr/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-ccd-master',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
+      grep: /@civil-ccd-master/,
+      teardown: 'case-role-assignment-teardown',
     },
     {
       name: 'civil-ccd-nightly',
@@ -87,6 +104,30 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
       grep: /@civil-ccd-nightly/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-service-smoke',
+      outputDir: config.playwright.smokeTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      grep: /@civil-service-smoke/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-service-pr',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      grep: process.env.PLAYWRIGHT_PR_FT_GROUPS ? undefined : /@civil-service-pr/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-service-master',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      grep: /@civil-service-master/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -98,11 +139,34 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
-      name: 'debug',
-      outputDir: `${config.playwright.functionalTestResultsDir}/debug`,
+      name: 'civil-wa-smoke',
+      outputDir: config.playwright.smokeTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
-      grep: /@debug/,
+      grep: /@civil-wa-smoke/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-wa-pr',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      grep: process.env.PLAYWRIGHT_PR_FT_GROUPS ? undefined : /@civil-wa-pr/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'civil-wa-master',
+      outputDir: config.playwright.functionalTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      grep: /@civil-wa-master/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
+      name: 'functional-tests',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      teardown: 'case-role-assignment-teardown',
     },
   ],
 });
@@ -118,20 +182,34 @@ function getReporter(): any {
         OS: os.platform(),
         Architecture: os.arch(),
         NodeVersion: process.version,
+        ftGroups: process.env.PLAYWRIGHT_PR_FT_GROUPS ? process.env.PLAYWRIGHT_PR_FT_GROUPS : 'None',
+        gitCommit: process.env.GIT_COMMIT ? process.env.GIT_COMMIT : 'None',
       },
       detail: false,
     },
   ];
 
   const failedAndNotExecutedTestFilesReporter = ['./playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts'];
+  const junitReporter = process.env.PLAYWRIGHT_JUNIT_OUTPUT_FILE
+    ? [['junit', { outputFile: process.env.PLAYWRIGHT_JUNIT_OUTPUT_FILE }]]
+    : [];
   
   if (process.env.CI && process.env.PLAYWRIGHT_FUNCTIONAL) {
     return [
       allurePlaywright('playwright-allure-functional-results'),
       failedAndNotExecutedTestFilesReporter,
+      ...junitReporter,
+    ];
+  } else if (process.env.CI && process.env.PLAYWRIGHT_SMOKE) {
+    return [
+      allurePlaywright('playwright-allure-functional-results'),
+      ...junitReporter,
     ];
   } else if (process.env.CI)  {
-    return [allurePlaywright('playwright-allure-bootstrap-results')];
+    return [
+      allurePlaywright('playwright-allure-bootstrap-results'),
+      ...junitReporter,
+    ];
   }
   return 'list';
 }

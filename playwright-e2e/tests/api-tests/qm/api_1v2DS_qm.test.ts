@@ -4,7 +4,7 @@ import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2 different solicitor query management api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-qm', '@civil-wa-master', '@civil-wa-pr'] },
   async () => {
     test('1v2DS full defence defendant and claimant response', async ({
       ClaimantSolicitorApiSteps,

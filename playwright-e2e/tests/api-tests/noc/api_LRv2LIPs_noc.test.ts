@@ -1,3 +1,4 @@
+import config from '../../../config/config';
 import { test } from '../../../playwright-fixtures/index';
 import ClaimType from '../../../constants/cases/claim-type';
 

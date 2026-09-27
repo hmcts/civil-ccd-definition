@@ -4,7 +4,7 @@ import ClaimTypeUnspec from '../../../constants/ccd-events/ccd-events/create-cla
 
 test.describe(
   '1v1 unspec full defence api journey for Other Remedy claim type fast track',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-other-remedy'] },
   async () => {
     test('1v1 unspec fast other remedy', async ({
       ClaimantSolicitorApiSteps,

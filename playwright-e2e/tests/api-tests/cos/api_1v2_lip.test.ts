@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimType from '../../../constants/cases/claim-type';
 
-test.describe('Unspec 1v2lips api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('Unspec 1v2lips api journey', { tag: ['@civil-service-nightly', '@api-cos'] }, async () => {
   test('Create claim where one respondent is LIP one is LR and notify/notify details', async ({
     ClaimantSolicitorApiSteps,
   }) => {

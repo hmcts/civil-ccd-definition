@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
 
-test.describe('2v1 default judgement api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('2v1 default judgement api journey', { tag: ['@civil-service-nightly', '@api-dj'] }, async () => {
   test('2v1 default judgement api', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,

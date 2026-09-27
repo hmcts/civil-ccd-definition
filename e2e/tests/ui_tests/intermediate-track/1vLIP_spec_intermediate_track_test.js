@@ -8,7 +8,7 @@ const config = require('../../../config.js');
 const { createAccount, deleteCitizenAccount } = require('../../../api/idamHelper');
 const intermediateTrackClaimAmount = '99000';
 
-Feature('1vLIP spec multi track journey').tag('@civil-ccd-nightly @ui-intermediate-track');
+Feature('1vLIP spec multi track journey').tag('@ui-intermediate-track');
 
 Scenario('1vLIP spec multi track', async ({api_spec_cui, I}) => {
   const mpScenario = 'ONE_V_ONE';

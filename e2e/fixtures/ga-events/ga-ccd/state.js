@@ -17,7 +17,7 @@ module.exports = {
   },
   LISTING_FOR_A_HEARING: {
     id: 'LISTING_FOR_A_HEARING',
-    name: 'Listed for a Hearing'
+    name: 'List for hearing'
   },
   AWAITING_WRITTEN_REPRESENTATIONS: {
     id: 'AWAITING_WRITTEN_REPRESENTATIONS',

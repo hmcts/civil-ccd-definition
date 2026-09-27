@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 
 test.describe(
   '1v1 create fast claim - request and processing of refunds',
-  { tag: '@civil-ccd-nightly' },
+  { tag: ['@civil-ccd-nightly', '@ui-refunds'] },
   () => {
     test('request and approve a returned refund', async ({
       ClaimantSolicitorApiSteps,

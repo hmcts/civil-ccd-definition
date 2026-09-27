@@ -4,7 +4,7 @@ import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '2v1 unspec full defence api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-unspec-full-defence'] },
   async () => {
     test('2v1 unspec full defence', async ({
       ClaimantSolicitorApiSteps,

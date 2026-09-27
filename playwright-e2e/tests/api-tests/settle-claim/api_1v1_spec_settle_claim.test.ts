@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
 
-test.describe('1v1 settle claim spec api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('1v1 settle claim spec api journey', { tag: ['@civil-service-nightly', '@api-settle-claim'] }, async () => {
   test('1v1 settle claim spec', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

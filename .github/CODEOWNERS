@@ -30,4 +30,7 @@ gradlew
 gradlew.bat
 package.json
 yarn.lock
-
+charts/**/Chart.yaml
+Dockerfile
+.github/workflows/*.yaml
+.github/workflows/*.yml

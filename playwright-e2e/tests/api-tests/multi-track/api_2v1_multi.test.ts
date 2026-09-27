@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
 
-test.describe('2v1 unspec multi track journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('2v1 unspec multi track journey', { tag: ['@civil-service-nightly', '@api-multi-track', '@civil-service-master', '@civil-service-pr'] }, async () => {
   test('2v1 unspec multi track claim', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,

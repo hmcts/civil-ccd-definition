@@ -5,7 +5,7 @@ import PersonalInjuryType from '../../../constants/ccd-events/ccd-events/create-
 
 test.describe(
   'Noise Induced Hearing Loss API test - fast claim - unspec',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-nihl'] },
   async () => {
     test('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({
       ClaimantSolicitorApiSteps,

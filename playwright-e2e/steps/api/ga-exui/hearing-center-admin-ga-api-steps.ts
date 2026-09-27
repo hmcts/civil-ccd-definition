@@ -41,8 +41,10 @@ export default class HearingCenterAdminGaApiSteps extends BaseApi {
       {expectedState: GaCaseState.HEARING_SCHEDULED},
     );
 
-    const { hearingScheduledGaSchemaBuilder } = this.hearingCenterAdminGaSchemaBuilderFactory;
-    const hearingScheduledGaSchema = await hearingScheduledGaSchemaBuilder.build(gaCaseDataBeforeSubmission);
-    ZodHelper.safeParse(hearingScheduledGaSchema, this.getGaCCDCaseData());
+    await this.runZodValidation(async () => {
+      const { hearingScheduledGaSchemaBuilder } = this.hearingCenterAdminGaSchemaBuilderFactory;
+      const hearingScheduledGaSchema = await hearingScheduledGaSchemaBuilder.build(gaCaseDataBeforeSubmission);
+      ZodHelper.safeParse(hearingScheduledGaSchema, this.getGaCCDCaseData());
+    });
   }
 }

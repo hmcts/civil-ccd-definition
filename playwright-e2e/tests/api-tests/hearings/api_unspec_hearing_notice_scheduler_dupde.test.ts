@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
 
-test.describe('Unspec automated hearing notice scheduler - duplicate detection', async () => {
+test.describe('Unspec automated hearing notice scheduler - duplicate detection', { tag: ['@api-hearings', '@civil-service-pr'] }, async () => {
   test('Create Unspec claim with SDO', async ({
     HearingsApiSteps,
     ClaimantSolicitorApiSteps,

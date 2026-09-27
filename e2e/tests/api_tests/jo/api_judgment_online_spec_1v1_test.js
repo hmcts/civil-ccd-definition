@@ -8,7 +8,7 @@ const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('1v1 spec record judgment api test').tag('@civil-service-nightly');
+Feature('1v1 spec record judgment api test');
 
 // DTSCCI-5198 SMOKE: keep one JO API chain (DJ + paid in full + set aside).
 // Individual handlers are covered in civil-service integration tests.

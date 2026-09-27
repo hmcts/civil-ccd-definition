@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
 
-test.describe('2v1 query management api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('2v1 query management api journey', { tag: ['@civil-service-nightly', '@api-qm'] }, async () => {
   test('2v1 defendant and claimant response', async ({
     ClaimantSolicitorApiSteps,
     CtscAdminApiSteps,

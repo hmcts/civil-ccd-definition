@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
 
-test.describe('1v2DS stay case api journey', { tag: '@civil-service-nightly' }, async () => {
+test.describe('1v2DS stay case api journey', { tag: ['@civil-service-nightly', '@api-stay-case'] }, async () => {
   test('1v2DS Stay Case Judicial Referral', async ({
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,

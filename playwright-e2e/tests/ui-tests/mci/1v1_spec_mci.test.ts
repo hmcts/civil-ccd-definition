@@ -1,6 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 Spec - Manage Contact Information', async () => {
+test.describe('1v1 Spec - Manage Contact Information', { tag: '@ui-mci' }, async () => {
   test('1v1 Spec - Manage Contact Information', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

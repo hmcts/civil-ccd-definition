@@ -3,7 +3,7 @@ import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 fast case progression api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-case-progression'] },
   async () => {
     test('1v1 full defence unspecified - judge draws fast track WITH sum of damages (fast track - trail) - hearing scheduled', async ({
       ClaimantSolicitorApiSteps,

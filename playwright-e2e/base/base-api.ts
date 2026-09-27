@@ -484,4 +484,10 @@ export default abstract class BaseApi extends BaseTestData {
   private getStubUrl(stub: Record<string, any>) {
     return stub.request.url || stub.request.urlPath || stub.request.urlPathPattern;
   }
+
+  protected async runZodValidation(zodValidation: () => Promise<void>) {
+    if(config.zodValidationEnabled) {
+      await zodValidation();
+    }
+  }
 }

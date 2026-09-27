@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
 
-test.describe('Unspec automated hearing notice schedulers', async () => {
+test.describe('Unspec automated hearing notice schedulers', { tag: '@api-hearings' }, async () => {
   test('Prepare unspec claim up to SDO', async ({
     HearingsApiSteps,
     ClaimantSolicitorApiSteps,

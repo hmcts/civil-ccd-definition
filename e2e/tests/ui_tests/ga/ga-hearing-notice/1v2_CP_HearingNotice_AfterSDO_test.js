@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let civilCaseReference, gaCaseReference;
 
 Feature('After SDO 1v2 - GA CP - Hearing Notice document')
-  .tag('@civil-ccd-master @civil-ccd-pr @civil-ccd-nightly @ui-ga-hearing-notice');
+  .tag('@civil-ccd-master @civil-ccd-pr @ui-ga-hearing-notice');
 
 Scenario('Claimant Hearing notice - Without notice journey', async ({ api_ga, I }) => {
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser,
@@ -34,6 +34,13 @@ Scenario('Claimant Hearing notice - Without notice journey', async ({ api_ga, I 
 
   await I.navigateToApplicationsTab(civilCaseReference);
   await I.see(states.LISTING_FOR_A_HEARING.name);
+
+  await I.navigateToCaseDetails(gaCaseReference);
+  const scheduleHearingOption = '//select[@id="next-step"]/option[normalize-space(.)="Schedule hearing"]';
+  await I.waitForVisible('#next-step', 30);
+  await I.waitForElement(scheduleHearingOption, 30);
+  await I.seeTextEquals('Schedule hearing', scheduleHearingOption);
+
   await I.navigateToHearingNoticePage(gaCaseReference);
   await I.fillHearingNotice(gaCaseReference, 'claimant', 'default', 'IN_PERSON');
   await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, states.HEARING_SCHEDULED.id, config.hearingCenterAdminWithRegionId2);
