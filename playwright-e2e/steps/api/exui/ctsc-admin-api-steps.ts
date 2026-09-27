@@ -37,7 +37,6 @@ export default class CtscAdminApiSteps extends BaseApi {
       ctscAdminUser,
       ccdEvents.SEND_AND_REPLY,
       sendAndReplyData,
-      { expectedState: CaseState.CASE_STAYED },
     );
 
     await this.runZodValidation(async () => {

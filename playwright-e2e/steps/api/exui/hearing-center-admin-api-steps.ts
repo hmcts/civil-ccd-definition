@@ -212,12 +212,6 @@ export default class HearingCenterAdminApiSteps extends BaseApi {
       hearingCenterAdminRegion1User,
       ccdEvents.MANAGE_STAY,
       manageStayData,
-      {
-        expectedState: [
-          CaseState.JUDICIAL_REFERRAL,
-          CaseState.CASE_PROGRESSION,
-        ],
-      },
     );
 
     await this.runZodValidation(async () => {

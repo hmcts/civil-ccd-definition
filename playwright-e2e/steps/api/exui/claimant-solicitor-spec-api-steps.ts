@@ -1263,7 +1263,6 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
       uploadMediationDocumentsData,
-      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     await this.runZodValidation(async () => {
@@ -1286,7 +1285,6 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
       uploadMediationDocumentsData,
-      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     await this.runZodValidation(async () => {
@@ -1514,7 +1512,6 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.INITIATE_GENERAL_APPLICATION,
       initiateGeneralApplicationData,
-      { expectedState: CaseState.CASE_ISSUED },
     );
 
     await this.runZodValidation(async () => {

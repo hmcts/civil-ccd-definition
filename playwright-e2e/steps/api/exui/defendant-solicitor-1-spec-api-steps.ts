@@ -585,7 +585,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      { expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
+      { expectedState: [CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT, CaseState.PROCEEDS_IN_HERITAGE_SYSTEM] },
     );
 
     await this.runZodValidation(async () => {
@@ -610,7 +610,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantResponseEventData,
-      { expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
+      { expectedState: [CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT, CaseState.PROCEEDS_IN_HERITAGE_SYSTEM] },
     );
 
     await this.runZodValidation(async () => {

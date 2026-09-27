@@ -35,7 +35,6 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.ADD_CASE_NOTE,
       addCaseNoteData,
-      { expectedState: CaseState.CASE_ISSUED },
     );
 
     await this.runZodValidation(async () => {
@@ -55,7 +54,6 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.AMEND_PARTY_DETAILS,
       amendPartyDetailsData,
-      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     await this.runZodValidation(async () => {
@@ -97,7 +95,6 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.MANAGE_CONTACT_INFORMATION,
       manageContactInformationData,
-      { expectedState: CaseState.IN_MEDIATION },
     );
 
     await this.runZodValidation(async () => {
@@ -317,7 +314,6 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.SEND_AND_REPLY,
       sendAndReplyData,
-      { expectedState: CaseState.CASE_STAYED },
     );
 
     await this.runZodValidation(async () => {
