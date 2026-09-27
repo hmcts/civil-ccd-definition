@@ -105,10 +105,6 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
       defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     };
 
-    const expectedState = [ClaimType.TWO_VS_ONE, ClaimType.ONE_VS_TWO_SAME_SOL].includes(claimType)
-      ? CaseState.AWAITING_APPLICANT_INTENTION
-      : [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT];
-
     await this.setupApiStep(defendantSolicitor2User);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
@@ -120,7 +116,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
       defendantSolicitor2User,
       ccdEvents.DEFENDANT_RESPONSE,
       defendantResponseEventData,
-      { expectedState },
+      { expectedState: [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT] },
     );
 
     await this.runZodValidation(async () => {
