@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v2 different solicitor unspec full defence api journey',
@@ -24,8 +25,8 @@ test.describe(
       await DefendantSolicitor2ApiSteps.AcknowledgeClaimFullDefence();
       await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
       await DefendantSolicitor2ApiSteps.InformAgreedExtensionDate();
-      await DefendantSolicitor1ApiSteps.DefendantResponse();
-      await DefendantSolicitor2ApiSteps.DefendantResponse();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+      await DefendantSolicitor2ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
     });
   },

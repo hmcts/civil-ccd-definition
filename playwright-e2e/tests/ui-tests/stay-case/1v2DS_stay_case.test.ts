@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe('1v2DS stay case journey', { tag: ['@civil-ccd-nightly', '@ui-stay-case'] }, () => {
   test('1v2DS stay case journey', async ({
@@ -15,8 +16,8 @@ test.describe('1v2DS stay case journey', { tag: ['@civil-ccd-nightly', '@ui-stay
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-    await DefendantSolicitor1ApiSteps.DefendantResponse();
-    await DefendantSolicitor2ApiSteps.DefendantResponse();
+    await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+    await DefendantSolicitor2ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
     await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
     await DefendantSolicitor2Steps.Login();
     await DefendantSolicitor2Steps.AddUnavailableDates();

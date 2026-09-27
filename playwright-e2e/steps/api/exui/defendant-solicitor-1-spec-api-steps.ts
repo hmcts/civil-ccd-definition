@@ -17,6 +17,7 @@ import DefendantResponseSpecOptions from '../../../models/ccd-events/ccd-events/
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
+import partys from '../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
@@ -76,13 +77,14 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
 
   async DefendantResponse(options: DefendantResponseSpecOptions = {}) {
     const responseOptions: DefendantResponseSpecOptions = {
-      claimTrack: ClaimTrack.FAST_CLAIM,
+      claimTrack: ClaimTrack.SMALL_CLAIM,
       claimType: ClaimType.ONE_VS_ONE,
       responseType: DefendantResponseSpecType.FULL_DEFENCE,
       defenceRoute: DefenceRouteSpec.DISPUTE,
       paymentType: PaymentTypeSpec.IMMEDIATELY,
       defenceAdmittedPartRoute: DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
       ...options,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_1,
     };
 
     const expectedState =
@@ -97,7 +99,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
 
     const { defendantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseSpecDataBuilder.buildDefendantResponseDS1(responseOptions);
+      await defendantResponseSpecDataBuilder.buildData(responseOptions);
 
     await super.submitCCDEvent(
       defendantSolicitor1User,
@@ -109,11 +111,10 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     await this.runZodValidation(async () => {
       const { defendantResponseSpecSchemaBuilder } =
         this.claimantDefendantSolicitorSchemaBuilderFactory;
-      const defendantResponseSchema =
-        await defendantResponseSpecSchemaBuilder.buildDefendantResponseDS1(
-          caseDataBeforeSubmission,
-          responseOptions,
-        );
+      const defendantResponseSchema = await defendantResponseSpecSchemaBuilder.buildSchema(
+        caseDataBeforeSubmission,
+        responseOptions,
+      );
       ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
     });
   }

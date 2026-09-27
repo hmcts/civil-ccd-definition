@@ -8,7 +8,6 @@ import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import defendantResponseSpecSchemaComponents from './defendant-response-spec-schema-components';
 import partys from '../../../../../constants/users/partys';
-import { Party } from '../../../../../models/users/partys';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
 import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
@@ -16,64 +15,17 @@ import DefendantResponseSpecOptions from '../../../../../models/ccd-events/ccd-e
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {
-  async buildDefendantResponseDS1(
-    caseDataBeforeSubmission: CCDCaseData | undefined,
-    options: DefendantResponseSpecOptions = {},
-  ) {
-    return this.buildDefendantResponse(
-      caseDataBeforeSubmission,
-      options,
-      partys.DEFENDANT_SOLICITOR_1,
-    );
-  }
-
-  async buildDefendantResponseDS2(
-    caseDataBeforeSubmission: CCDCaseData | undefined,
-    options: DefendantResponseSpecOptions = {},
-  ) {
-    return this.buildDefendantResponse(
-      caseDataBeforeSubmission,
-      options,
-      partys.DEFENDANT_SOLICITOR_2,
-    );
-  }
-
-  private async buildDefendantResponse(
-    caseDataBeforeSubmission: CCDCaseData | undefined,
-    options: DefendantResponseSpecOptions,
-    defendantSolicitorParty: Party,
-  ) {
-    return this.buildSchema(caseDataBeforeSubmission, {
-      claimTrack: options.claimTrack,
-      claimType: options.claimType,
-      responseType: options.responseType,
-      defenceRouteSpec: options.defenceRoute,
-      paymentTypeSpec: options.paymentType,
-      defenceAdmittedPartRoute: options.defenceAdmittedPartRoute,
-      defendantSolicitorParty,
-    });
-  }
-
-  protected async buildSchema(
+  async buildSchema(
     caseDataBeforeSubmission: CCDCaseData | undefined,
     {
       claimType = ClaimType.ONE_VS_ONE,
       claimTrack = ClaimTrack.SMALL_CLAIM,
       responseType = DefendantResponseSpecType.FULL_DEFENCE,
-      defenceRouteSpec = DefenceRouteSpec.DISPUTE,
-      paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY,
+      defenceRoute = DefenceRouteSpec.DISPUTE,
+      paymentType = PaymentTypeSpec.IMMEDIATELY,
       defenceAdmittedPartRoute = DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
       defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
-    }: {
-      caseDataBeforeSubmission?: CCDCaseData;
-      claimType?: ClaimType;
-      claimTrack?: ClaimTrack;
-      responseType?: DefendantResponseSpecType;
-      defenceRouteSpec?: DefenceRouteSpec;
-      paymentTypeSpec?: PaymentTypeSpec;
-      defenceAdmittedPartRoute?: DefenceAdmittedPartRouteSpec;
-      defendantSolicitorParty?: Party;
-    },
+    }: DefendantResponseSpecOptions = {},
   ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,
@@ -97,7 +49,7 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       ),
       defendantResponseSpecSchemaComponents.defenceRoute(
         responseType,
-        defenceRouteSpec,
+        defenceRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defenceAdmittedPartRoute(
@@ -109,32 +61,32 @@ export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilde
       defendantResponseSpecSchemaComponents.timeline(responseType, defendantSolicitorParty),
       defendantResponseSpecSchemaComponents.whenWillClaimBePaid(
         responseType,
-        paymentTypeSpec,
+        paymentType,
         defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defendant1FinancialDetails(
         responseType,
-        paymentTypeSpec,
+        paymentType,
         defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defendant2FinancialDetails(
         responseType,
-        paymentTypeSpec,
+        paymentType,
         claimType,
         defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defendant1RepaymentPlan(
         responseType,
-        paymentTypeSpec,
+        paymentType,
         defenceAdmittedPartRoute,
         defendantSolicitorParty,
       ),
       defendantResponseSpecSchemaComponents.defendant2RepaymentPlan(
         responseType,
-        paymentTypeSpec,
+        paymentType,
         claimType,
         defenceAdmittedPartRoute,
         defendantSolicitorParty,

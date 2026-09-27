@@ -14,6 +14,7 @@ import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-buil
 import TestData from '../../../models/test-utils/test-data';
 import DefendantResponseOptions from '../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
 import RequestsFactory from '../../../requests/requests-factory';
+import partys from '../../../constants/users/partys';
 
 @AllMethodsStep()
 export default class DefendantSolicitor2ApiSteps extends BaseApi {
@@ -92,17 +93,19 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
     });
   }
 
-  async DefendantResponse(options: DefendantResponseOptions = {}) {
-    const responseOptions: DefendantResponseOptions = {
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      claimType: ClaimType.ONE_VS_ONE,
-      responseType: DefendantResponseType.FULL_DEFENCE,
-      ...options,
+  async DefendantResponse({
+    claimTrack = ClaimTrack.SMALL_CLAIM,
+    claimType = ClaimType.ONE_VS_ONE,
+    responseType = DefendantResponseType.FULL_DEFENCE,
+  }: DefendantResponseOptions = {}) {
+    const responseOptions: Required<DefendantResponseOptions> = {
+      claimTrack,
+      claimType,
+      responseType,
+      defendantSolicitorParty: partys.DEFENDANT_SOLICITOR_2,
     };
 
-    const expectedState = [ClaimType.TWO_VS_ONE, ClaimType.ONE_VS_TWO_SAME_SOL].includes(
-      responseOptions.claimType!,
-    )
+    const expectedState = [ClaimType.TWO_VS_ONE, ClaimType.ONE_VS_TWO_SAME_SOL].includes(claimType)
       ? CaseState.AWAITING_APPLICANT_INTENTION
       : [CaseState.AWAITING_APPLICANT_INTENTION, CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT];
 
@@ -111,7 +114,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
 
     const { defendantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const defendantResponseEventData =
-      await defendantResponseDataBuilder.buildDefendantResponseDS2(responseOptions);
+      await defendantResponseDataBuilder.buildData(responseOptions);
 
     await super.submitCCDEvent(
       defendantSolicitor2User,
@@ -123,7 +126,7 @@ export default class DefendantSolicitor2ApiSteps extends BaseApi {
     await this.runZodValidation(async () => {
       const { defendantResponseSchemaBuilder } =
         this.claimantDefendantSolicitorSchemaBuilderFactory;
-      const defendantResponseSchema = await defendantResponseSchemaBuilder.buildDefendantResponseDS2(
+      const defendantResponseSchema = await defendantResponseSchemaBuilder.buildSchema(
         caseDataBeforeSubmission,
         responseOptions,
       );

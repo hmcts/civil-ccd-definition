@@ -1,5 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimType from '../../../constants/cases/claim-type';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   'Transfer Online Case 1v2 API test - fast claim - spec',
@@ -16,6 +17,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
         claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
       });
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence1v2SS();
@@ -36,6 +38,7 @@ test.describe(
         await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
         await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+          claimTrack: ClaimTrack.FAST_CLAIM,
           claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
         });
         await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence1v2SS();

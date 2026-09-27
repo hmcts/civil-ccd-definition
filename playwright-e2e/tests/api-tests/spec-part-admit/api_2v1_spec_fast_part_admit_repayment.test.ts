@@ -2,6 +2,7 @@ import { test } from '../../../playwright-fixtures/index';
 import ClaimType from '../../../constants/cases/claim-type';
 import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 import PaymentTypeSpec from '../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '2v1 spec fast part admit api journey',
@@ -16,6 +17,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
         claimType: ClaimType.TWO_VS_ONE,
         responseType: DefendantResponseSpecType.PART_ADMISSION,
         paymentType: PaymentTypeSpec.REPAYMENT_PLAN,

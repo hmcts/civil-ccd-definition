@@ -1,5 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimType from '../../../constants/cases/claim-type';
+import ClaimTrack from '../../../constants/cases/claim-track';
 import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 
 test.describe(
@@ -15,6 +16,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
         claimType: ClaimType.TWO_VS_ONE,
         responseType: DefendantResponseSpecType.FULL_ADMISSION,
       });

@@ -4,6 +4,7 @@ import DefenceAdmittedPartRouteSpec from '../../../../constants/ccd-events/ccd-e
 import DefenceRouteSpec from '../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
 import DefendantResponseSpecType from '../../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 import PaymentTypeSpec from '../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
+import { Party } from '../../../users/partys';
 
 export default interface DefendantResponseSpecOptions {
   claimTrack?: ClaimTrack;
@@ -12,4 +13,5 @@ export default interface DefendantResponseSpecOptions {
   defenceRoute?: DefenceRouteSpec;
   paymentType?: PaymentTypeSpec;
   defenceAdmittedPartRoute?: DefenceAdmittedPartRouteSpec;
+  defendantSolicitorParty?: Party;
 }

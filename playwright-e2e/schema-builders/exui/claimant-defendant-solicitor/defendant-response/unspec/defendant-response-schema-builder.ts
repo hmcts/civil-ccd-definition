@@ -1,40 +1,22 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
-import ClaimTrack from '../../../../../constants/cases/claim-track';
-import ClaimType from '../../../../../constants/cases/claim-type';
-import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import defendantResponseSchemaComponents from './defendant-response-schema-components';
 import partys from '../../../../../constants/users/partys';
-import UnspecDefendantResponseOptions from '../../../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
-import { Party } from '../../../../../models/users/partys';
+import DefendantResponseOptions from '../../../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSchemaBuilder extends BaseSchemaBuilder {
-  async buildDefendantResponseDS1(
-    caseDataBeforeSubmission?: CCDCaseData,
-    options: UnspecDefendantResponseOptions = {},
-  ): Promise<z.ZodType> {
-    return this.buildSchema(caseDataBeforeSubmission, options);
-  }
-
-  async buildDefendantResponseDS2(
-    caseDataBeforeSubmission?: CCDCaseData,
-    options: UnspecDefendantResponseOptions = {},
-  ): Promise<z.ZodType> {
-    return this.buildSchema(caseDataBeforeSubmission, options, partys.DEFENDANT_SOLICITOR_2);
-  }
-
-  protected async buildSchema(
-    caseDataBeforeSubmission?: CCDCaseData,
+  async buildSchema(
+    caseDataBeforeSubmission: CCDCaseData | undefined,
     {
-      claimType = ClaimType.ONE_VS_ONE,
-      claimTrack = ClaimTrack.SMALL_CLAIM,
-      responseType = DefendantResponseType.FULL_DEFENCE,
-    }: UnspecDefendantResponseOptions = {},
-    defendantSolicitorParty: Party = partys.DEFENDANT_SOLICITOR_1,
+      claimType,
+      claimTrack,
+      responseType,
+      defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
+    }: Required<DefendantResponseOptions>,
   ): Promise<z.ZodType> {
     const baseSchema = ZodHelper.createSchemaFromJson(caseDataBeforeSubmission, {
       strictObjects: false,

@@ -1,5 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 spec part admit api journey',
@@ -14,6 +15,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
         responseType: DefendantResponseSpecType.PART_ADMISSION,
       });
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectPartAdmit();

@@ -5,7 +5,6 @@ import defendantResponseSpecData from './defendant-response-spec-data-components
 import ClaimType from '../../../../../constants/cases/claim-type';
 import ClaimTrack from '../../../../../constants/cases/claim-track';
 import partys from '../../../../../constants/users/partys';
-import { Party } from '../../../../../models/users/partys';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
 import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
@@ -13,25 +12,15 @@ import DefendantResponseSpecOptions from '../../../../../models/ccd-events/ccd-e
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseSpecDataBuilder extends BaseDataBuilder {
-  async buildDefendantResponseDS1(options: DefendantResponseSpecOptions = {}) {
-    return this.buildData(options);
-  }
-
-  async buildDefendantResponseDS2(options: DefendantResponseSpecOptions = {}) {
-    return this.buildData(options, partys.DEFENDANT_SOLICITOR_2);
-  }
-
-  protected async buildData(
-    {
-      claimType = ClaimType.ONE_VS_ONE,
-      claimTrack = ClaimTrack.SMALL_CLAIM,
-      responseType: defendantResponseSpecType = DefendantResponseSpecType.FULL_DEFENCE,
-      defenceRoute: defenceRouteSpec = DefenceRouteSpec.DISPUTE,
-      paymentType: paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY,
-      defenceAdmittedPartRoute = DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
-    }: DefendantResponseSpecOptions = {},
-    defendantSolicitorParty: Party = partys.DEFENDANT_SOLICITOR_1,
-  ) {
+  async buildData({
+    claimType = ClaimType.ONE_VS_ONE,
+    claimTrack = ClaimTrack.SMALL_CLAIM,
+    responseType: defendantResponseSpecType = DefendantResponseSpecType.FULL_DEFENCE,
+    defenceRoute: defenceRouteSpec = DefenceRouteSpec.DISPUTE,
+    paymentType: paymentTypeSpec = PaymentTypeSpec.IMMEDIATELY,
+    defenceAdmittedPartRoute = DefenceAdmittedPartRouteSpec.HAS_NOT_PAID,
+    defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
+  }: DefendantResponseSpecOptions = {}) {
     const { civilServiceRequests } = this.requestsFactory;
 
     const eventData: Record<string, unknown> = {};

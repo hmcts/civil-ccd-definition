@@ -1,31 +1,17 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import ClaimTrack from '../../../../../constants/cases/claim-track';
-import ClaimType from '../../../../../constants/cases/claim-type';
-import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DefendantResponseOptions from '../../../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
-import { Party } from '../../../../../models/users/partys';
 import defendantResponseDataComponents from './defendant-response-data-components';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class DefendantResponseDataBuilder extends BaseDataBuilder {
-  async buildDefendantResponseDS1(options: DefendantResponseOptions = {}) {
-    return this.buildData(options);
-  }
-
-  async buildDefendantResponseDS2(options: DefendantResponseOptions = {}) {
-    return this.buildData(options, partys.DEFENDANT_SOLICITOR_2);
-  }
-
-  protected async buildData(
-    {
-      claimType = ClaimType.ONE_VS_ONE,
-      claimTrack = ClaimTrack.SMALL_CLAIM,
-      responseType = DefendantResponseType.FULL_DEFENCE,
-    }: DefendantResponseOptions = {},
-    defendantSolicitorParty: Party = partys.DEFENDANT_SOLICITOR_1,
-  ) {
+  async buildData({
+    claimType,
+    claimTrack,
+    responseType,
+    defendantSolicitorParty = partys.DEFENDANT_SOLICITOR_1,
+  }: Required<DefendantResponseOptions>) {
     const { civilServiceRequests } = this.requestsFactory;
 
     const eventData: Record<string, unknown> = {};
