@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2DS spec settle claim confirm paid in full',
@@ -13,7 +14,7 @@ test.describe(
       LegalAdvisorApiSteps,
       ClaimantSolicitorSpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2DS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();

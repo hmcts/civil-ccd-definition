@@ -1,25 +1,20 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
-import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
-import ClaimTrack from '../../../../../constants/cases/claim-track';
-import ClaimType from '../../../../../constants/cases/claim-type';
-import CreateClaimParams from '../../../../../models/api/create-claim-params';
+import CreateClaimParams from '../../../../../models/ccd-events/ccd-events/create-claim/create-claim-params';
 import createClaimData from './create-claim-data-components';
 
 @AllMethodsStep()
 export default class CreateClaimDataBuilder extends BaseDataBuilder {
   async buildData({
-    claimType = ClaimType.ONE_VS_ONE,
-    claimTypeUnspec = ClaimTypeUnspec.PERSONAL_INJURY,
-    personalInjuryType = PersonalInjuryType.ROAD_ACCIDENT,
-    claimTrack = ClaimTrack.SMALL_CLAIM,
-    claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-  }: CreateClaimParams = {}) {
+    claimType,
+    claimTypeUnspec,
+    personalInjuryType,
+    claimTrack,
+    claimant1PartyType,
+    claimant2PartyType,
+    defendant1PartyType,
+    defendant2PartyType,
+  }: Required<CreateClaimParams>) {
     const { civilServiceRequests } = this.requestsFactory;
     this.setClaimantDefendantPartyTypes(claimType, {
       claimant1PartyType,

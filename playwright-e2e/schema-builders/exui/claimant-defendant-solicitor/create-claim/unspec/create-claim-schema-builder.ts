@@ -1,26 +1,21 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
-import claimantDefendantPartyTypes from '../../../../../constants/users/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ClaimTypeUnspec from '../../../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
-import PersonalInjuryType from '../../../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
-import ClaimTrack from '../../../../../constants/cases/claim-track';
-import ClaimType from '../../../../../constants/cases/claim-type';
-import CreateClaimParams from '../../../../../models/api/create-claim-params';
+import CreateClaimParams from '../../../../../models/ccd-events/ccd-events/create-claim/create-claim-params';
 import createClaimResponseSchema from './create-claim-schema-components';
 
 @AllMethodsStep()
 export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
   async buildSchema({
-    claimType = ClaimType.ONE_VS_ONE,
-    claimTypeUnspec = ClaimTypeUnspec.PERSONAL_INJURY,
-    personalInjuryType = PersonalInjuryType.ROAD_ACCIDENT,
-    claimTrack = ClaimTrack.SMALL_CLAIM,
-    claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-  }: CreateClaimParams = {}): Promise<z.ZodType> {
+    claimType,
+    claimTypeUnspec,
+    personalInjuryType,
+    claimTrack,
+    claimant1PartyType,
+    claimant2PartyType,
+    defendant1PartyType,
+    defendant2PartyType,
+  }: Required<CreateClaimParams>): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
     Object.assign(

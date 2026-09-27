@@ -1,4 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2SS intermediate track journey',
@@ -14,7 +16,10 @@ test.describe(
       DefendantSolicitor1Steps,
       JudgeSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimInter1v2SS();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

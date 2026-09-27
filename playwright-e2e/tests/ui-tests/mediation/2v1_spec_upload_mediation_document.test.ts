@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '2v1 spec - SDO Carm - Upload mediation documents',
@@ -12,7 +13,7 @@ test.describe(
       ClaimantSolicitorSpecSteps,
       DefendantSolicitor1SpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall2v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimType: ClaimType.TWO_VS_ONE });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence2v1();

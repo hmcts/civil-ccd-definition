@@ -8,17 +8,18 @@ import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseState from '../../../constants/cases/case-state';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
+import ClaimTypeUnspec from '../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
+import PersonalInjuryType from '../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
+import claimantDefendantPartyTypes from '../../../constants/users/claimant-defendant-party-types';
 import DateHelper from '../../../helpers/date-helper';
 import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
-import ClaimType from '../../../constants/cases/claim-type';
-import ClaimTypeUnspec from '../../../constants/ccd-events/ccd-events/create-claim/claim-type-unspec';
-import ClaimTrack from '../../../constants/cases/claim-track';
-import PersonalInjuryType from '../../../constants/ccd-events/ccd-events/create-claim/personal-injury-type';
-import CreateClaimParams from '../../../models/api/create-claim-params';
+import CreateClaimParams from '../../../models/ccd-events/ccd-events/create-claim/create-claim-params';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorApiSteps extends BaseApi {
@@ -38,27 +39,41 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       claimantDefendantSolicitorSchemaBuilderFactory;
   }
 
-  async CreateClaim(params: CreateClaimParams = {}) {
+  async CreateClaim({
+    claimType = ClaimType.ONE_VS_ONE,
+    claimTypeUnspec = ClaimTypeUnspec.PERSONAL_INJURY,
+    personalInjuryType = PersonalInjuryType.ROAD_ACCIDENT,
+    claimTrack = ClaimTrack.SMALL_CLAIM,
+    claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+  }: CreateClaimParams = {}) {
     await this.setupUserData(claimantSolicitorUser);
+    const createClaimParams: Required<CreateClaimParams> = {
+      claimType,
+      claimTypeUnspec,
+      personalInjuryType,
+      claimTrack,
+      claimant1PartyType,
+      claimant2PartyType,
+      defendant1PartyType,
+      defendant2PartyType,
+    };
+
     const { createClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const createClaimData = await createClaimDataBuilder.buildData(params);
-    await super.submitCCDEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM,
-      createClaimData,
-      { expectedState: CaseState.PENDING_CASE_ISSUED },
-    );
+    const createClaimData = await createClaimDataBuilder.buildData(createClaimParams);
+    await super.submitCCDEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM, createClaimData, {
+      expectedState: CaseState.PENDING_CASE_ISSUED,
+    });
 
     await this.runZodValidation(async () => {
       const { createClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-      const createClaimResponseSchema = await createClaimSchemaBuilder.buildSchema(params);
+      const createClaimResponseSchema =
+        await createClaimSchemaBuilder.buildSchema(createClaimParams);
       ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
     });
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
-  }
-
-  async CreateClaimSmall1v1() {
-    return this.CreateClaim();
   }
 
   async NoticeOfChangeC1() {
@@ -68,11 +83,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     const { noticeOfChangeDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
     const noticeOfChangeAnswers = await noticeOfChangeDataBuilder.buildClaimant1();
-    await super.submitNocEvent(
-      claimantSolicitorUser,
-      undefined,
-      noticeOfChangeAnswers,
-    );
+    await super.submitNocEvent(claimantSolicitorUser, undefined, noticeOfChangeAnswers);
 
     await this.runZodValidation(async () => {
       const { noticeOfChangeSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
@@ -80,54 +91,6 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
         await noticeOfChangeSchemaBuilder.buildClaimant1(caseDataBeforeSubmission);
       ZodHelper.safeParse(noticeOfChangeSchema, this.ccdCaseData);
     });
-  }
-
-  async CreateClaimFast1v1() {
-    return this.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
-  }
-
-  async CreateClaimFastNIHL1v1() {
-    return this.CreateClaim({
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      claimTypeUnspec: ClaimTypeUnspec.PERSONAL_INJURY,
-      personalInjuryType: PersonalInjuryType.NOISE_INDUCED_HEARING_LOSS,
-    });
-  }
-
-  async CreateClaimFast1v2DS() {
-    return this.CreateClaim({
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-    });
-  }
-
-  async CreateClaimFast2v1() {
-    return this.CreateClaim({
-      claimType: ClaimType.TWO_VS_ONE,
-      claimTrack: ClaimTrack.FAST_CLAIM,
-    });
-  }
-
-  async CreateClaimInter1v2DS() {
-    return this.CreateClaim({
-      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-    });
-  }
-
-  async CreateClaimInter1v2SS() {
-    return this.CreateClaim({
-      claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
-      claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-    });
-  }
-
-  async CreateClaimSmall1v2LIPs() {
-    return this.CreateClaim({ claimType: ClaimType.ONE_VS_TWO_LIPS });
-  }
-
-  async CreateClaimSmall1v2LRLIP() {
-    return this.CreateClaim({ claimType: ClaimType.ONE_VS_TWO_LR_LIP });
   }
 
   async MakePaymentForClaimIssue() {
@@ -223,7 +186,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     await this.runZodValidation(async () => {
       const { notifyClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-      const notifyClaimSchema = await notifyClaimSchemaBuilder.buildSchema(caseDataBeforeSubmission);
+      const notifyClaimSchema =
+        await notifyClaimSchemaBuilder.buildSchema(caseDataBeforeSubmission);
       ZodHelper.safeParse(notifyClaimSchema, this.ccdCaseData);
     });
   }
@@ -284,7 +248,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     await this.runZodValidation(async () => {
       const { notifyClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
-      const notifyClaimSchema = await notifyClaimSchemaBuilder.build1v2LIPS(caseDataBeforeSubmission);
+      const notifyClaimSchema =
+        await notifyClaimSchemaBuilder.build1v2LIPS(caseDataBeforeSubmission);
       ZodHelper.safeParse(notifyClaimSchema, this.ccdCaseData);
     });
   }
@@ -303,7 +268,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     await this.runZodValidation(async () => {
-      const { notifyClaimDetailsSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const { notifyClaimDetailsSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
       const notifyClaimDetailsSchema =
         await notifyClaimDetailsSchemaBuilder.buildSchema(caseDataBeforeSubmission);
       ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
@@ -324,7 +290,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     await this.runZodValidation(async () => {
-      const { notifyClaimDetailsSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const { notifyClaimDetailsSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
       const notifyClaimDetailsSchema =
         await notifyClaimDetailsSchemaBuilder.build1vLIP(caseDataBeforeSubmission);
       ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
@@ -345,7 +312,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     await this.runZodValidation(async () => {
-      const { notifyClaimDetailsSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const { notifyClaimDetailsSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
       const notifyClaimDetailsSchema =
         await notifyClaimDetailsSchemaBuilder.build1v2LRLIP(caseDataBeforeSubmission);
       ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
@@ -366,7 +334,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     );
 
     await this.runZodValidation(async () => {
-      const { notifyClaimDetailsSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const { notifyClaimDetailsSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
       const notifyClaimDetailsSchema =
         await notifyClaimDetailsSchemaBuilder.build1v2LIPS(caseDataBeforeSubmission);
       ZodHelper.safeParse(notifyClaimDetailsSchema, this.ccdCaseData);
@@ -474,7 +443,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { claimantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const claimantResponseEventData = await claimantResponseDataBuilder.buildSmallFullDefence1v2DS();
+    const claimantResponseEventData =
+      await claimantResponseDataBuilder.buildSmallFullDefence1v2DS();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE,
@@ -516,8 +486,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { claimantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const claimantResponseEventData =
-      await claimantResponseDataBuilder.buildInterFullDefence2v1();
+    const claimantResponseEventData = await claimantResponseDataBuilder.buildInterFullDefence2v1();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE,
@@ -580,8 +549,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { claimantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const claimantResponseEventData =
-      await claimantResponseDataBuilder.buildInterProceed1v2DS();
+    const claimantResponseEventData = await claimantResponseDataBuilder.buildInterProceed1v2DS();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE,
@@ -602,8 +570,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { claimantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const claimantResponseEventData =
-      await claimantResponseDataBuilder.buildInterProceed1v2SS();
+    const claimantResponseEventData = await claimantResponseDataBuilder.buildInterProceed1v2SS();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE,
@@ -688,8 +655,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
 
     const { claimantResponseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
-    const claimantResponseEventData =
-      await claimantResponseDataBuilder.buildInterFullDefence1v1();
+    const claimantResponseEventData = await claimantResponseDataBuilder.buildInterFullDefence1v1();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.CLAIMANT_RESPONSE,
@@ -837,20 +803,6 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     });
   }
 
-  async CreateClaimFastOtherRemedy1v1() {
-    return this.CreateClaim({
-      claimTrack: ClaimTrack.FAST_CLAIM,
-      claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
-    });
-  }
-
-  async CreateClaimSmallOtherRemedy1v1() {
-    return this.CreateClaim({
-      claimTrack: ClaimTrack.SMALL_CLAIM,
-      claimTypeUnspec: ClaimTypeUnspec.HOUSING_DISREPAIR,
-    });
-  }
-
   async DefaultJudgementOtherRemedy() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
@@ -958,8 +910,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
 
     const { initiateGeneralApplicationDataBuilder } =
       this.claimantDefendantSolicitorDataBuilderFactory;
-    const initiateGeneralApplicationData =
-      await initiateGeneralApplicationDataBuilder.buildCS1();
+    const initiateGeneralApplicationData = await initiateGeneralApplicationDataBuilder.buildCS1();
     await super.submitCCDEvent(
       claimantSolicitorUser,
       ccdEvents.INITIATE_GENERAL_APPLICATION,
@@ -980,7 +931,10 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
     });
 
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseData()?.id);
+    UserAssignedCasesHelper.addAssignedCaseToUser(
+      claimantSolicitorUser,
+      super.getGaCCDCaseData()?.id,
+    );
   }
 
   async InitiateGAWithNotice() {
@@ -1011,7 +965,13 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
     });
 
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, super.getGaCCDCaseIdFromParentCase());
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, super.getGaCCDCaseIdFromParentCase());
+    UserAssignedCasesHelper.addAssignedCaseToUser(
+      claimantSolicitorUser,
+      super.getGaCCDCaseIdFromParentCase(),
+    );
+    UserAssignedCasesHelper.addAssignedCaseToUser(
+      defendantSolicitor1User,
+      super.getGaCCDCaseIdFromParentCase(),
+    );
   }
 }

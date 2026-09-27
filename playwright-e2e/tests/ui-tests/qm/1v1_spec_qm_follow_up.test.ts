@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 spec query management follow up journey',
@@ -14,7 +15,9 @@ test.describe(
       CtscAdminSteps,
       ClaimantSolicitorSpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();

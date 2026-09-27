@@ -1,13 +1,14 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe('1v1 - Manage Contact Information', { tag: '@ui-mci' }, async () => {
   test('1v1 - Manage Contact Information', async ({
-    ClaimantSolicitorApiSteps, 
-    CaseRoleAssignmentApiSteps, 
+    ClaimantSolicitorApiSteps,
+    CaseRoleAssignmentApiSteps,
     DefendantSolicitor1ApiSteps,
     CaseworkerSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+    await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
@@ -16,6 +17,6 @@ test.describe('1v1 - Manage Contact Information', { tag: '@ui-mci' }, async () =
     await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
     await ClaimantSolicitorApiSteps.RespondFastProceed();
     await CaseworkerSteps.Login();
-    await CaseworkerSteps.ManageContactInformation()
+    await CaseworkerSteps.ManageContactInformation();
   });
-})
+});
