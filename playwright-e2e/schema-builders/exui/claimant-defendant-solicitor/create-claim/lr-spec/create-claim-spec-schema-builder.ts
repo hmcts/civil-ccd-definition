@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CreateClaimSpecParams from '../../../../../models/ccd-events/ccd-events/create-claim-spec/create-claim-spec-params';
+import CreateClaimSpecOptions from '../../../../../models/ccd-events/ccd-events/create-claim-spec/create-claim-spec-options';
 import createClaimSpecSchemaComponents from './create-claim-spec-schema-components';
 
 @AllMethodsStep()
@@ -14,7 +14,7 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     defendant2PartyType,
     flightDelayClaim,
     airline,
-  }: Required<CreateClaimSpecParams>): Promise<z.ZodType> {
+  }: Required<CreateClaimSpecOptions>): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
     Object.assign(

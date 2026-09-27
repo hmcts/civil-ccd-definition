@@ -1,6 +1,6 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CreateClaimSpecParams from '../../../../../models/ccd-events/ccd-events/create-claim-spec/create-claim-spec-params';
+import CreateClaimSpecOptions from '../../../../../models/ccd-events/ccd-events/create-claim-spec/create-claim-spec-options';
 import createClaimSpecData from './create-claim-spec-data-components';
 
 @AllMethodsStep()
@@ -14,7 +14,7 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     defendant2PartyType,
     flightDelayClaim,
     airline,
-  }: Required<CreateClaimSpecParams>) {
+  }: Required<CreateClaimSpecOptions>) {
     this.setClaimantDefendantPartyTypes(claimType, {
       claimant1PartyType,
       claimant2PartyType,

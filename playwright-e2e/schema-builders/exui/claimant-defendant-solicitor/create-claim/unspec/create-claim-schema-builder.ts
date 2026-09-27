@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import BaseSchemaBuilder from '../../../../../base/base-schema-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CreateClaimParams from '../../../../../models/ccd-events/ccd-events/create-claim/create-claim-params';
+import CreateClaimOptions from '../../../../../models/ccd-events/ccd-events/create-claim/create-claim-options';
 import createClaimResponseSchema from './create-claim-schema-components';
 
 @AllMethodsStep()
@@ -15,7 +15,7 @@ export default class CreateClaimSchemaBuilder extends BaseSchemaBuilder {
     claimant2PartyType,
     defendant1PartyType,
     defendant2PartyType,
-  }: Required<CreateClaimParams>): Promise<z.ZodType> {
+  }: Required<CreateClaimOptions>): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
     Object.assign(

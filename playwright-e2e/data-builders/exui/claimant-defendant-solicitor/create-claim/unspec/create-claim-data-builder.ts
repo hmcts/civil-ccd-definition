@@ -1,6 +1,6 @@
 import BaseDataBuilder from '../../../../../base/base-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CreateClaimParams from '../../../../../models/ccd-events/ccd-events/create-claim/create-claim-params';
+import CreateClaimOptions from '../../../../../models/ccd-events/ccd-events/create-claim/create-claim-options';
 import createClaimData from './create-claim-data-components';
 
 @AllMethodsStep()
@@ -14,7 +14,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     claimant2PartyType,
     defendant1PartyType,
     defendant2PartyType,
-  }: Required<CreateClaimParams>) {
+  }: Required<CreateClaimOptions>) {
     const { civilServiceRequests } = this.requestsFactory;
     this.setClaimantDefendantPartyTypes(claimType, {
       claimant1PartyType,

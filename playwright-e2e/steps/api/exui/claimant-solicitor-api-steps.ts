@@ -19,7 +19,7 @@ import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
-import CreateClaimParams from '../../../models/ccd-events/ccd-events/create-claim/create-claim-params';
+import CreateClaimOptions from '../../../models/ccd-events/ccd-events/create-claim/create-claim-options';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorApiSteps extends BaseApi {
@@ -48,9 +48,9 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-  }: CreateClaimParams = {}) {
+  }: CreateClaimOptions = {}) {
     await this.setupUserData(claimantSolicitorUser);
-    const createClaimParams: Required<CreateClaimParams> = {
+    const createClaimParams: Required<CreateClaimOptions> = {
       claimType,
       claimTypeUnspec,
       personalInjuryType,

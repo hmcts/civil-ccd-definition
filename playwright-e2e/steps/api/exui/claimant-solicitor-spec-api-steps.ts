@@ -19,7 +19,7 @@ import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
-import CreateClaimSpecParams from '../../../models/ccd-events/ccd-events/create-claim-spec/create-claim-spec-params';
+import CreateClaimSpecOptions from '../../../models/ccd-events/ccd-events/create-claim-spec/create-claim-spec-options';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
@@ -48,9 +48,9 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     flightDelayClaim = FlightDelayClaim.NO,
     airline = Airline.BA,
-  }: CreateClaimSpecParams = {}) {
+  }: CreateClaimSpecOptions = {}) {
     await this.setupUserData(claimantSolicitorUser);
-    const createClaimParams: Required<CreateClaimSpecParams> = {
+    const createClaimParams: Required<CreateClaimSpecOptions> = {
       claimType,
       claimTrack,
       claimant1PartyType,
