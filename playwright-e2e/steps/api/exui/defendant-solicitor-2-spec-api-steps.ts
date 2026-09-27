@@ -15,7 +15,7 @@ import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper
 import ZodHelper from '../../../helpers/zod-helper';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
 import TestData from '../../../models/test-utils/test-data';
-import DefendantResponseSpecOptions from '../../../models/ccd-events/cui-ccd-events/defendant-response-spec-options';
+import DefendantResponseSpecOptions from '../../../models/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-options';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()

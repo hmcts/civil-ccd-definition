@@ -12,7 +12,7 @@ import { Party } from '../../../../../models/users/partys';
 import PaymentTypeSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
 import DefenceRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-route-spec';
 import DefenceAdmittedPartRouteSpec from '../../../../../constants/ccd-events/ccd-events/defendant-response-spec/defence-admitted-part-route-spec';
-import DefendantResponseSpecOptions from '../../../../../models/ccd-events/cui-ccd-events/defendant-response-spec-options';
+import DefendantResponseSpecOptions from '../../../../../models/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-options';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
 export default class DefendantResponseSpecSchemaBuilder extends BaseSchemaBuilder {

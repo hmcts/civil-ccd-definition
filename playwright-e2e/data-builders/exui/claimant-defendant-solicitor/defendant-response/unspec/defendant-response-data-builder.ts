@@ -4,7 +4,7 @@ import ClaimType from '../../../../../constants/cases/claim-type';
 import DefendantResponseType from '../../../../../constants/ccd-events/ccd-events/defendant-response/defendant-response-type';
 import partys from '../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import DefendantResponseOptions from '../../../../../models/ccd-events/cui-ccd-events/defendant-response-options';
+import DefendantResponseOptions from '../../../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
 import { Party } from '../../../../../models/users/partys';
 import defendantResponseDataComponents from './defendant-response-data-components';
 

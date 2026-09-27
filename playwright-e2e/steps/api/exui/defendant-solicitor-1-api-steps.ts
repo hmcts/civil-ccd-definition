@@ -8,7 +8,7 @@ import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders
 import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper';
 import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
-import DefendantResponseOptions from '../../../models/ccd-events/cui-ccd-events/defendant-response-options';
+import DefendantResponseOptions from '../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
 import RequestsFactory from '../../../requests/requests-factory';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
 import ClaimTrack from '../../../constants/cases/claim-track';

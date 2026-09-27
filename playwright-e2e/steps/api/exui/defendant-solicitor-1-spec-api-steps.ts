@@ -13,7 +13,7 @@ import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/
 import PaymentTypeSpec from '../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
 import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper';
 import ZodHelper from '../../../helpers/zod-helper';
-import DefendantResponseSpecOptions from '../../../models/ccd-events/cui-ccd-events/defendant-response-spec-options';
+import DefendantResponseSpecOptions from '../../../models/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-options';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';

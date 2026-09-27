@@ -8,7 +8,7 @@ import ZodHelper from '../../../../../helpers/zod-helper';
 import CCDCaseData from '../../../../../models/ccd-case-data';
 import defendantResponseSchemaComponents from './defendant-response-schema-components';
 import partys from '../../../../../constants/users/partys';
-import UnspecDefendantResponseOptions from '../../../../../models/ccd-events/cui-ccd-events/defendant-response-options';
+import UnspecDefendantResponseOptions from '../../../../../models/ccd-events/ccd-events/defendant-response/defendant-response-options';
 import { Party } from '../../../../../models/users/partys';
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildSchema'] })
