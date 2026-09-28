@@ -8,7 +8,7 @@ test.describe(
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1a();
+      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
       // await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       // await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
