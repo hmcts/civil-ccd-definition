@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cancelUnissuedClaimSpecReason",
+    "Label": "Reason for cancelling the unissued claim",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  }
+]

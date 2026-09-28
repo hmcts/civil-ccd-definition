@@ -1,0 +1,38 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CLAIM_UNISSUED_CANCELLED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-rparobot",
+          "caseworker-caa",
+          "next-hearing-date-admin"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-approver",
+          "wlu-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile",
+          "caseworker-civil-citizen-ui-pcqextractor",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
