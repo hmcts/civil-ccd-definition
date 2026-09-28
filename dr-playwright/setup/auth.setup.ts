@@ -1,4 +1,4 @@
-import {test as setup, expect, test} from "@playwright/test";
+import {test as setup, expect, test, Page} from "@playwright/test";
 import {
   claimantSolicitorCredentials,
   envUrl, respondent1SolicitorCredentials, respondent2SolicitorCredentials,
@@ -29,11 +29,27 @@ test.beforeEach(async ({ page }) => {
     idamPage = new IdamPage(page);
 });
 
+// The token in a saved session can look unexpired while XUI has already dropped the session,
+// so only reuse it if XUI still shows the case list when loaded with the saved cookies.
+async function isSavedSessionAccepted(page: Page, authFile: string): Promise<boolean> {
+  if (!SessionUtils.isSessionValid(authFile, authCookieName, tokenValidityBufferSeconds)) return false;
+
+  await page.context().addCookies(SessionUtils.getCookies(authFile));
+  await page.goto(envUrl);
+  const accepted = await page
+    .locator(caseListLocator, { hasText: caseList })
+    .waitFor({ timeout: 15000 })
+    .then(() => true, () => false);
+
+  if (!accepted) {
+    console.log(`Saved session in ${authFile} is no longer accepted by XUI. Logging in again.`);
+    await page.context().clearCookies();
+  }
+  return accepted;
+}
+
   setup("Authenticate Claimant Solicitor", async ({ page }) => {
-    setup.skip(
-      SessionUtils.isSessionValid(claimantSolicitorAuthFile, authCookieName, tokenValidityBufferSeconds),
-      "Reusing existing valid session"
-    );
+    setup.skip(await isSavedSessionAccepted(page, claimantSolicitorAuthFile), "Reusing existing valid session");
     await page.goto(envUrl);
     await idamPage.login(claimantSolicitorCredentials);
     await expect(page.locator(caseListLocator)).toContainText(caseList);
@@ -41,10 +57,7 @@ test.beforeEach(async ({ page }) => {
   });
 
   setup("Authenticate Respondent1 Solicitor", async ({ page }) => {
-    setup.skip(
-      SessionUtils.isSessionValid(respondent1SolicitorAuthFile, authCookieName, tokenValidityBufferSeconds),
-      "Reusing existing valid session"
-    );
+    setup.skip(await isSavedSessionAccepted(page, respondent1SolicitorAuthFile), "Reusing existing valid session");
     await page.goto(envUrl);
     await idamPage.login(respondent1SolicitorCredentials);
     await expect(page.locator(caseListLocator)).toContainText(caseList);
@@ -53,10 +66,7 @@ test.beforeEach(async ({ page }) => {
 
   if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
     setup("Authenticate Respondent2 Solicitor", async ({ page }) => {
-      setup.skip(
-        SessionUtils.isSessionValid(respondent2SolicitorAuthFile, authCookieName, tokenValidityBufferSeconds),
-        "Reusing existing valid session"
-      );
+      setup.skip(await isSavedSessionAccepted(page, respondent2SolicitorAuthFile), "Reusing existing valid session");
       await page.goto(envUrl);
       await idamPage.login(respondent2SolicitorCredentials);
       await expect(page.locator(caseListLocator)).toContainText(caseList);

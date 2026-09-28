@@ -1,4 +1,5 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
+import moment from 'moment-business-days';
 // import {imageLocators} from "../fixtures/imageLocators";
 // import {TabsHelper} from "./TabsHelper";
 // import {WaitUtils} from "../e2e/utils/wait.utils";
@@ -32,7 +33,21 @@ export class PageHelper {
         intervals: [2000, 5000], // Time to wait between retries (in ms)
         timeout: 30000,          // Total maximum time for all retries combined (in ms)
       });
+    }
 
+    // Retries Continue until the next page's element shows, as CCD can drop the first click
+    async continueUntilVisible(nextPageLocator: Locator) {
+      await expect(async () => {
+        await this.page.getByRole('button', { name: 'Continue' }).click();
+        await expect(nextPageLocator).toBeAttached({ timeout: 5000 });
+      }).toPass({ intervals: [1000, 2000], timeout: 30000 });
+    }
+
+    async fillDate(fieldId: string, date: moment.Moment) {
+      // CCD can render hidden duplicates of date inputs, so only target the visible ones
+      await this.page.locator(`#${fieldId}-day:visible`).fill(date.date().toString());
+      await this.page.locator(`#${fieldId}-month:visible`).fill((date.month() + 1).toString());
+      await this.page.locator(`#${fieldId}-year:visible`).fill(date.year().toString());
     }
 
     // // When running as API test the search reference box is not being populated.  Tried multiple options to no avail

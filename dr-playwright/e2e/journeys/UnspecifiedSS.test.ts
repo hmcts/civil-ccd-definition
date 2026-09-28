@@ -164,8 +164,11 @@ let track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MUL
 const noOfExperts: string = process.env.EXPERTS ?? '0';
 const noOfWitnesses: string = process.env.WITNESSES ?? '0';
 const language: languageSpokenAndDocuments = ['WELSH', 'ENGLISH', 'BOTH'].includes(process.env.LANGUAGE) ? (process.env.LANGUAGE as languageSpokenAndDocuments) : languageSpokenAndDocuments.ENGLISH;
+const unavailableDatesRequired: YesNo = ['Yes'].includes(process.env.UNAVAILABLE_DATES)
+  ? yesNo.YES
+  : yesNo.NO;
 
-let caseId: string = '1790352478349308';
+let caseId: string = '1790590245397346';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -406,7 +409,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     });
   });
 
-  test.describe.only('test6', { tag: '@unspecified' }, () => {
+  test.describe('test6', { tag: '@unspecified' }, () => {
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
     test('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
       test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
@@ -426,6 +429,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         Number(noOfExperts),
         Number(noOfWitnesses),
         language,
+        unavailableDatesRequired,
       );
     });
   });

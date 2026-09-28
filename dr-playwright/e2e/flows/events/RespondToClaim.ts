@@ -7,6 +7,12 @@ import YesNo from '../../../enums/yesNo.ts';
 import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import trackType from '../../../enums/track.ts';
 import LanguageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
+import moment from 'moment-business-days';
+import { courts } from '../../../fixtures/courts.ts';
+import {
+  respondent1SolicitorCredentials,
+  respondent2SolicitorCredentials,
+} from '../../../civilConfig.ts';
 
 export class RespondToClaim {
   private buttonHelper: ButtonHelper;
@@ -35,10 +41,12 @@ export class RespondToClaim {
     noOfExperts: number = 0,
     noOfWitnesses: number = 0,
     language: LanguageSpokenAndDocuments = LanguageSpokenAndDocuments.ENGLISH,
+    unavailableDatesRequired: YesNo = YesNo.NO,
   ) {
     await this.pageHelper.selectNextStep('Respond to claim');
     await this.buttonHelper.continueButton.click(); // Confirm Details
 
+    // Response
     switch (claimType) {
       case claimTypes.ONE_VS_ONE:
       case claimTypes.ONE_VS_TWO_DIFF_SOL:
@@ -60,9 +68,9 @@ export class RespondToClaim {
         await this.page.locator(`#respondent2ClaimResponseType-${respondent2Response}`).click();
         break;
     }
-
     await this.buttonHelper.continueButton.click();
 
+    // Solicitor reference
     let legalRepresentativeReference: string;
     if (defendantNumber === 1) {
       legalRepresentativeReference = await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').innerText();
@@ -71,13 +79,14 @@ export class RespondToClaim {
       legalRepresentativeReference = await this.page.locator('#respondentSolicitor2Reference').innerText();
       await this.page.locator('#respondentSolicitor2Reference').fill(`${legalRepresentativeReference} - Respond to claim`);
     }
-
     await this.buttonHelper.continueButton.click();
+
+    // Response document
     await this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_3.pdf');
-    await this.page.waitForSelector('.error-message', { state: 'hidden' });
+    await this.page.locator('.error-message', { hasText: 'Uploading...' }).waitFor({ state: 'hidden' });
     await this.buttonHelper.continueButton.click();
 
-
+    // Determination
     if (track === trackType.SMALL) {
       await this.page.locator(`#deterWithoutHearing${defendantNumber}_deterWithoutHearingYesNo_${determinationWithoutHearing}`).click();
 
@@ -95,6 +104,7 @@ export class RespondToClaim {
     }
     await this.buttonHelper.continueButton.click();
 
+    // Fixed Recoverable Costs
     await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_${fixedRecoverableCosts}`).click();
     if (fixedRecoverableCosts === YesNo.YES) {
       await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_band-${fixedRecoverableCostsBand}`).click();
@@ -103,6 +113,7 @@ export class RespondToClaim {
     await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_reasons`).fill('Fixed Recoverable Costs explanation');
     await this.buttonHelper.continueButton.click();
 
+    // Disclosure Non-Electronic Documents
     await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_${disclosure}`).click();
     if (disclosure === YesNo.YES) {
       await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`).click();
@@ -111,6 +122,7 @@ export class RespondToClaim {
 
     await this.buttonHelper.continueButton.click();
 
+    // Experts
     const expertRequired = noOfExperts >= 1 ? YesNo.YES : YesNo.NO;
     await this.page.locator(`#respondent${defendantNumber}DQExperts_expertRequired_${expertRequired}`).click();
     if (expertRequired === YesNo.YES) {
@@ -130,6 +142,7 @@ export class RespondToClaim {
     }
     await this.buttonHelper.continueButton.click();
 
+    // Witnesses
     const witnessesRequired = noOfWitnesses >= 1 ? YesNo.YES : YesNo.NO;
     await this.page.locator(`#respondent${defendantNumber}DQWitnesses_witnessesToAppear_${witnessesRequired}`).click();
     if (witnessesRequired === YesNo.YES) {
@@ -144,9 +157,64 @@ export class RespondToClaim {
     }
     await this.buttonHelper.continueButton.click();
 
-
+    // Court - spoken language and document language
     await this.page.locator(`#respondent${defendantNumber}DQLanguage_court-${language}`).click();
     await this.page.locator(`#respondent${defendantNumber}DQLanguage_documents-${language}`).click();
     await this.buttonHelper.continueButton.click();
+
+    // Hearing availability
+    await this.page.locator(`#respondent${defendantNumber}DQHearing_unavailableDatesRequired_${unavailableDatesRequired}`).click();
+    if (unavailableDatesRequired === YesNo.YES) {
+      // Single date
+      await this.buttonHelper.addNewButton.first().click();
+      await this.page.locator(`#respondent${defendantNumber}DQHearing_unavailableDates_0_unavailableDateType-SINGLE_DATE`).click();
+      await this.pageHelper.fillDate('date', moment().add(6, 'months'));
+
+      // Date range
+      await this.buttonHelper.addNewButton.first().click();
+      await this.page.locator(`#respondent${defendantNumber}DQHearing_unavailableDates_1_unavailableDateType-DATE_RANGE`).click();
+      await this.pageHelper.fillDate('fromDate', moment().add(7, 'months'));
+      await this.pageHelper.fillDate('toDate', moment().add(7, 'months').add(5, 'days'));
+    }
+    const draftDirections = this.page.locator(`#respondent${defendantNumber}DQDraftDirections`);
+    await this.pageHelper.continueUntilVisible(draftDirections);
+
+    // Draft directions
+    await draftDirections.setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_4.pdf');
+    await this.page.locator('.error-message', { hasText: 'Uploading...' }).waitFor({ state: 'hidden' });
+    await this.buttonHelper.continueButton.click();
+
+    // Court location and remote hearing
+    await this.page.locator(`#respondent${defendantNumber}DQRequestedCourt_responseCourtLocations`).selectOption(courts.clerkenwell.longAddress);
+    await this.page.locator(`#respondent${defendantNumber}DQRequestedCourt_reasonForHearingAtSpecificCourt`).fill('Reason for hearing at specific court.');
+    await this.page.locator(`#respondent${defendantNumber}DQRemoteHearing_remoteHearingRequested_Yes`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQRemoteHearing_reasonForRemoteHearing`).fill('Reason for remote hearing.');
+    await this.buttonHelper.continueButton.click();
+
+    // Hearing support
+    await this.page.locator(`#respondent${defendantNumber}DQHearingSupport_supportRequirements_Yes`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQHearingSupport_supportRequirementsAdditional`).fill('Hearing support requirements.');
+    await this.buttonHelper.continueButton.click();
+
+    // Vulnerability questions
+    await this.page.locator(`#respondent${defendantNumber}DQVulnerabilityQuestions_vulnerabilityAdjustmentsRequired_Yes`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQVulnerabilityQuestions_vulnerabilityAdjustments`).fill('Vulnerability adjustments required.');
+    await this.buttonHelper.continueButton.click();
+
+    // Further information
+    await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_futureApplications_Yes`).click();
+    await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_reasonForFutureApplications`).fill('Reason for future applications.');
+    await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_otherInformationForJudge`).fill('Other information for the judge.');
+    await this.buttonHelper.continueButton.click();
+
+    // Statement of truth
+    await this.page.locator('input[id$="uiStatementOfTruth_name"]').fill(defendantNumber === 1 ? respondent1SolicitorCredentials.name : respondent2SolicitorCredentials.name);
+    await this.page.locator('input[id$="uiStatementOfTruth_role"]').fill('Solicitor');
+    await this.buttonHelper.continueButton.click();
+
+    // Check your answers and submit
+    await this.buttonHelper.submitButton.click();
+    await this.page.locator('#confirmation-header').waitFor({ state: 'visible' });
+    await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
   }
 }
