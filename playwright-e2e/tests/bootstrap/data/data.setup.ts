@@ -6,7 +6,8 @@ if (config.runDataSetup) {
     setup.describe.configure({ mode: 'parallel' });
 
     setup('Upcoming bank holidays', async ({ DataApiSteps }) => {
-      await DataApiSteps.SetupBankHolidaysData();
+      throw new Error('Temporary nightly setup-failure check');
+      //await DataApiSteps.SetupBankHolidaysData();
     });
   });
 } else {
