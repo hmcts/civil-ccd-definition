@@ -206,8 +206,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent1OrganisationPolicy",
+    "CaseFieldID": "respondent1SolicitorOrgHeadOfficeLabel",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "DefendantSolicitorOrganisation",
+    "PageDisplayOrder": 14,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "DefendantSolicitorOrganisation",
     "PageLabel": "Search for the defendant's legal representative",
@@ -443,8 +454,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "respondent2OrganisationPolicy",
+    "CaseFieldID": "respondent2SolicitorOrgHeadOfficeLabel",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "SecondDefendantSolicitorOrganisation",
+    "PageDisplayOrder": 21,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "SecondDefendantSolicitorOrganisation",
     "PageLabel": "Search for the second defendant's legal representative",
