@@ -123,10 +123,10 @@ export class TestingEndPointHelper {
             headers: this.getHeaders()
           });
           if (!response.ok()) {
-            throw new Error(`An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}`);
+            throw await this.assignmentError(response, claimType);
           }
         } else {
-          throw new Error(`An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}`);
+          throw await this.assignmentError(response, claimType);
         }
       }
 
@@ -137,7 +137,7 @@ export class TestingEndPointHelper {
           headers: this.getHeaders()
         });
         if (!response.ok()) {
-          throw new Error(`An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}`);
+          throw await this.assignmentError(response, claimType);
         }
       }
 
@@ -148,7 +148,7 @@ export class TestingEndPointHelper {
           headers: this.getHeaders()
         });
         if (!response.ok()) {
-          throw new Error(`An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}`);
+          throw await this.assignmentError(response, claimType);
         }
       }
     }
@@ -160,6 +160,14 @@ export class TestingEndPointHelper {
       );
     };
     console.log('Assignment successful. Continuing test...');
+  }
+
+  private async assignmentError(response: APIResponse, claimType: claimTypes) {
+    const body = await response.text().catch(() => '<unable to read response body>');
+    return new Error(
+      `An error occurred while trying to assign the case to the Defendant Legal Rep: ${claimType}\n` +
+      `POST ${response.url()}\nStatus: ${response.status()} ${response.statusText()}\nBody: ${body}`
+    );
   }
 
   private getHeaders() {

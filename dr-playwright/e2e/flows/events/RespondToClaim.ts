@@ -208,7 +208,7 @@ export class RespondToClaim {
     await this.buttonHelper.continueButton.click();
 
     // Statement of truth
-    await this.page.locator('input[id$="uiStatementOfTruth_name"]').fill(defendantNumber === 1 ? respondent1SolicitorCredentials.name : respondent2SolicitorCredentials.name);
+    await this.page.locator('input[id$="uiStatementOfTruth_name"]').fill((defendantNumber === 1 ? respondent1SolicitorCredentials : respondent2SolicitorCredentials).name);
     await this.page.locator('input[id$="uiStatementOfTruth_role"]').fill('Solicitor');
     await this.buttonHelper.continueButton.click();
 
