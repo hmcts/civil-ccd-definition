@@ -8,8 +8,7 @@ if (config.unassignCases) {
 
     for (let workerIndex = 0; workerIndex < config.playwright.workers; workerIndex++) {
       teardown(`Worker ${workerIndex + 1}: Claimant`, async ({ CaseRoleAssignmentApiSteps }) => {
-        throw new Error('Temporary pipeline setup-failure check');
-        // await CaseRoleAssignmentApiSteps.UnassignCases(claimants[workerIndex]);
+        await CaseRoleAssignmentApiSteps.UnassignCases(claimants[workerIndex]);
       });
 
       teardown(`Worker ${workerIndex + 1}: Defendant`, async ({ CaseRoleAssignmentApiSteps }) => {

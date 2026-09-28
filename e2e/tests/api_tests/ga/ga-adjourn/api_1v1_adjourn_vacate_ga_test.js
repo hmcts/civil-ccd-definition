@@ -9,8 +9,8 @@ Feature('GA 1v1 Make Adjourn Vacate API tests').tag('@civil-service-nightly @api
 Scenario('AC 4 - 15 Days with consent', async ({api_ga}) => {
   let hearingDate = await api_ga.createDateString(15);
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
-  await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
-  await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api_ga.amendClaimDocumentsCZK(config.applicantSolicitorUser);
+  await api_ga.notifyClaimCZK(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
   await api_ga.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   await api_ga.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
