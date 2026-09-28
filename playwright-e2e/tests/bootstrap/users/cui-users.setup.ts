@@ -5,14 +5,13 @@ import { test as setup } from '../../../playwright-fixtures/index';
 if (config.runCuiUserSetup) {
   setup.describe(`Creating citizen users for ${config.playwright.workers} worker(s)`, () => {
 
-    throw new Error('Temporary pipeline setup-failure check');
-    // setup.describe.configure({ mode: 'parallel' });
-    // setup('Claimant(s)', async ({ IdamApiSteps }) => {
-    //   await IdamApiSteps.CreateCuiUsers(claimants);
-    // });
-    // setup('Defendant(s)', async ({ IdamApiSteps }) => {
-    //   await IdamApiSteps.CreateCuiUsers(defendants);
-    // });
+    setup.describe.configure({ mode: 'parallel' });
+    setup('Claimant(s)', async ({ IdamApiSteps }) => {
+      await IdamApiSteps.CreateCuiUsers(claimants);
+    });
+    setup('Defendant(s)', async ({ IdamApiSteps }) => {
+      await IdamApiSteps.CreateCuiUsers(defendants);
+    });
   });
 } else {
   console.log('Skipping creation of claimant and defendant users');
