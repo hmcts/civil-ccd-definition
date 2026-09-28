@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "InvalidHearingNoticeProcessed",
+    "ListElementCode": "hearingId",
+    "FieldType": "Text",
+    "ElementLabel": "Hearing ID",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "InvalidHearingNoticeProcessed",
+    "ListElementCode": "requestVersion",
+    "FieldType": "Number",
+    "ElementLabel": "Request version",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "InvalidHearingNoticeProcessed",
+    "ListElementCode": "responseReceivedDateTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Response received",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
