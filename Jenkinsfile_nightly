@@ -281,6 +281,9 @@ withNightlyPipeline(type, product, component) {
 
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
   boolean runFailedTests = env.RUN_FAILED_TESTS.toBoolean();
+  boolean playwrightSetupFailed = false;
+  boolean playwrightSmokeTestsFailed = false;
+  boolean flowInterrupted = false;
 
 
   if(!forceGreenBuild) {
@@ -289,9 +292,6 @@ withNightlyPipeline(type, product, component) {
         copyPrevPlaywrightLastRunAndTestFilesReport()
       }
 
-      boolean playwrightSetupFailed = false;
-      boolean playwrightSmokeTestsFailed = false;
-      boolean flowInterrupted = false;
       boolean lastRunPassed = env.RUN_FAILED_TESTS.toBoolean() && checkHasPlaywrightLastRunStatus('passed');
       boolean playwrightRunSetup =
         env.PLAYWRIGHT_RUN_DATA_SETUP.toBoolean() ||
@@ -398,7 +398,7 @@ withNightlyPipeline(type, product, component) {
 
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-      if(playwrightSmokeTestsFailed) {
+      if (playwrightSetupFailed || playwrightSmokeTestsFailed) {
         env.PLAYWRIGHT_NIGHTLY_SETUP_OR_SMOKE_TESTS_FAILED = 'true'
         return
       }
