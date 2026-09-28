@@ -9,9 +9,40 @@ import {
 import {TOTP} from 'totp-generator';
 
 
-import NodeCache from 'node-cache';
-//Idam access token expires for every 8 hrs
-const accessTokenCache = new NodeCache({ stdTTL: 25200, checkperiod: 1800 });
+import fs from 'fs';
+import path from 'path';
+
+// IDAM access tokens are saved to a file so they are reused across test runs (and worker restarts)
+// until they are close to expiring, instead of fetching a new one from IDAM on every run
+const tokenCacheFile = './dr-playwright/e2e/.auth/api-tokens.json';
+const tokenValidityBufferSeconds = 60 * 60;
+
+type TokenCache = Record<string, string>;
+
+function readTokenCache(): TokenCache {
+  try {
+    return JSON.parse(fs.readFileSync(tokenCacheFile, 'utf-8'));
+  } catch {
+    return {};
+  }
+}
+
+function writeTokenCache(cache: TokenCache) {
+  fs.mkdirSync(path.dirname(tokenCacheFile), { recursive: true });
+  fs.writeFileSync(tokenCacheFile, JSON.stringify(cache, null, 2));
+}
+
+function isTokenValid(token: string): boolean {
+  try {
+    const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString('utf-8'));
+    return payload.exp * 1000 - Date.now() > tokenValidityBufferSeconds * 1000;
+  } catch {
+    return false;
+  }
+}
+
+// Tokens are only valid for the IDAM instance that issued them
+const tokenCacheKey = (username: string) => `${idamApiBaseUrl}|${username}`;
 
 
 export class TokensHelper {
@@ -50,19 +81,21 @@ export class TokensHelper {
     }
 
     async getAccessToken(user) {
-        console.log('User logged in', user.username);
-        if (accessTokenCache.get(user.username) != null) {
-            console.log('User access token coming from cache', user.username);
-        return accessTokenCache.get(user.username);
+        const cache = readTokenCache();
+        const cachedToken = cache[tokenCacheKey(user.username)];
+        if (cachedToken && isTokenValid(cachedToken)) {
+            console.log('User access token coming from saved file', user.username);
+            return cachedToken;
+        }
+
+        if (user.username && user.password) {
+            const accessToken = await this.getTokenFromIdam(user);
+            // Re-read in case another worker saved a token in the meantime
+            writeTokenCache({ ...readTokenCache(), [tokenCacheKey(user.username)]: accessToken });
+            console.log('User logged in to IDAM for a new access token', user.username);
+            return accessToken;
         } else {
-            if (user.username && user.password) {
-                const accessToken = await this.getTokenFromIdam(user);
-                accessTokenCache.set(user.username, accessToken);
-                console.log('user access token coming from idam', user.username);
-                return accessToken;
-            } else {
-                console.log('*******Missing user details. Cannot get access token******');
-            }
+            console.log('*******Missing user details. Cannot get access token******');
         }
     }
 

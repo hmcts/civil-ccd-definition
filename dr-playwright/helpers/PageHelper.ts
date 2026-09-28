@@ -43,6 +43,20 @@ export class PageHelper {
       }).toPass({ intervals: [1000, 2000], timeout: 30000 });
     }
 
+    // Uploads a file and waits for it to finish, retrying if the document store rate limits the upload
+    async uploadFile(fileInput: Locator, filePath: string, maxAttempts: number = 3) {
+      const rateLimitedMessage = this.page.getByText('Your request was rate limited');
+      for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        await fileInput.setInputFiles([]);
+        await fileInput.setInputFiles(filePath);
+        await this.page.locator('.error-message', { hasText: 'Uploading...' }).waitFor({ state: 'hidden' });
+        if (!(await rateLimitedMessage.isVisible())) return;
+        console.log(`Upload of ${filePath} was rate limited, retrying (attempt ${attempt} of ${maxAttempts})...`);
+        await this.page.waitForTimeout(5000 * attempt);
+      }
+      throw new Error(`Upload of ${filePath} was still rate limited after ${maxAttempts} attempts`);
+    }
+
     async fillDate(fieldId: string, date: moment.Moment) {
       // CCD can render hidden duplicates of date inputs, so only target the visible ones
       await this.page.locator(`#${fieldId}-day:visible`).fill(date.date().toString());

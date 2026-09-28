@@ -44,7 +44,7 @@ export class NotifyClaim {
       }
     } else {
       await this.buttonHelper.continueButton.click();
-      if (claimType === claimTypes.ONE_VS_TWO_LR_LIP || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+      if (claimType === claimTypes.ONE_VS_ONE_LIP || claimType === claimTypes.ONE_VS_TWO_LR_LIP || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
         await new CoSHelper(this.page).submit(claimType);
       }
       await this.buttonHelper.submitButton.click();

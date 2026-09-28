@@ -6,15 +6,18 @@ import CoSDelivery from '../enums/CoSDelivery.ts';
 import CoSLocations from '../enums/CoSLocations.ts';
 import CoSLocationTypes from '../enums/CoSLocationTypes.ts';
 import { ButtonHelper } from './ButtonHelper.ts';
+import { PageHelper } from './PageHelper.ts';
 
 export class CoSHelper {
   private whatDocumentsServed: string = 'Test description of documents served - LiP defendant:';
   private whoClaimWasServedTo: string = 'Test description of who the claim was served to - LiP defendant:';
   private whereDocumentsServed: string = 'Test description of where the documents were served - LiP defendant:';
   private buttonHelper: ButtonHelper;
+  private pageHelper: PageHelper;
 
   constructor(public page: Page) {
     this.buttonHelper = new ButtonHelper(page);
+    this.pageHelper = new PageHelper(page);
   }
 
   async submit(claimType: claimTypes, event:string = 'NotifyClaim' ) {
@@ -22,21 +25,16 @@ export class CoSHelper {
     const serviceDate = moment().businessAdd(2, 'days');
     let LiPDefendantNumber: string = '1';
 
-    await this.page.locator('#cosDateOfServiceForDefendant-day').fill(serveDate.date().toString());
-    await this.page.locator('#cosDateOfServiceForDefendant-month').fill((serveDate.month() + 1).toString());
-    await this.page.locator('#cosDateOfServiceForDefendant-year').fill(serveDate.year().toString());
+    await this.pageHelper.fillDate('cosDateOfServiceForDefendant', serveDate);
+    await this.pageHelper.fillDate('cosDateDeemedServedForDefendant', serviceDate);
 
-    await this.page.locator('#cosDateDeemedServedForDefendant-day').fill(serviceDate.date().toString());
-    await this.page.locator('#cosDateDeemedServedForDefendant-month').fill((serviceDate.month() + 1).toString());
-    await this.page.locator('#cosDateDeemedServedForDefendant-year').fill(serviceDate.year().toString());
-
-    claimType === claimTypes.ONE_VS_TWO_LIP_LR ? LiPDefendantNumber = '1' : LiPDefendantNumber = '2';
+    // Only a 1v2 claim with a represented first defendant has its LiP as defendant 2
+    LiPDefendantNumber = claimType === claimTypes.ONE_VS_TWO_LR_LIP ? '2' : '1';
 
     if (event === 'NotifyClaimDetails') {
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosServedDocumentFiles`).fill(`${this.whatDocumentsServed} ${LiPDefendantNumber}`);
       await this.buttonHelper.addNewButton.click();
-      await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosEvidenceDocument_value`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
-      await this.page.waitForSelector('.error-message', { state: 'hidden' });
+      await this.pageHelper.uploadFile(this.page.locator(`#cos${event}${LiPDefendantNumber}_cosEvidenceDocument_value`), './dr-playwright/documents/TEST_DOCUMENT_1.pdf');
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosServedDocumentFiles`).fill(`${this.whatDocumentsServed} ${LiPDefendantNumber}`);
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosRecipient`).fill(`${this.whoClaimWasServedTo} ${LiPDefendantNumber}`);
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosRecipientServeType`).selectOption(await EnumsHelper.randomEnumValue(CoSDelivery));

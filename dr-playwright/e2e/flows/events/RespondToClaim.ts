@@ -82,45 +82,46 @@ export class RespondToClaim {
     await this.buttonHelper.continueButton.click();
 
     // Response document
-    await this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_3.pdf');
-    await this.page.locator('.error-message', { hasText: 'Uploading...' }).waitFor({ state: 'hidden' });
+    await this.pageHelper.uploadFile(this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`), './dr-playwright/documents/TEST_DOCUMENT_3.pdf');
     await this.buttonHelper.continueButton.click();
 
-    // Determination
     if (track === trackType.SMALL) {
-      await this.page.locator(`#deterWithoutHearing${defendantNumber}_deterWithoutHearingYesNo_${determinationWithoutHearing}`).click();
-
-      if (determinationWithoutHearing == YesNo.YES) {
-        await this.page.locator(`#deterWithoutHearing${defendantNumber}_deterWithoutHearingWhyNot`).fill(`Defendant${defendantNumber} determination with hearing reason.`);
+      // Determination without hearing (small claims only)
+      await this.page.locator(`#deterWithoutHearingRespondent${defendantNumber}_deterWithoutHearingYesNo_${determinationWithoutHearing}`).click();
+      if (determinationWithoutHearing === YesNo.NO) {
+        await this.page.locator(`#deterWithoutHearingRespondent${defendantNumber}_deterWithoutHearingWhyNot`).fill(`Defendant${defendantNumber} reason why the claim is not suitable for determination without a hearing.`);
       }
+      await this.buttonHelper.continueButton.click();
+    } else {
+      // File directions questionnaire (not shown for small claims)
+      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`).click();
+      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_${oneMonthStay}`).click();
+      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_${preActionProtocol}`).click();
+
+      if (preActionProtocol === YesNo.NO) {
+        await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`).fill('Pre-action protocol explanation');
+      }
+      await this.buttonHelper.continueButton.click();
+
+      // Fixed Recoverable Costs (fast track only - intermediate uses a different field)
+      if (track === trackType.FAST) {
+        await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_${fixedRecoverableCosts}`).click();
+        if (fixedRecoverableCosts === YesNo.YES) {
+          await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_band-${fixedRecoverableCostsBand}`).click();
+          await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_complexityBandingAgreed_${fixedRecoverableCosts}`).click();
+        }
+        await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_reasons`).fill('Fixed Recoverable Costs explanation');
+        await this.buttonHelper.continueButton.click();
+      }
+
+      // Disclosure Non-Electronic Documents (not shown for small claims)
+      await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_${disclosure}`).click();
+      if (disclosure === YesNo.YES) {
+        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`).click();
+        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_bespokeDirections`).fill('Bespoke directions text.');
+      }
+      await this.buttonHelper.continueButton.click();
     }
-
-    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_${oneMonthStay}`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_${preActionProtocol}`).click();
-
-    if (preActionProtocol === YesNo.NO) {
-      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`).fill('Pre-action protocol explanation');
-    }
-    await this.buttonHelper.continueButton.click();
-
-    // Fixed Recoverable Costs
-    await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_${fixedRecoverableCosts}`).click();
-    if (fixedRecoverableCosts === YesNo.YES) {
-      await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_band-${fixedRecoverableCostsBand}`).click();
-      await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_complexityBandingAgreed_${fixedRecoverableCosts}`).click();
-    }
-    await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_reasons`).fill('Fixed Recoverable Costs explanation');
-    await this.buttonHelper.continueButton.click();
-
-    // Disclosure Non-Electronic Documents
-    await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_${disclosure}`).click();
-    if (disclosure === YesNo.YES) {
-      await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`).click();
-      await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_bespokeDirections`).fill('Bespoke directions text.');
-    }
-
-    await this.buttonHelper.continueButton.click();
 
     // Experts
     const expertRequired = noOfExperts >= 1 ? YesNo.YES : YesNo.NO;
@@ -180,8 +181,7 @@ export class RespondToClaim {
     await this.pageHelper.continueUntilVisible(draftDirections);
 
     // Draft directions
-    await draftDirections.setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_4.pdf');
-    await this.page.locator('.error-message', { hasText: 'Uploading...' }).waitFor({ state: 'hidden' });
+    await this.pageHelper.uploadFile(draftDirections, './dr-playwright/documents/TEST_DOCUMENT_4.pdf');
     await this.buttonHelper.continueButton.click();
 
     // Court location and remote hearing

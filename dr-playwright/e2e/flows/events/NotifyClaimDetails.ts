@@ -39,6 +39,10 @@ export class NotifyClaimDetails {
           break;
         }
       }
+    } else if (claimType === claimTypes.ONE_VS_ONE_LIP) {
+      // A LiP defendant goes straight to the Certificate of Service, which holds its own evidence upload
+      await new CoSHelper(this.page).submit(claimType, 'NotifyClaimDetails');
+      await this.buttonHelper.submitButton.click();
     } else {
       await this.uploadNotifyClaimDetailsDocs();
       await this.buttonHelper.continueButton.click();
