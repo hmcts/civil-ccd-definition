@@ -98,6 +98,12 @@
       "groupSlug": "build-tools",
       "automerge": true,
       "automergeType": "pr"
+    },
+    {
+      "description": "civil-service >=0.0.116 pulls java chart 6.x (hmcts-postgresql) which breaks our bitnami postgresql image override",
+      "matchManagers": ["helmv3"],
+      "matchPackageNames": ["civil-service"],
+      "allowedVersions": "<=0.0.115"
     }
   ]
 }

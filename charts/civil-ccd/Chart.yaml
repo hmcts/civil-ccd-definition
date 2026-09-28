@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.81
+version: 0.0.82
 maintainers:
   - name: HMCTS Civil team
 
@@ -12,7 +12,7 @@ dependencies:
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: postgresql.enabled
   - name: civil-service
-    version: 0.0.116
+    version: 0.0.115
     repository: 'oci://hmctsprod.azurecr.io/helm'
   - name: ccd
     version: 9.3.0
