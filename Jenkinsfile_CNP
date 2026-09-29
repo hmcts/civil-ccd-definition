@@ -155,11 +155,15 @@ def publishPlaywrightSmokeReports(yarnBuilder) {
 // belongs to one stage. allowEmptyArchive stays true: both publish helpers are a no-op when the
 // tests were skipped, leaving nothing to archive. Mirrors civil-citizen-ui, which generates and
 // then archives a tree containing the report.
+//
+// data/** only: publishAllureReport already makes the rendered report browsable in Jenkins, and
+// the full tree is thousands of files of css, js and plugins. data/ carries categories.json and
+// the per-test JSON, which is what tooling and humans actually read.
 def archivePlaywrightTestArtifacts() {
   archiveArtifacts allowEmptyArchive: true, artifacts: [
     "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*",
-    'playwright-allure-functional-report/**/*',
-    'playwright-allure-bootstrap-report/**/*',
+    'playwright-allure-functional-report/data/**',
+    'playwright-allure-bootstrap-report/data/**',
   ].join(',')
 }
 
