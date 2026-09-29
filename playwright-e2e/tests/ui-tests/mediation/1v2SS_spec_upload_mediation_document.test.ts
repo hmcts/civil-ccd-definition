@@ -1,4 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2SS spec SDO Carm - Upload mediation documents',
@@ -17,7 +19,10 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2SS();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignBothCaseRolesToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence1v2SS();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2SS();
       await CaseworkerApiSteps.MediationUnsuccessful();
       await LegalAdvisorApiSteps.SdoSmallSum();

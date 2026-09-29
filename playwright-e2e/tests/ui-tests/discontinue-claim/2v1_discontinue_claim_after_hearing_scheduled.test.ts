@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '2v1 discontinue claim after hearing scheduled',
@@ -17,7 +18,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence2v1();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.RespondFastProceed2v1();
       await JudgeApiSteps.SdoFast();
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
