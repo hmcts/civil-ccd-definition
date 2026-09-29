@@ -10,7 +10,7 @@ test.describe('1v1 spec stay case api journey', { tag: ['@civil-service-nightly'
     CaseworkerApiSteps,
     CtscAdminApiSteps,
   }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
+    await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1a();
     // await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
     // await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     // await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
