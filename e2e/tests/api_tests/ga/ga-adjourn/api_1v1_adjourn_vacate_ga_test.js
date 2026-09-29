@@ -10,9 +10,9 @@ Scenario('AC 4 - 15 Days with consent', async ({api_ga}) => {
   let hearingDate = await api_ga.createDateString(15);
   civilCaseReference = await api_ga.createUnspecifiedClaim(config.applicantSolicitorUser, mpScenario, 'Company', '11000');
   await api_ga.amendClaimDocuments(config.applicantSolicitorUser);
-  await api_ga.notifyClaimCZKA(config.applicantSolicitorUser, mpScenario, civilCaseReference);
+  await api_ga.notifyClaim(config.applicantSolicitorUser, mpScenario, civilCaseReference);
   await api_ga.notifyClaimDetails(config.applicantSolicitorUser, civilCaseReference);
-  await api_ga.acknowledgeClaimAAA(config.defendantSolicitorUser, civilCaseReference, true);
+  await api_ga.acknowledgeClaim(config.defendantSolicitorUser, civilCaseReference, true);
   await api_ga.defendantResponseClaim(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api_ga.claimantResponseUnSpec(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL');
   console.log('Civil Case created for general application: ' + civilCaseReference);
