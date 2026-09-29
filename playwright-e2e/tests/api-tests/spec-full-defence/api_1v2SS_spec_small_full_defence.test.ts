@@ -21,7 +21,7 @@ test.describe(
           claimTrack: ClaimTrack.SMALL_CLAIM,
           claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
         });
-        await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence1v2SS();
+        await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2SS();
       },
     );
   },

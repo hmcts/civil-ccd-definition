@@ -111,10 +111,12 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
     await this.runZodValidation(async () => {
       const { defendantResponseSpecSchemaBuilder } =
         this.claimantDefendantSolicitorSchemaBuilderFactory;
+
       const defendantResponseSchema = await defendantResponseSpecSchemaBuilder.buildSchema(
         caseDataBeforeSubmission,
         responseOptions,
       );
+
       ZodHelper.safeParse(defendantResponseSchema, this.ccdCaseData);
     });
   }
@@ -153,6 +155,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
       evidenceUploadRespondentData,
+      { expectedState: CaseState.CASE_PROGRESSION },
     );
 
     await this.runZodValidation(async () => {
@@ -175,6 +178,7 @@ export default class DefendantSolicitor1SpecApiSteps extends BaseApi {
       defendantSolicitor1User,
       ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
       uploadMediationDocumentsData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     await this.runZodValidation(async () => {
