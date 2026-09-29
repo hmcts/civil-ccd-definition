@@ -210,9 +210,12 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "DefendantSolicitorOrganisation",
+    "PageLabel": "Search for the defendant's legal representative",
     "PageDisplayOrder": 14,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repOrgPolicy",
+    "PageShowCondition": "respondent1Represented=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -221,12 +224,9 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "DefendantSolicitorOrganisation",
-    "PageLabel": "Search for the defendant's legal representative",
     "PageDisplayOrder": 14,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repOrgPolicy",
-    "PageShowCondition": "respondent1Represented=\"Yes\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -458,9 +458,12 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SecondDefendantSolicitorOrganisation",
+    "PageLabel": "Search for the second defendant's legal representative",
     "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/rep2OrgPolicy",
+    "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -469,12 +472,9 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "SecondDefendantSolicitorOrganisation",
-    "PageLabel": "Search for the second defendant's legal representative",
     "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/rep2OrgPolicy",
-    "PageShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\""
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
