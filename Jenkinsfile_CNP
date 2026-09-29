@@ -142,6 +142,27 @@ def publishPlaywrightSmokeReports(yarnBuilder) {
   }
 }
 
+// Archive AFTER the reports are generated, and include the generated report trees.
+//
+// Ordering alone is not enough (DTSCCI-6322): Allure output lands in
+// playwright-allure-{functional,bootstrap}-report/, OUTSIDE PLAYWRIGHT_TEST_RESULTS_DIR, so the
+// raw-results glob never covered it however it was ordered. The file diagnosis needs is
+// <report>/data/categories.json, Allure's computed grouping of failures by error message. The
+// categories.json copied into a *-results dir is the input definition, not that grouping.
+//
+// Both report trees are listed because publishPlaywrightSmokeReports writes the functional
+// report when smoke tests fail and the bootstrap report when setup fails, so neither tree
+// belongs to one stage. allowEmptyArchive stays true: both publish helpers are a no-op when the
+// tests were skipped, leaving nothing to archive. Mirrors civil-citizen-ui, which generates and
+// then archives a tree containing the report.
+def archivePlaywrightTestArtifacts() {
+  archiveArtifacts allowEmptyArchive: true, artifacts: [
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*",
+    'playwright-allure-functional-report/**/*',
+    'playwright-allure-bootstrap-report/**/*',
+  ].join(',')
+}
+
 def publishPlaywrightFunctionalReports(yarnBuilder) {
   def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
 
@@ -427,13 +448,13 @@ withPipeline(type, product, component) {
     if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
-    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
     publishPlaywrightSmokeReports(yarnBuilder)
+    archivePlaywrightTestArtifacts()
   }
 
   afterAlways('functionalTest:preview') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
     publishPlaywrightFunctionalReports(yarnBuilder)
+    archivePlaywrightTestArtifacts()
   }
 
   before('smoketest:aat') {
@@ -471,13 +492,13 @@ withPipeline(type, product, component) {
   }
 
   afterAlways('smoketest:aat') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
     publishPlaywrightSmokeReports(yarnBuilder)
+    archivePlaywrightTestArtifacts()
   }
 
   afterAlways('functionalTest:aat') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
     publishPlaywrightFunctionalReports(yarnBuilder)
+    archivePlaywrightTestArtifacts()
     createGithubRelease()
   }
 }
