@@ -33,6 +33,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "breathingSpaceLiftPending",
+    "Label": "Breathing space lift pending",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "storedBreathingSpace",
     "Label": " ",
     "FieldType": "Collection",

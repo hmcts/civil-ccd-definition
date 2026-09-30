@@ -325,6 +325,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "breathingSpaceLiftPending",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "storedBreathingSpace",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
