@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 spec request for reconsideration > yes, uphold the previous order made',
@@ -18,7 +19,9 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
       await CaseworkerApiSteps.MediationUnsuccessful();
       await LegalAdvisorApiSteps.SdoSmallNoSum();

@@ -1,33 +1,42 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
-test.describe('1v2DS stay case api journey', { tag: ['@civil-service-nightly', '@api-stay-case'] }, async () => {
-  test('1v2DS Stay Case Judicial Referral', async ({
-    ClaimantSolicitorApiSteps,
-    CaseRoleAssignmentApiSteps,
-    DefendantSolicitor1ApiSteps,
-    DefendantSolicitor2ApiSteps,
-    JudgeApiSteps,
-    HearingCenterAdminApiSteps,
-    CaseworkerApiSteps,
-    CtscAdminApiSteps,
-  }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimMulti1v2DS();
-    await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-    await ClaimantSolicitorApiSteps.NotifyClaim();
-    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-    await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-    await DefendantSolicitor1ApiSteps.RespondMultiFullDefence();
-    await DefendantSolicitor2ApiSteps.RespondMultiFullDefence();
-    await ClaimantSolicitorApiSteps.RespondMultiProceed1v2DS();
-    await HearingCenterAdminApiSteps.StayCase();
-    await HearingCenterAdminApiSteps.ManageStayRequestUpdate();
-    await CtscAdminApiSteps.SendMessage();
-    await JudgeApiSteps.ReplyMessage();
-    await CaseworkerApiSteps.ReplyMessage();
-    await HearingCenterAdminApiSteps.ManageStayLiftStay();
-    await JudgeApiSteps.GenerateDirectionsOrderMulti();
-    await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
-    await HearingCenterAdminApiSteps.DismissCase();
-  });
-});
+test.describe(
+  '1v2DS stay case api journey',
+  { tag: ['@civil-service-nightly', '@api-stay-case'] },
+  async () => {
+    test('1v2DS Stay Case Judicial Referral', async ({
+      ClaimantSolicitorApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1ApiSteps,
+      DefendantSolicitor2ApiSteps,
+      JudgeApiSteps,
+      HearingCenterAdminApiSteps,
+      CaseworkerApiSteps,
+      CtscAdminApiSteps,
+    }) => {
+      await ClaimantSolicitorApiSteps.CreateClaimMulti1v2DS();
+      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.MULTI_CLAIM,
+      });
+      await DefendantSolicitor2ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.MULTI_CLAIM,
+      });
+      await ClaimantSolicitorApiSteps.RespondMultiProceed1v2DS();
+      await HearingCenterAdminApiSteps.StayCase();
+      await HearingCenterAdminApiSteps.ManageStayRequestUpdate();
+      await CtscAdminApiSteps.SendMessage();
+      await JudgeApiSteps.ReplyMessage();
+      await CaseworkerApiSteps.ReplyMessage();
+      await HearingCenterAdminApiSteps.ManageStayLiftStay();
+      await JudgeApiSteps.GenerateDirectionsOrderMulti();
+      await HearingCenterAdminApiSteps.ScheduleHearingFastTrial();
+      await HearingCenterAdminApiSteps.DismissCase();
+    });
+  },
+);
