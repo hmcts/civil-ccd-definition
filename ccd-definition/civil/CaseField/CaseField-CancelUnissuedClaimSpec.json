@@ -7,5 +7,14 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cancelUnissuedClaimSpecDate",
+    "Label": "Date the unissued claim was cancelled",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]

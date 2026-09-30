@@ -21,5 +21,28 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cancelUnissuedClaimSpecDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile",
+          "cui-admin-profile",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "caseworker-civil-system-field-reader"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
