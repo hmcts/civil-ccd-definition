@@ -1,24 +1,31 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
-test.describe('Spec automated hearing notice schedulers', { tag: ['@api-hearings', '@civil-service-pr'] }, async () => {
-  test('Create Spec claim with SDO', async ({
-    HearingsApiSteps,
-    ClaimantSolicitorSpecApiSteps,
-    CaseRoleAssignmentApiSteps,
-    DefendantSolicitor1SpecApiSteps,
-    JudgeApiSteps,
-    CaseworkerApiSteps
-  }) => {
-    await HearingsApiSteps.SetupStaticMocks();
-    await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
-    await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
-    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
-    await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
-    await CaseworkerApiSteps.MediationUnsuccessful();
-    await JudgeApiSteps.SdoSmallSum();
-    await HearingsApiSteps.GenerateDisposalHearingNoticeSpec();
-    await HearingsApiSteps.GenerateTrailHearingNoticeSpec();
-    await HearingsApiSteps.GenerateDRHearingNoticeSpec();
-  });
-});
+test.describe(
+  'Spec automated hearing notice schedulers',
+  { tag: ['@api-hearings', '@civil-service-pr'] },
+  async () => {
+    test('Create Spec claim with SDO', async ({
+      HearingsApiSteps,
+      ClaimantSolicitorSpecApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1SpecApiSteps,
+      JudgeApiSteps,
+      CaseworkerApiSteps,
+    }) => {
+      await HearingsApiSteps.SetupStaticMocks();
+      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
+      await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
+      await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
+      await CaseworkerApiSteps.MediationUnsuccessful();
+      await JudgeApiSteps.SdoSmallSum();
+      await HearingsApiSteps.GenerateDisposalHearingNoticeSpec();
+      await HearingsApiSteps.GenerateTrailHearingNoticeSpec();
+      await HearingsApiSteps.GenerateDRHearingNoticeSpec();
+    });
+  },
+);
