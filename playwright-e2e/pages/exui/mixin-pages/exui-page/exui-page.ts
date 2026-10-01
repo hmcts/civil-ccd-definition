@@ -69,6 +69,21 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       );
     }
 
+    // ExUI shows a "Page refreshed" modal when an event URL is reloaded while an event is in progress,
+    // e.g. when retrying an event after a failure. It blocks every click until dismissed.
+    protected async dismissRefreshModal() {
+      try {
+        await super.waitForSelectorToBeVisible(components.refreshModal.selector, { timeout: 3000 });
+      } catch {
+        return;
+      }
+      console.log('Page refreshed modal shown, dismissing it');
+      await super.clickButtonByName(components.refreshModal.okButton);
+      await super.waitForSelectorToDetach(components.refreshModal.selector, {
+        timeout: config.exui.pageSubmitTimeout,
+      });
+    }
+
     protected async clickAddNew() {
       await super.clickBySelector(buttons.addNew.selector);
     }
