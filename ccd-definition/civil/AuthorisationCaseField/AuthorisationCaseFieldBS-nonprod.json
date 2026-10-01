@@ -158,7 +158,8 @@
           "APP-SOL-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -185,7 +186,8 @@
           "APP-SOL-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
