@@ -182,6 +182,28 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HEARING_NOTICE",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 20,
+    "DisplayContext": "READONLY",
+    "PageID": "FeatureToggleWA",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HEARING_NOTICE_COMPLETED",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 20,
+    "DisplayContext": "READONLY",
+    "PageID": "FeatureToggleWA",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UpdateNextHearingInfo",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,

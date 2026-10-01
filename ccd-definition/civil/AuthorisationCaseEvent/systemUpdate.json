@@ -367,6 +367,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HEARING_NOTICE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HEARING_NOTICE_COMPLETED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SEND_CVP_JOIN_LINK",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
