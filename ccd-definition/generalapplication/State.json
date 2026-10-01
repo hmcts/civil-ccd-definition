@@ -58,8 +58,8 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "ID": "LISTING_FOR_A_HEARING",
-    "Name": "Listed for a Hearing",
-    "Description": "Listed for a Hearing",
+    "Name": "List for hearing",
+    "Description": "List for hearing",
     "DisplayOrder": 8,
     "TitleDisplay": "# #${[CASE_REFERENCE]} <br/> ${caseNameGaInternal}"
   },
