@@ -75,11 +75,11 @@ export default defineConfig({
       testMatch: '**playwright-e2e/tests/bootstrap/case-role-assignment/**.teardown.ts',
     },
     {
-      name: 'civil-ccd-smoke',
+      name: 'civil-ccd-master-pr-smoke',
       outputDir: config.playwright.smokeTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
-      grep: /@civil-ccd-smoke/,
+      grep: /@civil-ccd-master-pr-smoke/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -99,6 +99,14 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
+      name: 'civil-ccd-nightly-smoke',
+      outputDir: config.playwright.smokeTestResultsDir,
+      dependencies: ['data-setup', 'exui-users-auth-setup', 'cui-users-data-setup'],
+      use: { ...devices['Desktop Chrome'] },
+      grep: /@civil-ccd-master-pr-smoke/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
       name: 'civil-ccd-nightly',
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
@@ -107,11 +115,11 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
-      name: 'civil-service-smoke',
+      name: 'civil-service-master-pr-smoke',
       outputDir: config.playwright.smokeTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
-      grep: /@civil-service-smoke/,
+      grep: /@civil-service-master-pr-smoke/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -131,6 +139,14 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
+      name: 'civil-service-nightly-smoke',
+      outputDir: config.playwright.smokeTestResultsDir,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
+      grep: /@civil-service-nightly-smoke/,
+      teardown: 'case-role-assignment-teardown',
+    },
+    {
       name: 'civil-service-nightly',
       outputDir: config.playwright.functionalTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
@@ -139,11 +155,11 @@ export default defineConfig({
       teardown: 'case-role-assignment-teardown',
     },
     {
-      name: 'civil-wa-smoke',
+      name: 'civil-wa-master-pr-smoke',
       outputDir: config.playwright.smokeTestResultsDir,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'exui-users-data-setup', 'cui-users-data-setup'],
-      grep: /@civil-wa-smoke/,
+      grep: /@civil-wa-master-pr-smoke/,
       teardown: 'case-role-assignment-teardown',
     },
     {
@@ -182,18 +198,22 @@ function getReporter(): any {
         OS: os.platform(),
         Architecture: os.arch(),
         NodeVersion: process.version,
-        ftGroups: process.env.PLAYWRIGHT_PR_FT_GROUPS ? process.env.PLAYWRIGHT_PR_FT_GROUPS : 'None',
+        ftGroups: process.env.PLAYWRIGHT_PR_FT_GROUPS
+          ? process.env.PLAYWRIGHT_PR_FT_GROUPS
+          : 'None',
         gitCommit: process.env.GIT_COMMIT ? process.env.GIT_COMMIT : 'None',
       },
       detail: false,
     },
   ];
 
-  const failedAndNotExecutedTestFilesReporter = ['./playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts'];
+  const failedAndNotExecutedTestFilesReporter = [
+    './playwright-e2e/report/failed-and-not-executed-test-files-reporter.ts',
+  ];
   const junitReporter = process.env.PLAYWRIGHT_JUNIT_OUTPUT_FILE
     ? [['junit', { outputFile: process.env.PLAYWRIGHT_JUNIT_OUTPUT_FILE }]]
     : [];
-  
+
   if (process.env.CI && process.env.PLAYWRIGHT_FUNCTIONAL) {
     return [
       allurePlaywright('playwright-allure-functional-results'),
@@ -201,15 +221,9 @@ function getReporter(): any {
       ...junitReporter,
     ];
   } else if (process.env.CI && process.env.PLAYWRIGHT_SMOKE) {
-    return [
-      allurePlaywright('playwright-allure-functional-results'),
-      ...junitReporter,
-    ];
-  } else if (process.env.CI)  {
-    return [
-      allurePlaywright('playwright-allure-bootstrap-results'),
-      ...junitReporter,
-    ];
+    return [allurePlaywright('playwright-allure-functional-results'), ...junitReporter];
+  } else if (process.env.CI) {
+    return [allurePlaywright('playwright-allure-bootstrap-results'), ...junitReporter];
   }
   return 'list';
 }
