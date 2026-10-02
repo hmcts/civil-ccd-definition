@@ -42,7 +42,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "APPLY_PENDING_BREATHING_SPACE_LIFT",
-    "Name": "Apply pending breathing space lift",
+    "Name": "Pending breathing space lift",
     "Description": "Lifts breathing space when the saved end date has been reached",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
