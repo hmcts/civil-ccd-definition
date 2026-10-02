@@ -30,5 +30,38 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "breathingSpaceLiftPending",
+    "Label": "Breathing space lift pending",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "storedBreathingSpace",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "BreathingSpaceInfo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "breathingSpaceDefendant1Details",
+    "Label": "Breathing space for Defendant 1 details",
+    "FieldType": "BreathingSpaceSummaryDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "breathingSpaceDefendant2Details",
+    "Label": "Breathing space for Defendant 2 details",
+    "FieldType": "BreathingSpaceSummaryDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
