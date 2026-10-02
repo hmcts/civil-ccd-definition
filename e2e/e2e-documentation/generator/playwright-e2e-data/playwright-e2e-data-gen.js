@@ -62,7 +62,8 @@ function formatIndependentScenario(scenario) {
     independentScenario: boolToYesNo(true),
     ...tagMeta,
     steps: decoratedSteps,
-    skipped: boolToYesNo(Boolean(scenario.skipped))
+    skipped: boolToYesNo(Boolean(scenario.skipped)),
+    testFailed: boolToYesNo(Boolean(scenario.testFailed))
   };
 }
 
@@ -145,7 +146,10 @@ function splitArguments(source) {
       start = index + 1;
     }
   }
-  argumentsList.push(source.slice(start).trim());
+  const finalArgument = source.slice(start).trim();
+  if (finalArgument) {
+    argumentsList.push(finalArgument);
+  }
   return argumentsList;
 }
 
@@ -178,7 +182,7 @@ function collectScenarios(filePath, suiteType) {
   const source = fs.readFileSync(absolute, 'utf8');
   const scenarios = [];
   const describes = [];
-  const callRegex = /\btest(?:\.(describe|skip|only))?\s*\(/g;
+  const callRegex = /\btest(?:\.(describe|skip|only|fail))?\s*\(/g;
   let match;
 
   while ((match = callRegex.exec(source))) {
@@ -198,7 +202,11 @@ function collectScenarios(filePath, suiteType) {
         tags: tagsFromOptions(args[1]),
         skipped: false
       });
-    } else if (!callType || callType === 'skip' || callType === 'only') {
+    } else if (!callType || callType === 'skip' || callType === 'only' || callType === 'fail') {
+      const testName = stringValue(args[0]);
+      if (!testName) {
+        continue;
+      }
       const parentDescribe = describes
         .filter(describe => describe.start < match.index && describe.end > closeIndex)
         .sort((a, b) => b.start - a.start)[0];
@@ -207,14 +215,15 @@ function collectScenarios(filePath, suiteType) {
       scenarios.push({
         suiteType,
         filePath: filePathRelative,
-        testName: stringValue(args[0]),
+        testName,
         featureName: parentDescribe ? parentDescribe.name : null,
         tagsSet: new Set([
           ...(parentDescribe ? parentDescribe.tags : []),
           ...tagsFromOptions(testOptions)
         ]),
         collectedSteps: extractHelperStepsFromSource(functionBody(testBody)),
-        skipped: callType === 'skip' || Boolean(parentDescribe && parentDescribe.skipped)
+        skipped: callType === 'skip' || Boolean(parentDescribe && parentDescribe.skipped),
+        testFailed: callType === 'fail' || /\btest\.fail\s*\(/.test(functionBody(testBody))
       });
     }
   }

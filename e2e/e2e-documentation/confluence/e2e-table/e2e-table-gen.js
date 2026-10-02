@@ -30,6 +30,14 @@ const DOUBLE_NEWLINE_FIELDS = new Set([
   'functionalTestGroups'
 ]);
 
+function columnsFor(items) {
+  const columns = [...COLUMN_ORDER];
+  if (items.some(item => Object.prototype.hasOwnProperty.call(item, 'testFailed'))) {
+    columns.splice(8, 0, { key: 'testFailed', label: 'Test Fail' });
+  }
+  return columns;
+}
+
 // Generic formatter with special rules
 function safeValue(value, key) {
   if (value === null || value === undefined) return '';
@@ -73,12 +81,13 @@ function wrapInExpand(html) {
 
 function generateConfluenceTable(jsonPath) {
   const items = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const columns = columnsFor(items);
 
   let html = '<table>\n';
 
   // Header row
   html += '  <tr>\n';
-  COLUMN_ORDER.forEach(({ label }) => {
+  columns.forEach(({ label }) => {
     html += `    <th>${label}</th>\n`;
   });
   html += '  </tr>\n';
@@ -86,7 +95,7 @@ function generateConfluenceTable(jsonPath) {
   // Data rows
   items.forEach((obj) => {
     html += '  <tr>\n';
-    COLUMN_ORDER.forEach(({ key }) => {
+    columns.forEach(({ key }) => {
       html += `    <td>${safeValue(obj[key], key)}</td>\n`;
     });
     html += '  </tr>\n';
