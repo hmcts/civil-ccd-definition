@@ -335,7 +335,7 @@ withPipeline(type, product, component) {
   loadVaultSecrets(secrets)
   env.PLAYWRIGHT_TEST_RESULTS_DIR = 'playwright-test-results'
   env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR = 'civil-ccd-bootstrap'
-  env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'civil-ccd-smoke'
+  env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'civil-ccd-master-pr-smoke'
   env.PLAYWRIGHT_WORKERS = 8
   env.PLAYWRIGHT_RETRIES = 1
   env.PLAYWRIGHT_EXUI_RETRIES = 1
