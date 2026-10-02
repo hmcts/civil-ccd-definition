@@ -28,6 +28,13 @@ const pipelineTagMap = {
   '@civil-wa-smoke': ['civil-wa-task-configuration: master (smoke)', 'civil-wa-task-configuration: PR (smoke)']
 };
 
+const playwrightPipelineTagMap = {
+  ...pipelineTagMap,
+  '@civil-ccd-master-pr-smoke': ['civil-ccd-definition: master (smoke)', 'civil-ccd-definition: PR (smoke)'],
+  '@civil-service-master-pr-smoke': ['civil-service: master (smoke)', 'civil-service: PR (smoke)'],
+  '@civil-wa-master-pr-smoke': ['civil-wa-task-configuration: master (smoke)', 'civil-wa-task-configuration: PR (smoke)']
+};
+
 const pipelineTagSet = new Set(Object.keys(pipelineTagMap));
 
 const actorStepObjects = [
@@ -133,11 +140,10 @@ function extractNameAndInlineTags(rawName) {
   };
 }
 
-function extractHelperSteps(fn) {
-  if (typeof fn !== 'function') {
+function extractHelperStepsFromSource(source) {
+  if (typeof source !== 'string') {
     return [];
   }
-  const source = fn.toString();
   const commentRanges = [];
   const commentRegex = /\/\/.*|\/\*[\s\S]*?\*\//g;
   let commentMatch;
@@ -202,6 +208,13 @@ function extractHelperSteps(fn) {
     }
   });
   return ordered;
+}
+
+function extractHelperSteps(fn) {
+  if (typeof fn !== 'function') {
+    return [];
+  }
+  return extractHelperStepsFromSource(fn.toString());
 }
 
 function createChain(target) {
@@ -378,6 +391,7 @@ module.exports = {
   dependentApiFiles,
   dependentUiFiles,
   pipelineTagMap,
+  playwrightPipelineTagMap,
   pipelineTagSet,
   actorStepObjects,
   ignoredStepMethods,
@@ -389,6 +403,7 @@ module.exports = {
   splitTags,
   extractNameAndInlineTags,
   extractHelperSteps,
+  extractHelperStepsFromSource,
   createChain,
   collectScenarios,
   isFunctionalTag
