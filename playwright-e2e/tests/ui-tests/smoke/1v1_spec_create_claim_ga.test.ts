@@ -1,7 +1,5 @@
-import config from '../../../config/config';
 import { test } from '../../../playwright-fixtures';
 import ClaimTrack from '../../../constants/cases/claim-track';
-
 import config from '../../../config/config';
 
 test.describe(
