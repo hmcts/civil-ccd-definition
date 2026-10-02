@@ -1,7 +1,7 @@
 import { test } from '../../../playwright-fixtures';
 import ClaimTrack from '../../../constants/cases/claim-track';
 
-test.describe('Smoke test - API 1v1 spec create claim', { tag: '@civil-wa-smoke' }, () => {
+test.describe('Smoke test - API 1v1 spec create claim', { tag: '@civil-wa-master-pr-smoke' }, () => {
   test('1v1 spec create claim', async ({
     ClaimantSolicitorSpecApiSteps,
     CaseRoleAssignmentApiSteps,

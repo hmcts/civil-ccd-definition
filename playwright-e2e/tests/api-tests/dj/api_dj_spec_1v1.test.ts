@@ -3,7 +3,7 @@ import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 spec default judgement api journey',
-  { tag: ['@civil-service-nightly', '@civil-service-smoke', '@api-dj'] },
+  { tag: ['@civil-service-nightly-smoke', '@api-dj'] },
   async () => {
     test('1v1 spec default judgement api', async ({
       ClaimantSolicitorSpecApiSteps,
