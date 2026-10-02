@@ -37,7 +37,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
             'state',
             expectedCaseState,
             responseJson,
-            { nonRetryable: true },
+            { nonRetryable: true, message: 'Case is in the incorrect state' },
           );
       }
     });
