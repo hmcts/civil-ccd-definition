@@ -143,7 +143,7 @@ export default class ClaimantDefendantSolicitorSchemaBuilderFactory extends Base
   get trialReadinessSchemaBuilder() {
     return new TrialReadinessSchemaBuilder(this.testData);
   }
-  
+
   get settleClaimSchemaBuilder() {
     return new SettleClaimSchemaBuilder(this.testData);
   }
