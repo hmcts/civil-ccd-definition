@@ -1,6 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
-import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2DS spec intermediate track journey',
@@ -16,15 +15,16 @@ test.describe(
       JudgeSteps,
       DefendantSolicitor2SpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaim({
-        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
-        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-      });
+      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v2DS();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-      await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
-      await DefendantSolicitor2SpecApiSteps.RespondInterFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
+      await DefendantSolicitor2SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondInterProceed1v2DS();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.GenerateDirectionsOrderInter();

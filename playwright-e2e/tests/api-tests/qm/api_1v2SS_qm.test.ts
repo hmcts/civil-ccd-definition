@@ -20,7 +20,10 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence1v2SS();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      });
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2SS();
       await ClaimantSolicitorApiSteps.RaiseLRQuery();
       await CtscAdminApiSteps.RespondToQuery();

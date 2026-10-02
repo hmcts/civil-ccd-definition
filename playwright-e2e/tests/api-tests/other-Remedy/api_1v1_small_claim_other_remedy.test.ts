@@ -7,9 +7,9 @@ test.describe(
   { tag: ['@civil-service-nightly', '@api-other-remedy'] },
   async () => {
     test('1v1 unspec small other remedy', async ({
-      ClaimantSolicitorApiSteps,
-      CaseRoleAssignmentApiSteps,
-      DefendantSolicitor1ApiSteps,
+    ClaimantSolicitorApiSteps,
+    CaseRoleAssignmentApiSteps,
+    DefendantSolicitor1ApiSteps,
     }) => {
       await ClaimantSolicitorApiSteps.CreateClaim({
         claimTrack: ClaimTrack.SMALL_CLAIM,
@@ -19,7 +19,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.SMALL_CLAIM });
       await ClaimantSolicitorApiSteps.RespondFastProceed();
     });
   },

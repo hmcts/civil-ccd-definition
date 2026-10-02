@@ -1,5 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
+import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 
 test.describe(
   '1v1 spec intermediate track api journey',
@@ -17,7 +18,9 @@ test.describe(
       });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondInterRejectFullDefence();
       await JudgeApiSteps.GenerateDirectionsOrderInter();
       await DefendantSolicitor1SpecApiSteps.EvidenceUploadFast();
@@ -34,7 +37,10 @@ test.describe(
       });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondFullAdmitImmediately();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+        responseType: DefendantResponseSpecType.FULL_ADMISSION,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondFullAdmitImmediately();
     });
 
@@ -48,7 +54,10 @@ test.describe(
       });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondInterPartAdmitImmediately();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+        responseType: DefendantResponseSpecType.PART_ADMISSION,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondInterRejectPartAdmit();
     });
 
@@ -62,7 +71,10 @@ test.describe(
       });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondCounterClaim();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+        responseType: DefendantResponseSpecType.COUNTER_CLAIM,
+      });
     });
   },
 );

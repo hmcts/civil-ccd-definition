@@ -3,25 +3,29 @@ import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   'Transfer Online Case 1v1 API test - fast claim - unspec',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly'] },
   async () => {
-    test('1v1 unspec full defence - not suitable SDO - Transfer Case', async ({
-      ClaimantSolicitorApiSteps,
-      CaseRoleAssignmentApiSteps,
-      CaseworkerApiSteps,
-      DefendantSolicitor1ApiSteps,
-      JudgeApiSteps,
-    }) => {
-      await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
-      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-      await ClaimantSolicitorApiSteps.NotifyClaim();
-      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-      await ClaimantSolicitorApiSteps.RespondFastProceed();
-      await JudgeApiSteps.NotSuitableSdoChangeLocation();
-      await CaseworkerApiSteps.TransferOnlineCase();
-    });
+    test(
+      '1v1 unspec full defence - not suitable SDO - Transfer Case',
+      { tag: '@api-not-suitable-sdo' },
+      async ({
+        ClaimantSolicitorApiSteps,
+        CaseRoleAssignmentApiSteps,
+        CaseworkerApiSteps,
+        DefendantSolicitor1ApiSteps,
+        JudgeApiSteps,
+      }) => {
+        await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
+        await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+        await ClaimantSolicitorApiSteps.NotifyClaim();
+        await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+        await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+        await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+        await ClaimantSolicitorApiSteps.RespondFastProceed();
+        await JudgeApiSteps.NotSuitableSdoChangeLocation();
+        await CaseworkerApiSteps.TransferOnlineCase();
+      },
+    );
 
     test('1v1 unspec full defence - not suitable SDO - Other Reasons', async ({
       ClaimantSolicitorApiSteps,
@@ -34,7 +38,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.RespondFastProceed();
       await JudgeApiSteps.NotSuitableSdoOther();
     });

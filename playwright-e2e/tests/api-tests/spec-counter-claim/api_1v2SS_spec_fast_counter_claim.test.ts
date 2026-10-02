@@ -1,10 +1,11 @@
 import { test } from '../../../playwright-fixtures/index';
-import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
+import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v2SS spec fast counter claim api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-spec-counterclaim'] },
   async () => {
     test('1v2SS spec fast counter claim', async ({
       ClaimantSolicitorSpecApiSteps,
@@ -17,7 +18,11 @@ test.describe(
       });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondCounterClaim1v2SS();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+        responseType: DefendantResponseSpecType.COUNTER_CLAIM,
+      });
     });
   },
 );

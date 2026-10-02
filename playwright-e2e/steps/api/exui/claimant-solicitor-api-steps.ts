@@ -834,6 +834,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.TRIAL_READINESS,
       trialReadinessData,
+      { expectedState: CaseState.PREPARE_FOR_HEARING_CONDUCT_HEARING },
     );
 
     await this.runZodValidation(async () => {
@@ -949,6 +950,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.INITIATE_GENERAL_APPLICATION,
       initiateGeneralApplicationData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     await this.runZodValidation(async () => {

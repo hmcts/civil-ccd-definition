@@ -25,7 +25,10 @@ test.describe(
       await CaseworkerApiSteps.AmendPartyDetails();
       await DefendantSolicitor1ApiSteps.AcknowledgeClaimFullDefence1v2SS();
       await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence1v2SS();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      });
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2SS();
     });
   },

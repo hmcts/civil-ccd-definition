@@ -1,8 +1,6 @@
+import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import ClaimType from '../../../../constants/cases/claim-type';
-
-import config from '../../../../config/config';
 
 test.describe(
   'Before SDO 1v2 - GA CP - Applications Orders',
@@ -19,17 +17,14 @@ test.describe(
       JudgeGaSteps,
     }) => {
       test.fail(config.zodValidationEnabled);
-      await ClaimantSolicitorApiSteps.CreateClaim({
-        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
-        claimTrack: ClaimTrack.FAST_CLAIM,
-      });
+      await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-      await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+      await DefendantSolicitor2ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
       await ClaimantSolicitorApiSteps.InitiateGA();
       await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();

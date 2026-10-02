@@ -1,9 +1,10 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '2v1 spec small full defence api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-spec-full-defence'] },
   async () => {
     test('2v1 spec small full defence', async ({
       ClaimantSolicitorSpecApiSteps,
@@ -13,7 +14,10 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimType: ClaimType.TWO_VS_ONE });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence2v1();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+        claimType: ClaimType.TWO_VS_ONE,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence2v1();
     });
   },

@@ -1,4 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
+import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
+import PaymentTypeSpec from '../../../constants/ccd-events/ccd-events/defendant-response-spec/payment-type-spec';
 import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
@@ -13,7 +15,11 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondFullAdmitSetDate();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        responseType: DefendantResponseSpecType.FULL_ADMISSION,
+        paymentType: PaymentTypeSpec.BY_SET_DATE,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondAcceptFullAdmitRepayment();
       await ClaimantSolicitorSpecApiSteps.JudgmentPaidInFull();
     });

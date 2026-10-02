@@ -5,7 +5,7 @@ import ClaimType from '../../../constants/cases/claim-type';
 test.describe(
   '1v2DS spec intermediate track api journey',
   {
-    tag: '@civil-service-nightly',
+    tag: ['@civil-service-nightly', '@api-intermediate-track'],
   },
   async () => {
     test('1v2DS spec full defence intermediate claim', async ({
@@ -23,8 +23,12 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
-      await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
-      await DefendantSolicitor2SpecApiSteps.RespondInterFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
+      await DefendantSolicitor2SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondInterRejectFullDefence();
       await JudgeApiSteps.GenerateDirectionsOrderInter();
       await DefendantSolicitor1SpecApiSteps.EvidenceUploadFast();

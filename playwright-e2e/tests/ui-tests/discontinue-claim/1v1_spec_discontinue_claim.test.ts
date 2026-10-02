@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 spec discontinue claim',
@@ -10,10 +11,12 @@ test.describe(
       DefendantSolicitor1SpecApiSteps,
       CaseRoleAssignmentApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaim();
+      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondSmallFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
       await ClaimantSolicitorSpecSteps.Login();
       await ClaimantSolicitorSpecSteps.DiscontinueClaim1v1();

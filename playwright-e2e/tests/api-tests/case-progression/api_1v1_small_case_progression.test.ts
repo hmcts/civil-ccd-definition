@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 small case progression api journey',
@@ -17,7 +18,9 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
       await JudgeApiSteps.SdoSmallSum();
       await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
@@ -41,7 +44,7 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondSmallFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.SMALL_CLAIM });
       await ClaimantSolicitorApiSteps.RespondSmallProceed();
       await JudgeApiSteps.SdoSmallNoSum();
       await ClaimantSolicitorApiSteps.EvidenceUploadSmall();

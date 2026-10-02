@@ -21,7 +21,9 @@ test.describe(
       });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondInterFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondInterRejectFullDefence();
       await JudgeApiSteps.GenerateDirectionsOrderInter();
       await ClaimantSolicitorSpecSteps.Login();

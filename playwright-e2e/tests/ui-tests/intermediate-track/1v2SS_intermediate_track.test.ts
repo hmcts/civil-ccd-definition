@@ -24,7 +24,10 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.RespondInterFullDefence1v2SS();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      });
       await ClaimantSolicitorApiSteps.RespondInterProceed1v2SS();
       await JudgeSteps.LoginRegion1();
       await JudgeSteps.GenerateDirectionsOrderInter();

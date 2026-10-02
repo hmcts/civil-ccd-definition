@@ -3,7 +3,7 @@ import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 unspec full defence api journey',
-  { tag: '@civil-service-nightly' },
+  { tag: ['@civil-service-nightly', '@api-unspec-full-defence'] },
   async () => {
     test('1v1 unspec full defence', async ({
       ClaimantSolicitorApiSteps,
@@ -22,7 +22,7 @@ test.describe(
       await DefendantSolicitor1ApiSteps.AcknowledgeClaimFullDefence();
       await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
       await DefendantSolicitor1ApiSteps.AddLitigationFriend();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.RespondFastProceed();
     });
   },
