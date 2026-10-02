@@ -26,12 +26,20 @@ jobs:
         run: |
           yarn test:generate:e2e-api-data
           yarn test:generate:e2e-ui-data
+          yarn test:generate:playwright-e2e-api-data
+          yarn test:generate:playwright-e2e-ui-data
 
       - name: Update README UI table
         run: yarn test:readme:e2e-ui-table
 
       - name: Update README API table
         run: yarn test:readme:e2e-api-table
+
+      - name: Update README Playwright UI table
+        run: yarn test:readme:playwright-e2e-ui-table
+
+      - name: Update README Playwright API table
+        run: yarn test:readme:playwright-e2e-api-table
 
       - name: Commit and push README updates
         uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7

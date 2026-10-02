@@ -14,6 +14,14 @@ const COLUMN_ORDER = [
 
 const DOUBLE_BREAK_FIELDS = new Set(['tags', 'pipelines', 'functionalTestGroups']);
 
+function columnsFor(items) {
+  const columns = [...COLUMN_ORDER];
+  if (items.some(item => Object.prototype.hasOwnProperty.call(item, 'testFailed'))) {
+    columns.splice(8, 0, { key: 'testFailed', label: 'Test Fail' });
+  }
+  return columns;
+}
+
 function safeValue(value, key) {
   if (value === null || value === undefined) {
     return '';
@@ -43,11 +51,12 @@ function safeValue(value, key) {
 
 function generateMarkdownTable(jsonPath) {
   const items = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const columns = columnsFor(items);
   let markdown = '';
-  markdown += `| ${COLUMN_ORDER.map(col => col.label).join(' | ')} |\n`;
-  markdown += `| ${COLUMN_ORDER.map(() => '---').join(' | ')} |\n`;
+  markdown += `| ${columns.map(col => col.label).join(' | ')} |\n`;
+  markdown += `| ${columns.map(() => '---').join(' | ')} |\n`;
   items.forEach(item => {
-    const row = COLUMN_ORDER.map(({ key }) => safeValue(item[key], key));
+    const row = columns.map(({ key }) => safeValue(item[key], key));
     markdown += `| ${row.join(' | ')} |\n`;
   });
   return markdown.trim();
