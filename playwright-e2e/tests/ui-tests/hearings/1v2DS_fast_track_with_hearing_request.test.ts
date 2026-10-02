@@ -1,5 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from "../../../constants/cases/claim-type.ts";
 
 test.describe(
   '1v2DS fast track with hearing request',
@@ -15,7 +16,10 @@ test.describe(
       JudgeApiSteps,
       HearingCenterAdminSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
