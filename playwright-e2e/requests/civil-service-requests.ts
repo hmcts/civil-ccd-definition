@@ -288,7 +288,17 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       headers: await this.getRequestHeaders(user),
     };
     await super.retryRequestJson(url, requestOptions, {
-      retries: 25,
+      // 60 x 3s = 180s. Was 25 x 3s = 75s, which was shorter than the gap a business process can
+      // sit idle for on a contended preview. All Camunda external task work in civil-service runs
+      // on a single thread (DTSCCI-6615), so with 8 Playwright workers creating cases in parallel
+      // a task can wait behind other case work before it is fetched. Measured on civil-service
+      // PR-8392 build 22: CREATE_SERVICE_REQUEST_CLAIM idle from 08:53:22.776 to 08:55:35.284, a
+      // gap of 2m13s, then it completed in half a second. The test gave up at about 76s, nearly a
+      // minute before the process resumed, so it reported a failure where nothing had failed.
+      //
+      // Raising the cap costs nothing on the happy path: the poll returns as soon as the status is
+      // FINISHED. It only extends how long we wait before declaring failure.
+      retries: 60,
       retryTimeInterval: 3000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
