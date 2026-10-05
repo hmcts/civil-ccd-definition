@@ -12,7 +12,7 @@
     "ID": "liftBreathing",
     "FieldType": "BreathingSpaceLiftInfo",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "Label": " "
   },
   {
@@ -29,7 +29,7 @@
     "Label": "Breathing space active",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -37,7 +37,7 @@
     "Label": "Breathing space lift pending",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
