@@ -187,17 +187,17 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "enterBreathing",
+    "CaseFieldID": "breathingSpaceDefendant1Details",
     "TabFieldDisplayOrder": 21,
-    "FieldShowCondition": "enterBreathing=\"*\""
+    "FieldShowCondition": "breathingSpaceDefendant1Details=\"*\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "liftBreathing",
+    "CaseFieldID": "breathingSpaceDefendant2Details",
     "TabFieldDisplayOrder": 22,
-    "FieldShowCondition": "liftBreathing=\"*\""
+    "FieldShowCondition": "breathingSpaceDefendant2Details=\"*\""
   }
 ]
