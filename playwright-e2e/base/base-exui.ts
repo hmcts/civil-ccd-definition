@@ -56,19 +56,24 @@ export default abstract class BaseExui extends BaseApi {
   ) {
     await super.setupBankHolidays();
     await super.setDebugTestData();
+    let isRetry = false;
     while (retries >= 0) {
       try {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
-          await this.exuiDashboardActions.createCase(ccdEvent);
+          await this.exuiDashboardActions.createCase(ccdEvent, { isRetry });
         } else {
-          await this.exuiDashboardActions.startCCDEvent(ccdEvent);
+          await this.exuiDashboardActions.startCCDEvent(ccdEvent, { isRetry });
         }
         await eventActions();
         break;
       } catch (error) {
         if (retries <= 0) throw error;
-        console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
+        console.log(
+          `Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})\n`,
+          error,
+        );
         retries--;
+        isRetry = true;
         await this.exuiDashboardActions.clearCCDEvent();
       }
     }
@@ -109,19 +114,24 @@ export default abstract class BaseExui extends BaseApi {
     await super.setDebugTestData();
     let waTask;
     if (config.waEnabled) waTask = await super.retrieveAndAssignWATask(user, validTask);
+    let isRetry = false;
     while (retries >= 0) {
       try {
         if (startWithWATaskName) {
           await this.exuiDashboardActions.startWithWATaskName(ccdEvent, waTask!);
         } else {
-          await this.exuiDashboardActions.startCCDEvent(ccdEvent);
+          await this.exuiDashboardActions.startCCDEvent(ccdEvent, { isRetry });
         }
         await eventActions();
         break;
       } catch (error) {
         if (retries <= 0) throw error;
-        console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
+        console.log(
+          `Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})\n`,
+          error,
+        );
         retries--;
+        isRetry = true;
         await this.exuiDashboardActions.clearCCDEvent();
       }
     }
