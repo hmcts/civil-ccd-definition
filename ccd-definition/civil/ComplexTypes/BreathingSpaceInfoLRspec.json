@@ -45,6 +45,23 @@
   },
   {
     "ID": "BreathingSpaceInfo",
+    "ListElementCode": "defendantLabel",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "BreathingSpaceInfo",
+    "ListElementCode": "defendantNumber",
+    "ElementLabel": " ",
+    "FieldType": "Number",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "defendantNumber=\"DO_NOT_SHOW\""
+  },
+  {
+    "ID": "BreathingSpaceInfo",
     "ListElementCode": "enter",
     "ElementLabel": " ",
     "FieldType": "BreathingSpaceStartInfo",
@@ -57,6 +74,51 @@
     "ElementLabel": " ",
     "FieldType": "BreathingSpaceLiftInfo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "lift=\"*\""
+  },
+  {
+    "ID": "BreathingSpaceSummaryDetails",
+    "ListElementCode": "reference",
+    "ElementLabel": "Reference number",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "reference=\"*\""
+  },
+  {
+    "ID": "BreathingSpaceSummaryDetails",
+    "ListElementCode": "start",
+    "ElementLabel": "When did it start?",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "BreathingSpaceSummaryDetails",
+    "ListElementCode": "type",
+    "ElementLabel": "What type is it?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "BreathingSpaceType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "BreathingSpaceSummaryDetails",
+    "ListElementCode": "expectedEnd",
+    "ElementLabel": "When will breathing space end?",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "expectedEnd=\"*\""
+  },
+  {
+    "ID": "BreathingSpaceSummaryDetails",
+    "ListElementCode": "reasonToLift",
+    "ElementLabel": "Why is breathing space being lifted? (optional)",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "reasonToLift=\"*\""
   }
 ]
