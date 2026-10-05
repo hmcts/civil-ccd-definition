@@ -72,7 +72,7 @@ export default class ExuiDashboardActions extends BaseApi {
     await navBar.clickSignOut();
   }
 
-  async createCase(ccdEvent: CCDEvent) {
+  async createCase(ccdEvent: CCDEvent, { isRetry = false }: { isRetry?: boolean } = {}) {
     const { caseListPage } = this.exuiDashboardPageFactory;
     await caseListPage.openCaseList();
 
@@ -84,14 +84,14 @@ export default class ExuiDashboardActions extends BaseApi {
     await caseFilterPage.verifyContent();
     // await caseFilterPage.chooseClaimType(ccdEvent);
     //  await caseFilterPage.submit();
-    await caseFilterPage.chooseClaimTypeWithUrl(ccdEvent);
+    await caseFilterPage.chooseClaimTypeWithUrl(ccdEvent, { isRetry });
   }
 
-  async startCCDEvent(ccdEvent: CCDEvent) {
+  async startCCDEvent(ccdEvent: CCDEvent, { isRetry = false }: { isRetry?: boolean } = {}) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id!);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
-    await caseDetailsPage.retryChooseNextStepWithUrl(this.ccdCaseData.id!, ccdEvent);
+    await caseDetailsPage.retryChooseNextStepWithUrl(this.ccdCaseData.id!, ccdEvent, { isRetry });
     caseDetailsPage.setCCDEvent = ccdEvent;
   }
 
