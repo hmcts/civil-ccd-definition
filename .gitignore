@@ -67,6 +67,7 @@ playwright/.cache/
 playwright-test-results/
 playwright-bootstrap-test-results/
 playwright-functional-test-results/
+playwright-smoke-test-results/
 playwright-allure-functional-results/
 playwright-allure-bootstrap-results/
 playwright-allure-bootstrap-report/

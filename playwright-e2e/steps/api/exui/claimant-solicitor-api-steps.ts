@@ -14,6 +14,7 @@ import ZodHelper from '../../../helpers/zod-helper';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
+import { test } from '../../../playwright-fixtures';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorApiSteps extends BaseApi {
@@ -1228,6 +1229,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.TRIAL_READINESS,
       trialReadinessData,
+      { expectedState: CaseState.PREPARE_FOR_HEARING_CONDUCT_HEARING },
     );
 
     await this.runZodValidation(async () => {
@@ -1341,6 +1343,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       claimantSolicitorUser,
       ccdEvents.INITIATE_GENERAL_APPLICATION,
       initiateGeneralApplicationData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
     );
 
     await this.runZodValidation(async () => {
