@@ -10135,6 +10135,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1SolicitorOrgHeadOfficeLabel",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent2SolicitorOrgHeadOfficeLabel",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "submittedDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
