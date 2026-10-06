@@ -37,7 +37,7 @@ Scenario('02 Enter into BS Standard', async ({LRspec}) => {
   await LRspec.enterIntoBS(breathingSpaceDetailsStandard);
 });
 
-Scenario('03 Lift BS Mental Health', async ({LRspec}) => {
+Scenario('03 Lift BS Standard', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.liftBS(liftBreathingSpaceDetails);
 });
