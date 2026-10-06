@@ -119,6 +119,8 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
+    "Max": 4000,
+    "RegularExpression": "^[a-zA-Z0-9\\s.,!?'\"\\-()&:@#/$%+=]*$",
     "FieldShowCondition": "reasonToLift=\"*\""
   }
 ]
