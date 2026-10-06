@@ -120,7 +120,7 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Max": 4000,
-    "RegularExpression": "^[a-zA-Z0-9\\s.,!?'\"\\-()&:@#/$%+=]*$",
+    "RegularExpression": "^[A-Za-z0-9 \\t\\r\\n.,!?'\"()&:;@#\\/$%+=£‘’“”–—…-]*$",
     "FieldShowCondition": "reasonToLift=\"*\""
   }
 ]
