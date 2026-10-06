@@ -365,8 +365,8 @@ ccd-message-publisher:
   java:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
-    devcpuRequests: 50m
-    devcpuLimits: 200m
+    devcpuRequests: 200m
+    devcpuLimits: 1000m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     livenessDelay: 0
