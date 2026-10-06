@@ -377,6 +377,8 @@ ccd-message-publisher:
         secrets:
           - name: AppInsightsInstrumentationKey
             alias: azure.application-insights.instrumentation-key
+          - name: app-insights-connection-string
+            alias: app-insights-connection-string
     environment:
 #      DATA_STORE_DB_HOST: civil-preview.postgres.database.azure.com
 #      DATA_STORE_DB_NAME: "pr-${CHANGE_ID}-data-store"
