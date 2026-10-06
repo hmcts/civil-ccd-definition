@@ -20,6 +20,14 @@ repositories {
   maven {
     url 'https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1'
   }
+  // Fallback mirror, deliberately LAST. This repo uses dependency locking, so resolution needs the
+  // exact pinned versions; when mavenCentral is unreachable from the build agents there is no second
+  // source and every locked dependency fails at once (DTSCCI-6647). Keeping mavenCentral first means
+  // agents that can reach it are unaffected, and anything that cannot reach Artifactory - GitHub
+  // hosted runners, which PlatOps will not grant access to - still resolves from the public repos.
+  maven {
+    url = uri('https://artifactory.platform.hmcts.net/artifactory/maven-remotes')
+  }
 }
 
 tasks.register('highLevelDataSetup', JavaExec) {

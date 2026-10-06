@@ -3,5 +3,8 @@ pluginManagement {
     maven { url 'https://repo.spring.io/release' }
     mavenCentral()
     gradlePluginPortal()
+    // Fallback mirror, last for the same reason as in build.gradle: plugin resolution should prefer
+    // the public portals and fall back to Artifactory only when they cannot be reached.
+    maven { url = uri('https://artifactory.platform.hmcts.net/artifactory/maven-remotes') }
   }
 }
