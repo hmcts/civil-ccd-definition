@@ -54,18 +54,6 @@ const showCertifyStatement = () => ({
   },
 });
 
-const otherRemedyAbandoned = (djOtherRemedy: DJOtherRemedy) => {
-  if (djOtherRemedy === DJOtherRemedy.YES) {
-    return {
-      OtherRemedyAbandoned: {
-        isOtherRemedyAbandoned: 'Yes',
-      },
-    }
-  }
-
-  return {};
-};
-
 const hearingType = (djHearingType: DJHearingType) => {
   return {
     HearingType: {
@@ -102,6 +90,19 @@ const hearingSupportRequirementsFieldDJ = (claimant1PartyType: ClaimantDefendant
       },
     },
   };
+};
+
+const otherRemedyAbandoned = (djOtherRemedy: DJOtherRemedy) => {
+  if (djOtherRemedy === DJOtherRemedy.YES) {
+    return {
+      OtherRemedyAbandoned: {
+        isOtherRemedyAbandoned: 'Yes',
+        otherRemedyAbandonedDate: formatDate(DateHelper.getToday()),
+      },
+    };
+  }
+
+  return {};
 };
 
 const requestDefaultJudgementBuilderComponents = {
