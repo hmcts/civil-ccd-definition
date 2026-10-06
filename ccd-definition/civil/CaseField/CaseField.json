@@ -94,6 +94,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondent1SolicitorOrgHeadOfficeLabel",
+    "Label": "Address shown will be the legal representative’s head office. If the legal representative correspondence address is elsewhere you can update this on an upcoming screen.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2SolicitorOrgHeadOfficeLabel",
+    "Label": "Address shown will be the legal representative’s head office. If the legal representative correspondence address is elsewhere you can update this on an upcoming screen.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "claimValue",
     "Label": "Expected claim value",
     "FieldType": "ClaimValue",
