@@ -383,6 +383,10 @@ withPipeline(type, product, component) {
   }
 
   before('highleveldatasetup') {
+    // HLD runs Gradle through Yarn, so apply the same Maven mirror as GradleBuilder.
+    env.BEFTA_GRADLE_INIT_SCRIPT = 'build/jenkins-hld-init.gradle'
+    writeFile file: env.BEFTA_GRADLE_INIT_SCRIPT,
+      text: libraryResource('uk/gov/hmcts/gradle/init.gradle')
     // Pull shared scripts from civil-service early - needed by build and import scripts
     sh "./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}"
     yarnBuilder.yarn('setup')

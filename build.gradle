@@ -53,6 +53,8 @@ dependencies {
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.8'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.19'
   implementation group: 'io.rest-assured', name: 'rest-assured', version: '6.0.0'
+  // BEFTA's older Logback JARs are unavailable from the Jenkins Maven mirror.
+  runtimeOnly 'ch.qos.logback:logback-classic:1.5.32'
 
   testImplementation libraries.junit5
 }
