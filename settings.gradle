@@ -1,5 +1,6 @@
 pluginManagement {
   repositories {
+    maven { url 'https://artifactory.platform.hmcts.net/artifactory/maven-remotes' }
     maven { url 'https://repo.spring.io/release' }
     mavenCentral()
     gradlePluginPortal()
