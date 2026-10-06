@@ -40,7 +40,7 @@ Scenario('02 Case Worker enter into BS Standard', async ({I}) => {
   await I.enterIntoBS(breathingSpaceDetailsStandard, caseId);
 });
 
-Scenario('03 Lift BS Mental Health', async ({I}) => {
+Scenario('03 Lift BS Standard', async ({I}) => {
   await I.login(config.ctscAdminUser);
   await I.liftBS(liftBreathingSpaceDetails, caseId);
 });
