@@ -16,8 +16,8 @@ export default class CourtPermissionPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.expectText(headings.discontinueThisClaim),
       super.expectHeading(headings.permissionFromCourt),
-      super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
-      super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!)),
+      super.expectCaseHeading(ccdCaseData?.caseNamePublic!),
       super.expectLegend(radioButtons.label),
       super.expectLegend(radioButtons.hintText),
       super.expectRadioLabel(radioButtons.yes.label, radioButtons.yes.selector),
