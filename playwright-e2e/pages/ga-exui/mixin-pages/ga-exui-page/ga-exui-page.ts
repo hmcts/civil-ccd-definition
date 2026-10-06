@@ -19,14 +19,14 @@ export default function GaExuiPage<TBase extends abstract new (...args: any[]) =
       
       if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(getFormattedCaseId(gaCCDCaseData?.id!), { exact: false, timeout }),
-          super.expectHeading(gaCCDCaseData?.caseNameGaInternal!, { exact: false, timeout }),
+          super.expectCaseHeading(getFormattedCaseId(gaCCDCaseData?.id!), { timeout }),
+          super.expectCaseHeading(gaCCDCaseData?.caseNameGaInternal!, { timeout }),
         ];
       } else {
         expects = [
           super.expectHeading(ccdEventstate.name, { exact: false, timeout }),
-          super.expectHeading(getFormattedCaseId(gaCCDCaseData?.id!), { exact: false, timeout }),
-          super.expectHeading(gaCCDCaseData?.caseNameGaInternal!, { exact: false, timeout }),
+          super.expectCaseHeading(getFormattedCaseId(gaCCDCaseData?.id!), { timeout }),
+          super.expectCaseHeading(gaCCDCaseData?.caseNameGaInternal!, { timeout }),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });
