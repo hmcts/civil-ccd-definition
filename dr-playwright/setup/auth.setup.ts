@@ -1,4 +1,4 @@
-import {test as setup, expect, test, Page} from "@playwright/test";
+import {test as setup, expect, test, Page, request} from "@playwright/test";
 import {
   claimantSolicitorCredentials,
   envUrl, respondent1SolicitorCredentials, respondent2SolicitorCredentials,
@@ -30,25 +30,28 @@ test.beforeEach(async ({ page }) => {
 });
 
 // The token in a saved session can look unexpired while XUI has already dropped the session,
-// so only reuse it if XUI still shows the case list when loaded with the saved cookies.
-async function isSavedSessionAccepted(page: Page, authFile: string): Promise<boolean> {
+// so only reuse it if XUI still accepts the saved cookies. This asks XUI's user details API
+// (200 when the session is accepted, 401 when not) rather than loading the case list page.
+async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
   if (!SessionUtils.isSessionValid(authFile, authCookieName, tokenValidityBufferSeconds)) return false;
 
-  await page.context().addCookies(SessionUtils.getCookies(authFile));
-  await page.goto(envUrl);
-  const accepted = await caseListHeading(page)
-    .waitFor({ timeout: 15000 })
-    .then(() => true, () => false);
-
-  if (!accepted) {
-    console.log(`Saved session in ${authFile} is no longer accepted by XUI. Logging in again.`);
-    await page.context().clearCookies();
+  const apiContext = await request.newContext({ baseURL: envUrl, storageState: authFile });
+  try {
+    const response = await apiContext.get('/api/user/details', { maxRedirects: 0, timeout: 15000 });
+    if (!response.ok()) {
+      console.log(`Saved session in ${authFile} is no longer accepted by XUI (status ${response.status()}). Logging in again.`);
+    }
+    return response.ok();
+  } catch (error) {
+    console.log(`Could not check saved session in ${authFile}: ${error instanceof Error ? error.message : error}. Logging in again.`);
+    return false;
+  } finally {
+    await apiContext.dispose();
   }
-  return accepted;
 }
 
   setup("Authenticate Claimant Solicitor", async ({ page }) => {
-    setup.skip(await isSavedSessionAccepted(page, claimantSolicitorAuthFile), "Reusing existing valid session");
+    setup.skip(await isSavedSessionAccepted(claimantSolicitorAuthFile), "Reusing existing valid session");
     await page.goto(envUrl);
     await idamPage.login(claimantSolicitorCredentials);
     await expect(caseListHeading(page)).toBeVisible();
@@ -56,7 +59,7 @@ async function isSavedSessionAccepted(page: Page, authFile: string): Promise<boo
   });
 
   setup("Authenticate Respondent1 Solicitor", async ({ page }) => {
-    setup.skip(await isSavedSessionAccepted(page, respondent1SolicitorAuthFile), "Reusing existing valid session");
+    setup.skip(await isSavedSessionAccepted(respondent1SolicitorAuthFile), "Reusing existing valid session");
     await page.goto(envUrl);
     await idamPage.login(respondent1SolicitorCredentials);
     await expect(caseListHeading(page)).toBeVisible();
@@ -65,7 +68,7 @@ async function isSavedSessionAccepted(page: Page, authFile: string): Promise<boo
 
   if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
     setup("Authenticate Respondent2 Solicitor", async ({ page }) => {
-      setup.skip(await isSavedSessionAccepted(page, respondent2SolicitorAuthFile), "Reusing existing valid session");
+      setup.skip(await isSavedSessionAccepted(respondent2SolicitorAuthFile), "Reusing existing valid session");
       await page.goto(envUrl);
       await idamPage.login(respondent2SolicitorCredentials);
       await expect(caseListHeading(page)).toBeVisible();
