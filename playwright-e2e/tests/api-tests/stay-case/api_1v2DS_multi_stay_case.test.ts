@@ -1,5 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2DS stay case api journey',
@@ -15,7 +16,10 @@ test.describe(
       CaseworkerApiSteps,
       CtscAdminApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimMulti1v2DS();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+        claimTrack: ClaimTrack.MULTI_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
