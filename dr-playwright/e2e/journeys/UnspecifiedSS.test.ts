@@ -169,7 +169,7 @@ const unavailableDatesRequired: YesNo = ['Yes'].includes(process.env.UNAVAILABLE
   ? yesNo.YES
   : yesNo.NO;
 
-let caseId: string = '1790590245397346';
+let caseId: string = '';
 let pageHelper: PageHelper;
 let buttonHelper: ButtonHelper;
 let tabsHelper: TabsHelper;
@@ -276,7 +276,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         case claimTypes.ONE_VS_TWO_LIP_LR:
           console.log('Defendant 2: REPRESENTED');
           await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-          await createCase.setSolicitorOrganisation('Civil - Organisation 2');
+          // Defendant 2's solicitor is the Respondent2 Solicitor user, who belongs to Organisation 3
+          await createCase.setSolicitorOrganisation('Civil - Organisation 3');
           await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
           await createCase.setDefendant2LegalRepresentativeReference();
           await createCase.setDefendantLegalRepresentativeEmail(2);

@@ -19,10 +19,19 @@ export class CreateUnspecifiedCase {
   }
 
   async setReferences(claimType: ClaimTypes = ClaimTypes.ONE_VS_ONE) {
-    if (claimType === ClaimTypes.ONE_VS_ONE) {
-      await this.page
-        .locator('#solicitorReferences_applicantSolicitor1Reference')
-        .fill('ApplicantSolicitorReference');
+    await this.page
+      .locator('#solicitorReferences_applicantSolicitor1Reference')
+      .fill('ApplicantSolicitorReference');
+
+    // Defendant 1's solicitor reference is only entered when Defendant 1 has a solicitor.
+    // Defendant 2's solicitor reference (1v2DS, 1v2LIPLR) is entered later on its own page.
+    const defendant1IsLitigantInPerson = [
+      ClaimTypes.ONE_VS_ONE_LIP,
+      ClaimTypes.TWO_VS_ONE_LIP,
+      ClaimTypes.ONE_VS_TWO_LIP_LR,
+      ClaimTypes.ONE_VS_TWO_LIPS,
+    ].includes(claimType);
+    if (!defendant1IsLitigantInPerson) {
       await this.page
         .locator('#solicitorReferences_respondentSolicitor1Reference')
         .fill('RespondentSolicitor1Reference');
