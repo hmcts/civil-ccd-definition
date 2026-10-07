@@ -51,14 +51,17 @@ export class RespondToClaim {
       case claimTypes.ONE_VS_ONE:
       case claimTypes.ONE_VS_TWO_DIFF_SOL:
       case claimTypes.ONE_VS_TWO_LR_LIP:
-      case claimTypes.ONE_VS_TWO_LIP_LR:
-        console.log(`#respondent1ClaimResponseType-${respondent1Response}`);
-        if (defendantNumber === 1) {
-          await this.page.locator(`#respondent1ClaimResponseType-${respondent1Response}`).click();
-        } else {
-          await this.page.locator(`#respondent2ClaimResponseType-${respondent2Response}`).click();
-        }
+      case claimTypes.ONE_VS_TWO_LIP_LR: {
+        // Each defendant's solicitor responds separately and only sees their own defendant's response field,
+        // e.g. in a 1v2 different solicitors claim Defendant 2's solicitor answers respondent2ClaimResponseType.
+        const responseTypeLocator =
+          defendantNumber === 1
+            ? `#respondent1ClaimResponseType-${respondent1Response}`
+            : `#respondent2ClaimResponseType-${respondent2Response}`;
+        console.log(responseTypeLocator);
+        await this.page.locator(responseTypeLocator).click();
         break;
+      }
       case claimTypes.TWO_VS_ONE:
         await this.page.locator(`#respondent1ClaimResponseType-${respondent1Response}`).click();
         await this.page.locator(`#respondent1ClaimResponseTypeApplicant2-${respondent2Response}`).click();
@@ -73,10 +76,10 @@ export class RespondToClaim {
     // Solicitor reference
     let legalRepresentativeReference: string;
     if (defendantNumber === 1) {
-      legalRepresentativeReference = await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').innerText();
+      legalRepresentativeReference = await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').inputValue();
       await this.page.locator('#solicitorReferences_respondentSolicitor1Reference').fill(`${legalRepresentativeReference} Respond to claim`);
     } else {
-      legalRepresentativeReference = await this.page.locator('#respondentSolicitor2Reference').innerText();
+      legalRepresentativeReference = await this.page.locator('#respondentSolicitor2Reference').inputValue();
       await this.page.locator('#respondentSolicitor2Reference').fill(`${legalRepresentativeReference} - Respond to claim`);
     }
     await this.buttonHelper.continueButton.click();

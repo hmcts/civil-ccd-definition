@@ -25,6 +25,7 @@ import { RespondToClaim } from '../flows/events/RespondToClaim.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
+import { CaseUserRegistry } from '../../helpers/CaseUserRegistry.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -334,6 +335,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
     caseId = await pageHelper.grabCaseNumber();
     console.log('caseId>>>>>>>>>>>>>>>' + caseId + '<<<<<<<<<<<<<<<<<<<');
+    CaseUserRegistry.record(caseId, 'claimantSolicitor');
     // Pay the claim fee
     await new PaymentPage(page).makePayment('PBA');
     // When pay is called we send a callback url - pay should then use our callback url so that the next camunda process is kicked off which
@@ -433,19 +435,29 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       );
     });
   });
-  //
-  //
-  // test.describe('test7', { tag: '@unspecified' }, () => {
-  //   test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
-  //   test('Defendant 2 Solicitor acknowledges claim.', async ({ page }) => {
-  //     test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
-  //     await new RespondToClaim(page).submit(
-  //       claimType,
-  //       respondent1Response,
-  //       respondent2Response,
-  //       2,
-  //     );
-  //   });
-  // });
+
+  test.describe('test7', { tag: '@unspecified' }, () => {
+    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
+    test('Defendant 2 Solicitor responds to claim.', async ({ page }) => {
+      test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
+      await new RespondToClaim(page).submit(
+        claimType,
+        track,
+        respondent1Response,
+        respondent2Response,
+        2,
+        determinationWithoutHearing,
+        oneMonthStay,
+        preActionProtocol,
+        fixedRecoverableCosts,
+        fixedRecoveryCostsBand,
+        yesNo.YES,
+        Number(noOfExperts),
+        Number(noOfWitnesses),
+        language,
+        unavailableDatesRequired,
+      );
+    });
+  });
 
 });

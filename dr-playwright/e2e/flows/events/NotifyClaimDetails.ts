@@ -27,9 +27,8 @@ export class NotifyClaimDetails {
           await this.page.locator('#defendantSolicitorNotifyClaimDetailsOptions').selectOption({ index: i });
           await this.buttonHelper.continueButton.click();
 
-          if (whomToNotify === notifyClaimOptions.BOTH) {
-            await this.buttonHelper.continueButton.click();
-          } else {
+          // Both goes straight to the Upload page; a single defendant raises a warning first
+          if (whomToNotify !== notifyClaimOptions.BOTH) {
             await this.buttonHelper.IgnoreWarningAndContinueButton.click();
           }
 

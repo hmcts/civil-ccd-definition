@@ -15,8 +15,8 @@ const env = cleanEnv({
   }),
 });
 const claimType: claimTypes = env.CLAIM_TYPE;
-const caseListLocator: string = '//*[@id="content"]/div/h1';
-const caseList: string = 'Case list'
+// Match the heading by role rather than DOM position, as XUI versions wrap it differently
+const caseListHeading = (page: Page) => page.getByRole('heading', { level: 1, name: 'Case list' });
 const claimantSolicitorAuthFile = "./dr-playwright/e2e/.auth/ClaimantSolicitorUser.json";
 const respondent1SolicitorAuthFile = "./dr-playwright/e2e/.auth/Respondent1SolicitorUser.json";
 const respondent2SolicitorAuthFile = "./dr-playwright/e2e/.auth/Respondent2SolicitorUser.json";
@@ -36,8 +36,7 @@ async function isSavedSessionAccepted(page: Page, authFile: string): Promise<boo
 
   await page.context().addCookies(SessionUtils.getCookies(authFile));
   await page.goto(envUrl);
-  const accepted = await page
-    .locator(caseListLocator, { hasText: caseList })
+  const accepted = await caseListHeading(page)
     .waitFor({ timeout: 15000 })
     .then(() => true, () => false);
 
@@ -52,7 +51,7 @@ async function isSavedSessionAccepted(page: Page, authFile: string): Promise<boo
     setup.skip(await isSavedSessionAccepted(page, claimantSolicitorAuthFile), "Reusing existing valid session");
     await page.goto(envUrl);
     await idamPage.login(claimantSolicitorCredentials);
-    await expect(page.locator(caseListLocator)).toContainText(caseList);
+    await expect(caseListHeading(page)).toBeVisible();
     await page.context().storageState({ path: claimantSolicitorAuthFile });
   });
 
@@ -60,7 +59,7 @@ async function isSavedSessionAccepted(page: Page, authFile: string): Promise<boo
     setup.skip(await isSavedSessionAccepted(page, respondent1SolicitorAuthFile), "Reusing existing valid session");
     await page.goto(envUrl);
     await idamPage.login(respondent1SolicitorCredentials);
-    await expect(page.locator(caseListLocator)).toContainText(caseList);
+    await expect(caseListHeading(page)).toBeVisible();
     await page.context().storageState({ path: respondent1SolicitorAuthFile });
   });
 
@@ -69,7 +68,7 @@ async function isSavedSessionAccepted(page: Page, authFile: string): Promise<boo
       setup.skip(await isSavedSessionAccepted(page, respondent2SolicitorAuthFile), "Reusing existing valid session");
       await page.goto(envUrl);
       await idamPage.login(respondent2SolicitorCredentials);
-      await expect(page.locator(caseListLocator)).toContainText(caseList);
+      await expect(caseListHeading(page)).toBeVisible();
       await page.context().storageState({ path: respondent2SolicitorAuthFile });
     });
   }

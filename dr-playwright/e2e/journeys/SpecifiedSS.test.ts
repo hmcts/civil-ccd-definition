@@ -9,6 +9,7 @@ import claimTypes from '../../enums/claim-types.ts';
 import Timeline from '../../enums/timeline.ts';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import yesNo from '../../enums/yesNo.ts';
+import { CaseUserRegistry } from '../../helpers/CaseUserRegistry.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -174,5 +175,6 @@ test.describe('test1', { tag: '@specified' }, () => {
 
     caseId = await pageHelper.grabCaseNumber();
     console.log('caseId>>>>>>>>>>>>>>>' + caseId + '<<<<<<<<<<<<<<<<<<<');
+    CaseUserRegistry.record(caseId, 'claimantSolicitor');
   });
 });

@@ -3,6 +3,10 @@ import config from './playwright-e2e/config/config';
 import {envUrl} from './dr-playwright/civilConfig.ts';
 import os from 'node:os';
 
+// Set once by the runner process and inherited by every worker, so dr-playwright's case unassignment
+// teardown only processes cases recorded by this run (see dr-playwright/helpers/CaseUserRegistry.ts)
+process.env.DR_PLAYWRIGHT_RUN_ID ??= `${process.pid}-${Date.now()}`;
+
 export default defineConfig({
   // testDir: './playwright-e2e/tests',
   // globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
@@ -56,6 +60,12 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
       },
       testMatch: /.*\auth.setup\.ts/,
+      teardown: 'case-unassignment',
+    },
+    {
+      name: 'case-unassignment',
+      testDir: './dr-playwright/setup',
+      testMatch: /caseUnassignment\.teardown\.ts/,
     },
     {
       name: 'chromium',

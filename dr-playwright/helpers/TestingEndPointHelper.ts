@@ -8,6 +8,7 @@ import { TokensHelper } from './TokensHelper.ts';
 import { civilSystemUpdate } from '../../playwright-e2e/config/users/exui-users.ts';
 import { civilServiceUrl, systemupdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
 import claimTypes from '../enums/claim-types.ts';
+import { CaseUserRegistry } from './CaseUserRegistry.ts';
 
 
 export class TestingEndPointHelper {
@@ -117,6 +118,7 @@ export class TestingEndPointHelper {
           headers: this.getHeaders()
         });
         if (response.ok()) {
+          CaseUserRegistry.record(caseId, 'respondent1Solicitor');
           console.log('Assigning Defendant 2 Legal Representative to the claim...');
           await this.getTokens(respondent2SolicitorCredentials);
           response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORTWO`, {
@@ -125,6 +127,7 @@ export class TestingEndPointHelper {
           if (!response.ok()) {
             throw await this.assignmentError(response, claimType);
           }
+          CaseUserRegistry.record(caseId, 'respondent2Solicitor');
         } else {
           throw await this.assignmentError(response, claimType);
         }
@@ -139,6 +142,7 @@ export class TestingEndPointHelper {
         if (!response.ok()) {
           throw await this.assignmentError(response, claimType);
         }
+        CaseUserRegistry.record(caseId, 'respondent2Solicitor');
       }
 
       if (claimType == claimTypes.ONE_VS_TWO_LR_LIP || claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.TWO_VS_ONE || claimType == claimTypes.ONE_VS_TWO_SAME_SOL) {
@@ -150,6 +154,7 @@ export class TestingEndPointHelper {
         if (!response.ok()) {
           throw await this.assignmentError(response, claimType);
         }
+        CaseUserRegistry.record(caseId, 'respondent1Solicitor');
       }
     }
     catch (error) {
@@ -160,6 +165,24 @@ export class TestingEndPointHelper {
       );
     };
     console.log('Assignment successful. Continuing test...');
+  }
+
+  // Removes all of the user's case roles on the given cases (civil-service wraps CCD's case assignment API)
+  async unassignUserFromCases(user, caseIds: string[]) {
+    await this.getTokens(user);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    const response = await apiRequestContext.post(`${this.testingSupportUrl}/unassign-user`, {
+      headers: this.getHeaders(),
+      data: { caseIds },
+    });
+    if (!response.ok()) {
+      const body = await response.text().catch(() => '<unable to read response body>');
+      throw new Error(
+        `Failed to unassign ${user.name} from cases [${caseIds.join(', ')}]\n` +
+        `POST ${response.url()}\nStatus: ${response.status()} ${response.statusText()}\nBody: ${body}`
+      );
+    }
+    console.log(`${user.name} unassigned from cases [${caseIds.join(', ')}]`);
   }
 
   private async assignmentError(response: APIResponse, claimType: claimTypes) {
