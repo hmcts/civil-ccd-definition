@@ -197,9 +197,23 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       params,
     };
 
+    // 10 retries at 2s gave every Camunda process 20s to reach COMPLETED, which is far short of
+    // what the hearing notice processes actually take. Measured on the PR 8392 preview during a
+    // functional run: NOTIFY_HEARING_PARTIES 128.4s, HEARING_PROCESS 158.6s and
+    // SpecAutomatedHearingNoticeScheduler up to 35.7s, all of which COMPLETED. The engine had no
+    // ACTIVE instance left apart from a long-lived scheduler, so nothing was stuck; the wait was
+    // simply too short and the test reported state ACTIVE at 20s.
+    //
+    // Uses the wall clock deadline DTSCCI-6353 added, with the same 300s ceiling that
+    // BusinessProcessWaitTracker.MAX_BUDGET_MS applies to the businessProcess wait, so the two
+    // waits in this file now agree. The interval starts at 1s so a process that finishes quickly,
+    // which is most of them, is not held up, and backs off to 10s so a long one does not generate
+    // hundreds of polls.
     await super.retryRequestJson(url, requestOptions, {
-      retries: 10,
-      retryTimeInterval: 2000,
+      timeoutMs: 300_000,
+      retryTimeInterval: 1000,
+      backoffFactor: 1.5,
+      maxRetryTimeInterval: 10_000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonPropertyToBe('0.state', 'COMPLETED', responseJson, {
           message: 'Waiting for camunda process to complete',
