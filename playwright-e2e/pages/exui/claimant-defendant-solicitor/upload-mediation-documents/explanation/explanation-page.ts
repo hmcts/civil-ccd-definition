@@ -10,8 +10,8 @@ export default class ExplanationPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(headings.aboutThisService),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectText(paragraphs.deadlines),
       super.expectText(paragraphs.beforeYouUpload),
     ]);

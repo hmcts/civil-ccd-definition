@@ -11,8 +11,8 @@ export default class FinalOrderDocPreviewPage extends GaExuiPage(BasePage) {
   async verifyContent(gaCaseData: GaCCDCaseData) {
     await super.runVerifications([
       super.expectHeading(headings.previewdFinalOrderDocument),
-      super.expectHeading(getFormattedCaseId(gaCaseData.id!), { exact: false }),
-      super.expectHeading(gaCaseData.caseNameGaInternal!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(gaCaseData.id!)),
+      super.expectCaseHeading(gaCaseData.caseNameGaInternal!),
       super.expectText(paragraph.draftOrder),
       super.expectButton('.pdf', { exact: false }),
     ]);

@@ -12,8 +12,8 @@ export default class MultipleClaimantPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.expectText(headings.discontinueThisClaim),
       super.expectHeading(headings.whoIsDiscontinuing),
-      super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
-      super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!)),
+      super.expectCaseHeading(ccdCaseData?.caseNamePublic!),
       super.expectLabel(radioButtons.claimantWhoIsDiscontinuing.claimant1.label(claimant1PartyType)),
       super.expectLabel(radioButtons.claimantWhoIsDiscontinuing.claimant2.label(claimant2PartyType)),
     ]);

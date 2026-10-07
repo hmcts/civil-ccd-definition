@@ -15,7 +15,7 @@
     "test": "NODE_PATH=. mocha e2e/tests/unit/definitions/**/*.js",
     "test:a11y": "echo test:a11y",
     "test:coverage": "echo test:coverage",
-    "highLevelDataSetup": "echo './gradlew highLevelDataSetup --args=$1' > ./temp.sh && sh ./temp.sh",
+    "highLevelDataSetup": "./bin/run-high-level-data-setup.sh",
     "test:smoke": "./playwright-e2e/scripts/civil-master-pr/civil-ccd/playwright-run-civil-ccd-master-pr-smoke.sh",
     "test:debug": "MOCHAWESOME_REPORTFILENAME=debug npx codeceptjs run-workers --suites 1 --grep @debug --reporter mocha-multi --plugins allure --verbose",
     "test:fullfunctional": "./e2e/run-full-functional-tests.sh",

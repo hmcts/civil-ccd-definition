@@ -10,8 +10,8 @@ export default class QueryDetailsFollowupPage extends ExuiQmPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectText(headings.queryDetails),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectText(paragraphs.queryDetails.title),
       super.expectText(paragraphs.response.title),
       super.expectText(inputs.askFollowupQuestions.label),
