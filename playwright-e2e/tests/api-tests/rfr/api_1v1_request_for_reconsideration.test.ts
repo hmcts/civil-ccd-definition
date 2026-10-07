@@ -16,7 +16,7 @@ test.describe(
         CaseworkerApiSteps,
         JudgeApiSteps,
       }) => {
-        await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
+        await ClaimantSolicitorSpecApiSteps.CreateClaim();
         await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
         await DefendantSolicitor1SpecApiSteps.DefendantResponse({
@@ -41,7 +41,7 @@ test.describe(
         CaseworkerApiSteps,
         JudgeApiSteps,
       }) => {
-        await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
+        await ClaimantSolicitorSpecApiSteps.CreateClaim();
         await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
         await DefendantSolicitor1SpecApiSteps.DefendantResponse({
@@ -64,7 +64,7 @@ test.describe(
       CaseworkerApiSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
@@ -83,7 +83,7 @@ test.describe(
       DefendantSolicitor1SpecApiSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
@@ -102,7 +102,7 @@ test.describe(
       CaseworkerApiSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({

@@ -11,8 +11,8 @@ export default class SetAsideJudgmentPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.expectText(headings.setAside),
       super.expectText(headings.judgmentDetails),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
 
       super.expectText(subheading),
       super.expectLabel(radioButtons.judgeOrder.label),
