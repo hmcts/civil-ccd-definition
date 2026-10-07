@@ -22,13 +22,12 @@ export class PageHelper {
       console.log(nextStep);
       await expect(this.page.locator('#next-step')).toBeEnabled();
       await expect(this.page.locator('#next-step')).toContainText(nextStep);
-      await this.page.locator('#next-step').selectOption({ label: nextStep });
-     // await this.page.waitForTimeout(2000); // waits for 2 seconds
 
       await expect(async () => {
-        // This entire block re-runs if page.goto throws an error
-        await this.page.getByRole('button', { name: 'Go' }).isEnabled();
-        await this.page.getByRole('button', { name: 'Go' }).click();
+        // XUI can re-render the case page after the option is chosen, resetting the dropdown to "Select action"
+        // and leaving Go disabled, so the option is selected again on every attempt
+        await this.page.locator('#next-step').selectOption({ label: nextStep }, { timeout: 5000 });
+        await this.page.getByRole('button', { name: 'Go' }).click({ timeout: 5000 });
       }).toPass({
         intervals: [2000, 5000], // Time to wait between retries (in ms)
         timeout: 30000,          // Total maximum time for all retries combined (in ms)

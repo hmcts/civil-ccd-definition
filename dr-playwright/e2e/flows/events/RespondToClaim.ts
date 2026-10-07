@@ -84,10 +84,63 @@ export class RespondToClaim {
     }
     await this.buttonHelper.continueButton.click();
 
+    // Which pages follow depends on this defendant's response (set by civil-service as multiPartyResponseTypeFlags):
+    // the response document is only asked for a full defence or part admission, and the directions questionnaire
+    // only for a full defence. A full admission or counterclaim goes straight to the statement of truth.
+    // Only 1v1 and 1v2 different solicitors have the non-full-defence paths coded; other claim types assume a full defence.
+    const ownResponse = defendantNumber === 1 ? respondent1Response : respondent2Response;
+    const hasNonFullDefencePaths = [claimTypes.ONE_VS_ONE, claimTypes.ONE_VS_TWO_DIFF_SOL].includes(claimType);
+    const isFullDefence = !hasNonFullDefencePaths || ownResponse === RespondentResponses.FULL_DEFENCE;
+    const isResponseDocumentRequired = isFullDefence || ownResponse === RespondentResponses.PART_ADMISSION;
+
     // Response document
-    await this.pageHelper.uploadFile(this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`), './dr-playwright/documents/TEST_DOCUMENT_3.pdf');
+    if (isResponseDocumentRequired) {
+      await this.pageHelper.uploadFile(this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`), './dr-playwright/documents/TEST_DOCUMENT_3.pdf');
+      await this.buttonHelper.continueButton.click();
+    }
+
+    if (isFullDefence) {
+      await this.completeDirectionsQuestionnaire(
+        track,
+        defendantNumber,
+        determinationWithoutHearing,
+        oneMonthStay,
+        preActionProtocol,
+        fixedRecoverableCosts,
+        fixedRecoverableCostsBand,
+        disclosure,
+        noOfExperts,
+        noOfWitnesses,
+        language,
+        unavailableDatesRequired,
+      );
+    }
+
+    // Statement of truth
+    await this.page.locator('input[id$="uiStatementOfTruth_name"]').fill((defendantNumber === 1 ? respondent1SolicitorCredentials : respondent2SolicitorCredentials).name);
+    await this.page.locator('input[id$="uiStatementOfTruth_role"]').fill('Solicitor');
     await this.buttonHelper.continueButton.click();
 
+    // Check your answers and submit
+    await this.buttonHelper.submitButton.click();
+    await this.page.locator('#confirmation-header').waitFor({ state: 'visible' });
+    await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
+  }
+
+  private async completeDirectionsQuestionnaire(
+    track: trackType,
+    defendantNumber: number,
+    determinationWithoutHearing: YesNo,
+    oneMonthStay: YesNo,
+    preActionProtocol: YesNo,
+    fixedRecoverableCosts: YesNo,
+    fixedRecoverableCostsBand: FixedRecoveryCostsBands,
+    disclosure: YesNo,
+    noOfExperts: number,
+    noOfWitnesses: number,
+    language: LanguageSpokenAndDocuments,
+    unavailableDatesRequired: YesNo,
+  ) {
     if (track === trackType.SMALL) {
       // Determination without hearing (small claims only)
       await this.page.locator(`#deterWithoutHearingRespondent${defendantNumber}_deterWithoutHearingYesNo_${determinationWithoutHearing}`).click();
@@ -209,15 +262,5 @@ export class RespondToClaim {
     await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_reasonForFutureApplications`).fill('Reason for future applications.');
     await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_otherInformationForJudge`).fill('Other information for the judge.');
     await this.buttonHelper.continueButton.click();
-
-    // Statement of truth
-    await this.page.locator('input[id$="uiStatementOfTruth_name"]').fill((defendantNumber === 1 ? respondent1SolicitorCredentials : respondent2SolicitorCredentials).name);
-    await this.page.locator('input[id$="uiStatementOfTruth_role"]').fill('Solicitor');
-    await this.buttonHelper.continueButton.click();
-
-    // Check your answers and submit
-    await this.buttonHelper.submitButton.click();
-    await this.page.locator('#confirmation-header').waitFor({ state: 'visible' });
-    await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
   }
 }
