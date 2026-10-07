@@ -10,8 +10,8 @@ export default class AbandonOtherRemedyPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectText(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-      super.expectText(ccdCaseData.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectSubheading(subheading),
       super.expectLegend(radioButtons.abandonOtherRemedy.legend),
       super.expectLabel(radioButtons.abandonOtherRemedy.yes.label),
