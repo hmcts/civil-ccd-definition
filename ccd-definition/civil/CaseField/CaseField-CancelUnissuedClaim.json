@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "cancelUnissuedClaimSpecReason",
+    "ID": "cancelUnissuedClaimReason",
     "Label": "Reason for cancelling the unissued claim",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
@@ -10,7 +10,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "cancelUnissuedClaimSpecDate",
+    "ID": "cancelUnissuedClaimDate",
     "Label": "Date the unissued claim was cancelled",
     "FieldType": "Date",
     "SecurityClassification": "Public",

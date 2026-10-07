@@ -1,11 +1,11 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CANCEL_UNISSUED_CLAIM_SPEC",
+    "ID": "CANCEL_UNISSUED_CLAIM",
     "Name": "Cancel unissued claim",
     "Description": "Citizen claimant cancels a spec claim before it is issued",
     "PreConditionState(s)": "PENDING_CASE_ISSUED",
-    "PostConditionState": "CLAIM_UNISSUED_CANCELLED",
+    "PostConditionState": "UNISSUED_CLAIM_CANCELLED",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",

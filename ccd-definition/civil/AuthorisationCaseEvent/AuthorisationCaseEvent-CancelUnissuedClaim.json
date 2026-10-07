@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CANCEL_UNISSUED_CLAIM_SPEC",
+    "CaseEventID": "CANCEL_UNISSUED_CLAIM",
     "AccessControl": [
       {
         "UserRoles": [

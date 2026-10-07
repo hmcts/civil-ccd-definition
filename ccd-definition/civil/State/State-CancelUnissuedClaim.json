@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CLAIM_UNISSUED_CANCELLED",
+    "ID": "UNISSUED_CLAIM_CANCELLED",
     "Name": "Claim is unissued and cancelled",
     "Description": "Unissued claim cancelled by the claimant",
     "DisplayOrder": 20,
