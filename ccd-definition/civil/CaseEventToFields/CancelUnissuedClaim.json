@@ -1,0 +1,27 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CANCEL_UNISSUED_CLAIM",
+    "PageID": "CancelUnissuedClaimReason",
+    "PageLabel": "Reasons for cancelling the claim",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "CaseFieldID": "cancelUnissuedClaimWarning",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CANCEL_UNISSUED_CLAIM",
+    "PageID": "CancelUnissuedClaimReason",
+    "PageLabel": "Reasons for cancelling the claim",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "CaseFieldID": "cancelUnissuedClaimReason",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-cancel-reason"
+  }
+]
