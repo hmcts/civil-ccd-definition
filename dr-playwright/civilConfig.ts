@@ -84,3 +84,11 @@ export const caseUnassignment = {
   batchSize: Number(process.env.UNASSIGN_BATCH_SIZE ?? 50),
 }
 
+// How hard to try when the document store rate limits an upload: how many attempts in total, and the wait before
+// the first retry in seconds. Each later retry waits longer (wait x attempt number), so the defaults of 5 attempts
+// and 5 seconds wait up to 50 seconds in all. Override with UPLOAD_RETRY_ATTEMPTS and UPLOAD_RETRY_WAIT_SECONDS.
+export const uploadRetries = {
+  attempts: Number(process.env.UPLOAD_RETRY_ATTEMPTS ?? 5),
+  waitSeconds: Number(process.env.UPLOAD_RETRY_WAIT_SECONDS ?? 5),
+}
+

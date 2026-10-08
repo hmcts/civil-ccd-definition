@@ -20,16 +20,46 @@ export class CoSHelper {
     this.pageHelper = new PageHelper(page);
   }
 
-  async submit(claimType: claimTypes, event:string = 'NotifyClaim' ) {
+  // The defendants who are litigants in person, and so need a Certificate of Service, for each claim type
+  static litigantInPersonDefendants(claimType: claimTypes): number[] {
+    switch (claimType) {
+      case claimTypes.ONE_VS_ONE_LIP:
+      case claimTypes.TWO_VS_ONE_LIP:
+      case claimTypes.ONE_VS_TWO_LIP_LR:
+        return [1];
+      case claimTypes.ONE_VS_TWO_LR_LIP:
+        return [2];
+      case claimTypes.ONE_VS_TWO_LIPS:
+        return [1, 2];
+      default:
+        return [];
+    }
+  }
+
+  // Claim types where no defendant has a legal representative, so Notify claim details has no document upload page
+  static hasNoRepresentedDefendant(claimType: claimTypes): boolean {
+    return [claimTypes.ONE_VS_ONE_LIP, claimTypes.TWO_VS_ONE_LIP, claimTypes.ONE_VS_TWO_LIPS].includes(claimType);
+  }
+
+  // Completes a Certificate of Service page for each litigant in person defendant, in defendant order
+  async submit(claimType: claimTypes, event: string = 'NotifyClaim') {
+    for (const defendantNumber of CoSHelper.litigantInPersonDefendants(claimType)) {
+      await this.submitForDefendant(String(defendantNumber), event);
+    }
+  }
+
+  private async submitForDefendant(LiPDefendantNumber: string, event: string) {
     const serveDate = moment().businessSubtract(2, 'days');
     const serviceDate = moment().businessAdd(2, 'days');
-    let LiPDefendantNumber: string = '1';
+
+    // The date fields have the same IDs on every defendant's page, so wait for this defendant's page to show before
+    // filling them. Otherwise, after Continue on defendant 1's page, the dates can go into that page while it is
+    // still showing.
+    const fieldPrefix = event === 'NotifyClaimDetails' ? `cos${event}${LiPDefendantNumber}` : `cos${event}Defendant${LiPDefendantNumber}`;
+    await this.page.locator(`#${fieldPrefix}_cosServedDocumentFiles`).waitFor({ state: 'visible' });
 
     await this.pageHelper.fillDate('cosDateOfServiceForDefendant', serveDate);
     await this.pageHelper.fillDate('cosDateDeemedServedForDefendant', serviceDate);
-
-    // Only a 1v2 claim with a represented first defendant has its LiP as defendant 2
-    LiPDefendantNumber = claimType === claimTypes.ONE_VS_TWO_LR_LIP ? '2' : '1';
 
     if (event === 'NotifyClaimDetails') {
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosServedDocumentFiles`).fill(`${this.whatDocumentsServed} ${LiPDefendantNumber}`);

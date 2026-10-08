@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
 import moment from 'moment-business-days';
-import { xuiLoadRetries } from '../civilConfig.ts';
+import { uploadRetries, xuiLoadRetries } from '../civilConfig.ts';
 // import {imageLocators} from "../fixtures/imageLocators";
 // import {TabsHelper} from "./TabsHelper";
 // import {WaitUtils} from "../e2e/utils/wait.utils";
@@ -65,17 +65,28 @@ export class PageHelper {
     }
 
     // Uploads a file and waits for it to finish, retrying if the document store rate limits the upload
-    async uploadFile(fileInput: Locator, filePath: string, maxAttempts: number = 3) {
-      const rateLimitedMessage = this.page.getByText('Your request was rate limited');
+    async uploadFile(
+      fileInput: Locator,
+      filePath: string,
+      maxAttempts: number = uploadRetries.attempts,
+      waitSeconds: number = uploadRetries.waitSeconds,
+    ) {
+      // Only visible messages count: a page with several upload fields, or a retried upload, keeps hidden copies of
+      // these messages from earlier uploads
+      const uploadingMessages = this.page.locator('.error-message:visible', { hasText: 'Uploading...' });
+      const rateLimitedMessages = this.page.locator('.error-message:visible', { hasText: 'Your request was rate limited' });
       for (let attempt = 1; attempt <= maxAttempts; attempt++) {
         await fileInput.setInputFiles([]);
         await fileInput.setInputFiles(filePath);
-        await this.page.locator('.error-message', { hasText: 'Uploading...' }).waitFor({ state: 'hidden' });
-        if (!(await rateLimitedMessage.isVisible())) {
+        await expect(uploadingMessages).toHaveCount(0);
+        if ((await rateLimitedMessages.count()) === 0) {
           return;
         }
-        console.log(`Upload of ${filePath} was rate limited, retrying (attempt ${attempt} of ${maxAttempts})...`);
-        await this.page.waitForTimeout(5000 * attempt);
+        if (attempt < maxAttempts) {
+          const waitBeforeRetrySeconds = waitSeconds * attempt;
+          console.log(`Upload of ${filePath} was rate limited on attempt ${attempt} of ${maxAttempts}, retrying in ${waitBeforeRetrySeconds}s`);
+          await this.page.waitForTimeout(waitBeforeRetrySeconds * 1000);
+        }
       }
       throw new Error(`Upload of ${filePath} was still rate limited after ${maxAttempts} attempts`);
     }

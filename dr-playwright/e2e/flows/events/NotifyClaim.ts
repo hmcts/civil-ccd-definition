@@ -44,7 +44,8 @@ export class NotifyClaim {
       }
     } else {
       await this.buttonHelper.continueButton.click();
-      if (claimType === claimTypes.ONE_VS_ONE_LIP || claimType === claimTypes.ONE_VS_TWO_LR_LIP || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+      // Each litigant in person defendant needs a Certificate of Service page completing
+      if (CoSHelper.litigantInPersonDefendants(claimType).length > 0) {
         await new CoSHelper(this.page).submit(claimType);
       }
       await this.buttonHelper.submitButton.click();

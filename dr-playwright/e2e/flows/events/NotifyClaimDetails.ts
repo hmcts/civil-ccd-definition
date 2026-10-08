@@ -38,14 +38,16 @@ export class NotifyClaimDetails {
           break;
         }
       }
-    } else if (claimType === claimTypes.ONE_VS_ONE_LIP) {
-      // A LiP defendant goes straight to the Certificate of Service, which holds its own evidence upload
+    } else if (CoSHelper.hasNoRepresentedDefendant(claimType)) {
+      // With no represented defendant there is no document upload page, so it goes straight to the Certificate(s)
+      // of Service, which hold their own evidence upload
       await new CoSHelper(this.page).submit(claimType, 'NotifyClaimDetails');
       await this.buttonHelper.submitButton.click();
     } else {
       await this.uploadNotifyClaimDetailsDocs();
       await this.buttonHelper.continueButton.click();
-      if (claimType === claimTypes.ONE_VS_TWO_LR_LIP || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+      // Any litigant in person defendant also needs a Certificate of Service page completing
+      if (CoSHelper.litigantInPersonDefendants(claimType).length > 0) {
         await new CoSHelper(this.page).submit(claimType, 'NotifyClaimDetails');
       }
       await this.buttonHelper.submitButton.click();
@@ -62,27 +64,20 @@ export class NotifyClaimDetails {
       [7, 'certificateOfSuitability']
     ]);
 
-    const rateLimitError: string = 'Your request was rate limited. Please wait a few seconds before retrying your document upload';
-    const uploading: string = 'Uploading...';
-
-    for (let [addNewButtonIndex, documentType] of documentsMap.entries()) {
+    // Each upload goes through uploadFile, which waits for it to finish and uploads again if the document store
+    // rate limits it
+    for (const [addNewButtonIndex, documentType] of documentsMap.entries()) {
       await this.page.locator(`:nth-match(:text("Add new"), ${addNewButtonIndex})`).click();
       if (documentType === 'particularsOfClaim') {
-        await this.page.locator(`#servedDocumentFiles_${documentType}Document_value`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
-        await this.page.waitForSelector('.error-message', { state: 'hidden' });
+        await this.pageHelper.uploadFile(
+          this.page.locator(`#servedDocumentFiles_${documentType}Document_value`),
+          './dr-playwright/documents/TEST_DOCUMENT_1.pdf',
+        );
       } else {
-        const messageLocator  = this.page.locator(`#servedDocumentFiles_${documentType}_0_0`).locator('.error-message');
-        const documentLocator = this.page.locator(`#servedDocumentFiles_${documentType}_0_document`);
-
-        if (await messageLocator.innerText() !== uploading || await messageLocator.innerText() !== rateLimitError)  {
-          await documentLocator.setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_2.pdf');
-
-          if (await messageLocator.innerText() === uploading || await messageLocator.innerText() === rateLimitError) {
-            await documentLocator.setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_2.pdf');
-          }
-        } else {
-          await messageLocator.waitFor({state: 'hidden'});
-        }
+        await this.pageHelper.uploadFile(
+          this.page.locator(`#servedDocumentFiles_${documentType}_0_document`),
+          './dr-playwright/documents/TEST_DOCUMENT_2.pdf',
+        );
       }
     }
   }
