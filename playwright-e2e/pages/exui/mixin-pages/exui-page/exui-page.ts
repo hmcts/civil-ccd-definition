@@ -25,14 +25,14 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false, timeout }),
-          super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false, timeout }),
+          super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!), { timeout }),
+          super.expectCaseHeading(ccdCaseData?.caseNamePublic!, { timeout }),
         ];
       } else {
         expects = [
           super.expectHeading(ccdEventstate.name, { exact: false, timeout }),
-          super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false, timeout }),
-          super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false, timeout }),
+          super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!), { timeout }),
+          super.expectCaseHeading(ccdCaseData?.caseNamePublic!, { timeout }),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });

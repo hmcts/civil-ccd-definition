@@ -18,7 +18,7 @@ test.describe(
         JudgeApiSteps,
         CaseworkerApiSteps,
       }) => {
-        await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2DS();
+        await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
         await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();

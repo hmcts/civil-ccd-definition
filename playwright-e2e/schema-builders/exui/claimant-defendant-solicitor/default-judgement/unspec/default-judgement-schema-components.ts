@@ -54,7 +54,8 @@ const hearingSupportRequirementsFieldDJ = () => ({
 });
 
 const otherRemedyAbandoned = () => ({
-  isOtherRemedyAbandoned: nonEmptyString,
+  isOtherRemedyAbandoned: z.literal('Yes'),
+  otherRemedyAbandonedDate: z.string(),
 });
 
 const defaultJudgementSchemaComponents = {
