@@ -145,20 +145,24 @@ const claimOfflineAfterNotifyClaimDetails =
   claimOfflineAfterNotifyClaim || defendantsToNotifyClaimDetails !== notifyClaimOptions.BOTH;
 // Once every defendant has responded, the claim moves on to the claimant's intention if all responses are a full
 // defence and goes offline otherwise.
-const responsesForClaimType = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.TWO_VS_ONE].includes(claimType)
+const responsesForClaimType = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.TWO_VS_ONE].includes(claimType)
   ? [respondent1Response, respondent2Response]
   : [respondent1Response];
 const stateAfterAllResponses = responsesForClaimType.every((response) => response === respondentResponses.FULL_DEFENCE)
   ? caseStates.AWAITING_APPLICANT_INTENTION
   : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
 
-// In a 1v2DS claim each defendant's solicitor responds separately, in either order, and the claim waits in
+// In these claims the two defendants respond separately, in either order, and the claim waits in
 // AWAITING_RESPONDENT_ACKNOWLEDGEMENT until both have responded. Tracking who has responded keeps the expected
 // state right whichever defendant responds first.
+//  - 1v2DS: each defendant's solicitor responds.
+//  - 1v2LRLIP: Defendant 1's solicitor responds. Defendant 2 is a litigant in person, who cannot respond online in an
+//    unspecified claim, so the claim keeps waiting unless they appoint a solicitor who responds for them.
+const separateResponseClaimTypes = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LR_LIP];
 const defendantsResponded = new Set<number>();
 function expectedStateAfterResponse(defendantNumber: number): caseStates {
   defendantsResponded.add(defendantNumber);
-  const waitingForOtherDefendant = claimType === claimTypes.ONE_VS_TWO_DIFF_SOL && defendantsResponded.size < 2;
+  const waitingForOtherDefendant = separateResponseClaimTypes.includes(claimType) && defendantsResponded.size < 2;
   return waitingForOtherDefendant ? caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT : stateAfterAllResponses;
 }
 
