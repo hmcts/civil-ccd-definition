@@ -22,7 +22,10 @@ test.describe(
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.TWO_VS_ONE,
+      });
       await ClaimantSolicitorApiSteps.RespondFastProceed2v1();
       await JudgeApiSteps.SdoFast();
       await HearingCenterAdminApiSteps.ScheduleHearingFastTrialWA();
