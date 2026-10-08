@@ -10,8 +10,8 @@ export default class ShowCertifyStatmentBothPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectText(heading),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!)),
-      super.expectHeading(ccdCaseData.caseNamePublic!),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectText(lists.timeExpired),
       super.expectText(lists.notResponded),
       super.expectText(lists.noOutstandingApp),
