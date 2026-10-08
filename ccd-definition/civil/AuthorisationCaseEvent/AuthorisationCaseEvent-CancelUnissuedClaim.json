@@ -5,7 +5,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },

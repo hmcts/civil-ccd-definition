@@ -19,6 +19,13 @@
           "caseworker-civil-system-field-reader"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
@@ -40,6 +47,26 @@
           "caseworker-civil-admin",
           "judge-profile",
           "caseworker-civil-system-field-reader"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "cancelUnissuedClaimWarning",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
