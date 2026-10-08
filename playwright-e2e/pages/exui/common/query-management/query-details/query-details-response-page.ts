@@ -11,8 +11,8 @@ export default class QueryDetailsResponsePage extends ExuiQmPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(headings.queryDetails, { exact: false }),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectText(paragraphs.queryDetails.querySubject),
       super.expectText(paragraphs.queryDetails.queryBody),
       super.expectSelector(inputs.responseDetail.selector),

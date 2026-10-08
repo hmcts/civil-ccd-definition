@@ -11,7 +11,7 @@ export default class DiscontinuanceTypePage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.expectText(headings.discontinueThisClaim),
       super.expectHeading(headings.typeOfDiscontinuance),
-      super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!)),
       super.expectRadioLabel(
         radioButtons.fullDiscontinuance.label,
         radioButtons.fullDiscontinuance.selector,

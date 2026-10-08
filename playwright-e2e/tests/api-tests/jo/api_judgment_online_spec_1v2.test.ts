@@ -11,7 +11,10 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2SS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
@@ -24,7 +27,10 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2DS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
@@ -44,7 +50,10 @@ test.describe(
         JudgeApiSteps,
         CaseworkerApiSteps,
       }) => {
-        await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2SS();
+        await ClaimantSolicitorSpecApiSteps.CreateClaim({
+          claimTrack: ClaimTrack.FAST_CLAIM,
+          claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+        });
         await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
         await DefendantSolicitor1SpecApiSteps.DefendantResponse({

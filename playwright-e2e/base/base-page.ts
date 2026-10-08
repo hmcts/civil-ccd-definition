@@ -593,6 +593,23 @@ export default abstract class BasePage {
     });
   }
 
+  // XUI shows the case number and case name in their own level 1 headings on older releases,
+  // and together in a single level 2 heading on newer ones, so match any heading containing the text.
+  @BoxedDetailedStep(classKey, 'text')
+  @TruthyParams(classKey, 'text')
+  protected async expectCaseHeading(
+    text: string,
+    options: {
+      message?: string;
+      timeout?: number;
+    } = {},
+  ) {
+    const locator = this.page.getByRole('heading', { name: text });
+    await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+      timeout: options.timeout,
+    });
+  }
+
   @BoxedDetailedStep(classKey, 'text')
   protected async expectSubheading(
     text: string,

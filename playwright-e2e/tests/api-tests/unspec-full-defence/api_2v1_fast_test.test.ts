@@ -12,7 +12,10 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1ApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast2v1();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimType: ClaimType.TWO_VS_ONE,
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await CaseworkerApiSteps.AddCaseNote();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
