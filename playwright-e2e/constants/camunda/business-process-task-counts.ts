@@ -1,0 +1,50 @@
+/**
+ * Number of external tasks in each BPMN process with 5 or more of them, keyed by the start message
+ * name (which is the businessProcess.camundaEvent returned by civil-service testing support).
+ * External tasks run sequentially (there are no parallel gateways), so wait time grows with this count.
+ *
+ * Generated from civil-camunda-bpmn-definition @ 6e5f855b by counting camunda:type="external"
+ * in each src/main/resources/camunda/**\/*.bpmn and keying it by its start event message name.
+ * Processes not listed here have fewer than 5 external tasks and use the default wait budget.
+ */
+const businessProcessTaskCounts: Readonly<Record<string, number>> = {
+  DEFENDANT_RESPONSE_SPEC: 26,
+  CLAIMANT_RESPONSE_SPEC: 24,
+  CLAIMANT_RESPONSE_CUI: 22,
+  CREATE_CLAIM_SPEC_AFTER_PAYMENT: 17,
+  UPLOAD_TRANSLATED_DOCUMENT_CLAIMANT_INTENTION: 14,
+  CLAIMANT_RESPONSE: 11,
+  DEFENDANT_RESPONSE: 11,
+  INITIATE_GENERAL_APPLICATION: 11,
+  UPLOAD_TRANSLATED_DOCUMENT_CLAIMANT_LR_INTENTION: 11,
+  UPLOAD_TRANSLATED_DOCUMENT_CLAIMANT_REJECTS_REPAYMENT_PLAN: 11,
+  APPLY_NOC_DECISION_DEFENDANT_LIP: 9,
+  CREATE_CLAIM_AFTER_PAYMENT: 9,
+  UPLOAD_TRANSLATED_DEFENDANT_SEALED_FORM: 9,
+  DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC: 8,
+  JUDGEMENT_BY_ADMISSION_NON_DIVERGENT_SPEC: 8,
+  NOTIFY_HEARING_PARTIES: 8,
+  RECORD_JUDGMENT_NOTIFICATION: 8,
+  DEFAULT_JUDGEMENT_SPEC: 7,
+  INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT: 7,
+  MAKE_DECISION: 7,
+  NOTIFY_DEFENDANT_OF_CLAIM: 7,
+  NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: 7,
+  UPLOAD_TRANSLATED_DOCUMENT_CLAIM_ISSUE: 7,
+  UPLOAD_TRANSLATED_DOCUMENT_HEARING_SCHEDULED: 7,
+  CASE_PROCEEDS_IN_CASEMAN: 6,
+  HEARING_SCHEDULED: 6,
+  UPLOAD_TRANSLATED_DOCUMENT_GA_LIP: 6,
+  UPLOAD_TRANSLATED_DOCUMENT_JUDGE_DECISION: 6,
+  CREATE_LIP_CLAIM: 5,
+  CREATE_SDO: 5,
+  HEARING_SCHEDULED_GA: 5,
+  INITIATE_COSC_APPLICATION_AFTER_PAYMENT: 5,
+  JUDGMENT_PAID_IN_FULL: 5,
+  PROCESS_COSC_APPLICATION: 5,
+  REQUEST_JUDGEMENT_ADMISSION_SPEC: 5,
+  SET_ASIDE_JUDGMENT: 5,
+  TAKE_CASE_OFFLINE: 5,
+};
+
+export default businessProcessTaskCounts;
