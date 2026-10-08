@@ -13,6 +13,7 @@ import User from '../models/users/user';
 import GaCaseState from '../constants/cases/ga-case-states';
 import { civilSystemUpdate } from '../config/users/exui-users';
 import CamundaProcess from '../constants/camunda/camunda-processes';
+import BusinessProcessWaitTracker from '../helpers/business-process-wait-helper';
 
 @AllMethodsStep()
 export default class CivilServiceRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -196,9 +197,23 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       params,
     };
 
+    // 10 retries at 2s gave every Camunda process 20s to reach COMPLETED, which is far short of
+    // what the hearing notice processes actually take. Measured on the PR 8392 preview during a
+    // functional run: NOTIFY_HEARING_PARTIES 128.4s, HEARING_PROCESS 158.6s and
+    // SpecAutomatedHearingNoticeScheduler up to 35.7s, all of which COMPLETED. The engine had no
+    // ACTIVE instance left apart from a long-lived scheduler, so nothing was stuck; the wait was
+    // simply too short and the test reported state ACTIVE at 20s.
+    //
+    // Uses the wall clock deadline DTSCCI-6353 added, with the same 300s ceiling that
+    // BusinessProcessWaitTracker.MAX_BUDGET_MS applies to the businessProcess wait, so the two
+    // waits in this file now agree. The interval starts at 1s so a process that finishes quickly,
+    // which is most of them, is not held up, and backs off to 10s so a long one does not generate
+    // hundreds of polls.
     await super.retryRequestJson(url, requestOptions, {
-      retries: 10,
-      retryTimeInterval: 2000,
+      timeoutMs: 300_000,
+      retryTimeInterval: 1000,
+      backoffFactor: 1.5,
+      maxRetryTimeInterval: 10_000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonPropertyToBe('0.state', 'COMPLETED', responseJson, {
           message: 'Waiting for camunda process to complete',
@@ -281,30 +296,40 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     user: User,
     caseId?: number,
     expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
+    { timeoutMs }: { timeoutMs?: number } = {},
   ) {
     console.log(`Waiting for business process to finish, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}/business-process`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
+    // The budget depends on the process, which is only known once polled, so it is enforced in verifyResponse.
+    // The retry deadline is a safety net set just beyond the largest budget.
+    const tracker = new BusinessProcessWaitTracker(timeoutMs);
     await super.retryRequestJson(url, requestOptions, {
-      retries: 25,
-      retryTimeInterval: 3000,
+      timeoutMs: Math.max(timeoutMs ?? 0, BusinessProcessWaitTracker.MAX_BUDGET_MS) + 30_000,
+      retryTimeInterval: 1000,
+      backoffFactor: 1.5,
+      maxRetryTimeInterval: 10_000,
       verifyResponse: async (responseJson) => {
-        await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
+        const businessProcess = responseJson.businessProcess;
+        tracker.record(businessProcess);
+        await super.expectResponseJsonToNotHaveProperty('incidentMessage', responseJson, {
+          message: `Business process incident [INCIDENT]: ${businessProcess?.camundaEvent}, caseId: ${caseId}, incident message: ${responseJson.incidentMessage}`,
+          nonRetryable: true,
+        });
+        const overBudget = tracker.isOverBudget();
+        const expectOptions = {
+          message: tracker.describe(businessProcess, caseId, overBudget),
+          nonRetryable: overBudget,
+        };
+        await super.expectResponseJsonToHaveProperty('businessProcess', responseJson, expectOptions);
         await super.expectResponseJsonPropertyToBe(
           'businessProcess.status',
           'FINISHED',
           responseJson,
-          {
-            message:
-              `Ongoing business process: ${responseJson.businessProcess.camundaEvent}, caseId: ${caseId}, status: ${responseJson.businessProcess.status},` +
-              ` process instance: ${responseJson.businessProcess.processInstanceId}, last finished activity: ${responseJson.businessProcess.activityId}`,
-          },
+          expectOptions,
         );
-        await super.expectResponseJsonToNotHaveProperty('incidentMessage', responseJson, {
-          message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
-        });
         if (expectedCaseState)
           await super.expectResponseJsonPropertyToBe('ccdState', expectedCaseState, responseJson, {
             nonRetryable: true,
