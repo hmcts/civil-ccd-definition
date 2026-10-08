@@ -6,6 +6,7 @@ import RespondentResponses from '../../../enums/RespondentResponses.ts';
 import YesNo from '../../../enums/yesNo.ts';
 import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import trackType from '../../../enums/track.ts';
+import UnspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
 import LanguageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
 import moment from 'moment-business-days';
 import { courts } from '../../../fixtures/courts.ts';
@@ -29,6 +30,7 @@ export class RespondToClaim {
   async submit(
     claimType: claimTypes,
     track: trackType,
+    typeOfClaim: UnspecClaimTypes,
     respondent1Response: RespondentResponses = RespondentResponses.FULL_DEFENCE,
     respondent2Response: RespondentResponses = RespondentResponses.FULL_DEFENCE,
     defendantNumber: number = 1,
@@ -102,6 +104,7 @@ export class RespondToClaim {
     if (isFullDefence) {
       await this.completeDirectionsQuestionnaire(
         track,
+        typeOfClaim,
         defendantNumber,
         determinationWithoutHearing,
         oneMonthStay,
@@ -129,6 +132,7 @@ export class RespondToClaim {
 
   private async completeDirectionsQuestionnaire(
     track: trackType,
+    typeOfClaim: UnspecClaimTypes,
     defendantNumber: number,
     determinationWithoutHearing: YesNo,
     oneMonthStay: YesNo,
@@ -159,7 +163,7 @@ export class RespondToClaim {
       }
       await this.buttonHelper.continueButton.click();
 
-      // Fixed Recoverable Costs (fast track only - intermediate uses a different field)
+      // Fixed Recoverable Costs (fast and intermediate tracks)
       if (track === trackType.FAST) {
         await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_${fixedRecoverableCosts}`).click();
         if (fixedRecoverableCosts === YesNo.YES) {
@@ -167,6 +171,17 @@ export class RespondToClaim {
           await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_complexityBandingAgreed_${fixedRecoverableCosts}`).click();
         }
         await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_reasons`).fill('Fixed Recoverable Costs explanation');
+        await this.buttonHelper.continueButton.click();
+      } else if (track === trackType.INTERMEDIATE) {
+        await this.completeIntermediateFixedRecoverableCosts(defendantNumber, fixedRecoverableCosts, fixedRecoverableCostsBand);
+      }
+
+      // Disclosure of electronic documents (intermediate and multi tracks only)
+      const isIntermediateOrMulti = track === trackType.INTERMEDIATE || track === trackType.MULTI;
+      if (isIntermediateOrMulti) {
+        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfElectronicDocuments_reachedAgreement_No`).click();
+        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfElectronicDocuments_agreementLikely_No`).click();
+        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfElectronicDocuments_reasonForNoAgreement`).fill('Reason no agreement on electronic disclosure is likely.');
         await this.buttonHelper.continueButton.click();
       }
 
@@ -177,6 +192,14 @@ export class RespondToClaim {
         await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_bespokeDirections`).fill('Bespoke directions text.');
       }
       await this.buttonHelper.continueButton.click();
+
+      // Disclosure report (intermediate and multi tracks only, not for personal injury claims)
+      if (isIntermediateOrMulti && typeOfClaim !== UnspecClaimTypes.PERSONAL_INJURY) {
+        await this.page.locator(`#respondent${defendantNumber}DQDisclosureReport_disclosureFormFiledAndServed_Yes`).click();
+        await this.page.locator(`#respondent${defendantNumber}DQDisclosureReport_disclosureProposalAgreed_Yes`).click();
+        await this.page.locator(`#respondent${defendantNumber}DQDisclosureReport_draftOrderNumber`).fill('123');
+        await this.buttonHelper.continueButton.click();
+      }
     }
 
     // Experts
@@ -261,6 +284,30 @@ export class RespondToClaim {
     await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_futureApplications_Yes`).click();
     await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_reasonForFutureApplications`).fill('Reason for future applications.');
     await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_otherInformationForJudge`).fill('Other information for the judge.');
+    await this.buttonHelper.continueButton.click();
+  }
+
+  // The intermediate track fields only exist when the MINTI definition is deployed. Without it the page still shows
+  // (its page condition allows intermediate claims) but has nothing to fill in, so it is just continued.
+  private async completeIntermediateFixedRecoverableCosts(
+    defendantNumber: number,
+    fixedRecoverableCosts: YesNo,
+    fixedRecoverableCostsBand: FixedRecoveryCostsBands,
+  ) {
+    await this.page.waitForURL(/FixedRecoverableCosts/);
+    const fieldPrefix = `#respondent${defendantNumber}DQFixedRecoverableCostsIntermediate`;
+    const regimeRadio = this.page.locator(`${fieldPrefix}_isSubjectToFixedRecoverableCostRegime_${fixedRecoverableCosts}`);
+    const hasIntermediateFields = await regimeRadio
+      .waitFor({ state: 'visible', timeout: 5000 })
+      .then(() => true, () => false);
+    if (hasIntermediateFields) {
+      await regimeRadio.click();
+      if (fixedRecoverableCosts === YesNo.YES) {
+        await this.page.locator(`${fieldPrefix}_band-${fixedRecoverableCostsBand}`).click();
+        await this.page.locator(`${fieldPrefix}_complexityBandingAgreed_${fixedRecoverableCosts}`).click();
+      }
+      await this.page.locator(`${fieldPrefix}_reasons`).fill('Fixed Recoverable Costs explanation');
+    }
     await this.buttonHelper.continueButton.click();
   }
 }

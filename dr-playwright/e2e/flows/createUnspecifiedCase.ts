@@ -383,6 +383,7 @@ export class CreateUnspecifiedCase {
   async setClaimValue(track, typeOfClaim) {
     let claimAmount = '0';
 
+    // Intermediate track is £25,000 to £100,000, so a multi track claim must be over £100,000
     if (track == claimTrack.INTERMEDIATE) {
       claimAmount = '75000';
     }
@@ -393,7 +394,7 @@ export class CreateUnspecifiedCase {
       } else if (track == claimTrack.FAST) {
         claimAmount = '20000';
       } else if (track == claimTrack.MULTI) {
-        claimAmount = '50000';
+        claimAmount = '150000';
       }
     }
 
@@ -406,7 +407,7 @@ export class CreateUnspecifiedCase {
           claimAmount = '20000';
           break;
         case claimTrack.MULTI:
-          claimAmount = '50000';
+          claimAmount = '150000';
           break;
       }
     }

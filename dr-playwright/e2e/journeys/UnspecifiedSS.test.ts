@@ -459,6 +459,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await new RespondToClaim(page).submit(
         claimType,
         track,
+        typeOfClaim as unspecClaimTypes,
         respondent1Response,
         respondent2Response,
         1,
@@ -485,6 +486,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await new RespondToClaim(page).submit(
         claimType,
         track,
+        typeOfClaim as unspecClaimTypes,
         respondent1Response,
         respondent2Response,
         2,
