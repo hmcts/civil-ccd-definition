@@ -1,6 +1,7 @@
 import { expect, Page } from '@playwright/test';
 import { courts } from '../../fixtures/courts.ts';
 import { ButtonHelper } from '../../helpers/ButtonHelper';
+import { PageHelper } from '../../helpers/PageHelper.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import { partyDetails } from '../../fixtures/partyDetails.ts';
 import { LinkHelper } from '../../helpers/LinkHelper.ts';
@@ -10,12 +11,15 @@ import claimantDefendantTypes from '../../enums/claimantDefendantTypes.ts';
 import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
 import claimTrack from '../../enums/track.ts';
+import { xuiLoadRetries } from '../../civilConfig.ts';
 
 export class CreateUnspecifiedCase {
   private buttonHelper: ButtonHelper;
+  private pageHelper: PageHelper;
 
   constructor(public page: Page) {
     this.buttonHelper = new ButtonHelper(this.page);
+    this.pageHelper = new PageHelper(this.page);
   }
 
   async setReferences(claimType: ClaimTypes = ClaimTypes.ONE_VS_ONE) {
@@ -215,8 +219,10 @@ export class CreateUnspecifiedCase {
       await this.page.locator(`#applicant${claimantNumber}LitigationFriend_hasSameAddressAsLitigant_${yesNo}`).check();
 
       await this.buttonHelper.addNewButton.click();
-      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_certificateOfSuitability_0_document`).setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
-      await this.page.waitForSelector('.error-message', { state: 'hidden' });
+      await this.pageHelper.uploadFile(
+        this.page.locator(`#applicant${claimantNumber}LitigationFriend_certificateOfSuitability_0_document`),
+        './dr-playwright/documents/TEST_DOCUMENT_1.pdf',
+      );
     }
 
     await this.buttonHelper.continueButton.click();
@@ -274,7 +280,7 @@ export class CreateUnspecifiedCase {
 
   //Eventually we will pass the org as parameter - will be cleaner
   async setSolicitorOrganisation(organisationName: string = 'Civil - Organisation 2') {
-    await expect(this.page.locator('#search-org-text')).toBeVisible();
+    await this.waitForOrganisationSearch();
     await this.page.locator('#search-org-text').fill('civil');
 
     const child = this.page.getByText(organisationName);
@@ -283,6 +289,31 @@ export class CreateUnspecifiedCase {
     await expect(this.page.locator('#organisation-selected-table')).toBeVisible();
 
     await this.buttonHelper.continueButton.click();
+  }
+
+  // When the environment is slow XUI can fail to load the organisation list and show "Organisation search is
+  // currently unavailable" instead of the search box. Going back a page and forward again makes XUI request it again.
+  private async waitForOrganisationSearch(attempts: number = xuiLoadRetries.attempts, waitSeconds: number = xuiLoadRetries.waitSeconds) {
+    const searchBox = this.page.locator('#search-org-text');
+    const searchUnavailable = this.page.getByText('Organisation search is currently unavailable');
+    for (let attempt = 1; attempt <= attempts; attempt++) {
+      const searchShown = await searchBox
+        .or(searchUnavailable)
+        .waitFor({ state: 'visible', timeout: waitSeconds * 1000 })
+        .then(() => searchBox.isVisible(), () => false);
+      if (searchShown) {
+        return;
+      }
+      if (attempt === attempts) {
+        throw new Error(`Organisation search was still unavailable after ${attempts} attempts of ${waitSeconds}s each`);
+      }
+      console.log(`Organisation search unavailable, going back and trying again (attempt ${attempt + 1} of ${attempts})`);
+      const organisationPageUrl = this.page.url();
+      await this.buttonHelper.previousButton.click();
+      await this.page.waitForURL((url) => url.toString() !== organisationPageUrl, { timeout: waitSeconds * 1000 });
+      await this.buttonHelper.continueButton.click();
+      await this.page.waitForURL(organisationPageUrl, { timeout: waitSeconds * 1000 });
+    }
   }
 
   async setDefendantLegalRepresentativeCorrespondenceAddress(yesNo: YesNo = YesNo.NO, defendantNumber: number = 1) {

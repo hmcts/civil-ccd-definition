@@ -26,6 +26,7 @@ import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
 import { CaseUserRegistry } from '../../helpers/CaseUserRegistry.ts';
+import caseStates from '../../enums/caseStates.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -138,6 +139,28 @@ const typeOfClaim = process.env.TYPE_OF_CLAIM;
 const typeOfClaimSubType: string = process.env.SUB_TYPE;
 const defendantsToNotifyClaim: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM;
 const defendantsToNotifyClaimDetails: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS;
+// Notifying only one defendant takes the claim offline, so no later events can be done online
+const claimOfflineAfterNotifyClaim = defendantsToNotifyClaim !== notifyClaimOptions.BOTH;
+const claimOfflineAfterNotifyClaimDetails =
+  claimOfflineAfterNotifyClaim || defendantsToNotifyClaimDetails !== notifyClaimOptions.BOTH;
+// Once every defendant has responded, the claim moves on to the claimant's intention if all responses are a full
+// defence and goes offline otherwise.
+const responsesForClaimType = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.TWO_VS_ONE].includes(claimType)
+  ? [respondent1Response, respondent2Response]
+  : [respondent1Response];
+const stateAfterAllResponses = responsesForClaimType.every((response) => response === respondentResponses.FULL_DEFENCE)
+  ? caseStates.AWAITING_APPLICANT_INTENTION
+  : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
+
+// In a 1v2DS claim each defendant's solicitor responds separately, in either order, and the claim waits in
+// AWAITING_RESPONDENT_ACKNOWLEDGEMENT until both have responded. Tracking who has responded keeps the expected
+// state right whichever defendant responds first.
+const defendantsResponded = new Set<number>();
+function expectedStateAfterResponse(defendantNumber: number): caseStates {
+  defendantsResponded.add(defendantNumber);
+  const waitingForOtherDefendant = claimType === claimTypes.ONE_VS_TWO_DIFF_SOL && defendantsResponded.size < 2;
+  return waitingForOtherDefendant ? caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT : stateAfterAllResponses;
+}
 
 const claimant1LitigantFriend: yesNo = ['Yes'].includes(process.env.CLAIMANT1_LITIGANT_FRIEND)
   ? yesNo.YES
@@ -214,9 +237,10 @@ test.beforeEach(async ({ page }) => {
   createCasePage = new CreateCasePage(page);
   tabsHelper = new TabsHelper(page);
   testingEndpointHelper = new TestingEndPointHelper();
-  await page.goto(envUrl + '/cases/case-details/' + caseId);
-  if (page.url() != envUrl + '/cases/case-details/' + caseId) {
-    await page.goto(envUrl + '/cases/case-details/' + caseId);
+  await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
+  // XUI can redirect to the case list on the first load of a session, so open the case again if that happened
+  if (caseId && !page.url().includes(caseId)) {
+    await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
   }
 });
 
@@ -351,6 +375,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     } else {
       await new TestingEndPointHelper().serviceRequestUpdateClaimIssued(caseId);
     }
+    await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_ISSUED);
   });
 
   test.describe('test2', { tag: '@unspecified' }, () => {
@@ -361,15 +386,17 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         caseId,
         'NOTIFY_DEFENDANT_OF_CLAIM',
       );
+      if (claimOfflineAfterNotifyClaim) {
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
+        console.log('Notify claim -> claim went offline, later events are skipped');
+      } else {
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_CASE_DETAILS_NOTIFICATION);
+      }
     });
   });
 
-  if (defendantsToNotifyClaim !== notifyClaimOptions.BOTH) {
-    console.log('Notify claim -> Claim goes offline');
-    return 'Notify claim -> Claim goes offline';
-  }
-
   test.describe('test3', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaim, 'Claim went offline at Notify claim');
     test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
     test('Claimant Solicitor undertakes event: Notify claim details ', async ({ page }) => {
       await new NotifyClaimDetails(page).notify(claimType, defendantsToNotifyClaimDetails);
@@ -377,29 +404,35 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         caseId,
         'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS',
       );
+      if (claimOfflineAfterNotifyClaimDetails) {
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
+        console.log('Notify claim details -> claim went offline, later events are skipped');
+      } else {
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      }
     });
   });
 
-  if (defendantsToNotifyClaimDetails !== notifyClaimOptions.BOTH) {
-    console.log('Notify claim details -> Claim goes offline');
-    return 'Notify claim details -> Claim goes offline';
-  }
-
   test.describe('test4', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
     test('Defendant 1 Solicitor acknowledges claim.', async ({ page }) => {
       test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
         await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
+        // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
+        await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
         await new AcknowledgeClaim(page).acknowledge(
           claimType,
           respondent1ResponseIntention,
           respondent2ResponseIntention,
           1,
         );
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
     });
   });
 
   test.describe('test5', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
     test('Defendant 2 Solicitor acknowledges claim.', async ({ page }) => {
       test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
@@ -409,10 +442,12 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         respondent2ResponseIntention,
         2,
       );
+      await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
     });
   });
 
   test.describe('test6', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
     test('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
       test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
@@ -434,10 +469,12 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         language,
         unavailableDatesRequired,
       );
+      await testingEndpointHelper.assertCaseState(caseId, expectedStateAfterResponse(1));
     });
   });
 
   test.describe('test7', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
     test('Defendant 2 Solicitor responds to claim.', async ({ page }) => {
       test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
@@ -458,6 +495,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         language,
         unavailableDatesRequired,
       );
+      await testingEndpointHelper.assertCaseState(caseId, expectedStateAfterResponse(2));
     });
   });
 

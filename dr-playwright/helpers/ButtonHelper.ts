@@ -5,6 +5,7 @@ export class ButtonHelper {
   constructor(public page: Page) {}
 
   readonly continueButton = this.page.getByRole('button', { name: 'Continue' });
+  readonly previousButton = this.page.getByRole('button', { name: 'Previous' });
   readonly submitButton = this.page.getByRole('button', { name: 'Submit'});
   readonly closeAndReturnToCaseDetailsButton = this.page.getByRole('button', { name: 'Close and Return to case details' });
   readonly sendDirectionButton = this.page.getByRole('button', { name: 'Send direction'});

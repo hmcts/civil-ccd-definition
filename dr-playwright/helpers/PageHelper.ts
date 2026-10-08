@@ -1,5 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
 import moment from 'moment-business-days';
+import { xuiLoadRetries } from '../civilConfig.ts';
 // import {imageLocators} from "../fixtures/imageLocators";
 // import {TabsHelper} from "./TabsHelper";
 // import {WaitUtils} from "../e2e/utils/wait.utils";
@@ -34,6 +35,27 @@ export class PageHelper {
       });
     }
 
+    // Opens a URL and waits for XUI to render, reloading if it hasn't. When the environment is slow XUI can
+    // leave the page blank, and every later action would otherwise wait out its full timeout.
+    async gotoAndWaitForXui(url: string, attempts: number = xuiLoadRetries.attempts, waitSeconds: number = xuiLoadRetries.waitSeconds) {
+      // The primary navigation is on every XUI page, so it shows the app has rendered
+      const xuiNavigation = this.page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Case list' });
+      await this.page.goto(url);
+      for (let attempt = 1; attempt <= attempts; attempt++) {
+        const loaded = await xuiNavigation
+          .waitFor({ state: 'visible', timeout: waitSeconds * 1000 })
+          .then(() => true, () => false);
+        if (loaded) {
+          return;
+        }
+        if (attempt === attempts) {
+          throw new Error(`XUI did not load ${url} after ${attempts} attempts of ${waitSeconds}s each`);
+        }
+        console.log(`XUI not loaded after ${waitSeconds}s, reloading (attempt ${attempt + 1} of ${attempts}): ${url}`);
+        await this.page.reload();
+      }
+    }
+
     // Retries Continue until the next page's element shows, as CCD can drop the first click
     async continueUntilVisible(nextPageLocator: Locator) {
       await expect(async () => {
@@ -49,7 +71,9 @@ export class PageHelper {
         await fileInput.setInputFiles([]);
         await fileInput.setInputFiles(filePath);
         await this.page.locator('.error-message', { hasText: 'Uploading...' }).waitFor({ state: 'hidden' });
-        if (!(await rateLimitedMessage.isVisible())) return;
+        if (!(await rateLimitedMessage.isVisible())) {
+          return;
+        }
         console.log(`Upload of ${filePath} was rate limited, retrying (attempt ${attempt} of ${maxAttempts})...`);
         await this.page.waitForTimeout(5000 * attempt);
       }

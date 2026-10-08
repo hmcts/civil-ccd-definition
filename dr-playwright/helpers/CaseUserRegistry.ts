@@ -71,7 +71,9 @@ export class CaseUserRegistry {
   static remove({ file }: StoredRecord) {
     fs.rmSync(file, { force: true });
     const dir = path.dirname(file);
-    if (fs.existsSync(dir) && fs.readdirSync(dir).length === 0) fs.rmSync(dir, { recursive: true, force: true });
+    if (fs.existsSync(dir) && fs.readdirSync(dir).length === 0) {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   }
 
   private static readRecord(file: string): StoredRecord | null {
@@ -95,7 +97,9 @@ export class CaseUserRegistry {
   }
 
   private static runDirsToProcess(): string[] {
-    if (!fs.existsSync(registryDir)) return [];
+    if (!fs.existsSync(registryDir)) {
+      return [];
+    }
     return fs
       .readdirSync(registryDir, { withFileTypes: true })
       .filter((entry) => entry.isDirectory())
@@ -106,7 +110,9 @@ export class CaseUserRegistry {
   // Run folders are named "<runner pid>-<start time>"; a run is still in progress while its runner process exists
   private static isRunInProgress(runFolder: string): boolean {
     const pid = Number(runFolder.split('-')[0]);
-    if (!Number.isInteger(pid) || pid <= 0) return false;
+    if (!Number.isInteger(pid) || pid <= 0) {
+      return false;
+    }
     try {
       process.kill(pid, 0);
       return true;

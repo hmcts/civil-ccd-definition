@@ -33,7 +33,9 @@ test.beforeEach(async ({ page }) => {
 // so only reuse it if XUI still accepts the saved cookies. This asks XUI's user details API
 // (200 when the session is accepted, 401 when not) rather than loading the case list page.
 async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
-  if (!SessionUtils.isSessionValid(authFile, authCookieName, tokenValidityBufferSeconds)) return false;
+  if (!SessionUtils.isSessionValid(authFile, authCookieName, tokenValidityBufferSeconds)) {
+    return false;
+  }
 
   const apiContext = await request.newContext({ baseURL: envUrl, storageState: authFile });
   try {

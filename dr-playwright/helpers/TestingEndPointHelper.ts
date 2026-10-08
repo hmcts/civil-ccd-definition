@@ -8,6 +8,7 @@ import { TokensHelper } from './TokensHelper.ts';
 import { civilSystemUpdate } from '../../playwright-e2e/config/users/exui-users.ts';
 import { civilServiceUrl, systemupdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
 import claimTypes from '../enums/claim-types.ts';
+import CaseStates from '../enums/caseStates.ts';
 import { CaseUserRegistry } from './CaseUserRegistry.ts';
 
 
@@ -20,6 +21,8 @@ export class TestingEndPointHelper {
   private eventToken: string;
   private user;
   private nonEventTokens;
+  // The user the current tokens belong to
+  private tokensUser;
   private testingSupportUrl = `${civilServiceUrl}/testing-support`
 
   constructor() {
@@ -60,6 +63,28 @@ export class TestingEndPointHelper {
         message: camundaEventToCheckFor ? `The camunda event: ${camundaEventToCheckFor} did not start within the allowed timeframe` : '',
       }).toBe('FINISHED');
   };
+
+  // Checks the case's CCD state, read from civil-service's business process endpoint. The state is set by background
+  // processing, so it is checked repeatedly until it matches or the retry timeout runs out.
+  async assertCaseState(caseId: string, expectedState: CaseStates) {
+    await this.getTokens(systemupdate);
+    const businessProcessUrl = `${this.testingSupportUrl}/case/${caseId}/business-process`;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      await expect.poll(async () => {
+        const response = await apiRequestContext.get(businessProcessUrl, { headers: this.getHeaders() });
+        const data = await response.json();
+        return data.ccdState;
+      }, {
+        intervals: apiRetries.intervals,
+        timeout: apiRetries.timeout,
+        message: `Expected case ${caseId} to be in state ${expectedState}`,
+      }).toBe(expectedState);
+      console.log(`Case ${caseId} is in state ${expectedState}`);
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
 
   async serviceRequestUpdateClaimIssued(caseId: string) {
     await this.getTokens(systemupdate);
@@ -168,21 +193,28 @@ export class TestingEndPointHelper {
   }
 
   // Removes all of the user's case roles on the given cases (civil-service wraps CCD's case assignment API)
+  // Sends one batch of case IDs. The user's tokens are only fetched for their first batch and reused after that.
   async unassignUserFromCases(user, caseIds: string[]) {
-    await this.getTokens(user);
-    const apiRequestContext: APIRequestContext = await request.newContext();
-    const response = await apiRequestContext.post(`${this.testingSupportUrl}/unassign-user`, {
-      headers: this.getHeaders(),
-      data: { caseIds },
-    });
-    if (!response.ok()) {
-      const body = await response.text().catch(() => '<unable to read response body>');
-      throw new Error(
-        `Failed to unassign ${user.name} from cases [${caseIds.join(', ')}]\n` +
-        `POST ${response.url()}\nStatus: ${response.status()} ${response.statusText()}\nBody: ${body}`
-      );
+    if (this.tokensUser !== user) {
+      await this.getTokens(user);
     }
-    console.log(`${user.name} unassigned from cases [${caseIds.join(', ')}]`);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.post(`${this.testingSupportUrl}/unassign-user`, {
+        headers: this.getHeaders(),
+        data: { caseIds },
+      });
+      if (!response.ok()) {
+        const body = await response.text().catch(() => '<unable to read response body>');
+        throw new Error(
+          `Failed to unassign ${user.name} from cases [${caseIds.join(', ')}]\n` +
+          `POST ${response.url()}\nStatus: ${response.status()} ${response.statusText()}\nBody: ${body}`
+        );
+      }
+      console.log(`${user.name} unassigned from cases [${caseIds.join(', ')}]`);
+    } finally {
+      await apiRequestContext.dispose();
+    }
   }
 
   private async assignmentError(response: APIResponse, claimType: claimTypes) {
@@ -205,6 +237,7 @@ export class TestingEndPointHelper {
 
   private async getTokens(user) {
     this.nonEventTokens = await this.tokensHelper.getNonEventTokens(user);
+    this.tokensUser = user;
   }
 
 }

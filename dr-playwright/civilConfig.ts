@@ -71,3 +71,16 @@ export const apiRetries = {
   timeout: 120000
 }
 
+// How hard to try when XUI is slow to load: how many attempts (the first load plus reloads or retries),
+// and how many seconds to wait on each attempt. Override with XUI_LOAD_ATTEMPTS and XUI_LOAD_WAIT_SECONDS.
+export const xuiLoadRetries = {
+  attempts: Number(process.env.XUI_LOAD_ATTEMPTS ?? 3),
+  waitSeconds: Number(process.env.XUI_LOAD_WAIT_SECONDS ?? 20),
+}
+
+// How many cases to unassign from a user in one call at teardown. The case IDs go in a request URL, so large
+// numbers of cases are sent in batches to stay within URL length limits. Override with UNASSIGN_BATCH_SIZE.
+export const caseUnassignment = {
+  batchSize: Number(process.env.UNASSIGN_BATCH_SIZE ?? 50),
+}
+
