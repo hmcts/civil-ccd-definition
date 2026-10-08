@@ -39,10 +39,12 @@ export default class DefendantSolicitor1GaApiSteps extends BaseApi {
       { expectedState: GaCaseState.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION },
     );
 
-    const { respondToApplicationSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;
-    const respondToApplicationSchema =
-      await respondToApplicationSchemaBuilder.build(gaCaseDataBeforeSubmission);
-    ZodHelper.safeParse(respondToApplicationSchema, this.getGaCCDCaseData());
+    await this.runZodValidation(async () => {
+      const { respondToApplicationSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;
+      const respondToApplicationSchema =
+        await respondToApplicationSchemaBuilder.build(gaCaseDataBeforeSubmission);
+      ZodHelper.safeParse(respondToApplicationSchema, this.getGaCCDCaseData());
+    });
   }
 
   async RespondToJudgeAddInfo() {
@@ -60,9 +62,11 @@ export default class DefendantSolicitor1GaApiSteps extends BaseApi {
       { expectedState: GaCaseState.AWAITING_ADDITIONAL_INFORMATION },
     );
 
-    const { respondToJudgeAdditionalInfoSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;
-    const respondToJudgeAdditionalInfoSchema =
-      await respondToJudgeAdditionalInfoSchemaBuilder.build(gaCaseDataBeforeSubmission);
-    ZodHelper.safeParse(respondToJudgeAdditionalInfoSchema, this.getGaCCDCaseData());
+    await this.runZodValidation(async () => {
+      const { respondToJudgeAdditionalInfoSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;
+      const respondToJudgeAdditionalInfoSchema =
+        await respondToJudgeAdditionalInfoSchemaBuilder.build(gaCaseDataBeforeSubmission);
+      ZodHelper.safeParse(respondToJudgeAdditionalInfoSchema, this.getGaCCDCaseData());
+    });
   }
 }

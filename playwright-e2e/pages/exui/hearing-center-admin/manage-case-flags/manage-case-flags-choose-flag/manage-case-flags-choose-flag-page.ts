@@ -10,8 +10,8 @@ import { heading } from './manage-case-flags-choose-flag-content';
 export default class ManageCaseFlagsChooseFlagPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData, caseFlagsDetails: CaseFlagDetails[]) {
     await super.runVerifications([
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectHeading(heading, { count: 2 }),
       ...caseFlagsDetails.map((caseFlagDetails) =>
         super.expectLabel(caseFlagDetails.caseFlagComment, {

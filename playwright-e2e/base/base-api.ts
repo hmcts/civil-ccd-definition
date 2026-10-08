@@ -379,12 +379,15 @@ export default abstract class BaseApi extends BaseTestData {
   protected async waitForFinishedBusinessProcess(
     caseId?: number,
     user?: User,
+    options?: { timeoutMs?: number },
   ) {
     const { civilServiceRequests } = this.requestsFactory;
     await this.setupUserData(civilSystemUpdate);
     await civilServiceRequests.waitForFinishedBusinessProcess(
       user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
+      undefined,
+      options,
     );
   }
 
@@ -483,5 +486,11 @@ export default abstract class BaseApi extends BaseTestData {
 
   private getStubUrl(stub: Record<string, any>) {
     return stub.request.url || stub.request.urlPath || stub.request.urlPathPattern;
+  }
+
+  protected async runZodValidation(zodValidation: () => Promise<void>) {
+    if(config.zodValidationEnabled) {
+      await zodValidation();
+    }
   }
 }

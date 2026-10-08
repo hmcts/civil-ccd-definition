@@ -2,7 +2,7 @@ import { test } from '../../../playwright-fixtures';
 
 test.describe(
   '1v1 spec set aside judgment following defence received',
-  { tag: ['@civil-ccd-nightly', '@ui-jo'] },
+  { tag: ['@civil-ccd-nightly-smoke', '@ui-jo'] },
   () => {
     test('1v1 spec default judgment then set aside judgment following defence received and take case offline', async ({
       ClaimantSolicitorSpecApiSteps,
@@ -10,7 +10,7 @@ test.describe(
       ClaimantSolicitorSpecSteps,
       HearingCenterAdminSpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim();
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();

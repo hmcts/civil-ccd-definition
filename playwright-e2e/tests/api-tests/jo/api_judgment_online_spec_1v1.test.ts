@@ -1,22 +1,23 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 spec record judgment api test',
   { tag: ['@civil-service-nightly'] },
   async () => {
-    test('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', { tag: '@api-jo' }, async ({
-      ClaimantSolicitorSpecApiSteps,
-      CaseRoleAssignmentApiSteps,
-      CaseworkerApiSteps,
-    }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
-      await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
-      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
-      await ClaimantSolicitorSpecApiSteps.DefaultJudgementSpec();
-      await ClaimantSolicitorSpecApiSteps.JudgmentPaidInFull();
-      await CaseworkerApiSteps.SetAsideJudgmentError();
-    });
+    test(
+      'SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline',
+      { tag: '@api-jo' },
+      async ({ ClaimantSolicitorSpecApiSteps, CaseRoleAssignmentApiSteps, CaseworkerApiSteps }) => {
+        await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
+        await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+        await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+        await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
+        await ClaimantSolicitorSpecApiSteps.DefaultJudgementSpec();
+        await ClaimantSolicitorSpecApiSteps.JudgmentPaidInFull();
+        await CaseworkerApiSteps.SetAsideJudgmentError();
+      },
+    );
 
     test('Record Judgment Spec claim 1v1 with mark paid in full', async ({
       ClaimantSolicitorSpecApiSteps,
@@ -25,10 +26,12 @@ test.describe(
       JudgeApiSteps,
       CaseworkerApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
       await JudgeApiSteps.SdoTrail();
       await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
@@ -45,10 +48,12 @@ test.describe(
       JudgeApiSteps,
       CaseworkerApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence();
       await JudgeApiSteps.SdoTrail();
       await JudgeApiSteps.GenerateDirectionsOrderFreeForm();

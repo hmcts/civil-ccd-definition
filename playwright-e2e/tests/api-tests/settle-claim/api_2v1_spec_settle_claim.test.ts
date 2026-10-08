@@ -1,16 +1,28 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimType from '../../../constants/cases/claim-type';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
-test.describe('2v1 settle claim spec api journey', { tag: ['@civil-service-nightly', '@api-settle-claim'] }, async () => {
-  test('2v1 settle claim spec', async ({
-    ClaimantSolicitorSpecApiSteps,
-    CaseRoleAssignmentApiSteps,
-    DefendantSolicitor1SpecApiSteps,
-  }) => {
-    await ClaimantSolicitorSpecApiSteps.CreateClaimFast2v1();
-    await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
-    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-    await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence2v1();
-    await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence2v1();
-    await ClaimantSolicitorSpecApiSteps.SettleClaim2v1();
-  });
-});
+test.describe(
+  '2v1 settle claim spec api journey',
+  { tag: ['@civil-service-nightly', '@api-settle-claim'] },
+  async () => {
+    test('2v1 settle claim spec', async ({
+      ClaimantSolicitorSpecApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1SpecApiSteps,
+    }) => {
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.TWO_VS_ONE,
+      });
+      await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.TWO_VS_ONE,
+      });
+      await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence2v1();
+      await ClaimantSolicitorSpecApiSteps.SettleClaim2v1();
+    });
+  },
+);

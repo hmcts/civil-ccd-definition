@@ -1,4 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe('1v2DS stay case journey', { tag: ['@civil-ccd-nightly', '@ui-stay-case'] }, () => {
   test('1v2DS stay case journey', async ({
@@ -9,14 +11,17 @@ test.describe('1v2DS stay case journey', { tag: ['@civil-ccd-nightly', '@ui-stay
     DefendantSolicitor2Steps,
     HearingCenterAdminSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
+    await ClaimantSolicitorApiSteps.CreateClaim({
+      claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      claimTrack: ClaimTrack.FAST_CLAIM,
+    });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-    await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-    await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+    await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+    await DefendantSolicitor2ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
     await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
     await DefendantSolicitor2Steps.Login();
     await DefendantSolicitor2Steps.AddUnavailableDates();

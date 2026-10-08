@@ -1,5 +1,6 @@
 import BaseApi from '../../../base/base-api';
 import { ctscAdminUser } from '../../../config/users/exui-users';
+import CaseState from '../../../constants/cases/case-state';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import respondToHearingQueryCtscTask from '../../../constants/wa-tasks/exui/respondToHearingQueryCtscTask';
 import respondToQueryCtscTask from '../../../constants/wa-tasks/exui/respondToQueryCtscTask';
@@ -38,9 +39,11 @@ export default class CtscAdminApiSteps extends BaseApi {
       sendAndReplyData,
     );
 
-    const { sendAndReplySchemaBuilder } = this.ctscAdminSchemaBuilderFactory;
-    const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
-    ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { sendAndReplySchemaBuilder } = this.ctscAdminSchemaBuilderFactory;
+      const sendAndReplySchema = await sendAndReplySchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(sendAndReplySchema, this.ccdCaseData);
+    });
   }
 
   async RespondToQuery() {
@@ -55,10 +58,12 @@ export default class CtscAdminApiSteps extends BaseApi {
       ccdEvents.QUERY_MANAGEMENT_RESPOND,
       queryManagementRespondData,
     );
-    const { queryManagementRespondSchemaBuilder } = this.ctscAdminSchemaBuilderFactory;
-    const queryManagementRespondSchema =
-      await queryManagementRespondSchemaBuilder.buildQueryCtsc(caseDataBeforeSubmission);
-    ZodHelper.safeParse(queryManagementRespondSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { queryManagementRespondSchemaBuilder } = this.ctscAdminSchemaBuilderFactory;
+      const queryManagementRespondSchema =
+        await queryManagementRespondSchemaBuilder.buildQueryCtsc(caseDataBeforeSubmission);
+      ZodHelper.safeParse(queryManagementRespondSchema, this.ccdCaseData);
+    });
   }
 
   async RespondToHearingQuery() {
@@ -74,9 +79,11 @@ export default class CtscAdminApiSteps extends BaseApi {
       queryManagementRespondData,
     );
 
-    const { queryManagementRespondSchemaBuilder } = this.ctscAdminSchemaBuilderFactory;
-    const queryManagementRespondSchema =
-      await queryManagementRespondSchemaBuilder.buildQueryCtsc(caseDataBeforeSubmission);
-    ZodHelper.safeParse(queryManagementRespondSchema, this.ccdCaseData);
+    await this.runZodValidation(async () => {
+      const { queryManagementRespondSchemaBuilder } = this.ctscAdminSchemaBuilderFactory;
+      const queryManagementRespondSchema =
+        await queryManagementRespondSchemaBuilder.buildQueryCtsc(caseDataBeforeSubmission);
+      ZodHelper.safeParse(queryManagementRespondSchema, this.ccdCaseData);
+    });
   }
 }

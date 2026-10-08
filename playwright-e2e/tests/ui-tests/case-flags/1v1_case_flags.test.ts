@@ -1,16 +1,18 @@
-import {test} from '../../../playwright-fixtures/index';
+import { test } from '../../../playwright-fixtures/index';
 
-test.describe('1v1 case flags journey', { tag: ['@civil-ccd-nightly', '@ui-case-flags'] },
+test.describe(
+  '1v1 case flags journey',
+  { tag: ['@civil-ccd-nightly', '@ui-case-flags'] },
   async () => {
     test('1v1 case flags journey', async ({
-      ClaimantSolicitorApiSteps, 
+      ClaimantSolicitorApiSteps,
       DefendantSolicitor1ApiSteps,
       ClaimantSolicitorSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1Steps,
       HearingCenterAdminSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimSmall1v1();
+      await ClaimantSolicitorApiSteps.CreateClaim();
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
@@ -24,4 +26,5 @@ test.describe('1v1 case flags journey', { tag: ['@civil-ccd-nightly', '@ui-case-
       await HearingCenterAdminSteps.CreateCaseLevelCaseFlag();
       await HearingCenterAdminSteps.CreateClaimant1CaseFlag();
     });
-});
+  },
+);
