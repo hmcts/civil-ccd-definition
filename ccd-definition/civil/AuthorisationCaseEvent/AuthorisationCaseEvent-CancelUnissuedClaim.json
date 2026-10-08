@@ -1,0 +1,22 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CANCEL_UNISSUED_CLAIM",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
