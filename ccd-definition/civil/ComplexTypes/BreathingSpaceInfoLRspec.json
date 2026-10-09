@@ -41,7 +41,9 @@
     "ElementLabel": "Why is breathing space being lifted?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Max": 1000,
+    "RegularExpression": "^[A-Za-z0-9 \\t\\r\\n.,!?'\"()&:;@#\\/$%+=£‘’“”–—…-]*$"
   },
   {
     "ID": "BreathingSpaceInfo",
