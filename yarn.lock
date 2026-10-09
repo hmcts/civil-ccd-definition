@@ -2757,7 +2757,7 @@ __metadata:
     mochawesome: "npm:^8.0.0"
     node-cache: "npm:^5.1.2"
     node-fetch: "npm:^2.6.7"
-    pixelmatch: "npm:7.2.0"
+    pixelmatch: "npm:8.0.0"
     playwright-core: "npm:1.60.0"
     pngjs: "npm:7.0.0"
     prettier: "npm:^3.3.3"
@@ -7085,14 +7085,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pixelmatch@npm:7.2.0":
-  version: 7.2.0
-  resolution: "pixelmatch@npm:7.2.0"
+"pixelmatch@npm:8.0.0":
+  version: 8.0.0
+  resolution: "pixelmatch@npm:8.0.0"
   dependencies:
     pngjs: "npm:^7.0.0"
   bin:
     pixelmatch: bin/pixelmatch
-  checksum: 10/cba5174bb6fe516f8264416cdd0f82c4e90f1d65a0e747dfd3af3bd06f3b35be63644da83ce1018d7ba6639849abb7501569b6a44f67d4b96334ff631da9dd0c
+  checksum: 10/83d533b00ce9a9c7c6eb6b44455e952b97d3aa3d477094b65c0ddd9617a016bf7930230a190179f08d54ec80734ea623a96dc7d6605400445c3dbdc2e0b3fbe2
   languageName: node
   linkType: hard
 
