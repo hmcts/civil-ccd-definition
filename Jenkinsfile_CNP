@@ -57,6 +57,11 @@ void publishAllureReport(String reportDir, String reportName, String historyArch
   ])
   sh "cp -r ./${reportDir}/history/ ./${historyArchiveDir}"
   archiveArtifacts artifacts: "${historyArchiveDir}/**", fingerprint: true
+  // Archive the report itself, not just its history. data/categories.json groups every failure by
+  // error message and names the affected specs; without it a failed build gives only the task-level
+  // error. Jenkins retention on this job is roughly two days, so anything not archived is lost.
+  // See DTSCCI-6322.
+  archiveArtifacts artifacts: "${reportDir}/**", allowEmptyArchive: true
 }
 
 def getPlaywrightFunctionalTestsGroups() {
