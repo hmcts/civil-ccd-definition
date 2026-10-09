@@ -58,7 +58,7 @@
     "Name": "Make decision",
     "Description": "Judge makes decision",
     "DisplayOrder": 3,
-    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;ADDITIONAL_RESPONSE_TIME_EXPIRED",
+    "PreConditionState(s)": "APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION;ADDITIONAL_RESPONSE_TIME_EXPIRED;AWAITING_DIRECTIONS_ORDER_DOCS",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
