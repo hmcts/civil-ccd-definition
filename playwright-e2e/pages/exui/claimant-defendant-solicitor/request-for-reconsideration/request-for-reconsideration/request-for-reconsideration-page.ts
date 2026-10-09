@@ -14,8 +14,8 @@ export default class RequestForReconsiderationPage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async enterReason() {
-    await super.inputText('Testing Request for Reconsideration', inputs.reason.selector);
+  async enterReason(reasonText: string = 'Testing Request for Reconsideration') {
+    await super.inputText(reasonText, inputs.reason.selector);
   }
 
   async submit() {

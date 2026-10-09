@@ -7,5 +7,35 @@
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "EventElementLabel": "Draft Order"
+  },
+  {
+    "ID": "DecisionOnReconsiderationOrderDocumentPage",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "reasonForReconsiderationApplicant",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"APPLICANT\"",
+    "Publish": "Y"
+  },
+  {
+    "ID": "DecisionOnReconsiderationOrderDocumentPage",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "reasonForReconsiderationRespondent1",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"RESPONDENT1\"",
+    "Publish": "Y"
+  },
+  {
+    "ID": "DecisionOnReconsiderationOrderDocumentPage",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "reasonForReconsiderationRespondent2",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "casePartiesRequestingReconsideration CONTAINS \"RESPONDENT2\"",
+    "Publish": "Y"
   }
 ]

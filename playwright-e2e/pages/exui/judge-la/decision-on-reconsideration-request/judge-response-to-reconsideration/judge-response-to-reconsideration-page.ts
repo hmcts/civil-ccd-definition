@@ -19,6 +19,15 @@ export default class JudgeResponseToReconsiderationPage extends ExuiPage(BasePag
       super.expectLabel(radioButtons.noCreateNewSdo.label),
       super.expectLabel(radioButtons.noCreateGeneralOrder.label),
     ]);
+    if (ccdCaseData.reasonForReconsiderationApplicant?.reasonForReconsiderationTxt) {
+      await super.expectText(ccdCaseData.reasonForReconsiderationApplicant.reasonForReconsiderationTxt);
+    }
+    if (ccdCaseData.reasonForReconsiderationRespondent1?.reasonForReconsiderationTxt) {
+      await super.expectText(ccdCaseData.reasonForReconsiderationRespondent1.reasonForReconsiderationTxt);
+    }
+    if (ccdCaseData.reasonForReconsiderationRespondent2?.reasonForReconsiderationTxt) {
+      await super.expectText(ccdCaseData.reasonForReconsiderationRespondent2.reasonForReconsiderationTxt);
+    }
   }
 
   async selectYes() {
