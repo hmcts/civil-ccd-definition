@@ -4,7 +4,7 @@ properties([
 ]);
 
 
-@Library("Infrastructure@2.9.0")
+@Library("Infrastructure@2.12.2")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
@@ -360,7 +360,7 @@ withPipeline(type, product, component) {
   loadVaultSecrets(secrets)
   env.PLAYWRIGHT_TEST_RESULTS_DIR = 'playwright-test-results'
   env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR = 'civil-ccd-bootstrap'
-  env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'civil-ccd-smoke'
+  env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'civil-ccd-master-pr-smoke'
   env.PLAYWRIGHT_WORKERS = 8
   env.PLAYWRIGHT_RETRIES = 1
   env.PLAYWRIGHT_EXUI_RETRIES = 1
@@ -375,7 +375,7 @@ withPipeline(type, product, component) {
   env.PLAYWRIGHT_WA_ENABLED = false
   env.PLAYWRIGHT_ZOD_VALIDATION_ENABLED = false
   env.PLAYWRIGHT_UNASSIGN_CASES = true
-  
+
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -408,6 +408,10 @@ withPipeline(type, product, component) {
   }
 
   before('highleveldatasetup') {
+    // HLD runs Gradle through Yarn, so apply the same Maven mirror as GradleBuilder.
+    env.BEFTA_GRADLE_INIT_SCRIPT = 'build/jenkins-hld-init.gradle'
+    writeFile file: env.BEFTA_GRADLE_INIT_SCRIPT,
+      text: libraryResource('uk/gov/hmcts/gradle/init.gradle')
     // Pull shared scripts from civil-service early - needed by build and import scripts
     sh "./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}"
     yarnBuilder.yarn('setup')

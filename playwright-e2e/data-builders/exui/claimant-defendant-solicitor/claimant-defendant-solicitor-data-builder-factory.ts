@@ -143,7 +143,7 @@ export default class ClaimantDefendantSolicitorDataBuilderFactory extends BaseDa
   get trialReadinessDataBuilder() {
     return new TrialReadinessDataBuilder(this.requestsFactory, this.testData);
   }
-  
+
   get settleClaimDataBuilder() {
     return new SettleClaimDataBuilder(this.requestsFactory, this.testData);
   }
