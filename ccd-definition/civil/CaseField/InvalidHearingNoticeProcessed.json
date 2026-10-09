@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "invalidHearingNoticeProcessed",
+    "Label": "Invalid hearing responses referred for manual action",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "InvalidHearingNoticeProcessed",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

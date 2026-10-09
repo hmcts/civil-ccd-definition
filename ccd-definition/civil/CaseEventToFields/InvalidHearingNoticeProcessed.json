@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HEARING_NOTICE",
+    "CaseFieldID": "invalidHearingNoticeProcessed",
+    "DisplayContext": "OPTIONAL"
+  }
+]
