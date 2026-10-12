@@ -12,6 +12,7 @@ import ClaimTrack from '../../../constants/cases/claim-track';
 import ClaimType from '../../../constants/cases/claim-type';
 import Airline from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
 import FlightDelayClaim from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
+import ClaimInterest, {InterestClaimOptions, SameRateInterestType, InterestClaimFrom} from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/claim-Interest';
 import claimantDefendantPartyTypes from '../../../constants/users/claimant-defendant-party-types';
 import DateHelper from '../../../helpers/date-helper';
 import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper';
@@ -48,9 +49,13 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     flightDelayClaim = FlightDelayClaim.NO,
     airline = Airline.BA,
+    claimInterest = ClaimInterest.NO,
+    interestClaimOptions = InterestClaimOptions.SAME_RATE_INTEREST,
+    sameRateInterestType = SameRateInterestType.SAME_RATE_INTEREST_8_PC,
+    interestClaimFrom = InterestClaimFrom.FROM_CLAIM_SUBMIT_DATE,
   }: CreateClaimSpecOptions = {}) {
     await this.setupUserData(claimantSolicitorUser);
-    const createClaimParams: Required<CreateClaimSpecOptions> = {
+    const createClaimParams: CreateClaimSpecOptions = {
       claimType,
       claimTrack,
       claimant1PartyType,
@@ -59,6 +64,16 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       defendant2PartyType,
       flightDelayClaim,
       airline,
+      claimInterest,
+      ...(claimInterest === ClaimInterest.YES && {
+        interestClaimOptions: interestClaimOptions ?? InterestClaimOptions.SAME_RATE_INTEREST,
+        ...(interestClaimOptions === InterestClaimOptions.SAME_RATE_INTEREST && {
+          sameRateInterestSelection: {
+            sameRateInterestType: sameRateInterestType ?? SameRateInterestType.SAME_RATE_INTEREST_8_PC,
+          },
+        }),
+        interestClaimFrom: interestClaimFrom ?? InterestClaimFrom.FROM_CLAIM_SUBMIT_DATE,
+      }),
     };
 
     const { createClaimSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;

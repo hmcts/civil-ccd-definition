@@ -3,6 +3,7 @@ import ClaimTrack from '../../../../constants/cases/claim-track';
 import Airline from '../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
 import FlightDelayClaim from '../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
 import { ClaimantDefendantPartyType } from '../../../users/claimant-defendant-party-types';
+import ClaimInterest, {InterestClaimOptions, SameRateInterestType, InterestClaimFrom} from "../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/claim-Interest.ts";
 
 type CreateClaimSpecOptions = {
   claimType?: ClaimType;
@@ -13,6 +14,10 @@ type CreateClaimSpecOptions = {
   defendant2PartyType?: ClaimantDefendantPartyType;
   flightDelayClaim?: FlightDelayClaim;
   airline?: Airline;
+  claimInterest?: ClaimInterest;
+  interestClaimOptions?: InterestClaimOptions;
+  sameRateInterestType?: SameRateInterestType;
+  interestClaimFrom?: InterestClaimFrom;
 };
 
 export default CreateClaimSpecOptions;

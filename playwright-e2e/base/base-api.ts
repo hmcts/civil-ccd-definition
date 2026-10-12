@@ -16,7 +16,7 @@ import CaseType from '../constants/cases/case-type';
 import GaCaseState from '../constants/cases/ga-case-states';
 import StudRequestBody from '../models/wire-mock/stud-request-body';
 
-export default abstract class BaseApi extends BaseTestData {
+export default abstract class BaseApfi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
 
   constructor(requestsFactory: RequestsFactory, testData: TestData) {
@@ -102,7 +102,7 @@ export default abstract class BaseApi extends BaseTestData {
     pageDataMap: Record<string, any>,
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: CaseState[] | CaseState,
       camundaProcess?: boolean
@@ -114,7 +114,7 @@ export default abstract class BaseApi extends BaseTestData {
       ccdEvent,
       this.ccdCaseData?.id,
     );
-    
+
     const eventData = await this.validatePages(
       ccdEvent,
       startEventCaseData,
@@ -149,7 +149,7 @@ export default abstract class BaseApi extends BaseTestData {
     eventData: Record<string, any>,
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: GaCaseState[] | GaCaseState,
       camundaProcess?: boolean
@@ -194,7 +194,7 @@ export default abstract class BaseApi extends BaseTestData {
     caseFlagData: (caseFlagLocationData?: any) => Partial<CCDCaseData>,
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: CaseState[] | CaseState,
       camundaProcess?: boolean
@@ -231,7 +231,7 @@ export default abstract class BaseApi extends BaseTestData {
     qmEventData: Record<string, any>,
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: CaseState[] | CaseState,
       camundaProcess?: boolean
@@ -262,7 +262,7 @@ export default abstract class BaseApi extends BaseTestData {
     qmEventData: Record<string, any>,
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: CaseState[] | CaseState,
       camundaProcess?: boolean
@@ -274,7 +274,7 @@ export default abstract class BaseApi extends BaseTestData {
       await this.completeWATask(user, waTask);
     } else {
       await this.submitQmEvent(user, ccdEvent, qmEventData, {expectedState, camundaProcess});
-    } 
+    }
   }
 
   protected async submitNocEvent(
@@ -283,7 +283,7 @@ export default abstract class BaseApi extends BaseTestData {
     nocData?: { question_id: string, value: string }[],
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: CaseState[] | CaseState,
       camundaProcess?: boolean
@@ -296,7 +296,7 @@ export default abstract class BaseApi extends BaseTestData {
     await caseAssignmentServiceRequests.submitNocRequest(caseId, nocData!, newSolicitor);
 
     if(camundaProcess) await this.waitForFinishedBusinessProcess(caseId);
-    
+
     if (oldSolicitor)
       await ccdRequests.fetchCCDCaseData(oldSolicitor, caseId, 404);
     await ccdRequests.fetchCCDCaseData(newSolicitor, caseId);
@@ -309,7 +309,7 @@ export default abstract class BaseApi extends BaseTestData {
     caseDataUpdate: CCDCaseData,
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: CaseState[] | CaseState,
       camundaProcess?: boolean
@@ -339,7 +339,7 @@ export default abstract class BaseApi extends BaseTestData {
     pageDataMap: Record<string, any>,
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: CaseState[] | CaseState,
       camundaProcess?: boolean
@@ -351,7 +351,7 @@ export default abstract class BaseApi extends BaseTestData {
       await this.completeWATask(user, waTask);
     } else {
       await this.submitCCDEvent(user, ccdEvent, pageDataMap, {expectedState, camundaProcess});
-    } 
+    }
   }
 
   protected async submitGaWaEvent(
@@ -361,7 +361,7 @@ export default abstract class BaseApi extends BaseTestData {
     eventData: Record<string, any>,
     {
       expectedState,
-      camundaProcess = true, 
+      camundaProcess = true,
     }: {
       expectedState?: GaCaseState[] | GaCaseState,
       camundaProcess?: boolean
@@ -414,8 +414,8 @@ export default abstract class BaseApi extends BaseTestData {
   }
 
   protected async fetchAndSetGaCCDCaseData(
-    caseId?: number, 
-    user?: User, 
+    caseId?: number,
+    user?: User,
     expectedCaseState?: GaCaseState[] | GaCaseState,
   ) {
     const { ccdRequests } = this.requestsFactory;
@@ -431,8 +431,8 @@ export default abstract class BaseApi extends BaseTestData {
 
   protected async setDebugTestData() {
     if (
-      (config.debugCaseId || (config.gaDebugCaseId && config.debugCaseId)) 
-      && !super.isDebugTestDataSetup 
+      (config.debugCaseId || (config.gaDebugCaseId && config.debugCaseId))
+      && !super.isDebugTestDataSetup
       && (!this.ccdCaseData?.id || (!this.ccdCaseData?.id && !super.getAllGaCCDCaseData.length))) {
 
       await this.fetchAndSetCCDCaseData(config.debugCaseId);

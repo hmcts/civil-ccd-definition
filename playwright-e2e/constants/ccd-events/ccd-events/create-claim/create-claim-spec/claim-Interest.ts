@@ -1,0 +1,21 @@
+export enum ClaimInterest {
+  YES = 'Yes',
+  NO = 'No',
+}
+
+export enum InterestClaimOptions {
+  SAME_RATE_INTEREST = 'SAME_RATE_INTEREST',
+  DIFFERENT_RATE_INTEREST = 'DIFFERENT_RATE_INTEREST',
+  BREAK_DOWN_INTEREST = 'BREAK_DOWN_INTEREST',
+}
+
+export enum SameRateInterestType {
+  SAME_RATE_INTEREST_8_PC = 'SAME_RATE_INTEREST_8_PC',
+  SAME_RATE_INTEREST_DIFFERENT_RATE = 'SAME_RATE_INTEREST_DIFFERENT_RATE',
+}
+
+export enum InterestClaimFrom {
+  FROM_CLAIM_SUBMIT_DATE = 'FROM_CLAIM_SUBMIT_DATE',
+  FROM_SPECIFIC_DATE = 'FROM_SPECIFIC_DATE',
+}
+export default ClaimInterest;

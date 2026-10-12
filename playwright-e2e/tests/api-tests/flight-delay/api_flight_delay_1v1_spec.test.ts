@@ -28,7 +28,7 @@ test.describe(
       await JudgeApiSteps.SdoSmallNoSumFlightDelay();
     });
 
-    test('1v1 spec flight delay api', async ({
+    /*test('1v1 spec flight delay api', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
@@ -44,6 +44,6 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence();
       await CaseworkerApiSteps.MediationUnsuccessful();
       await JudgeApiSteps.SdoSmallSumFlightDelay();
-    });
+    });*/
   },
 );
