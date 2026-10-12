@@ -73,14 +73,16 @@ export class AcknowledgeClaim {
     if (defendantNumber === 1) {
       legalRepresentativeReference = await this.page
         .locator('#solicitorReferences_respondentSolicitor1Reference')
-        .innerText();
+        .inputValue();
       await this.page
         .locator('#solicitorReferences_respondentSolicitor1Reference')
         .fill(`${legalRepresentativeReference} acknowledge claim`);
-    } else {
+    } else if (claimType !== claimTypes.ONE_VS_TWO_LIP_LR) {
+      // The CCD definition only shows Defendant 2's reference when respondent2SameLegalRepresentative is No. In a
+      // 1v2LIPLR claim that question is never asked (Defendant 1 is a LiP), so the page has no fields to fill.
       legalRepresentativeReference = await this.page
         .locator('#respondentSolicitor2Reference')
-        .innerText();
+        .inputValue();
       await this.page
         .locator('#respondentSolicitor2Reference')
         .fill(`${legalRepresentativeReference} acknowledge claim`);

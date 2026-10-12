@@ -8,8 +8,7 @@ import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import trackType from '../../../enums/track.ts';
 import UnspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
 import LanguageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
-import moment from 'moment-business-days';
-import { courts } from '../../../fixtures/courts.ts';
+import { DirectionsQuestionnaire } from './DirectionsQuestionnaire.ts';
 import {
   respondent1SolicitorCredentials,
   respondent2SolicitorCredentials,
@@ -48,6 +47,14 @@ export class RespondToClaim {
     await this.pageHelper.selectNextStep('Respond to claim');
     await this.buttonHelper.continueButton.click(); // Confirm Details
 
+    // Single response (1v2 same solicitor only): one response for both defendants, or a separate response for each.
+    // civil-service rejects separate responses that are both full defence, so those must be a single response.
+    const isSingleResponse = respondent1Response === respondent2Response;
+    if (claimType === claimTypes.ONE_VS_TWO_SAME_SOL) {
+      await this.page.locator(`#respondentResponseIsSame_${isSingleResponse ? YesNo.YES : YesNo.NO}`).click();
+      await this.buttonHelper.continueButton.click();
+    }
+
     // Response
     switch (claimType) {
       case claimTypes.ONE_VS_ONE:
@@ -65,12 +72,16 @@ export class RespondToClaim {
         break;
       }
       case claimTypes.TWO_VS_ONE:
+        // The one defendant responds to each claimant separately: respondent2Response is their response to Claimant 2
         await this.page.locator(`#respondent1ClaimResponseType-${respondent1Response}`).click();
-        await this.page.locator(`#respondent1ClaimResponseTypeApplicant2-${respondent2Response}`).click();
+        await this.page.locator(`#respondent1ClaimResponseTypeToApplicant2-${respondent2Response}`).click();
         break;
       case claimTypes.ONE_VS_TWO_SAME_SOL:
+        // With a single response only Defendant 1's response field shows, and it applies to both defendants
         await this.page.locator(`#respondent1ClaimResponseType-${respondent1Response}`).click();
-        await this.page.locator(`#respondent2ClaimResponseType-${respondent2Response}`).click();
+        if (!isSingleResponse) {
+          await this.page.locator(`#respondent2ClaimResponseType-${respondent2Response}`).click();
+        }
         break;
     }
     await this.buttonHelper.continueButton.click();
@@ -102,20 +113,27 @@ export class RespondToClaim {
     }
 
     if (isFullDefence) {
-      await this.completeDirectionsQuestionnaire(
+      await new DirectionsQuestionnaire(this.page).complete(
+        {
+          fieldPrefix: `respondent${defendantNumber}DQ`,
+          determinationWithoutHearingField: `deterWithoutHearingRespondent${defendantNumber}`,
+          label: `Defendant${defendantNumber}`,
+          hasRequestedCourt: true,
+        },
         track,
         typeOfClaim,
-        defendantNumber,
-        determinationWithoutHearing,
-        oneMonthStay,
-        preActionProtocol,
-        fixedRecoverableCosts,
-        fixedRecoverableCostsBand,
-        disclosure,
-        noOfExperts,
-        noOfWitnesses,
-        language,
-        unavailableDatesRequired,
+        {
+          determinationWithoutHearing,
+          oneMonthStay,
+          preActionProtocol,
+          fixedRecoverableCosts,
+          fixedRecoverableCostsBand,
+          disclosure,
+          noOfExperts,
+          noOfWitnesses,
+          language,
+          unavailableDatesRequired,
+        },
       );
     }
 
@@ -128,186 +146,5 @@ export class RespondToClaim {
     await this.buttonHelper.submitButton.click();
     await this.page.locator('#confirmation-header').waitFor({ state: 'visible' });
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
-  }
-
-  private async completeDirectionsQuestionnaire(
-    track: trackType,
-    typeOfClaim: UnspecClaimTypes,
-    defendantNumber: number,
-    determinationWithoutHearing: YesNo,
-    oneMonthStay: YesNo,
-    preActionProtocol: YesNo,
-    fixedRecoverableCosts: YesNo,
-    fixedRecoverableCostsBand: FixedRecoveryCostsBands,
-    disclosure: YesNo,
-    noOfExperts: number,
-    noOfWitnesses: number,
-    language: LanguageSpokenAndDocuments,
-    unavailableDatesRequired: YesNo,
-  ) {
-    if (track === trackType.SMALL) {
-      // Determination without hearing (small claims only)
-      await this.page.locator(`#deterWithoutHearingRespondent${defendantNumber}_deterWithoutHearingYesNo_${determinationWithoutHearing}`).click();
-      if (determinationWithoutHearing === YesNo.NO) {
-        await this.page.locator(`#deterWithoutHearingRespondent${defendantNumber}_deterWithoutHearingWhyNot`).fill(`Defendant${defendantNumber} reason why the claim is not suitable for determination without a hearing.`);
-      }
-      await this.buttonHelper.continueButton.click();
-    } else {
-      // File directions questionnaire (not shown for small claims)
-      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`).click();
-      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_${oneMonthStay}`).click();
-      await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_${preActionProtocol}`).click();
-
-      if (preActionProtocol === YesNo.NO) {
-        await this.page.locator(`#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`).fill('Pre-action protocol explanation');
-      }
-      await this.buttonHelper.continueButton.click();
-
-      // Fixed Recoverable Costs (fast and intermediate tracks)
-      if (track === trackType.FAST) {
-        await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_${fixedRecoverableCosts}`).click();
-        if (fixedRecoverableCosts === YesNo.YES) {
-          await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_band-${fixedRecoverableCostsBand}`).click();
-          await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_complexityBandingAgreed_${fixedRecoverableCosts}`).click();
-        }
-        await this.page.locator(`#respondent${defendantNumber}DQFixedRecoverableCosts_reasons`).fill('Fixed Recoverable Costs explanation');
-        await this.buttonHelper.continueButton.click();
-      } else if (track === trackType.INTERMEDIATE) {
-        await this.completeIntermediateFixedRecoverableCosts(defendantNumber, fixedRecoverableCosts, fixedRecoverableCostsBand);
-      }
-
-      // Disclosure of electronic documents (intermediate and multi tracks only)
-      const isIntermediateOrMulti = track === trackType.INTERMEDIATE || track === trackType.MULTI;
-      if (isIntermediateOrMulti) {
-        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfElectronicDocuments_reachedAgreement_No`).click();
-        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfElectronicDocuments_agreementLikely_No`).click();
-        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfElectronicDocuments_reasonForNoAgreement`).fill('Reason no agreement on electronic disclosure is likely.');
-        await this.buttonHelper.continueButton.click();
-      }
-
-      // Disclosure Non-Electronic Documents (not shown for small claims)
-      await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_${disclosure}`).click();
-      if (disclosure === YesNo.YES) {
-        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`).click();
-        await this.page.locator(`#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_bespokeDirections`).fill('Bespoke directions text.');
-      }
-      await this.buttonHelper.continueButton.click();
-
-      // Disclosure report (intermediate and multi tracks only, not for personal injury claims)
-      if (isIntermediateOrMulti && typeOfClaim !== UnspecClaimTypes.PERSONAL_INJURY) {
-        await this.page.locator(`#respondent${defendantNumber}DQDisclosureReport_disclosureFormFiledAndServed_Yes`).click();
-        await this.page.locator(`#respondent${defendantNumber}DQDisclosureReport_disclosureProposalAgreed_Yes`).click();
-        await this.page.locator(`#respondent${defendantNumber}DQDisclosureReport_draftOrderNumber`).fill('123');
-        await this.buttonHelper.continueButton.click();
-      }
-    }
-
-    // Experts
-    const expertRequired = noOfExperts >= 1 ? YesNo.YES : YesNo.NO;
-    await this.page.locator(`#respondent${defendantNumber}DQExperts_expertRequired_${expertRequired}`).click();
-    if (expertRequired === YesNo.YES) {
-      await this.page.locator(`#respondent${defendantNumber}DQExperts_expertReportsSent-YES`).click();
-      await this.page.locator(`#respondent${defendantNumber}DQExperts_jointExpertSuitable_No`).click();
-
-      for (let i = 0; i < noOfExperts; i++) {
-        await this.buttonHelper.addNewButton.first().click();
-        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_firstName`).fill(`Expert${i + 1}Firstname`);
-        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_lastName`).fill(`Expert${i + 1}Lastname`);
-        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_emailAddress`).fill(`expert${i + 1}@example.com`);
-        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_phoneNumber`).fill('07700900000');
-        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_fieldOfExpertise`).fill(`Expert${i + 1}: Test field of expertise`);
-        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_whyRequired`).fill(`Expert${i + 1}: Test reason why this expert is required.`);
-        await this.page.locator(`#respondent${defendantNumber}DQExperts_details_${i}_estimatedCost`).fill('500');
-      }
-    }
-    await this.buttonHelper.continueButton.click();
-
-    // Witnesses
-    const witnessesRequired = noOfWitnesses >= 1 ? YesNo.YES : YesNo.NO;
-    await this.page.locator(`#respondent${defendantNumber}DQWitnesses_witnessesToAppear_${witnessesRequired}`).click();
-    if (witnessesRequired === YesNo.YES) {
-      for (let i = 0; i < noOfWitnesses; i++) {
-        await this.buttonHelper.addNewButton.first().click();
-        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_firstName`).fill(`Witness${i + 1}Firstname`);
-        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_lastName`).fill(`Witness${i + 1}Lastname`);
-        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_emailAddress`).fill(`witness${i + 1}@example.com`);
-        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_phoneNumber`).fill('07700900000');
-        await this.page.locator(`#respondent${defendantNumber}DQWitnesses_details_${i}_reasonForWitness`).fill(`Witness${i + 1}: Test event witnessed.`);
-      }
-    }
-    await this.buttonHelper.continueButton.click();
-
-    // Court - spoken language and document language
-    await this.page.locator(`#respondent${defendantNumber}DQLanguage_court-${language}`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQLanguage_documents-${language}`).click();
-    await this.buttonHelper.continueButton.click();
-
-    // Hearing availability
-    await this.page.locator(`#respondent${defendantNumber}DQHearing_unavailableDatesRequired_${unavailableDatesRequired}`).click();
-    if (unavailableDatesRequired === YesNo.YES) {
-      // Single date
-      await this.buttonHelper.addNewButton.first().click();
-      await this.page.locator(`#respondent${defendantNumber}DQHearing_unavailableDates_0_unavailableDateType-SINGLE_DATE`).click();
-      await this.pageHelper.fillDate('date', moment().add(6, 'months'));
-
-      // Date range
-      await this.buttonHelper.addNewButton.first().click();
-      await this.page.locator(`#respondent${defendantNumber}DQHearing_unavailableDates_1_unavailableDateType-DATE_RANGE`).click();
-      await this.pageHelper.fillDate('fromDate', moment().add(7, 'months'));
-      await this.pageHelper.fillDate('toDate', moment().add(7, 'months').add(5, 'days'));
-    }
-    const draftDirections = this.page.locator(`#respondent${defendantNumber}DQDraftDirections`);
-    await this.pageHelper.continueUntilVisible(draftDirections);
-
-    // Draft directions
-    await this.pageHelper.uploadFile(draftDirections, './dr-playwright/documents/TEST_DOCUMENT_4.pdf');
-    await this.buttonHelper.continueButton.click();
-
-    // Court location and remote hearing
-    await this.page.locator(`#respondent${defendantNumber}DQRequestedCourt_responseCourtLocations`).selectOption(courts.clerkenwell.longAddress);
-    await this.page.locator(`#respondent${defendantNumber}DQRequestedCourt_reasonForHearingAtSpecificCourt`).fill('Reason for hearing at specific court.');
-    await this.page.locator(`#respondent${defendantNumber}DQRemoteHearing_remoteHearingRequested_Yes`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQRemoteHearing_reasonForRemoteHearing`).fill('Reason for remote hearing.');
-    await this.buttonHelper.continueButton.click();
-
-    // Hearing support
-    await this.page.locator(`#respondent${defendantNumber}DQHearingSupport_supportRequirements_Yes`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQHearingSupport_supportRequirementsAdditional`).fill('Hearing support requirements.');
-    await this.buttonHelper.continueButton.click();
-
-    // Vulnerability questions
-    await this.page.locator(`#respondent${defendantNumber}DQVulnerabilityQuestions_vulnerabilityAdjustmentsRequired_Yes`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQVulnerabilityQuestions_vulnerabilityAdjustments`).fill('Vulnerability adjustments required.');
-    await this.buttonHelper.continueButton.click();
-
-    // Further information
-    await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_futureApplications_Yes`).click();
-    await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_reasonForFutureApplications`).fill('Reason for future applications.');
-    await this.page.locator(`#respondent${defendantNumber}DQFurtherInformation_otherInformationForJudge`).fill('Other information for the judge.');
-    await this.buttonHelper.continueButton.click();
-  }
-
-  // The intermediate track fields only exist when the MINTI definition is deployed. Without it the page still shows
-  // (its page condition allows intermediate claims) but has nothing to fill in, so it is just continued.
-  private async completeIntermediateFixedRecoverableCosts(
-    defendantNumber: number,
-    fixedRecoverableCosts: YesNo,
-    fixedRecoverableCostsBand: FixedRecoveryCostsBands,
-  ) {
-    await this.page.waitForURL(/FixedRecoverableCosts/);
-    const fieldPrefix = `#respondent${defendantNumber}DQFixedRecoverableCostsIntermediate`;
-    const regimeRadio = this.page.locator(`${fieldPrefix}_isSubjectToFixedRecoverableCostRegime_${fixedRecoverableCosts}`);
-    const hasIntermediateFields = await regimeRadio
-      .waitFor({ state: 'visible', timeout: 5000 })
-      .then(() => true, () => false);
-    if (hasIntermediateFields) {
-      await regimeRadio.click();
-      if (fixedRecoverableCosts === YesNo.YES) {
-        await this.page.locator(`${fieldPrefix}_band-${fixedRecoverableCostsBand}`).click();
-        await this.page.locator(`${fieldPrefix}_complexityBandingAgreed_${fixedRecoverableCosts}`).click();
-      }
-      await this.page.locator(`${fieldPrefix}_reasons`).fill('Fixed Recoverable Costs explanation');
-    }
-    await this.buttonHelper.continueButton.click();
   }
 }

@@ -22,6 +22,7 @@ import responseIntentions from '../../enums/ResponseIntention.ts';
 import { AcknowledgeClaim } from '../flows/events/AcknowledgeClaim.ts';
 import respondentResponses from '../../enums/RespondentResponses.ts';
 import { RespondToClaim } from '../flows/events/RespondToClaim.ts';
+import { RespondToDefence } from '../flows/events/RespondToDefence.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
@@ -95,6 +96,18 @@ const env = cleanEnv({
     ],
     default: respondentResponses.FULL_DEFENCE
   }),
+  // Whether the claimant proceeds with the claim when responding to the defence. 2v1 and 1v2 claims ask twice:
+  //  - 1v1: CLAIMANT_PROCEED_1 is the claimant's answer (CLAIMANT_PROCEED_2 is not used)
+  //  - 2v1: CLAIMANT_PROCEED_1 is Claimant 1's answer and CLAIMANT_PROCEED_2 is Claimant 2's
+  //  - 1v2SS / 1v2DS: CLAIMANT_PROCEED_1 is against Defendant 1 and CLAIMANT_PROCEED_2 is against Defendant 2
+  CLAIMANT_PROCEED_1: enums({
+    values: [yesNo.YES, yesNo.NO],
+    default: yesNo.YES
+  }),
+  CLAIMANT_PROCEED_2: enums({
+    values: [yesNo.YES, yesNo.NO],
+    default: yesNo.YES
+  }),
   FIXED_RECOVERY_COSTS_BAND: enums({
     values: [
       fixedRecoveryCostsBands.BAND1,
@@ -120,6 +133,8 @@ const respondent1ResponseIntention: responseIntentions = env.RESPONDENT1_RESPONS
 const respondent2ResponseIntention: responseIntentions = env.RESPONDENT2_RESPONSE_INTENTION;
 const respondent1Response: respondentResponses = env.RESPONDENT1_RESPONSE;
 const respondent2Response: respondentResponses = env.RESPONDENT2_RESPONSE;
+const claimantProceed1: yesNo = env.CLAIMANT_PROCEED_1;
+const claimantProceed2: yesNo = env.CLAIMANT_PROCEED_2;
 const fixedRecoverableCosts: yesNo = ['Yes'].includes(process.env.CLAIMANT1_LITIGANT_FRIEND)
   ? yesNo.YES
   : yesNo.NO;
@@ -145,7 +160,7 @@ const claimOfflineAfterNotifyClaimDetails =
   claimOfflineAfterNotifyClaim || defendantsToNotifyClaimDetails !== notifyClaimOptions.BOTH;
 // Once every defendant has responded, the claim moves on to the claimant's intention if all responses are a full
 // defence and goes offline otherwise.
-const responsesForClaimType = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.TWO_VS_ONE].includes(claimType)
+const responsesForClaimType = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR, claimTypes.TWO_VS_ONE].includes(claimType)
   ? [respondent1Response, respondent2Response]
   : [respondent1Response];
 const stateAfterAllResponses = responsesForClaimType.every((response) => response === respondentResponses.FULL_DEFENCE)
@@ -158,8 +173,24 @@ const stateAfterAllResponses = responsesForClaimType.every((response) => respons
 //  - 1v2DS: each defendant's solicitor responds.
 //  - 1v2LRLIP: Defendant 1's solicitor responds. Defendant 2 is a litigant in person, who cannot respond online in an
 //    unspecified claim, so the claim keeps waiting unless they appoint a solicitor who responds for them.
-const separateResponseClaimTypes = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LR_LIP];
+//  - 1v2LIPLR: no defendant responds. Defendant 1 is a litigant in person, and Defendant 2's solicitor's response is
+//    skipped (see test7), so the claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT.
+const separateResponseClaimTypes = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR];
+// Claim types where Defendant 2 has their own solicitor, who acknowledges and responds separately
+const defendant2OwnSolicitorClaimTypes = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LIP_LR];
 const defendantsResponded = new Set<number>();
+// Claim types with no litigant in person, where the claimant solicitor responds to the defence once every defendant
+// has entered a full defence. The claim moves to JUDICIAL_REFERRAL only if every claimant proceeds against every
+// defendant. Not proceeding, or proceeding against only some of them, takes the claim offline.
+const claimantResponseClaimTypes = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL];
+const claimantProceedsWithWholeClaim = claimType === claimTypes.ONE_VS_ONE
+  ? claimantProceed1 === yesNo.YES
+  : claimantProceed1 === yesNo.YES && claimantProceed2 === yesNo.YES;
+const stateAfterClaimantResponse = claimantProceedsWithWholeClaim
+  ? caseStates.JUDICIAL_REFERRAL
+  : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
+
+
 function expectedStateAfterResponse(defendantNumber: number): caseStates {
   defendantsResponded.add(defendantNumber);
   const waitingForOtherDefendant = separateResponseClaimTypes.includes(claimType) && defendantsResponded.size < 2;
@@ -437,9 +468,17 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
   test.describe('test5', { tag: '@unspecified' }, () => {
     test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    // Skipped here rather than in the test so beforeEach does not open the case as Defendant 2's solicitor, who is
+    // only signed in for claim types where they have one
+    test.skip(!defendant2OwnSolicitorClaimTypes.includes(claimType), 'Skipping test as Defendant 2 has no separate solicitor');
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
     test('Defendant 2 Solicitor acknowledges claim.', async ({ page }) => {
-      test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
+      if (claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+        // test4 is skipped for this claim type (Defendant 1 is a LiP), so Defendant 2's solicitor is assigned here
+        await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
+        // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
+        await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
+      }
       await new AcknowledgeClaim(page).acknowledge(
         claimType,
         respondent1ResponseIntention,
@@ -480,9 +519,24 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
   test.describe('test7', { tag: '@unspecified' }, () => {
     test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    // Skipped here rather than in the test so beforeEach does not open the case as Defendant 2's solicitor, who is
+    // only signed in for claim types where they have one
+    test.skip(!defendant2OwnSolicitorClaimTypes.includes(claimType), 'Skipping test as Defendant 2 has no separate solicitor');
     test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
     test('Defendant 2 Solicitor responds to claim.', async ({ page }) => {
-      test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping test as not a 1v2DS claim');
+      if (claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+        // civil-service only treats the defendants as having separate solicitors when both are represented, so in a
+        // 1v2LIPLR claim it handles Defendant 2's solicitor as Defendant 1's. The response is saved against Defendant 1
+        // (respondent1ResponseDate) and multiPartyResponseTypeFlags is NOT_FULL_DEFENCE even for a full defence. As a
+        // result the directions questionnaire pages are not displayed to Defendant 2's solicitor (the response goes
+        // straight from the response type to the references, statement of truth and submit), and no defence document
+        // is asked for. Until civil-service supports this, the response is skipped.
+        console.warn(
+          'WARNING: Defendant 2 Solicitor response NOT undertaken for 1v2LIPLR. civil-service records the response '
+          + 'against Defendant 1 and skips the directions questionnaire and defence upload, so it cannot be tested.',
+        );
+        test.skip(true, '1v2LIPLR: civil-service does not support a response from Defendant 2 Solicitor when Defendant 1 is a LiP');
+      }
       await new RespondToClaim(page).submit(
         claimType,
         track,
@@ -502,6 +556,33 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         unavailableDatesRequired,
       );
       await testingEndpointHelper.assertCaseState(caseId, expectedStateAfterResponse(2));
+    });
+  });
+
+  test.describe('test8', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
+    test('Claimant Solicitor responds to defence.', async ({ page }) => {
+      await new RespondToDefence(page).submit(
+        claimType,
+        track,
+        typeOfClaim as unspecClaimTypes,
+        claimantProceed1,
+        claimantProceed2,
+        determinationWithoutHearing,
+        oneMonthStay,
+        preActionProtocol,
+        fixedRecoverableCosts,
+        fixedRecoveryCostsBand,
+        yesNo.YES,
+        Number(noOfExperts),
+        Number(noOfWitnesses),
+        language,
+        unavailableDatesRequired,
+      );
+      await testingEndpointHelper.assertCaseState(caseId, stateAfterClaimantResponse);
     });
   });
 
