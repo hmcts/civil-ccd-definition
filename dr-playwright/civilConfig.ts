@@ -60,6 +60,14 @@ export const respondent2SolicitorCredentials = {
   orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
 }
 
+// Region 1 (London) judge, which covers the Clerkenwell court the claims are issued at. Judges see cases through their
+// region's role assignment, so they are not assigned to the case.
+export const judgeCredentials = {
+  name: 'Judge',
+  username: 'DJ.Amy.Powell@ejudiciary.net',
+  password: process.env.JUDGE_DEFAULT_PASSWORD,
+}
+
 export const systemupdate = {
   username: 'hmcts.civil+organisation.1.superuser@gmail.com',
   password: defaultPassword,

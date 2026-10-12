@@ -7,7 +7,7 @@ import {IdamPage} from '../e2e/page-objects/pages/idam.po';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import claimTypes from '../enums/claim-types.ts';
 import { SessionUtils } from '../e2e/utils/session.utils.ts';
-import { sessionUsers } from '../helpers/SessionHelper.ts';
+import { sessionUsers, signedInToXui } from '../helpers/SessionHelper.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -21,6 +21,9 @@ const caseListHeading = (page: Page) => page.getByRole('heading', { level: 1, na
 const claimantSolicitorAuthFile = sessionUsers.claimantSolicitor.authFile;
 const respondent1SolicitorAuthFile = sessionUsers.respondent1Solicitor.authFile;
 const respondent2SolicitorAuthFile = sessionUsers.respondent2Solicitor.authFile;
+const judgeAuthFile = sessionUsers.judge.authFile;
+// Claim types where the journey goes on to the claimant's response and the judge's directions order
+const judgeClaimTypes = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL];
 const authCookieName = "__auth__";
 const tokenValidityBufferSeconds = 60 * 60;
 
@@ -76,5 +79,16 @@ async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
       await idamPage.login(respondent2SolicitorCredentials);
       await expect(caseListHeading(page)).toBeVisible();
       await page.context().storageState({ path: respondent2SolicitorAuthFile });
+    });
+  }
+
+  if (judgeClaimTypes.includes(claimType)) {
+    setup("Authenticate Judge", async ({ page }) => {
+      setup.skip(await isSavedSessionAccepted(judgeAuthFile), "Reusing existing valid session");
+      await page.goto(envUrl);
+      await idamPage.login(sessionUsers.judge.credentials);
+      // Judges land on their work list rather than the case list
+      await expect(signedInToXui(page)).toBeVisible();
+      await page.context().storageState({ path: judgeAuthFile });
     });
   }

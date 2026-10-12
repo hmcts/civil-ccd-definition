@@ -23,6 +23,7 @@ import { AcknowledgeClaim } from '../flows/events/AcknowledgeClaim.ts';
 import respondentResponses from '../../enums/RespondentResponses.ts';
 import { RespondToClaim } from '../flows/events/RespondToClaim.ts';
 import { RespondToDefence } from '../flows/events/RespondToDefence.ts';
+import { CreateSdo } from '../flows/events/CreateSdo.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
@@ -615,6 +616,21 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         );
       });
       await testingEndpointHelper.assertCaseState(caseId, stateAfterClaimantResponse);
+    });
+  });
+
+  test.describe('test9', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track');
+    test.use({ storageState: sessionUsers.judge.authFile });
+    test('Judge makes a Standard Direction Order.', async ({ page, storageState }) => {
+      await runEvent(page, storageState, async () => {
+        await new CreateSdo(page).submit(caseId, track);
+      });
+      await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
     });
   });
 

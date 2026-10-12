@@ -4,6 +4,7 @@ import {
   claimantSolicitorCredentials,
   respondent1SolicitorCredentials,
   respondent2SolicitorCredentials,
+  judgeCredentials,
 } from '../civilConfig.ts';
 import { IdamPage } from '../e2e/page-objects/pages/idam.po.ts';
 import { PageHelper } from './PageHelper.ts';
@@ -14,7 +15,13 @@ export const sessionUsers = {
   claimantSolicitor: { credentials: claimantSolicitorCredentials, authFile: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' },
   respondent1Solicitor: { credentials: respondent1SolicitorCredentials, authFile: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' },
   respondent2Solicitor: { credentials: respondent2SolicitorCredentials, authFile: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' },
+  judge: { credentials: judgeCredentials, authFile: './dr-playwright/e2e/.auth/JudgeUser.json' },
 };
+
+// Shown on every XUI page once a user is signed in. Solicitors land on the case list and judges on their work list,
+// so the navigation is used rather than a page heading.
+export const signedInToXui = (page: Page) =>
+  page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Case list' });
 
 export type SessionUserKey = keyof typeof sessionUsers;
 
@@ -35,7 +42,7 @@ export class SessionHelper {
     await this.page.context().clearCookies();
     await this.page.goto(envUrl);
     await new IdamPage(this.page).login(credentials);
-    await expect(this.page.getByRole('heading', { level: 1, name: 'Case list' })).toBeVisible();
+    await expect(signedInToXui(this.page)).toBeVisible();
     await this.page.context().storageState({ path: authFile });
   }
 
