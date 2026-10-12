@@ -16,7 +16,10 @@ test.describe(
       HearingCenterAdminApiSteps,
       DefendantSolicitor1SpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2SS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignBothCaseRolesToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({

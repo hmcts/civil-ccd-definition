@@ -14,7 +14,7 @@ test.describe(
       CaseRoleAssignmentApiSteps,
     }) => {
       await ClaimantSolicitorSpecApiSteps.CreateClaim({
-        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimTrack: ClaimTrack.SMALL_CLAIM,
         claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
       });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
