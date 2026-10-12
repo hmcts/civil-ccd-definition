@@ -62,7 +62,7 @@ export class RespondToDefence {
         await this.page.locator(`#applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2_${proceed2}`).click();
         break;
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // civil-service sets applicantsProceedIntention to Yes if any of the answers is Yes
     const isOneVsOne = claimType === claimTypes.ONE_VS_ONE;
@@ -82,7 +82,7 @@ export class RespondToDefence {
       if (isDefendant2DocumentRequired) {
         await this.pageHelper.uploadFile(this.page.locator('#claimantDefenceResDocToDefendant2_file'), './dr-playwright/documents/TEST_DOCUMENT_3.pdf');
       }
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
 
       // In a 2v1 claim where only Claimant 2 proceeds, Claimant 2 answers the DQ (civil-service sets
       // claimant2ResponseFlag). Otherwise Claimant 1 answers it.
@@ -114,7 +114,7 @@ export class RespondToDefence {
     // Statement of truth
     await this.page.locator('input[id$="uiStatementOfTruth_name"]').fill(claimantSolicitorCredentials.name);
     await this.page.locator('input[id$="uiStatementOfTruth_role"]').fill('Solicitor');
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Check your answers and submit
     await this.buttonHelper.submitButton.click();

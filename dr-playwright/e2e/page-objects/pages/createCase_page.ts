@@ -2,6 +2,7 @@ import { Page } from "@playwright/test";
 //import {runningEnv} from "../../../iacConfig";
 import { createCase } from '../../../civilConfig.ts';
 import {WaitUtils} from '../../utils/wait.utils.ts';
+import { PageHelper } from '../../../helpers/PageHelper.ts';
 
 export class CreateCasePage {
   private jurisdictionLocator: string;
@@ -22,6 +23,9 @@ export class CreateCasePage {
     const ccEvent = this.page.locator('#cc-event')
 
     await this.createCaseLink.click();
+    // CCD can take longer than the action timeout to return the jurisdictions, leaving the list empty, so wait for
+    // an option other than "--Select a value--" and reload if it doesn't arrive
+    await new PageHelper(this.page).waitForReady(ccJurisdiction.locator('option').nth(1), 'The Create case jurisdiction list');
     await ccJurisdiction.selectOption(caseType === 'UNSPECIFIED' ? createCase.jurisdictionCode : createCase.jurisdictionCode);
     await ccCaseType.selectOption(caseType === 'UNSPECIFIED' ? createCase.caseTypeCode : createCase.caseTypeCode);
     await ccEvent.selectOption(caseType === 'UNSPECIFIED' ? createCase.eventCode : createCase.eventCode);

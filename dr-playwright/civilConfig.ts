@@ -78,6 +78,19 @@ export const xuiLoadRetries = {
   waitSeconds: Number(process.env.XUI_LOAD_WAIT_SECONDS ?? 20),
 }
 
+// How hard to try when CCD is slow, or briefly fails, to check an event page after Continue: how many attempts in
+// total, how many seconds to wait before retrying, and how many seconds to wait for CCD to respond. Override with
+// CONTINUE_RETRY_ATTEMPTS, CONTINUE_RETRY_WAIT_SECONDS and CONTINUE_RESPONSE_TIMEOUT_SECONDS.
+export const continueRetries = {
+  attempts: Number(process.env.CONTINUE_RETRY_ATTEMPTS ?? 3),
+  waitSeconds: Number(process.env.CONTINUE_RETRY_WAIT_SECONDS ?? 10),
+  responseTimeoutSeconds: Number(process.env.CONTINUE_RESPONSE_TIMEOUT_SECONDS ?? 60),
+}
+
+// How many seconds to wait for the payment result page, which can be slow when the payment service is busy.
+// Override with PAYMENT_RESULT_WAIT_SECONDS.
+export const paymentResultWaitSeconds = Number(process.env.PAYMENT_RESULT_WAIT_SECONDS ?? 60);
+
 // How many cases to unassign from a user in one call at teardown. The case IDs go in a request URL, so large
 // numbers of cases are sent in batches to stay within URL length limits. Override with UNASSIGN_BATCH_SIZE.
 export const caseUnassignment = {

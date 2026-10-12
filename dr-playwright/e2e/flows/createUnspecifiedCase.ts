@@ -40,7 +40,7 @@ export class CreateUnspecifiedCase {
         .locator('#solicitorReferences_respondentSolicitor1Reference')
         .fill('RespondentSolicitor1Reference');
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setCourt(remoteHearing: string = 'No', court: string = 'clerkenwell') {
@@ -54,7 +54,7 @@ export class CreateUnspecifiedCase {
       .locator(`#applicant1DQRemoteHearing_remoteHearingRequested_${remoteHearing}`)
       .check();
 
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setClaimantType(claimantType: string = 'INDIVIDUAL', claimantNumber: number = 1) {
@@ -206,7 +206,7 @@ export class CreateUnspecifiedCase {
           : partyDetails.claimant2.address.postcode,
       );
 
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setClaimantLitigantFriend(yesNo: YesNo = YesNo.NO, claimantNumber: number = 1) {
@@ -225,22 +225,22 @@ export class CreateUnspecifiedCase {
       );
     }
 
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setClaimantNotifications(yesNo: YesNo = YesNo.YES) {
     await this.page.locator(`#applicantSolicitor1CheckEmail_correct_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setClaimantServiceAddress(yesNo: YesNo = YesNo.NO) {
     await this.page.locator(`#applicantSolicitor1ServiceAddressRequired_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setAnotherClaimant(yesNo: YesNo = YesNo.NO, claimantType: string = 'INDIVIDUAL') {
     await this.page.locator(`#addApplicant2_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setDefendantType(defendantType: string = claimantDefendantTypes.INDIVIDUAL, defendantNumber: number = 1) {
@@ -270,12 +270,12 @@ export class CreateUnspecifiedCase {
       .locator(`#respondent${defendantNumber}_primaryAddress__detailPostCode`)
       .fill(defendantNumber === 1 ? partyDetails.defendant1.address.postcode : partyDetails.defendant2.address.postcode);
 
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setDefendantLegallyRepresented(yesNo: YesNo = YesNo.YES, defendantNumber: number = 1) {
     await this.page.locator(`#respondent${defendantNumber}Represented_${yesNo}`).click();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   //Eventually we will pass the org as parameter - will be cleaner
@@ -288,7 +288,7 @@ export class CreateUnspecifiedCase {
     await parent.getByRole('link').click();
     await expect(this.page.locator('#organisation-selected-table')).toBeVisible();
 
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   // When the environment is slow XUI can fail to load the organisation list and show "Organisation search is
@@ -311,36 +311,36 @@ export class CreateUnspecifiedCase {
       const organisationPageUrl = this.page.url();
       await this.buttonHelper.previousButton.click();
       await this.page.waitForURL((url) => url.toString() !== organisationPageUrl, { timeout: waitSeconds * 1000 });
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
       await this.page.waitForURL(organisationPageUrl, { timeout: waitSeconds * 1000 });
     }
   }
 
   async setDefendantLegalRepresentativeCorrespondenceAddress(yesNo: YesNo = YesNo.NO, defendantNumber: number = 1) {
     await this.page.locator(`#respondentSolicitor${defendantNumber}ServiceAddressRequired_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setDefendantLegalRepresentativeEmail(defendantNumber: number = 1) {
     await this.page
       .locator(`#respondentSolicitor${defendantNumber}EmailAddress`)
       .fill(defendantNumber === 1 ? legalRepresentatives.legalRepresentative1.email : legalRepresentatives.legalRepresentative2.email);
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setAnotherDefendant(yesNo: YesNo = YesNo.NO) {
     await this.page.locator(`#addRespondent2_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setSameLegalRepresentative(yesNo: YesNo = YesNo.YES) {
     await this.page.locator(`#respondent2SameLegalRepresentative_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setDefendant2LegalRepresentativeReference() {
     await this.page.locator('#respondentSolicitor2Reference').fill('RespondentSolicitor2Reference')
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setTypeOfClaim(claimType?: string) {
@@ -348,7 +348,7 @@ export class CreateUnspecifiedCase {
     if (claimType == unspecClaimTypes.OTHER) {
       await this.page.locator(`#claimTypeOther`).fill('Type of claim - Other - test text.');
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setSubClaimType(subClaimType) {
@@ -356,28 +356,28 @@ export class CreateUnspecifiedCase {
     if (subClaimType == personalInjuryTypes.PERSONAL_INJURY_OTHER) {
       await this.page.locator('#personalInjuryTypeOther').fill('Personal Injury - other test text.');
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setOtherRemedy(yesNo: YesNo = YesNo.YES ){
     await this.page.locator(`#isClaimDeclarationAdded_${yesNo}`).check();
     await this.page.locator('#claimDeclarationDescription').fill('Other remedy narrative text.');
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setDescriptionOfClaim() {
     await this.page.locator('#detailsOfClaim').fill('Test description of claim');
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setHumanRights(yesNo: YesNo = YesNo.YES) {
     await this.page.locator(`#isHumanRightsActIssues_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setUploadParticularsOfClaim(yesNo: YesNo = YesNo.NO) {
     await this.page.locator(`#uploadParticularsOfClaim_${yesNo}`).check();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setClaimValue(track, typeOfClaim) {
@@ -413,13 +413,13 @@ export class CreateUnspecifiedCase {
     }
 
     await this.page.locator('#claimValue_statementOfValueInPennies').fill(claimAmount);
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   async setStatementOfTruth() {
     await this.page.locator('#uiStatementOfTruth_name').fill(legalRepresentatives.legalRepresentative1.firstName + ' ' + legalRepresentatives.legalRepresentative1.lastName);
     await this.page.locator('#uiStatementOfTruth_role').fill(legalRepresentatives.legalRepresentative1.role);
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
 

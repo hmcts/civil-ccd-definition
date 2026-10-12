@@ -32,18 +32,18 @@ export class NotifyClaim {
       for (const [i, value] of notifyOptions.entries()) {
         if (value.indexOf(whomToNotify) > -1) {
           await this.page.locator('#defendantSolicitorNotifyClaimOptions').selectOption({ index: i });
-          await this.buttonHelper.continueButton.click();
+          await this.pageHelper.continueToNextPage();
 
           if (whomToNotify !== notifyClaimOptions.BOTH) {
             await this.buttonHelper.IgnoreWarningAndContinueButton.click();
           }
-          await this.buttonHelper.continueButton.click();
+          await this.pageHelper.continueToNextPage();
           await this.buttonHelper.submitButton.click();
           break;
         }
       }
     } else {
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
       // Each litigant in person defendant needs a Certificate of Service page completing
       if (CoSHelper.litigantInPersonDefendants(claimType).length > 0) {
         await new CoSHelper(this.page).submit(claimType);

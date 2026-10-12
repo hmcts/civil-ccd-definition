@@ -85,6 +85,6 @@ export class CoSHelper {
       await this.page.locator(`#cos${event}Defendant${LiPDefendantNumber}_cosSenderFirm`).fill(`Legal Rep Firm: Defendant${LiPDefendantNumber}`);
       await this.page.locator(`#cos${event}Defendant${LiPDefendantNumber}_cosUISenderStatementOfTruthLabel-CERTIFIED`).check();
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 }

@@ -1,6 +1,7 @@
 import {expect, Page} from "@playwright/test";
 import { TabsHelper } from '../../../helpers/TabsHelper';
 import { ButtonHelper} from "../../../helpers/ButtonHelper";
+import { paymentResultWaitSeconds } from "../../../civilConfig";
 
 
 export class PaymentPage {
@@ -83,8 +84,11 @@ export class PaymentPage {
       await this.page.click(this.continueButtonLocator);
       await this.page.click(this.confirmButtonLocator);
     }
-    await this.page.waitForSelector('#main-content', { state: 'visible' });
-    const message = await this.page.innerText('#main-content');
+    // The payment result can be slow to show when the payment service is busy. It is not retried, as paying again
+    // could take a second payment.
+    const result = this.page.locator('#main-content');
+    await expect(result, `No payment result within ${paymentResultWaitSeconds}s`).toContainText(/Payment successful|problem with the service/, { timeout: paymentResultWaitSeconds * 1000 });
+    const message = await result.innerText();
     expect(message, 'Payment failed.').toContain('Payment successful');
   }
 }

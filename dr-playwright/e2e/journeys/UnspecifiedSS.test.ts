@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, Page, test } from '@playwright/test';
 import { envUrl } from '../../civilConfig.ts';
 import { PageHelper } from '../../helpers/PageHelper.ts';
 import { ButtonHelper } from '../../helpers/ButtonHelper.ts';
@@ -28,6 +28,7 @@ import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
 import { CaseUserRegistry } from '../../helpers/CaseUserRegistry.ts';
 import caseStates from '../../enums/caseStates.ts';
+import { SessionHelper, sessionUserFor, sessionUsers } from '../../helpers/SessionHelper.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -234,6 +235,17 @@ let tabsHelper: TabsHelper;
 let testingEndpointHelper: TestingEndPointHelper;
 let createCasePage: CreateCasePage;
 
+function caseUrl(): string {
+  return envUrl + '/cases/case-details/' + caseId;
+}
+
+// Runs the UI steps of an event as the test's user (from its storageState). If their XUI session ends before the
+// event is submitted, they are signed in again, reopenUrl (the case by default) is opened again and the steps are
+// run again from the start.
+async function runEvent(page: Page, storageState: unknown, action: () => Promise<void>, reopenUrl: string = caseUrl()) {
+  await new SessionHelper(page).runWithSessionRecovery(sessionUserFor(storageState), reopenUrl, action);
+}
+
 test.beforeAll(async ({}) => {
   if (
     typeOfClaim == unspecClaimTypes.PERSONAL_INJURY &&
@@ -266,132 +278,138 @@ test.beforeAll(async ({}) => {
   ).toBeGreaterThanOrEqual(0);
 });
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({ page, storageState }) => {
   pageHelper = new PageHelper(page);
   buttonHelper = new ButtonHelper(page);
   createCasePage = new CreateCasePage(page);
   tabsHelper = new TabsHelper(page);
   testingEndpointHelper = new TestingEndPointHelper();
-  await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
-  // XUI can redirect to the case list on the first load of a session, so open the case again if that happened
-  if (caseId && !page.url().includes(caseId)) {
-    await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
-  }
+  // A saved session can have ended since the last test, in which case the user is signed in again
+  await runEvent(page, storageState, async () => {
+    await pageHelper.gotoAndWaitForXui(caseUrl());
+    // XUI can redirect to the case list on the first load of a session, so open the case again if that happened
+    if (caseId && !page.url().includes(caseId)) {
+      await pageHelper.gotoAndWaitForXui(caseUrl());
+    }
+  });
 });
 
 test.describe.configure({ mode: 'serial' });
 test.describe('test1', { tag: '@unspecified' }, () => {
-  test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
-  test('Claimant Solicitor creates ' + claimType + ' claim ', async ({ page }) => {
-    let createCase: CreateUnspecifiedCase = new CreateUnspecifiedCase(page);
-    await createCasePage.createCase(caseType);
-    await buttonHelper.continueButton.click(); //Summary
-    await createCase.setReferences(claimType); // do not think we need to pass claimtype.....
-    await createCase.setCourt();
-    await createCase.setClaimantType(claimantType, 1);
-    await createCase.setClaimantLitigantFriend(claimant1LitigantFriend, 1);
-    await createCase.setClaimantNotifications();
-    await buttonHelper.continueButton.click(); //ClaimantSolicitorOrganisation
-    await createCase.setClaimantServiceAddress();
-
-    switch (claimType) {
-      case claimTypes.TWO_VS_ONE:
-      case claimTypes.TWO_VS_ONE_LIP:
-        await createCase.setAnotherClaimant(yesNo.YES, claimantType);
-        await createCase.setClaimantType(claimantType, 2);
-        await createCase.setClaimantLitigantFriend(claimant2LitigantFriend, 2);
-        break;
-      default:
-        await createCase.setAnotherClaimant(yesNo.NO, claimantType);
-    }
-
-    await createCase.setDefendantType(defendantType, 1);
-
-    if (
-      claimType == claimTypes.ONE_VS_ONE_LIP ||
-      claimType == claimTypes.TWO_VS_ONE_LIP ||
-      claimType == claimTypes.ONE_VS_TWO_LIP_LR ||
-      claimType == claimTypes.ONE_VS_TWO_LIPS
-    ) {
-      console.log('Defendant 1: NOT represented');
-      await createCase.setDefendantLegallyRepresented(yesNo.NO, 1);
-    } else {
-      console.log('Defendant 1: REPRESENTED');
-      await createCase.setDefendantLegallyRepresented(yesNo.YES, 1);
-      await createCase.setSolicitorOrganisation('Civil - Organisation 2');
-      await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 1);
-      await createCase.setDefendantLegalRepresentativeEmail();
-    }
-
-    if (claimType == claimTypes.TWO_VS_ONE_LIP || claimType == claimTypes.TWO_VS_ONE) {
-      // ignore these claim types as they cannot have a second defendant
-    } else if (claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.ONE_VS_ONE_LIP) {
-      await createCase.setAnotherDefendant(yesNo.NO);
-    } else {
-      await createCase.setAnotherDefendant(yesNo.YES);
-      await createCase.setDefendantType(defendantType, 2);
+  test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
+  test('Claimant Solicitor creates ' + claimType + ' claim ', async ({ page, storageState }) => {
+    // If the session ends before the claim is submitted, the claim is started again from the case list
+    await runEvent(page, storageState, async () => {
+      let createCase: CreateUnspecifiedCase = new CreateUnspecifiedCase(page);
+      await createCasePage.createCase(caseType);
+      await pageHelper.continueToNextPage(); //Summary
+      await createCase.setReferences(claimType); // do not think we need to pass claimtype.....
+      await createCase.setCourt();
+      await createCase.setClaimantType(claimantType, 1);
+      await createCase.setClaimantLitigantFriend(claimant1LitigantFriend, 1);
+      await createCase.setClaimantNotifications();
+      await pageHelper.continueToNextPage(); //ClaimantSolicitorOrganisation
+      await createCase.setClaimantServiceAddress();
 
       switch (claimType) {
-        case claimTypes.ONE_VS_TWO_LIP_LR:
-          console.log('Defendant 2: REPRESENTED');
-          await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-          // Defendant 2's solicitor is the Respondent2 Solicitor user, who belongs to Organisation 3
-          await createCase.setSolicitorOrganisation('Civil - Organisation 3');
-          await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
-          await createCase.setDefendant2LegalRepresentativeReference();
-          await createCase.setDefendantLegalRepresentativeEmail(2);
-          break;
-        case claimTypes.ONE_VS_TWO_SAME_SOL:
-          console.log('Defendant 2: REPRESENTED - same sols');
-          await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-          await createCase.setSameLegalRepresentative(yesNo.YES);
-          break;
-        case claimTypes.ONE_VS_TWO_DIFF_SOL:
-          console.log('Defendant 2: REPRESENTED - diff sols');
-          await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-          await createCase.setSameLegalRepresentative(yesNo.NO);
-          await createCase.setSolicitorOrganisation('Civil - Organisation 3');
-          await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
-          await createCase.setDefendant2LegalRepresentativeReference();
-          await createCase.setDefendantLegalRepresentativeEmail(2);
+        case claimTypes.TWO_VS_ONE:
+        case claimTypes.TWO_VS_ONE_LIP:
+          await createCase.setAnotherClaimant(yesNo.YES, claimantType);
+          await createCase.setClaimantType(claimantType, 2);
+          await createCase.setClaimantLitigantFriend(claimant2LitigantFriend, 2);
           break;
         default:
-          console.log('Defendant 2: NOT represented');
-          await createCase.setDefendantLegallyRepresented(yesNo.NO, 2);
+          await createCase.setAnotherClaimant(yesNo.NO, claimantType);
       }
-    }
 
-    await createCase.setTypeOfClaim(typeOfClaim); // use from parameters in package
+      await createCase.setDefendantType(defendantType, 1);
 
-    if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY) {
-      await createCase.setSubClaimType(typeOfClaimSubType); // use from parameters in package
-    }
+      if (
+        claimType == claimTypes.ONE_VS_ONE_LIP ||
+        claimType == claimTypes.TWO_VS_ONE_LIP ||
+        claimType == claimTypes.ONE_VS_TWO_LIP_LR ||
+        claimType == claimTypes.ONE_VS_TWO_LIPS
+      ) {
+        console.log('Defendant 1: NOT represented');
+        await createCase.setDefendantLegallyRepresented(yesNo.NO, 1);
+      } else {
+        console.log('Defendant 1: REPRESENTED');
+        await createCase.setDefendantLegallyRepresented(yesNo.YES, 1);
+        await createCase.setSolicitorOrganisation('Civil - Organisation 2');
+        await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 1);
+        await createCase.setDefendantLegalRepresentativeEmail();
+      }
 
-    if (
-      typeOfClaim == unspecClaimTypes.HOUSING_DISREPAIR ||
-      typeOfClaim == unspecClaimTypes.DAMAGES_AND_OTHER_REMEDY
-    ) {
-      await createCase.setOtherRemedy();
-      await createCase.setHumanRights();
-    }
+      if (claimType == claimTypes.TWO_VS_ONE_LIP || claimType == claimTypes.TWO_VS_ONE) {
+        // ignore these claim types as they cannot have a second defendant
+      } else if (claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.ONE_VS_ONE_LIP) {
+        await createCase.setAnotherDefendant(yesNo.NO);
+      } else {
+        await createCase.setAnotherDefendant(yesNo.YES);
+        await createCase.setDefendantType(defendantType, 2);
 
-    await createCase.setDescriptionOfClaim();
+        switch (claimType) {
+          case claimTypes.ONE_VS_TWO_LIP_LR:
+            console.log('Defendant 2: REPRESENTED');
+            await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
+            // Defendant 2's solicitor is the Respondent2 Solicitor user, who belongs to Organisation 3
+            await createCase.setSolicitorOrganisation('Civil - Organisation 3');
+            await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
+            await createCase.setDefendant2LegalRepresentativeReference();
+            await createCase.setDefendantLegalRepresentativeEmail(2);
+            break;
+          case claimTypes.ONE_VS_TWO_SAME_SOL:
+            console.log('Defendant 2: REPRESENTED - same sols');
+            await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
+            await createCase.setSameLegalRepresentative(yesNo.YES);
+            break;
+          case claimTypes.ONE_VS_TWO_DIFF_SOL:
+            console.log('Defendant 2: REPRESENTED - diff sols');
+            await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
+            await createCase.setSameLegalRepresentative(yesNo.NO);
+            await createCase.setSolicitorOrganisation('Civil - Organisation 3');
+            await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
+            await createCase.setDefendant2LegalRepresentativeReference();
+            await createCase.setDefendantLegalRepresentativeEmail(2);
+            break;
+          default:
+            console.log('Defendant 2: NOT represented');
+            await createCase.setDefendantLegallyRepresented(yesNo.NO, 2);
+        }
+      }
 
-    await createCase.setUploadParticularsOfClaim();
+      await createCase.setTypeOfClaim(typeOfClaim); // use from parameters in package
 
-    //
-    if (
-      typeOfClaim == unspecClaimTypes.PERSONAL_INJURY &&
-      typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS
-    ) {
-      track = claimTrack.FAST;
-    }
+      if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY) {
+        await createCase.setSubClaimType(typeOfClaimSubType); // use from parameters in package
+      }
 
-    await createCase.setClaimValue(track, typeOfClaim); // use from parameters in package
-    await buttonHelper.continueButton.click(); //Amount to pay - can do an assertion on amount by api to fee and pay to make sure fee is correct, if needed.
-    await createCase.setStatementOfTruth(); //will be dependant upon case ie 1v1 etc
-    await buttonHelper.submitButton.click(); //CYA
-    await buttonHelper.closeAndReturnToCaseDetailsButton.click(); //Success
+      if (
+        typeOfClaim == unspecClaimTypes.HOUSING_DISREPAIR ||
+        typeOfClaim == unspecClaimTypes.DAMAGES_AND_OTHER_REMEDY
+      ) {
+        await createCase.setOtherRemedy();
+        await createCase.setHumanRights();
+      }
+
+      await createCase.setDescriptionOfClaim();
+
+      await createCase.setUploadParticularsOfClaim();
+
+      //
+      if (
+        typeOfClaim == unspecClaimTypes.PERSONAL_INJURY &&
+        typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS
+      ) {
+        track = claimTrack.FAST;
+      }
+
+      await createCase.setClaimValue(track, typeOfClaim); // use from parameters in package
+      await pageHelper.continueToNextPage(); //Amount to pay - can do an assertion on amount by api to fee and pay to make sure fee is correct, if needed.
+      await createCase.setStatementOfTruth(); //will be dependant upon case ie 1v1 etc
+      await buttonHelper.submitButton.click(); //CYA
+      await buttonHelper.closeAndReturnToCaseDetailsButton.click(); //Success
+    }, envUrl);
 
     caseId = await pageHelper.grabCaseNumber();
     console.log('caseId>>>>>>>>>>>>>>>' + caseId + '<<<<<<<<<<<<<<<<<<<');
@@ -414,9 +432,11 @@ test.describe('test1', { tag: '@unspecified' }, () => {
   });
 
   test.describe('test2', { tag: '@unspecified' }, () => {
-    test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
-    test('Claimant Solicitor undertakes event: Notify claim ', async ({ page }) => {
-      await new NotifyClaim(page).notify(claimType, defendantsToNotifyClaim);
+    test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
+    test('Claimant Solicitor undertakes event: Notify claim ', async ({ page, storageState }) => {
+      await runEvent(page, storageState, async () => {
+        await new NotifyClaim(page).notify(claimType, defendantsToNotifyClaim);
+      });
       await testingEndpointHelper.waitForCamundaProcessToFinish(
         caseId,
         'NOTIFY_DEFENDANT_OF_CLAIM',
@@ -432,9 +452,11 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
   test.describe('test3', { tag: '@unspecified' }, () => {
     test.skip(claimOfflineAfterNotifyClaim, 'Claim went offline at Notify claim');
-    test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
-    test('Claimant Solicitor undertakes event: Notify claim details ', async ({ page }) => {
-      await new NotifyClaimDetails(page).notify(claimType, defendantsToNotifyClaimDetails);
+    test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
+    test('Claimant Solicitor undertakes event: Notify claim details ', async ({ page, storageState }) => {
+      await runEvent(page, storageState, async () => {
+        await new NotifyClaimDetails(page).notify(claimType, defendantsToNotifyClaimDetails);
+      });
       await testingEndpointHelper.waitForCamundaProcessToFinish(
         caseId,
         'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS',
@@ -450,18 +472,20 @@ test.describe('test1', { tag: '@unspecified' }, () => {
 
   test.describe('test4', { tag: '@unspecified' }, () => {
     test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
-    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
-    test('Defendant 1 Solicitor acknowledges claim.', async ({ page }) => {
+    test.use({ storageState: sessionUsers.respondent1Solicitor.authFile });
+    test('Defendant 1 Solicitor acknowledges claim.', async ({ page, storageState }) => {
       test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
         await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
         // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
         await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
-        await new AcknowledgeClaim(page).acknowledge(
-          claimType,
-          respondent1ResponseIntention,
-          respondent2ResponseIntention,
-          1,
-        );
+        await runEvent(page, storageState, async () => {
+          await new AcknowledgeClaim(page).acknowledge(
+            claimType,
+            respondent1ResponseIntention,
+            respondent2ResponseIntention,
+            1,
+          );
+        });
         await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
     });
   });
@@ -471,48 +495,52 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     // Skipped here rather than in the test so beforeEach does not open the case as Defendant 2's solicitor, who is
     // only signed in for claim types where they have one
     test.skip(!defendant2OwnSolicitorClaimTypes.includes(claimType), 'Skipping test as Defendant 2 has no separate solicitor');
-    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
-    test('Defendant 2 Solicitor acknowledges claim.', async ({ page }) => {
+    test.use({ storageState: sessionUsers.respondent2Solicitor.authFile });
+    test('Defendant 2 Solicitor acknowledges claim.', async ({ page, storageState }) => {
       if (claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
         // test4 is skipped for this claim type (Defendant 1 is a LiP), so Defendant 2's solicitor is assigned here
         await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
         // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
         await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
       }
-      await new AcknowledgeClaim(page).acknowledge(
-        claimType,
-        respondent1ResponseIntention,
-        respondent2ResponseIntention,
-        2,
-      );
+      await runEvent(page, storageState, async () => {
+        await new AcknowledgeClaim(page).acknowledge(
+          claimType,
+          respondent1ResponseIntention,
+          respondent2ResponseIntention,
+          2,
+        );
+      });
       await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
     });
   });
 
   test.describe('test6', { tag: '@unspecified' }, () => {
     test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
-    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' });
-    test('Defendant 1 Solicitor responds to claim.', async ({ page }) => {
+    test.use({ storageState: sessionUsers.respondent1Solicitor.authFile });
+    test('Defendant 1 Solicitor responds to claim.', async ({ page, storageState }) => {
       test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
       console.log('>>>> ', fixedRecoveryCostsBand);
-      await new RespondToClaim(page).submit(
-        claimType,
-        track,
-        typeOfClaim as unspecClaimTypes,
-        respondent1Response,
-        respondent2Response,
-        1,
-        determinationWithoutHearing,
-        oneMonthStay,
-        preActionProtocol,
-        fixedRecoverableCosts,
-        fixedRecoveryCostsBand,
-        yesNo.YES,
-        Number(noOfExperts),
-        Number(noOfWitnesses),
-        language,
-        unavailableDatesRequired,
-      );
+      await runEvent(page, storageState, async () => {
+        await new RespondToClaim(page).submit(
+          claimType,
+          track,
+          typeOfClaim as unspecClaimTypes,
+          respondent1Response,
+          respondent2Response,
+          1,
+          determinationWithoutHearing,
+          oneMonthStay,
+          preActionProtocol,
+          fixedRecoverableCosts,
+          fixedRecoveryCostsBand,
+          yesNo.YES,
+          Number(noOfExperts),
+          Number(noOfWitnesses),
+          language,
+          unavailableDatesRequired,
+        );
+      });
       await testingEndpointHelper.assertCaseState(caseId, expectedStateAfterResponse(1));
     });
   });
@@ -522,8 +550,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     // Skipped here rather than in the test so beforeEach does not open the case as Defendant 2's solicitor, who is
     // only signed in for claim types where they have one
     test.skip(!defendant2OwnSolicitorClaimTypes.includes(claimType), 'Skipping test as Defendant 2 has no separate solicitor');
-    test.use({ storageState: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' });
-    test('Defendant 2 Solicitor responds to claim.', async ({ page }) => {
+    test.use({ storageState: sessionUsers.respondent2Solicitor.authFile });
+    test('Defendant 2 Solicitor responds to claim.', async ({ page, storageState }) => {
       if (claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
         // civil-service only treats the defendants as having separate solicitors when both are represented, so in a
         // 1v2LIPLR claim it handles Defendant 2's solicitor as Defendant 1's. The response is saved against Defendant 1
@@ -537,24 +565,26 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         );
         test.skip(true, '1v2LIPLR: civil-service does not support a response from Defendant 2 Solicitor when Defendant 1 is a LiP');
       }
-      await new RespondToClaim(page).submit(
-        claimType,
-        track,
-        typeOfClaim as unspecClaimTypes,
-        respondent1Response,
-        respondent2Response,
-        2,
-        determinationWithoutHearing,
-        oneMonthStay,
-        preActionProtocol,
-        fixedRecoverableCosts,
-        fixedRecoveryCostsBand,
-        yesNo.YES,
-        Number(noOfExperts),
-        Number(noOfWitnesses),
-        language,
-        unavailableDatesRequired,
-      );
+      await runEvent(page, storageState, async () => {
+        await new RespondToClaim(page).submit(
+          claimType,
+          track,
+          typeOfClaim as unspecClaimTypes,
+          respondent1Response,
+          respondent2Response,
+          2,
+          determinationWithoutHearing,
+          oneMonthStay,
+          preActionProtocol,
+          fixedRecoverableCosts,
+          fixedRecoveryCostsBand,
+          yesNo.YES,
+          Number(noOfExperts),
+          Number(noOfWitnesses),
+          language,
+          unavailableDatesRequired,
+        );
+      });
       await testingEndpointHelper.assertCaseState(caseId, expectedStateAfterResponse(2));
     });
   });
@@ -563,25 +593,27 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
     test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
     test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
-    test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
-    test('Claimant Solicitor responds to defence.', async ({ page }) => {
-      await new RespondToDefence(page).submit(
-        claimType,
-        track,
-        typeOfClaim as unspecClaimTypes,
-        claimantProceed1,
-        claimantProceed2,
-        determinationWithoutHearing,
-        oneMonthStay,
-        preActionProtocol,
-        fixedRecoverableCosts,
-        fixedRecoveryCostsBand,
-        yesNo.YES,
-        Number(noOfExperts),
-        Number(noOfWitnesses),
-        language,
-        unavailableDatesRequired,
-      );
+    test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
+    test('Claimant Solicitor responds to defence.', async ({ page, storageState }) => {
+      await runEvent(page, storageState, async () => {
+        await new RespondToDefence(page).submit(
+          claimType,
+          track,
+          typeOfClaim as unspecClaimTypes,
+          claimantProceed1,
+          claimantProceed2,
+          determinationWithoutHearing,
+          oneMonthStay,
+          preActionProtocol,
+          fixedRecoverableCosts,
+          fixedRecoveryCostsBand,
+          yesNo.YES,
+          Number(noOfExperts),
+          Number(noOfWitnesses),
+          language,
+          unavailableDatesRequired,
+        );
+      });
       await testingEndpointHelper.assertCaseState(caseId, stateAfterClaimantResponse);
     });
   });

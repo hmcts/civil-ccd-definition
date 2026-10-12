@@ -7,6 +7,7 @@ import {IdamPage} from '../e2e/page-objects/pages/idam.po';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import claimTypes from '../enums/claim-types.ts';
 import { SessionUtils } from '../e2e/utils/session.utils.ts';
+import { sessionUsers } from '../helpers/SessionHelper.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -17,9 +18,9 @@ const env = cleanEnv({
 const claimType: claimTypes = env.CLAIM_TYPE;
 // Match the heading by role rather than DOM position, as XUI versions wrap it differently
 const caseListHeading = (page: Page) => page.getByRole('heading', { level: 1, name: 'Case list' });
-const claimantSolicitorAuthFile = "./dr-playwright/e2e/.auth/ClaimantSolicitorUser.json";
-const respondent1SolicitorAuthFile = "./dr-playwright/e2e/.auth/Respondent1SolicitorUser.json";
-const respondent2SolicitorAuthFile = "./dr-playwright/e2e/.auth/Respondent2SolicitorUser.json";
+const claimantSolicitorAuthFile = sessionUsers.claimantSolicitor.authFile;
+const respondent1SolicitorAuthFile = sessionUsers.respondent1Solicitor.authFile;
+const respondent2SolicitorAuthFile = sessionUsers.respondent2Solicitor.authFile;
 const authCookieName = "__auth__";
 const tokenValidityBufferSeconds = 60 * 60;
 

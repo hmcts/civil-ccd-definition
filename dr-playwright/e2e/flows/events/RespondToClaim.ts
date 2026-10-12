@@ -45,14 +45,14 @@ export class RespondToClaim {
     unavailableDatesRequired: YesNo = YesNo.NO,
   ) {
     await this.pageHelper.selectNextStep('Respond to claim');
-    await this.buttonHelper.continueButton.click(); // Confirm Details
+    await this.pageHelper.continueToNextPage(); // Confirm Details
 
     // Single response (1v2 same solicitor only): one response for both defendants, or a separate response for each.
     // civil-service rejects separate responses that are both full defence, so those must be a single response.
     const isSingleResponse = respondent1Response === respondent2Response;
     if (claimType === claimTypes.ONE_VS_TWO_SAME_SOL) {
       await this.page.locator(`#respondentResponseIsSame_${isSingleResponse ? YesNo.YES : YesNo.NO}`).click();
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
     }
 
     // Response
@@ -84,7 +84,7 @@ export class RespondToClaim {
         }
         break;
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Solicitor reference
     let legalRepresentativeReference: string;
@@ -95,7 +95,7 @@ export class RespondToClaim {
       legalRepresentativeReference = await this.page.locator('#respondentSolicitor2Reference').inputValue();
       await this.page.locator('#respondentSolicitor2Reference').fill(`${legalRepresentativeReference} - Respond to claim`);
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Which pages follow depends on this defendant's response (set by civil-service as multiPartyResponseTypeFlags):
     // the response document is only asked for a full defence or part admission, and the directions questionnaire
@@ -109,7 +109,7 @@ export class RespondToClaim {
     // Response document
     if (isResponseDocumentRequired) {
       await this.pageHelper.uploadFile(this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`), './dr-playwright/documents/TEST_DOCUMENT_3.pdf');
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
     }
 
     if (isFullDefence) {
@@ -140,7 +140,7 @@ export class RespondToClaim {
     // Statement of truth
     await this.page.locator('input[id$="uiStatementOfTruth_name"]').fill((defendantNumber === 1 ? respondent1SolicitorCredentials : respondent2SolicitorCredentials).name);
     await this.page.locator('input[id$="uiStatementOfTruth_role"]').fill('Solicitor');
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Check your answers and submit
     await this.buttonHelper.submitButton.click();

@@ -58,7 +58,7 @@ export class DirectionsQuestionnaire {
       if (answers.determinationWithoutHearing === YesNo.NO) {
         await this.page.locator(`#${party.determinationWithoutHearingField}_deterWithoutHearingWhyNot`).fill(`${party.label} reason why the claim is not suitable for determination without a hearing.`);
       }
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
     } else {
       // File directions questionnaire (not shown for small claims)
       await this.page.locator(`#${dq}FileDirectionsQuestionnaire_explainedToClient-CONFIRM`).click();
@@ -68,7 +68,7 @@ export class DirectionsQuestionnaire {
       if (answers.preActionProtocol === YesNo.NO) {
         await this.page.locator(`#${dq}FileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`).fill('Pre-action protocol explanation');
       }
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
 
       // Fixed Recoverable Costs (fast and intermediate tracks)
       if (track === trackType.FAST) {
@@ -78,7 +78,7 @@ export class DirectionsQuestionnaire {
           await this.page.locator(`#${dq}FixedRecoverableCosts_complexityBandingAgreed_${answers.fixedRecoverableCosts}`).click();
         }
         await this.page.locator(`#${dq}FixedRecoverableCosts_reasons`).fill('Fixed Recoverable Costs explanation');
-        await this.buttonHelper.continueButton.click();
+        await this.pageHelper.continueToNextPage();
       } else if (track === trackType.INTERMEDIATE) {
         await this.completeIntermediateFixedRecoverableCosts(dq, answers.fixedRecoverableCosts, answers.fixedRecoverableCostsBand);
       }
@@ -89,7 +89,7 @@ export class DirectionsQuestionnaire {
         await this.page.locator(`#${dq}DisclosureOfElectronicDocuments_reachedAgreement_No`).click();
         await this.page.locator(`#${dq}DisclosureOfElectronicDocuments_agreementLikely_No`).click();
         await this.page.locator(`#${dq}DisclosureOfElectronicDocuments_reasonForNoAgreement`).fill('Reason no agreement on electronic disclosure is likely.');
-        await this.buttonHelper.continueButton.click();
+        await this.pageHelper.continueToNextPage();
       }
 
       // Disclosure Non-Electronic Documents (not shown for small claims)
@@ -98,14 +98,14 @@ export class DirectionsQuestionnaire {
         await this.page.locator(`#${dq}DisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`).click();
         await this.page.locator(`#${dq}DisclosureOfNonElectronicDocuments_bespokeDirections`).fill('Bespoke directions text.');
       }
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
 
       // Disclosure report (intermediate and multi tracks only, not for personal injury claims)
       if (isIntermediateOrMulti && typeOfClaim !== UnspecClaimTypes.PERSONAL_INJURY) {
         await this.page.locator(`#${dq}DisclosureReport_disclosureFormFiledAndServed_Yes`).click();
         await this.page.locator(`#${dq}DisclosureReport_disclosureProposalAgreed_Yes`).click();
         await this.page.locator(`#${dq}DisclosureReport_draftOrderNumber`).fill('123');
-        await this.buttonHelper.continueButton.click();
+        await this.pageHelper.continueToNextPage();
       }
     }
 
@@ -127,7 +127,7 @@ export class DirectionsQuestionnaire {
         await this.page.locator(`#${dq}Experts_details_${i}_estimatedCost`).fill('500');
       }
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Witnesses
     const witnessesRequired = answers.noOfWitnesses >= 1 ? YesNo.YES : YesNo.NO;
@@ -142,12 +142,12 @@ export class DirectionsQuestionnaire {
         await this.page.locator(`#${dq}Witnesses_details_${i}_reasonForWitness`).fill(`Witness${i + 1}: Test event witnessed.`);
       }
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Court - spoken language and document language
     await this.page.locator(`#${dq}Language_court-${answers.language}`).click();
     await this.page.locator(`#${dq}Language_documents-${answers.language}`).click();
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Hearing availability
     await this.page.locator(`#${dq}Hearing_unavailableDatesRequired_${answers.unavailableDatesRequired}`).click();
@@ -168,7 +168,7 @@ export class DirectionsQuestionnaire {
 
     // Draft directions
     await this.pageHelper.uploadFile(draftDirections, './dr-playwright/documents/TEST_DOCUMENT_4.pdf');
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Court location and remote hearing (defendant's response only)
     if (party.hasRequestedCourt) {
@@ -176,24 +176,24 @@ export class DirectionsQuestionnaire {
       await this.page.locator(`#${dq}RequestedCourt_reasonForHearingAtSpecificCourt`).fill('Reason for hearing at specific court.');
       await this.page.locator(`#${dq}RemoteHearing_remoteHearingRequested_Yes`).click();
       await this.page.locator(`#${dq}RemoteHearing_reasonForRemoteHearing`).fill('Reason for remote hearing.');
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
     }
 
     // Hearing support
     await this.page.locator(`#${dq}HearingSupport_supportRequirements_Yes`).click();
     await this.page.locator(`#${dq}HearingSupport_supportRequirementsAdditional`).fill('Hearing support requirements.');
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Vulnerability questions
     await this.page.locator(`#${dq}VulnerabilityQuestions_vulnerabilityAdjustmentsRequired_Yes`).click();
     await this.page.locator(`#${dq}VulnerabilityQuestions_vulnerabilityAdjustments`).fill('Vulnerability adjustments required.');
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     // Further information
     await this.page.locator(`#${dq}FurtherInformation_futureApplications_Yes`).click();
     await this.page.locator(`#${dq}FurtherInformation_reasonForFutureApplications`).fill('Reason for future applications.');
     await this.page.locator(`#${dq}FurtherInformation_otherInformationForJudge`).fill('Other information for the judge.');
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 
   // The intermediate track fields only exist when the MINTI definition is deployed. Without it the page still shows
@@ -217,6 +217,6 @@ export class DirectionsQuestionnaire {
       }
       await this.page.locator(`${fieldPrefix}_reasons`).fill('Fixed Recoverable Costs explanation');
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
   }
 }

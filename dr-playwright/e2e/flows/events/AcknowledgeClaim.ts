@@ -30,7 +30,7 @@ export class AcknowledgeClaim {
         .fill(partyDetails.defendant1.DOB_month);
       await this.page.locator('#individualDateOfBirth-year').fill(partyDetails.defendant1.DOB_year);
     }
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     switch (claimType) {
       case claimTypes.ONE_VS_ONE:
@@ -68,7 +68,7 @@ export class AcknowledgeClaim {
         break;
     }
 
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
 
     if (defendantNumber === 1) {
       legalRepresentativeReference = await this.page
@@ -88,7 +88,7 @@ export class AcknowledgeClaim {
         .fill(`${legalRepresentativeReference} acknowledge claim`);
     }
 
-    await this.buttonHelper.continueButton.click();
+    await this.pageHelper.continueToNextPage();
     await acknowledgeClaimButton.click();
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
   }

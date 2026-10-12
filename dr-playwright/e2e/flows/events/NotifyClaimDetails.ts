@@ -25,7 +25,7 @@ export class NotifyClaimDetails {
       for (const [i, value] of notifyOptions.entries()) {
         if (value.indexOf(whomToNotify) > -1) {
           await this.page.locator('#defendantSolicitorNotifyClaimDetailsOptions').selectOption({ index: i });
-          await this.buttonHelper.continueButton.click();
+          await this.pageHelper.continueToNextPage();
 
           // Both goes straight to the Upload page; a single defendant raises a warning first
           if (whomToNotify !== notifyClaimOptions.BOTH) {
@@ -33,7 +33,7 @@ export class NotifyClaimDetails {
           }
 
           await this.uploadNotifyClaimDetailsDocs();
-          await this.buttonHelper.continueButton.click();
+          await this.pageHelper.continueToNextPage();
           await this.buttonHelper.submitButton.click();
           break;
         }
@@ -45,7 +45,7 @@ export class NotifyClaimDetails {
       await this.buttonHelper.submitButton.click();
     } else {
       await this.uploadNotifyClaimDetailsDocs();
-      await this.buttonHelper.continueButton.click();
+      await this.pageHelper.continueToNextPage();
       // Any litigant in person defendant also needs a Certificate of Service page completing
       if (CoSHelper.litigantInPersonDefendants(claimType).length > 0) {
         await new CoSHelper(this.page).submit(claimType, 'NotifyClaimDetails');
