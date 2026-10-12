@@ -7,7 +7,7 @@ import {
 } from '../civilConfig.ts';
 import { IdamPage } from '../e2e/page-objects/pages/idam.po.ts';
 import { PageHelper } from './PageHelper.ts';
-import { SessionEndedError } from './SessionEndedError.ts';
+import { SessionEndedError, setSessionUser } from './SessionEndedError.ts';
 
 // Each solicitor's saved session file (used by test.use storageState) and who to sign in as when it ends
 export const sessionUsers = {
@@ -40,10 +40,14 @@ export class SessionHelper {
   }
 
   // Runs an action, and if the user's session ends part way through, signs them in again, reopens the page at
-  // reopenUrl and runs the action again from the start. A session ending is only noticed when a page is opened and
-  // on Continue, both before an event is submitted, so the event has not been saved when it is restarted.
+  // reopenUrl and runs the action again from the start. A session ending is noticed when a page is opened, on
+  // Continue and on Submit. At Submit, PageHelper.submitEvent checks CCD's event history first: if the event was
+  // saved it is not run again, as that would submit it twice.
   // With no user (a test not run as one of the saved sessions) the action is just run.
   async runWithSessionRecovery(userKey: SessionUserKey | undefined, reopenUrl: string, action: () => Promise<void>) {
+    if (userKey !== undefined) {
+      setSessionUser(this.page, sessionUsers[userKey].credentials);
+    }
     const attempts = 2;
     for (let attempt = 1; attempt <= attempts; attempt++) {
       try {
@@ -53,7 +57,14 @@ export class SessionHelper {
         if (!(error instanceof SessionEndedError) || userKey === undefined || attempt === attempts) {
           throw error;
         }
-        console.log(`${sessionUsers[userKey].credentials.name}'s session ended (${error.message}). Signing in again and starting again from ${reopenUrl}`);
+        const name = sessionUsers[userKey].credentials.name;
+        if (error.eventSaved) {
+          console.log(`${name}'s session ended (${error.message}). Signing in again and opening ${reopenUrl}, without submitting the event again`);
+          await this.signInAgain(userKey);
+          await new PageHelper(this.page).gotoAndWaitForXui(reopenUrl);
+          return;
+        }
+        console.log(`${name}'s session ended (${error.message}). Signing in again and starting again from ${reopenUrl}`);
         await this.signInAgain(userKey);
         await new PageHelper(this.page).gotoAndWaitForXui(reopenUrl);
       }

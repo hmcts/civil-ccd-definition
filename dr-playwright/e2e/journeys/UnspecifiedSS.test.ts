@@ -407,7 +407,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await createCase.setClaimValue(track, typeOfClaim); // use from parameters in package
       await pageHelper.continueToNextPage(); //Amount to pay - can do an assertion on amount by api to fee and pay to make sure fee is correct, if needed.
       await createCase.setStatementOfTruth(); //will be dependant upon case ie 1v1 etc
-      await buttonHelper.submitButton.click(); //CYA
+      await pageHelper.submitEvent(); //CYA
       await buttonHelper.closeAndReturnToCaseDetailsButton.click(); //Success
     }, envUrl);
 

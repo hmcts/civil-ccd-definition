@@ -38,7 +38,7 @@ export class NotifyClaim {
             await this.buttonHelper.IgnoreWarningAndContinueButton.click();
           }
           await this.pageHelper.continueToNextPage();
-          await this.buttonHelper.submitButton.click();
+          await this.pageHelper.submitEvent();
           break;
         }
       }
@@ -48,7 +48,7 @@ export class NotifyClaim {
       if (CoSHelper.litigantInPersonDefendants(claimType).length > 0) {
         await new CoSHelper(this.page).submit(claimType);
       }
-      await this.buttonHelper.submitButton.click();
+      await this.pageHelper.submitEvent();
     }
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
   };

@@ -1,7 +1,8 @@
-import { expect, Locator, Page, Response } from '@playwright/test';
+import { expect, Locator, Page, Request, Response } from '@playwright/test';
 import moment from 'moment-business-days';
 import { continueRetries, uploadRetries, xuiLoadRetries } from '../civilConfig.ts';
-import { SessionEndedError } from './SessionEndedError.ts';
+import { SessionEndedError, sessionUserOf } from './SessionEndedError.ts';
+import { TestingEndPointHelper } from './TestingEndPointHelper.ts';
 
 // Errors CCD returns when checking an event page that come from a busy environment rather than the page itself, so
 // clicking Continue again can succeed
@@ -101,11 +102,14 @@ export class PageHelper {
     //  - errors about the answers on the page (XUI's own checks, or CCD returning 4xx)
     //  - the user's session has ended (401, or XUI's 403): SessionEndedError, so the event can be restarted
     //  - no response from CCD at all: XUI keeps the request open and Continue disabled, so it cannot be clicked again
+    // XUI can also drop a click on Continue, sending nothing to CCD and leaving the page as it is. If nothing has been
+    // sent within continueRetries.droppedClickSeconds, Continue is clicked again (this counts as an attempt).
     // The page is never reloaded, as that would lose the answers already given in the event.
     async continueToNextPage(
       attempts: number = continueRetries.attempts,
       waitSeconds: number = continueRetries.waitSeconds,
       responseTimeoutSeconds: number = continueRetries.responseTimeoutSeconds,
+      droppedClickSeconds: number = continueRetries.droppedClickSeconds,
     ) {
       const continueButton = this.page.getByRole('button', { name: 'Continue' });
       const errorSummary = this.page.locator('.error-summary:visible, .govuk-error-summary:visible').first();
@@ -117,19 +121,26 @@ export class PageHelper {
       const timeout = responseTimeoutSeconds * 1000;
       const errorText = async () => (await errorSummary.innerText().catch(() => '')).replace(/\s+/g, ' ').trim();
 
+      const isValidateRequest = (request: Request) => request.url().includes('/validate') && request.method() === 'POST';
+      // Once CCD has rejected an attempt its error summary stays showing, so it is no longer watched for
+      let ccdRejectedAnAttempt = false;
+
       for (let attempt = 1; attempt <= attempts; attempt++) {
-        type Outcome = { kind: 'response'; response: Response } | { kind: 'navigated' } | { kind: 'errors' } | { kind: 'timeout' };
+        type Outcome = { kind: 'response'; response: Response } | { kind: 'navigated' } | { kind: 'errors' } | { kind: 'dropped' } | { kind: 'timeout' };
+        const requestSent = this.page
+          .waitForRequest(isValidateRequest, { timeout: droppedClickSeconds * 1000 })
+          .then(() => true, () => false);
         const outcomes: Promise<Outcome>[] = [
           this.page
-            .waitForResponse((response) => response.url().includes('/validate') && response.request().method() === 'POST', { timeout })
+            .waitForResponse((response) => isValidateRequest(response.request()), { timeout })
             .then((response): Outcome => ({ kind: 'response', response })),
           this.page
             .waitForURL((url) => url.href !== startUrl, { timeout })
             .then((): Outcome => ({ kind: 'navigated' })),
+          // Only settles if nothing was sent to CCD in time, as otherwise the response decides what happened
+          requestSent.then((sent) => (sent ? new Promise<Outcome>(() => {}) : { kind: 'dropped' })),
         ];
-        // After a failed attempt the error summary from that attempt is still showing, so it is only watched for on
-        // the first attempt
-        if (attempt === 1) {
+        if (!ccdRejectedAnAttempt) {
           outcomes.push(errorSummary.waitFor({ state: 'visible', timeout }).then((): Outcome => ({ kind: 'errors' })));
         }
         await continueButton.click();
@@ -143,6 +154,13 @@ export class PageHelper {
         }
         if (outcome.kind === 'timeout') {
           throw new Error(`Continue on ${pageId} did not get a response from CCD within ${responseTimeoutSeconds}s`);
+        }
+        if (outcome.kind === 'dropped') {
+          if (attempt === attempts) {
+            throw new Error(`Continue on ${pageId} sent nothing to CCD after ${attempts} clicks and showed no errors`);
+          }
+          console.log(`Continue on ${pageId} sent nothing to CCD within ${droppedClickSeconds}s, clicking it again (attempt ${attempt + 1} of ${attempts})`);
+          continue;
         }
 
         const status = outcome.response.status();
@@ -173,9 +191,66 @@ export class PageHelper {
         if (attempt === attempts) {
           throw new Error(`CCD still could not check ${pageId} after ${attempts} attempts (last HTTP ${status}): ${body.slice(0, 500)}`);
         }
+        ccdRejectedAnAttempt = true;
         console.log(`CCD could not check ${pageId} (HTTP ${status}), clicking Continue again in ${waitSeconds}s (attempt ${attempt + 1} of ${attempts})`);
         await this.page.waitForTimeout(waitSeconds * 1000);
       }
+    }
+
+    // Clicks the event's submit button (one whose name contains Submit, or the event's own label such as
+    // "Acknowledge claim") and waits for CCD to save the event. If the user's session has ended (CCD 401, or XUI's
+    // 403) the event may or may not have been saved, so CCD's event history is checked with the user's own API token
+    // before anything is done again:
+    //  - saved: SessionEndedError with eventSaved, so the user is signed in again but the event is not submitted again
+    //  - not saved: SessionEndedError, so the user is signed in again and the event is restarted
+    // Creating a claim has no case to check yet. XUI and CCD reject a request from an ended session before saving
+    // anything, so a claim is treated as not created.
+    // Any other failure is thrown straight away and never submitted again.
+    async submitEvent(buttonName: string = 'Submit', responseTimeoutSeconds: number = continueRetries.responseTimeoutSeconds) {
+      // Matched the same way as ButtonHelper.submitButton, so 'Submit' also finds labels such as "Submit your response"
+      const submitButton = this.page.getByRole('button', { name: buttonName });
+      await submitButton.waitFor({ state: 'visible' });
+      const url = this.page.url();
+      // e.g. /cases/case-details/CIVIL/CIVIL/<case id>/trigger/<event id>/submit, or /cases/case-create/CIVIL/CIVIL/<event id>/submit
+      const caseId = url.match(/\/(\d{16})\/trigger\//)?.[1];
+      const eventId = url.match(/\/trigger\/([^/]+)\//)?.[1] ?? url.match(/\/case-create\/[^/]+\/[^/]+\/([^/]+)\//)?.[1] ?? url;
+      const user = sessionUserOf(this.page);
+      const testingEndpointHelper = new TestingEndPointHelper();
+      const savedBefore = caseId && user ? await testingEndpointHelper.countCaseEvents(user, caseId, eventId) : undefined;
+
+      const submitResponse = this.page
+        .waitForResponse(
+          (response) => response.request().method() === 'POST' && /\/data\/(cases\/\d+\/events|case-types\/[^/]+\/cases)(\?|$)/.test(response.url()),
+          { timeout: responseTimeoutSeconds * 1000 },
+        )
+        .catch(() => null);
+      await submitButton.click();
+      const response = await submitResponse;
+      if (response === null) {
+        throw new Error(`Submitting ${eventId} did not get a response from CCD within ${responseTimeoutSeconds}s`);
+      }
+      if (response.ok()) {
+        return;
+      }
+
+      const status = response.status();
+      const body = await response.text().catch(() => '');
+      const sessionEnded = status === 401 || (status === 403 && body.includes(xuiSessionEndedBody));
+      if (!sessionEnded) {
+        throw new Error(`CCD rejected submitting ${eventId} with HTTP ${status}: ${body.slice(0, 500)}`);
+      }
+      const isCaseEvent = url.includes('/trigger/');
+      if (isCaseEvent && savedBefore === undefined) {
+        // Without the case or the user CCD's event history cannot be checked, so it is not safe to submit again
+        throw new Error(`Submitting ${eventId} got HTTP ${status} and it cannot be checked whether CCD saved it, so it is not submitted again`);
+      }
+      if (isCaseEvent) {
+        const savedAfter = await testingEndpointHelper.countCaseEvents(user, caseId, eventId);
+        if (savedAfter > savedBefore) {
+          throw new SessionEndedError(`submitting ${eventId} got HTTP ${status}, but CCD had saved it`, true);
+        }
+      }
+      throw new SessionEndedError(`submitting ${eventId} got HTTP ${status} and CCD did not save it`);
     }
 
     // Retries Continue until the next page's element shows, as CCD can drop the first click

@@ -79,12 +79,15 @@ export const xuiLoadRetries = {
 }
 
 // How hard to try when CCD is slow, or briefly fails, to check an event page after Continue: how many attempts in
-// total, how many seconds to wait before retrying, and how many seconds to wait for CCD to respond. Override with
-// CONTINUE_RETRY_ATTEMPTS, CONTINUE_RETRY_WAIT_SECONDS and CONTINUE_RESPONSE_TIMEOUT_SECONDS.
+// total, how many seconds to wait before retrying, how many seconds to wait for CCD to respond, and how many seconds
+// without anything being sent to CCD before a click on Continue counts as dropped. Override with
+// CONTINUE_RETRY_ATTEMPTS, CONTINUE_RETRY_WAIT_SECONDS, CONTINUE_RESPONSE_TIMEOUT_SECONDS and
+// CONTINUE_DROPPED_CLICK_SECONDS.
 export const continueRetries = {
   attempts: Number(process.env.CONTINUE_RETRY_ATTEMPTS ?? 3),
   waitSeconds: Number(process.env.CONTINUE_RETRY_WAIT_SECONDS ?? 10),
   responseTimeoutSeconds: Number(process.env.CONTINUE_RESPONSE_TIMEOUT_SECONDS ?? 60),
+  droppedClickSeconds: Number(process.env.CONTINUE_DROPPED_CLICK_SECONDS ?? 10),
 }
 
 // How many seconds to wait for the payment result page, which can be slow when the payment service is busy.

@@ -117,7 +117,7 @@ export class RespondToDefence {
     await this.pageHelper.continueToNextPage();
 
     // Check your answers and submit
-    await this.buttonHelper.submitButton.click();
+    await this.pageHelper.submitEvent();
     await this.page.locator('#confirmation-header').waitFor({ state: 'visible' });
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
   }

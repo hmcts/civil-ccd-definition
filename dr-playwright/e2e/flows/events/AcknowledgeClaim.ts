@@ -18,7 +18,6 @@ export class AcknowledgeClaim {
   }
 
   async acknowledge(claimType: claimTypes, respondent1ResponseIntention: ResponseIntention = ResponseIntention.FULL_DEFENCE, respondent2ResponseIntention: ResponseIntention, defendantNumber: number = 1) {
-    const acknowledgeClaimButton = this.page.getByRole('button', { name: 'Acknowledge claim' });
     let legalRepresentativeReference: string;
     await this.pageHelper.selectNextStep('Acknowledge claim');
 
@@ -89,7 +88,7 @@ export class AcknowledgeClaim {
     }
 
     await this.pageHelper.continueToNextPage();
-    await acknowledgeClaimButton.click();
+    await this.pageHelper.submitEvent('Acknowledge claim');
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
   }
 }

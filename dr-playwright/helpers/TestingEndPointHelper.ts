@@ -6,7 +6,7 @@ import { APIResponse } from 'playwright';
 import { stringify } from 'node:querystring';
 import { TokensHelper } from './TokensHelper.ts';
 import { civilSystemUpdate } from '../../playwright-e2e/config/users/exui-users.ts';
-import { civilServiceUrl, systemupdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
+import { civilServiceUrl, ccdDataStoreApiBaseUrl, createCase, systemupdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
 import claimTypes from '../enums/claim-types.ts';
 import CaseStates from '../enums/caseStates.ts';
 import { CaseUserRegistry } from './CaseUserRegistry.ts';
@@ -190,6 +190,25 @@ export class TestingEndPointHelper {
       );
     };
     console.log('Assignment successful. Continuing test...');
+  }
+
+  // How many times an event has been saved on a case, from CCD's event history. It is read with the user's own API
+  // token, which does not depend on their XUI session, so it works after that session has ended.
+  async countCaseEvents(user, caseId: string, eventId: string): Promise<number> {
+    await this.getTokens(user);
+    // CCD's case type ID is CIVIL (createCase.caseTypeCode is the label XUI shows, Civil)
+    const url = `${ccdDataStoreApiBaseUrl}/caseworkers/${this.nonEventTokens.uid}/jurisdictions/${createCase.jurisdictionCode}/case-types/CIVIL/cases/${caseId}/events`;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(url, { headers: this.getHeaders() });
+      if (!response.ok()) {
+        throw new Error(`Could not read the event history of case ${caseId} (HTTP ${response.status()}): ${await response.text().catch(() => '')}`);
+      }
+      const events: { id: string }[] = await response.json();
+      return events.filter((event) => event.id === eventId).length;
+    } finally {
+      await apiRequestContext.dispose();
+    }
   }
 
   // Removes all of the user's case roles on the given cases (civil-service wraps CCD's case assignment API)

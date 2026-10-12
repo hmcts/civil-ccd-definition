@@ -34,7 +34,7 @@ export class NotifyClaimDetails {
 
           await this.uploadNotifyClaimDetailsDocs();
           await this.pageHelper.continueToNextPage();
-          await this.buttonHelper.submitButton.click();
+          await this.pageHelper.submitEvent();
           break;
         }
       }
@@ -42,7 +42,7 @@ export class NotifyClaimDetails {
       // With no represented defendant there is no document upload page, so it goes straight to the Certificate(s)
       // of Service, which hold their own evidence upload
       await new CoSHelper(this.page).submit(claimType, 'NotifyClaimDetails');
-      await this.buttonHelper.submitButton.click();
+      await this.pageHelper.submitEvent();
     } else {
       await this.uploadNotifyClaimDetailsDocs();
       await this.pageHelper.continueToNextPage();
@@ -50,7 +50,7 @@ export class NotifyClaimDetails {
       if (CoSHelper.litigantInPersonDefendants(claimType).length > 0) {
         await new CoSHelper(this.page).submit(claimType, 'NotifyClaimDetails');
       }
-      await this.buttonHelper.submitButton.click();
+      await this.pageHelper.submitEvent();
     }
   };
 
