@@ -24,6 +24,7 @@ import respondentResponses from '../../enums/RespondentResponses.ts';
 import { RespondToClaim } from '../flows/events/RespondToClaim.ts';
 import { RespondToDefence } from '../flows/events/RespondToDefence.ts';
 import { CreateSdo } from '../flows/events/CreateSdo.ts';
+import { UploadEvidence } from '../flows/events/UploadEvidence.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
@@ -558,7 +559,6 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         // 1v2LIPLR claim it handles Defendant 2's solicitor as Defendant 1's. The response is saved against Defendant 1
         // (respondent1ResponseDate) and multiPartyResponseTypeFlags is NOT_FULL_DEFENCE even for a full defence. As a
         // result the directions questionnaire pages are not displayed to Defendant 2's solicitor (the response goes
-        // straight from the response type to the references, statement of truth and submit), and no defence document
         // is asked for. Until civil-service supports this, the response is skipped.
         console.warn(
           'WARNING: Defendant 2 Solicitor response NOT undertaken for 1v2LIPLR. civil-service records the response '
@@ -631,6 +631,48 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await new CreateSdo(page).submit(caseId, track);
       });
       await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+    });
+  });
+
+  // Each solicitor uploads evidence once the Standard Direction Order has moved the claim to CASE_PROGRESSION, so the
+  // same claims as test9 run it
+  test.describe('test10', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track');
+
+    test.describe('Claimant Solicitor', () => {
+      test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
+      test('Claimant Solicitor uploads evidence.', async ({ page, storageState }) => {
+        await runEvent(page, storageState, async () => {
+          await new UploadEvidence(page).submit();
+        });
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+      });
+    });
+
+    test.describe('Defendant 1 Solicitor', () => {
+      test.use({ storageState: sessionUsers.respondent1Solicitor.authFile });
+      test('Defendant 1 Solicitor uploads evidence.', async ({ page, storageState }) => {
+        await runEvent(page, storageState, async () => {
+          await new UploadEvidence(page).submit();
+        });
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+      });
+    });
+
+    test.describe('Defendant 2 Solicitor', () => {
+      // Skipped here rather than in the test so beforeEach does not open the case as Defendant 2's solicitor
+      test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor');
+      test.use({ storageState: sessionUsers.respondent2Solicitor.authFile });
+      test('Defendant 2 Solicitor uploads evidence.', async ({ page, storageState }) => {
+        await runEvent(page, storageState, async () => {
+          await new UploadEvidence(page).submit();
+        });
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+      });
     });
   });
 
