@@ -3,8 +3,8 @@
     "CaseTypeID": "CIVIL",
     "ID": "cancelUnissuedClaimReason",
     "Label": "Explain why you are cancelling the claim",
+    "HintText": "You can enter up to 200 characters",
     "FieldType": "TextArea",
-    "Max": 200,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
