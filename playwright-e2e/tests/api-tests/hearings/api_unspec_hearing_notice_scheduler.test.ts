@@ -10,7 +10,7 @@ test.describe('Unspec automated hearing notice schedulers', { tag: '@api-hearing
     JudgeApiSteps,
   }) => {
     await HearingsApiSteps.SetupStaticMocks();
-    await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+    await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.AmendClaimDocuments();
     await ClaimantSolicitorApiSteps.NotifyClaim();

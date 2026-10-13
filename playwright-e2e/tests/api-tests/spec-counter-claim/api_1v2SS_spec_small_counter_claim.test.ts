@@ -12,7 +12,7 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall1v2SS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({

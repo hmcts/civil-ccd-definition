@@ -38,8 +38,8 @@ export default class SolicitorReferencesAcknowledgeClaimPage extends ExuiPage(Ba
       await super.runVerifications(
         [
           super.expectHeading(heading),
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-          super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+          super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+          super.expectCaseHeading(ccdCaseData.caseNamePublic!),
           super.expectLabel(inputs.fileRefDS2.label),
         ],
         { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },

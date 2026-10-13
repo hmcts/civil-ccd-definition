@@ -4,7 +4,7 @@ import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/
 
 test.describe(
   '1v1 spec intermediate track api journey',
-  { tag: ['@civil-service-nightly', '@api-intermediate-track'] },
+  { tag: '@civil-service-nightly' },
   async () => {
     test('1v1 spec full defence intermediate claim', async ({
       ClaimantSolicitorSpecApiSteps,
@@ -13,7 +13,9 @@ test.describe(
       JudgeApiSteps,
       HearingCenterAdminApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
@@ -30,7 +32,9 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
@@ -45,7 +49,9 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
@@ -60,7 +66,9 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimInter1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({
