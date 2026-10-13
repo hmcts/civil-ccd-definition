@@ -14,7 +14,10 @@ test.describe(
       LegalAdvisorApiSteps,
       ClaimantSolicitorSpecSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimSmall2v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimType: ClaimType.TWO_VS_ONE,
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({

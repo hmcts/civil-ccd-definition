@@ -92,12 +92,18 @@ const hearingSupportRequirementsFieldDJ = (claimant1PartyType: ClaimantDefendant
   };
 };
 
-const otherRemedyAbandoned = () => ({
-  OtherRemedyAbandoned: {
-    isOtherRemedyAbandoned: 'Yes',
-    otherRemedyAbandonedDate: formatDate(DateHelper.getToday()),
-  },
-});
+const otherRemedyAbandoned = (djOtherRemedy: DJOtherRemedy) => {
+  if (djOtherRemedy === DJOtherRemedy.YES) {
+    return {
+      OtherRemedyAbandoned: {
+        isOtherRemedyAbandoned: 'Yes',
+        otherRemedyAbandonedDate: formatDate(DateHelper.getToday()),
+      },
+    };
+  }
+
+  return {};
+};
 
 const requestDefaultJudgementBuilderComponents = {
   defendantDetails,

@@ -90,14 +90,18 @@ export default abstract class BaseRequest {
       expectedStatus = 200,
       retries = 2,
       retryTimeInterval = 5000,
+      timeoutMs,
+      backoffFactor = 1,
+      maxRetryTimeInterval = this.MAX_RETRY_TIMEOUT,
       verifyResponse,
       statusErrorMessage,
     }: responseOptions._RetryResponseOptions = {},
   ): Promise<APIResponse | any | string> {
-    if (retryTimeInterval > this.MAX_RETRY_TIMEOUT) {
-      retryTimeInterval = this.MAX_RETRY_TIMEOUT;
-    }
-    while (retries >= 0) {
+    maxRetryTimeInterval = Math.min(maxRetryTimeInterval, this.MAX_RETRY_TIMEOUT);
+    retryTimeInterval = Math.min(retryTimeInterval, maxRetryTimeInterval);
+    const startTime = Date.now();
+    const deadline = timeoutMs !== undefined ? startTime + timeoutMs : undefined;
+    while (true) {
       try {
         const response = await this._request(url, requestOptions, responseDataType, {
           expectedStatus,
@@ -109,12 +113,23 @@ export default abstract class BaseRequest {
         if (NonRetryableError.is(error)) {
           throw error;
         }
-        if (retries <= 0) throw error;
+        const remainingTime = deadline !== undefined ? deadline - Date.now() : undefined;
+        if (remainingTime !== undefined ? remainingTime <= 0 : retries <= 0) throw error;
+        const sleepTime =
+          remainingTime !== undefined ? Math.min(retryTimeInterval, remainingTime) : retryTimeInterval;
+        const progress =
+          deadline !== undefined
+            ? `Elapsed ${Math.round((Date.now() - startTime) / 1000)}s of ${timeoutMs / 1000}s`
+            : `Retries left: ${retries}`;
         console.log(
-          `${error.message.split('\n')[0]}, retrying in ${retryTimeInterval / 1000} seconds (Retries left: ${retries})`,
+          `${error.message.split('\n')[0]}, retrying in ${sleepTime / 1000} seconds (${progress})`,
         );
         retries--;
-        await this.sleep(retryTimeInterval);
+        await this.sleep(sleepTime);
+        retryTimeInterval = Math.min(
+          Math.round(retryTimeInterval * backoffFactor),
+          maxRetryTimeInterval,
+        );
       }
     }
   }

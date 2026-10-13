@@ -379,12 +379,15 @@ export default abstract class BaseApi extends BaseTestData {
   protected async waitForFinishedBusinessProcess(
     caseId?: number,
     user?: User,
+    options?: { timeoutMs?: number },
   ) {
     const { civilServiceRequests } = this.requestsFactory;
     await this.setupUserData(civilSystemUpdate);
     await civilServiceRequests.waitForFinishedBusinessProcess(
       user ?? civilSystemUpdate,
       caseId ?? this.ccdCaseData?.id,
+      undefined,
+      options,
     );
   }
 
