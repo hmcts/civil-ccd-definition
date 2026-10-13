@@ -1,0 +1,6 @@
+enum InterestClaimOption {
+  SAME_RATE_INTEREST = 'SAME_RATE_INTEREST',
+  BREAK_DOWN_INTEREST = 'BREAK_DOWN_INTEREST',
+}
+
+export default InterestClaimOption;
