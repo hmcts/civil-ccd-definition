@@ -14,6 +14,11 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
     defendant2PartyType,
     flightDelayClaim,
     airline,
+    claimInterest,
+    interestClaimOption,
+    sameRateInterestType,
+    interestClaimFrom,
+    interestClaimUntil,
   }: Required<CreateClaimSpecOptions>): Promise<z.ZodType> {
     const schemaShape: Record<string, z.ZodType> = {};
 
@@ -27,6 +32,14 @@ export default class CreateClaimSpecSchemaBuilder extends BaseSchemaBuilder {
       createClaimSpecSchemaComponents.statementOfTruth,
       createClaimSpecSchemaComponents.solicitorReferences(claimType),
       createClaimSpecSchemaComponents.claimDetails(flightDelayClaim, airline),
+      createClaimSpecSchemaComponents.claimInterest(
+        claimInterest,
+        interestClaimOption,
+        sameRateInterestType,
+        interestClaimFrom,
+        interestClaimUntil,
+      ),
+      createClaimSpecSchemaComponents.fixedCosts,
       createClaimSpecSchemaComponents.claimant2(claimType, claimant2PartyType),
       createClaimSpecSchemaComponents.defendantSolicitor1(claimType),
       createClaimSpecSchemaComponents.defendant2(claimType, defendant2PartyType),

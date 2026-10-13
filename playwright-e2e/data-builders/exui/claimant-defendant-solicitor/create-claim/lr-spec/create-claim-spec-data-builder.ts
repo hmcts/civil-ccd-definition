@@ -14,6 +14,11 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
     defendant2PartyType,
     flightDelayClaim,
     airline,
+    claimInterest,
+    interestClaimOption,
+    sameRateInterestType,
+    interestClaimFrom,
+    interestClaimUntil,
   }: Required<CreateClaimSpecOptions>) {
     this.setClaimantDefendantPartyTypes(claimType, {
       claimant1PartyType,
@@ -35,6 +40,14 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
       ...createClaimSpecData.defendantSolicitor2(claimType),
       ...createClaimSpecData.flightDelayClaim(flightDelayClaim, airline),
       ...createClaimSpecData.claimDetails(claimTrack),
+      ...createClaimSpecData.claimInterest(
+        claimInterest,
+        interestClaimOption,
+        sameRateInterestType,
+        interestClaimFrom,
+        interestClaimUntil,
+      ),
+      ...createClaimSpecData.pbaAndFixedCosts,
       ...createClaimSpecData.statementOfTruth,
     };
   }
