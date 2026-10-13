@@ -5,6 +5,7 @@ import {
   respondent1SolicitorCredentials,
   respondent2SolicitorCredentials,
   judgeCredentials,
+  hearingCentreAdminCredentials,
 } from '../civilConfig.ts';
 import { IdamPage } from '../e2e/page-objects/pages/idam.po.ts';
 import { PageHelper } from './PageHelper.ts';
@@ -16,9 +17,10 @@ export const sessionUsers = {
   respondent1Solicitor: { credentials: respondent1SolicitorCredentials, authFile: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' },
   respondent2Solicitor: { credentials: respondent2SolicitorCredentials, authFile: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' },
   judge: { credentials: judgeCredentials, authFile: './dr-playwright/e2e/.auth/JudgeUser.json' },
+  hearingCentreAdmin: { credentials: hearingCentreAdminCredentials, authFile: './dr-playwright/e2e/.auth/HearingCentreAdminUser.json' },
 };
 
-// Shown on every XUI page once a user is signed in. Solicitors land on the case list and judges on their work list,
+// Shown on every XUI page once a user is signed in. Solicitors land on the case list and judges and court staff on their work list,
 // so the navigation is used rather than a page heading.
 export const signedInToXui = (page: Page) =>
   page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Case list' });

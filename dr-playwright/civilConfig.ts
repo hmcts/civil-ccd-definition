@@ -68,6 +68,14 @@ export const judgeCredentials = {
   password: process.env.JUDGE_DEFAULT_PASSWORD,
 }
 
+// Region 1 (London) hearing centre admin, who lists hearings at the Clerkenwell court the claims are issued at. Like the
+// judge, they see cases through their region's role assignment rather than being assigned to the case.
+export const hearingCentreAdminCredentials = {
+  name: 'Hearing Centre Admin',
+  username: 'hearing_center_admin_reg1@justice.gov.uk',
+  password: defaultPassword,
+}
+
 export const systemupdate = {
   username: 'hmcts.civil+organisation.1.superuser@gmail.com',
   password: defaultPassword,
@@ -106,6 +114,17 @@ export const paymentResultWaitSeconds = Number(process.env.PAYMENT_RESULT_WAIT_S
 // numbers of cases are sent in batches to stay within URL length limits. Override with UNASSIGN_BATCH_SIZE.
 export const caseUnassignment = {
   batchSize: Number(process.env.UNASSIGN_BATCH_SIZE ?? 50),
+}
+
+// Work allocation (WA) on a preview built with the pr-values:fullDeployment label, which has its own Camunda and WA
+// task monitor. Their addresses follow the XUI one (xui-civil-citizen-ui-pr-8265... becomes
+// camunda-civil-citizen-ui-pr-8265...). Override with CAMUNDA_URL and WA_TASK_MONITOR_URL. waitSeconds is how long
+// to wait for Camunda to create a task (override with WA_TASK_WAIT_SECONDS).
+const previewHost = (prefix: string) => (envUrl ?? '').replace('://xui-', `://${prefix}-`);
+export const workAllocation = {
+  camundaUrl: process.env.CAMUNDA_URL ?? `${previewHost('camunda')}/engine-rest`,
+  taskMonitorUrl: process.env.WA_TASK_MONITOR_URL ?? previewHost('wa-task-monitor'),
+  waitSeconds: Number(process.env.WA_TASK_WAIT_SECONDS ?? 60),
 }
 
 // How hard to try when the document store rate limits an upload: how many attempts in total, and the wait before

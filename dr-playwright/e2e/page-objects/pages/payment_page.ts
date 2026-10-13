@@ -39,26 +39,29 @@ export class PaymentPage {
     const confirmPaymentButton = this.page.getByRole('button', { name: 'Confirm payment' });
 
     const maxRetries: number = 10;
-    // let retry: number = 0;
-
+    // The service request can take a while to reach the payment service, and the Service Request tab can show an
+    // empty table or only fees already paid until it does. So wait for the "Pay now" link itself, reloading the
+    // page between tries.
+    const payNow = this.page.getByText('Pay now');
     for (let retry = 1; retry <= maxRetries; retry++) {
       await new TabsHelper(this.page).selectTab('Service Request');
       await this.page.locator('.ServiceRequest').waitFor({state: 'visible'});
-      const serviceRequestTable = this.page.locator('.ServiceRequest');
-      const serviceRequestTableRow = serviceRequestTable.getByRole('row');
-
-      if (await serviceRequestTableRow.getByRole('table').count() < 1) {
-        console.log('Refreshing webpage - waiting for "Pay now" link for Service request, try: ' + retry + ' of ' + maxRetries);
-        await this.page.reload();
-        const visibleElement = this.page.locator('#next-step');
-        await visibleElement.waitFor({state: 'visible'});
-      } else {
+      let payNowShown = true;
+      try {
+        await payNow.waitFor({ state: 'visible', timeout: 5000 });
+      } catch {
+        payNowShown = false;
+      }
+      if (payNowShown) {
         console.log('"Pay now" link is available. Continuing test....');
         break;
       }
+      console.log('Refreshing webpage - waiting for "Pay now" link for Service request, try: ' + retry + ' of ' + maxRetries);
+      await this.page.reload();
+      await this.page.locator('#next-step').waitFor({state: 'visible'});
     }
 
-    await this.page.getByText('Pay now').click();
+    await payNow.click();
 
     paymentType == 'PBA' ? await this.page.locator('#pbaAccount').click() : await this.page.locator('#cardPayment').click();
  //   await this.page.waitForTimeout(2000);

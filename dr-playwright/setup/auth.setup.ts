@@ -22,7 +22,8 @@ const claimantSolicitorAuthFile = sessionUsers.claimantSolicitor.authFile;
 const respondent1SolicitorAuthFile = sessionUsers.respondent1Solicitor.authFile;
 const respondent2SolicitorAuthFile = sessionUsers.respondent2Solicitor.authFile;
 const judgeAuthFile = sessionUsers.judge.authFile;
-// Claim types where the journey goes on to the claimant's response and the judge's directions order
+const hearingCentreAdminAuthFile = sessionUsers.hearingCentreAdmin.authFile;
+// Claim types where the journey goes on to the claimant's response, the judge's directions order and the hearing notice
 const judgeClaimTypes = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL];
 const authCookieName = "__auth__";
 const tokenValidityBufferSeconds = 60 * 60;
@@ -90,5 +91,14 @@ async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
       // Judges land on their work list rather than the case list
       await expect(signedInToXui(page)).toBeVisible();
       await page.context().storageState({ path: judgeAuthFile });
+    });
+
+    setup("Authenticate Hearing Centre Admin", async ({ page }) => {
+      setup.skip(await isSavedSessionAccepted(hearingCentreAdminAuthFile), "Reusing existing valid session");
+      await page.goto(envUrl);
+      await idamPage.login(sessionUsers.hearingCentreAdmin.credentials);
+      // Court staff land on their work list rather than the case list
+      await expect(signedInToXui(page)).toBeVisible();
+      await page.context().storageState({ path: hearingCentreAdminAuthFile });
     });
   }

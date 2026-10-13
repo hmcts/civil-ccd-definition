@@ -25,6 +25,9 @@ import { RespondToClaim } from '../flows/events/RespondToClaim.ts';
 import { RespondToDefence } from '../flows/events/RespondToDefence.ts';
 import { CreateSdo } from '../flows/events/CreateSdo.ts';
 import { UploadEvidence } from '../flows/events/UploadEvidence.ts';
+import { CreateHearingNotice } from '../flows/events/CreateHearingNotice.ts';
+import { WaTaskHelper } from '../../helpers/WaTaskHelper.ts';
+import { ConfirmTrialArrangements } from '../flows/events/ConfirmTrialArrangements.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
@@ -628,6 +631,8 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     test.use({ storageState: sessionUsers.judge.authFile });
     test('Judge makes a Standard Direction Order.', async ({ page, storageState }) => {
       await runEvent(page, storageState, async () => {
+        // Where work allocation is switched on, the judge needs the Fast Track Directions task to make the order
+        await new WaTaskHelper(page).assignTaskForEvent(caseId, 'CREATE_SDO', 'FastTrackDirections');
         await new CreateSdo(page).submit(caseId, track);
       });
       await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
@@ -672,6 +677,90 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           await new UploadEvidence(page).submit();
         });
         await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+      });
+    });
+  });
+
+  // The hearing centre admin lists the trial once the evidence is in, so the same claims as test9 run it. This is done
+  // in place of HMC returning a LISTED hearing, and moves the claim to HEARING_READINESS for the hearing fee.
+  test.describe('test11', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track');
+    test.use({ storageState: sessionUsers.hearingCentreAdmin.authFile });
+    test('Hearing Centre Admin creates a hearing notice.', async ({ page, storageState }) => {
+      await runEvent(page, storageState, async () => {
+        await new CreateHearingNotice(page).submit(track);
+      });
+      await testingEndpointHelper.assertCaseState(caseId, caseStates.HEARING_READINESS);
+    });
+  });
+
+  // Listing the trial in test11 set a hearing fee, which the claimant's solicitor pays from the Service Request tab.
+  // Once it is paid, HEARING_FEE_PAID moves the claim to PREPARE_FOR_HEARING_CONDUCT_HEARING.
+  test.describe('test12', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track');
+    test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
+    test('Claimant Solicitor pays the hearing fee.', async ({ page, storageState }) => {
+      await runEvent(page, storageState, async () => {
+        await new PaymentPage(page).makePayment('PBA');
+      });
+      // As with the claim fee in test1, the payment service cannot tell civil-service about the payment on preview
+      // and demo, so the test does
+      if ([environment.PREVIEW, environment.DEMO].includes(runningEnvironment)) {
+        await testingEndpointHelper.serviceRequestUpdateHearingFee(caseId);
+      }
+      // civil-service's scheduler would run HEARING_FEE_PAID later, so it is run now
+      await testingEndpointHelper.triggerHearingFeePaid(caseId);
+      await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+    });
+  });
+
+  // Each solicitor confirms the case is ready for trial. This is only offered on the fast track and must be done
+  // more than 3 weeks before the hearing, which test11 lists about 8 weeks ahead. The claim stays in
+  // PREPARE_FOR_HEARING_CONDUCT_HEARING.
+  test.describe('test13', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as trial arrangements are only confirmed on the fast track');
+
+    test.describe('Claimant Solicitor', () => {
+      test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
+      test('Claimant Solicitor confirms trial arrangements.', async ({ page, storageState }) => {
+        await runEvent(page, storageState, async () => {
+          await new ConfirmTrialArrangements(page).submit();
+        });
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      });
+    });
+
+    test.describe('Defendant 1 Solicitor', () => {
+      test.use({ storageState: sessionUsers.respondent1Solicitor.authFile });
+      test('Defendant 1 Solicitor confirms trial arrangements.', async ({ page, storageState }) => {
+        await runEvent(page, storageState, async () => {
+          await new ConfirmTrialArrangements(page).submit();
+        });
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      });
+    });
+
+    test.describe('Defendant 2 Solicitor', () => {
+      // Skipped here rather than in the test so beforeEach does not open the case as Defendant 2's solicitor
+      test.skip(claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor');
+      test.use({ storageState: sessionUsers.respondent2Solicitor.authFile });
+      test('Defendant 2 Solicitor confirms trial arrangements.', async ({ page, storageState }) => {
+        await runEvent(page, storageState, async () => {
+          await new ConfirmTrialArrangements(page).submit();
+        });
+        await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
       });
     });
   });

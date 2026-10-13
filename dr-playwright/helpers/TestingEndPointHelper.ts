@@ -130,6 +130,50 @@ export class TestingEndPointHelper {
     };
   }
 
+  // Tells civil-service the hearing fee has been paid, as the payment service would. On preview and demo the payment
+  // service cannot reach civil-service, so the callback is sent from the test instead.
+  async serviceRequestUpdateHearingFee(caseId: string) {
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    const requestBody = {
+      service_request_reference: '2020-1599477846962',
+      ccd_case_number: caseId,
+      service_request_amount: 545.00,
+      service_request_status: 'Paid',
+      payment: {
+        payment_amount: 545.00,
+        payment_reference: 'RC-1234-HEARING',
+        payment_method: 'by account',
+        case_reference: 'example of case ref',
+        account_number: 'PBA0078095',
+      },
+    };
+    try {
+      const response = await apiRequestContext.put(`${civilServiceUrl}/service-request-update`, {
+        headers: this.getHeaders(),
+        data: requestBody,
+      });
+      expect(response.ok(), `Hearing fee payment callback returned ${response.status()}: ${await response.text()}`).toBeTruthy();
+      console.log(`Hearing fee payment callback sent for case ${caseId}`);
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Runs HEARING_FEE_PAID, which a civil-service scheduler normally runs once the hearing fee has been paid. It moves
+  // the case from HEARING_READINESS to PREPARE_FOR_HEARING_CONDUCT_HEARING.
+  async triggerHearingFeePaid(caseId: string) {
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/${caseId}/trigger-hearing-fee-paid`);
+      const result = await response.text();
+      expect(response.ok() && result.includes('success'), `Triggering HEARING_FEE_PAID returned ${response.status()}: ${result}`).toBeTruthy();
+      console.log(`HEARING_FEE_PAID triggered for case ${caseId}`);
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes) {
     const assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/`;
     const apiRequestContext: APIRequestContext = await request.newContext();
