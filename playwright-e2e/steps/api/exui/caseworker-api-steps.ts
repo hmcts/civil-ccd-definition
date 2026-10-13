@@ -35,7 +35,6 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.ADD_CASE_NOTE,
       addCaseNoteData,
-      { expectedState: CaseState.CASE_ISSUED },
     );
 
     await this.runZodValidation(async () => {
@@ -55,7 +54,6 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.AMEND_PARTY_DETAILS,
       amendPartyDetailsData,
-      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
     );
 
     await this.runZodValidation(async () => {
@@ -119,6 +117,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.TRANSFER_ONLINE_CASE,
       transferOnlineCaseData,
+      { expectedState: [CaseState.JUDICIAL_REFERRAL, CaseState.CASE_PROGRESSION] },
     );
 
     await this.runZodValidation(async () => {
@@ -139,6 +138,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.SET_ASIDE_JUDGMENT,
       setAsideOrderTypeData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     await this.runZodValidation(async () => {
@@ -159,6 +159,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.SET_ASIDE_JUDGMENT,
       setAsideOrderTypeData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     await this.runZodValidation(async () => {
@@ -179,6 +180,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.CONFIRM_ORDER_REVIEW,
       confirmOrderReviewData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     await this.runZodValidation(async () => {
@@ -199,6 +201,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.RECORD_JUDGMENT,
       recordJudgmentData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     await this.runZodValidation(async () => {
@@ -219,6 +222,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.EDIT_JUDGMENT,
       editJudgmentData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     await this.runZodValidation(async () => {
@@ -239,6 +243,7 @@ export default class CaseworkerApiSteps extends BaseApi {
       civilAdminUser,
       ccdEvents.REFER_JUDGE_DEFENCE_RECEIVED,
       referJudgeDefenceReceivedData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
     );
 
     await this.runZodValidation(async () => {
