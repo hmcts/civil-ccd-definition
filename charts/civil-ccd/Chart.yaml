@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.82
+version: 0.0.83
 maintainers:
   - name: HMCTS Civil team
 
@@ -26,10 +26,6 @@ dependencies:
     version: 0.2.29
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: aac-manage-case-assignment.enabled
-  - name: idam-pr
-    version: 2.4.0
-    repository: 'oci://hmctsprod.azurecr.io/helm'
-    condition: idam-pr.enabled
   - name: camunda-bpm
     version: 0.0.52
     repository: 'oci://hmctsprod.azurecr.io/helm'
