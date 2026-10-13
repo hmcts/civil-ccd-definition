@@ -405,6 +405,7 @@ export interface BusinessProcess {
   status?: string;
   camundaEvent?: string;
   processInstanceId?: string;
+  activityId?: string;
   readyOn?: string;
 }
 

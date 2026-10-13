@@ -13,7 +13,7 @@ test.describe(
       HearingCenterAdminApiSteps,
       CaseRoleAssignmentApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
       await ClaimantSolicitorApiSteps.NotifyClaim();

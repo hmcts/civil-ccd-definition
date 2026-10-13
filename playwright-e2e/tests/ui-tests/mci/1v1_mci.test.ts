@@ -8,7 +8,7 @@ test.describe('1v1 - Manage Contact Information', { tag: '@ui-mci' }, async () =
     DefendantSolicitor1ApiSteps,
     CaseworkerSteps,
   }) => {
-    await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+    await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorApiSteps.NotifyClaim();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

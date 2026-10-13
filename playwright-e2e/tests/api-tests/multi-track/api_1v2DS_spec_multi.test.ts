@@ -1,5 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
 import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2DS spec api multi track journey',
@@ -13,7 +14,10 @@ test.describe(
       JudgeApiSteps,
       HearingCenterAdminApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimMulti1v2DS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.MULTI_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();

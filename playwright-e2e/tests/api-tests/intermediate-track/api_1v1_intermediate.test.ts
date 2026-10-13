@@ -14,7 +14,7 @@ test.describe(
       JudgeApiSteps,
       HearingCenterAdminApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimInter1v1();
+      await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.INTERMEDIATE_CLAIM });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
