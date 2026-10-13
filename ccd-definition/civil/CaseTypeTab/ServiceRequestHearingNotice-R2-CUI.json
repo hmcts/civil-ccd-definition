@@ -23,7 +23,7 @@
     "TabDisplayOrder": 6,
     "CaseFieldID": "casePaymentWaysToPay",
     "TabFieldDisplayOrder": 2,
-    "FieldShowCondition": "hwfFeeType!=\"CLAIMISSUED\" AND businessProcess.status=\"FINISHED\""
+    "FieldShowCondition": "hwfFeeType!=\"CLAIMISSUED\" AND businessProcess.status=\"FINISHED\" AND cancelUnissuedClaimDate!=\"*\""
   },
   {
     "CaseTypeID": "CIVIL",

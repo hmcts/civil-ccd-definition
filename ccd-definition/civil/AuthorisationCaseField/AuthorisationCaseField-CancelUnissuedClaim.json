@@ -14,7 +14,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "judge-profile",
           "caseworker-civil-system-field-reader"
         ],
@@ -23,7 +22,9 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
@@ -44,7 +45,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "judge-profile",
           "caseworker-civil-system-field-reader"
         ],
@@ -53,7 +53,9 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
@@ -66,7 +68,9 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }

@@ -7,14 +7,15 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "judge-profile",
-          "caseworker-civil-admin",
           "cui-admin-profile"
         ],
         "CRUD": "R"
