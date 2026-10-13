@@ -6,6 +6,11 @@ import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import FlightDelayClaim from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
 import Airline from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
+import ClaimInterest from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/claim-interest';
+import InterestClaimOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-option';
+import SameRateInterestType from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/same-rate-interest-type';
+import InterestClaimFromOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-from-option';
+import InterestClaimUntilOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-until-option';
 
 type SchemaShape = Record<string, z.ZodType>;
 
@@ -460,11 +465,74 @@ const claimDetails = (
   claimAmountBreakup: claimAmountBreakupSchema,
   claimAmountBreakupSummaryObject: nonEmptyString,
   totalClaimAmount: z.number(),
-  claimInterest: z.literal('No'),
-  calculatedInterest: nonEmptyString,
-  totalInterest: z.number(),
-  fixedCosts: fixedCostsSchema,
 });
+
+const sameRateInterestSelectionSchema = (sameRateInterestType: SameRateInterestType) =>
+  z.strictObject({
+    sameRateInterestType: z.literal(sameRateInterestType),
+    ...(sameRateInterestType === SameRateInterestType.DIFFERENT_RATE && {
+      differentRate: nonEmptyString,
+      differentRateReason: nonEmptyString,
+    }),
+  });
+
+const interestClaimFrom = (
+  interestClaimFrom: InterestClaimFromOption,
+  interestClaimUntil: InterestClaimUntilOption,
+): SchemaShape => {
+  if (interestClaimFrom === InterestClaimFromOption.FROM_A_SPECIFIC_DATE) {
+    return {
+      interestClaimFrom: z.literal(InterestClaimFromOption.FROM_A_SPECIFIC_DATE),
+      interestFromSpecificDate: nonEmptyString,
+      interestFromSpecificDateDescription: nonEmptyString,
+      interestClaimUntil: z.literal(interestClaimUntil),
+    };
+  }
+
+  return {
+    interestClaimFrom: z.literal(InterestClaimFromOption.FROM_CLAIM_SUBMIT_DATE),
+  };
+};
+
+const claimInterest = (
+  claimInterest: ClaimInterest,
+  interestClaimOption: InterestClaimOption,
+  sameRateInterestType: SameRateInterestType,
+  interestClaimFromOption: InterestClaimFromOption,
+  interestClaimUntilOption: InterestClaimUntilOption,
+): SchemaShape => {
+  if (claimInterest === ClaimInterest.NO) {
+    return {
+      claimInterest: z.literal(ClaimInterest.NO),
+      calculatedInterest: nonEmptyString,
+      totalInterest: z.number(),
+    };
+  }
+
+  const interestOption =
+    interestClaimOption === InterestClaimOption.BREAK_DOWN_INTEREST
+      ? {
+          interestClaimOptions: z.literal(InterestClaimOption.BREAK_DOWN_INTEREST),
+          breakDownInterestTotal: nonEmptyString,
+          breakDownInterestDescription: nonEmptyString,
+        }
+      : {
+          interestClaimOptions: z.literal(InterestClaimOption.SAME_RATE_INTEREST),
+          sameRateInterestSelection: sameRateInterestSelectionSchema(sameRateInterestType),
+        };
+
+  return {
+    claimInterest: z.literal(ClaimInterest.YES),
+    ...interestOption,
+    ...interestClaimFrom(interestClaimFromOption, interestClaimUntilOption),
+    calculatedInterest: nonEmptyString,
+    totalInterest: z.number(),
+  };
+};
+
+const fixedCosts: SchemaShape = {
+  fixedCosts: fixedCostsSchema,
+};
 
 const statementOfTruth: SchemaShape = {
   applicantSolicitor1ClaimStatementOfTruth: statementOfTruthSchema,
@@ -482,6 +550,8 @@ const createClaimResponseSchema = {
   defendant2,
   defendant2Representation,
   claimDetails,
+  claimInterest,
+  fixedCosts,
   statementOfTruth,
 };
 
