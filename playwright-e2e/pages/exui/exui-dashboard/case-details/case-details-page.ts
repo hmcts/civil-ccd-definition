@@ -259,7 +259,11 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     super.setCCDEvent = ccdEvent;
   }
 
-  async retryChooseNextStepWithUrl(caseId: number, ccdEvent: CCDEvent) {
+  async retryChooseNextStepWithUrl(
+    caseId: number,
+    ccdEvent: CCDEvent,
+    { isRetry = false }: { isRetry?: boolean } = {},
+  ) {
     console.log(`Starting event with url: ${ccdEvent.id}`);
     await super.retryGoTo(
       `${urls.manageCase}/cases/case-details/${caseId}/trigger/${ccdEvent.id}/${ccdEvent.id}`,
@@ -270,6 +274,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       undefined,
       { retries: 2, message: `Starting event with url: ${ccdEvent.id} failed, trying again` },
     );
+    if (isRetry) await super.dismissRefreshModal();
   }
 
   async retryRaiseANewQuery(caseId: number) {

@@ -25,14 +25,14 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false, timeout }),
-          super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false, timeout }),
+          super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!), { timeout }),
+          super.expectCaseHeading(ccdCaseData?.caseNamePublic!, { timeout }),
         ];
       } else {
         expects = [
           super.expectHeading(ccdEventstate.name, { exact: false, timeout }),
-          super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false, timeout }),
-          super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false, timeout }),
+          super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!), { timeout }),
+          super.expectCaseHeading(ccdCaseData?.caseNamePublic!, { timeout }),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });
@@ -67,6 +67,21 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         undefined,
         { retries, message: 'Uploading document failed, trying again...' },
       );
+    }
+
+    // ExUI shows a "Page refreshed" modal when an event URL is reloaded while an event is in progress,
+    // e.g. when retrying an event after a failure. It blocks every click until dismissed.
+    protected async dismissRefreshModal() {
+      try {
+        await super.waitForSelectorToBeVisible(components.refreshModal.selector, { timeout: 3000 });
+      } catch {
+        return;
+      }
+      console.log('Page refreshed modal shown, dismissing it');
+      await super.clickButtonByName(components.refreshModal.okButton);
+      await super.waitForSelectorToDetach(components.refreshModal.selector, {
+        timeout: config.exui.pageSubmitTimeout,
+      });
     }
 
     protected async clickAddNew() {

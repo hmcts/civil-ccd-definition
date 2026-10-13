@@ -47,7 +47,11 @@ export default class JudgeApiSteps extends BaseApi {
       fastTrackDirectionsTask,
       ccdEvents.CREATE_SDO,
       createSdoData,
-      { expectedState: CaseState.CASE_PROGRESSION },
+      {
+        expectedState: [
+          CaseState.CASE_PROGRESSION,
+        ],
+      },
     );
 
     await this.runZodValidation(async () => {
@@ -352,7 +356,11 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
     const notSuitableSdoData = await notSuitableSdoDataBuilder.buildChangeLocation();
-    await super.submitCCDEvent(judgeRegion1User, ccdEvents.NOT_SUITABLE_SDO, notSuitableSdoData);
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.NOT_SUITABLE_SDO,
+      notSuitableSdoData,
+    );
 
     await this.runZodValidation(async () => {
       const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -368,7 +376,11 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { notSuitableSdoDataBuilder } = this.judgeDataBuilderFactory;
     const notSuitableSdoData = await notSuitableSdoDataBuilder.buildOtherReasons();
-    await super.submitCCDEvent(judgeRegion1User, ccdEvents.NOT_SUITABLE_SDO, notSuitableSdoData);
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.NOT_SUITABLE_SDO,
+      notSuitableSdoData,
+    );
 
     await this.runZodValidation(async () => {
       const { notSuitableSdoSchemaBuilder } = this.judgeSchemaBuilderFactory;
@@ -459,7 +471,11 @@ export default class JudgeApiSteps extends BaseApi {
 
     const { sendAndReplyDataBuilder } = this.judgeDataBuilderFactory;
     const sendAndReplyData = await sendAndReplyDataBuilder.buildReply();
-    await super.submitCCDEvent(judgeRegion1User, ccdEvents.SEND_AND_REPLY, sendAndReplyData);
+    await super.submitCCDEvent(
+      judgeRegion1User,
+      ccdEvents.SEND_AND_REPLY,
+      sendAndReplyData,
+    );
 
     await this.runZodValidation(async () => {
       const { sendAndReplySchemaBuilder } = this.judgeSchemaBuilderFactory;

@@ -1,14 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>hmcts/.github:renovate-config",
-    "local>hmcts/.github//renovate/automerge-all"
+  "extends": ["local>hmcts/.github:renovate-config", "local>hmcts/.github//renovate/automerge-all"],
+  "labels": ["dependencies"],
+  "automergeSchedule": [
+    "after 7am and before 8am every weekday",
+    "after 6pm and before 8pm every weekday"
   ],
-  "labels": [
-    "dependencies"
+  "platformAutomerge": false,
+  "schedule": [
+    "after 7am and before 8am every weekday",
+    "after 6pm and before 8pm every weekday"
   ],
-  "automergeSchedule": ["after 8am and before 11am every weekday"],
-  "schedule": ["after 8am and before 11am every weekday"],
   "rebaseWhen": "behind-base-branch",
   "automergeStrategy": "squash",
   "prConcurrentLimit": 5,
@@ -20,9 +22,7 @@
   },
   "regexManagers": [
     {
-      "fileMatch": [
-        "^Dockerfile$"
-      ],
+      "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sARG .*?_VERSION=(?<currentValue>.*)\\s"
       ]
@@ -34,24 +34,21 @@
       "groupName": "All non-major updates",
       "groupSlug": "all-non-major",
       "automerge": true,
-      "automergeType": "pr",
-      "automergeSchedule": ["before 2pm every weekday"]
+      "automergeType": "pr"
     },
     {
       "matchManagers": ["helmv3"],
       "groupName": "Helm chart updates",
       "groupSlug": "helm-charts",
       "automerge": true,
-      "automergeType": "pr",
-      "automergeSchedule": ["before 4pm every weekday"]
+      "automergeType": "pr"
     },
     {
       "matchPackageNames": ["@playwright/test", "playwright-core", "@axe-core/playwright"],
       "groupName": "Playwright",
       "groupSlug": "playwright",
       "automerge": false,
-      "automergeType": "pr",
-      "automergeSchedule": ["before 2pm every weekday"]
+      "automergeType": "pr"
     },
     {
       "matchPackageNames": ["allure-playwright"],
@@ -66,8 +63,7 @@
       "groupName": "Allure reporting",
       "groupSlug": "allure",
       "automerge": true,
-      "automergeType": "pr",
-      "automergeSchedule": ["before 4pm every weekday"]
+      "automergeType": "pr"
     },
     {
       "matchPackageNames": ["eslint", "typescript-eslint"],
@@ -75,8 +71,7 @@
       "groupName": "ESLint",
       "groupSlug": "eslint",
       "automerge": true,
-      "automergeType": "pr",
-      "automergeSchedule": ["before 2pm every weekday"]
+      "automergeType": "pr"
     },
     {
       "matchPackageNames": ["typescript"],
@@ -84,24 +79,21 @@
       "groupName": "TypeScript",
       "groupSlug": "typescript",
       "automerge": true,
-      "automergeType": "pr",
-      "automergeSchedule": ["before 4pm every weekday"]
+      "automergeType": "pr"
     },
     {
       "matchPackagePatterns": ["^org\\.junit\\.", "^org\\.slf4j:"],
       "groupName": "Java dependencies",
       "groupSlug": "java-deps",
       "automerge": true,
-      "automergeType": "pr",
-      "automergeSchedule": ["before 4pm every weekday"]
+      "automergeType": "pr"
     },
     {
       "matchPackageNames": ["node", "gradle", "yarn"],
       "groupName": "Build tools",
       "groupSlug": "build-tools",
       "automerge": true,
-      "automergeType": "pr",
-      "automergeSchedule": ["before 4pm every weekday"]
+      "automergeType": "pr"
     }
   ]
 }

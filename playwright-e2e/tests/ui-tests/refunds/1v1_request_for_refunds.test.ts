@@ -1,4 +1,5 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v1 create fast claim - request and processing of refunds',
@@ -10,7 +11,7 @@ test.describe(
       ClaimantSolicitorSteps,
       DefendantSolicitor1Steps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
@@ -33,7 +34,7 @@ test.describe(
       ClaimantSolicitorSteps,
       DefendantSolicitor1Steps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

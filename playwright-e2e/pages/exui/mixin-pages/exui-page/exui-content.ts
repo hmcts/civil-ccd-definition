@@ -28,6 +28,10 @@ export const components = {
   eventTrigger: {
     selector: 'ccd-case-event-trigger',
   },
+  refreshModal: {
+    selector: '.refresh-modal-backdrop',
+    okButton: 'Ok',
+  },
 };
 
 export const links = {

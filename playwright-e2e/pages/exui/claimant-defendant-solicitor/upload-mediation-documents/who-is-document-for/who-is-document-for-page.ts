@@ -11,8 +11,8 @@ export default class WhoIsDocumentForPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(headings.selectParty),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectText(radioButtons.uploadMediationDocumentsPartyChosen.hintText),
       super.expectText(radioButtons.uploadMediationDocumentsPartyChosen.label),
     ]);
