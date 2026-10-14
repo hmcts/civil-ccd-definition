@@ -1,4 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimType from '../../../constants/cases/claim-type';
+import ClaimTrack from '../../../constants/cases/claim-track';
 
 test.describe(
   '1v2 spec record judgment api test',
@@ -9,7 +11,10 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2SS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
@@ -22,7 +27,10 @@ test.describe(
       CaseRoleAssignmentApiSteps,
       CaseworkerApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2DS();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+      });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
@@ -32,23 +40,33 @@ test.describe(
       await CaseworkerApiSteps.SetAsideJudgmentOrder();
     });
 
-    test('Record Judgment with mark judgment paid Spec claim 1v2', { tag: '@api-jo' }, async ({
-      ClaimantSolicitorSpecApiSteps,
-      CaseRoleAssignmentApiSteps,
-      DefendantSolicitor1SpecApiSteps,
-      JudgeApiSteps,
-      CaseworkerApiSteps,
-    }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v2SS();
-      await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
-      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
-      await DefendantSolicitor1SpecApiSteps.RespondFastFullDefence1v2SS();
-      await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence1v2SS();
-      await JudgeApiSteps.SdoTrail();
-      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
-      await CaseworkerApiSteps.ConfirmOrderReview();
-      await CaseworkerApiSteps.RecordJudgmentDeterMeansImmediately();
-      await CaseworkerApiSteps.EditJudgmentDeterMeansSetDate();
-    });
+    test(
+      'Record Judgment with mark judgment paid Spec claim 1v2',
+      { tag: '@api-jo' },
+      async ({
+        ClaimantSolicitorSpecApiSteps,
+        CaseRoleAssignmentApiSteps,
+        DefendantSolicitor1SpecApiSteps,
+        JudgeApiSteps,
+        CaseworkerApiSteps,
+      }) => {
+        await ClaimantSolicitorSpecApiSteps.CreateClaim({
+          claimTrack: ClaimTrack.FAST_CLAIM,
+          claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+        });
+        await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+        await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+        await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+          claimTrack: ClaimTrack.FAST_CLAIM,
+          claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+        });
+        await ClaimantSolicitorSpecApiSteps.RespondFastRejectFullDefence1v2SS();
+        await JudgeApiSteps.SdoTrail();
+        await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
+        await CaseworkerApiSteps.ConfirmOrderReview();
+        await CaseworkerApiSteps.RecordJudgmentDeterMeansImmediately();
+        await CaseworkerApiSteps.EditJudgmentDeterMeansSetDate();
+      },
+    );
   },
 );

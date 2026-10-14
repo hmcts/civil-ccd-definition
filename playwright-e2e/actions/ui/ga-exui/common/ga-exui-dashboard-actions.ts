@@ -53,6 +53,6 @@ export default class GaExuiDashboardActions extends BaseApi {
 
    async verifySuccessEvent(ccdEvent: CCDEvent) {
     const { gaCaseDetailsPage } = this.gaExuiDashboardPageFactory;
-    await gaCaseDetailsPage.verifySuccessEvent(super.ccdCaseData.id!, ccdEvent);
+    await gaCaseDetailsPage.verifySuccessEvent(super.getGaCCDCaseData()?.id!, ccdEvent);
   }
 }

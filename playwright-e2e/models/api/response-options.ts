@@ -97,6 +97,12 @@ export interface _RetryResponseOptions {
   expectedStatus?: number | number[];
   retries?: number;
   retryTimeInterval?: number;
+  // Wall clock deadline for the whole retry loop. When set, it replaces retries as the stop condition.
+  timeoutMs?: number;
+  // Multiplier applied to retryTimeInterval after each failed attempt. Defaults to 1 (constant interval).
+  backoffFactor?: number;
+  // Upper bound for the interval once backoff has been applied.
+  maxRetryTimeInterval?: number;
   verifyResponse?: (
     response: APIResponse | any | string,
     responseData?: {
