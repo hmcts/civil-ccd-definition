@@ -477,6 +477,30 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PARENT_CLAIM_DISCONTINUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PARENT_CLAIM_SETTLED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "APPLICATION_PROCEEDS_IN_HERITAGE",
     "AccessControl": [
       {
