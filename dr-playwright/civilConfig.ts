@@ -112,8 +112,11 @@ export const paymentResultWaitSeconds = Number(process.env.PAYMENT_RESULT_WAIT_S
 
 // How many cases to unassign from a user in one call at teardown. The case IDs go in a request URL, so large
 // numbers of cases are sent in batches to stay within URL length limits. Override with UNASSIGN_BATCH_SIZE.
+// keepAssignments leaves the solicitors assigned to the cases created during the run, for example to carry on with a
+// case by hand afterwards. Set KEEP_CASE_ASSIGNMENTS=Yes.
 export const caseUnassignment = {
   batchSize: Number(process.env.UNASSIGN_BATCH_SIZE ?? 50),
+  keepAssignments: process.env.KEEP_CASE_ASSIGNMENTS === 'Yes',
 }
 
 // Work allocation (WA) on a preview built with the pr-values:fullDeployment label, which has its own Camunda and WA

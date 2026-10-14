@@ -13,6 +13,20 @@ function toBatches<T>(items: T[], batchSize: number): T[][] {
 
 // Runs once after every worker in the run has finished. Records that fail to unassign are kept, so a later run retries them.
 teardown('Unassign users from cases created during the run', async () => {
+  // With KEEP_CASE_ASSIGNMENTS=Yes the users stay assigned to this run's cases. Its records are dropped, so a later
+  // run does not unassign them either. Records left by earlier runs are kept for a later run to retry.
+  if (caseUnassignment.keepAssignments) {
+    const keptRecords = CaseUserRegistry.readCurrentRun();
+    for (const record of keptRecords) {
+      console.log(`Keeping ${caseUsers[record.userKey].name} assigned to case ${record.caseId}`);
+      CaseUserRegistry.remove(record);
+    }
+    if (keptRecords.length === 0) {
+      console.log('KEEP_CASE_ASSIGNMENTS=Yes, and no case assignments were recorded in this run.');
+    }
+    return;
+  }
+
   const records = CaseUserRegistry.readAll();
   if (records.length === 0) {
     console.log('No case assignments recorded. Nothing to unassign.');

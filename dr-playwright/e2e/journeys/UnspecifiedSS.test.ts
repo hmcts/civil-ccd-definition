@@ -236,6 +236,17 @@ const sdoTaskType: string = noiseInducedHearingLoss ? 'NIHLFastTrackDirections' 
 // The judge's final order in test16 (FINAL_ORDER). If it is not set, the first order the track offers is made: a free
 // form order on the small and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
 const finalOrder: FinalOrder = (process.env.FINAL_ORDER as FinalOrder) ?? finalOrdersForTrack[track][0];
+
+// Stopping the run early, for example to carry on with the claim by hand (use KEEP_CASE_ASSIGNMENTS=Yes as well to
+// keep the solicitors assigned to it):
+//  - STOP_AT_STATE: stop as soon as the claim is confirmed to be in this state, e.g. CASE_PROGRESSION stops straight
+//    after the Standard Direction Order
+//  - STOP_AFTER_TEST: stop after this test, e.g. test10 stops after the evidence uploads
+// The remaining tests are skipped. Both can be set, in which case the run stops at whichever comes first.
+const stopAtState = process.env.STOP_AT_STATE as caseStates | undefined;
+const stopAfterTest: string | undefined = process.env.STOP_AFTER_TEST;
+let stopAtStateReached = false;
+let lastStateReached: caseStates | undefined;
 const noOfExperts: string = process.env.EXPERTS ?? '0';
 const noOfWitnesses: string = process.env.WITNESSES ?? '0';
 const language: languageSpokenAndDocuments = ['WELSH', 'ENGLISH', 'BOTH'].includes(process.env.LANGUAGE) ? (process.env.LANGUAGE as languageSpokenAndDocuments) : languageSpokenAndDocuments.ENGLISH;
@@ -259,6 +270,17 @@ function caseUrl(): string {
 // run again from the start.
 async function runEvent(page: Page, storageState: unknown, action: () => Promise<void>, reopenUrl: string = caseUrl()) {
   await new SessionHelper(page).runWithSessionRecovery(sessionUserFor(storageState), reopenUrl, action);
+}
+
+// Checks the claim is in the expected state, and notes when it has reached STOP_AT_STATE so the remaining tests are
+// skipped
+async function assertCaseState(state: caseStates) {
+  await testingEndpointHelper.assertCaseState(caseId, state);
+  lastStateReached = state;
+  if (state === stopAtState && !stopAtStateReached) {
+    stopAtStateReached = true;
+    console.log(`Case ${caseId} has reached ${state}, so the remaining tests are skipped (STOP_AT_STATE)`);
+  }
 }
 
 test.beforeAll(async ({}) => {
@@ -301,9 +323,25 @@ test.beforeAll(async ({}) => {
     finalOrdersForTrack[track],
     `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`,
   ).toContain(finalOrder);
+
+  if (stopAtState !== undefined) {
+    expect(
+      Object.values(caseStates),
+      `Invalid STOP_AT_STATE value: ${stopAtState}. It must be one of ${Object.values(caseStates).join(', ')}.`,
+    ).toContain(stopAtState);
+  }
+
+  if (stopAfterTest !== undefined) {
+    expect(stopAfterTest, `Invalid STOP_AFTER_TEST value: ${stopAfterTest}. It must be a test name such as test10.`).toMatch(/^test\d+$/);
+  }
 });
 
-test.beforeEach(async ({ page, storageState }) => {
+test.beforeEach(async ({ page, storageState }, testInfo) => {
+  // Every test sits inside the test1 group (test1 › test10 › ...), so the last testN in its title path is its own
+  const testNumber = Number(testInfo.titlePath.filter((title) => /^test\d+$/.test(title)).pop()?.slice('test'.length));
+  test.skip(stopAfterTest !== undefined && testNumber > Number(stopAfterTest.slice('test'.length)), `Stopped after ${stopAfterTest} (STOP_AFTER_TEST)`);
+  test.skip(stopAtStateReached, `Stopped: the claim has reached ${stopAtState} (STOP_AT_STATE)`);
+
   pageHelper = new PageHelper(page);
   buttonHelper = new ButtonHelper(page);
   createCasePage = new CreateCasePage(page);
@@ -317,6 +355,12 @@ test.beforeEach(async ({ page, storageState }) => {
       await pageHelper.gotoAndWaitForXui(caseUrl());
     }
   });
+});
+
+test.afterAll(async () => {
+  if (stopAtState !== undefined && !stopAtStateReached) {
+    console.warn(`WARNING: STOP_AT_STATE ${stopAtState} was never reached. The last state checked was ${lastStateReached ?? 'none'}.`);
+  }
 });
 
 test.describe.configure({ mode: 'serial' });
@@ -452,7 +496,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       console.log('The payment service did not record the claim fee payment, so the test does');
       await testingEndpointHelper.serviceRequestUpdateClaimIssued(caseId);
     }
-    await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_ISSUED);
+    await assertCaseState(caseStates.CASE_ISSUED);
   });
 
   test.describe('test2', { tag: '@unspecified' }, () => {
@@ -466,10 +510,10 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         'NOTIFY_DEFENDANT_OF_CLAIM',
       );
       if (claimOfflineAfterNotifyClaim) {
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
+        await assertCaseState(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
         console.log('Notify claim -> claim went offline, later events are skipped');
       } else {
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_CASE_DETAILS_NOTIFICATION);
+        await assertCaseState(caseStates.AWAITING_CASE_DETAILS_NOTIFICATION);
       }
     });
   });
@@ -486,10 +530,10 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS',
       );
       if (claimOfflineAfterNotifyClaimDetails) {
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
+        await assertCaseState(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
         console.log('Notify claim details -> claim went offline, later events are skipped');
       } else {
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+        await assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       }
     });
   });
@@ -510,7 +554,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
             1,
           );
         });
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+        await assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
     });
   });
 
@@ -535,7 +579,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           2,
         );
       });
-      await testingEndpointHelper.assertCaseState(caseId, caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      await assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
     });
   });
 
@@ -565,7 +609,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           unavailableDatesRequired,
         );
       });
-      await testingEndpointHelper.assertCaseState(caseId, expectedStateAfterResponse(1));
+      await assertCaseState(expectedStateAfterResponse(1));
     });
   });
 
@@ -608,7 +652,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           unavailableDatesRequired,
         );
       });
-      await testingEndpointHelper.assertCaseState(caseId, expectedStateAfterResponse(2));
+      await assertCaseState(expectedStateAfterResponse(2));
     });
   });
 
@@ -637,7 +681,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
           unavailableDatesRequired,
         );
       });
-      await testingEndpointHelper.assertCaseState(caseId, stateAfterClaimantResponse);
+      await assertCaseState(stateAfterClaimantResponse);
     });
   });
 
@@ -655,7 +699,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await new WaTaskHelper(page).assignTaskForEvent(caseId, 'CREATE_SDO', sdoTaskType);
         await new CreateSdo(page).submit(caseId, track, noiseInducedHearingLoss);
       });
-      await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+      await assertCaseState(caseStates.CASE_PROGRESSION);
     });
   });
 
@@ -674,7 +718,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await runEvent(page, storageState, async () => {
           await new UploadEvidence(page).submit();
         });
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+        await assertCaseState(caseStates.CASE_PROGRESSION);
       });
     });
 
@@ -684,7 +728,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await runEvent(page, storageState, async () => {
           await new UploadEvidence(page).submit();
         });
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+        await assertCaseState(caseStates.CASE_PROGRESSION);
       });
     });
 
@@ -696,7 +740,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await runEvent(page, storageState, async () => {
           await new UploadEvidence(page).submit();
         });
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
+        await assertCaseState(caseStates.CASE_PROGRESSION);
       });
     });
   });
@@ -714,7 +758,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await runEvent(page, storageState, async () => {
         await new CreateHearingNotice(page).submit(track);
       });
-      await testingEndpointHelper.assertCaseState(caseId, caseStates.HEARING_READINESS);
+      await assertCaseState(caseStates.HEARING_READINESS);
     });
   });
 
@@ -742,7 +786,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       }
       // civil-service's scheduler would run HEARING_FEE_PAID later, so it is run now
       await testingEndpointHelper.triggerHearingFeePaid(caseId);
-      await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      await assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
     });
   });
 
@@ -762,7 +806,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await runEvent(page, storageState, async () => {
           await new ConfirmTrialArrangements(page).submit();
         });
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+        await assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
       });
     });
 
@@ -772,7 +816,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await runEvent(page, storageState, async () => {
           await new ConfirmTrialArrangements(page).submit();
         });
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+        await assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
       });
     });
 
@@ -784,7 +828,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await runEvent(page, storageState, async () => {
           await new ConfirmTrialArrangements(page).submit();
         });
-        await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+        await assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
       });
     });
   });
@@ -806,7 +850,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await tabsHelper.selectTab('Bundles');
         await expect(page.getByText(bundleTitle).first()).toBeVisible();
       });
-      await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      await assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
     });
   });
 
@@ -822,7 +866,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     test.use({ storageState: sessionUsers.judge.authFile });
     test('Hearing date passes and the claim moves to decision outcome.', async () => {
       await testingEndpointHelper.moveToDecisionOutcome(caseId);
-      await testingEndpointHelper.assertCaseState(caseId, caseStates.DECISION_OUTCOME);
+      await assertCaseState(caseStates.DECISION_OUTCOME);
     });
   });
 
@@ -843,7 +887,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       });
       await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'GENERATE_ORDER_NOTIFICATION');
       expect(await testingEndpointHelper.countFinalOrders(caseId), 'The final order was not added to the case').toBe(ordersBefore + 1);
-      await testingEndpointHelper.assertCaseState(caseId, caseStates.DECISION_OUTCOME);
+      await assertCaseState(caseStates.DECISION_OUTCOME);
     });
   });
 
@@ -862,7 +906,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await new ConfirmOrderReview(page).submit();
       });
       await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'CONFIRM_ORDER_REVIEW_FINAL_ORDER');
-      await testingEndpointHelper.assertCaseState(caseId, caseStates.All_FINAL_ORDERS_ISSUED);
+      await assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
     });
   });
 

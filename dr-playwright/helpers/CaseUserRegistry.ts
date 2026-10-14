@@ -68,6 +68,18 @@ export class CaseUserRegistry {
     );
   }
 
+  // Returns valid records for this run only
+  static readCurrentRun(): StoredRecord[] {
+    if (!fs.existsSync(runDir)) {
+      return [];
+    }
+    return fs
+      .readdirSync(runDir)
+      .filter((file) => file.endsWith('.json'))
+      .map((file) => this.readRecord(path.join(runDir, file)))
+      .filter((entry): entry is StoredRecord => entry !== null && entry.civilServiceUrl === civilServiceUrl);
+  }
+
   static remove({ file }: StoredRecord) {
     fs.rmSync(file, { force: true });
     const dir = path.dirname(file);
