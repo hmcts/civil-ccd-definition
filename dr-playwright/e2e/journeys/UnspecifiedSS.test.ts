@@ -29,6 +29,7 @@ import { CreateHearingNotice } from '../flows/events/CreateHearingNotice.ts';
 import { WaTaskHelper } from '../../helpers/WaTaskHelper.ts';
 import { ConfirmTrialArrangements } from '../flows/events/ConfirmTrialArrangements.ts';
 import { MakeFinalOrder } from '../flows/events/MakeFinalOrder.ts';
+import { ConfirmOrderReview } from '../flows/events/ConfirmOrderReview.ts';
 import FinalOrder, { finalOrdersForTrack } from '../../enums/finalOrders.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
@@ -837,6 +838,25 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'GENERATE_ORDER_NOTIFICATION');
       expect(await testingEndpointHelper.countFinalOrders(caseId), 'The final order was not added to the case').toBe(ordersBefore + 1);
       await testingEndpointHelper.assertCaseState(caseId, caseStates.DECISION_OUTCOME);
+    });
+  });
+
+  // Court staff review the judge's order ("Order Made - Review case"). Confirming it is a final order, with no
+  // obligation date and nothing left to do, closes the claim: it moves to All_FINAL_ORDERS_ISSUED and the
+  // CONFIRM_ORDER_REVIEW_FINAL_ORDER business process runs.
+  test.describe('test17', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track');
+    test.use({ storageState: sessionUsers.hearingCentreAdmin.authFile });
+    test('Hearing Centre Admin confirms the order review.', async ({ page, storageState }) => {
+      await runEvent(page, storageState, async () => {
+        await new ConfirmOrderReview(page).submit();
+      });
+      await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'CONFIRM_ORDER_REVIEW_FINAL_ORDER');
+      await testingEndpointHelper.assertCaseState(caseId, caseStates.All_FINAL_ORDERS_ISSUED);
     });
   });
 
