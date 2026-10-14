@@ -288,7 +288,7 @@
     "node": ">=24.18.0"
   },
   "dependencies": {
-    "pixelmatch": "7.2.0",
+    "pixelmatch": "8.0.0",
     "pngjs": "7.0.0"
   }
 }
