@@ -154,7 +154,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
   const respondent2Response: respondentResponses = env.RESPONDENT2_RESPONSE;
   const claimantProceed1: yesNo = env.CLAIMANT_PROCEED_1;
   const claimantProceed2: yesNo = env.CLAIMANT_PROCEED_2;
-  const fixedRecoverableCosts: yesNo = ['Yes'].includes(scenarioEnv.CLAIMANT1_LITIGANT_FRIEND)
+  const fixedRecoverableCosts: yesNo = ['Yes'].includes(scenarioEnv.FIXED_RECOVERABLE_COSTS)
     ? yesNo.YES
     : yesNo.NO;
   const fixedRecoveryCostsBand: fixedRecoveryCostsBands = env.FIXED_RECOVERY_COSTS_BAND;
