@@ -97,6 +97,7 @@ const scenarios: Scenario[] = [
       CLAIMANT_TYPE: 'INDIVIDUAL',
       DEFENDANT_TYPE: 'INDIVIDUAL',
       ...nihlFast,
+      FIXED_RECOVERABLE_COSTS: 'Yes',
       CLAIMANT1_LITIGANT_FRIEND: 'Yes',
       CLAIMANT2_LITIGANT_FRIEND: 'Yes',
     },
