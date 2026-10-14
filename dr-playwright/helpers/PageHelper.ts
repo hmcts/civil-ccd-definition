@@ -39,13 +39,20 @@ export class PageHelper {
       await expect(this.page.locator('#next-step')).toContainText(nextStep);
 
       await expect(async () => {
+        // The event's page may have opened late, after the previous attempt stopped waiting for it
+        if (this.page.url().includes('/trigger/')) {
+          return;
+        }
         // XUI can re-render the case page after the option is chosen, resetting the dropdown to "Select action"
         // and leaving Go disabled, so the option is selected again on every attempt
         await this.page.locator('#next-step').selectOption({ label: nextStep }, { timeout: 5000 });
         await this.page.getByRole('button', { name: 'Go' }).click({ timeout: 5000 });
+        // XUI can also leave the case page showing after Go is clicked, so the event's page is waited for and Go is
+        // clicked again if it has not opened
+        await expect(this.page).toHaveURL(/\/trigger\//, { timeout: 15000 });
       }).toPass({
         intervals: [2000, 5000], // Time to wait between retries (in ms)
-        timeout: 30000,          // Total maximum time for all retries combined (in ms)
+        timeout: 60000,          // Total maximum time for all retries combined (in ms)
       });
     }
 

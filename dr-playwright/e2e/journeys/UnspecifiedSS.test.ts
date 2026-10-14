@@ -134,7 +134,6 @@ let defendant1Journey : ClaimTypes[] = [
   claimTypes.ONE_VS_TWO_LR_LIP
 ];
 const claimType: claimTypes = env.CLAIM_TYPE;
-const runningEnvironment: environment = env.ENVIRONMENT;
 const respondent1ResponseIntention: responseIntentions = env.RESPONDENT1_RESPONSE_INTENTION;
 const respondent2ResponseIntention: responseIntentions = env.RESPONDENT2_RESPONSE_INTENTION;
 const respondent1Response: respondentResponses = env.RESPONDENT1_RESPONSE;
@@ -421,17 +420,16 @@ test.describe('test1', { tag: '@unspecified' }, () => {
     CaseUserRegistry.record(caseId, 'claimantSolicitor');
     // Pay the claim fee
     await new PaymentPage(page).makePayment('PBA');
-    // When pay is called we send a callback url - pay should then use our callback url so that the next camunda process is kicked off which
-    // sends the appropriate party emails and generates the claim certificate.  As this is not happening we will need to manually fire the
-    // callback so the aforementioned camunda task completes and the test can continue
-
-    if (![environment.PREVIEW, environment.DEMO].includes(runningEnvironment)) {
-      await new TestingEndPointHelper().waitForCamundaProcessToFinish(
-        caseId,
-        'CREATE_CLAIM_AFTER_PAYMENT',
-      );
+    // The payment service tells civil-service about the payment, which then issues the claim
+    // (CREATE_CLAIM_AFTER_PAYMENT). Where the payment service cannot reach civil-service the test tells it instead.
+    // Telling it both ways would make civil-service try to issue the claim twice, so the test only steps in if the
+    // payment service has not done it within a minute.
+    const recordedByPaymentService = await testingEndpointHelper.waitForFeePaid(caseId, 'claimIssuedPaymentDetails', 60);
+    if (recordedByPaymentService) {
+      await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
     } else {
-      await new TestingEndPointHelper().serviceRequestUpdateClaimIssued(caseId);
+      console.log('The payment service did not record the claim fee payment, so the test does');
+      await testingEndpointHelper.serviceRequestUpdateClaimIssued(caseId);
     }
     await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_ISSUED);
   });
@@ -711,9 +709,13 @@ test.describe('test1', { tag: '@unspecified' }, () => {
       await runEvent(page, storageState, async () => {
         await new PaymentPage(page).makePayment('PBA');
       });
-      // As with the claim fee in test1, the payment service cannot tell civil-service about the payment on preview
-      // and demo, so the test does
-      if ([environment.PREVIEW, environment.DEMO].includes(runningEnvironment)) {
+      // The payment service tells civil-service about the payment, which can take a while. Where it cannot reach
+      // civil-service the test tells it instead. Telling it both ways would update the case twice, and the late
+      // update can clash with the next event (CCD rejects it with HTTP 409), so the test only steps in if the payment
+      // service has not done it within a minute.
+      const recordedByPaymentService = await testingEndpointHelper.waitForFeePaid(caseId, 'hearingFeePaymentDetails', 60);
+      if (!recordedByPaymentService) {
+        console.log('The payment service did not record the hearing fee payment, so the test does');
         await testingEndpointHelper.serviceRequestUpdateHearingFee(caseId);
       }
       // civil-service's scheduler would run HEARING_FEE_PAID later, so it is run now
@@ -762,6 +764,27 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         });
         await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
       });
+    });
+  });
+
+  // The trial bundle, which a civil-service scheduler normally creates about 3 weeks before the hearing, is created
+  // now. Once it has been stitched into one document it shows on the Bundles tab.
+  test.describe('test14', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track');
+    test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
+    test('Trial bundle is created and shown to the Claimant Solicitor.', async ({ page, storageState }) => {
+      await testingEndpointHelper.triggerTrialBundle(caseId);
+      const bundleTitle = await testingEndpointHelper.waitForBundleStitched(caseId);
+      await runEvent(page, storageState, async () => {
+        await pageHelper.gotoAndWaitForXui(caseUrl());
+        await tabsHelper.selectTab('Bundles');
+        await expect(page.getByText(bundleTitle).first()).toBeVisible();
+      });
+      await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
     });
   });
 

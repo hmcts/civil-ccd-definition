@@ -86,6 +86,8 @@ export class TestingEndPointHelper {
     }
   }
 
+  // Tells civil-service the claim fee has been paid, as the payment service would, and waits for the claim to be
+  // issued (CREATE_CLAIM_AFTER_PAYMENT). Used where the payment service cannot reach civil-service.
   async serviceRequestUpdateClaimIssued(caseId: string) {
     await this.getTokens(systemupdate);
     const serviceRequestUpdateClaimIssuedUrl = `${civilServiceUrl}/service-request-update-claim-issued`;
@@ -115,7 +117,7 @@ export class TestingEndPointHelper {
       if (!response.ok()) {
         const errorText = await response.text();
         throw new Error(
-          `Failed to create appeal: ${response.status()} - ${errorText}. Ensure your VPN is connected or check your URL/SECRET.`
+          `Claim fee payment callback returned ${response.status()} - ${errorText}. Ensure your VPN is connected or check your URL/SECRET.`
         );
       } else {
         await this.waitForCamundaProcessToFinish(caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
@@ -123,15 +125,40 @@ export class TestingEndPointHelper {
     }
     catch (error) {
       throw new Error(
-        `An error occurred while trying to create the appeal: ${
+        `An error occurred while telling civil-service the claim fee was paid: ${
           error instanceof Error ? error.message : error
         }`
       );
     };
   }
 
-  // Tells civil-service the hearing fee has been paid, as the payment service would. On preview and demo the payment
-  // service cannot reach civil-service, so the callback is sent from the test instead.
+  // Waits up to waitSeconds for civil-service to record a fee as paid, which it does when the payment service tells
+  // it about the payment. paymentDetailsField is where the case keeps that fee's payment, claimIssuedPaymentDetails
+  // for the claim fee or hearingFeePaymentDetails for the hearing fee. Returns whether it was recorded.
+  async waitForFeePaid(caseId: string, paymentDetailsField: string, waitSeconds: number): Promise<boolean> {
+    await this.getTokens(systemupdate);
+    const caseUrl = `${this.testingSupportUrl}/case/${caseId}`;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      await expect.poll(async () => {
+        const response = await apiRequestContext.get(caseUrl, { headers: this.getHeaders() });
+        const caseData = await response.json();
+        return caseData[paymentDetailsField]?.status;
+      }, {
+        intervals: [5000],
+        timeout: waitSeconds * 1000,
+      }).toBe('SUCCESS');
+      console.log(`${paymentDetailsField} for case ${caseId} is recorded as paid`);
+      return true;
+    } catch {
+      return false;
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Tells civil-service the hearing fee has been paid, as the payment service would. Used where the payment service
+  // cannot reach civil-service.
   async serviceRequestUpdateHearingFee(caseId: string) {
     await this.getTokens(systemupdate);
     const apiRequestContext: APIRequestContext = await request.newContext();
@@ -172,6 +199,51 @@ export class TestingEndPointHelper {
     } finally {
       await apiRequestContext.dispose();
     }
+  }
+
+  // Creates the trial bundle, which a civil-service scheduler normally does about 3 weeks before the hearing
+  // (event CREATE_BUNDLE). The bundle is stitched together afterwards, see waitForBundleStitched.
+  async triggerTrialBundle(caseId: string) {
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/${caseId}/trigger-trial-bundle`);
+      const result = await response.text();
+      expect(response.ok() && result.includes('success'), `Triggering the trial bundle returned ${response.status()}: ${result}`).toBeTruthy();
+      console.log(`Trial bundle triggered for case ${caseId}`);
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Waits for the case's newest bundle to be stitched into one document. The document service does this in the
+  // background and then tells CCD (event asyncStitchingComplete), which sets the bundle's stitchStatus to DONE.
+  // Returns the bundle's title.
+  async waitForBundleStitched(caseId: string): Promise<string> {
+    await this.getTokens(systemupdate);
+    const caseUrl = `${this.testingSupportUrl}/case/${caseId}`;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    let title = '';
+    try {
+      await expect.poll(async () => {
+        const response = await apiRequestContext.get(caseUrl, { headers: this.getHeaders() });
+        const caseData = await response.json();
+        const bundles = caseData.caseBundles ?? [];
+        if (bundles.length === 0) {
+          return 'NO BUNDLE';
+        }
+        const newest = bundles[bundles.length - 1].value;
+        title = newest.title;
+        console.log(`Bundle "${title}" stitch status: ${newest.stitchStatus}`);
+        return newest.stitchStatus;
+      }, {
+        intervals: [5000],
+        timeout: apiRetries.timeout,
+        message: `The trial bundle for case ${caseId} was not stitched`,
+      }).toBe('DONE');
+    } finally {
+      await apiRequestContext.dispose();
+    }
+    return title;
   }
 
   async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes) {
