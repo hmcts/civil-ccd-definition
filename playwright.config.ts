@@ -80,6 +80,18 @@ export default defineConfig({
       dependencies: ["authentication"],
       testDir: './dr-playwright/e2e/journeys'
     },
+    // The pipeline's unspecified journeys, run with DR_SCENARIOS=Yes. Each project runs the scenarios with its tag (see
+    // dr-playwright/scenarios/unspecifiedScenarios.ts), headless in the bundled Chromium.
+    ...['pr', 'master', 'nightly'].map((pipeline) => ({
+      name: `dr-unspec-${pipeline}`,
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1929, height: 959 },
+      },
+      dependencies: ['authentication'],
+      testDir: './dr-playwright/e2e/journeys',
+      grep: new RegExp(`@dr-unspec-${pipeline}\\b`),
+    })),
     {
       name: 'data-setup',
       testMatch: '**playwright-e2e/tests/bootstrap/data/**.setup.ts',
