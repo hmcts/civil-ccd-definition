@@ -1,0 +1,6 @@
+enum InterestClaimUntilOption {
+  UNTIL_SETTLED_OR_JUDGEMENT_MADE = 'UNTIL_SETTLED_OR_JUDGEMENT_MADE',
+  UNTIL_CLAIM_SUBMIT_DATE = 'UNTIL_CLAIM_SUBMIT_DATE',
+}
+
+export default InterestClaimUntilOption;
