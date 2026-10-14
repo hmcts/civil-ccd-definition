@@ -108,7 +108,7 @@ export class RespondToClaim {
 
     // Response document
     if (isResponseDocumentRequired) {
-      await this.pageHelper.uploadFile(this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`), './dr-playwright/documents/TEST_DOCUMENT_3.pdf');
+      await this.pageHelper.uploadFile(this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`), './playwright-tests/documents/TEST_DOCUMENT_3.pdf');
       await this.pageHelper.continueToNextPage();
     }
 

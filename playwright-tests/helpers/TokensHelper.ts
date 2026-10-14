@@ -14,7 +14,7 @@ import path from 'path';
 
 // IDAM access tokens are saved to a file so they are reused across test runs (and worker restarts)
 // until they are close to expiring, instead of fetching a new one from IDAM on every run
-const tokenCacheFile = './dr-playwright/e2e/.auth/api-tokens.json';
+const tokenCacheFile = './playwright-tests/e2e/.auth/api-tokens.json';
 const tokenValidityBufferSeconds = 60 * 60;
 
 type TokenCache = Record<string, string>;

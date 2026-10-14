@@ -1,14 +1,14 @@
 // The unspecified journeys the pipeline runs. Each scenario is a set of the journey's env vars, run as its own group
 // in UnspecifiedSS.test.ts and tagged with its name (@UNSPEC_1v1_FAST etc.), @unspecified and the pipeline tags below.
-// The dr-unspec-* projects in playwright.config.ts each run the scenarios with one pipeline tag:
-//  - @dr-unspec-pr: run on every PR
-//  - @dr-unspec-master: run on master
-//  - @dr-unspec-nightly: run every night
+// The unspec-* projects in playwright.config.ts each run the scenarios with one pipeline tag:
+//  - @unspec-pr: run on every PR
+//  - @unspec-master: run on master
+//  - @unspec-nightly: run every night
 //
-// The list is only used when DR_SCENARIOS=Yes. Without it a single journey is run from the env vars on the command
+// The list is only used when SCENARIOS=Yes. Without it a single journey is run from the env vars on the command
 // line, as the test:UNSPEC_* scripts in package.json do, and with no env vars at all that is the default 1v1 claim.
 // One scenario from the list can be run by its tag:
-//   DR_SCENARIOS=Yes npx playwright test --headed --project chromium --grep @UNSPEC_1v1_FAST
+//   SCENARIOS=Yes npx playwright test --headed --project chromium --grep @UNSPEC_1v1_FAST
 
 export interface Scenario {
   name: string;
@@ -16,9 +16,9 @@ export interface Scenario {
   env: Record<string, string | undefined>;
 }
 
-const PR = '@dr-unspec-pr';
-const MASTER = '@dr-unspec-master';
-const NIGHTLY = '@dr-unspec-nightly';
+const PR = '@unspec-pr';
+const MASTER = '@unspec-master';
+const NIGHTLY = '@unspec-nightly';
 
 const nihlFast = { TYPE_OF_CLAIM: 'PERSONAL_INJURY', SUB_TYPE: 'NOISE_INDUCED_HEARING_LOSS' };
 const roadAccident = { TYPE_OF_CLAIM: 'PERSONAL_INJURY', SUB_TYPE: 'ROAD_ACCIDENT' };
@@ -136,11 +136,11 @@ const scenarios: Scenario[] = [
   },
 ];
 
-// The scenarios to run. With DR_SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own
+// The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own
 // (so ENVIRONMENT, STOP_AT_STATE etc. still apply). Otherwise it is one journey from the run's env vars, which is the
 // default 1v1 claim when none are set.
 export function selectedScenarios(): Scenario[] {
-  if (process.env.DR_SCENARIOS === 'Yes') {
+  if (process.env.SCENARIOS === 'Yes') {
     return scenarios.map((scenario) => ({
       name: scenario.name,
       tags: [`@${scenario.name}`, '@unspecified', ...scenario.tags],

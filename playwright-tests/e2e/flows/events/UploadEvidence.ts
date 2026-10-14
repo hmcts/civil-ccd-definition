@@ -40,7 +40,7 @@ export class UploadEvidence {
     await this.buttonHelper.addNewButton.first().click();
     await this.pageHelper.uploadFile(
       this.page.locator('input[type=file][id^="documentDisclosureList"][id$="_0_documentUpload"]').first(),
-      './dr-playwright/documents/TEST_DOCUMENT_1.pdf',
+      './playwright-tests/documents/TEST_DOCUMENT_1.pdf',
     );
     await this.pageHelper.continueToNextPage();
 

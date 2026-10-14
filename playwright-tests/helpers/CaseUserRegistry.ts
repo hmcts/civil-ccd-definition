@@ -25,12 +25,12 @@ export type CaseUserRecord = {
 
 type StoredRecord = CaseUserRecord & { file: string };
 
-const registryDir = path.resolve('./dr-playwright/e2e/.cases');
+const registryDir = path.resolve('./playwright-tests/e2e/.cases');
 const caseIdPattern = /^\d{16}$/;
 
 // Set once in playwright.config.ts by the runner process and inherited by every worker, so all workers
 // in one run share a folder and the teardown never touches cases belonging to another run still in progress.
-const runId = process.env.DR_PLAYWRIGHT_RUN_ID ?? `${process.ppid}-adhoc`;
+const runId = process.env.PLAYWRIGHT_RUN_ID ?? `${process.ppid}-adhoc`;
 const runDir = path.join(registryDir, runId);
 
 // Records which users are assigned to which cases so the teardown can unassign them.

@@ -47,7 +47,7 @@ export class MakeFinalOrder {
     await this.page.locator('#freeFormRecordedTextArea').fill('The court records that the trial took place.');
     await this.page.locator('#freeFormOrderedTextArea').fill('The court orders that judgment is entered for the claimant.');
     await this.page.locator('#orderOnCourtsList-ORDER_ON_COURT_INITIATIVE').check();
-    await this.page.locator('#freeFormHearingNotes').fill('Final order made by dr-playwright');
+    await this.page.locator('#freeFormHearingNotes').fill('Final order made by playwright-tests');
   }
 
   // An assisted order made after a hearing on a single date (civil-service fills in today's date), with costs in the

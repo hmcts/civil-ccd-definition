@@ -1,11 +1,13 @@
+// Must stay first: loads the playwright-tests environment (ENV) before anything below reads process.env
+import './playwright-tests/env.ts';
 import { defineConfig, devices } from '@playwright/test';
 import config from './playwright-e2e/config/config';
-import {envUrl} from './dr-playwright/civilConfig.ts';
+import {envUrl} from './playwright-tests/civilConfig.ts';
 import os from 'node:os';
 
-// Set once by the runner process and inherited by every worker, so dr-playwright's case unassignment
-// teardown only processes cases recorded by this run (see dr-playwright/helpers/CaseUserRegistry.ts)
-process.env.DR_PLAYWRIGHT_RUN_ID ??= `${process.pid}-${Date.now()}`;
+// Set once by the runner process and inherited by every worker, so the playwright-tests case unassignment
+// teardown only processes cases recorded by this run (see playwright-tests/helpers/CaseUserRegistry.ts)
+process.env.PLAYWRIGHT_RUN_ID ??= `${process.pid}-${Date.now()}`;
 
 export default defineConfig({
   // testDir: './playwright-e2e/tests',
@@ -54,7 +56,7 @@ export default defineConfig({
   projects: [
     {
       name: "authentication",
-      testDir: "./dr-playwright/setup",
+      testDir: "./playwright-tests/setup",
       use: {
         baseURL: envUrl,
         ...devices['Desktop Chrome'],
@@ -64,7 +66,7 @@ export default defineConfig({
     },
     {
       name: 'case-unassignment',
-      testDir: './dr-playwright/setup',
+      testDir: './playwright-tests/setup',
       testMatch: /caseUnassignment\.teardown\.ts/,
     },
     {
@@ -78,19 +80,19 @@ export default defineConfig({
         },
       },
       dependencies: ["authentication"],
-      testDir: './dr-playwright/e2e/journeys'
+      testDir: './playwright-tests/e2e/journeys'
     },
-    // The pipeline's unspecified journeys, run with DR_SCENARIOS=Yes. Each project runs the scenarios with its tag (see
-    // dr-playwright/scenarios/unspecifiedScenarios.ts), headless in the bundled Chromium.
+    // The pipeline's unspecified journeys, run with SCENARIOS=Yes. Each project runs the scenarios with its tag (see
+    // playwright-tests/scenarios/unspecifiedScenarios.ts), headless in the bundled Chromium.
     ...['pr', 'master', 'nightly'].map((pipeline) => ({
-      name: `dr-unspec-${pipeline}`,
+      name: `unspec-${pipeline}`,
       use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1929, height: 959 },
       },
       dependencies: ['authentication'],
-      testDir: './dr-playwright/e2e/journeys',
-      grep: new RegExp(`@dr-unspec-${pipeline}\\b`),
+      testDir: './playwright-tests/e2e/journeys',
+      grep: new RegExp(`@unspec-${pipeline}\\b`),
     })),
     {
       name: 'data-setup',

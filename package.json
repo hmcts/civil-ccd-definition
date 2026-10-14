@@ -141,9 +141,9 @@
     "test:SPEC_1v2DS_FAST": "yarn playwright install && CLAIM_TYPE=1v2DS CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
     "test:SPEC_1v1_FAST_SAME_RATE_INTEREST": "yarn playwright install && CLAIM_TYPE=1v1 CLAIMANT_TYPE=COMPANY DEFENDANT_TYPE=INDIVIDUAL INTEREST_REQUIRED=Yes INTEREST_TYPE=SAME_RATE_INTEREST INTEREST_RATE=8 npx playwright test --headed --project chromium --grep @specified",
     "test:SPEC_1v1_FAST_DIFFERENT_RATE_INTEREST": "yarn playwright install && CLAIM_TYPE=1v1 CLAIMANT_TYPE=COMPANY DEFENDANT_TYPE=INDIVIDUAL INTEREST_REQUIRED=Yes INTEREST_TYPE=DIFFERENT_RATE_INTEREST INTEREST_RATE=25 npx playwright test --headed --project chromium --grep @specified",
-    "test:dr-unspec-pr:ci": "DR_SCENARIOS=Yes npx playwright test --project dr-unspec-pr",
-    "test:dr-unspec-master:ci": "DR_SCENARIOS=Yes npx playwright test --project dr-unspec-master",
-    "test:dr-unspec-nightly:ci": "DR_SCENARIOS=Yes npx playwright test --project dr-unspec-nightly",
+    "test:unspec-pr:ci": "SCENARIOS=Yes npx playwright test --project unspec-pr",
+    "test:unspec-master:ci": "SCENARIOS=Yes npx playwright test --project unspec-master",
+    "test:unspec-nightly:ci": "SCENARIOS=Yes npx playwright test --project unspec-nightly",
     "prepare": "husky"
   },
   "license": "MIT",

@@ -30,7 +30,7 @@ export class ConfirmTrialArrangements {
       await readyForTrial.check();
       await this.page.locator('input[type=radio][id$="RevisedHearingRequirements_revisedHearingRequirements_No"]:visible').first().check();
       await this.page.locator('textarea[id$="HearingOtherComments_hearingOtherComments"]:visible').first()
-        .fill('Trial arrangements confirmed by dr-playwright');
+        .fill('Trial arrangements confirmed by playwright-tests');
       await this.pageHelper.continueToNextPage();
 
       // Either another party's page (1v2 same solicitor) or check your answers

@@ -221,7 +221,7 @@ export class CreateUnspecifiedCase {
       await this.buttonHelper.addNewButton.click();
       await this.pageHelper.uploadFile(
         this.page.locator(`#applicant${claimantNumber}LitigationFriend_certificateOfSuitability_0_document`),
-        './dr-playwright/documents/TEST_DOCUMENT_1.pdf',
+        './playwright-tests/documents/TEST_DOCUMENT_1.pdf',
       );
     }
 

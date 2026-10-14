@@ -167,7 +167,7 @@ export class DirectionsQuestionnaire {
     await this.pageHelper.continueUntilVisible(draftDirections);
 
     // Draft directions
-    await this.pageHelper.uploadFile(draftDirections, './dr-playwright/documents/TEST_DOCUMENT_4.pdf');
+    await this.pageHelper.uploadFile(draftDirections, './playwright-tests/documents/TEST_DOCUMENT_4.pdf');
     await this.pageHelper.continueToNextPage();
 
     // Court location and remote hearing (defendant's response only)

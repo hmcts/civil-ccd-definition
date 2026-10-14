@@ -43,7 +43,7 @@ export class CreateHearingNotice {
     await this.pageHelper.continueToNextPage();
 
     // Further information
-    await this.page.locator('#information').fill('Hearing notice created by dr-playwright');
+    await this.page.locator('#information').fill('Hearing notice created by playwright-tests');
     await this.pageHelper.continueToNextPage();
 
     // Check your answers and submit

@@ -73,7 +73,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe.configure({ mode: 'serial' });
 test.describe('test1', { tag: '@specified' }, () => {
-  test.use({ storageState: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' });
+  test.use({ storageState: './playwright-tests/e2e/.auth/ClaimantSolicitorUser.json' });
   test('Claimant Solicitor creates ' + claimType + ' claim ', async ({ page }) => {
     let createCase: CreateSpecifiedCase = new CreateSpecifiedCase(page);
     await createCasePage.createCase(caseType);

@@ -279,7 +279,7 @@ export class TestingEndPointHelper {
           ServiceAuthorization: s2sToken,
         },
         data: {
-          event: { id: eventId, summary: 'Hearing date has passed', description: 'Run by dr-playwright' },
+          event: { id: eventId, summary: 'Hearing date has passed', description: 'Run by playwright-tests' },
           event_token: eventToken,
           ignore_warning: false,
           data: {},

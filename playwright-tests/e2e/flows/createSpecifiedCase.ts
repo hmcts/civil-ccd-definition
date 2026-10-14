@@ -348,7 +348,7 @@ export class CreateSpecifiedCase {
     await this.page.locator('#detailsOfClaim').fill('Test description of claim');
     await this.page
       .locator('#specClaimDetailsDocumentFiles')
-      .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_1.pdf');
+      .setInputFiles('./playwright-tests/documents/TEST_DOCUMENT_1.pdf');
     await this.page.waitForSelector('.error-message', { state: 'hidden' });
     await this.buttonHelper.continueButton.click();
   }
@@ -367,7 +367,7 @@ export class CreateSpecifiedCase {
     } else {
       await this.page
         .locator('#specClaimTemplateDocumentFiles')
-        .setInputFiles('./dr-playwright/documents/TEST_DOCUMENT_2.pdf');
+        .setInputFiles('./playwright-tests/documents/TEST_DOCUMENT_2.pdf');
       await this.page.waitForSelector('.error-message', { state: 'hidden' });
     }
     await this.buttonHelper.continueButton.click();

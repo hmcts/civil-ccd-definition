@@ -70,7 +70,7 @@ playwright-report/
 /playwright-e2e/fixtures/.user-cookies/
 /playwright-e2e/fixtures/.user-assigned-cases/
 /playwright-e2e/fixtures/data/bankHolidays.json
-/dr-playwright/e2e/.auth/*
+/playwright-tests/e2e/.auth/*
 
 #AI
 AGENTS.md
@@ -79,6 +79,8 @@ AGENTS.md
 .playwright-mcp/
 allure-functional-results/
 bin/shared/
-dr-playwright/debug-*.png
-dr-playwright/e2e/.auth/
-dr-playwright/e2e/.cases/
+playwright-tests/debug-*.png
+playwright-tests/e2e/.auth/
+playwright-tests/e2e/.cases/
+# playwright-tests environment files hold secrets
+playwright-tests/env/.env.*

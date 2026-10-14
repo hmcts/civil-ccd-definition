@@ -74,13 +74,13 @@ export class RespondToDefence {
       // 1v2 different solicitors claim, or against only them in a 1v2 same solicitor claim
       // (civil-service sets claimantResponseDocumentToDefendant2Flag).
       if (!isOneVsTwo || proceed1 === YesNo.YES) {
-        await this.pageHelper.uploadFile(this.page.locator('#applicant1DefenceResponseDocument_file'), './dr-playwright/documents/TEST_DOCUMENT_3.pdf');
+        await this.pageHelper.uploadFile(this.page.locator('#applicant1DefenceResponseDocument_file'), './playwright-tests/documents/TEST_DOCUMENT_3.pdf');
       }
       const isDefendant2DocumentRequired =
         proceed2 === YesNo.YES
         && (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL || (claimType === claimTypes.ONE_VS_TWO_SAME_SOL && proceed1 === YesNo.NO));
       if (isDefendant2DocumentRequired) {
-        await this.pageHelper.uploadFile(this.page.locator('#claimantDefenceResDocToDefendant2_file'), './dr-playwright/documents/TEST_DOCUMENT_3.pdf');
+        await this.pageHelper.uploadFile(this.page.locator('#claimantDefenceResDocToDefendant2_file'), './playwright-tests/documents/TEST_DOCUMENT_3.pdf');
       }
       await this.pageHelper.continueToNextPage();
 

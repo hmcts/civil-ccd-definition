@@ -71,12 +71,12 @@ export class NotifyClaimDetails {
       if (documentType === 'particularsOfClaim') {
         await this.pageHelper.uploadFile(
           this.page.locator(`#servedDocumentFiles_${documentType}Document_value`),
-          './dr-playwright/documents/TEST_DOCUMENT_1.pdf',
+          './playwright-tests/documents/TEST_DOCUMENT_1.pdf',
         );
       } else {
         await this.pageHelper.uploadFile(
           this.page.locator(`#servedDocumentFiles_${documentType}_0_document`),
-          './dr-playwright/documents/TEST_DOCUMENT_2.pdf',
+          './playwright-tests/documents/TEST_DOCUMENT_2.pdf',
         );
       }
     }

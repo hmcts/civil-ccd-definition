@@ -13,11 +13,11 @@ import { SessionEndedError, setSessionUser } from './SessionEndedError.ts';
 
 // Each solicitor's saved session file (used by test.use storageState) and who to sign in as when it ends
 export const sessionUsers = {
-  claimantSolicitor: { credentials: claimantSolicitorCredentials, authFile: './dr-playwright/e2e/.auth/ClaimantSolicitorUser.json' },
-  respondent1Solicitor: { credentials: respondent1SolicitorCredentials, authFile: './dr-playwright/e2e/.auth/Respondent1SolicitorUser.json' },
-  respondent2Solicitor: { credentials: respondent2SolicitorCredentials, authFile: './dr-playwright/e2e/.auth/Respondent2SolicitorUser.json' },
-  judge: { credentials: judgeCredentials, authFile: './dr-playwright/e2e/.auth/JudgeUser.json' },
-  hearingCentreAdmin: { credentials: hearingCentreAdminCredentials, authFile: './dr-playwright/e2e/.auth/HearingCentreAdminUser.json' },
+  claimantSolicitor: { credentials: claimantSolicitorCredentials, authFile: './playwright-tests/e2e/.auth/ClaimantSolicitorUser.json' },
+  respondent1Solicitor: { credentials: respondent1SolicitorCredentials, authFile: './playwright-tests/e2e/.auth/Respondent1SolicitorUser.json' },
+  respondent2Solicitor: { credentials: respondent2SolicitorCredentials, authFile: './playwright-tests/e2e/.auth/Respondent2SolicitorUser.json' },
+  judge: { credentials: judgeCredentials, authFile: './playwright-tests/e2e/.auth/JudgeUser.json' },
+  hearingCentreAdmin: { credentials: hearingCentreAdminCredentials, authFile: './playwright-tests/e2e/.auth/HearingCentreAdminUser.json' },
 };
 
 // Shown on every XUI page once a user is signed in. Solicitors land on the case list and judges and court staff on their work list,

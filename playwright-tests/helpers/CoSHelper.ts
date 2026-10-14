@@ -64,7 +64,7 @@ export class CoSHelper {
     if (event === 'NotifyClaimDetails') {
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosServedDocumentFiles`).fill(`${this.whatDocumentsServed} ${LiPDefendantNumber}`);
       await this.buttonHelper.addNewButton.click();
-      await this.pageHelper.uploadFile(this.page.locator(`#cos${event}${LiPDefendantNumber}_cosEvidenceDocument_value`), './dr-playwright/documents/TEST_DOCUMENT_1.pdf');
+      await this.pageHelper.uploadFile(this.page.locator(`#cos${event}${LiPDefendantNumber}_cosEvidenceDocument_value`), './playwright-tests/documents/TEST_DOCUMENT_1.pdf');
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosServedDocumentFiles`).fill(`${this.whatDocumentsServed} ${LiPDefendantNumber}`);
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosRecipient`).fill(`${this.whoClaimWasServedTo} ${LiPDefendantNumber}`);
       await this.page.locator(`#cos${event}${LiPDefendantNumber}_cosRecipientServeType`).selectOption(await EnumsHelper.randomEnumValue(CoSDelivery));
