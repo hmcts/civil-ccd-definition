@@ -79,6 +79,18 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PARENT_CLAIM_DISCONTINUED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PARENT_CLAIM_SETTLED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "TRIGGER_LOCATION_UPDATE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

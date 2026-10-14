@@ -75,17 +75,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "REFER_TO_JUDGE",
-    "CaseFieldID": "featureToggleWA",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 18,
-    "DisplayContext": "READONLY",
-    "PageID": "RTJ",
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
