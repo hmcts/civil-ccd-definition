@@ -28,6 +28,8 @@ import { UploadEvidence } from '../flows/events/UploadEvidence.ts';
 import { CreateHearingNotice } from '../flows/events/CreateHearingNotice.ts';
 import { WaTaskHelper } from '../../helpers/WaTaskHelper.ts';
 import { ConfirmTrialArrangements } from '../flows/events/ConfirmTrialArrangements.ts';
+import { MakeFinalOrder } from '../flows/events/MakeFinalOrder.ts';
+import FinalOrder, { finalOrdersForTrack } from '../../enums/finalOrders.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../enums/languageSpokenAndDocuments.ts';
@@ -225,6 +227,9 @@ const preActionProtocol: YesNo = ['Yes'].includes(process.env.ONE_MONTH_STAY)
   : yesNo.NO;
 
 let track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? (process.env.TRACK as claimTrack) : claimTrack.FAST;
+// The judge's final order in test16 (FINAL_ORDER). If it is not set, the first order the track offers is made: a free
+// form order on the small and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
+const finalOrder: FinalOrder = (process.env.FINAL_ORDER as FinalOrder) ?? finalOrdersForTrack[track][0];
 const noOfExperts: string = process.env.EXPERTS ?? '0';
 const noOfWitnesses: string = process.env.WITNESSES ?? '0';
 const language: languageSpokenAndDocuments = ['WELSH', 'ENGLISH', 'BOTH'].includes(process.env.LANGUAGE) ? (process.env.LANGUAGE as languageSpokenAndDocuments) : languageSpokenAndDocuments.ENGLISH;
@@ -280,6 +285,16 @@ test.beforeAll(async ({}) => {
     Number(noOfWitnesses),
     `Invalid WITNESSES value: ${noOfWitnesses}. It must be >= 0.`,
   ).toBeGreaterThanOrEqual(0);
+
+  expect(
+    Object.values(FinalOrder),
+    `Invalid FINAL_ORDER value: ${finalOrder}. It must be one of ${Object.values(FinalOrder).join(', ')}.`,
+  ).toContain(finalOrder);
+
+  expect(
+    finalOrdersForTrack[track],
+    `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`,
+  ).toContain(finalOrder);
 });
 
 test.beforeEach(async ({ page, storageState }) => {
@@ -785,6 +800,43 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         await expect(page.getByText(bundleTitle).first()).toBeVisible();
       });
       await testingEndpointHelper.assertCaseState(caseId, caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+    });
+  });
+
+  // Civil has no record of the hearing itself taking place. Once the hearing date has passed, a civil-service scheduler
+  // runs MOVE_TO_DECISION_OUTCOME, which moves the claim to DECISION_OUTCOME to wait for the judge's decision. The
+  // hearing listed in test11 is weeks away, so the test runs that event itself.
+  test.describe('test15', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track');
+    test.use({ storageState: sessionUsers.judge.authFile });
+    test('Hearing date passes and the claim moves to decision outcome.', async () => {
+      await testingEndpointHelper.moveToDecisionOutcome(caseId);
+      await testingEndpointHelper.assertCaseState(caseId, caseStates.DECISION_OUTCOME);
+    });
+  });
+
+  // The judge's final order after the hearing, chosen with FINAL_ORDER. A free form order, or an assisted order with
+  // no further hearing, does not change the claim's state. The order's notifications are sent by the
+  // GENERATE_ORDER_NOTIFICATION business process.
+  test.describe('test16', { tag: '@unspecified' }, () => {
+    test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
+    test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
+    test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
+    test.skip(stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline');
+    test.skip(track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track');
+    test.use({ storageState: sessionUsers.judge.authFile });
+    test(`Judge makes a final order (${finalOrder}).`, async ({ page, storageState }) => {
+      const ordersBefore = await testingEndpointHelper.countFinalOrders(caseId);
+      await runEvent(page, storageState, async () => {
+        await new MakeFinalOrder(page).submit(finalOrder);
+      });
+      await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'GENERATE_ORDER_NOTIFICATION');
+      expect(await testingEndpointHelper.countFinalOrders(caseId), 'The final order was not added to the case').toBe(ordersBefore + 1);
+      await testingEndpointHelper.assertCaseState(caseId, caseStates.DECISION_OUTCOME);
     });
   });
 

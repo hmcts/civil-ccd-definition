@@ -246,6 +246,52 @@ export class TestingEndPointHelper {
     return title;
   }
 
+  // How many final orders the judge has issued on the case (finalOrderDocumentCollection)
+  async countFinalOrders(caseId: string): Promise<number> {
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/case/${caseId}`, { headers: this.getHeaders() });
+      expect(response.ok(), `Reading case ${caseId} returned ${response.status()}`).toBeTruthy();
+      const caseData = await response.json();
+      return (caseData.finalOrderDocumentCollection ?? []).length;
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Runs MOVE_TO_DECISION_OUTCOME as the civil system update user, which is what civil-service's decision outcome
+  // scheduler does once a case's hearing date has passed. It moves the case from PREPARE_FOR_HEARING_CONDUCT_HEARING
+  // to DECISION_OUTCOME, ready for the judge's final order.
+  async moveToDecisionOutcome(caseId: string) {
+    const eventId = 'MOVE_TO_DECISION_OUTCOME';
+    const systemUser = { username: civilSystemUpdate.email, password: civilSystemUpdate.password };
+    const { accessToken, s2sToken, uid } = await this.tokensHelper.getNonEventTokens(systemUser);
+    const eventToken = await this.tokensHelper.getEventToken(eventId, caseId, uid, accessToken, s2sToken);
+    const eventUrl = `${ccdDataStoreApiBaseUrl}/caseworkers/${uid}/jurisdictions/${createCase.jurisdictionCode}`
+      + `/case-types/${createCase.caseTypeCode}/cases/${caseId}/events`;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.post(eventUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+          ServiceAuthorization: s2sToken,
+        },
+        data: {
+          event: { id: eventId, summary: 'Hearing date has passed', description: 'Run by dr-playwright' },
+          event_token: eventToken,
+          ignore_warning: false,
+          data: {},
+        },
+      });
+      expect(response.ok(), `${eventId} returned ${response.status()}: ${await response.text()}`).toBeTruthy();
+      console.log(`${eventId} run for case ${caseId}`);
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes) {
     const assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/`;
     const apiRequestContext: APIRequestContext = await request.newContext();
