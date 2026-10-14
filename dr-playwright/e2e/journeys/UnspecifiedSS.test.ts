@@ -228,11 +228,11 @@ const preActionProtocol: YesNo = ['Yes'].includes(process.env.ONE_MONTH_STAY)
   : yesNo.NO;
 
 let track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(process.env.TRACK) ? (process.env.TRACK as claimTrack) : claimTrack.FAST;
-// The work allocation task the judge needs for the Standard Direction Order in test9
-const sdoTaskType: string =
-  typeOfClaim == unspecClaimTypes.PERSONAL_INJURY && typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS
-    ? 'NIHLFastTrackDirections'
-    : 'FastTrackDirections';
+// Noise induced hearing loss claims get their own Standard Direction Order directions in test9, and their own work
+// allocation task for it
+const noiseInducedHearingLoss: boolean =
+  typeOfClaim == unspecClaimTypes.PERSONAL_INJURY && typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS;
+const sdoTaskType: string = noiseInducedHearingLoss ? 'NIHLFastTrackDirections' : 'FastTrackDirections';
 // The judge's final order in test16 (FINAL_ORDER). If it is not set, the first order the track offers is made: a free
 // form order on the small and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
 const finalOrder: FinalOrder = (process.env.FINAL_ORDER as FinalOrder) ?? finalOrdersForTrack[track][0];
@@ -653,7 +653,7 @@ test.describe('test1', { tag: '@unspecified' }, () => {
         // Where work allocation is switched on, the judge needs the directions task to make the order. Noise induced
         // hearing loss claims get their own task.
         await new WaTaskHelper(page).assignTaskForEvent(caseId, 'CREATE_SDO', sdoTaskType);
-        await new CreateSdo(page).submit(caseId, track);
+        await new CreateSdo(page).submit(caseId, track, noiseInducedHearingLoss);
       });
       await testingEndpointHelper.assertCaseState(caseId, caseStates.CASE_PROGRESSION);
     });
