@@ -2,18 +2,71 @@ const config = require('../config.js');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
 const NodeCache = require('node-cache');
-//Idam access token expires for every 8 hrs
+const {URL, URLSearchParams} = require('url');
+
+// IDAM access token expires every 8 hours
 const idamTokenCache = new NodeCache({ stdTTL: 25200, checkperiod: 1800 });
 
-const loginEndpoint = config.idamStub.enabled ? 'oauth2/token' : 'loginUser';
-const idamUrl = config.idamStub.enabled ? config.idamStub.url : config.url.idamApi;
 const idamTestSupportUrl = config.idamStub.enabled ? config.idamStub.url : config.url.idamTestSupportApi;
 const adminUser = config.idamStub.enabled ? config.idamStub.url : config.ctscAdminUser;
+const idamClientId = 'ccd_gateway';
+
+function getIdamTokenUrl() {
+  if (config.idamStub.enabled) {
+    return `${config.idamStub.url}/oauth2/token`;
+  }
+
+  const idamApiUrl = config.url.idamApi.replace(/\/+$/, '');
+
+  return idamApiUrl.endsWith('/o/token')
+    ? idamApiUrl
+    : `${idamApiUrl}/o/token`;
+}
+
+function getIdamUserInfoUrl() {
+  if (config.idamStub.enabled) {
+    return `${config.idamStub.url}/o/userinfo`;
+  }
+
+  const userInfoUrl = new URL(getIdamTokenUrl());
+  userInfoUrl.pathname = '/o/userinfo';
+  userInfoUrl.search = '';
+
+  return userInfoUrl.toString();
+}
 
 async function getAccessTokenFromIdam(user) {
+  if (config.idamStub.enabled) {
     return restHelper.retriedRequest(
-            `${idamUrl}/${loginEndpoint}?username=${encodeURIComponent(user.email)}&password=${user.password}`, { 'Content-Type': 'application/x-www-form-urlencoded' })
-        .then(response => response.json()).then(data => data.access_token);
+      `${getIdamTokenUrl()}?username=${encodeURIComponent(user.email)}&password=${encodeURIComponent(user.password)}`,
+      {'Content-Type': 'application/x-www-form-urlencoded'}
+    )
+      .then(response => response.json())
+      .then(data => data.access_token);
+  }
+
+  const clientSecret = process.env.CCD_API_GATEWAY_IDAM_CLIENT_SECRET;
+
+  if (!clientSecret) {
+    throw new Error('CCD_API_GATEWAY_IDAM_CLIENT_SECRET is not configured');
+  }
+
+  const formBody = new URLSearchParams({
+    grant_type: 'password',
+    username: user.email,
+    password: user.password,
+    client_id: idamClientId,
+    client_secret: clientSecret,
+    scope: 'openid profile roles'
+  }).toString();
+
+  return restHelper.retriedFormRequest(
+    getIdamTokenUrl(),
+    {'Content-Type': 'application/x-www-form-urlencoded'},
+    formBody
+  )
+    .then(response => response.json())
+    .then(data => data.access_token);
 }
 
 async function accessToken(user) {
@@ -34,20 +87,25 @@ async function accessToken(user) {
 }
 
 async function userId(authToken) {
-    return retry(async () => {
-        const response = await restHelper.request(
-            `${idamUrl}/o/userinfo`, {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': `Bearer ${authToken}`
-            });
+  const method = config.idamStub.enabled ? 'POST' : 'GET';
 
-        if (response.status !== 200) {
-            throw new Error(`Expected status: 200, actual status: ${response.status}, `
-                + `message: ${response.statusText}, url: ${response.url}`);
-        }
+  return retry(async () => {
+    const response = await restHelper.request(
+      getIdamUserInfoUrl(),
+      {
+        'Authorization': `Bearer ${authToken}`
+      },
+      undefined,
+      method
+    );
 
-        return response.json().then(data => data.uid);
-    });
+    if (response.status !== 200) {
+      throw new Error(`Expected status: 200, actual status: ${response.status}, `
+        + `message: ${response.statusText}, url: ${response.url}`);
+    }
+
+    return response.json().then(data => data.uid);
+  });
 }
 
 async function createAccount(email, password) {
