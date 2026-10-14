@@ -99,8 +99,7 @@ properties([
   ])
 ])
 
-@Library("Infrastructure")
-
+@Library("Infrastructure@2.12.2")
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
