@@ -4,6 +4,10 @@ import { continueRetries, uploadRetries, xuiLoadRetries } from '../civilConfig.t
 import { SessionEndedError, sessionUserOf } from './SessionEndedError.ts';
 import { TestingEndPointHelper } from './TestingEndPointHelper.ts';
 
+// How long to wait for a document upload to start, and then to finish
+const uploadStartSeconds = 3;
+const uploadFinishSeconds = 120;
+
 // Errors CCD returns when checking an event page that come from a busy environment rather than the page itself, so
 // clicking Continue again can succeed
 const transientCcdErrors = [
@@ -279,9 +283,16 @@ export class PageHelper {
       // these messages from earlier uploads
       const uploadingMessages = this.page.locator('.error-message:visible', { hasText: 'Uploading...' });
       const rateLimitedMessages = this.page.locator('.error-message:visible', { hasText: 'Your request was rate limited' });
+      // CCD enables Cancel upload while a document is being uploaded (it stays on the page, disabled, afterwards).
+      // Continue is held until the upload finishes, so the upload must be finished before moving on, not just started.
+      const cancelUploadButtons = this.page.getByRole('button', { name: 'Cancel upload' }).locator('visible=true').and(this.page.locator(':enabled'));
       for (let attempt = 1; attempt <= maxAttempts; attempt++) {
         await fileInput.setInputFiles([]);
         await fileInput.setInputFiles(filePath);
+        // The upload can take a moment to start, and a quick one may finish before it is seen, so not seeing it is fine
+        await cancelUploadButtons.first().waitFor({ state: 'visible', timeout: uploadStartSeconds * 1000 }).catch(() => {});
+        await expect(cancelUploadButtons, `Upload of ${filePath} did not finish within ${uploadFinishSeconds}s`)
+          .toHaveCount(0, { timeout: uploadFinishSeconds * 1000 });
         await expect(uploadingMessages).toHaveCount(0);
         if ((await rateLimitedMessages.count()) === 0) {
           return;
