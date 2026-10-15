@@ -2,6 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["local>hmcts/.github:renovate-config", "local>hmcts/.github//renovate/automerge-all"],
   "labels": ["dependencies"],
+  "timezone": "Europe/London",
   "automergeSchedule": [
     "after 7am and before 8am every weekday",
     "after 6pm and before 8pm every weekday"
