@@ -33,7 +33,7 @@
     "HintText": "This is the date that you have been instructed it will finish",
     "FieldType": "Date",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "BreathingSpaceLiftInfo",
