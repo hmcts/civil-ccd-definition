@@ -9,6 +9,10 @@ import os from 'node:os';
 // teardown only processes cases recorded by this run (see playwright-tests/helpers/CaseUserRegistry.ts)
 process.env.PLAYWRIGHT_RUN_ID ??= `${process.pid}-${Date.now()}`;
 
+// How many playwright-tests scenarios run at the same time (WORKERS, default 1). It is a limit on our projects only, so
+// the other suites are not affected. Each scenario's journey still runs in order on one worker.
+const playwrightTestsWorkers = Number(process.env.WORKERS ?? 1);
+
 export default defineConfig({
   // testDir: './playwright-e2e/tests',
   // globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
@@ -80,7 +84,8 @@ export default defineConfig({
         },
       },
       dependencies: ["authentication"],
-      testDir: './playwright-tests/e2e/journeys'
+      testDir: './playwright-tests/e2e/journeys',
+      workers: playwrightTestsWorkers,
     },
     // The pipeline's unspecified journeys, run with SCENARIOS=Yes. Each project runs the scenarios with its tag (see
     // playwright-tests/scenarios/unspecifiedScenarios.ts), headless in the bundled Chromium.
@@ -93,6 +98,7 @@ export default defineConfig({
       dependencies: ['authentication'],
       testDir: './playwright-tests/e2e/journeys',
       grep: new RegExp(`@unspec-${pipeline}\\b`),
+      workers: playwrightTestsWorkers,
     })),
     {
       name: 'data-setup',
