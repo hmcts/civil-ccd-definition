@@ -55,18 +55,6 @@
   },
   {
     "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CREATE_APPLICANT_DASHBOARD_NOTIFICATION_FOR_MAKE_DECISION",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
-    "CaseEventID": "CREATE_RESPONDENT_DASHBOARD_NOTIFICATION_FOR_MAKE_DECISION",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "CREATE_APPLICATION_SUBMITTED_DASHBOARD_NOTIFICATION_FOR_RESPONDENT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

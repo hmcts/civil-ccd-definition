@@ -42,18 +42,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "REMOVE_PAYMENT_DASHBOARD_NOTIFICATION",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "REMOVE_CLAIMANT_DJ_DASHBOARD_NOTIFICATION",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "AccessControl": [
       {
