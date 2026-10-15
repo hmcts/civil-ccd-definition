@@ -12,13 +12,26 @@ import { IdamPage } from '../e2e/page-objects/pages/idam.po.ts';
 import { PageHelper } from './PageHelper.ts';
 import { SessionEndedError, setSessionUser } from './SessionEndedError.ts';
 
+// Sessions are saved in a folder per environment, named after its XUI host (e.g. manage-case.aat.platform.hmcts.net, or
+// one per preview PR), so runs against different environments at the same time don't overwrite each other's sessions
+const authDir = `./playwright-tests/e2e/.auth/${envHost()}`;
+
+// The XUI host, or "no-url" when URL is not set, so importing this file never fails
+function envHost(): string {
+  try {
+    return new URL(envUrl).host;
+  } catch {
+    return 'no-url';
+  }
+}
+
 // Each solicitor's saved session file (used by test.use storageState) and who to sign in as when it ends
 export const sessionUsers = {
-  claimantSolicitor: { credentials: claimantSolicitorCredentials, authFile: './playwright-tests/e2e/.auth/ClaimantSolicitorUser.json' },
-  respondent1Solicitor: { credentials: respondent1SolicitorCredentials, authFile: './playwright-tests/e2e/.auth/Respondent1SolicitorUser.json' },
-  respondent2Solicitor: { credentials: respondent2SolicitorCredentials, authFile: './playwright-tests/e2e/.auth/Respondent2SolicitorUser.json' },
-  judge: { credentials: judgeCredentials, authFile: './playwright-tests/e2e/.auth/JudgeUser.json' },
-  hearingCentreAdmin: { credentials: hearingCentreAdminCredentials, authFile: './playwright-tests/e2e/.auth/HearingCentreAdminUser.json' },
+  claimantSolicitor: { credentials: claimantSolicitorCredentials, authFile: `${authDir}/ClaimantSolicitorUser.json` },
+  respondent1Solicitor: { credentials: respondent1SolicitorCredentials, authFile: `${authDir}/Respondent1SolicitorUser.json` },
+  respondent2Solicitor: { credentials: respondent2SolicitorCredentials, authFile: `${authDir}/Respondent2SolicitorUser.json` },
+  judge: { credentials: judgeCredentials, authFile: `${authDir}/JudgeUser.json` },
+  hearingCentreAdmin: { credentials: hearingCentreAdminCredentials, authFile: `${authDir}/HearingCentreAdminUser.json` },
 };
 
 // Shown on every XUI page once a user is signed in. Solicitors land on the case list and judges and court staff on their work list,

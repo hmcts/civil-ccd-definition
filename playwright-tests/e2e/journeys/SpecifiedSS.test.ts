@@ -10,6 +10,7 @@ import Timeline from '../../enums/timeline.ts';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import yesNo from '../../enums/yesNo.ts';
 import { CaseUserRegistry } from '../../helpers/CaseUserRegistry.ts';
+import { sessionUsers } from '../../helpers/SessionHelper.ts';
 
 const env = cleanEnv({
   CLAIM_TYPE: enums({
@@ -73,7 +74,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe.configure({ mode: 'serial' });
 test.describe('test1', { tag: '@specified' }, () => {
-  test.use({ storageState: './playwright-tests/e2e/.auth/ClaimantSolicitorUser.json' });
+  test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
   test('Claimant Solicitor creates ' + claimType + ' claim ', async ({ page }) => {
     let createCase: CreateSpecifiedCase = new CreateSpecifiedCase(page);
     await createCasePage.createCase(caseType);
