@@ -51,6 +51,9 @@ export class DirectionsQuestionnaire {
     answers: DirectionsQuestionnaireAnswers,
   ) {
     const dq = party.fieldPrefix;
+    // Experts and witnesses are named after the party they belong to, e.g. Claimant1 Witness2, so they can be told apart
+    const partyName = party.label;
+    const partyEmailName = party.label.toLowerCase();
 
     if (track === trackType.SMALL) {
       // Determination without hearing (small claims only)
@@ -118,9 +121,9 @@ export class DirectionsQuestionnaire {
 
       for (let i = 0; i < answers.noOfExperts; i++) {
         await this.buttonHelper.addNewButton.first().click();
-        await this.page.locator(`#${dq}Experts_details_${i}_firstName`).fill(`Expert${i + 1}Firstname`);
-        await this.page.locator(`#${dq}Experts_details_${i}_lastName`).fill(`Expert${i + 1}Lastname`);
-        await this.page.locator(`#${dq}Experts_details_${i}_emailAddress`).fill(`expert${i + 1}@example.com`);
+        await this.page.locator(`#${dq}Experts_details_${i}_firstName`).fill(partyName);
+        await this.page.locator(`#${dq}Experts_details_${i}_lastName`).fill(`Expert${i + 1}`);
+        await this.page.locator(`#${dq}Experts_details_${i}_emailAddress`).fill(`${partyEmailName}.expert${i + 1}@example.com`);
         await this.page.locator(`#${dq}Experts_details_${i}_phoneNumber`).fill('07700900000');
         await this.page.locator(`#${dq}Experts_details_${i}_fieldOfExpertise`).fill(`Expert${i + 1}: Test field of expertise`);
         await this.page.locator(`#${dq}Experts_details_${i}_whyRequired`).fill(`Expert${i + 1}: Test reason why this expert is required.`);
@@ -135,9 +138,9 @@ export class DirectionsQuestionnaire {
     if (witnessesRequired === YesNo.YES) {
       for (let i = 0; i < answers.noOfWitnesses; i++) {
         await this.buttonHelper.addNewButton.first().click();
-        await this.page.locator(`#${dq}Witnesses_details_${i}_firstName`).fill(`Witness${i + 1}Firstname`);
-        await this.page.locator(`#${dq}Witnesses_details_${i}_lastName`).fill(`Witness${i + 1}Lastname`);
-        await this.page.locator(`#${dq}Witnesses_details_${i}_emailAddress`).fill(`witness${i + 1}@example.com`);
+        await this.page.locator(`#${dq}Witnesses_details_${i}_firstName`).fill(partyName);
+        await this.page.locator(`#${dq}Witnesses_details_${i}_lastName`).fill(`Witness${i + 1}`);
+        await this.page.locator(`#${dq}Witnesses_details_${i}_emailAddress`).fill(`${partyEmailName}.witness${i + 1}@example.com`);
         await this.page.locator(`#${dq}Witnesses_details_${i}_phoneNumber`).fill('07700900000');
         await this.page.locator(`#${dq}Witnesses_details_${i}_reasonForWitness`).fill(`Witness${i + 1}: Test event witnessed.`);
       }
