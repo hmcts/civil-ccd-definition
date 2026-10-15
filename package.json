@@ -243,7 +243,7 @@
     "allure-commandline": "^2.29.0",
     "allure-js-commons": "^3.4.2",
     "allure-playwright": "2.15.1",
-    "chai": "^4.3.4",
+    "chai": "^6.0.0",
     "codeceptjs": "3.7.9",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
     "deep-equal-in-any-order": "^2.0.0",
