@@ -7987,6 +7987,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "lipClaimSubmissionId",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantSolicitor1AddressLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
