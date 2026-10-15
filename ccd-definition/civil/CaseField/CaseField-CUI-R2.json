@@ -132,6 +132,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "lipClaimSubmissionId",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1AdditionalLipPartyDetails",
     "Label": "Defendant Additional Details",
     "FieldType": "AdditionalLipPartyDetails",

@@ -61,18 +61,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "REFER_TO_JUDGE",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "AccessControl": [
       {
