@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import { expect, Page } from '@playwright/test';
 import {
   envUrl,
@@ -45,7 +46,10 @@ export class SessionHelper {
     await this.page.goto(envUrl);
     await new IdamPage(this.page).login(credentials);
     await expect(signedInToXui(this.page)).toBeVisible();
-    await this.page.context().storageState({ path: authFile });
+    // Saved to a temporary file and then renamed, so a test starting on another worker never reads a half-written one
+    const tempFile = `${authFile}.${process.pid}.tmp`;
+    await this.page.context().storageState({ path: tempFile });
+    fs.renameSync(tempFile, authFile);
   }
 
   // Runs an action, and if the user's session ends part way through, signs them in again, reopens the page at

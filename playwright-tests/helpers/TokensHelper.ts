@@ -27,9 +27,12 @@ function readTokenCache(): TokenCache {
   }
 }
 
+// Written to a temporary file and then renamed, so another worker never reads a half-written cache
 function writeTokenCache(cache: TokenCache) {
   fs.mkdirSync(path.dirname(tokenCacheFile), { recursive: true });
-  fs.writeFileSync(tokenCacheFile, JSON.stringify(cache, null, 2));
+  const tempFile = `${tokenCacheFile}.${process.pid}.tmp`;
+  fs.writeFileSync(tempFile, JSON.stringify(cache, null, 2));
+  fs.renameSync(tempFile, tokenCacheFile);
 }
 
 function isTokenValid(token: string): boolean {
