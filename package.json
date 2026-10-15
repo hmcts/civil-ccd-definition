@@ -248,7 +248,7 @@
     "chai": "^4.3.4",
     "codeceptjs": "3.7.9",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
-    "deep-equal-in-any-order": "^1.0.28",
+    "deep-equal-in-any-order": "^2.0.0",
     "dotenv": "^18.0.0",
     "eslint": "^9.11.0",
     "eslint-config-prettier": "^10.1.8",
