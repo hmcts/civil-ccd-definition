@@ -137,12 +137,6 @@ civil-service:
               CREATE DATABASE "cft_task_db_replica" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
             03_hmcts_superuser.sql: |
               ALTER ROLE hmcts WITH SUPERUSER;
-idam-pr:
-  redirect_uris:
-    XUI:
-      - https://xui-${SERVICE_FQDN}/oauth2/callback
-    CCD Admin:
-      - http://${SERVICE_NAME}-ccd-admin-web/oauth2redirect
 
 aac-manage-case-assignment:
   java:

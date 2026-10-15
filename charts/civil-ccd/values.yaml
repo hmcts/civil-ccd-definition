@@ -1,7 +1,5 @@
 civil-ccd-stack:
   enabled: false
-idam-pr:
-  enabled: false
 xui-webapp:
   enabled: false
 camunda-bpm:
