@@ -1,21 +1,10 @@
-import {test as setup, expect, test, Page, request} from "@playwright/test";
-import {
-  claimantSolicitorCredentials,
-  envUrl, respondent1SolicitorCredentials, respondent2SolicitorCredentials,
-} from '../civilConfig.ts';
+import {test as setup, expect, test, request} from "@playwright/test";
+import { envUrl } from '../civilConfig.ts';
 import {IdamPage} from '../e2e/page-objects/pages/idam.po';
-import claimTypes from '../enums/claim-types.ts';
 import { SessionUtils } from '../e2e/utils/session.utils.ts';
-import { judgeClaimTypes, respondent2ClaimTypes, runClaimType, sessionUsers, sessionUsersForRun, signedInToXui } from '../helpers/SessionHelper.ts';
+import { sessionUsers, signedInToXui } from '../helpers/SessionHelper.ts';
+import { sessionUsersForRun } from '../e2e/journey/unspecified/unspecifiedUsers.ts';
 
-const claimType: claimTypes = runClaimType;
-// Match the heading by role rather than DOM position, as XUI versions wrap it differently
-const caseListHeading = (page: Page) => page.getByRole('heading', { level: 1, name: 'Case list' });
-const claimantSolicitorAuthFile = sessionUsers.claimantSolicitor.authFile;
-const respondent1SolicitorAuthFile = sessionUsers.respondent1Solicitor.authFile;
-const respondent2SolicitorAuthFile = sessionUsers.respondent2Solicitor.authFile;
-const judgeAuthFile = sessionUsers.judge.authFile;
-const hearingCentreAdminAuthFile = sessionUsers.hearingCentreAdmin.authFile;
 const authCookieName = "__auth__";
 const tokenValidityBufferSeconds = 60 * 60;
 
@@ -48,51 +37,16 @@ async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
   }
 }
 
-  setup("Authenticate Claimant Solicitor", async ({ page }) => {
-    setup.skip(await isSavedSessionAccepted(claimantSolicitorAuthFile), "Reusing existing valid session");
+// Signs in everyone who runs a step in the run's scenarios (see sessionUsersForRun), reusing a saved session XUI still
+// accepts
+for (const key of sessionUsersForRun()) {
+  const { credentials, authFile } = sessionUsers[key];
+  setup(`Authenticate ${credentials.name}`, async ({ page }) => {
+    setup.skip(await isSavedSessionAccepted(authFile), "Reusing existing valid session");
     await page.goto(envUrl);
-    await idamPage.login(claimantSolicitorCredentials);
-    await expect(caseListHeading(page)).toBeVisible();
-    await page.context().storageState({ path: claimantSolicitorAuthFile });
+    await idamPage.login(credentials);
+    // Solicitors land on the case list and judges and court staff on their work list, so the navigation is checked
+    await expect(signedInToXui(page)).toBeVisible();
+    await page.context().storageState({ path: authFile });
   });
-
-  setup("Authenticate Respondent1 Solicitor", async ({ page }) => {
-    setup.skip(await isSavedSessionAccepted(respondent1SolicitorAuthFile), "Reusing existing valid session");
-    await page.goto(envUrl);
-    await idamPage.login(respondent1SolicitorCredentials);
-    await expect(caseListHeading(page)).toBeVisible();
-    await page.context().storageState({ path: respondent1SolicitorAuthFile });
-  });
-
-  if (respondent2ClaimTypes.includes(claimType)) {
-    setup("Authenticate Respondent2 Solicitor", async ({ page }) => {
-      setup.skip(await isSavedSessionAccepted(respondent2SolicitorAuthFile), "Reusing existing valid session");
-      await page.goto(envUrl);
-      await idamPage.login(respondent2SolicitorCredentials);
-      await expect(caseListHeading(page)).toBeVisible();
-      await page.context().storageState({ path: respondent2SolicitorAuthFile });
-    });
-  }
-
-  if (judgeClaimTypes.includes(claimType)) {
-    setup("Authenticate Judge", async ({ page }) => {
-      setup.skip(await isSavedSessionAccepted(judgeAuthFile), "Reusing existing valid session");
-      await page.goto(envUrl);
-      await idamPage.login(sessionUsers.judge.credentials);
-      // Judges land on their work list rather than the case list
-      await expect(signedInToXui(page)).toBeVisible();
-      await page.context().storageState({ path: judgeAuthFile });
-    });
-  }
-
-  // Also needed for any claim type when the journey adds a case note (ADD_CASE_NOTE=true)
-  if (sessionUsersForRun().includes('hearingCentreAdmin')) {
-    setup("Authenticate Hearing Centre Admin", async ({ page }) => {
-      setup.skip(await isSavedSessionAccepted(hearingCentreAdminAuthFile), "Reusing existing valid session");
-      await page.goto(envUrl);
-      await idamPage.login(sessionUsers.hearingCentreAdmin.credentials);
-      // Court staff land on their work list rather than the case list
-      await expect(signedInToXui(page)).toBeVisible();
-      await page.context().storageState({ path: hearingCentreAdminAuthFile });
-    });
-  }
+}

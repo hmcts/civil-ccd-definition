@@ -1,0 +1,546 @@
+import { expect, test } from '@playwright/test';
+import { envUrl } from '../../../civilConfig.ts';
+import { CreateUnspecifiedCase } from '../../flows/createUnspecifiedCase.ts';
+import yesNo from '../../../enums/yesNo.ts';
+import claimTypes from '../../../enums/claim-types.ts';
+import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
+import claimTrack from '../../../enums/track.ts';
+import caseStates from '../../../enums/caseStates.ts';
+import { PaymentPage } from '../../page-objects/pages/payment_page.ts';
+import { NotifyClaim } from '../../flows/events/NotifyClaim.ts';
+import { NotifyClaimDetails } from '../../flows/events/NotifyClaimDetails.ts';
+import { AcknowledgeClaim } from '../../flows/events/AcknowledgeClaim.ts';
+import { RespondToClaim } from '../../flows/events/RespondToClaim.ts';
+import { RespondToDefence } from '../../flows/events/RespondToDefence.ts';
+import { CreateSdo } from '../../flows/events/CreateSdo.ts';
+import { UploadEvidence } from '../../flows/events/UploadEvidence.ts';
+import { CreateHearingNotice } from '../../flows/events/CreateHearingNotice.ts';
+import { ConfirmTrialArrangements } from '../../flows/events/ConfirmTrialArrangements.ts';
+import { MakeFinalOrder } from '../../flows/events/MakeFinalOrder.ts';
+import { ConfirmOrderReview } from '../../flows/events/ConfirmOrderReview.ts';
+import { AddCaseNote } from '../../flows/events/AddCaseNote.ts';
+import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
+import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
+import { JourneyContext, JourneyStep } from '../journeyRunner.ts';
+import { UnspecifiedConfig } from './unspecifiedConfig.ts';
+
+// The steps of the unspecified journey, from creating the claim to the final order, in the order they run. Each step
+// that does not apply to the journey's claim (see skipIf) is skipped.
+export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] {
+  // Tracks which defendants have responded, so the expected state is right whichever responds first in claims where
+  // they respond separately
+  const defendantsResponded = new Set<number>();
+  function expectedStateAfterResponse(defendantNumber: number): caseStates {
+    defendantsResponded.add(defendantNumber);
+    const waitingForOtherDefendant = c.separateResponseClaimTypes.includes(c.claimType) && defendantsResponded.size < 2;
+    return waitingForOtherDefendant ? caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT : c.stateAfterAllResponses;
+  }
+
+  const offlineAtNotify: [boolean, string] = [c.claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details'];
+  const noSeparateDefendant2Solicitor: [boolean, string] = [!c.defendant2OwnSolicitorClaimTypes.includes(c.claimType), 'Skipping test as Defendant 2 has no separate solicitor'];
+  const noClaimantResponse: Array<[boolean, string]> = [
+    offlineAtNotify,
+    [!c.claimantResponseClaimTypes.includes(c.claimType), 'Skipping as the claim has a litigant in person'],
+    [c.stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline'],
+  ];
+  // The steps from the Standard Direction Order on, which need the claim to reach JUDICIAL_REFERRAL on the fast track
+  const noCaseProgression = (fastTrackReason = 'Skipping as the Standard Direction Order is only coded for the fast track'): Array<[boolean, string]> => [
+    ...noClaimantResponse,
+    [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
+    [c.track !== claimTrack.FAST, fastTrackReason],
+  ];
+
+  // The arguments RespondToClaim and RespondToDefence share
+  const directionsQuestionnaireAnswers = () => [
+    c.determinationWithoutHearing,
+    c.oneMonthStay,
+    c.preActionProtocol,
+    c.fixedRecoverableCosts,
+    c.fixedRecoveryCostsBand,
+    yesNo.YES,
+    Number(c.noOfExperts),
+    Number(c.noOfWitnesses),
+    c.language,
+    c.unavailableDatesRequired,
+  ] as const;
+
+  return [
+    {
+      name: 'CREATE_CLAIM',
+      title: 'Claimant Solicitor creates ' + c.claimType + ' claim ',
+      user: 'claimantSolicitor',
+      run: async ({ page, storageState }) => {
+        const pageHelper = ctx.pageHelper;
+        // If the session ends before the claim is submitted, the claim is started again from the case list
+        await ctx.runEvent(page, storageState, async () => {
+          const createCase: CreateUnspecifiedCase = new CreateUnspecifiedCase(page);
+          await ctx.createCasePage.createCase(c.caseType);
+          await pageHelper.continueToNextPage(); //Summary
+          await createCase.setReferences(c.claimType);
+          await createCase.setCourt();
+          await createCase.setClaimantType(c.claimantType, 1);
+          await createCase.setClaimantLitigantFriend(c.claimant1LitigantFriend, 1);
+          await createCase.setClaimantNotifications();
+          await pageHelper.continueToNextPage(); //ClaimantSolicitorOrganisation
+          await createCase.setClaimantServiceAddress();
+
+          switch (c.claimType) {
+            case claimTypes.TWO_VS_ONE:
+            case claimTypes.TWO_VS_ONE_LIP:
+              await createCase.setAnotherClaimant(yesNo.YES, c.claimantType);
+              await createCase.setClaimantType(c.claimantType, 2);
+              await createCase.setClaimantLitigantFriend(c.claimant2LitigantFriend, 2);
+              break;
+            default:
+              await createCase.setAnotherClaimant(yesNo.NO, c.claimantType);
+          }
+
+          await createCase.setDefendantType(c.defendantType, 1);
+
+          if (
+            c.claimType == claimTypes.ONE_VS_ONE_LIP ||
+            c.claimType == claimTypes.TWO_VS_ONE_LIP ||
+            c.claimType == claimTypes.ONE_VS_TWO_LIP_LR ||
+            c.claimType == claimTypes.ONE_VS_TWO_LIPS
+          ) {
+            console.log('Defendant 1: NOT represented');
+            await createCase.setDefendantLegallyRepresented(yesNo.NO, 1);
+          } else {
+            console.log('Defendant 1: REPRESENTED');
+            await createCase.setDefendantLegallyRepresented(yesNo.YES, 1);
+            await createCase.setSolicitorOrganisation('Civil - Organisation 2');
+            await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 1);
+            await createCase.setDefendantLegalRepresentativeEmail();
+          }
+
+          if (c.claimType == claimTypes.TWO_VS_ONE_LIP || c.claimType == claimTypes.TWO_VS_ONE) {
+            // ignore these claim types as they cannot have a second defendant
+          } else if (c.claimType == claimTypes.ONE_VS_ONE || c.claimType == claimTypes.ONE_VS_ONE_LIP) {
+            await createCase.setAnotherDefendant(yesNo.NO);
+          } else {
+            await createCase.setAnotherDefendant(yesNo.YES);
+            await createCase.setDefendantType(c.defendantType, 2);
+
+            switch (c.claimType) {
+              case claimTypes.ONE_VS_TWO_LIP_LR:
+                console.log('Defendant 2: REPRESENTED');
+                await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
+                // Defendant 2's solicitor is the Respondent2 Solicitor user, who belongs to Organisation 3
+                await createCase.setSolicitorOrganisation('Civil - Organisation 3');
+                await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
+                await createCase.setDefendant2LegalRepresentativeReference();
+                await createCase.setDefendantLegalRepresentativeEmail(2);
+                break;
+              case claimTypes.ONE_VS_TWO_SAME_SOL:
+                console.log('Defendant 2: REPRESENTED - same sols');
+                await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
+                await createCase.setSameLegalRepresentative(yesNo.YES);
+                break;
+              case claimTypes.ONE_VS_TWO_DIFF_SOL:
+                console.log('Defendant 2: REPRESENTED - diff sols');
+                await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
+                await createCase.setSameLegalRepresentative(yesNo.NO);
+                await createCase.setSolicitorOrganisation('Civil - Organisation 3');
+                await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
+                await createCase.setDefendant2LegalRepresentativeReference();
+                await createCase.setDefendantLegalRepresentativeEmail(2);
+                break;
+              default:
+                console.log('Defendant 2: NOT represented');
+                await createCase.setDefendantLegallyRepresented(yesNo.NO, 2);
+            }
+          }
+
+          await createCase.setTypeOfClaim(c.typeOfClaim);
+
+          if (c.typeOfClaim == unspecClaimTypes.PERSONAL_INJURY) {
+            await createCase.setSubClaimType(c.typeOfClaimSubType);
+          }
+
+          if (
+            c.typeOfClaim == unspecClaimTypes.HOUSING_DISREPAIR ||
+            c.typeOfClaim == unspecClaimTypes.DAMAGES_AND_OTHER_REMEDY
+          ) {
+            await createCase.setOtherRemedy();
+            await createCase.setHumanRights();
+          }
+
+          await createCase.setDescriptionOfClaim();
+          await createCase.setUploadParticularsOfClaim();
+          await createCase.setClaimValue(c.track, c.typeOfClaim);
+          await pageHelper.continueToNextPage(); //Amount to pay - can do an assertion on amount by api to fee and pay to make sure fee is correct, if needed.
+          await createCase.setStatementOfTruth(); //will be dependant upon case ie 1v1 etc
+          await pageHelper.submitEvent(); //CYA
+          await ctx.buttonHelper.closeAndReturnToCaseDetailsButton.click(); //Success
+        }, envUrl);
+
+        ctx.caseId = await pageHelper.grabCaseNumber();
+        console.log('caseId>>>>>>>>>>>>>>>' + ctx.caseId + '<<<<<<<<<<<<<<<<<<<');
+        CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
+        // Pay the claim fee
+        await new PaymentPage(page).makePayment('PBA');
+        // The payment service tells civil-service about the payment, which then issues the claim
+        // (CREATE_CLAIM_AFTER_PAYMENT). Where the payment service cannot reach civil-service the test tells it instead.
+        // Telling it both ways would make civil-service try to issue the claim twice, so the test only steps in if the
+        // payment service has not done it within a minute.
+        const recordedByPaymentService = await ctx.testingEndpointHelper.waitForFeePaid(ctx.caseId, 'claimIssuedPaymentDetails', 60);
+        if (recordedByPaymentService) {
+          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
+        } else {
+          console.log('The payment service did not record the claim fee payment, so the test does');
+          await ctx.testingEndpointHelper.serviceRequestUpdateClaimIssued(ctx.caseId);
+        }
+        await ctx.assertCaseState(caseStates.CASE_ISSUED);
+      },
+    },
+
+    // Adding a case note, done as early as possible: court staff can add one in any state, so straight after the claim
+    // is issued. Only run with ADD_CASE_NOTE=true (default false).
+    {
+      name: 'ADD_CASE_NOTE',
+      title: 'Hearing Centre Admin adds a case note.',
+      user: 'hearingCentreAdmin',
+      skipIf: [[!c.addCaseNote, 'Adding a case note is switched off (set ADD_CASE_NOTE=true to run it)']],
+      run: async ({ page, storageState }) => {
+        const note = `Case note added by the unspecified journey at ${new Date().toISOString()}`;
+        const caseNote = new AddCaseNote(page);
+        await ctx.runEvent(page, storageState, async () => {
+          await caseNote.submit(note);
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'ADD_CASE_NOTE');
+        await caseNote.verifyNoteShown(note);
+        // A case note does not change the claim's state
+        await ctx.assertCaseState(caseStates.CASE_ISSUED);
+      },
+    },
+
+    {
+      name: 'NOTIFY_CLAIM',
+      title: 'Claimant Solicitor undertakes event: Notify claim ',
+      user: 'claimantSolicitor',
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new NotifyClaim(page).notify(c.claimType, c.defendantsToNotifyClaim);
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'NOTIFY_DEFENDANT_OF_CLAIM');
+        if (c.claimOfflineAfterNotifyClaim) {
+          await ctx.assertCaseState(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
+          console.log('Notify claim -> claim went offline, later events are skipped');
+        } else {
+          await ctx.assertCaseState(caseStates.AWAITING_CASE_DETAILS_NOTIFICATION);
+        }
+      },
+    },
+
+    {
+      name: 'NOTIFY_CLAIM_DETAILS',
+      title: 'Claimant Solicitor undertakes event: Notify claim details ',
+      user: 'claimantSolicitor',
+      skipIf: [[c.claimOfflineAfterNotifyClaim, 'Claim went offline at Notify claim']],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails);
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS');
+        if (c.claimOfflineAfterNotifyClaimDetails) {
+          await ctx.assertCaseState(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
+          console.log('Notify claim details -> claim went offline, later events are skipped');
+        } else {
+          await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+        }
+      },
+    },
+
+    {
+      name: 'ACKNOWLEDGE_CLAIM_DEFENDANT1',
+      title: 'Defendant 1 Solicitor acknowledges claim.',
+      user: 'respondent1Solicitor',
+      skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
+      run: async ({ page, storageState }) => {
+        await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType);
+        // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
+        await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
+        await ctx.runEvent(page, storageState, async () => {
+          await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 1);
+        });
+        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    },
+
+    {
+      name: 'ACKNOWLEDGE_CLAIM_DEFENDANT2',
+      title: 'Defendant 2 Solicitor acknowledges claim.',
+      user: 'respondent2Solicitor',
+      skipIf: [offlineAtNotify, noSeparateDefendant2Solicitor],
+      run: async ({ page, storageState }) => {
+        if (c.claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+          // Defendant 1's acknowledgement is skipped for this claim type (Defendant 1 is a LiP), so Defendant 2's
+          // solicitor is assigned here
+          await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType);
+          // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
+          await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
+        }
+        await ctx.runEvent(page, storageState, async () => {
+          await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 2);
+        });
+        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    },
+
+    {
+      name: 'RESPOND_TO_CLAIM_DEFENDANT1',
+      title: 'Defendant 1 Solicitor responds to claim.',
+      user: 'respondent1Solicitor',
+      skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new RespondToClaim(page).submit(
+            c.claimType,
+            c.track,
+            c.typeOfClaim as unspecClaimTypes,
+            c.respondent1Response,
+            c.respondent2Response,
+            1,
+            ...directionsQuestionnaireAnswers(),
+          );
+        });
+        await ctx.assertCaseState(expectedStateAfterResponse(1));
+      },
+    },
+
+    {
+      name: 'RESPOND_TO_CLAIM_DEFENDANT2',
+      title: 'Defendant 2 Solicitor responds to claim.',
+      user: 'respondent2Solicitor',
+      skipIf: [offlineAtNotify, noSeparateDefendant2Solicitor],
+      run: async ({ page, storageState }) => {
+        if (c.claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+          // civil-service only treats the defendants as having separate solicitors when both are represented, so in a
+          // 1v2LIPLR claim it handles Defendant 2's solicitor as Defendant 1's. The response is saved against Defendant 1
+          // (respondent1ResponseDate) and multiPartyResponseTypeFlags is NOT_FULL_DEFENCE even for a full defence. As a
+          // result the directions questionnaire pages are not displayed to Defendant 2's solicitor. Until civil-service
+          // supports this, the response is skipped.
+          console.warn(
+            'WARNING: Defendant 2 Solicitor response NOT undertaken for 1v2LIPLR. civil-service records the response '
+            + 'against Defendant 1 and skips the directions questionnaire and defence upload, so it cannot be tested.',
+          );
+          test.skip(true, '1v2LIPLR: civil-service does not support a response from Defendant 2 Solicitor when Defendant 1 is a LiP');
+        }
+        await ctx.runEvent(page, storageState, async () => {
+          await new RespondToClaim(page).submit(
+            c.claimType,
+            c.track,
+            c.typeOfClaim as unspecClaimTypes,
+            c.respondent1Response,
+            c.respondent2Response,
+            2,
+            ...directionsQuestionnaireAnswers(),
+          );
+        });
+        await ctx.assertCaseState(expectedStateAfterResponse(2));
+      },
+    },
+
+    {
+      name: 'RESPOND_TO_DEFENCE',
+      title: 'Claimant Solicitor responds to defence.',
+      user: 'claimantSolicitor',
+      skipIf: noClaimantResponse,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new RespondToDefence(page).submit(
+            c.claimType,
+            c.track,
+            c.typeOfClaim as unspecClaimTypes,
+            c.claimantProceed1,
+            c.claimantProceed2,
+            ...directionsQuestionnaireAnswers(),
+          );
+        });
+        await ctx.assertCaseState(c.stateAfterClaimantResponse);
+      },
+    },
+
+    {
+      name: 'CREATE_SDO',
+      title: 'Judge makes a Standard Direction Order.',
+      user: 'judge',
+      skipIf: noCaseProgression(),
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          // Where work allocation is switched on, the judge needs the directions task to make the order. Noise induced
+          // hearing loss claims get their own task.
+          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', c.sdoTaskType);
+          await new CreateSdo(page).submit(ctx.caseId, c.track, c.noiseInducedHearingLoss);
+        });
+        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
+      },
+    },
+
+    // Each solicitor uploads evidence once the Standard Direction Order has moved the claim to CASE_PROGRESSION
+    ...uploadEvidenceSteps(),
+
+    // The hearing centre admin lists the trial once the evidence is in. This is done in place of HMC returning a LISTED
+    // hearing, and moves the claim to HEARING_READINESS for the hearing fee.
+    {
+      name: 'CREATE_HEARING_NOTICE',
+      title: 'Hearing Centre Admin creates a hearing notice.',
+      user: 'hearingCentreAdmin',
+      skipIf: noCaseProgression(),
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new CreateHearingNotice(page).submit(c.track);
+        });
+        await ctx.assertCaseState(caseStates.HEARING_READINESS);
+      },
+    },
+
+    // Listing the trial set a hearing fee, which the claimant's solicitor pays from the Service Request tab. Once it is
+    // paid, HEARING_FEE_PAID moves the claim to PREPARE_FOR_HEARING_CONDUCT_HEARING.
+    {
+      name: 'PAY_HEARING_FEE',
+      title: 'Claimant Solicitor pays the hearing fee.',
+      user: 'claimantSolicitor',
+      skipIf: noCaseProgression(),
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new PaymentPage(page).makePayment('PBA');
+        });
+        // The payment service tells civil-service about the payment, which can take a while. Where it cannot reach
+        // civil-service the test tells it instead. Telling it both ways would update the case twice, and the late
+        // update can clash with the next event (CCD rejects it with HTTP 409), so the test only steps in if the payment
+        // service has not done it within a minute.
+        const recordedByPaymentService = await ctx.testingEndpointHelper.waitForFeePaid(ctx.caseId, 'hearingFeePaymentDetails', 60);
+        if (!recordedByPaymentService) {
+          console.log('The payment service did not record the hearing fee payment, so the test does');
+          await ctx.testingEndpointHelper.serviceRequestUpdateHearingFee(ctx.caseId);
+        }
+        // civil-service's scheduler would run HEARING_FEE_PAID later, so it is run now
+        await ctx.testingEndpointHelper.triggerHearingFeePaid(ctx.caseId);
+        await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      },
+    },
+
+    // Each solicitor confirms the case is ready for trial. This is only offered on the fast track and must be done more
+    // than 3 weeks before the hearing, which the hearing notice lists about 8 weeks ahead. The claim stays in
+    // PREPARE_FOR_HEARING_CONDUCT_HEARING.
+    ...confirmTrialArrangementsSteps(),
+
+    // The trial bundle, which a civil-service scheduler normally creates about 3 weeks before the hearing, is created
+    // now. Once it has been stitched into one document it shows on the Bundles tab.
+    {
+      name: 'CREATE_TRIAL_BUNDLE',
+      title: 'Trial bundle is created and shown to the Claimant Solicitor.',
+      user: 'claimantSolicitor',
+      skipIf: noCaseProgression(),
+      run: async ({ page, storageState }) => {
+        await ctx.testingEndpointHelper.triggerTrialBundle(ctx.caseId);
+        const bundleTitle = await ctx.testingEndpointHelper.waitForBundleStitched(ctx.caseId);
+        await ctx.runEvent(page, storageState, async () => {
+          await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
+          await ctx.tabsHelper.selectTab('Bundles');
+          await expect(page.getByText(bundleTitle).first()).toBeVisible();
+        });
+        await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      },
+    },
+
+    // Civil has no record of the hearing itself taking place. Once the hearing date has passed, a civil-service scheduler
+    // runs MOVE_TO_DECISION_OUTCOME, which moves the claim to DECISION_OUTCOME to wait for the judge's decision. The
+    // hearing is weeks away, so the test runs that event itself.
+    {
+      name: 'MOVE_TO_DECISION_OUTCOME',
+      title: 'Hearing date passes and the claim moves to decision outcome.',
+      user: 'judge',
+      skipIf: noCaseProgression(),
+      run: async () => {
+        await ctx.testingEndpointHelper.moveToDecisionOutcome(ctx.caseId);
+        await ctx.assertCaseState(caseStates.DECISION_OUTCOME);
+      },
+    },
+
+    // The judge's final order after the hearing, chosen with FINAL_ORDER. A free form order, or an assisted order with
+    // no further hearing, does not change the claim's state. The order's notifications are sent by the
+    // GENERATE_ORDER_NOTIFICATION business process.
+    {
+      name: 'MAKE_FINAL_ORDER',
+      title: `Judge makes a final order (${c.finalOrder}).`,
+      user: 'judge',
+      skipIf: noCaseProgression(),
+      run: async ({ page, storageState }) => {
+        const ordersBefore = await ctx.testingEndpointHelper.countFinalOrders(ctx.caseId);
+        await ctx.runEvent(page, storageState, async () => {
+          await new MakeFinalOrder(page).submit(c.finalOrder);
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'GENERATE_ORDER_NOTIFICATION');
+        expect(await ctx.testingEndpointHelper.countFinalOrders(ctx.caseId), 'The final order was not added to the case').toBe(ordersBefore + 1);
+        await ctx.assertCaseState(caseStates.DECISION_OUTCOME);
+      },
+    },
+
+    // Court staff review the judge's order ("Order Made - Review case"). Confirming it is a final order, with no
+    // obligation date and nothing left to do, closes the claim: it moves to All_FINAL_ORDERS_ISSUED and the
+    // CONFIRM_ORDER_REVIEW_FINAL_ORDER business process runs.
+    {
+      name: 'CONFIRM_ORDER_REVIEW',
+      title: 'Hearing Centre Admin confirms the order review.',
+      user: 'hearingCentreAdmin',
+      skipIf: noCaseProgression(),
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new ConfirmOrderReview(page).submit();
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CONFIRM_ORDER_REVIEW_FINAL_ORDER');
+        await ctx.assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
+      },
+    },
+  ];
+
+  function uploadEvidenceSteps(): JourneyStep[] {
+    const solicitors = [
+      { name: 'UPLOAD_EVIDENCE_CLAIMANT_SOLICITOR', label: 'Claimant Solicitor', user: 'claimantSolicitor' },
+      { name: 'UPLOAD_EVIDENCE_DEFENDANT1_SOLICITOR', label: 'Defendant 1 Solicitor', user: 'respondent1Solicitor' },
+      { name: 'UPLOAD_EVIDENCE_DEFENDANT2_SOLICITOR', label: 'Defendant 2 Solicitor', user: 'respondent2Solicitor', defendant2: true },
+    ] as const;
+    return solicitors.map((solicitor) => ({
+      group: 'UPLOAD_EVIDENCE',
+      name: solicitor.name,
+      title: `${solicitor.label} uploads evidence.`,
+      user: solicitor.user,
+      skipIf: [
+        ...noCaseProgression(),
+        ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new UploadEvidence(page).submit();
+        });
+        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
+      },
+    }));
+  }
+
+  function confirmTrialArrangementsSteps(): JourneyStep[] {
+    const solicitors = [
+      { name: 'CONFIRM_TRIAL_ARRANGEMENTS_CLAIMANT_SOLICITOR', label: 'Claimant Solicitor', user: 'claimantSolicitor' },
+      { name: 'CONFIRM_TRIAL_ARRANGEMENTS_DEFENDANT1_SOLICITOR', label: 'Defendant 1 Solicitor', user: 'respondent1Solicitor' },
+      { name: 'CONFIRM_TRIAL_ARRANGEMENTS_DEFENDANT2_SOLICITOR', label: 'Defendant 2 Solicitor', user: 'respondent2Solicitor', defendant2: true },
+    ] as const;
+    return solicitors.map((solicitor) => ({
+      group: 'CONFIRM_TRIAL_ARRANGEMENTS',
+      name: solicitor.name,
+      title: `${solicitor.label} confirms trial arrangements.`,
+      user: solicitor.user,
+      skipIf: [
+        ...noCaseProgression('Skipping as trial arrangements are only confirmed on the fast track'),
+        ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new ConfirmTrialArrangements(page).submit();
+        });
+        await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      },
+    }));
+  }
+}

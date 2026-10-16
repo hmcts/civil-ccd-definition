@@ -10,7 +10,8 @@ import {
   workAllocation,
 } from '../civilConfig.ts';
 import { TokensHelper } from './TokensHelper.ts';
-import { sessionUsers, sessionUsersForRun } from './SessionHelper.ts';
+import { sessionUsers } from './SessionHelper.ts';
+import { sessionUsersForRun } from '../e2e/journey/unspecified/unspecifiedUsers.ts';
 
 // Checks, before any test starts, that the run has everything it needs: its settings, the services it calls and the
 // users it signs in as. A problem here would otherwise only show up part way through a journey, often as a confusing
