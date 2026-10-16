@@ -111,7 +111,6 @@ const data = {
   JUDGE_APPROVES_UNLESSORDER_APPLN: (current_date) => genAppJudgeMakeDecisionData.judgeApprovesUnlessOrderAppl(current_date),
   PAYMENT_SERVICE_REQUEST_UPDATED: genAppJudgeMakeDecisionData.serviceUpdateDto(),
   HWF_FULL: (type) => genLipHwf.full(type),
-  HWF_NO_REMISSION: (type) => genLipHwf.noRemission(type),
   HWF_OUTCOME: (type) => genLipHwf.outcome(type),
   LIST_FOR_A_HEARING: genAppJudgeMakeDecisionData.listingForHearing(),
   JUDGE_DECIDES_FREE_FORM_ORDER: genAppJudgeMakeDecisionData.freeFormOrder(),
@@ -1613,8 +1612,7 @@ module.exports = {
     return caseId;
   },
 
-  createGAApplicationWithUnrepresented: async (user, caseId, typeOfApplication, hwf = false,
-                                              hwfOutcome = 'FULL_REMISSION') => {
+  createGAApplicationWithUnrepresented: async (user, caseId, typeOfApplication, hwf = false) => {
     console.log('start create a GA application');
     const payload = data.INITIATE_GENERAL_APPLICATION_LIP(typeOfApplication, hwf);
     await apiRequest.setupTokens(user);
@@ -1625,13 +1623,7 @@ module.exports = {
     const ccdGeneralApplications = updatedResponse.generalApplications;
     const gaCaseReference = ccdGeneralApplications[ccdGeneralApplications.length - 1]?.value?.caseLink?.CaseReference;
     await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
-    if (hwf && hwfOutcome === 'NO_REMISSION') {
-      await processNoRemissionHwf(gaCaseReference);
-      // NO_REMISSION_HWF_GA has PostConditionState '*', so the state does not move. The wait is
-      // still the assertion that matters: it fails on a Camunda incident, which is what a notify
-      // task raises if GaNotifierFactory cannot resolve the activity id or CCD refuses NOTIFY_EVENT.
-      await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_APPLICATION_PAYMENT', user);
-    } else if (hwf) {
+    if (hwf) {
       await processHwf(gaCaseReference);
       await waitForGACamundaEventsFinishedBusinessProcess(gaCaseReference, 'AWAITING_RESPONDENT_RESPONSE', user);
     }
@@ -2962,23 +2954,6 @@ const processHwf = async (gaCaseReference) => {
   returnedCaseData = await apiRequest.startEvent(eventName, gaCaseReference);
   hwfData = data.HWF_OUTCOME('APPLICATION');
   caseData = {...returnedCaseData, ...hwfData};
-  await apiRequest.submitGAEvent(eventName, caseData, gaCaseReference);
-};
-
-/**
- * Refuses the Help with Fees application. Unlike processHwf this leaves the fee outstanding, so the
- * case stays in AWAITING_APPLICATION_PAYMENT.
- *
- * NO_REMISSION_HWF_GA is one of the five events whose handler sets
- * BusinessProcess.readyGa(NOTIFY_APPLICANT_LIP_HWF), which is what starts the GA_NOTIFY_HWF
- * process. FULL_REMISSION_HWF_GA and FEE_PAYMENT_OUTCOME_GA do not, so before this step no
- * functional test started that process at all.
- */
-const processNoRemissionHwf = async (gaCaseReference) => {
-  await apiRequest.setupTokens(config.ctscAdmin);
-  eventName = 'NO_REMISSION_HWF_GA';
-  const returnedCaseData = await apiRequest.startEvent(eventName, gaCaseReference);
-  caseData = {...returnedCaseData, ...data.HWF_NO_REMISSION('APPLICATION')};
   await apiRequest.submitGAEvent(eventName, caseData, gaCaseReference);
 };
 
