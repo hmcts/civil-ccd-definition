@@ -3,11 +3,21 @@ import './playwright-tests/env.ts';
 import { defineConfig, devices } from '@playwright/test';
 import config from './playwright-e2e/config/config';
 import {envUrl} from './playwright-tests/civilConfig.ts';
+import { pruneOldRunResults } from './playwright-tests/helpers/RunHelper.ts';
 import os from 'node:os';
 
 // Set once by the runner process and inherited by every worker, so the playwright-tests case unassignment
 // teardown only processes cases recorded by this run (see playwright-tests/helpers/CaseUserRegistry.ts)
 process.env.PLAYWRIGHT_RUN_ID ??= `${process.pid}-${Date.now()}`;
+
+// Where traces, videos and screenshots go. Locally each run has its own folder, named after its run ID, so a run
+// started while another is going does not wipe the other's results; the newest RESULTS_RUNS_TO_KEEP finished runs
+// (default 10) are kept. On CI (one run per build, and the reports come from Allure) it stays a single folder.
+const resultsRoot = './playwright-test-results';
+const outputDir = process.env.CI ? resultsRoot : `${resultsRoot}/${process.env.PLAYWRIGHT_RUN_ID}`;
+if (!process.env.CI && process.env.TEST_WORKER_INDEX === undefined) {
+  pruneOldRunResults(resultsRoot, Number(process.env.RESULTS_RUNS_TO_KEEP ?? 10));
+}
 
 // How many playwright-tests scenarios run at the same time (WORKERS, default 1). It is a limit on our projects only, so
 // the other suites are not affected. Each scenario's journey still runs in order on one worker.
@@ -47,7 +57,7 @@ export default defineConfig({
       timeout: config.playwright.toPassTimeout,
     },
   },
-  outputDir: './playwright-test-results',
+  outputDir,
   use: {
     actionTimeout: config.playwright.actionTimeout,
    // headless: !config.playwright.showBrowserWindow,

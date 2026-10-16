@@ -6,6 +6,7 @@ import {
   respondent1SolicitorCredentials,
   respondent2SolicitorCredentials,
 } from '../civilConfig.ts';
+import { isRunInProgress } from './RunHelper.ts';
 
 // Users that can be assigned to a case during a test. Only the key is written to disk, never credentials.
 export const caseUsers = {
@@ -115,21 +116,7 @@ export class CaseUserRegistry {
     return fs
       .readdirSync(registryDir, { withFileTypes: true })
       .filter((entry) => entry.isDirectory())
-      .filter((entry) => entry.name === runId || !this.isRunInProgress(entry.name))
+      .filter((entry) => entry.name === runId || !isRunInProgress(entry.name))
       .map((entry) => path.join(registryDir, entry.name));
-  }
-
-  // Run folders are named "<runner pid>-<start time>"; a run is still in progress while its runner process exists
-  private static isRunInProgress(runFolder: string): boolean {
-    const pid = Number(runFolder.split('-')[0]);
-    if (!Number.isInteger(pid) || pid <= 0) {
-      return false;
-    }
-    try {
-      process.kill(pid, 0);
-      return true;
-    } catch (error) {
-      return (error as NodeJS.ErrnoException).code === 'EPERM';
-    }
   }
 }
