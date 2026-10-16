@@ -32,5 +32,32 @@ test.describe(
       await JudgeGaSteps.Login();
       await JudgeGaSteps.GenerateDirectionsOrderFreeFormWithoutNotice();
     });
+
+    test('1v1 - Assisted order - Without Further Hearing', async ({
+      ClaimantSolicitorApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1ApiSteps,
+      ClaimantSolicitorGaApiSteps,
+      DefendantSolicitor1GaApiSteps,
+      JudgeGaApiSteps,
+      HearingCenterAdminGaApiSteps,
+      JudgeGaSteps,
+    }) => {
+      test.fail(config.zodValidationEnabled);
+      await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
+      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+      await ClaimantSolicitorApiSteps.RespondFastProceed();
+      await ClaimantSolicitorApiSteps.InitiateGAWithNotice();
+      await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();
+      await DefendantSolicitor1GaApiSteps.RespondToApplicationAgreed();
+      await JudgeGaApiSteps.MakeADecisionListHearing();
+      await HearingCenterAdminGaApiSteps.HearingScheduledGa();
+      await JudgeGaApiSteps.GenerateDirectionsOrderAssistedWithoutFurtherHearing();
+      await JudgeGaSteps.Login();
+    });
   },
 );
