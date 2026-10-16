@@ -30,12 +30,17 @@ const breathingSpaceDetailsStandard = [
   'refStandard1234'
 ];
 
-const liftBreathingSpaceDetails = [
+const liftBreathingSpaceDetailsFuture = [
   nextWeekDate,
   'test reason'
 ];
 
-Feature('1v2 Spec claim Enter into BS twice and then Exit  - 1v2 - spec').tag('@civil-ccd-nightly @ui-breathing-space');
+const liftBreathingSpaceDetails = [
+  today,
+  'test reason'
+];
+
+Feature('1v2 Spec claim Enter into BS twice and then Exit  - 1v2 - spec').tag('@civil-ccd-pr @ui-breathing-space');
 
 Scenario('01 1v2 spec with state as Case Progression', async ({api_spec, LRspec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
@@ -57,8 +62,9 @@ Scenario('02 Enter into BS Mental Health for 1st Defendant', async ({LRspec}) =>
 });
 
 Scenario('03 Lift BS Mental Health for 1st Defendant', async ({LRspec}) => {
+  const futureExit = false;
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.liftBS(liftBreathingSpaceDetails);
+  await LRspec.liftBS(liftBreathingSpaceDetails, futureExit);
 });
 
 Scenario('04 Enter into Standard BS for 2nd Defendant', async ({LRspec}) => {
@@ -67,8 +73,9 @@ Scenario('04 Enter into Standard BS for 2nd Defendant', async ({LRspec}) => {
 });
 
 Scenario('05 Lift BS Standard for 2nd Defendant', async ({LRspec}) => {
+  const futureExit = true;
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.liftBS(liftBreathingSpaceDetails);
+  await LRspec.liftBS(liftBreathingSpaceDetailsFuture, futureExit);
 });
 
 AfterSuite(async ({api_spec_small}) => {

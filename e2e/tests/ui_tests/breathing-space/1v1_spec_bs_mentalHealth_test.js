@@ -3,15 +3,13 @@ const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 let caseNumber;
 
+// For today's date
+const today = new Date().toISOString().split('T')[0];
+
 //For last weeks date
 const date = new Date();
 date.setDate(date.getDate() - 7);
 const lastWeekDate = date.toISOString().split('T')[0];
-
-//For next weeks date
-const date1 = new Date();
-date1.setDate(date1.getDate() + 7);
-const nextWeekDate = date1.toISOString().split('T')[0];
 
 const breathingSpaceDetailsMentalHealth = [
   'Mental Health Crises Moratorium',
@@ -20,7 +18,7 @@ const breathingSpaceDetailsMentalHealth = [
 ];
 
 const liftBreathingSpaceDetails = [
-  nextWeekDate,
+  today,
   'test reason'
 ];
 
@@ -38,9 +36,10 @@ Scenario('02 Enter into BS Mental Health', async ({LRspec}) => {
   await LRspec.enterIntoBS(breathingSpaceDetailsMentalHealth);
 });
 
-Scenario('03 Lift BS Mental Health', async ({LRspec}) => {
+Scenario('03 Lift BS Mental Health today', async ({LRspec}) => {
+  const futureExit = false;
   await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.liftBS(liftBreathingSpaceDetails);
+  await LRspec.liftBS(liftBreathingSpaceDetails, futureExit);
 });
 
 AfterSuite(async ({api_spec_small}) => {
