@@ -28,8 +28,8 @@ export default class SdoR2SmallClaimsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), {exact: false}),
-      super.expectHeading(ccdCaseData.caseNamePublic!, {exact: false}),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectSubheading(subheadings.warning, {headingLevel: 3}),
       super.expectSubheading(subheadings.judgesRecital, {headingLevel: 3}),
       super.expectSubheading(subheadings.allocation, {headingLevel: 3}),

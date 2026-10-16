@@ -19,11 +19,25 @@ export default class GenerateDirectionsOrderGaActions extends BaseTestData {
     await finalOrderSelectGaPage.submit();
   }
 
+  async selectFreeFormOrder() {
+    const { finalOrderSelectGaPage } = this.generateDirectionsOrderGaPageFactory;
+    await finalOrderSelectGaPage.verifyContent(this.getGaCCDCaseData()!);
+    await finalOrderSelectGaPage.selectFreeFormOrder();
+    await finalOrderSelectGaPage.submit();
+  }
+
   async enterAssistedOrderDetails() {
     const { finalOrderAssistedPage } = this.generateDirectionsOrderGaPageFactory;
     await finalOrderAssistedPage.verifyContent(this.getGaCCDCaseData()!);
     await finalOrderAssistedPage.enterOrderDetails();
     await finalOrderAssistedPage.submit();
+  }
+
+  async enterFreeFormOrderDetails() {
+    const { finalOrderFreeFormPage } = this.generateDirectionsOrderGaPageFactory;
+    await finalOrderFreeFormPage.verifyContent(this.getGaCCDCaseData()!);
+    await finalOrderFreeFormPage.enterOrderDetailsWithoutNotice();
+    await finalOrderFreeFormPage.submit();
   }
 
   async reviewDraftOrder() {
@@ -41,5 +55,6 @@ export default class GenerateDirectionsOrderGaActions extends BaseTestData {
   async confirmOrder() {
     const { generateDirectionsOrderGaConfirmPage } = this.generateDirectionsOrderGaPageFactory;
     await generateDirectionsOrderGaConfirmPage.verifyContent(this.getGaCCDCaseData()!);
+    await generateDirectionsOrderGaConfirmPage.submit();
   }
 }

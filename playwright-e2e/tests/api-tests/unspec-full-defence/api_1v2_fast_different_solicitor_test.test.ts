@@ -1,4 +1,6 @@
 import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
 
 test.describe(
   '1v2 different solicitor unspec full defence api journey',
@@ -11,7 +13,10 @@ test.describe(
       DefendantSolicitor1ApiSteps,
       DefendantSolicitor2ApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await CaseworkerApiSteps.AddCaseNote();
       await ClaimantSolicitorApiSteps.AmendClaimDocuments();
@@ -24,8 +29,8 @@ test.describe(
       await DefendantSolicitor2ApiSteps.AcknowledgeClaimFullDefence();
       await DefendantSolicitor1ApiSteps.InformAgreedExtensionDate();
       await DefendantSolicitor2ApiSteps.InformAgreedExtensionDate();
-      await DefendantSolicitor1ApiSteps.RespondFastFullDefence();
-      await DefendantSolicitor2ApiSteps.RespondFastFullDefence();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+      await DefendantSolicitor2ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
     });
   },

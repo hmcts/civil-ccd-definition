@@ -21,7 +21,7 @@ export default class PermissionGrantedPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.expectText(headings.discontinueThisClaim),
       super.expectHeading(headings.permissionGranted),
-      super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!)),
       super.expectLegend(radioButtons.label),
       super.expectRadioLabel(radioButtons.yes.label, radioButtons.yes.selector),
       super.expectRadioLabel(radioButtons.no.label, radioButtons.no.selector),
