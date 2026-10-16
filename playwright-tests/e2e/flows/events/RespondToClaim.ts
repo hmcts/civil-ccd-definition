@@ -67,7 +67,6 @@ export class RespondToClaim {
           defendantNumber === 1
             ? `#respondent1ClaimResponseType-${respondent1Response}`
             : `#respondent2ClaimResponseType-${respondent2Response}`;
-        console.log(responseTypeLocator);
         await this.page.locator(responseTypeLocator).click();
         break;
       }

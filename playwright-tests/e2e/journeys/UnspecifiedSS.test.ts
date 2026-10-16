@@ -599,7 +599,6 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       test.use({ storageState: sessionUsers.respondent1Solicitor.authFile });
       test('Defendant 1 Solicitor responds to claim.', async ({ page, storageState }) => {
         test.skip(!defendant1Journey.includes(claimType), 'Skipping as first defendant is a LiP');
-        console.log('>>>> ', fixedRecoveryCostsBand);
         await runEvent(page, storageState, async () => {
           await new RespondToClaim(page).submit(
             claimType,

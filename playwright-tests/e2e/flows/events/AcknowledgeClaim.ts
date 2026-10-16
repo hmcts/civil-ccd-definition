@@ -36,7 +36,6 @@ export class AcknowledgeClaim {
       case claimTypes.ONE_VS_TWO_DIFF_SOL:
       case claimTypes.ONE_VS_TWO_LR_LIP:
       case claimTypes.ONE_VS_TWO_LIP_LR:
-        console.log(`#respondent1ClaimResponseIntentionType-${respondent1ResponseIntention}`);
         if (defendantNumber === 1) {
           await this.page
             .locator(`#respondent1ClaimResponseIntentionType-${respondent1ResponseIntention}`)
