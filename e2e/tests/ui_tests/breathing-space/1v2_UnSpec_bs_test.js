@@ -5,6 +5,11 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 // For today's date
 const today = new Date().toISOString().split('T')[0];
 
+//For last weeks date
+const date = new Date();
+date.setDate(date.getDate() - 7);
+const lastWeekDate = date.toISOString().split('T')[0];
+
 //For next weeks date
 const date1 = new Date();
 date1.setDate(date1.getDate() + 7);
@@ -12,7 +17,7 @@ const nextWeekDate = date1.toISOString().split('T')[0];
 
 const breathingSpaceDetailsMentalHealth = [
   'Mental Health Crises Moratorium',
-  today,
+  lastWeekDate,
   'refMental1234'
 ];
 
@@ -22,8 +27,13 @@ const breathingSpaceDetailsStandard = [
   'refStandard1234'
 ];
 
-const liftBreathingSpaceDetails = [
+const liftBreathingSpaceDetailsFuture = [
   nextWeekDate,
+  'test reason'
+];
+
+const liftBreathingSpaceDetails = [
+  today,
   'test reason'
 ];
 
@@ -57,8 +67,9 @@ Scenario('03 Applicant solicitor enter into BS Mental Health for 1st Defendant',
 });
 
 Scenario('04 Lift BS Mental Health for 1st Defendant', async ({I}) => {
+  const futureExit = false;
   await I.login(config.applicantSolicitorUser);
-  await I.liftBS(liftBreathingSpaceDetails, caseId);
+  await I.liftBS(liftBreathingSpaceDetails, caseId, futureExit);
 });
 
 Scenario('05 Applicant solicitor enter into BS Standard for 2nd Defendant', async ({I}) => {
@@ -67,8 +78,9 @@ Scenario('05 Applicant solicitor enter into BS Standard for 2nd Defendant', asyn
 });
 
 Scenario('06 Lift BS Standard for 2nd Defendant', async ({I}) => {
+  const futureExit = true;
   await I.login(config.applicantSolicitorUser);
-  await I.liftBS(liftBreathingSpaceDetails, caseId);
+  await I.liftBS(liftBreathingSpaceDetailsFuture, caseId, futureExit);
 });
 
 AfterSuite(async  () => {

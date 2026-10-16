@@ -38,9 +38,10 @@ Scenario('02 CaseWorker enter into BS Standard', async ({LRspec}) => {
   await LRspec.enterIntoBS(breathingSpaceDetailsStandard);
 });
 
-Scenario('03 Lift BS Standard', async ({LRspec}) => {
+Scenario('03 Lift BS Standard in future', async ({LRspec}) => {
+  const futureExit = true;
   await LRspec.login(config.ctscAdminUser);
-  await LRspec.liftBS(liftBreathingSpaceDetails);
+  await LRspec.liftBS(liftBreathingSpaceDetails, futureExit);
 });
 
 AfterSuite(async ({api_spec_small}) => {
