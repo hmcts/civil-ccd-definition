@@ -7,7 +7,9 @@ const track = 'INTERMEDIATE_CLAIM';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
-Feature('1v1 unspec intermediate track api journey').tag('@api-nightly-prod @api-intermediate-track');
+// DTSCCI-5196 SMOKE: keep one GENERATE_DIRECTIONS_ORDER + evidence + hearing path through CCD + Camunda
+Feature('1v1 unspec intermediate track api journey')
+  .tag('@civil-service-smoke @api-intermediate-track');
 
 Scenario('1v1 Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
@@ -19,7 +21,7 @@ Scenario('1v1 Create Unspecified Intermediate Track claim', async ({api}) => {
   await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
   await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-}).tag('@api-prod');
+});
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();

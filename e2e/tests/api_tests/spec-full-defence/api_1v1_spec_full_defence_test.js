@@ -1,8 +1,6 @@
-
-
 const config = require('../../../config.js');
 
-Feature('1v1 spec full defence api journey').tag('@api-nightly-prod @api-spec-full-defence');
+Feature('1v1 spec full defence api journey').tag('@api-spec-full-defence');
 
 Scenario('1v1 spec full defence', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);

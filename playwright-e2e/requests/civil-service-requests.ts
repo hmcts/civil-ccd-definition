@@ -1,15 +1,273 @@
 import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
-import CaseRole from '../enums/case-role';
+import CaseRole from '../constants/cases/case-role';
+import RespondentAgreed from '../constants/ccd-events/ccd-events/initiate-general-application/respondent-agreed';
+import WithNotice from '../constants/ccd-events/ccd-events/initiate-general-application/with-notice';
 import RequestOptions from '../models/api/request-options';
-import CCDCaseData, { UploadDocumentValue } from '../models/ccd/ccd-case-data';
-import User from '../models/user';
+import CCDCaseData, { ClaimFee, UploadDocumentValue } from '../models/ccd-case-data';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
+import CaseState from '../constants/cases/case-state';
+import GeneralApplicationFeeRequest from '../models/ccd-events/ccd-events/initiate-general-application/general-application-fee-request';
+import User from '../models/users/user';
+import GaCaseState from '../constants/cases/ga-case-states';
+import { civilSystemUpdate } from '../config/users/exui-users';
+import CamundaProcess from '../constants/camunda/camunda-processes';
+import BusinessProcessWaitTracker from '../helpers/business-process-wait-helper';
 
 @AllMethodsStep()
 export default class CivilServiceRequests extends ServiceAuthProviderRequests(BaseRequest) {
   private testingSupportUrl = `${urls.civilService}/testing-support`;
+
+  async submitEventCitizen(
+    user: User,
+    payload: Record<string, any>,
+    caseId: number | 'draft' = 'draft',
+    expectedState?: CaseState,
+  ): Promise<CCDCaseData> {
+    console.log(
+      `Submitting citizen event, event: ${payload.event}, caseId: ${caseId}, user: ${user.name}`,
+    );
+
+    const url = `${urls.civilService}/cases/${caseId}/citizen/${user.userId}/event`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      body: payload,
+      method: 'POST',
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      statusErrorMessage: async (responseJson, { url, status, expectedStatus }) => {
+        if (status === 404) {
+          return await responseJson.text();
+        } else if (status === 422) {
+          let message = `Expected Status: ${expectedStatus}, actual status: ${status}, url: ${url}, error: ${responseJson.error}, message: ${responseJson.message}`;
+
+          if (responseJson.details?.field_errors?.length) {
+            message += `, field errors: ${responseJson.details.field_errors
+              .map((item: any) => `{id: ${item.id}, message: ${item.message}}`)
+              .join(', ')}`;
+          }
+
+          return message;
+        }
+      },
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('id', responseJson);
+        await super.expectResponseJsonToHaveProperty('case_data', responseJson);
+        if (expectedState) {
+          await super.expectResponseJsonToHavePropertyValue('state', expectedState, responseJson, {
+            nonRetryable: true,
+          });
+        }
+      },
+    });
+
+    console.log(
+      `Citizen event submitted successfully, event: ${payload.event}, caseId: ${responseJson.id}, user: ${user.name}`,
+    );
+    return {
+      id: Number(responseJson.id),
+      ...responseJson.case_data,
+    };
+  }
+
+  async getClaimFeeData(user: User, amount: number): Promise<ClaimFee> {
+    const roundedAmount = Number(amount.toFixed(2));
+    console.log(`Getting claim fee data, amount: ${roundedAmount}`);
+    const url = `${urls.civilService}/fees/claim/${roundedAmount}`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('calculatedAmountInPence', responseJson);
+        await super.expectResponseJsonToHaveProperty('code', responseJson);
+        await super.expectResponseJsonToHaveProperty('version', responseJson);
+      },
+    });
+    console.log(
+      `Claim fee of ${responseJson.calculatedAmountInPence} retrieved based on claim amount ${roundedAmount} successfully`,
+    );
+    return responseJson;
+  }
+
+  async getGaClaimFeeData(
+    user: User,
+    { gaTypesLr, respondentAgreed, withNotice, hearingDate }: GeneralApplicationFeeRequest,
+  ): Promise<ClaimFee> {
+    console.log(
+      `Getting general application claim fee data, applicationTypes: ${gaTypesLr.join(', ')}`,
+    );
+    const url = `${urls.civilService}/fees/general-application`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      body: {
+        applicationTypes: gaTypesLr,
+        withConsent: respondentAgreed === RespondentAgreed.YES,
+        withNotice: withNotice === WithNotice.YES,
+        ...(hearingDate ? { hearingDate } : {}),
+      },
+      method: 'POST',
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('calculatedAmountInPence', responseJson);
+        await super.expectResponseJsonToHaveProperty('code', responseJson);
+        await super.expectResponseJsonToHaveProperty('version', responseJson);
+      },
+    });
+
+    console.log('General application claim fee retrieved successfully.');
+    return responseJson;
+  }
+
+  async getHearingsPayload(user: User, caseId?: number): Promise<Record<string, any>> {
+    console.log(`Getting hearings payload, caseId: ${caseId}`);
+    const url = `${urls.civilService}/serviceHearingValues`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      body: {
+        caseReference: caseId,
+        hearingId: 'HER123123123',
+      },
+      method: 'POST',
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('caseDeepLink', responseJson);
+        await super.expectResponseJsonToHaveProperty('hmctsServiceID', responseJson);
+        await super.expectResponseJsonToHaveProperty('parties', responseJson);
+        await super.expectResponseJsonToHaveProperty('caseFlags', responseJson);
+      },
+    });
+
+    console.log(`Hearings payload retrieved successfully, caseId: ${caseId}`);
+    return responseJson;
+  }
+
+  async triggerCamundaProcess(
+    user: User,
+    processName: CamundaProcess,
+    variables: Record<string, any> = {},
+  ): Promise<Record<string, any>> {
+    console.log(`Triggering Camunda process, processName: ${processName}`);
+    const url = `${this.testingSupportUrl}/trigger-camunda-process`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      body: {
+        name: processName,
+        variables,
+      },
+      method: 'POST',
+    };
+
+    const responseJson = await super.retryRequestJson(url, requestOptions, {
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonToHaveProperty('id', responseJson);
+      },
+    });
+
+    console.log(
+      `Camunda process triggered successfully, processName: ${processName}, processId: ${responseJson.id}`,
+    );
+    return responseJson;
+  }
+
+  async waitForCompletedCamundaProcess(
+    user: User,
+    definitionKey?: string,
+    processInstanceId?: string,
+    variables?: string,
+  ) {
+    console.log(
+      `Waiting for Camunda process to complete, definitionKey: ${definitionKey}, processInstanceId: ${processInstanceId}, variables: ${variables}`,
+    );
+    const params = {
+      ...(definitionKey ? { definitionKey } : {}),
+      ...(processInstanceId ? { processInstanceId } : {}),
+      ...(variables ? { variables } : {}),
+    };
+    const url = `${this.testingSupportUrl}/camunda-processes`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      params,
+    };
+
+    // 10 retries at 2s gave every Camunda process 20s to reach COMPLETED, which is far short of
+    // what the hearing notice processes actually take. Measured on the PR 8392 preview during a
+    // functional run: NOTIFY_HEARING_PARTIES 128.4s, HEARING_PROCESS 158.6s and
+    // SpecAutomatedHearingNoticeScheduler up to 35.7s, all of which COMPLETED. The engine had no
+    // ACTIVE instance left apart from a long-lived scheduler, so nothing was stuck; the wait was
+    // simply too short and the test reported state ACTIVE at 20s.
+    //
+    // Uses the wall clock deadline DTSCCI-6353 added, with the same 300s ceiling that
+    // BusinessProcessWaitTracker.MAX_BUDGET_MS applies to the businessProcess wait, so the two
+    // waits in this file now agree. The interval starts at 1s so a process that finishes quickly,
+    // which is most of them, is not held up, and backs off to 10s so a long one does not generate
+    // hundreds of polls.
+    await super.retryRequestJson(url, requestOptions, {
+      timeoutMs: 300_000,
+      retryTimeInterval: 1000,
+      backoffFactor: 1.5,
+      maxRetryTimeInterval: 10_000,
+      verifyResponse: async (responseJson) => {
+        await super.expectResponseJsonPropertyToBe('0.state', 'COMPLETED', responseJson, {
+          message: 'Waiting for camunda process to complete',
+        });
+      },
+    });
+
+    console.log(
+      `Camunda process completed successfully, definitionKey: ${definitionKey}, processInstanceId: ${processInstanceId}, variables: ${variables}`,
+    );
+  }
+
+  async getCompletedCamundaProcessCount(
+    user: User,
+    definitionKey: CamundaProcess,
+    variables?: string,
+    options: { expectCount?: number } = {},
+  ): Promise<number> {
+    console.log(
+      `Getting completed Camunda process count, definitionKey: ${definitionKey}, variables: ${variables}`,
+    );
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      params: {
+        definitionKey,
+        ...(variables ? { variables } : {}),
+      },
+    };
+
+    const responseJson = await super.requestJson(
+      `${this.testingSupportUrl}/camunda-processes`,
+      requestOptions,
+    );
+    const completedProcessCount = (responseJson || []).filter(
+      (process: Record<string, any>) => process.state === 'COMPLETED',
+    ).length;
+
+    if (options.expectCount !== undefined) {
+      await super.expectResponseJsonPropertyToBe(
+        'completedProcessCount',
+        options.expectCount,
+        { completedProcessCount },
+        {
+          nonRetryable: true,
+          message:
+            `Expected completed Camunda process count to be ${options.expectCount}, ` +
+            `definitionKey: ${definitionKey}, variables: ${variables}, actual count: ${completedProcessCount}`,
+        },
+      );
+    }
+
+    console.log(`Completed Camunda process count retrieved, count: ${completedProcessCount}`);
+    return completedProcessCount;
+  }
 
   async uploadTestDocument(user: User): Promise<UploadDocumentValue> {
     console.log('Uploading test document...');
@@ -34,34 +292,80 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     };
   }
 
-  async waitForFinishedBusinessProcess(user: User, caseId: number) {
+  async waitForFinishedBusinessProcess(
+    user: User,
+    caseId?: number,
+    expectedCaseState?: (CaseState | GaCaseState)[] | CaseState | GaCaseState,
+    { timeoutMs }: { timeoutMs?: number } = {},
+  ) {
     console.log(`Waiting for business process to finish, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}/business-process`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
+    // The budget depends on the process, which is only known once polled, so it is enforced in verifyResponse.
+    // The retry deadline is a safety net set just beyond the largest budget.
+    const tracker = new BusinessProcessWaitTracker(timeoutMs);
     await super.retryRequestJson(url, requestOptions, {
-      retries: 25,
-      retryTimeInterval: 3000,
+      timeoutMs: Math.max(timeoutMs ?? 0, BusinessProcessWaitTracker.MAX_BUDGET_MS) + 30_000,
+      retryTimeInterval: 1000,
+      backoffFactor: 1.5,
+      maxRetryTimeInterval: 10_000,
+      verifyResponse: async (responseJson) => {
+        const businessProcess = responseJson.businessProcess;
+        tracker.record(businessProcess);
+        await super.expectResponseJsonToNotHaveProperty('incidentMessage', responseJson, {
+          message: `Business process incident [INCIDENT]: ${businessProcess?.camundaEvent}, caseId: ${caseId}, incident message: ${responseJson.incidentMessage}`,
+          nonRetryable: true,
+        });
+        const overBudget = tracker.isOverBudget();
+        const expectOptions = {
+          message: tracker.describe(businessProcess, caseId, overBudget),
+          nonRetryable: overBudget,
+        };
+        await super.expectResponseJsonToHaveProperty('businessProcess', responseJson, expectOptions);
+        await super.expectResponseJsonPropertyToBe(
+          'businessProcess.status',
+          'FINISHED',
+          responseJson,
+          expectOptions,
+        );
+        if (expectedCaseState)
+          await super.expectResponseJsonPropertyToBe('ccdState', expectedCaseState, responseJson, {
+            nonRetryable: true,
+          });
+      },
+    });
+    console.log(`Business process successfully finished, caseId: ${caseId}`);
+  }
+
+  async waitForGAFinishedBusinessProcess(user: User, caseId?: number) {
+    console.log(`Waiting for general application business process to finish, caseId: ${caseId}`);
+    const url = `${this.testingSupportUrl}/case/${caseId}/business-process/ga`;
+    const requestOptions: RequestOptions = {
+      headers: await this.getRequestHeaders(user),
+    };
+    await super.retryRequestJson(url, requestOptions, {
+      retries: 30,
+      retryTimeInterval: 5000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
-        const businessProcess = responseJson.businessProcess;
         await super.expectResponseJsonToHavePropertyValue(
           'businessProcess.status',
           'FINISHED',
           responseJson,
           {
             message:
-              `Ongoing business process: ${businessProcess.camundaEvent}, caseId: ${caseId}, status: ${businessProcess.status},` +
-              ` process instance: ${businessProcess.processInstanceId}, last finished activity: ${businessProcess.activityId}`,
+              `Ongoing general application business process: ${responseJson.businessProcess.camundaEvent}, caseId: ${caseId}, status: ${responseJson.businessProcess.status},` +
+              ` process instance: ${responseJson.businessProcess.processInstanceId}, last finished activity: ${responseJson.businessProcess.activityId}`,
           },
         );
         await super.expectResponseJsonToNotHaveProperty('incidentMessage', responseJson, {
-          message: `Business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
+          message: `General application business process failed for case: ${caseId}, incident message: ${responseJson.incidentMessage}`,
         });
       },
     });
-    console.log(`Business process successfully finished, caseId: ${caseId}`);
+    console.log(`General application business process successfully finished, caseId: ${caseId}`);
   }
 
   async updatePaymentForClaimIssue(user: User, serviceRequestDTO: any) {
@@ -75,10 +379,39 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       method: 'PUT',
     };
     await super.retryRequest(url, requestOptions);
-    console.log(`Payment for claim issue successfully updated, caseId: ${serviceRequestDTO.id}`);
+    console.log(
+      `Payment for claim issue successfully updated, caseId: ${serviceRequestDTO.ccd_case_number}`,
+    );
   }
 
-  async assignCaseToDefendant(user: User, caseId: number, caseRole: CaseRole) {
+  async updatePaymentForGaClaimIssue(user: User, serviceRequestDTO: any) {
+    console.log(
+      `Updating payment for general application, caseId: ${serviceRequestDTO.ccd_case_number}...`,
+    );
+    const url = `${urls.civilService}/service-request-update`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      body: serviceRequestDTO,
+      method: 'PUT',
+    };
+    await super.retryRequest(url, requestOptions);
+    console.log(
+      `Payment for general application successfully updated, caseId: ${serviceRequestDTO.ccd_case_number}`,
+    );
+  }
+
+  async triggerHearingFeePaid(user: User, caseId?: number) {
+    console.log(`Triggering hearing fee paid, caseId: ${caseId}...`);
+    const url = `${this.testingSupportUrl}/${caseId}/trigger-hearing-fee-paid`;
+    const requestOptions: RequestOptions = {
+      headers: await super.getRequestHeaders(user),
+      method: 'GET',
+    };
+    await super.retryRequest(url, requestOptions);
+    console.log(`Hearing fee paid triggered successfully, caseId: ${caseId}`);
+  }
+
+  async assignCaseToDefendant(user: User, caseRole: CaseRole, caseId?: number) {
     console.log(`Assigning role: ${caseRole} to user: ${user.name}, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/assign-case/${caseId}/${caseRole}`;
     const requestOptions: RequestOptions = {
@@ -99,13 +432,18 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       },
       method: 'POST',
     };
-    await super.retryRequest(url, requestOptions);
-    caseIds.forEach((caseId) =>
-      console.log(`User: ${user.name} unassigned from case [${caseId}] successfully`),
-    );
+    try {
+      await super.retryRequest(url, requestOptions, { retries: 5 });
+      caseIds.forEach((caseId) =>
+        console.log(`User: ${user.name} unassigned from case [${caseId}] successfully`),
+      );
+    } catch (error) {
+      console.log(`Could not unassign cases for ${user.name}`);
+      console.log(error);
+    }
   }
 
-  async updateCaseData(user: User, caseId: number, caseData: CCDCaseData) {
+  async updateCaseData(user: User, caseData: CCDCaseData, caseId?: number) {
     console.log(`Updating case data, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}`;
     const requestOptions: RequestOptions = {

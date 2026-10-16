@@ -1,6 +1,6 @@
 import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import User from '../../../models/user';
+import User from '../../../models/users/user';
 
 @AllMethodsStep()
 export default class ExuiDashboardSteps extends BaseExui {

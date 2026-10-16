@@ -21,8 +21,7 @@ const calculatedClaimsTrackWOSum = {
     fastTrackDisclosureOfDocuments: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
-        && typeof data.input3 === 'string'
-        && typeof data.input4 === 'string';
+        && typeof data.input3 === 'string';
     },
     fastTrackSettlementToggle: (data) => Array.isArray(data),
     disposalHearingWitnessOfFactToggle: (data) => Array.isArray(data),
@@ -61,7 +60,6 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.input3 === 'string'
         && typeof data.input4 === 'string';
     },
-    disposalHearingBundleToggle: (data) => Array.isArray(data),
     smallClaimsCreditHire: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input2 === 'string'
@@ -75,9 +73,6 @@ const calculatedClaimsTrackWOSum = {
     smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
     smallClaimsHearingToggle: (data) => Array.isArray(data),
     fastTrackMethodToggle: (data) => Array.isArray(data),
-    disposalHearingBundle: (data) => {
-      return typeof data.input === 'string';
-    },
     fastTrackWitnessOfFact: (data) => {
       return typeof data.input1 === 'string'
         && typeof data.input4 === 'string'
@@ -93,7 +88,6 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.input4 === 'string';
     },
     fastTrackTrialToggle: (data) => Array.isArray(data),
-    fastTrackTrialBundleToggle: (data) => Array.isArray(data),
     fastTrackNotes: (data) => {
       return typeof data.input === 'string';
     },
@@ -144,27 +138,16 @@ const calculatedClaimsTrackWOSum = {
       return typeof data.input === 'string';
     },
     fastTrackHousingDisrepair: (data) => {
-      return typeof data.clauseA === 'string'
-        && typeof data.clauseB === 'string'
-        && typeof data.clauseCBeforeDate === 'string'
-        && typeof data.clauseCAfterDate === 'string'
-        && typeof data.clauseD === 'string'
-        && typeof data.clauseE === 'string';
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string'
+        && typeof data.input3 === 'string'
+        && typeof data.input4 === 'string';
     },
     disposalHearingDisclosureOfDocuments: (data) => {
-      return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string';
+      return typeof data.input1 === 'string';
     },
     smallClaimsRoadTrafficAccident:(data) => {
       return typeof data.input === 'string';
-    },
-    smallClaimsHousingDisrepair: (data) => {
-      return typeof data.clauseA === 'string'
-        && typeof data.clauseB === 'string'
-        && typeof data.clauseCBeforeDate === 'string'
-        && typeof data.clauseCAfterDate === 'string'
-        && typeof data.clauseD === 'string'
-        && typeof data.clauseE === 'string';
     },
     fastTrackCostsToggle: (data) => Array.isArray(data),
     smallClaimsDocumentsToggle: (data) => Array.isArray(data),
@@ -178,7 +161,10 @@ const calculatedClaimsTrackWOSum = {
     disposalHearingQuestionsToExpertsToggle: (data) => Array.isArray(data),
     smallClaimsDocuments: (data) => {
       return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string';
+        && typeof data.input2 === 'string'
+        // && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/);
+        && (data.deadlineDate === undefined || typeof data.deadlineDate === 'string');
+
     },
     smallClaimsMethodToggle: (data) => Array.isArray(data),
     disposalHearingClaimSettlingToggle: (data) => Array.isArray(data)
@@ -234,8 +220,10 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
     sdoR2SmallClaimsWitnessStatements: (data) => {
       return typeof data.sdoStatementOfWitness === 'string'
-      && typeof data.isRestrictWitness === 'string'
-      && typeof data.isRestrictPages === 'string'
+        // && typeof data.deadlineDate.match(/\d{4}-\d{2}-\d{2}/)
+        && (data.deadlineDate === undefined || typeof data.deadlineDate === 'string')
+        && typeof data.isRestrictWitness === 'string'
+        && typeof data.isRestrictPages === 'string'
         && typeof data.text === 'string';
     },
     sdoR2SmallClaimsUploadDoc: (data) => {
@@ -289,9 +277,7 @@ module.exports = {
           },
           disposalHearingDisclosureOfDocuments: {
             input1: 'string',
-            date1: date(-1),
-            input2: 'string',
-            date2: date(-1)
+            date1: date(-1)
           },
           disposalHearingWitnessOfFact: {
             input1: 'string',
@@ -328,13 +314,6 @@ module.exports = {
           },
           disposalHearingMethod: 'disposalHearingMethodTelephoneHearing',
           disposalHearingMethodTelephoneHearing: 'telephoneTheClaimant',
-          disposalHearingBundle: {
-            input: '',
-            type: [
-              'DOCUMENTS',
-              'SUMMARY'
-            ]
-          },
           disposalHearingAddNewDirections: [
             element({
               directionComment: 'string1'
@@ -407,7 +386,8 @@ module.exports = {
           smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
           smallClaimsDocuments: {
             input1: 'string',
-            input2: 'string'
+            input2: 'string',
+            deadlineDate: date(28)
           },
           smallClaimsWitnessStatement: {
             input1: 'string',
@@ -429,11 +409,7 @@ module.exports = {
           smallClaimsNotes: {
             input: 'string',
             date: date(1)
-          },
-          smallClaimsPenalNoticeToggle: [
-            'SHOW'
-          ],
-          smallClaimsPenalNotice: 'Test penal notice text for small claims CARM'
+          }
         }
       },
       midEventData: {
@@ -448,9 +424,7 @@ module.exports = {
     };
     data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
-      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag,
-      smallClaimsPenalNoticeToggle: (d) => Array.isArray(d),
-      smallClaimsPenalNotice: (d) => typeof d === 'string'
+      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
     return data;
   },
@@ -502,11 +476,7 @@ module.exports = {
           smallClaimsNotes: {
             input: 'string',
             date: date(1)
-          },
-          smallClaimsPenalNoticeToggle: [
-            'SHOW'
-          ],
-          smallClaimsPenalNotice: 'Test penal notice text for small claims'
+          }
         }
       },
       midEventData: {
@@ -521,9 +491,7 @@ module.exports = {
     };
     data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
-      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag,
-      smallClaimsPenalNoticeToggle: (d) => Array.isArray(d),
-      smallClaimsPenalNotice: (d) => typeof d === 'string'
+      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
     return data;
   },
@@ -632,9 +600,7 @@ module.exports = {
             date1: date(-1),
             input2: 'string',
             date2: date(-1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(-1)
+            input3: 'string'
           },
           fastTrackWitnessOfFact: {
             input1: 'string',
@@ -694,14 +660,12 @@ module.exports = {
             input8: 'string'
           },
           fastTrackHousingDisrepair: {
-            clauseA: 'string',
-            clauseB: 'string',
-            firstReportDateBy: date(1),
-            clauseCBeforeDate: 'string',
-            jointStatementDateBy: date(1),
-            clauseCAfterDate: 'string',
-            clauseD: 'string',
-            clauseE: 'string'
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
           },
           fastTrackPersonalInjury: {
             input1: 'string',
@@ -728,11 +692,7 @@ module.exports = {
           },
           fastTrackHearingNotes: {
             input: 'Claimant\'s expert will be joining via Video\nRemaining hearing participants will attend in person'
-          },
-          fastTrackPenalNoticeToggle: [
-            'SHOW'
-          ],
-          fastTrackPenalNotice: 'Test penal notice text for fast track'
+          }
         }
       },
       midEventData: {
@@ -755,9 +715,7 @@ module.exports = {
     };
     data.calculated.FastTrack = {...data.calculated.OrderType,
       setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
-      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag,
-      fastTrackPenalNoticeToggle: (d) => Array.isArray(d),
-      fastTrackPenalNotice: (d) => typeof d === 'string'
+      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
     };
     return data;
   },
@@ -800,9 +758,7 @@ module.exports = {
             date1: date(-1),
             input2: 'string',
             date2: date(-1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(-1)
+            input3: 'string'
           },
           fastTrackWitnessOfFact: {
             input1: 'string',
@@ -861,14 +817,12 @@ module.exports = {
             input8: 'string'
           },
           fastTrackHousingDisrepair: {
-            clauseA: 'string',
-            clauseB: 'string',
-            firstReportDateBy: date(1),
-            clauseCBeforeDate: 'string',
-            jointStatementDateBy: date(1),
-            clauseCAfterDate: 'string',
-            clauseD: 'string',
-            clauseE: 'string'
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
           },
           fastTrackPersonalInjury: {
             input1: 'string',
@@ -895,11 +849,7 @@ module.exports = {
           },
           fastTrackHearingNotes: {
             input: 'Claimant\'s expert will be joining via Video\nRemaining hearing participants will attend in person'
-          },
-          fastTrackPenalNoticeToggle: [
-            'SHOW'
-          ],
-          fastTrackPenalNotice: 'Test penal notice text for fast track in person'
+          }
         }
       },
       midEventData: {
@@ -922,9 +872,7 @@ module.exports = {
     };
     data.calculated.FastTrack = {...data.calculated.OrderType,
       setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
-      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag,
-      fastTrackPenalNoticeToggle: (d) => Array.isArray(d),
-      fastTrackPenalNotice: (d) => typeof d === 'string'
+      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
     };
     return data;
   },
@@ -981,16 +929,6 @@ module.exports = {
           },
           smallClaimsRoadTrafficAccident: {
             input: 'string'
-          },
-          smallClaimsHousingDisrepair: {
-            clauseA: 'string',
-            clauseB: 'string',
-            firstReportDateBy: date(1),
-            clauseCBeforeDate: 'string',
-            jointStatementDateBy: date(1),
-            clauseCAfterDate: 'string',
-            clauseD: 'string',
-            clauseE: 'string'
           },
           smallClaimsAddNewDirections: [
             element({
@@ -1174,16 +1112,6 @@ module.exports = {
           smallClaimsRoadTrafficAccident: {
             input: 'string'
           },
-          smallClaimsHousingDisrepair: {
-            clauseA: 'string',
-            clauseB: 'string',
-            firstReportDateBy: date(1),
-            clauseCBeforeDate: 'string',
-            jointStatementDateBy: date(1),
-            clauseCAfterDate: 'string',
-            clauseD: 'string',
-            clauseE: 'string'
-          },
           smallClaimsAddNewDirections: [
             element({
               directionComment: 'string'
@@ -1195,11 +1123,7 @@ module.exports = {
           smallClaimsNotes: {
             input: 'string',
             date: date(1)
-          },
-          smallClaimsPenalNoticeToggle: [
-            'SHOW'
-          ],
-          smallClaimsPenalNotice: 'Test penal notice text for small claims in person'
+          }
         }
       },
       midEventData: {
@@ -1274,9 +1198,7 @@ module.exports = {
             date1: date(-1),
             input2: 'string',
             date2: date(-1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(-1)
+            input3: 'string'
           },
           fastTrackWitnessOfFact: {
             input1: 'string',
@@ -1336,14 +1258,12 @@ module.exports = {
             input8: 'string'
           },
           fastTrackHousingDisrepair: {
-            clauseA: 'string',
-            clauseB: 'string',
-            firstReportDateBy: date(1),
-            clauseCBeforeDate: 'string',
-            jointStatementDateBy: date(1),
-            clauseCAfterDate: 'string',
-            clauseD: 'string',
-            clauseE: 'string'
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
           },
           fastTrackPersonalInjury: {
             input1: 'string',
@@ -1367,11 +1287,7 @@ module.exports = {
           fastTrackNotes: {
             input: 'string',
             date: date(1)
-          },
-          fastTrackPenalNoticeToggle: [
-            'SHOW'
-          ],
-          fastTrackPenalNotice: 'Test penal notice text for fast track without sum'
+          }
         }
       },
       midEventData: {
@@ -1394,9 +1310,7 @@ module.exports = {
     };
     data.calculated.FastTrack = {...data.calculated.OrderType,
       setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
-      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag,
-      fastTrackPenalNoticeToggle: (d) => Array.isArray(d),
-      fastTrackPenalNotice: (d) => typeof d === 'string'
+      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
     };
     return data;
   },
@@ -1442,9 +1356,7 @@ module.exports = {
             date1: date(-1),
             input2: 'string',
             date2: date(-1),
-            input3: 'string',
-            input4: 'string',
-            date3: date(-1)
+            input3: 'string'
           },
           fastTrackWitnessOfFact: {
             input1: 'string',
@@ -1504,14 +1416,12 @@ module.exports = {
             input8: 'string'
           },
           fastTrackHousingDisrepair: {
-            clauseA: 'string',
-            clauseB: 'string',
-            firstReportDateBy: date(1),
-            clauseCBeforeDate: 'string',
-            jointStatementDateBy: date(1),
-            clauseCAfterDate: 'string',
-            clauseD: 'string',
-            clauseE: 'string'
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
           },
           fastTrackPersonalInjury: {
             input1: 'string',

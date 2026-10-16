@@ -1,7 +1,7 @@
 import { APIResponse } from '@playwright/test';
 
 export interface _ResponseOptions {
-  expectedStatus?: number;
+  expectedStatus?: number | number[];
   verifyResponse?: (
     response: APIResponse | any | string,
     responseData?: {
@@ -11,6 +11,17 @@ export interface _ResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    response: APIResponse | any | string,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number | number[];
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface ResponseOptions extends _ResponseOptions {
@@ -23,6 +34,17 @@ export interface ResponseOptions extends _ResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    response: APIResponse,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number | number[];
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface ResponseJsonOptions extends _ResponseOptions {
@@ -35,6 +57,17 @@ export interface ResponseJsonOptions extends _ResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    responseJson: any,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number | number[];
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface ResponseTextOptions extends _ResponseOptions {
@@ -47,12 +80,29 @@ export interface ResponseTextOptions extends _ResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    responseText: string,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number | number[];
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface _RetryResponseOptions {
-  expectedStatus?: number;
+  expectedStatus?: number | number[];
   retries?: number;
   retryTimeInterval?: number;
+  // Wall clock deadline for the whole retry loop. When set, it replaces retries as the stop condition.
+  timeoutMs?: number;
+  // Multiplier applied to retryTimeInterval after each failed attempt. Defaults to 1 (constant interval).
+  backoffFactor?: number;
+  // Upper bound for the interval once backoff has been applied.
+  maxRetryTimeInterval?: number;
   verifyResponse?: (
     response: APIResponse | any | string,
     responseData?: {
@@ -62,6 +112,17 @@ export interface _RetryResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    response: APIResponse | any | string,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number | number[];
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface RetryResponseOptions extends _RetryResponseOptions {
@@ -74,6 +135,17 @@ export interface RetryResponseOptions extends _RetryResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    response: APIResponse,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number | number[];
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface RetryResponseJsonOptions extends _RetryResponseOptions {
@@ -86,6 +158,17 @@ export interface RetryResponseJsonOptions extends _RetryResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    responseJson: any,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number | number[];
+    },
+  ) => Promise<string | undefined>;
 }
 
 export interface RetryResponseTextOptions extends _RetryResponseOptions {
@@ -98,4 +181,15 @@ export interface RetryResponseTextOptions extends _RetryResponseOptions {
       status?: number;
     },
   ) => Promise<void>;
+  statusErrorMessage?: (
+    responseText: string,
+    responseData?: {
+      url?: string;
+      headers?: {
+        [key: string]: string;
+      };
+      status?: number;
+      expectedStatus?: number | number[];
+    },
+  ) => Promise<string | undefined>;
 }

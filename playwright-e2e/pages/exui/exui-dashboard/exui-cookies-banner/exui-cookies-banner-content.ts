@@ -10,11 +10,11 @@ export const paragraphs = {
 
 export const buttons = {
   accept: {
-    title: 'Accept additional cookies',
+    title: 'Accept analytics cookies',
     selector: "button[value='accept']",
   },
   reject: {
-    title: 'Reject additional cookies',
+    title: 'Reject analytics cookies',
     selector: "button[value='reject']",
   },
 };

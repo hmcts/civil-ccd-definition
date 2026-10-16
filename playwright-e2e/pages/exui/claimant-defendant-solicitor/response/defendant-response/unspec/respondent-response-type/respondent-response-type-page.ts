@@ -1,11 +1,11 @@
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import { radioButtons } from './respondent-response-type-content.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import { Party } from '../../../../../../../models/partys.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
+import { Party } from '../../../../../../../models/users/partys.ts';
 import { Page } from '@playwright/test';
-import partys from '../../../../../../../constants/partys.ts';
+import partys from '../../../../../../../constants/users/partys';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()

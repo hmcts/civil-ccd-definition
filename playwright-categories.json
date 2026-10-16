@@ -5,6 +5,11 @@
       "matchedStatuses": ["failed"]
     },
     {
+      "name": "Work allocations error",
+      "messageRegex": ".*Ongoing task retrieval.*",
+      "matchedStatuses": ["failed"]
+    },
+    {
       "name": "Missing locator",
       "messageRegex": ".*expect\\.toBeVisible.*",
       "matchedStatuses": ["failed"]

@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page';
 import { defendantSolicitor1User } from '../../../../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import { paragraphs, subheadings, inputs } from './defendant-solicitor-email-spec-content';
 
 @AllMethodsStep()

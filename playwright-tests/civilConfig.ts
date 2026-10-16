@@ -1,9 +1,5 @@
-import User from '../playwright-e2e/models/user.ts';
-import { getUser } from '../playwright-e2e/config/users/user-utils.ts';
-import UserKey from '../playwright-e2e/enums/user-key.ts';
-import UserRole from '../playwright-e2e/enums/user-role.ts';
 import config from '../playwright-e2e/config/config.ts';
-import Environment from '../playwright-e2e/enums/environment.ts';
+import Environment from '../playwright-e2e/constants/test-utils/environment.ts';
 // Password12!
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const eventCode = process.env.CLAIM == 'SPEC' ? '_SPEC' : '';

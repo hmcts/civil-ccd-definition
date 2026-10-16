@@ -2,7 +2,7 @@ import { Locator, Page } from '@playwright/test';
 import { Page as PageCore } from 'playwright-core';
 import AxeBuilder from '@axe-core/playwright';
 import config from '../config/config';
-import Cookie from '../models/cookie';
+import Cookie from '../models/test-utils/cookie';
 import { TruthyParams } from '../decorators/truthy-params';
 import { pageExpect, test } from '../playwright-fixtures';
 import Timer from '../helpers/timer';
@@ -81,25 +81,42 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickButtonByName(
-    name: string,
-    options: { timeout?: number; exact?: boolean } = {},
+    name: string | RegExp,
+    options: {
+      timeout?: number;
+      exact?: boolean;
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+    } = {},
   ) {
-    await this.page.getByRole('button', { name, exact: options.exact ?? true }).click(options);
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    let locator = this.page.getByRole('button', { name, exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.click({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickLink(
     name: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = {
-      exact: true,
-      index: 0,
-    },
+    options: {
+      timeout?: number;
+      exact?: boolean;
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+    } = {},
   ) {
-    await this.page
-      .getByRole('link', { name, exact: options.exact ?? true })
-      .nth(options.index ?? 0)
-      .click({ timeout: options.timeout });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    let locator = this.page.getByRole('link', { name, exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.click({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -197,6 +214,23 @@ export default abstract class BasePage {
     await locator.fill(input.toString());
   }
 
+  @BoxedDetailedStep(classKey, 'selector')
+  @TruthyParams(classKey, 'selector')
+  protected async blurSelector(
+    selector: string,
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {
+      index: 0,
+    },
+  ) {
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    const index = options.first ? undefined : (options.index ?? 0);
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, index, options.first);
+    await locator.blur({ timeout: options.timeout });
+  }
+
   @TruthyParams(classKey)
   protected async getText(selector: string) {
     return (await this.page.textContent(selector)) ?? undefined;
@@ -272,9 +306,15 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'filePath', 'selector')
   @TruthyParams(classKey)
-  protected async uploadFile(filePath: string, selector: string) {
-    await this.page.locator(selector).setInputFiles([]);
-    await this.page.locator(selector).setInputFiles([filePath]);
+  protected async uploadFile(
+    filePath: string,
+    selector: string,
+    options: { containerSelector?: string; index?: number; first?: boolean } = {},
+  ) {
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.setInputFiles([]);
+    await locator.setInputFiles([filePath]);
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -553,6 +593,23 @@ export default abstract class BasePage {
     });
   }
 
+  // XUI shows the case number and case name in their own level 1 headings on older releases,
+  // and together in a single level 2 heading on newer ones, so match any heading containing the text.
+  @BoxedDetailedStep(classKey, 'text')
+  @TruthyParams(classKey, 'text')
+  protected async expectCaseHeading(
+    text: string,
+    options: {
+      message?: string;
+      timeout?: number;
+    } = {},
+  ) {
+    const locator = this.page.getByRole('heading', { name: text });
+    await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+      timeout: options.timeout,
+    });
+  }
+
   @BoxedDetailedStep(classKey, 'text')
   protected async expectSubheading(
     text: string,
@@ -618,6 +675,7 @@ export default abstract class BasePage {
   protected async expectNoSubheading(
     text: string | number,
     options: {
+      headingLevel?: 2 | 3 | 4 | 5 | 6;
       message?: string;
       exact?: boolean;
       containerSelector?: string;
@@ -636,7 +694,7 @@ export default abstract class BasePage {
 
     let locator = this.page.getByRole('heading', {
       name: text.toString(),
-      level: 2,
+      level: options.headingLevel ?? 2,
       exact: options.exact ?? true,
     });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
@@ -1306,6 +1364,18 @@ export default abstract class BasePage {
     });
   }
 
+  @BoxedDetailedStep(classKey, 'name')
+  protected async expectNoLink(
+    name: string,
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
+  ) {
+    await pageExpect(this.page.getByRole('link', { name, exact: options.exact ?? true }), {
+      message: options.message,
+    }).toBeHidden({
+      timeout: options.timeout,
+    });
+  }
+
   @BoxedDetailedStep(classKey, 'selector')
   @TruthyParams(classKey, 'selector')
   protected async expectOptionChecked(
@@ -1537,6 +1607,20 @@ export default abstract class BasePage {
   }
 
   @Step(classKey)
+  @TruthyParams(classKey, 'text')
+  protected async retryClickByText(
+    text: string,
+    assertions: () => Promise<void>[] | Promise<void>,
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
+  ) {
+    await this.retryAction(() => this.clickByText(text), assertions, actionAfterFirstAttempt, {
+      retries,
+      message: message ?? `Click action failed, text: ${text}, trying again`,
+    });
+  }
+
+  @Step(classKey)
   @TruthyParams(classKey, 'name')
   protected async retryClickLink(
     name: string,
@@ -1626,7 +1710,7 @@ export default abstract class BasePage {
       actionAfterFirstAttempt,
       {
         retries,
-        message: message ?? 'Navigation failed, trying again',
+        message: message ?? `Navigation failed, url: ${url}, trying again`,
       },
     );
   }
@@ -1773,5 +1857,11 @@ export default abstract class BasePage {
       assertFirst: true,
       message: message ?? 'Assertion failed, reloading page and trying again',
     });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  @TruthyParams(classKey, 'selector')
+  protected async countBySelector(selector: string): Promise<number> {
+    return await this.page.locator(selector).count();
   }
 }

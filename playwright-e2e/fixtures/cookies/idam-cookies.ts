@@ -1,7 +1,7 @@
 import urls, { getDomain } from '../../config/urls';
-import Cookie from '../../models/cookie';
+import Cookie from '../../models/test-utils/cookie';
 
-export const acceptIdamCookies: Cookie[] = [
+export const acceptIdamCookies = (): Cookie[] => [
   {
     name: 'seen_cookie_message',
     value: 'yes',
@@ -18,7 +18,7 @@ export const acceptIdamCookies: Cookie[] = [
   },
   {
     name: 'cookies_policy',
-    value: '{"essential":true,"analytics":true,"apm":true}',
+    value: 'eyJlc3NlbnRpYWwiOnRydWUsImFuYWx5dGljcyI6dHJ1ZSwiYXBtIjp0cnVlfQ==',
     domain: getDomain(urls.idamWeb),
     path: '/',
     secure: true,

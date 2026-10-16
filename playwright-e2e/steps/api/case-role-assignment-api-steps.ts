@@ -1,8 +1,8 @@
 import { AllMethodsStep } from '../../decorators/test-steps';
-import User from '../../models/user';
+import User from '../../models/users/user';
 import BaseApi from '../../base/base-api';
 import { defendantSolicitor1User, defendantSolicitor2User } from '../../config/users/exui-users';
-import CaseRole from '../../enums/case-role';
+import CaseRole from '../../constants/cases/case-role';
 import UserAssignedCasesHelper from '../../helpers/user-assigned-cases-helper';
 
 @AllMethodsStep()
@@ -12,10 +12,11 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor1User,
-      this.ccdCaseData.id,
       CaseRole.RESPONDENT_SOLICITOR_ONE,
+      this.ccdCaseData?.id,
     );
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
+    await super.fetchAndSetCCDCaseData();
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
   }
 
   async AssignCaseRoleToDS2() {
@@ -23,18 +24,48 @@ export default class CaseRoleAssignmentApiSteps extends BaseApi {
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor2User,
-      this.ccdCaseData.id,
       CaseRole.RESPONDENT_SOLICITOR_TWO,
+      this.ccdCaseData?.id,
     );
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData.id);
+    await super.fetchAndSetCCDCaseData();
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData?.id);
   }
 
-  async UnassignCasesForUser(user: User) {
+  async AssignCaseRoleToDC() {
+    await this.setupUserData(this.defendantCitizenUser);
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.assignCaseToDefendant(
+      this.defendantCitizenUser,
+      CaseRole.DEFENDANT,
+      this.ccdCaseData?.id,
+    );
+    await super.fetchAndSetCCDCaseData();
+    await UserAssignedCasesHelper.addAssignedCaseToUser(this.defendantCitizenUser, this.ccdCaseData?.id);
+  }
+
+  async UnassignCases(user: User) {
     const assignedCases = await UserAssignedCasesHelper.getUserAssignedCases(user);
     if (assignedCases) {
       await this.setupUserData(user);
       const { civilServiceRequests } = this.requestsFactory;
       await civilServiceRequests.unassignUserFromCases(user, assignedCases);
     }
+  }
+
+  async AssignBothCaseRolesToDS1() {
+    await this.setupApiStep(defendantSolicitor1User);
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.assignCaseToDefendant(
+      defendantSolicitor1User,
+      CaseRole.RESPONDENT_SOLICITOR_ONE,
+      this.ccdCaseData?.id,
+    );
+    await civilServiceRequests.assignCaseToDefendant(
+      defendantSolicitor1User,
+      CaseRole.RESPONDENT_SOLICITOR_TWO,
+      this.ccdCaseData?.id,
+    );
+    await super.fetchAndSetCCDCaseData();
+    await UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData?.id);
   }
 }

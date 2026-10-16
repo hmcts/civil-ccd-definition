@@ -119,7 +119,7 @@ const setAsideOrderTypePage = require('./pages/setAsideJudgment/setAsideOrderTyp
 
 const events = require('./fixtures/ccd/events.js');
 const SIGNED_IN_SELECTOR = 'exui-header';
-const SIGNED_OUT_SELECTOR = '#global-header';
+const SIGNED_OUT_SELECTOR = '#email';
 const CASE_HEADER = 'ccd-markdown >> h1';
 const SUMMARY_TAB = 'div[role=\'tab\'] >> \'Summary\'';
 

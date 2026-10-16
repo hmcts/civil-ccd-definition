@@ -1,0 +1,57 @@
+import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+
+test.describe(
+  '1v1 small case progression api journey',
+  { tag: ['@civil-service-nightly', '@api-case-progression'] },
+  async () => {
+    test('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({
+      ClaimantSolicitorApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1ApiSteps,
+      HearingCenterAdminApiSteps,
+      JudgeApiSteps,
+    }) => {
+      await ClaimantSolicitorApiSteps.CreateClaim();
+      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.AmendClaimDocuments();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
+      await ClaimantSolicitorApiSteps.RespondSmallProceed();
+      await JudgeApiSteps.SdoSmallSum();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
+      await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
+      await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
+      await HearingCenterAdminApiSteps.AmendHearingDueDate();
+      await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
+      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
+    });
+
+    test('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({
+      ClaimantSolicitorApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1ApiSteps,
+      HearingCenterAdminApiSteps,
+      JudgeApiSteps,
+    }) => {
+      await ClaimantSolicitorApiSteps.CreateClaim();
+      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.AmendClaimDocuments();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.SMALL_CLAIM });
+      await ClaimantSolicitorApiSteps.RespondSmallProceed();
+      await JudgeApiSteps.SdoSmallNoSum();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
+      await DefendantSolicitor1ApiSteps.EvidenceUploadSmall();
+      await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
+      await HearingCenterAdminApiSteps.AmendHearingDueDate();
+      await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
+    });
+  },
+);

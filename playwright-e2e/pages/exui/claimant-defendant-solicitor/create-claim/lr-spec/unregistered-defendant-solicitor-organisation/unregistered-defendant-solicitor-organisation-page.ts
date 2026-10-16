@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiPage from '../../../../exui-page/exui-page';
+import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
 import UnregisteredOrganisationFragment from '../../../../fragments/unregistered-organisation/unregistered-organisation-fragment.ts';
 import { heading } from './unregistered-defendant-solicitor-organisation-content.ts';
 import UnregisteredOrganisationAddressFragment from '../../../../fragments/unregistered-organisation-address/unregistered-organisation-address-fragment.ts';

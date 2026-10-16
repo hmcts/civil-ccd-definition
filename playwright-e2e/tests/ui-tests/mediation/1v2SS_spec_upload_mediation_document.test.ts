@@ -1,0 +1,43 @@
+import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
+
+test.describe(
+  '1v2SS spec SDO Carm - Upload mediation documents',
+  { tag: ['@civil-ccd-nightly', '@ui-mediation'] },
+  () => {
+    test('1v2SS spec SDO Carm - Upload mediation documents', async ({
+      ClaimantSolicitorSpecApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1SpecApiSteps,
+      CaseworkerApiSteps,
+      LegalAdvisorApiSteps,
+      ClaimantSolicitorSpecSteps,
+      HearingCenterAdminApiSteps,
+      DefendantSolicitor1SpecSteps,
+    }) => {
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
+      await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+      await CaseRoleAssignmentApiSteps.AssignBothCaseRolesToDS1();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+        claimType: ClaimType.ONE_VS_TWO_SAME_SOL,
+      });
+      await ClaimantSolicitorSpecApiSteps.RespondSmallRejectFullDefence1v2SS();
+      await CaseworkerApiSteps.MediationUnsuccessful();
+      await LegalAdvisorApiSteps.SdoSmallSum();
+      await ClaimantSolicitorSpecSteps.Login();
+      await ClaimantSolicitorSpecSteps.UploadMediationDocuments();
+      await HearingCenterAdminApiSteps.ScheduleHearingSmallTrail();
+      await DefendantSolicitor1SpecSteps.Login();
+      await DefendantSolicitor1SpecSteps.UploadMediationDocumentsD1();
+      await HearingCenterAdminApiSteps.AmendHearingDueDate();
+      await ClaimantSolicitorSpecApiSteps.MakePaymentForHearingFee();
+      await DefendantSolicitor1SpecSteps.Login();
+      await DefendantSolicitor1SpecSteps.UploadMediationDocumentsD2();
+    });
+  },
+);

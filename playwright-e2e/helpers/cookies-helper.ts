@@ -1,10 +1,10 @@
-import { test } from '../playwright-fixtures/index';
-import filePaths from '../config/file-paths';
-import FileType from '../enums/file-type';
-import Cookie from '../models/cookie';
-import FileSystemHelper from './file-system-helper';
-import User from '../models/user';
-import FileError from '../errors/file-error';
+import { test } from '../playwright-fixtures/index.ts';
+import filePaths from '../config/file-paths.ts';
+import FileType from '../constants/test-utils/file-type.ts';
+import Cookie from '../models/test-utils/cookie.ts';
+import FileSystemHelper from './file-system-helper.ts';
+import User from '../models/users/user.ts';
+import FileError from '../errors/file-error.ts';
 
 export default class CookiesHelper {
   static async getCookies({ email, cookiesPath }: User, isTeardown = false): Promise<Cookie[]> {

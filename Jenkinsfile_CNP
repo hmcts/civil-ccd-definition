@@ -4,7 +4,7 @@ properties([
 ]);
 
 
-@Library("Infrastructure")
+@Library("Infrastructure@2.12.2")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
@@ -13,7 +13,7 @@ def component = "ccd"
 def camundaBranch = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
-
+def wiremockMappingsBranch = "master"
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 static Map<String, Object> secret(String secretName, String envVariable) {
@@ -24,37 +24,20 @@ static Map<String, Object> secret(String secretName, String envVariable) {
   ]
 }
 
-def copyPrevFailedAndNotExecutedTestFilesJson() {
+def copyPreviousAllureHistory(historyDir, resultsDir) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
-  while (!buildFound && buildNumber > minBuildNumber) {
-    try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/testFilesReport.json"
-      buildFound = true
-    } catch (Exception error) {
-      echo "artifact not found: " + error.toString()
-      buildNumber--
-    }
-  }
-}
-
-def copyPreviousAllureHistory() {
-  def buildFound = false
-  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
-  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
-  def targetDir = "test-results/functional/allure-results/history"
 
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
       copyArtifacts(
         projectName: env.JOB_NAME,
         selector: specific("${buildNumber}"),
-        filter: "test-results/functional/allure-report/history/*",
-        target: targetDir,
-        flatten: true
+        filter: "**/${historyDir}/**",
+        target: resultsDir
       )
-
+      sh "mv ${resultsDir}/${historyDir} ${resultsDir}/history"
       buildFound = true
       echo "Successfully imported Allure history from build ${buildNumber}"
     } catch (Exception error) {
@@ -64,13 +47,161 @@ def copyPreviousAllureHistory() {
   }
 }
 
-def getFunctionalTestsGroups() {
+void publishAllureReport(String reportDir, String reportName, String historyArchiveDir) {
+  publishHTML([
+    alwaysLinkToLastBuild: true,
+    keepAll: true,
+    reportDir: reportDir,
+    reportFiles: 'index.html',
+    reportName: reportName
+  ])
+  sh "cp -r ./${reportDir}/history/ ./${historyArchiveDir}"
+  archiveArtifacts artifacts: "${historyArchiveDir}/**", fingerprint: true
+}
+
+def getPlaywrightFunctionalTestsGroups() {
   def githubApi = new GithubAPI(this)
   def functionalTestGroups = []
-  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "pr_ft_")) {
-    functionalTestGroups.add(label.substring(6, label.length()))
+  def labelPrefix = "pr_ft_pw_"
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, labelPrefix)) {
+    functionalTestGroups.add(label.substring(labelPrefix.length()))
   }
   return functionalTestGroups.join(",")
+}
+
+def copyPrevPlaywrightLastRunAndTestFilesReport() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  def lastRunFilePath = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json"
+  def testFilesReportPath = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/playwrightTestFilesReport.json"
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      sh "rm -f ${lastRunFilePath} ${testFilesReportPath}"
+      copyArtifacts(
+        projectName: env.JOB_NAME,
+        selector: specific("${buildNumber}"),
+        filter: "${lastRunFilePath},${testFilesReportPath}"
+      )
+      if (!fileExists(lastRunFilePath) || !fileExists(testFilesReportPath)) {
+        throw new Exception("Missing one or more Playwright previous run artifacts from build ${buildNumber}")
+      }
+      if (!checkHasPlaywrightLastRunStatus(['passed', 'failed'])) {
+        throw new Exception(
+          "Skipping copied .last-run.json from build ${buildNumber} because status was not 'passed' or 'failed'"
+        )
+      }
+      buildFound = true
+    } catch (Exception error) {
+      echo "Previous Playwright artifacts not usable from build ${buildNumber}: " + error.toString()
+      buildNumber--
+    }
+  }
+  return buildFound
+}
+
+def checkHasPlaywrightLastRunStatus(expectedStatuses) {
+  def lastRunStatus = sh(
+    script: "jq -r '.status // empty' ${env.PLAYWRIGHT_TEST_RESULTS_DIR}/${env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR}/.last-run.json",
+    returnStdout: true
+  ).trim()
+  def statuses = expectedStatuses instanceof Collection ? expectedStatuses : [expectedStatuses]
+  return statuses.contains(lastRunStatus)
+}
+
+def publishPlaywrightSmokeReports(yarnBuilder) {
+  def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
+
+  if (fileExists(playwrightTestsFlags)) {
+    def reportFlags = readProperties file: playwrightTestsFlags
+
+    if(!(reportFlags.PLAYWRIGHT_TESTS_SKIPPED == 'true')) {
+
+      if (reportFlags.PLAYWRIGHT_SETUP_TESTS_FAILED == 'true') {
+        copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+        sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
+        yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+        publishAllureReport(
+          'playwright-allure-bootstrap-report',
+          'Playwright Allure Bootstrap Report',
+          'playwright-allure-bootstrap-history'
+        )
+      }
+
+      if (reportFlags.PLAYWRIGHT_SMOKE_TESTS_FAILED == 'true') {
+        copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
+        sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+        yarnBuilder.yarn('test:playwright:functional:generate-report')
+        publishAllureReport(
+          'playwright-allure-functional-report',
+          'Playwright Allure Functional Report',
+          'playwright-allure-functional-history'
+        )
+      }
+    }
+  }
+}
+
+// Archive AFTER the reports are generated, and include the generated report trees.
+//
+// Ordering alone is not enough (DTSCCI-6322): Allure output lands in
+// playwright-allure-{functional,bootstrap}-report/, OUTSIDE PLAYWRIGHT_TEST_RESULTS_DIR, so the
+// raw-results glob never covered it however it was ordered. The file diagnosis needs is
+// <report>/data/categories.json, Allure's computed grouping of failures by error message. The
+// categories.json copied into a *-results dir is the input definition, not that grouping.
+//
+// Both report trees are listed because publishPlaywrightSmokeReports writes the functional
+// report when smoke tests fail and the bootstrap report when setup fails, so neither tree
+// belongs to one stage. allowEmptyArchive stays true: both publish helpers are a no-op when the
+// tests were skipped, leaving nothing to archive. Mirrors civil-citizen-ui, which generates and
+// then archives a tree containing the report.
+//
+// data/** only: publishAllureReport already makes the rendered report browsable in Jenkins, and
+// the full tree is thousands of files of css, js and plugins. data/ carries categories.json and
+// the per-test JSON, which is what tooling and humans actually read.
+def archivePlaywrightTestArtifacts() {
+  archiveArtifacts allowEmptyArchive: true, artifacts: [
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*",
+    'playwright-allure-functional-report/data/**',
+    'playwright-allure-bootstrap-report/data/**',
+  ].join(',')
+}
+
+def publishPlaywrightFunctionalReports(yarnBuilder) {
+  def playwrightTestsFlags = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/playwrightTestsFlags.properties"
+
+  if (fileExists(playwrightTestsFlags)) {
+    def reportFlags = readProperties file: playwrightTestsFlags
+
+    if(!(reportFlags.PLAYWRIGHT_TESTS_SKIPPED == 'true')) {
+
+      copyPreviousAllureHistory('playwright-allure-functional-history', 'playwright-allure-functional-results');
+      sh 'cp playwright-categories.json playwright-allure-functional-results/categories.json'
+      yarnBuilder.yarn('test:playwright:functional:generate-report')
+      publishAllureReport(
+        'playwright-allure-functional-report',
+        'Playwright Allure Functional Report',
+        'playwright-allure-functional-history'
+      )
+
+      copyPreviousAllureHistory('playwright-allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+      sh 'cp playwright-categories.json playwright-allure-bootstrap-results/categories.json'
+      yarnBuilder.yarn('test:playwright:bootstrap:generate-report')
+      publishAllureReport(
+        'playwright-allure-bootstrap-report',
+        'Playwright Allure Bootstrap Report',
+        'playwright-allure-bootstrap-history'
+      )
+    }
+  }
+}
+
+def getCivilServiceSharedBranch() {
+  def githubApi = new GithubAPI(this)
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilShared:")) {
+    return label.minus("civilShared:").trim()
+  }
+  return "master"
 }
 
 def secrets = [
@@ -116,12 +247,14 @@ def checkForEnableEmailNotifications(branch_name) {
   return checkForPrValuesLabel(branch_name, "enableNotifyEmails")
 }
 
-def checkForRunAllFunctionalTests(branch_name) {
-  return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
+def checkForSkipFunctionalTests(branch_name) {
+  return new GithubAPI(this)
+    .getLabelsbyPattern(branch_name, "pr-values:skip-functional-tests")
+    .contains("pr-values:skip-functional-tests")
 }
 
-def isHmcEnabled(branch_name) {
-  return checkForPrValuesLabel(branch_name, "enableHmc")
+def checkForRunAllFunctionalTests(branch_name) {
+  return new GithubAPI(this).getLabelsbyPattern(branch_name, "runAllFunctionalTests").contains("runAllFunctionalTests")
 }
 
 def checkForPrValuesLabel(branch_name, label) {
@@ -160,6 +293,7 @@ def archiveCoreCaseDataDefinitions() {
 
       dir("${WORKSPACE}/build") {
         steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${PROD_ENV}.xlsx"
+        steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-${PROD_ENV}.xlsx"
       }
     }
 
@@ -172,8 +306,11 @@ def archiveCoreCaseDataDefinitions() {
       """
     }
 
+
+
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-${env.ENVIRONMENT}.xlsx"
     }
   } else {
     dir("${WORKSPACE}/bin") {
@@ -186,17 +323,24 @@ def archiveCoreCaseDataDefinitions() {
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-${env.ENVIRONMENT}.xlsx"
     }
   }
 }
 
 def uploadCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin") {
-    ccdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
+    civilCcdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
     sh """
       set -e
       eval \$(./variables/load-${env}-environment-variables.sh)
-      ./utils/ccd-import-definition.sh ${ccdDefinitionFilePath}
+      ./shared/ccd-import-definition.sh ${civilCcdDefinitionFilePath}
+    """
+    civilGaCcdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ga-ccd-${env}.xlsx"
+    sh """
+      set -e
+      eval \$(./variables/load-${env}-environment-variables.sh)
+      ./shared/ccd-import-definition.sh ${civilGaCcdDefinitionFilePath}
     """
   }
 }
@@ -209,32 +353,48 @@ def getCivilServiceImage() {
   return "latest"
 }
 
+
+
 withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
+  env.PLAYWRIGHT_TEST_RESULTS_DIR = 'playwright-test-results'
+  env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR = 'civil-ccd-bootstrap'
+  env.PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR = 'civil-ccd-master-pr-smoke'
+  env.PLAYWRIGHT_WORKERS = 8
+  env.PLAYWRIGHT_RETRIES = 1
+  env.PLAYWRIGHT_EXUI_RETRIES = 1
+  env.PLAYWRIGHT_IDAM_RETRIES = 1
+  env.PLAYWRIGHT_TEST_SPEED = 'fast'
+  env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS = false
+  env.PLAYWRIGHT_RUN_CUI_USER_SETUP = true
+  env.PLAYWRIGHT_RUN_EXUI_AUTH_SETUP = true
+  env.PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP = true
+  env.PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP = true
+  env.PLAYWRIGHT_RUN_DATA_SETUP = true
+  env.PLAYWRIGHT_WA_ENABLED = false
+  env.PLAYWRIGHT_ZOD_VALIDATION_ENABLED = false
+  env.PLAYWRIGHT_UNASSIGN_CASES = true
 
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
-    env.PR_FT_GROUPS = getFunctionalTestsGroups()
-    if (isHmcEnabled(env.BRANCH_NAME)) {
-      env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
-      env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
-      env.CCD_DEF_VERSION = "-${CHANGE_ID}"
-    } else {
-      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-      env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    }
+    env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'civil-ccd-pr'
+    env.PLAYWRIGHT_PR_FT_GROUPS = getPlaywrightFunctionalTestsGroups()
+    env.PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS = checkForSkipFunctionalTests(env.BRANCH_NAME)
+    env.PLAYWRIGHT_RUN_ALL_FUNCTIONAL_TESTS = checkForRunAllFunctionalTests(env.BRANCH_NAME)
   }
-
 
   // onPR {
   //   env.ENVIRONMENT = "aat"
   // }
   onMaster {
     env.ENVIRONMENT = "aat"
+    env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'civil-ccd-master'
   }
   onDemo {
     env.ENVIRONMENT = "demo"
@@ -248,43 +408,20 @@ withPipeline(type, product, component) {
   }
 
   before('highleveldatasetup') {
+    // HLD runs Gradle through Yarn, so apply the same Maven mirror as GradleBuilder.
+    env.BEFTA_GRADLE_INIT_SCRIPT = 'build/jenkins-hld-init.gradle'
+    writeFile file: env.BEFTA_GRADLE_INIT_SCRIPT,
+      text: libraryResource('uk/gov/hmcts/gradle/init.gradle')
+    // Pull shared scripts from civil-service early - needed by build and import scripts
+    sh "./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}"
     yarnBuilder.yarn('setup')
     archiveCoreCaseDataDefinitions()
   }
 
-//  before('akschartsinstall'){
-//    onPR{
-//      if (isHmcEnabled(env.BRANCH_NAME)) {
-//        sh """
-//          az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \\
-//            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
-//          az servicebus topic subscription rule create --resource-group hmc-shared-aat \\
-//            --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \\
-//            --subscription-name hmc-to-civil-subscription-pr-${CHANGE_ID} \\
-//            --name hmc-servicebus-aat-subscription-rule-civil \\
-//            --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
-//        """
-//      }
-//    }
-//  }
-
-
-//  before('helmUninstall') {
-//    onPR {
-//      if (isHmcEnabled(env.BRANCH_NAME)) {
-//      sh """
-//          az servicebus topic subscription delete --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \\
-//            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
-//          curl -v -k -X DELETE \\
-//            'http://ccd-definition-store-api-aat.service.core-compute-aat.internal/api/testing-support/cleanup-case-type/${CHANGE_ID}/?caseTypeIds=CIVIL'
-//        """
-//    }
-//  }
-
   afterSuccess('akschartsinstall') {
     onPR {
       env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
-      env.IDAM_TEST_URL = "https://idam-testing-support-api.aat.platform.hmcts.net"
+      env.IDAM_TEST_SUPPORT_API_URL = "https://idam-testing-support-api.aat.platform.hmcts.net"
       env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
       env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
       env.PAYMENT_API_URL = "http://payment-api-aat.service.core-compute-aat.internal"
@@ -294,10 +431,12 @@ withPipeline(type, product, component) {
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
+        ./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
-      ./bin/add-org-roles-to-users.sh
+      ./bin/shared/add-org-roles-to-users.sh
+      ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
     """
       //uploadDmnDiagrams('preview',"${CHANGE_ID}")
@@ -309,41 +448,27 @@ withPipeline(type, product, component) {
     }
   }
 
+  before('smoketest:preview') {
+    copyPrevPlaywrightLastRunAndTestFilesReport()
+  }
+
   afterAlways('smoketest:preview') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
     if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
+    publishPlaywrightSmokeReports(yarnBuilder)
+    archivePlaywrightTestArtifacts()
   }
-
-  before('functionalTest:preview') {
-    env.IDAM_STUB_ENABLED = 'false'
-    copyPreviousAllureHistory();
-    if(checkForRunAllFunctionalTests(env.BRANCH_NAME)) {
-      env.RUN_ALL_FUNCTIONAL_TESTS = true
-    } else {
-      copyPrevFailedAndNotExecutedTestFilesJson();
-    }
-  }
-
 
   afterAlways('functionalTest:preview') {
-    steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
-    publishHTML([
-      allowMissing: false,
-      alwaysLinkToLastBuild: true,
-      keepAll: true,
-      reportDir: 'test-results/functional/allure-report',
-      reportFiles: 'index.html',
-      reportName: 'Non-Prod E2E Allure Report'
-    ])
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+    publishPlaywrightFunctionalReports(yarnBuilder)
+    archivePlaywrightTestArtifacts()
   }
 
   before('smoketest:aat') {
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
-    env.IDAM_TEST_URL = "https://idam-testing-support-api.aat.platform.hmcts.net"
+    env.IDAM_TEST_SUPPORT_API_URL = "https://idam-testing-support-api.aat.platform.hmcts.net"
     env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
     env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
     env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
@@ -354,7 +479,10 @@ withPipeline(type, product, component) {
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
-      ./bin/add-roles.sh
+      ./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}
+      . ./bin/shared/idam-get-tokens.sh
+      ./bin/shared/add-roles.sh
+      ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
       ./bin/build-release-ccd-definition.sh staging
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
@@ -365,31 +493,20 @@ withPipeline(type, product, component) {
 
     dir("${WORKSPACE}/build") {
       steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-staging.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ga-ccd-staging.xlsx"
     }
     uploadCoreCaseDataDefinitions('staging')
-  }
-
-  before('functionalTest:aat') {
-    env.IDAM_STUB_ENABLED = 'false'
-    copyPreviousAllureHistory();
-    copyPrevFailedAndNotExecutedTestFilesJson();
+    copyPrevPlaywrightLastRunAndTestFilesReport()
   }
 
   afterAlways('smoketest:aat') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
+    publishPlaywrightSmokeReports(yarnBuilder)
+    archivePlaywrightTestArtifacts()
   }
 
   afterAlways('functionalTest:aat') {
+    publishPlaywrightFunctionalReports(yarnBuilder)
+    archivePlaywrightTestArtifacts()
     createGithubRelease()
-    steps.sh 'npx allure generate test-results/functional/allure-results --clean -o test-results/functional/allure-report'
-    publishHTML([
-      allowMissing: false,
-      alwaysLinkToLastBuild: true,
-      keepAll: true,
-      reportDir: 'test-results/functional/allure-report',
-      reportFiles: 'index.html',
-      reportName: 'Prod E2E Allure Report'
-    ])
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 }

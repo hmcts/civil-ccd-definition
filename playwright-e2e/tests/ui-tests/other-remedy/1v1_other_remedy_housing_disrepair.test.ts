@@ -1,0 +1,27 @@
+import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+
+test.describe(
+  '1v1 create fast track claim with type housing disrepair',
+  { tag: ['@civil-ccd-nightly', '@ui-other-remedy'] },
+  () => {
+    test('1v1 create fast track claim with type housing disrepair', async ({
+      ClaimantSolicitorSteps,
+      DefendantSolicitor1ApiSteps,
+      ClaimantSolicitorApiSteps,
+      CaseRoleAssignmentApiSteps,
+      JudgeSteps,
+    }) => {
+      await ClaimantSolicitorSteps.Login();
+      await ClaimantSolicitorSteps.CreateClaimFastHousingDisrepair();
+      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+      await ClaimantSolicitorApiSteps.RespondFastProceed();
+      await JudgeSteps.LoginRegion1();
+      await JudgeSteps.SdoFastOtherRemedy();
+    });
+  },
+);

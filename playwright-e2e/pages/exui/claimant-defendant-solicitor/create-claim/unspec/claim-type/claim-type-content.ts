@@ -22,6 +22,14 @@ export const radioButtons = {
     },
     consumer: { label: 'Consumer', selector: '#claimTypeUnSpec-CONSUMER' },
     consumerCredit: { label: 'Consumer credit', selector: '#claimTypeUnSpec-CONSUMER_CREDIT' },
+    housingDisrepair: {
+      label: 'Housing disrepair',
+      selector: '#claimTypeUnSpec-HOUSING_DISREPAIR',
+    },
+    otherRemedy: {
+      label: 'Damages and an ‘other’ remedy e.g. Payment Protection Insurance (PPI), Motor finance',
+      selector: '#claimTypeUnSpec-DAMAGES_AND_OTHER_REMEDY',
+    },
     other: { label: 'Other', selector: '#claimTypeUnSpec-OTHER' },
   },
 };

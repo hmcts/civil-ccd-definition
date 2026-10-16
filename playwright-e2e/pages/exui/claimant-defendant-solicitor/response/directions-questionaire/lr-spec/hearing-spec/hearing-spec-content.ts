@@ -1,5 +1,4 @@
-import ClaimType from '../../../../../../../enums/claim-type';
-import { Party } from '../../../../../../../models/partys';
+import { Party } from '../../../../../../../models/users/partys';
 
 export const heading = 'Hearing availability';
 

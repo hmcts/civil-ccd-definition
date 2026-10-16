@@ -89,6 +89,8 @@ function loadEnv(envName: string) {
 // ENV is also a standard shell variable (the sh start-up file), so a value that is not one of ours is reported and
 // ignored, not treated as an error: playwright.config.ts is shared with the other Playwright suites
 const envName = process.env.ENV;
+// Whether this run is a playwright-tests run, with one of our environments loaded
+export const playwrightTestsEnvLoaded = Boolean(envName && environments.includes(envName));
 if (envName && environments.includes(envName)) {
   loadEnv(envName);
 } else if (envName && process.env.TEST_WORKER_INDEX === undefined) {

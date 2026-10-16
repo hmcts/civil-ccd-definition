@@ -1,0 +1,33 @@
+import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+
+test.describe(
+  '1v1 dispute resolution hearing api journey',
+  { tag: ['@civil-service-nightly', '@api-drh', '@civil-wa-master', '@civil-wa-pr'] },
+  async () => {
+    test('1v1 full defence unspecified - judge draws small claims DRH - hearing scheduled', async ({
+      ClaimantSolicitorApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1ApiSteps,
+      JudgeApiSteps,
+      HearingCenterAdminApiSteps,
+    }) => {
+      await ClaimantSolicitorApiSteps.CreateClaim();
+      await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+      await ClaimantSolicitorApiSteps.NotifyClaim();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await ClaimantSolicitorApiSteps.NotifyClaimDetails();
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.SMALL_CLAIM,
+      });
+      await ClaimantSolicitorApiSteps.RespondSmallProceed();
+      await JudgeApiSteps.SdoSmallSumDRH();
+      await ClaimantSolicitorApiSteps.EvidenceUploadSmall();
+      await DefendantSolicitor1ApiSteps.EvidenceUploadFast();
+      await HearingCenterAdminApiSteps.ScheduleHearingSmallTrailWA();
+      await HearingCenterAdminApiSteps.AmendHearingDueDate();
+      await ClaimantSolicitorApiSteps.MakePaymentForHearingFee();
+      await JudgeApiSteps.GenerateDirectionsOrderFreeForm();
+    });
+  },
+);

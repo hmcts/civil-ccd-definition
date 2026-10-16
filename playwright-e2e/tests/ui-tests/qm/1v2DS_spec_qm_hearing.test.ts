@@ -1,0 +1,44 @@
+import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
+
+test.describe(
+  '1v2DS spec query management hearing journey',
+  {
+    tag: ['@civil-ccd-nightly', '@ui-qm'],
+  },
+  () => {
+    test('1v2DS spec query management hearing journey', async ({
+      ClaimantSolicitorSpecApiSteps,
+      CaseRoleAssignmentApiSteps,
+      DefendantSolicitor1SpecApiSteps,
+      DefendantSolicitor2SpecApiSteps,
+      JudgeApiSteps,
+      ClaimantSolicitorSpecSteps,
+      DefendantSolicitor1SpecSteps,
+      CaseworkerSteps,
+    }) => {
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
+      await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
+      await DefendantSolicitor1SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
+      await DefendantSolicitor2SpecApiSteps.DefendantResponse({
+        claimTrack: ClaimTrack.INTERMEDIATE_CLAIM,
+      });
+      await ClaimantSolicitorSpecApiSteps.RespondInterProceed1v2DS();
+      await JudgeApiSteps.GenerateDirectionsOrderInter();
+      await ClaimantSolicitorSpecSteps.Login();
+      await ClaimantSolicitorSpecSteps.RaiseANewQueryWithHearing();
+      await DefendantSolicitor1SpecSteps.Login();
+      await DefendantSolicitor1SpecSteps.RaiseANewQueryWithHearing();
+      await CaseworkerSteps.Login();
+      await CaseworkerSteps.CaseProceedsInCasemanSpec();
+    });
+  },
+);

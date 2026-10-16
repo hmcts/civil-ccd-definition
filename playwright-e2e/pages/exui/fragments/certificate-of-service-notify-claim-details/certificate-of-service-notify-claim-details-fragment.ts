@@ -3,7 +3,7 @@ import BasePage from '../../../../base/base-page';
 import filePaths from '../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import {
   heading,
   inputs,
@@ -12,7 +12,7 @@ import {
   dropdowns,
   radioButtons,
 } from './certificate-of-service-notify-claim-details-content';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import DateFragment from '../date/date-fragment';
 
 @AllMethodsStep()
@@ -50,7 +50,7 @@ export default class CertificateOfServiceNotifyClaimDetailsFragment extends Exui
 
   async fillCertificateOfService() {
     const dateDeemedServed = DateHelper.addToToday({
-      days: 2,
+      days: 1,
       workingDay: true,
     });
     const dateOfService = DateHelper.getToday();

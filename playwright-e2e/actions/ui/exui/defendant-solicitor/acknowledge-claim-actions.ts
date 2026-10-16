@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-data';
+import TestData from '../../../../models/test-utils/test-data';
 import AcknowledgeClaimPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/acknowledge-claim/acknowledge-claim-page-factory';
 
 @AllMethodsStep()

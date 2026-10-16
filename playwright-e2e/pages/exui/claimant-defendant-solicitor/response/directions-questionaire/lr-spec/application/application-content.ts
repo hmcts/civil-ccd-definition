@@ -1,5 +1,5 @@
-import { Party } from '../../../../../../../models/partys';
-import PartyType from '../../../../../../../enums/party-types.ts';
+import { Party } from '../../../../../../../models/users/partys';
+import PartyType from '../../../../../../../constants/users/party-types';
 
 export const subheadings = {
   application: 'Application',
@@ -33,6 +33,8 @@ export const inputs = {
     selector: (claimantDefendantParty: Party) => {
       if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
         return `#${claimantDefendantParty.oldKey}AdditionalInformationForJudge`;
+      if (claimantDefendantParty.oldKey === 'respondent2')
+        return '#additionalInformationForJudge2';
       return '#additionalInformationForJudge';
     },
   },

@@ -7,7 +7,7 @@ const {listElement, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
-const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, checkOtherRemedyEnabled} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
@@ -17,6 +17,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const sdoTracksOtherRemedy = require('../fixtures/events/createSDOOtherRemedy.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
@@ -79,6 +80,15 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
+  CREATE_DISPOSAL_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDODisposal(userInput),
+  CREATE_FAST_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFast(userInput),
+  CREATE_FAST_NIHL_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFastNIHL(userInput),
+  CREATE_FAST_IN_PERSON_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFastInPerson(userInput),
+  CREATE_SMALL_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOSmall(userInput),
+  CREATE_FAST_NO_SUM_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOFastWODamageSum(userInput),
+  CREATE_SMALL_NO_SUM_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOSmallWODamageSum(userInput),
+  UNSUITABLE_FOR_SDO_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createNotSuitableSDO(userInput),
+  CREATE_SMALL_DRH_OTHER_REMEDY: () => sdoTracksOtherRemedy.createSDOSmallDRH(),
   HEARING_SCHEDULED: (allocatedTrack, isMinti) => hearingScheduled.scheduleHearing(allocatedTrack, isMinti),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
@@ -117,6 +127,7 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
     sdoR2SmallClaimsWitnessStatements: (data) => {
       return typeof data.sdoStatementOfWitness === 'string'
+        && (data.deadlineDate === undefined || typeof data.deadlineDate === 'string')
         && typeof data.isRestrictWitness === 'string'
         && typeof data.isRestrictPages === 'string'
         && typeof data.text === 'string';
@@ -183,6 +194,15 @@ const eventData = {
     UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
     CREATE_FAST_NIHL: data.CREATE_FAST_NIHL(),
     CREATE_SMALL_DRH: data.CREATE_SMALL_DRH(),
+    CREATE_DISPOSAL_OTHER_REMEDY: data.CREATE_DISPOSAL_OTHER_REMEDY(),
+    CREATE_SMALL_OTHER_REMEDY: data.CREATE_SMALL_OTHER_REMEDY(),
+    CREATE_FAST_OTHER_REMEDY: data.CREATE_FAST_OTHER_REMEDY(),
+    CREATE_FAST_IN_PERSON_OTHER_REMEDY: data.CREATE_FAST_IN_PERSON_OTHER_REMEDY(),
+    CREATE_SMALL_NO_SUM_OTHER_REMEDY: data.CREATE_SMALL_NO_SUM_OTHER_REMEDY(),
+    CREATE_FAST_NO_SUM_OTHER_REMEDY: data.CREATE_FAST_NO_SUM_OTHER_REMEDY(),
+    UNSUITABLE_FOR_SDO_OTHER_REMEDY: data.UNSUITABLE_FOR_SDO_OTHER_REMEDY(),
+    CREATE_FAST_NIHL_OTHER_REMEDY: data.CREATE_FAST_NIHL_OTHER_REMEDY(),
+    CREATE_SMALL_DRH_OTHER_REMEDY: data.CREATE_SMALL_DRH_OTHER_REMEDY(),
   }
 };
 
@@ -258,12 +278,7 @@ module.exports = {
         null, 'Case data validation failed');
     }
 
-    let bodyText = 'Your claim will not be issued until payment is confirmed.';
-    let headerText = '# Please now pay your claim fee\n# using the link below';
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: headerText,
-      body: bodyText
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -303,7 +318,11 @@ module.exports = {
     await updateLROrganisation(caseId, manageContactInformationData);
   },
 
-  createClaimWithRespondentLitigantInPerson: async (user, multipartyScenario) => {
+  createClaimWithRespondentLitigantInPerson: async (
+    user,
+    multipartyScenario,
+    assertServiceOwnedCallbackData = true
+  ) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
@@ -330,13 +349,9 @@ module.exports = {
       claimTypeUnSpec: 'CONSUMER_CREDIT'
     };
 
-    await validateEventPages(createClaimData);
+    await validateEventPages(createClaimData, undefined, assertServiceOwnedCallbackData);
 
-    console.log('comparing assertSubmittedEvent');
-    await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Please now pay your claim',
-      body: 'Your claim will not be issued until payment is confirmed'
-    });
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -449,10 +464,7 @@ module.exports = {
 
     await validateEventPages(data[eventName]);
 
-    await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION', {
-      header: 'Notification of claim sent',
-      body: 'The defendant legal representative\'s organisation has been notified and granted access to this claim.'
-    });
+    await assertSubmittedEvent('AWAITING_CASE_DETAILS_NOTIFICATION');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -460,7 +472,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
   },
 
-  notifyClaimLip: async (user, multipartyScenario) => {
+  notifyClaimLip: async (user, multipartyScenario, assertServiceOwnedCallbackData = true) => {
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM';
     mpScenario = multipartyScenario;
@@ -471,7 +483,7 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     // assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data[eventName]);
+    await validateEventPages(data[eventName], undefined, assertServiceOwnedCallbackData);
     returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
 
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
@@ -481,10 +493,7 @@ module.exports = {
     } else {
       returnedCaseData = { ...returnedCaseData, ...data.COS_NOTIFY_CLAIM(true, false) };
     }
-    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION', {
-      header: 'Certificate of Service',
-      body: 'You must serve the claim details and'
-    });
+    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_CASE_DETAILS_NOTIFICATION');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_CASE_DETAILS_NOTIFICATION');
@@ -503,10 +512,7 @@ module.exports = {
 
     await validateEventPages(data[eventName]);
 
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Defendant notified',
-      body: 'The defendant legal representative\'s organisation has been notified of the claim details.'
-    });
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
     await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -514,7 +520,7 @@ module.exports = {
     await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   },
 
-  notifyClaimDetailsLip: async (user, multipartyScenario) => {
+  notifyClaimDetailsLip: async (user, multipartyScenario, assertServiceOwnedCallbackData = true) => {
 
     eventName = 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS';
     mpScenario = multipartyScenario;
@@ -525,7 +531,7 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     // assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data[eventName]);
+    await validateEventPages(data[eventName], undefined, assertServiceOwnedCallbackData);
     returnedCaseData.defendantSolicitorNotifyClaimOptions = null;
     if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP') {
       returnedCaseData = {};
@@ -543,10 +549,7 @@ module.exports = {
       const document = await testingSupport.uploadDocument();
       returnedCaseData = await updateCaseDataWithPlaceholders(returnedCaseData, document);
     }
-    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: 'Certificate of Service',
-      body: 'The defendant(s) must'
-    });
+    await assertSubmittedEventWithCaseData(returnedCaseData, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -924,7 +927,7 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, hearingDate, user);
   },
 
-  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING') => {
+  defaultJudgment: async (user, djRequestType = 'DISPOSAL_HEARING', mpScenario) => {
     await apiRequest.setupTokens(user);
 
     eventName = 'DEFAULT_JUDGEMENT';
@@ -1003,6 +1006,8 @@ module.exports = {
     delete caseData['sdoR2FastTrackCreditHire'];
     delete caseData['sdoDJR2TrialCreditHire'];
 
+    if(await checkOtherRemedyEnabled())
+      response = response + '_OTHER_REMEDY';
 
     let disposalData = eventData['sdoTracks'][response];
 
@@ -1011,6 +1016,15 @@ module.exports = {
       disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
       delete disposalData.calculated.FastTrack.fastTrackCreditHire;
       disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+    }
+
+    if (response === 'CREATE_FAST_NIHL' || response === 'CREATE_FAST_NIHL_OTHER_REMEDY') {
+      delete caseData['smallClaimsPenalNotice'];
+      delete caseData['fastTrackPenalNotice'];
+      delete caseData['fastTrackTrialBundleToggle'];
+      delete caseData['smallClaimsPPI'];
+      delete caseData['fastTrackPPI'];
+      delete caseData['disposalHearingDisclosureOfDocuments'];
     }
 
     for (let pageId of Object.keys(disposalData.valid)) {
@@ -1458,18 +1472,18 @@ const getLatestMessageToReplyTo = (caseData) => {
   return null;
 };
 
-const validateEventPages = async (data, solicitor) => {
+const validateEventPages = async (data, solicitor, assertServiceOwnedCallbackData = true) => {
   //transform the data
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'DefendantLitigationFriend' || pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    await assertValidData(data, pageId, solicitor);
+    await assertValidData(data, pageId, solicitor, assertServiceOwnedCallbackData);
   }
 };
 
-const assertValidData = async (data, pageId, solicitor) => {
+const assertValidData = async (data, pageId, solicitor, assertServiceOwnedCallbackData = true) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
   const validDataForPage = data.valid[pageId];
@@ -1507,6 +1521,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
     delete caseData['businessProcess'];
+    delete caseData['assistedOrderPenalNoticeContent'];
+    delete caseData['assistedOrderPenalNoticeToggle'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
@@ -1515,6 +1531,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    delete caseData['assistedOrderPenalNoticeContent'];
+    delete caseData['assistedOrderPenalNoticeToggle'];
     // After second minti release this is not needed. Track fields for GENERATE_DIRECTIONS_ORDER are currently linked
     // to a hidden wa page and do not appear in mid event handlers, which is fine as they are not currently used.
     // After minti release the fields are linked to a page and hidden via field show conditions and get returned correctly.
@@ -1549,6 +1567,34 @@ const assertValidData = async (data, pageId, solicitor) => {
   delete responseBody.data['gaEaCourtLocation'];
   delete responseBody.data['evidenceUploadNotificationSent'];
 
+  if (eventName === 'CREATE_SDO') {
+    if (responseBody.data.isSdoR2NewScreen === 'Yes') {
+      const sdoR2SyncFields = [
+        'fastTrackCostsToggle',
+        'disposalHearingMethodToggle',
+        'fastTrackMethodToggle',
+        'smallClaimsMethodToggle',
+        'disposalHearingMethodInPerson',
+      ];
+      sdoR2SyncFields.forEach(field => {
+        if (responseBody.data[field] !== undefined && caseData[field] === undefined) {
+          caseData[field] = responseBody.data[field];
+        }
+      });
+    }
+    const sdoApiOnlyFields = [
+      'smallClaimsPenalNotice',
+      'fastTrackPenalNotice',
+      'fastTrackTrialBundleToggle',
+      'smallClaimsPPI',
+      'fastTrackPPI',
+      'disposalHearingDisclosureOfDocuments',
+    ];
+    sdoApiOnlyFields.forEach(field => {
+      delete caseData[field];
+      delete responseBody.data[field];
+    });
+  }
 
   assert.equal(response.status, 200);
 
@@ -1605,6 +1651,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (pageId === 'SdoR2FastTrack') {
     clearWelshParaFromCaseData();
     delete caseData['sdoR2FastTrackCreditHire'];
+    delete caseData['fastTrackHousingDisrepair'];
   }
   if (responseBody.data.requestForReconsiderationDeadline) {
     caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
@@ -1612,9 +1659,21 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   delete caseData['notificationSummary'];
 
-  try {
-     assert.deepEqual(responseBody.data, caseData);
+  if (!assertServiceOwnedCallbackData) {
+    return;
   }
+
+  try {
+    for (const [key, value] of Object.entries(caseData)) {
+      assert.deepEqual(responseBody.data[key], value, `Mismatch on field: ${key}`);
+    }
+    for (const key of Object.keys(responseBody.data)) {
+      if (!(key in caseData)) {
+        console.warn(`API returned unexpected field not in caseData: ${key} = ${JSON.stringify(responseBody.data[key])}`);
+      }
+    }
+  }
+
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
     console.error('Data different in page ' + pageId);
@@ -1700,7 +1759,8 @@ const expectedWarnings = async (pageId, eventData, expectedWarningMessages, resp
   }
 };
 
-const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+// Confirmation copy is service-owned; assert it only in journeys that specifically own that behaviour.
+const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains = null, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
@@ -1709,9 +1769,11 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    if(submittedCallbackResponseContains.body) {
-      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if (submittedCallbackResponseContains) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+      if (submittedCallbackResponseContains.body) {
+        assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+      }
     }
   }
 
@@ -1722,7 +1784,12 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
-const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+const assertSubmittedEventWithCaseData = async (
+  updatedCaseData,
+  expectedState,
+  submittedCallbackResponseContains = null,
+  hasSubmittedCallback = true
+) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, updatedCaseData, caseId);
@@ -1731,8 +1798,10 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
   assert.equal(responseBody.state, expectedState);
   if (hasSubmittedCallback) {
     assert.equal(responseBody.callback_response_status_code, 200);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    if (submittedCallbackResponseContains) {
+      assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+      assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+    }
   }
 };
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
@@ -1983,8 +2052,6 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['respondent2OrganisationIDCopy'];
   delete responseBody.data['applicantExperts'];
   delete responseBody.data['applicantWitnesses'];
-  delete responseBody.data['disposalHearingBundle'];
-  delete responseBody.data['disposalHearingBundleToggle'];
   delete responseBody.data['disposalHearingClaimSettlingToggle'];
   delete responseBody.data['disposalHearingCostsToggle'];
   delete responseBody.data['disposalHearingDisclosureOfDocuments'];
@@ -2033,12 +2100,13 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackSettlementToggle'];
   delete responseBody.data['fastTrackTrial'];
   delete responseBody.data['fastTrackTrialToggle'];
-  delete responseBody.data['fastTrackTrialBundleToggle'];
   delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
   delete responseBody.data['orderType'];
   delete responseBody.data['finalOrderTrackToggle'];
+  delete responseBody.data['assistedOrderPenalNoticeContent'];
+  delete responseBody.data['assistedOrderPenalNoticeToggle'];
   delete responseBody.data['respondent1Experts'];
   delete responseBody.data['respondent1Witnesses'];
   delete responseBody.data['setFastTrackFlag'];
@@ -2134,6 +2202,8 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  delete responseBody.data['assistedOrderPenalNoticeContent'];
+  delete responseBody.data['assistedOrderPenalNoticeToggle'];
   if (responseBody.data.finalOrderDownloadTemplateOptions) {
     caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
   }

@@ -1,6 +1,5 @@
-import ClaimType from '../../../../../../../enums/claim-type';
-import PartyType from '../../../../../../../enums/party-types';
-import { Party } from '../../../../../../../models/partys';
+import PartyType from '../../../../../../../constants/users/party-types';
+import { Party } from '../../../../../../../models/users/partys';
 
 export const subheadings = { experts: 'Use of experts in court' };
 

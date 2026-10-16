@@ -17,7 +17,7 @@ const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
-const sdoTracks = require('../fixtures/events/createSDO');
+const sdoTracks = require('../fixtures/events/createSDO.js');
 
 
 

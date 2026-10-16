@@ -6,7 +6,7 @@ chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
-const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
+const {waitForFinishedBusinessProcess, checkOtherRemedyEnabled} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
@@ -17,7 +17,8 @@ const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../he
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
-const sdoTracks = require('../fixtures/events/createSDO');
+const sdoTracks = require('../fixtures/events/createSDO.js');
+const sdoTracksOtherRemedy = require('../fixtures/events/createSDOOtherRemedy.js');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 const testingSupport = require('./testingSupport');
 const lodash = require('lodash');
@@ -53,6 +54,10 @@ const data = {
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   CREATE_SDO_CARM: (userInput) => sdoTracks.createSDOSmallCarm(userInput),
   CREATE_SMALL_DRH_CARM: () => sdoTracks.createSDOSmallDRHCarm(),
+  LA_CREATE_SDO_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createLASDO(userInput),
+  CREATE_SDO_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOSmallWODamageSumInPerson(userInput),
+  CREATE_SDO_CARM_OTHER_REMEDY: (userInput) => sdoTracksOtherRemedy.createSDOSmallCarm(userInput),
+  CREATE_SMALL_DRH_CARM_OTHER_REMEDY: () => sdoTracksOtherRemedy.createSDOSmallDRHCarm(),
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
@@ -321,11 +326,13 @@ module.exports = function (){
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = data.CREATE_SDO();
+    if(await checkOtherRemedyEnabled())
+      disposalData = data.CREATE_SDO_OTHER_REMEDY();
 
     if (carmEnabled) {
       disposalData = data.CREATE_SDO_CARM();
-    } else {
-      disposalData = data.CREATE_SDO();
+      if(await checkOtherRemedyEnabled())
+        disposalData = data.CREATE_SDO_CARM_OTHER_REMEDY();
     }
 
     for (let pageId of Object.keys(disposalData.valid)) {
@@ -407,6 +414,8 @@ module.exports = function (){
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = data.LA_CREATE_SDO();
+    if(await checkOtherRemedyEnabled()) 
+      disposalData = data.LA_CREATE_SDO_OTHER_REMEDY();
 
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);

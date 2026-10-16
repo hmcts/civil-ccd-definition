@@ -39,6 +39,15 @@ e2e/.auth/**
 # test_output
 test-results/
 e2e/e2e-documentation/results/
+# Generated visual artifacts
+**/actualPngs/
+**/expectedPngs/
+**/diffPngs/
+**/downloads/actual/
+allure-results/
+allure-functional-results/
+allure-functional-report/
+allure-report/
 
 ## Helm
 charts/civil-ccd/charts/**
@@ -59,12 +68,13 @@ playwright/.cache/
 
 # Playwright
 playwright-test-results/
-allure-results/
+playwright-bootstrap-test-results/
+playwright-functional-test-results/
+playwright-smoke-test-results/
 playwright-allure-functional-results/
 playwright-allure-bootstrap-results/
 playwright-allure-bootstrap-report/
 playwright-allure-functional-report/
-allure-report/
 playwright-report/
 /playwright-e2e/fixtures/.users/
 /playwright-e2e/fixtures/.user-cookies/
@@ -78,9 +88,18 @@ AGENTS.md
 # Local tooling / generated output
 .playwright-mcp/
 allure-functional-results/
-bin/shared/
 playwright-tests/debug-*.png
 playwright-tests/e2e/.auth/
 playwright-tests/e2e/.cases/
 # playwright-tests environment files hold secrets
 playwright-tests/env/.env.*
+.claude/
+
+# WireMock mappings pulled from civil-wiremock-mappings at build time
+mappings/
+__files/
+
+# Shared scripts pulled from civil-service (run bin/pull-latest-civil-shared.sh)
+bin/shared/*
+!bin/shared/.gitkeep
+.civil-service-sparse/

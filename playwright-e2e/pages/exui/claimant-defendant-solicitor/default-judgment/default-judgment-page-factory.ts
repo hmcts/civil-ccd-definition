@@ -25,8 +25,12 @@ import DateFragment from '../../fragments/date/date-fragment.ts';
 import YesOrNoFragment from '../../fragments/yes-or-no/yes-or-no-fragment.ts';
 import ConfirmDefaultJudgmentPage from './unspec/confirm-default-judgment/confirm-default-judgment-page.ts';
 import ConfirmDefaultJudgmentSpecPage from './lr-spec/confirm-default-judgment-spec/confirm-default-judgment-spec-page.ts';
+import AbandonOtherRemedyPage from './unspec/abandon-other-remedy/abandon-other-remedy-page';
 
 export default class DefaultJudgmentPageFactory extends BasePageFactory {
+  get abandonOtherRemedyPage() {
+    return new AbandonOtherRemedyPage(this.page);
+  }
   get defendantDetailsPage() {
     return new DefendantDetailsPage(this.page);
   }

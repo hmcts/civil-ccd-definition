@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseStateID": "CASE_SETTLED",
-    "UserRole": "caseworker-approver",
-    "CRUD": "CRUD"
-  }
-]

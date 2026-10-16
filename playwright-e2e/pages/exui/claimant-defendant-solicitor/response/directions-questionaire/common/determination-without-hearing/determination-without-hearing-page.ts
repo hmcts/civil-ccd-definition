@@ -1,13 +1,13 @@
 import { Page } from '@playwright/test';
-import { Party } from '../../../../../../../models/partys.ts';
+import { Party } from '../../../../../../../models/users/partys.ts';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import { heading, inputs, radioButtons } from './determination-without-hearing-content.ts';
 import YesOrNoFragment from '../../../../../fragments/yes-or-no/yes-or-no-fragment.ts';
-import { getFormattedCaseId } from '../../../../../exui-page/exui-content.ts';
+import { getFormattedCaseId } from '../../../../../mixin-pages/exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class DeterminationWithoutHearingPage extends ExuiPage(BasePage) {
@@ -31,8 +31,8 @@ export default class DeterminationWithoutHearingPage extends ExuiPage(BasePage) 
     await super.runVerifications(
       [
         super.expectHeading(heading),
-        super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
-        super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
+        super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+        super.expectCaseHeading(ccdCaseData.caseNamePublic!),
         super.expectHeading(heading),
         super.expectLegend(radioButtons.deterWithoutHearing.label, { count: 1 }),
         this.yesOrNoFragment.verifyContent(

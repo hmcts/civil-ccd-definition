@@ -2,10 +2,10 @@ import config from '../../../../config/config';
 import BasePage from '../../../../base/base-page';
 import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { dropdowns } from './case-filter-content';
-import { buttons } from '../../exui-page/exui-content';
-import { CCDEvent } from '../../../../models/ccd/ccd-events';
+import { buttons } from '../../mixin-pages/exui-page/exui-content';
+import CCDEvent from '../../../../models/ccd-events/ccdEvent';
 
 @AllMethodsStep()
 export default class CaseFilterPage extends ExuiPage(BasePage) {
@@ -26,7 +26,10 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
     await super.selectFromDropdown(ccdEvent.name, dropdowns.event.selector);
   }
 
-  async chooseClaimTypeWithUrl(ccdEvent: CCDEvent) {
+  async chooseClaimTypeWithUrl(
+    ccdEvent: CCDEvent,
+    { isRetry = false }: { isRetry?: boolean } = {},
+  ) {
     console.log(`Starting event with url: ${ccdEvent.id}`);
     await super.retryGoTo(
       `${urls.manageCase}/cases/case-create/${config.definition.jurisdiction}/${config.definition.caseType}/${ccdEvent.id}/${ccdEvent.id}`,
@@ -38,6 +41,7 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
       undefined,
       { retries: 2, message: `Starting event with url: ${ccdEvent.id} failed, trying again` },
     );
+    if (isRetry) await super.dismissRefreshModal();
     super.setCCDEvent = ccdEvent;
   }
 

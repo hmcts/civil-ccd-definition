@@ -1,6 +1,6 @@
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
-import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
-import { Party } from '../../../../../../models/partys';
+import { ClaimantDefendantPartyType } from '../../../../../../models/users/claimant-defendant-party-types';
+import { Party } from '../../../../../../models/users/partys';
 
 export const subheadings = {
   hasPaid: (defendantParty: Party, defendantPartyType: ClaimantDefendantPartyType) =>

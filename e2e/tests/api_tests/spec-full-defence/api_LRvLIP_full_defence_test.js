@@ -1,9 +1,15 @@
+/**
+ * CUI/LiP Test Ownership:
+ * civil-ccd-definition: Owns workflow and API-level integration tests.
+ * civil-citizen-ui: Owns citizen-rendered UI and routing tests.
+ */
+
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
 
 let caseId;
 
-Feature('LR v LIP spec full defence api journey').tag('@api-nightly-prod @api-spec-full-defence');
+Feature('LR v LIP spec full defence api journey').tag('@api-spec-full-defence');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -17,5 +23,5 @@ Scenario('LR v LIP spec full defence', async ({api_spec_cui}) => {
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

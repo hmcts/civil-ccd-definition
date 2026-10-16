@@ -1,11 +1,11 @@
 const { expect, assert} = require('chai');
 const { uniqWith } = require('lodash');
-const { noDuplicateFoundACT } = require('../utils/utils');
+const { noDuplicateFoundACT, isValidCaseTypeId } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+    return isValidCaseTypeId()(v);
   });
   expect(row.UserRoles).to.not.be.null;
   expect(row.AccessControl).to.not.be.null;

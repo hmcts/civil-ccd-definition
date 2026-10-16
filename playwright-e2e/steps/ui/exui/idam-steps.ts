@@ -1,7 +1,7 @@
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import exuiUsers from '../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import User from '../../../models/user';
+import User from '../../../models/users/user';
 
 @AllMethodsStep()
 export default class IdamSteps {

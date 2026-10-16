@@ -1,11 +1,14 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
+import ExpectOptions from '../models/api/expect-options';
 import RequestOptions from '../models/api/request-options';
-import { expect } from '../playwright-fixtures';
+import { apiExpect } from '../playwright-fixtures';
 import { BoxedDetailedStep } from '../decorators/test-steps';
-import ResponseDataType from '../enums/response-data-type';
+import ResponseDataType from '../constants/test-utils/response-data-type';
 import * as responseOptions from '../models/api/response-options';
+import NonRetryableError from '../errors/non-retryable-error';
 
 const classKey = 'BaseRequest';
+
 export default abstract class BaseRequest {
   private requestContext: APIRequestContext;
   private MAX_RETRY_TIMEOUT = 30000;
@@ -24,9 +27,12 @@ export default abstract class BaseRequest {
   ): Promise<any | string | null> {
     switch (responseDataType) {
       case ResponseDataType.JSON:
-        return response.json();
+        return response.json().catch(async (error) => {
+        });
       case ResponseDataType.TEXT:
-        return response.text();
+        return response.text().catch(async (error) => {
+          
+        });
       default:
         return null;
     }
@@ -41,7 +47,11 @@ export default abstract class BaseRequest {
       params,
     }: RequestOptions = {},
     responseType = ResponseDataType.NONE,
-    { expectedStatus = 200, verifyResponse }: responseOptions._ResponseOptions = {},
+    {
+      expectedStatus = 200,
+      verifyResponse,
+      statusErrorMessage,
+    }: responseOptions._ResponseOptions = {},
   ): Promise<APIResponse | any | string> {
     const response = await this.requestContext.fetch(url, {
       method,
@@ -49,13 +59,21 @@ export default abstract class BaseRequest {
       headers,
       params,
     });
+    const responseData = await this.getResponseData(response, responseType);
     await this.expectStatus(
       expectedStatus,
       response.status(),
       response.url(),
       response.statusText(),
+      statusErrorMessage
+        ? await statusErrorMessage(responseData ?? response, {
+            url: response.url(),
+            status: response.status(),
+            headers: response.headers(),
+            expectedStatus,
+          })
+        : undefined,
     );
-    const responseData = await this.getResponseData(response, responseType);
     if (verifyResponse)
       await verifyResponse(responseData ?? response, {
         status: response.status(),
@@ -72,26 +90,46 @@ export default abstract class BaseRequest {
       expectedStatus = 200,
       retries = 2,
       retryTimeInterval = 5000,
+      timeoutMs,
+      backoffFactor = 1,
+      maxRetryTimeInterval = this.MAX_RETRY_TIMEOUT,
       verifyResponse,
+      statusErrorMessage,
     }: responseOptions._RetryResponseOptions = {},
   ): Promise<APIResponse | any | string> {
-    if (retryTimeInterval > this.MAX_RETRY_TIMEOUT) {
-      retryTimeInterval = this.MAX_RETRY_TIMEOUT;
-    }
-    while (retries >= 0) {
+    maxRetryTimeInterval = Math.min(maxRetryTimeInterval, this.MAX_RETRY_TIMEOUT);
+    retryTimeInterval = Math.min(retryTimeInterval, maxRetryTimeInterval);
+    const startTime = Date.now();
+    const deadline = timeoutMs !== undefined ? startTime + timeoutMs : undefined;
+    while (true) {
       try {
         const response = await this._request(url, requestOptions, responseDataType, {
           expectedStatus,
           verifyResponse,
+          statusErrorMessage,
         });
         return response;
       } catch (error: any) {
-        if (retries <= 0) throw error;
+        if (NonRetryableError.is(error)) {
+          throw error;
+        }
+        const remainingTime = deadline !== undefined ? deadline - Date.now() : undefined;
+        if (remainingTime !== undefined ? remainingTime <= 0 : retries <= 0) throw error;
+        const sleepTime =
+          remainingTime !== undefined ? Math.min(retryTimeInterval, remainingTime) : retryTimeInterval;
+        const progress =
+          deadline !== undefined
+            ? `Elapsed ${Math.round((Date.now() - startTime) / 1000)}s of ${timeoutMs / 1000}s`
+            : `Retries left: ${retries}`;
         console.log(
-          `${error.message.split('\n')[0]}, retrying in ${retryTimeInterval / 1000} seconds (Retries left: ${retries})`,
+          `${error.message.split('\n')[0]}, retrying in ${sleepTime / 1000} seconds (${progress})`,
         );
         retries--;
-        await this.sleep(retryTimeInterval);
+        await this.sleep(sleepTime);
+        retryTimeInterval = Math.min(
+          Math.round(retryTimeInterval * backoffFactor),
+          maxRetryTimeInterval,
+        );
       }
     }
   }
@@ -182,42 +220,68 @@ export default abstract class BaseRequest {
 
   @BoxedDetailedStep(classKey, 'actualStatus', 'expectedStatus')
   private async expectStatus(
-    expectedStatus: number,
+    expectedStatus: number | number[],
     actualStatus: number,
     url: string,
     statusText: string,
+    message?: string,
+    nonRetryable = false,
   ) {
-    expect(
-      actualStatus,
-      `Expected status: ${expectedStatus}, actual status: ${actualStatus}, ` +
-        `message: ${statusText}, url: ${url}`,
-    ).toBe(expectedStatus);
+    try {
+      (
+        apiExpect(
+          actualStatus,
+          message ??
+            `Expected status: ${expectedStatus}, actual status: ${actualStatus}, ` +
+              `message: ${statusText}, url: ${url}`,
+        ) as any
+      ).toBeOneOf(expectedStatus);
+    } catch (error: any) {
+      if (nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
   }
 
   @BoxedDetailedStep(classKey, 'keyPath')
   protected async expectResponseJsonToHaveProperty(
     keyPath: string,
     responseJson: any,
-    options: { message?: string } = {},
+    options: ExpectOptions = {},
   ) {
-    expect(
-      responseJson,
-      options.message ??
-        `Expected response json to have property '${keyPath.split('.').join(' => ')}'`,
-    ).toHaveProperty(keyPath);
+    try {
+      apiExpect(
+        responseJson,
+        options.message ??
+          `Expected response json to have property '${keyPath.split('.').join(' => ')}'`,
+      ).toHaveProperty(keyPath);
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
   }
 
   @BoxedDetailedStep(classKey, 'keyPath')
   protected async expectResponseJsonToNotHaveProperty(
     keyPath: string,
     responseJson: any,
-    options: { message?: string } = {},
+    options: ExpectOptions = {},
   ) {
-    expect(
-      responseJson,
-      options.message ??
-        `Expected response json to have property '${keyPath.split('.').join(' => ')}'`,
-    ).not.toHaveProperty(keyPath);
+    try {
+      apiExpect(
+        responseJson,
+        options.message ??
+          `Expected response json to have property '${keyPath.split('.').join(' => ')}'`,
+      ).not.toHaveProperty(keyPath);
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
   }
 
   @BoxedDetailedStep(classKey, 'keyPath', 'value')
@@ -225,55 +289,117 @@ export default abstract class BaseRequest {
     keyPath: string,
     value: any,
     responseJson: any,
-    options: { message?: string } = {},
+    options: ExpectOptions = {},
   ) {
-    expect(
-      responseJson,
-      options.message ??
-        `Expected response json to have property '${keyPath.split('.').join(' => ')}'`,
-    ).toHaveProperty(keyPath, value);
+    try {
+      apiExpect(
+        responseJson,
+        options.message ??
+          `Expected response json to have property '${keyPath.split('.').join(' => ')}'`,
+      ).toHaveProperty(keyPath, value);
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
+  }
+
+  @BoxedDetailedStep(classKey, 'keyPath', 'value')
+  protected async expectResponseJsonPropertyToBe(
+    keyPath: string,
+    value: any | any[],
+    responseJson: any,
+    options: ExpectOptions = {},
+  ) {
+    try {
+      const actualValue = keyPath
+        .split('.')
+        .reduce((currentValue, property) => currentValue?.[property], responseJson);
+
+      (
+        apiExpect(
+          actualValue,
+          options.message ??
+            `Expected response json property '${keyPath.split('.').join(' => ')}' to be ${value}`,
+        ) as any
+      ).toBeOneOf(value);
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
   }
 
   @BoxedDetailedStep(classKey)
   protected async expectResponseJsonToContain(
     partialObject: any,
     responseJson: any,
-    options: { message?: string } = {},
+    options: ExpectOptions = {},
   ) {
-    expect(responseJson, options.message).toMatchObject(partialObject);
+    try {
+      apiExpect(responseJson, options.message).toMatchObject(partialObject);
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
   }
 
   @BoxedDetailedStep(classKey)
   protected async expectResponseJsonArrayToContain(
     partialArray: any[],
     responseJsonArray: any[],
-    options: { message?: string } = {},
+    options: ExpectOptions = {},
   ) {
     const expectedArrayItems = partialArray.map((item) =>
       item !== null && typeof item === 'object' && !Array.isArray(item)
-        ? expect.objectContaining(item)
+        ? apiExpect.objectContaining(item)
         : item,
     );
-    expect(responseJsonArray, options.message).toEqual(
-      expect.arrayContaining(expectedArrayItems),
-    );
+    try {
+      apiExpect(responseJsonArray, options.message).toEqual(
+        apiExpect.arrayContaining(expectedArrayItems),
+      );
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
   }
 
   @BoxedDetailedStep(classKey)
   protected async expectResponseJsonToEqual(
     object: any,
     responseJson: any,
-    options: { message?: string } = {},
+    options: ExpectOptions = {},
   ) {
-    expect(responseJson, options.message).toEqual(object);
+    try {
+      apiExpect(responseJson, options.message).toEqual(object);
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
   }
 
   @BoxedDetailedStep(classKey, 'text', 'responseText')
   protected async expectResponseTextToEqual(
     text: string,
     responseText: string,
-    options: { message?: string } = {},
+    options: ExpectOptions = {},
   ) {
-    expect(text, options.message).toEqual(responseText);
+    try {
+      apiExpect(text, options.message).toEqual(responseText);
+    } catch (error: any) {
+      if (options.nonRetryable) {
+        throw NonRetryableError.mark(error);
+      }
+      throw error;
+    }
   }
 }

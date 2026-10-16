@@ -5,8 +5,12 @@ import { mergeTests } from '@playwright/test';
 import CaseworkerSteps from '../../steps/ui/exui/caseworker-steps';
 import ClaimantSolicitorSpecSteps from '../../steps/ui/exui/claimant-solicitor-spec-steps';
 import ClaimantSolcitorSteps from '../../steps/ui/exui/claimant-solicitor-steps';
+import ClaimantSolicitorGaSteps from '../../steps/ui/ga-exui/claimant-solicitor-ga-steps';
+import CtscAdminSteps from '../../steps/ui/exui/ctsc-admin-steps';
 import DefendantSolicitor1SpecSteps from '../../steps/ui/exui/defendant-solicitor-1-spec-steps';
 import DefendantSolicitor1Steps from '../../steps/ui/exui/defendant-solicitor-1-steps';
+import HearingCenterAdminGaSteps from '../../steps/ui/ga-exui/hearing-center-admin-ga-steps';
+import JudgeGaSteps from '../../steps/ui/ga-exui/judge-ga-steps';
 import JudgeSteps from '../../steps/ui/exui/judge.steps';
 import IdamSteps from '../../steps/ui/exui/idam-steps';
 import ExuiDashboardSteps from '../../steps/ui/exui/exui-dashboard-steps';
@@ -14,12 +18,17 @@ import DefendantSolicitor2SpecSteps from '../../steps/ui/exui/defendant-solicito
 import DefendantSolicitor2Steps from '../../steps/ui/exui/defendant-solicitor-2-steps';
 import HearingCenterAdminSteps from '../../steps/ui/exui/hearing-center-admin-steps';
 import HearingCenterAdminSpecSteps from '../../steps/ui/exui/hearing-center-admin-spec-steps';
+import LegalAdvisorSteps from '../../steps/ui/exui/legal-advisor.steps';
 
 type UiStepsFixtures = {
   IdamSteps: IdamSteps;
   ExuiDashboardSteps: ExuiDashboardSteps;
   ClaimantSolicitorSteps: ClaimantSolcitorSteps;
   ClaimantSolicitorSpecSteps: ClaimantSolicitorSpecSteps;
+  ClaimantSolicitorGaSteps: ClaimantSolicitorGaSteps;
+  CtscAdminSteps: CtscAdminSteps;
+  HearingCenterAdminGaSteps: HearingCenterAdminGaSteps;
+  JudgeGaSteps: JudgeGaSteps;
   DefendantSolicitor1Steps: DefendantSolicitor1Steps;
   DefendantSolicitor1SpecSteps: DefendantSolicitor1SpecSteps;
   DefendantSolicitor2Steps: DefendantSolicitor2Steps;
@@ -28,6 +37,7 @@ type UiStepsFixtures = {
   HearingCenterAdminSteps: HearingCenterAdminSteps;
   HearingCenterAdminSpecSteps: HearingCenterAdminSpecSteps;
   JudgeSteps: JudgeSteps;
+  LegalAdvisorSteps: LegalAdvisorSteps;
 };
 
 export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).extend<UiStepsFixtures>({
@@ -37,11 +47,23 @@ export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).
   ExuiDashboardSteps: async ({ _exuiDashboardActions, _idamActions, _requestsFactory, _testData }, use) => {
     await use(new ExuiDashboardSteps(_exuiDashboardActions, _idamActions, _requestsFactory, _testData));
   },
-  ClaimantSolicitorSteps: async ({ _exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _requestsFactory, _testData }, use) => {
-    await use(new ClaimantSolcitorSteps(_exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _requestsFactory, _testData));
+  ClaimantSolicitorSteps: async ({ _exuiDashboardActions, _idamActions, _claimantSolicitorActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantSolcitorSteps(_exuiDashboardActions, _idamActions, _claimantSolicitorActionsFactory, _requestsFactory, _testData));
   },
-  ClaimantSolicitorSpecSteps: async ({ _exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _requestsFactory, _testData }, use) => {
-    await use(new ClaimantSolicitorSpecSteps(_exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _requestsFactory, _testData));
+  ClaimantSolicitorSpecSteps: async ({ _exuiDashboardActions, _idamActions, _claimantSolicitorActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantSolicitorSpecSteps(_exuiDashboardActions, _idamActions, _claimantSolicitorActionsFactory, _requestsFactory, _testData));
+  },
+  ClaimantSolicitorGaSteps: async ({ _gaExuiDashboardActions, _idamActions, _claimantSolicitorGaActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantSolicitorGaSteps(_gaExuiDashboardActions, _idamActions, _claimantSolicitorGaActionsFactory, _requestsFactory, _testData));
+  },
+  CtscAdminSteps: async ({ _exuiDashboardActions, _idamActions, _ctscAdminActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new CtscAdminSteps(_exuiDashboardActions, _idamActions, _ctscAdminActionsFactory, _requestsFactory, _testData));
+  },
+  HearingCenterAdminGaSteps: async ({ _gaExuiDashboardActions, _idamActions, _hearingCenterAdminGaActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new HearingCenterAdminGaSteps(_gaExuiDashboardActions, _idamActions, _hearingCenterAdminGaActionsFactory, _requestsFactory, _testData));
+  },
+  JudgeGaSteps: async ({ _gaExuiDashboardActions, _idamActions, _judgeGaActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new JudgeGaSteps(_gaExuiDashboardActions, _idamActions, _judgeGaActionsFactory, _requestsFactory, _testData));
   },
   DefendantSolicitor1Steps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor1Steps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData));
@@ -64,7 +86,10 @@ export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).
   HearingCenterAdminSpecSteps: async ({ _exuiDashboardActions, _idamActions, _hearingCenterAdminActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new HearingCenterAdminSpecSteps(_exuiDashboardActions, _idamActions, _hearingCenterAdminActionsFactory, _requestsFactory, _testData));
   },
-  JudgeSteps: async ({ _exuiDashboardActions, _idamActions, _judgeLaActionsFactory: _judgeActionsFactory, _requestsFactory, _testData }, use) => {
-    await use(new JudgeSteps(_exuiDashboardActions, _idamActions, _judgeActionsFactory, _requestsFactory, _testData));
+  JudgeSteps: async ({ _exuiDashboardActions, _idamActions, _judgeLaActionsFactory: _judgeLaActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new JudgeSteps(_exuiDashboardActions, _idamActions, _judgeLaActionsFactory, _requestsFactory, _testData));
+  },
+  LegalAdvisorSteps: async ({ _exuiDashboardActions, _idamActions, _judgeLaActionsFactory: _judgeLaActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new LegalAdvisorSteps(_exuiDashboardActions, _idamActions, _judgeLaActionsFactory, _requestsFactory, _testData));
   }
 });

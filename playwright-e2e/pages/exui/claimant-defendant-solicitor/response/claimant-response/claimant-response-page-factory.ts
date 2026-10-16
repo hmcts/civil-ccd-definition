@@ -1,5 +1,5 @@
 import BasePageFactory from '../../../../../base/base-page-factory';
-import partys from '../../../../../constants/partys';
+import partys from '../../../../../constants/users/partys';
 import StatementOfTruthClaimantResponsePage from './common/statement-of-truth-claimant-response/statement-of-truth-claimant-response-page';
 import SubmitClaimantResponsePage from './common/submit-claimant-response/submit-claimant-response-page';
 import ConfirmClaimantResponseSpecPage from './lr-spec/confirm-claimant-response-spec/confirm-claimant-response-spec-page';
@@ -19,6 +19,7 @@ import RespondentResponsePage from './unspec/respondent-response/respondent-resp
 import ExpertPage from '../directions-questionaire/common/experts/experts-page';
 import FileDirectionsQuestionnairePage from '../directions-questionaire/common/file-directions-questionnaire/file-directions-questionnaire-page';
 import FixedRecoverableCostsPage from '../directions-questionaire/common/fixed-recoverable-costs/fixed-recoverable-costs-page';
+import FixedRecoverableCostsIntermediatePage from '../directions-questionaire/common/fixed-recoverable-costs-intermediate/fixed-recoverable-costs-intermediate-page';
 import HearingSupportPage from '../directions-questionaire/common/hearing-support/hearing-support-page';
 import LanguagePage from '../directions-questionaire/common/language/language-page';
 import WitnessesPage from '../directions-questionaire/common/witnesses/witnesses-page';
@@ -106,6 +107,14 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
 
   get fixedRecoverableCostsPage() {
     return new FixedRecoverableCostsPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
+  }
+
+  get fixedRecoverableCostsIntermediatePage() {
+    return new FixedRecoverableCostsIntermediatePage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
   }
 
   get disclosureOfElectronicDocumentsPage() {

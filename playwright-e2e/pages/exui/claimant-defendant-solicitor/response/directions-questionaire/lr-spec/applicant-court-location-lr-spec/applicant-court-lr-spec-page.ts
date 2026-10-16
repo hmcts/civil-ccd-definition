@@ -1,11 +1,11 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import { dropdowns, inputs, subheadings } from './applicant-court-lr-spec-content.ts';
 import RemoteHearingSpecFragment from '../../../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment.ts';
-import partys from '../../../../../../../constants/partys.ts';
+import partys from '../../../../../../../constants/users/partys';
 import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 
 @AllMethodsStep()
@@ -28,7 +28,7 @@ export default class ApplicantCourtLocationLRSpecPage extends ExuiPage(BasePage)
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      preferredCourts[partys.CLAIMANT_1.key].default,
+      preferredCourts[partys.CLAIMANT_SOLICITOR_1.key].default,
       dropdowns.courtLocations.selector,
     );
     await super.inputText(

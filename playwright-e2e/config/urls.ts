@@ -5,13 +5,13 @@ const urls = {
   dmStore: process.env.DM_STORE_URL,
   idamWeb: process.env.IDAM_WEB_URL,
   idamApi: process.env.IDAM_API_URL,
-  idamTestSupportApi: process.env.IDAM_TEST_URL,
+  idamTestSupportApi: process.env.IDAM_TEST_SUPPORT_API_URL,
   civilService: process.env.CIVIL_SERVICE_URL,
   waTaskMgmtApi: process.env.WA_TASK_MGMT_URL,
   caseAssignmentService: process.env.AAC_API_URL,
   orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL,
   paymentApi: process.env.PAYMENT_API_URL,
-  wiremockService: process.env.WIRE_MOCK_SERVICE_URL,
+  wiremockUrl: process.env.WIREMOCK_URL,
   govUK: 'https://www.gov.uk',
 };
 

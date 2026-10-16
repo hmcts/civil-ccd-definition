@@ -10,19 +10,33 @@ const TASK_RETRY_TIMEOUT_MS = 5000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
+const getCcdDataStoreGABaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseTypeGA}`;
 const getCcdCaseUrl = (userId, caseId) => `${config.url.ccdDataStore}/aggregated/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCaseDetailsUrl = (userId, caseId) => `${config.url.ccdDataStore}/caseworkers/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}/cases/${caseId}`;
 const getCivilServiceUrl = () => `${config.url.civilService}`;
+const getPaymentCallbackUrl = () => `${config.url.civilService}/service-request-update`;
+const getJudgeRevisitTaskHandlerUrl = (state, genAppType) => `${config.url.civilService}/testing-support/trigger-judge-revisit-process-event/${state}/${genAppType}`;
+const getCaseDismissalTaskHandlerUrl = () => `${config.url.civilService}/testing-support/trigger-case-dismissal-scheduler`;
+const getGaCaseDataUrl = (caseId) => `${config.url.civilService}/testing-support/case/${caseId}`;
+const getMainCivilServiceCaseDataUrl = () => `${config.url.civilService}/testing-support/case/`;
+const getCivilServiceCaseDataUrl = () => `${config.url.civilService}/testing-support/case/`;
 const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-paid`;
 const getHearingFeeUnpaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-unpaid`;
 const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`;
 const getBulkClaimServiceUrl = () => `${config.url.orchestratorService}/createSDTClaim`;
 const getPaymentAPIBaseUrl = () => `${config.url.paymentApi}`;
+const getGeneralApplicationBaseUrl = () => `${config.url.civilService}/testing-support/case/`;
 
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${userAuth}`,
+    'ServiceAuthorization': tokens.s2sAuth
+  };
+};
+const getRequestHeadersPayment = () => {
+  return {
+    'Content-Type': 'application/json',
     'ServiceAuthorization': tokens.s2sAuth
   };
 };
@@ -35,6 +49,40 @@ const fetchCaseDetails = async (user, caseId, response = 200) => {
 
   return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
       .then(response => response.json());
+};
+
+const fetchSentNotifications = async (user, caseId, templateId, recipientEmail, response = 200) => {
+  let eventUserAuth = await idamHelper.accessToken(user);
+  const params = new URLSearchParams();
+  if (caseId) params.append('caseId', caseId);
+  if (templateId) params.append('templateId', templateId);
+  if (recipientEmail) params.append('recipientEmail', recipientEmail);
+  const url = `${config.url.civilService}/testing-support/notifications/sent?${params.toString()}`;
+  return await restHelper.retriedRequest(url, {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${eventUserAuth}`
+  }, null, 'GET', response)
+    .then(r => r.json());
+};
+
+const triggerScheduler = async (user, schedulerName, response = 202) => {
+  let eventUserAuth = await idamHelper.accessToken(user);
+  const url = `${config.url.civilService}/testing-support/run-scheduler/${schedulerName}`;
+  return await restHelper.retriedRequest(url, {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${eventUserAuth}`
+  }, null, 'GET', response)
+    .then(r => r.text());
+};
+
+const listSchedulers = async (user, response = 200) => {
+  let eventUserAuth = await idamHelper.accessToken(user);
+  const url = `${config.url.civilService}/testing-support/schedulers`;
+  return await restHelper.retriedRequest(url, {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${eventUserAuth}`
+  }, null, 'GET', response)
+    .then(r => r.json());
 };
 
 const fetchWaTasks = async (user, caseNumber, expectedStatus = 200) => {
@@ -88,7 +136,15 @@ module.exports = {
 
   getTokens: () => tokens,
 
+  getUserFullName: async (user) => {
+    let authToken = await idamHelper.accessToken(user);
+    return await idamHelper.getGivenName(authToken) + ' ' + await idamHelper.getFamilyName(authToken);
+  },
+
   fetchCaseDetails,
+  fetchSentNotifications,
+  triggerScheduler,
+  listSchedulers,
   fetchCaseDetailsAsSystemUser: async (caseId) => {
     const { userAuth, userId } = tokens;
     const details = await fetchCaseDetails(config.systemUpdate2, caseId, 200);
@@ -106,6 +162,49 @@ module.exports = {
       .then(response => response.json());
   },
 
+  paymentApiRequestUpdateServiceCallback: async (serviceRequestUpdateDto) => {
+    let url = getPaymentCallbackUrl();
+    let response = await restHelper.retriedRequest(url, getRequestHeadersPayment(),
+      serviceRequestUpdateDto, 'PUT');
+    return response || {};
+  },
+
+  gaOrderMadeSchedulerTaskHandler: async (state, genAppType) => {
+    const authToken = await idamHelper.accessToken(config.systemupdate);
+    let url = getJudgeRevisitTaskHandlerUrl(state, genAppType);
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
+      }, null,
+      'GET');
+    return response_msg || {};
+  },
+
+  civilCaseDismissalHandler: async() => {
+    const authToken = await idamHelper.accessToken(config.systemupdate);
+    let url = getCaseDismissalTaskHandlerUrl();
+    let response_msg =  await restHelper.retriedRequest(url, {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      }, null,
+      'GET');
+    return response_msg || {};
+  },
+
+  fetchGaCaseData: async (caseId) => {
+    const authToken = await idamHelper.accessToken(config.systemupdate);
+    let url = getGaCaseDataUrl(caseId);
+    console.log('*** GA Case Reference: '  + caseId + ' ***');
+
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
+      }, null, 'GET');
+  },
+
   startEvent: async (eventName, caseId) => {
     let url = getCcdDataStoreBaseUrl();
     if (caseId) {
@@ -116,6 +215,20 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
       .then(response => response.json());
     tokens.ccdEvent = response.token;
+    return response.case_details.case_data || {};
+  },
+
+  startGAEvent: async (eventName, caseId) => {
+    let url = getCcdDataStoreGABaseUrl();
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+    url += `/event-triggers/${eventName}/token`;
+
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET')
+      .then(response => response.json());
+    tokens.ccdEvent = response.token;
+
     return response.case_details.case_data || {};
   },
 
@@ -174,7 +287,7 @@ module.exports = {
     return response;
   },
   validatePage: async (eventName, pageId, caseData, caseId, expectedStatus = 200) => {
-    return restHelper.retriedRequest(`${getCcdDataStoreBaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
+    return restHelper.retriedJsonRequest(`${getCcdDataStoreBaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
       {
         case_reference: caseId,
         data: caseData,
@@ -184,11 +297,37 @@ module.exports = {
       }, 'POST', expectedStatus);
   },
 
+  validateGAPage: async (eventName, pageId, caseData, caseId) => {
+    return restHelper.request(`${getCcdDataStoreGABaseUrl()}/validate?pageId=${eventName}${pageId}`, getRequestHeaders(tokens.userAuth),
+      {
+        case_reference: caseId,
+        data: caseData,
+        event: {id: eventName},
+        event_data: caseData,
+        event_token: tokens.ccdEvent
+      }, 'POST');
+  },
+
   submitEvent: async (eventName, caseData, caseId) => {
     let url = `${getCcdDataStoreBaseUrl()}/cases`;
     if (caseId) {
       url += `/${caseId}/events`;
     }
+    return restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
+      {
+        data: caseData,
+        event: {id: eventName},
+        event_data: caseData,
+        event_token: tokens.ccdEvent
+      }, 'POST', 201);
+  },
+
+  submitGAEvent: async (eventName, caseData, caseId) => {
+    let url = `${getCcdDataStoreGABaseUrl()}/cases`;
+    if (caseId) {
+      url += `/${caseId}/events`;
+    }
+
     return restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
       {
         data: caseData,
@@ -206,6 +345,68 @@ module.exports = {
         data: caseData,
         event: eventName,
       }, 'POST', 201);
+  },
+
+  fetchUpdatedCivilCaseData: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
+    let url = getCivilServiceCaseDataUrl();
+    console.log('*** Civil Case Reference: '  + caseId + ' ***');
+    if (caseId) {
+      url += `${caseId}`;
+    }
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
+      }, null, 'GET');
+  },
+
+  fetchMainCivilCaseData: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
+    let url = getMainCivilServiceCaseDataUrl();
+    console.log('*** Civil Case Reference: '  + caseId + ' ***');
+    if (caseId) {
+      url += `${caseId}`;
+    }
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
+      }, null, 'GET');
+  },
+
+  fetchUpdatedCaseData: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
+    let url = getGeneralApplicationBaseUrl();
+    console.log('*** Civil Case Reference: '  + caseId + ' ***');
+    if (caseId) {
+      url += `${caseId}`;
+    }
+
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
+      }, null, 'GET');
+  },
+
+  fetchUpdatedGABusinessProcessData: async (caseId, user) => {
+    const authToken = await idamHelper.accessToken(user);
+    let url = getGeneralApplicationBaseUrl();
+    console.log('*** GA Case Reference: '  + caseId + ' ***');
+    if (caseId) {
+      url += `${caseId}/business-process`;
+    }
+
+    return await restHelper.retriedRequest(url,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
+        'ServiceAuthorization': tokens.s2sAuth
+      }, null, 'GET');
   },
 
   taskActionByUser: async function (user, taskId, url, expectedStatus = 204) {

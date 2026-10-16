@@ -1,0 +1,23 @@
+import { test } from '../../../playwright-fixtures/index';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
+
+test.describe(
+  '2v1 spec default judgement api journey',
+  { tag: ['@civil-service-nightly', '@api-dj'] },
+  async () => {
+    test('2v1 spec default judgement api', async ({
+      ClaimantSolicitorSpecApiSteps,
+      CaseRoleAssignmentApiSteps,
+    }) => {
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({
+        claimTrack: ClaimTrack.FAST_CLAIM,
+        claimType: ClaimType.TWO_VS_ONE,
+      });
+      await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+      await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+      await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
+      await ClaimantSolicitorSpecApiSteps.DefaultJudgementSpec();
+    });
+  },
+);

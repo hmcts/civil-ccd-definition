@@ -230,16 +230,18 @@ function computeDisplayNames(events) {
         'Applicant', 'Respondent', 'Claimant', 'Defendant',
         'Mark Paid Full',
       ]);
-      const knownCount = [...suffixes.values()].filter(s => KNOWN_SUFFIXES.has(s)).length;
-      if (knownCount > 0) {
-        for (const ev of evs) {
-          if (!KNOWN_SUFFIXES.has(suffixes.get(ev.id))) {
-            suffixes.set(ev.id, 'Unspec');
-          }
-        }
-      }
+      const knownSiblingSuffixes = [...suffixes.values()].filter(s => KNOWN_SUFFIXES.has(s));
+      const onlyKnownSiblingIsSpec = knownSiblingSuffixes.length > 0
+        && knownSiblingSuffixes.every(s => s === 'Spec');
       for (const ev of evs) {
-        displayNames.set(ev.id, `${name} (${suffixes.get(ev.id)})`);
+        const suffix = suffixes.get(ev.id);
+        if (KNOWN_SUFFIXES.has(suffix)) {
+          displayNames.set(ev.id, `${name} (${suffix})`);
+        } else if (onlyKnownSiblingIsSpec) {
+          displayNames.set(ev.id, `${name} (Unspec)`);
+        } else {
+          displayNames.set(ev.id, name);
+        }
       }
     }
   }
@@ -351,7 +353,11 @@ function renderColumn(stateId, x, y) {
     // Pill background + event name (with suffix for duplicates)
     const displayName = displayNames.get(ev.id) || ev.name;
     const notifTarget = getNotifLink(ev.id);
-    svg += `<rect x="${pillX}" y="${py}" width="${PILL_W}" height="${PILL_H}" rx="${PILL_R}" fill="${bg}" stroke="#bbb" stroke-width="0.5"/>`;
+    const roles = ev.createRoles || [];
+    const hasRoleTip = ev.sourceType === 'user' && roles.length > 0;
+    svg += `<rect x="${pillX}" y="${py}" width="${PILL_W}" height="${PILL_H}" rx="${PILL_R}" fill="${bg}" stroke="#bbb" stroke-width="0.5">`;
+    if (hasRoleTip) svg += `<title>Create: ${esc(roles.join(', '))}</title>`;
+    svg += `</rect>`;
     svg += `<text x="${pillX+8}" y="${py+PILL_H/2+3}" font-size="${FONT}" fill="#333" font-family="Arial">${esc(displayName)}</text>`;
 
     // Notification link icon (envelope)
@@ -448,7 +454,10 @@ let ccPillY = ccY + HDR_H + PILL_GAP;
 for (const ev of creationEvents) {
   const bg = pillBg(ev);
   const ccName = ccDisplayNames.get(ev.id) || ev.name;
-  ccSvg += `<rect x="${ccPillX}" y="${ccPillY}" width="${PILL_W}" height="${PILL_H}" rx="${PILL_R}" fill="${bg}" stroke="#bbb" stroke-width="0.5"/>`;
+  const ccRoles = ev.createRoles || [];
+  ccSvg += `<rect x="${ccPillX}" y="${ccPillY}" width="${PILL_W}" height="${PILL_H}" rx="${PILL_R}" fill="${bg}" stroke="#bbb" stroke-width="0.5">`;
+  if (ccRoles.length > 0) ccSvg += `<title>Create: ${esc(ccRoles.join(', '))}</title>`;
+  ccSvg += `</rect>`;
   ccSvg += `<text x="${ccPillX+8}" y="${ccPillY+PILL_H/2+3}" font-size="${FONT}" fill="#333" font-family="Arial">${esc(ccName)}</text>`;
   ccPillY += PILL_H + PILL_GAP;
 }
@@ -511,7 +520,10 @@ let guPillY = guY + HDR_H + PILL_GAP;
 for (const ev of globalUserEvents) {
   const bg = pillBg(ev);
   const guName = guDisplayNames.get(ev.id) || ev.name;
-  guSvg += `<rect x="${guPillX}" y="${guPillY}" width="${PILL_W}" height="${PILL_H}" rx="${PILL_R}" fill="${bg}" stroke="#bbb" stroke-width="0.5"/>`;
+  const guRoles = ev.createRoles || [];
+  guSvg += `<rect x="${guPillX}" y="${guPillY}" width="${PILL_W}" height="${PILL_H}" rx="${PILL_R}" fill="${bg}" stroke="#bbb" stroke-width="0.5">`;
+  if (guRoles.length > 0) guSvg += `<title>Create: ${esc(guRoles.join(', '))}</title>`;
+  guSvg += `</rect>`;
   guSvg += `<text x="${guPillX+8}" y="${guPillY+PILL_H/2+3}" font-size="${FONT}" fill="#333" font-family="Arial">${esc(guName)}</text>`;
   const guNotifTarget = getNotifLink(ev.id);
   if (guNotifTarget) {

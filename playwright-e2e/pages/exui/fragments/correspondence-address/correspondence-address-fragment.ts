@@ -1,8 +1,8 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
-import { Party } from '../../../../models/partys';
-import ExuiPage from '../../exui-page/exui-page';
+import { Party } from '../../../../models/users/partys';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import {
   links,
   radioButtons,

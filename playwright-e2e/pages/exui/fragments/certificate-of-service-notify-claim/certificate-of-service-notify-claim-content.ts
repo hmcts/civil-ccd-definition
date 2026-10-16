@@ -1,4 +1,4 @@
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 import StringHelper from '../../../../helpers/string-helper';
 
 export const heading = (defendantParty: Party) => `Certificate of Service [${defendantParty.key}]`;

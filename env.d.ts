@@ -2,8 +2,9 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       CI: string;
-      CCD_UI_TESTS: string;
       FUNCTIONAL: string;
+      PLAYWRIGHT_FUNCTIONAL: string;
+      PLATWRIGHT_SMOKE: string;
       PLAYWRIGHT_WORKERS: string;
       ENVIRONMENT: string;
       URL: string;
@@ -15,7 +16,7 @@ declare global {
       CIVIL_SERVICE_URL: string;
       WA_TASK_MGMT_URL: string;
       AAC_API_URL: string;
-      IDAM_TEST_URL: string;
+      IDAM_TEST_SUPPORT_API_URL: string;
       CIVIL_ORCHESTRATOR_SERVICE_URL: string;
       PAYMENT_API_URL: string;
       WIREMOCK_URL: string;
@@ -30,12 +31,27 @@ declare global {
       PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS: string;
       S2S_SECRET: string;
       XUI_S2S_SECRET: string;
-      PLAYWRIGHT_RUN_SETUP: string;
+      PLAYWRIGHT_RUN_CUI_USER_SETUP: string;
+      PLAYWRIGHT_RUN_EXUI_AUTH_SETUP: string;
+      PLAYWRIGHT_RUN_EXUI_USER_DATA_SETUP: string;
+      PLAYWRIGHT_RUN_CUI_USER_DATA_SETUP: string;
+      PLAYWRIGHT_RUN_DATA_SETUP: string
       PLAYWRIGHT_UNASSIGN_CASES: string;
+      PLAYWRIGHT_WA_ENABLED: string
       PLAYWRIGHT_TEST_SPEED: string;
       PLAYWRIGHT_RETRIES: string;
       PLAYWRIGHT_EXUI_RETRIES: string;
+      PLAYWRIGHT_IDAM_RETRIES: string
       PLAYWRIGHT_DEBUG_CASE_ID: string;
+      PLAYWRIGHT_GA_DEBUG_CASE_ID: string;
+      PLAYWRIGHT_TEST_RESULTS_DIR: string;
+      PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR: string
+      PLAYWRIGHT_SMOKE_TEST_RESULTS_DIR: string;
+      PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR: string;
+      PLAYWRIGHT_ZOD_VALIDATION_ENABLED: string;
+      PLAYWRIGHT_PR_FT_GROUPS: string;
+      CLAIMANT_CITIZEN_EMAIL: string;
+      DEFENDANT_CITIZEN_EMAIL: string;
       PREV_FAILED_TEST_FILES: string;
       PREV_NOT_EXECUTED_TEST_FILES: string;
       WA_TESTS: string;

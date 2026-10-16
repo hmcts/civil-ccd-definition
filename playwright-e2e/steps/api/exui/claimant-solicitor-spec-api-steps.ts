@@ -2,153 +2,919 @@ import BaseApi from '../../../base/base-api';
 import {
   claimantOrganisationSuperUser,
   claimantSolicitorUser,
+  defendantSolicitor1User,
 } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
-import ClaimantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-solicitor/claimant-solicitor-data-builder-factory';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import ClaimantDefendantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-data-builder-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import CaseState from '../../../enums/case-state';
+import CaseState from '../../../constants/cases/case-state';
+import ClaimTrack from '../../../constants/cases/claim-track';
+import ClaimType from '../../../constants/cases/claim-type';
+import Airline from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
+import FlightDelayClaim from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
+import ClaimInterest from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/claim-interest';
+import InterestClaimOption from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-option';
+import SameRateInterestType from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/same-rate-interest-type';
+import InterestClaimFromOption from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-from-option';
+import InterestClaimUntilOption from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-until-option';
+import claimantDefendantPartyTypes from '../../../constants/users/claimant-defendant-party-types';
 import DateHelper from '../../../helpers/date-helper';
 import UserAssignedCasesHelper from '../../../helpers/user-assigned-cases-helper';
-import TestData from '../../../models/test-data';
+import ZodHelper from '../../../helpers/zod-helper';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
+import ClaimantDefendantSolicitorSchemaBuilderFactory from '../../../schema-builders/exui/claimant-defendant-solicitor/claimant-defendant-solicitor-schema-builder-factory';
+import CreateClaimSpecOptions from '../../../models/ccd-events/ccd-events/create-claim-spec/create-claim-spec-options';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
-  private claimantSolicitorDataBuilderFactory: ClaimantSolicitorDataBuilderFactory;
+  private claimantDefendantSolicitorDataBuilderFactory: ClaimantDefendantSolicitorDataBuilderFactory;
+  private claimantDefendantSolicitorSchemaBuilderFactory: ClaimantDefendantSolicitorSchemaBuilderFactory;
 
   constructor(
-    claimantSolicitorDataBuilderFactory: ClaimantSolicitorDataBuilderFactory,
+    claimantDefendantSolicitorDataBuilderFactory: ClaimantDefendantSolicitorDataBuilderFactory,
+    claimantDefendantSolicitorSchemaBuilderFactory: ClaimantDefendantSolicitorSchemaBuilderFactory,
     requestsFactory: RequestsFactory,
     testData: TestData,
   ) {
     super(requestsFactory, testData);
-    this.claimantSolicitorDataBuilderFactory = claimantSolicitorDataBuilderFactory;
+    this.claimantDefendantSolicitorDataBuilderFactory =
+      claimantDefendantSolicitorDataBuilderFactory;
+    this.claimantDefendantSolicitorSchemaBuilderFactory =
+      claimantDefendantSolicitorSchemaBuilderFactory;
   }
 
-  async CreateClaimSmallTrack1v1() {
-    const { createClaimSpecDataBuilder } = this.claimantSolicitorDataBuilderFactory;
+  async CreateClaim({
+    claimType = ClaimType.ONE_VS_ONE,
+    claimTrack = ClaimTrack.SMALL_CLAIM,
+    claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    flightDelayClaim = FlightDelayClaim.NO,
+    airline = Airline.BA,
+    claimInterest = ClaimInterest.NO,
+    interestClaimOption = InterestClaimOption.SAME_RATE_INTEREST,
+    sameRateInterestType = SameRateInterestType.EIGHT_PERCENT,
+    interestClaimFrom = InterestClaimFromOption.FROM_CLAIM_SUBMIT_DATE,
+    interestClaimUntil = InterestClaimUntilOption.UNTIL_SETTLED_OR_JUDGEMENT_MADE,
+  }: CreateClaimSpecOptions = {}) {
     await this.setupUserData(claimantSolicitorUser);
-    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallTrack1v1();
-    const { ccdRequests } = this.requestsFactory;
-    const eventToken = await ccdRequests.startEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-    );
-    const eventData = await super.validatePages(
-      ccdEvents.CREATE_CLAIM_SPEC,
-      createClaimEventData,
-      claimantSolicitorUser,
-      eventToken,
-    );
-    const eventCaseData = await ccdRequests.submitEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-      CaseState.PENDING_CASE_ISSUED,
-      eventData,
-      eventToken,
-    );
-    await super.waitForFinishedBusinessProcess(eventCaseData.id);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
-  }
+    const createClaimParams: Required<CreateClaimSpecOptions> = {
+      claimType,
+      claimTrack,
+      claimant1PartyType,
+      claimant2PartyType,
+      defendant1PartyType,
+      defendant2PartyType,
+      flightDelayClaim,
+      airline,
+      claimInterest,
+      interestClaimOption,
+      sameRateInterestType,
+      interestClaimFrom,
+      interestClaimUntil,
+    };
 
-  async CreateClaimSmallTrack2v1() {
-    const { createClaimSpecDataBuilder } = this.claimantSolicitorDataBuilderFactory;
-    await this.setupUserData(claimantSolicitorUser);
-    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallTrack2v1();
-    const { ccdRequests } = this.requestsFactory;
-    const eventToken = await ccdRequests.startEvent(
+    const { createClaimSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const createClaimEventData = await createClaimSpecDataBuilder.buildData(createClaimParams);
+    await super.submitCCDEvent(
       claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-    );
-    const eventData = await super.validatePages(
       ccdEvents.CREATE_CLAIM_SPEC,
       createClaimEventData,
-      claimantSolicitorUser,
-      eventToken,
+      { expectedState: CaseState.PENDING_CASE_ISSUED },
     );
-    const eventCaseData = await ccdRequests.submitEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-      CaseState.PENDING_CASE_ISSUED,
-      eventData,
-      eventToken,
-    );
-    await super.waitForFinishedBusinessProcess(eventCaseData.id);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
-  }
 
-  async CreateClaimSmallTrack1v2SS() {
-    const { createClaimSpecDataBuilder } = this.claimantSolicitorDataBuilderFactory;
-    await this.setupUserData(claimantSolicitorUser);
-    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallTrack1v2SS();
-    const { ccdRequests } = this.requestsFactory;
-    const eventToken = await ccdRequests.startEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-    );
-    const eventData = await super.validatePages(
-      ccdEvents.CREATE_CLAIM_SPEC,
-      createClaimEventData,
-      claimantSolicitorUser,
-      eventToken,
-    );
-    const eventCaseData = await ccdRequests.submitEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-      CaseState.PENDING_CASE_ISSUED,
-      eventData,
-      eventToken,
-    );
-    await super.waitForFinishedBusinessProcess(eventCaseData.id);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
-  }
-
-  async CreateClaimSmallTrack1v2DS() {
-    const { createClaimSpecDataBuilder } = this.claimantSolicitorDataBuilderFactory;
-    await this.setupUserData(claimantSolicitorUser);
-    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallTrack1v2DS();
-    const { ccdRequests } = this.requestsFactory;
-    const eventToken = await ccdRequests.startEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-    );
-    const eventData = await super.validatePages(
-      ccdEvents.CREATE_CLAIM_SPEC,
-      createClaimEventData,
-      claimantSolicitorUser,
-      eventToken,
-    );
-    const eventCaseData = await ccdRequests.submitEvent(
-      claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM_SPEC,
-      CaseState.PENDING_CASE_ISSUED,
-      eventData,
-      eventToken,
-    );
-    await super.waitForFinishedBusinessProcess(eventCaseData.id);
-    await this.fetchAndSetCCDCaseData(eventCaseData.id);
-    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
+    await this.runZodValidation(async () => {
+      const { createClaimSpecSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const createClaimResponseSchema =
+        await createClaimSpecSchemaBuilder.buildSchema(createClaimParams);
+      ZodHelper.safeParse(createClaimResponseSchema, this.ccdCaseData);
+    });
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData?.id);
   }
 
   async MakePaymentForClaimIssue() {
-    const { serviceRequestDataBuilder } = this.claimantSolicitorDataBuilderFactory;
-    const paidServiceRequestDTO = await serviceRequestDataBuilder.buildPaidServiceRequestDTO(
-      this.ccdCaseData.id,
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { createClaimSpecAfterPaymentDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const paidCreateClaimSpecAfterPaymentDTO = await createClaimSpecAfterPaymentDataBuilder.build(
       'paid',
+      this.ccdCaseData?.id,
     );
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.updatePaymentForClaimIssue(
       claimantSolicitorUser,
-      paidServiceRequestDTO,
+      paidCreateClaimSpecAfterPaymentDTO,
     );
-    await super.waitForFinishedBusinessProcess(this.ccdCaseData.id);
+    await super.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await super.fetchAndSetCCDCaseData();
+
+    await this.runZodValidation(async () => {
+      const { createClaimSpecAfterPaymentSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const createClaimSpecAfterPaymentSchema =
+        await createClaimSpecAfterPaymentSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(createClaimSpecAfterPaymentSchema, this.ccdCaseData);
+    });
+  }
+
+  async MakePaymentForHearingFee() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.triggerHearingFeePaid(claimantSolicitorUser, this.ccdCaseData?.id);
+    await super.waitForFinishedBusinessProcess(this.ccdCaseData?.id);
+    await super.fetchAndSetCCDCaseData();
+  }
+
+  async DiscontinueClaimFull() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { discontinueClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const discontinueClaimEventData = await discontinueClaimDataBuilder.buildFull();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      discontinueClaimEventData,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
+    );
+
+    await this.runZodValidation(async () => {
+      const { discontinueClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const discontinueClaimSchema =
+        await discontinueClaimSchemaBuilder.buildFull(caseDataBeforeSubmission);
+      ZodHelper.safeParse(discontinueClaimSchema, this.ccdCaseData);
+    });
+  }
+
+  async DiscontinueClaimFull1v2() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { discontinueClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const discontinueClaimEventData = await discontinueClaimDataBuilder.buildFull1v2();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      discontinueClaimEventData,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
+    );
+
+    await this.runZodValidation(async () => {
+      const { discontinueClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const discontinueClaimSchema =
+        await discontinueClaimSchemaBuilder.buildFull1v2(caseDataBeforeSubmission);
+      ZodHelper.safeParse(discontinueClaimSchema, this.ccdCaseData);
+    });
+  }
+
+  async DiscontinueClaimFull2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { discontinueClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const discontinueClaimEventData = await discontinueClaimDataBuilder.buildFull2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DISCONTINUE_CLAIM_CLAIMANT,
+      discontinueClaimEventData,
+      { expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
+    );
+
+    await this.runZodValidation(async () => {
+      const { discontinueClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const discontinueClaimSchema =
+        await discontinueClaimSchemaBuilder.buildFull2v1(caseDataBeforeSubmission);
+      ZodHelper.safeParse(discontinueClaimSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondFastRejectFullDefence() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildFastRejectFullDefence();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildFastRejectFullDefence(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondInterRejectFullDefence() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildInterRejectFullDefence();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildInterRejectFullDefence(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondInterProceed1v2DS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildInterProceed1v2DS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildInterProceed1v2DS(caseDataBeforeSubmission);
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondMultiRejectFullDefence() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildMultiRejectFullDefence();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildMultiRejectFullDefence(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondMultiRejectFullDefence1v2SS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildMultiRejectFullDefence1v2SS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildMultiRejectFullDefence1v2SS(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondMultiRejectFullDefence1v2DS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildMultiRejectFullDefence1v2DS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildMultiRejectFullDefence1v2DS(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondFastRejectPartAdmit() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildFastRejectPartAdmit();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildFastRejectPartAdmit(caseDataBeforeSubmission);
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondInterRejectPartAdmit() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildInterRejectPartAdmit();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildInterRejectPartAdmit(caseDataBeforeSubmission);
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondMultiRejectPartAdmit() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildMultiRejectPartAdmit();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: [CaseState.JUDICIAL_REFERRAL, CaseState.IN_MEDIATION] },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildMultiRejectPartAdmit(caseDataBeforeSubmission);
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondFullAdmitImmediately() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildFullAdmitImmediately();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      {
+        expectedState: [
+          CaseState.All_FINAL_ORDERS_ISSUED,
+          CaseState.AWAITING_APPLICANT_INTENTION,
+        ],
+      },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildFullAdmitImmediately(caseDataBeforeSubmission);
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondFullAdmitSetDate() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData = await claimantResponseSpecDataBuilder.buildFullAdmitSetDate();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildFullAdmitSetDate(caseDataBeforeSubmission);
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondFullAdmitRepayment() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildFullAdmitRepayment();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildFullAdmitRepayment(caseDataBeforeSubmission);
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondAcceptFullAdmitRepayment() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildAcceptFullAdmitRepayment();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildAcceptFullAdmitRepayment(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async JudgmentPaidInFull() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { judgmentPaidInFullDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const judgmentPaidInFullEventData = await judgmentPaidInFullDataBuilder.build();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.JUDGMENT_PAID_IN_FULL,
+      judgmentPaidInFullEventData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
+    );
+
+    await this.runZodValidation(async () => {
+      const { judgmentPaidInFullSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const judgmentPaidInFullSchema =
+        await judgmentPaidInFullSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(judgmentPaidInFullSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondSmallRejectPartAdmit() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildSmallRejectPartAdmit();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildSmallRejectPartAdmit(caseDataBeforeSubmission);
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondSmallRejectPartAdmitPaidConfirmNotPaid() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildSmallRejectPartAdmitPaidConfirmNotPaid();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.IN_MEDIATION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildSmallRejectPartAdmitHasPaidConfirmNotPaid(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondSmallRejectPartAdmitPaidConfirmPaid() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildSmallRejectPartAdmitPaidConfirmPaid();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildSmallRejectPartAdmitPaidConfirmPaid(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondSmallRejectFullDefence() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildSmallRejectFullDefence();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.IN_MEDIATION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildSmallRejectFullDefence(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondFastRejectFullDefence2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildFastRejectFullDefence2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildFastRejectFullDefence2v1(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondSmallRejectFullDefence2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildSmallRejectFullDefence2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.IN_MEDIATION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildSmallRejectFullDefence2v1(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondFastRejectFullDefence1v2SS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildFastRejectFullDefence1v2SS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.JUDICIAL_REFERRAL },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildFastRejectFullDefence1v2SS(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondFastAcceptFullDefence1v2SS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildFastAcceptFullDefence1v2SS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildFastAcceptFullDefence1v2SS(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondSmallRejectFullDefence1v2SS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildSmallRejectFullDefence1v2SS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.IN_MEDIATION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildSmallRejectFullDefence1v2SS(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RespondSmallRejectFullDefence1v2DS() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { claimantResponseSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const claimantResponseEventData =
+      await claimantResponseSpecDataBuilder.buildSmallRejectFullDefence1v2DS();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantResponseEventData,
+      { expectedState: CaseState.IN_MEDIATION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { claimantResponseSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const claimantResponseSchema =
+        await claimantResponseSpecSchemaBuilder.buildSmallRejectFullDefence1v2DS(
+          caseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(claimantResponseSchema, this.ccdCaseData);
+    });
+  }
+
+  async EvidenceUploadFast() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { evidenceUploadApplicantDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const evidenceUploadApplicantData = await evidenceUploadApplicantDataBuilder.buildFast();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
+      evidenceUploadApplicantData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { evidenceUploadApplicantSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const evidenceUploadApplicantSchema =
+        await evidenceUploadApplicantSchemaBuilder.buildFast(caseDataBeforeSubmission);
+      ZodHelper.safeParse(evidenceUploadApplicantSchema, this.ccdCaseData);
+    });
+  }
+
+  async EvidenceUploadFast2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { evidenceUploadApplicantDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const evidenceUploadApplicantData = await evidenceUploadApplicantDataBuilder.buildFast2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
+      evidenceUploadApplicantData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { evidenceUploadApplicantSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const evidenceUploadApplicantSchema =
+        await evidenceUploadApplicantSchemaBuilder.buildFast2v1(caseDataBeforeSubmission);
+      ZodHelper.safeParse(evidenceUploadApplicantSchema, this.ccdCaseData);
+    });
+  }
+
+  async EvidenceUploadSmall() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { evidenceUploadApplicantDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const evidenceUploadApplicantData = await evidenceUploadApplicantDataBuilder.buildSmall();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.EVIDENCE_UPLOAD_APPLICANT,
+      evidenceUploadApplicantData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { evidenceUploadApplicantSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const evidenceUploadApplicantSchema =
+        await evidenceUploadApplicantSchemaBuilder.buildSmallClaim(caseDataBeforeSubmission);
+      ZodHelper.safeParse(evidenceUploadApplicantSchema, this.ccdCaseData);
+    });
+  }
+
+  async UploadMediationDocuments() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { uploadMediationDocumentsDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const uploadMediationDocumentsData = await uploadMediationDocumentsDataBuilder.buildCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      uploadMediationDocumentsData,
+    );
+
+    await this.runZodValidation(async () => {
+      const { uploadMediationDocumentsSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const uploadMediationDocumentsSchema =
+        await uploadMediationDocumentsSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+      ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
+    });
+  }
+
+  async UploadMediationDocuments2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { uploadMediationDocumentsDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const uploadMediationDocumentsData = await uploadMediationDocumentsDataBuilder.buildCS12v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.UPLOAD_MEDIATION_DOCUMENTS,
+      uploadMediationDocumentsData,
+    );
+
+    await this.runZodValidation(async () => {
+      const { uploadMediationDocumentsSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const uploadMediationDocumentsSchema =
+        await uploadMediationDocumentsSchemaBuilder.buildCS12v1(caseDataBeforeSubmission);
+      ZodHelper.safeParse(uploadMediationDocumentsSchema, this.ccdCaseData);
+    });
+  }
+
+  async RequestForReconsideration() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { requestForReconsiderationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestForReconsiderationData = await requestForReconsiderationDataBuilder.buildCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.REQUEST_FOR_RECONSIDERATION,
+      requestForReconsiderationData,
+      { expectedState: CaseState.CASE_PROGRESSION },
+    );
+
+    await this.runZodValidation(async () => {
+      const { requestForReconsiderationSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const requestForReconsiderationSchema =
+        await requestForReconsiderationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+      ZodHelper.safeParse(requestForReconsiderationSchema, this.ccdCaseData);
+    });
+  }
+
+  async RequestForReconsiderationError() {
+    return super.startCCDEventError(claimantSolicitorUser, ccdEvents.REQUEST_FOR_RECONSIDERATION);
   }
 
   async AmendRespondent1ResponseDeadline() {
-    await this.setupUserData(claimantOrganisationSuperUser);
+    await this.setupApiStep(claimantOrganisationSuperUser);
     const newRespondent1Deadline = DateHelper.subtractFromToday({ days: 1 });
     const dateString = DateHelper.formatDateToString(newRespondent1Deadline, {
       outputFormat: 'YYYY-MM-DDTHH:MM:SS',
@@ -157,14 +923,99 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.updateCaseData(
       claimantOrganisationSuperUser,
-      this.ccdCaseData.id,
       respondent1Deadline,
+      this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
   }
 
+  async DefaultJudgementSpec() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { defaultJudgementSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestDefaultJudgementSpecData = await defaultJudgementSpecDataBuilder.build();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      requestDefaultJudgementSpecData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
+    );
+
+    await this.runZodValidation(async () => {
+      const { defaultJudgementSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const defaultJudgementSpecSchema =
+        await defaultJudgementSpecSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(defaultJudgementSpecSchema, this.ccdCaseData);
+    });
+  }
+
+  async DefaultJudgementSpec1v2() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { defaultJudgementSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestDefaultJudgementSpecData =
+      await defaultJudgementSpecDataBuilder.build1v2NonDivergent();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      requestDefaultJudgementSpecData,
+      { expectedState: CaseState.All_FINAL_ORDERS_ISSUED },
+    );
+
+    await this.runZodValidation(async () => {
+      const { defaultJudgementSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const defaultJudgementSpecSchema =
+        await defaultJudgementSpecSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(defaultJudgementSpecSchema, this.ccdCaseData);
+    });
+  }
+
+  async SettleClaim() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { settleClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const settleClaimData = await settleClaimDataBuilder.build();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      settleClaimData,
+      { expectedState: CaseState.CASE_STAYED },
+    );
+
+    await this.runZodValidation(async () => {
+      const { settleClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const settleClaimSchema = await settleClaimSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(settleClaimSchema, this.ccdCaseData);
+    });
+  }
+
+  async SettleClaim2v1() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { settleClaimDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const settleClaimData = await settleClaimDataBuilder.build2v1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.SETTLE_CLAIM_MARK_PAID_FULL,
+      settleClaimData,
+      { expectedState: CaseState.CASE_STAYED },
+    );
+
+    await this.runZodValidation(async () => {
+      const { settleClaimSchemaBuilder } = this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const settleClaimSchema = await settleClaimSchemaBuilder.build2v1(caseDataBeforeSubmission);
+      ZodHelper.safeParse(settleClaimSchema, this.ccdCaseData);
+    });
+  }
+
   async AmendRespondent2ResponseDeadline() {
-    await this.setupUserData(claimantOrganisationSuperUser);
+    await this.setupApiStep(claimantOrganisationSuperUser);
     const newRespondent2Deadline = DateHelper.subtractFromToday({ days: 1 });
     const dateString = DateHelper.formatDateToString(newRespondent2Deadline, {
       outputFormat: 'YYYY-MM-DDTHH:MM:SS',
@@ -173,9 +1024,140 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.updateCaseData(
       claimantOrganisationSuperUser,
-      this.ccdCaseData.id,
       respondent2ResponseDeadline,
+      this.ccdCaseData?.id,
     );
     await super.fetchAndSetCCDCaseData();
+  }
+
+  async RaiseLRQuery() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRaiseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    await super.submitQmEvent(
+      claimantSolicitorUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseDataBuilder.buildRaiseQueryCS(),
+    );
+
+    await this.runZodValidation(async () => {
+      const { queryManagementRaiseSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const queryManagementRaiseSchema =
+        await queryManagementRaiseSchemaBuilder.buildRaiseQuery(caseDataBeforeSubmission);
+      ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+    });
+  }
+
+  async RaiseLRHearingQuery() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRaiseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    await super.submitQmEvent(
+      claimantSolicitorUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseDataBuilder.buildRaiseQueryHearingCS(),
+    );
+
+    await this.runZodValidation(async () => {
+      const { queryManagementRaiseSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const queryManagementRaiseSchema =
+        await queryManagementRaiseSchemaBuilder.buildRaiseQuery(caseDataBeforeSubmission);
+      ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+    });
+  }
+
+  async FollowUpOnLRQuery() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { queryManagementRaiseDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    await super.submitQmEvent(
+      claimantSolicitorUser,
+      ccdEvents.QUERY_MANAGEMENT_RAISE,
+      await queryManagementRaiseDataBuilder.buildFollowQueryCS(),
+    );
+
+    await this.runZodValidation(async () => {
+      const { queryManagementRaiseSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const queryManagementRaiseSchema =
+        await queryManagementRaiseSchemaBuilder.buildFollowUpQuery(caseDataBeforeSubmission);
+      ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
+    });
+  }
+
+  async InitiateGA() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { initiateGeneralApplicationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const initiateGeneralApplicationData = await initiateGeneralApplicationDataBuilder.buildCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.INITIATE_GENERAL_APPLICATION,
+      initiateGeneralApplicationData,
+    );
+
+    await this.runZodValidation(async () => {
+      const { initiateGeneralApplicationSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const initiateGeneralApplicationSchema =
+        await initiateGeneralApplicationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+      ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+
+      const { initiateGeneralApplicationGaSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const initiateGeneralApplicationSpecGaSchema =
+        await initiateGeneralApplicationGaSchemaBuilder.build();
+      ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
+    });
+
+    UserAssignedCasesHelper.addAssignedCaseToUser(
+      claimantSolicitorUser,
+      super.getGaCCDCaseIdFromParentCase(),
+    );
+  }
+
+  async InitiateGAWithNotice() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { initiateGeneralApplicationDataBuilder } =
+      this.claimantDefendantSolicitorDataBuilderFactory;
+    const initiateGeneralApplicationData =
+      await initiateGeneralApplicationDataBuilder.buildWithNoticeCS1();
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.INITIATE_GENERAL_APPLICATION,
+      initiateGeneralApplicationData,
+    );
+
+    await this.runZodValidation(async () => {
+      const { initiateGeneralApplicationSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const initiateGeneralApplicationSchema =
+        await initiateGeneralApplicationSchemaBuilder.buildCS1(caseDataBeforeSubmission);
+      ZodHelper.safeParse(initiateGeneralApplicationSchema, this.ccdCaseData);
+
+      const { initiateGeneralApplicationGaSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const initiateGeneralApplicationSpecGaSchema =
+        await initiateGeneralApplicationGaSchemaBuilder.build();
+      ZodHelper.safeParse(initiateGeneralApplicationSpecGaSchema, super.getGaCCDCaseData());
+    });
+
+    UserAssignedCasesHelper.addAssignedCaseToUser(
+      claimantSolicitorUser,
+      super.getGaCCDCaseIdFromParentCase(),
+    );
+    UserAssignedCasesHelper.addAssignedCaseToUser(
+      defendantSolicitor1User,
+      super.getGaCCDCaseIdFromParentCase(),
+    );
   }
 }

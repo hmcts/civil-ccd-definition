@@ -1,6 +1,6 @@
 import BaseTestData from '../../../../base/base-test-data';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-data';
+import TestData from '../../../../models/test-utils/test-data';
 import AddDefendantLitigationFriendPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/add-defendant-litigation-friend/add-defendant-litigation-friend-page-factory';
 
 @AllMethodsStep()
@@ -13,6 +13,20 @@ export default class AddDefendantLitigationFriendActions extends BaseTestData {
   ) {
     super(testData);
     this.addDefendantLitigationFriendPageFactory = addDefendantLitigationFriendPageFactory;
+  }
+
+  async selectALitigationFriend() {
+    const { selectALitigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
+    await selectALitigationFriendPage.verifyContent(this.ccdCaseData);
+    await selectALitigationFriendPage.selectBoth();
+    await selectALitigationFriendPage.submit();
+  }
+
+  async commonLitigationFriend() {
+    const { commonLitigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
+    await commonLitigationFriendPage.verifyContent(this.ccdCaseData);
+    await commonLitigationFriendPage.enterLitigationFriendDetails();
+    await commonLitigationFriendPage.submit();
   }
 
   async litigationFriend() {

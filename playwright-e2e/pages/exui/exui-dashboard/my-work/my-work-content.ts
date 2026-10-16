@@ -1,0 +1,1 @@
+export const heading = 'My work';

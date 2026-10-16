@@ -32,8 +32,19 @@ const claimAmount = '150000';
 const validPba = listElement('PBA0088192');
 const invalidPba = listElement('PBA0078095');
 
+// createClaim takes a boolean (legacy: 8% from 2025-11-15 until judgment) or an interest options object
+// {interestClaimOptions, sameRateInterestType, differentRate, interestClaimFrom, interestFromSpecificDate, interestClaimUntil}.
+const DEFAULT_INTEREST_FROM_DATE = '2025-11-15';
+
 module.exports = {
-  createClaim: () => {
+  createClaim: (interestOpts = false) => {
+    const o = (interestOpts && typeof interestOpts === 'object') ? interestOpts : {withInterest: !!interestOpts};
+    const withInterest = !!o.withInterest;
+    const interestClaimOptions = o.interestClaimOptions || 'SAME_RATE_INTEREST';
+    const sameRateInterestType = o.sameRateInterestType || 'SAME_RATE_INTEREST_8_PC';
+    const interestClaimFrom = o.interestClaimFrom || 'FROM_A_SPECIFIC_DATE';
+    const interestFromSpecificDate = o.interestFromSpecificDate || DEFAULT_INTEREST_FROM_DATE;
+    const interestClaimUntil = o.interestClaimUntil || 'UNTIL_SETTLED_OR_JUDGEMENT_MADE';
     const userData = {
       userInput: {
         References: {
@@ -119,8 +130,30 @@ module.exports = {
           }],
         },
         ClaimInterest: {
-          claimInterest: 'No',
+          claimInterest: withInterest ? 'Yes' : 'No',
         },
+        ...(withInterest ? {
+          ClaimInterestOptions: {
+            interestClaimOptions: interestClaimOptions,
+          },
+          SameRateInterestSelection: {
+            sameRateInterestSelection: {
+              sameRateInterestType: sameRateInterestType,
+              ...(sameRateInterestType === 'SAME_RATE_INTEREST_DIFFERENT_RATE' ? {differentRate: o.differentRate} : {}),
+            },
+          },
+          InterestClaimFrom: {
+            interestClaimFrom: interestClaimFrom,
+          },
+          ...(interestClaimFrom === 'FROM_A_SPECIFIC_DATE' ? {
+            InterestFromSpecificDate: {
+              interestFromSpecificDate: interestFromSpecificDate,
+            },
+          } : {}),
+          InterestClaimUntil: {
+            interestClaimUntil: interestClaimUntil,
+          },
+        } : {}),
 
         InterestSummary: {
           claimIssuedPaymentDetails: {
@@ -157,7 +190,7 @@ module.exports = {
           CaseAccessCategory: 'SPEC_CLAIM',
         },
         InterestSummary: {
-          totalInterest: 0,
+          ...(withInterest ? {} : {totalInterest: 0}),
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
         },
       },

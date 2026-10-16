@@ -34,7 +34,7 @@ const unnotifiedHearingStubRequestBody = (hearingIds) => (
 
 );
 
-const getpartiesNotifiedStubRequestBody = () => {
+const getpartiesNotifiedStubRequestBody = (responses = []) => {
   return {
     request: {
       method: 'GET',
@@ -47,7 +47,7 @@ const getpartiesNotifiedStubRequestBody = () => {
       },
       body: `${JSON.stringify({
         hearingID: '',
-        responses: []
+        responses: responses
       })}`
     }
   };

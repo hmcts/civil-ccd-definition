@@ -1,9 +1,9 @@
 import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import ExuiPage from '../../exui-page/exui-page';
+import ExuiPage from '../../mixin-pages/exui-page/exui-page';
 import { radioButtons } from './choose-party-type-content';
-import { Party } from '../../../../models/partys';
+import { Party } from '../../../../models/users/partys';
 
 @AllMethodsStep()
 export default class ChoosePartyTypeFragment extends ExuiPage(BasePage) {

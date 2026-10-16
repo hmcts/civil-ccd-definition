@@ -1,5 +1,6 @@
+import { da } from 'zod/v4/locales';
 import { bankHolidays } from '../config/data';
-import DateStringFormats from '../models/date-string-formats';
+import DateStringFormats from '../models/test-utils/date-string-formats';
 export default class DateHelper {
   private static shortMonths: string[] = [
     'Jan',
@@ -149,13 +150,21 @@ export default class DateHelper {
       dateString = `${date.getDate()} ${this.shortMonths[date.getMonth()]} ${date.getFullYear()}`;
     } else if (outputFormat === 'YYYY-MM-DDTHH:MM:SS') {
       dateString = date.toISOString().slice(0, 19);
+    } else if (outputFormat === 'YYYY-MM-DD') {
+      dateString = `${date.getFullYear()}-${this.getTwoDigitMonth(date)}-${this.getTwoDigitDay(date)}`;
     }
 
-    return dateString;
+    return dateString!;
   }
 
-  private static isAfter4pm(date: Date) {
-    return date.getHours() >= 16;
+  private static isAfter4pm(date: Date): boolean {
+    const hour = Number(new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+      hour: '2-digit',
+      hour12: false,
+    }).formatToParts(date).find((part) => part.type === 'hour')?.value);
+
+    return hour >= 16;
   }
 
   private static isWeekend(date: Date): boolean {

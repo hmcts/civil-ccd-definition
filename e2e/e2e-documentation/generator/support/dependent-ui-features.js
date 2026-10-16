@@ -52,5 +52,8 @@ module.exports = [
   'e2e/tests/ui_tests/unspec-full-defence/1v2CreateClaim_DiffSol_fast_track_test.js',
   'e2e/tests/ui_tests/unspec-full-defence/1v2CreateClaim_DiffSol_small_claims_test.js',
   'e2e/tests/ui_tests/unspec-full-defence/1v2CreateClaim_SameSol_fast_track_test.js',
-  'e2e/tests/ui_tests/unspec-full-defence/2v1CreateClaim_fast_track_test.js'
+  'e2e/tests/ui_tests/unspec-full-defence/2v1CreateClaim_fast_track_test.js',
+  'e2e/tests/ui_tests/other-remedy/1v1CreateClaim_OtherRemedy_Damages_test.js',
+  'e2e/tests/ui_tests/other-remedy/1v1CreateClaim_OtherRemedy_HousingDisrepair_test.js',
+  'e2e/tests/ui_tests/other-remedy/1v2CreateClaim_OtherRemedy_small_claims_test.js'
 ];

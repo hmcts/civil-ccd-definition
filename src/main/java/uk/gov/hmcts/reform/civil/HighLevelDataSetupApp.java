@@ -3,15 +3,11 @@ package uk.gov.hmcts.reform.civil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import uk.gov.hmcts.befta.BeftaMain;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
-import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
-import javax.crypto.AEADBadTagException;
-import javax.net.ssl.SSLException;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,11 +21,13 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("prd-admin", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-admin", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-solicitor", "PUBLIC"),
+        new CcdRoleConfig("caseworker-civil-judge", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-staff", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-systemupdate", "PUBLIC"),
         new CcdRoleConfig("caseworker-caa", "PUBLIC"),
         new CcdRoleConfig("judge-profile", "PUBLIC"),
         new CcdRoleConfig("basic-access", "PUBLIC"),
+        new CcdRoleConfig("ga-basic-access", "PUBLIC"),
         new CcdRoleConfig("GS_profile", "PUBLIC"),
         new CcdRoleConfig("legal-adviser", "PUBLIC"),
         new CcdRoleConfig("caseworker-ras-validation", "PUBLIC"),
@@ -38,6 +36,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("hearing-schedule-access", "PUBLIC"),
         new CcdRoleConfig("civil-administrator-standard", "PUBLIC"),
         new CcdRoleConfig("civil-administrator-basic", "PUBLIC"),
+        new CcdRoleConfig("civil-administrator-judge", "PUBLIC"),
         new CcdRoleConfig("APP-SOL-UNSPEC-PROFILE", "PUBLIC"),
         new CcdRoleConfig("APP-SOL-SPEC-PROFILE", "PUBLIC"),
         new CcdRoleConfig("RES-SOL-ONE-UNSPEC-PROFILE", "PUBLIC"),
@@ -61,6 +60,8 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("hearing-centre-team-leader", "PUBLIC"),
         new CcdRoleConfig("next-hearing-date-admin", "PUBLIC"),
         new CcdRoleConfig("court-officer-order", "PUBLIC"),
+        new CcdRoleConfig("APPLICANT-PROFILE-SPEC", "PUBLIC"),
+        new CcdRoleConfig("RESPONDENT-ONE-PROFILE-SPEC", "PUBLIC"),
         new CcdRoleConfig("nbc-team-leader", "PUBLIC"),
         new CcdRoleConfig("ctsc", "PUBLIC"),
         new CcdRoleConfig("ctsc-team-leader", "PUBLIC"),
@@ -100,36 +101,13 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     @Override
     protected List<String> getAllDefinitionFilesToLoadAt(String definitionsPath) {
         String environmentName = environment.name().toLowerCase(Locale.UK);
-        return List.of(String.format("build/ccd-release-config/civil-ccd-%s.xlsx", environmentName));
+        return List.of(String.format("build/ccd-release-config/civil-ccd-%s.xlsx", environmentName),
+                       String.format("build/ccd-release-config/civil-ga-ccd-%s.xlsx", environmentName));
     }
 
     @Override
     public void createRoleAssignments() {
         // Do not create role assignments.
         BeftaUtils.defaultLog("Will NOT create role assignments!");
-    }
-
-    @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        if (BeftaMain.getConfig().getDefinitionStoreUrl().contains(".preview.")) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    protected boolean shouldTolerateDataSetupFailure(Throwable e) {
-        int httpStatusCode504 = 504;
-        if (e instanceof ImportException) {
-            ImportException importException = (ImportException) e;
-            return importException.getHttpStatusCode() == httpStatusCode504;
-        }
-        if (e instanceof SSLException) {
-            return true;
-        }
-        if (e instanceof AEADBadTagException) {
-            return true;
-        }
-        return shouldTolerateDataSetupFailure();
     }
 }

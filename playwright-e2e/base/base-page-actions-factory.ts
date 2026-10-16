@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import TestData from '../models/test-data';
+import TestData from '../models/test-utils/test-data';
 
 export default abstract class BasePageActionsFactory {
   private _page: Page;

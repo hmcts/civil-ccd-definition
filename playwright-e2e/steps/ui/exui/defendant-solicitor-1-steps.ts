@@ -3,9 +3,10 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
@@ -27,9 +28,26 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor1User);
   }
 
+  async InformAgreedExtensionDate() {
+    const { informAgreedExtensionDateActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await informAgreedExtensionDateActions.extensionDate();
+      },
+      async () => {
+        await informAgreedExtensionDateActions.confirmInformAgreedExtensionDate();
+      },
+      ccdEvents.INFORM_AGREED_EXTENSION_DATE,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
+    );
+  }
+
   async AddLitigationFriend() {
     const { addDefendantLitigationFriendActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await addDefendantLitigationFriendActions.litigationFriend();
         await addDefendantLitigationFriendActions.submitAddDefendantLitigationFriend();
@@ -38,14 +56,38 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
-  async RespondFastTrackFullDefence1v1() {
+  async AddLitigationFriend1v2SS() {
+    const { addDefendantLitigationFriendActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await addDefendantLitigationFriendActions.selectALitigationFriend();
+        await addDefendantLitigationFriendActions.commonLitigationFriend();
+        await addDefendantLitigationFriendActions.submitAddDefendantLitigationFriend();
+      },
+      async () => {
+        await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
+      },
+      ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
+      {
+        verifySuccessEvent: false,
+        expectedState: [
+          CaseState.AWAITING_APPLICANT_INTENTION,
+          CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+        ],
+      },
+    );
+  }
+
+  async RespondFastFullDefence() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS1();
         await defendantResponseActions.respondentResponseTypeDS1();
@@ -60,14 +102,16 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_APPLICANT_INTENTION,
+      },
     );
   }
 
-  async RespondSmallTrackFullDefence1v1() {
+  async RespondSmallFullDefence1v1() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS1();
         await defendantResponseActions.respondentResponseTypeDS1();
@@ -82,14 +126,13 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
   }
 
-  async RespondSmallTrackFullDefence2v1() {
+  async RespondSmallFullDefence2v1() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS1();
         await defendantResponseActions.respondentResponseType2v1();
@@ -104,14 +147,13 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
   }
 
-  async RespondSmallTrackFullDefence1v2SS() {
+  async RespondSmallFullDefence1v2SS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS1();
         await defendantResponseActions.singleResponse();
@@ -127,14 +169,13 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS1();
         await defendantResponseActions.respondentResponseTypeDS1();
@@ -149,14 +190,86 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse1v2DS();
       },
       ccdEvents.DEFENDANT_RESPONSE,
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
+    );
+  }
 
-      { verifySuccessEvent: false },
+  async RespondFastFullDefence1v2DS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS1();
+        await defendantResponseActions.respondentResponseTypeDS1();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
+        await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqFastTrackDS1();
+        await defendantResponseActions.dqDS1();
+        await defendantResponseActions.statementOfTruthDS1();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse1v2DS();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
+    );
+  }
+
+  async RespondFastFullDefence1v2SS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS1();
+        await defendantResponseActions.singleResponse();
+        await defendantResponseActions.respondentResponseTypeDS1();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
+        await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqFastTrackDS1();
+        await defendantResponseActions.dqDS1();
+        await defendantResponseActions.statementOfTruthDS1();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_APPLICANT_INTENTION,
+      },
+    );
+  }
+
+  async RespondFastFullDefence2v1() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS1();
+        await defendantResponseActions.respondentResponseType2v1();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
+        await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqFastTrackDS1();
+        await defendantResponseActions.dqDS1();
+        await defendantResponseActions.statementOfTruthDS1();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_APPLICANT_INTENTION,
+      },
     );
   }
 
   async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
         await acknowlegdeClaimActions.responseIntentionDS1();
@@ -167,14 +280,16 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
   async AcknowledgeClaimFullDefence2v1() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
         await acknowlegdeClaimActions.responseIntention2v1();
@@ -185,14 +300,16 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
-
-      { verifySuccessEvent: false },
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
     );
   }
 
   async AcknowledgeClaimFullDefence1v2SS() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
         await acknowlegdeClaimActions.responseIntention1v2SS();
@@ -203,8 +320,87 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
+    );
+  }
 
-      { verifySuccessEvent: false },
+  async EvidenceUploadFast() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrack();
+        await evidenceUploadRespondentActions.documentUpload();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.CASE_PROGRESSION,
+      },
+    );
+  }
+
+  async EvidenceUploadBundle1v2SS() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.selectUploadOptions();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackBundle();
+        await evidenceUploadRespondentActions.documentUploadBundleDS1();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
+    );
+  }
+
+  async ReturnRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.returnToCaseworker();
+      },
+      async () => {
+        await refundActions.refundConfirmReturnedPage();
+      },
+    );
+  }
+
+  async ApproveRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.approve();
+      },
+      async () => {
+        await refundActions.refundConfirmApprovedPage();
+      },
+    );
+  }
+
+  async RejectRefund() {
+    const { refundActions } = this.defendantActionsFactory;
+    await super.retryRefundEvent(
+      async () => {
+        await refundActions.processRefund();
+        await refundActions.reject();
+      },
+      async () => {
+        await refundActions.refundConfirmRejectedPage();
+      },
     );
   }
 }

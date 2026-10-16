@@ -3,9 +3,10 @@ import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicito
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor2User } from '../../../config/users/exui-users';
-import ccdEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
+import CaseState from '../../../constants/cases/case-state';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../models/test-data';
+import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
@@ -29,7 +30,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
 
   async AddLitigationFriend() {
     const { addDefendantLitigationFriendActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await addDefendantLitigationFriendActions.defendant2LitigationFriend();
         await addDefendantLitigationFriendActions.submitAddDefendantLitigationFriend();
@@ -38,14 +39,13 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
-
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DS() {
+  async RespondSmallFullDefence1v2DS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.retryExuiEvent(
+    await super.retryCCDEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS2();
         await defendantResponseActions.respondentResponseTypeDS2();
@@ -60,14 +60,48 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+    );
+  }
 
-      { verifySuccessEvent: false },
+  async RespondFastFullDefence1v2DS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await defendantResponseActions.confirmDetailsDS2();
+        await defendantResponseActions.respondentResponseTypeDS2();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS2();
+        await defendantResponseActions.uploadDefendantResponseDS2();
+        await defendantResponseActions.dqFastTrackDS2();
+        await defendantResponseActions.dqDS2();
+        await defendantResponseActions.statementOfTruthDS2();
+        await defendantResponseActions.submitDefendantResponse();
+      },
+      async () => {
+        await defendantResponseActions.confirmDefendantResponse();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_APPLICANT_INTENTION },
+    );
+  }
+
+  async AddUnavailableDates() {
+    const { addUnavailableDatesActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await addUnavailableDatesActions.addAdditionalDates();
+        await addUnavailableDatesActions.submitAddAdditionalDates();
+      },
+      async () => {
+        await addUnavailableDatesActions.confirmAddAdditionalDates();
+      },
+      ccdEvents.ADD_UNAVAILABLE_DATES,
     );
   }
 
   async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
+    await this.retryCCDEvent(
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
         await acknowlegdeClaimActions.responseIntentionDS2();
@@ -78,8 +112,27 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS2();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT,
+      },
+    );
+  }
 
-      { verifySuccessEvent: false },
+  async EvidenceUploadBundle() {
+    const { evidenceUploadRespondentActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUpload();
+        await evidenceUploadRespondentActions.documentSelectionFastTrackDS2();
+        await evidenceUploadRespondentActions.documentUploadBundleDS2();
+        await evidenceUploadRespondentActions.submitEvidenceUpload();
+      },
+      async () => {
+        await evidenceUploadRespondentActions.evidenceUploadConfirm();
+      },
+      ccdEvents.EVIDENCE_UPLOAD_RESPONDENT,
+      { verifySuccessEvent: false, expectedState: CaseState.CASE_PROGRESSION },
     );
   }
 }

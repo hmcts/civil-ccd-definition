@@ -4,14 +4,14 @@ const {
   SHORT_STRING,
   MEDIUM_STRING,
   LONG_STRING,
-  isNotEmpty, isNotLongerThan, noDuplicateFound,
+  isNotEmpty, isNotLongerThan, noDuplicateFound, isValidCaseTypeId,
   whenPopulated
 } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
 
 function assertEventDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+    return isValidCaseTypeId()(v);
   });
   expect(row.ID).to.be.a('string').and.satisfy(isNotLongerThan(MEDIUM_STRING));
   expect(row.Name).to.be.a('string').and.satisfy(isNotLongerThan(SHORT_STRING));

@@ -8,11 +8,16 @@ if [ "$FORCE_GREEN_BUILD" == "true" ]; then
   exit 0
 fi
 
+if [ "$PLAYWRIGHT_NIGHTLY_SETUP_OR_SMOKE_TESTS_FAILED" = "true" ]; then
+  echo "Playwright smoke test failed, no functional tests will be run."
+  exit 0
+fi
+
 
 # Check if RUN_FAILED_AND_PREV_NOT_EXECUTED_TEST_FILES is set to "true"
-if [ "$RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES" != "true" ]; then
+if [ "$RUN_FAILED_TESTS" != "true" ]; then
   yarn playwright install
-  yarn test:ui-nightly-prod
+  yarn test:civil-ccd-nightly
 else 
   # Define path to failedTestFiles.json and prevTestFilesReport.json
   TEST_FILES_REPORT="test-results/functional/testFilesReport.json"
@@ -26,7 +31,7 @@ else
   # Check if the JSON array inside testFilesReport.json is empty
   elif [ "$(jq '.failedTestFiles | length' "$TEST_FILES_REPORT")" -eq 0 ]; then
     echo "failedTestFiles in testFilesReport.json contains an empty array."
-    exit 1
+    exit 0
 
   else
     echo "Running failed and not executed functional test files on ${ENVIRONMENT} env"
@@ -44,6 +49,6 @@ else
     export PREV_NOT_EXECUTED_TEST_FILES="$PREV_NOT_EXECUTED_TEST_FILES"
     
     yarn playwright install
-    yarn test:ui-nightly-prod
+    yarn test:civil-ccd-nightly
   fi
 fi

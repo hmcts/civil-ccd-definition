@@ -1,4 +1,4 @@
-import { Party } from '../../../../../../../models/partys';
+import { Party } from '../../../../../../../models/users/partys';
 import StringHelper from '../../../../../../../helpers/string-helper';
 
 export const subheadings = { disclosureOfDocs: 'Disclosure of electronic documents' };

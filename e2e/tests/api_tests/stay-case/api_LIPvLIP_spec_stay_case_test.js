@@ -1,7 +1,13 @@
-const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
+/**
+ * CUI/LiP Test Ownership:
+ * civil-ccd-definition: Owns workflow and API-level integration tests.
+ * civil-citizen-ui: Owns citizen-rendered UI and routing tests.
+ */
 
-Feature('LIP v LIP spec stay case api journey').tag('@api-nightly-prod @api-stay-case');
+const config = require('../../../config.js');
+const {createAccount, deleteCitizenAccount} = require('../../../api/idamHelper');
+
+Feature('LIP v LIP spec stay case api journey').tag('@api-stay-case');
 
 Before(async () => {
   await createAccount(config.applicantCitizenUser.email, config.applicantCitizenUser.password);
@@ -21,6 +27,6 @@ Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_s
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
-  await deleteAccount(config.applicantCitizenUser.email);
-  await deleteAccount(config.defendantCitizenUser2.email);
+  await deleteCitizenAccount(config.applicantCitizenUser.email);
+  await deleteCitizenAccount(config.defendantCitizenUser2.email);
 });

@@ -1,8 +1,8 @@
 import BasePage from '../../../../../../../base/base-page.ts';
-import partys from '../../../../../../../constants/partys.ts';
+import partys from '../../../../../../../constants/users/partys';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import CCDCaseData from '../../../../../../../models/ccd-case-data.ts';
+import ExuiPage from '../../../../../mixin-pages/exui-page/exui-page.ts';
 import { radioButtons } from './respondent-response-type-spec-content.ts';
 
 @AllMethodsStep()

@@ -1,17 +1,17 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import { CaseFlagDetails } from '../../../../../models/case-flag';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
-import { getFormattedCaseId } from '../../../exui-page/exui-content';
-import ExuiPage from '../../../exui-page/exui-page';
+import { CaseFlagDetails } from '../../../../../models/ccd-events/ccd-events/case-flags/case-flag';
+import CCDCaseData from '../../../../../models/ccd-case-data';
+import { getFormattedCaseId } from '../../../mixin-pages/exui-page/exui-content';
+import ExuiPage from '../../../mixin-pages/exui-page/exui-page';
 import { heading } from './manage-case-flags-choose-flag-content';
 
 @AllMethodsStep()
 export default class ManageCaseFlagsChooseFlagPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData, caseFlagsDetails: CaseFlagDetails[]) {
     await super.runVerifications([
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectHeading(heading, { count: 2 }),
       ...caseFlagsDetails.map((caseFlagDetails) =>
         super.expectLabel(caseFlagDetails.caseFlagComment, {
