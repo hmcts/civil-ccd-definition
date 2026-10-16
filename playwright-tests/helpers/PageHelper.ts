@@ -295,6 +295,7 @@ export class PageHelper {
           .toHaveCount(0, { timeout: uploadFinishSeconds * 1000 });
         await expect(uploadingMessages).toHaveCount(0);
         if ((await rateLimitedMessages.count()) === 0) {
+          await this.requestAfterUpload();
           return;
         }
         if (attempt < maxAttempts) {
@@ -304,6 +305,20 @@ export class PageHelper {
         }
       }
       throw new Error(`Upload of ${filePath} was still rate limited after ${maxAttempts} attempts`);
+    }
+
+    // Works around an AAT problem in front of XUI (Azure Front Door, or something between it and XUI). On one HTTP/2
+    // connection, after an event has started and a document has been uploaded, a POST sent straight after the upload
+    // never reaches XUI and gets no response, so Continue hangs (seen on CREATE_CLAIM's litigation friend page). Any GET
+    // in between avoids it, so one is sent from the page itself, which uses the browser's own connection (page.request
+    // would use a separate one). A failure here is only logged, as the GET is not part of the journey.
+    private async requestAfterUpload() {
+      const status = await this.page
+        .evaluate(async () => (await fetch('/api/wa-supported-jurisdiction/get', { credentials: 'same-origin' })).status)
+        .catch((error) => `failed: ${error instanceof Error ? error.message : error}`);
+      if (status !== 200) {
+        console.log(`Request after upload (to avoid the Continue hang) returned ${status}`);
+      }
     }
 
     async fillDate(fieldId: string, date: moment.Moment) {
