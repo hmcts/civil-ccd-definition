@@ -12,10 +12,16 @@ import {TOTP} from 'totp-generator';
 import fs from 'fs';
 import path from 'path';
 
-// IDAM access tokens are saved to a file so they are reused across test runs (and worker restarts)
-// until they are close to expiring, instead of fetching a new one from IDAM on every run
+// IDAM access tokens, S2S tokens and user IDs are saved to a file so they are reused across test runs (and worker
+// restarts) until the tokens are close to expiring, instead of being fetched again for every API call
 const tokenCacheFile = './playwright-tests/e2e/.auth/api-tokens.json';
 const tokenValidityBufferSeconds = 60 * 60;
+
+// IDAM access tokens come from an OAuth2 password grant on IDAM's /o/token, as the CCD API gateway's client (IDAM's
+// /loginUser is deprecated). The client secret is CCD_API_GATEWAY_IDAM_CLIENT_SECRET (in the env file; from the
+// ccd-aat vault, ccd-api-gateway-oauth2-client-secret).
+const idamClientId = 'ccd_gateway';
+const idamScope = 'openid profile roles';
 
 type TokenCache = Record<string, string>;
 
@@ -46,6 +52,19 @@ function isTokenValid(token: string): boolean {
 
 // Tokens are only valid for the IDAM instance that issued them
 const tokenCacheKey = (username: string) => `${idamApiBaseUrl}|${username}`;
+// S2S tokens are only valid for the S2S service that issued them, and are for one microservice
+const s2sCacheKey = () => `${authProviderApiBaseUrl}|s2s|${microService}`;
+// A user's ID never changes, so it is kept for good once looked up
+const userIdCacheKey = (username: string) => `${idamApiBaseUrl}|uid|${username}`;
+
+// The user an IDAM access token belongs to (its subject, the user's email), or undefined if it cannot be read
+function tokenSubject(token: string): string | undefined {
+  try {
+    return JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString('utf-8')).sub;
+  } catch {
+    return undefined;
+  }
+}
 
 
 export class TokensHelper {
@@ -59,12 +78,23 @@ export class TokensHelper {
 
 
   private async getTokenFromIdam(user) {
+    const clientSecret = process.env.CCD_API_GATEWAY_IDAM_CLIENT_SECRET;
+    if (!clientSecret) {
+      throw new Error('CCD_API_GATEWAY_IDAM_CLIENT_SECRET is not set, so an IDAM access token cannot be fetched (add it to the env file)');
+    }
     const apiRequestContext: APIRequestContext = await request.newContext();
     try {
-      const response = await apiRequestContext.post(`${idamApiBaseUrl}/loginUser?username=${encodeURIComponent(user.username)}&password=${user.password}`, {
+      const response = await apiRequestContext.post(`${idamApiBaseUrl}/o/token`, {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
           Accept: "application/json",
+        },
+        form: {
+          grant_type: 'password',
+          client_id: idamClientId,
+          client_secret: clientSecret,
+          scope: idamScope,
+          username: user.username,
+          password: user.password,
         },
       });
 
@@ -102,7 +132,21 @@ export class TokensHelper {
         }
     }
 
+    // The user's IDAM ID, from the cache when it has been looked up before
     async getUserId(accessToken) {
+        const username = tokenSubject(accessToken);
+        const cachedUid = username ? readTokenCache()[userIdCacheKey(username)] : undefined;
+        if (cachedUid) {
+            return cachedUid;
+        }
+        const uid = await this.getUserIdFromIdam(accessToken);
+        if (username && uid) {
+            writeTokenCache({ ...readTokenCache(), [userIdCacheKey(username)]: uid });
+        }
+        return uid;
+    }
+
+    private async getUserIdFromIdam(accessToken) {
         const url: string = `${idamApiBaseUrl}/o/userinfo`;
         const apiRequestContext: APIRequestContext = await request.newContext();
         try {
@@ -133,7 +177,21 @@ export class TokensHelper {
 
 
 
+    // An S2S token for civil_service, reused from the cache while it has more than an hour left (they last 4 hours)
     async getS2SToken() {
+        const cachedToken = readTokenCache()[s2sCacheKey()];
+        if (cachedToken && isTokenValid(cachedToken)) {
+            console.log(`S2S token for ${microService} coming from saved file`);
+            return cachedToken;
+        }
+        const s2sToken = await this.leaseS2SToken();
+        // Re-read in case another worker saved a token in the meantime
+        writeTokenCache({ ...readTokenCache(), [s2sCacheKey()]: s2sToken });
+        console.log(`New S2S token leased for ${microService}`);
+        return s2sToken;
+    }
+
+    private async leaseS2SToken() {
         const url: string = `${authProviderApiBaseUrl}/testing-support/lease`;
         const apiRequestContext: APIRequestContext = await request.newContext();
         try {

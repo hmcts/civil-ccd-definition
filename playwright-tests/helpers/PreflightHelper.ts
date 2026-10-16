@@ -36,6 +36,7 @@ const requiredSettings = [
   'DEFAULT_PASSWORD',
   'JUDGE_DEFAULT_PASSWORD',
   'S2S_SECRET',
+  'CCD_API_GATEWAY_IDAM_CLIENT_SECRET',
 ];
 
 const healthTimeoutMs = 10_000;
@@ -126,7 +127,7 @@ export class PreflightHelper {
     const result = { check: 'S2S token', target: 'civil_service', required: true };
     try {
       await new TokensHelper().getS2SToken();
-      return { ...result, ok: true, detail: 'leased' };
+      return { ...result, ok: true, detail: 'available' };
     } catch (error) {
       return { ...result, ok: false, detail: firstLine(error instanceof Error ? error.message : String(error)) };
     }
