@@ -1,5 +1,7 @@
 import fs from 'node:fs';
 import { expect, Page } from '@playwright/test';
+import { cleanEnv, enums } from '@opensourcesforge/envguard';
+import claimTypes from '../enums/claim-types.ts';
 import {
   envUrl,
   claimantSolicitorCredentials,
@@ -40,6 +42,30 @@ export const signedInToXui = (page: Page) =>
   page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Case list' });
 
 export type SessionUserKey = keyof typeof sessionUsers;
+
+// The claim type this run is for (CLAIM_TYPE, default 1v1), which decides who has to sign in before the tests start
+export const runClaimType: claimTypes = cleanEnv({
+  CLAIM_TYPE: enums({
+    values: [claimTypes.ONE_VS_ONE_LIP, claimTypes.TWO_VS_ONE_LIP, claimTypes.ONE_VS_TWO_LIPS, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR, claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL] as const,
+    default: claimTypes.ONE_VS_ONE,
+  }),
+}).CLAIM_TYPE;
+// Claim types where the second defendant has their own solicitor
+export const respondent2ClaimTypes = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LIP_LR];
+// Claim types where the journey goes on to the claimant's response, the judge's directions order and the hearing notice
+export const judgeClaimTypes = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL];
+
+// The saved session users this run's claim type needs
+export function sessionUsersForRun(): SessionUserKey[] {
+  const keys: SessionUserKey[] = ['claimantSolicitor', 'respondent1Solicitor'];
+  if (respondent2ClaimTypes.includes(runClaimType)) {
+    keys.push('respondent2Solicitor');
+  }
+  if (judgeClaimTypes.includes(runClaimType)) {
+    keys.push('judge', 'hearingCentreAdmin');
+  }
+  return keys;
+}
 
 // Finds the user a test runs as from its storageState, or undefined if it is not one of the saved sessions
 export function sessionUserFor(storageState: unknown): SessionUserKey | undefined {

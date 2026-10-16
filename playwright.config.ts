@@ -58,8 +58,17 @@ export default defineConfig({
     },
   },
   projects: [
+    // Checks the settings, services and users the playwright-tests journeys need before anything else runs. As a
+    // setup project it runs once per run, before any worker starts a test, however many workers or projects there are,
+    // and is never retried (see preflight.setup.ts). Skip it with PREFLIGHT=false.
+    {
+      name: 'preflight',
+      testDir: './playwright-tests/setup',
+      testMatch: /preflight\.setup\.ts/,
+    },
     {
       name: "authentication",
+      dependencies: ['preflight'],
       testDir: "./playwright-tests/setup",
       use: {
         baseURL: envUrl,

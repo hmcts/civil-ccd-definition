@@ -4,18 +4,11 @@ import {
   envUrl, respondent1SolicitorCredentials, respondent2SolicitorCredentials,
 } from '../civilConfig.ts';
 import {IdamPage} from '../e2e/page-objects/pages/idam.po';
-import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import claimTypes from '../enums/claim-types.ts';
 import { SessionUtils } from '../e2e/utils/session.utils.ts';
-import { sessionUsers, signedInToXui } from '../helpers/SessionHelper.ts';
+import { judgeClaimTypes, respondent2ClaimTypes, runClaimType, sessionUsers, signedInToXui } from '../helpers/SessionHelper.ts';
 
-const env = cleanEnv({
-  CLAIM_TYPE: enums({
-    values: [claimTypes.ONE_VS_ONE_LIP, claimTypes.TWO_VS_ONE_LIP, claimTypes.ONE_VS_TWO_LIPS, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR, claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL] as const,
-    default: claimTypes.ONE_VS_ONE,
-  }),
-});
-const claimType: claimTypes = env.CLAIM_TYPE;
+const claimType: claimTypes = runClaimType;
 // Match the heading by role rather than DOM position, as XUI versions wrap it differently
 const caseListHeading = (page: Page) => page.getByRole('heading', { level: 1, name: 'Case list' });
 const claimantSolicitorAuthFile = sessionUsers.claimantSolicitor.authFile;
@@ -23,8 +16,6 @@ const respondent1SolicitorAuthFile = sessionUsers.respondent1Solicitor.authFile;
 const respondent2SolicitorAuthFile = sessionUsers.respondent2Solicitor.authFile;
 const judgeAuthFile = sessionUsers.judge.authFile;
 const hearingCentreAdminAuthFile = sessionUsers.hearingCentreAdmin.authFile;
-// Claim types where the journey goes on to the claimant's response, the judge's directions order and the hearing notice
-const judgeClaimTypes = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL];
 const authCookieName = "__auth__";
 const tokenValidityBufferSeconds = 60 * 60;
 
@@ -73,7 +64,7 @@ async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
     await page.context().storageState({ path: respondent1SolicitorAuthFile });
   });
 
-  if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL || claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
+  if (respondent2ClaimTypes.includes(claimType)) {
     setup("Authenticate Respondent2 Solicitor", async ({ page }) => {
       setup.skip(await isSavedSessionAccepted(respondent2SolicitorAuthFile), "Reusing existing valid session");
       await page.goto(envUrl);
