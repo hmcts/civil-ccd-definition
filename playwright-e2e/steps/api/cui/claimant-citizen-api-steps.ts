@@ -1,5 +1,6 @@
 import BaseApi from '../../../base/base-api';
 import CaseState from '../../../constants/cases/case-state';
+import GaCaseState from '../../../constants/cases/ga-case-states';
 import cuiCCDEvents from '../../../constants/ccd-events/cui-ccd-events/cui-ccd-events';
 import ClaimantDefendantCitizenDataBuilderFactory from '../../../data-builders/cui/claimant-defendant-citizen/claimant-defendant-citizen-data-builder-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
@@ -369,5 +370,34 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
         await queryManagementRaiseLipSchemaBuilder.buildFollowUpQuery(caseDataBeforeSubmission);
       ZodHelper.safeParse(queryManagementRaiseSchema, this.ccdCaseData);
     });
+  }
+
+  /**
+   * Makes a general application as a LiP applicant, paying with Help with Fees.
+   *
+   * Leaves the GA in AWAITING_APPLICATION_PAYMENT with the fee outstanding, which is the
+   * precondition for the HWF outcome events. Needed to reach GA_NOTIFY_HWF, the first process moved
+   * onto the Notifier framework by DTSCCI-6726.
+   */
+  async InitiateGAWithHelpWithFees() {
+    await this.setupUserData(this.claimantCitizenUser);
+    const { initiateGeneralApplicationLipDataBuilder } =
+      this.claimantDefendantCitizenDataBuilderFactory;
+    await this.submitCuiEvent(
+      this.claimantCitizenUser,
+      cuiCCDEvents.INITIATE_GENERAL_APPLICATION,
+      await initiateGeneralApplicationLipDataBuilder.buildWithHelpWithFees(),
+    );
+    // submitCuiEvent waits on the parent case only, so wait for the GA creation process too
+    await this.waitForGAFinishedBusinessProcess();
+    // the GA case id comes off generalApplications on the parent case, so no argument is needed
+    await this.fetchAndSetGaCCDCaseData();
+    await this.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id);
+    // asserted only once the process has finished, because the state check is non retryable
+    await this.fetchAndSetGaCCDCaseData(
+      undefined,
+      undefined,
+      GaCaseState.AWAITING_APPLICATION_PAYMENT,
+    );
   }
 }
