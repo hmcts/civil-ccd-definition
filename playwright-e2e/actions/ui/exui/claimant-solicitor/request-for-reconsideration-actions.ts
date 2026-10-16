@@ -18,7 +18,11 @@ export default class RequestForReconsiderationActions extends BaseTestData {
   async enterReason() {
     const { requestForReconsiderationPage } = this.requestForReconsiderationPageFactory;
     await requestForReconsiderationPage.verifyContent(this.ccdCaseData);
-    await requestForReconsiderationPage.enterReason();
+    const reasonText = 'Testing Request for Reconsideration';
+    await requestForReconsiderationPage.enterReason(reasonText);
+    this.ccdCaseData.reasonForReconsiderationApplicant = {
+      reasonForReconsiderationTxt: reasonText,
+    };
     await requestForReconsiderationPage.submit();
   }
 
