@@ -135,6 +135,21 @@ const scenarios: Scenario[] = [
       DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS: 'Both',
     },
   },
+  // The case is stayed after the claimant's response, the parties are asked for an update and the stay is lifted, then
+  // the journey carries on to the final order. It is a road accident claim rather than noise induced hearing loss: the
+  // WA initiation DMN only raises a directions task when a stay is lifted for a standard claim, so the judge would have
+  // no task for the Standard Direction Order on a NIHL claim where WA is switched on.
+  {
+    name: 'UNSPEC_1v2DS_FAST_STAY_CASE',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v2DS',
+      CLAIMANT_TYPE: 'SOLE_TRADER',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...roadAccident,
+      STAY_CASE: 'Yes',
+    },
+  },
 ];
 
 // The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own

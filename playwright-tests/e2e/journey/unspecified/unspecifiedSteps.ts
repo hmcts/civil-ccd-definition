@@ -19,6 +19,8 @@ import { ConfirmTrialArrangements } from '../../flows/events/ConfirmTrialArrange
 import { MakeFinalOrder } from '../../flows/events/MakeFinalOrder.ts';
 import { ConfirmOrderReview } from '../../flows/events/ConfirmOrderReview.ts';
 import { AddCaseNote } from '../../flows/events/AddCaseNote.ts';
+import { StayCase } from '../../flows/events/StayCase.ts';
+import { ManageStay } from '../../flows/events/ManageStay.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
 import { JourneyContext, JourneyStep } from '../journeyRunner.ts';
@@ -42,6 +44,12 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
     offlineAtNotify,
     [!c.claimantResponseClaimTypes.includes(c.claimType), 'Skipping as the claim has a litigant in person'],
     [c.stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline'],
+  ];
+  // The stay steps, which need the claim to reach JUDICIAL_REFERRAL and only run with STAY_CASE=Yes
+  const noStay: Array<[boolean, string]> = [
+    ...noClaimantResponse,
+    [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
+    [c.stayCase !== yesNo.YES, 'Staying the case is switched off (set STAY_CASE=Yes to run it)'],
   ];
   // The steps from the Standard Direction Order on, which need the claim to reach JUDICIAL_REFERRAL on the fast track
   const noCaseProgression = (fastTrackReason = 'Skipping as the Standard Direction Order is only coded for the fast track'): Array<[boolean, string]> => [
@@ -358,6 +366,48 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
           );
         });
         await ctx.assertCaseState(c.stateAfterClaimantResponse);
+      },
+    },
+
+    // The hearing centre admin stays the case once the claimant has responded, asks the parties for an update and then
+    // lifts the stay. Lifting it takes the claim back to JUDICIAL_REFERRAL, so the journey carries on to the Standard
+    // Direction Order. Only run with STAY_CASE=Yes.
+    {
+      name: 'STAY_CASE',
+      title: 'Hearing Centre Admin stays the case.',
+      user: 'hearingCentreAdmin',
+      skipIf: noStay,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new StayCase(page).submit();
+        });
+        await ctx.assertCaseState(caseStates.CASE_STAYED);
+      },
+    },
+
+    {
+      name: 'MANAGE_STAY_REQUEST_UPDATE',
+      title: 'Hearing Centre Admin asks the parties for an update on the stay.',
+      user: 'hearingCentreAdmin',
+      skipIf: noStay,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new ManageStay(page).requestUpdate();
+        });
+        await ctx.assertCaseState(caseStates.CASE_STAYED);
+      },
+    },
+
+    {
+      name: 'LIFT_STAY',
+      title: 'Hearing Centre Admin lifts the stay.',
+      user: 'hearingCentreAdmin',
+      skipIf: noStay,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new ManageStay(page).liftStay();
+        });
+        await ctx.assertCaseState(caseStates.JUDICIAL_REFERRAL);
       },
     },
 
