@@ -67,7 +67,7 @@ Scenario('03 Applicant solicitor enter into BS Mental Health for 1st Defendant',
 });
 
 Scenario('04 Lift BS Mental Health for 1st Defendant', async ({I}) => {
-  const futureExit = false
+  const futureExit = false;
   await I.login(config.applicantSolicitorUser);
   await I.liftBS(liftBreathingSpaceDetails, caseId, futureExit);
 });
@@ -78,7 +78,7 @@ Scenario('05 Applicant solicitor enter into BS Standard for 2nd Defendant', asyn
 });
 
 Scenario('06 Lift BS Standard for 2nd Defendant', async ({I}) => {
-  const futureExit = true
+  const futureExit = true;
   await I.login(config.applicantSolicitorUser);
   await I.liftBS(liftBreathingSpaceDetailsFuture, caseId, futureExit);
 });
