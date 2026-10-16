@@ -41,8 +41,9 @@ Scenario('02 Case Worker enter into BS Standard', async ({I}) => {
 });
 
 Scenario('03 Lift BS Standard', async ({I}) => {
+  const futureExit = true;
   await I.login(config.ctscAdminUser);
-  await I.liftBS(liftBreathingSpaceDetails, caseId);
+  await I.liftBS(liftBreathingSpaceDetails, caseId, futureExit);
 });
 
 AfterSuite(async () => {
