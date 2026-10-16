@@ -1954,16 +1954,29 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
-    async liftBS(breathingSpaceDetails, caseId) {
+    async liftBS(breathingSpaceDetails, caseId, futureExit) {
       eventName = events.LIFT_BREATHING_SPACE_SPEC.name;
+
+      const confirmationSteps = futureExit
+        ? [
+          () => this.waitForText('Breathing Space will lift on'),
+          () =>
+            this.waitForText(
+              'We will send you an email to confirm when breathing space has ended',
+            ),
+        ]
+        : [
+          () => this.waitForText('Breathing Space lifted'),
+          () => this.waitForText('We have sent you a confirmation email.'),
+        ];
+
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.LIFT_BREATHING_SPACE_SPEC, caseId),
         () => this.waitForText('Lift Breathing Space'),
         () => liftBreathingSpacePage.liftBreathingSpaceDetails(breathingSpaceDetails),
         () => this.waitForText('Check your answers'),
         () => this.click('Submit'),
-        () => this.waitForText('Breathing Space lifted'),
-        () => this.waitForText('We have sent you a confirmation email.'),
+        ...confirmationSteps,
       ]);
       await this.takeScreenshot();
     },

@@ -38,8 +38,9 @@ Scenario('02 Applicant solicitor enter into BS Mental Health', async ({I}) => {
 });
 
 Scenario('03 Lift BS Mental Health', async ({I}) => {
+  const futureExit = true;
   await I.login(config.applicantSolicitorUser);
-  await I.liftBS(liftBreathingSpaceDetails, caseId);
+  await I.liftBS(liftBreathingSpaceDetails, caseId, futureExit);
 });
 
 AfterSuite(async () => {
