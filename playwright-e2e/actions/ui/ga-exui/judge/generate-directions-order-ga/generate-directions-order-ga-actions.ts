@@ -57,9 +57,4 @@ export default class GenerateDirectionsOrderGaActions extends BaseTestData {
     await generateDirectionsOrderGaConfirmPage.verifyContent(this.getGaCCDCaseData()!);
     await generateDirectionsOrderGaConfirmPage.submit();
   }
-
-  // async verifyOrderConfirmation() {
-  //   const { generateDirectionsOrderGaConfirmPage } = this.generateDirectionsOrderGaPageFactory;
-  //   await generateDirectionsOrderGaConfirmPage.verifyContent(this.getGaCCDCaseData()!);
-  // }
 }
