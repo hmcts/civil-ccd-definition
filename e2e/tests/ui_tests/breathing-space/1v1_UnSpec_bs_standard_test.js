@@ -6,19 +6,19 @@ const mpScenario = 'ONE_V_ONE';
 // For today's date
 const today = new Date().toISOString().split('T')[0];
 
-//For next weeks date
-const date1 = new Date();
-date1.setDate(date1.getDate() + 7);
-const nextWeekDate = date1.toISOString().split('T')[0];
+//For last weeks date
+const date = new Date();
+date.setDate(date.getDate() - 7);
+const lastWeekDate = date.toISOString().split('T')[0];
 
 const breathingSpaceDetailsStandard = [
   'Standard Breathing Space',
-  today,
+  lastWeekDate,
   'refStandard1234'
 ];
 
 const liftBreathingSpaceDetails = [
-  nextWeekDate,
+  today,
   'test reason'
 ];
 
@@ -39,8 +39,9 @@ Scenario('02 Applicant solicitor enter into BS Standard', async ({I}) => {
 });
 
 Scenario('03 Lift BS Standard', async ({I}) => {
+  const futureExit = false;
   await I.login(config.applicantSolicitorUser);
-  await I.liftBS(liftBreathingSpaceDetails, caseId);
+  await I.liftBS(liftBreathingSpaceDetails, caseId, futureExit);
 });
 
 AfterSuite(async () => {
