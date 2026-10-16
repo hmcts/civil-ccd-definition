@@ -55,14 +55,20 @@ export const respondent2ClaimTypes = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes
 // Claim types where the journey goes on to the claimant's response, the judge's directions order and the hearing notice
 export const judgeClaimTypes = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL];
 
-// The saved session users this run's claim type needs
+// Whether the journey adds a case note (ADD_CASE_NOTE=true, default false), which the hearing centre admin does
+export const addCaseNoteEnabled = process.env.ADD_CASE_NOTE === 'true';
+
+// The saved session users this run's claim type needs, plus the hearing centre admin when a case note is added
 export function sessionUsersForRun(): SessionUserKey[] {
   const keys: SessionUserKey[] = ['claimantSolicitor', 'respondent1Solicitor'];
   if (respondent2ClaimTypes.includes(runClaimType)) {
     keys.push('respondent2Solicitor');
   }
   if (judgeClaimTypes.includes(runClaimType)) {
-    keys.push('judge', 'hearingCentreAdmin');
+    keys.push('judge');
+  }
+  if (judgeClaimTypes.includes(runClaimType) || addCaseNoteEnabled) {
+    keys.push('hearingCentreAdmin');
   }
   return keys;
 }

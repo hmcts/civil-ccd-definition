@@ -6,7 +6,7 @@ import {
 import {IdamPage} from '../e2e/page-objects/pages/idam.po';
 import claimTypes from '../enums/claim-types.ts';
 import { SessionUtils } from '../e2e/utils/session.utils.ts';
-import { judgeClaimTypes, respondent2ClaimTypes, runClaimType, sessionUsers, signedInToXui } from '../helpers/SessionHelper.ts';
+import { judgeClaimTypes, respondent2ClaimTypes, runClaimType, sessionUsers, sessionUsersForRun, signedInToXui } from '../helpers/SessionHelper.ts';
 
 const claimType: claimTypes = runClaimType;
 // Match the heading by role rather than DOM position, as XUI versions wrap it differently
@@ -83,7 +83,10 @@ async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
       await expect(signedInToXui(page)).toBeVisible();
       await page.context().storageState({ path: judgeAuthFile });
     });
+  }
 
+  // Also needed for any claim type when the journey adds a case note (ADD_CASE_NOTE=true)
+  if (sessionUsersForRun().includes('hearingCentreAdmin')) {
     setup("Authenticate Hearing Centre Admin", async ({ page }) => {
       setup.skip(await isSavedSessionAccepted(hearingCentreAdminAuthFile), "Reusing existing valid session");
       await page.goto(envUrl);

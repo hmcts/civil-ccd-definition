@@ -30,6 +30,7 @@ import { WaTaskHelper } from '../../helpers/WaTaskHelper.ts';
 import { ConfirmTrialArrangements } from '../flows/events/ConfirmTrialArrangements.ts';
 import { MakeFinalOrder } from '../flows/events/MakeFinalOrder.ts';
 import { ConfirmOrderReview } from '../flows/events/ConfirmOrderReview.ts';
+import { AddCaseNote } from '../flows/events/AddCaseNote.ts';
 import FinalOrder, { finalOrdersForTrack } from '../../enums/finalOrders.ts';
 import ClaimTypes from '../../enums/claim-types.ts';
 import fixedRecoveryCostsBands from '../../enums/fixedRecoveryCostsBands.ts';
@@ -193,7 +194,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
   //  - 1v2LRLIP: Defendant 1's solicitor responds. Defendant 2 is a litigant in person, who cannot respond online in an
   //    unspecified claim, so the claim keeps waiting unless they appoint a solicitor who responds for them.
   //  - 1v2LIPLR: no defendant responds. Defendant 1 is a litigant in person, and Defendant 2's solicitor's response is
-  //    skipped (see test7), so the claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT.
+  //    skipped (see test8), so the claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT.
   const separateResponseClaimTypes = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR];
   // Claim types where Defendant 2 has their own solicitor, who acknowledges and responds separately
   const defendant2OwnSolicitorClaimTypes = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LIP_LR];
@@ -239,12 +240,12 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
     : yesNo.NO;
 
   let track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(scenarioEnv.TRACK) ? (scenarioEnv.TRACK as claimTrack) : claimTrack.FAST;
-  // Noise induced hearing loss claims get their own Standard Direction Order directions in test9, and their own work
+  // Noise induced hearing loss claims get their own Standard Direction Order directions in test10, and their own work
   // allocation task for it
   const noiseInducedHearingLoss: boolean =
     typeOfClaim == unspecClaimTypes.PERSONAL_INJURY && typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS;
   const sdoTaskType: string = noiseInducedHearingLoss ? 'NIHLFastTrackDirections' : 'FastTrackDirections';
-  // The judge's final order in test16 (FINAL_ORDER). If it is not set, the first order the track offers is made: a free
+  // The judge's final order in test17 (FINAL_ORDER). If it is not set, the first order the track offers is made: a free
   // form order on the small and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
   const finalOrder: FinalOrder = (scenarioEnv.FINAL_ORDER as FinalOrder) ?? finalOrdersForTrack[track][0];
 
@@ -252,7 +253,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
   // keep the solicitors assigned to it):
   //  - STOP_AT_STATE: stop as soon as the claim is confirmed to be in this state, e.g. CASE_PROGRESSION stops straight
   //    after the Standard Direction Order
-  //  - STOP_AFTER_TEST: stop after this test, e.g. test10 stops after the evidence uploads
+  //  - STOP_AFTER_TEST: stop after this test, e.g. test11 stops after the evidence uploads
   // The remaining tests are skipped. Both can be set, in which case the run stops at whichever comes first.
   const stopAtState = scenarioEnv.STOP_AT_STATE as caseStates | undefined;
   const stopAfterTest: string | undefined = scenarioEnv.STOP_AFTER_TEST;
@@ -264,6 +265,8 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
   const unavailableDatesRequired: YesNo = ['Yes'].includes(scenarioEnv.UNAVAILABLE_DATES)
     ? yesNo.YES
     : yesNo.NO;
+  // Whether the hearing centre admin adds a case note in test2 (ADD_CASE_NOTE=true, default false)
+  const addCaseNote: boolean = scenarioEnv.ADD_CASE_NOTE === 'true';
 
   let caseId: string = '';
   let pageHelper: PageHelper;
@@ -343,12 +346,12 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
     }
 
     if (stopAfterTest !== undefined) {
-      expect(stopAfterTest, `Invalid STOP_AFTER_TEST value: ${stopAfterTest}. It must be a test name such as test10.`).toMatch(/^test\d+$/);
+      expect(stopAfterTest, `Invalid STOP_AFTER_TEST value: ${stopAfterTest}. It must be a test name such as test11.`).toMatch(/^test\d+$/);
     }
   });
 
   test.beforeEach(async ({ page, storageState }, testInfo) => {
-    // Every test sits inside the test1 group (test1 › test10 › ...), so the last testN in its title path is its own
+    // Every test sits inside the test1 group (test1 › test11 › ...), so the last testN in its title path is its own
     const testNumber = Number(testInfo.titlePath.filter((title) => /^test\d+$/.test(title)).pop()?.slice('test'.length));
     test.skip(stopAfterTest !== undefined && testNumber > Number(stopAfterTest.slice('test'.length)), `Stopped after ${stopAfterTest} (STOP_AFTER_TEST)`);
     test.skip(stopAtStateReached, `Stopped: the claim has reached ${stopAtState} (STOP_AT_STATE)`);
@@ -510,7 +513,26 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       await assertCaseState(caseStates.CASE_ISSUED);
     });
 
+    // Adding a case note, done as early as possible: court staff can add one in any state, so straight after the claim
+    // is issued. Only run with ADD_CASE_NOTE=true (default false). Skipped here rather than in the test so beforeEach
+    // does not open the case as the hearing centre admin when it is switched off.
     test.describe('test2', () => {
+      test.skip(!addCaseNote, 'Adding a case note is switched off (set ADD_CASE_NOTE=true to run it)');
+      test.use({ storageState: sessionUsers.hearingCentreAdmin.authFile });
+      test('Hearing Centre Admin adds a case note.', async ({ page, storageState }) => {
+        const note = `Case note added by the unspecified journey at ${new Date().toISOString()}`;
+        const caseNote = new AddCaseNote(page);
+        await runEvent(page, storageState, async () => {
+          await caseNote.submit(note);
+        });
+        await testingEndpointHelper.waitForCamundaProcessToFinish(caseId, 'ADD_CASE_NOTE');
+        await caseNote.verifyNoteShown(note);
+        // A case note does not change the claim's state
+        await assertCaseState(caseStates.CASE_ISSUED);
+      });
+    });
+
+    test.describe('test3', () => {
       test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
       test('Claimant Solicitor undertakes event: Notify claim ', async ({ page, storageState }) => {
         await runEvent(page, storageState, async () => {
@@ -529,7 +551,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    test.describe('test3', () => {
+    test.describe('test4', () => {
       test.skip(claimOfflineAfterNotifyClaim, 'Claim went offline at Notify claim');
       test.use({ storageState: sessionUsers.claimantSolicitor.authFile });
       test('Claimant Solicitor undertakes event: Notify claim details ', async ({ page, storageState }) => {
@@ -549,7 +571,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    test.describe('test4', () => {
+    test.describe('test5', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.use({ storageState: sessionUsers.respondent1Solicitor.authFile });
       test('Defendant 1 Solicitor acknowledges claim.', async ({ page, storageState }) => {
@@ -569,7 +591,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    test.describe('test5', () => {
+    test.describe('test6', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       // Skipped here rather than in the test so beforeEach does not open the case as Defendant 2's solicitor, who is
       // only signed in for claim types where they have one
@@ -577,7 +599,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       test.use({ storageState: sessionUsers.respondent2Solicitor.authFile });
       test('Defendant 2 Solicitor acknowledges claim.', async ({ page, storageState }) => {
         if (claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
-          // test4 is skipped for this claim type (Defendant 1 is a LiP), so Defendant 2's solicitor is assigned here
+          // test5 is skipped for this claim type (Defendant 1 is a LiP), so Defendant 2's solicitor is assigned here
           await testingEndpointHelper.assignDefendantLegalRepToCase(caseId, claimType);
           // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
           await pageHelper.gotoAndWaitForXui(envUrl + '/cases/case-details/' + caseId);
@@ -594,7 +616,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    test.describe('test6', () => {
+    test.describe('test7', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.use({ storageState: sessionUsers.respondent1Solicitor.authFile });
       test('Defendant 1 Solicitor responds to claim.', async ({ page, storageState }) => {
@@ -623,7 +645,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    test.describe('test7', () => {
+    test.describe('test8', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       // Skipped here rather than in the test so beforeEach does not open the case as Defendant 2's solicitor, who is
       // only signed in for claim types where they have one
@@ -666,7 +688,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    test.describe('test8', () => {
+    test.describe('test9', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -695,7 +717,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    test.describe('test9', () => {
+    test.describe('test10', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -714,8 +736,8 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
     });
 
     // Each solicitor uploads evidence once the Standard Direction Order has moved the claim to CASE_PROGRESSION, so the
-    // same claims as test9 run it
-    test.describe('test10', () => {
+    // same claims as test10 run it
+    test.describe('test11', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -755,9 +777,9 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    // The hearing centre admin lists the trial once the evidence is in, so the same claims as test9 run it. This is done
+    // The hearing centre admin lists the trial once the evidence is in, so the same claims as test10 run it. This is done
     // in place of HMC returning a LISTED hearing, and moves the claim to HEARING_READINESS for the hearing fee.
-    test.describe('test11', () => {
+    test.describe('test12', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -772,9 +794,9 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
       });
     });
 
-    // Listing the trial in test11 set a hearing fee, which the claimant's solicitor pays from the Service Request tab.
+    // Listing the trial in test12 set a hearing fee, which the claimant's solicitor pays from the Service Request tab.
     // Once it is paid, HEARING_FEE_PAID moves the claim to PREPARE_FOR_HEARING_CONDUCT_HEARING.
-    test.describe('test12', () => {
+    test.describe('test13', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -801,9 +823,9 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
     });
 
     // Each solicitor confirms the case is ready for trial. This is only offered on the fast track and must be done
-    // more than 3 weeks before the hearing, which test11 lists about 8 weeks ahead. The claim stays in
+    // more than 3 weeks before the hearing, which test12 lists about 8 weeks ahead. The claim stays in
     // PREPARE_FOR_HEARING_CONDUCT_HEARING.
-    test.describe('test13', () => {
+    test.describe('test14', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -845,7 +867,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
 
     // The trial bundle, which a civil-service scheduler normally creates about 3 weeks before the hearing, is created
     // now. Once it has been stitched into one document it shows on the Bundles tab.
-    test.describe('test14', () => {
+    test.describe('test15', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -866,8 +888,8 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
 
     // Civil has no record of the hearing itself taking place. Once the hearing date has passed, a civil-service scheduler
     // runs MOVE_TO_DECISION_OUTCOME, which moves the claim to DECISION_OUTCOME to wait for the judge's decision. The
-    // hearing listed in test11 is weeks away, so the test runs that event itself.
-    test.describe('test15', () => {
+    // hearing listed in test12 is weeks away, so the test runs that event itself.
+    test.describe('test16', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -883,7 +905,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
     // The judge's final order after the hearing, chosen with FINAL_ORDER. A free form order, or an assisted order with
     // no further hearing, does not change the claim's state. The order's notifications are sent by the
     // GENERATE_ORDER_NOTIFICATION business process.
-    test.describe('test16', () => {
+    test.describe('test17', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
@@ -904,7 +926,7 @@ function defineUnspecifiedJourney(scenarioEnv: Record<string, string | undefined
     // Court staff review the judge's order ("Order Made - Review case"). Confirming it is a final order, with no
     // obligation date and nothing left to do, closes the claim: it moves to All_FINAL_ORDERS_ISSUED and the
     // CONFIRM_ORDER_REVIEW_FINAL_ORDER business process runs.
-    test.describe('test17', () => {
+    test.describe('test18', () => {
       test.skip(claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details');
       test.skip(!claimantResponseClaimTypes.includes(claimType), 'Skipping as the claim has a litigant in person');
       test.skip(stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline');
