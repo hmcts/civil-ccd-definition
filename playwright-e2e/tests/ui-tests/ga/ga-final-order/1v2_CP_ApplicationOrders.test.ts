@@ -34,8 +34,8 @@ test.describe(
       await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();
       await JudgeGaApiSteps.MakeADecisionListHearing();
       await HearingCenterAdminGaApiSteps.HearingScheduledGa();
+      await JudgeGaApiSteps.GenerateDirectionsOrderAssistedWithoutFurtherHearing();
       await JudgeGaSteps.Login();
-      await JudgeGaSteps.GenerateDirectionsOrderAssistedWithoutNotice();
     });
   },
 );
