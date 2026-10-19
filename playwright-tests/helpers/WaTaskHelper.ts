@@ -29,7 +29,7 @@ export class WaTaskHelper {
     await this.runInitiationJob();
 
     // 3. Wait for the task to reach WA task management, then claim it for the signed-in user
-    const task = await this.waitForXuiTask(caseId, taskType);
+    const task = await this.waitForXuiTask(caseId, eventId, taskType);
     if (task.task_state === 'assigned') {
       console.log(`WA: ${taskType} task ${task.id} is already assigned`);
       return;
@@ -97,15 +97,16 @@ export class WaTaskHelper {
     }
   }
 
-  // Waits for the task to show in the case's task list in XUI
-  private async waitForXuiTask(caseId: string, taskType: string) {
+  // Waits for XUI to offer the task for the event, asking the same question XUI asks when the event is opened (the
+  // tasks the signed-in user can do it with). The case's task list is not used, as some XUI versions return it empty.
+  private async waitForXuiTask(caseId: string, eventId: string, taskType: string) {
     let task;
     await expect.poll(async () => {
-      const response = await this.page.request.post(`${envUrl}/workallocation/case/task/${caseId}`, {
-        data: { refined: true },
-        headers: await this.xsrfHeader(),
-      });
-      const tasks = response.ok() ? await response.json() : [];
+      const response = await this.page.request.get(
+        `${envUrl}/workallocation/case/tasks/${caseId}/event/${eventId}/caseType/CIVIL/jurisdiction/CIVIL`,
+        { headers: await this.xsrfHeader() },
+      );
+      const tasks = response.ok() ? (await response.json()).tasks ?? [] : [];
       task = tasks.find((t) => t.type === taskType);
       return task !== undefined;
     }, {
