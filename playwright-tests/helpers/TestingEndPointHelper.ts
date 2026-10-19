@@ -319,6 +319,34 @@ export class TestingEndPointHelper {
     await this.runSystemEvent(caseId, 'TRIAL_READY_CHECK', 'Trial ready check');
   }
 
+  // Runs TRIAL_READY_NOTIFICATION as the civil system user, which is what civil-service's trial ready notification
+  // scheduler does each night for fast track cases whose hearing is less than 6 weeks away. It records that the parties
+  // have been told (trialReadyNotified) and starts the TRIAL_READY_NOTIFICATION business process, whose "Notify parties"
+  // task emails each solicitor the solicitorTrialReady notification asking them to confirm they are ready for trial.
+  async triggerTrialReadyNotification(caseId: string) {
+    await this.runSystemEvent(caseId, 'TRIAL_READY_NOTIFICATION', 'Trial ready notification');
+  }
+
+  // The emails civil-service has sent for the case through GOV.UK Notify, each with Notify's notificationId, optionally
+  // only those from one template. civil-service keeps them in memory where testing support is switched on, keyed by the
+  // email's reference, which is built from the case's legacy reference (e.g. trial-ready-notification-000KA016).
+  async getSentNotifications(caseId: string, templateId?: string): Promise<Array<{
+    templateId: string; recipientEmail: string; reference: string; notificationId: string; sentAt: string;
+  }>> {
+    const { legacyCaseReference } = await this.getCaseData(caseId);
+    expect(legacyCaseReference, `Case ${caseId} has no legacy case reference`).toBeTruthy();
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const query = `caseId=${legacyCaseReference}${templateId ? `&templateId=${templateId}` : ''}`;
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/notifications/sent?${query}`, { headers: this.getHeaders() });
+      expect(response.ok(), `Reading the notifications sent for case ${caseId} returned ${response.status()}`).toBeTruthy();
+      return await response.json();
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   // The case's data as civil-service holds it
   async getCaseData(caseId: string): Promise<Record<string, any>> {
     await this.getTokens(systemupdate);
