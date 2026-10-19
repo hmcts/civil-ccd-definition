@@ -4,9 +4,7 @@
     "CaseFieldID": "specRespondent1Represented",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -16,9 +14,7 @@
     "CaseFieldID": "specRespondent2Represented",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -50,9 +46,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "timelineOfEvents",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
@@ -60,9 +54,7 @@
     "CaseFieldID": "specRespondentSolicitor1OrganisationEmail",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -70,17 +62,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "speclistYourEvidenceList",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CR"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimAmountBreakup",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRUD"
   },
   {
@@ -94,9 +82,7 @@
     "CaseFieldID": "totalClaimAmount",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -106,9 +92,7 @@
     "CaseFieldID": "totalInterest",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -124,9 +108,7 @@
     "CaseFieldID": "claimInterest",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -142,9 +124,7 @@
     "CaseFieldID": "interestClaimOptions",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -154,9 +134,7 @@
     "CaseFieldID": "sameRateInterestSelection",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -172,9 +150,7 @@
     "CaseFieldID": "breakDownInterestTotal",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -184,9 +160,7 @@
     "CaseFieldID": "breakDownInterestDescription",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -196,9 +170,7 @@
     "CaseFieldID": "interestClaimFrom",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -208,9 +180,7 @@
     "CaseFieldID": "interestFromSpecificDate",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -220,9 +190,7 @@
     "CaseFieldID": "interestFromSpecificDateDescription",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -232,9 +200,7 @@
     "CaseFieldID": "interestClaimUntil",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CR"
       }
     ]
@@ -256,9 +222,7 @@
     "CaseFieldID": "specClaimDetailsDocumentFiles",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -268,9 +232,7 @@
     "CaseFieldID": "specClaimTimelineList",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -278,9 +240,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specRespondentSolicitor1EmailAddress",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
@@ -288,9 +248,7 @@
     "CaseFieldID": "specClaimTemplateDocumentFiles",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -300,9 +258,7 @@
     "CaseFieldID": "specApplicantCorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -312,9 +268,7 @@
     "CaseFieldID": "specApplicantCorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -324,9 +278,7 @@
     "CaseFieldID": "specRespondentCorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -336,9 +288,7 @@
     "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -348,9 +298,7 @@
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -360,9 +308,7 @@
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -372,9 +318,7 @@
     "CaseFieldID": "specAoSRespondent2HomeAddressDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -384,9 +328,7 @@
     "CaseFieldID": "specAoSRespondentCorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -396,9 +338,7 @@
     "CaseFieldID": "specAoSRespondent2CorrespondenceAddressdetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -408,9 +348,7 @@
     "CaseFieldID": "specAoSRespondent2CorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -426,9 +364,7 @@
     "CaseFieldID": "defenceRouteRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -438,9 +374,7 @@
     "CaseFieldID": "defenceRouteRequired2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -450,9 +384,7 @@
     "CaseFieldID": "specDefenceAdmittedRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -462,9 +394,7 @@
     "CaseFieldID": "specDefenceAdmitted2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -472,49 +402,37 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaim2",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaim",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaim2",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaimOwingAmount",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToAdmittedClaimOwingAmount2",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
@@ -522,9 +440,7 @@
     "CaseFieldID": "detailsOfWhyDoesYouDisputeTheClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -534,9 +450,7 @@
     "CaseFieldID": "detailsOfWhyDoesYouDisputeTheClaim2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -546,9 +460,7 @@
     "CaseFieldID": "specResponseTimelineDocumentFiles",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -558,9 +470,7 @@
     "CaseFieldID": "specResponsTimelineDocumentFiles2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -568,36 +478,27 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseTimelineOfEvents",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponseTimelineOfEvents2",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "specResponselistYourEvidenceList",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-      ],
-      "CRUD": "CUR"
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
+    "CRUD": "CUR"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimTrack",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE", "CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -607,9 +508,7 @@
     "CaseFieldID": "responseClaimMediationSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -619,9 +518,7 @@
     "CaseFieldID": "responseClaimExpertSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -631,9 +528,7 @@
     "CaseFieldID": "respondToClaimExperts",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -643,9 +538,7 @@
     "CaseFieldID": "respondToClaimExperts2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -655,9 +548,7 @@
     "CaseFieldID": "respondToCourtLocation",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -667,9 +558,7 @@
     "CaseFieldID": "respondToCourtLocation2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -679,9 +568,7 @@
     "CaseFieldID": "SmallClaimHearingInterpreterRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -691,9 +578,7 @@
     "CaseFieldID": "SmallClaimHearingInterpreter2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -703,9 +588,7 @@
     "CaseFieldID": "SmallClaimHearingInterpreterDescription",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -715,9 +598,7 @@
     "CaseFieldID": "smallClaimHearingInterpreterDescription2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -743,9 +624,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspecGeneric",
-    "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
-    ],
+    "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
 
     "CRUD": "CRUD"
   },
@@ -766,9 +645,7 @@
     "CaseFieldID": "defenceAdmitPartPaymentTimeRouteRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -778,9 +655,7 @@
     "CaseFieldID": "defenceAdmitPartPaymentTimeRouteRequired2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -790,9 +665,7 @@
     "CaseFieldID": "respondToClaimAdmitPartLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -802,9 +675,7 @@
     "CaseFieldID": "respondToClaimAdmitPartLRspec2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -814,9 +685,7 @@
     "CaseFieldID": "defenceAdmitPartEmploymentTypeRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -826,9 +695,7 @@
     "CaseFieldID": "defenceAdmitPartEmploymentType2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -838,9 +705,7 @@
     "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspec2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -850,9 +715,7 @@
     "CaseFieldID": "respondToClaimAdmitPartUnemployedLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -862,9 +725,7 @@
     "CaseFieldID": "respondToClaimAdmitPartUnemployedLRspec2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -874,9 +735,7 @@
     "CaseFieldID": "defenceAdmitPartEmploymentTypeRequiredRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -886,9 +745,7 @@
     "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspecRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -898,9 +755,7 @@
     "CaseFieldID": "respondToClaimAdmitPartUnemployedLRspecRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -910,9 +765,7 @@
     "CaseFieldID": "responseClaimAdmitPartEmployer",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -922,9 +775,7 @@
     "CaseFieldID": "responseClaimAdmitPartEmployer2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -934,9 +785,7 @@
     "CaseFieldID": "responseClaimAdmitPartEmployerRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -946,9 +795,7 @@
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -958,9 +805,7 @@
     "CaseFieldID": "responseToClaimAdmitPartWhyNotPayLRspec2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -970,9 +815,7 @@
     "CaseFieldID": "specDefenceFullAdmittedRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -982,9 +825,7 @@
     "CaseFieldID": "specDefenceFullAdmitted2Required",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -994,9 +835,7 @@
     "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1006,9 +845,7 @@
     "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1018,9 +855,7 @@
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1030,9 +865,7 @@
     "CaseFieldID": "applicantMPClaimMediationSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1042,9 +875,7 @@
     "CaseFieldID": "applicant1ClaimExpertSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1054,9 +885,7 @@
     "CaseFieldID": "applicantMPClaimExpertSpecRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1066,9 +895,7 @@
     "CaseFieldID": "applicant1RespondToClaimExperts",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1078,9 +905,7 @@
     "CaseFieldID": "applicant1ClaimWitnesses",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1090,9 +915,7 @@
     "CaseFieldID": "applicant1DQRequestedCourt",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1102,9 +925,7 @@
     "CaseFieldID": "specAoSRespondentInformation",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1114,9 +935,7 @@
     "CaseFieldID": "specAoSRespondent2Information",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1126,9 +945,7 @@
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1138,9 +955,7 @@
     "CaseFieldID": "specAoSRespondent2HomeAddressRequired",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1150,9 +965,7 @@
     "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1162,9 +975,7 @@
     "CaseFieldID": "respondent1ClaimResponsePaymentAdmissionForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1174,9 +985,7 @@
     "CaseFieldID": "respondent1SpecDefenceResponseDocument",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1186,9 +995,7 @@
     "CaseFieldID": "respondent2SpecDefenceResponseDocument",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1198,9 +1005,7 @@
     "CaseFieldID": "specClaimResponseTimelineList",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1210,9 +1015,7 @@
     "CaseFieldID": "specClaimResponseTimelineList2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1222,9 +1025,7 @@
     "CaseFieldID": "respondent1DQHearingSmallClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1234,9 +1035,7 @@
     "CaseFieldID": "respondent1DQRemoteHearingLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1246,9 +1045,7 @@
     "CaseFieldID": "respondent2DQRemoteHearingLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1258,9 +1055,7 @@
     "CaseFieldID": "respondent2DQHearingSmallClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1270,9 +1065,7 @@
     "CaseFieldID": "respondent1DQHearingFastClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1282,9 +1075,7 @@
     "CaseFieldID": "respondent2DQHearingFastClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1294,9 +1085,7 @@
     "CaseFieldID": "specRespondent1DQDisclosureOfNonElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1306,9 +1095,7 @@
     "CaseFieldID": "specRespondent2DQDisclosureOfNonElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1318,9 +1105,7 @@
     "CaseFieldID": "applicant1DQRemoteHearingLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1330,9 +1115,7 @@
     "CaseFieldID": "specRespondent1DQDisclosureOfElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1342,9 +1125,7 @@
     "CaseFieldID": "specRespondent2DQDisclosureOfElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1354,9 +1135,7 @@
     "CaseFieldID": "respondent1DQFutureApplications",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1366,9 +1145,7 @@
     "CaseFieldID": "respondent2DQFutureApplications",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1378,9 +1155,7 @@
     "CaseFieldID": "additionalInformationForJudge",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1390,9 +1165,7 @@
     "CaseFieldID": "additionalInformationForJudge2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1402,9 +1175,7 @@
     "CaseFieldID": "respondToClaimAdmitPartEmploymentTypeLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1414,9 +1185,7 @@
     "CaseFieldID": "respondent1BankAccountList",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1426,9 +1195,7 @@
     "CaseFieldID": "specDefendant1Debts",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1438,9 +1205,7 @@
     "CaseFieldID": "respondent1LoanCreditOption",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1450,9 +1215,7 @@
     "CaseFieldID": "respondent1LoanCreditDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1462,9 +1225,7 @@
     "CaseFieldID": "respondent1CourtOrderPayment",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1474,9 +1235,7 @@
     "CaseFieldID": "respondent1CourtOrderPaymentOption",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1486,9 +1245,7 @@
     "CaseFieldID": "respondent1CourtOrderDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1498,9 +1255,7 @@
     "CaseFieldID": "respondent2CourtOrderPaymentOption",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1510,9 +1265,7 @@
     "CaseFieldID": "respondent2CourtOrderDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1522,9 +1275,7 @@
     "CaseFieldID": "specDefendant1SelfEmploymentDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1534,9 +1285,7 @@
     "CaseFieldID": "respondent1DQHomeDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1546,9 +1295,7 @@
     "CaseFieldID": "respondent2DQHomeDetails",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1558,9 +1305,7 @@
     "CaseFieldID": "respondent1DQCarerAllowanceCredit",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1570,9 +1315,7 @@
     "CaseFieldID": "respondent1DQCarerAllowanceCreditFullAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1582,9 +1325,7 @@
     "CaseFieldID": "respondent1DQRecurringIncome",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1594,9 +1335,7 @@
     "CaseFieldID": "respondent1DQRecurringIncomeFA",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1606,9 +1345,7 @@
     "CaseFieldID": "respondent1DQRecurringExpenses",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1618,9 +1355,7 @@
     "CaseFieldID": "respondent1DQRecurringExpensesFA",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1630,9 +1365,7 @@
     "CaseFieldID": "respondent1RepaymentPlan",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1642,9 +1375,7 @@
     "CaseFieldID": "respondent2RepaymentPlan",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1654,15 +1385,11 @@
     "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1672,9 +1399,7 @@
     "CaseFieldID": "applicant1DQFutureApplications",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1684,9 +1409,7 @@
     "CaseFieldID": "applicant1AdditionalInformationForJudge",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1696,9 +1419,7 @@
     "CaseFieldID": "defendantSingleResponseToBothClaimants",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1708,9 +1429,7 @@
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1720,9 +1439,7 @@
     "CaseFieldID": "specFullAdmissionOrPartAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1732,9 +1449,7 @@
     "CaseFieldID": "sameSolicitorSameResponse",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1744,9 +1459,7 @@
     "CaseFieldID": "specPaidLessAmountOrDisputesOrPartAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1756,9 +1469,7 @@
     "CaseFieldID": "specFullDefenceOrPartAdmission1V1",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1768,9 +1479,7 @@
     "CaseFieldID": "specFullDefenceOrPartAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1780,9 +1489,7 @@
     "CaseFieldID": "respondentClaimResponseTypeForSpecGeneric",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1792,9 +1499,7 @@
     "CaseFieldID": "specDisputesOrPartAdmission",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1804,9 +1509,7 @@
     "CaseFieldID": "applicant1DQHearingLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1816,9 +1519,7 @@
     "CaseFieldID": "applicant1DQSmallClaimHearing",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1828,15 +1529,11 @@
     "CaseFieldID": "applicant1DefenceResponseDocumentSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1846,9 +1543,7 @@
     "CaseFieldID": "applicant1ProceedWithClaimSpec2v1",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -1858,9 +1553,7 @@
     "CaseFieldID": "respondent1PartnerAndDependent",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1870,9 +1563,7 @@
     "CaseFieldID": "respondent2PartnerAndDependent",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1900,9 +1591,7 @@
     "CaseFieldID": "liftBreathing",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
@@ -1918,9 +1607,7 @@
     "CaseFieldID": "disabilityPremiumPayments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1930,9 +1617,7 @@
     "CaseFieldID": "severeDisabilityPremiumPayments",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1942,9 +1627,7 @@
     "CaseFieldID": "disabilityPremiumPaymentsRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1954,9 +1637,7 @@
     "CaseFieldID": "severeDisabilityPremiumPaymentsRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1966,9 +1647,7 @@
     "CaseFieldID": "specPartAdmitPaid",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1978,9 +1657,7 @@
     "CaseFieldID": "specFullAdmitPaid",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -1990,9 +1667,7 @@
     "CaseFieldID": "minusBeforeOverdrawnAmount",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2002,9 +1677,7 @@
     "CaseFieldID": "minusBeforeOverdrawnAmount2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2014,9 +1687,7 @@
     "CaseFieldID": "minusBeforeOverdrawnAmountRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2026,9 +1697,7 @@
     "CaseFieldID": "minusBeforeOverdrawnAmount2Respondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2038,9 +1707,7 @@
     "CaseFieldID": "homeOptionsTitleLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2050,9 +1717,7 @@
     "CaseFieldID": "homeOptionsTitleLRspecRespondent2",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2062,9 +1727,7 @@
     "CaseFieldID": "respondent1DQWitnessesRequiredSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2074,9 +1737,7 @@
     "CaseFieldID": "respondent1DQWitnessesDetailsSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2086,9 +1747,7 @@
     "CaseFieldID": "showConditionFlags",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -2098,9 +1757,7 @@
     "CaseFieldID": "respondent1ClaimResponseTestForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -2110,9 +1767,7 @@
     "CaseFieldID": "respondent2ClaimResponseTestForSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRUD"
       }
     ]
@@ -2122,9 +1777,7 @@
     "CaseFieldID": "respondent1PinToPostLRspec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2134,9 +1787,7 @@
     "CaseFieldID": "respondent1DQLanguage",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2146,9 +1797,7 @@
     "CaseFieldID": "respondent2DQLanguage",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2158,9 +1807,7 @@
     "CaseFieldID": "applicant1DQLanguage",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2170,9 +1817,7 @@
     "CaseFieldID": "paymentTypePBASpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2182,9 +1827,7 @@
     "CaseFieldID": "respondentPayImmediatelyTextBeforeDate",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2194,9 +1837,7 @@
     "CaseFieldID": "respondentPayImmediatelyTextAfterDate",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2206,9 +1847,7 @@
     "CaseFieldID": "showResponseOneVOneFlag",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2218,9 +1857,7 @@
     "CaseFieldID": "respondent1DocumentURL",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2230,9 +1867,7 @@
     "CaseFieldID": "respondent2DocumentURL",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2242,9 +1877,7 @@
     "CaseFieldID": "respondent2DocumentGeneration",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2254,9 +1887,7 @@
     "CaseFieldID": "applicant1DQWitnessesSmallClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2266,9 +1897,7 @@
     "CaseFieldID": "specAoSCompanyOrganisationRespondentInformation",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2278,9 +1907,7 @@
     "CaseFieldID": "specAoSCompanyOrganisationRespondent2Information",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2290,9 +1917,7 @@
     "CaseFieldID": "respondent2DQWitnessesSmallClaim",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2302,9 +1927,7 @@
     "CaseFieldID": "bulkCustomerId",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2314,9 +1937,7 @@
     "CaseFieldID": "sdtRequestId",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2326,9 +1947,7 @@
     "CaseFieldID": "sdtRequestIdFromSdt",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2338,9 +1957,7 @@
     "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2350,9 +1967,7 @@
     "CaseFieldID": "respondent1ClaimResponseDocumentSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2362,9 +1977,7 @@
     "CaseFieldID": "respondent1PaymentDateToStringSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2374,9 +1987,7 @@
     "CaseFieldID": "applicant1AcceptAdmitAmountPaidSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2386,9 +1997,7 @@
     "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2398,15 +2007,11 @@
     "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2416,15 +2021,11 @@
     "CaseFieldID": "applicant1RequestedPaymentDateForDefendantSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2434,15 +2035,11 @@
     "CaseFieldID": "applicant1SuggestInstalmentsForDefendantSpecHeader",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2452,15 +2049,11 @@
     "CaseFieldID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2470,15 +2063,11 @@
     "CaseFieldID": "applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2488,15 +2077,11 @@
     "CaseFieldID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2506,9 +2091,7 @@
     "CaseFieldID": "currentDateboxDefendantSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2518,15 +2101,11 @@
     "CaseFieldID": "ccjPaymentPaidSomeOption",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       },
       {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2536,9 +2115,7 @@
     "CaseFieldID": "ccjPaymentPaidSomeAmount",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2548,9 +2125,7 @@
     "CaseFieldID": "applicant1PartAdmitConfirmAmountPaidSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2560,9 +2135,7 @@
     "CaseFieldID": "applicant1PartAdmitIntentionToSettleClaimSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2572,9 +2145,7 @@
     "CaseFieldID": "applicant1PartAdmitRejectReasonSpec",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2584,9 +2155,7 @@
     "CaseFieldID": "partAdmitPaidValuePounds",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2596,9 +2165,7 @@
     "CaseFieldID": "ccjJudgmentSummarySubtotalAmount",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2608,9 +2175,7 @@
     "CaseFieldID": "ccjJudgmentAmountSummaryResponse",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2620,9 +2185,7 @@
     "CaseFieldID": "ccjJudgmentAmountClaimAmount",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2632,9 +2195,7 @@
     "CaseFieldID": "ccjJudgmentAmountInterestToDate",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2644,9 +2205,7 @@
     "CaseFieldID": "ccjJudgmentAmountClaimFee",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2656,9 +2215,7 @@
     "CaseFieldID": "ccjJudgmentAmountSubtotal",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2668,9 +2225,7 @@
     "CaseFieldID": "ccjPaymentPaidSomeAmountInPounds",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2680,9 +2235,7 @@
     "CaseFieldID": "ccjJudgmentTotalStillOwed",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2692,9 +2245,7 @@
     "CaseFieldID": "ccjJudgmentStatement",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2704,9 +2255,7 @@
     "CaseFieldID": "applicantDefenceResponseDocumentAndDQFlag",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2716,9 +2265,7 @@
     "CaseFieldID": "mediationSettlementAgreedAt",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2728,9 +2275,7 @@
     "CaseFieldID": "mediationAgreement",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2740,9 +2285,7 @@
     "CaseFieldID": "unsuccessfulMediationReason",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "R"
       }
     ]
@@ -2752,9 +2295,7 @@
     "CaseFieldID": "ccjJudgmentFixedCostOption",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2764,9 +2305,7 @@
     "CaseFieldID": "ccjJudgmentFixedCostAmount",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
@@ -2776,9 +2315,7 @@
     "CaseFieldID": "ccjJudgmentLipInterest",
     "AccessControl": [
       {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
+        "UserRoles": ["CITIZEN-CLAIMANT-PROFILE"],
         "CRUD": "CRU"
       }
     ]
