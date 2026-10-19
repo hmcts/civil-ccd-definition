@@ -265,7 +265,7 @@
     "playwright-core": "1.64.1",
     "prettier": "^3.3.3",
     "proper-lockfile": "^4.1.2",
-    "totp-generator": "^1.0.0",
+    "totp-generator": "^2.0.0",
     "ts-node": "^10.9.2",
     "typescript": "5.9.3",
     "typescript-eslint": "8.71.2",
