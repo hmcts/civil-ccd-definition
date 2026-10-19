@@ -75,6 +75,18 @@
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "ShowSummary": "N",
     "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "RECORD_NOTIFICATIONS",
+    "Name": "Record notification details",
+    "Description": "Details of email notifications sent",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
   }
 ]
