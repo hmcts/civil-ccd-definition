@@ -135,6 +135,18 @@ const scenarios: Scenario[] = [
       DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS: 'Both',
     },
   },
+  // Each defendant's solicitor informs the court of an agreed 28 day extension before responding
+  {
+    name: 'UNSPEC_1v2DS_FAST_EXTENSION',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v2DS',
+      CLAIMANT_TYPE: 'SOLE_TRADER',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...nihlFast,
+      INFORM_AGREED_EXTENSION: 'Yes',
+    },
+  },
   // The case is stayed after the claimant's response, the parties are asked for an update and the stay is lifted, then
   // the journey carries on to the final order. It is a road accident claim rather than noise induced hearing loss: the
   // WA initiation DMN only raises a directions task when a stay is lifted for a standard claim, so the judge would have

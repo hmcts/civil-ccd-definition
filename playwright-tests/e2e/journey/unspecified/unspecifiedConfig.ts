@@ -191,6 +191,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whether the hearing centre admin stays the case after the claimant's response, asks for an update and lifts the
     // stay (STAY_CASE=Yes, default No)
     stayCase: yes(scenarioEnv.STAY_CASE),
+    // Whether each defendant's solicitor informs the court of an agreed 28 day extension to respond, after
+    // acknowledging the claim (INFORM_AGREED_EXTENSION=Yes, default No)
+    informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
     claimOfflineAfterNotifyClaim,

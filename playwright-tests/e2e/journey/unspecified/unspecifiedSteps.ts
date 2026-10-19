@@ -21,9 +21,11 @@ import { ConfirmOrderReview } from '../../flows/events/ConfirmOrderReview.ts';
 import { AddCaseNote } from '../../flows/events/AddCaseNote.ts';
 import { StayCase } from '../../flows/events/StayCase.ts';
 import { ManageStay } from '../../flows/events/ManageStay.ts';
+import { InformAgreedExtensionDate } from '../../flows/events/InformAgreedExtensionDate.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
 import { JourneyContext, JourneyStep } from '../journeyRunner.ts';
+import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { UnspecifiedConfig } from './unspecifiedConfig.ts';
 
 // The steps of the unspecified journey, from creating the claim to the final order, in the order they run. Each step
@@ -295,6 +297,10 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       },
     },
 
+    // Each defendant's solicitor informs the court of an agreed 28 day extension to respond, which moves their response
+    // deadline back. Only run with INFORM_AGREED_EXTENSION=Yes.
+    ...informAgreedExtensionSteps(),
+
     {
       name: 'RESPOND_TO_CLAIM_DEFENDANT1',
       title: 'Defendant 1 Solicitor responds to claim.',
@@ -545,6 +551,45 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       },
     },
   ];
+
+  function informAgreedExtensionSteps(): JourneyStep[] {
+    const solicitors: Array<{ defendantNumber: number; user: SessionUserKey; noSolicitor: [boolean, string] }> = [
+      {
+        defendantNumber: 1,
+        user: 'respondent1Solicitor',
+        noSolicitor: [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP'],
+      },
+      {
+        defendantNumber: 2,
+        user: 'respondent2Solicitor',
+        noSolicitor: [c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
+      },
+    ];
+    return solicitors.map((solicitor) => ({
+      name: `INFORM_AGREED_EXTENSION_DEFENDANT${solicitor.defendantNumber}`,
+      title: `Defendant ${solicitor.defendantNumber} Solicitor informs the court of an agreed extension.`,
+      user: solicitor.user,
+      skipIf: [
+        offlineAtNotify,
+        solicitor.noSolicitor,
+        [c.informAgreedExtension !== yesNo.YES, 'Informing of an agreed extension is switched off (set INFORM_AGREED_EXTENSION=Yes to run it)'],
+      ],
+      run: async ({ page, storageState }) => {
+        const deadlineBefore = await ctx.testingEndpointHelper.getResponseDeadline(ctx.caseId, solicitor.defendantNumber);
+        await ctx.runEvent(page, storageState, async () => {
+          await new InformAgreedExtensionDate(page).submit();
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'INFORM_AGREED_EXTENSION_DATE');
+        const deadlineAfter = await ctx.testingEndpointHelper.getResponseDeadline(ctx.caseId, solicitor.defendantNumber);
+        console.log(`Defendant ${solicitor.defendantNumber} response deadline moved from ${deadlineBefore} to ${deadlineAfter}`);
+        expect(
+          new Date(deadlineAfter).getTime(),
+          `Defendant ${solicitor.defendantNumber}'s response deadline was not extended (before ${deadlineBefore}, after ${deadlineAfter})`,
+        ).toBeGreaterThan(new Date(deadlineBefore).getTime());
+        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    }));
+  }
 
   function uploadEvidenceSteps(): JourneyStep[] {
     const solicitors = [

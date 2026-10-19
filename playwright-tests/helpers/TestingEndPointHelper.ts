@@ -41,7 +41,19 @@ export class TestingEndPointHelper {
       const response = await apiRequestContext.get(businessProcessUrl, {
         headers: this.getHeaders()
       });
-      const data = await response.json();
+      // A gateway can answer with an error page now and then; that is treated as not finished yet and asked again
+      const body = await response.text();
+      let data;
+      try {
+        data = JSON.parse(body);
+      } catch {
+        console.log(`Business process for case ${caseId} not readable (status ${response.status()}), asking again: ${body.slice(0, 80).replace(/\s+/g, ' ')}`);
+        return 'UNAVAILABLE';
+      }
+      if (!response.ok() || !data?.businessProcess) {
+        console.log(`Business process for case ${caseId} not available (status ${response.status()}), asking again`);
+        return 'UNAVAILABLE';
+      }
       let status = await data.businessProcess.status;
       const camundaEvent = await data.businessProcess.camundaEvent;
       const processInstanceId = await data.businessProcess.processInstanceId;
@@ -247,6 +259,21 @@ export class TestingEndPointHelper {
   }
 
   // How many final orders the judge has issued on the case (finalOrderDocumentCollection)
+  // The date and time by which the defendant (1 or 2) must respond to the claim (respondent1ResponseDeadline or
+  // respondent2ResponseDeadline), as civil-service holds it
+  async getResponseDeadline(caseId: string, defendantNumber: number): Promise<string | undefined> {
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/case/${caseId}`, { headers: this.getHeaders() });
+      expect(response.ok(), `Reading case ${caseId} returned ${response.status()}`).toBeTruthy();
+      const caseData = await response.json();
+      return caseData[`respondent${defendantNumber}ResponseDeadline`];
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   async countFinalOrders(caseId: string): Promise<number> {
     await this.getTokens(systemupdate);
     const apiRequestContext: APIRequestContext = await request.newContext();
