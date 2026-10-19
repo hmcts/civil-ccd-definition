@@ -10,8 +10,8 @@ export default class intermediateTrackComplexityBandPage extends ExuiPage(BasePa
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id!), { exact: false }),
-      super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData.id!)),
+      super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       super.expectSubheading(subheading, { headingLevel: 3 }),
       super.expectLegend(radioButtons.assignComplexityBand.label),
       super.expectLabel(radioButtons.assignComplexityBand.yes.label),

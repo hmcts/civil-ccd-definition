@@ -27,8 +27,8 @@ export default class QueryDetailsNewPage extends ExuiQmPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(headings.enterQueryDetails),
-      super.expectHeading(getFormattedCaseId(ccdCaseData?.id!), { exact: false }),
-      super.expectHeading(ccdCaseData?.caseNamePublic!, { exact: false }),
+      super.expectCaseHeading(getFormattedCaseId(ccdCaseData?.id!)),
+      super.expectCaseHeading(ccdCaseData?.caseNamePublic!),
       super.expectSelector(inputs.querySubject.selector),
       super.expectSelector(inputs.queryDetail.selector),
       super.expectSelector(radioButtons.isQueryHearingRelated.yes.selector),
