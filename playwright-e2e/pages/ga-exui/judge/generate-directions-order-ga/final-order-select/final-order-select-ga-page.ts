@@ -11,11 +11,16 @@ export default class FinalOrderSelectGaPage extends GaExuiPage(BasePage) {
       super.verifyHeadings(gaCaseData),
       super.expectSubheading(radioButtons.orderType.label, { headingLevel: 3 }),
       super.expectLabel(radioButtons.orderType.assistedOrder.label),
+      super.expectLabel(radioButtons.orderType.freeFormOrder.label),
     ]);
   }
 
   async selectAssistedOrder() {
     await super.clickBySelector(radioButtons.orderType.assistedOrder.selector);
+  }
+
+  async selectFreeFormOrder() {
+    await super.clickBySelector(radioButtons.orderType.freeFormOrder.selector);
   }
 
   async submit() {
