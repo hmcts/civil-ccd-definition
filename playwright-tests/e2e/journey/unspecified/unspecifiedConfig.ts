@@ -13,6 +13,7 @@ import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
 import fixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
 import caseStates from '../../../enums/caseStates.ts';
+import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
 
@@ -157,7 +158,7 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
   const noOfExperts: string = scenarioEnv.EXPERTS ?? '0';
   const noOfWitnesses: string = scenarioEnv.WITNESSES ?? '0';
 
-  return {
+  const config = {
     claimType,
     caseType: 'UNSPECIFIED',
     claimantType: partyType(scenarioEnv.CLAIMANT_TYPE),
@@ -194,6 +195,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whether each defendant's solicitor informs the court of an agreed 28 day extension to respond, after
     // acknowledging the claim (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
+    // The case flags the hearing centre admin adds after the claimant's response, and then makes the first one inactive
+    // (CASE_FLAGS: "representative", or a list such as CASE:CF0002,DEFENDANT_1:RA0012; see caseFlagSpecs.ts)
+    caseFlagsSetting: scenarioEnv.CASE_FLAGS,
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
     claimOfflineAfterNotifyClaim,
@@ -242,6 +246,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
         finalOrdersForTrack[track],
         `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`,
       ).toContain(finalOrder);
+
+      const caseFlagsError = caseFlagsProblem(config);
+      expect(caseFlagsError, caseFlagsError).toBeUndefined();
     },
   };
+  return config;
 }

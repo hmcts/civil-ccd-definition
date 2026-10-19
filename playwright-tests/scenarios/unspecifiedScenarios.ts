@@ -135,6 +135,20 @@ const scenarios: Scenario[] = [
       DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS: 'Both',
     },
   },
+  // After the claimant's response the hearing centre admin adds case flags to each party, then makes the first inactive:
+  // a sign language interpreter (BSL) for Claimant 1, Detained individual for Defendant 1 and a Spanish interpreter for
+  // Defendant 2
+  {
+    name: 'UNSPEC_1v2SS_FAST_CASE_FLAGS',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v2SS',
+      CLAIMANT_TYPE: 'SOLE_TRADER',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...nihlFast,
+      CASE_FLAGS: 'CLAIMANT_1:RA0042:British Sign Language (BSL),DEFENDANT_1:PF0019,DEFENDANT_2:PF0015:Spanish',
+    },
+  },
   // Each defendant's solicitor informs the court of an agreed 28 day extension before responding
   {
     name: 'UNSPEC_1v2DS_FAST_EXTENSION',

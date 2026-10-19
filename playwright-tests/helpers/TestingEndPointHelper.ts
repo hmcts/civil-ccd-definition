@@ -274,6 +274,23 @@ export class TestingEndPointHelper {
     }
   }
 
+  // The flags held in a case data field: caseFlags or a party's own flags, or for a list of experts or witnesses the
+  // flags of the entry at index
+  async getCaseFlagDetails(caseId: string, field: string, index?: number): Promise<Array<Record<string, string>>> {
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/case/${caseId}`, { headers: this.getHeaders() });
+      expect(response.ok(), `Reading case ${caseId} returned ${response.status()}`).toBeTruthy();
+      const caseData = await response.json();
+      const holder = index === undefined ? caseData[field] : caseData[field]?.[index]?.value;
+      const flags = field === 'caseFlags' ? holder : holder?.flags;
+      return (flags?.details ?? []).map((detail) => detail.value);
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   async countFinalOrders(caseId: string): Promise<number> {
     await this.getTokens(systemupdate);
     const apiRequestContext: APIRequestContext = await request.newContext();
