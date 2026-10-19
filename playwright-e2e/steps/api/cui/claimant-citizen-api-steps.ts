@@ -390,6 +390,11 @@ export default class ClaimantCitizenApiSteps extends BaseApi {
     );
     // submitCuiEvent waits on the parent case only, so wait for the GA creation process too
     await this.waitForGAFinishedBusinessProcess();
+    // and then re-read the parent case. submitCuiEvent cached it as it was at submission, before
+    // the GA creation process had added anything to generalApplications, and the GA case id is
+    // read from that collection. Without this the id resolves to NaN and the fetch below asks CCD
+    // for /cases/NaN.
+    await this.fetchAndSetCCDCaseData();
     // the GA case id comes off generalApplications on the parent case, so no argument is needed
     await this.fetchAndSetGaCCDCaseData();
     await this.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id);
