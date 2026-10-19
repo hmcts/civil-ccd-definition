@@ -308,7 +308,32 @@ export class TestingEndPointHelper {
   // scheduler does once a case's hearing date has passed. It moves the case from PREPARE_FOR_HEARING_CONDUCT_HEARING
   // to DECISION_OUTCOME, ready for the judge's final order.
   async moveToDecisionOutcome(caseId: string) {
-    const eventId = 'MOVE_TO_DECISION_OUTCOME';
+    await this.runSystemEvent(caseId, 'MOVE_TO_DECISION_OUTCOME', 'Hearing date has passed');
+  }
+
+  // Runs TRIAL_READY_CHECK as the civil system update user, which is what civil-service's trial ready check scheduler
+  // does each night for fast track cases whose hearing is coming up. It records that the parties have been asked to
+  // confirm they are ready for trial (trialReadyChecked) and starts the TRIAL_READY_CHECK business process, which
+  // creates the dashboard notifications for parties without a solicitor. The case's state does not change.
+  async triggerTrialReadyCheck(caseId: string) {
+    await this.runSystemEvent(caseId, 'TRIAL_READY_CHECK', 'Trial ready check');
+  }
+
+  // The case's data as civil-service holds it
+  async getCaseData(caseId: string): Promise<Record<string, any>> {
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/case/${caseId}`, { headers: this.getHeaders() });
+      expect(response.ok(), `Reading case ${caseId} returned ${response.status()}`).toBeTruthy();
+      return await response.json();
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Runs a CCD event on the case as the civil system update user, as civil-service's schedulers do
+  private async runSystemEvent(caseId: string, eventId: string, summary: string) {
     const systemUser = { username: civilSystemUpdate.email, password: civilSystemUpdate.password };
     const { accessToken, s2sToken, uid } = await this.tokensHelper.getNonEventTokens(systemUser);
     const eventToken = await this.tokensHelper.getEventToken(eventId, caseId, uid, accessToken, s2sToken);
@@ -323,7 +348,7 @@ export class TestingEndPointHelper {
           ServiceAuthorization: s2sToken,
         },
         data: {
-          event: { id: eventId, summary: 'Hearing date has passed', description: 'Run by playwright-tests' },
+          event: { id: eventId, summary, description: 'Run by playwright-tests' },
           event_token: eventToken,
           ignore_warning: false,
           data: {},
