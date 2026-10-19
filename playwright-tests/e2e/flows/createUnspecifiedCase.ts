@@ -243,13 +243,35 @@ export class CreateUnspecifiedCase {
     await this.pageHelper.continueToNextPage();
   }
 
+  // The defendant's details for their party type. Unlike a claimant, a defendant is not asked for a date of birth, and
+  // only an individual or a sole trader is asked for a phone number.
   async setDefendantType(defendantType: string = claimantDefendantTypes.INDIVIDUAL, defendantNumber: number = 1) {
-    await this.page.locator(`#respondent${defendantNumber}_type-${defendantType}`).click();
-    await this.page.locator(`#respondent${defendantNumber}_individualTitle`).fill(defendantNumber === 1 ? partyDetails.defendant1.title : partyDetails.defendant2.title);
-    await this.page.locator(`#respondent${defendantNumber}_individualFirstName`).fill(defendantNumber === 1 ? partyDetails.defendant1.firstName : partyDetails.defendant2.firstName);
-    await this.page.locator(`#respondent${defendantNumber}_individualLastName`).fill(defendantNumber === 1 ? partyDetails.defendant1.lastName: partyDetails.defendant2.lastName);
-    await this.page.locator(`#respondent${defendantNumber}_partyEmail`).fill(defendantNumber === 1 ? partyDetails.defendant1.email : partyDetails.defendant2.email);
-    await this.page.locator(`#respondent${defendantNumber}_partyPhone`).fill(defendantNumber === 1 ? partyDetails.defendant1.phone : partyDetails.defendant2.phone);
+    const defendant = defendantNumber === 1 ? partyDetails.defendant1 : partyDetails.defendant2;
+    const field = (name: string) => this.page.locator(`#respondent${defendantNumber}_${name}`);
+    await field(`type-${defendantType}`).click();
+
+    switch (defendantType) {
+      case claimantDefendantTypes.COMPANY:
+        await field('companyName').fill(defendant.companyName);
+        break;
+      case claimantDefendantTypes.ORGANISATION:
+        await field('organisationName').fill(defendant.organisationName);
+        break;
+      case claimantDefendantTypes.SOLETRADER:
+        await field('soleTraderTitle').fill(defendant.title);
+        await field('soleTraderFirstName').fill(defendant.firstName);
+        await field('soleTraderLastName').fill(defendant.lastName);
+        await field('soleTraderTradingAs').fill(defendant.soleTraderTradingAs);
+        await field('partyPhone').fill(defendant.phone);
+        break;
+      default:
+        await field('individualTitle').fill(defendant.title);
+        await field('individualFirstName').fill(defendant.firstName);
+        await field('individualLastName').fill(defendant.lastName);
+        await field('partyPhone').fill(defendant.phone);
+    }
+
+    await field('partyEmail').fill(defendant.email);
 
     if (defendantNumber === 1) {
       await new LinkHelper(this.page).manualAddressDefendant1.click();

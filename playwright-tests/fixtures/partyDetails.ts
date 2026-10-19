@@ -61,6 +61,7 @@ export const partyDetails = {
   defendant1: {
     companyName: 'Defendant 1 company name',
     organisationName: 'Defendant 1 organisation name',
+    soleTraderTradingAs: 'Defendant 1 Trader',
     title: personTitles.MRS,
     firstName: 'Defendant1_firstname',
     lastName: 'Defendant1_lastname',
@@ -82,6 +83,7 @@ export const partyDetails = {
   defendant2: {
     companyName: 'Defendant 2 company name',
     organisationName: 'Defendant 2 organisation name',
+    soleTraderTradingAs: 'Defendant 2 Trader',
     title: personTitles.DR,
     firstName: 'Defendant2_firstname',
     lastName: 'Defendant2_lastname',

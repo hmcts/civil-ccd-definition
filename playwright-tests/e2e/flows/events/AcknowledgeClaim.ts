@@ -17,17 +17,24 @@ export class AcknowledgeClaim {
     this.pageHelper = new PageHelper(this.page);
   }
 
-  async acknowledge(claimType: claimTypes, respondent1ResponseIntention: ResponseIntention = ResponseIntention.FULL_DEFENCE, respondent2ResponseIntention: ResponseIntention, defendantNumber: number = 1) {
+  async acknowledge(
+    claimType: claimTypes,
+    respondent1ResponseIntention: ResponseIntention = ResponseIntention.FULL_DEFENCE,
+    respondent2ResponseIntention: ResponseIntention,
+    defendantNumber: number = 1,
+    defendantType: string = 'INDIVIDUAL',
+  ) {
     let legalRepresentativeReference: string;
     await this.pageHelper.selectNextStep('Acknowledge claim');
 
-    if (claimType !== claimTypes.ONE_VS_TWO_LIP_LR) {
-      // remove if statement when DTSCCI-672 is merged
-      await this.page.locator('#individualDateOfBirth-day').fill(partyDetails.defendant1.DOB_day);
-      await this.page
-        .locator('#individualDateOfBirth-month')
-        .fill(partyDetails.defendant1.DOB_month);
-      await this.page.locator('#individualDateOfBirth-year').fill(partyDetails.defendant1.DOB_year);
+    // The defendant confirms their details. A date of birth is asked for an individual or a sole trader (their own
+    // field each), and not for a company or an organisation.
+    const dateOfBirthField = { INDIVIDUAL: 'individualDateOfBirth', SOLE_TRADER: 'soleTraderDateOfBirth' }[defendantType];
+    if (claimType !== claimTypes.ONE_VS_TWO_LIP_LR && dateOfBirthField) {
+      // remove the claim type check when DTSCCI-672 is merged
+      await this.page.locator(`#${dateOfBirthField}-day`).fill(partyDetails.defendant1.DOB_day);
+      await this.page.locator(`#${dateOfBirthField}-month`).fill(partyDetails.defendant1.DOB_month);
+      await this.page.locator(`#${dateOfBirthField}-year`).fill(partyDetails.defendant1.DOB_year);
     }
     await this.pageHelper.continueToNextPage();
 

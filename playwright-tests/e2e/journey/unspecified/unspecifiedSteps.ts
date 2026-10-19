@@ -276,7 +276,7 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
         // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
         await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
         await ctx.runEvent(page, storageState, async () => {
-          await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 1);
+          await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 1, c.defendantType);
         });
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       },
@@ -296,7 +296,7 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
           await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
         }
         await ctx.runEvent(page, storageState, async () => {
-          await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 2);
+          await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 2, c.defendantType);
         });
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       },
