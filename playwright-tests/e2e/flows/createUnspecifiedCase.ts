@@ -2,7 +2,6 @@ import { expect, Page } from '@playwright/test';
 import { courts } from '../../fixtures/courts.ts';
 import { ButtonHelper } from '../../helpers/ButtonHelper';
 import { PageHelper } from '../../helpers/PageHelper.ts';
-import ClaimTypes from '../../enums/claim-types.ts';
 import { partyDetails } from '../../fixtures/partyDetails.ts';
 import { LinkHelper } from '../../helpers/LinkHelper.ts';
 import YesNo from '../../enums/yesNo.ts';
@@ -58,20 +57,14 @@ export class CreateUnspecifiedCase {
     this.pageHelper = new PageHelper(this.page);
   }
 
-  async setReferences(claimType: ClaimTypes = ClaimTypes.ONE_VS_ONE) {
+  async setReferences(defendant1HasSolicitor: boolean = true) {
     await this.page
       .locator('#solicitorReferences_applicantSolicitor1Reference')
       .fill('ApplicantSolicitorReference');
 
     // Defendant 1's solicitor reference is only entered when Defendant 1 has a solicitor.
     // Defendant 2's solicitor reference (1v2DS, 1v2LIPLR) is entered later on its own page.
-    const defendant1IsLitigantInPerson = [
-      ClaimTypes.ONE_VS_ONE_LIP,
-      ClaimTypes.TWO_VS_ONE_LIP,
-      ClaimTypes.ONE_VS_TWO_LIP_LR,
-      ClaimTypes.ONE_VS_TWO_LIPS,
-    ].includes(claimType);
-    if (!defendant1IsLitigantInPerson) {
+    if (defendant1HasSolicitor) {
       await this.page
         .locator('#solicitorReferences_respondentSolicitor1Reference')
         .fill('RespondentSolicitor1Reference');
@@ -274,7 +267,7 @@ export class CreateUnspecifiedCase {
     await this.pageHelper.continueToNextPage();
   }
 
-  async setAnotherClaimant(yesNo: YesNo = YesNo.NO, claimantType: string = 'INDIVIDUAL') {
+  async setAnotherClaimant(yesNo: YesNo = YesNo.NO) {
     await this.page.locator(`#addApplicant2_${yesNo}`).check();
     await this.pageHelper.continueToNextPage();
   }

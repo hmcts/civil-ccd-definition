@@ -14,6 +14,7 @@ import fixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
 import caseStates from '../../../enums/caseStates.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
+import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
 
@@ -158,11 +159,18 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
   const noOfExperts: string = scenarioEnv.EXPERTS ?? '0';
   const noOfWitnesses: string = scenarioEnv.WITNESSES ?? '0';
 
+  const claimantType = partyType(scenarioEnv.CLAIMANT_TYPE);
+  const defendantType = partyType(scenarioEnv.DEFENDANT_TYPE);
+  const claimant1LitigantFriend = yes(scenarioEnv.CLAIMANT1_LITIGANT_FRIEND);
+  const claimant2LitigantFriend = yes(scenarioEnv.CLAIMANT2_LITIGANT_FRIEND);
+
   const config = {
     claimType,
     caseType: 'UNSPECIFIED',
-    claimantType: partyType(scenarioEnv.CLAIMANT_TYPE),
-    defendantType: partyType(scenarioEnv.DEFENDANT_TYPE),
+    claimantType,
+    defendantType,
+    // The parties to the claim and who represents them, which creating the claim follows (through the UI or the API)
+    claimShape: createClaimShape(claimType, claimantType, defendantType, [claimant1LitigantFriend, claimant2LitigantFriend]),
     typeOfClaim,
     typeOfClaimSubType,
     track,
@@ -177,8 +185,8 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     claimantProceed2,
     fixedRecoverableCosts: yes(scenarioEnv.FIXED_RECOVERABLE_COSTS),
     fixedRecoveryCostsBand: env.FIXED_RECOVERY_COSTS_BAND as fixedRecoveryCostsBands,
-    claimant1LitigantFriend: yes(scenarioEnv.CLAIMANT1_LITIGANT_FRIEND),
-    claimant2LitigantFriend: yes(scenarioEnv.CLAIMANT2_LITIGANT_FRIEND),
+    claimant1LitigantFriend,
+    claimant2LitigantFriend,
     determinationWithoutHearing: yes(scenarioEnv.DETERMINATION_WITHOUT_HEARING),
     oneMonthStay: yes(scenarioEnv.ONE_MONTH_STAY),
     preActionProtocol: yes(scenarioEnv.ONE_MONTH_STAY),

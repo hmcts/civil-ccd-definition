@@ -1,33 +1,23 @@
 import { randomUUID } from 'node:crypto';
-import claimTypes from '../../../../../enums/claim-types.ts';
 import claimantDefendantTypes from '../../../../../enums/claimantDefendantTypes.ts';
 import unspecClaimTypes from '../../../../../enums/unspecClaimTypes.ts';
 import yesNo from '../../../../../enums/yesNo.ts';
 import { courts } from '../../../../../fixtures/courts.ts';
 import { partyDetails } from '../../../../../fixtures/partyDetails.ts';
 import { legalRepresentatives } from '../../../../../fixtures/legalRepresentatives.ts';
-import {
-  claimantSolicitorCredentials,
-  respondent1SolicitorCredentials,
-} from '../../../../../civilConfig.ts';
+import { claimantSolicitorCredentials } from '../../../../../civilConfig.ts';
 import { claimAmountInPounds } from '../../../createUnspecifiedCase.ts';
+import { ClaimShape, SolicitorOrganisation } from '../../../createClaimShape.ts';
 import { UnspecifiedConfig } from '../../../../journey/unspecified/unspecifiedConfig.ts';
 
 // The case data for CREATE_CLAIM, as XUI would submit it after every page of the event had been filled in the way
 // createUnspecifiedCase.ts fills them. startCaseData is the case data CCD returned when the event was started, which
 // holds what the event's about to start callback filled in (the organisation policies' roles).
 //
-// Only a 1v1 claim with both parties represented and individuals as the parties is coded so far.
+// The parties follow the claim's shape (createClaimShape.ts), as they do in the UI. Only one claimant and one
+// defendant with their own solicitor, both individuals and with no litigation friend, is coded so far.
 export function buildCreateClaimPayload(c: UnspecifiedConfig, startCaseData: Record<string, any>): Record<string, any> {
-  if (c.claimType !== claimTypes.ONE_VS_ONE) {
-    throw new Error(`Creating a ${c.claimType} claim through the API is not coded yet (only 1v1)`);
-  }
-  if (c.claimantType !== claimantDefendantTypes.INDIVIDUAL || c.defendantType !== claimantDefendantTypes.INDIVIDUAL) {
-    throw new Error('Creating a claim through the API is only coded for individuals as the claimant and defendant so far');
-  }
-  if (c.claimant1LitigantFriend === yesNo.YES) {
-    throw new Error('Creating a claim with a claimant litigation friend through the API is not coded yet');
-  }
+  const defendant1 = onlyCodedShape(c.claimType, c.claimShape);
 
   return {
     ...startCaseData,
@@ -36,11 +26,27 @@ export function buildCreateClaimPayload(c: UnspecifiedConfig, startCaseData: Rec
     ...claimant(),
     ...claimantSolicitor(),
     ...defendant(),
-    ...defendantSolicitor(),
+    ...defendantSolicitor(defendant1.organisation),
     ...claimDetails(c),
     ...claimValue(c),
     ...statementOfTruth(),
   };
+}
+
+// Checks the claim is one the API can create so far, and returns its defendant's solicitor
+function onlyCodedShape(claimType: string, shape: ClaimShape) {
+  const [claimant1] = shape.claimants;
+  const [defendant1] = shape.defendants;
+  if (shape.claimants.length !== 1 || shape.defendants.length !== 1 || defendant1.solicitor !== 'own') {
+    throw new Error(`Creating a ${claimType} claim through the API is not coded yet (only 1v1)`);
+  }
+  if (claimant1.type !== claimantDefendantTypes.INDIVIDUAL || defendant1.type !== claimantDefendantTypes.INDIVIDUAL) {
+    throw new Error('Creating a claim through the API is only coded for individuals as the claimant and defendant so far');
+  }
+  if (claimant1.litigationFriend === yesNo.YES) {
+    throw new Error('Creating a claim with a claimant litigation friend through the API is not coded yet');
+  }
+  return defendant1;
 }
 
 // References
@@ -130,13 +136,13 @@ function defendant() {
 }
 
 // Legal representation, Defendant solicitor organisation, service address and email
-function defendantSolicitor() {
+function defendantSolicitor(organisation: SolicitorOrganisation) {
   return {
     respondent1Represented: yesNo.YES,
     respondent1OrgRegistered: yesNo.YES,
     respondent1OrganisationPolicy: {
       OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
-      Organisation: { OrganisationID: respondent1SolicitorCredentials.orgId },
+      Organisation: { OrganisationID: organisation.orgId },
     },
     respondentSolicitor1ServiceAddressRequired: yesNo.NO,
     respondentSolicitor1EmailAddress: legalRepresentatives.legalRepresentative1.email,

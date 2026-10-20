@@ -103,79 +103,56 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
           const createCase: CreateUnspecifiedCase = new CreateUnspecifiedCase(page);
           await ctx.createCasePage.createCase(c.caseType);
           await pageHelper.continueToNextPage(); //Summary
-          await createCase.setReferences(c.claimType);
+          const { claimants, defendants } = c.claimShape;
+          await createCase.setReferences(defendants[0].solicitor !== 'none');
           await createCase.setCourt();
-          await createCase.setClaimantType(c.claimantType, 1);
-          await createCase.setClaimantLitigantFriend(c.claimant1LitigantFriend, 1);
+          await createCase.setClaimantType(claimants[0].type, 1);
+          await createCase.setClaimantLitigantFriend(claimants[0].litigationFriend, 1);
           await createCase.setClaimantNotifications();
           await pageHelper.continueToNextPage(); //ClaimantSolicitorOrganisation
           await createCase.setClaimantServiceAddress();
 
-          switch (c.claimType) {
-            case claimTypes.TWO_VS_ONE:
-            case claimTypes.TWO_VS_ONE_LIP:
-              await createCase.setAnotherClaimant(yesNo.YES, c.claimantType);
-              await createCase.setClaimantType(c.claimantType, 2);
-              await createCase.setClaimantLitigantFriend(c.claimant2LitigantFriend, 2);
-              break;
-            default:
-              await createCase.setAnotherClaimant(yesNo.NO, c.claimantType);
+          if (claimants.length === 2) {
+            await createCase.setAnotherClaimant(yesNo.YES);
+            await createCase.setClaimantType(claimants[1].type, 2);
+            await createCase.setClaimantLitigantFriend(claimants[1].litigationFriend, 2);
+          } else {
+            await createCase.setAnotherClaimant(yesNo.NO);
           }
 
-          await createCase.setDefendantType(c.defendantType, 1);
-
-          if (
-            c.claimType == claimTypes.ONE_VS_ONE_LIP ||
-            c.claimType == claimTypes.TWO_VS_ONE_LIP ||
-            c.claimType == claimTypes.ONE_VS_TWO_LIP_LR ||
-            c.claimType == claimTypes.ONE_VS_TWO_LIPS
-          ) {
-            console.log('Defendant 1: NOT represented');
-            await createCase.setDefendantLegallyRepresented(yesNo.NO, 1);
-          } else {
-            console.log('Defendant 1: REPRESENTED');
-            await createCase.setDefendantLegallyRepresented(yesNo.YES, 1);
-            await createCase.setSolicitorOrganisation('Civil - Organisation 2');
-            await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 1);
-            await createCase.setDefendantLegalRepresentativeEmail();
-          }
-
-          if (c.claimType == claimTypes.TWO_VS_ONE_LIP || c.claimType == claimTypes.TWO_VS_ONE) {
-            // ignore these claim types as they cannot have a second defendant
-          } else if (c.claimType == claimTypes.ONE_VS_ONE || c.claimType == claimTypes.ONE_VS_ONE_LIP) {
-            await createCase.setAnotherDefendant(yesNo.NO);
-          } else {
-            await createCase.setAnotherDefendant(yesNo.YES);
-            await createCase.setDefendantType(c.defendantType, 2);
-
-            switch (c.claimType) {
-              case claimTypes.ONE_VS_TWO_LIP_LR:
-                console.log('Defendant 2: REPRESENTED');
-                await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-                // Defendant 2's solicitor is the Respondent2 Solicitor user, who belongs to Organisation 3
-                await createCase.setSolicitorOrganisation('Civil - Organisation 3');
-                await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
-                await createCase.setDefendant2LegalRepresentativeReference();
-                await createCase.setDefendantLegalRepresentativeEmail(2);
-                break;
-              case claimTypes.ONE_VS_TWO_SAME_SOL:
-                console.log('Defendant 2: REPRESENTED - same sols');
-                await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-                await createCase.setSameLegalRepresentative(yesNo.YES);
-                break;
-              case claimTypes.ONE_VS_TWO_DIFF_SOL:
-                console.log('Defendant 2: REPRESENTED - diff sols');
-                await createCase.setDefendantLegallyRepresented(yesNo.YES, 2);
-                await createCase.setSameLegalRepresentative(yesNo.NO);
-                await createCase.setSolicitorOrganisation('Civil - Organisation 3');
-                await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, 2);
-                await createCase.setDefendant2LegalRepresentativeReference();
-                await createCase.setDefendantLegalRepresentativeEmail(2);
-                break;
-              default:
-                console.log('Defendant 2: NOT represented');
-                await createCase.setDefendantLegallyRepresented(yesNo.NO, 2);
+          for (const [index, defendant] of defendants.entries()) {
+            const defendantNumber = index + 1;
+            if (defendantNumber === 2) {
+              await createCase.setAnotherDefendant(yesNo.YES);
             }
+            await createCase.setDefendantType(defendant.type, defendantNumber);
+
+            if (defendant.solicitor === 'none') {
+              console.log(`Defendant ${defendantNumber}: NOT represented`);
+              await createCase.setDefendantLegallyRepresented(yesNo.NO, defendantNumber);
+            } else if (defendant.solicitor === 'sameAsDefendant1') {
+              console.log(`Defendant ${defendantNumber}: REPRESENTED - same sols`);
+              await createCase.setDefendantLegallyRepresented(yesNo.YES, defendantNumber);
+              await createCase.setSameLegalRepresentative(yesNo.YES);
+            } else {
+              console.log(`Defendant ${defendantNumber}: REPRESENTED`);
+              await createCase.setDefendantLegallyRepresented(yesNo.YES, defendantNumber);
+              // Defendant 2 is only asked whether they have the same solicitor when Defendant 1 has one
+              if (defendantNumber === 2 && defendants[0].solicitor !== 'none') {
+                await createCase.setSameLegalRepresentative(yesNo.NO);
+              }
+              await createCase.setSolicitorOrganisation(defendant.organisation.name);
+              await createCase.setDefendantLegalRepresentativeCorrespondenceAddress(yesNo.NO, defendantNumber);
+              if (defendantNumber === 2) {
+                await createCase.setDefendant2LegalRepresentativeReference();
+              }
+              await createCase.setDefendantLegalRepresentativeEmail(defendantNumber);
+            }
+          }
+
+          // A claim with two claimants cannot have a second defendant, so it is not asked for
+          if (claimants.length === 1 && defendants.length === 1) {
+            await createCase.setAnotherDefendant(yesNo.NO);
           }
 
           await createCase.setTypeOfClaim(c.typeOfClaim);
