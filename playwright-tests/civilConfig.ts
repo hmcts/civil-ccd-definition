@@ -65,11 +65,12 @@ export const respondent2SolicitorCredentials = {
 }
 
 // Region 1 (London) judge, which covers the Clerkenwell court the claims are issued at. Judges see cases through their
-// region's role assignment, so they are not assigned to the case.
+// region's role assignment, so they are not assigned to the case. An environment whose judges differ (such as demo) sets
+// JUDGE_USERNAME and JUDGE_PASSWORD.
 export const judgeCredentials = {
   name: 'Judge',
-  username: 'DJ.Amy.Powell@ejudiciary.net',
-  password: process.env.JUDGE_DEFAULT_PASSWORD,
+  username: process.env.JUDGE_USERNAME || 'DJ.Amy.Powell@ejudiciary.net',
+  password: process.env.JUDGE_PASSWORD || process.env.JUDGE_DEFAULT_PASSWORD,
 }
 
 // Region 1 (London) hearing centre admin, who lists hearings at the Clerkenwell court the claims are issued at. Like the
