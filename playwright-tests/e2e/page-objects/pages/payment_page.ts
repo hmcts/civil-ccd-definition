@@ -35,14 +35,19 @@ export class PaymentPage {
     this.buttonHelper = new ButtonHelper(this.page);
   }
 
-  async makePayment(paymentType: string = 'PBA'){
+  // Pays a fee from the Service Request tab. serviceRequestReference is the fee's service request (as the case keeps it
+  // in claimIssuedPBADetails or hearingFeePBADetails), so "Pay now" is clicked in that fee's row: a case can list more
+  // than one unpaid fee, for example a claim fee and a hearing fee. Without it the only "Pay now" link is clicked.
+  async makePayment(paymentType: string = 'PBA', serviceRequestReference?: string){
     const confirmPaymentButton = this.page.getByRole('button', { name: 'Confirm payment' });
 
     const maxRetries: number = 10;
     // The service request can take a while to reach the payment service, and the Service Request tab can show an
     // empty table or only fees already paid until it does. So wait for the "Pay now" link itself, reloading the
     // page between tries.
-    const payNow = this.page.getByText('Pay now');
+    const payNow = serviceRequestReference
+      ? this.page.locator('.ServiceRequest tr.govuk-table__row', { hasText: serviceRequestReference }).getByText('Pay now')
+      : this.page.getByText('Pay now');
     for (let retry = 1; retry <= maxRetries; retry++) {
       await new TabsHelper(this.page).selectTab('Service Request');
       await this.page.locator('.ServiceRequest').waitFor({state: 'visible'});
@@ -53,7 +58,7 @@ export class PaymentPage {
         payNowShown = false;
       }
       if (payNowShown) {
-        console.log('"Pay now" link is available. Continuing test....');
+        console.log(`"Pay now" link is available${serviceRequestReference ? ` for service request ${serviceRequestReference}` : ''}. Continuing test....`);
         break;
       }
       console.log('Refreshing webpage - waiting for "Pay now" link for Service request, try: ' + retry + ' of ' + maxRetries);

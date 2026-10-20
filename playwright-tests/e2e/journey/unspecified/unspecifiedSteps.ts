@@ -71,6 +71,21 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
     [c.track !== claimTrack.FAST, fastTrackReason],
   ];
 
+  // Once the claim fee has been paid (through the UI or the API), the payment service tells civil-service, which then
+  // issues the claim (CREATE_CLAIM_AFTER_PAYMENT). Where the payment service cannot reach civil-service the test tells
+  // it instead. Telling it both ways would make civil-service try to issue the claim twice, so the test only steps in
+  // if the payment service has not done it within a minute.
+  async function waitForClaimIssued() {
+    const recordedByPaymentService = await ctx.testingEndpointHelper.waitForFeePaid(ctx.caseId, 'claimIssuedPaymentDetails', 60);
+    if (recordedByPaymentService) {
+      await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
+    } else {
+      console.log('The payment service did not record the claim fee payment, so the test does');
+      await ctx.testingEndpointHelper.serviceRequestUpdateClaimIssued(ctx.caseId);
+    }
+    await ctx.assertCaseState(caseStates.CASE_ISSUED);
+  }
+
   // The directions questionnaire answers the responses share, through the UI or the API
   const dqAnswers: DirectionsQuestionnaireAnswers = {
     determinationWithoutHearing: c.determinationWithoutHearing,
@@ -105,14 +120,15 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       user: 'claimantSolicitor',
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          // One CCD API submit instead of the CREATE_CLAIM pages (API_UNTIL). There is no payment page after it, so the
-          // test tells civil-service the fee has been paid, which issues the claim (CREATE_CLAIM_AFTER_PAYMENT).
-          ctx.caseId = await new CreateClaim().create(c);
+          // One CCD API submit instead of the CREATE_CLAIM pages (API_UNTIL), then the claim fee is paid through the
+          // payment service, as the UI's "Pay now" does
+          const createClaim = new CreateClaim();
+          ctx.caseId = await createClaim.create(c);
           CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
           await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CREATE_SERVICE_REQUEST_CLAIM');
           await ctx.assertCaseState(caseStates.PENDING_CASE_ISSUED);
-          await ctx.testingEndpointHelper.serviceRequestUpdateClaimIssued(ctx.caseId);
-          await ctx.assertCaseState(caseStates.CASE_ISSUED);
+          await createClaim.payClaimFee(ctx.caseId);
+          await waitForClaimIssued();
           return;
         }
         const pageHelper = ctx.pageHelper;
@@ -199,20 +215,10 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
         ctx.caseId = await pageHelper.grabCaseNumber();
         console.log('caseId>>>>>>>>>>>>>>>' + ctx.caseId + '<<<<<<<<<<<<<<<<<<<');
         CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
-        // Pay the claim fee
-        await new PaymentPage(page).makePayment('PBA');
-        // The payment service tells civil-service about the payment, which then issues the claim
-        // (CREATE_CLAIM_AFTER_PAYMENT). Where the payment service cannot reach civil-service the test tells it instead.
-        // Telling it both ways would make civil-service try to issue the claim twice, so the test only steps in if the
-        // payment service has not done it within a minute.
-        const recordedByPaymentService = await ctx.testingEndpointHelper.waitForFeePaid(ctx.caseId, 'claimIssuedPaymentDetails', 60);
-        if (recordedByPaymentService) {
-          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
-        } else {
-          console.log('The payment service did not record the claim fee payment, so the test does');
-          await ctx.testingEndpointHelper.serviceRequestUpdateClaimIssued(ctx.caseId);
-        }
-        await ctx.assertCaseState(caseStates.CASE_ISSUED);
+        // Pay the claim fee, in its row of the Service Request tab
+        const serviceRequestReference = await ctx.testingEndpointHelper.waitForServiceRequestReference(ctx.caseId, 'claimIssuedPBADetails');
+        await new PaymentPage(page).makePayment('PBA', serviceRequestReference);
+        await waitForClaimIssued();
       },
     },
 
@@ -500,8 +506,10 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       user: 'claimantSolicitor',
       skipIf: noCaseProgression(),
       run: async ({ page, storageState }) => {
+        // Paid in the hearing fee's row of the Service Request tab, which can also list the claim fee
+        const serviceRequestReference = await ctx.testingEndpointHelper.waitForServiceRequestReference(ctx.caseId, 'hearingFeePBADetails');
         await ctx.runEvent(page, storageState, async () => {
-          await new PaymentPage(page).makePayment('PBA');
+          await new PaymentPage(page).makePayment('PBA', serviceRequestReference);
         });
         // The payment service tells civil-service about the payment, which can take a while. Where it cannot reach
         // civil-service the test tells it instead. Telling it both ways would update the case twice, and the late

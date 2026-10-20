@@ -2,6 +2,7 @@ import yesNo from '../../../../enums/yesNo.ts';
 import { claimantSolicitorCredentials } from '../../../../civilConfig.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 import { FeesHelper } from '../../../../helpers/FeesHelper.ts';
+import { PaymentHelper } from '../../../../helpers/PaymentHelper.ts';
 import { TestingEndPointHelper } from '../../../../helpers/TestingEndPointHelper.ts';
 import { claimAmountInPounds } from '../../createUnspecifiedCase.ts';
 import { UnspecifiedConfig } from '../../../journey/unspecified/unspecifiedConfig.ts';
@@ -9,7 +10,7 @@ import { buildCreateClaimPayload, CreateClaimLookups, hasOtherRemedy } from './p
 
 // Creates an unspecified claim as the claimant solicitor through the CCD API, with the whole of the claim's case data
 // in one submit, instead of going through the CREATE_CLAIM pages in XUI. The claim is left waiting for its fee to be
-// paid (PENDING_CASE_ISSUED), as it is after the UI's Submit.
+// paid (PENDING_CASE_ISSUED), as it is after the UI's Submit, and payClaimFee pays it.
 export class CreateClaim {
   private ccdApiHelper = new CcdApiHelper();
 
@@ -21,6 +22,17 @@ export class CreateClaim {
     const created = await this.ccdApiHelper.submitEvent(claimantSolicitorCredentials, 'CREATE_CLAIM', started.token, payload);
     console.log(`CREATE_CLAIM submitted through the API: case ${created.id} is in state ${created.state}`);
     return String(created.id);
+  }
+
+  // Pays the claim fee from the claimant solicitor's PBA account through the payment service, as the UI's "Pay now"
+  // does, once civil-service has made the fee's service request (CREATE_SERVICE_REQUEST_CLAIM). The payment service
+  // then tells civil-service, which issues the claim. Paying it, rather than only telling civil-service, leaves the
+  // Service Request tab showing the fee as paid, as it does for a claim created in the UI.
+  async payClaimFee(caseId: string) {
+    const testingEndPointHelper = new TestingEndPointHelper();
+    const serviceRequestReference = await testingEndPointHelper.waitForServiceRequestReference(caseId, 'claimIssuedPBADetails');
+    const { claimFee } = await testingEndPointHelper.getCaseData(caseId);
+    await new PaymentHelper().payServiceRequestByPba(claimantSolicitorCredentials, serviceRequestReference, claimFee.calculatedAmountInPence, 'ApplicantSolicitorReference');
   }
 
   // The fees for the claim's value (the same value the UI enters for its track), and the certificate of suitability

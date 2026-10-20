@@ -13,11 +13,14 @@ export const documentManagementStoreApiBaseUrl: string = process.env.DM_STORE_UR
 export const microService: string = 'civil_service';
 export const civilServiceUrl: string = process.env.CIVIL_SERVICE_URL;
 export const secret: string = process.env.S2S_SECRET;
-// The fees register civil-service looks fees up in. Each environment has its own, except a preview, which uses AAT's
-// (PREVIEW_FEES_API_URL in Jenkinsfile_CNP). Override with FEES_REGISTER_URL.
-const feesRegisterEnvironment = ['demo', 'ithc', 'perftest'].includes(process.env.ENVIRONMENT) ? process.env.ENVIRONMENT : 'aat';
+// The fees register civil-service looks fees up in, and the payment service fees are paid through. Each environment has
+// its own, except a preview, which uses AAT's (PREVIEW_FEES_API_URL in Jenkinsfile_CNP). Override with FEES_REGISTER_URL
+// and PAYMENT_API_URL.
+const feesEnvironment = ['demo', 'ithc', 'perftest'].includes(process.env.ENVIRONMENT) ? process.env.ENVIRONMENT : 'aat';
 export const feesRegisterApiBaseUrl: string = process.env.FEES_REGISTER_URL
-  ?? `http://fees-register-api-${feesRegisterEnvironment}.service.core-compute-${feesRegisterEnvironment}.internal`;
+  ?? `http://fees-register-api-${feesEnvironment}.service.core-compute-${feesEnvironment}.internal`;
+export const paymentApiBaseUrl: string = process.env.PAYMENT_API_URL
+  ?? `http://payment-api-${feesEnvironment}.service.core-compute-${feesEnvironment}.internal`;
 
 export const createCase = {
   jurisdictionCode: 'CIVIL',

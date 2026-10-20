@@ -147,6 +147,31 @@ export class TestingEndPointHelper {
   // Waits up to waitSeconds for civil-service to record a fee as paid, which it does when the payment service tells
   // it about the payment. paymentDetailsField is where the case keeps that fee's payment, claimIssuedPaymentDetails
   // for the claim fee or hearingFeePaymentDetails for the hearing fee. Returns whether it was recorded.
+  // Waits for civil-service to record the payment service's service request for a fee, and returns its reference.
+  // pbaDetailsField is where the case keeps it, claimIssuedPBADetails for the claim fee or hearingFeePBADetails for the
+  // hearing fee. The Service Request tab lists each service request by this reference.
+  async waitForServiceRequestReference(caseId: string, pbaDetailsField: string, waitSeconds = 120): Promise<string> {
+    await this.getTokens(systemupdate);
+    const caseUrl = `${this.testingSupportUrl}/case/${caseId}`;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    let reference: string | undefined;
+    try {
+      await expect.poll(async () => {
+        const response = await apiRequestContext.get(caseUrl, { headers: this.getHeaders() });
+        reference = (await response.json())[pbaDetailsField]?.serviceRequestReference;
+        return reference;
+      }, {
+        intervals: [5000],
+        timeout: waitSeconds * 1000,
+        message: `civil-service did not record a service request in ${pbaDetailsField} for case ${caseId}`,
+      }).toBeTruthy();
+      console.log(`${pbaDetailsField} service request for case ${caseId}: ${reference}`);
+      return reference;
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   async waitForFeePaid(caseId: string, paymentDetailsField: string, waitSeconds: number): Promise<boolean> {
     await this.getTokens(systemupdate);
     const caseUrl = `${this.testingSupportUrl}/case/${caseId}`;
