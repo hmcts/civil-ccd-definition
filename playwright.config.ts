@@ -87,12 +87,14 @@ export default defineConfig({
       testMatch: /caseUnassignment\.teardown\.ts/,
       ...playwrightTestsProject,
     },
+    // The bundled Chromium, as the pipeline projects below use. The installed Google Chrome (channel: 'chrome') is not
+    // used: when it has an update waiting it starts crashpad and GoogleUpdater, which outlive it holding its stderr, so
+    // browser.close never finishes and the worker is killed 5 minutes after its tests pass.
     {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
         ...playwrightTestsUse,
-        channel: 'chrome',
         viewport: { width: 1929, height: 959 },
       },
       dependencies: ["authentication"],
