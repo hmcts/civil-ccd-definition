@@ -87,9 +87,14 @@ export const systemupdate = {
   type: 'systemupdate'
 }
 
+// How long to wait for civil-service's background work: a business process to finish, the case to reach the state it
+// leads to, a fee's service request to be made, or the trial bundle to be stitched. Each wait ends as soon as the work
+// is done, so a long limit only costs time when something has really gone wrong. On a bad day AAT's business processes
+// can take several minutes (a 3m48s End Business Process was seen on 2026-10-20), hence 5 minutes. Override with
+// BUSINESS_PROCESS_WAIT_SECONDS.
 export const apiRetries = {
   intervals: [1000, 2500, 5000],
-  timeout: 120000
+  timeout: Number(process.env.BUSINESS_PROCESS_WAIT_SECONDS ?? 300) * 1000,
 }
 
 // How hard to try when XUI is slow to load: how many attempts (the first load plus reloads or retries),

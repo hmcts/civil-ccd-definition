@@ -150,7 +150,7 @@ export class TestingEndPointHelper {
   // Waits for civil-service to record the payment service's service request for a fee, and returns its reference.
   // pbaDetailsField is where the case keeps it, claimIssuedPBADetails for the claim fee or hearingFeePBADetails for the
   // hearing fee. The Service Request tab lists each service request by this reference.
-  async waitForServiceRequestReference(caseId: string, pbaDetailsField: string, waitSeconds = 120): Promise<string> {
+  async waitForServiceRequestReference(caseId: string, pbaDetailsField: string, waitSeconds = apiRetries.timeout / 1000): Promise<string> {
     await this.getTokens(systemupdate);
     const caseUrl = `${this.testingSupportUrl}/case/${caseId}`;
     const apiRequestContext: APIRequestContext = await request.newContext();
