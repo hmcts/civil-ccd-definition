@@ -28,11 +28,11 @@ export class CreateClaim {
   // does, once civil-service has made the fee's service request (CREATE_SERVICE_REQUEST_CLAIM). The payment service
   // then tells civil-service, which issues the claim. Paying it, rather than only telling civil-service, leaves the
   // Service Request tab showing the fee as paid, as it does for a claim created in the UI.
+  // The service request is for the whole amount owed: the claim fee, plus the other remedy fee when the claim has an
+  // other remedy, so it is paid in full, as the payment service shows it
   async payClaimFee(caseId: string) {
-    const testingEndPointHelper = new TestingEndPointHelper();
-    const serviceRequestReference = await testingEndPointHelper.waitForServiceRequestReference(caseId, 'claimIssuedPBADetails');
-    const { claimFee } = await testingEndPointHelper.getCaseData(caseId);
-    await new PaymentHelper().payServiceRequestByPba(claimantSolicitorCredentials, serviceRequestReference, claimFee.calculatedAmountInPence, 'ApplicantSolicitorReference');
+    const serviceRequestReference = await new TestingEndPointHelper().waitForServiceRequestReference(caseId, 'claimIssuedPBADetails');
+    await new PaymentHelper().payServiceRequestByPba(claimantSolicitorCredentials, caseId, serviceRequestReference, 'ApplicantSolicitorReference');
   }
 
   // The fees for the claim's value (the same value the UI enters for its track), and the certificate of suitability

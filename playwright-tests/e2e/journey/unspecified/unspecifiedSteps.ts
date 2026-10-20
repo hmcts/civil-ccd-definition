@@ -6,6 +6,7 @@ import { NotifyClaim as ApiNotifyClaim } from '../../flows/events/api/NotifyClai
 import { NotifyClaimDetails as ApiNotifyClaimDetails } from '../../flows/events/api/NotifyClaimDetails.ts';
 import { AcknowledgeClaim as ApiAcknowledgeClaim } from '../../flows/events/api/AcknowledgeClaim.ts';
 import { RespondToClaim as ApiRespondToClaim } from '../../flows/events/api/RespondToClaim.ts';
+import { RespondToDefence as ApiRespondToDefence } from '../../flows/events/api/RespondToDefence.ts';
 import { DirectionsQuestionnaireAnswers } from '../../flows/events/ui/DirectionsQuestionnaire.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import claimTypes from '../../../enums/claim-types.ts';
@@ -405,16 +406,20 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       user: 'claimantSolicitor',
       skipIf: noClaimantResponse,
       run: async ({ page, storageState }) => {
-        await ctx.runEvent(page, storageState, async () => {
-          await new RespondToDefence(page).submit(
-            c.claimType,
-            c.track,
-            c.typeOfClaim as unspecClaimTypes,
-            c.claimantProceed1,
-            c.claimantProceed2,
-            ...directionsQuestionnaireAnswers(),
-          );
-        });
+        if (ctx.useApi()) {
+          await new ApiRespondToDefence().submit(c, ctx.caseId, dqAnswers);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new RespondToDefence(page).submit(
+              c.claimType,
+              c.track,
+              c.typeOfClaim as unspecClaimTypes,
+              c.claimantProceed1,
+              c.claimantProceed2,
+              ...directionsQuestionnaireAnswers(),
+            );
+          });
+        }
         await ctx.assertCaseState(c.stateAfterClaimantResponse);
       },
     },

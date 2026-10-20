@@ -2,7 +2,7 @@ import {test as setup, expect, test, request} from "@playwright/test";
 import { envUrl } from '../civilConfig.ts';
 import {IdamPage} from '../e2e/page-objects/pages/idam.po';
 import { SessionUtils } from '../e2e/utils/session.utils.ts';
-import { sessionUsers, signedInToXui } from '../helpers/SessionHelper.ts';
+import { saveSession, sessionUsers, signedInToXui, signInWithoutBrowser } from '../helpers/SessionHelper.ts';
 import { sessionUsersForRun } from '../e2e/journey/unspecified/unspecifiedUsers.ts';
 
 const authCookieName = "__auth__";
@@ -38,11 +38,16 @@ async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
 }
 
 // Signs in everyone who runs a step in the run's scenarios (see sessionUsersForRun), reusing a saved session XUI still
-// accepts
+// accepts. Users are signed in over HTTP (see XuiSignInHelper), and through the browser only if that fails.
 for (const key of sessionUsersForRun()) {
   const { credentials, authFile } = sessionUsers[key];
   setup(`Authenticate ${credentials.name}`, async ({ page }) => {
     setup.skip(await isSavedSessionAccepted(authFile), "Reusing existing valid session");
+    const state = await signInWithoutBrowser(key);
+    if (state) {
+      saveSession(authFile, state);
+      return;
+    }
     await page.goto(envUrl);
     await idamPage.login(credentials);
     // Solicitors land on the case list and judges and court staff on their work list, so the navigation is checked

@@ -11,6 +11,7 @@ import {
 import { IdamPage } from '../e2e/page-objects/pages/idam.po.ts';
 import { PageHelper } from './PageHelper.ts';
 import { SessionEndedError, setSessionUser } from './SessionEndedError.ts';
+import { signInToXuiOverHttp, XuiStorageState } from './XuiSignInHelper.ts';
 
 // Sessions are saved in a folder per environment, named after its XUI host (e.g. manage-case.aat.platform.hmcts.net, or
 // one per preview PR), so runs against different environments at the same time don't overwrite each other's sessions
@@ -41,6 +42,29 @@ export const signedInToXui = (page: Page) =>
 
 export type SessionUserKey = keyof typeof sessionUsers;
 
+// Saves a session file. It is written to a temporary file and then renamed, so a test starting on another worker never
+// reads a half-written one.
+export function saveSession(authFile: string, state: XuiStorageState) {
+  const tempFile = `${authFile}.${process.pid}.tmp`;
+  fs.writeFileSync(tempFile, JSON.stringify(state, null, 2));
+  fs.renameSync(tempFile, authFile);
+}
+
+// Signs the user in to XUI over HTTP (see XuiSignInHelper), which is much quicker than through the browser. Returns
+// undefined, after logging why, if that fails, so the caller can sign in through the browser instead.
+export async function signInWithoutBrowser(userKey: SessionUserKey): Promise<XuiStorageState | undefined> {
+  const { credentials } = sessionUsers[userKey];
+  const started = Date.now();
+  try {
+    const state = await signInToXuiOverHttp(credentials);
+    console.log(`${credentials.name} signed in to XUI over HTTP in ${((Date.now() - started) / 1000).toFixed(1)}s`);
+    return state;
+  } catch (error) {
+    console.warn(`Signing ${credentials.name} in to XUI over HTTP failed, so signing in through the browser: ${error instanceof Error ? error.message : error}`);
+    return undefined;
+  }
+}
+
 // Finds the user a test runs as from its storageState, or undefined if it is not one of the saved sessions
 export function sessionUserFor(storageState: unknown): SessionUserKey | undefined {
   return (Object.keys(sessionUsers) as SessionUserKey[]).find((key) => sessionUsers[key].authFile === storageState);
@@ -52,17 +76,22 @@ export function sessionUserFor(storageState: unknown): SessionUserKey | undefine
 export class SessionHelper {
   constructor(public page: Page) {}
 
-  // Signs the user in again in this browser and saves the new session, so later tests also use it
+  // Signs the user in again in this browser and saves the new session, so later tests also use it. The new session
+  // is made over HTTP and its cookies put into the browser; if that fails the user signs in through the browser.
   async signInAgain(userKey: SessionUserKey) {
     const { credentials, authFile } = sessionUsers[userKey];
-    await this.page.context().clearCookies();
-    await this.page.goto(envUrl);
-    await new IdamPage(this.page).login(credentials);
+    const context = this.page.context();
+    await context.clearCookies();
+    const state = await signInWithoutBrowser(userKey);
+    if (state) {
+      await context.addCookies(state.cookies);
+      await this.page.goto(envUrl);
+    } else {
+      await this.page.goto(envUrl);
+      await new IdamPage(this.page).login(credentials);
+    }
     await expect(signedInToXui(this.page)).toBeVisible();
-    // Saved to a temporary file and then renamed, so a test starting on another worker never reads a half-written one
-    const tempFile = `${authFile}.${process.pid}.tmp`;
-    await this.page.context().storageState({ path: tempFile });
-    fs.renameSync(tempFile, authFile);
+    saveSession(authFile, await context.storageState());
   }
 
   // Runs an action, and if the user's session ends part way through, signs them in again, reopens the page at
