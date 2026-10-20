@@ -8,13 +8,14 @@ import path from 'node:path';
 //
 //   ENV=aat yarn test:UNSPEC_1v1_FAST
 //   ENV=preview PREVIEW_SERVICE=citizen-ui PR_NUMBER=8327 yarn test:UNSPEC_1v1_FAST
+//   ENV=preview PREVIEW_SERVICE=webapp PR_NUMBER=5365 yarn test:UNSPEC_1v1_FAST   (an XUI webapp PR, see below)
 //
 // What is already set in the shell (or by Jenkins) wins over the environment file.
 // Without ENV nothing is loaded here, so runs that set the variables themselves, and the pipelines, work as before.
 // Imported first in playwright.config.ts, so it runs before anything reads process.env.
 
 const environments = ['aat', 'demo', 'ithc', 'preview'];
-const previewServices = ['ccd', 'citizen-ui', 'service'];
+const previewServices = ['ccd', 'citizen-ui', 'service', 'webapp'];
 const required = [
   'URL',
   'IDAM_API_URL',
@@ -45,6 +46,20 @@ function substitute(value: string, file: string, key: string): string {
   });
 }
 
+// A preview of XUI itself (an rpx-xui-webapp PR, PREVIEW_SERVICE=webapp) is only XUI: everything behind it is AAT, so
+// apart from XUI's address its settings are AAT's. The secrets and run settings still come from env/.env.preview.
+function webappPreviewSettings(prNumber: string): Record<string, string> {
+  return {
+    ENVIRONMENT: 'aat',
+    URL: `https://xui-webapp-pr-${prNumber}.preview.platform.hmcts.net`,
+    CCD_DATA_STORE_URL: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+    CIVIL_SERVICE_URL: 'http://civil-service-aat.service.core-compute-aat.internal',
+    AAC_API_URL: 'http://aac-manage-case-assignment-aat.service.core-compute-aat.internal',
+    CAMUNDA_URL: 'http://camunda-api-aat.service.core-compute-aat.internal/engine-rest',
+    WA_TASK_MONITOR_URL: 'http://wa-task-monitor-aat.service.core-compute-aat.internal',
+  };
+}
+
 function loadEnv(envName: string) {
   if (envName === 'preview' && !previewServices.includes(process.env.PREVIEW_SERVICE ?? '')) {
     throw new Error(`playwright-tests: ENV=preview needs PREVIEW_SERVICE set to one of ${previewServices.join(', ')}, and PR_NUMBER`);
@@ -63,8 +78,16 @@ function loadEnv(envName: string) {
     }
   }
 
+  if (envName === 'preview' && process.env.PREVIEW_SERVICE === 'webapp') {
+    for (const [key, value] of Object.entries(webappPreviewSettings(process.env.PR_NUMBER ?? ''))) {
+      if (!fromShell.has(key)) {
+        process.env[key] = value;
+      }
+    }
+  }
+
   // civil-service's preview address depends on the repo the preview belongs to (see env/.env.preview)
-  if (envName === 'preview' && !fromShell.has('CIVIL_SERVICE_URL')) {
+  if (envName === 'preview' && process.env.PREVIEW_SERVICE !== 'webapp' && !fromShell.has('CIVIL_SERVICE_URL')) {
     const service = process.env.PREVIEW_SERVICE;
     const host = service === 'citizen-ui'
       ? `civil-${service}-pr-${process.env.PR_NUMBER}-civil-service`
