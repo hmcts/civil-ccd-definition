@@ -6,8 +6,9 @@ import { courts } from '../../../../../fixtures/courts.ts';
 import { partyDetails } from '../../../../../fixtures/partyDetails.ts';
 import { legalRepresentatives } from '../../../../../fixtures/legalRepresentatives.ts';
 import { claimantSolicitorCredentials } from '../../../../../civilConfig.ts';
-import { claimAmountInPounds } from '../../../createUnspecifiedCase.ts';
+import personalInjuryTypes from '../../../../../enums/personalInjuryTypes.ts';
 import { ClaimantShape, DefendantShape } from '../../../createClaimShape.ts';
+import { Fee } from '../../../../../helpers/FeesHelper.ts';
 import { UnspecifiedConfig } from '../../../../journey/unspecified/unspecifiedConfig.ts';
 
 // The case data for CREATE_CLAIM, as XUI would submit it after every page of the event had been filled in the way
@@ -15,12 +16,26 @@ import { UnspecifiedConfig } from '../../../../journey/unspecified/unspecifiedCo
 // holds what the event's about to start callback filled in (the organisation policies' roles). The parties follow the
 // claim's shape (createClaimShape.ts), as they do in the UI.
 //
-// certificateOfSuitability is the uploaded document a claimant's litigation friend needs. It is only needed when a
-// claimant has a litigation friend.
+// What the payload needs that has to be looked up or uploaded first: the claim value and its fees, which the Claim
+// value page's mid event callback would work out, and the certificate of suitability a claimant's litigation friend
+// needs (only when a claimant has one)
+export interface CreateClaimLookups {
+  amountInPounds: number;
+  claimFee: Fee;
+  otherRemedyFee?: Fee;
+  certificateOfSuitability?: Record<string, string>;
+}
+
+// Housing disrepair and damages and other remedy claims are asked about the other remedy and human rights, and pay
+// the other remedy fee as well as the claim fee
+export function hasOtherRemedy(typeOfClaim: string): boolean {
+  return typeOfClaim === unspecClaimTypes.HOUSING_DISREPAIR || typeOfClaim === unspecClaimTypes.DAMAGES_AND_OTHER_REMEDY;
+}
+
 export function buildCreateClaimPayload(
   c: UnspecifiedConfig,
   startCaseData: Record<string, any>,
-  certificateOfSuitability?: Record<string, string>,
+  lookups: CreateClaimLookups,
 ): Record<string, any> {
   const { claimants, defendants } = c.claimShape;
 
@@ -28,11 +43,11 @@ export function buildCreateClaimPayload(
     ...startCaseData,
     ...references(defendants[0]),
     ...court(),
-    ...claimantsData(claimants, certificateOfSuitability),
+    ...claimantsData(claimants, lookups.certificateOfSuitability),
     ...claimantSolicitor(),
     ...defendantsData(claimants, defendants),
     ...claimDetails(c),
-    ...claimValue(c),
+    ...claimValue(lookups),
     ...statementOfTruth(),
   };
 }
@@ -191,33 +206,38 @@ function defendantSolicitor(defendantNumber: number, orgId: string) {
   };
 }
 
-// Type of claim, Personal injury type, Details and Upload particulars of claim
+// Type of claim (with its own text for OTHER), Personal injury type (with its own text for PERSONAL_INJURY_OTHER), Other
+// remedy and Human rights (housing disrepair and damages and other remedy only), Details and Upload particulars of claim
 function claimDetails(c: UnspecifiedConfig) {
+  const personalInjury = c.typeOfClaim === unspecClaimTypes.PERSONAL_INJURY;
   return {
     claimTypeUnSpec: c.typeOfClaim,
-    ...(c.typeOfClaim === unspecClaimTypes.PERSONAL_INJURY ? { personalInjuryType: c.typeOfClaimSubType } : {}),
+    ...(c.typeOfClaim === unspecClaimTypes.OTHER ? { claimTypeOther: 'Type of claim - Other - test text.' } : {}),
+    ...(personalInjury ? { personalInjuryType: c.typeOfClaimSubType } : {}),
+    ...(personalInjury && c.typeOfClaimSubType === personalInjuryTypes.PERSONAL_INJURY_OTHER
+      ? { personalInjuryTypeOther: 'Personal Injury - other test text.' }
+      : {}),
+    ...(hasOtherRemedy(c.typeOfClaim)
+      ? {
+        isClaimDeclarationAdded: yesNo.YES,
+        claimDeclarationDescription: 'Other remedy narrative text.',
+        isHumanRightsActIssues: yesNo.YES,
+      }
+      : {}),
     detailsOfClaim: 'Test description of claim',
     uploadParticularsOfClaim: yesNo.NO,
   };
 }
 
-// Claim value and the fee for it, which the Claim value page's mid event callback would work out
-function claimValue(c: UnspecifiedConfig) {
-  const amountInPounds = Number(claimAmountInPounds(c.track, c.typeOfClaim));
+// Claim value and its fees
+function claimValue(lookups: CreateClaimLookups) {
   return {
-    claimValue: { statementOfValueInPennies: String(amountInPounds * 100) },
-    claimFee: claimFee(amountInPounds),
+    claimValue: { statementOfValueInPennies: String(lookups.amountInPounds * 100) },
+    claimFee: lookups.claimFee,
+    ...(lookups.otherRemedyFee ? { otherRemedyFee: lookups.otherRemedyFee } : {}),
     paymentTypePBA: 'PBAv3',
     claimIssuedPaymentDetails: { customerReference: 'ApplicantSolicitorReference' },
   };
-}
-
-// The claim issue fee from the fees register. Only the band from £10,000 to £200,000 (5% of the claim) is coded so far.
-function claimFee(amountInPounds: number) {
-  if (amountInPounds > 10000 && amountInPounds <= 200000) {
-    return { calculatedAmountInPence: String(amountInPounds * 5), code: 'FEE0209', version: '3' };
-  }
-  throw new Error(`The claim fee for £${amountInPounds} is not coded yet (only £10,000 to £200,000)`);
 }
 
 // Statement of truth
