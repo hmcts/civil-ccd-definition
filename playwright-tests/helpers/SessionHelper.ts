@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import { expect, Page } from '@playwright/test';
 import {
   envUrl,
@@ -45,6 +46,8 @@ export type SessionUserKey = keyof typeof sessionUsers;
 // Saves a session file. It is written to a temporary file and then renamed, so a test starting on another worker never
 // reads a half-written one.
 export function saveSession(authFile: string, state: XuiStorageState) {
+  // The environment's folder does not exist until its first session is saved
+  fs.mkdirSync(path.dirname(authFile), { recursive: true });
   const tempFile = `${authFile}.${process.pid}.tmp`;
   fs.writeFileSync(tempFile, JSON.stringify(state, null, 2));
   fs.renameSync(tempFile, authFile);
