@@ -45,7 +45,7 @@ module.exports = {
   createNewClaimWithCaseworkerCivilService: async (user, scenario, withInterest) => {
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
-    let createClaimData  = {};
+    let createClaimData;
 
     createClaimData = data.CREATE_BULK_CLAIM_VIA_CIVILSERVICE(scenario, withInterest);
     await apiRequest.setupTokens(user);

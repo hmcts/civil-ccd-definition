@@ -116,7 +116,7 @@ module.exports = function (){
     caseId = null;
     caseData = {};
 
-    let createClaimData  = {};
+    let createClaimData;
 
     if (!hearings) {
       createClaimData = data.CREATE_CLAIM(scenario);
