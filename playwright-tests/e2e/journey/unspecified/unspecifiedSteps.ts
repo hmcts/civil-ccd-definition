@@ -4,6 +4,7 @@ import { CreateUnspecifiedCase } from '../../flows/createUnspecifiedCase.ts';
 import { CreateClaim } from '../../flows/events/api/CreateClaim.ts';
 import { NotifyClaim as ApiNotifyClaim } from '../../flows/events/api/NotifyClaim.ts';
 import { NotifyClaimDetails as ApiNotifyClaimDetails } from '../../flows/events/api/NotifyClaimDetails.ts';
+import { AcknowledgeClaim as ApiAcknowledgeClaim } from '../../flows/events/api/AcknowledgeClaim.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
@@ -272,11 +273,15 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
       run: async ({ page, storageState }) => {
         await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType);
-        // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
-        await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
-        await ctx.runEvent(page, storageState, async () => {
-          await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 1, c.defendantType);
-        });
+        if (ctx.useApi()) {
+          await new ApiAcknowledgeClaim().acknowledge(c, ctx.caseId, 1);
+        } else {
+          // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
+          await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
+          await ctx.runEvent(page, storageState, async () => {
+            await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 1, c.defendantType);
+          });
+        }
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       },
     },
@@ -291,12 +296,18 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
           // Defendant 1's acknowledgement is skipped for this claim type (Defendant 1 is a LiP), so Defendant 2's
           // solicitor is assigned here
           await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType);
-          // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
-          await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
+          if (!ctx.useApi()) {
+            // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
+            await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
+          }
         }
-        await ctx.runEvent(page, storageState, async () => {
-          await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 2, c.defendantType);
-        });
+        if (ctx.useApi()) {
+          await new ApiAcknowledgeClaim().acknowledge(c, ctx.caseId, 2);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 2, c.defendantType);
+          });
+        }
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       },
     },
