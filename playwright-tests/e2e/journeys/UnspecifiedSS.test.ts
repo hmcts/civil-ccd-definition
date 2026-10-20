@@ -12,7 +12,10 @@ test.describe.configure({ mode: 'parallel' });
 for (const scenario of selectedScenarios()) {
   test.describe(scenario.name, { tag: scenario.tags }, () => {
     const config = unspecifiedConfig(scenario.env);
-    const context = new JourneyContext(scenario.env.STOP_AT_STATE as caseStates | undefined);
+    const context = new JourneyContext(
+      scenario.env.STOP_AT_STATE as caseStates | undefined,
+      scenario.env.API_UNTIL as caseStates | undefined,
+    );
     defineJourney(context, unspecifiedSteps(config, context), {
       stopAfterTest: scenario.env.STOP_AFTER_TEST,
       validate: config.validate,

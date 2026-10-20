@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 
 // Court staff staying the case (event STAY_CASE, "Stay case"), which moves it to CASE_STAYED. civil-service keeps the
 // state the claim was in (preStayState), so lifting the stay with Manage stay can take it back there. The event has one

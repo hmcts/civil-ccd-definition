@@ -1,8 +1,8 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
-import { envUrl } from '../../../civilConfig.ts';
-import trackType from '../../../enums/track.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
+import { envUrl } from '../../../../civilConfig.ts';
+import trackType from '../../../../enums/track.ts';
 
 // The judge's Standard Direction Order (event CREATE_SDO) once the claim is in JUDICIAL_REFERRAL. XUI only offers the
 // event through a work allocation task (its EventEnablingCondition hides it from the next step list), so it is opened

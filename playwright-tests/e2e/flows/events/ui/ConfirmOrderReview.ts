@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 
 // Court staff reviewing an order the judge has made (event CONFIRM_ORDER_REVIEW, "Confirm order review"). Making an
 // order raises an "Order Made - Review case" task for court staff, who record any date a party must do something by

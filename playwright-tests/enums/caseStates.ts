@@ -1,5 +1,7 @@
 // Case states from ccd-definition/State.json that the unspecified journey checks
 enum CaseStates {
+  // A submitted claim whose fee has not been paid yet
+  PENDING_CASE_ISSUED = 'PENDING_CASE_ISSUED',
   CASE_ISSUED = 'CASE_ISSUED',
   AWAITING_CASE_DETAILS_NOTIFICATION = 'AWAITING_CASE_DETAILS_NOTIFICATION',
   AWAITING_RESPONDENT_ACKNOWLEDGEMENT = 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT',

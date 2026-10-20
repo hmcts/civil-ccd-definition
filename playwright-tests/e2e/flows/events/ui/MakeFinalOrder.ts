@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
-import FinalOrder from '../../../enums/finalOrders.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
+import FinalOrder from '../../../../enums/finalOrders.ts';
 
 // The judge's final order (event GENERATE_DIRECTIONS_ORDER, "Make an order"). On the small and fast tracks the judge
 // chooses between a free form order and an assisted order and fills it in on the page. civil-service turns it into

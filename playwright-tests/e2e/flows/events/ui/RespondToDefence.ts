@@ -1,14 +1,14 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
-import claimTypes from '../../../enums/claim-types.ts';
-import YesNo from '../../../enums/yesNo.ts';
-import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
-import trackType from '../../../enums/track.ts';
-import UnspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
-import LanguageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
+import claimTypes from '../../../../enums/claim-types.ts';
+import YesNo from '../../../../enums/yesNo.ts';
+import FixedRecoveryCostsBands from '../../../../enums/fixedRecoveryCostsBands.ts';
+import trackType from '../../../../enums/track.ts';
+import UnspecClaimTypes from '../../../../enums/unspecClaimTypes.ts';
+import LanguageSpokenAndDocuments from '../../../../enums/languageSpokenAndDocuments.ts';
 import { DirectionsQuestionnaire } from './DirectionsQuestionnaire.ts';
-import { claimantSolicitorCredentials } from '../../../civilConfig.ts';
+import { claimantSolicitorCredentials } from '../../../../civilConfig.ts';
 
 // The claimant's response to the defence (event CLAIMANT_RESPONSE, "View and respond to defence"). It follows every
 // defendant entering a full defence, when the claim is in AWAITING_APPLICANT_INTENTION.

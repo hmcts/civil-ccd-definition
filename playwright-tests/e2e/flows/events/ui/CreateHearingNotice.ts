@@ -1,9 +1,9 @@
 import { Page } from '@playwright/test';
 import moment from 'moment-business-days';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
-import { courts } from '../../../fixtures/courts.ts';
-import trackType from '../../../enums/track.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
+import { courts } from '../../../../fixtures/courts.ts';
+import trackType from '../../../../enums/track.ts';
 
 // The hearing centre admin's hearing notice (event HEARING_SCHEDULED, "Create a hearing notice") once the case is in
 // CASE_PROGRESSION. It stands in for HMC returning a LISTED hearing, which is not available on every environment.

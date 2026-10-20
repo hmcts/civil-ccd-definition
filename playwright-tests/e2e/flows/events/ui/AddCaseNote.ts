@@ -1,5 +1,5 @@
 import { expect, Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
+import { PageHelper } from '../../../../helpers/PageHelper';
 
 // Court staff adding a note to the case (event ADD_CASE_NOTE, "Add a case note"). Staff (caseworker-civil-staff,
 // legal-adviser and caseworker-civil-admin, so the hearing centre admin) can add one in any state; judges can only

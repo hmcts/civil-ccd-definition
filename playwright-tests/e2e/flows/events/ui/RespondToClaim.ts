@@ -1,18 +1,18 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
-import claimTypes from '../../../enums/claim-types.ts';
-import RespondentResponses from '../../../enums/RespondentResponses.ts';
-import YesNo from '../../../enums/yesNo.ts';
-import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
-import trackType from '../../../enums/track.ts';
-import UnspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
-import LanguageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
+import claimTypes from '../../../../enums/claim-types.ts';
+import RespondentResponses from '../../../../enums/RespondentResponses.ts';
+import YesNo from '../../../../enums/yesNo.ts';
+import FixedRecoveryCostsBands from '../../../../enums/fixedRecoveryCostsBands.ts';
+import trackType from '../../../../enums/track.ts';
+import UnspecClaimTypes from '../../../../enums/unspecClaimTypes.ts';
+import LanguageSpokenAndDocuments from '../../../../enums/languageSpokenAndDocuments.ts';
 import { DirectionsQuestionnaire } from './DirectionsQuestionnaire.ts';
 import {
   respondent1SolicitorCredentials,
   respondent2SolicitorCredentials,
-} from '../../../civilConfig.ts';
+} from '../../../../civilConfig.ts';
 
 export class RespondToClaim {
   private buttonHelper: ButtonHelper;

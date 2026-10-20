@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 
 // Court staff managing a stayed case (event MANAGE_STAY, "Manage stay"), which is only offered in CASE_STAYED. They
 // either ask the parties for an update, which leaves the case stayed, or lift the stay, which takes the claim back to

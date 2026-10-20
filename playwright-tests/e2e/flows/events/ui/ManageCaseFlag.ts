@@ -1,5 +1,5 @@
 import { expect, Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
+import { PageHelper } from '../../../../helpers/PageHelper';
 
 // Court staff updating a case flag (event MANAGE_CASE_FLAGS, "Manage case flags"). The first page lists every flag on
 // the case as "<holder> - <category>, <flag type> (<comment>)"; the next updates the chosen one. Like Create case flags,

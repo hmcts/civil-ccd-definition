@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 
 // A solicitor confirming the case is ready for trial (event TRIAL_READINESS, "Confirm trial arrangements"). It is
 // offered on the fast track once the trial is listed, and must be done more than 3 weeks before the hearing.

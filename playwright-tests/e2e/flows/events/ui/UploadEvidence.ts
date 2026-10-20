@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 
 // A solicitor's evidence upload once the case is in CASE_PROGRESSION ("Upload Your Documents": EVIDENCE_UPLOAD_APPLICANT
 // for the claimant, EVIDENCE_UPLOAD_RESPONDENT for a defendant). It uploads a disclosure list, which the fast,

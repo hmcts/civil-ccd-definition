@@ -1,31 +1,32 @@
 import { expect, test } from '@playwright/test';
 import { envUrl } from '../../../civilConfig.ts';
 import { CreateUnspecifiedCase } from '../../flows/createUnspecifiedCase.ts';
+import { CreateClaim } from '../../flows/events/api/CreateClaim.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
 import claimTrack from '../../../enums/track.ts';
 import caseStates from '../../../enums/caseStates.ts';
 import { PaymentPage } from '../../page-objects/pages/payment_page.ts';
-import { NotifyClaim } from '../../flows/events/NotifyClaim.ts';
-import { NotifyClaimDetails } from '../../flows/events/NotifyClaimDetails.ts';
-import { AcknowledgeClaim } from '../../flows/events/AcknowledgeClaim.ts';
-import { RespondToClaim } from '../../flows/events/RespondToClaim.ts';
-import { RespondToDefence } from '../../flows/events/RespondToDefence.ts';
-import { CreateSdo } from '../../flows/events/CreateSdo.ts';
-import { UploadEvidence } from '../../flows/events/UploadEvidence.ts';
-import { CreateHearingNotice } from '../../flows/events/CreateHearingNotice.ts';
-import { ConfirmTrialArrangements } from '../../flows/events/ConfirmTrialArrangements.ts';
-import { MakeFinalOrder } from '../../flows/events/MakeFinalOrder.ts';
-import { ConfirmOrderReview } from '../../flows/events/ConfirmOrderReview.ts';
-import { AddCaseNote } from '../../flows/events/AddCaseNote.ts';
-import { StayCase } from '../../flows/events/StayCase.ts';
-import { ManageStay } from '../../flows/events/ManageStay.ts';
-import { InformAgreedExtensionDate } from '../../flows/events/InformAgreedExtensionDate.ts';
+import { NotifyClaim } from '../../flows/events/ui/NotifyClaim.ts';
+import { NotifyClaimDetails } from '../../flows/events/ui/NotifyClaimDetails.ts';
+import { AcknowledgeClaim } from '../../flows/events/ui/AcknowledgeClaim.ts';
+import { RespondToClaim } from '../../flows/events/ui/RespondToClaim.ts';
+import { RespondToDefence } from '../../flows/events/ui/RespondToDefence.ts';
+import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
+import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
+import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
+import { ConfirmTrialArrangements } from '../../flows/events/ui/ConfirmTrialArrangements.ts';
+import { MakeFinalOrder } from '../../flows/events/ui/MakeFinalOrder.ts';
+import { ConfirmOrderReview } from '../../flows/events/ui/ConfirmOrderReview.ts';
+import { AddCaseNote } from '../../flows/events/ui/AddCaseNote.ts';
+import { StayCase } from '../../flows/events/ui/StayCase.ts';
+import { ManageStay } from '../../flows/events/ui/ManageStay.ts';
+import { InformAgreedExtensionDate } from '../../flows/events/ui/InformAgreedExtensionDate.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
-import { CreateCaseFlag } from '../../flows/events/CreateCaseFlag.ts';
-import { ManageCaseFlag } from '../../flows/events/ManageCaseFlag.ts';
+import { CreateCaseFlag } from '../../flows/events/ui/CreateCaseFlag.ts';
+import { ManageCaseFlag } from '../../flows/events/ui/ManageCaseFlag.ts';
 import { caseFlagType } from '../../flows/caseFlags/caseFlagTypes.ts';
 import { holderFlagsField, holderLabel } from '../../flows/caseFlags/caseFlagHolders.ts';
 import { CaseFlagSpec, caseFlagSpecs } from '../../flows/caseFlags/caseFlagSpecs.ts';
@@ -85,6 +86,17 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: 'Claimant Solicitor creates ' + c.claimType + ' claim ',
       user: 'claimantSolicitor',
       run: async ({ page, storageState }) => {
+        if (ctx.useApi()) {
+          // One CCD API submit instead of the CREATE_CLAIM pages (API_UNTIL). There is no payment page after it, so the
+          // test tells civil-service the fee has been paid, which issues the claim (CREATE_CLAIM_AFTER_PAYMENT).
+          ctx.caseId = await new CreateClaim().create(c);
+          CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
+          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CREATE_SERVICE_REQUEST_CLAIM');
+          await ctx.assertCaseState(caseStates.PENDING_CASE_ISSUED);
+          await ctx.testingEndpointHelper.serviceRequestUpdateClaimIssued(ctx.caseId);
+          await ctx.assertCaseState(caseStates.CASE_ISSUED);
+          return;
+        }
         const pageHelper = ctx.pageHelper;
         // If the session ends before the claim is submitted, the claim is started again from the case list
         await ctx.runEvent(page, storageState, async () => {

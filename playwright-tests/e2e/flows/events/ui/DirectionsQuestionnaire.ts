@@ -1,13 +1,13 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
-import YesNo from '../../../enums/yesNo.ts';
-import FixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
-import trackType from '../../../enums/track.ts';
-import UnspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
-import LanguageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
+import YesNo from '../../../../enums/yesNo.ts';
+import FixedRecoveryCostsBands from '../../../../enums/fixedRecoveryCostsBands.ts';
+import trackType from '../../../../enums/track.ts';
+import UnspecClaimTypes from '../../../../enums/unspecClaimTypes.ts';
+import LanguageSpokenAndDocuments from '../../../../enums/languageSpokenAndDocuments.ts';
 import moment from 'moment-business-days';
-import { courts } from '../../../fixtures/courts.ts';
+import { courts } from '../../../../fixtures/courts.ts';
 
 // The party answering the directions questionnaire (DQ). The defendant's and claimant's responses use the same DQ
 // field types, so only the case field names differ (e.g. respondent1DQExperts and applicant1DQExperts).

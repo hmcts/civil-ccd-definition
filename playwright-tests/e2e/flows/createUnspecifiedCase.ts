@@ -13,6 +13,42 @@ import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
 import claimTrack from '../../enums/track.ts';
 import { xuiLoadRetries } from '../../civilConfig.ts';
 
+// The claim value, in pounds, that puts a claim of this type on the track. Used by the UI and the API to create claims.
+export function claimAmountInPounds(track, typeOfClaim): string {
+  let claimAmount = '0';
+
+  // Intermediate track is £25,000 to £100,000, so a multi track claim must be over £100,000
+  if (track == claimTrack.INTERMEDIATE) {
+    claimAmount = '75000';
+  }
+
+  if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY || typeOfClaim == unspecClaimTypes.CLINICAL_NEGLIGENCE) {
+    if (track == claimTrack.SMALL) {
+      claimAmount = '500';
+    } else if (track == claimTrack.FAST) {
+      claimAmount = '20000';
+    } else if (track == claimTrack.MULTI) {
+      claimAmount = '150000';
+    }
+  }
+
+  if (claimAmount == '0') {
+    switch (track) {
+      case claimTrack.SMALL:
+        claimAmount = '5000';
+        break;
+      case claimTrack.FAST:
+        claimAmount = '20000';
+        break;
+      case claimTrack.MULTI:
+        claimAmount = '150000';
+        break;
+    }
+  }
+
+  return claimAmount;
+}
+
 export class CreateUnspecifiedCase {
   private buttonHelper: ButtonHelper;
   private pageHelper: PageHelper;
@@ -403,38 +439,7 @@ export class CreateUnspecifiedCase {
   }
 
   async setClaimValue(track, typeOfClaim) {
-    let claimAmount = '0';
-
-    // Intermediate track is £25,000 to £100,000, so a multi track claim must be over £100,000
-    if (track == claimTrack.INTERMEDIATE) {
-      claimAmount = '75000';
-    }
-
-    if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY || typeOfClaim == unspecClaimTypes.CLINICAL_NEGLIGENCE) {
-      if (track == claimTrack.SMALL) {
-        claimAmount = '500';
-      } else if (track == claimTrack.FAST) {
-        claimAmount = '20000';
-      } else if (track == claimTrack.MULTI) {
-        claimAmount = '150000';
-      }
-    }
-
-    if (claimAmount == '0') {
-      switch (track) {
-        case claimTrack.SMALL:
-          claimAmount = '5000';
-          break;
-        case claimTrack.FAST:
-          claimAmount = '20000';
-          break;
-        case claimTrack.MULTI:
-          claimAmount = '150000';
-          break;
-      }
-    }
-
-    await this.page.locator('#claimValue_statementOfValueInPennies').fill(claimAmount);
+    await this.page.locator('#claimValue_statementOfValueInPennies').fill(claimAmountInPounds(track, typeOfClaim));
     await this.pageHelper.continueToNextPage();
   }
 

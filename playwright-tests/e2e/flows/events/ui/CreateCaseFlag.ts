@@ -1,6 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { CaseFlagType } from '../caseFlags/caseFlagTypes.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { CaseFlagType } from '../../caseFlags/caseFlagTypes.ts';
 
 export interface CreateCaseFlagAnswers {
   // The language for a Language Interpreter or Sign Language Interpreter flag, as the list offers it

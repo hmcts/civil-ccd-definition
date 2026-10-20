@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 
 // A defendant's solicitor telling the court the parties have agreed a 28 day extension to the time for responding to
 // an unspecified claim (event INFORM_AGREED_EXTENSION_DATE, "Inform agreed 28 day extension"). It is offered while the

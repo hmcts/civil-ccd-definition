@@ -1,9 +1,9 @@
 import { expect, Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
-import claimTypes from '../../../enums/claim-types.ts';
-import notifyClaimOptions from '../../../enums/notifyClaimOptions.ts';
-import { CoSHelper } from '../../../helpers/CoSHelper.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
+import claimTypes from '../../../../enums/claim-types.ts';
+import notifyClaimOptions from '../../../../enums/notifyClaimOptions.ts';
+import { CoSHelper } from '../../../../helpers/CoSHelper.ts';
 
 export class NotifyClaimDetails {
 

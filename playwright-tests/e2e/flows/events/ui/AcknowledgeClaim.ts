@@ -1,9 +1,9 @@
 import { Page } from '@playwright/test';
-import { PageHelper } from '../../../helpers/PageHelper';
-import { ButtonHelper } from '../../../helpers/ButtonHelper.ts';
-import claimTypes from '../../../enums/claim-types.ts';
-import { partyDetails } from '../../../fixtures/partyDetails.ts';
-import ResponseIntention from '../../../enums/ResponseIntention.ts';
+import { PageHelper } from '../../../../helpers/PageHelper';
+import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
+import claimTypes from '../../../../enums/claim-types.ts';
+import { partyDetails } from '../../../../fixtures/partyDetails.ts';
+import ResponseIntention from '../../../../enums/ResponseIntention.ts';
 
 export class AcknowledgeClaim {
   private buttonHelper: ButtonHelper;

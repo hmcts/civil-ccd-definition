@@ -14,7 +14,7 @@ export interface StepArgs {
 }
 
 // One step of a journey: an event done by one user, run as its own test. The UI steps of the event live in its class
-// under flows/events, so the same class can be used by any journey or branch.
+// under flows/events/ui, so the same class can be used by any journey or branch.
 export interface JourneyStep {
   // The step's name, which STOP_AFTER_TEST can use. Unlike a test number it does not change when steps are added.
   name: string;
@@ -40,10 +40,17 @@ export class JourneyContext {
   createCasePage: CreateCasePage;
   testingEndpointHelper: TestingEndPointHelper;
   stopAtStateReached = false;
+  apiUntilStateReached = false;
   lastStateReached: caseStates | undefined;
 
-  // STOP_AT_STATE: the state at which the journey stops (see defineJourney)
-  constructor(readonly stopAtState: caseStates | undefined) {}
+  // STOP_AT_STATE: the state at which the journey stops, and API_UNTIL: the state up to which the steps that have an
+  // API version are done through the CCD API (see defineJourney)
+  constructor(readonly stopAtState: caseStates | undefined, readonly apiUntilState?: caseStates) {}
+
+  // Whether a step with an API version should use it: API_UNTIL is set and the claim has not reached that state yet
+  useApi(): boolean {
+    return this.apiUntilState !== undefined && !this.apiUntilStateReached;
+  }
 
   caseUrl(): string {
     return envUrl + '/cases/case-details/' + this.caseId;
@@ -66,10 +73,14 @@ export class JourneyContext {
   }
 
   // Checks the claim is in the expected state, and notes when it has reached STOP_AT_STATE so the remaining tests are
-  // skipped
+  // skipped, or API_UNTIL so the remaining steps use the UI
   async assertCaseState(state: caseStates) {
     await this.testingEndpointHelper.assertCaseState(this.caseId, state);
     this.lastStateReached = state;
+    if (state === this.apiUntilState && !this.apiUntilStateReached) {
+      this.apiUntilStateReached = true;
+      console.log(`Case ${this.caseId} has reached ${state}, so the remaining steps use the UI (API_UNTIL)`);
+    }
     if (state === this.stopAtState && !this.stopAtStateReached) {
       this.stopAtStateReached = true;
       console.log(`Case ${this.caseId} has reached ${state}, so the remaining tests are skipped (STOP_AT_STATE)`);
@@ -87,6 +98,11 @@ export class JourneyContext {
 //  - STOP_AFTER_TEST: stop after this step or group, by name (e.g. CREATE_HEARING_NOTICE), or after a test number
 //    (e.g. test12). A name always means the same step, while a number moves when steps are added before it.
 // The remaining tests are skipped. Both can be set, in which case the run stops at whichever comes first.
+//
+// Getting the claim to a state quickly:
+//  - API_UNTIL: the steps that have an API version (flows/events/api) are done through the CCD API until the claim is
+//    confirmed to be in this state, and the steps after it through the UI. Steps with no API version yet always use the
+//    UI. For example API_UNTIL=CASE_ISSUED creates the claim through the API.
 export function defineJourney(
   context: JourneyContext,
   steps: JourneyStep[],
@@ -120,6 +136,13 @@ export function defineJourney(
       ).toContain(context.stopAtState);
     }
 
+    if (context.apiUntilState !== undefined) {
+      expect(
+        Object.values(caseStates),
+        `Invalid API_UNTIL value: ${context.apiUntilState}. It must be one of ${Object.values(caseStates).join(', ')}.`,
+      ).toContain(context.apiUntilState);
+    }
+
     if (stopAfterTest !== undefined) {
       expect(
         stopAfterTestNumber,
@@ -148,6 +171,9 @@ export function defineJourney(
   test.afterAll(async () => {
     if (context.stopAtState !== undefined && !context.stopAtStateReached) {
       console.warn(`WARNING: STOP_AT_STATE ${context.stopAtState} was never reached. The last state checked was ${context.lastStateReached ?? 'none'}.`);
+    }
+    if (context.apiUntilState !== undefined && !context.apiUntilStateReached) {
+      console.warn(`WARNING: API_UNTIL ${context.apiUntilState} was never reached. The last state checked was ${context.lastStateReached ?? 'none'}.`);
     }
   });
 
