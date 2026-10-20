@@ -34,7 +34,8 @@ export class CcdApiHelper {
   }
 
   // Submits the event with the given case data, and returns the case CCD saved. Without a case ID it creates the case.
-  async submitEvent(user, eventId: string, eventToken: string, data: Record<string, any>, caseId?: string): Promise<Record<string, any>> {
+  // ignoreWarning submits it even if a callback returns warnings, as Ignore Warning and Continue does in XUI.
+  async submitEvent(user, eventId: string, eventToken: string, data: Record<string, any>, caseId?: string, ignoreWarning = false): Promise<Record<string, any>> {
     const { accessToken, s2sToken, uid } = await this.tokensHelper.getNonEventTokens(user);
     const url = `${this.caseTypeUrl(uid)}/cases${caseId ? `/${caseId}/events` : ''}`;
     const apiRequestContext: APIRequestContext = await request.newContext();
@@ -45,7 +46,7 @@ export class CcdApiHelper {
           data,
           event: { id: eventId, summary: '', description: 'Submitted by playwright-tests' },
           event_token: eventToken,
-          ignore_warning: false,
+          ignore_warning: ignoreWarning,
         },
       });
       expect(response.ok(), `Submitting ${eventId} returned ${response.status()}: ${await response.text()}`).toBeTruthy();

@@ -2,6 +2,8 @@ import { expect, test } from '@playwright/test';
 import { envUrl } from '../../../civilConfig.ts';
 import { CreateUnspecifiedCase } from '../../flows/createUnspecifiedCase.ts';
 import { CreateClaim } from '../../flows/events/api/CreateClaim.ts';
+import { NotifyClaim as ApiNotifyClaim } from '../../flows/events/api/NotifyClaim.ts';
+import { NotifyClaimDetails as ApiNotifyClaimDetails } from '../../flows/events/api/NotifyClaimDetails.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
@@ -223,9 +225,13 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: 'Claimant Solicitor undertakes event: Notify claim ',
       user: 'claimantSolicitor',
       run: async ({ page, storageState }) => {
-        await ctx.runEvent(page, storageState, async () => {
-          await new NotifyClaim(page).notify(c.claimType, c.defendantsToNotifyClaim);
-        });
+        if (ctx.useApi()) {
+          await new ApiNotifyClaim().notify(c, ctx.caseId);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new NotifyClaim(page).notify(c.claimType, c.defendantsToNotifyClaim);
+          });
+        }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'NOTIFY_DEFENDANT_OF_CLAIM');
         if (c.claimOfflineAfterNotifyClaim) {
           await ctx.assertCaseState(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
@@ -242,9 +248,13 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       user: 'claimantSolicitor',
       skipIf: [[c.claimOfflineAfterNotifyClaim, 'Claim went offline at Notify claim']],
       run: async ({ page, storageState }) => {
-        await ctx.runEvent(page, storageState, async () => {
-          await new NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails);
-        });
+        if (ctx.useApi()) {
+          await new ApiNotifyClaimDetails().notify(c, ctx.caseId);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails);
+          });
+        }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS');
         if (c.claimOfflineAfterNotifyClaimDetails) {
           await ctx.assertCaseState(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
