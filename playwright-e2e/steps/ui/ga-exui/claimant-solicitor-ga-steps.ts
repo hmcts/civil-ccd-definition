@@ -1,8 +1,10 @@
-import ClaimantSolicitorGaActionsFactory from '../../../actions/ui/ga-exui/claimant-solicitor/claimant-solcitor-ga-actions-factory';
+import ClaimantSolicitorGaActionsFactory from '../../../actions/ui/ga-exui/claimant-solicitor/claimant-solicitor-ga-actions-factory';
 import GaExuiDashboardActions from '../../../actions/ui/ga-exui/common/ga-exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseGaExui from '../../../base/base-ga-exui';
 import { claimantSolicitorUser } from '../../../config/users/exui-users';
+import GaCaseState from '../../../constants/cases/ga-case-states';
+import gaCCDEvents from '../../../constants/ccd-events/ga-ccd-events/ga-ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -29,5 +31,21 @@ export default class ClaimantSolicitorGaSteps extends BaseGaExui {
   async NavigateToGaCaseDetails() {
     await super.setDebugTestData();
     await super.gaExuiDashboardActions.goToGaCaseDetails();
+  }
+
+  async RespondToApplication() {
+    const { respondToApplicationActions } = this.claimantSolicitorGaActionsFactory;
+    await super.retryGaCCDEvent(
+      async () => {
+        await respondToApplicationActions.respScreen();
+        await respondToApplicationActions.respHearingScreen();
+        await respondToApplicationActions.submit();
+      },
+      async () => {
+        await respondToApplicationActions.confirm();
+      },
+      gaCCDEvents.RESPOND_TO_APPLICATION,
+      { expectedState: GaCaseState.AWAITING_RESPONDENT_RESPONSE },
+    );
   }
 }
