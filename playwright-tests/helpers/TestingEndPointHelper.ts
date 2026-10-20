@@ -315,6 +315,24 @@ export class TestingEndPointHelper {
   // does each night for fast track cases whose hearing is coming up. It records that the parties have been asked to
   // confirm they are ready for trial (trialReadyChecked) and starts the TRIAL_READY_CHECK business process, which
   // creates the dashboard notifications for parties without a solicitor. The case's state does not change.
+  // Uploads civil-service's test document as the user, for case data that needs a document (such as a litigation
+  // friend's certificate of suitability). Returns the document as case data holds it (document_url,
+  // document_binary_url, document_filename and document_hash).
+  async uploadTestDocument(user): Promise<Record<string, string>> {
+    await this.getTokens(user);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.post(`${this.testingSupportUrl}/upload/test-document`, {
+        headers: this.getHeaders(),
+        data: {},
+      });
+      expect(response.ok(), `Uploading the test document returned ${response.status()}: ${await response.text()}`).toBeTruthy();
+      return await response.json();
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   async triggerTrialReadyCheck(caseId: string) {
     await this.runSystemEvent(caseId, 'TRIAL_READY_CHECK', 'Trial ready check');
   }

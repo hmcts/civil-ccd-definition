@@ -1,5 +1,7 @@
+import yesNo from '../../../../enums/yesNo.ts';
 import { claimantSolicitorCredentials } from '../../../../civilConfig.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
+import { TestingEndPointHelper } from '../../../../helpers/TestingEndPointHelper.ts';
 import { UnspecifiedConfig } from '../../../journey/unspecified/unspecifiedConfig.ts';
 import { buildCreateClaimPayload } from './payloads/createClaimPayload.ts';
 
@@ -11,8 +13,14 @@ export class CreateClaim {
 
   // Returns the new case's ID
   async create(c: UnspecifiedConfig): Promise<string> {
+    // A claimant's litigation friend needs a certificate of suitability, uploaded before the claim is submitted
+    const needsCertificate = c.claimShape.claimants.some((claimant) => claimant.litigationFriend === yesNo.YES);
+    const certificateOfSuitability = needsCertificate
+      ? await new TestingEndPointHelper().uploadTestDocument(claimantSolicitorCredentials)
+      : undefined;
+
     const started = await this.ccdApiHelper.startEvent(claimantSolicitorCredentials, 'CREATE_CLAIM');
-    const payload = buildCreateClaimPayload(c, started.caseData);
+    const payload = buildCreateClaimPayload(c, started.caseData, certificateOfSuitability);
     const created = await this.ccdApiHelper.submitEvent(claimantSolicitorCredentials, 'CREATE_CLAIM', started.token, payload);
     console.log(`CREATE_CLAIM submitted through the API: case ${created.id} is in state ${created.state}`);
     return String(created.id);
