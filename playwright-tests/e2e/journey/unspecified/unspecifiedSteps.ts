@@ -5,6 +5,8 @@ import { CreateClaim } from '../../flows/events/api/CreateClaim.ts';
 import { NotifyClaim as ApiNotifyClaim } from '../../flows/events/api/NotifyClaim.ts';
 import { NotifyClaimDetails as ApiNotifyClaimDetails } from '../../flows/events/api/NotifyClaimDetails.ts';
 import { AcknowledgeClaim as ApiAcknowledgeClaim } from '../../flows/events/api/AcknowledgeClaim.ts';
+import { RespondToClaim as ApiRespondToClaim } from '../../flows/events/api/RespondToClaim.ts';
+import { DirectionsQuestionnaireAnswers } from '../../flows/events/ui/DirectionsQuestionnaire.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
@@ -69,18 +71,31 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
     [c.track !== claimTrack.FAST, fastTrackReason],
   ];
 
-  // The arguments RespondToClaim and RespondToDefence share
+  // The directions questionnaire answers the responses share, through the UI or the API
+  const dqAnswers: DirectionsQuestionnaireAnswers = {
+    determinationWithoutHearing: c.determinationWithoutHearing,
+    oneMonthStay: c.oneMonthStay,
+    preActionProtocol: c.preActionProtocol,
+    fixedRecoverableCosts: c.fixedRecoverableCosts,
+    fixedRecoverableCostsBand: c.fixedRecoveryCostsBand,
+    disclosure: yesNo.YES,
+    noOfExperts: Number(c.noOfExperts),
+    noOfWitnesses: Number(c.noOfWitnesses),
+    language: c.language,
+    unavailableDatesRequired: c.unavailableDatesRequired,
+  };
+  // The same answers as the arguments the UI's RespondToClaim and RespondToDefence take
   const directionsQuestionnaireAnswers = () => [
-    c.determinationWithoutHearing,
-    c.oneMonthStay,
-    c.preActionProtocol,
-    c.fixedRecoverableCosts,
-    c.fixedRecoveryCostsBand,
-    yesNo.YES,
-    Number(c.noOfExperts),
-    Number(c.noOfWitnesses),
-    c.language,
-    c.unavailableDatesRequired,
+    dqAnswers.determinationWithoutHearing,
+    dqAnswers.oneMonthStay,
+    dqAnswers.preActionProtocol,
+    dqAnswers.fixedRecoverableCosts,
+    dqAnswers.fixedRecoverableCostsBand,
+    dqAnswers.disclosure,
+    dqAnswers.noOfExperts,
+    dqAnswers.noOfWitnesses,
+    dqAnswers.language,
+    dqAnswers.unavailableDatesRequired,
   ] as const;
 
   return [
@@ -322,17 +337,21 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       user: 'respondent1Solicitor',
       skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
       run: async ({ page, storageState }) => {
-        await ctx.runEvent(page, storageState, async () => {
-          await new RespondToClaim(page).submit(
-            c.claimType,
-            c.track,
-            c.typeOfClaim as unspecClaimTypes,
-            c.respondent1Response,
-            c.respondent2Response,
-            1,
-            ...directionsQuestionnaireAnswers(),
-          );
-        });
+        if (ctx.useApi()) {
+          await new ApiRespondToClaim().submit(c, ctx.caseId, 1, dqAnswers);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new RespondToClaim(page).submit(
+              c.claimType,
+              c.track,
+              c.typeOfClaim as unspecClaimTypes,
+              c.respondent1Response,
+              c.respondent2Response,
+              1,
+              ...directionsQuestionnaireAnswers(),
+            );
+          });
+        }
         await ctx.assertCaseState(expectedStateAfterResponse(1));
       },
     },
@@ -355,17 +374,21 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
           );
           test.skip(true, '1v2LIPLR: civil-service does not support a response from Defendant 2 Solicitor when Defendant 1 is a LiP');
         }
-        await ctx.runEvent(page, storageState, async () => {
-          await new RespondToClaim(page).submit(
-            c.claimType,
-            c.track,
-            c.typeOfClaim as unspecClaimTypes,
-            c.respondent1Response,
-            c.respondent2Response,
-            2,
-            ...directionsQuestionnaireAnswers(),
-          );
-        });
+        if (ctx.useApi()) {
+          await new ApiRespondToClaim().submit(c, ctx.caseId, 2, dqAnswers);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new RespondToClaim(page).submit(
+              c.claimType,
+              c.track,
+              c.typeOfClaim as unspecClaimTypes,
+              c.respondent1Response,
+              c.respondent2Response,
+              2,
+              ...directionsQuestionnaireAnswers(),
+            );
+          });
+        }
         await ctx.assertCaseState(expectedStateAfterResponse(2));
       },
     },
