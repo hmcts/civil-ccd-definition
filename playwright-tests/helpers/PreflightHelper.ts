@@ -5,7 +5,9 @@ import {
   civilServiceUrl,
   documentManagementStoreApiBaseUrl,
   envUrl,
+  feesRegisterApiBaseUrl,
   idamApiBaseUrl,
+  paymentApiBaseUrl,
   systemupdate,
   workAllocation,
 } from '../civilConfig.ts';
@@ -82,8 +84,10 @@ export class PreflightHelper {
       .map((name) => ({ check: 'Setting', target: name, ok: false, required: true, detail: 'not set' }));
   }
 
-  // The services the journeys call. Work allocation is only checked on a preview (where it has its own Camunda and
-  // WA task monitor) and is optional, as only journeys that reach the judge's directions order need it.
+  // The services the journeys call. Every journey pays the claim fee through the payment service (in the UI, or through
+  // the API with API_UNTIL), and the API create looks the fees up in the fees register. Work allocation is only checked
+  // on a preview (where it has its own Camunda and WA task monitor) and is optional, as only journeys that reach the
+  // judge's directions order need it.
   private services() {
     const services = [
       { name: 'XUI', url: `${envUrl}/health`, required: true },
@@ -93,6 +97,8 @@ export class PreflightHelper {
       { name: 'CCD data store', url: `${ccdDataStoreApiBaseUrl}/health`, required: true },
       { name: 'Document store', url: `${documentManagementStoreApiBaseUrl}/health`, required: true },
       { name: 'civil-service', url: `${civilServiceUrl}/health`, required: true },
+      { name: 'Payment service', url: `${paymentApiBaseUrl}/health`, required: true },
+      { name: 'Fees register', url: `${feesRegisterApiBaseUrl}/health`, required: true },
     ];
     if (envUrl.includes('://xui-')) {
       services.push(
