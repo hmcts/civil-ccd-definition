@@ -11,7 +11,9 @@ import path from 'node:path';
 //   ENV=preview PREVIEW_SERVICE=webapp PR_NUMBER=5365 yarn test:UNSPEC_1v1_FAST   (an XUI webapp PR, see below)
 //
 // What is already set in the shell (or by Jenkins) wins over the environment file.
-// Without ENV nothing is loaded here, so runs that set the variables themselves, and the pipelines, work as before.
+// A playwright-tests run must set ENV (see requirePlaywrightTestsEnv), except on CI, where the pipeline sets the
+// variables itself. Without ENV nothing is loaded here, so the playwright-e2e suites, which are kept for reference,
+// work as before.
 // Imported first in playwright.config.ts, so it runs before anything reads process.env.
 
 const environments = ['aat', 'demo', 'ithc', 'preview'];
@@ -118,4 +120,13 @@ if (envName && environments.includes(envName)) {
   loadEnv(envName);
 } else if (envName && process.env.TEST_WORKER_INDEX === undefined) {
   console.log(`playwright-tests: ENV=${envName} is not one of ${environments.join(', ')}, so no environment file was loaded`);
+}
+
+// Stops a playwright-tests run that has no environment loaded, so its settings always come from
+// playwright-tests/env/.env.<ENV> and never from anywhere else. On CI the pipeline sets the variables itself.
+export function requirePlaywrightTestsEnv() {
+  if (!playwrightTestsEnvLoaded && !process.env.CI) {
+    throw new Error(`playwright-tests: set ENV to one of ${environments.join(', ')}, so the settings are loaded from playwright-tests/env/.env.<ENV>`
+      + (envName ? ` (ENV=${envName} is not one of them)` : ''));
+  }
 }

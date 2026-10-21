@@ -5,8 +5,7 @@ import fs from 'fs';
 import { APIResponse } from 'playwright';
 import { stringify } from 'node:querystring';
 import { TokensHelper } from './TokensHelper.ts';
-import { civilSystemUpdate } from '../../playwright-e2e/config/users/exui-users.ts';
-import { civilServiceUrl, ccdDataStoreApiBaseUrl, createCase, systemupdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
+import { civilServiceUrl, ccdDataStoreApiBaseUrl, createCase, systemupdate, civilSystemUpdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
 import claimTypes from '../enums/claim-types.ts';
 import CaseStates from '../enums/caseStates.ts';
 import { CaseUserRegistry } from './CaseUserRegistry.ts';
@@ -405,8 +404,7 @@ export class TestingEndPointHelper {
 
   // Runs a CCD event on the case as the civil system update user, as civil-service's schedulers do
   private async runSystemEvent(caseId: string, eventId: string, summary: string) {
-    const systemUser = { username: civilSystemUpdate.email, password: civilSystemUpdate.password };
-    const { accessToken, s2sToken, uid } = await this.tokensHelper.getNonEventTokens(systemUser);
+    const { accessToken, s2sToken, uid } = await this.tokensHelper.getNonEventTokens(civilSystemUpdate);
     const eventToken = await this.tokensHelper.getEventToken(eventId, caseId, uid, accessToken, s2sToken);
     const eventUrl = `${ccdDataStoreApiBaseUrl}/caseworkers/${uid}/jurisdictions/${createCase.jurisdictionCode}`
       + `/case-types/${createCase.caseTypeCode}/cases/${caseId}/events`;

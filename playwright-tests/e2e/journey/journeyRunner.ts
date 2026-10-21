@@ -7,6 +7,7 @@ import { TestingEndPointHelper } from '../../helpers/TestingEndPointHelper.ts';
 import { CreateCasePage } from '../page-objects/pages/createCase_page.ts';
 import caseStates from '../../enums/caseStates.ts';
 import { SessionHelper, sessionUserFor, sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
+import { requirePlaywrightTestsEnv } from '../../env.ts';
 
 export interface StepArgs {
   page: Page;
@@ -108,6 +109,7 @@ export function defineJourney(
   steps: JourneyStep[],
   options: { stopAfterTest: string | undefined; validate: () => void },
 ) {
+  requirePlaywrightTestsEnv();
   // Each step's test number: the next number, unless it is in the same group as the step before it
   const numberedSteps = steps.reduce<Array<{ step: JourneyStep; testNumber: number }>>((numbered, step) => {
     const previous = numbered[numbered.length - 1];

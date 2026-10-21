@@ -1,5 +1,6 @@
 import { test as setup } from '@playwright/test';
 import { formatPreflightResults, PreflightHelper } from '../helpers/PreflightHelper.ts';
+import { requirePlaywrightTestsEnv } from '../env.ts';
 
 // Runs once before the sign-ins and the journeys (see the preflight project in playwright.config.ts), so a missing
 // setting, a service that is down or a user who cannot sign in stops the run straight away with a clear reason.
@@ -9,6 +10,8 @@ import { formatPreflightResults, PreflightHelper } from '../helpers/PreflightHel
 setup.describe.configure({ retries: 0 });
 
 setup('Preflight: settings, services and users', async () => {
+  // Checked even with PREFLIGHT=false
+  requirePlaywrightTestsEnv();
   setup.skip(process.env.PREFLIGHT === 'false', 'PREFLIGHT=false');
   setup.setTimeout(120_000);
 

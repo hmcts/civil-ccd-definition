@@ -1,9 +1,7 @@
-import config from '../playwright-e2e/config/config.ts';
-import Environment from '../playwright-e2e/constants/test-utils/environment.ts';
+import Environment from './enums/environment.ts';
 // Password12!
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const eventCode = process.env.CLAIM == 'SPEC' ? '_SPEC' : '';
-environment: process.env.ENVIRONMENT as Environment
 
 export const envUrl: string = process.env.URL;
 export const idamApiBaseUrl: string = process.env.IDAM_API_URL;
@@ -43,7 +41,7 @@ export const claimantSolicitorCredentials = {
   password: defaultPassword,
  // key: UserKey.CLAIMANT_SOLICITOR,
  // role: UserRole.CASEWORKER,
-  orgId: config.environment === Environment.DEMO ? 'B04IXE4' : 'Q1KOKP2',
+  orgId: process.env.ENVIRONMENT === Environment.DEMO ? 'B04IXE4' : 'Q1KOKP2',
 }
 
 export const respondent1SolicitorCredentials = {
@@ -80,6 +78,12 @@ export const hearingCentreAdminCredentials = {
   username: 'hearing_center_admin_reg1@justice.gov.uk',
   password: defaultPassword,
 }
+
+// The civil system update user, which runs the events civil-service's schedulers run (such as the trial ready check)
+export const civilSystemUpdate = {
+  username: 'civil-system-update@mailnesia.com',
+  password: process.env.SYSTEM_USER_PASSWORD,
+};
 
 export const systemupdate = {
   username: 'hmcts.civil+organisation.1.superuser@gmail.com',
