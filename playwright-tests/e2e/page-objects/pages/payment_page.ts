@@ -2,33 +2,11 @@ import {expect, Page} from "@playwright/test";
 import { TabsHelper } from '../../../helpers/TabsHelper';
 import { ButtonHelper} from "../../../helpers/ButtonHelper";
 import { paymentResultWaitSeconds } from "../../../civilConfig";
+import PaymentMethod from '../../../enums/paymentMethod.ts';
+import { paymentCard } from '../../../fixtures/paymentCard.ts';
 
 
 export class PaymentPage {
-  private cardNoLocator: string = '#card-no';
-  private expiryMonthLocator: string = '#expiry-month';
-  private expiryYearLocator: string = '#expiry-year';
-  private cardHolderNameLocator = '#cardholder-name';
-  private cvcLocator = '#cvc';
-  private addressLine1Locator = '#address-line-1';
-  private addressCityLocator = '#address-city';
-  private addressCountryLocator = '#address-country';
-  private addressPostcodeLocator = '#address-postcode';
-  private emailLocator = '#email';
-  private continueButtonLocator = '#submit-card-details';
-  private confirmButtonLocator = '#confirm';
-
-  private cardNumber: string = '4444333322221111';
-  private expiryMonth: string = '11';
-  private expiryYear: string = '2032';
-  private nameOnCard: string = 'Credit Card';
-  private cvc: string = '000';
-  private addressLine1: string = 'Buckingham Palace';
-  private city: string = 'London';
-  private country: string = 'United Kingdom';
-  private postcode: string = 'SW1A 1AA';
-  private email: string = 'sol-i-citor@test.com';
-
   private buttonHelper: ButtonHelper;
 
   constructor(public page: Page) {
@@ -38,7 +16,8 @@ export class PaymentPage {
   // Pays a fee from the Service Request tab. serviceRequestReference is the fee's service request (as the case keeps it
   // in claimIssuedPBADetails or hearingFeePBADetails), so "Pay now" is clicked in that fee's row: a case can list more
   // than one unpaid fee, for example a claim fee and a hearing fee. Without it the only "Pay now" link is clicked.
-  async makePayment(paymentType: string = 'PBA', serviceRequestReference?: string){
+  // The fee is paid from the PBA account, or by card (PAYMENT_METHOD=CARD, with the card in fixtures/paymentCard.ts).
+  async makePayment(paymentMethod: PaymentMethod = PaymentMethod.PBA, serviceRequestReference?: string){
     const confirmPaymentButton = this.page.getByRole('button', { name: 'Confirm payment' });
 
     const maxRetries: number = 10;
@@ -68,29 +47,14 @@ export class PaymentPage {
 
     await payNow.click();
 
-    paymentType == 'PBA' ? await this.page.locator('#pbaAccount').click() : await this.page.locator('#cardPayment').click();
- //   await this.page.waitForTimeout(2000);
-    if (paymentType === 'PBA') {
+    if (paymentMethod === PaymentMethod.PBA) {
+      await this.page.locator('#pbaAccount').click();
       await this.page.locator('#pbaAccountNumber').selectOption('PBA0078095');
       await this.page.locator('#pbaAccountRef').fill('PBA Account reference test text.');
       await this.page.keyboard.press('Tab');
       await confirmPaymentButton.click();
     } else {
-      await this.page.locator('#cardPayment').click();
-      await this.buttonHelper.continueButton.click();
-      await this.page.fill(this.cardNoLocator, this.cardNumber);
-      await this.page.fill(this.expiryMonthLocator, this.expiryMonth);
-      await this.page.fill(this.expiryYearLocator, this.expiryYear);
-      await this.page.fill(this.cardHolderNameLocator, this.nameOnCard);
-      await this.page.fill(this.cvcLocator, this.cvc);
-      await this.page.fill(this.addressLine1Locator, this.addressLine1);
-      await this.page.fill(this.addressCityLocator, this.city);
-      await this.page.fill(this.addressCountryLocator, this.country);
-      await this.page.fill(this.addressPostcodeLocator, this.postcode);
-      await this.page.fill(this.emailLocator, this.email);
-      await this.page.waitForTimeout(2000);
-      await this.page.click(this.continueButtonLocator);
-      await this.page.click(this.confirmButtonLocator);
+      await this.payByCard();
     }
     // The payment result can be slow to show when the payment service is busy. It is not retried, as paying again
     // could take a second payment.
@@ -98,5 +62,24 @@ export class PaymentPage {
     await expect(result, `No payment result within ${paymentResultWaitSeconds}s`).toContainText(/Payment successful|problem with the service/, { timeout: paymentResultWaitSeconds * 1000 });
     const message = await result.innerText();
     expect(message, 'Payment failed.').toContain('Payment successful');
+  }
+
+  // Card payment goes on to GOV.UK Pay's pages: the card details, then a page to confirm them, which then returns to
+  // XUI's payment result
+  private async payByCard() {
+    await this.page.locator('#cardPayment').click();
+    await this.buttonHelper.continueButton.click();
+    await this.page.locator('#card-no').fill(paymentCard.number);
+    await this.page.locator('#expiry-month').fill(paymentCard.expiryMonth);
+    await this.page.locator('#expiry-year').fill(paymentCard.expiryYear);
+    await this.page.locator('#cardholder-name').fill(paymentCard.nameOnCard);
+    await this.page.locator('#cvc').fill(paymentCard.securityCode);
+    await this.page.locator('#address-line-1').fill(paymentCard.addressLine1);
+    await this.page.locator('#address-city').fill(paymentCard.city);
+    await this.page.locator('#address-country').fill(paymentCard.country);
+    await this.page.locator('#address-postcode').fill(paymentCard.postcode);
+    await this.page.locator('#email').fill(paymentCard.email);
+    await this.page.locator('#submit-card-details').click();
+    await this.page.locator('#confirm').click();
   }
 }

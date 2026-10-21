@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import yesNo from '../../../enums/yesNo.ts';
+import PaymentMethod from '../../../enums/paymentMethod.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import claimTrack from '../../../enums/track.ts';
 import Timeline from '../../../enums/timeline.ts';
@@ -18,6 +19,10 @@ export enum InterestType {
 // The settings of one specified journey, read from its scenario's env vars
 export function specifiedConfig(scenarioEnv: Record<string, string | undefined>) {
   const env = cleanEnv({
+    PAYMENT_METHOD: enums({
+      values: [PaymentMethod.PBA, PaymentMethod.CARD],
+      default: PaymentMethod.PBA,
+    }),
     CLAIM_TYPE: enums({
       values: [
         claimTypes.ONE_VS_ONE_LIP,
@@ -71,6 +76,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     interestRequired: yes(scenarioEnv.INTEREST_REQUIRED),
     interestType: env.INTEREST_TYPE as InterestType,
     interestRate,
+    // How the claimant's solicitor pays the claim fee: from their PBA account (PAYMENT_METHOD=PBA, the default) or by
+    // card (CARD), which is always done in the UI, even when the claim is created through the API
+    paymentMethod: env.PAYMENT_METHOD as PaymentMethod,
     // Whether the claimant claims fixed commencement costs (FIXED_COMMENCEMENT_COSTS=Yes, default No)
     fixedCommencementCosts: yes(scenarioEnv.FIXED_COMMENCEMENT_COSTS),
 

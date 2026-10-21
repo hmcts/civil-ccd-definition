@@ -13,7 +13,7 @@ import claimTypes from '../../../enums/claim-types.ts';
 import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
 import claimTrack from '../../../enums/track.ts';
 import caseStates from '../../../enums/caseStates.ts';
-import { PaymentPage } from '../../page-objects/pages/payment_page.ts';
+import PaymentMethod from '../../../enums/paymentMethod.ts';
 import { NotifyClaim } from '../../flows/events/ui/NotifyClaim.ts';
 import { NotifyClaimDetails } from '../../flows/events/ui/NotifyClaimDetails.ts';
 import { AcknowledgeClaim } from '../../flows/events/ui/AcknowledgeClaim.ts';
@@ -128,7 +128,11 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
           CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
           await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CREATE_SERVICE_REQUEST_CLAIM');
           await ctx.assertCaseState(caseStates.PENDING_CASE_ISSUED);
-          await createClaim.payClaimFee(ctx.caseId);
+          if (c.paymentMethod === PaymentMethod.CARD) {
+            await ctx.payFeeInUi(page, storageState, 'claimIssuedPBADetails', c.paymentMethod);
+          } else {
+            await createClaim.payClaimFee(ctx.caseId);
+          }
           await waitForClaimIssued();
           return;
         }
@@ -217,8 +221,7 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
         console.log('caseId>>>>>>>>>>>>>>>' + ctx.caseId + '<<<<<<<<<<<<<<<<<<<');
         CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
         // Pay the claim fee, in its row of the Service Request tab
-        const serviceRequestReference = await ctx.testingEndpointHelper.waitForServiceRequestReference(ctx.caseId, 'claimIssuedPBADetails');
-        await new PaymentPage(page).makePayment('PBA', serviceRequestReference);
+        await ctx.payFeeInUi(page, storageState, 'claimIssuedPBADetails', c.paymentMethod);
         await waitForClaimIssued();
       },
     },
@@ -512,10 +515,7 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       skipIf: noCaseProgression(),
       run: async ({ page, storageState }) => {
         // Paid in the hearing fee's row of the Service Request tab, which can also list the claim fee
-        const serviceRequestReference = await ctx.testingEndpointHelper.waitForServiceRequestReference(ctx.caseId, 'hearingFeePBADetails');
-        await ctx.runEvent(page, storageState, async () => {
-          await new PaymentPage(page).makePayment('PBA', serviceRequestReference);
-        });
+        await ctx.payFeeInUi(page, storageState, 'hearingFeePBADetails', c.paymentMethod);
         // The payment service tells civil-service about the payment, which can take a while. Where it cannot reach
         // civil-service the test tells it instead. Telling it both ways would update the case twice, and the late
         // update can clash with the next event (CCD rejects it with HTTP 409), so the test only steps in if the payment

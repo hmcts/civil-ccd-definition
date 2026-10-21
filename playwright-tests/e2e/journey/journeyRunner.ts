@@ -5,6 +5,8 @@ import { ButtonHelper } from '../../helpers/ButtonHelper.ts';
 import { TabsHelper } from '../../helpers/TabsHelper.ts';
 import { TestingEndPointHelper } from '../../helpers/TestingEndPointHelper.ts';
 import { CreateCasePage } from '../page-objects/pages/createCase_page.ts';
+import { PaymentPage } from '../page-objects/pages/payment_page.ts';
+import PaymentMethod from '../../enums/paymentMethod.ts';
 import caseStates from '../../enums/caseStates.ts';
 import { SessionHelper, sessionUserFor, sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
 import { requirePlaywrightTestsEnv } from '../../env.ts';
@@ -71,6 +73,18 @@ export class JourneyContext {
   // run again from the start.
   async runEvent(page: Page, storageState: unknown, action: () => Promise<void>, reopenUrl: string = this.caseUrl()) {
     await new SessionHelper(page).runWithSessionRecovery(sessionUserFor(storageState), reopenUrl, action);
+  }
+
+  // Pays a fee in the UI, from its row of the Service Request tab, by PBA or by card. pbaDetailsField is the case
+  // field that holds the fee's service request (claimIssuedPBADetails or hearingFeePBADetails).
+  async payFeeInUi(page: Page, storageState: unknown, pbaDetailsField: string, paymentMethod: PaymentMethod) {
+    const serviceRequestReference = await this.testingEndpointHelper.waitForServiceRequestReference(this.caseId, pbaDetailsField);
+    await this.runEvent(page, storageState, async () => {
+      if (!page.url().includes(this.caseId)) {
+        await this.pageHelper.gotoAndWaitForXui(this.caseUrl());
+      }
+      await new PaymentPage(page).makePayment(paymentMethod, serviceRequestReference);
+    });
   }
 
   // Checks the claim is in the expected state, and notes when it has reached STOP_AT_STATE so the remaining tests are

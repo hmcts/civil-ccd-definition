@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import yesNo from '../../../enums/yesNo.ts';
+import PaymentMethod from '../../../enums/paymentMethod.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../../enums/personalInjuryTypes.ts';
@@ -22,6 +23,10 @@ export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
 // types skip which steps, and the state the claim is expected to reach after each response.
 export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined>) {
   const env = cleanEnv({
+    PAYMENT_METHOD: enums({
+      values: [PaymentMethod.PBA, PaymentMethod.CARD],
+      default: PaymentMethod.PBA,
+    }),
     CLAIM_TYPE: enums({
       values: [
         claimTypes.ONE_VS_ONE_LIP,
@@ -194,6 +199,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     noOfWitnesses,
     language: ['WELSH', 'ENGLISH', 'BOTH'].includes(scenarioEnv.LANGUAGE) ? (scenarioEnv.LANGUAGE as languageSpokenAndDocuments) : languageSpokenAndDocuments.ENGLISH,
     unavailableDatesRequired: yes(scenarioEnv.UNAVAILABLE_DATES),
+    // How the claimant's solicitor pays the claim fee and the hearing fee: from their PBA account (PAYMENT_METHOD=PBA,
+    // the default) or by card (CARD), which is always done in the UI, even when the claim is created through the API
+    paymentMethod: env.PAYMENT_METHOD as PaymentMethod,
     // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=Yes,
     // default No)
     addCaseNote: yes(scenarioEnv.ADD_CASE_NOTE),

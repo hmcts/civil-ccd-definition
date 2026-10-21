@@ -3,7 +3,7 @@ import { CreateSpecifiedCase } from '../../flows/createSpecifiedCase.ts';
 import { CreateClaimSpec } from '../../flows/events/api/CreateClaimSpec.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import caseStates from '../../../enums/caseStates.ts';
-import { PaymentPage } from '../../page-objects/pages/payment_page.ts';
+import PaymentMethod from '../../../enums/paymentMethod.ts';
 import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
 import { JourneyContext, JourneyStep } from '../journeyRunner.ts';
 import { SpecifiedConfig } from './specifiedConfig.ts';
@@ -40,7 +40,11 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
           CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
           await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CREATE_SERVICE_REQUEST_CLAIM');
           await ctx.assertCaseState(caseStates.PENDING_CASE_ISSUED);
-          await createClaim.payClaimFee(ctx.caseId);
+          if (c.paymentMethod === PaymentMethod.CARD) {
+            await ctx.payFeeInUi(page, storageState, 'claimIssuedPBADetails', c.paymentMethod);
+          } else {
+            await createClaim.payClaimFee(ctx.caseId);
+          }
           await waitForClaimIssued();
           return;
         }
@@ -115,8 +119,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         console.log('caseId>>>>>>>>>>>>>>>' + ctx.caseId + '<<<<<<<<<<<<<<<<<<<');
         CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
         // Pay the claim fee, in its row of the Service Request tab
-        const serviceRequestReference = await ctx.testingEndpointHelper.waitForServiceRequestReference(ctx.caseId, 'claimIssuedPBADetails');
-        await new PaymentPage(page).makePayment('PBA', serviceRequestReference);
+        await ctx.payFeeInUi(page, storageState, 'claimIssuedPBADetails', c.paymentMethod);
         await waitForClaimIssued();
       },
     },
