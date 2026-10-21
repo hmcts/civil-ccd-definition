@@ -224,12 +224,12 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
     },
 
     // Adding a case note, done as early as possible: court staff can add one in any state, so straight after the claim
-    // is issued. Only run with ADD_CASE_NOTE=true (default false).
+    // is issued. Only run with ADD_CASE_NOTE=Yes (default No).
     {
       name: 'ADD_CASE_NOTE',
       title: 'Hearing Centre Admin adds a case note.',
       user: 'hearingCentreAdmin',
-      skipIf: [[!c.addCaseNote, 'Adding a case note is switched off (set ADD_CASE_NOTE=true to run it)']],
+      skipIf: [[c.addCaseNote !== yesNo.YES, 'Adding a case note is switched off (set ADD_CASE_NOTE=Yes to run it)']],
       run: async ({ page, storageState }) => {
         const note = `Case note added by the unspecified journey at ${new Date().toISOString()}`;
         const caseNote = new AddCaseNote(page);

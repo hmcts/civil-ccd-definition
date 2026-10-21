@@ -194,9 +194,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     noOfWitnesses,
     language: ['WELSH', 'ENGLISH', 'BOTH'].includes(scenarioEnv.LANGUAGE) ? (scenarioEnv.LANGUAGE as languageSpokenAndDocuments) : languageSpokenAndDocuments.ENGLISH,
     unavailableDatesRequired: yes(scenarioEnv.UNAVAILABLE_DATES),
-    // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=true,
-    // default false)
-    addCaseNote: scenarioEnv.ADD_CASE_NOTE === 'true',
+    // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=Yes,
+    // default No)
+    addCaseNote: yes(scenarioEnv.ADD_CASE_NOTE),
     // Whether the hearing centre admin stays the case after the claimant's response, asks for an update and lifts the
     // stay (STAY_CASE=Yes, default No)
     stayCase: yes(scenarioEnv.STAY_CASE),
