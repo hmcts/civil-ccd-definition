@@ -6,7 +6,7 @@ Each command starts the journey from scratch: it creates a new claim and takes i
 
 ## 1. Environments
 
-ENV picks the git-ignored settings file playwright-tests/env/.env.<ENV>. Values already set in the shell win over the file.
+ENV picks the git-ignored settings file playwright-tests/env/.env.<ENV>, and every run must set it: without it the run stops straight away. Values already set in the shell win over the file.
 
 ### AAT
 
@@ -173,7 +173,25 @@ ENV=aat CLAIM_TYPE=1v2SS CASE_FLAGS='CLAIMANT_1:RA0042:British Sign Language (BS
 ENV=aat API_UNTIL=CASE_ISSUED ADD_CASE_NOTE=Yes STAY_CASE=Yes CASE_FLAGS=representative npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
-## 8. A fully specified claim
+## 8. Paying fees by PBA or card
+
+PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hearing fee. PBA (the default) pays from their PBA account. CARD pays on GOV.UK Pay's pages with a test card, in the claimant solicitor's name and at their organisation's address (playwright-tests/fixtures/paymentCard.ts).
+
+A card payment is always made in the UI. With API_UNTIL the claim is still created through the API, and its fee is then paid by card from the Service Request tab.
+
+```bash
+ENV=aat PAYMENT_METHOD=CARD npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+Create the claim through the API and pay its fee by card, then pay the hearing fee by card later in the run:
+
+```bash
+ENV=aat API_UNTIL=JUDICIAL_REFERRAL STOP_AFTER_TEST=PAY_HEARING_FEE PAYMENT_METHOD=CARD npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+Card payment is useful when PBA payments are failing on the environment, for example with "Unable to retrieve account information".
+
+## 9. A fully specified claim
 
 A 1v1 fast track road accident claim with fixed recoverable costs, experts and witnesses (the same as yarn test:UNSPEC_1v1_FAST):
 
@@ -187,7 +205,7 @@ Run a named scenario from playwright-tests/scenarios/unspecifiedScenarios.ts:
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --grep @UNSPEC_1v2DS_FAST_STAY_CASE
 ```
 
-## 9. Claim parameters
+## 10. Claim parameters
 
 Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No.
 
@@ -198,8 +216,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `DEFENDANT_TYPE` | INDIVIDUAL, COMPANY, ORGANISATION, SOLE_TRADER | INDIVIDUAL | Any other value is treated as INDIVIDUAL. |
 | `CLAIMANT1_LITIGANT_FRIEND` | Yes, No | No | Claimant 1 has a litigation friend. |
 | `CLAIMANT2_LITIGANT_FRIEND` | Yes, No | No | Claimant 2 has a litigation friend (2v1 claims). |
-| `TYPE_OF_CLAIM` | PERSONAL_INJURY, CLINICAL_NEGLIGENCE, PROFESSIONAL_NEGLIGENCE, BREACH_OF_CONTRACT, CONSUMER, CONSUMER_CREDIT, HOUSING_DISREPAIR, DAMAGES_AND_OTHER_REMEDY, OTHER | No default | Every package.json script and scenario sets it. |
-| `SUB_TYPE` | ROAD_ACCIDENT, WORK_ACCIDENT, PUBLIC_LIABILITY, HOLIDAY_ILLNESS, DISEASE_CLAIM, NOISE_INDUCED_HEARING_LOSS, PERSONAL_INJURY_OTHER | No default | Only for PERSONAL_INJURY. A noise induced hearing loss claim must be on the fast track. |
+| `TYPE_OF_CLAIM` | PERSONAL_INJURY, CLINICAL_NEGLIGENCE, PROFESSIONAL_NEGLIGENCE, BREACH_OF_CONTRACT, CONSUMER, CONSUMER_CREDIT, HOUSING_DISREPAIR, DAMAGES_AND_OTHER_REMEDY, OTHER | PERSONAL_INJURY | A value that is set but is not one of these stops the run before it starts. |
+| `SUB_TYPE` | ROAD_ACCIDENT, WORK_ACCIDENT, PUBLIC_LIABILITY, HOLIDAY_ILLNESS, DISEASE_CLAIM, NOISE_INDUCED_HEARING_LOSS, PERSONAL_INJURY_OTHER | ROAD_ACCIDENT (personal injury only) | Only for PERSONAL_INJURY. A value that is not one of these stops the run before it starts. A noise induced hearing loss claim must be on the fast track. |
 | `TRACK` | SMALL_CLAIM, FAST_CLAIM, INTERMEDIATE_CLAIM, MULTI_CLAIM | FAST_CLAIM | Sets the claim value. The steps from the Standard Direction Order on only run on the fast track. |
 | `DEFENDANTS_TO_NOTIFY_CLAIM` | Both, Defendant One, Defendant Two | Both | Quote values with spaces. Anything other than Both takes the claim offline. |
 | `DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS` | Both, Defendant One, Defendant Two | Both | Anything other than Both takes the claim offline. |
@@ -218,16 +236,17 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `LANGUAGE` | ENGLISH, WELSH, BOTH | ENGLISH | Language for the hearing and documents. |
 | `UNAVAILABLE_DATES` | Yes, No | No | Adds unavailable dates to the directions questionnaires. |
 | `FINAL_ORDER` | Small and fast: FREE_FORM_ORDER, ASSISTED_ORDER. Intermediate: BLANK_TEMPLATE_AFTER_HEARING, BLANK_TEMPLATE_BEFORE_HEARING, FIX_A_DATE_FOR_CMC. Multi: those three and FIX_A_DATE_FOR_CCMC | First order for the track | FREE_FORM_ORDER on small and fast, BLANK_TEMPLATE_AFTER_HEARING on intermediate and multi. |
+| `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee and the hearing fee are paid. CARD is always paid in the UI, on GOV.UK Pay's pages. Any other value stops the run. |
 | `ADD_CASE_NOTE` | Yes, No | No | Optional event: Hearing Centre Admin adds a case note after the claim is issued. |
 | `STAY_CASE` | Yes, No | No | Optional events: stay the case, request an update and lift the stay, after the claimant's response. |
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional event: each defendant's solicitor informs the court of an agreed extension after acknowledging the claim. |
 | `CASE_FLAGS` | representative, or a list of holder:code[:detail] | None | Optional events: add flags after the claimant's response, then make the first inactive. Holders: CASE, CLAIMANT_1/2, DEFENDANT_1/2, CLAIMANT_1/2_LITIGATION_FRIEND, CLAIMANT_EXPERT_n, CLAIMANT_WITNESS_n, DEFENDANT_1/2_EXPERT_n, DEFENDANT_1/2_WITNESS_n. The detail is the language for an interpreter flag or the description for an OT0001 flag. |
 
-## 10. Run settings
+## 11. Run settings
 
 | Parameter | Values | Default | Notes |
 | --- | --- | --- | --- |
-| `ENV` | aat, demo, ithc, preview | None | Loads playwright-tests/env/.env.<ENV>. |
+| `ENV` | aat, demo, ithc, preview | None (required) | Loads playwright-tests/env/.env.<ENV>. A run without it stops straight away. |
 | `PREVIEW_SERVICE` | ccd, service, citizen-ui, webapp | None | Needed with ENV=preview: the repository the preview belongs to. |
 | `PR_NUMBER` | A PR number | None | Needed with ENV=preview. |
 | `API_UNTIL` | A case state | None (all UI) | Steps with an API version use the API until the claim reaches this state. |
