@@ -21,6 +21,15 @@
     "TabID": "ServiceRequest",
     "TabLabel": "Service Request",
     "TabDisplayOrder": 6,
+    "CaseFieldID": "cancelUnissuedClaimDate",
+    "TabFieldDisplayOrder": 4,
+    "FieldShowCondition": "casePaymentWaysToPay=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ServiceRequest",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
     "CaseFieldID": "casePaymentWaysToPay",
     "TabFieldDisplayOrder": 2,
     "FieldShowCondition": "hwfFeeType!=\"CLAIMISSUED\" AND businessProcess.status=\"FINISHED\" AND cancelUnissuedClaimDate!=\"*\""
