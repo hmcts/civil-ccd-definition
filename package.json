@@ -244,7 +244,7 @@
     "allure-js-commons": "^3.4.2",
     "allure-playwright": "2.15.1",
     "chai": "^6.0.0",
-    "codeceptjs": "4.2.1",
+    "codeceptjs": "4.2.2",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
     "deep-equal-in-any-order": "^2.0.0",
     "dotenv": "^18.0.0",
