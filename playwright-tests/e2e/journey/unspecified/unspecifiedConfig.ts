@@ -125,8 +125,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
   const respondent2Response: respondentResponses = env.RESPONDENT2_RESPONSE;
   const claimantProceed1: yesNo = env.CLAIMANT_PROCEED_1;
   const claimantProceed2: yesNo = env.CLAIMANT_PROCEED_2;
-  const typeOfClaim = scenarioEnv.TYPE_OF_CLAIM;
-  const typeOfClaimSubType: string = scenarioEnv.SUB_TYPE;
+  // A personal injury claim from a road accident unless TYPE_OF_CLAIM (and, for personal injury, SUB_TYPE) is set
+  const typeOfClaim = scenarioEnv.TYPE_OF_CLAIM ?? unspecClaimTypes.PERSONAL_INJURY;
+  const typeOfClaimSubType: string = scenarioEnv.SUB_TYPE
+    ?? (typeOfClaim === unspecClaimTypes.PERSONAL_INJURY ? personalInjuryTypes.ROAD_ACCIDENT : undefined);
   const defendantsToNotifyClaim: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM;
   const defendantsToNotifyClaimDetails: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS;
   // Notifying only one defendant takes the claim offline, so no later events can be done online
@@ -242,6 +244,17 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
     // Checks the settings make sense together, before the journey starts
     validate() {
+      expect(
+        Object.values(unspecClaimTypes),
+        `Invalid TYPE_OF_CLAIM value: ${typeOfClaim}. It must be one of ${Object.values(unspecClaimTypes).join(', ')}.`,
+      ).toContain(typeOfClaim);
+      if (typeOfClaim === unspecClaimTypes.PERSONAL_INJURY) {
+        expect(
+          Object.values(personalInjuryTypes),
+          `Invalid SUB_TYPE value: ${typeOfClaimSubType}. It must be one of ${Object.values(personalInjuryTypes).join(', ')}.`,
+        ).toContain(typeOfClaimSubType);
+      }
+
       if (noiseInducedHearingLoss) {
         expect(
           track,
