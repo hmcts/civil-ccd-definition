@@ -94,7 +94,7 @@ exports.config = {
     },
     failedAndNotExecutedTestFilesPlugin: {
       enabled: functional,
-      require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin',
+      require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin.js',
     },
     allure: {
       enabled: true,
