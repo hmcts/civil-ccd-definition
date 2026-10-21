@@ -63,6 +63,7 @@ civil-service:
             alias: CCD_EVENTS_TOPIC_CONNECTION_STRING
     environment:
       SCHEDULER_ENABLED_JUDGEMENT_BUFFER: true
+      SCHEDULER_ACTIVE_SCHEDULERS: JudgementBuffer,ExpiredDraftStore,DefendantResponseDeadline,DecisionOutcome
       LAUNCH_DARKLY_ENV: aat
       EM_CCD_ORCHESTRATOR_URL: http://${SERVICE_NAME}-em-ccdorc
       CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
