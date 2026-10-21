@@ -48,7 +48,7 @@
       "matchPackageNames": ["@playwright/test", "playwright-core", "@axe-core/playwright"],
       "groupName": "Playwright",
       "groupSlug": "playwright",
-      "automerge": false,
+      "automerge": true,
       "automergeType": "pr"
     },
     {
