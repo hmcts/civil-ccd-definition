@@ -7,6 +7,8 @@ import { TestingEndPointHelper } from './TestingEndPointHelper.ts';
 // How long to wait for a document upload to start, and then to finish
 const uploadStartSeconds = 3;
 const uploadFinishSeconds = 120;
+// How long XUI's loading spinner can cover the case page before the page is reloaded to clear it
+const caseSpinnerSeconds = 20;
 
 // Errors CCD returns when checking an event page that come from a busy environment rather than the page itself, so
 // clicking Continue again can succeed
@@ -47,6 +49,16 @@ export class PageHelper {
         if (this.page.url().includes('/trigger/')) {
           return;
         }
+        // XUI's loading spinner can stay over the case page when the browser never gets an answer to one of XUI's
+        // requests, so Go cannot be clicked. Reloading the case page clears it.
+        const spinnerCleared = await expect(this.page.locator('xuilib-loading-spinner'))
+          .toHaveCount(0, { timeout: caseSpinnerSeconds * 1000 })
+          .then(() => true, () => false);
+        if (!spinnerCleared) {
+          console.log(`XUI's loading spinner still showing after ${caseSpinnerSeconds}s, reloading the case page`);
+          await this.page.reload();
+          await expect(this.page.locator('#next-step')).toBeEnabled({ timeout: 30000 });
+        }
         // XUI can re-render the case page after the option is chosen, resetting the dropdown to "Select action"
         // and leaving Go disabled, so the option is selected again on every attempt
         await this.page.locator('#next-step').selectOption({ label: nextStep }, { timeout: 5000 });
@@ -56,7 +68,7 @@ export class PageHelper {
         await expect(this.page).toHaveURL(/\/trigger\//, { timeout: 15000 });
       }).toPass({
         intervals: [2000, 5000], // Time to wait between retries (in ms)
-        timeout: 60000,          // Total maximum time for all retries combined (in ms)
+        timeout: 180000,         // Total maximum time for all retries combined (in ms), long enough for three reloads
       });
     }
 
