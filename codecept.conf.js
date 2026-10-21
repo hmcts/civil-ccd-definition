@@ -105,7 +105,7 @@ exports.config = {
   mocha: {
     bail: true,
     reporterOptions: {
-      'codeceptjs-cli-reporter': {
+      './e2e/plugins/codeceptjsCliReporter.js': {
         stdout: '-',
         options: {
           steps: false,
