@@ -1,6 +1,7 @@
 import BaseApi from '../../../base/base-api';
 import { judgeRegion1User } from '../../../config/users/exui-users';
 import GaCaseState from '../../../constants/cases/ga-case-states';
+import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import gaCCDEvents from '../../../constants/ccd-events/ga-ccd-events/ga-ccd-events';
 import judgeDecideOnApplicationFast from '../../../constants/wa-tasks/ga-exui/judgeDecideOnApplicationFast';
 import JudgeGaDataBuilderFactory from '../../../data-builders/ga-exui/judge/judge-ga-data-builder-factory';
@@ -67,6 +68,30 @@ export default class JudgeGaApiSteps extends BaseApi {
       const { makeDecisionSchemaBuilder } = this.judgeGaSchemaBuilderFactory;
       const makeDecisionSchema = await makeDecisionSchemaBuilder.buildListHearing(gaCaseDataBeforeSubmission);
       ZodHelper.safeParse(makeDecisionSchema, this.getGaCCDCaseData());
+    });
+  }
+
+  async GenerateDirectionsOrderAssistedWithoutFurtherHearing() {
+    await this.setupApiStep(judgeRegion1User);
+    const gaCaseDataBeforeSubmission = structuredClone(this.getGaCCDCaseData());
+
+    const { generateDirectionsOrderDataBuilder } = this.judgeGaDataBuilderFactory;
+    const generateDirectionsOrderData = await generateDirectionsOrderDataBuilder.buildAssistedOrderWithoutFurtherHearing();
+
+    await super.submitGaCCDEvent(
+      judgeRegion1User,
+      ccdEvents.GENERATE_DIRECTIONS_ORDER,
+      generateDirectionsOrderData,
+      { expectedState: GaCaseState.ORDER_MADE },
+    );
+
+    await this.runZodValidation(async () => {
+      const { generateDirectionsOrderSchemaBuilder } = this.judgeGaSchemaBuilderFactory;
+      const generateDirectionsOrderSchema =
+        await generateDirectionsOrderSchemaBuilder.buildAssistedOrderWithoutFurtherHearing(
+          gaCaseDataBeforeSubmission,
+        );
+      ZodHelper.safeParse(generateDirectionsOrderSchema, this.getGaCCDCaseData());
     });
   }
 }
