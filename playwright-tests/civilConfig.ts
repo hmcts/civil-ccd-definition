@@ -23,7 +23,8 @@ export const paymentApiBaseUrl: string = process.env.PAYMENT_API_URL
 export const createCase = {
   jurisdictionCode: 'CIVIL',
   caseTypeCode: 'Civil',
-  eventCode: 'CREATE_CLAIM' + eventCode
+  eventCode: 'CREATE_CLAIM' + eventCode,
+  specifiedEventCode: 'CREATE_CLAIM_SPEC',
 }
 
 export const createCaseTest = (caseType) => {

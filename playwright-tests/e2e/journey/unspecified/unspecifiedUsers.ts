@@ -1,14 +1,13 @@
 import { selectedScenarios } from '../../../scenarios/unspecifiedScenarios.ts';
-import { sessionUsers, SessionUserKey } from '../../../helpers/SessionHelper.ts';
+import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { JourneyContext } from '../journeyRunner.ts';
 import { unspecifiedConfig } from './unspecifiedConfig.ts';
 import { unspecifiedSteps } from './unspecifiedSteps.ts';
 
-// The saved session users the run needs, which preflight checks and the authentication setup signs in: everyone who
-// runs a step in any of the run's scenarios (a step that does not apply to a scenario's claim is left out). The claimant
-// and Defendant 1 solicitors are always included.
-export function sessionUsersForRun(): SessionUserKey[] {
-  const users = new Set<SessionUserKey>(['claimantSolicitor', 'respondent1Solicitor']);
+// Everyone who runs a step in any of the run's unspecified scenarios (a step that does not apply to a scenario's claim
+// is left out)
+export function unspecifiedSessionUsers(): Set<SessionUserKey> {
+  const users = new Set<SessionUserKey>();
   for (const scenario of selectedScenarios()) {
     for (const step of unspecifiedSteps(unspecifiedConfig(scenario.env), new JourneyContext(undefined))) {
       const stepApplies = !(step.skipIf ?? []).some(([condition]) => condition);
@@ -17,5 +16,5 @@ export function sessionUsersForRun(): SessionUserKey[] {
       }
     }
   }
-  return (Object.keys(sessionUsers) as SessionUserKey[]).filter((key) => users.has(key));
+  return users;
 }

@@ -26,9 +26,9 @@ export class CreateCasePage {
     // CCD can take longer than the action timeout to return the jurisdictions, leaving the list empty, so wait for
     // an option other than "--Select a value--" and reload if it doesn't arrive
     await new PageHelper(this.page).waitForReady(ccJurisdiction.locator('option').nth(1), 'The Create case jurisdiction list');
-    await ccJurisdiction.selectOption(caseType === 'UNSPECIFIED' ? createCase.jurisdictionCode : createCase.jurisdictionCode);
-    await ccCaseType.selectOption(caseType === 'UNSPECIFIED' ? createCase.caseTypeCode : createCase.caseTypeCode);
-    await ccEvent.selectOption(caseType === 'UNSPECIFIED' ? createCase.eventCode : createCase.eventCode);
+    await ccJurisdiction.selectOption(createCase.jurisdictionCode);
+    await ccCaseType.selectOption(createCase.caseTypeCode);
+    await ccEvent.selectOption(caseType === 'SPECIFIED' ? createCase.specifiedEventCode : createCase.eventCode);
     await this.startButton.click();
   }
 }

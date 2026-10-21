@@ -3,7 +3,7 @@ import { envUrl } from '../civilConfig.ts';
 import {IdamPage} from '../e2e/page-objects/pages/idam.po';
 import { SessionUtils } from '../e2e/utils/session.utils.ts';
 import { saveSession, sessionUsers, signedInToXui, signInWithoutBrowser } from '../helpers/SessionHelper.ts';
-import { sessionUsersForRun } from '../e2e/journey/unspecified/unspecifiedUsers.ts';
+import { sessionUsersForRun } from '../e2e/journey/sessionUsersForRun.ts';
 
 const authCookieName = "__auth__";
 const tokenValidityBufferSeconds = 60 * 60;

@@ -98,8 +98,9 @@ export class TestingEndPointHelper {
   }
 
   // Tells civil-service the claim fee has been paid, as the payment service would, and waits for the claim to be
-  // issued (CREATE_CLAIM_AFTER_PAYMENT). Used where the payment service cannot reach civil-service.
-  async serviceRequestUpdateClaimIssued(caseId: string) {
+  // issued (CREATE_CLAIM_AFTER_PAYMENT, or CREATE_CLAIM_SPEC_AFTER_PAYMENT for a specified claim). Used where the
+  // payment service cannot reach civil-service.
+  async serviceRequestUpdateClaimIssued(caseId: string, camundaEvent: string = 'CREATE_CLAIM_AFTER_PAYMENT') {
     await this.getTokens(systemupdate);
     const serviceRequestUpdateClaimIssuedUrl = `${civilServiceUrl}/service-request-update-claim-issued`;
     const apiRequestContext: APIRequestContext = await request.newContext();
@@ -131,7 +132,7 @@ export class TestingEndPointHelper {
           `Claim fee payment callback returned ${response.status()} - ${errorText}. Ensure your VPN is connected or check your URL/SECRET.`
         );
       } else {
-        await this.waitForCamundaProcessToFinish(caseId, 'CREATE_CLAIM_AFTER_PAYMENT');
+        await this.waitForCamundaProcessToFinish(caseId, camundaEvent);
       }
     }
     catch (error) {

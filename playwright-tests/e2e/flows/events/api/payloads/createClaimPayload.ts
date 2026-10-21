@@ -92,7 +92,7 @@ type PartyDetails = (typeof partyDetails)['claimant1'];
 
 // A party's details for their type, as the Claimant and Defendant pages ask for them. Only a claimant is asked for a
 // date of birth, and a defendant is only asked for a phone number when they are an individual or a sole trader.
-function party(type: string, details: PartyDetails, isClaimant: boolean) {
+export function party(type: string, details: PartyDetails, isClaimant: boolean) {
   const dateOfBirth = `${details.DOB_year}-${details.DOB_month}-${details.DOB_day}`;
   const nameAndPhone = (() => {
     switch (type) {
