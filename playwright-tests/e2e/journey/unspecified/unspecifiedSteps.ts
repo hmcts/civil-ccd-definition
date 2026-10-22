@@ -372,6 +372,9 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
             );
           });
         }
+        // civil-service sets the state straight away but rejects the next event until the response's business
+        // process (documents, notifications) has finished, which can take minutes on a busy environment
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DEFENDANT_RESPONSE');
         await ctx.assertCaseState(expectedStateAfterResponse(1));
       },
     },
@@ -409,6 +412,7 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
             );
           });
         }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DEFENDANT_RESPONSE');
         await ctx.assertCaseState(expectedStateAfterResponse(2));
       },
     },
