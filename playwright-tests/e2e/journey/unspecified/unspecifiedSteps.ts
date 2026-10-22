@@ -36,6 +36,16 @@ import { ManageCaseFlag } from '../../flows/events/ui/ManageCaseFlag.ts';
 import { caseFlagType } from '../../flows/caseFlags/caseFlagTypes.ts';
 import { holderFlagsField, holderLabel } from '../../flows/caseFlags/caseFlagHolders.ts';
 import { CaseFlagSpec, caseFlagSpecs } from '../../flows/caseFlags/caseFlagSpecs.ts';
+import { ManageContactInformation } from '../../flows/events/ui/ManageContactInformation.ts';
+import { ManageContactInformation as ApiManageContactInformation } from '../../flows/events/api/ManageContactInformation.ts';
+import {
+  mciChange,
+  mciChangeNotSavedReason,
+  mciSessionUser,
+  mciSpecs,
+  mciStartsBusinessProcess,
+  mciUserLabel,
+} from '../../flows/manageContactInformation/manageContactInformationSpecs.ts';
 import { JourneyContext, JourneyStep } from '../journeyRunner.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { UnspecifiedConfig } from './unspecifiedConfig.ts';
@@ -430,6 +440,9 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
     // The hearing centre admin adds the CASE_FLAGS flags once the claimant has responded, then makes the first inactive
     ...caseFlagSteps(),
 
+    // The admin and solicitors update contact details once the claimant has responded (MANAGE_CONTACT_INFORMATION)
+    ...manageContactInformationSteps(),
+
     // The hearing centre admin stays the case once the claimant has responded, asks the parties for an update and then
     // lifts the stay. Lifting it takes the claim back to JUDICIAL_REFERRAL, so the journey carries on to the Standard
     // Direction Order. Only run with STAY_CASE=Yes.
@@ -683,6 +696,45 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       return [{ name: 'CREATE_CASE_FLAGS', title: 'Hearing Centre Admin adds case flags.', user: 'hearingCentreAdmin', skipIf: noCaseFlags, run: async () => {} }];
     }
     return [...createSteps, manageStep];
+  }
+
+  // One step per MANAGE_CONTACT_INFORMATION entry, each a Manage Contact Information event as its user, checked against
+  // the case data civil-service saved. Solicitors can only run it once the claimant has responded.
+  function manageContactInformationSteps(): JourneyStep[] {
+    const specs = mciSpecs(c);
+    const noMci: Array<[boolean, string]> = [
+      ...noClaimantResponse,
+      [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
+      [specs.length === 0, 'Managing contact information is switched off (set MANAGE_CONTACT_INFORMATION=representative, or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1)'],
+    ];
+
+    if (specs.length === 0) {
+      // Without MANAGE_CONTACT_INFORMATION the journey still lists one step, skipped with the reason
+      return [{ name: 'MANAGE_CONTACT_INFORMATION', title: 'Contact information is updated.', user: 'hearingCentreAdmin', skipIf: noMci, run: async () => {} }];
+    }
+    return specs.map((spec, index) => ({
+      name: `MANAGE_CONTACT_INFORMATION_${index + 1}`,
+      group: 'MANAGE_CONTACT_INFORMATION',
+      title: `${mciUserLabel(spec)} updates the contact information of ${spec.party}.`,
+      user: mciSessionUser(spec),
+      skipIf: noMci,
+      run: async ({ page, storageState }) => {
+        const change = mciChange(index, spec);
+        if (ctx.useApi()) {
+          await new ApiManageContactInformation().submit(ctx.caseId, spec, change);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new ManageContactInformation(page).submit(spec, change);
+          });
+        }
+        if (mciStartsBusinessProcess(spec.party)) {
+          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'MANAGE_CONTACT_INFORMATION');
+        }
+        const notSaved = mciChangeNotSavedReason(await ctx.testingEndpointHelper.getCaseData(ctx.caseId), spec, change);
+        expect(notSaved, `Manage Contact Information for ${spec.party} was not saved: ${notSaved}`).toBeUndefined();
+        await ctx.assertCaseState(caseStates.JUDICIAL_REFERRAL);
+      },
+    }));
   }
 
   function informAgreedExtensionSteps(): JourneyStep[] {

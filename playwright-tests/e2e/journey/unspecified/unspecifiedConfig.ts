@@ -15,6 +15,7 @@ import fixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
 import caseStates from '../../../enums/caseStates.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
+import { mciProblem } from '../../flows/manageContactInformation/manageContactInformationSpecs.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
@@ -216,6 +217,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // The case flags the hearing centre admin adds after the claimant's response, and then makes the first one inactive
     // (CASE_FLAGS: "representative", or a list such as CASE:CF0002,DEFENDANT_1:RA0012; see caseFlagSpecs.ts)
     caseFlagsSetting: scenarioEnv.CASE_FLAGS,
+    // Who updates which contact details after the claimant's response, each a run of Manage Contact Information
+    // (MANAGE_CONTACT_INFORMATION: "representative", or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1;
+    // see manageContactInformationSpecs.ts)
+    manageContactInformationSetting: scenarioEnv.MANAGE_CONTACT_INFORMATION,
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
     claimOfflineAfterNotifyClaim,
@@ -278,6 +283,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
       const caseFlagsError = caseFlagsProblem(config);
       expect(caseFlagsError, caseFlagsError).toBeUndefined();
+
+      const mciError = mciProblem(config);
+      expect(mciError, mciError).toBeUndefined();
     },
   };
   return config;

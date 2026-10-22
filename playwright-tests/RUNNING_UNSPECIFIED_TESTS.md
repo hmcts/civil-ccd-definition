@@ -105,6 +105,7 @@ Steps, in the order they run:
 - RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2
 - RESPOND_TO_DEFENCE
 - CREATE_CASE_FLAGS (group), MAKE_CASE_FLAG_INACTIVE (optional)
+- MANAGE_CONTACT_INFORMATION (group, optional)
 - STAY_CASE, MANAGE_STAY_REQUEST_UPDATE, LIFT_STAY (optional)
 - CREATE_SDO
 - UPLOAD_EVIDENCE (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR)
@@ -165,6 +166,20 @@ ENV=aat CASE_FLAGS=representative STOP_AFTER_TEST=MAKE_CASE_FLAG_INACTIVE npx pl
 
 ```bash
 ENV=aat CLAIM_TYPE=1v2SS CASE_FLAGS='CLAIMANT_1:RA0042:British Sign Language (BSL),DEFENDANT_1:PF0019,DEFENDANT_2:PF0015:Spanish' npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+### Manage contact information
+
+The representative set: the admin adds a witness for Defendant 1, the claimant's solicitor changes Claimant 1's details and adds someone attending for their firm, and each defendant's solicitor changes their client's details.
+
+```bash
+ENV=aat MANAGE_CONTACT_INFORMATION=representative STOP_AFTER_TEST=MANAGE_CONTACT_INFORMATION npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+Or a list of user:party, one run of the event each:
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS DEFENDANT_TYPE=COMPANY EXPERTS=1 MANAGE_CONTACT_INFORMATION='admin:DEFENDANT_1_EXPERTS,respondent1Solicitor:DEFENDANT_1_ORGANISATION_INDIVIDUALS,respondent2Solicitor:DEFENDANT_2_EXPERTS' STOP_AFTER_TEST=MANAGE_CONTACT_INFORMATION npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
 ### Several at once, with the API for the early steps
@@ -241,6 +256,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `STAY_CASE` | Yes, No | No | Optional events: stay the case, request an update and lift the stay, after the claimant's response. |
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional event: each defendant's solicitor informs the court of an agreed extension after acknowledging the claim. |
 | `CASE_FLAGS` | representative, or a list of holder:code[:detail] | None | Optional events: add flags after the claimant's response, then make the first inactive. Holders: CASE, CLAIMANT_1/2, DEFENDANT_1/2, CLAIMANT_1/2_LITIGATION_FRIEND, CLAIMANT_EXPERT_n, CLAIMANT_WITNESS_n, DEFENDANT_1/2_EXPERT_n, DEFENDANT_1/2_WITNESS_n. The detail is the language for an interpreter flag or the description for an OT0001 flag. |
+| `MANAGE_CONTACT_INFORMATION` | representative, or a list of user:party | None | Optional events: Manage Contact Information after the claimant's response, one run per entry, each checked against the saved case data. Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor (a solicitor only sees their own side). Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _LITIGATION_FRIEND or _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS, _WITNESSES or _EXPERTS. A party's or litigation friend's email (and a party's first address line) is changed, an individual is added, and a witness or expert is added by the admin or the first one's email changed by a solicitor (set WITNESSES or EXPERTS). Has an API version. |
 
 ## 11. Run settings
 

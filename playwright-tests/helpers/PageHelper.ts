@@ -202,6 +202,12 @@ export class PageHelper {
         }
 
         const body = await outcome.response.text().catch(() => '');
+        // A callback warning comes back as a 422 with callbackWarnings and no callbackErrors. XUI shows the warning and
+        // offers "Ignore Warning and Continue" for the caller to click.
+        if (status === 422 && this.isWarningOnly(body)) {
+          await this.page.getByRole('button', { name: 'Ignore Warning and Continue' }).waitFor({ state: 'visible', timeout });
+          return;
+        }
         // 401: XUI still has the session but CCD rejected the user's token. 403 with XUI's own "Internal Server Error"
         // body: XUI no longer has the session (it fails its CSRF check). Any other 403 is CCD refusing access.
         if (status === 401 || (status === 403 && body.includes(xuiSessionEndedBody))) {
@@ -274,6 +280,16 @@ export class PageHelper {
         }
       }
       throw new SessionEndedError(`submitting ${eventId} got HTTP ${status} and CCD did not save it`);
+    }
+
+    // Whether CCD's response body only holds callback warnings, which the user can continue past
+    private isWarningOnly(body: string): boolean {
+      try {
+        const { callbackErrors, callbackWarnings } = JSON.parse(body);
+        return (callbackWarnings ?? []).length > 0 && (callbackErrors ?? []).length === 0;
+      } catch {
+        return false;
+      }
     }
 
     // Retries Continue until the next page's element shows, as CCD can drop the first click

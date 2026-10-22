@@ -149,6 +149,32 @@ const scenarios: Scenario[] = [
       CASE_FLAGS: 'CLAIMANT_1:RA0042:British Sign Language (BSL),DEFENDANT_1:PF0019,DEFENDANT_2:PF0015:Spanish',
     },
   },
+  // After the claimant's response every kind of contact information is updated: the admin adds an expert for
+  // Defendant 1, the claimant's solicitor changes Claimant 1, their litigation friend and their witness, Defendant 1's
+  // solicitor adds someone attending for the company, and Defendant 2's solicitor adds someone attending for their firm
+  // and changes their expert
+  {
+    name: 'UNSPEC_1v2DS_FAST_MANAGE_CONTACT_INFORMATION',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v2DS',
+      CLAIMANT_TYPE: 'INDIVIDUAL',
+      CLAIMANT1_LITIGANT_FRIEND: 'Yes',
+      DEFENDANT_TYPE: 'COMPANY',
+      ...nihlFast,
+      WITNESSES: '1',
+      EXPERTS: '1',
+      MANAGE_CONTACT_INFORMATION: [
+        'admin:DEFENDANT_1_EXPERTS',
+        'claimantSolicitor:CLAIMANT_1',
+        'claimantSolicitor:CLAIMANT_1_LITIGATION_FRIEND',
+        'claimantSolicitor:CLAIMANT_1_WITNESSES',
+        'respondent1Solicitor:DEFENDANT_1_ORGANISATION_INDIVIDUALS',
+        'respondent2Solicitor:DEFENDANT_2_LR_INDIVIDUALS',
+        'respondent2Solicitor:DEFENDANT_2_EXPERTS',
+      ].join(','),
+    },
+  },
   // Each defendant's solicitor informs the court of an agreed 28 day extension before responding
   {
     name: 'UNSPEC_1v2DS_FAST_EXTENSION',
