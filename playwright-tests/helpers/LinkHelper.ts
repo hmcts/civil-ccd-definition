@@ -1,11 +1,17 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class LinkHelper {
-  constructor(public page: Page) {}
+  readonly signOut: Locator;
+  readonly manualAddressClaimant1: Locator;
+  readonly manualAddressClaimant2: Locator;
+  readonly manualAddressDefendant1: Locator;
+  readonly manualAddressDefendant2: Locator;
 
-  readonly signOut = this.page.locator('.hmcts-header__navigation-link');
-  readonly manualAddressClaimant1 = this.page.locator('//*[@id="applicant1_primaryAddress_primaryAddress"]/div/a');
-  readonly manualAddressClaimant2 = this.page.locator('//*[@id="applicant2_primaryAddress_primaryAddress"]/div/a');
-  readonly manualAddressDefendant1 = this.page.locator('//*[@id="respondent1_primaryAddress_primaryAddress"]/div/a');
-  readonly manualAddressDefendant2 = this.page.locator('//*[@id="respondent2_primaryAddress_primaryAddress"]/div/a');
+  constructor(public page: Page) {
+    this.signOut = page.locator('.hmcts-header__navigation-link');
+    this.manualAddressClaimant1 = page.locator('//*[@id="applicant1_primaryAddress_primaryAddress"]/div/a');
+    this.manualAddressClaimant2 = page.locator('//*[@id="applicant2_primaryAddress_primaryAddress"]/div/a');
+    this.manualAddressDefendant1 = page.locator('//*[@id="respondent1_primaryAddress_primaryAddress"]/div/a');
+    this.manualAddressDefendant2 = page.locator('//*[@id="respondent2_primaryAddress_primaryAddress"]/div/a');
+  }
 }

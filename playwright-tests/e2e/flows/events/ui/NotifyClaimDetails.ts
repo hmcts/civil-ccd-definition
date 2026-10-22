@@ -29,7 +29,7 @@ export class NotifyClaimDetails {
 
           // Both goes straight to the Upload page; a single defendant raises a warning first
           if (whomToNotify !== notifyClaimOptions.BOTH) {
-            await this.buttonHelper.IgnoreWarningAndContinueButton.click();
+            await this.buttonHelper.ignoreWarningAndContinueButton.click();
           }
 
           await this.uploadNotifyClaimDetailsDocs();

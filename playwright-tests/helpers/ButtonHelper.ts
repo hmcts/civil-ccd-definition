@@ -1,16 +1,23 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export class ButtonHelper {
+  readonly continueButton: Locator;
+  readonly previousButton: Locator;
+  readonly submitButton: Locator;
+  readonly closeAndReturnToCaseDetailsButton: Locator;
+  readonly sendDirectionButton: Locator;
+  readonly uploadButton: Locator;
+  readonly addNewButton: Locator;
+  readonly ignoreWarningAndContinueButton: Locator;
 
-  constructor(public page: Page) {}
-
-  readonly continueButton = this.page.getByRole('button', { name: 'Continue' });
-  readonly previousButton = this.page.getByRole('button', { name: 'Previous' });
-  readonly submitButton = this.page.getByRole('button', { name: 'Submit'});
-  readonly closeAndReturnToCaseDetailsButton = this.page.getByRole('button', { name: 'Close and Return to case details' });
-  readonly sendDirectionButton = this.page.getByRole('button', { name: 'Send direction'});
-  readonly uploadButton = this.page.getByRole('button', { name: 'Upload' });
-  readonly addNewButton = this.page.getByRole('button', {name: 'Add new'});
-  readonly IgnoreWarningAndContinueButton = this.page.getByRole('button', { name: 'Ignore Warning and Continue'});
-
+  constructor(public page: Page) {
+    this.continueButton = page.getByRole('button', { name: 'Continue' });
+    this.previousButton = page.getByRole('button', { name: 'Previous' });
+    this.submitButton = page.getByRole('button', { name: 'Submit' });
+    this.closeAndReturnToCaseDetailsButton = page.getByRole('button', { name: 'Close and Return to case details' });
+    this.sendDirectionButton = page.getByRole('button', { name: 'Send direction' });
+    this.uploadButton = page.getByRole('button', { name: 'Upload' });
+    this.addNewButton = page.getByRole('button', { name: 'Add new' });
+    this.ignoreWarningAndContinueButton = page.getByRole('button', { name: 'Ignore Warning and Continue' });
+  }
 }

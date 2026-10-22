@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 export interface UserCredentials {
   username: string;
@@ -7,16 +7,21 @@ export interface UserCredentials {
   cookieName?: string;
 }
 export class IdamPage {
-  constructor(public page: Page) {}
+  readonly heading: Locator;
+  readonly signOut: Locator;
+  readonly emailInput: Locator;
+  readonly passwordInput: Locator;
+  readonly continueBtn: Locator;
 
-  readonly heading = this.page.getByRole("heading", {
-    name: "Sign in or create an account",
-  });
-
-  readonly signOut = this.page.getByText('Sign out', { exact: true });
-  readonly emailInput = this.page.locator("#email");
-  readonly passwordInput = this.page.locator("#password");
-  readonly continueBtn = this.page.getByRole("button", { name: "Continue" });
+  constructor(public page: Page) {
+    this.heading = page.getByRole("heading", {
+      name: "Sign in or create an account",
+    });
+    this.signOut = page.getByText('Sign out', { exact: true });
+    this.emailInput = page.locator("#email");
+    this.passwordInput = page.locator("#password");
+    this.continueBtn = page.getByRole("button", { name: "Continue" });
+  }
 
   async login(user: UserCredentials): Promise<void> {
     await this.emailInput.fill(user.username);

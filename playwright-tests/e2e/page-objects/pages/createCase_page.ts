@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 //import {runningEnv} from "../../../iacConfig";
 import { createCase } from '../../../civilConfig.ts';
 import {WaitUtils} from '../../utils/wait.utils.ts';
@@ -11,10 +11,13 @@ export class CreateCasePage {
   private eventLocator: string;
 
 
-  constructor(public page: Page) {}
+  readonly createCaseLink: Locator;
+  readonly startButton: Locator;
 
-  readonly createCaseLink = this.page.getByRole('link', { name: 'Create case' });
-  readonly startButton = this.page.getByRole('button', { name: 'Start' })
+  constructor(public page: Page) {
+    this.createCaseLink = page.getByRole('link', { name: 'Create case' });
+    this.startButton = page.getByRole('button', { name: 'Start' });
+  }
 
 
   async createCase(caseType: string = 'UNSPECIFIED') {

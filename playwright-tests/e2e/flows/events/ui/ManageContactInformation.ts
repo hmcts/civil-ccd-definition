@@ -88,7 +88,7 @@ export class ManageContactInformation {
   // litigation friend's details may need changing as well, which is continued past
   private async continueAfterWarning() {
     await this.pageHelper.continueToNextPage();
-    const ignoreWarning = this.buttonHelper.IgnoreWarningAndContinueButton;
+    const ignoreWarning = this.buttonHelper.ignoreWarningAndContinueButton;
     if (await ignoreWarning.isVisible()) {
       await ignoreWarning.click();
     }

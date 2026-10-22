@@ -1,9 +1,11 @@
-import { Page, expect } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
 
 export class ExuiSpinnerComponent{
-  constructor(public page: Page) {}
+  readonly spinner: Locator;
 
-  readonly spinner = this.page.locator("xuilib-loading-spinner");
+  constructor(public page: Page) {
+    this.spinner = page.locator("xuilib-loading-spinner");
+  }
 
   async wait() {
     await expect

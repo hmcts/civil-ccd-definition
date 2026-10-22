@@ -35,7 +35,7 @@ export class NotifyClaim {
           await this.pageHelper.continueToNextPage();
 
           if (whomToNotify !== notifyClaimOptions.BOTH) {
-            await this.buttonHelper.IgnoreWarningAndContinueButton.click();
+            await this.buttonHelper.ignoreWarningAndContinueButton.click();
           }
           await this.pageHelper.continueToNextPage();
           await this.pageHelper.submitEvent();
