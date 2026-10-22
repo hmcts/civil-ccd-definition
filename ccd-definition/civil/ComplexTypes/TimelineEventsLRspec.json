@@ -15,7 +15,8 @@
     "ElementLabel": "Day",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Max": 2,
+    "Min": 1,
+    "Max": 31,
     "DisplayContext": "OPTIONAL",
     "FieldDisplayOrder": 2
   },
@@ -26,7 +27,8 @@
     "ElementLabel": "Month",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Max": 2,
+    "Min": 1,
+    "Max": 12,
     "FieldDisplayOrder": 2
   },
   {
@@ -36,7 +38,6 @@
     "ElementLabel": "Year",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Max": 4,
     "FieldDisplayOrder": 2
   },
   {
