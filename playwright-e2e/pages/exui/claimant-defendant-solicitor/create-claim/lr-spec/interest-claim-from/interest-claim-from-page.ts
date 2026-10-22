@@ -13,7 +13,7 @@ export default class InterestClaimFromPage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.interestClaimFrom.submitDate.selector);
   }
 
-  async selectfromASpecificDate() {
+  async selectFromASpecificDate() {
     await super.clickBySelector(radioButtons.interestClaimFrom.specificDate.selector);
   }
 
