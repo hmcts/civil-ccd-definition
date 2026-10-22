@@ -981,14 +981,14 @@ __metadata:
   linkType: hard
 
 "allure-codeceptjs@npm:^3.4.2":
-  version: 3.13.0
-  resolution: "allure-codeceptjs@npm:3.13.0"
+  version: 3.14.0
+  resolution: "allure-codeceptjs@npm:3.14.0"
   dependencies:
-    allure-js-commons: "npm:3.13.0"
-    allure-mocha: "npm:3.13.0"
+    allure-js-commons: "npm:3.14.0"
+    allure-mocha: "npm:3.14.0"
   peerDependencies:
     codeceptjs: ">=2.3.6"
-  checksum: 10/5088fa5cb0a921472b4fbad142bbac0e6d506888dd58fdee83dca8eac1d140024bdc5e89f15d35c6b18154c5122f4c7f21c4e69fbac27da49e7fbd6f9acf10cc
+  checksum: 10/27b75f479bfb73c0255237142a5f09fc8d09bc0695d4a6ec32f634a54c7d6b200e0e1b1daca12cecf83e545285ab93d25ee8d3350e382c82538beebf736a2c3c
   languageName: node
   linkType: hard
 
@@ -1012,28 +1012,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"allure-js-commons@npm:3.13.0, allure-js-commons@npm:^3.4.2":
-  version: 3.13.0
-  resolution: "allure-js-commons@npm:3.13.0"
+"allure-js-commons@npm:3.14.0, allure-js-commons@npm:^3.4.2":
+  version: 3.14.0
+  resolution: "allure-js-commons@npm:3.14.0"
   dependencies:
     md5: "npm:^2.3.0"
   peerDependencies:
-    allure-playwright: 3.13.0
+    allure-playwright: 3.14.0
   peerDependenciesMeta:
     allure-playwright:
       optional: true
-  checksum: 10/05ce1c80128f4edd45b5f01202200443433da9959e631e599039bc2611c8b835e778181bbd71ade7a45f9af73a478d40dd2591a9d34588434361b5eff136c14f
+  checksum: 10/5728fabda388b2fff6107c45193f3b0f42053b81b1f90937aac9abbe387e4da84a69139c2d94e42c044d8d6159fec51a7e160248c7042952e1bb7c9d1cd3ce1d
   languageName: node
   linkType: hard
 
-"allure-mocha@npm:3.13.0":
-  version: 3.13.0
-  resolution: "allure-mocha@npm:3.13.0"
+"allure-mocha@npm:3.14.0":
+  version: 3.14.0
+  resolution: "allure-mocha@npm:3.14.0"
   dependencies:
-    allure-js-commons: "npm:3.13.0"
+    allure-js-commons: "npm:3.14.0"
   peerDependencies:
     mocha: ">=6.2.0"
-  checksum: 10/c682c25e59b16018ffd491f5c6d7c91818f6da49985e4cea0c6185107b14cdf5fed6e58edae1685b1e184cb84b76710ff50bbd6d32c110a1ab93e312c4d6a05f
+  checksum: 10/eb9b345f1f1b57bc1d37e7a998eef55b4cbc4658475ed1ef7c0583528b60bb68cc073aeddf39a55432d94afcd0994c04c0b665e197065bd692282d45e30c0304
   languageName: node
   linkType: hard
 
