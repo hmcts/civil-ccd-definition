@@ -1,17 +1,17 @@
 import { test } from '../../../playwright-fixtures/index';
-import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 import ClaimTrack from '../../../constants/cases/claim-track';
+import DefendantResponseSpecType from '../../../constants/ccd-events/ccd-events/defendant-response-spec/defendant-response-spec-type';
 
 test.describe(
   '1v1 spec fast counter claim api journey',
-  { tag: ['@civil-service-nightly', '@api-spec-counterclaim'] },
+  { tag: '@civil-service-nightly' },
   async () => {
     test('1v1 spec fast counter claim', async ({
       ClaimantSolicitorSpecApiSteps,
       CaseRoleAssignmentApiSteps,
       DefendantSolicitor1SpecApiSteps,
     }) => {
-      await ClaimantSolicitorSpecApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorSpecApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await DefendantSolicitor1SpecApiSteps.DefendantResponse({

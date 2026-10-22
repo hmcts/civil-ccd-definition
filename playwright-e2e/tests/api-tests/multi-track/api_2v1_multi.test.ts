@@ -20,7 +20,10 @@ test.describe(
       JudgeApiSteps,
       HearingCenterAdminApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimMulti2v1();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimType: ClaimType.TWO_VS_ONE,
+        claimTrack: ClaimTrack.MULTI_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

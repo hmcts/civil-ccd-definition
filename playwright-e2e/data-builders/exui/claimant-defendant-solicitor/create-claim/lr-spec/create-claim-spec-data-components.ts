@@ -13,6 +13,11 @@ import DateHelper from '../../../../../helpers/date-helper';
 import { ClaimantDefendantPartyType } from '../../../../../models/users/claimant-defendant-party-types';
 import FlightDelayClaim from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/flight-delay-claim';
 import Airline from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/airline';
+import ClaimInterest from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/claim-interest';
+import InterestClaimOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-option';
+import SameRateInterestType from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/same-rate-interest-type';
+import InterestClaimFromOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-from-option';
+import InterestClaimUntilOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-until-option';
 
 const formatDate = (date: Date) =>
   DateHelper.formatDateToString(date, { outputFormat: 'YYYY-MM-DD' });
@@ -256,10 +261,70 @@ const claimDetails = (claimTrack: ClaimTrack) => ({
   ClaimAmountDetails: {
     totalClaimAmount: CaseDataHelper.getClaimValue(claimTrack),
   },
-  ClaimInterest: {
-    claimInterest: 'No',
-  },
-  InterestSummary: {},
+});
+
+const interestClaimFrom = (
+  interestClaimFrom: InterestClaimFromOption,
+  interestClaimUntil: InterestClaimUntilOption,
+) => {
+  if (interestClaimFrom === InterestClaimFromOption.FROM_A_SPECIFIC_DATE)
+    return {
+      InterestClaimFrom: { interestClaimFrom: InterestClaimFromOption.FROM_A_SPECIFIC_DATE },
+      InterestFromSpecificDate: {
+        interestFromSpecificDate: formatDate(DateHelper.subtractFromToday({ months: 1 })),
+        interestFromSpecificDateDescription: 'Reason for claiming interest from this date',
+      },
+      InterestClaimUntil: { interestClaimUntil },
+    };
+
+  return {
+    InterestClaimFrom: { interestClaimFrom: InterestClaimFromOption.FROM_CLAIM_SUBMIT_DATE },
+  };
+};
+
+const claimInterest = (
+  claimInterest: ClaimInterest,
+  interestClaimOption: InterestClaimOption,
+  sameRateInterestType: SameRateInterestType,
+  interestClaimFromOption: InterestClaimFromOption,
+  interestClaimUntilOption: InterestClaimUntilOption,
+) => {
+  if (claimInterest === ClaimInterest.NO)
+    return {
+      ClaimInterest: { claimInterest: ClaimInterest.NO },
+      InterestSummary: {},
+    };
+
+  const interestOption =
+    interestClaimOption === InterestClaimOption.BREAK_DOWN_INTEREST
+      ? {
+          BreakDownInterest: {
+            breakDownInterestTotal: '1000',
+            breakDownInterestDescription: 'Breakdown of interest calculation',
+          },
+        }
+      : {
+          SameRateInterestSelection: {
+            sameRateInterestSelection: {
+              sameRateInterestType,
+              ...(sameRateInterestType === SameRateInterestType.DIFFERENT_RATE && {
+                differentRate: '10',
+                differentRateReason: 'Reason for claiming this rate',
+              }),
+            },
+          },
+        };
+
+  return {
+    ClaimInterest: { claimInterest: ClaimInterest.YES },
+    ClaimInterestOptions: { interestClaimOptions: interestClaimOption },
+    ...interestOption,
+    ...interestClaimFrom(interestClaimFromOption, interestClaimUntilOption),
+    InterestSummary: {},
+  };
+};
+
+const pbaAndFixedCosts = {
   PbaNumber: {},
   FixedCommencementCosts: {
     fixedCosts: {
@@ -267,7 +332,7 @@ const claimDetails = (claimTrack: ClaimTrack) => ({
       fixedCostAmount: '10000',
     },
   },
-});
+};
 
 const statementOfTruth = {
   StatementOfTruth: {
@@ -291,6 +356,8 @@ const createClaimSpecData = {
   defendantSolicitor2,
   flightDelayClaim,
   claimDetails,
+  claimInterest,
+  pbaAndFixedCosts,
   statementOfTruth,
 };
 

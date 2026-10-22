@@ -71,7 +71,7 @@ const retriedJsonRequest = async (url, headers, body, method = 'POST', expectedS
       try {
         responseBody = JSON.parse(responseText);
       } catch (err) {
-        throw new Error(`Failed to parse JSON response from ${response.url}: ${err.message}`);
+        throw new Error(`Failed to parse JSON response from ${response.url}: ${err.message}`, { cause: err });
       }
 
       return {
@@ -86,4 +86,28 @@ const retriedJsonRequest = async (url, headers, body, method = 'POST', expectedS
   });
 };
 
-module.exports = {request, retriedRequest, retriedRequestFor400, retriedRequestFor201, retriedJsonRequest};
+const retriedFormRequest = async (url, headers, body, method = 'POST', expectedStatus = 200) => {
+  return retry(() => {
+    return fetch(url, {
+      method,
+      body,
+      headers: headers || undefined,
+      keepalive: true
+    }).then(response => {
+      if (!isExpectedStatus(response.status, expectedStatus)) {
+        throw new Error(`Expected status: ${expectedStatusMessage(expectedStatus)}, actual status: ${response.status}, `
+          + `message: ${response.statusText}, url: ${response.url}`);
+      }
+      return response;
+    });
+  });
+};
+
+module.exports = {
+  request,
+  retriedRequest,
+  retriedRequestFor400,
+  retriedRequestFor201,
+  retriedJsonRequest,
+  retriedFormRequest
+};

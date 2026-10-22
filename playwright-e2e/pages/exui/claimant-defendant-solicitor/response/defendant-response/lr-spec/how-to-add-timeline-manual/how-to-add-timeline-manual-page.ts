@@ -32,7 +32,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
       [
         super.expectHeading(heading, { exact: false }),
         super.expectHeading(ccdCaseData.id!, { exact: false }),
-        super.expectHeading(ccdCaseData.caseNamePublic!, { exact: false }),
+        super.expectCaseHeading(ccdCaseData.caseNamePublic!),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

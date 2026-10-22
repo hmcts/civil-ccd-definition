@@ -30,10 +30,6 @@ civil-service:
       RD_PROFESSIONAL_API_URL: https://civil-ccd-wiremock-staging-aat.aat.platform.hmcts.net
       DOCMOSIS_TORNADO_URL: https://civil-ccd-wiremock-staging-aat.aat.platform.hmcts.net
 
-idam-pr:
-  redirect_uris:
-    XUI:
-      - https://civil-ccd-xui-staging.aat.platform.hmcts.net/oauth2/callback
 xui-webapp:
   nodejs:
     ingressHost: civil-ccd-xui-staging.aat.platform.hmcts.net

@@ -63,6 +63,7 @@ civil-service:
             alias: CCD_EVENTS_TOPIC_CONNECTION_STRING
     environment:
       SCHEDULER_ENABLED_JUDGEMENT_BUFFER: true
+      SCHEDULER_ACTIVE_SCHEDULERS: JudgementBuffer,ExpiredDraftStore,DefendantResponseDeadline,DecisionOutcome
       LAUNCH_DARKLY_ENV: aat
       EM_CCD_ORCHESTRATOR_URL: http://${SERVICE_NAME}-em-ccdorc
       CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
@@ -135,12 +136,8 @@ civil-service:
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "cft_task_db_replica" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-idam-pr:
-  redirect_uris:
-    XUI:
-      - https://xui-${SERVICE_FQDN}/oauth2/callback
-    CCD Admin:
-      - http://${SERVICE_NAME}-ccd-admin-web/oauth2redirect
+            03_hmcts_superuser.sql: |
+              ALTER ROLE hmcts WITH SUPERUSER;
 
 aac-manage-case-assignment:
   java:
@@ -153,7 +150,7 @@ aac-manage-case-assignment:
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
-    image: hmctsprod.azurecr.io/xui/webapp:pr-5368
+    image: hmctsprod.azurecr.io/xui/webapp:latest
     devcpuRequests: 50m
     devcpuLimits: 200m
     devmemoryRequests: 512Mi

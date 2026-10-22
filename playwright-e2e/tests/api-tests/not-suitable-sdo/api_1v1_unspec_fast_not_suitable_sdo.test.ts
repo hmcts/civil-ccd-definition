@@ -15,7 +15,7 @@ test.describe(
         DefendantSolicitor1ApiSteps,
         JudgeApiSteps,
       }) => {
-        await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+        await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
         await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
         await ClaimantSolicitorApiSteps.NotifyClaim();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
@@ -33,7 +33,7 @@ test.describe(
       DefendantSolicitor1ApiSteps,
       JudgeApiSteps,
     }) => {
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v1();
+      await ClaimantSolicitorApiSteps.CreateClaim({ claimTrack: ClaimTrack.FAST_CLAIM });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

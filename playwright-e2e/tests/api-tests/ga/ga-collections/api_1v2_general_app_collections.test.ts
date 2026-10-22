@@ -1,6 +1,7 @@
 import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 import ClaimTrack from '../../../../constants/cases/claim-track';
+import ClaimType from '../../../../constants/cases/claim-type';
 
 test.describe(
   'GA 1v2 application collection for different solicitor API tests',
@@ -18,7 +19,10 @@ test.describe(
         JudgeGaApiSteps,
       }) => {
         test.fail(config.zodValidationEnabled);
-        await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
+        await ClaimantSolicitorApiSteps.CreateClaim({
+          claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+          claimTrack: ClaimTrack.FAST_CLAIM,
+        });
         await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
         await ClaimantSolicitorApiSteps.NotifyClaim();
         await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();

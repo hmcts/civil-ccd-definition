@@ -1,6 +1,18 @@
 [
   {
     "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "CHANGE_STATE_TO_ADDITIONAL_RESPONSE_TIME_EXPIRED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "LINK_GENERAL_APPLICATION_CASE_TO_PARENT_CASE",
     "AccessControl": [
       {
@@ -466,6 +478,30 @@
   {
     "CaseTypeID": "GENERALAPPLICATION",
     "CaseEventID": "MAIN_CASE_CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PARENT_CLAIM_DISCONTINUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "ga-basic-access"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "PARENT_CLAIM_SETTLED",
     "AccessControl": [
       {
         "UserRoles": [

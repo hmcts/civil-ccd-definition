@@ -1,6 +1,7 @@
 import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 import ClaimTrack from '../../../../constants/cases/claim-track';
+import ClaimType from "../../../../constants/cases/claim-type.ts";
 
 test.describe(
   'After SDO 1v2 - GA CP - Hearing Notice document',
@@ -16,7 +17,10 @@ test.describe(
       HearingCenterAdminGaSteps,
     }) => {
       test.fail(config.zodValidationEnabled);
-      await ClaimantSolicitorApiSteps.CreateClaimFast1v2DS();
+      await ClaimantSolicitorApiSteps.CreateClaim({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
       await ClaimantSolicitorApiSteps.NotifyClaim();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
