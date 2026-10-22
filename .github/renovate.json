@@ -60,6 +60,10 @@
       "enabled": false
     },
     {
+      "matchPackageNames": ["mocha"],
+      "allowedVersions": "<12"
+    },
+    {
       "matchPackagePatterns": ["^allure-"],
       "groupName": "Allure reporting",
       "groupSlug": "allure",
