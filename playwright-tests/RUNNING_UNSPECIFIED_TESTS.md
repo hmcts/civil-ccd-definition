@@ -1,6 +1,6 @@
 # Running the unspecified claim journey
 
-Example command lines for the playwright-tests unspecified journey (playwright-tests/e2e/journeys/UnspecifiedSS.test.ts), and the parameters a claim can be built with. Run every command from the repository root. Settings are environment variables put in front of the command. Add --headed to watch the browser.
+Example command lines for the playwright-tests unspecified journey (playwright-tests/e2e/journeys/UnspecifiedSS.test.ts), and the parameters a claim can be built with. Run every command from the repository root. Settings are environment variables put in front of the command. Add --headed to watch the browser. The specified journey has its own guide, RUNNING_SPECIFIED_TESTS.md.
 
 Each command starts the journey from scratch: it creates a new claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped.
 
@@ -182,6 +182,28 @@ Or a list of user:party, one run of the event each:
 ENV=aat CLAIM_TYPE=1v2DS DEFENDANT_TYPE=COMPANY EXPERTS=1 MANAGE_CONTACT_INFORMATION='admin:DEFENDANT_1_EXPERTS,respondent1Solicitor:DEFENDANT_1_ORGANISATION_INDIVIDUALS,respondent2Solicitor:DEFENDANT_2_EXPERTS' STOP_AFTER_TEST=MANAGE_CONTACT_INFORMATION npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
+### Admissions and counterclaims
+
+Each defendant's response is set with RESPONDENT1_RESPONSE and RESPONDENT2_RESPONSE: FULL_DEFENCE (the default), FULL_ADMISSION, PART_ADMISSION or COUNTER_CLAIM. In a 2v1 claim RESPONDENT2_RESPONSE is the defendant's response to Claimant 2. In a 1v2SS claim the one solicitor answers for both defendants, and gives them separate responses when the two settings differ.
+
+Anything other than a full defence from every defendant takes the claim offline (PROCEEDS_IN_HERITAGE_SYSTEM) once all the responses are in, so the run ends there and the claimant's response and later steps are skipped. Both the UI and the API versions of RESPOND_TO_CLAIM_DEFENDANT1/2 support every response.
+
+An unspecified response does not ask when or how an admitted amount will be paid, so there is no ADMISSION_PAYMENT_ROUTE and no repayment plan here. Those are only in the specified journey (see RUNNING_SPECIFIED_TESTS.md).
+
+```bash
+ENV=aat RESPONDENT1_RESPONSE=PART_ADMISSION npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS RESPONDENT1_RESPONSE=FULL_DEFENCE RESPONDENT2_RESPONSE=COUNTER_CLAIM npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+Through the API up to the responses (2v1, a full defence to Claimant 1 and a full admission to Claimant 2):
+
+```bash
+ENV=aat CLAIM_TYPE=2v1 RESPONDENT1_RESPONSE=FULL_DEFENCE RESPONDENT2_RESPONSE=FULL_ADMISSION API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
 ### Several at once, with the API for the early steps
 
 ```bash
@@ -239,7 +261,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `RESPONDENT1_RESPONSE_INTENTION` | FULL_DEFENCE, PART_DEFENCE, CONTEST_JURISDICTION | FULL_DEFENCE | Defendant 1's answer when acknowledging the claim. |
 | `RESPONDENT2_RESPONSE_INTENTION` | FULL_DEFENCE, PART_DEFENCE, CONTEST_JURISDICTION | FULL_DEFENCE | Defendant 2's answer when acknowledging the claim. |
 | `RESPONDENT1_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Anything other than a full defence takes the claim offline. |
-| `RESPONDENT2_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Anything other than a full defence takes the claim offline. |
+| `RESPONDENT2_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 2's response, or in a 2v1 claim the defendant's response to Claimant 2. Anything other than a full defence takes the claim offline. |
 | `CLAIMANT_PROCEED_1` | Yes, No | Yes | 1v1: the claimant proceeds. 2v1: Claimant 1 proceeds. 1v2: the claimant proceeds against Defendant 1. No takes the claim offline. |
 | `CLAIMANT_PROCEED_2` | Yes, No | Yes | 2v1: Claimant 2 proceeds. 1v2: the claimant proceeds against Defendant 2. Not used for 1v1. |
 | `FIXED_RECOVERABLE_COSTS` | Yes, No | No | Directions questionnaire answer. |

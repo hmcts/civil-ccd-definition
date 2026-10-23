@@ -1,0 +1,147 @@
+# Running the specified claim journey
+
+Example command lines for the playwright-tests specified journey (playwright-tests/e2e/journeys/SpecifiedSS.test.ts), and the parameters a claim can be built with. Run every command from the repository root. Settings are environment variables put in front of the command. Add --headed to watch the browser. The unspecified journey has its own guide, RUNNING_UNSPECIFIED_TESTS.md.
+
+Each command starts the journey from scratch: it creates a new specified (money) claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped. The journey currently ends with the defendants' responses.
+
+## 1. Environments
+
+ENV picks the settings file playwright-tests/env/.env.<ENV>, exactly as for the unspecified journey (see section 1 of RUNNING_UNSPECIFIED_TESTS.md for the preview settings).
+
+```bash
+ENV=aat npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+```bash
+ENV=preview PREVIEW_SERVICE=ccd PR_NUMBER=8265 npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+## 2. Steps
+
+Steps, in the order they run:
+
+- CREATE_CLAIM: the claimant's solicitor creates the claim and pays the claim fee. The claim is then issued and waits for the defendants (AWAITING_RESPONDENT_ACKNOWLEDGEMENT).
+- ASSIGN_DEFENDANT_SOLICITORS: the defendants' solicitors are given access to the claim. A specified claim has no Notify claim or Notify claim details steps.
+- INFORM_AGREED_EXTENSION_DEFENDANT1, INFORM_AGREED_EXTENSION_DEFENDANT2 (optional): each defendant's solicitor tells the court about an agreed extension, which moves their response deadline back.
+- RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2: each defendant's solicitor responds with a full defence, a full or part admission, or a counterclaim.
+
+The Defendant 2 steps only run for 1v2DS, where Defendant 2 has their own solicitor. In a 1v2SS claim the one solicitor answers for both defendants in Defendant 1's steps. Where a defendant is a litigant in person (1v1LIP, 2v1LIP, 1v2LIPS, 1v2LRLIP, 1v2LIPLR) the response steps are skipped: they respond through the citizen service.
+
+A specified claim is not acknowledged: the CCD definition only gives a defendant's solicitor read access to Acknowledgement of Service, so XUI does not offer it.
+
+## 3. API only, UI only, or a mix
+
+The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2 and RESPOND_TO_CLAIM_DEFENDANT1/2. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
+
+Everything through the API (the claim never reaches JUDICIAL_REFERRAL, so every step uses the API):
+
+```bash
+ENV=aat API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+Create the claim through the API, then do the extension and the responses through the UI:
+
+```bash
+ENV=aat API_UNTIL=AWAITING_RESPONDENT_ACKNOWLEDGEMENT INFORM_AGREED_EXTENSION=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --headed
+```
+
+## 4. Stop at a state or an event
+
+STOP_AT_STATE=<state> stops as soon as the claim is in that state, and STOP_AFTER_TEST=<step> stops after that step. Add KEEP_CASE_ASSIGNMENTS=Yes to keep the solicitors assigned so you can carry on with the case by hand.
+
+```bash
+ENV=aat STOP_AFTER_TEST=ASSIGN_DEFENDANT_SOLICITORS KEEP_CASE_ASSIGNMENTS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+States the journey reaches: PENDING_CASE_ISSUED, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, PROCEEDS_IN_HERITAGE_SYSTEM.
+
+## 5. Inform an agreed extension date
+
+INFORM_AGREED_EXTENSION=Yes runs the extension steps. The new deadline is 14 days after the current one, moved to a working day (weekends and GOV.UK England and Wales bank holidays are skipped). The test checks the response deadline is the agreed date afterwards, and in a 1v2SS claim that Defendant 2's deadline moved too.
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS INFORM_AGREED_EXTENSION=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+## 6. Defendant responses: defences, admissions and counterclaims
+
+RESPONDENT1_RESPONSE and RESPONDENT2_RESPONSE set each response: FULL_DEFENCE (the default), FULL_ADMISSION, PART_ADMISSION or COUNTER_CLAIM. In a 2v1 claim RESPONDENT2_RESPONSE is the defendant's response to Claimant 2. In a 1v2SS claim the solicitor gives the two defendants separate responses when the settings differ.
+
+What the test answers:
+
+- Full defence: the defendant disputes the whole claim.
+- Part admission: the defendant has not paid and admits £1,000.
+- Full or part admission: ADMISSION_PAYMENT_ROUTE picks when they will pay. IMMEDIATELY (the default), BY_SET_DATE (a month from today) or SUGGESTION_OF_REPAYMENT_PLAN (£100 a month, starting a month from today). The defendant's financial details are filled in wherever XUI asks for them.
+- Counterclaim: the defendant makes a counterclaim.
+
+Where the claim goes once every response is in:
+
+| Claim type | Stays online (AWAITING_APPLICANT_INTENTION) | Goes offline (PROCEEDS_IN_HERITAGE_SYSTEM) |
+| --- | --- | --- |
+| 1v1 | A full defence, full admission or part admission | A counterclaim |
+| 2v1, 1v2SS | Both responses the same, and not a counterclaim | Different responses, or a counterclaim |
+| 1v2DS | Both full defences | Anything else |
+
+In a 1v2DS claim the claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT after Defendant 1's response, until Defendant 2 responds.
+
+```bash
+ENV=aat RESPONDENT1_RESPONSE=FULL_ADMISSION ADMISSION_PAYMENT_ROUTE=BY_SET_DATE npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+```bash
+ENV=aat RESPONDENT1_RESPONSE=PART_ADMISSION ADMISSION_PAYMENT_ROUTE=SUGGESTION_OF_REPAYMENT_PLAN npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS RESPONDENT1_RESPONSE=FULL_DEFENCE RESPONDENT2_RESPONSE=COUNTER_CLAIM npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+Through the API:
+
+```bash
+ENV=aat CLAIM_TYPE=1v2SS RESPONDENT1_RESPONSE=FULL_DEFENCE RESPONDENT2_RESPONSE=PART_ADMISSION API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+Through the API, a 2v1 defendant can only give the two claimants different responses when one of them is a full defence. Other combinations stop with an error; use the UI for them.
+
+## 7. Paying the claim fee by PBA or card
+
+PAYMENT_METHOD=PBA (the default) pays from the claimant solicitor's PBA account. PAYMENT_METHOD=CARD pays on GOV.UK Pay's pages with a test card, always in the UI, even when the claim is created through the API. Use CARD when PBA payments fail on the environment, for example with "Unable to retrieve account information".
+
+```bash
+ENV=aat PAYMENT_METHOD=CARD API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+## 8. Named scenarios
+
+Run a named scenario from playwright-tests/scenarios/specifiedScenarios.ts, or use a test:SPEC_* script in package.json:
+
+```bash
+ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v2DS_FAST
+```
+
+## 9. Claim parameters
+
+Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No.
+
+| Parameter | Values | Default | Notes |
+| --- | --- | --- | --- |
+| `CLAIM_TYPE` | 1v1, 2v1, 1v2SS, 1v2DS, 1v1LIP, 2v1LIP, 1v2LIPS, 1v2LRLIP, 1v2LIPLR | 1v1 | SS = one solicitor for both defendants, DS = a solicitor each. LIP = litigant in person. |
+| `CLAIMANT_TYPE` | INDIVIDUAL, COMPANY, ORGANISATION, SOLE_TRADER | INDIVIDUAL | Any other value is treated as INDIVIDUAL. |
+| `DEFENDANT_TYPE` | INDIVIDUAL, COMPANY, ORGANISATION, SOLE_TRADER | INDIVIDUAL | Any other value is treated as INDIVIDUAL. |
+| `TRACK` | SMALL_CLAIM, FAST_CLAIM, INTERMEDIATE_CLAIM, MULTI_CLAIM | FAST_CLAIM | Sets the claim amount. |
+| `AIRLINE_CLAIM` | Yes, No | No | A claim for a delayed or cancelled flight. |
+| `TIMELINE` | MANUAL, UPLOAD | MANUAL | Whether the timeline of events is typed in or uploaded as a document, by the claimant and by each defendant. |
+| `INTEREST_REQUIRED` | Yes, No | No | The claimant claims interest. |
+| `INTEREST_TYPE` | SAME_RATE_INTEREST, BREAK_DOWN_INTEREST | SAME_RATE_INTEREST | One rate over the whole period, or a total the claimant has broken down. |
+| `INTEREST_RATE` | A number | 8 | With the same rate, 8 is the statutory rate and any other rate needs a reason. With a breakdown, the total interest in pounds. |
+| `FIXED_COMMENCEMENT_COSTS` | Yes, No | No | The claimant claims fixed commencement costs. |
+| `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee is paid. CARD is always paid in the UI. Any other value stops the run. |
+| `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional steps: each defendant's solicitor informs the court of an agreed extension before responding. |
+| `RESPONDENT1_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 1's response. |
+| `RESPONDENT2_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 2's response, or in a 2v1 claim the defendant's response to Claimant 2. |
+| `ADMISSION_PAYMENT_ROUTE` | IMMEDIATELY, BY_SET_DATE, SUGGESTION_OF_REPAYMENT_PLAN | IMMEDIATELY | When a defendant who admits all or part of the claim will pay. |
+
+## 10. Run settings
+
+ENV, PREVIEW_SERVICE, PR_NUMBER, API_UNTIL, STOP_AT_STATE, STOP_AFTER_TEST, KEEP_CASE_ASSIGNMENTS, SCENARIOS, WORKERS and PREFLIGHT work as described in section 11 of RUNNING_UNSPECIFIED_TESTS.md.
