@@ -2,8 +2,12 @@
 
 set -euo pipefail
 
-# Accept a civil-service branch, tag, or PR ref (for example refs/pull/8522/head).
-civil_service_ref="${1:-master}"
+# Match civil-citizen-ui: accept pr-8522/pr8522, a branch, tag, or Git ref.
+ref_name="${1:-master}"
+civil_service_ref="${ref_name}"
+if [[ "${ref_name}" =~ ^pr-?([0-9]+)$ ]]; then
+  civil_service_ref="refs/pull/${BASH_REMATCH[1]}/head"
+fi
 checkout_dir=$(mktemp -d "${TMPDIR:-/tmp}/civil-service-bpmn.XXXXXX")
 trap 'rm -rf "${checkout_dir}"' EXIT
 

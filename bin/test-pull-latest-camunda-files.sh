@@ -44,16 +44,21 @@ bash "${subject}"
 [ -f camunda/master.bpmn ] && [ ! -e camunda/retired.bpmn ]
 echo 'PASS: defaults to civil-service master and removes stale diagrams'
 
-bash "${subject}" refs/pull/8522/head
+bash "${subject}" pr-8522
 [ -f camunda/pr.bpmn ] && [ ! -e camunda/master.bpmn ]
 [ "$(wc -l < imports.log | tr -d ' ')" = '2' ]
 echo 'PASS: imports the selected Civil Service PR instead of master'
 
-if bash "${subject}" refs/pull/9999/head > "${test_dir}/failed-fetch.log" 2>&1; then
+bash "${subject}" pr8522
+[ -f camunda/pr.bpmn ]
+[ "$(wc -l < imports.log | tr -d ' ')" = '3' ]
+echo 'PASS: accepts the same pr8522 shorthand as CUI master'
+
+if bash "${subject}" pr-9999 > "${test_dir}/failed-fetch.log" 2>&1; then
   echo 'FAIL: missing PR must fail' >&2
   exit 1
 fi
 [ -f camunda/pr.bpmn ]
-[ "$(wc -l < imports.log | tr -d ' ')" = '2' ]
+[ "$(wc -l < imports.log | tr -d ' ')" = '3' ]
 [ -z "$(find "${TMPDIR}" -mindepth 1 -print -quit)" ]
 echo 'PASS: missing PR fails without importing, falling back, or leaving temporary checkouts'

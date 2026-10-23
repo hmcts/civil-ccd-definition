@@ -698,11 +698,11 @@ echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --e
 ```
 
 BPMNs are imported from `civil-service`, rather than `civil-camunda-bpmn-definition`.
-CCD PR builds with a `civilServicePr:<number>` label import `refs/pull/<number>/head` from the same
-Civil Service PR used for the application image. Without the label, BPMNs come from `civil-service/master`.
+CCD PR builds with a `civilServicePr:<number>` label pass `pr-<number>` to the importer, matching CUI.
+The script resolves this to `refs/pull/<number>/head` from the same Civil Service PR used for the application image. Without the label, BPMNs come from `civil-service/master`.
 
-For a developer preview, the first argument below accepts a Civil Service branch, tag or PR ref
-(for example `refs/pull/8522/head`). Leave it blank to use `master`.
+For a developer preview, the first argument below accepts a Civil Service branch, tag or PR selector
+(for example `pr-8522`, also accepting `pr8522` or `refs/pull/8522/head`). Leave it blank to use `master`.
 
 ```shell
 echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh civilServiceBpmnRef dmnBranch waStandaloneBranch
