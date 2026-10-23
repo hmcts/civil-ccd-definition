@@ -5,6 +5,9 @@ import PaymentMethod from '../../../enums/paymentMethod.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import claimTrack from '../../../enums/track.ts';
 import Timeline from '../../../enums/timeline.ts';
+import RespondentResponses from '../../../enums/RespondentResponses.ts';
+import AdmissionPaymentRoute from '../../../enums/admissionPaymentRoute.ts';
+import caseStates from '../../../enums/caseStates.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type SpecifiedConfig = ReturnType<typeof specifiedConfig>;
@@ -45,6 +48,19 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
       values: [Timeline.MANUAL, Timeline.UPLOAD],
       default: Timeline.MANUAL,
     }),
+    // Each defendant's response. In a 2v1 claim RESPONDENT2_RESPONSE is the defendant's response to Claimant 2.
+    RESPONDENT1_RESPONSE: enums({
+      values: [RespondentResponses.FULL_DEFENCE, RespondentResponses.FULL_ADMISSION, RespondentResponses.PART_ADMISSION, RespondentResponses.COUNTER_CLAIM],
+      default: RespondentResponses.FULL_DEFENCE,
+    }),
+    RESPONDENT2_RESPONSE: enums({
+      values: [RespondentResponses.FULL_DEFENCE, RespondentResponses.FULL_ADMISSION, RespondentResponses.PART_ADMISSION, RespondentResponses.COUNTER_CLAIM],
+      default: RespondentResponses.FULL_DEFENCE,
+    }),
+    ADMISSION_PAYMENT_ROUTE: enums({
+      values: [AdmissionPaymentRoute.IMMEDIATELY, AdmissionPaymentRoute.BY_SET_DATE, AdmissionPaymentRoute.SUGGESTION_OF_REPAYMENT_PLAN],
+      default: AdmissionPaymentRoute.IMMEDIATELY,
+    }),
   }, { env: scenarioEnv });
 
   const yes = (value: string | undefined): yesNo => (value === 'Yes' ? yesNo.YES : yesNo.NO);
@@ -58,6 +74,19 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
   // With the same rate, 8 is the statutory rate and any other rate needs a reason. With a breakdown, it is the total
   // interest in pounds.
   const interestRate: string = scenarioEnv.INTEREST_RATE ?? '8';
+  const respondent1Response: RespondentResponses = env.RESPONDENT1_RESPONSE;
+  const respondent2Response: RespondentResponses = env.RESPONDENT2_RESPONSE;
+  // Once every response is in, the claim waits for the claimant if they are all the same and not a counterclaim. A
+  // counterclaim, or responses that differ (divergent), take it offline. With two defendants' solicitors responding
+  // separately (1v2DS), civil-service only keeps the claim online when both enter a full defence.
+  const responses = [claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL].includes(claimType)
+    ? [respondent1Response, respondent2Response]
+    : [respondent1Response];
+  const allSame = responses.every((response) => response === responses[0]);
+  const staysOnline = claimType === claimTypes.ONE_VS_TWO_DIFF_SOL
+    ? responses.every((response) => response === RespondentResponses.FULL_DEFENCE)
+    : allSame && responses[0] !== RespondentResponses.COUNTER_CLAIM;
+  const stateAfterAllResponses = staysOnline ? caseStates.AWAITING_APPLICANT_INTENTION : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
 
   const config = {
     claimType,
@@ -81,6 +110,15 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     paymentMethod: env.PAYMENT_METHOD as PaymentMethod,
     // Whether the claimant claims fixed commencement costs (FIXED_COMMENCEMENT_COSTS=Yes, default No)
     fixedCommencementCosts: yes(scenarioEnv.FIXED_COMMENCEMENT_COSTS),
+    // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
+    // (INFORM_AGREED_EXTENSION=Yes, default No)
+    informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
+    // Each defendant's response (RESPONDENT1_RESPONSE, RESPONDENT2_RESPONSE, default FULL_DEFENCE), and when a defendant
+    // who admits all or part of the claim will pay (ADMISSION_PAYMENT_ROUTE, default IMMEDIATELY)
+    respondent1Response,
+    respondent2Response,
+    admissionPaymentRoute: env.ADMISSION_PAYMENT_ROUTE as AdmissionPaymentRoute,
+    stateAfterAllResponses,
 
     // Checks the settings make sense together, before the journey starts
     validate() {

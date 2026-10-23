@@ -1,10 +1,10 @@
 import claimTypes from '../../../../../enums/claim-types.ts';
-import respondentResponses from '../../../../../enums/RespondentResponses.ts';
 import yesNo from '../../../../../enums/yesNo.ts';
 import { respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../../../../../civilConfig.ts';
 import { UnspecifiedConfig } from '../../../../journey/unspecified/unspecifiedConfig.ts';
 import { DirectionsQuestionnaireAnswers } from '../../ui/DirectionsQuestionnaire.ts';
 import { buildDirectionsQuestionnaire } from './directionsQuestionnaire.ts';
+import { responsePages } from '../../defendantResponsePages.ts';
 
 type Document = Record<string, string>;
 
@@ -12,13 +12,6 @@ type Document = Record<string, string>;
 export interface DefendantResponseDocuments {
   responseDocument: Document;
   draftDirections: Document;
-}
-
-// The responding defendant's own response, which decides the pages after the response: the response document is only
-// asked for a full defence or part admission, and the directions questionnaire only for a full defence. In a 2v1 claim
-// it is the defendant's response to Claimant 1, and in a 1v2SS single response the one response for both.
-function ownResponse(c: UnspecifiedConfig, defendantNumber: 1 | 2): respondentResponses {
-  return defendantNumber === 1 ? c.respondent1Response : c.respondent2Response;
 }
 
 // The responses for both 1v2SS defendants can be one single response only when they are the same. civil-service rejects
@@ -38,28 +31,30 @@ export function buildDefendantResponsePayload(
   answers: DirectionsQuestionnaireAnswers,
   documents: DefendantResponseDocuments,
 ): Record<string, any> {
-  const response = ownResponse(c, defendantNumber);
+  const pages = responsePages(c.claimType, c.respondent1Response, c.respondent2Response, defendantNumber);
+  const dqDefendant = pages.directionsQuestionnaireFor;
   return {
     ...keptFromStart(startCaseData),
     ...responseTypes(c, defendantNumber),
     ...references(startCaseData, defendantNumber),
-    multiPartyResponseTypeFlags: responseTypeFlag(response),
-    ...(response === respondentResponses.FULL_DEFENCE || response === respondentResponses.PART_ADMISSION
-      ? { [`respondent${defendantNumber}ClaimResponseDocument`]: { file: documents.responseDocument } }
-      : {}),
-    ...(response === respondentResponses.FULL_DEFENCE
+    multiPartyResponseTypeFlags: pages.multiPartyResponseTypeFlags,
+    ...Object.fromEntries(pages.responseDocuments.map((defendant) => [`respondent${defendant}ClaimResponseDocument`, { file: documents.responseDocument }])),
+    ...(dqDefendant !== undefined
       ? buildDirectionsQuestionnaire(
         {
-          fieldPrefix: `respondent${defendantNumber}DQ`,
+          fieldPrefix: `respondent${dqDefendant}DQ`,
+          // The small claims question is the solicitor's own (Defendant 1's unless they only represent Defendant 2)
           determinationWithoutHearingField: `deterWithoutHearingRespondent${defendantNumber}`,
-          label: `Defendant${defendantNumber}`,
+          label: `Defendant${dqDefendant}`,
           hasRequestedCourt: true,
         },
         c.track,
         c.typeOfClaim,
         answers,
         documents.draftDirections,
-        startCaseData[`respondent${defendantNumber}DQRequestedCourt`],
+        // civil-service gives both defendants the same list of courts. CCD leaves Defendant 2's out of the started event
+        // for a solicitor without Defendant 2's role, in which case Defendant 1's is used.
+        startCaseData[`respondent${dqDefendant}DQRequestedCourt`] ?? startCaseData.respondent1DQRequestedCourt,
       )
       : {}),
     uiStatementOfTruth: {
@@ -119,13 +114,4 @@ function references(startCaseData: Record<string, any>, defendantNumber: 1 | 2) 
     };
   }
   return { respondentSolicitor2Reference: `${startCaseData.respondentSolicitor2Reference ?? ''} - Respond to claim` };
-}
-
-// The flag the Response page's mid event callback (set-generic-response-type-flag) sets from the defendant's own
-// response, which the following pages are shown by
-function responseTypeFlag(response: respondentResponses) {
-  if (response === respondentResponses.FULL_DEFENCE) {
-    return 'FULL_DEFENCE';
-  }
-  return response === respondentResponses.PART_ADMISSION ? 'PART_ADMISSION' : 'NOT_FULL_DEFENCE';
 }

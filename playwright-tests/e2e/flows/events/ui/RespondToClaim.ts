@@ -9,6 +9,7 @@ import trackType from '../../../../enums/track.ts';
 import UnspecClaimTypes from '../../../../enums/unspecClaimTypes.ts';
 import LanguageSpokenAndDocuments from '../../../../enums/languageSpokenAndDocuments.ts';
 import { DirectionsQuestionnaire } from './DirectionsQuestionnaire.ts';
+import { responsePages } from '../defendantResponsePages.ts';
 import {
   respondent1SolicitorCredentials,
   respondent2SolicitorCredentials,
@@ -96,27 +97,28 @@ export class RespondToClaim {
     }
     await this.pageHelper.continueToNextPage();
 
-    // Which pages follow depends on this defendant's response (set by civil-service as multiPartyResponseTypeFlags):
-    // the response document is only asked for a full defence or part admission, and the directions questionnaire
-    // only for a full defence. A full admission or counterclaim goes straight to the statement of truth.
-    // Only 1v1 and 1v2 different solicitors have the non-full-defence paths coded; other claim types assume a full defence.
-    const ownResponse = defendantNumber === 1 ? respondent1Response : respondent2Response;
-    const hasNonFullDefencePaths = [claimTypes.ONE_VS_ONE, claimTypes.ONE_VS_TWO_DIFF_SOL].includes(claimType);
-    const isFullDefence = !hasNonFullDefencePaths || ownResponse === RespondentResponses.FULL_DEFENCE;
-    const isResponseDocumentRequired = isFullDefence || ownResponse === RespondentResponses.PART_ADMISSION;
+    // Which pages follow depends on the responses this solicitor gave (see responsePages): the response document is
+    // asked for each defendant who defends or admits part of the claim, and the directions questionnaire is answered for
+    // the defendant who defends it. With no full defence or part admission the event goes straight to the statement of
+    // truth.
+    const pages = responsePages(claimType, respondent1Response, respondent2Response, defendantNumber);
 
     // Response document
-    if (isResponseDocumentRequired) {
-      await this.pageHelper.uploadFile(this.page.locator(`#respondent${defendantNumber}ClaimResponseDocument_file`), './playwright-tests/documents/TEST_DOCUMENT_3.pdf');
+    if (pages.responseDocuments.length > 0) {
+      for (const defendant of pages.responseDocuments) {
+        await this.pageHelper.uploadFile(this.page.locator(`#respondent${defendant}ClaimResponseDocument_file`), './playwright-tests/documents/TEST_DOCUMENT_3.pdf');
+      }
       await this.pageHelper.continueToNextPage();
     }
 
-    if (isFullDefence) {
+    if (pages.directionsQuestionnaireFor !== undefined) {
+      const dqDefendant = pages.directionsQuestionnaireFor;
       await new DirectionsQuestionnaire(this.page).complete(
         {
-          fieldPrefix: `respondent${defendantNumber}DQ`,
+          fieldPrefix: `respondent${dqDefendant}DQ`,
+          // The small claims question is the solicitor's own (Defendant 1's unless they only represent Defendant 2)
           determinationWithoutHearingField: `deterWithoutHearingRespondent${defendantNumber}`,
-          label: `Defendant${defendantNumber}`,
+          label: `Defendant${dqDefendant}`,
           hasRequestedCourt: true,
         },
         track,

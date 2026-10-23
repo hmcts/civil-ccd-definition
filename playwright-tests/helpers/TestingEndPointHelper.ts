@@ -37,10 +37,17 @@ export class TestingEndPointHelper {
     // console.log('s2sToken>>> ',this.nonEventTokens.s2sToken);
     const apiRequestContext: APIRequestContext = await request.newContext();
     await expect.poll(async () => {
-      const response = await apiRequestContext.get(businessProcessUrl, {
-        headers: this.getHeaders()
-      });
-      // A gateway can answer with an error page now and then; that is treated as not finished yet and asked again
+      // A request that gets no answer in time, or a gateway answering with an error page, is treated as not finished
+      // yet and asked again
+      let response: APIResponse;
+      try {
+        response = await apiRequestContext.get(businessProcessUrl, {
+          headers: this.getHeaders()
+        });
+      } catch (error) {
+        console.log(`Business process for case ${caseId} did not answer (${(error as Error).message.split('\n')[0]}), asking again`);
+        return 'UNAVAILABLE';
+      }
       const body = await response.text();
       let data;
       try {
@@ -481,6 +488,17 @@ export class TestingEndPointHelper {
           throw await this.assignmentError(response, claimType);
         }
         CaseUserRegistry.record(caseId, 'respondent1Solicitor');
+        // A solicitor representing both defendants also holds Defendant 2's role, as the earlier suites assign it:
+        // without it they cannot answer Defendant 2's fields (an unspecified response that differs for each defendant)
+        if (claimType === claimTypes.ONE_VS_TWO_SAME_SOL) {
+          console.log('Assigning Defendant 1 Legal Representative to the claim as Defendant 2\'s too...');
+          response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORTWO`, {
+            headers: this.getHeaders()
+          });
+          if (!response.ok()) {
+            throw await this.assignmentError(response, claimType);
+          }
+        }
       }
     }
     catch (error) {

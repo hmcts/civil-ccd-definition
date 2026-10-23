@@ -32,9 +32,15 @@ export class AcknowledgeClaim {
     const dateOfBirthField = { INDIVIDUAL: 'individualDateOfBirth', SOLE_TRADER: 'soleTraderDateOfBirth' }[defendantType];
     if (claimType !== claimTypes.ONE_VS_TWO_LIP_LR && dateOfBirthField) {
       // remove the claim type check when DTSCCI-672 is merged
-      await this.page.locator(`#${dateOfBirthField}-day`).fill(partyDetails.defendant1.DOB_day);
-      await this.page.locator(`#${dateOfBirthField}-month`).fill(partyDetails.defendant1.DOB_month);
-      await this.page.locator(`#${dateOfBirthField}-year`).fill(partyDetails.defendant1.DOB_year);
+      // A solicitor representing both defendants confirms both defendants' details, so each date of birth showing is
+      // filled in
+      const days = this.page.locator(`#${dateOfBirthField}-day`);
+      await days.first().waitFor({ state: 'visible' });
+      for (let i = 0; i < await days.count(); i++) {
+        await days.nth(i).fill(partyDetails.defendant1.DOB_day);
+        await this.page.locator(`#${dateOfBirthField}-month`).nth(i).fill(partyDetails.defendant1.DOB_month);
+        await this.page.locator(`#${dateOfBirthField}-year`).nth(i).fill(partyDetails.defendant1.DOB_year);
+      }
     }
     await this.pageHelper.continueToNextPage();
 

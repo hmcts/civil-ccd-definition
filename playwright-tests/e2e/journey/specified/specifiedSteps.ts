@@ -1,10 +1,18 @@
+import { expect } from '@playwright/test';
 import { envUrl } from '../../../civilConfig.ts';
 import { CreateSpecifiedCase } from '../../flows/createSpecifiedCase.ts';
 import { CreateClaimSpec } from '../../flows/events/api/CreateClaimSpec.ts';
+import { InformAgreedExtensionDateSpec } from '../../flows/events/ui/InformAgreedExtensionDateSpec.ts';
+import { InformAgreedExtensionDateSpec as ApiInformAgreedExtensionDateSpec } from '../../flows/events/api/InformAgreedExtensionDateSpec.ts';
+import { RespondToClaimSpec } from '../../flows/events/ui/RespondToClaimSpec.ts';
+import { RespondToClaimSpec as ApiRespondToClaimSpec } from '../../flows/events/api/RespondToClaimSpec.ts';
 import yesNo from '../../../enums/yesNo.ts';
+import claimTypes from '../../../enums/claim-types.ts';
 import caseStates from '../../../enums/caseStates.ts';
 import PaymentMethod from '../../../enums/paymentMethod.ts';
 import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
+import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
+import { workingDayAfter } from '../../../helpers/WorkingDayHelper.ts';
 import { JourneyContext, JourneyStep } from '../journeyRunner.ts';
 import { SpecifiedConfig } from './specifiedConfig.ts';
 
@@ -25,6 +33,8 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     }
     await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
   }
+
+  const noDefendant1Solicitor: [boolean, string] = [c.claimShape.defendants[0].solicitor === 'none', 'Skipping as first defendant is a LiP'];
 
   return [
     {
@@ -123,5 +133,121 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         await waitForClaimIssued();
       },
     },
+
+    // A specified claim has no Notify claim or Notify claim details: once it is issued it waits for the defendants'
+    // responses. The defendants' solicitors are given access to it here, as the claimant's solicitor, so that their own
+    // steps can open the case.
+    {
+      name: 'ASSIGN_DEFENDANT_SOLICITORS',
+      title: 'Defendant solicitors are assigned to the claim.',
+      user: 'claimantSolicitor',
+      skipIf: [[!c.claimShape.defendants.some((defendant) => defendant.solicitor !== 'none'), 'Skipping as no defendant has a solicitor']],
+      run: async () => {
+        await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType);
+        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    },
+
+    // A specified claim is not acknowledged by a defendant's solicitor: the CCD definition only gives them read access
+    // to ACKNOWLEDGEMENT_OF_SERVICE, so XUI does not offer it.
+
+    // Each defendant's solicitor informs the court of an agreed extension to respond, which moves their response
+    // deadline back. Only run with INFORM_AGREED_EXTENSION=Yes.
+    ...informAgreedExtensionSteps(),
+
+    // Each defendant's solicitor responds: a full defence, a full or part admission, or a counterclaim
+    ...respondToClaimSteps(),
   ];
+
+  function respondToClaimSteps(): JourneyStep[] {
+    // Claims where every defendant has a solicitor. A litigant in person responds through the citizen service instead.
+    const allDefendantsRepresented = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL].includes(c.claimType);
+    const noLitigantInPerson: [boolean, string] = [!allDefendantsRepresented, 'Skipping as a defendant is a litigant in person, who responds through the citizen service'];
+    const solicitors: Array<{ defendantNumber: 1 | 2; user: SessionUserKey; skipIf: Array<[boolean, string]>; stateAfter: caseStates }> = [
+      {
+        defendantNumber: 1,
+        user: 'respondent1Solicitor',
+        skipIf: [noLitigantInPerson],
+        // With two solicitors the claim waits for both responses
+        stateAfter: c.claimType === claimTypes.ONE_VS_TWO_DIFF_SOL ? caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT : c.stateAfterAllResponses,
+      },
+      {
+        defendantNumber: 2,
+        user: 'respondent2Solicitor',
+        skipIf: [[c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor']],
+        stateAfter: c.stateAfterAllResponses,
+      },
+    ];
+    return solicitors.map((solicitor) => ({
+      name: `RESPOND_TO_CLAIM_DEFENDANT${solicitor.defendantNumber}`,
+      title: `Defendant ${solicitor.defendantNumber} Solicitor responds to claim.`,
+      user: solicitor.user,
+      skipIf: solicitor.skipIf,
+      run: async ({ page, storageState }) => {
+        if (ctx.useApi()) {
+          await new ApiRespondToClaimSpec().submit(c, ctx.caseId, solicitor.defendantNumber);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new RespondToClaimSpec(page).submit(solicitor.defendantNumber, {
+              claimType: c.claimType,
+              timeline: c.timeline,
+              respondent1Response: c.respondent1Response,
+              respondent2Response: c.respondent2Response,
+              paymentRoute: c.admissionPaymentRoute,
+            });
+          });
+        }
+        // civil-service rejects the next event until the response's business process has finished
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DEFENDANT_RESPONSE_SPEC');
+        await ctx.assertCaseState(solicitor.stateAfter);
+      },
+    }));
+  }
+
+  function informAgreedExtensionSteps(): JourneyStep[] {
+    const solicitors: Array<{ defendantNumber: 1 | 2; user: SessionUserKey; noSolicitor: [boolean, string] }> = [
+      { defendantNumber: 1, user: 'respondent1Solicitor', noSolicitor: noDefendant1Solicitor },
+      {
+        defendantNumber: 2,
+        user: 'respondent2Solicitor',
+        // Defendant 2's own solicitor. civil-service only treats them as separate from Defendant 1's when both
+        // defendants are represented, as in the unspecified journey.
+        noSolicitor: [c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
+      },
+    ];
+    return solicitors.map((solicitor) => ({
+      name: `INFORM_AGREED_EXTENSION_DEFENDANT${solicitor.defendantNumber}`,
+      title: `Defendant ${solicitor.defendantNumber} Solicitor informs the court of an agreed extension.`,
+      user: solicitor.user,
+      skipIf: [
+        solicitor.noSolicitor,
+        [c.informAgreedExtension !== yesNo.YES, 'Informing of an agreed extension is switched off (set INFORM_AGREED_EXTENSION=Yes to run it)'],
+      ],
+      run: async ({ page, storageState }) => {
+        const deadlineBefore = await ctx.testingEndpointHelper.getResponseDeadline(ctx.caseId, solicitor.defendantNumber);
+        // civil-service accepts a working day after the current deadline and no more than 28 days after it
+        const extensionDate = await workingDayAfter(deadlineBefore, 14);
+        if (ctx.useApi()) {
+          await new ApiInformAgreedExtensionDateSpec().submit(ctx.caseId, solicitor.defendantNumber, extensionDate);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new InformAgreedExtensionDateSpec(page).submit(solicitor.defendantNumber, extensionDate);
+          });
+        }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'INFORM_AGREED_EXTENSION_DATE_SPEC');
+        const deadlineAfter = await ctx.testingEndpointHelper.getResponseDeadline(ctx.caseId, solicitor.defendantNumber);
+        console.log(`Defendant ${solicitor.defendantNumber} response deadline moved from ${deadlineBefore} to ${deadlineAfter} (agreed ${extensionDate})`);
+        expect(
+          deadlineAfter?.slice(0, 10),
+          `Defendant ${solicitor.defendantNumber}'s response deadline is not the agreed extension date (before ${deadlineBefore}, after ${deadlineAfter})`,
+        ).toBe(extensionDate);
+        // A solicitor representing both defendants extends Defendant 2's deadline to the same date
+        if (c.claimType === claimTypes.ONE_VS_TWO_SAME_SOL) {
+          const defendant2Deadline = await ctx.testingEndpointHelper.getResponseDeadline(ctx.caseId, 2);
+          expect(defendant2Deadline?.slice(0, 10), `Defendant 2's response deadline ${defendant2Deadline} is not the agreed extension date`).toBe(extensionDate);
+        }
+        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    }));
+  }
 }
