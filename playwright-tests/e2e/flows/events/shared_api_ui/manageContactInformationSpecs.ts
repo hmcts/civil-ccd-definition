@@ -1,7 +1,7 @@
-import claimTypes from '../../../enums/claim-types.ts';
-import yesNo from '../../../enums/yesNo.ts';
-import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
-import { UnspecifiedConfig } from '../../journey/unspecified/unspecifiedConfig.ts';
+import claimTypes from '../../../../enums/claim-types.ts';
+import yesNo from '../../../../enums/yesNo.ts';
+import { SessionUserKey } from '../../../../helpers/SessionHelper.ts';
+import { UnspecifiedConfig } from '../../../journey/unspecified/unspecifiedConfig.ts';
 
 // Who runs Manage Contact Information: the hearing centre admin, or one of the solicitors
 export type MciUser = 'admin' | 'claimantSolicitor' | 'respondent1Solicitor' | 'respondent2Solicitor';

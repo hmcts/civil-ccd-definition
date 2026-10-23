@@ -1,5 +1,5 @@
-import claimTypes from '../../../enums/claim-types.ts';
-import RespondentResponses from '../../../enums/RespondentResponses.ts';
+import claimTypes from '../../../../enums/claim-types.ts';
+import RespondentResponses from '../../../../enums/RespondentResponses.ts';
 
 // What an unspecified DEFENDANT_RESPONSE asks after the response, as civil-service decides it from the responses one
 // solicitor gives (the set-generic-response-type-flag mid event callback, which sets multiPartyResponseTypeFlags):

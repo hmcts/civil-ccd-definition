@@ -9,7 +9,7 @@ import trackType from '../../../../enums/track.ts';
 import UnspecClaimTypes from '../../../../enums/unspecClaimTypes.ts';
 import LanguageSpokenAndDocuments from '../../../../enums/languageSpokenAndDocuments.ts';
 import { DirectionsQuestionnaire } from './DirectionsQuestionnaire.ts';
-import { responsePages } from '../defendantResponsePages.ts';
+import { responsePages } from '../shared_api_ui/defendantResponsePages.ts';
 import {
   respondent1SolicitorCredentials,
   respondent2SolicitorCredentials,

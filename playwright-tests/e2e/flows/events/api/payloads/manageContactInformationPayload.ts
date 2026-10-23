@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { MciChange, MciSpec, mciAddsEntry, mciKind, mciSavedField } from '../../../manageContactInformation/manageContactInformationSpecs.ts';
+import { MciChange, MciSpec, mciAddsEntry, mciKind, mciSavedField } from '../../shared_api_ui/manageContactInformationSpecs.ts';
 
 // The case data for MANAGE_CONTACT_INFORMATION, as the UI's ManageContactInformation submits it. startCaseData is the
 // case data CCD returned when the event was started, which holds the options the user may choose and the case's

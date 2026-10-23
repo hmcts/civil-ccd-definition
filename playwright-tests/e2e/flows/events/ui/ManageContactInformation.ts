@@ -1,7 +1,7 @@
 import { expect, Page } from '@playwright/test';
 import { PageHelper } from '../../../../helpers/PageHelper';
 import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
-import { MciChange, MciSpec, mciAddsEntry, mciKind, mciSavedField } from '../../manageContactInformation/manageContactInformationSpecs.ts';
+import { MciChange, MciSpec, mciAddsEntry, mciKind, mciSavedField } from '../shared_api_ui/manageContactInformationSpecs.ts';
 
 // Updating a party's contact details, or the people attending for them, once the claimant has responded (event
 // MANAGE_CONTACT_INFORMATION, "Manage Contact Information"). The first page lists the options the user may choose: the

@@ -1,6 +1,6 @@
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 import { sessionUsers } from '../../../../helpers/SessionHelper.ts';
-import { MciChange, MciSpec, mciSessionUser } from '../../manageContactInformation/manageContactInformationSpecs.ts';
+import { MciChange, MciSpec, mciSessionUser } from '../shared_api_ui/manageContactInformationSpecs.ts';
 import { buildManageContactInformationPayload } from './payloads/manageContactInformationPayload.ts';
 
 // Updates contact details (MANAGE_CONTACT_INFORMATION) as the admin or a solicitor through the CCD API, instead of

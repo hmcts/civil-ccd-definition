@@ -45,7 +45,7 @@ import {
   mciSpecs,
   mciStartsBusinessProcess,
   mciUserLabel,
-} from '../../flows/manageContactInformation/manageContactInformationSpecs.ts';
+} from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 import { JourneyContext, JourneyStep } from '../journeyRunner.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { UnspecifiedConfig } from './unspecifiedConfig.ts';

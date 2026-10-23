@@ -15,7 +15,7 @@ import fixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
 import caseStates from '../../../enums/caseStates.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
-import { mciProblem } from '../../flows/manageContactInformation/manageContactInformationSpecs.ts';
+import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;

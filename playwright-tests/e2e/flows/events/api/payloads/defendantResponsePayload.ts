@@ -4,7 +4,7 @@ import { respondent1SolicitorCredentials, respondent2SolicitorCredentials } from
 import { UnspecifiedConfig } from '../../../../journey/unspecified/unspecifiedConfig.ts';
 import { DirectionsQuestionnaireAnswers } from '../../ui/DirectionsQuestionnaire.ts';
 import { buildDirectionsQuestionnaire } from './directionsQuestionnaire.ts';
-import { responsePages } from '../../defendantResponsePages.ts';
+import { responsePages } from '../../shared_api_ui/defendantResponsePages.ts';
 
 type Document = Record<string, string>;
 
