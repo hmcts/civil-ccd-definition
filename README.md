@@ -697,10 +697,15 @@ Note: be sure to have Docker running
 echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh
 ```
 
-You can optionally specify a branch for CCD definitions and Camunda definitions like below or leave it blank to use master.
+BPMNs are imported from `civil-service`, rather than `civil-camunda-bpmn-definition`.
+CCD PR builds with a `civilServicePr:<number>` label import `refs/pull/<number>/head` from the same
+Civil Service PR used for the application image. Without the label, BPMNs come from `civil-service/master`.
+
+For a developer preview, the first argument below accepts a Civil Service branch, tag or PR ref
+(for example `refs/pull/8522/head`). Leave it blank to use `master`.
 
 ```shell
-echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh camundaBranch dmnBranch waStandaloneBranch
+echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh civilServiceBpmnRef dmnBranch waStandaloneBranch
 ```
 
 Once the pods are up and running you can connect to them using a plugin called Mirrord on Intellij.
