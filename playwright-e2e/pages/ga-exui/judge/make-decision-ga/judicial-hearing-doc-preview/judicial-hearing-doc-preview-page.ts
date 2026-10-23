@@ -1,0 +1,23 @@
+import BasePage from '../../../../../base/base-page';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import GaCCDCaseData from '../../../../../models/ga-ccd-case-data';
+import { getFormattedCaseId } from "../../../mixin-pages/ga-exui-page/ga-exui-content";
+import GaExuiPage from '../../../mixin-pages/ga-exui-page/ga-exui-page';
+import { headings, paragraph } from './judicial-hearing-doc-preview-content';
+
+@AllMethodsStep()
+export default class JudicialHearingDocPreviewPage extends GaExuiPage(BasePage) {
+  async verifyContent(gaCaseData: GaCCDCaseData) {
+    await super.runVerifications([
+      super.expectHeading(headings),
+      super.expectCaseHeading(getFormattedCaseId(gaCaseData.id!)),
+      super.expectCaseHeading(gaCaseData.caseNameGaInternal!),
+      super.expectText(paragraph.draftOrder),
+      super.expectButton('.pdf', { exact: false }),
+    ]);
+  }
+
+  async submit() {
+    await super.retryClickSubmit();
+  }
+}

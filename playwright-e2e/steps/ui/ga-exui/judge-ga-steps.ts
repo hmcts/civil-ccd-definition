@@ -5,6 +5,7 @@ import BaseGaExui from '../../../base/base-ga-exui';
 import { judgeRegion1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import GaCaseState from '../../../constants/cases/ga-case-states';
+import gaCCDEvents from '../../../constants/ccd-events/ga-ccd-events/ga-ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -62,6 +63,24 @@ export default class JudgeGaSteps extends BaseGaExui {
         await generateDirectionsOrderGaActions.confirmOrder();
       },
       ccdEvents.GENERATE_DIRECTIONS_ORDER,
+    );
+  }
+
+  async MakeADecisionListHearing() {
+    const { makeDecisionGaActions } = this.judgeGaActionsFactory;
+    await super.retryGaCCDEvent(
+      async () => {
+        await makeDecisionGaActions.selectListForAHearing();
+        await makeDecisionGaActions.enterHearingDetails();
+        await makeDecisionGaActions.enterDrawGeneralOrderDetails();
+        await makeDecisionGaActions.previewOrderDocument();
+        await makeDecisionGaActions.submitDecision();
+      },
+      async () => {
+        await makeDecisionGaActions.confirmDecision();
+      },
+      gaCCDEvents.MAKE_DECISION,
+      { expectedState: GaCaseState.LISTING_FOR_A_HEARING },
     );
   }
 }
