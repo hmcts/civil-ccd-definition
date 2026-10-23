@@ -16,7 +16,7 @@ Civil CCD Definition and E2E tests
 ## Building and deploying the application
 
 ### Dependencies
-
+### Dependencies### Dependencies
 The project is dependent on other Civil repositories:
 
 - [civil-service](https://github.com/hmcts/civil-service)
