@@ -20,6 +20,7 @@ import { AcknowledgeClaim } from '../../flows/events/ui/AcknowledgeClaim.ts';
 import { RespondToClaim } from '../../flows/events/ui/RespondToClaim.ts';
 import { RespondToDefence } from '../../flows/events/ui/RespondToDefence.ts';
 import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
+import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
 import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
 import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
 import { ConfirmTrialArrangements } from '../../flows/events/ui/ConfirmTrialArrangements.ts';
@@ -500,6 +501,31 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
           // hearing loss claims get their own task.
           await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', c.sdoTaskType);
           await new CreateSdo(page).submit(ctx.caseId, c.track, c.noiseInducedHearingLoss);
+        });
+        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
+      },
+    },
+
+    // Intermediate and multi track claims get no Standard Direction Order: the judge's task is to allocate the claim
+    // to its track, which is done with a directions order made with "Make an order"
+    {
+      name: 'MAKE_DIRECTIONS_ORDER',
+      title: 'Judge makes a directions order.',
+      user: 'judge',
+      skipIf: [
+        ...noClaimantResponse,
+        [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
+        [c.track !== claimTrack.INTERMEDIATE && c.track !== claimTrack.MULTI, 'Skipping as the directions order is for the intermediate and multi tracks'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          // Where work allocation is switched on, the judge needs the task to allocate the claim to its track
+          await new WaTaskHelper(page).assignTaskForEvent(
+            ctx.caseId,
+            'GENERATE_DIRECTIONS_ORDER',
+            c.track === claimTrack.INTERMEDIATE ? 'allocateIntermediateTrack' : 'allocateMultiTrack',
+          );
+          await new MakeDirectionsOrder(page).submit();
         });
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },

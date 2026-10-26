@@ -8,6 +8,10 @@ import { RespondToClaimSpec } from '../../flows/events/ui/RespondToClaimSpec.ts'
 import { RespondToClaimSpec as ApiRespondToClaimSpec } from '../../flows/events/api/RespondToClaimSpec.ts';
 import { RespondToDefenceSpec } from '../../flows/events/ui/RespondToDefenceSpec.ts';
 import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/events/api/RespondToDefenceSpec.ts';
+import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
+import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
+import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
+import claimTrack from '../../../enums/track.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import caseStates from '../../../enums/caseStates.ts';
@@ -184,6 +188,53 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, c.claimantOutcome.businessProcess);
         await ctx.assertCaseState(c.claimantOutcome.state);
+      },
+    },
+
+    // The judge makes a Standard Direction Order (fast track) or a directions order (intermediate and multi track) once
+    // the claimant's response has taken the claim to JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim
+    // goes to mediation first.
+    {
+      name: 'CREATE_SDO',
+      title: 'Judge makes a Standard Direction Order.',
+      user: 'judge',
+      skipIf: [
+        noLitigantInPerson,
+        [!c.claimantResponds || c.claimantOutcome.state !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL'],
+        [c.track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          // Where work allocation is switched on, the judge needs the directions task to make the order
+          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', 'FastTrackDirections');
+          await new CreateSdo(page).submit(ctx.caseId, c.track);
+        });
+        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
+      },
+    },
+
+    // Intermediate and multi track claims get no Standard Direction Order: the judge's task is to allocate the claim
+    // to its track, which is done with a directions order made with "Make an order"
+    {
+      name: 'MAKE_DIRECTIONS_ORDER',
+      title: 'Judge makes a directions order.',
+      user: 'judge',
+      skipIf: [
+        noLitigantInPerson,
+        [!c.claimantResponds || c.claimantOutcome.state !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL'],
+        [c.track !== claimTrack.INTERMEDIATE && c.track !== claimTrack.MULTI, 'Skipping as the directions order is for the intermediate and multi tracks'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          // Where work allocation is switched on, the judge needs the task to allocate the claim to its track
+          await new WaTaskHelper(page).assignTaskForEvent(
+            ctx.caseId,
+            'GENERATE_DIRECTIONS_ORDER',
+            c.track === claimTrack.INTERMEDIATE ? 'allocateIntermediateTrack' : 'allocateMultiTrack',
+          );
+          await new MakeDirectionsOrder(page).submit();
+        });
+        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },
     },
   ];

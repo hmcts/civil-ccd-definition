@@ -108,6 +108,7 @@ Steps, in the order they run:
 - MANAGE_CONTACT_INFORMATION (group, optional)
 - STAY_CASE, MANAGE_STAY_REQUEST_UPDATE, LIFT_STAY (optional)
 - CREATE_SDO
+- MAKE_DIRECTIONS_ORDER
 - UPLOAD_EVIDENCE (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR)
 - CREATE_HEARING_NOTICE
 - PAY_HEARING_FEE
@@ -118,7 +119,7 @@ Steps, in the order they run:
 - MAKE_FINAL_ORDER
 - CONFIRM_ORDER_REVIEW
 
-The steps from CREATE_SDO on only run for fast track claims that reach JUDICIAL_REFERRAL.
+The steps from CREATE_SDO on only run for fast track claims that reach JUDICIAL_REFERRAL. Intermediate and multi track claims that reach JUDICIAL_REFERRAL get MAKE_DIRECTIONS_ORDER instead: the judge makes a directions order with "Make an order", keeping the claim on its track and uploading a blank pre-hearing order (documents/TEST_ORDER.docx), which moves the claim to CASE_PROGRESSION. The journey stops there for those tracks.
 
 ## 6. Mix of API and UI
 
@@ -255,7 +256,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `CLAIMANT2_LITIGANT_FRIEND` | Yes, No | No | Claimant 2 has a litigation friend (2v1 claims). |
 | `TYPE_OF_CLAIM` | PERSONAL_INJURY, CLINICAL_NEGLIGENCE, PROFESSIONAL_NEGLIGENCE, BREACH_OF_CONTRACT, CONSUMER, CONSUMER_CREDIT, HOUSING_DISREPAIR, DAMAGES_AND_OTHER_REMEDY, OTHER | PERSONAL_INJURY | A value that is set but is not one of these stops the run before it starts. |
 | `SUB_TYPE` | ROAD_ACCIDENT, WORK_ACCIDENT, PUBLIC_LIABILITY, HOLIDAY_ILLNESS, DISEASE_CLAIM, NOISE_INDUCED_HEARING_LOSS, PERSONAL_INJURY_OTHER | ROAD_ACCIDENT (personal injury only) | Only for PERSONAL_INJURY. A value that is not one of these stops the run before it starts. A noise induced hearing loss claim must be on the fast track. |
-| `TRACK` | SMALL_CLAIM, FAST_CLAIM, INTERMEDIATE_CLAIM, MULTI_CLAIM | FAST_CLAIM | Sets the claim value. The steps from the Standard Direction Order on only run on the fast track. |
+| `TRACK` | SMALL_CLAIM, FAST_CLAIM, INTERMEDIATE_CLAIM, MULTI_CLAIM | FAST_CLAIM | Sets the claim value. The steps from the Standard Direction Order on only run on the fast track. The intermediate and multi tracks get a directions order instead. |
 | `DEFENDANTS_TO_NOTIFY_CLAIM` | Both, Defendant One, Defendant Two | Both | Quote values with spaces. Anything other than Both takes the claim offline. |
 | `DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS` | Both, Defendant One, Defendant Two | Both | Anything other than Both takes the claim offline. |
 | `RESPONDENT1_RESPONSE_INTENTION` | FULL_DEFENCE, PART_DEFENCE, CONTEST_JURISDICTION | FULL_DEFENCE | Defendant 1's answer when acknowledging the claim. |

@@ -2,7 +2,7 @@
 
 Example command lines for the playwright-tests specified journey (playwright-tests/e2e/journeys/SpecifiedSS.test.ts), and the parameters a claim can be built with. Run every command from the repository root. Settings are environment variables put in front of the command. Add --headed to watch the browser. The unspecified journey has its own guide, RUNNING_UNSPECIFIED_TESTS.md.
 
-Each command starts the journey from scratch: it creates a new specified (money) claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped. The journey currently ends with the claimant's response to the defence.
+Each command starts the journey from scratch: it creates a new specified (money) claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped. The journey currently ends with the judge's Standard Direction Order or directions order.
 
 ## 1. Environments
 
@@ -25,6 +25,8 @@ Steps, in the order they run:
 - INFORM_AGREED_EXTENSION_DEFENDANT1, INFORM_AGREED_EXTENSION_DEFENDANT2 (optional): each defendant's solicitor tells the court about an agreed extension, which moves their response deadline back.
 - RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2: each defendant's solicitor responds with a full defence, a full or part admission, or a counterclaim.
 - RESPOND_TO_DEFENCE: the claimant's solicitor responds to the defence or the admission. It runs whenever the claim is still online once every defendant has responded (AWAITING_APPLICANT_INTENTION).
+- CREATE_SDO: the judge makes a Standard Direction Order, moving the claim from JUDICIAL_REFERRAL to CASE_PROGRESSION. It only runs on the fast track, when the claimant's response took the claim to JUDICIAL_REFERRAL. It is always done in the UI, where the judge opens the event by its URL (and claims the directions task first where work allocation needs one).
+- MAKE_DIRECTIONS_ORDER: on the intermediate and multi tracks, which have no Standard Direction Order, the judge makes a directions order with "Make an order" instead, also moving the claim from JUDICIAL_REFERRAL to CASE_PROGRESSION. The judge keeps the claim on its track, chooses the blank template for an order before a hearing and uploads the completed order (playwright-tests/documents/TEST_ORDER.docx; the page only takes Word documents). It is always done in the UI (claiming the track allocation task first where work allocation needs one).
 
 The Defendant 2 steps only run for 1v2DS, where Defendant 2 has their own solicitor. In a 1v2SS claim the one solicitor answers for both defendants in Defendant 1's steps. Where a defendant is a litigant in person (1v1LIP, 2v1LIP, 1v2LIPS, 1v2LRLIP, 1v2LIPLR) the response steps and RESPOND_TO_DEFENCE are skipped: they respond through the citizen service, which the journey does not do.
 
@@ -32,9 +34,9 @@ A specified claim is not acknowledged: the CCD definition only gives a defendant
 
 ## 3. API only, UI only, or a mix
 
-The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2 and RESPOND_TO_DEFENCE. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
+The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2 and RESPOND_TO_DEFENCE. CREATE_SDO and MAKE_DIRECTIONS_ORDER always use the UI. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
 
-Everything through the API (All_FINAL_ORDERS_ISSUED is only ever reached by the last step, RESPOND_TO_DEFENCE, so every step uses the API):
+Everything that has an API version through the API (All_FINAL_ORDERS_ISSUED is only ever reached by RESPOND_TO_DEFENCE, so every step before the Standard Direction Order uses the API):
 
 ```bash
 ENV=aat API_UNTIL=All_FINAL_ORDERS_ISSUED npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
@@ -54,7 +56,7 @@ STOP_AT_STATE=<state> stops as soon as the claim is in that state, and STOP_AFTE
 ENV=aat STOP_AFTER_TEST=ASSIGN_DEFENDANT_SOLICITORS KEEP_CASE_ASSIGNMENTS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
-States the journey reaches: PENDING_CASE_ISSUED, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, JUDICIAL_REFERRAL, IN_MEDIATION, All_FINAL_ORDERS_ISSUED, PROCEEDS_IN_HERITAGE_SYSTEM.
+States the journey reaches: PENDING_CASE_ISSUED, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, JUDICIAL_REFERRAL, CASE_PROGRESSION, IN_MEDIATION, All_FINAL_ORDERS_ISSUED, PROCEEDS_IN_HERITAGE_SYSTEM.
 
 ## 5. Inform an agreed extension date
 
