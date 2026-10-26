@@ -10,6 +10,7 @@ import { RespondToDefenceSpec } from '../../flows/events/ui/RespondToDefenceSpec
 import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/events/api/RespondToDefenceSpec.ts';
 import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
 import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
+import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import claimTrack from '../../../enums/track.ts';
 import yesNo from '../../../enums/yesNo.ts';
@@ -44,6 +45,16 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
   // Claims where every defendant has a solicitor. A litigant in person responds through the citizen service instead.
   const allDefendantsRepresented = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL].includes(c.claimType);
   const noLitigantInPerson: [boolean, string] = [!allDefendantsRepresented, 'Skipping as a defendant is a litigant in person, who responds through the citizen service'];
+  // The steps from the judge's order on, which need the claimant's response to take the claim to JUDICIAL_REFERRAL
+  const noJudicialReferral: Array<[boolean, string]> = [
+    noLitigantInPerson,
+    [!c.claimantResponds || c.claimantOutcome.state !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL'],
+  ];
+  // The steps once the judge's order has moved the claim to CASE_PROGRESSION. A small claim goes to mediation instead.
+  const noCaseProgression: Array<[boolean, string]> = [
+    ...noJudicialReferral,
+    [c.track === claimTrack.SMALL, 'Skipping as a small claim goes to mediation, not case progression'],
+  ];
 
   return [
     {
@@ -199,8 +210,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       title: 'Judge makes a Standard Direction Order.',
       user: 'judge',
       skipIf: [
-        noLitigantInPerson,
-        [!c.claimantResponds || c.claimantOutcome.state !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL'],
+        ...noJudicialReferral,
         [c.track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track'],
       ],
       run: async ({ page, storageState }) => {
@@ -220,8 +230,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       title: 'Judge makes a directions order.',
       user: 'judge',
       skipIf: [
-        noLitigantInPerson,
-        [!c.claimantResponds || c.claimantOutcome.state !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL'],
+        ...noJudicialReferral,
         [c.track !== claimTrack.INTERMEDIATE && c.track !== claimTrack.MULTI, 'Skipping as the directions order is for the intermediate and multi tracks'],
       ],
       run: async ({ page, storageState }) => {
@@ -237,6 +246,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },
     },
+
+    // Each solicitor uploads evidence once the judge's order has moved the claim to CASE_PROGRESSION
+    ...uploadEvidenceSteps(),
   ];
 
   function respondToClaimSteps(): JourneyStep[] {
@@ -324,6 +336,30 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
           expect(defendant2Deadline?.slice(0, 10), `Defendant 2's response deadline ${defendant2Deadline} is not the agreed extension date`).toBe(extensionDate);
         }
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    }));
+  }
+
+  function uploadEvidenceSteps(): JourneyStep[] {
+    const solicitors = [
+      { name: 'UPLOAD_EVIDENCE_CLAIMANT_SOLICITOR', label: 'Claimant Solicitor', user: 'claimantSolicitor' },
+      { name: 'UPLOAD_EVIDENCE_DEFENDANT1_SOLICITOR', label: 'Defendant 1 Solicitor', user: 'respondent1Solicitor' },
+      { name: 'UPLOAD_EVIDENCE_DEFENDANT2_SOLICITOR', label: 'Defendant 2 Solicitor', user: 'respondent2Solicitor', defendant2: true },
+    ] as const;
+    return solicitors.map((solicitor) => ({
+      group: 'UPLOAD_EVIDENCE',
+      name: solicitor.name,
+      title: `${solicitor.label} uploads evidence.`,
+      user: solicitor.user,
+      skipIf: [
+        ...noCaseProgression,
+        ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new UploadEvidence(page).submit();
+        });
+        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },
     }));
   }
