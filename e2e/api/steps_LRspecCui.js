@@ -160,7 +160,7 @@ module.exports = {
     caseId = null;
     caseData = {};
 
-    let createClaimData  = {};
+    let createClaimData;
 
     createClaimData = data.CREATE_CLAIM(scenario);
     //==============================================================
@@ -955,7 +955,7 @@ module.exports = {
     const todayLondon = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/London'}).format(new Date());
     const todayUtc = new Intl.DateTimeFormat('en-CA', {timeZone: 'UTC'}).format(new Date());
     let last = {};
-    let cdSnapshot = {};
+    let cdSnapshot;
     // The grant business process is cleared from the terminal snapshot once it finishes, so capture every
     // camundaEvent seen while it runs and assert on it after issue.
     const seenGrantEvents = new Set();
@@ -1240,7 +1240,7 @@ module.exports = {
 
   amendRespondent1ResponseDate: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1ResponseDate ={};
+    let respondent1ResponseDate;
     respondent1ResponseDate = {'respondent1ResponseDate':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1ResponseDate);
   },

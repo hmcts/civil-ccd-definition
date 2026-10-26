@@ -3,6 +3,19 @@ import claimantDefendantPartyTypes from '../../../../../constants/users/claimant
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import TestData from '../../../../../models/test-utils/test-data.ts';
 import CreateClaimPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/create-claim/create-claim-page-factory.ts';
+import ClaimInterest from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/claim-interest.ts';
+import InterestClaimOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-option.ts';
+import SameRateInterestType from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/same-rate-interest-type.ts';
+import InterestClaimFromOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-from-option.ts';
+import InterestClaimUntilOption from '../../../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-until-option.ts';
+
+export interface ClaimInterestParams {
+  claimInterest?: ClaimInterest;
+  interestClaimOption?: InterestClaimOption;
+  sameRateInterestType?: SameRateInterestType;
+  interestClaimFrom?: InterestClaimFromOption;
+  interestClaimUntil?: InterestClaimUntilOption;
+}
 
 @AllMethodsStep()
 export default class CreateClaimSpecActions extends BaseTestData {
@@ -181,7 +194,7 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await specRespondent2CorrespondenceAddressPage.submit();
   }
 
-  async claimDetailsFastTrack() {
+  async claimDetailsFastTrack(interestParams: ClaimInterestParams = {}) {
     await this.detailsSpec();
     await this.uploadClaimDocument();
     await this.claimTimeLineUpload();
@@ -198,18 +211,20 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await claimAmountDetailsPage.verifyFastTrack();
     await claimAmountDetailsPage.submit();
 
-    await this.claimInterest();
+    await this.claimInterest(interestParams);
 
     const { interestSummaryPage } = this.createClaimPageFactory;
     await interestSummaryPage.verifyContent();
-    await interestSummaryPage.verifyFastTrack();
+    if ((interestParams.claimInterest ?? ClaimInterest.NO) === ClaimInterest.NO) {
+      await interestSummaryPage.verifyFastTrack();
+    }
     await interestSummaryPage.submit();
 
     await this.pbaNumber();
     await this.fixedCommencementCosts();
   }
 
-  async claimDetailsMultiTrack() {
+  async claimDetailsMultiTrack(interestParams: ClaimInterestParams = {}) {
     await this.detailsSpec();
     await this.uploadClaimDocument();
     await this.claimTimeLineUpload();
@@ -226,18 +241,20 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await claimAmountDetailsPage.verifyMultiTrack();
     await claimAmountDetailsPage.submit();
 
-    await this.claimInterest();
+    await this.claimInterest(interestParams);
 
     const { interestSummaryPage } = this.createClaimPageFactory;
     await interestSummaryPage.verifyContent();
-    await interestSummaryPage.verifyMultiTrack();
+    if ((interestParams.claimInterest ?? ClaimInterest.NO) === ClaimInterest.NO) {
+      await interestSummaryPage.verifyMultiTrack();
+    }
     await interestSummaryPage.submit();
 
     await this.pbaNumber();
     await this.fixedCommencementCosts();
   }
 
-  async claimDetailsSmallTrack() {
+  async claimDetailsSmallTrack(interestParams: ClaimInterestParams = {}) {
     await this.detailsSpec();
     await this.uploadClaimDocument();
     await this.claimTimeLineUpload();
@@ -254,11 +271,13 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await claimAmountDetailsPage.verifySmallTrack();
     await claimAmountDetailsPage.submit();
 
-    await this.claimInterest();
+    await this.claimInterest(interestParams);
 
     const { interestSummaryPage } = this.createClaimPageFactory;
     await interestSummaryPage.verifyContent();
-    await interestSummaryPage.verifySmallTrack();
+    if ((interestParams.claimInterest ?? ClaimInterest.NO) === ClaimInterest.NO) {
+      await interestSummaryPage.verifySmallTrack();
+    }
     await interestSummaryPage.submit();
 
     await this.pbaNumber();
@@ -328,11 +347,78 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await evidenceListPage.submit();
   }
 
-  private async claimInterest() {
+  async claimInterest({
+    claimInterest = ClaimInterest.NO,
+    interestClaimOption = InterestClaimOption.SAME_RATE_INTEREST,
+    sameRateInterestType = SameRateInterestType.EIGHT_PERCENT,
+    interestClaimFrom = InterestClaimFromOption.FROM_CLAIM_SUBMIT_DATE,
+    interestClaimUntil = InterestClaimUntilOption.UNTIL_SETTLED_OR_JUDGEMENT_MADE,
+  }: ClaimInterestParams = {}) {
     const { claimInterestPage } = this.createClaimPageFactory;
     await claimInterestPage.verifyContent();
-    await claimInterestPage.selectNo();
+
+    if (claimInterest === ClaimInterest.NO) {
+      await claimInterestPage.selectNo();
+      await claimInterestPage.submit();
+      return;
+    }
+
+    await claimInterestPage.selectYes();
     await claimInterestPage.submit();
+
+    const { claimInterestOptionsPage } = this.createClaimPageFactory;
+    await claimInterestOptionsPage.verifyContent();
+
+    if (interestClaimOption === InterestClaimOption.BREAK_DOWN_INTEREST) {
+      await claimInterestOptionsPage.selectBreakDownInterest();
+      await claimInterestOptionsPage.submit();
+
+      const { breakDownInterestPage } = this.createClaimPageFactory;
+      await breakDownInterestPage.verifyContent();
+      await breakDownInterestPage.enterBreakDownInterestTotal();
+      await breakDownInterestPage.enterBreakDownInterestDescription();
+      await breakDownInterestPage.submit();
+    } else {
+      await claimInterestOptionsPage.selectSameRateInterest();
+      await claimInterestOptionsPage.submit();
+
+      const { sameRateInterestSelectionPage } = this.createClaimPageFactory;
+      await sameRateInterestSelectionPage.verifyContent();
+      if (sameRateInterestType === SameRateInterestType.DIFFERENT_RATE) {
+        await sameRateInterestSelectionPage.selectDifferentRate();
+        await sameRateInterestSelectionPage.enterDifferentRate();
+        await sameRateInterestSelectionPage.enterDifferentRateReason();
+      } else {
+        await sameRateInterestSelectionPage.selectEightPercent();
+      }
+      await sameRateInterestSelectionPage.submit();
+    }
+
+    const { interestClaimFromPage } = this.createClaimPageFactory;
+    await interestClaimFromPage.verifyContent();
+
+    if (interestClaimFrom === InterestClaimFromOption.FROM_A_SPECIFIC_DATE) {
+      await interestClaimFromPage.selectFromASpecificDate();
+      await interestClaimFromPage.submit();
+
+      const { interestFromSpecificDate } = this.createClaimPageFactory;
+      await interestFromSpecificDate.verifyContent();
+      await interestFromSpecificDate.enterFromSpecificDate();
+      await interestFromSpecificDate.enterinterestFromSpecificDateDescription();
+      await interestFromSpecificDate.submit();
+
+      const { interestClaimUntilPage } = this.createClaimPageFactory;
+      await interestClaimUntilPage.verifyContent();
+      if (interestClaimUntil === InterestClaimUntilOption.UNTIL_CLAIM_SUBMIT_DATE) {
+        await interestClaimUntilPage.selectUntilClaimSubmitDate();
+      } else {
+        await interestClaimUntilPage.selectUntilSettledOrJudgementMade();
+      }
+      await interestClaimUntilPage.submit();
+    } else {
+      await interestClaimFromPage.selectFromClaimSubmitDate();
+      await interestClaimFromPage.submit();
+    }
   }
 
   private async pbaNumber() {

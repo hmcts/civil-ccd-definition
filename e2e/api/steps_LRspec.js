@@ -830,7 +830,7 @@ module.exports = {
     caseId = null;
     caseData = {};
 
-    let createClaimData  = {};
+    let createClaimData;
     createClaimData = data.CREATE_CLAIM(scenario, isMintiCase, mintiClaimAmount);
 
     await apiRequest.setupTokens(user);
@@ -878,7 +878,7 @@ module.exports = {
     caseId = null;
     caseData = {};
 
-    let createClaimData  = {};
+    let createClaimData;
 
     createClaimData = data.CREATE_CLAIM(scenario);
     //==============================================================
@@ -1158,21 +1158,21 @@ module.exports = {
 
   amendClaimMovedToMediationDate: async (user, date) => {
     await apiRequest.setupTokens(user);
-    let claimMovedToMediationDate ={};
+    let claimMovedToMediationDate;
     claimMovedToMediationDate = {'claimMovedToMediationOn': date};
     testingSupport.updateCaseData(caseId, claimMovedToMediationDate);
   },
 
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1deadline ={};
+    let respondent1deadline;
     respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1deadline);
   },
 
   amendRespondent2ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent2deadline ={};
+    let respondent2deadline;
     respondent2deadline = {'respondent2ResponseDeadline':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
@@ -1407,7 +1407,7 @@ module.exports = {
   },
 
   amendHearingDueDate: async (user) => {
-    let hearingDueDate = {};
+    let hearingDueDate;
     hearingDueDate = {'hearingDueDate': '2022-01-10'};
     await testingSupport.updateCaseData(caseId, hearingDueDate, user);
   },
