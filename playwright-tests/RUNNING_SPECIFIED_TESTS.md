@@ -28,6 +28,7 @@ Steps, in the order they run:
 - CREATE_SDO: the judge makes a Standard Direction Order, moving the claim from JUDICIAL_REFERRAL to CASE_PROGRESSION. It only runs on the fast track, when the claimant's response took the claim to JUDICIAL_REFERRAL. It is always done in the UI, where the judge opens the event by its URL (and claims the directions task first where work allocation needs one).
 - MAKE_DIRECTIONS_ORDER: on the intermediate and multi tracks, which have no Standard Direction Order, the judge makes a directions order with "Make an order" instead, also moving the claim from JUDICIAL_REFERRAL to CASE_PROGRESSION. The judge keeps the claim on its track, chooses the blank template for an order before a hearing and uploads the completed order (playwright-tests/documents/TEST_ORDER.docx; the page only takes Word documents). It is always done in the UI (claiming the track allocation task first where work allocation needs one).
 - UPLOAD_EVIDENCE (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR): once the judge's order has moved the claim to CASE_PROGRESSION, each solicitor uploads a disclosure list with "Upload Your Documents" (the second defendant's solicitor only for 1v2DS). A solicitor acting for two parties uploads it for both. The claim stays in CASE_PROGRESSION. It is always done in the UI.
+- CREATE_HEARING_NOTICE: once the evidence is in, the hearing centre admin lists the trial with "Create a hearing notice" (a first listing of a "Trial (Fast, Intermediate and Multi track)" notice at Clerkenwell, 8 weeks ahead). This stands in for HMC returning a listed hearing. civil-service works out the hearing fee and moves the claim to HEARING_READINESS. It is always done in the UI.
 
 The Defendant 2 steps only run for 1v2DS, where Defendant 2 has their own solicitor. In a 1v2SS claim the one solicitor answers for both defendants in Defendant 1's steps. Where a defendant is a litigant in person (1v1LIP, 2v1LIP, 1v2LIPS, 1v2LRLIP, 1v2LIPLR) the response steps and RESPOND_TO_DEFENCE are skipped: they respond through the citizen service, which the journey does not do.
 
@@ -35,7 +36,7 @@ A specified claim is not acknowledged: the CCD definition only gives a defendant
 
 ## 3. API only, UI only, or a mix
 
-The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2 and RESPOND_TO_DEFENCE. CREATE_SDO, MAKE_DIRECTIONS_ORDER and UPLOAD_EVIDENCE always use the UI. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
+The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2 and RESPOND_TO_DEFENCE. CREATE_SDO, MAKE_DIRECTIONS_ORDER, UPLOAD_EVIDENCE and CREATE_HEARING_NOTICE always use the UI. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
 
 Everything that has an API version through the API (All_FINAL_ORDERS_ISSUED is only ever reached by RESPOND_TO_DEFENCE, so every step before the Standard Direction Order uses the API):
 
@@ -57,7 +58,7 @@ STOP_AT_STATE=<state> stops as soon as the claim is in that state, and STOP_AFTE
 ENV=aat STOP_AFTER_TEST=ASSIGN_DEFENDANT_SOLICITORS KEEP_CASE_ASSIGNMENTS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
-States the journey reaches: PENDING_CASE_ISSUED, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, JUDICIAL_REFERRAL, CASE_PROGRESSION, IN_MEDIATION, All_FINAL_ORDERS_ISSUED, PROCEEDS_IN_HERITAGE_SYSTEM.
+States the journey reaches: PENDING_CASE_ISSUED, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, JUDICIAL_REFERRAL, CASE_PROGRESSION, HEARING_READINESS, IN_MEDIATION, All_FINAL_ORDERS_ISSUED, PROCEEDS_IN_HERITAGE_SYSTEM.
 
 ## 5. Inform an agreed extension date
 

@@ -11,6 +11,7 @@ import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/eve
 import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
 import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
 import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
+import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import claimTrack from '../../../enums/track.ts';
 import yesNo from '../../../enums/yesNo.ts';
@@ -249,6 +250,21 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
 
     // Each solicitor uploads evidence once the judge's order has moved the claim to CASE_PROGRESSION
     ...uploadEvidenceSteps(),
+
+    // The hearing centre admin lists the trial once the evidence is in. This is done in place of HMC returning a LISTED
+    // hearing, and moves the claim to HEARING_READINESS for the hearing fee.
+    {
+      name: 'CREATE_HEARING_NOTICE',
+      title: 'Hearing Centre Admin creates a hearing notice.',
+      user: 'hearingCentreAdmin',
+      skipIf: noCaseProgression,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new CreateHearingNotice(page).submit(c.track);
+        });
+        await ctx.assertCaseState(caseStates.HEARING_READINESS);
+      },
+    },
   ];
 
   function respondToClaimSteps(): JourneyStep[] {
