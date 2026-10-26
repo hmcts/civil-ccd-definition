@@ -7,6 +7,7 @@ import claimTrack from '../../../enums/track.ts';
 import Timeline from '../../../enums/timeline.ts';
 import RespondentResponses from '../../../enums/RespondentResponses.ts';
 import AdmissionPaymentRoute from '../../../enums/admissionPaymentRoute.ts';
+import ClaimantSuggestedPayment from '../../../enums/claimantSuggestedPayment.ts';
 import caseStates from '../../../enums/caseStates.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
@@ -61,6 +62,28 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
       values: [AdmissionPaymentRoute.IMMEDIATELY, AdmissionPaymentRoute.BY_SET_DATE, AdmissionPaymentRoute.SUGGESTION_OF_REPAYMENT_PLAN],
       default: AdmissionPaymentRoute.IMMEDIATELY,
     }),
+    // Whether the claimant proceeds with the claim once the defendants have entered a full defence, or in a 2v1 or 1v2SS
+    // claim have admitted it (both claimants in a 2v1 claim, against both defendants in a 1v2 claim: a specified claim
+    // asks once)
+    CLAIMANT_PROCEED: enums({
+      values: [yesNo.YES, yesNo.NO],
+      default: yesNo.YES,
+    }),
+    // A 1v1 claimant's answers to an admission: whether they accept the amount a defendant admits (part admission), and
+    // whether they accept the date or repayment plan the defendant offers when not paying immediately. Rejecting the
+    // date or plan, the claimant suggests how the defendant pays instead.
+    CLAIMANT_ACCEPTS_AMOUNT: enums({
+      values: [yesNo.YES, yesNo.NO],
+      default: yesNo.YES,
+    }),
+    CLAIMANT_ACCEPTS_PLAN: enums({
+      values: [yesNo.YES, yesNo.NO],
+      default: yesNo.YES,
+    }),
+    CLAIMANT_SUGGESTED_PAYMENT: enums({
+      values: [ClaimantSuggestedPayment.IMMEDIATELY, ClaimantSuggestedPayment.SET_DATE, ClaimantSuggestedPayment.REPAYMENT_PLAN],
+      default: ClaimantSuggestedPayment.IMMEDIATELY,
+    }),
   }, { env: scenarioEnv });
 
   const yes = (value: string | undefined): yesNo => (value === 'Yes' ? yesNo.YES : yesNo.NO);
@@ -87,6 +110,16 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     ? responses.every((response) => response === RespondentResponses.FULL_DEFENCE)
     : allSame && responses[0] !== RespondentResponses.COUNTER_CLAIM;
   const stateAfterAllResponses = staysOnline ? caseStates.AWAITING_APPLICANT_INTENTION : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
+  // The claimant's solicitor responds once every response is in and the claim is still online (all full defences, or
+  // all the same admission). Where the claim goes then is worked out in claimantResponseOutcome.
+  const claimantResponse = {
+    proceed: env.CLAIMANT_PROCEED as yesNo,
+    acceptsAmount: env.CLAIMANT_ACCEPTS_AMOUNT as yesNo,
+    acceptsPlan: env.CLAIMANT_ACCEPTS_PLAN as yesNo,
+    suggestedPayment: env.CLAIMANT_SUGGESTED_PAYMENT as ClaimantSuggestedPayment,
+  };
+  const claimantResponds = staysOnline;
+  const claimantOutcome = claimantResponseOutcome(claimType, track, responses[0], env.ADMISSION_PAYMENT_ROUTE as AdmissionPaymentRoute, claimantResponse);
 
   const config = {
     claimType,
@@ -119,6 +152,12 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     respondent2Response,
     admissionPaymentRoute: env.ADMISSION_PAYMENT_ROUTE as AdmissionPaymentRoute,
     stateAfterAllResponses,
+    // Whether the claimant responds to the defence (CLAIMANT_PROCEED, default Yes), and where the claim goes then
+    // The claimant's answers (CLAIMANT_PROCEED, CLAIMANT_ACCEPTS_AMOUNT, CLAIMANT_ACCEPTS_PLAN, CLAIMANT_SUGGESTED_PAYMENT),
+    // whether they respond, and the business process and state their response leads to
+    claimantResponse,
+    claimantResponds,
+    claimantOutcome,
 
     // Checks the settings make sense together, before the journey starts
     validate() {
@@ -126,4 +165,45 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     },
   };
   return config;
+}
+
+// Where the claimant's response takes the claim (civil-service's DetermineNextState and the claimant response process).
+// response is every defendant's response, as they are all the same once the claim waits for the claimant.
+//  - A full defence: proceeding takes a small claim to mediation (CARM) and any other claim to JUDICIAL_REFERRAL; not
+//    proceeding takes it offline.
+//  - A 2v1 or 1v2SS admission: the claimant is only asked whether they proceed, and either way the claim goes offline
+//    (even a small claim, checked with a 1v2SS part admission).
+//  - A 1v1 admission paid immediately and accepted (a full admission is not asked about at all) waits for the payment,
+//    so the claim stays in AWAITING_APPLICANT_INTENTION.
+//  - A 1v1 date or repayment plan the claimant accepts becomes a judgment by admission (All_FINAL_ORDERS_ISSUED, through
+//    the JUDGEMENT_BY_ADMISSION_NON_DIVERGENT_SPEC process). A rejected full admission plan goes offline, and a rejected
+//    part admission plan goes to JUDICIAL_REFERRAL.
+//  - A 1v1 part admission amount the claimant rejects is disputed like a defence: JUDICIAL_REFERRAL, or mediation for a
+//    small claim.
+export function claimantResponseOutcome(
+  claimType: claimTypes,
+  track: claimTrack,
+  response: RespondentResponses,
+  paymentRoute: AdmissionPaymentRoute,
+  answers: { proceed: yesNo; acceptsAmount: yesNo; acceptsPlan: yesNo },
+): { state: caseStates; businessProcess: string } {
+  const outcome = (state: caseStates, businessProcess = 'CLAIMANT_RESPONSE_SPEC') => ({ state, businessProcess });
+  const disputed = track === claimTrack.SMALL ? caseStates.IN_MEDIATION : caseStates.JUDICIAL_REFERRAL;
+  if (response === RespondentResponses.FULL_DEFENCE) {
+    return outcome(answers.proceed === yesNo.NO ? caseStates.PROCEEDS_IN_HERITAGE_SYSTEM : disputed);
+  }
+  if (claimType !== claimTypes.ONE_VS_ONE) {
+    return outcome(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
+  }
+  const partAdmission = response === RespondentResponses.PART_ADMISSION;
+  if (partAdmission && answers.acceptsAmount === yesNo.NO) {
+    return outcome(disputed);
+  }
+  if (paymentRoute === AdmissionPaymentRoute.IMMEDIATELY) {
+    return outcome(caseStates.AWAITING_APPLICANT_INTENTION);
+  }
+  if (answers.acceptsPlan === yesNo.YES) {
+    return outcome(caseStates.All_FINAL_ORDERS_ISSUED, 'JUDGEMENT_BY_ADMISSION_NON_DIVERGENT_SPEC');
+  }
+  return outcome(partAdmission ? caseStates.JUDICIAL_REFERRAL : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
 }

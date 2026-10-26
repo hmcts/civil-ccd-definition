@@ -6,6 +6,8 @@ import { InformAgreedExtensionDateSpec } from '../../flows/events/ui/InformAgree
 import { InformAgreedExtensionDateSpec as ApiInformAgreedExtensionDateSpec } from '../../flows/events/api/InformAgreedExtensionDateSpec.ts';
 import { RespondToClaimSpec } from '../../flows/events/ui/RespondToClaimSpec.ts';
 import { RespondToClaimSpec as ApiRespondToClaimSpec } from '../../flows/events/api/RespondToClaimSpec.ts';
+import { RespondToDefenceSpec } from '../../flows/events/ui/RespondToDefenceSpec.ts';
+import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/events/api/RespondToDefenceSpec.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import caseStates from '../../../enums/caseStates.ts';
@@ -35,6 +37,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
   }
 
   const noDefendant1Solicitor: [boolean, string] = [c.claimShape.defendants[0].solicitor === 'none', 'Skipping as first defendant is a LiP'];
+  // Claims where every defendant has a solicitor. A litigant in person responds through the citizen service instead.
+  const allDefendantsRepresented = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL].includes(c.claimType);
+  const noLitigantInPerson: [boolean, string] = [!allDefendantsRepresented, 'Skipping as a defendant is a litigant in person, who responds through the citizen service'];
 
   return [
     {
@@ -157,12 +162,33 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
 
     // Each defendant's solicitor responds: a full defence, a full or part admission, or a counterclaim
     ...respondToClaimSteps(),
+
+    // The claimant's solicitor responds to the defence or the admission: proceeding with the claim or not, or accepting
+    // or rejecting what a defendant admits and when they will pay (CLAIMANT_PROCEED, CLAIMANT_ACCEPTS_AMOUNT,
+    // CLAIMANT_ACCEPTS_PLAN, CLAIMANT_SUGGESTED_PAYMENT)
+    {
+      name: 'RESPOND_TO_DEFENCE',
+      title: 'Claimant Solicitor responds to defence.',
+      user: 'claimantSolicitor',
+      skipIf: [
+        noLitigantInPerson,
+        [!c.claimantResponds, 'Skipping as the claim went offline once the defendants responded'],
+      ],
+      run: async ({ page, storageState }) => {
+        if (ctx.useApi()) {
+          await new ApiRespondToDefenceSpec().submit(c, ctx.caseId);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new RespondToDefenceSpec(page).submit(c.claimType, c.claimantResponse);
+          });
+        }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, c.claimantOutcome.businessProcess);
+        await ctx.assertCaseState(c.claimantOutcome.state);
+      },
+    },
   ];
 
   function respondToClaimSteps(): JourneyStep[] {
-    // Claims where every defendant has a solicitor. A litigant in person responds through the citizen service instead.
-    const allDefendantsRepresented = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL].includes(c.claimType);
-    const noLitigantInPerson: [boolean, string] = [!allDefendantsRepresented, 'Skipping as a defendant is a litigant in person, who responds through the citizen service'];
     const solicitors: Array<{ defendantNumber: 1 | 2; user: SessionUserKey; skipIf: Array<[boolean, string]>; stateAfter: caseStates }> = [
       {
         defendantNumber: 1,
