@@ -71,7 +71,7 @@ const retriedJsonRequest = async (url, headers, body, method = 'POST', expectedS
       try {
         responseBody = JSON.parse(responseText);
       } catch (err) {
-        throw new Error(`Failed to parse JSON response from ${response.url}: ${err.message}`);
+        throw new Error(`Failed to parse JSON response from ${response.url}: ${err.message}`, { cause: err });
       }
 
       return {
