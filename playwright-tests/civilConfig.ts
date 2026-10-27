@@ -80,6 +80,15 @@ export const hearingCentreAdminCredentials = {
   password: defaultPassword,
 }
 
+// A region 1 (London) legal adviser (a tribunal legal caseworker), who makes the small claims Standard Direction Order:
+// work allocation gives a small claim's directions task to a legal adviser (LegalAdvisorSmallClaimsTrackDirections).
+// An environment whose legal advisers differ sets LEGAL_ADVISER_USERNAME and LEGAL_ADVISER_PASSWORD.
+export const legalAdviserCredentials = {
+  name: 'Legal Adviser',
+  username: process.env.LEGAL_ADVISER_USERNAME || 'tribunal_legal_caseworker_reg4@justice.gov.uk',
+  password: process.env.LEGAL_ADVISER_PASSWORD || defaultPassword,
+}
+
 // The civil system update user, which runs the events civil-service's schedulers run (such as the trial ready check)
 export const civilSystemUpdate = {
   username: 'civil-system-update@mailnesia.com',

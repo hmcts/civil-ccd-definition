@@ -11,6 +11,7 @@ import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/eve
 import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
 import { AddCaseNote } from '../../flows/events/ui/AddCaseNote.ts';
 import { StayCase } from '../../flows/events/ui/StayCase.ts';
+import { MediationUnsuccessful } from '../../flows/events/ui/MediationUnsuccessful.ts';
 import { ManageStay } from '../../flows/events/ui/ManageStay.ts';
 import { CreateCaseFlag } from '../../flows/events/ui/CreateCaseFlag.ts';
 import { ManageCaseFlag } from '../../flows/events/ui/ManageCaseFlag.ts';
@@ -72,10 +73,16 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     ...noJudicialReferral,
     [c.stayCase !== yesNo.YES, 'Staying the case is switched off (set STAY_CASE=Yes to run it)'],
   ];
-  // The steps once the judge's order has moved the claim to CASE_PROGRESSION. A small claim goes to mediation instead.
+  // Unsuccessful mediation, for a small claim the claimant's response took to mediation
+  const noMediation: Array<[boolean, string]> = [
+    noLitigantInPerson,
+    [!c.claimantResponds || c.claimantOutcome.state !== caseStates.IN_MEDIATION, 'Skipping as the claimant\'s response did not take the claim to mediation'],
+  ];
+  // The steps once the judge's order has moved the claim to CASE_PROGRESSION. The small claims steps after the order are
+  // not coded yet.
   const noCaseProgression: Array<[boolean, string]> = [
+    [c.track === claimTrack.SMALL, 'Skipping as the steps after a small claims order are not coded yet'],
     ...noJudicialReferral,
-    [c.track === claimTrack.SMALL, 'Skipping as a small claim goes to mediation, not case progression'],
   ];
 
   return [
@@ -289,21 +296,38 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       },
     },
 
-    // The judge makes a Standard Direction Order (fast track) or a directions order (intermediate and multi track) once
-    // the claimant's response has taken the claim to JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim
-    // goes to mediation first.
+    // A small claim the claimant's response took to mediation: court staff record that mediation did not settle it,
+    // which takes it to JUDICIAL_REFERRAL for the judge's directions
+    {
+      name: 'MEDIATION_UNSUCCESSFUL',
+      title: 'Hearing Centre Admin records that mediation was unsuccessful.',
+      user: 'hearingCentreAdmin',
+      skipIf: noMediation,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new MediationUnsuccessful(page).submit();
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'MEDIATION_UNSUCCESSFUL');
+        await ctx.assertCaseState(caseStates.JUDICIAL_REFERRAL);
+      },
+    },
+
+    // The Standard Direction Order (fast track and small claims) or a directions order (intermediate and multi track),
+    // once the claim is in JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim gets there after
+    // unsuccessful mediation, and work allocation gives its directions task to a legal adviser rather than a judge.
     {
       name: 'CREATE_SDO',
-      title: 'Judge makes a Standard Direction Order.',
-      user: 'judge',
+      title: `${c.track === claimTrack.SMALL ? 'Legal Adviser' : 'Judge'} makes a Standard Direction Order.`,
+      user: c.track === claimTrack.SMALL ? 'legalAdviser' : 'judge',
       skipIf: [
-        ...noJudicialReferral,
-        [c.track !== claimTrack.FAST, 'Skipping as the Standard Direction Order is only coded for the fast track'],
+        noLitigantInPerson,
+        [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
+        [c.track !== claimTrack.FAST && c.track !== claimTrack.SMALL, 'Skipping as the intermediate and multi tracks get a directions order instead'],
       ],
       run: async ({ page, storageState }) => {
         await ctx.runEvent(page, storageState, async () => {
-          // Where work allocation is switched on, the judge needs the directions task to make the order
-          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', 'FastTrackDirections');
+          // Where work allocation is switched on, the directions task for the track is needed to make the order
+          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', c.track === claimTrack.SMALL ? 'LegalAdvisorSmallClaimsTrackDirections' : 'FastTrackDirections');
           await new CreateSdo(page).submit(ctx.caseId, c.track);
         });
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
