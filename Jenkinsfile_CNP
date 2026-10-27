@@ -1,10 +1,21 @@
 #!groovy
-properties([
-  copyArtifactPermission('/HMCTS_a_to_c/civil-ccd-definition/*'),
-]);
+// properties() replaces the job's whole property list, so both branches must carry every property.
+// On a PR, a new push aborts the running build: otherwise superseded builds keep running against
+// commits nobody wants and hold civil-preview agents (and the per-PR preview lock) from the newer one.
+// Master is left alone so every merge still deploys to AAT.
+if (env.BRANCH_NAME?.startsWith('PR-')) {
+  properties([
+    copyArtifactPermission('/HMCTS_a_to_c/civil-ccd-definition/*'),
+    disableConcurrentBuilds(abortPrevious: true),
+  ])
+} else {
+  properties([
+    copyArtifactPermission('/HMCTS_a_to_c/civil-ccd-definition/*'),
+  ])
+}
 
 
-@Library("Infrastructure@2.13.1")
+@Library("Infrastructure@2.13.4")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
