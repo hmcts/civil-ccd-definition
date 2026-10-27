@@ -83,7 +83,8 @@ export class TestingEndPointHelper {
   };
 
   // Checks the case's CCD state, read from civil-service's business process endpoint. The state is set by background
-  // processing, so it is checked repeatedly until it matches or the retry timeout runs out.
+  // processing, so it is checked repeatedly until it matches or the retry timeout runs out. The environment's gateway
+  // sometimes answers with an error page instead of JSON, which counts as one failed try rather than failing the step.
   async assertCaseState(caseId: string, expectedState: CaseStates) {
     await this.getTokens(systemupdate);
     const businessProcessUrl = `${this.testingSupportUrl}/case/${caseId}/business-process`;
@@ -91,8 +92,13 @@ export class TestingEndPointHelper {
     try {
       await expect.poll(async () => {
         const response = await apiRequestContext.get(businessProcessUrl, { headers: this.getHeaders() });
-        const data = await response.json();
-        return data.ccdState;
+        const body = await response.text();
+        try {
+          return JSON.parse(body).ccdState;
+        } catch {
+          console.log(`Case state check got HTTP ${response.status()} that is not JSON, trying again: ${body.slice(0, 100)}`);
+          return `HTTP ${response.status()} (not JSON)`;
+        }
       }, {
         intervals: apiRetries.intervals,
         timeout: apiRetries.timeout,
