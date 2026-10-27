@@ -12,6 +12,7 @@ import ClaimantSuggestedPayment from '../../../enums/claimantSuggestedPayment.ts
 import caseStates from '../../../enums/caseStates.ts';
 import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
+import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 
 export type SpecifiedConfig = ReturnType<typeof specifiedConfig>;
 
@@ -179,6 +180,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // whether they respond, and the business process and state their response leads to
     claimantResponse,
     claimantResponds,
+    // The flags the hearing centre admin adds once the claimant has responded and the claim is still online
+    // (CASE_FLAGS: "representative", or a list such as CASE:CF0002,DEFENDANT_1:RA0012; see caseFlagSpecs.ts)
+    caseFlagsSetting: scenarioEnv.CASE_FLAGS,
     claimantOutcome,
     finalOrder,
 
@@ -193,6 +197,8 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         finalOrdersForTrack[track],
         `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`,
       ).toContain(finalOrder);
+      const caseFlagsError = caseFlagsProblem(config);
+      expect(caseFlagsError, caseFlagsError).toBeUndefined();
     },
   };
   return config;

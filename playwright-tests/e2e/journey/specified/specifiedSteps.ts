@@ -10,6 +10,11 @@ import { RespondToDefenceSpec } from '../../flows/events/ui/RespondToDefenceSpec
 import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/events/api/RespondToDefenceSpec.ts';
 import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
 import { AddCaseNote } from '../../flows/events/ui/AddCaseNote.ts';
+import { CreateCaseFlag } from '../../flows/events/ui/CreateCaseFlag.ts';
+import { ManageCaseFlag } from '../../flows/events/ui/ManageCaseFlag.ts';
+import { caseFlagType } from '../../flows/caseFlags/caseFlagTypes.ts';
+import { holderFlagsField, holderLabel } from '../../flows/caseFlags/caseFlagHolders.ts';
+import { CaseFlagSpec, caseFlagSpecs } from '../../flows/caseFlags/caseFlagSpecs.ts';
 import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
 import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
 import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
@@ -226,6 +231,8 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         await ctx.assertCaseState(c.claimantOutcome.state);
       },
     },
+
+    ...caseFlagSteps(),
 
     // The judge makes a Standard Direction Order (fast track) or a directions order (intermediate and multi track) once
     // the claimant's response has taken the claim to JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim
@@ -529,6 +536,70 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },
     }));
+  }
+
+  // One step per CASE_FLAGS flag, each a Create case flags event, then a Manage case flags event that makes the first
+  // one inactive. They run once the claimant has responded, in whichever online state that left the claim (court staff
+  // can flag a case in any of them). Flags court staff create are active whatever reference data's default status,
+  // which is for flags requested from outside the court.
+  function caseFlagSteps(): JourneyStep[] {
+    const flags = caseFlagSpecs(c);
+    const noCaseFlags: Array<[boolean, string]> = [
+      noLitigantInPerson,
+      [!c.claimantResponds, 'Skipping as the claim went offline once the defendants responded'],
+      [c.claimantOutcome.state === caseStates.PROCEEDS_IN_HERITAGE_SYSTEM, 'Skipping as the claimant\'s response took the claim offline'],
+      [flags.length === 0, 'Adding case flags is switched off (set CASE_FLAGS=representative, or a list such as CASE:CF0002,DEFENDANT_1:RA0012)'],
+    ];
+    const comment = (index: number, flag: CaseFlagSpec) => `Case flag ${index + 1} (${flag.code}) added by the specified journey`;
+
+    const createSteps: JourneyStep[] = flags.map((flag, index) => ({
+      name: `CREATE_CASE_FLAG_${index + 1}`,
+      group: 'CREATE_CASE_FLAGS',
+      title: `Hearing Centre Admin adds case flag ${flag.code} to ${flag.holder}.`,
+      user: 'hearingCentreAdmin',
+      skipIf: noCaseFlags,
+      run: async ({ page, storageState }) => {
+        const flagType = await caseFlagType(page, flag.holder === 'CASE' ? 'CASE' : 'PARTY', flag.code, flag.otherUnder);
+        console.log(`Adding case flag ${flag.code} "${flagType.path.join(' > ')}" to ${holderLabel(c, flag.holder)}`);
+        await ctx.runEvent(page, storageState, async () => {
+          await new CreateCaseFlag(page).submit(holderLabel(c, flag.holder), flagType, { ...flag, comment: comment(index, flag) });
+        });
+        const { field, index: entry } = holderFlagsField(flag.holder);
+        const saved = (await ctx.testingEndpointHelper.getCaseFlagDetails(ctx.caseId, field, entry)).find((detail) => detail.flagComment === comment(index, flag));
+        expect(saved, `Case flag ${flag.code} was not saved on ${field}${entry === undefined ? '' : `[${entry}]`}`).toBeDefined();
+        expect(saved.flagCode).toBe(flag.code);
+        expect(saved.status).toBe('Active');
+        if (flag.otherDescription) {
+          expect(saved.otherDescription).toBe(flag.otherDescription);
+        }
+        await ctx.assertCaseState(c.claimantOutcome.state);
+      },
+    }));
+
+    const first = flags[0];
+    const manageStep: JourneyStep = {
+      name: 'MAKE_CASE_FLAG_INACTIVE',
+      title: 'Hearing Centre Admin makes the first case flag inactive.',
+      user: 'hearingCentreAdmin',
+      skipIf: noCaseFlags,
+      run: async ({ page, storageState }) => {
+        const flagType = await caseFlagType(page, first.holder === 'CASE' ? 'CASE' : 'PARTY', first.code, first.otherUnder);
+        const reason = 'Made inactive by the specified journey';
+        await ctx.runEvent(page, storageState, async () => {
+          await new ManageCaseFlag(page).makeInactive(holderLabel(c, first.holder), first.otherDescription ?? flagType.name, reason);
+        });
+        const { field, index: entry } = holderFlagsField(first.holder);
+        const saved = (await ctx.testingEndpointHelper.getCaseFlagDetails(ctx.caseId, field, entry)).find((detail) => detail.flagCode === first.code);
+        expect(saved?.status, `Case flag ${first.code} on ${field} was not made inactive`).toBe('Inactive');
+        await ctx.assertCaseState(c.claimantOutcome.state);
+      },
+    };
+
+    if (flags.length === 0) {
+      // Without CASE_FLAGS the journey still lists one step, skipped with the reason, as it does for other switched-off steps
+      return [{ name: 'CREATE_CASE_FLAGS', title: 'Hearing Centre Admin adds case flags.', user: 'hearingCentreAdmin', skipIf: noCaseFlags, run: async () => {} }];
+    }
+    return [...createSteps, manageStep];
   }
 
   function confirmTrialArrangementsSteps(): JourneyStep[] {

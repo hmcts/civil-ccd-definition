@@ -1,5 +1,4 @@
-import { UnspecifiedConfig } from '../../journey/unspecified/unspecifiedConfig.ts';
-import { CaseFlagHolder, holderMissingReason } from './caseFlagHolders.ts';
+import { CaseFlagClaim, CaseFlagHolder, holderMissingReason } from './caseFlagHolders.ts';
 
 // One flag to create: where it goes and its flag code from reference data, e.g. { holder: 'DEFENDANT_1', code: 'RA0012' }
 // for Braille documents. An "Other" flag (OT0001) is the one on the first flag type page unless otherUnder names the
@@ -26,7 +25,7 @@ const representative: CaseFlagSpec[] = [
 //  - representative: the set above, for the holders this claim has
 //  - a list of holder:code, e.g. CASE:CF0002,DEFENDANT_1:RA0012,CLAIMANT_EXPERT_1:SM0003. A third part gives the
 //    language for an interpreter flag (CLAIMANT_1:PF0015:Spanish) or the description for an "Other" flag.
-export function caseFlagSpecs(c: UnspecifiedConfig): CaseFlagSpec[] {
+export function caseFlagSpecs(c: CaseFlagClaim): CaseFlagSpec[] {
   const setting = c.caseFlagsSetting?.trim();
   if (!setting) {
     return [];
@@ -47,7 +46,7 @@ export function caseFlagSpecs(c: UnspecifiedConfig): CaseFlagSpec[] {
 }
 
 // Why CASE_FLAGS cannot be used for this claim, or undefined when it can
-export function caseFlagsProblem(c: UnspecifiedConfig): string | undefined {
+export function caseFlagsProblem(c: CaseFlagClaim): string | undefined {
   const setting = c.caseFlagsSetting?.trim();
   if (!setting || setting === 'representative') {
     return undefined;

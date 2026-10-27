@@ -1,7 +1,20 @@
 import { partyDetails } from '../../../fixtures/partyDetails.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import yesNo from '../../../enums/yesNo.ts';
-import { UnspecifiedConfig } from '../../journey/unspecified/unspecifiedConfig.ts';
+
+// The parts of a journey's claim that decide which holders it has and how they are named. The unspecified journey's
+// claims can have experts, witnesses and claimants' litigation friends; a specified claim's directions questionnaires
+// name no experts or witnesses and it asks about no litigation friends, so it leaves those out.
+export interface CaseFlagClaim {
+  claimType: claimTypes;
+  claimantType: string;
+  defendantType: string;
+  caseFlagsSetting?: string;
+  noOfExperts?: string;
+  noOfWitnesses?: string;
+  claimant1LitigantFriend?: yesNo;
+  claimant2LitigantFriend?: yesNo;
+}
 
 // Where a flag can go: the case itself, a claimant or defendant, a claimant's litigation friend, or one of the experts
 // or witnesses a party named in their directions questionnaire (numbered from 1)
@@ -33,7 +46,7 @@ function partyName(
 
 // The holder as the first page of Create case flags lists it: "<party name> (<role on case>)", or "Case level".
 // Experts and witnesses are named after their party in the directions questionnaire, e.g. Defendant1 Witness1.
-export function holderLabel(c: UnspecifiedConfig, holder: CaseFlagHolder): string {
+export function holderLabel(c: CaseFlagClaim, holder: CaseFlagHolder): string {
   const expertOrWitness = holder.match(/^(CLAIMANT|DEFENDANT_([12]))_(EXPERT|WITNESS)_(\d+)$/);
   if (expertOrWitness) {
     const [, side, defendantNumber, kind, index] = expertOrWitness;
@@ -62,10 +75,13 @@ export function holderLabel(c: UnspecifiedConfig, holder: CaseFlagHolder): strin
 
 // Why a holder is not on this claim, or undefined when it is. Experts and witnesses come from the directions
 // questionnaires (EXPERTS and WITNESSES each party names).
-export function holderMissingReason(c: UnspecifiedConfig, holder: CaseFlagHolder): string | undefined {
+export function holderMissingReason(c: CaseFlagClaim, holder: CaseFlagHolder): string | undefined {
   const expertOrWitness = holder.match(/^(CLAIMANT|DEFENDANT_([12]))_(EXPERT|WITNESS)_(\d+)$/);
   if (expertOrWitness) {
     const [, side, defendantNumber, kind, index] = expertOrWitness;
+    if (c.noOfExperts === undefined && c.noOfWitnesses === undefined) {
+      return `${holder}: the claim's directions questionnaires name no experts or witnesses`;
+    }
     const named = Number(kind === 'EXPERT' ? c.noOfExperts : c.noOfWitnesses);
     if (Number(index) > named) {
       return `${holder}: each party names ${named} ${kind.toLowerCase()}(s) (set ${kind === 'EXPERT' ? 'EXPERTS' : 'WITNESSES'})`;
