@@ -78,15 +78,15 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     noLitigantInPerson,
     [!c.claimantResponds || c.claimantOutcome.state !== caseStates.IN_MEDIATION, 'Skipping as the claimant\'s response did not take the claim to mediation'],
   ];
-  // The evidence uploads, the hearing notice and its fee, once the order has moved the claim to CASE_PROGRESSION: on the
-  // fast, intermediate and multi tracks after the claimant's response took it to JUDICIAL_REFERRAL, and for a small claim
-  // after unsuccessful mediation
+  // The evidence uploads, the hearing notice, its fee and the trial bundle, once the order has moved the claim to
+  // CASE_PROGRESSION: on the fast, intermediate and multi tracks after the claimant's response took it to
+  // JUDICIAL_REFERRAL, and for a small claim after unsuccessful mediation
   const noHearingNotice: Array<[boolean, string]> = [
     noLitigantInPerson,
     [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
   ];
   // The steps once the judge's order has moved the claim to CASE_PROGRESSION. The small claims steps after the order,
-  // other than the evidence uploads, the hearing notice and its fee, are not coded yet.
+  // other than the evidence uploads, the hearing notice, its fee and the trial bundle, are not coded yet.
   const noCaseProgression: Array<[boolean, string]> = [
     [c.track === claimTrack.SMALL, 'Skipping as the steps after a small claims order are not coded yet'],
     ...noJudicialReferral,
@@ -436,14 +436,14 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     ...confirmTrialArrangementsSteps(),
 
     // The trial bundle, which a civil-service scheduler normally creates about 3 weeks before the hearing, is created
-    // now. The scheduler leaves out intermediate and multi track claims (small claims go to mediation in this journey,
-    // so never get here). Once the bundle has been stitched into one document it shows on the Bundles tab.
+    // now. The scheduler leaves out intermediate and multi track claims, but small claims have a bundle too. Once the
+    // bundle has been stitched into one document it shows on the Bundles tab.
     {
       name: 'CREATE_TRIAL_BUNDLE',
       title: 'Trial bundle is created and shown to the Claimant Solicitor.',
       user: 'claimantSolicitor',
       skipIf: [
-        ...noCaseProgression,
+        ...noHearingNotice,
         [c.track === claimTrack.INTERMEDIATE || c.track === claimTrack.MULTI, 'Skipping as civil-service does not create trial bundles for intermediate or multi track claims'],
       ],
       run: async ({ page, storageState }) => {
