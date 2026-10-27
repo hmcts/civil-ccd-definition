@@ -317,6 +317,29 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     // civil-service refuses it once the hearing is less than 3 weeks away; the hearing notice lists it about 8 weeks
     // ahead. The claim stays in PREPARE_FOR_HEARING_CONDUCT_HEARING.
     ...confirmTrialArrangementsSteps(),
+
+    // The trial bundle, which a civil-service scheduler normally creates about 3 weeks before the hearing, is created
+    // now. The scheduler leaves out intermediate and multi track claims (small claims go to mediation in this journey,
+    // so never get here). Once the bundle has been stitched into one document it shows on the Bundles tab.
+    {
+      name: 'CREATE_TRIAL_BUNDLE',
+      title: 'Trial bundle is created and shown to the Claimant Solicitor.',
+      user: 'claimantSolicitor',
+      skipIf: [
+        ...noCaseProgression,
+        [c.track === claimTrack.INTERMEDIATE || c.track === claimTrack.MULTI, 'Skipping as civil-service does not create trial bundles for intermediate or multi track claims'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.testingEndpointHelper.triggerTrialBundle(ctx.caseId);
+        const bundleTitle = await ctx.testingEndpointHelper.waitForBundleStitched(ctx.caseId);
+        await ctx.runEvent(page, storageState, async () => {
+          await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
+          await ctx.tabsHelper.selectTab('Bundles');
+          await expect(page.getByText(bundleTitle).first()).toBeVisible();
+        });
+        await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      },
+    },
   ];
 
   function respondToClaimSteps(): JourneyStep[] {
