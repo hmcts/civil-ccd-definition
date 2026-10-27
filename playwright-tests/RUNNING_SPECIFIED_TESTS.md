@@ -2,7 +2,7 @@
 
 Example command lines for the playwright-tests specified journey (playwright-tests/e2e/journeys/SpecifiedSS.test.ts), and the parameters a claim can be built with. Run every command from the repository root. Settings are environment variables put in front of the command. Add --headed to watch the browser. The unspecified journey has its own guide, RUNNING_UNSPECIFIED_TESTS.md.
 
-Each command starts the journey from scratch: it creates a new specified (money) claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped. The journey currently ends with the claimant's solicitor paying the hearing fee, leaving the claim in PREPARE_FOR_HEARING_CONDUCT_HEARING.
+Each command starts the journey from scratch: it creates a new specified (money) claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped. The journey currently ends in PREPARE_FOR_HEARING_CONDUCT_HEARING, with the hearing fee paid and, on the fast track, the trial ready check made.
 
 ## 1. Environments
 
@@ -30,6 +30,7 @@ Steps, in the order they run:
 - UPLOAD_EVIDENCE (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR): once the judge's order has moved the claim to CASE_PROGRESSION, each solicitor uploads a disclosure list with "Upload Your Documents" (the second defendant's solicitor only for 1v2DS). A solicitor acting for two parties uploads it for both. The claim stays in CASE_PROGRESSION. It is always done in the UI.
 - CREATE_HEARING_NOTICE: once the evidence is in, the hearing centre admin lists the trial with "Create a hearing notice" (a first listing of a "Trial (Fast, Intermediate and Multi track)" notice at Clerkenwell, 8 weeks ahead). This stands in for HMC returning a listed hearing. civil-service works out the hearing fee and moves the claim to HEARING_READINESS. It is always done in the UI.
 - PAY_HEARING_FEE: the claimant's solicitor pays the hearing fee from the Service Request tab, by PBA or card (PAYMENT_METHOD). If the payment service has not told civil-service about the payment within a minute, the test does. The test then runs HEARING_FEE_PAID, which civil-service's scheduler would otherwise run later, moving the claim to PREPARE_FOR_HEARING_CONDUCT_HEARING. It is always done in the UI.
+- TRIAL_READY_CHECK: on the fast track only, the parties are asked to confirm they are ready for trial. civil-service's scheduler does this once the hearing is less than 3 weeks away; the hearing is 8 weeks ahead, so the test runs the event itself and checks it was recorded on the case. The claim stays in PREPARE_FOR_HEARING_CONDUCT_HEARING.
 
 The Defendant 2 steps only run for 1v2DS, where Defendant 2 has their own solicitor. In a 1v2SS claim the one solicitor answers for both defendants in Defendant 1's steps. Where a defendant is a litigant in person (1v1LIP, 2v1LIP, 1v2LIPS, 1v2LRLIP, 1v2LIPLR) the response steps and RESPOND_TO_DEFENCE are skipped: they respond through the citizen service, which the journey does not do.
 
