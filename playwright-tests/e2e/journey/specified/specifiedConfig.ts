@@ -158,6 +158,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     paymentMethod: env.PAYMENT_METHOD as PaymentMethod,
     // Whether the claimant claims fixed commencement costs (FIXED_COMMENCEMENT_COSTS=Yes, default No)
     fixedCommencementCosts: yes(scenarioEnv.FIXED_COMMENCEMENT_COSTS),
+    // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=Yes,
+    // default No)
+    addCaseNote: yes(scenarioEnv.ADD_CASE_NOTE),
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),

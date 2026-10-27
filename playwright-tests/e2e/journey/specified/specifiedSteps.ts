@@ -9,6 +9,7 @@ import { RespondToClaimSpec as ApiRespondToClaimSpec } from '../../flows/events/
 import { RespondToDefenceSpec } from '../../flows/events/ui/RespondToDefenceSpec.ts';
 import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/events/api/RespondToDefenceSpec.ts';
 import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
+import { AddCaseNote } from '../../flows/events/ui/AddCaseNote.ts';
 import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
 import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
 import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
@@ -155,6 +156,26 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         // Pay the claim fee, in its row of the Service Request tab
         await ctx.payFeeInUi(page, storageState, 'claimIssuedPBADetails', c.paymentMethod);
         await waitForClaimIssued();
+      },
+    },
+
+    // Adding a case note, done as early as possible: court staff can add one in any state, so straight after the claim
+    // is issued. Only run with ADD_CASE_NOTE=Yes (default No).
+    {
+      name: 'ADD_CASE_NOTE',
+      title: 'Hearing Centre Admin adds a case note.',
+      user: 'hearingCentreAdmin',
+      skipIf: [[c.addCaseNote !== yesNo.YES, 'Adding a case note is switched off (set ADD_CASE_NOTE=Yes to run it)']],
+      run: async ({ page, storageState }) => {
+        const note = `Case note added by the specified journey at ${new Date().toISOString()}`;
+        const caseNote = new AddCaseNote(page);
+        await ctx.runEvent(page, storageState, async () => {
+          await caseNote.submit(note);
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'ADD_CASE_NOTE');
+        await caseNote.verifyNoteShown(note);
+        // A case note does not change the claim's state
+        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       },
     },
 
