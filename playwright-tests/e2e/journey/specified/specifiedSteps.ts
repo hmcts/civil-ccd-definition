@@ -78,18 +78,11 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     noLitigantInPerson,
     [!c.claimantResponds || c.claimantOutcome.state !== caseStates.IN_MEDIATION, 'Skipping as the claimant\'s response did not take the claim to mediation'],
   ];
-  // The evidence uploads, the hearing notice, its fee and the trial bundle, once the order has moved the claim to
-  // CASE_PROGRESSION: on the fast, intermediate and multi tracks after the claimant's response took it to
-  // JUDICIAL_REFERRAL, and for a small claim after unsuccessful mediation
-  const noHearingNotice: Array<[boolean, string]> = [
+  // The steps once the order has moved the claim to CASE_PROGRESSION: on the fast, intermediate and multi tracks after
+  // the claimant's response took it to JUDICIAL_REFERRAL, and for a small claim after unsuccessful mediation
+  const noCaseProgression: Array<[boolean, string]> = [
     noLitigantInPerson,
     [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
-  ];
-  // The steps once the judge's order has moved the claim to CASE_PROGRESSION. The small claims steps after the order,
-  // other than the evidence uploads, the hearing notice, its fee and the trial bundle, are not coded yet.
-  const noCaseProgression: Array<[boolean, string]> = [
-    [c.track === claimTrack.SMALL, 'Skipping as the steps after a small claims order are not coded yet'],
-    ...noJudicialReferral,
   ];
 
   return [
@@ -375,7 +368,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       name: 'CREATE_HEARING_NOTICE',
       title: 'Hearing Centre Admin creates a hearing notice.',
       user: 'hearingCentreAdmin',
-      skipIf: noHearingNotice,
+      skipIf: noCaseProgression,
       run: async ({ page, storageState }) => {
         await ctx.runEvent(page, storageState, async () => {
           await new CreateHearingNotice(page).submit(c.track);
@@ -390,7 +383,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       name: 'PAY_HEARING_FEE',
       title: 'Claimant Solicitor pays the hearing fee.',
       user: 'claimantSolicitor',
-      skipIf: noHearingNotice,
+      skipIf: noCaseProgression,
       run: async ({ page, storageState }) => {
         // Paid in the hearing fee's row of the Service Request tab, which also lists the claim fee
         await ctx.payFeeInUi(page, storageState, 'hearingFeePBADetails', c.paymentMethod);
@@ -443,7 +436,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       title: 'Trial bundle is created and shown to the Claimant Solicitor.',
       user: 'claimantSolicitor',
       skipIf: [
-        ...noHearingNotice,
+        ...noCaseProgression,
         [c.track === claimTrack.INTERMEDIATE || c.track === claimTrack.MULTI, 'Skipping as civil-service does not create trial bundles for intermediate or multi track claims'],
       ],
       run: async ({ page, storageState }) => {
@@ -472,8 +465,8 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       },
     },
 
-    // The judge's final order after the hearing, chosen with FINAL_ORDER: a free form or assisted order on the fast
-    // track, an order uploaded from a template on the intermediate and multi tracks. None of them, without a further
+    // The judge's final order after the hearing, chosen with FINAL_ORDER: a free form or assisted order on the small
+    // claims and fast tracks, an order uploaded from a template on the intermediate and multi tracks. None of them, without a further
     // hearing, changes the claim's state. The order's notifications are sent by the GENERATE_ORDER_NOTIFICATION
     // business process.
     {
@@ -613,7 +606,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       title: `${solicitor.label} uploads evidence.`,
       user: solicitor.user,
       skipIf: [
-        ...noHearingNotice,
+        ...noCaseProgression,
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
       run: async ({ page, storageState }) => {

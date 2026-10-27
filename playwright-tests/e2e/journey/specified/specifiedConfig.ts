@@ -109,7 +109,7 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
   const defendantType = partyType(scenarioEnv.DEFENDANT_TYPE);
   const track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(scenarioEnv.TRACK) ? (scenarioEnv.TRACK as claimTrack) : claimTrack.FAST;
   // The judge's final order (FINAL_ORDER). If it is not set, the first order the track offers is made: a free form order
-  // on the fast track, the blank after-hearing template on the intermediate and multi tracks.
+  // on the small claims and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
   const finalOrder: FinalOrder = (scenarioEnv.FINAL_ORDER as FinalOrder) ?? finalOrdersForTrack[track][0];
   // With the same rate, 8 is the statutory rate and any other rate needs a reason. With a breakdown, it is the total
   // interest in pounds.
