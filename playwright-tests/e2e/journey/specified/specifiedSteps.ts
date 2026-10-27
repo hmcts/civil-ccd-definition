@@ -78,8 +78,15 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     noLitigantInPerson,
     [!c.claimantResponds || c.claimantOutcome.state !== caseStates.IN_MEDIATION, 'Skipping as the claimant\'s response did not take the claim to mediation'],
   ];
-  // The steps once the judge's order has moved the claim to CASE_PROGRESSION. The small claims steps after the order are
-  // not coded yet.
+  // The evidence uploads, the hearing notice and its fee, once the order has moved the claim to CASE_PROGRESSION: on the
+  // fast, intermediate and multi tracks after the claimant's response took it to JUDICIAL_REFERRAL, and for a small claim
+  // after unsuccessful mediation
+  const noHearingNotice: Array<[boolean, string]> = [
+    noLitigantInPerson,
+    [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
+  ];
+  // The steps once the judge's order has moved the claim to CASE_PROGRESSION. The small claims steps after the order,
+  // other than the evidence uploads, the hearing notice and its fee, are not coded yet.
   const noCaseProgression: Array<[boolean, string]> = [
     [c.track === claimTrack.SMALL, 'Skipping as the steps after a small claims order are not coded yet'],
     ...noJudicialReferral,
@@ -361,13 +368,14 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     // Each solicitor uploads evidence once the judge's order has moved the claim to CASE_PROGRESSION
     ...uploadEvidenceSteps(),
 
-    // The hearing centre admin lists the trial once the evidence is in. This is done in place of HMC returning a LISTED
-    // hearing, and moves the claim to HEARING_READINESS for the hearing fee.
+    // The hearing centre admin lists the trial once the evidence is in, or a small claim's hearing once its order is
+    // made. This is done in place of HMC returning a LISTED hearing, and moves the claim to HEARING_READINESS for the
+    // hearing fee.
     {
       name: 'CREATE_HEARING_NOTICE',
       title: 'Hearing Centre Admin creates a hearing notice.',
       user: 'hearingCentreAdmin',
-      skipIf: noCaseProgression,
+      skipIf: noHearingNotice,
       run: async ({ page, storageState }) => {
         await ctx.runEvent(page, storageState, async () => {
           await new CreateHearingNotice(page).submit(c.track);
@@ -382,7 +390,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       name: 'PAY_HEARING_FEE',
       title: 'Claimant Solicitor pays the hearing fee.',
       user: 'claimantSolicitor',
-      skipIf: noCaseProgression,
+      skipIf: noHearingNotice,
       run: async ({ page, storageState }) => {
         // Paid in the hearing fee's row of the Service Request tab, which also lists the claim fee
         await ctx.payFeeInUi(page, storageState, 'hearingFeePBADetails', c.paymentMethod);
@@ -605,12 +613,12 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       title: `${solicitor.label} uploads evidence.`,
       user: solicitor.user,
       skipIf: [
-        ...noCaseProgression,
+        ...noHearingNotice,
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
       run: async ({ page, storageState }) => {
         await ctx.runEvent(page, storageState, async () => {
-          await new UploadEvidence(page).submit();
+          await new UploadEvidence(page).submit(c.track);
         });
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },

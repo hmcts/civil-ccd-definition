@@ -7,8 +7,8 @@ import trackType from '../../../../enums/track.ts';
 
 // The hearing centre admin's hearing notice (event HEARING_SCHEDULED, "Create a hearing notice") once the case is in
 // CASE_PROGRESSION. It stands in for HMC returning a LISTED hearing, which is not available on every environment.
-// A first listing of a trial makes civil-service work out the hearing fee and its due date and move the case to
-// HEARING_READINESS. The fast, intermediate and multi tracks share the trial notice; small claims hearings are not coded.
+// A first listing makes civil-service work out the hearing fee and its due date and move the case to HEARING_READINESS.
+// The fast, intermediate and multi tracks share the trial notice, and a small claim has its own small claims hearing.
 export class CreateHearingNotice {
   private buttonHelper: ButtonHelper;
   private pageHelper: PageHelper;
@@ -21,13 +21,10 @@ export class CreateHearingNotice {
   // The hearing is 8 weeks ahead by default: civil-service needs it to be at least 24 hours away, and trial
   // arrangements can only be confirmed more than 3 weeks before it
   async submit(track: trackType, hearingDate: moment.Moment = moment().businessAdd(40)) {
-    if (track === trackType.SMALL) {
-      throw new Error('CreateHearingNotice only has the trial notice coded, not a small claims hearing');
-    }
     await this.pageHelper.selectNextStep('Create a hearing notice');
 
-    // Type of hearing notice: "Trial (Fast, Intermediate and Multi track)"
-    await this.page.locator('#hearingNoticeList-FAST_TRACK_TRIAL').check();
+    // Type of hearing notice: "Small claims hearing", or "Trial (Fast, Intermediate and Multi track)"
+    await this.page.locator(`#hearingNoticeList-${track === trackType.SMALL ? 'SMALL_CLAIMS' : 'FAST_TRACK_TRIAL'}`).check();
     await this.pageHelper.continueToNextPage();
 
     // A first listing rather than a relisting, so the hearing fee is charged
@@ -39,8 +36,8 @@ export class CreateHearingNotice {
     await this.page.locator('#channel-IN_PERSON').check();
     await this.pageHelper.fillDate('hearingDate', hearingDate);
     await this.page.locator('#hearingTimeHourMinute').selectOption({ label: '10:00' });
-    // The fast track picks a duration from a list; the intermediate and multi tracks type it in
-    if (track === trackType.FAST) {
+    // The small claims and fast tracks pick a duration from a list; the intermediate and multi tracks type it in
+    if (track === trackType.SMALL || track === trackType.FAST) {
       await this.page.locator('#hearingDuration').selectOption({ label: '1 hour' });
     } else {
       await this.page.locator('#hearingDurationMinti').fill('1 day');
