@@ -427,6 +427,8 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
               respondent1Response: c.respondent1Response,
               respondent2Response: c.respondent2Response,
               paymentRoute: c.admissionPaymentRoute,
+              respondent1Employment: c.respondent1Employment,
+              respondent2Employment: c.respondent2Employment,
             });
           });
         }

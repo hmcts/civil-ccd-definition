@@ -7,6 +7,7 @@ import claimTrack from '../../../enums/track.ts';
 import Timeline from '../../../enums/timeline.ts';
 import RespondentResponses from '../../../enums/RespondentResponses.ts';
 import AdmissionPaymentRoute from '../../../enums/admissionPaymentRoute.ts';
+import DefendantEmployment from '../../../enums/defendantEmployment.ts';
 import ClaimantSuggestedPayment from '../../../enums/claimantSuggestedPayment.ts';
 import caseStates from '../../../enums/caseStates.ts';
 import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
@@ -62,6 +63,16 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     ADMISSION_PAYMENT_ROUTE: enums({
       values: [AdmissionPaymentRoute.IMMEDIATELY, AdmissionPaymentRoute.BY_SET_DATE, AdmissionPaymentRoute.SUGGESTION_OF_REPAYMENT_PLAN],
       default: AdmissionPaymentRoute.IMMEDIATELY,
+    }),
+    // What each defendant says about their work when they give their finances (an individual or sole trader admitting
+    // the claim and not paying immediately)
+    RESPONDENT1_EMPLOYMENT: enums({
+      values: [DefendantEmployment.RETIRED, DefendantEmployment.SELF_EMPLOYED],
+      default: DefendantEmployment.RETIRED,
+    }),
+    RESPONDENT2_EMPLOYMENT: enums({
+      values: [DefendantEmployment.RETIRED, DefendantEmployment.SELF_EMPLOYED],
+      default: DefendantEmployment.RETIRED,
     }),
     // Whether the claimant proceeds with the claim once the defendants have entered a full defence, or in a 2v1 or 1v2SS
     // claim have admitted it (both claimants in a 2v1 claim, against both defendants in a 1v2 claim: a specified claim
@@ -155,6 +166,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     respondent1Response,
     respondent2Response,
     admissionPaymentRoute: env.ADMISSION_PAYMENT_ROUTE as AdmissionPaymentRoute,
+    // Whether each defendant giving their finances is retired or self-employed (RESPONDENT1_EMPLOYMENT,
+    // RESPONDENT2_EMPLOYMENT, default RETIRED)
+    respondent1Employment: env.RESPONDENT1_EMPLOYMENT as DefendantEmployment,
+    respondent2Employment: env.RESPONDENT2_EMPLOYMENT as DefendantEmployment,
     stateAfterAllResponses,
     // Whether the claimant responds to the defence (CLAIMANT_PROCEED, default Yes), and where the claim goes then
     // The claimant's answers (CLAIMANT_PROCEED, CLAIMANT_ACCEPTS_AMOUNT, CLAIMANT_ACCEPTS_PLAN, CLAIMANT_SUGGESTED_PAYMENT),

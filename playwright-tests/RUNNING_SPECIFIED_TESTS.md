@@ -83,7 +83,7 @@ What the test answers:
 
 - Full defence: the defendant disputes the whole claim.
 - Part admission: the defendant has not paid and admits £1,000.
-- Full or part admission: ADMISSION_PAYMENT_ROUTE picks when they will pay. IMMEDIATELY (the default), BY_SET_DATE (a month from today) or SUGGESTION_OF_REPAYMENT_PLAN (£100 a month, starting a month from today). The defendant's financial details are filled in wherever XUI asks for them.
+- Full or part admission: ADMISSION_PAYMENT_ROUTE picks when they will pay. IMMEDIATELY (the default), BY_SET_DATE (a month from today) or SUGGESTION_OF_REPAYMENT_PLAN (£100 a month, starting a month from today). The defendant's financial details are filled in wherever XUI asks for them: an individual or sole trader not paying immediately owns their home, has no partner, children, dependants, debts or court orders, and is retired or self-employed (RESPONDENT1_EMPLOYMENT and RESPONDENT2_EMPLOYMENT). A self-employed defendant is a plumber with a £30,000 turnover who is not behind on their tax.
 - Counterclaim: the defendant makes a counterclaim.
 
 Where the claim goes once every response is in:
@@ -96,12 +96,18 @@ Where the claim goes once every response is in:
 
 In a 1v2DS claim the claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT after Defendant 1's response, until Defendant 2 responds.
 
+In a 1v2DS claim Defendant 2's solicitor should only see Defendant 2's financial pages. If they are shown one of Defendant 1's (DefendantSelfEmployment, DefendantIncomeExpenses or DefendantIncomeExpensesFullAdmission, which hold Defendant 1's answers), the step fails. Those pages' show conditions in the CCD definition need isRespondent1 = "Yes"; until that fix is deployed, a 1v2DS claim where both defendants admit and pay later fails at Defendant 2's response.
+
 ```bash
 ENV=aat RESPONDENT1_RESPONSE=FULL_ADMISSION ADMISSION_PAYMENT_ROUTE=BY_SET_DATE npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
 ```bash
 ENV=aat RESPONDENT1_RESPONSE=PART_ADMISSION ADMISSION_PAYMENT_ROUTE=SUGGESTION_OF_REPAYMENT_PLAN npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+```bash
+ENV=aat RESPONDENT1_RESPONSE=PART_ADMISSION ADMISSION_PAYMENT_ROUTE=SUGGESTION_OF_REPAYMENT_PLAN RESPONDENT1_EMPLOYMENT=SELF_EMPLOYED npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
 ```bash
@@ -210,6 +216,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional steps: each defendant's solicitor informs the court of an agreed extension before responding. |
 | `RESPONDENT1_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 1's response. |
 | `RESPONDENT2_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 2's response, or in a 2v1 claim the defendant's response to Claimant 2. |
+| `RESPONDENT1_EMPLOYMENT` | RETIRED, SELF_EMPLOYED | RETIRED | What Defendant 1 says about their work when they give their finances (an individual or sole trader admitting and not paying immediately). |
+| `RESPONDENT2_EMPLOYMENT` | RETIRED, SELF_EMPLOYED | RETIRED | The same for Defendant 2. |
 | `ADMISSION_PAYMENT_ROUTE` | IMMEDIATELY, BY_SET_DATE, SUGGESTION_OF_REPAYMENT_PLAN | IMMEDIATELY | When a defendant who admits all or part of the claim will pay. |
 | `CLAIMANT_PROCEED` | Yes, No | Yes | Whether the claimant proceeds with the claim after the defendants' full defences, or after a 2v1 or 1v2SS admission. Any other value stops the run. |
 | `CLAIMANT_ACCEPTS_AMOUNT` | Yes, No | Yes | Whether the claimant accepts the amount a 1v1 defendant admits (part admission). |

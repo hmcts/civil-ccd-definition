@@ -3,6 +3,7 @@ import Timeline from '../../../../../enums/timeline.ts';
 import Track from '../../../../../enums/track.ts';
 import RespondentResponses from '../../../../../enums/RespondentResponses.ts';
 import AdmissionPaymentRoute from '../../../../../enums/admissionPaymentRoute.ts';
+import DefendantEmployment from '../../../../../enums/defendantEmployment.ts';
 import { courts } from '../../../../../fixtures/courts.ts';
 import { respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../../../../../civilConfig.ts';
 import { SpecifiedConfig } from '../../../../journey/specified/specifiedConfig.ts';
@@ -20,6 +21,7 @@ export interface DefendantResponseSpecDocuments {
 // enters £1000 and £100)
 const partAdmittedPennies = '100000';
 const monthlyRepaymentPennies = '10000';
+const selfEmployedAnnualTurnoverPennies = '3000000';
 
 // Who the solicitor answers for and what they answer, which decides the pages and the values the mid event callbacks
 // set:
@@ -282,7 +284,7 @@ function individualDefendant(c: SpecifiedConfig) {
 
 // A full or part admission: nothing has been paid yet, the amount admitted (part admission), and when it will be paid.
 // Paying later, the defendant says why, gives the date or a repayment plan, and as an individual or sole trader gives
-// their finances: retired, owns their home, and no partner, children, dependants, debts or court orders.
+// their finances: retired or self-employed, owns their home, and no partner, children, dependants, debts or court orders.
 function admission(c: SpecifiedConfig, a: Answering) {
   const { defendantNumber, respondent, suffix } = a;
   const partAdmission = a.own === RespondentResponses.PART_ADMISSION;
@@ -306,16 +308,19 @@ function admission(c: SpecifiedConfig, a: Answering) {
     ...(route === AdmissionPaymentRoute.SUGGESTION_OF_REPAYMENT_PLAN
       ? { [`${respondent}RepaymentPlan`]: { paymentAmount: monthlyRepaymentPennies, repaymentFrequency: 'ONCE_ONE_MONTH', firstRepaymentDate: inAMonthDate } }
       : {}),
-    ...(route !== AdmissionPaymentRoute.IMMEDIATELY && individual ? finances(a) : {}),
+    ...(route !== AdmissionPaymentRoute.IMMEDIATELY && individual ? finances(c, a) : {}),
   };
 }
 
 // The defendant's finances (an individual or sole trader not paying immediately)
-function finances(a: Answering) {
+function finances(c: SpecifiedConfig, a: Answering) {
   const { defendantNumber, respondent } = a;
   const defendant2 = defendantNumber === 2;
+  const employment = defendant2 ? c.respondent2Employment : c.respondent1Employment;
   // The empty answers are the ones XUI sends for the questions a retired defendant with no children is not asked
   const unemployed = { unemployedComplexTypeRequired: 'RETIRED', lengthOfUnemployment: {} };
+  // A self-employed defendant's job, turnover over the last 12 months, and that they are not behind on their tax
+  const selfEmployment = { jobTitle: 'Plumber', annualTurnover: selfEmployedAnnualTurnoverPennies, isBehindOnTaxPayment: 'No' };
   // Defendant 1 admitting all of the claim answers the full admission version of the income and expenses page
   const fullAdmission = !defendant2 && a.own === RespondentResponses.FULL_ADMISSION;
   return {
@@ -323,8 +328,18 @@ function finances(a: Answering) {
     [defendant2 ? 'disabilityPremiumPaymentsRespondent2' : 'disabilityPremiumPayments']: 'No',
     [`${respondent}DQHomeDetails`]: { type: 'OWNED_HOME' },
     [`${respondent}PartnerAndDependent`]: { liveWithPartnerRequired: 'No', haveAnyChildrenRequired: 'No', howManyChildrenByAgeGroup: {}, supportedAnyoneFinancialRequired: 'No' },
-    [defendant2 ? 'defenceAdmitPartEmploymentTypeRequiredRespondent2' : 'defenceAdmitPartEmploymentTypeRequired']: 'No',
-    [defendant2 ? 'respondToClaimAdmitPartUnemployedLRspecRespondent2' : 'respondToClaimAdmitPartUnemployedLRspec']: unemployed,
+    ...(employment === DefendantEmployment.SELF_EMPLOYED
+      ? {
+        [defendant2 ? 'defenceAdmitPartEmploymentTypeRequiredRespondent2' : 'defenceAdmitPartEmploymentTypeRequired']: 'Yes',
+        [defendant2 ? 'respondToClaimAdmitPartEmploymentTypeLRspecRespondent2' : 'respondToClaimAdmitPartEmploymentTypeLRspec']: ['SELF'],
+        // Set by a mid event callback (civil-service's EmploymentTypeCaseUpdater) from the answering defendant's field
+        respondToClaimAdmitPartEmploymentTypeLRspecGeneric: ['SELF'],
+        [`specDefendant${defendantNumber}SelfEmploymentDetails`]: selfEmployment,
+      }
+      : {
+        [defendant2 ? 'defenceAdmitPartEmploymentTypeRequiredRespondent2' : 'defenceAdmitPartEmploymentTypeRequired']: 'No',
+        [defendant2 ? 'respondToClaimAdmitPartUnemployedLRspecRespondent2' : 'respondToClaimAdmitPartUnemployedLRspec']: unemployed,
+      }),
     [`${respondent}CourtOrderPaymentOption`]: 'No',
     [`${respondent}LoanCreditOption`]: 'No',
     ...(fullAdmission

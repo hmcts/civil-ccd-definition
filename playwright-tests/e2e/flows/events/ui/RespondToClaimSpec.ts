@@ -5,6 +5,7 @@ import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 import Timeline from '../../../../enums/timeline.ts';
 import RespondentResponses from '../../../../enums/RespondentResponses.ts';
 import AdmissionPaymentRoute from '../../../../enums/admissionPaymentRoute.ts';
+import DefendantEmployment from '../../../../enums/defendantEmployment.ts';
 import claimTypes from '../../../../enums/claim-types.ts';
 import { courts } from '../../../../fixtures/courts.ts';
 import { respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../../../../civilConfig.ts';
@@ -25,8 +26,13 @@ const eventId = 'DEFENDANT_RESPONSE_SPEC';
 // to both when they are the same and one to each claimant otherwise.
 //
 // A defendant who admits all or part of the claim says when they will pay (paymentRoute). Paying later than
-// immediately, an individual or sole trader also gives their financial details: here they are retired, own their home,
-// and have no partner, children, dependants, debts or court orders.
+// immediately, an individual or sole trader also gives their financial details: here they are retired or self-employed
+// (respondent1Employment, respondent2Employment), own their home, and have no partner, children, dependants, debts or
+// court orders.
+//
+// Defendant 2's own solicitor (1v2 different solicitors) only answers Defendant 2's pages. Reaching one of Defendant 1's
+// financial pages, which hold Defendant 1's answers, fails the step: those pages should only show to Defendant 1's
+// solicitor.
 export interface SpecResponse {
   claimType: claimTypes;
   timeline: Timeline;
@@ -34,10 +40,14 @@ export interface SpecResponse {
   respondent1Response: RespondentResponses;
   respondent2Response: RespondentResponses;
   paymentRoute: AdmissionPaymentRoute;
+  respondent1Employment: DefendantEmployment;
+  respondent2Employment: DefendantEmployment;
 }
 
 // The amount a defendant who admits part of the claim admits, in pounds
 const partAdmittedAmount = '1000';
+// A self-employed defendant's turnover over the last 12 months, in pounds
+const selfEmployedAnnualTurnover = '30000';
 
 export class RespondToClaimSpec {
   private buttonHelper: ButtonHelper;
@@ -49,7 +59,7 @@ export class RespondToClaimSpec {
   }
 
   async submit(defendantNumber: 1 | 2, response: SpecResponse) {
-    const { claimType, timeline, respondent1Response, respondent2Response, paymentRoute } = response;
+    const { claimType, timeline, respondent1Response, respondent2Response, paymentRoute, respondent1Employment, respondent2Employment } = response;
     // respondent1 or respondent2, and the suffix some fields use for Defendant 2 ('' or '2')
     const respondent = `respondent${defendantNumber}`;
     const suffix = defendantNumber === 1 ? '' : '2';
@@ -65,6 +75,15 @@ export class RespondToClaimSpec {
           await field.click();
         }
       }
+    };
+
+    // One of Defendant 1's own pages, which Defendant 2's own solicitor should never be shown
+    const defendant1Page = (pageId: string, answer: () => Promise<void>) => async () => {
+      if (defendantNumber === 2) {
+        throw new Error(`${eventId} showed Defendant 2's solicitor Defendant 1's page ${pageId}, with Defendant 1's answers: its show `
+          + 'condition in the CCD definition needs isRespondent1 = "Yes"');
+      }
+      await answer();
     };
 
     const handlers: Record<string, () => Promise<void>> = {
@@ -124,20 +143,16 @@ export class RespondToClaimSpec {
       defendantHomeOptionsRespondent2: () => yes('#respondent2DQHomeDetails_type-OWNED_HOME'),
       DefendantPartnersAndDependents: () => this.partnersAndDependents('respondent1PartnerAndDependent'),
       Defendant2PartnersAndDependents: () => this.partnersAndDependents('respondent2PartnerAndDependent'),
-      EmploymentDeclaration: async () => {
-        await yes('#defenceAdmitPartEmploymentTypeRequired_No');
-        await yes('#respondToClaimAdmitPartUnemployedLRspec_unemployedComplexTypeRequired-RETIRED');
-      },
-      EmploymentDeclarationRespondent2: async () => {
-        await yes('#defenceAdmitPartEmploymentTypeRequiredRespondent2_No');
-        await yes('#respondToClaimAdmitPartUnemployedLRspecRespondent2_unemployedComplexTypeRequired-RETIRED');
-      },
+      EmploymentDeclaration: () => this.employment('', respondent1Employment),
+      EmploymentDeclarationRespondent2: () => this.employment('Respondent2', respondent2Employment),
+      DefendantSelfEmployment: defendant1Page('DefendantSelfEmployment', () => this.selfEmployment('specDefendant1SelfEmploymentDetails')),
+      DefendantSelfEmploymentRespondent2: () => this.selfEmployment('specDefendant2SelfEmploymentDetails'),
       DetailsOfPayingMoneyRepaymentPlan: () => yes('#respondent1CourtOrderPaymentOption_No'),
       DetailsOfPayingMoneyRepaymentPlanRespondent2: () => yes('#respondent2CourtOrderPaymentOption_No'),
       DefendantDebts: () => yes('#respondent1LoanCreditOption_No'),
       DefendantDebtsRespondent2: () => yes('#respondent2LoanCreditOption_No'),
-      DefendantIncomeExpenses: () => yes('#respondent1DQCarerAllowanceCredit_No'),
-      DefendantIncomeExpensesFullAdmission: () => yes('#respondent1DQCarerAllowanceCreditFullAdmission_No'),
+      DefendantIncomeExpenses: defendant1Page('DefendantIncomeExpenses', () => yes('#respondent1DQCarerAllowanceCredit_No')),
+      DefendantIncomeExpensesFullAdmission: defendant1Page('DefendantIncomeExpensesFullAdmission', () => yes('#respondent1DQCarerAllowanceCreditFullAdmission_No')),
       DefendantIncomeExpensesRespondent2: () => yes('#respondent2DQCarerAllowanceCredit_No'),
       defenceRoute: () => yes(`#defenceRouteRequired${suffix}-DISPUTES_THE_CLAIM`),
       // Why the defendant disputes the claim (or the part they do not admit), in whichever defendant's field shows
@@ -247,6 +262,25 @@ export class RespondToClaimSpec {
     await this.pageHelper.submitEvent();
     await expect(this.page.locator('#confirmation-header')).toBeVisible();
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
+  }
+
+  // Whether the defendant works: retired, or self-employed (the details follow on the self-employment page). suffix is ''
+  // for Defendant 1's fields or 'Respondent2' for Defendant 2's.
+  private async employment(suffix: string, employment: DefendantEmployment) {
+    if (employment === DefendantEmployment.SELF_EMPLOYED) {
+      await this.page.locator(`#defenceAdmitPartEmploymentTypeRequired${suffix}_Yes`).click();
+      await this.page.locator(`#respondToClaimAdmitPartEmploymentTypeLRspec${suffix}-SELF`).check();
+    } else {
+      await this.page.locator(`#defenceAdmitPartEmploymentTypeRequired${suffix}_No`).click();
+      await this.page.locator(`#respondToClaimAdmitPartUnemployedLRspec${suffix}_unemployedComplexTypeRequired-RETIRED`).click();
+    }
+  }
+
+  // A self-employed defendant's job, turnover over the last 12 months, and that they are not behind on their tax
+  private async selfEmployment(field: string) {
+    await this.page.locator(`#${field}_jobTitle`).fill('Plumber');
+    await this.page.locator(`#${field}_annualTurnover`).fill(selfEmployedAnnualTurnover);
+    await this.page.locator(`#${field}_isBehindOnTaxPayment_No`).click();
   }
 
   // The ID of the event page XUI is on, e.g. RespondentCheckList, or submit for check your answers. The page is waited
