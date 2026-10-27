@@ -163,6 +163,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=Yes,
     // default No)
     addCaseNote: yes(scenarioEnv.ADD_CASE_NOTE),
+    // Whether the hearing centre admin stays the case once the claimant's response has taken it to JUDICIAL_REFERRAL,
+    // asks the parties for an update and lifts the stay (STAY_CASE=Yes, default No)
+    stayCase: yes(scenarioEnv.STAY_CASE),
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),

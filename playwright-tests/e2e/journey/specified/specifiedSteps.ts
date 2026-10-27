@@ -10,6 +10,8 @@ import { RespondToDefenceSpec } from '../../flows/events/ui/RespondToDefenceSpec
 import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/events/api/RespondToDefenceSpec.ts';
 import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
 import { AddCaseNote } from '../../flows/events/ui/AddCaseNote.ts';
+import { StayCase } from '../../flows/events/ui/StayCase.ts';
+import { ManageStay } from '../../flows/events/ui/ManageStay.ts';
 import { CreateCaseFlag } from '../../flows/events/ui/CreateCaseFlag.ts';
 import { ManageCaseFlag } from '../../flows/events/ui/ManageCaseFlag.ts';
 import { caseFlagType } from '../../flows/caseFlags/caseFlagTypes.ts';
@@ -64,6 +66,11 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
   const noJudicialReferral: Array<[boolean, string]> = [
     noLitigantInPerson,
     [!c.claimantResponds || c.claimantOutcome.state !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL'],
+  ];
+  // The stay steps, which need the claim to reach JUDICIAL_REFERRAL and only run with STAY_CASE=Yes
+  const noStay: Array<[boolean, string]> = [
+    ...noJudicialReferral,
+    [c.stayCase !== yesNo.YES, 'Staying the case is switched off (set STAY_CASE=Yes to run it)'],
   ];
   // The steps once the judge's order has moved the claim to CASE_PROGRESSION. A small claim goes to mediation instead.
   const noCaseProgression: Array<[boolean, string]> = [
@@ -239,6 +246,48 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
 
     ...caseFlagSteps(),
     ...manageContactInformationSteps(),
+
+    // The hearing centre admin stays the case once the claimant's response has taken it to JUDICIAL_REFERRAL, asks the
+    // parties for an update and then lifts the stay. Lifting it takes the claim back to JUDICIAL_REFERRAL, so the
+    // journey carries on to the judge's order. Only run with STAY_CASE=Yes.
+    {
+      name: 'STAY_CASE',
+      title: 'Hearing Centre Admin stays the case.',
+      user: 'hearingCentreAdmin',
+      skipIf: noStay,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new StayCase(page).submit();
+        });
+        await ctx.assertCaseState(caseStates.CASE_STAYED);
+      },
+    },
+
+    {
+      name: 'MANAGE_STAY_REQUEST_UPDATE',
+      title: 'Hearing Centre Admin asks the parties for an update on the stay.',
+      user: 'hearingCentreAdmin',
+      skipIf: noStay,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new ManageStay(page).requestUpdate();
+        });
+        await ctx.assertCaseState(caseStates.CASE_STAYED);
+      },
+    },
+
+    {
+      name: 'LIFT_STAY',
+      title: 'Hearing Centre Admin lifts the stay.',
+      user: 'hearingCentreAdmin',
+      skipIf: noStay,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new ManageStay(page).liftStay();
+        });
+        await ctx.assertCaseState(caseStates.JUDICIAL_REFERRAL);
+      },
+    },
 
     // The judge makes a Standard Direction Order (fast track) or a directions order (intermediate and multi track) once
     // the claimant's response has taken the claim to JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim
