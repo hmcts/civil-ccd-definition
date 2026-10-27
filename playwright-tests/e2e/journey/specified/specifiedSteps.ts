@@ -13,6 +13,8 @@ import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.t
 import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
 import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
 import { ConfirmTrialArrangements } from '../../flows/events/ui/ConfirmTrialArrangements.ts';
+import { MakeFinalOrder } from '../../flows/events/ui/MakeFinalOrder.ts';
+import { ConfirmOrderReview } from '../../flows/events/ui/ConfirmOrderReview.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import claimTrack from '../../../enums/track.ts';
 import yesNo from '../../../enums/yesNo.ts';
@@ -338,6 +340,57 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
           await expect(page.getByText(bundleTitle).first()).toBeVisible();
         });
         await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
+      },
+    },
+
+    // Civil has no record of the hearing itself taking place. Once the hearing date has passed, a civil-service scheduler
+    // runs MOVE_TO_DECISION_OUTCOME, on every track, which moves the claim to DECISION_OUTCOME to wait for the judge's
+    // decision. The hearing is weeks away, so the test runs that event itself.
+    {
+      name: 'MOVE_TO_DECISION_OUTCOME',
+      title: 'Hearing date passes and the claim moves to decision outcome.',
+      user: 'judge',
+      skipIf: noCaseProgression,
+      run: async () => {
+        await ctx.testingEndpointHelper.moveToDecisionOutcome(ctx.caseId);
+        await ctx.assertCaseState(caseStates.DECISION_OUTCOME);
+      },
+    },
+
+    // The judge's final order after the hearing, chosen with FINAL_ORDER: a free form or assisted order on the fast
+    // track, an order uploaded from a template on the intermediate and multi tracks. None of them, without a further
+    // hearing, changes the claim's state. The order's notifications are sent by the GENERATE_ORDER_NOTIFICATION
+    // business process.
+    {
+      name: 'MAKE_FINAL_ORDER',
+      title: `Judge makes a final order (${c.finalOrder}).`,
+      user: 'judge',
+      skipIf: noCaseProgression,
+      run: async ({ page, storageState }) => {
+        const ordersBefore = await ctx.testingEndpointHelper.countFinalOrders(ctx.caseId);
+        await ctx.runEvent(page, storageState, async () => {
+          await new MakeFinalOrder(page).submit(c.finalOrder);
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'GENERATE_ORDER_NOTIFICATION');
+        expect(await ctx.testingEndpointHelper.countFinalOrders(ctx.caseId), 'The final order was not added to the case').toBe(ordersBefore + 1);
+        await ctx.assertCaseState(caseStates.DECISION_OUTCOME);
+      },
+    },
+
+    // Court staff review the judge's order ("Order Made - Review case"). Confirming it is a final order, with no
+    // obligation date and nothing left to do, closes the claim on any track: it moves to All_FINAL_ORDERS_ISSUED and the
+    // CONFIRM_ORDER_REVIEW_FINAL_ORDER business process runs.
+    {
+      name: 'CONFIRM_ORDER_REVIEW',
+      title: 'Hearing Centre Admin confirms the order review.',
+      user: 'hearingCentreAdmin',
+      skipIf: noCaseProgression,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new ConfirmOrderReview(page).submit();
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CONFIRM_ORDER_REVIEW_FINAL_ORDER');
+        await ctx.assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
       },
     },
   ];

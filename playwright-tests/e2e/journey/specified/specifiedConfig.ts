@@ -9,6 +9,7 @@ import RespondentResponses from '../../../enums/RespondentResponses.ts';
 import AdmissionPaymentRoute from '../../../enums/admissionPaymentRoute.ts';
 import ClaimantSuggestedPayment from '../../../enums/claimantSuggestedPayment.ts';
 import caseStates from '../../../enums/caseStates.ts';
+import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type SpecifiedConfig = ReturnType<typeof specifiedConfig>;
@@ -94,6 +95,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
   const claimantType = partyType(scenarioEnv.CLAIMANT_TYPE);
   const defendantType = partyType(scenarioEnv.DEFENDANT_TYPE);
   const track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(scenarioEnv.TRACK) ? (scenarioEnv.TRACK as claimTrack) : claimTrack.FAST;
+  // The judge's final order (FINAL_ORDER). If it is not set, the first order the track offers is made: a free form order
+  // on the fast track, the blank after-hearing template on the intermediate and multi tracks.
+  const finalOrder: FinalOrder = (scenarioEnv.FINAL_ORDER as FinalOrder) ?? finalOrdersForTrack[track][0];
   // With the same rate, 8 is the statutory rate and any other rate needs a reason. With a breakdown, it is the total
   // interest in pounds.
   const interestRate: string = scenarioEnv.INTEREST_RATE ?? '8';
@@ -158,10 +162,19 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     claimantResponse,
     claimantResponds,
     claimantOutcome,
+    finalOrder,
 
     // Checks the settings make sense together, before the journey starts
     validate() {
       expect(interestRate, `Invalid INTEREST_RATE value: ${interestRate}. It must be a number.`).toMatch(/^\d+(\.\d+)?$/);
+      expect(
+        Object.values(FinalOrder),
+        `Invalid FINAL_ORDER value: ${finalOrder}. It must be one of ${Object.values(FinalOrder).join(', ')}.`,
+      ).toContain(finalOrder);
+      expect(
+        finalOrdersForTrack[track],
+        `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`,
+      ).toContain(finalOrder);
     },
   };
   return config;
