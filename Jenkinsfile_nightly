@@ -99,7 +99,7 @@ properties([
   ])
 ])
 
-@Library("Infrastructure@2.13.1")
+@Library("Infrastructure@2.13.4")
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
@@ -218,8 +218,7 @@ def secrets = [
     secret('default-password', 'DEFAULT_PASSWORD'),
     secret('judge-default-password', 'JUDGE_DEFAULT_PASSWORD'),
     secret('iac-default-password', 'IAC_DEFAULT_PASSWORD'),
-    secret('system-update-user-password', 'SYSTEM_USER_PASSWORD'),
-    secret('ccd-api-gateway-oauth2-client-secret', 'CCD_API_GATEWAY_IDAM_CLIENT_SECRET')
+    secret('system-update-user-password', 'SYSTEM_USER_PASSWORD')
   ]
 ]
 
