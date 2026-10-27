@@ -12,6 +12,7 @@ import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
 import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
 import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
 import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
+import { ConfirmTrialArrangements } from '../../flows/events/ui/ConfirmTrialArrangements.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import claimTrack from '../../../enums/track.ts';
 import yesNo from '../../../enums/yesNo.ts';
@@ -311,6 +312,11 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
       },
     },
+
+    // Each solicitor confirms the case is ready for trial. The CCD definition only offers this on the fast track, and
+    // civil-service refuses it once the hearing is less than 3 weeks away; the hearing notice lists it about 8 weeks
+    // ahead. The claim stays in PREPARE_FOR_HEARING_CONDUCT_HEARING.
+    ...confirmTrialArrangementsSteps(),
   ];
 
   function respondToClaimSteps(): JourneyStep[] {
@@ -422,6 +428,31 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
           await new UploadEvidence(page).submit();
         });
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
+      },
+    }));
+  }
+
+  function confirmTrialArrangementsSteps(): JourneyStep[] {
+    const solicitors = [
+      { name: 'CONFIRM_TRIAL_ARRANGEMENTS_CLAIMANT_SOLICITOR', label: 'Claimant Solicitor', user: 'claimantSolicitor' },
+      { name: 'CONFIRM_TRIAL_ARRANGEMENTS_DEFENDANT1_SOLICITOR', label: 'Defendant 1 Solicitor', user: 'respondent1Solicitor' },
+      { name: 'CONFIRM_TRIAL_ARRANGEMENTS_DEFENDANT2_SOLICITOR', label: 'Defendant 2 Solicitor', user: 'respondent2Solicitor', defendant2: true },
+    ] as const;
+    return solicitors.map((solicitor) => ({
+      group: 'CONFIRM_TRIAL_ARRANGEMENTS',
+      name: solicitor.name,
+      title: `${solicitor.label} confirms trial arrangements.`,
+      user: solicitor.user,
+      skipIf: [
+        ...noCaseProgression,
+        [c.track !== claimTrack.FAST, 'Skipping as trial arrangements are only confirmed on the fast track'],
+        ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new ConfirmTrialArrangements(page).submit();
+        });
+        await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
       },
     }));
   }
