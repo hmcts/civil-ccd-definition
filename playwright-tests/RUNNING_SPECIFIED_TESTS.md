@@ -2,7 +2,7 @@
 
 Example command lines for the playwright-tests specified journey (playwright-tests/e2e/journeys/SpecifiedSS.test.ts), and the parameters a claim can be built with. Run every command from the repository root. Settings are environment variables put in front of the command. Add --headed to watch the browser. The unspecified journey has its own guide, RUNNING_UNSPECIFIED_TESTS.md.
 
-Each command starts the journey from scratch: it creates a new specified (money) claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped. The journey currently ends with the judge's Standard Direction Order or directions order.
+Each command starts the journey from scratch: it creates a new specified (money) claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped. The journey currently ends with the claimant's solicitor paying the hearing fee, leaving the claim in PREPARE_FOR_HEARING_CONDUCT_HEARING.
 
 ## 1. Environments
 
@@ -29,6 +29,7 @@ Steps, in the order they run:
 - MAKE_DIRECTIONS_ORDER: on the intermediate and multi tracks, which have no Standard Direction Order, the judge makes a directions order with "Make an order" instead, also moving the claim from JUDICIAL_REFERRAL to CASE_PROGRESSION. The judge keeps the claim on its track, chooses the blank template for an order before a hearing and uploads the completed order (playwright-tests/documents/TEST_ORDER.docx; the page only takes Word documents). It is always done in the UI (claiming the track allocation task first where work allocation needs one).
 - UPLOAD_EVIDENCE (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR): once the judge's order has moved the claim to CASE_PROGRESSION, each solicitor uploads a disclosure list with "Upload Your Documents" (the second defendant's solicitor only for 1v2DS). A solicitor acting for two parties uploads it for both. The claim stays in CASE_PROGRESSION. It is always done in the UI.
 - CREATE_HEARING_NOTICE: once the evidence is in, the hearing centre admin lists the trial with "Create a hearing notice" (a first listing of a "Trial (Fast, Intermediate and Multi track)" notice at Clerkenwell, 8 weeks ahead). This stands in for HMC returning a listed hearing. civil-service works out the hearing fee and moves the claim to HEARING_READINESS. It is always done in the UI.
+- PAY_HEARING_FEE: the claimant's solicitor pays the hearing fee from the Service Request tab, by PBA or card (PAYMENT_METHOD). If the payment service has not told civil-service about the payment within a minute, the test does. The test then runs HEARING_FEE_PAID, which civil-service's scheduler would otherwise run later, moving the claim to PREPARE_FOR_HEARING_CONDUCT_HEARING. It is always done in the UI.
 
 The Defendant 2 steps only run for 1v2DS, where Defendant 2 has their own solicitor. In a 1v2SS claim the one solicitor answers for both defendants in Defendant 1's steps. Where a defendant is a litigant in person (1v1LIP, 2v1LIP, 1v2LIPS, 1v2LRLIP, 1v2LIPLR) the response steps and RESPOND_TO_DEFENCE are skipped: they respond through the citizen service, which the journey does not do.
 
@@ -36,7 +37,7 @@ A specified claim is not acknowledged: the CCD definition only gives a defendant
 
 ## 3. API only, UI only, or a mix
 
-The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2 and RESPOND_TO_DEFENCE. CREATE_SDO, MAKE_DIRECTIONS_ORDER, UPLOAD_EVIDENCE and CREATE_HEARING_NOTICE always use the UI. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
+The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2 and RESPOND_TO_DEFENCE. CREATE_SDO, MAKE_DIRECTIONS_ORDER, UPLOAD_EVIDENCE, CREATE_HEARING_NOTICE and PAY_HEARING_FEE always use the UI. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
 
 Everything that has an API version through the API (All_FINAL_ORDERS_ISSUED is only ever reached by RESPOND_TO_DEFENCE, so every step before the Standard Direction Order uses the API):
 
@@ -58,7 +59,7 @@ STOP_AT_STATE=<state> stops as soon as the claim is in that state, and STOP_AFTE
 ENV=aat STOP_AFTER_TEST=ASSIGN_DEFENDANT_SOLICITORS KEEP_CASE_ASSIGNMENTS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
-States the journey reaches: PENDING_CASE_ISSUED, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, JUDICIAL_REFERRAL, CASE_PROGRESSION, HEARING_READINESS, IN_MEDIATION, All_FINAL_ORDERS_ISSUED, PROCEEDS_IN_HERITAGE_SYSTEM.
+States the journey reaches: PENDING_CASE_ISSUED, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, JUDICIAL_REFERRAL, CASE_PROGRESSION, HEARING_READINESS, PREPARE_FOR_HEARING_CONDUCT_HEARING, IN_MEDIATION, All_FINAL_ORDERS_ISSUED, PROCEEDS_IN_HERITAGE_SYSTEM.
 
 ## 5. Inform an agreed extension date
 
@@ -167,9 +168,9 @@ When the defendants make the same admission in a 2v1 or 1v2SS claim, the claiman
 
 The step is skipped when the claim went offline once the defendants responded (a counterclaim, different responses, or anything other than two full defences in a 1v2DS claim), and when a defendant is a litigant in person.
 
-## 8. Paying the claim fee by PBA or card
+## 8. Paying fees by PBA or card
 
-PAYMENT_METHOD=PBA (the default) pays from the claimant solicitor's PBA account. PAYMENT_METHOD=CARD pays on GOV.UK Pay's pages with a test card, always in the UI, even when the claim is created through the API. Use CARD when PBA payments fail on the environment, for example with "Unable to retrieve account information".
+PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hearing fee. PBA (the default) pays from their PBA account. CARD pays on GOV.UK Pay's pages with a test card, always in the UI, even when the claim is created through the API. Use CARD when PBA payments fail on the environment, for example with "Unable to retrieve account information".
 
 ```bash
 ENV=aat PAYMENT_METHOD=CARD API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
@@ -199,7 +200,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `INTEREST_TYPE` | SAME_RATE_INTEREST, BREAK_DOWN_INTEREST | SAME_RATE_INTEREST | One rate over the whole period, or a total the claimant has broken down. |
 | `INTEREST_RATE` | A number | 8 | With the same rate, 8 is the statutory rate and any other rate needs a reason. With a breakdown, the total interest in pounds. |
 | `FIXED_COMMENCEMENT_COSTS` | Yes, No | No | The claimant claims fixed commencement costs. |
-| `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee is paid. CARD is always paid in the UI. Any other value stops the run. |
+| `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee and the hearing fee are paid. CARD is always paid in the UI. Any other value stops the run. |
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional steps: each defendant's solicitor informs the court of an agreed extension before responding. |
 | `RESPONDENT1_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 1's response. |
 | `RESPONDENT2_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 2's response, or in a 2v1 claim the defendant's response to Claimant 2. |
