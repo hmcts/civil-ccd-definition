@@ -118,7 +118,7 @@ module.exports = {
     caseId = null;
     caseData = {};
 
-    let createClaimData  = {};
+    let createClaimData;
 
     createClaimData = data.CREATE_CLAIM(scenario);
     //==============================================================

@@ -48,7 +48,7 @@
       "matchPackageNames": ["@playwright/test", "playwright-core", "@axe-core/playwright"],
       "groupName": "Playwright",
       "groupSlug": "playwright",
-      "automerge": false,
+      "automerge": true,
       "automergeType": "pr"
     },
     {
@@ -58,6 +58,10 @@
     {
       "matchPackageNames": ["lint-staged"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": ["mocha"],
+      "allowedVersions": "<12"
     },
     {
       "matchPackagePatterns": ["^allure-"],

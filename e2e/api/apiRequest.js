@@ -92,7 +92,7 @@ const fetchWaTasks = async (user, caseNumber, expectedStatus = 200) => {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
-        oneTimePassword: TOTP.generate(config.s2sForXUI.secret)
+        oneTimePassword: await TOTP.generate(config.s2sForXUI.secret)
       })
       .then(response => response.text());
 
@@ -129,7 +129,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: TOTP.generate(config.s2s.secret).otp
+        oneTimePassword: (await TOTP.generate(config.s2s.secret)).otp
       })
       .then(response => response.text());
   },
@@ -416,7 +416,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
-        oneTimePassword: TOTP.generate(config.s2sForXUI.secret)
+        oneTimePassword: await TOTP.generate(config.s2sForXUI.secret)
       })
       .then(response => response.text());
 
@@ -577,7 +577,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: TOTP.generate(config.s2s.secret).otp
+        oneTimePassword: (await TOTP.generate(config.s2s.secret)).otp
       })
       .then(response => response.text());
     const accountNumber = 'PBA0088192';
@@ -624,7 +624,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: TOTP.generate(config.s2s.secret).otp
+        oneTimePassword: (await TOTP.generate(config.s2s.secret)).otp
       })
       .then(response => response.text());
     const rollbackPaymentDateByCCDNumberEndPoint = `/payments/ccd_case_reference/${ccdCaseNumber}/lag_time/25`;
