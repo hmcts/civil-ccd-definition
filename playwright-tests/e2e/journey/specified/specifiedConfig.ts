@@ -13,6 +13,7 @@ import caseStates from '../../../enums/caseStates.ts';
 import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
+import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 
 export type SpecifiedConfig = ReturnType<typeof specifiedConfig>;
 
@@ -183,6 +184,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // The flags the hearing centre admin adds once the claimant has responded and the claim is still online
     // (CASE_FLAGS: "representative", or a list such as CASE:CF0002,DEFENDANT_1:RA0012; see caseFlagSpecs.ts)
     caseFlagsSetting: scenarioEnv.CASE_FLAGS,
+    // The Manage Contact Information runs once the claimant has responded and the claim is still online
+    // (MANAGE_CONTACT_INFORMATION: "representative", or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1;
+    // see manageContactInformationSpecs.ts)
+    manageContactInformationSetting: scenarioEnv.MANAGE_CONTACT_INFORMATION,
     claimantOutcome,
     finalOrder,
 
@@ -199,6 +204,8 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
       ).toContain(finalOrder);
       const caseFlagsError = caseFlagsProblem(config);
       expect(caseFlagsError, caseFlagsError).toBeUndefined();
+      const mciError = mciProblem(config);
+      expect(mciError, mciError).toBeUndefined();
     },
   };
   return config;

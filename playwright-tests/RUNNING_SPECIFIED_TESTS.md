@@ -27,6 +27,7 @@ Steps, in the order they run:
 - RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2: each defendant's solicitor responds with a full defence, a full or part admission, or a counterclaim.
 - RESPOND_TO_DEFENCE: the claimant's solicitor responds to the defence or the admission. It runs whenever the claim is still online once every defendant has responded (AWAITING_APPLICANT_INTENTION).
 - CREATE_CASE_FLAGS, MAKE_CASE_FLAG_INACTIVE (optional): once the claimant has responded and the claim is still online, the hearing centre admin adds each flag in CASE_FLAGS with "Create case flags", then makes the first one inactive with "Manage case flags" (see section 8). The test checks each flag was saved, and the claim stays in the state the claimant's response left it in. It is always done in the UI.
+- MANAGE_CONTACT_INFORMATION (group, optional): once the claimant has responded and the claim is still online, each run in MANAGE_CONTACT_INFORMATION updates contact details with "Manage Contact Information", as the admin or a solicitor (see section 9). The test checks each change was saved, and the claim stays in the state the claimant's response left it in. It has an API version.
 - CREATE_SDO: the judge makes a Standard Direction Order, moving the claim from JUDICIAL_REFERRAL to CASE_PROGRESSION. It only runs on the fast track, when the claimant's response took the claim to JUDICIAL_REFERRAL. It is always done in the UI, where the judge opens the event by its URL (and claims the directions task first where work allocation needs one).
 - MAKE_DIRECTIONS_ORDER: on the intermediate and multi tracks, which have no Standard Direction Order, the judge makes a directions order with "Make an order" instead, also moving the claim from JUDICIAL_REFERRAL to CASE_PROGRESSION. The judge keeps the claim on its track, chooses the blank template for an order before a hearing and uploads the completed order (playwright-tests/documents/TEST_ORDER.docx; the page only takes Word documents). It is always done in the UI (claiming the track allocation task first where work allocation needs one).
 - UPLOAD_EVIDENCE (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR): once the judge's order has moved the claim to CASE_PROGRESSION, each solicitor uploads a disclosure list with "Upload Your Documents" (the second defendant's solicitor only for 1v2DS). A solicitor acting for two parties uploads it for both. The claim stays in CASE_PROGRESSION. It is always done in the UI.
@@ -36,7 +37,7 @@ Steps, in the order they run:
 - CONFIRM_TRIAL_ARRANGEMENTS (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR): each solicitor confirms with "Confirm trial arrangements" that the case is ready for trial, with no change to the hearing requirements (the second defendant's solicitor only for 1v2DS). A solicitor acting for two parties confirms for both. Like the trial ready check it is fast track only (XUI does not offer it on the intermediate or multi tracks), and it has to be done more than 3 weeks before the hearing. The claim stays in PREPARE_FOR_HEARING_CONDUCT_HEARING. It is always done in the UI.
 - CREATE_TRIAL_BUNDLE: the trial bundle is created. civil-service's scheduler does this about 3 weeks before the hearing, for every track except intermediate and multi (small claims have bundles too, but go to mediation in this journey), so the test asks civil-service to do it now, waits for the bundle to be stitched into one document and checks the claimant's solicitor sees it on the Bundles tab. The claim stays in PREPARE_FOR_HEARING_CONDUCT_HEARING.
 - MOVE_TO_DECISION_OUTCOME: once the hearing date has passed, civil-service's scheduler moves the claim to DECISION_OUTCOME to wait for the judge's decision, on every track. The hearing is weeks away, so the test runs the event itself.
-- MAKE_FINAL_ORDER: the judge makes the final order with "Make an order" (FINAL_ORDER, see section 11). On the fast track the judge writes a free form or an assisted order on the page. On the intermediate and multi tracks the judge keeps the claim on its track, picks a template (for the after-hearing template, giving today as the hearing date), and uploads the completed order (playwright-tests/documents/TEST_ORDER.docx). The test checks the order was added to the case and its notifications sent. The claim stays in DECISION_OUTCOME. It is always done in the UI.
+- MAKE_FINAL_ORDER: the judge makes the final order with "Make an order" (FINAL_ORDER, see section 12). On the fast track the judge writes a free form or an assisted order on the page. On the intermediate and multi tracks the judge keeps the claim on its track, picks a template (for the after-hearing template, giving today as the hearing date), and uploads the completed order (playwright-tests/documents/TEST_ORDER.docx). The test checks the order was added to the case and its notifications sent. The claim stays in DECISION_OUTCOME. It is always done in the UI.
 - CONFIRM_ORDER_REVIEW: the hearing centre admin reviews the order with "Confirm order review": no date a party must do something by, a final order, and nothing left to do. This closes the claim on any track, moving it to All_FINAL_ORDERS_ISSUED. It is always done in the UI.
 
 The Defendant 2 steps only run for 1v2DS, where Defendant 2 has their own solicitor. In a 1v2SS claim the one solicitor answers for both defendants in Defendant 1's steps. Where a defendant is a litigant in person (1v1LIP, 2v1LIP, 1v2LIPS, 1v2LRLIP, 1v2LIPLR) the response steps and RESPOND_TO_DEFENCE are skipped: they respond through the citizen service, which the journey does not do.
@@ -45,7 +46,7 @@ A specified claim is not acknowledged: the CCD definition only gives a defendant
 
 ## 3. API only, UI only, or a mix
 
-The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2 and RESPOND_TO_DEFENCE. ADD_CASE_NOTE, CREATE_CASE_FLAGS, MAKE_CASE_FLAG_INACTIVE, CREATE_SDO, MAKE_DIRECTIONS_ORDER, UPLOAD_EVIDENCE, CREATE_HEARING_NOTICE, PAY_HEARING_FEE, CONFIRM_TRIAL_ARRANGEMENTS, MAKE_FINAL_ORDER and CONFIRM_ORDER_REVIEW always use the UI. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
+The steps with an API version are CREATE_CLAIM, INFORM_AGREED_EXTENSION_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2, RESPOND_TO_DEFENCE and MANAGE_CONTACT_INFORMATION. ADD_CASE_NOTE, CREATE_CASE_FLAGS, MAKE_CASE_FLAG_INACTIVE, CREATE_SDO, MAKE_DIRECTIONS_ORDER, UPLOAD_EVIDENCE, CREATE_HEARING_NOTICE, PAY_HEARING_FEE, CONFIRM_TRIAL_ARRANGEMENTS, MAKE_FINAL_ORDER and CONFIRM_ORDER_REVIEW always use the UI. With API_UNTIL=<state> they go through the CCD API until the claim reaches that state, and every step after it goes through the UI. Leave API_UNTIL unset to do everything through the UI.
 
 Everything that has an API version through the API (All_FINAL_ORDERS_ISSUED is the last state the journey reaches, so every step that has an API version uses it):
 
@@ -199,7 +200,26 @@ ENV=aat CASE_FLAGS=representative STOP_AFTER_TEST=MAKE_CASE_FLAG_INACTIVE npx pl
 ENV=aat CLAIM_TYPE=1v2DS API_UNTIL=JUDICIAL_REFERRAL CASE_FLAGS='CASE:CF0002,DEFENDANT_2:PF0015:Spanish' STOP_AFTER_TEST=MAKE_CASE_FLAG_INACTIVE npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
-## 9. Paying fees by PBA or card
+## 9. Manage Contact Information
+
+MANAGE_CONTACT_INFORMATION switches on the contact information steps, which run once the claimant has responded and the claim is still online.
+
+- representative: the claimant's solicitor changes Claimant 1's details and adds someone attending for their firm, each defendant's solicitor changes their client's details, and the admin adds a witness for Defendant 1. A run for a party or solicitor the claim does not have is left out.
+- A list of user:party, one run of the event each. The users are admin, claimantSolicitor, respondent1Solicitor and respondent2Solicitor; the parties are the event's options, e.g. CLAIMANT_1, DEFENDANT_1_LR_INDIVIDUALS or DEFENDANT_2_ORGANISATION_INDIVIDUALS (a company or organisation defendant).
+
+A party's email and first address line are changed, someone attending for an organisation or its solicitor is added, and the admin adds a witness or expert. A solicitor only sees their own client's side. A specified claim names no witnesses or experts and has no litigation friends, so a solicitor cannot choose witnesses or experts, and no one can choose a litigation friend. A run the claim does not allow stops the run before it starts.
+
+civil-service does not let a solicitor manage contact information while a claim waits in AWAITING_APPLICANT_INTENTION (a 1v1 full admission paid immediately), so a solicitor's run is skipped then; the admin's still runs.
+
+```bash
+ENV=aat MANAGE_CONTACT_INFORMATION=representative STOP_AFTER_TEST=MANAGE_CONTACT_INFORMATION npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS DEFENDANT_TYPE=COMPANY API_UNTIL=JUDICIAL_REFERRAL MANAGE_CONTACT_INFORMATION='admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1_ORGANISATION_INDIVIDUALS,respondent2Solicitor:DEFENDANT_2' STOP_AFTER_TEST=MANAGE_CONTACT_INFORMATION npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+## 10. Paying fees by PBA or card
 
 PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hearing fee. PBA (the default) pays from their PBA account. CARD pays on GOV.UK Pay's pages with a test card, always in the UI, even when the claim is created through the API. Use CARD when PBA payments fail on the environment, for example with "Unable to retrieve account information".
 
@@ -207,7 +227,7 @@ PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hea
 ENV=aat PAYMENT_METHOD=CARD API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
-## 10. Named scenarios
+## 11. Named scenarios
 
 Run a named scenario from playwright-tests/scenarios/specifiedScenarios.ts, or use a test:SPEC_* script in package.json:
 
@@ -215,7 +235,7 @@ Run a named scenario from playwright-tests/scenarios/specifiedScenarios.ts, or u
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v2DS_FAST
 ```
 
-## 11. Claim parameters
+## 12. Claim parameters
 
 Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No.
 
@@ -234,6 +254,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee and the hearing fee are paid. CARD is always paid in the UI. Any other value stops the run. |
 | `ADD_CASE_NOTE` | Yes, No | No | Optional step: the hearing centre admin adds a case note after the claim is issued. |
 | `CASE_FLAGS` | representative, or a list of holder:code[:detail] | None | Optional steps: add flags once the claimant has responded, then make the first inactive (section 8). Holders: CASE, CLAIMANT_1, CLAIMANT_2, DEFENDANT_1, DEFENDANT_2. The detail is the language for an interpreter flag or the description for an OT0001 flag. |
+| `MANAGE_CONTACT_INFORMATION` | representative, or a list of user:party | None | Optional steps: Manage Contact Information once the claimant has responded, one run per entry, each checked against the saved case data (section 9). Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor. Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS; the admin can also add _WITNESSES or _EXPERTS. Has an API version. |
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional steps: each defendant's solicitor informs the court of an agreed extension before responding. |
 | `RESPONDENT1_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 1's response. |
 | `RESPONDENT2_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 2's response, or in a 2v1 claim the defendant's response to Claimant 2. |
@@ -246,6 +267,6 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `CLAIMANT_SUGGESTED_PAYMENT` | IMMEDIATELY, SET_DATE, REPAYMENT_PLAN | IMMEDIATELY | How the claimant suggests the defendant pays when they reject the date or plan. |
 | `FINAL_ORDER` | Fast: FREE_FORM_ORDER, ASSISTED_ORDER. Intermediate: BLANK_TEMPLATE_AFTER_HEARING, BLANK_TEMPLATE_BEFORE_HEARING, FIX_A_DATE_FOR_CMC. Multi: those three and FIX_A_DATE_FOR_CCMC | First order for the track | FREE_FORM_ORDER on fast, BLANK_TEMPLATE_AFTER_HEARING on intermediate and multi. Any other value stops the run. |
 
-## 12. Run settings
+## 13. Run settings
 
 ENV, PREVIEW_SERVICE, PR_NUMBER, API_UNTIL, STOP_AT_STATE, STOP_AFTER_TEST, KEEP_CASE_ASSIGNMENTS, SCENARIOS, WORKERS and PREFLIGHT work as described in section 11 of RUNNING_UNSPECIFIED_TESTS.md.

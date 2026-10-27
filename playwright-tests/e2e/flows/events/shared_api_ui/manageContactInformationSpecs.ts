@@ -1,7 +1,20 @@
 import claimTypes from '../../../../enums/claim-types.ts';
 import yesNo from '../../../../enums/yesNo.ts';
 import { SessionUserKey } from '../../../../helpers/SessionHelper.ts';
-import { UnspecifiedConfig } from '../../../journey/unspecified/unspecifiedConfig.ts';
+
+// The parts of a journey's claim that decide which options each user can choose. The unspecified journey's claims can
+// have claimants' litigation friends and the experts and witnesses each party names; a specified claim's directions
+// questionnaires name no experts or witnesses and it asks about no litigation friends, so it leaves those out.
+export interface MciClaim {
+  claimType: claimTypes;
+  claimantType: string;
+  defendantType: string;
+  manageContactInformationSetting?: string;
+  noOfExperts?: string;
+  noOfWitnesses?: string;
+  claimant1LitigantFriend?: yesNo;
+  claimant2LitigantFriend?: yesNo;
+}
 
 // Who runs Manage Contact Information: the hearing centre admin, or one of the solicitors
 export type MciUser = 'admin' | 'claimantSolicitor' | 'respondent1Solicitor' | 'respondent2Solicitor';
@@ -114,7 +127,7 @@ export function mciSavedField(party: MciParty): string {
 //  - representative: the set above, for the parties and solicitors this claim has
 //  - a list of user:party, e.g. admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1_EXPERTS. The users are admin,
 //    claimantSolicitor, respondent1Solicitor and respondent2Solicitor, and the parties the event's options above.
-export function mciSpecs(c: UnspecifiedConfig): MciSpec[] {
+export function mciSpecs(c: MciClaim): MciSpec[] {
   const setting = c.manageContactInformationSetting?.trim();
   if (!setting) {
     return [];
@@ -129,7 +142,7 @@ export function mciSpecs(c: UnspecifiedConfig): MciSpec[] {
 }
 
 // Why MANAGE_CONTACT_INFORMATION cannot be used for this claim, or undefined when it can
-export function mciProblem(c: UnspecifiedConfig): string | undefined {
+export function mciProblem(c: MciClaim): string | undefined {
   const setting = c.manageContactInformationSetting?.trim();
   if (!setting || setting === 'representative') {
     return undefined;
@@ -147,7 +160,7 @@ export function mciProblem(c: UnspecifiedConfig): string | undefined {
 // Why the user cannot choose the option in this claim, or undefined when they can. This follows which options
 // civil-service offers each user (PrepareEventTask): the admin sees every party, and a solicitor only their own
 // client's side.
-function mciSpecMissingReason(c: UnspecifiedConfig, spec: MciSpec): string | undefined {
+function mciSpecMissingReason(c: MciClaim, spec: MciSpec): string | undefined {
   const { user, party } = spec;
   const entry = `${user}:${party}`;
   const twoClaimants = c.claimType === claimTypes.TWO_VS_ONE;
@@ -192,12 +205,18 @@ function mciSpecMissingReason(c: UnspecifiedConfig, spec: MciSpec): string | und
     if (!claimant) {
       return `${entry}: the journey never gives a defendant a litigation friend`;
     }
+    if (c.claimant1LitigantFriend === undefined && c.claimant2LitigantFriend === undefined) {
+      return `${entry}: the claim's claimants have no litigation friends`;
+    }
     const hasLitigationFriend = number === '1' ? c.claimant1LitigantFriend === yesNo.YES : c.claimant2LitigantFriend === yesNo.YES;
     if (organisation || !hasLitigationFriend) {
       return `${entry}: Claimant ${number} has no litigation friend (set CLAIMANT${number}_LITIGANT_FRIEND=Yes, with an individual or sole trader claimant)`;
     }
   }
   // A solicitor is only offered witnesses and experts their side named, and changes the first rather than adding one
+  if (user !== 'admin' && ['witnesses', 'experts'].includes(kind) && c.noOfWitnesses === undefined && c.noOfExperts === undefined) {
+    return `${entry}: the claim's directions questionnaires name no witnesses or experts for a solicitor to change`;
+  }
   if (user !== 'admin' && kind === 'witnesses' && Number(c.noOfWitnesses) === 0) {
     return `${entry}: a solicitor can only change the witnesses named in the directions questionnaire (set WITNESSES)`;
   }
@@ -207,7 +226,8 @@ function mciSpecMissingReason(c: UnspecifiedConfig, spec: MciSpec): string | und
   return undefined;
 }
 
-// The details one run of the event enters, unique to the run so the saved case data shows it was this run's change
+// The details one run of the event enters, unique to the run so the saved case data shows it was this run's change.
+// The first address line stays within the 35 characters civil-service allows for a specified claim's party.
 export interface MciChange {
   email: string;
   phone: string;
@@ -222,7 +242,7 @@ export function mciChange(index: number, spec: MciSpec): MciChange {
   return {
     email: `mci.${spec.party.toLowerCase().replace(/_/g, '.')}.${stamp}@example.com`,
     phone: `0770090${String(Date.now() % 10000).padStart(4, '0')}`,
-    addressLine1: `${index + 1} Contact Information Road ${stamp}`,
+    addressLine1: `${index + 1} Contact Road ${stamp}`,
     firstName: 'Mci',
     lastName: `Added${stamp}`,
     fieldOfExpertise: 'Orthopaedics',

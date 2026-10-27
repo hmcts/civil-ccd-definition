@@ -15,6 +15,11 @@ import { ManageCaseFlag } from '../../flows/events/ui/ManageCaseFlag.ts';
 import { caseFlagType } from '../../flows/caseFlags/caseFlagTypes.ts';
 import { holderFlagsField, holderLabel } from '../../flows/caseFlags/caseFlagHolders.ts';
 import { CaseFlagSpec, caseFlagSpecs } from '../../flows/caseFlags/caseFlagSpecs.ts';
+import { ManageContactInformation } from '../../flows/events/ui/ManageContactInformation.ts';
+import { ManageContactInformation as ApiManageContactInformation } from '../../flows/events/api/ManageContactInformation.ts';
+import {
+  mciChange, mciChangeNotSavedReason, mciSessionUser, mciSpecs, mciStartsBusinessProcess, mciUserLabel,
+} from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
 import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
 import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
@@ -233,6 +238,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     },
 
     ...caseFlagSteps(),
+    ...manageContactInformationSteps(),
 
     // The judge makes a Standard Direction Order (fast track) or a directions order (intermediate and multi track) once
     // the claimant's response has taken the claim to JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim
@@ -600,6 +606,54 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       return [{ name: 'CREATE_CASE_FLAGS', title: 'Hearing Centre Admin adds case flags.', user: 'hearingCentreAdmin', skipIf: noCaseFlags, run: async () => {} }];
     }
     return [...createSteps, manageStep];
+  }
+
+  // One step per MANAGE_CONTACT_INFORMATION entry, each a Manage Contact Information event as its user, checked against
+  // the case data civil-service saved. They run once the claimant has responded and the claim is still online, but
+  // civil-service only lets the admin run it while a claim waits in AWAITING_APPLICANT_INTENTION (a full admission paid
+  // immediately), not a solicitor.
+  function manageContactInformationSteps(): JourneyStep[] {
+    const specs = mciSpecs(c);
+    const noMci: Array<[boolean, string]> = [
+      noLitigantInPerson,
+      [!c.claimantResponds, 'Skipping as the claim went offline once the defendants responded'],
+      [c.claimantOutcome.state === caseStates.PROCEEDS_IN_HERITAGE_SYSTEM, 'Skipping as the claimant\'s response took the claim offline'],
+      [specs.length === 0, 'Managing contact information is switched off (set MANAGE_CONTACT_INFORMATION=representative, or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1)'],
+    ];
+
+    if (specs.length === 0) {
+      // Without MANAGE_CONTACT_INFORMATION the journey still lists one step, skipped with the reason
+      return [{ name: 'MANAGE_CONTACT_INFORMATION', title: 'Contact information is updated.', user: 'hearingCentreAdmin', skipIf: noMci, run: async () => {} }];
+    }
+    return specs.map((spec, index) => ({
+      name: `MANAGE_CONTACT_INFORMATION_${index + 1}`,
+      group: 'MANAGE_CONTACT_INFORMATION',
+      title: `${mciUserLabel(spec)} updates the contact information of ${spec.party}.`,
+      user: mciSessionUser(spec),
+      skipIf: [
+        ...noMci,
+        [
+          spec.user !== 'admin' && c.claimantOutcome.state === caseStates.AWAITING_APPLICANT_INTENTION,
+          'Skipping as a solicitor cannot manage contact information while the claim waits in AWAITING_APPLICANT_INTENTION',
+        ],
+      ],
+      run: async ({ page, storageState }) => {
+        const change = mciChange(index, spec);
+        if (ctx.useApi()) {
+          await new ApiManageContactInformation().submit(ctx.caseId, spec, change);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new ManageContactInformation(page).submit(spec, change);
+          });
+        }
+        if (mciStartsBusinessProcess(spec.party)) {
+          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'MANAGE_CONTACT_INFORMATION');
+        }
+        const notSaved = mciChangeNotSavedReason(await ctx.testingEndpointHelper.getCaseData(ctx.caseId), spec, change);
+        expect(notSaved, `Manage Contact Information for ${spec.party} was not saved: ${notSaved}`).toBeUndefined();
+        await ctx.assertCaseState(c.claimantOutcome.state);
+      },
+    }));
   }
 
   function confirmTrialArrangementsSteps(): JourneyStep[] {
