@@ -166,6 +166,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // Whether the hearing centre admin stays the case once the claimant's response has taken it to JUDICIAL_REFERRAL,
     // asks the parties for an update and lifts the stay (STAY_CASE=Yes, default No)
     stayCase: yes(scenarioEnv.STAY_CASE),
+    // Whether mediation settles a small claim the claimant's response took to mediation, which stays the case and ends
+    // the journey there, instead of being unsuccessful (MEDIATION_SUCCESSFUL=Yes, default No)
+    mediationSuccessful: yes(scenarioEnv.MEDIATION_SUCCESSFUL),
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),

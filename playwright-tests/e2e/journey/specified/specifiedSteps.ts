@@ -11,6 +11,7 @@ import { RespondToDefenceSpec as ApiRespondToDefenceSpec } from '../../flows/eve
 import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
 import { AddCaseNote } from '../../flows/events/ui/AddCaseNote.ts';
 import { StayCase } from '../../flows/events/ui/StayCase.ts';
+import { MediationSuccessful } from '../../flows/events/ui/MediationSuccessful.ts';
 import { MediationUnsuccessful } from '../../flows/events/ui/MediationUnsuccessful.ts';
 import { ManageStay } from '../../flows/events/ui/ManageStay.ts';
 import { CreateCaseFlag } from '../../flows/events/ui/CreateCaseFlag.ts';
@@ -73,16 +74,22 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     ...noJudicialReferral,
     [c.stayCase !== yesNo.YES, 'Staying the case is switched off (set STAY_CASE=Yes to run it)'],
   ];
-  // Unsuccessful mediation, for a small claim the claimant's response took to mediation
+  // The mediation outcome, for a small claim the claimant's response took to mediation
   const noMediation: Array<[boolean, string]> = [
     noLitigantInPerson,
     [!c.claimantResponds || c.claimantOutcome.state !== caseStates.IN_MEDIATION, 'Skipping as the claimant\'s response did not take the claim to mediation'],
+  ];
+  // A small claim that mediation settled is stayed (CASE_STAYED), so it gets no directions order or anything after it
+  const settledInMediation: [boolean, string] = [
+    c.mediationSuccessful === yesNo.YES && c.claimantOutcome.state === caseStates.IN_MEDIATION,
+    'Skipping as mediation settled the claim, which stayed the case (MEDIATION_SUCCESSFUL=Yes)',
   ];
   // The steps once the order has moved the claim to CASE_PROGRESSION: on the fast, intermediate and multi tracks after
   // the claimant's response took it to JUDICIAL_REFERRAL, and for a small claim after unsuccessful mediation
   const noCaseProgression: Array<[boolean, string]> = [
     noLitigantInPerson,
     [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
+    settledInMediation,
   ];
 
   return [
@@ -296,13 +303,34 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       },
     },
 
-    // A small claim the claimant's response took to mediation: court staff record that mediation did not settle it,
-    // which takes it to JUDICIAL_REFERRAL for the judge's directions
+    // A small claim the claimant's response took to mediation: court staff record that mediation settled it
+    // (MEDIATION_SUCCESSFUL=Yes), which stays the case, or that it did not, which takes it to JUDICIAL_REFERRAL for the
+    // judge's directions
+    {
+      name: 'MEDIATION_SUCCESSFUL',
+      title: 'Hearing Centre Admin records that mediation was successful.',
+      user: 'hearingCentreAdmin',
+      skipIf: [
+        ...noMediation,
+        [c.mediationSuccessful !== yesNo.YES, 'Successful mediation is switched off (set MEDIATION_SUCCESSFUL=Yes to run it)'],
+      ],
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          await new MediationSuccessful(page).submit();
+        });
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'MEDIATION_SUCCESSFUL');
+        await ctx.assertCaseState(caseStates.CASE_STAYED);
+      },
+    },
+
     {
       name: 'MEDIATION_UNSUCCESSFUL',
       title: 'Hearing Centre Admin records that mediation was unsuccessful.',
       user: 'hearingCentreAdmin',
-      skipIf: noMediation,
+      skipIf: [
+        ...noMediation,
+        [c.mediationSuccessful === yesNo.YES, 'Skipping as mediation was successful (MEDIATION_SUCCESSFUL=Yes)'],
+      ],
       run: async ({ page, storageState }) => {
         await ctx.runEvent(page, storageState, async () => {
           await new MediationUnsuccessful(page).submit();
@@ -322,6 +350,7 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       skipIf: [
         noLitigantInPerson,
         [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
+        settledInMediation,
         [c.track !== claimTrack.FAST && c.track !== claimTrack.SMALL, 'Skipping as the intermediate and multi tracks get a directions order instead'],
       ],
       run: async ({ page, storageState }) => {
