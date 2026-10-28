@@ -118,6 +118,7 @@ Steps, in the order they run:
 - MOVE_TO_DECISION_OUTCOME
 - MAKE_FINAL_ORDER
 - CONFIRM_ORDER_REVIEW
+- SETTLE_CLAIM_MARK_PAID_FULL, SETTLE_CLAIM (optional)
 
 The steps from CREATE_SDO on only run for fast track claims that reach JUDICIAL_REFERRAL. Intermediate and multi track claims that reach JUDICIAL_REFERRAL get MAKE_DIRECTIONS_ORDER instead: the judge makes a directions order with "Make an order", keeping the claim on its track and uploading a blank pre-hearing order (documents/TEST_ORDER.docx), which moves the claim to CASE_PROGRESSION. The journey stops there for those tracks.
 
@@ -277,6 +278,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee and the hearing fee are paid. CARD is always paid in the UI, on GOV.UK Pay's pages. Any other value stops the run. |
 | `ADD_CASE_NOTE` | Yes, No | No | Optional event: Hearing Centre Admin adds a case note after the claim is issued. |
 | `STAY_CASE` | Yes, No | No | Optional events: stay the case, request an update and lift the stay, after the claimant's response. |
+| `SETTLE_CLAIM` | MARK_PAID_IN_FULL, JUDGE_ORDER, CONSENT_ORDER | None | Optional event, once the rest of the journey has run. MARK_PAID_IN_FULL: the claimant's solicitor marks the claim paid in full with "Settle this claim", which stays the case (CASE_STAYED); skipped where there are two defendants and either is a LIP, and with two claimants it is for both. JUDGE_ORDER or CONSENT_ORDER: the hearing centre admin records with court staff's "Settle this claim" that the claim settled for that reason (CASE_SETTLED). Skipped where the claim has ended in a state the event is not offered in. Any other value stops the run. Has an API version. |
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional event: each defendant's solicitor informs the court of an agreed extension after acknowledging the claim. |
 | `CASE_FLAGS` | representative, or a list of holder:code[:detail] | None | Optional events: add flags after the claimant's response, then make the first inactive. Holders: CASE, CLAIMANT_1/2, DEFENDANT_1/2, CLAIMANT_1/2_LITIGATION_FRIEND, CLAIMANT_EXPERT_n, CLAIMANT_WITNESS_n, DEFENDANT_1/2_EXPERT_n, DEFENDANT_1/2_WITNESS_n. The detail is the language for an interpreter flag or the description for an OT0001 flag. |
 | `MANAGE_CONTACT_INFORMATION` | representative, or a list of user:party | None | Optional events: Manage Contact Information after the claimant's response, one run per entry, each checked against the saved case data. Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor (a solicitor only sees their own side). Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _LITIGATION_FRIEND or _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS, _WITNESSES or _EXPERTS. A party's or litigation friend's email (and a party's first address line) is changed, an individual is added, and a witness or expert is added by the admin or the first one's email changed by a solicitor (set WITNESSES or EXPERTS). Has an API version. |

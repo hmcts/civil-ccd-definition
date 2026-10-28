@@ -15,6 +15,8 @@ enum CaseStates {
   DECISION_OUTCOME = 'DECISION_OUTCOME',
   All_FINAL_ORDERS_ISSUED = 'All_FINAL_ORDERS_ISSUED',
   CASE_STAYED = 'CASE_STAYED',
+  // A claim court staff have recorded as settled ("Settle this claim")
+  CASE_SETTLED = 'CASE_SETTLED',
   // Shown in XUI as "Case Proceeds Offline"
   PROCEEDS_IN_HERITAGE_SYSTEM = 'PROCEEDS_IN_HERITAGE_SYSTEM',
 }

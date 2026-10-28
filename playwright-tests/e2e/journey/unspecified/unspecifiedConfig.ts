@@ -11,6 +11,7 @@ import notifyClaimOptions from '../../../enums/notifyClaimOptions.ts';
 import responseIntentions from '../../../enums/ResponseIntention.ts';
 import respondentResponses from '../../../enums/RespondentResponses.ts';
 import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
+import SettleClaim from '../../../enums/settleClaim.ts';
 import fixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
 import caseStates from '../../../enums/caseStates.ts';
@@ -211,6 +212,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whether the hearing centre admin stays the case after the claimant's response, asks for an update and lifts the
     // stay (STAY_CASE=Yes, default No)
     stayCase: yes(scenarioEnv.STAY_CASE),
+    // Whether and how the claim is settled with "Settle this claim" once the rest of the journey has run: the
+    // claimant's solicitor marks it paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL), which stays the case, or court staff
+    // record it settled after a judge's order (JUDGE_ORDER) or a consent order (CONSENT_ORDER). Not settled by default.
+    settleClaim: scenarioEnv.SETTLE_CLAIM as SettleClaim | undefined,
     // Whether each defendant's solicitor informs the court of an agreed 28 day extension to respond, after
     // acknowledging the claim (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
@@ -249,6 +254,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
     // Checks the settings make sense together, before the journey starts
     validate() {
+      expect(
+        [undefined, ...Object.values(SettleClaim)],
+        `Invalid SETTLE_CLAIM value: ${scenarioEnv.SETTLE_CLAIM}. It must be one of ${Object.values(SettleClaim).join(', ')}.`,
+      ).toContain(scenarioEnv.SETTLE_CLAIM);
       expect(
         Object.values(unspecClaimTypes),
         `Invalid TYPE_OF_CLAIM value: ${typeOfClaim}. It must be one of ${Object.values(unspecClaimTypes).join(', ')}.`,

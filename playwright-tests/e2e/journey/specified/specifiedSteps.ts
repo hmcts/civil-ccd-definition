@@ -1,4 +1,4 @@
-import { expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { envUrl } from '../../../civilConfig.ts';
 import { CreateSpecifiedCase } from '../../flows/createSpecifiedCase.ts';
 import { CreateClaimSpec } from '../../flows/events/api/CreateClaimSpec.ts';
@@ -44,6 +44,11 @@ import { MakeFinalOrder } from '../../flows/events/ui/MakeFinalOrder.ts';
 import { MakeFinalOrder as ApiMakeFinalOrder } from '../../flows/events/api/MakeFinalOrder.ts';
 import { ConfirmOrderReview } from '../../flows/events/ui/ConfirmOrderReview.ts';
 import { ConfirmOrderReview as ApiConfirmOrderReview } from '../../flows/events/api/ConfirmOrderReview.ts';
+import { SettleClaimMarkPaidFull } from '../../flows/events/ui/SettleClaimMarkPaidFull.ts';
+import { SettleClaimMarkPaidFull as ApiSettleClaimMarkPaidFull } from '../../flows/events/api/SettleClaimMarkPaidFull.ts';
+import { SettleClaim } from '../../flows/events/ui/SettleClaim.ts';
+import { SettleClaim as ApiSettleClaim } from '../../flows/events/api/SettleClaim.ts';
+import SettleClaimReason from '../../../enums/settleClaim.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import claimTrack from '../../../enums/track.ts';
 import yesNo from '../../../enums/yesNo.ts';
@@ -104,6 +109,13 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     noLitigantInPerson,
     [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
     settledInMediation,
+  ];
+
+  // The states both "Settle this claim" events are offered in (court staff can also settle a stayed case)
+  const settleableStates = [
+    caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT, caseStates.AWAITING_APPLICANT_INTENTION, caseStates.IN_MEDIATION,
+    caseStates.JUDICIAL_REFERRAL, caseStates.CASE_PROGRESSION, caseStates.HEARING_READINESS,
+    caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING, caseStates.DECISION_OUTCOME, caseStates.All_FINAL_ORDERS_ISSUED,
   ];
 
   return [
@@ -594,6 +606,63 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CONFIRM_ORDER_REVIEW_FINAL_ORDER');
         await ctx.assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
+      },
+    },
+    // The claim is settled with "Settle this claim" once the rest of the journey has run (SETTLE_CLAIM). Each event is
+    // only offered in some states, so the step is skipped where the journey ended in another.
+    //
+    // The claimant's solicitor marks the claim as paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL): civil-service stays
+    // the case (CASE_STAYED) and tells the defendants. It is not offered where there are two defendants and either is a
+    // litigant in person.
+    {
+      name: 'SETTLE_CLAIM_MARK_PAID_FULL',
+      title: 'Claimant Solicitor marks the claim as paid in full.',
+      user: 'claimantSolicitor',
+      skipIf: [
+        [c.settleClaim !== SettleClaimReason.MARK_PAID_IN_FULL, 'Skipping as the claimant\'s solicitor does not settle the claim (set SETTLE_CLAIM=MARK_PAID_IN_FULL to run it)'],
+        [
+          c.claimShape.defendants.length === 2 && c.claimShape.defendants.some((defendant) => defendant.solicitor === 'none'),
+          'Skipping as the claimant\'s solicitor cannot settle a claim against two defendants where one is a litigant in person',
+        ],
+      ],
+      run: async ({ page, storageState }) => {
+        test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be settled in ${ctx.lastStateReached}`);
+        if (ctx.useApi()) {
+          await new ApiSettleClaimMarkPaidFull().submit(ctx.caseId);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new SettleClaimMarkPaidFull(page).submit(c.claimShape.claimants.length === 2);
+          });
+        }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'SETTLE_CLAIM_MARKED_PAID_IN_FULL');
+        await ctx.assertCaseState(caseStates.CASE_STAYED);
+      },
+    },
+
+    // Court staff record that the claim settled after a judge's order or an approved consent order
+    // (SETTLE_CLAIM=JUDGE_ORDER or CONSENT_ORDER), which moves it to CASE_SETTLED. Unlike the solicitor's event, it is
+    // also offered while the case is stayed.
+    {
+      name: 'SETTLE_CLAIM',
+      title: `Hearing Centre Admin records that the claim has settled${c.settleClaim === SettleClaimReason.JUDGE_ORDER || c.settleClaim === SettleClaimReason.CONSENT_ORDER ? ` (${c.settleClaim})` : ''}.`,
+      user: 'hearingCentreAdmin',
+      skipIf: [
+        [
+          c.settleClaim !== SettleClaimReason.JUDGE_ORDER && c.settleClaim !== SettleClaimReason.CONSENT_ORDER,
+          'Skipping as court staff do not settle the claim (set SETTLE_CLAIM=JUDGE_ORDER or CONSENT_ORDER to run it)',
+        ],
+      ],
+      run: async ({ page, storageState }) => {
+        const reason = c.settleClaim as SettleClaimReason.JUDGE_ORDER | SettleClaimReason.CONSENT_ORDER;
+        test.skip(![...settleableStates, caseStates.CASE_STAYED].includes(ctx.lastStateReached), `Skipping as the claim cannot be settled in ${ctx.lastStateReached}`);
+        if (ctx.useApi()) {
+          await new ApiSettleClaim().submit(ctx.caseId, reason);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new SettleClaim(page).submit(reason);
+          });
+        }
+        await ctx.assertCaseState(caseStates.CASE_SETTLED);
       },
     },
   ];
