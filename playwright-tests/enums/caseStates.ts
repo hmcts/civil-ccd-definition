@@ -10,6 +10,8 @@ enum CaseStates {
   // A small claim the claimant proceeds with goes to mediation
   IN_MEDIATION = 'IN_MEDIATION',
   CASE_PROGRESSION = 'CASE_PROGRESSION',
+  // A specified claim's default judgment waiting to be issued (where the judgment buffer is switched on)
+  JUDGMENT_REQUESTED = 'JUDGMENT_REQUESTED',
   HEARING_READINESS = 'HEARING_READINESS',
   PREPARE_FOR_HEARING_CONDUCT_HEARING = 'PREPARE_FOR_HEARING_CONDUCT_HEARING',
   DECISION_OUTCOME = 'DECISION_OUTCOME',

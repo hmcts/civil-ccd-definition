@@ -1,6 +1,7 @@
 import { APIRequestContext, expect, request } from '@playwright/test';
 import path from 'path';
 import fs from 'fs';
+import moment from 'moment-business-days';
 
 import { APIResponse } from 'playwright';
 import { stringify } from 'node:querystring';
@@ -442,6 +443,52 @@ export class TestingEndPointHelper {
       const response = await apiRequestContext.get(`${this.testingSupportUrl}/case/${caseId}`, { headers: this.getHeaders() });
       expect(response.ok(), `Reading case ${caseId} returned ${response.status()}`).toBeTruthy();
       return await response.json();
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Changes the case's data through civil-service's testing support, which runs CCD's UPDATE_CASE_DATA event as the
+  // system user with the given fields added to the case's data. Used to set up what the service would otherwise wait
+  // for, such as a response deadline passing.
+  async updateCaseData(caseId: string, data: Record<string, unknown>) {
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.put(`${this.testingSupportUrl}/case/${caseId}`, { headers: this.getHeaders(), data });
+      expect(response.ok(), `Updating case ${caseId} returned ${response.status()}: ${await response.text()}`).toBeTruthy();
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Moves each defendant's response deadline to yesterday, as if the time for responding had passed with no
+  // response, which default judgment needs. Yesterday rather than an hour ago, because civil-service only allows
+  // default judgment on an unspecified claim from 5pm on the day the response was due. Checks the case saved them.
+  async moveResponseDeadlinesToPast(caseId: string, defendants: 1 | 2) {
+    const yesterday = moment().subtract(1, 'day').format('YYYY-MM-DDTHH:mm:ss');
+    const deadlines: Record<string, string> = { respondent1ResponseDeadline: yesterday };
+    if (defendants === 2) {
+      deadlines.respondent2ResponseDeadline = yesterday;
+    }
+    await this.updateCaseData(caseId, deadlines);
+    const caseData = await this.getCaseData(caseId);
+    for (const [field, value] of Object.entries(deadlines)) {
+      expect(String(caseData[field]).slice(0, 10), `${field} on case ${caseId} was not moved to ${value}`).toBe(value.slice(0, 10));
+    }
+    console.log(`Response deadlines on case ${caseId} moved to ${yesterday}: ${Object.keys(deadlines).join(', ')}`);
+  }
+
+  // Whether one of civil-service's feature toggles is switched on in this environment
+  async isFeatureEnabled(toggle: string): Promise<boolean> {
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/feature-toggle/${toggle}`, { headers: this.getHeaders() });
+      expect(response.ok(), `Checking feature toggle ${toggle} returned ${response.status()}`).toBeTruthy();
+      // Jackson names the flag toggleEnabled or isToggleEnabled, depending on the getter civil-service has
+      const body = await response.json();
+      return (body.isToggleEnabled ?? body.toggleEnabled) === true;
     } finally {
       await apiRequestContext.dispose();
     }

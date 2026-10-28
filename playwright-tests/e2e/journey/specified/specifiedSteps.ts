@@ -54,6 +54,8 @@ import { DiscontinueClaim as ApiDiscontinueClaim } from '../../flows/events/api/
 import { ValidateDiscontinueClaim } from '../../flows/events/ui/ValidateDiscontinueClaim.ts';
 import { ValidateDiscontinueClaim as ApiValidateDiscontinueClaim } from '../../flows/events/api/ValidateDiscontinueClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
+import { DefaultJudgmentSpec } from '../../flows/events/ui/DefaultJudgmentSpec.ts';
+import { DefaultJudgmentSpec as ApiDefaultJudgmentSpec } from '../../flows/events/api/DefaultJudgmentSpec.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import claimTrack from '../../../enums/track.ts';
 import yesNo from '../../../enums/yesNo.ts';
@@ -132,6 +134,11 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
   ];
   // Whether the claimant's discontinuance waits for court staff to validate it, once the claimant has discontinued
   let discontinuanceAwaitingValidation = false;
+
+  // Default judgment (DEFAULT_JUDGMENT=Yes), and the steps it replaces: once judgment is asked for, the defendants'
+  // steps and everything after them are skipped, apart from settling or discontinuing the claim
+  const noDefaultJudgment: [boolean, string] = [c.defaultJudgment !== yesNo.YES, 'Default judgment is switched off (set DEFAULT_JUDGMENT=Yes to run it)'];
+  const afterDefaultJudgment: [boolean, string] = [c.defaultJudgment === yesNo.YES, 'Skipping as the claimant asked for default judgment (DEFAULT_JUDGMENT=Yes)'];
 
   const steps: JourneyStep[] = [
     {
@@ -256,6 +263,44 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         }
         // A case note does not change the claim's state
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    },
+
+
+    // Default judgment (DEFAULT_JUDGMENT=Yes): the time for responding passes with no response. The response deadlines
+    // are moved to yesterday through civil-service's testing support, as waiting for them is not practical.
+    {
+      name: 'MOVE_RESPONSE_DEADLINE',
+      title: 'The time for the defendants to respond passes.',
+      user: 'claimantSolicitor',
+      skipIf: [noDefaultJudgment],
+      invalidIf: () => (c.defaultJudgment === yesNo.YES ? defaultJudgmentProblems() : []),
+      run: async () => {
+        await ctx.testingEndpointHelper.moveResponseDeadlinesToPast(ctx.caseId, c.claimShape.defendants.length as 1 | 2);
+        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    },
+
+    // The claimant's solicitor asks for default judgment against every defendant, paid immediately. civil-service
+    // records it through Judgments Online: with the judgment buffer switched on the claim waits in JUDGMENT_REQUESTED
+    // for the judgment to be issued (JUDGMENT_REQUESTED_SPEC), otherwise it is issued straight away and the claim moves
+    // to All_FINAL_ORDERS_ISSUED (DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC).
+    {
+      name: 'DEFAULT_JUDGMENT',
+      title: 'Claimant Solicitor requests default judgment.',
+      user: 'claimantSolicitor',
+      skipIf: [noDefaultJudgment],
+      run: async ({ page, storageState }) => {
+        if (ctx.useApi()) {
+          await new ApiDefaultJudgmentSpec().submit(ctx.caseId);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new DefaultJudgmentSpec(page).submit(c.claimShape.defendants.length === 2);
+          });
+        }
+        const judgmentBuffer = await ctx.testingEndpointHelper.isFeatureEnabled('judgment-buffer');
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, judgmentBuffer ? 'JUDGMENT_REQUESTED_SPEC' : 'DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC');
+        await ctx.assertCaseState(judgmentBuffer ? caseStates.JUDGMENT_REQUESTED : caseStates.All_FINAL_ORDERS_ISSUED);
       },
     },
 
@@ -752,6 +797,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     if (stops.stopAfterTest !== undefined) {
       return undefined;
     }
+    if (c.defaultJudgment === yesNo.YES) {
+      return undefined;
+    }
     const orderReview = steps.find((step) => step.name === 'CONFIRM_ORDER_REVIEW');
     if (!orderReview?.skipIf?.some(([skipped]) => skipped)) {
       return caseStates.All_FINAL_ORDERS_ISSUED;
@@ -778,6 +826,31 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       ],
     ];
   }
+
+  // The settings that cannot be used with default judgment: those for steps it replaces
+  function defaultJudgmentProblems(): Array<[boolean, string]> {
+    const ignored = (setting: string) => `DEFAULT_JUDGMENT=Yes cannot be used with ${setting}: the claim has default judgment instead of the defendants responding`;
+    return [
+      [c.informAgreedExtension === yesNo.YES, ignored('INFORM_AGREED_EXTENSION=Yes')],
+      [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
+      [c.mediationSuccessful === yesNo.YES, ignored('MEDIATION_SUCCESSFUL=Yes')],
+      [
+        c.discontinueClaim !== undefined,
+        `DEFAULT_JUDGMENT=Yes cannot be used with DISCONTINUE_CLAIM: default judgment leaves a specified claim in All_FINAL_ORDERS_ISSUED or JUDGMENT_REQUESTED, where it cannot be discontinued`,
+      ],
+      [c.caseFlagsSetting !== undefined, ignored('CASE_FLAGS')],
+      [c.manageContactInformationSetting !== undefined, ignored('MANAGE_CONTACT_INFORMATION')],
+    ];
+  }
+
+  // Once default judgment is asked for, the defendants' steps and everything after them do not apply, apart from
+  // settling or discontinuing the claim
+  const lastDefaultJudgmentStep = steps.map((step) => step.name).lastIndexOf('DEFAULT_JUDGMENT');
+  steps.slice(lastDefaultJudgmentStep + 1)
+    .filter((step) => !step.closesClaim)
+    .forEach((step) => {
+      step.skipIf = [...(step.skipIf ?? []), afterDefaultJudgment];
+    });
 
   return steps;
 

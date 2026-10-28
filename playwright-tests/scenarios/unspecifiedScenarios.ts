@@ -202,6 +202,18 @@ const scenarios: Scenario[] = [
       STAY_CASE: 'Yes',
     },
   },
+  // The defendants do not respond: once the response deadlines have passed the claimant's solicitor asks for default
+  // judgment, with the damages decided at a disposal hearing, and the judge makes the directions order after judgment
+  {
+    name: 'UNSPEC_1v1_FAST_DEFAULT_JUDGMENT',
+    tags: [NIGHTLY],
+    env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'INDIVIDUAL', ...roadAccident, DEFAULT_JUDGMENT: 'Yes' },
+  },
+  {
+    name: 'UNSPEC_1v2DS_FAST_DEFAULT_JUDGMENT',
+    tags: [NIGHTLY],
+    env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL', ...roadAccident, DEFAULT_JUDGMENT: 'Yes' },
+  },
 ];
 
 // The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own

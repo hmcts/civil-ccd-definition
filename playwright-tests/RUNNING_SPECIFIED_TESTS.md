@@ -22,6 +22,7 @@ Steps, in the order they run:
 
 - CREATE_CLAIM: the claimant's solicitor creates the claim and pays the claim fee. The claim is then issued and waits for the defendants (AWAITING_RESPONDENT_ACKNOWLEDGEMENT).
 - ADD_CASE_NOTE (optional): the hearing centre admin adds a case note with "Add a case note" straight after the claim is issued (ADD_CASE_NOTE=Yes). The test checks it shows on the Notes tab (through the API, that it is in the case's saved notes). The claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT. It has an API version.
+- MOVE_RESPONSE_DEADLINE, DEFAULT_JUDGMENT (optional): instead of the defendants responding, once the claim is issued (and any case note added) the response deadlines are moved to yesterday through civil-service's testing support, and the claimant's solicitor requests default judgment against every defendant with "Request Default Judgment": nothing paid, no fixed costs, paid immediately (DEFAULT_JUDGMENT=Yes). civil-service records the judgment through Judgments Online, which moves the claim to All_FINAL_ORDERS_ISSUED, or to JUDGMENT_REQUESTED where its judgment buffer is switched on. The defendants' steps and everything after them are skipped, apart from settling the claim. It has an API version.
 - ASSIGN_DEFENDANT_SOLICITORS: the defendants' solicitors are given access to the claim. A specified claim has no Notify claim or Notify claim details steps.
 - INFORM_AGREED_EXTENSION_DEFENDANT1, INFORM_AGREED_EXTENSION_DEFENDANT2 (optional): each defendant's solicitor tells the court about an agreed extension, which moves their response deadline back.
 - RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2: each defendant's solicitor responds with a full defence, a full or part admission, or a counterclaim.
@@ -243,9 +244,15 @@ Run a named scenario from playwright-tests/scenarios/specifiedScenarios.ts, or u
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v2DS_FAST
 ```
 
+The default judgment scenarios are SPEC_1v1_DEFAULT_JUDGMENT and SPEC_1v2DS_DEFAULT_JUDGMENT:
+
+```bash
+ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v1_DEFAULT_JUDGMENT
+```
+
 ## 12. Claim parameters
 
-Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No.
+Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No. DEFAULT_JUDGMENT is the exception: any value other than Yes or No stops the run.
 
 | Parameter | Values | Default | Notes |
 | --- | --- | --- | --- |
@@ -267,6 +274,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `MEDIATION_SUCCESSFUL` | Yes, No | No | Optional step: mediation settles a small claim, which stays the case (CASE_STAYED) and ends the journey, instead of mediation being unsuccessful. |
 | `SETTLE_CLAIM` | MARK_PAID_IN_FULL, JUDGE_ORDER, CONSENT_ORDER | None | Optional step, once the rest of the journey has run or where it is stopped: the claimant's solicitor marks the claim paid in full with "Settle this claim", which stays the case (CASE_STAYED), or the hearing centre admin records it settled after a judge's order or a consent order (CASE_SETTLED). |
 | `DISCONTINUE_CLAIM` | NO_PERMISSION_NEEDED, PERMISSION_GRANTED | None | Optional steps, once the rest of the journey has run or where it is stopped: the claimant's solicitor fully discontinues the claim, without the court's permission (CASE_DISCONTINUED) or with a judge's permission, which the hearing centre admin then validates (CASE_DISCONTINUED). |
+| `DEFAULT_JUDGMENT` | Yes, No | No | Optional steps instead of the defendants responding: the response deadlines are moved to yesterday and the claimant's solicitor requests default judgment against every defendant, which records the judgment (All_FINAL_ORDERS_ISSUED, or JUDGMENT_REQUESTED with the judgment buffer). Cannot be used with INFORM_AGREED_EXTENSION, STAY_CASE, MEDIATION_SUCCESSFUL, CASE_FLAGS, MANAGE_CONTACT_INFORMATION or DISCONTINUE_CLAIM. |
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional steps: each defendant's solicitor informs the court of an agreed extension before responding. |
 | `RESPONDENT1_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 1's response. |
 | `RESPONDENT2_RESPONSE` | FULL_DEFENCE, FULL_ADMISSION, PART_ADMISSION, COUNTER_CLAIM | FULL_DEFENCE | Defendant 2's response, or in a 2v1 claim the defendant's response to Claimant 2. |

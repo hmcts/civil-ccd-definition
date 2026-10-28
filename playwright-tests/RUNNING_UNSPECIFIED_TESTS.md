@@ -115,6 +115,7 @@ Steps, in the order they run:
 - ADD_CASE_NOTE (optional)
 - NOTIFY_CLAIM
 - NOTIFY_CLAIM_DETAILS
+- MOVE_RESPONSE_DEADLINE, DEFAULT_JUDGMENT, STANDARD_DIRECTION_ORDER_DJ (optional)
 - ACKNOWLEDGE_CLAIM_DEFENDANT1, ACKNOWLEDGE_CLAIM_DEFENDANT2
 - INFORM_AGREED_EXTENSION_DEFENDANT1, INFORM_AGREED_EXTENSION_DEFENDANT2 (optional)
 - RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2
@@ -260,9 +261,15 @@ Run a named scenario from playwright-tests/scenarios/unspecifiedScenarios.ts:
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --grep @UNSPEC_1v2DS_FAST_STAY_CASE
 ```
 
+The default judgment scenarios are UNSPEC_1v1_FAST_DEFAULT_JUDGMENT and UNSPEC_1v2DS_FAST_DEFAULT_JUDGMENT, which run in the nightly set:
+
+```bash
+ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --grep @UNSPEC_1v1_FAST_DEFAULT_JUDGMENT
+```
+
 ## 10. Claim parameters
 
-Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No.
+Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No. DEFAULT_JUDGMENT is the exception: any value other than Yes or No stops the run.
 
 | Parameter | Values | Default | Notes |
 | --- | --- | --- | --- |
@@ -296,6 +303,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `STAY_CASE` | Yes, No | No | Optional events: stay the case, request an update and lift the stay, after the claimant's response. |
 | `SETTLE_CLAIM` | MARK_PAID_IN_FULL, JUDGE_ORDER, CONSENT_ORDER | None | Optional event, once the rest of the journey has run or where STOP_AT_STATE or STOP_AFTER_TEST stops it. MARK_PAID_IN_FULL: the claimant's solicitor marks the claim paid in full with "Settle this claim", which stays the case (CASE_STAYED); with two claimants it is for both. JUDGE_ORDER or CONSENT_ORDER: the hearing centre admin records with court staff's "Settle this claim" that the claim settled for that reason (CASE_SETTLED). Has an API version. |
 | `DISCONTINUE_CLAIM` | NO_PERMISSION_NEEDED, PERMISSION_GRANTED | None | Optional events, once the rest of the journey has run or where STOP_AT_STATE or STOP_AFTER_TEST stops it: the claimant's solicitor fully discontinues the claim with "Discontinue this claim", for every claimant and against every defendant. NO_PERMISSION_NEEDED: the court's permission is not needed, so the claim is discontinued (CASE_DISCONTINUED). PERMISSION_GRANTED: a judge gave permission today, and the hearing centre admin then validates the discontinuance, which discontinues the claim. Not offered once the final orders are issued or while the case is stayed. Has an API version. |
+| `DEFAULT_JUDGMENT` | Yes, No | No | Optional events instead of the defendants responding: once Notify claim details has run, the response deadlines are moved to yesterday through civil-service's testing support, the claimant's solicitor requests default judgment against every defendant ("Request Default Judgment", the damages decided at a disposal hearing), which moves the claim to JUDICIAL_REFERRAL, and the judge makes the directions order after judgment ("Directions Order (Judgment)", a disposal hearing), which moves it to CASE_PROGRESSION. The defendants' steps and everything after them are skipped, apart from SETTLE_CLAIM and DISCONTINUE_CLAIM. Cannot be used with INFORM_AGREED_EXTENSION, STAY_CASE, CASE_FLAGS, MANAGE_CONTACT_INFORMATION or a claim type that goes offline when notified. Has an API version. |
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional event: each defendant's solicitor informs the court of an agreed extension after acknowledging the claim. |
 | `CASE_FLAGS` | representative, or a list of holder:code[:detail] | None | Optional events: add flags after the claimant's response, then make the first inactive. Holders: CASE, CLAIMANT_1/2, DEFENDANT_1/2, CLAIMANT_1/2_LITIGATION_FRIEND, CLAIMANT_EXPERT_n, CLAIMANT_WITNESS_n, DEFENDANT_1/2_EXPERT_n, DEFENDANT_1/2_WITNESS_n. The detail is the language for an interpreter flag or the description for an OT0001 flag. |
 | `MANAGE_CONTACT_INFORMATION` | representative, or a list of user:party | None | Optional events: Manage Contact Information after the claimant's response, one run per entry, each checked against the saved case data. Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor (a solicitor only sees their own side). Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _LITIGATION_FRIEND or _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS, _WITNESSES or _EXPERTS. A party's or litigation friend's email (and a party's first address line) is changed, an individual is added, and a witness or expert is added by the admin or the first one's email changed by a solicitor (set WITNESSES or EXPERTS). Has an API version. |

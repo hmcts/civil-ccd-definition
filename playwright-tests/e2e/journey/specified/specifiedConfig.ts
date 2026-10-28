@@ -179,6 +179,11 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // journey has run: without needing the court's permission (DISCONTINUE_CLAIM=NO_PERMISSION_NEEDED), or with a
     // judge's permission (PERMISSION_GRANTED), which court staff then validate. Not discontinued by default.
     discontinueClaim: scenarioEnv.DISCONTINUE_CLAIM as DiscontinueClaim | undefined,
+    // Whether the claimant's solicitor asks for default judgment once the claim is waiting for the defendants: the
+    // response deadlines are moved to yesterday, as if the time for responding had passed, and the steps for the
+    // defendants' responses and everything after them are skipped, apart from settling or discontinuing the claim
+    // (DEFAULT_JUDGMENT=Yes, default No)
+    defaultJudgment: yes(scenarioEnv.DEFAULT_JUDGMENT),
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
@@ -217,6 +222,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         [undefined, ...Object.values(DiscontinueClaim)],
         `Invalid DISCONTINUE_CLAIM value: ${scenarioEnv.DISCONTINUE_CLAIM}. It must be one of ${Object.values(DiscontinueClaim).join(', ')}.`,
       ).toContain(scenarioEnv.DISCONTINUE_CLAIM);
+      expect(
+        [undefined, 'Yes', 'No'],
+        `Invalid DEFAULT_JUDGMENT value: ${scenarioEnv.DEFAULT_JUDGMENT}. It must be Yes or No.`,
+      ).toContain(scenarioEnv.DEFAULT_JUDGMENT);
       expect(
         scenarioEnv.SETTLE_CLAIM === undefined || scenarioEnv.DISCONTINUE_CLAIM === undefined,
         'SETTLE_CLAIM and DISCONTINUE_CLAIM cannot both be set: a claim is either settled or discontinued.',

@@ -16,6 +16,10 @@ const scenarios: Scenario[] = [
   { name: 'SPEC_2v1_FAST', tags: [], env: { CLAIM_TYPE: '2v1', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL' } },
   { name: 'SPEC_1v2SS_FAST', tags: [], env: { CLAIM_TYPE: '1v2SS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL' } },
   { name: 'SPEC_1v2DS_FAST', tags: [], env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION' } },
+  // The defendants do not respond: once the response deadlines have passed the claimant's solicitor asks for default
+  // judgment against them, paid immediately
+  { name: 'SPEC_1v1_DEFAULT_JUDGMENT', tags: [], env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', DEFAULT_JUDGMENT: 'Yes' } },
+  { name: 'SPEC_1v2DS_DEFAULT_JUDGMENT', tags: [], env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION', DEFAULT_JUDGMENT: 'Yes' } },
 ];
 
 // The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own

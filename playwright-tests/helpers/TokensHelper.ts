@@ -16,6 +16,9 @@ import path from 'path';
 // restarts) until the tokens are close to expiring, instead of being fetched again for every API call
 const tokenCacheFile = './playwright-tests/e2e/.auth/api-tokens.json';
 const tokenValidityBufferSeconds = 60 * 60;
+// AAT's IDAM rejects an access token about six hours after it was issued, although the token itself says it lasts for
+// eight, so a saved token is not reused once it is this old
+const tokenMaxAgeSeconds = 4 * 60 * 60;
 
 // IDAM access tokens come from an OAuth2 password grant on IDAM's /o/token, as the CCD API gateway's client (IDAM's
 // /loginUser is deprecated). The client secret is CCD_API_GATEWAY_IDAM_CLIENT_SECRET (in the env file; from the
@@ -44,7 +47,9 @@ function writeTokenCache(cache: TokenCache) {
 function isTokenValid(token: string): boolean {
   try {
     const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString('utf-8'));
-    return payload.exp * 1000 - Date.now() > tokenValidityBufferSeconds * 1000;
+    const notExpiring = payload.exp * 1000 - Date.now() > tokenValidityBufferSeconds * 1000;
+    const notTooOld = payload.iat === undefined || Date.now() - payload.iat * 1000 < tokenMaxAgeSeconds * 1000;
+    return notExpiring && notTooOld;
   } catch {
     return false;
   }
