@@ -14,6 +14,13 @@ ENV picks the git-ignored settings file playwright-tests/env/.env.<ENV>, and eve
 ENV=aat npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
+Steps that claim a work allocation task first, such as validating a discontinuance, need AAT's Camunda engine and task monitor in env/.env.aat:
+
+```bash
+CAMUNDA_URL=http://camunda-api-aat.service.core-compute-aat.internal/engine-rest
+WA_TASK_MONITOR_URL=http://wa-task-monitor-aat.service.core-compute-aat.internal
+```
+
 ### Demo
 
 ```bash
@@ -94,6 +101,14 @@ STOP_AFTER_TEST=<step> stops after that step (or group of steps). A test number 
 ENV=aat STOP_AFTER_TEST=CREATE_HEARING_NOTICE npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
+Settling or discontinuing the claim (SETTLE_CLAIM, DISCONTINUE_CLAIM) still runs where STOP_AT_STATE or STOP_AFTER_TEST stops the journey, so the claim can be closed at any point. For example, this discontinues a claim at JUDICIAL_REFERRAL without the court's permission:
+
+```bash
+ENV=aat API_UNTIL=JUDICIAL_REFERRAL STOP_AT_STATE=JUDICIAL_REFERRAL DISCONTINUE_CLAIM=NO_PERMISSION_NEEDED npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+An invalid combination of settings fails the run before the first test, with every problem listed: for example SETTLE_CLAIM and DISCONTINUE_CLAIM together, settling or discontinuing as the claimant's solicitor against two defendants where one is a LIP, or settling or discontinuing where the journey ends in a state the event is not offered in (such as DISCONTINUE_CLAIM on a journey that runs to All_FINAL_ORDERS_ISSUED without STOP_AT_STATE).
+
 Steps, in the order they run:
 
 - CREATE_CLAIM
@@ -119,6 +134,7 @@ Steps, in the order they run:
 - MAKE_FINAL_ORDER
 - CONFIRM_ORDER_REVIEW
 - SETTLE_CLAIM_MARK_PAID_FULL, SETTLE_CLAIM (optional)
+- DISCONTINUE_CLAIM, VALIDATE_DISCONTINUANCE (optional)
 
 The steps from CREATE_SDO on only run for fast track claims that reach JUDICIAL_REFERRAL. Intermediate and multi track claims that reach JUDICIAL_REFERRAL get MAKE_DIRECTIONS_ORDER instead: the judge makes a directions order with "Make an order", keeping the claim on its track and uploading a blank pre-hearing order (documents/TEST_ORDER.docx), which moves the claim to CASE_PROGRESSION. The journey stops there for those tracks.
 
@@ -278,7 +294,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee and the hearing fee are paid. CARD is always paid in the UI, on GOV.UK Pay's pages. Any other value stops the run. |
 | `ADD_CASE_NOTE` | Yes, No | No | Optional event: Hearing Centre Admin adds a case note after the claim is issued. |
 | `STAY_CASE` | Yes, No | No | Optional events: stay the case, request an update and lift the stay, after the claimant's response. |
-| `SETTLE_CLAIM` | MARK_PAID_IN_FULL, JUDGE_ORDER, CONSENT_ORDER | None | Optional event, once the rest of the journey has run. MARK_PAID_IN_FULL: the claimant's solicitor marks the claim paid in full with "Settle this claim", which stays the case (CASE_STAYED); skipped where there are two defendants and either is a LIP, and with two claimants it is for both. JUDGE_ORDER or CONSENT_ORDER: the hearing centre admin records with court staff's "Settle this claim" that the claim settled for that reason (CASE_SETTLED). Skipped where the claim has ended in a state the event is not offered in. Any other value stops the run. Has an API version. |
+| `SETTLE_CLAIM` | MARK_PAID_IN_FULL, JUDGE_ORDER, CONSENT_ORDER | None | Optional event, once the rest of the journey has run or where STOP_AT_STATE or STOP_AFTER_TEST stops it. MARK_PAID_IN_FULL: the claimant's solicitor marks the claim paid in full with "Settle this claim", which stays the case (CASE_STAYED); with two claimants it is for both. JUDGE_ORDER or CONSENT_ORDER: the hearing centre admin records with court staff's "Settle this claim" that the claim settled for that reason (CASE_SETTLED). Has an API version. |
+| `DISCONTINUE_CLAIM` | NO_PERMISSION_NEEDED, PERMISSION_GRANTED | None | Optional events, once the rest of the journey has run or where STOP_AT_STATE or STOP_AFTER_TEST stops it: the claimant's solicitor fully discontinues the claim with "Discontinue this claim", for every claimant and against every defendant. NO_PERMISSION_NEEDED: the court's permission is not needed, so the claim is discontinued (CASE_DISCONTINUED). PERMISSION_GRANTED: a judge gave permission today, and the hearing centre admin then validates the discontinuance, which discontinues the claim. Not offered once the final orders are issued or while the case is stayed. Has an API version. |
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional event: each defendant's solicitor informs the court of an agreed extension after acknowledging the claim. |
 | `CASE_FLAGS` | representative, or a list of holder:code[:detail] | None | Optional events: add flags after the claimant's response, then make the first inactive. Holders: CASE, CLAIMANT_1/2, DEFENDANT_1/2, CLAIMANT_1/2_LITIGATION_FRIEND, CLAIMANT_EXPERT_n, CLAIMANT_WITNESS_n, DEFENDANT_1/2_EXPERT_n, DEFENDANT_1/2_WITNESS_n. The detail is the language for an interpreter flag or the description for an OT0001 flag. |
 | `MANAGE_CONTACT_INFORMATION` | representative, or a list of user:party | None | Optional events: Manage Contact Information after the claimant's response, one run per entry, each checked against the saved case data. Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor (a solicitor only sees their own side). Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _LITIGATION_FRIEND or _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS, _WITNESSES or _EXPERTS. A party's or litigation friend's email (and a party's first address line) is changed, an individual is added, and a witness or expert is added by the admin or the first one's email changed by a solicitor (set WITNESSES or EXPERTS). Has an API version. |

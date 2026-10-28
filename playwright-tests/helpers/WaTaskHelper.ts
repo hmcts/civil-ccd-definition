@@ -61,8 +61,14 @@ export class WaTaskHelper {
         const response = await camunda.get(
           `${workAllocation.camundaUrl}/task?processVariables=caseId_eq_${caseId},taskId_eq_${taskType}`,
         );
-        const tasks = await response.json();
-        return tasks.length;
+        // The environment's gateway sometimes answers with an error page instead of JSON, which counts as no task yet
+        const body = await response.text();
+        try {
+          return JSON.parse(body).length;
+        } catch {
+          console.log(`WA: Camunda's task list answered with HTTP ${response.status()} that is not JSON, asking again: ${body.slice(0, 80).replace(/\s+/g, ' ')}`);
+          return 0;
+        }
       }, {
         intervals: [1000],
         timeout: workAllocation.waitSeconds * 1000,

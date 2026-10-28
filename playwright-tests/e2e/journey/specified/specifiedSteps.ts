@@ -49,6 +49,11 @@ import { SettleClaimMarkPaidFull as ApiSettleClaimMarkPaidFull } from '../../flo
 import { SettleClaim } from '../../flows/events/ui/SettleClaim.ts';
 import { SettleClaim as ApiSettleClaim } from '../../flows/events/api/SettleClaim.ts';
 import SettleClaimReason from '../../../enums/settleClaim.ts';
+import { DiscontinueClaim } from '../../flows/events/ui/DiscontinueClaim.ts';
+import { DiscontinueClaim as ApiDiscontinueClaim } from '../../flows/events/api/DiscontinueClaim.ts';
+import { ValidateDiscontinueClaim } from '../../flows/events/ui/ValidateDiscontinueClaim.ts';
+import { ValidateDiscontinueClaim as ApiValidateDiscontinueClaim } from '../../flows/events/api/ValidateDiscontinueClaim.ts';
+import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import claimTrack from '../../../enums/track.ts';
 import yesNo from '../../../enums/yesNo.ts';
@@ -58,7 +63,7 @@ import PaymentMethod from '../../../enums/paymentMethod.ts';
 import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { workingDayAfter } from '../../../helpers/WorkingDayHelper.ts';
-import { JourneyContext, JourneyStep } from '../journeyRunner.ts';
+import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
 import { SpecifiedConfig } from './specifiedConfig.ts';
 
 // The steps of the specified journey, in the order they run. Each step that does not apply to the journey's claim
@@ -111,14 +116,24 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
     settledInMediation,
   ];
 
-  // The states both "Settle this claim" events are offered in (court staff can also settle a stayed case)
-  const settleableStates = [
+  // The states "Discontinue this claim" is offered in, and both "Settle this claim" events, which are also offered once
+  // the final orders are issued (court staff can also settle a stayed case)
+  const discontinuableStates = [
     caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT, caseStates.AWAITING_APPLICANT_INTENTION, caseStates.IN_MEDIATION,
     caseStates.JUDICIAL_REFERRAL, caseStates.CASE_PROGRESSION, caseStates.HEARING_READINESS,
-    caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING, caseStates.DECISION_OUTCOME, caseStates.All_FINAL_ORDERS_ISSUED,
+    caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING, caseStates.DECISION_OUTCOME,
   ];
+  const settleableStates = [...discontinuableStates, caseStates.All_FINAL_ORDERS_ISSUED];
+  // civil-service does not let the claimant's solicitor settle or discontinue a claim against two defendants where
+  // either is a litigant in person
+  const twoDefendantsWithLitigantInPerson: [boolean, string] = [
+    c.claimShape.defendants.length === 2 && c.claimShape.defendants.some((defendant) => defendant.solicitor === 'none'),
+    'Skipping as the claimant\'s solicitor cannot settle or discontinue a claim against two defendants where one is a litigant in person',
+  ];
+  // Whether the claimant's discontinuance waits for court staff to validate it, once the claimant has discontinued
+  let discontinuanceAwaitingValidation = false;
 
-  return [
+  const steps: JourneyStep[] = [
     {
       name: 'CREATE_CLAIM',
       title: 'Claimant Solicitor creates ' + c.claimType + ' specified claim ',
@@ -608,8 +623,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         await ctx.assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
       },
     },
-    // The claim is settled with "Settle this claim" once the rest of the journey has run (SETTLE_CLAIM). Each event is
-    // only offered in some states, so the step is skipped where the journey ended in another.
+    // The claim is settled with "Settle this claim" once the rest of the journey has run, or where STOP_AT_STATE or
+    // STOP_AFTER_TEST stops it (SETTLE_CLAIM). Each event is only offered in some states, so the step is skipped where
+    // the journey ended in another.
     //
     // The claimant's solicitor marks the claim as paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL): civil-service stays
     // the case (CASE_STAYED) and tells the defendants. It is not offered where there are two defendants and either is a
@@ -618,12 +634,10 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       name: 'SETTLE_CLAIM_MARK_PAID_FULL',
       title: 'Claimant Solicitor marks the claim as paid in full.',
       user: 'claimantSolicitor',
+      closesClaim: true,
+      invalidIf: (stops) => c.settleClaim === SettleClaimReason.MARK_PAID_IN_FULL ? closingProblems('SETTLE_CLAIM=MARK_PAID_IN_FULL', stops, settleableStates, true) : [],
       skipIf: [
         [c.settleClaim !== SettleClaimReason.MARK_PAID_IN_FULL, 'Skipping as the claimant\'s solicitor does not settle the claim (set SETTLE_CLAIM=MARK_PAID_IN_FULL to run it)'],
-        [
-          c.claimShape.defendants.length === 2 && c.claimShape.defendants.some((defendant) => defendant.solicitor === 'none'),
-          'Skipping as the claimant\'s solicitor cannot settle a claim against two defendants where one is a litigant in person',
-        ],
       ],
       run: async ({ page, storageState }) => {
         test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be settled in ${ctx.lastStateReached}`);
@@ -646,6 +660,10 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       name: 'SETTLE_CLAIM',
       title: `Hearing Centre Admin records that the claim has settled${c.settleClaim === SettleClaimReason.JUDGE_ORDER || c.settleClaim === SettleClaimReason.CONSENT_ORDER ? ` (${c.settleClaim})` : ''}.`,
       user: 'hearingCentreAdmin',
+      closesClaim: true,
+      invalidIf: (stops) => c.settleClaim === SettleClaimReason.JUDGE_ORDER || c.settleClaim === SettleClaimReason.CONSENT_ORDER
+        ? closingProblems(`SETTLE_CLAIM=${c.settleClaim}`, stops, [...settleableStates, caseStates.CASE_STAYED], false)
+        : [],
       skipIf: [
         [
           c.settleClaim !== SettleClaimReason.JUDGE_ORDER && c.settleClaim !== SettleClaimReason.CONSENT_ORDER,
@@ -665,7 +683,103 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         await ctx.assertCaseState(caseStates.CASE_SETTLED);
       },
     },
+    // The claimant's solicitor fully discontinues the claim with "Discontinue this claim" once the rest of the journey
+    // has run (DISCONTINUE_CLAIM). It is only offered in some states, so the step is skipped where the journey ended in
+    // another, and not where there are two defendants and either is a litigant in person. Without the court's
+    // permission (NO_PERMISSION_NEEDED) civil-service discontinues the claim (CASE_DISCONTINUED). With a judge's
+    // permission (PERMISSION_GRANTED) the claim stays where it is until court staff validate the discontinuance.
+    {
+      name: 'DISCONTINUE_CLAIM',
+      title: `Claimant Solicitor discontinues the claim${c.discontinueClaim ? ` (${c.discontinueClaim})` : ''}.`,
+      user: 'claimantSolicitor',
+      closesClaim: true,
+      invalidIf: (stops) => c.discontinueClaim !== undefined ? closingProblems(`DISCONTINUE_CLAIM=${c.discontinueClaim}`, stops, discontinuableStates, true) : [],
+      skipIf: [
+        [c.discontinueClaim === undefined, 'Discontinuing the claim is switched off (set DISCONTINUE_CLAIM=NO_PERMISSION_NEEDED or PERMISSION_GRANTED to run it)'],
+      ],
+      run: async ({ page, storageState }) => {
+        const stateBefore = ctx.lastStateReached;
+        test.skip(!discontinuableStates.includes(stateBefore), `Skipping as the claim cannot be discontinued in ${stateBefore}`);
+        if (ctx.useApi()) {
+          await new ApiDiscontinueClaim().submit(ctx.caseId, c.discontinueClaim);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new DiscontinueClaim(page).submit(c.discontinueClaim);
+          });
+        }
+        const awaitingValidation = c.discontinueClaim === DiscontinueClaimType.PERMISSION_GRANTED;
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DISCONTINUE_CLAIM_CLAIMANT');
+        await ctx.assertCaseState(awaitingValidation ? stateBefore : caseStates.CASE_DISCONTINUED);
+        discontinuanceAwaitingValidation = awaitingValidation;
+      },
+    },
+
+    // Court staff check the order that gave the claimant permission to discontinue with "Validate discontinuance"
+    // (DISCONTINUE_CLAIM=PERMISSION_GRANTED). Confirming the order gives permission discontinues the claim. Where work
+    // allocation is switched on, the hearing centre admin needs the "Claim Discontinued - Validate discontinuance" task
+    // (ValidateDiscontinuanceAdmin), which is claimed through the API version too, as the UI would.
+    {
+      name: 'VALIDATE_DISCONTINUANCE',
+      title: 'Hearing Centre Admin validates the discontinuance.',
+      user: 'hearingCentreAdmin',
+      closesClaim: true,
+      skipIf: [
+        [c.discontinueClaim !== DiscontinueClaimType.PERMISSION_GRANTED, 'Skipping as the discontinuance did not need the court\'s permission (set DISCONTINUE_CLAIM=PERMISSION_GRANTED to run it)'],
+      ],
+      run: async ({ page, storageState }) => {
+        test.skip(!discontinuanceAwaitingValidation, 'Skipping as the claimant did not discontinue the claim');
+        await ctx.runEvent(page, storageState, async () => {
+          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT', 'ValidateDiscontinuanceAdmin');
+          if (!ctx.useApi()) {
+            await new ValidateDiscontinueClaim(page).submit();
+          }
+        });
+        if (ctx.useApi()) {
+          await new ApiValidateDiscontinueClaim().submit(ctx.caseId);
+        }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT');
+        await ctx.assertCaseState(caseStates.CASE_DISCONTINUED);
+      },
+    },
   ];
+
+  // Where the journey ends: the state STOP_AT_STATE stops it at or, where it runs to the end, the state its last step
+  // leaves the claim in, when that is known. With STOP_AFTER_TEST it is not known before the journey runs.
+  function journeyEndState(stops: JourneyStops): caseStates | undefined {
+    if (stops.stopAtState !== undefined) {
+      return stops.stopAtState;
+    }
+    if (stops.stopAfterTest !== undefined) {
+      return undefined;
+    }
+    const orderReview = steps.find((step) => step.name === 'CONFIRM_ORDER_REVIEW');
+    if (!orderReview?.skipIf?.some(([skipped]) => skipped)) {
+      return caseStates.All_FINAL_ORDERS_ISSUED;
+    }
+    if (settledInMediation[0]) {
+      return caseStates.CASE_STAYED;
+    }
+    return undefined;
+  }
+
+  // The settings that cannot close the claim: two defendants where either is a litigant in person, which civil-service
+  // does not allow the claimant's solicitor to settle or discontinue, or a journey that ends in a state the closing
+  // event is not offered in
+  function closingProblems(setting: string, stops: JourneyStops, offeredIn: caseStates[], claimantSolicitor: boolean): Array<[boolean, string]> {
+    const endState = journeyEndState(stops);
+    return [
+      [
+        claimantSolicitor && twoDefendantsWithLitigantInPerson[0],
+        `${setting} cannot be used with CLAIM_TYPE=${c.claimType}: the claimant's solicitor cannot settle or discontinue a claim against two defendants where one is a litigant in person`,
+      ],
+      [
+        endState !== undefined && !offeredIn.includes(endState),
+        `${setting} cannot be used where the journey ends in ${endState}${stops.stopAtState ? ' (STOP_AT_STATE)' : ''}: it is only offered in ${offeredIn.join(', ')}`,
+      ],
+    ];
+  }
+
+  return steps;
 
   function respondToClaimSteps(): JourneyStep[] {
     const solicitors: Array<{ defendantNumber: 1 | 2; user: SessionUserKey; skipIf: Array<[boolean, string]>; stateAfter: caseStates }> = [

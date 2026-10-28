@@ -31,7 +31,20 @@ export interface JourneyStep {
   // journey starts, so the step's group is skipped rather than the test, which means beforeEach does not open the case
   // as a user who is not signed in for this claim type.
   skipIf?: Array<[boolean, string]>;
+  // A step that closes the claim (settling or discontinuing it), which runs even once STOP_AT_STATE or STOP_AFTER_TEST
+  // has stopped the journey, so the claim can be closed wherever the journey stops
+  closesClaim?: boolean;
+  // Settings the step cannot run with, each a [condition, problem] pair, given how the run is stopped. They are checked
+  // before the journey starts, so an invalid combination of settings fails the run straight away, with every problem
+  // listed, rather than being found part way through.
+  invalidIf?: (stops: JourneyStops) => Array<[boolean, string]>;
   run: (args: StepArgs) => Promise<void>;
+}
+
+// How the run is stopped early, if it is (see defineJourney)
+export interface JourneyStops {
+  stopAtState?: caseStates;
+  stopAfterTest?: string;
 }
 
 // What the steps of one journey share: the claim, the helpers for the test's page and the checks on the claim's state
@@ -112,7 +125,8 @@ export class JourneyContext {
 //    after the Standard Direction Order
 //  - STOP_AFTER_TEST: stop after this step or group, by name (e.g. CREATE_HEARING_NOTICE), or after a test number
 //    (e.g. test12). A name always means the same step, while a number moves when steps are added before it.
-// The remaining tests are skipped. Both can be set, in which case the run stops at whichever comes first.
+// The remaining tests are skipped, except the steps that close the claim (closesClaim), such as settling it, which still
+// run when their settings ask for them. Both can be set, in which case the run stops at whichever comes first.
 //
 // Getting the claim to a state quickly:
 //  - API_UNTIL: the steps that have an API version (flows/events/api) are done through the CCD API until the claim is
@@ -131,6 +145,8 @@ export function defineJourney(
     const testNumber = previous === undefined ? 1 : sameGroup ? previous.testNumber : previous.testNumber + 1;
     return [...numbered, { step, testNumber }];
   }, []);
+  // The tests that close the claim, which stopping the journey does not skip
+  const closingTestNumbers = new Set(numberedSteps.filter(({ step }) => step.closesClaim).map(({ testNumber }) => testNumber));
 
   const { stopAfterTest } = options;
   const stopAfterNamed = stopAfterTest === undefined
@@ -144,6 +160,10 @@ export function defineJourney(
 
   test.beforeAll(async ({}) => {
     options.validate();
+
+    const stops: JourneyStops = { stopAtState: context.stopAtState, stopAfterTest };
+    const problems = steps.flatMap((step) => (step.invalidIf?.(stops) ?? []).filter(([invalid]) => invalid).map(([, problem]) => problem));
+    expect(problems, `Invalid combination of settings:\n  - ${problems.join('\n  - ')}`).toEqual([]);
 
     if (context.stopAtState !== undefined) {
       expect(
@@ -170,8 +190,10 @@ export function defineJourney(
   test.beforeEach(async ({ page, storageState }, testInfo) => {
     // The last testN in the test's title path is its own (steps that share a number sit in a group inside it)
     const testNumber = Number(testInfo.titlePath.filter((title) => /^test\d+$/.test(title)).pop()?.slice('test'.length));
-    test.skip(stopAfterTestNumber !== undefined && testNumber > stopAfterTestNumber, `Stopped after ${stopAfterTest} (STOP_AFTER_TEST)`);
-    test.skip(context.stopAtStateReached, `Stopped: the claim has reached ${context.stopAtState} (STOP_AT_STATE)`);
+    if (!closingTestNumbers.has(testNumber)) {
+      test.skip(stopAfterTestNumber !== undefined && testNumber > stopAfterTestNumber, `Stopped after ${stopAfterTest} (STOP_AFTER_TEST)`);
+      test.skip(context.stopAtStateReached, `Stopped: the claim has reached ${context.stopAtState} (STOP_AT_STATE)`);
+    }
 
     context.usePage(page);
     // A saved session can have ended since the last test, in which case the user is signed in again
