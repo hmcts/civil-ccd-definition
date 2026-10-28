@@ -363,9 +363,7 @@
         "UserRoles": [
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "cui-admin-profile",
-          "APPLICANT-PROFILE-SPEC",
-          "RESPONDENT-ONE-PROFILE-SPEC"
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
