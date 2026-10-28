@@ -63,6 +63,7 @@ civil-service:
             alias: CCD_EVENTS_TOPIC_CONNECTION_STRING
     environment:
       SCHEDULER_ENABLED_JUDGEMENT_BUFFER: true
+      SCHEDULER_ACTIVE_SCHEDULERS: JudgementBuffer,ExpiredDraftStore,DefendantResponseDeadline,DecisionOutcome
       LAUNCH_DARKLY_ENV: aat
       EM_CCD_ORCHESTRATOR_URL: http://${SERVICE_NAME}-em-ccdorc
       CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
@@ -137,12 +138,6 @@ civil-service:
               CREATE DATABASE "cft_task_db_replica" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
             03_hmcts_superuser.sql: |
               ALTER ROLE hmcts WITH SUPERUSER;
-idam-pr:
-  redirect_uris:
-    XUI:
-      - https://xui-${SERVICE_FQDN}/oauth2/callback
-    CCD Admin:
-      - http://${SERVICE_NAME}-ccd-admin-web/oauth2redirect
 
 aac-manage-case-assignment:
   java:
