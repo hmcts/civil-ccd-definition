@@ -9,6 +9,12 @@ export interface CaseFlagType {
   commentRequired: boolean;
   hasListOfValues: boolean;
   defaultStatus: string;
+  // What a flag saved on the case records about its type, as XUI copies it from reference data: the headings above it
+  // (reference data's Path, from "Case" or "Party"), whether it matters for hearings, and the languages to choose from
+  // for an interpreter flag
+  refDataPath: string[];
+  hearingRelevant: boolean;
+  listOfValues: Array<{ key: string; value: string }>;
 }
 
 interface RefDataFlag {
@@ -16,7 +22,10 @@ interface RefDataFlag {
   flagCode: string;
   flagComment?: boolean;
   defaultStatus?: string;
+  hearingRelevant?: boolean;
+  Path?: string[];
   listOfValuesLength?: number;
+  listOfValues?: Array<{ key: string; value: string }>;
   childFlags?: RefDataFlag[];
 }
 
@@ -44,6 +53,9 @@ export async function caseFlagTypes(page: Page, level: 'CASE' | 'PARTY'): Promis
         commentRequired: flag.flagComment === true,
         hasListOfValues: (flag.listOfValuesLength ?? 0) > 0,
         defaultStatus: flag.defaultStatus ?? 'Active',
+        refDataPath: flag.Path ?? [],
+        hearingRelevant: flag.hearingRelevant === true,
+        listOfValues: flag.listOfValues ?? [],
       });
       return;
     }

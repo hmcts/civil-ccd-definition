@@ -56,7 +56,7 @@ Replace the PR numbers with your own. ENV=preview needs both PREVIEW_SERVICE and
 
 API_UNTIL=<state> does the steps that have an API version through the CCD API until the claim is confirmed to be in that state. Set STOP_AT_STATE to the same state so the run ends there and nothing goes through the UI.
 
-The steps with an API version are CREATE_CLAIM, NOTIFY_CLAIM, NOTIFY_CLAIM_DETAILS, ACKNOWLEDGE_CLAIM_DEFENDANT1/2, RESPOND_TO_CLAIM_DEFENDANT1/2 and RESPOND_TO_DEFENCE, so the furthest a claim can get through the API alone is JUDICIAL_REFERRAL.
+Every event step has an API version except PAY_HEARING_FEE, which is paid in the UI's Service Request tab, so API_UNTIL=All_FINAL_ORDERS_ISSUED takes a claim through the whole journey with only the payment in the UI. An API version answers the same pages as the UI with the same answers. Where a page runs a civil-service callback when Continue is pressed (to fill in a list such as the hearing court, or to generate an order document), the API version has CCD run it too, as XUI does, and it submits only the event's own fields. Documents are civil-service's test document, except a judge's completed order, which must be a Word document: TEST_ORDER.docx is uploaded through XUI as the judge. Through the API, ADD_CASE_NOTE checks the case's saved notes rather than the Notes tab.
 
 ```bash
 ENV=aat API_UNTIL=JUDICIAL_REFERRAL STOP_AT_STATE=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium

@@ -82,6 +82,37 @@ export class TestingEndPointHelper {
       }).toBe('FINISHED');
   };
 
+  // Waits until the case has no business process running (none, or the last one FINISHED). civil-service refuses to
+  // start most events while one is running ("There is a technical issue causing a delay"). Through the UI the time
+  // the pages take to load is usually enough, but API events follow each other straight away.
+  async waitForNoOngoingBusinessProcess(caseId: string) {
+    await this.getTokens(systemupdate);
+    const businessProcessUrl = `${this.testingSupportUrl}/case/${caseId}/business-process`;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      await expect.poll(async () => {
+        try {
+          const response = await apiRequestContext.get(businessProcessUrl, { headers: this.getHeaders() });
+          if (!response.ok()) {
+            return `HTTP ${response.status()}`;
+          }
+          const businessProcess = JSON.parse(await response.text()).businessProcess;
+          return !businessProcess?.status || businessProcess.status === 'FINISHED'
+            ? 'FINISHED'
+            : `${businessProcess.camundaEvent} ${businessProcess.status}`;
+        } catch (error) {
+          return `UNAVAILABLE (${(error as Error).message.split('\n')[0]})`;
+        }
+      }, {
+        intervals: apiRetries.intervals,
+        timeout: apiRetries.timeout,
+        message: `Case ${caseId} still has a business process running`,
+      }).toBe('FINISHED');
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   // Checks the case's CCD state, read from civil-service's business process endpoint. The state is set by background
   // processing, so it is checked repeatedly until it matches or the retry timeout runs out. The environment's gateway
   // sometimes answers with an error page instead of JSON, which counts as one failed try rather than failing the step.
