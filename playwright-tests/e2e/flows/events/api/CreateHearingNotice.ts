@@ -3,6 +3,7 @@ import { hearingCentreAdminCredentials } from '../../../../civilConfig.ts';
 import trackType from '../../../../enums/track.ts';
 import { courts } from '../../../../fixtures/courts.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
+import { workingDaysAfter } from '../../../../helpers/WorkingDayHelper.ts';
 
 // The hearing centre admin's hearing notice (HEARING_SCHEDULED, "Create a hearing notice") once the case is in
 // CASE_PROGRESSION, through the CCD API instead of the event's pages in XUI. As in the UI: a small claims hearing or a
@@ -12,8 +13,9 @@ import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 export class CreateHearingNotice {
   private ccdApiHelper = new CcdApiHelper();
 
-  // The hearing is 8 weeks ahead by default, as in the UI
-  async submit(caseId: string, track: trackType, hearingDate: moment.Moment = moment().businessAdd(40)) {
+  // The hearing is 40 working days (8 weeks) ahead by default, on a working day, as in the UI
+  async submit(caseId: string, track: trackType, hearingDate?: moment.Moment) {
+    hearingDate ??= moment(await workingDaysAfter(40), 'YYYY-MM-DD');
     const listedForAnHour = track === trackType.SMALL || track === trackType.FAST;
     await this.ccdApiHelper.submitEventThroughPages(hearingCentreAdminCredentials, 'HEARING_SCHEDULED', caseId, [
       { page: 'HearingNoticeSelect', answers: { hearingNoticeList: track === trackType.SMALL ? 'SMALL_CLAIMS' : 'FAST_TRACK_TRIAL' } },

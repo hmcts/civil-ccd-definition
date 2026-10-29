@@ -11,7 +11,7 @@ export class NotifyClaim {
 
   async notify(c: UnspecifiedConfig, caseId: string) {
     const started = await this.ccdApiHelper.startEvent(claimantSolicitorCredentials, 'NOTIFY_DEFENDANT_OF_CLAIM', caseId);
-    const payload = buildNotifyClaimPayload(c, started.caseData, c.defendantsToNotifyClaim);
+    const payload = await buildNotifyClaimPayload(c, started.caseData, c.defendantsToNotifyClaim);
     // Notifying only one of two defendants' solicitors raises a warning, which the UI continues past
     const ignoreWarning = c.defendantsToNotifyClaim !== notifyClaimOptions.BOTH;
     await this.ccdApiHelper.submitEvent(claimantSolicitorCredentials, 'NOTIFY_DEFENDANT_OF_CLAIM', started.token, payload, caseId, ignoreWarning);

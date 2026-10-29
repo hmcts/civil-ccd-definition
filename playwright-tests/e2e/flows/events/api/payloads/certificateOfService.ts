@@ -1,14 +1,16 @@
 import { randomUUID } from 'node:crypto';
 import moment from 'moment-business-days';
+import { workingDaysAfter } from '../../../../../helpers/WorkingDayHelper.ts';
 
 // A litigant in person defendant's Certificate of Service, as CoSHelper fills it in the UI: the claim was served two
-// business days ago and is deemed served two business days from now. The UI picks how and where it was served at
+// weekdays ago and is deemed served two working days from now. civil-service only accepts a deemed served date that is
+// a working day no more than 2 working days away, bank holidays included. The UI picks how and where it was served at
 // random; here it is always posted to the defendant's usual residence. evidenceDocument is only asked for by Notify
 // claim details.
-export function certificateOfService(defendantNumber: number, evidenceDocument?: Record<string, string>) {
+export async function certificateOfService(defendantNumber: number, evidenceDocument?: Record<string, string>) {
   return {
     cosDateOfServiceForDefendant: moment().businessSubtract(2, 'days').format('YYYY-MM-DD'),
-    cosDateDeemedServedForDefendant: moment().businessAdd(2, 'days').format('YYYY-MM-DD'),
+    cosDateDeemedServedForDefendant: await workingDaysAfter(2),
     cosServedDocumentFiles: `Test description of documents served - LiP defendant: ${defendantNumber}`,
     ...(evidenceDocument ? { cosEvidenceDocument: [{ id: randomUUID(), value: evidenceDocument }] } : {}),
     cosRecipient: `Test description of who the claim was served to - LiP defendant: ${defendantNumber}`,

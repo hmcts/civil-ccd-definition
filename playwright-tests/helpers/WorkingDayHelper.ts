@@ -18,13 +18,37 @@ function englandAndWalesBankHolidays(): Promise<Set<string>> {
   return bankHolidays;
 }
 
+const isWorkingDay = (day: Date, holidays: Set<string>) =>
+  ![0, 6].includes(day.getUTCDay()) && !holidays.has(day.toISOString().slice(0, 10));
+
+// Today's date (YYYY-MM-DD) where the tests run
+function today(): string {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+}
+
 // The date (YYYY-MM-DD) the given number of days after a date, moved on to the next working day if it is not one
 export async function workingDayAfter(date: string, days: number): Promise<string> {
   const holidays = await englandAndWalesBankHolidays();
   const day = new Date(`${date.slice(0, 10)}T12:00:00Z`);
   day.setUTCDate(day.getUTCDate() + days);
-  while ([0, 6].includes(day.getUTCDay()) || holidays.has(day.toISOString().slice(0, 10))) {
+  while (!isWorkingDay(day, holidays)) {
     day.setUTCDate(day.getUTCDate() + 1);
+  }
+  return day.toISOString().slice(0, 10);
+}
+
+// The date (YYYY-MM-DD) the given number of working days after a date (today by default), counted as civil-service
+// counts them (DeadlinesCalculator.plusWorkingDays): a day at a time, each moved on to the next working day. Always a
+// working day, for dates civil-service checks are one, such as when a claim is deemed served.
+export async function workingDaysAfter(workingDays: number, date: string = today()): Promise<string> {
+  const holidays = await englandAndWalesBankHolidays();
+  const day = new Date(`${date.slice(0, 10)}T12:00:00Z`);
+  for (let count = 0; count < workingDays; count++) {
+    day.setUTCDate(day.getUTCDate() + 1);
+    while (!isWorkingDay(day, holidays)) {
+      day.setUTCDate(day.getUTCDate() + 1);
+    }
   }
   return day.toISOString().slice(0, 10);
 }

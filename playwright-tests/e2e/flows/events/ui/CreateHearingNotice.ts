@@ -1,6 +1,7 @@
 import { Page } from '@playwright/test';
 import moment from 'moment-business-days';
 import { PageHelper } from '../../../../helpers/PageHelper';
+import { workingDaysAfter } from '../../../../helpers/WorkingDayHelper.ts';
 import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 import { courts } from '../../../../fixtures/courts.ts';
 import trackType from '../../../../enums/track.ts';
@@ -18,9 +19,10 @@ export class CreateHearingNotice {
     this.pageHelper = new PageHelper(this.page);
   }
 
-  // The hearing is 8 weeks ahead by default: civil-service needs it to be at least 24 hours away, and trial
-  // arrangements can only be confirmed more than 3 weeks before it
-  async submit(track: trackType, hearingDate: moment.Moment = moment().businessAdd(40)) {
+  // The hearing is 40 working days (8 weeks) ahead by default, on a working day: civil-service needs it to be at least
+  // 24 hours away, and trial arrangements can only be confirmed more than 3 weeks before it
+  async submit(track: trackType, hearingDate?: moment.Moment) {
+    hearingDate ??= moment(await workingDaysAfter(40), 'YYYY-MM-DD');
     await this.pageHelper.selectNextStep('Create a hearing notice');
 
     // Type of hearing notice: "Small claims hearing", or "Trial (Fast, Intermediate and Multi track)"

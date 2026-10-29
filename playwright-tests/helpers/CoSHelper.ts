@@ -7,6 +7,7 @@ import CoSLocations from '../enums/CoSLocations.ts';
 import CoSLocationTypes from '../enums/CoSLocationTypes.ts';
 import { ButtonHelper } from './ButtonHelper.ts';
 import { PageHelper } from './PageHelper.ts';
+import { workingDaysAfter } from './WorkingDayHelper.ts';
 
 export class CoSHelper {
   private whatDocumentsServed: string = 'Test description of documents served - LiP defendant:';
@@ -50,7 +51,9 @@ export class CoSHelper {
 
   private async submitForDefendant(LiPDefendantNumber: string, event: string) {
     const serveDate = moment().businessSubtract(2, 'days');
-    const serviceDate = moment().businessAdd(2, 'days');
+    // civil-service only accepts a deemed served date that is a working day no more than 2 working days away, bank
+    // holidays included
+    const serviceDate = moment(await workingDaysAfter(2), 'YYYY-MM-DD');
 
     // The date fields have the same IDs on every defendant's page, so wait for this defendant's page to show before
     // filling them. Otherwise, after Continue on defendant 1's page, the dates can go into that page while it is

@@ -1,6 +1,7 @@
 import moment from 'moment-business-days';
 import { judgeCredentials } from '../../../../civilConfig.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
+import { workingDayAfter } from '../../../../helpers/WorkingDayHelper.ts';
 
 // The judge's directions after default judgment on an unspecified claim (STANDARD_DIRECTION_ORDER_DJ) through the CCD
 // API, instead of the event's pages in XUI, with the same answers as the UI: a disposal hearing, in person at the
@@ -11,6 +12,8 @@ export class StandardDirectionOrderDj {
   private ccdApiHelper = new CcdApiHelper();
 
   async submit(caseId: string) {
+    // The disposal hearing is 40 days away, moved on to the next working day if it is not one, as in the UI
+    const hearingDate = await workingDayAfter(moment().format('YYYY-MM-DD'), 40);
     await this.ccdApiHelper.submitEventThroughPages(judgeCredentials, 'STANDARD_DIRECTION_ORDER_DJ', caseId, [
       { page: 'CaseManagementOrder', answers: { caseManagementOrderSelection: 'DISPOSAL_HEARING' } },
       {
@@ -29,7 +32,7 @@ export class StandardDirectionOrderDj {
             disposalHearingFinalDisposalHearingTimeDJ: {
               ...data.disposalHearingFinalDisposalHearingTimeDJ,
               input: 'The disposal hearing will take place',
-              date: moment().add(40, 'days').format('YYYY-MM-DD'),
+              date: hearingDate,
               time: 'THIRTY_MINUTES',
             },
             disposalHearingOrderMadeWithoutHearingDJ: { input: 'This order has been made without a hearing' },

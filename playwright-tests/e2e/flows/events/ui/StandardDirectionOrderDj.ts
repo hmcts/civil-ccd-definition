@@ -1,6 +1,7 @@
 import { expect, Page } from '@playwright/test';
 import moment from 'moment-business-days';
 import { PageHelper } from '../../../../helpers/PageHelper';
+import { workingDayAfter } from '../../../../helpers/WorkingDayHelper.ts';
 import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 import { envUrl } from '../../../../civilConfig.ts';
 
@@ -34,7 +35,8 @@ export class StandardDirectionOrderDj {
     await this.page.getByRole('radio', { name: 'In Person' }).first().check();
     await this.page.locator('#disposalHearingFinalDisposalHearingTimeDJ_input').fill('The disposal hearing will take place');
     // Other directions on the page have date fields with the same IDs, so the hearing's is found within its section
-    const hearingDate = moment().add(40, 'days');
+    // 40 days away, moved on to the next working day if it is not one
+    const hearingDate = moment(await workingDayAfter(moment().format('YYYY-MM-DD'), 40), 'YYYY-MM-DD');
     const hearingTime = this.page.locator('#disposalHearingFinalDisposalHearingTimeDJ_disposalHearingFinalDisposalHearingTimeDJ');
     await hearingTime.locator('#date-day').fill(hearingDate.date().toString());
     await hearingTime.locator('#date-month').fill((hearingDate.month() + 1).toString());

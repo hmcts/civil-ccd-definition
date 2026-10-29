@@ -28,12 +28,12 @@ export function litigantInPersonDefendants(c: UnspecifiedConfig): number[] {
 // the defendant solicitor(s) to notify, the served documents when a defendant has a solicitor, and a Certificate of
 // Service for each defendant who is a litigant in person. startCaseData is the case data CCD returned when the event
 // was started, which holds the list of whom to notify.
-export function buildNotifyClaimDetailsPayload(
+export async function buildNotifyClaimDetailsPayload(
   c: UnspecifiedConfig,
   startCaseData: Record<string, any>,
   whomToNotify: notifyClaimOptions,
   documents: NotifyClaimDetailsDocuments,
-): Record<string, any> {
+): Promise<Record<string, any>> {
   const data: Record<string, any> = c.claimType === claimTypes.ONE_VS_TWO_DIFF_SOL
     ? defendantToNotify(startCaseData, 'defendantSolicitorNotifyClaimDetailsOptions', whomToNotify)
     : {};
@@ -49,7 +49,7 @@ export function buildNotifyClaimDetailsPayload(
   }
 
   for (const defendantNumber of litigantInPersonDefendants(c)) {
-    data[`cosNotifyClaimDetails${defendantNumber}`] = certificateOfService(defendantNumber, documents.certificateOfServiceEvidence[defendantNumber]);
+    data[`cosNotifyClaimDetails${defendantNumber}`] = await certificateOfService(defendantNumber, documents.certificateOfServiceEvidence[defendantNumber]);
   }
   return data;
 }
