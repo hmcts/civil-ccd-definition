@@ -1,5 +1,6 @@
 import { APIRequestContext, expect, request } from '@playwright/test';
 import { ccdDataStoreApiBaseUrl, createCase } from '../civilConfig.ts';
+import CaseType from '../enums/caseType.ts';
 import { TestingEndPointHelper } from './TestingEndPointHelper.ts';
 import { TokensHelper } from './TokensHelper.ts';
 
@@ -24,15 +25,16 @@ export interface EventPage {
 // start callback left it, the event's fields and its pages (ID, whether Continue runs a mid event callback)
 interface StartedEventWithPages extends StartedEvent {
   fieldIds: string[];
-  pages: Array<{ id: string; hasMidEvent: boolean }>;
+  pages: Array<{ id: string; hasMidEvent: boolean; fieldIds: string[] }>;
 }
 
 // Runs CCD events through the CCD data store API as a user, the way XUI does when the event is submitted, but without
-// going through the event's pages. CCD runs the event's about to submit and submitted callbacks as usual.
+// going through the event's pages. CCD runs the event's about to submit and submitted callbacks as usual. The events
+// are on a claim (CIVIL) unless another case type is given, such as a general application's.
 export class CcdApiHelper {
   private tokensHelper: TokensHelper;
 
-  constructor() {
+  constructor(private caseType: CaseType = CaseType.CIVIL) {
     this.tokensHelper = new TokensHelper();
   }
 
@@ -81,16 +83,21 @@ export class CcdApiHelper {
   // Only the event's own fields are submitted, as XUI does. The event is only started once the case has no business
   // process running, which civil-service requires. pages can be worked out from the event's data as the about
   // to start callback left it, where that decides which pages the user gets. Returns the case CCD saved.
+  // onlyAnsweredPages submits only the fields on the pages answered, as XUI does, for events whose about to start
+  // callback fills in fields on pages the user does not see, which civil-service would otherwise act on (such as the
+  // other kinds of decision on a general application).
   async submitEventThroughPages(
     user,
     eventId: string,
     caseId: string,
     pages: EventPage[] | ((data: Record<string, any>) => EventPage[]),
     ignoreWarning = false,
+    onlyAnsweredPages = false,
   ): Promise<Record<string, any>> {
     await new TestingEndPointHelper().waitForNoOngoingBusinessProcess(caseId);
     const started = await this.startEventWithPages(user, eventId, caseId);
     let data = { ...started.caseData };
+    const answeredFieldIds = new Set<string>();
     for (const { page, answers, when } of typeof pages === 'function' ? pages(data) : pages) {
       if (when && !when(data)) {
         continue;
@@ -98,6 +105,7 @@ export class CcdApiHelper {
       const pageId = `${eventId}${page}`;
       const definition = started.pages.find((p) => p.id === pageId);
       expect(definition, `${eventId} has no page ${page} (its pages are ${started.pages.map((p) => p.id.slice(eventId.length)).join(', ')})`).toBeDefined();
+      definition.fieldIds.forEach((id) => answeredFieldIds.add(id));
       const pageAnswers = typeof answers === 'function' ? answers(data) : answers ?? {};
       data = { ...data, ...pageAnswers };
       if (definition.hasMidEvent) {
@@ -105,6 +113,7 @@ export class CcdApiHelper {
       }
     }
     const payload = Object.fromEntries(started.fieldIds
+      .filter((id) => !onlyAnsweredPages || answeredFieldIds.has(id))
       .filter((id) => data[id] !== undefined && data[id] !== null)
       .map((id) => [id, data[id]]));
     return this.submitEvent(user, eventId, started.token, payload, caseId, ignoreWarning);
@@ -130,7 +139,11 @@ export class CcdApiHelper {
         token: body.event_token,
         caseData: Object.fromEntries(fields.map((field) => [field.id, field.value])),
         fieldIds: fields.map((field) => field.id),
-        pages: (body.wizard_pages ?? []).map((page) => ({ id: page.id, hasMidEvent: !!page.callback_url_mid_event })),
+        pages: (body.wizard_pages ?? []).map((page) => ({
+          id: page.id,
+          hasMidEvent: !!page.callback_url_mid_event,
+          fieldIds: (page.wizard_page_fields ?? []).map((field) => field.case_field_id),
+        })),
       };
     } finally {
       await apiRequestContext.dispose();
@@ -162,9 +175,9 @@ export class CcdApiHelper {
     }
   }
 
-  // CCD's case type ID is CIVIL (createCase.caseTypeCode is the label XUI shows, Civil)
+  // CCD's case type ID, such as CIVIL (createCase.caseTypeCode is the label XUI shows, Civil)
   private caseTypeUrl(uid: string) {
-    return `${ccdDataStoreApiBaseUrl}/caseworkers/${uid}/jurisdictions/${createCase.jurisdictionCode}/case-types/CIVIL`;
+    return `${ccdDataStoreApiBaseUrl}/caseworkers/${uid}/jurisdictions/${createCase.jurisdictionCode}/case-types/${this.caseType}`;
   }
 
   private getHeaders(accessToken: string, s2sToken: string) {

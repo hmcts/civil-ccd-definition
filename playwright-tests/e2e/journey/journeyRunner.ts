@@ -8,6 +8,7 @@ import { CreateCasePage } from '../page-objects/pages/createCase_page.ts';
 import { PaymentPage } from '../page-objects/pages/payment_page.ts';
 import PaymentMethod from '../../enums/paymentMethod.ts';
 import caseStates from '../../enums/caseStates.ts';
+import GaCaseStates from '../../enums/gaCaseStates.ts';
 import { SessionHelper, sessionUserFor, sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
 import { requirePlaywrightTestsEnv } from '../../env.ts';
 
@@ -62,6 +63,8 @@ export class JourneyContext {
   lastStateReached: caseStates | undefined;
   // The defendants (1 and 2) whose solicitor was given the case by a notice of change, so is not assigned to it again
   defendantsGivenSolicitorByNoc = new Set<number>();
+  // The journey's general application, which is a case of its own linked to the claim, once it has been made
+  gaCaseId = '';
 
   // STOP_AT_STATE: the state at which the journey stops, and API_UNTIL: the state up to which the steps that have an
   // API version are done through the CCD API (see defineJourney)
@@ -74,6 +77,10 @@ export class JourneyContext {
 
   caseUrl(): string {
     return envUrl + '/cases/case-details/' + this.caseId;
+  }
+
+  gaCaseUrl(): string {
+    return `${envUrl}/cases/case-details/CIVIL/GENERALAPPLICATION/${this.gaCaseId}`;
   }
 
   // Sets up the helpers for a test's page
@@ -102,6 +109,13 @@ export class JourneyContext {
       }
       await new PaymentPage(page).makePayment(paymentMethod, serviceRequestReference);
     });
+  }
+
+  // Checks the general application is in the expected state. Its states are its own, so STOP_AT_STATE and API_UNTIL,
+  // which are claim states, do not look at them.
+  async assertGaCaseState(state: GaCaseStates) {
+    expect(this.gaCaseId, 'No general application has been made yet').toBeTruthy();
+    await this.testingEndpointHelper.assertCaseState(this.gaCaseId, state);
   }
 
   // Checks the claim is in the expected state, and notes when it has reached STOP_AT_STATE so the remaining tests are

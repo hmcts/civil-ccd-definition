@@ -9,6 +9,8 @@ import { TokensHelper } from './TokensHelper.ts';
 import { civilServiceUrl, ccdDataStoreApiBaseUrl, createCase, systemupdate, civilSystemUpdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
 import claimTypes from '../enums/claim-types.ts';
 import CaseStates from '../enums/caseStates.ts';
+import GaCaseStates from '../enums/gaCaseStates.ts';
+import CaseType from '../enums/caseType.ts';
 import { CaseUserRegistry } from './CaseUserRegistry.ts';
 
 
@@ -117,7 +119,7 @@ export class TestingEndPointHelper {
   // Checks the case's CCD state, read from civil-service's business process endpoint. The state is set by background
   // processing, so it is checked repeatedly until it matches or the retry timeout runs out. The environment's gateway
   // sometimes answers with an error page instead of JSON, which counts as one failed try rather than failing the step.
-  async assertCaseState(caseId: string, expectedState: CaseStates) {
+  async assertCaseState(caseId: string, expectedState: CaseStates | GaCaseStates) {
     await this.getTokens(systemupdate);
     const businessProcessUrl = `${this.testingSupportUrl}/case/${caseId}/business-process`;
     const apiRequestContext: APIRequestContext = await request.newContext();
@@ -217,6 +219,8 @@ export class TestingEndPointHelper {
     }
   }
 
+  // Waits for civil-service to record the fee as paid in paymentDetailsField, which can be a path such as
+  // generalAppPBADetails.paymentDetails. Returns false if it has not within waitSeconds.
   async waitForFeePaid(caseId: string, paymentDetailsField: string, waitSeconds: number): Promise<boolean> {
     await this.getTokens(systemupdate);
     const caseUrl = `${this.testingSupportUrl}/case/${caseId}`;
@@ -225,7 +229,7 @@ export class TestingEndPointHelper {
       await expect.poll(async () => {
         const response = await apiRequestContext.get(caseUrl, { headers: this.getHeaders() });
         const caseData = await response.json();
-        return caseData[paymentDetailsField]?.status;
+        return paymentDetailsField.split('.').reduce((value, key) => value?.[key], caseData)?.status;
       }, {
         intervals: [5000],
         timeout: waitSeconds * 1000,
@@ -264,6 +268,32 @@ export class TestingEndPointHelper {
       });
       expect(response.ok(), `Hearing fee payment callback returned ${response.status()}: ${await response.text()}`).toBeTruthy();
       console.log(`Hearing fee payment callback sent for case ${caseId}`);
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Tells civil-service a general application's fee has been paid, as the payment service would. Used where the
+  // payment service cannot reach civil-service. civil-service then runs INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT.
+  async serviceRequestUpdateGeneralApplication(applicationCaseId: string) {
+    const { generalAppPBADetails } = await this.getCaseData(applicationCaseId);
+    const amount = (Number(generalAppPBADetails?.fee?.calculatedAmountInPence ?? 0) / 100).toFixed(2);
+    await this.getTokens(systemupdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    const paidAt = new Date().toISOString();
+    try {
+      const response = await apiRequestContext.put(`${civilServiceUrl}/service-request-update`, {
+        headers: this.getHeaders(),
+        data: {
+          service_request_reference: generalAppPBADetails?.serviceRequestReference ?? '2020-1599477846963',
+          ccd_case_number: applicationCaseId,
+          service_request_amount: amount,
+          service_request_status: 'Paid',
+          payment: { amount, customer_reference: 'playwright-tests', date_created: paidAt, date_updated: paidAt, payment_reference: 'RC-1234-GENERAL-APP' },
+        },
+      });
+      expect(response.ok(), `General application fee payment callback returned ${response.status()}: ${await response.text()}`).toBeTruthy();
+      console.log(`General application fee payment callback sent for application ${applicationCaseId}`);
     } finally {
       await apiRequestContext.dispose();
     }
@@ -577,12 +607,12 @@ export class TestingEndPointHelper {
     console.log('Assignment successful. Continuing test...');
   }
 
-  // How many times an event has been saved on a case, from CCD's event history. It is read with the user's own API
-  // token, which does not depend on their XUI session, so it works after that session has ended.
-  async countCaseEvents(user, caseId: string, eventId: string): Promise<number> {
+  // How many times an event has been saved on a case (a claim unless another case type is given), from CCD's event
+  // history. It is read with the user's own API token, which does not depend on their XUI session, so it works after
+  // that session has ended.
+  async countCaseEvents(user, caseId: string, eventId: string, caseType: CaseType = CaseType.CIVIL): Promise<number> {
     await this.getTokens(user);
-    // CCD's case type ID is CIVIL (createCase.caseTypeCode is the label XUI shows, Civil)
-    const url = `${ccdDataStoreApiBaseUrl}/caseworkers/${this.nonEventTokens.uid}/jurisdictions/${createCase.jurisdictionCode}/case-types/CIVIL/cases/${caseId}/events`;
+    const url = `${ccdDataStoreApiBaseUrl}/caseworkers/${this.nonEventTokens.uid}/jurisdictions/${createCase.jurisdictionCode}/case-types/${caseType}/cases/${caseId}/events`;
     const apiRequestContext: APIRequestContext = await request.newContext();
     try {
       const response = await apiRequestContext.get(url, { headers: this.getHeaders() });
@@ -594,6 +624,31 @@ export class TestingEndPointHelper {
     } finally {
       await apiRequestContext.dispose();
     }
+  }
+
+  // The case IDs of a claim's general applications, oldest first. civil-service lists each application on its claim
+  // (generalApplications), with a link to the application's own case once it has created it.
+  async generalApplicationCaseIds(claimCaseId: string): Promise<string[]> {
+    const { generalApplications } = await this.getCaseData(claimCaseId);
+    return (generalApplications ?? [])
+      .map((application) => application.value?.caseLink?.CaseReference)
+      .filter((caseId): caseId is string => Boolean(caseId));
+  }
+
+  // Waits for civil-service to create the case of a general application just made on the claim, and returns its case
+  // ID: the one linked from the claim that is not one of knownCaseIds, the claim's applications before it was made
+  async waitForNewGeneralApplication(claimCaseId: string, knownCaseIds: string[]): Promise<string> {
+    let newCaseId: string | undefined;
+    await expect.poll(async () => {
+      newCaseId = (await this.generalApplicationCaseIds(claimCaseId)).find((caseId) => !knownCaseIds.includes(caseId));
+      return newCaseId;
+    }, {
+      intervals: apiRetries.intervals,
+      timeout: apiRetries.timeout,
+      message: `No new general application was linked to case ${claimCaseId}`,
+    }).toBeDefined();
+    console.log(`General application ${newCaseId} made on case ${claimCaseId}`);
+    return newCaseId;
   }
 
   // Removes all of the user's case roles on the given cases (civil-service wraps CCD's case assignment API)

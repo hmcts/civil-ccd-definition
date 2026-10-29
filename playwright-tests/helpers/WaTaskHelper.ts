@@ -1,5 +1,6 @@
 import { expect, Page, request } from '@playwright/test';
 import { authProviderApiBaseUrl, envUrl, workAllocation } from '../civilConfig.ts';
+import CaseType from '../enums/caseType.ts';
 
 // Some events can only be started by a user who has a work allocation (WA) task for them assigned, for example the
 // judge's Standard Direction Order (CREATE_SDO) needs the FastTrackDirections task. Without one, XUI shows
@@ -10,9 +11,43 @@ import { authProviderApiBaseUrl, envUrl, workAllocation } from '../civilConfig.t
 // the task only reaches WA task management (and so XUI) when a cron job runs, every 5 minutes. To save that wait,
 // this helper runs the same job straight away and then claims the task for the signed-in user.
 //
-// The XUI calls use the page's own session, so they are made as the user signed in to the page.
+// The XUI calls use the page's own session, so they are made as the user signed in to the page. The tasks are on a
+// claim (CIVIL) unless another case type is given, such as a general application's.
 export class WaTaskHelper {
-  constructor(public page: Page) {}
+  constructor(public page: Page, private caseType: CaseType = CaseType.CIVIL) {}
+
+  // Which of taskTypes Camunda has created for the case, waiting up to waitSeconds for one of them. For a case where
+  // work allocation's rules decide who does the work, such as a general application, which a judge or a legal adviser
+  // decides depending on the court and the application. Undefined if none of them is created.
+  static async createdTaskType(caseId: string, taskTypes: string[], waitSeconds: number = workAllocation.waitSeconds): Promise<string | undefined> {
+    const camunda = await request.newContext();
+    let created: string | undefined;
+    try {
+      await expect.poll(async () => {
+        const response = await camunda.get(`${workAllocation.camundaUrl}/task?processVariables=caseId_eq_${caseId}`);
+        try {
+          const tasks: Array<{ id: string }> = await response.json();
+          for (const task of tasks) {
+            const variables = await (await camunda.get(`${workAllocation.camundaUrl}/task/${task.id}/variables`)).json();
+            if (taskTypes.includes(variables.taskId?.value)) {
+              created = variables.taskId.value;
+            }
+          }
+        } catch {
+          // The environment's gateway sometimes answers with an error page instead of JSON, which counts as no task yet
+        }
+        return created;
+      }, { intervals: [1000], timeout: waitSeconds * 1000 }).toBeDefined();
+    } catch {
+      console.log(`WA: Camunda created none of ${taskTypes.join(', ')} for case ${caseId} within ${waitSeconds}s`);
+    } finally {
+      await camunda.dispose();
+    }
+    if (created) {
+      console.log(`WA: Camunda has created the ${created} task for case ${caseId}`);
+    }
+    return created;
+  }
 
   // Makes sure the signed-in user has the taskType task assigned, so they can start eventId on the case.
   // Does nothing where XUI does not need a task for the event (for example on AAT).
@@ -45,7 +80,7 @@ export class WaTaskHelper {
   // Asks XUI the same question it asks when an event is opened: does this event need a task?
   private async isTaskRequired(caseId: string, eventId: string): Promise<boolean> {
     const response = await this.page.request.get(
-      `${envUrl}/workallocation/case/tasks/${caseId}/event/${eventId}/caseType/CIVIL/jurisdiction/CIVIL`,
+      `${envUrl}/workallocation/case/tasks/${caseId}/event/${eventId}/caseType/${this.caseType}/jurisdiction/CIVIL`,
       { headers: await this.xsrfHeader() },
     );
     expect(response.ok(), `Checking whether ${eventId} needs a task returned ${response.status()}`).toBeTruthy();
@@ -109,7 +144,7 @@ export class WaTaskHelper {
     let task;
     await expect.poll(async () => {
       const response = await this.page.request.get(
-        `${envUrl}/workallocation/case/tasks/${caseId}/event/${eventId}/caseType/CIVIL/jurisdiction/CIVIL`,
+        `${envUrl}/workallocation/case/tasks/${caseId}/event/${eventId}/caseType/${this.caseType}/jurisdiction/CIVIL`,
         { headers: await this.xsrfHeader() },
       );
       const tasks = response.ok() ? (await response.json()).tasks ?? [] : [];
