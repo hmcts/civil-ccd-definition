@@ -3,7 +3,7 @@ import CaseType from '../../enums/caseType.ts';
 import GaCaseStates from '../../enums/gaCaseStates.ts';
 import PaymentMethod from '../../enums/paymentMethod.ts';
 import yesNo from '../../enums/yesNo.ts';
-import { CaseUserRegistry } from '../../helpers/CaseUserRegistry.ts';
+import { CaseUserKey, CaseUserRegistry } from '../../helpers/CaseUserRegistry.ts';
 import { sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
 import { WaTaskHelper } from '../../helpers/WaTaskHelper.ts';
 import { PaymentPage } from '../page-objects/pages/payment_page.ts';
@@ -44,6 +44,25 @@ export interface GaClaim {
   generalApplicationAgreed: yesNo;
   // GENERAL_APPLICATION_WITH_NOTICE: when they have not agreed, whether it is made with notice to them (default Yes)
   generalApplicationWithNotice: yesNo;
+  // GENERAL_APPLICATION_BY: whose solicitor makes it (default claimant)
+  generalApplicationBy: string;
+}
+
+// The parties who can make an application, each with their solicitor's session user and a label
+export type GaParty = 'claimant' | 'defendant1' | 'defendant2';
+const gaParties: Record<GaParty, { user: SessionUserKey; label: string; step: string }> = {
+  claimant: { user: 'claimantSolicitor', label: 'Claimant Solicitor', step: 'CLAIMANT' },
+  defendant1: { user: 'respondent1Solicitor', label: 'Defendant 1 Solicitor', step: 'DEFENDANT1' },
+  defendant2: { user: 'respondent2Solicitor', label: 'Defendant 2 Solicitor', step: 'DEFENDANT2' },
+};
+
+// The other parties' solicitors, who respond to an application made with notice: one response from each organisation
+// (civil-service's RespondentsResponsesUtil), so a solicitor acting for both defendants (1v2SS) responds once, for
+// Defendant 1. Two claimants share one solicitor.
+function respondingParties(c: GaClaim): GaParty[] {
+  const defendants = c.claimShape.defendants;
+  const ownSolicitorDefendants: GaParty[] = defendants[1]?.solicitor === 'own' ? ['defendant1', 'defendant2'] : ['defendant1'];
+  return (['claimant', ...ownSolicitorDefendants] as GaParty[]).filter((party) => party !== c.generalApplicationBy);
 }
 
 // Whether the other side's solicitor responds: to an application made with notice, which civil-service takes every
@@ -89,15 +108,22 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
   if (types.includes('SETTLE_BY_CONSENT') && c.generalApplicationAgreed !== yesNo.YES) {
     problems.push('SETTLE_BY_CONSENT must be agreed with the other side (set GENERAL_APPLICATION_AGREED=Yes)');
   }
-  if (c.claimShape.defendants[0].solicitor === 'none') {
-    problems.push('Defendant 1 needs a solicitor, who responds to the application: applications involving a litigant in person are not covered yet');
+  if (!(c.generalApplicationBy in gaParties)) {
+    problems.push(`GENERAL_APPLICATION_BY=${c.generalApplicationBy} is not one of ${Object.keys(gaParties).join(', ')}`);
+  }
+  if (c.generalApplicationBy === 'defendant2' && c.claimShape.defendants[1]?.solicitor !== 'own') {
+    problems.push('GENERAL_APPLICATION_BY=defendant2 needs Defendant 2 to have their own solicitor (1v2DS)');
+  }
+  if (c.claimShape.defendants.some((defendant) => defendant.solicitor === 'none')) {
+    problems.push('every defendant needs a solicitor: applications involving a litigant in person are not covered yet');
   }
   return problems.length ? `Invalid GENERAL_APPLICATION value: ${c.generalApplicationSetting}. ${problems.join('; ')}` : undefined;
 }
 
 // Adds a general application to a journey's steps, after the GENERAL_APPLICATION_AFTER step, in group
 // GENERAL_APPLICATION: the claimant's solicitor makes it (agreed by the other side or not, and with notice or not) and
-// pays its fee, Defendant 1's solicitor responds to one made with notice (confirming they agreed, or not agreeing), and a legal
+// pays its fee (or a defendant's solicitor does, GENERAL_APPLICATION_BY), the other parties' solicitors respond to one
+// made with notice (confirming they agreed, or not agreeing), and a legal
 // adviser or judge (whoever work allocation gives the task to) approves the order. The
 // application is a case of its own, so the claim's state is not changed by it. Without GENERAL_APPLICATION the journey
 // still lists one GENERAL_APPLICATION step, skipped with the reason, as it does for other switched-off steps.
@@ -127,9 +153,13 @@ export function withGeneralApplication(c: GaClaim, ctx: JourneyContext, steps: J
 
 function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[], anchor: JourneyStep): JourneyStep[] {
   const label = types.map((type) => type.toLowerCase().replace(/_/g, ' ')).join(', ');
+  const applicant = gaParties[c.generalApplicationBy as GaParty];
+  const respondents = respondingParties(c);
   // Once its order is approved, the claimant's application to strike out is dealt with offline (civil-service's
   // StateGeneratorService); any other is left with the order made
-  const stateAfterDecision = types.includes('STRIKE_OUT') ? GaCaseStates.PROCEEDS_IN_HERITAGE : GaCaseStates.ORDER_MADE;
+  const stateAfterDecision = types.includes('STRIKE_OUT') && c.generalApplicationBy === 'claimant'
+    ? GaCaseStates.PROCEEDS_IN_HERITAGE
+    : GaCaseStates.ORDER_MADE;
   // The claim stays where the step the application follows left it
   const claimStateUnchanged = async () => {
     if (ctx.lastStateReached !== undefined) {
@@ -141,8 +171,8 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     {
       name: 'GA_MAKE_APPLICATION',
       group: 'GENERAL_APPLICATION',
-      title: `Claimant Solicitor makes a general application (${label}).`,
-      user: 'claimantSolicitor',
+      title: `${applicant.label} makes a general application (${label}).`,
+      user: applicant.user,
       skipIf: anchor.skipIf,
       run: async ({ page, storageState, user }) => {
         const answers = { types, respondentAgreed: c.generalApplicationAgreed, withNotice: c.generalApplicationWithNotice };
@@ -157,8 +187,9 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
           ctx.gaCaseId = await ctx.testingEndpointHelper.waitForNewGeneralApplication(ctx.caseId, knownApplications);
         }
         // civil-service gives the parties' solicitors the application as it makes it, and they are unassigned at teardown
-        CaseUserRegistry.record(ctx.gaCaseId, 'claimantSolicitor');
-        CaseUserRegistry.record(ctx.gaCaseId, 'respondent1Solicitor');
+        for (const party of [c.generalApplicationBy as GaParty, ...respondents]) {
+          CaseUserRegistry.record(ctx.gaCaseId, gaParties[party].user as CaseUserKey);
+        }
         await ctx.assertGaCaseState(GaCaseStates.AWAITING_APPLICATION_PAYMENT);
         await claimStateUnchanged();
       },
@@ -166,8 +197,8 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     {
       name: 'GA_PAY_FEE',
       group: 'GENERAL_APPLICATION',
-      title: 'Claimant Solicitor pays the general application fee.',
-      user: 'claimantSolicitor',
+      title: `${applicant.label} pays the general application fee.`,
+      user: applicant.user,
       skipIf: anchor.skipIf,
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi() && c.paymentMethod === PaymentMethod.PBA) {
@@ -195,11 +226,12 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         await claimStateUnchanged();
       },
     },
-    {
-      name: 'GA_RESPOND',
+    // Each respondent's solicitor responds, and the application waits until the last of them has
+    ...respondents.map((party, index): JourneyStep => ({
+      name: `GA_RESPOND_${gaParties[party].step}`,
       group: 'GENERAL_APPLICATION',
-      title: 'Defendant 1 Solicitor responds to the general application.',
-      user: 'respondent1Solicitor',
+      title: `${gaParties[party].label} responds to the general application.`,
+      user: gaParties[party].user,
       skipIf: [
         ...(anchor.skipIf ?? []),
         [!respondentResponds(c), 'Skipping as the application was made without notice, so the other side does not respond'],
@@ -214,10 +246,12 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
           }, ctx.gaCaseUrl());
         }
         await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.gaCaseId);
-        await ctx.assertGaCaseState(GaCaseStates.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION);
+        await ctx.assertGaCaseState(index === respondents.length - 1
+          ? GaCaseStates.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION
+          : GaCaseStates.AWAITING_RESPONDENT_RESPONSE);
         await claimStateUnchanged();
       },
-    },
+    })),
   ];
 
   // Who decides depends on where the application is and its types, so there is a step for each, and the one whose task

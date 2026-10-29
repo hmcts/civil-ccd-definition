@@ -208,6 +208,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // with notice to them (GENERAL_APPLICATION_WITH_NOTICE, default Yes)
     generalApplicationAgreed: yes(scenarioEnv.GENERAL_APPLICATION_AGREED),
     generalApplicationWithNotice: scenarioEnv.GENERAL_APPLICATION_WITH_NOTICE === 'No' ? yesNo.NO : yesNo.YES,
+    // Whose solicitor makes it (GENERAL_APPLICATION_BY: claimant, defendant1 or defendant2, default claimant); the other
+    // parties' solicitors respond
+    generalApplicationBy: scenarioEnv.GENERAL_APPLICATION_BY ?? 'claimant',
     // Each defendant's response (RESPONDENT1_RESPONSE, RESPONDENT2_RESPONSE, default FULL_DEFENCE), and when a defendant
     // who admits all or part of the claim will pay (ADMISSION_PAYMENT_ROUTE, default IMMEDIATELY)
     respondent1Response,
