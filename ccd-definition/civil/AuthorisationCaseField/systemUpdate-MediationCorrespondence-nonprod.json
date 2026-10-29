@@ -58,17 +58,5 @@
     "CaseFieldID": "mediationCorrespondenceSummary",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "mediationCorrespondence",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "mediationCorrespondence",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
   }
 ]

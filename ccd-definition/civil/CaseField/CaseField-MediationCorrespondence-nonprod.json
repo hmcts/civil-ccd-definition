@@ -41,15 +41,5 @@
     "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "mediationCorrespondence",
-    "Label": "Mediation correspondence",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "MediationCorrespondence",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Comment": "Mediation correspondence records displayed in the Notes tab"
   }
 ]
