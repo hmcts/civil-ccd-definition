@@ -43,7 +43,7 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Max": 1000,
-    "RegularExpression": "^[A-Za-z0-9 \\t\\r\\n.,!?'\"()&:;@#\\/$%+=£‘’“”–—…-]*$"
+    "RegularExpression": "^[A-Za-z0-9 \\t\\r\\n.,!?'\"()&:;@#/$%+=£€‘’“”–—…_~*^|[\\]{}\\\\-]*$"
   },
   {
     "ID": "BreathingSpaceInfo",
