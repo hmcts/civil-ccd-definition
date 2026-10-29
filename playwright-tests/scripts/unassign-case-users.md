@@ -47,7 +47,7 @@ Add `--dry-run` to only list the cases each user is assigned to. `--all` only wo
 | Option | What it does |
 |---|---|
 | `<case reference>` | The 16 digit case reference. Required, unless `--all` is given. |
-| `--all` | Every case on the preview instead of one, of every case type, so claims (CIVIL) and their general applications (GENERALAPPLICATION) alike: each test user's cases are read from the preview's role assignment service (the output gives how many of each type), unassigned in batches (UNASSIGN_BATCH_SIZE, default 50) and checked, and their teardown records removed. Preview only. |
+| `--all` | Every case on the preview instead of one, of every case type, so claims (CIVIL) and their general applications (GENERALAPPLICATION) alike: each test user's cases are read from the preview's role assignment service (the output gives how many of each type), unassigned in batches (UNASSIGN_BATCH_SIZE, default 50) and checked, any cases a batch left assigned tried again one at a time, and their teardown records removed. Preview only. |
 | `--dry-run` | Only show who is assigned (with `--all`, to which cases). Nothing is unassigned and no records are removed. |
 
 | Setting | What it does |

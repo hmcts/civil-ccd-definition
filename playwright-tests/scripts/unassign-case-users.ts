@@ -86,7 +86,20 @@ async function unassignAllOnPreview(dryRun: boolean) {
         failures.push(error instanceof Error ? error.message : String(error));
       }
     }
-    const remaining = [...new Set((await caseRolesOfUser(userKey)).caseRoles.map((caseRole) => caseRole.attributes.caseId))];
+    let remaining = [...new Set((await caseRolesOfUser(userKey)).caseRoles.map((caseRole) => caseRole.attributes.caseId))];
+    // civil-service returns 200 even when it leaves some of a batch's cases assigned (seen on general applications), so
+    // the cases left are tried again one at a time
+    if (remaining.length > 0) {
+      console.log(`${user.name} is still assigned to ${remaining.length} case(s) after the batches, trying them one at a time`);
+      for (const caseId of remaining) {
+        try {
+          await testingEndPointHelper.unassignUserFromCases(user, [caseId]);
+        } catch (error) {
+          failures.push(error instanceof Error ? error.message : String(error));
+        }
+      }
+      remaining = [...new Set((await caseRolesOfUser(userKey)).caseRoles.map((caseRole) => caseRole.attributes.caseId))];
+    }
     if (remaining.length > 0) {
       failures.push(`${user.name} is still assigned to ${remaining.length} case(s): ${remaining.join(', ')}`);
     }
