@@ -16,6 +16,7 @@ import DiscontinueClaim from '../../../enums/discontinueClaim.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
+import { nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
 
 export type SpecifiedConfig = ReturnType<typeof specifiedConfig>;
 
@@ -141,6 +142,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
   const claimantOutcome = claimantResponseOutcome(claimType, track, responses[0], env.ADMISSION_PAYMENT_ROUTE as AdmissionPaymentRoute, claimantResponse);
 
   const config = {
+    // The scenario's env vars, from which the journey works out its settings for the claim type it carries on as once
+    // a notice of change has given each litigant in person a solicitor (see specifiedSteps)
+    scenarioEnv,
     claimType,
     caseType: 'SPECIFIED',
     claimantType,
@@ -187,6 +191,13 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
+    // The parties a solicitor takes over with a notice of change (NOTICE_OF_CHANGE: a list such as
+    // DEFENDANT_1,CLAIMANT_1), after the NOTICE_OF_CHANGE_AFTER step. A specified claim is not notified, so the earliest
+    // is once the defendants' solicitors are assigned (ASSIGN_DEFENDANT_SOLICITORS, the default). See
+    // noticeOfChangeSpecs.ts.
+    noticeOfChangeSetting: scenarioEnv.NOTICE_OF_CHANGE,
+    noticeOfChangeAfter: scenarioEnv.NOTICE_OF_CHANGE_AFTER ?? 'ASSIGN_DEFENDANT_SOLICITORS',
+    noticeOfChangeFirstStep: 'ASSIGN_DEFENDANT_SOLICITORS',
     // Each defendant's response (RESPONDENT1_RESPONSE, RESPONDENT2_RESPONSE, default FULL_DEFENCE), and when a defendant
     // who admits all or part of the claim will pay (ADMISSION_PAYMENT_ROUTE, default IMMEDIATELY)
     respondent1Response,
@@ -243,6 +254,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
       expect(caseFlagsError, caseFlagsError).toBeUndefined();
       const mciError = mciProblem(config);
       expect(mciError, mciError).toBeUndefined();
+
+      const nocError = nocProblem(config);
+      expect(nocError, nocError).toBeUndefined();
     },
   };
   return config;

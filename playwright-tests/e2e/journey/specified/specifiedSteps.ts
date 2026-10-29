@@ -66,11 +66,18 @@ import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { workingDayAfter } from '../../../helpers/WorkingDayHelper.ts';
 import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
-import { SpecifiedConfig } from './specifiedConfig.ts';
+import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
+import { specifiedConfig, SpecifiedConfig } from './specifiedConfig.ts';
 
 // The steps of the specified journey, in the order they run. Each step that does not apply to the journey's claim
-// (see skipIf) is skipped.
+// (see skipIf) is skipped. The notices of change (NOTICE_OF_CHANGE) are added after the NOTICE_OF_CHANGE_AFTER step
+// (see noticeOfChangeSteps.ts).
 export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
+  return withNoticeOfChange(c, ctx, journeySteps(c, ctx), (claimType) =>
+    journeySteps(specifiedConfig({ ...c.scenarioEnv, CLAIM_TYPE: claimType, NOTICE_OF_CHANGE: undefined }), ctx));
+}
+
+function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
   // Once the claim fee has been paid (through the UI or the API), the payment service tells civil-service, which then
   // issues the claim (CREATE_CLAIM_SPEC_AFTER_PAYMENT). Where the payment service cannot reach civil-service the test
   // tells it instead. Telling it both ways would make civil-service try to issue the claim twice, so the test only
@@ -290,9 +297,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       title: 'Claimant Solicitor requests default judgment.',
       user: 'claimantSolicitor',
       skipIf: [noDefaultJudgment],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiDefaultJudgmentSpec().submit(ctx.caseId);
+          await new ApiDefaultJudgmentSpec().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new DefaultJudgmentSpec(page).submit(c.claimShape.defendants.length === 2);
@@ -306,14 +313,14 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
 
     // A specified claim has no Notify claim or Notify claim details: once it is issued it waits for the defendants'
     // responses. The defendants' solicitors are given access to it here, as the claimant's solicitor, so that their own
-    // steps can open the case.
+    // steps can open the case. Where no defendant has a solicitor no one is assigned, but the step still runs, as the
+    // notices of change follow it by default (NOTICE_OF_CHANGE) and are skipped when the step they follow is.
     {
       name: 'ASSIGN_DEFENDANT_SOLICITORS',
       title: 'Defendant solicitors are assigned to the claim.',
       user: 'claimantSolicitor',
-      skipIf: [[!c.claimShape.defendants.some((defendant) => defendant.solicitor !== 'none'), 'Skipping as no defendant has a solicitor']],
       run: async () => {
-        await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType);
+        await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType, [...ctx.defendantsGivenSolicitorByNoc]);
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       },
     },
@@ -339,9 +346,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         noLitigantInPerson,
         [!c.claimantResponds, 'Skipping as the claim went offline once the defendants responded'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiRespondToDefenceSpec().submit(c, ctx.caseId);
+          await new ApiRespondToDefenceSpec().submit(c, ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new RespondToDefenceSpec(page).submit(c.claimType, c.claimantResponse);
@@ -684,10 +691,10 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       skipIf: [
         [c.settleClaim !== SettleClaimReason.MARK_PAID_IN_FULL, 'Skipping as the claimant\'s solicitor does not settle the claim (set SETTLE_CLAIM=MARK_PAID_IN_FULL to run it)'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be settled in ${ctx.lastStateReached}`);
         if (ctx.useApi()) {
-          await new ApiSettleClaimMarkPaidFull().submit(ctx.caseId);
+          await new ApiSettleClaimMarkPaidFull().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new SettleClaimMarkPaidFull(page).submit(c.claimShape.claimants.length === 2);
@@ -742,11 +749,11 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       skipIf: [
         [c.discontinueClaim === undefined, 'Discontinuing the claim is switched off (set DISCONTINUE_CLAIM=NO_PERMISSION_NEEDED or PERMISSION_GRANTED to run it)'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         const stateBefore = ctx.lastStateReached;
         test.skip(!discontinuableStates.includes(stateBefore), `Skipping as the claim cannot be discontinued in ${stateBefore}`);
         if (ctx.useApi()) {
-          await new ApiDiscontinueClaim().submit(ctx.caseId, c.discontinueClaim);
+          await new ApiDiscontinueClaim().submit(ctx.caseId, c.discontinueClaim, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new DiscontinueClaim(page).submit(c.discontinueClaim);
@@ -875,9 +882,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
       title: `Defendant ${solicitor.defendantNumber} Solicitor responds to claim.`,
       user: solicitor.user,
       skipIf: solicitor.skipIf,
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiRespondToClaimSpec().submit(c, ctx.caseId, solicitor.defendantNumber);
+          await new ApiRespondToClaimSpec().submit(c, ctx.caseId, solicitor.defendantNumber, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new RespondToClaimSpec(page).submit(solicitor.defendantNumber, {
@@ -917,12 +924,12 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         solicitor.noSolicitor,
         [c.informAgreedExtension !== yesNo.YES, 'Informing of an agreed extension is switched off (set INFORM_AGREED_EXTENSION=Yes to run it)'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         const deadlineBefore = await ctx.testingEndpointHelper.getResponseDeadline(ctx.caseId, solicitor.defendantNumber);
         // civil-service accepts a working day after the current deadline and no more than 28 days after it
         const extensionDate = await workingDayAfter(deadlineBefore, 14);
         if (ctx.useApi()) {
-          await new ApiInformAgreedExtensionDateSpec().submit(ctx.caseId, solicitor.defendantNumber, extensionDate);
+          await new ApiInformAgreedExtensionDateSpec().submit(ctx.caseId, solicitor.defendantNumber, extensionDate, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new InformAgreedExtensionDateSpec(page).submit(solicitor.defendantNumber, extensionDate);
@@ -960,9 +967,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         ...noCaseProgression,
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiUploadEvidence().submit(ctx.caseId, solicitor.user, c.track);
+          await new ApiUploadEvidence().submit(ctx.caseId, user, c.track);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new UploadEvidence(page).submit(c.track);
@@ -1074,10 +1081,10 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
           'Skipping as a solicitor cannot manage contact information while the claim waits in AWAITING_APPLICANT_INTENTION',
         ],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         const change = mciChange(index, spec);
         if (ctx.useApi()) {
-          await new ApiManageContactInformation().submit(ctx.caseId, spec, change);
+          await new ApiManageContactInformation().submit(ctx.caseId, spec, change, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new ManageContactInformation(page).submit(spec, change);
@@ -1109,9 +1116,9 @@ export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): Journey
         [c.track !== claimTrack.FAST, 'Skipping as trial arrangements are only confirmed on the fast track'],
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiConfirmTrialArrangements().submit(ctx.caseId, solicitor.user);
+          await new ApiConfirmTrialArrangements().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new ConfirmTrialArrangements(page).submit();

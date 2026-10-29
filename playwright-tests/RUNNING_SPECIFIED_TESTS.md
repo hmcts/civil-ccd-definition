@@ -24,6 +24,7 @@ Steps, in the order they run:
 - ADD_CASE_NOTE (optional): the hearing centre admin adds a case note with "Add a case note" straight after the claim is issued (ADD_CASE_NOTE=Yes). The test checks it shows on the Notes tab (through the API, that it is in the case's saved notes). The claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT. It has an API version.
 - MOVE_RESPONSE_DEADLINE, DEFAULT_JUDGMENT (optional): instead of the defendants responding, once the claim is issued (and any case note added) the response deadlines are moved to yesterday through civil-service's testing support, and the claimant's solicitor requests default judgment against every defendant with "Request Default Judgment": nothing paid, no fixed costs, paid immediately (DEFAULT_JUDGMENT=Yes). civil-service records the judgment through Judgments Online, which moves the claim to All_FINAL_ORDERS_ISSUED, or to JUDGMENT_REQUESTED where its judgment buffer is switched on. The defendants' steps and everything after them are skipped, apart from settling the claim. It has an API version.
 - ASSIGN_DEFENDANT_SOLICITORS: the defendants' solicitors are given access to the claim. A specified claim has no Notify claim or Notify claim details steps.
+- NOTICE_OF_CHANGE (group: _CLAIMANT_1, _DEFENDANT_1, _DEFENDANT_2, optional): a solicitor takes over each party in NOTICE_OF_CHANGE from the "Notice of change" link on the case list (see section 10). By default this comes here, or after the step NOTICE_OF_CHANGE_AFTER names. It has an API version.
 - INFORM_AGREED_EXTENSION_DEFENDANT1, INFORM_AGREED_EXTENSION_DEFENDANT2 (optional): each defendant's solicitor tells the court about an agreed extension, which moves their response deadline back.
 - RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2: each defendant's solicitor responds with a full defence, a full or part admission, or a counterclaim.
 - RESPOND_TO_DEFENCE: the claimant's solicitor responds to the defence or the admission. It runs whenever the claim is still online once every defendant has responded (AWAITING_APPLICANT_INTENTION).
@@ -41,7 +42,7 @@ Steps, in the order they run:
 - CONFIRM_TRIAL_ARRANGEMENTS (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR): each solicitor confirms with "Confirm trial arrangements" that the case is ready for trial, with no change to the hearing requirements (the second defendant's solicitor only for 1v2DS). A solicitor acting for two parties confirms for both. Like the trial ready check it is fast track only (XUI does not offer it on the intermediate or multi tracks), and it has to be done more than 3 weeks before the hearing. The claim stays in PREPARE_FOR_HEARING_CONDUCT_HEARING. It has an API version.
 - CREATE_TRIAL_BUNDLE: the trial bundle is created. civil-service's scheduler does this about 3 weeks before the hearing, for every track except intermediate and multi (small claims have bundles too), so the test asks civil-service to do it now, waits for the bundle to be stitched into one document and checks the claimant's solicitor sees it on the Bundles tab. The claim stays in PREPARE_FOR_HEARING_CONDUCT_HEARING.
 - MOVE_TO_DECISION_OUTCOME: once the hearing date has passed, civil-service's scheduler moves the claim to DECISION_OUTCOME to wait for the judge's decision, on every track. The hearing is weeks away, so the test runs the event itself.
-- MAKE_FINAL_ORDER: the judge makes the final order with "Make an order" (FINAL_ORDER, see section 12). On the small claims and fast tracks the judge writes a free form or an assisted order on the page. On the intermediate and multi tracks the judge keeps the claim on its track, picks a template (for the after-hearing template, giving today as the hearing date), and uploads the completed order (playwright-tests/documents/TEST_ORDER.docx). The test checks the order was added to the case and its notifications sent. The claim stays in DECISION_OUTCOME. It has an API version.
+- MAKE_FINAL_ORDER: the judge makes the final order with "Make an order" (FINAL_ORDER, see section 13). On the small claims and fast tracks the judge writes a free form or an assisted order on the page. On the intermediate and multi tracks the judge keeps the claim on its track, picks a template (for the after-hearing template, giving today as the hearing date), and uploads the completed order (playwright-tests/documents/TEST_ORDER.docx). The test checks the order was added to the case and its notifications sent. The claim stays in DECISION_OUTCOME. It has an API version.
 - CONFIRM_ORDER_REVIEW: the hearing centre admin reviews the order with "Confirm order review": no date a party must do something by, a final order, and nothing left to do. This closes the claim on any track, moving it to All_FINAL_ORDERS_ISSUED. It has an API version.
 - SETTLE_CLAIM_MARK_PAID_FULL (optional): once the rest of the journey has run, or where STOP_AT_STATE or STOP_AFTER_TEST stops it, the claimant's solicitor settles the claim with "Settle this claim", marking it paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL). civil-service stays the case (CASE_STAYED) and tells the defendants. With two claimants it is for both. It has an API version.
 - SETTLE_CLAIM (optional): once the rest of the journey has run, or where it is stopped, the hearing centre admin records with court staff's own "Settle this claim" that the claim settled following a judge's order (SETTLE_CLAIM=JUDGE_ORDER) or an approved consent order (CONSENT_ORDER), which moves it to CASE_SETTLED. Court staff can also settle a stayed case. It has an API version.
@@ -228,7 +229,30 @@ ENV=aat MANAGE_CONTACT_INFORMATION=representative STOP_AFTER_TEST=MANAGE_CONTACT
 ENV=aat CLAIM_TYPE=1v2DS DEFENDANT_TYPE=COMPANY API_UNTIL=JUDICIAL_REFERRAL MANAGE_CONTACT_INFORMATION='admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1_ORGANISATION_INDIVIDUALS,respondent2Solicitor:DEFENDANT_2' STOP_AFTER_TEST=MANAGE_CONTACT_INFORMATION npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
-## 10. Paying fees by PBA or card
+## 10. Notice of change
+
+A solicitor takes over a party from the "Notice of change" link on the case list, as in the unspecified journey (see section 7 of RUNNING_UNSPECIFIED_TESTS.md for the pages, the checks and the API version). NOTICE_OF_CHANGE lists the parties (CLAIMANT_1, DEFENDANT_1, DEFENDANT_2):
+
+- A defendant who is a LIP gets the solicitor the claim would have given them: Defendant 1 gets the Respondent1 Solicitor (Organisation 2) and Defendant 2 the Respondent2 Solicitor (Organisation 3). The journey then carries on as the represented claim type, so the solicitor responds through XUI instead of the defendant responding through the citizen service: a 1v1LIP claim carries on as 1v1.
+- A represented party moves to a solicitor of another organisation: the claimant to the New Claimant Solicitor (organisation 0FA7S8S), a defendant to the New Defendant Solicitor (organisation N5AFUXG). That party's later steps run as the new solicitor, and the test title says so.
+
+A specified claim is not notified, so the earliest the notices of change can come is once the defendants' solicitors are assigned (ASSIGN_DEFENDANT_SOLICITORS). That is where they go by default, and the only place a LIP can be given a solicitor, so the solicitor can respond. NOTICE_OF_CHANGE_AFTER moves them later, for example to RESPOND_TO_DEFENCE.
+
+A LIP defendant gets a solicitor once the claim is issued, and the solicitor responds:
+
+```bash
+ENV=aat CLAIM_TYPE=1v1LIP NOTICE_OF_CHANGE=DEFENDANT_1 STOP_AFTER_TEST=RESPOND_TO_DEFENCE npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+Both parties change solicitor once the claimant has responded:
+
+```bash
+ENV=aat NOTICE_OF_CHANGE=CLAIMANT_1,DEFENDANT_1 NOTICE_OF_CHANGE_AFTER=RESPOND_TO_DEFENCE npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+The same settings fail the run before the first test as in the unspecified journey, with ASSIGN_DEFENDANT_SOLICITORS in place of NOTIFY_CLAIM_DETAILS.
+
+## 11. Paying fees by PBA or card
 
 PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hearing fee. PBA (the default) pays from their PBA account. CARD pays on GOV.UK Pay's pages with a test card, always in the UI, even when the claim is created through the API. Use CARD when PBA payments fail on the environment, for example with "Unable to retrieve account information".
 
@@ -236,7 +260,7 @@ PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hea
 ENV=aat PAYMENT_METHOD=CARD API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
-## 11. Named scenarios
+## 12. Named scenarios
 
 Run a named scenario from playwright-tests/scenarios/specifiedScenarios.ts, or use a test:SPEC_* script in package.json:
 
@@ -250,7 +274,13 @@ The default judgment scenarios are SPEC_1v1_DEFAULT_JUDGMENT and SPEC_1v2DS_DEFA
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v1_DEFAULT_JUDGMENT
 ```
 
-## 12. Claim parameters
+The notice of change scenarios are SPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE, where a LIP defendant gets a solicitor (yarn test:SPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE), and SPEC_1v1_FAST_NOTICE_OF_CHANGE, where both parties change solicitor after the claimant's response (yarn test:SPEC_1v1_FAST_NOTICE_OF_CHANGE):
+
+```bash
+ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v1_FAST_NOTICE_OF_CHANGE
+```
+
+## 13. Claim parameters
 
 Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No. DEFAULT_JUDGMENT is the exception: any value other than Yes or No stops the run.
 
@@ -270,6 +300,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `ADD_CASE_NOTE` | Yes, No | No | Optional step: the hearing centre admin adds a case note after the claim is issued. |
 | `CASE_FLAGS` | representative, or a list of holder:code[:detail] | None | Optional steps: add flags once the claimant has responded, then make the first inactive (section 8). Holders: CASE, CLAIMANT_1, CLAIMANT_2, DEFENDANT_1, DEFENDANT_2. The detail is the language for an interpreter flag or the description for an OT0001 flag. |
 | `MANAGE_CONTACT_INFORMATION` | representative, or a list of user:party | None | Optional steps: Manage Contact Information once the claimant has responded, one run per entry, each checked against the saved case data (section 9). Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor. Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS; the admin can also add _WITNESSES or _EXPERTS. Has an API version. |
+| `NOTICE_OF_CHANGE` | A list of CLAIMANT_1, DEFENDANT_1, DEFENDANT_2 | None | Optional steps: a solicitor takes over each party with a notice of change (section 10). A LIP defendant gets the solicitor the represented claim type would have, and the journey carries on as that claim type. A represented party moves to a solicitor of another organisation, who runs that party's later steps. Has an API version. |
+| `NOTICE_OF_CHANGE_AFTER` | A step name, from ASSIGN_DEFENDANT_SOLICITORS on | ASSIGN_DEFENDANT_SOLICITORS | The step the notices of change follow, for example RESPOND_TO_DEFENCE. A LIP can only be given a solicitor after ASSIGN_DEFENDANT_SOLICITORS. |
 | `STAY_CASE` | Yes, No | No | Optional steps: stay the case once it reaches JUDICIAL_REFERRAL, ask for an update and lift the stay. |
 | `MEDIATION_SUCCESSFUL` | Yes, No | No | Optional step: mediation settles a small claim, which stays the case (CASE_STAYED) and ends the journey, instead of mediation being unsuccessful. |
 | `SETTLE_CLAIM` | MARK_PAID_IN_FULL, JUDGE_ORDER, CONSENT_ORDER | None | Optional step, once the rest of the journey has run or where it is stopped: the claimant's solicitor marks the claim paid in full with "Settle this claim", which stays the case (CASE_STAYED), or the hearing centre admin records it settled after a judge's order or a consent order (CASE_SETTLED). |
@@ -287,6 +319,6 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `CLAIMANT_SUGGESTED_PAYMENT` | IMMEDIATELY, SET_DATE, REPAYMENT_PLAN | IMMEDIATELY | How the claimant suggests the defendant pays when they reject the date or plan. |
 | `FINAL_ORDER` | Small and fast: FREE_FORM_ORDER, ASSISTED_ORDER. Intermediate: BLANK_TEMPLATE_AFTER_HEARING, BLANK_TEMPLATE_BEFORE_HEARING, FIX_A_DATE_FOR_CMC. Multi: those three and FIX_A_DATE_FOR_CCMC | First order for the track | FREE_FORM_ORDER on small and fast, BLANK_TEMPLATE_AFTER_HEARING on intermediate and multi. Any other value stops the run. |
 
-## 13. Run settings
+## 14. Run settings
 
-ENV, PREVIEW_SERVICE, PR_NUMBER, API_UNTIL, STOP_AT_STATE, STOP_AFTER_TEST, KEEP_CASE_ASSIGNMENTS, SCENARIOS, WORKERS and PREFLIGHT work as described in section 11 of RUNNING_UNSPECIFIED_TESTS.md.
+ENV, PREVIEW_SERVICE, PR_NUMBER, API_UNTIL, STOP_AT_STATE, STOP_AFTER_TEST, KEEP_CASE_ASSIGNMENTS, SCENARIOS, WORKERS, PREFLIGHT and AAC_API_URL work as described in section 11 of RUNNING_UNSPECIFIED_TESTS.md.

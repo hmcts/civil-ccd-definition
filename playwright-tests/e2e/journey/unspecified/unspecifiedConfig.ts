@@ -18,7 +18,7 @@ import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocument
 import caseStates from '../../../enums/caseStates.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
-import { defaultNocAfterStep, nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
+import { nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
@@ -247,7 +247,8 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     noticeOfChangeSetting: scenarioEnv.NOTICE_OF_CHANGE,
     // The step the notices of change are given after (NOTICE_OF_CHANGE_AFTER, default NOTIFY_CLAIM_DETAILS), such as
     // RESPOND_TO_DEFENCE to change solicitors once the claim reaches JUDICIAL_REFERRAL
-    noticeOfChangeAfter: scenarioEnv.NOTICE_OF_CHANGE_AFTER ?? defaultNocAfterStep,
+    noticeOfChangeAfter: scenarioEnv.NOTICE_OF_CHANGE_AFTER ?? 'NOTIFY_CLAIM_DETAILS',
+    noticeOfChangeFirstStep: 'NOTIFY_CLAIM_DETAILS',
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
     claimOfflineAfterNotifyClaim,

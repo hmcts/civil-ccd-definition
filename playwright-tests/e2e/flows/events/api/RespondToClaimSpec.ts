@@ -1,5 +1,5 @@
-import { respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../../../../civilConfig.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
+import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.ts';
 import { TestingEndPointHelper } from '../../../../helpers/TestingEndPointHelper.ts';
 import { SpecifiedConfig } from '../../../journey/specified/specifiedConfig.ts';
 import { buildDefendantResponseSpecPayload } from './payloads/defendantResponseSpecPayload.ts';
@@ -10,8 +10,8 @@ import { buildDefendantResponseSpecPayload } from './payloads/defendantResponseS
 export class RespondToClaimSpec {
   private ccdApiHelper = new CcdApiHelper();
 
-  async submit(c: SpecifiedConfig, caseId: string, defendantNumber: 1 | 2) {
-    const solicitor = defendantNumber === 1 ? respondent1SolicitorCredentials : respondent2SolicitorCredentials;
+  async submit(c: SpecifiedConfig, caseId: string, defendantNumber: 1 | 2, user: SessionUserKey = defendantNumber === 1 ? 'respondent1Solicitor' : 'respondent2Solicitor') {
+    const solicitor = sessionUsers[user].credentials;
     // The timeline and the draft directions are uploaded first, as the UI uploads them on their pages
     const testingEndPointHelper = new TestingEndPointHelper();
     const documents = {

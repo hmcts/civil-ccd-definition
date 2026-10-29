@@ -29,15 +29,16 @@ export const nocPartyLabel: Record<NocParty, string> = {
   DEFENDANT_2: 'Defendant 2',
 };
 
-// The step NOTICE_OF_CHANGE runs after when NOTICE_OF_CHANGE_AFTER is not set
-export const defaultNocAfterStep = 'NOTIFY_CLAIM_DETAILS';
-
 // The parts of a journey's claim that decide who can be given a notice of change
 export interface NocClaim {
   claimType: claimTypes;
   claimShape: ClaimShape;
   noticeOfChangeSetting?: string;
   noticeOfChangeAfter: string;
+  // The first step the notices of change can follow, which is also where they go when NOTICE_OF_CHANGE_AFTER is not
+  // set: once the claim has been served on the defendants (NOTIFY_CLAIM_DETAILS in an unspecified claim; once the
+  // defendants' solicitors are assigned, ASSIGN_DEFENDANT_SOLICITORS, in a specified one)
+  noticeOfChangeFirstStep: string;
 }
 
 // One notice of change: the party, whether they are a litigant in person, and the solicitor who takes them over
@@ -128,8 +129,8 @@ export function nocProblem(c: NocClaim): string | undefined {
   if (specs.some((spec) => spec.party === 'DEFENDANT_2') && defendants.length < 2) {
     problems.push(`DEFENDANT_2: a ${c.claimType} claim has one defendant`);
   }
-  if (specs.some((spec) => spec.litigantInPerson) && c.noticeOfChangeAfter !== defaultNocAfterStep) {
-    problems.push(`a litigant in person (${specs.filter((spec) => spec.litigantInPerson).map((spec) => spec.party).join(', ')}) can only be given a solicitor after ${defaultNocAfterStep}, so the solicitor can acknowledge and respond to the claim (NOTICE_OF_CHANGE_AFTER is ${c.noticeOfChangeAfter})`);
+  if (specs.some((spec) => spec.litigantInPerson) && c.noticeOfChangeAfter !== c.noticeOfChangeFirstStep) {
+    problems.push(`a litigant in person (${specs.filter((spec) => spec.litigantInPerson).map((spec) => spec.party).join(', ')}) can only be given a solicitor after ${c.noticeOfChangeFirstStep}, so the solicitor can respond to the claim (NOTICE_OF_CHANGE_AFTER is ${c.noticeOfChangeAfter})`);
   }
   // Both defendants' new solicitor is the same one, so changing who represents only some of them would turn a claim
   // with one solicitor for both into one with a solicitor each, or the other way round

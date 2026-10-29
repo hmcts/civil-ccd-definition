@@ -20,6 +20,21 @@ const scenarios: Scenario[] = [
   // judgment against them, paid immediately
   { name: 'SPEC_1v1_DEFAULT_JUDGMENT', tags: [], env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', DEFAULT_JUDGMENT: 'Yes' } },
   { name: 'SPEC_1v2DS_DEFAULT_JUDGMENT', tags: [], env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION', DEFAULT_JUDGMENT: 'Yes' } },
+  // The defendant, a litigant in person, instructs a solicitor once the claim is issued: the Respondent1 Solicitor gives
+  // a notice of change and responds as in a 1v1 claim, which runs to the final order
+  { name: 'SPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE', tags: [], env: { CLAIM_TYPE: '1v1LIP', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', NOTICE_OF_CHANGE: 'DEFENDANT_1' } },
+  // Both parties change solicitor once the claimant has responded, and the new solicitors run the rest of the claim
+  {
+    name: 'SPEC_1v1_FAST_NOTICE_OF_CHANGE',
+    tags: [],
+    env: {
+      CLAIM_TYPE: '1v1',
+      CLAIMANT_TYPE: 'COMPANY',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      NOTICE_OF_CHANGE: 'CLAIMANT_1,DEFENDANT_1',
+      NOTICE_OF_CHANGE_AFTER: 'RESPOND_TO_DEFENCE',
+    },
+  },
 ];
 
 // The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own
