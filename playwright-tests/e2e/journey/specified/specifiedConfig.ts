@@ -17,6 +17,7 @@ import { createClaimShape } from '../../flows/createClaimShape.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 import { nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
+import { generalApplicationProblem } from '../generalApplicationSteps.ts';
 
 export type SpecifiedConfig = ReturnType<typeof specifiedConfig>;
 
@@ -198,6 +199,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     noticeOfChangeSetting: scenarioEnv.NOTICE_OF_CHANGE,
     noticeOfChangeAfter: scenarioEnv.NOTICE_OF_CHANGE_AFTER ?? 'ASSIGN_DEFENDANT_SOLICITORS',
     noticeOfChangeFirstStep: 'ASSIGN_DEFENDANT_SOLICITORS',
+    // A general application the claimant's solicitor makes (GENERAL_APPLICATION, such as STAY_THE_CLAIM), with notice,
+    // after the GENERAL_APPLICATION_AFTER step (default RESPOND_TO_DEFENCE). See generalApplicationSteps.ts.
+    generalApplicationType: scenarioEnv.GENERAL_APPLICATION,
+    generalApplicationAfter: scenarioEnv.GENERAL_APPLICATION_AFTER ?? 'RESPOND_TO_DEFENCE',
     // Each defendant's response (RESPONDENT1_RESPONSE, RESPONDENT2_RESPONSE, default FULL_DEFENCE), and when a defendant
     // who admits all or part of the claim will pay (ADMISSION_PAYMENT_ROUTE, default IMMEDIATELY)
     respondent1Response,
@@ -257,6 +262,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
 
       const nocError = nocProblem(config);
       expect(nocError, nocError).toBeUndefined();
+
+      const gaError = generalApplicationProblem(config);
+      expect(gaError, gaError).toBeUndefined();
     },
   };
   return config;

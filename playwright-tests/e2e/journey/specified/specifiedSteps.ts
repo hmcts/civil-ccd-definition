@@ -67,14 +67,17 @@ import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { workingDayAfter } from '../../../helpers/WorkingDayHelper.ts';
 import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
+import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { specifiedConfig, SpecifiedConfig } from './specifiedConfig.ts';
 
 // The steps of the specified journey, in the order they run. Each step that does not apply to the journey's claim
 // (see skipIf) is skipped. The notices of change (NOTICE_OF_CHANGE) are added after the NOTICE_OF_CHANGE_AFTER step
-// (see noticeOfChangeSteps.ts).
+// (see noticeOfChangeSteps.ts), and a general application (GENERAL_APPLICATION) after the GENERAL_APPLICATION_AFTER step
+// (see generalApplicationSteps.ts).
 export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
-  return withNoticeOfChange(c, ctx, journeySteps(c, ctx), (claimType) =>
-    journeySteps(specifiedConfig({ ...c.scenarioEnv, CLAIM_TYPE: claimType, NOTICE_OF_CHANGE: undefined }), ctx));
+  const stepsFor = (config: SpecifiedConfig) => withGeneralApplication(config, ctx, journeySteps(config, ctx));
+  return withNoticeOfChange(c, ctx, stepsFor(c), (claimType) =>
+    stepsFor(specifiedConfig({ ...c.scenarioEnv, CLAIM_TYPE: claimType, NOTICE_OF_CHANGE: undefined })));
 }
 
 function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {

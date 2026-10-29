@@ -76,15 +76,18 @@ import {
 } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
+import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { unspecifiedConfig, UnspecifiedConfig } from './unspecifiedConfig.ts';
 
 // The steps of the unspecified journey, from creating the claim to the final order, in the order they run. Each step
 // that does not apply to the journey's claim (see skipIf) is skipped. The notices of change (NOTICE_OF_CHANGE) are
-// added after the NOTICE_OF_CHANGE_AFTER step (see noticeOfChangeSteps.ts).
+// added after the NOTICE_OF_CHANGE_AFTER step (see noticeOfChangeSteps.ts), and a general application (GENERAL_APPLICATION)
+// after the GENERAL_APPLICATION_AFTER step (see generalApplicationSteps.ts).
 export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] {
-  return withNoticeOfChange(c, ctx, journeySteps(c, ctx), (claimType) =>
-    journeySteps(unspecifiedConfig({ ...c.scenarioEnv, CLAIM_TYPE: claimType, NOTICE_OF_CHANGE: undefined }), ctx));
+  const stepsFor = (config: UnspecifiedConfig) => withGeneralApplication(config, ctx, journeySteps(config, ctx));
+  return withNoticeOfChange(c, ctx, stepsFor(c), (claimType) =>
+    stepsFor(unspecifiedConfig({ ...c.scenarioEnv, CLAIM_TYPE: claimType, NOTICE_OF_CHANGE: undefined })));
 }
 
 function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] {

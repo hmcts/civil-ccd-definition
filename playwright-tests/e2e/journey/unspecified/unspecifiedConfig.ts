@@ -19,6 +19,7 @@ import caseStates from '../../../enums/caseStates.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 import { nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
+import { generalApplicationProblem } from '../generalApplicationSteps.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
@@ -249,6 +250,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // RESPOND_TO_DEFENCE to change solicitors once the claim reaches JUDICIAL_REFERRAL
     noticeOfChangeAfter: scenarioEnv.NOTICE_OF_CHANGE_AFTER ?? 'NOTIFY_CLAIM_DETAILS',
     noticeOfChangeFirstStep: 'NOTIFY_CLAIM_DETAILS',
+    // A general application the claimant's solicitor makes (GENERAL_APPLICATION, such as STAY_THE_CLAIM), with notice,
+    // after the GENERAL_APPLICATION_AFTER step (default RESPOND_TO_DEFENCE). See generalApplicationSteps.ts.
+    generalApplicationType: scenarioEnv.GENERAL_APPLICATION,
+    generalApplicationAfter: scenarioEnv.GENERAL_APPLICATION_AFTER ?? 'RESPOND_TO_DEFENCE',
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
     claimOfflineAfterNotifyClaim,
@@ -333,6 +338,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
       const nocError = nocProblem(config);
       expect(nocError, nocError).toBeUndefined();
+
+      const gaError = generalApplicationProblem(config);
+      expect(gaError, gaError).toBeUndefined();
     },
   };
   return config;
