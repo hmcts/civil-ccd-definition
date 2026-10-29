@@ -123,6 +123,21 @@ export default defineConfig({
       workers: playwrightTestsWorkers,
       ...playwrightTestsProject,
     })),
+    // The specified journeys' nightly set, run with SCENARIOS=Yes: the scenarios tagged @spec-nightly (see
+    // playwright-tests/scenarios/specifiedScenarios.ts), headless in the bundled Chromium
+    {
+      name: 'spec-nightly',
+      use: {
+        ...devices['Desktop Chrome'],
+        ...playwrightTestsUse,
+        viewport: { width: 1929, height: 959 },
+      },
+      dependencies: ['authentication'],
+      testDir: './playwright-tests/e2e/journeys',
+      grep: /@spec-nightly\b/,
+      workers: playwrightTestsWorkers,
+      ...playwrightTestsProject,
+    },
     ...(config ? playwrightE2eProjects(config) : []),
   ],
 });

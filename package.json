@@ -275,6 +275,7 @@
     "test:unspec-pr:ci": "SCENARIOS=Yes npx playwright test --project unspec-pr",
     "test:unspec-master:ci": "SCENARIOS=Yes npx playwright test --project unspec-master",
     "test:unspec-nightly:ci": "SCENARIOS=Yes npx playwright test --project unspec-nightly",
+    "test:spec-nightly:ci": "SCENARIOS=Yes npx playwright test --project spec-nightly",
     "prepare": "husky"
   },
   "license": "MIT",

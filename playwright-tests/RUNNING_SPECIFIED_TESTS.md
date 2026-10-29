@@ -268,6 +268,14 @@ Run a named scenario from playwright-tests/scenarios/specifiedScenarios.ts, or u
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v2DS_FAST
 ```
 
+Every named scenario is tagged @spec-nightly, the specified nightly set. The spec-nightly project runs them all, headless (yarn test:spec-nightly:ci, which sets SCENARIOS=Yes):
+
+```bash
+ENV=aat SCENARIOS=Yes npx playwright test --project spec-nightly
+```
+
+Nothing runs the nightly set on a schedule yet: neither Jenkinsfile_nightly nor Jenkinsfile_CNP calls it.
+
 The default judgment scenarios are SPEC_1v1_DEFAULT_JUDGMENT and SPEC_1v2DS_DEFAULT_JUDGMENT:
 
 ```bash
