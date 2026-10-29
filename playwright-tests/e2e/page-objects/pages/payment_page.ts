@@ -49,7 +49,11 @@ export class PaymentPage {
 
     if (paymentMethod === PaymentMethod.PBA) {
       await this.page.locator('#pbaAccount').click();
-      await this.page.locator('#pbaAccountNumber').selectOption('PBA0078095');
+      // Organisation 1's account, or the first account a solicitor of another organisation has (a claimant's new
+      // solicitor after a notice of change)
+      const accountNumber = this.page.locator('#pbaAccountNumber');
+      const accounts = (await accountNumber.locator('option').allTextContents()).map((account) => account.trim()).filter((account) => /^PBA\w+$/.test(account));
+      await accountNumber.selectOption(accounts.includes('PBA0078095') ? 'PBA0078095' : accounts[0]);
       await this.page.locator('#pbaAccountRef').fill('PBA Account reference test text.');
       await this.page.keyboard.press('Tab');
       await confirmPaymentButton.click();

@@ -1,5 +1,5 @@
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
-import { sessionUsers } from '../../../../helpers/SessionHelper.ts';
+import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.ts';
 import { MciChange, MciSpec, mciSessionUser } from '../shared_api_ui/manageContactInformationSpecs.ts';
 import { buildManageContactInformationPayload } from './payloads/manageContactInformationPayload.ts';
 
@@ -8,8 +8,9 @@ import { buildManageContactInformationPayload } from './payloads/manageContactIn
 export class ManageContactInformation {
   private ccdApiHelper = new CcdApiHelper();
 
-  async submit(caseId: string, spec: MciSpec, change: MciChange) {
-    const user = sessionUsers[mciSessionUser(spec)].credentials;
+  // sessionUser is who runs it, the spec's user unless someone else now represents that party (NOTICE_OF_CHANGE)
+  async submit(caseId: string, spec: MciSpec, change: MciChange, sessionUser: SessionUserKey = mciSessionUser(spec)) {
+    const user = sessionUsers[sessionUser].credentials;
     const started = await this.ccdApiHelper.startEvent(user, 'MANAGE_CONTACT_INFORMATION', caseId);
     const payload = buildManageContactInformationPayload(started.caseData, spec, change);
     await this.ccdApiHelper.submitEvent(user, 'MANAGE_CONTACT_INFORMATION', started.token, payload, caseId);

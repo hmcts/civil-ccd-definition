@@ -115,6 +115,7 @@ Steps, in the order they run:
 - ADD_CASE_NOTE (optional)
 - NOTIFY_CLAIM
 - NOTIFY_CLAIM_DETAILS
+- NOTICE_OF_CHANGE (group: _CLAIMANT_1, _DEFENDANT_1, _DEFENDANT_2, optional; here by default, or after the NOTICE_OF_CHANGE_AFTER step)
 - MOVE_RESPONSE_DEADLINE, DEFAULT_JUDGMENT, STANDARD_DIRECTION_ORDER_DJ (optional)
 - ACKNOWLEDGE_CLAIM_DEFENDANT1, ACKNOWLEDGE_CLAIM_DEFENDANT2
 - INFORM_AGREED_EXTENSION_DEFENDANT1, INFORM_AGREED_EXTENSION_DEFENDANT2 (optional)
@@ -223,6 +224,51 @@ Through the API up to the responses (2v1, a full defence to Claimant 1 and a ful
 ENV=aat CLAIM_TYPE=2v1 RESPONDENT1_RESPONSE=FULL_DEFENCE RESPONDENT2_RESPONSE=FULL_ADMISSION API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
+### Notice of change
+
+A solicitor takes over a party from the "Notice of change" link on the case list, the first page after signing in. They enter the case's 16 digit reference and their client's name exactly as the case has it, with the title for an individual (for example "Mr John Smith"). Then they tick that the details are right and that every party has been told. civil-service approves it straight away. The party's case role moves to the solicitor's organisation, and anyone at the old organisation loses access to the case.
+
+NOTICE_OF_CHANGE lists the parties: CLAIMANT_1, DEFENDANT_1, DEFENDANT_2. Who takes each one over:
+
+| Party | New solicitor |
+| --- | --- |
+| A defendant who is a LIP | The solicitor the claim would have given them: Defendant 1 gets the Respondent1 Solicitor (Organisation 2), Defendant 2 the Respondent2 Solicitor (Organisation 3). The journey then carries on as the represented claim type, so that solicitor acknowledges and responds: 1v1LIP carries on as 1v1, 2v1LIP as 2v1, and the 1v2 claims with a LIP as 1v2DS once both defendants are represented. |
+| A represented defendant | The New Defendant Solicitor, civil.damages.claims+organisation.2.solicitor.1@gmail.com (organisation N5AFUXG). |
+| The claimant (both claimants in a 2v1 claim, as they share a solicitor) | The New Claimant Solicitor, civil.damages.claims+organisation.1.solicitor.1@gmail.com (organisation 0FA7S8S). |
+
+After a change of solicitor, the party's later steps run as the new solicitor, and the test title says so, for example "Claimant Solicitor uploads evidence (as New Claimant Solicitor)."
+
+The notices of change are given after NOTIFY_CLAIM_DETAILS, or after the step NOTICE_OF_CHANGE_AFTER names, in the order listed. Each one checks that:
+
+- the party's case role is now the new solicitor's organisation's, and a defendant is recorded as represented
+- the new solicitor can see the case, and the old one cannot (in a 1v2SS claim, only once both defendants have moved)
+- the claim's state has not changed
+
+A defendant who is a LIP gets a solicitor straight after the claim details are served. The solicitor then acknowledges and responds as usual:
+
+```bash
+ENV=aat CLAIM_TYPE=1v1LIP NOTICE_OF_CHANGE=DEFENDANT_1 STOP_AFTER_TEST=RESPOND_TO_DEFENCE npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+Both parties change solicitor once the claimant has responded. The new solicitors then upload the evidence, pay the hearing fee and confirm the trial arrangements:
+
+```bash
+ENV=aat NOTICE_OF_CHANGE=CLAIMANT_1,DEFENDANT_1 NOTICE_OF_CHANGE_AFTER=RESPOND_TO_DEFENCE npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+With API_UNTIL, the notice of change goes through the case assignment service's API instead of the XUI pages, as long as the claim has not yet reached the API_UNTIL state. The service's address is worked out for each environment: on a preview it follows the XUI address (manage-case-assignment-civil-citizen-ui-pr-<n>...). AAC_API_URL overrides it.
+
+These settings fail the run before the first test:
+
+- a party the claim does not have
+- a party given twice
+- a LIP with NOTICE_OF_CHANGE_AFTER set to anything other than NOTIFY_CLAIM_DETAILS
+- NOTICE_OF_CHANGE_AFTER set to a step before NOTIFY_CLAIM_DETAILS, or to a step that closes the claim
+- only one defendant in a 1v2SS claim, which would give the defendants a solicitor each
+- both defendants in a 1v2DS claim, which would give both the same new solicitor
+
+A notice of change is not possible while the claim is in PENDING_CASE_ISSUED, CASE_DISMISSED or PROCEEDS_IN_HERITAGE_SYSTEM.
+
 ### Several at once, with the API for the early steps
 
 ```bash
@@ -267,6 +313,12 @@ The default judgment scenarios are UNSPEC_1v1_FAST_DEFAULT_JUDGMENT and UNSPEC_1
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --grep @UNSPEC_1v1_FAST_DEFAULT_JUDGMENT
 ```
 
+The notice of change scenarios run in the nightly set too. UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE gives a LIP defendant a solicitor (yarn test:UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE). UNSPEC_1v1_FAST_NOTICE_OF_CHANGE changes both parties' solicitors after the claimant's response (yarn test:UNSPEC_1v1_FAST_NOTICE_OF_CHANGE).
+
+```bash
+ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --grep @UNSPEC_1v1_FAST_NOTICE_OF_CHANGE
+```
+
 ## 10. Claim parameters
 
 Defaults apply when a parameter is not set. Every on/off parameter takes Yes or No, and treats anything other than Yes as No. DEFAULT_JUDGMENT is the exception: any value other than Yes or No stops the run.
@@ -307,6 +359,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `INFORM_AGREED_EXTENSION` | Yes, No | No | Optional event: each defendant's solicitor informs the court of an agreed extension after acknowledging the claim. |
 | `CASE_FLAGS` | representative, or a list of holder:code[:detail] | None | Optional events: add flags after the claimant's response, then make the first inactive. Holders: CASE, CLAIMANT_1/2, DEFENDANT_1/2, CLAIMANT_1/2_LITIGATION_FRIEND, CLAIMANT_EXPERT_n, CLAIMANT_WITNESS_n, DEFENDANT_1/2_EXPERT_n, DEFENDANT_1/2_WITNESS_n. The detail is the language for an interpreter flag or the description for an OT0001 flag. |
 | `MANAGE_CONTACT_INFORMATION` | representative, or a list of user:party | None | Optional events: Manage Contact Information after the claimant's response, one run per entry, each checked against the saved case data. Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor (a solicitor only sees their own side). Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _LITIGATION_FRIEND or _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS, _WITNESSES or _EXPERTS. A party's or litigation friend's email (and a party's first address line) is changed, an individual is added, and a witness or expert is added by the admin or the first one's email changed by a solicitor (set WITNESSES or EXPERTS). Has an API version. |
+| `NOTICE_OF_CHANGE` | A list of CLAIMANT_1, DEFENDANT_1, DEFENDANT_2 | None | Optional steps: a solicitor takes over each party with a notice of change (see section 7). A LIP defendant gets the solicitor the represented claim type would have, and the journey carries on as that claim type. A represented party moves to a solicitor of another organisation, who runs that party's later steps. Has an API version. |
+| `NOTICE_OF_CHANGE_AFTER` | A step name, from NOTIFY_CLAIM_DETAILS on | NOTIFY_CLAIM_DETAILS | The step the notices of change follow, for example RESPOND_TO_DEFENCE. A LIP can only be given a solicitor after NOTIFY_CLAIM_DETAILS. |
 
 ## 11. Run settings
 
@@ -323,3 +377,4 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `WORKERS` | A number | 1 | Scenarios run at the same time. Keep it low: PR previews have fewer resources and AAT was overloaded by 7 at once. |
 | `JUDGE_USERNAME` | A judge's email address | DJ.Amy.Powell@ejudiciary.net | The judge who does the judge's events. |
 | `PREFLIGHT` | false | Runs | false skips the preflight checks. |
+| `AAC_API_URL` | A URL | Worked out for the environment | The case assignment service, which the API version of NOTICE_OF_CHANGE uses. |

@@ -56,7 +56,7 @@ import { DefaultJudgment as ApiDefaultJudgment } from '../../flows/events/api/De
 import { StandardDirectionOrderDj } from '../../flows/events/ui/StandardDirectionOrderDj.ts';
 import { StandardDirectionOrderDj as ApiStandardDirectionOrderDj } from '../../flows/events/api/StandardDirectionOrderDj.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
-import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
+import { CaseUserKey, CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
 import { CreateCaseFlag } from '../../flows/events/ui/CreateCaseFlag.ts';
 import { CreateCaseFlag as ApiCreateCaseFlag } from '../../flows/events/api/CreateCaseFlag.ts';
 import { ManageCaseFlag } from '../../flows/events/ui/ManageCaseFlag.ts';
@@ -74,13 +74,157 @@ import {
   mciStartsBusinessProcess,
   mciUserLabel,
 } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
+import { NoticeOfChange } from '../../flows/events/ui/NoticeOfChange.ts';
+import { NoticeOfChange as ApiNoticeOfChange } from '../../flows/events/api/NoticeOfChange.ts';
+import {
+  defaultNocAfterStep,
+  nocCaseRole,
+  nocClaimTypeAfter,
+  nocPartyField,
+  nocPartyLabel,
+  NocSpec,
+  nocSpecs,
+  nocUsersAfter,
+} from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
 import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
-import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
-import { UnspecifiedConfig } from './unspecifiedConfig.ts';
+import { sessionUsers, SessionUserKey } from '../../../helpers/SessionHelper.ts';
+import { unspecifiedConfig, UnspecifiedConfig } from './unspecifiedConfig.ts';
 
 // The steps of the unspecified journey, from creating the claim to the final order, in the order they run. Each step
 // that does not apply to the journey's claim (see skipIf) is skipped.
+//
+// The notices of change (NOTICE_OF_CHANGE) are given after the NOTICE_OF_CHANGE_AFTER step, one step per party in group
+// NOTICE_OF_CHANGE. From then on:
+//  - a defendant who was a litigant in person has a solicitor, so the journey carries on as the represented claim type
+//    (a 1v1LIP claim as 1v1, for example), with that solicitor acknowledging and responding to the claim
+//  - the steps of a party whose solicitor changed run as their new solicitor
 export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] {
+  const steps = journeySteps(c, ctx);
+  const specs = nocSpecs(c);
+  const anchor = steps.find((step) => step.name === c.noticeOfChangeAfter);
+  const anchorIndex = steps.indexOf(anchor);
+  const notifyClaimDetailsIndex = steps.findIndex((step) => step.name === defaultNocAfterStep);
+  const placeholder = (skipIf: Array<[boolean, string]>, invalidIf?: JourneyStep['invalidIf']): JourneyStep => ({
+    name: 'NOTICE_OF_CHANGE', title: 'A solicitor takes over a party with a notice of change.', user: 'claimantSolicitor', skipIf, invalidIf, run: async () => {},
+  });
+
+  if (anchor === undefined || anchorIndex < notifyClaimDetailsIndex || anchor.closesClaim) {
+    // The journey still lists the step, so the settings check can report the problem
+    const problem = `Invalid NOTICE_OF_CHANGE_AFTER value: ${c.noticeOfChangeAfter}. It must be one of the steps from ${defaultNocAfterStep} on, and not one that closes the claim: ${steps.slice(notifyClaimDetailsIndex).filter((step) => !step.closesClaim).map((step) => step.name).join(', ')}.`;
+    const invalid = specs.length > 0;
+    return [...steps.slice(0, notifyClaimDetailsIndex + 1), placeholder([[true, problem]], () => [[invalid, problem]]), ...steps.slice(notifyClaimDetailsIndex + 1)];
+  }
+  if (specs.length === 0) {
+    // Without NOTICE_OF_CHANGE the journey still lists one step, skipped with the reason, as it does for other
+    // switched-off steps
+    const off: [boolean, string] = [true, 'Notice of change is switched off (set NOTICE_OF_CHANGE to a list such as DEFENDANT_1,CLAIMANT_1 to run it)'];
+    return [...steps.slice(0, anchorIndex + 1), placeholder([off]), ...steps.slice(anchorIndex + 1)];
+  }
+
+  // Once every litigant in person has a solicitor, the steps after the notices of change are the represented claim's
+  const claimTypeAfter = nocClaimTypeAfter(c);
+  const stepsAfter = claimTypeAfter === c.claimType
+    ? steps
+    : journeySteps(unspecifiedConfig({ ...c.scenarioEnv, CLAIM_TYPE: claimTypeAfter, NOTICE_OF_CHANGE: undefined }), ctx);
+  const usersAfter = nocUsersAfter(c);
+  const later = stepsAfter.slice(stepsAfter.findIndex((step) => step.name === anchor.name) + 1).map((step) => {
+    const user = usersAfter[step.user] ?? step.user;
+    const title = user === step.user ? step.title : `${step.title.trim().replace(/\.$/, '')} (as ${sessionUsers[user].credentials.name}).`;
+    return { ...step, user, title };
+  });
+  if (claimTypeAfter !== c.claimType) {
+    console.log(`Notice of change: after ${anchor.name} the ${c.claimType} claim carries on as ${claimTypeAfter}`);
+  }
+  return [...steps.slice(0, anchorIndex + 1), ...noticeOfChangeSteps(c, ctx, specs, anchor), ...later];
+}
+
+// One step per NOTICE_OF_CHANGE party, run as the solicitor who takes them over. The client's name is read from the
+// case, as CCD's challenge question matches it exactly against the party's name (title included for an individual).
+// Each is checked on the case: the party's case role is the new solicitor's organisation's, a defendant is now
+// represented, the new solicitor can see the case and the old one can no longer see it (unless they still act for
+// another party). The steps have the same skip reasons as the step they follow.
+function noticeOfChangeSteps(c: UnspecifiedConfig, ctx: JourneyContext, specs: NocSpec[], anchor: JourneyStep): JourneyStep[] {
+  const organisationPolicy: Record<NocSpec['party'], string> = {
+    CLAIMANT_1: 'applicant1OrganisationPolicy',
+    DEFENDANT_1: 'respondent1OrganisationPolicy',
+    DEFENDANT_2: 'respondent2OrganisationPolicy',
+  };
+  // Who represents each party as the notices of change are given in turn, so each step knows the solicitor it replaces
+  const defendants = c.claimShape.defendants;
+  const representative: Record<NocSpec['party'], SessionUserKey | undefined> = {
+    CLAIMANT_1: 'claimantSolicitor',
+    DEFENDANT_1: defendants[0]?.solicitor === 'own' ? 'respondent1Solicitor' : undefined,
+    DEFENDANT_2: defendants[1]?.solicitor === 'own' ? 'respondent2Solicitor' : defendants[1]?.solicitor === 'sameAsDefendant1' ? 'respondent1Solicitor' : undefined,
+  };
+
+  return specs.map((spec) => {
+    const oldSolicitor = representative[spec.party];
+    representative[spec.party] = spec.newSolicitor;
+    // The old solicitor keeps the case while they still act for another party (1v2SS, until both have moved)
+    const oldSolicitorLosesCase = oldSolicitor !== undefined && !Object.values(representative).includes(oldSolicitor);
+    // Every solicitor a notice of change can go to belongs to an organisation
+    const newSolicitor = sessionUsers[spec.newSolicitor].credentials as { name: string; username: string; orgId: string };
+    const label = nocPartyLabel[spec.party];
+    const defendantNumber = spec.party === 'DEFENDANT_1' ? 1 : spec.party === 'DEFENDANT_2' ? 2 : undefined;
+    // civil-service runs a business process of its own when Defendant 1 was a litigant in person
+    const businessProcess = spec.party === 'DEFENDANT_1' && spec.litigantInPerson ? 'APPLY_NOC_DECISION_DEFENDANT_LIP' : 'APPLY_NOC_DECISION';
+    return {
+      name: `NOTICE_OF_CHANGE_${spec.party}`,
+      group: 'NOTICE_OF_CHANGE',
+      title: `${newSolicitor.name} takes over ${label}${spec.litigantInPerson ? ' (a litigant in person)' : ''} with a notice of change.`,
+      user: spec.newSolicitor,
+      skipIf: anchor.skipIf,
+      run: async ({ page, storageState, user }) => {
+        const stateBefore = ctx.lastStateReached;
+        const caseData = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+        const clientName: string = caseData[nocPartyField[spec.party]]?.partyName;
+        expect(clientName, `Case ${ctx.caseId} has no name for ${label} (${nocPartyField[spec.party]}.partyName)`).toBeTruthy();
+        console.log(`${newSolicitor.name} gives a notice of change for ${label}, "${clientName}", replacing ${oldSolicitor ? sessionUsers[oldSolicitor].credentials.name : 'no solicitor (a litigant in person)'}`);
+
+        if (ctx.useApi()) {
+          await new ApiNoticeOfChange().submit(ctx.caseId, user, clientName);
+        } else {
+          const noticeOfChange = new NoticeOfChange(page);
+          await ctx.runEvent(page, storageState, async () => {
+            await noticeOfChange.submit(ctx.caseId, clientName);
+          }, envUrl);
+          await noticeOfChange.viewCase(ctx.caseId);
+        }
+        CaseUserRegistry.record(ctx.caseId, spec.newSolicitor as CaseUserKey);
+        if (defendantNumber !== undefined) {
+          ctx.defendantsGivenSolicitorByNoc.add(defendantNumber);
+        }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, businessProcess);
+
+        const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+        expect(
+          saved[organisationPolicy[spec.party]]?.Organisation?.OrganisationID,
+          `${label}'s case role ${nocCaseRole[spec.party]} did not move to ${newSolicitor.name}'s organisation`,
+        ).toBe(newSolicitor.orgId);
+        if (defendantNumber !== undefined) {
+          expect(saved[`respondent${defendantNumber}Represented`], `${label} is not recorded as represented`).toBe('Yes');
+        }
+        // Access is checked by reading the case's event history as each solicitor (CCD refuses it without a case role).
+        // The notice of change's own events are not in a solicitor's view of the history, so no event is looked for.
+        await expect(
+          ctx.testingEndpointHelper.countCaseEvents(newSolicitor, ctx.caseId, 'NOC_REQUEST'),
+          `${newSolicitor.name} cannot see the case after the notice of change`,
+        ).resolves.toBeGreaterThanOrEqual(0);
+        if (oldSolicitorLosesCase) {
+          const old = sessionUsers[oldSolicitor].credentials;
+          await expect(
+            ctx.testingEndpointHelper.countCaseEvents(old, ctx.caseId, 'NOC_REQUEST'),
+            `${old.name} can still see the case after the notice of change`,
+          ).rejects.toThrow();
+        }
+        // A notice of change does not change the claim's state
+        await ctx.assertCaseState(stateBefore);
+      },
+    };
+  });
+}
+
+function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] {
   // Tracks which defendants have responded, so the expected state is right whichever responds first in claims where
   // they respond separately
   const defendantsResponded = new Set<number>();
@@ -382,9 +526,9 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: 'Claimant Solicitor requests default judgment.',
       user: 'claimantSolicitor',
       skipIf: [noDefaultJudgment],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiDefaultJudgment().submit(ctx.caseId);
+          await new ApiDefaultJudgment().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new DefaultJudgment(page).submit(c.claimShape.defendants.length === 2);
@@ -423,10 +567,10 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: 'Defendant 1 Solicitor acknowledges claim.',
       user: 'respondent1Solicitor',
       skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
-      run: async ({ page, storageState }) => {
-        await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType);
+      run: async ({ page, storageState, user }) => {
+        await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType, [...ctx.defendantsGivenSolicitorByNoc]);
         if (ctx.useApi()) {
-          await new ApiAcknowledgeClaim().acknowledge(c, ctx.caseId, 1);
+          await new ApiAcknowledgeClaim().acknowledge(c, ctx.caseId, 1, user);
         } else {
           // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
           await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
@@ -443,18 +587,18 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: 'Defendant 2 Solicitor acknowledges claim.',
       user: 'respondent2Solicitor',
       skipIf: [offlineAtNotify, noSeparateDefendant2Solicitor],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (c.claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
           // Defendant 1's acknowledgement is skipped for this claim type (Defendant 1 is a LiP), so Defendant 2's
           // solicitor is assigned here
-          await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType);
+          await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType, [...ctx.defendantsGivenSolicitorByNoc]);
           if (!ctx.useApi()) {
             // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
             await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
           }
         }
         if (ctx.useApi()) {
-          await new ApiAcknowledgeClaim().acknowledge(c, ctx.caseId, 2);
+          await new ApiAcknowledgeClaim().acknowledge(c, ctx.caseId, 2, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 2, c.defendantType);
@@ -473,9 +617,9 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: 'Defendant 1 Solicitor responds to claim.',
       user: 'respondent1Solicitor',
       skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiRespondToClaim().submit(c, ctx.caseId, 1, dqAnswers);
+          await new ApiRespondToClaim().submit(c, ctx.caseId, 1, dqAnswers, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new RespondToClaim(page).submit(
@@ -501,7 +645,7 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: 'Defendant 2 Solicitor responds to claim.',
       user: 'respondent2Solicitor',
       skipIf: [offlineAtNotify, noSeparateDefendant2Solicitor],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (c.claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
           // civil-service only treats the defendants as having separate solicitors when both are represented, so in a
           // 1v2LIPLR claim it handles Defendant 2's solicitor as Defendant 1's. The response is saved against Defendant 1
@@ -515,7 +659,7 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
           test.skip(true, '1v2LIPLR: civil-service does not support a response from Defendant 2 Solicitor when Defendant 1 is a LiP');
         }
         if (ctx.useApi()) {
-          await new ApiRespondToClaim().submit(c, ctx.caseId, 2, dqAnswers);
+          await new ApiRespondToClaim().submit(c, ctx.caseId, 2, dqAnswers, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new RespondToClaim(page).submit(
@@ -539,9 +683,9 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: 'Claimant Solicitor responds to defence.',
       user: 'claimantSolicitor',
       skipIf: noClaimantResponse,
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiRespondToDefence().submit(c, ctx.caseId, dqAnswers);
+          await new ApiRespondToDefence().submit(c, ctx.caseId, dqAnswers, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new RespondToDefence(page).submit(
@@ -831,10 +975,10 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       skipIf: [
         [c.settleClaim !== SettleClaimReason.MARK_PAID_IN_FULL, 'Skipping as the claimant\'s solicitor does not settle the claim (set SETTLE_CLAIM=MARK_PAID_IN_FULL to run it)'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be settled in ${ctx.lastStateReached}`);
         if (ctx.useApi()) {
-          await new ApiSettleClaimMarkPaidFull().submit(ctx.caseId);
+          await new ApiSettleClaimMarkPaidFull().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new SettleClaimMarkPaidFull(page).submit(c.claimShape.claimants.length === 2);
@@ -889,11 +1033,11 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       skipIf: [
         [c.discontinueClaim === undefined, 'Discontinuing the claim is switched off (set DISCONTINUE_CLAIM=NO_PERMISSION_NEEDED or PERMISSION_GRANTED to run it)'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         const stateBefore = ctx.lastStateReached;
         test.skip(!discontinuableStates.includes(stateBefore), `Skipping as the claim cannot be discontinued in ${stateBefore}`);
         if (ctx.useApi()) {
-          await new ApiDiscontinueClaim().submit(ctx.caseId, c.discontinueClaim);
+          await new ApiDiscontinueClaim().submit(ctx.caseId, c.discontinueClaim, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new DiscontinueClaim(page).submit(c.discontinueClaim);
@@ -1085,10 +1229,10 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
       title: `${mciUserLabel(spec)} updates the contact information of ${spec.party}.`,
       user: mciSessionUser(spec),
       skipIf: noMci,
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         const change = mciChange(index, spec);
         if (ctx.useApi()) {
-          await new ApiManageContactInformation().submit(ctx.caseId, spec, change);
+          await new ApiManageContactInformation().submit(ctx.caseId, spec, change, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new ManageContactInformation(page).submit(spec, change);
@@ -1126,10 +1270,10 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
         solicitor.noSolicitor,
         [c.informAgreedExtension !== yesNo.YES, 'Informing of an agreed extension is switched off (set INFORM_AGREED_EXTENSION=Yes to run it)'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         const deadlineBefore = await ctx.testingEndpointHelper.getResponseDeadline(ctx.caseId, solicitor.defendantNumber);
         if (ctx.useApi()) {
-          await new ApiInformAgreedExtensionDate().submit(ctx.caseId, solicitor.defendantNumber);
+          await new ApiInformAgreedExtensionDate().submit(ctx.caseId, solicitor.defendantNumber, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new InformAgreedExtensionDate(page).submit();
@@ -1162,9 +1306,9 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
         ...noCaseProgression(),
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiUploadEvidence().submit(ctx.caseId, solicitor.user);
+          await new ApiUploadEvidence().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new UploadEvidence(page).submit();
@@ -1190,9 +1334,9 @@ export function unspecifiedSteps(c: UnspecifiedConfig, ctx: JourneyContext): Jou
         ...noCaseProgression('Skipping as trial arrangements are only confirmed on the fast track'),
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
-      run: async ({ page, storageState }) => {
+      run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiConfirmTrialArrangements().submit(ctx.caseId, solicitor.user);
+          await new ApiConfirmTrialArrangements().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await new ConfirmTrialArrangements(page).submit();

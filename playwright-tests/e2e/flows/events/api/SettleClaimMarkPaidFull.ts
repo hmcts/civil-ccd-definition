@@ -1,5 +1,5 @@
-import { claimantSolicitorCredentials } from '../../../../civilConfig.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
+import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.ts';
 
 // Marks the claim as paid in full (SETTLE_CLAIM_MARK_PAID_FULL, "Settle this claim") as the claimant's solicitor
 // through the CCD API, instead of the event's pages in XUI, with the same answers as the UI: with one claimant they
@@ -7,8 +7,8 @@ import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 export class SettleClaimMarkPaidFull {
   private ccdApiHelper = new CcdApiHelper();
 
-  async submit(caseId: string) {
-    await this.ccdApiHelper.submitEventThroughPages(claimantSolicitorCredentials, 'SETTLE_CLAIM_MARK_PAID_FULL', caseId, [
+  async submit(caseId: string, user: SessionUserKey = 'claimantSolicitor') {
+    await this.ccdApiHelper.submitEventThroughPages(sessionUsers[user].credentials, 'SETTLE_CLAIM_MARK_PAID_FULL', caseId, [
       { page: 'MultipleClaimant', when: (data) => data.addApplicant2 === 'Yes', answers: { markPaidForAllClaimants: 'Yes' } },
       { page: 'SingleClaimant', when: (data) => data.addApplicant2 === 'No', answers: { markPaidConsent: 'YES' } },
     ]);

@@ -522,66 +522,46 @@ export class TestingEndPointHelper {
     }
   }
 
-  async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes) {
+  // Assigns each defendant's solicitor to the case, as the claim type has them. A defendant in skipDefendants (1 or 2)
+  // is left alone, as a notice of change has already given the case to their solicitor.
+  async assignDefendantLegalRepToCase(caseId: string, claimType: claimTypes, skipDefendants: number[] = []) {
     const assignCaseUrl = `${this.testingSupportUrl}/assign-case/${caseId}/`;
     const apiRequestContext: APIRequestContext = await request.newContext();
-    let response: APIResponse;
+    const assign = async (defendantNumber: number, credentials, userKey: 'respondent1Solicitor' | 'respondent2Solicitor', caseRole: string) => {
+      if (skipDefendants.includes(defendantNumber)) {
+        console.log(`Not assigning Defendant ${defendantNumber}'s Legal Representative: a notice of change gave them the case`);
+        return;
+      }
+      await this.getTokens(credentials);
+      const response = await apiRequestContext.post(`${assignCaseUrl}${caseRole}`, {
+        headers: this.getHeaders()
+      });
+      if (!response.ok()) {
+        throw await this.assignmentError(response, claimType);
+      }
+      CaseUserRegistry.record(caseId, userKey);
+    };
     try {
       if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL) {
         console.log('Assigning Defendant 1 Legal Representative to the claim...');
-        await this.getTokens(respondent1SolicitorCredentials);
-
-        response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORONE`, {
-          headers: this.getHeaders()
-        });
-        if (response.ok()) {
-          CaseUserRegistry.record(caseId, 'respondent1Solicitor');
-          console.log('Assigning Defendant 2 Legal Representative to the claim...');
-          await this.getTokens(respondent2SolicitorCredentials);
-          response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORTWO`, {
-            headers: this.getHeaders()
-          });
-          if (!response.ok()) {
-            throw await this.assignmentError(response, claimType);
-          }
-          CaseUserRegistry.record(caseId, 'respondent2Solicitor');
-        } else {
-          throw await this.assignmentError(response, claimType);
-        }
+        await assign(1, respondent1SolicitorCredentials, 'respondent1Solicitor', 'RESPONDENTSOLICITORONE');
+        console.log('Assigning Defendant 2 Legal Representative to the claim...');
+        await assign(2, respondent2SolicitorCredentials, 'respondent2Solicitor', 'RESPONDENTSOLICITORTWO');
       }
 
       if (claimType == claimTypes.ONE_VS_TWO_LIP_LR) {
         console.log('Assigning Defendant 2 Legal Representative to the claim...');
-        await this.getTokens(respondent2SolicitorCredentials);
-        response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORTWO`, {
-          headers: this.getHeaders()
-        });
-        if (!response.ok()) {
-          throw await this.assignmentError(response, claimType);
-        }
-        CaseUserRegistry.record(caseId, 'respondent2Solicitor');
+        await assign(2, respondent2SolicitorCredentials, 'respondent2Solicitor', 'RESPONDENTSOLICITORTWO');
       }
 
       if (claimType == claimTypes.ONE_VS_TWO_LR_LIP || claimType == claimTypes.ONE_VS_ONE || claimType == claimTypes.TWO_VS_ONE || claimType == claimTypes.ONE_VS_TWO_SAME_SOL) {
         console.log('Assigning Defendant 1 Legal Representative to the claim...');
-        await this.getTokens(respondent1SolicitorCredentials);
-        response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORONE`, {
-          headers: this.getHeaders()
-        });
-        if (!response.ok()) {
-          throw await this.assignmentError(response, claimType);
-        }
-        CaseUserRegistry.record(caseId, 'respondent1Solicitor');
+        await assign(1, respondent1SolicitorCredentials, 'respondent1Solicitor', 'RESPONDENTSOLICITORONE');
         // A solicitor representing both defendants also holds Defendant 2's role, as the earlier suites assign it:
         // without it they cannot answer Defendant 2's fields (an unspecified response that differs for each defendant)
         if (claimType === claimTypes.ONE_VS_TWO_SAME_SOL) {
           console.log('Assigning Defendant 1 Legal Representative to the claim as Defendant 2\'s too...');
-          response = await apiRequestContext.post(`${assignCaseUrl}RESPONDENTSOLICITORTWO`, {
-            headers: this.getHeaders()
-          });
-          if (!response.ok()) {
-            throw await this.assignmentError(response, claimType);
-          }
+          await assign(2, respondent1SolicitorCredentials, 'respondent1Solicitor', 'RESPONDENTSOLICITORTWO');
         }
       }
     }
@@ -591,7 +571,9 @@ export class TestingEndPointHelper {
           error instanceof Error ? error.message : error
         }`
       );
-    };
+    } finally {
+      await apiRequestContext.dispose();
+    }
     console.log('Assignment successful. Continuing test...');
   }
 

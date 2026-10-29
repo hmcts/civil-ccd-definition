@@ -214,6 +214,27 @@ const scenarios: Scenario[] = [
     tags: [NIGHTLY],
     env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL', ...roadAccident, DEFAULT_JUDGMENT: 'Yes' },
   },
+  // The defendant, a litigant in person, instructs a solicitor once the claim details are served: the Respondent1
+  // Solicitor gives a notice of change, then acknowledges and responds as in a 1v1 claim, which runs to the final order
+  {
+    name: 'UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE',
+    tags: [NIGHTLY],
+    env: { CLAIM_TYPE: '1v1LIP', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'INDIVIDUAL', ...roadAccident, NOTICE_OF_CHANGE: 'DEFENDANT_1' },
+  },
+  // Both parties change solicitor once the claimant has responded: solicitors of two other organisations give notices
+  // of change, and the new solicitors upload the evidence, pay the hearing fee and confirm the trial arrangements
+  {
+    name: 'UNSPEC_1v1_FAST_NOTICE_OF_CHANGE',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v1',
+      CLAIMANT_TYPE: 'INDIVIDUAL',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...roadAccident,
+      NOTICE_OF_CHANGE: 'CLAIMANT_1,DEFENDANT_1',
+      NOTICE_OF_CHANGE_AFTER: 'RESPOND_TO_DEFENCE',
+    },
+  },
 ];
 
 // The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own

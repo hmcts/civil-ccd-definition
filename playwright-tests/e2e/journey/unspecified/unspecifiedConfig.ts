@@ -18,6 +18,7 @@ import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocument
 import caseStates from '../../../enums/caseStates.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
+import { defaultNocAfterStep, nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
@@ -175,6 +176,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
   const claimant2LitigantFriend = yes(scenarioEnv.CLAIMANT2_LITIGANT_FRIEND);
 
   const config = {
+    // The scenario's env vars, from which the journey works out its settings for the claim type it carries on as once
+    // a notice of change has given each litigant in person a solicitor (see unspecifiedSteps)
+    scenarioEnv,
     claimType,
     caseType: 'UNSPECIFIED',
     claimantType,
@@ -236,6 +240,14 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // (MANAGE_CONTACT_INFORMATION: "representative", or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1;
     // see manageContactInformationSpecs.ts)
     manageContactInformationSetting: scenarioEnv.MANAGE_CONTACT_INFORMATION,
+    // The parties a solicitor takes over with a notice of change (NOTICE_OF_CHANGE: a list such as
+    // DEFENDANT_1,CLAIMANT_1). A defendant who is a litigant in person gets a solicitor, who then acknowledges and
+    // responds to the claim; a represented party moves to a solicitor of another organisation, who runs their later
+    // steps. See noticeOfChangeSpecs.ts.
+    noticeOfChangeSetting: scenarioEnv.NOTICE_OF_CHANGE,
+    // The step the notices of change are given after (NOTICE_OF_CHANGE_AFTER, default NOTIFY_CLAIM_DETAILS), such as
+    // RESPOND_TO_DEFENCE to change solicitors once the claim reaches JUDICIAL_REFERRAL
+    noticeOfChangeAfter: scenarioEnv.NOTICE_OF_CHANGE_AFTER ?? defaultNocAfterStep,
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
     claimOfflineAfterNotifyClaim,
@@ -317,6 +329,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
       const mciError = mciProblem(config);
       expect(mciError, mciError).toBeUndefined();
+
+      const nocError = nocProblem(config);
+      expect(nocError, nocError).toBeUndefined();
     },
   };
   return config;

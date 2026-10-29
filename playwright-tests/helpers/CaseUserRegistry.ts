@@ -5,6 +5,8 @@ import {
   claimantSolicitorCredentials,
   respondent1SolicitorCredentials,
   respondent2SolicitorCredentials,
+  newClaimantSolicitorCredentials,
+  newDefendantSolicitorCredentials,
 } from '../civilConfig.ts';
 import { isRunInProgress } from './RunHelper.ts';
 
@@ -13,6 +15,8 @@ export const caseUsers = {
   claimantSolicitor: claimantSolicitorCredentials,
   respondent1Solicitor: respondent1SolicitorCredentials,
   respondent2Solicitor: respondent2SolicitorCredentials,
+  newClaimantSolicitor: newClaimantSolicitorCredentials,
+  newDefendantSolicitor: newDefendantSolicitorCredentials,
 };
 
 export type CaseUserKey = keyof typeof caseUsers;

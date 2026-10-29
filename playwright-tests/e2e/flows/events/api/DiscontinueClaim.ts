@@ -1,7 +1,7 @@
 import moment from 'moment-business-days';
-import { claimantSolicitorCredentials } from '../../../../civilConfig.ts';
 import DiscontinueClaimType from '../../../../enums/discontinueClaim.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
+import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.ts';
 
 // Fully discontinues the claim (DISCONTINUE_CLAIM_CLAIMANT, "Discontinue this claim") as the claimant's solicitor
 // through the CCD API, instead of the event's pages in XUI, with the same answers as the UI: every claimant
@@ -10,9 +10,9 @@ import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 export class DiscontinueClaim {
   private ccdApiHelper = new CcdApiHelper();
 
-  async submit(caseId: string, type: DiscontinueClaimType) {
+  async submit(caseId: string, type: DiscontinueClaimType, user: SessionUserKey = 'claimantSolicitor') {
     const permissionNeeded = type === DiscontinueClaimType.PERMISSION_GRANTED;
-    await this.ccdApiHelper.submitEventThroughPages(claimantSolicitorCredentials, 'DISCONTINUE_CLAIM_CLAIMANT', caseId, [
+    await this.ccdApiHelper.submitEventThroughPages(sessionUsers[user].credentials, 'DISCONTINUE_CLAIM_CLAIMANT', caseId, [
       {
         page: 'MultipleClaimant',
         when: (data) => data.addApplicant2 === 'Yes',

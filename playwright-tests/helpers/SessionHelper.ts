@@ -9,6 +9,8 @@ import {
   judgeCredentials,
   hearingCentreAdminCredentials,
   legalAdviserCredentials,
+  newClaimantSolicitorCredentials,
+  newDefendantSolicitorCredentials,
 } from '../civilConfig.ts';
 import { IdamPage } from '../e2e/page-objects/pages/idam.po.ts';
 import { PageHelper } from './PageHelper.ts';
@@ -36,6 +38,9 @@ export const sessionUsers = {
   judge: { credentials: judgeCredentials, authFile: `${authDir}/JudgeUser.json` },
   hearingCentreAdmin: { credentials: hearingCentreAdminCredentials, authFile: `${authDir}/HearingCentreAdminUser.json` },
   legalAdviser: { credentials: legalAdviserCredentials, authFile: `${authDir}/LegalAdviserUser.json` },
+  // The solicitors who take over a represented party with a notice of change (NOTICE_OF_CHANGE)
+  newClaimantSolicitor: { credentials: newClaimantSolicitorCredentials, authFile: `${authDir}/NewClaimantSolicitorUser.json` },
+  newDefendantSolicitor: { credentials: newDefendantSolicitorCredentials, authFile: `${authDir}/NewDefendantSolicitorUser.json` },
 };
 
 // Shown on every XUI page once a user is signed in. Solicitors land on the case list and judges and court staff on their work list,

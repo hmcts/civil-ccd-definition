@@ -1,5 +1,5 @@
-import { claimantSolicitorCredentials } from '../../../../civilConfig.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
+import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.ts';
 
 // The claimant's solicitor requests default judgment on an unspecified claim (DEFAULT_JUDGEMENT) through the CCD API,
 // instead of the event's pages in XUI, with the same answers as the UI: against every defendant, with a disposal
@@ -9,8 +9,8 @@ import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 export class DefaultJudgment {
   private ccdApiHelper = new CcdApiHelper();
 
-  async submit(caseId: string) {
-    await this.ccdApiHelper.submitEventThroughPages(claimantSolicitorCredentials, 'DEFAULT_JUDGEMENT', caseId, [
+  async submit(caseId: string, user: SessionUserKey = 'claimantSolicitor') {
+    await this.ccdApiHelper.submitEventThroughPages(sessionUsers[user].credentials, 'DEFAULT_JUDGEMENT', caseId, [
       {
         page: 'defendantDetails',
         answers: (data) => {

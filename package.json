@@ -254,6 +254,8 @@
     "test:UNSPEC_1v2SS_FAST_CASE_FLAGS": "yarn playwright install && SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --headed --project chromium --grep @UNSPEC_1v2SS_FAST_CASE_FLAGS",
     "test:UNSPEC_1v2DS_FAST_EXTENSION": "yarn playwright install && SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --headed --project chromium --grep @UNSPEC_1v2DS_FAST_EXTENSION",
     "test:UNSPEC_1v2DS_FAST_STAY_CASE": "yarn playwright install && SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --headed --project chromium --grep @UNSPEC_1v2DS_FAST_STAY_CASE",
+    "test:UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE": "yarn playwright install && SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --headed --project chromium --grep @UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE",
+    "test:UNSPEC_1v1_FAST_NOTICE_OF_CHANGE": "yarn playwright install && SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --headed --project chromium --grep @UNSPEC_1v1_FAST_NOTICE_OF_CHANGE",
     "test:SPEC_1v1_LIP_FAST": "yarn playwright install && CLAIM_TYPE=1v1LIP CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
     "test:SPEC_2v1_LIP_FAST": "yarn playwright install && CLAIM_TYPE=2v1LIP CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",
     "test:SPEC_1v2_LIPS_FAST": "yarn playwright install && CLAIM_TYPE=1v2LIPS CLAIMANT_TYPE=SOLE_TRADER DEFENDANT_TYPE=INDIVIDUAL npx playwright test --headed --project chromium --grep @specified",

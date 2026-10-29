@@ -14,6 +14,8 @@ import { requirePlaywrightTestsEnv } from '../../env.ts';
 export interface StepArgs {
   page: Page;
   storageState: unknown;
+  // The user the step runs as (its JourneyStep user), for the steps that send the event through the API as them
+  user: SessionUserKey;
 }
 
 // One step of a journey: an event done by one user, run as its own test. The UI steps of the event live in its class
@@ -58,6 +60,8 @@ export class JourneyContext {
   stopAtStateReached = false;
   apiUntilStateReached = false;
   lastStateReached: caseStates | undefined;
+  // The defendants (1 and 2) whose solicitor was given the case by a notice of change, so is not assigned to it again
+  defendantsGivenSolicitorByNoc = new Set<number>();
 
   // STOP_AT_STATE: the state at which the journey stops, and API_UNTIL: the state up to which the steps that have an
   // API version are done through the CCD API (see defineJourney)
@@ -236,6 +240,6 @@ function defineStep(step: JourneyStep) {
   }
   test.use({ storageState: sessionUsers[step.user].authFile });
   test(step.title, async ({ page, storageState }) => {
-    await step.run({ page, storageState });
+    await step.run({ page, storageState, user: step.user });
   });
 }

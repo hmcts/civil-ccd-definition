@@ -63,6 +63,22 @@ export const respondent2SolicitorCredentials = {
   orgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0'
 }
 
+// The solicitors who take over a represented party with a notice of change (NOTICE_OF_CHANGE), each from an
+// organisation that has no other part in the claims: the claimant's new solicitor, and a defendant's new solicitor
+export const newClaimantSolicitorCredentials = {
+  name: 'New Claimant Solicitor',
+  username: 'civil.damages.claims+organisation.1.solicitor.1@gmail.com',
+  password: defaultPassword,
+  orgId: process.env.ENVIRONMENT === Environment.DEMO ? 'OZO586V' : '0FA7S8S',
+}
+
+export const newDefendantSolicitorCredentials = {
+  name: 'New Defendant Solicitor',
+  username: 'civil.damages.claims+organisation.2.solicitor.1@gmail.com',
+  password: defaultPassword,
+  orgId: process.env.ENVIRONMENT === Environment.DEMO ? 'DOSS3I2' : 'N5AFUXG',
+}
+
 // Region 1 (London) judge, which covers the Clerkenwell court the claims are issued at. Judges see cases through their
 // region's role assignment, so they are not assigned to the case. An environment whose judges differ (such as demo) sets
 // JUDGE_USERNAME and JUDGE_PASSWORD.
@@ -133,6 +149,15 @@ export const continueRetries = {
 // How many seconds to wait for the payment result page, which can be slow when the payment service is busy.
 // Override with PAYMENT_RESULT_WAIT_SECONDS.
 export const paymentResultWaitSeconds = Number(process.env.PAYMENT_RESULT_WAIT_SECONDS ?? 60);
+
+// The case assignment service (aac-manage-case-assignment), which a notice of change goes through. A preview has its
+// own, whose address follows the XUI one (xui-civil-citizen-ui-pr-8265... becomes
+// manage-case-assignment-civil-citizen-ui-pr-8265...); every other environment has one at its internal address.
+// Override with AAC_API_URL.
+export const caseAssignmentApiBaseUrl: string = process.env.AAC_API_URL
+  ?? (process.env.ENVIRONMENT === Environment.PREVIEW
+    ? (envUrl ?? '').replace('://xui-', '://manage-case-assignment-')
+    : `http://aac-manage-case-assignment-${feesEnvironment}.service.core-compute-${feesEnvironment}.internal`);
 
 // How many cases to unassign from a user in one call at teardown. The case IDs go in a request URL, so large
 // numbers of cases are sent in batches to stay within URL length limits. Override with UNASSIGN_BATCH_SIZE.
