@@ -1,0 +1,59 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_CORRESPONDENCE",
+    "CaseFieldID": "mediationCorrespondenceLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "MediationCorrespondence",
+    "PageLabel": "Record mediation correspondence",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-mediation-correspondence",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_CORRESPONDENCE",
+    "CaseFieldID": "mediationCorrespondenceParties",
+    "DisplayContext": "MANDATORY",
+    "PageID": "MediationCorrespondence",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_CORRESPONDENCE",
+    "CaseFieldID": "mediationCorrespondenceType",
+    "DisplayContext": "MANDATORY",
+    "PageID": "MediationCorrespondence",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_CORRESPONDENCE",
+    "CaseFieldID": "mediationCorrespondenceDate",
+    "DisplayContext": "MANDATORY",
+    "PageID": "MediationCorrespondence",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_CORRESPONDENCE",
+    "CaseFieldID": "mediationCorrespondenceSummary",
+    "DisplayContext": "MANDATORY",
+    "PageID": "MediationCorrespondence",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  }
+]

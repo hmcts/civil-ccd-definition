@@ -1,0 +1,51 @@
+[
+  {
+    "ID": "MediationCorrespondence",
+    "ListElementCode": "partiesInvolved",
+    "FieldType": "Text",
+    "ElementLabel": "Who was involved in this correspondence?",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationCorrespondence",
+    "ListElementCode": "correspondenceType",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "MediationCorrespondenceType",
+    "ElementLabel": "Type of correspondence",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationCorrespondence",
+    "ListElementCode": "correspondenceDate",
+    "FieldType": "Date",
+    "ElementLabel": "Date the correspondence was sent or received",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationCorrespondence",
+    "ListElementCode": "summary",
+    "FieldType": "TextArea",
+    "ElementLabel": "Summary of the correspondence",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationCorrespondence",
+    "ListElementCode": "createdBy",
+    "FieldType": "Text",
+    "ElementLabel": "Created by",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationCorrespondence",
+    "ListElementCode": "createdOn",
+    "FieldType": "DateTime",
+    "ElementLabel": "Created on",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

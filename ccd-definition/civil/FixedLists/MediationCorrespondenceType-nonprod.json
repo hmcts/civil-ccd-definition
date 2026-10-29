@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "MediationCorrespondenceType",
+    "ListElementCode": "INBOUND_TELEPHONE_CALL",
+    "ListElement": "Inbound telephone call",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationCorrespondenceType",
+    "ListElementCode": "OUTBOUND_TELEPHONE_CALL",
+    "ListElement": "Outbound telephone call",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationCorrespondenceType",
+    "ListElementCode": "INBOUND_EMAIL",
+    "ListElement": "Inbound email",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "MediationCorrespondenceType",
+    "ListElementCode": "OUTBOUND_EMAIL",
+    "ListElement": "Outbound email",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "MediationCorrespondenceType",
+    "ListElementCode": "WEBCHAT",
+    "ListElement": "Webchat",
+    "DisplayOrder": 5
+  }
+]
