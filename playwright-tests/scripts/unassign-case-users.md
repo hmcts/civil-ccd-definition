@@ -1,12 +1,14 @@
 # Unassigning the test users from a case
 
-`unassign-case-users.ts` unassigns the legal rep users the tests use from one case, whatever case roles they hold on it:
+`unassign-case-users.ts` unassigns the legal rep users the tests use from one case, whatever case roles they hold on it, or with `--all` from every case on a PR's preview:
 
 | User | Username |
 |---|---|
 | Claimant Solicitor | hmcts.civil+organisation.1.solicitor.1@gmail.com |
 | Respondent1 Solicitor | hmcts.civil+organisation.2.solicitor.1@gmail.com |
 | Respondent2 Solicitor | hmcts.civil+organisation.3.solicitor.1@gmail.com |
+| New Claimant Solicitor | civil.damages.claims+organisation.1.solicitor.1@gmail.com |
+| New Defendant Solicitor | civil.damages.claims+organisation.2.solicitor.1@gmail.com |
 
 Use it to tidy up a case kept with KEEP_CASE_ASSIGNMENTS=Yes once you have finished with it, or one left assigned by a run that was stopped before its teardown. It has been tried on AAT and previews. Demo and ITHC name their services the same way as AAT, so it should work there too, but it has not been tried. Run every command from the repository root.
 
@@ -32,12 +34,21 @@ ENV=aat yarn unassign:case-users 1792691185763774 --dry-run
 
 The case reference can be given with or without dashes (1792-6911-8576-3774).
 
+Unassign every test user from every case on a PR's preview, for example before the preview is reused or torn down:
+
+```
+ENV=preview PREVIEW_SERVICE=citizen-ui PR_NUMBER=8408 yarn unassign:case-users --all
+```
+
+Add `--dry-run` to only list the cases each user is assigned to. `--all` only works on a preview of a civil PR (PREVIEW_SERVICE ccd, service or citizen-ui). It is refused on AAT, demo and ITHC, where it would also unassign cases other runs are using, and on a preview of XUI itself (PREVIEW_SERVICE=webapp), whose services are AAT's.
+
 ## Options
 
 | Option | What it does |
 |---|---|
-| `<case reference>` | The 16 digit case reference. Required. |
-| `--dry-run` | Only show who is assigned to the case. Nothing is unassigned and no records are removed. |
+| `<case reference>` | The 16 digit case reference. Required, unless `--all` is given. |
+| `--all` | Every case on the preview instead of one, of every case type, so claims (CIVIL) and their general applications (GENERALAPPLICATION) alike: each test user's cases are read from the preview's role assignment service (the output gives how many of each type), unassigned in batches (UNASSIGN_BATCH_SIZE, default 50) and checked, and their teardown records removed. Preview only. |
+| `--dry-run` | Only show who is assigned (with `--all`, to which cases). Nothing is unassigned and no records are removed. |
 
 | Setting | What it does |
 |---|---|
