@@ -9,11 +9,11 @@ export default class InterestClaimUntilPage extends ExuiPage(BasePage) {
     await super.runVerifications([super.expectText(subheadings.interestClaimUntil)]);
   }
 
-  async selectSameInterest() {
+  async selectUntilClaimSubmitDate() {
     await super.clickBySelector(radioButtons.interestClaimUntil.submitDate.selector);
   }
 
-  async selectBreakDownInterest() {
+  async selectUntilSettledOrJudgementMade() {
     await super.clickBySelector(radioButtons.interestClaimUntil.untilSettledOrJudgement.selector);
   }
 

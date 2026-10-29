@@ -5,6 +5,11 @@ import BaseExui from '../../../base/base-exui';
 import { claimantSolicitorUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import CaseState from '../../../constants/cases/case-state';
+import ClaimInterest from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/claim-interest';
+import InterestClaimOption from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-option';
+import SameRateInterestType from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/same-rate-interest-type';
+import InterestClaimFromOption from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-from-option';
+import InterestClaimUntilOption from '../../../constants/ccd-events/ccd-events/create-claim/create-claim-spec/interest-claim-until-option';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -114,6 +119,108 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.noAddAnotherDefendant();
         await createClaimSpecActions.flightDelayClaimNo();
         await createClaimSpecActions.claimDetailsSmallTrack();
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimSpecActions.confirmCreateClaimSpec();
+      },
+      ccdEvents.CREATE_CLAIM_SPEC,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
+    );
+  }
+
+  async CreateClaimSmall1v1Interest() {
+    const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.noAddAnotherDefendant();
+        await createClaimSpecActions.flightDelayClaimNo();
+        await createClaimSpecActions.claimDetailsSmallTrack({
+          claimInterest: ClaimInterest.YES,
+          interestClaimOption: InterestClaimOption.SAME_RATE_INTEREST,
+          sameRateInterestType: SameRateInterestType.EIGHT_PERCENT,
+          interestClaimFrom: InterestClaimFromOption.FROM_CLAIM_SUBMIT_DATE,
+        });
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimSpecActions.confirmCreateClaimSpec();
+      },
+      ccdEvents.CREATE_CLAIM_SPEC,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
+    );
+  }
+
+  async CreateClaimSmall1v1BreakDownInterest() {
+    const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.noAddAnotherDefendant();
+        await createClaimSpecActions.flightDelayClaimNo();
+        await createClaimSpecActions.claimDetailsSmallTrack({
+          claimInterest: ClaimInterest.YES,
+          interestClaimOption: InterestClaimOption.BREAK_DOWN_INTEREST,
+          interestClaimFrom: InterestClaimFromOption.FROM_CLAIM_SUBMIT_DATE,
+        });
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimSpecActions.confirmCreateClaimSpec();
+      },
+      ccdEvents.CREATE_CLAIM_SPEC,
+      {
+        verifySuccessEvent: false,
+        expectedState: CaseState.PENDING_CASE_ISSUED,
+      },
+    );
+  }
+
+  async CreateClaimSmall1v1DifferentRateInterestFromSpecificDate() {
+    const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.noAddAnotherDefendant();
+        await createClaimSpecActions.flightDelayClaimNo();
+        await createClaimSpecActions.claimDetailsSmallTrack({
+          claimInterest: ClaimInterest.YES,
+          interestClaimOption: InterestClaimOption.SAME_RATE_INTEREST,
+          sameRateInterestType: SameRateInterestType.DIFFERENT_RATE,
+          interestClaimFrom: InterestClaimFromOption.FROM_A_SPECIFIC_DATE,
+          interestClaimUntil: InterestClaimUntilOption.UNTIL_SETTLED_OR_JUDGEMENT_MADE,
+        });
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
       },
