@@ -39,6 +39,7 @@
     "CaseEventID": "MEDIATION_CORRESPONDENCE",
     "CaseFieldID": "mediationCorrespondenceDate",
     "DisplayContext": "MANDATORY",
+    "DisplayContextParameter": "#DATETIMEENTRY(dd-MM-yyyy)",
     "PageID": "MediationCorrespondence",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
