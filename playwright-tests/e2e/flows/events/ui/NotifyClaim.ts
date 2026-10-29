@@ -43,7 +43,13 @@ export class NotifyClaim {
         }
       }
     } else {
-      await this.pageHelper.continueToNextPage();
+      // XUI leaves out a page with nothing to ask, so a claim with a litigant in person defendant opens straight on the
+      // Certificate of Service page. Continue is only clicked on the first page when it is not that page, as clicking
+      // it there would send the certificate before it is filled in.
+      await this.page.waitForURL(/\/trigger\/NOTIFY_DEFENDANT_OF_CLAIM\/NOTIFY_DEFENDANT_OF_CLAIM\w+/);
+      if (!this.page.url().includes('CertificateOfService')) {
+        await this.pageHelper.continueToNextPage();
+      }
       // Each litigant in person defendant needs a Certificate of Service page completing
       if (CoSHelper.litigantInPersonDefendants(claimType).length > 0) {
         await new CoSHelper(this.page).submit(claimType);
