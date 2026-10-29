@@ -4,8 +4,9 @@ import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.
 import { TestingEndPointHelper } from '../../../../helpers/TestingEndPointHelper.ts';
 
 // The other side's solicitor responds to a general application made with notice (RESPOND_TO_APPLICATION, on the
-// application) through the CCD API, instead of the event's pages in XUI: they do not agree to it, give a reason and a
-// supporting document, and want an in person hearing at Clerkenwell if one is needed. civil-service then sends the
+// application) through the CCD API, instead of the event's pages in XUI: to an application the applicant said they
+// agreed to, they confirm it; to any other, they do not agree, giving a reason and a supporting document. Either way
+// they want an in person hearing at Clerkenwell if one is needed. civil-service then sends the
 // application to a judge or legal adviser (APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION).
 export class RespondToApplication {
   private ccdApiHelper = new CcdApiHelper(CaseType.GENERAL_APPLICATION);
@@ -14,6 +15,12 @@ export class RespondToApplication {
     const credentials = sessionUsers[user].credentials;
     const document = await new TestingEndPointHelper().uploadTestDocument(credentials);
     await this.ccdApiHelper.submitEventThroughPages(credentials, 'RESPOND_TO_APPLICATION', applicationCaseId, [
+      // An application the applicant said was agreed (civil-service sets generalAppConsentOrder)
+      {
+        page: 'GARespondentConsent',
+        when: (data) => Boolean(data.generalAppConsentOrder),
+        answers: { gaRespondentConsent: 'Yes' },
+      },
       {
         page: 'GARespondent1RespScreen',
         when: (data) => data.generalAppVaryJudgementType !== 'Yes' && !data.generalAppConsentOrder,

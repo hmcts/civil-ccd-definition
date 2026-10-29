@@ -3,11 +3,11 @@ import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.
 import { TestingEndPointHelper } from '../../../../helpers/TestingEndPointHelper.ts';
 import yesNo from '../../../../enums/yesNo.ts';
 
-// What a general application asks for: its type (as the claim's INITIATE_GENERAL_APPLICATION lists them, e.g.
-// STAY_THE_CLAIM), whether the other side has agreed to it, and, when they have not, whether it is made with notice to
-// them
+// What a general application asks for: its types (one or more, as the claim's INITIATE_GENERAL_APPLICATION lists
+// them, e.g. STAY_THE_CLAIM), whether the other side has agreed to it, and, when they have not, whether it is made with
+// notice to them
 export interface GeneralApplicationAnswers {
-  type: string;
+  types: string[];
   respondentAgreed: yesNo;
   withNotice: yesNo;
 }
@@ -28,7 +28,7 @@ export class GeneralApplication {
     const notAgreed = answers.respondentAgreed === yesNo.NO;
 
     await this.ccdApiHelper.submitEventThroughPages(credentials, 'INITIATE_GENERAL_APPLICATION', claimCaseId, [
-      { page: 'GATypePage', answers: { generalAppTypeLR: { types: [answers.type] } } },
+      { page: 'GATypePage', answers: { generalAppTypeLR: { types: answers.types } } },
       { page: 'GAHearingDate', answers: { generalAppHearingDate: { hearingScheduledPreferenceYesNo: 'No' } } },
       { page: 'GARespondentAgreementPage', answers: { generalAppRespondentAgreement: { hasAgreed: answers.respondentAgreed } } },
       { page: 'GAUrgencyRecordPage', answers: { generalAppUrgencyRequirement: { generalAppUrgency: 'No' } } },
@@ -44,7 +44,7 @@ export class GeneralApplication {
       {
         page: 'StatementOfTruth',
         answers: {
-          generalAppDetailsOfOrder: `The order sought: ${answers.type}`,
+          generalAppDetailsOfOrder: `The order sought: ${answers.types.join(', ')}`,
           generalAppReasonsOfOrder: 'Reasons given by playwright-tests',
           generalAppEvidenceDocument: [{ value: evidence }],
           generalAppStatementOfTruthConsent: ['ConsentAgreementCheckBox'],
@@ -78,7 +78,7 @@ export class GeneralApplication {
     ]);
 
     const applicationCaseId = await this.testingEndPointHelper.waitForNewGeneralApplication(claimCaseId, knownApplications);
-    console.log(`INITIATE_GENERAL_APPLICATION (${answers.type}) submitted through the API on case ${claimCaseId}: application ${applicationCaseId}`);
+    console.log(`INITIATE_GENERAL_APPLICATION (${answers.types.join(', ')}) submitted through the API on case ${claimCaseId}: application ${applicationCaseId}`);
     return applicationCaseId;
   }
 }

@@ -199,10 +199,15 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     noticeOfChangeSetting: scenarioEnv.NOTICE_OF_CHANGE,
     noticeOfChangeAfter: scenarioEnv.NOTICE_OF_CHANGE_AFTER ?? 'ASSIGN_DEFENDANT_SOLICITORS',
     noticeOfChangeFirstStep: 'ASSIGN_DEFENDANT_SOLICITORS',
-    // A general application the claimant's solicitor makes (GENERAL_APPLICATION, such as STAY_THE_CLAIM), with notice,
-    // after the GENERAL_APPLICATION_AFTER step (default RESPOND_TO_DEFENCE). See generalApplicationSteps.ts.
-    generalApplicationType: scenarioEnv.GENERAL_APPLICATION,
+    // A general application the claimant's solicitor makes (GENERAL_APPLICATION: its types, such as STAY_THE_CLAIM or
+    // EXTEND_TIME,STAY_THE_CLAIM), with notice, after the GENERAL_APPLICATION_AFTER step (default RESPOND_TO_DEFENCE).
+    // See generalApplicationSteps.ts.
+    generalApplicationSetting: scenarioEnv.GENERAL_APPLICATION,
     generalApplicationAfter: scenarioEnv.GENERAL_APPLICATION_AFTER ?? 'RESPOND_TO_DEFENCE',
+    // Whether the other side has agreed to it (GENERAL_APPLICATION_AGREED, default No) and, when not, whether it is made
+    // with notice to them (GENERAL_APPLICATION_WITH_NOTICE, default Yes)
+    generalApplicationAgreed: yes(scenarioEnv.GENERAL_APPLICATION_AGREED),
+    generalApplicationWithNotice: scenarioEnv.GENERAL_APPLICATION_WITH_NOTICE === 'No' ? yesNo.NO : yesNo.YES,
     // Each defendant's response (RESPONDENT1_RESPONSE, RESPONDENT2_RESPONSE, default FULL_DEFENCE), and when a defendant
     // who admits all or part of the claim will pay (ADMISSION_PAYMENT_ROUTE, default IMMEDIATELY)
     respondent1Response,

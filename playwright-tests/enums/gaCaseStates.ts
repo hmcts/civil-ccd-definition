@@ -7,6 +7,8 @@ enum GaCaseStates {
   // Waiting for a judge's or legal adviser's decision
   APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION = 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION',
   ORDER_MADE = 'ORDER_MADE',
+  // An approved application the court deals with offline from then on, such as the claimant's application to strike out
+  PROCEEDS_IN_HERITAGE = 'PROCEEDS_IN_HERITAGE',
   APPLICATION_DISMISSED = 'APPLICATION_DISMISSED',
 }
 

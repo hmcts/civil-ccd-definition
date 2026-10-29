@@ -13,9 +13,10 @@ export class PaymentPage {
     this.buttonHelper = new ButtonHelper(this.page);
   }
 
-  // Pays a fee from the Service Request tab. serviceRequestReference is the fee's service request (as the case keeps it
-  // in claimIssuedPBADetails or hearingFeePBADetails), so "Pay now" is clicked in that fee's row: a case can list more
-  // than one unpaid fee, for example a claim fee and a hearing fee. Without it the only "Pay now" link is clicked.
+  // Pays a fee from the Service Request tab of the case showing: a claim, or a general application. serviceRequestReference
+  // is the fee's service request (as the case keeps it in claimIssuedPBADetails, hearingFeePBADetails or
+  // generalAppPBADetails), so "Pay now" is clicked in that fee's row: a case can list more than one unpaid fee, for
+  // example a claim fee and a hearing fee. Without it the only "Pay now" link is clicked.
   // The fee is paid from the PBA account, or by card (PAYMENT_METHOD=CARD, with the card in fixtures/paymentCard.ts).
   async makePayment(paymentMethod: PaymentMethod = PaymentMethod.PBA, serviceRequestReference?: string){
     const confirmPaymentButton = this.page.getByRole('button', { name: 'Confirm payment' });
@@ -25,11 +26,14 @@ export class PaymentPage {
     // empty table or only fees already paid until it does. So wait for the "Pay now" link itself, reloading the
     // page between tries.
     const payNow = serviceRequestReference
-      ? this.page.locator('.ServiceRequest tr.govuk-table__row', { hasText: serviceRequestReference }).getByText('Pay now')
+      ? this.page.getByRole('row').filter({ hasText: serviceRequestReference }).getByText('Pay now')
       : this.page.getByText('Pay now');
+    // A claim's tab wraps its table in .ServiceRequest; a general application's tab is just the table
+    const serviceRequests = this.page.locator('.ServiceRequest').or(this.page.getByRole('table')).first();
+    const serviceRequestTab = this.page.getByRole('tab', { name: 'Service Request' });
     for (let retry = 1; retry <= maxRetries; retry++) {
       await new TabsHelper(this.page).selectTab('Service Request');
-      await this.page.locator('.ServiceRequest').waitFor({state: 'visible'});
+      await serviceRequests.waitFor({state: 'visible'});
       let payNowShown = true;
       try {
         await payNow.waitFor({ state: 'visible', timeout: 5000 });
@@ -42,7 +46,8 @@ export class PaymentPage {
       }
       console.log('Refreshing webpage - waiting for "Pay now" link for Service request, try: ' + retry + ' of ' + maxRetries);
       await this.page.reload();
-      await this.page.locator('#next-step').waitFor({state: 'visible'});
+      // A general application has no Next step list where the user has no event to start, so the tab is waited for
+      await serviceRequestTab.waitFor({state: 'visible'});
     }
 
     await payNow.click();
