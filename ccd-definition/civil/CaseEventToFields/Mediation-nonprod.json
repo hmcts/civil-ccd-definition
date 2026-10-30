@@ -1,0 +1,59 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationAppointmentType",
+    "PageID": "RecordMediationAppointment",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageLabel": "Record mediation appointment details",
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationAutoAppointmentLabel",
+    "PageID": "RecordAutoMediationAppointment",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageLabel": "Record auto-mediation appointment details",
+    "PageShowCondition": "mediationAppointmentType=\"AUTO\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationAutoAppointment",
+    "PageID": "RecordAutoMediationAppointment",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "PageShowCondition": "mediationAppointmentType=\"AUTO\"",
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationBulkAppointmentLabel",
+    "PageID": "RecordBulkMediationAppointment",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "PageLabel": "Record bulk-mediation appointment details",
+    "PageShowCondition": "mediationAppointmentType=\"BULK\"",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationBulkAppointment",
+    "PageID": "RecordBulkMediationAppointment",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
+    "PageShowCondition": "mediationAppointmentType=\"BULK\"",
+    "DisplayContext": "COMPLEX",
+    "ShowSummaryChangeOption": "Y"
+  }
+]

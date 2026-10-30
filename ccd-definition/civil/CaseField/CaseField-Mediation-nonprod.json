@@ -1,0 +1,43 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAppointmentType",
+    "Label": "Which type of appointment do you need to record?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationAppointmentType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAutoAppointmentLabel",
+    "Label": "Record the details of the auto-mediation appointment you have scheduled on MMT.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAutoAppointment",
+    "Label": "Mediation appointment details",
+    "FieldType": "MediationAutoAppointment",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationBulkAppointmentLabel",
+    "Label": "Record the details of the bulk-mediation appointment you have scheduled on MMT.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationBulkAppointment",
+    "Label": "Mediation appointment details",
+    "FieldType": "MediationBulkAppointment",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
