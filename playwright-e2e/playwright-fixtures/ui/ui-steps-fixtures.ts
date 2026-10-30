@@ -15,6 +15,7 @@ import JudgeSteps from '../../steps/ui/exui/judge.steps';
 import IdamSteps from '../../steps/ui/exui/idam-steps';
 import ExuiDashboardSteps from '../../steps/ui/exui/exui-dashboard-steps';
 import DefendantSolicitor2SpecSteps from '../../steps/ui/exui/defendant-solicitor-2-spec-steps';
+import DefendantSolicitor2GaSteps from '../../steps/ui/ga-exui/defendant-solicitor-2-ga-steps';
 import DefendantSolicitor2Steps from '../../steps/ui/exui/defendant-solicitor-2-steps';
 import HearingCenterAdminSteps from '../../steps/ui/exui/hearing-center-admin-steps';
 import HearingCenterAdminSpecSteps from '../../steps/ui/exui/hearing-center-admin-spec-steps';
@@ -33,6 +34,7 @@ type UiStepsFixtures = {
   DefendantSolicitor1SpecSteps: DefendantSolicitor1SpecSteps;
   DefendantSolicitor2Steps: DefendantSolicitor2Steps;
   DefendantSolicitor2SpecSteps: DefendantSolicitor2SpecSteps;
+  DefendantSolicitor2GaSteps: DefendantSolicitor2GaSteps;
   CaseworkerSteps: CaseworkerSteps;
   HearingCenterAdminSteps: HearingCenterAdminSteps;
   HearingCenterAdminSpecSteps: HearingCenterAdminSpecSteps;
@@ -76,6 +78,9 @@ export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).
   },
   DefendantSolicitor2SpecSteps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new DefendantSolicitor2SpecSteps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData));
+  },
+  DefendantSolicitor2GaSteps: async ({ _gaExuiDashboardActions, _idamActions, _defendantSolicitor2GaActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor2GaSteps(_gaExuiDashboardActions, _idamActions, _defendantSolicitor2GaActionsFactory, _requestsFactory, _testData));
   },
   CaseworkerSteps: async ({ _exuiDashboardActions, _idamActions, _caseworkerActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new CaseworkerSteps(_exuiDashboardActions, _idamActions, _caseworkerActionsFactory, _requestsFactory, _testData));

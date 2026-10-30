@@ -19,8 +19,11 @@ import QueryManagementActions from '../common/query-management/query-management-
 import QueryManagementPageFactory from '../../../../pages/exui/common/query-management/query-management-page-factory.ts';
 import RefundActions from '../common/refunds/refund-actions';
 import RefundPageFactory from '../../../../pages/exui/common/refunds/refund-page-factory';
+import InitiateGeneralApplicationActions from './initiate-general-application-actions';
+import GeneralApplicationPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/general-application/general-application-page-factory';
 
 export default class DefendantActionsFactory extends BasePageActionsFactory {
+
   get defendantResponseActions() {
     return new DefendantResponseActions(new DefendantResponsePageFactory(this.page), this.testData);
   }
@@ -84,5 +87,12 @@ export default class DefendantActionsFactory extends BasePageActionsFactory {
 
   get refundActions() {
     return new RefundActions(new RefundPageFactory(this.page), this.testData);
+  }
+
+  get initiateGeneralApplicationActions() {
+    return new InitiateGeneralApplicationActions(
+      new GeneralApplicationPageFactory(this.page),
+      this.testData,
+    );
   }
 }

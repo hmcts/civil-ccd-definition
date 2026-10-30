@@ -3,11 +3,12 @@ import { test as testUtils } from '../utils/test-utils-fixtures';
 import { mergeTests } from 'playwright/test';
 import CaseworkerActionsFactory from '../../actions/ui/exui/caseworker/caseworker-actions-factory';
 import ClaimantSolicitorActionsFactory from '../../actions/ui/exui/claimant-solicitor/claimant-solcitor-actions-factory';
-import ClaimantSolicitorGaActionsFactory from '../../actions/ui/ga-exui/claimant-solicitor/claimant-solcitor-ga-actions-factory';
+import ClaimantSolicitorGaActionsFactory from '../../actions/ui/ga-exui/claimant-solicitor/claimant-solicitor-ga-actions-factory';
 import CtscAdminActionsFactory from '../../actions/ui/exui/ctsc-admin/ctsc-admin-actions-factory';
 import ExuiDashboardActions from '../../actions/ui/exui/common/exui-dashboard-actions';
 import GaExuiDashboardActions from '../../actions/ui/ga-exui/common/ga-exui-dashboard-actions';
 import DefendantActionsFactory from '../../actions/ui/exui/defendant-solicitor/defendant-actions-factory';
+import DefendantSolicitor2GaActionsFactory from '../../actions/ui/ga-exui/defendant-solicitor/defendant-solicitor-ga-actions-factory';
 import HearingCenterAdminGaActionsFactory from '../../actions/ui/ga-exui/hearing-center-admin/hearing-center-admin-ga-actions-factory';
 import JudgeGaActionsFactory from '../../actions/ui/ga-exui/judge/judge-ga-actions-factory';
 import JudgeLAActionsFactory from '../../actions/ui/exui/judge-la/judge-la-actions-factory';
@@ -29,6 +30,7 @@ type UiActionsFixtures = {
   _hearingCenterAdminGaActionsFactory: HearingCenterAdminGaActionsFactory;
   _judgeGaActionsFactory: JudgeGaActionsFactory;
   _defendantActionsFactory: DefendantActionsFactory;
+  _defendantSolicitor2GaActionsFactory: DefendantSolicitor2GaActionsFactory;
   _caseworkerActionsFactory: CaseworkerActionsFactory;
   _hearingCenterAdminActionsFactory: HearingCenterAdminActionsFactory;
   _judgeLaActionsFactory: JudgeLAActionsFactory;
@@ -69,6 +71,9 @@ export const test = mergeTests(testUtils, requestFactories).extend<UiActionsFixt
   },
   _defendantActionsFactory: async ({ page, _testData }, use) => {
     await use(new DefendantActionsFactory(page, _testData));
+  },
+  _defendantSolicitor2GaActionsFactory: async ({ page, _testData }, use) => {
+    await use(new DefendantSolicitor2GaActionsFactory(page, _testData));
   },
   _caseworkerActionsFactory: async ({ page, _testData }, use) => {
     await use(new CaseworkerActionsFactory(page, _testData));
