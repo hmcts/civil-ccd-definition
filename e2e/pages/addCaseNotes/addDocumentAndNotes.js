@@ -23,6 +23,20 @@ module.exports = {
       I.attachFile(this.fields.documentAndNoteToAdd.fragment.document, file);
       I.fillField(this.fields.documentAndNoteToAdd.fragment.note, 'Test Note');
     });
-    await I.clickContinue();
+    await I.usePlaywrightTo('wait for document upload', async ({ page }) => {
+      const input = page.locator('#documentAndNoteToAdd_0_document');
+
+      await input.waitFor({ state: 'attached', timeout: 30000 });
+
+      await page.waitForFunction(() => {
+        const el = document.querySelector('#documentAndNoteToAdd_0_document');
+        return el && el.files && el.files.length > 0;
+      }, null, { timeout: 30000 });
+
+      await page.waitForTimeout(5000);
+    });
+
+    await I.click('Continue');
+    await I.waitForText('Check your answers', 30);
   },
 };
