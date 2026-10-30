@@ -52,5 +52,21 @@
     "FieldTypeParameter": "MediationNotSettledReason",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationOutcome",
+    "Label": "Mediation outcome",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationSectionHeading",
+    "Label": "<h2 class=\"govuk-heading-m\">Mediation</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
