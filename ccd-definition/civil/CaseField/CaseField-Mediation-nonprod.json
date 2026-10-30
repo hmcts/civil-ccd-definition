@@ -1,0 +1,72 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationUnsuccessfulOutcome",
+    "Label": "Why was mediation unsuccessful?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationUnsuccessfulOutcome",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationNotConductedReason",
+    "Label": "Why was mediation not conducted?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationNotConductedReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationNotAttendedReason",
+    "Label": "Why was mediation not attended?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationNotAttendedReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationCancelledReason",
+    "Label": "Why was mediation cancelled?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationCancelledReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAbandonedReason",
+    "Label": "Why was mediation abandoned?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationAbandonedReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationNotSettledReason",
+    "Label": "Why was mediation not settled?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationNotSettledReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationOutcome",
+    "Label": "Mediation outcome",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationSectionHeading",
+    "Label": "<h2 class=\"govuk-heading-m\">Mediation</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

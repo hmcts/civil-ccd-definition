@@ -1,0 +1,76 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "mediationUnsuccessfulOutcome",
+    "DisplayContext": "MANDATORY",
+    "PageID": "mediationUnsuccessful",
+    "PageLabel": "Mediation Unsuccessful",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "showCarmFields=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "mediationNotConductedReason",
+    "DisplayContext": "MANDATORY",
+    "PageID": "mediationNotConducted",
+    "PageLabel": "Mediation Unsuccessful",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
+    "FieldShowCondition": "mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "mediationNotAttendedReason",
+    "DisplayContext": "MANDATORY",
+    "PageID": "mediationNotConducted",
+    "PageLabel": "Mediation Unsuccessful",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 2,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "mediationNotConductedReason=\"NOT_ATTENDED\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "mediationCancelledReason",
+    "DisplayContext": "MANDATORY",
+    "PageID": "mediationNotConducted",
+    "PageLabel": "Mediation Unsuccessful",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "mediationNotConductedReason=\"CANCELLED\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "mediationAbandonedReason",
+    "DisplayContext": "MANDATORY",
+    "PageID": "mediationNotConducted",
+    "PageLabel": "Mediation Unsuccessful",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "mediationNotConductedReason=\"ABANDONED\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "mediationNotSettledReason",
+    "DisplayContext": "MANDATORY",
+    "PageID": "mediationNotSettled",
+    "PageLabel": "Mediation Unsuccessful",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_SETTLED\"",
+    "FieldShowCondition": "mediationUnsuccessfulOutcome=\"NOT_SETTLED\""
+  }
+]

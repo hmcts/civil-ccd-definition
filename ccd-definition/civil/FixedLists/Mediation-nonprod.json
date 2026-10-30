@@ -1,0 +1,206 @@
+[
+  {
+    "ID": "MediationUnsuccessfulOutcome",
+    "ListElementCode": "NOT_CONDUCTED",
+    "ListElement": "Not Conducted",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationUnsuccessfulOutcome",
+    "ListElementCode": "NOT_SETTLED",
+    "ListElement": "Not Settled",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationNotConductedReason",
+    "ListElementCode": "NOT_ATTENDED",
+    "ListElement": "Not Attended",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationNotConductedReason",
+    "ListElementCode": "CANCELLED",
+    "ListElement": "Cancelled",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationNotConductedReason",
+    "ListElementCode": "ABANDONED",
+    "ListElement": "Abandoned",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "MediationNotAttendedReason",
+    "ListElementCode": "CLAIMANT_NOT_CONTACTABLE",
+    "ListElement": "Not attended - claimant not contactable",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationNotAttendedReason",
+    "ListElementCode": "DEFENDANT_NOT_CONTACTABLE",
+    "ListElement": "Not attended - defendant not contactable",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationNotAttendedReason",
+    "ListElementCode": "BOTH_PARTIES",
+    "ListElement": "Not attended - both parties",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "MediationNotAttendedReason",
+    "ListElementCode": "PARTIES_NOT_INFORMED",
+    "ListElement": "Not attended - party/ies not informed",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "MediationCancelledReason",
+    "ListElementCode": "ADMIN_ERROR",
+    "ListElement": "Cancelled - admin error",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationCancelledReason",
+    "ListElementCode": "BY_PARTIES",
+    "ListElement": "Cancelled - by party/ies",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationCancelledReason",
+    "ListElementCode": "PARTIES_ALREADY_SETTLED",
+    "ListElement": "Cancelled - as parties already settled/claim dismissed",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "MediationCancelledReason",
+    "ListElementCode": "SAFEGUARDING_CLAIMANT",
+    "ListElement": "Cancelled - vulnerable user or safeguarding concern - claimant",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "MediationCancelledReason",
+    "ListElementCode": "SAFEGUARDING_DEFENDANT",
+    "ListElement": "Cancelled - vulnerable user or safeguarding concern - defendant",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "MediationCancelledReason",
+    "ListElementCode": "NON_MANDATED",
+    "ListElement": "Cancelled - non-mandated - mediation no longer requested",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "MediationCancelledReason",
+    "ListElementCode": "JUDICIAL_DIRECTION",
+    "ListElement": "Cancelled - judicial direction or court order",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "MediationAbandonedReason",
+    "ListElementCode": "ETHICAL_REASONS",
+    "ListElement": "Abandoned - ethical reasons",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationAbandonedReason",
+    "ListElementCode": "BY_PARTIES",
+    "ListElement": "Abandoned - by party/ies",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationAbandonedReason",
+    "ListElementCode": "BEHAVIOUR_OF_PARTIES",
+    "ListElement": "Abandoned - behaviour of party/ies",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "MediationAbandonedReason",
+    "ListElementCode": "LOST_CONTACT",
+    "ListElement": "Abandoned - lost contact with party/ies",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "MediationAbandonedReason",
+    "ListElementCode": "NO_AUTHORITY",
+    "ListElement": "Abandoned - no authority",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "MediationAbandonedReason",
+    "ListElementCode": "PARTIES_NOT_AVAILABLE",
+    "ListElement": "Abandoned - party/ies not available",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "MediationAbandonedReason",
+    "ListElementCode": "PARTIES_DO_NOT_ACCEPT_TERMS",
+    "ListElement": "Abandoned - party/ies do not accept terms",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "MediationAbandonedReason",
+    "ListElementCode": "NOT_SUITABLE",
+    "ListElement": "Abandoned - not suitable",
+    "DisplayOrder": 8
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "PARTIES_TOO_FAR_APART",
+    "ListElement": "Parties too far apart",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "BOTH_PARTIES_NOT_IN_GOOD_FAITH",
+    "ListElement": "Both parties not in good faith",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "NO_AUTHORITY_TO_GO_FURTHER",
+    "ListElement": "No authority to go further",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "FURTHER_EVIDENCE_REQUIRED",
+    "ListElement": "Further evidence required",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "SETTLEMENT_BREAK_DOWN",
+    "ListElement": "Settlement break down",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "WRONG_PARTY",
+    "ListElement": "Wrong Party",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "INAPPROPRIATE_CASE",
+    "ListElement": "Inappropriate case",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "UNKNOWN_ISSUES_RAISED",
+    "ListElement": "Unknown Issues raised",
+    "DisplayOrder": 8
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "CLAIMANT_NOT_IN_GOOD_FAITH",
+    "ListElement": "Claimant not in good faith",
+    "DisplayOrder": 9
+  },
+  {
+    "ID": "MediationNotSettledReason",
+    "ListElementCode": "DEFENDANT_NOT_IN_GOOD_FAITH",
+    "ListElement": "Defendant not in good faith",
+    "DisplayOrder": 10
+  }
+]
