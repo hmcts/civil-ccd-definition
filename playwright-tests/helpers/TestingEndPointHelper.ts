@@ -6,7 +6,7 @@ import moment from 'moment-business-days';
 import { APIResponse } from 'playwright';
 import { stringify } from 'node:querystring';
 import { TokensHelper } from './TokensHelper.ts';
-import { civilServiceUrl, ccdDataStoreApiBaseUrl, createCase, systemupdate, civilSystemUpdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials } from '../civilConfig.ts';
+import { civilServiceUrl, ccdDataStoreApiBaseUrl, createCase, systemupdate, civilSystemUpdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials, workAllocation } from '../civilConfig.ts';
 import claimTypes from '../enums/claim-types.ts';
 import CaseStates from '../enums/caseStates.ts';
 import GaCaseStates from '../enums/gaCaseStates.ts';
@@ -39,6 +39,11 @@ export class TestingEndPointHelper {
     // console.log('accessToken>>> ',this.nonEventTokens.accessToken);
     // console.log('s2sToken>>> ',this.nonEventTokens.s2sToken);
     const apiRequestContext: APIRequestContext = await request.newContext();
+    // While the process is STARTED, Camunda is asked every incidentCheckSeconds whether one of its steps has failed for
+    // good (an incident), so the test stops with the step's error rather than waiting for the timeout
+    const incidentCheckSeconds = 15;
+    let lastIncidentCheck = 0;
+    let camundaReachable = true;
     await expect.poll(async () => {
       // A request that gets no answer in time, or a gateway answering with an error page, is treated as not finished
       // yet and asked again
@@ -75,6 +80,19 @@ export class TestingEndPointHelper {
       if (status === 'FINISHED') {
         console.log(`Event: ${camundaEventToCheckFor} has status of: ${status}. Continuing test...`);
       }
+      if (status === 'STARTED' && processInstanceId && camundaReachable && Date.now() - lastIncidentCheck >= incidentCheckSeconds * 1000) {
+        lastIncidentCheck = Date.now();
+        const incident = await this.camundaIncident(processInstanceId);
+        if (incident === undefined) {
+          console.log(`Camunda (${workAllocation.camundaUrl}) could not be asked about failed steps, so case ${caseId} is only checked through its business process`);
+          camundaReachable = false;
+        } else if (incident) {
+          throw new Error(`${camundaEvent} failed in Camunda for case ${caseId} at ${incident.activityId}: ${incident.incidentMessage}`
+            + (incident.incidentType === 'failedExternalTask'
+              ? `\nTo retry the step: curl -X PUT -H "Content-Type: application/json" -d '{"retries":1}' ${workAllocation.camundaUrl}/external-task/${incident.configuration}/retries`
+              : ''));
+        }
+      }
       return status;
       },
       {
@@ -84,6 +102,25 @@ export class TestingEndPointHelper {
         message: camundaEventToCheckFor ? `The camunda event: ${camundaEventToCheckFor} did not start within the allowed timeframe` : '',
       }).toBe('FINISHED');
   };
+
+  // The oldest incident on a Camunda process instance, null if it has none, or undefined if Camunda cannot be asked
+  // (on AAT its address is only reachable on the VPN). A step that fails in a called process also raises an incident
+  // on the process that called it, so the business process's own instance is enough.
+  private async camundaIncident(processInstanceId: string): Promise<{ activityId: string; incidentMessage: string; incidentType: string; configuration: string } | null | undefined> {
+    const camunda = await request.newContext();
+    try {
+      const response = await camunda.get(`${workAllocation.camundaUrl}/incident?processInstanceId=${processInstanceId}&sortBy=incidentTimestamp&sortOrder=asc`, { timeout: 10000 });
+      if (!response.ok()) {
+        return undefined;
+      }
+      const incidents = await response.json();
+      return Array.isArray(incidents) && incidents.length > 0 ? incidents[0] : null;
+    } catch {
+      return undefined;
+    } finally {
+      await camunda.dispose();
+    }
+  }
 
   // Waits until the case has no business process running (none, or the last one FINISHED). civil-service refuses to
   // start most events while one is running ("There is a technical issue causing a delay"). Through the UI the time
