@@ -1,0 +1,45 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationCorrespondenceLabel",
+    "Label": "All mediation correspondence must be recorded as separate entries.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationCorrespondenceParties",
+    "Label": "Who was involved in this correspondence?",
+    "FieldType": "DynamicMultiSelectList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationCorrespondenceType",
+    "Label": "Which type of correspondence do you want to record?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationCorrespondenceType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationCorrespondenceDate",
+    "Label": "What date was the correspondence sent or received?",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationCorrespondenceSummary",
+    "Label": "Summary of the correspondence",
+    "HintText": "You can enter up to 1000 characters",
+    "FieldType": "TextArea",
+    "Max": 1000,
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
