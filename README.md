@@ -14,7 +14,8 @@ Civil CCD Definition and E2E tests
 - [API Functional Test Group Documentation](#api-test-documentation)
 
 ## Building and deploying the application
-
+## Building and deploying the application
+## Building and deploying the application
 ### Dependencies
 
 The project is dependent on other Civil repositories:
