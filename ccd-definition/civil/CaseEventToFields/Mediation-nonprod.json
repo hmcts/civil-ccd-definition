@@ -21,7 +21,7 @@
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
+    "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
     "FieldShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\""
   },
   {
@@ -34,7 +34,7 @@
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
+    "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
     "FieldShowCondition": "mediationNotConductedReason=\"NOT_ATTENDED\""
   },
   {
@@ -47,7 +47,7 @@
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
+    "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
     "FieldShowCondition": "mediationNotConductedReason=\"CANCELLED\""
   },
   {
@@ -60,7 +60,7 @@
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
+    "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
     "FieldShowCondition": "mediationNotConductedReason=\"ABANDONED\""
   },
   {
@@ -73,7 +73,7 @@
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_SETTLED\"",
+    "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_SETTLED\"",
     "FieldShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_SETTLED\""
   }
 ]
