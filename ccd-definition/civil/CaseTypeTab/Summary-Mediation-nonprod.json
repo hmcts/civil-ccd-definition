@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "mediationAutoAppointment",
+    "FieldShowCondition": "mediationAppointmentType=\"AUTO\"",
+    "TabFieldDisplayOrder": 205
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "mediationBulkAppointment",
+    "FieldShowCondition": "mediationAppointmentType=\"BULK\"",
+    "TabFieldDisplayOrder": 206
+  }
+]
