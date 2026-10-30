@@ -5,7 +5,26 @@ const config = require('../../../config.js');
 let validSummaryJudgmentDirectionsTask;
 
 if (config.runWAApiTest) {
-  validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
+  const expectedTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
+
+  validSummaryJudgmentDirectionsTask = {
+    ...expectedTask,
+    permissions: {
+      values: [
+        'Read',
+        'Own',
+        'Manage',
+        'Cancel',
+        'CompleteOwn',
+        'CancelOwn',
+        'Claim',
+        'Unclaim',
+        'Assign',
+        'Unassign',
+        'UnclaimAssign'
+      ]
+    }
+  };
 }
 
 let caseId;
@@ -27,7 +46,7 @@ Scenario('01 1v2 create 1v2DS unspec claim, notify claim, notity claim details, 
 }).retry(2);
 
 Scenario('02 Judge uploads evidence (add case note)', async ({I}) => {
-  await I.login(config.judgeUserWithRegionId1);
+  await I.login(config.judgeUserNightlyDJ);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGE');
@@ -38,22 +57,22 @@ Scenario('02 Judge uploads evidence (add case note)', async ({I}) => {
 });
 
 Scenario('03 Judge performs directions order', async ({I, api, WA}) => {
-  await I.login(config.judgeUserWithRegionId1);
+  await I.login(config.judgeUserNightlyDJ);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   let taskId;
   if (config.runWAApiTest) {
-    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
+    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserNightlyDJ, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
     WA.validateTaskInfo(summaryJudgmentDirectionsTask, validSummaryJudgmentDirectionsTask);
     taskId = summaryJudgmentDirectionsTask['id'];
-    api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
+    api.assignTaskToUser(config.judgeUserNightlyDJ, taskId);
   }
 
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJ');
   await I.judgePerformDJDirectionOrder();
 
   if (config.runWAApiTest) {
-    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+    api.completeTaskByUser(config.judgeUserNightlyDJ, taskId);
   }
 });
 
