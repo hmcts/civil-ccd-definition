@@ -4,7 +4,7 @@ const path = require('path');
 const model = JSON.parse(fs.readFileSync('build/state-event-model.json', 'utf8'));
 
 // Build set of event IDs that have entries on the email-notifications page
-const NOTIF_PAGE = 'https://hmcts.github.io/civil-service/email-notifications.html';
+const NOTIF_PAGE = 'https://civil-service-docs.platform.hmcts.net/email-notifications.html';
 const notifPageEvents = new Set();
 // Usage: node generate-state-event-svg.js [civil-service-path]
 const civilServiceRoot = process.argv[2]
