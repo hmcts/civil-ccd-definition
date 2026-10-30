@@ -22,7 +22,7 @@
     "PageFieldDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\"",
-    "FieldShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\""
+    "FieldShowCondition": "mediationUnsuccessfulOutcome=\"NOT_CONDUCTED\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -74,6 +74,6 @@
     "PageFieldDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
     "PageShowCondition": "mediationUnsuccessfulOutcome=\"NOT_SETTLED\"",
-    "FieldShowCondition": "showCarmFields=\"Yes\" AND mediationUnsuccessfulOutcome=\"NOT_SETTLED\""
+    "FieldShowCondition": "mediationUnsuccessfulOutcome=\"NOT_SETTLED\""
   }
 ]
