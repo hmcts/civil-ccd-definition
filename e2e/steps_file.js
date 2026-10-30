@@ -1661,7 +1661,7 @@ module.exports = function () {
       }
       eventName = gaEvents.GENERATE_DIRECTIONS_ORDER.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(gaEvents.GENERATE_DIRECTIONS_ORDER, gaCaseNumber),
+        () => caseViewPage.startEvent(gaEvents.GENERATE_DIRECTIONS_ORDER, gaCaseNumber, true),
         () => judgeOrderPage.verifyErrorMessage(),
         () => judgeOrderPage.selectOrderType(orderType),
         ...conditionalSteps(orderType === 'freeFromOrder', [
