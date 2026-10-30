@@ -31,7 +31,10 @@ module.exports = {
 
   async closeAndReturnToCaseDetails() {
     await I.click('Close and Return to case details');
-    await I.waitForText('Application', 15, this.fields.selectedTab);
+    await I.waitForVisible(
+      locate('[role="tab"]').withText('Application'),
+      30
+    );
   }
 };
 
