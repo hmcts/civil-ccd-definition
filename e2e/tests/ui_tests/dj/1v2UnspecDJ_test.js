@@ -5,7 +5,26 @@ const config = require('../../../config.js');
 let validSummaryJudgmentDirectionsTask;
 
 if (config.runWAApiTest) {
-  validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
+  const expectedTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
+
+  validSummaryJudgmentDirectionsTask = {
+    ...expectedTask,
+    permissions: {
+      values: [
+        'Read',
+        'Own',
+        'Manage',
+        'Cancel',
+        'CompleteOwn',
+        'CancelOwn',
+        'Claim',
+        'Unclaim',
+        'Assign',
+        'Unassign',
+        'UnclaimAssign'
+      ]
+    }
+  };
 }
 
 let caseId;
