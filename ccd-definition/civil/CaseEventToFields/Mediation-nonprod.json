@@ -29,7 +29,6 @@
     "PageID": "RecordAutoMediationAppointment",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,
-    "PageShowCondition": "mediationAppointmentType=\"AUTO\"",
     "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
   },
@@ -52,7 +51,6 @@
     "PageID": "RecordBulkMediationAppointment",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 2,
-    "PageShowCondition": "mediationAppointmentType=\"BULK\"",
     "DisplayContext": "COMPLEX",
     "ShowSummaryChangeOption": "Y"
   }
