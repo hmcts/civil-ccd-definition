@@ -59,7 +59,7 @@ const config = {
     pageSubmitTimeout: 45_000,
   },
   idam: {
-    eventRetries: parseInt(process.env.PLAYWRIGHT_IDAM_RETRIES),
+    eventRetries: parseInt(process.env.PLAYWRIGHT_IDAM_RETRIES || '2', 10),
     pageSubmitTimeout: 30_000
   },
   users: {
