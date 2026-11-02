@@ -3,11 +3,6 @@ import { PageHelper } from '../../../../helpers/PageHelper';
 import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 import claimTypes from '../../../../enums/claim-types.ts';
 import notifyClaimOptions from '../../../../enums/notifyClaimOptions.ts';
-import moment from 'moment-business-days';
-import CoSDelivery from '../../../../enums/CoSDelivery.ts';
-import { EnumsHelper } from '../../../../helpers/EnumsHelper.ts';
-import CoSLocations from '../../../../enums/CoSLocations.ts';
-import CoSLocationTypes from '../../../../enums/CoSLocationTypes.ts';
 import { CoSHelper } from '../../../../helpers/CoSHelper.ts';
 
 export class NotifyClaim {

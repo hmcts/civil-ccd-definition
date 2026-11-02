@@ -1,7 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 //import {runningEnv} from "../../../iacConfig";
 import { createCase } from '../../../civilConfig.ts';
-import {WaitUtils} from '../../utils/wait.utils.ts';
 import { PageHelper } from '../../../helpers/PageHelper.ts';
 
 export class CreateCasePage {

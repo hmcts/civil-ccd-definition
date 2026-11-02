@@ -1,10 +1,7 @@
 import { APIRequestContext, expect, request } from '@playwright/test';
-import path from 'path';
-import fs from 'fs';
 import moment from 'moment-business-days';
 
 import { APIResponse } from 'playwright';
-import { stringify } from 'node:querystring';
 import { TokensHelper } from './TokensHelper.ts';
 import { civilServiceUrl, ccdDataStoreApiBaseUrl, createCase, systemupdate, civilSystemUpdate, apiRetries, respondent1SolicitorCredentials, respondent2SolicitorCredentials, workAllocation } from '../civilConfig.ts';
 import claimTypes from '../enums/claim-types.ts';

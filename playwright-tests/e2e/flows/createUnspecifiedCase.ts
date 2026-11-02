@@ -72,7 +72,7 @@ export class CreateUnspecifiedCase {
     await this.pageHelper.continueToNextPage();
   }
 
-  async setCourt(remoteHearing: string = 'No', court: string = 'clerkenwell') {
+  async setCourt(remoteHearing: string = 'No') {
     await this.page
       .locator('#courtLocation_applicantPreferredCourtLocationList')
       .selectOption(courts.clerkenwell.longAddress);
