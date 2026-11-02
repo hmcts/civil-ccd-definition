@@ -1514,5 +1514,37 @@
     "ListElementCode": "unavailableDatesForMediation.toDate",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecResponseTimelineEvents",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specResponseTimelineOfEvents",
+    "ListElementCode": "timelineDate",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecResponseTimelineEvents",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specResponseTimelineOfEvents",
+    "ListElementCode": "timelineDescription",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecResponseTimelineEvents2",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specResponseTimelineOfEvents2",
+    "ListElementCode": "timelineDate",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SpecResponseTimelineEvents2",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "specResponseTimelineOfEvents2",
+    "ListElementCode": "timelineDescription",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
   }
 ]
