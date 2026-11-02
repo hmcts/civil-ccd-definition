@@ -61,7 +61,7 @@ export class WaTaskHelper {
     await this.waitForCamundaTask(caseId, taskType);
 
     // 2. Send it to WA task management now, rather than waiting for the cron job
-    await this.runInitiationJob();
+    await WaTaskHelper.runInitiationJob();
 
     // 3. Wait for the task to reach WA task management, then claim it for the signed-in user
     const task = await this.waitForXuiTask(caseId, eventId, taskType);
@@ -118,7 +118,7 @@ export class WaTaskHelper {
   // Runs the WA task monitor's INITIATION job, which the wa-task-batch-initiation cron job runs every 5 minutes.
   // The task monitor only accepts calls from the wa_task_monitor service, so a token for it is leased from the
   // test S2S service.
-  private async runInitiationJob() {
+  static async runInitiationJob() {
     const api = await request.newContext();
     try {
       const lease = await api.post(`${authProviderApiBaseUrl}/testing-support/lease`, {
