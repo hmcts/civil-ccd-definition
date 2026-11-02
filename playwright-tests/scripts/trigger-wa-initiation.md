@@ -6,11 +6,20 @@ Camunda creates a work allocation task within seconds of the event that causes i
 
 ## Commands
 
-Wait for Camunda to have a task for a case (a claim or a general application), then send it:
+Wait for Camunda to have a task for a case, then send it:
 
 ```
 ENV=preview PREVIEW_SERVICE=citizen-ui PR_NUMBER=8408 yarn trigger:wa-initiation 1793612849320891
 ```
+
+Give the reference of the case the task belongs to, which is not always the claim:
+
+| Task | Case reference to give | Example tasks |
+|---|---|---|
+| A general application's | The application's own reference (case type GENERALAPPLICATION), shown on the application's page in XUI. Not the claim's: Camunda keeps general application tasks against the application. | JudgeDecideOnApplication, LegalAdvisorDecideOnApplication, ReviewApplication |
+| A claim's | The claim's reference (case type CIVIL). | FastTrackDirections, LegalAdvisorSmallClaimsTrackDirections |
+
+With the claim's reference, the script does not find a general application's tasks. It waits `WA_TASK_WAIT_SECONDS` and then stops with "Camunda has no task for case …".
 
 Just run the job, which sends every task waiting on the environment:
 
