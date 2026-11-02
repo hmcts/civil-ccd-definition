@@ -13,6 +13,8 @@ import { GeneralApplication as ApiGeneralApplication } from '../flows/events/api
 import { GeneralApplicationFee as ApiGeneralApplicationFee } from '../flows/events/api/GeneralApplicationFee.ts';
 import { MakeDecisionOnApplication } from '../flows/events/ui/MakeDecisionOnApplication.ts';
 import { MakeDecisionOnApplication as ApiMakeDecisionOnApplication } from '../flows/events/api/MakeDecisionOnApplication.ts';
+import { ReferToJudge } from '../flows/events/ui/ReferToJudge.ts';
+import { ReferToJudge as ApiReferToJudge } from '../flows/events/api/ReferToJudge.ts';
 import { RespondToApplication } from '../flows/events/ui/RespondToApplication.ts';
 import { RespondToApplication as ApiRespondToApplication } from '../flows/events/api/RespondToApplication.ts';
 import { JourneyContext, JourneyStep } from './journeyRunner.ts';
@@ -46,6 +48,9 @@ export interface GaClaim {
   generalApplicationWithNotice: yesNo;
   // GENERAL_APPLICATION_BY: whose solicitor makes it (default claimant)
   generalApplicationBy: string;
+  // GENERAL_APPLICATION_REFER_TO_JUDGE: whether a legal adviser given the decision refers it to a judge, who then decides
+  // it (default No)
+  generalApplicationReferToJudge: yesNo;
 }
 
 // The parties who can make an application, each with their solicitor's session user and a label
@@ -124,7 +129,9 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
 // GENERAL_APPLICATION: the claimant's solicitor makes it (agreed by the other side or not, and with notice or not) and
 // pays its fee (or a defendant's solicitor does, GENERAL_APPLICATION_BY), the other parties' solicitors respond to one
 // made with notice (confirming they agreed, or not agreeing), and a legal
-// adviser or judge (whoever work allocation gives the task to) approves the order. The
+// adviser or judge (whoever work allocation gives the task to) approves the order. With
+// GENERAL_APPLICATION_REFER_TO_JUDGE=Yes, a legal adviser given the task refers it to a judge (GA_REFER_TO_JUDGE), who
+// approves it instead. The
 // application is a case of its own, so the claim's state is not changed by it. Without GENERAL_APPLICATION the journey
 // still lists one GENERAL_APPLICATION step, skipped with the reason, as it does for other switched-off steps.
 //
@@ -257,6 +264,49 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
   // Who decides depends on where the application is and its types, so there is a step for each, and the one whose task
   // work allocation did not create is skipped when it runs
   let decisionTask: Promise<string | undefined> | undefined;
+  const findDecisionTask = () => {
+    decisionTask ??= WaTaskHelper.createdTaskType(ctx.gaCaseId, decisionTasks.map((task) => task.taskType));
+    return decisionTask;
+  };
+  const referToJudge = c.generalApplicationReferToJudge === yesNo.YES;
+  let referred = false;
+
+  // With GENERAL_APPLICATION_REFER_TO_JUDGE=Yes, a legal adviser given the decision refers it to a judge (REFER_TO_JUDGE,
+  // from the application's Next step list) instead of deciding it: work allocation completes their task and gives a
+  // judge a JudgeDecideOnApplication task, and the application waits for the judge's decision
+  const referStep: JourneyStep = {
+    name: 'GA_REFER_TO_JUDGE',
+    group: 'GENERAL_APPLICATION',
+    title: 'Legal Adviser refers the general application to a judge.',
+    user: 'legalAdviser',
+    skipIf: [
+      ...(anchor.skipIf ?? []),
+      [!referToJudge, 'Skipping as the legal adviser does not refer the application to a judge (set GENERAL_APPLICATION_REFER_TO_JUDGE=Yes to)'],
+    ],
+    run: async ({ page, storageState, user }) => {
+      const created = await findDecisionTask();
+      expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
+      test.skip(created !== 'LegalAdvisorDecideOnApplication', `Skipping as work allocation gave the decision to a judge (${created}), so there is nothing to refer`);
+      await ctx.runEvent(page, storageState, async () => {
+        await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
+        await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'REFER_TO_JUDGE', 'LegalAdvisorDecideOnApplication');
+        if (!ctx.useApi()) {
+          await new ReferToJudge(page).submit();
+        }
+      }, ctx.gaCaseUrl());
+      if (ctx.useApi()) {
+        await new ApiReferToJudge().submit(ctx.gaCaseId, user);
+      }
+      await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.gaCaseId);
+      await ctx.assertGaCaseState(GaCaseStates.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION);
+      // The judge decides it now
+      referred = true;
+      decisionTask = WaTaskHelper.createdTaskType(ctx.gaCaseId, ['JudgeDecideOnApplication']);
+      expect(await decisionTask, `Work allocation created no JudgeDecideOnApplication task for application ${ctx.gaCaseId} after it was referred`).toBeDefined();
+      await claimStateUnchanged();
+    },
+  };
+
   const decisionSteps: JourneyStep[] = decisionTasks.map(({ taskType, user, label: decider }) => ({
     name: `GA_DECISION_${user === 'judge' ? 'JUDGE' : 'LEGAL_ADVISER'}`,
     group: 'GENERAL_APPLICATION',
@@ -264,8 +314,8 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     user,
     skipIf: anchor.skipIf,
     run: async ({ page, storageState }) => {
-      decisionTask ??= WaTaskHelper.createdTaskType(ctx.gaCaseId, decisionTasks.map((task) => task.taskType));
-      const created = await decisionTask;
+      test.skip(referred && taskType === 'LegalAdvisorDecideOnApplication', 'Skipping as the legal adviser referred the application to a judge');
+      const created = await findDecisionTask();
       expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
       test.skip(created !== taskType, `Skipping as work allocation gave the decision to ${decisionTasks.find((task) => task.taskType === created)?.label} (${created})`);
       await ctx.runEvent(page, storageState, async () => {
@@ -283,5 +333,6 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       await claimStateUnchanged();
     },
   }));
-  return [...steps, ...decisionSteps];
+  // The legal adviser's decision step comes first, so the referral goes before it
+  return [...steps, referStep, ...decisionSteps];
 }

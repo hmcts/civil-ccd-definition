@@ -262,6 +262,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whose solicitor makes it (GENERAL_APPLICATION_BY: claimant, defendant1 or defendant2, default claimant); the other
     // parties' solicitors respond
     generalApplicationBy: scenarioEnv.GENERAL_APPLICATION_BY ?? 'claimant',
+    // Whether a legal adviser given the decision refers it to a judge, who then decides it
+    // (GENERAL_APPLICATION_REFER_TO_JUDGE, default No)
+    generalApplicationReferToJudge: yes(scenarioEnv.GENERAL_APPLICATION_REFER_TO_JUDGE),
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
     claimOfflineAfterNotifyClaim,
