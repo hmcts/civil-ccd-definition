@@ -4,6 +4,11 @@ civil-ccd-stack:
 civil-translation:
   enabled: false
 
+# values.yaml disables this, but Jenkins replaces values.yaml with this file, so
+# without this the chart is enabled in staging and previews with no case types.
+ccd-def-cleanup:
+  enabled: false
+
 am-org-role-mapping-service:
   enabled: false
 
