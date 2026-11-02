@@ -4,6 +4,15 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
+    "CaseFieldID": "mediationAppointmentType",
+    "FieldShowCondition": "claimType = \"DO_NOT_SHOW_IN_UI\"",
+    "TabFieldDisplayOrder": 207
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
     "CaseFieldID": "mediationAutoAppointment",
     "FieldShowCondition": "mediationAppointmentType=\"AUTO\"",
     "TabFieldDisplayOrder": 205
