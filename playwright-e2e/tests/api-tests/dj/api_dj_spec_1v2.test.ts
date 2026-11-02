@@ -31,7 +31,7 @@ test.describe(
       await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
-      await ClaimantSolicitorSpecApiSteps.DefaultJudgementSpec();
+      await ClaimantSolicitorSpecApiSteps.DefaultJudgementSpec1v2Divergent();
     });
   },
 );
