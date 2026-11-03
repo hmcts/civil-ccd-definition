@@ -7,6 +7,7 @@
     "PageID": "mediationUnsuccessful",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
+    "PageShowCondition": "showCaseworkerMediationActivities!=\"Yes\"",
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -61,5 +62,16 @@
     "PageFieldDisplayOrder": 5,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "showCarmFields=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "showCaseworkerMediationActivities",
+    "DisplayContext": "READONLY",
+    "PageID": "mediationUnsuccessful",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "defendantName=\"DO NOT SHOW IN UI\""
   }
 ]

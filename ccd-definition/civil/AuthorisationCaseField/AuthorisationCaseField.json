@@ -5544,6 +5544,32 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "showCaseworkerMediationActivities",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil",
+          "caseworker-civil-admin",
+          "cui-admin-profile",
+          "cui-nbc-profile",
+          "GS_profile",
+          "caseflags-admin",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1LRIndividuals",
     "AccessControl": [
       {
