@@ -365,6 +365,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
           console.log('Notify claim details -> claim went offline, later events are skipped');
         } else {
           await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+          // The acknowledgements, which assign the defendants' solicitors, are skipped when the run stops here
+          await ctx.assignDefendantSolicitorsIfStoppedAwaitingThem(c.claimType);
         }
       },
     },

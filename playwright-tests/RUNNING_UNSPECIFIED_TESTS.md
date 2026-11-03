@@ -93,6 +93,12 @@ ENV=aat STOP_AT_STATE=CASE_PROGRESSION KEEP_CASE_ASSIGNMENTS=Yes npx playwright 
 
 States: PENDING_CASE_ISSUED, CASE_ISSUED, AWAITING_CASE_DETAILS_NOTIFICATION, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, JUDICIAL_REFERRAL, CASE_STAYED, CASE_PROGRESSION, HEARING_READINESS, PREPARE_FOR_HEARING_CONDUCT_HEARING, DECISION_OUTCOME, All_FINAL_ORDERS_ISSUED, PROCEEDS_IN_HERITAGE_SYSTEM.
 
+STOP_AT_STATE=AWAITING_RESPONDENT_ACKNOWLEDGEMENT stops after Notify claim details, while the claim waits for the defendants to acknowledge and respond. The defendants' solicitors are assigned to the claim before the run stops, as the acknowledgements that would assign them are skipped, so you can carry on as them by hand. A defendant who is a litigant in person has no solicitor, so is not assigned. This only happens when STOP_AT_STATE is set to AWAITING_RESPONDENT_ACKNOWLEDGEMENT, not with STOP_AFTER_TEST. Add KEEP_CASE_ASSIGNMENTS=Yes, or the clean-up at the end of the run takes the case away from them again.
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS API_UNTIL=AWAITING_RESPONDENT_ACKNOWLEDGEMENT STOP_AT_STATE=AWAITING_RESPONDENT_ACKNOWLEDGEMENT KEEP_CASE_ASSIGNMENTS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
 ## 5. Stop at an event
 
 STOP_AFTER_TEST=<step> stops after that step (or group of steps). A test number such as test12 also works, but numbers move when steps are added, so a name is safer. If both STOP_AT_STATE and STOP_AFTER_TEST are set, the run stops at whichever comes first.

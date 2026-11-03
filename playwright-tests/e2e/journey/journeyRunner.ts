@@ -9,6 +9,7 @@ import { PaymentPage } from '../page-objects/pages/payment_page.ts';
 import PaymentMethod from '../../enums/paymentMethod.ts';
 import caseStates from '../../enums/caseStates.ts';
 import GaCaseStates from '../../enums/gaCaseStates.ts';
+import claimTypes from '../../enums/claim-types.ts';
 import { SessionHelper, sessionUserFor, sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
 import { requirePlaywrightTestsEnv } from '../../env.ts';
 
@@ -116,6 +117,18 @@ export class JourneyContext {
   async assertGaCaseState(state: GaCaseStates) {
     expect(this.gaCaseId, 'No general application has been made yet').toBeTruthy();
     await this.testingEndpointHelper.assertCaseState(this.gaCaseId, state);
+  }
+
+  // When the run stops as the claim waits for the defendants (STOP_AT_STATE=AWAITING_RESPONDENT_ACKNOWLEDGEMENT), gives
+  // the defendants' solicitors the case, as the steps that would have done so are skipped. The claim can then be carried
+  // on by hand as them (with KEEP_CASE_ASSIGNMENTS=Yes, or the run's clean-up takes the case away again). A defendant
+  // who is a litigant in person has no solicitor, so is not assigned.
+  async assignDefendantSolicitorsIfStoppedAwaitingThem(claimType: claimTypes) {
+    if (!this.stopAtStateReached || this.stopAtState !== caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT) {
+      return;
+    }
+    console.log(`Assigning the defendants' solicitors to case ${this.caseId}, as the run stops awaiting their response (STOP_AT_STATE)`);
+    await this.testingEndpointHelper.assignDefendantLegalRepToCase(this.caseId, claimType, [...this.defendantsGivenSolicitorByNoc]);
   }
 
   // Checks the claim is in the expected state, and notes when it has reached STOP_AT_STATE so the remaining tests are

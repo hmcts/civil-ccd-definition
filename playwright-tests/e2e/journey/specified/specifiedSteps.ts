@@ -94,6 +94,8 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       await ctx.testingEndpointHelper.serviceRequestUpdateClaimIssued(ctx.caseId, 'CREATE_CLAIM_SPEC_AFTER_PAYMENT');
     }
     await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+    // ASSIGN_DEFENDANT_SOLICITORS is skipped when the run stops here
+    await ctx.assignDefendantSolicitorsIfStoppedAwaitingThem(c.claimType);
   }
 
   const noDefendant1Solicitor: [boolean, string] = [c.claimShape.defendants[0].solicitor === 'none', 'Skipping as first defendant is a LiP'];

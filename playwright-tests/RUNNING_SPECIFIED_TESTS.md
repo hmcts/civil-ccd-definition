@@ -78,6 +78,12 @@ Settling or discontinuing the claim (SETTLE_CLAIM, DISCONTINUE_CLAIM) still runs
 ENV=aat STOP_AFTER_TEST=ASSIGN_DEFENDANT_SOLICITORS KEEP_CASE_ASSIGNMENTS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
+STOP_AT_STATE=AWAITING_RESPONDENT_ACKNOWLEDGEMENT stops as soon as the claim is issued, while it waits for the defendants to respond. The defendants' solicitors are assigned to the claim before the run stops, as ASSIGN_DEFENDANT_SOLICITORS is skipped, so you can carry on as them by hand. A defendant who is a litigant in person has no solicitor, so is not assigned. This only happens when STOP_AT_STATE is set to AWAITING_RESPONDENT_ACKNOWLEDGEMENT. Add KEEP_CASE_ASSIGNMENTS=Yes, or the clean-up at the end of the run takes the case away from them again.
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS API_UNTIL=AWAITING_RESPONDENT_ACKNOWLEDGEMENT STOP_AT_STATE=AWAITING_RESPONDENT_ACKNOWLEDGEMENT KEEP_CASE_ASSIGNMENTS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
 States the journey reaches: PENDING_CASE_ISSUED, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, JUDICIAL_REFERRAL, CASE_PROGRESSION, HEARING_READINESS, PREPARE_FOR_HEARING_CONDUCT_HEARING, DECISION_OUTCOME, IN_MEDIATION, CASE_STAYED, All_FINAL_ORDERS_ISSUED, PROCEEDS_IN_HERITAGE_SYSTEM.
 
 ## 5. Inform an agreed extension date
