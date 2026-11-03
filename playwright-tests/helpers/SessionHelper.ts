@@ -9,6 +9,7 @@ import {
   judgeCredentials,
   hearingCentreAdminCredentials,
   legalAdviserCredentials,
+  nbcAdminCredentials,
   newClaimantSolicitorCredentials,
   newDefendantSolicitorCredentials,
 } from '../civilConfig.ts';
@@ -38,6 +39,7 @@ export const sessionUsers = {
   judge: { credentials: judgeCredentials, authFile: `${authDir}/JudgeUser.json` },
   hearingCentreAdmin: { credentials: hearingCentreAdminCredentials, authFile: `${authDir}/HearingCentreAdminUser.json` },
   legalAdviser: { credentials: legalAdviserCredentials, authFile: `${authDir}/LegalAdviserUser.json` },
+  nbcAdmin: { credentials: nbcAdminCredentials, authFile: `${authDir}/NbcAdminUser.json` },
   // The solicitors who take over a represented party with a notice of change (NOTICE_OF_CHANGE)
   newClaimantSolicitor: { credentials: newClaimantSolicitorCredentials, authFile: `${authDir}/NewClaimantSolicitorUser.json` },
   newDefendantSolicitor: { credentials: newDefendantSolicitorCredentials, authFile: `${authDir}/NewDefendantSolicitorUser.json` },

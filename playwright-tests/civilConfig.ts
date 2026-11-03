@@ -105,6 +105,16 @@ export const legalAdviserCredentials = {
   password: process.env.LEGAL_ADVISER_PASSWORD || defaultPassword,
 }
 
+// A region 2 National Business Centre admin, who deals with the general applications work allocation gives court staff
+// while they are at the Civil National Business Centre (Northampton, region 2), such as approving a consent order the
+// other side agreed to (ReviewApplication). An environment whose NBC admins differ sets NBC_ADMIN_USERNAME and
+// NBC_ADMIN_PASSWORD.
+export const nbcAdminCredentials = {
+  name: 'National Business Centre Admin',
+  username: process.env.NBC_ADMIN_USERNAME || 'nbc_admin_region2@justice.gov.uk',
+  password: process.env.NBC_ADMIN_PASSWORD || defaultPassword,
+}
+
 // The civil system update user, which runs the events civil-service's schedulers run (such as the trial ready check)
 export const civilSystemUpdate = {
   username: 'civil-system-update@mailnesia.com',

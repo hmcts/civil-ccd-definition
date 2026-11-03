@@ -13,6 +13,8 @@ import { GeneralApplication as ApiGeneralApplication } from '../flows/events/api
 import { GeneralApplicationFee as ApiGeneralApplicationFee } from '../flows/events/api/GeneralApplicationFee.ts';
 import { MakeDecisionOnApplication } from '../flows/events/ui/MakeDecisionOnApplication.ts';
 import { MakeDecisionOnApplication as ApiMakeDecisionOnApplication } from '../flows/events/api/MakeDecisionOnApplication.ts';
+import { ApproveConsentOrder } from '../flows/events/ui/ApproveConsentOrder.ts';
+import { ApproveConsentOrder as ApiApproveConsentOrder } from '../flows/events/api/ApproveConsentOrder.ts';
 import { ReferToJudge } from '../flows/events/ui/ReferToJudge.ts';
 import { ReferToJudge as ApiReferToJudge } from '../flows/events/api/ReferToJudge.ts';
 import { RespondToApplication } from '../flows/events/ui/RespondToApplication.ts';
@@ -22,15 +24,12 @@ import { JourneyContext, JourneyStep } from './journeyRunner.ts';
 // The application types the journeys can make, as "Make an application" lists them
 export const generalApplicationTypes = [
   'ADJOURN_HEARING', 'AMEND_A_STMT_OF_CASE', 'EXTEND_TIME', 'RELIEF_FROM_SANCTIONS', 'SET_ASIDE_JUDGEMENT',
-  'STAY_THE_CLAIM', 'STRIKE_OUT', 'SUMMARY_JUDGEMENT', 'UNLESS_ORDER', 'VARY_ORDER', 'OTHER',
+  'SETTLE_BY_CONSENT', 'STAY_THE_CLAIM', 'STRIKE_OUT', 'SUMMARY_JUDGEMENT', 'UNLESS_ORDER', 'VARY_ORDER', 'OTHER',
 ];
 
 // Application types that are listed but cannot be made by the journeys yet, and why
 const unsupportedTypes: Record<string, string> = {
   VARY_PAYMENT_TERMS_OF_JUDGMENT: 'it is only offered once there is a judgment, and asks for an N245 form',
-  // Agreed with the other side, it gets a ReviewApplication task for court staff (hearing-centre-admin), who approve
-  // the consent order (APPROVE_CONSENT_ORDER), rather than a judge's or legal adviser's decision
-  SETTLE_BY_CONSENT: 'it is approved by court staff ("Approve consent order"), which the journeys do not do yet',
 };
 
 // The parts of a journey's settings that a general application uses
@@ -73,7 +72,13 @@ function respondingParties(c: GaClaim): GaParty[] {
 // Whether the other side's solicitor responds: to an application made with notice, which civil-service takes every
 // agreed application to be (they confirm they agreed). One made without notice goes to a judge or legal adviser as soon
 // as its fee is paid (civil-service's EndGeneralAppBusinessProcessCallbackHandler).
+// A solicitor's application to settle by consent (on its own, as it must be) goes straight to the court once its fee is
+// paid, as the other side has already agreed to it (isLRConsentApplication).
 function respondentResponds(c: GaClaim): boolean {
+  const types = generalApplicationTypesOf(c);
+  if (types.length === 1 && types[0] === 'SETTLE_BY_CONSENT') {
+    return false;
+  }
   return c.generalApplicationAgreed === yesNo.YES || c.generalApplicationWithNotice === yesNo.YES;
 }
 
@@ -88,6 +93,25 @@ const decisionTasks: Array<{ taskType: string; user: SessionUserKey; label: stri
   { taskType: 'LegalAdvisorDecideOnApplication', user: 'legalAdviser', label: 'Legal Adviser' },
   { taskType: 'JudgeDecideOnApplication', user: 'judge', label: 'Judge' },
 ];
+
+// An application the other side agreed to is a consent order, and those of the types court staff can deal with (such
+// as Settle by consent or a stay, but not a strike out) get a ReviewApplication task for court staff instead, who
+// approve the consent order (APPROVE_CONSENT_ORDER). It is the National Business Centre's admin while the application
+// is at the Civil National Business Centre, and the hearing centre's admin once it has moved to a hearing centre
+// (civil-wa-task-configuration's GA permissions DMN).
+const consentOrderTask = 'ReviewApplication';
+const consentOrderReviewers: Array<{ user: SessionUserKey; label: string; atNationalBusinessCentre: boolean; step: string }> = [
+  { user: 'nbcAdmin', label: 'National Business Centre Admin', atNationalBusinessCentre: true, step: 'NBC_ADMIN' },
+  { user: 'hearingCentreAdmin', label: 'Hearing Centre Admin', atNationalBusinessCentre: false, step: 'HEARING_CENTRE_ADMIN' },
+];
+
+// Who does a decision task, for the reasons a step is skipped
+function deciderOf(taskType: string | undefined): string {
+  if (taskType === consentOrderTask) {
+    return 'court staff';
+  }
+  return decisionTasks.find((task) => task.taskType === taskType)?.label ?? 'no one';
+}
 
 // Why the GENERAL_APPLICATION settings cannot be used with this claim, or undefined when they can
 export function generalApplicationProblem(c: GaClaim): string | undefined {
@@ -129,7 +153,8 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
 // GENERAL_APPLICATION: the claimant's solicitor makes it (agreed by the other side or not, and with notice or not) and
 // pays its fee (or a defendant's solicitor does, GENERAL_APPLICATION_BY), the other parties' solicitors respond to one
 // made with notice (confirming they agreed, or not agreeing), and a legal
-// adviser or judge (whoever work allocation gives the task to) approves the order. With
+// adviser or judge (whoever work allocation gives the task to) approves the order, or court staff approve an agreed one
+// as a consent order where work allocation gives it to them (ReviewApplication, such as Settle by consent). With
 // GENERAL_APPLICATION_REFER_TO_JUDGE=Yes, a legal adviser given the task refers it to a judge (GA_REFER_TO_JUDGE), who
 // approves it instead. The
 // application is a case of its own, so the claim's state is not changed by it. Without GENERAL_APPLICATION the journey
@@ -225,8 +250,8 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
           }
           await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT');
         }
-        // Made with notice and not agreed, it waits for the other side's response; otherwise it goes to a judge or legal
-        // adviser
+        // Made with notice or agreed, it waits for the other side's response; otherwise (or to settle by consent) it goes
+        // to a judge, legal adviser or court staff
         await ctx.assertGaCaseState(respondentResponds(c)
           ? GaCaseStates.AWAITING_RESPONDENT_RESPONSE
           : GaCaseStates.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION);
@@ -241,7 +266,9 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       user: gaParties[party].user,
       skipIf: [
         ...(anchor.skipIf ?? []),
-        [!respondentResponds(c), 'Skipping as the application was made without notice, so the other side does not respond'],
+        [!respondentResponds(c), types.includes('SETTLE_BY_CONSENT')
+          ? 'Skipping as an application to settle by consent goes straight to the court, so the other side does not respond'
+          : 'Skipping as the application was made without notice, so the other side does not respond'],
       ],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
@@ -265,7 +292,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
   // work allocation did not create is skipped when it runs
   let decisionTask: Promise<string | undefined> | undefined;
   const findDecisionTask = () => {
-    decisionTask ??= WaTaskHelper.createdTaskType(ctx.gaCaseId, decisionTasks.map((task) => task.taskType));
+    decisionTask ??= WaTaskHelper.createdTaskType(ctx.gaCaseId, [...decisionTasks.map((task) => task.taskType), consentOrderTask]);
     return decisionTask;
   };
   const referToJudge = c.generalApplicationReferToJudge === yesNo.YES;
@@ -317,7 +344,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       test.skip(referred && taskType === 'LegalAdvisorDecideOnApplication', 'Skipping as the legal adviser referred the application to a judge');
       const created = await findDecisionTask();
       expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
-      test.skip(created !== taskType, `Skipping as work allocation gave the decision to ${decisionTasks.find((task) => task.taskType === created)?.label} (${created})`);
+      test.skip(created !== taskType, `Skipping as work allocation gave the decision to ${deciderOf(created)} (${created})`);
       await ctx.runEvent(page, storageState, async () => {
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
         await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'MAKE_DECISION', taskType);
@@ -333,6 +360,42 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       await claimStateUnchanged();
     },
   }));
+  // An agreed application that work allocation gives to court staff (ReviewApplication): whoever deals with it where
+  // the application is approves the consent order. Only agreed applications can get the task, so the steps are skipped
+  // for any other.
+  const orderSought = `The order sought: ${types.join(', ')}`;
+  const consentOrderSteps: JourneyStep[] = consentOrderReviewers.map(({ user, label: reviewer, atNationalBusinessCentre, step }) => ({
+    name: `GA_APPROVE_CONSENT_ORDER_${step}`,
+    group: 'GENERAL_APPLICATION',
+    title: `${reviewer} approves the general application as a consent order.`,
+    user,
+    skipIf: [
+      ...(anchor.skipIf ?? []),
+      [c.generalApplicationAgreed !== yesNo.YES, 'Skipping as the other side did not agree to the application, so it is not a consent order'],
+    ],
+    run: async ({ page, storageState }) => {
+      const created = await findDecisionTask();
+      expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
+      test.skip(created !== consentOrderTask, `Skipping as work allocation gave the decision to ${deciderOf(created)} (${created})`);
+      const atCnbc = (await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId)).isCcmccLocation === 'Yes';
+      test.skip(atCnbc !== atNationalBusinessCentre, `Skipping as the application is ${atCnbc ? 'at the Civil National Business Centre' : 'at a hearing centre'}, so another admin approves it`);
+      await ctx.runEvent(page, storageState, async () => {
+        await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
+        await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'APPROVE_CONSENT_ORDER', consentOrderTask);
+        if (!ctx.useApi()) {
+          await new ApproveConsentOrder(page).approve(orderSought);
+        }
+      }, ctx.gaCaseUrl());
+      if (ctx.useApi()) {
+        await new ApiApproveConsentOrder().approve(ctx.gaCaseId, user, orderSought);
+      }
+      await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'APPROVE_CONSENT_ORDER');
+      // civil-service's StateGeneratorService: an approved consent order is an order made
+      await ctx.assertGaCaseState(GaCaseStates.ORDER_MADE);
+      await claimStateUnchanged();
+    },
+  }));
+
   // The legal adviser's decision step comes first, so the referral goes before it
-  return [...steps, referStep, ...decisionSteps];
+  return [...steps, referStep, ...decisionSteps, ...consentOrderSteps];
 }
