@@ -217,9 +217,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repOrgPolicy",
-    "PageShowCondition": "respondent1Represented=\"Yes\"",
-    "FieldShowCondition": "claimStarted = \"*\"",
-    "RetainHiddenValue": "Yes"
+    "PageShowCondition": "respondent1Represented=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -230,7 +228,9 @@
     "PageID": "DefendantSolicitorOrganisation",
     "PageDisplayOrder": 14,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1Represented=\"Yes\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -478,7 +478,9 @@
     "PageID": "SecondDefendantSolicitorOrganisation",
     "PageDisplayOrder": 21,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent2Represented=\"Yes\" AND respondent2SameLegalRepresentative=\"No\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
