@@ -2,18 +2,28 @@ import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.ts';
 import { TestingEndPointHelper } from '../../../../helpers/TestingEndPointHelper.ts';
 import yesNo from '../../../../enums/yesNo.ts';
+import moment from 'moment-business-days';
+import { workingDayAfter } from '../../../../helpers/WorkingDayHelper.ts';
 
 // What a general application asks for: its types (one or more, as the claim's INITIATE_GENERAL_APPLICATION lists
-// them, e.g. STAY_THE_CLAIM), whether the other side has agreed to it, and, when they have not, whether it is made with
-// notice to them
+// them, e.g. STAY_THE_CLAIM), whether the other side has agreed to it, when they have not, whether it is made with
+// notice to them, and whether it is urgent
 export interface GeneralApplicationAnswers {
   types: string[];
   respondentAgreed: yesNo;
   withNotice: yesNo;
+  urgent: yesNo;
+}
+
+// Why an urgent application is urgent, and the date to consider it by: a working day a week away, as it cannot be in the
+// past
+export const urgencyReason = 'Urgent, a reason given by playwright-tests';
+export async function urgentConsiderationDate(): Promise<string> {
+  return workingDayAfter(moment().format('YYYY-MM-DD'), 7);
 }
 
 // Makes a general application on a claim (INITIATE_GENERAL_APPLICATION, "Make an application") through the CCD API,
-// instead of the event's pages in XUI, with the same answers as the UI: not urgent, no hearing date to mention, an
+// instead of the event's pages in XUI, with the same answers as the UI: urgent or not, no hearing date to mention, an
 // evidence document, an in person hearing at Clerkenwell if one is needed, and the fee the last page shows.
 // civil-service then creates the application as a case of its own (CIVIL / GENERALAPPLICATION) linked to the claim,
 // waiting for its fee to be paid. Returns the application's case ID.
@@ -31,7 +41,20 @@ export class GeneralApplication {
       { page: 'GATypePage', answers: { generalAppTypeLR: { types: answers.types } } },
       { page: 'GAHearingDate', answers: { generalAppHearingDate: { hearingScheduledPreferenceYesNo: 'No' } } },
       { page: 'GARespondentAgreementPage', answers: { generalAppRespondentAgreement: { hasAgreed: answers.respondentAgreed } } },
-      { page: 'GAUrgencyRecordPage', answers: { generalAppUrgencyRequirement: { generalAppUrgency: 'No' } } },
+      {
+        page: 'GAUrgencyRecordPage',
+        answers: {
+          generalAppUrgencyRequirement: answers.urgent === yesNo.YES
+            ? {
+              generalAppUrgency: 'Yes',
+              reasonsForUrgency: urgencyReason,
+              urgentAppConsiderationDate: await urgentConsiderationDate(),
+              // Certifying that the urgent procedure is justified, as the UI asks
+              ConsentAgreementCheckBox: ['ConsentAgreementCheckBox'],
+            }
+            : { generalAppUrgency: 'No' },
+        },
+      },
       {
         page: 'GAWithOrWithoutNoticePage',
         when: (data) => notAgreed && data.generalAppVaryJudgementType !== 'Yes',

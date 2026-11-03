@@ -1,12 +1,13 @@
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 import { PageHelper } from '../../../../helpers/PageHelper.ts';
 import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 import yesNo from '../../../../enums/yesNo.ts';
-import { GeneralApplicationAnswers } from '../api/GeneralApplication.ts';
+import moment from 'moment-business-days';
+import { GeneralApplicationAnswers, urgencyReason, urgentConsiderationDate } from '../api/GeneralApplication.ts';
 
 // The claimant's solicitor makes a general application on the claim ("Make an application",
 // INITIATE_GENERAL_APPLICATION), with the same answers as the API version: the application types, whether the other side
-// agreed and, if not, with notice or not, not urgent, no hearing date to mention, an evidence document, an in person
+// agreed and, if not, with notice or not, urgent or not, no hearing date to mention, an evidence document, an in person
 // hearing at Clerkenwell if one is needed, and the fee the last page shows. civil-service then creates the application
 // as a case of its own, waiting for its fee.
 export class GeneralApplication {
@@ -35,8 +36,23 @@ export class GeneralApplication {
     await this.page.locator(`#generalAppRespondentAgreement_hasAgreed_${answers.respondentAgreed}`).check();
     await this.pageHelper.continueToNextPage();
 
-    // Not urgent
-    await this.page.locator('#generalAppUrgencyRequirement_generalAppUrgency_No').check();
+    // Urgent, with a reason and the date to consider it by, or not
+    if (answers.urgent === yesNo.YES) {
+      await this.page.locator('#generalAppUrgencyRequirement_generalAppUrgency_Yes').check();
+      await this.page.locator('#generalAppUrgencyRequirement_reasonsForUrgency').fill(urgencyReason);
+      await this.pageHelper.fillDate('urgentAppConsiderationDate', moment(await urgentConsiderationDate(), 'YYYY-MM-DD'));
+      // Certifying that the urgent procedure is justified. A click from Playwright does not always leave this box
+      // ticked, so the page's own click is used (as a user's click does), and then checked
+      const certify = this.page.locator('#generalAppUrgencyRequirement_ConsentAgreementCheckBox-ConsentAgreementCheckBox');
+      await certify.evaluate((box: HTMLInputElement) => {
+        if (!box.checked) {
+          box.click();
+        }
+      });
+      await expect(certify).toBeChecked();
+    } else {
+      await this.page.locator('#generalAppUrgencyRequirement_generalAppUrgency_No').check();
+    }
     await this.pageHelper.continueToNextPage();
 
     // With or without notice, only asked when the other side has not agreed

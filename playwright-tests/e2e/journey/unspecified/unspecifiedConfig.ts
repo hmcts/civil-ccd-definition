@@ -259,6 +259,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // with notice to them (GENERAL_APPLICATION_WITH_NOTICE, default Yes)
     generalApplicationAgreed: yes(scenarioEnv.GENERAL_APPLICATION_AGREED),
     generalApplicationWithNotice: scenarioEnv.GENERAL_APPLICATION_WITH_NOTICE === 'No' ? yesNo.NO : yesNo.YES,
+    // Whether it is urgent (GENERAL_APPLICATION_URGENT, default No): an urgent application goes straight to the court
+    // once its fee is paid, without the other side's response
+    generalApplicationUrgent: yes(scenarioEnv.GENERAL_APPLICATION_URGENT),
     // Whose solicitor makes it (GENERAL_APPLICATION_BY: claimant, defendant1 or defendant2, default claimant); the other
     // parties' solicitors respond
     generalApplicationBy: scenarioEnv.GENERAL_APPLICATION_BY ?? 'claimant',

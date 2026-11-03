@@ -45,6 +45,8 @@ export interface GaClaim {
   generalApplicationAgreed: yesNo;
   // GENERAL_APPLICATION_WITH_NOTICE: when they have not agreed, whether it is made with notice to them (default Yes)
   generalApplicationWithNotice: yesNo;
+  // GENERAL_APPLICATION_URGENT: whether it is urgent (default No)
+  generalApplicationUrgent: yesNo;
   // GENERAL_APPLICATION_BY: whose solicitor makes it (default claimant)
   generalApplicationBy: string;
   // GENERAL_APPLICATION_REFER_TO_JUDGE: whether a legal adviser given the decision refers it to a judge, who then decides
@@ -74,9 +76,13 @@ function respondingParties(c: GaClaim): GaParty[] {
 // as its fee is paid (civil-service's EndGeneralAppBusinessProcessCallbackHandler).
 // A solicitor's application to settle by consent (on its own, as it must be) goes straight to the court once its fee is
 // paid, as the other side has already agreed to it (isLRConsentApplication).
+// An urgent application also goes straight to the court, even one made with notice (isNotificationCriteriaSatisfied).
 function respondentResponds(c: GaClaim): boolean {
   const types = generalApplicationTypesOf(c);
   if (types.length === 1 && types[0] === 'SETTLE_BY_CONSENT') {
+    return false;
+  }
+  if (c.generalApplicationUrgent === yesNo.YES) {
     return false;
   }
   return c.generalApplicationAgreed === yesNo.YES || c.generalApplicationWithNotice === yesNo.YES;
@@ -184,7 +190,18 @@ export function withGeneralApplication(c: GaClaim, ctx: JourneyContext, steps: J
 }
 
 function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[], anchor: JourneyStep): JourneyStep[] {
-  const label = types.map((type) => type.toLowerCase().replace(/_/g, ' ')).join(', ');
+  const label = types.map((type) => type.toLowerCase().replace(/_/g, ' ')).join(', ')
+    + (c.generalApplicationUrgent === yesNo.YES ? ', urgent' : '');
+  // Why the other side does not respond, when they do not
+  const notRespondingReason = () => {
+    if (types.includes('SETTLE_BY_CONSENT')) {
+      return 'Skipping as an application to settle by consent goes straight to the court, so the other side does not respond';
+    }
+    if (c.generalApplicationUrgent === yesNo.YES) {
+      return 'Skipping as the application is urgent, so it goes straight to the court and the other side does not respond';
+    }
+    return 'Skipping as the application was made without notice, so the other side does not respond';
+  };
   const applicant = gaParties[c.generalApplicationBy as GaParty];
   const respondents = respondingParties(c);
   // Once its order is approved, the claimant's application to strike out is dealt with offline (civil-service's
@@ -207,7 +224,12 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       user: applicant.user,
       skipIf: anchor.skipIf,
       run: async ({ page, storageState, user }) => {
-        const answers = { types, respondentAgreed: c.generalApplicationAgreed, withNotice: c.generalApplicationWithNotice };
+        const answers = {
+          types,
+          respondentAgreed: c.generalApplicationAgreed,
+          withNotice: c.generalApplicationWithNotice,
+          urgent: c.generalApplicationUrgent,
+        };
         if (ctx.useApi()) {
           ctx.gaCaseId = await new ApiGeneralApplication().submit(ctx.caseId, user, answers);
         } else {
@@ -266,9 +288,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       user: gaParties[party].user,
       skipIf: [
         ...(anchor.skipIf ?? []),
-        [!respondentResponds(c), types.includes('SETTLE_BY_CONSENT')
-          ? 'Skipping as an application to settle by consent goes straight to the court, so the other side does not respond'
-          : 'Skipping as the application was made without notice, so the other side does not respond'],
+        [!respondentResponds(c), notRespondingReason()],
       ],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
