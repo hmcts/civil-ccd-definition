@@ -407,7 +407,8 @@
     "PageLabel": "Confirm defendant's name and address",
     "FieldShowCondition": "isRespondent1=\"Yes\"",
     "PageDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
