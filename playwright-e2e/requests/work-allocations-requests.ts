@@ -31,12 +31,18 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('tasks', responseJson);
         const tasks = responseJson.tasks;
-        await super.expectResponseJsonArrayToContain([{ type: validTask.type }], tasks, {
-          message: `Ongoing task retrieval process, case id: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`,
-        });
+        await super.expectResponseJsonArrayToContain(
+          [{ type: validTask.type, name: validTask.name }],
+          tasks,
+          {
+            message:
+              `Ongoing task retrieval process, case id: ${caseId}, ` +
+              `taskType: ${validTask.type}, taskName: ${validTask.name}, user: ${user.name}`,
+          },
+        );
       },
     });
-    const task = responseJson.tasks.find((task: WATask) => 
+    const task = responseJson.tasks.find((task: WATask) =>
       task.type === validTask.type && task.name === validTask.name);
     await super.expectResponseJsonToContain(validTask, task);
     console.log(`Successfully retrieved task, caseId: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`);
