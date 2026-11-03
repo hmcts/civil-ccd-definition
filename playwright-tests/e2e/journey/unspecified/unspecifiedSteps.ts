@@ -114,10 +114,14 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     [c.stayCase !== yesNo.YES, 'Staying the case is switched off (set STAY_CASE=Yes to run it)'],
   ];
   // The steps from the Standard Direction Order on, which need the claim to reach JUDICIAL_REFERRAL on the fast track
-  const noCaseProgression = (fastTrackReason = 'Skipping as the Standard Direction Order is only coded for the fast track'): Array<[boolean, string]> => [
+  // The steps once the claim has its directions: a Standard Direction Order on the fast track, a directions order on the
+  // intermediate and multi tracks. Small claims are not taken past JUDICIAL_REFERRAL yet. A step only made on the fast
+  // track gives its reason as fastTrackOnly.
+  const noCaseProgression = (fastTrackOnly?: string): Array<[boolean, string]> => [
     ...noClaimantResponse,
     [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
-    [c.track !== claimTrack.FAST, fastTrackReason],
+    [c.track === claimTrack.SMALL, 'Skipping as small claims are not taken past JUDICIAL_REFERRAL in the unspecified journey yet'],
+    ...(fastTrackOnly === undefined ? [] : [[c.track !== claimTrack.FAST, fastTrackOnly] as [boolean, string]]),
   ];
 
   // Once the claim fee has been paid (through the UI or the API), the payment service tells civil-service, which then
@@ -634,7 +638,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'CREATE_SDO',
       title: 'Judge makes a Standard Direction Order.',
       user: 'judge',
-      skipIf: noCaseProgression(),
+      skipIf: noCaseProgression('Skipping as the intermediate and multi tracks get a directions order instead'),
       run: async ({ page, storageState }) => {
         await ctx.runEvent(page, storageState, async () => {
           // Where work allocation is switched on, the judge needs the directions task to make the order. Noise induced
@@ -1176,10 +1180,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       ],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiUploadEvidence().submit(ctx.caseId, user);
+          await new ApiUploadEvidence().submit(ctx.caseId, user, c.track);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new UploadEvidence(page).submit();
+            await new UploadEvidence(page).submit(c.track);
           });
         }
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
