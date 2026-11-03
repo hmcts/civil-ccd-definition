@@ -18,3 +18,14 @@ export const radioButtons = {
     },
   },
 };
+
+export const inputs = {
+  differentRate: {
+    label: "Rate you're claiming",
+    selector: '#sameRateInterestSelection_differentRate',
+  },
+  differentRateReason: {
+    label: 'Why are you entitled to this rate?',
+    selector: '#sameRateInterestSelection_differentRateReason',
+  },
+};

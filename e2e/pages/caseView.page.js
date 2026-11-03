@@ -33,11 +33,19 @@ module.exports = {
     await I.forceClick(this.goButton);
   },
 
-  async startEvent(event, caseId) {
+  async startEvent(event, caseId, isGeneralApplication = false) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      // await this.start(event);
+      if (isGeneralApplication) {
+        await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}`);
+        await I.waitForVisible(
+          locate('[role="tab"]').withText('Application'),
+          45
+        );
+      } else {
+        await I.navigateToCaseDetails(caseId);
+      }
+
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
     }, EVENT_TRIGGER_LOCATOR, 3, 45);
   },

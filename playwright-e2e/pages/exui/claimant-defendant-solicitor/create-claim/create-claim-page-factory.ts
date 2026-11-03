@@ -427,7 +427,8 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   }
 
   get interestFromSpecificDate() {
-    return new InterestFromSpecificDate(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new InterestFromSpecificDate(this.page, dateFragment);
   }
 
   get sameRateInterestSelectionPage() {

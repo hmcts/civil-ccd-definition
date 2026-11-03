@@ -94,7 +94,7 @@ exports.config = {
     },
     failedAndNotExecutedTestFilesPlugin: {
       enabled: functional,
-      require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin',
+      require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin.js',
     },
     allure: {
       enabled: true,
@@ -105,7 +105,7 @@ exports.config = {
   mocha: {
     bail: true,
     reporterOptions: {
-      'codeceptjs-cli-reporter': {
+      './e2e/plugins/codeceptjsCliReporter.js': {
         stdout: '-',
         options: {
           steps: false,

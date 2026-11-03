@@ -1,3 +1,4 @@
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../mixin-pages/exui-page/exui-page';
@@ -8,6 +9,11 @@ import DateHelper from '../../../../../../helpers/date-helper';
 @AllMethodsStep()
 export default class InterestFromSpecificDate extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
+
+  constructor(page: Page, dateFragment: DateFragment) {
+    super(page);
+    this.dateFragment = dateFragment;
+  }
 
   async verifyContent() {
     await super.runVerifications([
