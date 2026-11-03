@@ -114,13 +114,11 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     [c.stayCase !== yesNo.YES, 'Staying the case is switched off (set STAY_CASE=Yes to run it)'],
   ];
   // The steps from the Standard Direction Order on, which need the claim to reach JUDICIAL_REFERRAL on the fast track
-  // The steps once the claim has its directions: a Standard Direction Order on the fast track, a directions order on the
-  // intermediate and multi tracks. Small claims are not taken past JUDICIAL_REFERRAL yet. A step only made on the fast
-  // track gives its reason as fastTrackOnly.
+  // The steps once the claim has its directions: a Standard Direction Order on the small and fast tracks, a directions
+  // order on the intermediate and multi tracks. A step only made on the fast track gives its reason as fastTrackOnly.
   const noCaseProgression = (fastTrackOnly?: string): Array<[boolean, string]> => [
     ...noClaimantResponse,
     [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
-    [c.track === claimTrack.SMALL, 'Skipping as small claims are not taken past JUDICIAL_REFERRAL in the unspecified journey yet'],
     ...(fastTrackOnly === undefined ? [] : [[c.track !== claimTrack.FAST, fastTrackOnly] as [boolean, string]]),
   ];
 
@@ -638,7 +636,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'CREATE_SDO',
       title: 'Judge makes a Standard Direction Order.',
       user: 'judge',
-      skipIf: noCaseProgression('Skipping as the intermediate and multi tracks get a directions order instead'),
+      skipIf: [
+        ...noCaseProgression(),
+        [c.track === claimTrack.INTERMEDIATE || c.track === claimTrack.MULTI, 'Skipping as the intermediate and multi tracks get a directions order instead'],
+      ],
       run: async ({ page, storageState }) => {
         await ctx.runEvent(page, storageState, async () => {
           // Where work allocation is switched on, the judge needs the directions task to make the order. Noise induced

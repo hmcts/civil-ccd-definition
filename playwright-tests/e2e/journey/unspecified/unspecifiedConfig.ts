@@ -164,7 +164,11 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
   // Direction Order directions, and their own work allocation task for it
   const noiseInducedHearingLoss: boolean =
     typeOfClaim == unspecClaimTypes.PERSONAL_INJURY && typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS;
-  const sdoTaskType: string = noiseInducedHearingLoss ? 'NIHLFastTrackDirections' : 'FastTrackDirections';
+  // A small claim's Standard Direction Order is also the judge's, from the Small Claims Track Directions task (unlike a
+  // specified small claim's, which work allocation gives a legal adviser)
+  const sdoTaskType: string = noiseInducedHearingLoss
+    ? 'NIHLFastTrackDirections'
+    : track === claimTrack.SMALL ? 'SmallClaimsTrackDirections' : 'FastTrackDirections';
   // The judge's final order (FINAL_ORDER). If it is not set, the first order the track offers is made: a free form order
   // on the small and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
   const finalOrder: FinalOrder = (scenarioEnv.FINAL_ORDER as FinalOrder) ?? finalOrdersForTrack[track][0];

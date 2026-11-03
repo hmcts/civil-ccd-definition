@@ -144,7 +144,7 @@ Steps, in the order they run:
 - SETTLE_CLAIM_MARK_PAID_FULL, SETTLE_CLAIM (optional)
 - DISCONTINUE_CLAIM, VALIDATE_DISCONTINUANCE (optional)
 
-The steps from CREATE_SDO on run for fast, intermediate and multi track claims that reach JUDICIAL_REFERRAL. A fast track claim gets CREATE_SDO. Intermediate and multi track claims get MAKE_DIRECTIONS_ORDER instead: the judge makes a directions order with "Make an order", keeping the claim on its track and uploading a blank pre-hearing order (documents/TEST_ORDER.docx), which moves the claim to CASE_PROGRESSION. All three tracks then go on through the evidence upload, hearing notice, hearing fee, trial bundle, decision outcome, final order and order review. The trial ready check and confirming trial arrangements are only made on the fast track. Small claims are not taken past JUDICIAL_REFERRAL yet.
+The steps from CREATE_SDO on run for claims on every track that reach JUDICIAL_REFERRAL. A small or fast track claim gets CREATE_SDO, which the judge makes with the track's directions task (SmallClaimsTrackDirections or FastTrackDirections). Intermediate and multi track claims get MAKE_DIRECTIONS_ORDER instead: the judge makes a directions order with "Make an order", keeping the claim on its track and uploading a blank pre-hearing order (documents/TEST_ORDER.docx), which moves the claim to CASE_PROGRESSION. Every track then goes on through the evidence upload, hearing notice (a small claims hearing for a small claim), hearing fee, trial bundle, decision outcome, final order and order review. The trial ready check and confirming trial arrangements are only made on the fast track.
 
 ## 6. Mix of API and UI
 
@@ -338,7 +338,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `CLAIMANT2_LITIGANT_FRIEND` | Yes, No | No | Claimant 2 has a litigation friend (2v1 claims). |
 | `TYPE_OF_CLAIM` | PERSONAL_INJURY, CLINICAL_NEGLIGENCE, PROFESSIONAL_NEGLIGENCE, BREACH_OF_CONTRACT, CONSUMER, CONSUMER_CREDIT, HOUSING_DISREPAIR, DAMAGES_AND_OTHER_REMEDY, OTHER | PERSONAL_INJURY | A value that is set but is not one of these stops the run before it starts. |
 | `SUB_TYPE` | ROAD_ACCIDENT, WORK_ACCIDENT, PUBLIC_LIABILITY, HOLIDAY_ILLNESS, DISEASE_CLAIM, NOISE_INDUCED_HEARING_LOSS, PERSONAL_INJURY_OTHER | ROAD_ACCIDENT (personal injury only) | Only for PERSONAL_INJURY. A value that is not one of these stops the run before it starts. A noise induced hearing loss claim must be on the fast track. |
-| `TRACK` | SMALL_CLAIM, FAST_CLAIM, INTERMEDIATE_CLAIM, MULTI_CLAIM | FAST_CLAIM | Sets the claim value. The intermediate and multi tracks get a directions order instead of the Standard Direction Order, then go on to the final order as the fast track does. Small claims stop at JUDICIAL_REFERRAL. |
+| `TRACK` | SMALL_CLAIM, FAST_CLAIM, INTERMEDIATE_CLAIM, MULTI_CLAIM | FAST_CLAIM | Sets the claim value. The intermediate and multi tracks get a directions order instead of the Standard Direction Order, then go on to the final order as the small and fast tracks do. |
 | `DEFENDANTS_TO_NOTIFY_CLAIM` | Both, Defendant One, Defendant Two | Both | Quote values with spaces. Anything other than Both takes the claim offline. |
 | `DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS` | Both, Defendant One, Defendant Two | Both | Anything other than Both takes the claim offline. |
 | `RESPONDENT1_RESPONSE_INTENTION` | FULL_DEFENCE, PART_DEFENCE, CONTEST_JURISDICTION | FULL_DEFENCE | Defendant 1's answer when acknowledging the claim. |
