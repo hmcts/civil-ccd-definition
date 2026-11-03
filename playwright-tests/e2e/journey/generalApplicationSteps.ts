@@ -34,6 +34,8 @@ const unsupportedTypes: Record<string, string> = {
 
 // The parts of a journey's settings that a general application uses
 export interface GaClaim {
+  // The run's settings as given, so their values can be checked before they are read as yes or no
+  scenarioEnv: Record<string, string | undefined>;
   claimShape: ClaimShape;
   paymentMethod: PaymentMethod;
   // GENERAL_APPLICATION: the application's types (a comma separated list, such as STAY_THE_CLAIM or
@@ -119,6 +121,14 @@ function deciderOf(taskType: string | undefined): string {
   return decisionTasks.find((task) => task.taskType === taskType)?.label ?? 'no one';
 }
 
+// The general application settings that take Yes or No
+const yesNoSettings = [
+  'GENERAL_APPLICATION_AGREED',
+  'GENERAL_APPLICATION_WITH_NOTICE',
+  'GENERAL_APPLICATION_URGENT',
+  'GENERAL_APPLICATION_REFER_TO_JUDGE',
+];
+
 // Why the GENERAL_APPLICATION settings cannot be used with this claim, or undefined when they can
 export function generalApplicationProblem(c: GaClaim): string | undefined {
   const types = generalApplicationTypesOf(c);
@@ -143,6 +153,14 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
   if (types.includes('SETTLE_BY_CONSENT') && c.generalApplicationAgreed !== yesNo.YES) {
     problems.push('SETTLE_BY_CONSENT must be agreed with the other side (set GENERAL_APPLICATION_AGREED=Yes)');
   }
+  // The yes or no settings are read as their default unless they are exactly the other answer, so a typo such as
+  // GENERAL_APPLICATION_URGENT=yes would quietly run a non-urgent application
+  for (const setting of yesNoSettings) {
+    const value = c.scenarioEnv[setting];
+    if (value !== undefined && value !== 'Yes' && value !== 'No') {
+      problems.push(`${setting}=${value} must be Yes or No`);
+    }
+  }
   if (!(c.generalApplicationBy in gaParties)) {
     problems.push(`GENERAL_APPLICATION_BY=${c.generalApplicationBy} is not one of ${Object.keys(gaParties).join(', ')}`);
   }
@@ -152,7 +170,9 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
   if (c.claimShape.defendants.some((defendant) => defendant.solicitor === 'none')) {
     problems.push('every defendant needs a solicitor: applications involving a litigant in person are not covered yet');
   }
-  return problems.length ? `Invalid GENERAL_APPLICATION value: ${c.generalApplicationSetting}. ${problems.join('; ')}` : undefined;
+  return problems.length
+    ? `Invalid general application settings (GENERAL_APPLICATION=${c.generalApplicationSetting}): ${problems.join('; ')}`
+    : undefined;
 }
 
 // Adds a general application to a journey's steps, after the GENERAL_APPLICATION_AFTER step, in group

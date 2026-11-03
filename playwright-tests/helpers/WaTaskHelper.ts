@@ -60,7 +60,11 @@ export class WaTaskHelper {
     // 1. Wait for Camunda to create the task
     await this.waitForCamundaTask(caseId, taskType);
 
-    // 2. Send it to WA task management now, rather than waiting for the cron job
+    // 2. Remove the tasks Camunda has cancelled from WA task management, and send the new task to it, now rather
+    // than waiting for the cron jobs. A cancelled task stays in task management until the TERMINATION job runs, and
+    // XUI will not start an event that two active tasks could complete ("Multiple tasks exist"), as when lifting a
+    // stay creates a new directions task while the one the stay cancelled is still there.
+    await WaTaskHelper.runTaskMonitorJob('TERMINATION');
     await WaTaskHelper.runInitiationJob();
 
     // 3. Wait for the task to reach WA task management, then claim it for the signed-in user
@@ -115,10 +119,15 @@ export class WaTaskHelper {
     }
   }
 
-  // Runs the WA task monitor's INITIATION job, which the wa-task-batch-initiation cron job runs every 5 minutes.
-  // The task monitor only accepts calls from the wa_task_monitor service, so a token for it is leased from the
-  // test S2S service.
+  // Runs the WA task monitor's INITIATION job, which the wa-task-batch-initiation cron job runs every 5 minutes
   static async runInitiationJob() {
+    await WaTaskHelper.runTaskMonitorJob('INITIATION');
+  }
+
+  // Runs one of the WA task monitor's jobs now: INITIATION sends new Camunda tasks to task management, TERMINATION
+  // removes the ones Camunda has cancelled or completed. The task monitor only accepts calls from the wa_task_monitor
+  // service, so a token for it is leased from the test S2S service.
+  static async runTaskMonitorJob(jobName: 'INITIATION' | 'TERMINATION') {
     const api = await request.newContext();
     try {
       const lease = await api.post(`${authProviderApiBaseUrl}/testing-support/lease`, {
@@ -128,11 +137,11 @@ export class WaTaskHelper {
       const s2sToken = await lease.text();
 
       const response = await api.post(`${workAllocation.taskMonitorUrl}/monitor/tasks/jobs`, {
-        data: { job_details: { name: 'INITIATION' } },
+        data: { job_details: { name: jobName } },
         headers: { ServiceAuthorization: `Bearer ${s2sToken}` },
       });
-      expect(response.ok(), `Running the WA INITIATION job returned ${response.status()}`).toBeTruthy();
-      console.log('WA: INITIATION job run');
+      expect(response.ok(), `Running the WA ${jobName} job returned ${response.status()}`).toBeTruthy();
+      console.log(`WA: ${jobName} job run`);
     } finally {
       await api.dispose();
     }
@@ -148,7 +157,9 @@ export class WaTaskHelper {
         { headers: await this.xsrfHeader() },
       );
       const tasks = response.ok() ? (await response.json()).tasks ?? [] : [];
-      task = tasks.find((t) => t.type === taskType);
+      // Only once there is one task of the type, so a cancelled one still being removed is not claimed instead
+      const ofType = tasks.filter((t) => t.type === taskType);
+      task = ofType.length === 1 ? ofType[0] : undefined;
       return task !== undefined;
     }, {
       intervals: [1000],
