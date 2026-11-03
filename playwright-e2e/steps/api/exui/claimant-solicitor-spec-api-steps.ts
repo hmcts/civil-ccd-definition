@@ -951,6 +951,30 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     });
   }
 
+  async DefaultJudgementSpec1v2Divergent() {
+    await this.setupApiStep(claimantSolicitorUser);
+    const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
+
+    const { defaultJudgementSpecDataBuilder } = this.claimantDefendantSolicitorDataBuilderFactory;
+    const requestDefaultJudgementSpecData =
+      await defaultJudgementSpecDataBuilder.build1v2Divergent();
+
+    await super.submitCCDEvent(
+      claimantSolicitorUser,
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      requestDefaultJudgementSpecData,
+      { expectedState: CaseState.PROCEEDS_IN_HERITAGE_SYSTEM },
+    );
+
+    await this.runZodValidation(async () => {
+      const { defaultJudgementSpecSchemaBuilder } =
+        this.claimantDefendantSolicitorSchemaBuilderFactory;
+      const defaultJudgementSpecSchema =
+        await defaultJudgementSpecSchemaBuilder.build(caseDataBeforeSubmission);
+      ZodHelper.safeParse(defaultJudgementSpecSchema, this.ccdCaseData);
+    });
+  }
+
   async DefaultJudgementSpec1v2() {
     await this.setupApiStep(claimantSolicitorUser);
     const caseDataBeforeSubmission = structuredClone(this.ccdCaseData);
