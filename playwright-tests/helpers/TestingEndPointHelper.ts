@@ -40,7 +40,7 @@ export class TestingEndPointHelper {
     // good (an incident), so the test stops with the step's error rather than waiting for the timeout
     const incidentCheckSeconds = 15;
     let lastIncidentCheck = 0;
-    let camundaReachable = true;
+    let camundaReachable = workAllocation.hasCamunda;
     await expect.poll(async () => {
       // A request that gets no answer in time, or a gateway answering with an error page, is treated as not finished
       // yet and asked again

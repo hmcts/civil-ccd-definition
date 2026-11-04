@@ -178,14 +178,28 @@ export const caseUnassignment = {
   keepAssignments: process.env.KEEP_CASE_ASSIGNMENTS === 'Yes',
 }
 
-// Work allocation (WA) on a preview built with the pr-values:fullDeployment label, which has its own Camunda and WA
-// task monitor. Their addresses follow the XUI one (xui-civil-citizen-ui-pr-8265... becomes
-// camunda-civil-citizen-ui-pr-8265...). Override with CAMUNDA_URL and WA_TASK_MONITOR_URL. waitSeconds is how long
-// to wait for Camunda to create a task (override with WA_TASK_WAIT_SECONDS).
+// Work allocation (WA): the Camunda engine and WA task monitor, from CAMUNDA_URL and WA_TASK_MONITOR_URL. A preview
+// built with the pr-values:fullDeployment label has its own, and when they are not set their addresses follow the XUI
+// one (xui-civil-citizen-ui-pr-8265... becomes camunda-civil-citizen-ui-pr-8265...). Other environments must set
+// them, and asking for an address that is not set is an error. hasCamunda says whether Camunda's address is known.
+// waitSeconds is how long to wait for Camunda to create a task (override with WA_TASK_WAIT_SECONDS).
+const isPreviewUrl = (envUrl ?? '').includes('://xui-');
 const previewHost = (prefix: string) => (envUrl ?? '').replace('://xui-', `://${prefix}-`);
+const workAllocationUrl = (setting: string, previewUrl: string): string => {
+  const url = process.env[setting] || (isPreviewUrl ? previewUrl : undefined);
+  if (!url) {
+    throw new Error(`${setting} is not set in env/.env.${process.env.ENV}. Only a preview's address can be worked out from URL`);
+  }
+  return url;
+};
 export const workAllocation = {
-  camundaUrl: process.env.CAMUNDA_URL ?? `${previewHost('camunda')}/engine-rest`,
-  taskMonitorUrl: process.env.WA_TASK_MONITOR_URL ?? previewHost('wa-task-monitor'),
+  get camundaUrl(): string {
+    return workAllocationUrl('CAMUNDA_URL', `${previewHost('camunda')}/engine-rest`);
+  },
+  get taskMonitorUrl(): string {
+    return workAllocationUrl('WA_TASK_MONITOR_URL', previewHost('wa-task-monitor'));
+  },
+  hasCamunda: Boolean(process.env.CAMUNDA_URL) || isPreviewUrl,
   waitSeconds: Number(process.env.WA_TASK_WAIT_SECONDS ?? 60),
 }
 
