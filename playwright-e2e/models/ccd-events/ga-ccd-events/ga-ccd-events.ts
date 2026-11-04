@@ -6,6 +6,7 @@ type GaCCDEvents = {
   MAKE_DECISION: CCDEvent;
   RESPOND_TO_JUDGE_ADDITIONAL_INFO: CCDEvent;
   HEARING_SCHEDULED_GA: CCDEvent
+  NO_REMISSION_HWF_GA: CCDEvent;
 };
 
 export default GaCCDEvents;
