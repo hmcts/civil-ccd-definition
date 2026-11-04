@@ -70,6 +70,21 @@ const scenarios: Scenario[] = [
     env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', TYPE_OF_CLAIM: 'HOUSING_DISREPAIR', TRACK: 'MULTI_CLAIM' },
   },
   {
+    name: 'UNSPEC_1v1_FAST_DAMAGES_REMEDY',
+    tags: [NIGHTLY],
+    env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'COMPANY', TYPE_OF_CLAIM: 'DAMAGES_AND_OTHER_REMEDY' },
+  },
+  {
+    name: 'UNSPEC_1v1_SMALL_REMEDY',
+    tags: [NIGHTLY],
+    env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'ORGANISATION', TYPE_OF_CLAIM: 'HOUSING_DISREPAIR', TRACK: 'SMALL_CLAIM' },
+  },
+  {
+    name: 'UNSPEC_1v2DS_SMALL_REMEDY',
+    tags: [NIGHTLY],
+    env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'ORGANISATION', TYPE_OF_CLAIM: 'HOUSING_DISREPAIR', TRACK: 'SMALL_CLAIM' },
+  },
+  {
     name: 'UNSPEC_2v1_LIP_FAST',
     tags: [NIGHTLY],
     env: { CLAIM_TYPE: '2v1LIP', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL', ...nihlFast },
@@ -208,6 +223,12 @@ const scenarios: Scenario[] = [
     name: 'UNSPEC_1v1_FAST_DEFAULT_JUDGMENT',
     tags: [NIGHTLY],
     env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'INDIVIDUAL', ...roadAccident, DEFAULT_JUDGMENT: 'Yes' },
+  },
+  // Default judgment on an other remedy claim: the claimant's solicitor abandons the other remedy to get judgment
+  {
+    name: 'UNSPEC_1v1_FAST_REMEDY_DEFAULT_JUDGMENT',
+    tags: [NIGHTLY],
+    env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', TYPE_OF_CLAIM: 'HOUSING_DISREPAIR', DEFAULT_JUDGMENT: 'Yes' },
   },
   {
     name: 'UNSPEC_1v2DS_FAST_DEFAULT_JUDGMENT',
