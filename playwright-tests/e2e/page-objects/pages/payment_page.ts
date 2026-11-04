@@ -85,16 +85,28 @@ export class PaymentPage {
     await this.page.locator('#cvc').fill(paymentCard.securityCode);
     await this.page.locator('#address-line-1').fill(paymentCard.addressLine1);
     await this.page.locator('#address-city').fill(paymentCard.city);
-    // GOV.UK Pay shows the country as a list, or on older versions as a text box that suggests countries
-    const country = this.page.locator('#address-country');
-    if (await country.evaluate((element) => element.tagName === 'SELECT')) {
-      await country.selectOption({ label: paymentCard.country });
-    } else {
-      await country.fill(paymentCard.country);
-    }
+    await this.setCountry(paymentCard.country);
     await this.page.locator('#address-postcode').fill(paymentCard.postcode);
     await this.page.locator('#email').fill(paymentCard.email);
     await this.page.locator('#submit-card-details').click();
     await this.page.locator('#confirm').click();
+  }
+
+  // GOV.UK Pay sends the country as a list (a select), and its script then swaps the list for a box that suggests
+  // countries as you type, with the same id. Which one the test meets depends on how quickly the script runs, so it
+  // waits a few seconds for the swap: with the box it types the country and picks the suggestion, and where the page
+  // keeps the list it picks from that.
+  private async setCountry(countryName: string) {
+    const country = this.page.locator('#address-country');
+    const tagName = () => country.evaluate((element) => element.tagName);
+    await expect.poll(tagName, { timeout: 5000 }).toBe('INPUT').catch(() => {});
+    if (await tagName() === 'SELECT') {
+      await country.selectOption({ label: countryName });
+      return;
+    }
+    await country.fill(countryName);
+    const suggestion = this.page.locator('#address-country__listbox').getByRole('option', { name: countryName, exact: true });
+    await suggestion.click();
+    await expect(country).toHaveValue(countryName);
   }
 }
