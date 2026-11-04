@@ -461,7 +461,7 @@
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[APPLICANTSOLICITORONE]",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "READONLY",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "Yes"
   },
@@ -496,7 +496,7 @@
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[RESPONDENTSOLICITORONE]",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "READONLY",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "Yes"
   },
@@ -978,7 +978,7 @@
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "DefaultValue": "[RESPONDENTSOLICITORTWO]",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "READONLY",
     "FieldShowCondition": "claimType=\"IMPOSSIBLE_CLAIM_TYPE\"",
     "RetainHiddenValue": "Yes"
   },
