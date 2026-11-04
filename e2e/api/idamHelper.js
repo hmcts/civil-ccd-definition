@@ -11,6 +11,18 @@ const idamTestSupportUrl = config.idamStub.enabled ? config.idamStub.url : confi
 const adminUser = config.idamStub.enabled ? config.idamStub.url : config.ctscAdminUser;
 const idamClientId = 'ccd_gateway';
 
+// Emails of the accounts that createAccount made in this run (IDAM answered 201). deleteCitizenAccount deletes
+// only these, so an account that already existed (IDAM answered 409) is never deleted.
+const accountsCreatedByTests = new Set();
+
+function isPermanentCitizenEmail(email) {
+  const permanentEmails = [process.env.CLAIMANT_CITIZEN_EMAIL, process.env.DEFENDANT_CITIZEN_EMAIL]
+    .filter(Boolean)
+    .map(permanentEmail => permanentEmail.toLowerCase());
+
+  return permanentEmails.includes(email.toLowerCase());
+}
+
 function getIdamTokenUrl() {
   if (config.idamStub.enabled) {
     return `${config.idamStub.url}/oauth2/token`;
@@ -112,9 +124,15 @@ async function createAccount(email, password) {
   try {
     const token = await accessToken(adminUser);
     let body = {'password': password, 'user': {'email': email, 'forename': 'forename', 'surname': 'surname', 'displayName': 'displayName', 'roleNames': ['citizen']}};
-    await restHelper.retriedRequest(`${idamTestSupportUrl}/test/idam/users`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body, 'POST', [201, 409]);
+    const response = await restHelper.retriedRequest(`${idamTestSupportUrl}/test/idam/users`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body, 'POST', [201, 409]);
 
-    console.log('Account created: ', email);
+    if (response.status === 201) {
+      accountsCreatedByTests.add(email.toLowerCase());
+      console.log('Account created: ', email);
+    } else {
+      // 409 means the account was already there, so it is not this run's to delete
+      console.log('Account already exists, so it will not be deleted after the test: ', email);
+    }
 
   } catch (error) {
     console.error('Error creating account:', error);
@@ -136,12 +154,23 @@ async function createAccount(email, password) {
 } */
 
 async function deleteCitizenAccount(email) {
+  // Only a temporary account this run created may be deleted. Permanent users (existing accounts, or ones given
+  // through CLAIMANT_CITIZEN_EMAIL or DEFENDANT_CITIZEN_EMAIL) are never deleted in any environment.
+  if (!email || !accountsCreatedByTests.has(email.toLowerCase())) {
+    console.log('Not deleting account, as it was not created by this test run: ' + email);
+    return;
+  }
+  if (isPermanentCitizenEmail(email)) {
+    console.log('Not deleting account, as it is a permanent user: ' + email);
+    return;
+  }
   if(!process.env.CLAIMANT_CITIZEN_EMAIL && !process.env.DEFENDANT_CITIZEN_EMAIL) {
     try {
       const token = await accessToken(adminUser);
       let method = 'DELETE';
       await restHelper.request(`${idamTestSupportUrl}/test/idam/users/${email}`, {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, undefined, method);
 
+      accountsCreatedByTests.delete(email.toLowerCase());
       console.log('Account deleted: ' + email);
     } catch (error) {
       console.error('Error deleting account:', error);
