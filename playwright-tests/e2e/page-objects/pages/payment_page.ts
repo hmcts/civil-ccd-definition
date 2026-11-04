@@ -85,7 +85,13 @@ export class PaymentPage {
     await this.page.locator('#cvc').fill(paymentCard.securityCode);
     await this.page.locator('#address-line-1').fill(paymentCard.addressLine1);
     await this.page.locator('#address-city').fill(paymentCard.city);
-    await this.page.locator('#address-country').fill(paymentCard.country);
+    // GOV.UK Pay shows the country as a list, or on older versions as a text box that suggests countries
+    const country = this.page.locator('#address-country');
+    if (await country.evaluate((element) => element.tagName === 'SELECT')) {
+      await country.selectOption({ label: paymentCard.country });
+    } else {
+      await country.fill(paymentCard.country);
+    }
     await this.page.locator('#address-postcode').fill(paymentCard.postcode);
     await this.page.locator('#email').fill(paymentCard.email);
     await this.page.locator('#submit-card-details').click();
