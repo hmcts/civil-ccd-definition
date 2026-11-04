@@ -13,6 +13,7 @@ import caseStates from '../../../enums/caseStates.ts';
 import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
 import SettleClaim from '../../../enums/settleClaim.ts';
 import DiscontinueClaim from '../../../enums/discontinueClaim.ts';
+import { ReconsiderationDecision, RequestForReconsiderationBy } from '../../../enums/reconsideration.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
@@ -176,6 +177,11 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // Whether mediation settles a small claim the claimant's response took to mediation, which stays the case and ends
     // the journey there, instead of being unsuccessful (MEDIATION_SUCCESSFUL=Yes, default No)
     mediationSuccessful: yes(scenarioEnv.MEDIATION_SUCCESSFUL),
+    // Whether a party's solicitor asks for the legal adviser's small claims order to be reconsidered once it is made
+    // (REQUEST_FOR_RECONSIDERATION=CLAIMANT, DEFENDANT_1 or DEFENDANT_2; not asked by default), and what the judge
+    // decides (RECONSIDERATION_DECISION=UPHOLD, the default, CREATE_SDO or CREATE_GENERAL_ORDER)
+    requestForReconsideration: scenarioEnv.REQUEST_FOR_RECONSIDERATION as RequestForReconsiderationBy | undefined,
+    reconsiderationDecision: (scenarioEnv.RECONSIDERATION_DECISION ?? ReconsiderationDecision.UPHOLD) as ReconsiderationDecision,
     // Whether and how the claim is settled with "Settle this claim" once the rest of the journey has run: the
     // claimant's solicitor marks it paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL), which stays the case, or court staff
     // record it settled after a judge's order (JUDGE_ORDER) or a consent order (CONSENT_ORDER). Not settled by default.
@@ -256,6 +262,43 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         [undefined, 'Yes', 'No'],
         `Invalid DEFAULT_JUDGMENT value: ${scenarioEnv.DEFAULT_JUDGMENT}. It must be Yes or No.`,
       ).toContain(scenarioEnv.DEFAULT_JUDGMENT);
+      expect(
+        [undefined, ...Object.values(RequestForReconsiderationBy)],
+        `Invalid REQUEST_FOR_RECONSIDERATION value: ${scenarioEnv.REQUEST_FOR_RECONSIDERATION}. It must be one of ${Object.values(RequestForReconsiderationBy).join(', ')}.`,
+      ).toContain(scenarioEnv.REQUEST_FOR_RECONSIDERATION);
+      expect(
+        [undefined, ...Object.values(ReconsiderationDecision)],
+        `Invalid RECONSIDERATION_DECISION value: ${scenarioEnv.RECONSIDERATION_DECISION}. It must be one of ${Object.values(ReconsiderationDecision).join(', ')}.`,
+      ).toContain(scenarioEnv.RECONSIDERATION_DECISION);
+      if (scenarioEnv.REQUEST_FOR_RECONSIDERATION !== undefined) {
+        // civil-service only allows it on a claim of £10,000 or less whose order a legal adviser drew, which in this
+        // journey is a small claim after unsuccessful mediation
+        expect(
+          track,
+          `REQUEST_FOR_RECONSIDERATION can only be used with TRACK=SMALL_CLAIM: only a legal adviser's small claims order can be reconsidered.`,
+        ).toBe(claimTrack.SMALL);
+        expect(
+          scenarioEnv.MEDIATION_SUCCESSFUL !== 'Yes',
+          'REQUEST_FOR_RECONSIDERATION cannot be used with MEDIATION_SUCCESSFUL=Yes: a claim mediation settled gets no order to reconsider.',
+        ).toBeTruthy();
+        expect(
+          [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL],
+          `REQUEST_FOR_RECONSIDERATION cannot be used with CLAIM_TYPE=${claimType}: a defendant is a litigant in person, and this journey only takes claims where every defendant has a solicitor to the order.`,
+        ).toContain(claimType);
+        expect(
+          claimantResponds && claimantOutcome.state === caseStates.IN_MEDIATION,
+          `REQUEST_FOR_RECONSIDERATION needs the claimant's response to take the small claim to mediation (IN_MEDIATION), where the legal adviser's order follows unsuccessful mediation, but these settings take it to ${claimantResponds ? claimantOutcome.state : 'no claimant response'}. Use a defence the claimant disputes (the defaults: RESPONDENT1_RESPONSE=FULL_DEFENCE and CLAIMANT_PROCEED=Yes).`,
+        ).toBeTruthy();
+        expect(
+          scenarioEnv.REQUEST_FOR_RECONSIDERATION !== RequestForReconsiderationBy.DEFENDANT_2 || claimType === claimTypes.ONE_VS_TWO_DIFF_SOL,
+          `REQUEST_FOR_RECONSIDERATION=DEFENDANT_2 can only be used with CLAIM_TYPE=1v2DS: Defendant 2 has no solicitor of their own in a ${claimType} claim.`,
+        ).toBeTruthy();
+      } else {
+        expect(
+          scenarioEnv.RECONSIDERATION_DECISION,
+          'RECONSIDERATION_DECISION needs REQUEST_FOR_RECONSIDERATION: there is no request to decide.',
+        ).toBeUndefined();
+      }
       expect(
         scenarioEnv.SETTLE_CLAIM === undefined || scenarioEnv.DISCONTINUE_CLAIM === undefined,
         'SETTLE_CLAIM and DISCONTINUE_CLAIM cannot both be set: a claim is either settled or discontinued.',

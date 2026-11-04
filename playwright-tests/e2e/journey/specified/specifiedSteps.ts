@@ -54,6 +54,11 @@ import { DiscontinueClaim as ApiDiscontinueClaim } from '../../flows/events/api/
 import { ValidateDiscontinueClaim } from '../../flows/events/ui/ValidateDiscontinueClaim.ts';
 import { ValidateDiscontinueClaim as ApiValidateDiscontinueClaim } from '../../flows/events/api/ValidateDiscontinueClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
+import { RequestForReconsideration } from '../../flows/events/ui/RequestForReconsideration.ts';
+import { RequestForReconsideration as ApiRequestForReconsideration } from '../../flows/events/api/RequestForReconsideration.ts';
+import { DecisionOnReconsiderationRequest } from '../../flows/events/ui/DecisionOnReconsiderationRequest.ts';
+import { DecisionOnReconsiderationRequest as ApiDecisionOnReconsiderationRequest } from '../../flows/events/api/DecisionOnReconsiderationRequest.ts';
+import { ReconsiderationDecision, RequestForReconsiderationBy } from '../../../enums/reconsideration.ts';
 import { DefaultJudgmentSpec } from '../../flows/events/ui/DefaultJudgmentSpec.ts';
 import { DefaultJudgmentSpec as ApiDefaultJudgmentSpec } from '../../flows/events/api/DefaultJudgmentSpec.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
@@ -129,6 +134,20 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
     settledInMediation,
   ];
+
+  // Asking for the legal adviser's small claims order to be reconsidered (REQUEST_FOR_RECONSIDERATION), once the order
+  // has moved the claim to CASE_PROGRESSION, and the judge's decision on it
+  const noReconsideration: Array<[boolean, string]> = [
+    ...noCaseProgression,
+    [c.requestForReconsideration === undefined, 'Reconsideration is switched off (set REQUEST_FOR_RECONSIDERATION=CLAIMANT, DEFENDANT_1 or DEFENDANT_2 to run it)'],
+    [c.track !== claimTrack.SMALL, 'Skipping as only a legal adviser\'s small claims order can be reconsidered'],
+  ];
+  const reconsiderationRequesters: Record<RequestForReconsiderationBy, { label: string; user: SessionUserKey }> = {
+    [RequestForReconsiderationBy.CLAIMANT]: { label: 'Claimant Solicitor', user: 'claimantSolicitor' },
+    [RequestForReconsiderationBy.DEFENDANT_1]: { label: 'Defendant 1 Solicitor', user: 'respondent1Solicitor' },
+    [RequestForReconsiderationBy.DEFENDANT_2]: { label: 'Defendant 2 Solicitor', user: 'respondent2Solicitor' },
+  };
+  const reconsiderationRequester = reconsiderationRequesters[c.requestForReconsideration ?? RequestForReconsiderationBy.CLAIMANT];
 
   // The states "Discontinue this claim" is offered in, and both "Settle this claim" events, which are also offered once
   // the final orders are issued (court staff can also settle a stayed case)
@@ -496,6 +515,52 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
+    // A party's solicitor asks for the legal adviser's small claims order to be reconsidered
+    // (REQUEST_FOR_RECONSIDERATION=CLAIMANT, DEFENDANT_1 or DEFENDANT_2), which civil-service allows within 7 days of the
+    // order, and a judge decides it (RECONSIDERATION_DECISION, default UPHOLD). The claim stays in CASE_PROGRESSION, so
+    // the journey carries on to the evidence.
+    {
+      name: 'REQUEST_FOR_RECONSIDERATION',
+      title: `${reconsiderationRequester.label} asks for the order to be reconsidered.`,
+      user: reconsiderationRequester.user,
+      skipIf: noReconsideration,
+      run: async ({ page, storageState, user }) => {
+        const by = c.requestForReconsideration as RequestForReconsiderationBy;
+        if (ctx.useApi()) {
+          await new ApiRequestForReconsideration().submit(ctx.caseId, by, user);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new RequestForReconsideration(page).submit(by);
+          });
+        }
+        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
+      },
+    },
+    {
+      name: 'DECISION_ON_RECONSIDERATION_REQUEST',
+      title: `Judge decides the request for reconsideration (${c.reconsiderationDecision}).`,
+      user: 'judge',
+      skipIf: noReconsideration,
+      run: async ({ page, storageState }) => {
+        await ctx.runEvent(page, storageState, async () => {
+          // The event is only opened from the judge's "Decision on Reconsideration Request" task. Where work allocation
+          // is switched on the task is needed, so it is claimed through the API version too, as the UI would.
+          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'DECISION_ON_RECONSIDERATION_REQUEST', 'JudgeDecideOnReconsiderRequest');
+          if (!ctx.useApi()) {
+            await new DecisionOnReconsiderationRequest(page).submit(ctx.caseId, c.reconsiderationDecision);
+          }
+        });
+        if (ctx.useApi()) {
+          await new ApiDecisionOnReconsiderationRequest().submit(ctx.caseId, c.reconsiderationDecision);
+        }
+        if (c.reconsiderationDecision === ReconsiderationDecision.UPHOLD) {
+          // Upholding the order issues the decision document to the parties
+          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DECISION_ON_RECONSIDERATION_REQUEST');
+        }
+        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
+      },
+    },
+
     // Intermediate and multi track claims get no Standard Direction Order: the judge's task is to allocate the claim
     // to its track, which is done with a directions order made with "Make an order"
     {
@@ -846,6 +911,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       [c.informAgreedExtension === yesNo.YES, ignored('INFORM_AGREED_EXTENSION=Yes')],
       [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
       [c.mediationSuccessful === yesNo.YES, ignored('MEDIATION_SUCCESSFUL=Yes')],
+      [c.requestForReconsideration !== undefined, ignored('REQUEST_FOR_RECONSIDERATION')],
       [
         c.discontinueClaim !== undefined,
         `DEFAULT_JUDGMENT=Yes cannot be used with DISCONTINUE_CLAIM: default judgment leaves a specified claim in All_FINAL_ORDERS_ISSUED or JUDGMENT_REQUESTED, where it cannot be discontinued`,
