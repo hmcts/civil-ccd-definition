@@ -340,5 +340,33 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "RECORD_NOTIFICATIONS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseEventID": "NOTIFY_EVENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
