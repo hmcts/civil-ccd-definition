@@ -115,6 +115,16 @@ export const nbcAdminCredentials = {
   password: process.env.NBC_ADMIN_PASSWORD || defaultPassword,
 }
 
+// A CTSC (Courts and Tribunals Service Centre) admin, who answers the queries solicitors raise: work allocation gives
+// every query on a claim, hearing related or not, to CTSC (respondToQueryCTSC, at CTSC Salford for an unspecified claim
+// and CTSC Stoke for a specified one), unless the query is in Welsh. An environment whose CTSC admins differ sets
+// CTSC_ADMIN_USERNAME and CTSC_ADMIN_PASSWORD.
+export const ctscAdminCredentials = {
+  name: 'CTSC Admin',
+  username: process.env.CTSC_ADMIN_USERNAME || 'ctsc_admin@justice.gov.uk',
+  password: process.env.CTSC_ADMIN_PASSWORD || defaultPassword,
+}
+
 // The civil system update user, which runs the events civil-service's schedulers run (such as the trial ready check)
 export const civilSystemUpdate = {
   username: 'civil-system-update@mailnesia.com',

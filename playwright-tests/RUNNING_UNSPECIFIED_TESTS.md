@@ -127,6 +127,7 @@ Steps, in the order they run:
 - INFORM_AGREED_EXTENSION_DEFENDANT1, INFORM_AGREED_EXTENSION_DEFENDANT2 (optional)
 - RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2
 - RESPOND_TO_DEFENCE
+- QUERY_MANAGEMENT (group: QUERY_RAISE_, QUERY_RESPOND_, QUERY_FOLLOW_UP_ and QUERY_RESPOND_FOLLOW_UP_ for each party, optional; here by default, or after the QUERY_MANAGEMENT_AFTER step)
 - CREATE_CASE_FLAGS (group), MAKE_CASE_FLAG_INACTIVE (optional)
 - MANAGE_CONTACT_INFORMATION (group, optional)
 - STAY_CASE, MANAGE_STAY_REQUEST_UPDATE, LIFT_STAY (optional)
@@ -275,6 +276,43 @@ These settings fail the run before the first test:
 
 A notice of change is not possible while the claim is in PENDING_CASE_ISSUED, CASE_DISMISSED or PROCEEDS_IN_HERITAGE_SYSTEM.
 
+### Query management
+
+A solicitor raises a query with the court from the case's "Raise a new query" screen, and a CTSC admin answers it from their task. These screens are XUI's own query management screens, not CCD event pages. Queries can be raised in any state except PENDING_CASE_ISSUED, CASE_DISMISSED, PROCEEDS_IN_HERITAGE_SYSTEM and CLOSED. Every party and court staff can see every query (the queries collection, "All queries").
+
+QUERY_MANAGEMENT lists whose solicitors raise a query: claimant, defendant1, defendant2. For each one in turn:
+
+- QUERY_RAISE_<PARTY>: their solicitor chooses "Raise a new query", enters a subject and the query, says whether it is about a hearing, and attaches a document (playwright-tests/documents/TEST_DOCUMENT_2.pdf).
+- QUERY_RESPOND_<PARTY>: the CTSC admin opens their "Respond to a query" task from the case's Tasks tab and answers. Work allocation gives every query on a claim to CTSC unless it is in Welsh: at CTSC Salford for an unspecified claim, CTSC Stoke for a specified one. Where XUI needs the task claimed before the response can be given, the test claims it first. The task's link carries the task's ID, which XUI needs: opened at its plain address, the response screen goes blank after Continue.
+- QUERY_FOLLOW_UP_<PARTY> (QUERY_MANAGEMENT_FOLLOW_UP=Yes): the solicitor opens the query from the Queries tab, checks CTSC's answer is shown, and asks a follow-up question.
+- QUERY_RESPOND_FOLLOW_UP_<PARTY> (QUERY_MANAGEMENT_FOLLOW_UP=Yes): the CTSC admin answers the follow-up question.
+
+With QUERY_MANAGEMENT_HEARING_RELATED=Yes the queries are about a hearing, ten days from today. Once the claim is past the directions stage (from JUDICIAL_REFERRAL on), work allocation calls the CTSC task "Respond to a hearing related query".
+
+Each step checks that:
+
+- the message was saved in the query's thread with its text (a follow-up or response points at the query it belongs to)
+- after a query or follow-up, it is the case's latest query (qmLatestQuery), and work allocation has given CTSC a respondToQueryCTSC task (where the test can see Camunda: AAT, demo and ITHC)
+- the claim's state has not changed
+
+The CTSC admin is ctsc_admin@justice.gov.uk; an environment whose CTSC admins differ sets CTSC_ADMIN_USERNAME and CTSC_ADMIN_PASSWORD.
+
+The claimant's and Defendant 2's solicitors each raise a query and ask a follow-up, once the claimant has responded:
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS API_UNTIL=JUDICIAL_REFERRAL QUERY_MANAGEMENT=claimant,defendant2 QUERY_MANAGEMENT_FOLLOW_UP=Yes STOP_AFTER_TEST=QUERY_MANAGEMENT npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+With API_UNTIL, the queries and responses go through the CCD API as long as the claim has not yet reached the API_UNTIL state. A query does not change the claim's state, so to send them through the API set API_UNTIL to a later state, such as CASE_PROGRESSION. XUI completes CTSC's task as it submits a response, but work allocation does not complete it for a response sent through the API, so the test completes it, as XUI would. Left open, it would sit beside the next query's task.
+
+These settings fail the run before the first test:
+
+- a party the claim does not have, or a party given twice
+- defendant2 when the defendants share a solicitor (1v2SS): give defendant1
+- a defendant who is a LIP, who raises queries in the citizen UI, which the journey does not do
+- QUERY_MANAGEMENT_HEARING_RELATED or QUERY_MANAGEMENT_FOLLOW_UP set to anything but Yes or No
+- QUERY_MANAGEMENT_AFTER set to a step before that defendant's solicitor has the case (their acknowledgement), or to a step that closes the claim
+
 ### Several at once, with the API for the early steps
 
 ```bash
@@ -320,6 +358,8 @@ ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/Unspecif
 ```
 
 The notice of change scenarios run in the nightly set too. UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE gives a LIP defendant a solicitor (yarn test:UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE). UNSPEC_1v1_FAST_NOTICE_OF_CHANGE changes both parties' solicitors after the claimant's response (yarn test:UNSPEC_1v1_FAST_NOTICE_OF_CHANGE).
+
+UNSPEC_1v1_FAST_QUERY_MANAGEMENT runs in the nightly set too: once the claimant has responded, both solicitors raise a query about the hearing, CTSC answers, each asks a follow-up question and CTSC answers that too (yarn test:UNSPEC_1v1_FAST_QUERY_MANAGEMENT).
 
 ```bash
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --grep @UNSPEC_1v1_FAST_NOTICE_OF_CHANGE
@@ -367,6 +407,10 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `MANAGE_CONTACT_INFORMATION` | representative, or a list of user:party | None | Optional events: Manage Contact Information after the claimant's response, one run per entry, each checked against the saved case data. Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor (a solicitor only sees their own side). Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _LITIGATION_FRIEND or _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS, _WITNESSES or _EXPERTS. A party's or litigation friend's email (and a party's first address line) is changed, an individual is added, and a witness or expert is added by the admin or the first one's email changed by a solicitor (set WITNESSES or EXPERTS). Has an API version. |
 | `NOTICE_OF_CHANGE` | A list of CLAIMANT_1, DEFENDANT_1, DEFENDANT_2 | None | Optional steps: a solicitor takes over each party with a notice of change (see section 7). A LIP defendant gets the solicitor the represented claim type would have, and the journey carries on as that claim type. A represented party moves to a solicitor of another organisation, who runs that party's later steps. Has an API version. |
 | `NOTICE_OF_CHANGE_AFTER` | A step name, from NOTIFY_CLAIM_DETAILS on | NOTIFY_CLAIM_DETAILS | The step the notices of change follow, for example RESPOND_TO_DEFENCE. A LIP can only be given a solicitor after NOTIFY_CLAIM_DETAILS. |
+| `QUERY_MANAGEMENT` | A list of claimant, defendant1, defendant2 | None | Optional steps: each solicitor raises a query and a CTSC admin answers it (see section 7). Has an API version. |
+| `QUERY_MANAGEMENT_AFTER` | A step name | RESPOND_TO_DEFENCE | The step the queries follow. A defendant's solicitor can only raise one once they have acknowledged the claim. |
+| `QUERY_MANAGEMENT_HEARING_RELATED` | Yes, No | No | The queries are about a hearing, ten days from today. |
+| `QUERY_MANAGEMENT_FOLLOW_UP` | Yes, No | No | Each solicitor asks a follow-up question once CTSC has answered, which CTSC answers too. |
 
 ## 11. Run settings
 

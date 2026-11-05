@@ -20,6 +20,7 @@ import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
 import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 import { nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
 import { generalApplicationProblem } from '../generalApplicationSteps.ts';
+import { queryManagementProblem } from '../queryManagementSteps.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
@@ -272,6 +273,15 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whether a legal adviser given the decision refers it to a judge, who then decides it
     // (GENERAL_APPLICATION_REFER_TO_JUDGE, default No)
     generalApplicationReferToJudge: yes(scenarioEnv.GENERAL_APPLICATION_REFER_TO_JUDGE),
+    // Whose solicitors raise a query, which a CTSC admin answers (QUERY_MANAGEMENT: a list such as claimant,defendant1),
+    // after the QUERY_MANAGEMENT_AFTER step (default RESPOND_TO_DEFENCE, once every solicitor has the case). Whether the
+    // queries are about a hearing (QUERY_MANAGEMENT_HEARING_RELATED, default No), and whether each solicitor then asks a
+    // follow-up question, which is answered too (QUERY_MANAGEMENT_FOLLOW_UP, default No). See queryManagementSteps.ts.
+    queryManagementSetting: scenarioEnv.QUERY_MANAGEMENT,
+    queryManagementAfter: scenarioEnv.QUERY_MANAGEMENT_AFTER ?? 'RESPOND_TO_DEFENCE',
+    queryManagementHearingRelated: yes(scenarioEnv.QUERY_MANAGEMENT_HEARING_RELATED),
+    queryManagementFollowUp: yes(scenarioEnv.QUERY_MANAGEMENT_FOLLOW_UP),
+    defendantSolicitorAssignedAfter: { 1: 'ACKNOWLEDGE_CLAIM_DEFENDANT1', 2: 'ACKNOWLEDGE_CLAIM_DEFENDANT2' } as Record<1 | 2, string>,
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
     claimOfflineAfterNotifyClaim,
@@ -359,6 +369,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
       const gaError = generalApplicationProblem(config);
       expect(gaError, gaError).toBeUndefined();
+
+      const queryError = queryManagementProblem(config);
+      expect(queryError, queryError).toBeUndefined();
     },
   };
   return config;

@@ -38,6 +38,20 @@ const scenarios: Scenario[] = [
       NOTICE_OF_CHANGE_AFTER: 'RESPOND_TO_DEFENCE',
     },
   },
+  // Once the claimant has responded, both solicitors raise a query about the hearing, which a CTSC admin answers, and
+  // then each asks a follow-up question, which is answered too. The journey then runs to the final order.
+  {
+    name: 'SPEC_1v1_FAST_QUERY_MANAGEMENT',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v1',
+      CLAIMANT_TYPE: 'COMPANY',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      QUERY_MANAGEMENT: 'claimant,defendant1',
+      QUERY_MANAGEMENT_HEARING_RELATED: 'Yes',
+      QUERY_MANAGEMENT_FOLLOW_UP: 'Yes',
+    },
+  },
 ];
 
 // The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own

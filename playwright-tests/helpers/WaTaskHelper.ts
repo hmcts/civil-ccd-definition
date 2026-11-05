@@ -49,12 +49,12 @@ export class WaTaskHelper {
     return created;
   }
 
-  // Makes sure the signed-in user has the taskType task assigned, so they can start eventId on the case.
-  // Does nothing where XUI does not need a task for the event (for example on AAT).
-  async assignTaskForEvent(caseId: string, eventId: string, taskType: string) {
+  // Makes sure the signed-in user has the taskType task assigned, so they can start eventId on the case, and returns
+  // the task's ID. Does nothing, and returns undefined, where XUI does not need a task for the event.
+  async assignTaskForEvent(caseId: string, eventId: string, taskType: string): Promise<string | undefined> {
     if (!(await this.isTaskRequired(caseId, eventId))) {
       console.log(`WA: ${eventId} does not need a task here, so no task is assigned`);
-      return;
+      return undefined;
     }
 
     // 1. Wait for Camunda to create the task
@@ -71,7 +71,7 @@ export class WaTaskHelper {
     const task = await this.waitForXuiTask(caseId, eventId, taskType);
     if (task.task_state === 'assigned') {
       console.log(`WA: ${taskType} task ${task.id} is already assigned`);
-      return;
+      return task.id;
     }
     const response = await this.page.request.post(`${envUrl}/workallocation/task/${task.id}/claim`, {
       data: {},
@@ -79,6 +79,19 @@ export class WaTaskHelper {
     });
     expect(response.ok(), `Claiming ${taskType} task ${task.id} returned ${response.status()}`).toBeTruthy();
     console.log(`WA: ${taskType} task ${task.id} claimed`);
+    return task.id;
+  }
+
+  // Completes the signed-in user's task, as XUI does when an event started from the task is submitted. Needed where an
+  // event is sent through the CCD API instead and work allocation does not complete the task itself, such as a query
+  // response (queryManagementRespondQuery): its task would otherwise stay open beside the next one.
+  async completeTask(taskId: string) {
+    const response = await this.page.request.post(`${envUrl}/workallocation/task/${taskId}/complete`, {
+      data: {},
+      headers: await this.xsrfHeader(),
+    });
+    expect(response.ok(), `Completing task ${taskId} returned ${response.status()}`).toBeTruthy();
+    console.log(`WA: task ${taskId} completed`);
   }
 
   // Asks XUI the same question it asks when an event is opened: does this event need a task?
