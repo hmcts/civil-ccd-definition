@@ -3,15 +3,9 @@
   "extends": ["local>hmcts/.github:renovate-config", "local>hmcts/.github//renovate/automerge-all"],
   "labels": ["dependencies"],
   "timezone": "Europe/London",
-  "automergeSchedule": [
-    "after 7am and before 8am every weekday",
-    "after 6pm and before 8pm every weekday"
-  ],
+  "automergeSchedule": ["after 7am and before 8am every weekday", "after 6pm and before 8pm every weekday"],
   "platformAutomerge": false,
-  "schedule": [
-    "after 7am and before 8am every weekday",
-    "after 6pm and before 8pm every weekday"
-  ],
+  "schedule": ["after 7am and before 8am every weekday", "after 6pm and before 8pm every weekday"],
   "rebaseWhen": "behind-base-branch",
   "automergeStrategy": "squash",
   "prConcurrentLimit": 5,
@@ -21,9 +15,10 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["^Dockerfile$"],
+      "customType": "regex",
+      "managerFilePatterns": ["/^Dockerfile$/"],
       "matchStrings": [
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sARG .*?_VERSION=(?<currentValue>.*)\\s"
       ]
@@ -64,34 +59,32 @@
       "allowedVersions": "<12"
     },
     {
-      "matchPackagePatterns": ["^allure-"],
       "groupName": "Allure reporting",
       "groupSlug": "allure",
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "matchPackageNames": ["/^allure-/"]
     },
     {
-      "matchPackageNames": ["eslint", "typescript-eslint"],
-      "matchPackagePatterns": ["^@eslint/", "^@typescript-eslint/", "^eslint-"],
+      "matchPackageNames": ["eslint", "typescript-eslint", "/^@eslint//", "/^@typescript-eslint//", "/^eslint-/"],
       "groupName": "ESLint",
       "groupSlug": "eslint",
       "automerge": true,
       "automergeType": "pr"
     },
     {
-      "matchPackageNames": ["typescript"],
-      "matchPackagePatterns": ["^@types/"],
+      "matchPackageNames": ["typescript", "/^@types//"],
       "groupName": "TypeScript",
       "groupSlug": "typescript",
       "automerge": true,
       "automergeType": "pr"
     },
     {
-      "matchPackagePatterns": ["^org\\.junit\\.", "^org\\.slf4j:"],
       "groupName": "Java dependencies",
       "groupSlug": "java-deps",
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "matchPackageNames": ["/^org\\.junit\\./", "/^org\\.slf4j:/"]
     },
     {
       "matchPackageNames": ["node", "gradle", "yarn"],
