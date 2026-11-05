@@ -1,6 +1,7 @@
 import { expect, Page } from '@playwright/test';
 import { envUrl } from '../../../../civilConfig.ts';
 import { PageHelper } from '../../../../helpers/PageHelper.ts';
+import { waitForQueryEvent } from './RaiseQuery.ts';
 
 // A CTSC admin answering a query (event queryManagementRespondQuery, "Respond to a query"). They start it from their
 // "Respond to a query" (or "Respond to a hearing related query") task, whose link opens XUI's response screen for the
@@ -40,12 +41,15 @@ export class RespondToQuery {
     await this.pageHelper.gotoAndWaitForXui(`${envUrl}/cases/case-details/${caseId}/tasks`);
     const taskLink = this.page.locator(`a[href*="${responseScreen}"]`);
     const hasTask = await taskLink.first().waitFor({ state: 'visible', timeout: 30000 }).then(() => true, () => false);
+    // XUI loads the event once the screen shows; Continue before then fails in XUI's own code
+    const eventLoaded = waitForQueryEvent(this.page, 'queryManagementRespondQuery');
     if (hasTask) {
       await taskLink.first().click();
     } else {
       console.log(`No CTSC task on case ${caseId}'s Tasks tab for message ${messageId}, so the response screen is opened at its address`);
       await this.pageHelper.gotoAndWaitForXui(`${envUrl}${responseScreen}`);
     }
+    await eventLoaded;
     await this.page.locator('textarea#body').waitFor({ state: 'visible' });
   }
 }

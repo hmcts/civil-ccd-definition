@@ -19,10 +19,13 @@ export class RaiseQuery {
   async raise(caseId: string, query: NewQuery) {
     await this.pageHelper.gotoAndWaitForXui(`${envUrl}/query-management/query/${caseId}`);
 
-    // What do you need help to do?
+    // What do you need help to do? XUI only loads the event once "Raise a new query" is chosen and Continue opens the
+    // query details screen, so it is waited for there, before Continue is pressed again.
     await expect(this.page.getByText('What do you need help to do?')).toBeVisible();
     await this.page.getByLabel('Raise a new query', { exact: true }).check();
+    const eventLoaded = waitForQueryEvent(this.page, 'queryManagementRaiseQuery');
     await this.continueTo('Enter query details');
+    await eventLoaded;
 
     // Enter query details
     await this.page.locator('#subject').fill(query.subject);
@@ -50,7 +53,11 @@ export class RaiseQuery {
     await this.page.getByRole('tab', { name: 'Queries', exact: true }).click();
     await this.page.getByRole('button', { name: subject, exact: true }).click();
     await expect(this.page.getByText(response)).toBeVisible();
+    // XUI loads the event after the follow-up form shows. Pressing Continue before it has fails in XUI's own code
+    // ("Cannot read properties of null (reading 'indexOf')"), so the event is waited for first.
+    const eventLoaded = waitForQueryEvent(this.page, 'queryManagementRaiseQuery');
     await this.page.getByRole('button', { name: 'Ask a follow-up question' }).click();
+    await eventLoaded;
 
     await expect(this.page.getByText('Ask a follow-up question')).toBeVisible();
     await this.page.locator('textarea#body').fill(question);
@@ -74,4 +81,13 @@ export class RaiseQuery {
     await expect(this.page.getByRole('heading', { name: 'Query submitted' })).toBeVisible();
     await expect(this.page.getByText('Your query has been sent to HMCTS')).toBeVisible();
   }
+}
+
+// Waits for XUI to load a query management event (its event trigger), which it does once the query screen shows.
+// Start waiting before the click or navigation that opens the screen, so a quick answer is not missed.
+export function waitForQueryEvent(page: Page, eventId: string) {
+  return page.waitForResponse(
+    (response) => response.url().includes(`/event-triggers/${eventId}`) && response.ok(),
+    { timeout: 60000 },
+  );
 }

@@ -31,6 +31,29 @@ export class CreateCasePage {
     await ccJurisdiction.selectOption(createCase.jurisdictionCode);
     await ccCaseType.selectOption(createCase.caseTypeCode);
     await ccEvent.selectOption(caseType === 'SPECIFIED' ? createCase.specifiedEventCode : createCase.eventCode);
-    await this.startButton.click();
+    await this.clickStart();
+  }
+
+  // XUI can drop a click on Start, or be slow to open the event, leaving the Create Case page showing. Start is
+  // clicked again only while the page is still Create Case, so a second claim is never started: once the event's
+  // first page is open (/case-create/<jurisdiction>/<case type>/<event>/...) nothing more is clicked.
+  // Each click is given 30s, as a busy AAT can take over 20s to open the event, and clicking again too soon could cut
+  // the first one off
+  private async clickStart(attempts: number = 3, waitSeconds: number = 30) {
+    const eventOpened = (url: URL) => /\/case-create\/[^/]+\/[^/]+\/[^/]+\//.test(url.pathname);
+    for (let attempt = 1; attempt <= attempts; attempt++) {
+      if (eventOpened(new URL(this.page.url()))) {
+        return;
+      }
+      await this.startButton.click();
+      const opened = await this.page.waitForURL(eventOpened, { timeout: waitSeconds * 1000 }).then(() => true, () => false);
+      if (opened) {
+        return;
+      }
+      if (attempt < attempts) {
+        console.log(`Start did not open the claim within ${waitSeconds}s, clicking it again (attempt ${attempt + 1} of ${attempts})`);
+      }
+    }
+    throw new Error(`Start did not open the claim after ${attempts} clicks of ${waitSeconds}s each`);
   }
 }
