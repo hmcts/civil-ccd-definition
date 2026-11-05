@@ -821,7 +821,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "defenceRoute",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"FULL_DEFENCE\" OR respondent2ClaimResponseTypeForSpec=\"FULL_DEFENCE\" OR claimant1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" OR claimant2ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
+    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"FULL_DEFENCE\" OR (respondent2ClaimResponseTypeForSpec=\"FULL_DEFENCE\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\") OR claimant1ClaimResponseTypeForSpec=\"FULL_DEFENCE\" OR claimant2ClaimResponseTypeForSpec=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
   },
