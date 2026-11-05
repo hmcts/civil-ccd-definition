@@ -21,6 +21,7 @@ import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInform
 import { nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
 import { generalApplicationProblem } from '../generalApplicationSteps.ts';
 import { queryManagementProblem } from '../queryManagementSteps.ts';
+import { refundProblem } from '../refundSteps.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 
 export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
@@ -281,6 +282,11 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     queryManagementAfter: scenarioEnv.QUERY_MANAGEMENT_AFTER ?? 'RESPOND_TO_DEFENCE',
     queryManagementHearingRelated: yes(scenarioEnv.QUERY_MANAGEMENT_HEARING_RELATED),
     queryManagementFollowUp: yes(scenarioEnv.QUERY_MANAGEMENT_FOLLOW_UP),
+    // A refund of an overpayment of the claim fee (REFUND: what the approver does with it, APPROVE, REJECT or RETURN,
+    // which returns it to the claimant's solicitor to change and send again before it is approved), after the
+    // REFUND_AFTER step (default CREATE_CLAIM). See refundSteps.ts.
+    refundSetting: scenarioEnv.REFUND,
+    refundAfter: scenarioEnv.REFUND_AFTER ?? 'CREATE_CLAIM',
     defendantSolicitorAssignedAfter: { 1: 'ACKNOWLEDGE_CLAIM_DEFENDANT1', 2: 'ACKNOWLEDGE_CLAIM_DEFENDANT2' } as Record<1 | 2, string>,
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
@@ -372,6 +378,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
       const queryError = queryManagementProblem(config);
       expect(queryError, queryError).toBeUndefined();
+
+      const refundError = refundProblem(config);
+      expect(refundError, refundError).toBeUndefined();
     },
   };
   return config;

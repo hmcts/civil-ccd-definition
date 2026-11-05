@@ -21,6 +21,7 @@ ENV=preview PREVIEW_SERVICE=ccd PR_NUMBER=8265 npx playwright test playwright-te
 Steps, in the order they run:
 
 - CREATE_CLAIM: the claimant's solicitor creates the claim and pays the claim fee. The claim is then issued and waits for the defendants (AWAITING_RESPONDENT_ACKNOWLEDGEMENT).
+- REFUND (group: REFUND_OVERPAYMENT, REFUND_REQUEST, REFUND_RETURN, REFUND_RESUBMIT, REFUND_DECISION, optional): the claim fee is paid a second time through the payment API, the claimant's solicitor asks for it back from the Service Request tab, and Defendant 1's solicitor, who has the refund approver role on AAT, approves, rejects or returns it from the refund list (REFUND, see section 12). By default this comes here, or after the step REFUND_AFTER names. It is always done in the UI, apart from the second payment.
 - ADD_CASE_NOTE (optional): the hearing centre admin adds a case note with "Add a case note" straight after the claim is issued (ADD_CASE_NOTE=Yes). The test checks it shows on the Notes tab (through the API, that it is in the case's saved notes). The claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT. It has an API version.
 - MOVE_RESPONSE_DEADLINE, DEFAULT_JUDGMENT (optional): instead of the defendants responding, once the claim is issued (and any case note added) the response deadlines are moved to yesterday through civil-service's testing support, and the claimant's solicitor requests default judgment against every defendant with "Request Default Judgment": nothing paid, no fixed costs, paid immediately (DEFAULT_JUDGMENT=Yes). civil-service records the judgment through Judgments Online, which moves the claim to All_FINAL_ORDERS_ISSUED, or to JUDGMENT_REQUESTED where its judgment buffer is switched on. The defendants' steps and everything after them are skipped, apart from settling the claim. It has an API version.
 - ASSIGN_DEFENDANT_SOLICITORS: the defendants' solicitors are given access to the claim. A specified claim has no Notify claim or Notify claim details steps.
@@ -278,6 +279,14 @@ PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hea
 ENV=aat PAYMENT_METHOD=CARD API_UNTIL=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
 ```
 
+### Refunds
+
+Refunds work as in the unspecified journey (see "Refunds" in section 7 of RUNNING_UNSPECIFIED_TESTS.md for the screens, who does what and the settings). REFUND is APPROVE, REJECT or RETURN, and REFUND_AFTER moves the refund from straight after CREATE_CLAIM.
+
+```bash
+ENV=aat API_UNTIL=AWAITING_RESPONDENT_ACKNOWLEDGEMENT REFUND=APPROVE STOP_AFTER_TEST=REFUND npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
 ## 13. Named scenarios
 
 Run a named scenario from playwright-tests/scenarios/specifiedScenarios.ts, or use a test:SPEC_* script in package.json:
@@ -306,7 +315,7 @@ The notice of change scenarios are SPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE, where a L
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v1_FAST_NOTICE_OF_CHANGE
 ```
 
-SPEC_1v1_FAST_QUERY_MANAGEMENT has both solicitors raise a query about the hearing once the claimant has responded, with a follow-up question each, all answered by CTSC (yarn test:SPEC_1v1_FAST_QUERY_MANAGEMENT, section 11).
+SPEC_1v1_FAST_QUERY_MANAGEMENT has both solicitors raise a query about the hearing once the claimant has responded, with a follow-up question each, all answered by CTSC (yarn test:SPEC_1v1_FAST_QUERY_MANAGEMENT, section 11). SPEC_1v1_FAST_REFUND has a refund returned, changed and then approved straight after the claim is issued (yarn test:SPEC_1v1_FAST_REFUND, section 12).
 
 ## 14. Claim parameters
 
@@ -334,6 +343,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `QUERY_MANAGEMENT_AFTER` | A step name | RESPOND_TO_DEFENCE | The step the queries follow. A defendant's solicitor can only raise one after ASSIGN_DEFENDANT_SOLICITORS. |
 | `QUERY_MANAGEMENT_HEARING_RELATED` | Yes, No | No | The queries are about a hearing, ten days from today. |
 | `QUERY_MANAGEMENT_FOLLOW_UP` | Yes, No | No | Each solicitor asks a follow-up question once CTSC has answered, which CTSC answers too. |
+| `REFUND` | APPROVE, REJECT, RETURN | None | Optional steps: a refund of a second payment of the claim fee, which the approver approves, rejects, or returns to be changed before approving it (section 12). Always in the UI, apart from the second payment. |
+| `REFUND_AFTER` | A step name | CREATE_CLAIM | The step the refund follows. |
 | `STAY_CASE` | Yes, No | No | Optional steps: stay the case once it reaches JUDICIAL_REFERRAL, ask for an update and lift the stay. |
 | `MEDIATION_SUCCESSFUL` | Yes, No | No | Optional step: mediation settles a small claim, which stays the case (CASE_STAYED) and ends the journey, instead of mediation being unsuccessful. |
 | `REQUEST_FOR_RECONSIDERATION` | CLAIMANT, DEFENDANT_1, DEFENDANT_2 | None | Optional steps: that party's solicitor asks for the legal adviser's small claims order to be reconsidered, and a judge decides it. Needs TRACK=SMALL_CLAIM, every defendant represented and the claimant's response taking the claim to mediation (the defaults), and cannot be used with MEDIATION_SUCCESSFUL or DEFAULT_JUDGMENT. DEFENDANT_2 needs CLAIM_TYPE=1v2DS. |

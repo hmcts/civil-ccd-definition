@@ -46,4 +46,42 @@ export class PaymentHelper {
       await apiRequestContext.dispose();
     }
   }
+
+  // Pays the fee again from the user's organisation's PBA account, outside any service request, so the case has an
+  // overpayment that can be refunded (REFUND). The payment is then made to look 25 days old, as the refunds service only
+  // refunds a payment once it has had time to clear. Returns the payment's reference.
+  async makeRefundableOverpayment(user, caseId: string, fee: { calculatedAmountInPence: string; code: string; version: string }): Promise<string> {
+    const { accessToken, s2sToken } = await this.tokensHelper.getNonEventTokens(user);
+    const headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}`, ServiceAuthorization: s2sToken };
+    const amount = Number(fee.calculatedAmountInPence) / 100;
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.post(`${paymentApiBaseUrl}/credit-account-payments`, {
+        headers,
+        data: {
+          account_number: pbaAccount,
+          amount,
+          case_reference: caseId,
+          ccd_case_number: caseId,
+          currency: 'GBP',
+          customer_reference: 'playwright-tests overpayment',
+          description: 'Overpayment for a refund',
+          fees: [{ calculated_amount: amount, code: fee.code, fee_amount: amount, version: fee.version, volume: 1 }],
+          organisation_name: 'Civil - Organisation 1',
+          service: 'CIVIL',
+          site_id: 'AAA7',
+        },
+      });
+      expect(response.status(), `Paying the overpayment of ${fee.code} £${amount} on case ${caseId} returned ${response.status()}: ${await response.text()}`).toBe(201);
+      const payment = await response.json();
+      console.log(`Overpayment of ${fee.code} £${amount} made by PBA on case ${caseId}: ${payment.reference} (${payment.status})`);
+
+      const rollback = await apiRequestContext.patch(`${paymentApiBaseUrl}/payments/ccd_case_reference/${caseId}/lag_time/25`, { headers });
+      expect(rollback.status(), `Moving case ${caseId}'s payments back 25 days returned ${rollback.status()}: ${await rollback.text()}`).toBe(204);
+      console.log(`Case ${caseId}'s payments moved back 25 days, so they can be refunded`);
+      return payment.reference;
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
 }

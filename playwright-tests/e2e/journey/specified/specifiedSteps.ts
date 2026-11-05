@@ -74,6 +74,7 @@ import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
+import { withRefund } from '../refundSteps.ts';
 import { specifiedConfig, SpecifiedConfig } from './specifiedConfig.ts';
 
 // The steps of the specified journey, in the order they run. Each step that does not apply to the journey's claim
@@ -83,7 +84,7 @@ import { specifiedConfig, SpecifiedConfig } from './specifiedConfig.ts';
 // queryManagementSteps.ts).
 export function specifiedSteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
   const stepsFor = (config: SpecifiedConfig) =>
-    withQueryManagement(config, ctx, withGeneralApplication(config, ctx, journeySteps(config, ctx)));
+    withRefund(config, ctx, withQueryManagement(config, ctx, withGeneralApplication(config, ctx, journeySteps(config, ctx))));
   return withNoticeOfChange(c, ctx, stepsFor(c), (claimType) =>
     stepsFor(specifiedConfig({ ...c.scenarioEnv, CLAIM_TYPE: claimType, NOTICE_OF_CHANGE: undefined })));
 }

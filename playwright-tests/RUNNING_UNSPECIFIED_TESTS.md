@@ -118,6 +118,7 @@ An invalid combination of settings fails the run before the first test, with eve
 Steps, in the order they run:
 
 - CREATE_CLAIM
+- REFUND (group: REFUND_OVERPAYMENT, REFUND_REQUEST, REFUND_RETURN, REFUND_RESUBMIT, REFUND_DECISION, optional; here by default, or after the REFUND_AFTER step)
 - ADD_CASE_NOTE (optional)
 - NOTIFY_CLAIM
 - NOTIFY_CLAIM_DETAILS
@@ -313,6 +314,30 @@ These settings fail the run before the first test:
 - QUERY_MANAGEMENT_HEARING_RELATED or QUERY_MANAGEMENT_FOLLOW_UP set to anything but Yes or No
 - QUERY_MANAGEMENT_AFTER set to a step before that defendant's solicitor has the case (their acknowledgement), or to a step that closes the claim
 
+### Refunds
+
+Refunds are not a CCD event. They are XUI's payment screens, backed by the payment and refunds services, so they always run in the UI, like paying the hearing fee. A refund needs a payment to refund, so the claim fee is first paid a second time.
+
+REFUND says what the refund approver does with it:
+
+- REFUND_OVERPAYMENT: the claimant's solicitor pays the claim fee again from their PBA account, through the payment API, and the payment is moved back 25 days, as the refunds service only refunds a payment once it has had time to clear.
+- REFUND_REQUEST: the claimant's solicitor opens the overpayment from the Service Request tab (Review), chooses Issue refund, picks the fee, gives "Amended claim" as the reason and an email address for the contact, and submits it. The test notes the refund's reference (RF-...).
+- REFUND_RETURN (REFUND=RETURN): the approver returns it to the caseworker with a reason.
+- REFUND_RESUBMIT (REFUND=RETURN): the claimant's solicitor opens it from the refund list (Review refund), changes the reason to "System/technical error" and sends it again.
+- REFUND_DECISION: the approver approves it (REFUND=APPROVE or RETURN) or rejects it (REFUND=REJECT, no associated payment).
+
+The approver works from the refund list (/refunds), where each refund has a Process refund link. The list is shared by everyone on the environment (around a hundred refunds wait for approval on AAT), so its tables are sorted newest first before the case's refund is looked for.
+
+On AAT the claimant's solicitor has the refund requester roles (payments-refund) and Defendant 1's solicitor the approver roles (payments-refund-approver), so Defendant 1's solicitor is the approver. The approver cannot be the user who asked for the refund. The court staff test users have neither role.
+
+The refund comes straight after the claim is issued, or after the step REFUND_AFTER names. It does not change the claim's state.
+
+```bash
+ENV=aat API_UNTIL=CASE_ISSUED REFUND=RETURN STOP_AFTER_TEST=REFUND npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+A REFUND value other than APPROVE, REJECT or RETURN, or a REFUND_AFTER step that does not exist or closes the claim, fails the run before the first test.
+
 ### Several at once, with the API for the early steps
 
 ```bash
@@ -359,7 +384,7 @@ ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/Unspecif
 
 The notice of change scenarios run in the nightly set too. UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE gives a LIP defendant a solicitor (yarn test:UNSPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE). UNSPEC_1v1_FAST_NOTICE_OF_CHANGE changes both parties' solicitors after the claimant's response (yarn test:UNSPEC_1v1_FAST_NOTICE_OF_CHANGE).
 
-UNSPEC_1v1_FAST_QUERY_MANAGEMENT runs in the nightly set too: once the claimant has responded, both solicitors raise a query about the hearing, CTSC answers, each asks a follow-up question and CTSC answers that too (yarn test:UNSPEC_1v1_FAST_QUERY_MANAGEMENT).
+UNSPEC_1v1_FAST_QUERY_MANAGEMENT runs in the nightly set too: once the claimant has responded, both solicitors raise a query about the hearing, CTSC answers, each asks a follow-up question and CTSC answers that too (yarn test:UNSPEC_1v1_FAST_QUERY_MANAGEMENT). UNSPEC_1v1_FAST_REFUND has a refund returned, changed and then approved straight after the claim is issued (yarn test:UNSPEC_1v1_FAST_REFUND).
 
 ```bash
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --grep @UNSPEC_1v1_FAST_NOTICE_OF_CHANGE
@@ -411,6 +436,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `QUERY_MANAGEMENT_AFTER` | A step name | RESPOND_TO_DEFENCE | The step the queries follow. A defendant's solicitor can only raise one once they have acknowledged the claim. |
 | `QUERY_MANAGEMENT_HEARING_RELATED` | Yes, No | No | The queries are about a hearing, ten days from today. |
 | `QUERY_MANAGEMENT_FOLLOW_UP` | Yes, No | No | Each solicitor asks a follow-up question once CTSC has answered, which CTSC answers too. |
+| `REFUND` | APPROVE, REJECT, RETURN | None | Optional steps: the claim fee is paid again and the claimant's solicitor asks for it back; the approver approves, rejects, or returns it to be changed and sent again before approving it (see section 7). Always in the UI, apart from the second payment. |
+| `REFUND_AFTER` | A step name | CREATE_CLAIM | The step the refund follows. |
 
 ## 11. Run settings
 

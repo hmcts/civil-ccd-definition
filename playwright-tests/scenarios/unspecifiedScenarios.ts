@@ -271,6 +271,20 @@ const scenarios: Scenario[] = [
       QUERY_MANAGEMENT_FOLLOW_UP: 'Yes',
     },
   },
+  // The claim fee is paid a second time once the claim is issued, the claimant's solicitor asks for it back, the
+  // approver returns the refund, the solicitor changes its reason and sends it again, and the approver approves it.
+  // The journey then runs to the final order.
+  {
+    name: 'UNSPEC_1v1_FAST_REFUND',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v1',
+      CLAIMANT_TYPE: 'INDIVIDUAL',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...roadAccident,
+      REFUND: 'RETURN',
+    },
+  },
 ];
 
 // The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own
