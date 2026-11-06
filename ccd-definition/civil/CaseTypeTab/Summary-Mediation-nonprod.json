@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "mediationSectionHeading",
+    "FieldShowCondition": "mediationOutcome = \"Unsuccessful\"",
+    "TabFieldDisplayOrder": 23
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "mediationOutcome",
+    "FieldShowCondition": "mediationOutcome = \"Unsuccessful\"",
+    "TabFieldDisplayOrder": 24
+  }
+]

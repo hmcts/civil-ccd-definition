@@ -3439,6 +3439,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "showCaseworkerMediationActivities",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "documentAnswersRes",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"

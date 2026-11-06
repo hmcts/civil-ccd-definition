@@ -2802,6 +2802,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "showCaseworkerMediationActivities",
+    "Label": "Show caseworker mediation activities",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "specApplicant1DQDisclosureOfElectronicDocuments",
     "Label": "Claimant 1 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
