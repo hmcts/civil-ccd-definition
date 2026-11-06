@@ -1,0 +1,38 @@
+[
+  {
+    "ID": "MediationAutoAppointment",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationAutoAppointment",
+    "ListElementCode": "appointmentDate",
+    "EventElementLabel": "Select the appointment date",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAutoAppointment",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationAutoAppointment",
+    "ListElementCode": "appointmentTimeWindow",
+    "EventElementLabel": "Choose the appointment time",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationBulkAppointment",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationBulkAppointment",
+    "ListElementCode": "appointmentDate",
+    "EventElementLabel": "Select the appointment date",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationBulkAppointment",
+    "CaseEventID": "MEDIATION_BOOKING_DETAILS",
+    "CaseFieldID": "mediationBulkAppointment",
+    "ListElementCode": "appointmentTimeWindow",
+    "EventElementLabel": "Choose the appointment time",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  }
+]

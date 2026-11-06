@@ -1,0 +1,38 @@
+[
+  {
+    "ID": "MediationAutoAppointment",
+    "ListElementCode": "appointmentDate",
+    "ElementLabel": "Mediation appointment date",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationAutoAppointment",
+    "ListElementCode": "appointmentTimeWindow",
+    "ElementLabel": "Mediation appointment time",
+    "HintText": "Select one option",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "MediationAutoAppointmentTimeWindow",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationBulkAppointment",
+    "ListElementCode": "appointmentDate",
+    "ElementLabel": "Mediation appointment date",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationBulkAppointment",
+    "ListElementCode": "appointmentTimeWindow",
+    "ElementLabel": "Mediation appointment time",
+    "HintText": "Select a time window",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MediationAppointmentTimeWindow",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

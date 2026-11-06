@@ -1,0 +1,74 @@
+[
+  {
+    "ID": "MediationAppointmentType",
+    "ListElementCode": "AUTO",
+    "ListElement": "Auto Mediation",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationAppointmentType",
+    "ListElementCode": "BULK",
+    "ListElement": "Bulk Mediation",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationAutoAppointmentTimeWindow",
+    "ListElementCode": "FROM_0800_TO_1000",
+    "ListElement": "0800-1000 AM",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationAutoAppointmentTimeWindow",
+    "ListElementCode": "FROM_0900_TO_1100",
+    "ListElement": "0900-1100 AM",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MediationAutoAppointmentTimeWindow",
+    "ListElementCode": "FROM_1000_TO_1200",
+    "ListElement": "1000-1200 AM",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "MediationAutoAppointmentTimeWindow",
+    "ListElementCode": "FROM_1100_TO_1300",
+    "ListElement": "1100-1300 AM",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "MediationAutoAppointmentTimeWindow",
+    "ListElementCode": "FROM_1200_TO_1400",
+    "ListElement": "1200-1400 PM",
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "MediationAutoAppointmentTimeWindow",
+    "ListElementCode": "FROM_1300_TO_1500",
+    "ListElement": "1300-1500 PM",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "MediationAutoAppointmentTimeWindow",
+    "ListElementCode": "FROM_1400_TO_1600",
+    "ListElement": "1400-1600 PM",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "MediationAutoAppointmentTimeWindow",
+    "ListElementCode": "FROM_1500_TO_1700",
+    "ListElement": "1500-1700 PM",
+    "DisplayOrder": 8
+  },
+  {
+    "ID": "MediationAppointmentTimeWindow",
+    "ListElementCode": "MORNING",
+    "ListElement": "0930-1230 AM",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MediationAppointmentTimeWindow",
+    "ListElementCode": "AFTERNOON",
+    "ListElement": "1330-1630 PM",
+    "DisplayOrder": 2
+  }
+]
