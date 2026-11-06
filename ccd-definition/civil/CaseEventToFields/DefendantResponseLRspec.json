@@ -1084,7 +1084,7 @@
     "PageLabel": "Add timeline of events (Optional)",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "PageID": "HowToAddTimelineManual",
     "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric != \"COUNTER_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\" AND showConditionFlags CONTAINS \"TIMELINE_MANUALLY\"",
     "ShowSummaryChangeOption": "Y",
@@ -1097,7 +1097,7 @@
     "PageLabel": "Add timeline of events (Optional)",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "COMPLEX",
     "PageID": "HowToAddTimelineManual",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent2 = \"Yes\""

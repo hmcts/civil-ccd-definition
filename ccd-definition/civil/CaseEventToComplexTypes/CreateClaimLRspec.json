@@ -765,8 +765,32 @@
     "ID": "TimelineEvents",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "timelineOfEvents",
-    "ListElementCode": "timelineDate",
+    "ListElementCode": "timelineDateLabel",
     "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineDay",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineMonth",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "TimelineEvents",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "timelineOfEvents",
+    "ListElementCode": "timelineYear",
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -774,7 +798,7 @@
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "timelineOfEvents",
     "ListElementCode": "timelineDescription",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1291,7 +1315,6 @@
     "FieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\" OR respondent1.type = \"ORGANISATION\" OR respondent1.type = \"COMPANY\""
-
   },
   {
     "ID": "Defendant",
