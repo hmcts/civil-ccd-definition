@@ -134,7 +134,9 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Applicant1Party",
     "CaseEventFieldLabel": " ",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "partyChosenId = \"CLAIMANT_1\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -230,7 +232,9 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Applicant2Party",
     "ShowSummaryChangeOption": "Y",
-    "CaseEventFieldLabel": " "
+    "CaseEventFieldLabel": " ",
+    "FieldShowCondition": "partyChosen = \"CLAIMANT_2\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -325,7 +329,9 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Defendant1Party",
     "ShowSummaryChangeOption": "Y",
-    "CaseEventFieldLabel": " "
+    "CaseEventFieldLabel": " ",
+    "FieldShowCondition": "partyChosenId = \"DEFENDANT_1\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -416,7 +422,9 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "Defendant2Party",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "partyChosenId = \"DEFENDANT_2\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "CaseTypeID": "CIVIL",
