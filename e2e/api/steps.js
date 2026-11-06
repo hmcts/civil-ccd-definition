@@ -37,7 +37,8 @@ const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
 const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
-
+const enterIntoBreathingSpace = require('../fixtures/events/enterIntoBreathingSpace');
+const liftBreathingSpace = require('../fixtures/events/liftBreathingSpace');
 
 const data = {
   CREATE_CLAIM: (mpScenario, claimAmount, hmcTest) => claimData.createClaim(mpScenario, claimAmount, hmcTest),
@@ -108,7 +109,9 @@ const data = {
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStayDamages(),
   DISMISS_CASE: () => dismissCase.dismissCaseDamages(),
   SEND_MESSAGE: () => sendAndReplyMessage.sendMessage(),
-  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessage(messageCode, messageLabel)
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessage(messageCode, messageLabel),
+  ENTER_INTO_BS: (mpScenario, breathingSpaceDetails) => enterIntoBreathingSpace.enterIntoBS(mpScenario, breathingSpaceDetails),
+  LIFT_BS: (mpScenario, breathingSpaceDetails) => liftBreathingSpace.liftBS(mpScenario, breathingSpaceDetails)
 };
 const calculatedClaimsTrackDRH = {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
@@ -1457,6 +1460,47 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  enterIntoBS: async (user, mpScenario, breathingSpaceDetails, state) => {
+    console.log('Enter into BS for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'ENTER_BREATHING_SPACE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.ENTER_INTO_BS(mpScenario, breathingSpaceDetails);
+
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    await assertSubmittedEvent(state);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  liftBS: async (user, mpScenario, breathingSpaceDetails, state) => {
+    console.log('Lift BS for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'LIFT_BREATHING_SPACE_SPEC';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.LIFT_BS(mpScenario, breathingSpaceDetails);
+
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    await assertSubmittedEvent(state);
+    await waitForFinishedBusinessProcess(caseId);
+  },
 };
 
 // Functions
