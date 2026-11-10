@@ -191,7 +191,8 @@ const scenarios: Scenario[] = [
       ].join(','),
     },
   },
-  // Each defendant's solicitor informs the court of an agreed 28 day extension before responding
+  // Each defendant's solicitor adds a litigation friend for their defendant, then informs the court of an agreed 28
+  // day extension before responding
   {
     name: 'UNSPEC_1v2DS_FAST_EXTENSION',
     tags: [NIGHTLY],
@@ -201,6 +202,19 @@ const scenarios: Scenario[] = [
       DEFENDANT_TYPE: 'INDIVIDUAL',
       ...nihlFast,
       INFORM_AGREED_EXTENSION: 'Yes',
+      DEFENDANT_LITIGATION_FRIEND: 'Yes',
+    },
+  },
+  // Defendant 1's solicitor adds one litigation friend for both defendants, who have the same solicitor
+  {
+    name: 'UNSPEC_1v2SS_FAST_LITIGATION_FRIEND',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v2SS',
+      CLAIMANT_TYPE: 'SOLE_TRADER',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...nihlFast,
+      DEFENDANT_LITIGATION_FRIEND: 'Yes',
     },
   },
   // The case is stayed after the claimant's response, the parties are asked for an update and the stay is lifted, then

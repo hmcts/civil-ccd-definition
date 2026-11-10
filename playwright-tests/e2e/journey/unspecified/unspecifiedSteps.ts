@@ -41,6 +41,9 @@ import { ManageStay } from '../../flows/events/ui/ManageStay.ts';
 import { ManageStay as ApiManageStay } from '../../flows/events/api/ManageStay.ts';
 import { InformAgreedExtensionDate } from '../../flows/events/ui/InformAgreedExtensionDate.ts';
 import { InformAgreedExtensionDate as ApiInformAgreedExtensionDate } from '../../flows/events/api/InformAgreedExtensionDate.ts';
+import { AddDefendantLitigationFriend } from '../../flows/events/ui/AddDefendantLitigationFriend.ts';
+import { AddDefendantLitigationFriend as ApiAddDefendantLitigationFriend } from '../../flows/events/api/AddDefendantLitigationFriend.ts';
+import { expectedLitigationFriendData, litigationFriendFor } from '../../flows/events/shared_api_ui/defendantLitigationFriendSpecs.ts';
 import { SettleClaimMarkPaidFull } from '../../flows/events/ui/SettleClaimMarkPaidFull.ts';
 import { SettleClaimMarkPaidFull as ApiSettleClaimMarkPaidFull } from '../../flows/events/api/SettleClaimMarkPaidFull.ts';
 import { SettleClaim } from '../../flows/events/ui/SettleClaim.ts';
@@ -482,6 +485,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       },
     },
+
+    // Each defendant's solicitor adds a litigation friend for the defendant they represent (one for both defendants
+    // where they have the same solicitor). Only run with DEFENDANT_LITIGATION_FRIEND=Yes.
+    ...addDefendantLitigationFriendSteps(),
 
     // Each defendant's solicitor informs the court of an agreed 28 day extension to respond, which moves their response
     // deadline back. Only run with INFORM_AGREED_EXTENSION=Yes.
@@ -1007,6 +1014,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     return [
       [c.claimOfflineAfterNotifyClaim || c.claimOfflineAfterNotifyClaimDetails, `DEFAULT_JUDGMENT=Yes cannot be used with CLAIM_TYPE=${c.claimType}: the claim goes offline when it is notified`],
       [c.informAgreedExtension === yesNo.YES, ignored('INFORM_AGREED_EXTENSION=Yes')],
+      [c.defendantLitigationFriend === yesNo.YES, ignored('DEFENDANT_LITIGATION_FRIEND=Yes')],
       [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
       [c.caseFlagsSetting !== undefined, ignored('CASE_FLAGS')],
       [c.manageContactInformationSetting !== undefined, ignored('MANAGE_CONTACT_INFORMATION')],
@@ -1130,6 +1138,50 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         const notSaved = mciChangeNotSavedReason(await ctx.testingEndpointHelper.getCaseData(ctx.caseId), spec, change);
         expect(notSaved, `Manage Contact Information for ${spec.party} was not saved: ${notSaved}`).toBeUndefined();
         await ctx.assertCaseState(caseStates.JUDICIAL_REFERRAL);
+      },
+    }));
+  }
+
+  function addDefendantLitigationFriendSteps(): JourneyStep[] {
+    const solicitors: Array<{ defendantNumber: 1 | 2; user: SessionUserKey; noSolicitor: [boolean, string] }> = [
+      {
+        defendantNumber: 1,
+        user: 'respondent1Solicitor',
+        noSolicitor: [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP'],
+      },
+      {
+        defendantNumber: 2,
+        user: 'respondent2Solicitor',
+        noSolicitor: [
+          c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL,
+          c.claimType === claimTypes.ONE_VS_TWO_SAME_SOL
+            ? "Skipping as Defendant 1's solicitor added the litigation friend for both defendants"
+            : 'Skipping as Defendant 2 has no separate solicitor',
+        ],
+      },
+    ];
+    return solicitors.map((solicitor) => ({
+      name: `ADD_DEFENDANT_LITIGATION_FRIEND_DEFENDANT${solicitor.defendantNumber}`,
+      title: `Defendant ${solicitor.defendantNumber} Solicitor adds a litigation friend.`,
+      user: solicitor.user,
+      skipIf: [
+        offlineAtNotify,
+        solicitor.noSolicitor,
+        [c.defendantLitigationFriend !== yesNo.YES, 'Adding a defendant litigation friend is switched off (set DEFENDANT_LITIGATION_FRIEND=Yes to run it)'],
+      ],
+      run: async ({ page, storageState, user }) => {
+        const forWhom = litigationFriendFor(c.claimType, solicitor.defendantNumber);
+        if (ctx.useApi()) {
+          await new ApiAddDefendantLitigationFriend().submit(ctx.caseId, forWhom, user);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new AddDefendantLitigationFriend(page).submit(forWhom);
+          });
+        }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'ADD_DEFENDANT_LITIGATION_FRIEND');
+        const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+        expect(saved, `The litigation friend for ${forWhom} was not saved as it was entered`).toMatchObject(expectedLitigationFriendData(forWhom));
+        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
       },
     }));
   }

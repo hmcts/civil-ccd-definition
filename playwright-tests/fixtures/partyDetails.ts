@@ -58,6 +58,18 @@ export const partyDetails = {
     email: 'Claimant2LitigantFriend@email.com',
     phone: '02087777666',
   },
+  defendant1LitigantFriend: {
+    firstname: 'Defendant1LitigantFriend_firstname',
+    lastname: 'Defendant1LitigantFriend_lastname',
+    email: 'Defendant1LitigantFriend@email.com',
+    phone: '02087777555',
+  },
+  defendant2LitigantFriend: {
+    firstname: 'Defendant2LitigantFriend_firstname',
+    lastname: 'Defendant2LitigantFriend_lastname',
+    email: 'Defendant2LitigantFriend@email.com',
+    phone: '02087777444',
+  },
   defendant1: {
     companyName: 'Defendant 1 company name',
     organisationName: 'Defendant 1 organisation name',

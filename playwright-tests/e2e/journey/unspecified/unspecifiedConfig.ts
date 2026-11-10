@@ -240,6 +240,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whether each defendant's solicitor informs the court of an agreed 28 day extension to respond, after
     // acknowledging the claim (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
+    // Whether each defendant's solicitor adds a litigation friend for the defendant they represent with "Add litigation
+    // friend", after acknowledging the claim. Where both defendants have the same solicitor, one litigation friend is
+    // added for both (DEFENDANT_LITIGATION_FRIEND=Yes, default No)
+    defendantLitigationFriend: yes(scenarioEnv.DEFENDANT_LITIGATION_FRIEND),
     // Whether each solicitor adds unavailable dates for the parties they represent with "Add Unavailable Dates" once the
     // claimant's response has been made, then the hearing centre admin adds some for a defendant
     // (ADD_UNAVAILABLE_DATES=Yes, default No; see addUnavailableDatesSpecs.ts)
