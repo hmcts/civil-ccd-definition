@@ -1,4 +1,3 @@
-
 [
   {
     "CaseTypeID": "CIVIL",
@@ -21,7 +20,7 @@
       "caseworker-wa-task-configuration",
       "judge-profile",
       "CITIZEN-DEFENDANT-PROFILE"
-      ],
+    ],
     "CRUD": "CRUD"
   },
   {
@@ -368,20 +367,20 @@
     ]
   },
   {
-  "CaseTypeID": "CIVIL",
-  "CaseStateID": "CLOSED",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "judge-profile",
-        "caseworker-civil-admin",
-        "caseworker-civil-staff",
-        "APP-SOL-SPEC-PROFILE"
-      ],
-      "CRUD": "CRU"
-    }
-  ]
-},
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_PROGRESSION",
@@ -450,6 +449,40 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDGMENT_REQUESTED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-approver",
+          "wlu-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile",
+          "caseworker-civil-citizen-ui-pcqextractor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDGMENT_REQUESTED",
     "UserRoles": [
       "next-hearing-date-admin"
     ],
