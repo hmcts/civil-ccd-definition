@@ -200,6 +200,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
+    // Whether each solicitor adds unavailable dates for the parties they represent with "Add Unavailable Dates" once the
+    // claimant's response has been made, then the hearing centre admin adds some for a defendant
+    // (ADD_UNAVAILABLE_DATES=Yes, default No; see addUnavailableDatesSpecs.ts)
+    addUnavailableDates: yes(scenarioEnv.ADD_UNAVAILABLE_DATES),
     // The parties a solicitor takes over with a notice of change (NOTICE_OF_CHANGE: a list such as
     // DEFENDANT_1,CLAIMANT_1), after the NOTICE_OF_CHANGE_AFTER step. A specified claim is not notified, so the earliest
     // is once the defendants' solicitors are assigned (ASSIGN_DEFENDANT_SOLICITORS, the default). See

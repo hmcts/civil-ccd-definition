@@ -173,6 +173,7 @@ const scenarios: Scenario[] = [
     tags: [NIGHTLY],
     env: {
       CLAIM_TYPE: '1v2DS',
+      ADD_UNAVAILABLE_DATES: 'Yes',
       CLAIMANT_TYPE: 'INDIVIDUAL',
       CLAIMANT1_LITIGANT_FRIEND: 'Yes',
       DEFENDANT_TYPE: 'COMPANY',

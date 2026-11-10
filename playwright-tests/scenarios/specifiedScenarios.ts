@@ -19,6 +19,9 @@ const scenarios: Scenario[] = [
   { name: 'SPEC_2v1_FAST', tags: [NIGHTLY], env: { CLAIM_TYPE: '2v1', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL' } },
   { name: 'SPEC_1v2SS_FAST', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v2SS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL' } },
   { name: 'SPEC_1v2DS_FAST', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION' } },
+  // Each solicitor adds unavailable dates while the small claim is in mediation, Defendant 1's for both defendants,
+  // then the hearing centre admin adds some for both defendants
+  { name: 'SPEC_1v2SS_SMALL_UNAVAILABLE_DATES', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v2SS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', TRACK: 'SMALL_CLAIM', ADD_UNAVAILABLE_DATES: 'Yes' } },
   // The defendants do not respond: once the response deadlines have passed the claimant's solicitor asks for default
   // judgment against them, paid immediately
   { name: 'SPEC_1v1_DEFAULT_JUDGMENT', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', DEFAULT_JUDGMENT: 'Yes' } },

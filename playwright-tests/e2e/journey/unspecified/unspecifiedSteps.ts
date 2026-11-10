@@ -79,6 +79,7 @@ import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
 import { withRefund } from '../refundSteps.ts';
+import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { unspecifiedConfig, UnspecifiedConfig } from './unspecifiedConfig.ts';
 
@@ -582,6 +583,13 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     // The admin and solicitors update contact details once the claimant has responded (MANAGE_CONTACT_INFORMATION)
     ...manageContactInformationSteps(),
 
+    // Each solicitor adds unavailable dates for their parties, then the hearing centre admin adds some for a defendant.
+    // Only run with ADD_UNAVAILABLE_DATES=Yes.
+    ...addUnavailableDatesSteps(c, ctx, c.defendant1SolicitorClaimTypes.includes(c.claimType), caseStates.JUDICIAL_REFERRAL, [
+      ...noClaimantResponse,
+      [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
+    ]),
+
     // The hearing centre admin stays the case once the claimant has responded, asks the parties for an update and then
     // lifts the stay. Lifting it takes the claim back to JUDICIAL_REFERRAL, so the journey carries on to the Standard
     // Direction Order. Only run with STAY_CASE=Yes.
@@ -1002,6 +1010,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
       [c.caseFlagsSetting !== undefined, ignored('CASE_FLAGS')],
       [c.manageContactInformationSetting !== undefined, ignored('MANAGE_CONTACT_INFORMATION')],
+      [c.addUnavailableDates === yesNo.YES, ignored('ADD_UNAVAILABLE_DATES=Yes')],
     ];
   }
 

@@ -240,6 +240,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whether each defendant's solicitor informs the court of an agreed 28 day extension to respond, after
     // acknowledging the claim (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
+    // Whether each solicitor adds unavailable dates for the parties they represent with "Add Unavailable Dates" once the
+    // claimant's response has been made, then the hearing centre admin adds some for a defendant
+    // (ADD_UNAVAILABLE_DATES=Yes, default No; see addUnavailableDatesSpecs.ts)
+    addUnavailableDates: yes(scenarioEnv.ADD_UNAVAILABLE_DATES),
     // The case flags the hearing centre admin adds after the claimant's response, and then makes the first one inactive
     // (CASE_FLAGS: "representative", or a list such as CASE:CF0002,DEFENDANT_1:RA0012; see caseFlagSpecs.ts)
     caseFlagsSetting: scenarioEnv.CASE_FLAGS,

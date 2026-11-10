@@ -74,6 +74,7 @@ import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
+import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
 import { withRefund } from '../refundSteps.ts';
 import { specifiedConfig, SpecifiedConfig } from './specifiedConfig.ts';
 
@@ -389,6 +390,13 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
 
     ...caseFlagSteps(),
     ...manageContactInformationSteps(),
+
+    // Each solicitor adds unavailable dates for their parties, then the hearing centre admin adds some for a defendant,
+    // in JUDICIAL_REFERRAL or IN_MEDIATION. Only run with ADD_UNAVAILABLE_DATES=Yes.
+    ...addUnavailableDatesSteps(c, ctx, allDefendantsRepresented, c.claimantOutcome.state, [
+      noLitigantInPerson,
+      [!c.claimantResponds, 'Skipping as the claim went offline once the defendants responded'],
+    ]),
 
     // The hearing centre admin stays the case once the claimant's response has taken it to JUDICIAL_REFERRAL, asks the
     // parties for an update and then lifts the stay. Lifting it takes the claim back to JUDICIAL_REFERRAL, so the
@@ -922,6 +930,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       ],
       [c.caseFlagsSetting !== undefined, ignored('CASE_FLAGS')],
       [c.manageContactInformationSetting !== undefined, ignored('MANAGE_CONTACT_INFORMATION')],
+      [c.addUnavailableDates === yesNo.YES, ignored('ADD_UNAVAILABLE_DATES=Yes')],
     ];
   }
 
