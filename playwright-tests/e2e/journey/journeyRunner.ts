@@ -182,12 +182,17 @@ export function defineJourney(
   const { stopAfterTest } = options;
   const stopAfterNamed = stopAfterTest === undefined
     ? undefined
-    : numberedSteps.find(({ step }) => step.name === stopAfterTest || step.group === stopAfterTest);
+    : numberedSteps.find(({ step }) => step.name === stopAfterTest) ?? numberedSteps.find(({ step }) => step.group === stopAfterTest);
   const stopAfterTestNumber = stopAfterNamed
     ? stopAfterNamed.testNumber
     : stopAfterTest !== undefined && /^test\d+$/.test(stopAfterTest)
       ? Number(stopAfterTest.slice('test'.length))
       : undefined;
+  // Where STOP_AFTER_TEST names one step of a group, such as GA_SEND_TO_OTHER_PARTY_JUDGE in GENERAL_APPLICATION, the
+  // steps after it in the same group are skipped too, as they share its test number
+  const stopAfterStepIndex = stopAfterNamed !== undefined && stopAfterNamed.step.name === stopAfterTest
+    ? numberedSteps.indexOf(stopAfterNamed)
+    : undefined;
 
   test.beforeAll(async ({}) => {
     options.validate();
@@ -248,20 +253,29 @@ export function defineJourney(
 
   test.describe.configure({ mode: 'serial' });
   for (const testNumber of [...new Set(numberedSteps.map((numbered) => numbered.testNumber))]) {
-    const stepsInTest = numberedSteps.filter((numbered) => numbered.testNumber === testNumber).map((numbered) => numbered.step);
+    const stepsInTest = numberedSteps.filter((numbered) => numbered.testNumber === testNumber);
+    const stoppedReason = `Stopped after ${stopAfterTest} (STOP_AFTER_TEST)`;
+    const define = ({ step }: { step: JourneyStep }) => {
+      const stepIndex = numberedSteps.findIndex((numbered) => numbered.step === step);
+      const stopped = stopAfterStepIndex !== undefined && stepIndex > stopAfterStepIndex && !step.closesClaim;
+      defineStep(step, stopped ? stoppedReason : undefined);
+    };
     test.describe(`test${testNumber}`, () => {
       if (stepsInTest.length === 1) {
-        defineStep(stepsInTest[0]);
+        define(stepsInTest[0]);
       } else {
-        for (const step of stepsInTest) {
-          test.describe(step.name, () => defineStep(step));
+        for (const numbered of stepsInTest) {
+          test.describe(numbered.step.name, () => define(numbered));
         }
       }
     });
   }
 }
 
-function defineStep(step: JourneyStep) {
+function defineStep(step: JourneyStep, stoppedReason?: string) {
+  if (stoppedReason !== undefined) {
+    test.skip(true, stoppedReason);
+  }
   for (const [condition, reason] of step.skipIf ?? []) {
     test.skip(condition, reason);
   }
