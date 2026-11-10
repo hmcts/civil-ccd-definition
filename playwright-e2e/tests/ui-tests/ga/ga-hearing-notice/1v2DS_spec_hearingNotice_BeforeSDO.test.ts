@@ -4,7 +4,7 @@ import ClaimType from '../../../../constants/cases/claim-type';
 
 test.describe(
   '1v2DS spec - respond to application - Hearing order journey',
-  { tag: ['@civil-ccd-nightly', '@ui-ga-hearing-notice', '@civil-ccd-pr'] },
+  { tag: ['@civil-ccd-nightly', '@ui-ga-hearing-notice'] },
   () => {
     test('GA for Specified Claim 1v2 different Solicitor - respond to application - Hearing order journey', async ({
       ClaimantSolicitorSpecApiSteps,
