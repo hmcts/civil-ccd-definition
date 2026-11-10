@@ -230,8 +230,10 @@ export class TestingEndPointHelper {
   // for the claim fee or hearingFeePaymentDetails for the hearing fee. Returns whether it was recorded.
   // Waits for civil-service to record the payment service's service request for a fee, and returns its reference.
   // pbaDetailsField is where the case keeps it, claimIssuedPBADetails for the claim fee or hearingFeePBADetails for the
-  // hearing fee. The Service Request tab lists each service request by this reference.
-  async waitForServiceRequestReference(caseId: string, pbaDetailsField: string, waitSeconds = apiRetries.timeout / 1000): Promise<string> {
+  // hearing fee. The Service Request tab lists each service request by this reference. referenceField is the field in
+  // it that holds the reference: serviceRequestReference, or additionalPaymentServiceRef for the extra fee a general
+  // application made without notice needs once a judge sends it to the other side.
+  async waitForServiceRequestReference(caseId: string, pbaDetailsField: string, waitSeconds = apiRetries.timeout / 1000, referenceField = 'serviceRequestReference'): Promise<string> {
     await this.getTokens(systemupdate);
     const caseUrl = `${this.testingSupportUrl}/case/${caseId}`;
     const apiRequestContext: APIRequestContext = await request.newContext();
@@ -239,12 +241,12 @@ export class TestingEndPointHelper {
     try {
       await expect.poll(async () => {
         const response = await apiRequestContext.get(caseUrl, { headers: this.getHeaders() });
-        reference = (await response.json())[pbaDetailsField]?.serviceRequestReference;
+        reference = (await response.json())[pbaDetailsField]?.[referenceField];
         return reference;
       }, {
         intervals: [5000],
         timeout: waitSeconds * 1000,
-        message: `civil-service did not record a service request in ${pbaDetailsField} for case ${caseId}`,
+        message: `civil-service did not record a service request in ${pbaDetailsField}.${referenceField} for case ${caseId}`,
       }).toBeTruthy();
       console.log(`${pbaDetailsField} service request for case ${caseId}: ${reference}`);
       return reference;
@@ -309,8 +311,14 @@ export class TestingEndPointHelper {
 
   // Tells civil-service a general application's fee has been paid, as the payment service would. Used where the
   // payment service cannot reach civil-service. civil-service then runs INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT.
-  async serviceRequestUpdateGeneralApplication(applicationCaseId: string) {
+  // With additionalFee, it is the extra fee a judge asked for when sending an application made without notice to the
+  // other side (the application is in APPLICATION_ADD_PAYMENT), and civil-service then runs
+  // MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID instead.
+  async serviceRequestUpdateGeneralApplication(applicationCaseId: string, additionalFee = false) {
     const { generalAppPBADetails } = await this.getCaseData(applicationCaseId);
+    const serviceRequestReference = additionalFee
+      ? generalAppPBADetails?.additionalPaymentServiceRef
+      : generalAppPBADetails?.serviceRequestReference;
     const amount = (Number(generalAppPBADetails?.fee?.calculatedAmountInPence ?? 0) / 100).toFixed(2);
     await this.getTokens(systemupdate);
     const apiRequestContext: APIRequestContext = await request.newContext();
@@ -319,7 +327,7 @@ export class TestingEndPointHelper {
       const response = await apiRequestContext.put(`${civilServiceUrl}/service-request-update`, {
         headers: this.getHeaders(),
         data: {
-          service_request_reference: generalAppPBADetails?.serviceRequestReference ?? '2020-1599477846963',
+          service_request_reference: serviceRequestReference ?? '2020-1599477846963',
           ccd_case_number: applicationCaseId,
           service_request_amount: amount,
           service_request_status: 'Paid',
@@ -327,7 +335,7 @@ export class TestingEndPointHelper {
         },
       });
       expect(response.ok(), `General application fee payment callback returned ${response.status()}: ${await response.text()}`).toBeTruthy();
-      console.log(`General application fee payment callback sent for application ${applicationCaseId}`);
+      console.log(`General application ${additionalFee ? 'additional ' : ''}fee payment callback sent for application ${applicationCaseId}`);
     } finally {
       await apiRequestContext.dispose();
     }

@@ -2,8 +2,11 @@
 enum GaCaseStates {
   // Made, with its fee not paid yet
   AWAITING_APPLICATION_PAYMENT = 'AWAITING_APPLICATION_PAYMENT',
-  // Paid, made with notice, waiting for the other side's response
+  // Paid, made with notice (or sent to the other side by the court), waiting for the other side's response
   AWAITING_RESPONDENT_RESPONSE = 'AWAITING_RESPONDENT_RESPONSE',
+  // Made without notice, and a judge or legal adviser has sent it to the other side: waiting for the applicant to pay
+  // the extra fee for an application with notice
+  APPLICATION_ADD_PAYMENT = 'APPLICATION_ADD_PAYMENT',
   // Waiting for a judge's or legal adviser's decision
   APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION = 'APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION',
   ORDER_MADE = 'ORDER_MADE',

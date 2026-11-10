@@ -54,6 +54,10 @@ export interface GaClaim {
   // GENERAL_APPLICATION_REFER_TO_JUDGE: whether a legal adviser given the decision refers it to a judge, who then decides
   // it (default No)
   generalApplicationReferToJudge: yesNo;
+  // GENERAL_APPLICATION_SEND_TO_OTHER_PARTY: for an application made without notice, whether the judge or legal adviser
+  // first sends it to the other side ("Request more information", "Send application to other party"), so the applicant
+  // pays the extra fee and the other side responds before it is decided (default No)
+  generalApplicationSendToOtherParty: yesNo;
 }
 
 // The parties who can make an application, each with their solicitor's session user and a label
@@ -73,13 +77,13 @@ function respondingParties(c: GaClaim): GaParty[] {
   return (['claimant', ...ownSolicitorDefendants] as GaParty[]).filter((party) => party !== c.generalApplicationBy);
 }
 
-// Whether the other side's solicitor responds: to an application made with notice, which civil-service takes every
-// agreed application to be (they confirm they agreed). One made without notice goes to a judge or legal adviser as soon
-// as its fee is paid (civil-service's EndGeneralAppBusinessProcessCallbackHandler).
+// Whether the other side's solicitor responds once the fee is paid: to an application made with notice, which
+// civil-service takes every agreed application to be (they confirm they agreed). One made without notice goes to a
+// judge or legal adviser as soon as its fee is paid (civil-service's EndGeneralAppBusinessProcessCallbackHandler).
 // A solicitor's application to settle by consent (on its own, as it must be) goes straight to the court once its fee is
 // paid, as the other side has already agreed to it (isLRConsentApplication).
 // An urgent application also goes straight to the court, even one made with notice (isNotificationCriteriaSatisfied).
-function respondentResponds(c: GaClaim): boolean {
+function respondentRespondsOnceFeePaid(c: GaClaim): boolean {
   const types = generalApplicationTypesOf(c);
   if (types.length === 1 && types[0] === 'SETTLE_BY_CONSENT') {
     return false;
@@ -88,6 +92,19 @@ function respondentResponds(c: GaClaim): boolean {
     return false;
   }
   return c.generalApplicationAgreed === yesNo.YES || c.generalApplicationWithNotice === yesNo.YES;
+}
+
+// Whether the court sends an application made without notice to the other side before deciding it
+// (GENERAL_APPLICATION_SEND_TO_OTHER_PARTY)
+function sentToOtherParty(c: GaClaim): boolean {
+  return c.generalApplicationSendToOtherParty === yesNo.YES;
+}
+
+// Whether the other side's solicitor responds at all: once the fee is paid, or once the court has sent an application
+// made without notice to them and the applicant has paid the extra fee (civil-service's StateGeneratorService gives
+// AWAITING_RESPONDENT_RESPONSE for one that is not urgent)
+function respondentResponds(c: GaClaim): boolean {
+  return respondentRespondsOnceFeePaid(c) || sentToOtherParty(c);
 }
 
 // The GENERAL_APPLICATION types, in the order given
@@ -127,6 +144,7 @@ const yesNoSettings = [
   'GENERAL_APPLICATION_WITH_NOTICE',
   'GENERAL_APPLICATION_URGENT',
   'GENERAL_APPLICATION_REFER_TO_JUDGE',
+  'GENERAL_APPLICATION_SEND_TO_OTHER_PARTY',
 ];
 
 // Why the GENERAL_APPLICATION settings cannot be used with this claim, or undefined when they can
@@ -161,6 +179,17 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
       problems.push(`${setting}=${value} must be Yes or No`);
     }
   }
+  // Only an application made without notice can be sent to the other side (civil-service only offers the option when
+  // isWithNotice is No), and an urgent one goes straight back to the court once the extra fee is paid, without a
+  // response, which the journeys do not cover
+  if (sentToOtherParty(c)) {
+    if (c.generalApplicationAgreed === yesNo.YES || c.generalApplicationWithNotice !== yesNo.NO) {
+      problems.push('GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes needs an application made without notice (set GENERAL_APPLICATION_WITH_NOTICE=No, and GENERAL_APPLICATION_AGREED is not Yes)');
+    }
+    if (c.generalApplicationUrgent === yesNo.YES) {
+      problems.push('GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes is not covered for an urgent application (GENERAL_APPLICATION_URGENT=Yes)');
+    }
+  }
   if (!(c.generalApplicationBy in gaParties)) {
     problems.push(`GENERAL_APPLICATION_BY=${c.generalApplicationBy} is not one of ${Object.keys(gaParties).join(', ')}`);
   }
@@ -182,7 +211,9 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
 // adviser or judge (whoever work allocation gives the task to) approves the order, or court staff approve an agreed one
 // as a consent order where work allocation gives it to them (ReviewApplication, such as Settle by consent). With
 // GENERAL_APPLICATION_REFER_TO_JUDGE=Yes, a legal adviser given the task refers it to a judge (GA_REFER_TO_JUDGE), who
-// approves it instead. The
+// approves it instead. With GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes, an application made without notice is first
+// sent to the other side by whoever work allocation gives the decision to (GA_SEND_TO_OTHER_PARTY_*), the applicant
+// pays the extra fee (GA_PAY_ADDITIONAL_FEE), the other side responds, and it is then decided as above. The
 // application is a case of its own, so the claim's state is not changed by it. Without GENERAL_APPLICATION the journey
 // still lists one GENERAL_APPLICATION step, skipped with the reason, as it does for other switched-off steps.
 //
@@ -220,7 +251,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     if (c.generalApplicationUrgent === yesNo.YES) {
       return 'Skipping as the application is urgent, so it goes straight to the court and the other side does not respond';
     }
-    return 'Skipping as the application was made without notice, so the other side does not respond';
+    return 'Skipping as the application was made without notice, so the other side does not respond (set GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes for the court to send it to them first)';
   };
   const applicant = gaParties[c.generalApplicationBy as GaParty];
   const respondents = respondingParties(c);
@@ -294,7 +325,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         }
         // Made with notice or agreed, it waits for the other side's response; otherwise (or to settle by consent) it goes
         // to a judge, legal adviser or court staff
-        await ctx.assertGaCaseState(respondentResponds(c)
+        await ctx.assertGaCaseState(respondentRespondsOnceFeePaid(c)
           ? GaCaseStates.AWAITING_RESPONDENT_RESPONSE
           : GaCaseStates.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION);
         await claimStateUnchanged();
@@ -436,6 +467,80 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     },
   }));
 
-  // The legal adviser's decision step comes first, so the referral goes before it
-  return [...steps, referStep, ...decisionSteps, ...consentOrderSteps];
+  // With GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes, whoever work allocation gives the decision on an application made
+  // without notice sends it to the other side instead of deciding it (MAKE_DECISION, "Send application to other party
+  // and request hearing details"). civil-service then asks the applicant for the extra fee (APPLICATION_ADD_PAYMENT). The
+  // task is completed by the event in XUI; through the API it is completed as XUI would, or it would stay open beside
+  // the task to decide the application once the other side has responded.
+  const notSentReason = 'Skipping as the application is not sent to the other side (set GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes to)';
+  const sendSteps: JourneyStep[] = decisionTasks.map(({ taskType, user, label: decider }) => ({
+    name: `GA_SEND_TO_OTHER_PARTY_${user === 'judge' ? 'JUDGE' : 'LEGAL_ADVISER'}`,
+    group: 'GENERAL_APPLICATION',
+    title: `${decider} sends the general application made without notice to the other side.`,
+    user,
+    skipIf: [
+      ...(anchor.skipIf ?? []),
+      [!sentToOtherParty(c), notSentReason],
+    ],
+    run: async ({ page, storageState, user: stepUser }) => {
+      const created = await findDecisionTask();
+      expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
+      test.skip(created !== taskType, `Skipping as work allocation gave the decision to ${deciderOf(created)} (${created})`);
+      let taskId: string | undefined;
+      await ctx.runEvent(page, storageState, async () => {
+        await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
+        taskId = await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'MAKE_DECISION', taskType);
+        if (!ctx.useApi()) {
+          await new MakeDecisionOnApplication(page).sendToOtherParty();
+        }
+      }, ctx.gaCaseUrl());
+      if (ctx.useApi()) {
+        await new ApiMakeDecisionOnApplication().sendToOtherParty(ctx.gaCaseId, stepUser);
+        if (taskId) {
+          await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).completeTask(taskId);
+        }
+      }
+      await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'MAKE_DECISION');
+      await ctx.assertGaCaseState(GaCaseStates.APPLICATION_ADD_PAYMENT);
+      // The application is decided once the other side has responded, from the task work allocation creates then
+      decisionTask = undefined;
+      await claimStateUnchanged();
+    },
+  }));
+
+  // The applicant pays the extra fee, from the application's Service Request tab or by PBA through the payment service,
+  // and civil-service sends the application to the other side (MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID)
+  const payAdditionalFeeStep: JourneyStep = {
+    name: 'GA_PAY_ADDITIONAL_FEE',
+    group: 'GENERAL_APPLICATION',
+    title: `${applicant.label} pays the extra general application fee for sending it to the other side.`,
+    user: applicant.user,
+    skipIf: [
+      ...(anchor.skipIf ?? []),
+      [!sentToOtherParty(c), notSentReason],
+    ],
+    run: async ({ page, storageState, user }) => {
+      if (ctx.useApi() && c.paymentMethod === PaymentMethod.PBA) {
+        await new ApiGeneralApplicationFee().payAdditional(ctx.gaCaseId, user);
+      } else {
+        const serviceRequestReference = await ctx.testingEndpointHelper.waitForServiceRequestReference(ctx.gaCaseId, 'generalAppPBADetails', undefined, 'additionalPaymentServiceRef');
+        await ctx.runEvent(page, storageState, async () => {
+          await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
+          await new PaymentPage(page).makePayment(c.paymentMethod, serviceRequestReference);
+        }, ctx.gaCaseUrl());
+        if (!await ctx.testingEndpointHelper.waitForFeePaid(ctx.gaCaseId, 'generalAppPBADetails.additionalPaymentDetails', 60)) {
+          console.log('The payment service did not record the general application additional fee payment, so the test does');
+          await ctx.testingEndpointHelper.serviceRequestUpdateGeneralApplication(ctx.gaCaseId, true);
+        }
+      }
+      await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.gaCaseId);
+      await ctx.assertGaCaseState(GaCaseStates.AWAITING_RESPONDENT_RESPONSE);
+      await claimStateUnchanged();
+    },
+  };
+
+  // The application is made and paid for, sent to the other side and the extra fee paid where it is, the other side
+  // responds, and then it is decided. The legal adviser's decision step comes first, so the referral goes before it.
+  const [makeStep, payStep, ...respondSteps] = steps;
+  return [makeStep, payStep, ...sendSteps, payAdditionalFeeStep, ...respondSteps, referStep, ...decisionSteps, ...consentOrderSteps];
 }

@@ -39,4 +39,26 @@ export class MakeDecisionOnApplication {
     ], false, true);
     console.log(`MAKE_DECISION (approve the order) submitted through the API as ${user} on application ${applicationCaseId}`);
   }
+
+  // For an application made without notice: sends it to the other side instead of deciding it (MAKE_DECISION, "Request
+  // more information", "Send application to other party and request hearing details"), as the UI version does. The
+  // about to start callback fills in judicialDecisionRequestMoreInfo (isWithNotice is No, which is what offers the
+  // option), so the option is added to it. There is no order to preview (showRequestInfoPreviewDoc is No). civil-service
+  // then asks the applicant for the extra fee (APPLICATION_ADD_PAYMENT).
+  async sendToOtherParty(applicationCaseId: string, user: SessionUserKey) {
+    await this.ccdApiHelper.submitEventThroughPages(sessionUsers[user].credentials, 'MAKE_DECISION', applicationCaseId, [
+      { page: 'GAJudicialDecision', answers: { judicialDecision: { decision: 'REQUEST_MORE_INFO' } } },
+      {
+        page: 'GAJudicialRequestMoreInfoScreen',
+        answers: (data) => ({
+          judicialDecisionRequestMoreInfo: {
+            ...(data.judicialDecisionRequestMoreInfo ?? {}),
+            requestMoreInfoOption: 'SEND_APP_TO_OTHER_PARTY',
+          },
+        }),
+      },
+      { page: 'GAJudicialRequestMoreInfoDocPreview', when: (data) => data.showRequestInfoPreviewDoc === 'Yes' },
+    ], false, true);
+    console.log(`MAKE_DECISION (send the application to the other party) submitted through the API as ${user} on application ${applicationCaseId}`);
+  }
 }

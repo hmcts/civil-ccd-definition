@@ -130,6 +130,7 @@ Steps, in the order they run:
 - RESPOND_TO_CLAIM_DEFENDANT1, RESPOND_TO_CLAIM_DEFENDANT2
 - RESPOND_TO_DEFENCE
 - QUERY_MANAGEMENT (group: QUERY_RAISE_, QUERY_RESPOND_, QUERY_FOLLOW_UP_ and QUERY_RESPOND_FOLLOW_UP_ for each party, optional; here by default, or after the QUERY_MANAGEMENT_AFTER step)
+- GENERAL_APPLICATION (group: GA_MAKE_APPLICATION, GA_PAY_FEE, GA_SEND_TO_OTHER_PARTY_LEGAL_ADVISER, GA_SEND_TO_OTHER_PARTY_JUDGE, GA_PAY_ADDITIONAL_FEE, GA_RESPOND_CLAIMANT, GA_RESPOND_DEFENDANT1, GA_RESPOND_DEFENDANT2, GA_REFER_TO_JUDGE, GA_DECISION_LEGAL_ADVISER, GA_DECISION_JUDGE, GA_APPROVE_CONSENT_ORDER_NBC_ADMIN, GA_APPROVE_CONSENT_ORDER_HEARING_CENTRE_ADMIN, optional; here by default, or after the GENERAL_APPLICATION_AFTER step)
 - CREATE_CASE_FLAGS (group), MAKE_CASE_FLAG_INACTIVE (optional)
 - MANAGE_CONTACT_INFORMATION (group, optional)
 - ADD_UNAVAILABLE_DATES (group: _CLAIMANT_SOLICITOR, _DEFENDANT1_SOLICITOR, _DEFENDANT2_SOLICITOR, _ADMIN, optional)
@@ -340,6 +341,56 @@ ENV=aat API_UNTIL=CASE_ISSUED REFUND=RETURN STOP_AFTER_TEST=REFUND npx playwrigh
 
 A REFUND value other than APPROVE, REJECT or RETURN, or a REFUND_AFTER step that does not exist or closes the claim, fails the run before the first test.
 
+### General applications
+
+A solicitor makes a general application on the claim ("Make an application"), and pays its fee. civil-service makes the application a case of its own (case type GENERALAPPLICATION), which the test opens at /cases/case-details/CIVIL/GENERALAPPLICATION/<application id>. The claim's state does not change: every step checks the claim is still in the state it was in before the application.
+
+GENERAL_APPLICATION lists the application's types, separated by commas, such as STAY_THE_CLAIM or EXTEND_TIME,STAY_THE_CLAIM: ADJOURN_HEARING, AMEND_A_STMT_OF_CASE, EXTEND_TIME, RELIEF_FROM_SANCTIONS, SET_ASIDE_JUDGEMENT, SETTLE_BY_CONSENT, STAY_THE_CLAIM, STRIKE_OUT, SUMMARY_JUDGEMENT, UNLESS_ORDER, VARY_ORDER, OTHER. The application comes after RESPOND_TO_DEFENCE (and any queries) by default, or after the step GENERAL_APPLICATION_AFTER names.
+
+The steps, in the order they run, all in the GENERAL_APPLICATION group:
+
+- GA_MAKE_APPLICATION: the solicitor in GENERAL_APPLICATION_BY (claimant, defendant1 or defendant2; default claimant) makes the application, with an evidence document, no hearing date to mention and an in person hearing at Clerkenwell if one is needed. They answer whether the other side agreed (GENERAL_APPLICATION_AGREED, default No) and, where they did not, whether it is made with notice to them (GENERAL_APPLICATION_WITH_NOTICE, default Yes), and whether it is urgent (GENERAL_APPLICATION_URGENT, default No). The application waits for its fee (AWAITING_APPLICATION_PAYMENT).
+- GA_PAY_FEE: the same solicitor pays the fee, by PBA or card (PAYMENT_METHOD), from the application's Service Request tab, or by PBA through the payment API in the API version. If the payment service has not told civil-service about the payment within a minute, the test does. An application made with notice or agreed then waits for the other side (AWAITING_RESPONDENT_RESPONSE). One made without notice, an urgent one or one to settle by consent goes straight to the court (APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION).
+- GA_SEND_TO_OTHER_PARTY_LEGAL_ADVISER, GA_SEND_TO_OTHER_PARTY_JUDGE (GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes): for an application made without notice, whoever work allocation gives the decision to does not decide it yet. They choose "Make decision", "Request more information", "Send application to other party and request hearing details". civil-service asks the applicant for the extra fee for an application with notice (APPLICATION_ADD_PAYMENT). The step for the user who did not get the task is skipped.
+- GA_PAY_ADDITIONAL_FEE (GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes): the applicant pays the extra fee, as for GA_PAY_FEE. It has its own service request (generalAppPBADetails.additionalPaymentServiceRef), so it is a second "Pay now" row on the Service Request tab. civil-service then sends the application to the other side (AWAITING_RESPONDENT_RESPONSE).
+- GA_RESPOND_CLAIMANT, GA_RESPOND_DEFENDANT1, GA_RESPOND_DEFENDANT2: each of the other parties' solicitors responds ("Respond to application"): to an agreed application they confirm they agreed, and to any other they do not agree, with a reason and a supporting document. Either way they want an in person hearing at Clerkenwell if one is needed. One response comes from each organisation, so a solicitor acting for both defendants (1v2SS) responds once, as Defendant 1's. Two claimants share one solicitor. After the last response the application goes to the court. Skipped where the other side does not respond: an application made without notice (unless it is sent to them), an urgent one, or one to settle by consent.
+- GA_REFER_TO_JUDGE (GENERAL_APPLICATION_REFER_TO_JUDGE=Yes): a legal adviser given the decision refers the application to a judge from the Next step list, and a judge then decides it. Skipped where work allocation gave the decision to a judge.
+- GA_DECISION_LEGAL_ADVISER, GA_DECISION_JUDGE: whoever work allocation gives the decision to ("Make decision") makes an order without a hearing, approving the order the applicant asked for. Where the order runs to a date, such as a stay, it is a working day four weeks away. The application moves to ORDER_MADE, or to PROCEEDS_IN_HERITAGE for the claimant's application to strike out, which is dealt with offline from then on. The step for the user who did not get the task is skipped.
+- GA_APPROVE_CONSENT_ORDER_NBC_ADMIN, GA_APPROVE_CONSENT_ORDER_HEARING_CENTRE_ADMIN: an agreed application of a type court staff can deal with (such as SETTLE_BY_CONSENT or a stay) goes to court staff instead of a judge (a ReviewApplication task). The National Business Centre admin approves it while the application is at the Civil National Business Centre, and the hearing centre admin once it is at a hearing centre ("Approve consent order", ORDER_MADE).
+
+Work allocation decides who decides the application, from where the application is and its types. The steps wait for the task (JudgeDecideOnApplication, LegalAdvisorDecideOnApplication or ReviewApplication), claim it, and run as its user. The journeys' claims are at Clerkenwell, so on AAT a judge decides them. A legal adviser only gets applications at the Civil National Business Centre.
+
+Every step has an API version, apart from paying by card, which is always in the UI. Through the API, the decision-maker's task is still claimed first. When an application is sent to the other side through the API, the test completes the task, as XUI does, so it does not sit beside the task to decide the application once the other side has responded.
+
+A stay application, made with notice, which Defendant 1's solicitor responds to and the judge approves:
+
+```bash
+ENV=aat API_UNTIL=JUDICIAL_REFERRAL GENERAL_APPLICATION=STAY_THE_CLAIM STOP_AFTER_TEST=GENERAL_APPLICATION npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+A stay application made without notice, which the judge sends to the other side. The claimant's solicitor pays the extra fee, Defendant 1's solicitor responds, and the judge then approves it:
+
+```bash
+ENV=aat API_UNTIL=JUDICIAL_REFERRAL GENERAL_APPLICATION=STAY_THE_CLAIM GENERAL_APPLICATION_WITH_NOTICE=No GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes STOP_AFTER_TEST=GENERAL_APPLICATION npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+Defendant 2's solicitor applies to extend time in a 1v2DS claim, and the claimant's and Defendant 1's solicitors respond, all through the API:
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS API_UNTIL=All_FINAL_ORDERS_ISSUED GENERAL_APPLICATION=EXTEND_TIME GENERAL_APPLICATION_BY=defendant2 STOP_AFTER_TEST=GENERAL_APPLICATION npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+These settings fail the run before the first test:
+
+- a type that is not in the list, or the same type twice
+- VARY_PAYMENT_TERMS_OF_JUDGMENT, which is only offered once there is a judgment and asks for an N245 form
+- SETTLE_BY_CONSENT with another type, or without GENERAL_APPLICATION_AGREED=Yes
+- GENERAL_APPLICATION_AGREED, GENERAL_APPLICATION_WITH_NOTICE, GENERAL_APPLICATION_URGENT, GENERAL_APPLICATION_REFER_TO_JUDGE or GENERAL_APPLICATION_SEND_TO_OTHER_PARTY set to anything but Yes or No
+- GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes for an application that is made with notice, agreed or urgent
+- GENERAL_APPLICATION_BY that is not claimant, defendant1 or defendant2, or defendant2 when Defendant 2 does not have their own solicitor (only 1v2DS)
+- a defendant who is a LIP: applications involving a litigant in person are not covered
+- GENERAL_APPLICATION_AFTER set to CREATE_CLAIM, a step that does not exist, or a step that closes the claim
+
 ### Several at once, with the API for the early steps
 
 ```bash
@@ -348,7 +399,7 @@ ENV=aat API_UNTIL=CASE_ISSUED ADD_CASE_NOTE=Yes STAY_CASE=Yes CASE_FLAGS=represe
 
 ## 8. Paying fees by PBA or card
 
-PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hearing fee. PBA (the default) pays from their PBA account. CARD pays on GOV.UK Pay's pages with a test card, in the claimant solicitor's name and at their organisation's address (playwright-tests/fixtures/paymentCard.ts).
+PAYMENT_METHOD picks how the claimant's solicitor pays the claim fee and the hearing fee, and how the applicant pays a general application's fees. PBA (the default) pays from their PBA account. CARD pays on GOV.UK Pay's pages with a test card, in the claimant solicitor's name and at their organisation's address (playwright-tests/fixtures/paymentCard.ts).
 
 A card payment is always made in the UI. With API_UNTIL the claim is still created through the API, and its fee is then paid by card from the Service Request tab.
 
@@ -442,6 +493,14 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `QUERY_MANAGEMENT_FOLLOW_UP` | Yes, No | No | Each solicitor asks a follow-up question once CTSC has answered, which CTSC answers too. |
 | `REFUND` | APPROVE, REJECT, RETURN | None | Optional steps: the claim fee is paid again and the claimant's solicitor asks for it back; the approver approves, rejects, or returns it to be changed and sent again before approving it (see section 7). Always in the UI, apart from the second payment. |
 | `REFUND_AFTER` | A step name | CREATE_CLAIM | The step the refund follows. |
+| `GENERAL_APPLICATION` | A list of ADJOURN_HEARING, AMEND_A_STMT_OF_CASE, EXTEND_TIME, RELIEF_FROM_SANCTIONS, SET_ASIDE_JUDGEMENT, SETTLE_BY_CONSENT, STAY_THE_CLAIM, STRIKE_OUT, SUMMARY_JUDGEMENT, UNLESS_ORDER, VARY_ORDER, OTHER | None | Optional steps: a solicitor makes a general application with these types and pays its fee, the other side responds where it is made with notice, and a judge, legal adviser or court staff approves it (see "General applications" in section 7). The claim's state does not change. Has an API version. |
+| `GENERAL_APPLICATION_AFTER` | A step name | RESPOND_TO_DEFENCE | The step the application follows. Not CREATE_CLAIM, or a step that closes the claim. |
+| `GENERAL_APPLICATION_BY` | claimant, defendant1, defendant2 | claimant | Whose solicitor makes the application. defendant2 needs 1v2DS. The other parties' solicitors respond. |
+| `GENERAL_APPLICATION_AGREED` | Yes, No | No | The other side has agreed to the application. It then counts as made with notice, and an agreed application of some types (such as SETTLE_BY_CONSENT or a stay) is approved by court staff as a consent order. SETTLE_BY_CONSENT needs Yes. |
+| `GENERAL_APPLICATION_WITH_NOTICE` | Yes, No | Yes | Where it is not agreed, whether the application is made with notice to the other side. Without notice, the other side does not respond, and it goes straight to the court once paid. |
+| `GENERAL_APPLICATION_URGENT` | Yes, No | No | The application is urgent. It goes straight to the court once paid, even with notice, so the other side does not respond. |
+| `GENERAL_APPLICATION_REFER_TO_JUDGE` | Yes, No | No | A legal adviser given the decision refers the application to a judge, who decides it. |
+| `GENERAL_APPLICATION_SEND_TO_OTHER_PARTY` | Yes, No | No | For an application made without notice (needs GENERAL_APPLICATION_WITH_NOTICE=No, not agreed, not urgent): the judge or legal adviser first sends it to the other side, the applicant pays the extra fee, and the other side responds before it is decided. |
 
 ## 11. Run settings
 

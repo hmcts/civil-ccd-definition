@@ -39,4 +39,22 @@ export class MakeDecisionOnApplication {
     await this.pageHelper.submitEvent();
     await new GeneralApplication(this.page).closeConfirmation();
   }
+
+  // For an application made without notice: instead of deciding it, asks for more information by sending it to the other
+  // side ("Send application to other party and request hearing details"), as civil-service's
+  // GAJudgeRequestMoreInfoOption.SEND_APP_TO_OTHER_PARTY. The option is only offered for an application made without
+  // notice, and needs nothing else on the page, so there is no order to preview (showRequestInfoPreviewDoc is No).
+  // civil-service then asks the applicant for the extra fee (APPLICATION_ADD_PAYMENT).
+  async sendToOtherParty() {
+    await this.pageHelper.selectNextStep('Make decision');
+
+    await this.page.locator('#judicialDecision_decision-REQUEST_MORE_INFO').check();
+    await this.pageHelper.continueToNextPage();
+
+    await this.page.locator('#judicialDecisionRequestMoreInfo_requestMoreInfoOption-SEND_APP_TO_OTHER_PARTY').check();
+    await this.pageHelper.continueToNextPage();
+
+    await this.pageHelper.submitEvent();
+    await new GeneralApplication(this.page).closeConfirmation();
+  }
 }

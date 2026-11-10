@@ -21,4 +21,19 @@ export class GeneralApplicationFee {
     }
     await this.testingEndPointHelper.waitForCamundaProcessToFinish(applicationCaseId, 'INITIATE_GENERAL_APPLICATION_AFTER_PAYMENT');
   }
+
+  // Pays the extra fee a judge or legal adviser asks for when they send an application made without notice to the other
+  // side (MAKE_DECISION, "Send application to other party"), which leaves it in APPLICATION_ADD_PAYMENT. civil-service
+  // keeps its service request in generalAppPBADetails.additionalPaymentServiceRef, and once the payment service tells
+  // it, runs MODIFY_STATE_AFTER_ADDITIONAL_FEE_PAID (no business process), which sends the application to the other
+  // side to respond (AWAITING_RESPONDENT_RESPONSE).
+  async payAdditional(applicationCaseId: string, user: SessionUserKey) {
+    const serviceRequestReference = await this.testingEndPointHelper.waitForServiceRequestReference(applicationCaseId, 'generalAppPBADetails', undefined, 'additionalPaymentServiceRef');
+    await new PaymentHelper().payServiceRequestByPba(sessionUsers[user].credentials, applicationCaseId, serviceRequestReference, 'GeneralApplicationReference');
+    const recordedByPaymentService = await this.testingEndPointHelper.waitForFeePaid(applicationCaseId, 'generalAppPBADetails.additionalPaymentDetails', 60);
+    if (!recordedByPaymentService) {
+      console.log('The payment service did not record the general application additional fee payment, so the test does');
+      await this.testingEndPointHelper.serviceRequestUpdateGeneralApplication(applicationCaseId, true);
+    }
+  }
 }
