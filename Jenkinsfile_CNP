@@ -15,7 +15,7 @@ if (env.BRANCH_NAME?.startsWith('PR-')) {
 }
 
 
-@Library("Infrastructure@2.13.5")
+@Library("Infrastructure@2.13.6")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
