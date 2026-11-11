@@ -3,7 +3,7 @@
     "ID": "TrialHearingSchedulesOfLossDJ",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": "Claimant",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -20,7 +20,7 @@
     "ID": "TrialHearingSchedulesOfLossDJ",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": "Defendant(s)",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -37,7 +37,7 @@
     "ID": "TrialHearingSchedulesOfLossDJ",
     "ListElementCode": "input3",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

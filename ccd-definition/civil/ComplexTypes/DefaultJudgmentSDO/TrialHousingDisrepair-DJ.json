@@ -11,7 +11,7 @@
     "ID": "TrialHousingDisrepair",
     "ListElementCode": "clauseA",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -20,7 +20,7 @@
     "ID": "TrialHousingDisrepair",
     "ListElementCode": "clauseB",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -37,7 +37,7 @@
     "ID": "TrialHousingDisrepair",
     "ListElementCode": "clauseCBeforeDate",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -54,7 +54,7 @@
     "ID": "TrialHousingDisrepair",
     "ListElementCode": "clauseCAfterDate",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -63,7 +63,7 @@
     "ID": "TrialHousingDisrepair",
     "ListElementCode": "clauseD",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -72,7 +72,7 @@
     "ID": "TrialHousingDisrepair",
     "ListElementCode": "clauseE",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

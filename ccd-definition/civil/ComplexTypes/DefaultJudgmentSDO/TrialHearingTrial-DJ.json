@@ -28,7 +28,7 @@
     "ID": "TrialHearingTrialDJ",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -37,7 +37,7 @@
     "ID": "TrialHearingTrialDJ",
     "ListElementCode": "input3",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -3,7 +3,7 @@
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -83,7 +83,7 @@
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input9",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

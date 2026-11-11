@@ -3,7 +3,7 @@
     "ID": "TrialHearingDisclosureOfDocumentsDJ",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -20,7 +20,7 @@
     "ID": "TrialHearingDisclosureOfDocumentsDJ",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -46,7 +46,7 @@
     "ID": "TrialHearingDisclosureOfDocumentsDJ",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
-    "Max": 1000,
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
