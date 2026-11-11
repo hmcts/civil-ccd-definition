@@ -33,6 +33,17 @@
       "automergeType": "pr"
     },
     {
+      "description": "Keep the cnp-jenkins-library @Library bump in Jenkinsfiles out of the npm non-major group so pipeline changes are tested on their own",
+      "matchDatasources": [
+        "github-tags"
+      ],
+      "matchPackageNames": [
+        "hmcts/cnp-jenkins-library"
+      ],
+      "groupName": "Jenkins library",
+      "groupSlug": "jenkins-library"
+    },
+    {
       "matchManagers": ["helmv3"],
       "groupName": "Helm chart updates",
       "groupSlug": "helm-charts",
