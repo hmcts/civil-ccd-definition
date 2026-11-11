@@ -1,4 +1,3 @@
-import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 import ClaimTrack from '../../../../constants/cases/claim-track';
 import ClaimType from '../../../../constants/cases/claim-type';
@@ -18,7 +17,6 @@ test.describe(
       DefendantSolicitor1GaApiSteps,
       JudgeGaSteps
     }) => {
-      test.fail(config.zodValidationEnabled);
       await ClaimantSolicitorSpecApiSteps.CreateClaim({
         claimTrack: ClaimTrack.FAST_CLAIM,
         claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
