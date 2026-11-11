@@ -137,7 +137,7 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
