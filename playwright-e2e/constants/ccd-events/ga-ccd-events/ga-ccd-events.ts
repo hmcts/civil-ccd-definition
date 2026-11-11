@@ -31,6 +31,12 @@ const gaCCDEvents: GaCCDEvents = {
     name: 'Schedule hearing',
     order: 4
   },
+  NO_REMISSION_HWF_GA: {
+    id: 'NO_REMISSION_HWF_GA',
+    description: 'No remission HwF',
+    name: 'No remission HwF',
+    order: 5
+  },
 };
 
 export default gaCCDEvents;
