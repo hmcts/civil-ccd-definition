@@ -13,6 +13,7 @@
     "ID": "SolicitorOrganisationDetails",
     "ListElementCode": "organisationName",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Organisation name",
     "SecurityClassification": "Public",
     "Searchable": "Y"

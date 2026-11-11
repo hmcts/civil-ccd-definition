@@ -3,6 +3,7 @@
     "ID": "NextHearingDetails",
     "ListElementCode": "hearingID",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "ID",
     "SecurityClassification": "Public",
     "Searchable": "Y",

@@ -15,6 +15,7 @@
     "ElementLabel": "Enter a bespoke range of dates for hearing",
     "HintText": "For example, 16 4 2021, 19-20 4 2021 and 11-12 5 2021",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

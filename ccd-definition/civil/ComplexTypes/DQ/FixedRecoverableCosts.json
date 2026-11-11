@@ -40,6 +40,7 @@
     "ListElementCode": "reasons",
     "ElementLabel": "Please give your reasons",
     "FieldType": "TextArea",
+    "Max": 1000,
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\" OR isSubjectToFixedRecoverableCostRegime = \"No\"",
     "SecurityClassification": "Public",
     "Searchable": "N",

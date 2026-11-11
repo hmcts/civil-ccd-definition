@@ -29,6 +29,7 @@
     "ID": "ClaimProceedsInCaseman",
     "ListElementCode": "other",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "Other reason",
     "SecurityClassification": "Public",
     "Searchable": "N",

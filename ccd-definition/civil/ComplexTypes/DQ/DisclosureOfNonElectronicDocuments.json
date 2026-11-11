@@ -20,6 +20,7 @@
     "ID": "DisclosureOfNonElectronicDocuments",
     "ListElementCode": "bespokeDirections",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "What directions are proposed for disclosure?",
     "FieldShowCondition": "directionsForDisclosureProposed = \"Yes\" AND standardDirectionsRequired = \"No\"",
     "SecurityClassification": "Public",

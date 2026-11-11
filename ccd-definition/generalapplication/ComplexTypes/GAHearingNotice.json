@@ -11,6 +11,7 @@
     "ID": "GAHearingNoticeApplication",
     "ListElementCode": "hearingNoticeApplicationType",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Type of application",
     "SecurityClassification": "Public"
   },
@@ -64,6 +65,7 @@
     "ListElementCode": "hearingDurationOther",
     "ElementLabel": "Other duration",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "hearingDuration = \"OTHER\""
   }

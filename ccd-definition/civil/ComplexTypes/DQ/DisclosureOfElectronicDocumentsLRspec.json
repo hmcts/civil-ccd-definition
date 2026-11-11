@@ -20,6 +20,7 @@
     "ID": "DisclosureOfElectronicDocumentsLRspec",
     "ListElementCode": "reasonForNoAgreement",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "What are the issues?",
     "FieldShowCondition": "agreementLikely = \"No\" AND reachedAgreement = \"No\"",
     "SecurityClassification": "Public",

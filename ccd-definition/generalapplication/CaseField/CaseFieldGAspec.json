@@ -47,6 +47,7 @@
     "Label": "Application Type",
     "HintText": "  ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -82,6 +83,7 @@
     "Label": "What type of application(s) do you want to make?",
     "HintText": "  ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "_Definition":  "Type of the child application on the case",
     "_Category":  "COMMON"
@@ -160,6 +162,7 @@
     "Label": "Draft order",
     "HintText": "This is the draft order that you are requesting from the court",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {
@@ -167,6 +170,7 @@
     "ID": "generalAppReasonsOfOrder",
     "Label": "Reason",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {
@@ -310,6 +314,7 @@
     "ID": "applicantPartyName",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -317,6 +322,7 @@
     "ID": "litigiousPartyID",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -324,6 +330,7 @@
     "ID": "claimant1PartyName",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -331,6 +338,7 @@
     "ID": "claimant2PartyName",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -338,6 +346,7 @@
     "ID": "defendant1PartyName",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -345,6 +354,7 @@
     "ID": "defendant2PartyName",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -438,6 +448,7 @@
     "ID": "gaRespondentDetails",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -504,6 +515,7 @@
     "ID": "generalAppSuperClaimType",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -511,6 +523,7 @@
     "ID": "locationName",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -561,6 +574,7 @@
     "ID": "judicialGOHearingDirections",
     "Label": "Directions in relation to hearing",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -568,6 +582,7 @@
     "ID": "judicialGeneralHearingOrderRecital",
     "Label": "Judge’s recital",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {
@@ -618,6 +633,7 @@
     "ID": "migrationId",
     "Label": "Migration Id",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -647,6 +663,7 @@
     "Label": "Judge’s recital",
     "ElementLabel": "Judge’s recital",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {
@@ -655,6 +672,7 @@
     "Label": "Order in relation to written representations",
     "ElementLabel": "Order in relation to written representations",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {
@@ -669,6 +687,7 @@
     "ID": "judicialHearingGeneralOrderHearingText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -676,6 +695,7 @@
     "ID": "judicialHearingGOHearingReqText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -683,6 +703,7 @@
     "ID": "judicialGeneralOrderHearingEstimationTimeText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -690,6 +711,7 @@
     "ID": "judicialSequentialDateText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -697,6 +719,7 @@
     "ID": "judicialApplicanSequentialDateText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -704,6 +727,7 @@
     "ID": "judicialConcurrentDateText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -825,6 +849,7 @@
     "ID": "CaseAccessCategory",
     "Label": "Case Access Category",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "_Definition":  "Case Access Category",
     "_Category":  "GENERALAPPLICATION"
@@ -944,6 +969,7 @@
     "ID": "gaHearingNoticeInformation",
     "Label": "Is there more information you need to add to the Hearing Notification letter?",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -959,6 +985,7 @@
     "ID": "caseNameHmctsInternal",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "_comment": "Used to populate title"
   },
@@ -988,6 +1015,7 @@
     "ID": "freeFormRecitalText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1002,6 +1030,7 @@
     "ID": "freeFormOrderedText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {
@@ -1087,6 +1116,7 @@
     "ID": "gaApplicantDisplayName",
     "Label": "Applicant",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1109,6 +1139,7 @@
     "ID": "generalAppRespondReason",
     "Label": "Reasons why",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1141,6 +1172,7 @@
     "ID": "generalAppRespondConsentReason",
     "Label": "Reasons why",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1263,6 +1295,7 @@
     "ID": "applicationTypes",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1270,6 +1303,7 @@
     "ID": "parentCaseReference",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1277,6 +1311,7 @@
     "ID": "judgeTitle",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1319,6 +1354,7 @@
     "ID": "caseNameGaInternal",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1326,6 +1362,7 @@
     "ID": "gaWaTrackLabel",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1341,6 +1378,7 @@
     "ID": "emailPartyReference",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -1362,6 +1400,7 @@
     "ID": "nextState",
     "Label": "Enter next state",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

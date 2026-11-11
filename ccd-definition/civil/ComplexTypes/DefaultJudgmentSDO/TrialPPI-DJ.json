@@ -19,6 +19,7 @@
     "ID": "TrialPPI",
     "ListElementCode": "text",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

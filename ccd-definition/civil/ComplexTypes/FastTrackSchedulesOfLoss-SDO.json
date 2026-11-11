@@ -12,6 +12,7 @@
     "ID": "FastTrackSchedulesOfLoss",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -28,6 +29,7 @@
     "ID": "FastTrackSchedulesOfLoss",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -44,6 +46,7 @@
     "ID": "FastTrackSchedulesOfLoss",
     "ListElementCode": "input3",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

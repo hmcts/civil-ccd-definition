@@ -11,6 +11,7 @@
     "ID": "UserDetails",
     "ListElementCode": "id",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "User ID",
     "SecurityClassification": "Public",
     "Searchable": "Y"

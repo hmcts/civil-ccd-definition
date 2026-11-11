@@ -3,6 +3,7 @@
     "ID": "DefendantPinToPostLRspec",
     "ListElementCode": "accessCode",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Access Code",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -11,6 +12,7 @@
     "ID": "DefendantPinToPostLRspec",
     "ListElementCode": "respondentCaseRole",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Case Role",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,6 +29,7 @@
     "ID": "DefendantPinToPostLRspec",
     "ListElementCode": "citizenCaseRole",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Citizen Case Role",
     "SecurityClassification": "Public",
     "Searchable": "N"

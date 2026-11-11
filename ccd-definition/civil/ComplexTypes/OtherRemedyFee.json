@@ -11,6 +11,7 @@
     "ID": "OtherRemedyFee",
     "ListElementCode": "code",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Code",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -19,6 +20,7 @@
     "ID": "OtherRemedyFee",
     "ListElementCode": "version",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Version",
     "SecurityClassification": "Public",
     "Searchable": "N"

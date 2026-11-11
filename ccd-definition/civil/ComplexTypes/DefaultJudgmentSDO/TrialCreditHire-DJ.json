@@ -11,6 +11,7 @@
     "ID": "TrialCreditHire",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -19,6 +20,7 @@
     "ID": "TrialCreditHire",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,6 +29,7 @@
     "ID": "TrialCreditHire",
     "ListElementCode": "input3",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -43,6 +46,7 @@
     "ID": "TrialCreditHire",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -51,6 +55,7 @@
     "ID": "TrialCreditHire",
     "ListElementCode": "input5",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -67,6 +72,7 @@
     "ID": "TrialCreditHire",
     "ListElementCode": "input6",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -83,6 +89,7 @@
     "ID": "TrialCreditHire",
     "ListElementCode": "input7",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -99,6 +106,7 @@
     "ID": "TrialCreditHire",
     "ListElementCode": "input8",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

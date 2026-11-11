@@ -179,6 +179,7 @@
     "ID": "superClaimType",
     "Label": "Total Interest",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -195,6 +196,7 @@
     "ID": "claimAmountBreakupSummaryObject",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -284,6 +286,7 @@
     "ID": "breakDownInterestDescription",
     "Label": "Show how you calculated the amount\n",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -342,6 +345,7 @@
     "ID": "interestFromSpecificDateDescription",
     "Label": "Explain why you’re claiming from this date\n",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -358,6 +362,7 @@
     "ID": "calculatedInterest",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -808,6 +813,7 @@
     "ID": "respondToAdmittedClaimOwingAmountPounds",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -816,6 +822,7 @@
     "ID": "respondToAdmittedClaimOwingAmountPounds2",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -856,6 +863,7 @@
     "ID": "detailsOfWhyDoesYouDisputeTheClaim",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -864,6 +872,7 @@
     "ID": "detailsOfWhyDoesYouDisputeTheClaim2",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -1009,6 +1018,7 @@
     "ID": "responseClaimTrack",
     "Label": "Allocated track",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -1157,6 +1167,7 @@
     "ID": "responseClaimWitnesses",
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",
+    "Max": 1000,
     "RegularExpression": "\\d+",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1166,6 +1177,7 @@
     "ID": "responseClaimWitnesses2",
     "Label": "How many witnesses, including the defendant, will give evidence at the hearing?",
     "FieldType": "Text",
+    "Max": 1000,
     "RegularExpression": "\\d+",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1230,6 +1242,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "SmallClaimHearingInterpreterDescription",
     "FieldType": "TextArea",
+    "Max": 1000,
     "Label": "Type of interpreter",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1238,6 +1251,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimHearingInterpreterDescription2",
     "FieldType": "TextArea",
+    "Max": 1000,
     "Label": "Type of interpreter",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1311,6 +1325,7 @@
     "ID": "additionalInformationForJudge",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -1319,6 +1334,7 @@
     "ID": "additionalInformationForJudge2",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2011,6 +2027,7 @@
     "ID": "responseToClaimAdmitPartWhyNotPayLRspec",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2019,6 +2036,7 @@
     "ID": "responseToClaimAdmitPartWhyNotPayLRspec2",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2306,6 +2324,7 @@
     "ID": "applicant1AdditionalInformationForJudge",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2323,6 +2342,7 @@
     "ID": "applicant1ClaimWitnesses",
     "Label": "How many witnesses, including the claimant, will give evidence at the hearing?",
     "FieldType": "Text",
+    "Max": 1000,
     "RegularExpression": "\\d+",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2576,6 +2596,7 @@
     "ID": "paymentTypePBASpec",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2609,6 +2630,7 @@
     "ID": "whenToBePaidText",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2617,6 +2639,7 @@
     "ID": "respondent1DocumentURL",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "_comment": "used in civil-service to determine which document belongs to which respondent, to populate preview on claimant response event "
@@ -2626,6 +2649,7 @@
     "ID": "respondent2DocumentURL",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "_comment": "used in civil-service to determine which document belongs to which respondent, to populate preview on claimant response event "
@@ -2635,6 +2659,7 @@
     "ID": "respondent2DocumentGeneration",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "_comment": "used in civil-service to determine and store if respondent 2 triggered respond to claim"
@@ -2772,6 +2797,7 @@
     "ID": "sdtRequestIdFromSdt",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2789,6 +2815,7 @@
     "ID": "bulkCustomerId",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

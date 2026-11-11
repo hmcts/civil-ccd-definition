@@ -11,6 +11,7 @@
     "ID": "TrialBuildingDispute",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -19,6 +20,7 @@
     "ID": "TrialBuildingDispute",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,6 +29,7 @@
     "ID": "TrialBuildingDispute",
     "ListElementCode": "input3",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -43,6 +46,7 @@
     "ID": "TrialBuildingDispute",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

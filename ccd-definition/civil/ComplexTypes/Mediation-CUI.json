@@ -12,6 +12,7 @@
     "ListElementCode": "canWeUseMediationPhoneLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -28,6 +29,7 @@
     "ListElementCode": "noMediationReasonLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -36,6 +38,7 @@
     "ListElementCode": "noMediationOtherReasonLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -52,6 +55,7 @@
     "ListElementCode": "companyTelephoneConfirmationMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -60,6 +64,7 @@
     "ListElementCode": "companyTelephoneContactPersonMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -68,6 +73,7 @@
     "ListElementCode": "companyTelephonePhoneNumberMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

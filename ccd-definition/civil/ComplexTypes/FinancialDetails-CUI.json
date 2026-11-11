@@ -28,6 +28,7 @@
     "ListElementCode": "childrenEducationLiP",
     "ElementLabel": "Children aged 16 to 19 living with you",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

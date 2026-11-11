@@ -76,6 +76,7 @@
     "ID": "totalClaimAmountPlusInterestString",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -92,6 +93,7 @@
     "ID": "totalClaimAmountPlusInterestAdmitPartString",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

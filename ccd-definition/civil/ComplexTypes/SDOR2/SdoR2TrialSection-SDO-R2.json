@@ -149,6 +149,7 @@
     "ID": "SdoR2Trial",
     "ListElementCode": "physicalBundlePartyTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "ElementLabel": " ",
@@ -166,6 +167,7 @@
     "ID": "SdoR2Trial",
     "ListElementCode": "hearingNotesTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "ElementLabel": "This is only seen by the listing officer"

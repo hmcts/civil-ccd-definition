@@ -14,6 +14,7 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -50,6 +51,7 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

@@ -38,6 +38,7 @@
     "ListElementCode": "reasons",
     "ElementLabel": "because",
     "FieldType": "TextArea",
+    "Max": 2000,
     "FieldShowCondition": "assignComplexityBand = \"Yes\" OR assignComplexityBand = \"No\"",
     "SecurityClassification": "Public",
     "Searchable": "N",

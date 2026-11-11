@@ -11,6 +11,7 @@
     "ID": "OrderOnCourtInitiative",
     "ListElementCode": "onInitiativeSelectionTextArea",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

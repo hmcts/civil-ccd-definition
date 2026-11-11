@@ -11,6 +11,7 @@
     "ID": "SdoR2SmallClaimsUploadDoc",
     "ListElementCode": "sdoUploadOfDocumentsTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -11,6 +11,7 @@
     "ID": "FastTrackTrial",
     "ListElementCode": "input1",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -51,6 +52,7 @@
     "ID": "FastTrackTrial",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -59,6 +61,7 @@
     "ID": "FastTrackTrial",
     "ListElementCode": "input3",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

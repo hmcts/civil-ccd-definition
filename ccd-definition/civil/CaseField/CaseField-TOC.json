@@ -13,6 +13,7 @@
     "Label": "Reasons for transfer",
     "HintText": "For example, allocated court location is not appropriate",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

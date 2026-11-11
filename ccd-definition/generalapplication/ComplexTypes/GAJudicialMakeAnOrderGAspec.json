@@ -13,6 +13,7 @@
     "ListElementCode": "preTranslationGaDocumentType",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder=\"DO_NOT_SHOW_IN_UI\""
   },
@@ -29,6 +30,7 @@
     "ListElementCode": "judgeRecitalText",
     "ElementLabel": "The court records that:",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "preTranslationGaDocumentType != \"*\""
   },
@@ -45,6 +47,7 @@
     "ListElementCode": "orderText",
     "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND preTranslationGaDocumentType != \"*\""
 
@@ -86,6 +89,7 @@
     "ListElementCode": "dismissalOrderText",
     "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder = \"DISMISS_THE_APPLICATION\""
   },
@@ -94,6 +98,7 @@
     "ListElementCode": "directionsText",
     "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder = \"GIVE_DIRECTIONS_WITHOUT_HEARING\""
   },
@@ -158,6 +163,7 @@
     "ListElementCode": "orderCourtOwnInitiative",
     "ElementLabel": "Order on court's own initiative",
     "FieldType": "TextArea",
+    "Max": 2000,
     "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_1\"",
     "SecurityClassification": "Public"
   },
@@ -175,6 +181,7 @@
     "ListElementCode": "orderWithoutNotice",
     "ElementLabel": "Order without notice",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "judicialByCourtsInitiative=\"OPTION_2\""
   },
@@ -208,6 +215,7 @@
     "ListElementCode": "reasonForDecisionText",
     "ElementLabel": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "preTranslationGaDocumentType != \"*\""
   },

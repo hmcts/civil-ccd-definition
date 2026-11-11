@@ -24,6 +24,7 @@
     "ID": "FinalOrderAppeal",
     "ElementLabel": "Please specify",
     "FieldType": "Text",
+    "Max": 1000,
     "FieldShowCondition": "list = \"OTHER\"",
     "SecurityClassification": "Public",
     "Searchable": "N"

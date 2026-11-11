@@ -3,6 +3,7 @@
     "ID": "SdoR2SmallClaimsRestrictPages",
     "ListElementCode": "witnessShouldNotMoreThanTxt",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -20,6 +21,7 @@
     "ID": "SdoR2SmallClaimsRestrictPages",
     "ListElementCode": "fontDetails",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

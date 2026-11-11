@@ -13,6 +13,7 @@
     "ID": "ccjJudgmentLipInterest",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -21,6 +22,7 @@
     "ID": "pcqId",
     "Label": "PCQ id",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -29,6 +31,7 @@
     "ID": "respondentResponsePcqId",
     "Label": "PCQ id",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -62,6 +65,7 @@
     "ID": "serviceRequestReference",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -127,6 +131,7 @@
     "ID": "previousCCDState",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -135,6 +140,7 @@
     "ID": "lipClaimSubmissionId",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -159,6 +165,7 @@
     "ID": "claimantBilingualLanguagePreference",
     "Label": "Claimant Language Preference",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"

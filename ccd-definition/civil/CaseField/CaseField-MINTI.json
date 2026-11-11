@@ -12,6 +12,7 @@
     "ID": "finalOrderTrackToggle",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -240,6 +241,7 @@
     "ID": "hearingDurationMinti",
     "Label": "Duration",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

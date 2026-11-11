@@ -12,6 +12,7 @@
     "ID": "RemoteHearingLRspec",
     "ListElementCode": "reasonForRemoteHearing",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "Briefly explain your reasons",
     "FieldShowCondition": "remoteHearingRequested = \"Yes\"",
     "SecurityClassification": "Public",

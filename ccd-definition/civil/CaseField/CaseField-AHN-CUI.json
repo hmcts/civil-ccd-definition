@@ -4,6 +4,7 @@
     "ID": "hearingDurationInMinutesAHN",
     "Label": "Duration AHN",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },

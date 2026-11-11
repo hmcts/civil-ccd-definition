@@ -27,6 +27,7 @@
     "Label": "What type of application(s) do you want to make?",
     "HintText": "  ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "_Definition":  "Type of the child application on the case",
@@ -246,6 +247,7 @@
     "ID": "caseState",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

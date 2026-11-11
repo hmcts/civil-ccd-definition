@@ -3,6 +3,7 @@
     "ID": "SDOHearingNotes",
     "ListElementCode": "input",
     "FieldType": "TextArea",
+    "Max": 2000,
     "HintText": "This is only seen by the listing officer.",
     "ElementLabel": " ",
     "SecurityClassification": "Public",

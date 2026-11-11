@@ -11,6 +11,7 @@
     "ID": "DisposalHearingWitnessOfFactDJ",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,6 +28,7 @@
     "ID": "DisposalHearingWitnessOfFactDJ",
     "ListElementCode": "input2",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -35,6 +37,7 @@
     "ID": "DisposalHearingWitnessOfFactDJ",
     "ListElementCode": "input3",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -51,6 +54,7 @@
     "ID": "DisposalHearingWitnessOfFactDJ",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -11,6 +11,7 @@
     "ID": "SdoR2QuestionsToEntExpert",
     "ListElementCode": "sdoWrittenQuestionsTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,6 +28,7 @@
     "ID": "SdoR2QuestionsToEntExpert",
     "ListElementCode": "sdoWrittenQuestionsDigPortalTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -43,6 +45,7 @@
     "ID": "SdoR2QuestionsToEntExpert",
     "ListElementCode": "sdoQuestionsShallBeAnsweredTxt",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -67,6 +70,7 @@
     "ID": "SdoR2QuestionsToEntExpert",
     "ListElementCode": "sdoShallBeUploadedTxt",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

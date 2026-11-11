@@ -11,6 +11,7 @@
     "ID": "SdoR2QuestionsClaimantExpert",
     "ListElementCode": "sdoDefendantMayAskTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -35,6 +36,7 @@
     "ID": "SdoR2QuestionsClaimantExpert",
     "ListElementCode": "sdoQuestionsShallBeAnsweredTxt",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -59,6 +61,7 @@
     "ID": "SdoR2QuestionsClaimantExpert",
     "ListElementCode": "sdoUploadedToDigitalPortalTxt",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -12,6 +12,7 @@
     "ID": "FastTrackPersonalInjury",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -28,6 +29,7 @@
     "ID": "FastTrackPersonalInjury",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -44,6 +46,7 @@
     "ID": "FastTrackPersonalInjury",
     "ListElementCode": "input3",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -60,6 +63,7 @@
     "ID": "FastTrackPersonalInjury",
     "ListElementCode": "input4",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

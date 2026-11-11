@@ -4,6 +4,7 @@
     "ListElementCode": "orderWithoutNotice",
     "ElementLabel": "Order without notice",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {

@@ -130,6 +130,7 @@
     "ID": "claimTypeOther",
     "Label": "Enter Claim type",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -147,6 +148,7 @@
     "ID": "personalInjuryTypeOther",
     "Label": "Enter personal injury type",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -164,6 +166,7 @@
     "ID": "litigantFriendSelection",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -663,6 +666,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "legacyCaseReference",
     "FieldType": "Text",
+    "Max": 1000,
     "Label": "CaseMan reference number",
     "SecurityClassification": "Public",
     "Searchable": "Y"
@@ -1241,6 +1245,7 @@
     "ID": "detailsOfClaim",
     "Label": "Description of claim",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -1524,6 +1529,7 @@
     "Label": "Note",
     "HintText": "Add note detail, including relevant dates and people involved",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Comment": "The note field to be displayed in an event"
@@ -1568,6 +1574,7 @@
     "ID": "respondentSolicitor2Reference",
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "_Max": "24"
@@ -2334,6 +2341,7 @@
     "ID": "respondent1OrganisationIDCopy",
     "Label": "Respondent 1 Organisation ID Copy",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "_Comments": "A workaround to stop caa users from seeing case before claim notify"
@@ -2343,6 +2351,7 @@
     "ID": "respondent2OrganisationIDCopy",
     "Label": "Respondent 2 Organisation ID Copy",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "_Comments": "A workaround to stop caa users from seeing case before claim notify"
@@ -2378,6 +2387,7 @@
     "ID": "allPartyNames",
     "Label": "All party names",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -2386,6 +2396,7 @@
     "ID": "unassignedCaseListDisplayOrganisationReferences",
     "Label": "Unassigned Case List Solicitor References",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -2394,6 +2405,7 @@
     "ID": "caseListDisplayDefendantSolicitorReferences",
     "Label": "Case List Display Defendant Solicitor Reference",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -2468,6 +2480,7 @@
     "ID": "migrationId",
     "Label": "Migration Id",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2495,6 +2508,7 @@
     "ID": "locationName",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2503,6 +2517,7 @@
     "ID": "paymentTypePBA",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2529,6 +2544,7 @@
     "ID": "caseNamePublic",
     "Label": "Public case name",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2883,6 +2899,7 @@
     "ID": "partyChosenId",
     "Label": "Party chosen id",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2933,6 +2950,7 @@
     "ID": "partyChosenType",
     "Label": "Party chosen type",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -3473,6 +3491,7 @@
     "ID": "notificationSummary",
     "Label": "Summary",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

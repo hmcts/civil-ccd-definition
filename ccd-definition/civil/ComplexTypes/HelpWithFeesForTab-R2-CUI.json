@@ -4,6 +4,7 @@
     "ListElementCode": "hwfType",
     "ElementLabel": "Type:",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -12,6 +13,7 @@
     "ListElementCode": "feeCode",
     "ElementLabel": "Fee code:",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -20,6 +22,7 @@
     "ListElementCode": "claimFee",
     "ElementLabel": "Fee amount:",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -28,6 +31,7 @@
     "ListElementCode": "remissionAmount",
     "ElementLabel": "Remission amount:",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -36,6 +40,7 @@
     "ListElementCode": "applicantMustPay",
     "ElementLabel": "Applicant must pay:",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -44,6 +49,7 @@
     "ListElementCode": "hwfReferenceNumber",
     "ElementLabel": "HWF reference number:",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

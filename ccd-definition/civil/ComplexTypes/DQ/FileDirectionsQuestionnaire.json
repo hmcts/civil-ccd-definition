@@ -28,6 +28,7 @@
     "ID": "FileDirectionsQuestionnaire",
     "ListElementCode": "reactionProtocolNotCompliedWithReason",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "Explain why not",
     "FieldShowCondition": "reactionProtocolCompliedWith = \"No\"",
     "SecurityClassification": "Public",

@@ -62,6 +62,7 @@
     "ID": "FastTrackHearingTime",
     "ListElementCode": "helpText1",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -70,6 +71,7 @@
     "ID": "FastTrackHearingTime",
     "ListElementCode": "helpText2",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",

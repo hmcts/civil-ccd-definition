@@ -11,6 +11,7 @@
     "ID": "OtherDetails",
     "ListElementCode": "reasonNotSuitableForSDO",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Reason",
     "SecurityClassification": "Public",
     "Searchable": "N"

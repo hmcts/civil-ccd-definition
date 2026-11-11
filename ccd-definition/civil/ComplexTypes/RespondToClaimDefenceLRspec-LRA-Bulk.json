@@ -52,6 +52,7 @@
     "Label": " ",
     "ElementLabel": "Tell us how",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

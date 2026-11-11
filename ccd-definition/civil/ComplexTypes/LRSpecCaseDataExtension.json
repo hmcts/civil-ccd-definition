@@ -20,6 +20,7 @@
     "ListElementCode": "generalAppDeadlineNotification",
     "ElementLabel": " ",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

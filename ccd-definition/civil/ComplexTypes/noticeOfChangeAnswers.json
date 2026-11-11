@@ -3,6 +3,7 @@
     "ID": "NoticeOfChangeAnswers",
     "ListElementCode": "clientName",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "Y"

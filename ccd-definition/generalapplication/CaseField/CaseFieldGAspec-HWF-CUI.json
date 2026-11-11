@@ -54,6 +54,7 @@
     "ID": "hwfFeeType",
     "Label": "Type",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
@@ -145,6 +146,7 @@
     "ID": "hwfNumberForFeePaymentOutcome",
     "Label": "Enter the reference number",
     "FieldType": "Text",
+    "Max": 1000,
     "HintText": "For example, HWF-A1B-23C",
     "RegularExpression": "HWF-[0-9A-Za-z]{3}-[0-9A-Za-z]{3}",
     "SecurityClassification": "Public",
@@ -197,6 +199,7 @@
     "ID": "claimantBilingualLanguagePreference",
     "Label": "Claimant Language Preference",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"

@@ -11,6 +11,7 @@
     "ID": "SdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "sdoStatementOfWitness",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": "Statements of witnesses",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -85,6 +86,7 @@
     "ID": "SdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "text",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

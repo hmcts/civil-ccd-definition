@@ -3,6 +3,7 @@
     "ID": "SdoDJR2TrialCreditHireDetails",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -11,6 +12,7 @@
     "ID": "SdoDJR2TrialCreditHireDetails",
     "ListElementCode": "input3",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,6 +29,7 @@
     "ID": "SdoDJR2TrialCreditHireDetails",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -35,6 +38,7 @@
     "ID": "SdoDJR2TrialCreditHireDetails",
     "ListElementCode": "input5",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

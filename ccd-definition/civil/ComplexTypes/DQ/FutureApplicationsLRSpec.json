@@ -11,6 +11,7 @@
     "ID": "FutureApplications",
     "ListElementCode": "whatWillFutureApplicationsBeMadeFor",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "What for?",
     "FieldShowCondition": "intentionToMakeFutureApplications = \"Yes\"",
     "SecurityClassification": "Public",

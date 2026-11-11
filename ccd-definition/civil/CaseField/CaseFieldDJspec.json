@@ -12,6 +12,7 @@
     "ID": "bothDefendantsSpec",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -36,6 +37,7 @@
     "ID": "currentDefendant",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "_comment": "Used to populate title for partial payment, depending on whether both defendants were selected"
@@ -101,6 +103,7 @@
     "ID": "repaymentSummaryObject",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -109,6 +112,7 @@
     "ID": "currentDefendantName",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -184,6 +188,7 @@
     "ID": "currentDatebox",
     "Label": "date2",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

@@ -21,6 +21,7 @@
     "ID": "SameRateInterestOptions",
     "ListElementCode": "differentRateReason",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "Why are you entitled to this rate?\n",
     "FieldShowCondition": "sameRateInterestType = \"SAME_RATE_INTEREST_DIFFERENT_RATE\"",
     "SecurityClassification": "Public",

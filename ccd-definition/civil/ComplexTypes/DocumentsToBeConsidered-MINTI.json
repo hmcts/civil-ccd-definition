@@ -11,6 +11,7 @@
     "ID": "DocumentsToBeConsidered",
     "ListElementCode": "details",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "What are the documents the claimants have that you want the court to consider?",
     "SecurityClassification": "Public",
     "Searchable": "N"

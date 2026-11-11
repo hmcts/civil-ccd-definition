@@ -11,6 +11,7 @@
     "ID": "SdoR2ScheduleOfLoss",
     "ListElementCode": "sdoR2ScheduleOfLossClaimantText",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -35,6 +36,7 @@
     "ID": "SdoR2ScheduleOfLoss",
     "ListElementCode": "sdoR2ScheduleOfLossDefendantText",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -59,6 +61,7 @@
     "ID": "SdoR2ScheduleOfLoss",
     "ListElementCode": "sdoR2ScheduleOfLossPecuniaryLossTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",

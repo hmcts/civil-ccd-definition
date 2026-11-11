@@ -4,6 +4,7 @@
     "ListElementCode": "firstName",
     "ElementLabel": "First name",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "RetainHiddenValue": "Y",
     "Searchable": "N"
@@ -13,6 +14,7 @@
     "ListElementCode": "lastName",
     "ElementLabel": "Last name",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "RetainHiddenValue": "Y",
     "Searchable": "N"

@@ -64,6 +64,7 @@
     "ID": "TrialHearingTimeDJ",
     "ListElementCode": "helpText1",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -72,6 +73,7 @@
     "ID": "TrialHearingTimeDJ",
     "ListElementCode": "helpText2",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

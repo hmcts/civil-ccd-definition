@@ -11,6 +11,7 @@
     "ID": "DisposalHearingJudgesRecitalDJ",
     "ListElementCode": "judgeNameTitle",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -19,6 +20,7 @@
     "ID": "DisposalHearingJudgesRecitalDJ",
     "ListElementCode": "input",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

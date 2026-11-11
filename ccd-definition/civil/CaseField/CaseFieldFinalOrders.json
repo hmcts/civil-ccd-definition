@@ -161,6 +161,7 @@
     "HintText": "Please insert paragraph numbers before each term of the Order as you wish them to appear, as they will not be automatically generated",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -381,6 +382,7 @@
     "ID": "freeFormRecordedTextArea",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -398,6 +400,7 @@
     "HintText": "Please insert paragraph numbers before each term of the Order as you wish them to appear, as they will not be automatically generated",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -448,6 +451,7 @@
     "Label": " ",
     "HintText": "For example, potentially violent, reading time needed, CVP for hearing",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -490,6 +494,7 @@
     "ID": "assistedOrderPenalNoticeContent",
     "Label": "Note: Paragraph numbers and the parties' name to which the penal notice applies must be entered in the box below.",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

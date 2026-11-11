@@ -13,6 +13,7 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -45,6 +46,7 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {

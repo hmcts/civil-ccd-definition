@@ -3,6 +3,7 @@
     "ID": "DisposalHearingFinalDisposalHearingTimeDJ",
     "ListElementCode": "input",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -30,6 +30,7 @@
     "ListElementCode": "cosServedDocumentFiles",
     "ElementLabel": "What documents did you serve?",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Definition":  "Enter details of the documents you served"
@@ -52,6 +53,7 @@
     "ElementLabel": "Who did you serve the claim to?",
     "HintText": "Include their position if they have one, for example - partner, director",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Definition":  "Enter the name of the person you served the documents to"
@@ -71,6 +73,7 @@
     "ListElementCode": "cosRecipientServeLocation",
     "ElementLabel": "Where did you serve the documents?",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Definition":  "Enter the details of where you served the documents",
@@ -101,6 +104,7 @@
     "ListElementCode": "cosRecipientServeLocationTypeOther",
     "ElementLabel": "Other",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Definition":  "Other",
@@ -112,6 +116,7 @@
     "ListElementCode": "cosSender",
     "ElementLabel": "Your name",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Definition":  "Enter your name"
@@ -121,6 +126,7 @@
     "ListElementCode": "cosSenderFirm",
     "ElementLabel": "Your firm",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Definition":  "Enter the name of your firm"

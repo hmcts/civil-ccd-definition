@@ -12,6 +12,7 @@
     "ID": "PaymentDetails",
     "ListElementCode": "reference",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Payment reference returned from successful Payments API call",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -20,6 +21,7 @@
     "ID": "PaymentDetails",
     "ListElementCode": "errorMessage",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Payment error message returned from failed Payments API call",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -28,6 +30,7 @@
     "ID": "PaymentDetails",
     "ListElementCode": "errorCode",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Payment error code returned from failed Payments API call",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -36,6 +39,7 @@
     "ID": "PaymentDetails",
     "ListElementCode": "customerReference",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Customer reference",
     "SecurityClassification": "Public",
     "Searchable": "N"

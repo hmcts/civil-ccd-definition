@@ -4,6 +4,7 @@
     "ListElementCode": "judgeRecitalText",
     "ElementLabel": "Judge’s recital",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {
@@ -11,6 +12,7 @@
     "ListElementCode": "directionInRelationToHearingText",
     "ElementLabel": "Order in relation to written representations",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   }
 ]

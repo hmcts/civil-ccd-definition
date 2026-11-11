@@ -14,6 +14,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "FieldShowCondition": "claimantRepresentation=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public"
   },
@@ -23,6 +24,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "FieldShowCondition": "claimantRepresentation=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public"
   },
@@ -32,6 +34,7 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "FieldShowCondition": "claimantRepresentation=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public"
   },
@@ -258,6 +261,7 @@
     "ElementLabel": " ",
     "HintText": "For example, the Judge heard from Mr Smith, a director of the claimant company and Miss Smith as lay representative for the defendant",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   }
 ]
