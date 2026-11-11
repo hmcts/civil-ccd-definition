@@ -4,6 +4,7 @@ import CreateClaimSpecAfterPaymentLipDataBuilder from './create-claim-spec-after
 import CreateLipClaimDataBuilder from './create-lip-claim/create-lip-claim-data-builder';
 import DefendantResponseCuiDataBuilder from './defendant-response-cui/defendant-response-cui-data-builder';
 import EvidenceUploadApplicantLipDataBuilder from './evidence-upload-applicant-lip/evidence-upload-applicant-lip-data-builder';
+import InitiateGeneralApplicationLipDataBuilder from './initiate-general-application-lip/initiate-general-application-lip-data-builder';
 import EvidenceUploadRespondentLipDataBuilder from './evidence-upload-respondent-lip/evidence-upload-respondent-lip-data-builder';
 import QueryManagementRaiseLipDataBuilder from '../common/query-management-raise/query-management-raise-data-builder';
 import RequestForReconsiderationLipDataBuilder from './request-for-reconsideration-lip/request-for-reconsideration-lip-data-builder';
@@ -44,5 +45,9 @@ export default class ClaimantDefendantCitizenDataBuilderFactory extends BaseData
 
   get queryManagementRaiseLipDataBuilder() {
     return new QueryManagementRaiseLipDataBuilder(this.requestsFactory, this.testData);
+  }
+
+  get initiateGeneralApplicationLipDataBuilder() {
+    return new InitiateGeneralApplicationLipDataBuilder(this.requestsFactory, this.testData);
   }
 }

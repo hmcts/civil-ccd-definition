@@ -69,4 +69,34 @@ export default class DefendantSolicitor1GaApiSteps extends BaseApi {
       ZodHelper.safeParse(respondToJudgeAdditionalInfoSchema, this.getGaCCDCaseData());
     });
   }
+
+  async MakePaymentForClaimIssued() {
+    await this.setupApiStep(defendantSolicitor1User);
+    const gaCaseDataBeforeSubmission = structuredClone(this.getGaCCDCaseData());
+
+    const { initiateGeneralApplicationAfterPaymentDataBuilder } = this.claimantDefendantSolicitorGaDataBuilderFactory;
+    const initiateGeneralApplicationAfterPaymentDTO =
+      await initiateGeneralApplicationAfterPaymentDataBuilder.build();
+    const { civilServiceRequests } = this.requestsFactory;
+    await civilServiceRequests.updatePaymentForGaClaimIssue(
+      defendantSolicitor1User,
+      initiateGeneralApplicationAfterPaymentDTO,
+    );
+    await super.waitForFinishedBusinessProcess(this.getGaCCDCaseData()?.id);
+    await super.fetchAndSetGaCCDCaseData(
+      this.getGaCCDCaseData()?.id,
+      undefined,
+      [
+        GaCaseState.AWAITING_RESPONDENT_RESPONSE,
+        GaCaseState.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION,
+      ],
+    );
+
+    await this.runZodValidation(async () => {
+      const { initiateGeneralApplicationAfterPaymentSchemaBuilder } = this.claimantDefendantSolicitorGaSchemaBuilderFactory;
+      const initiateGeneralApplicationAfterPaymentSchema =
+        await initiateGeneralApplicationAfterPaymentSchemaBuilder.build(gaCaseDataBeforeSubmission);
+      ZodHelper.safeParse(initiateGeneralApplicationAfterPaymentSchema, this.getGaCCDCaseData());
+    });
+  }
 }

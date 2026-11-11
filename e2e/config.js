@@ -96,6 +96,13 @@ module.exports = {
     email: 'nbc-team-leader@mailnesia.com',
     type: 'admin'
   },
+  judgeUserNightlyDJ: {
+    password: judgeDefaultPassword,
+    email: '4917924EMP-@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '1'
+  },
   judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
     email: 'DJ.Amy.Powell@ejudiciary.net',
