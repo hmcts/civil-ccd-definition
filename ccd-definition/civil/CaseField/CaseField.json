@@ -2396,7 +2396,6 @@
     "ID": "unassignedCaseListDisplayOrganisationReferences",
     "Label": "Unassigned Case List Solicitor References",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -2405,7 +2404,6 @@
     "ID": "caseListDisplayDefendantSolicitorReferences",
     "Label": "Case List Display Defendant Solicitor Reference",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },

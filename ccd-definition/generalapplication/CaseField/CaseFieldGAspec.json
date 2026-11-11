@@ -582,7 +582,6 @@
     "ID": "judicialGeneralHearingOrderRecital",
     "Label": "Judge’s recital",
     "FieldType": "TextArea",
-    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {
@@ -687,7 +686,6 @@
     "ID": "judicialHearingGeneralOrderHearingText",
     "Label": " ",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -703,7 +701,6 @@
     "ID": "judicialGeneralOrderHearingEstimationTimeText",
     "Label": " ",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -719,7 +716,6 @@
     "ID": "judicialApplicanSequentialDateText",
     "Label": " ",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {

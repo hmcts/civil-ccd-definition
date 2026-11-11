@@ -104,7 +104,6 @@
     "ListElementCode": "cosRecipientServeLocationTypeOther",
     "ElementLabel": "Other",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Definition":  "Other",

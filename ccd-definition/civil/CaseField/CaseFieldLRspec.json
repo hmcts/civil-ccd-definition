@@ -345,7 +345,6 @@
     "ID": "interestFromSpecificDateDescription",
     "Label": "Explain why you’re claiming from this date\n",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -813,7 +812,6 @@
     "ID": "respondToAdmittedClaimOwingAmountPounds",
     "Label": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -822,7 +820,6 @@
     "ID": "respondToAdmittedClaimOwingAmountPounds2",
     "Label": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -863,7 +860,6 @@
     "ID": "detailsOfWhyDoesYouDisputeTheClaim",
     "Label": " ",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -872,7 +868,6 @@
     "ID": "detailsOfWhyDoesYouDisputeTheClaim2",
     "Label": " ",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -1242,7 +1237,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "SmallClaimHearingInterpreterDescription",
     "FieldType": "TextArea",
-    "Max": 1000,
     "Label": "Type of interpreter",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1251,7 +1245,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimHearingInterpreterDescription2",
     "FieldType": "TextArea",
-    "Max": 1000,
     "Label": "Type of interpreter",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2027,7 +2020,6 @@
     "ID": "responseToClaimAdmitPartWhyNotPayLRspec",
     "Label": " ",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2036,7 +2028,6 @@
     "ID": "responseToClaimAdmitPartWhyNotPayLRspec2",
     "Label": " ",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2324,7 +2315,6 @@
     "ID": "applicant1AdditionalInformationForJudge",
     "Label": " ",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

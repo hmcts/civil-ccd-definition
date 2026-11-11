@@ -44,7 +44,6 @@
     "ID": "casePartyRequestForReconsideration",
     "Label": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

@@ -199,7 +199,6 @@
     "ID": "claimantBilingualLanguagePreference",
     "Label": "Claimant Language Preference",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"

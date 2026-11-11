@@ -61,7 +61,6 @@
     "ListElementCode": "companyTelephoneConfirmationMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
@@ -71,7 +70,6 @@
     "ListElementCode": "companyTelephoneContactPersonMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""
@@ -81,7 +79,6 @@
     "ListElementCode": "companyTelephonePhoneNumberMediationLiP",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "hasAgreedFreeMediation = \"DO_NOT_SHOW_IN_UI\""

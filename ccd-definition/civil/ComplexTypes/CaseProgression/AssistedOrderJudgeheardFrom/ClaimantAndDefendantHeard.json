@@ -15,7 +15,6 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -26,7 +25,6 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -37,7 +35,6 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -48,7 +45,6 @@
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "FieldShowCondition": "typeRepresentationClaimantList=\"DO_NOT_SHOW\"",
     "SecurityClassification": "Public",
     "Searchable": "N"

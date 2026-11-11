@@ -44,7 +44,6 @@
     "ID": "respondent1PaymentDateToStringSpec",
     "Label": " ",
     "FieldType": "Text",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -245,7 +244,6 @@
     "ID": "applicant1PartAdmitRejectReasonSpec",
     "Label": "Why does the claimant reject their response?",
     "FieldType": "TextArea",
-    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

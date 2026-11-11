@@ -121,7 +121,6 @@
     "ID": "SdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoWrittenQuestionsDigitalPortalTxt",
     "FieldType": "Text",
-    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
