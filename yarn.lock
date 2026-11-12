@@ -481,8 +481,8 @@ __metadata:
   linkType: hard
 
 "@puppeteer/browsers@npm:^3.2.1":
-  version: 3.2.6
-  resolution: "@puppeteer/browsers@npm:3.2.6"
+  version: 3.2.7
+  resolution: "@puppeteer/browsers@npm:3.2.7"
   dependencies:
     modern-tar: "npm:^0.8.6"
     yargs: "npm:^18.0.0"
@@ -496,7 +496,7 @@ __metadata:
       optional: true
   bin:
     browsers: lib/main-cli.js
-  checksum: 10/4a23cfb9765b191e4cfee502840d8e5456fa1d3c98a0c459102df77c59d295ab86c87ad705ff7ef3e84ab7876857441fdce3f190f2184d2aeddcda7cc70a8ecc
+  checksum: 10/922ff557cd5acda9679013158cc9af640480cdc2f6da63912d1e75f536c473f0bfcaa2502283c4378c66f7ac33a354156dd05f4507725b5e7bb744103401e066
   languageName: node
   linkType: hard
 
@@ -4061,12 +4061,12 @@ __metadata:
   linkType: hard
 
 "minimatch@npm:^11.0.0":
-  version: 11.0.5
-  resolution: "minimatch@npm:11.0.5"
+  version: 11.0.6
+  resolution: "minimatch@npm:11.0.6"
   dependencies:
     "@isaacs/nonrecursive-glob-match": "npm:^1.1.0"
     brace-expansion: "npm:^5.0.12"
-  checksum: 10/40df2064d0bc512a6e06eba4b11aa62d411e3259aea41854cd48800416e4d81158dc27ff143a8e7359eeb12797b010969a1dd935e1fed3da1bb8f967634aea71
+  checksum: 10/89b145858693c5df1fa5a4320823745859ea53b6f3f33a95863bea7aa164c6fc02443e195efd9971d56bf69ad77430e980834d381caf382f8b03b567cb18b0ce
   languageName: node
   linkType: hard
 
