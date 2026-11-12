@@ -2,7 +2,6 @@ plugins {
   id 'java'
   id 'java-library'
   id 'jacoco'
-  id 'maven-publish'
 }
 
 group 'com.github.hmcts'
@@ -57,17 +56,4 @@ dependencies {
   runtimeOnly 'ch.qos.logback:logback-classic:1.6.6'
 
   testImplementation libraries.junit5
-}
-
-publishing {
-  repositories {
-    maven {
-      name = "AzureArtifacts"
-      url = uri("https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1")
-      credentials {
-        username = System.getenv("AZURE_DEVOPS_ARTIFACT_USERNAME")
-        password = System.getenv("AZURE_DEVOPS_ARTIFACT_TOKEN")
-      }
-    }
-  }
 }
