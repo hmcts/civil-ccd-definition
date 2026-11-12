@@ -54,6 +54,9 @@ import { DiscontinueClaim as ApiDiscontinueClaim } from '../../flows/events/api/
 import { ValidateDiscontinueClaim } from '../../flows/events/ui/ValidateDiscontinueClaim.ts';
 import { ValidateDiscontinueClaim as ApiValidateDiscontinueClaim } from '../../flows/events/api/ValidateDiscontinueClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
+import { CaseProceedsInCaseman } from '../../flows/events/ui/CaseProceedsInCaseman.ts';
+import { CaseProceedsInCaseman as ApiCaseProceedsInCaseman } from '../../flows/events/api/CaseProceedsInCaseman.ts';
+import CaseProceedsInCasemanReason from '../../../enums/caseProceedsInCaseman.ts';
 import { DefaultJudgment } from '../../flows/events/ui/DefaultJudgment.ts';
 import { DefaultJudgment as ApiDefaultJudgment } from '../../flows/events/api/DefaultJudgment.ts';
 import { StandardDirectionOrderDj } from '../../flows/events/ui/StandardDirectionOrderDj.ts';
@@ -180,6 +183,11 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING, caseStates.DECISION_OUTCOME,
   ];
   const settleableStates = [...discontinuableStates, caseStates.All_FINAL_ORDERS_ISSUED];
+  // The states "Case proceeds in Caseman" is offered in that the journey can reach (it is also offered in CASE_DISMISSED)
+  const casemanStates = [
+    caseStates.PENDING_CASE_ISSUED, caseStates.CASE_ISSUED, caseStates.AWAITING_CASE_DETAILS_NOTIFICATION,
+    caseStates.JUDGMENT_REQUESTED, ...settleableStates, caseStates.CASE_STAYED,
+  ];
   // civil-service does not let the claimant's solicitor settle or discontinue a claim against two defendants where
   // either is a litigant in person
   const twoDefendantsWithLitigantInPerson: [boolean, string] = [
@@ -967,6 +975,35 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT');
         await ctx.assertCaseState(caseStates.CASE_DISCONTINUED);
+      },
+    },
+
+    // The hearing centre admin takes the claim offline with "Case proceeds in Caseman" once the rest of the journey has
+    // run, or where STOP_AT_STATE or STOP_AFTER_TEST stops it (CASE_PROCEEDS_IN_CASEMAN=<reason for proceeding on
+    // paper>), with today as the date it was transferred to Caseman. civil-service moves the claim to
+    // PROCEEDS_IN_HERITAGE_SYSTEM. The step is skipped where the journey ended in a state the event is not offered in,
+    // such as a claim that has already gone offline.
+    {
+      name: 'CASE_PROCEEDS_IN_CASEMAN',
+      title: `Hearing Centre Admin takes the claim offline${c.caseProceedsInCaseman ? ` (${c.caseProceedsInCaseman})` : ''}.`,
+      user: 'hearingCentreAdmin',
+      closesClaim: true,
+      invalidIf: (stops) => c.caseProceedsInCaseman !== undefined ? closingProblems(`CASE_PROCEEDS_IN_CASEMAN=${c.caseProceedsInCaseman}`, stops, casemanStates, false) : [],
+      skipIf: [
+        [c.caseProceedsInCaseman === undefined, 'Taking the claim offline is switched off (set CASE_PROCEEDS_IN_CASEMAN=APPLICATION, JUDGEMENT_REQUEST, CASE_SETTLED or OTHER to run it)'],
+      ],
+      run: async ({ page, storageState }) => {
+        const reason = c.caseProceedsInCaseman as CaseProceedsInCasemanReason;
+        test.skip(!casemanStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be taken offline in ${ctx.lastStateReached}`);
+        if (ctx.useApi()) {
+          await new ApiCaseProceedsInCaseman().submit(ctx.caseId, reason, false);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new CaseProceedsInCaseman(page).submit(reason, false);
+          });
+        }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CASE_PROCEEDS_IN_CASEMAN');
+        await ctx.assertCaseState(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
       },
     },
   ];
