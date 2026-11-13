@@ -20,7 +20,9 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-system-field-reader",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -47,7 +49,9 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "caseworker-civil-system-field-reader",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -62,7 +66,8 @@
           "caseworker-civil-solicitor",
           "caseworker-civil-admin",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-system-field-reader"
         ],
         "CRUD": "R"
       }
@@ -89,7 +94,9 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-system-field-reader",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -116,7 +123,9 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-system-field-reader",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -143,7 +152,9 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-system-field-reader",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -171,7 +182,9 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-system-field-reader",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -199,7 +212,9 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-system-field-reader",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
