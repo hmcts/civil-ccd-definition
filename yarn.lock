@@ -53,10 +53,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-string-parser@npm:^7.29.11":
-  version: 7.29.13
-  resolution: "@babel/helper-string-parser@npm:7.29.13"
-  checksum: 10/065dcc0e1c452480bc5c37076ae86478313a85b834d31b2650ca4f01841672e2ae63f093725da4186dd5e48c6e38b228d9afc5176eae0603ff4232004539a3b5
+"@babel/helper-string-parser@npm:^7.29.14":
+  version: 7.29.14
+  resolution: "@babel/helper-string-parser@npm:7.29.14"
+  checksum: 10/a3bae3e616d31cdb5b1ee26569d700104c222405e08b9df2377ae6e23177cca5f410e5c5a05a961316c8e3fc4583f0487a12852572a69fef3a685637e688d79e
   languageName: node
   linkType: hard
 
@@ -68,23 +68,23 @@ __metadata:
   linkType: hard
 
 "@babel/parser@npm:^7.8.3":
-  version: 7.29.13
-  resolution: "@babel/parser@npm:7.29.13"
+  version: 7.29.14
+  resolution: "@babel/parser@npm:7.29.14"
   dependencies:
-    "@babel/types": "npm:^7.29.11"
+    "@babel/types": "npm:^7.29.14"
   bin:
     parser: ./bin/babel-parser.js
-  checksum: 10/21d5e849e1af76f526a288dd03fa77af415bf40185f83b5663619ba895af2899e490a7a5fd04a176080ddc69195d3287617d911da3958b10bdc3425e3471a1f4
+  checksum: 10/12173af6d1cd8d08ed30000f6dd63cc8a883c14a58def9fc411ca63300f3b21490305c72e8a4c057f80a9d861e0f466ee866c1b761fd83663024ad33237fd6a9
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.29.11":
-  version: 7.29.11
-  resolution: "@babel/types@npm:7.29.11"
+"@babel/types@npm:^7.29.14":
+  version: 7.29.14
+  resolution: "@babel/types@npm:7.29.14"
   dependencies:
-    "@babel/helper-string-parser": "npm:^7.29.11"
+    "@babel/helper-string-parser": "npm:^7.29.14"
     "@babel/helper-validator-identifier": "npm:^7.29.7"
-  checksum: 10/8dc28ea6371ad773e22727d43a3788d674997e4c407b14e6892d840fd048ad648f012c935acc78c199fa1ad38b5f1dfe4b4c0379ae093ae6b5f62bbf6a279726
+  checksum: 10/3ad4587548f33e951fab78fdde7965a8503b752b3a2421f5b9776ed748bd0249fd836cbca1c818ebc21de3143dfdd1af92763ba9a5183c85d0e83c884ee90bc7
   languageName: node
   linkType: hard
 
@@ -255,11 +255,11 @@ __metadata:
   linkType: hard
 
 "@hono/node-server@npm:^1.19.9 || ^2.0.5":
-  version: 2.1.6
-  resolution: "@hono/node-server@npm:2.1.6"
+  version: 2.1.8
+  resolution: "@hono/node-server@npm:2.1.8"
   peerDependencies:
     hono: ^4 || ^5.0.0-0
-  checksum: 10/43e5fa3972b20e22a6471874f4858011a80633011df60e312c37f472051f983ae47ea8f76004157c38a6317cea4a152745601a031d2428b7c44bdf7778a9a0b6
+  checksum: 10/78b2b83352bd79880c5bc58bdcec3309037463ea637ac069399d255693752e7178cc1844981f07b25ef149384b5b089d6786ea0c89da36767958894ffe5a2d79
   languageName: node
   linkType: hard
 
@@ -508,9 +508,9 @@ __metadata:
   linkType: hard
 
 "@tsconfig/node10@npm:^1.0.7":
-  version: 1.0.13
-  resolution: "@tsconfig/node10@npm:1.0.13"
-  checksum: 10/7c79dc05f1a915a900e27013554feec73ff4d3c9caffee14d30202728cb3bcf3f205c1adfb7fc461d53ee76b538b91dedbb2cdf760059e1773ba1b9607dbe074
+  version: 1.0.14
+  resolution: "@tsconfig/node10@npm:1.0.14"
+  checksum: 10/e23698172759c494e825389e2cbe31b2354fea641c2de6db17ffd6c7da3e89b930b66150b938686bf5d53e3841afc9b757a0556a864b9a0d65d826c32525a251
   languageName: node
   linkType: hard
 
@@ -1271,9 +1271,9 @@ __metadata:
   linkType: hard
 
 "bare-path@npm:^3.0.0":
-  version: 3.1.2
-  resolution: "bare-path@npm:3.1.2"
-  checksum: 10/f596ee6528eb2f011df8f67c5af0d159dfc028b9ac63c7a24e95947ff0d2b19864019c893bc4c4d10463b7f7161fb55c2db04181a95e5a37b0165b42af096fad
+  version: 3.1.3
+  resolution: "bare-path@npm:3.1.3"
+  checksum: 10/750ae42ccae7d0ad2dfda820bd4f452da98b437d19980647e060664c7ea665654186e1345e9f0b60c60645079d315e7ede3f886afe26024663cd515886f7cb2d
   languageName: node
   linkType: hard
 
@@ -1359,11 +1359,11 @@ __metadata:
   linkType: hard
 
 "brace-expansion@npm:^5.0.12":
-  version: 5.0.12
-  resolution: "brace-expansion@npm:5.0.12"
+  version: 5.0.13
+  resolution: "brace-expansion@npm:5.0.13"
   dependencies:
     balanced-match: "npm:^4.0.2"
-  checksum: 10/65b550f1836e3b43f512f12afbc3be96616eee5c353e16d70181b7dffec8c08beabffb51d69a3bbdb27d675840725cbab025fda9d10716b5cda7dd864dc7bc4a
+  checksum: 10/a2c4dc2481b7161c0c24875d23c38da209942a32cef4aad6fcab93da8f9bdd8b204f2777f7a803d7199f97507bf1d78c5664c17062d179aeda5f222b1d2bfbae
   languageName: node
   linkType: hard
 
@@ -2292,9 +2292,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.439":
-  version: 1.5.479
-  resolution: "electron-to-chromium@npm:1.5.479"
-  checksum: 10/81f1a6c261213a55ad004bccb8a9791bbabaf71da948242a0cbb4befd8b4461f373191f8d1702153eac42788db07dcdfb33d1fd5425ec3994a35fefd382b42ad
+  version: 1.5.483
+  resolution: "electron-to-chromium@npm:1.5.483"
+  checksum: 10/5f4887371d6df83d300e3c1b3e36387714b7eef0c7cf3e21eb274ad442397170a705031b70fc2491f7dcd8c857d9933cd2f8cf8ef61f299005668d929e8fd252
   languageName: node
   linkType: hard
 
@@ -2320,9 +2320,9 @@ __metadata:
   linkType: hard
 
 "encodeurl@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "encodeurl@npm:2.0.1"
-  checksum: 10/667f1f8e35c74e1abf2b390a56156626912e57fdc791c4495b38fcba8bced44dc375e16f843cb30fba58024899e969895f06ba87dc3499a1277407ef84a452c1
+  version: 2.0.2
+  resolution: "encodeurl@npm:2.0.2"
+  checksum: 10/c548244b79cff2160a23666cce01f2a7304d5ff87aae975c6ec3bc9c0bd36aca1d5b939026d68b052d9d6b00d2e58f18e1f860f9e7a828f85f9600d089182b4c
   languageName: node
   linkType: hard
 
@@ -3071,13 +3071,13 @@ __metadata:
   linkType: hard
 
 "glob@npm:^14.0.2":
-  version: 14.0.4
-  resolution: "glob@npm:14.0.4"
+  version: 14.0.6
+  resolution: "glob@npm:14.0.6"
   dependencies:
     minimatch: "npm:^11.0.5"
     minipass: "npm:^7.1.3"
     path-scurry: "npm:^3.0.0"
-  checksum: 10/d43e532cc85bd2e26bc3a0064a809ed57f2581999fb0bf2b6bafe7d394358fac2693331c313d6eccc9952e0f2bfdd78f53c88ad06a657dc47c6bc99745e470e2
+  checksum: 10/6674454c61d4146ce33c9bfa7980273c16f14893538805ca4c38ca4de7fc1823f01ea4db10da8db4e2d18391fa58c9ad6b72b59b0598ac60b8bce746429e84ea
   languageName: node
   linkType: hard
 
@@ -3096,9 +3096,9 @@ __metadata:
   linkType: hard
 
 "graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.4":
-  version: 4.2.11
-  resolution: "graceful-fs@npm:4.2.11"
-  checksum: 10/bf152d0ed1dc159239db1ba1f74fdbc40cb02f626770dcd5815c427ce0688c2635a06ed69af364396da4636d0408fcf7d4afdf7881724c3307e46aff30ca49e2
+  version: 4.2.12
+  resolution: "graceful-fs@npm:4.2.12"
+  checksum: 10/80fdd8384a2bbc94cc32dca8b7fdf011c6bc11bb96c296c8329a3c3515010956921c5080c4bd2f1a1becdf7655e5fcc691afc63ebb0c1d3da5d6afe4a17d471f
   languageName: node
   linkType: hard
 
@@ -3160,9 +3160,9 @@ __metadata:
   linkType: hard
 
 "hono@npm:^4.11.4":
-  version: 4.13.17
-  resolution: "hono@npm:4.13.17"
-  checksum: 10/a358738444d24ca4d97c00622733606f49e6153d898f3dd40bceed672591449ba1e59d42d49087f14cfb22f036b8e7e9ea8798eff10e0d97b3579266d76a346e
+  version: 4.13.18
+  resolution: "hono@npm:4.13.18"
+  checksum: 10/8fcbe45507c6f4c44ac0df296a7f82056ff3e21a7e00e316ee9406121e63547103959be9fa0d14c1463b186380d5e9078b09112d42ca48954e60b96aad6c19fb
   languageName: node
   linkType: hard
 
