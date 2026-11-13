@@ -450,13 +450,28 @@ export default abstract class BaseApi extends BaseTestData {
 
   protected async retrieveAndAssignWATask(user: User, validTask: WATask, caseId?: number): Promise<WATask> {
     const { workAllocationsRequests } = this.requestsFactory;
-    const waTask = await workAllocationsRequests.retrieveTask(
-      user,
-      validTask,
-      caseId ?? this.ccdCaseData?.id,
-    );
-    await workAllocationsRequests.assignTask(user, waTask);
-    return waTask;
+    const maxAttempts = 3;
+    const failedTaskIds: string[] = [];
+    for (let attempt = 1; ; attempt++) {
+      const waTask = await workAllocationsRequests.retrieveTask(
+        user,
+        validTask,
+        caseId ?? this.ccdCaseData?.id,
+        failedTaskIds,
+      );
+      try {
+        await workAllocationsRequests.assignTask(user, waTask);
+        return waTask;
+      } catch (error: any) {
+        // A task cancelled in Camunda (for example by STAY_CASE) stays listed in Task Management
+        // for a short time, and claiming it fails. Retrieve again, skipping that task.
+        if (attempt >= maxAttempts) throw error;
+        console.log(
+          `Claiming task ${waTask.id} failed (${error.message?.split('\n')[0]}), retrieving the task again without it`,
+        );
+        failedTaskIds.push(waTask.id);
+      }
+    }
   }
 
   protected async completeWATask(user: User, waTask: WATask) {
