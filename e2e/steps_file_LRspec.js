@@ -1105,6 +1105,20 @@ module.exports = function () {
       ]);
       await this.takeScreenshot();
     },
+
+    async requestForCancelUnissuedClaimForUI(caseId) {
+      eventName = events.CANCEL_UNISSUED_CLAIM.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.CANCEL_UNISSUED_CLAIM, caseId),
+        () => this.waitForText('Reasons for cancelling the claim'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('This claim has been cancelled'),
+      ]);
+      await this.takeScreenshot();
+    },
+
     async addCaseNote() {
       eventName = events.ADD_CASE_NOTE.name;
       await this.triggerStepsWithScreenshot([

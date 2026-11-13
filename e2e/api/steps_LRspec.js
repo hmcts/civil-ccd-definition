@@ -35,6 +35,7 @@ const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplic
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
+const cancelUnissuedClaimSpec = require('../fixtures/events/cancelUnissuedClaimSpec');
 const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
@@ -97,6 +98,7 @@ const data = {
   SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
   DISCONTINUE_CLAIM: (mpScenario) => discontinueClaimSpec.discontinueClaim(mpScenario),
+  CANCEL_UNISSUED_CLAIM: () => cancelUnissuedClaimSpec.cancelUnissuedClaim(),
   VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: (permission) => validateDiscontinueClaimClaimantSpec.validateDiscontinueClaimClaimant(permission),
   STAY_CASE: () => stayCase.stayCaseSpec(),
   MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
@@ -870,6 +872,25 @@ module.exports = {
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, isMintiCase);
 
+    return caseId;
+  },
+
+  createClaimWithoutPayment: async (user, scenario = 'ONE_V_ONE', carmEnabled = false,
+                                               isMintiCase = false, mintiClaimAmount = '00000') => {
+    eventName = 'CREATE_CLAIM_SPEC';
+    caseId = null;
+    caseData = {};
+
+    let createClaimData;
+    createClaimData = data.CREATE_CLAIM(scenario, isMintiCase, mintiClaimAmount);
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName);
+    for (let pageId of Object.keys(createClaimData.userInput)) {
+      await assertValidData(createClaimData, pageId);
+    }
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
+    await waitForFinishedBusinessProcess(caseId);
     return caseId;
   },
 
@@ -1822,6 +1843,30 @@ module.exports = {
       }, true);
       await waitForFinishedBusinessProcess(caseId);
     }
+  },
+
+  cancelUnissuedClaim: async (user) => {
+    console.log('Cancel Unissued claim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'CANCEL_UNISSUED_CLAIM';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.CANCEL_UNISSUED_CLAIM();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    await assertSubmittedEvent('UNISSUED_CLAIM_CANCELLED', {
+      header: '# This claim has been cancelled',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   stayCase: async (user) => {

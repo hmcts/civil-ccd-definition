@@ -89,6 +89,12 @@ module.exports = {
     description: 'Take case offline',
     order: 15,
   },
+  CANCEL_UNISSUED_CLAIM: {
+    id: 'CANCEL_UNISSUED_CLAIM',
+    name: 'Cancel unissued claim',
+    description: 'Cancel unissued claim',
+    order: 3,
+  },
   RESUBMIT_CLAIM: {
     id: 'RESUBMIT_CLAIM',
     name: 'Resubmit claim',
