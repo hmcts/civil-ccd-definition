@@ -3,6 +3,7 @@
     "ID": "LoanCardDebt",
     "ListElementCode": "loanCardDebtDetail",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Detail of each loan or credit card debt",
     "SecurityClassification": "Public",
     "Searchable": "N"

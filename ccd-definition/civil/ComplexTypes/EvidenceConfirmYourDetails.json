@@ -3,6 +3,7 @@
     "ID": "EvidenceConfirmYourDetails",
     "ListElementCode": "firstName",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "ElementLabel": "First name",
     "Searchable": "N"
@@ -11,6 +12,7 @@
     "ID": "EvidenceConfirmYourDetails",
     "ListElementCode": "lastName",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "ElementLabel": "Last name",
     "Searchable": "N"
@@ -27,6 +29,7 @@
     "ID": "EvidenceConfirmYourDetails",
     "ListElementCode": "phone",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "ElementLabel": "Phone",
     "Searchable": "N"
@@ -35,6 +38,7 @@
     "ID": "EvidenceConfirmYourDetails",
     "ListElementCode": "jobTitle",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "ElementLabel": "Job title",
     "Searchable": "N"

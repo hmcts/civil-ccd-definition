@@ -4,6 +4,7 @@
     "ID": "joDefendantName1",
     "Label": "Defendant 1",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -12,6 +13,7 @@
     "ID": "joDefendantName2",
     "Label": "Defendant 2",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -28,6 +30,7 @@
     "ID": "joPaymentPlanSelected",
     "Label": "Payment type",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -44,6 +47,7 @@
     "ID": "joRepaymentSummaryObject",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -255,6 +259,7 @@
     "ID": "joSetAsideJudgmentErrorText",
     "Label": "Enter any additional information. This will be shown to the parties in the case.",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

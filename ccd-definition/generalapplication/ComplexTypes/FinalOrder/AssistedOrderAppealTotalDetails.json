@@ -22,6 +22,7 @@
     "ID": "AssistedOrderAppealDetails",
     "ElementLabel": "Please specify",
     "FieldType": "Text",
+    "Max": 1000,
     "FieldShowCondition": "appealOrigin = \"OTHER\"",
     "SecurityClassification": "Public"
   },

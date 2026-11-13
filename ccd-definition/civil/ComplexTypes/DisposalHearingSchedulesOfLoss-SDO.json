@@ -11,6 +11,7 @@
     "ID": "DisposalHearingSchedulesOfLoss",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,6 +28,7 @@
     "ID": "DisposalHearingSchedulesOfLoss",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -43,6 +45,7 @@
     "ID": "DisposalHearingSchedulesOfLoss",
     "ListElementCode": "input3",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -59,6 +62,7 @@
     "ID": "DisposalHearingSchedulesOfLoss",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

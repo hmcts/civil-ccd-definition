@@ -11,6 +11,7 @@
     "ListElementCode": "reasonsText",
     "ElementLabel": " ",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   }
 ]

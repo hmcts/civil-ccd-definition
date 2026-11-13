@@ -11,6 +11,7 @@
     "ID": "SmallClaimsJudgesRecital",
     "ListElementCode": "input",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -21,6 +21,7 @@
     "ID": "DeterWithoutHearing",
     "ListElementCode": "deterWithoutHearingWhyNot",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "Tell us why",
     "ShowSummaryChangeOption": "y",
     "SecurityClassification": "Public",

@@ -12,6 +12,7 @@
     "ID": "CloseClaim",
     "ListElementCode": "reason",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "Reason",
     "SecurityClassification": "Public",
     "Searchable": "N",

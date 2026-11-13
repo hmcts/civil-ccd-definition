@@ -19,6 +19,7 @@
     "ID": "SdoR2SmallClaimsPPI",
     "ListElementCode": "text",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

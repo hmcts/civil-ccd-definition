@@ -160,6 +160,7 @@
     "ElementLabel": " ",
     "HintText": "For example, potentially violent, reading time needed, CVP for hearing",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   }
 ]

@@ -28,6 +28,7 @@
     "ID": "requestHearingOtherText",
     "Label": "What type of hearing do you want to have listed?",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

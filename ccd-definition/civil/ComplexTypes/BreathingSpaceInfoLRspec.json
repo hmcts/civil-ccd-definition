@@ -41,6 +41,7 @@
     "ElementLabel": "Event summary",
     "HintText": "A few words describing the purpose of the event",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -49,6 +50,7 @@
     "ListElementCode": "eventDescription",
     "ElementLabel": "Event Description",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -67,6 +69,7 @@
     "ElementLabel": "Event summary",
     "HintText": "A few words describing the purpose of the event",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -75,6 +78,7 @@
     "ListElementCode": "eventDescription",
     "ElementLabel": "Event Description",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

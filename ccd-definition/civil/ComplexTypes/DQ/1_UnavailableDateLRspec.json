@@ -12,6 +12,7 @@
     "ID": "UnavailableDateLRspec",
     "ListElementCode": "who",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Name of unavailable person",
     "SecurityClassification": "Public",
     "Searchable": "N"

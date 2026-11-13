@@ -70,6 +70,7 @@
     "ID": "selectedClaimantForDiscontinuance",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -179,6 +180,7 @@
     "ID": "partDiscontinuanceDetails",
     "Label": "Which part of the claim do you want to discontinue?",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification":"Public",
     "Searchable": "N"
   },
@@ -195,6 +197,7 @@
     "ID": "permissionGrantedJudgeCopy",
     "Label": "Judge name",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

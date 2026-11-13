@@ -3,6 +3,7 @@
     "ID": "LitigationFriend",
     "ListElementCode": "fullName",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Litigation friend's full name",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -38,6 +39,7 @@
     "ID": "LitigationFriend",
     "ListElementCode": "firstName",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "First name",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -46,6 +48,7 @@
     "ID": "LitigationFriend",
     "ListElementCode": "lastName",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Last name",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -79,6 +82,7 @@
     "ID": "LitigationFriend",
     "ListElementCode": "partyID",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",

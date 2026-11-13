@@ -3,6 +3,7 @@
     "ID": "SdoR2ApplicationToRelyOnFurtherDetails",
     "ListElementCode": "applicationToRelyDetailsTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -12,6 +12,7 @@
     "ID": "HomeDetailsLRspec",
     "ListElementCode": "typeOtherDetails",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "What type of housing",
     "FieldShowCondition": "type = \"OTHER\"",
     "SecurityClassification": "Public",

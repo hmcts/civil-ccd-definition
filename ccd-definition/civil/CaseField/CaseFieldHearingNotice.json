@@ -23,6 +23,7 @@
     "ID": "typeOfApplication",
     "Label": "Type of application",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -40,6 +41,7 @@
     "ID": "hearingNoticeListOther",
     "Label": "What hearing notice are you creating?",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -134,6 +136,7 @@
     "ID": "information",
     "Label": "Is there more information you need to add to the Hearing Notification letter?",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -192,6 +195,7 @@
     "ID": "hearingReferenceNumber",
     "Label": "Hearing reference",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

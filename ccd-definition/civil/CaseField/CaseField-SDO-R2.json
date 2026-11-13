@@ -372,6 +372,7 @@
     "ID": "sdoR2ImportantNotesTxt",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -999,6 +1000,7 @@
     "ID": "claimDeclarationDescription",
     "Label": "Other remedy narrative",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {

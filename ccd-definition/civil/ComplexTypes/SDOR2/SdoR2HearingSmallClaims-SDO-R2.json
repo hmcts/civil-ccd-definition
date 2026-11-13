@@ -148,6 +148,7 @@
     "ID": "SdoR2SmallClaimsHearing",
     "ListElementCode": "hearingNotesTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "ElementLabel": "This is only seen by the Listing Officer"

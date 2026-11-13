@@ -20,6 +20,7 @@
     "ID": "RequestedCourt",
     "ListElementCode": "reasonForHearingAtSpecificCourt",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "Briefly explain your reasons",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\"",
     "SecurityClassification": "Public",
@@ -29,6 +30,7 @@
     "ID": "RequestedCourt",
     "ListElementCode": "otherPartyPreferredSite",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "The claimant legal representative requested the following court location code.",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -55,6 +57,7 @@
     "ID": "RequestedCourt",
     "ListElementCode": "responseCourtCode",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "The code of your preferred County Court hearing centre",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",

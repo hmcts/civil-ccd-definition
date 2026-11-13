@@ -55,6 +55,7 @@
     "ListElementCode": "applicant1RejectedRepaymentReason",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {

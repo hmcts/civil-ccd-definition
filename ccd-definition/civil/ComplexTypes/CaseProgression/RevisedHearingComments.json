@@ -5,6 +5,7 @@
     "ElementLabel": "What support do you, your clients, experts or witnesses need?",
     "HintText": "For Example, client requires a courtroom with free access.",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

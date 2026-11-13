@@ -12,6 +12,7 @@
     "ID": "StatementOfTruth",
     "ListElementCode": "name",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Full Name",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -20,6 +21,7 @@
     "ID": "StatementOfTruth",
     "ListElementCode": "role",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Role",
     "SecurityClassification": "Public",
     "Searchable": "N"

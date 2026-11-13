@@ -13,6 +13,7 @@
     "ListElementCode": "judgeRequestMoreInfoText",
     "ElementLabel": "Enter the information required",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\" OR isWithNotice=\"Yes\""
   },
@@ -21,6 +22,7 @@
     "ListElementCode": "judgeRecitalText",
     "ElementLabel": "Judge’s recital",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "requestMoreInfoOption=\"REQUEST_MORE_INFORMATION\" OR isWithNotice=\"Yes\""
   },

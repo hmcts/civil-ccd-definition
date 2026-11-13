@@ -4,6 +4,7 @@
     "ListElementCode": "hwfFeeType",
     "ElementLabel": "Type",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -12,6 +13,7 @@
     "ListElementCode": "hwfReferenceNumber",
     "ElementLabel": "HwF reference number",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -43,6 +45,7 @@
     "ListElementCode": "noRemissionDetails",
     "ElementLabel": "Details",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "outstandingFee = \"DONT_SHOW_UI\""
@@ -62,6 +65,7 @@
     "ListElementCode": "hwfCaseEvent",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "outstandingFee = \"DONT_SHOW_UI\""

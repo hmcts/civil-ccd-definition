@@ -3,6 +3,7 @@
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "organisationToAddID",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "organisationToAddID",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -11,6 +12,7 @@
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "organisationToRemoveID",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "organisationToRemoveID",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -19,6 +21,7 @@
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "caseRole",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "caseRole",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -43,6 +46,7 @@
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "formerRepresentationReference",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "formerRepresentationReference",
     "SecurityClassification": "Public",
     "Searchable": "N"

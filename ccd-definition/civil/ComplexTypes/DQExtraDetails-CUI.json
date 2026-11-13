@@ -12,6 +12,7 @@
     "ListElementCode": "whyPhoneOrVideoHearing",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -20,6 +21,7 @@
     "ListElementCode": "whyUnavailableForHearing",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -52,6 +54,7 @@
     "ListElementCode": "determinationWithoutHearingReason",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -76,6 +79,7 @@
     "ListElementCode": "considerClaimantDocumentsDetails",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

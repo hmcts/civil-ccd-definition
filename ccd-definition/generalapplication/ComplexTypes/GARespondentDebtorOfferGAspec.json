@@ -44,6 +44,7 @@
     "ElementLabel": "Enter your objections to the debtor's proposals",
     "HintText": "Give your reasons why you do not accept the debtor's offer. The cour will fix the rate of payment and send you and the debtor a copy of the order.",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   }
 ]

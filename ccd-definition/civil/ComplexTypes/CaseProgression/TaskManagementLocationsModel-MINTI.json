@@ -4,6 +4,7 @@
     "ListElementCode": "region",
     "ElementLabel": "Region",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -12,6 +13,7 @@
     "ListElementCode": "regionName",
     "ElementLabel": "Region Name",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -20,6 +22,7 @@
     "ListElementCode": "location",
     "ElementLabel": "Location",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -28,6 +31,7 @@
     "ListElementCode": "locationName",
     "ElementLabel": "Location Name",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   }
