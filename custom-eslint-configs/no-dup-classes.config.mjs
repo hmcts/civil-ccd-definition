@@ -1,5 +1,5 @@
 import customEslintPlugin from 'custom-eslint-plugin';
-import tseslint from 'typescript-eslint';
+import tsParser from '@typescript-eslint/parser';
 
 //When updating file glob patterns here, also update glob patterns in ./.husky/pre-commit.sh
 
@@ -21,5 +21,5 @@ export default [
       'customEslintPlugin/no-duplicate-class-names': 'error',
     },
   },
-  { languageOptions: { parser: tseslint.parser } },
+  { languageOptions: { parser: tsParser } },
 ];

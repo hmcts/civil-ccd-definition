@@ -1,6 +1,6 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 import eslintPluginCodecept from 'eslint-plugin-codeceptjs';
 import customEslintPlugin from 'custom-eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
@@ -25,7 +25,7 @@ export default [
       '**/*.{mjs,cjs}',
     ],
   },
-  ...[...tseslint.configs.recommended].map((config) => ({
+  ...tsPlugin.configs['flat/recommended'].map((config) => ({
     ...config,
     files: ['playwright-e2e/**/*.ts'],
   })),
