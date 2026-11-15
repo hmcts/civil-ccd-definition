@@ -272,13 +272,6 @@ def checkForPrValuesLabel(branch_name, label) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values:" + label).contains("pr-values:" + label)
 }
 
-def createGithubRelease() {
-  sh """
-    set -e
-    ./bin/create-github-release.sh
-  """
-}
-
 def uploadDmnDiagrams(String env) {
   dir("${WORKSPACE}/bin") {
     tenantId = "civil"
@@ -521,6 +514,5 @@ withPipeline(type, product, component) {
   afterAlways('functionalTest:aat') {
     publishPlaywrightFunctionalReports(yarnBuilder)
     archivePlaywrightTestArtifacts()
-    createGithubRelease()
   }
 }
