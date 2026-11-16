@@ -349,6 +349,15 @@ export class PageHelper {
       }
     }
 
+    // Ticks a checkbox or picks a radio button, clicking again until it sticks. XUI can redraw the page as a date is
+    // typed, which undoes a click made just after it.
+    async checkUntilChecked(locator: Locator) {
+      await expect(async () => {
+        await locator.click();
+        await expect(locator).toBeChecked({ timeout: 1000 });
+      }).toPass({ timeout: 15000 });
+    }
+
     async fillDate(fieldId: string, date: moment.Moment) {
       // CCD can render hidden duplicates of date inputs, so only target the visible ones
       await this.page.locator(`#${fieldId}-day:visible`).fill(date.date().toString());

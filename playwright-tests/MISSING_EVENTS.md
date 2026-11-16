@@ -5,6 +5,13 @@ every event ID in the CCD definition against both frameworks, checking that a pl
 submits the event, and keeping only events a professional or staff user picks from Next step in XUI.
 Compared on 2026-11-12.
 
+`RECORD_JUDGMENT` (Record Judgment) and `EDIT_JUDGMENT` (Edit Judgment) are not listed either. playwright-e2e submits them
+through the API, but the definition has hidden them from every user since CIV-16299 (January 2025): their
+EventEnablingCondition needs `CaseAccessCategory="DO_NOT_SHOW_IN_UI_BUT_IN_PREVIEW_SET_IT_TO_SPEC_CLAIM"`, which no claim
+can have (civil-service's CaseCategory is only UNSPEC_CLAIM or SPEC_CLAIM). Nothing else opens them: no work allocation
+task links to them and no business process runs them. civil-service also only allows Record Judgment in the
+FULL_DEFENCE_PROCEED flow state, so not once a hearing has been listed.
+
 The comparison is by event name, not by how much of each event is covered: an event both run may be run with more
 combinations of answers in playwright-e2e. `MANAGE_DOCUMENTS` (Manage Documents) is not listed: playwright-e2e has a step
 for it, but no test calls that step.
@@ -14,18 +21,9 @@ for it, but no test calls that step.
 - `ADD_DEFENDANT_LITIGATION_FRIEND`: DEFENDANT_LITIGATION_FRIEND=Yes (UI + API), passed AAT 1v2SS UI, 1v2DS API and 1v2DS UI on 2026-11-06
 - `ADD_UNAVAILABLE_DATES`: ADD_UNAVAILABLE_DATES=Yes (UI + API, both journeys), passed AAT unspec 1v2DS UI and spec 1v2SS small claim API on 2026-11-06
 - `CASE_PROCEEDS_IN_CASEMAN` (Case proceeds in Caseman): CASE_PROCEEDS_IN_CASEMAN=<reason> (UI + API, both journeys), passed AAT unspec 1v1 UI and API and spec 1v1 UI and API on 2026-11-12
+- `JUDGMENT_PAID_IN_FULL` (Mark judgment as paid in full), `REFER_JUDGE_DEFENCE_RECEIVED` (Refer to judge-defended claim), `SET_ASIDE_JUDGMENT` (Set aside judgment): JUDGMENT_PAID_IN_FULL=Yes, REFER_JUDGE_DEFENCE_RECEIVED=Yes, SET_ASIDE_JUDGMENT=<reason> (UI + API, spec journey, after default judgment or a judgment by admission), passed AAT on 2026-11-16: spec 1v1 default judgment UI (all three, set aside after a defence, then taken offline), spec 1v1 judgment by admission API (paid in full, refer), spec 1v2DS default judgment API (set aside made in error, then taken offline)
 
 ## Events
-
-### Judgments online
-
-| Next step | Event ID | Who | Notes |
-| --- | --- | --- | --- |
-| Record Judgment | `RECORD_JUDGMENT` | Caseworker | |
-| Edit Judgment | `EDIT_JUDGMENT` | Caseworker | |
-| Set aside judgment | `SET_ASIDE_JUDGMENT` | Hearing centre admin, caseworker | Following an application, a defence received, or made in error |
-| Mark judgment as paid in full | `JUDGMENT_PAID_IN_FULL` | Claimant solicitor (spec) | |
-| Refer to judge-defended claim | `REFER_JUDGE_DEFENCE_RECEIVED` | Hearing centre admin, caseworker | A defence turns up after default judgment |
 
 ### Case management
 
@@ -68,9 +66,7 @@ LiPs as defendants, where solicitor-side events act for them.
 
 ## Suggested order
 
-1. Judgments online (`RECORD_JUDGMENT`, `EDIT_JUDGMENT`, `SET_ASIDE_JUDGMENT`, `JUDGMENT_PAID_IN_FULL`,
-   `REFER_JUDGE_DEFENCE_RECEIVED`), as they go together
-2. Not suitable for SDO (`NotSuitable_SDO`)
-3. `UPLOAD_MEDIATION_DOCUMENTS`
-4. Dispute resolution hearing
-5. The rest
+1. Not suitable for SDO (`NotSuitable_SDO`)
+2. `UPLOAD_MEDIATION_DOCUMENTS`
+3. Dispute resolution hearing
+4. The rest

@@ -58,6 +58,12 @@ import { CaseProceedsInCaseman } from '../../flows/events/ui/CaseProceedsInCasem
 import { CaseProceedsInCaseman as ApiCaseProceedsInCaseman } from '../../flows/events/api/CaseProceedsInCaseman.ts';
 import CaseProceedsInCasemanReason from '../../../enums/caseProceedsInCaseman.ts';
 import { RequestForReconsideration } from '../../flows/events/ui/RequestForReconsideration.ts';
+import { JudgmentPaidInFull } from '../../flows/events/ui/JudgmentPaidInFull.ts';
+import { JudgmentPaidInFull as ApiJudgmentPaidInFull } from '../../flows/events/api/JudgmentPaidInFull.ts';
+import { ReferJudgeDefenceReceived } from '../../flows/events/ui/ReferJudgeDefenceReceived.ts';
+import { ReferJudgeDefenceReceived as ApiReferJudgeDefenceReceived } from '../../flows/events/api/ReferJudgeDefenceReceived.ts';
+import { SetAsideJudgment } from '../../flows/events/ui/SetAsideJudgment.ts';
+import { SetAsideJudgment as ApiSetAsideJudgment } from '../../flows/events/api/SetAsideJudgment.ts';
 import { RequestForReconsideration as ApiRequestForReconsideration } from '../../flows/events/api/RequestForReconsideration.ts';
 import { DecisionOnReconsiderationRequest } from '../../flows/events/ui/DecisionOnReconsiderationRequest.ts';
 import { DecisionOnReconsiderationRequest as ApiDecisionOnReconsiderationRequest } from '../../flows/events/api/DecisionOnReconsiderationRequest.ts';
@@ -765,6 +771,8 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
         await ctx.assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
       },
     },
+    ...judgmentsOnlineSteps(),
+
     // The claim is settled with "Settle this claim" once the rest of the journey has run, or where STOP_AT_STATE or
     // STOP_AFTER_TEST stops it (SETTLE_CLAIM). Each event is only offered in some states, so the step is skipped where
     // the journey ended in another.
@@ -972,15 +980,122 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
   }
 
   // Once default judgment is asked for, the defendants' steps and everything after them do not apply, apart from
-  // settling or discontinuing the claim
+  // settling or discontinuing the claim and the Judgments Online steps, which act on the default judgment
+  const judgmentsOnlineStepNames = ['JUDGMENT_PAID_IN_FULL', 'REFER_JUDGE_DEFENCE_RECEIVED', 'SET_ASIDE_JUDGMENT'];
   const lastDefaultJudgmentStep = steps.map((step) => step.name).lastIndexOf('DEFAULT_JUDGMENT');
   steps.slice(lastDefaultJudgmentStep + 1)
-    .filter((step) => !step.closesClaim)
+    .filter((step) => !step.closesClaim && !judgmentsOnlineStepNames.includes(step.name))
     .forEach((step) => {
       step.skipIf = [...(step.skipIf ?? []), afterDefaultJudgment];
     });
 
   return steps;
+
+  // The Judgments Online events users reach from Next step (see the settings in specifiedConfig.ts). Each needs a live
+  // judgment with the claim in All_FINAL_ORDERS_ISSUED, which the journey gives two ways: default judgment
+  // (DEFAULT_JUDGMENT=Yes, unless the judgment buffer keeps the claim in JUDGMENT_REQUESTED, which is only known when it
+  // runs) or a judgment by admission. Setting the judgment aside needs it to be a default judgment. None of them changes
+  // the claim's state.
+  //
+  // "Record Judgment" (RECORD_JUDGMENT) and "Edit Judgment" (EDIT_JUDGMENT) are left out: the definition has hidden them
+  // from every user since CIV-16299, and civil-service records judgments itself.
+  function judgmentsOnlineSteps(): JourneyStep[] {
+    const judgmentByAdmission = allDefendantsRepresented && c.claimantResponds
+      && c.claimantOutcome.businessProcess === 'JUDGEMENT_BY_ADMISSION_NON_DIVERGENT_SPEC';
+    const defaultJudgment = c.defaultJudgment === yesNo.YES;
+    const noLiveJudgment = (setting: string): Array<[boolean, string]> => [[
+      !defaultJudgment && !judgmentByAdmission,
+      `${setting} needs a live judgment: default judgment (DEFAULT_JUDGMENT=Yes) or a judgment by admission (a 1v1 claimant accepting the defendant's date or repayment plan)`,
+    ]];
+    // A default judgment with the judgment buffer switched on waits in JUDGMENT_REQUESTED, where none of the events is
+    // offered
+    const skipUnlessFinalOrdersIssued = () => test.skip(
+      ctx.lastStateReached !== caseStates.All_FINAL_ORDERS_ISSUED,
+      `Skipping as the claim is in ${ctx.lastStateReached}, not All_FINAL_ORDERS_ISSUED`,
+    );
+    // The live judgment saved on the claim, checked after each event
+    const activeJudgment = async () => {
+      const caseData = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+      return { live: caseData.joIsLiveJudgmentExists, judgment: caseData.activeJudgment ?? {} };
+    };
+
+    return [
+      // The claimant's solicitor marks the live judgment as paid in full, today. civil-service marks it satisfied, or
+      // cancelled where it was paid within a month of the judgment, and the JUDGMENT_PAID_IN_FULL business process
+      // makes the certificate of satisfaction or cancellation.
+      {
+        name: 'JUDGMENT_PAID_IN_FULL',
+        title: 'Claimant Solicitor marks the judgment as paid in full.',
+        user: 'claimantSolicitor',
+        invalidIf: () => c.judgmentPaidInFull === yesNo.YES ? noLiveJudgment('JUDGMENT_PAID_IN_FULL=Yes') : [],
+        skipIf: [[c.judgmentPaidInFull !== yesNo.YES, 'Marking the judgment as paid in full is switched off (set JUDGMENT_PAID_IN_FULL=Yes to run it)']],
+        run: async ({ page, storageState, user }) => {
+          skipUnlessFinalOrdersIssued();
+          if (ctx.useApi()) {
+            await new ApiJudgmentPaidInFull().submit(ctx.caseId, user);
+          } else {
+            await ctx.runEvent(page, storageState, async () => {
+              await new JudgmentPaidInFull(page).submit();
+            });
+          }
+          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'JUDGMENT_PAID_IN_FULL');
+          const { judgment: saved } = await activeJudgment();
+          expect(['SATISFIED', 'CANCELLED'], 'The judgment was not marked as paid in full').toContain(saved.state);
+          await ctx.assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
+        },
+      },
+
+      // Court staff refer the claim to a judge as a defence was received in time, after judgment. civil-service changes
+      // nothing on the claim.
+      {
+        name: 'REFER_JUDGE_DEFENCE_RECEIVED',
+        title: 'Hearing Centre Admin refers the defended claim to a judge.',
+        user: 'hearingCentreAdmin',
+        invalidIf: () => c.referJudgeDefenceReceived === yesNo.YES ? noLiveJudgment('REFER_JUDGE_DEFENCE_RECEIVED=Yes') : [],
+        skipIf: [[c.referJudgeDefenceReceived !== yesNo.YES, 'Referring the defended claim to a judge is switched off (set REFER_JUDGE_DEFENCE_RECEIVED=Yes to run it)']],
+        run: async ({ page, storageState }) => {
+          skipUnlessFinalOrdersIssued();
+          if (ctx.useApi()) {
+            await new ApiReferJudgeDefenceReceived().submit(ctx.caseId);
+          } else {
+            await ctx.runEvent(page, storageState, async () => {
+              await new ReferJudgeDefenceReceived(page).submit();
+            });
+          }
+          await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.caseId);
+          await ctx.assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
+        },
+      },
+
+      // Court staff set aside the default judgment. civil-service moves it to the claim's historic judgments, so there
+      // is no longer a live judgment, and the SET_ASIDE_JUDGMENT business process tells the parties. The claim stays in
+      // All_FINAL_ORDERS_ISSUED, from where it can be taken offline (CASE_PROCEEDS_IN_CASEMAN).
+      {
+        name: 'SET_ASIDE_JUDGMENT',
+        title: `Hearing Centre Admin sets aside the default judgment (${c.setAsideJudgment}).`,
+        user: 'hearingCentreAdmin',
+        invalidIf: () => c.setAsideJudgment === undefined ? [] : [
+          [!defaultJudgment, 'SET_ASIDE_JUDGMENT needs DEFAULT_JUDGMENT=Yes: only a default judgment can be set aside'],
+        ],
+        skipIf: [[c.setAsideJudgment === undefined, 'Setting aside the judgment is switched off (set SET_ASIDE_JUDGMENT=JUDGMENT_ERROR, ORDER_AFTER_APPLICATION or ORDER_AFTER_DEFENCE to run it)']],
+        run: async ({ page, storageState }) => {
+          skipUnlessFinalOrdersIssued();
+          const setAside = c.setAsideJudgment!;
+          if (ctx.useApi()) {
+            await new ApiSetAsideJudgment().submit(ctx.caseId, setAside);
+          } else {
+            await ctx.runEvent(page, storageState, async () => {
+              await new SetAsideJudgment(page).submit(setAside);
+            });
+          }
+          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'SET_ASIDE_JUDGMENT');
+          const { live } = await activeJudgment();
+          expect(live, 'The judgment is still live after being set aside').toBe('No');
+          await ctx.assertCaseState(caseStates.All_FINAL_ORDERS_ISSUED);
+        },
+      },
+    ];
+  }
 
   function respondToClaimSteps(): JourneyStep[] {
     const solicitors: Array<{ defendantNumber: 1 | 2; user: SessionUserKey; skipIf: Array<[boolean, string]>; stateAfter: caseStates }> = [

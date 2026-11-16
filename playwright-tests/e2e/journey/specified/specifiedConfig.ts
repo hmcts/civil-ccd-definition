@@ -14,6 +14,7 @@ import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
 import SettleClaim from '../../../enums/settleClaim.ts';
 import DiscontinueClaim from '../../../enums/discontinueClaim.ts';
 import CaseProceedsInCaseman from '../../../enums/caseProceedsInCaseman.ts';
+import { SetAsideJudgment } from '../../../enums/judgmentsOnline.ts';
 import { ReconsiderationDecision, RequestForReconsiderationBy } from '../../../enums/reconsideration.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
@@ -204,6 +205,18 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // defendants' responses and everything after them are skipped, apart from settling or discontinuing the claim
     // (DEFAULT_JUDGMENT=Yes, default No)
     defaultJudgment: yes(scenarioEnv.DEFAULT_JUDGMENT),
+    // The Judgments Online events, which run once a default judgment (DEFAULT_JUDGMENT=Yes) or a judgment by admission
+    // (a 1v1 claimant accepting the defendant's date or repayment plan) has left the claim in All_FINAL_ORDERS_ISSUED,
+    // in this order (see judgmentsOnlineSteps in specifiedSteps.ts):
+    //  - the claimant's solicitor marks the judgment as paid in full (JUDGMENT_PAID_IN_FULL=Yes, default No)
+    //  - the hearing centre admin refers the claim to a judge as a defence was received in time
+    //    (REFER_JUDGE_DEFENCE_RECEIVED=Yes, default No)
+    //  - the hearing centre admin sets aside the default judgment: made in error (SET_ASIDE_JUDGMENT=JUDGMENT_ERROR), or
+    //    by a judge's order following an application (ORDER_AFTER_APPLICATION) or a defence received
+    //    (ORDER_AFTER_DEFENCE). Not set aside by default.
+    judgmentPaidInFull: yes(scenarioEnv.JUDGMENT_PAID_IN_FULL),
+    referJudgeDefenceReceived: yes(scenarioEnv.REFER_JUDGE_DEFENCE_RECEIVED),
+    setAsideJudgment: scenarioEnv.SET_ASIDE_JUDGMENT as SetAsideJudgment | undefined,
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
@@ -342,6 +355,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN].filter((setting) => setting !== undefined).length <= 1,
         'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM and CASE_PROCEEDS_IN_CASEMAN can be set: each one closes the claim.',
       ).toBeTruthy();
+      expect(
+        [undefined, ...Object.values(SetAsideJudgment)],
+        `Invalid SET_ASIDE_JUDGMENT value: ${scenarioEnv.SET_ASIDE_JUDGMENT}. It must be one of ${Object.values(SetAsideJudgment).join(', ')}.`,
+      ).toContain(scenarioEnv.SET_ASIDE_JUDGMENT);
       expect(interestRate, `Invalid INTEREST_RATE value: ${interestRate}. It must be a number.`).toMatch(/^\d+(\.\d+)?$/);
       expect(
         Object.values(FinalOrder),
