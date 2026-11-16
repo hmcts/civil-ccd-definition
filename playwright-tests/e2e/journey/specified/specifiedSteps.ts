@@ -85,6 +85,9 @@ import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
 import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
 import { notSuitableSdoSteps, withNotSuitableSdo } from '../notSuitableSdoSteps.ts';
+import { UploadMediationDocuments } from '../../flows/events/ui/UploadMediationDocuments.ts';
+import { UploadMediationDocuments as ApiUploadMediationDocuments } from '../../flows/events/api/UploadMediationDocuments.ts';
+import { countMediationDocuments } from '../../flows/events/shared_api_ui/uploadMediationDocumentsSpecs.ts';
 import NotSuitableSdo from '../../../enums/notSuitableSdo.ts';
 import { withRefund } from '../refundSteps.ts';
 import { specifiedConfig, SpecifiedConfig } from './specifiedConfig.ts';
@@ -512,6 +515,9 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
         await ctx.assertCaseState(caseStates.JUDICIAL_REFERRAL);
       },
     },
+
+    // Each solicitor uploads mediation documents once mediation has been unsuccessful (UPLOAD_MEDIATION_DOCUMENTS=Yes)
+    ...uploadMediationDocumentsSteps(),
 
     // The judge (or, for a small claim, the legal adviser) decides the claim is not suitable for a Standard Direction
     // Order, and with CHANGE_LOCATION the hearing centre admin transfers it to another hearing centre, whose directions
@@ -1201,6 +1207,60 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
           expect(defendant2Deadline?.slice(0, 10), `Defendant 2's response deadline ${defendant2Deadline} is not the agreed extension date`).toBe(extensionDate);
         }
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    }));
+  }
+
+  // UPLOAD_MEDIATION_DOCUMENTS=Yes, in group UPLOAD_MEDIATION_DOCUMENTS: once mediation on a small claim has been
+  // unsuccessful, and the claim is back in JUDICIAL_REFERRAL, each solicitor uploads a non-attendance statement and a
+  // document referred to in it with "Upload mediation documents" (Defendant 2's solicitor only for 1v2DS), for every
+  // party they act for. Each party's documents are counted before and after. The event is only offered on a specified
+  // small claim, from JUDICIAL_REFERRAL to the hearing.
+  function uploadMediationDocumentsSteps(): JourneyStep[] {
+    const off: [boolean, string] = [c.uploadMediationDocuments !== yesNo.YES, 'Uploading mediation documents is switched off (set UPLOAD_MEDIATION_DOCUMENTS=Yes to run it)'];
+    if (c.uploadMediationDocuments !== yesNo.YES) {
+      return [{ name: 'UPLOAD_MEDIATION_DOCUMENTS', title: 'Solicitors upload mediation documents.', user: 'claimantSolicitor', skipIf: [off], run: async () => {} }];
+    }
+    const solicitors = [
+      { name: 'UPLOAD_MEDIATION_DOCUMENTS_CLAIMANT_SOLICITOR', label: 'Claimant Solicitor', user: 'claimantSolicitor' },
+      { name: 'UPLOAD_MEDIATION_DOCUMENTS_DEFENDANT1_SOLICITOR', label: 'Defendant 1 Solicitor', user: 'respondent1Solicitor' },
+      { name: 'UPLOAD_MEDIATION_DOCUMENTS_DEFENDANT2_SOLICITOR', label: 'Defendant 2 Solicitor', user: 'respondent2Solicitor', defendant2: true },
+    ] as const;
+    return solicitors.map((solicitor, index) => ({
+      group: 'UPLOAD_MEDIATION_DOCUMENTS',
+      name: solicitor.name,
+      title: `${solicitor.label} uploads mediation documents.`,
+      user: solicitor.user,
+      invalidIf: index > 0 ? undefined : () => [
+        [c.track !== claimTrack.SMALL, 'UPLOAD_MEDIATION_DOCUMENTS=Yes needs TRACK=SMALL_CLAIM: only a specified small claim goes to mediation'],
+        [c.defaultJudgment === yesNo.YES, 'UPLOAD_MEDIATION_DOCUMENTS=Yes cannot be used with DEFAULT_JUDGMENT=Yes: the claim never goes to mediation'],
+        [c.mediationSuccessful === yesNo.YES, 'UPLOAD_MEDIATION_DOCUMENTS=Yes cannot be used with MEDIATION_SUCCESSFUL=Yes: the documents are for unsuccessful mediation, and a settled claim is stayed'],
+        [
+          noMediation.some(([skipped]) => skipped),
+          `UPLOAD_MEDIATION_DOCUMENTS=Yes needs the claimant's response to take the small claim to mediation, with every defendant represented: ${noMediation.filter(([skipped]) => skipped).map(([, reason]) => reason).join('; ')}`,
+        ],
+      ],
+      skipIf: [
+        ...noMediation,
+        [c.mediationSuccessful === yesNo.YES, 'Skipping as mediation was successful (MEDIATION_SUCCESSFUL=Yes)'],
+        ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
+      ],
+      run: async ({ page, storageState, user }) => {
+        const before = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+        let chosen = '';
+        if (ctx.useApi()) {
+          chosen = await new ApiUploadMediationDocuments().submit(ctx.caseId, user);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            chosen = await new UploadMediationDocuments(page).submit();
+          });
+        }
+        const after = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+        expect(
+          countMediationDocuments(after, chosen),
+          `${solicitor.label}'s mediation documents were not added to ${chosen}`,
+        ).toEqual(countMediationDocuments(before, chosen).map((count) => count + 1));
+        await ctx.assertCaseState(caseStates.JUDICIAL_REFERRAL);
       },
     }));
   }
