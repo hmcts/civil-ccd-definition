@@ -1,3 +1,4 @@
+import moment from 'moment-business-days';
 import trackType from '../../../../enums/track.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.ts';
@@ -6,7 +7,9 @@ import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.
 // the legal adviser) through the CCD API, instead of the event's pages in XUI. As in the UI the fast and small claims
 // tracks are coded: a standard directions order on the claim's track, with civil-service's directions as they are and a
 // one hour hearing (a fast track claim without a complexity band). A noise induced hearing loss claim gets the NIHL
-// directions, which civil-service fills in completely.
+// directions, which civil-service fills in completely, and a small claim with a dispute resolution hearing (DRH) gets
+// the DRH directions (SdoR2SmallClaims), which it fills in apart from when witness statements are due: 42 days away,
+// 14 days before the hearing's first open date.
 //
 // The track page's mid event callback says which directions page follows (setSmallClaimsFlag, setFastTrackFlag, and
 // isSdoR2NewScreen for the newer pages), and the directions page's callback generates the order document the preview
@@ -14,7 +17,7 @@ import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.
 export class CreateSdo {
   private ccdApiHelper = new CcdApiHelper();
 
-  async submit(caseId: string, user: SessionUserKey, track: trackType, noiseInducedHearingLoss: boolean = false) {
+  async submit(caseId: string, user: SessionUserKey, track: trackType, noiseInducedHearingLoss: boolean = false, disputeResolutionHearing: boolean = false) {
     if (track !== trackType.FAST && track !== trackType.SMALL) {
       throw new Error(`CreateSdo only has the fast and small claims tracks coded, not ${track}`);
     }
@@ -25,7 +28,7 @@ export class CreateSdo {
       {
         page: 'ClaimsTrack',
         answers: small
-          ? { claimsTrack: 'smallClaimsTrack' }
+          ? { claimsTrack: 'smallClaimsTrack', ...(disputeResolutionHearing ? { smallClaims: ['smallClaimDisputeResolutionHearing'] } : {}) }
           : { claimsTrack: 'fastTrack', ...(noiseInducedHearingLoss ? { fastClaims: ['fastClaimNoiseInducedHearingLoss'] } : {}) },
       },
       {
@@ -33,7 +36,16 @@ export class CreateSdo {
         when: (data) => data.setSmallClaimsFlag === 'Yes' && data.isSdoR2NewScreen !== 'Yes',
         answers: (data) => ({ smallClaimsHearing: { ...data.smallClaimsHearing, time: 'ONE_HOUR' } }),
       },
-      { page: 'SdoR2SmallClaims', when: (data) => data.setSmallClaimsFlag === 'Yes' && data.isSdoR2NewScreen === 'Yes' },
+      {
+        page: 'SdoR2SmallClaims',
+        when: (data) => data.setSmallClaimsFlag === 'Yes' && data.isSdoR2NewScreen === 'Yes',
+        answers: (data) => ({
+          sdoR2SmallClaimsWitnessStatements: {
+            ...data.sdoR2SmallClaimsWitnessStatements,
+            deadlineDate: moment().add(42, 'days').format('YYYY-MM-DD'),
+          },
+        }),
+      },
       {
         page: 'FastTrack',
         when: (data) => data.setFastTrackFlag === 'Yes' && data.isSdoR2NewScreen !== 'Yes',
@@ -45,6 +57,6 @@ export class CreateSdo {
       { page: 'SdoR2FastTrack', when: (data) => data.setFastTrackFlag === 'Yes' && data.isSdoR2NewScreen === 'Yes' },
       { page: 'OrderPreview' },
     ]);
-    console.log(`CREATE_SDO (${track}${noiseInducedHearingLoss ? ', NIHL' : ''}) submitted through the API as ${user} on case ${caseId}`);
+    console.log(`CREATE_SDO (${track}${noiseInducedHearingLoss ? ', NIHL' : ''}${disputeResolutionHearing ? ', DRH' : ''}) submitted through the API as ${user} on case ${caseId}`);
   }
 }

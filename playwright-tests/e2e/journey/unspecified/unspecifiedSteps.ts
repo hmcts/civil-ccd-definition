@@ -87,6 +87,7 @@ import { withQueryManagement } from '../queryManagementSteps.ts';
 import { withRefund } from '../refundSteps.ts';
 import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
 import { notSuitableSdoSteps, withNotSuitableSdo } from '../notSuitableSdoSteps.ts';
+import { withDisputeResolutionHearing, expectDisputeResolutionHearing } from '../disputeResolutionHearing.ts';
 import NotSuitableSdo from '../../../enums/notSuitableSdo.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { unspecifiedConfig, UnspecifiedConfig } from './unspecifiedConfig.ts';
@@ -668,7 +669,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
 
     {
       name: 'CREATE_SDO',
-      title: 'Judge makes a Standard Direction Order.',
+      title: `Judge makes a Standard Direction Order${c.disputeResolutionHearing === yesNo.YES ? ' for a dispute resolution hearing' : ''}.`,
       user: 'judge',
       skipIf: [
         ...noCaseProgression(),
@@ -681,11 +682,14 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
           // It is claimed through the API version too, as the UI would.
           await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', c.sdoTaskType);
           if (!ctx.useApi()) {
-            await new CreateSdo(page).submit(ctx.caseId, c.track, c.noiseInducedHearingLoss);
+            await new CreateSdo(page).submit(ctx.caseId, c.track, c.noiseInducedHearingLoss, c.disputeResolutionHearing === yesNo.YES);
           }
         });
         if (ctx.useApi()) {
-          await new ApiCreateSdo().submit(ctx.caseId, 'judge', c.track, c.noiseInducedHearingLoss);
+          await new ApiCreateSdo().submit(ctx.caseId, 'judge', c.track, c.noiseInducedHearingLoss, c.disputeResolutionHearing === yesNo.YES);
+        }
+        if (c.disputeResolutionHearing === yesNo.YES) {
+          await expectDisputeResolutionHearing(ctx);
         }
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },
@@ -1079,6 +1083,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     });
 
   withNotSuitableSdo(steps, c.notSuitableSdo);
+  withDisputeResolutionHearing(steps, c);
 
   return steps;
 

@@ -24,6 +24,7 @@ for it, but no test calls that step.
 - `JUDGMENT_PAID_IN_FULL` (Mark judgment as paid in full), `REFER_JUDGE_DEFENCE_RECEIVED` (Refer to judge-defended claim), `SET_ASIDE_JUDGMENT` (Set aside judgment): JUDGMENT_PAID_IN_FULL=Yes, REFER_JUDGE_DEFENCE_RECEIVED=Yes, SET_ASIDE_JUDGMENT=<reason> (UI + API, spec journey, after default judgment or a judgment by admission), passed AAT on 2026-11-16: spec 1v1 default judgment UI (all three, set aside after a defence, then taken offline), spec 1v1 judgment by admission API (paid in full, refer), spec 1v2DS default judgment API (set aside made in error, then taken offline)
 - `NotSuitable_SDO` (Not suitable for SDO) and `TRANSFER_ONLINE_CASE` (Transfer online case): NOT_SUITABLE_SDO=CHANGE_LOCATION|OTHER_REASONS (UI + API, both journeys; the judge follows the directions task's "Not Suitable for SDO" link, and with CHANGE_LOCATION the hearing centre admin transfers the claim before the SDO is made at the new court), passed AAT on 2026-11-16: unspec 1v1 UI and spec 1v1 API (change of location, transfer, SDO), spec 1v1 UI and unspec 1v2DS API (other reason, offline). Transfer online case is only run after a change of location; playwright-e2e's UI case progression test also transfers a claim in CASE_PROGRESSION.
 - `UPLOAD_MEDIATION_DOCUMENTS` (Upload mediation documents): UPLOAD_MEDIATION_DOCUMENTS=Yes (UI + API, spec small claims after unsuccessful mediation; a non-attendance statement and a referred document from each solicitor, for every party they act for), passed AAT on 2026-11-16: spec small 1v2DS UI (all three solicitors), spec small 1v2SS API (Defendants 1 and 2), spec small 2v1 UI (Claimants 1 and 2)
+- Dispute resolution hearing: DISPUTE_RESOLUTION_HEARING=Yes (UI + API, both journeys; the small claims SDO lists a DRH, with the witness statement deadline filled in), passed AAT on 2026-11-16: unspec small 1v1 API to All_FINAL_ORDERS_ISSUED, unspec small 1v1 UI (judge's SDO), spec small 1v1 UI (legal adviser's SDO, then the whole journey)
 
 ## Events
 
@@ -58,12 +59,14 @@ LiPs as defendants, where solicitor-side events act for them.
 
 | Feature | playwright-e2e tests | playwright-tests |
 | --- | --- | --- |
-| Dispute resolution hearing (small claims SDO with a DRH) | `api-tests/drh` (unspec and spec) | None |
+| Dispute resolution hearing (small claims SDO with a DRH) | `api-tests/drh` (unspec and spec) | Done: DISPUTE_RESOLUTION_HEARING=Yes (both journeys, UI + API) |
 | Automated hearing notice scheduler (HMC) | `api-tests/hearings`: 4 scheduler tests, including the duplicate defendant ones | None |
 | Flight delay | `api-tests/flight-delay`, `ui-tests/flight-delay` | Partly: `AIRLINE_CLAIM` on create claim only |
 | Case offline | `api-tests/case-offline` | Done: CASE_PROCEEDS_IN_CASEMAN |
 
 ## Suggested order
 
-1. Dispute resolution hearing
-2. The rest
+1. `DISMISS_CASE` and `SEND_AND_REPLY`, which playwright-e2e runs on a stayed case, so they fit with STAY_CASE
+2. `AMEND_PARTY_DETAILS` and `ADD_OR_AMEND_CLAIM_DOCUMENTS`
+3. The general application events (`HEARING_SCHEDULED_GA`, `RESPOND_TO_JUDGE_ADDITIONAL_INFO`)
+4. The automated hearing notice scheduler and flight delay

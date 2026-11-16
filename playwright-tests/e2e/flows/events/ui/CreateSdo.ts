@@ -1,3 +1,4 @@
+import moment from 'moment-business-days';
 import { Page } from '@playwright/test';
 import { PageHelper } from '../../../../helpers/PageHelper';
 import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
@@ -10,7 +11,9 @@ import trackType from '../../../../enums/track.ts';
 // For a noise induced hearing loss (NIHL) claim the judge chooses the NIHL directions, which have their own page
 // (SdoR2FastTrack). civil-service fills in its directions, hearing method and trial court, so they are kept as they are.
 // For a small claim civil-service likewise fills in the directions, an in person hearing and the court, leaving the
-// hearing's time estimate.
+// hearing's time estimate. A dispute resolution hearing (DRH, "Dispute resolution hearing" among the small claims
+// directions) has its own page (SdoR2SmallClaims), which civil-service fills in apart from the date witness statements
+// are due: a hearing at the first open date 56 days away, so the statements are due 42 days away (14 days before it).
 export class CreateSdo {
   private buttonHelper: ButtonHelper;
   private pageHelper: PageHelper;
@@ -20,7 +23,7 @@ export class CreateSdo {
     this.pageHelper = new PageHelper(this.page);
   }
 
-  async submit(caseId: string, track: trackType, noiseInducedHearingLoss: boolean = false) {
+  async submit(caseId: string, track: trackType, noiseInducedHearingLoss: boolean = false, disputeResolutionHearing: boolean = false) {
     if (track !== trackType.FAST && track !== trackType.SMALL) {
       throw new Error(`CreateSdo only has the fast and small claims tracks coded, not ${track}`);
     }
@@ -33,7 +36,19 @@ export class CreateSdo {
     // Track
     if (track === trackType.SMALL) {
       await this.page.locator('#claimsTrack-smallClaimsTrack').check();
+      if (disputeResolutionHearing) {
+        await this.page.locator('#smallClaims-smallClaimDisputeResolutionHearing').check();
+      }
       await this.pageHelper.continueToNextPage();
+
+      if (disputeResolutionHearing) {
+        // Dispute resolution hearing directions: filled in already apart from when witness statements are due
+        await this.page.locator('[id^="sdoR2SmallClaimsJudgesRecital"]').first().waitFor({ state: 'visible' });
+        await this.pageHelper.fillDate('deadlineDate', moment().add(42, 'days'));
+        await this.pageHelper.continueToNextPage();
+        await this.previewAndSubmit();
+        return;
+      }
 
       // Small claims directions: a one hour hearing
       await this.page.locator('#smallClaimsHearing_time-ONE_HOUR').check();

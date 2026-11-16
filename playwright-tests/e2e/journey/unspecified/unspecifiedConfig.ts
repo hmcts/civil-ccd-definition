@@ -244,6 +244,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // transfers it to before the order is made there, or another reason (OTHER_REASONS), which takes the claim offline.
     // Not used by default.
     notSuitableSdo: scenarioEnv.NOT_SUITABLE_SDO as NotSuitableSdo | undefined,
+    // Whether the small claims Standard Direction Order lists a dispute resolution hearing (DRH) instead of a small
+    // claims hearing (DISPUTE_RESOLUTION_HEARING=Yes, default No; needs TRACK=SMALL_CLAIM)
+    disputeResolutionHearing: yes(scenarioEnv.DISPUTE_RESOLUTION_HEARING),
     // Whether the claimant's solicitor asks for default judgment once the claim is waiting for the defendants: the
     // response deadlines are moved to yesterday, as if the time for responding had passed, and the steps for the
     // defendants' responses and everything after them are skipped, apart from settling or discontinuing the claim

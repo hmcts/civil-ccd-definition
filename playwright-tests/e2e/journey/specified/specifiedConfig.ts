@@ -227,6 +227,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // hearing centre admin then transfers it to before the order is made there, or another reason (OTHER_REASONS),
     // which takes the claim offline. Not used by default.
     notSuitableSdo: scenarioEnv.NOT_SUITABLE_SDO as NotSuitableSdo | undefined,
+    // Whether the small claims Standard Direction Order lists a dispute resolution hearing (DRH) instead of a small
+    // claims hearing (DISPUTE_RESOLUTION_HEARING=Yes, default No; needs TRACK=SMALL_CLAIM)
+    disputeResolutionHearing: yes(scenarioEnv.DISPUTE_RESOLUTION_HEARING),
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),

@@ -85,6 +85,7 @@ import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
 import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
 import { notSuitableSdoSteps, withNotSuitableSdo } from '../notSuitableSdoSteps.ts';
+import { withDisputeResolutionHearing, expectDisputeResolutionHearing } from '../disputeResolutionHearing.ts';
 import { UploadMediationDocuments } from '../../flows/events/ui/UploadMediationDocuments.ts';
 import { UploadMediationDocuments as ApiUploadMediationDocuments } from '../../flows/events/api/UploadMediationDocuments.ts';
 import { countMediationDocuments } from '../../flows/events/shared_api_ui/uploadMediationDocumentsSpecs.ts';
@@ -534,7 +535,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     // unsuccessful mediation, and work allocation gives its directions task to a legal adviser rather than a judge.
     {
       name: 'CREATE_SDO',
-      title: `${c.track === claimTrack.SMALL ? 'Legal Adviser' : 'Judge'} makes a Standard Direction Order.`,
+      title: `${c.track === claimTrack.SMALL ? 'Legal Adviser' : 'Judge'} makes a Standard Direction Order${c.disputeResolutionHearing === yesNo.YES ? ' for a dispute resolution hearing' : ''}.`,
       user: c.track === claimTrack.SMALL ? 'legalAdviser' : 'judge',
       skipIf: [
         noLitigantInPerson,
@@ -549,11 +550,14 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
           // claimed through the API version too, as the UI would.
           await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', c.track === claimTrack.SMALL ? 'LegalAdvisorSmallClaimsTrackDirections' : 'FastTrackDirections');
           if (!ctx.useApi()) {
-            await new CreateSdo(page).submit(ctx.caseId, c.track);
+            await new CreateSdo(page).submit(ctx.caseId, c.track, false, c.disputeResolutionHearing === yesNo.YES);
           }
         });
         if (ctx.useApi()) {
-          await new ApiCreateSdo().submit(ctx.caseId, user, c.track);
+          await new ApiCreateSdo().submit(ctx.caseId, user, c.track, false, c.disputeResolutionHearing === yesNo.YES);
+        }
+        if (c.disputeResolutionHearing === yesNo.YES) {
+          await expectDisputeResolutionHearing(ctx);
         }
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },
@@ -1011,6 +1015,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     });
 
   withNotSuitableSdo(steps, c.notSuitableSdo);
+  withDisputeResolutionHearing(steps, c);
 
   return steps;
 
