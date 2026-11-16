@@ -84,6 +84,8 @@ import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
 import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
+import { notSuitableSdoSteps, withNotSuitableSdo } from '../notSuitableSdoSteps.ts';
+import NotSuitableSdo from '../../../enums/notSuitableSdo.ts';
 import { withRefund } from '../refundSteps.ts';
 import { specifiedConfig, SpecifiedConfig } from './specifiedConfig.ts';
 
@@ -511,6 +513,16 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
+    // The judge (or, for a small claim, the legal adviser) decides the claim is not suitable for a Standard Direction
+    // Order, and with CHANGE_LOCATION the hearing centre admin transfers it to another hearing centre, whose directions
+    // task CREATE_SDO then uses (NOT_SUITABLE_SDO, see notSuitableSdoSteps.ts)
+    ...notSuitableSdoSteps(
+      c.notSuitableSdo,
+      ctx,
+      c.track === claimTrack.SMALL ? 'legalAdviser' : 'judge',
+      c.track === claimTrack.SMALL ? 'LegalAdvisorSmallClaimsTrackDirections' : 'FastTrackDirections',
+    ),
+
     // The Standard Direction Order (fast track and small claims) or a directions order (intermediate and multi track),
     // once the claim is in JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim gets there after
     // unsuccessful mediation, and work allocation gives its directions task to a legal adviser rather than a judge.
@@ -934,6 +946,9 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     if (c.defaultJudgment === yesNo.YES) {
       return undefined;
     }
+    if (c.notSuitableSdo === NotSuitableSdo.OTHER_REASONS) {
+      return caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
+    }
     const orderReview = steps.find((step) => step.name === 'CONFIRM_ORDER_REVIEW');
     if (!orderReview?.skipIf?.some(([skipped]) => skipped)) {
       return caseStates.All_FINAL_ORDERS_ISSUED;
@@ -988,6 +1003,8 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     .forEach((step) => {
       step.skipIf = [...(step.skipIf ?? []), afterDefaultJudgment];
     });
+
+  withNotSuitableSdo(steps, c.notSuitableSdo);
 
   return steps;
 

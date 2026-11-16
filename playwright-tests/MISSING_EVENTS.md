@@ -22,6 +22,7 @@ for it, but no test calls that step.
 - `ADD_UNAVAILABLE_DATES`: ADD_UNAVAILABLE_DATES=Yes (UI + API, both journeys), passed AAT unspec 1v2DS UI and spec 1v2SS small claim API on 2026-11-06
 - `CASE_PROCEEDS_IN_CASEMAN` (Case proceeds in Caseman): CASE_PROCEEDS_IN_CASEMAN=<reason> (UI + API, both journeys), passed AAT unspec 1v1 UI and API and spec 1v1 UI and API on 2026-11-12
 - `JUDGMENT_PAID_IN_FULL` (Mark judgment as paid in full), `REFER_JUDGE_DEFENCE_RECEIVED` (Refer to judge-defended claim), `SET_ASIDE_JUDGMENT` (Set aside judgment): JUDGMENT_PAID_IN_FULL=Yes, REFER_JUDGE_DEFENCE_RECEIVED=Yes, SET_ASIDE_JUDGMENT=<reason> (UI + API, spec journey, after default judgment or a judgment by admission), passed AAT on 2026-11-16: spec 1v1 default judgment UI (all three, set aside after a defence, then taken offline), spec 1v1 judgment by admission API (paid in full, refer), spec 1v2DS default judgment API (set aside made in error, then taken offline)
+- `NotSuitable_SDO` (Not suitable for SDO) and `TRANSFER_ONLINE_CASE` (Transfer online case): NOT_SUITABLE_SDO=CHANGE_LOCATION|OTHER_REASONS (UI + API, both journeys; the judge follows the directions task's "Not Suitable for SDO" link, and with CHANGE_LOCATION the hearing centre admin transfers the claim before the SDO is made at the new court), passed AAT on 2026-11-16: unspec 1v1 UI and spec 1v1 API (change of location, transfer, SDO), spec 1v1 UI and unspec 1v2DS API (other reason, offline). Transfer online case is only run after a change of location; playwright-e2e's UI case progression test also transfers a claim in CASE_PROGRESSION.
 
 ## Events
 
@@ -29,8 +30,6 @@ for it, but no test calls that step.
 
 | Next step | Event ID | Who | Notes |
 | --- | --- | --- | --- |
-| Not suitable for SDO | `NotSuitable_SDO` | Judge | Change location, other reason, small claims transfer |
-| Transfer online case | `TRANSFER_ONLINE_CASE` | Hearing centre admin, caseworker | |
 | Dismiss case | `DISMISS_CASE` | Hearing centre admin | |
 | Send and reply to messages | `SEND_AND_REPLY` | Hearing centre admin, WLU admin, judge | Messages between staff and judges |
 | Amend party details | `AMEND_PARTY_DETAILS` | Hearing centre admin | |
@@ -66,7 +65,6 @@ LiPs as defendants, where solicitor-side events act for them.
 
 ## Suggested order
 
-1. Not suitable for SDO (`NotSuitable_SDO`)
-2. `UPLOAD_MEDIATION_DOCUMENTS`
-3. Dispute resolution hearing
-4. The rest
+1. `UPLOAD_MEDIATION_DOCUMENTS`
+2. Dispute resolution hearing
+3. The rest

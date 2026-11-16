@@ -86,6 +86,8 @@ import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
 import { withRefund } from '../refundSteps.ts';
 import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
+import { notSuitableSdoSteps, withNotSuitableSdo } from '../notSuitableSdoSteps.ts';
+import NotSuitableSdo from '../../../enums/notSuitableSdo.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { unspecifiedConfig, UnspecifiedConfig } from './unspecifiedConfig.ts';
 
@@ -659,6 +661,11 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       },
     },
 
+    // The judge decides the claim is not suitable for a Standard Direction Order, and with CHANGE_LOCATION the hearing
+    // centre admin transfers it to another hearing centre, whose directions task CREATE_SDO then uses (NOT_SUITABLE_SDO,
+    // see notSuitableSdoSteps.ts)
+    ...notSuitableSdoSteps(c.notSuitableSdo, ctx, 'judge', c.sdoTaskType),
+
     {
       name: 'CREATE_SDO',
       title: 'Judge makes a Standard Direction Order.',
@@ -1020,6 +1027,9 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     if (c.defaultJudgment === yesNo.YES) {
       return caseStates.CASE_PROGRESSION;
     }
+    if (c.notSuitableSdo === NotSuitableSdo.OTHER_REASONS) {
+      return caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
+    }
     const orderReview = steps.find((step) => step.name === 'CONFIRM_ORDER_REVIEW');
     if (!orderReview?.skipIf?.some(([skipped]) => skipped)) {
       return caseStates.All_FINAL_ORDERS_ISSUED;
@@ -1067,6 +1077,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     .forEach((step) => {
       step.skipIf = [...(step.skipIf ?? []), afterDefaultJudgment];
     });
+
+  withNotSuitableSdo(steps, c.notSuitableSdo);
 
   return steps;
 

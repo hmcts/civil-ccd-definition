@@ -14,6 +14,7 @@ import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
 import SettleClaim from '../../../enums/settleClaim.ts';
 import DiscontinueClaim from '../../../enums/discontinueClaim.ts';
 import CaseProceedsInCaseman from '../../../enums/caseProceedsInCaseman.ts';
+import NotSuitableSdo from '../../../enums/notSuitableSdo.ts';
 import fixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
 import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
 import caseStates from '../../../enums/caseStates.ts';
@@ -238,6 +239,11 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // JUDGEMENT_REQUEST, CASE_SETTLED or OTHER). civil-service moves the claim to PROCEEDS_IN_HERITAGE_SYSTEM. Not taken
     // offline by default.
     caseProceedsInCaseman: scenarioEnv.CASE_PROCEEDS_IN_CASEMAN as CaseProceedsInCaseman | undefined,
+    // Whether the judge decides the claim is not suitable for a Standard Direction Order instead of making one: it
+    // should go to another hearing centre (NOT_SUITABLE_SDO=CHANGE_LOCATION), which the hearing centre admin then
+    // transfers it to before the order is made there, or another reason (OTHER_REASONS), which takes the claim offline.
+    // Not used by default.
+    notSuitableSdo: scenarioEnv.NOT_SUITABLE_SDO as NotSuitableSdo | undefined,
     // Whether the claimant's solicitor asks for default judgment once the claim is waiting for the defendants: the
     // response deadlines are moved to yesterday, as if the time for responding had passed, and the steps for the
     // defendants' responses and everything after them are skipped, apart from settling or discontinuing the claim
@@ -354,6 +360,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
         [undefined, ...Object.values(CaseProceedsInCaseman).filter((reason) => reason !== CaseProceedsInCaseman.DEFENDANT_DOES_NOT_CONSENT)],
         `Invalid CASE_PROCEEDS_IN_CASEMAN value: ${scenarioEnv.CASE_PROCEEDS_IN_CASEMAN}. It must be one of ${Object.values(CaseProceedsInCaseman).filter((reason) => reason !== CaseProceedsInCaseman.DEFENDANT_DOES_NOT_CONSENT).join(', ')} (DEFENDANT_DOES_NOT_CONSENT is only offered on a specified claim).`,
       ).toContain(scenarioEnv.CASE_PROCEEDS_IN_CASEMAN);
+      expect(
+        [undefined, ...Object.values(NotSuitableSdo)],
+        `Invalid NOT_SUITABLE_SDO value: ${scenarioEnv.NOT_SUITABLE_SDO}. It must be one of ${Object.values(NotSuitableSdo).join(', ')}.`,
+      ).toContain(scenarioEnv.NOT_SUITABLE_SDO);
       expect(
         [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN].filter((setting) => setting !== undefined).length <= 1,
         'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM and CASE_PROCEEDS_IN_CASEMAN can be set: each one closes the claim.',

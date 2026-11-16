@@ -15,6 +15,7 @@ import SettleClaim from '../../../enums/settleClaim.ts';
 import DiscontinueClaim from '../../../enums/discontinueClaim.ts';
 import CaseProceedsInCaseman from '../../../enums/caseProceedsInCaseman.ts';
 import { SetAsideJudgment } from '../../../enums/judgmentsOnline.ts';
+import NotSuitableSdo from '../../../enums/notSuitableSdo.ts';
 import { ReconsiderationDecision, RequestForReconsiderationBy } from '../../../enums/reconsideration.ts';
 import { createClaimShape } from '../../flows/createClaimShape.ts';
 import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
@@ -217,6 +218,11 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     judgmentPaidInFull: yes(scenarioEnv.JUDGMENT_PAID_IN_FULL),
     referJudgeDefenceReceived: yes(scenarioEnv.REFER_JUDGE_DEFENCE_RECEIVED),
     setAsideJudgment: scenarioEnv.SET_ASIDE_JUDGMENT as SetAsideJudgment | undefined,
+    // Whether the judge (the legal adviser for a small claim) decides the claim is not suitable for a Standard Direction
+    // Order instead of making one: it should go to another hearing centre (NOT_SUITABLE_SDO=CHANGE_LOCATION), which the
+    // hearing centre admin then transfers it to before the order is made there, or another reason (OTHER_REASONS),
+    // which takes the claim offline. Not used by default.
+    notSuitableSdo: scenarioEnv.NOT_SUITABLE_SDO as NotSuitableSdo | undefined,
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
@@ -355,6 +361,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN].filter((setting) => setting !== undefined).length <= 1,
         'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM and CASE_PROCEEDS_IN_CASEMAN can be set: each one closes the claim.',
       ).toBeTruthy();
+      expect(
+        [undefined, ...Object.values(NotSuitableSdo)],
+        `Invalid NOT_SUITABLE_SDO value: ${scenarioEnv.NOT_SUITABLE_SDO}. It must be one of ${Object.values(NotSuitableSdo).join(', ')}.`,
+      ).toContain(scenarioEnv.NOT_SUITABLE_SDO);
       expect(
         [undefined, ...Object.values(SetAsideJudgment)],
         `Invalid SET_ASIDE_JUDGMENT value: ${scenarioEnv.SET_ASIDE_JUDGMENT}. It must be one of ${Object.values(SetAsideJudgment).join(', ')}.`,
