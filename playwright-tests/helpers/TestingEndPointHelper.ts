@@ -566,6 +566,87 @@ export class TestingEndPointHelper {
     }
   }
 
+  // Starts one of civil-service's Camunda processes by its key (a scheduler's, for example) and returns the new
+  // process instance's ID
+  async triggerCamundaProcess(processKey: string, variables: Record<string, unknown> = {}): Promise<string> {
+    await this.getTokens(civilSystemUpdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.post(`${this.testingSupportUrl}/trigger-camunda-process`, {
+        headers: this.getHeaders(),
+        data: { name: processKey, variables },
+      });
+      expect(response.ok(), `Starting Camunda process ${processKey} returned ${response.status()}: ${await response.text()}`).toBeTruthy();
+      const { id } = await response.json();
+      expect(id, `Starting Camunda process ${processKey} gave no process instance ID`).toBeTruthy();
+      console.log(`Camunda process ${processKey} started (${id})`);
+      return id;
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // civil-service's Camunda process instances, finished ones included, picked by any of: instance ID, process key, and
+  // variables in Camunda's form (hearingId_eq_1234567890)
+  async camundaProcesses(filter: { processInstanceId?: string; definitionKey?: string; variables?: string }): Promise<Array<{ id: string; state: string }>> {
+    await this.getTokens(civilSystemUpdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const params = Object.fromEntries(Object.entries(filter).filter(([, value]) => value !== undefined));
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/camunda-processes`, { headers: this.getHeaders(), params });
+      expect(response.ok(), `Reading Camunda processes (${JSON.stringify(params)}) returned ${response.status()}`).toBeTruthy();
+      return await response.json();
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Waits for a Camunda process instance to reach COMPLETED, failing if it ends any other way. Returns false if no
+  // matching instance has started within startWaitSeconds.
+  async waitForCamundaProcessCompleted(filter: { processInstanceId?: string; definitionKey?: string; variables?: string }, startWaitSeconds = apiRetries.timeout / 1000): Promise<boolean> {
+    const description = JSON.stringify(filter);
+    const started = Date.now();
+    let state: string | undefined;
+    await expect.poll(async () => {
+      const processes = await this.camundaProcesses(filter);
+      state = processes.find((process) => process.state === 'COMPLETED')?.state ?? processes[0]?.state;
+      if (state && !['ACTIVE', 'COMPLETED'].includes(state)) {
+        throw new Error(`Camunda process ${description} ended as ${state}`);
+      }
+      return state === 'COMPLETED' || (!state && Date.now() - started >= startWaitSeconds * 1000);
+    }, {
+      message: `Camunda process ${description} did not complete (last state ${state ?? 'not started'})`,
+      intervals: [1000, 2000, 5000, 10000],
+      timeout: apiRetries.timeout,
+    }).toBeTruthy();
+    return state === 'COMPLETED';
+  }
+
+  // The names of civil-service's Spring schedulers, which can stand in for its Camunda schedulers
+  async springSchedulers(): Promise<string[]> {
+    await this.getTokens(civilSystemUpdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/schedulers`, { headers: this.getHeaders() });
+      return response.ok() ? await response.json() : [];
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
+  // Runs one of civil-service's Spring schedulers now
+  async runSpringScheduler(name: string) {
+    await this.getTokens(civilSystemUpdate);
+    const apiRequestContext: APIRequestContext = await request.newContext();
+    try {
+      const response = await apiRequestContext.get(`${this.testingSupportUrl}/run-scheduler/${name}`, { headers: this.getHeaders() });
+      expect(response.ok(), `Running scheduler ${name} returned ${response.status()}: ${await response.text()}`).toBeTruthy();
+      console.log(`Scheduler ${name} run`);
+    } finally {
+      await apiRequestContext.dispose();
+    }
+  }
+
   // Runs a CCD event on the case as the civil system update user, as civil-service's schedulers do
   private async runSystemEvent(caseId: string, eventId: string, summary: string) {
     const { accessToken, s2sToken, uid } = await this.tokensHelper.getNonEventTokens(civilSystemUpdate);

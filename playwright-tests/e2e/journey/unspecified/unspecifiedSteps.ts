@@ -27,6 +27,8 @@ import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
 import { UploadEvidence as ApiUploadEvidence } from '../../flows/events/api/UploadEvidence.ts';
 import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
 import { CreateHearingNotice as ApiCreateHearingNotice } from '../../flows/events/api/CreateHearingNotice.ts';
+import { AutomatedHearingNotice } from '../../flows/events/api/AutomatedHearingNotice.ts';
+import { runHearingNoticeScheduler } from '../hearingNoticeScheduler.ts';
 import { ConfirmTrialArrangements } from '../../flows/events/ui/ConfirmTrialArrangements.ts';
 import { ConfirmTrialArrangements as ApiConfirmTrialArrangements } from '../../flows/events/api/ConfirmTrialArrangements.ts';
 import { MakeFinalOrder } from '../../flows/events/ui/MakeFinalOrder.ts';
@@ -800,10 +802,19 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     // hearing, and moves the claim to HEARING_READINESS for the hearing fee.
     {
       name: 'CREATE_HEARING_NOTICE',
-      title: 'Hearing Centre Admin creates a hearing notice.',
+      title: c.hearingNoticeScheduler === yesNo.YES && AutomatedHearingNotice.isAvailable()
+        ? 'HMC lists the trial and the automated hearing notice scheduler sends the hearing notice.'
+        : 'Hearing Centre Admin creates a hearing notice.',
       user: 'hearingCentreAdmin',
       skipIf: noCaseProgression(),
       run: async ({ page, storageState }) => {
+        if (c.hearingNoticeScheduler === yesNo.YES && AutomatedHearingNotice.isAvailable()) {
+          await runHearingNoticeScheduler(ctx, 'unspec', c.track);
+          return;
+        }
+        if (c.hearingNoticeScheduler === yesNo.YES) {
+          console.warn('WARNING: HEARING_NOTICE_SCHEDULER=Yes needs a civil-service PR preview (ENV=preview PREVIEW_SERVICE=service), where HMC is WireMock. The hearing centre admin creates the hearing notice instead.');
+        }
         if (ctx.useApi()) {
           await new ApiCreateHearingNotice().submit(ctx.caseId, c.track);
         } else {

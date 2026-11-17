@@ -260,6 +260,11 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whether the small claims Standard Direction Order lists a dispute resolution hearing (DRH) instead of a small
     // claims hearing (DISPUTE_RESOLUTION_HEARING=Yes, default No; needs TRACK=SMALL_CLAIM)
     disputeResolutionHearing: yes(scenarioEnv.DISPUTE_RESOLUTION_HEARING),
+    // Whether civil-service's automated hearing notice scheduler lists the hearing instead of the hearing centre admin's
+    // hearing notice: HMC (WireMock) returns a LISTED trial and the scheduler sends the notice (HEARING_NOTICE_SCHEDULER=Yes,
+    // default No). Only on a civil-service PR preview, which has WireMock; elsewhere the admin's notice is used, with a
+    // warning.
+    hearingNoticeScheduler: yes(scenarioEnv.HEARING_NOTICE_SCHEDULER),
     // Whether the claimant's solicitor asks for default judgment once the claim is waiting for the defendants: the
     // response deadlines are moved to yesterday, as if the time for responding had passed, and the steps for the
     // defendants' responses and everything after them are skipped, apart from settling or discontinuing the claim
@@ -399,6 +404,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
         [undefined, 'Yes', 'No'],
         `Invalid SEND_AND_REPLY value: ${scenarioEnv.SEND_AND_REPLY}. It must be Yes or No.`,
       ).toContain(scenarioEnv.SEND_AND_REPLY);
+      expect(
+        [undefined, 'Yes', 'No'],
+        `Invalid HEARING_NOTICE_SCHEDULER value: ${scenarioEnv.HEARING_NOTICE_SCHEDULER}. It must be Yes or No.`,
+      ).toContain(scenarioEnv.HEARING_NOTICE_SCHEDULER);
       expect(
         [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN, scenarioEnv.DISMISS_CASE === 'Yes' ? 'Yes' : undefined]
           .filter((setting) => setting !== undefined).length <= 1,

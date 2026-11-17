@@ -246,6 +246,11 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // Whether the small claims Standard Direction Order lists a dispute resolution hearing (DRH) instead of a small
     // claims hearing (DISPUTE_RESOLUTION_HEARING=Yes, default No; needs TRACK=SMALL_CLAIM)
     disputeResolutionHearing: yes(scenarioEnv.DISPUTE_RESOLUTION_HEARING),
+    // Whether civil-service's automated hearing notice scheduler lists the hearing instead of the hearing centre admin's
+    // hearing notice: HMC (WireMock) returns a LISTED trial and the scheduler sends the notice (HEARING_NOTICE_SCHEDULER=Yes,
+    // default No). Only on a civil-service PR preview, which has WireMock; elsewhere the admin's notice is used, with a
+    // warning.
+    hearingNoticeScheduler: yes(scenarioEnv.HEARING_NOTICE_SCHEDULER),
     // Whether each defendant's solicitor informs the court of an agreed extension to the time for responding
     // (INFORM_AGREED_EXTENSION=Yes, default No)
     informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
@@ -395,6 +400,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         [undefined, 'Yes', 'No'],
         `Invalid SEND_AND_REPLY value: ${scenarioEnv.SEND_AND_REPLY}. It must be Yes or No.`,
       ).toContain(scenarioEnv.SEND_AND_REPLY);
+      expect(
+        [undefined, 'Yes', 'No'],
+        `Invalid HEARING_NOTICE_SCHEDULER value: ${scenarioEnv.HEARING_NOTICE_SCHEDULER}. It must be Yes or No.`,
+      ).toContain(scenarioEnv.HEARING_NOTICE_SCHEDULER);
       expect(
         [undefined, 'Yes', 'No', 'OTHER'],
         `Invalid AIRLINE_CLAIM value: ${scenarioEnv.AIRLINE_CLAIM}. It must be Yes, No or OTHER.`,

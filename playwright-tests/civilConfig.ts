@@ -213,6 +213,13 @@ export const workAllocation = {
   waitSeconds: Number(process.env.WA_TASK_WAIT_SECONDS ?? 60),
 }
 
+// The WireMock a civil-service PR preview points HMC (and some other services) at, from WIREMOCK_URL. Only
+// civil-service previews have one, at an address that follows the XUI one (xui-civil-service-pr-8515... becomes
+// wiremock-civil-service-pr-8515...). Everywhere else it is undefined, so nothing that needs WireMock runs there: on AAT
+// and the other previews HMC is the real AAT one, shared with other teams.
+export const wiremockUrl: string | undefined = process.env.WIREMOCK_URL
+  || ((envUrl ?? '').includes('://xui-civil-service-pr-') ? previewHost('wiremock') : undefined);
+
 // How hard to try when the document store rate limits an upload: how many attempts in total, and the wait before
 // the first retry in seconds. Each later retry waits longer (wait x attempt number), so the defaults of 5 attempts
 // and 5 seconds wait up to 50 seconds in all. Override with UPLOAD_RETRY_ATTEMPTS and UPLOAD_RETRY_WAIT_SECONDS.

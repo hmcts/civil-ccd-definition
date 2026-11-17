@@ -46,10 +46,7 @@ LiPs as defendants, where solicitor-side events act for them.
 | Feature | playwright-e2e tests | playwright-tests |
 | --- | --- | --- |
 | Dispute resolution hearing (small claims SDO with a DRH) | `api-tests/drh` (unspec and spec) | Done: DISPUTE_RESOLUTION_HEARING=Yes (both journeys, UI + API) |
-| Automated hearing notice scheduler (HMC) | `api-tests/hearings`: 4 scheduler tests, including the duplicate defendant ones | None |
+| Automated hearing notice scheduler (HMC) | `api-tests/hearings`: 4 scheduler tests, including the duplicate defendant ones | HEARING_NOTICE_SCHEDULER=Yes (both journeys, civil-service PR previews only, where HMC is WireMock): one LISTED trial. The duplicate notice and relisting cases are not covered |
 | Flight delay | `api-tests/flight-delay`, `ui-tests/flight-delay` | Done: AIRLINE_CLAIM=Yes or OTHER (spec, UI + API): the airline's or claimant's court, and the judge's flight delay SDO on small claims |
 | Case offline | `api-tests/case-offline` | Done: CASE_PROCEEDS_IN_CASEMAN |
 
-## Suggested order
-
-1. The automated hearing notice scheduler
