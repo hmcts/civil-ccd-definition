@@ -14,6 +14,8 @@ import trackType from '../../../../enums/track.ts';
 // hearing's time estimate. A dispute resolution hearing (DRH, "Dispute resolution hearing" among the small claims
 // directions) has its own page (SdoR2SmallClaims), which civil-service fills in apart from the date witness statements
 // are due: a hearing at the first open date 56 days away, so the statements are due 42 days away (14 days before it).
+// For a flight delay claim the judge also chooses "Flight Delay" among the small claims directions, which adds the
+// related claims and legal arguments directions to the small claims page, filled in by civil-service.
 export class CreateSdo {
   private buttonHelper: ButtonHelper;
   private pageHelper: PageHelper;
@@ -23,7 +25,7 @@ export class CreateSdo {
     this.pageHelper = new PageHelper(this.page);
   }
 
-  async submit(caseId: string, track: trackType, noiseInducedHearingLoss: boolean = false, disputeResolutionHearing: boolean = false) {
+  async submit(caseId: string, track: trackType, noiseInducedHearingLoss: boolean = false, disputeResolutionHearing: boolean = false, flightDelay: boolean = false) {
     if (track !== trackType.FAST && track !== trackType.SMALL) {
       throw new Error(`CreateSdo only has the fast and small claims tracks coded, not ${track}`);
     }
@@ -39,6 +41,9 @@ export class CreateSdo {
       if (disputeResolutionHearing) {
         await this.page.locator('#smallClaims-smallClaimDisputeResolutionHearing').check();
       }
+      if (flightDelay) {
+        await this.page.locator('#smallClaims-smallClaimFlightDelay').check();
+      }
       await this.pageHelper.continueToNextPage();
 
       if (disputeResolutionHearing) {
@@ -50,7 +55,10 @@ export class CreateSdo {
         return;
       }
 
-      // Small claims directions: a one hour hearing
+      // Small claims directions: a one hour hearing (and for a flight delay claim, its directions, filled in already)
+      if (flightDelay) {
+        await this.page.locator('#smallClaimsFlightDelay_relatedClaimsInput').waitFor({ state: 'visible' });
+      }
       await this.page.locator('#smallClaimsHearing_time-ONE_HOUR').check();
       await this.pageHelper.continueToNextPage();
       await this.previewAndSubmit();

@@ -6,7 +6,7 @@ import { legalRepresentatives } from '../../../../../fixtures/legalRepresentativ
 import { claimantSolicitorCredentials } from '../../../../../civilConfig.ts';
 import { Fee } from '../../../../../helpers/FeesHelper.ts';
 import { ClaimantShape, DefendantShape } from '../../../createClaimShape.ts';
-import { specClaimAmountInPounds, specClaimText } from '../../../createSpecifiedCase.ts';
+import { OTHER_AIRLINE_NAME, specClaimAmountInPounds, specClaimText } from '../../../createSpecifiedCase.ts';
 import { InterestType, SpecifiedConfig } from '../../../../journey/specified/specifiedConfig.ts';
 import { party } from './createClaimPayload.ts';
 
@@ -120,17 +120,20 @@ function defendantSolicitor(defendantNumber: number, orgId: string) {
   };
 }
 
-// Whether the claim is for a delayed flight, and if so its airline, flight number and date. The list of airlines is
-// made by the page's mid event callback, which is not run, so the list holds only the chosen airline.
+// Whether the claim is for a delayed flight, and if so its airline (Jet2.com, or OTHER with the airline's name), flight
+// number and date. The list of airlines is made by the page's mid event callback, which is not run, so the list holds
+// only the chosen airline. civil-service works out the airline's court (flightCourtLocation) when the claim is
+// submitted, and leaves it empty for OTHER.
 function flightDelay(c: SpecifiedConfig) {
   if (c.airlineClaim === yesNo.NO) {
     return { isFlightDelayClaim: yesNo.NO };
   }
-  const jet2 = { code: 'Jet2.com', label: 'Jet2.com' };
+  const airline = c.otherAirline ? { code: 'OTHER', label: 'OTHER' } : { code: 'Jet2.com', label: 'Jet2.com' };
   return {
     isFlightDelayClaim: yesNo.YES,
     flightDelayDetails: {
-      airlineList: { list_items: [jet2], value: jet2 },
+      airlineList: { list_items: [airline], value: airline },
+      ...(c.otherAirline ? { nameOfAirline: OTHER_AIRLINE_NAME } : {}),
       flightNumber: 'ABC1234',
       scheduledDate: moment().subtract(1, 'month').format('YYYY-MM-DD'),
     },

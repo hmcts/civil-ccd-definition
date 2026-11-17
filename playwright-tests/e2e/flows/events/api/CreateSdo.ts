@@ -9,7 +9,8 @@ import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.
 // one hour hearing (a fast track claim without a complexity band). A noise induced hearing loss claim gets the NIHL
 // directions, which civil-service fills in completely, and a small claim with a dispute resolution hearing (DRH) gets
 // the DRH directions (SdoR2SmallClaims), which it fills in apart from when witness statements are due: 42 days away,
-// 14 days before the hearing's first open date.
+// 14 days before the hearing's first open date. A flight delay claim's order also has the flight delay directions
+// ("Flight Delay" among the small claims directions), which civil-service fills in.
 //
 // The track page's mid event callback says which directions page follows (setSmallClaimsFlag, setFastTrackFlag, and
 // isSdoR2NewScreen for the newer pages), and the directions page's callback generates the order document the preview
@@ -17,7 +18,7 @@ import { sessionUsers, SessionUserKey } from '../../../../helpers/SessionHelper.
 export class CreateSdo {
   private ccdApiHelper = new CcdApiHelper();
 
-  async submit(caseId: string, user: SessionUserKey, track: trackType, noiseInducedHearingLoss: boolean = false, disputeResolutionHearing: boolean = false) {
+  async submit(caseId: string, user: SessionUserKey, track: trackType, noiseInducedHearingLoss: boolean = false, disputeResolutionHearing: boolean = false, flightDelay: boolean = false) {
     if (track !== trackType.FAST && track !== trackType.SMALL) {
       throw new Error(`CreateSdo only has the fast and small claims tracks coded, not ${track}`);
     }
@@ -28,7 +29,7 @@ export class CreateSdo {
       {
         page: 'ClaimsTrack',
         answers: small
-          ? { claimsTrack: 'smallClaimsTrack', ...(disputeResolutionHearing ? { smallClaims: ['smallClaimDisputeResolutionHearing'] } : {}) }
+          ? { claimsTrack: 'smallClaimsTrack', ...(disputeResolutionHearing ? { smallClaims: ['smallClaimDisputeResolutionHearing'] } : {}), ...(flightDelay ? { smallClaims: ['smallClaimFlightDelay'] } : {}) }
           : { claimsTrack: 'fastTrack', ...(noiseInducedHearingLoss ? { fastClaims: ['fastClaimNoiseInducedHearingLoss'] } : {}) },
       },
       {
@@ -57,6 +58,6 @@ export class CreateSdo {
       { page: 'SdoR2FastTrack', when: (data) => data.setFastTrackFlag === 'Yes' && data.isSdoR2NewScreen === 'Yes' },
       { page: 'OrderPreview' },
     ]);
-    console.log(`CREATE_SDO (${track}${noiseInducedHearingLoss ? ', NIHL' : ''}${disputeResolutionHearing ? ', DRH' : ''}) submitted through the API as ${user} on case ${caseId}`);
+    console.log(`CREATE_SDO (${track}${noiseInducedHearingLoss ? ', NIHL' : ''}${disputeResolutionHearing ? ', DRH' : ''}${flightDelay ? ', flight delay' : ''}) submitted through the API as ${user} on case ${caseId}`);
   }
 }

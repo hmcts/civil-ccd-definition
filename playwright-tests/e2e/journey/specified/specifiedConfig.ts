@@ -160,8 +160,14 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // A specified claim does not ask about a claimant's litigation friend when it is created.
     claimShape: createClaimShape(claimType, claimantType, defendantType, [yesNo.NO, yesNo.NO]),
     track,
-    // Whether the claim is for a delayed or cancelled flight (AIRLINE_CLAIM=Yes, default No)
-    airlineClaim: yes(scenarioEnv.AIRLINE_CLAIM),
+    // Whether the claim is for a delayed or cancelled flight (AIRLINE_CLAIM, default No): with an airline from the list,
+    // Jet2.com (Yes), or one the claimant names because it is not on the list (OTHER)
+    airlineClaim: ['Yes', 'OTHER'].includes(scenarioEnv.AIRLINE_CLAIM) ? yesNo.YES : yesNo.NO,
+    otherAirline: scenarioEnv.AIRLINE_CLAIM === 'OTHER',
+    // A small claim for a delayed flight is managed at the airline's court (or, for an airline not on the list, the
+    // court the claimant asks for), and work allocation gives its directions task, "Initial Directions (Flight Delay)",
+    // to a judge rather than a legal adviser
+    flightDelaySmallClaim: ['Yes', 'OTHER'].includes(scenarioEnv.AIRLINE_CLAIM) && track === claimTrack.SMALL,
     // Whether the timeline of events is typed in (MANUAL, the default) or uploaded as a document (UPLOAD)
     timeline: env.TIMELINE as Timeline,
     // Whether the claimant claims interest (INTEREST_REQUIRED=Yes, default No), and how (INTEREST_TYPE, INTEREST_RATE)
@@ -386,6 +392,20 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         [undefined, 'Yes', 'No'],
         `Invalid SEND_AND_REPLY value: ${scenarioEnv.SEND_AND_REPLY}. It must be Yes or No.`,
       ).toContain(scenarioEnv.SEND_AND_REPLY);
+      expect(
+        [undefined, 'Yes', 'No', 'OTHER'],
+        `Invalid AIRLINE_CLAIM value: ${scenarioEnv.AIRLINE_CLAIM}. It must be Yes, No or OTHER.`,
+      ).toContain(scenarioEnv.AIRLINE_CLAIM);
+      if (['Yes', 'OTHER'].includes(scenarioEnv.AIRLINE_CLAIM) && track === claimTrack.SMALL) {
+        expect(
+          scenarioEnv.REQUEST_FOR_RECONSIDERATION,
+          'REQUEST_FOR_RECONSIDERATION cannot be used with AIRLINE_CLAIM on a small claim: a judge, not a legal adviser, makes a flight delay claim\'s order, and only a legal adviser\'s order can be reconsidered.',
+        ).toBeUndefined();
+        expect(
+          scenarioEnv.DISPUTE_RESOLUTION_HEARING !== 'Yes',
+          'DISPUTE_RESOLUTION_HEARING=Yes cannot be used with AIRLINE_CLAIM: the journey gives a flight delay claim\'s order the flight delay directions, which are on the small claims hearing page rather than the dispute resolution hearing one.',
+        ).toBeTruthy();
+      }
       expect(
         [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN, scenarioEnv.DISMISS_CASE === 'Yes' ? 'Yes' : undefined]
           .filter((setting) => setting !== undefined).length <= 1,

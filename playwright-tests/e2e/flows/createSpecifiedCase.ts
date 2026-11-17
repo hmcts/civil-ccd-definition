@@ -24,6 +24,9 @@ export function specClaimAmountInPounds(track: claimTrack): number {
 }
 
 // The details the claim gives, shared by the UI and the API
+// The airline a flight delay claim names when it is not on the list (AIRLINE_CLAIM=OTHER)
+export const OTHER_AIRLINE_NAME = 'Playwright Airways';
+
 export const specClaimText = {
   reference: 'ApplicantSolicitorReference',
   respondent1Reference: 'RespondentSolicitor1Reference',
@@ -115,10 +118,15 @@ export class CreateSpecifiedCase {
     await this.sharedPages.setSameLegalRepresentative(yesNo);
   }
 
-  async setAirlineClaim(yesNo: YesNo) {
+  // Whether the claim is for a delayed or cancelled flight, and if so the airline: Jet2.com from the list, or OTHER with
+  // the airline's name typed in
+  async setAirlineClaim(yesNo: YesNo, otherAirline = false) {
     await this.page.locator(`#isFlightDelayClaim_${yesNo}`).check();
     if (yesNo == YesNo.YES) {
-      await this.page.locator('#flightDelayDetails_airlineList').selectOption({ label: 'Jet2.com' });
+      await this.page.locator('#flightDelayDetails_airlineList').selectOption({ label: otherAirline ? 'OTHER' : 'Jet2.com' });
+      if (otherAirline) {
+        await this.page.locator('#flightDelayDetails_nameOfAirline').fill(OTHER_AIRLINE_NAME);
+      }
       await this.page.locator('#flightDelayDetails_flightNumber').fill('ABC1234');
       await this.page.locator('#scheduledDate-day').fill(this.monthAgo.date().toString());
       await this.page.locator('#scheduledDate-month').fill((this.monthAgo.month() + 1).toString());

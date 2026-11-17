@@ -91,6 +91,7 @@ import { withQueryManagement } from '../queryManagementSteps.ts';
 import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
 import { notSuitableSdoSteps, withNotSuitableSdo } from '../notSuitableSdoSteps.ts';
 import { withDisputeResolutionHearing, expectDisputeResolutionHearing } from '../disputeResolutionHearing.ts';
+import { expectFlightDelayClaim, expectFlightDelayCourt, expectFlightDelayDirections } from '../flightDelay.ts';
 import { UploadMediationDocuments } from '../../flows/events/ui/UploadMediationDocuments.ts';
 import { UploadMediationDocuments as ApiUploadMediationDocuments } from '../../flows/events/api/UploadMediationDocuments.ts';
 import { countMediationDocuments } from '../../flows/events/shared_api_ui/uploadMediationDocumentsSpecs.ts';
@@ -201,6 +202,14 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
   const noDefaultJudgment: [boolean, string] = [c.defaultJudgment !== yesNo.YES, 'Default judgment is switched off (set DEFAULT_JUDGMENT=Yes to run it)'];
   const afterDefaultJudgment: [boolean, string] = [c.defaultJudgment === yesNo.YES, 'Skipping as the claimant asked for default judgment (DEFAULT_JUDGMENT=Yes)'];
 
+  // Who makes the Standard Direction Order, and the work allocation directions task they claim for it: a judge on the
+  // fast track, a legal adviser on the small claims track, apart from a flight delay small claim, which a judge gets
+  // through "Initial Directions (Flight Delay)"
+  const sdoUser: SessionUserKey = c.track === claimTrack.SMALL && !c.flightDelaySmallClaim ? 'legalAdviser' : 'judge';
+  const sdoTask = c.track !== claimTrack.SMALL
+    ? 'FastTrackDirections'
+    : (c.flightDelaySmallClaim ? 'InitialDirectionFlightDelay' : 'LegalAdvisorSmallClaimsTrackDirections');
+
   const steps: JourneyStep[] = [
     {
       name: 'CREATE_CLAIM',
@@ -221,6 +230,9 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
             await createClaim.payClaimFee(ctx.caseId);
           }
           await waitForClaimIssued();
+          if (c.airlineClaim === yesNo.YES) {
+            await expectFlightDelayClaim(ctx, c.otherAirline);
+          }
           return;
         }
         const pageHelper = ctx.pageHelper;
@@ -277,7 +289,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
             await createCase.setAnotherDefendant(yesNo.NO);
           }
 
-          await createCase.setAirlineClaim(c.airlineClaim);
+          await createCase.setAirlineClaim(c.airlineClaim, c.otherAirline);
           await createCase.setDescriptionOfClaim();
           await createCase.setTimeline(c.timeline);
           await createCase.setEvidence();
@@ -296,6 +308,9 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
         // Pay the claim fee, in its row of the Service Request tab
         await ctx.payFeeInUi(page, storageState, 'claimIssuedPBADetails', c.paymentMethod);
         await waitForClaimIssued();
+        if (c.airlineClaim === yesNo.YES) {
+          await expectFlightDelayClaim(ctx, c.otherAirline);
+        }
       },
     },
 
@@ -441,6 +456,9 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, c.claimantOutcome.businessProcess);
         await ctx.assertCaseState(c.claimantOutcome.state);
+        if (c.flightDelaySmallClaim && [caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state)) {
+          await expectFlightDelayCourt(ctx, c.otherAirline);
+        }
       },
     },
 
@@ -563,20 +581,16 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     // The judge (or, for a small claim, the legal adviser) decides the claim is not suitable for a Standard Direction
     // Order, and with CHANGE_LOCATION the hearing centre admin transfers it to another hearing centre, whose directions
     // task CREATE_SDO then uses (NOT_SUITABLE_SDO, see notSuitableSdoSteps.ts)
-    ...notSuitableSdoSteps(
-      c.notSuitableSdo,
-      ctx,
-      c.track === claimTrack.SMALL ? 'legalAdviser' : 'judge',
-      c.track === claimTrack.SMALL ? 'LegalAdvisorSmallClaimsTrackDirections' : 'FastTrackDirections',
-    ),
+    ...notSuitableSdoSteps(c.notSuitableSdo, ctx, sdoUser, sdoTask),
 
     // The Standard Direction Order (fast track and small claims) or a directions order (intermediate and multi track),
     // once the claim is in JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim gets there after
-    // unsuccessful mediation, and work allocation gives its directions task to a legal adviser rather than a judge.
+    // unsuccessful mediation, and work allocation gives its directions task to a legal adviser rather than a judge,
+    // apart from a flight delay claim's, which a judge gets and which has the flight delay directions.
     {
       name: 'CREATE_SDO',
-      title: `${c.track === claimTrack.SMALL ? 'Legal Adviser' : 'Judge'} makes a Standard Direction Order${c.disputeResolutionHearing === yesNo.YES ? ' for a dispute resolution hearing' : ''}.`,
-      user: c.track === claimTrack.SMALL ? 'legalAdviser' : 'judge',
+      title: `${sdoUser === 'legalAdviser' ? 'Legal Adviser' : 'Judge'} makes a Standard Direction Order${c.disputeResolutionHearing === yesNo.YES ? ' for a dispute resolution hearing' : ''}${c.flightDelaySmallClaim ? ' with flight delay directions' : ''}.`,
+      user: sdoUser,
       skipIf: [
         noLitigantInPerson,
         [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
@@ -584,17 +598,19 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
         [c.track !== claimTrack.FAST && c.track !== claimTrack.SMALL, 'Skipping as the intermediate and multi tracks get a directions order instead'],
       ],
       run: async ({ page, storageState }) => {
-        const user = c.track === claimTrack.SMALL ? 'legalAdviser' : 'judge';
         await ctx.runEvent(page, storageState, async () => {
           // Where work allocation is switched on, the directions task for the track is needed to make the order. It is
           // claimed through the API version too, as the UI would.
-          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', c.track === claimTrack.SMALL ? 'LegalAdvisorSmallClaimsTrackDirections' : 'FastTrackDirections');
+          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', sdoTask);
           if (!ctx.useApi()) {
-            await new CreateSdo(page).submit(ctx.caseId, c.track, false, c.disputeResolutionHearing === yesNo.YES);
+            await new CreateSdo(page).submit(ctx.caseId, c.track, false, c.disputeResolutionHearing === yesNo.YES, c.flightDelaySmallClaim);
           }
         });
         if (ctx.useApi()) {
-          await new ApiCreateSdo().submit(ctx.caseId, user, c.track, false, c.disputeResolutionHearing === yesNo.YES);
+          await new ApiCreateSdo().submit(ctx.caseId, sdoUser, c.track, false, c.disputeResolutionHearing === yesNo.YES, c.flightDelaySmallClaim);
+        }
+        if (c.flightDelaySmallClaim) {
+          await expectFlightDelayDirections(ctx);
         }
         if (c.disputeResolutionHearing === yesNo.YES) {
           await expectDisputeResolutionHearing(ctx);

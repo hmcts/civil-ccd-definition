@@ -51,10 +51,10 @@ LiPs as defendants, where solicitor-side events act for them.
 | --- | --- | --- |
 | Dispute resolution hearing (small claims SDO with a DRH) | `api-tests/drh` (unspec and spec) | Done: DISPUTE_RESOLUTION_HEARING=Yes (both journeys, UI + API) |
 | Automated hearing notice scheduler (HMC) | `api-tests/hearings`: 4 scheduler tests, including the duplicate defendant ones | None |
-| Flight delay | `api-tests/flight-delay`, `ui-tests/flight-delay` | Partly: `AIRLINE_CLAIM` on create claim only |
+| Flight delay | `api-tests/flight-delay`, `ui-tests/flight-delay` | Done: AIRLINE_CLAIM=Yes or OTHER (spec, UI + API): the airline's or claimant's court, and the judge's flight delay SDO on small claims |
 | Case offline | `api-tests/case-offline` | Done: CASE_PROCEEDS_IN_CASEMAN |
 
 ## Suggested order
 
 1. The general application events (`HEARING_SCHEDULED_GA`, `RESPOND_TO_JUDGE_ADDITIONAL_INFO`)
-2. The automated hearing notice scheduler and flight delay
+2. The automated hearing notice scheduler
