@@ -13,6 +13,12 @@ enum GaCaseStates {
   // An approved application the court deals with offline from then on, such as the claimant's application to strike out
   PROCEEDS_IN_HERITAGE = 'PROCEEDS_IN_HERITAGE',
   APPLICATION_DISMISSED = 'APPLICATION_DISMISSED',
+  // A judge or legal adviser asked the applicant for more information, which the applicant can give until the date set
+  AWAITING_ADDITIONAL_INFORMATION = 'AWAITING_ADDITIONAL_INFORMATION',
+  // A judge or legal adviser listed the application for a hearing, which court staff have not scheduled yet
+  LISTING_FOR_A_HEARING = 'LISTING_FOR_A_HEARING',
+  // Court staff scheduled the application's hearing
+  HEARING_SCHEDULED = 'HEARING_SCHEDULED',
 }
 
 export default GaCaseStates;

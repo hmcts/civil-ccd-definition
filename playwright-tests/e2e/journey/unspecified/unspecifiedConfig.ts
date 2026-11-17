@@ -314,6 +314,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // the applicant pays the extra fee and the other side responds before it is decided
     // (GENERAL_APPLICATION_SEND_TO_OTHER_PARTY, default No; needs GENERAL_APPLICATION_WITH_NOTICE=No)
     generalApplicationSendToOtherParty: yes(scenarioEnv.GENERAL_APPLICATION_SEND_TO_OTHER_PARTY),
+    // What the judge or legal adviser decides (GENERAL_APPLICATION_DECISION: APPROVE, the default, REQUEST_MORE_INFO,
+    // which the applicant's solicitor then answers, or LIST_FOR_HEARING, which court staff then schedule)
+    generalApplicationDecision: scenarioEnv.GENERAL_APPLICATION_DECISION ?? 'APPROVE',
     // Whose solicitors raise a query, which a CTSC admin answers (QUERY_MANAGEMENT: a list such as claimant,defendant1),
     // after the QUERY_MANAGEMENT_AFTER step (default RESPOND_TO_DEFENCE, once every solicitor has the case). Whether the
     // queries are about a hearing (QUERY_MANAGEMENT_HEARING_RELATED, default No), and whether each solicitor then asks a

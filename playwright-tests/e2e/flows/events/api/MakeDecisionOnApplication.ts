@@ -61,4 +61,64 @@ export class MakeDecisionOnApplication {
     ], false, true);
     console.log(`MAKE_DECISION (send the application to the other party) submitted through the API as ${user} on application ${applicationCaseId}`);
   }
+
+  // Asks the applicant for more information instead of deciding the application (MAKE_DECISION, "Request more
+  // information"), as the UI version does: the information wanted and a date a week away, with the recital the about to
+  // start callback filled in. Unless the application is known to be made with notice, "Request more information" is
+  // chosen among the options too. The page's callback generates the request the preview page shows, where there is
+  // one. civil-service then waits for the applicant (AWAITING_ADDITIONAL_INFORMATION).
+  async requestMoreInfo(applicationCaseId: string, user: SessionUserKey, information: string) {
+    await this.ccdApiHelper.submitEventThroughPages(sessionUsers[user].credentials, 'MAKE_DECISION', applicationCaseId, [
+      { page: 'GAJudicialDecision', answers: { judicialDecision: { decision: 'REQUEST_MORE_INFO' } } },
+      {
+        page: 'GAJudicialRequestMoreInfoScreen',
+        answers: (data) => {
+          const request = data.judicialDecisionRequestMoreInfo ?? {};
+          return {
+            judicialDecisionRequestMoreInfo: {
+              ...request,
+              // The page's callback works isWithNotice out itself when the about to start callback left it empty, and
+              // then fails without an option unless the application is with notice, so the option is given unless it
+              // is known to be with notice
+              ...(request.isWithNotice !== 'Yes' ? { requestMoreInfoOption: 'REQUEST_MORE_INFORMATION' } : {}),
+              judgeRequestMoreInfoText: information,
+              judgeRequestMoreInfoByDate: moment().add(7, 'days').format('YYYY-MM-DD'),
+            },
+          };
+        },
+      },
+      { page: 'GAJudicialRequestMoreInfoDocPreview', when: (data) => data.showRequestInfoPreviewDoc === 'Yes' },
+    ], false, true);
+    console.log(`MAKE_DECISION (request more information) submitted through the API as ${user} on application ${applicationCaseId}`);
+  }
+
+  // Lists the application for a hearing instead of deciding it now (MAKE_DECISION, "List for a hearing"), as the UI
+  // version does: a 15 minute video hearing, then the general order with the recital the callback filled in, the
+  // hearing directions and not on the court's own initiative. The general order page's callback generates the order the
+  // preview page shows. civil-service then waits for court staff to schedule the hearing (LISTING_FOR_A_HEARING).
+  async listForHearing(applicationCaseId: string, user: SessionUserKey, directions: string) {
+    await this.ccdApiHelper.submitEventThroughPages(sessionUsers[user].credentials, 'MAKE_DECISION', applicationCaseId, [
+      { page: 'GAJudicialDecision', answers: { judicialDecision: { decision: 'LIST_FOR_A_HEARING' } } },
+      {
+        page: 'GAJudicialHearingDetailsScreen',
+        answers: (data) => ({
+          judicialListForHearing: {
+            ...(data.judicialListForHearing ?? {}),
+            hearingPreferencesPreferredType: 'VIDEO',
+            judicialTimeEstimate: 'MINUTES_15',
+          },
+        }),
+      },
+      {
+        page: 'GAJudicialHearingDetailsGeneralOrderScreen',
+        answers: (data) => ({
+          judicialGeneralHearingOrderRecital: data.judicialGeneralHearingOrderRecital,
+          judicialGOHearingDirections: directions,
+          judicialByCourtsInitiativeListForHearing: 'OPTION_3',
+        }),
+      },
+      { page: 'GAJudicialListHearingDocPreview' },
+    ], false, true);
+    console.log(`MAKE_DECISION (list for a hearing) submitted through the API as ${user} on application ${applicationCaseId}`);
+  }
 }

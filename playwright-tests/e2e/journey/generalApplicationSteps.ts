@@ -19,6 +19,11 @@ import { ReferToJudge } from '../flows/events/ui/ReferToJudge.ts';
 import { ReferToJudge as ApiReferToJudge } from '../flows/events/api/ReferToJudge.ts';
 import { RespondToApplication } from '../flows/events/ui/RespondToApplication.ts';
 import { RespondToApplication as ApiRespondToApplication } from '../flows/events/api/RespondToApplication.ts';
+import { RespondToJudgeAdditionalInfo } from '../flows/events/ui/RespondToJudgeAdditionalInfo.ts';
+import { RespondToJudgeAdditionalInfo as ApiRespondToJudgeAdditionalInfo } from '../flows/events/api/RespondToJudgeAdditionalInfo.ts';
+import { HearingScheduledGa } from '../flows/events/ui/HearingScheduledGa.ts';
+import { HearingScheduledGa as ApiHearingScheduledGa } from '../flows/events/api/HearingScheduledGa.ts';
+import { gaHearingNotice } from '../flows/events/shared_api_ui/gaHearingNoticeSpecs.ts';
 import { JourneyContext, JourneyStep } from './journeyRunner.ts';
 
 // The application types the journeys can make, as "Make an application" lists them
@@ -58,6 +63,17 @@ export interface GaClaim {
   // first sends it to the other side ("Request more information", "Send application to other party"), so the applicant
   // pays the extra fee and the other side responds before it is decided (default No)
   generalApplicationSendToOtherParty: yesNo;
+  // GENERAL_APPLICATION_DECISION: what the judge or legal adviser decides (default APPROVE): approve the order sought,
+  // ask the applicant for more information, which the applicant then gives (REQUEST_MORE_INFO), or list it for a hearing,
+  // which court staff then schedule (LIST_FOR_HEARING)
+  generalApplicationDecision: string;
+}
+
+// What a judge or legal adviser can decide on an application (GENERAL_APPLICATION_DECISION)
+export enum GaDecision {
+  APPROVE = 'APPROVE',
+  REQUEST_MORE_INFO = 'REQUEST_MORE_INFO',
+  LIST_FOR_HEARING = 'LIST_FOR_HEARING',
 }
 
 // The parties who can make an application, each with their solicitor's session user and a label
@@ -189,6 +205,9 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
     if (c.generalApplicationUrgent === yesNo.YES) {
       problems.push('GENERAL_APPLICATION_SEND_TO_OTHER_PARTY=Yes is not covered for an urgent application (GENERAL_APPLICATION_URGENT=Yes)');
     }
+  }
+  if (!(Object.values(GaDecision) as string[]).includes(c.generalApplicationDecision)) {
+    problems.push(`GENERAL_APPLICATION_DECISION=${c.generalApplicationDecision} is not one of ${Object.values(GaDecision).join(', ')}`);
   }
   if (!(c.generalApplicationBy in gaParties)) {
     problems.push(`GENERAL_APPLICATION_BY=${c.generalApplicationBy} is not one of ${Object.keys(gaParties).join(', ')}`);
@@ -405,10 +424,27 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     },
   };
 
+  // The decision's answers, checked on the application afterwards, and the state each decision leaves it in
+  const moreInformationWanted = `Playwright: please send the documents the application relies on (${Date.now()})`;
+  const hearingDirections = `Playwright: the parties attend the hearing by video (${Date.now()})`;
+  const stateAfter: Partial<Record<GaDecision, GaCaseStates>> = {
+    [GaDecision.REQUEST_MORE_INFO]: GaCaseStates.AWAITING_ADDITIONAL_INFORMATION,
+    [GaDecision.LIST_FOR_HEARING]: GaCaseStates.LISTING_FOR_A_HEARING,
+  };
+
+  // What the decider does (GENERAL_APPLICATION_DECISION), and whether they did it: court staff approve a consent order
+  // instead where work allocation gives it to them, and then there is no request for information or hearing to follow
+  const decision = c.generalApplicationDecision as GaDecision;
+  const decisionTitles: Record<GaDecision, string> = {
+    [GaDecision.APPROVE]: 'approves the general application',
+    [GaDecision.REQUEST_MORE_INFO]: 'asks the applicant for more information about the general application',
+    [GaDecision.LIST_FOR_HEARING]: 'lists the general application for a hearing',
+  };
+  let decided = false;
   const decisionSteps: JourneyStep[] = decisionTasks.map(({ taskType, user, label: decider }) => ({
     name: `GA_DECISION_${user === 'judge' ? 'JUDGE' : 'LEGAL_ADVISER'}`,
     group: 'GENERAL_APPLICATION',
-    title: `${decider} approves the general application.`,
+    title: `${decider} ${decisionTitles[decision] ?? decisionTitles[GaDecision.APPROVE]}.`,
     user,
     skipIf: anchor.skipIf,
     run: async ({ page, storageState }) => {
@@ -420,14 +456,38 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
         await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'MAKE_DECISION', taskType);
         if (!ctx.useApi()) {
-          await new MakeDecisionOnApplication(page).approve();
+          const makeDecision = new MakeDecisionOnApplication(page);
+          if (decision === GaDecision.REQUEST_MORE_INFO) {
+            await makeDecision.requestMoreInfo(moreInformationWanted);
+          } else if (decision === GaDecision.LIST_FOR_HEARING) {
+            await makeDecision.listForHearing(hearingDirections);
+          } else {
+            await makeDecision.approve();
+          }
         }
       }, ctx.gaCaseUrl());
       if (ctx.useApi()) {
-        await new ApiMakeDecisionOnApplication().approve(ctx.gaCaseId, user);
+        const makeDecision = new ApiMakeDecisionOnApplication();
+        if (decision === GaDecision.REQUEST_MORE_INFO) {
+          await makeDecision.requestMoreInfo(ctx.gaCaseId, user, moreInformationWanted);
+        } else if (decision === GaDecision.LIST_FOR_HEARING) {
+          await makeDecision.listForHearing(ctx.gaCaseId, user, hearingDirections);
+        } else {
+          await makeDecision.approve(ctx.gaCaseId, user);
+        }
       }
       await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'MAKE_DECISION');
-      await ctx.assertGaCaseState(stateAfterDecision);
+      await ctx.assertGaCaseState(stateAfter[decision] ?? stateAfterDecision);
+      if (decision === GaDecision.REQUEST_MORE_INFO) {
+        const saved = (await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId)).judicialDecisionRequestMoreInfo;
+        expect(saved?.judgeRequestMoreInfoText, 'The request for more information was not saved').toBe(moreInformationWanted);
+      }
+      if (decision === GaDecision.LIST_FOR_HEARING) {
+        const saved = await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId);
+        expect(saved.judicialGOHearingDirections, 'The hearing directions were not saved').toBe(hearingDirections);
+        expect(saved.judicialListForHearing?.hearingPreferencesPreferredType, 'The hearing type was not saved').toBe('VIDEO');
+      }
+      decided = true;
       await claimStateUnchanged();
     },
   }));
@@ -539,8 +599,93 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     },
   };
 
+  // With GENERAL_APPLICATION_DECISION=REQUEST_MORE_INFO, the applicant's solicitor gives the information asked for by
+  // uploading a document ("Respond to judges addn info"). The application stays in AWAITING_ADDITIONAL_INFORMATION until
+  // the date it was asked for by, when civil-service's scheduler sends it back to the court, which the journey does not
+  // wait for.
+  const notDecision = (wanted: GaDecision): [boolean, string] => [
+    decision !== wanted,
+    `Skipping as the judge or legal adviser ${decision === GaDecision.APPROVE ? 'approves the application' : decisionTitles[decision] ?? 'decides otherwise'} (set GENERAL_APPLICATION_DECISION=${wanted} to run it)`,
+  ];
+  const notDecidedReason = 'Skipping as court staff approved the application as a consent order, so no judge or legal adviser made the decision';
+  const respondToMoreInfoStep: JourneyStep = {
+    name: 'GA_RESPOND_TO_JUDGE_ADDITIONAL_INFO',
+    group: 'GENERAL_APPLICATION',
+    title: `${applicant.label} gives the more information asked for on the general application.`,
+    user: applicant.user,
+    skipIf: [
+      ...(anchor.skipIf ?? []),
+      notDecision(GaDecision.REQUEST_MORE_INFO),
+    ],
+    run: async ({ page, storageState, user }) => {
+      test.skip(!decided, notDecidedReason);
+      const documentsBefore = (await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId)).gaAddlDoc?.length ?? 0;
+      if (ctx.useApi()) {
+        await new ApiRespondToJudgeAdditionalInfo().submit(ctx.gaCaseId, user);
+      } else {
+        await ctx.runEvent(page, storageState, async () => {
+          await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
+          await new RespondToJudgeAdditionalInfo(page).submit();
+        }, ctx.gaCaseUrl());
+      }
+      await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'RESPOND_TO_JUDGE_ADDITIONAL_INFO');
+      await ctx.assertGaCaseState(GaCaseStates.AWAITING_ADDITIONAL_INFORMATION);
+      const saved = await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId);
+      expect(saved.gaAddlDoc?.length ?? 0, 'The document given was not added to the application\'s documents').toBe(documentsBefore + 1);
+      expect(saved.isApplicantResponded, 'The application does not show the applicant responded').toBe('Yes');
+      await claimStateUnchanged();
+    },
+  };
+
+  // With GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING, work allocation gives court staff a ScheduleApplicationHearing
+  // task: the National Business Centre's admin while the application is at the Civil National Business Centre, the
+  // hearing centre's admin otherwise (as for a consent order). They schedule the hearing ("Schedule hearing"), which
+  // completes the task, and civil-service sends the hearing notice and moves the application to HEARING_SCHEDULED.
+  const scheduleHearingTask = 'ScheduleApplicationHearing';
+  const scheduleHearingSteps: JourneyStep[] = consentOrderReviewers.map(({ user, label: scheduler, atNationalBusinessCentre, step }) => ({
+    name: `GA_SCHEDULE_HEARING_${step}`,
+    group: 'GENERAL_APPLICATION',
+    title: `${scheduler} schedules the general application's hearing.`,
+    user,
+    skipIf: [
+      ...(anchor.skipIf ?? []),
+      notDecision(GaDecision.LIST_FOR_HEARING),
+    ],
+    run: async ({ page, storageState, user: stepUser }) => {
+      test.skip(!decided, notDecidedReason);
+      const atCnbc = (await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId)).isCcmccLocation === 'Yes';
+      test.skip(atCnbc !== atNationalBusinessCentre, `Skipping as the application is ${atCnbc ? 'at the Civil National Business Centre' : 'at a hearing centre'}, so another admin schedules it`);
+      const notice = gaHearingNotice(types.join(', '));
+      await ctx.runEvent(page, storageState, async () => {
+        await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
+        await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'HEARING_SCHEDULED_GA', scheduleHearingTask);
+        if (!ctx.useApi()) {
+          await new HearingScheduledGa(page).submit(notice);
+        }
+      }, ctx.gaCaseUrl());
+      if (ctx.useApi()) {
+        await new ApiHearingScheduledGa().submit(ctx.gaCaseId, stepUser, notice);
+      }
+      await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'HEARING_SCHEDULED_GA');
+      await ctx.assertGaCaseState(GaCaseStates.HEARING_SCHEDULED);
+      const saved = await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId);
+      expect(saved.gaHearingNoticeDetail, 'The hearing was not saved').toMatchObject({
+        channel: 'VIDEO',
+        hearingDate: notice.hearingDate,
+        hearingTimeHourMinute: notice.hearingTime,
+        hearingDuration: 'MINUTES_15',
+      });
+      expect(saved.gaHearingNoticeInformation, 'The note for the parties was not saved').toBe(notice.information);
+      await claimStateUnchanged();
+    },
+  }));
+
   // The application is made and paid for, sent to the other side and the extra fee paid where it is, the other side
   // responds, and then it is decided. The legal adviser's decision step comes first, so the referral goes before it.
+  // A request for more information is then answered, or a hearing it was listed for scheduled.
   const [makeStep, payStep, ...respondSteps] = steps;
-  return [makeStep, payStep, ...sendSteps, payAdditionalFeeStep, ...respondSteps, referStep, ...decisionSteps, ...consentOrderSteps];
+  return [
+    makeStep, payStep, ...sendSteps, payAdditionalFeeStep, ...respondSteps, referStep, ...decisionSteps, ...consentOrderSteps,
+    respondToMoreInfoStep, ...scheduleHearingSteps,
+  ];
 }
