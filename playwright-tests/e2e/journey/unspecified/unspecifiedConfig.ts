@@ -226,6 +226,13 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // Whether the hearing centre admin stays the case after the claimant's response, asks for an update and lifts the
     // stay (STAY_CASE=Yes, default No)
     stayCase: yes(scenarioEnv.STAY_CASE),
+    // Whether the hearing centre admin sends a district judge a message with "Send and reply to messages" once the
+    // claimant's response has taken the claim to JUDICIAL_REFERRAL, and the judge replies. With STAY_CASE=Yes they do
+    // it while the case is stayed (SEND_AND_REPLY=Yes, default No)
+    sendAndReply: yes(scenarioEnv.SEND_AND_REPLY),
+    // Whether the hearing centre admin dismisses the case with "Dismiss case" once the rest of the journey has run, which
+    // moves it to CASE_DISMISSED (DISMISS_CASE=Yes, default No)
+    dismissCase: yes(scenarioEnv.DISMISS_CASE),
     // Whether and how the claim is settled with "Settle this claim" once the rest of the journey has run: the
     // claimant's solicitor marks it paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL), which stays the case, or court staff
     // record it settled after a judge's order (JUDGE_ORDER) or a consent order (CONSENT_ORDER). Not settled by default.
@@ -368,8 +375,17 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
         `Invalid NOT_SUITABLE_SDO value: ${scenarioEnv.NOT_SUITABLE_SDO}. It must be one of ${Object.values(NotSuitableSdo).join(', ')}.`,
       ).toContain(scenarioEnv.NOT_SUITABLE_SDO);
       expect(
-        [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN].filter((setting) => setting !== undefined).length <= 1,
-        'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM and CASE_PROCEEDS_IN_CASEMAN can be set: each one closes the claim.',
+        [undefined, 'Yes', 'No'],
+        `Invalid DISMISS_CASE value: ${scenarioEnv.DISMISS_CASE}. It must be Yes or No.`,
+      ).toContain(scenarioEnv.DISMISS_CASE);
+      expect(
+        [undefined, 'Yes', 'No'],
+        `Invalid SEND_AND_REPLY value: ${scenarioEnv.SEND_AND_REPLY}. It must be Yes or No.`,
+      ).toContain(scenarioEnv.SEND_AND_REPLY);
+      expect(
+        [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN, scenarioEnv.DISMISS_CASE === 'Yes' ? 'Yes' : undefined]
+          .filter((setting) => setting !== undefined).length <= 1,
+        'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM, CASE_PROCEEDS_IN_CASEMAN and DISMISS_CASE=Yes can be set: each one closes the claim.',
       ).toBeTruthy();
       expect(
         Object.values(unspecClaimTypes),

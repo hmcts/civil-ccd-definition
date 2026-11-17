@@ -25,6 +25,8 @@ for it, but no test calls that step.
 - `NotSuitable_SDO` (Not suitable for SDO) and `TRANSFER_ONLINE_CASE` (Transfer online case): NOT_SUITABLE_SDO=CHANGE_LOCATION|OTHER_REASONS (UI + API, both journeys; the judge follows the directions task's "Not Suitable for SDO" link, and with CHANGE_LOCATION the hearing centre admin transfers the claim before the SDO is made at the new court), passed AAT on 2026-11-16: unspec 1v1 UI and spec 1v1 API (change of location, transfer, SDO), spec 1v1 UI and unspec 1v2DS API (other reason, offline). Transfer online case is only run after a change of location; playwright-e2e's UI case progression test also transfers a claim in CASE_PROGRESSION.
 - `UPLOAD_MEDIATION_DOCUMENTS` (Upload mediation documents): UPLOAD_MEDIATION_DOCUMENTS=Yes (UI + API, spec small claims after unsuccessful mediation; a non-attendance statement and a referred document from each solicitor, for every party they act for), passed AAT on 2026-11-16: spec small 1v2DS UI (all three solicitors), spec small 1v2SS API (Defendants 1 and 2), spec small 2v1 UI (Claimants 1 and 2)
 - Dispute resolution hearing: DISPUTE_RESOLUTION_HEARING=Yes (UI + API, both journeys; the small claims SDO lists a DRH, with the witness statement deadline filled in), passed AAT on 2026-11-16: unspec small 1v1 API to All_FINAL_ORDERS_ISSUED, unspec small 1v1 UI (judge's SDO), spec small 1v1 UI (legal adviser's SDO, then the whole journey)
+- `SEND_AND_REPLY` (Send and reply to messages): SEND_AND_REPLY=Yes (UI + API, both journeys; the hearing centre admin sends a district judge a message and the judge replies, while the case is stayed with STAY_CASE=Yes, otherwise in JUDICIAL_REFERRAL), passed AAT on 2026-11-17: unspec 1v1 UI on a stayed case, spec 1v1 API in JUDICIAL_REFERRAL
+- `DISMISS_CASE` (Dismiss case): DISMISS_CASE=Yes (UI + API, both journeys, a closing step like CASE_PROCEEDS_IN_CASEMAN), passed AAT on 2026-11-17: unspec 1v1 UI and spec 1v1 API, each dismissed in JUDICIAL_REFERRAL
 
 ## Events
 
@@ -32,8 +34,6 @@ for it, but no test calls that step.
 
 | Next step | Event ID | Who | Notes |
 | --- | --- | --- | --- |
-| Dismiss case | `DISMISS_CASE` | Hearing centre admin | |
-| Send and reply to messages | `SEND_AND_REPLY` | Hearing centre admin, WLU admin, judge | Messages between staff and judges |
 | Amend party details | `AMEND_PARTY_DETAILS` | Hearing centre admin | |
 
 ### Solicitor events
@@ -66,7 +66,6 @@ LiPs as defendants, where solicitor-side events act for them.
 
 ## Suggested order
 
-1. `DISMISS_CASE` and `SEND_AND_REPLY`, which playwright-e2e runs on a stayed case, so they fit with STAY_CASE
-2. `AMEND_PARTY_DETAILS` and `ADD_OR_AMEND_CLAIM_DOCUMENTS`
-3. The general application events (`HEARING_SCHEDULED_GA`, `RESPOND_TO_JUDGE_ADDITIONAL_INFO`)
-4. The automated hearing notice scheduler and flight delay
+1. `AMEND_PARTY_DETAILS` and `ADD_OR_AMEND_CLAIM_DOCUMENTS`
+2. The general application events (`HEARING_SCHEDULED_GA`, `RESPOND_TO_JUDGE_ADDITIONAL_INFO`)
+3. The automated hearing notice scheduler and flight delay

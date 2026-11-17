@@ -21,6 +21,8 @@ enum CaseStates {
   CASE_SETTLED = 'CASE_SETTLED',
   // A claim the claimant has discontinued ("Discontinue this claim")
   CASE_DISCONTINUED = 'CASE_DISCONTINUED',
+  // A claim court staff have dismissed ("Dismiss case"), shown in XUI as "Claim Dismissed"
+  CASE_DISMISSED = 'CASE_DISMISSED',
   // Shown in XUI as "Case Proceeds Offline"
   PROCEEDS_IN_HERITAGE_SYSTEM = 'PROCEEDS_IN_HERITAGE_SYSTEM',
 }

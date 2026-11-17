@@ -55,6 +55,9 @@ import { ValidateDiscontinueClaim } from '../../flows/events/ui/ValidateDisconti
 import { ValidateDiscontinueClaim as ApiValidateDiscontinueClaim } from '../../flows/events/api/ValidateDiscontinueClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
 import { CaseProceedsInCaseman } from '../../flows/events/ui/CaseProceedsInCaseman.ts';
+import { DismissCase } from '../../flows/events/ui/DismissCase.ts';
+import { DismissCase as ApiDismissCase } from '../../flows/events/api/DismissCase.ts';
+import { sendAndReplySteps } from '../sendAndReplySteps.ts';
 import { CaseProceedsInCaseman as ApiCaseProceedsInCaseman } from '../../flows/events/api/CaseProceedsInCaseman.ts';
 import CaseProceedsInCasemanReason from '../../../enums/caseProceedsInCaseman.ts';
 import { RequestForReconsideration } from '../../flows/events/ui/RequestForReconsideration.ts';
@@ -454,6 +457,10 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
         await ctx.assertCaseState(caseStates.CASE_STAYED);
       },
     },
+
+    // The hearing centre admin sends a district judge a message and the judge replies, while the case is stayed with
+    // STAY_CASE=Yes, otherwise in JUDICIAL_REFERRAL. Only run with SEND_AND_REPLY=Yes.
+    ...sendAndReplySteps(c, ctx, c.stayCase === yesNo.YES ? caseStates.CASE_STAYED : caseStates.JUDICIAL_REFERRAL, noJudicialReferral),
 
     {
       name: 'LIFT_STAY',
@@ -942,6 +949,32 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
         await ctx.assertCaseState(caseStates.PROCEEDS_IN_HERITAGE_SYSTEM);
       },
     },
+    // The hearing centre admin dismisses the case with "Dismiss case" once the rest of the journey has run, or where
+    // STOP_AT_STATE or STOP_AFTER_TEST stops it (DISMISS_CASE=Yes), which moves it to CASE_DISMISSED and tells the
+    // parties. It is offered in the same states as "Settle this claim" (not CASE_STAYED), so the step is skipped where the
+    // journey ended in another.
+    {
+      name: 'DISMISS_CASE',
+      title: 'Hearing Centre Admin dismisses the case.',
+      user: 'hearingCentreAdmin',
+      closesClaim: true,
+      invalidIf: (stops) => c.dismissCase === yesNo.YES ? closingProblems('DISMISS_CASE=Yes', stops, settleableStates, false) : [],
+      skipIf: [
+        [c.dismissCase !== yesNo.YES, 'Dismissing the case is switched off (set DISMISS_CASE=Yes to run it)'],
+      ],
+      run: async ({ page, storageState }) => {
+        test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the case cannot be dismissed in ${ctx.lastStateReached}`);
+        if (ctx.useApi()) {
+          await new ApiDismissCase().submit(ctx.caseId);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new DismissCase(page).submit();
+          });
+        }
+        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DISMISS_CASE');
+        await ctx.assertCaseState(caseStates.CASE_DISMISSED);
+      },
+    },
   ];
 
   // Where the journey ends: the state STOP_AT_STATE stops it at or, where it runs to the end, the state its last step
@@ -992,6 +1025,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     return [
       [c.informAgreedExtension === yesNo.YES, ignored('INFORM_AGREED_EXTENSION=Yes')],
       [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
+      [c.sendAndReply === yesNo.YES, ignored('SEND_AND_REPLY=Yes')],
       [c.mediationSuccessful === yesNo.YES, ignored('MEDIATION_SUCCESSFUL=Yes')],
       [c.requestForReconsideration !== undefined, ignored('REQUEST_FOR_RECONSIDERATION')],
       [
