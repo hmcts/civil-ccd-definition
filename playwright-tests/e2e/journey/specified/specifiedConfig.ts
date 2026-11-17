@@ -176,6 +176,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=Yes,
     // default No)
     addCaseNote: yes(scenarioEnv.ADD_CASE_NOTE),
+    // Whether the hearing centre admin changes the legal representatives' email addresses with "Amend party details" once
+    // the defendants' solicitors are on the claim (AMEND_PARTY_DETAILS=Yes, default No)
+    amendPartyDetails: yes(scenarioEnv.AMEND_PARTY_DETAILS),
     // Whether the hearing centre admin stays the case once the claimant's response has taken it to JUDICIAL_REFERRAL,
     // asks the parties for an update and lifts the stay (STAY_CASE=Yes, default No)
     stayCase: yes(scenarioEnv.STAY_CASE),
@@ -371,6 +374,10 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         [undefined, ...Object.values(CaseProceedsInCaseman)],
         `Invalid CASE_PROCEEDS_IN_CASEMAN value: ${scenarioEnv.CASE_PROCEEDS_IN_CASEMAN}. It must be one of ${Object.values(CaseProceedsInCaseman).join(', ')}.`,
       ).toContain(scenarioEnv.CASE_PROCEEDS_IN_CASEMAN);
+      expect(
+        [undefined, 'Yes', 'No'],
+        `Invalid AMEND_PARTY_DETAILS value: ${scenarioEnv.AMEND_PARTY_DETAILS}. It must be Yes or No.`,
+      ).toContain(scenarioEnv.AMEND_PARTY_DETAILS);
       expect(
         [undefined, 'Yes', 'No'],
         `Invalid DISMISS_CASE value: ${scenarioEnv.DISMISS_CASE}. It must be Yes or No.`,

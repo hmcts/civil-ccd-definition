@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { envUrl } from '../../../civilConfig.ts';
+import { claimantSolicitorCredentials, envUrl, respondent1SolicitorCredentials } from '../../../civilConfig.ts';
 import { CreateSpecifiedCase } from '../../flows/createSpecifiedCase.ts';
 import { CreateClaimSpec } from '../../flows/events/api/CreateClaimSpec.ts';
 import { InformAgreedExtensionDateSpec } from '../../flows/events/ui/InformAgreedExtensionDateSpec.ts';
@@ -55,6 +55,8 @@ import { ValidateDiscontinueClaim } from '../../flows/events/ui/ValidateDisconti
 import { ValidateDiscontinueClaim as ApiValidateDiscontinueClaim } from '../../flows/events/api/ValidateDiscontinueClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
 import { CaseProceedsInCaseman } from '../../flows/events/ui/CaseProceedsInCaseman.ts';
+import { AmendPartyDetails } from '../../flows/events/ui/AmendPartyDetails.ts';
+import { AmendPartyDetails as ApiAmendPartyDetails } from '../../flows/events/api/AmendPartyDetails.ts';
 import { DismissCase } from '../../flows/events/ui/DismissCase.ts';
 import { DismissCase as ApiDismissCase } from '../../flows/events/api/DismissCase.ts';
 import { sendAndReplySteps } from '../sendAndReplySteps.ts';
@@ -374,6 +376,37 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       run: async () => {
         await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType, [...ctx.defendantsGivenSolicitorByNoc]);
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
+      },
+    },
+
+    // The hearing centre admin changes the legal representatives' email addresses with "Amend party details": Defendant
+    // 1's solicitor's to the address they sign in with (the claim was created with a made-up one), and the claimant's
+    // solicitor's to theirs. Only run with AMEND_PARTY_DETAILS=Yes, where Defendant 1 has a solicitor.
+    {
+      name: 'AMEND_PARTY_DETAILS',
+      title: 'Hearing Centre Admin amends the legal representatives\' email addresses.',
+      user: 'hearingCentreAdmin',
+      skipIf: [
+        [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
+        noDefendant1Solicitor,
+      ],
+      run: async ({ page, storageState }) => {
+        const stateBefore = ctx.lastStateReached;
+        const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
+        if (ctx.useApi()) {
+          await new ApiAmendPartyDetails().submit(ctx.caseId, emails);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new AmendPartyDetails(page).submit(emails);
+          });
+        }
+        const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+        expect(saved, 'The amended email addresses were not saved').toMatchObject({
+          specRespondentSolicitor1EmailAddress: emails.defendant1Solicitor,
+          respondentSolicitor1EmailAddress: emails.defendant1Solicitor,
+          applicantSolicitor1UserDetails: { email: emails.claimantSolicitor },
+        });
+        await ctx.assertCaseState(stateBefore);
       },
     },
 
@@ -1025,6 +1058,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     return [
       [c.informAgreedExtension === yesNo.YES, ignored('INFORM_AGREED_EXTENSION=Yes')],
       [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
+      [c.amendPartyDetails === yesNo.YES, ignored('AMEND_PARTY_DETAILS=Yes')],
       [c.sendAndReply === yesNo.YES, ignored('SEND_AND_REPLY=Yes')],
       [c.mediationSuccessful === yesNo.YES, ignored('MEDIATION_SUCCESSFUL=Yes')],
       [c.requestForReconsideration !== undefined, ignored('REQUEST_FOR_RECONSIDERATION')],

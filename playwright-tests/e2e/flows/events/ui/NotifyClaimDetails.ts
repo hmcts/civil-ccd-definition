@@ -15,7 +15,9 @@ export class NotifyClaimDetails {
     this.pageHelper = new PageHelper(this.page);
   }
 
-  async notify(claimType: claimTypes, whomToNotify: notifyClaimOptions = notifyClaimOptions.BOTH) {
+  // particularsAlreadyUploaded: the claimant's solicitor uploaded the particulars of claim with "Add or amend claim
+  // documents", so the page already shows them and only the other documents are added
+  async notify(claimType: claimTypes, whomToNotify: notifyClaimOptions = notifyClaimOptions.BOTH, particularsAlreadyUploaded = false) {
 
     await this.pageHelper.selectNextStep('Notify claim details');
     if (claimType === claimTypes.ONE_VS_TWO_DIFF_SOL) {
@@ -32,7 +34,7 @@ export class NotifyClaimDetails {
             await this.buttonHelper.ignoreWarningAndContinueButton.click();
           }
 
-          await this.uploadNotifyClaimDetailsDocs();
+          await this.uploadNotifyClaimDetailsDocs(particularsAlreadyUploaded);
           await this.pageHelper.continueToNextPage();
           await this.pageHelper.submitEvent();
           break;
@@ -44,7 +46,7 @@ export class NotifyClaimDetails {
       await new CoSHelper(this.page).submit(claimType, 'NotifyClaimDetails');
       await this.pageHelper.submitEvent();
     } else {
-      await this.uploadNotifyClaimDetailsDocs();
+      await this.uploadNotifyClaimDetailsDocs(particularsAlreadyUploaded);
       await this.pageHelper.continueToNextPage();
       // Any litigant in person defendant also needs a Certificate of Service page completing
       if (CoSHelper.litigantInPersonDefendants(claimType).length > 0) {
@@ -56,7 +58,7 @@ export class NotifyClaimDetails {
 
 
 
-  private async uploadNotifyClaimDetailsDocs() {
+  private async uploadNotifyClaimDetailsDocs(particularsAlreadyUploaded: boolean) {
     const documentsMap = new Map<number, string>([
       [1, 'particularsOfClaim'],
       [3, 'medicalReport'],
@@ -65,8 +67,12 @@ export class NotifyClaimDetails {
     ]);
 
     // Each upload goes through uploadFile, which waits for it to finish and uploads again if the document store
-    // rate limits it
+    // rate limits it. A collection with a document in it has a second Add new button below it, so the buttons for the
+    // later collections are in the same place whether the particulars of claim were already there or are added here.
     for (const [addNewButtonIndex, documentType] of documentsMap.entries()) {
+      if (documentType === 'particularsOfClaim' && particularsAlreadyUploaded) {
+        continue;
+      }
       await this.page.locator(`:nth-match(:text("Add new"), ${addNewButtonIndex})`).click();
       if (documentType === 'particularsOfClaim') {
         await this.pageHelper.uploadFile(

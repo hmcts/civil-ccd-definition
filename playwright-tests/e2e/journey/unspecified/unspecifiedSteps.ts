@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { envUrl } from '../../../civilConfig.ts';
+import { claimantSolicitorCredentials, envUrl, respondent1SolicitorCredentials } from '../../../civilConfig.ts';
 import { CreateUnspecifiedCase } from '../../flows/createUnspecifiedCase.ts';
 import { CreateClaim } from '../../flows/events/api/CreateClaim.ts';
 import { NotifyClaim as ApiNotifyClaim } from '../../flows/events/api/NotifyClaim.ts';
@@ -55,6 +55,10 @@ import { ValidateDiscontinueClaim } from '../../flows/events/ui/ValidateDisconti
 import { ValidateDiscontinueClaim as ApiValidateDiscontinueClaim } from '../../flows/events/api/ValidateDiscontinueClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
 import { CaseProceedsInCaseman } from '../../flows/events/ui/CaseProceedsInCaseman.ts';
+import { AmendPartyDetails } from '../../flows/events/ui/AmendPartyDetails.ts';
+import { AmendPartyDetails as ApiAmendPartyDetails } from '../../flows/events/api/AmendPartyDetails.ts';
+import { AddOrAmendClaimDocuments } from '../../flows/events/ui/AddOrAmendClaimDocuments.ts';
+import { AddOrAmendClaimDocuments as ApiAddOrAmendClaimDocuments } from '../../flows/events/api/AddOrAmendClaimDocuments.ts';
 import { DismissCase } from '../../flows/events/ui/DismissCase.ts';
 import { DismissCase as ApiDismissCase } from '../../flows/events/api/DismissCase.ts';
 import { sendAndReplySteps } from '../sendAndReplySteps.ts';
@@ -200,6 +204,9 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     c.claimShape.defendants.length === 2 && c.claimShape.defendants.some((defendant) => defendant.solicitor === 'none'),
     'Skipping as the claimant\'s solicitor cannot settle or discontinue a claim against two defendants where one is a litigant in person',
   ];
+  // Whether the claimant's solicitor has uploaded the particulars of claim with "Add or amend claim documents", which
+  // Notify claim details then shows instead of asking for them
+  let particularsOfClaimUploaded = false;
   // Whether the claimant's discontinuance waits for court staff to validate it, once the claimant has discontinued
   let discontinuanceAwaitingValidation = false;
 
@@ -348,6 +355,28 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       },
     },
 
+    // The claimant's solicitor uploads the particulars of claim with "Add or amend claim documents" once the claim is
+    // issued, which Notify claim details then serves. Only run with ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes.
+    {
+      name: 'ADD_OR_AMEND_CLAIM_DOCUMENTS',
+      title: 'Claimant Solicitor uploads the particulars of claim.',
+      user: 'claimantSolicitor',
+      skipIf: [[c.addOrAmendClaimDocuments !== yesNo.YES, 'Adding claim documents is switched off (set ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes to run it)']],
+      run: async ({ page, storageState }) => {
+        if (ctx.useApi()) {
+          await new ApiAddOrAmendClaimDocuments().submit(ctx.caseId);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new AddOrAmendClaimDocuments(page).submit();
+          });
+        }
+        const particulars = (await ctx.testingEndpointHelper.getCaseData(ctx.caseId)).servedDocumentFiles?.particularsOfClaimDocument ?? [];
+        expect(particulars, 'The particulars of claim were not saved').toHaveLength(1);
+        particularsOfClaimUploaded = true;
+        await ctx.assertCaseState(caseStates.CASE_ISSUED);
+      },
+    },
+
     {
       name: 'NOTIFY_CLAIM',
       title: 'Claimant Solicitor undertakes event: Notify claim ',
@@ -380,7 +409,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
           await new ApiNotifyClaimDetails().notify(c, ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails);
+            await new NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails, particularsOfClaimUploaded);
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS');
@@ -398,6 +427,38 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
 
     // Default judgment (DEFAULT_JUDGMENT=Yes): the time for responding passes with no response. The response deadlines
     // are moved to yesterday through civil-service's testing support, as waiting for them is not practical.
+    // The hearing centre admin changes the legal representatives' email addresses with "Amend party details": Defendant
+    // 1's solicitor's to the address they sign in with (the claim was created with a made-up one), and the claimant's
+    // solicitor's to theirs. Only run with AMEND_PARTY_DETAILS=Yes, where Defendant 1 has a solicitor.
+    {
+      name: 'AMEND_PARTY_DETAILS',
+      title: 'Hearing Centre Admin amends the legal representatives\' email addresses.',
+      user: 'hearingCentreAdmin',
+      skipIf: [
+        [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
+        offlineAtNotify,
+        [c.claimShape.defendants[0].solicitor === 'none', 'Skipping as Defendant 1 is a litigant in person, so has no legal representative'],
+      ],
+      run: async ({ page, storageState }) => {
+        const stateBefore = ctx.lastStateReached;
+        const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
+        if (ctx.useApi()) {
+          await new ApiAmendPartyDetails().submit(ctx.caseId, emails);
+        } else {
+          await ctx.runEvent(page, storageState, async () => {
+            await new AmendPartyDetails(page).submit(emails);
+          });
+        }
+        const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+        expect(saved, 'The amended email addresses were not saved').toMatchObject({
+          specRespondentSolicitor1EmailAddress: emails.defendant1Solicitor,
+          respondentSolicitor1EmailAddress: emails.defendant1Solicitor,
+          applicantSolicitor1UserDetails: { email: emails.claimantSolicitor },
+        });
+        await ctx.assertCaseState(stateBefore);
+      },
+    },
+
     {
       name: 'MOVE_RESPONSE_DEADLINE',
       title: 'The time for the defendants to respond passes.',

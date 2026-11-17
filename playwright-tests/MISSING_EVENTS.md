@@ -27,20 +27,10 @@ for it, but no test calls that step.
 - Dispute resolution hearing: DISPUTE_RESOLUTION_HEARING=Yes (UI + API, both journeys; the small claims SDO lists a DRH, with the witness statement deadline filled in), passed AAT on 2026-11-16: unspec small 1v1 API to All_FINAL_ORDERS_ISSUED, unspec small 1v1 UI (judge's SDO), spec small 1v1 UI (legal adviser's SDO, then the whole journey)
 - `SEND_AND_REPLY` (Send and reply to messages): SEND_AND_REPLY=Yes (UI + API, both journeys; the hearing centre admin sends a district judge a message and the judge replies, while the case is stayed with STAY_CASE=Yes, otherwise in JUDICIAL_REFERRAL), passed AAT on 2026-11-17: unspec 1v1 UI on a stayed case, spec 1v1 API in JUDICIAL_REFERRAL
 - `DISMISS_CASE` (Dismiss case): DISMISS_CASE=Yes (UI + API, both journeys, a closing step like CASE_PROCEEDS_IN_CASEMAN), passed AAT on 2026-11-17: unspec 1v1 UI and spec 1v1 API, each dismissed in JUDICIAL_REFERRAL
+- `AMEND_PARTY_DETAILS` (Amend party details): AMEND_PARTY_DETAILS=Yes (UI + API, both journeys; the hearing centre admin changes Defendant 1's solicitor's email, in both of the page's boxes for it, and the claimant's solicitor's email, once the defendants' solicitors are on the claim), passed AAT on 2026-11-17: unspec 1v1 UI, unspec 1v2DS API, spec 1v1 UI and API
+- `ADD_OR_AMEND_CLAIM_DOCUMENTS` (Add or amend claim documents): ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes (UI + API, unspec; the claimant's solicitor uploads the particulars of claim once the claim is issued, which Notify claim details then serves), passed AAT on 2026-11-17: unspec 1v1 UI and 1v2DS API, each through Notify claim details
 
 ## Events
-
-### Case management
-
-| Next step | Event ID | Who | Notes |
-| --- | --- | --- | --- |
-| Amend party details | `AMEND_PARTY_DETAILS` | Hearing centre admin | |
-
-### Solicitor events
-
-| Next step | Event ID | Who | Notes |
-| --- | --- | --- | --- |
-| Add or amend claim documents | `ADD_OR_AMEND_CLAIM_DOCUMENTS` | Claimant solicitor (unspec) | |
 
 ### General applications
 
@@ -66,6 +56,5 @@ LiPs as defendants, where solicitor-side events act for them.
 
 ## Suggested order
 
-1. `AMEND_PARTY_DETAILS` and `ADD_OR_AMEND_CLAIM_DOCUMENTS`
-2. The general application events (`HEARING_SCHEDULED_GA`, `RESPOND_TO_JUDGE_ADDITIONAL_INFO`)
-3. The automated hearing notice scheduler and flight delay
+1. The general application events (`HEARING_SCHEDULED_GA`, `RESPOND_TO_JUDGE_ADDITIONAL_INFO`)
+2. The automated hearing notice scheduler and flight delay

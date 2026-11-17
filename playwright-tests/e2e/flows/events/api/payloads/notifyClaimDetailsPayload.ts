@@ -40,8 +40,10 @@ export async function buildNotifyClaimDetailsPayload(
 
   if (documents.servedDocuments) {
     const { particularsOfClaim, medicalReport, scheduleOfLoss, certificateOfSuitability } = documents.servedDocuments;
+    // Particulars of claim already uploaded with "Add or amend claim documents" are kept, as the UI's page shows them
+    const uploadedParticulars = startCaseData.servedDocumentFiles?.particularsOfClaimDocument;
     data.servedDocumentFiles = {
-      particularsOfClaimDocument: [{ id: randomUUID(), value: particularsOfClaim }],
+      particularsOfClaimDocument: uploadedParticulars?.length ? uploadedParticulars : [{ id: randomUUID(), value: particularsOfClaim }],
       medicalReport: [{ id: randomUUID(), value: { document: medicalReport } }],
       scheduleOfLoss: [{ id: randomUUID(), value: { document: scheduleOfLoss } }],
       certificateOfSuitability: [{ id: randomUUID(), value: { document: certificateOfSuitability } }],

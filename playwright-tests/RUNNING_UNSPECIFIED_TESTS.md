@@ -120,9 +120,11 @@ Steps, in the order they run:
 - CREATE_CLAIM
 - REFUND (group: REFUND_OVERPAYMENT, REFUND_REQUEST, REFUND_RETURN, REFUND_RESUBMIT, REFUND_DECISION, optional; here by default, or after the REFUND_AFTER step)
 - ADD_CASE_NOTE (optional)
+- ADD_OR_AMEND_CLAIM_DOCUMENTS (optional)
 - NOTIFY_CLAIM
 - NOTIFY_CLAIM_DETAILS
 - NOTICE_OF_CHANGE (group: _CLAIMANT_1, _DEFENDANT_1, _DEFENDANT_2, optional; here by default, or after the NOTICE_OF_CHANGE_AFTER step)
+- AMEND_PARTY_DETAILS (optional)
 - MOVE_RESPONSE_DEADLINE, DEFAULT_JUDGMENT, STANDARD_DIRECTION_ORDER_DJ (optional)
 - ACKNOWLEDGE_CLAIM_DEFENDANT1, ACKNOWLEDGE_CLAIM_DEFENDANT2
 - ADD_DEFENDANT_LITIGATION_FRIEND_DEFENDANT1, ADD_DEFENDANT_LITIGATION_FRIEND_DEFENDANT2 (optional)
@@ -481,6 +483,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `FINAL_ORDER` | Small and fast: FREE_FORM_ORDER, ASSISTED_ORDER. Intermediate: BLANK_TEMPLATE_AFTER_HEARING, BLANK_TEMPLATE_BEFORE_HEARING, FIX_A_DATE_FOR_CMC. Multi: those three and FIX_A_DATE_FOR_CCMC | First order for the track | FREE_FORM_ORDER on small and fast, BLANK_TEMPLATE_AFTER_HEARING on intermediate and multi. |
 | `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee and the hearing fee are paid. CARD is always paid in the UI, on GOV.UK Pay's pages. Any other value stops the run. |
 | `ADD_CASE_NOTE` | Yes, No | No | Optional event: Hearing Centre Admin adds a case note after the claim is issued. |
+| `ADD_OR_AMEND_CLAIM_DOCUMENTS` | Yes, No | No | Optional event: once the claim is issued, the claimant's solicitor uploads the particulars of claim with "Add or amend claim documents", which is only offered until the claim details are notified. The test checks they were saved. Notify claim details then serves them instead of asking for them again. Has an API version. |
+| `AMEND_PARTY_DETAILS` | Yes, No | No | Optional event: once Notify claim details has run, the hearing centre admin changes the legal representatives' email addresses with "Amend party details": Defendant 1's solicitor's to the address they sign in with (the claim is created with a made-up one) and the claimant's solicitor's to theirs. The test checks they were saved. Skipped where Defendant 1 is a litigant in person or the claim went offline when notified. Has an API version. |
 | `STAY_CASE` | Yes, No | No | Optional events: stay the case, request an update and lift the stay, after the claimant's response. |
 | `SETTLE_CLAIM` | MARK_PAID_IN_FULL, JUDGE_ORDER, CONSENT_ORDER | None | Optional event, once the rest of the journey has run or where STOP_AT_STATE or STOP_AFTER_TEST stops it. MARK_PAID_IN_FULL: the claimant's solicitor marks the claim paid in full with "Settle this claim", which stays the case (CASE_STAYED); with two claimants it is for both. JUDGE_ORDER or CONSENT_ORDER: the hearing centre admin records with court staff's "Settle this claim" that the claim settled for that reason (CASE_SETTLED). Has an API version. |
 | `DISCONTINUE_CLAIM` | NO_PERMISSION_NEEDED, PERMISSION_GRANTED | None | Optional events, once the rest of the journey has run or where STOP_AT_STATE or STOP_AFTER_TEST stops it: the claimant's solicitor fully discontinues the claim with "Discontinue this claim", for every claimant and against every defendant. NO_PERMISSION_NEEDED: the court's permission is not needed, so the claim is discontinued (CASE_DISCONTINUED). PERMISSION_GRANTED: a judge gave permission today, and the hearing centre admin then validates the discontinuance, which discontinues the claim. Not offered once the final orders are issued or while the case is stayed. Has an API version. |
