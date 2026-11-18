@@ -42,7 +42,13 @@ async function isSavedSessionAccepted(authFile: string): Promise<boolean> {
 for (const key of sessionUsersForRun()) {
   const { credentials, authFile } = sessionUsers[key];
   setup(`Authenticate ${credentials.name}`, async ({ page }) => {
-    setup.skip(await isSavedSessionAccepted(authFile), "Reusing existing valid session");
+    // A session XUI still accepts means the user is signed in, so the sign-in passes (rather than being reported as
+    // skipped, which reads as if something did not run)
+    if (await isSavedSessionAccepted(authFile)) {
+      setup.info().annotations.push({ type: 'session', description: 'Reused the saved session, which XUI still accepts' });
+      console.log(`${credentials.name} is still signed in, so the saved session is reused`);
+      return;
+    }
     const state = await signInWithoutBrowser(key);
     if (state) {
       saveSession(authFile, state);
