@@ -248,21 +248,27 @@ def copyPrevJourneysState() {
 // playwright-tests set failed (set is smoke or pr), naming the scenarios that failed. A set skipped because it already
 // passed leaves the last build's state, which is not this build's, so it is ignored.
 def markStageFailedIfJourneysFailed(String set) {
-  def stateFile = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/${set}.properties"
-  if (!fileExists(stateFile)) {
-    return
-  }
-  def state = readProperties file: stateFile
-  if (state.BUILD_TAG == env.BUILD_TAG && state.STATUS == 'failed') {
+  def state = journeysStateOfThisBuild(set)
+  if (state?.STATUS == 'failed') {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
       error "The playwright-tests ${set} journeys failed. Failed scenarios: ${state.FAILED_SCENARIOS ?: 'none recorded (see the log)'}"
     }
   }
 }
 
-// Publishes the playwright-tests journeys' Allure report. It runs after the smoke stage, in case that fails and the
-// functional stage does not run, and again after the functional stage with both runs' results; the last build's
-// history is only brought in the first time.
+// The state this build's run of a playwright-tests set (smoke or pr) saved, or null when this build did not run it
+def journeysStateOfThisBuild(String set) {
+  def stateFile = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/${set}.properties"
+  if (!fileExists(stateFile)) {
+    return null
+  }
+  def state = readProperties file: stateFile
+  return state.BUILD_TAG == env.BUILD_TAG ? state : null
+}
+
+// Publishes the playwright-tests journeys' Allure report, with the results of every set run so far. It is published
+// after the functional stage, and after the smoke stage only when the smoke test failed (the functional stage may then
+// not run), as each publish adds a link to the build's page. The last build's history is only brought in once.
 def publishJourneysReport(yarnBuilder) {
   if (fileExists('playwright-allure-journeys-results')) {
     if (env.JOURNEYS_ALLURE_HISTORY_COPIED != 'true') {
@@ -544,7 +550,9 @@ withPipeline(type, product, component) {
     if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
-    publishJourneysReport(yarnBuilder)
+    if (journeysStateOfThisBuild('smoke')?.STATUS == 'failed') {
+      publishJourneysReport(yarnBuilder)
+    }
     markStageFailedIfJourneysFailed('smoke')
   }
 
