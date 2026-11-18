@@ -10,6 +10,10 @@ import GaCaseStates from '../enums/gaCaseStates.ts';
 import CaseType from '../enums/caseType.ts';
 import { CaseUserRegistry } from './CaseUserRegistry.ts';
 
+// How many times the trial bundle is triggered when civil-service answers "failed", and the pause between tries
+const trialBundleAttempts = 3;
+const trialBundleRetrySeconds = 15;
+
 
 export class TestingEndPointHelper {
 
@@ -357,15 +361,26 @@ export class TestingEndPointHelper {
 
   // Creates the trial bundle, which a civil-service scheduler normally does about 3 weeks before the hearing
   // (event CREATE_BUNDLE). The bundle is stitched together afterwards, see waitForBundleStitched.
+  // civil-service answers "failed" whatever went wrong, and on a busy environment it is usually the document services
+  // (the bundling or stitching service not ready, or several bundles at once), so it is tried again a few times once the
+  // case's business process has finished. A bundle made by an earlier try does no harm: the newest one is checked.
   async triggerTrialBundle(caseId: string) {
-    const apiRequestContext: APIRequestContext = await request.newContext();
-    try {
-      const response = await apiRequestContext.get(`${this.testingSupportUrl}/${caseId}/trigger-trial-bundle`);
-      const result = await response.text();
-      expect(response.ok() && result.includes('success'), `Triggering the trial bundle returned ${response.status()}: ${result}`).toBeTruthy();
-      console.log(`Trial bundle triggered for case ${caseId}`);
-    } finally {
-      await apiRequestContext.dispose();
+    for (let attempt = 1; attempt <= trialBundleAttempts; attempt++) {
+      const apiRequestContext: APIRequestContext = await request.newContext();
+      try {
+        const response = await apiRequestContext.get(`${this.testingSupportUrl}/${caseId}/trigger-trial-bundle`);
+        const result = await response.text();
+        if (response.ok() && result.includes('success')) {
+          console.log(`Trial bundle triggered for case ${caseId}`);
+          return;
+        }
+        expect(attempt < trialBundleAttempts, `Triggering the trial bundle returned ${response.status()}: ${result} (${attempt} attempts)`).toBeTruthy();
+        console.log(`Triggering the trial bundle for case ${caseId} returned ${response.status()}: ${result}, so it is tried again (attempt ${attempt + 1} of ${trialBundleAttempts})`);
+      } finally {
+        await apiRequestContext.dispose();
+      }
+      await this.waitForNoOngoingBusinessProcess(caseId);
+      await new Promise((resolve) => setTimeout(resolve, trialBundleRetrySeconds * 1000));
     }
   }
 
