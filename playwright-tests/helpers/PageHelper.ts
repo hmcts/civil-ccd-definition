@@ -19,6 +19,12 @@ const transientCcdErrors = [
   'timed out',
 ];
 
+// What civil-service's about to start callback says, and XUI shows on the case page, when an event is started while the
+// case's last business process is still running in Camunda
+const businessProcessRunning = 'There is a technical issue causing a delay';
+// How many times an event opened by its URL is opened when civil-service refuses for that reason
+const eventOpenAttempts = 3;
+
 // The body XUI returns, with HTTP 403, when it no longer has the user's session
 const xuiSessionEndedBody = '{"message":"Internal Server Error"}';
 // import {imageLocators} from "../fixtures/imageLocators";
@@ -90,6 +96,7 @@ export class PageHelper {
           throw new SessionEndedError(`opening ${url} went to the sign in page`);
         }
         if (loaded) {
+          await this.reopenEventRefusedWhileBusy(url);
           return;
         }
         if (attempt === attempts) {
@@ -97,6 +104,28 @@ export class PageHelper {
         }
         console.log(`XUI not loaded after ${waitSeconds}s, reloading (attempt ${attempt + 1} of ${attempts}): ${url}`);
         await this.page.reload();
+      }
+    }
+
+    // An event opened by its URL (.../cases/case-details/<jurisdiction>/<case type>/<case ID>/trigger/<event>/...) is
+    // refused while the case's last business process is still running, which XUI shows as an error on the case page.
+    // Steps follow each other faster than a person would, so the event is opened again once the process has finished.
+    private async reopenEventRefusedWhileBusy(url: string) {
+      const caseId = url.match(/\/case-details\/[^/]+\/[^/]+\/(\d{16})\/trigger\//)?.[1];
+      if (!caseId) {
+        return;
+      }
+      const refused = this.page.getByText(businessProcessRunning);
+      for (let attempt = 1; attempt < eventOpenAttempts; attempt++) {
+        const outcome = await this.page.locator('ccd-case-edit-page').or(refused).first()
+          .waitFor({ state: 'visible', timeout: 30_000 })
+          .then(async () => (await refused.isVisible() ? 'refused' : 'opened'), () => 'unknown');
+        if (outcome !== 'refused') {
+          return;
+        }
+        console.log(`Opening ${url} was refused as a business process was still running on case ${caseId}, so it is opened again once that has finished`);
+        await new TestingEndPointHelper().waitForNoOngoingBusinessProcess(caseId);
+        await this.page.goto(url);
       }
     }
 
