@@ -2045,5 +2045,25 @@
         "CRUD": "RU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "CaseFieldID": "notificationSummary",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "civil-administrator-standard",
+          "civil-administrator-basic",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

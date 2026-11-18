@@ -25,9 +25,8 @@ export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
 
   async enterDate(ccdCaseData: CCDCaseData) {
     const extensionDate = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline!, {
-      days: 28,
+      days: 21,
       workingDay: true,
-      //addDayAfter4pm: true,
     });
     await this.dateFragment.enterDate(extensionDate, inputs.extensionDate.selectorKey);
   }

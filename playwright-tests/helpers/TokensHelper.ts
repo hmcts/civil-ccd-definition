@@ -113,7 +113,7 @@ export class TokensHelper {
         } catch (error) {
             throw new Error(
                 `An error occurred while fetching the access token: ${
-                    error instanceof Error ? error.message : error }`
+                    error instanceof Error ? error.message : error }`, { cause: error }
             );
         };
     }
@@ -174,7 +174,7 @@ export class TokensHelper {
             throw new Error(
                 `An error occurred while fetching the uid: ${
                     error instanceof Error ? error.message : error
-                }`
+                }`, { cause: error }
             );
         };
     }
@@ -223,7 +223,7 @@ export class TokensHelper {
             throw new Error(
                 `An error occurred while fetching the S2S token: ${
                     error instanceof Error ? error.message : error
-                }`
+                }`, { cause: error }
             );
         };
     }
@@ -263,7 +263,7 @@ export class TokensHelper {
             throw new Error(
                 `An error occurred while fetching the Event token: ${
                     error instanceof Error ? error.message : error
-                }`
+                }`, { cause: error }
             );
         };
     }

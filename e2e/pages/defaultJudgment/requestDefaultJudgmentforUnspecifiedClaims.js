@@ -9,7 +9,7 @@ module.exports = {
       id: '#defendantDetails',
       options: {
         defendantname: '#defendantDetails > fieldset > div',
-        both: '#defendantDetails > fieldset > div:nth-of-type(3)'
+        both: '//label[normalize-space(.)="Both Defendants"]'
       }
     },
 

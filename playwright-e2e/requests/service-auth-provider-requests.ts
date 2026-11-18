@@ -30,7 +30,7 @@ export default function ServiceAuthProviderRequests<
           method: 'POST',
           body: {
             microservice: config.s2s.microservice,
-            oneTimePassword: TOTP.generate(config.s2s.secret).otp,
+            oneTimePassword: (await TOTP.generate(config.s2s.secret)).otp,
           },
         };
         const responseText = await super.retryRequestText(url, requestOptions);

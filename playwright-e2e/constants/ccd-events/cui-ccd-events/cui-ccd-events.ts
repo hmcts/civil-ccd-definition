@@ -60,6 +60,12 @@ const cuiCCDEvents: CuiCCDEvents = {
     description: 'Respond to a query',
     order: 32,
   },
+  INITIATE_GENERAL_APPLICATION: {
+    id: 'INITIATE_GENERAL_APPLICATION',
+    name: 'Make an application',
+    description: 'Citizen applicant makes a general application',
+    order: 33,
+  },
 };
 
 export default cuiCCDEvents;

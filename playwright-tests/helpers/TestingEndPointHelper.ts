@@ -220,7 +220,7 @@ export class TestingEndPointHelper {
       throw new Error(
         `An error occurred while telling civil-service the claim fee was paid: ${
           error instanceof Error ? error.message : error
-        }`
+        }`, { cause: error }
       );
     };
   }
@@ -722,7 +722,7 @@ export class TestingEndPointHelper {
       throw new Error(
         `An error occurred while trying to create the appeal: ${
           error instanceof Error ? error.message : error
-        }`
+        }`, { cause: error }
       );
     } finally {
       await apiRequestContext.dispose();

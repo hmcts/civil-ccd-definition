@@ -1,7 +1,7 @@
 export const subheadings = {
   issueCivilCourtProceedings: 'Issue civil court proceedings',
   whoCanUseThisService: 'Who can use this service',
-  pleaseNote: 'Please note: You can only use this service if you are a solicitor organisation',
+  pleaseNote: 'Please note: You can only use this service if you are a legal representative as defined by CPR 2.3(1)',
   aboutTheClaimants: 'About the Claimants',
   aboutTheDefendants: 'About the Defendants',
   aboutTheClaim: 'About the claim',

@@ -418,7 +418,7 @@ module.exports = {
 
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondent1deadline ={};
+    let respondent1deadline;
     respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
     await testingSupport.updateCaseData(caseId, respondent1deadline);
   },
@@ -1583,7 +1583,7 @@ module.exports = {
 
   createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', typeOfData = '') => {
     console.log('Starting to create claim');
-    let payload = {};
+    let payload;
     await apiRequest.setupTokens(user);
     let userId = await apiRequest.fetchUserId();
     if (claimType === 'FastTrack') {
@@ -1862,7 +1862,7 @@ module.exports = {
 
   amendWhenWillThisAmountBePaidDeadLine: async (user) => {
     await apiRequest.setupTokens(user);
-    let respondToClaimDeadLine ={};
+    let respondToClaimDeadLine;
     respondToClaimDeadLine =   {'respondToClaimAdmitPartLRspec': {'whenWillThisAmountBePaid': '2025-03-26',} };
     await testingSupport.updateCaseData(caseId, respondToClaimDeadLine);
   },
@@ -1950,7 +1950,7 @@ module.exports = {
   },
 
   amendHearingDueDate: async (caseId, user) => {
-    let hearingDueDate = {};
+    let hearingDueDate;
     hearingDueDate = {'hearingDueDate': '2022-01-10'};
     await testingSupport.updateCaseData(caseId, hearingDueDate, user);
   },
@@ -2898,7 +2898,7 @@ const assertDocVisibilityToUser = async ( user, gaUserRole, parentCaseId, gaCase
   if (gaUserRole != null) {
     docGaTitle = doc + 'Doc' + gaUserRole;
   }
-  let docCivil = '';
+  let docCivil;
   const response = await apiRequest.fetchMainCivilCaseData(parentCaseId, user);
   const civilCaseData = await response.json();
   const updatedResponse = await apiRequest.fetchGaCaseData(gaCaseId);
@@ -2924,7 +2924,7 @@ const assertGaDocVisibilityToUser = async ( user, parentCaseId, gaCaseId, doc) =
 };
 
 const assertNullGaDocVisibilityToUser = async ( user, parentCaseId, doc) => {
-  let docCivil = '';
+  let docCivil;
   const response = await apiRequest.fetchUpdatedCaseData(parentCaseId, user);
   const civilCaseData = await response.json();
   if(user.email === config.applicantSolicitorUser.email){

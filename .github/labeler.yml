@@ -1,3 +1,5 @@
 data-changes:
-  - ccd-definition/CaseField.json
-  - ccd-definition/ComplexTypes/*
+  - changed-files:
+      - any-glob-to-any-file:
+          - ccd-definition/**/CaseField/**
+          - ccd-definition/**/ComplexTypes/**

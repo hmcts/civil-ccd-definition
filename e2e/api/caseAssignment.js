@@ -18,7 +18,7 @@ const serviceToken = async() => {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: TOTP.generate(config.s2s.secret).otp
+        oneTimePassword: (await TOTP.generate(config.s2s.secret)).otp
       })
       .then(response => response.text());
   }

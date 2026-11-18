@@ -471,7 +471,7 @@ const sameRateInterestSelectionSchema = (sameRateInterestType: SameRateInterestT
   z.strictObject({
     sameRateInterestType: z.literal(sameRateInterestType),
     ...(sameRateInterestType === SameRateInterestType.DIFFERENT_RATE && {
-      differentRate: nonEmptyString,
+      differentRate: z.number(),
       differentRateReason: nonEmptyString,
     }),
   });
@@ -513,7 +513,7 @@ const claimInterest = (
     interestClaimOption === InterestClaimOption.BREAK_DOWN_INTEREST
       ? {
           interestClaimOptions: z.literal(InterestClaimOption.BREAK_DOWN_INTEREST),
-          breakDownInterestTotal: nonEmptyString,
+          breakDownInterestTotal: z.number(),
           breakDownInterestDescription: nonEmptyString,
         }
       : {

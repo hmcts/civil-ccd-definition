@@ -5,6 +5,7 @@ import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events/ccd-events/ccd-events';
 import CaseState from '../../../constants/cases/case-state';
+import GaCaseState from '../../../constants/cases/ga-case-states';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-utils/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
@@ -464,6 +465,38 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
       },
       ccdEvents.QUERY_MANAGEMENT_RAISE,
       { expectedState: CaseState.CASE_PROGRESSION },
+    );
+  }
+
+  async InitiateGeneralApplication() {
+    const { initiateGeneralApplicationActions } = this.defendantActionsFactory;
+    await super.retryCCDEvent(
+      async () => {
+        await initiateGeneralApplicationActions.gaType();
+        await initiateGeneralApplicationActions.gaHearingDate();
+        await initiateGeneralApplicationActions.gaRespondentAgreement();
+        await initiateGeneralApplicationActions.gaUrgencyRecord();
+        await initiateGeneralApplicationActions.gaWithOrWithoutNotice();
+        await initiateGeneralApplicationActions.gaStatementOfTruth();
+        await initiateGeneralApplicationActions.gaHearingDetails();
+        await initiateGeneralApplicationActions.gaPbaDetails();
+        await initiateGeneralApplicationActions.gaSubmit();
+      },
+      async () => {
+        await initiateGeneralApplicationActions.gaConfirm();
+      },
+      ccdEvents.INITIATE_GENERAL_APPLICATION,
+      { verifySuccessEvent: false, expectedState: CaseState.AWAITING_RESPONDENT_ACKNOWLEDGEMENT },
+    );
+
+    await super.waitForGAFinishedBusinessProcess();
+    await super.fetchAndSetCCDCaseData();
+    const gaCaseId = super.getGaCCDCaseIdFromParentCaseUsingSolicitorUser(defendantSolicitor1User);
+    await super.waitForFinishedBusinessProcess(gaCaseId);
+    await super.fetchAndSetGaCCDCaseData(
+      gaCaseId,
+      undefined,
+      GaCaseState.AWAITING_APPLICATION_PAYMENT,
     );
   }
 }

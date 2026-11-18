@@ -42,7 +42,7 @@ module.exports = {
   dateNoWeekendsBankHolidayNextDay: async function dateNoWeekendsBankHolidayNextDay(days = 0) {
     const date = getDate(days);
     let date_String = date.toISOString().slice(0, 10);
-    let isDateABankHoliday = false;
+    let isDateABankHoliday;
     if (date.getDay() !== 6 && date.getDay() !== 0) {
       try {
         const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');

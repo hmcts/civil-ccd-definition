@@ -24,7 +24,7 @@ const getS2sToken = async ({microservice, secret}) => {
     {'Content-Type': 'application/json'},
     {
       microservice: microservice,
-      oneTimePassword: TOTP.generate(secret).otp
+      oneTimePassword: (await TOTP.generate(secret)).otp
     })
     .then(response => response.text());
   

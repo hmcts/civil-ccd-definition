@@ -44,7 +44,7 @@ const fetchCivilS2sToken = async (requestContext: APIRequestContext) => {
     method: 'POST',
     data: {
       microservice: config.s2s.microservice,
-      oneTimePassword: TOTP.generate(config.s2s.secret).otp,
+      oneTimePassword: (await TOTP.generate(config.s2s.secret)).otp,
     },
   };
   const responseText = await (await requestContext.fetch(url, requestOptions)).text();

@@ -40,14 +40,14 @@ export const noDuplicateClassNames = createRule<Options, MessageIds>({
   create(context) {
     return {
       ClassDeclaration(node) {
-        if (classNames[node.id!.name] && classNames[node.id!.name] !== context.getFilename()) {
+        if (classNames[node.id!.name] && classNames[node.id!.name] !== context.filename) {
           context.report({
             node,
             data: { callee: node.id!.name },
             messageId: 'default',
           });
         } else {
-          classNames[node.id!.name] = context.getFilename();
+          classNames[node.id!.name] = context.filename;
         }
       },
     };

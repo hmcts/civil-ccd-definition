@@ -48,7 +48,7 @@ export class ServiceAuthUtils {
       throw new Error(
         `An error occurred while fetching the access token: ${
           error instanceof Error ? error.message : error
-        }`
+        }`, { cause: error }
       );
     }
   }
