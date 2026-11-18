@@ -2,7 +2,7 @@
 
 Example command lines for the playwright-tests unspecified journey (playwright-tests/e2e/journeys/UnspecifiedSS.test.ts), and the parameters a claim can be built with. Run every command from the repository root. Settings are environment variables put in front of the command. Add --headed to watch the browser. The specified journey has its own guide, RUNNING_SPECIFIED_TESTS.md.
 
-Each command starts the journey from scratch: it creates a new claim and takes it through the steps in order. A step that does not apply to the claim, or is switched off, is skipped.
+Each command starts the journey from scratch: it creates a new claim and takes it through the steps in order. A step that is switched off, that the claim type does not have, or that comes after STOP_AFTER_TEST is left out of the run, so the report only lists the steps that run. A step that turns out not to apply while the journey runs, such as one after STOP_AT_STATE, is skipped.
 
 ## 1. Environments
 
@@ -448,7 +448,7 @@ The pipeline sets are picked by tag, each run by a project of the same name (wit
 | unspec-master, spec-master | On master, against AAT | The PR sets plus 1v2SS and the specified LIP claim |
 | unspec-nightly, spec-nightly | Each weekday at 08:00 (Jenkinsfile_nightly), against AAT | Every scenario except the smoke test |
 
-On the pipelines playwright-tests/scripts/pipeline/run-journeys.sh runs them (yarn test:journeys:smoke:ci, test:journeys:functional:ci and test:journeys:nightly:ci). It runs every project of the set in one Playwright run, fills in the settings the Jenkinsfiles do not set (WORKERS=4, PAYMENT_METHOD=CARD, AAT's Camunda and WA task monitor), sends the PR set through the CCD API (SCENARIO_API_UNTIL, default All_FINAL_ORDERS_ISSUED) apart from UNSPEC_1v1_FAST, which stays in the UI as the nightly set has the full UI journeys, and does not repeat work a build of the same commit has done: a set that passed is skipped, and a set that failed only runs its failed scenarios again, from the start of each journey. The Allure report is playwright-allure-journeys-results (yarn test:journeys:generate-report). The Jenkinsfiles do not call the script yet.
+On the pipelines playwright-tests/scripts/pipeline/run-journeys.sh runs them (yarn test:journeys:smoke:ci, test:journeys:functional:ci and test:journeys:nightly:ci). It runs every project of the set in one Playwright run, fills in the settings the Jenkinsfiles do not set (WORKERS=4, PAYMENT_METHOD=CARD, AAT's Camunda and WA task monitor), sends the PR set through the CCD API (SCENARIO_API_UNTIL, default All_FINAL_ORDERS_ISSUED) apart from UNSPEC_1v1_FAST, which stays in the UI as the nightly set has the full UI journeys, and does not repeat work a build of the same commit has done: a set that passed is skipped, and a set that failed only runs its failed scenarios again, from the start of each journey. The Allure report is playwright-allure-journeys-results (yarn test:journeys:generate-report). Jenkinsfile_CNP and Jenkinsfile_nightly call it, alongside the old tests.
 
 To run a set yourself:
 

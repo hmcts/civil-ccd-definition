@@ -32,8 +32,8 @@ export interface JourneyStep {
   // The user the step runs as, from their saved session
   user: SessionUserKey;
   // Reasons the step does not apply to this journey, each a [condition, reason] pair. They are known before the
-  // journey starts, so the step's group is skipped rather than the test, which means beforeEach does not open the case
-  // as a user who is not signed in for this claim type.
+  // journey starts, so a step with one that holds is left out of the run (which also means beforeEach never opens the
+  // case as a user who is not signed in for this claim type).
   skipIf?: Array<[boolean, string]>;
   // A step that closes the claim (settling or discontinuing it), which runs even once STOP_AT_STATE or STOP_AFTER_TEST
   // has stopped the journey, so the claim can be closed wherever the journey stops
@@ -159,6 +159,11 @@ export class JourneyContext {
 // The remaining tests are skipped, except the steps that close the claim (closesClaim), such as settling it, which still
 // run when their settings ask for them. Both can be set, in which case the run stops at whichever comes first.
 //
+// Steps the settings rule out before the run starts are left out of it, rather than reported as skipped: those whose
+// skipIf conditions hold (a switched-off event, or one the claim type does not have), and those after STOP_AFTER_TEST.
+// They keep their test numbers, so test12 is the same step whatever is left out. Steps that turn out not to apply while
+// the journey runs (STOP_AT_STATE, or a claim that cannot be settled in its state) are still skipped.
+//
 // Getting the claim to a state quickly:
 //  - API_UNTIL: the steps that have an API version (flows/events/api) are done through the CCD API until the claim is
 //    confirmed to be in this state, and the steps after it through the UI. Steps with no API version yet always use the
@@ -227,7 +232,6 @@ export function defineJourney(
     // The last testN in the test's title path is its own (steps that share a number sit in a group inside it)
     const testNumber = Number(testInfo.titlePath.filter((title) => /^test\d+$/.test(title)).pop()?.slice('test'.length));
     if (!closingTestNumbers.has(testNumber)) {
-      test.skip(stopAfterTestNumber !== undefined && testNumber > stopAfterTestNumber, `Stopped after ${stopAfterTest} (STOP_AFTER_TEST)`);
       test.skip(context.stopAtStateReached, `Stopped: the claim has reached ${context.stopAtState} (STOP_AT_STATE)`);
     }
 
@@ -252,33 +256,34 @@ export function defineJourney(
   });
 
   test.describe.configure({ mode: 'serial' });
+  // Whether the settings rule a step out before the run starts (see above)
+  const leftOut = ({ step, testNumber }: { step: JourneyStep; testNumber: number }) => {
+    const stepIndex = numberedSteps.findIndex((numbered) => numbered.step === step);
+    const stoppedAfterStep = stopAfterStepIndex !== undefined && stepIndex > stopAfterStepIndex && !step.closesClaim;
+    const stoppedAfterTest = stopAfterTestNumber !== undefined && testNumber > stopAfterTestNumber && !closingTestNumbers.has(testNumber);
+    const switchedOff = (step.skipIf ?? []).some(([condition]) => condition);
+    return stoppedAfterStep || stoppedAfterTest || switchedOff;
+  };
   for (const testNumber of [...new Set(numberedSteps.map((numbered) => numbered.testNumber))]) {
     const stepsInTest = numberedSteps.filter((numbered) => numbered.testNumber === testNumber);
-    const stoppedReason = `Stopped after ${stopAfterTest} (STOP_AFTER_TEST)`;
-    const define = ({ step }: { step: JourneyStep }) => {
-      const stepIndex = numberedSteps.findIndex((numbered) => numbered.step === step);
-      const stopped = stopAfterStepIndex !== undefined && stepIndex > stopAfterStepIndex && !step.closesClaim;
-      defineStep(step, stopped ? stoppedReason : undefined);
-    };
+    const stepsToRun = stepsInTest.filter((numbered) => !leftOut(numbered));
+    if (stepsToRun.length === 0) {
+      continue;
+    }
     test.describe(`test${testNumber}`, () => {
+      // A group keeps its steps' names in the titles, however many of them run
       if (stepsInTest.length === 1) {
-        define(stepsInTest[0]);
+        defineStep(stepsToRun[0].step);
       } else {
-        for (const numbered of stepsInTest) {
-          test.describe(numbered.step.name, () => define(numbered));
+        for (const numbered of stepsToRun) {
+          test.describe(numbered.step.name, () => defineStep(numbered.step));
         }
       }
     });
   }
 }
 
-function defineStep(step: JourneyStep, stoppedReason?: string) {
-  if (stoppedReason !== undefined) {
-    test.skip(true, stoppedReason);
-  }
-  for (const [condition, reason] of step.skipIf ?? []) {
-    test.skip(condition, reason);
-  }
+function defineStep(step: JourneyStep) {
   test.use({ storageState: sessionUsers[step.user].authFile });
   test(step.title, async ({ page, storageState }) => {
     await step.run({ page, storageState, user: step.user });
