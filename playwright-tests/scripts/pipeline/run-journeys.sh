@@ -27,7 +27,8 @@
 #                                        label)
 #   RUN_FAILED_TESTS                     true runs the nightly set's failed scenarios again
 #   FORCE_GREEN_BUILD                    true runs nothing (nightly)
-#   WORKERS                              scenarios at once (default 4)
+#   WORKERS                              scenarios at once (default 8 on a preview, like the playwright-e2e PR tests, so
+#                                        the PR set's scenarios all start together; 4 elsewhere, as AAT is shared)
 #   SCENARIO_API_UNTIL                   the PR set's API_UNTIL (default All_FINAL_ORDERS_ISSUED): every PR scenario but
 #                                        UNSPEC_1v1_FAST, which stays in the UI, goes through the CCD API, as the nightly
 #                                        set has the full UI journeys. Master and nightly runs are not affected.
@@ -178,7 +179,11 @@ if [ "$ENVIRONMENT" = "preview" ]; then
   export PREVIEW_SERVICE="${PREVIEW_SERVICE:-$preview_service}"
   export PR_NUMBER="${PR_NUMBER:-${CHANGE_ID:-}}"
 fi
-export WORKERS="${WORKERS:-4}"
+if [ "$ENVIRONMENT" = "preview" ]; then
+  export WORKERS="${WORKERS:-8}"
+else
+  export WORKERS="${WORKERS:-4}"
+fi
 if [ "$set_name" = "pr" ]; then
   export SCENARIO_API_UNTIL="${SCENARIO_API_UNTIL:-All_FINAL_ORDERS_ISSUED}"
   echo "The PR set goes through the CCD API until ${SCENARIO_API_UNTIL}, apart from the scenarios kept in the UI"
