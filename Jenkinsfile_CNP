@@ -196,6 +196,77 @@ def publishPlaywrightFunctionalReports(yarnBuilder) {
   }
 }
 
+// The scenarios a PR's labels choose for the playwright-tests journeys (pr_journey_<scenario name>, such as
+// pr_journey_UNSPEC_1v1_FAST), as a comma list. With none the PR's whole set runs.
+def getJourneyScenarios() {
+  def githubApi = new GithubAPI(this)
+  def labelPrefix = "pr_journey_"
+  def scenarios = []
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, labelPrefix)) {
+    scenarios.add(label.substring(labelPrefix.length()))
+  }
+  return scenarios.join(",")
+}
+
+// The last build's record of the playwright-tests journeys (which commit ran, whether it passed and the failed
+// scenarios), so run-journeys.sh can skip a set that passed and run only the failed scenarios again
+def copyPrevJourneysState() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts(
+        projectName: env.JOB_NAME,
+        selector: specific("${buildNumber}"),
+        filter: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/**"
+      )
+      buildFound = true
+    } catch (Exception error) {
+      echo "playwright-tests journeys state not found in build ${buildNumber}. Trying previous..."
+      buildNumber--
+    }
+  }
+}
+
+// Runs the playwright-tests journeys (playwright-tests/scripts/pipeline/run-journeys.sh): the smoke test, then the
+// PR's set on its preview or master's on AAT. They run alongside the playwright-e2e tests while they prove themselves,
+// so a failure marks the build unstable rather than failing it.
+def runPlaywrightTestsJourneys(yarnBuilder) {
+  stage('playwright-tests journeys') {
+    copyPrevJourneysState()
+    try {
+      yarnBuilder.yarn('test:journeys:smoke:ci')
+      yarnBuilder.yarn('test:journeys:functional:ci')
+    } catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException interrupted) {
+      throw interrupted
+    } catch (Exception error) {
+      unstable(message: "${env.STAGE_NAME} is unstable: " + error.toString())
+    } finally {
+      publishJourneysReport(yarnBuilder)
+    }
+  }
+}
+
+def publishJourneysReport(yarnBuilder) {
+  if (fileExists('playwright-allure-journeys-results')) {
+    copyPreviousAllureHistory('playwright-allure-journeys-history', 'playwright-allure-journeys-results')
+    sh 'cp playwright-categories.json playwright-allure-journeys-results/categories.json'
+    yarnBuilder.yarn('test:journeys:generate-report')
+    publishAllureReport(
+      'playwright-allure-journeys-report',
+      'Playwright Tests Journeys Report',
+      'playwright-allure-journeys-history'
+    )
+  }
+  archiveArtifacts allowEmptyArchive: true, artifacts: [
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys/**",
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/**",
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-report.json",
+    'playwright-allure-journeys-report/data/**',
+  ].join(',')
+}
+
 def getCivilServiceSharedBranch() {
   def githubApi = new GithubAPI(this)
   for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilShared:")) {
@@ -387,6 +458,7 @@ withPipeline(type, product, component) {
     env.PLAYWRIGHT_PR_FT_GROUPS = getPlaywrightFunctionalTestsGroups()
     env.PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS = checkForSkipFunctionalTests(env.BRANCH_NAME)
     env.PLAYWRIGHT_RUN_ALL_FUNCTIONAL_TESTS = checkForRunAllFunctionalTests(env.BRANCH_NAME)
+    env.JOURNEY_SCENARIOS = getJourneyScenarios()
   }
 
   // onPR {
@@ -463,6 +535,7 @@ withPipeline(type, product, component) {
   afterAlways('functionalTest:preview') {
     publishPlaywrightFunctionalReports(yarnBuilder)
     archivePlaywrightTestArtifacts()
+    runPlaywrightTestsJourneys(yarnBuilder)
   }
 
   before('smoketest:aat') {
@@ -508,5 +581,6 @@ withPipeline(type, product, component) {
     publishPlaywrightFunctionalReports(yarnBuilder)
     archivePlaywrightTestArtifacts()
     createGithubRelease()
+    runPlaywrightTestsJourneys(yarnBuilder)
   }
 }

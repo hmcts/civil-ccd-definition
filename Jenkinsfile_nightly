@@ -90,6 +90,10 @@ properties([
       description: 'Will include work allocation functionality in tests when set to \'true\''),
     choice(name: 'PLAYWRIGHT_ZOD_VALIDATION_ENABLED', choices: ['true', 'false'],
       description: 'Enables Zod schema validation in Playwright API steps'),
+    choice(name: 'RUN_PLAYWRIGHT_TESTS_JOURNEYS', choices: ['true', 'false'],
+      description: 'Runs the playwright-tests nightly journeys (@unspec-nightly and @spec-nightly) after the playwright-e2e tests'),
+    string(name: 'PLAYWRIGHT_TESTS_WORKERS', defaultValue: '4',
+      description: 'How many playwright-tests journeys run at the same time (more overloads AAT)'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
       description: 'Functional tests waitForTimeout value'),
@@ -216,8 +220,51 @@ def secrets = [
     secret('judge-default-password', 'JUDGE_DEFAULT_PASSWORD'),
     secret('iac-default-password', 'IAC_DEFAULT_PASSWORD'),
     secret('system-update-user-password', 'SYSTEM_USER_PASSWORD')
+  ],
+  'ccd-${env}': [
+    secret('ccd-api-gateway-oauth2-client-secret', 'CCD_API_GATEWAY_IDAM_CLIENT_SECRET')
   ]
 ]
+
+// The last build's record of the playwright-tests journeys (which commit ran, whether it passed and the failed
+// scenarios), so run-journeys.sh can run only the failed scenarios again with RUN_FAILED_TESTS
+def copyPrevJourneysState() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts(
+        projectName: env.JOB_NAME,
+        selector: specific("${buildNumber}"),
+        filter: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/**"
+      )
+      buildFound = true
+    } catch (Exception error) {
+      echo "playwright-tests journeys state not found in build ${buildNumber}: " + error.toString()
+      buildNumber--
+    }
+  }
+}
+
+def publishJourneysReport(yarnBuilder) {
+  if (fileExists('playwright-allure-journeys-results')) {
+    copyPreviousAllureHistory('playwright-allure-journeys-history', 'playwright-allure-journeys-results')
+    sh 'cp playwright-categories.json playwright-allure-journeys-results/categories.json'
+    yarnBuilder.yarn('test:journeys:generate-report')
+    publishAllureReport(
+      'playwright-allure-journeys-report',
+      'Playwright Tests Journeys Report',
+      'playwright-allure-journeys-history'
+    )
+  }
+  archiveArtifacts allowEmptyArchive: true, artifacts: [
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys/**",
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/**",
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-report.json",
+    'playwright-allure-journeys-report/data/**',
+  ].join(',')
+}
 
 withNightlyPipeline(type, product, component) {
   env.PLAYWRIGHT_TEST_RESULTS_DIR = 'playwright-test-results'
@@ -241,6 +288,7 @@ withNightlyPipeline(type, product, component) {
   env.PLAYWRIGHT_ZOD_VALIDATION_ENABLED=params.PLAYWRIGHT_ZOD_VALIDATION_ENABLED
   env.PLAYWRIGHT_UNASSIGN_CASES = true
   env.PLAYWRIGHT_TEST_SPEED=params.PLAYWRIGHT_TEST_SPEED
+  env.WORKERS=params.PLAYWRIGHT_TESTS_WORKERS
 
   def prNumber = params.PR_NUMBER?.trim()
   def resolvePreviewUrl = { String value, String paramName ->
@@ -387,6 +435,27 @@ withNightlyPipeline(type, product, component) {
               )
             }
             archiveArtifacts allowEmptyArchive: true, artifacts: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/**/*"
+          }
+        }
+      }
+
+      // The playwright-tests nightly journeys (playwright-tests/scripts/pipeline/run-journeys.sh). They run alongside
+      // the playwright-e2e tests while they prove themselves, whatever happened to those, and a failure marks the build
+      // unstable.
+      if(!flowInterrupted && params.RUN_PLAYWRIGHT_TESTS_JOURNEYS.toBoolean()) {
+        stage('playwright-tests nightly journeys') {
+          if(runFailedTests) {
+            copyPrevJourneysState()
+          }
+          try {
+            yarnBuilder.yarn('test:journeys:nightly:ci')
+          } catch (Exception error) {
+            if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+              flowInterrupted = true
+            }
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+          } finally {
+            publishJourneysReport(yarnBuilder)
           }
         }
       }

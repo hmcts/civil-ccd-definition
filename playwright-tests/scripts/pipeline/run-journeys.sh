@@ -164,7 +164,15 @@ export CI=true
 export SCENARIOS=Yes
 export ENV="$ENVIRONMENT"
 if [ "$ENVIRONMENT" = "preview" ]; then
-  export PREVIEW_SERVICE="${PREVIEW_SERVICE:-ccd}"
+  # The repo the preview belongs to, from its XUI address (xui-civil-ccd-pr-123... is ccd). The nightly job can test
+  # any repo's preview; every address comes from the pipeline, so a repo playwright-tests has no settings for (such as
+  # civil-general-applications) is run as ccd.
+  preview_service="$(echo "${URL:-}" | sed -n 's#^https://xui-civil-\(.*\)-pr-[0-9]*\..*#\1#p')"
+  case "$preview_service" in
+    ccd | citizen-ui | service) ;;
+    *) preview_service="ccd" ;;
+  esac
+  export PREVIEW_SERVICE="${PREVIEW_SERVICE:-$preview_service}"
   export PR_NUMBER="${PR_NUMBER:-${CHANGE_ID:-}}"
   export WORKERS="${WORKERS:-2}"
 else
@@ -175,9 +183,9 @@ export PAYMENT_METHOD="${PAYMENT_METHOD:-CARD}"
 if [ "$ENVIRONMENT" = "aat" ] || [ "$ENVIRONMENT" = "preview" ]; then
   export IDAM_WEB_URL="${IDAM_WEB_URL:-https://idam-web-public.aat.platform.hmcts.net}"
 fi
-if [ "$ENVIRONMENT" = "aat" ]; then
-  export CAMUNDA_URL="${CAMUNDA_URL:-http://camunda-api-aat.service.core-compute-aat.internal/engine-rest}"
-  export WA_TASK_MONITOR_URL="${WA_TASK_MONITOR_URL:-http://wa-task-monitor-aat.service.core-compute-aat.internal}"
+if [ "$ENVIRONMENT" = "aat" ] || [ "$ENVIRONMENT" = "demo" ]; then
+  export CAMUNDA_URL="${CAMUNDA_URL:-http://camunda-api-${ENVIRONMENT}.service.core-compute-${ENVIRONMENT}.internal/engine-rest}"
+  export WA_TASK_MONITOR_URL="${WA_TASK_MONITOR_URL:-http://wa-task-monitor-${ENVIRONMENT}.service.core-compute-${ENVIRONMENT}.internal}"
 fi
 export PLAYWRIGHT_JOURNEYS_JSON_REPORT="$json_report"
 
