@@ -243,27 +243,15 @@ def copyPrevJourneysState() {
 // Runs the playwright-tests journeys (playwright-tests/scripts/pipeline/run-journeys.sh): the smoke test, then the
 // PR's set on its preview or master's on AAT. They run alongside the playwright-e2e tests while they prove themselves,
 // so a failure marks the build unstable rather than failing it.
-def runPlaywrightTestsJourneys(yarnBuilder) {
-  stage('playwright-tests journeys') {
-    copyPrevJourneysState()
-    try {
-      withEnv(["PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS=${env.PLAYWRIGHT_TESTS_JOURNEYS_SKIP ?: 'false'}"]) {
-        yarnBuilder.yarn('test:journeys:smoke:ci')
-        yarnBuilder.yarn('test:journeys:functional:ci')
-      }
-    } catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException interrupted) {
-      throw interrupted
-    } catch (Exception error) {
-      unstable(message: "${env.STAGE_NAME} is unstable: " + error.toString())
-    } finally {
-      publishJourneysReport(yarnBuilder)
-    }
-  }
-}
-
+// Publishes the playwright-tests journeys' Allure report. It runs after the smoke stage, in case that fails and the
+// functional stage does not run, and again after the functional stage with both runs' results; the last build's
+// history is only brought in the first time.
 def publishJourneysReport(yarnBuilder) {
   if (fileExists('playwright-allure-journeys-results')) {
-    copyPreviousAllureHistory('playwright-allure-journeys-history', 'playwright-allure-journeys-results')
+    if (env.JOURNEYS_ALLURE_HISTORY_COPIED != 'true') {
+      copyPreviousAllureHistory('playwright-allure-journeys-history', 'playwright-allure-journeys-results')
+      env.JOURNEYS_ALLURE_HISTORY_COPIED = 'true'
+    }
     sh 'cp playwright-categories.json playwright-allure-journeys-results/categories.json'
     yarnBuilder.yarn('test:journeys:generate-report')
     publishAllureReport(
@@ -466,13 +454,6 @@ withPipeline(type, product, component) {
     env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'civil-ccd-pr'
     env.PLAYWRIGHT_PR_FT_GROUPS = getPlaywrightFunctionalTestsGroups()
     env.PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS = checkForSkipFunctionalTests(env.BRANCH_NAME)
-    // The playwright-tests journeys follow the 'pr-values:skip-functional-tests' label only
-    env.PLAYWRIGHT_TESTS_JOURNEYS_SKIP = env.PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS
-    // TEMPORARY, REMOVE BEFORE MERGING: skips the playwright-e2e smoke and functional tests on PR 7080 only, to speed
-    // up its builds while the playwright-tests journeys are proven. The journeys still run.
-    if (env.CHANGE_ID == '7080') {
-      env.PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS = 'true'
-    }
     env.PLAYWRIGHT_RUN_ALL_FUNCTIONAL_TESTS = checkForRunAllFunctionalTests(env.BRANCH_NAME)
     env.JOURNEY_SCENARIOS = getJourneyScenarios()
   }
@@ -536,22 +517,21 @@ withPipeline(type, product, component) {
     }
   }
 
+  // On a PR's preview, yarn test:smoke and test:functional run the playwright-tests journeys (the smoke test, then the
+  // PR set; see package.json). On AAT they still run the playwright-e2e tests.
   before('smoketest:preview') {
-    copyPrevPlaywrightLastRunAndTestFilesReport()
+    copyPrevJourneysState()
   }
 
   afterAlways('smoketest:preview') {
     if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
-    publishPlaywrightSmokeReports(yarnBuilder)
-    archivePlaywrightTestArtifacts()
+    publishJourneysReport(yarnBuilder)
   }
 
   afterAlways('functionalTest:preview') {
-    publishPlaywrightFunctionalReports(yarnBuilder)
-    archivePlaywrightTestArtifacts()
-    runPlaywrightTestsJourneys(yarnBuilder)
+    publishJourneysReport(yarnBuilder)
   }
 
   before('smoketest:aat') {
@@ -596,6 +576,5 @@ withPipeline(type, product, component) {
   afterAlways('functionalTest:aat') {
     publishPlaywrightFunctionalReports(yarnBuilder)
     archivePlaywrightTestArtifacts()
-    runPlaywrightTestsJourneys(yarnBuilder)
   }
 }
