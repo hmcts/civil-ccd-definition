@@ -439,6 +439,25 @@ Run a named scenario from playwright-tests/scenarios/unspecifiedScenarios.ts:
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --grep @UNSPEC_1v2DS_FAST_STAY_CASE
 ```
 
+The pipeline sets are picked by tag, each run by a project of the same name (with SCENARIOS=Yes, headless):
+
+| Tag and project | Runs | Scenarios |
+| --- | --- | --- |
+| spec-smoke | The smoke test, before the PR and master sets | SPEC_1v1_SMOKE: a 1v1 claim, stopped once issued |
+| unspec-pr, spec-pr | On every PR, against its preview | 4 unspecified and 4 specified, including default judgment and a general application |
+| unspec-master, spec-master | On master, against AAT | The PR sets plus 1v2SS and the specified LIP claim |
+| unspec-nightly, spec-nightly | Each weekday at 08:00 (Jenkinsfile_nightly), against AAT | Every scenario except the smoke test |
+
+On the pipelines playwright-tests/scripts/pipeline/run-journeys.sh runs them (yarn test:journeys:smoke:ci, test:journeys:functional:ci and test:journeys:nightly:ci). It runs every project of the set in one Playwright run, fills in the settings the Jenkinsfiles do not set (WORKERS 2 on a preview and 4 elsewhere, PAYMENT_METHOD=CARD, AAT's Camunda and WA task monitor), and does not repeat work a build of the same commit has done: a set that passed is skipped, and a set that failed only runs its failed scenarios again, from the start of each journey. The Allure report is playwright-allure-journeys-results (yarn test:journeys:generate-report). The Jenkinsfiles do not call the script yet.
+
+To run a set yourself:
+
+```bash
+ENV=aat SCENARIOS=Yes WORKERS=4 npx playwright test --project unspec-nightly --project spec-nightly
+```
+
+yarn check:scenarios checks every named scenario's settings without running anything (the checks a journey makes before its first step), so run it after changing a scenario.
+
 The default judgment scenarios are UNSPEC_1v1_FAST_DEFAULT_JUDGMENT and UNSPEC_1v2DS_FAST_DEFAULT_JUDGMENT, which run in the nightly set:
 
 ```bash

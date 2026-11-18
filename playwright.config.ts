@@ -11,10 +11,11 @@ process.env.PLAYWRIGHT_RUN_ID ??= `${process.pid}-${Date.now()}`;
 
 // Where traces, videos and screenshots go. Locally each run has its own folder, named after its run ID, so a run
 // started while another is going does not wipe the other's results; the newest RESULTS_RUNS_TO_KEEP finished runs
-// (default 10) are kept. On CI (one run per build, and the reports come from Allure) it stays a single folder.
+// (default 10) are kept. On CI (one run per build, and the reports come from Allure) it is a single folder of its own,
+// as Playwright empties it at the start of a run and the playwright-e2e projects' folders are next to it.
 // The playwright-e2e projects set their own folders.
 const resultsRoot = './playwright-test-results';
-const outputDir = process.env.CI ? resultsRoot : `${resultsRoot}/${process.env.PLAYWRIGHT_RUN_ID}`;
+const outputDir = process.env.CI ? `${resultsRoot}/journeys` : `${resultsRoot}/${process.env.PLAYWRIGHT_RUN_ID}`;
 if (!process.env.CI && process.env.TEST_WORKER_INDEX === undefined) {
   pruneOldRunResults(resultsRoot, Number(process.env.RESULTS_RUNS_TO_KEEP ?? 10));
 }
@@ -108,10 +109,15 @@ export default defineConfig({
       workers: playwrightTestsWorkers,
       ...playwrightTestsProject,
     },
-    // The pipeline's unspecified journeys, run with SCENARIOS=Yes. Each project runs the scenarios with its tag (see
-    // playwright-tests/scenarios/unspecifiedScenarios.ts), headless in the bundled Chromium.
-    ...['pr', 'master', 'nightly'].map((pipeline) => ({
-      name: `unspec-${pipeline}`,
+    // The pipeline's journeys, run with SCENARIOS=Yes. Each project runs the scenarios with its tag (see
+    // playwright-tests/scenarios), headless in the bundled Chromium: unspec-pr, unspec-master and unspec-nightly run
+    // the unspecified journeys, spec-smoke, spec-pr, spec-master and spec-nightly the specified ones.
+    // playwright-tests/scripts/pipeline/run-journeys.sh runs them on the pipelines.
+    ...[
+      ...['pr', 'master', 'nightly'].map((pipeline) => `unspec-${pipeline}`),
+      ...['smoke', 'pr', 'master', 'nightly'].map((pipeline) => `spec-${pipeline}`),
+    ].map((name) => ({
+      name,
       use: {
         ...devices['Desktop Chrome'],
         ...playwrightTestsUse,
@@ -119,25 +125,10 @@ export default defineConfig({
       },
       dependencies: ['authentication'],
       testDir: './playwright-tests/e2e/journeys',
-      grep: new RegExp(`@unspec-${pipeline}\\b`),
+      grep: new RegExp(`@${name}\\b`),
       workers: playwrightTestsWorkers,
       ...playwrightTestsProject,
     })),
-    // The specified journeys' nightly set, run with SCENARIOS=Yes: the scenarios tagged @spec-nightly (see
-    // playwright-tests/scenarios/specifiedScenarios.ts), headless in the bundled Chromium
-    {
-      name: 'spec-nightly',
-      use: {
-        ...devices['Desktop Chrome'],
-        ...playwrightTestsUse,
-        viewport: { width: 1929, height: 959 },
-      },
-      dependencies: ['authentication'],
-      testDir: './playwright-tests/e2e/journeys',
-      grep: /@spec-nightly\b/,
-      workers: playwrightTestsWorkers,
-      ...playwrightTestsProject,
-    },
     ...(config ? playwrightE2eProjects(config) : []),
   ],
 });
@@ -331,6 +322,17 @@ function getReporter(): any {
     ? [['junit', { outputFile: process.env.PLAYWRIGHT_JUNIT_OUTPUT_FILE }]]
     : [];
 
+  // A pipeline run of the playwright-tests journeys (playwright-tests/scripts/pipeline/run-journeys.sh): an Allure
+  // report of its own, so it does not mix with the playwright-e2e one when both run in a build, a JSON report the
+  // script reads the failed scenarios from, and each test's result in the build log
+  if (process.env.CI && process.env.PLAYWRIGHT_JOURNEYS_JSON_REPORT) {
+    return [
+      allurePlaywright('playwright-allure-journeys-results'),
+      ['json', { outputFile: process.env.PLAYWRIGHT_JOURNEYS_JSON_REPORT }],
+      ['list'],
+      ...junitReporter,
+    ];
+  }
   if (process.env.CI && process.env.PLAYWRIGHT_FUNCTIONAL) {
     return [
       allurePlaywright('playwright-allure-functional-results'),

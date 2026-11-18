@@ -4,6 +4,7 @@
 //  - @unspec-pr: run on every PR
 //  - @unspec-master: run on master
 //  - @unspec-nightly: run every night
+// (the pipeline's smoke test is a specified one, @spec-smoke in specifiedScenarios.ts)
 //
 // The list is only used when SCENARIOS=Yes. Without it a single journey is run from the env vars on the command
 // line, as the test:UNSPEC_* scripts in package.json do, and with no env vars at all that is the default 1v1 claim.
@@ -22,6 +23,13 @@ const NIGHTLY = '@unspec-nightly';
 
 const nihlFast = { TYPE_OF_CLAIM: 'PERSONAL_INJURY', SUB_TYPE: 'NOISE_INDUCED_HEARING_LOSS' };
 const roadAccident = { TYPE_OF_CLAIM: 'PERSONAL_INJURY', SUB_TYPE: 'ROAD_ACCIDENT' };
+const individual1v1 = { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'INDIVIDUAL', ...roadAccident };
+// Runs the steps that have an API version through the CCD API until the claim reaches JUDICIAL_REFERRAL, so a
+// scenario about a later event only does that event in the UI
+const apiToJudicialReferral = { API_UNTIL: 'JUDICIAL_REFERRAL' };
+// Takes the claim through the API to HEARING_READINESS, once the hearing notice is out, and stops there: the steps
+// that close the claim (discontinuing it) still run, in the UI
+const closeAfterHearingNotice = { API_UNTIL: 'HEARING_READINESS', STOP_AT_STATE: 'HEARING_READINESS' };
 const fastRoadAccident1v1 = {
   CLAIM_TYPE: '1v1',
   CLAIMANT_TYPE: 'INDIVIDUAL',
@@ -140,7 +148,7 @@ const scenarios: Scenario[] = [
   },
   {
     name: 'UNSPEC_1v2DS_FAST_BOTH',
-    tags: [MASTER, NIGHTLY],
+    tags: [PR, MASTER, NIGHTLY],
     env: {
       CLAIM_TYPE: '1v2DS',
       CLAIMANT_TYPE: 'SOLE_TRADER',
@@ -236,7 +244,7 @@ const scenarios: Scenario[] = [
   // judgment, with the damages decided at a disposal hearing, and the judge makes the directions order after judgment
   {
     name: 'UNSPEC_1v1_FAST_DEFAULT_JUDGMENT',
-    tags: [NIGHTLY],
+    tags: [PR, MASTER, NIGHTLY],
     env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'INDIVIDUAL', ...roadAccident, DEFAULT_JUDGMENT: 'Yes' },
   },
   // Default judgment on an other remedy claim: the claimant's solicitor abandons the other remedy to get judgment
@@ -298,6 +306,152 @@ const scenarios: Scenario[] = [
       DEFENDANT_TYPE: 'INDIVIDUAL',
       ...roadAccident,
       REFUND: 'RETURN',
+    },
+  },
+
+  // General applications. Each run stops once the application has been decided.
+  // The claimant's solicitor applies to stay the claim, with notice, the defendant's solicitor responds and the judge
+  // lists it for a hearing, which court staff schedule
+  {
+    name: 'UNSPEC_1v1_FAST_GENERAL_APPLICATION_HEARING',
+    tags: [PR, MASTER, NIGHTLY],
+    env: {
+      ...individual1v1,
+      GENERAL_APPLICATION: 'STAY_THE_CLAIM',
+      GENERAL_APPLICATION_DECISION: 'LIST_FOR_HEARING',
+      STOP_AFTER_TEST: 'GENERAL_APPLICATION',
+    },
+  },
+  // Defendant 2's solicitor applies for more time, and the other solicitors respond
+  {
+    name: 'UNSPEC_1v2DS_FAST_GENERAL_APPLICATION_BY_DEFENDANT2',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v2DS',
+      CLAIMANT_TYPE: 'SOLE_TRADER',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...roadAccident,
+      ...apiToJudicialReferral,
+      GENERAL_APPLICATION: 'EXTEND_TIME',
+      GENERAL_APPLICATION_BY: 'defendant2',
+      STOP_AFTER_TEST: 'GENERAL_APPLICATION',
+    },
+  },
+  // An application made without notice, which the judge sends to the other side: the claimant's solicitor pays the
+  // extra fee and the defendant's solicitor responds before it is decided
+  {
+    name: 'UNSPEC_1v1_FAST_GENERAL_APPLICATION_SEND_TO_OTHER_PARTY',
+    tags: [NIGHTLY],
+    env: {
+      ...individual1v1,
+      ...apiToJudicialReferral,
+      GENERAL_APPLICATION: 'STAY_THE_CLAIM',
+      GENERAL_APPLICATION_WITH_NOTICE: 'No',
+      GENERAL_APPLICATION_SEND_TO_OTHER_PARTY: 'Yes',
+      STOP_AFTER_TEST: 'GENERAL_APPLICATION',
+    },
+  },
+  // An urgent application, which goes straight to the judge, who asks for more information
+  {
+    name: 'UNSPEC_1v1_FAST_GENERAL_APPLICATION_URGENT',
+    tags: [NIGHTLY],
+    env: {
+      ...individual1v1,
+      ...apiToJudicialReferral,
+      GENERAL_APPLICATION: 'STAY_THE_CLAIM',
+      GENERAL_APPLICATION_URGENT: 'Yes',
+      GENERAL_APPLICATION_DECISION: 'REQUEST_MORE_INFO',
+      STOP_AFTER_TEST: 'GENERAL_APPLICATION',
+    },
+  },
+  // An application the other side has agreed to
+  {
+    name: 'UNSPEC_1v1_FAST_GENERAL_APPLICATION_AGREED',
+    tags: [NIGHTLY],
+    env: {
+      ...individual1v1,
+      ...apiToJudicialReferral,
+      GENERAL_APPLICATION: 'EXTEND_TIME',
+      GENERAL_APPLICATION_AGREED: 'Yes',
+      STOP_AFTER_TEST: 'GENERAL_APPLICATION',
+    },
+  },
+
+  // Discontinuing the claim once the hearing notice is out: without needing the court's permission, or with a judge's
+  // permission, which court staff then validate
+  {
+    name: 'UNSPEC_1v1_FAST_DISCONTINUE_AFTER_HEARING_NOTICE',
+    tags: [NIGHTLY],
+    env: { ...individual1v1, ...closeAfterHearingNotice, DISCONTINUE_CLAIM: 'NO_PERMISSION_NEEDED' },
+  },
+  {
+    name: 'UNSPEC_1v2DS_FAST_DISCONTINUE_AFTER_HEARING_NOTICE',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v2DS',
+      CLAIMANT_TYPE: 'SOLE_TRADER',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...roadAccident,
+      ...closeAfterHearingNotice,
+      DISCONTINUE_CLAIM: 'NO_PERMISSION_NEEDED',
+    },
+  },
+  {
+    name: 'UNSPEC_2v1_FAST_DISCONTINUE_AFTER_HEARING_NOTICE',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '2v1',
+      CLAIMANT_TYPE: 'INDIVIDUAL',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...roadAccident,
+      ...closeAfterHearingNotice,
+      DISCONTINUE_CLAIM: 'PERMISSION_GRANTED',
+    },
+  },
+
+  // The judge decides the claim is not suitable for a Standard Direction Order: it should go to another hearing centre,
+  // which the hearing centre admin transfers it to before the order is made there, or for another reason, which takes
+  // it offline
+  {
+    name: 'UNSPEC_1v1_FAST_NOT_SUITABLE_SDO_CHANGE_LOCATION',
+    tags: [NIGHTLY],
+    env: { ...individual1v1, ...apiToJudicialReferral, NOT_SUITABLE_SDO: 'CHANGE_LOCATION', STOP_AT_STATE: 'CASE_PROGRESSION' },
+  },
+  {
+    name: 'UNSPEC_1v2DS_FAST_NOT_SUITABLE_SDO_OTHER_REASONS',
+    tags: [NIGHTLY],
+    env: {
+      CLAIM_TYPE: '1v2DS',
+      CLAIMANT_TYPE: 'SOLE_TRADER',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...roadAccident,
+      ...apiToJudicialReferral,
+      NOT_SUITABLE_SDO: 'OTHER_REASONS',
+    },
+  },
+
+  // The judge's small claims order lists a dispute resolution hearing
+  {
+    name: 'UNSPEC_1v1_SMALL_DISPUTE_RESOLUTION_HEARING',
+    tags: [NIGHTLY],
+    env: { ...individual1v1, ...apiToJudicialReferral, TRACK: 'SMALL_CLAIM', DISPUTE_RESOLUTION_HEARING: 'Yes' },
+  },
+
+  // Court staff events: a case note once the claim is issued, the particulars of claim added with "Add or amend claim
+  // documents", the legal representatives' details amended, then after the claimant's response the case is stayed and
+  // the hearing centre admin messages a judge, who replies, and the stay is lifted. Then the claim is taken offline.
+  {
+    name: 'UNSPEC_1v1_FAST_COURT_STAFF_EVENTS',
+    tags: [NIGHTLY],
+    env: {
+      ...individual1v1,
+      ADD_CASE_NOTE: 'Yes',
+      ADD_OR_AMEND_CLAIM_DOCUMENTS: 'Yes',
+      AMEND_PARTY_DETAILS: 'Yes',
+      STAY_CASE: 'Yes',
+      SEND_AND_REPLY: 'Yes',
+      STOP_AFTER_TEST: 'LIFT_STAY',
+      CASE_PROCEEDS_IN_CASEMAN: 'OTHER',
     },
   },
 ];
