@@ -243,6 +243,23 @@ def copyPrevJourneysState() {
 // Runs the playwright-tests journeys (playwright-tests/scripts/pipeline/run-journeys.sh): the smoke test, then the
 // PR's set on its preview or master's on AAT. They run alongside the playwright-e2e tests while they prove themselves,
 // so a failure marks the build unstable rather than failing it.
+// The pipeline library catches a failed test stage's error and only fails the build at the end, after the preview is
+// uninstalled, so the stage itself shows as passed. This marks the stage as failed when this build's run of a
+// playwright-tests set failed (set is smoke or pr), naming the scenarios that failed. A set skipped because it already
+// passed leaves the last build's state, which is not this build's, so it is ignored.
+def markStageFailedIfJourneysFailed(String set) {
+  def stateFile = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/${set}.properties"
+  if (!fileExists(stateFile)) {
+    return
+  }
+  def state = readProperties file: stateFile
+  if (state.BUILD_TAG == env.BUILD_TAG && state.STATUS == 'failed') {
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+      error "The playwright-tests ${set} journeys failed. Failed scenarios: ${state.FAILED_SCENARIOS ?: 'none recorded (see the log)'}"
+    }
+  }
+}
+
 // Publishes the playwright-tests journeys' Allure report. It runs after the smoke stage, in case that fails and the
 // functional stage does not run, and again after the functional stage with both runs' results; the last build's
 // history is only brought in the first time.
@@ -528,10 +545,12 @@ withPipeline(type, product, component) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
     publishJourneysReport(yarnBuilder)
+    markStageFailedIfJourneysFailed('smoke')
   }
 
   afterAlways('functionalTest:preview') {
     publishJourneysReport(yarnBuilder)
+    markStageFailedIfJourneysFailed('pr')
   }
 
   before('smoketest:aat') {

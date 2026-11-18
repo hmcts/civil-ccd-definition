@@ -89,6 +89,8 @@ write_state() {
     echo "SELECTION=${selection}"
     echo "STATUS=${status}"
     echo "FAILED_SCENARIOS=${failed}"
+    # The Jenkins build that ran it, so the pipeline can tell this build's result from one copied from the last build
+    echo "BUILD_TAG=${BUILD_TAG:-}"
   } > "$state_file"
 }
 
