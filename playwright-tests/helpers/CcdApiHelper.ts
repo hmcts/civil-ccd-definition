@@ -1,4 +1,4 @@
-import { APIRequestContext, expect, request } from '@playwright/test';
+import { APIRequestContext, APIResponse, expect, request } from '@playwright/test';
 import { ccdDataStoreApiBaseUrl, createCase } from '../civilConfig.ts';
 import CaseType from '../enums/caseType.ts';
 import { TestingEndPointHelper } from './TestingEndPointHelper.ts';
@@ -21,6 +21,15 @@ export interface EventPage {
   when?: (data: Record<string, any>) => boolean;
 }
 
+// How long one CCD data store request may take. A preview's data store, with its callbacks to civil-service, can take
+// well over Playwright's default when several scenarios run at once.
+const ccdRequestTimeout = 60_000;
+
+// What civil-service's about to start callback says when the case's last business process is still running in Camunda
+const businessProcessRunning = 'There is a technical issue causing a delay';
+// How many times an event is started when civil-service refuses because a business process is still running
+const startAttempts = 3;
+
 // An event started the way XUI starts it (CCD's internal start event API): the token, the event's data as the about to
 // start callback left it, the event's fields and its pages (ID, whether Continue runs a mid event callback)
 interface StartedEventWithPages extends StartedEvent {
@@ -42,14 +51,44 @@ export class CcdApiHelper {
   async startEvent(user, eventId: string, caseId?: string): Promise<StartedEvent> {
     const { accessToken, s2sToken, uid } = await this.tokensHelper.getNonEventTokens(user);
     const url = `${this.caseTypeUrl(uid)}${caseId ? `/cases/${caseId}` : ''}/event-triggers/${eventId}/token`;
-    const apiRequestContext: APIRequestContext = await request.newContext();
+    const body = await this.startWhenNoBusinessProcess(eventId, caseId, (context) =>
+      context.get(url, { headers: this.getHeaders(accessToken, s2sToken), timeout: ccdRequestTimeout }));
+    return { token: body.token, caseData: body.case_details?.case_data ?? {} };
+  }
+
+  // Starts an event and returns CCD's answer. civil-service refuses to start most events while the case's last business
+  // process is still running ("There is a technical issue causing a delay"). API events follow each other straight away,
+  // so when it refuses for that reason, the event is started again once the business process has finished.
+  private async startWhenNoBusinessProcess(eventId: string, caseId: string | undefined, start: (context: APIRequestContext) => Promise<APIResponse>): Promise<any> {
+    for (let attempt = 1; ; attempt++) {
+      const apiRequestContext: APIRequestContext = await request.newContext();
+      try {
+        const response = await this.send(`Starting ${eventId}`, () => start(apiRequestContext));
+        const text = await response.text();
+        if (caseId && response.status() === 422 && text.includes(businessProcessRunning) && attempt < startAttempts) {
+          console.log(`Starting ${eventId} on case ${caseId} was refused as a business process was still running, so it is started again once that has finished`);
+          await new TestingEndPointHelper().waitForNoOngoingBusinessProcess(caseId);
+          continue;
+        }
+        expect(response.ok(), `Starting ${eventId} returned ${response.status()}: ${text}`).toBeTruthy();
+        return JSON.parse(text);
+      } finally {
+        await apiRequestContext.dispose();
+      }
+    }
+  }
+
+  // Sends one CCD data store request. When it gets no answer (it times out or the connection drops), Playwright's error
+  // lists the request's headers, the user's and the service's tokens among them, and ends up in the build log, so it is
+  // replaced with one that only says what happened.
+  private async send(description: string, call: () => Promise<APIResponse>): Promise<APIResponse> {
     try {
-      const response = await apiRequestContext.get(url, { headers: this.getHeaders(accessToken, s2sToken) });
-      expect(response.ok(), `Starting ${eventId} returned ${response.status()}: ${await response.text()}`).toBeTruthy();
-      const body = await response.json();
-      return { token: body.token, caseData: body.case_details?.case_data ?? {} };
-    } finally {
-      await apiRequestContext.dispose();
+      return await call();
+    } catch (error) {
+      const firstLine = (error as Error).message.split('\n')[0];
+      // The original error is left out on purpose, as its message holds the tokens
+      // eslint-disable-next-line preserve-caught-error
+      throw new Error(`${description} got no answer from the CCD data store: ${firstLine}`);
     }
   }
 
@@ -60,7 +99,7 @@ export class CcdApiHelper {
     const url = `${this.caseTypeUrl(uid)}/cases${caseId ? `/${caseId}/events` : ''}`;
     const apiRequestContext: APIRequestContext = await request.newContext();
     try {
-      const response = await apiRequestContext.post(url, {
+      const response = await this.send(`Submitting ${eventId}`, () => apiRequestContext.post(url, {
         headers: this.getHeaders(accessToken, s2sToken),
         data: {
           data,
@@ -68,7 +107,8 @@ export class CcdApiHelper {
           event_token: eventToken,
           ignore_warning: ignoreWarning,
         },
-      });
+        timeout: ccdRequestTimeout,
+      }));
       expect(response.ok(), `Submitting ${eventId} returned ${response.status()}: ${await response.text()}`).toBeTruthy();
       return await response.json();
     } finally {
@@ -123,31 +163,25 @@ export class CcdApiHelper {
   private async startEventWithPages(user, eventId: string, caseId: string): Promise<StartedEventWithPages> {
     const { accessToken, s2sToken } = await this.tokensHelper.getNonEventTokens(user);
     const url = `${ccdDataStoreApiBaseUrl}/internal/cases/${caseId}/event-triggers/${eventId}?ignore-warning=false`;
-    const apiRequestContext: APIRequestContext = await request.newContext();
-    try {
-      const response = await apiRequestContext.get(url, {
-        headers: {
-          ...this.getHeaders(accessToken, s2sToken),
-          Accept: 'application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-start-event-trigger.v2+json;charset=UTF-8',
-          experimental: 'true',
-        },
-      });
-      expect(response.ok(), `Starting ${eventId} returned ${response.status()}: ${await response.text()}`).toBeTruthy();
-      const body = await response.json();
-      const fields: Array<{ id: string; value: unknown }> = body.case_fields ?? [];
-      return {
-        token: body.event_token,
-        caseData: Object.fromEntries(fields.map((field) => [field.id, field.value])),
-        fieldIds: fields.map((field) => field.id),
-        pages: (body.wizard_pages ?? []).map((page) => ({
-          id: page.id,
-          hasMidEvent: !!page.callback_url_mid_event,
-          fieldIds: (page.wizard_page_fields ?? []).map((field) => field.case_field_id),
-        })),
-      };
-    } finally {
-      await apiRequestContext.dispose();
-    }
+    const body = await this.startWhenNoBusinessProcess(eventId, caseId, (context) => context.get(url, {
+      headers: {
+        ...this.getHeaders(accessToken, s2sToken),
+        Accept: 'application/vnd.uk.gov.hmcts.ccd-data-store-api.ui-start-event-trigger.v2+json;charset=UTF-8',
+        experimental: 'true',
+      },
+      timeout: ccdRequestTimeout,
+    }));
+    const fields: Array<{ id: string; value: unknown }> = body.case_fields ?? [];
+    return {
+      token: body.event_token,
+      caseData: Object.fromEntries(fields.map((field) => [field.id, field.value])),
+      fieldIds: fields.map((field) => field.id),
+      pages: (body.wizard_pages ?? []).map((page) => ({
+        id: page.id,
+        hasMidEvent: !!page.callback_url_mid_event,
+        fieldIds: (page.wizard_page_fields ?? []).map((field) => field.case_field_id),
+      })),
+    };
   }
 
   // Validates one page of an event, as Continue does in XUI, which runs the page's mid event callback. pageData is what
@@ -157,7 +191,7 @@ export class CcdApiHelper {
     const { accessToken, s2sToken, uid } = await this.tokensHelper.getNonEventTokens(user);
     const apiRequestContext: APIRequestContext = await request.newContext();
     try {
-      const response = await apiRequestContext.post(`${this.caseTypeUrl(uid)}/validate?pageId=${pageId}`, {
+      const response = await this.send(`Continue on ${pageId}`, () => apiRequestContext.post(`${this.caseTypeUrl(uid)}/validate?pageId=${pageId}`, {
         headers: this.getHeaders(accessToken, s2sToken),
         data: {
           data: pageData,
@@ -167,7 +201,8 @@ export class CcdApiHelper {
           ignore_warning: false,
           case_reference: caseId,
         },
-      });
+        timeout: ccdRequestTimeout,
+      }));
       expect(response.ok(), `Continue on ${pageId} returned ${response.status()}: ${await response.text()}`).toBeTruthy();
       return (await response.json()).data ?? {};
     } finally {
