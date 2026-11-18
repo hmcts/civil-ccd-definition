@@ -27,7 +27,10 @@
 #                                        label)
 #   RUN_FAILED_TESTS                     true runs the nightly set's failed scenarios again
 #   FORCE_GREEN_BUILD                    true runs nothing (nightly)
-#   WORKERS                              scenarios at once (default 2 on a preview, which has fewer resources, else 4)
+#   WORKERS                              scenarios at once (default 4)
+#   SCENARIO_API_UNTIL                   the PR set's API_UNTIL (default All_FINAL_ORDERS_ISSUED): every PR scenario but
+#                                        UNSPEC_1v1_FAST, which stays in the UI, goes through the CCD API, as the nightly
+#                                        set has the full UI journeys. Master and nightly runs are not affected.
 #   PAYMENT_METHOD                       PBA or CARD (default CARD: AAT's PBA accounts have been failing)
 set -eu
 
@@ -174,9 +177,11 @@ if [ "$ENVIRONMENT" = "preview" ]; then
   esac
   export PREVIEW_SERVICE="${PREVIEW_SERVICE:-$preview_service}"
   export PR_NUMBER="${PR_NUMBER:-${CHANGE_ID:-}}"
-  export WORKERS="${WORKERS:-2}"
-else
-  export WORKERS="${WORKERS:-4}"
+fi
+export WORKERS="${WORKERS:-4}"
+if [ "$set_name" = "pr" ]; then
+  export SCENARIO_API_UNTIL="${SCENARIO_API_UNTIL:-All_FINAL_ORDERS_ISSUED}"
+  echo "The PR set goes through the CCD API until ${SCENARIO_API_UNTIL}, apart from the scenarios kept in the UI"
 fi
 export PAYMENT_METHOD="${PAYMENT_METHOD:-CARD}"
 # AAT's addresses for what the Jenkinsfiles do not set. A preview's Camunda and WA task monitor follow its XUI address.

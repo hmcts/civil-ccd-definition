@@ -296,7 +296,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
           await createCase.setTimeline(c.timeline);
           await createCase.setEvidence();
           await createCase.setClaimAmount(c.track);
-          await createCase.setInterest(c.interestRequired, c.interestType, c.interestRate);
+          await createCase.setInterest(c.interestRequired, c.interestType, c.interestRate, c.interestFrom, c.interestFromDate, c.interestUntil);
           await createCase.confirmTotalAndFee();
           await createCase.setFixedCommencementCosts(c.fixedCommencementCosts);
           await createCase.setStatementOfTruth();

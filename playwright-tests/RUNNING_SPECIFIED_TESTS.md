@@ -331,7 +331,7 @@ The pipeline sets are picked by tag, each run by a project of the same name (wit
 | unspec-master, spec-master | On master, against AAT | The PR sets plus 1v2SS and the specified LIP claim |
 | unspec-nightly, spec-nightly | Each weekday at 08:00 (Jenkinsfile_nightly), against AAT | Every scenario except the smoke test |
 
-On the pipelines playwright-tests/scripts/pipeline/run-journeys.sh runs them (yarn test:journeys:smoke:ci, test:journeys:functional:ci and test:journeys:nightly:ci). It runs every project of the set in one Playwright run, fills in the settings the Jenkinsfiles do not set (WORKERS 2 on a preview and 4 elsewhere, PAYMENT_METHOD=CARD, AAT's Camunda and WA task monitor), and does not repeat work a build of the same commit has done: a set that passed is skipped, and a set that failed only runs its failed scenarios again, from the start of each journey. The Allure report is playwright-allure-journeys-results (yarn test:journeys:generate-report). The Jenkinsfiles do not call the script yet.
+On the pipelines playwright-tests/scripts/pipeline/run-journeys.sh runs them (yarn test:journeys:smoke:ci, test:journeys:functional:ci and test:journeys:nightly:ci). It runs every project of the set in one Playwright run, fills in the settings the Jenkinsfiles do not set (WORKERS=4, PAYMENT_METHOD=CARD, AAT's Camunda and WA task monitor), sends the PR set through the CCD API (SCENARIO_API_UNTIL, default All_FINAL_ORDERS_ISSUED) apart from UNSPEC_1v1_FAST, which stays in the UI as the nightly set has the full UI journeys, and does not repeat work a build of the same commit has done: a set that passed is skipped, and a set that failed only runs its failed scenarios again, from the start of each journey. The Allure report is playwright-allure-journeys-results (yarn test:journeys:generate-report). The Jenkinsfiles do not call the script yet.
 
 To run a set yourself:
 
@@ -353,6 +353,8 @@ The notice of change scenarios are SPEC_1v1_LIP_FAST_NOTICE_OF_CHANGE, where a L
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v1_FAST_NOTICE_OF_CHANGE
 ```
 
+The counterclaim scenarios (SPEC_1v1_FAST_COUNTER_CLAIM, SPEC_1v2SS_FAST_COUNTER_CLAIM, SPEC_2v1_FAST_COUNTER_CLAIM and the same three on the small claims track through the API) have every defendant respond with a counterclaim, which takes the claim offline. The interest scenarios create a claim with interest: the statutory 8%, a breakdown and a different rate from a specific date in the UI (SPEC_1v1_SMALL_INTEREST_*), and 8% from a specific date through the API, to the final order (SPEC_1v1_FAST_INTEREST_FROM_DATE).
+
 SPEC_1v1_FAST_QUERY_MANAGEMENT has both solicitors raise a query about the hearing once the claimant has responded, with a follow-up question each, all answered by CTSC (yarn test:SPEC_1v1_FAST_QUERY_MANAGEMENT, section 11). SPEC_1v1_FAST_REFUND has a refund returned, changed and then approved straight after the claim is issued (yarn test:SPEC_1v1_FAST_REFUND, section 13).
 
 ## 15. Claim parameters
@@ -370,6 +372,8 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `INTEREST_REQUIRED` | Yes, No | No | The claimant claims interest. |
 | `INTEREST_TYPE` | SAME_RATE_INTEREST, BREAK_DOWN_INTEREST | SAME_RATE_INTEREST | One rate over the whole period, or a total the claimant has broken down. |
 | `INTEREST_RATE` | A number | 8 | With the same rate, 8 is the statutory rate and any other rate needs a reason. With a breakdown, the total interest in pounds. |
+| `INTEREST_FROM` | FROM_CLAIM_SUBMIT_DATE, FROM_A_SPECIFIC_DATE | FROM_CLAIM_SUBMIT_DATE | The date interest is claimed from. A specific date is six months ago, with a reason. Needs INTEREST_REQUIRED=Yes. Through the API the interest built up since that date (worked out as civil-service does) is added to the amount the claim fee is for. Has an API version. |
+| `INTEREST_UNTIL` | UNTIL_SETTLED_OR_JUDGEMENT_MADE, UNTIL_CLAIM_SUBMIT_DATE | UNTIL_SETTLED_OR_JUDGEMENT_MADE | With INTEREST_FROM=FROM_A_SPECIFIC_DATE, when the interest is claimed until. Has an API version. |
 | `FIXED_COMMENCEMENT_COSTS` | Yes, No | No | The claimant claims fixed commencement costs. |
 | `PAYMENT_METHOD` | PBA, CARD | PBA | How the claim fee and the hearing fee are paid. CARD is always paid in the UI. Any other value stops the run. |
 | `ADD_CASE_NOTE` | Yes, No | No | Optional step: the hearing centre admin adds a case note after the claim is issued. |

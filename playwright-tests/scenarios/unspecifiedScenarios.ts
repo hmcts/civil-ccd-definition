@@ -15,6 +15,16 @@ export interface Scenario {
   name: string;
   tags: string[];
   env: Record<string, string | undefined>;
+  // Always runs every step in the UI, even when the run sets SCENARIO_API_UNTIL
+  ui?: boolean;
+}
+
+// SCENARIO_API_UNTIL=<state> gives every scenario that does not set its own API_UNTIL, and is not marked ui, that
+// API_UNTIL, so a run can go through the CCD API while keeping a few scenarios in the UI. The PR pipeline sets it
+// (playwright-tests/scripts/pipeline/run-journeys.sh); master and nightly runs keep each scenario's own settings.
+export function scenarioApiUntil(scenario: Scenario): Record<string, string> {
+  const apiUntil = process.env.SCENARIO_API_UNTIL;
+  return apiUntil && !scenario.ui ? { API_UNTIL: apiUntil } : {};
 }
 
 const PR = '@unspec-pr';
@@ -44,7 +54,8 @@ const fastRoadAccident1v1 = {
 };
 
 const scenarios: Scenario[] = [
-  { name: 'UNSPEC_1v1_FAST', tags: [PR, MASTER, NIGHTLY], env: fastRoadAccident1v1 },
+  // The PR set's one journey run fully in the UI (ui), however the run is set up
+  { name: 'UNSPEC_1v1_FAST', tags: [PR, MASTER, NIGHTLY], env: fastRoadAccident1v1, ui: true },
   { name: 'UNSPEC_1v1_FAST_FREE_FORM_ORDER', tags: [NIGHTLY], env: { ...fastRoadAccident1v1, FINAL_ORDER: 'FREE_FORM_ORDER' } },
   { name: 'UNSPEC_1v1_FAST_ASSISTED_ORDER', tags: [NIGHTLY], env: { ...fastRoadAccident1v1, FINAL_ORDER: 'ASSISTED_ORDER' } },
   {
@@ -464,7 +475,7 @@ export function selectedScenarios(): Scenario[] {
     return scenarios.map((scenario) => ({
       name: scenario.name,
       tags: [`@${scenario.name}`, '@unspecified', ...scenario.tags],
-      env: { ...process.env, ...scenario.env },
+      env: { ...process.env, ...scenarioApiUntil(scenario), ...scenario.env },
     }));
   }
   return [{ name: `UNSPEC_${process.env.CLAIM_TYPE ?? '1v1'}`, tags: ['@unspecified'], env: process.env }];

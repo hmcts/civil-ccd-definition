@@ -6,7 +6,7 @@ import YesNo from '../../enums/yesNo.ts';
 import claimTrack from '../../enums/track.ts';
 import Timeline from '../../enums/timeline.ts';
 import { CreateUnspecifiedCase } from './createUnspecifiedCase.ts';
-import { InterestType } from '../journey/specified/specifiedConfig.ts';
+import { InterestFrom, InterestType, InterestUntil } from '../journey/specified/specifiedConfig.ts';
 
 // The amount claimed, in pounds, that puts a specified claim on the track: small claims up to £10,000, fast track up to
 // £25,000, intermediate track up to £100,000 and multi track above that. Used by the UI and the API to create claims.
@@ -36,6 +36,7 @@ export const specClaimText = {
   amountReason: 'Test description of what the claimant(s) are claiming for.',
   interestRateReason: 'Test description of why entitled to the interest rate amount.',
   interestBreakdown: 'Description of how the amount was calculated',
+  interestFromDateReason: 'Test description of why interest is claimed from this date.',
   interestFromDate: 'Description of why claiming from this date.',
   fixedCommencementCostsInPounds: 225,
 };
@@ -173,9 +174,16 @@ export class CreateSpecifiedCase {
     await this.pageHelper.continueToNextPage(); // Amount claimed summary
   }
 
-  // Whether interest is claimed, and if it is, how it is worked out and the date it is claimed from. It is claimed from
-  // the date the claim is submitted, so the claim is not asked until when (that is only asked for a specific date).
-  async setInterest(interestRequired: YesNo, interestType: InterestType, interestRate: string) {
+  // Whether interest is claimed, and if it is, how it is worked out and the date it is claimed from: the date the claim
+  // is submitted, or a specific date (YYYY-MM-DD), with a reason and until when (only asked for a specific date)
+  async setInterest(
+    interestRequired: YesNo,
+    interestType: InterestType,
+    interestRate: string,
+    interestFrom: InterestFrom = InterestFrom.SUBMIT_DATE,
+    interestFromDate?: string,
+    interestUntil: InterestUntil = InterestUntil.SETTLED_OR_JUDGMENT,
+  ) {
     await this.page.locator(`#claimInterest_${interestRequired}`).check();
     await this.pageHelper.continueToNextPage();
     if (interestRequired === YesNo.NO) {
@@ -198,8 +206,16 @@ export class CreateSpecifiedCase {
     }
     await this.pageHelper.continueToNextPage();
 
-    await this.page.locator('#interestClaimFrom-FROM_CLAIM_SUBMIT_DATE').check();
+    await this.page.locator(`#interestClaimFrom-${interestFrom}`).check();
     await this.pageHelper.continueToNextPage();
+    if (interestFrom === InterestFrom.SPECIFIC_DATE) {
+      await this.pageHelper.fillDate('interestFromSpecificDate', moment(interestFromDate, 'YYYY-MM-DD'));
+      await this.page.locator('#interestFromSpecificDateDescription').fill(specClaimText.interestFromDateReason);
+      await this.pageHelper.continueToNextPage();
+
+      await this.page.locator(`#interestClaimUntil-${interestUntil}`).check();
+      await this.pageHelper.continueToNextPage();
+    }
   }
 
   // The total amount claimed, with any interest, and the claim fee, which is paid with PBA after the claim is submitted

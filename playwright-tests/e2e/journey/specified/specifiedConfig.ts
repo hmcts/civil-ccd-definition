@@ -34,6 +34,27 @@ export enum InterestType {
   BREAK_DOWN = 'BREAK_DOWN_INTEREST',
 }
 
+// The date the claimant claims interest from: the date the claim is submitted, or a specific earlier date
+export enum InterestFrom {
+  SUBMIT_DATE = 'FROM_CLAIM_SUBMIT_DATE',
+  SPECIFIC_DATE = 'FROM_A_SPECIFIC_DATE',
+}
+
+// With a specific date, when the interest is claimed until: until the claim is settled or judgment is made, or until
+// the claim is submitted
+export enum InterestUntil {
+  SETTLED_OR_JUDGMENT = 'UNTIL_SETTLED_OR_JUDGEMENT_MADE',
+  SUBMIT_DATE = 'UNTIL_CLAIM_SUBMIT_DATE',
+}
+
+// The specific date interest is claimed from: six months ago, as playwright-e2e uses, as YYYY-MM-DD
+function interestFromSpecificDate(): string {
+  const date = new Date();
+  date.setMonth(date.getMonth() - 6);
+  const twoDigits = (n: number) => String(n).padStart(2, '0');
+  return `${date.getFullYear()}-${twoDigits(date.getMonth() + 1)}-${twoDigits(date.getDate())}`;
+}
+
 // The settings of one specified journey, read from its scenario's env vars
 export function specifiedConfig(scenarioEnv: Record<string, string | undefined>) {
   const env = cleanEnv({
@@ -58,6 +79,14 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     INTEREST_TYPE: enums({
       values: [InterestType.SAME_RATE, InterestType.BREAK_DOWN],
       default: InterestType.SAME_RATE,
+    }),
+    INTEREST_FROM: enums({
+      values: [InterestFrom.SUBMIT_DATE, InterestFrom.SPECIFIC_DATE],
+      default: InterestFrom.SUBMIT_DATE,
+    }),
+    INTEREST_UNTIL: enums({
+      values: [InterestUntil.SETTLED_OR_JUDGMENT, InterestUntil.SUBMIT_DATE],
+      default: InterestUntil.SETTLED_OR_JUDGMENT,
     }),
     TIMELINE: enums({
       values: [Timeline.MANUAL, Timeline.UPLOAD],
@@ -170,10 +199,15 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
     flightDelaySmallClaim: ['Yes', 'OTHER'].includes(scenarioEnv.AIRLINE_CLAIM) && track === claimTrack.SMALL,
     // Whether the timeline of events is typed in (MANUAL, the default) or uploaded as a document (UPLOAD)
     timeline: env.TIMELINE as Timeline,
-    // Whether the claimant claims interest (INTEREST_REQUIRED=Yes, default No), and how (INTEREST_TYPE, INTEREST_RATE)
+    // Whether the claimant claims interest (INTEREST_REQUIRED=Yes, default No), how (INTEREST_TYPE, INTEREST_RATE), from
+    // when (INTEREST_FROM: the submit date, or a specific date six months ago) and, from a specific date, until when
+    // (INTEREST_UNTIL)
     interestRequired: yes(scenarioEnv.INTEREST_REQUIRED),
     interestType: env.INTEREST_TYPE as InterestType,
     interestRate,
+    interestFrom: env.INTEREST_FROM as InterestFrom,
+    interestUntil: env.INTEREST_UNTIL as InterestUntil,
+    interestFromDate: interestFromSpecificDate(),
     // How the claimant's solicitor pays the claim fee: from their PBA account (PAYMENT_METHOD=PBA, the default) or by
     // card (CARD), which is always done in the UI, even when the claim is created through the API
     paymentMethod: env.PAYMENT_METHOD as PaymentMethod,
@@ -432,6 +466,14 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>)
         `Invalid SET_ASIDE_JUDGMENT value: ${scenarioEnv.SET_ASIDE_JUDGMENT}. It must be one of ${Object.values(SetAsideJudgment).join(', ')}.`,
       ).toContain(scenarioEnv.SET_ASIDE_JUDGMENT);
       expect(interestRate, `Invalid INTEREST_RATE value: ${interestRate}. It must be a number.`).toMatch(/^\d+(\.\d+)?$/);
+      expect(
+        scenarioEnv.INTEREST_REQUIRED === 'Yes' || (scenarioEnv.INTEREST_FROM === undefined && scenarioEnv.INTEREST_UNTIL === undefined),
+        'INTEREST_FROM and INTEREST_UNTIL need INTEREST_REQUIRED=Yes: no interest is claimed without it.',
+      ).toBeTruthy();
+      expect(
+        scenarioEnv.INTEREST_UNTIL === undefined || env.INTEREST_FROM === InterestFrom.SPECIFIC_DATE,
+        `INTEREST_UNTIL needs INTEREST_FROM=${InterestFrom.SPECIFIC_DATE}: interest claimed from the submit date is always claimed until the claim is settled or judgment is made.`,
+      ).toBeTruthy();
       expect(
         Object.values(FinalOrder),
         `Invalid FINAL_ORDER value: ${finalOrder}. It must be one of ${Object.values(FinalOrder).join(', ')}.`,

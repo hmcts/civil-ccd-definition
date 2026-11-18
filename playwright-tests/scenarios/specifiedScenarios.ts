@@ -1,4 +1,4 @@
-import { Scenario } from './unspecifiedScenarios.ts';
+import { Scenario, scenarioApiUntil } from './unspecifiedScenarios.ts';
 
 // The specified journeys. Each scenario is a set of the journey's env vars, run as its own group in
 // SpecifiedSS.test.ts and tagged with its name (@SPEC_1v1_FAST etc.), @specified and the pipeline tags below.
@@ -20,6 +20,12 @@ const NIGHTLY = '@spec-nightly';
 
 const company1v1 = { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL' };
 const company1v2DS = { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION' };
+const company1v2SS = { CLAIM_TYPE: '1v2SS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL' };
+const soleTrader2v1 = { CLAIM_TYPE: '2v1', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL' };
+// Every defendant responds with a counterclaim (in a 2v1 claim, to both claimants)
+const counterClaim = { RESPONDENT1_RESPONSE: 'COUNTER_CLAIM', RESPONDENT2_RESPONSE: 'COUNTER_CLAIM' };
+// Runs every step through the CCD API, until the claim goes offline
+const apiToOffline = { API_UNTIL: 'PROCEEDS_IN_HERITAGE_SYSTEM' };
 // Runs the steps that have an API version through the CCD API until the claim reaches JUDICIAL_REFERRAL (IN_MEDIATION
 // for a small claim), so a scenario about a later event only does that event in the UI
 const apiToJudicialReferral = { API_UNTIL: 'JUDICIAL_REFERRAL' };
@@ -308,6 +314,60 @@ const scenarios: Scenario[] = [
     tags: [NIGHTLY],
     env: { ...company1v1, ...closeAtJudicialReferral, CASE_PROCEEDS_IN_CASEMAN: 'DEFENDANT_DOES_NOT_CONSENT' },
   },
+
+  // Counterclaims: every defendant responds with a counterclaim, which takes the claim offline
+  // (PROCEEDS_IN_HERITAGE_SYSTEM), on the fast track in the UI and on the small claims track through the API
+  { name: 'SPEC_1v1_FAST_COUNTER_CLAIM', tags: [NIGHTLY], env: { ...company1v1, ...counterClaim } },
+  { name: 'SPEC_1v2SS_FAST_COUNTER_CLAIM', tags: [NIGHTLY], env: { ...company1v2SS, ...counterClaim } },
+  { name: 'SPEC_2v1_FAST_COUNTER_CLAIM', tags: [NIGHTLY], env: { ...soleTrader2v1, ...counterClaim } },
+  { name: 'SPEC_1v1_SMALL_COUNTER_CLAIM', tags: [NIGHTLY], env: { ...company1v1, ...counterClaim, ...apiToOffline, TRACK: 'SMALL_CLAIM' } },
+  { name: 'SPEC_1v2SS_SMALL_COUNTER_CLAIM', tags: [NIGHTLY], env: { ...company1v2SS, ...counterClaim, ...apiToOffline, TRACK: 'SMALL_CLAIM' } },
+  { name: 'SPEC_2v1_SMALL_COUNTER_CLAIM', tags: [NIGHTLY], env: { ...soleTrader2v1, ...counterClaim, ...apiToOffline, TRACK: 'SMALL_CLAIM' } },
+
+  // Interest. In the UI, on small claims as playwright-e2e does: the statutory 8% from the submit date, a breakdown,
+  // and a different rate from a specific date. Each run stops once the defendant's solicitor is assigned.
+  {
+    name: 'SPEC_1v1_SMALL_INTEREST_SAME_RATE',
+    tags: [NIGHTLY],
+    env: { ...company1v1, TRACK: 'SMALL_CLAIM', INTEREST_REQUIRED: 'Yes', STOP_AFTER_TEST: 'ASSIGN_DEFENDANT_SOLICITORS' },
+  },
+  {
+    name: 'SPEC_1v1_SMALL_INTEREST_BREAK_DOWN',
+    tags: [NIGHTLY],
+    env: {
+      ...company1v1,
+      TRACK: 'SMALL_CLAIM',
+      INTEREST_REQUIRED: 'Yes',
+      INTEREST_TYPE: 'BREAK_DOWN_INTEREST',
+      INTEREST_RATE: '250',
+      STOP_AFTER_TEST: 'ASSIGN_DEFENDANT_SOLICITORS',
+    },
+  },
+  {
+    name: 'SPEC_1v1_SMALL_INTEREST_DIFFERENT_RATE_FROM_DATE',
+    tags: [NIGHTLY],
+    env: {
+      ...company1v1,
+      TRACK: 'SMALL_CLAIM',
+      INTEREST_REQUIRED: 'Yes',
+      INTEREST_RATE: '5',
+      INTEREST_FROM: 'FROM_A_SPECIFIC_DATE',
+      STOP_AFTER_TEST: 'ASSIGN_DEFENDANT_SOLICITORS',
+    },
+  },
+  // Through the API: the statutory 8% from a specific date until the claim is submitted, which is in the claim fee,
+  // and the claim carries on to the final order with interest on it
+  {
+    name: 'SPEC_1v1_FAST_INTEREST_FROM_DATE',
+    tags: [NIGHTLY],
+    env: {
+      ...company1v1,
+      API_UNTIL: 'All_FINAL_ORDERS_ISSUED',
+      INTEREST_REQUIRED: 'Yes',
+      INTEREST_FROM: 'FROM_A_SPECIFIC_DATE',
+      INTEREST_UNTIL: 'UNTIL_CLAIM_SUBMIT_DATE',
+    },
+  },
 ];
 
 // The scenarios to run. With SCENARIOS=Yes it is the list above, each scenario's env vars set over the run's own
@@ -318,7 +378,7 @@ export function selectedScenarios(): Scenario[] {
     return scenarios.map((scenario) => ({
       name: scenario.name,
       tags: [`@${scenario.name}`, '@specified', ...scenario.tags],
-      env: { ...process.env, ...scenario.env },
+      env: { ...process.env, ...scenarioApiUntil(scenario), ...scenario.env },
     }));
   }
   return [{ name: `SPEC_${process.env.CLAIM_TYPE ?? '1v1'}`, tags: ['@specified'], env: process.env }];

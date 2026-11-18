@@ -7,7 +7,7 @@ import { claimantSolicitorCredentials } from '../../../../../civilConfig.ts';
 import { Fee } from '../../../../../helpers/FeesHelper.ts';
 import { ClaimantShape, DefendantShape } from '../../../createClaimShape.ts';
 import { OTHER_AIRLINE_NAME, specClaimAmountInPounds, specClaimText } from '../../../createSpecifiedCase.ts';
-import { InterestType, SpecifiedConfig } from '../../../../journey/specified/specifiedConfig.ts';
+import { InterestFrom, InterestType, SpecifiedConfig } from '../../../../journey/specified/specifiedConfig.ts';
 import { party } from './createClaimPayload.ts';
 
 // The case data for CREATE_CLAIM_SPEC, as XUI submits it after every page of the event has been filled in the way
@@ -23,8 +23,25 @@ export interface CreateClaimSpecLookups {
 
 // The interest the claim includes when it is submitted, in pounds. A broken down total is entered as it is. Interest
 // at a rate is claimed from the date the claim is submitted, so none has built up yet.
+// The interest the claim includes when it is submitted, which the claim fee is for along with the amount claimed. A
+// breakdown is its total. The same rate from the submit date has built up nothing yet. The same rate from a specific
+// date is worked out as civil-service's InterestCalculator does: the interest for a day, rounded half up to the penny,
+// times the number of days from that date to today.
 export function specInterestInPounds(c: SpecifiedConfig): number {
-  return c.interestRequired === yesNo.YES && c.interestType === InterestType.BREAK_DOWN ? Number(c.interestRate) : 0;
+  if (c.interestRequired !== yesNo.YES) {
+    return 0;
+  }
+  if (c.interestType === InterestType.BREAK_DOWN) {
+    return Number(c.interestRate);
+  }
+  if (c.interestFrom !== InterestFrom.SPECIFIC_DATE) {
+    return 0;
+  }
+  const perDay = Math.round(specClaimAmountInPounds(c.track) * Number(c.interestRate) / 100 / 365 * 100) / 100;
+  const today = new Date();
+  const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  const days = Math.max(0, Math.round((todayUtc - Date.parse(c.interestFromDate)) / 86_400_000));
+  return Math.round(perDay * days * 100) / 100;
 }
 
 export function buildCreateClaimSpecPayload(
@@ -179,8 +196,8 @@ function claimAmount(c: SpecifiedConfig, lookups: CreateClaimSpecLookups) {
   };
 }
 
-// Whether interest is claimed, and if it is, how it is worked out and that it is claimed from the date the claim is
-// submitted (so the claim is not asked until when)
+// Whether interest is claimed, and if it is, how it is worked out and the date it is claimed from: the date the claim
+// is submitted (so the claim is not asked until when), or a specific date, with a reason and until when
 function interest(c: SpecifiedConfig) {
   if (c.interestRequired === yesNo.NO) {
     return { claimInterest: yesNo.NO, totalInterest: '0' };
@@ -200,7 +217,14 @@ function interest(c: SpecifiedConfig) {
     claimInterest: yesNo.YES,
     interestClaimOptions: c.interestType,
     ...howWorkedOut,
-    interestClaimFrom: 'FROM_CLAIM_SUBMIT_DATE',
+    interestClaimFrom: c.interestFrom,
+    ...(c.interestFrom === InterestFrom.SPECIFIC_DATE
+      ? {
+        interestFromSpecificDate: c.interestFromDate,
+        interestFromSpecificDateDescription: specClaimText.interestFromDateReason,
+        interestClaimUntil: c.interestUntil,
+      }
+      : {}),
     totalInterest: String(specInterestInPounds(c)),
   };
 }
