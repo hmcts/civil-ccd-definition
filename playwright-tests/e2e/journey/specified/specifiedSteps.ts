@@ -360,9 +360,11 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     },
 
     // The claimant's solicitor asks for default judgment against every defendant, paid immediately. civil-service
-    // records it through Judgments Online: with the judgment buffer switched on the claim waits in JUDGMENT_REQUESTED
-    // for the judgment to be issued (JUDGMENT_REQUESTED_SPEC), otherwise it is issued straight away and the claim moves
-    // to All_FINAL_ORDERS_ISSUED (DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC).
+    // records it through Judgments Online: where the judgment buffer applies the claim waits in JUDGMENT_REQUESTED for
+    // the judgment to be issued (JUDGMENT_REQUESTED_SPEC), otherwise it is issued straight away and the claim moves to
+    // All_FINAL_ORDERS_ISSUED (DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC). As in civil-service's DefaultJudgementSpecHandler,
+    // the buffer only applies when the judgment-buffer flag is on and Defendant 1 has no solicitor: the flag is on in
+    // previews and off on AAT, so a represented defendant's claim never waits.
     {
       name: 'DEFAULT_JUDGMENT',
       title: 'Claimant Solicitor requests default judgment.',
@@ -376,7 +378,8 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
             await new DefaultJudgmentSpec(page).submit(c.claimShape.defendants.length === 2);
           });
         }
-        const judgmentBuffer = await ctx.testingEndpointHelper.isFeatureEnabled('judgment-buffer');
+        const judgmentBuffer = await ctx.testingEndpointHelper.isFeatureEnabled('judgment-buffer')
+          && (await ctx.testingEndpointHelper.getCaseData(ctx.caseId)).respondent1Represented === yesNo.NO;
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, judgmentBuffer ? 'JUDGMENT_REQUESTED_SPEC' : 'DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC');
         await ctx.assertCaseState(judgmentBuffer ? caseStates.JUDGMENT_REQUESTED : caseStates.All_FINAL_ORDERS_ISSUED);
       },

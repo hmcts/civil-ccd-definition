@@ -16,6 +16,26 @@ import CaseType from '../enums/caseType.ts';
 export class WaTaskHelper {
   constructor(public page: Page, private caseType: CaseType = CaseType.CIVIL) {}
 
+  private static workAllocationDeployed: Promise<boolean> | undefined;
+
+  // Whether the environment has work allocation at all: its WA task monitor answers its health check. AAT and a
+  // preview built with work allocation (pr-values:fullDeployment, or civil-ccd's enableWA label) have one; a civil-ccd
+  // preview built without it does not, so Camunda creates no tasks there. Asked once per run (per worker).
+  static isWorkAllocationDeployed(): Promise<boolean> {
+    WaTaskHelper.workAllocationDeployed ??= (async () => {
+      const api = await request.newContext();
+      try {
+        const response = await api.get(`${workAllocation.taskMonitorUrl}/health`, { timeout: 10_000, maxRedirects: 0 });
+        return response.ok();
+      } catch {
+        return false;
+      } finally {
+        await api.dispose();
+      }
+    })();
+    return WaTaskHelper.workAllocationDeployed;
+  }
+
   // Which of taskTypes Camunda has created for the case, waiting up to waitSeconds for one of them. For a case where
   // work allocation's rules decide who does the work, such as a general application, which a judge or a legal adviser
   // decides depending on the court and the application. Undefined if none of them is created.

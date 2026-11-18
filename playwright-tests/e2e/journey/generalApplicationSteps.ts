@@ -379,10 +379,21 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
   ];
 
   // Who decides depends on where the application is and its types, so there is a step for each, and the one whose task
-  // work allocation did not create is skipped when it runs
-  let decisionTask: Promise<string | undefined> | undefined;
+  // work allocation did not create is skipped when it runs.
+  // Where the environment has no work allocation (a civil-ccd preview built without the enableWA label) Camunda creates
+  // no task, so the judge decides, as playwright-e2e's tests do there. Where it has work allocation, a missing task
+  // fails the step: XUI does not need a task for MAKE_DECISION, so deciding without one would hide the failure.
+  let decisionTask: Promise<string> | undefined;
   const findDecisionTask = () => {
-    decisionTask ??= WaTaskHelper.createdTaskType(ctx.gaCaseId, [...decisionTasks.map((task) => task.taskType), consentOrderTask]);
+    decisionTask ??= (async () => {
+      const created = await WaTaskHelper.createdTaskType(ctx.gaCaseId, [...decisionTasks.map((task) => task.taskType), consentOrderTask]);
+      if (created !== undefined) {
+        return created;
+      }
+      expect(await WaTaskHelper.isWorkAllocationDeployed(), `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeFalsy();
+      console.log(`WA: this environment has no work allocation, so the judge decides application ${ctx.gaCaseId}`);
+      return 'JudgeDecideOnApplication';
+    })();
     return decisionTask;
   };
   const referToJudge = c.generalApplicationReferToJudge === yesNo.YES;
@@ -402,7 +413,6 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     ],
     run: async ({ page, storageState, user }) => {
       const created = await findDecisionTask();
-      expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
       test.skip(created !== 'LegalAdvisorDecideOnApplication', `Skipping as work allocation gave the decision to a judge (${created}), so there is nothing to refer`);
       await ctx.runEvent(page, storageState, async () => {
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
@@ -418,8 +428,10 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       await ctx.assertGaCaseState(GaCaseStates.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION);
       // The judge decides it now
       referred = true;
-      decisionTask = WaTaskHelper.createdTaskType(ctx.gaCaseId, ['JudgeDecideOnApplication']);
-      expect(await decisionTask, `Work allocation created no JudgeDecideOnApplication task for application ${ctx.gaCaseId} after it was referred`).toBeDefined();
+      // A legal adviser only refers an application where work allocation is switched on, so the judge's task must follow
+      const judgeTask = await WaTaskHelper.createdTaskType(ctx.gaCaseId, ['JudgeDecideOnApplication']);
+      expect(judgeTask, `Work allocation created no JudgeDecideOnApplication task for application ${ctx.gaCaseId} after it was referred`).toBeDefined();
+      decisionTask = Promise.resolve('JudgeDecideOnApplication');
       await claimStateUnchanged();
     },
   };
@@ -450,7 +462,6 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     run: async ({ page, storageState }) => {
       test.skip(referred && taskType === 'LegalAdvisorDecideOnApplication', 'Skipping as the legal adviser referred the application to a judge');
       const created = await findDecisionTask();
-      expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
       test.skip(created !== taskType, `Skipping as work allocation gave the decision to ${deciderOf(created)} (${created})`);
       await ctx.runEvent(page, storageState, async () => {
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
@@ -506,7 +517,6 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     ],
     run: async ({ page, storageState }) => {
       const created = await findDecisionTask();
-      expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
       test.skip(created !== consentOrderTask, `Skipping as work allocation gave the decision to ${deciderOf(created)} (${created})`);
       const atCnbc = (await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId)).isCcmccLocation === 'Yes';
       test.skip(atCnbc !== atNationalBusinessCentre, `Skipping as the application is ${atCnbc ? 'at the Civil National Business Centre' : 'at a hearing centre'}, so another admin approves it`);
@@ -544,7 +554,6 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     ],
     run: async ({ page, storageState, user: stepUser }) => {
       const created = await findDecisionTask();
-      expect(created, `Work allocation created no task to decide application ${ctx.gaCaseId}`).toBeDefined();
       test.skip(created !== taskType, `Skipping as work allocation gave the decision to ${deciderOf(created)} (${created})`);
       let taskId: string | undefined;
       await ctx.runEvent(page, storageState, async () => {
