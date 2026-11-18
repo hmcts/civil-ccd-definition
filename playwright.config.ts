@@ -1,23 +1,39 @@
-// Must stay first: loads the playwright-tests environment (ENV) before anything below reads process.env
-import { playwrightTestsEnvLoaded } from './playwright-tests/env.ts';
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { defineConfig, devices } from '@playwright/test';
-import {envUrl} from './playwright-tests/civilConfig.ts';
-import { pruneOldRunResults } from './playwright-tests/helpers/RunHelper.ts';
+import fs from 'node:fs';
 import os from 'node:os';
+import path from 'node:path';
+
+// civil-service, civil-wa-task-configuration and civil-camunda-bpmn-definition copy this file into their own pipelines
+// with playwright-e2e, but without playwright-tests. Where playwright-tests is missing, nothing of it is loaded and the
+// config is the playwright-e2e one, exactly as before playwright-tests was added: keep it that way when changing this
+// file.
+const playwrightTestsPresent = fs.existsSync(path.join(__dirname, 'playwright-tests'));
+
+// Must stay first: loads the playwright-tests environment (ENV) before anything below reads process.env
+const playwrightTestsEnvLoaded: boolean = playwrightTestsPresent
+  ? require('./playwright-tests/env.ts').playwrightTestsEnvLoaded
+  : false;
+const envUrl: string | undefined = playwrightTestsPresent ? require('./playwright-tests/civilConfig.ts').envUrl : undefined;
 
 // Set once by the runner process and inherited by every worker, so the playwright-tests case unassignment
 // teardown only processes cases recorded by this run (see playwright-tests/helpers/CaseUserRegistry.ts)
-process.env.PLAYWRIGHT_RUN_ID ??= `${process.pid}-${Date.now()}`;
+if (playwrightTestsPresent) {
+  process.env.PLAYWRIGHT_RUN_ID ??= `${process.pid}-${Date.now()}`;
+}
 
 // Where traces, videos and screenshots go. Locally each run has its own folder, named after its run ID, so a run
 // started while another is going does not wipe the other's results; the newest RESULTS_RUNS_TO_KEEP finished runs
 // (default 10) are kept. On CI (one run per build, and the reports come from Allure) it is a single folder of its own,
 // as Playwright empties it at the start of a run and the playwright-e2e projects' folders are next to it.
-// The playwright-e2e projects set their own folders.
+// The playwright-e2e projects set their own folders. Without playwright-tests it is the playwright-e2e folder.
 const resultsRoot = './playwright-test-results';
-const outputDir = process.env.CI ? `${resultsRoot}/journeys` : `${resultsRoot}/${process.env.PLAYWRIGHT_RUN_ID}`;
-if (!process.env.CI && process.env.TEST_WORKER_INDEX === undefined) {
-  pruneOldRunResults(resultsRoot, Number(process.env.RESULTS_RUNS_TO_KEEP ?? 10));
+let outputDir = resultsRoot;
+if (playwrightTestsPresent) {
+  outputDir = process.env.CI ? `${resultsRoot}/journeys` : `${resultsRoot}/${process.env.PLAYWRIGHT_RUN_ID}`;
+  if (!process.env.CI && process.env.TEST_WORKER_INDEX === undefined) {
+    require('./playwright-tests/helpers/RunHelper.ts').pruneOldRunResults(resultsRoot, Number(process.env.RESULTS_RUNS_TO_KEEP ?? 10));
+  }
 }
 
 // How many playwright-tests scenarios run at the same time (WORKERS, default 1). It is a limit on our projects only, so
@@ -33,7 +49,6 @@ const playwrightTestsUse = { headless: true, launchOptions: {} };
 // The settings of playwright-e2e, which is kept for reference. Loading them also loads .env.tests.local, so a
 // playwright-tests run (ENV=aat|demo|ithc|preview) does not load them: it only uses playwright-tests/env/.env.<ENV>,
 // and only the playwright-tests projects are defined.
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const config = playwrightTestsEnvLoaded ? undefined : require('./playwright-e2e/config/config').default;
 
 export default defineConfig({
@@ -44,20 +59,22 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   fullyParallel: true,
   retries: config?.playwright.retries ?? 0,
-  // At least WORKERS, so PLAYWRIGHT_WORKERS (for the playwright-e2e suites) does not hold our projects back
+  // At least WORKERS, so PLAYWRIGHT_WORKERS (for the playwright-e2e suites) does not hold our projects back. Without
+  // playwright-tests, PLAYWRIGHT_WORKERS as it is.
   workers: !config ? playwrightTestsWorkers
-    : Number.isNaN(config.playwright.workers) ? undefined : Math.max(config.playwright.workers, playwrightTestsWorkers),
+    : !playwrightTestsPresent ? config.playwright.workers
+      : Number.isNaN(config.playwright.workers) ? undefined : Math.max(config.playwright.workers, playwrightTestsWorkers),
   reporter: getReporter(),
   timeout: 1_200_000,
   expect: {
     timeout: 60_000,
     toPass: {
-      timeout: config?.playwright.toPassTimeout ?? 25_000,
+      timeout: config ? config.playwright.toPassTimeout : 25_000,
     },
   },
   outputDir,
   use: {
-    actionTimeout: config?.playwright.actionTimeout ?? 25_000,
+    actionTimeout: config ? config.playwright.actionTimeout : 25_000,
     headless: !config?.playwright.showBrowserWindow,
     video: { mode: 'retain-on-failure' },
     screenshot: { mode: 'only-on-failure', fullPage: true },
@@ -66,6 +83,14 @@ export default defineConfig({
     },
   },
   projects: [
+    ...(playwrightTestsPresent ? playwrightTestsProjects() : []),
+    ...(config ? playwrightE2eProjects(config) : []),
+  ],
+});
+
+// The playwright-tests projects, only defined where playwright-tests is present
+function playwrightTestsProjects() {
+  return [
     // Checks the settings, services and users the playwright-tests journeys need before anything else runs. As a
     // setup project it runs once per run, before any worker starts a test, however many workers or projects there are,
     // and is never retried (see preflight.setup.ts). Skip it with PREFLIGHT=false.
@@ -129,9 +154,8 @@ export default defineConfig({
       workers: playwrightTestsWorkers,
       ...playwrightTestsProject,
     })),
-    ...(config ? playwrightE2eProjects(config) : []),
-  ],
-});
+  ];
+}
 
 // The playwright-e2e projects, only defined when its settings are loaded
 function playwrightE2eProjects(config) {
@@ -301,7 +325,7 @@ function getReporter(): any {
     {
       outputFolder: outputFolder,
       environmentInfo: {
-        Environment: config?.environment ?? process.env.ENVIRONMENT,
+        Environment: config ? config.environment : process.env.ENVIRONMENT,
         Workers: process.env.PLAYWRIGHT_WORKERS,
         OS: os.platform(),
         Architecture: os.arch(),
