@@ -8,8 +8,17 @@ import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
 @AllMethodsStep()
 export default class WorkAllocationsRequests extends ServiceAuthProviderRequests(BaseRequest) {
-  async retrieveTask(user: User, validTask: WATask, caseId?: number): Promise<WATask> {
+  async retrieveTask(
+    user: User,
+    validTask: WATask,
+    caseId?: number,
+    excludedTaskIds: string[] = [],
+  ): Promise<WATask> {
     console.log(`Retrieving task, caseId: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`);
+    const isMatchingTask = (task: WATask) =>
+      task.type === validTask.type &&
+      task.name === validTask.name &&
+      !excludedTaskIds.includes(task.id);
     const url = `${urls.waTaskMgmtApi}/task`;
     const body = {
       search_parameters: [
@@ -34,10 +43,20 @@ export default class WorkAllocationsRequests extends ServiceAuthProviderRequests
         await super.expectResponseJsonArrayToContain([{ type: validTask.type }], tasks, {
           message: `Ongoing task retrieval process, case id: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`,
         });
+        if (excludedTaskIds.length) {
+          // Wait for a replacement task: Task Management can still list a task that was just
+          // cancelled in Camunda, so the excluded ids may be the only matches for a few seconds.
+          await super.expectResponseJsonArrayToContain(
+            [{ type: validTask.type, name: validTask.name }],
+            tasks.filter(isMatchingTask),
+            {
+              message: `Waiting for a task other than ${excludedTaskIds.join(', ')}, case id: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`,
+            },
+          );
+        }
       },
     });
-    const task = responseJson.tasks.find((task: WATask) => 
-      task.type === validTask.type && task.name === validTask.name);
+    const task = responseJson.tasks.find(isMatchingTask);
     await super.expectResponseJsonToContain(validTask, task);
     console.log(`Successfully retrieved task, caseId: ${caseId}, taskType: ${validTask.type}, user: ${user.name}`);
     return task as WATask;
