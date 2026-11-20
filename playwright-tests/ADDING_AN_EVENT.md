@@ -342,7 +342,7 @@ If your event needs a fact that isn't there yet and other steps could use it, ad
 
 ### 7.3 A step that closes the claim (`closesClaim` and `invalidIf`)
 
-A step that ends the claim (settle, discontinue, dismiss, take offline) goes at the end of the list and sets `closesClaim: true`. It then still runs when `STOP_AT_STATE` or `STOP_AFTER_TEST` has stopped the journey earlier, so a test can close a claim wherever it stops. It also needs `invalidIf`, so the run fails straight away if the journey would stop in a state where the event isn't offered. The whole Dismiss case step:
+A step that ends the claim (settle, discontinue, dismiss, take offline) goes at the end of the list and sets `closesClaim: true`. The settle, discontinue and dismiss steps are the same in both journeys, so they are written once, in `playwright-tests/e2e/journey/steps/closingSteps.ts` (see 7.7). It then still runs when `STOP_AT_STATE` or `STOP_AFTER_TEST` has stopped the journey earlier, so a test can close a claim wherever it stops. It also needs `invalidIf`, so the run fails straight away if the journey would stop in a state where the event isn't offered. The whole Dismiss case step:
 
 ```typescript
     {
@@ -366,13 +366,14 @@ A step that ends the claim (settle, discontinue, dismiss, take offline) goes at 
     },
 ```
 
-`invalidIf` gets `stops`, which says how the run is stopped (`stopAtState`, `stopAfterTest`). It returns a list of `[condition, problem]` pairs, or an empty list when the setting is off. `closingProblems(setting, stops, offeredIn, claimantSolicitor)` is a helper in the same file that builds the usual problems for a closing step:
+`invalidIf` gets `stops`, which says how the run is stopped (`stopAtState`, `stopAfterTest`). It returns a list of `[condition, problem]` pairs, or an empty list when the setting is off. `closingProblems(setting, stops, offeredIn, claimantSolicitor)` builds the usual problems for a closing step. Each journey makes it with `closingProblemsFor(c, journeyEndState)` from `closingSteps.ts`, as the state the journey ends in depends on that journey's steps, and passes it to the closing steps:
 
 - the journey would end in a state not in `offeredIn`
 - where `claimantSolicitor` is true, the claim has two defendants and one is a litigant in person (the claimant's solicitor can't settle or discontinue those)
 
 ```typescript
-  function closingProblems(setting: string, stops: JourneyStops, offeredIn: caseStates[], claimantSolicitor: boolean): Array<[boolean, string]> {
+export function closingProblemsFor(c: JourneyConfig, journeyEndState: (stops: JourneyStops) => caseStates | undefined): ClosingProblems {
+  return (setting, stops, offeredIn, claimantSolicitor) => {
     const endState = journeyEndState(stops);
     return [
       [
@@ -384,7 +385,8 @@ A step that ends the claim (settle, discontinue, dismiss, take offline) goes at 
         `${setting} cannot be used where the journey ends in ${endState}${stops.stopAtState ? ' (STOP_AT_STATE)' : ''}: it is only offered in ${offeredIn.join(', ')}`,
       ],
     ];
-  }
+  };
+}
 ```
 
 The problem text should name both settings and say why they can't go together, as these do.
@@ -474,9 +476,38 @@ Where the business process depends on something only known after the event, leav
 
 How long it waits is set by `BUSINESS_PROCESS_WAIT_SECONDS` (default 300). Events that don't start one, such as Amend party details, skip this. The API helper `submitEventThroughPages` already waits for any earlier business process before starting an event, so you don't need to wait before your step.
 
-### 7.7 A set of steps in its own file, shared by both journeys
+### 7.7 A step shared by both journeys (`journey/steps/`)
 
-When a feature has several steps (send a message, then reply to it) and belongs in both journeys, put the steps in their own file under `playwright-tests/e2e/journey/`, rather than copying them into `specifiedSteps.ts` and `unspecifiedSteps.ts`. The file exports a function that takes the parts of the config it needs, the journey context and anything that differs between journeys, and returns the steps. From `sendAndReplySteps.ts`:
+When a step is the same in both journeys, write it once, in a file under `playwright-tests/e2e/journey/steps/`, rather than in both `specifiedSteps.ts` and `unspecifiedSteps.ts`. The file exports a function that takes the journey's config and context, `(c, ctx)`, and returns the step. `c` is either journey's config (`JourneyConfig`), so the step reads only what both configs have, and checks `c.caseType` (`'SPECIFIED'` or `'UNSPECIFIED'`) where the journeys differ. From `stayCaseSteps.ts`:
+
+```typescript
+export function stayCase(c: JourneyConfig, ctx: JourneyContext): JourneyStep {
+  return {
+    name: 'STAY_CASE',
+    title: 'Hearing Centre Admin stays the case.',
+    user: 'hearingCentreAdmin',
+    needs: [c.facts.reachesJudicialReferral],
+    skipIf: [stayOff(c)],
+    run: async ({ page, storageState }) => {
+      await ctx.submitEvent(page, storageState, {
+        api: () => new api.StayCase().submit(ctx.caseId),
+        ui: () => new ui.StayCase(page).submit(),
+        expectState: caseStates.CASE_STAYED,
+      });
+    },
+  };
+}
+```
+
+Each journey lists it where the step runs:
+
+```typescript
+    stayCase(c, ctx),
+```
+
+Steps that share state, such as discontinuing the claim and court staff validating the discontinuance, come from one function that returns both (`discontinueSteps` in `closingSteps.ts`), spread into the list with `...discontinueSteps(c, ctx, closingProblems)`.
+
+A feature with several steps (send a message, then reply to it) that belongs in both journeys works the same way. The file exports a function that takes the parts of the config it needs, the journey context and anything that differs between journeys, and returns the steps. From `sendAndReplySteps.ts`:
 
 ```typescript
 export function sendAndReplySteps(
@@ -534,7 +565,7 @@ The unspecified Amend party details step shows the difference. It also needs the
       ],
 ```
 
-The rest of the step (`run`) is the same in both journeys. If the steps are long or several, use a shared file as in 7.7 instead.
+The rest of the step (`run`) is the same in both journeys. Where the whole step is the same, write it once in `journey/steps/` instead (7.7).
 
 ## 8. Add any new case state
 
