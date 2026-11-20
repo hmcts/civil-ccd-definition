@@ -66,11 +66,13 @@ export class PaymentPage {
       await this.payByCard();
     }
     // The payment result can be slow to show when the payment service is busy. It is not retried, as paying again
-    // could take a second payment.
+    // could take a second payment. A payment that did not go through shows "There is a problem" with the reason, such
+    // as "problem with the service" or, for a card GOV.UK Pay turned down, "Your card payment was unsuccessful", so the
+    // test stops as soon as that is shown and reports it, rather than waiting the whole time for a result.
     const result = this.page.locator('#main-content');
-    await expect(result, `No payment result within ${paymentResultWaitSeconds}s`).toContainText(/Payment successful|problem with the service/, { timeout: paymentResultWaitSeconds * 1000 });
-    const message = await result.innerText();
-    expect(message, 'Payment failed.').toContain('Payment successful');
+    await expect(result, `No payment result within ${paymentResultWaitSeconds}s`).toContainText(/Payment successful|There is a problem|problem with the service/, { timeout: paymentResultWaitSeconds * 1000 });
+    const message = (await result.innerText()).replace(/\s+/g, ' ').trim();
+    expect(message, `Payment failed: ${message}`).toContain('Payment successful');
   }
 
   // Card payment goes on to GOV.UK Pay's pages: the card details, then a page to confirm them, which then returns to
