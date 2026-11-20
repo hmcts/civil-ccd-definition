@@ -103,3 +103,4 @@ __files/
 bin/shared/*
 !bin/shared/.gitkeep
 .civil-service-sparse/
+playwright-tests/e2e/.locks/

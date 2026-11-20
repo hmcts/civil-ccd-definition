@@ -4,6 +4,7 @@ import { ButtonHelper} from "../../../helpers/ButtonHelper";
 import { paymentResultWaitSeconds } from "../../../civilConfig";
 import PaymentMethod from '../../../enums/paymentMethod.ts';
 import { paymentCard } from '../../../fixtures/paymentCard.ts';
+import { withCardPaymentLock } from '../../../helpers/CardPaymentLock.ts';
 
 
 export class PaymentPage {
@@ -62,13 +63,21 @@ export class PaymentPage {
       await this.page.locator('#pbaAccountRef').fill('PBA Account reference test text.');
       await this.page.keyboard.press('Tab');
       await confirmPaymentButton.click();
+      await this.expectPaymentSuccessful();
     } else {
-      await this.payByCard();
+      // One card payment at a time across the workers, until its result shows (see CardPaymentLock.ts)
+      await withCardPaymentLock(async () => {
+        await this.payByCard();
+        await this.expectPaymentSuccessful();
+      });
     }
-    // The payment result can be slow to show when the payment service is busy. It is not retried, as paying again
-    // could take a second payment. A payment that did not go through shows "There is a problem" with the reason, such
-    // as "problem with the service" or, for a card GOV.UK Pay turned down, "Your card payment was unsuccessful", so the
-    // test stops as soon as that is shown and reports it, rather than waiting the whole time for a result.
+  }
+
+  // The payment result can be slow to show when the payment service is busy. It is not retried, as paying again
+  // could take a second payment. A payment that did not go through shows "There is a problem" with the reason, such
+  // as "problem with the service" or, for a card GOV.UK Pay turned down, "Your card payment was unsuccessful", so the
+  // test stops as soon as that is shown and reports it, rather than waiting the whole time for a result.
+  private async expectPaymentSuccessful() {
     const result = this.page.locator('#main-content');
     await expect(result, `No payment result within ${paymentResultWaitSeconds}s`).toContainText(/Payment successful|There is a problem|problem with the service/, { timeout: paymentResultWaitSeconds * 1000 });
     const message = (await result.innerText()).replace(/\s+/g, ' ').trim();
