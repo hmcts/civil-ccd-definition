@@ -269,69 +269,18 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>,
 
     // Checks the settings make sense together, before the journey starts
     validate() {
-      // Every value is one its setting takes, and every name the scenario sets is a setting of this journey
+      // Every value is one its setting takes, no settings clash (settingRules) and every name the scenario sets is a
+      // setting of this journey (see ../settings.ts)
       const settingErrors = settingProblems('SPECIFIED', scenarioEnv, scenarioSettings);
       expect(settingErrors, `Invalid settings:\n  - ${settingErrors.join('\n  - ')}`).toEqual([]);
       if (scenarioEnv.REQUEST_FOR_RECONSIDERATION !== undefined) {
-        // civil-service only allows it on a claim of £10,000 or less whose order a legal adviser drew, which in this
-        // journey is a small claim after unsuccessful mediation
-        expect(
-          track,
-          `REQUEST_FOR_RECONSIDERATION can only be used with TRACK=SMALL_CLAIM: only a legal adviser's small claims order can be reconsidered.`,
-        ).toBe(claimTrack.SMALL);
-        expect(
-          scenarioEnv.MEDIATION_SUCCESSFUL !== 'Yes',
-          'REQUEST_FOR_RECONSIDERATION cannot be used with MEDIATION_SUCCESSFUL=Yes: a claim mediation settled gets no order to reconsider.',
-        ).toBeTruthy();
-        expect(
-          [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL],
-          `REQUEST_FOR_RECONSIDERATION cannot be used with CLAIM_TYPE=${claimType}: a defendant is a litigant in person, and this journey only takes claims where every defendant has a solicitor to the order.`,
-        ).toContain(claimType);
+        // The legal adviser's small claims order follows unsuccessful mediation, so the claim has to get there (the
+        // checks on the settings themselves are in settingRules, in ../settings.ts)
         expect(
           claimantResponds && claimantOutcome.state === caseStates.IN_MEDIATION,
           `REQUEST_FOR_RECONSIDERATION needs the claimant's response to take the small claim to mediation (IN_MEDIATION), where the legal adviser's order follows unsuccessful mediation, but these settings take it to ${claimantResponds ? claimantOutcome.state : 'no claimant response'}. Use a defence the claimant disputes (the defaults: RESPONDENT1_RESPONSE=FULL_DEFENCE and CLAIMANT_PROCEED=Yes).`,
         ).toBeTruthy();
-        expect(
-          scenarioEnv.REQUEST_FOR_RECONSIDERATION !== RequestForReconsiderationBy.DEFENDANT_2 || claimType === claimTypes.ONE_VS_TWO_DIFF_SOL,
-          `REQUEST_FOR_RECONSIDERATION=DEFENDANT_2 can only be used with CLAIM_TYPE=1v2DS: Defendant 2 has no solicitor of their own in a ${claimType} claim.`,
-        ).toBeTruthy();
-      } else {
-        expect(
-          scenarioEnv.RECONSIDERATION_DECISION,
-          'RECONSIDERATION_DECISION needs REQUEST_FOR_RECONSIDERATION: there is no request to decide.',
-        ).toBeUndefined();
       }
-      expect(
-        scenarioEnv.SETTLE_CLAIM === undefined || scenarioEnv.DISCONTINUE_CLAIM === undefined,
-        'SETTLE_CLAIM and DISCONTINUE_CLAIM cannot both be set: a claim is either settled or discontinued.',
-      ).toBeTruthy();
-      if (['Yes', 'OTHER'].includes(scenarioEnv.AIRLINE_CLAIM) && track === claimTrack.SMALL) {
-        expect(
-          scenarioEnv.REQUEST_FOR_RECONSIDERATION,
-          'REQUEST_FOR_RECONSIDERATION cannot be used with AIRLINE_CLAIM on a small claim: a judge, not a legal adviser, makes a flight delay claim\'s order, and only a legal adviser\'s order can be reconsidered.',
-        ).toBeUndefined();
-        expect(
-          scenarioEnv.DISPUTE_RESOLUTION_HEARING !== 'Yes',
-          'DISPUTE_RESOLUTION_HEARING=Yes cannot be used with AIRLINE_CLAIM: the journey gives a flight delay claim\'s order the flight delay directions, which are on the small claims hearing page rather than the dispute resolution hearing one.',
-        ).toBeTruthy();
-      }
-      expect(
-        [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN, scenarioEnv.DISMISS_CASE === 'Yes' ? 'Yes' : undefined]
-          .filter((setting) => setting !== undefined).length <= 1,
-        'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM, CASE_PROCEEDS_IN_CASEMAN and DISMISS_CASE=Yes can be set: each one closes the claim.',
-      ).toBeTruthy();
-      expect(
-        scenarioEnv.INTEREST_REQUIRED === 'Yes' || (scenarioEnv.INTEREST_FROM === undefined && scenarioEnv.INTEREST_UNTIL === undefined),
-        'INTEREST_FROM and INTEREST_UNTIL need INTEREST_REQUIRED=Yes: no interest is claimed without it.',
-      ).toBeTruthy();
-      expect(
-        scenarioEnv.INTEREST_UNTIL === undefined || read.get('INTEREST_FROM') === InterestFrom.SPECIFIC_DATE,
-        `INTEREST_UNTIL needs INTEREST_FROM=${InterestFrom.SPECIFIC_DATE}: interest claimed from the submit date is always claimed until the claim is settled or judgment is made.`,
-      ).toBeTruthy();
-      expect(
-        finalOrdersForTrack[track],
-        `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`,
-      ).toContain(finalOrder);
       const caseFlagsError = caseFlagsProblem(config);
       expect(caseFlagsError, caseFlagsError).toBeUndefined();
       const mciError = mciProblem(config);

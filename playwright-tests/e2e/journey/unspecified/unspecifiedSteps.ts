@@ -394,7 +394,6 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       title: 'The time for the defendants to respond passes.',
       user: 'claimantSolicitor',
       skipIf: [noDefaultJudgment],
-      invalidIf: () => (c.defaultJudgment === yesNo.YES ? defaultJudgmentProblems() : []),
       run: async () => {
         await ctx.testingEndpointHelper.moveResponseDeadlinesToPast(ctx.caseId, c.claimShape.defendants.length as 1 | 2);
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
@@ -1040,22 +1039,6 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         endState !== undefined && !offeredIn.includes(endState),
         `${setting} cannot be used where the journey ends in ${endState}${stops.stopAtState ? ' (STOP_AT_STATE)' : ''}: it is only offered in ${offeredIn.join(', ')}`,
       ],
-    ];
-  }
-
-  // The settings that cannot be used with default judgment: those for steps it replaces, and a claim that goes offline
-  // before the defendants could respond
-  function defaultJudgmentProblems(): Array<[boolean, string]> {
-    const ignored = (setting: string) => `DEFAULT_JUDGMENT=Yes cannot be used with ${setting}: the claim has default judgment instead of the defendants responding`;
-    return [
-      [c.claimOfflineAfterNotifyClaim || c.claimOfflineAfterNotifyClaimDetails, `DEFAULT_JUDGMENT=Yes cannot be used with CLAIM_TYPE=${c.claimType}: the claim goes offline when it is notified`],
-      [c.informAgreedExtension === yesNo.YES, ignored('INFORM_AGREED_EXTENSION=Yes')],
-      [c.defendantLitigationFriend === yesNo.YES, ignored('DEFENDANT_LITIGATION_FRIEND=Yes')],
-      [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
-      [c.sendAndReply === yesNo.YES, ignored('SEND_AND_REPLY=Yes')],
-      [c.caseFlagsSetting !== undefined, ignored('CASE_FLAGS')],
-      [c.manageContactInformationSetting !== undefined, ignored('MANAGE_CONTACT_INFORMATION')],
-      [c.addUnavailableDates === yesNo.YES, ignored('ADD_UNAVAILABLE_DATES=Yes')],
     ];
   }
 

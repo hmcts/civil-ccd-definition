@@ -288,7 +288,6 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       title: 'The time for the defendants to respond passes.',
       user: 'claimantSolicitor',
       skipIf: [noDefaultJudgment],
-      invalidIf: () => (c.defaultJudgment === yesNo.YES ? defaultJudgmentProblems() : []),
       run: async () => {
         await ctx.testingEndpointHelper.moveResponseDeadlinesToPast(ctx.caseId, c.claimShape.defendants.length as 1 | 2);
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
@@ -967,26 +966,6 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     ];
   }
 
-  // The settings that cannot be used with default judgment: those for steps it replaces
-  function defaultJudgmentProblems(): Array<[boolean, string]> {
-    const ignored = (setting: string) => `DEFAULT_JUDGMENT=Yes cannot be used with ${setting}: the claim has default judgment instead of the defendants responding`;
-    return [
-      [c.informAgreedExtension === yesNo.YES, ignored('INFORM_AGREED_EXTENSION=Yes')],
-      [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
-      [c.amendPartyDetails === yesNo.YES, ignored('AMEND_PARTY_DETAILS=Yes')],
-      [c.sendAndReply === yesNo.YES, ignored('SEND_AND_REPLY=Yes')],
-      [c.mediationSuccessful === yesNo.YES, ignored('MEDIATION_SUCCESSFUL=Yes')],
-      [c.requestForReconsideration !== undefined, ignored('REQUEST_FOR_RECONSIDERATION')],
-      [
-        c.discontinueClaim !== undefined,
-        `DEFAULT_JUDGMENT=Yes cannot be used with DISCONTINUE_CLAIM: default judgment leaves a specified claim in All_FINAL_ORDERS_ISSUED or JUDGMENT_REQUESTED, where it cannot be discontinued`,
-      ],
-      [c.caseFlagsSetting !== undefined, ignored('CASE_FLAGS')],
-      [c.manageContactInformationSetting !== undefined, ignored('MANAGE_CONTACT_INFORMATION')],
-      [c.addUnavailableDates === yesNo.YES, ignored('ADD_UNAVAILABLE_DATES=Yes')],
-    ];
-  }
-
   // Once default judgment is asked for, the defendants' steps and everything after them do not apply, apart from
   // settling or discontinuing the claim and the Judgments Online steps, which act on the default judgment
   const judgmentsOnlineStepNames = ['JUDGMENT_PAID_IN_FULL', 'REFER_JUDGE_DEFENCE_RECEIVED', 'SET_ASIDE_JUDGMENT'];
@@ -1079,9 +1058,6 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
         name: 'SET_ASIDE_JUDGMENT',
         title: `Hearing Centre Admin sets aside the default judgment (${c.setAsideJudgment}).`,
         user: 'hearingCentreAdmin',
-        invalidIf: () => c.setAsideJudgment === undefined ? [] : [
-          [!defaultJudgment, 'SET_ASIDE_JUDGMENT needs DEFAULT_JUDGMENT=Yes: only a default judgment can be set aside'],
-        ],
         skipIf: [[c.setAsideJudgment === undefined, 'Setting aside the judgment is switched off (set SET_ASIDE_JUDGMENT=JUDGMENT_ERROR, ORDER_AFTER_APPLICATION or ORDER_AFTER_DEFENCE to run it)']],
         run: async ({ page, storageState }) => {
           skipUnlessFinalOrdersIssued();
@@ -1205,9 +1181,6 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       title: `${solicitor.label} uploads mediation documents.`,
       user: solicitor.user,
       invalidIf: index > 0 ? undefined : () => [
-        [c.track !== claimTrack.SMALL, 'UPLOAD_MEDIATION_DOCUMENTS=Yes needs TRACK=SMALL_CLAIM: only a specified small claim goes to mediation'],
-        [c.defaultJudgment === yesNo.YES, 'UPLOAD_MEDIATION_DOCUMENTS=Yes cannot be used with DEFAULT_JUDGMENT=Yes: the claim never goes to mediation'],
-        [c.mediationSuccessful === yesNo.YES, 'UPLOAD_MEDIATION_DOCUMENTS=Yes cannot be used with MEDIATION_SUCCESSFUL=Yes: the documents are for unsuccessful mediation, and a settled claim is stayed'],
         [
           noMediation.some(([skipped]) => skipped),
           `UPLOAD_MEDIATION_DOCUMENTS=Yes needs the claimant's response to take the small claim to mediation, with every defendant represented: ${noMediation.filter(([skipped]) => skipped).map(([, reason]) => reason).join('; ')}`,

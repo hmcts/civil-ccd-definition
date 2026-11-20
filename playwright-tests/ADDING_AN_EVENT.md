@@ -213,7 +213,7 @@ Then read it in the config for every journey the event belongs to, `playwright-t
 
 Use `read.yes(...)` for a Yes/No setting and `read.get(...)` for any other, cast to its enum (`read.get('SETTLE_CLAIM') as SettleClaim | undefined`).
 
-You don't need to check the value. Before the journey starts, each config's `validate()` checks every setting against the registry, so a value the setting doesn't take (`AMEND_PARTY_DETAILS=yes`) fails the run straight away, with the values it does take. A scenario in `playwright-tests/scenarios` that sets a name that is not a setting, or one only the other journey reads, fails too. Only checks on settings together (for example `SETTLE_CLAIM` and `DISCONTINUE_CLAIM` both set) are still written in `validate()` or in a step's `invalidIf` (see 7.3 and 7.4).
+You don't need to check the value. Before the journey starts, each config's `validate()` checks every setting against the registry, so a value the setting doesn't take (`AMEND_PARTY_DETAILS=yes`) fails the run straight away, with the values it does take. A scenario in `playwright-tests/scenarios` that sets a name that is not a setting, or one only the other journey reads, fails too. Settings that can't be used together (for example `SETTLE_CLAIM` and `DISCONTINUE_CLAIM` both set) are rules in the same file (see 7.4).
 
 ## 7. Add the journey step
 
@@ -277,7 +277,7 @@ What each part of a step does. The Amend party details step above uses `name`, `
 | `run` | The step itself. It gets `page`, `storageState` and `user`. | The step above, 7.6 |
 | `test.skip` in `run` | Skips the step for a reason only known while the journey runs. | 7.2 |
 | `closesClaim` | Makes a step that closes the claim run even where the journey was stopped early. | 7.3 |
-| `invalidIf` | `[condition, problem]` pairs for settings that can't go together. They are checked before the journey starts, so the run fails at once with every problem listed. | 7.3, 7.4 |
+| `invalidIf` | `[condition, problem]` pairs for settings that can't be used with this step, where it also depends on how the claim goes (for example where the journey stops). They are checked before the journey starts, so the run fails at once with every problem listed. Clashes between settings alone are rules in `settings.ts` (7.4). | 7.3 |
 | `group` | Steps for the same event by several users share a group and run as one numbered test. | 7.5 |
 | `ctx.submitEvent` | Submits the event through its API or UI class, then waits for its business process and checks the state. | The step above, 7.6 |
 
@@ -382,31 +382,28 @@ A step that ends the claim (settle, discontinue, dismiss, take offline) goes at 
 
 The problem text should name both settings and say why they can't go together, as these do.
 
-### 7.4 Settings that can't be used together (`invalidIf` on another step)
+### 7.4 Settings that can't be used together (`settingRules`)
 
-Sometimes the clash belongs to another setting. A claim with default judgment never has its defendants respond, so no step that needs a response can run with `DEFAULT_JUDGMENT=Yes`. Rather than giving every one of those steps an `invalidIf`, the default judgment step has one, built from a list of problems:
-
-```typescript
-    {
-      name: 'MOVE_RESPONSE_DEADLINE',
-      ...
-      invalidIf: () => (c.defaultJudgment === yesNo.YES ? defaultJudgmentProblems() : []),
-```
+When your setting can't be used with another, add a rule to `settingRules` in `playwright-tests/e2e/journey/settings.ts`. Each rule names the journeys it is for and gives the problem when the settings clash. They are checked with the setting values, before the journey starts, so the run fails at once with every problem listed. A claim with default judgment never has its defendants respond, so no step that needs a response can run with `DEFAULT_JUDGMENT=Yes`. `AMEND_PARTY_DETAILS` added one line for that:
 
 ```typescript
-  // The settings that cannot be used with default judgment: those for steps it replaces
-  function defaultJudgmentProblems(): Array<[boolean, string]> {
-    const ignored = (setting: string) => `DEFAULT_JUDGMENT=Yes cannot be used with ${setting}: the claim has default judgment instead of the defendants responding`;
-    return [
-      [c.informAgreedExtension === yesNo.YES, ignored('INFORM_AGREED_EXTENSION=Yes')],
-      [c.stayCase === yesNo.YES, ignored('STAY_CASE=Yes')],
-      [c.amendPartyDetails === yesNo.YES, ignored('AMEND_PARTY_DETAILS=Yes')],
-      ...
-    ];
-  }
+  notWithDefaultJudgment(['SPECIFIED'], 'AMEND_PARTY_DETAILS', 'AMEND_PARTY_DETAILS=Yes'),
 ```
 
-So when your new step can't run after default judgment, add one line for its setting to `defaultJudgmentProblems()`, as `AMEND_PARTY_DETAILS` did. When it clashes with some other setting, either add an `invalidIf` to your own step or add a line to that setting's list of problems, whichever keeps the rule in one place. Then add "Cannot be used with ..." to both settings' rows in the RUNNING guide (section 11).
+Any other clash is a rule of its own. `problem` gets the journey's settings: `get` for a setting's value (or its default), `isSet` for whether the scenario set it, and `isOn` for whether it is on (Yes, or set):
+
+```typescript
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('SET_ASIDE_JUDGMENT') && !s.isOn('DEFAULT_JUDGMENT')
+      ? 'SET_ASIDE_JUDGMENT needs DEFAULT_JUDGMENT=Yes: only a default judgment can be set aside'
+      : undefined),
+  },
+```
+
+The problem text should name both settings and say why they can't go together. Then add "Cannot be used with ..." to both settings' rows in the RUNNING guide (section 11).
+
+A clash that also depends on how the claim goes, rather than only on the settings, stays in a step's `invalidIf` (or in `validate()`): for example, the closing steps in 7.3, which depend on where the journey stops, or uploading mediation documents, which needs the claimant's response to take the claim to mediation.
 
 Check it works by running with both settings on. The run should fail before any step, listing the problem:
 
@@ -613,6 +610,7 @@ The row added to the claim parameters table for `AMEND_PARTY_DETAILS`:
 - [ ] Shared answers in `flows/events/shared_api_ui` if there are more than a few
 - [ ] Setting declared in `e2e/journey/settings.ts`, with a note for each journey, and read in each journey's config
 - [ ] Step added in the right place in each journey, with `skipIf`, and `invalidIf` or `closesClaim` where needed
+- [ ] Settings it can't be used with added to `settingRules`
 - [ ] Step checks the state, and the saved case data where the event saves something
 - [ ] New case states added to `enums/caseStates.ts`
 - [ ] UI and API versions both passed on AAT, on each claim type the event applies to

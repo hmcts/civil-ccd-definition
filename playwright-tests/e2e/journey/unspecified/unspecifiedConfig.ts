@@ -34,7 +34,6 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
   // The scenario's settings, with their defaults (see ../settings.ts)
   const read = journeySettings('UNSPECIFIED', scenarioEnv);
 
-
   const claimType = read.get('CLAIM_TYPE') as claimTypes;
   const respondent1Response = read.get('RESPONDENT1_RESPONSE') as respondentResponses;
   const respondent2Response = read.get('RESPONDENT2_RESPONSE') as respondentResponses;
@@ -270,30 +269,10 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
     // Checks the settings make sense together, before the journey starts
     validate() {
-      // Every value is one its setting takes, and every name the scenario sets is a setting of this journey
+      // Every value is one its setting takes, no settings clash (settingRules) and every name the scenario sets is a
+      // setting of this journey (see ../settings.ts)
       const settingErrors = settingProblems('UNSPECIFIED', scenarioEnv, scenarioSettings);
       expect(settingErrors, `Invalid settings:\n  - ${settingErrors.join('\n  - ')}`).toEqual([]);
-      expect(
-        scenarioEnv.SETTLE_CLAIM === undefined || scenarioEnv.DISCONTINUE_CLAIM === undefined,
-        'SETTLE_CLAIM and DISCONTINUE_CLAIM cannot both be set: a claim is either settled or discontinued.',
-      ).toBeTruthy();
-      expect(
-        [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN, scenarioEnv.DISMISS_CASE === 'Yes' ? 'Yes' : undefined]
-          .filter((setting) => setting !== undefined).length <= 1,
-        'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM, CASE_PROCEEDS_IN_CASEMAN and DISMISS_CASE=Yes can be set: each one closes the claim.',
-      ).toBeTruthy();
-
-      if (noiseInducedHearingLoss) {
-        expect(
-          track,
-          `Invalid claim track: ${track} used for type: ${typeOfClaim} and sub type: ${typeOfClaimSubType} combination. Either do not specify a track or set the track to FAST_CLAIM.`,
-        ).toEqual(claimTrack.FAST);
-      }
-
-      expect(
-        finalOrdersForTrack[track],
-        `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`,
-      ).toContain(finalOrder);
 
       const caseFlagsError = caseFlagsProblem(config);
       expect(caseFlagsError, caseFlagsError).toBeUndefined();

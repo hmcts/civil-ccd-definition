@@ -14,7 +14,7 @@ import RespondentResponses from '../../enums/RespondentResponses.ts';
 import AdmissionPaymentRoute from '../../enums/admissionPaymentRoute.ts';
 import DefendantEmployment from '../../enums/defendantEmployment.ts';
 import ClaimantSuggestedPayment from '../../enums/claimantSuggestedPayment.ts';
-import FinalOrder from '../../enums/finalOrders.ts';
+import FinalOrder, { finalOrdersForTrack } from '../../enums/finalOrders.ts';
 import NotSuitableSdo from '../../enums/notSuitableSdo.ts';
 import SettleClaim from '../../enums/settleClaim.ts';
 import DiscontinueClaim from '../../enums/discontinueClaim.ts';
@@ -698,6 +698,179 @@ export const settings = {
 
 export type SettingName = keyof typeof settings;
 
+// What a rule can ask about the journey's settings: a setting's value (or its default), whether the scenario set it at
+// all, and whether it is on (Yes for a Yes/No setting, set for any other)
+export interface SettingsView {
+  get: (name: SettingName) => string | undefined;
+  isSet: (name: SettingName) => boolean;
+  isOn: (name: SettingName) => boolean;
+}
+
+// Settings that cannot go together, or that need another setting, in the journeys it lists. problem gives what is wrong
+// with the settings together, or undefined when they are fine. Checks that also depend on how the claim goes (where
+// the claimant's response takes it, or where the journey stops) stay with the steps, in their invalidIf.
+export interface SettingRule {
+  journeys: Journey[];
+  problem: (settings: SettingsView) => string | undefined;
+}
+
+const bothJourneys: Journey[] = ['SPECIFIED', 'UNSPECIFIED'];
+const claimTypesWithEveryDefendantRepresented: string[] = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL];
+const isFlightDelaySmallClaim = (s: SettingsView) => ['Yes', 'OTHER'].includes(s.get('AIRLINE_CLAIM')) && s.get('TRACK') === claimTrack.SMALL;
+
+// A setting for a step that default judgment replaces, as default judgment stops the defendants responding
+const notWithDefaultJudgment = (journeys: Journey[], name: SettingName, label: string, reason?: string): SettingRule => ({
+  journeys,
+  problem: (s) => (s.isOn('DEFAULT_JUDGMENT') && s.isOn(name)
+    ? `DEFAULT_JUDGMENT=Yes cannot be used with ${label}: ${reason ?? 'the claim has default judgment instead of the defendants responding'}`
+    : undefined),
+});
+
+export const settingRules: SettingRule[] = [
+  // Closing the claim
+  {
+    journeys: bothJourneys,
+    problem: (s) => (s.isSet('SETTLE_CLAIM') && s.isSet('DISCONTINUE_CLAIM')
+      ? 'SETTLE_CLAIM and DISCONTINUE_CLAIM cannot both be set: a claim is either settled or discontinued.'
+      : undefined),
+  },
+  {
+    journeys: bothJourneys,
+    problem: (s) => ((['SETTLE_CLAIM', 'DISCONTINUE_CLAIM', 'CASE_PROCEEDS_IN_CASEMAN', 'DISMISS_CASE'] as SettingName[]).filter((name) => s.isOn(name)).length > 1
+      ? 'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM, CASE_PROCEEDS_IN_CASEMAN and DISMISS_CASE=Yes can be set: each one closes the claim.'
+      : undefined),
+  },
+
+  // Default judgment and the steps it replaces
+  notWithDefaultJudgment(bothJourneys, 'INFORM_AGREED_EXTENSION', 'INFORM_AGREED_EXTENSION=Yes'),
+  notWithDefaultJudgment(['UNSPECIFIED'], 'DEFENDANT_LITIGATION_FRIEND', 'DEFENDANT_LITIGATION_FRIEND=Yes'),
+  notWithDefaultJudgment(bothJourneys, 'STAY_CASE', 'STAY_CASE=Yes'),
+  notWithDefaultJudgment(['SPECIFIED'], 'AMEND_PARTY_DETAILS', 'AMEND_PARTY_DETAILS=Yes'),
+  notWithDefaultJudgment(bothJourneys, 'SEND_AND_REPLY', 'SEND_AND_REPLY=Yes'),
+  notWithDefaultJudgment(['SPECIFIED'], 'MEDIATION_SUCCESSFUL', 'MEDIATION_SUCCESSFUL=Yes'),
+  notWithDefaultJudgment(['SPECIFIED'], 'REQUEST_FOR_RECONSIDERATION', 'REQUEST_FOR_RECONSIDERATION'),
+  notWithDefaultJudgment(['SPECIFIED'], 'DISCONTINUE_CLAIM', 'DISCONTINUE_CLAIM',
+    'default judgment leaves a specified claim in All_FINAL_ORDERS_ISSUED or JUDGMENT_REQUESTED, where it cannot be discontinued'),
+  notWithDefaultJudgment(bothJourneys, 'CASE_FLAGS', 'CASE_FLAGS'),
+  notWithDefaultJudgment(bothJourneys, 'MANAGE_CONTACT_INFORMATION', 'MANAGE_CONTACT_INFORMATION'),
+  notWithDefaultJudgment(bothJourneys, 'ADD_UNAVAILABLE_DATES', 'ADD_UNAVAILABLE_DATES=Yes'),
+  {
+    // Notifying only one defendant takes the claim offline before the defendants could respond
+    journeys: ['UNSPECIFIED'],
+    problem: (s) => (s.isOn('DEFAULT_JUDGMENT')
+      && (s.get('DEFENDANTS_TO_NOTIFY_CLAIM') !== notifyClaimOptions.BOTH || s.get('DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS') !== notifyClaimOptions.BOTH)
+      ? `DEFAULT_JUDGMENT=Yes cannot be used with CLAIM_TYPE=${s.get('CLAIM_TYPE')}: the claim goes offline when it is notified`
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('SET_ASIDE_JUDGMENT') && !s.isOn('DEFAULT_JUDGMENT')
+      ? 'SET_ASIDE_JUDGMENT needs DEFAULT_JUDGMENT=Yes: only a default judgment can be set aside'
+      : undefined),
+  },
+
+  // Mediation on a specified small claim
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isOn('UPLOAD_MEDIATION_DOCUMENTS') && s.get('TRACK') !== claimTrack.SMALL
+      ? 'UPLOAD_MEDIATION_DOCUMENTS=Yes needs TRACK=SMALL_CLAIM: only a specified small claim goes to mediation'
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isOn('UPLOAD_MEDIATION_DOCUMENTS') && s.isOn('DEFAULT_JUDGMENT')
+      ? 'UPLOAD_MEDIATION_DOCUMENTS=Yes cannot be used with DEFAULT_JUDGMENT=Yes: the claim never goes to mediation'
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isOn('UPLOAD_MEDIATION_DOCUMENTS') && s.isOn('MEDIATION_SUCCESSFUL')
+      ? 'UPLOAD_MEDIATION_DOCUMENTS=Yes cannot be used with MEDIATION_SUCCESSFUL=Yes: the documents are for unsuccessful mediation, and a settled claim is stayed'
+      : undefined),
+  },
+
+  // Reconsidering the legal adviser's small claims order. civil-service only allows it on a claim of £10,000 or less
+  // whose order a legal adviser drew, which in this journey is a small claim after unsuccessful mediation.
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('REQUEST_FOR_RECONSIDERATION') && s.get('TRACK') !== claimTrack.SMALL
+      ? 'REQUEST_FOR_RECONSIDERATION can only be used with TRACK=SMALL_CLAIM: only a legal adviser\'s small claims order can be reconsidered.'
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('REQUEST_FOR_RECONSIDERATION') && s.isOn('MEDIATION_SUCCESSFUL')
+      ? 'REQUEST_FOR_RECONSIDERATION cannot be used with MEDIATION_SUCCESSFUL=Yes: a claim mediation settled gets no order to reconsider.'
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('REQUEST_FOR_RECONSIDERATION') && !claimTypesWithEveryDefendantRepresented.includes(s.get('CLAIM_TYPE'))
+      ? `REQUEST_FOR_RECONSIDERATION cannot be used with CLAIM_TYPE=${s.get('CLAIM_TYPE')}: a defendant is a litigant in person, and this journey only takes claims where every defendant has a solicitor to the order.`
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.get('REQUEST_FOR_RECONSIDERATION') === RequestForReconsiderationBy.DEFENDANT_2 && s.get('CLAIM_TYPE') !== claimTypes.ONE_VS_TWO_DIFF_SOL
+      ? `REQUEST_FOR_RECONSIDERATION=DEFENDANT_2 can only be used with CLAIM_TYPE=1v2DS: Defendant 2 has no solicitor of their own in a ${s.get('CLAIM_TYPE')} claim.`
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('RECONSIDERATION_DECISION') && !s.isSet('REQUEST_FOR_RECONSIDERATION')
+      ? 'RECONSIDERATION_DECISION needs REQUEST_FOR_RECONSIDERATION: there is no request to decide.'
+      : undefined),
+  },
+
+  // A flight delay small claim, whose order a judge makes with the flight delay directions
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (isFlightDelaySmallClaim(s) && s.isSet('REQUEST_FOR_RECONSIDERATION')
+      ? 'REQUEST_FOR_RECONSIDERATION cannot be used with AIRLINE_CLAIM on a small claim: a judge, not a legal adviser, makes a flight delay claim\'s order, and only a legal adviser\'s order can be reconsidered.'
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (isFlightDelaySmallClaim(s) && s.isOn('DISPUTE_RESOLUTION_HEARING')
+      ? 'DISPUTE_RESOLUTION_HEARING=Yes cannot be used with AIRLINE_CLAIM: the journey gives a flight delay claim\'s order the flight delay directions, which are on the small claims hearing page rather than the dispute resolution hearing one.'
+      : undefined),
+  },
+
+  // Interest on a specified claim
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (!s.isOn('INTEREST_REQUIRED') && (s.isSet('INTEREST_FROM') || s.isSet('INTEREST_UNTIL'))
+      ? 'INTEREST_FROM and INTEREST_UNTIL need INTEREST_REQUIRED=Yes: no interest is claimed without it.'
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('INTEREST_UNTIL') && s.get('INTEREST_FROM') !== InterestFrom.SPECIFIC_DATE
+      ? `INTEREST_UNTIL needs INTEREST_FROM=${InterestFrom.SPECIFIC_DATE}: interest claimed from the submit date is always claimed until the claim is settled or judgment is made.`
+      : undefined),
+  },
+
+  // The claim's track
+  {
+    // Noise induced hearing loss claims are always on the fast track
+    journeys: ['UNSPECIFIED'],
+    problem: (s) => (s.get('TYPE_OF_CLAIM') === unspecClaimTypes.PERSONAL_INJURY && s.get('SUB_TYPE') === personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS
+      && s.get('TRACK') !== claimTrack.FAST
+      ? `Invalid claim track: ${s.get('TRACK')} used for type: ${s.get('TYPE_OF_CLAIM')} and sub type: ${s.get('SUB_TYPE')} combination. Either do not specify a track or set the track to FAST_CLAIM.`
+      : undefined),
+  },
+  {
+    journeys: bothJourneys,
+    problem: (s) => {
+      const track = s.get('TRACK') as claimTrack;
+      const finalOrder = s.get('FINAL_ORDER') as FinalOrder | undefined;
+      return finalOrder !== undefined && !finalOrdersForTrack[track].includes(finalOrder)
+        ? `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`
+        : undefined;
+    },
+  },
+];
+
 const journeyLabel: Record<Journey, string> = { SPECIFIED: 'specified', UNSPECIFIED: 'unspecified' };
 
 function setting(name: SettingName): Setting {
@@ -739,8 +912,9 @@ function isSet(value: string | undefined): value is string {
   return value !== undefined && value !== '';
 }
 
-// What is wrong with a journey's settings: values the settings do not take, and, for a scenario, the names it sets
-// (scenarioSettings, the keys of its env in scenarios/*.ts) that are not settings or are only for the other journey.
+// What is wrong with a journey's settings: values the settings do not take, settings that cannot go together
+// (settingRules), and, for a scenario, the names it sets (scenarioSettings, the keys of its env in scenarios/*.ts) that
+// are not settings or are only for the other journey.
 // Names set on the command line are not checked, as they come with every other env var.
 export function settingProblems(journey: Journey, env: Record<string, string | undefined>, scenarioSettings: string[] = []): string[] {
   const problems: string[] = [];
@@ -761,6 +935,17 @@ export function settingProblems(journey: Journey, env: Record<string, string | u
       }
     }
   }
+  // The settings that cannot go together, once every value is one its setting takes (a value that is not would be
+  // read as the default, which could report a clash the scenario does not have)
+  if (problems.length === 0) {
+    const view = journeySettings(journey, env);
+    for (const rule of settingRules) {
+      const problem = rule.journeys.includes(journey) ? rule.problem(view) : undefined;
+      if (problem !== undefined) {
+        problems.push(problem);
+      }
+    }
+  }
   return problems;
 }
 
@@ -772,8 +957,12 @@ export function journeySettings(journey: Journey, env: Record<string, string | u
     const value = env[name];
     return isSet(value) && valueProblem(name, journey, value) === undefined ? value : settingDefault(name, journey);
   };
+  const isSetByScenario = (name: SettingName): boolean => isSet(env[name]);
   return {
     get,
     yes: (name: SettingName): yesNo => (get(name) === 'Yes' ? yesNo.YES : yesNo.NO),
+    isSet: isSetByScenario,
+    // Yes for a Yes/No setting, set for any other
+    isOn: (name: SettingName): boolean => (setting(name).values === yesNoValues ? get(name) === 'Yes' : isSetByScenario(name)),
   };
 }
