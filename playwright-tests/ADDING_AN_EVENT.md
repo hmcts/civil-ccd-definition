@@ -239,13 +239,10 @@ Then the step:
       run: async ({ page, storageState }) => {
         const stateBefore = ctx.lastStateReached;
         const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
-        if (ctx.useApi()) {
-          await new api.AmendPartyDetails().submit(ctx.caseId, emails);
-        } else {
-          await ctx.runEvent(page, storageState, async () => {
-            await new ui.AmendPartyDetails(page).submit(emails);
-          });
-        }
+        await ctx.submitEvent(page, storageState, {
+          api: () => new api.AmendPartyDetails().submit(ctx.caseId, emails),
+          ui: () => new ui.AmendPartyDetails(page).submit(emails),
+        });
         const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
         expect(saved, 'The amended email addresses were not saved').toMatchObject({
           specRespondentSolicitor1EmailAddress: emails.defendant1Solicitor,
@@ -270,13 +267,20 @@ What each part of a step does. The Amend party details step above uses `name`, `
 | `closesClaim` | Makes a step that closes the claim run even where the journey was stopped early. | 7.3 |
 | `invalidIf` | `[condition, problem]` pairs for settings that can't go together. They are checked before the journey starts, so the run fails at once with every problem listed. | 7.3, 7.4 |
 | `group` | Steps for the same event by several users share a group and run as one numbered test. | 7.5 |
-| `ctx.testingEndpointHelper.waitForCamundaProcessToFinish` | Waits for the business process civil-service starts after the event. | 7.6 |
+| `ctx.submitEvent` | Submits the event through its API or UI class, then waits for its business process and checks the state. | The step above, 7.6 |
 
 What goes in `run`:
 
-1. **Choose UI or API with `ctx.useApi()`.** It is true while the journey is still fast-forwarding with `API_UNTIL`.
-2. **Wrap the UI version in `ctx.runEvent(...)`.** If the user's XUI session ends part way, it signs them in again, reopens the case and runs the event again from the start.
-3. **Check the result.** Use `ctx.assertCaseState(...)` for the state the claim should be in afterwards. Where the event saves data, also read it with `ctx.testingEndpointHelper.getCaseData(ctx.caseId)` and check the fields with `toMatchObject`.
+1. **Submit the event with `ctx.submitEvent(page, storageState, {...})`.** Give it:
+   - `api`: the call to the API class. It is used while the journey is still fast-forwarding with `API_UNTIL`. Leave it out if the event has no API version.
+   - `ui`: the call to the UI class, used otherwise. If the user's XUI session ends part way, it signs them in again, reopens the case and runs the event again from the start. For an event on a general application, also give `reopenUrl: ctx.gaCaseUrl()`.
+   - `businessProcess` (optional): the business process to wait for (7.6).
+   - `expectState` (optional): the state the claim should be in afterwards.
+
+   It returns what the class returned, for events whose class returns something (such as the document it chose).
+2. **Check the rest of the result.** Where the event saves data, read it with `ctx.testingEndpointHelper.getCaseData(ctx.caseId)` and check the fields with `toMatchObject`. Where the state check depends on something only known after the event, leave out `expectState` and call `ctx.assertCaseState(...)` yourself, as Amend party details does with the state from before the step.
+
+A step whose API and UI versions do different things (for example claiming a work allocation task first, or checking different things afterwards) uses `ctx.useApi()` and `ctx.runEvent(...)` directly instead. Look at the Standard Direction Order step for an example.
 
 ### 7.1 Reuse the journey's skip conditions
 
@@ -333,15 +337,12 @@ A step that ends the claim (settle, discontinue, dismiss, take offline) goes at 
       ],
       run: async ({ page, storageState }) => {
         test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the case cannot be dismissed in ${ctx.lastStateReached}`);
-        if (ctx.useApi()) {
-          await new api.DismissCase().submit(ctx.caseId);
-        } else {
-          await ctx.runEvent(page, storageState, async () => {
-            await new ui.DismissCase(page).submit();
-          });
-        }
-        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DISMISS_CASE');
-        await ctx.assertCaseState(caseStates.CASE_DISMISSED);
+        await ctx.submitEvent(page, storageState, {
+          api: () => new api.DismissCase().submit(ctx.caseId),
+          ui: () => new ui.DismissCase(page).submit(),
+          businessProcess: 'DISMISS_CASE',
+          expectState: caseStates.CASE_DISMISSED,
+        });
       },
     },
 ```
@@ -422,14 +423,11 @@ When several users do the same event in turn (each solicitor uploading evidence,
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
       run: async ({ page, storageState, user }) => {
-        if (ctx.useApi()) {
-          await new api.UploadEvidence().submit(ctx.caseId, user, c.track);
-        } else {
-          await ctx.runEvent(page, storageState, async () => {
-            await new ui.UploadEvidence(page).submit(c.track);
-          });
-        }
-        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
+        await ctx.submitEvent(page, storageState, {
+          api: () => new api.UploadEvidence().submit(ctx.caseId, user, c.track),
+          ui: () => new ui.UploadEvidence(page).submit(c.track),
+          expectState: caseStates.CASE_PROGRESSION,
+        });
       },
     }));
   }
@@ -445,12 +443,18 @@ The API class for an event like this takes the user as a parameter, instead of u
 
 ### 7.6 Wait for civil-service's business process
 
-Many events start a business process in civil-service (Camunda) after they are submitted, which sends notifications, makes documents or changes the state. Wait for it to finish before checking the state, or the check can run too early. Pass the business process name, which is usually the event ID:
+Many events start a business process in civil-service (Camunda) after they are submitted, which sends notifications, makes documents or changes the state. Wait for it to finish before checking the state, or the check can run too early. Give `ctx.submitEvent` the business process name, which is usually the event ID. It waits for it before checking `expectState`:
 
 ```typescript
-        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DISMISS_CASE');
-        await ctx.assertCaseState(caseStates.CASE_DISMISSED);
+        await ctx.submitEvent(page, storageState, {
+          api: () => new api.DismissCase().submit(ctx.caseId),
+          ui: () => new ui.DismissCase(page).submit(),
+          businessProcess: 'DISMISS_CASE',
+          expectState: caseStates.CASE_DISMISSED,
+        });
 ```
+
+Where the business process depends on something only known after the event, leave out `businessProcess` and call `ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, '<process>')` yourself, as the default judgment step does.
 
 How long it waits is set by `BUSINESS_PROCESS_WAIT_SECONDS` (default 300). Events that don't start one, such as Amend party details, skip this. The API helper `submitEventThroughPages` already waits for any earlier business process before starting an event, so you don't need to wait before your step.
 
@@ -480,8 +484,9 @@ export function sendAndReplySteps(
       user: 'hearingCentreAdmin',
       skipIf,
       run: async ({ page, storageState }) => {
-        if (ctx.useApi()) {
-          await new api.SendAndReply().send(ctx.caseId, message);
+        await ctx.submitEvent(page, storageState, {
+          api: () => new api.SendAndReply().send(ctx.caseId, message),
+          ui: () => new ui.SendAndReply(page).send(message),
         ...
 ```
 

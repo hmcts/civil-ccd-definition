@@ -45,6 +45,20 @@ export interface JourneyStep {
   run: (args: StepArgs) => Promise<void>;
 }
 
+// An event for JourneyContext.submitEvent: its API and UI versions, and what to check once it is submitted
+export interface SubmittedEvent<A, U> {
+  // Submits the event through its API class (flows/events/api), for the steps before API_UNTIL
+  api?: () => Promise<A>;
+  // Submits the event through its UI class (flows/events/ui)
+  ui: () => Promise<U>;
+  // The page the UI version reopens if the user's session ends part way (the case by default)
+  reopenUrl?: string;
+  // The business process civil-service starts for the event, to wait for once it is submitted
+  businessProcess?: string;
+  // The state the claim should be in once the event (and its business process) is done
+  expectState?: caseStates;
+}
+
 // How the run is stopped early, if it is (see defineJourney)
 export interface JourneyStops {
   stopAtState?: caseStates;
@@ -98,6 +112,29 @@ export class JourneyContext {
   // run again from the start.
   async runEvent(page: Page, storageState: unknown, action: () => Promise<void>, reopenUrl: string = this.caseUrl()) {
     await new SessionHelper(page).runWithSessionRecovery(sessionUserFor(storageState), reopenUrl, action);
+  }
+
+  // Submits an event the way most steps do: through its API class while API_UNTIL has not been reached (useApi), and
+  // otherwise through its UI class, as the test's user with their session recovered if it ends (runEvent). An event
+  // with no API version leaves out api and always uses the UI. Then, where given, waits for the business process
+  // civil-service starts for the event and checks the claim's state. Returns what the API or UI class returned.
+  async submitEvent<A, U>(page: Page, storageState: unknown, event: SubmittedEvent<A, U>): Promise<A | U> {
+    // Left unset where the session ended after the UI version was saved, as runEvent then does not run it again
+    let result!: A | U;
+    if (event.api !== undefined && this.useApi()) {
+      result = await event.api();
+    } else {
+      await this.runEvent(page, storageState, async () => {
+        result = await event.ui();
+      }, event.reopenUrl);
+    }
+    if (event.businessProcess !== undefined) {
+      await this.testingEndpointHelper.waitForCamundaProcessToFinish(this.caseId, event.businessProcess);
+    }
+    if (event.expectState !== undefined) {
+      await this.assertCaseState(event.expectState);
+    }
+    return result;
   }
 
   // Pays a fee in the UI, from its row of the Service Request tab, by PBA or by card. pbaDetailsField is the case

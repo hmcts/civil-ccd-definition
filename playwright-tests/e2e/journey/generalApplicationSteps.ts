@@ -348,14 +348,14 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         [!respondentResponds(c), notRespondingReason()],
       ],
       run: async ({ page, storageState, user }) => {
-        if (ctx.useApi()) {
-          await new api.RespondToApplication().submit(ctx.gaCaseId, user);
-        } else {
-          await ctx.runEvent(page, storageState, async () => {
+        await ctx.submitEvent(page, storageState, {
+          api: () => new api.RespondToApplication().submit(ctx.gaCaseId, user),
+          ui: async () => {
             await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
             await new ui.RespondToApplication(page).submit(sessionUsers[user].credentials.username);
-          }, ctx.gaCaseUrl());
-        }
+          },
+          reopenUrl: ctx.gaCaseUrl(),
+        });
         await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.gaCaseId);
         await ctx.assertGaCaseState(index === respondents.length - 1
           ? GaCaseStates.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION
@@ -616,14 +616,14 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     run: async ({ page, storageState, user }) => {
       test.skip(!decided, notDecidedReason);
       const documentsBefore = (await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId)).gaAddlDoc?.length ?? 0;
-      if (ctx.useApi()) {
-        await new api.RespondToJudgeAdditionalInfo().submit(ctx.gaCaseId, user);
-      } else {
-        await ctx.runEvent(page, storageState, async () => {
+      await ctx.submitEvent(page, storageState, {
+        api: () => new api.RespondToJudgeAdditionalInfo().submit(ctx.gaCaseId, user),
+        ui: async () => {
           await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
           await new ui.RespondToJudgeAdditionalInfo(page).submit();
-        }, ctx.gaCaseUrl());
-      }
+        },
+        reopenUrl: ctx.gaCaseUrl(),
+      });
       await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'RESPOND_TO_JUDGE_ADDITIONAL_INFO');
       await ctx.assertGaCaseState(GaCaseStates.AWAITING_ADDITIONAL_INFORMATION);
       const saved = await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId);

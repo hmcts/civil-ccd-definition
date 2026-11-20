@@ -60,14 +60,10 @@ export function notSuitableSdoSteps(
         const before = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
         const currentSite: string | undefined = before.locationName;
         console.log(`The claim is at ${currentSite ?? 'an unnamed court'} (${before.caseManagementLocation?.baseLocation})`);
-        let chosen = '';
-        if (ctx.useApi()) {
-          chosen = await new api.TransferOnlineCase().submit(ctx.caseId, currentSite);
-        } else {
-          await ctx.runEvent(page, storageState, async () => {
-            chosen = await new ui.TransferOnlineCase(page).submit(currentSite);
-          });
-        }
+        const chosen = await ctx.submitEvent(page, storageState, {
+          api: () => new api.TransferOnlineCase().submit(ctx.caseId, currentSite),
+          ui: () => new ui.TransferOnlineCase(page).submit(currentSite),
+        }) ?? '';
         await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.caseId);
         const after = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
         expect(after.caseManagementLocation?.baseLocation, `The claim was not moved to ${chosen}`).not.toBe(before.caseManagementLocation?.baseLocation);

@@ -38,13 +38,10 @@ export function addUnavailableDatesSteps(
     skipIf: [...skipIf, notOffered],
     run: async ({ page, storageState, user }) => {
       const dates = unavailableDatesFor(index);
-      if (ctx.useApi()) {
-        await new api.AddUnavailableDates().submit(ctx.caseId, dates, user, spec.adminChoice);
-      } else {
-        await ctx.runEvent(page, storageState, async () => {
-          await new ui.AddUnavailableDates(page).submit(dates, spec.adminChoice);
-        });
-      }
+      await ctx.submitEvent(page, storageState, {
+        api: () => new api.AddUnavailableDates().submit(ctx.caseId, dates, user, spec.adminChoice),
+        ui: () => new ui.AddUnavailableDates(page).submit(dates, spec.adminChoice),
+      });
       const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
       expect(saved, `The unavailable dates ${spec.label} added were not saved on ${spec.parties.join(' and ')}`).toMatchObject(expectedUnavailableDatesData(spec, dates));
       await ctx.assertCaseState(stateAfter);

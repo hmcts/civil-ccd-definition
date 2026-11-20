@@ -45,13 +45,10 @@ export function sendAndReplySteps(
       user: 'hearingCentreAdmin',
       skipIf,
       run: async ({ page, storageState }) => {
-        if (ctx.useApi()) {
-          await new api.SendAndReply().send(ctx.caseId, message);
-        } else {
-          await ctx.runEvent(page, storageState, async () => {
-            await new ui.SendAndReply(page).send(message);
-          });
-        }
+        await ctx.submitEvent(page, storageState, {
+          api: () => new api.SendAndReply().send(ctx.caseId, message),
+          ui: () => new ui.SendAndReply(page).send(message),
+        });
         expect(await savedMessage()).toMatchObject(expectedSentMessage(message));
         await ctx.assertCaseState(stateDuring);
       },
@@ -63,13 +60,10 @@ export function sendAndReplySteps(
       user: 'judge',
       skipIf,
       run: async ({ page, storageState }) => {
-        if (ctx.useApi()) {
-          await new api.SendAndReply().reply(ctx.caseId, reply);
-        } else {
-          await ctx.runEvent(page, storageState, async () => {
-            await new ui.SendAndReply(page).reply(reply);
-          });
-        }
+        await ctx.submitEvent(page, storageState, {
+          api: () => new api.SendAndReply().reply(ctx.caseId, reply),
+          ui: () => new ui.SendAndReply(page).reply(reply),
+        });
         expect(await savedMessage()).toMatchObject(expectedRepliedMessage(message, reply));
         await ctx.assertCaseState(stateDuring);
       },

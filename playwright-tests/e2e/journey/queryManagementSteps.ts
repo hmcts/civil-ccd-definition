@@ -165,14 +165,11 @@ function queryStepsFor(c: QueryClaim, ctx: JourneyContext, party: QueryParty, an
     user,
     skipIf: anchor.skipIf,
     run: async ({ page, storageState, user: sessionUser }) => {
-      if (ctx.useApi()) {
-        await new api.RaiseQuery().raise(ctx.caseId, sessionUser, query);
-      } else {
-        await ctx.runEvent(page, storageState, async () => {
-          await new ui.RaiseQuery(page).raise(ctx.caseId, query);
-        });
-      }
-      await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'queryManagementRaiseQuery');
+      await ctx.submitEvent(page, storageState, {
+        api: () => new api.RaiseQuery().raise(ctx.caseId, sessionUser, query),
+        ui: () => new ui.RaiseQuery(page).raise(ctx.caseId, query),
+        businessProcess: 'queryManagementRaiseQuery',
+      });
 
       const caseData = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
       raised = queryMessages(caseData).find((message) => message.subject === query.subject && !message.parentId);
@@ -232,14 +229,11 @@ function queryStepsFor(c: QueryClaim, ctx: JourneyContext, party: QueryParty, an
     skipIf: [...(anchor.skipIf ?? []), noFollowUp],
     run: async ({ page, storageState, user: sessionUser }) => {
       const thread = raisedQuery();
-      if (ctx.useApi()) {
-        await new api.RaiseQuery().followUp(ctx.caseId, sessionUser, thread, question);
-      } else {
-        await ctx.runEvent(page, storageState, async () => {
-          await new ui.RaiseQuery(page).followUp(ctx.caseId, query.subject, queryResponseFor(party, false), question);
-        });
-      }
-      await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'queryManagementRaiseQuery');
+      await ctx.submitEvent(page, storageState, {
+        api: () => new api.RaiseQuery().followUp(ctx.caseId, sessionUser, thread, question),
+        ui: () => new ui.RaiseQuery(page).followUp(ctx.caseId, query.subject, queryResponseFor(party, false), question),
+        businessProcess: 'queryManagementRaiseQuery',
+      });
 
       const caseData = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
       const asked = queryMessages(caseData).find((message) => message.parentId === thread.id && message.body === question);
