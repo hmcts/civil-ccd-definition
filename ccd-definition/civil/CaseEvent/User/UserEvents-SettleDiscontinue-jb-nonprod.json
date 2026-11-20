@@ -34,6 +34,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "SETTLE_CLAIM_UNSPEC",
+    "Name": "Settle this claim",
+    "Description": "Settle this claim",
+    "DisplayOrder": 12,
+    "PreConditionState(s)": "CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION",
+    "PostConditionState": "*",
+    "EventEnablingCondition": "CaseAccessCategory=\"UNSPEC_CLAIM\"",
+    "SecurityClassification": "Public",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "DISCONTINUE_CLAIM_CLAIMANT",
     "Name": "Discontinue this claim",
     "Description": "Discontinue this claim",
