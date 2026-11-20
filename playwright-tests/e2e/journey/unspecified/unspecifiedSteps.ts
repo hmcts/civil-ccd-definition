@@ -1,12 +1,8 @@
 import { expect, test } from '@playwright/test';
 import { claimantSolicitorCredentials, envUrl, respondent1SolicitorCredentials } from '../../../civilConfig.ts';
 import { CreateUnspecifiedCase } from '../../flows/createUnspecifiedCase.ts';
-import { CreateClaim } from '../../flows/events/api/CreateClaim.ts';
-import { NotifyClaim as ApiNotifyClaim } from '../../flows/events/api/NotifyClaim.ts';
-import { NotifyClaimDetails as ApiNotifyClaimDetails } from '../../flows/events/api/NotifyClaimDetails.ts';
-import { AcknowledgeClaim as ApiAcknowledgeClaim } from '../../flows/events/api/AcknowledgeClaim.ts';
-import { RespondToClaim as ApiRespondToClaim } from '../../flows/events/api/RespondToClaim.ts';
-import { RespondToDefence as ApiRespondToDefence } from '../../flows/events/api/RespondToDefence.ts';
+import * as ui from '../../flows/events/ui/index.ts';
+import * as api from '../../flows/events/api/index.ts';
 import { DirectionsQuestionnaireAnswers } from '../../flows/events/ui/DirectionsQuestionnaire.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import claimTypes from '../../../enums/claim-types.ts';
@@ -14,73 +10,17 @@ import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
 import claimTrack from '../../../enums/track.ts';
 import caseStates from '../../../enums/caseStates.ts';
 import PaymentMethod from '../../../enums/paymentMethod.ts';
-import { NotifyClaim } from '../../flows/events/ui/NotifyClaim.ts';
-import { NotifyClaimDetails } from '../../flows/events/ui/NotifyClaimDetails.ts';
-import { AcknowledgeClaim } from '../../flows/events/ui/AcknowledgeClaim.ts';
-import { RespondToClaim } from '../../flows/events/ui/RespondToClaim.ts';
-import { RespondToDefence } from '../../flows/events/ui/RespondToDefence.ts';
-import { CreateSdo } from '../../flows/events/ui/CreateSdo.ts';
-import { CreateSdo as ApiCreateSdo } from '../../flows/events/api/CreateSdo.ts';
-import { MakeDirectionsOrder } from '../../flows/events/ui/MakeDirectionsOrder.ts';
-import { MakeDirectionsOrder as ApiMakeDirectionsOrder } from '../../flows/events/api/MakeDirectionsOrder.ts';
-import { UploadEvidence } from '../../flows/events/ui/UploadEvidence.ts';
-import { UploadEvidence as ApiUploadEvidence } from '../../flows/events/api/UploadEvidence.ts';
-import { CreateHearingNotice } from '../../flows/events/ui/CreateHearingNotice.ts';
-import { CreateHearingNotice as ApiCreateHearingNotice } from '../../flows/events/api/CreateHearingNotice.ts';
-import { AutomatedHearingNotice } from '../../flows/events/api/AutomatedHearingNotice.ts';
 import { runHearingNoticeScheduler } from '../hearingNoticeScheduler.ts';
-import { ConfirmTrialArrangements } from '../../flows/events/ui/ConfirmTrialArrangements.ts';
-import { ConfirmTrialArrangements as ApiConfirmTrialArrangements } from '../../flows/events/api/ConfirmTrialArrangements.ts';
-import { MakeFinalOrder } from '../../flows/events/ui/MakeFinalOrder.ts';
-import { MakeFinalOrder as ApiMakeFinalOrder } from '../../flows/events/api/MakeFinalOrder.ts';
-import { ConfirmOrderReview } from '../../flows/events/ui/ConfirmOrderReview.ts';
-import { ConfirmOrderReview as ApiConfirmOrderReview } from '../../flows/events/api/ConfirmOrderReview.ts';
-import { AddCaseNote } from '../../flows/events/ui/AddCaseNote.ts';
-import { AddCaseNote as ApiAddCaseNote } from '../../flows/events/api/AddCaseNote.ts';
-import { StayCase } from '../../flows/events/ui/StayCase.ts';
-import { StayCase as ApiStayCase } from '../../flows/events/api/StayCase.ts';
-import { ManageStay } from '../../flows/events/ui/ManageStay.ts';
-import { ManageStay as ApiManageStay } from '../../flows/events/api/ManageStay.ts';
-import { InformAgreedExtensionDate } from '../../flows/events/ui/InformAgreedExtensionDate.ts';
-import { InformAgreedExtensionDate as ApiInformAgreedExtensionDate } from '../../flows/events/api/InformAgreedExtensionDate.ts';
-import { AddDefendantLitigationFriend } from '../../flows/events/ui/AddDefendantLitigationFriend.ts';
-import { AddDefendantLitigationFriend as ApiAddDefendantLitigationFriend } from '../../flows/events/api/AddDefendantLitigationFriend.ts';
 import { expectedLitigationFriendData, litigationFriendFor } from '../../flows/events/shared_api_ui/defendantLitigationFriendSpecs.ts';
-import { SettleClaimMarkPaidFull } from '../../flows/events/ui/SettleClaimMarkPaidFull.ts';
-import { SettleClaimMarkPaidFull as ApiSettleClaimMarkPaidFull } from '../../flows/events/api/SettleClaimMarkPaidFull.ts';
-import { SettleClaim } from '../../flows/events/ui/SettleClaim.ts';
-import { SettleClaim as ApiSettleClaim } from '../../flows/events/api/SettleClaim.ts';
 import SettleClaimReason from '../../../enums/settleClaim.ts';
-import { DiscontinueClaim } from '../../flows/events/ui/DiscontinueClaim.ts';
-import { DiscontinueClaim as ApiDiscontinueClaim } from '../../flows/events/api/DiscontinueClaim.ts';
-import { ValidateDiscontinueClaim } from '../../flows/events/ui/ValidateDiscontinueClaim.ts';
-import { ValidateDiscontinueClaim as ApiValidateDiscontinueClaim } from '../../flows/events/api/ValidateDiscontinueClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
-import { CaseProceedsInCaseman } from '../../flows/events/ui/CaseProceedsInCaseman.ts';
-import { AmendPartyDetails } from '../../flows/events/ui/AmendPartyDetails.ts';
-import { AmendPartyDetails as ApiAmendPartyDetails } from '../../flows/events/api/AmendPartyDetails.ts';
-import { AddOrAmendClaimDocuments } from '../../flows/events/ui/AddOrAmendClaimDocuments.ts';
-import { AddOrAmendClaimDocuments as ApiAddOrAmendClaimDocuments } from '../../flows/events/api/AddOrAmendClaimDocuments.ts';
-import { DismissCase } from '../../flows/events/ui/DismissCase.ts';
-import { DismissCase as ApiDismissCase } from '../../flows/events/api/DismissCase.ts';
 import { sendAndReplySteps } from '../sendAndReplySteps.ts';
-import { CaseProceedsInCaseman as ApiCaseProceedsInCaseman } from '../../flows/events/api/CaseProceedsInCaseman.ts';
 import CaseProceedsInCasemanReason from '../../../enums/caseProceedsInCaseman.ts';
-import { DefaultJudgment } from '../../flows/events/ui/DefaultJudgment.ts';
-import { DefaultJudgment as ApiDefaultJudgment } from '../../flows/events/api/DefaultJudgment.ts';
-import { StandardDirectionOrderDj } from '../../flows/events/ui/StandardDirectionOrderDj.ts';
-import { StandardDirectionOrderDj as ApiStandardDirectionOrderDj } from '../../flows/events/api/StandardDirectionOrderDj.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
-import { CreateCaseFlag } from '../../flows/events/ui/CreateCaseFlag.ts';
-import { CreateCaseFlag as ApiCreateCaseFlag } from '../../flows/events/api/CreateCaseFlag.ts';
-import { ManageCaseFlag } from '../../flows/events/ui/ManageCaseFlag.ts';
-import { ManageCaseFlag as ApiManageCaseFlag } from '../../flows/events/api/ManageCaseFlag.ts';
 import { caseFlagType } from '../../flows/caseFlags/caseFlagTypes.ts';
 import { holderFlagsField, holderLabel } from '../../flows/caseFlags/caseFlagHolders.ts';
 import { CaseFlagSpec, caseFlagSpecs } from '../../flows/caseFlags/caseFlagSpecs.ts';
-import { ManageContactInformation } from '../../flows/events/ui/ManageContactInformation.ts';
-import { ManageContactInformation as ApiManageContactInformation } from '../../flows/events/api/ManageContactInformation.ts';
 import {
   mciChange,
   mciChangeNotSavedReason,
@@ -226,7 +166,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         if (ctx.useApi()) {
           // One CCD API submit instead of the CREATE_CLAIM pages (API_UNTIL), then the claim fee is paid through the
           // payment service, as the UI's "Pay now" does
-          const createClaim = new CreateClaim();
+          const createClaim = new api.CreateClaim();
           ctx.caseId = await createClaim.create(c);
           CaseUserRegistry.record(ctx.caseId, 'claimantSolicitor');
           await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CREATE_SERVICE_REQUEST_CLAIM');
@@ -338,9 +278,9 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: [[c.addCaseNote !== yesNo.YES, 'Adding a case note is switched off (set ADD_CASE_NOTE=Yes to run it)']],
       run: async ({ page, storageState }) => {
         const note = `Case note added by the unspecified journey at ${new Date().toISOString()}`;
-        const caseNote = new AddCaseNote(page);
+        const caseNote = new ui.AddCaseNote(page);
         if (ctx.useApi()) {
-          await new ApiAddCaseNote().submit(ctx.caseId, note);
+          await new api.AddCaseNote().submit(ctx.caseId, note);
           await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'ADD_CASE_NOTE');
           // The case page was opened before the note was added, so the saved notes are checked instead of the Notes tab
           const notes = (await ctx.testingEndpointHelper.getCaseData(ctx.caseId)).caseNotes ?? [];
@@ -366,10 +306,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: [[c.addOrAmendClaimDocuments !== yesNo.YES, 'Adding claim documents is switched off (set ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes to run it)']],
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiAddOrAmendClaimDocuments().submit(ctx.caseId);
+          await new api.AddOrAmendClaimDocuments().submit(ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new AddOrAmendClaimDocuments(page).submit();
+            await new ui.AddOrAmendClaimDocuments(page).submit();
           });
         }
         const particulars = (await ctx.testingEndpointHelper.getCaseData(ctx.caseId)).servedDocumentFiles?.particularsOfClaimDocument ?? [];
@@ -385,10 +325,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       user: 'claimantSolicitor',
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiNotifyClaim().notify(c, ctx.caseId);
+          await new api.NotifyClaim().notify(c, ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new NotifyClaim(page).notify(c.claimType, c.defendantsToNotifyClaim);
+            await new ui.NotifyClaim(page).notify(c.claimType, c.defendantsToNotifyClaim);
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'NOTIFY_DEFENDANT_OF_CLAIM');
@@ -408,10 +348,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: [[c.claimOfflineAfterNotifyClaim, 'Claim went offline at Notify claim']],
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiNotifyClaimDetails().notify(c, ctx.caseId);
+          await new api.NotifyClaimDetails().notify(c, ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails, particularsOfClaimUploaded);
+            await new ui.NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails, particularsOfClaimUploaded);
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS');
@@ -445,10 +385,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         const stateBefore = ctx.lastStateReached;
         const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
         if (ctx.useApi()) {
-          await new ApiAmendPartyDetails().submit(ctx.caseId, emails);
+          await new api.AmendPartyDetails().submit(ctx.caseId, emails);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new AmendPartyDetails(page).submit(emails);
+            await new ui.AmendPartyDetails(page).submit(emails);
           });
         }
         const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
@@ -483,10 +423,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: [noDefaultJudgment],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiDefaultJudgment().submit(ctx.caseId, user);
+          await new api.DefaultJudgment().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new DefaultJudgment(page).submit(c.claimShape.defendants.length === 2);
+            await new ui.DefaultJudgment(page).submit(c.claimShape.defendants.length === 2);
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DEFAULT_JUDGEMENT');
@@ -506,11 +446,11 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         await ctx.runEvent(page, storageState, async () => {
           await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'STANDARD_DIRECTION_ORDER_DJ', 'summaryJudgmentDirections');
           if (!ctx.useApi()) {
-            await new StandardDirectionOrderDj(page).submit(ctx.caseId);
+            await new ui.StandardDirectionOrderDj(page).submit(ctx.caseId);
           }
         });
         if (ctx.useApi()) {
-          await new ApiStandardDirectionOrderDj().submit(ctx.caseId);
+          await new api.StandardDirectionOrderDj().submit(ctx.caseId);
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'STANDARD_DIRECTION_ORDER_DJ');
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
@@ -525,12 +465,12 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       run: async ({ page, storageState, user }) => {
         await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType, [...ctx.defendantsGivenSolicitorByNoc]);
         if (ctx.useApi()) {
-          await new ApiAcknowledgeClaim().acknowledge(c, ctx.caseId, 1, user);
+          await new api.AcknowledgeClaim().acknowledge(c, ctx.caseId, 1, user);
         } else {
           // The case page was opened before this solicitor was assigned to the case, so open it again now they can see it
           await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
           await ctx.runEvent(page, storageState, async () => {
-            await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 1, c.defendantType);
+            await new ui.AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 1, c.defendantType);
           });
         }
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
@@ -553,10 +493,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
           }
         }
         if (ctx.useApi()) {
-          await new ApiAcknowledgeClaim().acknowledge(c, ctx.caseId, 2, user);
+          await new api.AcknowledgeClaim().acknowledge(c, ctx.caseId, 2, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 2, c.defendantType);
+            await new ui.AcknowledgeClaim(page).acknowledge(c.claimType, c.respondent1ResponseIntention, c.respondent2ResponseIntention, 2, c.defendantType);
           });
         }
         await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
@@ -578,10 +518,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiRespondToClaim().submit(c, ctx.caseId, 1, dqAnswers, user);
+          await new api.RespondToClaim().submit(c, ctx.caseId, 1, dqAnswers, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new RespondToClaim(page).submit(
+            await new ui.RespondToClaim(page).submit(
               c.claimType,
               c.track,
               c.typeOfClaim as unspecClaimTypes,
@@ -618,10 +558,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
           test.skip(true, '1v2LIPLR: civil-service does not support a response from Defendant 2 Solicitor when Defendant 1 is a LiP');
         }
         if (ctx.useApi()) {
-          await new ApiRespondToClaim().submit(c, ctx.caseId, 2, dqAnswers, user);
+          await new api.RespondToClaim().submit(c, ctx.caseId, 2, dqAnswers, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new RespondToClaim(page).submit(
+            await new ui.RespondToClaim(page).submit(
               c.claimType,
               c.track,
               c.typeOfClaim as unspecClaimTypes,
@@ -644,10 +584,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: noClaimantResponse,
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiRespondToDefence().submit(c, ctx.caseId, dqAnswers, user);
+          await new api.RespondToDefence().submit(c, ctx.caseId, dqAnswers, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new RespondToDefence(page).submit(
+            await new ui.RespondToDefence(page).submit(
               c.claimType,
               c.track,
               c.typeOfClaim as unspecClaimTypes,
@@ -684,10 +624,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: noStay,
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiStayCase().submit(ctx.caseId);
+          await new api.StayCase().submit(ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new StayCase(page).submit();
+            await new ui.StayCase(page).submit();
           });
         }
         await ctx.assertCaseState(caseStates.CASE_STAYED);
@@ -701,10 +641,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: noStay,
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiManageStay().requestUpdate(ctx.caseId);
+          await new api.ManageStay().requestUpdate(ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new ManageStay(page).requestUpdate();
+            await new ui.ManageStay(page).requestUpdate();
           });
         }
         await ctx.assertCaseState(caseStates.CASE_STAYED);
@@ -722,10 +662,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: noStay,
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiManageStay().liftStay(ctx.caseId);
+          await new api.ManageStay().liftStay(ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new ManageStay(page).liftStay();
+            await new ui.ManageStay(page).liftStay();
           });
         }
         await ctx.assertCaseState(caseStates.JUDICIAL_REFERRAL);
@@ -752,11 +692,11 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
           // It is claimed through the API version too, as the UI would.
           await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', c.sdoTaskType);
           if (!ctx.useApi()) {
-            await new CreateSdo(page).submit(ctx.caseId, c.track, c.noiseInducedHearingLoss, c.disputeResolutionHearing === yesNo.YES);
+            await new ui.CreateSdo(page).submit(ctx.caseId, c.track, c.noiseInducedHearingLoss, c.disputeResolutionHearing === yesNo.YES);
           }
         });
         if (ctx.useApi()) {
-          await new ApiCreateSdo().submit(ctx.caseId, 'judge', c.track, c.noiseInducedHearingLoss, c.disputeResolutionHearing === yesNo.YES);
+          await new api.CreateSdo().submit(ctx.caseId, 'judge', c.track, c.noiseInducedHearingLoss, c.disputeResolutionHearing === yesNo.YES);
         }
         if (c.disputeResolutionHearing === yesNo.YES) {
           await expectDisputeResolutionHearing(ctx);
@@ -785,11 +725,11 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
             c.track === claimTrack.INTERMEDIATE ? 'allocateIntermediateTrack' : 'allocateMultiTrack',
           );
           if (!ctx.useApi()) {
-            await new MakeDirectionsOrder(page).submit();
+            await new ui.MakeDirectionsOrder(page).submit();
           }
         });
         if (ctx.useApi()) {
-          await new ApiMakeDirectionsOrder().submit(ctx.caseId);
+          await new api.MakeDirectionsOrder().submit(ctx.caseId);
         }
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
       },
@@ -802,13 +742,13 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     // hearing, and moves the claim to HEARING_READINESS for the hearing fee.
     {
       name: 'CREATE_HEARING_NOTICE',
-      title: c.hearingNoticeScheduler === yesNo.YES && AutomatedHearingNotice.isAvailable()
+      title: c.hearingNoticeScheduler === yesNo.YES && api.AutomatedHearingNotice.isAvailable()
         ? 'HMC lists the trial and the automated hearing notice scheduler sends the hearing notice.'
         : 'Hearing Centre Admin creates a hearing notice.',
       user: 'hearingCentreAdmin',
       skipIf: noCaseProgression(),
       run: async ({ page, storageState }) => {
-        if (c.hearingNoticeScheduler === yesNo.YES && AutomatedHearingNotice.isAvailable()) {
+        if (c.hearingNoticeScheduler === yesNo.YES && api.AutomatedHearingNotice.isAvailable()) {
           await runHearingNoticeScheduler(ctx, 'unspec', c.track);
           return;
         }
@@ -816,10 +756,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
           console.warn('WARNING: HEARING_NOTICE_SCHEDULER=Yes needs a civil-service PR preview (ENV=preview PREVIEW_SERVICE=service), where HMC is WireMock. The hearing centre admin creates the hearing notice instead.');
         }
         if (ctx.useApi()) {
-          await new ApiCreateHearingNotice().submit(ctx.caseId, c.track);
+          await new api.CreateHearingNotice().submit(ctx.caseId, c.track);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new CreateHearingNotice(page).submit(c.track);
+            await new ui.CreateHearingNotice(page).submit(c.track);
           });
         }
         await ctx.assertCaseState(caseStates.HEARING_READINESS);
@@ -917,10 +857,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       run: async ({ page, storageState }) => {
         const ordersBefore = await ctx.testingEndpointHelper.countFinalOrders(ctx.caseId);
         if (ctx.useApi()) {
-          await new ApiMakeFinalOrder().submit(ctx.caseId, c.finalOrder);
+          await new api.MakeFinalOrder().submit(ctx.caseId, c.finalOrder);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new MakeFinalOrder(page).submit(c.finalOrder);
+            await new ui.MakeFinalOrder(page).submit(c.finalOrder);
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'GENERATE_ORDER_NOTIFICATION');
@@ -939,10 +879,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       skipIf: noCaseProgression(),
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiConfirmOrderReview().submit(ctx.caseId);
+          await new api.ConfirmOrderReview().submit(ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new ConfirmOrderReview(page).submit();
+            await new ui.ConfirmOrderReview(page).submit();
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CONFIRM_ORDER_REVIEW_FINAL_ORDER');
@@ -968,10 +908,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       run: async ({ page, storageState, user }) => {
         test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be settled in ${ctx.lastStateReached}`);
         if (ctx.useApi()) {
-          await new ApiSettleClaimMarkPaidFull().submit(ctx.caseId, user);
+          await new api.SettleClaimMarkPaidFull().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new SettleClaimMarkPaidFull(page).submit(c.claimShape.claimants.length === 2);
+            await new ui.SettleClaimMarkPaidFull(page).submit(c.claimShape.claimants.length === 2);
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'SETTLE_CLAIM_MARKED_PAID_IN_FULL');
@@ -1000,10 +940,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         const reason = c.settleClaim as SettleClaimReason.JUDGE_ORDER | SettleClaimReason.CONSENT_ORDER;
         test.skip(![...settleableStates, caseStates.CASE_STAYED].includes(ctx.lastStateReached), `Skipping as the claim cannot be settled in ${ctx.lastStateReached}`);
         if (ctx.useApi()) {
-          await new ApiSettleClaim().submit(ctx.caseId, reason);
+          await new api.SettleClaim().submit(ctx.caseId, reason);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new SettleClaim(page).submit(reason);
+            await new ui.SettleClaim(page).submit(reason);
           });
         }
         await ctx.assertCaseState(caseStates.CASE_SETTLED);
@@ -1027,10 +967,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         const stateBefore = ctx.lastStateReached;
         test.skip(!discontinuableStates.includes(stateBefore), `Skipping as the claim cannot be discontinued in ${stateBefore}`);
         if (ctx.useApi()) {
-          await new ApiDiscontinueClaim().submit(ctx.caseId, c.discontinueClaim, user);
+          await new api.DiscontinueClaim().submit(ctx.caseId, c.discontinueClaim, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new DiscontinueClaim(page).submit(c.discontinueClaim);
+            await new ui.DiscontinueClaim(page).submit(c.discontinueClaim);
           });
         }
         const awaitingValidation = c.discontinueClaim === DiscontinueClaimType.PERMISSION_GRANTED;
@@ -1057,11 +997,11 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         await ctx.runEvent(page, storageState, async () => {
           await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT', 'ValidateDiscontinuanceAdmin');
           if (!ctx.useApi()) {
-            await new ValidateDiscontinueClaim(page).submit();
+            await new ui.ValidateDiscontinueClaim(page).submit();
           }
         });
         if (ctx.useApi()) {
-          await new ApiValidateDiscontinueClaim().submit(ctx.caseId);
+          await new api.ValidateDiscontinueClaim().submit(ctx.caseId);
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT');
         await ctx.assertCaseState(caseStates.CASE_DISCONTINUED);
@@ -1086,10 +1026,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         const reason = c.caseProceedsInCaseman as CaseProceedsInCasemanReason;
         test.skip(!casemanStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be taken offline in ${ctx.lastStateReached}`);
         if (ctx.useApi()) {
-          await new ApiCaseProceedsInCaseman().submit(ctx.caseId, reason, false);
+          await new api.CaseProceedsInCaseman().submit(ctx.caseId, reason, false);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new CaseProceedsInCaseman(page).submit(reason, false);
+            await new ui.CaseProceedsInCaseman(page).submit(reason, false);
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'CASE_PROCEEDS_IN_CASEMAN');
@@ -1112,10 +1052,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       run: async ({ page, storageState }) => {
         test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the case cannot be dismissed in ${ctx.lastStateReached}`);
         if (ctx.useApi()) {
-          await new ApiDismissCase().submit(ctx.caseId);
+          await new api.DismissCase().submit(ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new DismissCase(page).submit();
+            await new ui.DismissCase(page).submit();
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DISMISS_CASE');
@@ -1215,10 +1155,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         const flagType = await caseFlagType(page, flag.holder === 'CASE' ? 'CASE' : 'PARTY', flag.code, flag.otherUnder);
         console.log(`Adding case flag ${flag.code} "${flagType.path.join(' > ')}" to ${holderLabel(c, flag.holder)}`);
         if (ctx.useApi()) {
-          await new ApiCreateCaseFlag().submit(ctx.caseId, flag.holder, flagType, { ...flag, comment: comment(index, flag) });
+          await new api.CreateCaseFlag().submit(ctx.caseId, flag.holder, flagType, { ...flag, comment: comment(index, flag) });
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new CreateCaseFlag(page).submit(holderLabel(c, flag.holder), flagType, { ...flag, comment: comment(index, flag) });
+            await new ui.CreateCaseFlag(page).submit(holderLabel(c, flag.holder), flagType, { ...flag, comment: comment(index, flag) });
           });
         }
         const { field, index: entry } = holderFlagsField(flag.holder);
@@ -1243,10 +1183,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         const flagType = await caseFlagType(page, first.holder === 'CASE' ? 'CASE' : 'PARTY', first.code, first.otherUnder);
         const reason = 'Made inactive by the unspecified journey';
         if (ctx.useApi()) {
-          await new ApiManageCaseFlag().makeInactive(ctx.caseId, first.holder, first.code, reason);
+          await new api.ManageCaseFlag().makeInactive(ctx.caseId, first.holder, first.code, reason);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new ManageCaseFlag(page).makeInactive(holderLabel(c, first.holder), first.otherDescription ?? flagType.name, reason);
+            await new ui.ManageCaseFlag(page).makeInactive(holderLabel(c, first.holder), first.otherDescription ?? flagType.name, reason);
           });
         }
         const { field, index: entry } = holderFlagsField(first.holder);
@@ -1286,10 +1226,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       run: async ({ page, storageState, user }) => {
         const change = mciChange(index, spec);
         if (ctx.useApi()) {
-          await new ApiManageContactInformation().submit(ctx.caseId, spec, change, user);
+          await new api.ManageContactInformation().submit(ctx.caseId, spec, change, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new ManageContactInformation(page).submit(spec, change);
+            await new ui.ManageContactInformation(page).submit(spec, change);
           });
         }
         if (mciStartsBusinessProcess(spec.party)) {
@@ -1332,10 +1272,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       run: async ({ page, storageState, user }) => {
         const forWhom = litigationFriendFor(c.claimType, solicitor.defendantNumber);
         if (ctx.useApi()) {
-          await new ApiAddDefendantLitigationFriend().submit(ctx.caseId, forWhom, user);
+          await new api.AddDefendantLitigationFriend().submit(ctx.caseId, forWhom, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new AddDefendantLitigationFriend(page).submit(forWhom);
+            await new ui.AddDefendantLitigationFriend(page).submit(forWhom);
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'ADD_DEFENDANT_LITIGATION_FRIEND');
@@ -1371,10 +1311,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       run: async ({ page, storageState, user }) => {
         const deadlineBefore = await ctx.testingEndpointHelper.getResponseDeadline(ctx.caseId, solicitor.defendantNumber);
         if (ctx.useApi()) {
-          await new ApiInformAgreedExtensionDate().submit(ctx.caseId, solicitor.defendantNumber, user);
+          await new api.InformAgreedExtensionDate().submit(ctx.caseId, solicitor.defendantNumber, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new InformAgreedExtensionDate(page).submit();
+            await new ui.InformAgreedExtensionDate(page).submit();
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'INFORM_AGREED_EXTENSION_DATE');
@@ -1406,10 +1346,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       ],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiUploadEvidence().submit(ctx.caseId, user, c.track);
+          await new api.UploadEvidence().submit(ctx.caseId, user, c.track);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new UploadEvidence(page).submit(c.track);
+            await new ui.UploadEvidence(page).submit(c.track);
           });
         }
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
@@ -1434,10 +1374,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       ],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiConfirmTrialArrangements().submit(ctx.caseId, user);
+          await new api.ConfirmTrialArrangements().submit(ctx.caseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new ConfirmTrialArrangements(page).submit();
+            await new ui.ConfirmTrialArrangements(page).submit();
           });
         }
         await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);

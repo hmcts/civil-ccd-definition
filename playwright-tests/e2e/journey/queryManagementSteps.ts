@@ -3,10 +3,8 @@ import { workAllocation } from '../../civilConfig.ts';
 import yesNo from '../../enums/yesNo.ts';
 import { WaTaskHelper } from '../../helpers/WaTaskHelper.ts';
 import { ClaimShape } from '../flows/createClaimShape.ts';
-import { RaiseQuery } from '../flows/events/ui/RaiseQuery.ts';
-import { RaiseQuery as ApiRaiseQuery } from '../flows/events/api/RaiseQuery.ts';
-import { RespondToQuery } from '../flows/events/ui/RespondToQuery.ts';
-import { RespondToQuery as ApiRespondToQuery } from '../flows/events/api/RespondToQuery.ts';
+import * as ui from '../flows/events/ui/index.ts';
+import * as api from '../flows/events/api/index.ts';
 import {
   followUpQuestionFor,
   newQueryFor,
@@ -168,10 +166,10 @@ function queryStepsFor(c: QueryClaim, ctx: JourneyContext, party: QueryParty, an
     skipIf: anchor.skipIf,
     run: async ({ page, storageState, user: sessionUser }) => {
       if (ctx.useApi()) {
-        await new ApiRaiseQuery().raise(ctx.caseId, sessionUser, query);
+        await new api.RaiseQuery().raise(ctx.caseId, sessionUser, query);
       } else {
         await ctx.runEvent(page, storageState, async () => {
-          await new RaiseQuery(page).raise(ctx.caseId, query);
+          await new ui.RaiseQuery(page).raise(ctx.caseId, query);
         });
       }
       await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'queryManagementRaiseQuery');
@@ -203,11 +201,11 @@ function queryStepsFor(c: QueryClaim, ctx: JourneyContext, party: QueryParty, an
           // Where XUI only lets CTSC respond with the task (such as AAT), it is claimed
           taskId = await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'queryManagementRespondQuery', queryTask);
           if (!ctx.useApi()) {
-            await new RespondToQuery(page).respond(ctx.caseId, latestMessageId, followUp ? question : query.body, response);
+            await new ui.RespondToQuery(page).respond(ctx.caseId, latestMessageId, followUp ? question : query.body, response);
           }
         });
         if (ctx.useApi()) {
-          await new ApiRespondToQuery().respond(ctx.caseId, thread, response);
+          await new api.RespondToQuery().respond(ctx.caseId, thread, response);
           // XUI completes the task as it submits the response, but work allocation does not complete it for a response
           // sent through the CCD API, so it is completed here. Left open, it would sit beside the task for a follow-up.
           if (taskId) {
@@ -235,10 +233,10 @@ function queryStepsFor(c: QueryClaim, ctx: JourneyContext, party: QueryParty, an
     run: async ({ page, storageState, user: sessionUser }) => {
       const thread = raisedQuery();
       if (ctx.useApi()) {
-        await new ApiRaiseQuery().followUp(ctx.caseId, sessionUser, thread, question);
+        await new api.RaiseQuery().followUp(ctx.caseId, sessionUser, thread, question);
       } else {
         await ctx.runEvent(page, storageState, async () => {
-          await new RaiseQuery(page).followUp(ctx.caseId, query.subject, queryResponseFor(party, false), question);
+          await new ui.RaiseQuery(page).followUp(ctx.caseId, query.subject, queryResponseFor(party, false), question);
         });
       }
       await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'queryManagementRaiseQuery');

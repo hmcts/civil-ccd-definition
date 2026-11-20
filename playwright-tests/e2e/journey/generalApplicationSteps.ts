@@ -8,21 +8,8 @@ import { sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
 import { WaTaskHelper } from '../../helpers/WaTaskHelper.ts';
 import { PaymentPage } from '../page-objects/pages/payment_page.ts';
 import { ClaimShape } from '../flows/createClaimShape.ts';
-import { GeneralApplication } from '../flows/events/ui/GeneralApplication.ts';
-import { GeneralApplication as ApiGeneralApplication } from '../flows/events/api/GeneralApplication.ts';
-import { GeneralApplicationFee as ApiGeneralApplicationFee } from '../flows/events/api/GeneralApplicationFee.ts';
-import { MakeDecisionOnApplication } from '../flows/events/ui/MakeDecisionOnApplication.ts';
-import { MakeDecisionOnApplication as ApiMakeDecisionOnApplication } from '../flows/events/api/MakeDecisionOnApplication.ts';
-import { ApproveConsentOrder } from '../flows/events/ui/ApproveConsentOrder.ts';
-import { ApproveConsentOrder as ApiApproveConsentOrder } from '../flows/events/api/ApproveConsentOrder.ts';
-import { ReferToJudge } from '../flows/events/ui/ReferToJudge.ts';
-import { ReferToJudge as ApiReferToJudge } from '../flows/events/api/ReferToJudge.ts';
-import { RespondToApplication } from '../flows/events/ui/RespondToApplication.ts';
-import { RespondToApplication as ApiRespondToApplication } from '../flows/events/api/RespondToApplication.ts';
-import { RespondToJudgeAdditionalInfo } from '../flows/events/ui/RespondToJudgeAdditionalInfo.ts';
-import { RespondToJudgeAdditionalInfo as ApiRespondToJudgeAdditionalInfo } from '../flows/events/api/RespondToJudgeAdditionalInfo.ts';
-import { HearingScheduledGa } from '../flows/events/ui/HearingScheduledGa.ts';
-import { HearingScheduledGa as ApiHearingScheduledGa } from '../flows/events/api/HearingScheduledGa.ts';
+import * as ui from '../flows/events/ui/index.ts';
+import * as api from '../flows/events/api/index.ts';
 import { gaHearingNotice } from '../flows/events/shared_api_ui/gaHearingNoticeSpecs.ts';
 import { JourneyContext, JourneyStep } from './journeyRunner.ts';
 
@@ -301,12 +288,12 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
           urgent: c.generalApplicationUrgent,
         };
         if (ctx.useApi()) {
-          ctx.gaCaseId = await new ApiGeneralApplication().submit(ctx.caseId, user, answers);
+          ctx.gaCaseId = await new api.GeneralApplication().submit(ctx.caseId, user, answers);
         } else {
           const knownApplications = await ctx.testingEndpointHelper.generalApplicationCaseIds(ctx.caseId);
           const { name, username } = sessionUsers[user].credentials;
           await ctx.runEvent(page, storageState, async () => {
-            await new GeneralApplication(page).submit(answers, name, username);
+            await new ui.GeneralApplication(page).submit(answers, name, username);
           });
           ctx.gaCaseId = await ctx.testingEndpointHelper.waitForNewGeneralApplication(ctx.caseId, knownApplications);
         }
@@ -326,7 +313,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       skipIf: anchor.skipIf,
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi() && c.paymentMethod === PaymentMethod.PBA) {
-          await new ApiGeneralApplicationFee().pay(ctx.gaCaseId, user);
+          await new api.GeneralApplicationFee().pay(ctx.gaCaseId, user);
         } else {
           // Paid from the application's own Service Request tab
           const serviceRequestReference = await ctx.testingEndpointHelper.waitForServiceRequestReference(ctx.gaCaseId, 'generalAppPBADetails');
@@ -362,11 +349,11 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       ],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiRespondToApplication().submit(ctx.gaCaseId, user);
+          await new api.RespondToApplication().submit(ctx.gaCaseId, user);
         } else {
           await ctx.runEvent(page, storageState, async () => {
             await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
-            await new RespondToApplication(page).submit(sessionUsers[user].credentials.username);
+            await new ui.RespondToApplication(page).submit(sessionUsers[user].credentials.username);
           }, ctx.gaCaseUrl());
         }
         await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.gaCaseId);
@@ -418,11 +405,11 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
         await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'REFER_TO_JUDGE', 'LegalAdvisorDecideOnApplication');
         if (!ctx.useApi()) {
-          await new ReferToJudge(page).submit();
+          await new ui.ReferToJudge(page).submit();
         }
       }, ctx.gaCaseUrl());
       if (ctx.useApi()) {
-        await new ApiReferToJudge().submit(ctx.gaCaseId, user);
+        await new api.ReferToJudge().submit(ctx.gaCaseId, user);
       }
       await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.gaCaseId);
       await ctx.assertGaCaseState(GaCaseStates.APPLICATION_SUBMITTED_AWAITING_JUDICIAL_DECISION);
@@ -467,7 +454,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
         await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'MAKE_DECISION', taskType);
         if (!ctx.useApi()) {
-          const makeDecision = new MakeDecisionOnApplication(page);
+          const makeDecision = new ui.MakeDecisionOnApplication(page);
           if (decision === GaDecision.REQUEST_MORE_INFO) {
             await makeDecision.requestMoreInfo(moreInformationWanted);
           } else if (decision === GaDecision.LIST_FOR_HEARING) {
@@ -478,7 +465,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         }
       }, ctx.gaCaseUrl());
       if (ctx.useApi()) {
-        const makeDecision = new ApiMakeDecisionOnApplication();
+        const makeDecision = new api.MakeDecisionOnApplication();
         if (decision === GaDecision.REQUEST_MORE_INFO) {
           await makeDecision.requestMoreInfo(ctx.gaCaseId, user, moreInformationWanted);
         } else if (decision === GaDecision.LIST_FOR_HEARING) {
@@ -524,11 +511,11 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
         await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'APPROVE_CONSENT_ORDER', consentOrderTask);
         if (!ctx.useApi()) {
-          await new ApproveConsentOrder(page).approve(orderSought);
+          await new ui.ApproveConsentOrder(page).approve(orderSought);
         }
       }, ctx.gaCaseUrl());
       if (ctx.useApi()) {
-        await new ApiApproveConsentOrder().approve(ctx.gaCaseId, user, orderSought);
+        await new api.ApproveConsentOrder().approve(ctx.gaCaseId, user, orderSought);
       }
       await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'APPROVE_CONSENT_ORDER');
       // civil-service's StateGeneratorService: an approved consent order is an order made
@@ -560,11 +547,11 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
         taskId = await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'MAKE_DECISION', taskType);
         if (!ctx.useApi()) {
-          await new MakeDecisionOnApplication(page).sendToOtherParty();
+          await new ui.MakeDecisionOnApplication(page).sendToOtherParty();
         }
       }, ctx.gaCaseUrl());
       if (ctx.useApi()) {
-        await new ApiMakeDecisionOnApplication().sendToOtherParty(ctx.gaCaseId, stepUser);
+        await new api.MakeDecisionOnApplication().sendToOtherParty(ctx.gaCaseId, stepUser);
         if (taskId) {
           await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).completeTask(taskId);
         }
@@ -590,7 +577,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     ],
     run: async ({ page, storageState, user }) => {
       if (ctx.useApi() && c.paymentMethod === PaymentMethod.PBA) {
-        await new ApiGeneralApplicationFee().payAdditional(ctx.gaCaseId, user);
+        await new api.GeneralApplicationFee().payAdditional(ctx.gaCaseId, user);
       } else {
         const serviceRequestReference = await ctx.testingEndpointHelper.waitForServiceRequestReference(ctx.gaCaseId, 'generalAppPBADetails', undefined, 'additionalPaymentServiceRef');
         await ctx.runEvent(page, storageState, async () => {
@@ -630,11 +617,11 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       test.skip(!decided, notDecidedReason);
       const documentsBefore = (await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId)).gaAddlDoc?.length ?? 0;
       if (ctx.useApi()) {
-        await new ApiRespondToJudgeAdditionalInfo().submit(ctx.gaCaseId, user);
+        await new api.RespondToJudgeAdditionalInfo().submit(ctx.gaCaseId, user);
       } else {
         await ctx.runEvent(page, storageState, async () => {
           await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
-          await new RespondToJudgeAdditionalInfo(page).submit();
+          await new ui.RespondToJudgeAdditionalInfo(page).submit();
         }, ctx.gaCaseUrl());
       }
       await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'RESPOND_TO_JUDGE_ADDITIONAL_INFO');
@@ -669,11 +656,11 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
         await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
         await new WaTaskHelper(page, CaseType.GENERAL_APPLICATION).assignTaskForEvent(ctx.gaCaseId, 'HEARING_SCHEDULED_GA', scheduleHearingTask);
         if (!ctx.useApi()) {
-          await new HearingScheduledGa(page).submit(notice);
+          await new ui.HearingScheduledGa(page).submit(notice);
         }
       }, ctx.gaCaseUrl());
       if (ctx.useApi()) {
-        await new ApiHearingScheduledGa().submit(ctx.gaCaseId, stepUser, notice);
+        await new api.HearingScheduledGa().submit(ctx.gaCaseId, stepUser, notice);
       }
       await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'HEARING_SCHEDULED_GA');
       await ctx.assertGaCaseState(GaCaseStates.HEARING_SCHEDULED);

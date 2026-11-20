@@ -10,8 +10,8 @@ A new event touches six places. You add something to each of them (the shared an
 
 | Layer | Where | What it does |
 | --- | --- | --- |
-| UI event class | `playwright-tests/e2e/flows/events/ui/<Event>.ts` | Picks the event from Next step in XUI, fills in its pages and submits it. |
-| API event class | `playwright-tests/e2e/flows/events/api/<Event>.ts` | Submits the same event with the same answers through the CCD API, with no browser. |
+| UI event class | `playwright-tests/e2e/flows/events/ui/<Event>.ts` | Picks the event from Next step in XUI, fills in its pages and submits it. Listed in `flows/events/ui/index.ts`. |
+| API event class | `playwright-tests/e2e/flows/events/api/<Event>.ts` | Submits the same event with the same answers through the CCD API, with no browser. Listed in `flows/events/api/index.ts`. |
 | Shared answers (optional) | `playwright-tests/e2e/flows/events/shared_api_ui/<event>Specs.ts` | Answers that both versions use, so the UI and API versions can't drift apart. |
 | Journey config | `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Config.ts` | Reads the setting (environment variable) that turns the step on, and checks its value. |
 | Journey step | `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Steps.ts` | Says where the event runs in the journey, as which user, when it's skipped, and what it checks afterwards. |
@@ -205,12 +205,23 @@ For a setting with a list of values (for example `CASE_PROCEEDS_IN_CASEMAN`), ad
 
 ## 7. Add the journey step
 
-Add a step to `journeySteps(...)` in `specifiedSteps.ts` and/or `unspecifiedSteps.ts`, at the point in the journey where the event should run. Steps run in the order they are listed. Import both classes, giving the API one an alias:
+Add a step to `journeySteps(...)` in `specifiedSteps.ts` and/or `unspecifiedSteps.ts`, at the point in the journey where the event should run. Steps run in the order they are listed. The journey files import every event class at once, through the index files in `flows/events/ui` and `flows/events/api`:
 
 ```typescript
-import { AmendPartyDetails } from '../../flows/events/ui/AmendPartyDetails.ts';
-import { AmendPartyDetails as ApiAmendPartyDetails } from '../../flows/events/api/AmendPartyDetails.ts';
+import * as ui from '../../flows/events/ui/index.ts';
+import * as api from '../../flows/events/api/index.ts';
 ```
+
+So first add a line for each new class to the matching index file, in alphabetical order:
+
+```typescript
+// playwright-tests/e2e/flows/events/ui/index.ts
+export { AmendPartyDetails } from './AmendPartyDetails.ts';
+// playwright-tests/e2e/flows/events/api/index.ts
+export { AmendPartyDetails } from './AmendPartyDetails.ts';
+```
+
+The step then uses `ui.AmendPartyDetails` and `api.AmendPartyDetails`.
 
 Then the step:
 
@@ -229,10 +240,10 @@ Then the step:
         const stateBefore = ctx.lastStateReached;
         const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
         if (ctx.useApi()) {
-          await new ApiAmendPartyDetails().submit(ctx.caseId, emails);
+          await new api.AmendPartyDetails().submit(ctx.caseId, emails);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new AmendPartyDetails(page).submit(emails);
+            await new ui.AmendPartyDetails(page).submit(emails);
           });
         }
         const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
@@ -323,10 +334,10 @@ A step that ends the claim (settle, discontinue, dismiss, take offline) goes at 
       run: async ({ page, storageState }) => {
         test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the case cannot be dismissed in ${ctx.lastStateReached}`);
         if (ctx.useApi()) {
-          await new ApiDismissCase().submit(ctx.caseId);
+          await new api.DismissCase().submit(ctx.caseId);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new DismissCase(page).submit();
+            await new ui.DismissCase(page).submit();
           });
         }
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'DISMISS_CASE');
@@ -412,10 +423,10 @@ When several users do the same event in turn (each solicitor uploading evidence,
       ],
       run: async ({ page, storageState, user }) => {
         if (ctx.useApi()) {
-          await new ApiUploadEvidence().submit(ctx.caseId, user, c.track);
+          await new api.UploadEvidence().submit(ctx.caseId, user, c.track);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new UploadEvidence(page).submit(c.track);
+            await new ui.UploadEvidence(page).submit(c.track);
           });
         }
         await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
@@ -470,7 +481,7 @@ export function sendAndReplySteps(
       skipIf,
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiSendAndReply().send(ctx.caseId, message);
+          await new api.SendAndReply().send(ctx.caseId, message);
         ...
 ```
 
@@ -581,6 +592,7 @@ The row added to the claim parameters table for `AMEND_PARTY_DETAILS`:
 - [ ] Event ID, Next step name, user, states, pages and fields found in the CCD definition and tried by hand in XUI
 - [ ] UI class in `flows/events/ui`, with a comment describing the event's pages
 - [ ] API class in `flows/events/api`, answering the same pages the same way
+- [ ] Both classes added to the `index.ts` in their folder
 - [ ] Shared answers in `flows/events/shared_api_ui` if there are more than a few
 - [ ] Setting read and checked in each journey's config
 - [ ] Step added in the right place in each journey, with `skipIf`, and `invalidIf` or `closesClaim` where needed

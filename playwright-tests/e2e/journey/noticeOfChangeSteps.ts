@@ -3,8 +3,8 @@ import { envUrl } from '../../civilConfig.ts';
 import claimTypes from '../../enums/claim-types.ts';
 import { CaseUserKey, CaseUserRegistry } from '../../helpers/CaseUserRegistry.ts';
 import { sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
-import { NoticeOfChange } from '../flows/events/ui/NoticeOfChange.ts';
-import { NoticeOfChange as ApiNoticeOfChange } from '../flows/events/api/NoticeOfChange.ts';
+import * as ui from '../flows/events/ui/index.ts';
+import * as api from '../flows/events/api/index.ts';
 import {
   nocCaseRole,
   NocClaim,
@@ -108,9 +108,9 @@ function noticeOfChangeSteps(c: NocClaim, ctx: JourneyContext, specs: NocSpec[],
         console.log(`${newSolicitor.name} gives a notice of change for ${label}, "${clientName}", replacing ${oldSolicitor ? sessionUsers[oldSolicitor].credentials.name : 'no solicitor (a litigant in person)'}`);
 
         if (ctx.useApi()) {
-          await new ApiNoticeOfChange().submit(ctx.caseId, user, clientName);
+          await new api.NoticeOfChange().submit(ctx.caseId, user, clientName);
         } else {
-          const noticeOfChange = new NoticeOfChange(page);
+          const noticeOfChange = new ui.NoticeOfChange(page);
           await ctx.runEvent(page, storageState, async () => {
             await noticeOfChange.submit(ctx.caseId, clientName);
           }, envUrl);

@@ -2,8 +2,8 @@ import { expect } from '@playwright/test';
 import caseStates from '../../enums/caseStates.ts';
 import claimTypes from '../../enums/claim-types.ts';
 import yesNo from '../../enums/yesNo.ts';
-import { AddUnavailableDates } from '../flows/events/ui/AddUnavailableDates.ts';
-import { AddUnavailableDates as ApiAddUnavailableDates } from '../flows/events/api/AddUnavailableDates.ts';
+import * as ui from '../flows/events/ui/index.ts';
+import * as api from '../flows/events/api/index.ts';
 import {
   addUnavailableDatesSpecs,
   expectedUnavailableDatesData,
@@ -39,10 +39,10 @@ export function addUnavailableDatesSteps(
     run: async ({ page, storageState, user }) => {
       const dates = unavailableDatesFor(index);
       if (ctx.useApi()) {
-        await new ApiAddUnavailableDates().submit(ctx.caseId, dates, user, spec.adminChoice);
+        await new api.AddUnavailableDates().submit(ctx.caseId, dates, user, spec.adminChoice);
       } else {
         await ctx.runEvent(page, storageState, async () => {
-          await new AddUnavailableDates(page).submit(dates, spec.adminChoice);
+          await new ui.AddUnavailableDates(page).submit(dates, spec.adminChoice);
         });
       }
       const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);

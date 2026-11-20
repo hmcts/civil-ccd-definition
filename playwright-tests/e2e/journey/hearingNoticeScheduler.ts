@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import caseStates from '../../enums/caseStates.ts';
 import trackType from '../../enums/track.ts';
-import { AutomatedHearingNotice } from '../flows/events/api/AutomatedHearingNotice.ts';
+import * as api from '../flows/events/api/index.ts';
 import { JourneyContext } from './journeyRunner.ts';
 
 // HEARING_NOTICE_SCHEDULER=Yes on a civil-service PR preview: HMC (WireMock) returns a LISTED trial for the claim and
@@ -12,7 +12,7 @@ export async function runHearingNoticeScheduler(ctx: JourneyContext, journey: 'u
   const before = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
   const documentsBefore = (before.hearingDocuments ?? []).length;
 
-  const { hearingDate } = await new AutomatedHearingNotice().run(ctx.caseId, journey, track);
+  const { hearingDate } = await new api.AutomatedHearingNotice().run(ctx.caseId, journey, track);
   await ctx.assertCaseState(caseStates.HEARING_READINESS);
 
   const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);

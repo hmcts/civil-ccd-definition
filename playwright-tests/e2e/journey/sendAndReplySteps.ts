@@ -1,8 +1,8 @@
 import { expect } from '@playwright/test';
 import caseStates from '../../enums/caseStates.ts';
 import yesNo from '../../enums/yesNo.ts';
-import { SendAndReply } from '../flows/events/ui/SendAndReply.ts';
-import { SendAndReply as ApiSendAndReply } from '../flows/events/api/SendAndReply.ts';
+import * as ui from '../flows/events/ui/index.ts';
+import * as api from '../flows/events/api/index.ts';
 import {
   expectedRepliedMessage,
   expectedSentMessage,
@@ -46,10 +46,10 @@ export function sendAndReplySteps(
       skipIf,
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiSendAndReply().send(ctx.caseId, message);
+          await new api.SendAndReply().send(ctx.caseId, message);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new SendAndReply(page).send(message);
+            await new ui.SendAndReply(page).send(message);
           });
         }
         expect(await savedMessage()).toMatchObject(expectedSentMessage(message));
@@ -64,10 +64,10 @@ export function sendAndReplySteps(
       skipIf,
       run: async ({ page, storageState }) => {
         if (ctx.useApi()) {
-          await new ApiSendAndReply().reply(ctx.caseId, reply);
+          await new api.SendAndReply().reply(ctx.caseId, reply);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            await new SendAndReply(page).reply(reply);
+            await new ui.SendAndReply(page).reply(reply);
           });
         }
         expect(await savedMessage()).toMatchObject(expectedRepliedMessage(message, reply));

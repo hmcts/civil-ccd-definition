@@ -1,10 +1,8 @@
 import { expect } from '@playwright/test';
 import caseStates from '../../enums/caseStates.ts';
 import NotSuitableSdo from '../../enums/notSuitableSdo.ts';
-import { NotSuitableSdo as UiNotSuitableSdo } from '../flows/events/ui/NotSuitableSdo.ts';
-import { NotSuitableSdo as ApiNotSuitableSdo } from '../flows/events/api/NotSuitableSdo.ts';
-import { TransferOnlineCase } from '../flows/events/ui/TransferOnlineCase.ts';
-import { TransferOnlineCase as ApiTransferOnlineCase } from '../flows/events/api/TransferOnlineCase.ts';
+import * as ui from '../flows/events/ui/index.ts';
+import * as api from '../flows/events/api/index.ts';
 import { SessionUserKey } from '../../helpers/SessionHelper.ts';
 import { WaTaskHelper } from '../../helpers/WaTaskHelper.ts';
 import { JourneyContext, JourneyStep } from './journeyRunner.ts';
@@ -37,11 +35,11 @@ export function notSuitableSdoSteps(
           // The event is only reached from the directions task, which is claimed through the API version too
           await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'NotSuitable_SDO', sdoTaskType);
           if (!ctx.useApi()) {
-            await new UiNotSuitableSdo(page).submit(ctx.caseId, reason);
+            await new ui.NotSuitableSdo(page).submit(ctx.caseId, reason);
           }
         });
         if (ctx.useApi()) {
-          await new ApiNotSuitableSdo().submit(ctx.caseId, reason, user);
+          await new api.NotSuitableSdo().submit(ctx.caseId, reason, user);
         }
         if (reason === NotSuitableSdo.OTHER_REASONS) {
           await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'NotSuitable_SDO');
@@ -64,10 +62,10 @@ export function notSuitableSdoSteps(
         console.log(`The claim is at ${currentSite ?? 'an unnamed court'} (${before.caseManagementLocation?.baseLocation})`);
         let chosen = '';
         if (ctx.useApi()) {
-          chosen = await new ApiTransferOnlineCase().submit(ctx.caseId, currentSite);
+          chosen = await new api.TransferOnlineCase().submit(ctx.caseId, currentSite);
         } else {
           await ctx.runEvent(page, storageState, async () => {
-            chosen = await new TransferOnlineCase(page).submit(currentSite);
+            chosen = await new ui.TransferOnlineCase(page).submit(currentSite);
           });
         }
         await ctx.testingEndpointHelper.waitForNoOngoingBusinessProcess(ctx.caseId);

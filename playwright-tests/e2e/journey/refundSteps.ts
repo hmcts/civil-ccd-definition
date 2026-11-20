@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { sessionUsers } from '../../helpers/SessionHelper.ts';
 import { PaymentHelper } from '../../helpers/PaymentHelper.ts';
-import { Refund } from '../flows/events/ui/Refund.ts';
+import * as ui from '../flows/events/ui/index.ts';
 import { JourneyContext, JourneyStep } from './journeyRunner.ts';
 
 // What the refund approver does with the refund (REFUND): approve it, reject it, or return it to the claimant's solicitor,
@@ -94,7 +94,7 @@ function refundSteps(ctx: JourneyContext, outcome: RefundOutcome, anchor: Journe
       skipIf: anchor.skipIf,
       run: async ({ page, storageState }) => {
         await ctx.runEvent(page, storageState, async () => {
-          refundReference = await new Refund(page).request(ctx.caseId);
+          refundReference = await new ui.Refund(page).request(ctx.caseId);
         });
         await claimStateUnchanged();
       },
@@ -108,7 +108,7 @@ function refundSteps(ctx: JourneyContext, outcome: RefundOutcome, anchor: Journe
       run: async ({ page, storageState }) => {
         const reference = requested();
         await ctx.runEvent(page, storageState, async () => {
-          await new Refund(page).process(ctx.caseId, reference, 'RETURN');
+          await new ui.Refund(page).process(ctx.caseId, reference, 'RETURN');
         });
         await claimStateUnchanged();
       },
@@ -122,7 +122,7 @@ function refundSteps(ctx: JourneyContext, outcome: RefundOutcome, anchor: Journe
       run: async ({ page, storageState }) => {
         const reference = requested();
         await ctx.runEvent(page, storageState, async () => {
-          await new Refund(page).resubmit(ctx.caseId, reference);
+          await new ui.Refund(page).resubmit(ctx.caseId, reference);
         });
         await claimStateUnchanged();
       },
@@ -136,7 +136,7 @@ function refundSteps(ctx: JourneyContext, outcome: RefundOutcome, anchor: Journe
       run: async ({ page, storageState }) => {
         const reference = requested();
         await ctx.runEvent(page, storageState, async () => {
-          await new Refund(page).process(ctx.caseId, reference, outcome === 'REJECT' ? 'REJECT' : 'APPROVE');
+          await new ui.Refund(page).process(ctx.caseId, reference, outcome === 'REJECT' ? 'REJECT' : 'APPROVE');
         });
         await claimStateUnchanged();
       },
