@@ -29,7 +29,8 @@ import {
   mciStartsBusinessProcess,
   mciUserLabel,
 } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
-import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
+import { JourneyContext, JourneyStep, JourneyStops, withNeeds } from '../journeyRunner.ts';
+import { casemanStates, discontinuableStates, holds, settleableStates } from '../claimFacts.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
@@ -63,27 +64,10 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     return waitingForOtherDefendant ? caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT : c.stateAfterAllResponses;
   }
 
-  const offlineAtNotify: [boolean, string] = [c.claimOfflineAfterNotifyClaimDetails, 'Claim went offline at Notify claim / Notify claim details'];
-  const noSeparateDefendant2Solicitor: [boolean, string] = [!c.defendant2OwnSolicitorClaimTypes.includes(c.claimType), 'Skipping test as Defendant 2 has no separate solicitor'];
-  const noClaimantResponse: Array<[boolean, string]> = [
-    offlineAtNotify,
-    [!c.claimantResponseClaimTypes.includes(c.claimType), 'Skipping as the claim has a litigant in person'],
-    [c.stateAfterAllResponses !== caseStates.AWAITING_APPLICANT_INTENTION, 'Skipping as not every defendant entered a full defence, so the claim went offline'],
-  ];
-  // The stay steps, which need the claim to reach JUDICIAL_REFERRAL and only run with STAY_CASE=Yes
-  const noStay: Array<[boolean, string]> = [
-    ...noClaimantResponse,
-    [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
-    [c.stayCase !== yesNo.YES, 'Staying the case is switched off (set STAY_CASE=Yes to run it)'],
-  ];
-  // The steps from the Standard Direction Order on, which need the claim to reach JUDICIAL_REFERRAL on the fast track
-  // The steps once the claim has its directions: a Standard Direction Order on the small and fast tracks, a directions
-  // order on the intermediate and multi tracks. A step only made on the fast track gives its reason as fastTrackOnly.
-  const noCaseProgression = (fastTrackOnly?: string): Array<[boolean, string]> => [
-    ...noClaimantResponse,
-    [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
-    ...(fastTrackOnly === undefined ? [] : [[c.track !== claimTrack.FAST, fastTrackOnly] as [boolean, string]]),
-  ];
+  // The stay steps only run with STAY_CASE=Yes (and need the claim to reach JUDICIAL_REFERRAL)
+  const stayOff: [boolean, string] = [c.stayCase !== yesNo.YES, 'Staying the case is switched off (set STAY_CASE=Yes to run it)'];
+  // The steps once the claim has its directions (c.facts.reachesCaseProgression) that are only made on the fast track
+  const fastTrackOnly = (reason: string): [boolean, string] => [c.track !== claimTrack.FAST, reason];
 
   // Once the claim fee has been paid (through the UI or the API), the payment service tells civil-service, which then
   // issues the claim (CREATE_CLAIM_AFTER_PAYMENT). Where the payment service cannot reach civil-service the test tells
@@ -127,25 +111,6 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     dqAnswers.unavailableDatesRequired,
   ] as const;
 
-  // The states "Discontinue this claim" is offered in, and both "Settle this claim" events, which are also offered once
-  // the final orders are issued (court staff can also settle a stayed case)
-  const discontinuableStates = [
-    caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT, caseStates.AWAITING_APPLICANT_INTENTION, caseStates.IN_MEDIATION,
-    caseStates.JUDICIAL_REFERRAL, caseStates.CASE_PROGRESSION, caseStates.HEARING_READINESS,
-    caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING, caseStates.DECISION_OUTCOME,
-  ];
-  const settleableStates = [...discontinuableStates, caseStates.All_FINAL_ORDERS_ISSUED];
-  // The states "Case proceeds in Caseman" is offered in that the journey can reach (it is also offered in CASE_DISMISSED)
-  const casemanStates = [
-    caseStates.PENDING_CASE_ISSUED, caseStates.CASE_ISSUED, caseStates.AWAITING_CASE_DETAILS_NOTIFICATION,
-    caseStates.JUDGMENT_REQUESTED, ...settleableStates, caseStates.CASE_STAYED,
-  ];
-  // civil-service does not let the claimant's solicitor settle or discontinue a claim against two defendants where
-  // either is a litigant in person
-  const twoDefendantsWithLitigantInPerson: [boolean, string] = [
-    c.claimShape.defendants.length === 2 && c.claimShape.defendants.some((defendant) => defendant.solicitor === 'none'),
-    'Skipping as the claimant\'s solicitor cannot settle or discontinue a claim against two defendants where one is a litigant in person',
-  ];
   // Whether the claimant's solicitor has uploaded the particulars of claim with "Add or amend claim documents", which
   // Notify claim details then shows instead of asking for them
   let particularsOfClaimUploaded = false;
@@ -155,9 +120,9 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
   // Default judgment (DEFAULT_JUDGMENT=Yes), and the steps it replaces: once judgment is asked for, the defendants'
   // steps and everything after them are skipped, apart from settling or discontinuing the claim
   const noDefaultJudgment: [boolean, string] = [c.defaultJudgment !== yesNo.YES, 'Default judgment is switched off (set DEFAULT_JUDGMENT=Yes to run it)'];
-  const afterDefaultJudgment: [boolean, string] = [c.defaultJudgment === yesNo.YES, 'Skipping as the claimant asked for default judgment (DEFAULT_JUDGMENT=Yes)'];
 
-  const steps: JourneyStep[] = [
+  // The facts each step needs are added to its skipIf straight away (withNeeds), as later code reads and copies them
+  const steps: JourneyStep[] = withNeeds([
     {
       name: 'CREATE_CLAIM',
       title: 'Claimant Solicitor creates ' + c.claimType + ' claim ',
@@ -367,10 +332,9 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'AMEND_PARTY_DETAILS',
       title: 'Hearing Centre Admin amends the legal representatives\' email addresses.',
       user: 'hearingCentreAdmin',
+      needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
       skipIf: [
         [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
-        offlineAtNotify,
-        [c.claimShape.defendants[0].solicitor === 'none', 'Skipping as Defendant 1 is a litigant in person, so has no legal representative'],
       ],
       run: async ({ page, storageState }) => {
         const stateBefore = ctx.lastStateReached;
@@ -445,7 +409,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'ACKNOWLEDGE_CLAIM_DEFENDANT1',
       title: 'Defendant 1 Solicitor acknowledges claim.',
       user: 'respondent1Solicitor',
-      skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
+      needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
       run: async ({ page, storageState, user }) => {
         await ctx.testingEndpointHelper.assignDefendantLegalRepToCase(ctx.caseId, c.claimType, [...ctx.defendantsGivenSolicitorByNoc]);
         if (ctx.useApi()) {
@@ -465,7 +429,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'ACKNOWLEDGE_CLAIM_DEFENDANT2',
       title: 'Defendant 2 Solicitor acknowledges claim.',
       user: 'respondent2Solicitor',
-      skipIf: [offlineAtNotify, noSeparateDefendant2Solicitor],
+      needs: [c.facts.notOfflineAtNotify, c.facts.defendant2HasOwnSolicitor],
       run: async ({ page, storageState, user }) => {
         if (c.claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
           // Defendant 1's acknowledgement is skipped for this claim type (Defendant 1 is a LiP), so Defendant 2's
@@ -496,7 +460,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'RESPOND_TO_CLAIM_DEFENDANT1',
       title: 'Defendant 1 Solicitor responds to claim.',
       user: 'respondent1Solicitor',
-      skipIf: [offlineAtNotify, [!c.defendant1SolicitorClaimTypes.includes(c.claimType), 'Skipping as first defendant is a LiP']],
+      needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
       run: async ({ page, storageState, user }) => {
         await ctx.submitEvent(page, storageState, {
           api: () => new api.RespondToClaim().submit(c, ctx.caseId, 1, dqAnswers, user),
@@ -521,7 +485,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'RESPOND_TO_CLAIM_DEFENDANT2',
       title: 'Defendant 2 Solicitor responds to claim.',
       user: 'respondent2Solicitor',
-      skipIf: [offlineAtNotify, noSeparateDefendant2Solicitor],
+      needs: [c.facts.notOfflineAtNotify, c.facts.defendant2HasOwnSolicitor],
       run: async ({ page, storageState, user }) => {
         if (c.claimType === claimTypes.ONE_VS_TWO_LIP_LR) {
           // civil-service only treats the defendants as having separate solicitors when both are represented, so in a
@@ -556,7 +520,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'RESPOND_TO_DEFENCE',
       title: 'Claimant Solicitor responds to defence.',
       user: 'claimantSolicitor',
-      skipIf: noClaimantResponse,
+      needs: [c.facts.claimantResponds],
       run: async ({ page, storageState, user }) => {
         await ctx.submitEvent(page, storageState, {
           api: () => new api.RespondToDefence().submit(c, ctx.caseId, dqAnswers, user),
@@ -582,7 +546,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     // Each solicitor adds unavailable dates for their parties, then the hearing centre admin adds some for a defendant.
     // Only run with ADD_UNAVAILABLE_DATES=Yes.
     ...addUnavailableDatesSteps(c, ctx, c.defendant1SolicitorClaimTypes.includes(c.claimType), caseStates.JUDICIAL_REFERRAL, [
-      ...noClaimantResponse,
+      ...c.facts.claimantResponds,
       [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
     ]),
 
@@ -593,7 +557,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'STAY_CASE',
       title: 'Hearing Centre Admin stays the case.',
       user: 'hearingCentreAdmin',
-      skipIf: noStay,
+      needs: [c.facts.reachesJudicialReferral],
+      skipIf: [stayOff],
       run: async ({ page, storageState }) => {
         await ctx.submitEvent(page, storageState, {
           api: () => new api.StayCase().submit(ctx.caseId),
@@ -607,7 +572,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'MANAGE_STAY_REQUEST_UPDATE',
       title: 'Hearing Centre Admin asks the parties for an update on the stay.',
       user: 'hearingCentreAdmin',
-      skipIf: noStay,
+      needs: [c.facts.reachesJudicialReferral],
+      skipIf: [stayOff],
       run: async ({ page, storageState }) => {
         await ctx.submitEvent(page, storageState, {
           api: () => new api.ManageStay().requestUpdate(ctx.caseId),
@@ -619,13 +585,14 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
 
     // The hearing centre admin sends a district judge a message and the judge replies, while the case is stayed with
     // STAY_CASE=Yes, otherwise in JUDICIAL_REFERRAL. Only run with SEND_AND_REPLY=Yes.
-    ...sendAndReplySteps(c, ctx, c.stayCase === yesNo.YES ? caseStates.CASE_STAYED : caseStates.JUDICIAL_REFERRAL, noCaseProgression()),
+    ...sendAndReplySteps(c, ctx, c.stayCase === yesNo.YES ? caseStates.CASE_STAYED : caseStates.JUDICIAL_REFERRAL, c.facts.reachesCaseProgression),
 
     {
       name: 'LIFT_STAY',
       title: 'Hearing Centre Admin lifts the stay.',
       user: 'hearingCentreAdmin',
-      skipIf: noStay,
+      needs: [c.facts.reachesJudicialReferral],
+      skipIf: [stayOff],
       run: async ({ page, storageState }) => {
         await ctx.submitEvent(page, storageState, {
           api: () => new api.ManageStay().liftStay(ctx.caseId),
@@ -644,8 +611,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'CREATE_SDO',
       title: `Judge makes a Standard Direction Order${c.disputeResolutionHearing === yesNo.YES ? ' for a dispute resolution hearing' : ''}.`,
       user: 'judge',
+      needs: [c.facts.reachesCaseProgression],
       skipIf: [
-        ...noCaseProgression(),
         [c.track === claimTrack.INTERMEDIATE || c.track === claimTrack.MULTI, 'Skipping as the intermediate and multi tracks get a directions order instead'],
       ],
       run: async ({ page, storageState }) => {
@@ -674,8 +641,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'MAKE_DIRECTIONS_ORDER',
       title: 'Judge makes a directions order.',
       user: 'judge',
+      needs: [c.facts.claimantResponds],
       skipIf: [
-        ...noClaimantResponse,
         [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
         [c.track !== claimTrack.INTERMEDIATE && c.track !== claimTrack.MULTI, 'Skipping as the directions order is for the intermediate and multi tracks'],
       ],
@@ -709,7 +676,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         ? 'HMC lists the trial and the automated hearing notice scheduler sends the hearing notice.'
         : 'Hearing Centre Admin creates a hearing notice.',
       user: 'hearingCentreAdmin',
-      skipIf: noCaseProgression(),
+      needs: [c.facts.reachesCaseProgression],
       run: async ({ page, storageState }) => {
         if (c.hearingNoticeScheduler === yesNo.YES && api.AutomatedHearingNotice.isAvailable()) {
           await runHearingNoticeScheduler(ctx, 'unspec', c.track);
@@ -732,7 +699,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'PAY_HEARING_FEE',
       title: 'Claimant Solicitor pays the hearing fee.',
       user: 'claimantSolicitor',
-      skipIf: noCaseProgression(),
+      needs: [c.facts.reachesCaseProgression],
       run: async ({ page, storageState }) => {
         // Paid in the hearing fee's row of the Service Request tab, which can also list the claim fee
         await ctx.payFeeInUi(page, storageState, 'hearingFeePBADetails', c.paymentMethod);
@@ -758,7 +725,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'TRIAL_READY_CHECK',
       title: 'The parties are asked to confirm they are ready for trial.',
       user: 'claimantSolicitor',
-      skipIf: noCaseProgression('Skipping as the trial ready check is only made on the fast track'),
+      needs: [c.facts.reachesCaseProgression],
+      skipIf: [fastTrackOnly('Skipping as the trial ready check is only made on the fast track')],
       run: async () => {
         await ctx.testingEndpointHelper.triggerTrialReadyCheck(ctx.caseId);
         await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'TRIAL_READY_CHECK');
@@ -779,7 +747,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'CREATE_TRIAL_BUNDLE',
       title: 'Trial bundle is created and shown to the Claimant Solicitor.',
       user: 'claimantSolicitor',
-      skipIf: noCaseProgression(),
+      needs: [c.facts.reachesCaseProgression],
       run: async ({ page, storageState }) => {
         await ctx.testingEndpointHelper.triggerTrialBundle(ctx.caseId);
         const bundleTitle = await ctx.testingEndpointHelper.waitForBundleStitched(ctx.caseId);
@@ -799,7 +767,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'MOVE_TO_DECISION_OUTCOME',
       title: 'Hearing date passes and the claim moves to decision outcome.',
       user: 'judge',
-      skipIf: noCaseProgression(),
+      needs: [c.facts.reachesCaseProgression],
       run: async () => {
         await ctx.testingEndpointHelper.moveToDecisionOutcome(ctx.caseId);
         await ctx.assertCaseState(caseStates.DECISION_OUTCOME);
@@ -813,7 +781,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'MAKE_FINAL_ORDER',
       title: `Judge makes a final order (${c.finalOrder}).`,
       user: 'judge',
-      skipIf: noCaseProgression(),
+      needs: [c.facts.reachesCaseProgression],
       run: async ({ page, storageState }) => {
         const ordersBefore = await ctx.testingEndpointHelper.countFinalOrders(ctx.caseId);
         await ctx.submitEvent(page, storageState, {
@@ -833,7 +801,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: 'CONFIRM_ORDER_REVIEW',
       title: 'Hearing Centre Admin confirms the order review.',
       user: 'hearingCentreAdmin',
-      skipIf: noCaseProgression(),
+      needs: [c.facts.reachesCaseProgression],
       run: async ({ page, storageState }) => {
         await ctx.submitEvent(page, storageState, {
           api: () => new api.ConfirmOrderReview().submit(ctx.caseId),
@@ -1001,7 +969,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
         });
       },
     },
-  ];
+  ]);
 
   // Where the journey ends: the state STOP_AT_STATE stops it at or, where it runs to the end, the state its last step
   // leaves the claim in, when that is known. With STOP_AFTER_TEST it is not known before the journey runs.
@@ -1032,7 +1000,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     const endState = journeyEndState(stops);
     return [
       [
-        claimantSolicitor && twoDefendantsWithLitigantInPerson[0],
+        claimantSolicitor && !holds(c.facts.claimantSolicitorCanCloseClaim),
         `${setting} cannot be used with CLAIM_TYPE=${c.claimType}: the claimant's solicitor cannot settle or discontinue a claim against two defendants where one is a litigant in person`,
       ],
       [
@@ -1048,7 +1016,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
   steps.slice(lastDefaultJudgmentStep + 1)
     .filter((step) => !step.closesClaim)
     .forEach((step) => {
-      step.skipIf = [...(step.skipIf ?? []), afterDefaultJudgment];
+      step.skipIf = [...(step.skipIf ?? []), ...c.facts.withoutDefaultJudgment];
     });
 
   withNotSuitableSdo(steps, c.notSuitableSdo);
@@ -1062,7 +1030,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
   function caseFlagSteps(): JourneyStep[] {
     const flags = caseFlagSpecs(c);
     const noCaseFlags: Array<[boolean, string]> = [
-      ...noClaimantResponse,
+      ...c.facts.claimantResponds,
       [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
       [flags.length === 0, 'Adding case flags is switched off (set CASE_FLAGS=representative, or a list such as CASE:CF0002,DEFENDANT_1:RA0012)'],
     ];
@@ -1125,7 +1093,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
   function manageContactInformationSteps(): JourneyStep[] {
     const specs = mciSpecs(c);
     const noMci: Array<[boolean, string]> = [
-      ...noClaimantResponse,
+      ...c.facts.claimantResponds,
       [c.stateAfterClaimantResponse !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant did not proceed against every defendant, so the claim went offline'],
       [specs.length === 0, 'Managing contact information is switched off (set MANAGE_CONTACT_INFORMATION=representative, or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1)'],
     ];
@@ -1178,8 +1146,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: `ADD_DEFENDANT_LITIGATION_FRIEND_DEFENDANT${solicitor.defendantNumber}`,
       title: `Defendant ${solicitor.defendantNumber} Solicitor adds a litigation friend.`,
       user: solicitor.user,
+      needs: [c.facts.notOfflineAtNotify],
       skipIf: [
-        offlineAtNotify,
         solicitor.noSolicitor,
         [c.defendantLitigationFriend !== yesNo.YES, 'Adding a defendant litigation friend is switched off (set DEFENDANT_LITIGATION_FRIEND=Yes to run it)'],
       ],
@@ -1214,8 +1182,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: `INFORM_AGREED_EXTENSION_DEFENDANT${solicitor.defendantNumber}`,
       title: `Defendant ${solicitor.defendantNumber} Solicitor informs the court of an agreed extension.`,
       user: solicitor.user,
+      needs: [c.facts.notOfflineAtNotify],
       skipIf: [
-        offlineAtNotify,
         solicitor.noSolicitor,
         [c.informAgreedExtension !== yesNo.YES, 'Informing of an agreed extension is switched off (set INFORM_AGREED_EXTENSION=Yes to run it)'],
       ],
@@ -1248,8 +1216,8 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: solicitor.name,
       title: `${solicitor.label} uploads evidence.`,
       user: solicitor.user,
+      needs: [c.facts.reachesCaseProgression],
       skipIf: [
-        ...noCaseProgression(),
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
       run: async ({ page, storageState, user }) => {
@@ -1273,8 +1241,9 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       name: solicitor.name,
       title: `${solicitor.label} confirms trial arrangements.`,
       user: solicitor.user,
+      needs: [c.facts.reachesCaseProgression],
       skipIf: [
-        ...noCaseProgression('Skipping as trial arrangements are only confirmed on the fast track'),
+        fastTrackOnly('Skipping as trial arrangements are only confirmed on the fast track'),
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
       run: async ({ page, storageState, user }) => {

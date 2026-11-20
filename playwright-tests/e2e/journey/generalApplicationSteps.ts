@@ -11,7 +11,7 @@ import { ClaimShape } from '../flows/createClaimShape.ts';
 import * as ui from '../flows/events/ui/index.ts';
 import * as api from '../flows/events/api/index.ts';
 import { gaHearingNotice } from '../flows/events/shared_api_ui/gaHearingNoticeSpecs.ts';
-import { JourneyContext, JourneyStep } from './journeyRunner.ts';
+import { JourneyContext, JourneyStep, insertAfterStep } from './journeyRunner.ts';
 
 // The application types the journeys can make, as "Make an application" lists them
 export const generalApplicationTypes = [
@@ -227,23 +227,16 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
 // always made in the UI.
 export function withGeneralApplication(c: GaClaim, ctx: JourneyContext, steps: JourneyStep[]): JourneyStep[] {
   const types = generalApplicationTypesOf(c);
-  const anchorIndex = steps.findIndex((step) => step.name === c.generalApplicationAfter);
-  const anchor = steps[anchorIndex];
-  const placeholder = (skipIf: Array<[boolean, string]>, invalidIf?: JourneyStep['invalidIf']): JourneyStep => ({
-    name: 'GENERAL_APPLICATION', title: 'The claimant\'s solicitor makes a general application.', user: 'claimantSolicitor', skipIf, invalidIf, run: async () => {},
+  return insertAfterStep(steps, {
+    setting: 'GENERAL_APPLICATION_AFTER',
+    after: c.generalApplicationAfter,
+    // An application is made on an issued claim, so after any step but CREATE_CLAIM
+    earliest: steps[1]?.name,
+    placeholder: { name: 'GENERAL_APPLICATION', title: 'The claimant\'s solicitor makes a general application.', user: 'claimantSolicitor' },
+    on: types.length > 0,
+    off: 'General applications are switched off (set GENERAL_APPLICATION to a type such as STAY_THE_CLAIM to run one)',
+    build: (anchor) => generalApplicationSteps(c, ctx, types, anchor),
   });
-
-  if (anchor === undefined || anchor.closesClaim || anchor.name === 'CREATE_CLAIM') {
-    const problem = `Invalid GENERAL_APPLICATION_AFTER value: ${c.generalApplicationAfter}. It must be a step after CREATE_CLAIM that does not close the claim: ${steps.slice(1).filter((step) => !step.closesClaim).map((step) => step.name).join(', ')}.`;
-    const lastIndex = steps.findIndex((step) => step.closesClaim);
-    const at = lastIndex === -1 ? steps.length : lastIndex;
-    return [...steps.slice(0, at), placeholder([[true, problem]], () => [[types.length > 0, problem]]), ...steps.slice(at)];
-  }
-  if (types.length === 0) {
-    const off: [boolean, string] = [true, 'General applications are switched off (set GENERAL_APPLICATION to a type such as STAY_THE_CLAIM to run one)'];
-    return [...steps.slice(0, anchorIndex + 1), placeholder([off]), ...steps.slice(anchorIndex + 1)];
-  }
-  return [...steps.slice(0, anchorIndex + 1), ...generalApplicationSteps(c, ctx, types, anchor), ...steps.slice(anchorIndex + 1)];
 }
 
 function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[], anchor: JourneyStep): JourneyStep[] {

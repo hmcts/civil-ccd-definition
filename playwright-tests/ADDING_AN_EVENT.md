@@ -244,9 +244,9 @@ Then the step:
       name: 'AMEND_PARTY_DETAILS',
       title: 'Hearing Centre Admin amends the legal representatives\' email addresses.',
       user: 'hearingCentreAdmin',
+      needs: [c.facts.defendant1HasSolicitor],
       skipIf: [
         [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
-        noDefendant1Solicitor,
       ],
       run: async ({ page, storageState }) => {
         const stateBefore = ctx.lastStateReached;
@@ -266,14 +266,15 @@ Then the step:
     },
 ```
 
-What each part of a step does. The Amend party details step above uses `name`, `title`, `user`, `skipIf` and `run`; sections 7.1 to 7.8 show the others, each with a real step from the journeys.
+What each part of a step does. The Amend party details step above uses `name`, `title`, `user`, `needs`, `skipIf` and `run`; sections 7.1 to 7.8 show the others, each with a real step from the journeys.
 
 | Property | What it's for | Shown in |
 | --- | --- | --- |
 | `name` | The step's name. `STOP_AFTER_TEST` uses it, and it appears in the report. Use the event ID, or the event ID with a suffix if the event runs more than once. | The step above |
 | `title` | The test title shown in the Playwright report. | The step above |
 | `user` | Which saved session the step runs as. One of `claimantSolicitor`, `respondent1Solicitor`, `respondent2Solicitor`, `judge`, `hearingCentreAdmin`, `legalAdviser`, `nbcAdmin`, `ctscAdmin`, `newClaimantSolicitor`, `newDefendantSolicitor` (from `helpers/SessionHelper.ts`). | The step above |
-| `skipIf` | `[condition, reason]` pairs known before the journey starts. When one holds, the step is left out of the run. | The step above, 7.1 |
+| `needs` | The facts about the claim the step needs (`c.facts`). When the claim doesn't have one, the step is left out of the run, with the fact's reason. | The step above, 7.1 |
+| `skipIf` | Other `[condition, reason]` pairs known before the journey starts, usually "the setting is off". When one holds, the step is left out of the run. | The step above |
 | `run` | The step itself. It gets `page`, `storageState` and `user`. | The step above, 7.6 |
 | `test.skip` in `run` | Skips the step for a reason only known while the journey runs. | 7.2 |
 | `closesClaim` | Makes a step that closes the claim run even where the journey was stopped early. | 7.3 |
@@ -294,33 +295,39 @@ What goes in `run`:
 
 A step whose API and UI versions do different things (for example claiming a work allocation task first, or checking different things afterwards) uses `ctx.useApi()` and `ctx.runEvent(...)` directly instead. Look at the Standard Direction Order step for an example.
 
-### 7.1 Reuse the journey's skip conditions
+### 7.1 List the facts the step needs (`needs`)
 
-Every step's `skipIf` starts with "the setting is off". After that, use the shared conditions defined near the top of `journeySteps(...)` rather than writing your own, so every step gives the same reason for the same claim. The Amend party details step uses `noDefendant1Solicitor`. Some of the shared ones, from `specifiedSteps.ts` (the unspecified journey has its own, see 7.8):
+Whether a step applies to a claim mostly depends on facts about the claim: who has a solicitor, and where the claimant's response takes it. Each journey works these out once, in `playwright-tests/e2e/journey/claimFacts.ts`, and its config keeps them as `c.facts`, with the same names in both journeys. A step lists the ones it needs, and is left out of the run, with the fact's reason, when the claim doesn't have one:
 
 ```typescript
-  const noDefendant1Solicitor: [boolean, string] = [c.claimShape.defendants[0].solicitor === 'none', 'Skipping as first defendant is a LiP'];
-  // Claims where every defendant has a solicitor. A litigant in person responds through the citizen service instead.
-  const allDefendantsRepresented = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL].includes(c.claimType);
-  const noLitigantInPerson: [boolean, string] = [!allDefendantsRepresented, 'Skipping as a defendant is a litigant in person, who responds through the citizen service'];
-  // The steps from the judge's order on, which need the claimant's response to take the claim to JUDICIAL_REFERRAL
-  const noJudicialReferral: Array<[boolean, string]> = [
-    noLitigantInPerson,
-    [!c.claimantResponds || c.claimantOutcome.state !== caseStates.JUDICIAL_REFERRAL, 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL'],
-  ];
+      needs: [c.facts.defendant1HasSolicitor],
 ```
 
-A single condition goes in the list as it is; a list of conditions is spread into it:
+The facts both journeys have:
+
+| Fact | The claim |
+| --- | --- |
+| `defendant1HasSolicitor` | Defendant 1 has a solicitor (is not a litigant in person). |
+| `everyDefendantRepresented` | Every defendant has a solicitor. A litigant in person responds through the citizen service instead. |
+| `reachesJudicialReferral` | The claimant's response takes the claim to JUDICIAL_REFERRAL. For the steps from the judge's order on. |
+| `reachesCaseProgression` | The judge's (or legal adviser's) order moves the claim to CASE_PROGRESSION. For the steps after it. |
+| `claimantSolicitorCanCloseClaim` | The claimant's solicitor can settle or discontinue the claim (not two defendants with a litigant in person). |
+| `withoutDefaultJudgment` | The claimant has not asked for default judgment. |
+
+A specified claim also has `reachesMediation` and `notSettledInMediation`, and an unspecified claim `notOfflineAtNotify`, `defendant2HasOwnSolicitor` and `claimantResponds`.
+
+`skipIf` then only has the step's own conditions, usually "the setting is off":
 
 ```typescript
+      needs: [c.facts.reachesJudicialReferral],
       skipIf: [
         [c.mySetting !== yesNo.YES, 'My event is switched off (set MY_SETTING=Yes to run it)'],
-        noDefendant1Solicitor,
-        ...noJudicialReferral,
       ],
 ```
 
-If your event needs a condition that isn't there yet and other steps could use it, add it next to the others with a comment.
+Each fact is a list of `[condition, reason]` pairs, the same as `skipIf`, so it can also be spread into a list of conditions that is not a step's (`...c.facts.everyDefendantRepresented`), or tested with `holds(c.facts.everyDefendantRepresented)`. The steps are wrapped in `withNeeds(...)`, which adds each step's facts to its `skipIf` straight away, as later code reads and copies a step's `skipIf`.
+
+If your event needs a fact that isn't there yet and other steps could use it, add it to `claimFacts.ts`, for both journeys where it makes sense, with a comment.
 
 ### 7.2 Skip a step for a reason only known during the run
 
@@ -331,7 +338,7 @@ If your event needs a condition that isn't there yet and other steps could use i
         test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the case cannot be dismissed in ${ctx.lastStateReached}`);
 ```
 
-`settleableStates` is a list of states defined near the top of `journeySteps(...)`. Lists like it (`discontinuableStates`, `casemanStates`) come from the event's `PreConditionState(s)` in the CCD definition.
+`settleableStates` is a list of states in `playwright-tests/e2e/journey/claimFacts.ts`, shared by both journeys. Lists like it (`discontinuableStates`, `casemanStates`) come from the event's `PreConditionState(s)` in the CCD definition.
 
 ### 7.3 A step that closes the claim (`closesClaim` and `invalidIf`)
 
@@ -369,7 +376,7 @@ A step that ends the claim (settle, discontinue, dismiss, take offline) goes at 
     const endState = journeyEndState(stops);
     return [
       [
-        claimantSolicitor && twoDefendantsWithLitigantInPerson[0],
+        claimantSolicitor && !holds(c.facts.claimantSolicitorCanCloseClaim),
         `${setting} cannot be used with CLAIM_TYPE=${c.claimType}: the claimant's solicitor cannot settle or discontinue a claim against two defendants where one is a litigant in person`,
       ],
       [
@@ -427,8 +434,8 @@ When several users do the same event in turn (each solicitor uploading evidence,
       name: solicitor.name,
       title: `${solicitor.label} uploads evidence.`,
       user: solicitor.user,
+      needs: [c.facts.reachesCaseProgression],
       skipIf: [
-        ...noCaseProgression,
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
       run: async ({ page, storageState, user }) => {
@@ -508,7 +515,7 @@ Three things to copy from it:
 Each journey then spreads it into its list, passing its own values. From `specifiedSteps.ts`:
 
 ```typescript
-    ...sendAndReplySteps(c, ctx, c.stayCase === yesNo.YES ? caseStates.CASE_STAYED : caseStates.JUDICIAL_REFERRAL, noJudicialReferral),
+    ...sendAndReplySteps(c, ctx, c.stayCase === yesNo.YES ? caseStates.CASE_STAYED : caseStates.JUDICIAL_REFERRAL, c.facts.reachesJudicialReferral),
 ```
 
 ### 7.8 Add the step to both journeys
@@ -516,15 +523,14 @@ Each journey then spreads it into its list, passing its own values. From `specif
 An event that exists on both specified and unspecified claims needs its step in both `specifiedSteps.ts` and `unspecifiedSteps.ts`, and its setting read in both config files, with a note for each journey in `settings.ts` (section 6). The two journeys differ, so check each one:
 
 - **Where the step goes.** The steps around it differ. For example, an unspecified claim has Notify claim and Notify claim details steps that a specified claim doesn't.
-- **The skip conditions.** Each file has its own shared conditions, and their names differ. `noDefendant1Solicitor` and `noJudicialReferral` are only in `specifiedSteps.ts`; `unspecifiedSteps.ts` has `noClaimantResponse`, `offlineAtNotify`, `noSeparateDefendant2Solicitor` and others. `noCaseProgression`, `settleableStates`, `closingProblems` and `defaultJudgmentProblems` are in both. Look at the top of `journeySteps(...)` in each file before writing `skipIf`.
+- **The facts it needs.** The facts have the same names in both journeys, but a claim gets to the same point in different ways, and some facts only exist in one journey (7.1). Check which ones each journey's step needs.
 
-The unspecified Amend party details step shows the difference. It also skips claims that go offline at notification, and writes the litigant in person condition out in full:
+The unspecified Amend party details step shows the difference. It also needs the claim not to have gone offline at notification, which only an unspecified claim can do:
 
 ```typescript
+      needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
       skipIf: [
         [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
-        offlineAtNotify,
-        [c.claimShape.defendants[0].solicitor === 'none', 'Skipping as Defendant 1 is a litigant in person, so has no legal representative'],
       ],
 ```
 
@@ -609,7 +615,7 @@ The row added to the claim parameters table for `AMEND_PARTY_DETAILS`:
 - [ ] Both classes added to the `index.ts` in their folder
 - [ ] Shared answers in `flows/events/shared_api_ui` if there are more than a few
 - [ ] Setting declared in `e2e/journey/settings.ts`, with a note for each journey, and read in each journey's config
-- [ ] Step added in the right place in each journey, with `skipIf`, and `invalidIf` or `closesClaim` where needed
+- [ ] Step added in the right place in each journey, with the facts it `needs`, its `skipIf`, and `invalidIf` or `closesClaim` where needed
 - [ ] Settings it can't be used with added to `settingRules`
 - [ ] Step checks the state, and the saved case data where the event saves something
 - [ ] New case states added to `enums/caseStates.ts`

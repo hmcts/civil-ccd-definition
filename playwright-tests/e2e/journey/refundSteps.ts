@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import { sessionUsers } from '../../helpers/SessionHelper.ts';
 import { PaymentHelper } from '../../helpers/PaymentHelper.ts';
 import * as ui from '../flows/events/ui/index.ts';
-import { JourneyContext, JourneyStep } from './journeyRunner.ts';
+import { JourneyContext, JourneyStep, insertAfterStep } from './journeyRunner.ts';
 
 // What the refund approver does with the refund (REFUND): approve it, reject it, or return it to the claimant's solicitor,
 // who changes the reason and sends it again, after which it is approved
@@ -36,23 +36,14 @@ export function refundProblem(c: RefundClaim): string | undefined {
 // the journey still lists one REFUND step, skipped with the reason, as it does for other switched-off steps.
 export function withRefund(c: RefundClaim, ctx: JourneyContext, steps: JourneyStep[]): JourneyStep[] {
   const outcome = c.refundSetting as RefundOutcome | undefined;
-  const anchorIndex = steps.findIndex((step) => step.name === c.refundAfter);
-  const anchor = steps[anchorIndex];
-  const placeholder = (skipIf: Array<[boolean, string]>, invalidIf?: JourneyStep['invalidIf']): JourneyStep => ({
-    name: 'REFUND', title: 'The claimant\'s solicitor asks for a refund of an overpayment.', user: 'claimantSolicitor', skipIf, invalidIf, run: async () => {},
+  return insertAfterStep(steps, {
+    setting: 'REFUND_AFTER',
+    after: c.refundAfter,
+    placeholder: { name: 'REFUND', title: 'The claimant\'s solicitor asks for a refund of an overpayment.', user: 'claimantSolicitor' },
+    on: outcome !== undefined,
+    off: 'Refunds are switched off (set REFUND to APPROVE, REJECT or RETURN to run one)',
+    build: (anchor) => refundSteps(ctx, outcome!, anchor),
   });
-
-  if (anchor === undefined || anchor.closesClaim) {
-    const problem = `Invalid REFUND_AFTER value: ${c.refundAfter}. It must be a step that does not close the claim: ${steps.filter((step) => !step.closesClaim).map((step) => step.name).join(', ')}.`;
-    const lastIndex = steps.findIndex((step) => step.closesClaim);
-    const at = lastIndex === -1 ? steps.length : lastIndex;
-    return [...steps.slice(0, at), placeholder([[true, problem]], () => [[outcome !== undefined, problem]]), ...steps.slice(at)];
-  }
-  if (outcome === undefined) {
-    const off: [boolean, string] = [true, 'Refunds are switched off (set REFUND to APPROVE, REJECT or RETURN to run one)'];
-    return [...steps.slice(0, anchorIndex + 1), placeholder([off]), ...steps.slice(anchorIndex + 1)];
-  }
-  return [...steps.slice(0, anchorIndex + 1), ...refundSteps(ctx, outcome, anchor), ...steps.slice(anchorIndex + 1)];
 }
 
 function refundSteps(ctx: JourneyContext, outcome: RefundOutcome, anchor: JourneyStep): JourneyStep[] {

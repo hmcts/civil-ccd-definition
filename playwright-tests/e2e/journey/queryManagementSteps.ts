@@ -14,7 +14,7 @@ import {
   queryParties,
   queryResponseFor,
 } from '../flows/events/shared_api_ui/queryManagementSpecs.ts';
-import { JourneyContext, JourneyStep } from './journeyRunner.ts';
+import { JourneyContext, JourneyStep, insertAfterStep } from './journeyRunner.ts';
 
 // The parts of a journey's settings that query management uses
 export interface QueryClaim {
@@ -95,32 +95,23 @@ export function queryManagementProblem(c: QueryClaim): string | undefined {
 // Each step uses its API version while the claim has not reached API_UNTIL, and the UI otherwise.
 export function withQueryManagement(c: QueryClaim, ctx: JourneyContext, steps: JourneyStep[]): JourneyStep[] {
   const parties = queryPartiesOf(c).filter((party): party is QueryParty => party in queryParties);
-  const anchorIndex = steps.findIndex((step) => step.name === c.queryManagementAfter);
-  const anchor = steps[anchorIndex];
-  const placeholder = (skipIf: Array<[boolean, string]>, invalidIf?: JourneyStep['invalidIf']): JourneyStep => ({
-    name: 'QUERY_MANAGEMENT', title: 'A solicitor raises a query and CTSC answers it.', user: 'claimantSolicitor', skipIf, invalidIf, run: async () => {},
+  const solicitorAssignedAfter = (party: QueryParty) => c.defendantSolicitorAssignedAfter[party === 'defendant1' ? 1 : 2];
+  return insertAfterStep(steps, {
+    setting: 'QUERY_MANAGEMENT_AFTER',
+    after: c.queryManagementAfter,
+    placeholder: { name: 'QUERY_MANAGEMENT', title: 'A solicitor raises a query and CTSC answers it.', user: 'claimantSolicitor' },
+    on: parties.length > 0,
+    off: 'Query management is switched off (set QUERY_MANAGEMENT to a list such as claimant,defendant1 to run it)',
+    // A defendant's solicitor can only raise a query once they have the case
+    problem: (anchorIndex) => {
+      const tooEarly = parties
+        .filter((party) => party !== 'claimant')
+        .filter((party) => anchorIndex < steps.findIndex((step) => step.name === solicitorAssignedAfter(party)))
+        .map((party) => `${party}'s solicitor only has the case after ${solicitorAssignedAfter(party)}`);
+      return tooEarly.length > 0 ? `Invalid QUERY_MANAGEMENT_AFTER value: ${c.queryManagementAfter}. ${tooEarly.join('; ')}.` : undefined;
+    },
+    build: (anchor) => parties.flatMap((party) => queryStepsFor(c, ctx, party, anchor)),
   });
-
-  if (anchor === undefined || anchor.closesClaim) {
-    const problem = `Invalid QUERY_MANAGEMENT_AFTER value: ${c.queryManagementAfter}. It must be a step that does not close the claim: ${steps.filter((step) => !step.closesClaim).map((step) => step.name).join(', ')}.`;
-    const lastIndex = steps.findIndex((step) => step.closesClaim);
-    const at = lastIndex === -1 ? steps.length : lastIndex;
-    return [...steps.slice(0, at), placeholder([[true, problem]], () => [[parties.length > 0, problem]]), ...steps.slice(at)];
-  }
-  if (parties.length === 0) {
-    const off: [boolean, string] = [true, 'Query management is switched off (set QUERY_MANAGEMENT to a list such as claimant,defendant1 to run it)'];
-    return [...steps.slice(0, anchorIndex + 1), placeholder([off]), ...steps.slice(anchorIndex + 1)];
-  }
-  // A defendant's solicitor can only raise a query once they have the case
-  const tooEarly = parties
-    .filter((party) => party !== 'claimant')
-    .filter((party) => anchorIndex < steps.findIndex((step) => step.name === c.defendantSolicitorAssignedAfter[party === 'defendant1' ? 1 : 2]))
-    .map((party) => `${party}'s solicitor only has the case after ${c.defendantSolicitorAssignedAfter[party === 'defendant1' ? 1 : 2]}`);
-  if (tooEarly.length > 0) {
-    const problem = `Invalid QUERY_MANAGEMENT_AFTER value: ${c.queryManagementAfter}. ${tooEarly.join('; ')}.`;
-    return [...steps.slice(0, anchorIndex + 1), placeholder([[true, problem]], () => [[true, problem]]), ...steps.slice(anchorIndex + 1)];
-  }
-  return [...steps.slice(0, anchorIndex + 1), ...parties.flatMap((party) => queryStepsFor(c, ctx, party, anchor)), ...steps.slice(anchorIndex + 1)];
 }
 
 // The steps for one party's query: raise it, CTSC answers, and with QUERY_MANAGEMENT_FOLLOW_UP=Yes a follow-up question

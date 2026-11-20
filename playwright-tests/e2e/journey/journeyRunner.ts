@@ -12,6 +12,7 @@ import GaCaseStates from '../../enums/gaCaseStates.ts';
 import claimTypes from '../../enums/claim-types.ts';
 import { SessionHelper, sessionUserFor, sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
 import { requirePlaywrightTestsEnv } from '../../env.ts';
+import { Fact } from './claimFacts.ts';
 
 export interface StepArgs {
   page: Page;
@@ -31,6 +32,9 @@ export interface JourneyStep {
   title: string;
   // The user the step runs as, from their saved session
   user: SessionUserKey;
+  // The facts about the claim the step needs (c.facts, see claimFacts.ts). withNeeds adds them to skipIf, so a step
+  // whose claim does not have one is left out of the run with the fact's reason.
+  needs?: Fact[];
   // Reasons the step does not apply to this journey, each a [condition, reason] pair. They are known before the
   // journey starts, so a step with one that holds is left out of the run (which also means beforeEach never opens the
   // case as a user who is not signed in for this claim type).
@@ -57,6 +61,61 @@ export interface SubmittedEvent<A, U> {
   businessProcess?: string;
   // The state the claim should be in once the event (and its business process) is done
   expectState?: caseStates;
+}
+
+// A journey's steps with the facts each needs added to its skipIf, before anything reads or copies a step's skipIf (the
+// steps put after another step take its skip reasons)
+export function withNeeds(steps: JourneyStep[]): JourneyStep[] {
+  return steps.map(({ needs, ...step }) => (needs === undefined ? step : { ...step, skipIf: [...needs.flat(), ...(step.skipIf ?? [])] }));
+}
+
+// Puts a set of steps after the step a setting names, such as REFUND_AFTER=CREATE_CLAIM:
+//  - when the setting asks for them (on), the steps build gives go after that step
+//  - when it does not, a placeholder step is listed there, skipped with the reason off gives, so the journey still
+//    shows it as switched off
+//  - when the named step is not one they can go after (not a step, one that closes the claim, one before earliest,
+//    or one problem rejects), a placeholder is listed before the steps that close the claim, which fails the run
+//    before it starts if the setting is on, and is left out of it if not
+// rest replaces the steps after the named one, for steps that change the rest of the journey (a notice of change
+// carries the claim on as another claim type).
+export function insertAfterStep(steps: JourneyStep[], options: {
+  // The setting that names the step, and the step it names, for the messages
+  setting: string;
+  after: string;
+  // The first step they can go after (by default any step)
+  earliest?: string;
+  // The step listed in their place when they are switched off or cannot go after the named step
+  placeholder: Pick<JourneyStep, 'name' | 'title' | 'user'>;
+  // Whether the settings ask for the steps, and why they are switched off when they do not
+  on: boolean;
+  off: string;
+  // Why the steps cannot go after the named step for another reason, or undefined when they can
+  problem?: (anchorIndex: number) => string | undefined;
+  build: (anchor: JourneyStep) => JourneyStep[];
+  rest?: (anchor: JourneyStep) => JourneyStep[];
+}): JourneyStep[] {
+  const placeholder = (skipIf: Array<[boolean, string]>, invalidIf?: JourneyStep['invalidIf']): JourneyStep => ({
+    ...options.placeholder, skipIf, invalidIf, run: async () => {},
+  });
+  const earliestIndex = options.earliest === undefined ? 0 : steps.findIndex((step) => step.name === options.earliest);
+  const anchorIndex = steps.findIndex((step) => step.name === options.after);
+  const anchor = steps[anchorIndex];
+  const allowed = steps.slice(earliestIndex).filter((step) => !step.closesClaim).map((step) => step.name);
+
+  const problem = anchor === undefined || anchorIndex < earliestIndex || anchor.closesClaim
+    ? `Invalid ${options.setting} value: ${options.after}. It must be ${options.earliest === undefined ? 'a step' : `one of the steps from ${options.earliest} on`} that does not close the claim: ${allowed.join(', ')}.`
+    : options.problem?.(anchorIndex);
+  if (problem !== undefined) {
+    const firstClosing = steps.findIndex((step) => step.closesClaim);
+    const at = firstClosing === -1 ? steps.length : firstClosing;
+    return [...steps.slice(0, at), placeholder([[true, problem]], () => [[options.on, problem]]), ...steps.slice(at)];
+  }
+  const before = steps.slice(0, anchorIndex + 1);
+  const after = steps.slice(anchorIndex + 1);
+  if (!options.on) {
+    return [...before, placeholder([[true, options.off]]), ...after];
+  }
+  return [...before, ...options.build(anchor), ...(options.rest ? options.rest(anchor) : after)];
 }
 
 // How the run is stopped early, if it is (see defineJourney)

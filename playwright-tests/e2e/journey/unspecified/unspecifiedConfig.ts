@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import yesNo from '../../../enums/yesNo.ts';
 import { journeySettings, settingProblems } from '../settings.ts';
+import { unspecifiedFacts } from '../claimFacts.ts';
 import PaymentMethod from '../../../enums/paymentMethod.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
@@ -293,5 +294,6 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
       expect(refundError, refundError).toBeUndefined();
     },
   };
-  return config;
+  // What follows for the claim from these settings, which steps need (see ../claimFacts.ts)
+  return Object.assign(config, { facts: unspecifiedFacts(config) });
 }

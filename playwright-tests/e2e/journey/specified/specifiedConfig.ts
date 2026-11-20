@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import yesNo from '../../../enums/yesNo.ts';
 import { journeySettings, settingProblems } from '../settings.ts';
+import { specifiedFacts } from '../claimFacts.ts';
 import PaymentMethod from '../../../enums/paymentMethod.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import claimTrack from '../../../enums/track.ts';
@@ -299,7 +300,8 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>,
       expect(refundError, refundError).toBeUndefined();
     },
   };
-  return config;
+  // What follows for the claim from these settings, which steps need (see ../claimFacts.ts)
+  return Object.assign(config, { facts: specifiedFacts(config) });
 }
 
 // Where the claimant's response takes the claim (civil-service's DetermineNextState and the claimant response process).

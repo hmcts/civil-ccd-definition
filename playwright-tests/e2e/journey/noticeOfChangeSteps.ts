@@ -15,7 +15,7 @@ import {
   nocSpecs,
   nocUsersAfter,
 } from '../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
-import { JourneyContext, JourneyStep } from './journeyRunner.ts';
+import { JourneyContext, JourneyStep, insertAfterStep } from './journeyRunner.ts';
 
 // Adds the notices of change (NOTICE_OF_CHANGE) to a journey's steps. They are given after the NOTICE_OF_CHANGE_AFTER
 // step, one step per party in group NOTICE_OF_CHANGE. From then on:
@@ -31,37 +31,30 @@ export function withNoticeOfChange(
   stepsForClaimType: (claimType: claimTypes) => JourneyStep[],
 ): JourneyStep[] {
   const specs = nocSpecs(c);
-  const anchor = steps.find((step) => step.name === c.noticeOfChangeAfter);
-  const anchorIndex = steps.indexOf(anchor);
-  const firstIndex = steps.findIndex((step) => step.name === c.noticeOfChangeFirstStep);
-  const placeholder = (skipIf: Array<[boolean, string]>, invalidIf?: JourneyStep['invalidIf']): JourneyStep => ({
-    name: 'NOTICE_OF_CHANGE', title: 'A solicitor takes over a party with a notice of change.', user: 'claimantSolicitor', skipIf, invalidIf, run: async () => {},
+  return insertAfterStep(steps, {
+    setting: 'NOTICE_OF_CHANGE_AFTER',
+    after: c.noticeOfChangeAfter,
+    earliest: c.noticeOfChangeFirstStep,
+    placeholder: { name: 'NOTICE_OF_CHANGE', title: 'A solicitor takes over a party with a notice of change.', user: 'claimantSolicitor' },
+    on: specs.length > 0,
+    off: 'Notice of change is switched off (set NOTICE_OF_CHANGE to a list such as DEFENDANT_1,CLAIMANT_1 to run it)',
+    build: (anchor) => noticeOfChangeSteps(c, ctx, specs, anchor),
+    // Once every litigant in person has a solicitor, the steps after the notices of change are the represented
+    // claim's, and a party whose solicitor changed has their steps run as the new solicitor
+    rest: (anchor) => {
+      const claimTypeAfter = nocClaimTypeAfter(c);
+      const stepsAfter = claimTypeAfter === c.claimType ? steps : stepsForClaimType(claimTypeAfter);
+      const usersAfter = nocUsersAfter(c);
+      if (claimTypeAfter !== c.claimType) {
+        console.log(`Notice of change: after ${anchor.name} the ${c.claimType} claim carries on as ${claimTypeAfter}`);
+      }
+      return stepsAfter.slice(stepsAfter.findIndex((step) => step.name === anchor.name) + 1).map((step) => {
+        const user = usersAfter[step.user] ?? step.user;
+        const title = user === step.user ? step.title : `${step.title.trim().replace(/\.$/, '')} (as ${sessionUsers[user].credentials.name}).`;
+        return { ...step, user, title };
+      });
+    },
   });
-
-  if (anchor === undefined || anchorIndex < firstIndex || anchor.closesClaim) {
-    // The journey still lists the step, so the settings check can report the problem
-    const problem = `Invalid NOTICE_OF_CHANGE_AFTER value: ${c.noticeOfChangeAfter}. It must be one of the steps from ${c.noticeOfChangeFirstStep} on, and not one that closes the claim: ${steps.slice(firstIndex).filter((step) => !step.closesClaim).map((step) => step.name).join(', ')}.`;
-    const invalid = specs.length > 0;
-    return [...steps.slice(0, firstIndex + 1), placeholder([[true, problem]], () => [[invalid, problem]]), ...steps.slice(firstIndex + 1)];
-  }
-  if (specs.length === 0) {
-    const off: [boolean, string] = [true, 'Notice of change is switched off (set NOTICE_OF_CHANGE to a list such as DEFENDANT_1,CLAIMANT_1 to run it)'];
-    return [...steps.slice(0, anchorIndex + 1), placeholder([off]), ...steps.slice(anchorIndex + 1)];
-  }
-
-  // Once every litigant in person has a solicitor, the steps after the notices of change are the represented claim's
-  const claimTypeAfter = nocClaimTypeAfter(c);
-  const stepsAfter = claimTypeAfter === c.claimType ? steps : stepsForClaimType(claimTypeAfter);
-  const usersAfter = nocUsersAfter(c);
-  const later = stepsAfter.slice(stepsAfter.findIndex((step) => step.name === anchor.name) + 1).map((step) => {
-    const user = usersAfter[step.user] ?? step.user;
-    const title = user === step.user ? step.title : `${step.title.trim().replace(/\.$/, '')} (as ${sessionUsers[user].credentials.name}).`;
-    return { ...step, user, title };
-  });
-  if (claimTypeAfter !== c.claimType) {
-    console.log(`Notice of change: after ${anchor.name} the ${c.claimType} claim carries on as ${claimTypeAfter}`);
-  }
-  return [...steps.slice(0, anchorIndex + 1), ...noticeOfChangeSteps(c, ctx, specs, anchor), ...later];
 }
 
 // One step per NOTICE_OF_CHANGE party, run as the solicitor who takes them over. The client's name is read from the
