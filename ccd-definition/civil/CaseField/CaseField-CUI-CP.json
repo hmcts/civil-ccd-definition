@@ -4,6 +4,7 @@
     "ID": "hearingHelpFeesReferenceNumber",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
@@ -86,6 +87,7 @@
     "ID": "requestForReviewCommentsClaimant",
     "Label": "Request Recon claimant",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -94,6 +96,7 @@
     "ID": "requestForReviewCommentsDefendant",
     "Label": "Request Recon defendant",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },

@@ -44,6 +44,7 @@
     "ID": "hearingDurationTextApplicant",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -52,6 +53,7 @@
     "ID": "hearingDurationTextRespondent1",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -60,6 +62,7 @@
     "ID": "hearingDurationTextRespondent2",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

@@ -11,6 +11,7 @@
     "ID": "SdoR2FurtherAudiogram",
     "ListElementCode": "sdoClaimantShallUndergoTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -35,6 +36,7 @@
     "ID": "SdoR2FurtherAudiogram",
     "ListElementCode": "sdoServiceReportTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

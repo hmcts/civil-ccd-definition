@@ -19,6 +19,7 @@
     "ListElementCode": "hearingTypeTelephoneHearing",
     "ElementLabel": "Who will set up the telephone hearing ?",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "hearingType = \"TELEPHONE_HEARING\""
@@ -37,6 +38,7 @@
     "ListElementCode": "hearingPreferredLocation",
     "ElementLabel": "Preferred Location",
     "FieldType": "Text",
+    "Max": 1000,
     "DefaultHidden": "No",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -119,6 +121,7 @@
     "ListElementCode": "hearingSupportAdditional",
     "ElementLabel": "Please name all people who need support and the kind of support they will need. For example, Jane Smith: requires wheelchair access.",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "hearingSupportQuestion=\"Yes\""

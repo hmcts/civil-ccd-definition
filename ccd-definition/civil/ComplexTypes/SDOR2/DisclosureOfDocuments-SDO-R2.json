@@ -11,6 +11,7 @@
     "ID": "SdoR2DisclosureOfDocuments",
     "ListElementCode": "standardDisclosureTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -35,6 +36,7 @@
     "ID": "SdoR2DisclosureOfDocuments",
     "ListElementCode": "inspectionTxt",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -52,6 +54,7 @@
     "ListElementCode": "requestsWillBeCompiledLabel",
     "ElementLabel": "Request will be compiled with",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

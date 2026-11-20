@@ -3,6 +3,7 @@
     "ID": "generalApplicationCaseList",
     "ListElementCode": "generalApplicationCaseListLabel",
     "FieldType": "Text",
+    "Max": 1000,
     "Label": "Application Type",
     "ElementLabel": "Application Type",
     "SecurityClassification": "Public"

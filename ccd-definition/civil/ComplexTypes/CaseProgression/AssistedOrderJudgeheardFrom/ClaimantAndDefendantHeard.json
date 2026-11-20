@@ -455,6 +455,7 @@
     "ElementLabel": " ",
     "HintText": "For example, the judge heard from Mr Smith, a director of the claimant company and Miss Smith as lay representative for the defendant",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

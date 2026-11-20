@@ -4,6 +4,7 @@
     "ListElementCode": "orderCourtOwnInitiative",
     "ElementLabel": "Order on court's own initiative",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public"
   },
   {

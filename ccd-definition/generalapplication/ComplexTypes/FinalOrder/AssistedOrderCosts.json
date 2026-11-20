@@ -19,6 +19,7 @@
     "ElementLabel": " ",
     "HintText": "For example, to whom the costs are reserved (eg 'to the hearing judge')",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -221,6 +222,7 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   }
 ]

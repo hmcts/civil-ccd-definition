@@ -60,6 +60,7 @@
     "ID": "generalAppAddlnInfoText",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -67,6 +68,7 @@
     "ID": "generalAppWrittenRepText",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -207,6 +209,7 @@
     "ID": "notificationSummary",
     "Label": "Summary",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

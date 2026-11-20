@@ -4,6 +4,7 @@
     "ID": "caseTypeFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -12,6 +13,7 @@
     "ID": "witnessStatementFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -20,6 +22,7 @@
     "ID": "witnessSummaryFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -28,6 +31,7 @@
     "ID": "witnessReferredStatementFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -36,6 +40,7 @@
     "ID": "expertReportFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -44,6 +49,7 @@
     "ID": "expertJointFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -52,6 +58,7 @@
     "ID": "trialAuthorityFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -60,6 +67,7 @@
     "ID": "trialCostsFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -68,6 +76,7 @@
     "ID": "trialDocumentaryFlag",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -76,6 +85,7 @@
     "ID": "caseProgAllocatedTrack",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -1040,6 +1050,7 @@
     "ID": "notificationText",
     "Label":" ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

@@ -11,6 +11,7 @@
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input1",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -27,6 +28,7 @@
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input2",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -43,6 +45,7 @@
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input3",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -51,6 +54,7 @@
     "ID": "FastTrackDisclosureOfDocuments",
     "ListElementCode": "input4",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -28,6 +28,7 @@
     "ID": "SmallClaimsFlightDelay",
     "ListElementCode": "relatedClaimsInput",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -44,6 +45,7 @@
     "ID": "SmallClaimsFlightDelay",
     "ListElementCode": "legalDocumentsInput",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -160,6 +160,7 @@
     "ID": "currentDateboxDefendantSpec",
     "Label": "currentDate",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -210,6 +211,7 @@
     "ID": "partAdmitPaidValuePounds",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -266,6 +268,7 @@
     "ID": "ccjJudgmentSummarySubtotalAmount",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -282,6 +285,7 @@
     "ID": "ccjJudgmentStatement",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -290,6 +294,7 @@
     "ID": "ccjJudgmentAmountClaimAmount",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -306,6 +311,7 @@
     "ID": "ccjJudgmentAmountInterestToDate",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -322,6 +328,7 @@
     "ID": "ccjJudgmentAmountClaimFee",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -338,6 +345,7 @@
     "ID": "ccjJudgmentAmountSubtotal",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -354,6 +362,7 @@
     "ID": "ccjPaymentPaidSomeAmountInPounds",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -370,6 +379,7 @@
     "ID": "ccjJudgmentTotalStillOwed",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -467,6 +477,7 @@
     "ID": "ccjJudgmentFixedCostAmount",
     "Label": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

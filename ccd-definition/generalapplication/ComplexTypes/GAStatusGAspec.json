@@ -3,6 +3,7 @@
     "ID": "GAStatusGAspec",
     "ListElementCode": "status",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public"
   }

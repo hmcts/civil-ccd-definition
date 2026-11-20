@@ -19,6 +19,7 @@
     "ID": "DisclosureReport",
     "ListElementCode": "draftOrderNumber",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Please ensure this is contained within the proposed directions attached and specify the draft order number",
     "FieldShowCondition": "disclosureProposalAgreed = \"Yes\"",
     "SecurityClassification": "Public",

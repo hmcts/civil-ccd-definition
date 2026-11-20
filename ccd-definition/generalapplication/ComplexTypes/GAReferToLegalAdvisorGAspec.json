@@ -5,6 +5,7 @@
     "ElementLabel": "Event Descirpiton",
     "HintText": "A few words describing the purpose of the event.",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   },
   {
@@ -12,6 +13,7 @@
     "ListElementCode": "legalAdvisorAdditionalInfo",
     "ElementLabel": "Additional Information",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public"
   }
 ]
