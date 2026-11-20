@@ -40,7 +40,7 @@ const config = {
     actionTimeout: 25_000,
     showBrowserWindow: process.env.PLAYWRIGHT_SHOW_BROWSER_WINDOW === 'true',
     retries: parseInt(process.env.PLAYWRIGHT_RETRIES),
-    testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED.toUpperCase() as string] as TestSpeed,
+    testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED?.toUpperCase() as string] as TestSpeed,
     shortExpectTimeout: 20_000,
     bootstrapTestResultsDir: process.env.PLAYWRIGHT_TEST_RESULTS_DIR &&
       process.env.PLAYWRIGHT_BOOTSTRAP_TEST_RESULTS_DIR 

@@ -1,0 +1,56 @@
+import yesNo from '../../../../enums/yesNo.ts';
+import { claimantSolicitorCredentials } from '../../../../civilConfig.ts';
+import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
+import { FeesHelper } from '../../../../helpers/FeesHelper.ts';
+import { PaymentHelper } from '../../../../helpers/PaymentHelper.ts';
+import { TestingEndPointHelper } from '../../../../helpers/TestingEndPointHelper.ts';
+import { claimAmountInPounds } from '../../createUnspecifiedCase.ts';
+import { UnspecifiedConfig } from '../../../journey/unspecified/unspecifiedConfig.ts';
+import { buildCreateClaimPayload, CreateClaimLookups, hasOtherRemedy } from './payloads/createClaimPayload.ts';
+
+// Creates an unspecified claim as the claimant solicitor through the CCD API, with the whole of the claim's case data
+// in one submit, instead of going through the CREATE_CLAIM pages in XUI. The claim is left waiting for its fee to be
+// paid (PENDING_CASE_ISSUED), as it is after the UI's Submit, and payClaimFee pays it.
+export class CreateClaim {
+  private ccdApiHelper = new CcdApiHelper();
+
+  // Returns the new case's ID
+  async create(c: UnspecifiedConfig): Promise<string> {
+    const lookups = await this.lookUp(c);
+    const started = await this.ccdApiHelper.startEvent(claimantSolicitorCredentials, 'CREATE_CLAIM');
+    const payload = buildCreateClaimPayload(c, started.caseData, lookups);
+    const created = await this.ccdApiHelper.submitEvent(claimantSolicitorCredentials, 'CREATE_CLAIM', started.token, payload);
+    console.log(`CREATE_CLAIM submitted through the API: case ${created.id} is in state ${created.state}`);
+    return String(created.id);
+  }
+
+  // Pays the claim fee from the claimant solicitor's PBA account through the payment service, as the UI's "Pay now"
+  // does, once civil-service has made the fee's service request (CREATE_SERVICE_REQUEST_CLAIM). The payment service
+  // then tells civil-service, which issues the claim. Paying it, rather than only telling civil-service, leaves the
+  // Service Request tab showing the fee as paid, as it does for a claim created in the UI.
+  // The service request is for the whole amount owed: the claim fee, plus the other remedy fee when the claim has an
+  // other remedy, so it is paid in full, as the payment service shows it
+  async payClaimFee(caseId: string) {
+    const serviceRequestReference = await new TestingEndPointHelper().waitForServiceRequestReference(caseId, 'claimIssuedPBADetails');
+    await new PaymentHelper().payServiceRequestByPba(claimantSolicitorCredentials, caseId, serviceRequestReference, 'ApplicantSolicitorReference');
+  }
+
+  // The fees for the claim's value (the same value the UI enters for its track), and the certificate of suitability
+  // a claimant's litigation friend needs, uploaded before the claim is submitted
+  private async lookUp(c: UnspecifiedConfig): Promise<CreateClaimLookups> {
+    const feesHelper = new FeesHelper();
+    const amountInPounds = Number(claimAmountInPounds(c.track, c.typeOfClaim));
+    const needsCertificate = c.claimShape.claimants.some((claimant) => claimant.litigationFriend === yesNo.YES);
+    const lookups: CreateClaimLookups = {
+      amountInPounds,
+      claimFee: await feesHelper.getClaimFee(claimantSolicitorCredentials, amountInPounds),
+      otherRemedyFee: hasOtherRemedy(c.typeOfClaim) ? await feesHelper.getOtherRemedyFee(amountInPounds) : undefined,
+      certificateOfSuitability: needsCertificate
+        ? await new TestingEndPointHelper().uploadTestDocument(claimantSolicitorCredentials)
+        : undefined,
+    };
+    console.log(`Claim value £${amountInPounds}: claim fee ${lookups.claimFee.code} v${lookups.claimFee.version} ${lookups.claimFee.calculatedAmountInPence}p`
+      + (lookups.otherRemedyFee ? `, other remedy fee ${lookups.otherRemedyFee.code} v${lookups.otherRemedyFee.version} ${lookups.otherRemedyFee.calculatedAmountInPence}p` : ''));
+    return lookups;
+  }
+}

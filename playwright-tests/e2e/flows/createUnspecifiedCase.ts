@@ -1,0 +1,446 @@
+import { expect, Page } from '@playwright/test';
+import { courts } from '../../fixtures/courts.ts';
+import { ButtonHelper } from '../../helpers/ButtonHelper';
+import { PageHelper } from '../../helpers/PageHelper.ts';
+import { partyDetails } from '../../fixtures/partyDetails.ts';
+import { LinkHelper } from '../../helpers/LinkHelper.ts';
+import YesNo from '../../enums/yesNo.ts';
+import { legalRepresentatives } from '../../fixtures/legalRepresentatives.ts';
+import claimantDefendantTypes from '../../enums/claimantDefendantTypes.ts';
+import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
+import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
+import claimTrack from '../../enums/track.ts';
+import { xuiLoadRetries } from '../../civilConfig.ts';
+
+// The claim value, in pounds, that puts a claim of this type on the track. Used by the UI and the API to create claims.
+export function claimAmountInPounds(track, typeOfClaim): string {
+  let claimAmount = '0';
+
+  // Intermediate track is £25,000 to £100,000, so a multi track claim must be over £100,000
+  if (track == claimTrack.INTERMEDIATE) {
+    claimAmount = '75000';
+  }
+
+  if (typeOfClaim == unspecClaimTypes.PERSONAL_INJURY || typeOfClaim == unspecClaimTypes.CLINICAL_NEGLIGENCE) {
+    if (track == claimTrack.SMALL) {
+      claimAmount = '500';
+    } else if (track == claimTrack.FAST) {
+      claimAmount = '20000';
+    } else if (track == claimTrack.MULTI) {
+      claimAmount = '150000';
+    }
+  }
+
+  if (claimAmount == '0') {
+    switch (track) {
+      case claimTrack.SMALL:
+        claimAmount = '5000';
+        break;
+      case claimTrack.FAST:
+        claimAmount = '20000';
+        break;
+      case claimTrack.MULTI:
+        claimAmount = '150000';
+        break;
+    }
+  }
+
+  return claimAmount;
+}
+
+export class CreateUnspecifiedCase {
+  private buttonHelper: ButtonHelper;
+  private pageHelper: PageHelper;
+
+  constructor(public page: Page) {
+    this.buttonHelper = new ButtonHelper(this.page);
+    this.pageHelper = new PageHelper(this.page);
+  }
+
+  async setReferences(defendant1HasSolicitor: boolean = true) {
+    await this.page
+      .locator('#solicitorReferences_applicantSolicitor1Reference')
+      .fill('ApplicantSolicitorReference');
+
+    // Defendant 1's solicitor reference is only entered when Defendant 1 has a solicitor.
+    // Defendant 2's solicitor reference (1v2DS, 1v2LIPLR) is entered later on its own page.
+    if (defendant1HasSolicitor) {
+      await this.page
+        .locator('#solicitorReferences_respondentSolicitor1Reference')
+        .fill('RespondentSolicitor1Reference');
+    }
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setCourt(remoteHearing: string = 'No') {
+    await this.page
+      .locator('#courtLocation_applicantPreferredCourtLocationList')
+      .selectOption(courts.clerkenwell.longAddress);
+    await this.page
+      .locator('#courtLocation_reasonForHearingAtSpecificCourt')
+      .fill('Test description for reasons');
+    await this.page
+      .locator(`#applicant1DQRemoteHearing_remoteHearingRequested_${remoteHearing}`)
+      .check();
+
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setClaimantType(claimantType: string = 'INDIVIDUAL', claimantNumber: number = 1) {
+    await this.page.locator(`#applicant${claimantNumber}_type-${claimantType}`).click();
+
+    switch (claimantType) {
+      case claimantDefendantTypes.INDIVIDUAL:
+        await this.page
+          .locator(`#applicant${claimantNumber}_individualTitle`)
+          .fill(claimantNumber === 1 ? partyDetails.claimant1.title : partyDetails.claimant2.title);
+        await this.page
+          .locator(`#applicant${claimantNumber}_individualFirstName`)
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.firstName
+              : partyDetails.claimant2.firstName,
+          );
+        await this.page
+          .locator(`#applicant${claimantNumber}_individualLastName`)
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.lastName
+              : partyDetails.claimant2.lastName,
+          );
+        await this.page
+          .locator('#individualDateOfBirth-day')
+          .fill(
+            claimantNumber === 1 ? partyDetails.claimant1.DOB_day : partyDetails.claimant2.DOB_day,
+          );
+        await this.page
+          .locator('#individualDateOfBirth-month')
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.DOB_month
+              : partyDetails.claimant2.DOB_month,
+          );
+        await this.page
+          .locator('#individualDateOfBirth-year')
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.DOB_year
+              : partyDetails.claimant2.DOB_year,
+          );
+        await this.page
+          .locator(`#applicant${claimantNumber}_partyPhone`)
+          .fill(claimantNumber === 1 ? partyDetails.claimant1.phone : partyDetails.claimant2.phone);
+        break;
+      case claimantDefendantTypes.COMPANY:
+        await this.page
+          .locator(`#applicant${claimantNumber}_companyName`)
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.companyName
+              : partyDetails.claimant2.companyName,
+          );
+        break;
+      case claimantDefendantTypes.ORGANISATION:
+        await this.page
+          .locator(`#applicant${claimantNumber}_organisationName`)
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.organisationName
+              : partyDetails.claimant2.organisationName,
+          );
+        break;
+      case claimantDefendantTypes.SOLETRADER:
+        await this.page
+          .locator(`#applicant${claimantNumber}_soleTraderTitle`)
+          .fill(claimantNumber === 1 ? partyDetails.claimant1.title : partyDetails.claimant2.title);
+        await this.page
+          .locator(`#applicant${claimantNumber}_soleTraderFirstName`)
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.firstName
+              : partyDetails.claimant2.firstName,
+          );
+        await this.page
+          .locator(`#applicant${claimantNumber}_soleTraderLastName`)
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.lastName
+              : partyDetails.claimant2.lastName,
+          );
+        await this.page
+          .locator(`#applicant${claimantNumber}_soleTraderTradingAs`)
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.soleTraderTradingAs
+              : partyDetails.claimant2.soleTraderTradingAs,
+          );
+        await this.page
+          .locator('#soleTraderDateOfBirth-day')
+          .fill(
+            claimantNumber === 1 ? partyDetails.claimant1.DOB_day : partyDetails.claimant2.DOB_day,
+          );
+        await this.page
+          .locator('#soleTraderDateOfBirth-month')
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.DOB_month
+              : partyDetails.claimant2.DOB_month,
+          );
+        await this.page
+          .locator('#soleTraderDateOfBirth-year')
+          .fill(
+            claimantNumber === 1
+              ? partyDetails.claimant1.DOB_year
+              : partyDetails.claimant2.DOB_year,
+          );
+        await this.page
+          .locator(`#applicant${claimantNumber}_partyPhone`)
+          .fill(claimantNumber === 1 ? partyDetails.claimant1.phone : partyDetails.claimant2.phone);
+    }
+
+    await this.page
+      .locator(`#applicant${claimantNumber}_partyEmail`)
+      .fill(claimantNumber === 1 ? partyDetails.claimant1.email : partyDetails.claimant2.email);
+
+    claimantNumber === 1
+      ? await new LinkHelper(this.page).manualAddressClaimant1.click()
+      : await new LinkHelper(this.page).manualAddressClaimant2.click();
+
+    await this.page
+      .locator(`#applicant${claimantNumber}_primaryAddress__detailAddressLine1`)
+      .fill(
+        claimantNumber === 1
+          ? partyDetails.claimant1.address.addressLine1
+          : partyDetails.claimant2.address.addressLine1,
+      );
+    await this.page
+      .locator(`#applicant${claimantNumber}_primaryAddress__detailPostTown`)
+      .fill(
+        claimantNumber === 1
+          ? partyDetails.claimant1.address.postTown
+          : partyDetails.claimant2.address.postTown,
+      );
+    await this.page
+      .locator(`#applicant${claimantNumber}_primaryAddress__detailCountry`)
+      .fill(
+        claimantNumber === 1
+          ? partyDetails.claimant1.address.country
+          : partyDetails.claimant2.address.country,
+      );
+    await this.page
+      .locator(`#applicant${claimantNumber}_primaryAddress__detailPostCode`)
+      .fill(
+        claimantNumber === 1
+          ? partyDetails.claimant1.address.postcode
+          : partyDetails.claimant2.address.postcode,
+      );
+
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setClaimantLitigantFriend(yesNo: YesNo = YesNo.NO, claimantNumber: number = 1) {
+    await this.page.locator(`#applicant${claimantNumber}LitigationFriendRequired_${yesNo}`).check();
+    if (yesNo === YesNo.YES) {
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_firstName`).fill(claimantNumber === 1 ? partyDetails.claimant1LitigantFriend.firstname : partyDetails.claimant2LitigantFriend.firstname);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_lastName`).fill(claimantNumber === 1 ? partyDetails.claimant1LitigantFriend.lastname : partyDetails.claimant2LitigantFriend.lastname);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_emailAddress`).fill(claimantNumber === 1 ? partyDetails.claimant1LitigantFriend.email : partyDetails.claimant2LitigantFriend.email);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_phoneNumber`).fill(claimantNumber === 1 ? partyDetails.claimant1LitigantFriend.phone : partyDetails.claimant2LitigantFriend.phone);
+      await this.page.locator(`#applicant${claimantNumber}LitigationFriend_hasSameAddressAsLitigant_${yesNo}`).check();
+
+      await this.buttonHelper.addNewButton.click();
+      await this.pageHelper.uploadFile(
+        this.page.locator(`#applicant${claimantNumber}LitigationFriend_certificateOfSuitability_0_document`),
+        './playwright-tests/documents/TEST_DOCUMENT_1.pdf',
+      );
+    }
+
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setClaimantNotifications(yesNo: YesNo = YesNo.YES) {
+    await this.page.locator(`#applicantSolicitor1CheckEmail_correct_${yesNo}`).check();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setClaimantServiceAddress(yesNo: YesNo = YesNo.NO) {
+    await this.page.locator(`#applicantSolicitor1ServiceAddressRequired_${yesNo}`).check();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setAnotherClaimant(yesNo: YesNo = YesNo.NO) {
+    await this.page.locator(`#addApplicant2_${yesNo}`).check();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  // The defendant's details for their party type. Unlike a claimant, a defendant is not asked for a date of birth, and
+  // only an individual or a sole trader is asked for a phone number.
+  async setDefendantType(defendantType: string = claimantDefendantTypes.INDIVIDUAL, defendantNumber: number = 1) {
+    const defendant = defendantNumber === 1 ? partyDetails.defendant1 : partyDetails.defendant2;
+    const field = (name: string) => this.page.locator(`#respondent${defendantNumber}_${name}`);
+    await field(`type-${defendantType}`).click();
+
+    switch (defendantType) {
+      case claimantDefendantTypes.COMPANY:
+        await field('companyName').fill(defendant.companyName);
+        break;
+      case claimantDefendantTypes.ORGANISATION:
+        await field('organisationName').fill(defendant.organisationName);
+        break;
+      case claimantDefendantTypes.SOLETRADER:
+        await field('soleTraderTitle').fill(defendant.title);
+        await field('soleTraderFirstName').fill(defendant.firstName);
+        await field('soleTraderLastName').fill(defendant.lastName);
+        await field('soleTraderTradingAs').fill(defendant.soleTraderTradingAs);
+        await field('partyPhone').fill(defendant.phone);
+        break;
+      default:
+        await field('individualTitle').fill(defendant.title);
+        await field('individualFirstName').fill(defendant.firstName);
+        await field('individualLastName').fill(defendant.lastName);
+        await field('partyPhone').fill(defendant.phone);
+    }
+
+    await field('partyEmail').fill(defendant.email);
+
+    if (defendantNumber === 1) {
+      await new LinkHelper(this.page).manualAddressDefendant1.click();
+    } else {
+      await new LinkHelper(this.page).manualAddressDefendant2.click();
+    }
+
+    await this.page
+      .locator(`#respondent${defendantNumber}_primaryAddress__detailAddressLine1`)
+      .fill(defendantNumber === 1 ? partyDetails.defendant1.address.addressLine1 : partyDetails.defendant2.address.addressLine1);
+    await this.page
+      .locator(`#respondent${defendantNumber}_primaryAddress__detailPostTown`)
+      .fill(defendantNumber === 1 ? partyDetails.defendant1.address.postTown : partyDetails.defendant2.address.postTown);
+    await this.page
+      .locator(`#respondent${defendantNumber}_primaryAddress__detailCountry`)
+      .fill(defendantNumber === 1 ? partyDetails.defendant1.address.country : partyDetails.defendant2.address.country);
+    await this.page
+      .locator(`#respondent${defendantNumber}_primaryAddress__detailPostCode`)
+      .fill(defendantNumber === 1 ? partyDetails.defendant1.address.postcode : partyDetails.defendant2.address.postcode);
+
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setDefendantLegallyRepresented(yesNo: YesNo = YesNo.YES, defendantNumber: number = 1) {
+    await this.page.locator(`#respondent${defendantNumber}Represented_${yesNo}`).click();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  //Eventually we will pass the org as parameter - will be cleaner
+  async setSolicitorOrganisation(organisationName: string = 'Civil - Organisation 2') {
+    await this.waitForOrganisationSearch();
+    await this.page.locator('#search-org-text').fill('civil');
+
+    const child = this.page.getByText(organisationName);
+    const parent = this.page.getByRole('table').filter({ has: child });
+    await parent.getByRole('link').click();
+    await expect(this.page.locator('#organisation-selected-table')).toBeVisible();
+
+    await this.pageHelper.continueToNextPage();
+  }
+
+  // When the environment is slow XUI can fail to load the organisation list and show "Organisation search is
+  // currently unavailable" instead of the search box. Going back a page and forward again makes XUI request it again.
+  private async waitForOrganisationSearch(attempts: number = xuiLoadRetries.attempts, waitSeconds: number = xuiLoadRetries.waitSeconds) {
+    const searchBox = this.page.locator('#search-org-text');
+    const searchUnavailable = this.page.getByText('Organisation search is currently unavailable');
+    for (let attempt = 1; attempt <= attempts; attempt++) {
+      const searchShown = await searchBox
+        .or(searchUnavailable)
+        .waitFor({ state: 'visible', timeout: waitSeconds * 1000 })
+        .then(() => searchBox.isVisible(), () => false);
+      if (searchShown) {
+        return;
+      }
+      if (attempt === attempts) {
+        throw new Error(`Organisation search was still unavailable after ${attempts} attempts of ${waitSeconds}s each`);
+      }
+      console.log(`Organisation search unavailable, going back and trying again (attempt ${attempt + 1} of ${attempts})`);
+      const organisationPageUrl = this.page.url();
+      await this.buttonHelper.previousButton.click();
+      await this.page.waitForURL((url) => url.toString() !== organisationPageUrl, { timeout: waitSeconds * 1000 });
+      await this.pageHelper.continueToNextPage();
+      await this.page.waitForURL(organisationPageUrl, { timeout: waitSeconds * 1000 });
+    }
+  }
+
+  async setDefendantLegalRepresentativeCorrespondenceAddress(yesNo: YesNo = YesNo.NO, defendantNumber: number = 1) {
+    await this.page.locator(`#respondentSolicitor${defendantNumber}ServiceAddressRequired_${yesNo}`).check();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setDefendantLegalRepresentativeEmail(defendantNumber: number = 1) {
+    await this.page
+      .locator(`#respondentSolicitor${defendantNumber}EmailAddress`)
+      .fill(defendantNumber === 1 ? legalRepresentatives.legalRepresentative1.email : legalRepresentatives.legalRepresentative2.email);
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setAnotherDefendant(yesNo: YesNo = YesNo.NO) {
+    await this.page.locator(`#addRespondent2_${yesNo}`).check();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setSameLegalRepresentative(yesNo: YesNo = YesNo.YES) {
+    await this.page.locator(`#respondent2SameLegalRepresentative_${yesNo}`).check();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setDefendant2LegalRepresentativeReference() {
+    await this.page.locator('#respondentSolicitor2Reference').fill('RespondentSolicitor2Reference')
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setTypeOfClaim(claimType?: string) {
+    await this.page.locator(`#claimTypeUnSpec-${claimType}`).check();
+    if (claimType == unspecClaimTypes.OTHER) {
+      await this.page.locator(`#claimTypeOther`).fill('Type of claim - Other - test text.');
+    }
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setSubClaimType(subClaimType) {
+    await this.page.locator(`#personalInjuryType-${subClaimType}`).check();
+    if (subClaimType == personalInjuryTypes.PERSONAL_INJURY_OTHER) {
+      await this.page.locator('#personalInjuryTypeOther').fill('Personal Injury - other test text.');
+    }
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setOtherRemedy(yesNo: YesNo = YesNo.YES ){
+    await this.page.locator(`#isClaimDeclarationAdded_${yesNo}`).check();
+    await this.page.locator('#claimDeclarationDescription').fill('Other remedy narrative text.');
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setDescriptionOfClaim() {
+    await this.page.locator('#detailsOfClaim').fill('Test description of claim');
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setHumanRights(yesNo: YesNo = YesNo.YES) {
+    await this.page.locator(`#isHumanRightsActIssues_${yesNo}`).check();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setUploadParticularsOfClaim(yesNo: YesNo = YesNo.NO) {
+    await this.page.locator(`#uploadParticularsOfClaim_${yesNo}`).check();
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setClaimValue(track, typeOfClaim) {
+    await this.page.locator('#claimValue_statementOfValueInPennies').fill(claimAmountInPounds(track, typeOfClaim));
+    await this.pageHelper.continueToNextPage();
+  }
+
+  async setStatementOfTruth() {
+    await this.page.locator('#uiStatementOfTruth_name').fill(legalRepresentatives.legalRepresentative1.firstName + ' ' + legalRepresentatives.legalRepresentative1.lastName);
+    await this.page.locator('#uiStatementOfTruth_role').fill(legalRepresentatives.legalRepresentative1.role);
+    await this.pageHelper.continueToNextPage();
+  }
+
+
+}

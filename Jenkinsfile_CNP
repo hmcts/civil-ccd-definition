@@ -212,6 +212,90 @@ def publishPlaywrightFunctionalReports(yarnBuilder) {
   }
 }
 
+// The scenarios a PR's labels choose for the playwright-tests journeys (pr_journey_<scenario name>, such as
+// pr_journey_UNSPEC_1v1_FAST), as a comma list. With none the PR's whole set runs.
+def getJourneyScenarios() {
+  def githubApi = new GithubAPI(this)
+  def labelPrefix = "pr_journey_"
+  def scenarios = []
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, labelPrefix)) {
+    scenarios.add(label.substring(labelPrefix.length()))
+  }
+  return scenarios.join(",")
+}
+
+// The last build's record of the playwright-tests journeys (which commit ran, whether it passed and the failed
+// scenarios), so run-journeys.sh can skip a set that passed and run only the failed scenarios again
+def copyPrevJourneysState() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts(
+        projectName: env.JOB_NAME,
+        selector: specific("${buildNumber}"),
+        filter: "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/**"
+      )
+      buildFound = true
+    } catch (Exception error) {
+      echo "playwright-tests journeys state not found in build ${buildNumber}. Trying previous..."
+      buildNumber--
+    }
+  }
+}
+
+// Runs the playwright-tests journeys (playwright-tests/scripts/pipeline/run-journeys.sh): the smoke test, then the
+// PR's set on its preview or master's on AAT. They run alongside the playwright-e2e tests while they prove themselves,
+// so a failure marks the build unstable rather than failing it.
+// The pipeline library catches a failed test stage's error and only fails the build at the end, after the preview is
+// uninstalled, so the stage itself shows as passed. This marks the stage as failed when this build's run of a
+// playwright-tests set failed (set is smoke or pr), naming the scenarios that failed. A set skipped because it already
+// passed leaves the last build's state, which is not this build's, so it is ignored.
+def markStageFailedIfJourneysFailed(String set) {
+  def state = journeysStateOfThisBuild(set)
+  if (state?.STATUS == 'failed') {
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+      error "The playwright-tests ${set} journeys failed. Failed scenarios: ${state.FAILED_SCENARIOS ?: 'none recorded (see the log)'}"
+    }
+  }
+}
+
+// The state this build's run of a playwright-tests set (smoke or pr) saved, or null when this build did not run it
+def journeysStateOfThisBuild(String set) {
+  def stateFile = "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/${set}.properties"
+  if (!fileExists(stateFile)) {
+    return null
+  }
+  def state = readProperties file: stateFile
+  return state.BUILD_TAG == env.BUILD_TAG ? state : null
+}
+
+// Publishes the playwright-tests journeys' Allure report, with the results of every set run so far. It is published
+// after the functional stage, and after the smoke stage only when the smoke test failed (the functional stage may then
+// not run), as each publish adds a link to the build's page. The last build's history is only brought in once.
+def publishJourneysReport(yarnBuilder) {
+  if (fileExists('playwright-allure-journeys-results')) {
+    if (env.JOURNEYS_ALLURE_HISTORY_COPIED != 'true') {
+      copyPreviousAllureHistory('playwright-allure-journeys-history', 'playwright-allure-journeys-results')
+      env.JOURNEYS_ALLURE_HISTORY_COPIED = 'true'
+    }
+    sh 'cp playwright-categories.json playwright-allure-journeys-results/categories.json'
+    yarnBuilder.yarn('test:journeys:generate-report')
+    publishAllureReport(
+      'playwright-allure-journeys-report',
+      'Playwright Tests Journeys Report',
+      'playwright-allure-journeys-history'
+    )
+  }
+  archiveArtifacts allowEmptyArchive: true, artifacts: [
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys/**",
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-state/**",
+    "${env.PLAYWRIGHT_TEST_RESULTS_DIR}/journeys-report.json",
+    'playwright-allure-journeys-report/data/**',
+  ].join(',')
+}
+
 def getCivilServiceSharedBranch() {
   def githubApi = new GithubAPI(this)
   for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilShared:")) {
@@ -400,6 +484,7 @@ withPipeline(type, product, component) {
     env.PLAYWRIGHT_PR_FT_GROUPS = getPlaywrightFunctionalTestsGroups()
     env.PLAYWRIGHT_SKIP_FUNCTIONAL_TESTS = checkForSkipFunctionalTests(env.BRANCH_NAME)
     env.PLAYWRIGHT_RUN_ALL_FUNCTIONAL_TESTS = checkForRunAllFunctionalTests(env.BRANCH_NAME)
+    env.JOURNEY_SCENARIOS = getJourneyScenarios()
   }
 
   // onPR {
@@ -466,21 +551,25 @@ withPipeline(type, product, component) {
     }
   }
 
+  // On a PR's preview, yarn test:smoke and test:functional run the playwright-tests journeys (the smoke test, then the
+  // PR set; see package.json). On AAT they still run the playwright-e2e tests.
   before('smoketest:preview') {
-    copyPrevPlaywrightLastRunAndTestFilesReport()
+    copyPrevJourneysState()
   }
 
   afterAlways('smoketest:preview') {
     if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
       error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
     }
-    publishPlaywrightSmokeReports(yarnBuilder)
-    archivePlaywrightTestArtifacts()
+    if (journeysStateOfThisBuild('smoke')?.STATUS == 'failed') {
+      publishJourneysReport(yarnBuilder)
+    }
+    markStageFailedIfJourneysFailed('smoke')
   }
 
   afterAlways('functionalTest:preview') {
-    publishPlaywrightFunctionalReports(yarnBuilder)
-    archivePlaywrightTestArtifacts()
+    publishJourneysReport(yarnBuilder)
+    markStageFailedIfJourneysFailed('pr')
   }
 
   before('smoketest:aat') {

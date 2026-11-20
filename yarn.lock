@@ -453,6 +453,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opensourcesforge/envguard@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@opensourcesforge/envguard@npm:1.1.1"
+  checksum: 10/59431b3a2155f086a8ef41c7b26202ca334ec0fc00d02ca50fe5ef568b9a33ed72077cce90bb1237f08b1b04da115894e3e99f95d4cf5cbe2c6a36e53e77877e
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -1577,6 +1584,7 @@ __metadata:
     "@axe-core/playwright": "npm:^4.10.0"
     "@eslint/js": "npm:^10.0.0"
     "@faker-js/faker": "npm:^10.0.0"
+    "@opensourcesforge/envguard": "npm:^1.1.1"
     "@playwright/test": "npm:1.65.1"
     "@types/node": "npm:^26.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
@@ -1602,6 +1610,8 @@ __metadata:
     mocha-junit-reporter: "npm:^2.0.2"
     mocha-multi: "npm:^1.1.7"
     mochawesome: "npm:^8.0.0"
+    moment: "npm:^2.30.1"
+    moment-business-days: "npm:^1.2.0"
     node-cache: "npm:^5.1.2"
     node-fetch: "npm:^3.0.0"
     pixelmatch: "npm:8.0.0"
@@ -4220,6 +4230,22 @@ __metadata:
   version: 0.8.6
   resolution: "modern-tar@npm:0.8.6"
   checksum: 10/ee62124899907a643bae66465c418925af00dc4cce357751de28ee7e4730a4a12ef8c48e92aacab7eb68b94200f0a2c2c12531367e3b153f805a55bd101a9d91
+  languageName: node
+  linkType: hard
+
+"moment-business-days@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "moment-business-days@npm:1.2.0"
+  peerDependencies:
+    moment: 2.x.x
+  checksum: 10/1be72955fa534c9f21fc26e2b19b32b724c6a4d6e1406549188b3170095ece1ec096f4be2f4e9420ba6425256e383c772f2c08a9c24d31581f4c30714cfc07a2
+  languageName: node
+  linkType: hard
+
+"moment@npm:^2.30.1":
+  version: 2.31.0
+  resolution: "moment@npm:2.31.0"
+  checksum: 10/fd3708d46f820c64fe1e064a60747533a55ee0aefd944490e18f08b2a83a5b6418bb4f42e1de47ef1f1a29f450c7ac41edd1fa6f940db30ded247c9717301b9f
   languageName: node
   linkType: hard
 
