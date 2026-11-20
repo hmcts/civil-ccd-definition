@@ -1,12 +1,11 @@
 import { expect } from '@playwright/test';
-import { cleanEnv, enums } from '@opensourcesforge/envguard';
 import yesNo from '../../../enums/yesNo.ts';
+import { journeySettings, settingProblems } from '../settings.ts';
 import PaymentMethod from '../../../enums/paymentMethod.ts';
 import claimTypes from '../../../enums/claim-types.ts';
 import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../../enums/personalInjuryTypes.ts';
 import claimTrack from '../../../enums/track.ts';
-import environment from '../../../enums/environment.ts';
 import notifyClaimOptions from '../../../enums/notifyClaimOptions.ts';
 import responseIntentions from '../../../enums/ResponseIntention.ts';
 import respondentResponses from '../../../enums/RespondentResponses.ts';
@@ -30,116 +29,23 @@ export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
 
 // The settings of one unspecified journey, read from its scenario's env vars, and what follows from them: which claim
 // types skip which steps, and the state the claim is expected to reach after each response.
-export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined>) {
-  const env = cleanEnv({
-    PAYMENT_METHOD: enums({
-      values: [PaymentMethod.PBA, PaymentMethod.CARD],
-      default: PaymentMethod.PBA,
-    }),
-    CLAIM_TYPE: enums({
-      values: [
-        claimTypes.ONE_VS_ONE_LIP,
-        claimTypes.TWO_VS_ONE_LIP,
-        claimTypes.ONE_VS_TWO_LIPS,
-        claimTypes.ONE_VS_TWO_LR_LIP,
-        claimTypes.ONE_VS_TWO_LIP_LR,
-        claimTypes.ONE_VS_ONE,
-        claimTypes.TWO_VS_ONE,
-        claimTypes.ONE_VS_TWO_SAME_SOL,
-        claimTypes.ONE_VS_TWO_DIFF_SOL,
-      ] as const,
-      default: claimTypes.ONE_VS_ONE,
-    }),
-    ENVIRONMENT: enums({
-      values: [
-        environment.AAT,
-        environment.DEMO,
-        environment.ITHC,
-        environment.PREVIEW,
-        environment.PERFTEST,
-      ],
-      default: environment.PREVIEW,
-    }),
-    DEFENDANTS_TO_NOTIFY_CLAIM: enums({
-      values: [notifyClaimOptions.BOTH, notifyClaimOptions.DEFENDANT1, notifyClaimOptions.DEFENDANT2],
-      default: notifyClaimOptions.BOTH,
-    }),
-    DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS: enums({
-      values: [notifyClaimOptions.BOTH, notifyClaimOptions.DEFENDANT1, notifyClaimOptions.DEFENDANT2],
-      default: notifyClaimOptions.BOTH,
-    }),
-    RESPONDENT1_RESPONSE_INTENTION: enums({
-      values: [
-        responseIntentions.FULL_DEFENCE,
-        responseIntentions.PART_DEFENCE,
-        responseIntentions.CONTEST_JURISDICTION,
-      ],
-      default: responseIntentions.FULL_DEFENCE,
-    }),
-    RESPONDENT2_RESPONSE_INTENTION: enums({
-      values: [
-        responseIntentions.FULL_DEFENCE,
-        responseIntentions.PART_DEFENCE,
-        responseIntentions.CONTEST_JURISDICTION,
-      ],
-      default: responseIntentions.FULL_DEFENCE,
-    }),
-    RESPONDENT1_RESPONSE: enums({
-      values: [
-        respondentResponses.FULL_DEFENCE,
-        respondentResponses.FULL_ADMISSION,
-        respondentResponses.PART_ADMISSION,
-        respondentResponses.COUNTER_CLAIM
-      ],
-      default: respondentResponses.FULL_DEFENCE
-    }),
-    RESPONDENT2_RESPONSE: enums({
-      values: [
-        respondentResponses.FULL_DEFENCE,
-        respondentResponses.FULL_ADMISSION,
-        respondentResponses.PART_ADMISSION,
-        respondentResponses.COUNTER_CLAIM
-      ],
-      default: respondentResponses.FULL_DEFENCE
-    }),
-    // Whether the claimant proceeds with the claim when responding to the defence. 2v1 and 1v2 claims ask twice:
-    //  - 1v1: CLAIMANT_PROCEED_1 is the claimant's answer (CLAIMANT_PROCEED_2 is not used)
-    //  - 2v1: CLAIMANT_PROCEED_1 is Claimant 1's answer and CLAIMANT_PROCEED_2 is Claimant 2's
-    //  - 1v2SS / 1v2DS: CLAIMANT_PROCEED_1 is against Defendant 1 and CLAIMANT_PROCEED_2 is against Defendant 2
-    CLAIMANT_PROCEED_1: enums({
-      values: [yesNo.YES, yesNo.NO],
-      default: yesNo.YES
-    }),
-    CLAIMANT_PROCEED_2: enums({
-      values: [yesNo.YES, yesNo.NO],
-      default: yesNo.YES
-    }),
-    FIXED_RECOVERY_COSTS_BAND: enums({
-      values: [
-        fixedRecoveryCostsBands.BAND1,
-        fixedRecoveryCostsBands.BAND2,
-        fixedRecoveryCostsBands.BAND3,
-        fixedRecoveryCostsBands.BAND4
-      ],
-      default: fixedRecoveryCostsBands.BAND1
-    }),
-  }, { env: scenarioEnv });
+// scenarioSettings: the names the scenario sets in scenarios/*.ts, which validate checks are settings of this journey
+export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined>, scenarioSettings: string[] = []) {
+  // The scenario's settings, with their defaults (see ../settings.ts)
+  const read = journeySettings('UNSPECIFIED', scenarioEnv);
 
-  const yes = (value: string | undefined): yesNo => (value === 'Yes' ? yesNo.YES : yesNo.NO);
-  const partyType = (value: string | undefined): string =>
-    ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'].includes(value) ? value : 'INDIVIDUAL';
 
-  const claimType: claimTypes = env.CLAIM_TYPE;
-  const respondent1Response: respondentResponses = env.RESPONDENT1_RESPONSE;
-  const respondent2Response: respondentResponses = env.RESPONDENT2_RESPONSE;
-  const claimantProceed1: yesNo = env.CLAIMANT_PROCEED_1;
-  const claimantProceed2: yesNo = env.CLAIMANT_PROCEED_2;
+  const claimType = read.get('CLAIM_TYPE') as claimTypes;
+  const respondent1Response = read.get('RESPONDENT1_RESPONSE') as respondentResponses;
+  const respondent2Response = read.get('RESPONDENT2_RESPONSE') as respondentResponses;
+  const claimantProceed1 = read.get('CLAIMANT_PROCEED_1') as yesNo;
+  const claimantProceed2 = read.get('CLAIMANT_PROCEED_2') as yesNo;
   // A personal injury claim from a road accident unless TYPE_OF_CLAIM (and, for personal injury, SUB_TYPE) is set
-  const typeOfClaim = scenarioEnv.TYPE_OF_CLAIM ?? unspecClaimTypes.PERSONAL_INJURY;
-  const typeOfClaimSubType: string = scenarioEnv.SUB_TYPE
+  const typeOfClaim = read.get('TYPE_OF_CLAIM');
+  const typeOfClaimSubType: string = read.get('SUB_TYPE')
     ?? (typeOfClaim === unspecClaimTypes.PERSONAL_INJURY ? personalInjuryTypes.ROAD_ACCIDENT : undefined);
-  const defendantsToNotifyClaim: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM;
-  const defendantsToNotifyClaimDetails: notifyClaimOptions = env.DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS;
+  const defendantsToNotifyClaim = read.get('DEFENDANTS_TO_NOTIFY_CLAIM') as notifyClaimOptions;
+  const defendantsToNotifyClaimDetails = read.get('DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS') as notifyClaimOptions;
   // Notifying only one defendant takes the claim offline, so no later events can be done online
   const claimOfflineAfterNotifyClaim = defendantsToNotifyClaim !== notifyClaimOptions.BOTH;
   const claimOfflineAfterNotifyClaimDetails =
@@ -163,7 +69,7 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     ? caseStates.JUDICIAL_REFERRAL
     : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
 
-  const track: claimTrack = ['SMALL_CLAIM', 'FAST_CLAIM', 'INTERMEDIATE_CLAIM', 'MULTI_CLAIM'].includes(scenarioEnv.TRACK) ? (scenarioEnv.TRACK as claimTrack) : claimTrack.FAST;
+  const track = read.get('TRACK') as claimTrack;
   // Noise induced hearing loss claims are always on the fast track (checked in validate), get their own Standard
   // Direction Order directions, and their own work allocation task for it
   const noiseInducedHearingLoss: boolean =
@@ -175,14 +81,14 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     : track === claimTrack.SMALL ? 'SmallClaimsTrackDirections' : 'FastTrackDirections';
   // The judge's final order (FINAL_ORDER). If it is not set, the first order the track offers is made: a free form order
   // on the small and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
-  const finalOrder: FinalOrder = (scenarioEnv.FINAL_ORDER as FinalOrder) ?? finalOrdersForTrack[track][0];
-  const noOfExperts: string = scenarioEnv.EXPERTS ?? '0';
-  const noOfWitnesses: string = scenarioEnv.WITNESSES ?? '0';
+  const finalOrder: FinalOrder = (read.get('FINAL_ORDER') as FinalOrder) ?? finalOrdersForTrack[track][0];
+  const noOfExperts: string = read.get('EXPERTS');
+  const noOfWitnesses: string = read.get('WITNESSES');
 
-  const claimantType = partyType(scenarioEnv.CLAIMANT_TYPE);
-  const defendantType = partyType(scenarioEnv.DEFENDANT_TYPE);
-  const claimant1LitigantFriend = yes(scenarioEnv.CLAIMANT1_LITIGANT_FRIEND);
-  const claimant2LitigantFriend = yes(scenarioEnv.CLAIMANT2_LITIGANT_FRIEND);
+  const claimantType = read.get('CLAIMANT_TYPE');
+  const defendantType = read.get('DEFENDANT_TYPE');
+  const claimant1LitigantFriend = read.yes('CLAIMANT1_LITIGANT_FRIEND');
+  const claimant2LitigantFriend = read.yes('CLAIMANT2_LITIGANT_FRIEND');
 
   const config = {
     // The scenario's env vars, from which the journey works out its settings for the claim type it carries on as once
@@ -200,141 +106,141 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     noiseInducedHearingLoss,
     sdoTaskType,
     finalOrder,
-    respondent1ResponseIntention: env.RESPONDENT1_RESPONSE_INTENTION as responseIntentions,
-    respondent2ResponseIntention: env.RESPONDENT2_RESPONSE_INTENTION as responseIntentions,
+    respondent1ResponseIntention: read.get('RESPONDENT1_RESPONSE_INTENTION') as responseIntentions,
+    respondent2ResponseIntention: read.get('RESPONDENT2_RESPONSE_INTENTION') as responseIntentions,
     respondent1Response,
     respondent2Response,
     claimantProceed1,
     claimantProceed2,
-    fixedRecoverableCosts: yes(scenarioEnv.FIXED_RECOVERABLE_COSTS),
-    fixedRecoveryCostsBand: env.FIXED_RECOVERY_COSTS_BAND as fixedRecoveryCostsBands,
+    fixedRecoverableCosts: read.yes('FIXED_RECOVERABLE_COSTS'),
+    fixedRecoveryCostsBand: read.get('FIXED_RECOVERY_COSTS_BAND') as fixedRecoveryCostsBands,
     claimant1LitigantFriend,
     claimant2LitigantFriend,
-    determinationWithoutHearing: yes(scenarioEnv.DETERMINATION_WITHOUT_HEARING),
-    oneMonthStay: yes(scenarioEnv.ONE_MONTH_STAY),
-    preActionProtocol: yes(scenarioEnv.ONE_MONTH_STAY),
+    determinationWithoutHearing: read.yes('DETERMINATION_WITHOUT_HEARING'),
+    oneMonthStay: read.yes('ONE_MONTH_STAY'),
+    preActionProtocol: read.yes('ONE_MONTH_STAY'),
     noOfExperts,
     noOfWitnesses,
-    language: ['WELSH', 'ENGLISH', 'BOTH'].includes(scenarioEnv.LANGUAGE) ? (scenarioEnv.LANGUAGE as languageSpokenAndDocuments) : languageSpokenAndDocuments.ENGLISH,
-    unavailableDatesRequired: yes(scenarioEnv.UNAVAILABLE_DATES),
+    language: read.get('LANGUAGE') as languageSpokenAndDocuments,
+    unavailableDatesRequired: read.yes('UNAVAILABLE_DATES'),
     // How the claimant's solicitor pays the claim fee and the hearing fee: from their PBA account (PAYMENT_METHOD=PBA,
     // the default) or by card (CARD), which is always done in the UI, even when the claim is created through the API
-    paymentMethod: env.PAYMENT_METHOD as PaymentMethod,
+    paymentMethod: read.get('PAYMENT_METHOD') as PaymentMethod,
     // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=Yes,
     // default No)
-    addCaseNote: yes(scenarioEnv.ADD_CASE_NOTE),
+    addCaseNote: read.yes('ADD_CASE_NOTE'),
     // Whether the claimant's solicitor uploads the particulars of claim with "Add or amend claim documents" once the
     // claim is issued, before notifying the defendants (ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes, default No)
-    addOrAmendClaimDocuments: yes(scenarioEnv.ADD_OR_AMEND_CLAIM_DOCUMENTS),
+    addOrAmendClaimDocuments: read.yes('ADD_OR_AMEND_CLAIM_DOCUMENTS'),
     // Whether the hearing centre admin changes the legal representatives' email addresses with "Amend party details" once
     // the defendants' solicitors are on the claim (AMEND_PARTY_DETAILS=Yes, default No)
-    amendPartyDetails: yes(scenarioEnv.AMEND_PARTY_DETAILS),
+    amendPartyDetails: read.yes('AMEND_PARTY_DETAILS'),
     // Whether the hearing centre admin stays the case after the claimant's response, asks for an update and lifts the
     // stay (STAY_CASE=Yes, default No)
-    stayCase: yes(scenarioEnv.STAY_CASE),
+    stayCase: read.yes('STAY_CASE'),
     // Whether the hearing centre admin sends a district judge a message with "Send and reply to messages" once the
     // claimant's response has taken the claim to JUDICIAL_REFERRAL, and the judge replies. With STAY_CASE=Yes they do
     // it while the case is stayed (SEND_AND_REPLY=Yes, default No)
-    sendAndReply: yes(scenarioEnv.SEND_AND_REPLY),
+    sendAndReply: read.yes('SEND_AND_REPLY'),
     // Whether the hearing centre admin dismisses the case with "Dismiss case" once the rest of the journey has run, which
     // moves it to CASE_DISMISSED (DISMISS_CASE=Yes, default No)
-    dismissCase: yes(scenarioEnv.DISMISS_CASE),
+    dismissCase: read.yes('DISMISS_CASE'),
     // Whether and how the claim is settled with "Settle this claim" once the rest of the journey has run: the
     // claimant's solicitor marks it paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL), which stays the case, or court staff
     // record it settled after a judge's order (JUDGE_ORDER) or a consent order (CONSENT_ORDER). Not settled by default.
-    settleClaim: scenarioEnv.SETTLE_CLAIM as SettleClaim | undefined,
+    settleClaim: read.get('SETTLE_CLAIM') as SettleClaim | undefined,
     // Whether the claimant's solicitor fully discontinues the claim with "Discontinue this claim" once the rest of the
     // journey has run: without needing the court's permission (DISCONTINUE_CLAIM=NO_PERMISSION_NEEDED), or with a
     // judge's permission (PERMISSION_GRANTED), which court staff then validate. Not discontinued by default.
-    discontinueClaim: scenarioEnv.DISCONTINUE_CLAIM as DiscontinueClaim | undefined,
+    discontinueClaim: read.get('DISCONTINUE_CLAIM') as DiscontinueClaim | undefined,
     // Whether the hearing centre admin takes the claim offline with "Case proceeds in Caseman" once the rest of the
     // journey has run, giving the reason for proceeding on paper (CASE_PROCEEDS_IN_CASEMAN=APPLICATION,
     // JUDGEMENT_REQUEST, CASE_SETTLED or OTHER). civil-service moves the claim to PROCEEDS_IN_HERITAGE_SYSTEM. Not taken
     // offline by default.
-    caseProceedsInCaseman: scenarioEnv.CASE_PROCEEDS_IN_CASEMAN as CaseProceedsInCaseman | undefined,
+    caseProceedsInCaseman: read.get('CASE_PROCEEDS_IN_CASEMAN') as CaseProceedsInCaseman | undefined,
     // Whether the judge decides the claim is not suitable for a Standard Direction Order instead of making one: it
     // should go to another hearing centre (NOT_SUITABLE_SDO=CHANGE_LOCATION), which the hearing centre admin then
     // transfers it to before the order is made there, or another reason (OTHER_REASONS), which takes the claim offline.
     // Not used by default.
-    notSuitableSdo: scenarioEnv.NOT_SUITABLE_SDO as NotSuitableSdo | undefined,
+    notSuitableSdo: read.get('NOT_SUITABLE_SDO') as NotSuitableSdo | undefined,
     // Whether the small claims Standard Direction Order lists a dispute resolution hearing (DRH) instead of a small
     // claims hearing (DISPUTE_RESOLUTION_HEARING=Yes, default No; needs TRACK=SMALL_CLAIM)
-    disputeResolutionHearing: yes(scenarioEnv.DISPUTE_RESOLUTION_HEARING),
+    disputeResolutionHearing: read.yes('DISPUTE_RESOLUTION_HEARING'),
     // Whether civil-service's automated hearing notice scheduler lists the hearing instead of the hearing centre admin's
     // hearing notice: HMC (WireMock) returns a LISTED trial and the scheduler sends the notice (HEARING_NOTICE_SCHEDULER=Yes,
     // default No). Only on a civil-service PR preview, which has WireMock; elsewhere the admin's notice is used, with a
     // warning.
-    hearingNoticeScheduler: yes(scenarioEnv.HEARING_NOTICE_SCHEDULER),
+    hearingNoticeScheduler: read.yes('HEARING_NOTICE_SCHEDULER'),
     // Whether the claimant's solicitor asks for default judgment once the claim is waiting for the defendants: the
     // response deadlines are moved to yesterday, as if the time for responding had passed, and the steps for the
     // defendants' responses and everything after them are skipped, apart from settling or discontinuing the claim
     // (DEFAULT_JUDGMENT=Yes, default No)
-    defaultJudgment: yes(scenarioEnv.DEFAULT_JUDGMENT),
+    defaultJudgment: read.yes('DEFAULT_JUDGMENT'),
     // Whether each defendant's solicitor informs the court of an agreed 28 day extension to respond, after
     // acknowledging the claim (INFORM_AGREED_EXTENSION=Yes, default No)
-    informAgreedExtension: yes(scenarioEnv.INFORM_AGREED_EXTENSION),
+    informAgreedExtension: read.yes('INFORM_AGREED_EXTENSION'),
     // Whether each defendant's solicitor adds a litigation friend for the defendant they represent with "Add litigation
     // friend", after acknowledging the claim. Where both defendants have the same solicitor, one litigation friend is
     // added for both (DEFENDANT_LITIGATION_FRIEND=Yes, default No)
-    defendantLitigationFriend: yes(scenarioEnv.DEFENDANT_LITIGATION_FRIEND),
+    defendantLitigationFriend: read.yes('DEFENDANT_LITIGATION_FRIEND'),
     // Whether each solicitor adds unavailable dates for the parties they represent with "Add Unavailable Dates" once the
     // claimant's response has been made, then the hearing centre admin adds some for a defendant
     // (ADD_UNAVAILABLE_DATES=Yes, default No; see addUnavailableDatesSpecs.ts)
-    addUnavailableDates: yes(scenarioEnv.ADD_UNAVAILABLE_DATES),
+    addUnavailableDates: read.yes('ADD_UNAVAILABLE_DATES'),
     // The case flags the hearing centre admin adds after the claimant's response, and then makes the first one inactive
     // (CASE_FLAGS: "representative", or a list such as CASE:CF0002,DEFENDANT_1:RA0012; see caseFlagSpecs.ts)
-    caseFlagsSetting: scenarioEnv.CASE_FLAGS,
+    caseFlagsSetting: read.get('CASE_FLAGS'),
     // Who updates which contact details after the claimant's response, each a run of Manage Contact Information
     // (MANAGE_CONTACT_INFORMATION: "representative", or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1;
     // see manageContactInformationSpecs.ts)
-    manageContactInformationSetting: scenarioEnv.MANAGE_CONTACT_INFORMATION,
+    manageContactInformationSetting: read.get('MANAGE_CONTACT_INFORMATION'),
     // The parties a solicitor takes over with a notice of change (NOTICE_OF_CHANGE: a list such as
     // DEFENDANT_1,CLAIMANT_1). A defendant who is a litigant in person gets a solicitor, who then acknowledges and
     // responds to the claim; a represented party moves to a solicitor of another organisation, who runs their later
     // steps. See noticeOfChangeSpecs.ts.
-    noticeOfChangeSetting: scenarioEnv.NOTICE_OF_CHANGE,
+    noticeOfChangeSetting: read.get('NOTICE_OF_CHANGE'),
     // The step the notices of change are given after (NOTICE_OF_CHANGE_AFTER, default NOTIFY_CLAIM_DETAILS), such as
     // RESPOND_TO_DEFENCE to change solicitors once the claim reaches JUDICIAL_REFERRAL
-    noticeOfChangeAfter: scenarioEnv.NOTICE_OF_CHANGE_AFTER ?? 'NOTIFY_CLAIM_DETAILS',
+    noticeOfChangeAfter: read.get('NOTICE_OF_CHANGE_AFTER'),
     noticeOfChangeFirstStep: 'NOTIFY_CLAIM_DETAILS',
     // A general application the claimant's solicitor makes (GENERAL_APPLICATION: its types, such as STAY_THE_CLAIM or
     // EXTEND_TIME,STAY_THE_CLAIM), with notice, after the GENERAL_APPLICATION_AFTER step (default RESPOND_TO_DEFENCE).
     // See generalApplicationSteps.ts.
-    generalApplicationSetting: scenarioEnv.GENERAL_APPLICATION,
-    generalApplicationAfter: scenarioEnv.GENERAL_APPLICATION_AFTER ?? 'RESPOND_TO_DEFENCE',
+    generalApplicationSetting: read.get('GENERAL_APPLICATION'),
+    generalApplicationAfter: read.get('GENERAL_APPLICATION_AFTER'),
     // Whether the other side has agreed to it (GENERAL_APPLICATION_AGREED, default No) and, when not, whether it is made
     // with notice to them (GENERAL_APPLICATION_WITH_NOTICE, default Yes)
-    generalApplicationAgreed: yes(scenarioEnv.GENERAL_APPLICATION_AGREED),
-    generalApplicationWithNotice: scenarioEnv.GENERAL_APPLICATION_WITH_NOTICE === 'No' ? yesNo.NO : yesNo.YES,
+    generalApplicationAgreed: read.yes('GENERAL_APPLICATION_AGREED'),
+    generalApplicationWithNotice: read.get('GENERAL_APPLICATION_WITH_NOTICE') === 'No' ? yesNo.NO : yesNo.YES,
     // Whether it is urgent (GENERAL_APPLICATION_URGENT, default No): an urgent application goes straight to the court
     // once its fee is paid, without the other side's response
-    generalApplicationUrgent: yes(scenarioEnv.GENERAL_APPLICATION_URGENT),
+    generalApplicationUrgent: read.yes('GENERAL_APPLICATION_URGENT'),
     // Whose solicitor makes it (GENERAL_APPLICATION_BY: claimant, defendant1 or defendant2, default claimant); the other
     // parties' solicitors respond
-    generalApplicationBy: scenarioEnv.GENERAL_APPLICATION_BY ?? 'claimant',
+    generalApplicationBy: read.get('GENERAL_APPLICATION_BY'),
     // Whether a legal adviser given the decision refers it to a judge, who then decides it
     // (GENERAL_APPLICATION_REFER_TO_JUDGE, default No)
-    generalApplicationReferToJudge: yes(scenarioEnv.GENERAL_APPLICATION_REFER_TO_JUDGE),
+    generalApplicationReferToJudge: read.yes('GENERAL_APPLICATION_REFER_TO_JUDGE'),
     // For an application made without notice, whether the judge or legal adviser first sends it to the other side, so
     // the applicant pays the extra fee and the other side responds before it is decided
     // (GENERAL_APPLICATION_SEND_TO_OTHER_PARTY, default No; needs GENERAL_APPLICATION_WITH_NOTICE=No)
-    generalApplicationSendToOtherParty: yes(scenarioEnv.GENERAL_APPLICATION_SEND_TO_OTHER_PARTY),
+    generalApplicationSendToOtherParty: read.yes('GENERAL_APPLICATION_SEND_TO_OTHER_PARTY'),
     // What the judge or legal adviser decides (GENERAL_APPLICATION_DECISION: APPROVE, the default, REQUEST_MORE_INFO,
     // which the applicant's solicitor then answers, or LIST_FOR_HEARING, which court staff then schedule)
-    generalApplicationDecision: scenarioEnv.GENERAL_APPLICATION_DECISION ?? 'APPROVE',
+    generalApplicationDecision: read.get('GENERAL_APPLICATION_DECISION'),
     // Whose solicitors raise a query, which a CTSC admin answers (QUERY_MANAGEMENT: a list such as claimant,defendant1),
     // after the QUERY_MANAGEMENT_AFTER step (default RESPOND_TO_DEFENCE, once every solicitor has the case). Whether the
     // queries are about a hearing (QUERY_MANAGEMENT_HEARING_RELATED, default No), and whether each solicitor then asks a
     // follow-up question, which is answered too (QUERY_MANAGEMENT_FOLLOW_UP, default No). See queryManagementSteps.ts.
-    queryManagementSetting: scenarioEnv.QUERY_MANAGEMENT,
-    queryManagementAfter: scenarioEnv.QUERY_MANAGEMENT_AFTER ?? 'RESPOND_TO_DEFENCE',
-    queryManagementHearingRelated: yes(scenarioEnv.QUERY_MANAGEMENT_HEARING_RELATED),
-    queryManagementFollowUp: yes(scenarioEnv.QUERY_MANAGEMENT_FOLLOW_UP),
+    queryManagementSetting: read.get('QUERY_MANAGEMENT'),
+    queryManagementAfter: read.get('QUERY_MANAGEMENT_AFTER'),
+    queryManagementHearingRelated: read.yes('QUERY_MANAGEMENT_HEARING_RELATED'),
+    queryManagementFollowUp: read.yes('QUERY_MANAGEMENT_FOLLOW_UP'),
     // A refund of an overpayment of the claim fee (REFUND: what the approver does with it, APPROVE, REJECT or RETURN,
     // which returns it to the claimant's solicitor to change and send again before it is approved), after the
     // REFUND_AFTER step (default CREATE_CLAIM). See refundSteps.ts.
-    refundSetting: scenarioEnv.REFUND,
-    refundAfter: scenarioEnv.REFUND_AFTER ?? 'CREATE_CLAIM',
+    refundSetting: read.get('REFUND'),
+    refundAfter: read.get('REFUND_AFTER'),
     defendantSolicitorAssignedAfter: { 1: 'ACKNOWLEDGE_CLAIM_DEFENDANT1', 2: 'ACKNOWLEDGE_CLAIM_DEFENDANT2' } as Record<1 | 2, string>,
     defendantsToNotifyClaim,
     defendantsToNotifyClaimDetails,
@@ -364,65 +270,18 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
 
     // Checks the settings make sense together, before the journey starts
     validate() {
-      expect(
-        [undefined, ...Object.values(SettleClaim)],
-        `Invalid SETTLE_CLAIM value: ${scenarioEnv.SETTLE_CLAIM}. It must be one of ${Object.values(SettleClaim).join(', ')}.`,
-      ).toContain(scenarioEnv.SETTLE_CLAIM);
-      expect(
-        [undefined, ...Object.values(DiscontinueClaim)],
-        `Invalid DISCONTINUE_CLAIM value: ${scenarioEnv.DISCONTINUE_CLAIM}. It must be one of ${Object.values(DiscontinueClaim).join(', ')}.`,
-      ).toContain(scenarioEnv.DISCONTINUE_CLAIM);
-      expect(
-        [undefined, 'Yes', 'No'],
-        `Invalid DEFAULT_JUDGMENT value: ${scenarioEnv.DEFAULT_JUDGMENT}. It must be Yes or No.`,
-      ).toContain(scenarioEnv.DEFAULT_JUDGMENT);
+      // Every value is one its setting takes, and every name the scenario sets is a setting of this journey
+      const settingErrors = settingProblems('UNSPECIFIED', scenarioEnv, scenarioSettings);
+      expect(settingErrors, `Invalid settings:\n  - ${settingErrors.join('\n  - ')}`).toEqual([]);
       expect(
         scenarioEnv.SETTLE_CLAIM === undefined || scenarioEnv.DISCONTINUE_CLAIM === undefined,
         'SETTLE_CLAIM and DISCONTINUE_CLAIM cannot both be set: a claim is either settled or discontinued.',
       ).toBeTruthy();
       expect(
-        [undefined, ...Object.values(CaseProceedsInCaseman).filter((reason) => reason !== CaseProceedsInCaseman.DEFENDANT_DOES_NOT_CONSENT)],
-        `Invalid CASE_PROCEEDS_IN_CASEMAN value: ${scenarioEnv.CASE_PROCEEDS_IN_CASEMAN}. It must be one of ${Object.values(CaseProceedsInCaseman).filter((reason) => reason !== CaseProceedsInCaseman.DEFENDANT_DOES_NOT_CONSENT).join(', ')} (DEFENDANT_DOES_NOT_CONSENT is only offered on a specified claim).`,
-      ).toContain(scenarioEnv.CASE_PROCEEDS_IN_CASEMAN);
-      expect(
-        [undefined, ...Object.values(NotSuitableSdo)],
-        `Invalid NOT_SUITABLE_SDO value: ${scenarioEnv.NOT_SUITABLE_SDO}. It must be one of ${Object.values(NotSuitableSdo).join(', ')}.`,
-      ).toContain(scenarioEnv.NOT_SUITABLE_SDO);
-      expect(
-        [undefined, 'Yes', 'No'],
-        `Invalid AMEND_PARTY_DETAILS value: ${scenarioEnv.AMEND_PARTY_DETAILS}. It must be Yes or No.`,
-      ).toContain(scenarioEnv.AMEND_PARTY_DETAILS);
-      expect(
-        [undefined, 'Yes', 'No'],
-        `Invalid ADD_OR_AMEND_CLAIM_DOCUMENTS value: ${scenarioEnv.ADD_OR_AMEND_CLAIM_DOCUMENTS}. It must be Yes or No.`,
-      ).toContain(scenarioEnv.ADD_OR_AMEND_CLAIM_DOCUMENTS);
-      expect(
-        [undefined, 'Yes', 'No'],
-        `Invalid DISMISS_CASE value: ${scenarioEnv.DISMISS_CASE}. It must be Yes or No.`,
-      ).toContain(scenarioEnv.DISMISS_CASE);
-      expect(
-        [undefined, 'Yes', 'No'],
-        `Invalid SEND_AND_REPLY value: ${scenarioEnv.SEND_AND_REPLY}. It must be Yes or No.`,
-      ).toContain(scenarioEnv.SEND_AND_REPLY);
-      expect(
-        [undefined, 'Yes', 'No'],
-        `Invalid HEARING_NOTICE_SCHEDULER value: ${scenarioEnv.HEARING_NOTICE_SCHEDULER}. It must be Yes or No.`,
-      ).toContain(scenarioEnv.HEARING_NOTICE_SCHEDULER);
-      expect(
         [scenarioEnv.SETTLE_CLAIM, scenarioEnv.DISCONTINUE_CLAIM, scenarioEnv.CASE_PROCEEDS_IN_CASEMAN, scenarioEnv.DISMISS_CASE === 'Yes' ? 'Yes' : undefined]
           .filter((setting) => setting !== undefined).length <= 1,
         'Only one of SETTLE_CLAIM, DISCONTINUE_CLAIM, CASE_PROCEEDS_IN_CASEMAN and DISMISS_CASE=Yes can be set: each one closes the claim.',
       ).toBeTruthy();
-      expect(
-        Object.values(unspecClaimTypes),
-        `Invalid TYPE_OF_CLAIM value: ${typeOfClaim}. It must be one of ${Object.values(unspecClaimTypes).join(', ')}.`,
-      ).toContain(typeOfClaim);
-      if (typeOfClaim === unspecClaimTypes.PERSONAL_INJURY) {
-        expect(
-          Object.values(personalInjuryTypes),
-          `Invalid SUB_TYPE value: ${typeOfClaimSubType}. It must be one of ${Object.values(personalInjuryTypes).join(', ')}.`,
-        ).toContain(typeOfClaimSubType);
-      }
 
       if (noiseInducedHearingLoss) {
         expect(
@@ -431,15 +290,6 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
         ).toEqual(claimTrack.FAST);
       }
 
-      expect(noOfExperts, `Invalid EXPERTS value: ${noOfExperts}. It must be an integer.`).toMatch(/^\d+$/);
-      expect(Number(noOfExperts), `Invalid EXPERTS value: ${noOfExperts}. It must be >= 0.`).toBeGreaterThanOrEqual(0);
-      expect(noOfWitnesses, `Invalid WITNESSES value: ${noOfWitnesses}. It must be an integer.`).toMatch(/^\d+$/);
-      expect(Number(noOfWitnesses), `Invalid WITNESSES value: ${noOfWitnesses}. It must be >= 0.`).toBeGreaterThanOrEqual(0);
-
-      expect(
-        Object.values(FinalOrder),
-        `Invalid FINAL_ORDER value: ${finalOrder}. It must be one of ${Object.values(FinalOrder).join(', ')}.`,
-      ).toContain(finalOrder);
       expect(
         finalOrdersForTrack[track],
         `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`,

@@ -379,6 +379,7 @@ export function selectedScenarios(): Scenario[] {
       name: scenario.name,
       tags: [`@${scenario.name}`, '@specified', ...scenario.tags],
       env: { ...process.env, ...scenarioApiUntil(scenario), ...scenario.env },
+      settings: Object.keys(scenario.env),
     }));
   }
   return [{ name: `SPEC_${process.env.CLAIM_TYPE ?? '1v1'}`, tags: ['@specified'], env: process.env }];

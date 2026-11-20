@@ -11,7 +11,7 @@ import { specifiedSteps } from '../journey/specified/specifiedSteps.ts';
 test.describe.configure({ mode: 'parallel' });
 for (const scenario of selectedScenarios()) {
   test.describe(scenario.name, { tag: scenario.tags }, () => {
-    const config = specifiedConfig(scenario.env);
+    const config = specifiedConfig(scenario.env, scenario.settings);
     const context = new JourneyContext(
       scenario.env.STOP_AT_STATE as caseStates | undefined,
       scenario.env.API_UNTIL as caseStates | undefined,

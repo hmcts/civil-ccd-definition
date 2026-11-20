@@ -6,14 +6,15 @@ Every path in this guide is relative to the repository root.
 
 ## 1. How the framework fits together
 
-A new event touches six places. You add something to each of them (the shared answers only where needed).
+A new event touches seven places. You add something to each of them (the shared answers only where needed).
 
 | Layer | Where | What it does |
 | --- | --- | --- |
 | UI event class | `playwright-tests/e2e/flows/events/ui/<Event>.ts` | Picks the event from Next step in XUI, fills in its pages and submits it. Listed in `flows/events/ui/index.ts`. |
 | API event class | `playwright-tests/e2e/flows/events/api/<Event>.ts` | Submits the same event with the same answers through the CCD API, with no browser. Listed in `flows/events/api/index.ts`. |
 | Shared answers (optional) | `playwright-tests/e2e/flows/events/shared_api_ui/<event>Specs.ts` | Answers that both versions use, so the UI and API versions can't drift apart. |
-| Journey config | `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Config.ts` | Reads the setting (environment variable) that turns the step on, and checks its value. |
+| Setting | `playwright-tests/e2e/journey/settings.ts` | Declares the setting (environment variable) that turns the step on: its values, default and what it does. Its value is checked before the journey starts. |
+| Journey config | `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Config.ts` | Reads the setting for the journey's steps. |
 | Journey step | `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Steps.ts` | Says where the event runs in the journey, as which user, when it's skipped, and what it checks afterwards. |
 | Scenario | `playwright-tests/scenarios/<journey>Scenarios.ts` | A named set of settings that runs the step in the PR, master or nightly pipeline. |
 
@@ -180,28 +181,39 @@ export function messageToSend(): MessageToSend {
 
 `AMEND_PARTY_DETAILS` only needs two email addresses, so it passes them straight in and has no shared file.
 
-## 6. Add the setting to the journey config
+## 6. Add the setting
 
-Each optional step is turned on by a setting. Add it in the config for every journey the event belongs to: `playwright-tests/e2e/journey/specified/specifiedConfig.ts` and/or `playwright-tests/e2e/journey/unspecified/unspecifiedConfig.ts`.
-
-First, read the setting, with a comment saying what it does and its default:
+Each optional step is turned on by a setting. Every setting is declared once, in `playwright-tests/e2e/journey/settings.ts`, with the values it takes, its default and what it does in each journey that reads it. Add an entry there, with a note for every journey the event belongs to:
 
 ```typescript
-    // Whether the hearing centre admin changes the legal representatives' email addresses with "Amend party details" once
-    // the defendants' solicitors are on the claim (AMEND_PARTY_DETAILS=Yes, default No)
-    amendPartyDetails: yes(scenarioEnv.AMEND_PARTY_DETAILS),
+  AMEND_PARTY_DETAILS: {
+    values: yesNoValues,
+    default: 'No',
+    notes: {
+      SPECIFIED: 'Optional step: once the defendants\' solicitors are assigned, the hearing centre admin changes the legal representatives\' email addresses with "Amend party details". Cannot be used with DEFAULT_JUDGMENT. Has an API version.',
+      UNSPECIFIED: 'Optional event: once Notify claim details has run, the hearing centre admin changes ...',
+    },
+  },
 ```
 
-Then check its value, next to the other checks in the same file, so a typo fails the run straight away rather than quietly leaving the step out:
+What each part is for:
+
+| Property | Meaning |
+| --- | --- |
+| `values` | The values the setting takes: `yesNoValues` for Yes/No, or `Object.values(...)` of an enum in `playwright-tests/enums` (for example `CASE_PROCEEDS_IN_CASEMAN`). It can differ by journey: `{ SPECIFIED: [...], UNSPECIFIED: [...] }`. |
+| `valuesText` and `check` | For a setting that is not one of a list (a number, a list of parties, a step name): what it takes, for the guides, and a function that says why a value is not valid. Leave out `check` where the code that reads the setting already checks it, as for `CASE_FLAGS`. |
+| `default` | Its value when it is not set. Leave it out for a setting that is off when not set. It can differ by journey, as `NOTICE_OF_CHANGE_AFTER`'s does. |
+| `notes` | What it does in each journey, as the RUNNING guides say. The setting is only for the journeys it has a note for. |
+
+Then read it in the config for every journey the event belongs to, `playwright-tests/e2e/journey/specified/specifiedConfig.ts` and/or `playwright-tests/e2e/journey/unspecified/unspecifiedConfig.ts`, through `read`, which gives the default when the setting is not set:
 
 ```typescript
-      expect(
-        [undefined, 'Yes', 'No'],
-        `Invalid AMEND_PARTY_DETAILS value: ${scenarioEnv.AMEND_PARTY_DETAILS}. It must be Yes or No.`,
-      ).toContain(scenarioEnv.AMEND_PARTY_DETAILS);
+    amendPartyDetails: read.yes('AMEND_PARTY_DETAILS'),
 ```
 
-For a setting with a list of values (for example `CASE_PROCEEDS_IN_CASEMAN`), add an enum in `playwright-tests/enums` and check against `Object.values(...)` of it.
+Use `read.yes(...)` for a Yes/No setting and `read.get(...)` for any other, cast to its enum (`read.get('SETTLE_CLAIM') as SettleClaim | undefined`).
+
+You don't need to check the value. Before the journey starts, each config's `validate()` checks every setting against the registry, so a value the setting doesn't take (`AMEND_PARTY_DETAILS=yes`) fails the run straight away, with the values it does take. A scenario in `playwright-tests/scenarios` that sets a name that is not a setting, or one only the other journey reads, fails too. Only checks on settings together (for example `SETTLE_CLAIM` and `DISCONTINUE_CLAIM` both set) are still written in `validate()` or in a step's `invalidIf` (see 7.3 and 7.4).
 
 ## 7. Add the journey step
 
@@ -504,7 +516,7 @@ Each journey then spreads it into its list, passing its own values. From `specif
 
 ### 7.8 Add the step to both journeys
 
-An event that exists on both specified and unspecified claims needs its step in both `specifiedSteps.ts` and `unspecifiedSteps.ts`, and its setting in both config files (section 6). The two journeys differ, so check each one:
+An event that exists on both specified and unspecified claims needs its step in both `specifiedSteps.ts` and `unspecifiedSteps.ts`, and its setting read in both config files, with a note for each journey in `settings.ts` (section 6). The two journeys differ, so check each one:
 
 - **Where the step goes.** The steps around it differ. For example, an unspecified claim has Notify claim and Notify claim details steps that a specified claim doesn't.
 - **The skip conditions.** Each file has its own shared conditions, and their names differ. `noDefendant1Solicitor` and `noJudicialReferral` are only in `specifiedSteps.ts`; `unspecifiedSteps.ts` has `noClaimantResponse`, `offlineAtNotify`, `noSeparateDefendant2Solicitor` and others. `noCaseProgression`, `settleableStates`, `closingProblems` and `defaultJudgmentProblems` are in both. Look at the top of `journeySteps(...)` in each file before writing `skipIf`.
@@ -582,7 +594,7 @@ Keep PR scenarios few and quick: PR previews have fewer resources than AAT. Most
 
 Update the documents that describe the framework, in the same commit:
 
-- `playwright-tests/RUNNING_SPECIFIED_TESTS.md` and/or `RUNNING_UNSPECIFIED_TESTS.md`: add the step to the list of steps in section 2 (in the order it runs), and the setting to the claim parameters table. Say whether it has an API version, and which settings it can't be used with.
+- `playwright-tests/RUNNING_SPECIFIED_TESTS.md` and/or `RUNNING_UNSPECIFIED_TESTS.md`: add the step to the list of steps in section 2 (in the order it runs), and the setting to the claim parameters table, with the same text as its note in `e2e/journey/settings.ts`. Say whether it has an API version, and which settings it can't be used with.
 - The matching `.docx` guides, regenerated from the `.md` files.
 - `playwright-tests/MISSING_EVENTS.md`: move the event from the Events tables to "Done since", with which scenarios passed on AAT and when.
 
@@ -599,7 +611,7 @@ The row added to the claim parameters table for `AMEND_PARTY_DETAILS`:
 - [ ] API class in `flows/events/api`, answering the same pages the same way
 - [ ] Both classes added to the `index.ts` in their folder
 - [ ] Shared answers in `flows/events/shared_api_ui` if there are more than a few
-- [ ] Setting read and checked in each journey's config
+- [ ] Setting declared in `e2e/journey/settings.ts`, with a note for each journey, and read in each journey's config
 - [ ] Step added in the right place in each journey, with `skipIf`, and `invalidIf` or `closesClaim` where needed
 - [ ] Step checks the state, and the saved case data where the event saves something
 - [ ] New case states added to `enums/caseStates.ts`

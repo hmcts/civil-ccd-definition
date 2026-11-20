@@ -17,6 +17,9 @@ export interface Scenario {
   env: Record<string, string | undefined>;
   // Always runs every step in the UI, even when the run sets SCENARIO_API_UNTIL
   ui?: boolean;
+  // The setting names the scenario itself sets (its env above, before the command line's env vars are added), which the
+  // journey checks are its settings (see e2e/journey/settings.ts). Only set on the scenarios selectedScenarios gives.
+  settings?: string[];
 }
 
 // SCENARIO_API_UNTIL=<state> gives every scenario that does not set its own API_UNTIL, and is not marked ui, that
@@ -476,6 +479,7 @@ export function selectedScenarios(): Scenario[] {
       name: scenario.name,
       tags: [`@${scenario.name}`, '@unspecified', ...scenario.tags],
       env: { ...process.env, ...scenarioApiUntil(scenario), ...scenario.env },
+      settings: Object.keys(scenario.env),
     }));
   }
   return [{ name: `UNSPEC_${process.env.CLAIM_TYPE ?? '1v1'}`, tags: ['@unspecified'], env: process.env }];
