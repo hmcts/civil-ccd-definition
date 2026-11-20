@@ -556,7 +556,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^26.0.0":
   version: 26.6.6
   resolution: "@types/node@npm:26.6.6"
   dependencies:
@@ -571,15 +571,6 @@ __metadata:
   dependencies:
     undici-types: "npm:~6.21.0"
   checksum: 10/a223a73e00e948b751b00144523674ecc73e7a3f14f48a0f3a6fca40745ff548a8b0ff5baca090d45ae8b61481cc56c1158db4df312970baeb6fc1b81fc511a1
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^24.1.0":
-  version: 24.19.2
-  resolution: "@types/node@npm:24.19.2"
-  dependencies:
-    undici-types: "npm:>=7.24.0 <7.24.7"
-  checksum: 10/5bc31df093f2866db0a2f9df0a1e99c2a46c3154ca2dc62ee14bde7af216d6361e4737e1023880921007ccb326b8559980e239e18a6fa927cda507da9383225c
   languageName: node
   linkType: hard
 
@@ -988,14 +979,14 @@ __metadata:
   linkType: hard
 
 "allure-codeceptjs@npm:^3.4.2":
-  version: 3.14.0
-  resolution: "allure-codeceptjs@npm:3.14.0"
+  version: 3.15.0
+  resolution: "allure-codeceptjs@npm:3.15.0"
   dependencies:
-    allure-js-commons: "npm:3.14.0"
-    allure-mocha: "npm:3.14.0"
+    allure-js-commons: "npm:3.15.0"
+    allure-mocha: "npm:3.15.0"
   peerDependencies:
     codeceptjs: ">=2.3.6"
-  checksum: 10/27b75f479bfb73c0255237142a5f09fc8d09bc0695d4a6ec32f634a54c7d6b200e0e1b1daca12cecf83e545285ab93d25ee8d3350e382c82538beebf736a2c3c
+  checksum: 10/a568c21e44db7cdd2c799f71c4dd3a35ad9dc22651ba3e883f85572fb62e41eafc989468fff31bbd99a6a7ea98860a9d705245fbba7bd729de5164bdb6b843ab
   languageName: node
   linkType: hard
 
@@ -1019,28 +1010,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"allure-js-commons@npm:3.14.0, allure-js-commons@npm:^3.4.2":
-  version: 3.14.0
-  resolution: "allure-js-commons@npm:3.14.0"
+"allure-js-commons@npm:3.15.0, allure-js-commons@npm:^3.4.2":
+  version: 3.15.0
+  resolution: "allure-js-commons@npm:3.15.0"
   dependencies:
     md5: "npm:^2.3.0"
   peerDependencies:
-    allure-playwright: 3.14.0
+    allure-playwright: 3.15.0
   peerDependenciesMeta:
     allure-playwright:
       optional: true
-  checksum: 10/5728fabda388b2fff6107c45193f3b0f42053b81b1f90937aac9abbe387e4da84a69139c2d94e42c044d8d6159fec51a7e160248c7042952e1bb7c9d1cd3ce1d
+  checksum: 10/1069933c279703c0e2c7ef3af4873956f1e4945f204e9173999c50de6962678579b4c55aa3b5d6bf32691686ddbcd56329ce3f46636814b3d36f1a8fa294198e
   languageName: node
   linkType: hard
 
-"allure-mocha@npm:3.14.0":
-  version: 3.14.0
-  resolution: "allure-mocha@npm:3.14.0"
+"allure-mocha@npm:3.15.0":
+  version: 3.15.0
+  resolution: "allure-mocha@npm:3.15.0"
   dependencies:
-    allure-js-commons: "npm:3.14.0"
+    allure-js-commons: "npm:3.15.0"
   peerDependencies:
     mocha: ">=6.2.0"
-  checksum: 10/eb9b345f1f1b57bc1d37e7a998eef55b4cbc4658475ed1ef7c0583528b60bb68cc073aeddf39a55432d94afcd0994c04c0b665e197065bd692282d45e30c0304
+  checksum: 10/3cd1f47f1e39734f677293867f61c3150fae1882864b517ec9fdc4acf5f9944e841f856c50bc5371b1f0b039ed84c8df2e4abd313b215c6bae4db6a6775be826
   languageName: node
   linkType: hard
 
@@ -1587,7 +1578,7 @@ __metadata:
     "@eslint/js": "npm:^10.0.0"
     "@faker-js/faker": "npm:^10.0.0"
     "@playwright/test": "npm:1.65.1"
-    "@types/node": "npm:^24.1.0"
+    "@types/node": "npm:^26.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
     allure-codeceptjs: "npm:^3.4.2"
@@ -1620,7 +1611,7 @@ __metadata:
     proper-lockfile: "npm:^4.1.2"
     totp-generator: "npm:^2.0.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:5.9.3"
+    typescript: "npm:6.0.3"
     typescript-eslint: "npm:8.72.2"
     uuid: "npm:^14.0.0"
     webdriverio: "npm:^10.0.0"
@@ -4062,12 +4053,12 @@ __metadata:
   linkType: hard
 
 "minimatch@npm:^11.0.0":
-  version: 11.0.8
-  resolution: "minimatch@npm:11.0.8"
+  version: 11.0.9
+  resolution: "minimatch@npm:11.0.9"
   dependencies:
     "@isaacs/nonrecursive-glob-match": "npm:^1.1.0"
     brace-expansion: "npm:^5.0.12"
-  checksum: 10/c72623c8c38bf28a8c01634fbceab5bb3be1b68af5bc21cd32bc41968cd356bed570a88feb4c7da3a70322604d5d9afc9d8a96a799aeecafb7d2784ee3d7f2d4
+  checksum: 10/5a17bd87033371c50dbabead4b461d3a40ffedb496939a2da14f67f1381813db959ec0d32716cfe4eaa83f3ae945cdee2343398be20f7d195799d8b12981565d
   languageName: node
   linkType: hard
 
@@ -5752,7 +5743,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.9.3, typescript@npm:^5.1.3":
+"typescript@npm:6.0.3":
+  version: 6.0.3
+  resolution: "typescript@npm:6.0.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10/0ef2357a4cffd916b52b683a021cdab0f81eea4e9aa35f2d254581c9a5106da02224e3392e1b0ed42b7a48f80c966e5f52b8e1a27941fa0523c1705a9c2e0330
+  languageName: node
+  linkType: hard
+
+"typescript@npm:^5.1.3":
   version: 5.9.3
   resolution: "typescript@npm:5.9.3"
   bin:
@@ -5762,20 +5763,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.1.3#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>":
+  version: 6.0.3
+  resolution: "typescript@patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10/22b67a18dafedf9b1468b64ca20d9aa02ea61d449b65413d8aa6552aeb63f52ef369e86beb25b6b4c91a803d9726ee5c196f391a9b64201263263410a4223ee6
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.1.3#optional!builtin<compat/typescript>":
   version: 5.9.3
   resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/696e1b017bc2635f4e0c94eb4435357701008e2f272f553d06e35b494b8ddc60aa221145e286c28ace0c89ee32827a28c2040e3a69bdc108b1a5dc8fb40b72e3
-  languageName: node
-  linkType: hard
-
-"undici-types@npm:>=7.24.0 <7.24.7":
-  version: 7.24.6
-  resolution: "undici-types@npm:7.24.6"
-  checksum: 10/defc9538b952e3c15b8526596c591f7c1f0c7605ad27a2b7feddbea7ef2e3003f3eda2cdb051a3cb1a2185e3893100fd9cb925c799db99d48131ea63b5233d10
   languageName: node
   linkType: hard
 
