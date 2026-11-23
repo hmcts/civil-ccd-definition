@@ -110,9 +110,6 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     dqAnswers.unavailableDatesRequired,
   ] as const;
 
-  // Whether the claimant's solicitor has uploaded the particulars of claim with "Add or amend claim documents", which
-  // Notify claim details then shows instead of asking for them
-  let particularsOfClaimUploaded = false;
 
   // Default judgment (DEFAULT_JUDGMENT=Yes), and the steps it replaces: once judgment is asked for, the defendants'
   // steps and everything after them are skipped, apart from settling or discontinuing the claim
@@ -236,25 +233,6 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     },
 
 
-    // The claimant's solicitor uploads the particulars of claim with "Add or amend claim documents" once the claim is
-    // issued, which Notify claim details then serves. Only run with ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes.
-    {
-      name: 'ADD_OR_AMEND_CLAIM_DOCUMENTS',
-      title: 'Claimant Solicitor uploads the particulars of claim.',
-      user: 'claimantSolicitor',
-      skipIf: [[c.addOrAmendClaimDocuments !== yesNo.YES, 'Adding claim documents is switched off (set ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes to run it)']],
-      run: async ({ page, storageState }) => {
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.AddOrAmendClaimDocuments().submit(ctx.caseId),
-          ui: () => new ui.AddOrAmendClaimDocuments(page).submit(),
-        });
-        const particulars = (await ctx.testingEndpointHelper.getCaseData(ctx.caseId)).servedDocumentFiles?.particularsOfClaimDocument ?? [];
-        expect(particulars, 'The particulars of claim were not saved').toHaveLength(1);
-        particularsOfClaimUploaded = true;
-        await ctx.assertCaseState(caseStates.CASE_ISSUED);
-      },
-    },
-
     {
       name: 'NOTIFY_CLAIM',
       title: 'Claimant Solicitor undertakes event: Notify claim ',
@@ -282,7 +260,9 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       run: async ({ page, storageState }) => {
         await ctx.submitEvent(page, storageState, {
           api: () => new api.NotifyClaimDetails().notify(c, ctx.caseId),
-          ui: () => new ui.NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails, particularsOfClaimUploaded),
+          // Where the claimant's solicitor uploaded the particulars of claim (ADD_OR_AMEND_CLAIM_DOCUMENTS, an event file),
+          // Notify claim details shows them instead of asking for them
+          ui: () => new ui.NotifyClaimDetails(page).notify(c.claimType, c.defendantsToNotifyClaimDetails, c.addOrAmendClaimDocuments === yesNo.YES),
           businessProcess: 'NOTIFY_DEFENDANT_OF_CLAIM_DETAILS',
         });
         if (c.claimOfflineAfterNotifyClaimDetails) {

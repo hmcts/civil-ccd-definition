@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+import type { Fact } from './claimFacts.ts';
 import type { EventDefinition } from './event.ts';
 import { eventDefinitions } from './eventFiles.ts';
 import { JourneyContext, JourneyStep } from './journeyRunner.ts';
@@ -18,7 +19,13 @@ function inJourney(definition: EventDefinition<unknown>, c: JourneyConfig): bool
 // Why the step is not run, known before the journey starts: the facts it needs, then the setting being off
 function skipReasons(definition: EventDefinition<unknown>, c: JourneyConfig, on: boolean): Array<[boolean, string]> {
   return [
-    ...(definition.onlyWhen ?? []).flatMap((fact) => c.facts[fact]),
+    ...(definition.onlyWhen ?? []).flatMap((name) => {
+      const fact = (c.facts as unknown as Record<string, Fact | undefined>)[name];
+      if (fact === undefined) {
+        throw new Error(`playwright-tests/events: ${definition.id} needs ${name}, which the ${c.caseType.toLowerCase()} journey has no fact for`);
+      }
+      return fact;
+    }),
     [!on, `${definition.id} is switched off (set ${definition.id}=Yes to run it)`],
   ];
 }

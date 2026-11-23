@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import caseStates from '../../enums/caseStates.ts';
 import { SessionUserKey } from '../../helpers/SessionHelper.ts';
-import type { ClaimFacts } from './claimFacts.ts';
+import type { SpecifiedClaimFacts, UnspecifiedClaimFacts } from './claimFacts.ts';
 import type { Journey } from './settings.ts';
 import type { JourneyConfig } from './steps/journeyConfig.ts';
 
@@ -25,8 +25,9 @@ export interface EventDefinition<Answers = undefined> {
   // For an event that closes the claim: the states it is offered in. It goes at the end of both journeys, and runs even
   // where STOP_AT_STATE or STOP_AFTER_TEST stopped the journey.
   closesClaim?: { offeredIn: caseStates[] };
-  // Facts about the claim it needs (claimFacts.ts), such as defendant1HasSolicitor
-  onlyWhen?: Array<keyof ClaimFacts>;
+  // Facts about the claim it needs (claimFacts.ts), such as defendant1HasSolicitor. A fact only one journey has (such as
+  // reachesMediation) can only be used by an event in that journey.
+  onlyWhen?: Array<keyof SpecifiedClaimFacts | keyof UnspecifiedClaimFacts>;
   // What the user enters, worked out once each time the event runs, for ui, api and check to share
   answers?: (claim: JourneyConfig) => Answers;
   // Does the event in XUI with its UI class. The case page is open.

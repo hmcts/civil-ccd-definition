@@ -299,27 +299,9 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
 
     liftStay(c, ctx),
 
-    // A small claim the claimant's response took to mediation: court staff record that mediation settled it
-    // (MEDIATION_SUCCESSFUL=Yes), which stays the case, or that it did not, which takes it to JUDICIAL_REFERRAL for the
-    // judge's directions
-    {
-      name: 'MEDIATION_SUCCESSFUL',
-      title: 'Hearing Centre Admin records that mediation was successful.',
-      user: 'hearingCentreAdmin',
-      needs: [c.facts.reachesMediation],
-      skipIf: [
-        [c.mediationSuccessful !== yesNo.YES, 'Successful mediation is switched off (set MEDIATION_SUCCESSFUL=Yes to run it)'],
-      ],
-      run: async ({ page, storageState }) => {
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.MediationSuccessful().submit(ctx.caseId),
-          ui: () => new ui.MediationSuccessful(page).submit(),
-          businessProcess: 'MEDIATION_SUCCESSFUL',
-          expectState: caseStates.CASE_STAYED,
-        });
-      },
-    },
-
+    // A small claim the claimant's response took to mediation: court staff record that mediation did not settle it,
+    // which takes it to JUDICIAL_REFERRAL for the judge's directions. Where it settled (MEDIATION_SUCCESSFUL=Yes, an event
+    // file) this is skipped.
     {
       name: 'MEDIATION_UNSUCCESSFUL',
       title: 'Hearing Centre Admin records that mediation was unsuccessful.',

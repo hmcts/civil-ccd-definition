@@ -413,13 +413,6 @@ export const settings = {
       UNSPECIFIED: 'Optional events instead of the Standard Direction Order: the judge claims the directions task and follows its "Not Suitable for SDO" link (the only way users reach it). CHANGE_LOCATION sends the claim to another hearing centre, which the hearing centre admin transfers it to with "Transfer online case" (the first London court in a fixed list that is not its current one) before the order is made there; OTHER_REASONS takes it offline (PROCEEDS_IN_HERITAGE_SYSTEM) and every later event is skipped apart from those that close the claim. Needs the claim to reach CREATE_SDO (fast or small claims track, no default judgment). Has API versions.',
     },
   },
-  MEDIATION_SUCCESSFUL: {
-    values: yesNoValues,
-    default: 'No',
-    notes: {
-      SPECIFIED: 'Optional step: mediation settles a small claim, which stays the case (CASE_STAYED) and ends the journey, instead of mediation being unsuccessful.',
-    },
-  },
   UPLOAD_MEDIATION_DOCUMENTS: {
     values: yesNoValues,
     default: 'No',
@@ -438,13 +431,6 @@ export const settings = {
     default: ReconsiderationDecision.UPHOLD,
     notes: {
       SPECIFIED: 'What the judge decides on the request for reconsideration. Needs REQUEST_FOR_RECONSIDERATION.',
-    },
-  },
-  ADD_OR_AMEND_CLAIM_DOCUMENTS: {
-    values: yesNoValues,
-    default: 'No',
-    notes: {
-      UNSPECIFIED: 'Optional event: once the claim is issued, the claimant\'s solicitor uploads the particulars of claim with "Add or amend claim documents", which is only offered until the claim details are notified. The test checks they were saved. Notify claim details then serves them instead of asking for them again. Has an API version.',
     },
   },
   ADD_UNAVAILABLE_DATES: {
@@ -758,7 +744,6 @@ export const settingRules: SettingRule[] = [
   notWithDefaultJudgment(['UNSPECIFIED'], 'DEFENDANT_LITIGATION_FRIEND', 'DEFENDANT_LITIGATION_FRIEND=Yes'),
   notWithDefaultJudgment(bothJourneys, 'STAY_CASE', 'STAY_CASE=Yes'),
   notWithDefaultJudgment(bothJourneys, 'SEND_AND_REPLY', 'SEND_AND_REPLY=Yes'),
-  notWithDefaultJudgment(['SPECIFIED'], 'MEDIATION_SUCCESSFUL', 'MEDIATION_SUCCESSFUL=Yes'),
   notWithDefaultJudgment(['SPECIFIED'], 'REQUEST_FOR_RECONSIDERATION', 'REQUEST_FOR_RECONSIDERATION'),
   notWithDefaultJudgment(['SPECIFIED'], 'DISCONTINUE_CLAIM', 'DISCONTINUE_CLAIM',
     'default judgment leaves a specified claim in All_FINAL_ORDERS_ISSUED or JUDGMENT_REQUESTED, where it cannot be discontinued'),
