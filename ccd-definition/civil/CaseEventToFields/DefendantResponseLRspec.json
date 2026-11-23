@@ -1027,7 +1027,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "HowToAddTimeline",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" OR showConditionFlags CONTAINS \"RESPONDENT_2_PAID_LESS\" OR showConditionFlags CONTAINS \"RESPONDENT_1_PAID_LESS\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" OR showConditionFlags CONTAINS \"RESPONDENT_2_PAID_LESS\" OR showConditionFlags CONTAINS \"RESPONDENT_1_PAID_LESS\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-upload-timeline-type-flag"
   },
@@ -1149,7 +1149,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "MediationContactInformation",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "isRespondent1 = \"Yes\"",
     "RetainHiddenValue": "Y",
     "RetriesTimeoutURLMidEvent": 0
@@ -1177,7 +1177,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "MediationAvailability",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-mediation-unavailable-dates",
     "FieldShowCondition": "isRespondent1 = \"Yes\"",
     "ShowSummaryChangeOption": "Y",
@@ -1219,7 +1219,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"No\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"No\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_1_DISPUTES\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
@@ -1430,7 +1430,7 @@
     "PageID": "DeterminationWithoutHearing",
     "CaseEventFieldLabel": " ",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "isRespondent1 = \"Yes\" OR isApplicant1 = \"Yes\"",
     "PageLabel": "Determination without Hearing Questions"
   },
@@ -1454,7 +1454,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimExperts",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -1511,7 +1511,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimWitnesses",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -1597,7 +1597,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "Language",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "_Comments": "Mixing AND and OR conditions still doesn't work as it should, that's why track is != MULTI instead of (t = FAST OR t = SMALL)"
@@ -1713,7 +1713,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "SmaillClaimHearing",
     "CaseEventFieldLabel": "Hearing availability",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-unavailable-dates",
@@ -1762,7 +1762,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToCourtLocation",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "PageDisplayOrder": 51,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
@@ -1790,7 +1790,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1826,7 +1826,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "VulnerabilityQuestions",
     "CaseEventFieldLabel": "Vulnerability Questions",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
