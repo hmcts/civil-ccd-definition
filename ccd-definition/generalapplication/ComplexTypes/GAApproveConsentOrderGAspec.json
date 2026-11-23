@@ -5,7 +5,7 @@
     "ElementLabel": "Order",
     "HintText": "This is for the claim form",
     "FieldType": "TextArea",
-    "Max": 2000,
+    "Max": 4000,
     "SecurityClassification": "Public"
   },
   {

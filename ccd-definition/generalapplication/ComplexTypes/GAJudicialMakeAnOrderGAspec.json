@@ -47,7 +47,7 @@
     "ListElementCode": "orderText",
     "ElementLabel": "The court orders that:",
     "FieldType": "TextArea",
-    "Max": 2000,
+    "Max": 4000,
     "SecurityClassification": "Public",
     "FieldShowCondition": "makeAnOrder=\"APPROVE_OR_EDIT\" AND preTranslationGaDocumentType != \"*\""
 
