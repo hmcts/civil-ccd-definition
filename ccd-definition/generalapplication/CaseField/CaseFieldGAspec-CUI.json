@@ -201,5 +201,13 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "TextArea",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "GENERALAPPLICATION",
+    "ID": "notificationSummary",
+    "Label": "Summary",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

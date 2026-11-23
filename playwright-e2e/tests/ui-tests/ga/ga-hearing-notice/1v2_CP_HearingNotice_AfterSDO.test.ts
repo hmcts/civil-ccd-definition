@@ -1,7 +1,7 @@
 import config from '../../../../config/config';
 import { test } from '../../../../playwright-fixtures';
 import ClaimTrack from '../../../../constants/cases/claim-track';
-import ClaimType from "../../../../constants/cases/claim-type.ts";
+import ClaimType from '../../../../constants/cases/claim-type';
 
 test.describe(
   'After SDO 1v2 - GA CP - Hearing Notice document',
@@ -26,8 +26,14 @@ test.describe(
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
       await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
       await ClaimantSolicitorApiSteps.NotifyClaimDetails();
-      await DefendantSolicitor1ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
-      await DefendantSolicitor2ApiSteps.DefendantResponse({ claimTrack: ClaimTrack.FAST_CLAIM });
+      await DefendantSolicitor1ApiSteps.DefendantResponse({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
+      await DefendantSolicitor2ApiSteps.DefendantResponse({
+        claimType: ClaimType.ONE_VS_TWO_DIFF_SOL,
+        claimTrack: ClaimTrack.FAST_CLAIM,
+      });
       await ClaimantSolicitorApiSteps.RespondFastProceed1v2DS();
       await DefendantSolicitor2ApiSteps.InitiateGA();
       await ClaimantSolicitorGaApiSteps.MakePaymentForClaimIssued();

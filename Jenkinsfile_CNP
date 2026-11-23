@@ -15,13 +15,18 @@ if (env.BRANCH_NAME?.startsWith('PR-')) {
 }
 
 
-@Library("Infrastructure@2.13.4")
+@Library("Infrastructure@2.14.0")
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
 def civilServiceBpmnRef = "master"
+// The civil-service ref whose ccd-definition/SOURCE_OF_TRUTH decides where this build's CCD definitions come
+// from (bin/pull-ccd-definitions-from-source-of-truth.sh). It agrees with build.gradle's sharedCcdEnvironments:
+// master on master, the branch of the same name on demo, perftest and ithc, and on a PR the civilServicePr:N
+// PR or master.
+def civilServiceDefinitionsRef = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 def wiremockMappingsBranch = "master"
@@ -272,13 +277,6 @@ def checkForPrValuesLabel(branch_name, label) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values:" + label).contains("pr-values:" + label)
 }
 
-def createGithubRelease() {
-  sh """
-    set -e
-    ./bin/create-github-release.sh
-  """
-}
-
 def uploadDmnDiagrams(String env) {
   dir("${WORKSPACE}/bin") {
     tenantId = "civil"
@@ -395,6 +393,7 @@ withPipeline(type, product, component) {
     if (env.CIVIL_SERVICE_IMAGE.startsWith("pr-")) {
       civilServiceBpmnRef = env.CIVIL_SERVICE_IMAGE
     }
+    civilServiceDefinitionsRef = civilServiceBpmnRef
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.PLAYWRIGHT_FUNCTIONAL_TEST_RESULTS_DIR = 'civil-ccd-pr'
@@ -412,13 +411,16 @@ withPipeline(type, product, component) {
   }
   onDemo {
     env.ENVIRONMENT = "demo"
+    civilServiceDefinitionsRef = "demo"
   }
   onPerftest {
     env.ENVIRONMENT = "perftest"
+    civilServiceDefinitionsRef = "perftest"
   }
 
   onIthc {
     env.ENVIRONMENT = "ithc"
+    civilServiceDefinitionsRef = "ithc"
   }
 
   before('highleveldatasetup') {
@@ -428,6 +430,8 @@ withPipeline(type, product, component) {
       text: libraryResource('uk/gov/hmcts/gradle/init.gradle')
     // Pull shared scripts from civil-service early - needed by build and import scripts
     sh "./bin/pull-latest-civil-shared.sh ${getCivilServiceSharedBranch()}"
+    // Before the definitions are built. Leaves ccd-definition/ as it is while civil-ccd-definition is the source of truth.
+    sh "./bin/pull-ccd-definitions-from-source-of-truth.sh ${civilServiceDefinitionsRef}"
     yarnBuilder.yarn('setup')
     archiveCoreCaseDataDefinitions()
   }
@@ -498,6 +502,7 @@ withPipeline(type, product, component) {
       ./bin/shared/add-roles.sh
       ./bin/pull-latest-wiremock-mappings.sh ${wiremockMappingsBranch}
       ./bin/load-wiremock-mappings.sh
+      ./bin/pull-ccd-definitions-from-source-of-truth.sh ${civilServiceDefinitionsRef}
       ./bin/build-release-ccd-definition.sh staging
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-files.sh ${civilServiceBpmnRef}
@@ -521,6 +526,5 @@ withPipeline(type, product, component) {
   afterAlways('functionalTest:aat') {
     publishPlaywrightFunctionalReports(yarnBuilder)
     archivePlaywrightTestArtifacts()
-    createGithubRelease()
   }
 }
