@@ -66,10 +66,28 @@ function eventStep(definition: EventDefinition<unknown>, c: JourneyConfig, ctx: 
   return step;
 }
 
+// The events in the order they can be placed: one that comes after another event goes after that event, otherwise in
+// file name order
+function inPlacingOrder(definitions: Array<EventDefinition<unknown>>, c: JourneyConfig): Array<EventDefinition<unknown>> {
+  const ordered: Array<EventDefinition<unknown>> = [];
+  const waiting = [...definitions];
+  while (waiting.length > 0) {
+    const ready = waiting.findIndex((definition) => {
+      const after = definition.after?.[c.caseType];
+      return !waiting.some((other) => other !== definition && other.id === after);
+    });
+    if (ready === -1) {
+      throw new Error(`playwright-tests/events: ${waiting.map((definition) => definition.id).join(', ')} each come after another of them`);
+    }
+    ordered.push(...waiting.splice(ready, 1));
+  }
+  return ordered;
+}
+
 // The journey's steps with the events from playwright-tests/events that belong to it
 export function withEvents(c: JourneyConfig, ctx: JourneyContext, closingProblems: ClosingProblems, steps: JourneyStep[]): JourneyStep[] {
   const result = [...steps];
-  for (const definition of eventDefinitions.filter((candidate) => inJourney(candidate, c))) {
+  for (const definition of inPlacingOrder(eventDefinitions.filter((candidate) => inJourney(candidate, c)), c)) {
     const step = eventStep(definition, c, ctx, closingProblems);
     if (definition.closesClaim !== undefined) {
       result.push(step);
@@ -78,7 +96,9 @@ export function withEvents(c: JourneyConfig, ctx: JourneyContext, closingProblem
     const after = definition.after![c.caseType]!;
     const anchorIndex = result.findIndex((candidate) => candidate.name === after);
     if (anchorIndex === -1) {
-      throw new Error(`playwright-tests/events: ${definition.id} comes after ${after}, which is not a step of the ${c.caseType.toLowerCase()} journey`);
+      const stepNames = result.filter((candidate) => !candidate.closesClaim).map((candidate) => candidate.name);
+      throw new Error(`playwright-tests/events: ${definition.id} comes after ${after}, which is not a step of the ${c.caseType.toLowerCase()} journey. `
+        + `Its steps are: ${stepNames.join(', ')}. yarn event:info ${definition.id} lists them too.`);
     }
     // After the named step and any events already put after it
     let index = anchorIndex + 1;
