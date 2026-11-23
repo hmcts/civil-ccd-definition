@@ -17,7 +17,12 @@ import RequestsFactory from '../../requests/requests-factory';
 // mid-scheduler and the waiting test timed out after 300s. withHearingStubs runs the stub set-up
 // and the scheduler run that depends on it one test at a time; claim set-up still runs in parallel.
 @AllMethodsStep({
-  methodNamesToIgnore: ['generateHearingNotice', 'generateHearingNoticeExpectingNoNotice', 'withHearingStubs'],
+  methodNamesToIgnore: [
+    'generateHearingNotice',
+    'generateHearingNoticeExpectingNoNotice',
+    'runSchedulerWithHearingStubs',
+    'withHearingStubs',
+  ],
 })
 export default class HearingsApiSteps extends BaseApi {
   private wireMockStudsDataBuilder: WireMockStudsDataBuilder;
@@ -238,28 +243,15 @@ export default class HearingsApiSteps extends BaseApi {
   ) {
     const { civilServiceRequests } = this.requestsFactory;
     const hearingId = hearing.requestDetails.hearingRequestID;
-    const studs = [
-      await this.wireMockStudsDataBuilder.buildHearingStub(hearing, hearingId),
-      await this.wireMockStudsDataBuilder.buildUnnotifiedHearingStub([hearingId]),
-      await this.wireMockStudsDataBuilder.buildGetPartiesNotifiedStub(partiesNotifiedResponses),
-    ];
 
-    await this.withHearingStubs(async () => {
-      await super.createUpdateStud(studs);
-
-      const process = await civilServiceRequests.triggerCamundaProcess(
-        civilSystemUpdate,
-        schedulerProcess,
-      );
-
-      await civilServiceRequests.waitForCompletedCamundaProcess(civilSystemUpdate, undefined, process.id);
-      await civilServiceRequests.waitForCompletedCamundaProcess(
+    await this.runSchedulerWithHearingStubs(hearing, schedulerProcess, partiesNotifiedResponses, () =>
+      civilServiceRequests.waitForCompletedCamundaProcess(
         civilSystemUpdate,
         CamundaProcess.NOTIFY_HEARING_PARTIES,
         undefined,
         `hearingId_eq_${hearingId}`,
-      );
-    });
+      ),
+    );
   }
 
   private async generateHearingNoticeExpectingNoNotice(
@@ -275,6 +267,27 @@ export default class HearingsApiSteps extends BaseApi {
       schedulerProcess,
       noticeProcessVariables,
     );
+
+    await this.runSchedulerWithHearingStubs(hearing, schedulerProcess, partiesNotifiedResponses, () =>
+      civilServiceRequests.getCompletedCamundaProcessCount(
+        civilSystemUpdate,
+        schedulerProcess,
+        noticeProcessVariables,
+        { expectCount: completedCamundaProcessCountBefore },
+      ),
+    );
+  }
+
+  // Stubs the hearing for the scheduler, runs it and then afterSchedulerRun, all under the hearing
+  // stubs lock, so no other test can replace the shared stubs before the checks are done.
+  private async runSchedulerWithHearingStubs(
+    hearing: Record<string, any>,
+    schedulerProcess: CamundaProcess,
+    partiesNotifiedResponses: Record<string, any>[],
+    afterSchedulerRun: () => Promise<unknown>,
+  ) {
+    const { civilServiceRequests } = this.requestsFactory;
+    const hearingId = hearing.requestDetails.hearingRequestID;
     const studs = [
       await this.wireMockStudsDataBuilder.buildHearingStub(hearing, hearingId),
       await this.wireMockStudsDataBuilder.buildUnnotifiedHearingStub([hearingId]),
@@ -290,13 +303,7 @@ export default class HearingsApiSteps extends BaseApi {
       );
 
       await civilServiceRequests.waitForCompletedCamundaProcess(civilSystemUpdate, undefined, process.id);
-
-      await civilServiceRequests.getCompletedCamundaProcessCount(
-        civilSystemUpdate,
-        schedulerProcess,
-        noticeProcessVariables,
-        { expectCount: completedCamundaProcessCountBefore },
-      );
+      await afterSchedulerRun();
     });
   }
 }

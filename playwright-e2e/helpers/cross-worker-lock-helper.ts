@@ -27,6 +27,7 @@ export default class CrossWorkerLockHelper {
     const lockPath = path.join(this.lockDir, `${name}-${resourceHash}`);
 
     const waitStart = Date.now();
+    let compromised = false;
     const release = await lockfile.lock(lockPath, {
       realpath: false,
       stale: 30_000,
@@ -36,6 +37,12 @@ export default class CrossWorkerLockHelper {
         minTimeout: this.RETRY_INTERVAL_MS,
         maxTimeout: this.RETRY_INTERVAL_MS,
       },
+      // proper-lockfile's default throws from a timer, which crashes the Playwright worker
+      // mid-test. Losing the lock only reopens the race it guards, so log it and carry on.
+      onCompromised: (error) => {
+        compromised = true;
+        console.warn(`Lost lock: ${name} (${error.message})`);
+      },
     });
     const waitedSeconds = Math.round((Date.now() - waitStart) / 1000);
     console.log(`Acquired lock: ${name}${waitedSeconds ? ` after waiting ${waitedSeconds}s` : ''}`);
@@ -43,7 +50,8 @@ export default class CrossWorkerLockHelper {
     try {
       return await fn();
     } finally {
-      await release();
+      // Releasing a compromised lock rejects, which would replace fn's result or error.
+      if (!compromised) await release();
     }
   }
 }
