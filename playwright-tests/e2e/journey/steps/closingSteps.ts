@@ -2,7 +2,6 @@ import { test } from '@playwright/test';
 import * as ui from '../../flows/events/ui/index.ts';
 import * as api from '../../flows/events/api/index.ts';
 import caseStates from '../../../enums/caseStates.ts';
-import yesNo from '../../../enums/yesNo.ts';
 import SettleClaimReason from '../../../enums/settleClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
 import CaseProceedsInCasemanReason from '../../../enums/caseProceedsInCaseman.ts';
@@ -11,9 +10,9 @@ import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
 import { casemanStates, discontinuableStates, holds, settleableStates } from '../claimFacts.ts';
 import { JourneyConfig } from './journeyConfig.ts';
 
-// The steps that close the claim, the same in both journeys: settling, discontinuing and dismissing it, and taking it
-// offline. Each journey lists them at the end of its steps. They have closesClaim, so they still run where
-// STOP_AT_STATE or STOP_AFTER_TEST stops the journey.
+// The steps that close the claim, the same in both journeys: settling and discontinuing it, and taking it offline.
+// Each journey lists them at the end of its steps. They have closesClaim, so they still run where STOP_AT_STATE or
+// STOP_AFTER_TEST stops the journey. Dismissing the case is an event file (playwright-tests/events/dismissCase.ts).
 
 // The problems with closing the claim, given the settings and how the run is stopped (see closingProblemsFor)
 export type ClosingProblems = (setting: string, stops: JourneyStops, offeredIn: caseStates[], claimantSolicitor: boolean) => Array<[boolean, string]>;
@@ -158,31 +157,6 @@ export function discontinueSteps(c: JourneyConfig, ctx: JourneyContext, closingP
   ];
 }
 
-// The hearing centre admin dismisses the case with "Dismiss case" once the rest of the journey has run, or where
-// STOP_AT_STATE or STOP_AFTER_TEST stops it (DISMISS_CASE=Yes), which moves it to CASE_DISMISSED and tells the
-// parties. It is offered in the same states as "Settle this claim" (not CASE_STAYED), so the step is skipped where the
-// journey ended in another.
-export function dismissCase(c: JourneyConfig, ctx: JourneyContext, closingProblems: ClosingProblems): JourneyStep {
-  return {
-    name: 'DISMISS_CASE',
-    title: 'Hearing Centre Admin dismisses the case.',
-    user: 'hearingCentreAdmin',
-    closesClaim: true,
-    invalidIf: (stops) => c.dismissCase === yesNo.YES ? closingProblems('DISMISS_CASE=Yes', stops, settleableStates, false) : [],
-    skipIf: [
-      [c.dismissCase !== yesNo.YES, 'Dismissing the case is switched off (set DISMISS_CASE=Yes to run it)'],
-    ],
-    run: async ({ page, storageState }) => {
-      test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the case cannot be dismissed in ${ctx.lastStateReached}`);
-      await ctx.submitEvent(page, storageState, {
-        api: () => new api.DismissCase().submit(ctx.caseId),
-        ui: () => new ui.DismissCase(page).submit(),
-        businessProcess: 'DISMISS_CASE',
-        expectState: caseStates.CASE_DISMISSED,
-      });
-    },
-  };
-}
 
 // The hearing centre admin takes the claim offline with "Case proceeds in Caseman" once the rest of the journey has
 // run, or where STOP_AT_STATE or STOP_AFTER_TEST stops it (CASE_PROCEEDS_IN_CASEMAN=<reason for proceeding on

@@ -1,11 +1,12 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import JSZip from 'jszip';
-import { Journey, Setting, settings } from '../e2e/journey/settings.ts';
+import { allSettings, Journey, Setting } from '../e2e/journey/settings.ts';
 import { markdownToDocx } from './md2docx.ts';
 
 // Keeps the playwright-tests guides up to date:
-//  - the claim parameters table in each RUNNING guide is written from the settings registry (e2e/journey/settings.ts),
+//  - the claim parameters table in each RUNNING guide is written from the settings registry (e2e/journey/settings.ts,
+//    with the settings of the events in playwright-tests/events),
 //    between the two marker comments, so a setting's values, default and notes are only written in the registry
 //  - each guide's .docx is written from its .md, where its text has changed
 // Run with: yarn guides:generate. With --check it writes nothing, lists what is out of date and fails if anything is.
@@ -46,7 +47,7 @@ function cell(text: string, name: string): string {
 }
 
 function claimParameters(journey: Journey): string {
-  const rows = (Object.entries(settings) as Array<[string, Setting]>)
+  const rows = (Object.entries(allSettings) as Array<[string, Setting]>)
     .filter(([name, setting]) => setting.notes[journey] !== undefined && !runSettings.includes(name))
     .map(([name, setting]) => {
       const defaultText = forJourney(setting.defaultText, journey) ?? forJourney(setting.default, journey) ?? 'None';

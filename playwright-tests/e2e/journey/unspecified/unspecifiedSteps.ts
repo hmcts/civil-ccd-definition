@@ -18,10 +18,8 @@ import { JourneyContext, JourneyStep, JourneyStops, withNeeds } from '../journey
 import { moveResponseDeadline } from '../steps/moveResponseDeadline.ts';
 import { liftStay, manageStayRequestUpdate, stayCase } from '../steps/stayCaseSteps.ts';
 import {
-  caseProceedsInCaseman, closingProblemsFor, discontinueSteps, dismissCase, settleClaim, settleClaimMarkPaidFull,
+  caseProceedsInCaseman, closingProblemsFor, discontinueSteps, settleClaim, settleClaimMarkPaidFull,
 } from '../steps/closingSteps.ts';
-import { addCaseNote } from '../steps/addCaseNote.ts';
-import { amendPartyDetails } from '../steps/amendPartyDetails.ts';
 import { makeDirectionsOrder } from '../steps/makeDirectionsOrder.ts';
 import { createHearingNotice } from '../steps/createHearingNotice.ts';
 import { payHearingFee } from '../steps/payHearingFee.ts';
@@ -34,6 +32,7 @@ import { createTrialBundle } from '../steps/createTrialBundle.ts';
 import { caseFlagSteps } from '../steps/caseFlagSteps.ts';
 import { manageContactInformationSteps } from '../steps/manageContactInformationSteps.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
+import { withEvents } from '../eventSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
 import { withRefund } from '../refundSteps.ts';
@@ -122,8 +121,9 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
   // The problems with closing the claim where the journey ends (see ../steps/closingSteps.ts)
   const closingProblems = closingProblemsFor(c, journeyEndState);
 
-  // The facts each step needs are added to its skipIf straight away (withNeeds), as later code reads and copies them
-  const steps: JourneyStep[] = withNeeds([
+  // The facts each step needs are added to its skipIf straight away (withNeeds), as later code reads and copies them,
+  // and the events in playwright-tests/events are put in (withEvents)
+  const steps: JourneyStep[] = withEvents(c, ctx, closingProblems, withNeeds([
     {
       name: 'CREATE_CLAIM',
       title: 'Claimant Solicitor creates ' + c.claimType + ' claim ',
@@ -235,7 +235,6 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
       },
     },
 
-    addCaseNote(c, ctx),
 
     // The claimant's solicitor uploads the particulars of claim with "Add or amend claim documents" once the claim is
     // issued, which Notify claim details then serves. Only run with ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes.
@@ -298,7 +297,6 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
     },
 
 
-    amendPartyDetails(c, ctx),
 
     moveResponseDeadline(c, ctx),
 
@@ -535,8 +533,7 @@ function journeySteps(c: UnspecifiedConfig, ctx: JourneyContext): JourneyStep[] 
 
 
     caseProceedsInCaseman(c, ctx, closingProblems),
-    dismissCase(c, ctx, closingProblems),
-  ]);
+  ]));
 
   // Where the journey ends: the state STOP_AT_STATE stops it at or, where it runs to the end, the state its last step
   // leaves the claim in, when that is known. With STOP_AFTER_TEST it is not known before the journey runs.

@@ -126,15 +126,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // How the claimant's solicitor pays the claim fee and the hearing fee: from their PBA account (PAYMENT_METHOD=PBA,
     // the default) or by card (CARD), which is always done in the UI, even when the claim is created through the API
     paymentMethod: read.get('PAYMENT_METHOD') as PaymentMethod,
-    // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=Yes,
-    // default No)
-    addCaseNote: read.yes('ADD_CASE_NOTE'),
     // Whether the claimant's solicitor uploads the particulars of claim with "Add or amend claim documents" once the
     // claim is issued, before notifying the defendants (ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes, default No)
     addOrAmendClaimDocuments: read.yes('ADD_OR_AMEND_CLAIM_DOCUMENTS'),
-    // Whether the hearing centre admin changes the legal representatives' email addresses with "Amend party details" once
-    // the defendants' solicitors are on the claim (AMEND_PARTY_DETAILS=Yes, default No)
-    amendPartyDetails: read.yes('AMEND_PARTY_DETAILS'),
     // Whether the hearing centre admin stays the case after the claimant's response, asks for an update and lifts the
     // stay (STAY_CASE=Yes, default No)
     stayCase: read.yes('STAY_CASE'),
@@ -142,9 +136,6 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // claimant's response has taken the claim to JUDICIAL_REFERRAL, and the judge replies. With STAY_CASE=Yes they do
     // it while the case is stayed (SEND_AND_REPLY=Yes, default No)
     sendAndReply: read.yes('SEND_AND_REPLY'),
-    // Whether the hearing centre admin dismisses the case with "Dismiss case" once the rest of the journey has run, which
-    // moves it to CASE_DISMISSED (DISMISS_CASE=Yes, default No)
-    dismissCase: read.yes('DISMISS_CASE'),
     // Whether and how the claim is settled with "Settle this claim" once the rest of the journey has run: the
     // claimant's solicitor marks it paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL), which stays the case, or court staff
     // record it settled after a judge's order (JUDGE_ORDER) or a consent order (CONSENT_ORDER). Not settled by default.

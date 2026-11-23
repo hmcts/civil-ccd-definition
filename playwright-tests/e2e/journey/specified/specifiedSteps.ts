@@ -19,10 +19,8 @@ import { Fact, holds } from '../claimFacts.ts';
 import { moveResponseDeadline } from '../steps/moveResponseDeadline.ts';
 import { liftStay, manageStayRequestUpdate, stayCase } from '../steps/stayCaseSteps.ts';
 import {
-  caseProceedsInCaseman, closingProblemsFor, discontinueSteps, dismissCase, settleClaim, settleClaimMarkPaidFull,
+  caseProceedsInCaseman, closingProblemsFor, discontinueSteps, settleClaim, settleClaimMarkPaidFull,
 } from '../steps/closingSteps.ts';
-import { addCaseNote } from '../steps/addCaseNote.ts';
-import { amendPartyDetails } from '../steps/amendPartyDetails.ts';
 import { makeDirectionsOrder } from '../steps/makeDirectionsOrder.ts';
 import { createHearingNotice } from '../steps/createHearingNotice.ts';
 import { payHearingFee } from '../steps/payHearingFee.ts';
@@ -35,6 +33,7 @@ import { createTrialBundle } from '../steps/createTrialBundle.ts';
 import { caseFlagSteps } from '../steps/caseFlagSteps.ts';
 import { manageContactInformationSteps } from '../steps/manageContactInformationSteps.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
+import { withEvents } from '../eventSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
 import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
@@ -98,8 +97,9 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
   // The problems with closing the claim where the journey ends (see ../steps/closingSteps.ts)
   const closingProblems = closingProblemsFor(c, journeyEndState);
 
-  // The facts each step needs are added to its skipIf straight away (withNeeds), as later code reads and copies them
-  const steps: JourneyStep[] = withNeeds([
+  // The facts each step needs are added to its skipIf straight away (withNeeds), as later code reads and copies them,
+  // and the events in playwright-tests/events are put in (withEvents)
+  const steps: JourneyStep[] = withEvents(c, ctx, closingProblems, withNeeds([
     {
       name: 'CREATE_CLAIM',
       title: 'Claimant Solicitor creates ' + c.claimType + ' specified claim ',
@@ -203,7 +203,6 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
-    addCaseNote(c, ctx),
 
 
     moveResponseDeadline(c, ctx),
@@ -245,7 +244,6 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
-    amendPartyDetails(c, ctx),
 
     // A specified claim is not acknowledged by a defendant's solicitor: the CCD definition only gives them read access
     // to ACKNOWLEDGEMENT_OF_SERVICE, so XUI does not offer it.
@@ -427,8 +425,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
 
 
     caseProceedsInCaseman(c, ctx, closingProblems),
-    dismissCase(c, ctx, closingProblems),
-  ]);
+  ]));
 
   // Where the journey ends: the state STOP_AT_STATE stops it at or, where it runs to the end, the state its last step
   // leaves the claim in, when that is known. With STOP_AFTER_TEST it is not known before the journey runs.

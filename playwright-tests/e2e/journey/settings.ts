@@ -24,6 +24,7 @@ import { ReconsiderationDecision, RequestForReconsiderationBy } from '../../enum
 import { SetAsideJudgment } from '../../enums/judgmentsOnline.ts';
 import { GaDecision, generalApplicationTypes } from './generalApplicationSteps.ts';
 import { refundOutcomes } from './refundSteps.ts';
+import { eventDefinitions } from './eventFiles.ts';
 
 // Every setting a scenario can give the journeys, in one place: the values it takes, its default and what it does in
 // each journey. The journeys' configs (specified/specifiedConfig.ts, unspecified/unspecifiedConfig.ts) read their
@@ -439,27 +440,11 @@ export const settings = {
       SPECIFIED: 'What the judge decides on the request for reconsideration. Needs REQUEST_FOR_RECONSIDERATION.',
     },
   },
-  ADD_CASE_NOTE: {
-    values: yesNoValues,
-    default: 'No',
-    notes: {
-      SPECIFIED: 'Optional step: the hearing centre admin adds a case note after the claim is issued.',
-      UNSPECIFIED: 'Optional event: Hearing Centre Admin adds a case note after the claim is issued.',
-    },
-  },
   ADD_OR_AMEND_CLAIM_DOCUMENTS: {
     values: yesNoValues,
     default: 'No',
     notes: {
       UNSPECIFIED: 'Optional event: once the claim is issued, the claimant\'s solicitor uploads the particulars of claim with "Add or amend claim documents", which is only offered until the claim details are notified. The test checks they were saved. Notify claim details then serves them instead of asking for them again. Has an API version.',
-    },
-  },
-  AMEND_PARTY_DETAILS: {
-    values: yesNoValues,
-    default: 'No',
-    notes: {
-      SPECIFIED: 'Optional step: once the defendants\' solicitors are assigned, the hearing centre admin changes the legal representatives\' email addresses with "Amend party details". Cannot be used with DEFAULT_JUDGMENT. Has an API version.',
-      UNSPECIFIED: 'Optional event: once Notify claim details has run, the hearing centre admin changes the legal representatives\' email addresses with "Amend party details": Defendant 1\'s solicitor\'s to the address they sign in with (the claim is created with a made-up one) and the claimant\'s solicitor\'s to theirs. The test checks they were saved. Skipped where Defendant 1 is a litigant in person or the claim went offline when notified. Has an API version.',
     },
   },
   ADD_UNAVAILABLE_DATES: {
@@ -708,17 +693,22 @@ export const settings = {
       UNSPECIFIED: 'Optional event, once the rest of the journey has run or where STOP_AT_STATE or STOP_AFTER_TEST stops it: the hearing centre admin takes the claim offline with "Case proceeds in Caseman", giving today as the date it was transferred to Caseman and this as the reason for proceeding on paper (OTHER adds a reason as text). civil-service moves the claim to PROCEEDS_IN_HERITAGE_SYSTEM. Skipped where the claim has already gone offline. Cannot be used with SETTLE_CLAIM or DISCONTINUE_CLAIM. Has an API version.',
     },
   },
-  DISMISS_CASE: {
-    values: yesNoValues,
-    default: 'No',
-    notes: {
-      SPECIFIED: 'Optional step, once the rest of the journey has run or where it is stopped: the hearing centre admin dismisses the case with "Dismiss case", which moves it to CASE_DISMISSED. Cannot be used with SETTLE_CLAIM, DISCONTINUE_CLAIM or CASE_PROCEEDS_IN_CASEMAN. Has an API version.',
-      UNSPECIFIED: 'Optional event, once the rest of the journey has run or where STOP_AT_STATE or STOP_AFTER_TEST stops it: the hearing centre admin dismisses the case with "Dismiss case", which moves it to CASE_DISMISSED and tells the parties. It is offered in the same states as "Settle this claim", but not CASE_STAYED. Cannot be used with SETTLE_CLAIM, DISCONTINUE_CLAIM or CASE_PROCEEDS_IN_CASEMAN. Has an API version.',
-    },
-  },
 } satisfies Record<string, Setting>;
 
-export type SettingName = keyof typeof settings;
+// The settings of the events in playwright-tests/events (see event.ts): each is turned on with <id>=Yes, and is for
+// the journeys the event belongs to, with its description as its notes
+const eventSettings: Record<string, Setting> = Object.fromEntries(eventDefinitions.map((definition) => {
+  const journeys: Journey[] = definition.closesClaim !== undefined ? ['SPECIFIED', 'UNSPECIFIED'] : Object.keys(definition.after ?? {}) as Journey[];
+  const { description } = definition;
+  const notes = Object.fromEntries(journeys.map((journey) => [journey, typeof description === 'string' ? description : description[journey]]));
+  return [definition.id, { values: yesNoValues, default: 'No', notes }];
+}));
+
+// Every setting: the registry's above, then the events'
+export const allSettings: Record<string, Setting> = { ...settings, ...eventSettings };
+
+// A setting's name: one of the registry's, or an event's ID
+export type SettingName = keyof typeof settings | (string & {});
 
 // What a rule can ask about the journey's settings: a setting's value (or its default), whether the scenario set it at
 // all, and whether it is on (Yes for a Yes/No setting, set for any other)
@@ -767,7 +757,6 @@ export const settingRules: SettingRule[] = [
   notWithDefaultJudgment(bothJourneys, 'INFORM_AGREED_EXTENSION', 'INFORM_AGREED_EXTENSION=Yes'),
   notWithDefaultJudgment(['UNSPECIFIED'], 'DEFENDANT_LITIGATION_FRIEND', 'DEFENDANT_LITIGATION_FRIEND=Yes'),
   notWithDefaultJudgment(bothJourneys, 'STAY_CASE', 'STAY_CASE=Yes'),
-  notWithDefaultJudgment(['SPECIFIED'], 'AMEND_PARTY_DETAILS', 'AMEND_PARTY_DETAILS=Yes'),
   notWithDefaultJudgment(bothJourneys, 'SEND_AND_REPLY', 'SEND_AND_REPLY=Yes'),
   notWithDefaultJudgment(['SPECIFIED'], 'MEDIATION_SUCCESSFUL', 'MEDIATION_SUCCESSFUL=Yes'),
   notWithDefaultJudgment(['SPECIFIED'], 'REQUEST_FOR_RECONSIDERATION', 'REQUEST_FOR_RECONSIDERATION'),
@@ -896,7 +885,11 @@ export const settingRules: SettingRule[] = [
 const journeyLabel: Record<Journey, string> = { SPECIFIED: 'specified', UNSPECIFIED: 'unspecified' };
 
 function setting(name: SettingName): Setting {
-  return settings[name];
+  const found = allSettings[name];
+  if (found === undefined) {
+    throw new Error(`${name} is not a setting of the journeys`);
+  }
+  return found;
 }
 
 // The journeys a setting is for
@@ -941,14 +934,14 @@ function isSet(value: string | undefined): value is string {
 export function settingProblems(journey: Journey, env: Record<string, string | undefined>, scenarioSettings: string[] = []): string[] {
   const problems: string[] = [];
   for (const name of scenarioSettings) {
-    if (!(name in settings)) {
+    if (!(name in allSettings)) {
       problems.push(`${name} is not a setting of the journeys. Check the name against the settings in e2e/journey/settings.ts.`);
     } else if (!settingJourneys(name as SettingName).includes(journey)) {
       const others = settingJourneys(name as SettingName).map((other) => journeyLabel[other]).join(' and ');
       problems.push(`${name} is only a setting of the ${others} journey, so the ${journeyLabel[journey]} journey would ignore it.`);
     }
   }
-  for (const name of Object.keys(settings) as SettingName[]) {
+  for (const name of Object.keys(allSettings) as SettingName[]) {
     const value = env[name];
     if (settingJourneys(name).includes(journey) && isSet(value)) {
       const problem = valueProblem(name, journey, value);
