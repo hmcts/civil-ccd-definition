@@ -1,77 +1,126 @@
-# Adding a new event to playwright-tests
+# Adding an event to the playwright-tests journeys
 
-This guide walks through adding a new CCD event to the playwright-tests journeys, from finding out how the event works to running it in a nightly scenario. It uses one real event as the example all the way through: `AMEND_PARTY_DETAILS` ("Amend party details"), where the hearing centre admin changes the legal representatives' email addresses. It was added in commit 15ed9df29, so you can look at the whole change with `git show 15ed9df29`.
+This guide walks through adding a new CCD event (a Next step event in XUI) to the playwright-tests journeys. It uses one real event as the example all the way through: `CHANGE_SOLICITOR_EMAIL` ("Change solicitor's information"), where the claimant's solicitor sets the email address they get notifications at. It was added exactly this way in commit 7d4eb0c85, so you can look at the whole change with `git show 7d4eb0c85`.
 
-Every path in this guide is relative to the repository root.
+Every path in this guide is relative to the repository root. Commands are run from the repository root too.
 
-## 1. How the framework fits together
+## 1. What you write
 
-A new event touches seven places. You add something to each of them (the shared answers only where needed).
+An event needs at most three files, and a line in a scenario:
 
-| Layer | Where | What it does |
-| --- | --- | --- |
-| UI event class | `playwright-tests/e2e/flows/events/ui/<Event>.ts` | Picks the event from Next step in XUI, fills in its pages and submits it. Listed in `flows/events/ui/index.ts`. |
-| API event class | `playwright-tests/e2e/flows/events/api/<Event>.ts` | Submits the same event with the same answers through the CCD API, with no browser. Listed in `flows/events/api/index.ts`. |
-| Shared answers (optional) | `playwright-tests/e2e/flows/events/shared_api_ui/<event>Specs.ts` | Answers that both versions use, so the UI and API versions can't drift apart. |
-| Setting | `playwright-tests/e2e/journey/settings.ts` | Declares the setting (environment variable) that turns the step on: its values, default and what it does. Its value is checked before the journey starts. |
-| Journey config | `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Config.ts` | Reads the setting for the journey's steps. |
-| Journey step | `playwright-tests/e2e/journey/steps/<event>.ts` when both journeys share it, otherwise in `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Steps.ts` | Says where the event runs in the journey, as which user, when it's skipped, and what it checks afterwards. |
-| Scenario | `playwright-tests/scenarios/<journey>Scenarios.ts` | A named set of settings that runs the step in the PR, master or nightly pipeline. |
+| File | Where | What it does | Needed |
+| --- | --- | --- | --- |
+| UI class | `playwright-tests/e2e/flows/events/ui/<Event>.ts` | Picks the event from Next step in XUI, fills in its pages and submits it. | Yes |
+| API class | `playwright-tests/e2e/flows/events/api/<Event>.ts` | Submits the same event with the same answers through the CCD API, with no browser. | No, but recommended |
+| Event file | `playwright-tests/events/<event>.ts` | Says who does the event, when in the journey, which classes to call and what to check. | Yes |
+| Scenario | `playwright-tests/scenarios/<journey>Scenarios.ts` | Turns the event on in a named scenario, so the pipeline runs it. | To run it in the pipeline |
+
+You don't edit anything else. The journeys find the event file themselves, and from it they work out:
+
+- **the setting** that turns it on: `<EVENT_ID>=Yes`, off by default
+- **where it goes** in each journey, and which journeys get it
+- **when it's skipped**, with a reason in the report
+- **which settings it can't be used with**, such as default judgment where that replaces it
+- **running it**: the API class until `API_UNTIL`, the UI class otherwise (signing in again if the session ends part way), then waiting for civil-service's business process and checking the claim's state
+- **the guides**: `yarn guides:generate` adds its setting to the RUNNING guides' tables
+
+The easiest way to write all three files is to copy a similar existing one and change it. Sections 3 to 5 say which to copy.
 
 The rules that hold the framework together:
 
-- **One class per CCD event.** Each event has its own class, so the same class can be used in the main journey, in a branch, or after an API fast-forward.
-- **Classes take parameters; they don't read settings.** An event class never reads environment variables. The journey step works out the answers and passes them in.
-- **Every event has a UI version and an API version where possible.** With `API_UNTIL=<state>`, the journey runs the API versions until the claim reaches that state, then switches to the UI. This lets a test reach a late state quickly and only do the event under test in the browser.
-- **Steps have names, not numbers.** `STOP_AFTER_TEST=AMEND_PARTY_DETAILS` stops the journey after that step, whatever else is added before it.
-- **Every step checks its result.** At minimum the claim's state; better, the saved case data too.
+- **One class per CCD event.** The same class can be used in the main journey, in a branch, or after an API fast-forward.
+- **Classes take parameters; they don't read settings.** The event file works out the answers and passes them in.
+- **An API version where possible.** With `API_UNTIL=<state>`, the journey uses the API versions until the claim reaches that state, then switches to the UI. This lets a test reach a late state quickly and only do the event under test in the browser.
+- **Steps have names, not numbers.** The event's step is named after its event ID, so `STOP_AFTER_TEST=CHANGE_SOLICITOR_EMAIL` stops after it, whatever is added before it.
+- **Every step checks its result.** At least the claim's state; better, the saved case data too.
 
 ## 2. Find out how the event works
 
-Before writing code, work out these things for the event. Most come from the CCD definition in this repository and from trying the event by hand in XUI on AAT.
+Start with `yarn event:info`. It reads the CCD definition in this repository and the journeys, and changes nothing.
 
-1. **The event ID and its Next step name.** Search the definition (`ccd-definition/civil`, or `ccd-definition/generalapplication` for a general application event) for the event ID. The `Name` in its `CaseEvent` entry is what XUI shows in the Next step drop-down.
-2. **Who can run it.** Look in `ccd-definition/civil/AuthorisationCaseEvent` for the roles with `C` (create) access, and pick the matching test user from `playwright-tests/civilConfig.ts` (for example `hearingCentreAdminCredentials`).
-3. **Which states it runs in.** `PreConditionState(s)` in the `CaseEvent` entry. Also check any `EventEnablingCondition`.
-4. **Its pages and fields.** The event's file in `ccd-definition/civil/CaseEventToFields` lists every field, the page each one is on (`PageID`), and whether a page has a mid-event callback (`CallBackURLMidEvent`). Some events have a separate file for specified claims (ending `LRspec`). Note the page IDs: the API version needs them.
-5. **What it does to the claim.** Does it change the state? Does civil-service start a business process? What does the confirmation page say?
-
-Searching for the files that mention the event:
+With no event ID, it lists the Next step events an XUI user can do that the journeys don't cover yet, with who can do each, and when XUI offers it where that depends on the claim:
 
 ```bash
-grep -rln '"AMEND_PARTY_DETAILS"' ccd-definition/civil
+yarn event:info
 ```
 
-For `AMEND_PARTY_DETAILS` this gave:
+```
+  CHANGE_LANGUAGE_PREFERENCE    Change language preference    caseworker-civil-admin, cui-admin-profile
+                                only when: applicant1Represented = "No" OR specRespondent1Represented = "No"
+  CHANGE_SOLICITOR_EMAIL        Change solicitor's information    caseworker-civil-solicitor
+  ...
+```
 
-- Next step name: "Amend party details". User: hearing centre admin.
-- One page, `Email`, with three fields: `specRespondentSolicitor1EmailAddress`, `respondentSolicitor1EmailAddress` and `applicantSolicitor1UserDetails.email`.
-- No check your answers page. Confirmation header: "You have updated a legal representative's information".
-- It does not change the claim's state.
-- It only makes sense where Defendant 1 has a solicitor.
+With an event ID, it prints what you need to write the classes and the event file:
 
-Write what you find in a comment at the top of the UI class. The next person to change the class will need it.
+```bash
+yarn event:info CHANGE_SOLICITOR_EMAIL
+```
 
-## 3. Write the UI event class
+```
+CHANGE_SOLICITOR_EMAIL: "Change solicitor's information"
+Who can do it (roles with create access):
+  caseworker-civil-solicitor
+States:
+  Offered in: CASE_ISSUED, AWAITING_CASE_DETAILS_NOTIFICATION, AWAITING_RESPONDENT_ACKNOWLEDGEMENT, ...
+  Moves the claim to: no change (or set by civil-service)
+  Check your answers page: no (the last page submits)
+Pages (3), with the fields XUI can show. In XUI a field's element is #<field ID>:
+  ...
+  2. Applicant1SolicitorEmail
+     Shown when: isApplicant1="Yes"
+     applicantSolicitor1ServiceAddressRequired (YesOrNo, mandatory): ... Do you wish to enter a different address?
+         element: #applicantSolicitor1ServiceAddressRequired_Yes / #applicantSolicitor1ServiceAddressRequired_No
+     applicantSolicitor1UserDetails (UserDetails, complex): Notification details
+         email (Email): What email would you like to send notifications to?
+             element: #applicantSolicitor1UserDetails_email
+  ...
+Specified journey steps, for "after" (steps that close the claim are left out):
+  CREATE_CLAIM                       Claimant Solicitor creates 1v1 specified claim
+  ASSIGN_DEFENDANT_SOLICITORS        Defendant solicitors are assigned to the claim.
+  ...
+```
 
-Create `playwright-tests/e2e/flows/events/ui/AmendPartyDetails.ts`. A UI class:
+From it, note:
 
-- takes the Playwright `page` in its constructor and builds the helpers it needs
-- has a `submit(...)` method that takes the answers as parameters
-- opens the event with `pageHelper.selectNextStep('<Next step name>')`
-- fills in each page, using the field IDs from the definition as locators where possible
-- submits with `pageHelper.submitEvent()`
-- checks the confirmation page and closes it
+1. **The Next step name**, for the UI class (`"Change solicitor's information"`).
+2. **Who can do it**, to pick the user. The roles map to the journeys' users: solicitor roles (`caseworker-civil-solicitor`, `APP-SOL-*`, `RES-SOL-*`) to `claimantSolicitor`, `respondent1Solicitor` or `respondent2Solicitor`; `caseworker-civil-admin` to `hearingCentreAdmin`; `judge-profile` to `judge`; `legal-adviser` to `legalAdviser`; `cui-admin-profile` is usually the CTSC admin, `ctscAdmin`. Where you're not sure, try the event by hand as the user first.
+3. **The states**: where in the journey it can go, and whether it changes the state.
+4. **The pages and fields**: each page's ID (the API class needs it) and each field's element ID and allowed values (the UI class needs them). The parts of a complex field are listed under it, with their own element IDs.
+5. **Whether XUI offers it at all.** "NOT IN XUI" means the definition hides it from Next step for everyone, so it can only be done through the API, and it can't be added as an event file. "Next step only offers it when" is a condition on the claim: put the event somewhere the condition holds.
+
+Then:
+
+- **Try the event by hand in XUI on AAT**, as the user, on a claim in the right state. The definition doesn't say everything: which pages a given user sees, what the confirmation page says, and what civil-service rejects.
+- **Read civil-service's callback handler** for the event (search `civil-service/src/main/java` for the event ID, under `handler/callback/user`). It shows what it validates (for example, dates that must be in the past) and the confirmation header. `CHANGE_SOLICITOR_EMAIL`'s handler checks the email and confirms with "You have updated a claimant's legal representative's information".
+
+Write what you find in a comment at the top of the UI class. The next person to change it will need it.
+
+## 3. Write the UI class
+
+Copy a UI class for an event shaped like yours and change it:
+
+| Your event | Copy |
+| --- | --- |
+| No fields, just Submit | `ui/DismissCase.ts` |
+| One page, no check your answers page | `ui/AmendPartyDetails.ts` or `ui/ChangeSolicitorEmail.ts` |
+| One page, then a check your answers page | `ui/AddCaseNote.ts` |
+| Several pages, radio buttons and dates | `ui/AcknowledgeClaim.ts`, `ui/CreateHearingNotice.ts` |
+| Uploading a document | `ui/AddOrAmendClaimDocuments.ts` |
+
+`CHANGE_SOLICITOR_EMAIL`'s UI class, copied from `AmendPartyDetails.ts`:
 
 ```typescript
 import { expect, Page } from '@playwright/test';
 import { PageHelper } from '../../../../helpers/PageHelper';
 import { ButtonHelper } from '../../../../helpers/ButtonHelper.ts';
 
-// The hearing centre admin changing the legal representatives' email addresses (event AMEND_PARTY_DETAILS, "Amend party
-// details"). One page, both of Defendant 1's email boxes required, then the claimant's legal representative's email.
-// The event has no check your answers page and leaves the claim in its state.
-export class AmendPartyDetails {
+// The claimant's solicitor changing their own email address for notifications (event CHANGE_SOLICITOR_EMAIL, "Change
+// solicitor's information"). civil-service works out which party's legal representative is making the change, so the
+// claimant's solicitor gets just the one page for the claimant's legal representative: whether postal correspondence
+// should go to a different address than MyHMCTS has, and the email address, which civil-service checks. The event has
+// no check your answers page and leaves the claim in its state.
+export class ChangeSolicitorEmail {
   private buttonHelper: ButtonHelper;
   private pageHelper: PageHelper;
 
@@ -80,30 +129,37 @@ export class AmendPartyDetails {
     this.pageHelper = new PageHelper(this.page);
   }
 
-  async submit(emails: { defendant1Solicitor: string; claimantSolicitor: string }) {
-    await this.pageHelper.selectNextStep('Amend party details');
+  async submit(email: string) {
+    await this.pageHelper.selectNextStep('Change solicitor\'s information');
 
-    await this.page.locator('#specRespondentSolicitor1EmailAddress').fill(emails.defendant1Solicitor);
-    await this.page.locator('#respondentSolicitor1EmailAddress').fill(emails.defendant1Solicitor);
-    await this.page.locator('#applicantSolicitor1UserDetails_email').fill(emails.claimantSolicitor);
+    await this.page.locator('#applicantSolicitor1ServiceAddressRequired_No').check();
+    await this.page.locator('#applicantSolicitor1UserDetails_email').fill(email);
     await this.pageHelper.submitEvent();
 
-    await expect(this.page.locator('#confirmation-header')).toContainText('You have updated a legal representative\'s information');
+    await expect(this.page.locator('#confirmation-header')).toContainText('You have updated a claimant\'s legal representative\'s information');
     await this.buttonHelper.closeAndReturnToCaseDetailsButton.click();
   }
 }
 ```
 
-Tips for the UI class:
+A UI class:
 
-- XUI turns a nested field ID like `applicantSolicitor1UserDetails.email` into the element ID `applicantSolicitor1UserDetails_email`.
-- For an event with several pages, click Continue between pages with the helpers in `helpers/ButtonHelper.ts` and `helpers/PageHelper.ts`. Look at a similar event in `flows/events/ui` and copy its pattern, rather than writing new waits.
+- takes the Playwright `page` in its constructor and builds the helpers it needs
+- has a `submit(...)` method that takes the answers as parameters
+- opens the event with `pageHelper.selectNextStep('<Next step name>')`
+- fills in each page with the element IDs `yarn event:info` gives, and moves on with `pageHelper.continueToNextPage()`
+- submits with `pageHelper.submitEvent()`, from the last page or the check your answers page
+- checks the confirmation page, where there is one, and closes it
+
+Tips:
+
+- An element ID is the field ID, with `_` between the parts of a complex field (`applicantSolicitor1UserDetails_email`), `_Yes` or `_No` after a Yes/No field, `-<code>` after a radio list's field ID, and `-day`, `-month` and `-year` after a date's.
 - Radio buttons sometimes need clicking more than once before XUI registers them. Existing classes click until the radio is checked; reuse that approach.
-- Don't add fixed waits (`waitForTimeout`). Wait for the next page's heading or field instead.
+- Don't add fixed waits (`waitForTimeout`). Wait for the next page's heading or field instead. `pageHelper.continueToNextPage()` and `pageHelper.submitEvent()` already retry the clicks XUI sometimes drops.
 
-## 4. Write the API event class
+## 4. Write the API class
 
-Create `playwright-tests/e2e/flows/events/api/AmendPartyDetails.ts`. An API class answers the same pages with the same answers as the UI version, through `CcdApiHelper.submitEventThroughPages`. That helper works the way XUI does:
+An API class answers the same pages with the same answers as the UI class, through `CcdApiHelper.submitEventThroughPages`, which works the way XUI does:
 
 - waits until the case has no business process running
 - starts the event, which runs civil-service's about-to-start callback
@@ -111,44 +167,44 @@ Create `playwright-tests/e2e/flows/events/api/AmendPartyDetails.ts`. An API clas
 - validates each page, which runs any mid-event callback
 - submits only the event's own fields
 
+Without an API class the event always runs in the UI, even before `API_UNTIL`. That works, but it is slower and means a test can't fast-forward past it.
+
+`CHANGE_SOLICITOR_EMAIL`'s API class, copied from `api/AmendPartyDetails.ts`:
+
 ```typescript
-import { hearingCentreAdminCredentials } from '../../../../civilConfig.ts';
+import { claimantSolicitorCredentials } from '../../../../civilConfig.ts';
 import { CcdApiHelper } from '../../../../helpers/CcdApiHelper.ts';
 
-// Changes the legal representatives' email addresses (AMEND_PARTY_DETAILS, "Amend party details") as the hearing centre
-// admin through the CCD API, with the same answers as the UI version
-export class AmendPartyDetails {
+// Changes the claimant's solicitor's email address for notifications (CHANGE_SOLICITOR_EMAIL, "Change solicitor's
+// information") as the claimant's solicitor through the CCD API, instead of the event's page in XUI, with the same
+// answers as the UI
+export class ChangeSolicitorEmail {
   private ccdApiHelper = new CcdApiHelper();
 
-  async submit(caseId: string, emails: { defendant1Solicitor: string; claimantSolicitor: string }) {
-    await this.ccdApiHelper.submitEventThroughPages(hearingCentreAdminCredentials, 'AMEND_PARTY_DETAILS', caseId, [
+  async submit(caseId: string, email: string) {
+    await this.ccdApiHelper.submitEventThroughPages(claimantSolicitorCredentials, 'CHANGE_SOLICITOR_EMAIL', caseId, [
       {
-        page: 'Email',
+        page: 'Applicant1SolicitorEmail',
         answers: (data) => ({
-          specRespondentSolicitor1EmailAddress: emails.defendant1Solicitor,
-          respondentSolicitor1EmailAddress: emails.defendant1Solicitor,
-          applicantSolicitor1UserDetails: { ...data.applicantSolicitor1UserDetails, email: emails.claimantSolicitor },
+          applicantSolicitor1ServiceAddressRequired: 'No',
+          applicantSolicitor1UserDetails: { ...data.applicantSolicitor1UserDetails, email },
         }),
       },
     ]);
-    console.log(`AMEND_PARTY_DETAILS submitted through the API on case ${caseId}`);
+    console.log(`CHANGE_SOLICITOR_EMAIL submitted through the API on case ${caseId}`);
   }
 }
 ```
 
-How the pages list works. Each entry is an `EventPage`:
+Each entry in the pages list:
 
 | Property | Meaning |
 | --- | --- |
-| `page` | The page ID from `CaseEventToFields`, without the event ID in front. `Email` becomes `AMEND_PARTY_DETAILSEmail`. |
-| `answers` | The fields to set on that page. Either an object, or a function that gets the event's data so far (as earlier callbacks left it) and returns the answers. Use the function form to keep the rest of a complex field, as `applicantSolicitor1UserDetails` does above. |
+| `page` | The page ID `yarn event:info` lists. |
+| `answers` | The fields to set on that page, as CCD saves them: `'Yes'` or `'No'`, a list's code, a date as `YYYY-MM-DD`, money in pence. Either an object, or a function that gets the event's data so far (as the callbacks left it) and returns the answers. Use the function form to keep the rest of a complex field, as `applicantSolicitor1UserDetails` does above. |
 | `when` | Optional. A function of the event's data that says whether the user would see this page. The page is skipped when it returns false. |
 
-An event with no pages to answer passes an empty list, as `DismissCase` does:
-
-```typescript
-await this.ccdApiHelper.submitEventThroughPages(hearingCentreAdminCredentials, 'DISMISS_CASE', caseId, []);
-```
+An event with no pages to answer passes an empty list, as `api/DismissCase.ts` does. An event several users do takes the user as a parameter and uses `sessionUsers[user].credentials`.
 
 Gotchas found so far:
 
@@ -157,564 +213,168 @@ Gotchas found so far:
 - **Callbacks that fill other pages.** If the about-to-start callback fills fields on pages the user doesn't see and civil-service then acts on them, pass `onlyAnsweredPages = true` (the sixth parameter) so only the pages you answered are submitted.
 - **Documents.** Use civil-service's test document. A judge's Word order goes through `XuiDocumentHelper`.
 
-## 5. Share the answers between the two versions (optional)
+When an event's answers are more than a couple of values, put them in `playwright-tests/e2e/flows/events/shared_api_ui/<event>Specs.ts` and have both classes use them, so the UI and API versions can't drift apart (`sendAndReplySpecs.ts` is an example).
 
-When an event's answers are more than a couple of values, put them in `playwright-tests/e2e/flows/events/shared_api_ui/<event>Specs.ts` and have both classes use them. This keeps the UI and API versions answering the same way. For example, `sendAndReplySpecs.ts`:
+## 5. Write the event file
 
-```typescript
-export type MessageToSend = {
-  recipientRoleType: 'DISTRICT_JUDGE';
-  subjectType: 'HEARING';
-  subject: string;
-  content: string;
-};
-
-export function messageToSend(): MessageToSend {
-  return {
-    recipientRoleType: 'DISTRICT_JUDGE',
-    subjectType: 'HEARING',
-    subject: `Playwright message ${Date.now()}`,
-    content: 'Please could a judge look at the hearing arrangements for this claim.',
-  };
-}
-```
-
-`AMEND_PARTY_DETAILS` only needs two email addresses, so it passes them straight in and has no shared file.
-
-## 6. Add the setting
-
-Each optional step is turned on by a setting. Every setting is declared once, in `playwright-tests/e2e/journey/settings.ts`, with the values it takes, its default and what it does in each journey that reads it. Add an entry there, with a note for every journey the event belongs to:
+Copy an event file from `playwright-tests/events` and change it. `CHANGE_SOLICITOR_EMAIL`'s, copied from `amendPartyDetails.ts`:
 
 ```typescript
-  AMEND_PARTY_DETAILS: {
-    values: yesNoValues,
-    default: 'No',
-    notes: {
-      SPECIFIED: 'Optional step: once the defendants\' solicitors are assigned, the hearing centre admin changes the legal representatives\' email addresses with "Amend party details". Cannot be used with DEFAULT_JUDGMENT. Has an API version.',
-      UNSPECIFIED: 'Optional event: once Notify claim details has run, the hearing centre admin changes ...',
-    },
+import { expect } from '@playwright/test';
+import { claimantSolicitorCredentials } from '../civilConfig.ts';
+import { event } from '../e2e/journey/event.ts';
+import { ChangeSolicitorEmail } from '../e2e/flows/events/ui/ChangeSolicitorEmail.ts';
+import { ChangeSolicitorEmail as ChangeSolicitorEmailApi } from '../e2e/flows/events/api/ChangeSolicitorEmail.ts';
+
+// The claimant's solicitor confirms the email address civil-service sends them notifications at (their own sign-in
+// address), with "Change solicitor's information", once the defendants have the claim
+export default event({
+  id: 'CHANGE_SOLICITOR_EMAIL',
+  title: 'Claimant Solicitor changes their email address for notifications.',
+  description: 'Optional step: once the defendants have the claim, the claimant\'s solicitor sets the email address they get notifications at, with "Change solicitor\'s information". Has an API version.',
+  user: 'claimantSolicitor',
+  after: { SPECIFIED: 'ASSIGN_DEFENDANT_SOLICITORS', UNSPECIFIED: 'NOTIFY_CLAIM_DETAILS' },
+  onlyWhen: ['notOfflineAtNotify'],
+  answers: () => ({ email: claimantSolicitorCredentials.username }),
+  ui: ({ page, answers }) => new ChangeSolicitorEmail(page).submit(answers.email),
+  api: ({ caseId, answers }) => new ChangeSolicitorEmailApi().submit(caseId, answers.email),
+  check: ({ caseData, answers }) => {
+    expect(caseData.applicantSolicitor1UserDetails?.email, 'The email address was not saved').toBe(answers.email);
   },
-```
-
-Every property a setting can have, with a placeholder `MY_EVENT` (only `notes` is required; leave out what you don't need):
-
-```typescript
-  MY_EVENT: {
-    // The values it takes, the same in both journeys...
-    values: yesNoValues,
-    // ...or different in each: values: { SPECIFIED: [...], UNSPECIFIED: [...] },
-    // What it takes, as the guides put it, where there is no list of values or the list reads better described.
-    // A string, or { SPECIFIED: '...', UNSPECIFIED: '...' }
-    valuesText: 'Yes or No',
-    // For a setting with no list of values: why a value is not one it takes, or undefined when it is
-    check: (value) => (/^\d+$/.test(value) ? undefined : 'It must be a whole number, 0 or more.'),
-    // Its value when it is not set (leave it out for a setting that is off when not set). A string, or one per journey
-    default: 'No',
-    // The default as the guides put it, where it depends on other settings
-    defaultText: 'First order for the track',
-    // What it does in each journey. The setting is only for the journeys it has a note for.
-    notes: {
-      SPECIFIED: 'Optional step: <who does what, and when>. Cannot be used with <setting>. Has an API version.',
-      UNSPECIFIED: 'Optional step: <who does what, and when>. Has an API version.',
-    },
-  },
+});
 ```
 
 What each part is for:
 
-| Property | Meaning |
-| --- | --- |
-| `values` | The values the setting takes: `yesNoValues` for Yes/No, or `Object.values(...)` of an enum in `playwright-tests/enums` (for example `CASE_PROCEEDS_IN_CASEMAN`). It can differ by journey: `{ SPECIFIED: [...], UNSPECIFIED: [...] }`. |
-| `valuesText` and `check` | For a setting that is not one of a list (a number, a list of parties, a step name): what it takes, as the guides put it, and a function that says why a value is not valid. Leave out `check` where the code that reads the setting already checks it, as for `CASE_FLAGS`. `valuesText` can also describe a list that reads better described, as `FINAL_ORDER`'s does. |
-| `default` | Its value when it is not set. Leave it out for a setting that is off when not set. It can differ by journey, as `NOTICE_OF_CHANGE_AFTER`'s does. |
-| `defaultText` (optional) | The default as the guides put it, where it depends on other settings (`FINAL_ORDER`: "First order for the track"). |
-| `notes` | What it does in each journey. The setting is only for the journeys it has a note for. Say whether it has an API version, and which settings it can't be used with. |
-
-The claim parameters tables in the RUNNING guides are written from these entries (section 11), so the values, default and notes are only ever written here.
-
-Then read it in the config for every journey the event belongs to, `playwright-tests/e2e/journey/specified/specifiedConfig.ts` and/or `playwright-tests/e2e/journey/unspecified/unspecifiedConfig.ts`, through `read`, which gives the default when the setting is not set:
-
-```typescript
-    amendPartyDetails: read.yes('AMEND_PARTY_DETAILS'),
-```
-
-Use `read.yes(...)` for a Yes/No setting and `read.get(...)` for any other, cast to its enum (`read.get('SETTLE_CLAIM') as SettleClaim | undefined`).
-
-You don't need to check the value. Before the journey starts, each config's `validate()` checks every setting against the registry, so a value the setting doesn't take (`AMEND_PARTY_DETAILS=yes`) fails the run straight away, with the values it does take. A scenario in `playwright-tests/scenarios` that sets a name that is not a setting, or one only the other journey reads, fails too. Settings that can't be used together (for example `SETTLE_CLAIM` and `DISCONTINUE_CLAIM` both set) are rules in the same file (see 7.4).
-
-## 7. Add the journey step
-
-Add a step to `journeySteps(...)` in `specifiedSteps.ts` and/or `unspecifiedSteps.ts`, at the point in the journey where the event should run. Steps run in the order they are listed. Where the step is the same in both journeys, write it once, in its own file under `playwright-tests/e2e/journey/steps/`, and list it in both journeys (7.7). The journey and step files import every event class at once, through the index files in `flows/events/ui` and `flows/events/api`:
-
-```typescript
-import * as ui from '../../flows/events/ui/index.ts';
-import * as api from '../../flows/events/api/index.ts';
-```
-
-So first add a line for each new class to the matching index file, in alphabetical order:
-
-```typescript
-// playwright-tests/e2e/flows/events/ui/index.ts
-export { AmendPartyDetails } from './AmendPartyDetails.ts';
-// playwright-tests/e2e/flows/events/api/index.ts
-export { AmendPartyDetails } from './AmendPartyDetails.ts';
-```
-
-The step then uses `ui.AmendPartyDetails` and `api.AmendPartyDetails`.
-
-Then the step. Amend party details is the same in both journeys, so it is written once, in `playwright-tests/e2e/journey/steps/amendPartyDetails.ts`:
-
-```typescript
-// The hearing centre admin changes the legal representatives' email addresses with "Amend party details". Only run
-// with AMEND_PARTY_DETAILS=Yes, where Defendant 1 has a solicitor and the claim did not go offline at Notify claim
-// (unspecified only). The claim's state does not change.
-export function amendPartyDetails(c: JourneyConfig, ctx: JourneyContext): JourneyStep {
-  return {
-    name: 'AMEND_PARTY_DETAILS',
-    title: 'Hearing Centre Admin amends the legal representatives\' email addresses.',
-    user: 'hearingCentreAdmin',
-    needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
-    skipIf: [
-      [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
-    ],
-    run: async ({ page, storageState }) => {
-      const stateBefore = ctx.lastStateReached;
-      const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
-      await ctx.submitEvent(page, storageState, {
-        api: () => new api.AmendPartyDetails().submit(ctx.caseId, emails),
-        ui: () => new ui.AmendPartyDetails(page).submit(emails),
-      });
-      const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
-      expect(saved, 'The amended email addresses were not saved').toMatchObject({
-        specRespondentSolicitor1EmailAddress: emails.defendant1Solicitor,
-        respondentSolicitor1EmailAddress: emails.defendant1Solicitor,
-        applicantSolicitor1UserDetails: { email: emails.claimantSolicitor },
-      });
-      await ctx.assertCaseState(stateBefore);
-    },
-  };
-}
-```
-
-Each journey lists it where it runs: after Notify claim details in `unspecifiedSteps.ts`, after the defendants' solicitors are assigned in `specifiedSteps.ts`:
-
-```typescript
-    amendPartyDetails(c, ctx),
-```
-
-A step that only one journey has is written the same way (the object inside `return { ... }`), straight into that journey's list.
-
-Every property a step can have, in a shared step file with a placeholder `MyEvent` class and `MY_EVENT` setting. Only `name`, `title`, `user` and `run` are required; leave out what you don't need. A step that only one journey has is the object inside `return { ... }`, written straight into that journey's list.
-
-```typescript
-// What the step does, who does it and when, and which setting turns it on
-export function myEvent(c: JourneyConfig, ctx: JourneyContext, closingProblems: ClosingProblems): JourneyStep {
-  return {
-    // The step's name, which STOP_AFTER_TEST can use: the event ID, with a suffix if the event runs more than once
-    name: 'MY_EVENT',
-    // For several users doing the same event in turn: the shared name of their steps (7.5)
-    group: 'MY_EVENTS',
-    // The test title in the report
-    title: 'Hearing Centre Admin does my event.',
-    // The saved session the step runs as (helpers/SessionHelper.ts)
-    user: 'hearingCentreAdmin',
-    // The facts about the claim the step needs (c.facts, 7.1)
-    needs: [c.facts.reachesJudicialReferral],
-    // Other [condition, reason] pairs known before the journey starts, usually "the setting is off"
-    skipIf: [
-      [c.myEvent !== yesNo.YES, 'My event is switched off (set MY_EVENT=Yes to run it)'],
-    ],
-    // Only for a step that closes the claim: it still runs where the journey was stopped early (7.3)
-    closesClaim: true,
-    // [condition, problem] pairs for settings the step can't run with, given how the run is stopped (7.3)
-    invalidIf: (stops) => (c.myEvent === yesNo.YES ? closingProblems('MY_EVENT=Yes', stops, settleableStates, false) : []),
-    // The step itself. user is the step's user, which the API version submits as.
-    run: async ({ page, storageState, user }) => {
-      // A reason to skip only known during the run, as the first line (7.2)
-      test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as my event is not offered in ${ctx.lastStateReached}`);
-      const answers = { reason: 'A reason' };
-      await ctx.submitEvent(page, storageState, {
-        // The API version, used until API_UNTIL is reached (leave it out if there is none)
-        api: () => new api.MyEvent().submit(ctx.caseId, answers, user),
-        // The UI version, used otherwise
-        ui: () => new ui.MyEvent(page).submit(answers),
-        // The page to reopen if the session ends part way, for an event on a general application
-        reopenUrl: ctx.gaCaseUrl(),
-        // The business process civil-service starts for the event, to wait for (7.6)
-        businessProcess: 'MY_EVENT',
-        // The state the claim should be in afterwards
-        expectState: caseStates.JUDICIAL_REFERRAL,
-      });
-      // Check what the event saved
-      const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
-      expect(saved, 'My event\'s answers were not saved').toMatchObject({ myEventReason: answers.reason });
-    },
-  };
-}
-```
-
-What each part of a step does. The Amend party details step above uses `name`, `title`, `user`, `needs`, `skipIf` and `run`; sections 7.1 to 7.8 show the others, each with a real step from the journeys.
-
-| Property | What it's for | Shown in |
+| Part | What it says | Needed |
 | --- | --- | --- |
-| `name` | The step's name. `STOP_AFTER_TEST` uses it, and it appears in the report. Use the event ID, or the event ID with a suffix if the event runs more than once. | The step above |
-| `title` | The test title shown in the Playwright report. | The step above |
-| `user` | Which saved session the step runs as. One of `claimantSolicitor`, `respondent1Solicitor`, `respondent2Solicitor`, `judge`, `hearingCentreAdmin`, `legalAdviser`, `nbcAdmin`, `ctscAdmin`, `newClaimantSolicitor`, `newDefendantSolicitor` (from `helpers/SessionHelper.ts`). | The step above |
-| `needs` | The facts about the claim the step needs (`c.facts`). When the claim doesn't have one, the step is left out of the run, with the fact's reason. | The step above, 7.1 |
-| `skipIf` | Other `[condition, reason]` pairs known before the journey starts, usually "the setting is off". When one holds, the step is left out of the run. | The step above |
-| `run` | The step itself. It gets `page`, `storageState` and `user`. | The step above, 7.6 |
-| `test.skip` in `run` | Skips the step for a reason only known while the journey runs. | 7.2 |
-| `closesClaim` | Makes a step that closes the claim run even where the journey was stopped early. | 7.3 |
-| `invalidIf` | `[condition, problem]` pairs for settings that can't be used with this step, where it also depends on how the claim goes (for example where the journey stops). They are checked before the journey starts, so the run fails at once with every problem listed. Clashes between settings alone are rules in `settings.ts` (7.4). | 7.3 |
-| `group` | Steps for the same event by several users share a group and run as one numbered test. | 7.5 |
-| `ctx.submitEvent` | Submits the event through its API or UI class, then waits for its business process and checks the state. | The step above, 7.6 |
+| `id` | The CCD event ID. It is also the step's name and the setting that turns it on (`CHANGE_SOLICITOR_EMAIL=Yes`). | Yes |
+| `title` | The test's title in the report. | Yes |
+| `description` | What it does, as the RUNNING guides say in their claim parameters tables. A string, or `{ SPECIFIED: '...', UNSPECIFIED: '...' }` where the journeys differ. Say whether it has an API version, and which settings it can't be used with. | Yes |
+| `user` | Who does it: `claimantSolicitor`, `respondent1Solicitor`, `respondent2Solicitor`, `judge`, `hearingCentreAdmin`, `legalAdviser`, `nbcAdmin`, `ctscAdmin`, `newClaimantSolicitor` or `newDefendantSolicitor`. | Yes |
+| `after` | The step it comes after in each journey it belongs to, from the step names `yarn event:info` lists. Only the journeys named get it. | Yes, or `closesClaim` |
+| `closesClaim` | For an event that closes the claim, instead of `after` (5.3). | No |
+| `onlyWhen` | Facts about the claim it needs (5.2). | No |
+| `answers` | What the user enters, worked out once each time the event runs, so `ui`, `api` and `check` use the same values. It gets the journey's config (`claim`), for answers that depend on the claim. | No |
+| `ui` | Calls the UI class. Gets `page`, `answers` and `claim`. | Yes |
+| `api` | Calls the API class. Gets `caseId`, `user`, `answers` and `claim`. | No |
+| `expect` | `state`: the state the claim moves to (leave it out when it stays where it was). `businessProcess`: the process civil-service starts for the event, to wait for (5.4). | No |
+| `check` | Anything else to check once it's done, with the saved case data (`caseData`), `page`, `inUi` (whether the UI class was used), `answers` and `claim` (5.5). | No |
 
-What goes in `run`:
+### 5.1 Where it goes (`after`)
 
-1. **Submit the event with `ctx.submitEvent(page, storageState, {...})`.** Give it:
-   - `api`: the call to the API class. It is used while the journey is still fast-forwarding with `API_UNTIL`. Leave it out if the event has no API version.
-   - `ui`: the call to the UI class, used otherwise. If the user's XUI session ends part way, it signs them in again, reopens the case and runs the event again from the start. For an event on a general application, also give `reopenUrl: ctx.gaCaseUrl()`.
-   - `businessProcess` (optional): the business process to wait for (7.6).
-   - `expectState` (optional): the state the claim should be in afterwards.
+`after` names the step the event comes straight after, in each journey. `yarn event:info` lists each journey's steps. Pick the first point where the event makes sense: the claim is in a state the event is offered in, the user has access to the case, and anything the event needs has happened.
 
-   It returns what the class returned, for events whose class returns something (such as the document it chose).
-2. **Check the rest of the result.** Where the event saves data, read it with `ctx.testingEndpointHelper.getCaseData(ctx.caseId)` and check the fields with `toMatchObject`. Where the state check depends on something only known after the event, leave out `expectState` and call `ctx.assertCaseState(...)` yourself, as Amend party details does with the state from before the step.
+- An event in only one journey names only that journey: `after: { SPECIFIED: 'ASSIGN_DEFENDANT_SOLICITORS' }`.
+- An event can come after another event file's event; the journeys place them in the right order.
+- Several events after the same step go in file name order.
+- A step name that doesn't exist fails the run straight away, listing the journey's steps.
 
-A step whose API and UI versions do different things (for example claiming a work allocation task first, or checking different things afterwards) uses `ctx.useApi()` and `ctx.runEvent(...)` directly instead. Look at the Standard Direction Order step for an example.
+### 5.2 Facts the event needs (`onlyWhen`)
 
-### 7.1 List the facts the step needs (`needs`)
-
-Whether a step applies to a claim mostly depends on facts about the claim: who has a solicitor, and where the claimant's response takes it. Each journey works these out once, in `playwright-tests/e2e/journey/claimFacts.ts`, and its config keeps them as `c.facts`, with the same names in both journeys. A step lists the ones it needs, and is left out of the run, with the fact's reason, when the claim doesn't have one:
-
-```typescript
-      needs: [c.facts.defendant1HasSolicitor],
-```
-
-The facts both journeys have:
+Whether an event applies to a claim mostly depends on facts about the claim: who has a solicitor, and where the claimant's response takes it. List the facts the event needs, and the journey leaves it out, with the fact's reason, where the claim doesn't have one. The facts, from `playwright-tests/e2e/journey/claimFacts.ts`:
 
 | Fact | The claim |
 | --- | --- |
 | `defendant1HasSolicitor` | Defendant 1 has a solicitor (is not a litigant in person). |
 | `notOfflineAtNotify` | Notify claim and Notify claim details did not take the claim offline. Always true for a specified claim, which has neither. |
-| `everyDefendantRepresented` | Every defendant has a solicitor. A litigant in person responds through the citizen service instead. |
-| `reachesJudicialReferral` | The claimant's response takes the claim to JUDICIAL_REFERRAL. For the steps from the judge's order on. |
-| `onlineAfterClaimantResponse` | The claimant's solicitor responds and the claim stays online. For court staff steps once the claimant has responded (case flags, contact information). `stateAfterClaimantResponse(c)` in `journey/steps/journeyConfig.ts` gives the state it is then in. |
-| `reachesCaseProgression` | The judge's (or legal adviser's) order moves the claim to CASE_PROGRESSION. For the steps after it. |
-| `claimantSolicitorCanCloseClaim` | The claimant's solicitor can settle or discontinue the claim (not two defendants with a litigant in person). |
+| `everyDefendantRepresented` | Every defendant has a solicitor. |
+| `reachesJudicialReferral` | The claimant's response takes the claim to JUDICIAL_REFERRAL. For events from the judge's order on. |
+| `onlineAfterClaimantResponse` | The claimant's solicitor responds and the claim stays online. |
+| `reachesCaseProgression` | The judge's (or legal adviser's) order moves the claim to CASE_PROGRESSION. For events after it. |
+| `claimantSolicitorCanCloseClaim` | The claimant's solicitor can settle or discontinue the claim (not two defendants where one is a litigant in person). |
 | `withoutDefaultJudgment` | The claimant has not asked for default judgment. |
 
-A specified claim also has `reachesMediation` and `notSettledInMediation`, and an unspecified claim `defendant2HasOwnSolicitor` and `claimantResponds`.
+Your editor offers these names, and flags one that doesn't exist.
 
-`skipIf` then only has the step's own conditions, usually "the setting is off":
+Default judgment is handled for you. Where the claim has default judgment, the journey skips every step after it apart from those that close the claim. An event switched on that would be skipped that way fails the run before it starts: "DEFAULT_JUDGMENT=Yes cannot be used with `<ID>`=Yes".
+
+### 5.3 An event that closes the claim (`closesClaim`)
+
+An event that ends the claim (dismissing it, for example) has `closesClaim` instead of `after`, with the states it is offered in. It goes at the end of both journeys and still runs where `STOP_AT_STATE` or `STOP_AFTER_TEST` stopped the journey earlier, so a test can close a claim wherever it stops. The run fails before it starts if the journey would end in a state the event isn't offered in, and the step is skipped if the claim turns out to be in such a state while it runs. From `playwright-tests/events/dismissCase.ts`:
 
 ```typescript
-      needs: [c.facts.reachesJudicialReferral],
-      skipIf: [
-        [c.mySetting !== yesNo.YES, 'My event is switched off (set MY_SETTING=Yes to run it)'],
-      ],
+  user: 'hearingCentreAdmin',
+  closesClaim: { offeredIn: settleableStates },
+  ui: ({ page }) => new DismissCase(page).submit(),
+  api: ({ caseId }) => new DismissCaseApi().submit(caseId),
+  expect: { state: caseStates.CASE_DISMISSED, businessProcess: 'DISMISS_CASE' },
 ```
 
-Each fact is a list of `[condition, reason]` pairs, the same as `skipIf`, so it can also be spread into a list of conditions that is not a step's (`...c.facts.everyDefendantRepresented`), or tested with `holds(c.facts.everyDefendantRepresented)`. The steps are wrapped in `withNeeds(...)`, which adds each step's facts to its `skipIf` straight away, as later code reads and copies a step's `skipIf`.
+`settleableStates`, `discontinuableStates` and `casemanStates` in `claimFacts.ts` are lists of states for the closing events; they come from the events' `PreConditionState(s)`.
 
-If your event needs a fact that isn't there yet and other steps could use it, add it to `claimFacts.ts`, for both journeys where it makes sense, with a comment.
+### 5.4 The state and civil-service's business process (`expect`)
 
-### 7.2 Skip a step for a reason only known during the run
+After the event, the journey checks the claim's state: the one in `expect.state`, or, without one, the state it was in before. `yarn event:info` says whether the event changes the state ("Moves the claim to").
 
-`skipIf` is worked out before the journey starts. Some things are only known once earlier steps have run, such as the state the journey stopped in. For those, call `test.skip(condition, reason)` as the first line of `run`. `ctx.lastStateReached` holds the claim's state after the last step. From the Dismiss case step:
+Many events start a business process in civil-service (Camunda) once submitted, which sends notifications, makes documents or changes the state. Give its name in `expect.businessProcess` (usually the event ID) and the journey waits for it before checking the state, or the check can run too early. How long it waits is set by `BUSINESS_PROCESS_WAIT_SECONDS` (default 300). The API class already waits for any earlier business process before starting, so you don't need to wait before your event.
 
-```typescript
-      run: async ({ page, storageState }) => {
-        test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the case cannot be dismissed in ${ctx.lastStateReached}`);
-```
+### 5.5 Checking what the event saved (`check`)
 
-`settleableStates` is a list of states in `playwright-tests/e2e/journey/claimFacts.ts`, shared by both journeys. Lists like it (`discontinuableStates`, `casemanStates`) come from the event's `PreConditionState(s)` in the CCD definition.
-
-### 7.3 A step that closes the claim (`closesClaim` and `invalidIf`)
-
-A step that ends the claim (settle, discontinue, dismiss, take offline) goes at the end of the list and sets `closesClaim: true`. The settle, discontinue, dismiss and take-offline steps are the same in both journeys, so they are written once, in `playwright-tests/e2e/journey/steps/closingSteps.ts` (see 7.7). It then still runs when `STOP_AT_STATE` or `STOP_AFTER_TEST` has stopped the journey earlier, so a test can close a claim wherever it stops. It also needs `invalidIf`, so the run fails straight away if the journey would stop in a state where the event isn't offered. The whole Dismiss case step:
+`check` runs once the event is done, with the case data as saved. Check the fields the event should have changed with `toMatchObject` or `toBe`, with a message that says what went wrong. It gets `inUi` too, for a check that only makes sense in the browser, such as the note on the Notes tab in `events/addCaseNote.ts`:
 
 ```typescript
-    {
-      name: 'DISMISS_CASE',
-      title: 'Hearing Centre Admin dismisses the case.',
-      user: 'hearingCentreAdmin',
-      closesClaim: true,
-      invalidIf: (stops) => c.dismissCase === yesNo.YES ? closingProblems('DISMISS_CASE=Yes', stops, settleableStates, false) : [],
-      skipIf: [
-        [c.dismissCase !== yesNo.YES, 'Dismissing the case is switched off (set DISMISS_CASE=Yes to run it)'],
-      ],
-      run: async ({ page, storageState }) => {
-        test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as the case cannot be dismissed in ${ctx.lastStateReached}`);
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.DismissCase().submit(ctx.caseId),
-          ui: () => new ui.DismissCase(page).submit(),
-          businessProcess: 'DISMISS_CASE',
-          expectState: caseStates.CASE_DISMISSED,
-        });
-      },
-    },
-```
-
-`invalidIf` gets `stops`, which says how the run is stopped (`stopAtState`, `stopAfterTest`). It returns a list of `[condition, problem]` pairs, or an empty list when the setting is off. `closingProblems(setting, stops, offeredIn, claimantSolicitor)` builds the usual problems for a closing step. Each journey makes it with `closingProblemsFor(c, journeyEndState)` from `closingSteps.ts`, as the state the journey ends in depends on that journey's steps, and passes it to the closing steps:
-
-- the journey would end in a state not in `offeredIn`
-- where `claimantSolicitor` is true, the claim has two defendants and one is a litigant in person (the claimant's solicitor can't settle or discontinue those)
-
-```typescript
-export function closingProblemsFor(c: JourneyConfig, journeyEndState: (stops: JourneyStops) => caseStates | undefined): ClosingProblems {
-  return (setting, stops, offeredIn, claimantSolicitor) => {
-    const endState = journeyEndState(stops);
-    return [
-      [
-        claimantSolicitor && !holds(c.facts.claimantSolicitorCanCloseClaim),
-        `${setting} cannot be used with CLAIM_TYPE=${c.claimType}: the claimant's solicitor cannot settle or discontinue a claim against two defendants where one is a litigant in person`,
-      ],
-      [
-        endState !== undefined && !offeredIn.includes(endState),
-        `${setting} cannot be used where the journey ends in ${endState}${stops.stopAtState ? ' (STOP_AT_STATE)' : ''}: it is only offered in ${offeredIn.join(', ')}`,
-      ],
-    ];
-  };
-}
-```
-
-The problem text should name both settings and say why they can't go together, as these do.
-
-### 7.4 Settings that can't be used together (`settingRules`)
-
-When your setting can't be used with another, add a rule to `settingRules` in `playwright-tests/e2e/journey/settings.ts`. Each rule names the journeys it is for and gives the problem when the settings clash. They are checked with the setting values, before the journey starts, so the run fails at once with every problem listed. A claim with default judgment never has its defendants respond, so no step that needs a response can run with `DEFAULT_JUDGMENT=Yes`. `AMEND_PARTY_DETAILS` added one line for that:
-
-```typescript
-  notWithDefaultJudgment(['SPECIFIED'], 'AMEND_PARTY_DETAILS', 'AMEND_PARTY_DETAILS=Yes'),
-```
-
-Any other clash is a rule of its own. `problem` gets the journey's settings: `get` for a setting's value (or its default), `isSet` for whether the scenario set it, and `isOn` for whether it is on (Yes, or set):
-
-```typescript
-  {
-    journeys: ['SPECIFIED'],
-    problem: (s) => (s.isSet('SET_ASIDE_JUDGMENT') && !s.isOn('DEFAULT_JUDGMENT')
-      ? 'SET_ASIDE_JUDGMENT needs DEFAULT_JUDGMENT=Yes: only a default judgment can be set aside'
-      : undefined),
+  check: async ({ caseData, page, inUi, answers }) => {
+    const notes = (caseData.caseNotes ?? []).map((entry: { value?: { note?: string } }) => entry.value?.note);
+    expect(notes, 'The case note was not saved').toContain(answers.note);
+    if (inUi) {
+      await new AddCaseNote(page).verifyNoteShown(answers.note);
+    }
   },
 ```
 
-The problem text should name both settings and say why they can't go together. Then add "Cannot be used with ..." to both settings' notes in the registry, which the RUNNING guides' tables are written from (section 11).
-
-A clash that also depends on how the claim goes, rather than only on the settings, stays in a step's `invalidIf` (or in `validate()`): for example, the closing steps in 7.3, which depend on where the journey stops, or uploading mediation documents, which needs the claimant's response to take the claim to mediation.
-
-Check it works by running with both settings on. The run should fail before any step, listing the problem:
-
-```bash
-ENV=aat DEFAULT_JUDGMENT=Yes AMEND_PARTY_DETAILS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
-```
-
-### 7.5 The same event done by several users (`group`)
-
-When several users do the same event in turn (each solicitor uploading evidence, for example), build one step per user from a list and give them the same `group`. They sit next to each other and run as one numbered test, and `STOP_AFTER_TEST` can name either a single step or the group. Each step has its own `name` and `user`, and `run` gets the user as `user`, which the API version needs to submit as that user. From `specifiedSteps.ts`:
-
-```typescript
-  function uploadEvidenceSteps(): JourneyStep[] {
-    const solicitors = [
-      { name: 'UPLOAD_EVIDENCE_CLAIMANT_SOLICITOR', label: 'Claimant Solicitor', user: 'claimantSolicitor' },
-      { name: 'UPLOAD_EVIDENCE_DEFENDANT1_SOLICITOR', label: 'Defendant 1 Solicitor', user: 'respondent1Solicitor' },
-      { name: 'UPLOAD_EVIDENCE_DEFENDANT2_SOLICITOR', label: 'Defendant 2 Solicitor', user: 'respondent2Solicitor', defendant2: true },
-    ] as const;
-    return solicitors.map((solicitor) => ({
-      group: 'UPLOAD_EVIDENCE',
-      name: solicitor.name,
-      title: `${solicitor.label} uploads evidence.`,
-      user: solicitor.user,
-      needs: [c.facts.reachesCaseProgression],
-      skipIf: [
-        ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
-      ],
-      run: async ({ page, storageState, user }) => {
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.UploadEvidence().submit(ctx.caseId, user, c.track),
-          ui: () => new ui.UploadEvidence(page).submit(c.track),
-          expectState: caseStates.CASE_PROGRESSION,
-        });
-      },
-    }));
-  }
-```
-
-The function is spread into the list of steps where the steps should run:
-
-```typescript
-    ...uploadEvidenceSteps(),
-```
-
-The API class for an event like this takes the user as a parameter, instead of using one user's credentials, as `AmendPartyDetails` does.
-
-### 7.6 Wait for civil-service's business process
-
-Many events start a business process in civil-service (Camunda) after they are submitted, which sends notifications, makes documents or changes the state. Wait for it to finish before checking the state, or the check can run too early. Give `ctx.submitEvent` the business process name, which is usually the event ID. It waits for it before checking `expectState`:
-
-```typescript
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.DismissCase().submit(ctx.caseId),
-          ui: () => new ui.DismissCase(page).submit(),
-          businessProcess: 'DISMISS_CASE',
-          expectState: caseStates.CASE_DISMISSED,
-        });
-```
-
-Where the business process depends on something only known after the event, leave out `businessProcess` and call `ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, '<process>')` yourself, as the default judgment step does.
-
-How long it waits is set by `BUSINESS_PROCESS_WAIT_SECONDS` (default 300). Events that don't start one, such as Amend party details, skip this. The API helper `submitEventThroughPages` already waits for any earlier business process before starting an event, so you don't need to wait before your step.
-
-### 7.7 A step shared by both journeys (`journey/steps/`)
-
-When a step is the same in both journeys, write it once, in a file under `playwright-tests/e2e/journey/steps/`, rather than in both `specifiedSteps.ts` and `unspecifiedSteps.ts`. The file exports a function that takes the journey's config and context, `(c, ctx)`, and returns the step. `c` is either journey's config (`JourneyConfig`), so the step reads only what both configs have, and checks `c.caseType` (`'SPECIFIED'` or `'UNSPECIFIED'`) where the journeys differ. From `stayCaseSteps.ts`:
-
-```typescript
-export function stayCase(c: JourneyConfig, ctx: JourneyContext): JourneyStep {
-  return {
-    name: 'STAY_CASE',
-    title: 'Hearing Centre Admin stays the case.',
-    user: 'hearingCentreAdmin',
-    needs: [c.facts.reachesJudicialReferral],
-    skipIf: [stayOff(c)],
-    run: async ({ page, storageState }) => {
-      await ctx.submitEvent(page, storageState, {
-        api: () => new api.StayCase().submit(ctx.caseId),
-        ui: () => new ui.StayCase(page).submit(),
-        expectState: caseStates.CASE_STAYED,
-      });
-    },
-  };
-}
-```
-
-Each journey lists it where the step runs:
-
-```typescript
-    stayCase(c, ctx),
-```
-
-Steps that share state, such as discontinuing the claim and court staff validating the discontinuance, come from one function that returns both (`discontinueSteps` in `closingSteps.ts`), spread into the list with `...discontinueSteps(c, ctx, closingProblems)`.
-
-A feature with several steps (send a message, then reply to it) that belongs in both journeys works the same way. The file exports a function that takes the parts of the config it needs, the journey context and anything that differs between journeys, and returns the steps. From `sendAndReplySteps.ts`:
-
-```typescript
-export function sendAndReplySteps(
-  c: { sendAndReply: yesNo },
-  ctx: JourneyContext,
-  stateDuring: caseStates,
-  skipIf: Array<[boolean, string]>,
-): JourneyStep[] {
-  const off: [boolean, string] = [c.sendAndReply !== yesNo.YES, 'Sending messages is switched off (set SEND_AND_REPLY=Yes to run it)'];
-  if (c.sendAndReply !== yesNo.YES) {
-    return [{ name: 'SEND_AND_REPLY', title: 'Court staff and a judge send each other messages.', user: 'hearingCentreAdmin', skipIf: [off], run: async () => {} }];
-  }
-  const message = messageToSend();
-  const reply = replyTo(message);
-
-  return [
-    {
-      name: 'SEND_MESSAGE',
-      group: 'SEND_AND_REPLY',
-      title: 'Hearing Centre Admin sends a district judge a message.',
-      user: 'hearingCentreAdmin',
-      skipIf,
-      run: async ({ page, storageState }) => {
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.SendAndReply().send(ctx.caseId, message),
-          ui: () => new ui.SendAndReply(page).send(message),
-        ...
-```
-
-Three things to copy from it:
-
-- **Switched off:** when the setting is off, return a single placeholder step with the reason in `skipIf`, so the journey still lists it as switched off.
-- **Shared answers:** work out values both steps need (the message and its reply) once, before the steps, so the reply step finds the message the first step sent.
-- **Journey differences as parameters:** the journey's own skip conditions (`skipIf`) and the state the claim is in (`stateDuring`) are passed in, because they differ between the journeys.
-
-Each journey then spreads it into its list, passing its own values. From `specifiedSteps.ts`:
-
-```typescript
-    ...sendAndReplySteps(c, ctx, c.stayCase === yesNo.YES ? caseStates.CASE_STAYED : caseStates.JUDICIAL_REFERRAL, c.facts.reachesJudicialReferral),
-```
-
-### 7.8 Add the step to both journeys
-
-An event that exists on both specified and unspecified claims needs its step in both `specifiedSteps.ts` and `unspecifiedSteps.ts`, and its setting read in both config files, with a note for each journey in `settings.ts` (section 6). The two journeys differ, so check each one:
-
-- **Where the step goes.** The steps around it differ. For example, an unspecified claim has Notify claim and Notify claim details steps that a specified claim doesn't.
-- **The facts it needs.** The facts have the same names in both journeys, but a claim gets to the same point in different ways (7.1). Check which ones each journey's step needs.
-
-Amend party details shows how a difference can still be shared. An unspecified claim can go offline at Notify claim, which a specified claim never does. Rather than two steps, both configs have the fact `notOfflineAtNotify`, which always holds for a specified claim (its list of conditions is empty), so the one step needs it in both journeys:
-
-```typescript
-    needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
-```
-
-Where the journeys differ in a value rather than a fact, the shared step checks `c.caseType`. Checking it also tells TypeScript which journey's config `c` is, so the step can then read a setting only that journey has. From `createSdo.ts`, where only a specified claim can be a flight delay small claim:
-
-```typescript
-const flightDelaySmallClaim = (c: JourneyConfig) => c.caseType === 'SPECIFIED' && c.flightDelaySmallClaim;
-```
-
-The Add case note step checks it to expect the claim to stay where it was, which is a different state in each journey:
-
-```typescript
-      await ctx.assertCaseState(specified ? caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT : caseStates.CASE_ISSUED);
-```
-
-Only write a step into both journey files when most of it differs.
-
-## 8. Add any new case state
+## 6. Add any new case state
 
 If the event moves the claim to a state the framework hasn't seen before, add it to `playwright-tests/enums/caseStates.ts`, using the state ID from the CCD definition. `DISMISS_CASE` did this for `CASE_DISMISSED`.
 
-## 9. Run it
+## 7. Run it
 
-Run the journey with the new setting on, from the repository root. Run the UI version and the API version, on each claim type the event applies to.
-
-UI version, specified 1v1 claim, stopping straight after the new step:
+Check where the step lands first. `--list` shows the tests without running anything:
 
 ```bash
-ENV=aat AMEND_PARTY_DETAILS=Yes STOP_AFTER_TEST=AMEND_PARTY_DETAILS npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --headed
+ENV=aat CHANGE_SOLICITOR_EMAIL=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --list
 ```
 
-API version: fast-forward through the API past the step, so the step itself goes through the API:
+Then run the journey with the setting on, stopping straight after the event. Run the UI version and the API version, in each journey and on each claim type the event applies to. Without `--list` these run a real journey on AAT.
+
+UI version, specified 1v1 claim:
 
 ```bash
-ENV=aat API_UNTIL=JUDICIAL_REFERRAL AMEND_PARTY_DETAILS=Yes STOP_AFTER_TEST=AMEND_PARTY_DETAILS npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+ENV=aat CHANGE_SOLICITOR_EMAIL=Yes STOP_AFTER_TEST=CHANGE_SOLICITOR_EMAIL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --headed
 ```
 
-Unspecified 1v2 different solicitors, UI:
+API version: fast-forward through the API past the event, so the event itself goes through the API:
 
 ```bash
-ENV=aat CLAIM_TYPE=1v2DS AMEND_PARTY_DETAILS=Yes STOP_AFTER_TEST=AMEND_PARTY_DETAILS npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium --headed
+ENV=aat CHANGE_SOLICITOR_EMAIL=Yes STOP_AFTER_TEST=CHANGE_SOLICITOR_EMAIL API_UNTIL=AWAITING_APPLICANT_INTENTION npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium
+```
+
+Both journeys at once, two at a time:
+
+```bash
+ENV=aat WORKERS=2 CHANGE_SOLICITOR_EMAIL=Yes STOP_AFTER_TEST=CHANGE_SOLICITOR_EMAIL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
 Things to check:
 
-- The step passes in both the UI and the API version.
-- A setting with a wrong value fails the run straight away with your message.
-- A setting combined with one it can't go with fails straight away, listing the problem.
-- With the setting off, the step doesn't appear in the report.
-- The journey carries on past the step and the later steps still pass (run once without `STOP_AFTER_TEST`).
+- The event passes in both the UI and the API version.
+- `CHANGE_SOLICITOR_EMAIL=yes` (a value it doesn't take) fails the run straight away.
+- With the setting off, the step is skipped, with "CHANGE_SOLICITOR_EMAIL is switched off (set CHANGE_SOLICITOR_EMAIL=Yes to run it)".
+- The journey carries on past the event and the later steps still pass (run once without `STOP_AFTER_TEST`).
 
-## 10. Add a scenario
+## 8. Add a scenario
 
-Add the setting to a named scenario in `playwright-tests/scenarios/specifiedScenarios.ts` or `unspecifiedScenarios.ts`, so the pipeline runs it. You can add it to an existing scenario that reaches the right point, or add a new one. The tag picks when it runs: `@spec-pr`/`@unspec-pr` on every PR, `@spec-master`/`@unspec-master` on master, `@spec-nightly`/`@unspec-nightly` every night.
-
-`AMEND_PARTY_DETAILS` was added to an existing nightly scenario that already stops at `JUDICIAL_REFERRAL` through the API:
+Add the setting to a named scenario in `playwright-tests/scenarios/specifiedScenarios.ts` or `unspecifiedScenarios.ts`, so the pipeline runs it. You can add it to an existing scenario that reaches the right point, or add a new one. The tag picks when it runs: `@spec-pr`/`@unspec-pr` on every PR, `@spec-master`/`@unspec-master` on master, `@spec-nightly`/`@unspec-nightly` every night. For example, adding it to the scenario that already runs the other court staff events:
 
 ```typescript
-  // The hearing centre admin amends the legal representatives' details and adds a case note, then dismisses the case
   {
     name: 'SPEC_1v1_FAST_DISMISS_CASE',
     tags: [NIGHTLY],
-    env: { ...company1v1, ...closeAtJudicialReferral, ADD_CASE_NOTE: 'Yes', AMEND_PARTY_DETAILS: 'Yes', DISMISS_CASE: 'Yes' },
+    env: { ...company1v1, ...closeAtJudicialReferral, ADD_CASE_NOTE: 'Yes', AMEND_PARTY_DETAILS: 'Yes', CHANGE_SOLICITOR_EMAIL: 'Yes', DISMISS_CASE: 'Yes' },
   },
 ```
 
-Run the scenario by its tag to check it:
+A scenario that sets a name that isn't a setting, or one only the other journey has, fails before it starts. Run it by its tag to check it:
 
 ```bash
 ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --grep @SPEC_1v1_FAST_DISMISS_CASE
@@ -722,27 +382,35 @@ ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/Specifie
 
 Keep PR scenarios few and quick: PR previews have fewer resources than AAT. Most new events belong in a nightly scenario.
 
-## 11. Update the guides
+## 9. Update the guides
 
-Update the documents that describe the framework, in the same commit:
+In the same commit:
 
-- `playwright-tests/RUNNING_SPECIFIED_TESTS.md` and/or `RUNNING_UNSPECIFIED_TESTS.md`: add the step to the list of steps in section 2, in the order it runs, and an example command where it helps.
-- Then run `yarn guides:generate`. It writes each guide's claim parameters table from `e2e/journey/settings.ts`, so the new setting appears there with its values, default and notes, and writes the `.docx` version of every guide whose text has changed. Don't edit the tables by hand: the next run puts them back. `yarn guides:generate --check` lists anything out of date without changing it.
-- `playwright-tests/MISSING_EVENTS.md`: move the event from the Events tables to "Done since", with which scenarios passed on AAT and when.
+- `playwright-tests/RUNNING_SPECIFIED_TESTS.md` and/or `RUNNING_UNSPECIFIED_TESTS.md`: add the event to the list of steps in section 2, in the order it runs, with an example command where it helps.
+- Run `yarn guides:generate`. It adds the event's setting to each guide's claim parameters table, from its `description`, and writes the `.docx` version of every guide whose text changed. Don't edit the tables by hand: the next run puts them back. `yarn guides:generate --check` lists anything out of date without changing it.
+- `playwright-tests/MISSING_EVENTS.md`: move the event to "Done since", with which scenarios passed on AAT and when.
 
-## 12. Checklist
+## 10. When an event file isn't enough
 
-- [ ] Event ID, Next step name, user, states, pages and fields found in the CCD definition and tried by hand in XUI
-- [ ] UI class in `flows/events/ui`, with a comment describing the event's pages
+An event file covers an optional event that happens once, as one user, at one point in the journey, turned on with Yes or No. A few events need more, and are written as steps in the journeys instead:
+
+- **Events the journey always does**, such as creating the claim or the defendants' responses: in `playwright-tests/e2e/journey/specified/specifiedSteps.ts` and `unspecified/unspecifiedSteps.ts`.
+- **Events several users do in turn**, such as each solicitor uploading evidence: steps that share a `group`, such as `uploadEvidenceSteps` in the journey files.
+- **Events that change the rest of the journey**, such as a notice of change, or steps that go after a step a setting names: `insertAfterStep`, as in `noticeOfChangeSteps.ts` and `refundSteps.ts`.
+- **Settings that aren't Yes or No**, such as `SETTLE_CLAIM=MARK_PAID_IN_FULL`: declared in the settings registry, `playwright-tests/e2e/journey/settings.ts`, with the values they take, read in each journey's config.
+- **Settings that can't be used together**, other than with default judgment: a rule in `settingRules` in `settings.ts`.
+
+Steps the two journeys share are written once, in `playwright-tests/e2e/journey/steps/`, and listed in each journey. Look at the step nearest to what you need and follow it.
+
+## 11. Checklist
+
+- [ ] `yarn event:info <EVENT_ID>` checked: the event is in XUI, who does it, its states, pages and fields
+- [ ] Event tried by hand in XUI on AAT, and civil-service's handler read for its checks and confirmation
+- [ ] UI class in `flows/events/ui`, copied from a similar one, with a comment describing the event's pages
 - [ ] API class in `flows/events/api`, answering the same pages the same way
-- [ ] Both classes added to the `index.ts` in their folder
-- [ ] Shared answers in `flows/events/shared_api_ui` if there are more than a few
-- [ ] Setting declared in `e2e/journey/settings.ts`, with a note for each journey, and read in each journey's config
-- [ ] Step added in the right place in each journey (written once in `journey/steps/` where it is the same in both), with the facts it `needs`, its `skipIf`, and `invalidIf` or `closesClaim` where needed
-- [ ] Settings it can't be used with added to `settingRules`
-- [ ] Step checks the state, and the saved case data where the event saves something
+- [ ] Event file in `playwright-tests/events`, with `after` (or `closesClaim`), the facts it needs in `onlyWhen`, `expect` and a `check` of what it saves
 - [ ] New case states added to `enums/caseStates.ts`
-- [ ] UI and API versions both passed on AAT, on each claim type the event applies to
+- [ ] UI and API versions both passed on AAT, in each journey and claim type the event applies to
 - [ ] Setting added to a scenario with the right pipeline tag
-- [ ] Step listed in the RUNNING guides, `yarn guides:generate` run, and `MISSING_EVENTS.md` updated
+- [ ] Event listed in the RUNNING guides, `yarn guides:generate` run, and `MISSING_EVENTS.md` updated
 - [ ] Staged diff checked for tokens, `.auth` files and local-only files before committing

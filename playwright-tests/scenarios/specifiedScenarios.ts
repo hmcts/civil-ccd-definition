@@ -301,11 +301,12 @@ const scenarios: Scenario[] = [
     tags: [NIGHTLY],
     env: { ...company1v1, ...apiToJudicialReferral, NOT_SUITABLE_SDO: 'OTHER_REASONS' },
   },
-  // The hearing centre admin amends the legal representatives' details and adds a case note, then dismisses the case
+  // The hearing centre admin amends the legal representatives' details and adds a case note, the claimant's solicitor
+  // changes their email address for notifications, then the case is dismissed
   {
     name: 'SPEC_1v1_FAST_DISMISS_CASE',
     tags: [NIGHTLY],
-    env: { ...company1v1, ...closeAtJudicialReferral, ADD_CASE_NOTE: 'Yes', AMEND_PARTY_DETAILS: 'Yes', DISMISS_CASE: 'Yes' },
+    env: { ...company1v1, ...closeAtJudicialReferral, ADD_CASE_NOTE: 'Yes', AMEND_PARTY_DETAILS: 'Yes', CHANGE_SOLICITOR_EMAIL: 'Yes', DISMISS_CASE: 'Yes' },
   },
   // The hearing centre admin takes the claim offline, as the defendant's solicitor does not consent to accept service
   // through MyHMCTS
