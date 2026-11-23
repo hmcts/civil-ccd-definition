@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { claimantSolicitorCredentials, envUrl, respondent1SolicitorCredentials } from '../../../civilConfig.ts';
+import { envUrl } from '../../../civilConfig.ts';
 import { CreateSpecifiedCase } from '../../flows/createSpecifiedCase.ts';
 import * as ui from '../../flows/events/ui/index.ts';
 import * as api from '../../flows/events/api/index.ts';
@@ -9,9 +9,7 @@ import { CaseFlagSpec, caseFlagSpecs } from '../../flows/caseFlags/caseFlagSpecs
 import {
   mciChange, mciChangeNotSavedReason, mciSessionUser, mciSpecs, mciStartsBusinessProcess, mciUserLabel,
 } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
-import { runHearingNoticeScheduler } from '../hearingNoticeScheduler.ts';
 import { sendAndReplySteps } from '../sendAndReplySteps.ts';
-import CaseProceedsInCasemanReason from '../../../enums/caseProceedsInCaseman.ts';
 import { ReconsiderationDecision, RequestForReconsiderationBy } from '../../../enums/reconsideration.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import claimTrack from '../../../enums/track.ts';
@@ -23,10 +21,20 @@ import { CaseUserRegistry } from '../../../helpers/CaseUserRegistry.ts';
 import { SessionUserKey } from '../../../helpers/SessionHelper.ts';
 import { workingDayAfter } from '../../../helpers/WorkingDayHelper.ts';
 import { JourneyContext, JourneyStep, JourneyStops, withNeeds } from '../journeyRunner.ts';
-import { casemanStates, Fact, holds } from '../claimFacts.ts';
+import { Fact, holds } from '../claimFacts.ts';
 import { moveResponseDeadline } from '../steps/moveResponseDeadline.ts';
 import { liftStay, manageStayRequestUpdate, stayCase } from '../steps/stayCaseSteps.ts';
-import { closingProblemsFor, discontinueSteps, dismissCase, settleClaim, settleClaimMarkPaidFull } from '../steps/closingSteps.ts';
+import {
+  caseProceedsInCaseman, closingProblemsFor, discontinueSteps, dismissCase, settleClaim, settleClaimMarkPaidFull,
+} from '../steps/closingSteps.ts';
+import { addCaseNote } from '../steps/addCaseNote.ts';
+import { amendPartyDetails } from '../steps/amendPartyDetails.ts';
+import { makeDirectionsOrder } from '../steps/makeDirectionsOrder.ts';
+import { createHearingNotice } from '../steps/createHearingNotice.ts';
+import { payHearingFee } from '../steps/payHearingFee.ts';
+import { moveToDecisionOutcome } from '../steps/moveToDecisionOutcome.ts';
+import { makeFinalOrder } from '../steps/makeFinalOrder.ts';
+import { confirmOrderReview } from '../steps/confirmOrderReview.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
@@ -204,33 +212,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
-    // Adding a case note, done as early as possible: court staff can add one in any state, so straight after the claim
-    // is issued. Only run with ADD_CASE_NOTE=Yes (default No).
-    {
-      name: 'ADD_CASE_NOTE',
-      title: 'Hearing Centre Admin adds a case note.',
-      user: 'hearingCentreAdmin',
-      skipIf: [[c.addCaseNote !== yesNo.YES, 'Adding a case note is switched off (set ADD_CASE_NOTE=Yes to run it)']],
-      run: async ({ page, storageState }) => {
-        const note = `Case note added by the specified journey at ${new Date().toISOString()}`;
-        const caseNote = new ui.AddCaseNote(page);
-        if (ctx.useApi()) {
-          await new api.AddCaseNote().submit(ctx.caseId, note);
-          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'ADD_CASE_NOTE');
-          // The case page was opened before the note was added, so the saved notes are checked instead of the Notes tab
-          const notes = (await ctx.testingEndpointHelper.getCaseData(ctx.caseId)).caseNotes ?? [];
-          expect(notes.map((entry) => entry.value?.note), 'The case note was not saved').toContain(note);
-        } else {
-          await ctx.runEvent(page, storageState, async () => {
-            await caseNote.submit(note);
-          });
-          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'ADD_CASE_NOTE');
-          await caseNote.verifyNoteShown(note);
-        }
-        // A case note does not change the claim's state
-        await ctx.assertCaseState(caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT);
-      },
-    },
+    addCaseNote(c, ctx),
 
 
     moveResponseDeadline(c, ctx),
@@ -272,33 +254,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
-    // The hearing centre admin changes the legal representatives' email addresses with "Amend party details": Defendant
-    // 1's solicitor's to the address they sign in with (the claim was created with a made-up one), and the claimant's
-    // solicitor's to theirs. Only run with AMEND_PARTY_DETAILS=Yes, where Defendant 1 has a solicitor.
-    {
-      name: 'AMEND_PARTY_DETAILS',
-      title: 'Hearing Centre Admin amends the legal representatives\' email addresses.',
-      user: 'hearingCentreAdmin',
-      needs: [c.facts.defendant1HasSolicitor],
-      skipIf: [
-        [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
-      ],
-      run: async ({ page, storageState }) => {
-        const stateBefore = ctx.lastStateReached;
-        const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.AmendPartyDetails().submit(ctx.caseId, emails),
-          ui: () => new ui.AmendPartyDetails(page).submit(emails),
-        });
-        const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
-        expect(saved, 'The amended email addresses were not saved').toMatchObject({
-          specRespondentSolicitor1EmailAddress: emails.defendant1Solicitor,
-          respondentSolicitor1EmailAddress: emails.defendant1Solicitor,
-          applicantSolicitor1UserDetails: { email: emails.claimantSolicitor },
-        });
-        await ctx.assertCaseState(stateBefore);
-      },
-    },
+    amendPartyDetails(c, ctx),
 
     // A specified claim is not acknowledged by a defendant's solicitor: the CCD definition only gives them read access
     // to ACKNOWLEDGEMENT_OF_SERVICE, so XUI does not offer it.
@@ -481,88 +437,14 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
-    // Intermediate and multi track claims get no Standard Direction Order: the judge's task is to allocate the claim
-    // to its track, which is done with a directions order made with "Make an order"
-    {
-      name: 'MAKE_DIRECTIONS_ORDER',
-      title: 'Judge makes a directions order.',
-      user: 'judge',
-      needs: [c.facts.reachesJudicialReferral],
-      skipIf: [
-        [c.track !== claimTrack.INTERMEDIATE && c.track !== claimTrack.MULTI, 'Skipping as the directions order is for the intermediate and multi tracks'],
-      ],
-      run: async ({ page, storageState }) => {
-        await ctx.runEvent(page, storageState, async () => {
-          // Where work allocation is switched on, the judge needs the task to allocate the claim to its track
-          await new WaTaskHelper(page).assignTaskForEvent(
-            ctx.caseId,
-            'GENERATE_DIRECTIONS_ORDER',
-            c.track === claimTrack.INTERMEDIATE ? 'allocateIntermediateTrack' : 'allocateMultiTrack',
-          );
-          if (!ctx.useApi()) {
-            await new ui.MakeDirectionsOrder(page).submit();
-          }
-        });
-        if (ctx.useApi()) {
-          await new api.MakeDirectionsOrder().submit(ctx.caseId);
-        }
-        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
-      },
-    },
+    makeDirectionsOrder(c, ctx),
 
     // Each solicitor uploads evidence once the judge's order has moved the claim to CASE_PROGRESSION
     ...uploadEvidenceSteps(),
 
-    // The hearing centre admin lists the trial once the evidence is in, or a small claim's hearing once its order is
-    // made. This is done in place of HMC returning a LISTED hearing, and moves the claim to HEARING_READINESS for the
-    // hearing fee.
-    {
-      name: 'CREATE_HEARING_NOTICE',
-      title: c.hearingNoticeScheduler === yesNo.YES && api.AutomatedHearingNotice.isAvailable()
-        ? 'HMC lists the trial and the automated hearing notice scheduler sends the hearing notice.'
-        : 'Hearing Centre Admin creates a hearing notice.',
-      user: 'hearingCentreAdmin',
-      needs: [c.facts.reachesCaseProgression],
-      run: async ({ page, storageState }) => {
-        if (c.hearingNoticeScheduler === yesNo.YES && api.AutomatedHearingNotice.isAvailable()) {
-          await runHearingNoticeScheduler(ctx, 'spec', c.track);
-          return;
-        }
-        if (c.hearingNoticeScheduler === yesNo.YES) {
-          console.warn('WARNING: HEARING_NOTICE_SCHEDULER=Yes needs a civil-service PR preview (ENV=preview PREVIEW_SERVICE=service), where HMC is WireMock. The hearing centre admin creates the hearing notice instead.');
-        }
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.CreateHearingNotice().submit(ctx.caseId, c.track),
-          ui: () => new ui.CreateHearingNotice(page).submit(c.track),
-          expectState: caseStates.HEARING_READINESS,
-        });
-      },
-    },
+    createHearingNotice(c, ctx),
 
-    // Listing the trial set a hearing fee, which the claimant's solicitor pays from the Service Request tab. Once it is
-    // paid, HEARING_FEE_PAID moves the claim to PREPARE_FOR_HEARING_CONDUCT_HEARING.
-    {
-      name: 'PAY_HEARING_FEE',
-      title: 'Claimant Solicitor pays the hearing fee.',
-      user: 'claimantSolicitor',
-      needs: [c.facts.reachesCaseProgression],
-      run: async ({ page, storageState }) => {
-        // Paid in the hearing fee's row of the Service Request tab, which also lists the claim fee
-        await ctx.payFeeInUi(page, storageState, 'hearingFeePBADetails', c.paymentMethod);
-        // The payment service tells civil-service about the payment, which can take a while. Where it cannot reach
-        // civil-service the test tells it instead. Telling it both ways would update the case twice, and the late
-        // update can clash with the next event (CCD rejects it with HTTP 409), so the test only steps in if the payment
-        // service has not done it within a minute.
-        const recordedByPaymentService = await ctx.testingEndpointHelper.waitForFeePaid(ctx.caseId, 'hearingFeePaymentDetails', 60);
-        if (!recordedByPaymentService) {
-          console.log('The payment service did not record the hearing fee payment, so the test does');
-          await ctx.testingEndpointHelper.serviceRequestUpdateHearingFee(ctx.caseId);
-        }
-        // civil-service's scheduler would run HEARING_FEE_PAID later, so it is run now
-        await ctx.testingEndpointHelper.triggerHearingFeePaid(ctx.caseId);
-        await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
-      },
-    },
+    payHearingFee(c, ctx),
 
     // civil-service's trial ready check scheduler asks the parties to confirm they are ready for trial once a fast track
     // hearing is less than 3 weeks away. The hearing notice lists it weeks away, so the test runs TRIAL_READY_CHECK
@@ -613,58 +495,11 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
-    // Civil has no record of the hearing itself taking place. Once the hearing date has passed, a civil-service scheduler
-    // runs MOVE_TO_DECISION_OUTCOME, on every track, which moves the claim to DECISION_OUTCOME to wait for the judge's
-    // decision. The hearing is weeks away, so the test runs that event itself.
-    {
-      name: 'MOVE_TO_DECISION_OUTCOME',
-      title: 'Hearing date passes and the claim moves to decision outcome.',
-      user: 'judge',
-      needs: [c.facts.reachesCaseProgression],
-      run: async () => {
-        await ctx.testingEndpointHelper.moveToDecisionOutcome(ctx.caseId);
-        await ctx.assertCaseState(caseStates.DECISION_OUTCOME);
-      },
-    },
+    moveToDecisionOutcome(c, ctx),
 
-    // The judge's final order after the hearing, chosen with FINAL_ORDER: a free form or assisted order on the small
-    // claims and fast tracks, an order uploaded from a template on the intermediate and multi tracks. None of them, without a further
-    // hearing, changes the claim's state. The order's notifications are sent by the GENERATE_ORDER_NOTIFICATION
-    // business process.
-    {
-      name: 'MAKE_FINAL_ORDER',
-      title: `Judge makes a final order (${c.finalOrder}).`,
-      user: 'judge',
-      needs: [c.facts.reachesCaseProgression],
-      run: async ({ page, storageState }) => {
-        const ordersBefore = await ctx.testingEndpointHelper.countFinalOrders(ctx.caseId);
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.MakeFinalOrder().submit(ctx.caseId, c.finalOrder),
-          ui: () => new ui.MakeFinalOrder(page).submit(c.finalOrder),
-          businessProcess: 'GENERATE_ORDER_NOTIFICATION',
-        });
-        expect(await ctx.testingEndpointHelper.countFinalOrders(ctx.caseId), 'The final order was not added to the case').toBe(ordersBefore + 1);
-        await ctx.assertCaseState(caseStates.DECISION_OUTCOME);
-      },
-    },
+    makeFinalOrder(c, ctx),
 
-    // Court staff review the judge's order ("Order Made - Review case"). Confirming it is a final order, with no
-    // obligation date and nothing left to do, closes the claim on any track: it moves to All_FINAL_ORDERS_ISSUED and the
-    // CONFIRM_ORDER_REVIEW_FINAL_ORDER business process runs.
-    {
-      name: 'CONFIRM_ORDER_REVIEW',
-      title: 'Hearing Centre Admin confirms the order review.',
-      user: 'hearingCentreAdmin',
-      needs: [c.facts.reachesCaseProgression],
-      run: async ({ page, storageState }) => {
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.ConfirmOrderReview().submit(ctx.caseId),
-          ui: () => new ui.ConfirmOrderReview(page).submit(),
-          businessProcess: 'CONFIRM_ORDER_REVIEW_FINAL_ORDER',
-          expectState: caseStates.All_FINAL_ORDERS_ISSUED,
-        });
-      },
-    },
+    confirmOrderReview(c, ctx),
     ...judgmentsOnlineSteps(),
 
     settleClaimMarkPaidFull(c, ctx, closingProblems),
@@ -673,31 +508,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     ...discontinueSteps(c, ctx, closingProblems),
 
 
-    // The hearing centre admin takes the claim offline with "Case proceeds in Caseman" once the rest of the journey has
-    // run, or where STOP_AT_STATE or STOP_AFTER_TEST stops it (CASE_PROCEEDS_IN_CASEMAN=<reason for proceeding on
-    // paper>), with today as the date it was transferred to Caseman. civil-service moves the claim to
-    // PROCEEDS_IN_HERITAGE_SYSTEM. The step is skipped where the journey ended in a state the event is not offered in,
-    // such as a claim that has already gone offline.
-    {
-      name: 'CASE_PROCEEDS_IN_CASEMAN',
-      title: `Hearing Centre Admin takes the claim offline${c.caseProceedsInCaseman ? ` (${c.caseProceedsInCaseman})` : ''}.`,
-      user: 'hearingCentreAdmin',
-      closesClaim: true,
-      invalidIf: (stops) => c.caseProceedsInCaseman !== undefined ? closingProblems(`CASE_PROCEEDS_IN_CASEMAN=${c.caseProceedsInCaseman}`, stops, casemanStates, false) : [],
-      skipIf: [
-        [c.caseProceedsInCaseman === undefined, 'Taking the claim offline is switched off (set CASE_PROCEEDS_IN_CASEMAN=APPLICATION, JUDGEMENT_REQUEST, CASE_SETTLED or OTHER to run it)'],
-      ],
-      run: async ({ page, storageState }) => {
-        const reason = c.caseProceedsInCaseman as CaseProceedsInCasemanReason;
-        test.skip(!casemanStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be taken offline in ${ctx.lastStateReached}`);
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.CaseProceedsInCaseman().submit(ctx.caseId, reason, true),
-          ui: () => new ui.CaseProceedsInCaseman(page).submit(reason, true),
-          businessProcess: 'CASE_PROCEEDS_IN_CASEMAN',
-          expectState: caseStates.PROCEEDS_IN_HERITAGE_SYSTEM,
-        });
-      },
-    },
+    caseProceedsInCaseman(c, ctx, closingProblems),
     dismissCase(c, ctx, closingProblems),
   ]);
 

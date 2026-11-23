@@ -5,14 +5,15 @@ import caseStates from '../../../enums/caseStates.ts';
 import yesNo from '../../../enums/yesNo.ts';
 import SettleClaimReason from '../../../enums/settleClaim.ts';
 import DiscontinueClaimType from '../../../enums/discontinueClaim.ts';
+import CaseProceedsInCasemanReason from '../../../enums/caseProceedsInCaseman.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
 import { JourneyContext, JourneyStep, JourneyStops } from '../journeyRunner.ts';
-import { discontinuableStates, holds, settleableStates } from '../claimFacts.ts';
+import { casemanStates, discontinuableStates, holds, settleableStates } from '../claimFacts.ts';
 import { JourneyConfig } from './journeyConfig.ts';
 
-// The steps that close the claim, the same in both journeys: settling, discontinuing and dismissing it. Each journey
-// lists them at the end of its steps. They have closesClaim, so they still run where STOP_AT_STATE or STOP_AFTER_TEST
-// stops the journey.
+// The steps that close the claim, the same in both journeys: settling, discontinuing and dismissing it, and taking it
+// offline. Each journey lists them at the end of its steps. They have closesClaim, so they still run where
+// STOP_AT_STATE or STOP_AFTER_TEST stops the journey.
 
 // The problems with closing the claim, given the settings and how the run is stopped (see closingProblemsFor)
 export type ClosingProblems = (setting: string, stops: JourneyStops, offeredIn: caseStates[], claimantSolicitor: boolean) => Array<[boolean, string]>;
@@ -178,6 +179,35 @@ export function dismissCase(c: JourneyConfig, ctx: JourneyContext, closingProble
         ui: () => new ui.DismissCase(page).submit(),
         businessProcess: 'DISMISS_CASE',
         expectState: caseStates.CASE_DISMISSED,
+      });
+    },
+  };
+}
+
+// The hearing centre admin takes the claim offline with "Case proceeds in Caseman" once the rest of the journey has
+// run, or where STOP_AT_STATE or STOP_AFTER_TEST stops it (CASE_PROCEEDS_IN_CASEMAN=<reason for proceeding on
+// paper>), with today as the date it was transferred to Caseman. civil-service moves the claim to
+// PROCEEDS_IN_HERITAGE_SYSTEM. The step is skipped where the journey ended in a state the event is not offered in,
+// such as a claim that has already gone offline.
+export function caseProceedsInCaseman(c: JourneyConfig, ctx: JourneyContext, closingProblems: ClosingProblems): JourneyStep {
+  const specified = c.caseType === 'SPECIFIED';
+  return {
+    name: 'CASE_PROCEEDS_IN_CASEMAN',
+    title: `Hearing Centre Admin takes the claim offline${c.caseProceedsInCaseman ? ` (${c.caseProceedsInCaseman})` : ''}.`,
+    user: 'hearingCentreAdmin',
+    closesClaim: true,
+    invalidIf: (stops) => c.caseProceedsInCaseman !== undefined ? closingProblems(`CASE_PROCEEDS_IN_CASEMAN=${c.caseProceedsInCaseman}`, stops, casemanStates, false) : [],
+    skipIf: [
+      [c.caseProceedsInCaseman === undefined, 'Taking the claim offline is switched off (set CASE_PROCEEDS_IN_CASEMAN=APPLICATION, JUDGEMENT_REQUEST, CASE_SETTLED or OTHER to run it)'],
+    ],
+    run: async ({ page, storageState }) => {
+      const reason = c.caseProceedsInCaseman as CaseProceedsInCasemanReason;
+      test.skip(!casemanStates.includes(ctx.lastStateReached), `Skipping as the claim cannot be taken offline in ${ctx.lastStateReached}`);
+      await ctx.submitEvent(page, storageState, {
+        api: () => new api.CaseProceedsInCaseman().submit(ctx.caseId, reason, specified),
+        ui: () => new ui.CaseProceedsInCaseman(page).submit(reason, specified),
+        businessProcess: 'CASE_PROCEEDS_IN_CASEMAN',
+        expectState: caseStates.PROCEEDS_IN_HERITAGE_SYSTEM,
       });
     },
   };

@@ -217,7 +217,7 @@ You don't need to check the value. Before the journey starts, each config's `val
 
 ## 7. Add the journey step
 
-Add a step to `journeySteps(...)` in `specifiedSteps.ts` and/or `unspecifiedSteps.ts`, at the point in the journey where the event should run. Steps run in the order they are listed. The journey files import every event class at once, through the index files in `flows/events/ui` and `flows/events/api`:
+Add a step to `journeySteps(...)` in `specifiedSteps.ts` and/or `unspecifiedSteps.ts`, at the point in the journey where the event should run. Steps run in the order they are listed. Where the step is the same in both journeys, write it once, in its own file under `playwright-tests/e2e/journey/steps/`, and list it in both journeys (7.7). The journey and step files import every event class at once, through the index files in `flows/events/ui` and `flows/events/api`:
 
 ```typescript
 import * as ui from '../../flows/events/ui/index.ts';
@@ -235,36 +235,47 @@ export { AmendPartyDetails } from './AmendPartyDetails.ts';
 
 The step then uses `ui.AmendPartyDetails` and `api.AmendPartyDetails`.
 
-Then the step:
+Then the step. Amend party details is the same in both journeys, so it is written once, in `playwright-tests/e2e/journey/steps/amendPartyDetails.ts`:
 
 ```typescript
-    // The hearing centre admin changes the legal representatives' email addresses with "Amend party details". Only run
-    // with AMEND_PARTY_DETAILS=Yes, where Defendant 1 has a solicitor.
-    {
-      name: 'AMEND_PARTY_DETAILS',
-      title: 'Hearing Centre Admin amends the legal representatives\' email addresses.',
-      user: 'hearingCentreAdmin',
-      needs: [c.facts.defendant1HasSolicitor],
-      skipIf: [
-        [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
-      ],
-      run: async ({ page, storageState }) => {
-        const stateBefore = ctx.lastStateReached;
-        const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.AmendPartyDetails().submit(ctx.caseId, emails),
-          ui: () => new ui.AmendPartyDetails(page).submit(emails),
-        });
-        const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
-        expect(saved, 'The amended email addresses were not saved').toMatchObject({
-          specRespondentSolicitor1EmailAddress: emails.defendant1Solicitor,
-          respondentSolicitor1EmailAddress: emails.defendant1Solicitor,
-          applicantSolicitor1UserDetails: { email: emails.claimantSolicitor },
-        });
-        await ctx.assertCaseState(stateBefore);
-      },
+// The hearing centre admin changes the legal representatives' email addresses with "Amend party details". Only run
+// with AMEND_PARTY_DETAILS=Yes, where Defendant 1 has a solicitor and the claim did not go offline at Notify claim
+// (unspecified only). The claim's state does not change.
+export function amendPartyDetails(c: JourneyConfig, ctx: JourneyContext): JourneyStep {
+  return {
+    name: 'AMEND_PARTY_DETAILS',
+    title: 'Hearing Centre Admin amends the legal representatives\' email addresses.',
+    user: 'hearingCentreAdmin',
+    needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
+    skipIf: [
+      [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
+    ],
+    run: async ({ page, storageState }) => {
+      const stateBefore = ctx.lastStateReached;
+      const emails = { defendant1Solicitor: respondent1SolicitorCredentials.username, claimantSolicitor: claimantSolicitorCredentials.username };
+      await ctx.submitEvent(page, storageState, {
+        api: () => new api.AmendPartyDetails().submit(ctx.caseId, emails),
+        ui: () => new ui.AmendPartyDetails(page).submit(emails),
+      });
+      const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+      expect(saved, 'The amended email addresses were not saved').toMatchObject({
+        specRespondentSolicitor1EmailAddress: emails.defendant1Solicitor,
+        respondentSolicitor1EmailAddress: emails.defendant1Solicitor,
+        applicantSolicitor1UserDetails: { email: emails.claimantSolicitor },
+      });
+      await ctx.assertCaseState(stateBefore);
     },
+  };
+}
 ```
+
+Each journey lists it where it runs: after Notify claim details in `unspecifiedSteps.ts`, after the defendants' solicitors are assigned in `specifiedSteps.ts`:
+
+```typescript
+    amendPartyDetails(c, ctx),
+```
+
+A step that only one journey has is written the same way (the object inside `return { ... }`), straight into that journey's list.
 
 What each part of a step does. The Amend party details step above uses `name`, `title`, `user`, `needs`, `skipIf` and `run`; sections 7.1 to 7.8 show the others, each with a real step from the journeys.
 
@@ -308,13 +319,14 @@ The facts both journeys have:
 | Fact | The claim |
 | --- | --- |
 | `defendant1HasSolicitor` | Defendant 1 has a solicitor (is not a litigant in person). |
+| `notOfflineAtNotify` | Notify claim and Notify claim details did not take the claim offline. Always true for a specified claim, which has neither. |
 | `everyDefendantRepresented` | Every defendant has a solicitor. A litigant in person responds through the citizen service instead. |
 | `reachesJudicialReferral` | The claimant's response takes the claim to JUDICIAL_REFERRAL. For the steps from the judge's order on. |
 | `reachesCaseProgression` | The judge's (or legal adviser's) order moves the claim to CASE_PROGRESSION. For the steps after it. |
 | `claimantSolicitorCanCloseClaim` | The claimant's solicitor can settle or discontinue the claim (not two defendants with a litigant in person). |
 | `withoutDefaultJudgment` | The claimant has not asked for default judgment. |
 
-A specified claim also has `reachesMediation` and `notSettledInMediation`, and an unspecified claim `notOfflineAtNotify`, `defendant2HasOwnSolicitor` and `claimantResponds`.
+A specified claim also has `reachesMediation` and `notSettledInMediation`, and an unspecified claim `defendant2HasOwnSolicitor` and `claimantResponds`.
 
 `skipIf` then only has the step's own conditions, usually "the setting is off":
 
@@ -342,7 +354,7 @@ If your event needs a fact that isn't there yet and other steps could use it, ad
 
 ### 7.3 A step that closes the claim (`closesClaim` and `invalidIf`)
 
-A step that ends the claim (settle, discontinue, dismiss, take offline) goes at the end of the list and sets `closesClaim: true`. The settle, discontinue and dismiss steps are the same in both journeys, so they are written once, in `playwright-tests/e2e/journey/steps/closingSteps.ts` (see 7.7). It then still runs when `STOP_AT_STATE` or `STOP_AFTER_TEST` has stopped the journey earlier, so a test can close a claim wherever it stops. It also needs `invalidIf`, so the run fails straight away if the journey would stop in a state where the event isn't offered. The whole Dismiss case step:
+A step that ends the claim (settle, discontinue, dismiss, take offline) goes at the end of the list and sets `closesClaim: true`. The settle, discontinue, dismiss and take-offline steps are the same in both journeys, so they are written once, in `playwright-tests/e2e/journey/steps/closingSteps.ts` (see 7.7). It then still runs when `STOP_AT_STATE` or `STOP_AFTER_TEST` has stopped the journey earlier, so a test can close a claim wherever it stops. It also needs `invalidIf`, so the run fails straight away if the journey would stop in a state where the event isn't offered. The whole Dismiss case step:
 
 ```typescript
     {
@@ -554,18 +566,21 @@ Each journey then spreads it into its list, passing its own values. From `specif
 An event that exists on both specified and unspecified claims needs its step in both `specifiedSteps.ts` and `unspecifiedSteps.ts`, and its setting read in both config files, with a note for each journey in `settings.ts` (section 6). The two journeys differ, so check each one:
 
 - **Where the step goes.** The steps around it differ. For example, an unspecified claim has Notify claim and Notify claim details steps that a specified claim doesn't.
-- **The facts it needs.** The facts have the same names in both journeys, but a claim gets to the same point in different ways, and some facts only exist in one journey (7.1). Check which ones each journey's step needs.
+- **The facts it needs.** The facts have the same names in both journeys, but a claim gets to the same point in different ways (7.1). Check which ones each journey's step needs.
 
-The unspecified Amend party details step shows the difference. It also needs the claim not to have gone offline at notification, which only an unspecified claim can do:
+Amend party details shows how a difference can still be shared. An unspecified claim can go offline at Notify claim, which a specified claim never does. Rather than two steps, both configs have the fact `notOfflineAtNotify`, which always holds for a specified claim (its list of conditions is empty), so the one step needs it in both journeys:
 
 ```typescript
-      needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
-      skipIf: [
-        [c.amendPartyDetails !== yesNo.YES, 'Amending party details is switched off (set AMEND_PARTY_DETAILS=Yes to run it)'],
-      ],
+    needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
 ```
 
-The rest of the step (`run`) is the same in both journeys. Where the whole step is the same, write it once in `journey/steps/` instead (7.7).
+Where the journeys differ in a value rather than a fact, the shared step checks `c.caseType`. The Add case note step expects the claim to stay where it was, which is a different state in each journey:
+
+```typescript
+      await ctx.assertCaseState(specified ? caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT : caseStates.CASE_ISSUED);
+```
+
+Only write a step into both journey files when most of it differs.
 
 ## 8. Add any new case state
 
@@ -646,7 +661,7 @@ The row added to the claim parameters table for `AMEND_PARTY_DETAILS`:
 - [ ] Both classes added to the `index.ts` in their folder
 - [ ] Shared answers in `flows/events/shared_api_ui` if there are more than a few
 - [ ] Setting declared in `e2e/journey/settings.ts`, with a note for each journey, and read in each journey's config
-- [ ] Step added in the right place in each journey, with the facts it `needs`, its `skipIf`, and `invalidIf` or `closesClaim` where needed
+- [ ] Step added in the right place in each journey (written once in `journey/steps/` where it is the same in both), with the facts it `needs`, its `skipIf`, and `invalidIf` or `closesClaim` where needed
 - [ ] Settings it can't be used with added to `settingRules`
 - [ ] Step checks the state, and the saved case data where the event saves something
 - [ ] New case states added to `enums/caseStates.ts`

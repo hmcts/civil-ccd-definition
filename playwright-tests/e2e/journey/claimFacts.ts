@@ -20,6 +20,9 @@ export function holds(fact: Fact): boolean {
 export interface ClaimFacts {
   // Defendant 1 has a solicitor (is not a litigant in person)
   defendant1HasSolicitor: Fact;
+  // Notify claim and Notify claim details went to both defendants, so the claim did not go offline. A specified claim
+  // has neither, so it always holds there.
+  notOfflineAtNotify: Fact;
   // Every defendant has a solicitor. A litigant in person responds through the citizen service instead.
   everyDefendantRepresented: Fact;
   // The claim reaches JUDICIAL_REFERRAL through the claimant's response, for the steps from the judge's order on
@@ -91,6 +94,7 @@ export function specifiedFacts(c: ClaimSettings & {
   return {
     ...sharedFacts(c),
     defendant1HasSolicitor: [[c.claimShape.defendants[0].solicitor === 'none', 'Skipping as first defendant is a LiP']],
+    notOfflineAtNotify: [],
     everyDefendantRepresented,
     reachesJudicialReferral: [
       ...everyDefendantRepresented,
@@ -116,8 +120,6 @@ export function specifiedFacts(c: ClaimSettings & {
 
 // An unspecified claim's facts, and those only an unspecified claim has
 export interface UnspecifiedClaimFacts extends ClaimFacts {
-  // Notify claim and Notify claim details went to both defendants, so the claim did not go offline
-  notOfflineAtNotify: Fact;
   // Defendant 2 has a solicitor of their own, who acknowledges and responds separately
   defendant2HasOwnSolicitor: Fact;
   // The claimant's solicitor responds to the defence: the claim is still online, has no litigant in person and every
