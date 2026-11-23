@@ -22,7 +22,7 @@ import CaseProceedsInCaseman from '../../enums/caseProceedsInCaseman.ts';
 import { InterestFrom, InterestType, InterestUntil } from '../../enums/interest.ts';
 import { ReconsiderationDecision, RequestForReconsiderationBy } from '../../enums/reconsideration.ts';
 import { SetAsideJudgment } from '../../enums/judgmentsOnline.ts';
-import { GaDecision } from './generalApplicationSteps.ts';
+import { GaDecision, generalApplicationTypes } from './generalApplicationSteps.ts';
 import { refundOutcomes } from './refundSteps.ts';
 
 // Every setting a scenario can give the journeys, in one place: the values it takes, its default and what it does in
@@ -44,19 +44,25 @@ type PerJourney<T> = Partial<Record<Journey, T>>;
 export interface Setting {
   // The values it takes, the same in both journeys or for each journey
   values?: readonly string[] | PerJourney<readonly string[]>;
-  // What it takes, for the guides, where there is no list of values
-  valuesText?: string;
+  // What it takes, as the guides put it: where there is no list of values, or where the list reads better described
+  valuesText?: string | PerJourney<string>;
   // Why a value is not one it takes, or undefined when it is, for a setting with no list of values
   check?: (value: string) => string | undefined;
   // Its value when it is not set, the same in both journeys or for each journey. Without one, the setting is off.
   default?: string | PerJourney<string>;
+  // The default as the guides put it, where it is not one value (it depends on other settings)
+  defaultText?: string | PerJourney<string>;
   // What it does in each journey that reads it. A setting is only for the journeys it has notes for.
   notes: PerJourney<string>;
 }
 
 const yesNoValues = ['Yes', 'No'];
 const partyTypeValues = ['INDIVIDUAL', 'COMPANY', 'ORGANISATION', 'SOLE_TRADER'];
-const claimTypeValues = Object.values(claimTypes);
+// The represented claim types first, then those with a litigant in person
+const claimTypeValues = [
+  ...Object.values(claimTypes).filter((type) => !type.includes('LIP')),
+  ...Object.values(claimTypes).filter((type) => type.includes('LIP')),
+];
 const caseStateValues = Object.values(caseStates);
 const wholeNumber = (value: string) => (/^\d+$/.test(value) ? undefined : 'It must be a whole number, 0 or more.');
 const number = (value: string) => (/^\d+(\.\d+)?$/.test(value) ? undefined : 'It must be a number.');
@@ -77,7 +83,8 @@ export const settings = {
     },
   },
   STOP_AFTER_TEST: {
-    valuesText: "A step or group name, or testN (checked against the journey's steps)",
+    // Checked against the journey's steps
+    valuesText: 'A step or group name, or testN',
     notes: {
       SPECIFIED: 'Stop after this step.',
       UNSPECIFIED: 'Stop after this step.',
@@ -124,6 +131,7 @@ export const settings = {
   },
   SUB_TYPE: {
     values: Object.values(personalInjuryTypes),
+    defaultText: { UNSPECIFIED: 'ROAD_ACCIDENT (personal injury only)' },
     notes: {
       UNSPECIFIED: 'Only for PERSONAL_INJURY. A value that is not one of these stops the run before it starts. A noise induced hearing loss claim must be on the fast track.',
     },
@@ -374,6 +382,8 @@ export const settings = {
   },
   FINAL_ORDER: {
     values: Object.values(FinalOrder),
+    valuesText: 'Small and fast: FREE_FORM_ORDER, ASSISTED_ORDER. Intermediate: BLANK_TEMPLATE_AFTER_HEARING, BLANK_TEMPLATE_BEFORE_HEARING, FIX_A_DATE_FOR_CMC. Multi: those three and FIX_A_DATE_FOR_CCMC',
+    defaultText: 'First order for the track',
     notes: {
       SPECIFIED: 'FREE_FORM_ORDER on small and fast, BLANK_TEMPLATE_AFTER_HEARING on intermediate and multi. Any other value stops the run.',
       UNSPECIFIED: 'FREE_FORM_ORDER on small and fast, BLANK_TEMPLATE_AFTER_HEARING on intermediate and multi.',
@@ -520,28 +530,35 @@ export const settings = {
     },
   },
   CASE_FLAGS: {
-    valuesText: 'representative, or a list of holder:code[:detail] (checked by caseFlagSpecs.ts)',
+    // Checked by caseFlagSpecs.ts
+    valuesText: 'representative, or a list of holder:code[:detail]',
     notes: {
       SPECIFIED: 'Optional steps: add flags once the claimant has responded, then make the first inactive (section 8). Holders: CASE, CLAIMANT_1, CLAIMANT_2, DEFENDANT_1, DEFENDANT_2. The detail is the language for an interpreter flag or the description for an OT0001 flag.',
       UNSPECIFIED: "Optional events: add flags after the claimant's response, then make the first inactive. Holders: CASE, CLAIMANT_1/2, DEFENDANT_1/2, CLAIMANT_1/2_LITIGATION_FRIEND, CLAIMANT_EXPERT_n, CLAIMANT_WITNESS_n, DEFENDANT_1/2_EXPERT_n, DEFENDANT_1/2_WITNESS_n. The detail is the language for an interpreter flag or the description for an OT0001 flag.",
     },
   },
   MANAGE_CONTACT_INFORMATION: {
-    valuesText: 'representative, or a list of user:party (checked by manageContactInformationSpecs.ts)',
+    // Checked by manageContactInformationSpecs.ts
+    valuesText: 'representative, or a list of user:party',
     notes: {
       SPECIFIED: 'Optional steps: Manage Contact Information once the claimant has responded, one run per entry, each checked against the saved case data (section 9). Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor. Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS; the admin can also add _WITNESSES or _EXPERTS. Has an API version.',
       UNSPECIFIED: "Optional events: Manage Contact Information after the claimant's response, one run per entry, each checked against the saved case data. Users: admin, claimantSolicitor, respondent1Solicitor, respondent2Solicitor (a solicitor only sees their own side). Parties: CLAIMANT_1/2, DEFENDANT_1/2, each with _LITIGATION_FRIEND or _ORGANISATION_INDIVIDUALS, and CLAIMANT_1/DEFENDANT_1/DEFENDANT_2 with _LR_INDIVIDUALS, _WITNESSES or _EXPERTS. A party's or litigation friend's email (and a party's first address line) is changed, an individual is added, and a witness or expert is added by the admin or the first one's email changed by a solicitor (set WITNESSES or EXPERTS). Has an API version.",
     },
   },
   NOTICE_OF_CHANGE: {
-    valuesText: 'A list of CLAIMANT_1, DEFENDANT_1, DEFENDANT_2 (checked by noticeOfChangeSpecs.ts)',
+    // Checked by noticeOfChangeSpecs.ts
+    valuesText: 'A list of CLAIMANT_1, DEFENDANT_1, DEFENDANT_2',
     notes: {
       SPECIFIED: "Optional steps: a solicitor takes over each party with a notice of change (section 10). A LIP defendant gets the solicitor the represented claim type would have, and the journey carries on as that claim type. A represented party moves to a solicitor of another organisation, who runs that party's later steps. Has an API version.",
       UNSPECIFIED: "Optional steps: a solicitor takes over each party with a notice of change (see section 7). A LIP defendant gets the solicitor the represented claim type would have, and the journey carries on as that claim type. A represented party moves to a solicitor of another organisation, who runs that party's later steps. Has an API version.",
     },
   },
   NOTICE_OF_CHANGE_AFTER: {
-    valuesText: "A step name (checked against the journey's steps)",
+    // Checked against the journey's steps
+    valuesText: {
+      SPECIFIED: 'A step name, from ASSIGN_DEFENDANT_SOLICITORS on',
+      UNSPECIFIED: 'A step name, from NOTIFY_CLAIM_DETAILS on',
+    },
     default: { SPECIFIED: 'ASSIGN_DEFENDANT_SOLICITORS', UNSPECIFIED: 'NOTIFY_CLAIM_DETAILS' },
     notes: {
       SPECIFIED: 'The step the notices of change follow, for example RESPOND_TO_DEFENCE. A LIP can only be given a solicitor after ASSIGN_DEFENDANT_SOLICITORS.',
@@ -549,14 +566,16 @@ export const settings = {
     },
   },
   GENERAL_APPLICATION: {
-    valuesText: 'A list of application types (checked by generalApplicationSteps.ts)',
+    // Checked by generalApplicationSteps.ts
+    valuesText: `A list of ${generalApplicationTypes.join(', ')}`,
     notes: {
       SPECIFIED: "Optional steps: a solicitor makes a general application with these types and pays its fee, the other side responds where it is made with notice, and a judge, legal adviser or court staff approves it (section 12). The claim's state does not change. Has an API version.",
       UNSPECIFIED: 'Optional steps: a solicitor makes a general application with these types and pays its fee, the other side responds where it is made with notice, and a judge, legal adviser or court staff approves it (see "General applications" in section 7). The claim\'s state does not change. Has an API version.',
     },
   },
   GENERAL_APPLICATION_AFTER: {
-    valuesText: "A step name (checked against the journey's steps)",
+    // Checked against the journey's steps
+    valuesText: 'A step name',
     default: 'RESPOND_TO_DEFENCE',
     notes: {
       SPECIFIED: 'The step the application follows. Not CREATE_CLAIM, or a step that closes the claim.',
@@ -620,14 +639,16 @@ export const settings = {
     },
   },
   QUERY_MANAGEMENT: {
-    valuesText: 'A list of claimant, defendant1, defendant2 (checked by queryManagementSteps.ts)',
+    // Checked by queryManagementSteps.ts
+    valuesText: 'A list of claimant, defendant1, defendant2',
     notes: {
       SPECIFIED: 'Optional steps: each solicitor raises a query and a CTSC admin answers it (section 11). Has an API version.',
       UNSPECIFIED: 'Optional steps: each solicitor raises a query and a CTSC admin answers it (see section 7). Has an API version.',
     },
   },
   QUERY_MANAGEMENT_AFTER: {
-    valuesText: "A step name (checked against the journey's steps)",
+    // Checked against the journey's steps
+    valuesText: 'A step name',
     default: 'RESPOND_TO_DEFENCE',
     notes: {
       SPECIFIED: "The step the queries follow. A defendant's solicitor can only raise one after ASSIGN_DEFENDANT_SOLICITORS.",
@@ -658,7 +679,8 @@ export const settings = {
     },
   },
   REFUND_AFTER: {
-    valuesText: "A step name (checked against the journey's steps)",
+    // Checked against the journey's steps
+    valuesText: 'A step name',
     default: 'CREATE_CLAIM',
     notes: {
       SPECIFIED: 'The step the refund follows.',

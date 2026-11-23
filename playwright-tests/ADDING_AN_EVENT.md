@@ -15,7 +15,7 @@ A new event touches seven places. You add something to each of them (the shared 
 | Shared answers (optional) | `playwright-tests/e2e/flows/events/shared_api_ui/<event>Specs.ts` | Answers that both versions use, so the UI and API versions can't drift apart. |
 | Setting | `playwright-tests/e2e/journey/settings.ts` | Declares the setting (environment variable) that turns the step on: its values, default and what it does. Its value is checked before the journey starts. |
 | Journey config | `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Config.ts` | Reads the setting for the journey's steps. |
-| Journey step | `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Steps.ts` | Says where the event runs in the journey, as which user, when it's skipped, and what it checks afterwards. |
+| Journey step | `playwright-tests/e2e/journey/steps/<event>.ts` when both journeys share it, otherwise in `playwright-tests/e2e/journey/<specified or unspecified>/<journey>Steps.ts` | Says where the event runs in the journey, as which user, when it's skipped, and what it checks afterwards. |
 | Scenario | `playwright-tests/scenarios/<journey>Scenarios.ts` | A named set of settings that runs the step in the PR, master or nightly pipeline. |
 
 The rules that hold the framework together:
@@ -201,9 +201,12 @@ What each part is for:
 | Property | Meaning |
 | --- | --- |
 | `values` | The values the setting takes: `yesNoValues` for Yes/No, or `Object.values(...)` of an enum in `playwright-tests/enums` (for example `CASE_PROCEEDS_IN_CASEMAN`). It can differ by journey: `{ SPECIFIED: [...], UNSPECIFIED: [...] }`. |
-| `valuesText` and `check` | For a setting that is not one of a list (a number, a list of parties, a step name): what it takes, for the guides, and a function that says why a value is not valid. Leave out `check` where the code that reads the setting already checks it, as for `CASE_FLAGS`. |
+| `valuesText` and `check` | For a setting that is not one of a list (a number, a list of parties, a step name): what it takes, as the guides put it, and a function that says why a value is not valid. Leave out `check` where the code that reads the setting already checks it, as for `CASE_FLAGS`. `valuesText` can also describe a list that reads better described, as `FINAL_ORDER`'s does. |
 | `default` | Its value when it is not set. Leave it out for a setting that is off when not set. It can differ by journey, as `NOTICE_OF_CHANGE_AFTER`'s does. |
-| `notes` | What it does in each journey, as the RUNNING guides say. The setting is only for the journeys it has a note for. |
+| `defaultText` (optional) | The default as the guides put it, where it depends on other settings (`FINAL_ORDER`: "First order for the track"). |
+| `notes` | What it does in each journey. The setting is only for the journeys it has a note for. Say whether it has an API version, and which settings it can't be used with. |
+
+The claim parameters tables in the RUNNING guides are written from these entries (section 11), so the values, default and notes are only ever written here.
 
 Then read it in the config for every journey the event belongs to, `playwright-tests/e2e/journey/specified/specifiedConfig.ts` and/or `playwright-tests/e2e/journey/unspecified/unspecifiedConfig.ts`, through `read`, which gives the default when the setting is not set:
 
@@ -650,15 +653,9 @@ Keep PR scenarios few and quick: PR previews have fewer resources than AAT. Most
 
 Update the documents that describe the framework, in the same commit:
 
-- `playwright-tests/RUNNING_SPECIFIED_TESTS.md` and/or `RUNNING_UNSPECIFIED_TESTS.md`: add the step to the list of steps in section 2 (in the order it runs), and the setting to the claim parameters table, with the same text as its note in `e2e/journey/settings.ts`. Say whether it has an API version, and which settings it can't be used with.
-- The matching `.docx` guides, regenerated from the `.md` files.
+- `playwright-tests/RUNNING_SPECIFIED_TESTS.md` and/or `RUNNING_UNSPECIFIED_TESTS.md`: add the step to the list of steps in section 2, in the order it runs, and an example command where it helps.
+- Then run `yarn guides:generate`. It writes each guide's claim parameters table from `e2e/journey/settings.ts`, so the new setting appears there with its values, default and notes, and writes the `.docx` version of every guide whose text has changed. Don't edit the tables by hand: the next run puts them back. `yarn guides:generate --check` lists anything out of date without changing it.
 - `playwright-tests/MISSING_EVENTS.md`: move the event from the Events tables to "Done since", with which scenarios passed on AAT and when.
-
-The row added to the claim parameters table for `AMEND_PARTY_DETAILS`:
-
-```markdown
-| `AMEND_PARTY_DETAILS` | Yes, No | No | Optional step: once the defendants' solicitors are assigned, the hearing centre admin changes the legal representatives' email addresses with "Amend party details". Cannot be used with DEFAULT_JUDGMENT. Has an API version. |
-```
 
 ## 12. Checklist
 
@@ -674,5 +671,5 @@ The row added to the claim parameters table for `AMEND_PARTY_DETAILS`:
 - [ ] New case states added to `enums/caseStates.ts`
 - [ ] UI and API versions both passed on AAT, on each claim type the event applies to
 - [ ] Setting added to a scenario with the right pipeline tag
-- [ ] RUNNING guides (.md and .docx) and `MISSING_EVENTS.md` updated
+- [ ] Step listed in the RUNNING guides, `yarn guides:generate` run, and `MISSING_EVENTS.md` updated
 - [ ] Staged diff checked for tokens, `.auth` files and local-only files before committing

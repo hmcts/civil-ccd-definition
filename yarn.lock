@@ -563,7 +563,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^26.6.2":
   version: 26.6.6
   resolution: "@types/node@npm:26.6.6"
   dependencies:
@@ -1606,6 +1606,7 @@ __metadata:
     codeceptjs: "npm:4.2.4"
     custom-eslint-plugin: "portal:./plugins/custom-eslint-plugins"
     deep-equal-in-any-order: "npm:^2.0.0"
+    docx: "npm:9.16.0"
     dotenv: "npm:^18.0.0"
     eslint: "npm:^10.0.0"
     eslint-config-prettier: "npm:^10.1.8"
@@ -1613,6 +1614,7 @@ __metadata:
     globals: "npm:^17.0.0"
     html_codesniffer: "npm:^2.5.1"
     husky: "npm:^9.1.6"
+    jszip: "npm:3.10.2"
     lint-staged: "npm:^15.2.10"
     lodash: "npm:^4.17.21"
     mocha: "npm:11.8.0"
@@ -2180,6 +2182,17 @@ __metadata:
   version: 9.0.0
   resolution: "diff@npm:9.0.0"
   checksum: 10/f8b5e38a6a7ec73d1850ccb7ff19cda1d02502dc0f2c562ada0f40d7211bfb3075c2f3742104619a1f8f47ae333d48a6c77bffb080a2df900db36935080ea4fb
+  languageName: node
+  linkType: hard
+
+"docx@npm:9.16.0":
+  version: 9.16.0
+  resolution: "docx@npm:9.16.0"
+  dependencies:
+    "@types/node": "npm:^26.6.2"
+    fflate: "npm:^0.8.3"
+    nanoid: "npm:^6.0.1"
+  checksum: 10/b3cc8052c2d8dd867eac2176ec66160c306c3b13e85043ebd443891ac18416dc8db4dab13ba0bf40f98d7a97b5282b2839177d3c8f8b312452c470f9c70227ed
   languageName: node
   linkType: hard
 
@@ -2759,6 +2772,13 @@ __metadata:
     node-domexception: "npm:^1.0.0"
     web-streams-polyfill: "npm:^3.0.3"
   checksum: 10/5264ecceb5fdc19eb51d1d0359921f12730941e333019e673e71eb73921146dceabcb0b8f534582be4497312d656508a439ad0f5edeec2b29ab2e10c72a1f86b
+  languageName: node
+  linkType: hard
+
+"fflate@npm:^0.8.3":
+  version: 0.8.3
+  resolution: "fflate@npm:0.8.3"
+  checksum: 10/6ebf528dc9c56e78e715eac615b009b25dc33e15c1920b11ebba44e6d76181c647756a81a23e19247907496b93aa99928514c53090579a65109e026ac2824aa7
   languageName: node
   linkType: hard
 
@@ -3709,7 +3729,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jszip@npm:^3.10.1":
+"jszip@npm:3.10.2, jszip@npm:^3.10.1":
   version: 3.10.2
   resolution: "jszip@npm:3.10.2"
   dependencies:
@@ -4309,6 +4329,15 @@ __metadata:
   version: 0.0.8
   resolution: "mute-stream@npm:0.0.8"
   checksum: 10/a2d2e79dde87e3424ffc8c334472c7f3d17b072137734ca46e6f221131f1b014201cc593b69a38062e974fb2394d3d1cb4349f80f012bbf8b8ac1b28033e515f
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^6.0.1":
+  version: 6.0.2
+  resolution: "nanoid@npm:6.0.2"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: 10/c555e99171c0988195d71ba22a7acd96f18c767b4a1db5c2a3d75ebf9c302a269fcda3c22e2d6022f3e5a345dcf7188a36f88c6d5fffc2828c68a1b7f9996daf
   languageName: node
   linkType: hard
 
