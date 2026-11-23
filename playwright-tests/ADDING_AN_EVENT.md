@@ -196,6 +196,30 @@ Each optional step is turned on by a setting. Every setting is declared once, in
   },
 ```
 
+Every property a setting can have, with a placeholder `MY_EVENT` (only `notes` is required; leave out what you don't need):
+
+```typescript
+  MY_EVENT: {
+    // The values it takes, the same in both journeys...
+    values: yesNoValues,
+    // ...or different in each: values: { SPECIFIED: [...], UNSPECIFIED: [...] },
+    // What it takes, as the guides put it, where there is no list of values or the list reads better described.
+    // A string, or { SPECIFIED: '...', UNSPECIFIED: '...' }
+    valuesText: 'Yes or No',
+    // For a setting with no list of values: why a value is not one it takes, or undefined when it is
+    check: (value) => (/^\d+$/.test(value) ? undefined : 'It must be a whole number, 0 or more.'),
+    // Its value when it is not set (leave it out for a setting that is off when not set). A string, or one per journey
+    default: 'No',
+    // The default as the guides put it, where it depends on other settings
+    defaultText: 'First order for the track',
+    // What it does in each journey. The setting is only for the journeys it has a note for.
+    notes: {
+      SPECIFIED: 'Optional step: <who does what, and when>. Cannot be used with <setting>. Has an API version.',
+      UNSPECIFIED: 'Optional step: <who does what, and when>. Has an API version.',
+    },
+  },
+```
+
 What each part is for:
 
 | Property | Meaning |
@@ -279,6 +303,55 @@ Each journey lists it where it runs: after Notify claim details in `unspecifiedS
 ```
 
 A step that only one journey has is written the same way (the object inside `return { ... }`), straight into that journey's list.
+
+Every property a step can have, in a shared step file with a placeholder `MyEvent` class and `MY_EVENT` setting. Only `name`, `title`, `user` and `run` are required; leave out what you don't need. A step that only one journey has is the object inside `return { ... }`, written straight into that journey's list.
+
+```typescript
+// What the step does, who does it and when, and which setting turns it on
+export function myEvent(c: JourneyConfig, ctx: JourneyContext, closingProblems: ClosingProblems): JourneyStep {
+  return {
+    // The step's name, which STOP_AFTER_TEST can use: the event ID, with a suffix if the event runs more than once
+    name: 'MY_EVENT',
+    // For several users doing the same event in turn: the shared name of their steps (7.5)
+    group: 'MY_EVENTS',
+    // The test title in the report
+    title: 'Hearing Centre Admin does my event.',
+    // The saved session the step runs as (helpers/SessionHelper.ts)
+    user: 'hearingCentreAdmin',
+    // The facts about the claim the step needs (c.facts, 7.1)
+    needs: [c.facts.reachesJudicialReferral],
+    // Other [condition, reason] pairs known before the journey starts, usually "the setting is off"
+    skipIf: [
+      [c.myEvent !== yesNo.YES, 'My event is switched off (set MY_EVENT=Yes to run it)'],
+    ],
+    // Only for a step that closes the claim: it still runs where the journey was stopped early (7.3)
+    closesClaim: true,
+    // [condition, problem] pairs for settings the step can't run with, given how the run is stopped (7.3)
+    invalidIf: (stops) => (c.myEvent === yesNo.YES ? closingProblems('MY_EVENT=Yes', stops, settleableStates, false) : []),
+    // The step itself. user is the step's user, which the API version submits as.
+    run: async ({ page, storageState, user }) => {
+      // A reason to skip only known during the run, as the first line (7.2)
+      test.skip(!settleableStates.includes(ctx.lastStateReached), `Skipping as my event is not offered in ${ctx.lastStateReached}`);
+      const answers = { reason: 'A reason' };
+      await ctx.submitEvent(page, storageState, {
+        // The API version, used until API_UNTIL is reached (leave it out if there is none)
+        api: () => new api.MyEvent().submit(ctx.caseId, answers, user),
+        // The UI version, used otherwise
+        ui: () => new ui.MyEvent(page).submit(answers),
+        // The page to reopen if the session ends part way, for an event on a general application
+        reopenUrl: ctx.gaCaseUrl(),
+        // The business process civil-service starts for the event, to wait for (7.6)
+        businessProcess: 'MY_EVENT',
+        // The state the claim should be in afterwards
+        expectState: caseStates.JUDICIAL_REFERRAL,
+      });
+      // Check what the event saved
+      const saved = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
+      expect(saved, 'My event\'s answers were not saved').toMatchObject({ myEventReason: answers.reason });
+    },
+  };
+}
+```
 
 What each part of a step does. The Amend party details step above uses `name`, `title`, `user`, `needs`, `skipIf` and `run`; sections 7.1 to 7.8 show the others, each with a real step from the journeys.
 
@@ -426,7 +499,7 @@ Any other clash is a rule of its own. `problem` gets the journey's settings: `ge
   },
 ```
 
-The problem text should name both settings and say why they can't go together. Then add "Cannot be used with ..." to both settings' rows in the RUNNING guide (section 11).
+The problem text should name both settings and say why they can't go together. Then add "Cannot be used with ..." to both settings' notes in the registry, which the RUNNING guides' tables are written from (section 11).
 
 A clash that also depends on how the claim goes, rather than only on the settings, stays in a step's `invalidIf` (or in `validate()`): for example, the closing steps in 7.3, which depend on where the journey stops, or uploading mediation documents, which needs the claimant's response to take the claim to mediation.
 
