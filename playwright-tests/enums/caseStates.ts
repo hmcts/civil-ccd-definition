@@ -1,0 +1,30 @@
+// Case states from ccd-definition/State.json that the unspecified journey checks
+enum CaseStates {
+  // A submitted claim whose fee has not been paid yet
+  PENDING_CASE_ISSUED = 'PENDING_CASE_ISSUED',
+  CASE_ISSUED = 'CASE_ISSUED',
+  AWAITING_CASE_DETAILS_NOTIFICATION = 'AWAITING_CASE_DETAILS_NOTIFICATION',
+  AWAITING_RESPONDENT_ACKNOWLEDGEMENT = 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT',
+  AWAITING_APPLICANT_INTENTION = 'AWAITING_APPLICANT_INTENTION',
+  JUDICIAL_REFERRAL = 'JUDICIAL_REFERRAL',
+  // A small claim the claimant proceeds with goes to mediation
+  IN_MEDIATION = 'IN_MEDIATION',
+  CASE_PROGRESSION = 'CASE_PROGRESSION',
+  // A specified claim's default judgment waiting to be issued (where the judgment buffer is switched on)
+  JUDGMENT_REQUESTED = 'JUDGMENT_REQUESTED',
+  HEARING_READINESS = 'HEARING_READINESS',
+  PREPARE_FOR_HEARING_CONDUCT_HEARING = 'PREPARE_FOR_HEARING_CONDUCT_HEARING',
+  DECISION_OUTCOME = 'DECISION_OUTCOME',
+  All_FINAL_ORDERS_ISSUED = 'All_FINAL_ORDERS_ISSUED',
+  CASE_STAYED = 'CASE_STAYED',
+  // A claim court staff have recorded as settled ("Settle this claim")
+  CASE_SETTLED = 'CASE_SETTLED',
+  // A claim the claimant has discontinued ("Discontinue this claim")
+  CASE_DISCONTINUED = 'CASE_DISCONTINUED',
+  // A claim court staff have dismissed ("Dismiss case"), shown in XUI as "Claim Dismissed"
+  CASE_DISMISSED = 'CASE_DISMISSED',
+  // Shown in XUI as "Case Proceeds Offline"
+  PROCEEDS_IN_HERITAGE_SYSTEM = 'PROCEEDS_IN_HERITAGE_SYSTEM',
+}
+
+export default CaseStates;

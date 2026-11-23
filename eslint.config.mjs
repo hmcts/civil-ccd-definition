@@ -27,7 +27,7 @@ export default [
   },
   ...[...tseslint.configs.recommended].map((config) => ({
     ...config,
-    files: ['playwright-e2e/**/*.ts'],
+    files: ['playwright-e2e/**/*.ts', 'playwright-tests/**/*.ts'],
   })),
   pluginJs.configs.recommended,
   {
@@ -70,6 +70,26 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-function-type': 'off',
       '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+      '@typescript-eslint/no-unused-expressions': ['warn', { allowShortCircuit: true, allowTernary: true }],
+      ...eslintConfigPrettier.rules,
+    },
+  },
+  {
+    // The playwright-tests framework: the same TypeScript and style rules as playwright-e2e, without its step decorator
+    files: ['playwright-tests/**/*.{ts,tsx}'],
+    rules: {
+      ...pluginJs.configs.recommended.rules,
+      indent: ['error', 2, { SwitchCase: 1 }],
+      'linebreak-style': ['error', 'unix'],
+      'comma-dangle': ['error', 'always-multiline'],
+      quotes: ['error', 'single', { avoidEscape: true }],
+      semi: ['error', 'always'],
+      'no-multiple-empty-lines': ['error', { max: 1 }],
+      'no-empty-pattern': 0,
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'no-unused-vars': 'off',
+      'no-undef': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-expressions': ['warn', { allowShortCircuit: true, allowTernary: true }],
       ...eslintConfigPrettier.rules,
     },

@@ -1,0 +1,299 @@
+import { expect } from '@playwright/test';
+import yesNo from '../../../enums/yesNo.ts';
+import { journeySettings, settingProblems } from '../settings.ts';
+import { unspecifiedFacts } from '../claimFacts.ts';
+import PaymentMethod from '../../../enums/paymentMethod.ts';
+import claimTypes from '../../../enums/claim-types.ts';
+import unspecClaimTypes from '../../../enums/unspecClaimTypes.ts';
+import personalInjuryTypes from '../../../enums/personalInjuryTypes.ts';
+import claimTrack from '../../../enums/track.ts';
+import notifyClaimOptions from '../../../enums/notifyClaimOptions.ts';
+import responseIntentions from '../../../enums/ResponseIntention.ts';
+import respondentResponses from '../../../enums/RespondentResponses.ts';
+import FinalOrder, { finalOrdersForTrack } from '../../../enums/finalOrders.ts';
+import SettleClaim from '../../../enums/settleClaim.ts';
+import DiscontinueClaim from '../../../enums/discontinueClaim.ts';
+import CaseProceedsInCaseman from '../../../enums/caseProceedsInCaseman.ts';
+import NotSuitableSdo from '../../../enums/notSuitableSdo.ts';
+import fixedRecoveryCostsBands from '../../../enums/fixedRecoveryCostsBands.ts';
+import languageSpokenAndDocuments from '../../../enums/languageSpokenAndDocuments.ts';
+import caseStates from '../../../enums/caseStates.ts';
+import { caseFlagsProblem } from '../../flows/caseFlags/caseFlagSpecs.ts';
+import { mciProblem } from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
+import { nocProblem } from '../../flows/events/shared_api_ui/noticeOfChangeSpecs.ts';
+import { generalApplicationProblem } from '../generalApplicationSteps.ts';
+import { queryManagementProblem } from '../queryManagementSteps.ts';
+import { refundProblem } from '../refundSteps.ts';
+import { createClaimShape } from '../../flows/createClaimShape.ts';
+
+export type UnspecifiedConfig = ReturnType<typeof unspecifiedConfig>;
+
+// The settings of one unspecified journey, read from its scenario's env vars, and what follows from them: which claim
+// types skip which steps, and the state the claim is expected to reach after each response.
+// scenarioSettings: the names the scenario sets in scenarios/*.ts, which validate checks are settings of this journey
+export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined>, scenarioSettings: string[] = []) {
+  // The scenario's settings, with their defaults (see ../settings.ts)
+  const read = journeySettings('UNSPECIFIED', scenarioEnv);
+
+  const claimType = read.get('CLAIM_TYPE') as claimTypes;
+  const respondent1Response = read.get('RESPONDENT1_RESPONSE') as respondentResponses;
+  const respondent2Response = read.get('RESPONDENT2_RESPONSE') as respondentResponses;
+  const claimantProceed1 = read.get('CLAIMANT_PROCEED_1') as yesNo;
+  const claimantProceed2 = read.get('CLAIMANT_PROCEED_2') as yesNo;
+  // A personal injury claim from a road accident unless TYPE_OF_CLAIM (and, for personal injury, SUB_TYPE) is set
+  const typeOfClaim = read.get('TYPE_OF_CLAIM');
+  const typeOfClaimSubType: string = read.get('SUB_TYPE')
+    ?? (typeOfClaim === unspecClaimTypes.PERSONAL_INJURY ? personalInjuryTypes.ROAD_ACCIDENT : undefined);
+  const defendantsToNotifyClaim = read.get('DEFENDANTS_TO_NOTIFY_CLAIM') as notifyClaimOptions;
+  const defendantsToNotifyClaimDetails = read.get('DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS') as notifyClaimOptions;
+  // Notifying only one defendant takes the claim offline, so no later events can be done online
+  const claimOfflineAfterNotifyClaim = defendantsToNotifyClaim !== notifyClaimOptions.BOTH;
+  const claimOfflineAfterNotifyClaimDetails =
+    claimOfflineAfterNotifyClaim || defendantsToNotifyClaimDetails !== notifyClaimOptions.BOTH;
+  // Once every defendant has responded, the claim moves on to the claimant's intention if all responses are a full
+  // defence and goes offline otherwise.
+  const responsesForClaimType = [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR, claimTypes.TWO_VS_ONE].includes(claimType)
+    ? [respondent1Response, respondent2Response]
+    : [respondent1Response];
+  const stateAfterAllResponses = responsesForClaimType.every((response) => response === respondentResponses.FULL_DEFENCE)
+    ? caseStates.AWAITING_APPLICANT_INTENTION
+    : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
+  // Claim types with no litigant in person, where the claimant solicitor responds to the defence once every defendant
+  // has entered a full defence. The claim moves to JUDICIAL_REFERRAL only if every claimant proceeds against every
+  // defendant. Not proceeding, or proceeding against only some of them, takes the claim offline.
+  const claimantResponseClaimTypes = [claimTypes.ONE_VS_ONE, claimTypes.TWO_VS_ONE, claimTypes.ONE_VS_TWO_SAME_SOL, claimTypes.ONE_VS_TWO_DIFF_SOL];
+  const claimantProceedsWithWholeClaim = claimType === claimTypes.ONE_VS_ONE
+    ? claimantProceed1 === yesNo.YES
+    : claimantProceed1 === yesNo.YES && claimantProceed2 === yesNo.YES;
+  const stateAfterClaimantResponse = claimantProceedsWithWholeClaim
+    ? caseStates.JUDICIAL_REFERRAL
+    : caseStates.PROCEEDS_IN_HERITAGE_SYSTEM;
+
+  const track = read.get('TRACK') as claimTrack;
+  // Noise induced hearing loss claims are always on the fast track (checked in validate), get their own Standard
+  // Direction Order directions, and their own work allocation task for it
+  const noiseInducedHearingLoss: boolean =
+    typeOfClaim == unspecClaimTypes.PERSONAL_INJURY && typeOfClaimSubType == personalInjuryTypes.NOISE_INDUCED_HEARING_LOSS;
+  // A small claim's Standard Direction Order is also the judge's, from the Small Claims Track Directions task (unlike a
+  // specified small claim's, which work allocation gives a legal adviser)
+  const sdoTaskType: string = noiseInducedHearingLoss
+    ? 'NIHLFastTrackDirections'
+    : track === claimTrack.SMALL ? 'SmallClaimsTrackDirections' : 'FastTrackDirections';
+  // The judge's final order (FINAL_ORDER). If it is not set, the first order the track offers is made: a free form order
+  // on the small and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
+  const finalOrder: FinalOrder = (read.get('FINAL_ORDER') as FinalOrder) ?? finalOrdersForTrack[track][0];
+  const noOfExperts: string = read.get('EXPERTS');
+  const noOfWitnesses: string = read.get('WITNESSES');
+
+  const claimantType = read.get('CLAIMANT_TYPE');
+  const defendantType = read.get('DEFENDANT_TYPE');
+  const claimant1LitigantFriend = read.yes('CLAIMANT1_LITIGANT_FRIEND');
+  const claimant2LitigantFriend = read.yes('CLAIMANT2_LITIGANT_FRIEND');
+
+  const config = {
+    // The scenario's env vars, from which the journey works out its settings for the claim type it carries on as once
+    // a notice of change has given each litigant in person a solicitor (see unspecifiedSteps)
+    scenarioEnv,
+    claimType,
+    caseType: 'UNSPECIFIED' as const,
+    claimantType,
+    defendantType,
+    // The parties to the claim and who represents them, which creating the claim follows (through the UI or the API)
+    claimShape: createClaimShape(claimType, claimantType, defendantType, [claimant1LitigantFriend, claimant2LitigantFriend]),
+    typeOfClaim,
+    typeOfClaimSubType,
+    track,
+    noiseInducedHearingLoss,
+    sdoTaskType,
+    finalOrder,
+    respondent1ResponseIntention: read.get('RESPONDENT1_RESPONSE_INTENTION') as responseIntentions,
+    respondent2ResponseIntention: read.get('RESPONDENT2_RESPONSE_INTENTION') as responseIntentions,
+    respondent1Response,
+    respondent2Response,
+    claimantProceed1,
+    claimantProceed2,
+    fixedRecoverableCosts: read.yes('FIXED_RECOVERABLE_COSTS'),
+    fixedRecoveryCostsBand: read.get('FIXED_RECOVERY_COSTS_BAND') as fixedRecoveryCostsBands,
+    claimant1LitigantFriend,
+    claimant2LitigantFriend,
+    determinationWithoutHearing: read.yes('DETERMINATION_WITHOUT_HEARING'),
+    oneMonthStay: read.yes('ONE_MONTH_STAY'),
+    preActionProtocol: read.yes('ONE_MONTH_STAY'),
+    noOfExperts,
+    noOfWitnesses,
+    language: read.get('LANGUAGE') as languageSpokenAndDocuments,
+    unavailableDatesRequired: read.yes('UNAVAILABLE_DATES'),
+    // How the claimant's solicitor pays the claim fee and the hearing fee: from their PBA account (PAYMENT_METHOD=PBA,
+    // the default) or by card (CARD), which is always done in the UI, even when the claim is created through the API
+    paymentMethod: read.get('PAYMENT_METHOD') as PaymentMethod,
+    // Whether the hearing centre admin adds a case note straight after the claim is issued (ADD_CASE_NOTE=Yes,
+    // default No)
+    addCaseNote: read.yes('ADD_CASE_NOTE'),
+    // Whether the claimant's solicitor uploads the particulars of claim with "Add or amend claim documents" once the
+    // claim is issued, before notifying the defendants (ADD_OR_AMEND_CLAIM_DOCUMENTS=Yes, default No)
+    addOrAmendClaimDocuments: read.yes('ADD_OR_AMEND_CLAIM_DOCUMENTS'),
+    // Whether the hearing centre admin changes the legal representatives' email addresses with "Amend party details" once
+    // the defendants' solicitors are on the claim (AMEND_PARTY_DETAILS=Yes, default No)
+    amendPartyDetails: read.yes('AMEND_PARTY_DETAILS'),
+    // Whether the hearing centre admin stays the case after the claimant's response, asks for an update and lifts the
+    // stay (STAY_CASE=Yes, default No)
+    stayCase: read.yes('STAY_CASE'),
+    // Whether the hearing centre admin sends a district judge a message with "Send and reply to messages" once the
+    // claimant's response has taken the claim to JUDICIAL_REFERRAL, and the judge replies. With STAY_CASE=Yes they do
+    // it while the case is stayed (SEND_AND_REPLY=Yes, default No)
+    sendAndReply: read.yes('SEND_AND_REPLY'),
+    // Whether the hearing centre admin dismisses the case with "Dismiss case" once the rest of the journey has run, which
+    // moves it to CASE_DISMISSED (DISMISS_CASE=Yes, default No)
+    dismissCase: read.yes('DISMISS_CASE'),
+    // Whether and how the claim is settled with "Settle this claim" once the rest of the journey has run: the
+    // claimant's solicitor marks it paid in full (SETTLE_CLAIM=MARK_PAID_IN_FULL), which stays the case, or court staff
+    // record it settled after a judge's order (JUDGE_ORDER) or a consent order (CONSENT_ORDER). Not settled by default.
+    settleClaim: read.get('SETTLE_CLAIM') as SettleClaim | undefined,
+    // Whether the claimant's solicitor fully discontinues the claim with "Discontinue this claim" once the rest of the
+    // journey has run: without needing the court's permission (DISCONTINUE_CLAIM=NO_PERMISSION_NEEDED), or with a
+    // judge's permission (PERMISSION_GRANTED), which court staff then validate. Not discontinued by default.
+    discontinueClaim: read.get('DISCONTINUE_CLAIM') as DiscontinueClaim | undefined,
+    // Whether the hearing centre admin takes the claim offline with "Case proceeds in Caseman" once the rest of the
+    // journey has run, giving the reason for proceeding on paper (CASE_PROCEEDS_IN_CASEMAN=APPLICATION,
+    // JUDGEMENT_REQUEST, CASE_SETTLED or OTHER). civil-service moves the claim to PROCEEDS_IN_HERITAGE_SYSTEM. Not taken
+    // offline by default.
+    caseProceedsInCaseman: read.get('CASE_PROCEEDS_IN_CASEMAN') as CaseProceedsInCaseman | undefined,
+    // Whether the judge decides the claim is not suitable for a Standard Direction Order instead of making one: it
+    // should go to another hearing centre (NOT_SUITABLE_SDO=CHANGE_LOCATION), which the hearing centre admin then
+    // transfers it to before the order is made there, or another reason (OTHER_REASONS), which takes the claim offline.
+    // Not used by default.
+    notSuitableSdo: read.get('NOT_SUITABLE_SDO') as NotSuitableSdo | undefined,
+    // Whether the small claims Standard Direction Order lists a dispute resolution hearing (DRH) instead of a small
+    // claims hearing (DISPUTE_RESOLUTION_HEARING=Yes, default No; needs TRACK=SMALL_CLAIM)
+    disputeResolutionHearing: read.yes('DISPUTE_RESOLUTION_HEARING'),
+    // Whether civil-service's automated hearing notice scheduler lists the hearing instead of the hearing centre admin's
+    // hearing notice: HMC (WireMock) returns a LISTED trial and the scheduler sends the notice (HEARING_NOTICE_SCHEDULER=Yes,
+    // default No). Only on a civil-service PR preview, which has WireMock; elsewhere the admin's notice is used, with a
+    // warning.
+    hearingNoticeScheduler: read.yes('HEARING_NOTICE_SCHEDULER'),
+    // Whether the claimant's solicitor asks for default judgment once the claim is waiting for the defendants: the
+    // response deadlines are moved to yesterday, as if the time for responding had passed, and the steps for the
+    // defendants' responses and everything after them are skipped, apart from settling or discontinuing the claim
+    // (DEFAULT_JUDGMENT=Yes, default No)
+    defaultJudgment: read.yes('DEFAULT_JUDGMENT'),
+    // Whether each defendant's solicitor informs the court of an agreed 28 day extension to respond, after
+    // acknowledging the claim (INFORM_AGREED_EXTENSION=Yes, default No)
+    informAgreedExtension: read.yes('INFORM_AGREED_EXTENSION'),
+    // Whether each defendant's solicitor adds a litigation friend for the defendant they represent with "Add litigation
+    // friend", after acknowledging the claim. Where both defendants have the same solicitor, one litigation friend is
+    // added for both (DEFENDANT_LITIGATION_FRIEND=Yes, default No)
+    defendantLitigationFriend: read.yes('DEFENDANT_LITIGATION_FRIEND'),
+    // Whether each solicitor adds unavailable dates for the parties they represent with "Add Unavailable Dates" once the
+    // claimant's response has been made, then the hearing centre admin adds some for a defendant
+    // (ADD_UNAVAILABLE_DATES=Yes, default No; see addUnavailableDatesSpecs.ts)
+    addUnavailableDates: read.yes('ADD_UNAVAILABLE_DATES'),
+    // The case flags the hearing centre admin adds after the claimant's response, and then makes the first one inactive
+    // (CASE_FLAGS: "representative", or a list such as CASE:CF0002,DEFENDANT_1:RA0012; see caseFlagSpecs.ts)
+    caseFlagsSetting: read.get('CASE_FLAGS'),
+    // Who updates which contact details after the claimant's response, each a run of Manage Contact Information
+    // (MANAGE_CONTACT_INFORMATION: "representative", or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1;
+    // see manageContactInformationSpecs.ts)
+    manageContactInformationSetting: read.get('MANAGE_CONTACT_INFORMATION'),
+    // The parties a solicitor takes over with a notice of change (NOTICE_OF_CHANGE: a list such as
+    // DEFENDANT_1,CLAIMANT_1). A defendant who is a litigant in person gets a solicitor, who then acknowledges and
+    // responds to the claim; a represented party moves to a solicitor of another organisation, who runs their later
+    // steps. See noticeOfChangeSpecs.ts.
+    noticeOfChangeSetting: read.get('NOTICE_OF_CHANGE'),
+    // The step the notices of change are given after (NOTICE_OF_CHANGE_AFTER, default NOTIFY_CLAIM_DETAILS), such as
+    // RESPOND_TO_DEFENCE to change solicitors once the claim reaches JUDICIAL_REFERRAL
+    noticeOfChangeAfter: read.get('NOTICE_OF_CHANGE_AFTER'),
+    noticeOfChangeFirstStep: 'NOTIFY_CLAIM_DETAILS',
+    // A general application the claimant's solicitor makes (GENERAL_APPLICATION: its types, such as STAY_THE_CLAIM or
+    // EXTEND_TIME,STAY_THE_CLAIM), with notice, after the GENERAL_APPLICATION_AFTER step (default RESPOND_TO_DEFENCE).
+    // See generalApplicationSteps.ts.
+    generalApplicationSetting: read.get('GENERAL_APPLICATION'),
+    generalApplicationAfter: read.get('GENERAL_APPLICATION_AFTER'),
+    // Whether the other side has agreed to it (GENERAL_APPLICATION_AGREED, default No) and, when not, whether it is made
+    // with notice to them (GENERAL_APPLICATION_WITH_NOTICE, default Yes)
+    generalApplicationAgreed: read.yes('GENERAL_APPLICATION_AGREED'),
+    generalApplicationWithNotice: read.get('GENERAL_APPLICATION_WITH_NOTICE') === 'No' ? yesNo.NO : yesNo.YES,
+    // Whether it is urgent (GENERAL_APPLICATION_URGENT, default No): an urgent application goes straight to the court
+    // once its fee is paid, without the other side's response
+    generalApplicationUrgent: read.yes('GENERAL_APPLICATION_URGENT'),
+    // Whose solicitor makes it (GENERAL_APPLICATION_BY: claimant, defendant1 or defendant2, default claimant); the other
+    // parties' solicitors respond
+    generalApplicationBy: read.get('GENERAL_APPLICATION_BY'),
+    // Whether a legal adviser given the decision refers it to a judge, who then decides it
+    // (GENERAL_APPLICATION_REFER_TO_JUDGE, default No)
+    generalApplicationReferToJudge: read.yes('GENERAL_APPLICATION_REFER_TO_JUDGE'),
+    // For an application made without notice, whether the judge or legal adviser first sends it to the other side, so
+    // the applicant pays the extra fee and the other side responds before it is decided
+    // (GENERAL_APPLICATION_SEND_TO_OTHER_PARTY, default No; needs GENERAL_APPLICATION_WITH_NOTICE=No)
+    generalApplicationSendToOtherParty: read.yes('GENERAL_APPLICATION_SEND_TO_OTHER_PARTY'),
+    // What the judge or legal adviser decides (GENERAL_APPLICATION_DECISION: APPROVE, the default, REQUEST_MORE_INFO,
+    // which the applicant's solicitor then answers, or LIST_FOR_HEARING, which court staff then schedule)
+    generalApplicationDecision: read.get('GENERAL_APPLICATION_DECISION'),
+    // Whose solicitors raise a query, which a CTSC admin answers (QUERY_MANAGEMENT: a list such as claimant,defendant1),
+    // after the QUERY_MANAGEMENT_AFTER step (default RESPOND_TO_DEFENCE, once every solicitor has the case). Whether the
+    // queries are about a hearing (QUERY_MANAGEMENT_HEARING_RELATED, default No), and whether each solicitor then asks a
+    // follow-up question, which is answered too (QUERY_MANAGEMENT_FOLLOW_UP, default No). See queryManagementSteps.ts.
+    queryManagementSetting: read.get('QUERY_MANAGEMENT'),
+    queryManagementAfter: read.get('QUERY_MANAGEMENT_AFTER'),
+    queryManagementHearingRelated: read.yes('QUERY_MANAGEMENT_HEARING_RELATED'),
+    queryManagementFollowUp: read.yes('QUERY_MANAGEMENT_FOLLOW_UP'),
+    // A refund of an overpayment of the claim fee (REFUND: what the approver does with it, APPROVE, REJECT or RETURN,
+    // which returns it to the claimant's solicitor to change and send again before it is approved), after the
+    // REFUND_AFTER step (default CREATE_CLAIM). See refundSteps.ts.
+    refundSetting: read.get('REFUND'),
+    refundAfter: read.get('REFUND_AFTER'),
+    defendantSolicitorAssignedAfter: { 1: 'ACKNOWLEDGE_CLAIM_DEFENDANT1', 2: 'ACKNOWLEDGE_CLAIM_DEFENDANT2' } as Record<1 | 2, string>,
+    defendantsToNotifyClaim,
+    defendantsToNotifyClaimDetails,
+    claimOfflineAfterNotifyClaim,
+    claimOfflineAfterNotifyClaimDetails,
+    stateAfterAllResponses,
+    claimantResponseClaimTypes,
+    stateAfterClaimantResponse,
+    // Claim types where Defendant 1 has a solicitor, who acknowledges and responds to the claim
+    defendant1SolicitorClaimTypes: [
+      claimTypes.ONE_VS_ONE,
+      claimTypes.ONE_VS_TWO_SAME_SOL,
+      claimTypes.ONE_VS_TWO_DIFF_SOL,
+      claimTypes.TWO_VS_ONE,
+      claimTypes.ONE_VS_TWO_LR_LIP,
+    ],
+    // Claim types where Defendant 2 has their own solicitor, who acknowledges and responds separately
+    defendant2OwnSolicitorClaimTypes: [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LIP_LR],
+    // In these claims the two defendants respond separately, in either order, and the claim waits in
+    // AWAITING_RESPONDENT_ACKNOWLEDGEMENT until both have responded.
+    //  - 1v2DS: each defendant's solicitor responds.
+    //  - 1v2LRLIP: Defendant 1's solicitor responds. Defendant 2 is a litigant in person, who cannot respond online in
+    //    an unspecified claim, so the claim keeps waiting unless they appoint a solicitor who responds for them.
+    //  - 1v2LIPLR: no defendant responds. Defendant 1 is a litigant in person, and Defendant 2's solicitor's response
+    //    is skipped, so the claim stays in AWAITING_RESPONDENT_ACKNOWLEDGEMENT.
+    separateResponseClaimTypes: [claimTypes.ONE_VS_TWO_DIFF_SOL, claimTypes.ONE_VS_TWO_LR_LIP, claimTypes.ONE_VS_TWO_LIP_LR],
+
+    // Checks the settings make sense together, before the journey starts
+    validate() {
+      // Every value is one its setting takes, no settings clash (settingRules) and every name the scenario sets is a
+      // setting of this journey (see ../settings.ts)
+      const settingErrors = settingProblems('UNSPECIFIED', scenarioEnv, scenarioSettings);
+      expect(settingErrors, `Invalid settings:\n  - ${settingErrors.join('\n  - ')}`).toEqual([]);
+
+      const caseFlagsError = caseFlagsProblem(config);
+      expect(caseFlagsError, caseFlagsError).toBeUndefined();
+
+      const mciError = mciProblem(config);
+      expect(mciError, mciError).toBeUndefined();
+
+      const nocError = nocProblem(config);
+      expect(nocError, nocError).toBeUndefined();
+
+      const gaError = generalApplicationProblem(config);
+      expect(gaError, gaError).toBeUndefined();
+
+      const queryError = queryManagementProblem(config);
+      expect(queryError, queryError).toBeUndefined();
+
+      const refundError = refundProblem(config);
+      expect(refundError, refundError).toBeUndefined();
+    },
+  };
+  // What follows for the claim from these settings, which steps need (see ../claimFacts.ts)
+  return Object.assign(config, { facts: unspecifiedFacts(config) });
+}

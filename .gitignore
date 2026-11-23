@@ -33,6 +33,9 @@ bin/main/application.yaml
 package-lock.json
 node_modules/
 
+# tests setup
+e2e/.auth/**
+
 # test_output
 test-results/
 e2e/e2e-documentation/results/
@@ -77,9 +80,19 @@ playwright-report/
 /playwright-e2e/fixtures/.user-cookies/
 /playwright-e2e/fixtures/.user-assigned-cases/
 /playwright-e2e/fixtures/data/bankHolidays.json
+/playwright-tests/e2e/.auth/*
 
 #AI
 AGENTS.md
+
+# Local tooling / generated output
+.playwright-mcp/
+allure-functional-results/
+playwright-tests/debug-*.png
+playwright-tests/e2e/.auth/
+playwright-tests/e2e/.cases/
+# playwright-tests environment files hold secrets
+playwright-tests/env/.env.*
 .claude/
 
 # WireMock mappings pulled from civil-wiremock-mappings at build time
@@ -90,3 +103,4 @@ __files/
 bin/shared/*
 !bin/shared/.gitkeep
 .civil-service-sparse/
+playwright-tests/e2e/.locks/
