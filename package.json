@@ -244,7 +244,7 @@
     "allure-js-commons": "^3.4.2",
     "allure-playwright": "2.15.1",
     "chai": "^6.0.0",
-    "codeceptjs": "4.2.4",
+    "codeceptjs": "4.2.5",
     "custom-eslint-plugin": "portal:./plugins/custom-eslint-plugins",
     "deep-equal-in-any-order": "^2.0.0",
     "dotenv": "^18.0.0",
@@ -268,7 +268,7 @@
     "totp-generator": "^2.0.0",
     "ts-node": "^10.9.2",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.72.2",
+    "typescript-eslint": "8.73.0",
     "uuid": "^14.0.0",
     "webdriverio": "^10.0.0",
     "zod": "^4.3.6"
@@ -283,7 +283,7 @@
     "playwright-ui/**/*.{ts,tsx}": "prettier --write",
     "**/*.{ts,tsx,js,mjs,cjs}": "eslint"
   },
-  "packageManager": "yarn@4.18.1",
+  "packageManager": "yarn@4.19.0",
   "engines": {
     "node": ">=24.18.0"
   },
