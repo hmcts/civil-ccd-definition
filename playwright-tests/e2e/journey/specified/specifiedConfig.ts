@@ -87,7 +87,7 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>,
     // a notice of change has given each litigant in person a solicitor (see specifiedSteps)
     scenarioEnv,
     claimType,
-    caseType: 'SPECIFIED',
+    caseType: 'SPECIFIED' as const,
     claimantType,
     defendantType,
     // The parties to the claim and who represents them, which creating the claim follows (through the UI or the API).

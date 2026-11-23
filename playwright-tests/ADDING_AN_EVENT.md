@@ -322,6 +322,7 @@ The facts both journeys have:
 | `notOfflineAtNotify` | Notify claim and Notify claim details did not take the claim offline. Always true for a specified claim, which has neither. |
 | `everyDefendantRepresented` | Every defendant has a solicitor. A litigant in person responds through the citizen service instead. |
 | `reachesJudicialReferral` | The claimant's response takes the claim to JUDICIAL_REFERRAL. For the steps from the judge's order on. |
+| `onlineAfterClaimantResponse` | The claimant's solicitor responds and the claim stays online. For court staff steps once the claimant has responded (case flags, contact information). `stateAfterClaimantResponse(c)` in `journey/steps/journeyConfig.ts` gives the state it is then in. |
 | `reachesCaseProgression` | The judge's (or legal adviser's) order moves the claim to CASE_PROGRESSION. For the steps after it. |
 | `claimantSolicitorCanCloseClaim` | The claimant's solicitor can settle or discontinue the claim (not two defendants with a litigant in person). |
 | `withoutDefaultJudgment` | The claimant has not asked for default judgment. |
@@ -574,7 +575,13 @@ Amend party details shows how a difference can still be shared. An unspecified c
     needs: [c.facts.notOfflineAtNotify, c.facts.defendant1HasSolicitor],
 ```
 
-Where the journeys differ in a value rather than a fact, the shared step checks `c.caseType`. The Add case note step expects the claim to stay where it was, which is a different state in each journey:
+Where the journeys differ in a value rather than a fact, the shared step checks `c.caseType`. Checking it also tells TypeScript which journey's config `c` is, so the step can then read a setting only that journey has. From `createSdo.ts`, where only a specified claim can be a flight delay small claim:
+
+```typescript
+const flightDelaySmallClaim = (c: JourneyConfig) => c.caseType === 'SPECIFIED' && c.flightDelaySmallClaim;
+```
+
+The Add case note step checks it to expect the claim to stay where it was, which is a different state in each journey:
 
 ```typescript
       await ctx.assertCaseState(specified ? caseStates.AWAITING_RESPONDENT_ACKNOWLEDGEMENT : caseStates.CASE_ISSUED);

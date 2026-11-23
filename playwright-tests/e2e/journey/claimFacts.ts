@@ -27,6 +27,9 @@ export interface ClaimFacts {
   everyDefendantRepresented: Fact;
   // The claim reaches JUDICIAL_REFERRAL through the claimant's response, for the steps from the judge's order on
   reachesJudicialReferral: Fact;
+  // The claimant's solicitor responds and the response keeps the claim online (in a specified claim it can also wait
+  // in AWAITING_APPLICANT_INTENTION or go to mediation), for the court staff steps once the claimant has responded
+  onlineAfterClaimantResponse: Fact;
   // The judge's (or legal adviser's) order moves the claim to CASE_PROGRESSION, for the steps after it
   reachesCaseProgression: Fact;
   // The claimant's solicitor can settle or discontinue the claim: civil-service does not let them where there are two
@@ -100,6 +103,11 @@ export function specifiedFacts(c: ClaimSettings & {
       ...everyDefendantRepresented,
       [responseTakesClaimTo([caseStates.JUDICIAL_REFERRAL]), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL'],
     ],
+    onlineAfterClaimantResponse: [
+      ...everyDefendantRepresented,
+      [!c.claimantResponds, 'Skipping as the claim went offline once the defendants responded'],
+      [c.claimantOutcome.state === caseStates.PROCEEDS_IN_HERITAGE_SYSTEM, 'Skipping as the claimant\'s response took the claim offline'],
+    ],
     reachesMediation: [
       ...everyDefendantRepresented,
       [responseTakesClaimTo([caseStates.IN_MEDIATION]), 'Skipping as the claimant\'s response did not take the claim to mediation'],
@@ -156,6 +164,8 @@ export function unspecifiedFacts(c: ClaimSettings & {
     defendant2HasOwnSolicitor: [[!c.defendant2OwnSolicitorClaimTypes.includes(c.claimType), 'Skipping test as Defendant 2 has no separate solicitor']],
     claimantResponds,
     reachesJudicialReferral,
+    // An unspecified claim stays online after the claimant's response only by going to JUDICIAL_REFERRAL
+    onlineAfterClaimantResponse: reachesJudicialReferral,
     reachesCaseProgression: reachesJudicialReferral,
   };
 }

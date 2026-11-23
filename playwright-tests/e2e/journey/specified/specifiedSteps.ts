@@ -3,12 +3,6 @@ import { envUrl } from '../../../civilConfig.ts';
 import { CreateSpecifiedCase } from '../../flows/createSpecifiedCase.ts';
 import * as ui from '../../flows/events/ui/index.ts';
 import * as api from '../../flows/events/api/index.ts';
-import { caseFlagType } from '../../flows/caseFlags/caseFlagTypes.ts';
-import { holderFlagsField, holderLabel } from '../../flows/caseFlags/caseFlagHolders.ts';
-import { CaseFlagSpec, caseFlagSpecs } from '../../flows/caseFlags/caseFlagSpecs.ts';
-import {
-  mciChange, mciChangeNotSavedReason, mciSessionUser, mciSpecs, mciStartsBusinessProcess, mciUserLabel,
-} from '../../flows/events/shared_api_ui/manageContactInformationSpecs.ts';
 import { sendAndReplySteps } from '../sendAndReplySteps.ts';
 import { ReconsiderationDecision, RequestForReconsiderationBy } from '../../../enums/reconsideration.ts';
 import { WaTaskHelper } from '../../../helpers/WaTaskHelper.ts';
@@ -35,13 +29,18 @@ import { payHearingFee } from '../steps/payHearingFee.ts';
 import { moveToDecisionOutcome } from '../steps/moveToDecisionOutcome.ts';
 import { makeFinalOrder } from '../steps/makeFinalOrder.ts';
 import { confirmOrderReview } from '../steps/confirmOrderReview.ts';
+import { createSdo, sdoTask, sdoUser } from '../steps/createSdo.ts';
+import { trialReadyCheck } from '../steps/trialReadyCheck.ts';
+import { createTrialBundle } from '../steps/createTrialBundle.ts';
+import { caseFlagSteps } from '../steps/caseFlagSteps.ts';
+import { manageContactInformationSteps } from '../steps/manageContactInformationSteps.ts';
 import { withNoticeOfChange } from '../noticeOfChangeSteps.ts';
 import { withGeneralApplication } from '../generalApplicationSteps.ts';
 import { withQueryManagement } from '../queryManagementSteps.ts';
 import { addUnavailableDatesSteps } from '../addUnavailableDatesSteps.ts';
 import { notSuitableSdoSteps, withNotSuitableSdo } from '../notSuitableSdoSteps.ts';
-import { withDisputeResolutionHearing, expectDisputeResolutionHearing } from '../disputeResolutionHearing.ts';
-import { expectFlightDelayClaim, expectFlightDelayCourt, expectFlightDelayDirections } from '../flightDelay.ts';
+import { withDisputeResolutionHearing } from '../disputeResolutionHearing.ts';
+import { expectFlightDelayClaim, expectFlightDelayCourt } from '../flightDelay.ts';
 import { countMediationDocuments } from '../../flows/events/shared_api_ui/uploadMediationDocumentsSpecs.ts';
 import NotSuitableSdo from '../../../enums/notSuitableSdo.ts';
 import { withRefund } from '../refundSteps.ts';
@@ -95,14 +94,6 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
   // Default judgment (DEFAULT_JUDGMENT=Yes), and the steps it replaces: once judgment is asked for, the defendants'
   // steps and everything after them are skipped, apart from settling or discontinuing the claim
   const noDefaultJudgment: [boolean, string] = [c.defaultJudgment !== yesNo.YES, 'Default judgment is switched off (set DEFAULT_JUDGMENT=Yes to run it)'];
-
-  // Who makes the Standard Direction Order, and the work allocation directions task they claim for it: a judge on the
-  // fast track, a legal adviser on the small claims track, apart from a flight delay small claim, which a judge gets
-  // through "Initial Directions (Flight Delay)"
-  const sdoUser: SessionUserKey = c.track === claimTrack.SMALL && !c.flightDelaySmallClaim ? 'legalAdviser' : 'judge';
-  const sdoTask = c.track !== claimTrack.SMALL
-    ? 'FastTrackDirections'
-    : (c.flightDelaySmallClaim ? 'InitialDirectionFlightDelay' : 'LegalAdvisorSmallClaimsTrackDirections');
 
   // The problems with closing the claim where the journey ends (see ../steps/closingSteps.ts)
   const closingProblems = closingProblemsFor(c, journeyEndState);
@@ -290,8 +281,8 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       },
     },
 
-    ...caseFlagSteps(),
-    ...manageContactInformationSteps(),
+    ...caseFlagSteps(c, ctx),
+    ...manageContactInformationSteps(c, ctx),
 
     // Each solicitor adds unavailable dates for their parties, then the hearing centre admin adds some for a defendant,
     // in JUDICIAL_REFERRAL or IN_MEDIATION. Only run with ADD_UNAVAILABLE_DATES=Yes.
@@ -355,42 +346,9 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
     // The judge (or, for a small claim, the legal adviser) decides the claim is not suitable for a Standard Direction
     // Order, and with CHANGE_LOCATION the hearing centre admin transfers it to another hearing centre, whose directions
     // task CREATE_SDO then uses (NOT_SUITABLE_SDO, see notSuitableSdoSteps.ts)
-    ...notSuitableSdoSteps(c.notSuitableSdo, ctx, sdoUser, sdoTask),
+    ...notSuitableSdoSteps(c.notSuitableSdo, ctx, sdoUser(c), sdoTask(c)),
 
-    // The Standard Direction Order (fast track and small claims) or a directions order (intermediate and multi track),
-    // once the claim is in JUDICIAL_REFERRAL, which moves it to CASE_PROGRESSION. A small claim gets there after
-    // unsuccessful mediation, and work allocation gives its directions task to a legal adviser rather than a judge,
-    // apart from a flight delay claim's, which a judge gets and which has the flight delay directions.
-    {
-      name: 'CREATE_SDO',
-      title: `${sdoUser === 'legalAdviser' ? 'Legal Adviser' : 'Judge'} makes a Standard Direction Order${c.disputeResolutionHearing === yesNo.YES ? ' for a dispute resolution hearing' : ''}${c.flightDelaySmallClaim ? ' with flight delay directions' : ''}.`,
-      user: sdoUser,
-      needs: [c.facts.everyDefendantRepresented, c.facts.notSettledInMediation],
-      skipIf: [
-        [!c.claimantResponds || ![caseStates.JUDICIAL_REFERRAL, caseStates.IN_MEDIATION].includes(c.claimantOutcome.state), 'Skipping as the claimant\'s response did not take the claim to JUDICIAL_REFERRAL or mediation'],
-        [c.track !== claimTrack.FAST && c.track !== claimTrack.SMALL, 'Skipping as the intermediate and multi tracks get a directions order instead'],
-      ],
-      run: async ({ page, storageState }) => {
-        await ctx.runEvent(page, storageState, async () => {
-          // Where work allocation is switched on, the directions task for the track is needed to make the order. It is
-          // claimed through the API version too, as the UI would.
-          await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', sdoTask);
-          if (!ctx.useApi()) {
-            await new ui.CreateSdo(page).submit(ctx.caseId, c.track, false, c.disputeResolutionHearing === yesNo.YES, c.flightDelaySmallClaim);
-          }
-        });
-        if (ctx.useApi()) {
-          await new api.CreateSdo().submit(ctx.caseId, sdoUser, c.track, false, c.disputeResolutionHearing === yesNo.YES, c.flightDelaySmallClaim);
-        }
-        if (c.flightDelaySmallClaim) {
-          await expectFlightDelayDirections(ctx);
-        }
-        if (c.disputeResolutionHearing === yesNo.YES) {
-          await expectDisputeResolutionHearing(ctx);
-        }
-        await ctx.assertCaseState(caseStates.CASE_PROGRESSION);
-      },
-    },
+    createSdo(c, ctx),
 
     // A party's solicitor asks for the legal adviser's small claims order to be reconsidered
     // (REQUEST_FOR_RECONSIDERATION=CLAIMANT, DEFENDANT_1 or DEFENDANT_2), which civil-service allows within 7 days of the
@@ -446,54 +404,14 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
 
     payHearingFee(c, ctx),
 
-    // civil-service's trial ready check scheduler asks the parties to confirm they are ready for trial once a fast track
-    // hearing is less than 3 weeks away. The hearing notice lists it weeks away, so the test runs TRIAL_READY_CHECK
-    // itself. It records the check on the case (trialReadyChecked) and leaves the claim in
-    // PREPARE_FOR_HEARING_CONDUCT_HEARING.
-    {
-      name: 'TRIAL_READY_CHECK',
-      title: 'The parties are asked to confirm they are ready for trial.',
-      user: 'claimantSolicitor',
-      needs: [c.facts.reachesCaseProgression],
-      skipIf: [
-        [c.track !== claimTrack.FAST, 'Skipping as the trial ready check is only made on the fast track'],
-      ],
-      run: async () => {
-        await ctx.testingEndpointHelper.triggerTrialReadyCheck(ctx.caseId);
-        await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'TRIAL_READY_CHECK');
-        const caseData = await ctx.testingEndpointHelper.getCaseData(ctx.caseId);
-        expect(caseData.trialReadyChecked, 'The trial ready check was not recorded on the case').toBe('Yes');
-        await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
-      },
-    },
+    trialReadyCheck(c, ctx),
 
     // Each solicitor confirms the case is ready for trial. The CCD definition only offers this on the fast track, and
     // civil-service refuses it once the hearing is less than 3 weeks away; the hearing notice lists it about 8 weeks
     // ahead. The claim stays in PREPARE_FOR_HEARING_CONDUCT_HEARING.
     ...confirmTrialArrangementsSteps(),
 
-    // The trial bundle, which a civil-service scheduler normally creates about 3 weeks before the hearing, is created
-    // now. The scheduler leaves out intermediate and multi track claims, but small claims have a bundle too. Once the
-    // bundle has been stitched into one document it shows on the Bundles tab.
-    {
-      name: 'CREATE_TRIAL_BUNDLE',
-      title: 'Trial bundle is created and shown to the Claimant Solicitor.',
-      user: 'claimantSolicitor',
-      needs: [c.facts.reachesCaseProgression],
-      skipIf: [
-        [c.track === claimTrack.INTERMEDIATE || c.track === claimTrack.MULTI, 'Skipping as civil-service does not create trial bundles for intermediate or multi track claims'],
-      ],
-      run: async ({ page, storageState }) => {
-        await ctx.testingEndpointHelper.triggerTrialBundle(ctx.caseId);
-        const bundleTitle = await ctx.testingEndpointHelper.waitForBundleStitched(ctx.caseId);
-        await ctx.runEvent(page, storageState, async () => {
-          await ctx.pageHelper.gotoAndWaitForXui(ctx.caseUrl());
-          await ctx.tabsHelper.selectTab('Bundles');
-          await expect(page.getByText(bundleTitle).first()).toBeVisible();
-        });
-        await ctx.assertCaseState(caseStates.PREPARE_FOR_HEARING_CONDUCT_HEARING);
-      },
-    },
+    createTrialBundle(c, ctx),
 
     moveToDecisionOutcome(c, ctx),
 
@@ -800,117 +718,6 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
           ui: () => new ui.UploadEvidence(page).submit(c.track),
           expectState: caseStates.CASE_PROGRESSION,
         });
-      },
-    }));
-  }
-
-  // One step per CASE_FLAGS flag, each a Create case flags event, then a Manage case flags event that makes the first
-  // one inactive. They run once the claimant has responded, in whichever online state that left the claim (court staff
-  // can flag a case in any of them). Flags court staff create are active whatever reference data's default status,
-  // which is for flags requested from outside the court.
-  function caseFlagSteps(): JourneyStep[] {
-    const flags = caseFlagSpecs(c);
-    const noCaseFlags: Array<[boolean, string]> = [
-      ...c.facts.everyDefendantRepresented,
-      [!c.claimantResponds, 'Skipping as the claim went offline once the defendants responded'],
-      [c.claimantOutcome.state === caseStates.PROCEEDS_IN_HERITAGE_SYSTEM, 'Skipping as the claimant\'s response took the claim offline'],
-      [flags.length === 0, 'Adding case flags is switched off (set CASE_FLAGS=representative, or a list such as CASE:CF0002,DEFENDANT_1:RA0012)'],
-    ];
-    const comment = (index: number, flag: CaseFlagSpec) => `Case flag ${index + 1} (${flag.code}) added by the specified journey`;
-
-    const createSteps: JourneyStep[] = flags.map((flag, index) => ({
-      name: `CREATE_CASE_FLAG_${index + 1}`,
-      group: 'CREATE_CASE_FLAGS',
-      title: `Hearing Centre Admin adds case flag ${flag.code} to ${flag.holder}.`,
-      user: 'hearingCentreAdmin',
-      skipIf: noCaseFlags,
-      run: async ({ page, storageState }) => {
-        const flagType = await caseFlagType(page, flag.holder === 'CASE' ? 'CASE' : 'PARTY', flag.code, flag.otherUnder);
-        console.log(`Adding case flag ${flag.code} "${flagType.path.join(' > ')}" to ${holderLabel(c, flag.holder)}`);
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.CreateCaseFlag().submit(ctx.caseId, flag.holder, flagType, { ...flag, comment: comment(index, flag) }),
-          ui: () => new ui.CreateCaseFlag(page).submit(holderLabel(c, flag.holder), flagType, { ...flag, comment: comment(index, flag) }),
-        });
-        const { field, index: entry } = holderFlagsField(flag.holder);
-        const saved = (await ctx.testingEndpointHelper.getCaseFlagDetails(ctx.caseId, field, entry)).find((detail) => detail.flagComment === comment(index, flag));
-        expect(saved, `Case flag ${flag.code} was not saved on ${field}${entry === undefined ? '' : `[${entry}]`}`).toBeDefined();
-        expect(saved.flagCode).toBe(flag.code);
-        expect(saved.status).toBe('Active');
-        if (flag.otherDescription) {
-          expect(saved.otherDescription).toBe(flag.otherDescription);
-        }
-        await ctx.assertCaseState(c.claimantOutcome.state);
-      },
-    }));
-
-    const first = flags[0];
-    const manageStep: JourneyStep = {
-      name: 'MAKE_CASE_FLAG_INACTIVE',
-      title: 'Hearing Centre Admin makes the first case flag inactive.',
-      user: 'hearingCentreAdmin',
-      skipIf: noCaseFlags,
-      run: async ({ page, storageState }) => {
-        const flagType = await caseFlagType(page, first.holder === 'CASE' ? 'CASE' : 'PARTY', first.code, first.otherUnder);
-        const reason = 'Made inactive by the specified journey';
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.ManageCaseFlag().makeInactive(ctx.caseId, first.holder, first.code, reason),
-          ui: () => new ui.ManageCaseFlag(page).makeInactive(holderLabel(c, first.holder), first.otherDescription ?? flagType.name, reason),
-        });
-        const { field, index: entry } = holderFlagsField(first.holder);
-        const saved = (await ctx.testingEndpointHelper.getCaseFlagDetails(ctx.caseId, field, entry)).find((detail) => detail.flagCode === first.code);
-        expect(saved?.status, `Case flag ${first.code} on ${field} was not made inactive`).toBe('Inactive');
-        await ctx.assertCaseState(c.claimantOutcome.state);
-      },
-    };
-
-    if (flags.length === 0) {
-      // Without CASE_FLAGS the journey still lists one step, skipped with the reason, as it does for other switched-off steps
-      return [{ name: 'CREATE_CASE_FLAGS', title: 'Hearing Centre Admin adds case flags.', user: 'hearingCentreAdmin', skipIf: noCaseFlags, run: async () => {} }];
-    }
-    return [...createSteps, manageStep];
-  }
-
-  // One step per MANAGE_CONTACT_INFORMATION entry, each a Manage Contact Information event as its user, checked against
-  // the case data civil-service saved. They run once the claimant has responded and the claim is still online, but
-  // civil-service only lets the admin run it while a claim waits in AWAITING_APPLICANT_INTENTION (a full admission paid
-  // immediately), not a solicitor.
-  function manageContactInformationSteps(): JourneyStep[] {
-    const specs = mciSpecs(c);
-    const noMci: Array<[boolean, string]> = [
-      ...c.facts.everyDefendantRepresented,
-      [!c.claimantResponds, 'Skipping as the claim went offline once the defendants responded'],
-      [c.claimantOutcome.state === caseStates.PROCEEDS_IN_HERITAGE_SYSTEM, 'Skipping as the claimant\'s response took the claim offline'],
-      [specs.length === 0, 'Managing contact information is switched off (set MANAGE_CONTACT_INFORMATION=representative, or a list such as admin:CLAIMANT_1,respondent1Solicitor:DEFENDANT_1)'],
-    ];
-
-    if (specs.length === 0) {
-      // Without MANAGE_CONTACT_INFORMATION the journey still lists one step, skipped with the reason
-      return [{ name: 'MANAGE_CONTACT_INFORMATION', title: 'Contact information is updated.', user: 'hearingCentreAdmin', skipIf: noMci, run: async () => {} }];
-    }
-    return specs.map((spec, index) => ({
-      name: `MANAGE_CONTACT_INFORMATION_${index + 1}`,
-      group: 'MANAGE_CONTACT_INFORMATION',
-      title: `${mciUserLabel(spec)} updates the contact information of ${spec.party}.`,
-      user: mciSessionUser(spec),
-      skipIf: [
-        ...noMci,
-        [
-          spec.user !== 'admin' && c.claimantOutcome.state === caseStates.AWAITING_APPLICANT_INTENTION,
-          'Skipping as a solicitor cannot manage contact information while the claim waits in AWAITING_APPLICANT_INTENTION',
-        ],
-      ],
-      run: async ({ page, storageState, user }) => {
-        const change = mciChange(index, spec);
-        await ctx.submitEvent(page, storageState, {
-          api: () => new api.ManageContactInformation().submit(ctx.caseId, spec, change, user),
-          ui: () => new ui.ManageContactInformation(page).submit(spec, change),
-        });
-        if (mciStartsBusinessProcess(spec.party)) {
-          await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.caseId, 'MANAGE_CONTACT_INFORMATION');
-        }
-        const notSaved = mciChangeNotSavedReason(await ctx.testingEndpointHelper.getCaseData(ctx.caseId), spec, change);
-        expect(notSaved, `Manage Contact Information for ${spec.party} was not saved: ${notSaved}`).toBeUndefined();
-        await ctx.assertCaseState(c.claimantOutcome.state);
       },
     }));
   }
