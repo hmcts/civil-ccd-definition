@@ -6,6 +6,7 @@ import PaymentMethod from '../../../enums/paymentMethod.ts';
 import { paymentCard } from '../../../fixtures/paymentCard.ts';
 import { withCardPaymentLock } from '../../../helpers/CardPaymentLock.ts';
 import { PageHelper } from '../../../helpers/PageHelper.ts';
+import { SessionEndedError } from '../../../helpers/SessionEndedError.ts';
 
 // How many times a card GOV.UK Pay turns down is paid: once more after a decline
 const cardPaymentAttempts = 2;
@@ -99,8 +100,8 @@ export class PaymentPage {
       : this.page.getByText('Pay now');
     // A claim's tab wraps its table in .ServiceRequest; a general application's tab is just the table
     const serviceRequests = this.page.locator('.ServiceRequest').or(this.page.getByRole('table')).first();
-    const serviceRequestTab = this.page.getByRole('tab', { name: 'Service Request' });
     for (let retry = 1; retry <= maxRetries; retry++) {
+      await this.waitForServiceRequestTab();
       await new TabsHelper(this.page).selectTab('Service Request');
       await serviceRequests.waitFor({state: 'visible'});
       let payNowShown = true;
@@ -115,11 +116,22 @@ export class PaymentPage {
       }
       console.log('Refreshing webpage - waiting for "Pay now" link for Service request, try: ' + retry + ' of ' + maxRetries);
       await this.page.reload();
-      // A general application has no Next step list where the user has no event to start, so the tab is waited for
-      await serviceRequestTab.waitFor({state: 'visible'});
     }
 
     await payNow.click();
+  }
+
+  // Waits for the case's Service Request tab (a general application has no Next step list where the user has no event
+  // to start, so the tab itself is waited for). If XUI sends the user to the sign in page instead, their session has
+  // ended. Nothing has been paid before "Pay now" is clicked, so SessionEndedError is thrown and
+  // SessionHelper.runWithSessionRecovery signs the user in again and starts the payment again from the case.
+  private async waitForServiceRequestTab() {
+    const serviceRequestTab = this.page.getByRole('tab', { name: 'Service Request' });
+    const signInEmail = this.page.locator('#email');
+    await serviceRequestTab.or(signInEmail).first().waitFor({ state: 'visible' });
+    if (await signInEmail.isVisible()) {
+      throw new SessionEndedError('opening the Service Request tab went to the sign in page');
+    }
   }
 
   // The payment result's message. It can be slow to show when the payment service is busy, and is not waited for
