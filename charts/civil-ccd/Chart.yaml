@@ -16,7 +16,7 @@ dependencies:
     version: '>=0.0.134 <0.1.0'
     repository: 'oci://hmctsprod.azurecr.io/helm'
   - name: ccd
-    version: 9.3.1
+    version: 9.3.2
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
@@ -24,7 +24,7 @@ dependencies:
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: xui-webapp.enabled
   - name: aac-manage-case-assignment
-    version: 0.2.31
+    version: 0.2.32
     repository: 'oci://hmctsprod.azurecr.io/helm'
     condition: aac-manage-case-assignment.enabled
   - name: camunda-bpm
