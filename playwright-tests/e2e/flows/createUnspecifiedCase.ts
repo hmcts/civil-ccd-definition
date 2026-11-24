@@ -10,7 +10,7 @@ import claimantDefendantTypes from '../../enums/claimantDefendantTypes.ts';
 import unspecClaimTypes from '../../enums/unspecClaimTypes.ts';
 import personalInjuryTypes from '../../enums/personalInjuryTypes.ts';
 import claimTrack from '../../enums/track.ts';
-import { xuiLoadRetries } from '../../civilConfig.ts';
+import { organisationSearchWaitSeconds, xuiLoadRetries } from '../../civilConfig.ts';
 
 // The claim value, in pounds, that puts a claim of this type on the track. Used by the UI and the API to create claims.
 export function claimAmountInPounds(track, typeOfClaim): string {
@@ -344,19 +344,24 @@ export class CreateUnspecifiedCase {
 
   // When the environment is slow XUI can fail to load the organisation list and show "Organisation search is
   // currently unavailable" instead of the search box. Going back a page and forward again makes XUI request it again.
-  private async waitForOrganisationSearch(attempts: number = xuiLoadRetries.attempts, waitSeconds: number = xuiLoadRetries.waitSeconds) {
+  // The list is large and slow to load, and going back starts it again, so each try waits searchWaitSeconds for it.
+  private async waitForOrganisationSearch(
+    attempts: number = xuiLoadRetries.attempts,
+    searchWaitSeconds: number = organisationSearchWaitSeconds,
+    waitSeconds: number = xuiLoadRetries.waitSeconds,
+  ) {
     const searchBox = this.page.locator('#search-org-text');
     const searchUnavailable = this.page.getByText('Organisation search is currently unavailable');
     for (let attempt = 1; attempt <= attempts; attempt++) {
       const searchShown = await searchBox
         .or(searchUnavailable)
-        .waitFor({ state: 'visible', timeout: waitSeconds * 1000 })
+        .waitFor({ state: 'visible', timeout: searchWaitSeconds * 1000 })
         .then(() => searchBox.isVisible(), () => false);
       if (searchShown) {
         return;
       }
       if (attempt === attempts) {
-        throw new Error(`Organisation search was still unavailable after ${attempts} attempts of ${waitSeconds}s each`);
+        throw new Error(`Organisation search was still unavailable after ${attempts} attempts of ${searchWaitSeconds}s each`);
       }
       console.log(`Organisation search unavailable, going back and trying again (attempt ${attempt + 1} of ${attempts})`);
       const organisationPageUrl = this.page.url();
