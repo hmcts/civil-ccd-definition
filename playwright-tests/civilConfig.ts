@@ -154,6 +154,12 @@ export const xuiLoadRetries = {
   waitSeconds: Number(process.env.XUI_LOAD_WAIT_SECONDS ?? 20),
 }
 
+// How many seconds to wait for the organisation search on each try, before going back a page and trying again.
+// XUI loads every organisation for it (/api/caseshare/orgs, about 10 MB on AAT), which took 16-36s on 2026-11-24, and
+// going back starts that download again, so it waits longer than other XUI loads. Override with
+// ORGANISATION_SEARCH_WAIT_SECONDS.
+export const organisationSearchWaitSeconds = Number(process.env.ORGANISATION_SEARCH_WAIT_SECONDS ?? 60);
+
 // How hard to try when CCD is slow, or briefly fails, to check an event page after Continue: how many attempts in
 // total, how many seconds to wait before retrying, how many seconds to wait for CCD to respond, and how many seconds
 // without anything being sent to CCD before a click on Continue counts as dropped. Override with
