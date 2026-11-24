@@ -33,6 +33,17 @@
       "automergeType": "pr"
     },
     {
+      "description": "Keep the cnp-jenkins-library @Library bump in Jenkinsfiles out of the npm non-major group so pipeline changes are tested on their own",
+      "matchDatasources": [
+        "github-tags"
+      ],
+      "matchPackageNames": [
+        "hmcts/cnp-jenkins-library"
+      ],
+      "groupName": "Jenkins library",
+      "groupSlug": "jenkins-library"
+    },
+    {
       "matchManagers": ["helmv3"],
       "groupName": "Helm chart updates",
       "groupSlug": "helm-charts",
@@ -71,6 +82,11 @@
       "groupSlug": "eslint",
       "automerge": true,
       "automergeType": "pr"
+    },
+    {
+      "description": "typescript-eslint 8 only supports TypeScript <6.1.0. Remove once typescript-eslint supports TypeScript 7.",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<6.1.0"
     },
     {
       "matchPackageNames": ["typescript", "/^@types//"],

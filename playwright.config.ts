@@ -214,16 +214,21 @@ function getReporter(): any {
     ? [['junit', { outputFile: process.env.PLAYWRIGHT_JUNIT_OUTPUT_FILE }]]
     : [];
 
+  // 'line' prints each failure (test, error, location) to the Jenkins console, so a failed build
+  // can be diagnosed from its console log or the failed-build archive without opening Allure.
+  const consoleReporter = ['line'];
+
   if (process.env.CI && process.env.PLAYWRIGHT_FUNCTIONAL) {
     return [
+      consoleReporter,
       allurePlaywright('playwright-allure-functional-results'),
       failedAndNotExecutedTestFilesReporter,
       ...junitReporter,
     ];
   } else if (process.env.CI && process.env.PLAYWRIGHT_SMOKE) {
-    return [allurePlaywright('playwright-allure-functional-results'), ...junitReporter];
+    return [consoleReporter, allurePlaywright('playwright-allure-functional-results'), ...junitReporter];
   } else if (process.env.CI) {
-    return [allurePlaywright('playwright-allure-bootstrap-results'), ...junitReporter];
+    return [consoleReporter, allurePlaywright('playwright-allure-bootstrap-results'), ...junitReporter];
   }
   return 'list';
 }

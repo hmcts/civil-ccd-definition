@@ -120,31 +120,38 @@ module.exports = {
 
   async completeCardPayment(caseNumber) {
 
-    const required = [
-      'CARD_PAYMENT_NUMBER',
-      'CARD_PAYMENT_EXPIRY_MONTH',
-      'CARD_PAYMENT_EXPIRY_YEAR',
-      'CARD_PAYMENT_CVV',
-      'CARD_PAYMENT_NAME',
-      'CARD_PAYMENT_ADDRESS',
-      'CARD_PAYMENT_CITY',
-      'CARD_PAYMENT_POSTCODE',
-      'CARD_PAYMENT_EMAIL'
-    ];
+    // GOV.UK Pay test fixture used by civil-citizen-ui.
+    // Apply defaults only in AAT; environment values take precedence.
+    const testCard = {
+      CARD_PAYMENT_NUMBER: '4444333322221111',
+      CARD_PAYMENT_EXPIRY_MONTH: '12',
+      CARD_PAYMENT_EXPIRY_YEAR: '32',
+      CARD_PAYMENT_CVV: '000',
+      CARD_PAYMENT_NAME: 'John Doe',
+      CARD_PAYMENT_ADDRESS: 'Street 1',
+      CARD_PAYMENT_CITY: 'London',
+      CARD_PAYMENT_POSTCODE: 'N65BQ',
+      CARD_PAYMENT_EMAIL: 'test@mailinator.com'
+    };
 
-    const missing = required.filter(key => !process.env[key]);
+    const environment = (process.env.ENVIRONMENT || '').toLowerCase();
+
+    const card = Object.fromEntries(
+      Object.entries(testCard).map(([key, value]) => [
+        key,
+        process.env[key] || (environment === 'aat' ? value : undefined)
+      ])
+    );
+
+    const missing = Object.keys(testCard).filter(key => !card[key]);
 
     if (missing.length) {
-      console.error(
-        'CARD PAYMENT BLOCKED: Missing configuration:',
-        missing.join(', ')
-      );
-
       throw new Error(
         `Missing test-card configuration: ${missing.join(', ')}`
       );
     }
 
+    console.log('Using GOV.UK Pay test-card configuration.');
 
     await I.usePlaywrightTo(
       'complete approved GOV.UK Pay test-card journey',
@@ -155,39 +162,39 @@ module.exports = {
         );
 
         await page.getByLabel('Card number').fill(
-          process.env.CARD_PAYMENT_NUMBER
+          card.CARD_PAYMENT_NUMBER
         );
 
         await page.getByLabel('Month', { exact: true }).fill(
-          process.env.CARD_PAYMENT_EXPIRY_MONTH
+          card.CARD_PAYMENT_EXPIRY_MONTH
         );
 
         await page.getByLabel('Year', { exact: true }).fill(
-          process.env.CARD_PAYMENT_EXPIRY_YEAR
+          card.CARD_PAYMENT_EXPIRY_YEAR
         );
 
         await page.getByLabel('Name on card').fill(
-          process.env.CARD_PAYMENT_NAME
+          card.CARD_PAYMENT_NAME
         );
 
         await page.getByLabel('Card security code').fill(
-          process.env.CARD_PAYMENT_CVV
+          card.CARD_PAYMENT_CVV
         );
 
         await page.getByLabel('Address line 1').fill(
-          process.env.CARD_PAYMENT_ADDRESS
+          card.CARD_PAYMENT_ADDRESS
         );
 
         await page.getByLabel('Town or city').fill(
-          process.env.CARD_PAYMENT_CITY
+          card.CARD_PAYMENT_CITY
         );
 
         await page.getByLabel('Postcode').fill(
-          process.env.CARD_PAYMENT_POSTCODE
+          card.CARD_PAYMENT_POSTCODE
         );
 
         await page.getByLabel('Email').fill(
-          process.env.CARD_PAYMENT_EMAIL
+          card.CARD_PAYMENT_EMAIL
         );
 
         await page.getByRole('button', {
