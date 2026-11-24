@@ -77,9 +77,9 @@ export class TestingEndPointHelper {
         status = 'NOT FOUND';
       }
 
-      console.log( 'Waiting on event: ' + camundaEventToCheckFor + '. Current status is: ' + status);
+      console.log(`Case: ${caseId}. Waiting on event: ${camundaEventToCheckFor}. Current status is: ${status}`);
       if (status === 'FINISHED') {
-        console.log(`Event: ${camundaEventToCheckFor} has status of: ${status}. Continuing test...`);
+        console.log(`Case: ${caseId}. Event: ${camundaEventToCheckFor} has status of: ${status}. Continuing test...`);
       }
       if (status === 'STARTED' && processInstanceId && camundaReachable && Date.now() - lastIncidentCheck >= incidentCheckSeconds * 1000) {
         lastIncidentCheck = Date.now();
