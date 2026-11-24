@@ -1,4 +1,4 @@
-plugins {
+cd-def-cleanupplugins {
   id 'java'
   id 'java-library'
   id 'jacoco'
@@ -9,7 +9,7 @@ version 'DEV-SNAPSHOT'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
+    languageVersion = JavaLanguageVersion.of(25)
   }
 }
 
