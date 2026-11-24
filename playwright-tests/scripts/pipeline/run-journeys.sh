@@ -216,6 +216,12 @@ yarn playwright install chromium
 status=0
 npx playwright test "${args[@]}" || status=$?
 
+# One Allure test per scenario, with its journey steps as the test's steps (see merge-allure-scenarios.ts). A problem
+# here only affects the report, so it does not fail the build.
+npx ts-node --transpile-only -O '{"module":"commonjs","esModuleInterop":true}' \
+  playwright-tests/scripts/pipeline/merge-allure-scenarios.ts playwright-allure-journeys-results \
+  || echo "Could not merge the Allure results into one test per scenario; the report lists each journey step instead."
+
 failed="$(failed_scenarios)"
 if [ "$status" -eq 0 ]; then
   write_state passed ""
