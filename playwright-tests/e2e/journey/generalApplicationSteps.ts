@@ -699,6 +699,7 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     run: async ({ page, storageState, user }) => {
       test.skip(!decided, notDecidedReason);
       const answers = gaOrderAnswers();
+      const ordersBefore = (await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId)).generalOrderDocument?.length ?? 0;
       await ctx.submitEvent(page, storageState, {
         api: () => new api.MakeOrderOnApplication().submit(ctx.gaCaseId, user, order!, answers),
         ui: async () => {
@@ -709,13 +710,10 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
       });
       await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'GENERATE_DIRECTIONS_ORDER');
       await ctx.assertGaCaseState(GaCaseStates.ORDER_MADE);
+      // civil-service keeps the order type and issues the order as a document; it does not keep the order's text fields
       const saved = await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId);
       expect(saved.finalOrderSelection, 'The order type was not saved').toBe(order);
-      if (order === GaOrder.FREE_FORM_ORDER) {
-        expect(saved.freeFormOrderedText, 'The free form order was not saved').toBe(answers.ordered);
-      } else {
-        expect(saved.assistedOrderOrderedThatText, 'The assisted order was not saved').toBe(answers.orderedThat);
-      }
+      expect(saved.generalOrderDocument?.length ?? 0, 'The order was not added to the application\'s order documents').toBe(ordersBefore + 1);
       await claimStateUnchanged();
     },
   };

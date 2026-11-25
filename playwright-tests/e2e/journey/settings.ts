@@ -610,8 +610,8 @@ export const settings = {
   GENERAL_APPLICATION_ORDER: {
     values: ['FREE_FORM_ORDER', 'ASSISTED_ORDER'],
     notes: {
-      SPECIFIED: "Optional: once the application's hearing is scheduled, a judge makes an order on it (\"Make an order\"): a free form order (recitals and what it orders) or an assisted order (not made following a hearing, costs in the case, no further hearing or appeal, no reasons). The application is checked to reach ORDER_MADE with the order saved. Needs GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING. Has an API version.",
-      UNSPECIFIED: "Optional: once the application's hearing is scheduled, a judge makes an order on it (\"Make an order\"): a free form order (recitals and what it orders) or an assisted order (not made following a hearing, costs in the case, no further hearing or appeal, no reasons). The application is checked to reach ORDER_MADE with the order saved. Needs GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING. Has an API version.",
+      SPECIFIED: "Optional: once the application's hearing is scheduled, a judge makes an order on it (\"Make an order\"): a free form order (recitals and what it orders) or an assisted order (not made following a hearing, costs in the case, no further hearing or appeal, no reasons). The application is checked to reach ORDER_MADE with the order type saved and a new order document. Needs GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING. Has an API version.",
+      UNSPECIFIED: "Optional: once the application's hearing is scheduled, a judge makes an order on it (\"Make an order\"): a free form order (recitals and what it orders) or an assisted order (not made following a hearing, costs in the case, no further hearing or appeal, no reasons). The application is checked to reach ORDER_MADE with the order type saved and a new order document. Needs GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING. Has an API version.",
     },
   },
   GENERAL_APPLICATION_DECISION: {

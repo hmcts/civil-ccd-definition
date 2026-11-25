@@ -11,6 +11,10 @@ import { SessionEndedError } from '../../../helpers/SessionEndedError.ts';
 // How many times a card GOV.UK Pay turns down is paid: once more after a decline
 const cardPaymentAttempts = 2;
 
+// The PBA account each test organisation pays from, which AAT's payment service has: Organisation 1 (the claimant's
+// solicitor), Organisation 2 (Defendant 1's) and Organisation 3 (Defendant 2's)
+const knownGoodPbaAccounts = ['PBA0078095', 'PBA0079006', 'PBA0077597'];
+
 // Whether a payment result says GOV.UK Pay turned the card down, which takes no money, so it can be paid again: on its
 // own page after the card details ("Your payment has been declined"), or on XUI's result page after they are confirmed
 // ("Your card payment was unsuccessful")
@@ -42,11 +46,12 @@ export class PaymentPage {
 
     if (paymentMethod === PaymentMethod.PBA) {
       await this.page.locator('#pbaAccount').click();
-      // Organisation 1's account, or the first account a solicitor of another organisation has (a claimant's new
-      // solicitor after a notice of change)
+      // The user's organisation's account that the payment service has, or the first account a solicitor of another
+      // organisation has (a claimant's new solicitor after a notice of change). Organisation 3's first account,
+      // PBA0078094, has been deleted from AAT's payment service, so its other account is used.
       const accountNumber = this.page.locator('#pbaAccountNumber');
       const accounts = (await accountNumber.locator('option').allTextContents()).map((account) => account.trim()).filter((account) => /^PBA\w+$/.test(account));
-      await accountNumber.selectOption(accounts.includes('PBA0078095') ? 'PBA0078095' : accounts[0]);
+      await accountNumber.selectOption(knownGoodPbaAccounts.find((account) => accounts.includes(account)) ?? accounts[0]);
       await this.page.locator('#pbaAccountRef').fill('PBA Account reference test text.');
       await this.page.keyboard.press('Tab');
       await confirmPaymentButton.click();
