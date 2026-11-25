@@ -1064,7 +1064,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "HowToAddTimelineUpload",
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric != \"COUNTER_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\" AND showConditionFlags CONTAINS \"TIMELINE_UPLOAD\"",
+    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\" AND showConditionFlags CONTAINS \"TIMELINE_UPLOAD\"",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
   },
@@ -1100,7 +1100,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "HowToAddTimelineManual",
-    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric != \"COUNTER_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\" AND showConditionFlags CONTAINS \"TIMELINE_MANUALLY\"",
+    "PageShowCondition": "respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\" AND showConditionFlags CONTAINS \"TIMELINE_MANUALLY\"",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isRespondent1 = \"Yes\""
   },
