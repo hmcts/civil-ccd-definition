@@ -255,8 +255,8 @@ ccd:
 camunda-bpm:
   enabled: true
   java:
-    devcpuRequests: 50m
-    devcpuLimits: 700m
+    devcpuRequests: 500m
+    devcpuLimits: 2500m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     disableKeyVaults: true
