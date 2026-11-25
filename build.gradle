@@ -2,7 +2,6 @@ plugins {
   id 'java'
   id 'java-library'
   id 'jacoco'
-  id 'maven-publish'
 }
 
 group 'com.github.hmcts'
@@ -10,7 +9,7 @@ version 'DEV-SNAPSHOT'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
+    languageVersion = JavaLanguageVersion.of(25)
   }
 }
 
@@ -22,7 +21,44 @@ repositories {
   }
 }
 
+// The CCD definition stores this repo shares with civil-service, and the civil-service branch that
+// imports into each. Exactly one of the two repos imports into each store: this one while it is the source
+// of truth for the definitions, civil-service once ccd-definition/SOURCE_OF_TRUTH is on that branch.
+// Preview stacks are each repo's own, so they are always imported into.
+def sharedCcdEnvironments = [aat: 'master', prod: 'master', demo: 'demo', perftest: 'perftest', ithc: 'ithc']
+
+// Asks bin/shared/pull-ccd-definitions.sh, pulled from civil-service by Jenkinsfile_CNP before this stage, so
+// the import follows the same decision as the copy of the definitions. Any failure fails the stage rather
+// than picking a repo.
+def ccdDefinitionsSourceOfTruth = { String civilServiceRef ->
+  def script = file('bin/shared/pull-ccd-definitions.sh')
+  if (!script.exists()) {
+    throw new GradleException("${script} is missing. It comes from civil-service's bin/shared " +
+      '(bin/pull-latest-civil-shared.sh), and decides which repo imports into the shared environments.')
+  }
+  def source = providers.exec {
+    commandLine 'bash', script.path, '--check', civilServiceRef
+  }.standardOutput.asText.get().trim()
+  if (!(source in ['civil-service', 'civil-ccd-definition'])) {
+    throw new GradleException("Unexpected source of truth from ${script.name} --check ${civilServiceRef}: '${source}'")
+  }
+  source
+}
+
 tasks.register('highLevelDataSetup', JavaExec) {
+  onlyIf('civil-ccd-definition is the source of truth for the CCD definitions') { task ->
+    def environment = task.args ? task.args[0] : null
+    def civilServiceRef = sharedCcdEnvironments[environment]
+    if (civilServiceRef == null) {
+      return true
+    }
+    def source = ccdDefinitionsSourceOfTruth(civilServiceRef)
+    if (source == 'civil-service') {
+      logger.lifecycle("Not importing into ${environment}: ccd-definition/SOURCE_OF_TRUTH is on civil-service " +
+        "${civilServiceRef}, so civil-service is the source of truth for the CCD definitions and imports them.")
+    }
+    source == 'civil-ccd-definition'
+  }
   mainClass = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
   classpath += sourceSets.main.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
@@ -54,20 +90,7 @@ dependencies {
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.20'
   implementation group: 'io.rest-assured', name: 'rest-assured', version: '6.3.0'
   // BEFTA's older Logback JARs are unavailable from the Jenkins Maven mirror.
-  runtimeOnly 'ch.qos.logback:logback-classic:1.6.6'
+  runtimeOnly 'ch.qos.logback:logback-classic:1.6.8'
 
   testImplementation libraries.junit5
-}
-
-publishing {
-  repositories {
-    maven {
-      name = "AzureArtifacts"
-      url = uri("https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1")
-      credentials {
-        username = System.getenv("AZURE_DEVOPS_ARTIFACT_USERNAME")
-        password = System.getenv("AZURE_DEVOPS_ARTIFACT_TOKEN")
-      }
-    }
-  }
 }
