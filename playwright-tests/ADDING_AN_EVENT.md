@@ -91,7 +91,7 @@ From it, note:
 
 Then:
 
-- **Try the event by hand in XUI on AAT**, as the user, on a claim in the right state. The definition doesn't say everything: which pages a given user sees, what the confirmation page says, and what civil-service rejects.
+- **Try the event by hand in XUI on AAT**, as the user, on a claim in the right state (for a brand new event, on your PR's preview: see "A brand new event" in section 7). The definition doesn't say everything: which pages a given user sees, what the confirmation page says, and what civil-service rejects.
 - **Read civil-service's callback handler** for the event (search `civil-service/src/main/java` for the event ID, under `handler/callback/user`). It shows what it validates (for example, dates that must be in the past) and the confirmation header. `CHANGE_SOLICITOR_EMAIL`'s handler checks the email and confirms with "You have updated a claimant's legal representative's information".
 
 Write what you find in a comment at the top of the UI class. The next person to change it will need it.
@@ -355,6 +355,21 @@ Both journeys at once, two at a time:
 ENV=aat WORKERS=2 CHANGE_SOLICITOR_EMAIL=Yes STOP_AFTER_TEST=CHANGE_SOLICITOR_EMAIL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
+### A brand new event
+
+An event that isn't on AAT yet, because it is added by your PR, only exists on that PR's preview until the PR is merged and deployed. Run it there instead of on AAT:
+
+- The event is in your civil-ccd-definition PR, and its callback handler is usually in a civil-service PR. Add the label `civilServicePr:<civil-service PR number>` to the civil-ccd-definition PR, so its preview runs that civil-service PR's image, and let the PR build deploy the preview.
+- Run the same commands with `ENV=preview PREVIEW_SERVICE=ccd PR_NUMBER=<civil-ccd-definition PR number>` in place of `ENV=aat`:
+
+```bash
+ENV=preview PREVIEW_SERVICE=ccd PR_NUMBER=1234 CHANGE_SOLICITOR_EMAIL=Yes STOP_AFTER_TEST=CHANGE_SOLICITOR_EMAIL npx playwright test playwright-tests/e2e/journeys/SpecifiedSS.test.ts --project chromium --headed
+```
+
+- Where the event only needs civil-service (no definition change), run it on the civil-service PR's preview with `PREVIEW_SERVICE=service PR_NUMBER=<civil-service PR number>`.
+
+Once both PRs are merged and deployed to AAT, run it on AAT as above before it goes into a master or nightly scenario (section 8).
+
 Things to check:
 
 - The event passes in both the UI and the API version.
@@ -382,13 +397,15 @@ ENV=aat SCENARIOS=Yes npx playwright test playwright-tests/e2e/journeys/Specifie
 
 Keep PR scenarios few and quick: PR previews have fewer resources than AAT. Most new events belong in a nightly scenario.
 
+The master and nightly sets run on AAT, so a brand new event must not be in a scenario tagged for them until it is deployed to AAT: the run would fail on every build. Until then, run its scenario by hand on your PR's preview (section 7). If it is to run on every PR, tag it `@spec-pr`/`@unspec-pr` only, in the same PR as the event, and add the master and nightly tags once the event is on AAT.
+
 ## 9. Update the guides
 
 In the same commit:
 
 - `playwright-tests/RUNNING_SPECIFIED_TESTS.md` and/or `RUNNING_UNSPECIFIED_TESTS.md`: add the event to the list of steps in section 2, in the order it runs, with an example command where it helps.
 - Run `yarn guides:generate`. It adds the event's setting to each guide's claim parameters table, from its `description`, and writes the `.docx` version of every guide whose text changed. Don't edit the tables by hand: the next run puts them back. `yarn guides:generate --check` lists anything out of date without changing it.
-- `playwright-tests/MISSING_EVENTS.md`: move the event to "Done since", with which scenarios passed on AAT and when.
+- `playwright-tests/MISSING_EVENTS.md`: move the event to "Done since", with which scenarios passed on AAT (or, for a brand new event, on which PR's preview) and when.
 
 ## 10. When an event file isn't enough
 
@@ -405,12 +422,12 @@ Steps the two journeys share are written once, in `playwright-tests/e2e/journey/
 ## 11. Checklist
 
 - [ ] `yarn event:info <EVENT_ID>` checked: the event is in XUI, who does it, its states, pages and fields
-- [ ] Event tried by hand in XUI on AAT, and civil-service's handler read for its checks and confirmation
+- [ ] Event tried by hand in XUI on AAT (a brand new event: on your PR's preview), and civil-service's handler read for its checks and confirmation
 - [ ] UI class in `flows/events/ui`, copied from a similar one, with a comment describing the event's pages
 - [ ] API class in `flows/events/api`, answering the same pages the same way
 - [ ] Event file in `playwright-tests/events`, with `after` (or `closesClaim`), the facts it needs in `onlyWhen`, `expect` and a `check` of what it saves
 - [ ] New case states added to `enums/caseStates.ts`
-- [ ] UI and API versions both passed on AAT, in each journey and claim type the event applies to
-- [ ] Setting added to a scenario with the right pipeline tag
+- [ ] UI and API versions both passed on AAT (a brand new event: on your PR's preview, with `civilServicePr:<number>` where it needs a civil-service PR), in each journey and claim type the event applies to
+- [ ] Setting added to a scenario with the right pipeline tag (a brand new event: not in a master or nightly scenario until it is on AAT)
 - [ ] Event listed in the RUNNING guides, `yarn guides:generate` run, and `MISSING_EVENTS.md` updated
 - [ ] Staged diff checked for tokens, `.auth` files and local-only files before committing
