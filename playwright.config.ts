@@ -45,6 +45,9 @@ const playwrightTestsWorkers = Number(process.env.WORKERS ?? 1);
 // retried or run fully in parallel, and they run headless (use --headed to watch) at full speed.
 const playwrightTestsProject = { retries: 0, fullyParallel: false };
 const playwrightTestsUse = { headless: true, launchOptions: {} };
+// The journeys take their own screenshot where a step fails in the UI, named after the step and the page it failed on,
+// and none where it fails in an API call (playwright-tests/helpers/FailureScreenshotHelper.ts), in place of Playwright's
+const journeyScreenshots = { screenshot: 'off' as const };
 
 // The settings of playwright-e2e, which is kept for reference. Loading them also loads .env.tests.local, so a
 // playwright-tests run (ENV=aat|demo|ithc|preview) does not load them: it only uses playwright-tests/env/.env.<ENV>,
@@ -128,6 +131,7 @@ function playwrightTestsProjects() {
         ...devices['Desktop Chrome'],
         ...playwrightTestsUse,
         viewport: { width: 1929, height: 959 },
+        ...journeyScreenshots,
       },
       dependencies: ["authentication"],
       testDir: './playwright-tests/e2e/journeys',
@@ -147,6 +151,7 @@ function playwrightTestsProjects() {
         ...devices['Desktop Chrome'],
         ...playwrightTestsUse,
         viewport: { width: 1929, height: 959 },
+        ...journeyScreenshots,
       },
       dependencies: ['authentication'],
       testDir: './playwright-tests/e2e/journeys',

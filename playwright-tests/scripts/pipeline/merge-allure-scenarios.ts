@@ -10,6 +10,7 @@
 // (" > <project> > <file> > <scenario> > test<N>[ > <step>]"). Each scenario's results become one result:
 //  - its name is the scenario (e.g. SPEC_1v1_SMALL) and its steps are the journey steps in order ("test3 › <title>"),
 //    each with its own status, timings, steps and attachments (screenshots, videos, traces, logs)
+//  - the failure screenshot of the first step that failed in the UI is also attached to the scenario itself
 //  - its status is the worst of its steps: failed, then broken, then passed; skipped only if every step was skipped
 //    (steps a stop setting leaves out show as skipped steps of a passed scenario)
 //  - its history ID is fixed by the project, file and scenario, so Allure's history and trends follow the scenario
@@ -42,6 +43,8 @@ const folder = path.resolve(process.argv[2] ?? 'playwright-allure-journeys-resul
 const setupProjects = ['preflight', 'authentication', 'case-unassignment'];
 const setupTestName = 'Setup and teardown';
 const statusOrder = ['failed', 'broken', 'passed', 'skipped', 'unknown'];
+// What the names of the journeys' failure screenshots start with (failureScreenshotName in FailureScreenshotHelper.ts)
+const failureScreenshotName = 'Failure screenshot';
 
 const label = (result: AllureResult, name: string) => result.labels?.find((l) => l.name === name)?.value;
 // " > chromium > ../../playwright-tests/e2e/journeys/SpecifiedSS.test.ts > SPEC_1v1_SMALL > test3" → its parts
@@ -108,7 +111,10 @@ for (const [key, entries] of byScenario) {
     stop: stops.length ? Math.max(...stops) : undefined,
     parameters: first.parameters ?? [],
     links: [],
-    attachments: [],
+    // The failure screenshots of the first step that failed (FailureScreenshotHelper.ts), so they show at the top of
+    // the scenario next to its error, as well as under the step
+    attachments: ((firstProblem?.attachments ?? []) as Array<{ name?: string }>)
+      .filter((attachment) => attachment.name?.startsWith(failureScreenshotName)),
     labels: [
       ...(first.labels ?? []).filter((l) => ['language', 'framework', 'host', 'thread'].includes(l.name)),
       { name: 'titlePath', value: ` > ${key}` },

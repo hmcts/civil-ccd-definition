@@ -13,6 +13,7 @@ import claimTypes from '../../enums/claim-types.ts';
 import { SessionHelper, sessionUserFor, sessionUsers, SessionUserKey } from '../../helpers/SessionHelper.ts';
 import { requirePlaywrightTestsEnv } from '../../env.ts';
 import { Fact } from './claimFacts.ts';
+import { attachFailureScreenshot } from '../../helpers/FailureScreenshotHelper.ts';
 
 export interface StepArgs {
   page: Page;
@@ -381,6 +382,10 @@ export function defineJourney(
 
 function defineStep(step: JourneyStep) {
   test.use({ storageState: sessionUsers[step.user].authFile });
+  // Runs after beforeEach has opened the case and after the step, whichever failed, while the page is still as it was
+  test.afterEach(async ({ page }, testInfo) => {
+    await attachFailureScreenshot(page, testInfo, step.name);
+  });
   test(step.title, async ({ page, storageState }) => {
     await step.run({ page, storageState, user: step.user });
   });
