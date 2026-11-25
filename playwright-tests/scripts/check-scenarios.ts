@@ -1,6 +1,6 @@
 // Checks every named scenario's settings without running anything: builds each scenario's journey and runs the
 // checks the journey runs before its first step (the config's validate and each step's invalidIf), and checks that
-// STOP_AFTER_TEST, STOP_AT_STATE and API_UNTIL name real steps and states. Prints ok or FAIL for each scenario with its
+// STOP_AFTER_TEST, STOP_AT_STATE, API_UNTIL and API_FROM name real steps and states. Prints ok or FAIL for each scenario with its
 // pipeline tags, and exits 1 if any fails. Needs no environment or secrets:
 //   yarn check:scenarios
 import caseStates from '../enums/caseStates.ts';
@@ -40,10 +40,10 @@ const pipelineTag = /^@(un)?spec-(smoke|pr|master|nightly)$/;
 
 // The problems with one scenario's settings, empty when there are none
 function problemsWith(journey: Journey, scenario: Scenario): string[] {
-  const { STOP_AT_STATE, API_UNTIL, STOP_AFTER_TEST } = scenario.env;
+  const { STOP_AT_STATE, API_UNTIL, API_FROM, STOP_AFTER_TEST } = scenario.env;
   const problems: string[] = [];
   try {
-    const context = new JourneyContext(STOP_AT_STATE as caseStates | undefined, API_UNTIL as caseStates | undefined);
+    const context = new JourneyContext(STOP_AT_STATE as caseStates | undefined, API_UNTIL as caseStates | undefined, API_FROM as caseStates | undefined);
     const { validate, steps } = journey.build(scenario, context);
     validate();
     const stops = { stopAtState: context.stopAtState, stopAfterTest: STOP_AFTER_TEST };
@@ -51,7 +51,7 @@ function problemsWith(journey: Journey, scenario: Scenario): string[] {
     if (STOP_AFTER_TEST !== undefined && !steps.some((step) => step.name === STOP_AFTER_TEST || step.group === STOP_AFTER_TEST)) {
       problems.push(`STOP_AFTER_TEST=${STOP_AFTER_TEST} is not one of the journey's steps`);
     }
-    for (const [setting, state] of [['STOP_AT_STATE', STOP_AT_STATE], ['API_UNTIL', API_UNTIL]]) {
+    for (const [setting, state] of [['STOP_AT_STATE', STOP_AT_STATE], ['API_UNTIL', API_UNTIL], ['API_FROM', API_FROM]]) {
       if (state !== undefined && !states.includes(state)) {
         problems.push(`${setting}=${state} is not a case state`);
       }

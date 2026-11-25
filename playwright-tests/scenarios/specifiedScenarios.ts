@@ -42,7 +42,9 @@ const scenarios: Scenario[] = [
   { name: 'SPEC_1v1_LIP_FAST', tags: [MASTER, NIGHTLY], env: { CLAIM_TYPE: '1v1LIP', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL' } },
   { name: 'SPEC_2v1_FAST', tags: [NIGHTLY], env: { CLAIM_TYPE: '2v1', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL' } },
   { name: 'SPEC_1v2SS_FAST', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v2SS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL' } },
-  { name: 'SPEC_1v2DS_FAST', tags: [PR, MASTER, NIGHTLY], env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION' } },
+  // On a PR the claim is created and responded to in the UI, and the rest of the journey goes through the API from the
+  // claimant's response (JUDICIAL_REFERRAL), as the playwright-e2e 1v2DS full defence test was
+  { name: 'SPEC_1v2DS_FAST', tags: [PR, MASTER, NIGHTLY], prApiFrom: 'JUDICIAL_REFERRAL', env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION' } },
   // The judge's Standard Direction Order puts the fast track claim on the small claims track, and it carries on as a
   // small claim. On a PR the claim is created through the API and the rest is in the UI, as the playwright-e2e test was.
   {

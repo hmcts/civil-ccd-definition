@@ -174,6 +174,31 @@ Create and issue the claim through the API, then do everything else through the 
 ENV=aat API_UNTIL=CASE_ISSUED npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
 ```
 
+### API_FROM: the UI first, then the API
+
+API_FROM=<state> is the other way round from API_UNTIL. The steps go through the UI until the claim is confirmed to be in that state, and from the next step on, the steps with an API version go through the API. Use it to do the start of a journey in the UI and finish the rest quickly, for example to check a change to an early event without spending 15 to 20 minutes on the later steps in the browser.
+
+How the switch happens:
+
+- A step checks the claim's state once its event is done. When that check confirms the API_FROM state, the run logs "Case <id> has reached <state>, so the remaining steps use the API (API_FROM)".
+- That step has already run in the UI. The API starts with the next step.
+- Steps with no API version (PAY_HEARING_FEE) and card payments still use the UI.
+- If the claim never reaches the state, every step uses the UI and the run ends with a warning: "API_FROM <state> was never reached".
+
+Do a 1v2DS claim in the UI up to and including the claimant's response, which is the step that confirms JUDICIAL_REFERRAL, then the rest of the journey through the API:
+
+```bash
+ENV=aat CLAIM_TYPE=1v2DS API_FROM=JUDICIAL_REFERRAL npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+API_UNTIL and API_FROM can be used together: the steps go through the API until API_UNTIL, the UI between the two, and the API again from API_FROM, so API_FROM must be a later state. For example, get to the order quickly, make the Standard Direction Order in the UI, and finish the journey through the API once it moves the claim to CASE_PROGRESSION:
+
+```bash
+ENV=aat API_UNTIL=JUDICIAL_REFERRAL API_FROM=CASE_PROGRESSION npx playwright test playwright-tests/e2e/journeys/UnspecifiedSS.test.ts --project chromium
+```
+
+A step that goes through the API checks the claim's state and what it saved, but doesn't open the event's pages, so use API_FROM after the event you are checking, not before it.
+
 ## 7. Including a non-mandatory event
 
 These events are off by default. Switch one on with its setting.
@@ -448,7 +473,7 @@ The pipeline sets are picked by tag, each run by a project of the same name (wit
 | unspec-master, spec-master | On master, against AAT | The PR sets plus 1v2SS and the specified LIP claim |
 | unspec-nightly, spec-nightly | Each weekday at 08:00 (Jenkinsfile_nightly), against AAT | Every scenario except the smoke test |
 
-On the pipelines playwright-tests/scripts/pipeline/run-journeys.sh runs them (yarn test:journeys:smoke:ci, test:journeys:functional:ci and test:journeys:nightly:ci). It runs every project of the set in one Playwright run, fills in the settings the Jenkinsfiles do not set (WORKERS=8 on a preview and 4 elsewhere, PAYMENT_METHOD=CARD, AAT's Camunda and WA task monitor), sends the PR set through the CCD API (SCENARIO_API_UNTIL, default All_FINAL_ORDERS_ISSUED) apart from UNSPEC_1v1_FAST, which stays in the UI as the nightly set has the full UI journeys, and does not repeat work a build of the same commit has done: a set that passed is skipped, and a set that failed only runs its failed scenarios again, from the start of each journey. The Allure report is playwright-allure-journeys-results (yarn test:journeys:generate-report), with one test per scenario: after the run, playwright-tests/scripts/pipeline/merge-allure-scenarios.ts merges each scenario's journey steps into one Allure test with the steps (and their screenshots and videos) inside it, and the setup and teardown into one more. On a PR's preview, Jenkins' smoke and functional stages run it (yarn test:smoke and yarn test:functional choose the playwright-tests journeys when ENVIRONMENT is preview), in place of the playwright-e2e tests, so a failure fails the PR's build. On AAT those stages still run the playwright-e2e tests, and Jenkinsfile_nightly runs the nightly set in a stage of its own.
+On the pipelines playwright-tests/scripts/pipeline/run-journeys.sh runs them (yarn test:journeys:smoke:ci, test:journeys:functional:ci and test:journeys:nightly:ci). It runs every project of the set in one Playwright run, fills in the settings the Jenkinsfiles do not set (WORKERS=8 on a preview and 4 elsewhere, PAYMENT_METHOD=CARD, AAT's Camunda and WA task monitor), sends the PR set through the CCD API (SCENARIO_API_UNTIL, default All_FINAL_ORDERS_ISSUED) apart from UNSPEC_1v1_FAST, which stays in the UI (ui: true) as the nightly set has the full UI journeys, and the scenarios matched to the playwright-e2e PR tests they replaced: a scenario's prApiUntil goes through the API only until that state on a PR (the default judgments, the small claims SDO and the general application orders), and its prApiFrom does the start in the UI and goes through the API from that state on (API_FROM; the 1v2DS full defence journeys, from JUDICIAL_REFERRAL). Master and nightly runs ignore both, so those scenarios run fully in the UI there, and does not repeat work a build of the same commit has done: a set that passed is skipped, and a set that failed only runs its failed scenarios again, from the start of each journey. The Allure report is playwright-allure-journeys-results (yarn test:journeys:generate-report), with one test per scenario: after the run, playwright-tests/scripts/pipeline/merge-allure-scenarios.ts merges each scenario's journey steps into one Allure test with the steps (and their screenshots and videos) inside it, and the setup and teardown into one more. On a PR's preview, Jenkins' smoke and functional stages run it (yarn test:smoke and yarn test:functional choose the playwright-tests journeys when ENVIRONMENT is preview), in place of the playwright-e2e tests, so a failure fails the PR's build. On AAT those stages still run the playwright-e2e tests, and Jenkinsfile_nightly runs the nightly set in a stage of its own.
 
 To run a set yourself:
 
@@ -554,6 +579,7 @@ Defaults apply when a parameter is not set. Every on/off parameter takes Yes or 
 | `PREVIEW_SERVICE` | ccd, service, citizen-ui, webapp | None | Needed with ENV=preview: the repository the preview belongs to. |
 | `PR_NUMBER` | A PR number | None | Needed with ENV=preview. |
 | `API_UNTIL` | A case state | None (all UI) | Steps with an API version use the API until the claim reaches this state. |
+| `API_FROM` | A case state | None (all UI) | Steps go through the UI until the claim reaches this state, then the steps with an API version use the API (from the step after the one that confirms it). With API_UNTIL, it must be a later state. See section 6. |
 | `STOP_AT_STATE` | A case state | None | Stop once the claim reaches this state. |
 | `STOP_AFTER_TEST` | A step or group name, or testN | None | Stop after this step. |
 | `KEEP_CASE_ASSIGNMENTS` | Yes, No | No | Keep the solicitors assigned to the case after the run. |

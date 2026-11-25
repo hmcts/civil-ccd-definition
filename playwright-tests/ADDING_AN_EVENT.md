@@ -30,7 +30,7 @@ The rules that hold the framework together:
 
 - **One class per CCD event.** The same class can be used in the main journey, in a branch, or after an API fast-forward.
 - **Classes take parameters; they don't read settings.** The event file works out the answers and passes them in.
-- **An API version where possible.** With `API_UNTIL=<state>`, the journey uses the API versions until the claim reaches that state, then switches to the UI. This lets a test reach a late state quickly and only do the event under test in the browser.
+- **An API version where possible.** With `API_UNTIL=<state>`, the journey uses the API versions until the claim reaches that state, then switches to the UI. This lets a test reach a late state quickly and only do the event under test in the browser. `API_FROM=<state>` is the other way round: the UI until the claim reaches that state, then the API versions, to finish the journey quickly after the event under test (see the RUNNING guides).
 - **Steps have names, not numbers.** The event's step is named after its event ID, so `STOP_AFTER_TEST=CHANGE_SOLICITOR_EMAIL` stops after it, whatever is added before it.
 - **Every step checks its result.** At least the claim's state; better, the saved case data too.
 
@@ -504,7 +504,7 @@ Things to check:
 - The event passes in both the UI and the API version.
 - `CHANGE_SOLICITOR_EMAIL=yes` (a value it doesn't take) fails the run straight away.
 - With the setting off, the step is skipped, with "CHANGE_SOLICITOR_EMAIL is switched off (set CHANGE_SOLICITOR_EMAIL=Yes to run it)".
-- The journey carries on past the event and the later steps still pass (run once without `STOP_AFTER_TEST`).
+- The journey carries on past the event and the later steps still pass (run once without `STOP_AFTER_TEST`). To make that run quicker, add `API_FROM` with the state the event leaves the claim in (or the next state the journey checks), so the steps after it go through the API: for example `API_UNTIL=JUDICIAL_REFERRAL API_FROM=CASE_PROGRESSION` for an event around the Standard Direction Order. See "API_FROM" in the RUNNING guides.
 
 ## 8. Add a scenario
 

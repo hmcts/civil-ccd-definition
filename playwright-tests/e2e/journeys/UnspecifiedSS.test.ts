@@ -15,6 +15,7 @@ for (const scenario of selectedScenarios()) {
     const context = new JourneyContext(
       scenario.env.STOP_AT_STATE as caseStates | undefined,
       scenario.env.API_UNTIL as caseStates | undefined,
+      scenario.env.API_FROM as caseStates | undefined,
     );
     defineJourney(context, unspecifiedSteps(config, context), {
       stopAfterTest: scenario.env.STOP_AFTER_TEST,

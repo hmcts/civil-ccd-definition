@@ -76,6 +76,13 @@ export const settings = {
       UNSPECIFIED: 'Steps with an API version use the API until the claim reaches this state.',
     },
   },
+  API_FROM: {
+    values: caseStateValues,
+    notes: {
+      SPECIFIED: 'Steps go through the UI until the claim reaches this state, then the steps with an API version use the API. The step that confirms the state still runs in the UI; the API starts with the next step. With API_UNTIL as well, the steps use the API until API_UNTIL, the UI between the two, and the API again from API_FROM, so API_FROM must be a later state.',
+      UNSPECIFIED: 'Steps go through the UI until the claim reaches this state, then the steps with an API version use the API. The step that confirms the state still runs in the UI; the API starts with the next step. With API_UNTIL as well, the steps use the API until API_UNTIL, the UI between the two, and the API again from API_FROM, so API_FROM must be a later state.',
+    },
+  },
   STOP_AT_STATE: {
     values: caseStateValues,
     notes: {

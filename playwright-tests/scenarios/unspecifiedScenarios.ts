@@ -20,6 +20,11 @@ export interface Scenario {
   // The API_UNTIL this scenario uses in place of SCENARIO_API_UNTIL, where the run sets it (the PR pipeline), so its
   // steps go through the API as far as the playwright-e2e PR test it replaced did. Master and nightly runs ignore it.
   prApiUntil?: string;
+  // Where the run sets SCENARIO_API_UNTIL (the PR pipeline): the scenario starts in the UI (SCENARIO_API_UNTIL does not
+  // apply to it), and the steps from this state on use the API (API_FROM), for a playwright-e2e PR test that did the
+  // start of the journey in the UI and stopped there. Master and nightly runs ignore it. It can't be used with
+  // prApiUntil.
+  prApiFrom?: string;
   // The setting names the scenario itself sets (its env above, before the command line's env vars are added), which the
   // journey checks are its settings (see e2e/journey/settings.ts). Only set on the scenarios selectedScenarios gives.
   settings?: string[];
@@ -27,11 +32,20 @@ export interface Scenario {
 
 // SCENARIO_API_UNTIL=<state> gives every scenario that does not set its own API_UNTIL, and is not marked ui, that
 // API_UNTIL (or the scenario's prApiUntil), so a run can go through the CCD API while keeping a few scenarios in the
-// UI. The PR pipeline sets it (playwright-tests/scripts/pipeline/run-journeys.sh); master and nightly runs keep each
-// scenario's own settings.
+// UI. A scenario with prApiFrom gets no API_UNTIL, and API_FROM=<its prApiFrom> instead. The PR pipeline sets it
+// (playwright-tests/scripts/pipeline/run-journeys.sh); master and nightly runs keep each scenario's own settings.
 export function scenarioApiUntil(scenario: Scenario): Record<string, string> {
+  if (scenario.prApiUntil !== undefined && scenario.prApiFrom !== undefined) {
+    throw new Error(`Scenario ${scenario.name} sets both prApiUntil and prApiFrom: use one`);
+  }
   const apiUntil = process.env.SCENARIO_API_UNTIL;
-  return apiUntil && !scenario.ui ? { API_UNTIL: scenario.prApiUntil ?? apiUntil } : {};
+  if (!apiUntil || scenario.ui) {
+    return {};
+  }
+  if (scenario.prApiFrom !== undefined) {
+    return { API_FROM: scenario.prApiFrom };
+  }
+  return { API_UNTIL: scenario.prApiUntil ?? apiUntil };
 }
 
 const PR = '@unspec-pr';
@@ -164,9 +178,12 @@ const scenarios: Scenario[] = [
       DEFENDANTS_TO_NOTIFY_CLAIM: 'Defendant One',
     },
   },
+  // On a PR the claim is created, notified, acknowledged and responded to in the UI, and the rest of the journey goes
+  // through the API from the claimant's response (JUDICIAL_REFERRAL), as the playwright-e2e 1v2DS full defence test was.
   {
     name: 'UNSPEC_1v2DS_FAST_BOTH',
     tags: [PR, MASTER, NIGHTLY],
+    prApiFrom: 'JUDICIAL_REFERRAL',
     env: {
       CLAIM_TYPE: '1v2DS',
       CLAIMANT_TYPE: 'SOLE_TRADER',

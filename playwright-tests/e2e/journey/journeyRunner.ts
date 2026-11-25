@@ -52,7 +52,7 @@ export interface JourneyStep {
 
 // An event for JourneyContext.submitEvent: its API and UI versions, and what to check once it is submitted
 export interface SubmittedEvent<A, U> {
-  // Submits the event through its API class (flows/events/api), for the steps before API_UNTIL
+  // Submits the event through its API class (flows/events/api), for the steps before API_UNTIL and from API_FROM
   api?: () => Promise<A>;
   // Submits the event through its UI class (flows/events/ui)
   ui: () => Promise<U>;
@@ -135,19 +135,23 @@ export class JourneyContext {
   testingEndpointHelper: TestingEndPointHelper;
   stopAtStateReached = false;
   apiUntilStateReached = false;
+  apiFromStateReached = false;
   lastStateReached: caseStates | undefined;
   // The defendants (1 and 2) whose solicitor was given the case by a notice of change, so is not assigned to it again
   defendantsGivenSolicitorByNoc = new Set<number>();
   // The journey's general application, which is a case of its own linked to the claim, once it has been made
   gaCaseId = '';
 
-  // STOP_AT_STATE: the state at which the journey stops, and API_UNTIL: the state up to which the steps that have an
-  // API version are done through the CCD API (see defineJourney)
-  constructor(readonly stopAtState: caseStates | undefined, readonly apiUntilState?: caseStates) {}
+  // STOP_AT_STATE: the state at which the journey stops, API_UNTIL: the state up to which the steps that have an API
+  // version are done through the CCD API, and API_FROM: the state after which they are (see defineJourney)
+  constructor(readonly stopAtState: caseStates | undefined, readonly apiUntilState?: caseStates, readonly apiFromState?: caseStates) {}
 
-  // Whether a step with an API version should use it: API_UNTIL is set and the claim has not reached that state yet
+  // Whether a step with an API version should use it: API_UNTIL is set and the claim has not reached that state yet,
+  // or API_FROM is set and the claim has reached that state
   useApi(): boolean {
-    return this.apiUntilState !== undefined && !this.apiUntilStateReached;
+    const beforeApiUntil = this.apiUntilState !== undefined && !this.apiUntilStateReached;
+    const afterApiFrom = this.apiFromState !== undefined && this.apiFromStateReached;
+    return beforeApiUntil || afterApiFrom;
   }
 
   caseUrl(): string {
@@ -229,13 +233,18 @@ export class JourneyContext {
   }
 
   // Checks the claim is in the expected state, and notes when it has reached STOP_AT_STATE so the remaining tests are
-  // skipped, or API_UNTIL so the remaining steps use the UI
+  // skipped, API_UNTIL so the remaining steps use the UI, or API_FROM so they use the API. The step that confirms the
+  // state has already run, so the switch is from the next step on.
   async assertCaseState(state: caseStates) {
     await this.testingEndpointHelper.assertCaseState(this.caseId, state);
     this.lastStateReached = state;
     if (state === this.apiUntilState && !this.apiUntilStateReached) {
       this.apiUntilStateReached = true;
       console.log(`Case ${this.caseId} has reached ${state}, so the remaining steps use the UI (API_UNTIL)`);
+    }
+    if (state === this.apiFromState && !this.apiFromStateReached) {
+      this.apiFromStateReached = true;
+      console.log(`Case ${this.caseId} has reached ${state}, so the remaining steps use the API (API_FROM)`);
     }
     if (state === this.stopAtState && !this.stopAtStateReached) {
       this.stopAtStateReached = true;
@@ -265,6 +274,11 @@ export class JourneyContext {
 //  - API_UNTIL: the steps that have an API version (flows/events/api) are done through the CCD API until the claim is
 //    confirmed to be in this state, and the steps after it through the UI. Steps with no API version yet always use the
 //    UI. For example API_UNTIL=CASE_ISSUED creates the claim through the API.
+//  - API_FROM: the other way round. The steps go through the UI until the claim is confirmed to be in this state, and
+//    the steps after it that have an API version through the CCD API. The step that confirms the state still runs in
+//    the UI; the API starts with the next step. For example API_FROM=JUDICIAL_REFERRAL does everything up to the
+//    claimant's response in the UI, and the rest of the journey through the API. With both, the steps go through the
+//    API until API_UNTIL, the UI between the two, and the API again from API_FROM, so API_FROM is a later state.
 export function defineJourney(
   context: JourneyContext,
   steps: JourneyStep[],
@@ -317,6 +331,13 @@ export function defineJourney(
       ).toContain(context.apiUntilState);
     }
 
+    if (context.apiFromState !== undefined) {
+      expect(
+        Object.values(caseStates),
+        `Invalid API_FROM value: ${context.apiFromState}. It must be one of ${Object.values(caseStates).join(', ')}.`,
+      ).toContain(context.apiFromState);
+    }
+
     if (stopAfterTest !== undefined) {
       expect(
         stopAfterTestNumber,
@@ -349,6 +370,9 @@ export function defineJourney(
     }
     if (context.apiUntilState !== undefined && !context.apiUntilStateReached) {
       console.warn(`WARNING: API_UNTIL ${context.apiUntilState} was never reached. The last state checked was ${context.lastStateReached ?? 'none'}.`);
+    }
+    if (context.apiFromState !== undefined && !context.apiFromStateReached) {
+      console.warn(`WARNING: API_FROM ${context.apiFromState} was never reached, so every step used the UI. The last state checked was ${context.lastStateReached ?? 'none'}.`);
     }
   });
 

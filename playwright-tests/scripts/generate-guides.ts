@@ -23,7 +23,7 @@ const tableStart = '<!-- The claim parameters below are written from e2e/journey
 const tableEnd = '<!-- End of the claim parameters written from e2e/journey/settings.ts -->';
 
 // Settings the guides describe with the run settings, which are written by hand, rather than as claim parameters
-const runSettings = ['API_UNTIL', 'STOP_AT_STATE', 'STOP_AFTER_TEST'];
+const runSettings = ['API_UNTIL', 'API_FROM', 'STOP_AT_STATE', 'STOP_AFTER_TEST'];
 
 // A value given the same in both journeys, or for each journey
 function forJourney(value: string | Partial<Record<Journey, string>> | undefined, journey: Journey): string | undefined {
