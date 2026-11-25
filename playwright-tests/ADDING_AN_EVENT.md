@@ -214,6 +214,39 @@ Each entry in the pages list:
 | `answers` | The fields to set on that page, as CCD saves them: `'Yes'` or `'No'`, a list's code, a date as `YYYY-MM-DD`, money in pence. Either an object, or a function that gets the event's data so far (as the callbacks left it) and returns the answers. Use the function form to keep the rest of a complex field, as `applicantSolicitor1UserDetails` does above. |
 | `when` | Optional. A function of the event's data that says whether the user would see this page. The page is skipped when it returns false. |
 
+`when` is for pages that only show for some answers, or that an earlier page's mid-event callback picks. In the Standard Direction Order (`api/CreateSdo.ts`), the track page's callback sets `setSmallClaimsFlag` or `setFastTrackFlag`, and `isSdoR2NewScreen` for the newer directions pages, so only one directions page follows. `when` reads those flags from the data the callback returned, as XUI's page show conditions do:
+
+```typescript
+await this.ccdApiHelper.submitEventThroughPages(sessionUsers[user].credentials, 'CREATE_SDO', caseId, [
+  { page: 'SDO', answers: { drawDirectionsOrderRequired: 'No' } },
+  { page: 'ClaimsTrack', answers: small ? { claimsTrack: 'smallClaimsTrack' } : { claimsTrack: 'fastTrack' } },
+  {
+    page: 'SmallClaims',
+    when: (data) => data.setSmallClaimsFlag === 'Yes' && data.isSdoR2NewScreen !== 'Yes',
+    answers: (data) => ({ smallClaimsHearing: { ...data.smallClaimsHearing, time: 'ONE_HOUR' } }),
+  },
+  {
+    page: 'FastTrack',
+    when: (data) => data.setFastTrackFlag === 'Yes' && data.isSdoR2NewScreen !== 'Yes',
+    answers: (data) => ({
+      fastTrackAllocation: { ...data.fastTrackAllocation, assignComplexityBand: 'No' },
+      fastTrackHearingTime: { ...data.fastTrackHearingTime, hearingDuration: 'ONE_HOUR' },
+    }),
+  },
+  { page: 'OrderPreview' },
+]);
+```
+
+(Shortened: the real class also has the newer pages, `SdoR2SmallClaims` and `SdoR2FastTrack`, with their own `when`.) Take each condition from the page's "Shown when" in `yarn event:info`, written against the field the callback fills in. For the Standard Direction Order, `yarn event:info CREATE_SDO` gives:
+
+```
+  6. SmallClaims
+     Shown when: setSmallClaimsFlag="Yes" AND isSdoR2NewScreen!="Yes"
+  9. FastTrack
+     Shown when: setFastTrackFlag="Yes" AND isSdoR2NewScreen="No"
+```
+ Without `when`, a page the user wouldn't see would be validated anyway, and its callback could fail or overwrite answers.
+
 An event with no pages to answer passes an empty list, as `api/DismissCase.ts` does. An event several users do takes the user as a parameter and uses `sessionUsers[user].credentials`.
 
 Gotchas found so far:
@@ -280,6 +313,21 @@ What each part is for:
 - Several events after the same step go in file name order.
 - A step name that doesn't exist fails the run straight away, listing the journey's steps.
 
+**Where XUI allows the event, and where the framework runs it.** These are not the same. `yarn event:info` gives both what `after` can be and where the event is allowed:
+
+- The step lists at the end of its output ("Unspecified journey steps, for "after"" and the specified list) are the names `after` can use.
+- "Offered in" lists the states XUI offers the event in. The claim must be in one of them when the step runs.
+
+`CHANGE_SOLICITOR_EMAIL` shows the difference. XUI offers "Change solicitor's information" from `CASE_ISSUED` through to `CASE_SETTLED`, so in an unspecified claim it could be done straight after `CREATE_CLAIM`, after `NOTIFY_CLAIM` or `NOTIFY_CLAIM_DETAILS`, or much later (after `RESPOND_TO_DEFENCE`, `CREATE_SDO` or the final order). Its event file picks one of those points:
+
+```typescript
+after: { SPECIFIED: 'ASSIGN_DEFENDANT_SOLICITORS', UNSPECIFIED: 'NOTIFY_CLAIM_DETAILS' },
+```
+
+So in the framework `CHANGE_SOLICITOR_EMAIL` always runs straight after `NOTIFY_CLAIM_DETAILS` in the unspecified journey, and straight after `ASSIGN_DEFENDANT_SOLICITORS` in the specified journey. That is a choice ("once the defendants have the claim"), not a limit of the event. No setting moves it: `CHANGE_SOLICITOR_EMAIL=Yes` only switches it on. To run it at a different point, change `after` in the event file, and every run then uses the new point. If you need it at several different points, it has to become a journey step with its own `<EVENT>_AFTER` setting, like `REFUND_AFTER` (section 10).
+
+Where a claim isn't in an allowed state at that point, leave the event out with `onlyWhen` (section 5.2). `CHANGE_SOLICITOR_EMAIL` has `onlyWhen: ['notOfflineAtNotify']`: when only one of two defendants is notified, the claim goes offline (`PROCEEDS_IN_HERITAGE_SYSTEM`) at the notify step, which isn't in "Offered in", so the event is left out of that run.
+
 ### 5.2 Facts the event needs (`onlyWhen`)
 
 Whether an event applies to a claim mostly depends on facts about the claim: who has a solicitor, and where the claimant's response takes it. List the facts the event needs, and the journey leaves it out, with the fact's reason, where the claim doesn't have one. The facts, from `playwright-tests/e2e/journey/claimFacts.ts`:
@@ -296,6 +344,15 @@ Whether an event applies to a claim mostly depends on facts about the claim: who
 | `withoutDefaultJudgment` | The claimant has not asked for default judgment. |
 
 Your editor offers these names, and flags one that doesn't exist.
+
+The facts are worked out from the run's settings before the journey starts, not by watching the claim while it runs. So an event whose fact doesn't hold is **left out of the run**, with the fact's reason: it isn't tried and then skipped, and it doesn't show as a skipped test. It keeps its test number, as other left-out steps do.
+
+For example, `CHANGE_SOLICITOR_EMAIL` has `onlyWhen: ['notOfflineAtNotify']`:
+
+- In the unspecified journey, the claim goes offline (`PROCEEDS_IN_HERITAGE_SYSTEM`) at notify if `DEFENDANTS_TO_NOTIFY_CLAIM` or `DEFENDANTS_TO_NOTIFY_CLAIM_DETAILS` is anything but `Both`, such as a 1v2DS claim where the claimant's solicitor notifies only Defendant One.
+- With those settings, the event is left out with "Claim went offline at Notify claim / Notify claim details". Without `onlyWhen` it would run on the offline claim and fail, as `PROCEEDS_IN_HERITAGE_SYSTEM` isn't one of the states XUI offers it in.
+- Where both defendants are notified (1v1, or 1v2 with `Both`), the claim stays online and the event runs after `NOTIFY_CLAIM_DETAILS`.
+- A specified claim isn't notified, so the fact always holds there and the event always runs (when switched on).
 
 Default judgment is handled for you. Where the claim has default judgment, the journey skips every step after it apart from those that close the claim. An event switched on that would be skipped that way fails the run before it starts: "DEFAULT_JUDGMENT=Yes cannot be used with `<ID>`=Yes".
 
