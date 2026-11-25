@@ -7,7 +7,7 @@ civil-service:
     image: hmctsprod.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
     devcpuRequests: 50m
     devcpuLimits: 700m
-    devmemoryRequests: 1536Mi
+    devmemoryRequests: 2048Mi
     devmemoryLimits: 2048Mi
     keyVaults:
       civil:
