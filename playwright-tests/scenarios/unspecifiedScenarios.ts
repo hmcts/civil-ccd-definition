@@ -259,10 +259,13 @@ const scenarios: Scenario[] = [
     },
   },
   // The defendants do not respond: once the response deadlines have passed the claimant's solicitor asks for default
-  // judgment, with the damages decided at a disposal hearing, and the judge makes the directions order after judgment
+  // judgment, with the damages decided at a disposal hearing, and the judge makes the directions order after judgment.
+  // On a PR the claim is created and notified through the API, and default judgment onwards is in the UI, as the
+  // playwright-e2e test was.
   {
     name: 'UNSPEC_1v1_FAST_DEFAULT_JUDGMENT',
     tags: [PR, MASTER, NIGHTLY],
+    prApiUntil: 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT',
     env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'INDIVIDUAL', DEFENDANT_TYPE: 'INDIVIDUAL', ...roadAccident, DEFAULT_JUDGMENT: 'Yes' },
   },
   // Default judgment on an other remedy claim: the claimant's solicitor abandons the other remedy to get judgment

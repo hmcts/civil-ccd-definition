@@ -55,8 +55,9 @@ const scenarios: Scenario[] = [
   // then the hearing centre admin adds some for both defendants
   { name: 'SPEC_1v2SS_SMALL_UNAVAILABLE_DATES', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v2SS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', TRACK: 'SMALL_CLAIM', ADD_UNAVAILABLE_DATES: 'Yes' } },
   // The defendants do not respond: once the response deadlines have passed the claimant's solicitor asks for default
-  // judgment against them, paid immediately
-  { name: 'SPEC_1v1_DEFAULT_JUDGMENT', tags: [PR, MASTER, NIGHTLY], env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', DEFAULT_JUDGMENT: 'Yes' } },
+  // judgment against them, paid immediately. On a PR the claim is created through the API and default judgment is in
+  // the UI, as the playwright-e2e test was.
+  { name: 'SPEC_1v1_DEFAULT_JUDGMENT', tags: [PR, MASTER, NIGHTLY], prApiUntil: 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', env: { CLAIM_TYPE: '1v1', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', DEFAULT_JUDGMENT: 'Yes' } },
   { name: 'SPEC_1v2DS_DEFAULT_JUDGMENT', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION', DEFAULT_JUDGMENT: 'Yes' } },
   // The defendant, a litigant in person, instructs a solicitor once the claim is issued: the Respondent1 Solicitor gives
   // a notice of change and responds as in a 1v1 claim, which runs to the final order
