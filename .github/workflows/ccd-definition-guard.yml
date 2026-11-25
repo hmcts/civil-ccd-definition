@@ -1,0 +1,72 @@
+# Fails a pull request that changes ccd-definition/ once civil-service is the source of truth for the Civil CCD
+# definitions, which is when ccd-definition/SOURCE_OF_TRUTH is on civil-service master. After that, nothing builds
+# or imports the definitions from this repo, so an edit here would be silently lost. Until then it always passes.
+#
+# It runs on every pull request, with no paths filter, so that as a required check it always reports a result:
+# a required check that never runs stays pending and blocks the merge.
+#
+# Remove it (and take it out of the required checks first) when ccd-definition/ is deleted from this repo.
+name: CCD definition guard
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  ccd-definition-guard:
+    name: CCD definition guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check ccd-definition/ changes against the source of truth
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          TOGGLE_REPO: hmcts/civil-service
+          TOGGLE_REF: master
+          TOGGLE_PATH: ccd-definition/SOURCE_OF_TRUTH
+        run: |
+          set -euo pipefail
+
+          # The pull request's files, with the old path of anything renamed, so moving a file out of
+          # ccd-definition/ counts too.
+          if ! files=$(gh api --paginate "repos/${REPO}/pulls/${PR_NUMBER}/files" \
+              --jq '.[] | .filename, (.previous_filename // empty)'); then
+            echo "::error::Could not list the files in this pull request, so can't tell whether it changes ccd-definition/. Re-run this check."
+            exit 1
+          fi
+
+          definitionFiles=$(grep '^ccd-definition/' <<< "${files}" || true)
+          if [ -z "${definitionFiles}" ]; then
+            echo "This pull request doesn't change ccd-definition/."
+            exit 0
+          fi
+
+          # 404 means the toggle is absent. Anything else but 200 is an error, and fails rather than letting a
+          # definition change through unchecked.
+          url="https://api.github.com/repos/${TOGGLE_REPO}/contents/${TOGGLE_PATH}?ref=${TOGGLE_REF}"
+          status=$(curl -sS -o /dev/null -w '%{http_code}' \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "${url}") || status="no response"
+
+          case "${status}" in
+            404)
+              echo "This pull request changes ccd-definition/. That's fine: ${TOGGLE_PATH} isn't on ${TOGGLE_REPO} ${TOGGLE_REF}, so this repo is still the source of truth for the CCD definitions."
+              ;;
+            200)
+              echo "::error::The Civil CCD definitions now live in ${TOGGLE_REPO}, under ccd-definition/. ${TOGGLE_PATH} is on its ${TOGGLE_REF}, so nothing builds or imports ccd-definition/ from this repo any more. Make the definition change in a ${TOGGLE_REPO} pull request instead, and keep any test changes here with a civilServicePr:<number> label."
+              echo "Files under ccd-definition/ that this pull request changes:"
+              echo "${definitionFiles}"
+              exit 1
+              ;;
+            *)
+              echo "::error::Could not check whether ${TOGGLE_PATH} is on ${TOGGLE_REPO} ${TOGGLE_REF} (GitHub API result: ${status}). This pull request changes ccd-definition/, which is only allowed while that file is absent, so the check fails rather than guess. Re-run it."
+              exit 1
+              ;;
+          esac

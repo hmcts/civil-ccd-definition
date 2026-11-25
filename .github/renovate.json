@@ -84,6 +84,11 @@
       "automergeType": "pr"
     },
     {
+      "description": "typescript-eslint 8 only supports TypeScript <6.1.0. Remove once typescript-eslint supports TypeScript 7.",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<6.1.0"
+    },
+    {
       "matchPackageNames": ["typescript", "/^@types//"],
       "groupName": "TypeScript",
       "groupSlug": "typescript",
