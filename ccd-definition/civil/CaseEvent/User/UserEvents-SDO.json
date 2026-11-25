@@ -77,7 +77,7 @@
     "Name": "Standard Direction Order",
     "Description": "Standard Direction Order",
     "DisplayOrder": 17,
-    "PreConditionState(s)": "JUDICIAL_REFERRAL;CASE_PROGRESSION",
+    "PreConditionState(s)": "JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS",
     "PostConditionState": "CASE_PROGRESSION",
     "SecurityClassification": "Public",
     "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/about-to-start",
