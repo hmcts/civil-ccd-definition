@@ -245,7 +245,68 @@ await this.ccdApiHelper.submitEventThroughPages(sessionUsers[user].credentials, 
   9. FastTrack
      Shown when: setFastTrackFlag="Yes" AND isSdoR2NewScreen="No"
 ```
- Without `when`, a page the user wouldn't see would be validated anyway, and its callback could fail or overwrite answers.
+
+Without `when`, a page the user wouldn't see would be validated anyway, and its callback could fail or overwrite answers.
+
+**Where `data` comes from.** `data` is the event's data as it stands at that point. `CcdApiHelper.submitEventThroughPages` (`playwright-tests/helpers/CcdApiHelper.ts`) builds it and passes it to each page's `when` and `answers`, updating it the way XUI does:
+
+1. **Starting the event.** `startEventWithPages` starts the event through CCD's internal API, the call XUI makes when you pick it from Next step. CCD runs civil-service's about-to-start callback and returns the event's fields with their values, which become the first `data`:
+
+   ```typescript
+   const started = await this.startEventWithPages(user, eventId, caseId);
+   let data = { ...started.caseData };
+   ```
+
+2. **Each page in your list, in order.** `when(data)` decides whether the page is answered (false skips it). Your `answers` (an object, or a function given the current `data`) are added to `data`. Where the page has a mid-event callback, the page is validated as Continue does in XUI (`validatePage`), which runs civil-service's callback, and what it returns is merged into `data`:
+
+   ```typescript
+   if (when && !when(data)) {
+     continue;
+   }
+   const pageAnswers = typeof answers === 'function' ? answers(data) : answers ?? {};
+   data = { ...data, ...pageAnswers };
+   if (definition.hasMidEvent) {
+     data = { ...data, ...await this.validatePage(...) };
+   }
+   ```
+
+3. **Submitting.** The event's own fields are taken from the final `data` and submitted.
+
+In the Standard Direction Order above, the `ClaimsTrack` page's answer (`claimsTrack`) goes to its mid-event callback, which sets `setSmallClaimsFlag` or `setFastTrackFlag`, and `isSdoR2NewScreen`, in `data`. So by the time the helper reaches the `SmallClaims` and `FastTrack` entries, their `when` reads those flags and only one of them is answered. The `answers` functions use `data` the same way: `{ ...data.smallClaimsHearing, time: 'ONE_HOUR' }` keeps everything civil-service filled into `smallClaimsHearing` and only changes the hearing time.
+
+**Pages that depend on an answer.** Where an answer decides which pages follow (say a Yes/No question where Yes shows three more pages and No goes straight to check your answers), list every page the event can show, in the order the definition has them, and give each extra page a `when` that reads the answer. Your answer is in `data` as soon as its page is answered, so the pages after it can check it:
+
+```typescript
+async submit(caseId: string, wantsExtra: boolean) {
+  await this.ccdApiHelper.submitEventThroughPages(credentials, 'SOME_EVENT', caseId, [
+    { page: 'FirstPage', answers: { ... } },
+    { page: 'Question', answers: { wantsExtraDetails: wantsExtra ? 'Yes' : 'No' } },
+    { page: 'ExtraOne', when: (data) => data.wantsExtraDetails === 'Yes', answers: { ... } },
+    { page: 'ExtraTwo', when: (data) => data.wantsExtraDetails === 'Yes', answers: { ... } },
+    { page: 'ExtraThree', when: (data) => data.wantsExtraDetails === 'Yes', answers: { ... } },
+  ]);
+}
+```
+
+- **Yes:** after the `Question` page, `data.wantsExtraDetails` is `'Yes'`, so each extra page's `when` returns true. All three are answered, then the event is submitted.
+- **No:** the three `when`s return false, so those pages are skipped, and with nothing else listed the helper submits straight away.
+
+Check your answers isn't a page in the list: in XUI it only shows what was entered before Submit, and the helper's final submit is its equivalent, whichever way the answers went.
+
+`api/DefaultJudgment.ts` does this. The first page's answer (one defendant or both) leads to one of two certify pages, and another page only shows for other remedy claims; the pages without a `when` are always answered:
+
+```typescript
+{ page: 'showcertifystatement', when: (data) => data.bothDefendants === 'One', answers: { ... } },
+{ page: 'showcertifystatementboth', when: (data) => data.bothDefendants === 'Both Defendants', answers: { ... } },
+{ page: 'abandonOtherRemedyPage', when: (data) => data.isClaimDeclarationAdded === 'Yes' && [...].includes(data.claimTypeUnSpec), answers: { ... } },
+```
+
+Things to watch:
+
+- **Conditions:** take each from the page's "Shown when" in `yarn event:info` (here it would be `Shown when: wantsExtraDetails="Yes"`). Where the condition is on a field civil-service fills in rather than on your own answer, an earlier page's mid-event callback sets it, as in the Standard Direction Order.
+- **Order:** list the pages in the definition's order, as `yarn event:info` numbers them. The helper goes through them top to bottom.
+- **Pass the choice in:** where a test needs both routes, give the class a parameter (`wantsExtra` above) and use it in both the answer and the `when`s. The UI class takes the same parameter and puts an `if` around the extra pages, so the two versions follow the same route.
+- **Values on skipped pages:** fields civil-service's about-to-start callback filled in on pages you skip are still in `data`, and are submitted, which XUI wouldn't do. If civil-service acts on them, pass `onlyAnsweredPages = true` so only the pages you answered are submitted (see "Callbacks that fill other pages" below).
 
 An event with no pages to answer passes an empty list, as `api/DismissCase.ts` does. An event several users do takes the user as a parameter and uses `sessionUsers[user].credentials`.
 
