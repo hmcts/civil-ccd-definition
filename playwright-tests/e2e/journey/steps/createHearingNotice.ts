@@ -21,15 +21,15 @@ export function createHearingNotice(c: JourneyConfig, ctx: JourneyContext): Jour
     needs: [c.facts.reachesCaseProgression],
     run: async ({ page, storageState }) => {
       if (scheduled()) {
-        await runHearingNoticeScheduler(ctx, c.caseType === 'SPECIFIED' ? 'spec' : 'unspec', c.track);
+        await runHearingNoticeScheduler(ctx, c.caseType === 'SPECIFIED' ? 'spec' : 'unspec', c.sdoTrack);
         return;
       }
       if (c.hearingNoticeScheduler === yesNo.YES) {
         console.warn('WARNING: HEARING_NOTICE_SCHEDULER=Yes needs a civil-service PR preview (ENV=preview PREVIEW_SERVICE=service), where HMC is WireMock. The hearing centre admin creates the hearing notice instead.');
       }
       await ctx.submitEvent(page, storageState, {
-        api: () => new api.CreateHearingNotice().submit(ctx.caseId, c.track),
-        ui: () => new ui.CreateHearingNotice(page).submit(c.track),
+        api: () => new api.CreateHearingNotice().submit(ctx.caseId, c.sdoTrack),
+        ui: () => new ui.CreateHearingNotice(page).submit(c.sdoTrack),
         expectState: caseStates.HEARING_READINESS,
       });
     },

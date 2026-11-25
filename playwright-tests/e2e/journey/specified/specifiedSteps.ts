@@ -693,8 +693,8 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       ],
       run: async ({ page, storageState, user }) => {
         await ctx.submitEvent(page, storageState, {
-          api: () => new api.UploadEvidence().submit(ctx.caseId, user, c.track),
-          ui: () => new ui.UploadEvidence(page).submit(c.track),
+          api: () => new api.UploadEvidence().submit(ctx.caseId, user, c.sdoTrack),
+          ui: () => new ui.UploadEvidence(page).submit(c.sdoTrack),
           expectState: caseStates.CASE_PROGRESSION,
         });
       },
@@ -714,7 +714,7 @@ function journeySteps(c: SpecifiedConfig, ctx: JourneyContext): JourneyStep[] {
       user: solicitor.user,
       needs: [c.facts.reachesCaseProgression],
       skipIf: [
-        [c.track !== claimTrack.FAST, 'Skipping as trial arrangements are only confirmed on the fast track'],
+        [c.sdoTrack !== claimTrack.FAST, 'Skipping as trial arrangements are only confirmed on the fast track'],
         ['defendant2' in solicitor && c.claimType !== claimTypes.ONE_VS_TWO_DIFF_SOL, 'Skipping as Defendant 2 has no separate solicitor'],
       ],
       run: async ({ page, storageState, user }) => {

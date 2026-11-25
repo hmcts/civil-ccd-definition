@@ -52,9 +52,12 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>,
   const claimantType = read.get('CLAIMANT_TYPE');
   const defendantType = read.get('DEFENDANT_TYPE');
   const track = read.get('TRACK') as claimTrack;
+  // The track the judge's Standard Direction Order puts the claim on (SDO_TRACK: SMALL_CLAIM for a fast track claim),
+  // which the steps after it follow. By default the claim's own track.
+  const sdoTrack = (read.get('SDO_TRACK') as claimTrack | undefined) ?? track;
   // The judge's final order (FINAL_ORDER). If it is not set, the first order the track offers is made: a free form order
   // on the small claims and fast tracks, the blank after-hearing template on the intermediate and multi tracks.
-  const finalOrder: FinalOrder = (read.get('FINAL_ORDER') as FinalOrder) ?? finalOrdersForTrack[track][0];
+  const finalOrder: FinalOrder = (read.get('FINAL_ORDER') as FinalOrder) ?? finalOrdersForTrack[sdoTrack][0];
   // With the same rate, 8 is the statutory rate and any other rate needs a reason. With a breakdown, it is the total
   // interest in pounds.
   const interestRate: string = read.get('INTEREST_RATE');
@@ -94,6 +97,7 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>,
     // A specified claim does not ask about a claimant's litigation friend when it is created.
     claimShape: createClaimShape(claimType, claimantType, defendantType, [yesNo.NO, yesNo.NO]),
     track,
+    sdoTrack,
     // Whether the claim is for a delayed or cancelled flight (AIRLINE_CLAIM, default No): with an airline from the list,
     // Jet2.com (Yes), or one the claimant names because it is not on the list (OTHER)
     airlineClaim: ['Yes', 'OTHER'].includes(read.get('AIRLINE_CLAIM')) ? yesNo.YES : yesNo.NO,
@@ -220,6 +224,9 @@ export function specifiedConfig(scenarioEnv: Record<string, string | undefined>,
     // What the judge or legal adviser decides (GENERAL_APPLICATION_DECISION: APPROVE, the default, REQUEST_MORE_INFO,
     // which the applicant's solicitor then answers, or LIST_FOR_HEARING, which court staff then schedule)
     generalApplicationDecision: read.get('GENERAL_APPLICATION_DECISION'),
+    // With LIST_FOR_HEARING, the order a judge makes once the hearing is scheduled (GENERAL_APPLICATION_ORDER:
+    // FREE_FORM_ORDER or ASSISTED_ORDER; none by default)
+    generalApplicationOrder: read.get('GENERAL_APPLICATION_ORDER'),
     // Whose solicitors raise a query, which a CTSC admin answers (QUERY_MANAGEMENT: a list such as claimant,defendant1),
     // after the QUERY_MANAGEMENT_AFTER step (default RESPOND_TO_DEFENCE, once every solicitor has the case). Whether the
     // queries are about a hearing (QUERY_MANAGEMENT_HEARING_RELATED, default No), and whether each solicitor then asks a

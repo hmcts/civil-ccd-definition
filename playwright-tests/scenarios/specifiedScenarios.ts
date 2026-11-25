@@ -43,6 +43,14 @@ const scenarios: Scenario[] = [
   { name: 'SPEC_2v1_FAST', tags: [NIGHTLY], env: { CLAIM_TYPE: '2v1', CLAIMANT_TYPE: 'SOLE_TRADER', DEFENDANT_TYPE: 'INDIVIDUAL' } },
   { name: 'SPEC_1v2SS_FAST', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v2SS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL' } },
   { name: 'SPEC_1v2DS_FAST', tags: [PR, MASTER, NIGHTLY], env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION' } },
+  // The judge's Standard Direction Order puts the fast track claim on the small claims track, and it carries on as a
+  // small claim. On a PR the claim is created through the API and the rest is in the UI, as the playwright-e2e test was.
+  {
+    name: 'SPEC_1v2DS_FAST_SMALL_SDO',
+    tags: [PR, MASTER, NIGHTLY],
+    prApiUntil: 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT',
+    env: { CLAIM_TYPE: '1v2DS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'ORGANISATION', SDO_TRACK: 'SMALL_CLAIM' },
+  },
   // Each solicitor adds unavailable dates while the small claim is in mediation, Defendant 1's for both defendants,
   // then the hearing centre admin adds some for both defendants
   { name: 'SPEC_1v2SS_SMALL_UNAVAILABLE_DATES', tags: [NIGHTLY], env: { CLAIM_TYPE: '1v2SS', CLAIMANT_TYPE: 'COMPANY', DEFENDANT_TYPE: 'INDIVIDUAL', TRACK: 'SMALL_CLAIM', ADD_UNAVAILABLE_DATES: 'Yes' } },

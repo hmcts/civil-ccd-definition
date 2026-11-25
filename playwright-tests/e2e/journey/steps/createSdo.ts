@@ -35,14 +35,15 @@ export function sdoTask(c: JourneyConfig): string {
 
 // The Standard Direction Order, on the small claims and fast tracks, once the claimant's response has taken the claim
 // to JUDICIAL_REFERRAL (or, for a specified small claim, after unsuccessful mediation). It moves the claim to
-// CASE_PROGRESSION. Intermediate and multi track claims get a directions order instead (makeDirectionsOrder.ts).
+// CASE_PROGRESSION. The order puts the claim on c.sdoTrack, which is the claim's own track unless SDO_TRACK moves a
+// specified fast track claim to the small claims track; who makes it and their task follow the claim's own track. Intermediate and multi track claims get a directions order instead (makeDirectionsOrder.ts).
 export function createSdo(c: JourneyConfig, ctx: JourneyContext): JourneyStep {
   const user = sdoUser(c);
   const disputeResolutionHearing = c.disputeResolutionHearing === yesNo.YES;
   const flightDelay = flightDelaySmallClaim(c);
   return {
     name: 'CREATE_SDO',
-    title: `${user === 'legalAdviser' ? 'Legal Adviser' : 'Judge'} makes a Standard Direction Order${disputeResolutionHearing ? ' for a dispute resolution hearing' : ''}${flightDelay ? ' with flight delay directions' : ''}.`,
+    title: `${user === 'legalAdviser' ? 'Legal Adviser' : 'Judge'} makes a Standard Direction Order${c.sdoTrack !== c.track ? ' on the small claims track' : ''}${disputeResolutionHearing ? ' for a dispute resolution hearing' : ''}${flightDelay ? ' with flight delay directions' : ''}.`,
     user,
     needs: [c.facts.reachesCaseProgression],
     skipIf: [
@@ -54,11 +55,11 @@ export function createSdo(c: JourneyConfig, ctx: JourneyContext): JourneyStep {
         // claimed through the API version too, as the UI would.
         await new WaTaskHelper(page).assignTaskForEvent(ctx.caseId, 'CREATE_SDO', sdoTask(c));
         if (!ctx.useApi()) {
-          await new ui.CreateSdo(page).submit(ctx.caseId, c.track, noiseInducedHearingLoss(c), disputeResolutionHearing, flightDelay);
+          await new ui.CreateSdo(page).submit(ctx.caseId, c.sdoTrack, noiseInducedHearingLoss(c), disputeResolutionHearing, flightDelay);
         }
       });
       if (ctx.useApi()) {
-        await new api.CreateSdo().submit(ctx.caseId, user, c.track, noiseInducedHearingLoss(c), disputeResolutionHearing, flightDelay);
+        await new api.CreateSdo().submit(ctx.caseId, user, c.sdoTrack, noiseInducedHearingLoss(c), disputeResolutionHearing, flightDelay);
       }
       if (flightDelay) {
         await expectFlightDelayDirections(ctx);

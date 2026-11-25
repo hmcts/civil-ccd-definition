@@ -11,6 +11,7 @@ import { ClaimShape } from '../flows/createClaimShape.ts';
 import * as ui from '../flows/events/ui/index.ts';
 import * as api from '../flows/events/api/index.ts';
 import { gaHearingNotice } from '../flows/events/shared_api_ui/gaHearingNoticeSpecs.ts';
+import { GaOrder, gaOrderAnswers } from '../flows/events/shared_api_ui/gaOrderSpecs.ts';
 import { JourneyContext, JourneyStep, insertAfterStep } from './journeyRunner.ts';
 
 // The application types the journeys can make, as "Make an application" lists them
@@ -54,6 +55,9 @@ export interface GaClaim {
   // ask the applicant for more information, which the applicant then gives (REQUEST_MORE_INFO), or list it for a hearing,
   // which court staff then schedule (LIST_FOR_HEARING)
   generalApplicationDecision: string;
+  // GENERAL_APPLICATION_ORDER: with GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING, the order a judge makes once the
+  // hearing is scheduled (FREE_FORM_ORDER or ASSISTED_ORDER), or undefined when none is made
+  generalApplicationOrder?: string;
 }
 
 // What a judge or legal adviser can decide on an application (GENERAL_APPLICATION_DECISION)
@@ -195,6 +199,15 @@ export function generalApplicationProblem(c: GaClaim): string | undefined {
   }
   if (!(Object.values(GaDecision) as string[]).includes(c.generalApplicationDecision)) {
     problems.push(`GENERAL_APPLICATION_DECISION=${c.generalApplicationDecision} is not one of ${Object.values(GaDecision).join(', ')}`);
+  }
+  if (c.generalApplicationOrder !== undefined) {
+    if (!(Object.values(GaOrder) as string[]).includes(c.generalApplicationOrder)) {
+      problems.push(`GENERAL_APPLICATION_ORDER=${c.generalApplicationOrder} is not one of ${Object.values(GaOrder).join(', ')}`);
+    }
+    // "Make an order" is only offered once the application's hearing is scheduled (HEARING_SCHEDULED)
+    if (c.generalApplicationDecision !== GaDecision.LIST_FOR_HEARING) {
+      problems.push('GENERAL_APPLICATION_ORDER needs GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING: the order is made once the application\'s hearing is scheduled');
+    }
   }
   if (!(c.generalApplicationBy in gaParties)) {
     problems.push(`GENERAL_APPLICATION_BY=${c.generalApplicationBy} is not one of ${Object.keys(gaParties).join(', ')}`);
@@ -669,12 +682,50 @@ function generalApplicationSteps(c: GaClaim, ctx: JourneyContext, types: string[
     },
   }));
 
+  // With GENERAL_APPLICATION_ORDER, once the hearing is scheduled a judge makes the order ("Make an order",
+  // GENERATE_DIRECTIONS_ORDER): a free form or an assisted order (see gaOrderSpecs.ts). Work allocation has no task for
+  // it, so the judge starts it from the application's next step list. civil-service issues the order and moves the
+  // application to ORDER_MADE.
+  const order = c.generalApplicationOrder as GaOrder | undefined;
+  const makeOrderStep: JourneyStep = {
+    name: 'GA_MAKE_ORDER',
+    group: 'GENERAL_APPLICATION',
+    title: `Judge makes ${order === GaOrder.ASSISTED_ORDER ? 'an assisted order' : 'a free form order'} on the general application after its hearing.`,
+    user: 'judge',
+    skipIf: [
+      ...(anchor.skipIf ?? []),
+      [order === undefined, 'Skipping as no order is made after the hearing (set GENERAL_APPLICATION_ORDER=FREE_FORM_ORDER or ASSISTED_ORDER to run it)'],
+    ],
+    run: async ({ page, storageState, user }) => {
+      test.skip(!decided, notDecidedReason);
+      const answers = gaOrderAnswers();
+      await ctx.submitEvent(page, storageState, {
+        api: () => new api.MakeOrderOnApplication().submit(ctx.gaCaseId, user, order!, answers),
+        ui: async () => {
+          await ctx.pageHelper.gotoAndWaitForXui(ctx.gaCaseUrl());
+          await new ui.MakeOrderOnApplication(page).submit(order!, answers);
+        },
+        reopenUrl: ctx.gaCaseUrl(),
+      });
+      await ctx.testingEndpointHelper.waitForCamundaProcessToFinish(ctx.gaCaseId, 'GENERATE_DIRECTIONS_ORDER');
+      await ctx.assertGaCaseState(GaCaseStates.ORDER_MADE);
+      const saved = await ctx.testingEndpointHelper.getCaseData(ctx.gaCaseId);
+      expect(saved.finalOrderSelection, 'The order type was not saved').toBe(order);
+      if (order === GaOrder.FREE_FORM_ORDER) {
+        expect(saved.freeFormOrderedText, 'The free form order was not saved').toBe(answers.ordered);
+      } else {
+        expect(saved.assistedOrderOrderedThatText, 'The assisted order was not saved').toBe(answers.orderedThat);
+      }
+      await claimStateUnchanged();
+    },
+  };
+
   // The application is made and paid for, sent to the other side and the extra fee paid where it is, the other side
   // responds, and then it is decided. The legal adviser's decision step comes first, so the referral goes before it.
-  // A request for more information is then answered, or a hearing it was listed for scheduled.
+  // A request for more information is then answered, or a hearing it was listed for scheduled, and an order made after it.
   const [makeStep, payStep, ...respondSteps] = steps;
   return [
     makeStep, payStep, ...sendSteps, payAdditionalFeeStep, ...respondSteps, referStep, ...decisionSteps, ...consentOrderSteps,
-    respondToMoreInfoStep, ...scheduleHearingSteps,
+    respondToMoreInfoStep, ...scheduleHearingSteps, makeOrderStep,
   ];
 }

@@ -103,6 +103,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     typeOfClaim,
     typeOfClaimSubType,
     track,
+    // The track the Standard Direction Order puts the claim on, which the shared steps after it follow: always the
+    // claim's own track here (SDO_TRACK is a specified setting)
+    sdoTrack: track,
     noiseInducedHearingLoss,
     sdoTaskType,
     finalOrder,
@@ -219,6 +222,9 @@ export function unspecifiedConfig(scenarioEnv: Record<string, string | undefined
     // What the judge or legal adviser decides (GENERAL_APPLICATION_DECISION: APPROVE, the default, REQUEST_MORE_INFO,
     // which the applicant's solicitor then answers, or LIST_FOR_HEARING, which court staff then schedule)
     generalApplicationDecision: read.get('GENERAL_APPLICATION_DECISION'),
+    // With LIST_FOR_HEARING, the order a judge makes once the hearing is scheduled (GENERAL_APPLICATION_ORDER:
+    // FREE_FORM_ORDER or ASSISTED_ORDER; none by default)
+    generalApplicationOrder: read.get('GENERAL_APPLICATION_ORDER'),
     // Whose solicitors raise a query, which a CTSC admin answers (QUERY_MANAGEMENT: a list such as claimant,defendant1),
     // after the QUERY_MANAGEMENT_AFTER step (default RESPOND_TO_DEFENCE, once every solicitor has the case). Whether the
     // queries are about a hearing (QUERY_MANAGEMENT_HEARING_RELATED, default No), and whether each solicitor then asks a

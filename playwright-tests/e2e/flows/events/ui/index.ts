@@ -25,6 +25,7 @@ export { InformAgreedExtensionDate } from './InformAgreedExtensionDate.ts';
 export { InformAgreedExtensionDateSpec } from './InformAgreedExtensionDateSpec.ts';
 export { JudgmentPaidInFull } from './JudgmentPaidInFull.ts';
 export { MakeDecisionOnApplication } from './MakeDecisionOnApplication.ts';
+export { MakeOrderOnApplication } from './MakeOrderOnApplication.ts';
 export { MakeDirectionsOrder } from './MakeDirectionsOrder.ts';
 export { MakeFinalOrder } from './MakeFinalOrder.ts';
 export { ManageCaseFlag } from './ManageCaseFlag.ts';

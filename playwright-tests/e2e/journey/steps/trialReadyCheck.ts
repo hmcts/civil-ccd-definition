@@ -15,7 +15,7 @@ export function trialReadyCheck(c: JourneyConfig, ctx: JourneyContext): JourneyS
     user: 'claimantSolicitor',
     needs: [c.facts.reachesCaseProgression],
     skipIf: [
-      [c.track !== claimTrack.FAST, 'Skipping as the trial ready check is only made on the fast track'],
+      [c.sdoTrack !== claimTrack.FAST, 'Skipping as the trial ready check is only made on the fast track'],
     ],
     run: async () => {
       await ctx.testingEndpointHelper.triggerTrialReadyCheck(ctx.caseId);

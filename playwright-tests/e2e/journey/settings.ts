@@ -381,6 +381,12 @@ export const settings = {
       SPECIFIED: 'How the claimant suggests the defendant pays when they reject the date or plan.',
     },
   },
+  SDO_TRACK: {
+    values: [claimTrack.SMALL],
+    notes: {
+      SPECIFIED: "Optional: the judge's Standard Direction Order puts a fast track claim on the small claims track (SMALL_CLAIM), and the steps after it follow the small claims track: small claims evidence and hearing notice, and no trial ready check or trial arrangements. Needs TRACK=FAST_CLAIM and the claim to reach CREATE_SDO. Has an API version.",
+    },
+  },
   FINAL_ORDER: {
     values: Object.values(FinalOrder),
     valuesText: 'Small and fast: FREE_FORM_ORDER, ASSISTED_ORDER. Intermediate: BLANK_TEMPLATE_AFTER_HEARING, BLANK_TEMPLATE_BEFORE_HEARING, FIX_A_DATE_FOR_CMC. Multi: those three and FIX_A_DATE_FOR_CCMC',
@@ -601,6 +607,13 @@ export const settings = {
       UNSPECIFIED: 'For an application made without notice (needs GENERAL_APPLICATION_WITH_NOTICE=No, not agreed, not urgent): the judge or legal adviser first sends it to the other side, the applicant pays the extra fee, and the other side responds before it is decided.',
     },
   },
+  GENERAL_APPLICATION_ORDER: {
+    values: ['FREE_FORM_ORDER', 'ASSISTED_ORDER'],
+    notes: {
+      SPECIFIED: "Optional: once the application's hearing is scheduled, a judge makes an order on it (\"Make an order\"): a free form order (recitals and what it orders) or an assisted order (not made following a hearing, costs in the case, no further hearing or appeal, no reasons). The application is checked to reach ORDER_MADE with the order saved. Needs GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING. Has an API version.",
+      UNSPECIFIED: "Optional: once the application's hearing is scheduled, a judge makes an order on it (\"Make an order\"): a free form order (recitals and what it orders) or an assisted order (not made following a hearing, costs in the case, no further hearing or appeal, no reasons). The application is checked to reach ORDER_MADE with the order saved. Needs GENERAL_APPLICATION_DECISION=LIST_FOR_HEARING. Has an API version.",
+    },
+  },
   GENERAL_APPLICATION_DECISION: {
     values: Object.values(GaDecision),
     default: GaDecision.APPROVE,
@@ -765,6 +778,20 @@ export const settingRules: SettingRule[] = [
       : undefined),
   },
 
+  // The Standard Direction Order moving a fast track claim to the small claims track
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('SDO_TRACK') && s.get('TRACK') !== claimTrack.FAST
+      ? 'SDO_TRACK=SMALL_CLAIM needs TRACK=FAST_CLAIM: the judge moves a fast track claim to the small claims track'
+      : undefined),
+  },
+  {
+    journeys: ['SPECIFIED'],
+    problem: (s) => (s.isSet('SDO_TRACK') && (s.isOn('DISPUTE_RESOLUTION_HEARING') || s.isSet('NOT_SUITABLE_SDO'))
+      ? 'SDO_TRACK cannot be used with DISPUTE_RESOLUTION_HEARING=Yes or NOT_SUITABLE_SDO, which change the Standard Direction Order'
+      : undefined),
+  },
+
   // Mediation on a specified small claim
   {
     journeys: ['SPECIFIED'],
@@ -858,7 +885,8 @@ export const settingRules: SettingRule[] = [
   {
     journeys: bothJourneys,
     problem: (s) => {
-      const track = s.get('TRACK') as claimTrack;
+      // The final order is made on the track the Standard Direction Order left the claim on
+      const track = (s.get('SDO_TRACK') ?? s.get('TRACK')) as claimTrack;
       const finalOrder = s.get('FINAL_ORDER') as FinalOrder | undefined;
       return finalOrder !== undefined && !finalOrdersForTrack[track].includes(finalOrder)
         ? `Invalid FINAL_ORDER value: ${finalOrder} for track ${track}. The ${track} track offers ${finalOrdersForTrack[track].join(', ')}.`

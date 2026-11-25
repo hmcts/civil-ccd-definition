@@ -17,17 +17,21 @@ export interface Scenario {
   env: Record<string, string | undefined>;
   // Always runs every step in the UI, even when the run sets SCENARIO_API_UNTIL
   ui?: boolean;
+  // The API_UNTIL this scenario uses in place of SCENARIO_API_UNTIL, where the run sets it (the PR pipeline), so its
+  // steps go through the API as far as the playwright-e2e PR test it replaced did. Master and nightly runs ignore it.
+  prApiUntil?: string;
   // The setting names the scenario itself sets (its env above, before the command line's env vars are added), which the
   // journey checks are its settings (see e2e/journey/settings.ts). Only set on the scenarios selectedScenarios gives.
   settings?: string[];
 }
 
 // SCENARIO_API_UNTIL=<state> gives every scenario that does not set its own API_UNTIL, and is not marked ui, that
-// API_UNTIL, so a run can go through the CCD API while keeping a few scenarios in the UI. The PR pipeline sets it
-// (playwright-tests/scripts/pipeline/run-journeys.sh); master and nightly runs keep each scenario's own settings.
+// API_UNTIL (or the scenario's prApiUntil), so a run can go through the CCD API while keeping a few scenarios in the
+// UI. The PR pipeline sets it (playwright-tests/scripts/pipeline/run-journeys.sh); master and nightly runs keep each
+// scenario's own settings.
 export function scenarioApiUntil(scenario: Scenario): Record<string, string> {
   const apiUntil = process.env.SCENARIO_API_UNTIL;
-  return apiUntil && !scenario.ui ? { API_UNTIL: apiUntil } : {};
+  return apiUntil && !scenario.ui ? { API_UNTIL: scenario.prApiUntil ?? apiUntil } : {};
 }
 
 const PR = '@unspec-pr';
@@ -325,14 +329,37 @@ const scenarios: Scenario[] = [
 
   // General applications. Each run stops once the application has been decided.
   // The claimant's solicitor applies to stay the claim, with notice, the defendant's solicitor responds and the judge
-  // lists it for a hearing, which court staff schedule
+  // lists it for a hearing, which court staff schedule, then makes a free form order
+  // On a PR, through the API to JUDICIAL_REFERRAL, as the playwright-e2e GA order and hearing notice tests were.
   {
     name: 'UNSPEC_1v1_FAST_GENERAL_APPLICATION_HEARING',
     tags: [PR, MASTER, NIGHTLY],
+    prApiUntil: 'JUDICIAL_REFERRAL',
     env: {
       ...individual1v1,
       GENERAL_APPLICATION: 'STAY_THE_CLAIM',
       GENERAL_APPLICATION_DECISION: 'LIST_FOR_HEARING',
+      GENERAL_APPLICATION_ORDER: 'FREE_FORM_ORDER',
+      STOP_AFTER_TEST: 'GENERAL_APPLICATION',
+    },
+  },
+  // Defendant 2's solicitor applies for more time without notice, so no one responds, and the judge lists it for a
+  // hearing, which court staff schedule, then makes an assisted order. On a PR, through the API to JUDICIAL_REFERRAL,
+  // as the playwright-e2e GA order and hearing notice tests were.
+  {
+    name: 'UNSPEC_1v2DS_FAST_GENERAL_APPLICATION_ASSISTED_ORDER',
+    tags: [PR, MASTER, NIGHTLY],
+    prApiUntil: 'JUDICIAL_REFERRAL',
+    env: {
+      CLAIM_TYPE: '1v2DS',
+      CLAIMANT_TYPE: 'SOLE_TRADER',
+      DEFENDANT_TYPE: 'INDIVIDUAL',
+      ...roadAccident,
+      GENERAL_APPLICATION: 'EXTEND_TIME',
+      GENERAL_APPLICATION_BY: 'defendant2',
+      GENERAL_APPLICATION_WITH_NOTICE: 'No',
+      GENERAL_APPLICATION_DECISION: 'LIST_FOR_HEARING',
+      GENERAL_APPLICATION_ORDER: 'ASSISTED_ORDER',
       STOP_AFTER_TEST: 'GENERAL_APPLICATION',
     },
   },
