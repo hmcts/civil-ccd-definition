@@ -1812,7 +1812,10 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPagesDefaultJudgments(data.CLAIM_DEFAULT_JUDGEMENT_SPEC);
 
-    if (isJOLive) {
+    const bufferEnabled = await checkToggleEnabled('judgment-buffer');
+    if (isJOLive && bufferEnabled) {
+      state = 'JUDGMENT_REQUESTED';
+    } else if (isJOLive) {
       state = 'All_FINAL_ORDERS_ISSUED';
     } else {
       state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
@@ -1823,6 +1826,9 @@ module.exports = {
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId, user);
+    if (isJOLive && bufferEnabled) {
+      await issueBufferedJudgment(caseId);
+    }
   },
 
   markJudgmentPaid: async (user) => {
@@ -1850,6 +1856,12 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload);
     await waitForFinishedBusinessProcess(caseId, user);
+    if (isJOLive && await checkToggleEnabled('judgment-buffer')) {
+      const details = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+      if (details.state === 'JUDGMENT_REQUESTED') {
+        await issueBufferedJudgment(caseId);
+      }
+    }
   },
 
   performCitizenDefendantResponse: async (user, caseId) => {
@@ -2161,6 +2173,33 @@ module.exports = {
 };
 
 // Functions
+const issueBufferedJudgment = async (caseId) => {
+  const target = new Date(Date.now() - 144 * 60 * 60 * 1000);
+  const p = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false}).formatToParts(target).reduce((acc, part) => (acc[part.type] = part.value, acc), {});
+  const hour = p.hour === '24' ? '00' : p.hour;
+  const backdated = `${p.year}-${p.month}-${p.day}T${hour}:${p.minute}:${p.second}`;
+  await testingSupport.updateCaseData(caseId, {joDJCreatedDate: backdated});
+  await apiRequest.triggerScheduler(config.applicantSolicitorUser, 'JudgementBuffer');
+
+  let lastState;
+  for (let attempt = 1; attempt <= 60; attempt++) {
+    const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+    lastState = response.state;
+    const activeJudgment = response.case_data.activeJudgment;
+    const businessProcess = response.case_data.businessProcess;
+    console.log(`Judgment buffer poll ${attempt}/60 for case ${caseId}: state=${lastState}, activeJudgment=${activeJudgment?.state}, businessProcess=${businessProcess?.status}`);
+    if (lastState === 'All_FINAL_ORDERS_ISSUED' && activeJudgment?.state === 'ISSUED'
+      && (!businessProcess || !businessProcess.status || businessProcess.status === 'FINISHED')) {
+      return;
+    }
+    if (attempt % 6 === 0) {
+      await apiRequest.triggerScheduler(config.applicantSolicitorUser, 'JudgementBuffer');
+    }
+    await new Promise(resolve => setTimeout(resolve, 5000));
+  }
+  assert.fail(`Buffered judgment was not issued for case ${caseId}; last state seen: ${lastState}`);
+};
+
 const validateEventPages = async (data, solicitor) => {
   return await validateEventPagesWithCheck(data, true, solicitor);
 };
