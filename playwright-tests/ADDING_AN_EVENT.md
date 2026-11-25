@@ -88,6 +88,16 @@ From it, note:
 3. **The states**: where in the journey it can go, and whether it changes the state.
 4. **The pages and fields**: each page's ID (the API class needs it) and each field's element ID and allowed values (the UI class needs them). The parts of a complex field are listed under it, with their own element IDs.
 5. **Whether XUI offers it at all.** "NOT IN XUI" means the definition hides it from Next step for everyone, so it can only be done through the API, and it can't be added as an event file. "Next step only offers it when" is a condition on the claim: put the event somewhere the condition holds.
+6. **Whether the specified and unspecified journeys share it.** Some events are separate for each journey: the specified one usually ends in `_SPEC`, such as `CREATE_CLAIM` ("Create claim - Unspecified") and `CREATE_CLAIM_SPEC` ("Create claim - Specified"), so run `yarn event:info` for each. Where one event serves both, its pages are listed for both: a page only one journey sees has a "Shown when" condition on `CaseAccessCategory`, `UNSPEC_CLAIM` for unspecified and `SPEC_CLAIM` for specified, as in `CASE_PROCEEDS_IN_CASEMAN`:
+
+   ```
+     1. CaseProceedsInCaseman
+        Shown when: CaseAccessCategory="UNSPEC_CLAIM"
+     2. CaseProceedsInCasemanLR
+        Shown when: CaseAccessCategory="SPEC_CLAIM"
+   ```
+
+   Pages can also differ through a field civil-service fills in differently for each journey (such as `setSmallClaimsFlag` in `CREATE_SDO`). `yarn event:info` shows those conditions but not which journey they fit, so read the condition or try the event by hand in each journey.
 
 Then:
 
@@ -359,6 +369,7 @@ ENV=aat WORKERS=2 CHANGE_SOLICITOR_EMAIL=Yes STOP_AFTER_TEST=CHANGE_SOLICITOR_EM
 
 An event that isn't on AAT yet, because it is added by your PR, only exists on that PR's preview until the PR is merged and deployed. Run it there instead of on AAT:
 
+- `yarn event:info <EVENT_ID>` still works for it (section 2). It reads the CCD definition in your checkout (`ccd-definition/civil`, the claim's case type), not AAT, so it shows the event as your branch defines it. The environment it is run with is only used to list the journeys' steps, so any will do.
 - The event is in your civil-ccd-definition PR, and its callback handler is usually in a civil-service PR. Add the label `civilServicePr:<civil-service PR number>` to the civil-ccd-definition PR, so its preview runs that civil-service PR's image, and let the PR build deploy the preview.
 - Run the same commands with `ENV=preview PREVIEW_SERVICE=ccd PR_NUMBER=<civil-ccd-definition PR number>` in place of `ENV=aat`:
 
