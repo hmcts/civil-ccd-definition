@@ -349,7 +349,8 @@
         "UserRoles": [
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -363,7 +364,8 @@
         "UserRoles": [
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
