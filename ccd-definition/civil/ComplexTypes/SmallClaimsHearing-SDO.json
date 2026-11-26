@@ -11,6 +11,7 @@
     "ID": "SmallClaimsHearing",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -47,6 +48,7 @@
     "ID": "SmallClaimsHearing",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

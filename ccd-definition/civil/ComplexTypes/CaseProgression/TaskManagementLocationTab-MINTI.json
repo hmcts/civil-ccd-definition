@@ -4,6 +4,7 @@
     "ListElementCode": "caseManagementLocation",
     "ElementLabel": "Case management location",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -12,6 +13,7 @@
     "ListElementCode": "cmcListingLocation",
     "ElementLabel": "Case management conference listings",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -20,6 +22,7 @@
     "ListElementCode": "ccmcListingLocation",
     "ElementLabel": "Cost and case management conference listings",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -28,6 +31,7 @@
     "ListElementCode": "ptrListingLocation",
     "ElementLabel": "Pre-trial review listings",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -36,6 +40,7 @@
     "ListElementCode": "trialListingLocation",
     "ElementLabel": "Trial listings",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "Y"
   }

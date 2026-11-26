@@ -19,6 +19,7 @@
     "ID": "DisposalHearingJudgementDeductionValue",
     "ListElementCode": "value",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

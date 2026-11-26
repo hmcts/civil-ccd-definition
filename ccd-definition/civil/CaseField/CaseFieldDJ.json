@@ -60,6 +60,7 @@
     "ID": "bothDefendants",
     "Label": "Both Defendants",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -109,6 +110,7 @@
     "ID": "detailsOfDirection",
     "Label": "Draft order",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

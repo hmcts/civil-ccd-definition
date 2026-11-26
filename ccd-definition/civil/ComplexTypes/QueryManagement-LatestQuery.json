@@ -3,6 +3,7 @@
     "ID": "LatestQuery",
     "ListElementCode": "queryId",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -422,6 +422,7 @@
     "ID": "disposalHearingHearingNotes",
     "Label": "This is only seen by the listing officer",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -1460,6 +1461,7 @@
     "ID": "smallClaimsPenalNotice",
     "Label": "Note: Paragraph numbers and the parties' name to which the penal notice applies must be entered in the box below.",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -1485,6 +1487,7 @@
     "ID": "fastTrackPenalNotice",
     "Label": "Note: Paragraph numbers and the parties' name to which the penal notice applies must be entered in the box below.",
     "FieldType": "TextArea",
+    "Max": 2000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

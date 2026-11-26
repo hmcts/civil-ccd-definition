@@ -119,6 +119,7 @@
     "ID": "assistedOrderOrderedThatText",
     "Label": " ",
     "FieldType": "TextArea",
+    "Max": 4000,
     "SecurityClassification": "Public"
   },
   {

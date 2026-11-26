@@ -3,6 +3,7 @@
     "ID": "DisclosureOfNonElectronicDocumentsLRspec",
     "ListElementCode": "bespokeDirections",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "What directions are proposed for disclosure?",
     "SecurityClassification": "Public",
     "Searchable": "N"

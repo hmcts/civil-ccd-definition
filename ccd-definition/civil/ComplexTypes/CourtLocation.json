@@ -3,6 +3,7 @@
     "ID": "CourtLocation",
     "ListElementCode": "applicantPreferredCourt",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": "Court location",
     "SecurityClassification": "Public",
     "Searchable": "N",
@@ -30,6 +31,7 @@
     "ListElementCode": "reasonForHearingAtSpecificCourt",
     "ElementLabel": "Briefly explain your reasons",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

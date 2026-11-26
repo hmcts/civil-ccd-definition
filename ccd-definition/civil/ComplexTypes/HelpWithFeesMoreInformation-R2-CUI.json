@@ -13,6 +13,7 @@
     "ListElementCode": "hwFMoreInfoDetails",
     "ElementLabel": "Details",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

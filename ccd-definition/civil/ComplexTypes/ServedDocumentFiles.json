@@ -22,6 +22,7 @@
     "ID": "ServedDocumentFiles",
     "ListElementCode": "particularsOfClaimText",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": "Particulars of claim",
     "SecurityClassification": "Public",
     "Searchable": "N"

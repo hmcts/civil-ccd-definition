@@ -28,6 +28,7 @@
     "ListElementCode": "serviceRequestReference",
     "ElementLabel": "Service Request Reference",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -44,6 +45,7 @@
     "ListElementCode": "pbaReference",
     "ElementLabel": "PBA Reference",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

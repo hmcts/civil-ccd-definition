@@ -3,6 +3,7 @@
     "ID": "FastTrackHearingNotes",
     "ListElementCode": "input",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": "This is only seen by the listing officer",
     "SecurityClassification": "Public",
     "Searchable": "N"

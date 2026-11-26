@@ -4,6 +4,7 @@
     "ListElementCode": "obligationReason",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -12,6 +13,7 @@
     "ListElementCode": "obligationReasonDisplayValue",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -20,6 +22,7 @@
     "ListElementCode": "currentDate",
     "ElementLabel": " ",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

@@ -4,6 +4,7 @@
     "ID": "nextState",
     "Label": "Enter next state",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

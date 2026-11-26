@@ -12,6 +12,7 @@
     "ListElementCode": "jobTitle",
     "ElementLabel": "Job title",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -44,6 +45,7 @@
     "ID": "SelfEmployment",
     "ListElementCode": "reason",
     "FieldType": "TextArea",
+    "Max": 1000,
     "ElementLabel": "Reason",
     "FieldShowCondition": "isBehindOnTaxPayment = \"Yes\"",
     "SecurityClassification": "Public",

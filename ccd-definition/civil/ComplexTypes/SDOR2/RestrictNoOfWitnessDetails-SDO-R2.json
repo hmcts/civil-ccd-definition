@@ -21,6 +21,7 @@
     "ID": "SdoR2RestrictNoOfWitnessDetails",
     "ListElementCode": "partyIsCountedAsWitnessTxt",
     "FieldType": "Text",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N",
     "ElementLabel": " "

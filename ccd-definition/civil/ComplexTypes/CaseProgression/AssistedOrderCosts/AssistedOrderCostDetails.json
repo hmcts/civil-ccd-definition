@@ -21,6 +21,7 @@
     "ElementLabel": " ",
     "HintText": "For example, to whom/when the cost are reserved (eg 'to the trial judge')",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -248,6 +249,7 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

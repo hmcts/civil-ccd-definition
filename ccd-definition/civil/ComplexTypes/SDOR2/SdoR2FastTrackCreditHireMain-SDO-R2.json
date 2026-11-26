@@ -11,6 +11,7 @@
     "ID": "SdoR2FastTrackCreditHire",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -45,6 +46,7 @@
     "ID": "SdoR2FastTrackCreditHire",
     "ListElementCode": "input5",
     "FieldType": "TextArea",
+    "Max": 2000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -53,6 +55,7 @@
     "ID": "SdoR2FastTrackCreditHire",
     "ListElementCode": "input6",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -69,6 +72,7 @@
     "ID": "SdoR2FastTrackCreditHire",
     "ListElementCode": "input7",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -85,6 +89,7 @@
     "ID": "SdoR2FastTrackCreditHire",
     "ListElementCode": "input8",
     "FieldType": "Text",
+    "Max": 1000,
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

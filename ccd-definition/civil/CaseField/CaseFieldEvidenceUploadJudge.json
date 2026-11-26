@@ -40,6 +40,7 @@
     "ID": "caseNoteTA",
     "Label": "Write a note about this case",
     "FieldType": "TextArea",
+    "Max": 1000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
