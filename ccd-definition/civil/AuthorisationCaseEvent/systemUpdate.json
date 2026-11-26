@@ -448,5 +448,11 @@
     "CaseEventID": "CANCEL_DOCUMENT_TRANSLATION_TASK",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CANCEL_RECONSIDERATION_HEARING_TASK",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]
