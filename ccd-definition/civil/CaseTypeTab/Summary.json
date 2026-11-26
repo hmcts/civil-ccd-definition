@@ -118,7 +118,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "transferCaseDetails",
-    "TabFieldDisplayOrder": 19
+    "TabFieldDisplayOrder": 22
   },
   {
     "CaseTypeID": "CIVIL",
@@ -126,7 +126,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForTransfer",
-    "TabFieldDisplayOrder": 20
+    "TabFieldDisplayOrder": 23
   },
   {
     "CaseTypeID": "CIVIL",
@@ -188,7 +188,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "breathingSpaceDefendant1Details",
-    "TabFieldDisplayOrder": 21,
+    "TabFieldDisplayOrder": 24,
     "FieldShowCondition": "breathingSpaceDefendant1Details=\"*\""
   },
   {
@@ -197,7 +197,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "breathingSpaceDefendant2Details",
-    "TabFieldDisplayOrder": 22,
+    "TabFieldDisplayOrder": 25,
     "FieldShowCondition": "breathingSpaceDefendant2Details=\"*\""
   }
 ]

@@ -5,7 +5,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForReconsiderationApplicant",
-    "TabFieldDisplayOrder": 16
+    "TabFieldDisplayOrder": 19
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,7 +13,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForReconsiderationRespondent1",
-    "TabFieldDisplayOrder": 17
+    "TabFieldDisplayOrder": 20
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,6 +21,6 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForReconsiderationRespondent2",
-    "TabFieldDisplayOrder": 18
+    "TabFieldDisplayOrder": 21
   }
 ]
