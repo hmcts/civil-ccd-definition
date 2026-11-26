@@ -49,11 +49,11 @@ If Renovate updates or rebases a PR while Jenkins is unavailable, the required c
 | Package | Hold | In use | Reason |
 |---|---|---|---|
 | `typescript` | below 6.1.0 | 6.0.3 | typescript-eslint 8 only supports TypeScript below 6.1.0. Remove once typescript-eslint supports TypeScript 7 |
-| `mocha` | below 12 | 11.8.0 | not recorded |
-| `allure-playwright` | disabled | 2.15.1 | not recorded; the Allure reporting group would otherwise update it |
-| `lint-staged` | disabled | ^15.2.10 | not recorded |
+| `mocha` | below 12 | 11.8.0 | Mocha 12 broke the full functional tests (#6981). `mocha-multi` loads reporters with `require('mocha/lib/reporters/base')` from the top-level mocha, and mocha 12 is ESM-only. CodeceptJS 4 uses its own nested mocha 12 |
+| `allure-playwright` | disabled | 2.15.1 | Version 3 drops the `outputFolder` reporter option for `resultsDir`, which `playwright.config.ts` and the `allure generate` scripts rely on (#6484). Re-enable after moving them to `resultsDir`; otherwise the Allure reporting group would update it |
+| `lint-staged` | disabled | ^15.2.10 | ^17 was rolled back in #6514 ("Fix Pipelines") without a recorded reason. lint-staged 17 needs Node 22.22.1 or later and is ESM-only. Check the pre-commit hook and pipelines on a newer version before re-enabling |
 
-The last three rules have no `description`. Add the reason to each, or remove the hold if it no longer applies. When a Renovate PR fails the build on every rebase, find the cause and add a hold with its reason rather than leaving the PR open: with `rebaseWhen: behind-base-branch`, a PR that can never pass is rebuilt on every merge to `master`.
+Each rule gives its reason in its `description`. When a Renovate PR fails the build on every rebase, find the cause and add a hold with its reason rather than leaving the PR open: with `rebaseWhen: behind-base-branch`, a PR that can never pass is rebuilt on every merge to `master`.
 
 ## Stalled-queue alert
 
