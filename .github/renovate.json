@@ -58,14 +58,17 @@
       "automergeType": "pr"
     },
     {
+      "description": "Held at 2.x (#6484). Version 3 drops the outputFolder reporter option (it uses resultsDir), and playwright.config.ts and the allure generate scripts rely on outputFolder. Re-enable after moving the config and scripts to resultsDir",
       "matchPackageNames": ["allure-playwright"],
       "enabled": false
     },
     {
+      "description": "Held at ^15 after ^17 was rolled back in DTSCCI-000 Fix Pipelines (#6514); the reason was not recorded. lint-staged 17 needs Node >=22.22.1 and is ESM-only. Check the pre-commit hook and pipelines on a newer version before re-enabling",
       "matchPackageNames": ["lint-staged"],
       "enabled": false
     },
     {
+      "description": "Held below 12 after mocha 12 broke the full functional tests (#6981). mocha-multi loads reporters with require('mocha/lib/reporters/base') from the top-level mocha, and mocha 12 is ESM-only. CodeceptJS 4 uses its own nested mocha 12",
       "matchPackageNames": ["mocha"],
       "allowedVersions": "<12"
     },
