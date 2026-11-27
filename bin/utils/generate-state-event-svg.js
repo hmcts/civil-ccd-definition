@@ -45,15 +45,37 @@ const TOTAL_COL = COL_W + COL_GAP;
 // State ordering matching the PDF
 const MAIN_FLOW = [
   'PENDING_CASE_ISSUED','CASE_ISSUED','AWAITING_CASE_DETAILS_NOTIFICATION',
-  'AWAITING_RESPONDENT_ACKNOWLEDGEMENT','AWAITING_APPLICANT_INTENTION',
+  'AWAITING_RESPONDENT_ACKNOWLEDGEMENT','JUDGMENT_REQUESTED','AWAITING_APPLICANT_INTENTION',
   'IN_MEDIATION','JUDICIAL_REFERRAL','CASE_PROGRESSION',
   'HEARING_READINESS','PREPARE_FOR_HEARING_CONDUCT_HEARING',
   'DECISION_OUTCOME','All_FINAL_ORDERS_ISSUED'
 ];
+// Main-flow states that branch off the spine rather than sit on it, mapped to the
+// state they naturally move on to. The spine arrow bridges over them.
+const MAIN_BRANCHES = {
+  JUDGMENT_REQUESTED: 'All_FINAL_ORDERS_ISSUED', // judgment buffer: DJ requested, then judgment entered
+};
+const SPINE = MAIN_FLOW.filter(s => !(s in MAIN_BRANCHES));
+function naturalNextState(stateId) {
+  if (stateId in MAIN_BRANCHES) return MAIN_BRANCHES[stateId];
+  const i = SPINE.indexOf(stateId);
+  return i >= 0 && i < SPINE.length - 1 ? SPINE[i + 1] : null;
+}
 const EXCEPTION_FLOW = [
   'CASE_DISMISSED','PROCEEDS_IN_HERITAGE_SYSTEM',
   'CASE_SETTLED','CASE_STAYED','CLOSED','CASE_DISCONTINUED'
 ];
+// Any state in the model that is not placed above goes into the exception row,
+// so a newly added CCD state always appears on the diagram.
+{
+  const placed = new Set([...MAIN_FLOW, ...EXCEPTION_FLOW]);
+  model.states.forEach(s => {
+    if (!placed.has(s.id)) {
+      console.warn(`State ${s.id} has no layout position; adding it to the exception row`);
+      EXCEPTION_FLOW.push(s.id);
+    }
+  });
+}
 
 const HEADER_BG = '#1f4e79', HEADER_TEXT = '#ffc000';
 const CAMUNDA_BG = '#d9d9d9', USER_BG = '#ffd966';
@@ -256,9 +278,7 @@ function renderColumn(stateId, x, y) {
   const isWildcard = ev => ev.preStates.includes('*');
 
   // Events transitioning to the next natural state sort to the top
-  const nextStateIdx = MAIN_FLOW.indexOf(stateId);
-  const nextState = nextStateIdx >= 0 && nextStateIdx < MAIN_FLOW.length - 1
-    ? MAIN_FLOW[nextStateIdx + 1] : null;
+  const nextState = naturalNextState(stateId);
 
   function transitionsToNext(ev) {
     if (!nextState) return false;
@@ -428,7 +448,7 @@ function renderColumn(stateId, x, y) {
 // Render
 let mainSvg = '', maxMainH = 0;
 const stateX = {}, stateY = {}, stateH = {};
-const titleH = 30;
+const titleH = 56; // room above the headers for the branch arrows
 
 // Case Creation column (before the main flow)
 const creationEvents = model.events.filter(e => CASE_CREATION_IDS.has(e.id)).sort((a, b) => a.name.localeCompare(b.name));
@@ -479,12 +499,39 @@ const ccArrowX1 = ccX + COL_W, ccArrowY1 = ccY + HDR_H / 2;
 const ccArrowX2 = stateX['PENDING_CASE_ISSUED'], ccArrowY2 = stateY['PENDING_CASE_ISSUED'] + HDR_H / 2;
 spineSvg += `<line x1="${ccArrowX1}" y1="${ccArrowY1}" x2="${ccArrowX2}" y2="${ccArrowY2}" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
 
-// Happy-path spine arrows (adjacent main-flow states only)
-for (let i = 0; i < MAIN_FLOW.length - 1; i++) {
-  const from = MAIN_FLOW[i], to = MAIN_FLOW[i + 1];
+// Happy-path spine arrows. Adjacent states get a straight arrow; where a branch
+// state sits between two spine states, the arrow bridges over the branch column.
+for (let i = 0; i < SPINE.length - 1; i++) {
+  const from = SPINE[i], to = SPINE[i + 1];
   const x1 = stateX[from] + COL_W, y1 = stateY[from] + HDR_H / 2;
   const x2 = stateX[to], y2 = stateY[to] + HDR_H / 2;
-  spineSvg += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
+  if (MAIN_FLOW.indexOf(to) - MAIN_FLOW.indexOf(from) === 1) {
+    spineSvg += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
+  } else {
+    const fx = stateX[from] + COL_W / 2, tx = stateX[to] + COL_W / 2, top = stateY[from], arcY = top - 10;
+    spineSvg += `<path d="M ${fx} ${top} L ${fx} ${arcY} L ${tx} ${arcY} L ${tx} ${top}" fill="none" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
+  }
+}
+// Arrow into each branch state from the main-flow state before it
+for (const branch of Object.keys(MAIN_BRANCHES)) {
+  const prev = MAIN_FLOW[MAIN_FLOW.indexOf(branch) - 1];
+  if (!prev) continue;
+  const x1 = stateX[prev] + COL_W, y1 = stateY[prev] + HDR_H / 2;
+  spineSvg += `<line x1="${x1}" y1="${y1}" x2="${stateX[branch]}" y2="${stateY[branch] + HDR_H / 2}" stroke="#4472c4" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)" opacity="0.35"/>`;
+}
+// Arrow out of each branch state to the main-flow state it moves on to, routed
+// above the headers and labelled with the events that make the move
+for (const [branch, target] of Object.entries(MAIN_BRANCHES)) {
+  if (stateX[target] === undefined) continue;
+  const movers = [...new Set(model.events
+    .filter(e => e.preStates.includes(branch)
+      && (e.postState === target || (e.resolvedPostStates || []).includes(target)))
+    .map(e => e.id))];
+  if (movers.length === 0) continue;
+  const fx = stateX[branch] + COL_W / 2, tx = stateX[target] + COL_W / 2;
+  const top = stateY[branch], arcY = top - 24;
+  spineSvg += `<path d="M ${fx} ${top} L ${fx} ${arcY} L ${tx} ${arcY} L ${tx} ${top}" fill="none" stroke="#137333" stroke-width="2" marker-end="url(#arrowGreen)" opacity="0.6"/>`;
+  spineSvg += `<text x="${fx + 6}" y="${arcY - 4}" font-size="7.5" fill="#137333" font-family="Arial">${esc(branch)} \u2192 ${esc(target)} via ${esc(movers.join(', '))}</text>`;
 }
 
 // Global Events column (after the main flow)
@@ -707,6 +754,7 @@ const svgH = legY + 115;
 const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgW} ${svgH}" width="${svgW}" height="${svgH}">
 <defs>
+<marker id="arrowGreen" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#137333" opacity="0.7"/></marker>
 <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4472c4" opacity="0.4"/></marker>
 <marker id="arrowRed-0" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c44747"/></marker>
 <marker id="arrowRed-1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2e7d32"/></marker>
