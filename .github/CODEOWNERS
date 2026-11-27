@@ -34,3 +34,5 @@ charts/**/Chart.yaml
 Dockerfile
 .github/workflows/*.yaml
 .github/workflows/*.yml
+Jenkinsfile_CNP
+Jenkinsfile_nightly
