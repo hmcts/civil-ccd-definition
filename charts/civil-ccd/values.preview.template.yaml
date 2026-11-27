@@ -9,6 +9,10 @@ civil-service:
     devcpuLimits: 700m
     devmemoryRequests: 2048Mi
     devmemoryLimits: 2048Mi
+    startupDelay: 30
+    startupTimeout: 15
+    startupPeriod: 20
+    startupFailureThreshold: 25
     keyVaults:
       civil:
         resourceGroup: civil
