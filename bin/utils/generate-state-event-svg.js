@@ -45,13 +45,23 @@ const TOTAL_COL = COL_W + COL_GAP;
 // State ordering matching the PDF
 const MAIN_FLOW = [
   'PENDING_CASE_ISSUED','CASE_ISSUED','AWAITING_CASE_DETAILS_NOTIFICATION',
-  'AWAITING_RESPONDENT_ACKNOWLEDGEMENT','AWAITING_APPLICANT_INTENTION',
+  'AWAITING_RESPONDENT_ACKNOWLEDGEMENT','JUDGMENT_REQUESTED','AWAITING_APPLICANT_INTENTION',
   'IN_MEDIATION','JUDICIAL_REFERRAL','CASE_PROGRESSION',
   'HEARING_READINESS','PREPARE_FOR_HEARING_CONDUCT_HEARING',
   'DECISION_OUTCOME','All_FINAL_ORDERS_ISSUED'
 ];
+// Main-flow states that branch off the spine rather than sit on it, mapped to the
+// state they naturally move on to. The spine arrow bridges over them.
+const MAIN_BRANCHES = {
+  JUDGMENT_REQUESTED: 'All_FINAL_ORDERS_ISSUED', // judgment buffer: DJ requested, then judgment entered
+};
+const SPINE = MAIN_FLOW.filter(s => !(s in MAIN_BRANCHES));
+function naturalNextState(stateId) {
+  if (stateId in MAIN_BRANCHES) return MAIN_BRANCHES[stateId];
+  const i = SPINE.indexOf(stateId);
+  return i >= 0 && i < SPINE.length - 1 ? SPINE[i + 1] : null;
+}
 const EXCEPTION_FLOW = [
-  'JUDGMENT_REQUESTED',
   'CASE_DISMISSED','PROCEEDS_IN_HERITAGE_SYSTEM',
   'CASE_SETTLED','CASE_STAYED','CLOSED','CASE_DISCONTINUED'
 ];
@@ -268,9 +278,7 @@ function renderColumn(stateId, x, y) {
   const isWildcard = ev => ev.preStates.includes('*');
 
   // Events transitioning to the next natural state sort to the top
-  const nextStateIdx = MAIN_FLOW.indexOf(stateId);
-  const nextState = nextStateIdx >= 0 && nextStateIdx < MAIN_FLOW.length - 1
-    ? MAIN_FLOW[nextStateIdx + 1] : null;
+  const nextState = naturalNextState(stateId);
 
   function transitionsToNext(ev) {
     if (!nextState) return false;
@@ -491,12 +499,25 @@ const ccArrowX1 = ccX + COL_W, ccArrowY1 = ccY + HDR_H / 2;
 const ccArrowX2 = stateX['PENDING_CASE_ISSUED'], ccArrowY2 = stateY['PENDING_CASE_ISSUED'] + HDR_H / 2;
 spineSvg += `<line x1="${ccArrowX1}" y1="${ccArrowY1}" x2="${ccArrowX2}" y2="${ccArrowY2}" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
 
-// Happy-path spine arrows (adjacent main-flow states only)
-for (let i = 0; i < MAIN_FLOW.length - 1; i++) {
-  const from = MAIN_FLOW[i], to = MAIN_FLOW[i + 1];
+// Happy-path spine arrows. Adjacent states get a straight arrow; where a branch
+// state sits between two spine states, the arrow bridges over the branch column.
+for (let i = 0; i < SPINE.length - 1; i++) {
+  const from = SPINE[i], to = SPINE[i + 1];
   const x1 = stateX[from] + COL_W, y1 = stateY[from] + HDR_H / 2;
   const x2 = stateX[to], y2 = stateY[to] + HDR_H / 2;
-  spineSvg += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
+  if (MAIN_FLOW.indexOf(to) - MAIN_FLOW.indexOf(from) === 1) {
+    spineSvg += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
+  } else {
+    const fx = stateX[from] + COL_W / 2, tx = stateX[to] + COL_W / 2, top = stateY[from], arcY = top - 10;
+    spineSvg += `<path d="M ${fx} ${top} L ${fx} ${arcY} L ${tx} ${arcY} L ${tx} ${top}" fill="none" stroke="#4472c4" stroke-width="2" marker-end="url(#arrow)" opacity="0.35"/>`;
+  }
+}
+// Arrow into each branch state from the main-flow state before it
+for (const branch of Object.keys(MAIN_BRANCHES)) {
+  const prev = MAIN_FLOW[MAIN_FLOW.indexOf(branch) - 1];
+  if (!prev) continue;
+  const x1 = stateX[prev] + COL_W, y1 = stateY[prev] + HDR_H / 2;
+  spineSvg += `<line x1="${x1}" y1="${y1}" x2="${stateX[branch]}" y2="${stateY[branch] + HDR_H / 2}" stroke="#4472c4" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)" opacity="0.35"/>`;
 }
 
 // Global Events column (after the main flow)
