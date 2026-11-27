@@ -6,7 +6,7 @@ civil-service:
     imagePullPolicy: Always
     image: hmctsprod.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
     devcpuRequests: 50m
-    devcpuLimits: 700m
+    devcpuLimits: 2000m
     devmemoryRequests: 2048Mi
     devmemoryLimits: 2048Mi
     keyVaults:
@@ -143,7 +143,7 @@ aac-manage-case-assignment:
   java:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
     devcpuRequests: 50m
-    devcpuLimits: 200m
+    devcpuLimits: 2500m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
 
@@ -152,7 +152,7 @@ xui-webapp:
     ingressHost: xui-${SERVICE_FQDN}
     image: hmctsprod.azurecr.io/xui/webapp:latest
     devcpuRequests: 50m
-    devcpuLimits: 200m
+    devcpuLimits: 1000m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     environment:
@@ -196,7 +196,7 @@ ccd:
         ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       devcpuRequests: 50m
-      devcpuLimits: 700m
+      devcpuLimits: 1000m
       devmemoryRequests: 1024Mi
       devmemoryLimits: 2048Mi
       secrets:
@@ -256,7 +256,7 @@ camunda-bpm:
   enabled: true
   java:
     devcpuRequests: 50m
-    devcpuLimits: 700m
+    devcpuLimits: 1000m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     disableKeyVaults: true
@@ -281,7 +281,7 @@ em-ccdorc:
     releaseNameOverride: ${SERVICE_NAME}-em-ccdorc
     ingressHost: em-ccdorc-${SERVICE_FQDN}
     devcpuRequests: 50m
-    devcpuLimits: 200m
+    devcpuLimits: 2500m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     environment:
@@ -310,7 +310,7 @@ em-stitching:
     image: hmctsprod.azurecr.io/em/stitching:latest
     ingressHost: em-stitching-${SERVICE_FQDN}
     devcpuRequests: 50m
-    devcpuLimits: 500m
+    devcpuLimits: 2500m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     environment:
@@ -346,7 +346,7 @@ ccd-case-document-am-api:
     image: hmctsprod.azurecr.io/ccd/case-document-am-api:latest
     ingressHost: ccd-case-document-am-api-${SERVICE_FQDN}
     devcpuRequests: 50m
-    devcpuLimits: 200m
+    devcpuLimits: 2500m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     environment:
@@ -364,7 +364,7 @@ ccd-message-publisher:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
     devcpuRequests: 50m
-    devcpuLimits: 200m
+    devcpuLimits: 1000m
     devmemoryRequests: 512Mi
     devmemoryLimits: 1024Mi
     livenessDelay: 0
