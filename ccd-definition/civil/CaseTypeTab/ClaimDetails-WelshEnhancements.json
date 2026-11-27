@@ -22,7 +22,7 @@
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "documentTranslationInProgressLabel",
-    "FieldShowCondition": "preTranslationDocuments = \"*\" OR bilingualHint=\"Yes\"",
+    "FieldShowCondition": "(preTranslationDocuments = \"*\" OR bilingualHint=\"Yes\") AND [STATE]!=\"UNISSUED_CLAIM_CANCELLED\"",
     "TabFieldDisplayOrder": 0
   }
 ]
