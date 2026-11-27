@@ -51,9 +51,21 @@ const MAIN_FLOW = [
   'DECISION_OUTCOME','All_FINAL_ORDERS_ISSUED'
 ];
 const EXCEPTION_FLOW = [
+  'JUDGMENT_REQUESTED',
   'CASE_DISMISSED','PROCEEDS_IN_HERITAGE_SYSTEM',
   'CASE_SETTLED','CASE_STAYED','CLOSED','CASE_DISCONTINUED'
 ];
+// Any state in the model that is not placed above goes into the exception row,
+// so a newly added CCD state always appears on the diagram.
+{
+  const placed = new Set([...MAIN_FLOW, ...EXCEPTION_FLOW]);
+  model.states.forEach(s => {
+    if (!placed.has(s.id)) {
+      console.warn(`State ${s.id} has no layout position; adding it to the exception row`);
+      EXCEPTION_FLOW.push(s.id);
+    }
+  });
+}
 
 const HEADER_BG = '#1f4e79', HEADER_TEXT = '#ffc000';
 const CAMUNDA_BG = '#d9d9d9', USER_BG = '#ffd966';

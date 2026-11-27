@@ -414,6 +414,8 @@ function main() {
   if (!hasBpmn) console.warn(`Warning: BPMN dir not found at ${bpmnDir}, skipping chain resolution`);
 
   const model = JSON.parse(fs.readFileSync(modelPath, 'utf8'));
+  // Accept every state the CCD definition declares, so new states are resolved without code changes
+  (model.states || []).forEach(st => VALID_STATES.add(st.id));
   console.log(`Loaded model: ${model.events.length} events`);
 
   const handlerDir = path.join(serviceRoot, 'src/main/java/uk/gov/hmcts/reform/civil/handler');
