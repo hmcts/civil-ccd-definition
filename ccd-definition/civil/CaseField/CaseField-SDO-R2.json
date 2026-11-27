@@ -41,6 +41,38 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "reconsiderationRequest",
+    "Label": "Reason for reconsideration",
+    "FieldType": "ReasonForReconsideration",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reconsiderationResponse",
+    "Label": "Response to reconsideration",
+    "FieldType": "ResponseToReconsideration",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reconsiderationRequestingParty",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isReconsiderationRoleAgnostic",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "casePartyRequestForReconsideration",
     "Label": " ",
     "FieldType": "Text",

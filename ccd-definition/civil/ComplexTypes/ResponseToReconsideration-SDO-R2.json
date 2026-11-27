@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "ResponseToReconsideration",
+    "ListElementCode": "responder",
+    "FieldType": "Text",
+    "ElementLabel": "Response from",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ResponseToReconsideration",
+    "ListElementCode": "comments",
+    "ElementLabel": "Comments",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
