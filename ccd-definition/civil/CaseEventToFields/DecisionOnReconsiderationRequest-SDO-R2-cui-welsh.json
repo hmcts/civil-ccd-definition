@@ -37,7 +37,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "isReconsiderationRoleAgnostic = \"Yes\" AND reconsiderationResponse.responder = \"*\""
+    "FieldShowCondition": "isReconsiderationRoleAgnostic = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
