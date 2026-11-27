@@ -7,6 +7,24 @@
   },
   {
     "ID": "DocumentType",
+    "ListElementCode": "SDO_BILINGUAL_DOCUMENT",
+    "ListElement": "Bilingual Standard Direction Order",
+    "DisplayOrder": 40
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "FINAL_ORDER_BILINGUAL_DOCUMENT",
+    "ListElement": "Bilingual Judge Order",
+    "DisplayOrder": 41
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_NOTICE_BILINGUAL_DOCUMENT",
+    "ListElement": "Bilingual Hearing Notice",
+    "DisplayOrder": 42
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": "INTERLOC_JUDGMENT_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Interlocutory Judgment",
     "DisplayOrder": 29
