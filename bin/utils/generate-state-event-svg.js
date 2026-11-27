@@ -448,7 +448,7 @@ function renderColumn(stateId, x, y) {
 // Render
 let mainSvg = '', maxMainH = 0;
 const stateX = {}, stateY = {}, stateH = {};
-const titleH = 30;
+const titleH = 56; // room above the headers for the branch arrows
 
 // Case Creation column (before the main flow)
 const creationEvents = model.events.filter(e => CASE_CREATION_IDS.has(e.id)).sort((a, b) => a.name.localeCompare(b.name));
@@ -518,6 +518,20 @@ for (const branch of Object.keys(MAIN_BRANCHES)) {
   if (!prev) continue;
   const x1 = stateX[prev] + COL_W, y1 = stateY[prev] + HDR_H / 2;
   spineSvg += `<line x1="${x1}" y1="${y1}" x2="${stateX[branch]}" y2="${stateY[branch] + HDR_H / 2}" stroke="#4472c4" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)" opacity="0.35"/>`;
+}
+// Arrow out of each branch state to the main-flow state it moves on to, routed
+// above the headers and labelled with the events that make the move
+for (const [branch, target] of Object.entries(MAIN_BRANCHES)) {
+  if (stateX[target] === undefined) continue;
+  const movers = [...new Set(model.events
+    .filter(e => e.preStates.includes(branch)
+      && (e.postState === target || (e.resolvedPostStates || []).includes(target)))
+    .map(e => e.id))];
+  if (movers.length === 0) continue;
+  const fx = stateX[branch] + COL_W / 2, tx = stateX[target] + COL_W / 2;
+  const top = stateY[branch], arcY = top - 24;
+  spineSvg += `<path d="M ${fx} ${top} L ${fx} ${arcY} L ${tx} ${arcY} L ${tx} ${top}" fill="none" stroke="#137333" stroke-width="2" marker-end="url(#arrowGreen)" opacity="0.6"/>`;
+  spineSvg += `<text x="${fx + 6}" y="${arcY - 4}" font-size="7.5" fill="#137333" font-family="Arial">${esc(branch)} \u2192 ${esc(target)} via ${esc(movers.join(', '))}</text>`;
 }
 
 // Global Events column (after the main flow)
@@ -740,6 +754,7 @@ const svgH = legY + 115;
 const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgW} ${svgH}" width="${svgW}" height="${svgH}">
 <defs>
+<marker id="arrowGreen" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#137333" opacity="0.7"/></marker>
 <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4472c4" opacity="0.4"/></marker>
 <marker id="arrowRed-0" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c44747"/></marker>
 <marker id="arrowRed-1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2e7d32"/></marker>
