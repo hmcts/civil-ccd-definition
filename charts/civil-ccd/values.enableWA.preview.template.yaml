@@ -83,6 +83,7 @@ wa:
   camunda-bpm:
     java:
       environment:
+        S2S_SECRET_CAMUNDA_BPM: ${S2S_SECRET_CAMUNDA_BPM}
         CAMUNDA_DB_USER_NAME: ${POSTGRES_USER}
         CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
         CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified"
