@@ -1,6 +1,30 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "reconsiderationRequest",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "reconsiderationResponse",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "reconsiderationRequestingParty",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isReconsiderationRoleAgnostic",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialOrderMadeWithoutHearingDJ",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -7856,6 +7880,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "casePartyRequestForReconsideration",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "casePartiesRequestingReconsideration",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },

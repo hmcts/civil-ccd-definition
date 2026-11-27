@@ -4,8 +4,27 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
+    "CaseFieldID": "reconsiderationRequest",
+    "FieldShowCondition": "isReconsiderationRoleAgnostic = \"Yes\"",
+    "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "reconsiderationResponse",
+    "FieldShowCondition": "isReconsiderationRoleAgnostic = \"Yes\" AND reconsiderationResponse.responder = \"*\"",
+    "TabFieldDisplayOrder": 20
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForReconsiderationApplicant",
-    "TabFieldDisplayOrder": 16
+    "FieldShowCondition": "isReconsiderationRoleAgnostic != \"Yes\"",
+    "TabFieldDisplayOrder": 21
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,7 +32,8 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForReconsiderationRespondent1",
-    "TabFieldDisplayOrder": 17
+    "FieldShowCondition": "isReconsiderationRoleAgnostic != \"Yes\"",
+    "TabFieldDisplayOrder": 22
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,6 +41,16 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForReconsiderationRespondent2",
-    "TabFieldDisplayOrder": 18
+    "FieldShowCondition": "isReconsiderationRoleAgnostic != \"Yes\"",
+    "TabFieldDisplayOrder": 23
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "isReconsiderationRoleAgnostic",
+    "FieldShowCondition": "claimType = \"DO_NOT_SHOW_IN_UI\"",
+    "TabFieldDisplayOrder": 24
   }
 ]

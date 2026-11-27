@@ -5,7 +5,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "settleReason",
-    "TabFieldDisplayOrder": 19
+    "TabFieldDisplayOrder": 29
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,7 +13,7 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "markPaidForAllClaimants",
-    "TabFieldDisplayOrder": 20
+    "TabFieldDisplayOrder": 30
   },
   {
     "CaseTypeID": "CIVIL",
@@ -22,7 +22,7 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "claimantWhoIsSettling",
     "FieldShowCondition": "markPaidForAllClaimants = \"No\"",
-    "TabFieldDisplayOrder": 21
+    "TabFieldDisplayOrder": 31
   },
   {
     "CaseTypeID": "CIVIL",
@@ -30,6 +30,6 @@
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "markPaidConsent",
-    "TabFieldDisplayOrder": 22
+    "TabFieldDisplayOrder": 32
   }
 ]
