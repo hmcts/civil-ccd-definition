@@ -62,21 +62,21 @@ function extractStatesFromStateCalls(filePath) {
     const arg = m[1].trim();
 
     // Case 1: .state(CaseState.ENUM.name()) or .state(CaseState.ENUM.toString())
-    const enumDirect = arg.match(/CaseState\.([A-Z][A-Z_0-9]+)/);
+    const enumDirect = arg.match(/CaseState\.([A-Za-z][A-Za-z_0-9]*)/);
     if (enumDirect && VALID_STATES.has(enumDirect[1])) {
       states.add(enumDirect[1]);
       continue;
     }
 
     // Case 2: .state("STATE_STRING")
-    const stringLiteral = arg.match(/^"([A-Z][A-Z_0-9]+)"$/);
+    const stringLiteral = arg.match(/^"([A-Za-z][A-Za-z_0-9]*)"$/);
     if (stringLiteral && VALID_STATES.has(stringLiteral[1])) {
       states.add(stringLiteral[1]);
       continue;
     }
 
     // Case 3: .state(IMPORTED_ENUM.name()) — static imported CaseState
-    const importedEnum = arg.match(/^([A-Z][A-Z_0-9]+)\.(?:name|toString)\(\)$/);
+    const importedEnum = arg.match(/^([A-Za-z][A-Za-z_0-9]*)\.(?:name|toString)\(\)$/);
     if (importedEnum && imports[importedEnum[1]] && VALID_STATES.has(importedEnum[1])) {
       states.add(importedEnum[1]);
       continue;
@@ -91,7 +91,7 @@ function extractStatesFromStateCalls(filePath) {
     }
 
     // Case 5: Ternary or complex expression containing CaseState references
-    const allEnums = arg.match(/CaseState\.([A-Z][A-Z_0-9]+)/g);
+    const allEnums = arg.match(/CaseState\.([A-Za-z][A-Za-z_0-9]*)/g);
     if (allEnums) {
       allEnums.forEach(ref => {
         const s = ref.replace('CaseState.', '');
@@ -125,28 +125,28 @@ function traceVariable(content, varName, imports) {
     const rhs = m[1].trim();
 
     // CaseState.X.name()
-    const enumRef = rhs.match(/CaseState\.([A-Z][A-Z_0-9]+)/);
+    const enumRef = rhs.match(/CaseState\.([A-Za-z][A-Za-z_0-9]*)/);
     if (enumRef && VALID_STATES.has(enumRef[1])) {
       states.add(enumRef[1]);
       continue;
     }
 
     // "STATE_STRING"
-    const strRef = rhs.match(/^"([A-Z][A-Z_0-9]+)"$/);
+    const strRef = rhs.match(/^"([A-Za-z][A-Za-z_0-9]*)"$/);
     if (strRef && VALID_STATES.has(strRef[1])) {
       states.add(strRef[1]);
       continue;
     }
 
     // Static imported enum: CASE_SETTLED.name()
-    const impRef = rhs.match(/^([A-Z][A-Z_0-9]+)\.(?:name|toString)\(\)$/);
+    const impRef = rhs.match(/^([A-Za-z][A-Za-z_0-9]*)\.(?:name|toString)\(\)$/);
     if (impRef && imports[impRef[1]] && VALID_STATES.has(impRef[1])) {
       states.add(impRef[1]);
       continue;
     }
 
     // Ternary with CaseState refs
-    const ternaryRefs = rhs.match(/CaseState\.([A-Z][A-Z_0-9]+)/g);
+    const ternaryRefs = rhs.match(/CaseState\.([A-Za-z][A-Za-z_0-9]*)/g);
     if (ternaryRefs) {
       ternaryRefs.forEach(ref => {
         const s = ref.replace('CaseState.', '');
@@ -191,7 +191,7 @@ function traceMethod(content, methodName, imports) {
   let m;
   while ((m = returnRe.exec(bodyChunk)) !== null) {
     const ret = m[1];
-    const refs = ret.match(/CaseState\.([A-Z][A-Z_0-9]+)/g);
+    const refs = ret.match(/CaseState\.([A-Za-z][A-Za-z_0-9]*)/g);
     if (refs) refs.forEach(r => {
       const s = r.replace('CaseState.', '');
       if (VALID_STATES.has(s)) states.add(s);
@@ -203,7 +203,7 @@ function traceMethod(content, methodName, imports) {
       }
     }
     // String literal
-    const strRef = ret.match(/"([A-Z][A-Z_0-9]+)"/);
+    const strRef = ret.match(/"([A-Za-z][A-Za-z_0-9]*)"/);
     if (strRef && VALID_STATES.has(strRef[1])) states.add(strRef[1]);
   }
 
@@ -414,6 +414,8 @@ function main() {
   if (!hasBpmn) console.warn(`Warning: BPMN dir not found at ${bpmnDir}, skipping chain resolution`);
 
   const model = JSON.parse(fs.readFileSync(modelPath, 'utf8'));
+  // Accept every state the CCD definition declares, so new states are resolved without code changes
+  (model.states || []).forEach(st => VALID_STATES.add(st.id));
   console.log(`Loaded model: ${model.events.length} events`);
 
   const handlerDir = path.join(serviceRoot, 'src/main/java/uk/gov/hmcts/reform/civil/handler');
