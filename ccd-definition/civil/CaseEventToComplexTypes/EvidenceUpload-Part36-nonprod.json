@@ -1,0 +1,74 @@
+[
+  {
+    "ID": "DocumentAndDescription",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentPart36Rejection",
+    "ListElementCode": "documentDescription",
+    "EventElementLabel": "Document description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentPart36Rejection",
+    "ListElementCode": "document",
+    "EventElementLabel": "Document",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentPart36RejectionApp2",
+    "ListElementCode": "documentDescription",
+    "EventElementLabel": "Document description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "documentPart36RejectionApp2",
+    "ListElementCode": "document",
+    "EventElementLabel": "Document",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "documentPart36RejectionRes",
+    "ListElementCode": "documentDescription",
+    "EventElementLabel": "Document description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "documentPart36RejectionRes",
+    "ListElementCode": "document",
+    "EventElementLabel": "Document",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "documentPart36RejectionRes2",
+    "ListElementCode": "documentDescription",
+    "EventElementLabel": "Document description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DocumentAndDescription",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "documentPart36RejectionRes2",
+    "ListElementCode": "document",
+    "EventElementLabel": "Document",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  }
+]
